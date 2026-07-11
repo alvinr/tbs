@@ -8,7 +8,7 @@ A classroom-ready design for teaching **pinhole photography** — its process an
 
 ![TBS-002 design — two-box camera with a hinged film-plane panel cut from the box wall, plan view, and pinhole face](../assets/mini-tbs-sheet1.png)
 
-The camera is two U-Haul Medium boxes joined end-to-end: a sealed **camera box** (the pinhole, and the dark interior where the image forms) and a light-sealed **prep box** (the coating workspace). The film plane is a panel cut from the wall between the two boxes, hinged along its bottom edge: it folds down into the prep box to hold the paper for coating, then folds up to stand facing the pinhole during exposure. The prep box's end face carries two arm sleeves — students reach in to coat and mount paper without opening the box — and doubles as a daylight extraction flap, opened after exposure to remove the finished print. The camera *is* its own darkroom, so the whole activity happens in a normal classroom.
+The camera is two U-Haul Medium boxes joined end-to-end: a sealed **camera box** (the pinhole, and the dark interior where the image forms) and a light-sealed **prep box** (the coating workspace). The film plane is a panel cut from the wall between the two boxes, hinged along its bottom edge: it folds down into the prep box to hold the paper for coating, then folds up to stand facing the pinhole during exposure. The prep box's end face carries two arm sleeves — students reach in to coat the paper in the dark without opening the box — and the finished print is lifted out in daylight through the box's own **top flaps** (the boxes are built flaps-up, and joined with grey tape). The camera *is* its own darkroom, so the whole activity happens in a normal classroom.
 
 # Part I — Teaching with the Camera
 
@@ -209,17 +209,17 @@ For compound conditions, multiply the factors: thin haze + early morning = ×3.0
 The Mini-TBS uses two identical U-Haul Medium boxes joined end-to-end:
 
 - **Camera box** (left in diagram): Sealed, light-tight. Contains the pinhole and light cone. The hinged panel stands in the opening as the film plane during exposure.
-- **Prep box** (right in diagram): Light-sealed workspace for chemistry, coating, and drying. The end face is an extraction flap (hinged at top) for removing exposed prints in daylight.
+- **Prep box** (right in diagram): Light-sealed workspace for chemistry, coating, and drying. Its end face carries the arm sleeves; the finished print is removed in daylight through the box's own **top flaps** (§9.7).
 
 The two adjacent walls between the boxes become the film-plane mechanism. On the **camera box**, a rectangular window is cut out and removed. On the **prep box**, a matching rectangle is cut on three sides only — the **bottom edge is left attached as a hinge**. The window is sized to the 10 × 14" print (about 16 × 11"), not the whole wall, and is **centered** on the face so the pinhole lines up with the middle of the sheet. The panel folds **down** into the prep box for coating, then folds back **up** to stand in the window as the film plane, facing the pinhole. No separate board is needed: the film plane is the box's own cardboard. Arm sleeves on the prep box end face give the operator sealed access to coat and mount paper.
 
 **Procedure:**
 
-1. Assemble both boxes per manufacturer instructions. Close and tape all flaps on both boxes, but leave the flaps on the top untaped.
+1. Assemble both boxes, but **build them flaps-up** — orient each box so its opening flaps are on **top** (the prep box's become the print-extraction opening). Tape the bottom flaps shut on both boxes.
 2. Stand the boxes end-to-end so that two 18 × 16" faces are adjacent.
 3. On the **camera box's** adjacent face, cut out a rectangular window sized to the print (~16 × 11"), set in the upper part of the face, and remove it. This is the opening through which the image reaches the paper.
 4. On the **prep box's** adjacent face, cut the matching ~16 × 11" rectangle in the same position, on **three sides only**, leaving the **bottom edge uncut** as the hinge. Its bottom edge sits about 64mm above the floor, centering the panel on the face (detailed in §9.3).
-5. Tape the top of box that will hold the pinhole closed. The prep box will be left untaped to allow chemistry and paper to be added. During use, this box flap wil need to be temportaility taped closed (with masking tape or equiv.)
+5. Tape the **camera box's** top flaps shut (light-tight — this end stays sealed). Leave the **prep box's** top flaps as the extraction opening (§9.7): they open in room light to load paper and chemistry and to remove the print, and are taped shut with masking tape during the dark coating and the exposure.
 6. Tape the two boxes together at the junction using duct tape on all four outer edges — floor, ceiling, and both side walls. The taped joint must be rigid, and the two window openings must line up.
 
 ### 9.2 Light-Sealing the Camera Box
@@ -313,19 +313,16 @@ The armholes are on the prep box end face — the operator's face. They are cent
 4. **Wrist seal:** When in use, insert your arms through the sleeves and cinch heavy-duty rubber bands or elastic hair ties around your forearms to seal the openings. The cinch point should be snug enough to block light but not restrict circulation.
 5. **Test:** Insert your arms through the sleeves and verify you can reach the film-plane panel and handle the paper and pins with both hands. In a darkened room, shine a flashlight at the armhole from outside — check for any light leaks around the tape seal rings. Re-tape any gaps.
 
-### 9.7 Extraction Flap
+### 9.7 Print Extraction — the Prep-Box Top Flaps
 
-The prep box end face (the face farthest from the pinhole) is an extraction flap, hinged at the top with duct tape. After exposure, the cyanotype print is no longer UV-sensitive and can be handled in full daylight. The extraction flap opens to allow the operator to remove the exposed print, unfold it from the panel, and wash it externally.
+Because the boxes are built **flaps-up** (§9.1), the prep box's own **top flaps** are the extraction opening — no custom-cut wall is needed. After exposure the cyanotype print is no longer UV-sensitive and can be handled in full daylight, so the top flaps simply fold open to lift the print out.
 
 **Procedure:**
 
-1. Score the prep box end face along the top edge, leaving 1 inch of cardboard attached at the top as a natural hinge line.
-2. Reinforce the hinge with a full-width strip of duct tape on both the inside and outside, spanning the hinge line.
-3. Seal the flap edges (bottom and both sides) with duct tape strips that overlap the flap and the box walls by at least 1 inch. These strips act as light-seal gaskets when the flap is closed.
-4. **To open:** Peel the bottom and side tape strips, swing the flap up. Reach in to remove the exposed print.
-5. **To close:** Swing the flap down and re-seal the edges with fresh duct tape strips.
+1. During the dark steps (mixing, coating, tack-drying) and the exposure, fold the prep box's top flaps shut and **tape them closed with masking tape** so the box is light-tight. (Masking tape peels cleanly for repeated opening — the duct tape is saved for the permanent joints.)
+2. **To load or extract (room light / daylight-safe):** peel the masking tape and fold the top flaps open. Before coating this is how you pin the paper and set the chemistry inside; after exposure it is how you fold the panel down, unpin the print, and lift it out to wash externally (§13).
 
-**Note:** The extraction flap only needs to be light-tight during coating, tack-drying, and mounting (the pre-exposure steps, done sealed in the dark). After exposure, the print is daylight-safe, so the flap can remain open during print removal and washing.
+**Note:** The top flaps only need to be light-tight from the moment you mix the sensitizer until the exposure ends. Before that (loading dry paper and chemistry) and after it (removing and washing the print), they can be open in room light.
 
 ### 9.8 Substrate: Watercolor Paper
 
@@ -340,9 +337,9 @@ Watercolor paper is cyanotype's original and most forgiving substrate — Hersch
 - **Fiber:** 100% cotton (rag paper). Wood-pulp paper degrades in the iron chemistry.
 - **Surface:** Hot-press (smooth). Cold-press texture interferes with fine detail at this resolution.
 
-**Mounting the paper:** The paper is pinned to the panel **dry, before coating** — the point of the sequence in §11, since pinning a dry sheet with the extraction flap open is far easier than mounting a wet, coated one in the dark.
+**Mounting the paper:** The paper is pinned to the panel **dry, before coating** — the point of the sequence in §11, since pinning a dry sheet with the prep box top open is far easier than mounting a wet, coated one in the dark.
 
-1. With the extraction flap open, fold the panel down and center the dry 10 × 14" sheet on it (landscape — 14" across, 10" tall — it sits well within the ~16 × 11" panel).
+1. With the prep box top flaps open, fold the panel down and center the dry 10 × 14" sheet on it (landscape — 14" across, 10" tall — it sits well within the ~16 × 11" panel).
 2. Fasten it with **push pins (map pins or thumbtacks)** pressed through the paper into the cardboard panel — one near each corner, plus one at the middle of each long edge. The pins sit flush and hold the paper when the panel stands vertical, and they leave the panel edges clear so it seats squarely in the window when folded up. (Binder clips would foul the window frame and the hinge and hold the panel off the opening.) Place the pins in the ~1" bare margin around the paper so their heads sit at the edge of the image.
 
 The panel is then coated in place and folded up when dry (§11).
@@ -402,7 +399,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 ## 11. Coating Procedure
 
-**Environment:** Coat in the dark, by feel. The mixed sensitizer is UV-sensitive, so mixing and brushing both happen inside the light-sealed prep box, reached through the arm sleeves. The box is opaque, so you work by touch — no safelight is needed (and one wouldn't help; you can't see inside anyway). The box *is* the darkroom, so the room around it can stay normally lit. Only the setup (pinning the paper, loading the unmixed chemicals) is done with the extraction flap open.
+**Environment:** Coat in the dark, by feel. The mixed sensitizer is UV-sensitive, so mixing and brushing both happen inside the light-sealed prep box, reached through the arm sleeves. The box is opaque, so you work by touch — no safelight is needed (and one wouldn't help; you can't see inside anyway). The box *is* the darkroom, so the room around it can stay normally lit. Only the setup (pinning the paper, loading the unmixed chemicals) is done with the prep box top flaps open.
 
 **Materials:** Foam brush (2-inch), a mixing cup plus two small cups for measuring, push pins, a 10 × 14" watercolor sheet, and the Part A / Part B stock solutions.
 
@@ -410,8 +407,8 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 **Procedure (from [Operating Manual](../operating-manual.md) §2.3):**
 
-1. **Load (extraction flap open).** Fold the panel down and pin the dry watercolor sheet to it (§9.8). Set what you need inside the prep box, within reach of the sleeves: the foam brush, the mixing cup, and ~2 ml each of Part A and Part B measured into two small cups (kept separate — unmixed, they are not yet light-sensitive).
-2. **Seal the box.** Close and light-seal the extraction flap. Inside is now fully dark; you work by feel from here.
+1. **Load (top flaps open).** Fold the panel down and pin the dry watercolor sheet to it (§9.8). Set what you need inside the prep box, within reach of the sleeves: the foam brush, the mixing cup, and ~2 ml each of Part A and Part B measured into two small cups (kept separate — unmixed, they are not yet light-sensitive).
+2. **Seal the box.** Fold the prep box top flaps shut and tape them closed with masking tape. Inside is now fully dark; you work by feel from here.
 3. **Mix, in the dark.** Through the sleeves, pour Part A and Part B together in the cup and stir. This working sensitizer is UV-sensitive — from here it stays in the sealed box until after exposure.
 4. **Coat — two passes.** Load the foam brush evenly. **First pass:** brush horizontally, 50% overlap, top to bottom. **Second pass:** brush vertically, 50% overlap — the cross pass evens the coat. Touch up the four edges, which foam brushes tend to undercoat.
 5. **Tack-dry.** Leave the paper on the panel 15–20 minutes
@@ -430,7 +427,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 ## 12. Exposure Procedure
 
 1. With the paper coated, dry, and the panel folded up (§11), verify the panel stands upright in the exposure position, paper facing the pinhole. Secure the top edge with a binder clip or duct tape tab if it needs holding.
-2. Ensure the extraction flap on the prep box end face is closed and sealed. The prep box should be light-tight.
+2. Ensure the prep box top flaps are folded shut and taped (masking tape). The prep box should be light-tight.
 3. Ensure the shutter flap is closed.
 4. Carry the entire assembly outside. Position it on a stable surface (table, ground) with the pinhole facing the subject.
 5. **Subject selection:** For the first test, choose a high-contrast scene — a sunlit building against blue sky, or a bright landscape with distinct shapes. Avoid scenes dominated by shadow.
@@ -447,7 +444,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 
 **Procedure (from [Operating Manual](../operating-manual.md) §4.2):**
 
-1. Open the extraction flap on the prep box end face (see §9.8). After exposure, cyanotype is no longer light-sensitive — full daylight during removal is safe. Fold the film-plane panel down from the upright position, unpin the paper from the panel, and remove the print through the extraction flap.
+1. Open the prep box top flaps (see §9.7). After exposure, cyanotype is no longer light-sensitive — full daylight during removal is safe. Fold the film-plane panel down from the upright position, unpin the paper from the panel, and lift the print out through the top.
 2. **Wash 1:** Submerge the print in cold water in the tray for 5 minutes, agitating gently. The water turns yellow-green as unreacted sensitizer clears — normal and non-toxic.
 3. **Wash 2:** Empty the tray, refill with fresh cold water, and wash 5 more minutes.
 4. **Wash 3:** Empty and refill once more for a final 5-minute rinse.
@@ -474,7 +471,7 @@ Working life: 4–6 hours after mixing. Discard unused mixed solution.
 | Image is sharp in center, soft at edges | Normal for pinhole — expected | No fix needed. Pinhole illumination falls off at edges (cos⁴ law). |
 | Image is very dark, no whites | Overexposure | Reduce exposure by 30%. Wash longer (5th wash cycle may help clear highlights). |
 | Paper curled during wash | Paper too thin | Use 140 lb (300 gsm) minimum. Let the paper relax flat during final wash. |
-| Light leak through prep box | Extraction flap or arm sleeves not sealed during exposure | Ensure extraction flap edges are fully taped and arm sleeves on end face are cinched. |
+| Light leak through prep box | Top flaps or arm sleeves not sealed during exposure | Ensure the top-flap edges are fully taped (masking tape) and the arm sleeves are cinched. |
 | Pinhole hole is oblong | Drill bit wandered or too much pressure | Drill a new pinhole on fresh aluminum. Use lighter pressure, slower rotation. |
 
 ---
@@ -487,14 +484,14 @@ See the [Mini-TBS Shopping List](mini-tbs-shopping-list.md) for the complete ite
 
 | Category | Low | High |
 |----------|-----|------|
-| Boxes + construction (×2) | $9 | $15 |
+| Boxes + construction (×2) | $10 | $17 |
 | Pinhole materials | $8 | $15 |
 | Chemistry | $25 | $45 |
 | Substrate (watercolor paper) | $45 | $65 |
 | Tools + consumables | $9 | $16 |
 | Wash tray (Paterson 12×16", ×1) | $11 | $11 |
 | Arm sleeves | $0 | $6 |
-| **Total** | **$107** | **$173** |
+| **Total** | **$108** | **$175** |
 
 ---
 

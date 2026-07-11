@@ -15,7 +15,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Pinhole") unless model.layers["Pinhole"]
   model.layers.add("Shutter") unless model.layers["Shutter"]
   model.layers.add("Film Panel") unless model.layers["Film Panel"]
-  model.layers.add("Extraction Flap") unless model.layers["Extraction Flap"]
+  model.layers.add("Prep Top Flaps") unless model.layers["Prep Top Flaps"]
   model.layers.add("Light Cone") unless model.layers["Light Cone"]
   model.layers.add("Labels") unless model.layers["Labels"]
 
@@ -31,18 +31,6 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat = model.materials["Floor"] || model.materials.add("Floor")
   mat.color = Sketchup::Color.new(210, 180, 140)
   mat.alpha = 0.16
-  grp.material = mat
-  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
-
-  # Ceiling
-  grp = ents.add_group
-  grp.name = "Ceiling"
-  face = grp.entities.add_face([0.mm,0.mm,406.mm], [914.mm,0.mm,406.mm], [914.mm,457.mm,406.mm], [0.mm,457.mm,406.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(4.mm)
-  mat = model.materials["Ceiling"] || model.materials.add("Ceiling")
-  mat.color = Sketchup::Color.new(210, 180, 140)
-  mat.alpha = 0.096
   grp.material = mat
   grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
 
@@ -95,6 +83,144 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Cardboard boxes (ghost)"
+  inst.layer = model.layers["Boxes"]
+
+  # ═══ Camera-box top (taped shut) ═══
+  defn = model.definitions.add("Camera-box top (taped shut)")
+  ents = defn.entities
+  # Camera top flap (near)
+  grp = ents.add_group
+  grp.name = "Camera top flap (near)"
+  face = grp.entities.add_face([0.mm,0.mm,403.mm], [457.mm,0.mm,403.mm], [457.mm,228.5.mm,403.mm], [0.mm,228.5.mm,403.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["Camera top flap (near)"] || model.materials.add("Camera top flap (near)")
+  mat.color = Sketchup::Color.new(210, 180, 140)
+  mat.alpha = 0.14400000000000002
+  grp.material = mat
+  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
+
+  # Camera top flap (far)
+  grp = ents.add_group
+  grp.name = "Camera top flap (far)"
+  face = grp.entities.add_face([0.mm,228.5.mm,403.mm], [457.mm,228.5.mm,403.mm], [457.mm,457.mm,403.mm], [0.mm,457.mm,403.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["Camera top flap (near)"] || model.materials.add("Camera top flap (near)")
+  mat.color = Sketchup::Color.new(210, 180, 140)
+  mat.alpha = 0.14400000000000002
+  grp.material = mat
+  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
+
+  # Camera top tape (seam)
+  grp = ents.add_group
+  grp.name = "Camera top tape (seam)"
+  face = grp.entities.add_face([0.mm,203.5.mm,406.mm], [457.mm,203.5.mm,406.mm], [457.mm,253.5.mm,406.mm], [0.mm,253.5.mm,406.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(1.5.mm)
+  mat = model.materials["Camera top tape (seam)"] || model.materials.add("Camera top tape (seam)")
+  mat.color = Sketchup::Color.new(138, 138, 138)
+  mat.alpha = 0.85
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Camera-box top (taped shut)"
+  inst.layer = model.layers["Boxes"]
+
+  # ═══ End wall + arm sleeves ═══
+  defn = model.definitions.add("End wall + arm sleeves")
+  ents = defn.entities
+  # End wall (arm-sleeve wall)
+  grp = ents.add_group
+  grp.name = "End wall (arm-sleeve wall)"
+  face = grp.entities.add_face([910.mm,0.mm,0.mm], [914.mm,0.mm,0.mm], [914.mm,457.mm,0.mm], [910.mm,457.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(406.mm)
+  mat = model.materials["Floor"] || model.materials.add("Floor")
+  mat.color = Sketchup::Color.new(210, 180, 140)
+  mat.alpha = 0.16
+  grp.material = mat
+  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
+
+  # Arm sleeve
+  grp = ents.add_group
+  grp.name = "Arm sleeve"
+  ge = grp.entities
+  circle = ge.add_circle([914.mm,113.5.mm,203.mm], [1,0,0], 51.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(130.mm)
+  mat = model.materials["Arm sleeve"] || model.materials.add("Arm sleeve")
+  mat.color = Sketchup::Color.new(72, 64, 96)
+  mat.alpha = 0.9
+  grp.material = mat
+
+  # Arm sleeve
+  grp = ents.add_group
+  grp.name = "Arm sleeve"
+  ge = grp.entities
+  circle = ge.add_circle([914.mm,343.5.mm,203.mm], [1,0,0], 51.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(130.mm)
+  mat = model.materials["Arm sleeve"] || model.materials.add("Arm sleeve")
+  mat.color = Sketchup::Color.new(72, 64, 96)
+  mat.alpha = 0.9
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "End wall + arm sleeves"
+  inst.layer = model.layers["Boxes"]
+
+  # ═══ Box-join tape ═══
+  defn = model.definitions.add("Box-join tape")
+  ents = defn.entities
+  # Join tape (floor)
+  grp = ents.add_group
+  grp.name = "Join tape (floor)"
+  face = grp.entities.add_face([432.mm,0.mm,-5.5.mm], [482.mm,0.mm,-5.5.mm], [482.mm,457.mm,-5.5.mm], [432.mm,457.mm,-5.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(1.5.mm)
+  mat = model.materials["Join tape (floor)"] || model.materials.add("Join tape (floor)")
+  mat.color = Sketchup::Color.new(138, 138, 138)
+  mat.alpha = 0.9
+  grp.material = mat
+
+  # Join tape (top)
+  grp = ents.add_group
+  grp.name = "Join tape (top)"
+  face = grp.entities.add_face([432.mm,0.mm,406.mm], [482.mm,0.mm,406.mm], [482.mm,457.mm,406.mm], [432.mm,457.mm,406.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(1.5.mm)
+  mat = model.materials["Join tape (floor)"] || model.materials.add("Join tape (floor)")
+  mat.color = Sketchup::Color.new(138, 138, 138)
+  mat.alpha = 0.9
+  grp.material = mat
+
+  # Join tape (near)
+  grp = ents.add_group
+  grp.name = "Join tape (near)"
+  face = grp.entities.add_face([432.mm,-5.5.mm,0.mm], [482.mm,-5.5.mm,0.mm], [482.mm,-4.mm,0.mm], [432.mm,-4.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(406.mm)
+  mat = model.materials["Join tape (floor)"] || model.materials.add("Join tape (floor)")
+  mat.color = Sketchup::Color.new(138, 138, 138)
+  mat.alpha = 0.9
+  grp.material = mat
+
+  # Join tape (far)
+  grp = ents.add_group
+  grp.name = "Join tape (far)"
+  face = grp.entities.add_face([432.mm,461.mm,0.mm], [482.mm,461.mm,0.mm], [482.mm,462.5.mm,0.mm], [432.mm,462.5.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(406.mm)
+  mat = model.materials["Join tape (floor)"] || model.materials.add("Join tape (floor)")
+  mat.color = Sketchup::Color.new(138, 138, 138)
+  mat.alpha = 0.9
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Box-join tape"
   inst.layer = model.layers["Boxes"]
 
   # ═══ Pinhole ═══
@@ -204,61 +330,64 @@ fp_inst.set_attribute(da, "onclick", 'ANIMATE("fold", 0, 1)')
 fp_inst.set_attribute(da, "_onclick_access", "NONE")
 
 
-# ═══ Extraction flap — DYNAMIC COMPONENT (click to move) ═══
-ef_defn = model.definitions.add("Extraction flap")
-ents = ef_defn.entities
-  # Extraction flap
+# ═══ Prep-box top flaps — DYNAMIC COMPONENT (click: open the top to extract the print) ═══
+pt_defn = model.definitions.add("Prep top flaps")
+ents = pt_defn.entities
+ptn_defn = model.definitions.add("Prep top flap (near)")
+ents = ptn_defn.entities
+  # Prep top flap (near)
   grp = ents.add_group
-  grp.name = "Extraction flap"
-  face = grp.entities.add_face([0.mm,0.mm,-406.mm], [4.mm,0.mm,-406.mm], [4.mm,457.mm,-406.mm], [0.mm,457.mm,-406.mm])
+  grp.name = "Prep top flap (near)"
+  face = grp.entities.add_face([0.mm,0.mm,-3.mm], [457.mm,0.mm,-3.mm], [457.mm,228.5.mm,-3.mm], [0.mm,228.5.mm,-3.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(406.mm)
+  face.pushpull(3.mm)
   mat = model.materials["Panel board"] || model.materials.add("Panel board")
   mat.color = Sketchup::Color.new(210, 180, 140)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Arm sleeve
+ptn_inst = pt_defn.entities.add_instance(ptn_defn, Geom::Transformation.new)
+ptn_inst.name = "Prep top flap (near)"
+ptf_defn = model.definitions.add("Prep top flap (far)")
+ents = ptf_defn.entities
+  # Prep top flap (far)
   grp = ents.add_group
-  grp.name = "Arm sleeve"
-  ge = grp.entities
-  circle = ge.add_circle([4.mm,113.5.mm,-203.mm], [1,0,0], 51.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(130.mm)
-  mat = model.materials["Arm sleeve"] || model.materials.add("Arm sleeve")
-  mat.color = Sketchup::Color.new(72, 64, 96)
-  mat.alpha = 0.9
+  grp.name = "Prep top flap (far)"
+  face = grp.entities.add_face([0.mm,-228.5.mm,-3.mm], [457.mm,-228.5.mm,-3.mm], [457.mm,0.mm,-3.mm], [0.mm,0.mm,-3.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["Panel board"] || model.materials.add("Panel board")
+  mat.color = Sketchup::Color.new(210, 180, 140)
+  mat.alpha = 1.0
   grp.material = mat
 
-  # Arm sleeve
-  grp = ents.add_group
-  grp.name = "Arm sleeve"
-  ge = grp.entities
-  circle = ge.add_circle([4.mm,343.5.mm,-203.mm], [1,0,0], 51.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(130.mm)
-  mat = model.materials["Arm sleeve"] || model.materials.add("Arm sleeve")
-  mat.color = Sketchup::Color.new(72, 64, 96)
-  mat.alpha = 0.9
-  grp.material = mat
-
-ef_inst = entities.add_instance(ef_defn, Geom::Transformation.translation([910.mm, 0.mm, 406.mm]))
-ef_inst.name = "Extraction flap"
-ef_inst.layer = model.layers["Extraction Flap"]
+ptf_inst = pt_defn.entities.add_instance(ptf_defn, Geom::Transformation.translation([0.mm, 457.mm, 0.mm]))
+ptf_inst.name = "Prep top flap (far)"
+pt_inst = entities.add_instance(pt_defn, Geom::Transformation.translation([457.mm, 0.mm, 406.mm]))
+pt_inst.name = "Prep top flaps"
+pt_inst.layer = model.layers["Prep Top Flaps"]
 da = "dynamic_attributes"
-[ef_defn, ef_inst].each do |e|
-  e.set_attribute(da, "_name", "ExtractionFlap")
+[pt_defn, pt_inst].each do |e|
+  e.set_attribute(da, "_name", "PrepTopFlaps")
   e.set_attribute(da, "_lengthunits", "MILLIMETERS")
   e.set_attribute(da, "open", 0.0)
-  e.set_attribute(da, "roty", 0.0)
 end
-ef_inst.set_attribute(da, "_open_access", "VIEW")
-ef_inst.set_attribute(da, "_open_label", "Open (0 closed / 1 open)")
-ef_inst.set_attribute(da, "_roty_formula", "-110*open")
-ef_inst.set_attribute(da, "onclick", 'ANIMATE("open", 0, 1)')
-ef_inst.set_attribute(da, "_onclick_access", "NONE")
+pt_inst.set_attribute(da, "_open_access", "VIEW")
+pt_inst.set_attribute(da, "_open_label", "Open (0 closed / 1 open)")
+pt_inst.set_attribute(da, "onclick", 'ANIMATE("open", 0, 1)')
+pt_inst.set_attribute(da, "_onclick_access", "NONE")
+[ptn_defn, ptn_inst].each do |e|
+  e.set_attribute(da, "_name", "PrepTopFlapNear")
+  e.set_attribute(da, "_lengthunits", "MILLIMETERS")
+  e.set_attribute(da, "rotx", 0.0)
+end
+ptn_inst.set_attribute(da, "_rotx_formula", "95*PrepTopFlaps!open")
+[ptf_defn, ptf_inst].each do |e|
+  e.set_attribute(da, "_name", "PrepTopFlapFar")
+  e.set_attribute(da, "_lengthunits", "MILLIMETERS")
+  e.set_attribute(da, "rotx", 0.0)
+end
+ptf_inst.set_attribute(da, "_rotx_formula", "-95*PrepTopFlaps!open")
 
 
 # ── Light cone (translucent teaching aid) ──
@@ -305,12 +434,13 @@ if inst
 (click: fold down to coat / up to expose)", anc, Geom::Vector3d.new(120.mm, -450.mm, 450.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
-inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Extraction flap" }
+inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Prep top flaps" }
 if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("EXTRACTION FLAP
-(click: swing open — daylight print removal)", anc, Geom::Vector3d.new(400.mm, -300.mm, 300.mm))
+  txt = entities.add_text("PREP-BOX TOP FLAPS
+(boxes built flaps-up; click: open
+to remove the print in daylight)", anc, Geom::Vector3d.new(250.mm, -300.mm, 500.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Cardboard boxes (ghost)" }
@@ -318,16 +448,20 @@ if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
   txt = entities.add_text("TWO CARDBOARD BOXES
-(camera + prep — ghosted)", anc, Geom::Vector3d.new(-120.mm, 520.mm, 560.mm))
+(joined with grey tape — ghosted)", anc, Geom::Vector3d.new(-120.mm, 520.mm, 560.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 anc = Geom::Point3d.new(1044.mm, 113.5.mm, 203.mm)
-txt = entities.add_text("ARM SLEEVES
+txt = entities.add_text("ARM SLEEVES (end wall)
 (reach in to mix + coat in the dark)", anc, Geom::Vector3d.new(300.mm, -200.mm, 250.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(228.5.mm, 228.5.mm, 203.mm)
 txt = entities.add_text("LIGHT CONE
 (pinhole → paper)", anc, Geom::Vector3d.new(-150.mm, -420.mm, 300.mm))
+txt.layer = model.layers["Labels"] rescue nil
+anc = Geom::Point3d.new(457.mm, 228.5.mm, -4.mm)
+txt = entities.add_text("GREY TAPE
+(joins the two boxes)", anc, Geom::Vector3d.new(-100.mm, 400.mm, -250.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
 # ── In-model © + license credit (default layer → shown in every scene) ──
@@ -339,7 +473,7 @@ alvinr.github.io/tbs", lanc)
 
 model.definitions.purge_unused
 model.materials.purge_unused
-keep_tags = ["Boxes", "Pinhole", "Shutter", "Film Panel", "Extraction Flap", "Light Cone", "Labels"]; dl = model.layers[0]
+keep_tags = ["Boxes", "Pinhole", "Shutter", "Film Panel", "Prep Top Flaps", "Light Cone", "Labels"]; dl = model.layers[0]
 model.layers.to_a.each { |l| next if l==dl||keep_tags.include?(l.name); model.layers.remove(l,true) rescue nil }
 
 model.layers.each { |l| l.visible = true }
@@ -349,7 +483,7 @@ eye = ctr.offset(dir, bb.diagonal * 1.4)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-[["Assembled", ["Boxes", "Pinhole", "Shutter", "Film Panel", "Extraction Flap"], nil, 0], ["Light path", ["Boxes", "Pinhole", "Shutter", "Film Panel", "Extraction Flap", "Light Cone"], nil, 0], ["Labeled", ["Boxes", "Pinhole", "Shutter", "Film Panel", "Extraction Flap", "Light Cone", "Labels"], nil, 0]].each { |name, tags, tgt, so|
+[["Assembled", ["Boxes", "Pinhole", "Shutter", "Film Panel", "Prep Top Flaps"], nil, 0], ["Light path", ["Boxes", "Pinhole", "Shutter", "Film Panel", "Prep Top Flaps", "Light Cone"], nil, 0], ["Labeled", ["Boxes", "Pinhole", "Shutter", "Film Panel", "Prep Top Flaps", "Light Cone", "Labels"], nil, 0]].each { |name, tags, tgt, so|
   model.layers.each { |l| l.visible = (l == dl || tags.include?(l.name)) }
   model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
   model.active_view.zoom_extents
@@ -364,7 +498,7 @@ model.commit_operation
 # Register the DCs AFTER committing (redraw_with_undo opens its own operation).
 if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
   cls = $dc_observers.get_latest_class
-  [sh_inst, fp_inst, ef_inst].each { |di| cls.redraw_with_undo(di) rescue nil } if cls
+  [sh_inst, fp_inst, pt_inst].each { |di| cls.redraw_with_undo(di) rescue nil } if cls
 end
 
 { success: true, model: "mini-tbs", scenes: model.pages.count,

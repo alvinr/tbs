@@ -4,7 +4,7 @@
 
 Complete itemized list for building the Mini-TBS classroom camera (two-box design) and making **20 cyanotype prints** on watercolor paper. All quantities include 25% overage for waste and practice.
 
-**Target budget:** $107–$173 (see summary at bottom).
+**Target budget:** $108–$175 (see summary at bottom).
 
 ---
 
@@ -14,8 +14,9 @@ Complete itemized list for building the Mini-TBS classroom camera (two-box desig
 |------|-----|-----------|-------|-----------|-------|-------|
 | Medium moving box (18×18×16") | 2 | U-Haul | $4.50 ea | Home Depot | $3.98 ea | One camera box + one prep box |
 | Black duct tape, 2" × 30 yd | 1 roll | Home Depot | $5.98 | Dollar Tree | $1.25 | Light sealing, hinges, sleeve attachment, and the panel hinge — one roll covers the entire build |
+| Masking tape, 1" | 1 roll | Dollar Tree | $1.25 | Office Depot | $2.49 | Temporarily seals the prep-box top flaps for coating + exposure (peels cleanly) |
 
-**Subtotal: $9–$15**
+**Subtotal: $10–$17**
 
 ---
 
@@ -122,7 +123,7 @@ One developing tray for the wash baths (development, §13). Coating happens on t
 
 | Category | Low | High |
 |----------|-----|------|
-| Boxes + construction (×2) | $9 | $15 |
+| Boxes + construction (×2) | $10 | $17 |
 | Pinhole materials | $8 | $15 |
 | Chemistry (without ammonium dichromate) | $25 | $35 |
 | Chemistry (with ammonium dichromate) | $37 | $45 |
@@ -130,8 +131,8 @@ One developing tray for the wash baths (development, §13). Coating happens on t
 | Tools + consumables | $9 | $16 |
 | Wash tray (Paterson 12×16", ×1) | $11 | $11 |
 | Arm sleeves | $0 | $6 |
-| **Total (without dichromate)** | **$107** | **$163** |
-| **Total (with dichromate)** | **$119** | **$173** |
+| **Total (without dichromate)** | **$108** | **$165** |
+| **Total (with dichromate)** | **$120** | **$175** |
 
 ### What the Minimum Order Gets You
 

@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **TBS-002 "Mini-TBS" classroom camera** — the proof-of-concept two-box cardboard pinhole
+  camera was recast as an educational design (Part I teaching / Part II build) and refined
+  throughout: the film plane became a cut-cardboard flap (no foam board), push-pin paper
+  mounting, a pin-load-seal-coat-dry coating sequence done by feel in the sealed box (no
+  safelight), a single wash tray, a re-centered pinhole, and — the key fix — print extraction
+  through the boxes' **own top flaps** (built flaps-up) instead of a custom-cut wall. Added an
+  interactive **Sketchfab 3D model** (ghosted boxes joined with grey tape; clickable shutter,
+  film-plane panel, and top flaps) embedded in the doc, generated from a new
+  `generate_mini_tbs_model.py` with geometry single-sourced from `mini_tbs_constants.py`.
+
 - **Site footer version format** — the footer now reads inline as
   `© 2026 Alvin Richards — Released under GNU AGPLv3. Version v0.3` instead of dropping the bare
   `v0.3` onto its own right-justified line (which wrapped and read oddly). `overrides/partials/copyright.html`.

@@ -254,6 +254,9 @@ lcm = model.materials["Light cone"] || model.materials.add("Light cone")
 lcm.color = Sketchup::Color.new(74, 144, 217)
 lcm.alpha = 0.18
 lge.grep(Sketchup::Face).each {{ |f| f.material = lcm; f.back_material = lcm }}
+# Soften + smooth + hide the facet edges so the cone reads as one smooth surface
+# (no black radial lines) — the sides all render as the uniform cone colour.
+lge.grep(Sketchup::Edge).each {{ |e| e.soft = true; e.smooth = true; e.hidden = true }}
 '''
 
 

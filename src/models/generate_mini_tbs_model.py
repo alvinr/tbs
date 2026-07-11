@@ -130,7 +130,7 @@ def pinhole_parts():
 
 
 # ── Single-flap DCs (shutter, film panel) — built LOCAL at hinge, placed, roty ──
-def _flap_dc(var, disp, code, tag, geom, hinge, driver, label, angle_formula):
+def _flap_dc(var, disp, code, tag, geom, hinge, driver, label, angle_formula, default=0.0):
     hx, hy, hz = (ov.mm(v) for v in hinge)
     return f'''
 # ═══ {disp} — DYNAMIC COMPONENT (click to move) ═══
@@ -144,7 +144,7 @@ da = "dynamic_attributes"
 [{var}_defn, {var}_inst].each do |e|
   e.set_attribute(da, "_name", "{code}")
   e.set_attribute(da, "_lengthunits", "MILLIMETERS")
-  e.set_attribute(da, "{driver}", 0.0)
+  e.set_attribute(da, "{driver}", {default})
   e.set_attribute(da, "roty", 0.0)
 end
 {var}_inst.set_attribute(da, "_{driver}_access", "VIEW")
@@ -158,8 +158,9 @@ end
 def shutter_dc():
     geom = ov.ruby_box("Shutter flap", 0, -45, -90, 2, 90, 90, color=C_SHUTTER)
     hinge = (-WALL_T - 2, CY, PH_Y + 45)
+    # default OPEN (lift=1) so the static Sketchfab view shows the pinhole uncovered
     return _flap_dc("sh", "Shutter", "Shutter", "Shutter", geom, hinge,
-                    "lift", "Lift (0 closed / 1 open)", "110*lift")
+                    "lift", "Lift (0 closed / 1 open)", "110*lift", default=1.0)
 
 
 def panel_dc():
@@ -252,7 +253,7 @@ lge.add_face(apx, p3, p0)
 lge.add_face(p0, p1, p2, p3)
 lcm = model.materials["Light cone"] || model.materials.add("Light cone")
 lcm.color = Sketchup::Color.new(74, 144, 217)
-lcm.alpha = 0.12
+lcm.alpha = 0.18
 lge.grep(Sketchup::Face).each {{ |f| f.material = lcm; f.back_material = lcm }}
 '''
 
@@ -307,8 +308,8 @@ def generate_ruby():
     keep = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
 
     hardware = ["Boxes", "Pinhole", "Shutter", "Film Panel", "Prep Top Flaps"]
-    scenes = [("Assembled", hardware, None, 0),
-              ("Light path", hardware + ["Light Cone"], None, 0),
+    scenes = [("Assembled", hardware + ["Light Cone"], None, 0),
+              ("No light cone", hardware, None, 0),
               ("Labeled", hardware + ["Light Cone", "Labels"], None, 0)]
 
     def slit(s):
@@ -374,7 +375,6 @@ model.active_view.zoom_extents
   page = model.pages.add(name); page.use_camera = true
 }}
 model.layers.each {{ |l| l.visible = true }}
-model.layers["Light Cone"].visible = false
 model.layers["Labels"].visible = false
 
 model.commit_operation

@@ -286,7 +286,7 @@ da = "dynamic_attributes"
 [sh_defn, sh_inst].each do |e|
   e.set_attribute(da, "_name", "Shutter")
   e.set_attribute(da, "_lengthunits", "MILLIMETERS")
-  e.set_attribute(da, "lift", 0.0)
+  e.set_attribute(da, "lift", 1.0)
   e.set_attribute(da, "roty", 0.0)
 end
 sh_inst.set_attribute(da, "_lift_access", "VIEW")
@@ -414,7 +414,7 @@ lge.add_face(apx, p3, p0)
 lge.add_face(p0, p1, p2, p3)
 lcm = model.materials["Light cone"] || model.materials.add("Light cone")
 lcm.color = Sketchup::Color.new(74, 144, 217)
-lcm.alpha = 0.12
+lcm.alpha = 0.18
 lge.grep(Sketchup::Face).each { |f| f.material = lcm; f.back_material = lcm }
 
 
@@ -491,14 +491,13 @@ eye = ctr.offset(dir, bb.diagonal * 1.4)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-[["Assembled", ["Boxes", "Pinhole", "Shutter", "Film Panel", "Prep Top Flaps"], nil, 0], ["Light path", ["Boxes", "Pinhole", "Shutter", "Film Panel", "Prep Top Flaps", "Light Cone"], nil, 0], ["Labeled", ["Boxes", "Pinhole", "Shutter", "Film Panel", "Prep Top Flaps", "Light Cone", "Labels"], nil, 0]].each { |name, tags, tgt, so|
+[["Assembled", ["Boxes", "Pinhole", "Shutter", "Film Panel", "Prep Top Flaps", "Light Cone"], nil, 0], ["No light cone", ["Boxes", "Pinhole", "Shutter", "Film Panel", "Prep Top Flaps"], nil, 0], ["Labeled", ["Boxes", "Pinhole", "Shutter", "Film Panel", "Prep Top Flaps", "Light Cone", "Labels"], nil, 0]].each { |name, tags, tgt, so|
   model.layers.each { |l| l.visible = (l == dl || tags.include?(l.name)) }
   model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
   model.active_view.zoom_extents
   page = model.pages.add(name); page.use_camera = true
 }
 model.layers.each { |l| l.visible = true }
-model.layers["Light Cone"].visible = false
 model.layers["Labels"].visible = false
 
 model.commit_operation

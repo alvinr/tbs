@@ -68,10 +68,6 @@ def ghost_walls():
     return '\n'.join([
         ov.ruby_box("Floor", 0, 0, -WALL_T, TOTAL_D, BOX_W, WALL_T,
                     color=C_CARD, alpha=a, both_sides=True),
-        ov.ruby_box("Side wall (near)", 0, -WALL_T, 0, TOTAL_D, WALL_T, BOX_H,
-                    color=C_CARD, alpha=a, both_sides=True),
-        ov.ruby_box("Side wall (far)", 0, BOX_W, 0, TOTAL_D, WALL_T, BOX_H,
-                    color=C_CARD, alpha=a, both_sides=True),
         ov.ruby_box("Pinhole wall", -WALL_T, 0, 0, WALL_T, BOX_W, BOX_H,
                     color=C_CARD, alpha=a, both_sides=True),
         ov.ruby_box("Duct-tape drip liner (optional)",

@@ -42,30 +42,6 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.material = mat
   grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
 
-  # Side wall (near)
-  grp = ents.add_group
-  grp.name = "Side wall (near)"
-  face = grp.entities.add_face([0.mm,-4.mm,0.mm], [914.mm,-4.mm,0.mm], [914.mm,0.mm,0.mm], [0.mm,0.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(406.mm)
-  mat = model.materials["Floor"] || model.materials.add("Floor")
-  mat.color = Sketchup::Color.new(210, 180, 140)
-  mat.alpha = 0.16
-  grp.material = mat
-  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
-
-  # Side wall (far)
-  grp = ents.add_group
-  grp.name = "Side wall (far)"
-  face = grp.entities.add_face([0.mm,457.mm,0.mm], [914.mm,457.mm,0.mm], [914.mm,461.mm,0.mm], [0.mm,461.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(406.mm)
-  mat = model.materials["Floor"] || model.materials.add("Floor")
-  mat.color = Sketchup::Color.new(210, 180, 140)
-  mat.alpha = 0.16
-  grp.material = mat
-  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
-
   # Pinhole wall
   grp = ents.add_group
   grp.name = "Pinhole wall"

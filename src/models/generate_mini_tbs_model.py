@@ -26,6 +26,7 @@ NOTE: --send builds into the ACTIVE SketchUp document (it clears it first). Open
 blank document before sending, then save the result as models/mini-tbs.skp.
 """
 import argparse
+import math
 import os
 import sys
 
@@ -229,28 +230,26 @@ ptf_inst.set_attribute(da, "_rotx_formula", "-95*PrepTopFlaps!open")
 
 
 def light_cone_ruby():
-    """A translucent pyramid from the pinhole (apex) to the paper (base, exposure
-    position). Built inline as a top-level group on the Light Cone tag."""
+    """A translucent CONE — apex at the pinhole, circular base at the film plane — showing
+    the spread of light through the pinhole. Built inline as a group on the Light Cone tag."""
     apex = (0, CY, PH_Y)
-    px = BOX_D - WALL_T - 1
-    base = [(px, CY - PAPER_W / 2, PH_Y - PAPER_H / 2),
-            (px, CY + PAPER_W / 2, PH_Y - PAPER_H / 2),
-            (px, CY + PAPER_W / 2, PH_Y + PAPER_H / 2),
-            (px, CY - PAPER_W / 2, PH_Y + PAPER_H / 2)]
-    p = lambda t: f'Geom::Point3d.new({ov.mm(t[0])}, {ov.mm(t[1])}, {ov.mm(t[2])})'
+    px = BOX_D - WALL_T - 1            # base plane = the film plane (exposure position)
+    R = BOX_H / 2 - 6                  # base radius — nearly fills the film-plane height
+    N = 32
+    pts = [(px, CY + R * math.cos(2 * math.pi * k / N), PH_Y + R * math.sin(2 * math.pi * k / N))
+           for k in range(N)]
+    p = lambda t: f'Geom::Point3d.new({ov.mm(round(t[0], 2))}, {ov.mm(round(t[1], 2))}, {ov.mm(round(t[2], 2))})'
+    base_pts = ', '.join(p(t) for t in pts)
     return f'''
-# ── Light cone (pinhole → paper) — translucent teaching aid, own tag ──
+# ── Light cone (pinhole → circular base at the film plane) — translucent teaching aid ──
 lc = entities.add_group
 lc.name = "Light cone"
 lc.layer = model.layers["Light Cone"]
 lge = lc.entities
 apx = {p(apex)}
-p0 = {p(base[0])}; p1 = {p(base[1])}; p2 = {p(base[2])}; p3 = {p(base[3])}
-lge.add_face(apx, p0, p1)
-lge.add_face(apx, p1, p2)
-lge.add_face(apx, p2, p3)
-lge.add_face(apx, p3, p0)
-lge.add_face(p0, p1, p2, p3)
+base = [{base_pts}]
+lge.add_face(base)                                  # circular base at the film plane
+base.each_with_index {{ |pt, i| lge.add_face(apx, pt, base[(i + 1) % base.length]) }}  # lateral surface
 lcm = model.materials["Light cone"] || model.materials.add("Light cone")
 lcm.color = Sketchup::Color.new(74, 144, 217)
 lcm.alpha = 0.18

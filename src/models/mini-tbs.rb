@@ -93,6 +93,109 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   inst.name = "Cardboard boxes (ghost)"
   inst.layer = model.layers["Boxes"]
 
+  # ═══ Junction walls (panel frame) ═══
+  defn = model.definitions.add("Junction walls (panel frame)")
+  ents = defn.entities
+  # Camera junction wall (below window)
+  grp = ents.add_group
+  grp.name = "Camera junction wall (below window)"
+  face = grp.entities.add_face([453.mm,0.mm,0.mm], [457.mm,0.mm,0.mm], [457.mm,457.mm,0.mm], [453.mm,457.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(63.5.mm)
+  mat = model.materials["Camera junction wall (below window)"] || model.materials.add("Camera junction wall (below window)")
+  mat.color = Sketchup::Color.new(210, 180, 140)
+  mat.alpha = 0.45
+  grp.material = mat
+  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
+
+  # Camera junction wall (above window)
+  grp = ents.add_group
+  grp.name = "Camera junction wall (above window)"
+  face = grp.entities.add_face([453.mm,0.mm,342.5.mm], [457.mm,0.mm,342.5.mm], [457.mm,457.mm,342.5.mm], [453.mm,457.mm,342.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(63.5.mm)
+  mat = model.materials["Camera junction wall (below window)"] || model.materials.add("Camera junction wall (below window)")
+  mat.color = Sketchup::Color.new(210, 180, 140)
+  mat.alpha = 0.45
+  grp.material = mat
+  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
+
+  # Camera junction wall (left of window)
+  grp = ents.add_group
+  grp.name = "Camera junction wall (left of window)"
+  face = grp.entities.add_face([453.mm,0.mm,63.5.mm], [457.mm,0.mm,63.5.mm], [457.mm,25.5.mm,63.5.mm], [453.mm,25.5.mm,63.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(279.mm)
+  mat = model.materials["Camera junction wall (below window)"] || model.materials.add("Camera junction wall (below window)")
+  mat.color = Sketchup::Color.new(210, 180, 140)
+  mat.alpha = 0.45
+  grp.material = mat
+  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
+
+  # Camera junction wall (right of window)
+  grp = ents.add_group
+  grp.name = "Camera junction wall (right of window)"
+  face = grp.entities.add_face([453.mm,431.5.mm,63.5.mm], [457.mm,431.5.mm,63.5.mm], [457.mm,457.mm,63.5.mm], [453.mm,457.mm,63.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(279.mm)
+  mat = model.materials["Camera junction wall (below window)"] || model.materials.add("Camera junction wall (below window)")
+  mat.color = Sketchup::Color.new(210, 180, 140)
+  mat.alpha = 0.45
+  grp.material = mat
+  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
+
+  # Prep junction wall (below window)
+  grp = ents.add_group
+  grp.name = "Prep junction wall (below window)"
+  face = grp.entities.add_face([457.mm,0.mm,0.mm], [461.mm,0.mm,0.mm], [461.mm,457.mm,0.mm], [457.mm,457.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(63.5.mm)
+  mat = model.materials["Camera junction wall (below window)"] || model.materials.add("Camera junction wall (below window)")
+  mat.color = Sketchup::Color.new(210, 180, 140)
+  mat.alpha = 0.45
+  grp.material = mat
+  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
+
+  # Prep junction wall (above window)
+  grp = ents.add_group
+  grp.name = "Prep junction wall (above window)"
+  face = grp.entities.add_face([457.mm,0.mm,342.5.mm], [461.mm,0.mm,342.5.mm], [461.mm,457.mm,342.5.mm], [457.mm,457.mm,342.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(63.5.mm)
+  mat = model.materials["Camera junction wall (below window)"] || model.materials.add("Camera junction wall (below window)")
+  mat.color = Sketchup::Color.new(210, 180, 140)
+  mat.alpha = 0.45
+  grp.material = mat
+  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
+
+  # Prep junction wall (left of window)
+  grp = ents.add_group
+  grp.name = "Prep junction wall (left of window)"
+  face = grp.entities.add_face([457.mm,0.mm,63.5.mm], [461.mm,0.mm,63.5.mm], [461.mm,25.5.mm,63.5.mm], [457.mm,25.5.mm,63.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(279.mm)
+  mat = model.materials["Camera junction wall (below window)"] || model.materials.add("Camera junction wall (below window)")
+  mat.color = Sketchup::Color.new(210, 180, 140)
+  mat.alpha = 0.45
+  grp.material = mat
+  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
+
+  # Prep junction wall (right of window)
+  grp = ents.add_group
+  grp.name = "Prep junction wall (right of window)"
+  face = grp.entities.add_face([457.mm,431.5.mm,63.5.mm], [461.mm,431.5.mm,63.5.mm], [461.mm,457.mm,63.5.mm], [457.mm,457.mm,63.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(279.mm)
+  mat = model.materials["Camera junction wall (below window)"] || model.materials.add("Camera junction wall (below window)")
+  mat.color = Sketchup::Color.new(210, 180, 140)
+  mat.alpha = 0.45
+  grp.material = mat
+  grp.entities.grep(Sketchup::Face).each { |f| f.material = mat; f.back_material = mat }
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Junction walls (panel frame)"
+  inst.layer = model.layers["Boxes"]
+
   # ═══ Camera-box top (taped shut) ═══
   defn = model.definitions.add("Camera-box top (taped shut)")
   ents = defn.entities

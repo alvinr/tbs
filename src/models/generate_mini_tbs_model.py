@@ -318,6 +318,12 @@ def generate_ruby():
         return f'["{name}", {tg}, {cam}, {so}]'
     scenes_ruby = '[' + ', '.join(slit(s) for s in scenes) + ']'
 
+    sf_meta = ov.sketchfab_meta_ruby(
+        "TBS-002",
+        "A classroom-ready design for teaching pinhole photography — its process and its craft "
+        "— to students from elementary school through college.",
+        "4dc2aa302f884cb192da7c57725d4bf2", "sketchup")
+
     return f'''# SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards
 # Generated from src/models/ — do not edit this .rb directly.
@@ -331,6 +337,7 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
+{sf_meta}
 {tags_ruby}
 
 {body}

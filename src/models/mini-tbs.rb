@@ -11,6 +11,14 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
+# ── Sketchfab metadata — fill-only-if-blank; never overwrites existing values ──
+model.name = "TBS-002" if model.name.to_s.strip.empty?
+model.description = "A classroom-ready design for teaching pinhole photography \u2014 its process and its craft \u2014 to students from elementary school through college." if model.description.to_s.strip.empty?
+model.set_attribute("sketchfab", "model_title", "TBS-002") if model.get_attribute("sketchfab", "model_title").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_description", "A classroom-ready design for teaching pinhole photography \u2014 its process and its craft \u2014 to students from elementary school through college.") if model.get_attribute("sketchfab", "model_description").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_id", "4dc2aa302f884cb192da7c57725d4bf2") if model.get_attribute("sketchfab", "model_id").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribute("sketchfab", "model_tags").to_s.strip.empty?
+
   model.layers.add("Boxes") unless model.layers["Boxes"]
   model.layers.add("Pinhole") unless model.layers["Pinhole"]
   model.layers.add("Shutter") unless model.layers["Shutter"]

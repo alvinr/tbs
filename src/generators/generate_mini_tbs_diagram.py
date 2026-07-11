@@ -48,7 +48,7 @@ C_ALUM     = "#C0C0C8"    # aluminum pinhole plate
 C_PAPER    = "#FAFAE8"    # watercolor paper
 C_HINGE    = "#886644"    # duct tape hinge
 C_MOTION   = "#CC6600"    # motion arc color
-C_FLAP     = "#77AA77"    # extraction flap
+C_FLAP     = "#77AA77"    # prep-box top flaps (extraction opening)
 
 FS_SM = 6.5
 FS_MD = 8.0
@@ -90,7 +90,7 @@ hinge_y = HINGE_Y_ABS              # hinge height = panel bottom (centered on th
 panel_fold_end = hinge_x + PANEL_H  # panel tip when folded horizontal
 
 PAD = 120
-# Extend right limit to show extraction flap arc and open position
+# Extend right limit to show the arm sleeves + open top flaps
 flap_open_end = BOX_D + PREP_D + BOX_H * 0.3  # enough to show arc + partial open flap
 ax.set_xlim(-PAD - 40, max(panel_fold_end + PAD, flap_open_end + PAD))
 ax.set_ylim(-PAD - 30, BOX_H + PAD + 20)
@@ -115,40 +115,34 @@ ax.plot([BOX_D, BOX_D], [BOX_H - WALL_T, BOX_H], color=C_OUT, lw=0.8, zorder=2)
 ax.add_patch(mpatches.Rectangle((BOX_D, 0), PREP_D, BOX_H,
              facecolor=C_BOX, edgecolor=C_OUT, linewidth=1.5, alpha=0.15, zorder=1))
 
-for rect in [
-    (BOX_D, 0, PREP_D, WALL_T),                     # floor
-    (BOX_D, BOX_H - WALL_T, PREP_D, WALL_T),       # ceiling
-]:
-    ax.add_patch(mpatches.Rectangle(rect[:2], rect[2], rect[3],
-                 facecolor=C_BOX_WALL, edgecolor=C_OUT, linewidth=0.8, alpha=0.7, zorder=2))
+# floor only — the prep-box TOP is the flaps (drawn open below)
+ax.add_patch(mpatches.Rectangle((BOX_D, 0), PREP_D, WALL_T,
+             facecolor=C_BOX_WALL, edgecolor=C_OUT, linewidth=0.8, alpha=0.7, zorder=2))
 
-# ── Extraction flap (prep box end face) — hinged at top ────────────────────
+# ── Prep box end wall (arm-sleeve wall; solid) ──────────────────────────────
 prep_end_x = BOX_D + PREP_D - WALL_T
 ax.add_patch(mpatches.Rectangle((prep_end_x, 0), WALL_T, BOX_H,
-             facecolor=C_FLAP, edgecolor=C_OUT, linewidth=1.0, alpha=0.3, zorder=2))
-# Hinge indicator at top
-hinge_flap_y = BOX_H - WALL_T
-ax.add_patch(mpatches.Rectangle((prep_end_x - 2, hinge_flap_y - 3), WALL_T + 4, 6,
-             facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.5, alpha=0.8, zorder=8))
+             facecolor=C_BOX_WALL, edgecolor=C_OUT, linewidth=0.8, zorder=2))
 
-# Extraction flap motion arc — same size as board arc, attached to flap bottom
-flap_hinge_cx = prep_end_x + WALL_T / 2
-flap_arc_r = PANEL_H * 0.25  # same size as board motion arc
-flap_arc_cy = flap_arc_r     # center so arc touches flap bottom (y=0) at theta=-90°
-flap_t1, flap_t2 = -90, 0    # quarter circle (closed → fully open)
-flap_arc = Arc((flap_hinge_cx, flap_arc_cy), flap_arc_r * 2, flap_arc_r * 2,
-               angle=0, theta1=flap_t1, theta2=flap_t2,
-               color=C_FLAP, lw=1.5, ls="--", zorder=9)
-ax.add_patch(flap_arc)
-# Arrow at the end furthest from the flap (theta2 = open-direction end)
-flap_tip_x = flap_hinge_cx + flap_arc_r * math.cos(math.radians(flap_t2))
-flap_tip_y = flap_arc_cy + flap_arc_r * math.sin(math.radians(flap_t2))
-flap_txt_x = flap_hinge_cx + flap_arc_r * math.cos(math.radians(flap_t2 - 8))
-flap_txt_y = flap_arc_cy + flap_arc_r * math.sin(math.radians(flap_t2 - 8))
-ax.annotate("", xy=(flap_tip_x, flap_tip_y), xytext=(flap_txt_x, flap_txt_y),
-            arrowprops=dict(arrowstyle="->", color=C_FLAP, lw=1.5), zorder=9)
-ax.text(flap_tip_x + 5, flap_tip_y, "Flap opens\n(daylight safe)",
-        ha="left", va="center", fontsize=FS_SM - 0.5, color=C_FLAP)
+# ── Prep-box TOP FLAPS = the print-extraction opening (boxes built flaps-up).
+# Drawn OPEN (lifted from the two top edges). Folded shut + masking-taped during the
+# dark coating and the exposure; opened in daylight to remove the print.
+_ang = math.radians(63)
+_flen = PREP_D * 0.40
+_ca, _sa = math.cos(_ang), math.sin(_ang)
+for _hx, _dir in [(BOX_D, +1), (BOX_D + PREP_D, -1)]:
+    _bx = _hx + _dir * WALL_T
+    ax.add_patch(mpatches.Polygon([
+        (_hx, BOX_H), (_bx, BOX_H),
+        (_bx + _dir * _flen * _ca, BOX_H + _flen * _sa),
+        (_hx + _dir * _flen * _ca, BOX_H + _flen * _sa)],
+        closed=True, facecolor=C_FLAP, edgecolor=C_OUT, linewidth=1.0, alpha=0.4, zorder=6))
+    ax.add_patch(mpatches.Rectangle((_hx - 3, BOX_H - 2), 6, 4,
+                 facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.5, alpha=0.8, zorder=8))
+
+# ── Grey tape joining the two boxes at the seam (floor band) ──
+ax.add_patch(mpatches.Rectangle((BOX_D - 25, -8), 50, 6,
+             facecolor="#8A8A8A", edgecolor=C_OUT, linewidth=0.4, alpha=0.75, zorder=7))
 
 # ── Optional duct-tape drip liner on the prep-box floor ───────────────────
 ax.add_patch(mpatches.Rectangle((BOX_D + WALL_T, WALL_T), PREP_D - 2 * WALL_T, 5,
@@ -292,18 +286,18 @@ leader(ax, BOX_D + PREP_D / 2, WALL_T + 5,
        "Duct-tape drip liner\n(optional)", ha="center", color=C_HINGE, fs=FS_SM - 0.5)
 ax.text(BOX_D / 2, ph_y + 10, "Light cone",
         ha="center", color=C_CONE_LN)
-leader(ax, prep_end_x + WALL_T / 2, BOX_H / 3,
-       TOTAL_D + 90, BOX_H / 5 + 30,
-       "Extraction flap\n(opens after exposure)", ha="left", color=C_FLAP, fs=FS_SM - 0.5)
-leader(ax, prep_end_x + WALL_T / 2, hinge_flap_y,
-       TOTAL_D + 70, hinge_flap_y + 40,
-       "Duct tape hinge", ha="left", color=C_HINGE, fs=FS_SM - 0.5)
+leader(ax, BOX_D + PREP_D * 0.30, BOX_H + PREP_D * 0.40 * math.sin(math.radians(63)) * 0.55,
+       BOX_D + PREP_D * 0.5, BOX_H + 150,
+       "Prep-box top flaps — the extraction opening\n(built flaps-up; open in daylight to remove\nthe print; masking-taped shut during coating + exposure)",
+       ha="center", color=C_FLAP, fs=FS_SM - 0.5)
+leader(ax, BOX_D, -6, BOX_D - 100, -55,
+       "Grey tape joins\nthe two boxes", ha="center", color="#8A8A8A", fs=FS_SM - 0.5)
 
 # View title
 ax.text(TOTAL_D / 2, BOX_H + 60, "SIDE CROSS-SECTION",
         ha="center", va="bottom", fontsize=FS_MD + 2, fontweight="bold", color=C_OUT)
 ax.text(TOTAL_D / 2, BOX_H + 42,
-        "Two-box design — film plane is a cardboard flap hinged at its bottom edge — arm sleeves + extraction flap on end face",
+        "Two-box design (built flaps-up, joined with grey tape) — film plane hinged at its bottom edge — arm sleeves on the end wall; print extracted through the prep-box top flaps",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
 
 
@@ -322,9 +316,9 @@ FPAD = 100
 ax.set_xlim(-FPAD, EF_W + FPAD * 1.5)
 ax.set_ylim(-FPAD, EF_H + FPAD)
 
-# End face outline (extraction flap)
+# End face outline (solid arm-sleeve wall)
 ax.add_patch(mpatches.Rectangle((0, 0), EF_W, EF_H,
-             facecolor=C_FLAP, edgecolor=C_OUT, linewidth=1.5, alpha=0.15, zorder=1))
+             facecolor=C_BOX, edgecolor=C_OUT, linewidth=1.5, alpha=0.18, zorder=1))
 
 # Armholes centered on the face, spaced horizontally
 arm_cx1 = EF_W / 2 - SLEEVE_SPACING / 2
@@ -339,11 +333,7 @@ for cx in [arm_cx1, arm_cx2]:
     ax.add_patch(mpatches.Annulus((cx, arm_cy), SLEEVE_D / 2 + 12, 10,
                  facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.5, alpha=0.4, zorder=3))
 
-# Hinge edge indicator (top edge — extraction flap hinged at top)
-ax.add_patch(mpatches.Rectangle((0, EF_H - 4), EF_W, 8,
-             facecolor=C_HINGE, edgecolor=C_OUT, linewidth=0.6, alpha=0.5, zorder=5))
-ax.text(EF_W / 2, EF_H + 12, "HINGE EDGE (extraction flap — opens upward)",
-        ha="center", va="bottom", fontsize=FS_SM - 1, color=C_HINGE, fontweight="bold")
+# (the end face is a solid wall carrying the arm sleeves — no hinge; extraction is via the top flaps)
 
 # Dimensions
 draw_dim_h(ax, 0, EF_W, -60, f"End face width  {EF_W}mm  (18\")", offset=12)
@@ -364,7 +354,7 @@ leader(ax, arm_cx1 + SLEEVE_D / 2 + 5, arm_cy, EF_W + 80, arm_cy +270,
 ax.text(EF_W / 2, EF_H + 85, "END FACE — OPERATOR SIDE",
         ha="center", va="bottom", fontsize=FS_MD + 1, fontweight="bold", color=C_OUT)
 ax.text(EF_W / 2, EF_H + 70,
-        "Extraction flap with armholes — sleeves project toward operator",
+        "Solid end wall with armholes — sleeves project toward the operator",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
 
 
@@ -563,12 +553,9 @@ for rect in [
     ax.add_patch(mpatches.Rectangle(rect[:2], rect[2], rect[3],
                  facecolor=C_BOX_WALL, edgecolor=C_OUT, linewidth=0.8, alpha=0.7, zorder=2))
 
-# Extraction flap (end face — solid wall, hinged at top)
+# End wall (opposite the pinhole — solid, carries the arm sleeves)
 ax.add_patch(mpatches.Rectangle((TOTAL_D - WALL_T, 0), WALL_T, BOX_W,
-             facecolor=C_FLAP, edgecolor=C_OUT, linewidth=1.0, alpha=0.25, zorder=2))
-# Hinge line at top of end face (in plan view, "top" = the far edge in Y)
-ax.plot([TOTAL_D - WALL_T, TOTAL_D], [BOX_W - WALL_T, BOX_W - WALL_T],
-        color=C_HINGE, lw=2.0, zorder=4)
+             facecolor=C_BOX_WALL, edgecolor=C_OUT, linewidth=1.0, alpha=0.4, zorder=2))
 
 # Panel upright in the window plane (film plane), shown as a line in plan view
 panel_plan_x = BOX_D + WALL_T  # at the junction (film plane)
@@ -578,7 +565,7 @@ ax.plot([panel_plan_x, panel_plan_x], [BOX_W / 2 - PANEL_W / 2, BOX_W / 2 + PANE
 ax.plot([panel_plan_x, panel_plan_x], [BOX_W / 2 - PAPER_W / 2, BOX_W / 2 + PAPER_W / 2],
         color=C_CL, lw=3.5, solid_capstyle="butt", zorder=5)
 
-# Armholes on end face (dashed circles at the extraction flap wall)
+# Armholes on the end wall (dashed circles at the arm-sleeve wall)
 arm_plan_cy1 = BOX_W / 2 - SLEEVE_SPACING / 2
 arm_plan_cy2 = BOX_W / 2 + SLEEVE_SPACING / 2
 endface_plan_x = TOTAL_D - WALL_T / 2
@@ -610,8 +597,8 @@ ax.text((panel_plan_x + TOTAL_D) / 2, BOX_W / 2 + 20, "PREP", ha="center", va="c
 # Face labels
 ax.text(WALL_T / 2 - 30, BOX_W/2, "PINHOLE\nFACE", ha="center", va="bottom",
         fontsize=FS_SM - 1, color=C_PINHOLE, fontweight="bold")
-ax.text(TOTAL_D - WALL_T / 2 + 40, BOX_W/2, "EXTRACTION\nFLAP", ha="center", va="bottom",
-        fontsize=FS_SM - 1, color=C_FLAP, fontweight="bold")
+ax.text(TOTAL_D - WALL_T / 2 + 40, BOX_W/2, "ARM-SLEEVE\nWALL", ha="center", va="bottom",
+        fontsize=FS_SM - 1, color=C_DIM, fontweight="bold")
 
 # Dimensions
 draw_dim_h(ax, 0, TOTAL_D, -55, f"Total  {TOTAL_D}mm  (36\")", offset=8, fs=FS_SM - 0.5)
@@ -631,7 +618,7 @@ leader(ax, panel_plan_x + PANEL_H / 2, BOX_W / 2 + PANEL_W / 2,
 ax.text(TOTAL_D / 2, BOX_W + 80, "PLAN VIEW — LOOKING DOWN",
         ha="center", va="bottom", fontsize=FS_MD + 1, fontweight="bold", color=C_OUT)
 ax.text(TOTAL_D / 2, BOX_W + 65,
-        "Two-box arrangement — panel = cardboard flap hinged at its bottom edge; arm sleeves + extraction flap on end face",
+        "Two-box arrangement (built flaps-up) — panel hinged at its bottom edge; arm sleeves on the end wall; extraction via the prep-box top flaps",
         ha="center", va="bottom", fontsize=FS_SM, color=C_DIM, style="italic")
 
 
@@ -689,11 +676,11 @@ ax.plot([work_x + 20, work_x + BOX_W_WORK - 20], [137, 137], color=C_OUT, lw=0.6
 
 steps = [
     "1.  Prepare Part A / B stock solutions (daylight OK).",
-    "2.  Pin dry paper to panel; load chemicals (flap open).",
+    "2.  Pin dry paper to panel; load chemicals (top flaps open).",
     "3.  Seal box; mix + coat via arm sleeves (dark).",
     "4.  Tack-dry, then fold panel up (dark, sealed).",
     "5.  Expose (sunlight through pinhole).",
-    "6.  Open extraction flap (daylight safe) — remove print.",
+    "6.  Open prep-box top flaps (daylight) — remove print.",
     "7.  Wash in the tray — refill 3× (daylight).",
 ]
 
@@ -709,7 +696,7 @@ ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
 ax_tb.axis("off")
 title_block(ax_tb, "SHEET 1 OF 1",
             drawing_title="TBS-002 MINI-TBS PROOF OF CONCEPT",
-            subtitle="Two-box camera — film-plane panel is a cardboard flap hinged at its bottom edge; arm sleeves + extraction flap on end face",
+            subtitle="Two-box camera (built flaps-up) — film-plane panel hinged at its bottom edge; arm sleeves on the end wall; extraction via the prep-box top flaps",
             scale_note="Approx 1:4 (views) / NTS (detail)",
             doc_id="TBS-002 · Mini-TBS")
 

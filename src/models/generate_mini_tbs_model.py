@@ -4,25 +4,26 @@
 """Generate the TBS-002 (Mini-TBS) classroom-camera SketchUp model (logical model: mini-tbs).
 
 The complete two-box cardboard pinhole camera with the CARDBOARD BOXES GHOSTED
-(translucent walls) so the interior reads through them, and THREE clickable dynamic
-components (click with the Interact tool — each toggles on click):
+(translucent walls) so the interior reads through them, the two boxes shown JOINED
+with grey tape at the seam, and THREE clickable dynamic components (Interact tool —
+each toggles on click):
 
   1. Shutter          — lifts off the pinhole to expose (roty about its top hinge).
-  2. Extraction flap  — the prep-box end face swings open for daylight print removal
-                        (roty about its top hinge); the arm sleeves ride with it.
+  2. Prep-box top flaps — the boxes are built flaps-UP; the print is removed in
+                        daylight by opening the prep box's OWN top flaps (rotx about
+                        their top edges), not a custom-cut wall.
   3. Film-plane panel — folds DOWN into the prep box to coat / UP to the exposure
                         position facing the pinhole (roty about its bottom hinge).
 
-Plus a translucent LIGHT CONE (pinhole → paper) on its own toggleable tag.
+Plus the arm sleeves (static, on the end wall — sealed coating access in the dark)
+and a translucent LIGHT CONE (pinhole → paper) on its own toggleable tag.
 
 Geometry is single-sourced from src/generators/mini_tbs_constants.py (shared with the
 2D diagram generate_mini_tbs_diagram.py) so the drawing and the model can't drift.
-Reuses the Overview helpers (generate_sketchup_model as ov): ruby_box / ruby_cylinder /
-component / colors / mm / license_note.
+Reuses the Overview helpers (generate_sketchup_model as ov).
 
 NOTE: --send builds into the ACTIVE SketchUp document (it clears it first). Open a NEW
-blank document before sending so another model isn't overwritten, then save the result
-as models/mini-tbs.skp.
+blank document before sending, then save the result as models/mini-tbs.skp.
 """
 import argparse
 import os
@@ -38,7 +39,7 @@ from mini_tbs_constants import (
     SLEEVE_D, SLEEVE_SPACING, PREP_D, TOTAL_D,
 )
 
-TAGS = ["Boxes", "Pinhole", "Shutter", "Film Panel", "Extraction Flap",
+TAGS = ["Boxes", "Pinhole", "Shutter", "Film Panel", "Prep Top Flaps",
         "Light Cone", "Labels"]
 
 # ── Derived positions (mm) ───────────────────────────────────────────────────
@@ -46,38 +47,76 @@ PH_Y = HINGE_Y_ABS + PANEL_H / 2   # 203 — pinhole / film-plane centre height 
 CY = BOX_W / 2                     # 228.5 — box centreline (width)
 SLEEVE_LEN = 130                   # mm — sleeve tube length shown
 GHOST_A = 0.16                     # ghost-wall alpha
+FLAP_T = 3                         # mm — cardboard flap thickness
 
-# ── Local palette (cardboard/paper/fabric; ov has the metals + film blue) ────
+# ── Local palette (cardboard/paper/fabric/tape; ov has the metals + film blue) ──
 C_CARD = "#D2B48C"     # cardboard tan (matches the 2D C_BOX)
 C_PAPER = "#FAF6E8"    # watercolor paper (cream)
 C_SHUTTER = "#3A3A3A"  # black card shutter
 C_SLEEVE = "#484060"   # black fabric arm sleeve
 C_LINER = "#2A2A2A"    # duct-tape drip liner
+C_TAPE = "#8A8A8A"     # grey duct tape (box joins + top seams)
 
 
 # ── Static geometry ──────────────────────────────────────────────────────────
 def ghost_walls():
     """The two boxes as one long enclosure — thin translucent cardboard walls so the
-    interior reads through them. Camera-side junction is open (window removed); the
-    end face is the (clickable) extraction flap, so neither is a wall here."""
+    interior reads through them. The camera-side junction is open (window removed); the
+    TOP is the box flaps (built separately); the far end is the arm-sleeve wall."""
     a = GHOST_A
-    parts = [
+    return '\n'.join([
         ov.ruby_box("Floor", 0, 0, -WALL_T, TOTAL_D, BOX_W, WALL_T,
                     color=C_CARD, alpha=a, both_sides=True),
-        ov.ruby_box("Ceiling", 0, 0, BOX_H, TOTAL_D, BOX_W, WALL_T,
-                    color=C_CARD, alpha=a * 0.6, both_sides=True),
         ov.ruby_box("Side wall (near)", 0, -WALL_T, 0, TOTAL_D, WALL_T, BOX_H,
                     color=C_CARD, alpha=a, both_sides=True),
         ov.ruby_box("Side wall (far)", 0, BOX_W, 0, TOTAL_D, WALL_T, BOX_H,
                     color=C_CARD, alpha=a, both_sides=True),
         ov.ruby_box("Pinhole wall", -WALL_T, 0, 0, WALL_T, BOX_W, BOX_H,
                     color=C_CARD, alpha=a, both_sides=True),
-        # optional duct-tape drip liner on the prep-box floor
         ov.ruby_box("Duct-tape drip liner (optional)",
                     BOX_D + WALL_T, 60, 0, PREP_D - 2 * WALL_T - 60, BOX_W - 120, 1,
                     color=C_LINER, alpha=0.55),
-    ]
+    ])
+
+
+def camera_top():
+    """Camera-box top: two flaps folded shut (light-tight) with a grey tape strip down
+    the seam. Boxes are built FLAPS-UP; the camera end stays sealed."""
+    hw = BOX_W / 2
+    a = GHOST_A * 0.9
+    return '\n'.join([
+        ov.ruby_box("Camera top flap (near)", 0, 0, BOX_H - FLAP_T, BOX_D, hw, FLAP_T,
+                    color=C_CARD, alpha=a, both_sides=True),
+        ov.ruby_box("Camera top flap (far)", 0, hw, BOX_H - FLAP_T, BOX_D, hw, FLAP_T,
+                    color=C_CARD, alpha=a, both_sides=True),
+        ov.ruby_box("Camera top tape (seam)", 0, hw - 25, BOX_H, BOX_D, 50, 1.5,
+                    color=C_TAPE, alpha=0.85),
+    ])
+
+
+def end_wall():
+    """Far end wall (opposite the pinhole) — solid, carrying the two arm sleeves that
+    give sealed coating access in the dark. Static (extraction is now the top flaps)."""
+    parts = [ov.ruby_box("End wall (arm-sleeve wall)", TOTAL_D - WALL_T, 0, 0,
+                         WALL_T, BOX_W, BOX_H, color=C_CARD, alpha=GHOST_A, both_sides=True)]
+    for cy in (CY - SLEEVE_SPACING / 2, CY + SLEEVE_SPACING / 2):
+        parts.append(ov.ruby_cylinder("Arm sleeve", TOTAL_D, cy, BOX_H / 2,
+                                      SLEEVE_D / 2, SLEEVE_LEN, color=C_SLEEVE,
+                                      alpha=0.9, axis="x"))
     return '\n'.join(parts)
+
+
+def join_tape():
+    """Grey duct tape wrapping the seam where the two boxes are joined (floor, both
+    sides, top) — shows the boxes taped into one enclosure."""
+    b = 50
+    x0, t = BOX_D - b / 2, 1.5
+    return '\n'.join([
+        ov.ruby_box("Join tape (floor)", x0, 0, -WALL_T - t, b, BOX_W, t, color=C_TAPE, alpha=0.9),
+        ov.ruby_box("Join tape (top)", x0, 0, BOX_H, b, BOX_W, t, color=C_TAPE, alpha=0.9),
+        ov.ruby_box("Join tape (near)", x0, -WALL_T - t, 0, b, t, BOX_H, color=C_TAPE, alpha=0.9),
+        ov.ruby_box("Join tape (far)", x0, BOX_W + WALL_T, 0, b, t, BOX_H, color=C_TAPE, alpha=0.9),
+    ])
 
 
 def pinhole_parts():
@@ -90,12 +129,8 @@ def pinhole_parts():
     ])
 
 
-# ── Dynamic components — each built LOCAL at its hinge, placed at the hinge, roty ─
+# ── Single-flap DCs (shutter, film panel) — built LOCAL at hinge, placed, roty ──
 def _flap_dc(var, disp, code, tag, geom, hinge, driver, label, angle_formula):
-    """Ruby for one clickable flap DC: geometry built with its origin ON the hinge line,
-    the instance placed back at the hinge, and roty driven 0→1 by a click (ANIMATE).
-    Rotating about roty pivots the whole assembly about that hinge edge (world = local,
-    since the instance is placed by pure translation)."""
     hx, hy, hz = (ov.mm(v) for v in hinge)
     return f'''
 # ═══ {disp} — DYNAMIC COMPONENT (click to move) ═══
@@ -121,32 +156,13 @@ end
 
 
 def shutter_dc():
-    # A card flap just outside the pinhole wall, hinged at its TOP edge; hangs down over
-    # the pinhole (closed). Local origin at the hinge; flap in -Z. roty lifts it up/out.
     geom = ov.ruby_box("Shutter flap", 0, -45, -90, 2, 90, 90, color=C_SHUTTER)
     hinge = (-WALL_T - 2, CY, PH_Y + 45)
     return _flap_dc("sh", "Shutter", "Shutter", "Shutter", geom, hinge,
                     "lift", "Lift (0 closed / 1 open)", "110*lift")
 
 
-def extraction_dc():
-    # The prep-box END face, hinged at its TOP edge; swings up/out. The two arm sleeves
-    # are mounted IN the flap (they ride with it). Local origin at the top hinge.
-    parts = [ov.ruby_box("Extraction flap", 0, 0, -BOX_H, WALL_T, BOX_W, BOX_H, color=C_CARD)]
-    for cy in (CY - SLEEVE_SPACING / 2, CY + SLEEVE_SPACING / 2):
-        parts.append(ov.ruby_cylinder("Arm sleeve", WALL_T, cy, -BOX_H / 2,
-                                      SLEEVE_D / 2, SLEEVE_LEN, color=C_SLEEVE,
-                                      alpha=0.9, axis="x"))
-    hinge = (TOTAL_D - WALL_T, 0, BOX_H)
-    return _flap_dc("ef", "Extraction flap", "ExtractionFlap", "Extraction Flap",
-                    '\n'.join(parts), hinge, "open",
-                    "Open (0 closed / 1 open)", "-110*open")
-
-
 def panel_dc():
-    # The cut-cardboard film-plane panel at the junction, hinged at its BOTTOM edge.
-    # Default UP = exposure (paper faces the pinhole); click folds it DOWN (+X) into the
-    # prep box for coating. Paper mounted on the camera-facing side, centred on the panel.
     parts = [
         ov.ruby_box("Panel board", -WALL_T, -PANEL_W / 2, 0, WALL_T, PANEL_W, PANEL_H,
                     color=C_CARD),
@@ -159,11 +175,63 @@ def panel_dc():
                     "Fold (0 exposure up / 1 coating down)", "90*fold")
 
 
+def prep_top_flaps_dc():
+    """The prep-box TOP flaps — the boxes are built flaps-up, so the finished print is
+    removed (in daylight) by opening the box's own two top flaps. One clickable DC: a
+    parent 'open' driver; each flap child rotates up (rotx) about its top edge via an
+    ancestor-reference formula (cargo-door pattern)."""
+    hw = BOX_W / 2
+    near = ov.ruby_box("Prep top flap (near)", 0, 0, -FLAP_T, PREP_D, hw, FLAP_T, color=C_CARD)
+    far = ov.ruby_box("Prep top flap (far)", 0, -hw, -FLAP_T, PREP_D, hw, FLAP_T, color=C_CARD)
+    px, py, pz = (ov.mm(v) for v in (BOX_D, 0, BOX_H))
+    fhx, fhy, fhz = (ov.mm(v) for v in (0, BOX_W, 0))
+    return f'''
+# ═══ Prep-box top flaps — DYNAMIC COMPONENT (click: open the top to extract the print) ═══
+pt_defn = model.definitions.add("Prep top flaps")
+ents = pt_defn.entities
+ptn_defn = model.definitions.add("Prep top flap (near)")
+ents = ptn_defn.entities
+{near}
+ptn_inst = pt_defn.entities.add_instance(ptn_defn, Geom::Transformation.new)
+ptn_inst.name = "Prep top flap (near)"
+ptf_defn = model.definitions.add("Prep top flap (far)")
+ents = ptf_defn.entities
+{far}
+ptf_inst = pt_defn.entities.add_instance(ptf_defn, Geom::Transformation.translation([{fhx}, {fhy}, {fhz}]))
+ptf_inst.name = "Prep top flap (far)"
+pt_inst = entities.add_instance(pt_defn, Geom::Transformation.translation([{px}, {py}, {pz}]))
+pt_inst.name = "Prep top flaps"
+pt_inst.layer = model.layers["Prep Top Flaps"]
+da = "dynamic_attributes"
+[pt_defn, pt_inst].each do |e|
+  e.set_attribute(da, "_name", "PrepTopFlaps")
+  e.set_attribute(da, "_lengthunits", "MILLIMETERS")
+  e.set_attribute(da, "open", 0.0)
+end
+pt_inst.set_attribute(da, "_open_access", "VIEW")
+pt_inst.set_attribute(da, "_open_label", "Open (0 closed / 1 open)")
+pt_inst.set_attribute(da, "onclick", 'ANIMATE("open", 0, 1)')
+pt_inst.set_attribute(da, "_onclick_access", "NONE")
+[ptn_defn, ptn_inst].each do |e|
+  e.set_attribute(da, "_name", "PrepTopFlapNear")
+  e.set_attribute(da, "_lengthunits", "MILLIMETERS")
+  e.set_attribute(da, "rotx", 0.0)
+end
+ptn_inst.set_attribute(da, "_rotx_formula", "95*PrepTopFlaps!open")
+[ptf_defn, ptf_inst].each do |e|
+  e.set_attribute(da, "_name", "PrepTopFlapFar")
+  e.set_attribute(da, "_lengthunits", "MILLIMETERS")
+  e.set_attribute(da, "rotx", 0.0)
+end
+ptf_inst.set_attribute(da, "_rotx_formula", "-95*PrepTopFlaps!open")
+'''
+
+
 def light_cone_ruby():
     """A translucent pyramid from the pinhole (apex) to the paper (base, exposure
     position). Built inline as a top-level group on the Light Cone tag."""
     apex = (0, CY, PH_Y)
-    px = BOX_D - WALL_T - 1        # paper front face, exposure position
+    px = BOX_D - WALL_T - 1
     base = [(px, CY - PAPER_W / 2, PH_Y - PAPER_H / 2),
             (px, CY + PAPER_W / 2, PH_Y - PAPER_H / 2),
             (px, CY + PAPER_W / 2, PH_Y + PAPER_H / 2),
@@ -189,22 +257,22 @@ lge.grep(Sketchup::Face).each {{ |f| f.material = lcm; f.back_material = lcm }}
 '''
 
 
-# ── "Labeled" scene callouts (project rule: every .skp gets a Labeled scene) ──
-# (instance name, text, leader Δx, Δy, Δz mm). Camera looks from −X/−Y/+Z, so
-# Δy<0 / Δz>0 pulls a callout OUT toward the viewer; Δx spreads them apart.
+# ── "Labeled" scene callouts. Camera looks from −X/−Y/+Z, so Δy<0 / Δz>0 pulls a
+#    callout OUT toward the viewer; Δx spreads them apart. ──
 LABELS = [
     ("Pinhole", f"PINHOLE  Ø{PH_D}mm  (f/{F_NO})", -200, -300, 250),
     ("Shutter", "SHUTTER\n(click: lift to expose)", -300, -350, 350),
     ("Film-plane panel", "FILM-PLANE PANEL\n(click: fold down to coat / up to expose)", 120, -450, 450),
-    ("Extraction flap", "EXTRACTION FLAP\n(click: swing open — daylight print removal)", 400, -300, 300),
-    ("Cardboard boxes (ghost)", "TWO CARDBOARD BOXES\n(camera + prep — ghosted)", -120, 520, 560),
+    ("Prep top flaps", "PREP-BOX TOP FLAPS\n(boxes built flaps-up; click: open\nto remove the print in daylight)", 250, -300, 500),
+    ("Cardboard boxes (ghost)", "TWO CARDBOARD BOXES\n(joined with grey tape — ghosted)", -120, 520, 560),
 ]
-# Point-anchored (x,y,z,text,Δx,Δy,Δz) — for parts that ride inside a DC.
 POINT_LABELS = [
     (TOTAL_D + SLEEVE_LEN, CY - SLEEVE_SPACING / 2, BOX_H / 2,
-     "ARM SLEEVES\n(reach in to mix + coat in the dark)", 300, -200, 250),
+     "ARM SLEEVES (end wall)\n(reach in to mix + coat in the dark)", 300, -200, 250),
     (BOX_D / 2, CY, PH_Y,
      "LIGHT CONE\n(pinhole → paper)", -150, -420, 300),
+    (BOX_D, CY, -WALL_T,
+     "GREY TAPE\n(joins the two boxes)", -100, 400, -250),
 ]
 
 
@@ -230,13 +298,15 @@ def labels_ruby():
 def generate_ruby():
     body = '\n'.join([
         ov.component("Cardboard boxes (ghost)", "Boxes", ghost_walls()),
+        ov.component("Camera-box top (taped shut)", "Boxes", camera_top()),
+        ov.component("End wall + arm sleeves", "Boxes", end_wall()),
+        ov.component("Box-join tape", "Boxes", join_tape()),
         ov.component("Pinhole", "Pinhole", pinhole_parts()),
     ])
     tags_ruby = '\n'.join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
 
-    # scenes: name, visible tags, (unused target) None, standoff 0 = zoom-extents
-    hardware = ["Boxes", "Pinhole", "Shutter", "Film Panel", "Extraction Flap"]
+    hardware = ["Boxes", "Pinhole", "Shutter", "Film Panel", "Prep Top Flaps"]
     scenes = [("Assembled", hardware, None, 0),
               ("Light path", hardware + ["Light Cone"], None, 0),
               ("Labeled", hardware + ["Light Cone", "Labels"], None, 0)]
@@ -268,7 +338,7 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── Clickable dynamic components ──
 {shutter_dc()}
 {panel_dc()}
-{extraction_dc()}
+{prep_top_flaps_dc()}
 
 # ── Light cone (translucent teaching aid) ──
 {light_cone_ruby()}
@@ -305,7 +375,7 @@ model.commit_operation
 # Register the DCs AFTER committing (redraw_with_undo opens its own operation).
 if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
   cls = $dc_observers.get_latest_class
-  [sh_inst, fp_inst, ef_inst].each {{ |di| cls.redraw_with_undo(di) rescue nil }} if cls
+  [sh_inst, fp_inst, pt_inst].each {{ |di| cls.redraw_with_undo(di) rescue nil }} if cls
 end
 
 {{ success: true, model: "mini-tbs", scenes: model.pages.count,

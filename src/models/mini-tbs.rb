@@ -400,18 +400,15 @@ ptf_inst.set_attribute(da, "_rotx_formula", "-95*PrepTopFlaps!open")
 
 # ── Light cone (translucent teaching aid) ──
 
-# ── Light cone (pinhole → paper) — translucent teaching aid, own tag ──
+# ── Light cone (pinhole → circular base at the film plane) — translucent teaching aid ──
 lc = entities.add_group
 lc.name = "Light cone"
 lc.layer = model.layers["Light Cone"]
 lge = lc.entities
 apx = Geom::Point3d.new(0.mm, 228.5.mm, 203.mm)
-p0 = Geom::Point3d.new(452.mm, 50.5.mm, 76.mm); p1 = Geom::Point3d.new(452.mm, 406.5.mm, 76.mm); p2 = Geom::Point3d.new(452.mm, 406.5.mm, 330.mm); p3 = Geom::Point3d.new(452.mm, 50.5.mm, 330.mm)
-lge.add_face(apx, p0, p1)
-lge.add_face(apx, p1, p2)
-lge.add_face(apx, p2, p3)
-lge.add_face(apx, p3, p0)
-lge.add_face(p0, p1, p2, p3)
+base = [Geom::Point3d.new(452.mm, 425.5.mm, 203.mm), Geom::Point3d.new(452.mm, 421.71.mm, 241.43.mm), Geom::Point3d.new(452.mm, 410.5.mm, 278.39.mm), Geom::Point3d.new(452.mm, 392.3.mm, 312.45.mm), Geom::Point3d.new(452.mm, 367.8.mm, 342.3.mm), Geom::Point3d.new(452.mm, 337.95.mm, 366.8.mm), Geom::Point3d.new(452.mm, 303.89.mm, 385.mm), Geom::Point3d.new(452.mm, 266.93.mm, 396.21.mm), Geom::Point3d.new(452.mm, 228.5.mm, 400.mm), Geom::Point3d.new(452.mm, 190.07.mm, 396.21.mm), Geom::Point3d.new(452.mm, 153.11.mm, 385.mm), Geom::Point3d.new(452.mm, 119.05.mm, 366.8.mm), Geom::Point3d.new(452.mm, 89.2.mm, 342.3.mm), Geom::Point3d.new(452.mm, 64.7.mm, 312.45.mm), Geom::Point3d.new(452.mm, 46.5.mm, 278.39.mm), Geom::Point3d.new(452.mm, 35.29.mm, 241.43.mm), Geom::Point3d.new(452.mm, 31.5.mm, 203.mm), Geom::Point3d.new(452.mm, 35.29.mm, 164.57.mm), Geom::Point3d.new(452.mm, 46.5.mm, 127.61.mm), Geom::Point3d.new(452.mm, 64.7.mm, 93.55.mm), Geom::Point3d.new(452.mm, 89.2.mm, 63.7.mm), Geom::Point3d.new(452.mm, 119.05.mm, 39.2.mm), Geom::Point3d.new(452.mm, 153.11.mm, 21.mm), Geom::Point3d.new(452.mm, 190.07.mm, 9.79.mm), Geom::Point3d.new(452.mm, 228.5.mm, 6.mm), Geom::Point3d.new(452.mm, 266.93.mm, 9.79.mm), Geom::Point3d.new(452.mm, 303.89.mm, 21.mm), Geom::Point3d.new(452.mm, 337.95.mm, 39.2.mm), Geom::Point3d.new(452.mm, 367.8.mm, 63.7.mm), Geom::Point3d.new(452.mm, 392.3.mm, 93.55.mm), Geom::Point3d.new(452.mm, 410.5.mm, 127.61.mm), Geom::Point3d.new(452.mm, 421.71.mm, 164.57.mm)]
+lge.add_face(base)                                  # circular base at the film plane
+base.each_with_index { |pt, i| lge.add_face(apx, pt, base[(i + 1) % base.length]) }  # lateral surface
 lcm = model.materials["Light cone"] || model.materials.add("Light cone")
 lcm.color = Sketchup::Color.new(74, 144, 217)
 lcm.alpha = 0.18

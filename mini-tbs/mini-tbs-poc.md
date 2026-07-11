@@ -6,8 +6,6 @@
 
 A classroom-ready design for teaching **pinhole photography** — its process and its craft — to students from elementary school through college. TBS-002 is the hands-on companion to [The Big Shoebox Project](../index.md) (TBS-001): the same optics, the same cyanotype chemistry, the same light-to-image process, scaled from a 20-foot shipping container down to two cardboard moving boxes. In one class period plus a sunny afternoon, a class builds a working camera and every student takes home a real photograph — a deep Prussian-blue cyanotype print on watercolor paper, about 10 × 14 inches. No darkroom, no enlarger, no film.
 
-![TBS-002 design — two-box camera with a hinged film-plane panel cut from the box wall, plan view, and pinhole face](../assets/mini-tbs-sheet1.png)
-
 <!-- brochure:skip -->
 **Interactive 3D model** — the two ghosted cardboard boxes joined with grey tape, the pinhole and its light cone, and three clickable parts: the **shutter** (lifts to expose), the **film-plane panel** (folds down to coat / up to expose), and the **prep-box top flaps** (open to remove the print). Drag to orbit, scroll to zoom.
 
@@ -18,6 +16,8 @@ A classroom-ready design for teaching **pinhole photography** — its process an
   <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/3d-models/tbs-002-4dc2aa302f884cb192da7c57725d4bf2?utm_medium=embed&utm_campaign=share-popup&utm_content=4dc2aa302f884cb192da7c57725d4bf2" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">TBS-002</a> by <a href="https://sketchfab.com/alvin91403?utm_medium=embed&utm_campaign=share-popup&utm_content=4dc2aa302f884cb192da7c57725d4bf2" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">alvin91403</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=4dc2aa302f884cb192da7c57725d4bf2" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p>
 </div>
 <!-- brochure:endskip -->
+
+![TBS-002 design — two-box camera with a hinged film-plane panel cut from the box wall, plan view, and pinhole face](../assets/mini-tbs-sheet1.png)
 
 The camera is two U-Haul Medium boxes joined end-to-end: a sealed **camera box** (the pinhole, and the dark interior where the image forms) and a light-sealed **prep box** (the coating workspace). The film plane is a panel cut from the wall between the two boxes, hinged along its bottom edge: it folds down into the prep box to hold the paper for coating, then folds up to stand facing the pinhole during exposure. The prep box's end face carries two arm sleeves — students reach in to coat the paper in the dark without opening the box — and the finished print is lifted out in daylight through the box's own **top flaps** (the boxes are built flaps-up, and joined with grey tape). The camera *is* its own darkroom, so the whole activity happens in a normal classroom.
 

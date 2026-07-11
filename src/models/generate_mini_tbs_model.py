@@ -80,6 +80,29 @@ def ghost_walls():
     ])
 
 
+def internal_walls():
+    """The two internal junction walls the film-plane panel is cut from — the camera box's
+    back wall (window removed) and the prep box's front wall (the panel is the hinged flap).
+    Each is drawn as a border frame around the panel window, a touch more opaque than the
+    ghost shell so the hinge panel reads as sitting between them."""
+    a = 0.45   # less translucent than the 0.16 ghost, still see-through (not solid)
+    y0, y1 = CY - PANEL_W / 2, CY + PANEL_W / 2          # window sides (Y)
+    z0, z1 = HINGE_Y_ABS, HINGE_Y_ABS + PANEL_H          # window bottom/top (Z)
+    parts = []
+    for wx, nm in [(BOX_D - WALL_T, "Camera junction wall"), (BOX_D, "Prep junction wall")]:
+        parts += [
+            ov.ruby_box(f"{nm} (below window)", wx, 0, 0, WALL_T, BOX_W, z0,
+                        color=C_CARD, alpha=a, both_sides=True),
+            ov.ruby_box(f"{nm} (above window)", wx, 0, z1, WALL_T, BOX_W, BOX_H - z1,
+                        color=C_CARD, alpha=a, both_sides=True),
+            ov.ruby_box(f"{nm} (left of window)", wx, 0, z0, WALL_T, y0, z1 - z0,
+                        color=C_CARD, alpha=a, both_sides=True),
+            ov.ruby_box(f"{nm} (right of window)", wx, y1, z0, WALL_T, BOX_W - y1, z1 - z0,
+                        color=C_CARD, alpha=a, both_sides=True),
+        ]
+    return '\n'.join(parts)
+
+
 def camera_top():
     """Camera-box top: two flaps folded shut (light-tight) with a grey tape strip down
     the seam. Boxes are built FLAPS-UP; the camera end stays sealed."""
@@ -301,6 +324,7 @@ def labels_ruby():
 def generate_ruby():
     body = '\n'.join([
         ov.component("Cardboard boxes (ghost)", "Boxes", ghost_walls()),
+        ov.component("Junction walls (panel frame)", "Boxes", internal_walls()),
         ov.component("Camera-box top (taped shut)", "Boxes", camera_top()),
         ov.component("End wall + arm sleeves", "Boxes", end_wall()),
         ov.component("Box-join tape", "Boxes", join_tape()),

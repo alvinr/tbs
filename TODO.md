@@ -35,9 +35,13 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
 ---
 
 ## Scheduled
-- [ ] **Aug 2026** — re-price every part in `parts.py` against current supplier listings (April-2026
-  indicative basis). Edit the low/high band → `parts.py --inject` cascades; `costing.py --check-registry`
-  re-proves. (Reminder block lives atop `parts.py`.)
+- [ ] **Verify spec-driven parts (identity + price)** — 55 rows from JS-/account-gated suppliers
+  (McMaster/Roton/Grainger/…) need a human to pin the exact SKU, product URL, fit-critical dim
+  (bore/thread/Ø), and current price — the automated web pass can't read those suppliers. Also fixes
+  4 SKU↔supplier mismatches + 12 SKUs missing a URL (surfaced by the `parts identity` lint advisory).
+  Workflow: `build_parts_worklist.py` → fill `parts-worklist.csv` (new_* cols, merges on re-run) →
+  `apply_parts_csv.py parts-worklist.csv` → `parts.py --inject` + `costing.py --inject` + `lint.py`.
+  Alvin fills at his own cadence from logged-in supplier sessions. (Reminder block atop `parts.py`.)
 
 ## Design / 3D (deferred)
 - [x] **lint blind spot — missing-cascade only diffs the working tree — RESOLVED.** Root cause: `warn_missing_cascade`

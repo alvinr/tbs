@@ -17,11 +17,18 @@ parts.py is the PROCUREMENT SOURCE OF RECORD (firm low/high item costs); costing
 layer (mid + budgeting bands) on top. Every system here must sum to its costing reconcile target.
 
 # ─────────────────────────────────────────────────────────────────────────────────────────────
-# TODO (AUGUST 2026): RE-PRICE EVERY PART against current supplier listings — not just the timber-ply
-# section. The cost bands below are an April-2026 basis (indicative low/high estimates, pre-quote);
-# refresh them all, mark confirmed lines, and re-run `parts.py --inject` + `lint.py`. A cost change
-# cascades automatically: edit the band here → the master/report/cost blocks regenerate and the
-# costing reconciliation gate proves consistency. (Update the master header's "Basis: April 2026" too.)
+# TODO (ONGOING): VERIFY EVERY SPEC-DRIVEN PART's identity + price against current supplier listings.
+# The bands below are an April-2026 basis (indicative low/high, pre-quote), and many hardware rows also
+# lack a verified identity — no part number, the fit-critical dim (bore/thread/Ø) buried in `spec`, and
+# a few carry a SKU whose format doesn't match the named supplier (a McMaster number under a Grainger
+# row). Those can't be priced or ordered as-is. The `parts identity` lint advisory surfaces them.
+# Workflow for the JS-/account-gated suppliers the web pass can't read (McMaster/Roton/Grainger/…):
+#   1. python3 src/generators/build_parts_worklist.py   → (re)generates parts-worklist.csv (merges fills)
+#   2. fill the new_* columns from your logged-in supplier session (SKU, URL, fit dims, price)
+#   3. python3 src/generators/apply_parts_csv.py parts-worklist.csv   → writes them back here, scoped
+#   4. python3 src/generators/parts.py --inject + costing.py --inject + lint.py   → cascade + prove
+# A band edit cascades automatically (master/report/cost blocks regenerate; costing reconciliation
+# gate proves consistency). Update the master header's "Basis:" line when the refresh completes.
 # ─────────────────────────────────────────────────────────────────────────────────────────────
 """
 from __future__ import annotations

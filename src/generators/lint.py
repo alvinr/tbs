@@ -150,6 +150,35 @@ def warn_parts_reconcile() -> tuple[bool, list[str]]:
     return (not errs), (errs or [f"parts registry reconciles with costing ({n} system(s) migrated)"])
 
 
+# McMaster SKU format, e.g. 6440K64 — digits, one uppercase letter, digits.
+_MM_SKU = re.compile(r"^\d+[A-Z]\d+$")
+
+
+def warn_parts_identity() -> tuple[bool, list[str]]:
+    """Procurement-identity integrity: a part_no must belong to its named supplier, and any part
+    carrying a SKU must carry an explicit URL (the worklist auto-guesses mcmaster.com/<sku>
+    otherwise — which fabricates a wrong, often dead link on a non-McMaster row). Surfaced by
+    build_parts_worklist.py; this keeps new violations from creeping in. Advisory while the
+    worklist is being cleared."""
+    try:
+        import parts
+    except Exception as e:
+        return True, [f"parts registry not loaded ({e})"]
+    mismatch, no_url = [], []
+    for p in parts.PARTS:
+        pn, url = (p.part_no or "").strip(), (p.url or "").strip()
+        if pn and _MM_SKU.match(pn) and "McMaster" not in (p.supplier or ""):
+            mismatch.append(f"{p.key}: McMaster-format SKU {pn} but supplier is {p.supplier!r}")
+        if pn and not url:
+            no_url.append(f"{p.key}: has SKU {pn} but no url (auto-guessed, unverified)")
+    msgs = mismatch + no_url
+    if not msgs:
+        return True, ["every SKU matches its supplier and carries an explicit URL"]
+    return False, [f"{len(mismatch)} SKU↔supplier mismatch, {len(no_url)} SKU-without-URL "
+                   f"(run build_parts_worklist.py → fill parts-worklist.csv → apply_parts_csv.py):",
+                   *msgs]
+
+
 # ── WARNING: markdown table arithmetic (every declared TOTAL = sum of its column) ──
 _MONEY = re.compile(r"^\*{0,2}~?\$?([\d,]+)\*{0,2}$")
 
@@ -739,6 +768,7 @@ WARNINGS = [
     ("editorial-review list covers every published doc", warn_editorial_list),
     ("all-diagrams gallery covers every generated diagram PNG", warn_gallery_coverage),
     ("parts registry reconciles with costing (migrated systems)", warn_parts_reconcile),
+    ("parts identity (SKU matches supplier + has URL)", warn_parts_identity),
     ("dependencies.yml valid (script→output map matches reality)", warn_deps_valid),
     ("table arithmetic (TOTAL = sum of column)", warn_arithmetic),
     ("missing cascade (constant changed, outputs not regenerated)", warn_missing_cascade),

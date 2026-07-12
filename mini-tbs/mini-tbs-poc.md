@@ -324,6 +324,17 @@ The armholes are on the prep box end face — the operator's face. They are cent
 4. **Wrist seal:** When in use, insert your arms through the sleeves and cinch heavy-duty rubber bands or elastic hair ties around your forearms to seal the openings. The cinch point should be snug enough to block light but not restrict circulation.
 5. **Test:** Insert your arms through the sleeves and verify you can reach the film-plane panel and handle the paper and pins with both hands. In a darkened room, shine a flashlight at the armhole from outside — check for any light leaks around the tape seal rings. Re-tape any gaps.
 
+**Alternative — glovebox sleeves (built and tested).** Instead of fabric sleeves cinched with rubber bands, build a sealed **glovebox**: the gloves are attached to the sleeves, so no one needs their own gloves and there is no wrist band to fuss with — and a closed glove seals the hand opening more reliably than a rubber-band cinch.
+
+*Materials:* a heavy-duty **black contractor bag** (3-mil, opaque), one pair of **extra-large rubber gloves**, black duct tape.
+
+1. Cut two rectangles from the bag; roll each into a tube and duct-tape the long seam — two opaque arm tubes (~18" long).
+2. **Glove end (goes inside the box):** slip a rubber glove's cuff over one end of each tube and duct-tape it sealed. Your hand pushes into the glove.
+3. **Box end (outside):** thread the tube out through the armhole, cut ~1-inch slits around the outer end so it fans into tabs, and duct-tape the fanned tabs flat to the **outside** of the box around the armhole.
+4. **Use:** push your arms into the tubes and into the gloves, and work sealed inside — exactly like a lab glovebox.
+
+Use a **black, opaque** bag (a translucent one leaks light), double-tape the seams, and check the gloves for pinholes before each session — they are now the chemical PPE. This removes the wrist rubber bands and the per-session disposable gloves entirely.
+
 ### 9.7 Print Extraction — the Prep-Box Top Flaps
 
 Because the boxes are built **flaps-up** (§9.1), the prep box's own **top flaps** are the extraction opening — no custom-cut wall is needed. After exposure the cyanotype print is no longer UV-sensitive and can be handled in full daylight, so the top flaps simply fold open to lift the print out.
@@ -364,7 +375,7 @@ The panel is then coated in place and folded up when dry (§11).
 Cyanotype is one of the lowest-hazard photographic chemistries, but it is still chemistry — read this before any class handles it, and match the handling to the grade band in *What Students Learn*.
 
 - **Who handles what.** The teacher weighs and dissolves the dry powders and mixes the stock solutions; students handle only the **diluted working solution** (and only from middle school up). For elementary classes, the teacher does all chemistry and students coat, expose, and wash.
-- **PPE.** Nitrile gloves and eye protection whenever the powders or solutions are handled; the finished, washed print is inert and safe to touch bare-handed.
+- **PPE.** Nitrile gloves and eye protection whenever the powders or solutions are handled; the finished, washed print is inert and safe to touch bare-handed. If you build the glovebox-sleeve alternative (§9.6), its integral gloves are the in-box coating PPE — keep one nitrile pair for the teacher's dry-stock mixing.
 - **Potassium ferricyanide** is low-toxicity but must **never** be mixed with acids (that can release hydrogen cyanide) — keep it away from acidic cleaners and vinegar. It is an eye/skin irritant as a powder.
 - **Omit ammonium dichromate entirely in a school setting** — it is a Category 1A carcinogen (see the note below). The prints work well without it.
 - **Ventilation and disposal.** Mix in a ventilated area. The blue-green wash water is dilute and non-toxic but should not go down a storm drain in quantity; dilute heavily and dispose per your district's guidance.

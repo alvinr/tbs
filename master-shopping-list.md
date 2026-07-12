@@ -144,7 +144,7 @@ indicative low–high estimates — get quotes before ordering.
 | Battery main disconnect — Blue Sea m-Series 300A isolator | 1 ea | West Marine | electrical | $33–$42 |
 | Battery terminal covers (pair), insulating boots | 1 pair | Amazon | electrical | $10 |
 | Blue Sea 5026 fuse block, 12-circuit ST-blade | 1 ea | Amazon | electrical | $55–$77 |
-| Brady M210 wire label kit | 1 ea | Amazon | electrical | $199–$211 |
+| Brady M210 wire label kit | 1 ea | Cable Master | electrical | $199–$211 |
 | Cable grommets / glands — steel-shell penetrations | 1 lot | McMaster-Carr | electrical | $15 |
 | Cooler external power cable | 1 ea | Waytek Wire | ventilation | $20 |
 | Copper ground stake, 8ft × ⅝" dia | 1 ea | Home Depot | electrical | $25–$30 |
@@ -287,20 +287,20 @@ indicative low–high estimates — get quotes before ordering.
 | 3-way diverter valve 1/2" FNPT | 1 ea | Amazon | water | $12–$22 |
 | 3/4" LDPE irrigation poly pipe, 15 ft | 1 ea | Amazon | spray | $10 |
 | 3/4" SDR-11 HDPE pipe | 2 stick | Ferguson | water | $20–$30 |
-| Banjo EL100-90 elbow 1" NPT | 4 ea | Amazon | water | $16–$24 |
-| Banjo TEE100 equal tee 1" NPT | 3 ea | Amazon | water | $15–$21 |
-| Banjo TEE100 equal tee, 1" HDPE NPT | 1 ea | Amazon | water | $5–$7 |
-| Banjo V050FP ball valve 1/2" FNPT | 3 ea | Amazon | water | $90–$135 |
-| Banjo V050FP ball valve 1/2" FNPT | 1 ea | Amazon | water | $30–$45 |
-| Banjo V050FP ball valve 1/2" FNPT | 2 ea | Amazon | water | $60–$90 |
-| Banjo V100FP ball valve 1" FNPT | 6 ea | Amazon | water | $198–$330 |
+| Banjo EL100-90 elbow 1" NPT | 4 ea | Barn Door Ag | water | $16–$24 |
+| Banjo TEE100 equal tee 1" NPT | 3 ea | Barn Door Ag | water | $15–$21 |
+| Banjo TEE100 equal tee, 1" HDPE NPT | 1 ea | Barn Door Ag | water | $5–$7 |
+| Banjo V050FP ball valve 1/2" FNPT | 3 ea | Barn Door Ag | water | $90–$135 |
+| Banjo V050FP ball valve 1/2" FNPT | 1 ea | Barn Door Ag | water | $30–$45 |
+| Banjo V050FP ball valve 1/2" FNPT | 2 ea | Barn Door Ag | water | $60–$90 |
+| Banjo V100FP ball valve 1" FNPT | 6 ea | Barn Door Ag | water | $198–$330 |
 | Barbed tees, tube into the side poly manifold | 7 ea | Amazon | spray | $10 |
 | Bulkhead fitting 2" NPT (304 SS) | 3 ea | McMaster-Carr | water | $75–$120 |
 | Distribution manifold, 1/2" → 7 barb outlets | 1 ea | Amazon | spray | $12 |
 | Flat-fan irrigation spray nozzles, barbed | 26 ea | Amazon | spray | $30–$50 |
 | pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | Amazon | water | $10–$18 |
 | pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | Amazon | water | $10–$18 |
-| S60×6 to 1" NPT adapter | 8 ea | Amazon | water | $64–$120 |
+| S60×6 to 1" NPT adapter | 8 ea | JME Sales | water | $64–$120 |
 | ½" HDPE pipe (tap relocation) | 1 lot | Irrigation supply | shelf | $10 |
 | **plumbing-fittings subtotal** | | | | **$948–$1,505** |
 
@@ -386,7 +386,7 @@ indicative low–high estimates — get quotes before ordering.
 | 6-mil black LDPE sheet, 10 ft × 8 ft | 1 ea | Home Depot | tray | $8 |
 | 6-mil black LDPE sheeting | 1 roll | Home Depot | water | $66–$70 |
 | 6-mil black poly sheeting | 1 roll | Home Depot | film | $66–$70 |
-| Apera Instruments AI311 PH60 pH meter | 1 ea | Amazon | water | $100–$110 |
+| Apera Instruments AI311 PH60 pH meter | 1 ea | Apera Instruments | water | $100–$110 |
 | Chemical-resistant labels (GHS) | 1 pack | Amazon | water | $20 |
 | Citric acid, food grade, 5 lb | 2 bag | Amazon | water | $28 |
 | Nitrile gloves, box of 100 | 2 box | Amazon | water | $18–$40 |
@@ -397,18 +397,18 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Big Blue filter housing 4.5"×20" (separate) | 3 ea | Amazon | water | $114–$186 |
-| CTO carbon block cartridge 4.5"×20" | 2 ea | Amazon | water | $32–$60 |
+| Big Blue filter housing 4.5"×20" (separate) | 3 ea | AllFilters | water | $114–$186 |
+| CTO carbon block cartridge 4.5"×20" | 2 ea | RonAqua | water | $32–$60 |
 | HDPE spacer blocks 25mm (filter skid) | 1 lot | McMaster-Carr | water | $12–$22 |
 | IBC tote (1,000 L caged) | 4 ea | Container Exchanger | water | $320–$600 |
-| KDF-55 heavy-metal cartridge 4.5"×20" | 1 ea | Amazon | water | $65–$95 |
+| KDF-55 heavy-metal cartridge 4.5"×20" | 1 ea | FilterWay | water | $65–$95 |
 | MPP 5-micron sediment cartridge 4.5"×20" | 2 ea | Amazon | water | $24–$40 |
-| SeaFlo accumulator (0.75 L) | 1 ea | Amazon | water | $30–$41 |
-| Shurflo 2088-554-144 pump (P-01 Blue supply) | 1 ea | Amazon | water | $80–$89 |
-| Shurflo 2088-554-144 pump (P-02 filter loop) | 1 ea | Amazon | water | $80–$89 |
-| Shurflo 2088-554-144 pump (P-03 waste evacuation) | 1 ea | Amazon | water | $80–$89 |
-| Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 1 ea | Amazon | water | $80–$89 |
-| Shurflo 2088-554-144 pump (P-05 Brown drain) | 1 ea | Amazon | water | $80–$89 |
+| SeaFlo accumulator (0.75 L) | 1 ea | Environmental Marine | water | $30–$41 |
+| Shurflo 2088-554-144 pump (P-01 Blue supply) | 1 ea | Fresh Water Systems | water | $80–$89 |
+| Shurflo 2088-554-144 pump (P-02 filter loop) | 1 ea | Fresh Water Systems | water | $80–$89 |
+| Shurflo 2088-554-144 pump (P-03 waste evacuation) | 1 ea | Fresh Water Systems | water | $80–$89 |
+| Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 1 ea | Fresh Water Systems | water | $80–$89 |
+| Shurflo 2088-554-144 pump (P-05 Brown drain) | 1 ea | Fresh Water Systems | water | $80–$89 |
 | Slotted steel angle frame 25×25×3mm (filter skid) | 1 lot | Home Depot | water | $25–$45 |
 | Steel U-bracket (filter housing) | 3 ea | McMaster-Carr | water | $21–$30 |
 | **water-equipment subtotal** | | | | **$1,043–$1,564** |
@@ -418,12 +418,12 @@ indicative low–high estimates — get quotes before ordering.
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
 | containermgt.com | 1 | container | $2,000–$3,500 |
-| Amazon | 77 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,626–$3,450 |
 | Local fab | 17 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,961–$3,181 |
 | McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $1,850–$2,842 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,301–$1,638 |
+| Amazon | 58 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,208–$1,530 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
 | Photographers' Formulary | 2 | chemistry-reagents | $1,195 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
@@ -431,9 +431,11 @@ indicative low–high estimates — get quotes before ordering.
 | Renogy | 3 | electrical-power | $833–$975 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
+| Barn Door Ag | 7 | plumbing-fittings | $414–$652 |
 | Automation Overstock | 4 | bearings-motion | $620 |
 | Container Exchanger | 1 | water-equipment | $320–$600 |
 | Grimco | 1 | plastics-sheet | $510 |
+| Fresh Water Systems | 5 | water-equipment | $400–$445 |
 | West Marine | 2 | electrical-distribution | $313–$438 |
 | Roton Products | 2 | bearings-motion | $428 |
 | altE Store | 2 | electrical-power | $345–$410 |
@@ -441,19 +443,26 @@ indicative low–high estimates — get quotes before ordering.
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | Victron | 1 | electrical-power | $153–$275 |
 | Hessaire | 1 | ducting-ventilation | $185–$230 |
+| Cable Master | 1 | electrical-distribution | $199–$211 |
 | Waytek Wire | 7 | electrical-distribution | $208 |
 | Bearing World | 1 | bearings-motion | $110–$190 |
+| AllFilters | 1 | water-equipment | $114–$186 |
 | Bostick & Sullivan | 1 | chemistry-reagents | $158 |
 | Lenox Laser | 1 | stainless-sheet | $50–$150 |
 | Grainger | 1 | bearings-motion | $140 |
 | Ferguson | 4 | plumbing-fittings | $74–$120 |
+| JME Sales | 1 | plumbing-fittings | $64–$120 |
+| Apera Instruments | 1 | tools-safety | $100–$110 |
 | Southco | 1 | fasteners-hardware | $76–$104 |
+| FilterWay | 1 | water-equipment | $65–$95 |
 | AutomationDirect | 3 | electrical-distribution, electrical-power | $75–$95 |
 | B&H Photo | 1 | fabric-textile | $95 |
 | Hardware store | 2 | adhesives-finishes | $42–$62 |
+| RonAqua | 1 | water-equipment | $32–$60 |
 | Polycase | 1 | electrical-distribution | $60 |
 | VXB | 1 | bearings-motion | $40–$60 |
 | Steel service center | 1 | steel-structural | $30–$50 |
+| Environmental Marine | 1 | water-equipment | $30–$41 |
 | Powerwerx | 1 | electrical-distribution | $40 |
 | Blue Sea | 2 | electrical-distribution | $30 |
 | Irrigation supply | 1 | plumbing-fittings | $10 |

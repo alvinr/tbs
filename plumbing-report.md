@@ -422,15 +422,15 @@ hardware are sourced there and in the IBC stacking frame line.
 <!-- BEGIN parts:corridor-plumbing-panel -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [Shurflo 2088-554-144 pump (P-01 Blue supply)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Amazon | $80–$89 |
-| Shurflo 2088-554-144 pump (P-03 waste evacuation) | 12VDC, 3.5 GPM, 45 PSI; empties IBC-4 residual below X4 (~120L) | 1 ea | Amazon | $80–$89 |
-| Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 12VDC, 3.5 GPM, 45 PSI; tray drain to IBC-3 (~900mm lift) | 1 ea | Amazon | $80–$89 |
-| Shurflo 2088-554-144 pump (P-05 Brown drain) | 12VDC, 3.5 GPM, 45 PSI; evacuates IBC-3 (Brown) residual to the X3 end-wall port | 1 ea | Amazon | $80–$89 |
-| [SeaFlo accumulator (0.75 L)](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) (SFAT-075-125-01) | 0.75 L, 125 PSI, 1/2" MNPT | 1 ea | Amazon | $30–$41 |
+| [Shurflo 2088-554-144 pump (P-01 Blue supply)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
+| Shurflo 2088-554-144 pump (P-03 waste evacuation) | 12VDC, 3.5 GPM, 45 PSI; empties IBC-4 residual below X4 (~120L) | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
+| Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 12VDC, 3.5 GPM, 45 PSI; tray drain to IBC-3 (~900mm lift) | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
+| Shurflo 2088-554-144 pump (P-05 Brown drain) | 12VDC, 3.5 GPM, 45 PSI; evacuates IBC-3 (Brown) residual to the X3 end-wall port | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
+| [SeaFlo accumulator (0.75 L)](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) (SFAT-075-125-01) | 0.75 L, 125 PSI, 1/2" MNPT | 1 ea | Environmental Marine / Amazon | $30–$41 |
 | Corridor plumbing-panel marine ply (18mm) | 4×8 ft 18mm BS 1088 (or equivalent) marine plywood — rear backing board (~170×2196) + drain-riser backing spine (~456×1966) + spacer offcuts; ~1.3 m² used. Price est. | 1 sheet | marine plywood supplier / Home Depot | $120–$200 |
 | Pump-mount shirt marine ply (25mm) | 25mm BS 1088 (or equivalent) marine plywood, ~610×1650 cut piece — pump-mount shirt behind P-01..P-05 + 6× shirt-to-panel spacer blocks. Price est. | 1 piece | marine plywood supplier / Home Depot | $70–$130 |
 | Corridor panel mount hardware (brackets + fasteners) | 6× steel angle brackets (panel → IBC-frame front-portal uprights), shirt-to-panel screws, lag bolts. Price est. | 1 lot | Home Depot | $25–$50 |
-| Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; pump-suction isolation BV-01 (P-01), BV-02 (P-05), BV-06 (P-03) | 3 ea | Amazon | $90–$135 |
+| Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; pump-suction isolation BV-01 (P-01), BV-02 (P-05), BV-06 (P-03) | 3 ea | Barn Door Ag / Amazon | $90–$135 |
 | 3-way diverter valve 1/2" FNPT | L/T-port HDPE-compatible; 3W-DV-02 (tray drain) | 1 ea | Amazon | $12–$22 |
 | pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build as SV-01 | 1 ea | Amazon | $10–$18 |
 | Steel flat bar 25×3mm — ribbon support cross-brace | Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (the four corridor↔pinhole lines); ~300mm each | 4 ea | Home Depot | $8–$16 |
@@ -443,16 +443,16 @@ hardware are sourced there and in the IBC stacking frame line.
 <!-- BEGIN parts:pinhole-wall-plumbing-panel -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [Shurflo 2088-554-144 pump (P-02 filter loop)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Amazon | $80–$89 |
-| Big Blue filter housing 4.5"×20" (separate) | Ø184×594mm/housing (4.5×20), 1" NPT ports — three SEPARATE housings on the slotted-angle skid frame (Pentek / iSpring / Geekpure) | 3 ea | Amazon | $114–$186 |
+| [Shurflo 2088-554-144 pump (P-02 filter loop)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
+| Big Blue filter housing 4.5"×20" (separate) | Ø184×594mm/housing (4.5×20), 1" NPT ports — three SEPARATE housings on the slotted-angle skid frame (Pentek / iSpring / Geekpure) | 3 ea | AllFilters / Amazon | $114–$186 |
 | Slotted steel angle frame 25×25×3mm (filter skid) | ~2.5 m 25×25×3mm slotted steel angle + fasteners; bolts to the 18mm ply backing (adjustable housing height) | 1 lot | Home Depot | $25–$45 |
 | Steel U-bracket (filter housing) | Wraps the housing head; 2 bolts/bracket through the backing board | 3 ea | McMaster-Carr | $21–$30 |
 | HDPE spacer blocks 25mm (filter skid) | 25mm HDPE blocks between U-bracket and backing board — sump-bowl hang clearance | 1 lot | McMaster-Carr | $12–$22 |
 | 1" HDPE inter-housing jumpers | F-01 OUT→F-02 IN, F-02 OUT→F-03 IN — 1" HDPE + 90° elbows routed outside the bodies | 1 lot | Ferguson | $18–$32 |
 | MPP 5-micron sediment cartridge 4.5"×20" | Melt-blown polypropylene depth filter (F-1 stage); ~50-print interval | 2 ea | Amazon | $24–$40 |
-| KDF-55 heavy-metal cartridge 4.5"×20" | KDF-55 media for dissolved iron/metal removal (F-2 stage); ~60-print interval | 1 ea | Amazon | $65–$95 |
-| CTO carbon block cartridge 4.5"×20" | Coconut shell activated carbon block (F-3 stage); ~40-print interval | 2 ea | Amazon | $32–$60 |
-| Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; pump-suction isolation BV-03 (P-02) | 1 ea | Amazon | $30–$45 |
+| KDF-55 heavy-metal cartridge 4.5"×20" | KDF-55 media for dissolved iron/metal removal (F-2 stage); ~60-print interval | 1 ea | FilterWay / Amazon | $65–$95 |
+| CTO carbon block cartridge 4.5"×20" | Coconut shell activated carbon block (F-3 stage); ~40-print interval | 2 ea | RonAqua / Amazon | $32–$60 |
+| Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; pump-suction isolation BV-03 (P-02) | 1 ea | Barn Door Ag / Amazon | $30–$45 |
 | 3-way diverter valve 1" FNPT | L/T-port; 3W-DV-01 (filter output) | 1 ea | Amazon | $18–$30 |
 | pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line | 1 ea | Amazon | $10–$18 |
 | **Pinhole Wall Plumbing Panel total** | | | | **$449–$692** |

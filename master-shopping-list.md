@@ -2,7 +2,7 @@
 <!-- © 2026 Alvin Richards -->
 # TBS-001 — Master Shopping List (BoM)
 
-**Basis:** April 2026. All prices USD. Prices marked † confirmed from supplier listings; others are close estimates.
+**Basis:** April 2026, with catalog SKUs re-checked against supplier listings July 2026 (branded/identifiable items updated with citations; quote/fabrication/commodity items remain indicative pending real quotes). All prices USD.
 
 Items are grouped by build area. Source documents are cross-referenced in each section header.
 
@@ -13,19 +13,19 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $110 | $265 |
-| 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,454 | $3,914 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $4,612 | $6,990 |
-| 6. Electrical — power, circuits, wiring | $2,144 | $2,694 |
-| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,385 | $2,070 |
+| 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,437 | $3,925 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $5,022 | $7,648 |
+| 6. Electrical — power, circuits, wiring | $2,608 | $3,003 |
+| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,405 | $2,130 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $855 | $1,430 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,000 | $2,975 |
-| 7c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,124 | $1,691 |
+| 7c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,140 | $1,695 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $203 | $203 |
-| 8. Cooling & ventilation | $824 | $974 |
+| 8. Cooling & ventilation | $757 | $907 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$21,641** | **~$32,516** |
+| **TOTAL (base build + 50-print run)** | **~$22,467** | **~$33,491** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -49,7 +49,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| 2" black Gorilla Tape | 6 roll | Home Depot | film | $72 |
+| 2" black Gorilla Tape | 6 roll | Home Depot | film | $54–$78 |
 | Dielectric grease, marine-grade (terminal protection) | 1 ea | Amazon | electrical | $10 |
 | Flat black epoxy spray paint | 1 can | Hardware store | shelf | $12 |
 | Flat black paint (RAL 9005) | 1 qt | Local fab | panel | $10–$20 |
@@ -59,7 +59,7 @@ indicative low–high estimates — get quotes before ordering.
 | Primer + paint | 1 lot | Hardware store | ibc-frame | $30–$50 |
 | Silicone bead sealant (black, UV-stable) | 1 ea | McMaster-Carr | lightlock | $10–$15 |
 | Thread seal tape (PTFE) | 4 roll | Home Depot | water | $8 |
-| **adhesives-finishes subtotal** | | | | **$307–$432** |
+| **adhesives-finishes subtotal** | | | | **$289–$438** |
 
 ### aluminum
 
@@ -92,10 +92,10 @@ indicative low–high estimates — get quotes before ordering.
 | Locking collar SS316 | 4 ea | McMaster-Carr | film | $48 |
 | Rail carriage HGH20CA | 8 ea | Automation Overstock | film | $144 |
 | Rod-end spherical bearing | 8 ea | McMaster-Carr | film | $176 |
-| SKF 6215-2RS1 sealed bearing | 2 ea | Bearing World | lightlock | $90–$130 |
+| SKF 6215-2RS1 sealed bearing | 2 ea | Bearing World | lightlock | $110–$190 |
 | Turntable thrust bearing, 12″ (Ø305) 1000 lb | 1 ea | VXB | swing | $40–$60 |
 | Ø20mm ball joint, zinc socket, M12 stud | 1 ea | Amazon | spray | $12 |
-| **bearings-motion subtotal** | | | | **$1,626–$1,744** |
+| **bearings-motion subtotal** | | | | **$1,646–$1,804** |
 
 ### chemistry-reagents
 
@@ -121,10 +121,10 @@ indicative low–high estimates — get quotes before ordering.
 | 200mm 90° duct elbow | 1 ea | Home Depot | ventilation | $14 |
 | 200mm insulated flex duct | 1 ea | Home Depot | ventilation | $22 |
 | Duct collar + hose clamp | 1 ea | Home Depot | ventilation | $12 |
-| Evaporative cooler | 1 ea | Hessaire | ventilation | $130 |
+| Evaporative cooler | 1 ea | Hessaire | ventilation | $185–$230 |
 | Ventilation (inline fans + light-trap baffles) — interior-conversion allowance | 1 lot | Amazon | interior | $80–$130 |
 | Weatherproof duct cap | 1 ea | Home Depot | ventilation | $8 |
-| **ducting-ventilation subtotal** | | | | **$316–$366** |
+| **ducting-ventilation subtotal** | | | | **$371–$466** |
 
 ### electrical-distribution
 
@@ -136,23 +136,23 @@ indicative low–high estimates — get quotes before ordering.
 | 15A blade fuse | 1 ea | Amazon | water | $5 |
 | 16 AWG silicone coiled cable | 1 ea | Waytek Wire | ventilation | $15 |
 | 2/0 AWG battery cable, 3ft (battery–fuse–busbar) | 1 lot | Amazon | electrical | $30 |
-| 200A main fuse — MRBF terminal-mount (ABYC E-11) | 1 ea | Amazon | electrical | $25 |
+| 200A main fuse — MRBF terminal-mount (ABYC E-11) | 1 ea | Amazon | electrical | $23–$27 |
 | 4 AWG ground wire, green/yellow, 3m | 1 lot | Amazon | electrical | $15 |
 | 40×25mm PVC cable trunking, 5m | 4 ea | McMaster-Carr | electrical | $40 |
 | Anderson Powerpole 30A connectors, 50 pairs | 1 kit | Powerwerx | electrical | $40 |
 | Anderson Powerpole connectors 30A | 5 pair | Amazon | water | $10 |
-| Battery main disconnect — Blue Sea m-Series 300A isolator | 1 ea | West Marine | electrical | $40 |
+| Battery main disconnect — Blue Sea m-Series 300A isolator | 1 ea | West Marine | electrical | $33–$42 |
 | Battery terminal covers (pair), insulating boots | 1 pair | Amazon | electrical | $10 |
-| Blue Sea 5026 fuse block, 12-circuit ST-blade | 1 ea | Amazon | electrical | $55 |
-| Brady M210 wire label kit | 1 ea | Amazon | electrical | $80 |
+| Blue Sea 5026 fuse block, 12-circuit ST-blade | 1 ea | Amazon | electrical | $55–$77 |
+| Brady M210 wire label kit | 1 ea | Amazon | electrical | $199–$211 |
 | Cable grommets / glands — steel-shell penetrations | 1 lot | McMaster-Carr | electrical | $15 |
 | Cooler external power cable | 1 ea | Waytek Wire | ventilation | $20 |
-| Copper ground stake, 8ft × ⅝" dia | 1 ea | Home Depot | electrical | $20 |
+| Copper ground stake, 8ft × ⅝" dia | 1 ea | Home Depot | electrical | $25–$30 |
 | Deutsch DT 2-pin connectors | 2 set | Waytek Wire | ventilation | $8 |
 | Deutsch DT 2-pin connectors, IP67 (exterior penetrations) | 10 set | Waytek Wire | electrical | $30 |
 | Equipotential bonding kit — 6 AWG + ring lugs | 1 ea | Amazon | electrical | $20 |
-| External emergency cut-off — red mushroom IP66 + control loop | 1 ea | AutomationDirect | electrical | $30 |
-| Interior emergency cut-off — red mushroom IP65 (paralleled to exterior) | 1 ea | AutomationDirect | electrical | $25 |
+| External emergency cut-off — red mushroom IP66 + control loop | 1 ea | AutomationDirect | electrical | $18–$30 |
+| Interior emergency cut-off — red mushroom IP65 (paralleled to exterior) | 1 ea | AutomationDirect | electrical | $18–$25 |
 | IP65 enclosure ~200×220×140mm (fuse block + busbars, on the plywood) | 1 ea | Polycase | electrical | $60 |
 | Master pump switch (Circuit C) — IP67 sealed rocker/disconnect 12V 16A | 1 ea | Amazon | electrical | $10 |
 | MC4 bulkhead connector pairs, IP67 panel-mount | 3 pair | Amazon | electrical | $25 |
@@ -161,25 +161,25 @@ indicative low–high estimates — get quotes before ordering.
 | Pull-cord ceiling switch, 12V 6A SPST | 2 ea | Amazon | electrical | $16 |
 | Pump distribution block — 12V DC + / − bus, 6-way | 1 ea | Blue Sea | electrical | $15 |
 | PV cable 10 AWG + MC4 connectors | 1 lot | Amazon | electrical | $30 |
-| Remote battery switch — Blue Sea ML-RBS 500A magnetic-latch (E-stop trip) | 1 ea | West Marine | electrical | $150 |
+| Remote battery switch — Blue Sea ML-RBS 500A magnetic-latch (E-stop trip) | 1 ea | West Marine | electrical | $280–$396 |
 | Sealed wet-zone connectors — Deutsch DT / adhesive heat-shrink | 1 lot | Waytek Wire | electrical | $25 |
 | Shore-charger output fuse — 20A inline | 1 ea | Amazon | electrical | $5 |
 | Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs) | 1 lot | Waytek Wire | electrical | $30 |
 | Wiring kit — 12/14/16/18 AWG tinned, 50ft/color | 1 kit | Waytek Wire | electrical | $80 |
-| **electrical-distribution subtotal** | | | | **$1,146** |
+| **electrical-distribution subtotal** | | | | **$1,371–$1,559** |
 
 ### electrical-power
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Cooler inverter | 1 ea | Victron | ventilation | $275 |
-| LiFePO4 battery, 100Ah 12V (Renogy Smart Lithium) | 1 ea | Renogy | electrical | $350 |
+| Cooler inverter | 1 ea | Victron | ventilation | $153–$275 |
+| LiFePO4 battery, 100Ah 12V (Renogy Smart Lithium) | 1 ea | Renogy | electrical | $350–$430 |
 | PV array disconnect — DC load-break isolator, 50A/150VDC (NEC 690.13) | 1 ea | AutomationDirect | electrical | $40 |
-| Solar panel ground-mount tilt frame, 30° | 1 ea | Renogy | electrical | $80 |
-| Solar panel, 200W monocrystalline 12V | 3 ea | Renogy | electrical | $399 |
-| Victron Blue Smart IP65 12/15 shore backup charger | 1 ea | altE Store | electrical | $150 |
-| Victron SmartSolar MPPT 100/50 charge controller | 1 ea | altE Store | electrical | $200 |
-| **electrical-power subtotal** | | | | **$1,494** |
+| Solar panel ground-mount tilt frame, 30° | 1 ea | Renogy | electrical | $33–$50 |
+| Solar panel, 200W monocrystalline 12V | 3 ea | Renogy | electrical | $450–$495 |
+| Victron Blue Smart IP65 12/15 shore backup charger | 1 ea | altE Store | electrical | $160–$180 |
+| Victron SmartSolar MPPT 100/50 charge controller | 1 ea | altE Store | electrical | $185–$230 |
+| **electrical-power subtotal** | | | | **$1,371–$1,700** |
 
 ### fabric-textile
 
@@ -239,13 +239,13 @@ indicative low–high estimates — get quotes before ordering.
 | Ratchet straps, 25mm | 2 ea | Home Depot | ventilation | $12 |
 | Self-tapping SS screws (8-pack) | 4 ea | McMaster-Carr | spray | $5 |
 | Shurflo pump mounting bracket | 5 ea | Amazon | water | $50 |
-| Southco C2-33 cam compression latch | 4 ea | Southco | panel | $60–$100 |
+| Southco C2-33 cam compression latch | 4 ea | Southco | panel | $76–$104 |
 | SS beam clamp plates (top + bottom) + spacers (25mm) | 4 ea | McMaster-Carr | spray | $10 |
 | SS/nylon retainer clips for 3/4" LDPE | 2 ea | Amazon | spray | $4 |
 | Stainless fasteners + nylon isolation washers | 1 lot | McMaster-Carr | lightlock | $30–$50 |
 | Top + bottom wall stays + 4-bolt anchor plates | 2 set | McMaster-Carr | swing | $90–$160 |
 | Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
-| **fasteners-hardware subtotal** | | | | **$1,383–$2,347** |
+| **fasteners-hardware subtotal** | | | | **$1,399–$2,351** |
 
 ### plastics-sheet
 
@@ -274,7 +274,7 @@ indicative low–high estimates — get quotes before ordering.
 | 1" SDR-11 HDPE pipe | 1 stick | Ferguson | water | $12–$18 |
 | 1" SS foot valve with strainer screen | 1 ea | Amazon | tray | $20 |
 | 1/2" barb × 1/2" hose barb, brass | 1 ea | Amazon | spray | $4 |
-| 1/2" ID reinforced braided PVC hose | 2 length | Amazon | water | $20 |
+| 1/2" ID reinforced braided PVC hose | 2 length | Amazon | water | $24–$48 |
 | 1/2" NPT 90° elbow polypropylene | 14 ea | Amazon | water | $28–$56 |
 | 1/2" NPT polypropylene tee | 6 ea | Amazon | water | $12–$24 |
 | 1/2" NPT polypropylene union | 6 ea | Amazon | water | $24–$36 |
@@ -287,13 +287,13 @@ indicative low–high estimates — get quotes before ordering.
 | 3-way diverter valve 1/2" FNPT | 1 ea | Amazon | water | $12–$22 |
 | 3/4" LDPE irrigation poly pipe, 15 ft | 1 ea | Amazon | spray | $10 |
 | 3/4" SDR-11 HDPE pipe | 2 stick | Ferguson | water | $20–$30 |
-| Banjo EL100-90 elbow 1" NPT | 4 ea | Amazon | water | $12–$20 |
-| Banjo TEE100 equal tee 1" NPT | 3 ea | Amazon | water | $12–$18 |
-| Banjo TEE100 equal tee, 1" HDPE NPT | 1 ea | Amazon | water | $4–$6 |
-| Banjo V050FP ball valve 1/2" FNPT | 3 ea | Amazon | water | $18–$30 |
-| Banjo V050FP ball valve 1/2" FNPT | 1 ea | Amazon | water | $6–$10 |
-| Banjo V050FP ball valve 1/2" FNPT | 2 ea | Amazon | water | $12–$20 |
-| Banjo V100FP ball valve 1" FNPT | 6 ea | Amazon | water | $60–$96 |
+| Banjo EL100-90 elbow 1" NPT | 4 ea | Amazon | water | $16–$24 |
+| Banjo TEE100 equal tee 1" NPT | 3 ea | Amazon | water | $15–$21 |
+| Banjo TEE100 equal tee, 1" HDPE NPT | 1 ea | Amazon | water | $5–$7 |
+| Banjo V050FP ball valve 1/2" FNPT | 3 ea | Amazon | water | $90–$135 |
+| Banjo V050FP ball valve 1/2" FNPT | 1 ea | Amazon | water | $30–$45 |
+| Banjo V050FP ball valve 1/2" FNPT | 2 ea | Amazon | water | $60–$90 |
+| Banjo V100FP ball valve 1" FNPT | 6 ea | Amazon | water | $198–$330 |
 | Barbed tees, tube into the side poly manifold | 7 ea | Amazon | spray | $10 |
 | Bulkhead fitting 2" NPT (304 SS) | 3 ea | McMaster-Carr | water | $75–$120 |
 | Distribution manifold, 1/2" → 7 barb outlets | 1 ea | Amazon | spray | $12 |
@@ -302,7 +302,7 @@ indicative low–high estimates — get quotes before ordering.
 | pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | Amazon | water | $10–$18 |
 | S60×6 to 1" NPT adapter | 8 ea | Amazon | water | $64–$120 |
 | ½" HDPE pipe (tap relocation) | 1 lot | Irrigation supply | shelf | $10 |
-| **plumbing-fittings subtotal** | | | | **$654–$1,025** |
+| **plumbing-fittings subtotal** | | | | **$948–$1,505** |
 
 ### seals-gaskets
 
@@ -384,14 +384,14 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | 6-mil black LDPE sheet, 10 ft × 8 ft | 1 ea | Home Depot | tray | $8 |
-| 6-mil black LDPE sheeting | 1 roll | Home Depot | water | $100 |
-| 6-mil black poly sheeting | 1 roll | Home Depot | film | $65 |
-| Apera Instruments AI311 PH60 pH meter | 1 ea | Amazon | water | $55 |
+| 6-mil black LDPE sheeting | 1 roll | Home Depot | water | $66–$70 |
+| 6-mil black poly sheeting | 1 roll | Home Depot | film | $66–$70 |
+| Apera Instruments AI311 PH60 pH meter | 1 ea | Amazon | water | $100–$110 |
 | Chemical-resistant labels (GHS) | 1 pack | Amazon | water | $20 |
 | Citric acid, food grade, 5 lb | 2 bag | Amazon | water | $28 |
-| Nitrile gloves, box of 100 | 2 box | Amazon | water | $28 |
+| Nitrile gloves, box of 100 | 2 box | Amazon | water | $18–$40 |
 | pH calibration solution set | 1 set | Amazon | water | $10 |
-| **tools-safety subtotal** | | | | **$314** |
+| **tools-safety subtotal** | | | | **$316–$356** |
 
 ### water-equipment
 
@@ -401,54 +401,54 @@ indicative low–high estimates — get quotes before ordering.
 | CTO carbon block cartridge 4.5"×20" | 2 ea | Amazon | water | $32–$60 |
 | HDPE spacer blocks 25mm (filter skid) | 1 lot | McMaster-Carr | water | $12–$22 |
 | IBC tote (1,000 L caged) | 4 ea | Container Exchanger | water | $320–$600 |
-| KDF-55 heavy-metal cartridge 4.5"×20" | 1 ea | Amazon | water | $40–$70 |
+| KDF-55 heavy-metal cartridge 4.5"×20" | 1 ea | Amazon | water | $65–$95 |
 | MPP 5-micron sediment cartridge 4.5"×20" | 2 ea | Amazon | water | $24–$40 |
-| SeaFlo accumulator (0.75 L) | 1 ea | Amazon | water | $35 |
-| Shurflo 2088-554-144 pump (P-01 Blue supply) | 1 ea | Amazon | water | $55–$70 |
-| Shurflo 2088-554-144 pump (P-02 filter loop) | 1 ea | Amazon | water | $55–$70 |
-| Shurflo 2088-554-144 pump (P-03 waste evacuation) | 1 ea | Amazon | water | $65 |
-| Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 1 ea | Amazon | water | $65 |
-| Shurflo 2088-554-144 pump (P-05 Brown drain) | 1 ea | Amazon | water | $65 |
+| SeaFlo accumulator (0.75 L) | 1 ea | Amazon | water | $30–$41 |
+| Shurflo 2088-554-144 pump (P-01 Blue supply) | 1 ea | Amazon | water | $80–$89 |
+| Shurflo 2088-554-144 pump (P-02 filter loop) | 1 ea | Amazon | water | $80–$89 |
+| Shurflo 2088-554-144 pump (P-03 waste evacuation) | 1 ea | Amazon | water | $80–$89 |
+| Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 1 ea | Amazon | water | $80–$89 |
+| Shurflo 2088-554-144 pump (P-05 Brown drain) | 1 ea | Amazon | water | $80–$89 |
 | Slotted steel angle frame 25×25×3mm (filter skid) | 1 lot | Home Depot | water | $25–$45 |
 | Steel U-bracket (filter housing) | 3 ea | McMaster-Carr | water | $21–$30 |
-| **water-equipment subtotal** | | | | **$928–$1,423** |
+| **water-equipment subtotal** | | | | **$1,043–$1,564** |
 
 ## Supplier consolidation (largest orders first)
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
 | containermgt.com | 1 | container | $2,000–$3,500 |
+| Amazon | 77 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,626–$3,450 |
 | Local fab | 17 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,961–$3,181 |
 | McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $1,850–$2,842 |
-| Amazon | 77 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,065–$2,607 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,301–$1,638 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
 | Photographers' Formulary | 2 | chemistry-reagents | $1,195 |
-| Home Depot | 23 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $922–$1,155 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
+| Home Depot | 23 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $876–$1,146 |
+| Renogy | 3 | electrical-power | $833–$975 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
-| Renogy | 3 | electrical-power | $829 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
 | Automation Overstock | 4 | bearings-motion | $620 |
 | Container Exchanger | 1 | water-equipment | $320–$600 |
 | Grimco | 1 | plastics-sheet | $510 |
+| West Marine | 2 | electrical-distribution | $313–$438 |
 | Roton Products | 2 | bearings-motion | $428 |
-| altE Store | 2 | electrical-power | $350 |
+| altE Store | 2 | electrical-power | $345–$410 |
 | marine plywood supplier | 2 | timber-ply | $190–$330 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
-| Victron | 1 | electrical-power | $275 |
+| Victron | 1 | electrical-power | $153–$275 |
+| Hessaire | 1 | ducting-ventilation | $185–$230 |
 | Waytek Wire | 7 | electrical-distribution | $208 |
-| West Marine | 2 | electrical-distribution | $190 |
+| Bearing World | 1 | bearings-motion | $110–$190 |
 | Bostick & Sullivan | 1 | chemistry-reagents | $158 |
 | Lenox Laser | 1 | stainless-sheet | $50–$150 |
 | Grainger | 1 | bearings-motion | $140 |
-| Hessaire | 1 | ducting-ventilation | $130 |
-| Bearing World | 1 | bearings-motion | $90–$130 |
 | Ferguson | 4 | plumbing-fittings | $74–$120 |
-| Southco | 1 | fasteners-hardware | $60–$100 |
-| AutomationDirect | 3 | electrical-distribution, electrical-power | $95 |
+| Southco | 1 | fasteners-hardware | $76–$104 |
+| AutomationDirect | 3 | electrical-distribution, electrical-power | $75–$95 |
 | B&H Photo | 1 | fabric-textile | $95 |
 | Hardware store | 2 | adhesives-finishes | $42–$62 |
 | Polycase | 1 | electrical-distribution | $60 |

@@ -165,16 +165,16 @@ WALKWAY = [
 WATER = [
     LineItem("Water storage (4× IBC totes, 3× bulkhead fittings, X1 fill tee)", 395, 558, 720),
     LineItem("IBC stacking frame (RHS deep 4-leg box + 4 feet + retaining bars + hangers + 8 D-rings + fab)", 1000, 1270, 1540),
-    LineItem("Pumps and accumulator (P-01..P-05 + ACC-01, 5× mount brackets)", 390, 405, 420),
+    LineItem("Pumps and accumulator (P-01..P-05 + ACC-01, 5× mount brackets)", 480, 508, 536),
     LineItem("Corridor plumbing panel structure (18mm marine-ply backing board + drain-riser spine, 25mm pump-mount shirt, mount brackets + fasteners)", 215, 298, 380),
     LineItem("Under-walkway pipe-ribbon supports (4× welded cross-braces + 16 pipe clips)", 24, 36, 48),
-    LineItem("Filter skid (3× Big Blue 4.5×20 separate housings on slotted-angle frame + cartridges)", 286, 385, 485),
-    LineItem("Valves and fittings (6× BV ball valves, X1 4-way cross, S60×6 adapters, CV1, SV-01 + SV-02 taps, Blue equalization tie)", 357, 486, 615),
+    LineItem("Filter skid (3× Big Blue 4.5×20 separate housings on slotted-angle frame + cartridges)", 311, 411, 510),
+    LineItem("Valves and fittings (6× BV ball valves, X1 4-way cross, S60×6 adapters, CV1, SV-01 + SV-02 taps, Blue equalization tie)", 651, 873, 1095),
     LineItem("Pipe (HDPE, spray bar)", 80, 97, 114),
     LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1300, 1660, 2015),
     LineItem("Spray bar assembly (40×25 SS RHS beam, side LDPE manifold, 26 nozzles, manifold + 7 feed tubes, 4 Ø32 wheels, ball joint, arm, hose)", 287, 331, 375),
     LineItem("Electrical (wiring only — fuse block in Electrical Report)", 37, 37, 37),
-    LineItem("Processing consumables (6-mil poly, pH meter, citric acid)", 241, 241, 241),
+    LineItem("Processing consumables (6-mil poly, pH meter, citric acid)", 242, 260, 278),
 ]
 
 # §1 Container — clean 2-item table; the scenario Mid was $3,150 but the items give $3,300.
@@ -188,7 +188,7 @@ CONTAINER = [
 LIGHTLOCK = [
     LineItem("5mm UV-stabilized HDPE — Ø900 housing shell (~7 m²)", 180, 230, 280, "rolled + extrusion-welded; TAP / Online Metals"),
     LineItem("4mm PP — Ø864 drum shell + top/bottom caps (~7 m²)", 150, 195, 240, "TAP / Curbell"),
-    LineItem("SKF 6215-2RS1 sealed bearing (×2)", 90, 110, 130, "Bearing World / Applied"),
+    LineItem("SKF 6215-2RS1 sealed bearing (×2)", 110, 150, 190, "Bearing World / Applied"),
     LineItem("75mm Ø × 150mm steel stub shafts (×2)", 30, 40, 50, "steel service center"),
     LineItem("Felt/brush wiper + 12mm neoprene (drum↔housing seal)", 40, 50, 60, "McMaster-Carr"),
     LineItem("Silicone bead sealant (bearing housing)", 10, 13, 15, "McMaster-Carr"),
@@ -223,7 +223,7 @@ PANEL = [
     LineItem("3mm aluminum plate — corner-zone core plates (×2)", 360, 410, 460, "Online Metals"),
     LineItem("20mm EPDM gasket — perimeter + housing-surround + cut seals (~21 m)", 84, 105, 126, "McMaster-Carr"),
     LineItem("Aluminum U-channel — gasket + PP-skin retention (~40 m)", 120, 160, 200, "Online Metals"),
-    LineItem("Southco C2-33 cam compression latch (×4)", 60, 80, 100, "Southco / McMaster"),
+    LineItem("Southco C2-33 cam compression latch (×4)", 76, 90, 104, "Southco / McMaster"),
     LineItem("4mm PP + EPDM lip — B2 punch-out bay (4-wall tube ~890mm)", 60, 90, 120, "rev11"),
     LineItem("Flat-black paint (RAL 9005) — bay/weld touch-in", 10, 15, 20, "local"),
     LineItem("316 SS D-grab pull handle (~300mm) + 2× M8 + backing plate", 20, 28, 35, "matte-black, §4.3"),
@@ -283,7 +283,7 @@ FILM = [
     # 4.2 Film plane frame & backing
     point("Aluminum angle 2×2×3/16 8 ft (×10)", 220),
     point("Dibond ACM 4mm 4×8 sheets (×6) — single rigid plane", 510, "Option A: no folding hinge"),
-    point("Light-seal set — EPDM tape (×3) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6)", 316),
+    LineItem("Light-seal set — EPDM tape (×3) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6)", 299, 313, 327),
     LineItem("Cam-lever spring clamps, muslin (×92)", 276, 506, 736, "$3/$5.50/$8 ea — the section's main Low/High driver"),
     point("Clamp mounting — M5×16 SS bolts (×184) + Nylocks (×184) + neoprene jaw strip", 76, "item-sum: $46 bolts + $15 nuts + $15 neoprene"),
     # 4.3 Wall-seat saddles (rev 11, ICP-11–14) — estimates, confirm at procurement
@@ -297,8 +297,8 @@ FILM = [
 # updating it). The cost-breakdown §5b scenario ($770/$830/$920) is a budget band around this.
 VENTILATION = [
     point("150×150×50mm axial fans ×2 (12V DC)", 50),
-    point("Evaporative cooler (Hessaire MC18M)", 130),
-    point("Cooler inverter (Victron Phoenix 12/375 GFCI + DC fuse/disconnect + GFCI outlet)", 275),
+    LineItem("Evaporative cooler (Hessaire MC18M)", 185, 208, 230),
+    LineItem("Cooler inverter (Victron Phoenix 12/375 GFCI + DC fuse/disconnect + GFCI outlet)", 153, 214, 275),
     point("Shade canopy — 80% shade cloth (20×10 ft)", 80),
     point('Canopy frame (1.5" EMT conduit + fittings)', 120),
     point("Baffle duct sheet metal (fans)", 30),
@@ -319,8 +319,8 @@ VENTILATION = [
 # Distribution & wiring $970; = the scenario §5a Mid). The full 43-row combined BOM overlaps the
 # §5b ventilation items, so we own the two authoritative subtotals rather than re-entering it.
 POWER = [
-    point("Solar & battery (3× 200W panels, MPPT 100/50, 1× 100Ah LiFePO4, shore charger, mounts, PV cabling, PV disconnect, panel)", 1335),
-    point("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop, charge/shore fuses, protection, conduit, LED, master pump switch)", 1049),
+    LineItem("Solar & battery (3× 200W panels, MPPT 100/50, 1× 100Ah LiFePO4, shore charger, mounts, PV cabling, PV disconnect, panel)", 1236, 1340, 1443),
+    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop, charge/shore fuses, protection, conduit, LED, master pump switch)", 1372, 1466, 1560),
 ]
 
 
@@ -651,7 +651,7 @@ SECTIONS = [
     Section("3",  "Optics — pinhole plate", *total(OPTICS)),
     Section("4",  "Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)", *total(FILM)),
     Section("5",  "Processing water system (incl. tray, spray bar, IBC stacking frame)", *total(WATER)),
-    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2144, 2384, 2694),
+    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2608, 2806, 3003),
     Section("5b", "Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)",
             total(VENTILATION)[0], total(VENTILATION)[0] + 60, total(VENTILATION)[0] + 150),
     Section("6",  "Housed revolving-door light lock (plastic-skin custom fabrication)", *total(LIGHTLOCK)),
@@ -1017,19 +1017,19 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (21691, 27539, 35456),  # EP plywood backboard + IP65 enclosure over the fuse/busbar terminals (+$60 §5a — enclosure kept ALONGSIDE the plywood). audit 2026-07: pinhole retaining ring (+$15/$25); D-ring 4→8; +$2 Powerpole (1/pump); filter 3-separate design (−$50/−$65). pump switches 5→1 master (−$26 §5a). IBC frame deep 4-leg box (+$25/+$38/+$50). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (+$52/+$64/+$76, SS beam); + corridor plumbing-panel structure (+$215/+$380 — previously uncosted)
+    "grand_total": (22517, 28476, 36431),  # EP plywood backboard + IP65 enclosure over the fuse/busbar terminals (+$60 §5a — enclosure kept ALONGSIDE the plywood). audit 2026-07: pinhole retaining ring (+$15/$25); D-ring 4→8; +$2 Powerpole (1/pump); filter 3-separate design (−$50/−$65). pump switches 5→1 master (−$26 §5a). IBC frame deep 4-leg box (+$25/+$38/+$50). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (+$52/+$64/+$76, SS beam); + corridor plumbing-panel structure (+$215/+$380 — previously uncosted)
     "walkway": (2000, 2488, 2975),   # §6a fab line raised so bracket scope matches walkway-report §10 ($742–$1,255 all-in)
-    "water": (4612, 5804, 6990),   # audit 2026-07: D-ring 4→8 (+$20/+$35); +$2 Powerpole 5 pair (1/pump); filter combo → 3 separate housings + frame (−$50/−$65). IBC frame portal → deep 4-leg box (+$25/+$38/+$50: 4 feet + 16 anchors). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105: 20" housings + cartridges). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (40×40 alu → 40×25 304-SS + Ø32 wheels, spray line +$52/+$64/+$76); + corridor plumbing-panel structure (+$215/+$298/+$380 — was uncosted); panel-split cascade 2026-06-28 (+P-05, +SV-02, +5th bracket, −2 CV, +X1 4-way cross, BVs, +Blue equalization tie)
+    "water": (5022, 6339, 7648),   # audit 2026-07: D-ring 4→8 (+$20/+$35); +$2 Powerpole 5 pair (1/pump); filter combo → 3 separate housings + frame (−$50/−$65). IBC frame portal → deep 4-leg box (+$25/+$38/+$50: 4 feet + 16 anchors). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105: 20" housings + cartridges). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (40×40 alu → 40×25 304-SS + Ø32 wheels, spray line +$52/+$64/+$76); + corridor plumbing-panel structure (+$215/+$298/+$380 — was uncosted); panel-split cascade 2026-06-28 (+P-05, +SV-02, +5th bracket, −2 CV, +X1 4-way cross, BVs, +Blue equalization tie)
     "container": (2300, 3300, 4300),
-    "lightlock": (1385, 1728, 2070),   # §6 = hinged-panel §8.2 (housing + drum) line items
+    "lightlock": (1405, 1768, 2130),   # §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (855, 1143, 1430),   # §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
-    "panel": (1124, 1408, 1691),       # §6c = hinged-panel §8.1 (panel structure) — was MISSING from the model
+    "panel": (1140, 1418, 1695),       # §6c = hinged-panel §8.1 (panel structure) — was MISSING from the model
     "shelf": (203, 203, 203),          # §6d = chemistry-prep-shelves §7 (point estimates) — was MISSING from the model
     "interior": (950, 1138, 1350),
     "optics": (110, 185, 265),
-    "film": (3454, 3684, 3914),   # saddles ×8→×6 (rev12: 2 BR ends are walkway combined plates) + fasteners 150→122 + clamp-mounting 70→76
-    "ventilation": (824, 824, 824),   # §5b BOM (point estimates); report total was stale at $769
-    "power": (2384, 2384, 2384),       # §5a authoritative subtotal (+$60 IP65 enclosure over the fuse/busbar terminals)
+    "film": (3437, 3681, 3925),   # saddles ×8→×6 (rev12: 2 BR ends are walkway combined plates) + fasteners 150→122 + clamp-mounting 70→76
+    "ventilation": (757, 841, 924),   # §5b BOM (point estimates); report total was stale at $769
+    "power": (2608, 2806, 3003),       # §5a authoritative subtotal (+$60 IP65 enclosure over the fuse/busbar terminals)
 }
 
 

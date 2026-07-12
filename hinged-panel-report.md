@@ -423,11 +423,11 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | 3mm aluminum plate (1220 × 2,440mm) | Corner zone core plates | 2 ea | Online Metals | $360–$460 |
 | 20mm EPDM gasket (per meter, closed-cell) | Perimeter seal (~10 m) + housing-surround ring (~6 m) + 2× vertical cut seals at Yd180/2287 (~5 m) | 21 m | McMaster-Carr | $84–$126 |
 | Aluminum U-channel (per meter) | Gasket retainer + PP-skin retention (perimeter + housing-surround + stiffener grid) | 40 m | Online Metals | $120–$200 |
-| Southco C2-33 cam compression latch | Interior-mounted corner latches (compress the perimeter + cut + lip seals) | 4 ea | Southco / McMaster-Carr | $60–$100 |
+| Southco C2-33 cam compression latch | Interior-mounted corner latches (compress the perimeter + cut + lip seals) | 4 ea | Southco / McMaster-Carr | $76–$104 |
 | 4mm black PP sheet + EPDM lip | B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing (rev11) | 1 lot | TAP Plastics | $60–$120 |
 | Flat black paint (RAL 9005) | Bay/weld touch-in (PP skins are pre-pigmented black) | 1 qt | Local fab | $10–$20 |
 | 316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black | Interior pull handle — through-bolted to the frame (§4.3) | 1 ea | McMaster-Carr | $20–$35 |
-| **Panel total** | | | | **$1,124–$1,691** |
+| **Panel total** | | | | **$1,140–$1,695** |
 <!-- END parts:panel -->
 
 
@@ -440,7 +440,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 |------|------|-----|----------|-----------|
 | 5mm UV-stabilized HDPE sheet (black) | Ø900 fixed housing shell — LT_HOUSING_T (rolled + extrusion-welded, ~7 m²) | 1 lot | TAP Plastics / Online Metals | $180–$280 |
 | 4mm black polypropylene sheet | Ø864 revolving drum shell + top/bottom caps — LT_DRUM_T (~7 m²) | 1 lot | TAP Plastics / Curbell | $150–$240 |
-| SKF 6215-2RS1 sealed bearing | Top and bottom (drum rotation) | 2 ea | Bearing World / Applied | $90–$130 |
+| SKF 6215-2RS1 sealed bearing | Top and bottom (drum rotation) | 2 ea | Bearing World / Applied | $110–$190 |
 | 75mm Ø × 150mm steel stub shaft | Bearing shafts | 2 ea | Steel service center | $30–$50 |
 | Felt/brush wiper strip + 12mm closed-cell neoprene | Drum↔housing rotating seal (opening edges + top/bottom rings) + drum top/bottom | 1 lot | McMaster-Carr | $40–$60 |
 | Silicone bead sealant (black, UV-stable) | Bearing housing seal | 1 ea | McMaster-Carr | $10–$15 |
@@ -448,7 +448,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Matte-black interior finish | Black-pigmented sheet (no etch-prime); scuff + flat-black touch-in at welds | 1 ea | Local fab | $40–$70 |
 | Stainless fasteners + nylon isolation washers | Steel shaft/bearing ↔ plastic shell joints (no galvanic couple) | 1 lot | McMaster-Carr | $30–$50 |
 | Plastic fabrication (roll 2 cylinders, hot-air / extrusion weld, fit, bearings) | 16–22 hrs labor | 1 lot | Local plastic fab | $800–$1,150 |
-| **Lightlock total** | | | | **$1,385–$2,070** |
+| **Lightlock total** | | | | **$1,405–$2,130** |
 <!-- END parts:lightlock -->
 
 
@@ -483,11 +483,11 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,124<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,691<!-- END costing:hp-panel-high --> |
-| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$1,385<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$2,070<!-- END costing:hp-housing-high --> |
+| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,140<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,695<!-- END costing:hp-panel-high --> |
+| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$1,405<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$2,130<!-- END costing:hp-housing-high --> |
 | Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$520<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$880<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$335<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$550<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$3,364<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$5,191<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$3,400<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$5,255<!-- END costing:hp-total-high -->** |
 
 ---
 

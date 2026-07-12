@@ -169,13 +169,13 @@ All items ship within the United States. Local Southern California pickup noted 
 | Dibond ACM panel 4mm | 4 ft × 8 ft sheets — single rigid backing, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->×<!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | 6 sheet | Grimco / Signwarehouse | $510 |
 | Black EPDM foam tape 1"×½" (8614K84) | 50 ft rolls | 3 roll | McMaster-Carr / Grainger | $84 |
 | Rosco Duvetyne | 60" wide, 10 yd | 1 ea | B&H Photo / Rosco direct | $95 |
-| 6-mil black poly sheeting | 10 ft × 100 ft | 1 roll | Home Depot / Uline | $65 |
-| 2" black Gorilla Tape | 35 yd rolls | 6 roll | Home Depot / Amazon | $72 |
+| 6-mil black poly sheeting | 10 ft × 100 ft | 1 roll | Home Depot / Uline | $66–$70 |
+| 2" black Gorilla Tape | 35 yd rolls | 6 roll | Home Depot / Amazon | $54–$78 |
 | Mild steel plate 8mm (laser/plasma cut + welded) | ICP-11: back-plate + exterior plate + seat + gusset per saddle; ~21 kg over 6 saddles | 6 ea | Metal Supermarkets / Online Metals | $318 |
 | M12×90mm hex through-bolt + nut + washers, SS | ICP-12: wall sandwich through-bolt; 4/saddle ×6 + 4 spare | 28 ea | McMaster-Carr / Amazon | $70 |
 | M8×25mm knurled thumbscrew DIN 464 | ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare | 12 ea | Amazon / Maedler | $36 |
 | M8 hex fixing bolt + nut, SS | ICP-14: right-rail permanent fixing; 2/saddle ×2 TR + spare | 8 ea | McMaster-Carr / Amazon | $16 |
-| **Film total** | | | | **$3,102** |
+| **Film total** | | | | **$3,085–$3,113** |
 <!-- END parts:film -->
 
 *The cross-slide rails/carriages/intermediate plates (HGR15) are the **Option A** additions — the
@@ -210,7 +210,7 @@ See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) f
 | 12V 30A power supply | Enclosed | 1 | Mouser | Digi-Key | $55 |
 | DPDT momentary rocker | Panel-mount, 20A | **4** | Mouser | Grainger | $8 |
 
-**Estimated materials total (manual actuation, incl. wall-seat saddles + Option A cross-slides): ~<!-- BEGIN costing:film-total -->$3,454<!-- END costing:film-total -->** (rev 12: the 2 BR saddles move to the walkway's combined corner plates)
+**Estimated materials total (manual actuation, incl. wall-seat saddles + Option A cross-slides): ~<!-- BEGIN costing:film-total -->$3,437<!-- END costing:film-total -->** (rev 12: the 2 BR saddles move to the walkway's combined corner plates)
 *Excludes fasteners, fabrication labor, and electric actuation option.*
 *Option A net change vs the earlier four-corner design: added 8 cross-slide rails +$200, 8 cross-slide carriages +$96, 4 intermediate plates +$60 (= +$356); removed the folding-backing piano hinge –$56 → net +$300. The single rigid ACM backing replaces the hinged two-panel system.*
 

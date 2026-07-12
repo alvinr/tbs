@@ -502,7 +502,7 @@ inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Pinhole"
 if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
-  txt = entities.add_text("PINHOLE  Ø0.794mm  (f/576)", anc, Geom::Vector3d.new(-200.mm, -300.mm, 250.mm))
+  txt = entities.add_text("PINHOLE  Ø0.794mm  (f/576)", anc, Geom::Vector3d.new(-70.mm, -110.mm, 80.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Shutter" }
@@ -510,7 +510,7 @@ if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
   txt = entities.add_text("SHUTTER
-(click: lift to expose)", anc, Geom::Vector3d.new(-300.mm, -350.mm, 350.mm))
+(click: lift to expose)", anc, Geom::Vector3d.new(-110.mm, -140.mm, 130.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Film-plane panel" }
@@ -518,7 +518,7 @@ if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
   txt = entities.add_text("FILM-PLANE PANEL
-(click: fold down to coat / up to expose)", anc, Geom::Vector3d.new(120.mm, -450.mm, 450.mm))
+(click: fold down / up)", anc, Geom::Vector3d.new(40.mm, -150.mm, 120.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Prep top flaps" }
@@ -526,8 +526,7 @@ if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
   txt = entities.add_text("PREP-BOX TOP FLAPS
-(boxes built flaps-up; click: open
-to remove the print in daylight)", anc, Geom::Vector3d.new(250.mm, -300.mm, 500.mm))
+(flaps-up; click: open to extract)", anc, Geom::Vector3d.new(110.mm, -120.mm, 140.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Cardboard boxes (ghost)" }
@@ -535,20 +534,20 @@ if inst
   bb = inst.bounds
   anc = Geom::Point3d.new(bb.center.x, bb.center.y, bb.max.z)
   txt = entities.add_text("TWO CARDBOARD BOXES
-(joined with grey tape — ghosted)", anc, Geom::Vector3d.new(-120.mm, 520.mm, 560.mm))
+(joined with grey tape)", anc, Geom::Vector3d.new(-90.mm, 150.mm, 190.mm))
   txt.layer = model.layers["Labels"] rescue nil
 end
 anc = Geom::Point3d.new(1044.mm, 113.5.mm, 203.mm)
-txt = entities.add_text("ARM SLEEVES (end wall)
-(reach in to mix + coat in the dark)", anc, Geom::Vector3d.new(300.mm, -200.mm, 250.mm))
+txt = entities.add_text("ARM SLEEVES
+(coat in the dark)", anc, Geom::Vector3d.new(130.mm, -90.mm, 90.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(228.5.mm, 228.5.mm, 203.mm)
 txt = entities.add_text("LIGHT CONE
-(pinhole → paper)", anc, Geom::Vector3d.new(-150.mm, -420.mm, 300.mm))
+(pinhole → paper)", anc, Geom::Vector3d.new(-40.mm, -150.mm, 60.mm))
 txt.layer = model.layers["Labels"] rescue nil
 anc = Geom::Point3d.new(457.mm, 228.5.mm, -4.mm)
 txt = entities.add_text("GREY TAPE
-(joins the two boxes)", anc, Geom::Vector3d.new(-100.mm, 400.mm, -250.mm))
+(joins the boxes)", anc, Geom::Vector3d.new(-50.mm, 130.mm, -80.mm))
 txt.layer = model.layers["Labels"] rescue nil
 
 # ── In-model © + license credit (default layer → shown in every scene) ──

@@ -282,19 +282,19 @@ lge.grep(Sketchup::Edge).each {{ |e| e.soft = true; e.smooth = true; e.hidden = 
 # ── "Labeled" scene callouts. Camera looks from −X/−Y/+Z, so Δy<0 / Δz>0 pulls a
 #    callout OUT toward the viewer; Δx spreads them apart. ──
 LABELS = [
-    ("Pinhole", f"PINHOLE  Ø{PH_D}mm  (f/{F_NO})", -200, -300, 250),
-    ("Shutter", "SHUTTER\n(click: lift to expose)", -300, -350, 350),
-    ("Film-plane panel", "FILM-PLANE PANEL\n(click: fold down to coat / up to expose)", 120, -450, 450),
-    ("Prep top flaps", "PREP-BOX TOP FLAPS\n(boxes built flaps-up; click: open\nto remove the print in daylight)", 250, -300, 500),
-    ("Cardboard boxes (ghost)", "TWO CARDBOARD BOXES\n(joined with grey tape — ghosted)", -120, 520, 560),
+    ("Pinhole", f"PINHOLE  Ø{PH_D}mm  (f/{F_NO})", -70, -110, 80),
+    ("Shutter", "SHUTTER\n(click: lift to expose)", -110, -140, 130),
+    ("Film-plane panel", "FILM-PLANE PANEL\n(click: fold down / up)", 40, -150, 120),
+    ("Prep top flaps", "PREP-BOX TOP FLAPS\n(flaps-up; click: open to extract)", 110, -120, 140),
+    ("Cardboard boxes (ghost)", "TWO CARDBOARD BOXES\n(joined with grey tape)", -90, 150, 190),
 ]
 POINT_LABELS = [
     (TOTAL_D + SLEEVE_LEN, CY - SLEEVE_SPACING / 2, BOX_H / 2,
-     "ARM SLEEVES (end wall)\n(reach in to mix + coat in the dark)", 300, -200, 250),
+     "ARM SLEEVES\n(coat in the dark)", 130, -90, 90),
     (BOX_D / 2, CY, PH_Y,
-     "LIGHT CONE\n(pinhole → paper)", -150, -420, 300),
+     "LIGHT CONE\n(pinhole → paper)", -40, -150, 60),
     (BOX_D, CY, -WALL_T,
-     "GREY TAPE\n(joins the two boxes)", -100, 400, -250),
+     "GREY TAPE\n(joins the boxes)", -50, 130, -80),
 ]
 
 

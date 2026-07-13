@@ -53,6 +53,17 @@ Getting it right was hard until we grounded it; here is the reasoning, in order.
 - More decisively: **plain ball/spherical bearings and rod ends only articulate ±16–22°** — they
   **physically cannot reach ±45°** (Machinery's Handbook; SKF & Aurora catalogs). That fact is why the
   entire rod-end path (Ø25 bore, 2458K435, 60645K591…) was a dead end, and it is now retired for cause.
+- **Even a large-swivel ball joint does not rescue the approach — and this is the decisive reason, not the
+  angle.** A stud-type ball joint rated to **50° swivel** ([McMaster 60745K611](https://www.mcmaster.com/60745K611/))
+  clears ±45° on angle, so the articulation objection is gone. But it is a **3-DOF spherical joint** (cone
+  swivel + free spin about the stud), so it **cannot lock twist** (§1). Chaining **two** at 90° *adds*
+  freedom rather than removing it: the frame-to-carrier twist stays free, and the link between them gains
+  a redundant spin (the classic spherical–spherical strut) — four such corners let the flat panel **rack
+  and rotate in plane**, the exact failure the joint exists to prevent. Ball joints also carry **lash** (a
+  linkage part, not a precision locator) and react **no moment** at a point contact. **The gimbal's two
+  joints are pins — pure 1-DOF hinges, torsionally rigid — so two crossed pins give exactly tilt + swing
+  with twist locked and zero lash. That torsional rigidity is the one property a ball structurally cannot
+  provide, and it is exactly the requirement.**
 - A **standard Cardan cross** binds around **±37°** (the yokes collide). So we build the universal joint
   as a **gimbal** — **two perpendicular pins on an intermediate block, offset so their bores clear** —
   where **each pin independently reaches ±45°+**, and each is in **double shear**. (Research doc §3–4.)

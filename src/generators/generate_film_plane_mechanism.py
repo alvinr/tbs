@@ -786,10 +786,12 @@ def sheet3():
     ax.add_patch(Rectangle((-10, v1y-6), 82, 12, fc=MECH, ec=WHITE, lw=1.0, zorder=4))
     for tx in range(-2, 60, 8):
         ax.plot([tx, tx], [v1y-6, v1y+6], color=WHITE, lw=0.4, zorder=5)
-    ax.add_patch(Circle((v1x, v1y), r_eye, fc=MECH, ec=WHITE, lw=1.3, zorder=5))
+    # eye housing — EDGE-ON here (the ring grips the ball's equator and the pin exits
+    # the ball's poles top & bottom), so it reads as a horizontal collar, not a full ring
+    ax.add_patch(Rectangle((v1x-r_eye, v1y-7), 2*r_eye, 14, fc=MECH, ec=WHITE, lw=1.2, zorder=4))
     ax.add_patch(Circle((v1x, v1y), r_ball, fc=STRUCT, ec=WHITE, lw=1.0, zorder=6))
     # the BORE — a vertical BG channel through the ball → ball reads as two crescents
-    ax.add_patch(Rectangle((v1x-bore_hw, v1y-r_eye-3), 2*bore_hw, 2*(r_eye+3), fc=BG, ec=WHITE, lw=0.7, zorder=7))
+    ax.add_patch(Rectangle((v1x-bore_hw, v1y-r_ball-2), 2*bore_hw, 2*(r_ball+2), fc=BG, ec=WHITE, lw=0.7, zorder=7))
     # fork-clevis ears + spine
     ax.add_patch(Rectangle((v1x-22, v1y+r_ball+3), 56, 10, fc=STRUCT2, ec=WHITE, lw=1.1, zorder=8))
     ax.add_patch(Rectangle((v1x-22, v1y-r_ball-13), 56, 10, fc=STRUCT2, ec=WHITE, lw=1.1, zorder=8))

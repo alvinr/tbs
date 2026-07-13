@@ -771,55 +771,51 @@ def sheet3():
 
     # ── BL: Universal joint / rod-end bearing detail ──────────────────────────
     ax = ax_joint
-    ax.set_xlim(-200, 500); ax.set_ylim(-200, 280); ax.set_aspect("equal")
+    ax.set_xlim(-70, 315); ax.set_ylim(-95, 180); ax.set_aspect("equal")
 
-    # Bracket end
-    bm_w = 100; bm_h = 80
-    ax.add_patch(Rectangle((0, 0), bm_w, bm_h, fc=STRUCT2, ec=WHITE, lw=1.5, zorder=3))
-    ax.add_patch(Rectangle((10, 10), bm_w-20, bm_h-20, fc=BG, ec="none", zorder=4))
-    ax.text(bm_w/2, bm_h/2, "CORNER\nBRACKET", color=DIM, fontsize=5.5,
-            ha="center", va="center", **FONT)
+    # Side view (panel is ~1:1, 1 unit ≈ 1mm). Load path left→right: cross-slide →
+    # rod-end (shank + swivel ball) → fork clevis on the frame, pinned in DOUBLE SHEAR.
+    rx, ry = 150, 45                    # rod-end ball center
+    r_eye, r_ball, r_bore = 27, 22, 12
 
-    # Rod-end bearing housing
-    rod_cx = bm_w + 45
-    rod_cy = bm_h / 2
-    ax.add_patch(Circle((rod_cx, rod_cy), 30, fc=RAIL, ec=WHITE, lw=1.5, zorder=5))
-    ax.add_patch(Circle((rod_cx, rod_cy), 18, fc=MECH, ec=WHITE, lw=1.0, zorder=6))
-    ax.add_patch(Circle((rod_cx, rod_cy), 10, fc=BG, ec=WHITE, lw=0.8, zorder=7))
-    # Outer race
-    ax.add_patch(Circle((rod_cx, rod_cy), 25, fc="none", ec=WHITE, lw=0.5,
-                        linestyle="--", zorder=6))
+    # cross-slide stage — the rod-end shank anchors into it
+    ax.add_patch(Rectangle((-30, 15), 70, 60, fc=RAIL, ec=WHITE, lw=1.4, zorder=3))
+    ax.text(5, 45, "CROSS-SLIDE\n(X–Z STAGE)", color=BG, fontsize=5, ha="center", va="center", **FONT, zorder=6)
 
-    # Connecting arm to film frame
-    ff_w = 130
-    ax.add_patch(Rectangle((rod_cx+30, rod_cy-15), ff_w, 30,
-                           fc=ANNO, ec=WHITE, lw=1.0, zorder=5, alpha=0.8))
-    ax.add_patch(Circle((rod_cx+30+25, rod_cy), 18, fc=BG, ec=WHITE, lw=1.0, zorder=6))
-    ax.add_patch(Circle((rod_cx+30+25, rod_cy), 10, fc=MECH, ec=WHITE, lw=0.8, zorder=7))
-    ax.text(rod_cx+30+25, rod_cy, "PIN", color=DIM, fontsize=4.5,
-            ha="center", va="center", **FONT)
-    leader(ax, rod_cx+30+25+16, rod_cy-8, rod_cx+30+25+95, rod_cy-95,
-           "Ø25 × 80mm\nSS316 PIN\n(end-on)", color=DIM, ha="center", font=FONT)
+    # rod-end: threaded shank → eye → spherical ball (bore VERTICAL, so the pin is double-shear)
+    ax.add_patch(Rectangle((40, ry-6), 85, 12, fc=MECH, ec=WHITE, lw=1.0, zorder=4))
+    for tx in range(48, 118, 9):
+        ax.plot([tx, tx], [ry-6, ry+6], color=WHITE, lw=0.4, zorder=5)
+    ax.add_patch(Circle((rx, ry), r_eye, fc=MECH, ec=WHITE, lw=1.4, zorder=5))
+    ax.add_patch(Circle((rx, ry), r_ball, fc=STRUCT, ec=WHITE, lw=1.0, zorder=6))
+    ax.add_patch(Circle((rx, ry), r_bore, fc=BG, ec=WHITE, lw=0.8, zorder=8))
 
-    leader(ax, rod_cx, rod_cy+30, rod_cx - 60, rod_cy + 130,
-           "ROD-END SPHERICAL\nBEARING (GIR25-DO\nor equiv.)\n±45° ANY AXIS", color=MECH, ha="center",
-           arrow_style="-|>", font=FONT)
+    # fork clevis (welded to the frame corner) — two ears straddle the ball
+    ax.add_patch(Rectangle((128, 70), 82, 12, fc=STRUCT2, ec=WHITE, lw=1.2, zorder=5))   # top ear
+    ax.add_patch(Rectangle((128, 8), 82, 12, fc=STRUCT2, ec=WHITE, lw=1.2, zorder=5))    # bottom ear
+    ax.add_patch(Rectangle((198, 8), 12, 74, fc=STRUCT2, ec=WHITE, lw=1.2, zorder=5))    # spine (frame side)
 
-    # Annotation of freedom axes
-    for angle_d in [0, 45, -45]:
-        angle_r = np.radians(angle_d)
-        ax.annotate("", xy=(rod_cx + 35*np.cos(angle_r), rod_cy + 35*np.sin(angle_r)),
-                    xytext=(rod_cx, rod_cy),
-                    arrowprops=dict(arrowstyle="-|>", color=C_T2, lw=0.8,
-                                   mutation_scale=5), zorder=8)
+    # film frame corner
+    ax.add_patch(Rectangle((210, 15), 70, 60, fc=ANNO, ec=WHITE, lw=1.6, zorder=3, alpha=0.85))
+    ax.text(245, 45, "FILM FRAME\nCORNER\n(2×2 angle)", color=BG, fontsize=5, ha="center", va="center", **FONT, zorder=7)
 
-    draw_dim_h(ax, rod_cx-30, rod_cx+30, -80, "60mm",
-               offset=15, color=DIM, above=False, font=FONT)
-    ax.text(200, 240, "CORNER JOINT DETAIL — CROSS-SLIDE TO FILM FRAME\nROD-END (angular freedom) + 2-AXIS X-Z CROSS-SLIDE (translation)",
-            color=WHITE, fontsize=7.5, ha="center", va="bottom", **FONT)
-    ax.text(200, -100,
-            "OPTION A: rod-end gives ±45° any axis; the cross-slide absorbs the rigid-rotation arc travel",
-            color=DIM, fontsize=6.5, ha="center", **FONT)
+    # the pin — vertical, through top ear → ball bore → bottom ear (DOUBLE SHEAR)
+    ax.add_patch(Rectangle((rx-7, 5), 14, 80, fc=C_T2, ec=WHITE, lw=1.0, zorder=9))      # 80mm body
+    ax.add_patch(Rectangle((rx-12, 85), 24, 8, fc=C_T2, ec=WHITE, lw=1.0, zorder=9))     # head
+
+    # labels
+    leader(ax, rx, ry, rx-60, ry+96, "ROD-END BALL\n(GIR25-DO · ±45° swivel)",
+           color=MECH, ha="center", arrow_style="-|>", font=FONT)
+    leader(ax, 86, ry-6, 55, -60, "SHANK\n(threads into the slide)", color=MECH, ha="center", font=FONT)
+    leader(ax, 205, 76, 250, 132, "FORK CLEVIS\n(welded to frame corner)", color=DIM, ha="center", font=FONT)
+    leader(ax, rx+7, 28, rx+92, -58, "Ø25 × 80mm SS316 PIN\n(DOUBLE SHEAR — both ears)",
+           color=C_T2, ha="center", font=FONT)
+
+    ax.text(122, 164, "CORNER JOINT DETAIL — ROD-END PINNED IN A FORK CLEVIS (DOUBLE SHEAR)",
+            color=WHITE, fontsize=7, ha="center", va="bottom", **FONT)
+    ax.text(122, -88,
+            "Shank anchors to the cross-slide · ball swivels ±45° · pin joins it to the frame's fork clevis (double shear)",
+            color=DIM, fontsize=6, ha="center", **FONT)
 
     # ── BR: single rigid ACM backing (Option A — no fold) ────────────────────
     ax = ax_acm

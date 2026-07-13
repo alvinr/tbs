@@ -36,3 +36,10 @@ models/corridor-panel.skp
 # Python caches
 src/generators/__pycache__/
 src/models/__pycache__/
+
+# Downloaded vendor spec sheets / datasheets (reference only — not repo source)
+eng-specs/
+
+# Numbers/Excel working copies of the parts worklist (the tracked source is parts-worklist.csv)
+parts-worklist.numbers
+parts-worklist.xlsx

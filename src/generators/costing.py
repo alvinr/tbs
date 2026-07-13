@@ -163,7 +163,7 @@ WALKWAY = [
 # $4,128/$6,201 and scenario $4,143/$5,180/$6,216 both drifted from the items, which sum to
 # $4,063/$6,104). Source: project-cost-breakdown.md §5.
 WATER = [
-    LineItem("Water storage (4× IBC totes, 3× bulkhead fittings, X1 fill tee)", 395, 558, 720),
+    LineItem("Water storage (4× IBC totes, 3× bulkhead fittings @ $137 ea, X1 fill tee)", 730, 871, 1010),
     LineItem("IBC stacking frame (RHS deep 4-leg box + 4 feet + retaining bars + hangers + 8 D-rings + fab)", 1000, 1270, 1540),
     LineItem("Pumps and accumulator (P-01..P-05 + ACC-01, 5× mount brackets)", 480, 508, 536),
     LineItem("Corridor plumbing panel structure (18mm marine-ply backing board + drain-riser spine, 25mm pump-mount shirt, mount brackets + fasteners)", 215, 298, 380),
@@ -172,7 +172,7 @@ WATER = [
     LineItem("Valves and fittings (6× BV ball valves, X1 4-way cross, S60×6 adapters, CV1, SV-01 + SV-02 taps, Blue equalization tie)", 651, 873, 1095),
     LineItem("Pipe (HDPE, spray bar)", 80, 97, 114),
     LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1300, 1660, 2015),
-    LineItem("Spray bar assembly (40×25 SS RHS beam, side LDPE manifold, 26 nozzles, manifold + 7 feed tubes, 4 Ø32 wheels, ball joint, arm, hose)", 287, 331, 375),
+    LineItem("Spray bar assembly (40×25 SS RHS beam, side LDPE manifold, 26 nozzles, manifold + 7 feed tubes, 4 Ø32 wheels, ball joint, arm, hose)", 286, 326, 366),
     LineItem("Electrical (wiring only — fuse block in Electrical Report)", 37, 37, 37),
     LineItem("Processing consumables (6-mil poly, pH meter, citric acid)", 242, 260, 278),
 ]
@@ -1017,9 +1017,9 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (22517, 28476, 36431),  # EP plywood backboard + IP65 enclosure over the fuse/busbar terminals (+$60 §5a — enclosure kept ALONGSIDE the plywood). audit 2026-07: pinhole retaining ring (+$15/$25); D-ring 4→8; +$2 Powerpole (1/pump); filter 3-separate design (−$50/−$65). pump switches 5→1 master (−$26 §5a). IBC frame deep 4-leg box (+$25/+$38/+$50). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (+$52/+$64/+$76, SS beam); + corridor plumbing-panel structure (+$215/+$380 — previously uncosted)
+    "grand_total": (22851, 28784, 36712),  # 2026-07-12: §5 water +$334/+$281 (bulkhead-2in verified $137 ea; spray fab-from-stock). EP plywood backboard + IP65 enclosure over the fuse/busbar terminals (+$60 §5a — enclosure kept ALONGSIDE the plywood). audit 2026-07: pinhole retaining ring (+$15/$25); D-ring 4→8; +$2 Powerpole (1/pump); filter 3-separate design (−$50/−$65). pump switches 5→1 master (−$26 §5a). IBC frame deep 4-leg box (+$25/+$38/+$50). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (+$52/+$64/+$76, SS beam); + corridor plumbing-panel structure (+$215/+$380 — previously uncosted)
     "walkway": (2000, 2488, 2975),   # §6a fab line raised so bracket scope matches walkway-report §10 ($742–$1,255 all-in)
-    "water": (5022, 6339, 7648),   # audit 2026-07: D-ring 4→8 (+$20/+$35); +$2 Powerpole 5 pair (1/pump); filter combo → 3 separate housings + frame (−$50/−$65). IBC frame portal → deep 4-leg box (+$25/+$38/+$50: 4 feet + 16 anchors). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105: 20" housings + cartridges). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (40×40 alu → 40×25 304-SS + Ø32 wheels, spray line +$52/+$64/+$76); + corridor plumbing-panel structure (+$215/+$298/+$380 — was uncosted); panel-split cascade 2026-06-28 (+P-05, +SV-02, +5th bracket, −2 CV, +X1 4-way cross, BVs, +Blue equalization tie)
+    "water": (5356, 6647, 7929),   # 2026-07-12: bulkhead-2in verified $137 ea (was $25-40 → +$335/+$290 on storage); spray saddle+wheel → fab-from-stock qty=1 (−$1/−$9). audit 2026-07: D-ring 4→8 (+$20/+$35); +$2 Powerpole 5 pair (1/pump); filter combo → 3 separate housings + frame (−$50/−$65). IBC frame portal → deep 4-leg box (+$25/+$38/+$50: 4 feet + 16 anchors). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105: 20" housings + cartridges). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (40×40 alu → 40×25 304-SS + Ø32 wheels, spray line +$52/+$64/+$76); + corridor plumbing-panel structure (+$215/+$298/+$380 — was uncosted); panel-split cascade 2026-06-28 (+P-05, +SV-02, +5th bracket, −2 CV, +X1 4-way cross, BVs, +Blue equalization tie)
     "container": (2300, 3300, 4300),
     "lightlock": (1405, 1768, 2130),   # §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (855, 1143, 1430),   # §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items

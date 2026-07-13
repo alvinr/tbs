@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $110 | $265 |
 | 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,437 | $3,925 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $5,022 | $7,648 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $5,356 | $7,929 |
 | 6. Electrical — power, circuits, wiring | $2,608 | $3,003 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,405 | $2,130 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $855 | $1,430 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$22,467** | **~$33,491** |
+| **TOTAL (base build + 50-print run)** | **~$22,801** | **~$33,772** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -81,7 +81,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Acetal (Delrin) roller wheel, Ø32 × 20mm, Ø10 plain bore | 4 ea | McMaster-Carr | spray | $12–$20 |
+| Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore) | 1 1 ft rod | McMaster-Carr | spray | $11 |
 | Acme leadscrew ¾"-6 | 4 ea | Roton Products | film | $380 |
 | Acme nut bronze ¾"-6 | 4 ea | Roton Products | film | $48 |
 | Cross-slide carriage HGH15CA (Option A) | 8 ea | Automation Overstock | film | $96 |
@@ -95,7 +95,7 @@ indicative low–high estimates — get quotes before ordering.
 | SKF 6215-2RS1 sealed bearing | 2 ea | Bearing World | lightlock | $110–$190 |
 | Turntable thrust bearing, 12″ (Ø305) 1000 lb | 1 ea | VXB | swing | $40–$60 |
 | Ø20mm ball joint, zinc socket, M12 stud | 1 ea | Amazon | spray | $12 |
-| **bearings-motion subtotal** | | | | **$1,646–$1,804** |
+| **bearings-motion subtotal** | | | | **$1,645–$1,795** |
 
 ### chemistry-reagents
 
@@ -209,13 +209,13 @@ indicative low–high estimates — get quotes before ordering.
 | 25mm ratchet strap, 1,100 kg WLL | 4 ea | Amazon | ibc-frame | $30–$50 |
 | 25mm welded D-ring | 8 ea | McMaster-Carr | ibc-frame | $40–$70 |
 | 316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black | 1 ea | McMaster-Carr | panel | $20–$35 |
+| Axle saddle clamps ×8 (304 SS flat-bar stock) | 1 2 ft bar | McMaster-Carr | spray | $10 |
 | Cam-lever spring clamp | 92 ea | McMaster-Carr | clamp | $276–$736 |
 | Continuous (piano) hinge, 600 mm | 1 ea | McMaster-Carr | shelf | $20 |
 | Corridor panel mount hardware (brackets + fasteners) | 1 lot | Home Depot | water | $25–$50 |
 | Cushioned pipe clip | 16 ea | Amazon | water | $16–$32 |
 | Door & access upgrades | 1 lot | Home Depot | interior | $50–$100 |
 | Folding shelf stays/brackets | 2 ea | Amazon | shelf | $24 |
-| Formed 3.18mm 304 SS saddle clamp (axle retainer) | 8 ea | McMaster-Carr | spray | $10 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | M10 wedge floor anchors | 20 ea | McMaster-Carr | walkway | $25–$45 |
 | M12 floor anchor (wedge/sleeve, container floor) | 16 ea | McMaster-Carr | ibc-frame | $30–$60 |
@@ -295,14 +295,14 @@ indicative low–high estimates — get quotes before ordering.
 | Banjo V050FP ball valve 1/2" FNPT | 2 ea | Barn Door Ag | water | $60–$90 |
 | Banjo V100FP ball valve 1" FNPT | 6 ea | Barn Door Ag | water | $198–$330 |
 | Barbed tees, tube into the side poly manifold | 7 ea | Amazon | spray | $10 |
-| Bulkhead fitting 2" NPT (304 SS) | 3 ea | McMaster-Carr | water | $75–$120 |
+| Bulkhead fitting 2" NPT (304 SS) | 3 ea | McMaster-Carr | water | $410 |
 | Distribution manifold, 1/2" → 7 barb outlets | 1 ea | Amazon | spray | $12 |
 | Flat-fan irrigation spray nozzles, barbed | 26 ea | Amazon | spray | $30–$50 |
 | pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | Amazon | water | $10–$18 |
 | pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | Amazon | water | $10–$18 |
 | S60×6 to 1" NPT adapter | 8 ea | JME Sales | water | $64–$120 |
 | ½" HDPE pipe (tap relocation) | 1 lot | Irrigation supply | shelf | $10 |
-| **plumbing-fittings subtotal** | | | | **$948–$1,505** |
+| **plumbing-fittings subtotal** | | | | **$1,283–$1,795** |
 
 ### seals-gaskets
 
@@ -419,7 +419,7 @@ indicative low–high estimates — get quotes before ordering.
 |----------|-----------|-------|-----------|
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 17 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,961–$3,181 |
-| McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $1,850–$2,842 |
+| McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $2,184–$3,123 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,301–$1,638 |

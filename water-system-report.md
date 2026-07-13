@@ -338,7 +338,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | [IBC tote (1,000 L caged)](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | Caged composite tote, DN50 butterfly valve (S60×6 thread); side-entry fittings near top | 4 ea | Container Exchanger | $320–$600 |
-| [Bulkhead fitting 2" NPT (304 SS)](https://www.mcmaster.com/4464K115) (4464K115) | External fill/drain port, welded through container wall | 3 ea | McMaster-Carr | $75–$120 |
+| [Bulkhead fitting 2" NPT (304 SS)](https://www.mcmaster.com/4464K115) (4464K115) | External fill/drain port, welded through container wall | 3 ea | McMaster-Carr | $410 |
 | [Shurflo 2088-554-144 pump (P-01 Blue supply)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
 | [Shurflo 2088-554-144 pump (P-02 filter loop)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
 | Shurflo 2088-554-144 pump (P-03 waste evacuation) | 12VDC, 3.5 GPM, 45 PSI; empties IBC-4 residual below X4 (~120L) | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
@@ -393,7 +393,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $18–$40 |
-| **Water total** | | | | **$2,435–$3,718** |
+| **Water total** | | | | **$2,770–$4,008** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own
@@ -408,7 +408,7 @@ reports — [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) and
 |----------|-------------|--------------|
 | Water equipment — §8 BOM (IBC storage, pumps + accumulator, 3-stage filter train, valves & fittings, pipe, wiring, consumables) | $2,073 | $3,123 |
 | Processing tray (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.1) | <!-- BEGIN costing:tray-low -->$1,300<!-- END costing:tray-low --> | <!-- BEGIN costing:tray-high -->$2,015<!-- END costing:tray-high --> |
-| Spray bar assembly (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.2) | <!-- BEGIN costing:spray-low -->$287<!-- END costing:spray-low --> | <!-- BEGIN costing:spray-high -->$375<!-- END costing:spray-high --> |
+| Spray bar assembly (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.2) | <!-- BEGIN costing:spray-low -->$286<!-- END costing:spray-low --> | <!-- BEGIN costing:spray-high -->$366<!-- END costing:spray-high --> |
 | **TOTAL** | **$3,660** | **$5,513** |
 
 *The Water-equipment row is the generated §8 `parts:water` BOM total (single source of record for the water subsystem — storage/pumps/filters/valves/pipe/consumables); the tray and spray-bar rows are `costing.py` blocks. The TOTAL is a hand sum of the three and should itself become a generated block (Phase-1 backlog).*

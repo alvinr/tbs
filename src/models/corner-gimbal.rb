@@ -36,48 +36,85 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Carriage HGH20CA (bot)
+  # Focus carriage HGH20CA (bot)
   grp = ents.add_group
-  grp.name = "Carriage HGH20CA (bot)"
+  grp.name = "Focus carriage HGH20CA (bot)"
   face = grp.entities.add_face([-22.mm,-30.mm,18.mm], [22.mm,-30.mm,18.mm], [22.mm,30.mm,18.mm], [-22.mm,30.mm,18.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Carriage HGH20CA (bot)"] || model.materials.add("Carriage HGH20CA (bot)")
+  mat = model.materials["Focus carriage HGH20CA (bot)"] || model.materials.add("Focus carriage HGH20CA (bot)")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Z screw bearing (bot)
+  # Focus Acme screw Y (bot)
   grp = ents.add_group
-  grp.name = "Z screw bearing (bot)"
-  face = grp.entities.add_face([-14.mm,-14.mm,30.mm], [14.mm,-14.mm,30.mm], [14.mm,14.mm,30.mm], [-14.mm,14.mm,30.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Depth rail Y focus (bot)"] || model.materials.add("Depth rail Y focus (bot)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Vertical Z leadscrew driven (bot)
-  grp = ents.add_group
-  grp.name = "Vertical Z leadscrew driven (bot)"
+  grp.name = "Focus Acme screw Y (bot)"
   ge = grp.entities
-  circle = ge.add_circle([0.mm,0.mm,36.mm], [0,0,1], 6.mm, 24)
+  circle = ge.add_circle([34.mm,-185.mm,9.mm], [0,1,0], 5.mm, 24)
   cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(86.mm)
-  mat = model.materials["Vertical Z leadscrew driven (bot)"] || model.materials.add("Vertical Z leadscrew driven (bot)")
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(365.mm)
+  mat = model.materials["Focus Acme screw Y (bot)"] || model.materials.add("Focus Acme screw Y (bot)")
   mat.color = Sketchup::Color.new(144, 152, 160)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Z drive nut (bot)
+  # Focus handwheel (bot)
   grp = ents.add_group
-  grp.name = "Z drive nut (bot)"
-  face = grp.entities.add_face([-16.mm,-16.mm,92.mm], [16.mm,-16.mm,92.mm], [16.mm,16.mm,92.mm], [-16.mm,16.mm,92.mm])
+  grp.name = "Focus handwheel (bot)"
+  ge = grp.entities
+  circle = ge.add_circle([34.mm,-210.mm,9.mm], [0,1,0], 55.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Focus handwheel (bot)"] || model.materials.add("Focus handwheel (bot)")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Outboard carriage bracket (bot)
+  grp = ents.add_group
+  grp.name = "Outboard carriage bracket (bot)"
+  face = grp.entities.add_face([-66.mm,-12.mm,18.mm], [-22.mm,-12.mm,18.mm], [-22.mm,12.mm,18.mm], [-66.mm,12.mm,18.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(20.mm)
-  mat = model.materials["Z drive nut (bot)"] || model.materials.add("Z drive nut (bot)")
+  face.pushpull(16.mm)
+  mat = model.materials["Outboard carriage bracket (bot)"] || model.materials.add("Outboard carriage bracket (bot)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z Acme (outboard) (bot)
+  grp = ents.add_group
+  grp.name = "Vertical Z Acme (outboard) (bot)"
+  ge = grp.entities
+  circle = ge.add_circle([-52.mm,0.mm,30.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(320.mm)
+  mat = model.materials["Focus Acme screw Y (bot)"] || model.materials.add("Focus Acme screw Y (bot)")
+  mat.color = Sketchup::Color.new(144, 152, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vert drive nut (bot)
+  grp = ents.add_group
+  grp.name = "Vert drive nut (bot)"
+  face = grp.entities.add_face([-64.mm,-12.mm,142.mm], [-40.mm,-12.mm,142.mm], [-40.mm,12.mm,142.mm], [-64.mm,12.mm,142.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Outboard carriage bracket (bot)"] || model.materials.add("Outboard carriage bracket (bot)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nut bracket to X-slide (bot)
+  grp = ents.add_group
+  grp.name = "Nut bracket to X-slide (bot)"
+  face = grp.entities.add_face([-52.mm,-8.mm,150.mm], [-2.mm,-8.mm,150.mm], [-2.mm,8.mm,150.mm], [-52.mm,8.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Outboard carriage bracket (bot)"] || model.materials.add("Outboard carriage bracket (bot)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -85,9 +122,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Floating X slide (bot)
   grp = ents.add_group
   grp.name = "Floating X slide (bot)"
-  face = grp.entities.add_face([-24.mm,-11.mm,116.mm], [24.mm,-11.mm,116.mm], [24.mm,11.mm,116.mm], [-24.mm,11.mm,116.mm])
+  face = grp.entities.add_face([-24.mm,-11.mm,152.mm], [24.mm,-11.mm,152.mm], [24.mm,11.mm,152.mm], [-24.mm,11.mm,152.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
+  face.pushpull(8.mm)
   mat = model.materials["Floating X slide (bot)"] || model.materials.add("Floating X slide (bot)")
   mat.color = Sketchup::Color.new(184, 200, 216)
   mat.alpha = 1.0
@@ -96,7 +133,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-joint cross (bot)
   grp = ents.add_group
   grp.name = "U-joint cross (bot)"
-  face = grp.entities.add_face([-10.mm,-10.mm,130.mm], [10.mm,-10.mm,130.mm], [10.mm,10.mm,130.mm], [-10.mm,10.mm,130.mm])
+  face = grp.entities.add_face([-10.mm,-10.mm,164.mm], [10.mm,-10.mm,164.mm], [10.mm,10.mm,164.mm], [-10.mm,10.mm,164.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
   mat = model.materials["U-joint cross (bot)"] || model.materials.add("U-joint cross (bot)")
@@ -108,7 +145,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Tilt pin X (bot)"
   ge = grp.entities
-  circle = ge.add_circle([-26.mm,-4.mm,140.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([-26.mm,-4.mm,174.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(52.mm)
@@ -121,7 +158,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Swing pin Z (bot)"
   ge = grp.entities
-  circle = ge.add_circle([0.mm,4.mm,126.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([0.mm,4.mm,160.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(30.mm)
@@ -133,10 +170,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Out yoke ear L (bot)
   grp = ents.add_group
   grp.name = "Out yoke ear L (bot)"
-  face = grp.entities.add_face([-30.mm,-10.mm,130.mm], [-22.mm,-10.mm,130.mm], [-22.mm,10.mm,130.mm], [-30.mm,10.mm,130.mm])
+  face = grp.entities.add_face([-30.mm,-10.mm,164.mm], [-22.mm,-10.mm,164.mm], [-22.mm,10.mm,164.mm], [-30.mm,10.mm,164.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
-  mat = model.materials["Z drive nut (bot)"] || model.materials.add("Z drive nut (bot)")
+  mat = model.materials["Outboard carriage bracket (bot)"] || model.materials.add("Outboard carriage bracket (bot)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -144,10 +181,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Out yoke ear R (bot)
   grp = ents.add_group
   grp.name = "Out yoke ear R (bot)"
-  face = grp.entities.add_face([22.mm,-10.mm,130.mm], [30.mm,-10.mm,130.mm], [30.mm,10.mm,130.mm], [22.mm,10.mm,130.mm])
+  face = grp.entities.add_face([22.mm,-10.mm,164.mm], [30.mm,-10.mm,164.mm], [30.mm,10.mm,164.mm], [22.mm,10.mm,164.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
-  mat = model.materials["Z drive nut (bot)"] || model.materials.add("Z drive nut (bot)")
+  mat = model.materials["Outboard carriage bracket (bot)"] || model.materials.add("Outboard carriage bracket (bot)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -155,10 +192,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Out yoke web (bot)
   grp = ents.add_group
   grp.name = "Out yoke web (bot)"
-  face = grp.entities.add_face([-30.mm,10.mm,132.mm], [30.mm,10.mm,132.mm], [30.mm,18.mm,132.mm], [-30.mm,18.mm,132.mm])
+  face = grp.entities.add_face([-30.mm,10.mm,166.mm], [30.mm,10.mm,166.mm], [30.mm,18.mm,166.mm], [-30.mm,18.mm,166.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
-  mat = model.materials["Z drive nut (bot)"] || model.materials.add("Z drive nut (bot)")
+  mat = model.materials["Outboard carriage bracket (bot)"] || model.materials.add("Outboard carriage bracket (bot)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -166,10 +203,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Out yoke stub (bot)
   grp = ents.add_group
   grp.name = "Out yoke stub (bot)"
-  face = grp.entities.add_face([-6.mm,17.mm,134.mm], [6.mm,17.mm,134.mm], [6.mm,47.mm,134.mm], [-6.mm,47.mm,134.mm])
+  face = grp.entities.add_face([-6.mm,17.mm,168.mm], [6.mm,17.mm,168.mm], [6.mm,47.mm,168.mm], [-6.mm,47.mm,168.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Z drive nut (bot)"] || model.materials.add("Z drive nut (bot)")
+  mat = model.materials["Outboard carriage bracket (bot)"] || model.materials.add("Outboard carriage bracket (bot)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -177,7 +214,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # In yoke ear Lo (bot)
   grp = ents.add_group
   grp.name = "In yoke ear Lo (bot)"
-  face = grp.entities.add_face([-9.mm,-9.mm,122.mm], [9.mm,-9.mm,122.mm], [9.mm,9.mm,122.mm], [-9.mm,9.mm,122.mm])
+  face = grp.entities.add_face([-9.mm,-9.mm,156.mm], [9.mm,-9.mm,156.mm], [9.mm,9.mm,156.mm], [-9.mm,9.mm,156.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Floating X slide (bot)"] || model.materials.add("Floating X slide (bot)")
@@ -188,7 +225,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # In yoke ear Hi (bot)
   grp = ents.add_group
   grp.name = "In yoke ear Hi (bot)"
-  face = grp.entities.add_face([-9.mm,-9.mm,146.mm], [9.mm,-9.mm,146.mm], [9.mm,9.mm,146.mm], [-9.mm,9.mm,146.mm])
+  face = grp.entities.add_face([-9.mm,-9.mm,180.mm], [9.mm,-9.mm,180.mm], [9.mm,9.mm,180.mm], [-9.mm,9.mm,180.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Floating X slide (bot)"] || model.materials.add("Floating X slide (bot)")
@@ -199,7 +236,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # In yoke web (bot)
   grp = ents.add_group
   grp.name = "In yoke web (bot)"
-  face = grp.entities.add_face([-8.mm,-17.mm,122.mm], [8.mm,-17.mm,122.mm], [8.mm,-9.mm,122.mm], [-8.mm,-9.mm,122.mm])
+  face = grp.entities.add_face([-8.mm,-17.mm,156.mm], [8.mm,-17.mm,156.mm], [8.mm,-9.mm,156.mm], [-8.mm,-9.mm,156.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(36.mm)
   mat = model.materials["Floating X slide (bot)"] || model.materials.add("Floating X slide (bot)")
@@ -210,11 +247,48 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Stub-to-frame plate (bot)
   grp = ents.add_group
   grp.name = "Stub-to-frame plate (bot)"
-  face = grp.entities.add_face([-10.mm,40.mm,120.mm], [60.mm,40.mm,120.mm], [60.mm,50.mm,120.mm], [-10.mm,50.mm,120.mm])
+  face = grp.entities.add_face([-10.mm,40.mm,150.mm], [60.mm,40.mm,150.mm], [60.mm,50.mm,150.mm], [-10.mm,50.mm,150.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(60.mm)
+  face.pushpull(62.mm)
   mat = model.materials["Stub-to-frame plate (bot)"] || model.materials.add("Stub-to-frame plate (bot)")
   mat.color = Sketchup::Color.new(42, 107, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vert drive extension (bot)
+  grp = ents.add_group
+  grp.name = "Vert drive extension (bot)"
+  ge = grp.entities
+  circle = ge.add_circle([-52.mm,0.mm,350.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(850.mm)
+  mat = model.materials["Focus Acme screw Y (bot)"] || model.materials.add("Focus Acme screw Y (bot)")
+  mat.color = Sketchup::Color.new(144, 152, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bevel gearbox (bot)
+  grp = ents.add_group
+  grp.name = "Bevel gearbox (bot)"
+  face = grp.entities.add_face([-66.mm,-16.mm,1184.mm], [-38.mm,-16.mm,1184.mm], [-38.mm,16.mm,1184.mm], [-66.mm,16.mm,1184.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(32.mm)
+  mat = model.materials["Depth rail Y focus (bot)"] || model.materials.add("Depth rail Y focus (bot)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vert handwheel (1.2m) (bot)
+  grp = ents.add_group
+  grp.name = "Vert handwheel (1.2m) (bot)"
+  ge = grp.entities
+  circle = ge.add_circle([-52.mm,-50.mm,1200.mm], [0,1,0], 60.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Focus handwheel (bot)"] || model.materials.add("Focus handwheel (bot)")
+  mat.color = Sketchup::Color.new(58, 58, 64)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -236,48 +310,85 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Carriage HGH20CA (top)
+  # Focus carriage HGH20CA (top)
   grp = ents.add_group
-  grp.name = "Carriage HGH20CA (top)"
+  grp.name = "Focus carriage HGH20CA (top)"
   face = grp.entities.add_face([-22.mm,-30.mm,2358.mm], [22.mm,-30.mm,2358.mm], [22.mm,30.mm,2358.mm], [-22.mm,30.mm,2358.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Carriage HGH20CA (bot)"] || model.materials.add("Carriage HGH20CA (bot)")
+  mat = model.materials["Focus carriage HGH20CA (bot)"] || model.materials.add("Focus carriage HGH20CA (bot)")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Z screw bearing (top)
+  # Focus Acme screw Y (top)
   grp = ents.add_group
-  grp.name = "Z screw bearing (top)"
-  face = grp.entities.add_face([-14.mm,-14.mm,2352.mm], [14.mm,-14.mm,2352.mm], [14.mm,14.mm,2352.mm], [-14.mm,14.mm,2352.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Depth rail Y focus (bot)"] || model.materials.add("Depth rail Y focus (bot)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Vertical Z leadscrew driven (top)
-  grp = ents.add_group
-  grp.name = "Vertical Z leadscrew driven (top)"
+  grp.name = "Focus Acme screw Y (top)"
   ge = grp.entities
-  circle = ge.add_circle([0.mm,0.mm,2266.mm], [0,0,1], 6.mm, 24)
+  circle = ge.add_circle([34.mm,-185.mm,2379.mm], [0,1,0], 5.mm, 24)
   cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(86.mm)
-  mat = model.materials["Vertical Z leadscrew driven (bot)"] || model.materials.add("Vertical Z leadscrew driven (bot)")
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(365.mm)
+  mat = model.materials["Focus Acme screw Y (bot)"] || model.materials.add("Focus Acme screw Y (bot)")
   mat.color = Sketchup::Color.new(144, 152, 160)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Z drive nut (top)
+  # Focus handwheel (top)
   grp = ents.add_group
-  grp.name = "Z drive nut (top)"
-  face = grp.entities.add_face([-16.mm,-16.mm,2276.mm], [16.mm,-16.mm,2276.mm], [16.mm,16.mm,2276.mm], [-16.mm,16.mm,2276.mm])
+  grp.name = "Focus handwheel (top)"
+  ge = grp.entities
+  circle = ge.add_circle([34.mm,-210.mm,2379.mm], [0,1,0], 55.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Focus handwheel (bot)"] || model.materials.add("Focus handwheel (bot)")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Outboard carriage bracket (top)
+  grp = ents.add_group
+  grp.name = "Outboard carriage bracket (top)"
+  face = grp.entities.add_face([-66.mm,-12.mm,2354.mm], [-22.mm,-12.mm,2354.mm], [-22.mm,12.mm,2354.mm], [-66.mm,12.mm,2354.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(20.mm)
-  mat = model.materials["Z drive nut (bot)"] || model.materials.add("Z drive nut (bot)")
+  face.pushpull(16.mm)
+  mat = model.materials["Outboard carriage bracket (bot)"] || model.materials.add("Outboard carriage bracket (bot)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z Acme (outboard) (top)
+  grp = ents.add_group
+  grp.name = "Vertical Z Acme (outboard) (top)"
+  ge = grp.entities
+  circle = ge.add_circle([-52.mm,0.mm,2038.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(320.mm)
+  mat = model.materials["Focus Acme screw Y (bot)"] || model.materials.add("Focus Acme screw Y (bot)")
+  mat.color = Sketchup::Color.new(144, 152, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vert drive nut (top)
+  grp = ents.add_group
+  grp.name = "Vert drive nut (top)"
+  face = grp.entities.add_face([-64.mm,-12.mm,2222.mm], [-40.mm,-12.mm,2222.mm], [-40.mm,12.mm,2222.mm], [-64.mm,12.mm,2222.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Outboard carriage bracket (bot)"] || model.materials.add("Outboard carriage bracket (bot)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nut bracket to X-slide (top)
+  grp = ents.add_group
+  grp.name = "Nut bracket to X-slide (top)"
+  face = grp.entities.add_face([-52.mm,-8.mm,2226.mm], [-2.mm,-8.mm,2226.mm], [-2.mm,8.mm,2226.mm], [-52.mm,8.mm,2226.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Outboard carriage bracket (bot)"] || model.materials.add("Outboard carriage bracket (bot)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -285,9 +396,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Floating X slide (top)
   grp = ents.add_group
   grp.name = "Floating X slide (top)"
-  face = grp.entities.add_face([-24.mm,-11.mm,2262.mm], [24.mm,-11.mm,2262.mm], [24.mm,11.mm,2262.mm], [-24.mm,11.mm,2262.mm])
+  face = grp.entities.add_face([-24.mm,-11.mm,2228.mm], [24.mm,-11.mm,2228.mm], [24.mm,11.mm,2228.mm], [-24.mm,11.mm,2228.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
+  face.pushpull(8.mm)
   mat = model.materials["Floating X slide (bot)"] || model.materials.add("Floating X slide (bot)")
   mat.color = Sketchup::Color.new(184, 200, 216)
   mat.alpha = 1.0
@@ -296,7 +407,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-joint cross (top)
   grp = ents.add_group
   grp.name = "U-joint cross (top)"
-  face = grp.entities.add_face([-10.mm,-10.mm,2238.mm], [10.mm,-10.mm,2238.mm], [10.mm,10.mm,2238.mm], [-10.mm,10.mm,2238.mm])
+  face = grp.entities.add_face([-10.mm,-10.mm,2204.mm], [10.mm,-10.mm,2204.mm], [10.mm,10.mm,2204.mm], [-10.mm,10.mm,2204.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
   mat = model.materials["U-joint cross (bot)"] || model.materials.add("U-joint cross (bot)")
@@ -308,7 +419,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Tilt pin X (top)"
   ge = grp.entities
-  circle = ge.add_circle([-26.mm,-4.mm,2248.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([-26.mm,-4.mm,2214.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(52.mm)
@@ -321,7 +432,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Swing pin Z (top)"
   ge = grp.entities
-  circle = ge.add_circle([0.mm,4.mm,2232.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([0.mm,4.mm,2198.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(30.mm)
@@ -333,10 +444,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Out yoke ear L (top)
   grp = ents.add_group
   grp.name = "Out yoke ear L (top)"
-  face = grp.entities.add_face([-30.mm,-10.mm,2238.mm], [-22.mm,-10.mm,2238.mm], [-22.mm,10.mm,2238.mm], [-30.mm,10.mm,2238.mm])
+  face = grp.entities.add_face([-30.mm,-10.mm,2204.mm], [-22.mm,-10.mm,2204.mm], [-22.mm,10.mm,2204.mm], [-30.mm,10.mm,2204.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
-  mat = model.materials["Z drive nut (bot)"] || model.materials.add("Z drive nut (bot)")
+  mat = model.materials["Outboard carriage bracket (bot)"] || model.materials.add("Outboard carriage bracket (bot)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -344,10 +455,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Out yoke ear R (top)
   grp = ents.add_group
   grp.name = "Out yoke ear R (top)"
-  face = grp.entities.add_face([22.mm,-10.mm,2238.mm], [30.mm,-10.mm,2238.mm], [30.mm,10.mm,2238.mm], [22.mm,10.mm,2238.mm])
+  face = grp.entities.add_face([22.mm,-10.mm,2204.mm], [30.mm,-10.mm,2204.mm], [30.mm,10.mm,2204.mm], [22.mm,10.mm,2204.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
-  mat = model.materials["Z drive nut (bot)"] || model.materials.add("Z drive nut (bot)")
+  mat = model.materials["Outboard carriage bracket (bot)"] || model.materials.add("Outboard carriage bracket (bot)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -355,10 +466,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Out yoke web (top)
   grp = ents.add_group
   grp.name = "Out yoke web (top)"
-  face = grp.entities.add_face([-30.mm,10.mm,2240.mm], [30.mm,10.mm,2240.mm], [30.mm,18.mm,2240.mm], [-30.mm,18.mm,2240.mm])
+  face = grp.entities.add_face([-30.mm,10.mm,2206.mm], [30.mm,10.mm,2206.mm], [30.mm,18.mm,2206.mm], [-30.mm,18.mm,2206.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
-  mat = model.materials["Z drive nut (bot)"] || model.materials.add("Z drive nut (bot)")
+  mat = model.materials["Outboard carriage bracket (bot)"] || model.materials.add("Outboard carriage bracket (bot)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -366,10 +477,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Out yoke stub (top)
   grp = ents.add_group
   grp.name = "Out yoke stub (top)"
-  face = grp.entities.add_face([-6.mm,17.mm,2242.mm], [6.mm,17.mm,2242.mm], [6.mm,47.mm,2242.mm], [-6.mm,47.mm,2242.mm])
+  face = grp.entities.add_face([-6.mm,17.mm,2208.mm], [6.mm,17.mm,2208.mm], [6.mm,47.mm,2208.mm], [-6.mm,47.mm,2208.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Z drive nut (bot)"] || model.materials.add("Z drive nut (bot)")
+  mat = model.materials["Outboard carriage bracket (bot)"] || model.materials.add("Outboard carriage bracket (bot)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -377,7 +488,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # In yoke ear Lo (top)
   grp = ents.add_group
   grp.name = "In yoke ear Lo (top)"
-  face = grp.entities.add_face([-9.mm,-9.mm,2254.mm], [9.mm,-9.mm,2254.mm], [9.mm,9.mm,2254.mm], [-9.mm,9.mm,2254.mm])
+  face = grp.entities.add_face([-9.mm,-9.mm,2220.mm], [9.mm,-9.mm,2220.mm], [9.mm,9.mm,2220.mm], [-9.mm,9.mm,2220.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Floating X slide (bot)"] || model.materials.add("Floating X slide (bot)")
@@ -388,7 +499,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # In yoke ear Hi (top)
   grp = ents.add_group
   grp.name = "In yoke ear Hi (top)"
-  face = grp.entities.add_face([-9.mm,-9.mm,2230.mm], [9.mm,-9.mm,2230.mm], [9.mm,9.mm,2230.mm], [-9.mm,9.mm,2230.mm])
+  face = grp.entities.add_face([-9.mm,-9.mm,2196.mm], [9.mm,-9.mm,2196.mm], [9.mm,9.mm,2196.mm], [-9.mm,9.mm,2196.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Floating X slide (bot)"] || model.materials.add("Floating X slide (bot)")
@@ -399,7 +510,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # In yoke web (top)
   grp = ents.add_group
   grp.name = "In yoke web (top)"
-  face = grp.entities.add_face([-8.mm,-17.mm,2230.mm], [8.mm,-17.mm,2230.mm], [8.mm,-9.mm,2230.mm], [-8.mm,-9.mm,2230.mm])
+  face = grp.entities.add_face([-8.mm,-17.mm,2196.mm], [8.mm,-17.mm,2196.mm], [8.mm,-9.mm,2196.mm], [-8.mm,-9.mm,2196.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(36.mm)
   mat = model.materials["Floating X slide (bot)"] || model.materials.add("Floating X slide (bot)")
@@ -410,11 +521,48 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Stub-to-frame plate (top)
   grp = ents.add_group
   grp.name = "Stub-to-frame plate (top)"
-  face = grp.entities.add_face([-10.mm,40.mm,2208.mm], [60.mm,40.mm,2208.mm], [60.mm,50.mm,2208.mm], [-10.mm,50.mm,2208.mm])
+  face = grp.entities.add_face([-10.mm,40.mm,2176.mm], [60.mm,40.mm,2176.mm], [60.mm,50.mm,2176.mm], [-10.mm,50.mm,2176.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(60.mm)
+  face.pushpull(62.mm)
   mat = model.materials["Stub-to-frame plate (bot)"] || model.materials.add("Stub-to-frame plate (bot)")
   mat.color = Sketchup::Color.new(42, 107, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vert drive extension (top)
+  grp = ents.add_group
+  grp.name = "Vert drive extension (top)"
+  ge = grp.entities
+  circle = ge.add_circle([-52.mm,0.mm,1200.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(838.mm)
+  mat = model.materials["Focus Acme screw Y (bot)"] || model.materials.add("Focus Acme screw Y (bot)")
+  mat.color = Sketchup::Color.new(144, 152, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bevel gearbox (top)
+  grp = ents.add_group
+  grp.name = "Bevel gearbox (top)"
+  face = grp.entities.add_face([-66.mm,-16.mm,1184.mm], [-38.mm,-16.mm,1184.mm], [-38.mm,16.mm,1184.mm], [-66.mm,16.mm,1184.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(32.mm)
+  mat = model.materials["Depth rail Y focus (bot)"] || model.materials.add("Depth rail Y focus (bot)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vert handwheel (1.2m) (top)
+  grp = ents.add_group
+  grp.name = "Vert handwheel (1.2m) (top)"
+  ge = grp.entities
+  circle = ge.add_circle([-52.mm,-50.mm,1200.mm], [0,1,0], 60.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Focus handwheel (bot)"] || model.materials.add("Focus handwheel (bot)")
+  mat.color = Sketchup::Color.new(58, 58, 64)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -471,16 +619,22 @@ tt.layer = model.layers["Labels"] rescue nil
 tt = entities.add_text("FLOOR rail (Y focus) — BOTTOM corners BEAR = COMPRESSION", Geom::Point3d.new(0.mm, -170.mm, 0.mm), Geom::Vector3d.new(40.mm, -60.mm, -30.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("Single U-joint (Ruland US12-6-6-SS) — tilt X + swing Z, twist locked", Geom::Point3d.new(-30.mm, -4.mm, 170.mm), Geom::Vector3d.new(-60.mm, -40.mm, 10.mm))
+tt = entities.add_text("Single U-joint (Ruland US12-6-6-SS) — tilt X + swing Z", Geom::Point3d.new(-30.mm, -4.mm, 190.mm), Geom::Vector3d.new(-60.mm, -40.mm, 10.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("DRIVEN vertical Z leadscrew (self-locking)", Geom::Point3d.new(16.mm, 0.mm, 100.mm), Geom::Vector3d.new(55.mm, 45.mm, 0.mm))
+tt = entities.add_text("OUTBOARD vertical Z Acme (self-locking, clear of light cone)", Geom::Point3d.new(-52.mm, 0.mm, 500.mm), Geom::Vector3d.new(-60.mm, -40.mm, 0.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("Floating X slide (horizontal arc)", Geom::Point3d.new(24.mm, 0.mm, 122.mm), Geom::Vector3d.new(55.mm, 45.mm, 0.mm))
+tt = entities.add_text("Bevel gearbox + handwheel at 1.2 m (reachable)", Geom::Point3d.new(-52.mm, -50.mm, 1200.mm), Geom::Vector3d.new(-60.mm, -45.mm, 0.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("Film plane 4499 x 2088 (mechanism takes ~150 top + bottom)", Geom::Point3d.new(300.mm, 53.mm, 1194.mm), Geom::Vector3d.new(60.mm, 45.mm, 0.mm))
+tt = entities.add_text("Floating X slide (horizontal arc)", Geom::Point3d.new(24.mm, 0.mm, 156.mm), Geom::Vector3d.new(55.mm, 45.mm, 0.mm))
+tt.layer = model.layers["Labels"] rescue nil
+
+tt = entities.add_text("Focus Acme screw + handwheel (Y)", Geom::Point3d.new(34.mm, -210.mm, 1194.mm), Geom::Vector3d.new(55.mm, -50.mm, 0.mm))
+tt.layer = model.layers["Labels"] rescue nil
+
+tt = entities.add_text("Film plane 4499 x 2088 (mechanism ~150 top + bottom)", Geom::Point3d.new(300.mm, 53.mm, 1194.mm), Geom::Vector3d.new(60.mm, 45.mm, 0.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
 # ── In-model © + license credit (default layer → shown in every scene) ──
@@ -501,7 +655,7 @@ model.layers.to_a.each { |l|
 }
 
 dir = Geom::Vector3d.new(0.55, -0.72, 0.30); dir.normalize!
-[["Overview", ["Bottom Corner", "Top Corner", "Film Plane"], nil], ["Bottom Corner", ["Bottom Corner", "Film Plane"], [0.mm, 0.mm, 150.mm, 320.mm]], ["Top Corner", ["Top Corner", "Film Plane"], [0.mm, 0.mm, 2238.mm, 320.mm]], ["Labeled", ["Bottom Corner", "Top Corner", "Film Plane", "Labels"], nil]].each { |name, tags, tgt|
+[["Overview", ["Bottom Corner", "Top Corner", "Film Plane"], nil], ["Bottom Corner", ["Bottom Corner", "Film Plane"], [0.mm, 0.mm, 150.mm, 360.mm]], ["Top Corner", ["Top Corner", "Film Plane"], [0.mm, 0.mm, 2238.mm, 360.mm]], ["Labeled", ["Bottom Corner", "Top Corner", "Film Plane", "Labels"], nil]].each { |name, tags, tgt|
   model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
   if tgt
     t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])

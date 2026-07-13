@@ -1,180 +1,149 @@
 <!-- SPDX-License-Identifier: AGPL-3.0-only -->
 <!-- © 2026 Alvin Richards -->
-# Film-Plane Tilt/Swing Joint — Grounded Mechanism Research
+# Film-Plane Tilt/Swing — Grounded Mechanism Research
 
-**Branch:** `film-plane-redesign`. Purpose: stop guessing at the corner joint and ground the
-tilt/swing mechanism in established engineering. Requirement recap: a **rigid rectangular back
-(~2.4 m tall)** that must **tilt and swing to ~±45°** on each axis, **manual** actuation, in a
-**corrosion-prone wet environment** (must be stainless / acetal / PTFE — no exposed rolling
-bearings). Below: a shortlist of 14 real mechanisms with engineering sources, the factual joint-angle
-limits that reframe the whole problem, and a synthesis.
-
----
-
-## 0. The one fact that reframes everything — documented joint-angle limits
-
-Every ball/spherical/universal element we were chasing is fundamentally an **alignment
-compensator**, not a large-swing joint. From bearing standards, catalogs, and Machinery's Handbook:
-
-| Joint element | Documented angle (per axis / side) | Clears ±45°? | Source |
-|---|---|---|---|
-| **Crossed-pin gimbal / trunnion-yoke** | **~±90° per pin** | **YES** | [Wikipedia: Gimbal](https://en.wikipedia.org/wiki/Gimbal) |
-| Rzeppa CV joint | 45–54° (but a *rotating driveline* part) | borderline | [Wikipedia: CV joint](https://en.wikipedia.org/wiki/Constant-velocity_joint) |
-| Single Cardan (universal) joint | ~25° preferred, **37.5° hard max** | **No** | [Machinery's Handbook 31e p.1197](https://online.flippingbook.com/view/954046886/1197/) |
-| High-misalignment rod end (Aurora HX) | ~±19–22° | **No** | [Timken/Aurora CAD](https://cad.timken.com/item/inch-spherical-bearings/e-series-spherical-bearings-ptfe-liners-availabl/com-4e) |
-| Standard rod end (heim joint) | ±13–16° | **No** | [Timken/Aurora SW-4E](https://cad.timken.com/item/al-industrial-rod-ends-spherical-bearings-rod-ends/rod-ends-corrosion-resistant-ptfe-liners-availab-4/sw-4e) |
-| Spherical plain bearing (ISO 12240-1) | 6–16° (mid sizes 6–9°) | **No** | [SKF SPB catalog 4400](https://www.rmbearings.co.uk/pictures/pdfs/SKF%20SPHERICAL%20PLAIN%20BEARINGS.pdf) |
-| Ball joint (automotive/industrial) | ±15–30° | **No** | [Firgelli: flexible ball joint](https://www.firgelliauto.com/blogs/mechanisms/flexible-ball-joint) |
-
-**This is why the rod-end path kept fighting us.** The 2458K435 (20° swivel) wasn't an outlier —
-±13–22° *is* what spherical/rod-end joints do. Even the 60645K591's "47° max" is at the extreme edge
-of what any catalog spherical claims, and gets choked further by any surrounding clevis. **The only
-element that natively clears ±45° on each axis is two orthogonal pins — a gimbal / trunnion.** That
-is a fact from the standards, not an opinion.
+**Branch:** `film-plane-redesign`. The problem, stated correctly: a **fixed-size rigid rectangular
+panel** (the film plane) is **positioned at its four corners** by four moving carriages (X–Z
+cross-slide + depth leadscrew each); driving the corners tilts and swings the whole rigid plane to
+~±45°. This is a **parallel-kinematics** problem, and the literature is unanimous about what's wrong
+with it and how it's solved. Manual actuation, corrosion-prone wet environment (stainless/acetal/PTFE).
 
 ---
 
-## 1. Strategic question this raises: central mount vs. four corners
+## The finding, in one line
 
-Every established "rigid panel on two axes" system — view-camera rear standard, telescope fork,
-heliostat, radar pedestal, ship gimbal — pivots the panel about **one central two-axis mount whose
-axes pass through (or near) the panel's center of mass**, so a person fights only *friction*, not
-gravity. None of them use four independent corner joints. Our current architecture distributes the
-joint to 4 corners because it also buys **focus / rise / shift / back-focus** (the leadscrews). So the
-real fork in the road:
-
-- **(i) Keep 4 corners** (keep all the view-camera movements) → then each corner joint must be a
-  **crossed-pin gimbal** (§0 says nothing else clears ±45°), on plain PTFE/acetal bearings.
-- **(ii) Central 2-axis mount** (tilt/swing only, the classic way) → a **fork/yoke or ring gimbal**
-  balanced through the CoM. Far fewer parts, but you'd re-derive focus/rise/shift separately.
-
-Worth deciding before detailing — it's the biggest lever. The mechanisms below serve either path.
+**Driving a rigid panel at four rigid corners is textbook _over-constraint_ — the wobbly-four-legged-
+table.** A rigid body has 6 degrees of freedom and needs _exactly_ 6 constraints; four rigidly-located
+corners is statically indeterminate, so it **rocks, racks, binds, and warps** from the tiniest mismatch.
+**That is the root cause of the corner joint "fighting" — not the joint part, the architecture.** The
+established fix: **drive 3 corners, let the 4th float.**
 
 ---
 
-## 2. Shortlist — 14 established mechanisms with sources
+## 1. Why it fights — over-constraint (root cause, from precision-engineering canon)
 
-### A · Whole-mechanism two-axis precedents
+- A free rigid body has **6 DOF**; each ideal support removes one → `DOF = 6 − N`. Locating it needs
+  **exactly 6 constraints**. Fewer = loose; **more = over-constrained** → binding, locked-in strain,
+  and non-repeatable "settles wherever the highest contacts are" seating. (Maxwell's kinematic principle.)
+- **Three non-collinear points fully define a plane.** A rigid plane's out-of-plane pose — one
+  piston (normal translation) + two tilts (= our **tilt and swing**) — is exactly **3 DOF**, set
+  determinately by **3 driven corners**. The **4th corner is mathematically redundant**: the four can't
+  all sit true unless the frame is perfect, so it rocks between diagonals, or if clamped, warps to reach.
+- This is literally the "wobbly 4-legged table vs. stable 3-legged stool," and it's why machine tools
+  and precision tables are leveled on **3** points, not 4.
+- Sources: [Practical Precision — The Principle of Kinematic Constraint](https://practicalprecision.com/kinematic-constraint/) ·
+  [MIT 2.76 — Exact-Constraint Design (Reading L3)](https://ocw.mit.edu/courses/2-76-multi-scale-system-design-fall-2004/3aa5862a1724b75c3e4aa7a6fee6c511_reading_l3.pdf) ·
+  Blanding, *Exact Constraint: Machine Design Using Kinematic Principles* (ASME 1999) — [ASME](https://asmedigitalcollection.asme.org/ebooks/book/219/Exact-ConstraintMachine-Design-Using-Kinematic) ·
+  Hale, *Principles and Techniques for Designing Precision Machines* (PhD thesis, MIT/LLNL 1999) — [full PDF](https://digital.library.unt.edu/ark:/67531/metadc784803/m2/1/high_res_d/8431.pdf) ·
+  [Practical Machinist — kinematic support of machine tools (3-point)](https://www.practicalmachinist.com/forum/threads/kinematic-support-of-major-machine-tool-components.365853/).
 
-**1. Fork / yoke mount (searchlight · radar · telescope fork).** A U-fork rotates on a base
-(azimuth/swing); the panel hangs between the tines on a coaxial trunnion pair (tilt) — *both axes in
-one structure, two-point support*. Marine versions use bronze bushings + stainless pins. Range: az
-360°, tilt ~90°. → [US 4,419,721](https://patents.google.com/patent/US4419721A/en) ·
-[Keel, "Telescope Mountings"](https://www.pages.astronomy.ua.edu/keel/techniques/mountings.html).
-**Verdict: top pick for a central mount** — straddles the panel, two-point trunnion suits a 2.4 m
-plane, proven marine corrosion pedigree.
+## 2. The fix — exact constraint (what to do instead)
 
-**2. Alt-azimuth pedestal (telescope / radar).** Azimuth base bearing carries all weight + overturning
-moment; a fork on top carries the tilt trunnion, *balanced through the CoM so manual tilt fights only
-friction* — "fork mounts do not need the large counter-weights." → [Sheffield PHY217, alt-az](https://vikdhillon.staff.shef.ac.uk/teaching/phy217/telescopes/phy217_tel_altaz.html).
-**Verdict: the stiff, buildable archetype** for a tall rigid load; put the tilt axis through the CoM.
+| Option | Constraint status | When to choose |
+|---|---|---|
+| **Drive 3 corners; 4th unsupported** | Exact constraint (determinate) | Cleanest — if the panel is stiff enough to not sag between the 3 |
+| **3 driving corners + 1 _astatic/floating_ 4th** (spring/counterweight/ball-in-slot follower — carries load, sets no position) | Pseudo-kinematic (6 real constraints, 4 carriages) | **Best for us** — keeps 4-corner load support, no over-constraint |
+| **All 4 corners deliberately & equally compliant** | Elastic averaging | Heavy panel, robustness > precision |
+| **4 rigid driven corners (current design)** | **Over-constrained — avoid** | Never (this is the binding we've been fighting) |
 
-**3. Ring gimbal / Cardan suspension.** Two nested rings on perpendicular pins; **axes intersect at
-one gimbal point** ideally on the CoM. Best corrosion pedigree of all — marine compass gimbals are
-bronze + stainless. Range: limited only by ring clearance (~±30–90°). →
-[US 6,198,580 "Gimballed optical mount"](https://patents.google.com/patent/US6198580B1/en) ·
-[US 4,318,522 "Gimbal mechanism"](https://patents.google.com/patent/US4318522A/en).
-**Verdict: the reference if you want both axes on one true center** — this is the "textbook" version
-of my earlier gimbal sketch.
+- The theory is unanimous: **never four rigid locating corners.** Purists (Blanding/Hale/Slocum) say
+  drop to 3 or add real freedoms with flexures; the elastic-averaging school (Awtar/Slocum) says
+  over-constrain _on purpose_ but only with matched distributed compliance. Both kill the fight.
+- **"Support with many, locate with 3, and never let a support become a locator."** Load-spread the
+  corners as much as you like; only **3** may _define position_.
+- Sources: [Blanding (above)](https://asmedigitalcollection.asme.org/ebooks/book/219/Exact-ConstraintMachine-Design-Using-Kinematic) ·
+  Awtar & Slocum, *Elastic Averaging in Flexure Mechanisms* (ASME 2010) — [UMich PSDL PDF](https://psdl.engin.umich.edu/pdf/DETC2006-99752.pdf) ·
+  Furman (SJSU), *Kinematic Design Principles* — [PDF](https://www.gotstogo.com/misc/engineering_info/ME250kinematic_design_BFurman.pdf) ·
+  [3-point vs 4-point bed leveling](https://drmrehorst.blogspot.com/2017/07/3-point-print-bed-leveling-vs-4-point.html).
 
-**4. Tip-tilt pole + 2 struts + top gimbal (solar TTDAT).** A central top pivot carries the panel's
-weight in compression; **two hand-adjustable self-locking struts** set the two tilt components. Bounded
-**±45–60° cone — an almost exact match to our spec**, with the fewest corrodible parts. →
-[Sinovoltaics: TTDAT](https://sinovoltaics.com/learning-center/csp/tip-tilt-dual-axis-trackers-ttdat/) ·
-primary: [Ferdaus et al., *J. Renewable Energy* 2014](https://onlinelibrary.wiley.com/doi/10.1155/2014/629717).
-**Verdict: best "cone of motion" match** — 1 pivot bearing + 2 self-locking screws = manual, wet-safe.
+## 3. The corner joint itself — a moment-free two-force member
 
-**5. Tilt-roll twin-linear-drive heliostat (small scale).** Two axes each set by an independent
-**linear drive/strut** (swap the electric actuators for hand-cranked ACME screw jacks or turnbuckles;
-screws self-lock). Demonstrated at 0.45 m panel scale. → [Wiley *Energy Technology* 2025](https://onlinelibrary.wiley.com/doi/10.1002/ente.202401051).
-**Verdict: most build-friendly actuation** — two struts fully constrain + hold two axes, no brake.
+- In a Stewart–Gough platform (the canonical "rigid platform on moving legs"), each leg gets a
+  **spherical (ball) joint at the platform end** so the leg is a **pure axial strut — transmits force,
+  never a bending moment.** That decoupling is what stops the legs from bending the platform or fighting
+  each other. A rigid/pinned corner joint would add redundant constraints → over-constraint.
+- **Each locked leg = exactly one constraint** (it fixes the distance between its ball centers). Count
+  to six. (Grübler–Kutzbach mobility.)
+- Sources: [Modern Robotics §2.2 — DOF / Stewart platform](https://modernrobotics.northwestern.edu/nu-gm-book-resource/2-2-degrees-of-freedom-of-a-robot/) ·
+  [Passive Stewart-Gough platform w/ preloaded Cardan joints (PMC 2024)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12899874/) ·
+  [Firgelli — Stewart platform explained](https://www.firgelliauto.com/blogs/mechanisms/stewart-platform-hexapod).
 
-**6. Az-el pedestal + slewing ring.** One **large-diameter ring bearing** reacts a tall panel's
-overturning moment in a *single* component (axial + radial + moment together) — efficient swing axis;
-elevation trunnion above. → [Sandia SAND92-7009 (heliostat load path)](https://www.osti.gov/servlets/purl/7105290) ·
-[US 6,204,823 low-profile az-el positioner](https://patents.google.com/patent/US6204823B1/en).
-**Verdict: use a sealed/plastic slew ring for the swing axis** if the panel is tall and off-center.
+## 4. The ±45° reality — it lives in the JOINT, not the kinematics
 
-**7. Nested-gimbal cradle, plain sliding bearings (heliostat thesis).** Panel cradled between two
-tilt bearings (CoM on axis → low torque), that cradle on an azimuth ring; explicitly uses **plain
-sliding bearings, not rolling elements** — maps straight onto acetal/PTFE bushings. →
-[Björkman, *Heliostat Design*, KTH 2014 (full drawings)](https://www.diva-portal.org/smash/get/diva2:769446/FULLTEXT01.pdf).
-**Verdict: the closest fully-drawn, plain-bearing, cradle+ring design to copy.**
+Every documented parallel tilt platform is capped near **±30–40°**, and the limit is the **ball-joint
+cone angle**, not the mechanism. Plain spherical/rod-end bearings simply don't clear ±45°:
 
-**8. View-camera base-hinge trunnion + friction clamp.** The *only* classic view-camera movement that
-natively reaches ±45° (Sinar P base tilt ±40°; the 3D-printed "Standard 4×5" ±45°): a trunnion pin at
-the frame base + a friction clamp knob. Simplest possible corrosion-safe pivot. →
-[Sinar ranges](https://en-academic.com/dic.nsf/enwiki/606791) ·
-[Standard 4×5 DIY ±45°](https://www.thephoblographer.com/2018/07/31/standard-4x5-modular-diy-large-format-camera/).
-**Verdict: the direct-precedent one-axis building block**; stack two (tilt below swing) for both.
+| Joint element | Documented angle | Clears ±45°? |
+|---|---|---|
+| **Universal (Cardan) / gimbal / two-pin** | ±37–52° (AMiBA hexapod U-joints hit **±52°**) | **Yes** |
+| High-misalignment rod end (Aurora HX) | ±19–22° | No |
+| Standard rod end / spherical plain bearing | ±6–16° | No |
+| Best documented 3-leg parallel tilt (3-PRS) | **±40°** | edge |
 
-**9. X-Y two-horizontal-axis mount (NASA antenna).** Two *perpendicular horizontal* shafts on pillow
-blocks — no turntable; both pivots low, accessible, trivially sealed; ±90° each. → [NASA TN D-1697](https://archive.org/details/nasa_techdoc_19660022787).
-**Verdict: strong runner-up for buildability** — two simple sealed horizontal journals, no ring.
+- To honestly reach ±45° you must use a **universal/gimbal joint** (or a large purpose-built one, as
+  AMiBA did), **not** a plain spherical bearing — or adopt the view-camera **axis-tilt gimbal cradle**
+  (pivots through the plane center; no ball-in-socket cone limit).
+- Sources: [Machinery's Handbook 31e p.1197 (Cardan ~37.5° max)](https://online.flippingbook.com/view/954046886/1197/) ·
+  [Aurora high-misalignment rod ends (19–22°)](https://chassisshop.com/products/aurora-high-misalignment-rod-end-teflon-lined) ·
+  [3-PRS ±40° (arXiv 2405.08418)](https://arxiv.org/html/2405.08418v1) ·
+  [AMiBA hexapod (±52° U-joints)](https://arxiv.org/pdf/0902.2335) ·
+  [NHBB — rod-end misalignment](https://www.nhbb.com/knowledge-center/engineering-reference/rod-end-spherical-bearings/misalignment).
 
-**10. CNC tilting-rotary (trunnion) table.** Serial 2-axis: a cradle on **two coaxial trunnion
-bearings** (a span, not a cantilever) + a rotary platter; manual units have **handwheel + disk-brake
-clamp per axis** (±110° tilt). → [US 7,753,629 "Tilt table"](https://patents.google.com/patent/US7753629B1/en).
-**Verdict: rigidity + per-axis manual-lock reference** (but cast-iron construction is not
-corrosion-suited — borrow the kinematics, not the materials).
+## 5. Precedents that do exactly this (rigid panel positioned at 3 driven points)
 
-### B · Corrosion-safe pivot/bearing building blocks
+1. **Keck segmented primary mirror** — each **rigid** hexagonal segment is piston/tip/tilt-controlled
+   by **exactly 3 actuators**, with a **whiffletree** spreading each actuator's force over many pads.
+   Support (many pads) and location (3 actuators) are cleanly separated. This is the direct template. →
+   [Keck position actuators (LBNL/OSTI PDF)](https://www.osti.gov/servlets/purl/6377486) ·
+   [CELT Green Book Ch.5](https://celt.ucolick.org/greenbook/ch05.pdf).
+2. **3-PRS parallel head** (Sprint Z3 / Exechon machine-tool class) — a rigid plate given **piston + 2
+   tilts on 3 actuated legs**, documented to **±40°**; ball joint at the plate, actuator on a base rail. →
+   [3-PRS stiffness/workspace (arXiv 2405.08418)](https://arxiv.org/html/2405.08418v1).
+3. **Whiffletree / Hindle mount & astatic levers** — load a big rigid plate at many points that all
+   cascade to **3 hard locating points**; astatic (force-controlled) levers "float" the extra supports
+   so they carry weight without setting position — the textbook way to make the **4th corner** legal. →
+   [Whiffletree history](https://mechanicsandmachines.com/?p=456) ·
+   [Cruxis mirror-cell design](https://www.cruxis.com/scope/scope1100_mirrorcell.htm).
+4. **Machine-tool / print-bed 3-point leveling** — the shop-floor confirmation that 3 points locate a
+   plane and a 4th must be a _force_ support (equalized wedge), never a new locating point. →
+   [Practical Machinist](https://www.practicalmachinist.com/forum/threads/kinematic-support-of-major-machine-tool-components.365853/).
+5. **View-camera rear standard (axis tilt)** — the manual 2-DOF classical analog: a rigid film-plane
+   frame on a yaw-pitch **gimbal cradle**, tilt about a horizontal axis + swing about a vertical axis,
+   each pivot through the plane center (focus-preserving), locked by a knob. → [Tobias Key — camera movements](https://www.tobiaskey.com/camera-movements/).
 
-**11. Dobsonian PTFE-pad friction bearing.** Large-radius arc riding on **virgin PTFE pads against
-textured FRP/phenolic laminate** — non-metallic, grease-free, corrosion-immune, and **self-holding by
-friction** (static ≈ dynamic on waxed Teflon, µ ≈ 0.05–0.10, no breakaway lurch). Standard set ~3 az +
-4 alt pads, 4.8 mm thick. → [Stellafane: Dob bearing materials](https://stellafane.org/tm/dob/resources/bearnings.html) ·
-[SVAS ATM engineering PDF](https://svas.org/s17files/Atm_Engineering_Lightweight_Dobsonian_Telescopes.pdf) ·
-Kriege & Berry, *The Dobsonian Telescope*.
-**Verdict: the standout wet-environment bearing** — a manually-set panel that holds by friction with
-zero grease and zero corrodible metal in the bearing. Strongly recommend for at least the tilt axis.
+## 6. Wet-environment joints (corrosion)
 
-**12. PTFE-lined / acetal-bushed stub trunnion.** A stainless stub shaft in a self-lubricating plain
-bush (PTFE-fabric per ISO 12240, or acetal/igus polymer) — compact, sealed, dry-running. →
-[SKF TX-line self-lubricating](https://evolution.skf.com/tx-line-spherical-plain-bearings-for-maintenance-free-operation/) ·
-[WisDOT PTFE-on-stainless friction report](https://wisconsindot.gov/documents2/research/WisDOT-WHRP-project-0092-08-13-final-report.pdf).
-**Verdict: the compact form** of #11's material — use where a full PTFE pad is too bulky.
-
-**13. Heavy 316-stainless pivot set (top + bottom door/gate pivot).** Proven to carry a ~2.4 m rigid
-leaf's dead weight on a vertical axis; industrial weld-on stainless spindles rated to thousands of lb;
-offered in **316** for marine service. → [Jako SS free-swing pivot (500 kg)](https://www.jakohardware.com/shop/product/jnf-heavy-duty-free-swing-door-pivot-max-1100-lbs-stainless-steel-model-jk05500-13437) ·
-[Kiesler heavy-duty 304/316 pivot hinges](https://www.kieslermachine.com/heavy-duty-hinges/pivot-hinges/).
-**Verdict: off-the-shelf, load-proven, 316-SS swing-axis hardware** — reuse as the vertical axis of a
-two-axis mount instead of fabricating it.
-
-**14. Crossed-pin gimbal block (the joint element itself).** Two orthogonal stainless pins in
-acetal/PTFE bushings — the only element that clears ±45° per axis (§0), each axis **independently
-lockable** with a detent/clamp. → [Wikipedia: Gimbal](https://en.wikipedia.org/wiki/Gimbal) ·
-element angle facts as §0.
-**Verdict: if we keep the 4-corner architecture, this is the corner joint** (my study "A").
+PTFE-lined stainless spherical bearings (run dry, wash-down tolerant), all-plastic **igus igubal**
+(iglidur ball + stainless sleeve, corrosion-free), stainless pins in acetal/PTFE bushings, or **flexures**
+(no sliding contact at all). → [igus igubal rod ends](https://www.igus.com/spherical-bearings/rod-ends) ·
+[SKF TX self-lubricating spherical](https://evolution.skf.com/tx-line-spherical-plain-bearings-for-maintenance-free-operation/).
 
 ---
 
-## 3. Design principles the sources agree on (adopt regardless of choice)
+## 7. What this means for our design
 
-1. **Put the tilt axis through the panel's center of mass** — then manual actuation fights only
-   friction, no counterweight (view-camera axial, telescope fork, heliostat cradle all say this).
-2. **Plain self-lubricating bearings, not rolling elements** — PTFE pad / PTFE-lined / acetal-igus on
-   stainless. Corrosion-immune, grease-free (Dobsonian, KTH heliostat, SKF TX, igus).
-3. **Hold position by friction or a self-locking drive** — waxed-PTFE friction (Dob), self-locking
-   worm/ACME screw (heliostat, Orbix), or an indexed clamp/detent per axis (CNC table, louvers). No
-   powered brake.
-4. **Support the tilt axis at two spaced points (trunnion/fork), not a cantilever** — a couple across a
-   wide base suits a tall rigid plane (trunnion, fork, X-Y, CNC cradle).
-5. **Yaw-free stacking: put the tilt axis below the swing axis** — otherwise combined ±45° tilt+swing
-   twists the panel (view-camera rule).
-6. **Reach ±45° with pins/trunnions, reserve spherical bearings for small self-aligning takeup only**
-   (§0 fact).
+The current mechanism **drives all four corners** and hangs a rigid plane between them — which the
+theory says is **over-constrained by construction** (up to 12 driven inputs for a 6-DOF body). That is
+almost certainly the real reason the corner joint has been so hard: no joint can fix an over-constrained
+architecture. The grounded redesign options, in order of how established they are:
 
-## 4. Recommendation to detail next
+- **(A) Drive 3 corners; make the 4th an astatic/floating follower.** Minimal change to the current
+  layout — keep three leadscrew corners as the locating set, convert the fourth to a load-only support
+  (spring/counterweight or ball-in-slot). Each driven corner gets a **wide-angle joint** (gimbal/universal,
+  not plain spherical) to clear ±45°. Precedent: Keck, machine-tool leveling.
+- **(B) 3-leg parallel tilt platform (3-PRS-style).** Purpose-built for exactly "tilt+swing+piston of a
+  rigid plate on 3 legs," documented to ±40°. A cleaner-sheet version of (A).
+- **(C) Central axis-tilt gimbal (view-camera rear standard).** Abandon the corner-drive entirely; pivot
+  the rigid plane on a 2-axis gimbal through its center. Fewest parts, cleanest ±45°, but re-derives
+  focus/rise/shift separately (they were the reason for the 4 leadscrews).
 
-The grounded, convergent answer: **a two-axis fork/gimbal mount, tilt axis through the CoM, on
-Dobsonian-style PTFE-pad (or PTFE/acetal-bushed) plain bearings, held by friction or a self-locking
-screw** — i.e. mechanisms **1/2/3 + 11**. If we keep the four-corner architecture, each corner becomes
-mechanism **14** (crossed-pin gimbal on PTFE/acetal bushings). Either way the rod-end / spherical
-bearing is retired — §0 shows it never could have hit ±45°.
+**Bottom line:** the rod-end/spherical path is retired (can't do ±45°), _and_ the four-rigid-corner
+architecture is the deeper problem. Whatever we build, the rule is **locate on 3, float the 4th, use a
+wide-angle (gimbal/universal) joint at each driven corner** — grounded in Keck, Stewart-Gough, and 100
+years of kinematic-design theory.
 
-*Source confidence: primary/verified — Machinery's Handbook, SKF & Aurora/Timken catalogs, NASA
-TN D-1697, Sandia SAND92-7009, KTH thesis, the cited patents (Google Patents HTML mirrors), Stellafane/
-SVAS ATM refs, university course notes. Search-synthesized (verify a specific datasheet before quoting a
-single number): the igus/ball-joint degree figures and the TTDAT overview link.*
+*Source confidence: exact-constraint theory (Blanding, Hale thesis, MIT OCW, Slocum, Practical Precision),
+Modern Robotics, the 3-PRS ±40° arXiv paper, Keck LBNL/OSTI report, and the machining/telescope-cell refs
+were retrieved and on-topic. Some journal PDFs bot-block automated fetch — their numbers are corroborated
+via search + the standard mobility results. Rod-end/Cardan angle figures are page-verified from Aurora/
+NHBB/Machinery's Handbook.*

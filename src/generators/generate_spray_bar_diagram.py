@@ -941,6 +941,10 @@ def draw_sheet2():
                f"{WHEEL_SPACING_YD}mm WHEEL SPACING",
                offset=6, fs=5, font=FONT)
 
+    # wheel diameter (Ø32) — true circle in this view; dim on the left wheel
+    draw_dim_v(ax2, wheel1_yd - WHEEL_DIA / 2 - 20, WHEEL_AXLE_Z - WHEEL_DIA / 2,
+               WHEEL_AXLE_Z + WHEEL_DIA / 2, f"Ø{WHEEL_DIA}mm", offset=6, fs=5, font=FONT)
+
     # under-grate clearance — measured from the carriage's HIGHEST part (was the wheel plate)
     clearance_c = GRATE_Z_BOT - carriage_top_z
     draw_dim_v(ax2, c_beam_r + 10, carriage_top_z, GRATE_Z_BOT,
@@ -1614,6 +1618,12 @@ def draw_sheet6():
            CARRIAGE_OFFSET_X + 40, -WHEEL_SPACING_YD / 2 ,
            f"Ø{WHEEL_DIA}mm NYLON WHEEL\n({WHEEL_WIDTH}mm WIDE)\n2 PER CARRIAGE",
            fs=5, color=C_WHEEL, font=FONT, zorder=20)
+
+    # wheel TREAD WIDTH dim on the top wheel (X extent = 20mm); the Ø32 diameter is
+    # dimensioned on the cross-section (Sheet 2), where the wheel reads as a true circle.
+    _wtop = WHEEL_SPACING_YD / 2
+    draw_dim_h(ax_d, CARRIAGE_OFFSET_X - WHEEL_WIDTH / 2, CARRIAGE_OFFSET_X + WHEEL_WIDTH / 2,
+               _wtop + WHEEL_DIA / 2 + 12, f"{WHEEL_WIDTH}mm WIDE", offset=6, fs=5, font=FONT)
 
     # Carriage plate
     leader(ax_d, CARRIAGE_OFFSET_X + arm_w_x / 2, 45,

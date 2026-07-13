@@ -563,12 +563,12 @@ tray drainage plan and sump cross-section).
 | 1/4" irrigation poly tube | Manifold to beam feed points (~7m total) | 1 ea | Amazon | $6 |
 | Barbed tees, tube into the side poly manifold | Feed tube to the side poly manifold, 7 feed points | 7 ea | Amazon | $10 |
 | SS/nylon retainer clips for 3/4" LDPE | Fold-back end closures | 2 ea | Amazon | $4 |
-| [Acetal (Delrin) roller wheel, Ø32 × 20mm, Ø10 plain bore](https://www.mcmaster.com/products/acetal-round-stock/) | Solid acetal (Delrin), flat tread, plain bore — corrosion-immune + self-lubricating on the Ø10 304 SS axle (no carbon-steel ball bearings; the ferricyanide/citric wash rules those out). Turned from acetal rod or an equivalent POM plain-bore roller. Light-duty (~2.6 kg/wheel wet); 2 per carriage, low-profile for grate clearance. | 4 ea | McMaster-Carr | $12–$20 |
+| [Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore)](https://www.mcmaster.com/8576K23/) (8576K23) | Solid acetal (Delrin), flat tread. Cut from 1-1/4" (31.75mm) Delrin rod into 4 × 20mm slugs; drill Ø10.5 running-clearance bore — the acetal plain bore IS the bearing (self-lubricating on the Ø10 304 SS axle; no ball bearing — the ferricyanide/citric wash rules steel bearings out). One 1 ft (305mm) rod yields all 4 (parting/facing waste). Light-duty ~2.6 kg/wheel wet; 2 per carriage, low-profile for grate clearance. OD Ø31.75 = Ø32 nominal (−0.25mm). | 1 1 ft rod | McMaster-Carr | $11 |
 | 1/2" barb × 1/2" hose barb, brass | Flex hose to manifold inlet | 1 ea | Amazon | $4 |
 | Telescoping aluminum pool pole, 4–8 ft | Standard pool skimmer handle | 1 ea | Amazon | $15 |
 | 1/2" reinforced braided PVC hose, 15 ft | BV-02 to beam feed (4 m coiled) | 1 ea | Amazon | $15 |
 | [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins | 1 pack | Amazon | $5 |
-| [Formed 3.18mm 304 SS saddle clamp (axle retainer)](https://www.mcmaster.com/products/multipurpose-304-stainless-steel/) | Axle retention — formed from 1/8" (3.18mm) × 3/4" (19mm) 304 SS flat bar, wrapped over the Ø10 axle (1mm cradle clearance) with two ~12mm feet bolted up through the carriage plate (2× Ø5.5 M5). ~48mm developed per saddle; all 8 cut from one 18" (457mm) length of flat bar. A stamped conduit saddle clamp is only ~0.5mm — too thin for a rolling-carriage axle retainer. Alt: 304 SS + EPDM Adel loop clamp ~3/8–7/16" ID. | 8 ea | McMaster-Carr | $10 |
+| [Axle saddle clamps ×8 (304 SS flat-bar stock)](https://www.mcmaster.com/8992K794/) (8992K794) | Axle retention — formed from 1/8" (3.18mm) × 3/4" (19mm) 304 SS flat bar, wrapped over the Ø10 axle (1mm cradle clearance) with two ~12mm feet bolted up through the carriage plate (2× Ø5.5 M5). ~48mm developed per saddle; all 8 cut from one 2 ft (610mm) length of flat bar. A stamped conduit saddle clamp is only ~0.5mm — too thin for a rolling-carriage axle retainer. Alt: 304 SS + EPDM Adel loop clamp ~3/8–7/16" ID. | 1 2 ft bar | McMaster-Carr | $10 |
 | M6×20 SS bolts + nyloc nuts | Carriage plate, beam clamp, saddle fasteners | 16 ea | McMaster-Carr | $7 |
 | Self-tapping SS screws (8-pack) | Ball-joint flange to beam top wall | 4 ea | McMaster-Carr | $5 |
 | Ø20mm ball joint, zinc socket, M12 stud | Multi-axis arm articulation | 1 ea | Amazon | $12 |
@@ -576,7 +576,7 @@ tray drainage plan and sump cross-section).
 | 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | Arm tube | 1 ea | Online Metals | $6 |
 | M6 SS hex bolt + nut | Pinch bolt for arm tube | 1 ea | McMaster-Carr | $1 |
 | Nylon zip ties, 200mm | Hose to arm tube | 6 ea | Amazon | $1 |
-| **Spray total** | | | | **$287–$375** |
+| **Spray total** | | | | **$286–$366** |
 <!-- END parts:spray -->
 
 ### 6.3 Combined Total
@@ -584,8 +584,8 @@ tray drainage plan and sump cross-section).
 | Subsystem | Cost Range |
 |-----------|-----------|
 | Processing tray | <!-- BEGIN costing:tray-low -->$1,300<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,015<!-- END costing:tray-high --> |
-| Spray bar assembly | <!-- BEGIN costing:spray-low -->$287<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$375<!-- END costing:spray-high --> |
-| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,587<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,390<!-- END costing:tray-spray-total-high -->** |
+| Spray bar assembly | <!-- BEGIN costing:spray-low -->$286<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$366<!-- END costing:spray-high --> |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,586<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,381<!-- END costing:tray-spray-total-high -->** |
 
 ---
 

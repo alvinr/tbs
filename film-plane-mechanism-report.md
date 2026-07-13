@@ -163,8 +163,8 @@ All items ship within the United States. Local Southern California pickup noted 
 | Cross-slide rail HGR15 (Option A) | 300mm, X-Z stage | 8 ea | Automation Overstock / McMaster-Carr | $200 |
 | Cross-slide carriage HGH15CA (Option A) | Flanged block | 8 ea | Automation Overstock / McMaster-Carr | $96 |
 | Cross-slide intermediate plate (Option A) | ¼" alum., joins X slide to Z slide | 4 ea | Metal Supermarkets / Online Metals | $60 |
-| Rod-end spherical bearing (60645K73) | GIR25-DO or equiv., 25mm bore | 8 ea | McMaster-Carr / Amazon Industrial | $176 |
-| Pivot pin SS316 | Ø25mm × 80mm SS316 — slip-fit in the 25mm rod-end bore (a 1"/25.4mm pin is 0.4mm oversize and will not enter). Metric Ø25 clevis/pivot pin spanning the rod-end eye + corner-bracket clevis; 80mm is the longest stocked Ø25 clevis pin (2026-07 check). Confirm exact SKU at order. | 8 ea | McMaster-Carr / Fastenal | $64 |
+| Rod-end spherical bearing (60645K73) | GIR25-DO or equiv., 25mm bore — one per corner (4 corners) | 4 ea | McMaster-Carr / Amazon Industrial | $88 |
+| Pivot pin SS316 | Ø25mm × 80mm SS316 — slip-fit in the 25mm rod-end bore (a 1"/25.4mm pin is 0.4mm oversize and will not enter). Metric Ø25 clevis/pivot pin spanning the rod-end eye + corner-bracket clevis; 80mm is the longest stocked Ø25 clevis pin (2026-07 check). Confirm exact SKU at order. | 4 ea | McMaster-Carr / Fastenal | $32 |
 | Aluminum angle 2"×2"×3/16" | 8 ft lengths | 10 ea | Metal Supermarkets / Online Metals | $220 |
 | Dibond ACM panel 4mm | 4 ft × 8 ft sheets — single rigid backing, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->×<!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | 6 sheet | Grimco / Signwarehouse | $510 |
 | Black EPDM foam tape 1"×½" (8614K84) | 50 ft rolls | 3 roll | McMaster-Carr / Grainger | $84 |
@@ -175,7 +175,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | M12×90mm hex through-bolt + nut + washers, SS | ICP-12: wall sandwich through-bolt; 4/saddle ×6 + 4 spare | 28 ea | McMaster-Carr / Amazon | $70 |
 | M8×25mm knurled thumbscrew DIN 464 | ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare | 12 ea | Amazon / Maedler | $36 |
 | M8 hex fixing bolt + nut, SS | ICP-14: right-rail permanent fixing; 2/saddle ×2 TR + spare | 8 ea | McMaster-Carr / Amazon | $16 |
-| **Film total** | | | | **$3,085–$3,113** |
+| **Film total** | | | | **$2,965–$2,993** |
 <!-- END parts:film -->
 
 *The cross-slide rails/carriages/intermediate plates (HGR15) are the **Option A** additions — the
@@ -210,7 +210,7 @@ See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) f
 | 12V 30A power supply | Enclosed | 1 | Mouser | Digi-Key | $55 |
 | DPDT momentary rocker | Panel-mount, 20A | **4** | Mouser | Grainger | $8 |
 
-**Estimated materials total (manual actuation, incl. wall-seat saddles + Option A cross-slides): ~<!-- BEGIN costing:film-total -->$3,437<!-- END costing:film-total -->** (rev 12: the 2 BR saddles move to the walkway's combined corner plates)
+**Estimated materials total (manual actuation, incl. wall-seat saddles + Option A cross-slides): ~<!-- BEGIN costing:film-total -->$3,317<!-- END costing:film-total -->** (rev 12: the 2 BR saddles move to the walkway's combined corner plates)
 *Excludes fasteners, fabrication labor, and electric actuation option.*
 *Option A net change vs the earlier four-corner design: added 8 cross-slide rails +$200, 8 cross-slide carriages +$96, 4 intermediate plates +$60 (= +$356); removed the folding-backing piano hinge –$56 → net +$300. The single rigid ACM backing replaces the hinged two-panel system.*
 

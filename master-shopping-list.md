@@ -13,7 +13,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $110 | $265 |
-| 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,437 | $3,925 |
+| 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,317 | $3,805 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,356 | $7,929 |
 | 6. Electrical — power, circuits, wiring | $2,608 | $3,003 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,405 | $2,130 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$22,801** | **~$33,772** |
+| **TOTAL (base build + 50-print run)** | **~$22,681** | **~$33,652** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -91,11 +91,11 @@ indicative low–high estimates — get quotes before ordering.
 | Linear guide rail HGR20 | 4 ea | Automation Overstock | film | $180 |
 | Locking collar SS316 | 4 ea | McMaster-Carr | film | $48 |
 | Rail carriage HGH20CA | 8 ea | Automation Overstock | film | $144 |
-| Rod-end spherical bearing | 8 ea | McMaster-Carr | film | $176 |
+| Rod-end spherical bearing | 4 ea | McMaster-Carr | film | $88 |
 | SKF 6215-2RS1 sealed bearing | 2 ea | Bearing World | lightlock | $110–$190 |
 | Turntable thrust bearing, 12″ (Ø305) 1000 lb | 1 ea | VXB | swing | $40–$60 |
 | Ø20mm ball joint, zinc socket, M12 stud | 1 ea | Amazon | spray | $12 |
-| **bearings-motion subtotal** | | | | **$1,645–$1,795** |
+| **bearings-motion subtotal** | | | | **$1,557–$1,707** |
 
 ### chemistry-reagents
 
@@ -235,7 +235,7 @@ indicative low–high estimates — get quotes before ordering.
 | M8×25mm knurled thumbscrew DIN 464 | 12 ea | Amazon | film | $36 |
 | Misc. conversion hardware | 1 lot | Home Depot | interior | $80–$130 |
 | Nylon zip ties, 200mm | 6 ea | Amazon | spray | $1 |
-| Pivot pin SS316 | 8 ea | McMaster-Carr | film | $64 |
+| Pivot pin SS316 | 4 ea | McMaster-Carr | film | $32 |
 | Ratchet straps, 25mm | 2 ea | Home Depot | ventilation | $12 |
 | Self-tapping SS screws (8-pack) | 4 ea | McMaster-Carr | spray | $5 |
 | Shurflo pump mounting bracket | 5 ea | Amazon | water | $50 |
@@ -245,7 +245,7 @@ indicative low–high estimates — get quotes before ordering.
 | Stainless fasteners + nylon isolation washers | 1 lot | McMaster-Carr | lightlock | $30–$50 |
 | Top + bottom wall stays + 4-bolt anchor plates | 2 set | McMaster-Carr | swing | $90–$160 |
 | Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
-| **fasteners-hardware subtotal** | | | | **$1,399–$2,351** |
+| **fasteners-hardware subtotal** | | | | **$1,367–$2,319** |
 
 ### plastics-sheet
 
@@ -419,7 +419,7 @@ indicative low–high estimates — get quotes before ordering.
 |----------|-----------|-------|-----------|
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 17 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,961–$3,181 |
-| McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $2,184–$3,123 |
+| McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $2,064–$3,003 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,301–$1,638 |

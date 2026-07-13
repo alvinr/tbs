@@ -279,7 +279,7 @@ FILM = [
     point("Handwheels 8\" (×4) + locking collars SS316 (×4)", 188),
     point("Corner bracket L-plates, ¼\" alum 6×8 (×4)", 80),
     point("Option-A cross-slides — HGR15 rails (×8) + HGH15CA (×8) + intermediate plates (×4)", 356, "floating-corner X–Z stage"),
-    point("Rod-end spherical bearings GIR25-DO (×8) + pivot pins SS316 (×8)", 240),
+    point("Rod-end spherical bearings GIR25-DO (×4) + pivot pins SS316 (×4)", 120),
     # 4.2 Film plane frame & backing
     point("Aluminum angle 2×2×3/16 8 ft (×10)", 220),
     point("Dibond ACM 4mm 4×8 sheets (×6) — single rigid plane", 510, "Option A: no folding hinge"),
@@ -1017,7 +1017,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
     "standard": {"chem": 1353, "total": 1650, "per_print": 33},
     "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (22851, 28784, 36712),  # 2026-07-12: §5 water +$334/+$281 (bulkhead-2in verified $137 ea; spray fab-from-stock). EP plywood backboard + IP65 enclosure over the fuse/busbar terminals (+$60 §5a — enclosure kept ALONGSIDE the plywood). audit 2026-07: pinhole retaining ring (+$15/$25); D-ring 4→8; +$2 Powerpole (1/pump); filter 3-separate design (−$50/−$65). pump switches 5→1 master (−$26 §5a). IBC frame deep 4-leg box (+$25/+$38/+$50). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (+$52/+$64/+$76, SS beam); + corridor plumbing-panel structure (+$215/+$380 — previously uncosted)
+    "grand_total": (22731, 28664, 36592),  # 2026-07-12: §5 water +$334/+$281 (bulkhead-2in verified $137 ea; spray fab-from-stock). EP plywood backboard + IP65 enclosure over the fuse/busbar terminals (+$60 §5a — enclosure kept ALONGSIDE the plywood). audit 2026-07: pinhole retaining ring (+$15/$25); D-ring 4→8; +$2 Powerpole (1/pump); filter 3-separate design (−$50/−$65). pump switches 5→1 master (−$26 §5a). IBC frame deep 4-leg box (+$25/+$38/+$50). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (+$52/+$64/+$76, SS beam); + corridor plumbing-panel structure (+$215/+$380 — previously uncosted)
     "walkway": (2000, 2488, 2975),   # §6a fab line raised so bracket scope matches walkway-report §10 ($742–$1,255 all-in)
     "water": (5356, 6647, 7929),   # 2026-07-12: bulkhead-2in verified $137 ea (was $25-40 → +$335/+$290 on storage); spray saddle+wheel → fab-from-stock qty=1 (−$1/−$9). audit 2026-07: D-ring 4→8 (+$20/+$35); +$2 Powerpole 5 pair (1/pump); filter combo → 3 separate housings + frame (−$50/−$65). IBC frame portal → deep 4-leg box (+$25/+$38/+$50: 4 feet + 16 anchors). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105: 20" housings + cartridges). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (40×40 alu → 40×25 304-SS + Ø32 wheels, spray line +$52/+$64/+$76); + corridor plumbing-panel structure (+$215/+$298/+$380 — was uncosted); panel-split cascade 2026-06-28 (+P-05, +SV-02, +5th bracket, −2 CV, +X1 4-way cross, BVs, +Blue equalization tie)
     "container": (2300, 3300, 4300),
@@ -1027,7 +1027,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "shelf": (203, 203, 203),          # §6d = chemistry-prep-shelves §7 (point estimates) — was MISSING from the model
     "interior": (950, 1138, 1350),
     "optics": (110, 185, 265),
-    "film": (3437, 3681, 3925),   # saddles ×8→×6 (rev12: 2 BR ends are walkway combined plates) + fasteners 150→122 + clamp-mounting 70→76
+    "film": (3317, 3561, 3805),   # 2026-07-12: rod-end + pivot pin 8→4 (one per corner; report prose + 3D agree) −$120   # saddles ×8→×6 (rev12: 2 BR ends are walkway combined plates) + fasteners 150→122 + clamp-mounting 70→76
     "ventilation": (757, 841, 924),   # §5b BOM (point estimates); report total was stale at $769
     "power": (2608, 2806, 3003),       # §5a authoritative subtotal (+$60 IP65 enclosure over the fuse/busbar terminals)
 }

@@ -171,27 +171,28 @@ def _carriage(xend, side, din):
     # axle is retained by a curved saddle clamp on EACH side of the wheel (like a
     # conduit/pipe saddle), each bolted down through the plate with two bolts
     # straddling the axle — two bolts either side of the wheel. ──
-    sw = 6                                    # saddle width along the axle
-    sgap = ww / 2 + 6                         # saddle offset from wheel center (flanks the wheel)
+    sw = 19                                   # saddle width along the axle — 3/4" (19mm) flat bar
+    sgap = ww / 2 + 11.5                      # saddle offset from wheel center — 3/4" strap
+    #                                           moved out to clear the wheel by 2mm
     for dy in (-half, half):
         cy = GY + dy
         parts.append(ov.ruby_cylinder(f"Wheel {side}",
                                       cxc - ww / 2, cy, az, wd / 2, ww,
                                       color=C_NYLON, axis="x"))
         parts.append(ov.ruby_cylinder(f"Axle Pin 10mm {side}",
-                                      cxc - ww / 2 - 14, cy, az, 5, ww + 28,
+                                      cxc - ww / 2 - 23, cy, az, 5, ww + 46,
                                       color=C_BOLT, axis="x"))
         for sx_ in (cxc - sgap, cxc + sgap):  # a saddle clamp either side of the wheel
-            # curved hump cradling under the axle
+            # curved hump cradling under the axle — 1/8" (3.18mm) 304 SS flat bar
             parts.append(ruby_saddle(f"Axle Saddle {side}",
-                                     sx_, sw, cy, az, 6, 2, 180, 360, C_CLAMP))
-            for sgn in (-1, 1):               # a flat foot each side + bolt through it
-                foot_y0 = cy + 6 if sgn > 0 else cy - 16
+                                     sx_, sw, cy, az, 6, 3.18, 180, 360, C_CLAMP))
+            for sgn in (-1, 1):               # a flat 12mm foot each side + M5 bolt through it
+                foot_y0 = cy + 6 if sgn > 0 else cy - 18
                 parts.append(ov.ruby_box(f"Axle Saddle Foot {side}",
-                                         sx_ - sw / 2, foot_y0, plate_z - 2, sw, 10, 2,
+                                         sx_ - sw / 2, foot_y0, plate_z - 3.18, sw, 12, 3.18,
                                          color=C_CLAMP))
                 parts.append(ov.ruby_cylinder(f"Axle Bolt {side}",
-                                              sx_, cy + sgn * 11, plate_z - 4, 2.5,
+                                              sx_, cy + sgn * 12, plate_z - 4, 2.5,
                                               (plate_top + 3) - (plate_z - 4), color=C_BOLT, axis="z"))
 
     # ── beam clamped vertically: a BOTTOM clamp under the beam + a TOP clamp over

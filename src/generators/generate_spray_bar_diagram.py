@@ -652,10 +652,10 @@ def draw_sheet2():
     #    side of each wheel — shown here straddling the axle) ────────────
     axle_pin_r = 5
     sad_ri = axle_pin_r + 1          # 1mm clearance on the Ø10 axle
-    sad_t = 2                        # SS strap thickness
+    sad_t = 3.18                     # SS strap thickness — 1/8" (3.18mm) 304 flat bar
     sad_ro = sad_ri + sad_t
-    foot_t = 2
-    foot_len = 9
+    foot_t = 3.18
+    foot_len = 12                    # feet grown for proper M5 edge distance
     for w_yd in [wheel1_yd, wheel2_yd]:
         # curved hump cradling under the axle
         ax2.add_patch(Wedge((w_yd, WHEEL_AXLE_Z), sad_ro, 180, 360, width=sad_t,
@@ -1580,8 +1580,8 @@ def draw_sheet6():
         w_yd_ctr = w_sign * WHEEL_SPACING_YD / 2
         wx = CARRIAGE_OFFSET_X
         # axle pin running in X across the wheel + saddle clamps
-        ax_d.add_patch(Rectangle((wx - WHEEL_WIDTH / 2 - 18, w_yd_ctr - 5),
-                       WHEEL_WIDTH + 36, 10,
+        ax_d.add_patch(Rectangle((wx - WHEEL_WIDTH / 2 - 23, w_yd_ctr - 5),
+                       WHEEL_WIDTH + 46, 10,
                        fc="#D0D0D8", ec=C_FRAME, lw=0.5, zorder=4))
         # WHOLE nylon wheel, drawn IN FRONT of the carriage — this view looks UP
         # from the tray, so the wheel is nearest and clearly passes THROUGH the
@@ -1592,9 +1592,10 @@ def draw_sheet6():
                        alpha=0.85, zorder=9))
 
     # ── Axle retention saddle clamps — one each side of each wheel ───────
-    sgap_plan = WHEEL_WIDTH / 2 + 6        # 16 — saddle offset from wheel center (X)
-    sad_w_plan = 6                          # saddle width along the axle (X)
-    sad_half_yd = 17                        # foot half-span (Yd)
+    sgap_plan = WHEEL_WIDTH / 2 + 11.5     # 21.5 — saddle offset from wheel center (X);
+    #                                        3/4" strap moved out to clear the wheel by 2mm
+    sad_w_plan = 19                         # saddle width along the axle (X) — 3/4" flat bar
+    sad_half_yd = 21                        # foot half-span (Yd) — grown 12mm feet
     for w_sign in [-1, 1]:
         w_yd_ctr = w_sign * WHEEL_SPACING_YD / 2
         for sx_off in [-sgap_plan, sgap_plan]:
@@ -1625,7 +1626,7 @@ def draw_sheet6():
     bot_w_yd = -WHEEL_SPACING_YD / 2
     leader(ax_d, bot_right_wx + 3, bot_w_yd - 14,
            bot_right_wx + 25, bot_w_yd - 14,
-           "AXLE C-CLAMP\n(2mm SS, 2 EACH SIDE)",
+           "AXLE SADDLE\n(1/8\" SS, 2 EACH SIDE)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     # Axle pin

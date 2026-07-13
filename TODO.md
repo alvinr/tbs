@@ -44,6 +44,13 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   Alvin fills at his own cadence from logged-in supplier sessions. (Reminder block atop `parts.py`.)
 
 ## Design / 3D (deferred)
+- [ ] **spraybar.skp re-send pending (axle saddle re-spec).** The axle-retention saddle was re-specced to a
+  fabricated 1/8" (3.18mm) × 3/4" (19mm) 304 SS flat-bar clamp with 12mm M5 feet (was a schematic 2mm/6mm-wide
+  token that couldn't hold its own bolt). 2D (sheet 2 cross-section + sheet 6 plan — width, saddle offset, axle
+  stub +5, labels) + `parts.py`/report/master + `generate_spraybar_model.py` + `spraybar.rb` all done and
+  committed; **only the `spraybar.skp` re-send + Sketchfab re-upload remain** (open the spraybar model → I
+  `--send` + verify → Alvin saves + re-uploads). Overview does NOT model the saddle (prose only), so no overview
+  re-send owed.
 - [x] **lint blind spot — missing-cascade only diffs the working tree — RESOLVED.** Root cause: `warn_missing_cascade`
   inspects `git diff --cached` (staged) only, so it's inert on unstaged/post-commit changes and downgrades to a
   cheap fallback for wide (>5-consumer) changes — a constant committed without its full cascade slipped through

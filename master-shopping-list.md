@@ -215,7 +215,7 @@ indicative low–high estimates — get quotes before ordering.
 | Cushioned pipe clip | 16 ea | Amazon | water | $16–$32 |
 | Door & access upgrades | 1 lot | Home Depot | interior | $50–$100 |
 | Folding shelf stays/brackets | 2 ea | Amazon | shelf | $24 |
-| Formed 2mm 304 SS saddle clamp (axle retainer) | 8 ea | McMaster-Carr | spray | $10 |
+| Formed 3.18mm 304 SS saddle clamp (axle retainer) | 8 ea | McMaster-Carr | spray | $10 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | M10 wedge floor anchors | 20 ea | McMaster-Carr | walkway | $25–$45 |
 | M12 floor anchor (wedge/sleeve, container floor) | 16 ea | McMaster-Carr | ibc-frame | $30–$60 |

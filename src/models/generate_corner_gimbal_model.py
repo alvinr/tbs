@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards
-"""Generate the film-plane CORNER-JOINT SketchUp model (film-plane-redesign branch).
+"""Generate the film-plane CORNER / WHOLE-MECHANISM SketchUp model (film-plane-redesign branch).
 
-The corner joint is an OFF-THE-SHELF single universal joint (Ruland US12-6-6-SS: 303 SS,
-self-lubricating sintered-bronze plain bearing, 45° max, grease-free) — NOT a custom gimbal.
-A U-joint is the catalog embodiment of the two-crossed-pins, twist-locked kinematics: it gives
-tilt + swing and locks twist, factory-aligned and in stock.
+Shows one full VERTICAL EDGE of the film plane so the top/bottom rail story is visible:
 
-Per-corner motion stack (local axes: X = horizontal along wall = TILT, Y = depth toward pinhole
-= focus, Z = up = SWING / stack direction):
+    floor rail (Y, focus) → BOTTOM corner (bears — COMPRESSION) → ghost film plane
+    → TOP corner (hangs — TENSION) → ceiling rail (Y, focus)
 
-    depth rail (Y, focus) → carriage → DRIVEN vertical Z leadscrew (holds the ~280 mm tilt
-    foreshortening; self-locking) → FLOATING X slide (absorbs the horizontal arc, gravity-neutral)
-    → single U-JOINT (tilt pin X + swing pin Z, twist locked) → stub mount → film-frame corner
-    → ghost quarter of the rigid film plane.
+Each corner is the same off-the-shelf motion stack (mirrored top↔bottom):
+
+    depth rail (Y focus) + HGH20CA carriage
+    → DRIVEN vertical Z Acme leadscrew (¾"-6, self-locking; holds the ~280 mm tilt foreshortening)
+    → FLOATING X slide (HGR15, gravity-neutral; absorbs the horizontal arc)
+    → single U-JOINT (Ruland US12-6-6-SS; through-axis = Y, so tilt pin = X, swing pin = Z; twist locked)
+    → stub mount → film-frame corner.
+
+Nominal stack ≈ 150 mm/corner → FP_H ≈ 2388 − 300 ≈ 2088 mm (image area ~101 sq ft).
 
 REUSES generate_sketchup_model.py helpers. Open a NEW blank SketchUp doc before --send.
 
@@ -28,69 +30,72 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov          # ruby helpers + component()
 
-TAGS = ["Rail & Carriage", "Z + X Stage", "U-Joint", "Frame", "Film Plane", "Labels"]
+TAGS = ["Bottom Corner", "Top Corner", "Film Plane", "Labels"]
 
-C_STEEL = "#B0B0B8"; C_ALUM = "#C8D8E8"; C_PIN = "#B07010"; C_SCREW = "#9098A0"
-C_CROSS = "#8A8A92"; C_FRAME = "#2A6B2A"; C_PANEL = "#1F3B66"
+C_STEEL = "#B0B0B8"; C_ALUM = "#C8D8E8"; C_XSL = "#B8C8D8"; C_PIN = "#B07010"
+C_SCREW = "#9098A0"; C_CROSS = "#8A8A92"; C_FRAME = "#2A6B2A"; C_PANEL = "#1F3B66"; C_CAR = "#C04010"
 
-JC = 130          # U-joint centre Z (mm), local frame
-
-
-def rail_and_carriage():
-    return "\n".join([
-        ov.ruby_box("Depth Rail HGR20 (Y focus)", -12, -190, 0, 24, 380, 18, color=C_STEEL),
-        ov.ruby_box("Carriage HGH20CA", -22, -34, 18, 44, 68, 24, color="#C04010"),
-    ])
+CH = 2388          # container interior height (mm) — local
+STACK = 150        # nominal mechanism stack per corner (mm)
+FP_H = CH - 2 * STACK   # ≈ 2088 — film-plane height after the top+bottom bite
 
 
-def z_x_stage():
-    """Driven vertical Z leadscrew + floating X slide."""
-    return "\n".join([
-        # DRIVEN vertical leadscrew — self-locking, holds the tilt foreshortening
-        ov.ruby_box("Z screw base bearing", -14, -14, 38, 28, 28, 8, color=C_STEEL),
-        ov.ruby_cylinder("Vertical Z leadscrew (driven)", 0, 0, 42, 6, 116, color=C_SCREW, axis="z"),
-        ov.ruby_box("Z drive nut (rides screw)", -18, -18, 86, 36, 36, 18, color=C_ALUM),
-        # FLOATING X slide — gravity-neutral, absorbs the horizontal arc
-        ov.ruby_box("Floating X slide", -26, -12, 104, 52, 24, 7, color="#B8C8D8"),
-    ])
+def corner(z0, s, tag):
+    """One corner's motion stack. z0 = rail-mount Z; s = +1 builds up (bottom), -1 builds down (top).
+    Build-heights (a,b) are distances from the rail mount along the build direction."""
+    P = []
 
+    def bb(name, hx, y0, dy, a, b, color, alpha=1.0):        # symmetric box centred on X=0
+        zmin = z0 + a if s > 0 else z0 - b
+        P.append(ov.ruby_box(f"{name} {tag}", -hx, y0, zmin, 2 * hx, dy, b - a, color=color, alpha=alpha))
 
-def ujoint():
-    """Single universal joint (Ruland US12-6-6-SS): cross + two perpendicular yokes."""
-    p = []
-    # cross / spider block at the joint centre
-    p.append(ov.ruby_box("U-joint cross block", -11, -11, JC - 11, 22, 22, 22, color=C_CROSS))
-    # TILT pin (X, horizontal) — gripped by the OUTPUT (panel-side) yoke; offset -Y so it clears swing
-    p.append(ov.ruby_cylinder("Tilt pin (X)", -30, -4, JC, 5, 60, color=C_PIN, axis="x"))
-    # SWING pin (Z, vertical) — gripped by the INPUT (carrier-side) yoke; offset +Y so it clears tilt
-    p.append(ov.ruby_cylinder("Swing pin (Z)", 0, 4, JC - 26, 5, 52, color=C_PIN, axis="z"))
-    # OUTPUT yoke (panel side): two ears left/right on the tilt pin + web + stub toward panel (+Y)
-    p.append(ov.ruby_box("Out yoke ear L", -30, -10, JC - 10, 10, 20, 20, color=C_ALUM))
-    p.append(ov.ruby_box("Out yoke ear R", 20, -10, JC - 10, 10, 20, 20, color=C_ALUM))
-    p.append(ov.ruby_box("Out yoke web", -30, 10, JC - 8, 60, 8, 16, color=C_ALUM))
-    p.append(ov.ruby_box("Out yoke stub", -6, 17, JC - 6, 12, 26, 12, color=C_ALUM))
-    # INPUT yoke (carrier side): two ears top/bottom on the swing pin + web + foot to the X slide (-Y)
-    p.append(ov.ruby_box("In yoke ear Bot", -9, -9, JC - 26, 18, 18, 10, color="#B8C8D8"))
-    p.append(ov.ruby_box("In yoke ear Top", -9, -9, JC + 16, 18, 18, 10, color="#B8C8D8"))
-    p.append(ov.ruby_box("In yoke web", -8, -17, JC - 26, 16, 8, 52, color="#B8C8D8"))
-    p.append(ov.ruby_box("In yoke foot", -12, -16, 100, 24, 28, 8, color="#B8C8D8"))
-    return "\n".join(p)
+    def rbx(name, x, w, y0, dy, a, b, color):                # explicit-X box
+        zmin = z0 + a if s > 0 else z0 - b
+        P.append(ov.ruby_box(f"{name} {tag}", x, y0, zmin, w, dy, b - a, color=color))
 
+    def cz(name, cx, cy, a, b, r, color):                    # cylinder along Z
+        base = z0 + a if s > 0 else z0 - b
+        P.append(ov.ruby_cylinder(f"{name} {tag}", cx, cy, base, r, b - a, color=color, axis="z"))
 
-def frame_corner():
-    p = [
-        ov.ruby_box("Stub-to-frame plate", -10, 40, JC - 30, 70, 10, 60, color=C_FRAME),
-        # film-frame corner — 2x2x3/16 aluminum angle (L)
-        ov.ruby_box("Frame Angle vert web", -5, 50, JC - 6, 50, 5, 300, color=C_FRAME),
-        ov.ruby_box("Frame Angle vert flange", -5, 50, JC - 6, 5, 50, 300, color=C_FRAME),
-        ov.ruby_box("Frame Angle horiz web", -5, 50, JC - 6, 320, 5, 50, color=C_FRAME),
-        ov.ruby_box("Frame Angle horiz flange", -5, 50, JC - 6, 320, 50, 5, color=C_FRAME),
-    ]
-    return "\n".join(p)
+    def cx(name, x0, cy, h, length, r, color):               # cylinder along X (at one height)
+        z = z0 + h if s > 0 else z0 - h
+        P.append(ov.ruby_cylinder(f"{name} {tag}", x0, cy, z, r, length, color=color, axis="x"))
+
+    # depth rail (Y = focus) + carriage
+    bb("Depth rail Y focus", 12, -170, 340, 0, 18, C_STEEL)
+    bb("Carriage HGH20CA", 22, -30, 60, 18, 30, C_CAR)
+    # DRIVEN vertical Z Acme leadscrew (self-locking)
+    bb("Z screw bearing", 14, -14, 28, 30, 36, C_STEEL)
+    cz("Vertical Z leadscrew driven", 0, 0, 36, 122, 6, C_SCREW)
+    bb("Z drive nut", 16, -16, 32, 92, 112, C_ALUM)
+    # FLOATING X slide (gravity-neutral)
+    bb("Floating X slide", 24, -11, 22, 116, 126, C_XSL)
+    # single U-JOINT (through-axis Y): cross + tilt pin (X) + swing pin (Z) + two yokes
+    bb("U-joint cross", 10, -10, 20, 130, 150, C_CROSS)
+    cx("Tilt pin X", -26, -4, 140, 52, 5, C_PIN)
+    cz("Swing pin Z", 0, 4, 126, 156, 5, C_PIN)
+    rbx("Out yoke ear L", -30, 8, -10, 20, 130, 150, C_ALUM)
+    rbx("Out yoke ear R", 22, 8, -10, 20, 130, 150, C_ALUM)
+    rbx("Out yoke web", -30, 60, 10, 8, 132, 148, C_ALUM)
+    rbx("Out yoke stub", -6, 12, 17, 30, 134, 146, C_ALUM)
+    rbx("In yoke ear Lo", -9, 18, -9, 18, 122, 134, C_XSL)
+    rbx("In yoke ear Hi", -9, 18, -9, 18, 146, 158, C_XSL)
+    rbx("In yoke web", -8, 16, -17, 8, 122, 158, C_XSL)
+    # stub → film-frame corner plate
+    rbx("Stub-to-frame plate", -10, 70, 40, 10, 120, 180, C_FRAME)
+    return "\n".join(P)
 
 
 def film_plane():
-    return ov.ruby_box("Film Plane (ACM, ghost quarter)", 0, 55, JC - 6, 880, 4, 740, color=C_PANEL, alpha=0.22)
+    zb = STACK          # panel bottom edge
+    zt = CH - STACK     # panel top edge
+    return "\n".join([
+        # 2x2 aluminum angle along this vertical edge
+        ov.ruby_box("Frame angle web", -5, 50, zb, 5, 50, zt - zb, color=C_FRAME),
+        ov.ruby_box("Frame angle flange", -5, 50, zb, 50, 5, zt - zb, color=C_FRAME),
+        # ghost film plane (quarter width shown)
+        ov.ruby_box("Film plane (ghost)", 0, 53, zb, 620, 4, zt - zb, color=C_PANEL, alpha=0.16),
+    ])
 
 
 def labels():
@@ -99,31 +104,29 @@ def labels():
         L.append(f'''
 tt = entities.add_text("{s}", Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)}), Geom::Vector3d.new({ov.mm(vx)}, {ov.mm(vy)}, {ov.mm(vz)}))
 tt.layer = model.layers["Labels"] rescue nil''')
-    txt("Single U-joint (Ruland US12-6-6-SS, 45deg, off-the-shelf)", 0, 4, JC + 26, 55, 45, 30)
-    txt("TILT pin (X, horizontal)", 30, -4, JC, 55, -40, 10)
-    txt("SWING pin (Z, vertical)", 0, 4, JC - 26, -55, 40, -20)
-    txt("DRIVEN vertical Z leadscrew (holds tilt travel)", 0, 0, 60, -60, -40, -8)
-    txt("Floating X slide (horizontal arc)", -26, 0, 108, -55, -45, 0)
-    txt("Depth rail (Y) — focus", 0, 180, 9, 40, 55, 10)
-    txt("Film frame (2x2 angle) + film plane", 40, 55, JC + 120, 60, 45, 40)
+    txt("CEILING rail (Y focus) — TOP corners HANG = TENSION", 0, -170, CH, 40, -60, 30)
+    txt("FLOOR rail (Y focus) — BOTTOM corners BEAR = COMPRESSION", 0, -170, 0, 40, -60, -30)
+    txt("Single U-joint (Ruland US12-6-6-SS) — tilt X + swing Z, twist locked", -30, -4, STACK + 20, -60, -40, 10)
+    txt("DRIVEN vertical Z leadscrew (self-locking)", 16, 0, 100, 55, 45, 0)
+    txt("Floating X slide (horizontal arc)", 24, 0, 122, 55, 45, 0)
+    txt(f"Film plane 4499 x {FP_H} (mechanism takes ~{STACK} top + bottom)", 300, 53, CH / 2, 60, 45, 0)
     return "\n".join(L)
 
 
 def generate_ruby():
     comps = [
-        ov.component("Rail & Carriage", "Rail & Carriage", rail_and_carriage()),
-        ov.component("Z + X Stage", "Z + X Stage", z_x_stage()),
-        ov.component("U-Joint", "U-Joint", ujoint()),
-        ov.component("Frame Corner", "Frame", frame_corner()),
+        ov.component("Bottom Corner", "Bottom Corner", corner(0, +1, "(bot)")),
+        ov.component("Top Corner", "Top Corner", corner(CH, -1, "(top)")),
         ov.component("Film Plane", "Film Plane", film_plane()),
     ]
     body = "\n".join(comps)
     tags_ruby = "\n".join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep = "[" + ", ".join(f'"{t}"' for t in TAGS) + "]"
-    full = ["Rail & Carriage", "Z + X Stage", "U-Joint", "Frame", "Film Plane"]
+    full = ["Bottom Corner", "Top Corner", "Film Plane"]
     scenes = [
         ("Overview", full, None),
-        ("Joint Detail", ["Z + X Stage", "U-Joint", "Frame"], (0, 0, JC, 300)),
+        ("Bottom Corner", ["Bottom Corner", "Film Plane"], (0, 0, STACK, 320)),
+        ("Top Corner", ["Top Corner", "Film Plane"], (0, 0, CH - STACK, 320)),
         ("Labeled", full + ["Labels"], None),
     ]
 
@@ -137,7 +140,7 @@ def generate_ruby():
 # © 2026 Alvin Richards
 # Generated from src/models/generate_corner_gimbal_model.py — do not edit this .rb directly.
 model = Sketchup.active_model
-model.start_operation("Film-Plane Corner U-Joint", true)
+model.start_operation("Film-Plane Corner Mechanism", true)
 entities = model.active_entities
 
 opts = model.options["UnitsOptions"]
@@ -171,16 +174,16 @@ model.layers.to_a.each {{ |l|
   model.layers.remove(l, true) rescue nil
 }}
 
-dir = Geom::Vector3d.new(0.55, -0.72, 0.42); dir.normalize!
+dir = Geom::Vector3d.new(0.55, -0.72, 0.30); dir.normalize!
 {scenes_ruby}.each {{ |name, tags, tgt|
   model.layers.each {{ |l| l.visible = (l == default_layer || tags.include?(l.name)) }}
   if tgt
     t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])
-    cdir = Geom::Vector3d.new(0.55, -0.72, 0.42); cdir.normalize!
+    cdir = Geom::Vector3d.new(0.55, -0.72, 0.30); cdir.normalize!
     model.active_view.camera = Sketchup::Camera.new(t.offset(cdir, tgt[3]), t, Z_AXIS)
   else
     ctr = model.bounds.center
-    eye = ctr.offset(dir, model.bounds.diagonal * 1.5)
+    eye = ctr.offset(dir, model.bounds.diagonal * 1.4)
     model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
     model.active_view.zoom_extents
   end
@@ -190,14 +193,14 @@ dir = Geom::Vector3d.new(0.55, -0.72, 0.42); dir.normalize!
 model.layers.each {{ |l| l.visible = true }}
 
 model.commit_operation
-{{ success: true, model: "Film-Plane Corner U-Joint",
+{{ success: true, model: "Film-Plane Corner Mechanism",
    components: model.entities.grep(Sketchup::ComponentInstance).length,
    tags: model.layers.count, scenes: model.pages.count }}.to_json
 '''
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Generate the film-plane corner U-joint SketchUp model")
+    parser = argparse.ArgumentParser(description="Generate the film-plane corner / whole-mechanism SketchUp model")
     parser.add_argument("--save", action="store_true", help="Write Ruby to src/models/corner-gimbal.rb")
     parser.add_argument("--send", action="store_true", help="Send to the ACTIVE SketchUp doc (open a NEW doc first)")
     args = parser.parse_args()

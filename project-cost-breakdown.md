@@ -200,7 +200,7 @@ View-camera-style moveable film plane (Option A — a **fixed-size rigid** plane
 | Cross-slide carriage HGH15CA (Option A) | Flanged block | 8 | $12† | $96 |
 | Cross-slide intermediate plate (Option A) | ¼" alum. | 4 | $15† | $60 |
 | Rod-end spherical bearing | GIR25-DO, 25mm | 8 | $22† | $176 |
-| Pivot pin SS316 | Ø25mm × 200mm | 8 | $8† | $64 |
+| Pivot pin SS316 | Ø25mm × 80mm | 8 | $8† | $64 |
 
 ### 4.2 Film plane frame & backing
 

@@ -164,7 +164,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | Cross-slide carriage HGH15CA (Option A) | Flanged block | 8 ea | Automation Overstock / McMaster-Carr | $96 |
 | Cross-slide intermediate plate (Option A) | ¼" alum., joins X slide to Z slide | 4 ea | Metal Supermarkets / Online Metals | $60 |
 | Rod-end spherical bearing (60645K73) | GIR25-DO or equiv., 25mm bore | 8 ea | McMaster-Carr / Amazon Industrial | $176 |
-| Pivot pin SS316 | Ø25mm × 200mm — slip-fit in the 25mm rod-end bore (a 1"/25.4mm pin is 0.4mm oversize and will not enter). Metric Ø25 SS precision shaft/clevis pin; confirm exact SKU at order. | 8 ea | McMaster-Carr / Fastenal | $64 |
+| Pivot pin SS316 | Ø25mm × 80mm SS316 — slip-fit in the 25mm rod-end bore (a 1"/25.4mm pin is 0.4mm oversize and will not enter). Metric Ø25 clevis/pivot pin spanning the rod-end eye + corner-bracket clevis; 80mm is the longest stocked Ø25 clevis pin (2026-07 check). Confirm exact SKU at order. | 8 ea | McMaster-Carr / Fastenal | $64 |
 | Aluminum angle 2"×2"×3/16" | 8 ft lengths | 10 ea | Metal Supermarkets / Online Metals | $220 |
 | Dibond ACM panel 4mm | 4 ft × 8 ft sheets — single rigid backing, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->×<!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | 6 sheet | Grimco / Signwarehouse | $510 |
 | Black EPDM foam tape 1"×½" (8614K84) | 50 ft rolls | 3 roll | McMaster-Carr / Grainger | $84 |

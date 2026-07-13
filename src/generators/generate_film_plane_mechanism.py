@@ -796,8 +796,10 @@ def sheet3():
                            fc=ANNO, ec=WHITE, lw=1.0, zorder=5, alpha=0.8))
     ax.add_patch(Circle((rod_cx+30+25, rod_cy), 18, fc=BG, ec=WHITE, lw=1.0, zorder=6))
     ax.add_patch(Circle((rod_cx+30+25, rod_cy), 10, fc=MECH, ec=WHITE, lw=0.8, zorder=7))
-    ax.text(rod_cx+30+25, rod_cy, "25mm\nPIN", color=DIM, fontsize=4.5,
+    ax.text(rod_cx+30+25, rod_cy, "PIN", color=DIM, fontsize=4.5,
             ha="center", va="center", **FONT)
+    leader(ax, rod_cx+30+25+16, rod_cy-8, rod_cx+30+25+95, rod_cy-95,
+           "Ø25 × 80mm\nSS316 PIN\n(end-on)", color=DIM, ha="center", font=FONT)
 
     leader(ax, rod_cx, rod_cy+30, rod_cx - 60, rod_cy + 130,
            "ROD-END SPHERICAL\nBEARING (GIR25-DO\nor equiv.)\n±45° ANY AXIS", color=MECH, ha="center",

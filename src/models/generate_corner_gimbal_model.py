@@ -3,21 +3,22 @@
 # © 2026 Alvin Richards
 """Generate the film-plane CORNER GIMBAL SketchUp model (film-plane-redesign branch).
 
-Study A / design-A corner joint, shown in its larger context so the 2D can be checked in 3D:
+A TRUE gimbal: an open middle RING held in TWO perpendicular U-forks so each member is free
+to rotate about its pin (a solid block can't articulate — it must sit in a U-fork).
 
-    depth rail (HGR20) → carriage → FLOATING X-Z cross-slide → cross-slide yoke →
-    TILT pin (Ø24, horizontal) → gimbal block → SWING pin (Ø24, vertical, offset) →
-    frame yoke → film-frame corner (2x2 angle) → a ghost quarter of the rigid film plane.
+    depth rail (HGR20) → carriage → FLOATING X-Z cross-slide → CROSS-SLIDE U-FORK →
+    TILT pin (Ø24, horizontal, X) → GIMBAL RING → SWING pin (Ø24, vertical, Z; offset in
+    depth so it clears the tilt pin) → FRAME U-FORK → film-frame corner (2x2 angle) →
+    ghost quarter of the rigid ACM film plane.
 
-Two perpendicular Ø24 shoulder-bolt pins = a universal joint (tilt + swing, no twist), each
-in double shear on acetal bushings. REUSES the ruby helpers from generate_sketchup_model.py.
+Both pins are Ø24 shoulder bolts in DOUBLE shear on acetal bushings; the two axes are offset
+in Y (depth) so the two through-pins don't intersect. REUSES generate_sketchup_model.py helpers.
 
-Local axes (mm): X = horizontal along the wall (= TILT axis), Y = depth toward pinhole
-(= rail travel), Z = up (SWING axis is vertical). Built in a local frame centered on the joint.
+Local axes (mm): X = horizontal along the wall (TILT axis), Y = depth toward pinhole (rail
+travel), Z = up (SWING axis). Joint centered near (0,0,96).
 
 Usage (open a NEW blank SketchUp doc first):
-    /usr/bin/python3 src/models/generate_corner_gimbal_model.py --save
-    /usr/bin/python3 src/models/generate_corner_gimbal_model.py --save --send
+    /usr/bin/python3 src/models/generate_corner_gimbal_model.py --save [--send]
 """
 import argparse
 import os
@@ -28,81 +29,79 @@ import generate_sketchup_model as ov          # ruby helpers + component()
 
 TAGS = ["Rail & Carriage", "Cross-Slide", "Gimbal", "Frame", "Film Plane", "Labels"]
 
-C_STEEL = "#B0B0B8"    # rail, carriage, frame angle
-C_ALUM  = "#C8D8E8"    # cross-slide, yokes, gimbal block
-C_PIN   = "#B07010"    # Ø24 shoulder-bolt pins (amber)
-C_BUSH  = "#5A3E00"    # acetal/PTFE bushings
-C_FRAME = "#2A6B2A"    # film-frame angle (green)
-C_PANEL = "#1F3B66"    # film-plane panel (ghost)
-C_NUT   = "#80808A"
+C_STEEL = "#B0B0B8"; C_ALUM = "#C8D8E8"; C_PIN = "#B07010"
+C_BUSH = "#5A3E00"; C_FRAME = "#2A6B2A"; C_PANEL = "#1F3B66"; C_NUT = "#80808A"
 
-# ── key geometry (mm), local frame; joint centered near (0,0,~90) ──
-PIN_R = 12             # Ø24 pins
-BUSH_R = 15            # Ø30 bushings
-TILT_Z = 74           # tilt-pin height (horizontal, along X)
-SWING_Z0, SWING_Z1 = 90, 130   # swing pin (vertical, along Z), offset above the tilt pin
-BLK = dict(x=-18, y=-18, z=60, w=36, d=36, h=54)   # gimbal block
+# ── gimbal geometry (mm), local frame ──
+PIN_R, BUSH_R = 12, 15
+RCZ = 96                              # ring centre Z
+ROX, ROZ = 30, 30                     # ring outer half-width (X) and half-height (Z)
+RHX, RHZ = 16, 16                     # ring hole half-width / half-height  (walls ~14 thick)
+RY0, RYD = -12, 24                    # ring depth (Y): from RY0, 24 deep
+TILT_Y = -6                           # tilt-pin depth offset  (horizontal pin, along X)
+SWING_X = 0; SWING_Y = 6              # swing-pin depth offset (vertical pin, along Z)
+SWING_Z0, SWING_Z1 = 52, 144          # swing-pin extent (Z)
+FTOP = SWING_Z1 + 4                   # frame sits just above the top fork lug
 
 
 def rail_and_carriage():
-    p = []
-    # depth rail (HGR20) running in Y (rail travel = depth)
-    p.append(ov.ruby_box("Depth Rail HGR20", -12, -190, 0, 24, 380, 18, color=C_STEEL))
-    # carriage (HGH20CA) riding the rail
-    p.append(ov.ruby_box("Carriage HGH20CA", -22, -34, 18, 44, 68, 24, color="#C04010"))
-    return "\n".join(p)
+    return "\n".join([
+        ov.ruby_box("Depth Rail HGR20", -12, -190, 0, 24, 380, 18, color=C_STEEL),
+        ov.ruby_box("Carriage HGH20CA", -22, -34, 18, 44, 68, 24, color="#C04010"),
+    ])
 
 
 def cross_slide():
-    p = []
-    # the X-Z floating stage (represented as one plate here) — it absorbs the arc travel
-    p.append(ov.ruby_box("X Cross-Slide (float)", -34, -16, 42, 68, 32, 8, color=C_ALUM))
-    p.append(ov.ruby_box("Z Cross-Slide (float)", -30, -14, 50, 60, 28, 8, color="#B8C8D8"))
-    # cross-slide yoke: two lugs (spaced in X) that carry the TILT pin in double shear
-    p.append(ov.ruby_box("Slide Yoke Lug L", -34, -11, 58, 12, 22, 30, color=C_ALUM))
-    p.append(ov.ruby_box("Slide Yoke Lug R", 22, -11, 58, 12, 22, 30, color=C_ALUM))
+    p = [
+        ov.ruby_box("X Cross-Slide (float)", -40, -16, 42, 80, 32, 8, color=C_ALUM),
+        ov.ruby_box("Z Cross-Slide (float)", -34, -14, 50, 68, 28, 8, color="#B8C8D8"),
+        # CROSS-SLIDE U-FORK: two lugs (outboard in X) carrying the TILT pin — the ring
+        # sits BETWEEN them and rotates about the tilt axis
+        ov.ruby_box("Slide Fork Lug L", -44, TILT_Y - 9, 58, 14, 22, 50, color=C_ALUM),
+        ov.ruby_box("Slide Fork Lug R", 30, TILT_Y - 9, 58, 14, 22, 50, color=C_ALUM),
+    ]
     return "\n".join(p)
 
 
 def gimbal():
     p = []
-    # gimbal block (2 offset perpendicular bores)
-    p.append(ov.ruby_box("Gimbal Block", BLK["x"], BLK["y"], BLK["z"], BLK["w"], BLK["d"], BLK["h"], color=C_ALUM))
-    # TILT pin (Ø24, horizontal along X) — through slide yoke lugs + block, double shear
-    p.append(ov.ruby_cylinder("Tilt Pin O24 (shoulder bolt)", -36, 0, TILT_Z, PIN_R, 72, color=C_PIN, axis="x"))
-    p.append(ov.ruby_box("Tilt Pin Head", -42, -14, TILT_Z - 14, 6, 28, 28, color=C_PIN))
-    p.append(ov.ruby_box("Tilt Pin Nut", 36, -13, TILT_Z - 13, 8, 26, 26, color=C_NUT))
-    # tilt-pin acetal bushings (in each lug)
-    p.append(ov.ruby_cylinder("Tilt Bushing L", -24, 0, TILT_Z, BUSH_R, 6, color=C_BUSH, axis="x"))
-    p.append(ov.ruby_cylinder("Tilt Bushing R", 18, 0, TILT_Z, BUSH_R, 6, color=C_BUSH, axis="x"))
-    # SWING pin (Ø24, vertical along Z) — through block + frame yoke, double shear
-    p.append(ov.ruby_cylinder("Swing Pin O24 (shoulder bolt)", 0, 0, SWING_Z0, PIN_R, SWING_Z1 - SWING_Z0, color=C_PIN, axis="z"))
-    p.append(ov.ruby_box("Swing Pin Head", -14, -14, SWING_Z1, 28, 28, 6, color=C_PIN))
-    p.append(ov.ruby_box("Swing Pin Nut", -13, -13, SWING_Z0 - 8, 26, 26, 8, color=C_NUT))
-    p.append(ov.ruby_cylinder("Swing Bushing", 0, 0, SWING_Z1 - 12, BUSH_R, 8, color=C_BUSH, axis="z"))
+    # OPEN gimbal ring — four walls (so both members can rotate; not a solid block)
+    p.append(ov.ruby_box("Gimbal Ring wall L", -ROX, RY0, RCZ - ROZ, ROX - RHX, RYD, 2 * ROZ, color=C_ALUM))
+    p.append(ov.ruby_box("Gimbal Ring wall R", RHX, RY0, RCZ - ROZ, ROX - RHX, RYD, 2 * ROZ, color=C_ALUM))
+    p.append(ov.ruby_box("Gimbal Ring wall Bot", -RHX, RY0, RCZ - ROZ, 2 * RHX, RYD, ROZ - RHZ, color=C_ALUM))
+    p.append(ov.ruby_box("Gimbal Ring wall Top", -RHX, RY0, RCZ + RHZ, 2 * RHX, RYD, ROZ - RHZ, color=C_ALUM))
+    # TILT pin (Ø24, horizontal X, offset -Y) — fork-L → ring-L → ring-R → fork-R (double shear)
+    p.append(ov.ruby_cylinder("Tilt Pin O24 (shoulder bolt)", -44, TILT_Y, RCZ, PIN_R, 88, color=C_PIN, axis="x"))
+    p.append(ov.ruby_box("Tilt Pin Head", -50, TILT_Y - 14, RCZ - 14, 6, 28, 28, color=C_PIN))
+    p.append(ov.ruby_box("Tilt Pin Nut", 44, TILT_Y - 13, RCZ - 13, 8, 26, 26, color=C_NUT))
+    p.append(ov.ruby_cylinder("Tilt Bushing L", -ROX, TILT_Y, RCZ, BUSH_R, ROX - RHX, color=C_BUSH, axis="x"))
+    p.append(ov.ruby_cylinder("Tilt Bushing R", RHX, TILT_Y, RCZ, BUSH_R, ROX - RHX, color=C_BUSH, axis="x"))
+    # SWING pin (Ø24, vertical Z, offset +Y) — fork-bot → ring-bot → ring-top → fork-top (double shear)
+    p.append(ov.ruby_cylinder("Swing Pin O24 (shoulder bolt)", SWING_X, SWING_Y, SWING_Z0, PIN_R, SWING_Z1 - SWING_Z0, color=C_PIN, axis="z"))
+    p.append(ov.ruby_box("Swing Pin Head", -14, SWING_Y - 14, SWING_Z1, 28, 28, 6, color=C_PIN))
+    p.append(ov.ruby_box("Swing Pin Nut", -13, SWING_Y - 13, SWING_Z0 - 8, 26, 26, 8, color=C_NUT))
+    p.append(ov.ruby_cylinder("Swing Bushing Bot", SWING_X, SWING_Y, RCZ - ROZ, BUSH_R, ROZ - RHZ, color=C_BUSH, axis="z"))
+    p.append(ov.ruby_cylinder("Swing Bushing Top", SWING_X, SWING_Y, RCZ + RHZ, BUSH_R, ROZ - RHZ, color=C_BUSH, axis="z"))
     return "\n".join(p)
 
 
 def frame_corner():
-    p = []
-    # frame yoke: a C-fork (rotated 90 deg from the slide yoke) carrying the SWING pin;
-    # two lugs spaced along Z with a back plate on +Y, block boss between them
-    p.append(ov.ruby_box("Frame Yoke Back", -16, 18, SWING_Z0 - 6, 32, 8, (SWING_Z1 + 6) - (SWING_Z0 - 6), color=C_ALUM))
-    p.append(ov.ruby_box("Frame Yoke Lug Lower", -16, -6, SWING_Z0 - 6, 32, 24, 8, color=C_ALUM))
-    p.append(ov.ruby_box("Frame Yoke Lug Upper", -16, -6, SWING_Z1, 32, 24, 8, color=C_ALUM))
-    # film-frame corner — 2x2x3/16 aluminum angle (L): a vertical leg + a horizontal leg
-    fz = SWING_Z1 + 14                       # frame corner sits above the yoke
-    p.append(ov.ruby_box("Frame Angle vert leg", -5, 22, fz, 50, 5, 300, color=C_FRAME))         # up the side
-    p.append(ov.ruby_box("Frame Angle vert flange", -5, 22, fz, 5, 50, 300, color=C_FRAME))
-    p.append(ov.ruby_box("Frame Angle horiz leg", -5, 22, fz, 320, 5, 50, color=C_FRAME))        # along the edge
-    p.append(ov.ruby_box("Frame Angle horiz flange", -5, 22, fz, 320, 50, 5, color=C_FRAME))
+    p = [
+        # FRAME U-FORK: two lugs (outboard top/bottom in Z) carrying the SWING pin — the ring
+        # sits BETWEEN them and the frame rotates about the swing axis
+        ov.ruby_box("Frame Fork Lug Top", -RHX, SWING_Y - 9, RCZ + ROZ, 2 * RHX, 22, SWING_Z1 - (RCZ + ROZ) + 2, color=C_ALUM),
+        ov.ruby_box("Frame Fork Lug Bot", -RHX, SWING_Y - 9, SWING_Z0 - 2, 2 * RHX, 22, (RCZ - ROZ) - (SWING_Z0 - 2), color=C_ALUM),
+    ]
+    # film-frame corner — 2x2x3/16 aluminum angle (L): vertical leg + horizontal leg
+    p.append(ov.ruby_box("Frame Angle vert web", -5, 24, FTOP, 50, 5, 300, color=C_FRAME))
+    p.append(ov.ruby_box("Frame Angle vert flange", -5, 24, FTOP, 5, 50, 300, color=C_FRAME))
+    p.append(ov.ruby_box("Frame Angle horiz web", -5, 24, FTOP, 320, 5, 50, color=C_FRAME))
+    p.append(ov.ruby_box("Frame Angle horiz flange", -5, 24, FTOP, 320, 50, 5, color=C_FRAME))
     return "\n".join(p)
 
 
 def film_plane():
-    # a ghost quarter of the rigid film plane (ACM), bonded to the angle frame
-    fz = SWING_Z1 + 14
-    return ov.ruby_box("Film Plane (ACM, ghost quarter)", 0, 27, fz, 900, 4, 750, color=C_PANEL, alpha=0.22)
+    return ov.ruby_box("Film Plane (ACM, ghost quarter)", 0, 29, FTOP, 900, 4, 750, color=C_PANEL, alpha=0.22)
 
 
 def labels():
@@ -111,12 +110,13 @@ def labels():
         L.append(f'''
 tt = entities.add_text("{s}", Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)}), Geom::Vector3d.new({ov.mm(vx)}, {ov.mm(vy)}, {ov.mm(vz)}))
 tt.layer = model.layers["Labels"] rescue nil''')
-    txt("TILT pin O24 (horizontal)", 36, 0, TILT_Z, 70, -40, -30)
-    txt("SWING pin O24 (vertical)", 0, 0, SWING_Z1, 60, 40, 40)
-    txt("Gimbal block (2 offset bores)", 18, -18, 90, 60, -50, 0)
-    txt("Floating X-Z cross-slide", -30, -16, 50, -60, -40, -10)
-    txt("Depth rail (travel = depth)", 0, 180, 9, 20, 60, 20)
-    txt("Film frame (2x2 angle) + ACM", 20, 27, SWING_Z1 + 120, 60, 40, 40)
+    txt("TILT pin O24 (ring rotates in slide U-fork)", 44, TILT_Y, RCZ, 60, -45, -25)
+    txt("SWING pin O24 (frame rotates in frame U-fork)", 0, SWING_Y, SWING_Z1, 55, 45, 35)
+    txt("OPEN gimbal ring (free to rotate both axes)", ROX, 0, RCZ, 60, -55, 5)
+    txt("Cross-slide U-fork", -44, TILT_Y, 70, -60, -40, -8)
+    txt("Frame U-fork", RHX, SWING_Y, RCZ + ROZ + 8, 55, 40, 20)
+    txt("Floating X-Z cross-slide", -34, -14, 50, -55, -40, -10)
+    txt("Film frame (2x2 angle) + ACM", 20, 29, FTOP + 130, 60, 40, 40)
     return "\n".join(L)
 
 
@@ -132,10 +132,9 @@ def generate_ruby():
     tags_ruby = "\n".join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep = "[" + ", ".join(f'"{t}"' for t in TAGS) + "]"
     full = ["Rail & Carriage", "Cross-Slide", "Gimbal", "Frame", "Film Plane"]
-
     scenes = [
         ("Overview", full, None),
-        ("Joint Detail", ["Cross-Slide", "Gimbal", "Frame"], (0, 0, 95, 320)),
+        ("Joint Detail", ["Cross-Slide", "Gimbal", "Frame"], (0, 0, RCZ, 300)),
         ("Labeled", full + ["Labels"], None),
     ]
 

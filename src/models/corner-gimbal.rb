@@ -59,7 +59,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # X Cross-Slide (float)
   grp = ents.add_group
   grp.name = "X Cross-Slide (float)"
-  face = grp.entities.add_face([-34.mm,-16.mm,42.mm], [34.mm,-16.mm,42.mm], [34.mm,16.mm,42.mm], [-34.mm,16.mm,42.mm])
+  face = grp.entities.add_face([-40.mm,-16.mm,42.mm], [40.mm,-16.mm,42.mm], [40.mm,16.mm,42.mm], [-40.mm,16.mm,42.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
   mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
@@ -70,7 +70,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Z Cross-Slide (float)
   grp = ents.add_group
   grp.name = "Z Cross-Slide (float)"
-  face = grp.entities.add_face([-30.mm,-14.mm,50.mm], [30.mm,-14.mm,50.mm], [30.mm,14.mm,50.mm], [-30.mm,14.mm,50.mm])
+  face = grp.entities.add_face([-34.mm,-14.mm,50.mm], [34.mm,-14.mm,50.mm], [34.mm,14.mm,50.mm], [-34.mm,14.mm,50.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
   mat = model.materials["Z Cross-Slide (float)"] || model.materials.add("Z Cross-Slide (float)")
@@ -78,23 +78,23 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Slide Yoke Lug L
+  # Slide Fork Lug L
   grp = ents.add_group
-  grp.name = "Slide Yoke Lug L"
-  face = grp.entities.add_face([-34.mm,-11.mm,58.mm], [-22.mm,-11.mm,58.mm], [-22.mm,11.mm,58.mm], [-34.mm,11.mm,58.mm])
+  grp.name = "Slide Fork Lug L"
+  face = grp.entities.add_face([-44.mm,-15.mm,58.mm], [-30.mm,-15.mm,58.mm], [-30.mm,7.mm,58.mm], [-44.mm,7.mm,58.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(30.mm)
+  face.pushpull(50.mm)
   mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Slide Yoke Lug R
+  # Slide Fork Lug R
   grp = ents.add_group
-  grp.name = "Slide Yoke Lug R"
-  face = grp.entities.add_face([22.mm,-11.mm,58.mm], [34.mm,-11.mm,58.mm], [34.mm,11.mm,58.mm], [22.mm,11.mm,58.mm])
+  grp.name = "Slide Fork Lug R"
+  face = grp.entities.add_face([30.mm,-15.mm,58.mm], [44.mm,-15.mm,58.mm], [44.mm,7.mm,58.mm], [30.mm,7.mm,58.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(30.mm)
+  face.pushpull(50.mm)
   mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
@@ -107,12 +107,45 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # ═══ Gimbal Joint ═══
   defn = model.definitions.add("Gimbal Joint")
   ents = defn.entities
-  # Gimbal Block
+  # Gimbal Ring wall L
   grp = ents.add_group
-  grp.name = "Gimbal Block"
-  face = grp.entities.add_face([-18.mm,-18.mm,60.mm], [18.mm,-18.mm,60.mm], [18.mm,18.mm,60.mm], [-18.mm,18.mm,60.mm])
+  grp.name = "Gimbal Ring wall L"
+  face = grp.entities.add_face([-30.mm,-12.mm,66.mm], [-16.mm,-12.mm,66.mm], [-16.mm,12.mm,66.mm], [-30.mm,12.mm,66.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(54.mm)
+  face.pushpull(60.mm)
+  mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Gimbal Ring wall R
+  grp = ents.add_group
+  grp.name = "Gimbal Ring wall R"
+  face = grp.entities.add_face([16.mm,-12.mm,66.mm], [30.mm,-12.mm,66.mm], [30.mm,12.mm,66.mm], [16.mm,12.mm,66.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(60.mm)
+  mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Gimbal Ring wall Bot
+  grp = ents.add_group
+  grp.name = "Gimbal Ring wall Bot"
+  face = grp.entities.add_face([-16.mm,-12.mm,66.mm], [16.mm,-12.mm,66.mm], [16.mm,12.mm,66.mm], [-16.mm,12.mm,66.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Gimbal Ring wall Top
+  grp = ents.add_group
+  grp.name = "Gimbal Ring wall Top"
+  face = grp.entities.add_face([-16.mm,-12.mm,112.mm], [16.mm,-12.mm,112.mm], [16.mm,12.mm,112.mm], [-16.mm,12.mm,112.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
   mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
@@ -122,10 +155,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Tilt Pin O24 (shoulder bolt)"
   ge = grp.entities
-  circle = ge.add_circle([-36.mm,0.mm,74.mm], [1,0,0], 12.mm, 24)
+  circle = ge.add_circle([-44.mm,-6.mm,96.mm], [1,0,0], 12.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(72.mm)
+  cface.pushpull(88.mm)
   mat = model.materials["Tilt Pin O24 (shoulder bolt)"] || model.materials.add("Tilt Pin O24 (shoulder bolt)")
   mat.color = Sketchup::Color.new(176, 112, 16)
   mat.alpha = 1.0
@@ -134,7 +167,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Tilt Pin Head
   grp = ents.add_group
   grp.name = "Tilt Pin Head"
-  face = grp.entities.add_face([-42.mm,-14.mm,60.mm], [-36.mm,-14.mm,60.mm], [-36.mm,14.mm,60.mm], [-42.mm,14.mm,60.mm])
+  face = grp.entities.add_face([-50.mm,-20.mm,82.mm], [-44.mm,-20.mm,82.mm], [-44.mm,8.mm,82.mm], [-50.mm,8.mm,82.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(28.mm)
   mat = model.materials["Tilt Pin O24 (shoulder bolt)"] || model.materials.add("Tilt Pin O24 (shoulder bolt)")
@@ -145,7 +178,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Tilt Pin Nut
   grp = ents.add_group
   grp.name = "Tilt Pin Nut"
-  face = grp.entities.add_face([36.mm,-13.mm,61.mm], [44.mm,-13.mm,61.mm], [44.mm,13.mm,61.mm], [36.mm,13.mm,61.mm])
+  face = grp.entities.add_face([44.mm,-19.mm,83.mm], [52.mm,-19.mm,83.mm], [52.mm,7.mm,83.mm], [44.mm,7.mm,83.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(26.mm)
   mat = model.materials["Tilt Pin Nut"] || model.materials.add("Tilt Pin Nut")
@@ -157,10 +190,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Tilt Bushing L"
   ge = grp.entities
-  circle = ge.add_circle([-24.mm,0.mm,74.mm], [1,0,0], 15.mm, 24)
+  circle = ge.add_circle([-30.mm,-6.mm,96.mm], [1,0,0], 15.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(6.mm)
+  cface.pushpull(14.mm)
   mat = model.materials["Tilt Bushing L"] || model.materials.add("Tilt Bushing L")
   mat.color = Sketchup::Color.new(90, 62, 0)
   mat.alpha = 1.0
@@ -170,10 +203,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Tilt Bushing R"
   ge = grp.entities
-  circle = ge.add_circle([18.mm,0.mm,74.mm], [1,0,0], 15.mm, 24)
+  circle = ge.add_circle([16.mm,-6.mm,96.mm], [1,0,0], 15.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(6.mm)
+  cface.pushpull(14.mm)
   mat = model.materials["Tilt Bushing L"] || model.materials.add("Tilt Bushing L")
   mat.color = Sketchup::Color.new(90, 62, 0)
   mat.alpha = 1.0
@@ -183,10 +216,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Swing Pin O24 (shoulder bolt)"
   ge = grp.entities
-  circle = ge.add_circle([0.mm,0.mm,90.mm], [0,0,1], 12.mm, 24)
+  circle = ge.add_circle([0.mm,6.mm,52.mm], [0,0,1], 12.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(40.mm)
+  cface.pushpull(92.mm)
   mat = model.materials["Tilt Pin O24 (shoulder bolt)"] || model.materials.add("Tilt Pin O24 (shoulder bolt)")
   mat.color = Sketchup::Color.new(176, 112, 16)
   mat.alpha = 1.0
@@ -195,7 +228,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Swing Pin Head
   grp = ents.add_group
   grp.name = "Swing Pin Head"
-  face = grp.entities.add_face([-14.mm,-14.mm,130.mm], [14.mm,-14.mm,130.mm], [14.mm,14.mm,130.mm], [-14.mm,14.mm,130.mm])
+  face = grp.entities.add_face([-14.mm,-8.mm,144.mm], [14.mm,-8.mm,144.mm], [14.mm,20.mm,144.mm], [-14.mm,20.mm,144.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["Tilt Pin O24 (shoulder bolt)"] || model.materials.add("Tilt Pin O24 (shoulder bolt)")
@@ -206,7 +239,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Swing Pin Nut
   grp = ents.add_group
   grp.name = "Swing Pin Nut"
-  face = grp.entities.add_face([-13.mm,-13.mm,82.mm], [13.mm,-13.mm,82.mm], [13.mm,13.mm,82.mm], [-13.mm,13.mm,82.mm])
+  face = grp.entities.add_face([-13.mm,-7.mm,44.mm], [13.mm,-7.mm,44.mm], [13.mm,19.mm,44.mm], [-13.mm,19.mm,44.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
   mat = model.materials["Tilt Pin Nut"] || model.materials.add("Tilt Pin Nut")
@@ -214,14 +247,27 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Swing Bushing
+  # Swing Bushing Bot
   grp = ents.add_group
-  grp.name = "Swing Bushing"
+  grp.name = "Swing Bushing Bot"
   ge = grp.entities
-  circle = ge.add_circle([0.mm,0.mm,118.mm], [0,0,1], 15.mm, 24)
+  circle = ge.add_circle([0.mm,6.mm,66.mm], [0,0,1], 15.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(8.mm)
+  cface.pushpull(14.mm)
+  mat = model.materials["Tilt Bushing L"] || model.materials.add("Tilt Bushing L")
+  mat.color = Sketchup::Color.new(90, 62, 0)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Swing Bushing Top
+  grp = ents.add_group
+  grp.name = "Swing Bushing Top"
+  ge = grp.entities
+  circle = ge.add_circle([0.mm,6.mm,112.mm], [0,0,1], 15.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(14.mm)
   mat = model.materials["Tilt Bushing L"] || model.materials.add("Tilt Bushing L")
   mat.color = Sketchup::Color.new(90, 62, 0)
   mat.alpha = 1.0
@@ -234,46 +280,35 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # ═══ Frame Corner ═══
   defn = model.definitions.add("Frame Corner")
   ents = defn.entities
-  # Frame Yoke Back
+  # Frame Fork Lug Top
   grp = ents.add_group
-  grp.name = "Frame Yoke Back"
-  face = grp.entities.add_face([-16.mm,18.mm,84.mm], [16.mm,18.mm,84.mm], [16.mm,26.mm,84.mm], [-16.mm,26.mm,84.mm])
+  grp.name = "Frame Fork Lug Top"
+  face = grp.entities.add_face([-16.mm,-3.mm,126.mm], [16.mm,-3.mm,126.mm], [16.mm,19.mm,126.mm], [-16.mm,19.mm,126.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(52.mm)
+  face.pushpull(20.mm)
   mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame Yoke Lug Lower
+  # Frame Fork Lug Bot
   grp = ents.add_group
-  grp.name = "Frame Yoke Lug Lower"
-  face = grp.entities.add_face([-16.mm,-6.mm,84.mm], [16.mm,-6.mm,84.mm], [16.mm,18.mm,84.mm], [-16.mm,18.mm,84.mm])
+  grp.name = "Frame Fork Lug Bot"
+  face = grp.entities.add_face([-16.mm,-3.mm,50.mm], [16.mm,-3.mm,50.mm], [16.mm,19.mm,50.mm], [-16.mm,19.mm,50.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
+  face.pushpull(16.mm)
   mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame Yoke Lug Upper
+  # Frame Angle vert web
   grp = ents.add_group
-  grp.name = "Frame Yoke Lug Upper"
-  face = grp.entities.add_face([-16.mm,-6.mm,130.mm], [16.mm,-6.mm,130.mm], [16.mm,18.mm,130.mm], [-16.mm,18.mm,130.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Frame Angle vert leg
-  grp = ents.add_group
-  grp.name = "Frame Angle vert leg"
-  face = grp.entities.add_face([-5.mm,22.mm,144.mm], [45.mm,22.mm,144.mm], [45.mm,27.mm,144.mm], [-5.mm,27.mm,144.mm])
+  grp.name = "Frame Angle vert web"
+  face = grp.entities.add_face([-5.mm,24.mm,148.mm], [45.mm,24.mm,148.mm], [45.mm,29.mm,148.mm], [-5.mm,29.mm,148.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(300.mm)
-  mat = model.materials["Frame Angle vert leg"] || model.materials.add("Frame Angle vert leg")
+  mat = model.materials["Frame Angle vert web"] || model.materials.add("Frame Angle vert web")
   mat.color = Sketchup::Color.new(42, 107, 42)
   mat.alpha = 1.0
   grp.material = mat
@@ -281,21 +316,21 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Frame Angle vert flange
   grp = ents.add_group
   grp.name = "Frame Angle vert flange"
-  face = grp.entities.add_face([-5.mm,22.mm,144.mm], [0.mm,22.mm,144.mm], [0.mm,72.mm,144.mm], [-5.mm,72.mm,144.mm])
+  face = grp.entities.add_face([-5.mm,24.mm,148.mm], [0.mm,24.mm,148.mm], [0.mm,74.mm,148.mm], [-5.mm,74.mm,148.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(300.mm)
-  mat = model.materials["Frame Angle vert leg"] || model.materials.add("Frame Angle vert leg")
+  mat = model.materials["Frame Angle vert web"] || model.materials.add("Frame Angle vert web")
   mat.color = Sketchup::Color.new(42, 107, 42)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame Angle horiz leg
+  # Frame Angle horiz web
   grp = ents.add_group
-  grp.name = "Frame Angle horiz leg"
-  face = grp.entities.add_face([-5.mm,22.mm,144.mm], [315.mm,22.mm,144.mm], [315.mm,27.mm,144.mm], [-5.mm,27.mm,144.mm])
+  grp.name = "Frame Angle horiz web"
+  face = grp.entities.add_face([-5.mm,24.mm,148.mm], [315.mm,24.mm,148.mm], [315.mm,29.mm,148.mm], [-5.mm,29.mm,148.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Frame Angle vert leg"] || model.materials.add("Frame Angle vert leg")
+  mat = model.materials["Frame Angle vert web"] || model.materials.add("Frame Angle vert web")
   mat.color = Sketchup::Color.new(42, 107, 42)
   mat.alpha = 1.0
   grp.material = mat
@@ -303,10 +338,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Frame Angle horiz flange
   grp = ents.add_group
   grp.name = "Frame Angle horiz flange"
-  face = grp.entities.add_face([-5.mm,22.mm,144.mm], [315.mm,22.mm,144.mm], [315.mm,72.mm,144.mm], [-5.mm,72.mm,144.mm])
+  face = grp.entities.add_face([-5.mm,24.mm,148.mm], [315.mm,24.mm,148.mm], [315.mm,74.mm,148.mm], [-5.mm,74.mm,148.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["Frame Angle vert leg"] || model.materials.add("Frame Angle vert leg")
+  mat = model.materials["Frame Angle vert web"] || model.materials.add("Frame Angle vert web")
   mat.color = Sketchup::Color.new(42, 107, 42)
   mat.alpha = 1.0
   grp.material = mat
@@ -321,7 +356,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Film Plane (ACM, ghost quarter)
   grp = ents.add_group
   grp.name = "Film Plane (ACM, ghost quarter)"
-  face = grp.entities.add_face([0.mm,27.mm,144.mm], [900.mm,27.mm,144.mm], [900.mm,31.mm,144.mm], [0.mm,31.mm,144.mm])
+  face = grp.entities.add_face([0.mm,29.mm,148.mm], [900.mm,29.mm,148.mm], [900.mm,33.mm,148.mm], [0.mm,33.mm,148.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(750.mm)
   mat = model.materials["Film Plane (ACM, ghost quarter)"] || model.materials.add("Film Plane (ACM, ghost quarter)")
@@ -336,22 +371,25 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
 
 # ── "Labeled" scene callouts (Labels tag) ──
 
-tt = entities.add_text("TILT pin O24 (horizontal)", Geom::Point3d.new(36.mm, 0.mm, 74.mm), Geom::Vector3d.new(70.mm, -40.mm, -30.mm))
+tt = entities.add_text("TILT pin O24 (ring rotates in slide U-fork)", Geom::Point3d.new(44.mm, -6.mm, 96.mm), Geom::Vector3d.new(60.mm, -45.mm, -25.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("SWING pin O24 (vertical)", Geom::Point3d.new(0.mm, 0.mm, 130.mm), Geom::Vector3d.new(60.mm, 40.mm, 40.mm))
+tt = entities.add_text("SWING pin O24 (frame rotates in frame U-fork)", Geom::Point3d.new(0.mm, 6.mm, 144.mm), Geom::Vector3d.new(55.mm, 45.mm, 35.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("Gimbal block (2 offset bores)", Geom::Point3d.new(18.mm, -18.mm, 90.mm), Geom::Vector3d.new(60.mm, -50.mm, 0.mm))
+tt = entities.add_text("OPEN gimbal ring (free to rotate both axes)", Geom::Point3d.new(30.mm, 0.mm, 96.mm), Geom::Vector3d.new(60.mm, -55.mm, 5.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("Floating X-Z cross-slide", Geom::Point3d.new(-30.mm, -16.mm, 50.mm), Geom::Vector3d.new(-60.mm, -40.mm, -10.mm))
+tt = entities.add_text("Cross-slide U-fork", Geom::Point3d.new(-44.mm, -6.mm, 70.mm), Geom::Vector3d.new(-60.mm, -40.mm, -8.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("Depth rail (travel = depth)", Geom::Point3d.new(0.mm, 180.mm, 9.mm), Geom::Vector3d.new(20.mm, 60.mm, 20.mm))
+tt = entities.add_text("Frame U-fork", Geom::Point3d.new(16.mm, 6.mm, 134.mm), Geom::Vector3d.new(55.mm, 40.mm, 20.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("Film frame (2x2 angle) + ACM", Geom::Point3d.new(20.mm, 27.mm, 250.mm), Geom::Vector3d.new(60.mm, 40.mm, 40.mm))
+tt = entities.add_text("Floating X-Z cross-slide", Geom::Point3d.new(-34.mm, -14.mm, 50.mm), Geom::Vector3d.new(-55.mm, -40.mm, -10.mm))
+tt.layer = model.layers["Labels"] rescue nil
+
+tt = entities.add_text("Film frame (2x2 angle) + ACM", Geom::Point3d.new(20.mm, 29.mm, 278.mm), Geom::Vector3d.new(60.mm, 40.mm, 40.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
 # ── In-model © + license credit (default layer → shown in every scene) ──
@@ -372,7 +410,7 @@ model.layers.to_a.each { |l|
 }
 
 dir = Geom::Vector3d.new(0.55, -0.72, 0.42); dir.normalize!
-[["Overview", ["Rail & Carriage", "Cross-Slide", "Gimbal", "Frame", "Film Plane"], nil], ["Joint Detail", ["Cross-Slide", "Gimbal", "Frame"], [0.mm, 0.mm, 95.mm, 320.mm]], ["Labeled", ["Rail & Carriage", "Cross-Slide", "Gimbal", "Frame", "Film Plane", "Labels"], nil]].each { |name, tags, tgt|
+[["Overview", ["Rail & Carriage", "Cross-Slide", "Gimbal", "Frame", "Film Plane"], nil], ["Joint Detail", ["Cross-Slide", "Gimbal", "Frame"], [0.mm, 0.mm, 96.mm, 300.mm]], ["Labeled", ["Rail & Carriage", "Cross-Slide", "Gimbal", "Frame", "Film Plane", "Labels"], nil]].each { |name, tags, tgt|
   model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
   if tgt
     t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])

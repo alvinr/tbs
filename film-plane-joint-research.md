@@ -10,6 +10,10 @@ with it and how it's solved. Manual actuation, corrosion-prone wet environment (
 
 ---
 
+> **Applied design rationale** — the "why the corners work the way they do" report that builds on this
+> research is [`film-plane-corner-rationale.md`](film-plane-corner-rationale.md); the resulting corner
+> is drawn in `diagrams/film-corner-gimbal.png`.
+
 ## The finding, in one line
 
 **Driving a rigid panel at four rigid corners is textbook _over-constraint_ — the wobbly-four-legged-

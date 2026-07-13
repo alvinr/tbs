@@ -771,51 +771,57 @@ def sheet3():
 
     # ── BL: Universal joint / rod-end bearing detail ──────────────────────────
     ax = ax_joint
-    ax.set_xlim(-70, 315); ax.set_ylim(-95, 180); ax.set_aspect("equal")
+    ax.set_xlim(-72, 432); ax.set_ylim(-112, 188); ax.set_aspect("equal")
 
-    # Side view (panel is ~1:1, 1 unit ≈ 1mm). Load path left→right: cross-slide →
-    # rod-end (shank + swivel ball) → fork clevis on the frame, pinned in DOUBLE SHEAR.
-    rx, ry = 150, 45                    # rod-end ball center
-    r_eye, r_ball, r_bore = 27, 22, 12
+    # TWO VIEWS (panel ~1:1, 1 unit ≈ 1mm). LEFT — side elevation: the pin runs
+    # vertically through the ball's BORE (a hole; the ball reads as two crescents),
+    # double-shear through the fork-clevis ears. RIGHT — the same bore seen end-on
+    # (looking along the pin) as a ROUND through-hole.
 
-    # cross-slide stage — the rod-end shank anchors into it
-    ax.add_patch(Rectangle((-30, 15), 70, 60, fc=RAIL, ec=WHITE, lw=1.4, zorder=3))
-    ax.text(5, 45, "CROSS-SLIDE\n(X–Z STAGE)", color=BG, fontsize=5, ha="center", va="center", **FONT, zorder=6)
+    # ── VIEW 1: side elevation ──
+    v1x, v1y = 95, 60
+    r_eye, r_ball, bore_hw = 24, 19, 8
+    ax.add_patch(Rectangle((-58, 30), 48, 60, fc=RAIL, ec=WHITE, lw=1.3, zorder=3))
+    ax.text(-34, 60, "CROSS-\nSLIDE", color=BG, fontsize=4.5, ha="center", va="center", **FONT, zorder=6)
+    ax.add_patch(Rectangle((-10, v1y-6), 82, 12, fc=MECH, ec=WHITE, lw=1.0, zorder=4))
+    for tx in range(-2, 60, 8):
+        ax.plot([tx, tx], [v1y-6, v1y+6], color=WHITE, lw=0.4, zorder=5)
+    ax.add_patch(Circle((v1x, v1y), r_eye, fc=MECH, ec=WHITE, lw=1.3, zorder=5))
+    ax.add_patch(Circle((v1x, v1y), r_ball, fc=STRUCT, ec=WHITE, lw=1.0, zorder=6))
+    # the BORE — a vertical BG channel through the ball → ball reads as two crescents
+    ax.add_patch(Rectangle((v1x-bore_hw, v1y-r_eye-3), 2*bore_hw, 2*(r_eye+3), fc=BG, ec=WHITE, lw=0.7, zorder=7))
+    # fork-clevis ears + spine
+    ax.add_patch(Rectangle((v1x-22, v1y+r_ball+3), 56, 10, fc=STRUCT2, ec=WHITE, lw=1.1, zorder=8))
+    ax.add_patch(Rectangle((v1x-22, v1y-r_ball-13), 56, 10, fc=STRUCT2, ec=WHITE, lw=1.1, zorder=8))
+    ax.add_patch(Rectangle((v1x+28, v1y-r_ball-13), 8, 2*r_ball+26, fc=STRUCT2, ec=WHITE, lw=1.1, zorder=8))
+    ax.add_patch(Rectangle((v1x+36, 30), 46, 60, fc=ANNO, ec=WHITE, lw=1.4, zorder=3, alpha=0.85))
+    ax.text(v1x+59, 60, "FILM\nFRAME", color=BG, fontsize=4.5, ha="center", va="center", **FONT, zorder=6)
+    # pin — fills the bore channel + passes through both ears (double shear)
+    ax.add_patch(Rectangle((v1x-6, v1y-r_ball-17), 12, 2*r_ball+34, fc=C_T2, ec=WHITE, lw=0.9, zorder=9))
+    ax.add_patch(Rectangle((v1x-10, v1y+r_ball+17), 20, 6, fc=C_T2, ec=WHITE, lw=0.9, zorder=9))
+    ax.text(v1x, 150, "SIDE ELEVATION", color=WHITE, fontsize=6, ha="center", va="bottom", **FONT)
+    leader(ax, v1x+bore_hw, v1y, v1x+58, v1y+74, "BALL BORE\n(pin runs through the hole)", color=DIM, ha="center", font=FONT)
+    leader(ax, v1x, v1y+r_ball, v1x-56, v1y+66, "ROD-END BALL\n(±45° swivel)", color=MECH, ha="center", arrow_style="-|>", font=FONT)
+    leader(ax, v1x-22, v1y+r_ball+8, v1x-56, v1y+24, "FORK CLEVIS\n(frame, welded)", color=DIM, ha="center", font=FONT)
+    leader(ax, v1x-6, v1y-r_ball-8, v1x-38, -80, "Ø25 × 80mm PIN\n(DOUBLE SHEAR)", color=C_T2, ha="center", font=FONT)
 
-    # rod-end: threaded shank → eye → spherical ball (bore VERTICAL, so the pin is double-shear)
-    ax.add_patch(Rectangle((40, ry-6), 85, 12, fc=MECH, ec=WHITE, lw=1.0, zorder=4))
-    for tx in range(48, 118, 9):
-        ax.plot([tx, tx], [ry-6, ry+6], color=WHITE, lw=0.4, zorder=5)
-    ax.add_patch(Circle((rx, ry), r_eye, fc=MECH, ec=WHITE, lw=1.4, zorder=5))
-    ax.add_patch(Circle((rx, ry), r_ball, fc=STRUCT, ec=WHITE, lw=1.0, zorder=6))
-    ax.add_patch(Circle((rx, ry), r_bore, fc=BG, ec=WHITE, lw=0.8, zorder=8))
+    # ── VIEW 2: looking along the pin axis (bore = round through-hole) ──
+    v2x, v2y = 340, 60
+    ax.add_patch(Rectangle((v2x-66, v2y-6), 40, 12, fc=MECH, ec=WHITE, lw=1.0, zorder=4))   # shank (to slide)
+    ax.add_patch(Rectangle((v2x-30, v2y+24), 60, 6, fc=STRUCT2, ec=WHITE, lw=1.0, zorder=3))
+    ax.add_patch(Rectangle((v2x-30, v2y-30), 60, 6, fc=STRUCT2, ec=WHITE, lw=1.0, zorder=3))
+    ax.add_patch(Circle((v2x, v2y), 24, fc=MECH, ec=WHITE, lw=1.3, zorder=5))   # eye
+    ax.add_patch(Circle((v2x, v2y), 19, fc=STRUCT, ec=WHITE, lw=1.0, zorder=6)) # ball
+    ax.add_patch(Circle((v2x, v2y), 8.5, fc=BG, ec=WHITE, lw=0.9, zorder=7))    # ROUND bore
+    ax.add_patch(Circle((v2x, v2y), 7, fc=C_T2, ec=WHITE, lw=0.9, zorder=8))    # pin end-on
+    ax.text(v2x, 150, "VIEW ALONG PIN", color=WHITE, fontsize=6, ha="center", va="bottom", **FONT)
+    leader(ax, v2x+7, v2y, v2x+52, v2y-70, "BORE = ROUND\nTHROUGH-HOLE\n(pin end-on)", color=DIM, ha="center", font=FONT)
 
-    # fork clevis (welded to the frame corner) — two ears straddle the ball
-    ax.add_patch(Rectangle((128, 70), 82, 12, fc=STRUCT2, ec=WHITE, lw=1.2, zorder=5))   # top ear
-    ax.add_patch(Rectangle((128, 8), 82, 12, fc=STRUCT2, ec=WHITE, lw=1.2, zorder=5))    # bottom ear
-    ax.add_patch(Rectangle((198, 8), 12, 74, fc=STRUCT2, ec=WHITE, lw=1.2, zorder=5))    # spine (frame side)
-
-    # film frame corner
-    ax.add_patch(Rectangle((210, 15), 70, 60, fc=ANNO, ec=WHITE, lw=1.6, zorder=3, alpha=0.85))
-    ax.text(245, 45, "FILM FRAME\nCORNER\n(2×2 angle)", color=BG, fontsize=5, ha="center", va="center", **FONT, zorder=7)
-
-    # the pin — vertical, through top ear → ball bore → bottom ear (DOUBLE SHEAR)
-    ax.add_patch(Rectangle((rx-7, 5), 14, 80, fc=C_T2, ec=WHITE, lw=1.0, zorder=9))      # 80mm body
-    ax.add_patch(Rectangle((rx-12, 85), 24, 8, fc=C_T2, ec=WHITE, lw=1.0, zorder=9))     # head
-
-    # labels
-    leader(ax, rx, ry, rx-60, ry+96, "ROD-END BALL\n(GIR25-DO · ±45° swivel)",
-           color=MECH, ha="center", arrow_style="-|>", font=FONT)
-    leader(ax, 86, ry-6, 55, -60, "SHANK\n(threads into the slide)", color=MECH, ha="center", font=FONT)
-    leader(ax, 205, 76, 250, 132, "FORK CLEVIS\n(welded to frame corner)", color=DIM, ha="center", font=FONT)
-    leader(ax, rx+7, 28, rx+92, -58, "Ø25 × 80mm SS316 PIN\n(DOUBLE SHEAR — both ears)",
-           color=C_T2, ha="center", font=FONT)
-
-    ax.text(122, 164, "CORNER JOINT DETAIL — ROD-END PINNED IN A FORK CLEVIS (DOUBLE SHEAR)",
+    ax.text(180, 172, "CORNER JOINT DETAIL — ROD-END PINNED IN A FORK CLEVIS (DOUBLE SHEAR)",
             color=WHITE, fontsize=7, ha="center", va="bottom", **FONT)
-    ax.text(122, -88,
-            "Shank anchors to the cross-slide · ball swivels ±45° · pin joins it to the frame's fork clevis (double shear)",
-            color=DIM, fontsize=6, ha="center", **FONT)
+    ax.text(180, -104,
+            "Shank anchors to the cross-slide · ball swivels ±45° · the Ø25 pin runs through the ball's bore into the frame's fork clevis",
+            color=DIM, fontsize=5.5, ha="center", **FONT)
 
     # ── BR: single rigid ACM backing (Option A — no fold) ────────────────────
     ax = ax_acm

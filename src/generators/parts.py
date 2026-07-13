@@ -527,9 +527,9 @@ PARTS: list[Part] = [
     Part("crossslide-plate", "Cross-slide intermediate plate (Option A)", "aluminum",
          "film", 4, "ea", 15, 15, "Metal Supermarkets", "Online Metals", spec='¼" alum., joins X slide to Z slide'),
     Part("rod-end-bearing", "Rod-end spherical bearing", "bearings-motion",
-         "film", 8, "ea", 22, 22, "McMaster-Carr", "Amazon Industrial", part_no="60645K73", spec="GIR25-DO or equiv., 25mm bore"),
+         "film", 4, "ea", 22, 22, "McMaster-Carr", "Amazon Industrial", part_no="60645K73", spec="GIR25-DO or equiv., 25mm bore — one per corner (4 corners)"),
     Part("pivot-pin", "Pivot pin SS316", "fasteners-hardware",
-         "film", 8, "ea", 8, 8, "McMaster-Carr", "Fastenal", spec='Ø25mm × 80mm SS316 — slip-fit in the 25mm rod-end bore (a 1\"/25.4mm pin is 0.4mm oversize and will not enter). Metric Ø25 clevis/pivot pin spanning the rod-end eye + corner-bracket clevis; 80mm is the longest stocked Ø25 clevis pin (2026-07 check). Confirm exact SKU at order.', dims="Ø25 × 80mm"),
+         "film", 4, "ea", 8, 8, "McMaster-Carr", "Fastenal", spec='Ø25mm × 80mm SS316 — slip-fit in the 25mm rod-end bore (a 1\"/25.4mm pin is 0.4mm oversize and will not enter). Metric Ø25 clevis/pivot pin spanning the rod-end eye + corner-bracket clevis; 80mm is the longest stocked Ø25 clevis pin (2026-07 check). Confirm exact SKU at order.', dims="Ø25 × 80mm"),
     # — Film Plane Frame (1,046) —
     Part("alu-angle-2x2", 'Aluminum angle 2"×2"×3/16"', "aluminum",
          "film", 10, "ea", 22, 22, "Metal Supermarkets", "Online Metals", spec="8 ft lengths"),

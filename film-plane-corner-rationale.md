@@ -13,8 +13,9 @@ the resulting corner is drawn in `diagrams/film-corner-gimbal.png`.
 
 The film plane is a **fixed-size rigid flat rectangle** (4,499 × 2,388 mm). To act as a view-camera
 back it must **tilt** and **swing** — and also **focus** (move in depth) — while staying perfectly
-**flat**. It is supported at its **four corners**, each riding a moving carriage (an X–Z cross-slide on
-a depth leadscrew). The corner joint is the piece that connects the rigid frame to each moving carriage.
+**flat**. It is supported at its **four corners**, each riding a moving carriage (a floating X slide + a
+driven vertical Z leadscrew, on a depth-Y leadscrew). The corner joint is the piece that connects the
+rigid frame to each moving carriage.
 Getting it right was hard until we grounded it; here is the reasoning, in order.
 
 ---
@@ -38,13 +39,20 @@ Getting it right was hard until we grounded it; here is the reasoning, in order.
   an over-constrained architecture. (Maxwell's kinematic principle; Blanding, *Exact Constraint*; Hale,
   MIT/LLNL thesis — see the research doc §1.)
 
-## 3. Why the cross-slides FLOAT
+## 3. Why the horizontal slide FLOATS — and the vertical is DRIVEN
 
-- When a rigid plane rotates, **each corner sweeps a small in-plane arc.** The **floating X–Z
-  cross-slide** at each corner absorbs that arc travel.
-- In exact-constraint language, the floating slide is the **"added freedom" that removes the redundant
-  constraint** — it is precisely what makes four corners **legal** instead of over-constrained. So the
-  cross-slides were the right idea all along; the over-constraint theory *validates* them (research doc §2).
+- When a rigid plane rotates, **each corner sweeps an in-plane arc.** That arc has a **horizontal (X)**
+  and a **vertical (Z)** component; both must be accommodated at the corner.
+- The **horizontal (X) component free-floats** — a low-friction slide absorbs it. In exact-constraint
+  language it is the **"added freedom" that removes the redundant constraint**, making four corners
+  **legal** instead of over-constrained (research doc §2). Gravity is neutral to a horizontal slide, so
+  it can float freely.
+- The **vertical (Z) component cannot free-float.** It is gravity-loaded — the top corners *hang* in
+  tension, the bottom corners *bear* in compression — and a frictionless vertical slide provides **no
+  vertical reaction**, so the panel would simply drop. So **Z is a driven, self-locking leadscrew** at
+  each corner; its redundancy is then **managed by coordination** (rule 4), not removed by compliance. At
+  full ±40° tilt this vertical travel is large (~280 mm/corner), which is exactly why it is driven rather
+  than sprung or free.
 
 ## 4. Why the joint is a 2-axis gimbal — not a ball joint, not a rod-end
 
@@ -64,18 +72,25 @@ Getting it right was hard until we grounded it; here is the reasoning, in order.
   joints are pins — pure 1-DOF hinges, torsionally rigid — so two crossed pins give exactly tilt + swing
   with twist locked and zero lash. That torsional rigidity is the one property a ball structurally cannot
   provide, and it is exactly the requirement.**
-- A **standard Cardan cross** binds around **±37°** (the yokes collide). So we build the universal joint
-  as a **gimbal** — **two perpendicular pins on an intermediate block, offset so their bores clear** —
-  where **each pin independently reaches ±45°+**, and each is in **double shear**. (Research doc §3–4.)
+- We first assumed a Cardan cross binds too early (~±37°) and would need a **custom offset-pin gimbal**
+  (two perpendicular pins on a block, offset so their bores clear, each in double shear). **Grounded
+  catalog research corrected that:** relieved-yoke **single stainless universal joints are published to
+  45°** ([Ruland US12-6-6-SS](https://www.ruland.com/us12-6-6-ss.html) — 303 SS, self-lubricating
+  sintered-bronze plain bearing, grease-free), which covers our ±40° tilt / ±28° swing at trivial load.
+  Because this is *static articulation*, not continuous high-speed rotation, the joint is usable to its
+  full angle. **So the 2-axis, twist-locked joint is an off-the-shelf single U-joint — no custom gimbal
+  fabrication.** It is exactly the two-crossed-pins, torsion-locked kinematics above, but factory-aligned
+  (low lash), shorter than a fabricated gimbal (recovering film-plane height), in stock, and ~$195/corner.
+  (Research doc §3–4.)
 
-## 5. Why acetal/PTFE bushings on stainless pins
+## 5. Why a self-lubricating plain-bearing joint (not needle/ball)
 
 - The corner runs inside the **ferricyanide / citric-acid wash** environment. **Rolling and needle
-  bearings corrode and seize** there.
-- **Self-lubricating plain bushings** (acetal / PTFE-lined, e.g. igus iglidur) on **316 stainless pins**
-  run **dry, don't corrode, and carry load through their own material** — the same corrosion-safe,
-  grease-free bearing choice telescope makers use (Dobsonian PTFE pads) and that igus/SKF sell for
-  wash-down service. (Research doc §6.)
+  bearings corrode and seize** there, and greased joints wash out.
+- So we pick the U-joint with a **self-lubricating sintered-bronze plain bearing** — it runs
+  **dry/grease-free** and carries load through its own material, the same corrosion-safe, wash-down choice
+  igus/SKF sell (and telescope makers use — Dobsonian PTFE pads). **303 stainless** suits the splash/rinse
+  exposure here; step to a **316** joint only if it is soaked rather than rinsed. (Research doc §6.)
 
 ## 6. Why four corners at all — and not a single central gimbal
 
@@ -92,24 +107,29 @@ Getting it right was hard until we grounded it; here is the reasoning, in order.
 
 Per corner (×4, driven in coordinated pairs on the depth leadscrews):
 
-- **1 × gimbal block** — 316 SS or 6061, ~50 × 70 × 44 mm, two **offset** perpendicular Ø30 bores
-- **2 × Ø24 shoulder bolt** — 70 mm shoulder, M20 (McMaster 90269A925) — the two gimbal pins
-- **4 × acetal/PTFE flanged bushing** — Ø24 bore × Ø30 OD (igus iglidur), self-lubricating
-- **1 × cross-slide yoke + 1 × frame yoke** — 6061, two lugs each, mounted 90° apart
-- **2 × M20 nyloc nut** — 316 SS
-- …all sitting on the **floating X–Z cross-slide** and its **depth leadscrew**.
+- **1 × single universal joint** — [Ruland US12-6-6-SS](https://www.ruland.com/us12-6-6-ss.html): 303
+  stainless, self-lubricating **sintered-bronze plain bearing**, **45° max articulation**, 3/8" bore,
+  68 mm long, grease-free — the off-the-shelf 2-axis torsion-locked pivot (~$195, in stock)
+- **2 × stub-shaft mount** — a short 3/8" stub + clamp/plate at each yoke: one to the floating X slide,
+  one to the film-frame corner (drilled plate, not a precision-reamed gimbal)
+- …all sitting on the **floating X slide**, the **driven vertical (Z) leadscrew**, and the **depth (Y)
+  leadscrew**.
 
-Drawn (dimensioned, with ±45° articulation checks) in `diagrams/film-corner-gimbal.png`.
+The off-the-shelf single U-joint (~$1,200 for four) **replaces the earlier custom gimbal** (ring + two
+yokes + four reamed bores per corner) — cheaper, shorter, factory-aligned, and in stock. Drawn in
+`diagrams/film-corner-gimbal.png`.
 
 ## Design rules adopted (all grounded in the research)
 
-1. **Articulate on determinate freedoms; float the redundant DOF** — the cross-slides absorb the arc
-   travel, so four corners aren't over-constrained.
-2. **2-axis, torsion-locked joint (gimbal)** — gives tilt + swing, enforces "no twist," clears ±45°.
-3. **Double shear on every pin;** self-lubricating plain bushings; **316 SS / acetal** throughout for
-   the wet environment.
-4. **Coordinate the driven pairs** so the four corner depths never command conflicting positions (a
-   control/coordination rule, not a joint fix).
+1. **Articulate on determinate freedoms; float the redundant horizontal DOF** — the X slide absorbs the
+   horizontal arc travel, so four corners aren't over-constrained on that axis; the gravity-loaded vertical
+   is driven, not floated.
+2. **2-axis, torsion-locked joint** — an off-the-shelf single stainless U-joint (Ruland US12-6-6-SS, 45°)
+   gives tilt + swing, enforces "no twist," clears our ±40°/±28° at trivial load, and needs no custom fab.
+3. **Self-lubricating plain-bearing joint, grease-free** — the U-joint's sintered-bronze plain bearing
+   (no needle/ball rollers to corrode or wash out); 303 SS suits splash/rinse exposure (316 if soaked).
+4. **Coordinate the driven pairs** so the four corners' depth *and* vertical drives never command
+   conflicting positions (a control/coordination rule, not a joint fix).
 
 *This rationale will fold into `film-plane-mechanism-report.md` when the redesign lands; for now it lives
 on the `film-plane-redesign` branch alongside the research.*

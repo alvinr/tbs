@@ -2,7 +2,7 @@
 # © 2026 Alvin Richards
 # Generated from src/models/generate_corner_gimbal_model.py — do not edit this .rb directly.
 model = Sketchup.active_model
-model.start_operation("Film-Plane Corner Gimbal", true)
+model.start_operation("Film-Plane Corner U-Joint", true)
 entities = model.active_entities
 
 opts = model.options["UnitsOptions"]
@@ -18,8 +18,8 @@ model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
   model.layers.add("Rail & Carriage") unless model.layers["Rail & Carriage"]
-  model.layers.add("Cross-Slide") unless model.layers["Cross-Slide"]
-  model.layers.add("Gimbal") unless model.layers["Gimbal"]
+  model.layers.add("Z + X Stage") unless model.layers["Z + X Stage"]
+  model.layers.add("U-Joint") unless model.layers["U-Joint"]
   model.layers.add("Frame") unless model.layers["Frame"]
   model.layers.add("Film Plane") unless model.layers["Film Plane"]
   model.layers.add("Labels") unless model.layers["Labels"]
@@ -27,13 +27,13 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # ═══ Rail & Carriage ═══
   defn = model.definitions.add("Rail & Carriage")
   ents = defn.entities
-  # Depth Rail HGR20
+  # Depth Rail HGR20 (Y focus)
   grp = ents.add_group
-  grp.name = "Depth Rail HGR20"
+  grp.name = "Depth Rail HGR20 (Y focus)"
   face = grp.entities.add_face([-12.mm,-190.mm,0.mm], [12.mm,-190.mm,0.mm], [12.mm,190.mm,0.mm], [-12.mm,190.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
-  mat = model.materials["Depth Rail HGR20"] || model.materials.add("Depth Rail HGR20")
+  mat = model.materials["Depth Rail HGR20 (Y focus)"] || model.materials.add("Depth Rail HGR20 (Y focus)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -53,262 +53,212 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Rail & Carriage"
   inst.layer = model.layers["Rail & Carriage"]
 
-  # ═══ Cross-Slide ═══
-  defn = model.definitions.add("Cross-Slide")
+  # ═══ Z + X Stage ═══
+  defn = model.definitions.add("Z + X Stage")
   ents = defn.entities
-  # X Cross-Slide (float)
+  # Z screw base bearing
   grp = ents.add_group
-  grp.name = "X Cross-Slide (float)"
-  face = grp.entities.add_face([-40.mm,-16.mm,42.mm], [40.mm,-16.mm,42.mm], [40.mm,16.mm,42.mm], [-40.mm,16.mm,42.mm])
+  grp.name = "Z screw base bearing"
+  face = grp.entities.add_face([-14.mm,-14.mm,38.mm], [14.mm,-14.mm,38.mm], [14.mm,14.mm,38.mm], [-14.mm,14.mm,38.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
+  mat = model.materials["Depth Rail HGR20 (Y focus)"] || model.materials.add("Depth Rail HGR20 (Y focus)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z leadscrew (driven)
+  grp = ents.add_group
+  grp.name = "Vertical Z leadscrew (driven)"
+  ge = grp.entities
+  circle = ge.add_circle([0.mm,0.mm,42.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(116.mm)
+  mat = model.materials["Vertical Z leadscrew (driven)"] || model.materials.add("Vertical Z leadscrew (driven)")
+  mat.color = Sketchup::Color.new(144, 152, 160)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Z drive nut (rides screw)
+  grp = ents.add_group
+  grp.name = "Z drive nut (rides screw)"
+  face = grp.entities.add_face([-18.mm,-18.mm,86.mm], [18.mm,-18.mm,86.mm], [18.mm,18.mm,86.mm], [-18.mm,18.mm,86.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(18.mm)
+  mat = model.materials["Z drive nut (rides screw)"] || model.materials.add("Z drive nut (rides screw)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Z Cross-Slide (float)
+  # Floating X slide
   grp = ents.add_group
-  grp.name = "Z Cross-Slide (float)"
-  face = grp.entities.add_face([-34.mm,-14.mm,50.mm], [34.mm,-14.mm,50.mm], [34.mm,14.mm,50.mm], [-34.mm,14.mm,50.mm])
+  grp.name = "Floating X slide"
+  face = grp.entities.add_face([-26.mm,-12.mm,104.mm], [26.mm,-12.mm,104.mm], [26.mm,12.mm,104.mm], [-26.mm,12.mm,104.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Z Cross-Slide (float)"] || model.materials.add("Z Cross-Slide (float)")
+  face.pushpull(7.mm)
+  mat = model.materials["Floating X slide"] || model.materials.add("Floating X slide")
   mat.color = Sketchup::Color.new(184, 200, 216)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Slide Fork Lug L
-  grp = ents.add_group
-  grp.name = "Slide Fork Lug L"
-  face = grp.entities.add_face([-44.mm,-15.mm,58.mm], [-30.mm,-15.mm,58.mm], [-30.mm,7.mm,58.mm], [-44.mm,7.mm,58.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Slide Fork Lug R
-  grp = ents.add_group
-  grp.name = "Slide Fork Lug R"
-  face = grp.entities.add_face([30.mm,-15.mm,58.mm], [44.mm,-15.mm,58.mm], [44.mm,7.mm,58.mm], [30.mm,7.mm,58.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 1.0
-  grp.material = mat
-
   inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "Cross-Slide"
-  inst.layer = model.layers["Cross-Slide"]
+  inst.name = "Z + X Stage"
+  inst.layer = model.layers["Z + X Stage"]
 
-  # ═══ Gimbal Joint ═══
-  defn = model.definitions.add("Gimbal Joint")
+  # ═══ U-Joint ═══
+  defn = model.definitions.add("U-Joint")
   ents = defn.entities
-  # Gimbal Ring wall L
+  # U-joint cross block
   grp = ents.add_group
-  grp.name = "Gimbal Ring wall L"
-  face = grp.entities.add_face([-30.mm,-12.mm,66.mm], [-16.mm,-12.mm,66.mm], [-16.mm,12.mm,66.mm], [-30.mm,12.mm,66.mm])
+  grp.name = "U-joint cross block"
+  face = grp.entities.add_face([-11.mm,-11.mm,119.mm], [11.mm,-11.mm,119.mm], [11.mm,11.mm,119.mm], [-11.mm,11.mm,119.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(60.mm)
-  mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
-  mat.color = Sketchup::Color.new(200, 216, 232)
+  face.pushpull(22.mm)
+  mat = model.materials["U-joint cross block"] || model.materials.add("U-joint cross block")
+  mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Gimbal Ring wall R
+  # Tilt pin (X)
   grp = ents.add_group
-  grp.name = "Gimbal Ring wall R"
-  face = grp.entities.add_face([16.mm,-12.mm,66.mm], [30.mm,-12.mm,66.mm], [30.mm,12.mm,66.mm], [16.mm,12.mm,66.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(60.mm)
-  mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Gimbal Ring wall Bot
-  grp = ents.add_group
-  grp.name = "Gimbal Ring wall Bot"
-  face = grp.entities.add_face([-16.mm,-12.mm,66.mm], [16.mm,-12.mm,66.mm], [16.mm,12.mm,66.mm], [-16.mm,12.mm,66.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Gimbal Ring wall Top
-  grp = ents.add_group
-  grp.name = "Gimbal Ring wall Top"
-  face = grp.entities.add_face([-16.mm,-12.mm,112.mm], [16.mm,-12.mm,112.mm], [16.mm,12.mm,112.mm], [-16.mm,12.mm,112.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Tilt Pin O24 (shoulder bolt)
-  grp = ents.add_group
-  grp.name = "Tilt Pin O24 (shoulder bolt)"
+  grp.name = "Tilt pin (X)"
   ge = grp.entities
-  circle = ge.add_circle([-44.mm,-6.mm,96.mm], [1,0,0], 12.mm, 24)
+  circle = ge.add_circle([-30.mm,-4.mm,130.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(88.mm)
-  mat = model.materials["Tilt Pin O24 (shoulder bolt)"] || model.materials.add("Tilt Pin O24 (shoulder bolt)")
+  cface.pushpull(60.mm)
+  mat = model.materials["Tilt pin (X)"] || model.materials.add("Tilt pin (X)")
   mat.color = Sketchup::Color.new(176, 112, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Tilt Pin Head
+  # Swing pin (Z)
   grp = ents.add_group
-  grp.name = "Tilt Pin Head"
-  face = grp.entities.add_face([-50.mm,-20.mm,82.mm], [-44.mm,-20.mm,82.mm], [-44.mm,8.mm,82.mm], [-50.mm,8.mm,82.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(28.mm)
-  mat = model.materials["Tilt Pin O24 (shoulder bolt)"] || model.materials.add("Tilt Pin O24 (shoulder bolt)")
-  mat.color = Sketchup::Color.new(176, 112, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Tilt Pin Nut
-  grp = ents.add_group
-  grp.name = "Tilt Pin Nut"
-  face = grp.entities.add_face([44.mm,-19.mm,83.mm], [52.mm,-19.mm,83.mm], [52.mm,7.mm,83.mm], [44.mm,7.mm,83.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(26.mm)
-  mat = model.materials["Tilt Pin Nut"] || model.materials.add("Tilt Pin Nut")
-  mat.color = Sketchup::Color.new(128, 128, 138)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Tilt Bushing L
-  grp = ents.add_group
-  grp.name = "Tilt Bushing L"
+  grp.name = "Swing pin (Z)"
   ge = grp.entities
-  circle = ge.add_circle([-30.mm,-6.mm,96.mm], [1,0,0], 15.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(14.mm)
-  mat = model.materials["Tilt Bushing L"] || model.materials.add("Tilt Bushing L")
-  mat.color = Sketchup::Color.new(90, 62, 0)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Tilt Bushing R
-  grp = ents.add_group
-  grp.name = "Tilt Bushing R"
-  ge = grp.entities
-  circle = ge.add_circle([16.mm,-6.mm,96.mm], [1,0,0], 15.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(14.mm)
-  mat = model.materials["Tilt Bushing L"] || model.materials.add("Tilt Bushing L")
-  mat.color = Sketchup::Color.new(90, 62, 0)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Swing Pin O24 (shoulder bolt)
-  grp = ents.add_group
-  grp.name = "Swing Pin O24 (shoulder bolt)"
-  ge = grp.entities
-  circle = ge.add_circle([0.mm,6.mm,52.mm], [0,0,1], 12.mm, 24)
+  circle = ge.add_circle([0.mm,4.mm,104.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(92.mm)
-  mat = model.materials["Tilt Pin O24 (shoulder bolt)"] || model.materials.add("Tilt Pin O24 (shoulder bolt)")
+  cface.pushpull(52.mm)
+  mat = model.materials["Tilt pin (X)"] || model.materials.add("Tilt pin (X)")
   mat.color = Sketchup::Color.new(176, 112, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Swing Pin Head
+  # Out yoke ear L
   grp = ents.add_group
-  grp.name = "Swing Pin Head"
-  face = grp.entities.add_face([-14.mm,-8.mm,144.mm], [14.mm,-8.mm,144.mm], [14.mm,20.mm,144.mm], [-14.mm,20.mm,144.mm])
+  grp.name = "Out yoke ear L"
+  face = grp.entities.add_face([-30.mm,-10.mm,120.mm], [-20.mm,-10.mm,120.mm], [-20.mm,10.mm,120.mm], [-30.mm,10.mm,120.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Tilt Pin O24 (shoulder bolt)"] || model.materials.add("Tilt Pin O24 (shoulder bolt)")
-  mat.color = Sketchup::Color.new(176, 112, 16)
+  face.pushpull(20.mm)
+  mat = model.materials["Z drive nut (rides screw)"] || model.materials.add("Z drive nut (rides screw)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Swing Pin Nut
+  # Out yoke ear R
   grp = ents.add_group
-  grp.name = "Swing Pin Nut"
-  face = grp.entities.add_face([-13.mm,-7.mm,44.mm], [13.mm,-7.mm,44.mm], [13.mm,19.mm,44.mm], [-13.mm,19.mm,44.mm])
+  grp.name = "Out yoke ear R"
+  face = grp.entities.add_face([20.mm,-10.mm,120.mm], [30.mm,-10.mm,120.mm], [30.mm,10.mm,120.mm], [20.mm,10.mm,120.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Z drive nut (rides screw)"] || model.materials.add("Z drive nut (rides screw)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Out yoke web
+  grp = ents.add_group
+  grp.name = "Out yoke web"
+  face = grp.entities.add_face([-30.mm,10.mm,122.mm], [30.mm,10.mm,122.mm], [30.mm,18.mm,122.mm], [-30.mm,18.mm,122.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Z drive nut (rides screw)"] || model.materials.add("Z drive nut (rides screw)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Out yoke stub
+  grp = ents.add_group
+  grp.name = "Out yoke stub"
+  face = grp.entities.add_face([-6.mm,17.mm,124.mm], [6.mm,17.mm,124.mm], [6.mm,43.mm,124.mm], [-6.mm,43.mm,124.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Z drive nut (rides screw)"] || model.materials.add("Z drive nut (rides screw)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # In yoke ear Bot
+  grp = ents.add_group
+  grp.name = "In yoke ear Bot"
+  face = grp.entities.add_face([-9.mm,-9.mm,104.mm], [9.mm,-9.mm,104.mm], [9.mm,9.mm,104.mm], [-9.mm,9.mm,104.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Floating X slide"] || model.materials.add("Floating X slide")
+  mat.color = Sketchup::Color.new(184, 200, 216)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # In yoke ear Top
+  grp = ents.add_group
+  grp.name = "In yoke ear Top"
+  face = grp.entities.add_face([-9.mm,-9.mm,146.mm], [9.mm,-9.mm,146.mm], [9.mm,9.mm,146.mm], [-9.mm,9.mm,146.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Floating X slide"] || model.materials.add("Floating X slide")
+  mat.color = Sketchup::Color.new(184, 200, 216)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # In yoke web
+  grp = ents.add_group
+  grp.name = "In yoke web"
+  face = grp.entities.add_face([-8.mm,-17.mm,104.mm], [8.mm,-17.mm,104.mm], [8.mm,-9.mm,104.mm], [-8.mm,-9.mm,104.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(52.mm)
+  mat = model.materials["Floating X slide"] || model.materials.add("Floating X slide")
+  mat.color = Sketchup::Color.new(184, 200, 216)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # In yoke foot
+  grp = ents.add_group
+  grp.name = "In yoke foot"
+  face = grp.entities.add_face([-12.mm,-16.mm,100.mm], [12.mm,-16.mm,100.mm], [12.mm,12.mm,100.mm], [-12.mm,12.mm,100.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Tilt Pin Nut"] || model.materials.add("Tilt Pin Nut")
-  mat.color = Sketchup::Color.new(128, 128, 138)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Swing Bushing Bot
-  grp = ents.add_group
-  grp.name = "Swing Bushing Bot"
-  ge = grp.entities
-  circle = ge.add_circle([0.mm,6.mm,66.mm], [0,0,1], 15.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(14.mm)
-  mat = model.materials["Tilt Bushing L"] || model.materials.add("Tilt Bushing L")
-  mat.color = Sketchup::Color.new(90, 62, 0)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Swing Bushing Top
-  grp = ents.add_group
-  grp.name = "Swing Bushing Top"
-  ge = grp.entities
-  circle = ge.add_circle([0.mm,6.mm,112.mm], [0,0,1], 15.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(14.mm)
-  mat = model.materials["Tilt Bushing L"] || model.materials.add("Tilt Bushing L")
-  mat.color = Sketchup::Color.new(90, 62, 0)
+  mat = model.materials["Floating X slide"] || model.materials.add("Floating X slide")
+  mat.color = Sketchup::Color.new(184, 200, 216)
   mat.alpha = 1.0
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "Gimbal Joint"
-  inst.layer = model.layers["Gimbal"]
+  inst.name = "U-Joint"
+  inst.layer = model.layers["U-Joint"]
 
   # ═══ Frame Corner ═══
   defn = model.definitions.add("Frame Corner")
   ents = defn.entities
-  # Frame Fork Lug Top
+  # Stub-to-frame plate
   grp = ents.add_group
-  grp.name = "Frame Fork Lug Top"
-  face = grp.entities.add_face([-16.mm,-3.mm,126.mm], [16.mm,-3.mm,126.mm], [16.mm,19.mm,126.mm], [-16.mm,19.mm,126.mm])
+  grp.name = "Stub-to-frame plate"
+  face = grp.entities.add_face([-10.mm,40.mm,100.mm], [60.mm,40.mm,100.mm], [60.mm,50.mm,100.mm], [-10.mm,50.mm,100.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(20.mm)
-  mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Frame Fork Lug Bot
-  grp = ents.add_group
-  grp.name = "Frame Fork Lug Bot"
-  face = grp.entities.add_face([-16.mm,-3.mm,50.mm], [16.mm,-3.mm,50.mm], [16.mm,19.mm,50.mm], [-16.mm,19.mm,50.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["X Cross-Slide (float)"] || model.materials.add("X Cross-Slide (float)")
-  mat.color = Sketchup::Color.new(200, 216, 232)
+  face.pushpull(60.mm)
+  mat = model.materials["Stub-to-frame plate"] || model.materials.add("Stub-to-frame plate")
+  mat.color = Sketchup::Color.new(42, 107, 42)
   mat.alpha = 1.0
   grp.material = mat
 
   # Frame Angle vert web
   grp = ents.add_group
   grp.name = "Frame Angle vert web"
-  face = grp.entities.add_face([-5.mm,24.mm,148.mm], [45.mm,24.mm,148.mm], [45.mm,29.mm,148.mm], [-5.mm,29.mm,148.mm])
+  face = grp.entities.add_face([-5.mm,50.mm,124.mm], [45.mm,50.mm,124.mm], [45.mm,55.mm,124.mm], [-5.mm,55.mm,124.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(300.mm)
-  mat = model.materials["Frame Angle vert web"] || model.materials.add("Frame Angle vert web")
+  mat = model.materials["Stub-to-frame plate"] || model.materials.add("Stub-to-frame plate")
   mat.color = Sketchup::Color.new(42, 107, 42)
   mat.alpha = 1.0
   grp.material = mat
@@ -316,10 +266,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Frame Angle vert flange
   grp = ents.add_group
   grp.name = "Frame Angle vert flange"
-  face = grp.entities.add_face([-5.mm,24.mm,148.mm], [0.mm,24.mm,148.mm], [0.mm,74.mm,148.mm], [-5.mm,74.mm,148.mm])
+  face = grp.entities.add_face([-5.mm,50.mm,124.mm], [0.mm,50.mm,124.mm], [0.mm,100.mm,124.mm], [-5.mm,100.mm,124.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(300.mm)
-  mat = model.materials["Frame Angle vert web"] || model.materials.add("Frame Angle vert web")
+  mat = model.materials["Stub-to-frame plate"] || model.materials.add("Stub-to-frame plate")
   mat.color = Sketchup::Color.new(42, 107, 42)
   mat.alpha = 1.0
   grp.material = mat
@@ -327,10 +277,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Frame Angle horiz web
   grp = ents.add_group
   grp.name = "Frame Angle horiz web"
-  face = grp.entities.add_face([-5.mm,24.mm,148.mm], [315.mm,24.mm,148.mm], [315.mm,29.mm,148.mm], [-5.mm,29.mm,148.mm])
+  face = grp.entities.add_face([-5.mm,50.mm,124.mm], [315.mm,50.mm,124.mm], [315.mm,55.mm,124.mm], [-5.mm,55.mm,124.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Frame Angle vert web"] || model.materials.add("Frame Angle vert web")
+  mat = model.materials["Stub-to-frame plate"] || model.materials.add("Stub-to-frame plate")
   mat.color = Sketchup::Color.new(42, 107, 42)
   mat.alpha = 1.0
   grp.material = mat
@@ -338,10 +288,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Frame Angle horiz flange
   grp = ents.add_group
   grp.name = "Frame Angle horiz flange"
-  face = grp.entities.add_face([-5.mm,24.mm,148.mm], [315.mm,24.mm,148.mm], [315.mm,74.mm,148.mm], [-5.mm,74.mm,148.mm])
+  face = grp.entities.add_face([-5.mm,50.mm,124.mm], [315.mm,50.mm,124.mm], [315.mm,100.mm,124.mm], [-5.mm,100.mm,124.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["Frame Angle vert web"] || model.materials.add("Frame Angle vert web")
+  mat = model.materials["Stub-to-frame plate"] || model.materials.add("Stub-to-frame plate")
   mat.color = Sketchup::Color.new(42, 107, 42)
   mat.alpha = 1.0
   grp.material = mat
@@ -356,9 +306,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Film Plane (ACM, ghost quarter)
   grp = ents.add_group
   grp.name = "Film Plane (ACM, ghost quarter)"
-  face = grp.entities.add_face([0.mm,29.mm,148.mm], [900.mm,29.mm,148.mm], [900.mm,33.mm,148.mm], [0.mm,33.mm,148.mm])
+  face = grp.entities.add_face([0.mm,55.mm,124.mm], [880.mm,55.mm,124.mm], [880.mm,59.mm,124.mm], [0.mm,59.mm,124.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(750.mm)
+  face.pushpull(740.mm)
   mat = model.materials["Film Plane (ACM, ghost quarter)"] || model.materials.add("Film Plane (ACM, ghost quarter)")
   mat.color = Sketchup::Color.new(31, 59, 102)
   mat.alpha = 0.22
@@ -371,25 +321,25 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
 
 # ── "Labeled" scene callouts (Labels tag) ──
 
-tt = entities.add_text("TILT pin O24 (ring rotates in slide U-fork)", Geom::Point3d.new(44.mm, -6.mm, 96.mm), Geom::Vector3d.new(60.mm, -45.mm, -25.mm))
+tt = entities.add_text("Single U-joint (Ruland US12-6-6-SS, 45deg, off-the-shelf)", Geom::Point3d.new(0.mm, 4.mm, 156.mm), Geom::Vector3d.new(55.mm, 45.mm, 30.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("SWING pin O24 (frame rotates in frame U-fork)", Geom::Point3d.new(0.mm, 6.mm, 144.mm), Geom::Vector3d.new(55.mm, 45.mm, 35.mm))
+tt = entities.add_text("TILT pin (X, horizontal)", Geom::Point3d.new(30.mm, -4.mm, 130.mm), Geom::Vector3d.new(55.mm, -40.mm, 10.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("OPEN gimbal ring (free to rotate both axes)", Geom::Point3d.new(30.mm, 0.mm, 96.mm), Geom::Vector3d.new(60.mm, -55.mm, 5.mm))
+tt = entities.add_text("SWING pin (Z, vertical)", Geom::Point3d.new(0.mm, 4.mm, 104.mm), Geom::Vector3d.new(-55.mm, 40.mm, -20.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("Cross-slide U-fork", Geom::Point3d.new(-44.mm, -6.mm, 70.mm), Geom::Vector3d.new(-60.mm, -40.mm, -8.mm))
+tt = entities.add_text("DRIVEN vertical Z leadscrew (holds tilt travel)", Geom::Point3d.new(0.mm, 0.mm, 60.mm), Geom::Vector3d.new(-60.mm, -40.mm, -8.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("Frame U-fork", Geom::Point3d.new(16.mm, 6.mm, 134.mm), Geom::Vector3d.new(55.mm, 40.mm, 20.mm))
+tt = entities.add_text("Floating X slide (horizontal arc)", Geom::Point3d.new(-26.mm, 0.mm, 108.mm), Geom::Vector3d.new(-55.mm, -45.mm, 0.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("Floating X-Z cross-slide", Geom::Point3d.new(-34.mm, -14.mm, 50.mm), Geom::Vector3d.new(-55.mm, -40.mm, -10.mm))
+tt = entities.add_text("Depth rail (Y) — focus", Geom::Point3d.new(0.mm, 180.mm, 9.mm), Geom::Vector3d.new(40.mm, 55.mm, 10.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("Film frame (2x2 angle) + ACM", Geom::Point3d.new(20.mm, 29.mm, 278.mm), Geom::Vector3d.new(60.mm, 40.mm, 40.mm))
+tt = entities.add_text("Film frame (2x2 angle) + film plane", Geom::Point3d.new(40.mm, 55.mm, 250.mm), Geom::Vector3d.new(60.mm, 45.mm, 40.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
 # ── In-model © + license credit (default layer → shown in every scene) ──
@@ -402,7 +352,7 @@ alvinr.github.io/tbs", lanc)
 model.definitions.purge_unused
 model.materials.purge_unused
 
-keep_tags = ["Rail & Carriage", "Cross-Slide", "Gimbal", "Frame", "Film Plane", "Labels"]
+keep_tags = ["Rail & Carriage", "Z + X Stage", "U-Joint", "Frame", "Film Plane", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -410,7 +360,7 @@ model.layers.to_a.each { |l|
 }
 
 dir = Geom::Vector3d.new(0.55, -0.72, 0.42); dir.normalize!
-[["Overview", ["Rail & Carriage", "Cross-Slide", "Gimbal", "Frame", "Film Plane"], nil], ["Joint Detail", ["Cross-Slide", "Gimbal", "Frame"], [0.mm, 0.mm, 96.mm, 300.mm]], ["Labeled", ["Rail & Carriage", "Cross-Slide", "Gimbal", "Frame", "Film Plane", "Labels"], nil]].each { |name, tags, tgt|
+[["Overview", ["Rail & Carriage", "Z + X Stage", "U-Joint", "Frame", "Film Plane"], nil], ["Joint Detail", ["Z + X Stage", "U-Joint", "Frame"], [0.mm, 0.mm, 130.mm, 300.mm]], ["Labeled", ["Rail & Carriage", "Z + X Stage", "U-Joint", "Frame", "Film Plane", "Labels"], nil]].each { |name, tags, tgt|
   model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
   if tgt
     t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])
@@ -428,6 +378,6 @@ dir = Geom::Vector3d.new(0.55, -0.72, 0.42); dir.normalize!
 model.layers.each { |l| l.visible = true }
 
 model.commit_operation
-{ success: true, model: "Film-Plane Corner Gimbal",
+{ success: true, model: "Film-Plane Corner U-Joint",
    components: model.entities.grep(Sketchup::ComponentInstance).length,
    tags: model.layers.count, scenes: model.pages.count }.to_json

@@ -43,6 +43,18 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   `apply_parts_csv.py parts-worklist.csv` → `parts.py --inject` + `costing.py --inject` + `lint.py`.
   Alvin fills at his own cadence from logged-in supplier sessions. (Reminder block atop `parts.py`.)
 
+## Material validation — soak tests (deferred)
+Physical coupon soaks in the actual potassium-ferricyanide / citric-acid wash, deferred until the
+bath is available. Both are cheap; nothing downstream is finalized until they pass.
+- [ ] **UHMW pad coupon soak** — confirm virgin UHMW-PE survives the wash. It is the one
+  medium-confidence item in the Option-B film-plane slide (UHMW pads on 316 flat-bar ways):
+  compatibility charts list citric acid explicitly, but potassium ferricyanide is only *inferred*
+  from the mild-oxidizer class. Soak a scrap ~24 h in the real bath; check for swelling, softening,
+  discoloration, and mass change. Fallback if it fails: acetal copolymer (POM-C) pads.
+- [ ] **Muslin soak test** — validate the muslin (cyanotype substrate) in the wash: dimensional
+  stability when wet, adhesion to the ACM backing sheet, and whether it holds under the perimeter
+  cam clamps. (Paired with the UHMW test — same bath, same session.)
+
 ## Design / 3D (deferred)
 - [x] **spraybar.skp axle-saddle re-spec — DONE.** The axle-retention saddle was re-specced to a fabricated
   1/8" (3.18mm) × 3/4" (19mm) 304 SS flat-bar clamp with 12mm M5 feet (was a schematic 2mm/6mm-wide token that

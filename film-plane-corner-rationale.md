@@ -13,9 +13,9 @@ the resulting corner is drawn in `diagrams/film-corner-gimbal.png`.
 
 The film plane is a **fixed-size rigid flat rectangle** (4,499 × 2,388 mm). To act as a view-camera
 back it must **tilt** and **swing** — and also **focus** (move in depth) — while staying perfectly
-**flat**. It is supported at its **four corners**, each riding a moving carriage (a floating X slide + a
-driven vertical Z leadscrew, on a depth-Y leadscrew). The corner joint is the piece that connects the
-rigid frame to each moving carriage.
+**flat**. It is supported at its **four corners**, each riding a **push-to-slide, cam-clamp** stage
+(friction slides in depth-Y and vertical-Z, plus a floating X slide). The corner joint is the piece that
+connects the rigid frame to each moving carriage.
 Getting it right was hard until we grounded it; here is the reasoning, in order.
 
 ---
@@ -39,20 +39,27 @@ Getting it right was hard until we grounded it; here is the reasoning, in order.
   an over-constrained architecture. (Maxwell's kinematic principle; Blanding, *Exact Constraint*; Hale,
   MIT/LLNL thesis — see the research doc §1.)
 
-## 3. Why the horizontal slide FLOATS — and the vertical is DRIVEN
+## 3. Why the corners SLIDE-AND-CLAMP — not driven screws
 
-- When a rigid plane rotates, **each corner sweeps an in-plane arc.** That arc has a **horizontal (X)**
-  and a **vertical (Z)** component; both must be accommodated at the corner.
-- The **horizontal (X) component free-floats** — a low-friction slide absorbs it. In exact-constraint
-  language it is the **"added freedom" that removes the redundant constraint**, making four corners
-  **legal** instead of over-constrained (research doc §2). Gravity is neutral to a horizontal slide, so
-  it can float freely.
-- The **vertical (Z) component cannot free-float.** It is gravity-loaded — the top corners *hang* in
-  tension, the bottom corners *bear* in compression — and a frictionless vertical slide provides **no
-  vertical reaction**, so the panel would simply drop. So **Z is a driven, self-locking leadscrew** at
-  each corner; its redundancy is then **managed by coordination** (rule 4), not removed by compliance. At
-  full ±40° tilt this vertical travel is large (~280 mm/corner), which is exactly why it is driven rather
-  than sprung or free.
+- **A pinhole has effectively infinite depth of field**, so positioning the plane is **scene /
+  perspective control** (tilt, swing, rise, where the plane sits) — **not precise, repeatable focus.**
+  Nothing here needs a leadscrew's micron-hold, so we don't pay for one: each corner is a **friction
+  slide you push into position and lock with a cam clamp.**
+- **Horizontal (X) floats free** — a low-friction slide absorbs the horizontal component of the corner's
+  in-plane arc. In exact-constraint language it is the **"added freedom" that removes the redundant
+  constraint**, making four corners **legal** instead of over-constrained (research doc §2). Gravity is
+  neutral to a horizontal slide, so it floats.
+- **Vertical (Z) is gravity-loaded** — the top corners *hang* in tension, the bottom corners *bear* in
+  compression — but it does **not** need a screw to hold it: an **adjustable-friction slide** (igus
+  DryLin-style) **stays where you leave it**, so you push to reposition and the cam clamp locks it hard
+  for the shot and for transport. Friction holds during the adjust; the clamp holds after.
+- **This is kinematically cleaner than driven screws.** You position every corner while everything is
+  free (compliant), then **clamp at the plane's *natural* pose** — you lock where it already sits, so
+  four rigid clamps never *force* the panel into a fight (no over-constraint). Driving four screws would
+  have to be coordinated to avoid exactly that; slide-and-clamp sidesteps it.
+- **Bonus:** this drops the entire drive train — **8 Acme leadscrews, 8 handwheels, 4 bevel gearboxes,
+  extension shafts, nuts, collars** — and dissolves the ±40°/±28° cost (the big angles now just mean
+  *longer plain slides*, which are trivial to push, instead of ~470-turn, whippy 2.4 m screws).
 
 ## 4. Why the joint is a 2-axis gimbal — not a ball joint, not a rod-end
 
@@ -95,41 +102,44 @@ Getting it right was hard until we grounded it; here is the reasoning, in order.
 ## 6. Why four corners at all — and not a single central gimbal
 
 - A central 2-axis gimbal (the classic view-camera rear standard) would tilt and swing beautifully, but
-  it does **only** tilt and swing. The **four corners + four depth leadscrews** are what also give
-  **focus, rise, shift, and back-focus** — the full set of view-camera movements.
-- So we **keep the four-corner architecture** and make it correct: **floating cross-slides** (§3) remove
-  the over-constraint, and a **2-axis gimbal** (§4) at each corner provides the tilt/swing articulation
-  without twist. (Research doc §7, options A–C — this is option A.)
+  it does **only** tilt and swing. The **four independently positioned corners** are what also give
+  **rise, shift, and where-the-plane-sits** — the full set of view-camera movements.
+- So we **keep the four-corner architecture** and make it correct: **slide-and-clamp corners with a
+  floating X** (§3) remove the over-constraint, and a **2-axis U-joint** (§4) at each corner provides the
+  tilt/swing articulation without twist. (Research doc §7, options A–C — this is option A.)
 
 ---
 
 ## The result — one corner (Design A)
 
-Per corner (×4, driven in coordinated pairs on the depth leadscrews):
+Per corner (×4):
 
 - **1 × single universal joint** — [Ruland US12-6-6-SS](https://www.ruland.com/us12-6-6-ss.html): 303
   stainless, self-lubricating **sintered-bronze plain bearing**, **45° max articulation**, 3/8" bore,
   68 mm long, grease-free — the off-the-shelf 2-axis torsion-locked pivot (~$195, in stock)
 - **2 × stub-shaft mount** — a short 3/8" stub + clamp/plate at each yoke: one to the floating X slide,
   one to the film-frame corner (drilled plate, not a precision-reamed gimbal)
-- …all sitting on the **floating X slide**, the **driven vertical (Z) leadscrew**, and the **depth (Y)
-  leadscrew**.
+- **Depth (Y): friction slide (~2.2 m) + cam clamp** — sets focus + the swing/tilt depth arc; push, then lock
+- **Vertical (Z): friction slide + cam clamp** — holds when released, locks for shot + transport
+- **Horizontal (X): floating slide** — free; absorbs the swing arc
 
 The off-the-shelf single U-joint (~$1,200 for four) **replaces the earlier custom gimbal** (ring + two
-yokes + four reamed bores per corner) — cheaper, shorter, factory-aligned, and in stock. Drawn in
-`diagrams/film-corner-gimbal.png`.
+yokes + four reamed bores per corner), and **slide-and-clamp replaces the whole leadscrew/handwheel drive
+train** — cheaper, simpler, factory-aligned, and in stock. Drawn in `diagrams/film-corner-gimbal.png`.
 
 ## Design rules adopted (all grounded in the research)
 
 1. **Articulate on determinate freedoms; float the redundant horizontal DOF** — the X slide absorbs the
    horizontal arc travel, so four corners aren't over-constrained on that axis; the gravity-loaded vertical
-   is driven, not floated.
+   is held by a friction slide + clamp, not a screw.
 2. **2-axis, torsion-locked joint** — an off-the-shelf single stainless U-joint (Ruland US12-6-6-SS, 45°)
    gives tilt + swing, enforces "no twist," clears our ±40°/±28° at trivial load, and needs no custom fab.
 3. **Self-lubricating plain-bearing joint, grease-free** — the U-joint's sintered-bronze plain bearing
    (no needle/ball rollers to corrode or wash out); 303 SS suits splash/rinse exposure (316 if soaked).
-4. **Coordinate the driven pairs** so the four corners' depth *and* vertical drives never command
-   conflicting positions (a control/coordination rule, not a joint fix).
+4. **Position free, then clamp at the natural pose** — set every corner while the slides are free, then
+   lock the cam clamps where the rigid plane already sits, so four clamps never force it (no
+   over-constraint, no drive coordination to get wrong). A pinhole's infinite DoF is what lets us do this
+   — it's scene control, not focus.
 
 *This rationale will fold into `film-plane-mechanism-report.md` when the redesign lands; for now it lives
 on the `film-plane-redesign` branch alongside the research.*

@@ -67,15 +67,21 @@ def corner(z0, s, tag):
         z = z0 + h if s > 0 else z0 - h
         P.append(ov.ruby_cylinder(f"{name} {tag}", cx, y0, z, r, dy, color=color, axis="y"))
 
-    # ── DEPTH friction slide (Y): long rail + carriage + cam clamp ──
-    bb("Depth slide rail Y (~2.2m)", 12, -1000, 2000, 0, 18, C_STEEL)
-    bb("Depth carriage (friction)", 22, -30, 60, 18, 30, C_CAR)
-    cyY("Depth cam-clamp lever", 30, 44, 70, 26, 4, C_CLAMP)
+    # ── DEPTH friction slide (Y): rail + CAPTIVE carriage that WRAPS it (grip tabs) + cam clamp ──
+    bb("Depth slide rail Y (~2.2m)", 10, -1000, 2000, 2, 16, C_STEEL)         # rail core
+    bb("Depth carriage body", 22, -30, 60, 16, 32, C_CAR)                    # over the rail
+    rbx("Depth grip tab L", -20, 8, -30, 60, 0, 17, C_CAR)                   # hugs rail left  → captive
+    rbx("Depth grip tab R", 12, 8, -30, 60, 0, 17, C_CAR)                    # hugs rail right → captive
+    rbx("Depth cam clamp body", 22, 14, 30, 14, 20, 34, C_CLAMP)            # clamp body on carriage
+    cyY("Depth clamp lever", 28, 44, 58, 27, 4, C_CLAMP)                     # throw-to-lock lever
 
-    # ── VERTICAL friction slide (Z): rail + carriage + cam clamp ──
-    rbx("Vertical slide rail Z", -36, 14, -8, 16, 20, 350, C_STEEL)
-    rbx("Vertical carriage (friction)", -42, 26, -12, 24, 150, 182, C_CAR)
-    cyY("Vertical cam-clamp lever", -30, 44, 70, 166, 4, C_CLAMP)
+    # ── VERTICAL friction slide (Z): rail + CAPTIVE carriage that WRAPS it (grip tabs) + cam clamp ──
+    rbx("Vertical slide rail Z", -34, 10, -6, 12, 20, 350, C_STEEL)          # rail core (x-34..-24, y-6..6)
+    rbx("Vertical carriage body", -44, 26, -12, 24, 150, 182, C_CAR)        # over the rail
+    rbx("Vertical grip tab F", -44, 26, -15, 9, 152, 180, C_CAR)            # hugs rail front → captive
+    rbx("Vertical grip tab B", -44, 26, 6, 9, 152, 180, C_CAR)             # hugs rail back  → captive
+    rbx("Vertical cam clamp body", -47, 14, 26, 14, 158, 172, C_CLAMP)     # clamp body on carriage
+    cyY("Vertical clamp lever", -33, 40, 58, 165, 4, C_CLAMP)              # throw-to-lock lever
     rbx("Carriage bracket to X-slide", -30, 34, -8, 16, 158, 172, C_ALUM)
 
     # ── FLOATING X slide (gravity-neutral, free) ──

@@ -673,159 +673,156 @@ def sheet3():
         axes.append(a)
     ax_bracket, ax_rail, ax_joint, ax_acm = axes
 
-    # ── TL: Corner carriage bracket assembly ──────────────────────────────────
+    # ── TL: Slide-and-clamp corner stack (kinematic sub-assembly) ─────────────
+    # From the depth rail up to the film frame: depth slide + cam clamp, then the
+    # X and Z accommodation cross-slides, the single U-joint, and the frame corner.
     ax = ax_bracket
-    ax.set_xlim(-100, 550); ax.set_ylim(-200, 400); ax.set_aspect("equal")
+    ax.set_xlim(-160, 560); ax.set_ylim(-210, 400); ax.set_aspect("equal")
 
-    # Rail (running into page — shown as end-on rectangle)
-    rl_w = 44; rl_h = 30
-    ax.add_patch(FancyBboxPatch((-rl_w/2, 0), rl_w, rl_h,
-                               boxstyle="round,pad=2",
-                               fc=RAIL, ec=WHITE, lw=1.5, zorder=3))
-    ax.text(0, -40, "RAIL\nHGR20", color=RAIL, fontsize=6, ha="center", **FONT)
+    C_POLY = "#C9B78F"   # self-lube polymer liner (igus iglide / DryLin)
+    C_CLAMP = "#3A3A40"  # cam-clamp body
+    C_PIN = "#B07010"    # set screws / pins (gold)
+    cx = 150; bw = 130
 
-    # Carriage block (2× per corner)
-    cb_w = 63; cb_h = 55
-    ax.add_patch(Rectangle((-cb_w/2, rl_h-4), cb_w, cb_h,
-                           fc=MECH, ec=WHITE, lw=1.5, zorder=5))
-    ax.add_patch(Rectangle((-cb_w/2 + 4, rl_h + cb_h - 2), cb_w-8, cb_h*0.7,
-                           fc=MECH, ec=WHITE, lw=1.0, alpha=0.6, zorder=5))
-    ax.text(0, rl_h+cb_h/2, "HGH20CA\n×2 per\ncorner",
-            color=BG, fontsize=5.5, ha="center", va="center", **FONT, zorder=6)
+    # vertical connector spine (behind the blocks)
+    ax.plot([cx, cx], [-150, 300], color=DIM, lw=1.0, ls=(0, (3, 2)), zorder=2)
 
-    # Corner bracket L-plate
-    bk_h = 130; bk_w = 80
-    ax.add_patch(Rectangle((cb_w/2, rl_h), bk_w, bk_h,
-                           fc=STRUCT2, ec=WHITE, lw=1.5, zorder=6))
-    # Leadscrew hole through bracket
-    ax.add_patch(Circle((cb_w/2 + bk_w/2, rl_h + bk_h*0.6), 12,
-                        fc=BG, ec=WHITE, lw=1.0, zorder=7))
-    ax.text(cb_w/2 + bk_w/2, rl_h + bk_h*0.6,
-            "ACME\nNUT", color=ANNO, fontsize=5, ha="center", va="center", **FONT)
+    def _stackbox(y0, h, fc, label, sublabel, ldr_col):
+        ax.add_patch(Rectangle((cx - bw/2, y0), bw, h, fc=fc, ec=WHITE, lw=1.4, zorder=5))
+        txt_col = BG if fc in (MECH, C_CLAMP, ANNO) else ANNO
+        ax.text(cx, y0 + h/2, label, color=txt_col, fontsize=6, ha="center",
+                va="center", fontweight="bold", **FONT, zorder=6)
+        leader(ax, cx + bw/2, y0 + h/2, cx + bw/2 + 120, y0 + h/2,
+               sublabel, color=ldr_col, ha="left", va="center", fs=5.6,
+               arrow_style="-|>", font=FONT)
 
-    # Leadscrew
-    ls_y0 = rl_h + bk_h*0.6
-    ls_x0 = cb_w/2 + bk_w
-    ax.add_patch(Rectangle((ls_x0, ls_y0 - 8), 200, 16,
-                           fc=RAIL, ec=WHITE, lw=1.0, zorder=6))
-    # Thread marks
-    for tx in np.arange(ls_x0+10, ls_x0+200, 8):
-        ax.plot([tx, tx+4], [ls_y0-8, ls_y0+8], color=BG, lw=0.7, zorder=7)
-    ax.text(ls_x0 + 100, ls_y0 + 30, "3/4\"-6 ACME LEADSCREW",
-            color=RAIL, fontsize=6, ha="center", **FONT)
+    # 1. depth slide (DryLin W) — a wider rail block with a carriage on it
+    ax.add_patch(Rectangle((cx - bw/2 - 20, -178), bw + 40, 22,
+                           fc=RAIL, ec=WHITE, lw=1.4, zorder=4))
+    ax.text(cx, -167, "DryLin W RAIL (316SS)",
+            color=BG, fontsize=5.5, ha="center", va="center", **FONT, zorder=5)
+    _stackbox(-150, 44, MECH, "DEPTH CARRIAGE", "DryLin W carriage\n(depth = tilt+swing+focus)", MECH)
+    # cam clamp lever off the depth carriage (left)
+    ax.add_patch(Circle((cx - bw/2, -128), 7, fc=C_T3, ec=WHITE, lw=0.9, zorder=8))
+    ax.plot([cx - bw/2, cx - bw/2 - 60], [-128, -168], color=C_T3, lw=2.4,
+            solid_capstyle="round", zorder=8)
+    leader(ax, cx - bw/2 - 55, -165, cx - bw/2 - 70, -110,
+           "CAM CLAMP\n(locks each slide)", color=C_T3, ha="right", va="center",
+           fs=5.6, arrow_style="-|>", font=FONT)
+    # 2. X cross-slide (DryLin T, floats)
+    _stackbox(-90, 40, C_POLY, "X CROSS-SLIDE", "DryLin T — floats free,\nabsorbs SWING foreshorten", "#8A6A2A")
+    # 3. Z cross-slide (DryLin T, preload hold)
+    _stackbox(-32, 40, C_POLY, "Z CROSS-SLIDE", "DryLin T adj-clearance —\npreload holds gravity, absorbs TILT", "#8A6A2A")
+    # 4. U-joint
+    ax.add_patch(Circle((cx, 55), 30, fc=STRUCT2, ec=WHITE, lw=1.4, zorder=6))
+    ax.plot([cx - 24, cx + 24], [55, 55], color=C_T2, lw=1.8, zorder=7, solid_capstyle="round")
+    ax.plot([cx, cx], [55 - 24, 55 + 24], color=MECH, lw=1.8, zorder=7, solid_capstyle="round")
+    ax.add_patch(Circle((cx, 55), 9, fc=BG, ec=WHITE, lw=0.8, zorder=8))
+    leader(ax, cx + 30, 55, cx + bw/2 + 120, 55,
+           "SINGLE U-JOINT\nRuland US12-6-6-SS\n(2 crossed pins: tilt+swing,\ntwist-locked, 45°)",
+           color=STRUCT2, ha="left", va="center", fs=5.6, arrow_style="-|>", font=FONT)
+    # 5. film frame corner
+    _stackbox(100, 50, ANNO, "FILM FRAME", "rigid ACM back\n(fixed size)", C_FLAT)
 
-    # Handwheel (simplified)
-    hw_cx = ls_x0 + 220; hw_cy = ls_y0
-    ax.add_patch(Circle((hw_cx, hw_cy), 55, fc=STRUCT, ec=WHITE, lw=1.5,
-                        alpha=0.8, zorder=6))
-    ax.add_patch(Circle((hw_cx, hw_cy), 8, fc=BG, ec=WHITE, lw=0.8, zorder=7))
-    for ang_d in range(0, 360, 45):
-        ang_r = np.radians(ang_d)
-        ax.plot([hw_cx + 10*np.cos(ang_r), hw_cx + 50*np.cos(ang_r)],
-                [hw_cy + 10*np.sin(ang_r), hw_cy + 50*np.sin(ang_r)],
-                color=WHITE, lw=1.0, zorder=7)
-    ax.text(hw_cx, hw_cy - 75, "8\" HANDWHEEL", color=DIM, fontsize=6,
-            ha="center", **FONT)
-
-    leader(ax, cb_w/2+bk_w/2, rl_h+bk_h, cb_w/2+bk_w/2, rl_h+bk_h+80,
-           "CORNER\nBRACKET\n(L-PLATE)", color=STRUCT2, ha="center",
-           arrow_style="-|>", font=FONT)
-
-    ax.text(200, 370, "CORNER CARRIAGE BRACKET ASSEMBLY\n(ONE PER CORNER — 4 TOTAL)",
+    ax.text(200, 372, "SLIDE-AND-CLAMP CORNER STACK\n(ONE PER CORNER — 4 TOTAL)",
             color=WHITE, fontsize=8, ha="center", va="bottom", **FONT)
-    ax.text(200, -100,
-            "EACH CORNER: HGH20CA ×2  +  L-BRACKET  +  ACME NUT  +  3/4\"-6 LEADSCREW  +  HANDWHEEL",
+    ax.text(200, -200,
+            "EACH CORNER: DryLin W depth slide + cam clamp  +  X & Z DryLin T cross-slides  +  US12-6-6-SS U-joint",
+            color=DIM, fontsize=5.6, ha="center", **FONT)
+
+    # ── TR: DryLin W depth-slide cross-section (dry self-lube polymer) ─────────
+    ax = ax_rail
+    ax.set_xlim(-220, 400); ax.set_ylim(-160, 350); ax.set_aspect("equal")
+
+    # base rail (316SS) with two guide upstands = the DryLin W double rail
+    ax.add_patch(Rectangle((-70, 0), 140, 16, fc=RAIL, ec=WHITE, lw=1.5, zorder=3))
+    for ux in (-48, 48):
+        ax.add_patch(Rectangle((ux - 10, 16), 20, 26, fc=RAIL, ec=WHITE, lw=1.3, zorder=4))
+    # polymer liner (iglide) — the dry low-friction bearing surface, wraps each upstand
+    for ux in (-48, 48):
+        ax.add_patch(Rectangle((ux - 14, 16), 4, 30, fc=C_POLY, ec=WHITE, lw=0.6, zorder=6))
+        ax.add_patch(Rectangle((ux + 10, 16), 4, 30, fc=C_POLY, ec=WHITE, lw=0.6, zorder=6))
+    # polymer carriage plate over the rail, wrapping down outside the upstands
+    ax.add_patch(Rectangle((-74, 46), 148, 26, fc=MECH, ec=WHITE, lw=1.5, zorder=5))
+    for ux in (-62, 48):
+        ax.add_patch(Rectangle((ux, 16), 14, 34, fc=MECH, ec=WHITE, lw=1.3, zorder=5))
+
+    draw_dim_h(ax, -70, 70, -46, "DryLin W rail",
+               offset=14, color=DIM, above=False, fs=6, font=FONT)
+    draw_dim_v(ax, 96, 46, 72, "carriage",
+               offset=14, color=MECH, right=True, fs=6, font=FONT)
+
+    ax.text(0, 66 + 120, "DEPTH-SLIDE CROSS-SECTION\nigus DryLin W (316SS rail)",
+            color=WHITE, fontsize=7.5, ha="center", va="bottom", **FONT)
+    leader(ax, -58, 31, -150, 70, "self-lube POLYMER liner\n(iglide — runs DRY, wash-safe;\nno rollers to corrode)",
+           color="#8A6A2A", ha="right", va="center", fs=5.6, arrow_style="-|>", font=FONT)
+    ax.text(0, 59, "DryLin W\nCARRIAGE", color=BG, fontsize=6,
+            ha="center", va="center", **FONT, zorder=7)
+    ax.text(0, -96,
+            "Z & X CROSS-SLIDES: DryLin T single rail + adjustable-clearance carriage",
+            color=DIM, fontsize=6, ha="center", **FONT)
+    ax.text(0, -128,
+            "STATIC positioning · modest load per corner · push-to-slide, cam-clamp",
             color=DIM, fontsize=6, ha="center", **FONT)
 
-    # ── TR: HGR20 + HGH20CA cross-section ────────────────────────────────────
-    ax = ax_rail
-    ax.set_xlim(-200, 400); ax.set_ylim(-150, 350); ax.set_aspect("equal")
-
-    rl_w = 44; rl_h = 30
-    ax.add_patch(FancyBboxPatch((-rl_w/2, 0), rl_w, rl_h,
-                               boxstyle="round,pad=2",
-                               fc=RAIL, ec=WHITE, lw=1.5, zorder=3))
-    for hx in [-16, 16]:
-        ax.add_patch(Circle((hx, rl_h/2), 4.5, fc=BG, ec=WHITE, lw=0.8, zorder=4))
-    for rx in [-12, 12]:
-        ax.add_patch(Circle((rx, rl_h), 5, fc=BG, ec=WHITE, lw=0.7, zorder=4))
-
-    cb_w = 63; cb_h = 55
-    ax.add_patch(Rectangle((-cb_w/2, rl_h-5), cb_w, cb_h,
-                           fc=MECH, ec=WHITE, lw=1.5, zorder=5))
-    for cx_, cy_ in [(-22, rl_h+15), (22, rl_h+15), (-22, rl_h+38), (22, rl_h+38)]:
-        ax.add_patch(Circle((cx_, cy_), 4, fc=BG, ec=WHITE, lw=0.7, zorder=6))
-
-    draw_dim_h(ax, -rl_w/2, rl_w/2, -50, f"{rl_w}mm",
-               offset=15, color=DIM, above=False, font=FONT)
-    draw_dim_h(ax, -cb_w/2, cb_w/2, rl_h+cb_h+40, f"{cb_w}mm",
-               offset=15, color=DIM, font=FONT)
-    draw_dim_v(ax, cb_w/2+60, rl_h, rl_h+cb_h, f"{cb_h}mm",
-               offset=15, color=MECH, right=True, font=FONT)
-
-    ax.text(0, rl_h+cb_h+120, "RAIL + CARRIAGE CROSS-SECTION\nHIWIN HGR20  +  HGH20CA",
-            color=WHITE, fontsize=7.5, ha="center", va="bottom", **FONT)
-    ax.text(0, -90,
-            "LOAD: 9.7 kN dynamic  ·  4 RAILS  ·  8 CARRIAGES (2 per rail)",
-            color=DIM, fontsize=6.5, ha="center", **FONT)
-    ax.text(-80, rl_h/2, "HGR20\nRAIL", color=BG, fontsize=6.5,
-            ha="center", va="center", rotation=90, **FONT)
-    ax.text(0, rl_h+cb_h/2, "HGH20CA\nCARRIAGE", color=BG, fontsize=6.5,
-            ha="center", va="center", **FONT)
-
-    # ── BL: Universal joint / rod-end bearing detail ──────────────────────────
+    # ── BL: U-joint + stub/support detail — how each side secures ─────────────
     ax = ax_joint
-    ax.set_xlim(-72, 432); ax.set_ylim(-124, 196); ax.set_aspect("equal")
+    ax.set_xlim(-72, 432); ax.set_ylim(-128, 196); ax.set_aspect("equal")
 
-    # TWO VIEWS (panel ~1:1, 1 unit ≈ 1mm). LEFT — SIDE ELEVATION: the rod-end housing is
-    # seen EDGE-ON, so it reads as a RECTANGLE with the shoulder-bolt pin through it, double
-    # shear through the clevis ears (top & bottom here). RIGHT — VIEW ALONG THE PIN: the head
-    # is a round ring with a round bore; the fork ears are FRONT & BACK, so they're GHOSTED.
+    # TWO VIEWS (panel ~1:1, 1 unit ≈ 1mm). LEFT — the Ruland US12-6-6-SS U-joint in
+    # section: a centre block carrying two crossed pins in bronze plain bearings; each
+    # yoke hub grips OUR stub shaft with a set screw. RIGHT — that stub clamped in the
+    # McMaster 4040N12 base-mount support (removable cap + 2 clamp screws).
 
-    # ── VIEW 1: side elevation ──
-    v1x, v1y = 95, 62
-    ewx, ewz = 26, 15            # eye-housing half-width (X) and half-height (Z; 31mm ≈ 2·ewz)
-    ax.add_patch(Rectangle((-60, 32), 46, 60, fc=RAIL, ec=WHITE, lw=1.3, zorder=3))
-    ax.text(-37, 62, "CROSS-\nSLIDE", color=BG, fontsize=4.5, ha="center", va="center", **FONT, zorder=6)
-    # shank (M24×2.0, threads into the slide)
-    ax.add_patch(Rectangle((-14, v1y-7), 83, 14, fc=MECH, ec=WHITE, lw=1.0, zorder=4))
-    for tx in range(-6, 62, 8):
-        ax.plot([tx, tx], [v1y-7, v1y+7], color=WHITE, lw=0.4, zorder=5)
-    # eye HOUSING — edge-on = a RECTANGLE, pin straight through it
-    ax.add_patch(Rectangle((v1x-ewx, v1y-ewz), 2*ewx, 2*ewz, fc=MECH, ec=WHITE, lw=1.3, zorder=4))
-    # fork-clevis ears (TOP & BOTTOM in this view) + spine to the frame
-    ax.add_patch(Rectangle((v1x-30, v1y+ewz+3), 62, 13, fc=STRUCT2, ec=WHITE, lw=1.1, zorder=6))   # top ear
-    ax.add_patch(Rectangle((v1x-30, v1y-ewz-16), 62, 13, fc=STRUCT2, ec=WHITE, lw=1.1, zorder=6))  # bottom ear
-    ax.add_patch(Rectangle((v1x+32, v1y-ewz-16), 8, 2*ewz+32, fc=STRUCT2, ec=WHITE, lw=1.1, zorder=6))
-    ax.add_patch(Rectangle((v1x+40, 34), 44, 56, fc=ANNO, ec=WHITE, lw=1.4, zorder=3, alpha=0.85))
-    ax.text(v1x+62, 62, "FILM\nFRAME", color=BG, fontsize=4.5, ha="center", va="center", **FONT, zorder=6)
-    # shoulder bolt — head (top) · Ø24 shoulder through both ears + housing · nut (bottom)
-    ax.add_patch(Rectangle((v1x-12, v1y-ewz-16), 24, 2*ewz+32, fc=C_T2, ec=WHITE, lw=0.9, zorder=9))  # shoulder
-    ax.add_patch(Rectangle((v1x-17, v1y+ewz+16), 34, 8, fc=C_T2, ec=WHITE, lw=0.9, zorder=9))         # head
-    ax.add_patch(Rectangle((v1x-15, v1y-ewz-25), 30, 9, fc=STRUCT, ec=WHITE, lw=0.9, zorder=9))       # nut
-    ax.text(v1x, 154, "SIDE ELEVATION", color=WHITE, fontsize=6, ha="center", va="bottom", **FONT)
-    leader(ax, v1x-ewx, v1y-3, v1x-58, v1y+18, "ROD-END HOUSING\n(47° swivel ball joint)", color=MECH, ha="center", font=FONT)
-    leader(ax, 42, v1y-7, 30, -66, "SHANK M24×2.0\n(threads into slide)", color=MECH, ha="center", font=FONT)
-    leader(ax, v1x-30, v1y+ewz+9, v1x-58, v1y+62, "FORK CLEVIS\n(welded to frame)", color=DIM, ha="center", font=FONT)
-    leader(ax, v1x+12, v1y-ewz-8, v1x+72, -72, "M20 SHOULDER BOLT\nØ24 × 70mm (DOUBLE SHEAR)", color=C_T2, ha="center", font=FONT)
+    # ── VIEW 1: U-joint (Ruland US12-6-6-SS), cut through the swing pin ──
+    v1x, v1y = 110, 68
+    # centre block (joint body)
+    ax.add_patch(Rectangle((v1x-24, v1y-20), 48, 40, fc=STRUCT2, ec=WHITE, lw=1.4, zorder=5))
+    # swing pin in section (vertical) — bronze plain bearing in the block
+    ax.add_patch(Rectangle((v1x-6, v1y-32), 12, 64, fc=C_T2, ec=WHITE, lw=0.9, zorder=6))
+    # tilt pin, end-on (the other axis)
+    ax.add_patch(Circle((v1x, v1y), 6, fc=MECH, ec=WHITE, lw=0.8, zorder=7))
+    # two yoke hubs (part of the joint) + OUR stub shafts, set-screw locked
+    for sgn, tag in ((-1, "carrier"), (1, "frame")):
+        hub_x = v1x + sgn*24
+        ax.add_patch(Rectangle((min(hub_x, hub_x+sgn*20), v1y-11), 20, 22,
+                               fc=STRUCT2, ec=WHITE, lw=1.2, zorder=5))   # yoke hub
+        stub_x0 = hub_x + sgn*20
+        ax.add_patch(Rectangle((min(stub_x0, stub_x0+sgn*40), v1y-6), 40, 12,
+                               fc=MECH, ec=WHITE, lw=1.1, zorder=4))       # our stub shaft
+        # set screw on the hub
+        ax.add_patch(Circle((hub_x + sgn*10, v1y+11), 3.5, fc=C_PIN, ec=WHITE, lw=0.7, zorder=8))
+    # protective boot (ghosted bellows over the joint)
+    ax.add_patch(Rectangle((v1x-30, v1y-27), 60, 54, fill=False, ec=DIM, lw=1.0, ls=(0, (4, 3)), zorder=9))
+    ax.text(v1x, 150, "U-JOINT SECTION", color=WHITE, fontsize=6, ha="center", va="bottom", **FONT)
+    leader(ax, v1x, v1y-20, v1x-40, v1y+40, "CENTRE BLOCK\n(2 crossed pins,\nbronze plain bearing)", color=STRUCT2, ha="center", fs=5.4, font=FONT)
+    leader(ax, v1x-54, v1y, v1x-66, v1y-56, "OUR STUB SHAFT\n3/8\" 304 SS\n(set-screw locked)", color=MECH, ha="center", fs=5.4, font=FONT)
+    leader(ax, v1x+10, v1y+11, v1x+52, v1y+46, "HUB SET SCREW", color=C_PIN, ha="left", fs=5.4, font=FONT)
+    leader(ax, v1x+30, v1y+20, v1x+30, v1y+62, "BOOT (nitrile, dry)\nUBOOT12/19-NI-KIT", color=DIM, ha="center", fs=5.4, font=FONT)
 
-    # ── VIEW 2: looking along the pin axis ──
-    v2x, v2y = 345, 62
-    ax.add_patch(Rectangle((v2x-54, v2y-7), 28, 14, fc=MECH, ec=WHITE, lw=1.0, zorder=4))   # shank stub (to slide)
-    ax.add_patch(Circle((v2x, v2y), 26, fc=MECH, ec=WHITE, lw=1.3, zorder=5))   # round head/eye
-    ax.add_patch(Circle((v2x, v2y), 17, fc=STRUCT, ec=WHITE, lw=1.0, zorder=6)) # ball
-    ax.add_patch(Circle((v2x, v2y), 12, fc=BG, ec=WHITE, lw=0.9, zorder=7))     # round bore (25mm)
-    ax.add_patch(Circle((v2x, v2y), 11, fc=C_T2, ec=WHITE, lw=0.9, zorder=8))   # pin end-on (Ø24)
-    # fork ears are FRONT & BACK in this view → GHOST them (dashed, no fill) so the bore shows
-    ax.add_patch(Rectangle((v2x-33, v2y-42), 66, 84, fill=False, ec=DIM, lw=1.0, ls="--", zorder=10))
-    ax.text(v2x, 154, "VIEW ALONG PIN", color=WHITE, fontsize=6, ha="center", va="bottom", **FONT)
-    leader(ax, v2x+11, v2y-6, v2x+48, v2y-66, "25mm BORE\n(round through-hole)", color=DIM, ha="center", font=FONT)
-    leader(ax, v2x+33, v2y+34, v2x+56, v2y+64, "FORK EARS front+back\n(GHOSTED)", color=DIM, ha="center", font=FONT)
+    # ── VIEW 2: stub clamped in the 4040N12 base-mount support ──
+    v2x, v2y = 330, 60
+    # support body + base feet
+    ax.add_patch(Rectangle((v2x-32, v2y-6), 64, 34, fc=STRUCT, ec=WHITE, lw=1.3, zorder=4))     # body
+    ax.add_patch(Rectangle((v2x-46, v2y-18), 92, 12, fc=STRUCT, ec=WHITE, lw=1.3, zorder=4))    # base
+    for fx in (-38, 38):
+        ax.add_patch(Circle((v2x+fx, v2y-12), 3.5, fc=BG, ec=WHITE, lw=0.7, zorder=6))          # mount holes
+    # removable cap + 2 clamp screws
+    ax.add_patch(Rectangle((v2x-32, v2y+28), 64, 12, fc=STRUCT2, ec=WHITE, lw=1.2, zorder=5))   # cap
+    for sx in (-20, 20):
+        ax.add_patch(Circle((v2x+sx, v2y+34), 3.5, fc=C_PIN, ec=WHITE, lw=0.7, zorder=7))       # clamp screws
+    # the stub shaft clamped through it (into page — shown as a bore)
+    ax.add_patch(Circle((v2x, v2y+13), 9, fc=MECH, ec=WHITE, lw=1.1, zorder=6))
+    ax.add_patch(Circle((v2x, v2y+13), 4, fc=BG, ec=WHITE, lw=0.7, zorder=7))
+    ax.text(v2x, 150, "STUB CLAMPED IN SUPPORT", color=WHITE, fontsize=6, ha="center", va="bottom", **FONT)
+    leader(ax, v2x+32, v2y+34, v2x+52, v2y+58, "REMOVABLE CAP\n+ 2 clamp screws", color=C_PIN, ha="left", fs=5.4, font=FONT)
+    leader(ax, v2x, v2y+13, v2x-56, v2y+40, "STUB SHAFT\n(clamped, no slip)", color=MECH, ha="right", fs=5.4, font=FONT)
+    leader(ax, v2x-46, v2y-12, v2x-58, v2y-52, "4040N12 BASE-MOUNT\nSHAFT SUPPORT (304 SS)\n→ bolts to X-slide / frame", color=STRUCT, ha="right", fs=5.4, font=FONT)
 
-    ax.text(180, 178, "CORNER JOINT DETAIL — ROD-END (60645K591) PINNED IN A FORK CLEVIS (DOUBLE SHEAR)",
+    ax.text(180, 178, "CORNER JOINT DETAIL — SINGLE U-JOINT (US12-6-6-SS); EACH STUB CLAMPED IN A 4040N12 SUPPORT",
             color=WHITE, fontsize=6.5, ha="center", va="bottom", **FONT)
-    ax.text(180, -112,
-            "Shank M24 threads into the cross-slide · ball swivels 47° · the Ø24 shoulder bolt pins the housing to the frame's fork clevis (double shear)",
+    ax.text(180, -116,
+            "Each side: a 3/8\" 304 SS stub is set-screw locked in the U-joint hub and clamped in a 4040N12 support (removable cap) — one to the frame, one to the X-slide carriage",
             color=DIM, fontsize=5.5, ha="center", **FONT)
 
     # ── BR: single rigid ACM backing (Option A — no fold) ────────────────────
@@ -1059,16 +1056,16 @@ def sheet5():
     T   = FP_ANGLE_T     # 4.8mm
 
     # Geometry constants for the suspension chain
-    RAIL_H = 30       # HGR20 rail height
-    RAIL_W = 20       # HGR20 rail visible width
-    CARRIAGE_H = 28   # HGH20CA carriage height
-    CARRIAGE_W = 44   # HGH20CA carriage width
+    RAIL_H = 30       # DryLin W depth rail height (schematic)
+    RAIL_W = 20       # DryLin W depth rail visible width (schematic)
+    CARRIAGE_H = 28   # DryLin W carriage height (schematic)
+    CARRIAGE_W = 44   # DryLin W carriage width (schematic)
     BRACKET_H = 40    # suspension bracket height
     BRACKET_W = 60    # suspension bracket width
     LBRACKET_H = 50   # corner L-bracket vertical extent
     LBRACKET_W = 40   # corner L-bracket horizontal extent
     LBRACKET_T = 6    # 1/4" aluminum plate
-    BEARING_D = 25    # GIR25-DO rod-end bore
+    BEARING_D = 25    # U-joint hub (schematic)
     CEILING_T = 8     # visual ceiling thickness
 
     # Coordinate system: angle corner at (0, 0).
@@ -1109,7 +1106,7 @@ def sheet5():
                               fc=C_RAIL, ec=ANNO, lw=1.2, zorder=4))
     leader(ax_a, (rail_cx), (rail_bot + RAIL_H / 2),
            (rail_cx + 50), (rail_bot + RAIL_H / 2),
-           f"HGR20 RAIL\n({RAIL_W}×{RAIL_H}mm)",
+           "DryLin W\nDEPTH RAIL\n(316SS, into page)",
            color=C_RAIL, fs=5.5, ha="left", va="center",
            arrow_style="-|>", font=FONT)
 
@@ -1120,7 +1117,7 @@ def sheet5():
                               fc=C_CARR, ec=ANNO, lw=1.2, zorder=5))
     leader(ax_a, (rail_cx + CARRIAGE_W / 2), (carriage_bot + CARRIAGE_H / 2),
            (rail_cx + 55), (carriage_bot + CARRIAGE_H / 2 - 10),
-           f"HGH20CA\nCARRIAGE\n({CARRIAGE_W}×{CARRIAGE_H}mm)",
+           "DryLin W\nCARRIAGE\n(depth slide)",
            color=C_CARR, fs=5.5, ha="left", va="center",
            arrow_style="-|>", font=FONT)
 
@@ -1150,7 +1147,7 @@ def sheet5():
            color=DIM, fs=5, ha="right", va="center",
            arrow_style="-|>", font=FONT)
 
-    # ── Rod-end spherical bearing ────────────────────────────────────────────
+    # ── Single U-joint (Ruland US12-6-6-SS, bronze plain bearing) ─────────────
     C_BEAR = "#C08040"
     ax_a.add_patch(Circle(((lbk_x + LBRACKET_T / 2), (bearing_cy)),
                            (BEARING_D / 2),
@@ -1160,7 +1157,7 @@ def sheet5():
                            fc=BG, ec=ANNO, lw=0.8, zorder=7))
     leader(ax_a, (lbk_x - 2), (bearing_cy),
            (-25), (bearing_cy + 15),
-           f"GIR25-DO\nROD-END BEARING\n(FREE ROTATION\nFOR TILT/SWING)",
+           f"SINGLE U-JOINT\nUS12-6-6-SS\n(TILT/SWING,\nTWIST-LOCKED)",
            color=C_BEAR, fs=5, ha="right", va="center",
            arrow_style="-|>", font=FONT)
 
@@ -1270,10 +1267,10 @@ def sheet5():
     path_x = LEG + 70
     arrow_positions = [
         (ceiling_bot - 2, "CEILING"),
-        (rail_bot + RAIL_H / 2, "HGR20 RAIL"),
+        (rail_bot + RAIL_H / 2, "DEPTH SLIDE"),
         (carriage_bot + CARRIAGE_H / 2, "CARRIAGE"),
         (bracket_bot + BRACKET_H / 2, "BRACKET"),
-        (bearing_cy, "BEARING"),
+        (bearing_cy, "U-JOINT"),
         (lbracket_bot + 5, "L-BRACKET"),
         (T / 2, "ANGLE FRAME"),
         (-25, "CLAMP"),

@@ -28,34 +28,67 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Depth slide rail Y (~2.2m) (bot)
   grp = ents.add_group
   grp.name = "Depth slide rail Y (~2.2m) (bot)"
-  face = grp.entities.add_face([-12.mm,-1000.mm,0.mm], [12.mm,-1000.mm,0.mm], [12.mm,1000.mm,0.mm], [-12.mm,1000.mm,0.mm])
+  face = grp.entities.add_face([-10.mm,-1000.mm,2.mm], [10.mm,-1000.mm,2.mm], [10.mm,1000.mm,2.mm], [-10.mm,1000.mm,2.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(18.mm)
+  face.pushpull(14.mm)
   mat = model.materials["Depth slide rail Y (~2.2m) (bot)"] || model.materials.add("Depth slide rail Y (~2.2m) (bot)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Depth carriage (friction) (bot)
+  # Depth carriage body (bot)
   grp = ents.add_group
-  grp.name = "Depth carriage (friction) (bot)"
-  face = grp.entities.add_face([-22.mm,-30.mm,18.mm], [22.mm,-30.mm,18.mm], [22.mm,30.mm,18.mm], [-22.mm,30.mm,18.mm])
+  grp.name = "Depth carriage body (bot)"
+  face = grp.entities.add_face([-22.mm,-30.mm,16.mm], [22.mm,-30.mm,16.mm], [22.mm,30.mm,16.mm], [-22.mm,30.mm,16.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Depth carriage (friction) (bot)"] || model.materials.add("Depth carriage (friction) (bot)")
+  face.pushpull(16.mm)
+  mat = model.materials["Depth carriage body (bot)"] || model.materials.add("Depth carriage body (bot)")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Depth cam-clamp lever (bot)
+  # Depth grip tab L (bot)
   grp = ents.add_group
-  grp.name = "Depth cam-clamp lever (bot)"
+  grp.name = "Depth grip tab L (bot)"
+  face = grp.entities.add_face([-20.mm,-30.mm,0.mm], [-12.mm,-30.mm,0.mm], [-12.mm,30.mm,0.mm], [-20.mm,30.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(17.mm)
+  mat = model.materials["Depth carriage body (bot)"] || model.materials.add("Depth carriage body (bot)")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Depth grip tab R (bot)
+  grp = ents.add_group
+  grp.name = "Depth grip tab R (bot)"
+  face = grp.entities.add_face([12.mm,-30.mm,0.mm], [20.mm,-30.mm,0.mm], [20.mm,30.mm,0.mm], [12.mm,30.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(17.mm)
+  mat = model.materials["Depth carriage body (bot)"] || model.materials.add("Depth carriage body (bot)")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Depth cam clamp body (bot)
+  grp = ents.add_group
+  grp.name = "Depth cam clamp body (bot)"
+  face = grp.entities.add_face([22.mm,30.mm,20.mm], [36.mm,30.mm,20.mm], [36.mm,44.mm,20.mm], [22.mm,44.mm,20.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Depth cam clamp body (bot)"] || model.materials.add("Depth cam clamp body (bot)")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Depth clamp lever (bot)
+  grp = ents.add_group
+  grp.name = "Depth clamp lever (bot)"
   ge = grp.entities
-  circle = ge.add_circle([30.mm,44.mm,26.mm], [0,1,0], 4.mm, 24)
+  circle = ge.add_circle([28.mm,44.mm,27.mm], [0,1,0], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(70.mm)
-  mat = model.materials["Depth cam-clamp lever (bot)"] || model.materials.add("Depth cam-clamp lever (bot)")
+  cface.pushpull(58.mm)
+  mat = model.materials["Depth cam clamp body (bot)"] || model.materials.add("Depth cam clamp body (bot)")
   mat.color = Sketchup::Color.new(58, 58, 64)
   mat.alpha = 1.0
   grp.material = mat
@@ -63,7 +96,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical slide rail Z (bot)
   grp = ents.add_group
   grp.name = "Vertical slide rail Z (bot)"
-  face = grp.entities.add_face([-36.mm,-8.mm,20.mm], [-22.mm,-8.mm,20.mm], [-22.mm,8.mm,20.mm], [-36.mm,8.mm,20.mm])
+  face = grp.entities.add_face([-34.mm,-6.mm,20.mm], [-24.mm,-6.mm,20.mm], [-24.mm,6.mm,20.mm], [-34.mm,6.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(330.mm)
   mat = model.materials["Depth slide rail Y (~2.2m) (bot)"] || model.materials.add("Depth slide rail Y (~2.2m) (bot)")
@@ -71,26 +104,59 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Vertical carriage (friction) (bot)
+  # Vertical carriage body (bot)
   grp = ents.add_group
-  grp.name = "Vertical carriage (friction) (bot)"
-  face = grp.entities.add_face([-42.mm,-12.mm,150.mm], [-16.mm,-12.mm,150.mm], [-16.mm,12.mm,150.mm], [-42.mm,12.mm,150.mm])
+  grp.name = "Vertical carriage body (bot)"
+  face = grp.entities.add_face([-44.mm,-12.mm,150.mm], [-18.mm,-12.mm,150.mm], [-18.mm,12.mm,150.mm], [-44.mm,12.mm,150.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(32.mm)
-  mat = model.materials["Depth carriage (friction) (bot)"] || model.materials.add("Depth carriage (friction) (bot)")
+  mat = model.materials["Depth carriage body (bot)"] || model.materials.add("Depth carriage body (bot)")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Vertical cam-clamp lever (bot)
+  # Vertical grip tab F (bot)
   grp = ents.add_group
-  grp.name = "Vertical cam-clamp lever (bot)"
+  grp.name = "Vertical grip tab F (bot)"
+  face = grp.entities.add_face([-44.mm,-15.mm,152.mm], [-18.mm,-15.mm,152.mm], [-18.mm,-6.mm,152.mm], [-44.mm,-6.mm,152.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(28.mm)
+  mat = model.materials["Depth carriage body (bot)"] || model.materials.add("Depth carriage body (bot)")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical grip tab B (bot)
+  grp = ents.add_group
+  grp.name = "Vertical grip tab B (bot)"
+  face = grp.entities.add_face([-44.mm,6.mm,152.mm], [-18.mm,6.mm,152.mm], [-18.mm,15.mm,152.mm], [-44.mm,15.mm,152.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(28.mm)
+  mat = model.materials["Depth carriage body (bot)"] || model.materials.add("Depth carriage body (bot)")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical cam clamp body (bot)
+  grp = ents.add_group
+  grp.name = "Vertical cam clamp body (bot)"
+  face = grp.entities.add_face([-47.mm,26.mm,158.mm], [-33.mm,26.mm,158.mm], [-33.mm,40.mm,158.mm], [-47.mm,40.mm,158.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Depth cam clamp body (bot)"] || model.materials.add("Depth cam clamp body (bot)")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical clamp lever (bot)
+  grp = ents.add_group
+  grp.name = "Vertical clamp lever (bot)"
   ge = grp.entities
-  circle = ge.add_circle([-30.mm,44.mm,166.mm], [0,1,0], 4.mm, 24)
+  circle = ge.add_circle([-33.mm,40.mm,165.mm], [0,1,0], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(70.mm)
-  mat = model.materials["Depth cam-clamp lever (bot)"] || model.materials.add("Depth cam-clamp lever (bot)")
+  cface.pushpull(58.mm)
+  mat = model.materials["Depth cam clamp body (bot)"] || model.materials.add("Depth cam clamp body (bot)")
   mat.color = Sketchup::Color.new(58, 58, 64)
   mat.alpha = 1.0
   grp.material = mat
@@ -252,34 +318,67 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Depth slide rail Y (~2.2m) (top)
   grp = ents.add_group
   grp.name = "Depth slide rail Y (~2.2m) (top)"
-  face = grp.entities.add_face([-12.mm,-1000.mm,2370.mm], [12.mm,-1000.mm,2370.mm], [12.mm,1000.mm,2370.mm], [-12.mm,1000.mm,2370.mm])
+  face = grp.entities.add_face([-10.mm,-1000.mm,2372.mm], [10.mm,-1000.mm,2372.mm], [10.mm,1000.mm,2372.mm], [-10.mm,1000.mm,2372.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(18.mm)
+  face.pushpull(14.mm)
   mat = model.materials["Depth slide rail Y (~2.2m) (bot)"] || model.materials.add("Depth slide rail Y (~2.2m) (bot)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Depth carriage (friction) (top)
+  # Depth carriage body (top)
   grp = ents.add_group
-  grp.name = "Depth carriage (friction) (top)"
-  face = grp.entities.add_face([-22.mm,-30.mm,2358.mm], [22.mm,-30.mm,2358.mm], [22.mm,30.mm,2358.mm], [-22.mm,30.mm,2358.mm])
+  grp.name = "Depth carriage body (top)"
+  face = grp.entities.add_face([-22.mm,-30.mm,2356.mm], [22.mm,-30.mm,2356.mm], [22.mm,30.mm,2356.mm], [-22.mm,30.mm,2356.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Depth carriage (friction) (bot)"] || model.materials.add("Depth carriage (friction) (bot)")
+  face.pushpull(16.mm)
+  mat = model.materials["Depth carriage body (bot)"] || model.materials.add("Depth carriage body (bot)")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Depth cam-clamp lever (top)
+  # Depth grip tab L (top)
   grp = ents.add_group
-  grp.name = "Depth cam-clamp lever (top)"
+  grp.name = "Depth grip tab L (top)"
+  face = grp.entities.add_face([-20.mm,-30.mm,2371.mm], [-12.mm,-30.mm,2371.mm], [-12.mm,30.mm,2371.mm], [-20.mm,30.mm,2371.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(17.mm)
+  mat = model.materials["Depth carriage body (bot)"] || model.materials.add("Depth carriage body (bot)")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Depth grip tab R (top)
+  grp = ents.add_group
+  grp.name = "Depth grip tab R (top)"
+  face = grp.entities.add_face([12.mm,-30.mm,2371.mm], [20.mm,-30.mm,2371.mm], [20.mm,30.mm,2371.mm], [12.mm,30.mm,2371.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(17.mm)
+  mat = model.materials["Depth carriage body (bot)"] || model.materials.add("Depth carriage body (bot)")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Depth cam clamp body (top)
+  grp = ents.add_group
+  grp.name = "Depth cam clamp body (top)"
+  face = grp.entities.add_face([22.mm,30.mm,2354.mm], [36.mm,30.mm,2354.mm], [36.mm,44.mm,2354.mm], [22.mm,44.mm,2354.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Depth cam clamp body (bot)"] || model.materials.add("Depth cam clamp body (bot)")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Depth clamp lever (top)
+  grp = ents.add_group
+  grp.name = "Depth clamp lever (top)"
   ge = grp.entities
-  circle = ge.add_circle([30.mm,44.mm,2362.mm], [0,1,0], 4.mm, 24)
+  circle = ge.add_circle([28.mm,44.mm,2361.mm], [0,1,0], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(70.mm)
-  mat = model.materials["Depth cam-clamp lever (bot)"] || model.materials.add("Depth cam-clamp lever (bot)")
+  cface.pushpull(58.mm)
+  mat = model.materials["Depth cam clamp body (bot)"] || model.materials.add("Depth cam clamp body (bot)")
   mat.color = Sketchup::Color.new(58, 58, 64)
   mat.alpha = 1.0
   grp.material = mat
@@ -287,7 +386,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical slide rail Z (top)
   grp = ents.add_group
   grp.name = "Vertical slide rail Z (top)"
-  face = grp.entities.add_face([-36.mm,-8.mm,2038.mm], [-22.mm,-8.mm,2038.mm], [-22.mm,8.mm,2038.mm], [-36.mm,8.mm,2038.mm])
+  face = grp.entities.add_face([-34.mm,-6.mm,2038.mm], [-24.mm,-6.mm,2038.mm], [-24.mm,6.mm,2038.mm], [-34.mm,6.mm,2038.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(330.mm)
   mat = model.materials["Depth slide rail Y (~2.2m) (bot)"] || model.materials.add("Depth slide rail Y (~2.2m) (bot)")
@@ -295,26 +394,59 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Vertical carriage (friction) (top)
+  # Vertical carriage body (top)
   grp = ents.add_group
-  grp.name = "Vertical carriage (friction) (top)"
-  face = grp.entities.add_face([-42.mm,-12.mm,2206.mm], [-16.mm,-12.mm,2206.mm], [-16.mm,12.mm,2206.mm], [-42.mm,12.mm,2206.mm])
+  grp.name = "Vertical carriage body (top)"
+  face = grp.entities.add_face([-44.mm,-12.mm,2206.mm], [-18.mm,-12.mm,2206.mm], [-18.mm,12.mm,2206.mm], [-44.mm,12.mm,2206.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(32.mm)
-  mat = model.materials["Depth carriage (friction) (bot)"] || model.materials.add("Depth carriage (friction) (bot)")
+  mat = model.materials["Depth carriage body (bot)"] || model.materials.add("Depth carriage body (bot)")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Vertical cam-clamp lever (top)
+  # Vertical grip tab F (top)
   grp = ents.add_group
-  grp.name = "Vertical cam-clamp lever (top)"
+  grp.name = "Vertical grip tab F (top)"
+  face = grp.entities.add_face([-44.mm,-15.mm,2208.mm], [-18.mm,-15.mm,2208.mm], [-18.mm,-6.mm,2208.mm], [-44.mm,-6.mm,2208.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(28.mm)
+  mat = model.materials["Depth carriage body (bot)"] || model.materials.add("Depth carriage body (bot)")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical grip tab B (top)
+  grp = ents.add_group
+  grp.name = "Vertical grip tab B (top)"
+  face = grp.entities.add_face([-44.mm,6.mm,2208.mm], [-18.mm,6.mm,2208.mm], [-18.mm,15.mm,2208.mm], [-44.mm,15.mm,2208.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(28.mm)
+  mat = model.materials["Depth carriage body (bot)"] || model.materials.add("Depth carriage body (bot)")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical cam clamp body (top)
+  grp = ents.add_group
+  grp.name = "Vertical cam clamp body (top)"
+  face = grp.entities.add_face([-47.mm,26.mm,2216.mm], [-33.mm,26.mm,2216.mm], [-33.mm,40.mm,2216.mm], [-47.mm,40.mm,2216.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Depth cam clamp body (bot)"] || model.materials.add("Depth cam clamp body (bot)")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical clamp lever (top)
+  grp = ents.add_group
+  grp.name = "Vertical clamp lever (top)"
   ge = grp.entities
-  circle = ge.add_circle([-30.mm,44.mm,2222.mm], [0,1,0], 4.mm, 24)
+  circle = ge.add_circle([-33.mm,40.mm,2223.mm], [0,1,0], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(70.mm)
-  mat = model.materials["Depth cam-clamp lever (bot)"] || model.materials.add("Depth cam-clamp lever (bot)")
+  cface.pushpull(58.mm)
+  mat = model.materials["Depth cam clamp body (bot)"] || model.materials.add("Depth cam clamp body (bot)")
   mat.color = Sketchup::Color.new(58, 58, 64)
   mat.alpha = 1.0
   grp.material = mat

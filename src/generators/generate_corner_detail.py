@@ -318,6 +318,15 @@ def draw_ujoint_section():
     ax.plot([20, 60], [4.6, 4.6], color=OUT, lw=0.4, zorder=9)
     _setscrew(ax, -27.5, 4.6); _setscrew(ax, 27.5, 4.6)
 
+    # ── protective boot (Ruland UBOOT12/19-NI-KIT, nitrile) — ghosted envelope over the joint,
+    #    zip-tied into a groove on each yoke; keeps the wash out of the bronze bearings (used DRY) ──
+    bx = [-24, -19, 0, 19, 24]; byu = [10, 17.5, 18, 17.5, 10]
+    ax.plot(bx, byu, color="#40402A", lw=1.0, ls=(0, (5, 3)), zorder=12)
+    ax.plot(bx, [-v for v in byu], color="#40402A", lw=1.0, ls=(0, (5, 3)), zorder=12)
+    for ex in (-24, 24):
+        ax.plot([ex, ex], [-10, 10], color="#40402A", lw=1.0, ls=(0, (5, 3)), zorder=12)
+        ax.plot([ex, ex], [-11, 11], color=OUT, lw=1.8, zorder=13)          # zip tie
+
     # ── dims ──
     draw_dim_h(ax, -36, 36, -28, "68mm overall", offset=13, fs=6.5, color=DIM, above=False, font=FONT)
     draw_dim_v(ax, 54, -4.6, 4.6, "9.5mm bore\n(3/8)", offset=13, fs=6, color=DIM, right=True,
@@ -340,6 +349,9 @@ def draw_ujoint_section():
            "(solid arms);\nthe CARRIER yoke (left) grips the tilt pin INTO the page (ghosted) — that is why the sides differ. "
            "Light-blue = U-joint body (303 SS + bronze, grease-free, twist-locked)",
            ha="left", fs=5.8, color=DIM, font=FONT, bbox=LBL_BG)
+
+    leader(ax, -8, 18, -34, 37, "protective BOOT (Ruland UBOOT12/19-NI-KIT, nitrile) — zip-tied to each yoke;\nkeeps the wash out of the bronze bearings (fitted DRY, not grease-packed)",
+           ha="left", fs=5.8, color="#40402A", font=FONT, bbox=LBL_BG)
 
     ax.text(-70, 40, "U-JOINT SECTION  (Ruland US12-6-6-SS; cut in Y-Z through the swing pin)",
             fontsize=8.5, fontweight="bold", color=OUT, ha="left", va="top", **FONT)

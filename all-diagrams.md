@@ -52,17 +52,19 @@
 
 ## 7. Film Plane Mechanism
 
-![TBS-001 Film Plane Mechanism — Sheet 1: Assembly Overview](assets/film-plane-sheet1.png)
+![TBS-001 Film Plane Mechanism — Sheet 1: Plan View, 4-Corner Rail Layout](assets/film-plane-sheet1.png)
 
-![TBS-001 Film Plane Mechanism — Sheet 2: Corner Assembly Detail](assets/film-plane-sheet2.png)
+![TBS-001 Film Plane Mechanism — Sheet 2: Tilt Elevation and Swing Cross-Section](assets/film-plane-sheet2.png)
 
-![TBS-001 Film Plane Mechanism — Sheet 3: Drive Shaft and Handwheel](assets/film-plane-sheet3.png)
+![TBS-001 Film Plane Mechanism — Sheet 3: Corner Mechanism Detail (slide-and-clamp + U-joint)](assets/film-plane-sheet3.png)
 
-![TBS-001 Film Plane Mechanism — Sheet 4: Full Mechanism Cross-Section](assets/film-plane-sheet4.png)
+![TBS-001 Film Plane Mechanism — Sheet 4: U-Joint Sections](assets/film-plane-sheet4.png)
 
-![TBS-001 Film Plane Mechanism — Sheet 5: Muslin Clamp Detail](assets/film-plane-sheet5.png)
+![TBS-001 Film Plane Mechanism — Sheet 5: Movement Specification and BOM](assets/film-plane-sheet5.png)
 
-![TBS-001 Film Plane Mechanism — Sheet 6: System Schematic](assets/film-plane-sheet6.png)
+![TBS-001 Film Plane Mechanism — Sheet 6: Muslin Clamp Detail](assets/film-plane-sheet6.png)
+
+![TBS-001 Film Plane Mechanism — Sheet 7: System Schematic, Front Elevation](assets/film-plane-sheet7.png)
 
 ---
 

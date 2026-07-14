@@ -3,7 +3,7 @@
 # © 2026 Alvin Richards
 """
 generate_film_plane_mechanism.py
-Moveable film plane mechanism — engineering drawings (6 sheets)
+Moveable film plane mechanism — engineering drawings (7 sheets)
 OPTION A — RIGID PLANE: a fixed-size rigid rectangle whose ANGLE changes. The 4 corners ride
 SLIDE-AND-CLAMP stages (igus DryLin friction slides) moved by hand in COORDINATED PAIRS —
 single-axis tilt (top vs bottom) or swing (left vs right); limited combined; NO compound twist
@@ -13,11 +13,11 @@ a single Ruland US12-6-6-SS U-joint (2 axes, twist-locked) — no leadscrews, no
 
 Sheet 1 — Plan view (top-down): 4-corner rail layout, example configs
 Sheet 2 — Elevations: side elevation (tilt) + plan cross-section (swing)
-Sheet 3 — Frame & hardware detail: corner bracket, universal joint, ACM panel
-         (superseded in detail by generate_corner_detail.py — film-corner-detail.png)
-Sheet 4 — Movement specification table & BOM
-Sheet 5 — Muslin clamp detail: cam-lever spring clamp
-Sheet 6 — System schematic: four-corner frame front elevation
+Sheet 3 — Corner mechanism detail: slide-and-clamp stack + U-joint + section A-A + swing slide
+Sheet 4 — U-joint sections: how each side secures (stub + hub set screws; 4040N12 support)
+Sheet 5 — Movement specification table & BOM
+Sheet 6 — Muslin clamp detail: cam-lever spring clamp
+Sheet 7 — System schematic: four-corner frame front elevation
 """
 
 import numpy as np
@@ -28,7 +28,8 @@ from matplotlib.patches import Rectangle, Circle, Arc
 
 from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH_X_C, MAX_TILT_DEG, MAX_SWING_DEG, DIAGRAMS_DIR, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_BASE_W, CLAMP_BASE_H, CLAMP_BASE_T, CLAMP_LEVER_L, CLAMP_JAW_W, CLAMP_JAW_H, CLAMP_JAW_T, CLAMP_OPEN_GAP, CLAMP_SPRING_F, CLAMP_N_TOTAL, BRACE_Z_BOT, BRACE_Z_TOP, C_WID, WALL_T, IBC_WBKT_PLATE_W, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, DRUM_CY, DRUM_R, DRUM_CX, DRUM_D
 from tbs_title_block import title_block
-from tbs_drawing import leader, draw_notes, draw_dim_h, draw_dim_v
+from tbs_drawing import (leader, draw_notes, draw_dim_h, draw_dim_v,
+                         draw_rect, draw_circle, hatch_rect, reset_label_registry)
 
 # ── Palette (white engineering style) ────────────────────────────────────────
 BG      = "#FFFFFF"   # white background
@@ -45,6 +46,21 @@ C_T3    = "#CC2020"   # combined tilt+swing config (red)
 RAIL    = "#5A3E00"   # rail (dark brown-gold — dark enough for white text labels)
 MECH    = "#2A6B2A"   # mechanism/carriage (dark green — dark enough for white text)
 PINHOLE = "#CC6600"   # pinhole aperture (orange, visible on white)
+
+# ── Corner-detail palette (ported from the retired generate_corner_detail.py) ──
+# Sheets 3 (corner detail) & 4 (U-joint sections) use this richer, color-coded set.
+OUT     = "#1A1A1A"   # outlines / bold text
+C_STEEL = "#B0B0B8"   # steel section fill
+C_CAR   = "#C04010"   # depth carriage (red)
+C_TILT  = "#2E8B57"   # vertical (tilt) slide — green
+C_SWING = "#7B5EA7"   # horizontal (swing) slide — purple
+C_UJ    = "#C8D8E8"   # U-joint body (light blue)
+C_PIN   = "#B07010"   # pins / set screws (gold)
+C_FRAME = "#8FB0C8"   # film-frame angle
+C_PANEL = "#1F3B66"   # film-plane panel ghost
+C_CLAMP = "#3A3A40"   # cam-clamp body
+C_POLY  = "#C9B78F"   # self-lube polymer liner (igus iglide / DryLin)
+LBL_BG  = dict(fc="white", ec="none", alpha=0.85, pad=1)
 
 # ── Container dimensions (mm) ─────────────────────────────────────────────────
 L = 5893   # interior length (film plane spans this direction)
@@ -384,7 +400,7 @@ def sheet1():
                 color=col, fontsize=6, va="center", **FONT)
 
     # Title block
-    title_block(ax, "SHEET 1 OF 6",
+    title_block(ax, "SHEET 1 OF 7",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Plan view — 4-corner rail layout",
                 scale_note="Proportional (mm)",
@@ -641,7 +657,7 @@ def sheet2():
     # Title block (full-figure overlay for multi-subplot sheet)
     ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 2 OF 6",
+    title_block(ax_tb, "SHEET 2 OF 7",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Tilt elevation & Swing cross-section",
                 scale_note="Proportional (mm)",
@@ -653,216 +669,226 @@ def sheet2():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 3 — FRAME & HARDWARE DETAIL (Option A — rigid plane)
+# SHEET 3 — CORNER MECHANISM DETAIL  (slide-and-clamp + single U-joint)
 # ═══════════════════════════════════════════════════════════════════════════════
+# Consolidated from the retired generate_corner_detail.py. Color-coded corner views:
+#   A   — corner assembly elevation (lower/floor corner; Yd × Z)
+#   B   — U-joint detail (Ruland US12-6-6-SS, enlarged)
+#   A-A — captive-carriage section (U-profile polymer liner)
+#   C   — swing slide face-on
+# ═══════════════════════════════════════════════════════════════════════════════
+def _rect(ax, x, y, w, h, fc, ec=OUT, lw=1.4, z=4, alpha=1.0):
+    draw_rect(ax, x, y, w, h, fc=fc, color=ec, lw=lw, zorder=z)
+    if alpha < 1.0:
+        ax.add_patch(plt.Rectangle((x, y), w, h, fc=fc, ec="none", alpha=alpha, zorder=z - 1))
+
+
+def view_a(ax):
+    """Corner assembly elevation — LOWER (floor) corner. Yd (horizontal) × Z (vertical), mm.
+    Shown at the NOMINAL (flat) pose: the vertical carriage sits LOW, the green rail towers
+    above it as the ~280 mm tilt-travel headroom."""
+    ax.set_xlim(-60, 500); ax.set_ylim(-60, 400); ax.set_aspect("equal"); ax.axis("off")
+
+    ax.plot([-30, 460], [0, 0], color="#999", lw=0.8, zorder=1)   # floor line
+
+    # depth slide rail (Y, drive) — LOWER/floor rail, shown partial with break marks
+    _rect(ax, 30, 0, 430, 18, C_STEEL)
+    for bx in (44, 446):
+        ax.plot([bx - 6, bx + 6], [-4, 22], color=OUT, lw=0.8, zorder=6)
+    # depth friction carriage — captive block hooking over the rail edge
+    _rect(ax, 226, 4, 96, 40, C_CAR, z=6)
+    ax.plot([226, 322], [10, 10], color="#7A2408", lw=0.7, zorder=7)   # hook line under the rail edge
+    ax.plot([250, 250], [46, 60], color=OUT, lw=0.6, zorder=8)          # section cut A-A marker
+    ax.plot([250, 250], [-14, 4], color=OUT, lw=0.6, zorder=8)
+    ax.text(250, 64, "A", fontsize=6.5, ha="center", va="bottom", color=OUT, **FONT)
+    ax.text(250, -20, "A", fontsize=6.5, ha="center", va="top", color=OUT, **FONT)
+    _rect(ax, 322, 16, 14, 20, C_CLAMP, z=8)                             # depth cam clamp
+    ax.plot([336, 360], [30, 22], color=C_CLAMP, lw=2.0, zorder=8)
+
+    # vertical (TILT) slide rail — green; low carriage at nominal, rail = ~280 mm tilt headroom
+    _rect(ax, 236, 40, 18, 280, C_TILT)                 # tall rail (travel envelope)
+    _rect(ax, 228, 48, 34, 52, C_TILT)                  # vertical friction carriage (LOW = nominal)
+    _rect(ax, 262, 60, 14, 20, C_CLAMP)                 # cam clamp body
+    ax.plot([276, 306], [70, 62], color=C_CLAMP, lw=2.2, zorder=6)   # clamp lever
+    _rect(ax, 262, 86, 44, 12, C_UJ)                    # bracket carriage → corner stack
+
+    # horizontal (SWING) slide — purple, runs into the page (X); shown edge-on
+    _rect(ax, 292, 98, 48, 16, C_SWING)
+
+    # single U-joint (Ruland US12-6-6-SS)
+    _rect(ax, 300, 114, 32, 30, C_UJ)
+    draw_circle(ax, 316, 129, 5.5, color=C_PIN, fill=True, fc=C_PIN, lw=1.0, zorder=6)
+    ax.plot([316, 316], [110, 148], color=C_PIN, lw=1.6, zorder=5)
+
+    # film-frame corner (2x2 Al angle) + film plane edge (ghost)
+    _rect(ax, 308, 144, 44, 8, C_FRAME)                 # horizontal leg
+    _rect(ax, 308, 144, 8, 214, C_FRAME)               # vertical leg
+    ax.add_patch(plt.Rectangle((320, 152), 6, 202, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))
+
+    # ── dimensions (both on the left, near the green rail) ──
+    draw_dim_v(ax, 8, 18, 144, "~150mm\nnominal\nstack", offset=28, fs=6, color=DIM, font=FONT)
+    draw_dim_v(ax, 206, 40, 320, "~280mm\ntilt travel", offset=26, fs=6, color=DIM, font=FONT)
+
+    # ── leaders ──
+    leader(ax, 90, 9, 40, -44, "DEPTH slide rail (Y) — the DRIVE; ~2.2 m; floor (LOWER) rail",
+           ha="left", fs=6.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 300, 22, 330, -36, "depth carriage (captive on rail)",
+           ha="left", fs=6.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 245, 300, 250, 344, "VERTICAL slide (Z, green)\n— TILT accommodation",
+           ha="left", fs=6.2, color=C_TILT, font=FONT, bbox=LBL_BG)
+    leader(ax, 306, 62, 352, 48, "cam clamp — one per slide\n(push → lock)",
+           ha="left", fs=6.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 316, 106, 356, 98, "HORIZONTAL slide (X, purple)\n— SWING accom. (into page)",
+           ha="left", fs=6.2, color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(ax, 332, 129, 372, 150, "single U-joint\n(Ruland US12-6-6-SS)",
+           ha="left", fs=6.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 318, 300, 352, 322, "film-frame corner\n(2x2 Al angle) + film",
+           ha="left", fs=6.2, color=OUT, font=FONT, bbox=LBL_BG)
+
+    ax.text(-58, 392, "A — CORNER ASSEMBLY ELEVATION  (lower / floor corner; Yd × Z; nominal pose)",
+            fontsize=8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+
+
+def view_b(ax):
+    """U-joint detail (enlarged ~2:1). Ruland US12-6-6-SS; through-axis horizontal."""
+    ax.set_xlim(0, 200); ax.set_ylim(-10, 150); ax.set_aspect("equal"); ax.axis("off")
+    cy = 70
+    # through-axis centre line
+    ax.plot([8, 192], [cy, cy], color="#2060A0", lw=0.6, dashes=(8, 3, 2, 3), zorder=2)
+
+    # input shaft stub + hub (carrier side, left)
+    _rect(ax, 10, cy - 9, 26, 18, C_STEEL)
+    # input yoke — two ears (top + bottom) opening right, holding the vertical (SWING) pin
+    _rect(ax, 40, cy + 14, 40, 16, C_UJ); _rect(ax, 40, cy - 30, 40, 16, C_UJ)
+    ax.plot([70, 70], [cy - 34, cy + 34], color=C_PIN, lw=2.4, zorder=6)          # swing pin (vertical)
+    draw_circle(ax, 70, cy + 22, 4, color=C_PIN, fill=True, fc=C_PIN, lw=0.8, zorder=7)
+    draw_circle(ax, 70, cy - 22, 4, color=C_PIN, fill=True, fc=C_PIN, lw=0.8, zorder=7)
+    # cross / spider block
+    _rect(ax, 62, cy - 14, 30, 28, "#9AA0A8")
+    # output yoke — ears opening left (perpendicular, into page → ghost), holding the tilt pin
+    _rect(ax, 84, cy + 12, 40, 14, C_UJ, ec="#7A8290", lw=1.0)
+    _rect(ax, 84, cy - 26, 40, 14, C_UJ, ec="#7A8290", lw=1.0)
+    draw_circle(ax, 90, cy, 5, color=C_PIN, fill=True, fc=C_PIN, lw=0.8, zorder=7)  # tilt pin (into page)
+    # output shaft stub (frame side, right)
+    _rect(ax, 128, cy - 9, 26, 18, C_STEEL)
+
+    # ±45° articulation arc on the through-axis (schematic)
+    ax.add_patch(Arc((70, cy), 150, 150, angle=0, theta1=-45, theta2=45, color=DIM, lw=0.9, zorder=5))
+    for ang in (45, -45):
+        import math
+        ex = 70 + 75 * math.cos(math.radians(ang)); ey = cy + 75 * math.sin(math.radians(ang))
+        ax.plot([70, ex], [cy, ey], color=DIM, lw=0.5, dashes=(4, 3), zorder=4)
+    ax.text(150, cy + 40, "±45°\nmax swivel", fontsize=6, color=DIM, ha="left", va="center", **FONT)
+
+    # dims
+    draw_dim_h(ax, 10, 154, cy - 44, "68mm overall", offset=12, fs=6, color=DIM, above=False, font=FONT)
+    draw_dim_v(ax, 176, cy - 9, cy + 9, "19mm OD", offset=13, fs=6, color=DIM, right=True,
+               perpendicular=True, font=FONT)
+
+    # callouts
+    leader(ax, 70, cy + 30, 30, cy + 46, "SWING axis (vertical pin)", ha="left", fs=6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 90, cy, 120, cy + 30, "TILT axis (perpendicular pin, into page)", ha="left", fs=6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 23, cy - 9, 20, cy - 30, "to carrier / cross-slide", ha="left", fs=6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 141, cy + 9, 120, cy - 30, "to film-frame corner", ha="left", fs=6, color=OUT, font=FONT, bbox=LBL_BG)
+
+    ax.text(0, 146, "B — U-JOINT DETAIL  (Ruland US12-6-6-SS, enlarged)",
+            fontsize=8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+
+
+def section_aa(ax):
+    """SECTION A-A — X-Z cut through a depth rail + friction carriage, showing the captive wrap.
+    The carriage walls sit OUTSIDE the rail; the liner lugs seat in the rail's side grooves and
+    run the FULL carriage length (not end stops)."""
+    ax.set_xlim(-18, 78); ax.set_ylim(-18, 50); ax.set_aspect("equal"); ax.axis("off")
+    # profile rail (grey), one body, with a groove cut into each upper flank
+    _rect(ax, 16, 0, 28, 22, C_STEEL)
+    ax.add_patch(plt.Rectangle((16, 9), 5, 6, fc="white", ec=OUT, lw=0.7, zorder=6))    # L groove
+    ax.add_patch(plt.Rectangle((39, 9), 5, 6, fc="white", ec=OUT, lw=0.7, zorder=6))    # R groove
+    # self-lube POLYMER liner (tan) — a U-PROFILE: top bearing face + the upper & lower faces of each groove
+    _rect(ax, 16, 22, 28, 2, C_POLY, z=6)              # top bearing liner
+    _rect(ax, 16, 13.5, 5, 1.5, C_POLY, z=8); _rect(ax, 16, 9, 5, 1.5, C_POLY, z=8)   # left groove U (upper+lower)
+    _rect(ax, 39, 13.5, 5, 1.5, C_POLY, z=8); _rect(ax, 39, 9, 5, 1.5, C_POLY, z=8)   # right groove U
+    # carriage (red) — top web + walls + lugs seating in the polymer-lined grooves
+    _rect(ax, 11, 24, 38, 9, C_CAR, z=5)               # top web (over the tan liner)
+    _rect(ax, 11, 3, 5, 21, C_CAR, z=5)                # left wall
+    _rect(ax, 44, 3, 5, 21, C_CAR, z=5)                # right wall
+    _rect(ax, 16, 10.5, 5, 3, C_CAR, z=7)              # left lug between the groove liners
+    _rect(ax, 39, 10.5, 5, 3, C_CAR, z=7)             # right lug
+    leader(ax, 30, 23, 54, 44, "self-lube POLYMER liner (igus DryLin) — a U-PROFILE: the top\nbearing face PLUS the upper & lower groove faces (one shaped part)",
+           ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 18, 12, -18, -8, "carriage LUG seats in the polymer-lined groove = captive,\nlow-friction BOTH ways (compression on top, tension in the groove)",
+           ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    ax.text(-18, 50, "SECTION A-A  (X × Z) — captive carriage; U-profile polymer liner (top + groove faces)",
+            fontsize=7.1, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+
+
+def view_c(ax):
+    """C — SWING slide face-on (X, at the corner): the horizontal slide + carriage + cam clamp."""
+    ax.set_xlim(-50, 330); ax.set_ylim(-70, 90); ax.set_aspect("equal"); ax.axis("off")
+    # horizontal (swing) slide rail — runs in X, ~260 mm travel
+    _rect(ax, 0, 20, 280, 12, "#B7A6D0")                # rail (light purple)
+    # carriage at the OUTBOARD end (neutral); shifts toward panel centre as the plane swings
+    _rect(ax, 4, 12, 52, 28, C_SWING)                   # swing friction carriage
+    _rect(ax, 60, 18, 12, 16, C_CLAMP)                  # cam clamp
+    ax.plot([72, 96], [26, 20], color=C_CLAMP, lw=2.0, zorder=6)
+    _rect(ax, 16, 40, 28, 16, C_UJ)                     # U-joint mount on the carriage
+    # motion arrow (toward centre)
+    ax.annotate("", xy=(150, 50), xytext=(70, 50),
+                arrowprops=dict(arrowstyle="->", color=DIM, lw=1.0), zorder=6)
+    ax.text(150, 58, "shifts toward panel centre\nas the plane SWINGS", fontsize=6, color=DIM,
+            ha="left", va="bottom", **FONT)
+    draw_dim_h(ax, 0, 280, -20, "~260mm swing travel", offset=14, fs=6, color=DIM, above=False, font=FONT)
+    leader(ax, 30, 26, -46, -2, "swing friction carriage\n(neutral = outboard)", ha="left", fs=6,
+           color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(ax, 30, 48, -20, 74, "U-joint mounts here", ha="left", fs=6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 66, 20, 96, 12, "cam clamp", ha="left", fs=6, color=OUT, font=FONT, bbox=LBL_BG)
+    ax.text(-50, 86, "C — SWING SLIDE  (face-on; horizontal X slide at the corner)",
+            fontsize=8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+
+
 def sheet3():
-    fig = plt.figure(figsize=(16, 12))
+    reset_label_registry()
+    fig = plt.figure(figsize=(18, 13))
     fig.patch.set_facecolor(BG)
 
-    positions = [
-        (0.04, 0.52, 0.44, 0.42),  # TL — corner carriage bracket
-        (0.52, 0.52, 0.44, 0.42),  # TR — rail + carriage cross-section
-        (0.04, 0.10, 0.44, 0.36),  # BL — universal joint / rod-end
-        (0.52, 0.10, 0.44, 0.36),  # BR — ACM panel arrangement
-    ]
-    axes = []
-    for p in positions:
-        a = fig.add_axes(p)
-        a.set_facecolor(BG)
-        a.axis("off")
-        axes.append(a)
-    ax_bracket, ax_rail, ax_joint, ax_acm = axes
+    ax_a = fig.add_axes([0.03, 0.42, 0.45, 0.55]); ax_a.set_facecolor(BG)
+    ax_b = fig.add_axes([0.52, 0.68, 0.45, 0.29]); ax_b.set_facecolor(BG)
+    ax_sec = fig.add_axes([0.52, 0.45, 0.24, 0.20]); ax_sec.set_facecolor(BG)
+    ax_c = fig.add_axes([0.03, 0.10, 0.45, 0.28]); ax_c.set_facecolor(BG)
+    view_a(ax_a)
+    view_b(ax_b)
+    section_aa(ax_sec)
+    view_c(ax_c)
 
-    # ── TL: Slide-and-clamp corner stack (kinematic sub-assembly) ─────────────
-    # From the depth rail up to the film frame: depth slide + cam clamp, then the
-    # X and Z accommodation cross-slides, the single U-joint, and the frame corner.
-    ax = ax_bracket
-    ax.set_xlim(-160, 560); ax.set_ylim(-210, 400); ax.set_aspect("equal")
+    # notes block
+    ax_n = fig.add_axes([0.52, 0.085, 0.45, 0.35]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100)
+    ax_n.axis("off")
+    draw_notes(ax_n, [
+        "CORNER MECHANISM — ONE OF FOUR:",
+        "1. A pinhole has infinite depth of field, so the plane is positioned for scene control "
+        "(tilt / swing / rise), not focus — hence slide-and-clamp, not leadscrews.",
+        "2. Three friction slides per corner: DEPTH (Y) is the drive (a top-bottom depth "
+        "difference = tilt, left-right = swing); VERTICAL (Z, green) absorbs the tilt "
+        "foreshortening (~280mm); HORIZONTAL (X, purple) absorbs the swing foreshortening (~260mm).",
+        "3. Push each slide into position; the adjustable-friction slide holds it, then throw the "
+        "cam clamp to lock for the shot and for transport.",
+        "4. The U-joint (Ruland US12-6-6-SS, 303 SS, self-lube sintered-bronze, grease-free) gives "
+        "tilt + swing and locks twist so the flat plane stays square, and is sealed by a nitrile boot "
+        "(Ruland UBOOT12/19-NI-KIT) against the wash. Upper (ceiling) corners hang in tension; lower "
+        "(floor) corners bear in compression — the captive carriages take both.",
+        "5. Off-the-shelf throughout: each 3/8 stub shaft clamps to the carrier / frame in a 304 SS "
+        "base-mount shaft support (McMaster 4040N12); the slides are igus DryLin (self-lube polymer "
+        "liner on the rail — no metal-on-metal, adjustable drag).",
+    ], 2, 99, 4.6, fs=6.0, title_fs=6.6, color=DIM, width=96, wrap=78, font=FONT)
 
-    C_POLY = "#C9B78F"   # self-lube polymer liner (igus iglide / DryLin)
-    C_CLAMP = "#3A3A40"  # cam-clamp body
-    C_PIN = "#B07010"    # set screws / pins (gold)
-    cx = 150; bw = 130
-
-    # vertical connector spine (behind the blocks)
-    ax.plot([cx, cx], [-150, 300], color=DIM, lw=1.0, ls=(0, (3, 2)), zorder=2)
-
-    def _stackbox(y0, h, fc, label, sublabel, ldr_col):
-        ax.add_patch(Rectangle((cx - bw/2, y0), bw, h, fc=fc, ec=WHITE, lw=1.4, zorder=5))
-        txt_col = BG if fc in (MECH, C_CLAMP, ANNO) else ANNO
-        ax.text(cx, y0 + h/2, label, color=txt_col, fontsize=6, ha="center",
-                va="center", fontweight="bold", **FONT, zorder=6)
-        leader(ax, cx + bw/2, y0 + h/2, cx + bw/2 + 120, y0 + h/2,
-               sublabel, color=ldr_col, ha="left", va="center", fs=5.6,
-               arrow_style="-|>", font=FONT)
-
-    # 1. depth slide (DryLin W) — a wider rail block with a carriage on it
-    ax.add_patch(Rectangle((cx - bw/2 - 20, -178), bw + 40, 22,
-                           fc=RAIL, ec=WHITE, lw=1.4, zorder=4))
-    ax.text(cx, -167, "DryLin W RAIL (316SS)",
-            color=BG, fontsize=5.5, ha="center", va="center", **FONT, zorder=5)
-    _stackbox(-150, 44, MECH, "DEPTH CARRIAGE", "DryLin W carriage\n(depth = tilt+swing+focus)", MECH)
-    # cam clamp lever off the depth carriage (left)
-    ax.add_patch(Circle((cx - bw/2, -128), 7, fc=C_T3, ec=WHITE, lw=0.9, zorder=8))
-    ax.plot([cx - bw/2, cx - bw/2 - 60], [-128, -168], color=C_T3, lw=2.4,
-            solid_capstyle="round", zorder=8)
-    leader(ax, cx - bw/2 - 55, -165, cx - bw/2 - 70, -110,
-           "CAM CLAMP\n(locks each slide)", color=C_T3, ha="right", va="center",
-           fs=5.6, arrow_style="-|>", font=FONT)
-    # 2. X cross-slide (DryLin T, floats)
-    _stackbox(-90, 40, C_POLY, "X CROSS-SLIDE", "DryLin T — floats free,\nabsorbs SWING foreshorten", "#8A6A2A")
-    # 3. Z cross-slide (DryLin T, preload hold)
-    _stackbox(-32, 40, C_POLY, "Z CROSS-SLIDE", "DryLin T adj-clearance —\npreload holds gravity, absorbs TILT", "#8A6A2A")
-    # 4. U-joint
-    ax.add_patch(Circle((cx, 55), 30, fc=STRUCT2, ec=WHITE, lw=1.4, zorder=6))
-    ax.plot([cx - 24, cx + 24], [55, 55], color=C_T2, lw=1.8, zorder=7, solid_capstyle="round")
-    ax.plot([cx, cx], [55 - 24, 55 + 24], color=MECH, lw=1.8, zorder=7, solid_capstyle="round")
-    ax.add_patch(Circle((cx, 55), 9, fc=BG, ec=WHITE, lw=0.8, zorder=8))
-    leader(ax, cx + 30, 55, cx + bw/2 + 120, 55,
-           "SINGLE U-JOINT\nRuland US12-6-6-SS\n(2 crossed pins: tilt+swing,\ntwist-locked, 45°)",
-           color=STRUCT2, ha="left", va="center", fs=5.6, arrow_style="-|>", font=FONT)
-    # 5. film frame corner
-    _stackbox(100, 50, ANNO, "FILM FRAME", "rigid ACM back\n(fixed size)", C_FLAT)
-
-    ax.text(200, 372, "SLIDE-AND-CLAMP CORNER STACK\n(ONE PER CORNER — 4 TOTAL)",
-            color=WHITE, fontsize=8, ha="center", va="bottom", **FONT)
-    ax.text(200, -200,
-            "EACH CORNER: DryLin W depth slide + cam clamp  +  X & Z DryLin T cross-slides  +  US12-6-6-SS U-joint",
-            color=DIM, fontsize=5.6, ha="center", **FONT)
-
-    # ── TR: DryLin W depth-slide cross-section (dry self-lube polymer) ─────────
-    ax = ax_rail
-    ax.set_xlim(-220, 400); ax.set_ylim(-160, 350); ax.set_aspect("equal")
-
-    # base rail (316SS) with two guide upstands = the DryLin W double rail
-    ax.add_patch(Rectangle((-70, 0), 140, 16, fc=RAIL, ec=WHITE, lw=1.5, zorder=3))
-    for ux in (-48, 48):
-        ax.add_patch(Rectangle((ux - 10, 16), 20, 26, fc=RAIL, ec=WHITE, lw=1.3, zorder=4))
-    # polymer liner (iglide) — the dry low-friction bearing surface, wraps each upstand
-    for ux in (-48, 48):
-        ax.add_patch(Rectangle((ux - 14, 16), 4, 30, fc=C_POLY, ec=WHITE, lw=0.6, zorder=6))
-        ax.add_patch(Rectangle((ux + 10, 16), 4, 30, fc=C_POLY, ec=WHITE, lw=0.6, zorder=6))
-    # polymer carriage plate over the rail, wrapping down outside the upstands
-    ax.add_patch(Rectangle((-74, 46), 148, 26, fc=MECH, ec=WHITE, lw=1.5, zorder=5))
-    for ux in (-62, 48):
-        ax.add_patch(Rectangle((ux, 16), 14, 34, fc=MECH, ec=WHITE, lw=1.3, zorder=5))
-
-    draw_dim_h(ax, -70, 70, -46, "DryLin W rail",
-               offset=14, color=DIM, above=False, fs=6, font=FONT)
-    draw_dim_v(ax, 96, 46, 72, "carriage",
-               offset=14, color=MECH, right=True, fs=6, font=FONT)
-
-    ax.text(0, 66 + 120, "DEPTH-SLIDE CROSS-SECTION\nigus DryLin W (316SS rail)",
-            color=WHITE, fontsize=7.5, ha="center", va="bottom", **FONT)
-    leader(ax, -58, 31, -150, 70, "self-lube POLYMER liner\n(iglide — runs DRY, wash-safe;\nno rollers to corrode)",
-           color="#8A6A2A", ha="right", va="center", fs=5.6, arrow_style="-|>", font=FONT)
-    ax.text(0, 59, "DryLin W\nCARRIAGE", color=BG, fontsize=6,
-            ha="center", va="center", **FONT, zorder=7)
-    ax.text(0, -96,
-            "Z & X CROSS-SLIDES: DryLin T single rail + adjustable-clearance carriage",
-            color=DIM, fontsize=6, ha="center", **FONT)
-    ax.text(0, -128,
-            "STATIC positioning · modest load per corner · push-to-slide, cam-clamp",
-            color=DIM, fontsize=6, ha="center", **FONT)
-
-    # ── BL: U-joint + stub/support detail — how each side secures ─────────────
-    ax = ax_joint
-    ax.set_xlim(-72, 432); ax.set_ylim(-128, 196); ax.set_aspect("equal")
-
-    # TWO VIEWS (panel ~1:1, 1 unit ≈ 1mm). LEFT — the Ruland US12-6-6-SS U-joint in
-    # section: a centre block carrying two crossed pins in bronze plain bearings; each
-    # yoke hub grips OUR stub shaft with a set screw. RIGHT — that stub clamped in the
-    # McMaster 4040N12 base-mount support (removable cap + 2 clamp screws).
-
-    # ── VIEW 1: U-joint (Ruland US12-6-6-SS), cut through the swing pin ──
-    v1x, v1y = 110, 68
-    # centre block (joint body)
-    ax.add_patch(Rectangle((v1x-24, v1y-20), 48, 40, fc=STRUCT2, ec=WHITE, lw=1.4, zorder=5))
-    # swing pin in section (vertical) — bronze plain bearing in the block
-    ax.add_patch(Rectangle((v1x-6, v1y-32), 12, 64, fc=C_T2, ec=WHITE, lw=0.9, zorder=6))
-    # tilt pin, end-on (the other axis)
-    ax.add_patch(Circle((v1x, v1y), 6, fc=MECH, ec=WHITE, lw=0.8, zorder=7))
-    # two yoke hubs (part of the joint) + OUR stub shafts, set-screw locked
-    for sgn, tag in ((-1, "carrier"), (1, "frame")):
-        hub_x = v1x + sgn*24
-        ax.add_patch(Rectangle((min(hub_x, hub_x+sgn*20), v1y-11), 20, 22,
-                               fc=STRUCT2, ec=WHITE, lw=1.2, zorder=5))   # yoke hub
-        stub_x0 = hub_x + sgn*20
-        ax.add_patch(Rectangle((min(stub_x0, stub_x0+sgn*40), v1y-6), 40, 12,
-                               fc=MECH, ec=WHITE, lw=1.1, zorder=4))       # our stub shaft
-        # set screw on the hub
-        ax.add_patch(Circle((hub_x + sgn*10, v1y+11), 3.5, fc=C_PIN, ec=WHITE, lw=0.7, zorder=8))
-    # protective boot (ghosted bellows over the joint)
-    ax.add_patch(Rectangle((v1x-30, v1y-27), 60, 54, fill=False, ec=DIM, lw=1.0, ls=(0, (4, 3)), zorder=9))
-    ax.text(v1x, 150, "U-JOINT SECTION", color=WHITE, fontsize=6, ha="center", va="bottom", **FONT)
-    leader(ax, v1x, v1y-20, v1x-40, v1y+40, "CENTRE BLOCK\n(2 crossed pins,\nbronze plain bearing)", color=STRUCT2, ha="center", fs=5.4, font=FONT)
-    leader(ax, v1x-54, v1y, v1x-66, v1y-56, "OUR STUB SHAFT\n3/8\" 304 SS\n(set-screw locked)", color=MECH, ha="center", fs=5.4, font=FONT)
-    leader(ax, v1x+10, v1y+11, v1x+52, v1y+46, "HUB SET SCREW", color=C_PIN, ha="left", fs=5.4, font=FONT)
-    leader(ax, v1x+30, v1y+20, v1x+30, v1y+62, "BOOT (nitrile, dry)\nUBOOT12/19-NI-KIT", color=DIM, ha="center", fs=5.4, font=FONT)
-
-    # ── VIEW 2: stub clamped in the 4040N12 base-mount support ──
-    v2x, v2y = 330, 60
-    # support body + base feet
-    ax.add_patch(Rectangle((v2x-32, v2y-6), 64, 34, fc=STRUCT, ec=WHITE, lw=1.3, zorder=4))     # body
-    ax.add_patch(Rectangle((v2x-46, v2y-18), 92, 12, fc=STRUCT, ec=WHITE, lw=1.3, zorder=4))    # base
-    for fx in (-38, 38):
-        ax.add_patch(Circle((v2x+fx, v2y-12), 3.5, fc=BG, ec=WHITE, lw=0.7, zorder=6))          # mount holes
-    # removable cap + 2 clamp screws
-    ax.add_patch(Rectangle((v2x-32, v2y+28), 64, 12, fc=STRUCT2, ec=WHITE, lw=1.2, zorder=5))   # cap
-    for sx in (-20, 20):
-        ax.add_patch(Circle((v2x+sx, v2y+34), 3.5, fc=C_PIN, ec=WHITE, lw=0.7, zorder=7))       # clamp screws
-    # the stub shaft clamped through it (into page — shown as a bore)
-    ax.add_patch(Circle((v2x, v2y+13), 9, fc=MECH, ec=WHITE, lw=1.1, zorder=6))
-    ax.add_patch(Circle((v2x, v2y+13), 4, fc=BG, ec=WHITE, lw=0.7, zorder=7))
-    ax.text(v2x, 150, "STUB CLAMPED IN SUPPORT", color=WHITE, fontsize=6, ha="center", va="bottom", **FONT)
-    leader(ax, v2x+32, v2y+34, v2x+52, v2y+58, "REMOVABLE CAP\n+ 2 clamp screws", color=C_PIN, ha="left", fs=5.4, font=FONT)
-    leader(ax, v2x, v2y+13, v2x-56, v2y+40, "STUB SHAFT\n(clamped, no slip)", color=MECH, ha="right", fs=5.4, font=FONT)
-    leader(ax, v2x-46, v2y-12, v2x-58, v2y-52, "4040N12 BASE-MOUNT\nSHAFT SUPPORT (304 SS)\n→ bolts to X-slide / frame", color=STRUCT, ha="right", fs=5.4, font=FONT)
-
-    ax.text(180, 178, "CORNER JOINT DETAIL — SINGLE U-JOINT (US12-6-6-SS); EACH STUB CLAMPED IN A 4040N12 SUPPORT",
-            color=WHITE, fontsize=6.5, ha="center", va="bottom", **FONT)
-    ax.text(180, -116,
-            "Each side: a 3/8\" 304 SS stub is set-screw locked in the U-joint hub and clamped in a 4040N12 support (removable cap) — one to the frame, one to the X-slide carriage",
-            color=DIM, fontsize=5.5, ha="center", **FONT)
-
-    # ── BR: single rigid ACM backing (Option A — no fold) ────────────────────
-    ax = ax_acm
-    ax.set_xlim(-100, 650); ax.set_ylim(-130, 350); ax.set_aspect("equal")
-
-    panel_h = 240; panel_w = 300
-    px0, py0 = 130, 40
-    ax.add_patch(Rectangle((px0, py0), panel_w, panel_h, fc=ANNO, ec=WHITE,
-                           lw=1.8, zorder=3, alpha=0.75))
-    for (bx, by) in [(px0, py0), (px0+panel_w, py0),
-                     (px0, py0+panel_h), (px0+panel_w, py0+panel_h)]:
-        ax.add_patch(Circle((bx, by), 13, fc=MECH, ec=WHITE, lw=0.8, zorder=5))
-    ax.text(px0+panel_w/2, py0+panel_h/2, "SINGLE RIGID\nACM BACKING",
-            color=BG, fontsize=8, ha="center", va="center", **FONT, zorder=6)
-    ax.text(px0+panel_w/2, py0+panel_h+22, "FIXED-SIZE — rotates rigidly (no fold)",
-            color=C_FLAT, fontsize=7, ha="center", **FONT)
-    ax.text(px0+panel_w/2, py0-22,
-            f"Dibond ACM 4mm · {RAIL_X_R-RAIL_X_L+0}×{H}mm · bonded to angle frame",
-            color=DIM, fontsize=6, ha="center", **FONT)
-    draw_dim_v(ax, px0-55, py0, py0+panel_h, f"{H}mm (fixed)",
-               offset=60, color=DIM, font=FONT)
-
-    ax.text(280, 310, "ACM BACKING PANEL\nSINGLE RIGID SHEET — FIXED SIZE, NO HINGE",
-            color=WHITE, fontsize=7.5, ha="center", va="bottom", **FONT)
-    ax.text(280, -95,
-            "PANEL: DIBOND 4mm  ·  the plane never grows, so no folding two-panel system is needed",
-            color=DIM, fontsize=6.5, ha="center", **FONT)
-
-    fig.text(0.5, 0.97, "SHEET 3 — FRAME & HARDWARE DETAILS",
-             color=WHITE, fontsize=11, ha="center", fontweight="bold", **FONT)
-
-    # Title block (full-figure overlay for multi-subplot sheet)
-    ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
-    ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 3 OF 6",
+    ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06])
+    ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 3 OF 7",
                 drawing_title="MOVEABLE FILM PLANE",
-                subtitle="Frame & hardware details",
-                scale_note="As noted",
-                doc_id="TBS-FM01 · Film Plane Mechanism")
+                subtitle="Corner mechanism detail — slide-and-clamp + single U-joint",
+                scale_note="DIMS IN mm",
+                doc_id="TBS-FM01 · Film Plane Mechanism",
+                height=0.75)
 
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet3.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
@@ -870,15 +896,165 @@ def sheet3():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 4 — MOVEMENT SPECIFICATION TABLE & BOM (Option A — rigid plane)
+# SHEET 4 — U-JOINT SECTIONS  (how each side secures)
 # ═══════════════════════════════════════════════════════════════════════════════
+def _body(ax, x, y, w, h, z=4):
+    """A sectioned (cut) U-joint body element: light fill + section hatch + outline."""
+    draw_rect(ax, x, y, w, h, fc=C_UJ, color=OUT, lw=1.2, zorder=z)
+    hatch_rect(ax, x, y, w, h, color="#7A8AA0", hatch="////", lw=0.0)
+
+
+def _setscrew(ax, cx, y0, w=5.0, h=6.5, hub_top=None):
+    """Set screw with serrated (threaded) sides + hex socket, plus the MATING thread cut into the
+    (blue) hub wall where it threads in."""
+    import numpy as np
+    if hub_top is None:
+        hub_top = y0 + 4.9
+    for yy in np.arange(y0 + 0.3, hub_top, 1.3):
+        ax.plot([cx - w / 2, cx - w / 2 - 1.3], [yy, yy + 0.9], color="#4E627E", lw=0.5, zorder=7)
+        ax.plot([cx + w / 2, cx + w / 2 + 1.3], [yy, yy + 0.9], color="#4E627E", lw=0.5, zorder=7)
+    draw_rect(ax, cx - w / 2, y0, w, h, fc="#7C7C86", color=OUT, lw=0.8, zorder=9)
+    ys = list(np.arange(y0 + 0.3, y0 + h - 0.2, 1.3))
+    ax.plot([cx - w / 2 + (0.9 if i % 2 else 0.0) for i in range(len(ys))], ys, color=OUT, lw=0.5, zorder=10)
+    ax.plot([cx + w / 2 - (0.9 if i % 2 else 0.0) for i in range(len(ys))], ys, color=OUT, lw=0.5, zorder=10)
+    ax.plot([cx - 1.2, cx + 1.2], [y0 + h - 0.9, y0 + h - 0.9], color=OUT, lw=1.0, zorder=11)
+
+
+def _stub_carrier(ax):
+    """Section: the stub shaft anchored to the mechanism with a 304 SS base-mount clamping shaft
+    support (McMaster 4040N12) — base bolts to the X-slide carriage, a removable cap with two clamp
+    screws grips the 3/8 stub. The frame end is identical."""
+    C_SS = "#7C7C86"
+    ax.set_xlim(-34, 140); ax.set_ylim(-42, 30); ax.set_aspect("equal"); ax.axis("off")
+    ax.plot([-6, 126], [0, 0], color="#2060A0", lw=0.6, dashes=(8, 3, 2, 3), zorder=2)        # shaft axis
+    # carrier bracket (the X-slide carriage face the block bolts down to)
+    draw_rect(ax, -14, -34, 150, 18, fc=C_STEEL, color=OUT, lw=1.2, zorder=4)
+    hatch_rect(ax, -14, -34, 150, 18, color="#7A8AA0", hatch="////", lw=0.0)
+    # pillow-block base + feet, then the removable clamp cap
+    _body(ax, 9, -16, 34, 16)          # base body
+    _body(ax, 0, -16, 9, 8)            # left foot
+    _body(ax, 43, -16, 9, 8)           # right foot
+    _body(ax, 9, 0, 34, 9)             # removable clamp cap (above the split at the shaft centre)
+    # stub shaft through the bore, extending right toward the U-joint
+    draw_rect(ax, -6, -4.6, 130, 9.2, fc=C_STEEL, color=OUT, lw=1.0, zorder=8)
+    _setscrew(ax, 17, 2, 4, 7, hub_top=9); _setscrew(ax, 35, 2, 4, 7, hub_top=9)   # 2 clamp screws (6-32)
+    # 2 mounting screws (base feet -> carrier)
+    for fx in (4.5, 47.5):
+        draw_rect(ax, fx - 1.8, -30, 3.6, 15, fc=C_SS, color=OUT, lw=0.7, zorder=9)           # shank down
+        ax.add_patch(plt.Rectangle((fx - 3, -12), 6, 4, fc=C_SS, ec=OUT, lw=0.7, zorder=10))  # head on the foot
+    for bx in (112, 120):                                                  # shaft break marks
+        ax.plot([bx - 3, bx + 3], [-7, 7], color=OUT, lw=0.8, zorder=9)
+
+    draw_dim_v(ax, 132, -4.6, 4.6, "9.5mm\n(3/8)", offset=11, fs=5.5, color=DIM, right=True,
+               perpendicular=True, font=FONT)
+    leader(ax, 72, -25, 82, -36, "X-slide carriage face (the CARRIER)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 26, -12, 46, -34, "base-mount clamping shaft support\n(McMaster 4040N12, 304 SS)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 26, 9, 42, 24, "2x clamp screws (6-32) pull the removable\ncap DOWN onto the stub shaft", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 4.5, -22, -34, -33, "2x mounting screws\n(base → carrier)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 95, 0, 100, 20, "same stub shaft → into the U-joint hub (section above)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    ax.text(-34, 28, "STUB SHAFT → CARRIER CONNECTION  (McMaster 4040N12 base-mount clamp, 304 SS; the FRAME end is identical)",
+            fontsize=7.3, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+
+
 def sheet4():
+    reset_label_registry()
+    C_BRZ = "#6B4A2A"
+    fig = plt.figure(figsize=(15, 11.5)); fig.patch.set_facecolor(BG)
+    ax = fig.add_axes([0.04, 0.47, 0.92, 0.49]); ax.set_facecolor(BG)
+    ax.set_xlim(-70, 70); ax.set_ylim(-36, 42); ax.set_aspect("equal"); ax.axis("off")
+    ax.plot([-66, 66], [0, 0], color="#2060A0", lw=0.6, dashes=(8, 3, 2, 3), zorder=2)   # through-axis
+
+    # the U-JOINT (the purchased part) = everything inside the dashed box
+    ax.add_patch(plt.Rectangle((-40, -20), 80, 40, fc="none", ec="#B03060", lw=1.1, ls=(0, (6, 4)), zorder=3))
+    ax.text(0, 24, "everything in the dashed box = the RULAND US12-6-6-SS U-joint (light-blue body)",
+            fontsize=6.6, color="#B03060", ha="center", va="bottom", **FONT)
+
+    # ── CENTRE BLOCK (pin-and-block): two perpendicular pins run in it ──
+    _body(ax, -11, -9, 22, 18)
+    # frame-side yoke (right) grips the SWING pin (vertical, in the cut plane) — arms top + bottom
+    _body(ax, -11, 8, 22, 8); _body(ax, -11, -16, 22, 8)
+    _body(ax, 11, -9.5, 9, 19); _body(ax, 20, -9.5, 16, 19)
+    draw_rect(ax, -3, -17, 6, 34, fc=C_PIN, color=OUT, lw=1.0, zorder=7)          # swing pin
+    draw_rect(ax, -4, 8, 8, 7, fc=C_BRZ, color=OUT, lw=0.7, zorder=6)             # bronze bearings
+    draw_rect(ax, -4, -15, 8, 7, fc=C_BRZ, color=OUT, lw=0.7, zorder=6)
+    # carrier-side yoke (left) grips the TILT pin (into page). Its arms are PERPENDICULAR to this cut,
+    # so only its hub is solid here; its body reaching the tilt pin is GHOSTED (into page).
+    _body(ax, -36, -9.5, 16, 19)                       # left hub
+    ax.add_patch(plt.Rectangle((-20, -6.5), 13.5, 13, fc="#DCE6F0", ec="#8A93A2",
+                               lw=0.9, ls=(0, (4, 3)), zorder=3))                 # ghosted into-page body
+    draw_circle(ax, 0, 0, 5.6, color=OUT, fill=True, fc=C_BRZ, lw=0.7, zorder=8)  # tilt bearing (ring)
+    draw_circle(ax, 0, 0, 3.4, color=OUT, fill=True, fc=C_PIN, lw=0.8, zorder=9)  # tilt pin (into page)
+
+    # ── OUR stub shafts (added), into the bores, locked by hub set screws ──
+    draw_rect(ax, -70, -4.6, 50, 9.2, fc=C_STEEL, color=OUT, lw=1.0, zorder=8)
+    draw_rect(ax, 20, -4.6, 50, 9.2, fc=C_STEEL, color=OUT, lw=1.0, zorder=8)
+    ax.plot([-60, -20], [4.6, 4.6], color=OUT, lw=0.4, zorder=9)                  # flats
+    ax.plot([20, 60], [4.6, 4.6], color=OUT, lw=0.4, zorder=9)
+    _setscrew(ax, -27.5, 4.6); _setscrew(ax, 27.5, 4.6)
+
+    # ── protective boot (Ruland UBOOT12/19-NI-KIT, nitrile) — ghosted envelope, zip-tied to each yoke ──
+    bx = [-24, -19, 0, 19, 24]; byu = [10, 17.5, 18, 17.5, 10]
+    ax.plot(bx, byu, color="#40402A", lw=1.0, ls=(0, (5, 3)), zorder=12)
+    ax.plot(bx, [-v for v in byu], color="#40402A", lw=1.0, ls=(0, (5, 3)), zorder=12)
+    for ex in (-24, 24):
+        ax.plot([ex, ex], [-10, 10], color="#40402A", lw=1.0, ls=(0, (5, 3)), zorder=12)
+        ax.plot([ex, ex], [-11, 11], color=OUT, lw=1.8, zorder=13)          # zip tie
+
+    # ── dims ──
+    draw_dim_h(ax, -36, 36, -28, "68mm overall", offset=13, fs=6.5, color=DIM, above=False, font=FONT)
+    draw_dim_v(ax, 54, -4.6, 4.6, "9.5mm bore\n(3/8)", offset=13, fs=6, color=DIM, right=True,
+               perpendicular=True, font=FONT)
+
+    # ── leaders ──
+    leader(ax, -46, 0, -68, 22, "OUR carrier stub shaft (we add)\n→ clamped to the X-slide carriage (4040N12, below)",
+           ha="left", fs=6.3, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 48, 0, 50, 22, "OUR frame stub shaft (we add)\n→ clamped to the film-frame corner",
+           ha="left", fs=6.3, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 30, 8, 42, 33, "hub SET SCREWS lock the\nstub shaft on a flat (both hubs)",
+           ha="left", fs=6.3, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 0, 8, -26, 34, "CENTRE BLOCK — the two pins turn\nin it at 90° (pin-and-block joint)",
+           ha="left", fs=6.3, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 3, 12, 12, 32, "SWING pin (vertical) in a\nbronze plain bearing",
+           ha="left", fs=6.3, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 4, 0, 24, -22, "TILT pin (into page) in its\nbronze plain bearing",
+           ha="left", fs=6.3, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, -14, -2, -46, -27, "the two yokes sit at 90°: the FRAME yoke (right) grips the swing pin IN this cut "
+           "(solid arms);\nthe CARRIER yoke (left) grips the tilt pin INTO the page (ghosted) — that is why the sides differ. "
+           "Light-blue = U-joint body (303 SS + bronze, grease-free, twist-locked)",
+           ha="left", fs=5.8, color=DIM, font=FONT, bbox=LBL_BG)
+
+    leader(ax, -8, 18, -34, 37, "protective BOOT (Ruland UBOOT12/19-NI-KIT, nitrile) — zip-tied to each yoke;\nkeeps the wash out of the bronze bearings (fitted DRY, not grease-packed)",
+           ha="left", fs=5.8, color="#40402A", font=FONT, bbox=LBL_BG)
+
+    ax.text(-70, 40, "U-JOINT SECTION  (Ruland US12-6-6-SS; cut in Y-Z through the swing pin)",
+            fontsize=8.5, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+
+    ax_sc = fig.add_axes([0.12, 0.10, 0.76, 0.33]); ax_sc.set_facecolor(BG)
+    _stub_carrier(ax_sc)
+
+    ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1)
+    ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 4 OF 7", drawing_title="MOVEABLE FILM PLANE",
+                subtitle="U-joint sections — stub shaft + hub set screws; stub clamped to the carrier",
+                scale_note="Enlarged — DIMS IN mm",
+                doc_id="TBS-FM01 · Film Plane Mechanism",
+                height=0.75)
+
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet4.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet4.png")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 5 — MOVEMENT SPECIFICATION TABLE & BOM (Option A — rigid plane)
+# ═══════════════════════════════════════════════════════════════════════════════
+def sheet5():
     fig, ax = plt.subplots(figsize=(16, 13))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
     ax.axis("off")
 
-    ax.text(0.5, 0.968, "SHEET 4 — MOVEMENT SPECIFICATION",
+    ax.text(0.5, 0.968, "SHEET 5 — MOVEMENT SPECIFICATION",
             transform=ax.transAxes, color=WHITE, fontsize=13, ha="center",
             fontweight="bold", **FONT)
     ax.text(0.5, 0.948, f"TBS-001  ·  MOVEABLE FILM PLANE  ·  RAILS: X={RAIL_X_L}–{RAIL_X_R}mm  SPAN={RAIL_X_R-RAIL_X_L}mm  MAX SWING={MAX_SWING_DEG:.1f}deg",
@@ -1011,26 +1187,26 @@ def sheet4():
                 ha="left", va="top", fontweight=fw, style=st, **FONT)
 
     # Title block
-    title_block(ax, "SHEET 4 OF 6",
+    title_block(ax, "SHEET 5 OF 7",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Movement specification & BOM",
                 scale_note="Not to scale",
                 doc_id="TBS-FM01 · Film Plane Mechanism")
 
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet4.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet5.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet4.png")
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet5.png")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# Sheet 5 — Muslin Clamp Detail: Cam-Lever Spring Clamp
+# Sheet 6 — Muslin Clamp Detail: Cam-Lever Spring Clamp
 #
 # Three sub-panels:
 #   A (top-left):  Cross-section of clamp on 2"×2" aluminum angle profile
 #   B (top-right): Clamp in open vs closed positions (side view)
 #   C (bottom):    Elevation: 3 clamps at 150mm spacing along frame edge
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet5():
+def sheet6():
     from tbs_constants import (
         FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_BASE_W, CLAMP_BASE_H,
         CLAMP_BASE_T, CLAMP_LEVER_L, CLAMP_JAW_W, CLAMP_JAW_H, CLAMP_JAW_T,
@@ -1585,27 +1761,27 @@ def sheet5():
     ax_tb.set_xlim(0, 1)
     ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 5 OF 6",
+    title_block(ax_tb, "SHEET 6 OF 7",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Muslin clamp detail — cam-lever spring clamp",
                 scale_note="MULTIPLE SCALES — SEE INDIVIDUAL PANELS",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.75)
 
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet5.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet6.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet5.png")
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet6.png")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 6 — SYSTEM SCHEMATIC: Four-corner frame front elevation
+# SHEET 7 — SYSTEM SCHEMATIC: Four-corner frame front elevation
 #
 # View: looking at the film plane from the pinhole side (interior elevation).
 # Shows ceiling/floor depth-slide pairs (DryLin W), four corner slide-and-clamp
 # carriages with cam clamps, film plane frame with a single U-joint at each corner.
 # The long depth rail runs into the page (optical axis); shown end-on here.
 # ═══════════════════════════════════════════════════════════════════════════════
-def sheet6():
+def sheet7():
     fig, ax = plt.subplots(figsize=(16, 10))
     fig.patch.set_facecolor(BG)
     ax.set_facecolor(BG)
@@ -1829,23 +2005,23 @@ def sheet6():
 
     # ── Title text ────────────────────────────────────────────────────────────
     ax.text(FW / 2, FH + 380,
-            "SHEET 6 — SYSTEM SCHEMATIC  (FRONT ELEVATION — LOOKING FROM PINHOLE SIDE)",
+            "SHEET 7 — SYSTEM SCHEMATIC  (FRONT ELEVATION — LOOKING FROM PINHOLE SIDE)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
     ax.text(FW / 2, FH + 290,
             "4 CORNER SLIDE-AND-CLAMP CARRIAGES (igus DryLin, COORDINATED PAIRS)  ·  CAM CLAMP + SINGLE U-JOINT + X-Z CROSS-SLIDES AT EACH CORNER",
             color=DIM, fontsize=7, ha="center", **FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 6 OF 6",
+    title_block(ax, "SHEET 7 OF 7",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="System schematic — four-corner frame front elevation",
                 scale_note="Schematic — not to scale",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.05)
 
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet6.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet7.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
-    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet6.png")
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet7.png")
 
 
 # ── Run all sheets ─────────────────────────────────────────────────────────────
@@ -1857,4 +2033,5 @@ if __name__ == "__main__":
     sheet4()
     sheet5()
     sheet6()
+    sheet7()
     print("Done.")

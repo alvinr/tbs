@@ -28,7 +28,7 @@ from matplotlib.patches import Arc
 sys.path.insert(0, os.path.dirname(__file__))
 from tbs_constants import DIAGRAMS_DIR
 from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_rect, draw_circle,
-                         draw_notes, draw_cl_v, reset_label_registry)
+                         draw_notes, hatch_rect, reset_label_registry)
 from tbs_title_block import title_block
 
 C_BG = "#FAFAFA"; OUT = "#1A1A1A"; DIM = "#404040"
@@ -163,22 +163,25 @@ def view_b(ax):
 
 # ────────────────────────────────────────────────────────────────────────────
 def section_aa(ax):
-    """SECTION A-A — X-Z cut through a depth rail + friction carriage, showing the captive wrap."""
-    ax.set_xlim(-14, 74); ax.set_ylim(-16, 46); ax.set_aspect("equal"); ax.axis("off")
-    # profile rail (grey): base + rib with a groove on each flank
-    _rect(ax, 12, 0, 36, 8, C_STEEL)                    # wide base
-    _rect(ax, 18, 8, 24, 15, C_STEEL)                   # rib
-    ax.add_patch(plt.Rectangle((15, 10), 4, 5, fc="white", ec=OUT, lw=0.7, zorder=6))   # L groove
-    ax.add_patch(plt.Rectangle((41, 10), 4, 5, fc="white", ec=OUT, lw=0.7, zorder=6))   # R groove
-    # carriage (red) C-profile wrapping the rail; retention lugs reach into the grooves = captive
-    _rect(ax, 6, 23, 48, 10, C_CAR, z=5)                # top web
-    _rect(ax, 6, 6, 9, 17, C_CAR, z=5)                  # left wall
-    _rect(ax, 45, 6, 9, 17, C_CAR, z=5)                 # right wall
-    _rect(ax, 13, 10, 6, 5, C_CAR, z=7)                 # left retention lug (into groove)
-    _rect(ax, 41, 10, 6, 5, C_CAR, z=7)                 # right retention lug
-    leader(ax, 16, 12, -14, -6, "retention lug in rail groove\n= captive (can't lift off)",
+    """SECTION A-A — X-Z cut through a depth rail + friction carriage, showing the captive wrap.
+    The carriage walls sit OUTSIDE the rail (edge-to-edge clearance, no overlap); the liner lugs
+    seat in the rail's side grooves and run the FULL carriage length (they are not end stops)."""
+    ax.set_xlim(-18, 78); ax.set_ylim(-18, 50); ax.set_aspect("equal"); ax.axis("off")
+    # profile rail (grey), one body, with a groove cut into each upper flank
+    _rect(ax, 16, 0, 28, 22, C_STEEL)
+    ax.add_patch(plt.Rectangle((16, 9), 5, 6, fc="white", ec=OUT, lw=0.7, zorder=6))    # L groove
+    ax.add_patch(plt.Rectangle((39, 9), 5, 6, fc="white", ec=OUT, lw=0.7, zorder=6))    # R groove
+    # carriage (red) — top web + walls just OUTSIDE the rail (touch, no overlap) + liner lugs in grooves
+    _rect(ax, 8, 22, 44, 10, C_CAR, z=5)                # top web
+    _rect(ax, 8, 4, 8, 18, C_CAR, z=5)                  # left wall  (x8-16, rail left edge = 16)
+    _rect(ax, 44, 4, 8, 18, C_CAR, z=5)                 # right wall (x44-52, rail right edge = 44)
+    _rect(ax, 16, 9, 5, 6, C_CAR, z=7)                  # left liner lug (seats in L groove)
+    _rect(ax, 39, 9, 5, 6, C_CAR, z=7)                  # right liner lug
+    leader(ax, 18, 12, -18, -6, "self-lube liner seats in the rail groove —\nruns the FULL carriage length (NOT an end stop)",
            ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-14, 44, "SECTION A-A  (X × Z) — captive carriage wraps the rail",
+    leader(ax, 46, 27, 56, 42, "carriage wraps the rail\n= captive (can't lift off)",
+           ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    ax.text(-18, 48, "SECTION A-A  (X × Z) — captive carriage wraps the rail",
             fontsize=7.5, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
 
@@ -206,6 +209,97 @@ def view_c(ax):
     leader(ax, 66, 20, 96, 12, "cam clamp", ha="left", fs=6, color=OUT, font=FONT, bbox=LBL_BG)
     ax.text(-50, 86, "C — SWING SLIDE  (face-on; horizontal X slide at the corner)",
             fontsize=8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+
+
+# ────────────────────────────────────────────────────────────────────────────
+def _body(ax, x, y, w, h, z=4):
+    """A sectioned (cut) U-joint body element: light fill + section hatch + outline."""
+    draw_rect(ax, x, y, w, h, fc=C_UJ, color=OUT, lw=1.2, zorder=z)
+    hatch_rect(ax, x, y, w, h, color="#7A8AA0", hatch="////", lw=0.0)
+
+
+def draw_ujoint_section():
+    """Longitudinal SECTION through the U-joint — how each side is secured.
+    Through-axis (Y) horizontal; cut in the Y-Z plane through the swing pin. Both hubs are
+    identical: a 3/8 stub shaft into the bore, locked by hub set screws, then bolted to our part."""
+    reset_label_registry()
+    C_BRZ = "#6B4A2A"; C_SS = "#7C7C86"
+    fig = plt.figure(figsize=(15, 9))
+    fig.patch.set_facecolor(C_BG)
+    ax = fig.add_axes([0.04, 0.16, 0.92, 0.76]); ax.set_facecolor(C_BG)
+    ax.set_xlim(-66, 66); ax.set_ylim(-34, 40); ax.set_aspect("equal"); ax.axis("off")
+
+    ax.plot([-64, 64], [0, 0], color="#2060A0", lw=0.6, dashes=(8, 3, 2, 3), zorder=2)   # through-axis
+
+    # ── centre cross / spider ──
+    _body(ax, -7, -7, 14, 14)
+
+    # ── FRAME-side yoke (right): holds the SWING pin (vertical), fully in the cut plane ──
+    _body(ax, -11, 7, 25, 9)          # top arm
+    _body(ax, -11, -16, 25, 9)        # bottom arm
+    _body(ax, 14, -9.5, 6, 19)        # yoke base
+    _body(ax, 20, -9.5, 16, 19)       # right hub
+    # swing pin (vertical) + its bronze plain bearings in the arms
+    draw_rect(ax, -2.5, -16, 5, 32, fc=C_PIN, color=OUT, lw=1.0, zorder=7)
+    draw_rect(ax, -3.6, 7.5, 7.2, 8, fc=C_BRZ, color=OUT, lw=0.7, zorder=6)
+    draw_rect(ax, -3.6, -15.5, 7.2, 8, fc=C_BRZ, color=OUT, lw=0.7, zorder=6)
+    # frame stub shaft in the bore + hub set screw
+    draw_rect(ax, 20, -4.6, 46, 9.2, fc=C_STEEL, color=OUT, lw=1.0, zorder=8)
+    ax.plot([20, 60], [4.6, 4.6], color=OUT, lw=0.4, zorder=9)         # flat for the set screw
+    draw_rect(ax, 25, 4.6, 5, 6.5, fc=C_SS, color=OUT, lw=0.8, zorder=9)   # set screw
+    for ty in (5.8, 7.6, 9.4):
+        ax.plot([25, 30], [ty, ty], color=OUT, lw=0.35, zorder=10)
+
+    # ── CARRIER-side yoke (left): holds the TILT pin (into page); arms are perpendicular → ghost ──
+    _body(ax, -36, -9.5, 16, 19)      # left hub
+    _body(ax, -20, -9.5, 6, 19)       # yoke base
+    for gy in (9, -9):                                                  # ghosted tilt arms (into page)
+        ax.add_patch(plt.Rectangle((-13, gy - 1), 11, 2, fc="none", ec="#8A93A2", lw=0.7,
+                                    ls=(0, (4, 3)), zorder=3))
+    # tilt pin into page + its bronze bearing (ring)
+    draw_circle(ax, 0, 0, 5.4, color=OUT, fill=True, fc=C_BRZ, lw=0.7, zorder=8)
+    draw_circle(ax, 0, 0, 3.2, color=OUT, fill=True, fc=C_PIN, lw=0.8, zorder=9)
+    # carrier stub shaft + hub set screw
+    draw_rect(ax, -66, -4.6, 46, 9.2, fc=C_STEEL, color=OUT, lw=1.0, zorder=8)
+    ax.plot([-60, -20], [4.6, 4.6], color=OUT, lw=0.4, zorder=9)
+    draw_rect(ax, -30, 4.6, 5, 6.5, fc=C_SS, color=OUT, lw=0.8, zorder=9)
+    for ty in (5.8, 7.6, 9.4):
+        ax.plot([-30, -25], [ty, ty], color=OUT, lw=0.35, zorder=10)
+
+    # ── dims ──
+    draw_dim_h(ax, -36, 36, -26, "68mm overall", offset=13, fs=6.5, color=DIM, above=False, font=FONT)
+    draw_dim_v(ax, 52, -4.6, 4.6, "9.5mm bore\n(3/8)", offset=13, fs=6, color=DIM, right=True,
+               perpendicular=True, font=FONT)
+
+    # ── leaders ──
+    leader(ax, -44, 0, -64, 20, "CARRIER stub shaft\n→ bolts to the cross-slide carriage",
+           ha="left", fs=6.5, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 44, 0, 46, 20, "FRAME stub shaft\n→ bolts to the film-frame corner",
+           ha="left", fs=6.5, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 27, 8, 40, 30, "hub SET SCREWS lock the\nstub shaft on a flat (both hubs)",
+           ha="left", fs=6.5, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 0, 11, -20, 33, "cross / spider", ha="left", fs=6.5, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 1.5, 12, 8, 30, "SWING pin (vertical) in\nsintered-bronze plain bearings",
+           ha="left", fs=6.5, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 4, 0, 20, -20, "TILT pin (into page)\nin its bronze plain bearing",
+           ha="left", fs=6.5, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 28, 9, 34, -16, "grease-free (303 SS + bronze) — twist-locked",
+           ha="left", fs=6.2, color=DIM, font=FONT, bbox=LBL_BG)
+
+    ax.text(-66, 38, "U-JOINT SECTION  (Ruland US12-6-6-SS; cut in Y-Z through the swing pin)",
+            fontsize=8.5, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+
+    ax_tb = fig.add_axes([0.03, 0.01, 0.94, 0.075]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1)
+    ax_tb.axis("off")
+    title_block(ax_tb, "DETAIL  (DRAFT)", drawing_title="FILM-PLANE U-JOINT — SECTION",
+                subtitle="HOW EACH SIDE IS SECURED: STUB SHAFT + HUB SET SCREWS; YOKES ON BRONZE BEARINGS",
+                scale_note="DRAFT — enlarged — DIMS IN mm")
+
+    os.makedirs(DIAGRAMS_DIR, exist_ok=True)
+    png = os.path.join(DIAGRAMS_DIR, "film-ujoint-section.png")
+    fig.savefig(png, dpi=150, bbox_inches="tight", facecolor=C_BG)
+    plt.close(fig)
+    print(f"  {png} saved")
 
 
 # ────────────────────────────────────────────────────────────────────────────
@@ -256,3 +350,4 @@ def draw_sheet():
 
 if __name__ == "__main__":
     draw_sheet()
+    draw_ujoint_section()

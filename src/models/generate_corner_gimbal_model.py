@@ -30,7 +30,9 @@ import generate_sketchup_model as ov          # ruby helpers + component()
 
 TAGS = ["Corners", "Film Plane", "Pinhole", "Labels"]
 
-C_STEEL = "#B0B0B8"; C_XSL = "#B8C8D8"; C_CROSS = "#8A8A92"; C_PANEL = "#1F3B66"; C_CAR = "#C04010"
+C_STEEL = "#B0B0B8"; C_CROSS = "#8A8A92"; C_PANEL = "#1F3B66"; C_CAR = "#C04010"
+C_TILT = "#2E8B57"   # vertical (Z) slide — TILT accommodation (green)
+C_SWING = "#7B5EA7"  # horizontal (X) slide — SWING accommodation (purple)
 
 # real container/film layout (mm) — sourced from tbs_constants via ov (no hardcoded copies)
 CH = ov.C_HGT                        # interior height
@@ -54,12 +56,12 @@ def corner(tag, cx, cz, sv, cin):
     xo = cx - cin * 30                                  # vertical slide, just outboard of the corner
     xr0 = cx if cin > 0 else cx - 170                   # horizontal rail extends toward panel centre
     # full-length depth rail (the focus/tilt/swing travel), ceiling for top corners / floor for bottom
-    band("Depth slide rail Y", cx - 8, 16, ov.FP_Y_MIN, FP_Y - ov.FP_Y_MIN + 40, 0, 16, C_STEEL)
+    band("Depth slide rail Y (drive, grey)", cx - 8, 16, ov.FP_Y_MIN, FP_Y - ov.FP_Y_MIN + 40, 0, 16, C_STEEL)
     band("Depth carriage", cx - 22, 44, FP_Y - 30, 60, 16, 40, C_CAR)
-    band("Vertical Z slide rail", xo - 7, 14, FP_Y - 8, 16, 18, 138, C_STEEL)
-    band("Vertical Z carriage", xo - 16, 32, FP_Y - 14, 28, 58, 108, C_CAR)
-    band("Horizontal X slide rail", xr0, 170, FP_Y - 6, 12, 110, 122, C_STEEL)
-    band("Horizontal X carriage", cx - 22, 44, FP_Y - 11, 22, 116, 136, C_XSL)
+    band("Vertical Z slide rail (TILT, green)", xo - 7, 16, FP_Y - 9, 18, 18, 150, C_TILT)
+    band("Vertical Z carriage", xo - 17, 34, FP_Y - 15, 30, 58, 108, C_TILT)
+    band("Horizontal X slide rail (SWING, purple)", xr0, 170, FP_Y - 7, 14, 108, 122, C_SWING)
+    band("Horizontal X carriage", cx - 24, 48, FP_Y - 12, 24, 114, 136, C_SWING)
     band("U-joint", cx - 12, 24, FP_Y - 12, 24, 130, 150, C_CROSS)
     return "\n".join(P)
 
@@ -109,9 +111,9 @@ tt.layer = model.layers["Labels"] rescue nil''')
     txt("UPPER rails (ceiling) — TOP corners hang (tension)", 2400, FP_Y - 350, CH, 45, -40, 12)
     txt("LOWER rails (floor) — BOTTOM corners bear (compression)", 2400, FP_Y - 350, 0, 45, -40, -12)
     # one corner (BL) annotated with the three slides + joint
-    txt("DEPTH slide (Y) — drives tilt + swing", X_L, FP_Y - 300, PZ0 - 40, -55, -40, -10)
-    txt("VERTICAL slide (Z) — absorbs TILT", X_L - 30, FP_Y, PZ0 + 20, -60, -40, 10)
-    txt("HORIZONTAL slide (X) — absorbs SWING", X_L + 120, FP_Y, PZ0 + 10, 55, -40, 5)
+    txt("DEPTH slide (Y, GREY) — drives tilt + swing", X_L, FP_Y - 300, PZ0 - 40, -55, -40, -10)
+    txt("VERTICAL slide (Z, GREEN) — absorbs TILT", X_L - 30, FP_Y, PZ0 + 20, -60, -40, 10)
+    txt("HORIZONTAL slide (X, PURPLE) — absorbs SWING", X_L + 120, FP_Y, PZ0 + 10, 55, -40, 5)
     txt("U-joint (tilt + swing, twist locked)", X_L, FP_Y - 12, PZ0, -55, -45, 15)
     return "\n".join(L)
 

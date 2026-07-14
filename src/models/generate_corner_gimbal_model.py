@@ -32,14 +32,14 @@ TAGS = ["Corners", "Film Plane", "Pinhole", "Labels"]
 
 C_STEEL = "#B0B0B8"; C_XSL = "#B8C8D8"; C_CROSS = "#8A8A92"; C_PANEL = "#1F3B66"; C_CAR = "#C04010"
 
-# real container/film layout (mm)
-CH = 2388                 # interior height
-X_L, X_R = 150, 4649      # film left / right edges (X, the long axis)
-FP_Y = 2262               # film depth from the pinhole wall (Y)
-PH_X, PH_Z = 2399, 1194   # pinhole X (film-width centre) and Z (mid-height)
-CZ_F, CZ_C = 15, 2373     # floor / ceiling rail-mount Z
-BUILD = 140               # rail-mount → panel-corner stack height
-PZ0, PZ1 = CZ_F + BUILD, CZ_C - BUILD   # panel bottom / top edge Z (= 155 / 2233 ≈ 2078 tall)
+# real container/film layout (mm) — sourced from tbs_constants via ov (no hardcoded copies)
+CH = ov.C_HGT                        # interior height
+X_L, X_R = ov.FP_X_L, ov.FP_X_R      # film left / right edges (X, the long axis)
+FP_Y = ov.FP_Y                       # film depth from the pinhole wall (Y)
+PH_X, PH_Z = ov.PH_X, ov.C_HGT // 2  # pinhole X (film-width centre) and Z (mid-height)
+CZ_F, CZ_C = 15, ov.C_HGT - 15       # floor / ceiling rail-mount Z
+BUILD = 140                          # rail-mount → panel-corner stack height (mm)
+PZ0, PZ1 = CZ_F + BUILD, CZ_C - BUILD   # panel bottom / top edge Z (≈ 155 / 2233)
 
 
 def corner(tag, cx, cz, sv, cin):

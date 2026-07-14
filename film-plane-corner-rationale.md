@@ -127,8 +127,11 @@ Per corner (×4):
 - **1 × single universal joint** — [Ruland US12-6-6-SS](https://www.ruland.com/us12-6-6-ss.html): 303
   stainless, self-lubricating **sintered-bronze plain bearing**, **45° max articulation**, 3/8" bore,
   68 mm long, grease-free — the off-the-shelf 2-axis torsion-locked pivot (~$195, in stock)
-- **2 × stub-shaft mount** — a short 3/8" stub + flange-mount shaft support at each yoke: one to the
-  floating X slide, one to the film-frame corner (off-the-shelf clamp, not a precision-reamed gimbal)
+- **2 × base-mount shaft support** — [McMaster 4040N12](https://www.mcmaster.com/4040N12/), 304 SS,
+  clamps a 3/8" stub (removable cap + two 6-32 screws): one to the floating X slide, one to the
+  film-frame corner (off-the-shelf clamp, not a precision-reamed gimbal)
+- **2 × stub shaft** — 3/8" (9.5 mm) 304 SS rod, ~60 mm each: one end into the U-joint hub (set-screw
+  locked), the other clamped in the shaft support
 - **1 × protective boot** — [Ruland UBOOT12/19-NI-KIT](https://www.ruland.com/uboot12-19-ni-kit.html):
   nitrile single bellows, zip-tied to each yoke; fitted **dry** to seal the bronze bearings from the wash
 - **Depth (Y): friction slide (~2.2 m) + cam clamp** — produces tilt + swing (+ focus); push, then lock

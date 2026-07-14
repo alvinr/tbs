@@ -172,20 +172,22 @@ def section_aa(ax):
     _rect(ax, 16, 0, 28, 22, C_STEEL)
     ax.add_patch(plt.Rectangle((16, 9), 5, 6, fc="white", ec=OUT, lw=0.7, zorder=6))    # L groove
     ax.add_patch(plt.Rectangle((39, 9), 5, 6, fc="white", ec=OUT, lw=0.7, zorder=6))    # R groove
-    # carriage (red) — top web + walls just OUTSIDE the rail (touch, no overlap) + liner lugs in grooves
-    _rect(ax, 8, 22, 44, 10, C_CAR, z=5)                # top web
-    _rect(ax, 8, 4, 8, 18, C_CAR, z=5)                  # left wall  (x8-16, rail left edge = 16)
-    _rect(ax, 44, 4, 8, 18, C_CAR, z=5)                 # right wall (x44-52, rail right edge = 44)
-    _rect(ax, 14, 4, 2, 18, C_POLY, z=8)                # left wall liner face (polymer)
-    _rect(ax, 44, 4, 2, 18, C_POLY, z=8)                # right wall liner face
-    _rect(ax, 16, 9, 5, 6, C_POLY, z=8)                 # left liner in groove (polymer)
-    _rect(ax, 39, 9, 5, 6, C_POLY, z=8)                # right liner in groove
-    leader(ax, 18, 12, -18, -8, "self-lube POLYMER liner (igus DryLin/iglidur) — dry, low-friction,\nadjustable drag; NOT metal-on-metal; runs the FULL length (not an end stop)",
-           ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 46, 27, 56, 42, "carriage wraps the rail\n= captive (can't lift off)",
-           ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-18, 48, "SECTION A-A  (X × Z) — captive carriage wraps the rail",
-            fontsize=7.5, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+    # self-lube POLYMER liner (tan) — a continuous C between the carriage and the rail on EVERY face
+    _rect(ax, 13, 3, 3, 21, C_POLY, z=6)               # left vertical liner
+    _rect(ax, 44, 3, 3, 21, C_POLY, z=6)               # right vertical liner
+    _rect(ax, 13, 22, 34, 2, C_POLY, z=6)              # top liner (under the web)
+    _rect(ax, 16, 9, 5, 6, C_POLY, z=7)                # left groove liner
+    _rect(ax, 39, 9, 5, 6, C_POLY, z=7)                # right groove liner
+    # carriage (red) — OUTSIDE the polymer liner, so it never touches the rail (no metal-on-metal)
+    _rect(ax, 11, 24, 38, 9, C_CAR, z=5)               # top web
+    _rect(ax, 8, 3, 5, 21, C_CAR, z=5)                 # left wall  (outboard of the tan liner)
+    _rect(ax, 47, 3, 5, 21, C_CAR, z=5)                # right wall
+    leader(ax, 14, 13, -18, -8, "self-lube POLYMER liner (igus DryLin/iglidur) — between the RED carriage\nand GREY rail on every face; dry, low-friction, adjustable drag; NOT metal-on-metal",
+           ha="left", fs=5.3, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 30, 28, 56, 44, "carriage wraps the rail\n= captive (can't lift off);\nliner runs the FULL length",
+           ha="left", fs=5.5, color=OUT, font=FONT, bbox=LBL_BG)
+    ax.text(-18, 50, "SECTION A-A  (X × Z) — captive carriage; polymer liner on every contact face",
+            fontsize=7.3, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
 
 def view_c(ax):
@@ -221,9 +223,17 @@ def _body(ax, x, y, w, h, z=4):
     hatch_rect(ax, x, y, w, h, color="#7A8AA0", hatch="////", lw=0.0)
 
 
-def _setscrew(ax, cx, y0, w=5.0, h=6.5):
-    """Set screw with serrated (threaded) sides + a hex-socket line on top."""
+def _setscrew(ax, cx, y0, w=5.0, h=6.5, hub_top=None):
+    """Set screw with serrated (threaded) sides + hex socket, plus the MATING thread cut into the
+    (blue) hub wall where it threads in."""
     import numpy as np
+    # mating thread in the hub (blue) — drawn first so the screw sits over it
+    if hub_top is None:
+        hub_top = y0 + 4.9
+    for yy in np.arange(y0 + 0.3, hub_top, 1.3):
+        ax.plot([cx - w / 2, cx - w / 2 - 1.3], [yy, yy + 0.9], color="#4E627E", lw=0.5, zorder=7)
+        ax.plot([cx + w / 2, cx + w / 2 + 1.3], [yy, yy + 0.9], color="#4E627E", lw=0.5, zorder=7)
+    # the screw
     draw_rect(ax, cx - w / 2, y0, w, h, fc="#7C7C86", color=OUT, lw=0.8, zorder=9)
     ys = list(np.arange(y0 + 0.3, y0 + h - 0.2, 1.3))
     ax.plot([cx - w / 2 + (0.9 if i % 2 else 0.0) for i in range(len(ys))], ys, color=OUT, lw=0.5, zorder=10)

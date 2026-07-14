@@ -28,7 +28,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Depth slide rail Y BL
   grp = ents.add_group
   grp.name = "Depth slide rail Y BL"
-  face = grp.entities.add_face([142.mm,1792.mm,15.mm], [158.mm,1792.mm,15.mm], [158.mm,2332.mm,15.mm], [142.mm,2332.mm,15.mm])
+  face = grp.entities.add_face([142.mm,100.mm,15.mm], [158.mm,100.mm,15.mm], [158.mm,2302.mm,15.mm], [142.mm,2302.mm,15.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Depth slide rail Y BL"] || model.materials.add("Depth slide rail Y BL")
@@ -105,7 +105,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Depth slide rail Y BR
   grp = ents.add_group
   grp.name = "Depth slide rail Y BR"
-  face = grp.entities.add_face([4641.mm,1792.mm,15.mm], [4657.mm,1792.mm,15.mm], [4657.mm,2332.mm,15.mm], [4641.mm,2332.mm,15.mm])
+  face = grp.entities.add_face([4641.mm,100.mm,15.mm], [4657.mm,100.mm,15.mm], [4657.mm,2302.mm,15.mm], [4641.mm,2302.mm,15.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Depth slide rail Y BL"] || model.materials.add("Depth slide rail Y BL")
@@ -182,7 +182,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Depth slide rail Y TL
   grp = ents.add_group
   grp.name = "Depth slide rail Y TL"
-  face = grp.entities.add_face([142.mm,1792.mm,2357.mm], [158.mm,1792.mm,2357.mm], [158.mm,2332.mm,2357.mm], [142.mm,2332.mm,2357.mm])
+  face = grp.entities.add_face([142.mm,100.mm,2357.mm], [158.mm,100.mm,2357.mm], [158.mm,2302.mm,2357.mm], [142.mm,2302.mm,2357.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Depth slide rail Y BL"] || model.materials.add("Depth slide rail Y BL")
@@ -259,7 +259,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Depth slide rail Y TR
   grp = ents.add_group
   grp.name = "Depth slide rail Y TR"
-  face = grp.entities.add_face([4641.mm,1792.mm,2357.mm], [4657.mm,1792.mm,2357.mm], [4657.mm,2332.mm,2357.mm], [4641.mm,2332.mm,2357.mm])
+  face = grp.entities.add_face([4641.mm,100.mm,2357.mm], [4657.mm,100.mm,2357.mm], [4657.mm,2302.mm,2357.mm], [4641.mm,2302.mm,2357.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Depth slide rail Y BL"] || model.materials.add("Depth slide rail Y BL")
@@ -333,6 +333,28 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # Floor
+  grp = ents.add_group
+  grp.name = "Floor"
+  face = grp.entities.add_face([-100.mm,0.mm,-12.mm], [4899.mm,0.mm,-12.mm], [4899.mm,2512.mm,-12.mm], [-100.mm,2512.mm,-12.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Floor"] || model.materials.add("Floor")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.05
+  grp.material = mat
+
+  # Ceiling
+  grp = ents.add_group
+  grp.name = "Ceiling"
+  face = grp.entities.add_face([-100.mm,0.mm,2388.mm], [4899.mm,0.mm,2388.mm], [4899.mm,2512.mm,2388.mm], [-100.mm,2512.mm,2388.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Floor"] || model.materials.add("Floor")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.05
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Corners"
   inst.layer = model.layers["Corners"]
@@ -403,6 +425,12 @@ tt = entities.add_text("TOP pair vs BOTTOM pair depth = TILT", Geom::Point3d.new
 tt.layer = model.layers["Labels"] rescue nil
 
 tt = entities.add_text("LEFT pair vs RIGHT pair depth = SWING", Geom::Point3d.new(4649.mm, 2262.mm, 155.mm), Geom::Vector3d.new(60.mm, 40.mm, -20.mm))
+tt.layer = model.layers["Labels"] rescue nil
+
+tt = entities.add_text("UPPER rails (ceiling) — TOP corners hang (tension)", Geom::Point3d.new(2400.mm, 1912.mm, 2388.mm), Geom::Vector3d.new(45.mm, -40.mm, 12.mm))
+tt.layer = model.layers["Labels"] rescue nil
+
+tt = entities.add_text("LOWER rails (floor) — BOTTOM corners bear (compression)", Geom::Point3d.new(2400.mm, 1912.mm, 0.mm), Geom::Vector3d.new(45.mm, -40.mm, -12.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
 tt = entities.add_text("DEPTH slide (Y) — drives tilt + swing", Geom::Point3d.new(150.mm, 1962.mm, 115.mm), Geom::Vector3d.new(-55.mm, -40.mm, -10.mm))

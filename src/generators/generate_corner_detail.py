@@ -172,21 +172,19 @@ def section_aa(ax):
     _rect(ax, 16, 0, 28, 22, C_STEEL)
     ax.add_patch(plt.Rectangle((16, 9), 5, 6, fc="white", ec=OUT, lw=0.7, zorder=6))    # L groove
     ax.add_patch(plt.Rectangle((39, 9), 5, 6, fc="white", ec=OUT, lw=0.7, zorder=6))    # R groove
-    # self-lube POLYMER liner (tan) — a continuous C between the carriage and the rail on EVERY face
-    _rect(ax, 13, 3, 3, 21, C_POLY, z=6)               # left vertical liner
-    _rect(ax, 44, 3, 3, 21, C_POLY, z=6)               # right vertical liner
-    _rect(ax, 13, 22, 34, 2, C_POLY, z=6)              # top liner (under the web)
-    _rect(ax, 16, 9, 5, 6, C_POLY, z=7)                # left groove liner
-    _rect(ax, 39, 9, 5, 6, C_POLY, z=7)                # right groove liner
-    # carriage (red) — OUTSIDE the polymer liner, so it never touches the rail (no metal-on-metal)
-    _rect(ax, 8, 3, 5, 21, C_CAR, z=5)                 # left wall  (outboard of the tan liner)
-    _rect(ax, 47, 3, 5, 21, C_CAR, z=5)                # right wall
-    _rect(ax, 8, 24, 44, 9, C_CAR, z=5)                # top web — spans wall-to-wall (x8-52)
-    leader(ax, 14, 13, -18, -8, "self-lube POLYMER liner (igus DryLin/iglidur) — between the RED carriage\nand GREY rail on every face; dry, low-friction, adjustable drag; NOT metal-on-metal",
+    # self-lube POLYMER liner (tan) — on the TOP bearing face (the loaded sliding surface)
+    _rect(ax, 16, 22, 28, 2, C_POLY, z=6)              # top liner
+    # carriage (red) — top web + walls down the rail sides + lugs that ENGAGE the grooves (captive)
+    _rect(ax, 11, 24, 38, 9, C_CAR, z=5)               # top web (over the tan liner)
+    _rect(ax, 11, 3, 5, 21, C_CAR, z=5)                # left wall (down the rail's left flank)
+    _rect(ax, 44, 3, 5, 21, C_CAR, z=5)                # right wall
+    _rect(ax, 16, 9, 5, 6, C_CAR, z=7)                 # left lug IN the groove -> captive
+    _rect(ax, 39, 9, 5, 6, C_CAR, z=7)                 # right lug IN the groove
+    leader(ax, 30, 23, 54, 44, "self-lube POLYMER liner (igus DryLin) on the TOP\nbearing face — low-friction under the sliding load",
            ha="left", fs=5.3, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 30, 28, 56, 44, "carriage wraps the rail\n= captive (can't lift off);\nliner runs the FULL length",
-           ha="left", fs=5.5, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-18, 50, "SECTION A-A  (X × Z) — captive carriage; polymer liner on every contact face",
+    leader(ax, 18, 12, -18, -8, "carriage LUG seats in the rail groove = captive\n(red in the slot; can't lift off; runs the full length)",
+           ha="left", fs=5.3, color=OUT, font=FONT, bbox=LBL_BG)
+    ax.text(-18, 50, "SECTION A-A  (X × Z) — captive carriage; polymer on the top bearing face",
             fontsize=7.3, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
 
@@ -258,15 +256,18 @@ def draw_ujoint_section():
             fontsize=6.6, color="#B03060", ha="center", va="bottom", **FONT)
 
     # ── CENTRE BLOCK (pin-and-block): two perpendicular pins run in it ──
-    _body(ax, -8, -8, 16, 16)
-    # frame-side yoke (right) grips the SWING pin (vertical, in the cut plane)
-    _body(ax, -11, 8, 25, 8); _body(ax, -11, -16, 25, 8)
-    _body(ax, 14, -9.5, 6, 19); _body(ax, 20, -9.5, 16, 19)
+    _body(ax, -11, -9, 22, 18)
+    # frame-side yoke (right) grips the SWING pin (vertical, in the cut plane) — arms top + bottom
+    _body(ax, -11, 8, 22, 8); _body(ax, -11, -16, 22, 8)
+    _body(ax, 11, -9.5, 9, 19); _body(ax, 20, -9.5, 16, 19)
     draw_rect(ax, -3, -17, 6, 34, fc=C_PIN, color=OUT, lw=1.0, zorder=7)          # swing pin
     draw_rect(ax, -4, 8, 8, 7, fc=C_BRZ, color=OUT, lw=0.7, zorder=6)             # bronze bearings
     draw_rect(ax, -4, -15, 8, 7, fc=C_BRZ, color=OUT, lw=0.7, zorder=6)
-    # carrier-side yoke (left) grips the TILT pin (into page)
-    _body(ax, -36, -9.5, 16, 19); _body(ax, -20, -9.5, 6, 19)
+    # carrier-side yoke (left) grips the TILT pin (into page). Its two arms are PERPENDICULAR to this
+    # cut, so only its hub is solid here; its body reaching the tilt pin is shown GHOSTED (into page).
+    _body(ax, -36, -9.5, 16, 19)                       # left hub
+    ax.add_patch(plt.Rectangle((-20, -6.5), 13.5, 13, fc="#DCE6F0", ec="#8A93A2",
+                               lw=0.9, ls=(0, (4, 3)), zorder=3))                 # ghosted into-page body
     draw_circle(ax, 0, 0, 5.6, color=OUT, fill=True, fc=C_BRZ, lw=0.7, zorder=8)  # tilt bearing (ring)
     draw_circle(ax, 0, 0, 3.4, color=OUT, fill=True, fc=C_PIN, lw=0.8, zorder=9)  # tilt pin (into page)
 
@@ -295,9 +296,10 @@ def draw_ujoint_section():
            ha="left", fs=6.3, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 4, 0, 24, -22, "TILT pin (into page) in its\nbronze plain bearing",
            ha="left", fs=6.3, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, -20, -6, -44, -26, "light-blue = the U-joint body (2 yokes + 2 hubs + centre block); "
-           "303 SS + bronze, grease-free, twist-locked",
-           ha="left", fs=6.0, color=DIM, font=FONT, bbox=LBL_BG)
+    leader(ax, -14, -2, -46, -27, "the two yokes sit at 90°: the FRAME yoke (right) grips the swing pin IN this cut "
+           "(solid arms);\nthe CARRIER yoke (left) grips the tilt pin INTO the page (ghosted) — that is why the sides differ. "
+           "Light-blue = U-joint body (303 SS + bronze, grease-free, twist-locked)",
+           ha="left", fs=5.8, color=DIM, font=FONT, bbox=LBL_BG)
 
     ax.text(-70, 40, "U-JOINT SECTION  (Ruland US12-6-6-SS; cut in Y-Z through the swing pin)",
             fontsize=8.5, fontweight="bold", color=OUT, ha="left", va="top", **FONT)

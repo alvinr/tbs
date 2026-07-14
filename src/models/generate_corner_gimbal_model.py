@@ -82,10 +82,16 @@ def corner(z0, s, tag):
     rbx("Vertical grip tab B", -44, 26, 6, 9, 152, 180, C_CAR)             # hugs rail back  → captive
     rbx("Vertical cam clamp body", -47, 14, 26, 14, 158, 172, C_CLAMP)     # clamp body on carriage
     cyY("Vertical clamp lever", -33, 40, 58, 165, 4, C_CLAMP)              # throw-to-lock lever
-    rbx("Carriage bracket to X-slide", -30, 34, -8, 16, 158, 172, C_ALUM)
+    rbx("Carriage bracket to X-slide", -30, 34, -8, 16, 154, 166, C_ALUM)
 
-    # ── FLOATING X slide (gravity-neutral, free) ──
-    bb("Floating X slide", 24, -11, 22, 160, 168, C_XSL)
+    # ── HORIZONTAL X slide (absorbs SWING foreshortening; gravity-neutral) — the swing counterpart of the
+    #    vertical Z slide: rail + captive carriage + cam clamp (floats free, then clamps for shot + transport) ──
+    rbx("Horizontal X slide rail", -70, 140, -6, 12, 156, 166, C_STEEL)      # rail runs in X (~260 mm travel)
+    rbx("Horizontal X carriage", -20, 40, -11, 22, 158, 178, C_XSL)         # captive; carries the U-joint
+    rbx("X grip tab F", -20, 40, -13, 7, 160, 172, C_XSL)                   # hugs rail front → captive
+    rbx("X grip tab B", -20, 40, 6, 7, 160, 172, C_XSL)                    # hugs rail back  → captive
+    rbx("X cam clamp body", 22, 14, 34, 14, 160, 174, C_CLAMP)
+    cyY("X clamp lever", 26, 48, 54, 167, 4, C_CLAMP)
 
     # ── single U-JOINT (through-axis Y): cross + tilt pin (X) + swing pin (Z) + two yokes ──
     bb("U-joint cross", 10, -10, 20, 172, 192, C_CROSS)
@@ -122,9 +128,9 @@ tt.layer = model.layers["Labels"] rescue nil''')
     txt("FLOOR rail — BOTTOM corners BEAR = COMPRESSION", 0, -170, 0, 40, -60, -30)
     txt("NO screws / handwheels — PUSH to slide, CAM-CLAMP to lock", 0, 300, CH / 2 + 300, 55, 50, 20)
     txt("Single U-joint (Ruland US12-6-6-SS) — tilt X + swing Z", -30, -4, STACK + 50, -60, -40, 10)
-    txt("Depth friction slide (~2.2m) + cam clamp", 22, 400, STACK + 6, 55, 45, 0)
-    txt("Vertical friction slide + cam clamp", -36, 40, 260, -60, -45, 0)
-    txt("Floating X slide (free)", 24, 0, STACK + 20, 55, 45, 0)
+    txt("Depth (Y) slide — produces TILT + SWING (+ focus)", 22, 400, STACK + 6, 55, 45, 0)
+    txt("Vertical (Z) slide — absorbs TILT foreshortening", -36, 40, 260, -60, -45, 0)
+    txt("Horizontal (X) slide — absorbs SWING foreshortening", 24, 40, STACK + 30, 55, 45, 0)
     txt(f"Film plane 4499 x {FP_H} (mechanism ~{STACK} top + bottom)", 300, 53, CH / 2, 60, 45, 0)
     return "\n".join(L)
 

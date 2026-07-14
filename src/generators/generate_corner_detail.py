@@ -172,20 +172,23 @@ def section_aa(ax):
     _rect(ax, 16, 0, 28, 22, C_STEEL)
     ax.add_patch(plt.Rectangle((16, 9), 5, 6, fc="white", ec=OUT, lw=0.7, zorder=6))    # L groove
     ax.add_patch(plt.Rectangle((39, 9), 5, 6, fc="white", ec=OUT, lw=0.7, zorder=6))    # R groove
-    # self-lube POLYMER liner (tan) — on the TOP bearing face (the loaded sliding surface)
-    _rect(ax, 16, 22, 28, 2, C_POLY, z=6)              # top liner
-    # carriage (red) — top web + walls down the rail sides + lugs that ENGAGE the grooves (captive)
+    # self-lube POLYMER liner (tan) — a U-PROFILE: top bearing face + the upper & lower faces of each
+    # groove, so BOTH the compression (top) and the hanging/tension (groove) load paths run on polymer
+    _rect(ax, 16, 22, 28, 2, C_POLY, z=6)              # top bearing liner
+    _rect(ax, 16, 13.5, 5, 1.5, C_POLY, z=8); _rect(ax, 16, 9, 5, 1.5, C_POLY, z=8)   # left groove U (upper+lower)
+    _rect(ax, 39, 13.5, 5, 1.5, C_POLY, z=8); _rect(ax, 39, 9, 5, 1.5, C_POLY, z=8)   # right groove U
+    # carriage (red) — top web + walls + lugs seating in the polymer-lined grooves
     _rect(ax, 11, 24, 38, 9, C_CAR, z=5)               # top web (over the tan liner)
-    _rect(ax, 11, 3, 5, 21, C_CAR, z=5)                # left wall (down the rail's left flank)
+    _rect(ax, 11, 3, 5, 21, C_CAR, z=5)                # left wall
     _rect(ax, 44, 3, 5, 21, C_CAR, z=5)                # right wall
-    _rect(ax, 16, 9, 5, 6, C_CAR, z=7)                 # left lug IN the groove -> captive
-    _rect(ax, 39, 9, 5, 6, C_CAR, z=7)                 # right lug IN the groove
-    leader(ax, 30, 23, 54, 44, "self-lube POLYMER liner (igus DryLin) on the TOP\nbearing face — low-friction under the sliding load",
-           ha="left", fs=5.3, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 18, 12, -18, -8, "carriage LUG seats in the rail groove = captive\n(red in the slot; can't lift off; runs the full length)",
-           ha="left", fs=5.3, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-18, 50, "SECTION A-A  (X × Z) — captive carriage; polymer on the top bearing face",
-            fontsize=7.3, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+    _rect(ax, 16, 10.5, 5, 3, C_CAR, z=7)              # left lug between the groove liners
+    _rect(ax, 39, 10.5, 5, 3, C_CAR, z=7)             # right lug
+    leader(ax, 30, 23, 54, 44, "self-lube POLYMER liner (igus DryLin) — a U-PROFILE: the top\nbearing face PLUS the upper & lower groove faces (one shaped part)",
+           ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 18, 12, -18, -8, "carriage LUG seats in the polymer-lined groove = captive,\nlow-friction BOTH ways (compression on top, tension in the groove)",
+           ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    ax.text(-18, 50, "SECTION A-A  (X × Z) — captive carriage; U-profile polymer liner (top + groove faces)",
+            fontsize=7.1, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
 
 def view_c(ax):
@@ -239,14 +242,51 @@ def _setscrew(ax, cx, y0, w=5.0, h=6.5, hub_top=None):
     ax.plot([cx - 1.2, cx + 1.2], [y0 + h - 0.9, y0 + h - 0.9], color=OUT, lw=1.0, zorder=11)
 
 
+def _stub_carrier(ax):
+    """Section: how the stub shaft anchors to the MECHANISM (carrier) — a split shaft-clamp block
+    bolts to the X-slide carriage and grips the 3/8 stub. The frame end clamps the same way."""
+    C_SS = "#7C7C86"
+    ax.set_xlim(-30, 138); ax.set_ylim(-38, 46); ax.set_aspect("equal"); ax.axis("off")
+    ax.plot([16, 118], [0, 0], color="#2060A0", lw=0.6, dashes=(8, 3, 2, 3), zorder=2)     # shaft axis
+
+    # carrier plate (the X-slide carriage face)
+    draw_rect(ax, 0, -30, 12, 60, fc=C_STEEL, color=OUT, lw=1.2, zorder=4)
+    hatch_rect(ax, 0, -30, 12, 60, color="#7A8AA0", hatch="////", lw=0.0)
+    # shaft-clamp mount block bolted to the plate
+    _body(ax, 12, -15, 42, 30)
+    # stub shaft through the split bore, extending right toward the U-joint
+    draw_rect(ax, 12, -4.6, 106, 9.2, fc=C_STEEL, color=OUT, lw=1.0, zorder=8)
+    # split (slit) down to the bore + clamp bolt across it
+    ax.add_patch(plt.Rectangle((31, 4.6), 2.4, 10.4, fc="white", ec=OUT, lw=0.6, zorder=9))
+    draw_rect(ax, 22, 8, 24, 4.4, fc=C_SS, color=OUT, lw=0.8, zorder=10)                    # clamp bolt shank
+    ax.add_patch(plt.Rectangle((18.5, 6.2), 4, 8, fc=C_SS, ec=OUT, lw=0.8, zorder=11))      # hex head
+    ax.add_patch(plt.Rectangle((45, 6.7), 3, 7, fc=C_SS, ec=OUT, lw=0.8, zorder=11))        # nut
+    # 2 cap screws: mount block -> carrier plate
+    for by in (10, -10):
+        draw_rect(ax, -2, by - 2.1, 26, 4.2, fc=C_SS, color=OUT, lw=0.7, zorder=9)
+        ax.add_patch(plt.Rectangle((-8, by - 3.1), 6, 6.2, fc=C_SS, ec=OUT, lw=0.7, zorder=10))
+    for bx in (106, 114):                                                                  # shaft break marks
+        ax.plot([bx - 3, bx + 3], [-7, 7], color=OUT, lw=0.8, zorder=9)
+
+    draw_dim_v(ax, 130, -4.6, 4.6, "9.5mm\n(3/8)", offset=11, fs=5.5, color=DIM, right=True,
+               perpendicular=True, font=FONT)
+    leader(ax, 6, -24, -28, -33, "X-slide carriage plate (the CARRIER)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 40, -13, 58, -32, "split shaft-clamp mount block\n— bolts to the carrier", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 33, 14, 48, 34, "split bore + clamp bolt grip the\nstub shaft (full grip, no backlash)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, -5, 10, -28, 24, "2x M5 cap screws\nto the carriage", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 92, 0, 100, 22, "same stub shaft → into the U-joint hub (section above)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    ax.text(-30, 44, "STUB SHAFT → CARRIER CONNECTION  (section; the FRAME end clamps the same way to the film-frame corner)",
+            fontsize=7.8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+
+
 def draw_ujoint_section():
     """Longitudinal SECTION through the U-joint — how each side is secured.
     Through-axis (Y) horizontal; cut in the Y-Z plane through the swing pin. Both hubs are
     identical: a 3/8 stub shaft into the bore, locked by hub set screws, then bolted to our part."""
     reset_label_registry()
     C_BRZ = "#6B4A2A"
-    fig = plt.figure(figsize=(15, 9)); fig.patch.set_facecolor(C_BG)
-    ax = fig.add_axes([0.04, 0.16, 0.92, 0.76]); ax.set_facecolor(C_BG)
+    fig = plt.figure(figsize=(15, 11.5)); fig.patch.set_facecolor(C_BG)
+    ax = fig.add_axes([0.04, 0.47, 0.92, 0.49]); ax.set_facecolor(C_BG)
     ax.set_xlim(-70, 70); ax.set_ylim(-36, 42); ax.set_aspect("equal"); ax.axis("off")
     ax.plot([-66, 66], [0, 0], color="#2060A0", lw=0.6, dashes=(8, 3, 2, 3), zorder=2)   # through-axis
 
@@ -304,10 +344,13 @@ def draw_ujoint_section():
     ax.text(-70, 40, "U-JOINT SECTION  (Ruland US12-6-6-SS; cut in Y-Z through the swing pin)",
             fontsize=8.5, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
-    ax_tb = fig.add_axes([0.03, 0.01, 0.94, 0.075]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1)
+    ax_sc = fig.add_axes([0.12, 0.10, 0.76, 0.33]); ax_sc.set_facecolor(C_BG)
+    _stub_carrier(ax_sc)
+
+    ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
-    title_block(ax_tb, "DETAIL  (DRAFT)", drawing_title="FILM-PLANE U-JOINT — SECTION",
-                subtitle="HOW EACH SIDE IS SECURED: STUB SHAFT + HUB SET SCREWS; YOKES ON BRONZE BEARINGS",
+    title_block(ax_tb, "DETAIL  (DRAFT)", drawing_title="FILM-PLANE U-JOINT — SECTIONS",
+                subtitle="SECURING: STUB SHAFT + HUB SET SCREWS; BRONZE-BEARING YOKES; STUB CLAMPED TO THE CARRIER",
                 scale_note="DRAFT — enlarged — DIMS IN mm")
 
     os.makedirs(DIAGRAMS_DIR, exist_ok=True)

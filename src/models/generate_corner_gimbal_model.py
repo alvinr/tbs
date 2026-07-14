@@ -54,13 +54,15 @@ def corner(tag, cx, cz, sv, cin):
         P.append(ov.ruby_box(f"{name} {tag}", x, y, zmin, w, d, b - a, color=col, alpha=al))
 
     xo = cx - cin * 30                                  # vertical slide, just outboard of the corner
-    xr0 = cx if cin > 0 else cx - 170                   # horizontal rail extends toward panel centre
+    xr0 = cx if cin > 0 else cx - 260                   # horizontal rail extends toward centre (~260mm swing travel)
     # full-length depth rail (the focus/tilt/swing travel), ceiling for top corners / floor for bottom
     band("Depth slide rail Y (drive, grey)", cx - 8, 16, ov.FP_Y_MIN, FP_Y - ov.FP_Y_MIN + 40, 0, 16, C_STEEL)
     band("Depth carriage", cx - 22, 44, FP_Y - 30, 60, 16, 40, C_CAR)
-    band("Vertical Z slide rail (TILT, green)", xo - 7, 16, FP_Y - 9, 18, 18, 150, C_TILT)
-    band("Vertical Z carriage", xo - 17, 34, FP_Y - 15, 30, 58, 108, C_TILT)
-    band("Horizontal X slide rail (SWING, purple)", xr0, 170, FP_Y - 7, 14, 108, 122, C_SWING)
+    # vertical slide rail sized to the ~280mm TILT travel it must take up (not the nominal stack height)
+    band("Vertical Z slide rail (TILT ~280mm, green)", xo - 7, 16, FP_Y - 9, 18, 18, 300, C_TILT)
+    band("Vertical Z carriage", xo - 17, 34, FP_Y - 15, 30, 95, 145, C_TILT)
+    # horizontal slide rail sized to the ~260mm SWING travel
+    band("Horizontal X slide rail (SWING ~260mm, purple)", xr0, 260, FP_Y - 7, 14, 108, 122, C_SWING)
     band("Horizontal X carriage", cx - 24, 48, FP_Y - 12, 24, 114, 136, C_SWING)
     band("U-joint", cx - 12, 24, FP_Y - 12, 24, 130, 150, C_CROSS)
     return "\n".join(P)

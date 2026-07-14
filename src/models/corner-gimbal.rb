@@ -47,13 +47,13 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Vertical Z slide rail (TILT, green) BL
+  # Vertical Z slide rail (TILT ~280mm, green) BL
   grp = ents.add_group
-  grp.name = "Vertical Z slide rail (TILT, green) BL"
+  grp.name = "Vertical Z slide rail (TILT ~280mm, green) BL"
   face = grp.entities.add_face([113.mm,2253.mm,33.mm], [129.mm,2253.mm,33.mm], [129.mm,2271.mm,33.mm], [113.mm,2271.mm,33.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(132.mm)
-  mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
+  face.pushpull(282.mm)
+  mat = model.materials["Vertical Z slide rail (TILT ~280mm, green) BL"] || model.materials.add("Vertical Z slide rail (TILT ~280mm, green) BL")
   mat.color = Sketchup::Color.new(46, 139, 87)
   mat.alpha = 1.0
   grp.material = mat
@@ -61,21 +61,21 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z carriage BL
   grp = ents.add_group
   grp.name = "Vertical Z carriage BL"
-  face = grp.entities.add_face([103.mm,2247.mm,73.mm], [137.mm,2247.mm,73.mm], [137.mm,2277.mm,73.mm], [103.mm,2277.mm,73.mm])
+  face = grp.entities.add_face([103.mm,2247.mm,110.mm], [137.mm,2247.mm,110.mm], [137.mm,2277.mm,110.mm], [103.mm,2277.mm,110.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
+  mat = model.materials["Vertical Z slide rail (TILT ~280mm, green) BL"] || model.materials.add("Vertical Z slide rail (TILT ~280mm, green) BL")
   mat.color = Sketchup::Color.new(46, 139, 87)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Horizontal X slide rail (SWING, purple) BL
+  # Horizontal X slide rail (SWING ~260mm, purple) BL
   grp = ents.add_group
-  grp.name = "Horizontal X slide rail (SWING, purple) BL"
-  face = grp.entities.add_face([150.mm,2255.mm,123.mm], [320.mm,2255.mm,123.mm], [320.mm,2269.mm,123.mm], [150.mm,2269.mm,123.mm])
+  grp.name = "Horizontal X slide rail (SWING ~260mm, purple) BL"
+  face = grp.entities.add_face([150.mm,2255.mm,123.mm], [410.mm,2255.mm,123.mm], [410.mm,2269.mm,123.mm], [150.mm,2269.mm,123.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
-  mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
+  mat = model.materials["Horizontal X slide rail (SWING ~260mm, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING ~260mm, purple) BL")
   mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
@@ -86,7 +86,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([126.mm,2250.mm,129.mm], [174.mm,2250.mm,129.mm], [174.mm,2274.mm,129.mm], [126.mm,2274.mm,129.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
+  mat = model.materials["Horizontal X slide rail (SWING ~260mm, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING ~260mm, purple) BL")
   mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
@@ -124,13 +124,13 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Vertical Z slide rail (TILT, green) BR
+  # Vertical Z slide rail (TILT ~280mm, green) BR
   grp = ents.add_group
-  grp.name = "Vertical Z slide rail (TILT, green) BR"
+  grp.name = "Vertical Z slide rail (TILT ~280mm, green) BR"
   face = grp.entities.add_face([4672.mm,2253.mm,33.mm], [4688.mm,2253.mm,33.mm], [4688.mm,2271.mm,33.mm], [4672.mm,2271.mm,33.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(132.mm)
-  mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
+  face.pushpull(282.mm)
+  mat = model.materials["Vertical Z slide rail (TILT ~280mm, green) BL"] || model.materials.add("Vertical Z slide rail (TILT ~280mm, green) BL")
   mat.color = Sketchup::Color.new(46, 139, 87)
   mat.alpha = 1.0
   grp.material = mat
@@ -138,21 +138,21 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z carriage BR
   grp = ents.add_group
   grp.name = "Vertical Z carriage BR"
-  face = grp.entities.add_face([4662.mm,2247.mm,73.mm], [4696.mm,2247.mm,73.mm], [4696.mm,2277.mm,73.mm], [4662.mm,2277.mm,73.mm])
+  face = grp.entities.add_face([4662.mm,2247.mm,110.mm], [4696.mm,2247.mm,110.mm], [4696.mm,2277.mm,110.mm], [4662.mm,2277.mm,110.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
+  mat = model.materials["Vertical Z slide rail (TILT ~280mm, green) BL"] || model.materials.add("Vertical Z slide rail (TILT ~280mm, green) BL")
   mat.color = Sketchup::Color.new(46, 139, 87)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Horizontal X slide rail (SWING, purple) BR
+  # Horizontal X slide rail (SWING ~260mm, purple) BR
   grp = ents.add_group
-  grp.name = "Horizontal X slide rail (SWING, purple) BR"
-  face = grp.entities.add_face([4479.mm,2255.mm,123.mm], [4649.mm,2255.mm,123.mm], [4649.mm,2269.mm,123.mm], [4479.mm,2269.mm,123.mm])
+  grp.name = "Horizontal X slide rail (SWING ~260mm, purple) BR"
+  face = grp.entities.add_face([4389.mm,2255.mm,123.mm], [4649.mm,2255.mm,123.mm], [4649.mm,2269.mm,123.mm], [4389.mm,2269.mm,123.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
-  mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
+  mat = model.materials["Horizontal X slide rail (SWING ~260mm, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING ~260mm, purple) BL")
   mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
@@ -163,7 +163,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4625.mm,2250.mm,129.mm], [4673.mm,2250.mm,129.mm], [4673.mm,2274.mm,129.mm], [4625.mm,2274.mm,129.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
+  mat = model.materials["Horizontal X slide rail (SWING ~260mm, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING ~260mm, purple) BL")
   mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
@@ -201,13 +201,13 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Vertical Z slide rail (TILT, green) TL
+  # Vertical Z slide rail (TILT ~280mm, green) TL
   grp = ents.add_group
-  grp.name = "Vertical Z slide rail (TILT, green) TL"
-  face = grp.entities.add_face([113.mm,2253.mm,2223.mm], [129.mm,2253.mm,2223.mm], [129.mm,2271.mm,2223.mm], [113.mm,2271.mm,2223.mm])
+  grp.name = "Vertical Z slide rail (TILT ~280mm, green) TL"
+  face = grp.entities.add_face([113.mm,2253.mm,2073.mm], [129.mm,2253.mm,2073.mm], [129.mm,2271.mm,2073.mm], [113.mm,2271.mm,2073.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(132.mm)
-  mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
+  face.pushpull(282.mm)
+  mat = model.materials["Vertical Z slide rail (TILT ~280mm, green) BL"] || model.materials.add("Vertical Z slide rail (TILT ~280mm, green) BL")
   mat.color = Sketchup::Color.new(46, 139, 87)
   mat.alpha = 1.0
   grp.material = mat
@@ -215,21 +215,21 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z carriage TL
   grp = ents.add_group
   grp.name = "Vertical Z carriage TL"
-  face = grp.entities.add_face([103.mm,2247.mm,2265.mm], [137.mm,2247.mm,2265.mm], [137.mm,2277.mm,2265.mm], [103.mm,2277.mm,2265.mm])
+  face = grp.entities.add_face([103.mm,2247.mm,2228.mm], [137.mm,2247.mm,2228.mm], [137.mm,2277.mm,2228.mm], [103.mm,2277.mm,2228.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
+  mat = model.materials["Vertical Z slide rail (TILT ~280mm, green) BL"] || model.materials.add("Vertical Z slide rail (TILT ~280mm, green) BL")
   mat.color = Sketchup::Color.new(46, 139, 87)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Horizontal X slide rail (SWING, purple) TL
+  # Horizontal X slide rail (SWING ~260mm, purple) TL
   grp = ents.add_group
-  grp.name = "Horizontal X slide rail (SWING, purple) TL"
-  face = grp.entities.add_face([150.mm,2255.mm,2251.mm], [320.mm,2255.mm,2251.mm], [320.mm,2269.mm,2251.mm], [150.mm,2269.mm,2251.mm])
+  grp.name = "Horizontal X slide rail (SWING ~260mm, purple) TL"
+  face = grp.entities.add_face([150.mm,2255.mm,2251.mm], [410.mm,2255.mm,2251.mm], [410.mm,2269.mm,2251.mm], [150.mm,2269.mm,2251.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
-  mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
+  mat = model.materials["Horizontal X slide rail (SWING ~260mm, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING ~260mm, purple) BL")
   mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
@@ -240,7 +240,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([126.mm,2250.mm,2237.mm], [174.mm,2250.mm,2237.mm], [174.mm,2274.mm,2237.mm], [126.mm,2274.mm,2237.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
+  mat = model.materials["Horizontal X slide rail (SWING ~260mm, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING ~260mm, purple) BL")
   mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
@@ -278,13 +278,13 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Vertical Z slide rail (TILT, green) TR
+  # Vertical Z slide rail (TILT ~280mm, green) TR
   grp = ents.add_group
-  grp.name = "Vertical Z slide rail (TILT, green) TR"
-  face = grp.entities.add_face([4672.mm,2253.mm,2223.mm], [4688.mm,2253.mm,2223.mm], [4688.mm,2271.mm,2223.mm], [4672.mm,2271.mm,2223.mm])
+  grp.name = "Vertical Z slide rail (TILT ~280mm, green) TR"
+  face = grp.entities.add_face([4672.mm,2253.mm,2073.mm], [4688.mm,2253.mm,2073.mm], [4688.mm,2271.mm,2073.mm], [4672.mm,2271.mm,2073.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(132.mm)
-  mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
+  face.pushpull(282.mm)
+  mat = model.materials["Vertical Z slide rail (TILT ~280mm, green) BL"] || model.materials.add("Vertical Z slide rail (TILT ~280mm, green) BL")
   mat.color = Sketchup::Color.new(46, 139, 87)
   mat.alpha = 1.0
   grp.material = mat
@@ -292,21 +292,21 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z carriage TR
   grp = ents.add_group
   grp.name = "Vertical Z carriage TR"
-  face = grp.entities.add_face([4662.mm,2247.mm,2265.mm], [4696.mm,2247.mm,2265.mm], [4696.mm,2277.mm,2265.mm], [4662.mm,2277.mm,2265.mm])
+  face = grp.entities.add_face([4662.mm,2247.mm,2228.mm], [4696.mm,2247.mm,2228.mm], [4696.mm,2277.mm,2228.mm], [4662.mm,2277.mm,2228.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
+  mat = model.materials["Vertical Z slide rail (TILT ~280mm, green) BL"] || model.materials.add("Vertical Z slide rail (TILT ~280mm, green) BL")
   mat.color = Sketchup::Color.new(46, 139, 87)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Horizontal X slide rail (SWING, purple) TR
+  # Horizontal X slide rail (SWING ~260mm, purple) TR
   grp = ents.add_group
-  grp.name = "Horizontal X slide rail (SWING, purple) TR"
-  face = grp.entities.add_face([4479.mm,2255.mm,2251.mm], [4649.mm,2255.mm,2251.mm], [4649.mm,2269.mm,2251.mm], [4479.mm,2269.mm,2251.mm])
+  grp.name = "Horizontal X slide rail (SWING ~260mm, purple) TR"
+  face = grp.entities.add_face([4389.mm,2255.mm,2251.mm], [4649.mm,2255.mm,2251.mm], [4649.mm,2269.mm,2251.mm], [4389.mm,2269.mm,2251.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
-  mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
+  mat = model.materials["Horizontal X slide rail (SWING ~260mm, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING ~260mm, purple) BL")
   mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
@@ -317,7 +317,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4625.mm,2250.mm,2237.mm], [4673.mm,2250.mm,2237.mm], [4673.mm,2274.mm,2237.mm], [4625.mm,2274.mm,2237.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
+  mat = model.materials["Horizontal X slide rail (SWING ~260mm, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING ~260mm, purple) BL")
   mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat

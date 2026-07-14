@@ -179,9 +179,9 @@ def section_aa(ax):
     _rect(ax, 16, 9, 5, 6, C_POLY, z=7)                # left groove liner
     _rect(ax, 39, 9, 5, 6, C_POLY, z=7)                # right groove liner
     # carriage (red) — OUTSIDE the polymer liner, so it never touches the rail (no metal-on-metal)
-    _rect(ax, 11, 24, 38, 9, C_CAR, z=5)               # top web
     _rect(ax, 8, 3, 5, 21, C_CAR, z=5)                 # left wall  (outboard of the tan liner)
     _rect(ax, 47, 3, 5, 21, C_CAR, z=5)                # right wall
+    _rect(ax, 8, 24, 44, 9, C_CAR, z=5)                # top web — spans wall-to-wall (x8-52)
     leader(ax, 14, 13, -18, -8, "self-lube POLYMER liner (igus DryLin/iglidur) — between the RED carriage\nand GREY rail on every face; dry, low-friction, adjustable drag; NOT metal-on-metal",
            ha="left", fs=5.3, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 30, 28, 56, 44, "carriage wraps the rail\n= captive (can't lift off);\nliner runs the FULL length",

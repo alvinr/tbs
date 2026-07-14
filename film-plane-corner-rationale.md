@@ -45,14 +45,19 @@ Getting it right was hard until we grounded it; here is the reasoning, in order.
   perspective control** (tilt, swing, rise, where the plane sits) — **not precise, repeatable focus.**
   Nothing here needs a leadscrew's micron-hold, so we don't pay for one: each corner is a **friction
   slide you push into position and lock with a cam clamp.**
-- **Horizontal (X) floats free** — a low-friction slide absorbs the horizontal component of the corner's
-  in-plane arc. In exact-constraint language it is the **"added freedom" that removes the redundant
-  constraint**, making four corners **legal** instead of over-constrained (research doc §2). Gravity is
-  neutral to a horizontal slide, so it floats.
-- **Vertical (Z) is gravity-loaded** — the top corners *hang* in tension, the bottom corners *bear* in
-  compression — but it does **not** need a screw to hold it: an **adjustable-friction slide** (igus
-  DryLin-style) **stays where you leave it**, so you push to reposition and the cam clamp locks it hard
-  for the shot and for transport. Friction holds during the adjust; the clamp holds after.
+- **Depth (Y) produces both tilt and swing.** Moving corners in depth is what articulates the plane: a
+  top↔bottom depth difference gives **tilt**, a left↔right depth difference gives **swing** (all four
+  together give focus / where the plane sits). This is the long ~2.2 m slide.
+- **When the plane tilts or swings, each corner foreshortens** — it must shift toward the panel center
+  *in the plane* (the rigid panel can't stretch). **Two matched accommodation slides** absorb that shift:
+  the **vertical (Z) slide absorbs the TILT foreshortening**, the **horizontal (X) slide absorbs the
+  SWING foreshortening**. They are a pair — Z ↔ tilt, X ↔ swing.
+- **They differ only in gravity.** The **X (swing)** slide is horizontal → gravity-neutral → it **floats
+  freely** as you set up (in exact-constraint terms, the "added freedom" that keeps four corners from
+  over-constraining, research doc §2). The **Z (tilt)** slide is vertical → gravity-loaded (top corners
+  *hang* in tension, bottom *bear* in compression) → it uses an **adjustable-friction slide** (igus
+  DryLin-style) that **stays where you leave it**. Both take a **cam clamp** that locks them for the shot
+  and for transport.
 - **This is kinematically cleaner than driven screws.** You position every corner while everything is
   free (compliant), then **clamp at the plane's *natural* pose** — you lock where it already sits, so
   four rigid clamps never *force* the panel into a fight (no over-constraint). Driving four screws would
@@ -119,9 +124,9 @@ Per corner (×4):
   68 mm long, grease-free — the off-the-shelf 2-axis torsion-locked pivot (~$195, in stock)
 - **2 × stub-shaft mount** — a short 3/8" stub + clamp/plate at each yoke: one to the floating X slide,
   one to the film-frame corner (drilled plate, not a precision-reamed gimbal)
-- **Depth (Y): friction slide (~2.2 m) + cam clamp** — sets focus + the swing/tilt depth arc; push, then lock
-- **Vertical (Z): friction slide + cam clamp** — holds when released, locks for shot + transport
-- **Horizontal (X): floating slide** — free; absorbs the swing arc
+- **Depth (Y): friction slide (~2.2 m) + cam clamp** — produces tilt + swing (+ focus); push, then lock
+- **Vertical (Z): friction slide + cam clamp** — absorbs the **tilt** foreshortening; holds when released, then locks
+- **Horizontal (X): float/friction slide + cam clamp** — absorbs the **swing** foreshortening; floats free during setup, then locks
 
 The off-the-shelf single U-joint (~$1,200 for four) **replaces the earlier custom gimbal** (ring + two
 yokes + four reamed bores per corner), and **slide-and-clamp replaces the whole leadscrew/handwheel drive

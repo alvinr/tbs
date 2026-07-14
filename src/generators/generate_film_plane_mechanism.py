@@ -5,12 +5,16 @@
 generate_film_plane_mechanism.py
 Moveable film plane mechanism — engineering drawings (6 sheets)
 OPTION A — RIGID PLANE: a fixed-size rigid rectangle whose ANGLE changes. The 4 corners ride
-carriages on 4 rails, driven in COORDINATED PAIRS — single-axis tilt (top vs bottom) or swing
-(left vs right); limited combined; NO compound twist (a rigid plane cannot warp).
+SLIDE-AND-CLAMP stages (igus DryLin friction slides) moved by hand in COORDINATED PAIRS —
+single-axis tilt (top vs bottom) or swing (left vs right); limited combined; NO compound twist
+(a rigid plane cannot warp). A pinhole has infinite depth of field, so this is scene control,
+not focus: push each corner into position, then lock the cam clamp. Each corner connects through
+a single Ruland US12-6-6-SS U-joint (2 axes, twist-locked) — no leadscrews, no handwheels.
 
 Sheet 1 — Plan view (top-down): 4-corner rail layout, example configs
 Sheet 2 — Elevations: side elevation (tilt) + plan cross-section (swing)
 Sheet 3 — Frame & hardware detail: corner bracket, universal joint, ACM panel
+         (superseded in detail by generate_corner_detail.py — film-corner-detail.png)
 Sheet 4 — Movement specification table & BOM
 Sheet 5 — Muslin clamp detail: cam-lever spring clamp
 Sheet 6 — System schematic: four-corner frame front elevation
@@ -361,7 +365,7 @@ def sheet1():
     ax.text(L/2, W+580, "SHEET 1 — PLAN VIEW  (TOP DOWN, LOOKING AT CONTAINER FLOOR)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
     ax.text(L/2, W+470,
-            "4 CORNER CARRIAGES (RIGID PLANE, COORDINATED PAIRS)  ·  TILT = CEILING vs FLOOR  ·  SWING = LEFT vs RIGHT",
+            "4 CORNER SLIDE-AND-CLAMP CARRIAGES (igus DryLin, RIGID PLANE, COORDINATED PAIRS)  ·  TILT = CEILING vs FLOOR  ·  SWING = LEFT vs RIGHT",
             color=DIM, fontsize=7, ha="center", **FONT)
     ax.text(L/2, W+370,
             "IN THIS VIEW: SWING IS VISIBLE AS DIAGONAL  ·  TILT IS HIDDEN (HEIGHT AXIS = INTO PAGE)",
@@ -438,11 +442,11 @@ def sheet2():
     RAIL_H = 28
     ax.add_patch(Rectangle((0, 0), C_WID, RAIL_H,
                            fc=RAIL, ec=WHITE, lw=0.8, zorder=5, alpha=0.9))
-    ax.text(W/2, RAIL_H/2, "FLOOR RAIL  HGR20  ×2  (BL  +  BR — leadscrew per corner, driven as a pair)",
+    ax.text(W/2, RAIL_H/2, "FLOOR DEPTH SLIDE  DryLin W (316SS)  ×2  (BL  +  BR — hand-slide, cam-clamp, moved as a pair)",
             color=BG, fontsize=5.5, ha="center", va="center", **FONT, zorder=6)
     ax.add_patch(Rectangle((0, H-RAIL_H), C_WID, RAIL_H,
                            fc=RAIL, ec=WHITE, lw=0.8, zorder=5, alpha=0.9))
-    ax.text(W/2, H-RAIL_H/2, "CEILING RAIL  HGR20  ×2  (TL  +  TR — leadscrew per corner, driven as a pair)",
+    ax.text(W/2, H-RAIL_H/2, "CEILING DEPTH SLIDE  DryLin W (316SS)  ×2  (TL  +  TR — hand-slide, cam-clamp, moved as a pair)",
             color=BG, fontsize=5.5, ha="center", va="center", **FONT, zorder=6)
 
     # ── WALL-SEAT SADDLES — side elevation (Yd on X-axis, Z on Y-axis), rev11/12 ──
@@ -539,7 +543,7 @@ def sheet2():
 
     ax.text(W/2, H+255, "VIEW A — SIDE ELEVATION  (TILT)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
-    ax.text(W/2, H+215, "Section through centerline  ·  corner carriages move in coordinated pairs (rigid plane)",
+    ax.text(W/2, H+215, "Section through centerline  ·  vertical bridge = Z cross-slide (DryLin T, absorbs tilt foreshorten, preload holds gravity)  ·  slide-and-clamp, moved in coordinated pairs (rigid plane)",
             color=DIM, fontsize=6.5, ha="center", **FONT)
 
     # ── RIGHT PANEL: PLAN CROSS-SECTION — SWING ───────────────────────────────
@@ -627,7 +631,7 @@ def sheet2():
 
     ax.text(L/2, W+455, "VIEW B — CEILING CROSS-SECTION  (SWING)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
-    ax.text(L/2, W+375, "Section at ceiling height  ·  left/right carriages move as pairs (rigid single-axis swing)",
+    ax.text(L/2, W+375, "Section at ceiling height  ·  horizontal bridge = X cross-slide (DryLin T, floats free then cam-clamps, absorbs swing foreshorten)  ·  left/right slide-and-clamp as pairs (rigid single-axis swing)",
             color=DIM, fontsize=6.5, ha="center", **FONT)
 
     # Combined title
@@ -919,14 +923,14 @@ def sheet4():
 
     axes_headers = ["AXIS", "DESCRIPTION", "CORNERS\nCONTROLLED", "MAX TRAVEL", "ACTUATOR", "LOCK"]
     axes_rows = [
-        ["TILT (top)",    "Both top corners move equally",      "TL + TR together", f"0–{FP_Y}mm", "2× leadscrew — turn both", "2 locking collars"],
-        ["TILT (bottom)", "Both bottom corners move equally",   "BL + BR together", f"0–{FP_Y}mm", "2× leadscrew — turn both", "2 locking collars"],
-        ["SWING (left)",  "Both left corners move equally",     "TL + BL together", f"0–{FP_Y}mm", "2× leadscrew — turn both", "2 locking collars"],
-        ["SWING (right)", "Both right corners move equally",    "TR + BR together", f"0–{FP_Y}mm", "2× leadscrew — turn both", "2 locking collars"],
-        ["COMBINED",      "Limited tilt+swing — rigid, stays FLAT", "TL, TR, BL, BR", f"0–{FP_Y}mm", "4 leadscrews, coordinated","4 locking collars"],
-        ["BACK FOCUS",    "All 4 corners together",             "All",              f"{FP_Y_MIN}–{FP_Y}mm","All 4 leadscrews together", "All 4 locks"],
-        ["MAX TILT",      "Top=414mm, Bot=1948mm (axis tilt)",  "TL=TR, BL=BR",     f"{MAX_TILT_DEG:.0f}deg (xslide-lim.)",  "Top+top / Bot+bot",        "All 4 locks"],
-        ["MAX SWING",     "Left=125mm, Right=2237mm (axis swing)","TL=BL, TR=BR",    f"{MAX_SWING_DEG:.0f}deg (rail-lim.)", "Left+left / Right+right",  "All 4 locks"],
+        ["TILT (top)",    "Both top corners move equally",      "TL + TR together", f"0–{FP_Y}mm", "2× depth slide — push both", "2 cam clamps"],
+        ["TILT (bottom)", "Both bottom corners move equally",   "BL + BR together", f"0–{FP_Y}mm", "2× depth slide — push both", "2 cam clamps"],
+        ["SWING (left)",  "Both left corners move equally",     "TL + BL together", f"0–{FP_Y}mm", "2× depth slide — push both", "2 cam clamps"],
+        ["SWING (right)", "Both right corners move equally",    "TR + BR together", f"0–{FP_Y}mm", "2× depth slide — push both", "2 cam clamps"],
+        ["COMBINED",      "Limited tilt+swing — rigid, stays FLAT", "TL, TR, BL, BR", f"0–{FP_Y}mm", "4 depth slides, coordinated","4 cam clamps"],
+        ["BACK FOCUS",    "All 4 corners together",             "All",              f"{FP_Y_MIN}–{FP_Y}mm","All 4 depth slides together", "All 4 clamps"],
+        ["MAX TILT",      "Top=414mm, Bot=1948mm (axis tilt)",  "TL=TR, BL=BR",     f"{MAX_TILT_DEG:.0f}deg (Z-slide-lim.)",  "Top+top / Bot+bot",        "All 4 clamps"],
+        ["MAX SWING",     "Left=125mm, Right=2237mm (axis swing)","TL=BL, TR=BR",    f"{MAX_SWING_DEG:.0f}deg (rail-lim.)", "Left+left / Right+right",  "All 4 clamps"],
     ]
     # y0=0.895; header top=0.895+0.026=0.921; bottom=0.895-8×0.022=0.719
     draw_table(ax, 0.05, 0.895, axes_headers, axes_rows,
@@ -992,11 +996,22 @@ def sheet4():
                 transform=ax.transAxes, color=col, fontsize=7,
                 ha="left", va="top", fontweight=fw, **FONT)
 
-    # BOM removed — consolidated to master-shopping-list.md §4
-    ax.text(0.50, 0.22,
-            "Bill of materials: master-shopping-list.md — §4 Film Plane Mechanism",
-            transform=ax.transAxes, color=DIM, fontsize=7,
-            ha="center", va="center", style="italic", **FONT)
+    # BOM detail lives in master-shopping-list.md §4 — sheet carries a per-corner summary
+    hw_lines = [
+        "CORNER HARDWARE (per corner ×4 — slide-and-clamp, single U-joint):",
+        "U-joint  1× Ruland US12-6-6-SS (303 SS, self-lube bronze, 45°)   ·   boot  1× Ruland UBOOT12/19-NI-KIT (nitrile, fitted dry)",
+        "Shaft support  2× McMaster 4040N12 (304 SS)   ·   stub  2× 3/8\" 304 SS (McMaster 89535K873)   ·   nylon-isolated at the T-slide brackets",
+        "Depth (Y)  DryLin W 316SS ~2.2 m + WW-HKX cam clamp   ·   Vertical (Z)  DryLin T adj-clearance TW-01-20-HKA   ·   Horizontal (X)  DryLin T TW-01-20 + clamp",
+        "Full bill of materials: master-shopping-list.md — §4 Film Plane Mechanism",
+    ]
+    hw_top, hw_lh = 0.205, 0.026
+    for li, line in enumerate(hw_lines):
+        fw = "bold" if li == 0 else "normal"
+        col = WHITE if li == 0 else ANNO
+        st = "italic" if li == len(hw_lines) - 1 else "normal"
+        ax.text(0.06, hw_top - li * hw_lh, line,
+                transform=ax.transAxes, color=col, fontsize=6.6,
+                ha="left", va="top", fontweight=fw, style=st, **FONT)
 
     # Title block
     title_block(ax, "SHEET 4 OF 6",
@@ -1589,8 +1604,9 @@ def sheet5():
 # SHEET 6 — SYSTEM SCHEMATIC: Four-corner frame front elevation
 #
 # View: looking at the film plane from the pinhole side (interior elevation).
-# Shows ceiling/floor rail pairs, four corner carriages with leadscrews and
-# handwheels, film plane frame with rod-end bearings at each corner.
+# Shows ceiling/floor depth-slide pairs (DryLin W), four corner slide-and-clamp
+# carriages with cam clamps, film plane frame with a single U-joint at each corner.
+# The long depth rail runs into the page (optical axis); shown end-on here.
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet6():
     fig, ax = plt.subplots(figsize=(16, 10))
@@ -1654,11 +1670,13 @@ def sheet6():
         leader(ax, rx, rail_h / 2, ldr_x, -120,
                f"FLOOR RAIL — {label}", color=RAIL, ha=ldr_ha, fs=6, font=FONT)
 
-    # ── Corner carriages + leadscrews + handwheels ────────────────────────────
+    # ── Corner slide-and-clamp carriages + cam clamps ─────────────────────────
+    # Each corner = a DryLin W depth-slide carriage (the long depth rail runs into
+    # the page, so it reads end-on as a block) locked by a hand cam clamp. No
+    # leadscrews, no handwheels — push to position, flip the clamp to lock.
     carr_w = 70
     carr_h = 50
-    hw_r = 45         # handwheel radius
-    ls_w = 12         # leadscrew width (visual)
+    x_mid = (RAIL_X_L + RAIL_X_R) / 2
 
     corners = [
         ("TL", RAIL_X_L, FH, "top",    "A"),
@@ -1667,54 +1685,22 @@ def sheet6():
         ("BR", RAIL_X_R, 0,  "bottom", "D"),
     ]
 
-    for label, cx, rail_z, pos, ls_id in corners:
-        if pos == "top":
-            cy = rail_z - rail_h - carr_h
-            ax.add_patch(Rectangle((cx - carr_w / 2, cy), carr_w, carr_h,
-                                    fc=MECH, ec=WHITE, lw=1.2, zorder=6))
-            # Leadscrew runs vertically downward from carriage
-            ls_top = cy
-            ls_bot = cy - 400
-            ax.plot([cx, cx], [ls_top, ls_bot], color=RAIL, lw=2.5, zorder=5)
-            # Thread marks
-            for tz in np.arange(ls_bot + 15, ls_top, 18):
-                ax.plot([cx - 6, cx + 6], [tz, tz + 10], color=DIM, lw=0.6, zorder=5)
-            # Handwheel at bottom of leadscrew
-            hw_cy = ls_bot - hw_r - 5
-            ax.add_patch(Circle((cx, hw_cy), hw_r, fc=STRUCT, ec=WHITE,
-                                lw=1.2, alpha=0.85, zorder=6))
-            ax.add_patch(Circle((cx, hw_cy), 6, fc=BG, ec=WHITE, lw=0.8, zorder=7))
-            for ang_d in range(0, 360, 45):
-                ang_r = np.radians(ang_d)
-                ax.plot([cx + 8 * np.cos(ang_r), cx + (hw_r - 5) * np.cos(ang_r)],
-                        [hw_cy + 8 * np.sin(ang_r), hw_cy + (hw_r - 5) * np.sin(ang_r)],
-                        color=WHITE, lw=0.8, zorder=7)
-            # Handwheel label
-            ax.text(cx + hw_r + 30, hw_cy, f"HANDWHEEL {ls_id}",
-                    color=DIM, fontsize=5.5, ha="left", va="center", **FONT, zorder=8)
-        else:
-            cy = rail_h
-            ax.add_patch(Rectangle((cx - carr_w / 2, cy), carr_w, carr_h,
-                                    fc=MECH, ec=WHITE, lw=1.2, zorder=6))
-            # Leadscrew runs vertically upward from carriage
-            ls_bot = cy + carr_h
-            ls_top = ls_bot + 400
-            ax.plot([cx, cx], [ls_bot, ls_top], color=RAIL, lw=2.5, zorder=5)
-            for tz in np.arange(ls_bot + 15, ls_top, 18):
-                ax.plot([cx - 6, cx + 6], [tz, tz + 10], color=DIM, lw=0.6, zorder=5)
-            # Handwheel at top of leadscrew
-            hw_cy = ls_top + hw_r + 5
-            ax.add_patch(Circle((cx, hw_cy), hw_r, fc=STRUCT, ec=WHITE,
-                                lw=1.2, alpha=0.85, zorder=6))
-            ax.add_patch(Circle((cx, hw_cy), 6, fc=BG, ec=WHITE, lw=0.8, zorder=7))
-            for ang_d in range(0, 360, 45):
-                ang_r = np.radians(ang_d)
-                ax.plot([cx + 8 * np.cos(ang_r), cx + (hw_r - 5) * np.cos(ang_r)],
-                        [hw_cy + 8 * np.sin(ang_r), hw_cy + (hw_r - 5) * np.sin(ang_r)],
-                        color=WHITE, lw=0.8, zorder=7)
-            ax.text(cx + hw_r + 30, hw_cy, f"HANDWHEEL {ls_id}",
-                    color=DIM, fontsize=5.5, ha="left", va="center", **FONT, zorder=8)
-
+    for label, cx, rail_z, pos, cl_id in corners:
+        cy = (rail_z - rail_h - carr_h) if pos == "top" else rail_h
+        # depth-slide carriage (seen end-on)
+        ax.add_patch(Rectangle((cx - carr_w / 2, cy), carr_w, carr_h,
+                                fc=MECH, ec=WHITE, lw=1.2, zorder=6))
+        # hand cam clamp on the outboard face — pivot + lever handle pointing away
+        # from the frame (left carriages → left, right carriages → right)
+        side = -1 if cx < x_mid else 1
+        cam_cx = cx + side * carr_w / 2
+        cam_cy = cy + carr_h / 2
+        ax.add_patch(Circle((cam_cx, cam_cy), 7, fc=C_T3, ec=WHITE, lw=0.9, zorder=8))
+        ax.plot([cam_cx, cam_cx + side * 55], [cam_cy, cam_cy + 48],
+                color=C_T3, lw=2.4, solid_capstyle="round", zorder=8)
+        ax.text(cam_cx + side * 60, cam_cy + 55, f"CAM CLAMP {cl_id}",
+                color=DIM, fontsize=5.5, ha="left" if side > 0 else "right",
+                va="center", **FONT, zorder=8)
         # Corner label inside carriage block
         ax.text(cx, cy + carr_h / 2, label, color=BG, fontsize=7,
                 ha="center", va="center", fontweight="bold", **FONT, zorder=7)
@@ -1753,19 +1739,25 @@ def sheet6():
            "WALL-SEAT SADDLES (8) — IBC-style: 4-bolt + ext. plate\nLEFT thumb-screw / RIGHT bolted",
            color=STRUCT, ha="left", fs=6, font=FONT)
 
-    # ── Rod-end bearings at each corner of the frame ──────────────────────────
-    bearing_r = 22
-    bearing_positions = [
+    # ── Single U-joint at each corner of the frame ────────────────────────────
+    # Ruland US12-6-6-SS: light-blue body, two crossed pins (tilt + swing, twist-locked).
+    joint_r = 22
+    joint_positions = [
         (fp_left, fp_top),    # TL
         (fp_right, fp_top),   # TR
         (fp_left, fp_bot),    # BL
         (fp_right, fp_bot),   # BR
     ]
-    for bx, bz in bearing_positions:
-        ax.add_patch(Circle((bx, bz), bearing_r, fc=MECH, ec=WHITE,
+    for bx, bz in joint_positions:
+        ax.add_patch(Circle((bx, bz), joint_r, fc=STRUCT2, ec=WHITE,
                             lw=1.0, zorder=9))
-        ax.add_patch(Circle((bx, bz), bearing_r * 0.45, fc=BG, ec=WHITE,
-                            lw=0.8, zorder=10))
+        # crossed pins (the two joint axes)
+        ax.plot([bx - joint_r*0.8, bx + joint_r*0.8], [bz, bz],
+                color=C_T2, lw=1.6, zorder=10, solid_capstyle="round")
+        ax.plot([bx, bx], [bz - joint_r*0.8, bz + joint_r*0.8],
+                color=MECH, lw=1.6, zorder=10, solid_capstyle="round")
+        ax.add_patch(Circle((bx, bz), joint_r * 0.3, fc=BG, ec=WHITE,
+                            lw=0.8, zorder=11))
 
     # ── Central label ─────────────────────────────────────────────────────────
     fp_cx = (fp_left + fp_right) / 2
@@ -1777,33 +1769,33 @@ def sheet6():
             f"{RAIL_X_R - RAIL_X_L}mm wide  ×  {H}mm tall",
             color=C_FLAT, fontsize=7.5, ha="center", va="center", **FONT, zorder=11)
     ax.text(fp_cx, fp_cz - 80,
-            "ROD-END + cross-slide each corner",
+            "SINGLE U-JOINT + X-Z cross-slides each corner",
             color=MECH, fontsize=7, ha="center", va="center", **FONT, zorder=11)
 
     # ── Leaders ───────────────────────────────────────────────────────────────
-    # Leadscrew leader (from TL leadscrew)
-    ls_mid_z = (FH - rail_h - carr_h - 200)
-    leader(ax, RAIL_X_L + 10, ls_mid_z,
-           RAIL_X_L + 450, ls_mid_z - 200,
-           "3/4\"-6 ACME\nLEADSCREW\n(one per corner)",
-           color=RAIL, ha="left", fs=6.5, font=FONT)
-
-    # Rod-end bearing leader (from TL bearing)
-    leader(ax, fp_left + bearing_r, fp_top - bearing_r,
-           fp_left + 450, fp_top - 150,
-           "GIR25-DO ROD-END\nSPHERICAL BEARING\n(±45° all axes)",
+    # U-joint leader (from TL joint) — sits highest
+    tl_cy = FH - rail_h - carr_h
+    leader(ax, fp_left + joint_r, fp_top - joint_r,
+           fp_left + 470, fp_top - 150,
+           "SINGLE U-JOINT — Ruland US12-6-6-SS\n(2 axes, twist-locked, 45°)",
            color=MECH, ha="left", fs=6.5, font=FONT)
+
+    # Depth-slide leader (from the TL carriage, end-on) — placed well below the U-joint label
+    leader(ax, RAIL_X_L, tl_cy,
+           RAIL_X_L + 470, tl_cy - 470,
+           "DEPTH SLIDE — DryLin W 316SS\n2200mm (runs into page)\nhand-slide + cam clamp",
+           color=RAIL, ha="left", fs=6.5, font=FONT)
 
     # Carriage leader (from TR carriage)
     leader(ax, RAIL_X_R + carr_w / 2, FH - rail_h - carr_h / 2,
            RAIL_X_R + 450, FH - rail_h - carr_h / 2 - 300,
-           "HGH20CA\nCARRIAGE ×2\n(per corner)",
+           "DryLin W CARRIAGE\n(depth slide, per corner)",
            color=MECH, ha="left", fs=6.5, font=FONT)
 
-    # Rail leader (from TR ceiling rail)
+    # Rail leader (from TR ceiling depth slide)
     leader(ax, RAIL_X_R + rail_len / 2, FH - rail_h / 2,
            RAIL_X_R + 450, FH - 150,
-           "HGR20 LINEAR RAIL\n2200mm (into page)",
+           "DryLin W RAIL 316SS\n2200mm (into page)",
            color=RAIL, ha="left", fs=6.5, font=FONT)
 
     # Frame leader (from right side midpoint)
@@ -1843,7 +1835,7 @@ def sheet6():
             "SHEET 6 — SYSTEM SCHEMATIC  (FRONT ELEVATION — LOOKING FROM PINHOLE SIDE)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
     ax.text(FW / 2, FH + 290,
-            "4 CORNER CARRIAGES (COORDINATED PAIRS)  ·  4 LEADSCREWS  ·  4 HANDWHEELS  ·  ROD-END + X-Z CROSS-SLIDE AT EACH CORNER",
+            "4 CORNER SLIDE-AND-CLAMP CARRIAGES (igus DryLin, COORDINATED PAIRS)  ·  CAM CLAMP + SINGLE U-JOINT + X-Z CROSS-SLIDES AT EACH CORNER",
             color=DIM, fontsize=7, ha="center", **FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────

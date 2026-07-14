@@ -20,6 +20,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Bottom Corner") unless model.layers["Bottom Corner"]
   model.layers.add("Top Corner") unless model.layers["Top Corner"]
   model.layers.add("Film Plane") unless model.layers["Film Plane"]
+  model.layers.add("Swing Plan") unless model.layers["Swing Plan"]
   model.layers.add("Labels") unless model.layers["Labels"]
 
   # ═══ Bottom Corner ═══
@@ -756,6 +757,173 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Film Plane"
   inst.layer = model.layers["Film Plane"]
 
+  # ═══ Swing Plan ═══
+  defn = model.definitions.add("Swing Plan")
+  ents = defn.entities
+  # Pinhole wall [plan]
+  grp = ents.add_group
+  grp.name = "Pinhole wall [plan]"
+  face = grp.entities.add_face([0.mm,-40.mm,0.mm], [5893.mm,-40.mm,0.mm], [5893.mm,0.mm,0.mm], [0.mm,0.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Depth slide rail Y (~2.2m) (bot)"] || model.materials.add("Depth slide rail Y (~2.2m) (bot)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pinhole [plan]
+  grp = ents.add_group
+  grp.name = "Pinhole [plan]"
+  face = grp.entities.add_face([2379.mm,-46.mm,0.mm], [2419.mm,-46.mm,0.mm], [2419.mm,6.mm,0.mm], [2379.mm,6.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(95.mm)
+  mat = model.materials["Pinhole [plan]"] || model.materials.add("Pinhole [plan]")
+  mat.color = Sketchup::Color.new(16, 16, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film neutral (ghost) [plan]
+  grp = ents.add_group
+  grp.name = "Film neutral (ghost) [plan]"
+  face = grp.entities.add_face([150.mm,2246.mm,0.mm], [4649.mm,2246.mm,0.mm], [4649.mm,2278.mm,0.mm], [150.mm,2278.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Film neutral (ghost) [plan]"] || model.materials.add("Film neutral (ghost) [plan]")
+  mat.color = Sketchup::Color.new(31, 59, 102)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # L carriage neutral (ghost) [plan]
+  grp = ents.add_group
+  grp.name = "L carriage neutral (ghost) [plan]"
+  face = grp.entities.add_face([125.mm,2237.mm,0.mm], [180.mm,2237.mm,0.mm], [180.mm,2287.mm,0.mm], [125.mm,2287.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["L carriage neutral (ghost) [plan]"] || model.materials.add("L carriage neutral (ghost) [plan]")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 0.22
+  grp.material = mat
+
+  # R carriage neutral (ghost) [plan]
+  grp = ents.add_group
+  grp.name = "R carriage neutral (ghost) [plan]"
+  face = grp.entities.add_face([4619.mm,2237.mm,0.mm], [4674.mm,2237.mm,0.mm], [4674.mm,2287.mm,0.mm], [4619.mm,2287.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["L carriage neutral (ghost) [plan]"] || model.materials.add("L carriage neutral (ghost) [plan]")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 0.22
+  grp.material = mat
+
+  # L depth rail (fixed X) [plan]
+  grp = ents.add_group
+  grp.name = "L depth rail (fixed X) [plan]"
+  face = grp.entities.add_face([144.mm,1300.mm,0.mm], [156.mm,1300.mm,0.mm], [156.mm,2420.mm,0.mm], [144.mm,2420.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Depth slide rail Y (~2.2m) (bot)"] || model.materials.add("Depth slide rail Y (~2.2m) (bot)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # L carriage (friction) [plan]
+  grp = ents.add_group
+  grp.name = "L carriage (friction) [plan]"
+  face = grp.entities.add_face([125.mm,1468.mm,0.mm], [180.mm,1468.mm,0.mm], [180.mm,1518.mm,0.mm], [125.mm,1518.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Depth carriage body (bot)"] || model.materials.add("Depth carriage body (bot)")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # L X-slide (swing accom.) [plan]
+  grp = ents.add_group
+  grp.name = "L X-slide (swing accom.) [plan]"
+  face = grp.entities.add_face([150.mm,1484.mm,0.mm], [286.mm,1484.mm,0.mm], [286.mm,1502.mm,0.mm], [150.mm,1502.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Horizontal X carriage (bot)"] || model.materials.add("Horizontal X carriage (bot)")
+  mat.color = Sketchup::Color.new(184, 200, 216)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # L U-joint [plan]
+  grp = ents.add_group
+  grp.name = "L U-joint [plan]"
+  face = grp.entities.add_face([275.mm,1482.mm,0.mm], [297.mm,1482.mm,0.mm], [297.mm,1504.mm,0.mm], [275.mm,1504.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["U-joint cross (bot)"] || model.materials.add("U-joint cross (bot)")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # R depth rail (fixed X) [plan]
+  grp = ents.add_group
+  grp.name = "R depth rail (fixed X) [plan]"
+  face = grp.entities.add_face([4644.mm,2020.mm,0.mm], [4656.mm,2020.mm,0.mm], [4656.mm,3140.mm,0.mm], [4644.mm,3140.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Depth slide rail Y (~2.2m) (bot)"] || model.materials.add("Depth slide rail Y (~2.2m) (bot)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # R carriage (friction) [plan]
+  grp = ents.add_group
+  grp.name = "R carriage (friction) [plan]"
+  face = grp.entities.add_face([4619.mm,3006.mm,0.mm], [4674.mm,3006.mm,0.mm], [4674.mm,3056.mm,0.mm], [4619.mm,3056.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Depth carriage body (bot)"] || model.materials.add("Depth carriage body (bot)")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # R X-slide (swing accom.) [plan]
+  grp = ents.add_group
+  grp.name = "R X-slide (swing accom.) [plan]"
+  face = grp.entities.add_face([4512.mm,3022.mm,0.mm], [4649.mm,3022.mm,0.mm], [4649.mm,3040.mm,0.mm], [4512.mm,3040.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Horizontal X carriage (bot)"] || model.materials.add("Horizontal X carriage (bot)")
+  mat.color = Sketchup::Color.new(184, 200, 216)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # R U-joint [plan]
+  grp = ents.add_group
+  grp.name = "R U-joint [plan]"
+  face = grp.entities.add_face([4501.mm,3020.mm,0.mm], [4523.mm,3020.mm,0.mm], [4523.mm,3042.mm,0.mm], [4501.mm,3042.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["U-joint cross (bot)"] || model.materials.add("U-joint cross (bot)")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film swung [plan]
+  begin
+    grp = ents.add_group
+    grp.name = "Film swung [plan]"
+    a = Geom::Point3d.new(286.mm, 1493.mm, 8.mm)
+    b = Geom::Point3d.new(4512.mm, 3031.mm, 8.mm)
+    dir = a.vector_to(b); dir.normalize!
+    perp = Geom::Vector3d.new(-dir.y, dir.x, 0)
+    hw = 17.mm
+    f = grp.entities.add_face(a.offset(perp, hw), a.offset(perp, -hw), b.offset(perp, -hw), b.offset(perp, hw))
+    f.pushpull(40.mm)
+    mat = model.materials["swung_film"] || model.materials.add("swung_film")
+    mat.color = Sketchup::Color.new(31, 59, 102); mat.alpha = 1.0
+    grp.material = mat
+  rescue => e
+  end
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Swing Plan"
+  inst.layer = model.layers["Swing Plan"]
+
 
 # ── "Labeled" scene callouts (Labels tag) ──
 
@@ -783,6 +951,29 @@ tt.layer = model.layers["Labels"] rescue nil
 tt = entities.add_text("Film plane 4499 x 2088 (mechanism ~150 top + bottom)", Geom::Point3d.new(300.mm, 53.mm, 1194.mm), Geom::Vector3d.new(60.mm, 45.mm, 0.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
+# ── "Swing (plan)" callouts (Swing Plan tag) ──
+
+tt = entities.add_text("PLAN (top-down) — SWING", Geom::Point3d.new(1900.mm, 3350.mm, 60.mm), Geom::Vector3d.new(60.mm, 40.mm, 0.mm))
+tt.layer = model.layers["Swing Plan"] rescue nil
+
+tt = entities.add_text("Pinhole", Geom::Point3d.new(2399.mm, 0.mm, 95.mm), Geom::Vector3d.new(45.mm, -55.mm, 0.mm))
+tt.layer = model.layers["Swing Plan"] rescue nil
+
+tt = entities.add_text("Neutral film plane (flat, ghost)", Geom::Point3d.new(3100.mm, 2262.mm, 50.mm), Geom::Vector3d.new(45.mm, 45.mm, 0.mm))
+tt.layer = model.layers["Swing Plan"] rescue nil
+
+tt = entities.add_text("Swung film plane (20deg)", Geom::Point3d.new(3500.mm, 2760.mm, 55.mm), Geom::Vector3d.new(45.mm, 45.mm, 0.mm))
+tt.layer = model.layers["Swing Plan"] rescue nil
+
+tt = entities.add_text("LEFT corner: DEPTH drive fwd ~770mm; X-slide takes ~136mm sideways", Geom::Point3d.new(286.mm, 1493.mm, 70.mm), Geom::Vector3d.new(-50.mm, -45.mm, 0.mm))
+tt.layer = model.layers["Swing Plan"] rescue nil
+
+tt = entities.add_text("RIGHT corner: DEPTH drive back; X-slide takes up sideways", Geom::Point3d.new(4512.mm, 3031.mm, 70.mm), Geom::Vector3d.new(45.mm, 45.mm, 0.mm))
+tt.layer = model.layers["Swing Plan"] rescue nil
+
+tt = entities.add_text("Depth rail stays at fixed X=150", Geom::Point3d.new(150.mm, 1340.mm, 60.mm), Geom::Vector3d.new(-55.mm, -30.mm, 0.mm))
+tt.layer = model.layers["Swing Plan"] rescue nil
+
 # ── In-model © + license credit (default layer → shown in every scene) ──
 lbb = model.bounds
 lanc = Geom::Point3d.new(lbb.min.x, lbb.min.y - 400.mm, lbb.min.z)
@@ -793,7 +984,7 @@ alvinr.github.io/tbs", lanc)
 model.definitions.purge_unused
 model.materials.purge_unused
 
-keep_tags = ["Bottom Corner", "Top Corner", "Film Plane", "Labels"]
+keep_tags = ["Bottom Corner", "Top Corner", "Film Plane", "Swing Plan", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -801,7 +992,7 @@ model.layers.to_a.each { |l|
 }
 
 dir = Geom::Vector3d.new(0.55, -0.72, 0.30); dir.normalize!
-[["Overview", ["Bottom Corner", "Top Corner", "Film Plane"], nil], ["Bottom Corner", ["Bottom Corner", "Film Plane"], [0.mm, 0.mm, 150.mm, 360.mm]], ["Top Corner", ["Top Corner", "Film Plane"], [0.mm, 0.mm, 2238.mm, 360.mm]], ["Labeled", ["Bottom Corner", "Top Corner", "Film Plane", "Labels"], nil]].each { |name, tags, tgt|
+[["Overview", ["Bottom Corner", "Top Corner", "Film Plane"], [0.mm, 0.mm, 1194.mm, 3200.mm]], ["Bottom Corner", ["Bottom Corner", "Film Plane"], [0.mm, 0.mm, 150.mm, 360.mm]], ["Top Corner", ["Top Corner", "Film Plane"], [0.mm, 0.mm, 2238.mm, 360.mm]], ["Labeled", ["Bottom Corner", "Top Corner", "Film Plane", "Labels"], [300.mm, 0.mm, 1194.mm, 3600.mm]]].each { |name, tags, tgt|
   model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
   if tgt
     t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])
@@ -816,6 +1007,15 @@ dir = Geom::Vector3d.new(0.55, -0.72, 0.30); dir.normalize!
   page = model.pages.add(name)
   page.use_camera = true
 }
+
+# ── Swing (plan) scene — top-down camera, only the Swing Plan tag visible ──
+model.layers.each { |l| l.visible = (l == default_layer || l.name == "Swing Plan") }
+pc = Geom::Point3d.new(2399.mm, 2000.mm, 0)
+pe = Geom::Point3d.new(2399.mm, 2000.mm, 9500.mm)
+model.active_view.camera = Sketchup::Camera.new(pe, pc, Y_AXIS)
+psc = model.pages.add("Swing (plan)")
+psc.use_camera = true
+
 model.layers.each { |l| l.visible = true }
 
 model.commit_operation

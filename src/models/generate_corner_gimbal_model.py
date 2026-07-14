@@ -32,7 +32,7 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov          # ruby helpers + component()
 
-TAGS = ["Bottom Corner", "Top Corner", "Film Plane", "Labels"]
+TAGS = ["Bottom Corner", "Top Corner", "Film Plane", "Swing Plan", "Labels"]
 
 C_STEEL = "#B0B0B8"; C_ALUM = "#C8D8E8"; C_XSL = "#B8C8D8"; C_PIN = "#B07010"
 C_CROSS = "#8A8A92"; C_FRAME = "#2A6B2A"; C_PANEL = "#1F3B66"; C_CAR = "#C04010"; C_CLAMP = "#3A3A40"
@@ -135,21 +135,91 @@ tt.layer = model.layers["Labels"] rescue nil''')
     return "\n".join(L)
 
 
+# ── Top-down PLAN view of SWING (the horizontal twin of the vertical-edge tilt view) ──
+# Real X-Y layout: pinhole at (X=2399, Y=0); film width X=150..4649 at depth Y=2262. Swing = rotate the
+# panel 20° about the vertical centre axis → left end moves FORWARD in depth + toward centre in X; right
+# end moves BACK + toward centre. The depth rails stay at fixed X (150 / 4649); the DEPTH slide drives the
+# corner forward/back, and the X SLIDE absorbs the sideways foreshortening.
+PL_FPY = 2262       # film depth
+PL_L = (286, 1493)  # left end swung (20°): X 150→286 (toward centre), Y 2262→1493 (fwd)
+PL_R = (4512, 3031)  # right end swung: X 4649→4512, Y 2262→3031 (back)
+
+
+def swing_plan():
+    P = []
+
+    def pbox(name, x, y, w, d, color, alpha=None, h=40, z=0):
+        P.append(ov.ruby_box(f"{name} [plan]", x, y, z, w, d, h, color=color, alpha=alpha))
+
+    pbox("Pinhole wall", 0, -40, 5893, 40, C_STEEL, h=70)
+    pbox("Pinhole", 2379, -46, 40, 52, "#101014", h=95)
+    # neutral (flat) film plane + neutral carriages — ghost, for before/after comparison
+    pbox("Film neutral (ghost)", 150, PL_FPY - 16, 4499, 32, C_PANEL, alpha=0.15)
+    pbox("L carriage neutral (ghost)", 125, PL_FPY - 25, 55, 50, C_CAR, alpha=0.22)
+    pbox("R carriage neutral (ghost)", 4649 - 30, PL_FPY - 25, 55, 50, C_CAR, alpha=0.22)
+    # LEFT corner (swung): fixed-X depth rail, carriage (moved fwd in Y), X-slide arm, U-joint
+    pbox("L depth rail (fixed X)", 144, 1300, 12, 1120, C_STEEL)
+    pbox("L carriage (friction)", 125, PL_L[1] - 25, 55, 50, C_CAR)
+    pbox("L X-slide (swing accom.)", 150, PL_L[1] - 9, PL_L[0] - 150, 18, C_XSL)
+    pbox("L U-joint", PL_L[0] - 11, PL_L[1] - 11, 22, 22, C_CROSS)
+    # RIGHT corner (swung)
+    pbox("R depth rail (fixed X)", 4644, 2020, 12, 1120, C_STEEL)
+    pbox("R carriage (friction)", 4649 - 30, PL_R[1] - 25, 55, 50, C_CAR)
+    pbox("R X-slide (swing accom.)", PL_R[0], PL_R[1] - 9, 4649 - PL_R[0], 18, C_XSL)
+    pbox("R U-joint", PL_R[0] - 11, PL_R[1] - 11, 22, 22, C_CROSS)
+    # swung film plane (angled) — explicit thin quad face in `ents`
+    P.append(f'''  # Film swung [plan]
+  begin
+    grp = ents.add_group
+    grp.name = "Film swung [plan]"
+    a = Geom::Point3d.new({ov.mm(PL_L[0])}, {ov.mm(PL_L[1])}, {ov.mm(8)})
+    b = Geom::Point3d.new({ov.mm(PL_R[0])}, {ov.mm(PL_R[1])}, {ov.mm(8)})
+    dir = a.vector_to(b); dir.normalize!
+    perp = Geom::Vector3d.new(-dir.y, dir.x, 0)
+    hw = {ov.mm(17)}
+    f = grp.entities.add_face(a.offset(perp, hw), a.offset(perp, -hw), b.offset(perp, -hw), b.offset(perp, hw))
+    f.pushpull({ov.mm(40)})
+    mat = model.materials["swung_film"] || model.materials.add("swung_film")
+    mat.color = Sketchup::Color.new(31, 59, 102); mat.alpha = 1.0
+    grp.material = mat
+  rescue => e
+  end
+''')
+    return "\n".join(P)
+
+
+def plan_labels():
+    L = []
+    def txt(s, x, y, z, vx, vy, vz):
+        L.append(f'''
+tt = entities.add_text("{s}", Geom::Point3d.new({ov.mm(x)}, {ov.mm(y)}, {ov.mm(z)}), Geom::Vector3d.new({ov.mm(vx)}, {ov.mm(vy)}, {ov.mm(vz)}))
+tt.layer = model.layers["Swing Plan"] rescue nil''')
+    txt("PLAN (top-down) — SWING", 1900, 3350, 60, 60, 40, 0)
+    txt("Pinhole", 2399, 0, 95, 45, -55, 0)
+    txt("Neutral film plane (flat, ghost)", 3100, PL_FPY, 50, 45, 45, 0)
+    txt("Swung film plane (20deg)", 3500, 2760, 55, 45, 45, 0)
+    txt("LEFT corner: DEPTH drive fwd ~770mm; X-slide takes ~136mm sideways", 286, 1493, 70, -50, -45, 0)
+    txt("RIGHT corner: DEPTH drive back; X-slide takes up sideways", 4512, 3031, 70, 45, 45, 0)
+    txt("Depth rail stays at fixed X=150", 150, 1340, 60, -55, -30, 0)
+    return "\n".join(L)
+
+
 def generate_ruby():
     comps = [
         ov.component("Bottom Corner", "Bottom Corner", corner(0, +1, "(bot)")),
         ov.component("Top Corner", "Top Corner", corner(CH, -1, "(top)")),
         ov.component("Film Plane", "Film Plane", film_plane()),
+        ov.component("Swing Plan", "Swing Plan", swing_plan()),
     ]
     body = "\n".join(comps)
     tags_ruby = "\n".join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep = "[" + ", ".join(f'"{t}"' for t in TAGS) + "]"
     full = ["Bottom Corner", "Top Corner", "Film Plane"]
     scenes = [
-        ("Overview", full, None),
+        ("Overview", full, (0, 0, CH / 2, 3200)),
         ("Bottom Corner", ["Bottom Corner", "Film Plane"], (0, 0, STACK, 360)),
         ("Top Corner", ["Top Corner", "Film Plane"], (0, 0, CH - STACK, 360)),
-        ("Labeled", full + ["Labels"], None),
+        ("Labeled", full + ["Labels"], (300, 0, CH / 2, 3600)),
     ]
 
     def scene_lit(n, tags, tgt):
@@ -184,6 +254,9 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── "Labeled" scene callouts (Labels tag) ──
 {labels()}
 
+# ── "Swing (plan)" callouts (Swing Plan tag) ──
+{plan_labels()}
+
 {ov.license_note()}
 
 model.definitions.purge_unused
@@ -212,6 +285,15 @@ dir = Geom::Vector3d.new(0.55, -0.72, 0.30); dir.normalize!
   page = model.pages.add(name)
   page.use_camera = true
 }}
+
+# ── Swing (plan) scene — top-down camera, only the Swing Plan tag visible ──
+model.layers.each {{ |l| l.visible = (l == default_layer || l.name == "Swing Plan") }}
+pc = Geom::Point3d.new({ov.mm(2399)}, {ov.mm(2000)}, 0)
+pe = Geom::Point3d.new({ov.mm(2399)}, {ov.mm(2000)}, {ov.mm(9500)})
+model.active_view.camera = Sketchup::Camera.new(pe, pc, Y_AXIS)
+psc = model.pages.add("Swing (plan)")
+psc.use_camera = true
+
 model.layers.each {{ |l| l.visible = true }}
 
 model.commit_operation

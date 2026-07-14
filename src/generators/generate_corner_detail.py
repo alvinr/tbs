@@ -243,40 +243,39 @@ def _setscrew(ax, cx, y0, w=5.0, h=6.5, hub_top=None):
 
 
 def _stub_carrier(ax):
-    """Section: how the stub shaft anchors to the MECHANISM (carrier) — a split shaft-clamp block
-    bolts to the X-slide carriage and grips the 3/8 stub. The frame end clamps the same way."""
+    """Section: the stub shaft anchored to the mechanism (carrier) with an OFF-THE-SHELF flange-mount
+    shaft support — its flange bolts to the X-slide carriage; its clamp collar grips the 3/8 stub.
+    The frame end is identical (to the film-frame corner)."""
     C_SS = "#7C7C86"
-    ax.set_xlim(-30, 138); ax.set_ylim(-38, 46); ax.set_aspect("equal"); ax.axis("off")
-    ax.plot([16, 118], [0, 0], color="#2060A0", lw=0.6, dashes=(8, 3, 2, 3), zorder=2)     # shaft axis
-
+    ax.set_xlim(-30, 144); ax.set_ylim(-38, 46); ax.set_aspect("equal"); ax.axis("off")
+    ax.plot([14, 124], [0, 0], color="#2060A0", lw=0.6, dashes=(8, 3, 2, 3), zorder=2)      # shaft axis
     # carrier plate (the X-slide carriage face)
     draw_rect(ax, 0, -30, 12, 60, fc=C_STEEL, color=OUT, lw=1.2, zorder=4)
     hatch_rect(ax, 0, -30, 12, 60, color="#7A8AA0", hatch="////", lw=0.0)
-    # shaft-clamp mount block bolted to the plate
-    _body(ax, 12, -15, 42, 30)
-    # stub shaft through the split bore, extending right toward the U-joint
-    draw_rect(ax, 12, -4.6, 106, 9.2, fc=C_STEEL, color=OUT, lw=1.0, zorder=8)
-    # split (slit) down to the bore + clamp bolt across it
-    ax.add_patch(plt.Rectangle((31, 4.6), 2.4, 10.4, fc="white", ec=OUT, lw=0.6, zorder=9))
-    draw_rect(ax, 22, 8, 24, 4.4, fc=C_SS, color=OUT, lw=0.8, zorder=10)                    # clamp bolt shank
-    ax.add_patch(plt.Rectangle((18.5, 6.2), 4, 8, fc=C_SS, ec=OUT, lw=0.8, zorder=11))      # hex head
-    ax.add_patch(plt.Rectangle((45, 6.7), 3, 7, fc=C_SS, ec=OUT, lw=0.8, zorder=11))        # nut
-    # 2 cap screws: mount block -> carrier plate
-    for by in (10, -10):
-        draw_rect(ax, -2, by - 2.1, 26, 4.2, fc=C_SS, color=OUT, lw=0.7, zorder=9)
-        ax.add_patch(plt.Rectangle((-8, by - 3.1), 6, 6.2, fc=C_SS, ec=OUT, lw=0.7, zorder=10))
-    for bx in (106, 114):                                                                  # shaft break marks
+    # flange-mount shaft support (ONE off-the-shelf part): flange + boss + removable clamp collar
+    _body(ax, 12, -18, 9, 36)          # flange (base, bolts to the carrier)
+    _body(ax, 21, -11, 19, 22)         # boss around the shaft
+    _body(ax, 40, -13, 12, 26)         # removable clamp collar
+    _setscrew(ax, 46, 5.5, 4.5, 8, hub_top=13)                              # collar clamp screw (pinches shaft)
+    # stub shaft through the support, extending right toward the U-joint
+    draw_rect(ax, 14, -4.6, 110, 9.2, fc=C_STEEL, color=OUT, lw=1.0, zorder=8)
+    ax.plot([40, 52], [4.6, 4.6], color=OUT, lw=0.4, zorder=9)              # shaft flat under the clamp screw
+    # 2 mounting cap screws through the flange into the carrier (heads on the flange face)
+    for by in (14, -14):
+        draw_rect(ax, 2, by - 1.9, 16, 3.8, fc=C_SS, color=OUT, lw=0.7, zorder=9)           # shank
+        ax.add_patch(plt.Rectangle((18, by - 3), 4, 6, fc=C_SS, ec=OUT, lw=0.7, zorder=10)) # head
+    for bx in (110, 118):                                                  # shaft break marks
         ax.plot([bx - 3, bx + 3], [-7, 7], color=OUT, lw=0.8, zorder=9)
 
-    draw_dim_v(ax, 130, -4.6, 4.6, "9.5mm\n(3/8)", offset=11, fs=5.5, color=DIM, right=True,
+    draw_dim_v(ax, 136, -4.6, 4.6, "9.5mm\n(3/8)", offset=11, fs=5.5, color=DIM, right=True,
                perpendicular=True, font=FONT)
-    leader(ax, 6, -24, -28, -33, "X-slide carriage plate (the CARRIER)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 40, -13, 58, -32, "split shaft-clamp mount block\n— bolts to the carrier", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 33, 14, 48, 34, "split bore + clamp bolt grip the\nstub shaft (full grip, no backlash)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, -5, 10, -28, 24, "2x M5 cap screws\nto the carriage", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 6, -24, -30, -33, "X-slide carriage plate (the CARRIER)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 30, -14, 46, -33, "FLANGE-MOUNT SHAFT SUPPORT (303 SS, off-the-shelf)\n— its flange bolts to the carrier", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 46, 13, 64, 34, "clamp collar + screw grip the stub shaft\n(removable collar for access)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 12, 14, -30, 26, "2x M5 cap screws\n(flange → carrier)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 92, 0, 100, 22, "same stub shaft → into the U-joint hub (section above)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-30, 44, "STUB SHAFT → CARRIER CONNECTION  (section; the FRAME end clamps the same way to the film-frame corner)",
-            fontsize=7.8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+    ax.text(-30, 44, "STUB SHAFT → CARRIER CONNECTION  (off-the-shelf flange-mount shaft support; the FRAME end is identical)",
+            fontsize=7.5, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
 
 def draw_ujoint_section():

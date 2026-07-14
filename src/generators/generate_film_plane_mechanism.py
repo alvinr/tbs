@@ -801,33 +801,40 @@ def section_aa(ax):
     faces (self-lube, dry); an adjustable gib preloaded by a brass-tip screw sets the drag that
     HOLDS the gravity-loaded vertical axis, yet still hand-slides. No proprietary rail."""
     C_WAY = "#8E949C"    # 316 flat bar (darker grey, distinct from the carriage)
-    ax.set_xlim(-20, 82); ax.set_ylim(-18, 52); ax.set_aspect("equal"); ax.axis("off")
-    # 316 carriage — inverted-U wrapping the way, closed by a bottom plate
-    _rect(ax, 10, 27, 52, 7, C_STEEL, z=5)     # top plate
-    _rect(ax, 10, 2, 52, 4, C_STEEL, z=5)      # bottom plate
-    _rect(ax, 10, 6, 4, 21, C_STEEL, z=5)      # left wall
-    _rect(ax, 58, 6, 4, 21, C_STEEL, z=5)      # right wall
-    # 316 SS flat-bar WAY, captured in the middle
+    ax.set_xlim(-20, 82); ax.set_ylim(-20, 58); ax.set_aspect("equal"); ax.axis("off")
+    # 316 carriage — inverted-U wrapping the way (hatched = a cut solid), closed by a bottom plate
+    for (x, y, w, h) in [(10, 27, 52, 7), (10, 2, 52, 4), (10, 6, 4, 21), (58, 6, 4, 21)]:
+        _rect(ax, x, y, w, h, C_STEEL, z=5)
+        hatch_rect(ax, x, y, w, h, color="#8A93A0", hatch="///", lw=0.0)
+    # 316 SS flat-bar WAY, captured in the middle (hatched = a cut solid)
     _rect(ax, 14, 16, 44, 8, C_WAY, z=6)
+    hatch_rect(ax, 14, 16, 44, 8, color="#6E747C", hatch="\\\\\\", lw=0.0)
+    # travel-into-page symbol (circle-X) on the way — this is a cut ACROSS the slide
+    draw_circle(ax, 50, 20, 2.6, color=OUT, fill=True, fc="white", lw=0.8, zorder=9)
+    ax.plot([48.2, 51.8], [18.2, 21.8], color=OUT, lw=0.7, zorder=10)
+    ax.plot([48.2, 51.8], [21.8, 18.2], color=OUT, lw=0.7, zorder=10)
     # UHMW pads (tan) bearing on both faces of the bar
     _rect(ax, 16, 24, 40, 3, C_POLY, z=7)      # top pad (main bearing face)
     _rect(ax, 16, 13, 40, 3, C_POLY, z=7)      # bottom pad
     # adjustable gib strip (316) under the bottom pad, pushed up by the screw
     _rect(ax, 14, 8.5, 44, 4, C_STEEL, z=6)
+    hatch_rect(ax, 14, 8.5, 44, 4, color="#8A93A0", hatch="///", lw=0.0)
     # brass-tip gib screw threading up through the bottom plate into the gib
     _rect(ax, 33, 3.5, 6, 5.5, C_PIN, z=8)
     for yy in (4.6, 5.9, 7.2):
         ax.plot([31.7, 40.3], [yy, yy], color=OUT, lw=0.4, zorder=9)
-    leader(ax, 36, 20, 60, 44, "316 SS flat-bar WAY\n(the sliding surface)",
+    leader(ax, 44, 20, 62, 44, "316 SS flat-bar WAY (the sliding surface;\nruns into the page = slide travel)",
            ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 30, 25.5, 60, 33, "UHMW pad — self-lube, DRY;\nbears on both faces (no metal-on-metal)",
+    leader(ax, 30, 25.5, 62, 33, "UHMW pad — self-lube, DRY;\nbears on both faces (no metal-on-metal)",
            ha="left", fs=5.2, color="#8A6A2A", font=FONT, bbox=LBL_BG)
-    leader(ax, 12, 30, -20, 42, "316 carriage\n(wraps the way)",
-           ha="right", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 36, 5, -20, -10, "adjustable GIB + brass-tip screw — sets the drag that\nHOLDS the vertical axis yet still hand-slides (re-tune after break-in)",
+    leader(ax, 12, 32, 2, 45, "316 carriage — the MOVING part\n(wraps the way so it can't lift off)",
            ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-20, 52, "SECTION A-A  (X × Z) — UHMW-pad carriage on a 316 flat-bar way; adjustable gib sets the friction hold",
-            fontsize=7.0, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+    leader(ax, 36, 5, -20, -13, "adjustable GIB + brass-tip screw — sets the drag that\nHOLDS the vertical axis yet still hand-slides (re-tune after break-in)",
+           ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    ax.text(-20, 58, "SECTION A-A — a SLICE cut across the slide (the way runs into the page)",
+            fontsize=6.9, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+    ax.text(-20, 52.5, "the 316 carriage grips the flat-bar WAY through UHMW pads; the gib screw sets the friction hold",
+            fontsize=5.6, color=DIM, ha="left", va="top", **FONT)
 
 
 def view_c(ax):
@@ -933,39 +940,45 @@ def _setscrew(ax, cx, y0, w=5.0, h=6.5, hub_top=None):
 
 
 def _stub_carrier(ax):
-    """Section: the stub shaft anchored to the mechanism with a 304 SS base-mount clamping shaft
-    support (McMaster 4040N12) — base bolts to the X-slide carriage, a removable cap with two clamp
-    screws grips the 3/8 stub. The frame end is identical."""
+    """Section ACROSS the stub shaft (shaft end-on) at the 304 SS base-mount clamping shaft
+    support (McMaster 4040N12): the base flange bolts down to the X-slide carriage, the removable
+    cap is pulled onto the shaft by two clamp screws that flank it, and the shaft continues out of
+    the page into the U-joint hub. The frame end is identical."""
     C_SS = "#7C7C86"
-    ax.set_xlim(-34, 140); ax.set_ylim(-42, 30); ax.set_aspect("equal"); ax.axis("off")
-    ax.plot([-6, 126], [0, 0], color="#2060A0", lw=0.6, dashes=(8, 3, 2, 3), zorder=2)        # shaft axis
-    # carrier bracket (the X-slide carriage face the block bolts down to)
-    draw_rect(ax, -14, -34, 150, 18, fc=C_STEEL, color=OUT, lw=1.2, zorder=4)
-    hatch_rect(ax, -14, -34, 150, 18, color="#7A8AA0", hatch="////", lw=0.0)
-    # pillow-block base + feet, then the removable clamp cap
-    _body(ax, 9, -16, 34, 16)          # base body
-    _body(ax, 0, -16, 9, 8)            # left foot
-    _body(ax, 43, -16, 9, 8)           # right foot
-    _body(ax, 9, 0, 34, 9)             # removable clamp cap (above the split at the shaft centre)
-    # stub shaft through the bore, extending right toward the U-joint
-    draw_rect(ax, -6, -4.6, 130, 9.2, fc=C_STEEL, color=OUT, lw=1.0, zorder=8)
-    _setscrew(ax, 17, 2, 4, 7, hub_top=9); _setscrew(ax, 35, 2, 4, 7, hub_top=9)   # 2 clamp screws (6-32)
-    # 2 mounting screws (base feet -> carrier)
-    for fx in (4.5, 47.5):
-        draw_rect(ax, fx - 1.8, -30, 3.6, 15, fc=C_SS, color=OUT, lw=0.7, zorder=9)           # shank down
-        ax.add_patch(plt.Rectangle((fx - 3, -12), 6, 4, fc=C_SS, ec=OUT, lw=0.7, zorder=10))  # head on the foot
-    for bx in (112, 120):                                                  # shaft break marks
-        ax.plot([bx - 3, bx + 3], [-7, 7], color=OUT, lw=0.8, zorder=9)
-
-    draw_dim_v(ax, 132, -4.6, 4.6, "9.5mm\n(3/8)", offset=11, fs=5.5, color=DIM, right=True,
+    ax.set_xlim(-42, 96); ax.set_ylim(-40, 34); ax.set_aspect("equal"); ax.axis("off")
+    cx = 26
+    # carrier bracket (the X-slide carriage face the support bolts down to)
+    draw_rect(ax, -10, -34, 84, 14, fc=C_STEEL, color=OUT, lw=1.2, zorder=3)
+    hatch_rect(ax, -10, -34, 84, 14, color="#7A8AA0", hatch="////", lw=0.0)
+    # support base flange (on the carrier) + removable clamp cap on top, split at the shaft centre
+    _body(ax, 4, -20, 44, 20, z=5)      # base flange  x4..48, y-20..0
+    _body(ax, 12, 0, 28, 14, z=5)       # removable cap  x12..40, y0..14
+    ax.plot([12, 40], [0, 0], color=OUT, lw=0.6, zorder=8)   # cap/base parting line at the shaft centre
+    # stub shaft, END-ON (a circle) sitting in the bore on the parting line
+    draw_circle(ax, cx, 0, 6, color=OUT, fill=True, fc=C_STEEL, lw=1.2, zorder=7)
+    draw_circle(ax, cx, 0, 2, color=OUT, fill=True, fc="white", lw=0.6, zorder=8)
+    # 2 clamp screws — flank the shaft, from the cap top DOWN into the base (pull the cap onto the shaft)
+    for sx in (cx - 9, cx + 9):
+        draw_rect(ax, sx - 1.8, -3, 3.6, 17, fc=C_PIN, color=OUT, lw=0.7, zorder=6)   # y-3..14
+        ax.plot([sx - 2.6, sx + 2.6], [13, 13], color=OUT, lw=1.0, zorder=10)         # head slot
+    # 2 mounting bolts — flank the base, head on the flange top, one continuous shank into the carrier
+    for bx in (9, 43):
+        draw_rect(ax, bx - 1.9, -32, 3.8, 32, fc=C_SS, color=OUT, lw=0.7, zorder=6)   # shank y-32..0 (continuous)
+        ax.add_patch(plt.Rectangle((bx - 3, 0), 6, 3.4, fc=C_SS, ec=OUT, lw=0.7, zorder=9))  # head on the flange
+    draw_dim_v(ax, 56, -6, 6, "9.5mm\n(3/8)", offset=10, fs=5.5, color=DIM, right=True,
                perpendicular=True, font=FONT)
-    leader(ax, 72, -25, 82, -36, "X-slide carriage face (the CARRIER)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 26, -12, 46, -34, "base-mount clamping shaft support\n(McMaster 4040N12, 304 SS)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 26, 9, 42, 24, "2x clamp screws (6-32) pull the removable\ncap DOWN onto the stub shaft", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 4.5, -22, -34, -33, "2x mounting screws\n(base → carrier)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 95, 0, 100, 20, "same stub shaft → into the U-joint hub (section above)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-34, 28, "STUB SHAFT → CARRIER CONNECTION  (McMaster 4040N12 base-mount clamp, 304 SS; the FRAME end is identical)",
-            fontsize=7.3, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+    leader(ax, cx + 4, 2, cx + 34, 24, "STUB SHAFT (end-on) — continues out of the page\ninto the U-joint hub (section above)",
+           ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, cx + 9, 9, cx + 26, 28, "2× clamp screws pull the removable\nCAP down onto the shaft",
+           ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 6, -12, -42, -8, "base-mount clamping shaft support\n(McMaster 4040N12, 304 SS)",
+           ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 9, -22, -20, -36, "2× mounting bolts\n(flange → carrier)",
+           ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 64, -27, 70, -14, "X-slide carriage face (the CARRIER)",
+           ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    ax.text(-42, 32, "STUB SHAFT → CARRIER CONNECTION  (4040N12 base-mount clamp, 304 SS; section ACROSS the shaft; the FRAME end is identical)",
+            fontsize=6.7, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
 
 def sheet4():

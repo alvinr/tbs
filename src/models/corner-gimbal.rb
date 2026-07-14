@@ -164,22 +164,79 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Carriage bracket to X-slide (bot)
   grp = ents.add_group
   grp.name = "Carriage bracket to X-slide (bot)"
-  face = grp.entities.add_face([-30.mm,-8.mm,158.mm], [4.mm,-8.mm,158.mm], [4.mm,8.mm,158.mm], [-30.mm,8.mm,158.mm])
+  face = grp.entities.add_face([-30.mm,-8.mm,154.mm], [4.mm,-8.mm,154.mm], [4.mm,8.mm,154.mm], [-30.mm,8.mm,154.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
+  face.pushpull(12.mm)
   mat = model.materials["Carriage bracket to X-slide (bot)"] || model.materials.add("Carriage bracket to X-slide (bot)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Floating X slide (bot)
+  # Horizontal X slide rail (bot)
   grp = ents.add_group
-  grp.name = "Floating X slide (bot)"
-  face = grp.entities.add_face([-24.mm,-11.mm,160.mm], [24.mm,-11.mm,160.mm], [24.mm,11.mm,160.mm], [-24.mm,11.mm,160.mm])
+  grp.name = "Horizontal X slide rail (bot)"
+  face = grp.entities.add_face([-70.mm,-6.mm,156.mm], [70.mm,-6.mm,156.mm], [70.mm,6.mm,156.mm], [-70.mm,6.mm,156.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Floating X slide (bot)"] || model.materials.add("Floating X slide (bot)")
+  face.pushpull(10.mm)
+  mat = model.materials["Depth slide rail Y (~2.2m) (bot)"] || model.materials.add("Depth slide rail Y (~2.2m) (bot)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X carriage (bot)
+  grp = ents.add_group
+  grp.name = "Horizontal X carriage (bot)"
+  face = grp.entities.add_face([-20.mm,-11.mm,158.mm], [20.mm,-11.mm,158.mm], [20.mm,11.mm,158.mm], [-20.mm,11.mm,158.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Horizontal X carriage (bot)"] || model.materials.add("Horizontal X carriage (bot)")
   mat.color = Sketchup::Color.new(184, 200, 216)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X grip tab F (bot)
+  grp = ents.add_group
+  grp.name = "X grip tab F (bot)"
+  face = grp.entities.add_face([-20.mm,-13.mm,160.mm], [20.mm,-13.mm,160.mm], [20.mm,-6.mm,160.mm], [-20.mm,-6.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Horizontal X carriage (bot)"] || model.materials.add("Horizontal X carriage (bot)")
+  mat.color = Sketchup::Color.new(184, 200, 216)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X grip tab B (bot)
+  grp = ents.add_group
+  grp.name = "X grip tab B (bot)"
+  face = grp.entities.add_face([-20.mm,6.mm,160.mm], [20.mm,6.mm,160.mm], [20.mm,13.mm,160.mm], [-20.mm,13.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Horizontal X carriage (bot)"] || model.materials.add("Horizontal X carriage (bot)")
+  mat.color = Sketchup::Color.new(184, 200, 216)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X cam clamp body (bot)
+  grp = ents.add_group
+  grp.name = "X cam clamp body (bot)"
+  face = grp.entities.add_face([22.mm,34.mm,160.mm], [36.mm,34.mm,160.mm], [36.mm,48.mm,160.mm], [22.mm,48.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Depth cam clamp body (bot)"] || model.materials.add("Depth cam clamp body (bot)")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X clamp lever (bot)
+  grp = ents.add_group
+  grp.name = "X clamp lever (bot)"
+  ge = grp.entities
+  circle = ge.add_circle([26.mm,48.mm,167.mm], [0,1,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(54.mm)
+  mat = model.materials["Depth cam clamp body (bot)"] || model.materials.add("Depth cam clamp body (bot)")
+  mat.color = Sketchup::Color.new(58, 58, 64)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -270,7 +327,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-9.mm,-9.mm,164.mm], [9.mm,-9.mm,164.mm], [9.mm,9.mm,164.mm], [-9.mm,9.mm,164.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Floating X slide (bot)"] || model.materials.add("Floating X slide (bot)")
+  mat = model.materials["Horizontal X carriage (bot)"] || model.materials.add("Horizontal X carriage (bot)")
   mat.color = Sketchup::Color.new(184, 200, 216)
   mat.alpha = 1.0
   grp.material = mat
@@ -281,7 +338,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-9.mm,-9.mm,188.mm], [9.mm,-9.mm,188.mm], [9.mm,9.mm,188.mm], [-9.mm,9.mm,188.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Floating X slide (bot)"] || model.materials.add("Floating X slide (bot)")
+  mat = model.materials["Horizontal X carriage (bot)"] || model.materials.add("Horizontal X carriage (bot)")
   mat.color = Sketchup::Color.new(184, 200, 216)
   mat.alpha = 1.0
   grp.material = mat
@@ -292,7 +349,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-8.mm,-17.mm,164.mm], [8.mm,-17.mm,164.mm], [8.mm,-9.mm,164.mm], [-8.mm,-9.mm,164.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(36.mm)
-  mat = model.materials["Floating X slide (bot)"] || model.materials.add("Floating X slide (bot)")
+  mat = model.materials["Horizontal X carriage (bot)"] || model.materials.add("Horizontal X carriage (bot)")
   mat.color = Sketchup::Color.new(184, 200, 216)
   mat.alpha = 1.0
   grp.material = mat
@@ -454,22 +511,79 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Carriage bracket to X-slide (top)
   grp = ents.add_group
   grp.name = "Carriage bracket to X-slide (top)"
-  face = grp.entities.add_face([-30.mm,-8.mm,2216.mm], [4.mm,-8.mm,2216.mm], [4.mm,8.mm,2216.mm], [-30.mm,8.mm,2216.mm])
+  face = grp.entities.add_face([-30.mm,-8.mm,2222.mm], [4.mm,-8.mm,2222.mm], [4.mm,8.mm,2222.mm], [-30.mm,8.mm,2222.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
+  face.pushpull(12.mm)
   mat = model.materials["Carriage bracket to X-slide (bot)"] || model.materials.add("Carriage bracket to X-slide (bot)")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Floating X slide (top)
+  # Horizontal X slide rail (top)
   grp = ents.add_group
-  grp.name = "Floating X slide (top)"
-  face = grp.entities.add_face([-24.mm,-11.mm,2220.mm], [24.mm,-11.mm,2220.mm], [24.mm,11.mm,2220.mm], [-24.mm,11.mm,2220.mm])
+  grp.name = "Horizontal X slide rail (top)"
+  face = grp.entities.add_face([-70.mm,-6.mm,2222.mm], [70.mm,-6.mm,2222.mm], [70.mm,6.mm,2222.mm], [-70.mm,6.mm,2222.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Floating X slide (bot)"] || model.materials.add("Floating X slide (bot)")
+  face.pushpull(10.mm)
+  mat = model.materials["Depth slide rail Y (~2.2m) (bot)"] || model.materials.add("Depth slide rail Y (~2.2m) (bot)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X carriage (top)
+  grp = ents.add_group
+  grp.name = "Horizontal X carriage (top)"
+  face = grp.entities.add_face([-20.mm,-11.mm,2210.mm], [20.mm,-11.mm,2210.mm], [20.mm,11.mm,2210.mm], [-20.mm,11.mm,2210.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["Horizontal X carriage (bot)"] || model.materials.add("Horizontal X carriage (bot)")
   mat.color = Sketchup::Color.new(184, 200, 216)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X grip tab F (top)
+  grp = ents.add_group
+  grp.name = "X grip tab F (top)"
+  face = grp.entities.add_face([-20.mm,-13.mm,2216.mm], [20.mm,-13.mm,2216.mm], [20.mm,-6.mm,2216.mm], [-20.mm,-6.mm,2216.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Horizontal X carriage (bot)"] || model.materials.add("Horizontal X carriage (bot)")
+  mat.color = Sketchup::Color.new(184, 200, 216)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X grip tab B (top)
+  grp = ents.add_group
+  grp.name = "X grip tab B (top)"
+  face = grp.entities.add_face([-20.mm,6.mm,2216.mm], [20.mm,6.mm,2216.mm], [20.mm,13.mm,2216.mm], [-20.mm,13.mm,2216.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Horizontal X carriage (bot)"] || model.materials.add("Horizontal X carriage (bot)")
+  mat.color = Sketchup::Color.new(184, 200, 216)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X cam clamp body (top)
+  grp = ents.add_group
+  grp.name = "X cam clamp body (top)"
+  face = grp.entities.add_face([22.mm,34.mm,2214.mm], [36.mm,34.mm,2214.mm], [36.mm,48.mm,2214.mm], [22.mm,48.mm,2214.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Depth cam clamp body (bot)"] || model.materials.add("Depth cam clamp body (bot)")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X clamp lever (top)
+  grp = ents.add_group
+  grp.name = "X clamp lever (top)"
+  ge = grp.entities
+  circle = ge.add_circle([26.mm,48.mm,2221.mm], [0,1,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(54.mm)
+  mat = model.materials["Depth cam clamp body (bot)"] || model.materials.add("Depth cam clamp body (bot)")
+  mat.color = Sketchup::Color.new(58, 58, 64)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -560,7 +674,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-9.mm,-9.mm,2212.mm], [9.mm,-9.mm,2212.mm], [9.mm,9.mm,2212.mm], [-9.mm,9.mm,2212.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Floating X slide (bot)"] || model.materials.add("Floating X slide (bot)")
+  mat = model.materials["Horizontal X carriage (bot)"] || model.materials.add("Horizontal X carriage (bot)")
   mat.color = Sketchup::Color.new(184, 200, 216)
   mat.alpha = 1.0
   grp.material = mat
@@ -571,7 +685,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-9.mm,-9.mm,2188.mm], [9.mm,-9.mm,2188.mm], [9.mm,9.mm,2188.mm], [-9.mm,9.mm,2188.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Floating X slide (bot)"] || model.materials.add("Floating X slide (bot)")
+  mat = model.materials["Horizontal X carriage (bot)"] || model.materials.add("Horizontal X carriage (bot)")
   mat.color = Sketchup::Color.new(184, 200, 216)
   mat.alpha = 1.0
   grp.material = mat
@@ -582,7 +696,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([-8.mm,-17.mm,2188.mm], [8.mm,-17.mm,2188.mm], [8.mm,-9.mm,2188.mm], [-8.mm,-9.mm,2188.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(36.mm)
-  mat = model.materials["Floating X slide (bot)"] || model.materials.add("Floating X slide (bot)")
+  mat = model.materials["Horizontal X carriage (bot)"] || model.materials.add("Horizontal X carriage (bot)")
   mat.color = Sketchup::Color.new(184, 200, 216)
   mat.alpha = 1.0
   grp.material = mat
@@ -657,13 +771,13 @@ tt.layer = model.layers["Labels"] rescue nil
 tt = entities.add_text("Single U-joint (Ruland US12-6-6-SS) — tilt X + swing Z", Geom::Point3d.new(-30.mm, -4.mm, 200.mm), Geom::Vector3d.new(-60.mm, -40.mm, 10.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("Depth friction slide (~2.2m) + cam clamp", Geom::Point3d.new(22.mm, 400.mm, 156.mm), Geom::Vector3d.new(55.mm, 45.mm, 0.mm))
+tt = entities.add_text("Depth (Y) slide — produces TILT + SWING (+ focus)", Geom::Point3d.new(22.mm, 400.mm, 156.mm), Geom::Vector3d.new(55.mm, 45.mm, 0.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("Vertical friction slide + cam clamp", Geom::Point3d.new(-36.mm, 40.mm, 260.mm), Geom::Vector3d.new(-60.mm, -45.mm, 0.mm))
+tt = entities.add_text("Vertical (Z) slide — absorbs TILT foreshortening", Geom::Point3d.new(-36.mm, 40.mm, 260.mm), Geom::Vector3d.new(-60.mm, -45.mm, 0.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("Floating X slide (free)", Geom::Point3d.new(24.mm, 0.mm, 170.mm), Geom::Vector3d.new(55.mm, 45.mm, 0.mm))
+tt = entities.add_text("Horizontal (X) slide — absorbs SWING foreshortening", Geom::Point3d.new(24.mm, 40.mm, 180.mm), Geom::Vector3d.new(55.mm, 45.mm, 0.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
 tt = entities.add_text("Film plane 4499 x 2088 (mechanism ~150 top + bottom)", Geom::Point3d.new(300.mm, 53.mm, 1194.mm), Geom::Vector3d.new(60.mm, 45.mm, 0.mm))

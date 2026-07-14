@@ -332,9 +332,9 @@ def draw_ujoint_section():
                perpendicular=True, font=FONT)
 
     # ── leaders ──
-    leader(ax, -46, 0, -68, 22, "OUR carrier stub shaft (we add)\n→ bolts to the cross-slide carriage",
+    leader(ax, -46, 0, -68, 22, "OUR carrier stub shaft (we add)\n→ clamped to the X-slide carriage (4040N12, below)",
            ha="left", fs=6.3, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 48, 0, 50, 22, "OUR frame stub shaft (we add)\n→ bolts to the film-frame corner",
+    leader(ax, 48, 0, 50, 22, "OUR frame stub shaft (we add)\n→ clamped to the film-frame corner",
            ha="left", fs=6.3, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 30, 8, 42, 33, "hub SET SCREWS lock the\nstub shaft on a flat (both hubs)",
            ha="left", fs=6.3, color=OUT, font=FONT, bbox=LBL_BG)
@@ -399,9 +399,13 @@ def draw_sheet():
         "3. Push each slide into position; the adjustable-friction slide holds it, then throw the "
         "cam clamp to lock for the shot and for transport.",
         "4. The U-joint (Ruland US12-6-6-SS, 303 SS, self-lube sintered-bronze, grease-free) gives "
-        "tilt + swing and locks twist so the flat plane stays square. Upper (ceiling) corners hang "
-        "in tension; lower (floor) corners bear in compression — the captive carriages take both.",
-    ], 2, 96, 6.2, fs=7, title_fs=7.5, color=DIM, width=96, wrap=64, font=FONT)
+        "tilt + swing and locks twist so the flat plane stays square, and is sealed by a nitrile boot "
+        "(Ruland UBOOT12/19-NI-KIT) against the wash. Upper (ceiling) corners hang in tension; lower "
+        "(floor) corners bear in compression — the captive carriages take both.",
+        "5. Off-the-shelf throughout: each 3/8 stub shaft clamps to the carrier / frame in a 304 SS "
+        "base-mount shaft support (McMaster 4040N12); the slides are igus DryLin (self-lube polymer "
+        "liner on the rail — no metal-on-metal, adjustable drag).",
+    ], 2, 96, 6.0, fs=6.8, title_fs=7.3, color=DIM, width=96, wrap=66, font=FONT)
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")

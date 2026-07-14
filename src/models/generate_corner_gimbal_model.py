@@ -53,7 +53,8 @@ def corner(tag, cx, cz, sv, cin):
 
     xo = cx - cin * 30                                  # vertical slide, just outboard of the corner
     xr0 = cx if cin > 0 else cx - 170                   # horizontal rail extends toward panel centre
-    band("Depth slide rail Y", cx - 8, 16, FP_Y - 470, 540, 0, 16, C_STEEL)
+    # full-length depth rail (the focus/tilt/swing travel), ceiling for top corners / floor for bottom
+    band("Depth slide rail Y", cx - 8, 16, ov.FP_Y_MIN, FP_Y - ov.FP_Y_MIN + 40, 0, 16, C_STEEL)
     band("Depth carriage", cx - 22, 44, FP_Y - 30, 60, 16, 40, C_CAR)
     band("Vertical Z slide rail", xo - 7, 14, FP_Y - 8, 16, 18, 138, C_STEEL)
     band("Vertical Z carriage", xo - 16, 32, FP_Y - 14, 28, 58, 108, C_CAR)
@@ -64,12 +65,16 @@ def corner(tag, cx, cz, sv, cin):
 
 
 def corners():
-    return "\n".join([
+    P = [
         corner("BL", X_L, CZ_F, +1, +1),
         corner("BR", X_R, CZ_F, +1, -1),
         corner("TL", X_L, CZ_C, -1, +1),
         corner("TR", X_R, CZ_C, -1, -1),
-    ])
+    ]
+    # faint floor + ceiling so the UPPER (ceiling) and LOWER (floor) rails read as mounted structure
+    P.append(ov.ruby_box("Floor", X_L - 250, 0, -12, (X_R - X_L) + 500, FP_Y + 250, 12, color=C_STEEL, alpha=0.05))
+    P.append(ov.ruby_box("Ceiling", X_L - 250, 0, CH, (X_R - X_L) + 500, FP_Y + 250, 12, color=C_STEEL, alpha=0.05))
+    return "\n".join(P)
 
 
 def film_plane():
@@ -101,6 +106,8 @@ tt.layer = model.layers["Labels"] rescue nil''')
     txt(f"Film plane 4499 x {PZ1 - PZ0} (mechanism ~{BUILD} top + bottom)", 2400, FP_Y, PH_Z, 60, 45, 20)
     txt("TOP pair vs BOTTOM pair depth = TILT", X_L, FP_Y, CH, -60, -40, 30)
     txt("LEFT pair vs RIGHT pair depth = SWING", X_R, FP_Y, PZ0, 60, 40, -20)
+    txt("UPPER rails (ceiling) — TOP corners hang (tension)", 2400, FP_Y - 350, CH, 45, -40, 12)
+    txt("LOWER rails (floor) — BOTTOM corners bear (compression)", 2400, FP_Y - 350, 0, 45, -40, -12)
     # one corner (BL) annotated with the three slides + joint
     txt("DEPTH slide (Y) — drives tilt + swing", X_L, FP_Y - 300, PZ0 - 40, -55, -40, -10)
     txt("VERTICAL slide (Z) — absorbs TILT", X_L - 30, FP_Y, PZ0 + 20, -60, -40, 10)

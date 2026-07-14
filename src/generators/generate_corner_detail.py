@@ -243,39 +243,39 @@ def _setscrew(ax, cx, y0, w=5.0, h=6.5, hub_top=None):
 
 
 def _stub_carrier(ax):
-    """Section: the stub shaft anchored to the mechanism (carrier) with an OFF-THE-SHELF flange-mount
-    shaft support — its flange bolts to the X-slide carriage; its clamp collar grips the 3/8 stub.
-    The frame end is identical (to the film-frame corner)."""
+    """Section: the stub shaft anchored to the mechanism with an off-the-shelf 304 SS base-mount
+    clamping shaft support (McMaster 4040N12) — its base bolts to the X-slide carriage and a removable
+    cap with two clamp screws grips the 3/8 stub. The frame end is identical (to the film-frame corner)."""
     C_SS = "#7C7C86"
-    ax.set_xlim(-30, 144); ax.set_ylim(-38, 46); ax.set_aspect("equal"); ax.axis("off")
-    ax.plot([14, 124], [0, 0], color="#2060A0", lw=0.6, dashes=(8, 3, 2, 3), zorder=2)      # shaft axis
-    # carrier plate (the X-slide carriage face)
-    draw_rect(ax, 0, -30, 12, 60, fc=C_STEEL, color=OUT, lw=1.2, zorder=4)
-    hatch_rect(ax, 0, -30, 12, 60, color="#7A8AA0", hatch="////", lw=0.0)
-    # flange-mount shaft support (ONE off-the-shelf part): flange + boss + removable clamp collar
-    _body(ax, 12, -18, 9, 36)          # flange (base, bolts to the carrier)
-    _body(ax, 21, -11, 19, 22)         # boss around the shaft
-    _body(ax, 40, -13, 12, 26)         # removable clamp collar
-    _setscrew(ax, 46, 5.5, 4.5, 8, hub_top=13)                              # collar clamp screw (pinches shaft)
-    # stub shaft through the support, extending right toward the U-joint
-    draw_rect(ax, 14, -4.6, 110, 9.2, fc=C_STEEL, color=OUT, lw=1.0, zorder=8)
-    ax.plot([40, 52], [4.6, 4.6], color=OUT, lw=0.4, zorder=9)              # shaft flat under the clamp screw
-    # 2 mounting cap screws through the flange into the carrier (heads on the flange face)
-    for by in (14, -14):
-        draw_rect(ax, 2, by - 1.9, 16, 3.8, fc=C_SS, color=OUT, lw=0.7, zorder=9)           # shank
-        ax.add_patch(plt.Rectangle((18, by - 3), 4, 6, fc=C_SS, ec=OUT, lw=0.7, zorder=10)) # head
-    for bx in (110, 118):                                                  # shaft break marks
+    ax.set_xlim(-34, 140); ax.set_ylim(-42, 30); ax.set_aspect("equal"); ax.axis("off")
+    ax.plot([-6, 126], [0, 0], color="#2060A0", lw=0.6, dashes=(8, 3, 2, 3), zorder=2)        # shaft axis
+    # carrier bracket (the X-slide carriage face the block bolts down to)
+    draw_rect(ax, -14, -34, 150, 18, fc=C_STEEL, color=OUT, lw=1.2, zorder=4)
+    hatch_rect(ax, -14, -34, 150, 18, color="#7A8AA0", hatch="////", lw=0.0)
+    # pillow-block base + feet (base up to the split at y0), then the removable clamp cap
+    _body(ax, 9, -16, 34, 16)          # base body
+    _body(ax, 0, -16, 9, 8)            # left foot
+    _body(ax, 43, -16, 9, 8)           # right foot
+    _body(ax, 9, 0, 34, 9)             # removable clamp cap (above the split at the shaft centre)
+    # stub shaft through the bore, extending right toward the U-joint
+    draw_rect(ax, -6, -4.6, 130, 9.2, fc=C_STEEL, color=OUT, lw=1.0, zorder=8)
+    _setscrew(ax, 17, 2, 4, 7, hub_top=9); _setscrew(ax, 35, 2, 4, 7, hub_top=9)   # 2 clamp screws (6-32)
+    # 2 mounting screws (base feet -> carrier)
+    for fx in (4.5, 47.5):
+        draw_rect(ax, fx - 1.8, -30, 3.6, 15, fc=C_SS, color=OUT, lw=0.7, zorder=9)           # shank down
+        ax.add_patch(plt.Rectangle((fx - 3, -12), 6, 4, fc=C_SS, ec=OUT, lw=0.7, zorder=10))  # head on the foot
+    for bx in (112, 120):                                                  # shaft break marks
         ax.plot([bx - 3, bx + 3], [-7, 7], color=OUT, lw=0.8, zorder=9)
 
-    draw_dim_v(ax, 136, -4.6, 4.6, "9.5mm\n(3/8)", offset=11, fs=5.5, color=DIM, right=True,
+    draw_dim_v(ax, 132, -4.6, 4.6, "9.5mm\n(3/8)", offset=11, fs=5.5, color=DIM, right=True,
                perpendicular=True, font=FONT)
-    leader(ax, 6, -24, -30, -33, "X-slide carriage plate (the CARRIER)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 30, -14, 46, -33, "FLANGE-MOUNT SHAFT SUPPORT (303 SS, off-the-shelf)\n— its flange bolts to the carrier", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 46, 13, 64, 34, "clamp collar + screw grip the stub shaft\n(removable collar for access)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 12, 14, -30, 26, "2x M5 cap screws\n(flange → carrier)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 92, 0, 100, 22, "same stub shaft → into the U-joint hub (section above)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-30, 44, "STUB SHAFT → CARRIER CONNECTION  (off-the-shelf flange-mount shaft support; the FRAME end is identical)",
-            fontsize=7.5, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+    leader(ax, 72, -25, 82, -36, "X-slide carriage face (the CARRIER)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 26, -12, 46, -34, "base-mount clamping shaft support\n(McMaster 4040N12, 304 SS)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 26, 9, 42, 24, "2x clamp screws (6-32) pull the removable\ncap DOWN onto the stub shaft", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 4.5, -22, -34, -33, "2x mounting screws\n(base → carrier)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 95, 0, 100, 20, "same stub shaft → into the U-joint hub (section above)", ha="left", fs=6.0, color=OUT, font=FONT, bbox=LBL_BG)
+    ax.text(-34, 28, "STUB SHAFT → CARRIER CONNECTION  (McMaster 4040N12 base-mount clamp, 304 SS; the FRAME end is identical)",
+            fontsize=7.3, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
 
 def draw_ujoint_section():

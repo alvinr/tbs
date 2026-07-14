@@ -103,6 +103,11 @@ Getting it right was hard until we grounded it; here is the reasoning, in order.
   **dry/grease-free** and carries load through its own material, the same corrosion-safe, wash-down choice
   igus/SKF sell (and telescope makers use — Dobsonian PTFE pads). **303 stainless** suits the splash/rinse
   exposure here; step to a **316** joint only if it is soaked rather than rinsed. (Research doc §6.)
+- **A nitrile boot seals each joint** ([Ruland UBOOT12/19-NI-KIT](https://www.ruland.com/uboot12-19-ni-kit.html),
+  single bellows, Ø0.745" fit, zip-tied into a groove on each yoke) — it keeps the ferricyanide/citric wash
+  and debris out of the bronze bearings. Nitrile resists water/alcohol well. We fit it **DRY** (a contaminant
+  barrier only), **not** grease-packed, consistent with the grease-free bearing. The **DryLin slides**
+  likewise need no seals — dry-running polymer is unaffected by the wash.
 
 ## 6. Why four corners at all — and not a single central gimbal
 
@@ -122,8 +127,10 @@ Per corner (×4):
 - **1 × single universal joint** — [Ruland US12-6-6-SS](https://www.ruland.com/us12-6-6-ss.html): 303
   stainless, self-lubricating **sintered-bronze plain bearing**, **45° max articulation**, 3/8" bore,
   68 mm long, grease-free — the off-the-shelf 2-axis torsion-locked pivot (~$195, in stock)
-- **2 × stub-shaft mount** — a short 3/8" stub + clamp/plate at each yoke: one to the floating X slide,
-  one to the film-frame corner (drilled plate, not a precision-reamed gimbal)
+- **2 × stub-shaft mount** — a short 3/8" stub + flange-mount shaft support at each yoke: one to the
+  floating X slide, one to the film-frame corner (off-the-shelf clamp, not a precision-reamed gimbal)
+- **1 × protective boot** — [Ruland UBOOT12/19-NI-KIT](https://www.ruland.com/uboot12-19-ni-kit.html):
+  nitrile single bellows, zip-tied to each yoke; fitted **dry** to seal the bronze bearings from the wash
 - **Depth (Y): friction slide (~2.2 m) + cam clamp** — produces tilt + swing (+ focus); push, then lock
 - **Vertical (Z): friction slide + cam clamp** — absorbs the **tilt** foreshortening; holds when released, then locks
 - **Horizontal (X): float/friction slide + cam clamp** — absorbs the **swing** foreshortening; floats free during setup, then locks

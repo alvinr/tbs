@@ -13,7 +13,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $110 | $265 |
-| 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,317 | $3,805 |
+| 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,309 | $3,787 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,356 | $7,929 |
 | 6. Electrical — power, circuits, wiring | $2,608 | $3,003 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,405 | $2,130 |
@@ -22,15 +22,15 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 7c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,140 | $1,695 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $203 | $203 |
 | 8. Cooling & ventilation | $757 | $907 |
-| 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
+| 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,120 | $2,700 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$22,681** | **~$33,652** |
+| **TOTAL (base build + 50-print run)** | **~$22,583** | **~$33,354** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
-*Line 9 (printmaking chemistry) is the **Mike Ware AmFe** recipe with the corrected ~$300 substrate, re-summed into the TOTAL: **Low = Lean ⅓-Ware (~$1,210), High = Rich full-Ware (~$2,980)**, working default Standard ½-Ware (~$1,650). The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md); the TOTAL spans the Lean–Rich range, so it shifts within ±~$1,330 of the §9 line once a tier is locked.*
+*Line 9 (printmaking chemistry) is the **Mike Ware AmFe** recipe with the corrected ~$300 substrate, re-summed into the TOTAL: **Low = Lean ⅓-Ware (~$1,120), High = Rich full-Ware (~$2,700)**, working default Standard ½-Ware (~$1,520). The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md); the TOTAL spans the Lean–Rich range, so it shifts within ±~$1,330 of the §9 line once a tier is locked.*
 
 ---
 
@@ -102,9 +102,9 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | Ammonium dichromate | 1 run | Photographers' Formulary | chemistry | $25 |
-| Ammonium iron(III) oxalate (AmFe) | 19.5 kg | Photographers' Formulary | chemistry | $1,170 |
-| Potassium ferricyanide | 6.5 kg | Bostick & Sullivan | chemistry | $158 |
-| **chemistry-reagents subtotal** | | | | **$1,353** |
+| Ammonium iron(III) oxalate (AmFe) | 17.5 kg | Photographers' Formulary | chemistry | $1,050 |
+| Potassium ferricyanide | 5.8 kg | Bostick & Sullivan | chemistry | $141 |
+| **chemistry-reagents subtotal** | | | | **$1,216** |
 
 ### container
 
@@ -210,7 +210,7 @@ indicative low–high estimates — get quotes before ordering.
 | 25mm welded D-ring | 8 ea | McMaster-Carr | ibc-frame | $40–$70 |
 | 316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black | 1 ea | McMaster-Carr | panel | $20–$35 |
 | Axle saddle clamps ×8 (304 SS flat-bar stock) | 1 2 ft bar | McMaster-Carr | spray | $10 |
-| Cam-lever spring clamp | 92 ea | McMaster-Carr | clamp | $276–$736 |
+| Cam-lever spring clamp | 90 ea | McMaster-Carr | clamp | $270–$720 |
 | Continuous (piano) hinge, 600 mm | 1 ea | McMaster-Carr | shelf | $20 |
 | Corridor panel mount hardware (brackets + fasteners) | 1 lot | Home Depot | water | $25–$50 |
 | Cushioned pipe clip | 16 ea | Amazon | water | $16–$32 |
@@ -223,9 +223,9 @@ indicative low–high estimates — get quotes before ordering.
 | M12 × 40 bolt, Grade 8.8 | 12 ea | McMaster-Carr | ibc-frame | $12–$22 |
 | M12×80mm through-bolt kit | 58 ea | McMaster-Carr | walkway | $87–$145 |
 | M12×90mm hex through-bolt + nut + washers, SS | 28 ea | McMaster-Carr | film | $70 |
-| M5 SS Nylock nut | 184 ea | McMaster-Carr | clamp | $15 |
+| M5 SS Nylock nut | 180 ea | McMaster-Carr | clamp | $14 |
 | M5×16 mm CSK screws | 8 ea | McMaster-Carr | shelf | $4 |
-| M5×16 SS socket head bolt | 184 ea | McMaster-Carr | clamp | $46 |
+| M5×16 SS socket head bolt | 180 ea | McMaster-Carr | clamp | $45 |
 | M6 bolt+nut+washer set, SS (panel mount) | 4 set | McMaster-Carr | electrical | $5 |
 | M6 SS hex bolt + nut | 1 ea | McMaster-Carr | spray | $1 |
 | M6 SS hex bolts + flange nuts | 12 ea | McMaster-Carr | tray | $12 |
@@ -245,7 +245,7 @@ indicative low–high estimates — get quotes before ordering.
 | Stainless fasteners + nylon isolation washers | 1 lot | McMaster-Carr | lightlock | $30–$50 |
 | Top + bottom wall stays + 4-bolt anchor plates | 2 set | McMaster-Carr | swing | $90–$160 |
 | Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
-| **fasteners-hardware subtotal** | | | | **$1,367–$2,319** |
+| **fasteners-hardware subtotal** | | | | **$1,359–$2,301** |
 
 ### plastics-sheet
 
@@ -419,15 +419,15 @@ indicative low–high estimates — get quotes before ordering.
 |----------|-----------|-------|-----------|
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 17 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,961–$3,181 |
-| McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $2,064–$3,003 |
+| McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $2,056–$2,985 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,301–$1,638 |
 | Amazon | 58 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,208–$1,530 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
-| Photographers' Formulary | 2 | chemistry-reagents | $1,195 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | Home Depot | 23 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $876–$1,146 |
+| Photographers' Formulary | 2 | chemistry-reagents | $1,075 |
 | Renogy | 3 | electrical-power | $833–$975 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
@@ -447,8 +447,8 @@ indicative low–high estimates — get quotes before ordering.
 | Waytek Wire | 7 | electrical-distribution | $208 |
 | Bearing World | 1 | bearings-motion | $110–$190 |
 | AllFilters | 1 | water-equipment | $114–$186 |
-| Bostick & Sullivan | 1 | chemistry-reagents | $158 |
 | Lenox Laser | 1 | stainless-sheet | $50–$150 |
+| Bostick & Sullivan | 1 | chemistry-reagents | $141 |
 | Grainger | 1 | bearings-motion | $140 |
 | Ferguson | 4 | plumbing-fittings | $74–$120 |
 | JME Sales | 1 | plumbing-fittings | $64–$120 |
@@ -476,18 +476,18 @@ suppliers, and the muslin substrate — is in the Procurement BOM above (`chemis
 **recipe + per-print basis** only.*
 
 **Mike Ware New Cyanotype** — 3:1 ammonium iron(III) oxalate (AmFe) : potassium ferricyanide by weight
-+ ammonium dichromate for contrast, applied as **two wet-on-wet coats** over the 10.74 m² active plane.
++ ammonium dichromate for contrast, applied as **two wet-on-wet coats** over the 9.62 m² active plane.
 
 | Reagent | Per print (Standard ½-Ware) | × 50 prints |
 |---------|-----------------------------|-------------|
-| Ammonium iron(III) oxalate (AmFe) | <!-- BEGIN costing:om-amfe-g-standard -->390<!-- END costing:om-amfe-g-standard -->g | <!-- BEGIN costing:om-amfe-kg-standard -->19.5<!-- END costing:om-amfe-kg-standard --> kg |
+| Ammonium iron(III) oxalate (AmFe) | <!-- BEGIN costing:om-amfe-g-standard -->350<!-- END costing:om-amfe-g-standard -->g | <!-- BEGIN costing:om-amfe-kg-standard -->17.5<!-- END costing:om-amfe-kg-standard --> kg |
 | Potassium ferricyanide (3:1) | 130g | 6.5 kg |
 | Ammonium dichromate (contrast, 0.1–0.4%) | ~1–4g | ~0.2 kg |
 | Distilled water | ~2.6 L | ~130 L |
 
 Standard ½-Ware is the working default; the leanest/richest viable strength — and the final order — is
-pinned by the [Sensitizer Trials](sensitizer-trials.md). **Run cost ~$1,650 (Standard), range ~$1,210
-(Lean) – ~$2,980 (Rich)** per 50-print run (~$24–60/print), incl. ~$300 muslin substrate — ~445 linear
+pinned by the [Sensitizer Trials](sensitizer-trials.md). **Run cost ~$1,520 (Standard), range ~$1,120
+(Lean) – ~$2,700 (Rich)** per 50-print run (~$22–54/print), incl. ~$300 muslin substrate — ~399 linear
 yards of 60" unbleached cotton (pre-wash twice in hot water, no detergent, to remove sizing). The
 summary table maps Low = Lean, High = Rich.
 

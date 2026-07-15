@@ -56,6 +56,13 @@ bath is available. Both are cheap; nothing downstream is finalized until they pa
   cam clamps. (Paired with the UHMW test — same bath, same session.)
 
 ## Design / 3D (deferred)
+- [ ] **FP_H 2,388→2,138 cascade — `.skp` re-sends PENDING (code side DONE).** Branch `film-plane-redesign`:
+  the active film-plane height dropped to 2,138mm (low-profile wheels-on-pipe corner, BUILD 140→110). Constants,
+  parts/costing (clamp 92→90, −$8/$13/$18), all FP_H diagrams, weight, and the report prose/config table are
+  cascaded + committed; `overview.rb` (film-plane geometry) and `corner-gimbal.rb` (BUILD 110) regenerated.
+  **Alvin owes two re-saves:** (1) open **overview.skp** → re-send `generate_sketchup_model.py` → save + re-upload;
+  (2) open **corner-gimbal.skp** (still BUILD 140 in repo) → re-send `generate_corner_gimbal_model.py` → save +
+  re-upload. Commit each `.skp` after its upload. (Corner-gimbal Sketchfab UID `572b4aaa2d394de1b8852160d7cdcfc3`.)
 - [x] **spraybar.skp axle-saddle re-spec — DONE.** The axle-retention saddle was re-specced to a fabricated
   1/8" (3.18mm) × 3/4" (19mm) 304 SS flat-bar clamp with 12mm M5 feet (was a schematic 2mm/6mm-wide token that
   couldn't hold its own bolt). 2D (sheet 2 cross-section + sheet 6 plan) + `parts.py`/report/master +

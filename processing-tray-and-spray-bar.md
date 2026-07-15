@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-Cyanotype prints on muslin substrate (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm) require a controlled flood wash
+Cyanotype prints on muslin substrate (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm) require a controlled flood wash
 to remove unexposed sensitizer chemistry after UV exposure. The processing tray provides
 the containment surface and the spray bar delivers even water distribution across the
 full print width. Together they form the print washing subsystem of the

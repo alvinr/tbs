@@ -159,7 +159,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z carriage BL
   grp = ents.add_group
   grp.name = "Vertical Z carriage BL"
-  face = grp.entities.add_face([103.mm,2247.mm,110.mm], [137.mm,2247.mm,110.mm], [137.mm,2277.mm,110.mm], [103.mm,2277.mm,110.mm])
+  face = grp.entities.add_face([103.mm,2247.mm,70.mm], [137.mm,2247.mm,70.mm], [137.mm,2277.mm,70.mm], [103.mm,2277.mm,70.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Vertical Z slide rail (TILT ~280mm, green) BL"] || model.materials.add("Vertical Z slide rail (TILT ~280mm, green) BL")
@@ -170,7 +170,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X slide rail (SWING ~260mm, purple) BL
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING ~260mm, purple) BL"
-  face = grp.entities.add_face([150.mm,2255.mm,123.mm], [410.mm,2255.mm,123.mm], [410.mm,2269.mm,123.mm], [150.mm,2269.mm,123.mm])
+  face = grp.entities.add_face([150.mm,2255.mm,83.mm], [410.mm,2255.mm,83.mm], [410.mm,2269.mm,83.mm], [150.mm,2269.mm,83.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X slide rail (SWING ~260mm, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING ~260mm, purple) BL")
@@ -181,7 +181,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X carriage BL
   grp = ents.add_group
   grp.name = "Horizontal X carriage BL"
-  face = grp.entities.add_face([126.mm,2250.mm,129.mm], [174.mm,2250.mm,129.mm], [174.mm,2274.mm,129.mm], [126.mm,2274.mm,129.mm])
+  face = grp.entities.add_face([126.mm,2250.mm,89.mm], [174.mm,2250.mm,89.mm], [174.mm,2274.mm,89.mm], [126.mm,2274.mm,89.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Horizontal X slide rail (SWING ~260mm, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING ~260mm, purple) BL")
@@ -192,7 +192,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-joint BL
   grp = ents.add_group
   grp.name = "U-joint BL"
-  face = grp.entities.add_face([138.mm,2250.mm,145.mm], [162.mm,2250.mm,145.mm], [162.mm,2274.mm,145.mm], [138.mm,2274.mm,145.mm])
+  face = grp.entities.add_face([138.mm,2250.mm,105.mm], [162.mm,2250.mm,105.mm], [162.mm,2274.mm,105.mm], [138.mm,2274.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
   mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
@@ -334,7 +334,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z carriage BR
   grp = ents.add_group
   grp.name = "Vertical Z carriage BR"
-  face = grp.entities.add_face([4662.mm,2247.mm,110.mm], [4696.mm,2247.mm,110.mm], [4696.mm,2277.mm,110.mm], [4662.mm,2277.mm,110.mm])
+  face = grp.entities.add_face([4662.mm,2247.mm,70.mm], [4696.mm,2247.mm,70.mm], [4696.mm,2277.mm,70.mm], [4662.mm,2277.mm,70.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Vertical Z slide rail (TILT ~280mm, green) BL"] || model.materials.add("Vertical Z slide rail (TILT ~280mm, green) BL")
@@ -345,7 +345,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X slide rail (SWING ~260mm, purple) BR
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING ~260mm, purple) BR"
-  face = grp.entities.add_face([4389.mm,2255.mm,123.mm], [4649.mm,2255.mm,123.mm], [4649.mm,2269.mm,123.mm], [4389.mm,2269.mm,123.mm])
+  face = grp.entities.add_face([4389.mm,2255.mm,83.mm], [4649.mm,2255.mm,83.mm], [4649.mm,2269.mm,83.mm], [4389.mm,2269.mm,83.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X slide rail (SWING ~260mm, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING ~260mm, purple) BL")
@@ -356,7 +356,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X carriage BR
   grp = ents.add_group
   grp.name = "Horizontal X carriage BR"
-  face = grp.entities.add_face([4625.mm,2250.mm,129.mm], [4673.mm,2250.mm,129.mm], [4673.mm,2274.mm,129.mm], [4625.mm,2274.mm,129.mm])
+  face = grp.entities.add_face([4625.mm,2250.mm,89.mm], [4673.mm,2250.mm,89.mm], [4673.mm,2274.mm,89.mm], [4625.mm,2274.mm,89.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Horizontal X slide rail (SWING ~260mm, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING ~260mm, purple) BL")
@@ -367,7 +367,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-joint BR
   grp = ents.add_group
   grp.name = "U-joint BR"
-  face = grp.entities.add_face([4637.mm,2250.mm,145.mm], [4661.mm,2250.mm,145.mm], [4661.mm,2274.mm,145.mm], [4637.mm,2274.mm,145.mm])
+  face = grp.entities.add_face([4637.mm,2250.mm,105.mm], [4661.mm,2250.mm,105.mm], [4661.mm,2274.mm,105.mm], [4637.mm,2274.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
   mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
@@ -509,7 +509,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z carriage TL
   grp = ents.add_group
   grp.name = "Vertical Z carriage TL"
-  face = grp.entities.add_face([103.mm,2247.mm,2228.mm], [137.mm,2247.mm,2228.mm], [137.mm,2277.mm,2228.mm], [103.mm,2277.mm,2228.mm])
+  face = grp.entities.add_face([103.mm,2247.mm,2268.mm], [137.mm,2247.mm,2268.mm], [137.mm,2277.mm,2268.mm], [103.mm,2277.mm,2268.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Vertical Z slide rail (TILT ~280mm, green) BL"] || model.materials.add("Vertical Z slide rail (TILT ~280mm, green) BL")
@@ -520,7 +520,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X slide rail (SWING ~260mm, purple) TL
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING ~260mm, purple) TL"
-  face = grp.entities.add_face([150.mm,2255.mm,2251.mm], [410.mm,2255.mm,2251.mm], [410.mm,2269.mm,2251.mm], [150.mm,2269.mm,2251.mm])
+  face = grp.entities.add_face([150.mm,2255.mm,2291.mm], [410.mm,2255.mm,2291.mm], [410.mm,2269.mm,2291.mm], [150.mm,2269.mm,2291.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X slide rail (SWING ~260mm, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING ~260mm, purple) BL")
@@ -531,7 +531,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X carriage TL
   grp = ents.add_group
   grp.name = "Horizontal X carriage TL"
-  face = grp.entities.add_face([126.mm,2250.mm,2237.mm], [174.mm,2250.mm,2237.mm], [174.mm,2274.mm,2237.mm], [126.mm,2274.mm,2237.mm])
+  face = grp.entities.add_face([126.mm,2250.mm,2277.mm], [174.mm,2250.mm,2277.mm], [174.mm,2274.mm,2277.mm], [126.mm,2274.mm,2277.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Horizontal X slide rail (SWING ~260mm, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING ~260mm, purple) BL")
@@ -542,7 +542,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-joint TL
   grp = ents.add_group
   grp.name = "U-joint TL"
-  face = grp.entities.add_face([138.mm,2250.mm,2223.mm], [162.mm,2250.mm,2223.mm], [162.mm,2274.mm,2223.mm], [138.mm,2274.mm,2223.mm])
+  face = grp.entities.add_face([138.mm,2250.mm,2263.mm], [162.mm,2250.mm,2263.mm], [162.mm,2274.mm,2263.mm], [138.mm,2274.mm,2263.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
   mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
@@ -684,7 +684,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z carriage TR
   grp = ents.add_group
   grp.name = "Vertical Z carriage TR"
-  face = grp.entities.add_face([4662.mm,2247.mm,2228.mm], [4696.mm,2247.mm,2228.mm], [4696.mm,2277.mm,2228.mm], [4662.mm,2277.mm,2228.mm])
+  face = grp.entities.add_face([4662.mm,2247.mm,2268.mm], [4696.mm,2247.mm,2268.mm], [4696.mm,2277.mm,2268.mm], [4662.mm,2277.mm,2268.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Vertical Z slide rail (TILT ~280mm, green) BL"] || model.materials.add("Vertical Z slide rail (TILT ~280mm, green) BL")
@@ -695,7 +695,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X slide rail (SWING ~260mm, purple) TR
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING ~260mm, purple) TR"
-  face = grp.entities.add_face([4389.mm,2255.mm,2251.mm], [4649.mm,2255.mm,2251.mm], [4649.mm,2269.mm,2251.mm], [4389.mm,2269.mm,2251.mm])
+  face = grp.entities.add_face([4389.mm,2255.mm,2291.mm], [4649.mm,2255.mm,2291.mm], [4649.mm,2269.mm,2291.mm], [4389.mm,2269.mm,2291.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X slide rail (SWING ~260mm, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING ~260mm, purple) BL")
@@ -706,7 +706,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X carriage TR
   grp = ents.add_group
   grp.name = "Horizontal X carriage TR"
-  face = grp.entities.add_face([4625.mm,2250.mm,2237.mm], [4673.mm,2250.mm,2237.mm], [4673.mm,2274.mm,2237.mm], [4625.mm,2274.mm,2237.mm])
+  face = grp.entities.add_face([4625.mm,2250.mm,2277.mm], [4673.mm,2250.mm,2277.mm], [4673.mm,2274.mm,2277.mm], [4625.mm,2274.mm,2277.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Horizontal X slide rail (SWING ~260mm, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING ~260mm, purple) BL")
@@ -717,7 +717,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-joint TR
   grp = ents.add_group
   grp.name = "U-joint TR"
-  face = grp.entities.add_face([4637.mm,2250.mm,2223.mm], [4661.mm,2250.mm,2223.mm], [4661.mm,2274.mm,2223.mm], [4637.mm,2274.mm,2223.mm])
+  face = grp.entities.add_face([4637.mm,2250.mm,2263.mm], [4661.mm,2250.mm,2263.mm], [4661.mm,2274.mm,2263.mm], [4637.mm,2274.mm,2263.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
   mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
@@ -757,9 +757,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Film plane (ghost)
   grp = ents.add_group
   grp.name = "Film plane (ghost)"
-  face = grp.entities.add_face([150.mm,2262.mm,155.mm], [4649.mm,2262.mm,155.mm], [4649.mm,2266.mm,155.mm], [150.mm,2266.mm,155.mm])
+  face = grp.entities.add_face([150.mm,2262.mm,125.mm], [4649.mm,2262.mm,125.mm], [4649.mm,2266.mm,125.mm], [150.mm,2266.mm,125.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2078.mm)
+  face.pushpull(2138.mm)
   mat = model.materials["Film plane (ghost)"] || model.materials.add("Film plane (ghost)")
   mat.color = Sketchup::Color.new(31, 59, 102)
   mat.alpha = 0.14
@@ -795,10 +795,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.material = mat
 
   # light cone — pinhole → 4 panel corners
-  ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(150.mm, 2262.mm, 2233.mm))
-  ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(4649.mm, 2262.mm, 2233.mm))
-  ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(150.mm, 2262.mm, 155.mm))
-  ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(4649.mm, 2262.mm, 155.mm))
+  ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(150.mm, 2262.mm, 2263.mm))
+  ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(4649.mm, 2262.mm, 2263.mm))
+  ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(150.mm, 2262.mm, 125.mm))
+  ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(4649.mm, 2262.mm, 125.mm))
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Pinhole"
@@ -810,13 +810,13 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
 tt = entities.add_text("PINHOLE (far wall) — the film plane faces it across the throw", Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Vector3d.new(60.mm, -50.mm, 30.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("Film plane 4499 x 2078 (mechanism ~140 top + bottom)", Geom::Point3d.new(2400.mm, 2262.mm, 1194.mm), Geom::Vector3d.new(60.mm, 45.mm, 20.mm))
+tt = entities.add_text("Film plane 4499 x 2138 (mechanism ~110 top + bottom)", Geom::Point3d.new(2400.mm, 2262.mm, 1194.mm), Geom::Vector3d.new(60.mm, 45.mm, 20.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
 tt = entities.add_text("TOP pair vs BOTTOM pair depth = TILT", Geom::Point3d.new(150.mm, 2262.mm, 2388.mm), Geom::Vector3d.new(-60.mm, -40.mm, 30.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("LEFT pair vs RIGHT pair depth = SWING", Geom::Point3d.new(4649.mm, 2262.mm, 155.mm), Geom::Vector3d.new(60.mm, 40.mm, -20.mm))
+tt = entities.add_text("LEFT pair vs RIGHT pair depth = SWING", Geom::Point3d.new(4649.mm, 2262.mm, 125.mm), Geom::Vector3d.new(60.mm, 40.mm, -20.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
 tt = entities.add_text("UPPER rails (ceiling) — TOP corners hang (tension)", Geom::Point3d.new(2400.mm, 1912.mm, 2388.mm), Geom::Vector3d.new(45.mm, -40.mm, 12.mm))
@@ -825,16 +825,16 @@ tt.layer = model.layers["Labels"] rescue nil
 tt = entities.add_text("LOWER rails (floor) — BOTTOM corners bear (compression)", Geom::Point3d.new(2400.mm, 1912.mm, 0.mm), Geom::Vector3d.new(45.mm, -40.mm, -12.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("DEPTH slide (Y, GREY) — drives tilt + swing", Geom::Point3d.new(150.mm, 1962.mm, 115.mm), Geom::Vector3d.new(-55.mm, -40.mm, -10.mm))
+tt = entities.add_text("DEPTH slide (Y, GREY) — drives tilt + swing", Geom::Point3d.new(150.mm, 1962.mm, 85.mm), Geom::Vector3d.new(-55.mm, -40.mm, -10.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("VERTICAL slide (Z, GREEN) — absorbs TILT", Geom::Point3d.new(120.mm, 2262.mm, 175.mm), Geom::Vector3d.new(-60.mm, -40.mm, 10.mm))
+tt = entities.add_text("VERTICAL slide (Z, GREEN) — absorbs TILT", Geom::Point3d.new(120.mm, 2262.mm, 145.mm), Geom::Vector3d.new(-60.mm, -40.mm, 10.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("HORIZONTAL slide (X, PURPLE) — absorbs SWING", Geom::Point3d.new(270.mm, 2262.mm, 165.mm), Geom::Vector3d.new(55.mm, -40.mm, 5.mm))
+tt = entities.add_text("HORIZONTAL slide (X, PURPLE) — absorbs SWING", Geom::Point3d.new(270.mm, 2262.mm, 135.mm), Geom::Vector3d.new(55.mm, -40.mm, 5.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("U-joint (tilt + swing, twist locked)", Geom::Point3d.new(150.mm, 2250.mm, 155.mm), Geom::Vector3d.new(-55.mm, -45.mm, 15.mm))
+tt = entities.add_text("U-joint (tilt + swing, twist locked)", Geom::Point3d.new(150.mm, 2250.mm, 125.mm), Geom::Vector3d.new(-55.mm, -45.mm, 15.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
 # ── In-model © + license credit (default layer → shown in every scene) ──
@@ -855,7 +855,7 @@ model.layers.to_a.each { |l|
 }
 
 # ── iso scenes (Overview / Corner detail / Labeled) ──
-[["Overview", ["Corners", "Film Plane", "Pinhole"], [2400.mm, 1862.mm, 1194.mm, 6500.mm]], ["Corner detail", ["Corners", "Film Plane", "Pinhole"], [150.mm, 2262.mm, 185.mm, 620.mm]], ["Labeled", ["Corners", "Film Plane", "Pinhole", "Labels"], [2400.mm, 1862.mm, 1194.mm, 7200.mm]]].each { |name, tags, tgt|
+[["Overview", ["Corners", "Film Plane", "Pinhole"], [2400.mm, 1862.mm, 1194.mm, 6500.mm]], ["Corner detail", ["Corners", "Film Plane", "Pinhole"], [150.mm, 2262.mm, 155.mm, 620.mm]], ["Labeled", ["Corners", "Film Plane", "Pinhole", "Labels"], [2400.mm, 1862.mm, 1194.mm, 7200.mm]]].each { |name, tags, tgt|
   model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
   t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])
   cdir = Geom::Vector3d.new(0.5, -0.7, 0.4); cdir.normalize!

@@ -39,9 +39,9 @@ The water system has three circuits (Blue/Brown/Black), pumps on the plumbing pa
 **Lighting: WHITE LIGHT — Part A is not light-sensitive in dry or dissolved form.**
 
 > **⚠ RECIPE NOT YET LOCKED — see [Sensitizer Trials](sensitizer-trials.md).** Quantities use the
-> **Mike Ware New Cyanotype** ratio (AmFe : ferricyanide = **3 : 1**) over the **10.74 m² active
+> **Mike Ware New Cyanotype** ratio (AmFe : ferricyanide = **3 : 1**) over the **9.62 m² active
 > plane, TWO wet-on-wet coats** (§2.5), at the sourced muslin coverage **~120 ml/m²/coat →
-> ~2.6 L working sensitizer per print**. The **concentration tier is the open variable** — it
+> ~2.3 L working sensitizer per print**. The **concentration tier is the open variable** — it
 > swings chemistry cost and print count by **~3×** across the three tiers. Three alternatives are given for costing/trialling.
 > **Default: Standard (½-Ware)** until the trial decides.
 
@@ -50,9 +50,9 @@ iron and is ~half the working volume (mixed 1:1 with Part B, §2.1).
 
 | Tier (per print) | AmFe (dry) | Part A water (warm) | mixed strength | AmFe for 50 prints |
 |---|---|---|---|---|
-| Lean (⅓-Ware) | <!-- BEGIN costing:om-amfe-g-lean -->260<!-- END costing:om-amfe-g-lean --> g | ~1.3 L | 10 g/100 ml | <!-- BEGIN costing:om-amfe-kg-lean -->13<!-- END costing:om-amfe-kg-lean --> kg |
-| **Standard (½-Ware) — default** | **<!-- BEGIN costing:om-amfe-g-standard -->390<!-- END costing:om-amfe-g-standard --> g** | **~1.3 L** | **15 g/100 ml** | **<!-- BEGIN costing:om-amfe-kg-standard -->19.5<!-- END costing:om-amfe-kg-standard --> kg** |
-| Rich (full-Ware) | <!-- BEGIN costing:om-amfe-g-rich -->780<!-- END costing:om-amfe-g-rich --> g | ~1.3 L | 30 g/100 ml | <!-- BEGIN costing:om-amfe-kg-rich -->39<!-- END costing:om-amfe-kg-rich --> kg |
+| Lean (⅓-Ware) | <!-- BEGIN costing:om-amfe-g-lean -->232<!-- END costing:om-amfe-g-lean --> g | ~1.15 L | 10 g/100 ml | <!-- BEGIN costing:om-amfe-kg-lean -->11.6<!-- END costing:om-amfe-kg-lean --> kg |
+| **Standard (½-Ware) — default** | **<!-- BEGIN costing:om-amfe-g-standard -->350<!-- END costing:om-amfe-g-standard --> g** | **~1.15 L** | **15 g/100 ml** | **<!-- BEGIN costing:om-amfe-kg-standard -->17.5<!-- END costing:om-amfe-kg-standard --> kg** |
+| Rich (full-Ware) | <!-- BEGIN costing:om-amfe-g-rich -->698<!-- END costing:om-amfe-g-rich --> g | ~1.15 L | 30 g/100 ml | <!-- BEGIN costing:om-amfe-kg-rich -->34.9<!-- END costing:om-amfe-kg-rich --> kg |
 
 - [ ] 0.2.1 — Heat water to 50–60°C (a kettle left to stand for 2 minutes after boiling is ideal).
 - [ ] 0.2.2 — Weigh AmFe into a mixing jug.
@@ -70,9 +70,9 @@ for more contrast (trial **T3**: 0.1% / 0.2% / 0.4%).
 
 | Tier (per print) | Potassium ferricyanide | Ammonium dichromate (0.1–0.4%, trial) | Part B water |
 |---|---|---|---|
-| Lean (⅓-Ware) | <!-- BEGIN costing:om-ferri-g-lean -->86<!-- END costing:om-ferri-g-lean --> g | 2.6–10.4 g | ~1.3 L |
-| **Standard (½-Ware) — default** | **<!-- BEGIN costing:om-ferri-g-standard -->130<!-- END costing:om-ferri-g-standard --> g** | **2.6–10.4 g** | **~1.3 L** |
-| Rich (full-Ware) | <!-- BEGIN costing:om-ferri-g-rich -->260<!-- END costing:om-ferri-g-rich --> g | 2.6–10.4 g | ~1.3 L |
+| Lean (⅓-Ware) | <!-- BEGIN costing:om-ferri-g-lean -->78<!-- END costing:om-ferri-g-lean --> g | 2.6–10.4 g | ~1.15 L |
+| **Standard (½-Ware) — default** | **<!-- BEGIN costing:om-ferri-g-standard -->116<!-- END costing:om-ferri-g-standard --> g** | **2.6–10.4 g** | **~1.15 L** |
+| Rich (full-Ware) | <!-- BEGIN costing:om-ferri-g-rich -->232<!-- END costing:om-ferri-g-rich --> g | 2.6–10.4 g | ~1.15 L |
 
 - [ ] 0.3.1 — Weigh potassium ferricyanide and ammonium dichromate into a second jug.
 - [ ] 0.3.2 — Add water (room temperature). Stir until fully dissolved — the solution turns bright orange-red.
@@ -183,13 +183,13 @@ The container arrives in transport mode: the stepped hinged panel is swung ~56°
 ### 2.1 Prepare Working Sensitizer
 **Do this step just before entering — the combined sensitizer is UV-sensitive.**
 
-| For 1 print (10.74 m² active plane, **2 wet-on-wet coats**) | Volume |
+| For 1 print (9.62 m² active plane, **2 wet-on-wet coats**) | Volume |
 |------------------------|--------|
-| Part A | ~1.3 L |
-| Part B | ~1.3 L |
-| **Working sensitizer** | **~2.6 L** |
+| Part A | ~1.15 L |
+| Part B | ~1.15 L |
+| **Working sensitizer** | **~2.3 L** |
 
-> **Volume basis:** ~120 ml/m²/coat (muslin, sourced — [AlternativePhotography](https://www.alternativephotography.com/cyanotypes-on-fabric-preparing-the-fabric/) / [Jacquard](https://www.dickblick.com/products/jacquard-cyanotype-sensitizer-set/)) × **2 coats** (§2.5 is two wet-on-wet passes, not one) × 10.74 m². **Confirm by trial T1** — [Sensitizer Trials](sensitizer-trials.md). Mix 1:1 by volume.
+> **Volume basis:** ~120 ml/m²/coat (muslin, sourced — [AlternativePhotography](https://www.alternativephotography.com/cyanotypes-on-fabric-preparing-the-fabric/) / [Jacquard](https://www.dickblick.com/products/jacquard-cyanotype-sensitizer-set/)) × **2 coats** (§2.5 is two wet-on-wet passes, not one) × 9.62 m². **Confirm by trial T1** — [Sensitizer Trials](sensitizer-trials.md). Mix 1:1 by volume.
 
 - [ ] 2.1.1 — Pour equal volumes of Part A and Part B into a third jug. Stir gently. The mix turns yellow-green.
 - [ ] 2.1.2 — Pour into the roller tray immediately.
@@ -223,7 +223,7 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 - [ ] 2.4.1 — Retrieve the pre-cut muslin.
 - [ ] 2.4.2 — Start at the **bottom edge** of the image plane frame. Flip each cam-lever clamp open, slide the muslin hem under the jaw, then flip the lever closed — the over-center cam snaps shut with tactile feedback, gripping at ~5N. Work along the bottom edge at 150mm centers (30 clamps).
 - [ ] 2.4.3 — Work upward — stretch the fabric taut and clamp the top edge (30 clamps). The torsion spring holds each clamp closed at any tilt angle.
-- [ ] 2.4.4 — Clamp the left and right edges (16 clamps each), pulling outward from center. Total: 92 clamps around the full perimeter.
+- [ ] 2.4.4 — Clamp the left and right edges (15 clamps each), pulling outward from center. Total: 90 clamps around the full perimeter.
 - [ ] 2.4.5 — Final check: no wrinkles or sags when viewed with the safelight from 2 meters. Any slack will print as a soft zone.
 
 ### 2.5 Applying the Sensitizer
@@ -231,7 +231,7 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 
 - [ ] 2.5.1 — Load the foam roller with sensitizer. Roll out any excess onto scrap card — the roller should be evenly loaded, not dripping.
 - [ ] 2.5.2 — **First coat:** roll horizontally from left to right across the full width of the muslin. Even strokes, 50% overlap. Work top to bottom.
-- [ ] 2.5.3 — **Second coat — wet-on-wet (apply while the first is still wet):** roll vertically, top to bottom. The cross-direction second coat lays down the remaining sensitizer and evens the coverage. *Two coats is why the working volume is ~2.6 L (§2.1), not ~1.3 L — budget for both.*
+- [ ] 2.5.3 — **Second coat — wet-on-wet (apply while the first is still wet):** roll vertically, top to bottom. The cross-direction second coat lays down the remaining sensitizer and evens the coverage. *Two coats is why the working volume is ~2.3 L (§2.1), not ~1.15 L — budget for both.*
 - [ ] 2.5.4 — Check edges — roller tends to undercoat at the far edges. Finish with a hand-held foam brush on the last 50mm of each edge.
 - [ ] 2.5.5 — Set the empty tray and roller aside. **Do not leave the roller sitting in residual sensitizer — it will skin over.**
 

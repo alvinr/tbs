@@ -34,8 +34,8 @@ PRICE_AMFE_PER_KG  = 60.00     # Photographers' Formulary — ammonium iron(III)
 PRICE_FERRI_PER_KG = 24.29     # Bostick & Sullivan — potassium ferricyanide
 DICHROMATE_RUN     = 25.00     # ammonium dichromate — trace contrast agent, per run
 MUSLIN_ROLL_PRICE  = 100.00    # Fabric Direct — 60" x 150-yd unbleached muslin roll
-MUSLIN_ROLLS       = 3         # ~445 yd / 150 -> 3 rolls (the feet-as-yards correction)
-MUSLIN_YARDS       = 445       # ~1,334 linear ft = 445 yd (was mislabelled 1,340 yd)
+MUSLIN_ROLLS       = 3         # ~399 yd / 150 -> 3 rolls (still 3 rolls after the FP_H 2388->2138 area drop)
+MUSLIN_YARDS       = 399       # 2026-07-15: 50 prints × 104 sqft × 1.15 waste = 5,980 sqft ÷ 5 ft = ~1,196 linear ft = 399 yd (was 445 at 116 sqft)
 
 
 # ── Ware New Cyanotype concentration tiers (per 50-print run) ────────────────
@@ -49,10 +49,10 @@ class Tier:
     ferri_kg: float
 
 
-TIERS = [
-    Tier("lean",     "Lean ⅓-Ware",     13.0,  4.3),
-    Tier("standard", "Standard ½-Ware",  19.5,  6.5),
-    Tier("rich",     "Rich full-Ware",   39.0, 13.0),
+TIERS = [                             # AmFe/ferri kg for a 50-print run — sized to the active plane
+    Tier("lean",     "Lean ⅓-Ware",     11.6,  3.9),   # 2026-07-15: ×0.8953 (FP_H 2388→2138, plane 10.74→9.62 m²)
+    Tier("standard", "Standard ½-Ware",  17.5,  5.8),   # 120 ml/m²/coat × 2 × 9.62 m² @ 15 g/100 ml → ~350 g/print
+    Tier("rich",     "Rich full-Ware",   34.9, 11.6),
 ]
 DEFAULT_TIER = "standard"
 
@@ -268,7 +268,7 @@ OPTICS = [
 
 # §4 Film plane mechanism (4-corner Option A, manual handwheel actuation). Line items own the truth;
 # the section total sums them. The only documented source of Low/High spread is the cam-lever muslin
-# clamps ($3/$5.50/$8 ea × 92 = $276/$506/$736) plus a modest band on the est. wall-seat saddle plate;
+# clamps ($3/$5.50/$8 ea × 90 = $270/$495/$720) plus a modest band on the est. wall-seat saddle plate;
 # everything else is single-source-specced (point()). Folding this BOM in raised the §4 floor ~$480:
 # the hand-set summary ($3,100/$3,650/$4,200) sat BELOW the section's own bill of materials.
 # Source: project-cost-breakdown.md §4.1–4.3 / film-plane-mechanism-report.md.
@@ -284,8 +284,8 @@ FILM = [
     point("Aluminum angle 2×2×3/16 8 ft (×10)", 220),
     point("Dibond ACM 4mm 4×8 sheets (×6) — single rigid plane", 510, "Option A: no folding hinge"),
     LineItem("Light-seal set — EPDM tape (×3) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6)", 299, 313, 327),
-    LineItem("Cam-lever spring clamps, muslin (×92)", 276, 506, 736, "$3/$5.50/$8 ea — the section's main Low/High driver"),
-    point("Clamp mounting — M5×16 SS bolts (×184) + Nylocks (×184) + neoprene jaw strip", 76, "item-sum: $46 bolts + $15 nuts + $15 neoprene"),
+    LineItem("Cam-lever spring clamps, muslin (×90)", 270, 495, 720, "$3/$5.50/$8 ea — the section's main Low/High driver"),
+    point("Clamp mounting — M5×16 SS bolts (×180) + Nylocks (×180) + neoprene jaw strip", 74, "item-sum: $45 bolts + $14 nuts + $15 neoprene"),
     # 4.3 Wall-seat saddles (rev 11, ICP-11–14) — estimates, confirm at procurement
     point("Wall-seat saddles ×6 — 8mm steel plate, cut + welded (ICP-11)", 318, "rev12: 2 BR ends moved to the walkway combined corner plates; ~$53/saddle"),
     point("Saddle fasteners — M12×90 through-bolts (×28) + M8 thumbscrews (×12) + M8 hex bolts (×8)", 122, "ICP-12/13/14"),
@@ -1014,10 +1014,10 @@ def check_blocks() -> list:
 # ── Self-check (regression guard — the canonical numbers, asserted) ──────────
 EXPECTED = {                       # the figures the docs are reconciled to (this session)
     "muslin": 300,
-    "lean":     {"chem": 909,  "total": 1210, "per_print": 24},  # 909 not 910: consistent ferri rounding ($104, not the doc's hand-rounded $105)
-    "standard": {"chem": 1353, "total": 1650, "per_print": 33},
-    "rich":     {"chem": 2681, "total": 2980, "per_print": 60},
-    "grand_total": (22731, 28664, 36592),  # 2026-07-12: §5 water +$334/+$281 (bulkhead-2in verified $137 ea; spray fab-from-stock). EP plywood backboard + IP65 enclosure over the fuse/busbar terminals (+$60 §5a — enclosure kept ALONGSIDE the plywood). audit 2026-07: pinhole retaining ring (+$15/$25); D-ring 4→8; +$2 Powerpole (1/pump); filter 3-separate design (−$50/−$65). pump switches 5→1 master (−$26 §5a). IBC frame deep 4-leg box (+$25/+$38/+$50). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (+$52/+$64/+$76, SS beam); + corridor plumbing-panel structure (+$215/+$380 — previously uncosted)
+    "lean":     {"chem": 816,  "total": 1120, "per_print": 22},  # 2026-07-15: chemistry tiers ×0.8953 (plane 10.74→9.62 m²)
+    "standard": {"chem": 1216, "total": 1520, "per_print": 30},  # 2026-07-15: ×0.8953
+    "rich":     {"chem": 2401, "total": 2700, "per_print": 54},  # 2026-07-15: ×0.8953
+    "grand_total": (22633, 28521, 36294),  # 2026-07-15: chemistry tiers ×0.8953 (FP_H 2388→2138) −$90/$130/$280 §7; clamp 92→90 −$8/$13/$18.  2026-07-12: §5 water +$334/+$281 (bulkhead-2in verified $137 ea; spray fab-from-stock). EP plywood backboard + IP65 enclosure over the fuse/busbar terminals (+$60 §5a — enclosure kept ALONGSIDE the plywood). audit 2026-07: pinhole retaining ring (+$15/$25); D-ring 4→8; +$2 Powerpole (1/pump); filter 3-separate design (−$50/−$65). pump switches 5→1 master (−$26 §5a). IBC frame deep 4-leg box (+$25/+$38/+$50). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (+$52/+$64/+$76, SS beam); + corridor plumbing-panel structure (+$215/+$380 — previously uncosted)
     "walkway": (2000, 2488, 2975),   # §6a fab line raised so bracket scope matches walkway-report §10 ($742–$1,255 all-in)
     "water": (5356, 6647, 7929),   # 2026-07-12: bulkhead-2in verified $137 ea (was $25-40 → +$335/+$290 on storage); spray saddle+wheel → fab-from-stock qty=1 (−$1/−$9). audit 2026-07: D-ring 4→8 (+$20/+$35); +$2 Powerpole 5 pair (1/pump); filter combo → 3 separate housings + frame (−$50/−$65). IBC frame portal → deep 4-leg box (+$25/+$38/+$50: 4 feet + 16 anchors). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105: 20" housings + cartridges). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (40×40 alu → 40×25 304-SS + Ø32 wheels, spray line +$52/+$64/+$76); + corridor plumbing-panel structure (+$215/+$298/+$380 — was uncosted); panel-split cascade 2026-06-28 (+P-05, +SV-02, +5th bracket, −2 CV, +X1 4-way cross, BVs, +Blue equalization tie)
     "container": (2300, 3300, 4300),
@@ -1027,7 +1027,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "shelf": (203, 203, 203),          # §6d = chemistry-prep-shelves §7 (point estimates) — was MISSING from the model
     "interior": (950, 1138, 1350),
     "optics": (110, 185, 265),
-    "film": (3317, 3561, 3805),   # 2026-07-12: rod-end + pivot pin 8→4 (one per corner; report prose + 3D agree) −$120   # saddles ×8→×6 (rev12: 2 BR ends are walkway combined plates) + fasteners 150→122 + clamp-mounting 70→76
+    "film": (3309, 3548, 3787),   # 2026-07-15: clamp count 92→90 (FP_H 2388→2138, film-plane-redesign) −$8/$13/$18   # 2026-07-12: rod-end + pivot pin 8→4 (one per corner; report prose + 3D agree) −$120   # saddles ×8→×6 (rev12: 2 BR ends are walkway combined plates) + fasteners 150→122 + clamp-mounting 70→76
     "ventilation": (757, 841, 924),   # §5b BOM (point estimates); report total was stale at $769
     "power": (2608, 2806, 3003),       # §5a authoritative subtotal (+$60 IP65 enclosure over the fuse/busbar terminals)
 }

@@ -72,7 +72,7 @@ dimensions are single-sourced in the table above (`generate_plate_drawing.py` re
 | Film plane left edge X | <!-- BEGIN cdm:FP_X_L -->150<!-- END cdm:FP_X_L -->mm | `FP_X_L` |
 | Film plane right edge X | <!-- BEGIN cdm:FP_X_R -->4,649<!-- END cdm:FP_X_R -->mm | `FP_X_R` |
 | Film plane width | <!-- BEGIN cdm:FP_W -->4,499<!-- END cdm:FP_W -->mm | `FP_W` |
-| Film plane height | <!-- BEGIN cdm:FP_H -->2,388<!-- END cdm:FP_H -->mm | `FP_H` |
+| Film plane height | <!-- BEGIN cdm:FP_H -->2,138<!-- END cdm:FP_H -->mm | `FP_H` |
 | Nominal depth from pinhole wall | <!-- BEGIN cdm:FP_Y -->2,262<!-- END cdm:FP_Y -->mm | `FP_Y` |
 | Minimum carriage depth | <!-- BEGIN cdm:FP_Y_MIN -->100<!-- END cdm:FP_Y_MIN -->mm | `FP_Y_MIN` |
 | Left rail X | <!-- BEGIN cdm:RAIL_X_L -->150<!-- END cdm:RAIL_X_L -->mm | `RAIL_X_L` |
@@ -81,7 +81,7 @@ dimensions are single-sourced in the table above (`generate_plate_drawing.py` re
 | Rail length (Y travel) | <!-- BEGIN cdm:RAIL_LEN -->2,200<!-- END cdm:RAIL_LEN -->mm | `RAIL_LEN` |
 | Max tilt (single-axis, Option A) | ±<!-- BEGIN cdm:MAX_TILT_DEG -->40<!-- END cdm:MAX_TILT_DEG -->° | `MAX_TILT_DEG` |
 | Max swing (single-axis, Option A) | ±<!-- BEGIN cdm:MAX_SWING_DEG -->28<!-- END cdm:MAX_SWING_DEG -->° | `MAX_SWING_DEG` |
-| Cross-slide Z travel (tilt) | ~280mm | `XSLIDE_Z_TRAVEL` |
+| Cross-slide Z travel (tilt) | ~250mm | `XSLIDE_Z_TRAVEL` |
 | Cross-slide X travel (swing) | ~263mm | `XSLIDE_X_TRAVEL` |
 | Cross-slide stroke (spec) | <!-- BEGIN cdm:XSLIDE_STROKE -->300<!-- END cdm:XSLIDE_STROKE -->mm | `XSLIDE_STROKE` |
 | Cross-slides total (2/corner) | <!-- BEGIN cdm:XSLIDE_N -->8<!-- END cdm:XSLIDE_N --> | `XSLIDE_N` |
@@ -92,7 +92,7 @@ dimensions are single-sourced in the table above (`generate_plate_drawing.py` re
 **8× HGR15 cross-slide rails + 8× HGH15CA blocks + 4× intermediate plates** (the 2-axis X-Z corner
 stage that absorbs the rigid-rotation arc travel), 8× GIR25-DO rod-end spherical bearings,
 **single rigid ACM backing panel** (the old folding two-panel piano-hinge system removed),
-Duvetyne curtain seals, rail felt light-trap strips, 92× cam-lever spring clamps at 150mm centers
+Duvetyne curtain seals, rail felt light-trap strips, 90× cam-lever spring clamps at 150mm centers
 (muslin attachment). The plane stays a fixed-size flat rectangle — it no longer stretches/twists,
 so the old ±42°/±25.7° stretch-mechanism stops and the compound-twist config are dropped.*
 

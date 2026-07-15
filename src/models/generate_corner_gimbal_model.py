@@ -55,9 +55,21 @@ def corner(tag, cx, cz, sv, cin):
 
     xo = cx - cin * 30                                  # vertical slide, just outboard of the corner
     xr0 = cx if cin > 0 else cx - 260                   # horizontal rail extends toward centre (~260mm swing travel)
-    # full-length depth rail (the focus/tilt/swing travel), ceiling for top corners / floor for bottom
-    band("Depth slide rail Y (drive, grey)", cx - 8, 16, ov.FP_Y_MIN, FP_Y - ov.FP_Y_MIN + 40, 0, 16, C_STEEL)
-    band("Depth carriage", cx - 22, 44, FP_Y - 30, 60, 16, 40, C_CAR)
+    # DEPTH RAIL — 1.5" (1.9" OD) 304 pipe (both beam & rail). Spans the FULL container width
+    # (wall-to-wall in Y), flanged + through-bolted at each end; a 4-wheel Speed-Rail trolley rides it.
+    zc = cz + sv * 24                                   # pipe centre Z (48mm OD → r24)
+    P.append(ov.ruby_cylinder(f"Depth pipe rail Y (1.5in 304, grey) {tag}", cx, 0, zc,
+                              24, ov.C_WID, color=C_STEEL, axis="y"))
+    for fy in (0, ov.C_WID - 12):                       # interior flange plate at each wall (8 total)
+        P.append(ov.ruby_box(f"Pipe flange {tag} {int(fy)}", cx - 45, fy, zc - 45, 90, 12, 90, color=C_CROSS))
+    for ey, w2 in ((-ov.WALL_T - 8, "PH"), (ov.C_WID + ov.WALL_T, "far")):  # exterior backing plate (8)
+        P.append(ov.ruby_box(f"Pipe wall plate {tag} {w2}", cx - 50, ey, zc - 50, 100, 8, 100, color=C_STEEL, alpha=0.5))
+    band("Depth trolley cradle (red)", cx - 26, 52, FP_Y - 26, 48, 0, 48, C_CAR, al=0.35)
+    # 4 wheels = a fore pair + an aft pair, each a 90° V (2 wheels) on the interior side of the pipe
+    for wy in (FP_Y - 24, FP_Y - 6):
+        for wsx in (-18, 18):
+            P.append(ov.ruby_cylinder(f"Trolley wheel {tag} {int(wy)}_{wsx}", cx + wsx - 4, wy,
+                                      zc + sv * 22, 8, 8, color=C_CROSS, axis="x"))
     # vertical slide rail sized to the ~280mm TILT travel it must take up (not the nominal stack height)
     band("Vertical Z slide rail (TILT ~280mm, green)", xo - 7, 16, FP_Y - 9, 18, 18, 300, C_TILT)
     band("Vertical Z carriage", xo - 17, 34, FP_Y - 15, 30, 95, 145, C_TILT)

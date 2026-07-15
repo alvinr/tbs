@@ -465,7 +465,7 @@ Based on the analysis above, the following parameters are recommended as design 
 | Resolution at optimal pinhole | 0.41–0.55 lp/mm | Young (1971); Born & Wolf (1999) |
 | Max Ilford paper roll width | 127 cm (50 in) | Ilford product page (verified 2026) |
 | Panels needed to cover 20' width | 5 panels (seamed) | 6,096mm ÷ 1,270mm |
-| Liquid Light coverage (116 sq ft) | ~78 oz, single coat | Rockland Colloid product spec (~1.5 sq ft/oz) |
+| Liquid Light coverage (104 sq ft) | ~70 oz, single coat | Rockland Colloid product spec (~1.5 sq ft/oz) |
 
 ---
 
@@ -478,8 +478,8 @@ The summary above sizes a generic 20' × 7' camera from the image *diagonal*. TB
 | Focal length | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm | Container interior width (Orientation B) |
 | Optimal pinhole (Rayleigh) | <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm | d = 1.9√(fλ); Rayleigh (1891) |
 | f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> | f / d |
-| Image plane (full interior long wall) | <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm | One long wall |
-| Active film zone (shadow-free) | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (~116 sq ft) | Within the long wall |
+| Image plane (full interior long wall) | <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm | One long wall |
+| Active film zone (shadow-free) | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm (~104 sq ft) | Within the long wall |
 | Horizontal field of view | 102° | 2·arctan(5,893 / (2 × 2,362)) |
 | Resolution at f/1088 | 0.69 lp/mm | d / (2 × 1.22 × λ × f) |
 | Baseline exposure (cyanotype) | ~30–45 min | Ware New Cyanotype on muslin, full sun; iron-based — no Schwarzschild correction (Part 6) |

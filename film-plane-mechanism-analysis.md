@@ -8,7 +8,7 @@
 >
 > **Why it was abandoned.** Independent corner depths let the frame twist and change size. That forced (a) a folding hinged backing to take up the growing/twisting plane, (b) a compound-twist envelope that is hard to control and to model, and (c) complex light sealing on a non-flat surface.
 >
-> **What replaced it — Option A (the built design).** A **fixed-size rigid plane** (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm) that tilts/swings as a true **rigid-body rotation**. Each corner rides a **2-axis X–Z cross-slide** (absorbing the arc travel) through a **rod-end spherical bearing** (taking the angle), so the plane never grows or twists — it stays flat at every angle. This buys a **single rigid ACM backing** (no folding), predictable pure-tilt / pure-swing distortion (no twist), simpler sealing, and a buildable mechanism — for **~+$300** net and a slightly tighter envelope (**tilt ±40° / swing ±28°** vs ±42° / ±25.7°). Governing text: [`film-plane-mechanism-report.md`](film-plane-mechanism-report.md).
+> **What replaced it — Option A (the built design).** A **fixed-size rigid plane** (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm) that tilts/swings as a true **rigid-body rotation**. Each corner rides a **2-axis X–Z cross-slide** (absorbing the arc travel) through a **rod-end spherical bearing** (taking the angle), so the plane never grows or twists — it stays flat at every angle. This buys a **single rigid ACM backing** (no folding), predictable pure-tilt / pure-swing distortion (no twist), simpler sealing, and a buildable mechanism — for **~+$300** net and a slightly tighter envelope (**tilt ±40° / swing ±28°** vs ±42° / ±25.7°). Governing text: [`film-plane-mechanism-report.md`](film-plane-mechanism-report.md).
 >
 > **Why it's kept.** The **§6 optical-distortion derivation** — the physics of tilted-plane projection and the per-configuration distortion effects — is the durable value here. The mechanism sections (§1, §3–§5, §8) and the movement-envelope figures describe the abandoned stretching design and are retained as the **historical record**, not the current spec.
 
@@ -78,7 +78,7 @@ FLOOR ────────────────────────�
 - **4 linear rails** — HiWin HGR20 profile, 2,200mm length, mounted at X=150mm (left pair) and X=4,649mm (right pair) on ceiling and floor. Rails run along the 2,362mm optical axis direction.
 - **8 carriages** — HGH20CA flanged blocks, 2 per rail, joined by an L-bracket at each corner. Each corner moves as a single independent unit.
 - **4 leadscrews** — ¾"-6 Acme, 8 ft (2,438mm) length, one per corner (TL, TR, BL, BR). Each turns in a bronze Acme nut fixed to the corner bracket.
-- **Film plane frame** — welded 2"×2"×3/16" aluminum angle, **4,499mm × 2,388mm** (rail span × container height). Connected to each corner bracket via a **rod-end spherical bearing** (GIR25-DO or equivalent, 25mm bore) to allow free rotation in all axes when the plane is twisted.
+- **Film plane frame** — welded 2"×2"×3/16" aluminum angle, **4,499mm × 2,138mm** (rail span × film-plane height). Connected to each corner bracket via a **rod-end spherical bearing** (GIR25-DO or equivalent, 25mm bore) to allow free rotation in all axes when the plane is twisted.
 
 The critical difference from the two-beam design: without spanning beams, the left and right ends of the top edge (TL and TR) are completely independent. Setting TL to 800mm and TR to 2,262mm produces a 20.0° swing. Setting TL=100, TR=2262, BL=2262, BR=100 produces a compound twisted plane with no parallel lines.
 
@@ -272,7 +272,7 @@ All items ship within the United States. Local Southern California pickup noted 
 
 ### Muslin Clamp System
 
-The photosensitive muslin is secured to the film plane frame by **92 cam-lever spring clamps** spaced at 150mm centers around the full perimeter (30 per horizontal edge, 16 per vertical edge). Each clamp uses an over-center cam mechanism with a torsion spring to provide ~5N clamping force, gripping the muslin hem against the pinhole-facing leg of the aluminum angle frame through a 60A neoprene jaw pad.
+The photosensitive muslin is secured to the film plane frame by **90 cam-lever spring clamps** spaced at 150mm centers around the full perimeter (30 per horizontal edge, 15 per vertical edge). Each clamp uses an over-center cam mechanism with a torsion spring to provide ~5N clamping force, gripping the muslin hem against the pinhole-facing leg of the aluminum angle frame through a 60A neoprene jaw pad.
 
 The cam-lever design provides tactile snap-open/snap-closed feedback, critical for loading and unloading muslin in safelight (near-dark) conditions. The torsion spring biases each clamp closed at any tilt angle, so the film plane can be tilted or swung without clamps releasing.
 
@@ -282,7 +282,7 @@ The cam-lever design provides tactile snap-open/snap-closed feedback, critical f
 
 | Item | Spec | Qty | Source A | Source B | Est. Unit |
 |------|------|-----|---------|---------|-----------|
-| Cam-lever spring clamp | Toggle-style, ~5N, neoprene jaw | 92 | McMaster-Carr (Destaco equiv.) | Amazon (generic toggle) | $3-8 |
+| Cam-lever spring clamp | Toggle-style, ~5N, neoprene jaw | 90 | McMaster-Carr (Destaco equiv.) | Amazon (generic toggle) | $3-8 |
 | M5×16 SS socket head bolt | A2-70 stainless | 184 | McMaster-Carr #91292A128 | Bolt Depot | $0.25 |
 | M5 SS Nylock nut | A2-70 stainless | 184 | McMaster-Carr #93625A200 | Bolt Depot | $0.08 |
 | Neoprene strip 60A | 35mm × 6mm, self-adhesive | 1 roll (10m) | McMaster-Carr #8614K44 | Grainger | $15 |
@@ -315,7 +315,7 @@ The cam-lever design provides tactile snap-open/snap-closed feedback, critical f
 
 | Interval | Task |
 |----------|------|
-| Before each session | Inspect muslin clamp engagement — all 92 clamps snapped closed |
+| Before each session | Inspect muslin clamp engagement — all 90 clamps snapped closed |
 | Before each session | Verify all four locking collars are tight after repositioning |
 | Before each session | Check EPDM foam edge seal for tears or compression set |
 | Monthly | Lubricate HGR20 rails and HGH20CA carriage blocks (lithium grease) |

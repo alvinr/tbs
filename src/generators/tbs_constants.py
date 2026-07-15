@@ -76,7 +76,7 @@ C_WID  = 2362   # interior width = focal length = optical depth Y (mm)
 C_HGT  = 2388   # interior height Z (mm)
 
 # ── Film plane ────────────────────────────────────────────────────────────────
-FP_H     = 2388   # film plane height (mm)          [unchanged]
+FP_H     = 2138   # film plane height (mm)          [film-plane-redesign: 2388→2138 — active height with the low-profile V-trolley corner (BUILD 140→110); ~C_HGT − RAIL_OFF(top) − RAIL_OFF_BOT(walkway)]
 FP_X_L   = 150    # film plane left edge X (mm)     [rev6: was 625; panel inner face 120mm + 30mm]
 FP_X_R   = 4649   # film plane right edge X (mm)    [was 4019 → wider right zone]
 FP_W     = FP_X_R - FP_X_L   # = 4499mm          [rev6: was 4024]

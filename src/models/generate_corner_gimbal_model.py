@@ -40,7 +40,7 @@ X_L, X_R = ov.FP_X_L, ov.FP_X_R      # film left / right edges (X, the long axis
 FP_Y = ov.FP_Y                       # film depth from the pinhole wall (Y)
 PH_X, PH_Z = ov.PH_X, ov.C_HGT // 2  # pinhole X (film-width centre) and Z (mid-height)
 CZ_F, CZ_C = 15, ov.C_HGT - 15       # floor / ceiling rail-mount Z
-BUILD = 140                          # rail-mount → panel-corner stack height (mm)
+BUILD = 110                          # rail-mount → panel-corner stack (mm) — low-profile V-trolley
 PZ0, PZ1 = CZ_F + BUILD, CZ_C - BUILD   # panel bottom / top edge Z (≈ 155 / 2233)
 
 
@@ -72,11 +72,11 @@ def corner(tag, cx, cz, sv, cin):
                                       zc + sv * 22, 8, 8, color=C_CROSS, axis="x"))
     # vertical slide rail sized to the ~280mm TILT travel it must take up (not the nominal stack height)
     band("Vertical Z slide rail (TILT ~280mm, green)", xo - 7, 16, FP_Y - 9, 18, 18, 300, C_TILT)
-    band("Vertical Z carriage", xo - 17, 34, FP_Y - 15, 30, 95, 145, C_TILT)
+    band("Vertical Z carriage", xo - 17, 34, FP_Y - 15, 30, 55, 105, C_TILT)
     # horizontal slide rail sized to the ~260mm SWING travel
-    band("Horizontal X slide rail (SWING ~260mm, purple)", xr0, 260, FP_Y - 7, 14, 108, 122, C_SWING)
-    band("Horizontal X carriage", cx - 24, 48, FP_Y - 12, 24, 114, 136, C_SWING)
-    band("U-joint", cx - 12, 24, FP_Y - 12, 24, 130, 150, C_CROSS)
+    band("Horizontal X slide rail (SWING ~260mm, purple)", xr0, 260, FP_Y - 7, 14, 68, 82, C_SWING)
+    band("Horizontal X carriage", cx - 24, 48, FP_Y - 12, 24, 74, 96, C_SWING)
+    band("U-joint", cx - 12, 24, FP_Y - 12, 24, 90, 110, C_CROSS)
     return "\n".join(P)
 
 

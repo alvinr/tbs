@@ -2235,7 +2235,7 @@ end
   grp.name = "Optical Cone"
   ge = grp.entities
   apex = [2399.mm,0.mm,1194.mm]
-  b0 = [150.mm,2262.mm,0.mm]; b1 = [4649.mm,2262.mm,0.mm]; b2 = [4649.mm,2262.mm,2388.mm]; b3 = [150.mm,2262.mm,2388.mm]
+  b0 = [150.mm,2262.mm,0.mm]; b1 = [4649.mm,2262.mm,0.mm]; b2 = [4649.mm,2262.mm,2138.mm]; b3 = [150.mm,2262.mm,2138.mm]
   edges = []
   edges.concat(ge.add_edges(b0, b1, b2, b3, b0))
   edges << ge.add_line(apex, b0)
@@ -3033,7 +3033,7 @@ end
   grp.name = "Film Plane Screen (muslin)"
   face = grp.entities.add_face([150.mm,2262.mm,0.mm], [4649.mm,2262.mm,0.mm], [4649.mm,2282.mm,0.mm], [150.mm,2282.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2388.mm)
+  face.pushpull(2138.mm)
   mat = model.materials["Film Plane Screen (muslin)"] || model.materials.add("Film Plane Screen (muslin)")
   mat.color = Sketchup::Color.new(32, 96, 160)
   mat.alpha = 0.3
@@ -3053,7 +3053,7 @@ end
   # FP Frame Top
   grp = ents.add_group
   grp.name = "FP Frame Top"
-  face = grp.entities.add_face([150.mm,2211.2.mm,2337.2.mm], [4649.mm,2211.2.mm,2337.2.mm], [4649.mm,2262.mm,2337.2.mm], [150.mm,2262.mm,2337.2.mm])
+  face = grp.entities.add_face([150.mm,2211.2.mm,2087.2.mm], [4649.mm,2211.2.mm,2087.2.mm], [4649.mm,2262.mm,2087.2.mm], [150.mm,2262.mm,2087.2.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.8.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -3066,7 +3066,7 @@ end
   grp.name = "FP Frame Left"
   face = grp.entities.add_face([150.mm,2211.2.mm,0.mm], [200.8.mm,2211.2.mm,0.mm], [200.8.mm,2262.mm,0.mm], [150.mm,2262.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2388.mm)
+  face.pushpull(2138.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3077,7 +3077,7 @@ end
   grp.name = "FP Frame Right"
   face = grp.entities.add_face([4598.2.mm,2211.2.mm,0.mm], [4649.mm,2211.2.mm,0.mm], [4649.mm,2262.mm,0.mm], [4598.2.mm,2262.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2388.mm)
+  face.pushpull(2138.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0

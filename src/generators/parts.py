@@ -38,6 +38,7 @@ import re
 from dataclasses import dataclass
 
 import costing  # reconciliation guardrail (EXPECTED) + the cost cascade it still owns
+from tbs_constants import CLAMP_N_TOTAL  # muslin clamp count (derives from FP_H perimeter) — qty must track it
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -557,11 +558,11 @@ PARTS: list[Part] = [
     # ═══ clamp (film-clamp-mechanism-report §4) — split out of FILM; itemized, sums to the FILM
     # clamp lines (clamps 276–736 + mounting 76) = 352–812 ═══
     Part("cam-lever-clamp", "Cam-lever spring clamp", "fasteners-hardware",
-         "clamp", 92, "ea", 3, 8, "McMaster-Carr", "Amazon", spec="Toggle-style, ~5N, neoprene jaw (Destaco equiv. / generic)"),
+         "clamp", CLAMP_N_TOTAL, "ea", 3, 8, "McMaster-Carr", "Amazon", spec="Toggle-style, ~5N, neoprene jaw (Destaco equiv. / generic)"),
     Part("clamp-m5-bolt", "M5×16 SS socket head bolt", "fasteners-hardware",
-         "clamp", 184, "ea", 0.25, 0.25, "McMaster-Carr", "Bolt Depot", part_no="91292A128", spec="A2-70 stainless"),
+         "clamp", 2 * CLAMP_N_TOTAL, "ea", 0.25, 0.25, "McMaster-Carr", "Bolt Depot", part_no="91292A128", spec="A2-70 stainless"),
     Part("clamp-m5-nut", "M5 SS Nylock nut", "fasteners-hardware",
-         "clamp", 184, "ea", 0.08, 0.08, "McMaster-Carr", "Bolt Depot", part_no="93625A200", spec="A2-70 stainless"),
+         "clamp", 2 * CLAMP_N_TOTAL, "ea", 0.08, 0.08, "McMaster-Carr", "Bolt Depot", part_no="93625A200", spec="A2-70 stainless"),
     Part("clamp-neoprene", "Neoprene strip 60A", "seals-gaskets",
          "clamp", 1, "roll", 15, 15, "McMaster-Carr", "Grainger", part_no="8614K44", spec="35mm × 6mm, self-adhesive, 10m"),
 

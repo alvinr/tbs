@@ -135,8 +135,8 @@ def rigid_corners3d(tilt_deg, swing_deg, d_c=D_CTR):
     return out
 
 
-# ── Wall-seat saddle drawing helpers (rev11 — replaces the retired brace cage) ──
-# Each of the 8 rail ends sits on an IBC-style wall-seat saddle (back-plate + seat +
+# ── Pipe-flange drawing helpers (each depth pipe is flanged + wall-plated at both ends) ──
+# Each of the 8 pipe ends carries a 1-1/2" flange, through-bolted to an exterior plate
 # gusset, 4-bolt through-wall + exterior plate). The container shell carries rigidity.
 def draw_brace_portal(ax, color, *, lw=1.4, alpha=0.9, z=6):
     """Front elevation (X-Z): a wall-seat saddle back-plate at each of the 4 rail-end
@@ -260,7 +260,7 @@ def sheet1():
                 ax.add_patch(Rectangle((rx_-15, ry-12), RAIL_W*0.8+30, 24,
                                        fc=WHITE, ec=WHITE, lw=0.5, zorder=6))
 
-    # ── WALL-SEAT SADDLES (rev11 — replaces the brace cage) — plan view ──
+    # ── PIPE FLANGES + EXTERIOR PLATES — plan view (each pipe end flanged to the wall) ──
     # Each rail end lands on an IBC-style wall-seat saddle at the near (Yd0) + far
     # (Yd C_WID) walls; the seat projects IBC_WBKT_SEAT_PROJ into the container.
     pw, proj = IBC_WBKT_PLATE_W, IBC_WBKT_SEAT_PROJ
@@ -271,13 +271,13 @@ def sheet1():
                                    fc=STRUCT, ec=WHITE, lw=1.2, alpha=0.8, zorder=6))
     leader(ax, RAIL_X_L, proj,
            RAIL_X_L + 920, proj + 200,
-           "WALL-SEAT SADDLE (6) + COMBINED PLATE (2)\nIBC-style: 4-bolt + exterior plate\nLEFT thumb-screw / RIGHT bolted",
+           "PIPE FLANGE (8) + EXTERIOR PLATE (8)\n1-1/2\" flange, 4-bolt through-wall\npipe spans wall-to-wall (each end flanged)",
            color=STRUCT, ha="center", fs=6.5, font=FONT)
     # rev12: the bottom-right (BR) rail ends share a combined corner plate with
     # the right walkway right beam (replaces the 2 BR saddles).
     leader(ax, RAIL_X_R, proj,
            RAIL_X_R - 700, proj + 200,
-           "BR ENDS → COMBINED CORNER PLATE (×2)\nshared with the right walkway right beam\n(rev12 — replaces the BR saddles)",
+           "BR END flanges also anchor the\nright walkway beam (shared plate)",
            color=STRUCT, ha="center", fs=6.5, font=FONT)
 
     # Travel dim — on the INNER (right) side of the left rail (the outer side overlaps the drum ghost)
@@ -465,7 +465,7 @@ def sheet2():
     ax.text(W/2, H-RAIL_H/2, "CEILING DEPTH RAIL  1.5\" 304 pipe + 4-wheel trolley  ×2  (TL  +  TR — roll, brake, moved as a pair)",
             color=BG, fontsize=5.5, ha="center", va="center", **FONT, zorder=6)
 
-    # ── WALL-SEAT SADDLES — side elevation (Yd on X-axis, Z on Y-axis), rev11/12 ──
+    # ── PIPE FLANGES — side elevation (Yd on X-axis, Z on Y-axis) ──
     # A saddle at each wall (Yd0 + Yd C_WID) at both rail heights: back-plate on the
     # wall + a seat projecting in that the rail end rests on (replaces the brace cage).
     # rev12: the bottom-right (BR) ends sit on the combined corner plate shared with
@@ -473,7 +473,7 @@ def sheet2():
     draw_brace_portal_yd_z(ax_tilt, STRUCT, lw=1.2, alpha=0.65, z=4)
     leader(ax_tilt, IBC_WBKT_SEAT_PROJ / 2, BRACE_Z_TOP,
            IBC_WBKT_SEAT_PROJ / 2 - 180, BRACE_Z_TOP + 130,
-           "WALL-SEAT SADDLE (both walls)\nIBC-style, 4-bolt + ext. plate\n(BR ends = combined plate, shared w/ walkway)",
+           "PIPE FLANGE + EXT. PLATE (both walls)\n1-1/2\" flange, 4-bolt through-wall\npipe spans wall-to-wall",
            color=STRUCT, ha="right", fs=6.5, font=FONT)
 
     CARRIAGE_W = 80
@@ -1934,7 +1934,7 @@ def sheet7():
         ax.add_patch(Rectangle(rect_args[:2], rect_args[2], rect_args[3],
                                 fc=STRUCT2, ec="none", lw=0, zorder=7, alpha=0.5))
 
-    # ── Wall-seat saddles (front elevation), rev11 ────────────────────────────
+    # ── Pipe flanges + exterior plates (front elevation) ─────────────────────
     # A saddle back-plate at each of the 4 rail-end corners (near + far walls project
     # to the same X-Z here). Replaces the retired demountable brace cage.
     draw_brace_portal(ax, STRUCT, lw=1.4, alpha=0.55, z=4)
@@ -1943,7 +1943,7 @@ def sheet7():
     # dims + title block) are all crowded.
     leader(ax, RAIL_X_L, BRACE_Z_BOT,
            RAIL_X_L + 620, BRACE_Z_BOT + 520,
-           "WALL-SEAT SADDLES (8) — IBC-style: 4-bolt + ext. plate\nLEFT thumb-screw / RIGHT bolted",
+           "PIPE FLANGES (8) + EXTERIOR PLATES (8)\n1-1/2\" flange, 4-bolt through-wall — pipe spans wall-to-wall",
            color=STRUCT, ha="left", fs=6, font=FONT)
 
     # ── Single U-joint at each corner of the frame ────────────────────────────

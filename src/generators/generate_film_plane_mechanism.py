@@ -735,7 +735,7 @@ def view_a(ax):
     # ── leaders ──
     leader(ax, 90, 12, 40, -44, "DEPTH RAIL (Y) — 1.5\" 316 pipe; the DRIVE; ~2.2 m (floor rail)",
            ha="left", fs=6.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 298, 28, 336, -36, "4-wheel Speed-Rail trolley\n(captured on the pipe) + cradle",
+    leader(ax, 298, 28, 336, -36, "4-wheel Speed-Rail trolley\n(rides a 90° V on the pipe) + cradle",
            ha="left", fs=6.2, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 245, 300, 250, 344, "VERTICAL way (Z, green) — 316 flat bar\n+ UHMW pads; TILT accommodation",
            ha="left", fs=6.2, color=C_TILT, font=FONT, bbox=LBL_BG)
@@ -800,37 +800,41 @@ def view_b(ax):
 
 def section_aa(ax):
     """SECTION A-A — a slice cut ACROSS the depth rail (the pipe runs into the page). The film
-    Speed-Rail trolley captures the 1.5" (1.9" OD) 316 pipe with 4 wheels (2 upper + 2 lower) so it
-    rolls freely yet can't derail; the trolley frame carries the cradle down to the corner mechanism.
+    Speed-Rail trolley RIDES the 1.5" (1.9" OD) 316 pipe on a 90° V of wheels (2 wheels 90° apart) —
+    it does NOT wrap the pipe 360°; gravity seats it. The load hangs below on a ceiling rail (or the V
+    inverts to stand on a floor rail). 4 wheels total = the near pair shown + a matching fore/aft pair.
     Wheels are nylon on stainless-sealed bearings — dry, wash-safe."""
     import math
-    ax.set_xlim(-20, 84); ax.set_ylim(-24, 58); ax.set_aspect("equal"); ax.axis("off")
-    cx, cy, R = 33, 22, 14
-    # trolley frame outline (holds the 4 wheel axles)
-    ax.add_patch(plt.Rectangle((8, 3), 50, 40, fill=False, ec=OUT, lw=1.3, zorder=4))
+    ax.set_xlim(-20, 92); ax.set_ylim(-26, 58); ax.set_aspect("equal"); ax.axis("off")
+    cx, cy, R = 34, 24, 14
     # 1.5" 316 pipe, END-ON (a tube: OD + wall)
     draw_circle(ax, cx, cy, R, color=OUT, fill=True, fc=C_STEEL, lw=1.3, zorder=6)
     draw_circle(ax, cx, cy, R - 3, color=OUT, fill=True, fc=BG, lw=0.8, zorder=7)
-    # 4 capture wheels at the diagonals, each rolling on the pipe OD
-    for ang in (45, 135, 225, 315):
+    # 2 wheels riding a 90° V on TOP of the pipe (45° + 135° = 90° apart) — NOT a 360° wrap
+    wpos = []
+    for ang in (45, 135):
         wx = cx + (R + 7) * math.cos(math.radians(ang)); wy = cy + (R + 7) * math.sin(math.radians(ang))
+        wpos.append((wx, wy))
         draw_circle(ax, wx, wy, 7, color=OUT, fill=True, fc="#3A3A40", lw=1.0, zorder=8)
         draw_circle(ax, wx, wy, 2.4, color=OUT, fill=True, fc=C_STEEL, lw=0.6, zorder=9)
-    # cradle mount tab below the frame (3/8" down to the corner mechanism)
-    _rect(ax, 26, -9, 14, 12, C_FRAME, z=5)
-    draw_circle(ax, 33, -3, 2.6, color=OUT, fill=True, fc=C_PIN, lw=0.6, zorder=7)
-    ux = cx + (R + 7) * math.cos(math.radians(45)); uy = cy + (R + 7) * math.sin(math.radians(45))
-    leader(ax, cx, cy, 60, 44, "1.5\" (1.9\" OD) 316 PIPE — the RAIL\n(runs into the page = slide travel)",
+    (rx, ry), (lx, ly) = wpos
+    # carrier plate over the two top wheels + axle stubs
+    _rect(ax, lx - 6, ly + 5, (rx - lx) + 12, 7, C_FRAME, z=5)
+    ax.plot([lx, lx], [ly, ly + 5], color=OUT, lw=1.2, zorder=6)
+    ax.plot([rx, rx], [ry, ry + 5], color=OUT, lw=1.2, zorder=6)
+    # OFFSET cradle arm down one side (clears the pipe) → mount tab → corner mechanism
+    _rect(ax, rx + 3, -10, 8, (ly + 12) - (-10), C_FRAME, z=4)
+    _rect(ax, 44, -14, 20, 5, C_FRAME, z=5)
+    draw_circle(ax, 54, -11.5, 2.4, color=OUT, fill=True, fc=C_PIN, lw=0.6, zorder=7)
+    leader(ax, cx, cy, 66, 40, "1.5\" (1.9\" OD) 316 PIPE — the RAIL\n(runs into the page = slide travel)",
            ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, ux, uy, 60, 30, "4 capture wheels (2 upper + 2 lower)\nnylon on stainless bearings — roll dry,\ncan't derail (hangs or stands)",
+    leader(ax, lx, ly, 66, 26, "wheels grip a 90° V on top (2 wheels, 90° apart)\n— NOT a 360° wrap; 4 total (near pair + fore/aft)\nnylon on stainless bearings, roll dry",
            ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 8, 24, -20, 40, "trolley frame\n(film Speed-Rail slider)",
-           ha="right", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 33, -6, -20, -17, "cradle mount (3/8\") → corner mechanism\n(hangs below on the ceiling rail; above on the floor rail)",
+    leader(ax, rx + 7, 4, 66, 10, "carrier + OFFSET cradle → corner mechanism\n(hangs below on the ceiling rail; V inverts on the floor)",
            ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
     ax.text(-20, 58, "SECTION A-A — a SLICE cut across the depth rail (the pipe runs into the page)",
             fontsize=6.7, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
-    ax.text(-20, 52.5, "the film 4-wheel Speed-Rail trolley captures the 316 pipe — rolls freely, can't derail",
+    ax.text(-20, 52.5, "the film Speed-Rail trolley RIDES the 316 pipe on a 90° V of wheels — gravity seats it (not a 360° wrap)",
             fontsize=5.5, color=DIM, ha="left", va="top", **FONT)
 
 
@@ -899,9 +903,9 @@ def sheet3():
         "tilt + swing and locks twist so the flat plane stays square, and is sealed by a nitrile boot "
         "(Ruland UBOOT12/19-NI-KIT) against the wash. Upper (ceiling) corners hang in tension (cradle "
         "under the trolley); lower (floor) corners bear in compression (cradle above).",
-        "5. Generic + all-stainless: the DEPTH rail is a 1.5\" (1.9\" OD) 316 pipe carrying a captured "
-        "film 4-wheel Speed-Rail trolley (nylon wheels, stainless-sealed bearings) — the pipe is both "
-        "beam and rail. The Z/X cross-slides are 316 flat bar + UHMW pads with an adjustable gib. Each "
+        "5. Generic + all-stainless: the DEPTH rail is a 1.5\" (1.9\" OD) 316 pipe; a film 4-wheel "
+        "Speed-Rail trolley RIDES it on a 90° V of wheels (nylon, stainless-sealed bearings) — the pipe "
+        "is both beam and rail. The Z/X cross-slides are 316 flat bar + UHMW pads with an adjustable gib. Each "
         "3/8 stub clamps in a 304 SS 4040N12 support. Off-the-shelf throughout.",
     ], 2, 99, 4.6, fs=6.0, title_fs=6.6, color=DIM, width=96, wrap=78, font=FONT)
 

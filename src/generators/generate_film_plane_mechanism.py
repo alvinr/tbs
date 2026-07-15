@@ -5,7 +5,7 @@
 generate_film_plane_mechanism.py
 Moveable film plane mechanism — engineering drawings (7 sheets)
 OPTION A — RIGID PLANE: a fixed-size rigid rectangle whose ANGLE changes. The 4 corners ride
-SLIDE-AND-CLAMP corners (4-wheel trolleys on 316 pipe + UHMW-pad cross-slides) moved by hand in COORDINATED PAIRS —
+SLIDE-AND-CLAMP corners (4-wheel trolleys on 304 pipe + UHMW-pad cross-slides) moved by hand in COORDINATED PAIRS —
 single-axis tilt (top vs bottom) or swing (left vs right); limited combined; NO compound twist
 (a rigid plane cannot warp). A pinhole has infinite depth of field, so this is scene control,
 not focus: push each corner into position, then lock the cam clamp. Each corner connects through
@@ -381,7 +381,7 @@ def sheet1():
     ax.text(L/2, W+580, "SHEET 1 — PLAN VIEW  (TOP DOWN, LOOKING AT CONTAINER FLOOR)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
     ax.text(L/2, W+470,
-            "4 CORNER SLIDE-AND-CLAMP CARRIAGES (4-wheel trolleys on 316 pipe + UHMW-pad cross-slides, RIGID PLANE, COORDINATED PAIRS)  ·  TILT = CEILING vs FLOOR  ·  SWING = LEFT vs RIGHT",
+            "4 CORNER SLIDE-AND-CLAMP CARRIAGES (4-wheel trolleys on 304 pipe + UHMW-pad cross-slides, RIGID PLANE, COORDINATED PAIRS)  ·  TILT = CEILING vs FLOOR  ·  SWING = LEFT vs RIGHT",
             color=DIM, fontsize=7, ha="center", **FONT)
     ax.text(L/2, W+370,
             "IN THIS VIEW: SWING IS VISIBLE AS DIAGONAL  ·  TILT IS HIDDEN (HEIGHT AXIS = INTO PAGE)",
@@ -458,11 +458,11 @@ def sheet2():
     RAIL_H = 28
     ax.add_patch(Rectangle((0, 0), C_WID, RAIL_H,
                            fc=RAIL, ec=WHITE, lw=0.8, zorder=5, alpha=0.9))
-    ax.text(W/2, RAIL_H/2, "FLOOR DEPTH RAIL  1.5\" 316 pipe + 4-wheel trolley  ×2  (BL  +  BR — roll, brake, moved as a pair)",
+    ax.text(W/2, RAIL_H/2, "FLOOR DEPTH RAIL  1.5\" 304 pipe + 4-wheel trolley  ×2  (BL  +  BR — roll, brake, moved as a pair)",
             color=BG, fontsize=5.5, ha="center", va="center", **FONT, zorder=6)
     ax.add_patch(Rectangle((0, H-RAIL_H), C_WID, RAIL_H,
                            fc=RAIL, ec=WHITE, lw=0.8, zorder=5, alpha=0.9))
-    ax.text(W/2, H-RAIL_H/2, "CEILING DEPTH RAIL  1.5\" 316 pipe + 4-wheel trolley  ×2  (TL  +  TR — roll, brake, moved as a pair)",
+    ax.text(W/2, H-RAIL_H/2, "CEILING DEPTH RAIL  1.5\" 304 pipe + 4-wheel trolley  ×2  (TL  +  TR — roll, brake, moved as a pair)",
             color=BG, fontsize=5.5, ha="center", va="center", **FONT, zorder=6)
 
     # ── WALL-SEAT SADDLES — side elevation (Yd on X-axis, Z on Y-axis), rev11/12 ──
@@ -691,7 +691,7 @@ def view_a(ax):
 
     ax.plot([-30, 460], [0, 0], color="#999", lw=0.8, zorder=1)   # floor line
 
-    # depth RAIL — 1.5" (1.9" OD) 316 pipe, seen along Yd (a horizontal tube); partial w/ break marks
+    # depth RAIL — 1.5" (1.9" OD) 304 pipe, seen along Yd (a horizontal tube); partial w/ break marks
     _rect(ax, 30, 0, 430, 24, C_STEEL)
     ax.plot([30, 460], [12, 12], color="#7A8290", lw=0.5, dashes=(6, 3), zorder=6)   # pipe centreline
     for bx in (44, 446):
@@ -733,7 +733,7 @@ def view_a(ax):
     draw_dim_v(ax, 206, 40, 320, "~280mm\ntilt travel", offset=26, fs=6, color=DIM, font=FONT)
 
     # ── leaders ──
-    leader(ax, 90, 12, 40, -44, "DEPTH RAIL (Y) — 1.5\" 316 pipe; the DRIVE; ~2.2 m (floor rail)",
+    leader(ax, 90, 12, 40, -44, "DEPTH RAIL (Y) — 1.5\" 304 pipe; the DRIVE; ~2.2 m (floor rail)",
            ha="left", fs=6.2, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 298, 28, 336, -36, "4-wheel Speed-Rail trolley\n(rides a 90° V on the pipe) + cradle",
            ha="left", fs=6.2, color=OUT, font=FONT, bbox=LBL_BG)
@@ -800,14 +800,14 @@ def view_b(ax):
 
 def section_aa(ax):
     """SECTION A-A — a slice cut ACROSS the depth rail (the pipe runs into the page). The film
-    Speed-Rail trolley RIDES the 1.5" (1.9" OD) 316 pipe on a 90° V of wheels (2 wheels 90° apart) —
+    Speed-Rail trolley RIDES the 1.5" (1.9" OD) 304 pipe on a 90° V of wheels (2 wheels 90° apart) —
     it does NOT wrap the pipe 360°; gravity seats it. The load hangs below on a ceiling rail (or the V
     inverts to stand on a floor rail). 4 wheels total = the near pair shown + a matching fore/aft pair.
     Wheels are nylon on stainless-sealed bearings — dry, wash-safe."""
     import math
     ax.set_xlim(-20, 92); ax.set_ylim(-26, 58); ax.set_aspect("equal"); ax.axis("off")
     cx, cy, R = 34, 24, 14
-    # 1.5" 316 pipe, END-ON (a tube: OD + wall)
+    # 1.5" 304 pipe, END-ON (a tube: OD + wall)
     draw_circle(ax, cx, cy, R, color=OUT, fill=True, fc=C_STEEL, lw=1.3, zorder=6)
     draw_circle(ax, cx, cy, R - 3, color=OUT, fill=True, fc=BG, lw=0.8, zorder=7)
     # 2 wheels riding a 90° V on TOP of the pipe (45° + 135° = 90° apart) — NOT a 360° wrap
@@ -826,7 +826,7 @@ def section_aa(ax):
     _rect(ax, rx + 3, -10, 8, (ly + 12) - (-10), C_FRAME, z=4)
     _rect(ax, 44, -14, 20, 5, C_FRAME, z=5)
     draw_circle(ax, 54, -11.5, 2.4, color=OUT, fill=True, fc=C_PIN, lw=0.6, zorder=7)
-    leader(ax, cx, cy, 66, 40, "1.5\" (1.9\" OD) 316 PIPE — the RAIL\n(runs into the page = slide travel)",
+    leader(ax, cx, cy, 66, 40, "1.5\" (1.9\" OD) 304 PIPE — the RAIL\n(runs into the page = slide travel)",
            ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, lx, ly, 66, 26, "wheels grip a 90° V on top (2 wheels, 90° apart)\n— NOT a 360° wrap; 4 total (near pair + fore/aft)\nnylon on stainless bearings, roll dry",
            ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
@@ -834,7 +834,7 @@ def section_aa(ax):
            ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
     ax.text(-20, 58, "SECTION A-A — a SLICE cut across the depth rail (the pipe runs into the page)",
             fontsize=6.7, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
-    ax.text(-20, 52.5, "the film Speed-Rail trolley RIDES the 316 pipe on a 90° V of wheels — gravity seats it (not a 360° wrap)",
+    ax.text(-20, 52.5, "the film Speed-Rail trolley RIDES the 304 pipe on a 90° V of wheels — gravity seats it (not a 360° wrap)",
             fontsize=5.5, color=DIM, ha="left", va="top", **FONT)
 
 
@@ -894,7 +894,7 @@ def sheet3():
         "1. A pinhole has infinite depth of field, so the plane is positioned for scene control "
         "(tilt / swing / rise), not focus — hence slide-and-clamp, not leadscrews.",
         "2. Three axes per corner: DEPTH (Y) is the drive — a 4-wheel Speed-Rail trolley on a 1.5\" "
-        "316 pipe (a top-bottom depth difference = tilt, left-right = swing); VERTICAL (Z, green) "
+        "304 pipe (a top-bottom depth difference = tilt, left-right = swing); VERTICAL (Z, green) "
         "absorbs the tilt foreshortening (~280mm) and HORIZONTAL (X, purple) the swing foreshortening "
         "(~260mm) — both UHMW-pad cross-slides.",
         "3. Roll the trolley / push each cross-slide into position; the gib drag holds the vertical, "
@@ -903,7 +903,7 @@ def sheet3():
         "tilt + swing and locks twist so the flat plane stays square, and is sealed by a nitrile boot "
         "(Ruland UBOOT12/19-NI-KIT) against the wash. Upper (ceiling) corners hang in tension (cradle "
         "under the trolley); lower (floor) corners bear in compression (cradle above).",
-        "5. Generic + all-stainless: the DEPTH rail is a 1.5\" (1.9\" OD) 316 pipe; a film 4-wheel "
+        "5. Generic + all-stainless: the DEPTH rail is a 1.5\" (1.9\" OD) 304 pipe; a film 4-wheel "
         "Speed-Rail trolley RIDES it on a 90° V of wheels (nylon, stainless-sealed bearings) — the pipe "
         "is both beam and rail. The Z/X cross-slides are 316 flat bar + UHMW pads with an adjustable gib. Each "
         "3/8 stub clamps in a 304 SS 4040N12 support. Off-the-shelf throughout.",
@@ -1208,7 +1208,7 @@ def sheet5():
         "CORNER HARDWARE (per corner ×4 — slide-and-clamp, single U-joint):",
         "U-joint  1× Ruland US12-6-6-SS (303 SS, self-lube bronze, 45°)   ·   boot  1× Ruland UBOOT12/19-NI-KIT (nitrile, fitted dry)",
         "Shaft support  2× McMaster 4040N12 (304 SS)   ·   stub  2× 3/8\" 304 SS (McMaster 89535K873)",
-        "DEPTH RAIL  1.5\" (1.9\" OD) 316 pipe ~2.2 m + 4-wheel Speed-Rail trolley (stainless bearings)   ·   Z/X cross-slides  316 flat bar ¼\"×1.5\" + UHMW pads + adjustable gib   ·   brake/clamp ×3",
+        "DEPTH RAIL  1.5\" (1.9\" OD) 304 pipe ~2.2 m + 4-wheel Speed-Rail trolley (stainless bearings)   ·   Z/X cross-slides  316 flat bar ¼\"×1.5\" + UHMW pads + adjustable gib   ·   brake/clamp ×3",
         "Full bill of materials: master-shopping-list.md — §4 Film Plane Mechanism",
     ]
     hw_top, hw_lh = 0.205, 0.026
@@ -1266,8 +1266,8 @@ def sheet6():
     T   = FP_ANGLE_T     # 4.8mm
 
     # Geometry constants for the suspension chain
-    RAIL_H = 30       # 1.5" 316 pipe depth rail height (schematic)
-    RAIL_W = 20       # 1.5" 316 pipe depth rail visible width (schematic)
+    RAIL_H = 30       # 1.5" 304 pipe depth rail height (schematic)
+    RAIL_W = 20       # 1.5" 304 pipe depth rail visible width (schematic)
     CARRIAGE_H = 28   # UHMW-pad carriage height (schematic)
     CARRIAGE_W = 44   # UHMW-pad carriage width (schematic)
     BRACKET_H = 40    # suspension bracket height
@@ -1316,7 +1316,7 @@ def sheet6():
                               fc=C_RAIL, ec=ANNO, lw=1.2, zorder=4))
     leader(ax_a, (rail_cx), (rail_bot + RAIL_H / 2),
            (rail_cx + 50), (rail_bot + RAIL_H / 2),
-           "1.5\" 316 pipe\nDEPTH RAIL\n(4-wheel trolley)",
+           "1.5\" 304 pipe\nDEPTH RAIL\n(4-wheel trolley)",
            color=C_RAIL, fs=5.5, ha="left", va="center",
            arrow_style="-|>", font=FONT)
 
@@ -1811,7 +1811,7 @@ def sheet6():
 # SHEET 7 — SYSTEM SCHEMATIC: Four-corner frame front elevation
 #
 # View: looking at the film plane from the pinhole side (interior elevation).
-# Shows ceiling/floor depth-rail pairs (1.5" 316 pipe), four corner wheel-trolley
+# Shows ceiling/floor depth-rail pairs (1.5" 304 pipe), four corner wheel-trolley
 # carriages with cam clamps, film plane frame with a single U-joint at each corner.
 # The long depth rail runs into the page (optical axis); shown end-on here.
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1990,7 +1990,7 @@ def sheet7():
     # Depth-rail leader (from the TL trolley, end-on) — placed well below the U-joint label
     leader(ax, RAIL_X_L, tl_cy,
            RAIL_X_L + 470, tl_cy - 470,
-           "DEPTH RAIL — 1.5\" 316 pipe\n2200mm (runs into page)\n4-wheel trolley + rail brake",
+           "DEPTH RAIL — 1.5\" 304 pipe\n2200mm (runs into page)\n4-wheel trolley + rail brake",
            color=RAIL, ha="left", fs=6.5, font=FONT)
 
     # Carriage leader (from TR carriage)
@@ -2002,7 +2002,7 @@ def sheet7():
     # Rail leader (from TR ceiling depth rail)
     leader(ax, RAIL_X_R + rail_len / 2, FH - rail_h / 2,
            RAIL_X_R + 450, FH - 150,
-           "1.5\" 316 PIPE RAIL\n2200mm (into page)",
+           "1.5\" 304 PIPE RAIL\n2200mm (into page)",
            color=RAIL, ha="left", fs=6.5, font=FONT)
 
     # Frame leader (from right side midpoint)
@@ -2042,7 +2042,7 @@ def sheet7():
             "SHEET 7 — SYSTEM SCHEMATIC  (FRONT ELEVATION — LOOKING FROM PINHOLE SIDE)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
     ax.text(FW / 2, FH + 290,
-            "4 CORNER TROLLEYS (4-wheel on 316 pipe, COORDINATED PAIRS)  ·  RAIL BRAKE + SINGLE U-JOINT + X-Z UHMW-PAD CROSS-SLIDES AT EACH CORNER",
+            "4 CORNER TROLLEYS (4-wheel on 304 pipe, COORDINATED PAIRS)  ·  RAIL BRAKE + SINGLE U-JOINT + X-Z UHMW-PAD CROSS-SLIDES AT EACH CORNER",
             color=DIM, fontsize=7, ha="center", **FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────

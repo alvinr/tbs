@@ -25,25 +25,123 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # ═══ Corners ═══
   defn = model.definitions.add("Corners")
   ents = defn.entities
-  # Depth slide rail Y (drive, grey) BL
+  # Depth pipe rail Y (1.5in 304, grey) BL
   grp = ents.add_group
-  grp.name = "Depth slide rail Y (drive, grey) BL"
-  face = grp.entities.add_face([142.mm,100.mm,15.mm], [158.mm,100.mm,15.mm], [158.mm,2302.mm,15.mm], [142.mm,2302.mm,15.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Depth slide rail Y (drive, grey) BL"] || model.materials.add("Depth slide rail Y (drive, grey) BL")
+  grp.name = "Depth pipe rail Y (1.5in 304, grey) BL"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,0.mm,39.mm], [0,1,0], 24.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(2362.mm)
+  mat = model.materials["Depth pipe rail Y (1.5in 304, grey) BL"] || model.materials.add("Depth pipe rail Y (1.5in 304, grey) BL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Depth carriage BL
+  # Pipe flange BL 0
   grp = ents.add_group
-  grp.name = "Depth carriage BL"
-  face = grp.entities.add_face([128.mm,2232.mm,31.mm], [172.mm,2232.mm,31.mm], [172.mm,2292.mm,31.mm], [128.mm,2292.mm,31.mm])
+  grp.name = "Pipe flange BL 0"
+  face = grp.entities.add_face([105.mm,0.mm,-6.mm], [195.mm,0.mm,-6.mm], [195.mm,12.mm,-6.mm], [105.mm,12.mm,-6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(24.mm)
-  mat = model.materials["Depth carriage BL"] || model.materials.add("Depth carriage BL")
+  face.pushpull(90.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pipe flange BL 2350
+  grp = ents.add_group
+  grp.name = "Pipe flange BL 2350"
+  face = grp.entities.add_face([105.mm,2350.mm,-6.mm], [195.mm,2350.mm,-6.mm], [195.mm,2362.mm,-6.mm], [105.mm,2362.mm,-6.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pipe wall plate BL PH
+  grp = ents.add_group
+  grp.name = "Pipe wall plate BL PH"
+  face = grp.entities.add_face([100.mm,-48.mm,-11.mm], [200.mm,-48.mm,-11.mm], [200.mm,-40.mm,-11.mm], [100.mm,-40.mm,-11.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Pipe wall plate BL PH"] || model.materials.add("Pipe wall plate BL PH")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.5
+  grp.material = mat
+
+  # Pipe wall plate BL far
+  grp = ents.add_group
+  grp.name = "Pipe wall plate BL far"
+  face = grp.entities.add_face([100.mm,2402.mm,-11.mm], [200.mm,2402.mm,-11.mm], [200.mm,2410.mm,-11.mm], [100.mm,2410.mm,-11.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Pipe wall plate BL PH"] || model.materials.add("Pipe wall plate BL PH")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.5
+  grp.material = mat
+
+  # Depth trolley cradle (red) BL
+  grp = ents.add_group
+  grp.name = "Depth trolley cradle (red) BL"
+  face = grp.entities.add_face([124.mm,2236.mm,15.mm], [176.mm,2236.mm,15.mm], [176.mm,2284.mm,15.mm], [124.mm,2284.mm,15.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(48.mm)
+  mat = model.materials["Depth trolley cradle (red) BL"] || model.materials.add("Depth trolley cradle (red) BL")
   mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 0.35
+  grp.material = mat
+
+  # Trolley wheel BL 2238_-18
+  grp = ents.add_group
+  grp.name = "Trolley wheel BL 2238_-18"
+  ge = grp.entities
+  circle = ge.add_circle([128.mm,2238.mm,61.mm], [1,0,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(8.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Trolley wheel BL 2238_18
+  grp = ents.add_group
+  grp.name = "Trolley wheel BL 2238_18"
+  ge = grp.entities
+  circle = ge.add_circle([164.mm,2238.mm,61.mm], [1,0,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(8.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Trolley wheel BL 2256_-18
+  grp = ents.add_group
+  grp.name = "Trolley wheel BL 2256_-18"
+  ge = grp.entities
+  circle = ge.add_circle([128.mm,2256.mm,61.mm], [1,0,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(8.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Trolley wheel BL 2256_18
+  grp = ents.add_group
+  grp.name = "Trolley wheel BL 2256_18"
+  ge = grp.entities
+  circle = ge.add_circle([164.mm,2256.mm,61.mm], [1,0,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(8.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -97,30 +195,128 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([138.mm,2250.mm,145.mm], [162.mm,2250.mm,145.mm], [162.mm,2274.mm,145.mm], [138.mm,2274.mm,145.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
-  mat = model.materials["U-joint BL"] || model.materials.add("U-joint BL")
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Depth slide rail Y (drive, grey) BR
+  # Depth pipe rail Y (1.5in 304, grey) BR
   grp = ents.add_group
-  grp.name = "Depth slide rail Y (drive, grey) BR"
-  face = grp.entities.add_face([4641.mm,100.mm,15.mm], [4657.mm,100.mm,15.mm], [4657.mm,2302.mm,15.mm], [4641.mm,2302.mm,15.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Depth slide rail Y (drive, grey) BL"] || model.materials.add("Depth slide rail Y (drive, grey) BL")
+  grp.name = "Depth pipe rail Y (1.5in 304, grey) BR"
+  ge = grp.entities
+  circle = ge.add_circle([4649.mm,0.mm,39.mm], [0,1,0], 24.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(2362.mm)
+  mat = model.materials["Depth pipe rail Y (1.5in 304, grey) BL"] || model.materials.add("Depth pipe rail Y (1.5in 304, grey) BL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Depth carriage BR
+  # Pipe flange BR 0
   grp = ents.add_group
-  grp.name = "Depth carriage BR"
-  face = grp.entities.add_face([4627.mm,2232.mm,31.mm], [4671.mm,2232.mm,31.mm], [4671.mm,2292.mm,31.mm], [4627.mm,2292.mm,31.mm])
+  grp.name = "Pipe flange BR 0"
+  face = grp.entities.add_face([4604.mm,0.mm,-6.mm], [4694.mm,0.mm,-6.mm], [4694.mm,12.mm,-6.mm], [4604.mm,12.mm,-6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(24.mm)
-  mat = model.materials["Depth carriage BL"] || model.materials.add("Depth carriage BL")
+  face.pushpull(90.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pipe flange BR 2350
+  grp = ents.add_group
+  grp.name = "Pipe flange BR 2350"
+  face = grp.entities.add_face([4604.mm,2350.mm,-6.mm], [4694.mm,2350.mm,-6.mm], [4694.mm,2362.mm,-6.mm], [4604.mm,2362.mm,-6.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pipe wall plate BR PH
+  grp = ents.add_group
+  grp.name = "Pipe wall plate BR PH"
+  face = grp.entities.add_face([4599.mm,-48.mm,-11.mm], [4699.mm,-48.mm,-11.mm], [4699.mm,-40.mm,-11.mm], [4599.mm,-40.mm,-11.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Pipe wall plate BL PH"] || model.materials.add("Pipe wall plate BL PH")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.5
+  grp.material = mat
+
+  # Pipe wall plate BR far
+  grp = ents.add_group
+  grp.name = "Pipe wall plate BR far"
+  face = grp.entities.add_face([4599.mm,2402.mm,-11.mm], [4699.mm,2402.mm,-11.mm], [4699.mm,2410.mm,-11.mm], [4599.mm,2410.mm,-11.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Pipe wall plate BL PH"] || model.materials.add("Pipe wall plate BL PH")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.5
+  grp.material = mat
+
+  # Depth trolley cradle (red) BR
+  grp = ents.add_group
+  grp.name = "Depth trolley cradle (red) BR"
+  face = grp.entities.add_face([4623.mm,2236.mm,15.mm], [4675.mm,2236.mm,15.mm], [4675.mm,2284.mm,15.mm], [4623.mm,2284.mm,15.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(48.mm)
+  mat = model.materials["Depth trolley cradle (red) BL"] || model.materials.add("Depth trolley cradle (red) BL")
   mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 0.35
+  grp.material = mat
+
+  # Trolley wheel BR 2238_-18
+  grp = ents.add_group
+  grp.name = "Trolley wheel BR 2238_-18"
+  ge = grp.entities
+  circle = ge.add_circle([4627.mm,2238.mm,61.mm], [1,0,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(8.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Trolley wheel BR 2238_18
+  grp = ents.add_group
+  grp.name = "Trolley wheel BR 2238_18"
+  ge = grp.entities
+  circle = ge.add_circle([4663.mm,2238.mm,61.mm], [1,0,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(8.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Trolley wheel BR 2256_-18
+  grp = ents.add_group
+  grp.name = "Trolley wheel BR 2256_-18"
+  ge = grp.entities
+  circle = ge.add_circle([4627.mm,2256.mm,61.mm], [1,0,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(8.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Trolley wheel BR 2256_18
+  grp = ents.add_group
+  grp.name = "Trolley wheel BR 2256_18"
+  ge = grp.entities
+  circle = ge.add_circle([4663.mm,2256.mm,61.mm], [1,0,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(8.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -174,30 +370,128 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4637.mm,2250.mm,145.mm], [4661.mm,2250.mm,145.mm], [4661.mm,2274.mm,145.mm], [4637.mm,2274.mm,145.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
-  mat = model.materials["U-joint BL"] || model.materials.add("U-joint BL")
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Depth slide rail Y (drive, grey) TL
+  # Depth pipe rail Y (1.5in 304, grey) TL
   grp = ents.add_group
-  grp.name = "Depth slide rail Y (drive, grey) TL"
-  face = grp.entities.add_face([142.mm,100.mm,2357.mm], [158.mm,100.mm,2357.mm], [158.mm,2302.mm,2357.mm], [142.mm,2302.mm,2357.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Depth slide rail Y (drive, grey) BL"] || model.materials.add("Depth slide rail Y (drive, grey) BL")
+  grp.name = "Depth pipe rail Y (1.5in 304, grey) TL"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,0.mm,2349.mm], [0,1,0], 24.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(2362.mm)
+  mat = model.materials["Depth pipe rail Y (1.5in 304, grey) BL"] || model.materials.add("Depth pipe rail Y (1.5in 304, grey) BL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Depth carriage TL
+  # Pipe flange TL 0
   grp = ents.add_group
-  grp.name = "Depth carriage TL"
-  face = grp.entities.add_face([128.mm,2232.mm,2333.mm], [172.mm,2232.mm,2333.mm], [172.mm,2292.mm,2333.mm], [128.mm,2292.mm,2333.mm])
+  grp.name = "Pipe flange TL 0"
+  face = grp.entities.add_face([105.mm,0.mm,2304.mm], [195.mm,0.mm,2304.mm], [195.mm,12.mm,2304.mm], [105.mm,12.mm,2304.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(24.mm)
-  mat = model.materials["Depth carriage BL"] || model.materials.add("Depth carriage BL")
+  face.pushpull(90.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pipe flange TL 2350
+  grp = ents.add_group
+  grp.name = "Pipe flange TL 2350"
+  face = grp.entities.add_face([105.mm,2350.mm,2304.mm], [195.mm,2350.mm,2304.mm], [195.mm,2362.mm,2304.mm], [105.mm,2362.mm,2304.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pipe wall plate TL PH
+  grp = ents.add_group
+  grp.name = "Pipe wall plate TL PH"
+  face = grp.entities.add_face([100.mm,-48.mm,2299.mm], [200.mm,-48.mm,2299.mm], [200.mm,-40.mm,2299.mm], [100.mm,-40.mm,2299.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Pipe wall plate BL PH"] || model.materials.add("Pipe wall plate BL PH")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.5
+  grp.material = mat
+
+  # Pipe wall plate TL far
+  grp = ents.add_group
+  grp.name = "Pipe wall plate TL far"
+  face = grp.entities.add_face([100.mm,2402.mm,2299.mm], [200.mm,2402.mm,2299.mm], [200.mm,2410.mm,2299.mm], [100.mm,2410.mm,2299.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Pipe wall plate BL PH"] || model.materials.add("Pipe wall plate BL PH")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.5
+  grp.material = mat
+
+  # Depth trolley cradle (red) TL
+  grp = ents.add_group
+  grp.name = "Depth trolley cradle (red) TL"
+  face = grp.entities.add_face([124.mm,2236.mm,2325.mm], [176.mm,2236.mm,2325.mm], [176.mm,2284.mm,2325.mm], [124.mm,2284.mm,2325.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(48.mm)
+  mat = model.materials["Depth trolley cradle (red) BL"] || model.materials.add("Depth trolley cradle (red) BL")
   mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 0.35
+  grp.material = mat
+
+  # Trolley wheel TL 2238_-18
+  grp = ents.add_group
+  grp.name = "Trolley wheel TL 2238_-18"
+  ge = grp.entities
+  circle = ge.add_circle([128.mm,2238.mm,2327.mm], [1,0,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(8.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Trolley wheel TL 2238_18
+  grp = ents.add_group
+  grp.name = "Trolley wheel TL 2238_18"
+  ge = grp.entities
+  circle = ge.add_circle([164.mm,2238.mm,2327.mm], [1,0,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(8.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Trolley wheel TL 2256_-18
+  grp = ents.add_group
+  grp.name = "Trolley wheel TL 2256_-18"
+  ge = grp.entities
+  circle = ge.add_circle([128.mm,2256.mm,2327.mm], [1,0,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(8.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Trolley wheel TL 2256_18
+  grp = ents.add_group
+  grp.name = "Trolley wheel TL 2256_18"
+  ge = grp.entities
+  circle = ge.add_circle([164.mm,2256.mm,2327.mm], [1,0,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(8.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -251,30 +545,128 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([138.mm,2250.mm,2223.mm], [162.mm,2250.mm,2223.mm], [162.mm,2274.mm,2223.mm], [138.mm,2274.mm,2223.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
-  mat = model.materials["U-joint BL"] || model.materials.add("U-joint BL")
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Depth slide rail Y (drive, grey) TR
+  # Depth pipe rail Y (1.5in 304, grey) TR
   grp = ents.add_group
-  grp.name = "Depth slide rail Y (drive, grey) TR"
-  face = grp.entities.add_face([4641.mm,100.mm,2357.mm], [4657.mm,100.mm,2357.mm], [4657.mm,2302.mm,2357.mm], [4641.mm,2302.mm,2357.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Depth slide rail Y (drive, grey) BL"] || model.materials.add("Depth slide rail Y (drive, grey) BL")
+  grp.name = "Depth pipe rail Y (1.5in 304, grey) TR"
+  ge = grp.entities
+  circle = ge.add_circle([4649.mm,0.mm,2349.mm], [0,1,0], 24.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(2362.mm)
+  mat = model.materials["Depth pipe rail Y (1.5in 304, grey) BL"] || model.materials.add("Depth pipe rail Y (1.5in 304, grey) BL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Depth carriage TR
+  # Pipe flange TR 0
   grp = ents.add_group
-  grp.name = "Depth carriage TR"
-  face = grp.entities.add_face([4627.mm,2232.mm,2333.mm], [4671.mm,2232.mm,2333.mm], [4671.mm,2292.mm,2333.mm], [4627.mm,2292.mm,2333.mm])
+  grp.name = "Pipe flange TR 0"
+  face = grp.entities.add_face([4604.mm,0.mm,2304.mm], [4694.mm,0.mm,2304.mm], [4694.mm,12.mm,2304.mm], [4604.mm,12.mm,2304.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(24.mm)
-  mat = model.materials["Depth carriage BL"] || model.materials.add("Depth carriage BL")
+  face.pushpull(90.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pipe flange TR 2350
+  grp = ents.add_group
+  grp.name = "Pipe flange TR 2350"
+  face = grp.entities.add_face([4604.mm,2350.mm,2304.mm], [4694.mm,2350.mm,2304.mm], [4694.mm,2362.mm,2304.mm], [4604.mm,2362.mm,2304.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pipe wall plate TR PH
+  grp = ents.add_group
+  grp.name = "Pipe wall plate TR PH"
+  face = grp.entities.add_face([4599.mm,-48.mm,2299.mm], [4699.mm,-48.mm,2299.mm], [4699.mm,-40.mm,2299.mm], [4599.mm,-40.mm,2299.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Pipe wall plate BL PH"] || model.materials.add("Pipe wall plate BL PH")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.5
+  grp.material = mat
+
+  # Pipe wall plate TR far
+  grp = ents.add_group
+  grp.name = "Pipe wall plate TR far"
+  face = grp.entities.add_face([4599.mm,2402.mm,2299.mm], [4699.mm,2402.mm,2299.mm], [4699.mm,2410.mm,2299.mm], [4599.mm,2410.mm,2299.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["Pipe wall plate BL PH"] || model.materials.add("Pipe wall plate BL PH")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 0.5
+  grp.material = mat
+
+  # Depth trolley cradle (red) TR
+  grp = ents.add_group
+  grp.name = "Depth trolley cradle (red) TR"
+  face = grp.entities.add_face([4623.mm,2236.mm,2325.mm], [4675.mm,2236.mm,2325.mm], [4675.mm,2284.mm,2325.mm], [4623.mm,2284.mm,2325.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(48.mm)
+  mat = model.materials["Depth trolley cradle (red) BL"] || model.materials.add("Depth trolley cradle (red) BL")
   mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 0.35
+  grp.material = mat
+
+  # Trolley wheel TR 2238_-18
+  grp = ents.add_group
+  grp.name = "Trolley wheel TR 2238_-18"
+  ge = grp.entities
+  circle = ge.add_circle([4627.mm,2238.mm,2327.mm], [1,0,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(8.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Trolley wheel TR 2238_18
+  grp = ents.add_group
+  grp.name = "Trolley wheel TR 2238_18"
+  ge = grp.entities
+  circle = ge.add_circle([4663.mm,2238.mm,2327.mm], [1,0,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(8.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Trolley wheel TR 2256_-18
+  grp = ents.add_group
+  grp.name = "Trolley wheel TR 2256_-18"
+  ge = grp.entities
+  circle = ge.add_circle([4627.mm,2256.mm,2327.mm], [1,0,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(8.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Trolley wheel TR 2256_18
+  grp = ents.add_group
+  grp.name = "Trolley wheel TR 2256_18"
+  ge = grp.entities
+  circle = ge.add_circle([4663.mm,2256.mm,2327.mm], [1,0,0], 8.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(8.mm)
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -328,7 +720,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4637.mm,2250.mm,2223.mm], [4661.mm,2250.mm,2223.mm], [4661.mm,2274.mm,2223.mm], [4637.mm,2274.mm,2223.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
-  mat = model.materials["U-joint BL"] || model.materials.add("U-joint BL")
+  mat = model.materials["Pipe flange BL 0"] || model.materials.add("Pipe flange BL 0")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat

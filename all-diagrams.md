@@ -66,6 +66,8 @@
 
 ![TBS-001 Film Plane Mechanism — Sheet 7: System Schematic, Front Elevation](assets/film-plane-sheet7.png)
 
+![TBS-001 Film Plane Mechanism — Sheet 8: Frame-Corner ↔ Cross-Slide Attachment](assets/film-plane-sheet8.png)
+
 ---
 
 ## 8. Tilt-Swing Front Board

@@ -3,7 +3,7 @@
 # © 2026 Alvin Richards
 """
 generate_film_plane_mechanism.py
-Moveable film plane mechanism — engineering drawings (7 sheets)
+Moveable film plane mechanism — engineering drawings (8 sheets)
 OPTION A — RIGID PLANE: a fixed-size rigid rectangle whose ANGLE changes. The 4 corners ride
 SLIDE-AND-CLAMP corners (acetal skates on 304 U-channel + UHMW-pad cross-slides) moved by hand in COORDINATED PAIRS —
 single-axis tilt (top vs bottom) or swing (left vs right); limited combined; NO compound twist
@@ -18,6 +18,7 @@ Sheet 4 — Rail mounting & transport drop-in: left split (stub + removable + br
 Sheet 5 — Movement specification table & BOM
 Sheet 6 — Muslin clamp detail: suspension chain + cam-lever spring clamp
 Sheet 7 — System schematic: four-corner frame front elevation
+Sheet 8 — Frame-corner ↔ cross-slide attachment: how the frame hangs off the two slides through the U-joint
 """
 
 import numpy as np
@@ -408,7 +409,7 @@ def sheet1():
                 color=col, fontsize=6, va="center", **FONT)
 
     # Title block
-    title_block(ax, "SHEET 1 OF 7",
+    title_block(ax, "SHEET 1 OF 8",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Plan view — 4-corner rail layout",
                 scale_note="Proportional (mm)",
@@ -665,7 +666,7 @@ def sheet2():
     # Title block (full-figure overlay for multi-subplot sheet)
     ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 2 OF 7",
+    title_block(ax_tb, "SHEET 2 OF 8",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Tilt elevation & Swing cross-section",
                 scale_note="Proportional (mm)",
@@ -989,7 +990,7 @@ def sheet3():
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 3 OF 7",
+    title_block(ax_tb, "SHEET 3 OF 8",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Corner carriage detail — acetal skate on 3×1.5 304 U-channel + cross-slides + U-joint + stub clamp",
                 scale_note="DIMS IN mm",
@@ -1189,7 +1190,7 @@ def sheet4():
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 4 OF 7", drawing_title="MOVEABLE FILM PLANE",
+    title_block(ax_tb, "SHEET 4 OF 8", drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Rail mounting & transport drop-in — left split (stub + removable + web-back bridge) · right flanged wall-to-wall",
                 scale_note="DIMS IN mm",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
@@ -1343,7 +1344,7 @@ def sheet5():
                 ha="left", va="top", fontweight=fw, style=st, **FONT)
 
     # Title block
-    title_block(ax, "SHEET 5 OF 7",
+    title_block(ax, "SHEET 5 OF 8",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Movement specification & BOM",
                 scale_note="Not to scale",
@@ -1929,7 +1930,7 @@ def sheet6():
     ax_tb.set_xlim(0, 1)
     ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 6 OF 7",
+    title_block(ax_tb, "SHEET 6 OF 8",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Muslin clamp detail — cam-lever spring clamp",
                 scale_note="MULTIPLE SCALES — SEE INDIVIDUAL PANELS",
@@ -2180,7 +2181,7 @@ def sheet7():
             color=DIM, fontsize=7, ha="center", **FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 7 OF 7",
+    title_block(ax, "SHEET 7 OF 8",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="System schematic — four-corner frame front elevation",
                 scale_note="Schematic — not to scale",
@@ -2192,7 +2193,143 @@ def sheet7():
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet7.png")
 
 
+def _joint(ax, x, y, r=3.4):
+    """A bolted / set-screw joint marker (gold dot)."""
+    draw_circle(ax, x, y, r, color=OUT, fill=True, fc=C_PIN, lw=0.8, zorder=12)
+
+
+def _hatch316(ax, x, y, w, h, z=6):
+    hatch_rect(ax, x, y, w, h, color="#6E747C", hatch="\\\\\\", lw=0.0)
+
+
+def attach_elevation(ax):
+    """ASSEMBLED ELEVATION (Yd × Z), looking along +X (the SWING axis is into the page).
+    Shows the whole hang: depth-rail skate → carriage plate → Z (tilt) slide → X (swing) slide → U-joint
+    → frame corner bracket → 2x2 304 SS frame angle + ACM. The Z slide's travel is the TILT accommodation;
+    the X slide (edge-on here) does SWING. Five bolted joints J1–J5 make the chain."""
+    ax.set_xlim(-40, 210); ax.set_ylim(-20, 372); ax.set_aspect("equal"); ax.axis("off")
+    # depth rail + skate (abbreviated base)
+    _rect(ax, 44, -14, 104, 8, RAIL, z=3)
+    ax.text(96, -18, "to DEPTH RAIL + 4-wheel skate (Sheet 3)", fontsize=5.2, color=DIM, ha="center", va="top", **FONT)
+    # carriage plate (red) — the moving base bolted to the skate axles
+    _rect(ax, 46, -6, 100, 16, C_CAR, z=4)
+    # Z (TILT) slide — a tall 316 flat-bar WAY (travel envelope) + a 316 carriage on UHMW pads at nominal LOW
+    _rect(ax, 68, 10, 16, 286, C_TILT, z=4); _hatch316(ax, 68, 10, 16, 286)
+    _rect(ax, 58, 16, 36, 62, C_TILT, z=6)
+    _rect(ax, 64, 18, 4, 58, C_POLY, z=7); _rect(ax, 84, 18, 4, 58, C_POLY, z=7)   # UHMW pads on both faces
+    _rect(ax, 58, 40, 8, 12, C_PIN, z=7)                                           # gib + brass-tip screw
+    draw_dim_v(ax, 34, 16, 296, "Z travel\n~250mm\n= TILT\naccom.", offset=18, fs=5.6, color=C_TILT, font=FONT)
+    _joint(ax, 74, 6); _joint(ax, 118, 6)
+    # Z-carriage output bridge → carries the X slide
+    _rect(ax, 56, 78, 64, 12, C_TILT, z=6)
+    # X (SWING) slide — 316 flat bar, edge-on (runs into the page along X) + carriage
+    _rect(ax, 96, 90, 46, 16, C_SWING, z=6); _hatch316(ax, 96, 90, 46, 16)
+    _rect(ax, 102, 106, 34, 14, C_SWING, z=7)
+    _joint(ax, 108, 86); _joint(ax, 130, 86)
+    # stub shaft (316) up into the U-joint input bore
+    _rect(ax, 112, 120, 12, 18, C_STEEL, z=6)
+    # U-joint (Ruland US12-6-6-SS) — tilt + swing, twist locked; set screws on both hubs
+    _rect(ax, 100, 138, 40, 34, C_UJ, z=6)
+    for sy in (146, 164):
+        _joint(ax, 103, sy, r=2.2)
+    # output stub (316) up to the frame corner bracket
+    _rect(ax, 114, 172, 12, 16, C_STEEL, z=6)
+    # frame corner bracket (steel) — clamps the output stub, bolts to the frame angle
+    _rect(ax, 102, 188, 50, 26, C_STEEL, z=6)
+    # 2x2 304 SS frame ANGLE corner (L) + ACM ghost climbing in Z
+    _rect(ax, 108, 214, 48, 8, C_FRAME, z=7)     # in-plane / horizontal leg (ACM seat)
+    _rect(ax, 108, 214, 8, 116, C_FRAME, z=7)    # perp / vertical leg (muslin-clamp face)
+    ax.add_patch(plt.Rectangle((120, 222), 6, 106, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))
+    # joint markers J3-J5
+    _joint(ax, 118, 132); _joint(ax, 120, 186); _joint(ax, 130, 218)
+    # ── leaders / joint callouts ──
+    leader(ax, 118, 6, 160, -8, "J1 — Z-way foot → carriage plate (M8 ×4)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 84, 46, 148, 58, "Z (TILT) slide — 316 flat bar\n+ UHMW + gib (holds gravity axis)", ha="left", fs=5.6, color=C_TILT, font=FONT, bbox=LBL_BG)
+    leader(ax, 130, 86, 156, 96, "J2 — X-way → Z-carriage bridge (M8 ×4)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 138, 98, 158, 116, "X (SWING) slide — 316 flat bar\n(INTO PAGE — see plan B)", ha="left", fs=5.6, color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(ax, 118, 132, 150, 140, "J3 — X-carriage stub Ø9.5 (3/8\") → U-joint bore + set screw", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 140, 155, 168, 168, "U-joint (Ruland US12-6-6-SS)\ntilt + swing, twist-locked", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 120, 186, 150, 196, "J4 — U-joint output stub → frame corner bracket (set-screw clamp)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 130, 218, 158, 232, "J5 — 2x2 304 SS frame ANGLE → bracket (M6 ×2 per leg)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 123, 300, 150, 320, "ACM backing + muslin (Sheet 6) — the RIGID plane", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    ax.text(-40, 372, "A — ASSEMBLED ELEVATION  (Yd × Z; swing axis into page)", fontsize=8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+    ax.text(-40, 358, "how the frame HANGS off the two slides through the U-joint — read J1→J5 bottom-up", fontsize=5.6, color=DIM, ha="left", va="top", **FONT)
+
+
+def attach_plan(ax):
+    """PLAN VIEW (Yd × X), looking DOWN the Z axis — the SWING stack. Here the X (swing) slide shows its
+    real travel along X, and the U-joint's SWING pin is seen true. The Z (tilt) slide is edge-on (into page)."""
+    ax.set_xlim(-20, 470); ax.set_ylim(-70, 90); ax.set_aspect("equal"); ax.axis("off")
+    cyy = 0
+    # carriage plate + Z slide edge-on (into the page here)
+    _rect(ax, 40, cyy - 20, 40, 40, C_CAR, z=4)
+    _rect(ax, 52, cyy - 12, 18, 24, C_TILT, z=5); _hatch316(ax, 52, cyy - 12, 18, 24)
+    ax.text(60, cyy - 26, "Z slide\n(edge-on)", fontsize=5.0, color=C_TILT, ha="center", va="top", **FONT)
+    # X (SWING) way — a long 316 flat bar along X + carriage that traverses it
+    _rect(ax, 90, cyy - 8, 300, 16, C_SWING, z=5); _hatch316(ax, 90, cyy - 8, 300, 16)
+    _rect(ax, 300, cyy - 12, 46, 24, C_SWING, z=6)                # X carriage (near one end = swung)
+    ax.annotate("", xy=(96, cyy + 26), xytext=(384, cyy + 26), arrowprops=dict(arrowstyle="<->", color=C_SWING, lw=1.0))
+    ax.text(240, cyy + 30, "X travel ~260mm = SWING accommodation", fontsize=6, color=C_SWING, ha="center", va="bottom", **FONT)
+    # stub → U-joint (swing pin seen true here) → frame
+    _rect(ax, 346, cyy - 6, 16, 12, C_STEEL, z=6)
+    _rect(ax, 362, cyy - 18, 34, 36, C_UJ, z=6)
+    ax.plot([379, 379], [cyy - 22, cyy + 22], color=C_PIN, lw=2.4, zorder=8)       # SWING pin (true)
+    draw_circle(ax, 379, cyy + 14, 3.5, color=C_PIN, fill=True, fc=C_PIN, lw=0.7, zorder=9)
+    draw_circle(ax, 379, cyy - 14, 3.5, color=C_PIN, fill=True, fc=C_PIN, lw=0.7, zorder=9)
+    _rect(ax, 396, cyy - 6, 14, 12, C_STEEL, z=6)                 # output stub
+    _rect(ax, 410, cyy - 22, 22, 44, C_STEEL, z=6)                # frame corner bracket
+    _rect(ax, 432, cyy - 26, 8, 52, C_FRAME, z=7)                 # frame angle (runs along X)
+    ax.add_patch(plt.Rectangle((440, cyy - 26), 6, 52, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))
+    _joint(ax, 354, cyy); _joint(ax, 403, cyy); _joint(ax, 421, cyy - 16)
+    leader(ax, 320, cyy - 12, 250, -50, "X carriage — 316 on UHMW; cam-clamp locks swing", ha="left", fs=5.6, color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(ax, 379, cyy + 18, 300, 58, "U-joint SWING pin (true here)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 421, cyy - 16, 405, -52, "frame angle + ACM\n(runs along X)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    ax.text(-20, 88, "B — PLAN  (Yd × X; looking down Z) — the SWING slide + U-joint swing pin", fontsize=8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+
+
 # ── Run all sheets ─────────────────────────────────────────────────────────────
+def sheet8():
+    reset_label_registry()
+    fig = plt.figure(figsize=(17, 12)); fig.patch.set_facecolor(BG)
+    axA = fig.add_axes([0.03, 0.30, 0.34, 0.64]); axA.set_facecolor(BG)
+    axB = fig.add_axes([0.42, 0.60, 0.55, 0.34]); axB.set_facecolor(BG)
+    attach_elevation(axA)
+    attach_plan(axB)
+    # notes + fastener schedule
+    axN = fig.add_axes([0.42, 0.095, 0.55, 0.44]); axN.set_xlim(0, 100); axN.set_ylim(0, 100); axN.axis("off")
+    draw_notes(axN, [
+        "FRAME ↔ CROSS-SLIDE ATTACHMENT — ONE OF FOUR CORNERS:",
+        "The film frame is NOT bolted straight to a slide. Each corner hangs off BOTH cross-slides "
+        "through a single U-joint, so the rigid plane can tilt AND swing while every corner stays "
+        "square (the U-joint locks twist). Load path, film → rail: 2x2 304 SS frame angle → corner "
+        "bracket → U-joint → X (swing) slide → Z (tilt) slide → carriage plate → 4-wheel skate.",
+        "THE TWO SLIDES do different jobs: the Z (tilt, green) slide takes the vertical arc-travel a "
+        "rigid tilt forces on the corner (~250mm); the X (swing, purple) slide takes the horizontal "
+        "arc-travel of a swing (~260mm). Both are 316 flat bar on UHMW pads with a gib; the gib drag "
+        "holds the gravity-loaded Z axis, and a cam clamp locks each for the shot.",
+        "FIVE JOINTS make the chain (bottom-up):",
+        "  J1  Z-way foot → carriage plate .......... M8 ×4, SS",
+        "  J2  X-way → Z-carriage output bridge ...... M8 ×4, SS",
+        "  J3  X-carriage stub Ø9.5 (3/8\") → U-joint . slip into the bore + set screw (Ruland US12-6-6-SS)",
+        "  J4  U-joint output stub → frame bracket ... slip + set-screw clamp",
+        "  J5  2x2 304 SS frame angle → bracket ...... M6 ×2 per leg (tapped into the frame angle)",
+        "The U-joint's two bores are its ONLY rotating link; everything else is a rigid bolted/clamped "
+        "stack. Set the pose by hand (push each slide), then throw the cam clamps — no leadscrews "
+        "(a pinhole's infinite depth of field makes this scene control, not focus).",
+    ], 2, 99, 4.0, fs=6.0, title_fs=7.2, color=DIM, width=96, wrap=90, font=FONT)
+    # title block
+    ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 8 OF 8",
+                drawing_title="MOVEABLE FILM PLANE",
+                subtitle="Frame-corner ↔ cross-slide attachment — how the film frame hangs off the two slides through the U-joint",
+                scale_note="DIMS IN mm · SCHEMATIC",
+                doc_id="TBS-FM01 · Film Plane Mechanism",
+                height=0.75)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet8.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet8.png")
+
+
 if __name__ == "__main__":
     print("Generating film plane mechanism drawings (rigid plane)...")
     sheet1()
@@ -2202,4 +2339,5 @@ if __name__ == "__main__":
     sheet5()
     sheet6()
     sheet7()
+    sheet8()
     print("Done.")

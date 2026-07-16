@@ -11,11 +11,17 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ---
 
-## Definitive corner-mechanism engineering drawing — OPEN
+## ★ MAJOR MILESTONE — manufacturing-ready blueprints (ALL drawing sets) — OPEN
 
-_Sheet 8 (frame ↔ cross-slide attachment) is now arrangement-faithful to the 3D BL corner, but it is a
-SCHEMATIC — true-proportion + topologically correct, NOT dimensioned. Alvin's call (2026-07-16): produce
-the definitive, dimensionally-correct engineering drawing of one corner mechanism, "as always"._
+_Alvin's call (2026-07-16): the current 2D sets are arrangement-faithful schematics (true-proportion +
+topologically correct, reconciled to the 3D) but NOT manufacturing blueprints. The milestone is a
+**definitive, dimensionally-correct, shippable-to-a-fabricator drawing package for EVERY subsystem** —
+precise hole positions, tolerances, fastener callouts, datums, section views, material/finish, driven
+parametrically from `tbs_constants` so they can't drift. Do the **film-plane corner mechanism FIRST** (below)
+as the template, then roll the same standard out across all sets (film plane, water/tray/spray, IBC frame,
+walkway, hinged panel, light lock, electrical, optics, …)._
+
+### Definitive corner-mechanism engineering drawing (film plane — FIRST / template)
 
 - [ ] Fully-dimensioned multi-view detail of ONE corner: the weight rail + skate, the wide carriage plate,
   the Z (tilt) + X (swing) 316 flat-bar cross-slides, the Ruland U-joint, the L-bracket, and the 6061 frame

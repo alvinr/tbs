@@ -143,7 +143,7 @@ MAX_SWING_DEG = 28.0   # design max single-axis swing (≈ rail-depth limit 28.7
 
 # Cross-slide strokes that absorb the rigid-rotation arc travel at the corners
 # (Option A spec; not yet drawn in the FPM sheets / 3D model):
-XSLIDE_Z_TRAVEL = round((FP_H / 2) * (1 - math.cos(math.radians(MAX_TILT_DEG))))   # ≈ 280mm (tilt) — reserved
+XSLIDE_Z_TRAVEL = round((FP_H / 2) * (1 - math.cos(math.radians(MAX_TILT_DEG))))   # ≈ 250mm (tilt, FP_H 2138) — reserved
 XSLIDE_X_TRAVEL = round((FP_W / 2) * (1 - math.cos(math.radians(MAX_SWING_DEG))))  # ≈ 263mm (swing) — reserved
 XSLIDE_STROKE   = 300   # specified linear cross-slide travel (mm) — covers both, with margin — reserved
 

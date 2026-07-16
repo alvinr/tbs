@@ -11,6 +11,22 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ---
 
+## Definitive corner-mechanism engineering drawing — OPEN
+
+_Sheet 8 (frame ↔ cross-slide attachment) is now arrangement-faithful to the 3D BL corner, but it is a
+SCHEMATIC — true-proportion + topologically correct, NOT dimensioned. Alvin's call (2026-07-16): produce
+the definitive, dimensionally-correct engineering drawing of one corner mechanism, "as always"._
+
+- [ ] Fully-dimensioned multi-view detail of ONE corner: the weight rail + skate, the wide carriage plate,
+  the Z (tilt) + X (swing) 316 flat-bar cross-slides, the Ruland U-joint, the L-bracket, and the 6061 frame
+  angle — with **precise hole positions** (PCD/edge distances), **fastener callouts** (J1–J5: sizes, thread,
+  torque), section views, material/finish notes, and a datum/tolerance scheme. Dimensionally exact.
+- [ ] Drive it from `tbs_constants` (or add the missing constants: cross-slide bar section — currently
+  `XSLIDE_*` are `reserved` — U-joint model dims, hole PCDs) so the drawing can't drift from the 3D. This
+  is also what firms the (still un-quantified) cross-slide bending SF and the per-corner load.
+- [ ] Reconcile the TL/TR (guide) corner: it is the mirror (film below its guide rail) — the drawing set
+  should cover both bottom (weight) and top (guide) corners.
+
 ## Weight model — film-plane moving mass undercounts the ACM backing — OPEN
 
 _Surfaced 2026-07-16. `generate_weight_analysis._film_plane_carriage_weight()` = frame + 92 clamps +

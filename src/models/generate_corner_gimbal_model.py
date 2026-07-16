@@ -165,21 +165,31 @@ def corner(tag, cx, fz, zc, cin, side):
     if is_bot:
         rlabel, r_x0, r_len = "Acetal wheel Ø32 (weight)", cx - 8, 16
     else:
-        rlabel, r_x0, r_len = "Acetal guide DRUM Ø32x58 (spans throat, lateral-located)", cx - 29, 58
-    # KEEPER roller — under the OPPOSITE flange (anti-lift on the bottom, anti-drop on the top); Ø20 on a stub axle
-    if is_bot:
-        kx, kz, klabel = cx - 6, zc + CD_BOT / 2 - HB_T - 10, "Keeper roller Ø20 (anti-lift)"   # under the TOP flange
-    else:
-        kx, kz, klabel = cx + cin * (CD_TOP / 2) - 6, zc - CW_TOP / 2 - 8, "Keeper roller Ø20 (anti-drop)"  # hooks under the inboard flange lip
+        rlabel, r_x0, r_len = "Acetal guide wheel Ø32 (narrow; free space each side)", cx - 12, 24
+    kx, kz = cx - 6, zc + CD_BOT / 2 - HB_T - 10   # bottom keeper (anti-lift, under the top flange); Ø20 on a stub axle
     for ry in (ty - 30, ty + 14):
         P.append(ov.ruby_cylinder(f"{rlabel} {tag} {int(ry)}", r_x0, ry, rz, 16, r_len, color=C_CAR, axis="x"))
-        # axle spans the ROLLER → CARRIAGE; start/length via min/max so it reaches the carriage on BOTH sides
-        # (inboard = +x on the left, −x on the right) and never crosses the web (outboard)
-        wax0 = min(r_x0, inb - 6)
-        P.append(ov.ruby_cylinder(f"Wheel axle Ø10 {tag} {int(ry)}", wax0, ry, rz, 5, max(r_x0 + r_len, inb + 6) - wax0, color=C_CROSS, axis="x"))
-        # keeper roller (captures the skate against the opposite flange) + its stub axle to the carriage
-        P.append(ov.ruby_cylinder(f"{klabel} {tag} {int(ry)}", kx, ry, kz, 10, 12, color=C_CAR, axis="x"))
-        P.append(ov.ruby_cylinder(f"Keeper axle Ø8 {tag} {int(ry)}", min(kx, inb), ry, kz, 4, abs(inb - kx) + 10, color=C_CROSS, axis="x"))
+        if is_bot:
+            # BOTTOM: the channel opens INBOARD, so the Ø10 axle exits the OPENING to the inboard carriage (correct).
+            wax0 = min(r_x0, inb - 6)
+            P.append(ov.ruby_cylinder(f"Wheel axle Ø10 {tag} {int(ry)}", wax0, ry, rz, 5, max(r_x0 + r_len, inb + 6) - wax0, color=C_CROSS, axis="x"))
+            # keeper roller (anti-lift, under the top flange) + its stub axle to the carriage
+            P.append(ov.ruby_cylinder(f"Keeper roller Ø20 (anti-lift) {tag} {int(ry)}", kx, ry, kz, 10, 12, color=C_CAR, axis="x"))
+            P.append(ov.ruby_cylinder(f"Keeper axle Ø8 {tag} {int(ry)}", min(kx, inb), ry, kz, 4, abs(inb - kx) + 10, color=C_CROSS, axis="x"))
+        else:
+            # TOP: the channel opens DOWN, so the axle stays WITHIN the throat (Ø10, spanning the drum);
+            # the yoke below grabs its ends — it never crosses a flange.
+            P.append(ov.ruby_cylinder(f"Guide axle Ø10 (in throat) {tag} {int(ry)}", cx - 33, ry, rz, 5, 66, color=C_CROSS, axis="x"))
+    if not is_bot:
+        # TOP YOKE — the carriage extends UP through the channel OPENING (past the lips): two arms grab the
+        # guide-axle ends (free space between the narrow wheel and each arm) + bear the flanges (lateral X)
+        # + hook the lips (anti-drop). A cross-piece JOINS the two arms into ONE part below the opening;
+        # a rail then runs inboard to the carriage plate. The axle never pierces a flange.
+        yb = zc - CW_TOP / 2                                   # channel opening (flange-lip Z)
+        for ax_x in (cx - 33, cx + 33):
+            P.append(ov.ruby_box(f"Yoke arm + lip hook (thru opening) {tag} {int(ax_x)}", ax_x - 2, ty - 34, yb - 14, 4, 68, rz - (yb - 14), color=C_CAR))
+        P.append(ov.ruby_box(f"Yoke cross-piece (joins the two arms) {tag}", cx - 35, ty - 34, yb - 22, 70, 68, 8, color=C_CAR))
+        P.append(ov.ruby_box(f"Yoke rail (→ inboard carriage) {tag}", min(cx + 33, inb), ty - 34, yb - 20, abs(inb - (cx + 33)) + 6, 68, 6, color=C_CAR))
     # carriage plate on the axle ends + axle-retainer bolts DOWN THROUGH THE PLATE (saddle-clamp, not the beam).
     # Spans the FULL Z of film-corner / load-roller / KEEPER-roller so every axle lands on it (keeper included).
     zlo, zhi = min(fz, rz, kz), max(fz, rz, kz)

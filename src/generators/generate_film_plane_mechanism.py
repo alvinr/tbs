@@ -866,39 +866,42 @@ def section_aa(ax):
 
 def section_top(ax):
     """SECTION B-B — cut across the TOP (guide) rail. The 3×1.5 304 U-channel is laid FLAT (inverted-U):
-    web = closed TOP (splice face), flanges hang DOWN. The top rail carries NO weight (it's a depth/lateral
-    GUIDE — the plane's weight is on the bottom rail), so a Ø32 acetal GUIDE roller runs lightly in the
-    channel and a KEEPER roller hooks under a flange lip to hold the skate captive against dynamic drift.
-    Short in Z = minimum ceiling cost. The carriage plate + stack hang BELOW; the film top rides ~10 mm
-    under the web (guide gap)."""
-    ax.set_xlim(-26, 130); ax.set_ylim(-58, 50); ax.set_aspect("equal"); ax.axis("off")
+    web = closed TOP, flanges hang DOWN, so the channel OPENS DOWNWARD. The guide drum's axle therefore stays
+    WITHIN the throat; the carriage is a YOKE that reaches UP through the opening (past the lips) — its arms
+    bear the flanges (lateral X) + hook the lips (anti-drop) and grab the axle ends, so nothing pierces a
+    flange. Top rail carries NO weight (a depth/lateral guide); short in Z = minimum ceiling cost."""
+    ax.set_xlim(-26, 122); ax.set_ylim(-66, 50); ax.set_aspect("equal"); ax.axis("off")
     # inverted-U: web on top (closed), flanges hang down — opening faces DOWN
     _uchan_hatch(ax, 0, 33, 76, 5)          # web = closed top / splice face (76 wide)
     for fx in (0, 71):
         _uchan_hatch(ax, fx, 0, 5, 38)      # flanges hang down (38)
-    # WIDE Ø32 acetal guide DRUM — nearly spans the throat, so BOTH flanges locate it laterally (tight X)
-    _rect(ax, 8, 1, 60, 32, C_ACET, z=7)
-    draw_circle(ax, 38, 17, 5, color=OUT, fill=True, fc=C_STEEL, lw=0.8, zorder=8)   # Ø10 axle end
-    for gx in (7, 69):                                                               # lateral-clearance marks to the flanges
-        ax.plot([gx, gx], [4, 30], color=DIM, lw=0.4, dashes=(1, 1), zorder=8)
-    # KEEPER roller — hooks under the inboard (right) flange lip from BELOW (anti-drop; holds the drum to the web)
-    _rect(ax, 66, -10, 12, 12, C_ACET, z=7)
-    draw_circle(ax, 72, -4, 3, color=OUT, fill=True, fc=C_STEEL, lw=0.6, zorder=8)
-    # carriage plate — INBOARD; the drum axle + keeper axle land on it, stack hangs below
-    _rect(ax, 88, -40, 14, 62, C_CAR, z=6)
-    _rect(ax, 68, 13, 20, 8, C_STEEL, z=6)                                           # drum axle → carriage
-    _rect(ax, 78, -6, 12, 8, C_STEEL, z=6)                                           # keeper axle → carriage
-    ax.plot([95, 95], [-40, 20], color=C_PIN, lw=1.6, zorder=8)                       # retainer bolt through plate
-    _rect(ax, 88, -54, 12, 14, C_TILT, z=5)                                          # cross-slide (green) hangs below
-    ax.add_patch(plt.Rectangle((62, -58), 50, 5, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))  # film top edge ghost (hangs)
+    # NARROW Ø32 acetal guide WHEEL in the throat (Z guide, up against the web) — FREE SPACE each side to the yoke arms
+    _rect(ax, 30, 1, 16, 32, C_ACET, z=7)
+    # AXLE — a HORIZONTAL shaft along the wheel's length (X); it runs out to the yoke arms and stays in the throat
+    _rect(ax, 10, 12, 56, 10, C_STEEL, z=6)
+    ax.plot([38, 38], [12, 22], color="#6A6A72", lw=0.5, zorder=8)
+    # free-space marks between the narrow wheel and each yoke arm
+    for gx0, gx1 in ((11, 30), (46, 65)):
+        ax.annotate("", xy=(gx1, 6), xytext=(gx0, 6), arrowprops=dict(arrowstyle="<->", color=DIM, lw=0.5))
+    # YOKE — a JOINED U-bracket up through the OPENING: two arms grab the axle ends + bear the flanges (lateral X)
+    # + hook the lips (anti-drop), JOINED by a cross-piece below the opening (one part).
+    for ax_x in (4, 66):
+        _rect(ax, ax_x, -14, 6, 36, C_CAR, z=8)                                      # yoke arm (through opening, against a flange)
+    _rect(ax, 4, -22, 68, 8, C_CAR, z=8)                                             # cross-piece JOINS the two arms
+    _rect(ax, 58, -8, 14, 4, C_CAR, z=9)                                             # inboard lip-hook (anti-drop)
+    # carriage + stack hang from the joined yoke
+    _rect(ax, 40, -46, 12, 24, C_CAR, z=6)                                           # carriage plate (below the yoke)
+    _rect(ax, 40, -60, 12, 14, C_TILT, z=5)                                          # cross-slide (green) hangs below
+    ax.add_patch(plt.Rectangle((16, -64), 56, 5, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))  # film top edge ghost (hangs)
     ax.annotate("", xy=(38, 33), xytext=(38, 25), arrowprops=dict(arrowstyle="->", color=OUT, lw=1.0))  # guide reaction UP
     draw_dim_v(ax, -14, 0, 38, "38\n(short:\nceiling)", offset=7, fs=5.2, color=DIM, font=FONT)
-    leader(ax, 30, 18, 46, -16, "wide guide DRUM (Ø32) — no weight", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 72, -8, 90, -30, "KEEPER hooks the flange lip from below\n(anti-drop — holds the drum to the web)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 95, -18, 108, -18, "carriage + cross-slide\nstack hang BELOW", ha="left", fs=5.0, color=DIM, font=FONT, bbox=LBL_BG)
+    leader(ax, 38, 30, 52, 44, "narrow Ø32 guide WHEEL — free space each side", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 18, 17, -24, 2, "AXLE — a horizontal shaft along the wheel;\nheld by the yoke arms (never crosses a flange)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 4, -18, -24, -38, "YOKE — a JOINED U up through the OPENING;\narms bear the flanges + hook the lips (anti-drop)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 46, -50, 74, -50, "carriage + cross-slide\nstack hang BELOW", ha="left", fs=5.0, color=DIM, font=FONT, bbox=LBL_BG)
     ax.text(-26, 50, "SECTION B-B — TOP (guide) carriage",
             fontsize=6.8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
-    ax.text(-26, 43, "wide drum spans the throat → flanges locate it in X (the flat rail's lip)",
+    ax.text(-26, 43, "narrow wheel + horizontal axle; a JOINED yoke reaches up through the opening — nothing pierces a flange",
             fontsize=5.0, color=DIM, ha="left", va="top", **FONT)
 
 
@@ -971,9 +974,11 @@ def sheet3():
         "tilt + swing and locks twist so the flat plane stays square. The plane's WEIGHT is carried by "
         "the BOTTOM rail (web-vertical, load rollers gravity-seated on the bottom flange); the TOP rail "
         "is a GUIDE only (flat inverted-U, minimum ceiling cost).",
-        "5. WHEEL CAPTURE: BOTTOM rail — load rollers on the bottom flange + a KEEPER under the top flange "
-        "(anti-lift) + a LIP on the inboard flange edge (stops X walk-off on swing). TOP rail — a WIDE guide "
-        "DRUM spans the throat so both flanges locate it in X, + a KEEPER hooking a flange (anti-drop). "
+        "5. WHEEL CAPTURE: BOTTOM rail (opens inboard) — load rollers on the bottom flange, axle out the "
+        "OPENING to the carriage; + a KEEPER under the top flange (anti-lift) + a LIP on the inboard flange "
+        "edge (stops X walk-off). TOP rail (opens down) — a NARROW guide wheel with free space each side; the "
+        "carriage is a JOINED YOKE that reaches UP through the opening: arms bear the flanges (lateral X) + "
+        "hook the lips (anti-drop) and grab the horizontal axle WITHIN the throat (nothing pierces a flange). "
         "(LEFT rails = a transport drop-in — see Sheet 4.)",
         "6. OVERTURNING COUPLE: the film-corner load is ~50mm INBOARD of the rail (via the stack) — a moment "
         "about the rollers. The load↓ / keeper↑ pair, spaced by the channel depth, reacts it — so the keepers "
@@ -1398,11 +1403,13 @@ def sheet6():
     # Positive Y = up toward ceiling. Negative Y = down toward floor.
     # Positive X = toward pinhole (horizontal leg direction).
 
-    # Stack heights above angle frame top (Y=T):
+    # Stack heights above angle frame top (Y=T). Chain (bottom→top): angle → L-bracket → STUB → U-joint →
+    # STUB → cross-slides → carriage → rail. The U-joint sits in its own band BETWEEN the L-bracket and the
+    # cross-slides, connected to each by a stub shaft, so nothing is left floating.
     lbracket_bot = T + 5          # small gap above angle
     lbracket_top = lbracket_bot + LBRACKET_H
-    bearing_cy = lbracket_top - 15  # bearing center in L-bracket
-    bracket_bot = lbracket_top + 5
+    bearing_cy = lbracket_top + BEARING_D / 2 + 4   # U-joint ABOVE the L-bracket (own band)
+    bracket_bot = bearing_cy + BEARING_D / 2 + 4    # cross-slides ABOVE the U-joint
     bracket_top = bracket_bot + BRACKET_H
     carriage_bot = bracket_top
     carriage_top = carriage_bot + CARRIAGE_H
@@ -1464,34 +1471,36 @@ def sheet6():
            "X cross-slide (SWING)", color=C_XS, fs=5, ha="left", va="center",
            arrow_style="-|>", font=FONT)
 
-    # ── Corner L-bracket (1/4" Al plate) ─────────────────────────────────────
-    # Vertical part connects to bracket above; horizontal part connects to angle
-    lbk_x = rail_cx - LBRACKET_W / 2
-    # Vertical arm
-    ax_a.add_patch(Rectangle(((lbk_x), (lbracket_bot)),
+    # ── Corner L-bracket (1/4" Al plate): vertical arm UNDER the U-joint; horizontal arm reaches the angle ──
+    lbk_vx = rail_cx - LBRACKET_T / 2                      # vertical arm centred under the U-joint / cross-slides
+    ax_a.add_patch(Rectangle(((lbk_vx), (lbracket_bot)),
                               (LBRACKET_T), (LBRACKET_H),
-                              fc=C_ALUM, ec=ANNO, lw=1.0, zorder=4))
-    # Horizontal arm (connects to angle frame)
-    ax_a.add_patch(Rectangle(((lbk_x), (lbracket_bot)),
-                              (LBRACKET_W), (LBRACKET_T),
-                              fc=C_ALUM, ec=ANNO, lw=1.0, zorder=4))
-    leader(ax_a, (lbk_x + LBRACKET_T / 2 - 5), (lbracket_bot + LBRACKET_H / 2 - 10),
-           (-25), (lbracket_bot + LBRACKET_H / 2),
+                              fc=C_ALUM, ec=ANNO, lw=1.0, zorder=4))          # vertical arm
+    ax_a.add_patch(Rectangle(((T), (lbracket_bot)),
+                              ((lbk_vx + LBRACKET_T) - T), (LBRACKET_T),
+                              fc=C_ALUM, ec=ANNO, lw=1.0, zorder=4))          # horizontal arm → angle perp leg
+    leader(ax_a, (lbk_vx), (lbracket_bot + LBRACKET_H / 2),
+           (-25), (lbracket_bot + LBRACKET_H / 2 + 6),
            f"L-BRACKET\n(1/4\" Al PLATE)",
            color=DIM, fs=5, ha="right", va="center",
            arrow_style="-|>", font=FONT)
 
-    # ── Single U-joint (Ruland US12-6-6-SS, bronze plain bearing) ─────────────
+    # ── Single U-joint (Ruland US12-6-6-SS) — BETWEEN the cross-slides and the L-bracket, a STUB SHAFT each side ──
     C_BEAR = "#C08040"
-    ax_a.add_patch(Circle(((lbk_x + LBRACKET_T / 2), (bearing_cy)),
-                           (BEARING_D / 2),
+    C_STUB = "#8A8A92"
+    ax_a.add_patch(Rectangle(((rail_cx - 3), (bearing_cy + BEARING_D / 2 - 1)),
+                              (6), (bracket_bot - (bearing_cy + BEARING_D / 2) + 2),
+                              fc=C_STUB, ec=ANNO, lw=0.8, zorder=5))          # stub: cross-slides → U-joint (carrier side)
+    ax_a.add_patch(Rectangle(((rail_cx - 3), (lbracket_top - 1)),
+                              (6), (bearing_cy - BEARING_D / 2 - lbracket_top + 2),
+                              fc=C_STUB, ec=ANNO, lw=0.8, zorder=5))          # stub: U-joint → L-bracket (frame side)
+    ax_a.add_patch(Circle(((rail_cx), (bearing_cy)), (BEARING_D / 2),
                            fc=C_BEAR, ec=ANNO, lw=1.0, zorder=6))
-    ax_a.add_patch(Circle(((lbk_x + LBRACKET_T / 2), (bearing_cy)),
-                           (BEARING_D / 4),
+    ax_a.add_patch(Circle(((rail_cx), (bearing_cy)), (BEARING_D / 4),
                            fc=BG, ec=ANNO, lw=0.8, zorder=7))
-    leader(ax_a, (lbk_x - 2), (bearing_cy),
-           (-25), (bearing_cy + 15),
-           f"SINGLE U-JOINT\nUS12-6-6-SS\n(TILT/SWING,\nTWIST-LOCKED)",
+    leader(ax_a, (rail_cx - BEARING_D / 2), (bearing_cy),
+           (-25), (bearing_cy),
+           f"SINGLE U-JOINT (US12-6-6-SS)\nTILT/SWING, TWIST-LOCKED\n— a STUB SHAFT to the cross-slides\n(above) + to the L-bracket (below)",
            color=C_BEAR, fs=5, ha="right", va="center",
            arrow_style="-|>", font=FONT)
 
@@ -1583,7 +1592,7 @@ def sheet6():
     # Leader labels for clamp components
     leader(ax_a, (T + CLAMP_BASE_T + 6), (bolt_z1),
            (LEG - 20), (bolt_z1 - 20),
-           f"M5 BOLT + NYLOCK\n(2 PER CLAMP)", color=C_BOLT, fs=5,
+           f"clamp BASE PLATE → bolted to\nthe PERP LEG (2× M5 + nylock)", color=C_BOLT, fs=5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
 
     leader(ax_a, (jaw_x + CLAMP_JAW_T / 2), (jaw_z_top + 1),

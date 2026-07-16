@@ -11,6 +11,23 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ---
 
+## Film-plane report reconciliation (leadscrew Option A → U-channel redesign) — OPEN
+
+_Surfaced 2026-07-16 during the 304-SS frame material fix. The mechanism CASCADE (constants/parts/
+costing/weight/2D sheets 1–5,7,8/3D) is on `film-plane-redesign` and current, but the PROSE still
+describes the superseded leadscrew Option A. To reconcile in one pass:_
+
+- [ ] `film-plane-mechanism-report.md` §1/§3/§4 — HGR20 rails, HGH20CA carriages, ¾"-6 Acme leadscrews,
+  8" handwheels, rod-end + Ø25 pivot-pin fork clevis, and the stale Sketchfab embed (film-plane.skp
+  bb5394…, not corner-gimbal 572b…). The §4 diagram callout labels Sheet 6 "Four-Corner Frame" but
+  Sheet 6 is now the muslin-clamp detail. Movement travels still cite 2,262 depth.
+- [ ] `component-dependency-map.md` §3.1 film-plane narrative (line ~90) — rev7 leadscrew snapshot
+  ("welded aluminum angle frame … 4× HGR20 … Acme leadscrews … handwheels"); refresh to the U-channel +
+  316 flat-bar cross-slide + Ruland U-joint design and the 304 SS frame.
+- [ ] `film-plane-mechanism-analysis.md` — the existing partial reconciliation (task #30); still describes
+  the leadscrew drive. Fold the FP_W/FP_H cascade (retire the dead HGR20/Acme/handwheel/rod-end BOM) into
+  the same pass; the Sheet-3 "~280mm" tilt label should become "~250mm".
+
 ## Full audit (2026-07-04) — 53 confirmed findings → [audit-2026-07.md](audit-2026-07.md)
 _Multi-agent audit across all subsystems × 5 dimensions (3 high / 28 med / 22 low), every finding independently verified. Verdict: **design is sound — no structural/optical defect**; the debt is documentation cascade-leakage. Full detail + per-finding fixes in the linked report; fix in priority order:_
 

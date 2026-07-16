@@ -24,11 +24,12 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-- **Film-plane frame → 304 stainless** — the film-plane perimeter frame (2×2×3/16 angle) was
-  spec'd as aluminum, wrong for the muslin/ACM zone (splash-wetted with cyanotype chemistry).
-  Changed to 304 SS (matches the depth rails); cascaded through parts, costing (+$1,430–1,980;
-  grand total → $24,063–38,274), the weight model (304 SS ~2.9× aluminum → film-plane carriage
-  32 → 64 kg, CG/floor-load redrawn), the 3D corner-gimbal, and 2D Sheets 3/6.
+- **Film-plane frame + corner L-bracket → expendable anodized 6061** — the wetted-zone film
+  structure was clarified as an **expendable** part: a 304 SS swap was evaluated (~+$1,430–1,980,
+  +32 kg) and rejected in favor of **anodized 6061-T6** (inspect annually / replace on pitting),
+  chosen for weight + cost — anodized Al corrodes slowly in the splash-not-immersed cyanotype zone,
+  and the ACM backing carries the flatness. Both the perimeter angle and the corner L-bracket carry
+  the caveat; specs updated across parts, the weight-model note, the 3D corner-gimbal, and 2D Sheets 3/6.
 - **Film-plane Sheet 8 (new)** — a dedicated *frame-corner ↔ cross-slide attachment* detail:
   an assembled elevation (the tilt stack) + a plan (the swing stack) showing how each corner
   hangs off BOTH cross-slides through the single U-joint, with the five bolted joints J1–J5 and

@@ -345,9 +345,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame corner bracket (angle frame → U-joint) BL
+  # Frame corner L-bracket (6061 Al anodized, expendable — angle frame → U-joint) BL
   grp = ents.add_group
-  grp.name = "Frame corner bracket (angle frame → U-joint) BL"
+  grp.name = "Frame corner L-bracket (6061 Al anodized, expendable — angle frame → U-joint) BL"
   face = grp.entities.add_face([136.mm,2254.mm,134.mm], [184.mm,2254.mm,134.mm], [184.mm,2270.mm,134.mm], [136.mm,2270.mm,134.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(52.mm)
@@ -609,9 +609,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame corner bracket (angle frame → U-joint) BR
+  # Frame corner L-bracket (6061 Al anodized, expendable — angle frame → U-joint) BR
   grp = ents.add_group
-  grp.name = "Frame corner bracket (angle frame → U-joint) BR"
+  grp.name = "Frame corner L-bracket (6061 Al anodized, expendable — angle frame → U-joint) BR"
   face = grp.entities.add_face([4590.mm,2254.mm,134.mm], [4638.mm,2254.mm,134.mm], [4638.mm,2270.mm,134.mm], [4590.mm,2270.mm,134.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(52.mm)
@@ -922,9 +922,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame corner bracket (angle frame → U-joint) TL
+  # Frame corner L-bracket (6061 Al anodized, expendable — angle frame → U-joint) TL
   grp = ents.add_group
-  grp.name = "Frame corner bracket (angle frame → U-joint) TL"
+  grp.name = "Frame corner L-bracket (6061 Al anodized, expendable — angle frame → U-joint) TL"
   face = grp.entities.add_face([136.mm,2254.mm,2308.mm], [184.mm,2254.mm,2308.mm], [184.mm,2270.mm,2308.mm], [136.mm,2270.mm,2308.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(52.mm)
@@ -1167,9 +1167,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame corner bracket (angle frame → U-joint) TR
+  # Frame corner L-bracket (6061 Al anodized, expendable — angle frame → U-joint) TR
   grp = ents.add_group
-  grp.name = "Frame corner bracket (angle frame → U-joint) TR"
+  grp.name = "Frame corner L-bracket (6061 Al anodized, expendable — angle frame → U-joint) TR"
   face = grp.entities.add_face([4590.mm,2254.mm,2308.mm], [4638.mm,2254.mm,2308.mm], [4638.mm,2270.mm,2308.mm], [4590.mm,2270.mm,2308.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(52.mm)
@@ -1231,90 +1231,90 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 0.14
   grp.material = mat
 
-  # Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)
+  # Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)
   grp = ents.add_group
-  grp.name = "Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)"
+  grp.name = "Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)"
   face = grp.entities.add_face([183.mm,2212.mm,2329.mm], [4591.mm,2212.mm,2329.mm], [4591.mm,2262.mm,2329.mm], [183.mm,2262.mm,2329.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)")
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Film frame 2x2 304 SS angle — top (in-plane leg / ACM seat)
+  # Film frame 2x2 6061 Al angle — top (in-plane leg / ACM seat)
   grp = ents.add_group
-  grp.name = "Film frame 2x2 304 SS angle — top (in-plane leg / ACM seat)"
+  grp.name = "Film frame 2x2 6061 Al angle — top (in-plane leg / ACM seat)"
   face = grp.entities.add_face([183.mm,2257.mm,2284.mm], [4591.mm,2257.mm,2284.mm], [4591.mm,2262.mm,2284.mm], [183.mm,2262.mm,2284.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)")
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Film frame 2x2 304 SS angle — bottom (perp leg / muslin clamp)
+  # Film frame 2x2 6061 Al angle — bottom (perp leg / muslin clamp)
   grp = ents.add_group
-  grp.name = "Film frame 2x2 304 SS angle — bottom (perp leg / muslin clamp)"
+  grp.name = "Film frame 2x2 6061 Al angle — bottom (perp leg / muslin clamp)"
   face = grp.entities.add_face([183.mm,2212.mm,160.mm], [4591.mm,2212.mm,160.mm], [4591.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)")
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Film frame 2x2 304 SS angle — bottom (in-plane leg / ACM seat)
+  # Film frame 2x2 6061 Al angle — bottom (in-plane leg / ACM seat)
   grp = ents.add_group
-  grp.name = "Film frame 2x2 304 SS angle — bottom (in-plane leg / ACM seat)"
+  grp.name = "Film frame 2x2 6061 Al angle — bottom (in-plane leg / ACM seat)"
   face = grp.entities.add_face([183.mm,2257.mm,160.mm], [4591.mm,2257.mm,160.mm], [4591.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)")
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Film frame 2x2 304 SS angle — left (perp leg / muslin clamp)
+  # Film frame 2x2 6061 Al angle — left (perp leg / muslin clamp)
   grp = ents.add_group
-  grp.name = "Film frame 2x2 304 SS angle — left (perp leg / muslin clamp)"
+  grp.name = "Film frame 2x2 6061 Al angle — left (perp leg / muslin clamp)"
   face = grp.entities.add_face([183.mm,2212.mm,160.mm], [188.mm,2212.mm,160.mm], [188.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2174.mm)
-  mat = model.materials["Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)")
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Film frame 2x2 304 SS angle — left (in-plane leg / ACM seat)
+  # Film frame 2x2 6061 Al angle — left (in-plane leg / ACM seat)
   grp = ents.add_group
-  grp.name = "Film frame 2x2 304 SS angle — left (in-plane leg / ACM seat)"
+  grp.name = "Film frame 2x2 6061 Al angle — left (in-plane leg / ACM seat)"
   face = grp.entities.add_face([183.mm,2257.mm,160.mm], [233.mm,2257.mm,160.mm], [233.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2174.mm)
-  mat = model.materials["Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)")
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Film frame 2x2 304 SS angle — right (perp leg / muslin clamp)
+  # Film frame 2x2 6061 Al angle — right (perp leg / muslin clamp)
   grp = ents.add_group
-  grp.name = "Film frame 2x2 304 SS angle — right (perp leg / muslin clamp)"
+  grp.name = "Film frame 2x2 6061 Al angle — right (perp leg / muslin clamp)"
   face = grp.entities.add_face([4586.mm,2212.mm,160.mm], [4591.mm,2212.mm,160.mm], [4591.mm,2262.mm,160.mm], [4586.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2174.mm)
-  mat = model.materials["Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)")
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Film frame 2x2 304 SS angle — right (in-plane leg / ACM seat)
+  # Film frame 2x2 6061 Al angle — right (in-plane leg / ACM seat)
   grp = ents.add_group
-  grp.name = "Film frame 2x2 304 SS angle — right (in-plane leg / ACM seat)"
+  grp.name = "Film frame 2x2 6061 Al angle — right (in-plane leg / ACM seat)"
   face = grp.entities.add_face([4541.mm,2257.mm,160.mm], [4591.mm,2257.mm,160.mm], [4591.mm,2262.mm,160.mm], [4541.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2174.mm)
-  mat = model.materials["Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)")
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat

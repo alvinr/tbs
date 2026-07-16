@@ -13,7 +13,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $110 | $265 |
-| 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $4,739 | $5,767 |
+| 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,309 | $3,787 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,356 | $7,929 |
 | 6. Electrical — power, circuits, wiring | $2,608 | $3,003 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,405 | $2,130 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,120 | $2,700 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$24,013** | **~$35,334** |
+| **TOTAL (base build + 50-print run)** | **~$22,583** | **~$33,354** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -68,13 +68,14 @@ indicative low–high estimates — get quotes before ordering.
 | 3mm aluminum plate (1220 × 2,440mm) | 2 ea | Online Metals | panel | $360–$460 |
 | 6061-T6 AL plate 3/16" (5mm) | 1 ea | Online Metals | spray | $16–$28 |
 | 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | 1 ea | Online Metals | spray | $6 |
+| Aluminum angle 2"×2"×3/16" (6061, anodized) | 10 ea | Metal Supermarkets | film | $220 |
 | Aluminum face plate 340×240×3mm (flush power panel) | 1 ea | Online Metals | electrical | $18 |
 | Aluminum U-channel (per meter) | 40 m | Online Metals | panel | $120–$200 |
-| Corner bracket L-plate | 4 ea | Metal Supermarkets | film | $80 |
+| Corner bracket L-plate (6061, anodized) | 4 ea | Metal Supermarkets | film | $80 |
 | Cross-slide intermediate plate (Option A) | 4 ea | Metal Supermarkets | film | $60 |
 | Disc retaining ring (Al 6061-T6, M52×0.75) | 1 ea | Local fab | optics | $15–$25 |
 | Telescoping aluminum pool pole, 4–8 ft | 1 ea | Amazon | spray | $15 |
-| **aluminum subtotal** | | | | **$690–$892** |
+| **aluminum subtotal** | | | | **$910–$1,112** |
 
 ### bearings-motion
 
@@ -351,14 +352,13 @@ indicative low–high estimates — get quotes before ordering.
 | Reinforcing plate (exterior) | 18 ea | Local fab | walkway | $75–$130 |
 | Right walkway cantilever frame | 1 lot | Metal Supermarkets | walkway | $28–$40 |
 | Shutter plate (⅛ steel 10×8) + slide channel | 1 ea | Local fab | optics | $25–$50 |
-| Stainless angle 2"×2"×3/16" (304) | 10 ea | Speedy Metals | film | $1,650–$2,200 |
 | Steel backing plate 6×6×⅛ + welded frame | 1 ea | Metal Supermarkets | optics | $20–$40 |
 | Steel flat bar 25×3mm — ribbon support cross-brace | 4 ea | Home Depot | water | $8–$16 |
 | Transition bearing plate | 2 ea | Local fab | walkway | $5–$10 |
 | Wall cleat (left corners) | 2 ea | Local fab | walkway | $20–$35 |
 | Wall mounting cleat + anchors | 1 lot | Local fab | shelf | $18 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$3,938–$5,591** |
+| **steel-structural subtotal** | | | | **$2,288–$3,391** |
 
 ### substrate-fabric
 
@@ -420,11 +420,10 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 17 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,961–$3,181 |
 | McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $2,056–$2,985 |
-| Speedy Metals | 1 | steel-structural | $1,650–$2,200 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
+| Metal Supermarkets | 12 | aluminum, steel-structural | $1,301–$1,638 |
 | Amazon | 58 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,208–$1,530 |
-| Metal Supermarkets | 11 | aluminum, steel-structural | $1,081–$1,418 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | Home Depot | 23 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $876–$1,146 |

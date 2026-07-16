@@ -2222,67 +2222,82 @@ def _vdimchain(ax, x, segs):
         ax.text(x - 4, (y0 + y1) / 2, lab, fontsize=4.4, color=DIM, ha="right", va="center", **FONT)
 
 
+def _hbolt(ax, y, x0, x1):
+    """A HORIZONTAL bolt joining two face-to-face parallel (vertical) plates — shank in-plane, head one end."""
+    ax.plot([x0, x1], [y, y], color="#3A3A40", lw=1.7, zorder=13)
+    ax.add_patch(plt.Rectangle((x1 - 1, y - 3), 3, 6, fc=C_PIN, ec=OUT, lw=0.5, zorder=14))            # head
+    ax.add_patch(plt.Rectangle((x0 - 2, y - 2.4), 2.4, 4.8, fc="#8A8A92", ec=OUT, lw=0.4, zorder=14))  # nut
+
+
 def _hatch316(ax, x, y, w, h, z=6):
     hatch_rect(ax, x, y, w, h, color="#6E747C", hatch="\\\\\\", lw=0.0)
 
 
 def attach_elevation(ax):
-    """ASSEMBLED ELEVATION (Yd × Z), looking along +X (the SWING axis is into the page).
-    Shows the whole hang: depth-rail skate → carriage plate → Z (tilt) slide → X (swing) slide → U-joint
-    → frame corner bracket → 2x2 6061 Al frame angle + ACM. The Z slide's travel is the TILT accommodation;
-    the X slide (edge-on here) does SWING. Five bolted joints J1–J5 make the chain."""
-    ax.set_xlim(-58, 210); ax.set_ylim(-20, 372); ax.set_aspect("equal"); ax.axis("off")
-    # depth rail + skate (abbreviated base)
-    _rect(ax, 44, -14, 104, 8, RAIL, z=3)
-    ax.text(96, -18, "to DEPTH RAIL + 4-wheel skate (Sheet 3)", fontsize=5.2, color=DIM, ha="center", va="top", **FONT)
-    # carriage plate (red) — the moving base bolted to the skate axles
-    _rect(ax, 46, -6, 100, 16, C_CAR, z=4)
-    # Z (TILT) slide — a tall 316 flat-bar WAY (travel envelope) + a 316 carriage on UHMW pads at nominal LOW
-    _rect(ax, 68, 10, 16, 286, C_TILT, z=4); _hatch316(ax, 68, 10, 16, 286)
-    _rect(ax, 58, 16, 36, 62, C_TILT, z=6)
-    _rect(ax, 64, 18, 4, 58, C_POLY, z=7); _rect(ax, 84, 18, 4, 58, C_POLY, z=7)   # UHMW pads on both faces
-    _rect(ax, 58, 40, 8, 12, C_PIN, z=7)                                           # gib + brass-tip screw
-    # J1 — Z-way foot bolts DOWN through the carriage plate (VERTICAL bolt axis)
-    _vbolt(ax, 70, -6, 18); _vbolt(ax, 82, -6, 18)
-    # Z-carriage output bridge → carries the X slide
-    _rect(ax, 56, 78, 64, 12, C_TILT, z=6)
-    # X (SWING) slide — 316 flat bar, edge-on (runs into the page along X) + carriage
-    _rect(ax, 96, 90, 46, 16, C_SWING, z=6); _hatch316(ax, 96, 90, 46, 16)
-    _rect(ax, 102, 106, 34, 14, C_SWING, z=7)
-    # J2 — X-way bolts DOWN into the Z-carriage bridge (VERTICAL)
-    _vbolt(ax, 102, 76, 100); _vbolt(ax, 116, 76, 100)
-    # stub shaft (316) up into the U-joint input bore
-    _rect(ax, 112, 120, 12, 18, C_STEEL, z=6)
-    # U-joint (Ruland US12-6-6-SS) — tilt + swing, twist locked
-    _rect(ax, 100, 138, 40, 34, C_UJ, z=6)
-    _setscrew(ax, 100, 146)                                                        # J3 — lower-hub RADIAL set screw on the input stub
-    # output stub (316) up to the frame corner bracket
-    _rect(ax, 114, 172, 12, 16, C_STEEL, z=6)
-    # frame corner L-bracket (6061 Al, anodized, expendable) — clamps the output stub, bolts to the frame angle
-    _rect(ax, 102, 188, 50, 26, C_STEEL, z=6)
-    _setscrew(ax, 102, 196)                                                        # J4 — bracket RADIAL set screw on the output stub
-    # 2x2 6061 Al frame ANGLE corner (L) + ACM ghost climbing in Z
-    _rect(ax, 108, 214, 48, 8, C_FRAME, z=7)     # in-plane / horizontal leg (ACM seat)
-    _rect(ax, 108, 214, 8, 116, C_FRAME, z=7)    # perp / vertical leg (muslin-clamp face)
-    ax.add_patch(plt.Rectangle((120, 222), 6, 106, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))
-    # J5 — frame angle in-plane leg bolts DOWN into the bracket (VERTICAL) — the joint Alvin flagged
-    _vbolt(ax, 122, 206, 222); _vbolt(ax, 142, 206, 222)
-    # ── per-component VERTICAL dimension chain (left column) ──
-    _vdimchain(ax, 40, [(-6, 10, "16"), (10, 78, "62"), (78, 90, "12"), (90, 120, "30"),
-                        (120, 172, "52\nU-jt"), (172, 188, "16"), (188, 214, "26"), (214, 222, "8")])
-    draw_dim_v(ax, 22, 16, 296, "Z travel\n~250mm\n= TILT\naccom.", offset=16, fs=5.4, color=C_TILT, font=FONT)
+    """ASSEMBLED ELEVATION of the BOTTOM corner (Yd × Z; swing axis into page). The WEIGHT rail is at the
+    TOP — the 4-wheel skate rides it and the whole stack HANGS DOWN ~110mm to the film corner, because the
+    film plane hangs BELOW the bottom rail (BUILD_BOT, matches the 3D model). The film/ACM then rises back
+    UP past the rail. Chain, rail→frame: carriage plate → Z (tilt) slide → X (swing) slide → U-joint →
+    L-bracket → 6061 Al frame angle. (Spread vertically for label clarity — schematic, not to scale.)"""
+    ax.set_xlim(-64, 205); ax.set_ylim(-10, 372); ax.set_aspect("equal"); ax.axis("off")
+
+    # ── WEIGHT RAIL at the TOP (3×1.5 304 U-channel, web-vertical, runs in Yd) + 4-wheel skate ──
+    ax.add_patch(plt.Rectangle((-16, 250), 194, 54, fc=C_STEEL, ec="none", alpha=0.5, zorder=2))  # web face (behind)
+    ax.plot([-16, 178], [252, 252], color=OUT, lw=1.2, zorder=3)                                  # bottom flange edge
+    ax.plot([-16, 178], [302, 302], color=OUT, lw=1.2, zorder=3)                                  # top flange edge
+    for bx in (-8, 170):                                                                          # break zigzags (rail continues in Yd)
+        zz = [(bx-4,248),(bx+4,262),(bx-4,276),(bx+4,290),(bx-4,306)]
+        ax.plot([p[0] for p in zz],[p[1] for p in zz], color=OUT, lw=0.7, zorder=4)
+    for wx in (74, 100):                                                                          # 2 load wheels on the bottom flange
+        draw_circle(ax, wx, 264, 12, color=OUT, fill=True, fc=C_ACET, lw=1.0, zorder=6)
+        draw_circle(ax, wx, 264, 3.5, color=OUT, fill=True, fc=C_STEEL, lw=0.5, zorder=7)
+    draw_circle(ax, 87, 292, 8, color=OUT, fill=True, fc=C_ACET, lw=0.9, zorder=6)                # keeper (anti-lift)
+    ax.plot([100, 120], [264, 264], color=OUT, lw=1.0, zorder=5)                                  # axle → carriage plate
+    # ── carriage plate: bolted to the axle, a VERTICAL plate hanging DOWN ──
+    _rect(ax, 106, 92, 14, 174, C_CAR, z=4)                                                       # y92-266
+    # ── Z (TILT) slide: a vertical 316 flat-bar WAY fixed to the plate + a carriage on UHMW at the LOWER end ──
+    _rect(ax, 88, 92, 14, 158, C_TILT, z=4); _hatch316(ax, 88, 92, 14, 158)                       # way y92-250
+    _rect(ax, 80, 92, 30, 48, C_TILT, z=6)                                                        # Z-carriage (lower end = nominal)
+    _rect(ax, 84, 96, 4, 40, C_POLY, z=7); _rect(ax, 102, 96, 4, 40, C_POLY, z=7)                 # UHMW pads
+    _rect(ax, 80, 112, 8, 10, C_PIN, z=7)                                                         # gib
+    # J1 — the WAY and the carriage PLATE are PARALLEL vertical plates → HORIZONTAL bolts through the faces
+    _hbolt(ax, 232, 102, 120); _hbolt(ax, 160, 102, 120)
+    # ── X (SWING) slide — 316 flat bar edge-on (runs into the page along X), below the Z-carriage ──
+    _rect(ax, 80, 72, 30, 20, C_SWING, z=6); _hatch316(ax, 80, 72, 30, 20)
+    # J2 — X-way bolts UP into the Z-carriage underside (VERTICAL)
+    _vbolt(ax, 88, 70, 96); _vbolt(ax, 102, 70, 96)
+    _rect(ax, 90, 62, 10, 12, C_STEEL, z=6)                                                       # stub → U-joint input bore
+    # ── U-joint (Ruland US12-6-6-SS) ──
+    _rect(ax, 76, 38, 38, 26, C_UJ, z=6)
+    _setscrew(ax, 76, 54, dx=7)                                                                   # J3 — input-hub RADIAL set screw
+    _rect(ax, 90, 30, 10, 10, C_STEEL, z=6)                                                       # output stub → L-bracket
+    # ── frame corner L-bracket (6061 Al, anodized, expendable) — wraps the corner, holds the U-joint output ──
+    _rect(ax, 74, 8, 62, 26, C_STEEL, z=5)
+    _setscrew(ax, 74, 22, dx=7)                                                                   # J4 — bracket RADIAL set screw
+    # ── 6061 Al frame ANGLE corner + ACM rising UP (the film plane hangs below, then climbs) ──
+    _rect(ax, 118, 2, 46, 8, C_FRAME, z=7)                                                        # horizontal leg (film bottom edge / ACM seat)
+    _rect(ax, 118, 2, 8, 34, C_FRAME, z=7)                                                        # short perp leg (muslin-clamp face)
+    ax.add_patch(plt.Rectangle((128, 10), 6, 342, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))   # ACM rises UP past the rail
+    for by in (330,):                                                                             # break on the rising ACM
+        ax.plot([126,136,126,136,126],[by,by+5,by+10,by+15,by+20], color=OUT, lw=0.6, zorder=6)
+    # J5 — frame angle horizontal leg bolts UP into the L-bracket (VERTICAL) — the joint Alvin flagged
+    _vbolt(ax, 122, 2, 20); _vbolt(ax, 132, 2, 20)
+    # ── the KEY relationship: the film corner hangs ~110mm BELOW the bottom rail ──
+    draw_dim_v(ax, 30, 6, 252, "≈110mm\nfilm hangs\nBELOW the\nbottom rail\n(BUILD_BOT)", offset=16, fs=5.2, color=DIM, font=FONT)
+    draw_dim_v(ax, 8, 92, 250, "Z travel\n~250mm\n= TILT", offset=12, fs=5.2, color=C_TILT, font=FONT)
     # ── leaders / joint callouts ──
-    leader(ax, 76, 4, 150, -8, "J1 — Z-way → carriage plate (M8 ×4, vertical)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 84, 46, 150, 58, "Z (TILT) slide — 316 flat bar\n+ UHMW + gib (holds gravity axis)", ha="left", fs=5.6, color=C_TILT, font=FONT, bbox=LBL_BG)
-    leader(ax, 116, 90, 156, 96, "J2 — X-way → Z-bridge (M8 ×4, vertical)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 138, 98, 158, 116, "X (SWING) slide — 316 flat bar\n(INTO PAGE — see plan B)", ha="left", fs=5.6, color=C_SWING, font=FONT, bbox=LBL_BG)
-    leader(ax, 107, 146, 150, 140, "J3 — stub Ø9.5 (3/8\") in U-joint bore (radial set screw)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 140, 158, 168, 170, "U-joint (Ruland US12-6-6-SS)\ntilt + swing, twist-locked", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 109, 196, 150, 202, "J4 — output stub in L-bracket (radial set screw)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 132, 214, 158, 236, "J5 — 6061 Al angle → bracket (M6 ×2, vertical)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 123, 300, 150, 320, "ACM backing + muslin (Sheet 6) — the RIGID plane", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-58, 372, "A — ASSEMBLED ELEVATION  (Yd × Z; swing axis into page)", fontsize=8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
-    ax.text(-58, 358, "how the frame HANGS off the two slides through the U-joint — read J1→J5 bottom-up · component heights at left", fontsize=5.4, color=DIM, ha="left", va="top", **FONT)
+    leader(ax, 40, 264, -6, 300, "BOTTOM weight rail (3×1.5 304 U-channel) + 4-wheel skate — carries the plane", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 120, 200, 156, 210, "J1 — Z-way ‖ carriage plate\n(M8 ×4, horizontal — ‖ plates)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 90, 120, 150, 130, "Z (TILT) slide — 316 flat bar\n+ UHMW + gib (holds gravity axis)", ha="left", fs=5.6, color=C_TILT, font=FONT, bbox=LBL_BG)
+    leader(ax, 102, 82, 150, 92, "J2 — X-way → Z-carriage\n(M8 ×4, vertical)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 108, 80, 150, 74, "X (SWING) slide — 316 flat bar\n(into page — see plan B)", ha="left", fs=5.6, color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(ax, 83, 54, 150, 56, "J3 — stub Ø9.5 in U-joint bore\n(radial set screw)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 114, 50, 150, 40, "U-joint (Ruland US12-6-6-SS)\ntilt + swing, twist-locked", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 81, 22, 150, 22, "J4 — output stub in L-bracket\n(radial set screw)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 132, 6, 150, -4, "J5 — 6061 Al frame angle → bracket\n(M6 ×2, vertical)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 131, 180, 150, 176, "ACM backing + muslin (Sheet 6)\nrises UP — the RIGID plane", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    ax.text(-64, 372, "A — ASSEMBLED ELEVATION  (BOTTOM corner; Yd × Z, swing into page)", fontsize=8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+    ax.text(-64, 358, "the film corner HANGS ~110mm below the weight rail (matches the 3D) — the stack hangs from the skate; the ACM rises back up", fontsize=5.2, color=DIM, ha="left", va="top", **FONT)
 
 
 def attach_plan(ax):
@@ -2331,17 +2346,19 @@ def sheet8():
         "The film frame is NOT bolted straight to a slide. Each corner hangs off BOTH cross-slides "
         "through a single U-joint, so the rigid plane can tilt AND swing while every corner stays "
         "square (the U-joint locks twist). Load path, film → rail: 2x2 6061 Al frame angle → corner "
-        "bracket → U-joint → X (swing) slide → Z (tilt) slide → carriage plate → 4-wheel skate.",
+        "bracket → U-joint → X (swing) slide → Z (tilt) slide → carriage plate → 4-wheel skate. At the "
+        "BOTTOM corner the film hangs ~110mm BELOW the weight rail (View A) — the stack hangs off the "
+        "skate and the ACM rises back up; the TOP corner is the mirror (film below its guide rail).",
         "THE TWO SLIDES do different jobs: the Z (tilt, green) slide takes the vertical arc-travel a "
         "rigid tilt forces on the corner (~250mm); the X (swing, purple) slide takes the horizontal "
         "arc-travel of a swing (~260mm). Both are 316 flat bar on UHMW pads with a gib; the gib drag "
         "holds the gravity-loaded Z axis, and a cam clamp locks each for the shot.",
-        "FIVE JOINTS make the chain (bottom-up):",
-        "  J1  Z-way foot → carriage plate .......... M8 ×4, SS",
-        "  J2  X-way → Z-carriage output bridge ...... M8 ×4, SS",
+        "FIVE JOINTS make the chain (rail→frame, top-down in View A):",
+        "  J1  Z-way ‖ carriage plate ............... M8 ×4 SS, HORIZONTAL (two parallel plates)",
+        "  J2  X-way → Z-carriage ................... M8 ×4 SS, vertical",
         "  J3  X-carriage stub Ø9.5 (3/8\") → U-joint . slip into the bore + set screw (Ruland US12-6-6-SS)",
-        "  J4  U-joint output stub → frame bracket ... slip + set-screw clamp",
-        "  J5  2x2 6061 Al frame angle → bracket ...... M6 ×2 per leg (tapped into the frame angle)",
+        "  J4  U-joint output stub → L-bracket ...... slip + set-screw clamp",
+        "  J5  2x2 6061 Al frame angle → L-bracket .. M6 ×2 per leg, vertical (tapped into the angle)",
         "The U-joint's two bores are its ONLY rotating link; everything else is a rigid bolted/clamped "
         "stack. Set the pose by hand (push each slide), then throw the cam clamps — no leadscrews "
         "(a pinhole's infinite depth of field makes this scene control, not focus).",

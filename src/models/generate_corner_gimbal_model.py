@@ -159,19 +159,24 @@ def corner(tag, cx, fz, zc, cin, side):
     # cantilevered from the CARRIAGE (inboard) — the axle and its retainer bolts pass through the
     # CARRIAGE PLATE, never the beam. ──
     rz = botf + HB_T + 16 if is_bot else zc + CW_TOP / 2 - HB_T - 16   # wheel-centre Z
-    rlabel = "Acetal wheel Ø32 (weight)" if is_bot else "Acetal guide wheel Ø32 (underside)"
     inb = cx + cin * (chan_w / 2 + 14)                   # carriage line — inboard of the channel opening (film side)
+    # BOTTOM = Ø32x16 load rollers (weight). TOP = a WIDE Ø32 guide DRUM that nearly spans the flat-channel
+    # throat, so BOTH flanges locate it laterally (tight X) — the flat rail's answer to the bottom rail's lip.
+    if is_bot:
+        rlabel, r_x0, r_len = "Acetal wheel Ø32 (weight)", cx - 8, 16
+    else:
+        rlabel, r_x0, r_len = "Acetal guide DRUM Ø32x58 (spans throat, lateral-located)", cx - 29, 58
     # KEEPER roller — under the OPPOSITE flange (anti-lift on the bottom, anti-drop on the top); Ø20 on a stub axle
     if is_bot:
         kx, kz, klabel = cx - 6, zc + CD_BOT / 2 - HB_T - 10, "Keeper roller Ø20 (anti-lift)"   # under the TOP flange
     else:
         kx, kz, klabel = cx + cin * (CD_TOP / 2) - 6, zc - CW_TOP / 2 - 8, "Keeper roller Ø20 (anti-drop)"  # hooks under the inboard flange lip
     for ry in (ty - 30, ty + 14):
-        P.append(ov.ruby_cylinder(f"{rlabel} {tag} {int(ry)}", cx - 8, ry, rz, 16, 16, color=C_CAR, axis="x"))
-        # axle spans the WHEEL → CARRIAGE; start/length via min/max so it reaches the carriage on BOTH sides
+        P.append(ov.ruby_cylinder(f"{rlabel} {tag} {int(ry)}", r_x0, ry, rz, 16, r_len, color=C_CAR, axis="x"))
+        # axle spans the ROLLER → CARRIAGE; start/length via min/max so it reaches the carriage on BOTH sides
         # (inboard = +x on the left, −x on the right) and never crosses the web (outboard)
-        wax0 = min(cx - 8, inb - 6)
-        P.append(ov.ruby_cylinder(f"Wheel axle Ø10 {tag} {int(ry)}", wax0, ry, rz, 5, max(cx + 8, inb + 6) - wax0, color=C_CROSS, axis="x"))
+        wax0 = min(r_x0, inb - 6)
+        P.append(ov.ruby_cylinder(f"Wheel axle Ø10 {tag} {int(ry)}", wax0, ry, rz, 5, max(r_x0 + r_len, inb + 6) - wax0, color=C_CROSS, axis="x"))
         # keeper roller (captures the skate against the opposite flange) + its stub axle to the carriage
         P.append(ov.ruby_cylinder(f"{klabel} {tag} {int(ry)}", kx, ry, kz, 10, 12, color=C_CAR, axis="x"))
         P.append(ov.ruby_cylinder(f"Keeper axle Ø8 {tag} {int(ry)}", min(kx, inb), ry, kz, 4, abs(inb - kx) + 10, color=C_CROSS, axis="x"))

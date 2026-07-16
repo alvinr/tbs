@@ -730,14 +730,14 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (underside) TL 2232
+  # Acetal guide DRUM Ø32x58 (spans throat, lateral-located) TL 2232
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (underside) TL 2232"
+  grp.name = "Acetal guide DRUM Ø32x58 (spans throat, lateral-located) TL 2232"
   ge = grp.entities
-  circle = ge.add_circle([142.mm,2232.mm,2361.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([121.mm,2232.mm,2361.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
+  cface.pushpull(58.mm)
   mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -747,10 +747,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Wheel axle Ø10 TL 2232"
   ge = grp.entities
-  circle = ge.add_circle([142.mm,2232.mm,2361.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([121.mm,2232.mm,2361.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(66.mm)
+  cface.pushpull(87.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -782,14 +782,14 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (underside) TL 2276
+  # Acetal guide DRUM Ø32x58 (spans throat, lateral-located) TL 2276
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (underside) TL 2276"
+  grp.name = "Acetal guide DRUM Ø32x58 (spans throat, lateral-located) TL 2276"
   ge = grp.entities
-  circle = ge.add_circle([142.mm,2276.mm,2361.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([121.mm,2276.mm,2361.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
+  cface.pushpull(58.mm)
   mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -799,10 +799,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Wheel axle Ø10 TL 2276"
   ge = grp.entities
-  circle = ge.add_circle([142.mm,2276.mm,2361.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([121.mm,2276.mm,2361.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(66.mm)
+  cface.pushpull(87.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -970,14 +970,14 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (underside) TR 2232
+  # Acetal guide DRUM Ø32x58 (spans throat, lateral-located) TR 2232
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (underside) TR 2232"
+  grp.name = "Acetal guide DRUM Ø32x58 (spans throat, lateral-located) TR 2232"
   ge = grp.entities
-  circle = ge.add_circle([4616.mm,2232.mm,2361.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4595.mm,2232.mm,2361.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
+  cface.pushpull(58.mm)
   mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -990,7 +990,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([4566.mm,2232.mm,2361.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(66.mm)
+  cface.pushpull(87.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -1022,14 +1022,14 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (underside) TR 2276
+  # Acetal guide DRUM Ø32x58 (spans throat, lateral-located) TR 2276
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (underside) TR 2276"
+  grp.name = "Acetal guide DRUM Ø32x58 (spans throat, lateral-located) TR 2276"
   ge = grp.entities
-  circle = ge.add_circle([4616.mm,2276.mm,2361.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4595.mm,2276.mm,2361.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
+  cface.pushpull(58.mm)
   mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -1042,7 +1042,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   circle = ge.add_circle([4566.mm,2276.mm,2361.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(66.mm)
+  cface.pushpull(87.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0

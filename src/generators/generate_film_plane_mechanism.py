@@ -875,13 +875,14 @@ def section_top(ax):
     _uchan_hatch(ax, 0, 33, 76, 5)          # web = closed top / splice face (76 wide)
     for fx in (0, 71):
         _uchan_hatch(ax, fx, 0, 5, 38)      # flanges hang down (38)
-    # NARROW Ø32 acetal guide WHEEL in the throat (Z guide, up against the web) — FREE SPACE each side to the yoke arms
-    _rect(ax, 30, 1, 16, 32, C_ACET, z=7)
+    # WIDE Ø32 acetal guide WHEEL in the throat (Z guide, up against the web) — face width = 10mm NARROWER than the
+    # yoke span (arms at x10/x66 → 56 span → 46 face), leaving ~5mm running clearance to each yoke arm.
+    _rect(ax, 15, 1, 46, 32, C_ACET, z=7)
     # AXLE — a HORIZONTAL shaft along the wheel's length (X); it runs out to the yoke arms and stays in the throat
     _rect(ax, 10, 12, 56, 10, C_STEEL, z=6)
     ax.plot([38, 38], [12, 22], color="#6A6A72", lw=0.5, zorder=8)
-    # free-space marks between the narrow wheel and each yoke arm
-    for gx0, gx1 in ((11, 30), (46, 65)):
+    # ~5mm running-clearance marks between the wide wheel and each yoke arm
+    for gx0, gx1 in ((10, 15), (61, 66)):
         ax.annotate("", xy=(gx1, 6), xytext=(gx0, 6), arrowprops=dict(arrowstyle="<->", color=DIM, lw=0.5))
     # YOKE — a JOINED U-bracket up through the OPENING: two arms grab the axle ends + bear the flanges (lateral X)
     # + hook the lips (anti-drop), JOINED by a cross-piece below the opening (one part).
@@ -895,13 +896,13 @@ def section_top(ax):
     ax.add_patch(plt.Rectangle((16, -64), 56, 5, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))  # film top edge ghost (hangs)
     ax.annotate("", xy=(38, 33), xytext=(38, 25), arrowprops=dict(arrowstyle="->", color=OUT, lw=1.0))  # guide reaction UP
     draw_dim_v(ax, -14, 0, 38, "38\n(short:\nceiling)", offset=7, fs=5.2, color=DIM, font=FONT)
-    leader(ax, 38, 30, 52, 44, "narrow Ø32 guide WHEEL — free space each side", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 38, 30, 52, 44, "Ø32 guide WHEEL — 10mm narrower than the yoke (~5mm clearance each side)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 18, 17, -24, 2, "AXLE — a horizontal shaft along the wheel;\nheld by the yoke arms (never crosses a flange)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 4, -18, -24, -38, "YOKE — a JOINED U up through the OPENING;\narms bear the flanges + hook the lips (anti-drop)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 46, -50, 74, -50, "carriage + cross-slide\nstack hang BELOW", ha="left", fs=5.0, color=DIM, font=FONT, bbox=LBL_BG)
     ax.text(-26, 50, "SECTION B-B — TOP (guide) carriage",
             fontsize=6.8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
-    ax.text(-26, 43, "narrow wheel + horizontal axle; a JOINED yoke reaches up through the opening — nothing pierces a flange",
+    ax.text(-26, 43, "wide wheel + horizontal axle; a JOINED yoke reaches up through the opening — nothing pierces a flange",
             fontsize=5.0, color=DIM, ha="left", va="top", **FONT)
 
 
@@ -976,7 +977,7 @@ def sheet3():
         "is a GUIDE only (flat inverted-U, minimum ceiling cost).",
         "5. WHEEL CAPTURE: BOTTOM rail (opens inboard) — load rollers on the bottom flange, axle out the "
         "OPENING to the carriage; + a KEEPER under the top flange (anti-lift) + a LIP on the inboard flange "
-        "edge (stops X walk-off). TOP rail (opens down) — a NARROW guide wheel with free space each side; the "
+        "edge (stops X walk-off). TOP rail (opens down) — a wide guide wheel (10mm narrower than the yoke); the "
         "carriage is a JOINED YOKE that reaches UP through the opening: arms bear the flanges (lateral X) + "
         "hook the lips (anti-drop) and grab the horizontal axle WITHIN the throat (nothing pierces a flange). "
         "(LEFT rails = a transport drop-in — see Sheet 4.)",

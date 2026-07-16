@@ -32,6 +32,7 @@ import generate_corridor_water_panel as cp    # IBC corridor deep-box frame + to
 TAGS = ["Corners", "Film Plane", "Pinhole", "Context", "Labels"]
 
 C_STEEL = "#B0B0B8"; C_CROSS = "#8A8A92"; C_PANEL = "#1F3B66"; C_CAR = "#C04010"
+C_ALUM = "#C8D8E8"   # film-plane 2x2 Al angle perimeter frame (the ACM backing is captured in it)
 C_TILT = "#2E8B57"   # vertical (Z) slide — TILT accommodation (green)
 C_SWING = "#7B5EA7"  # horizontal (X) slide — SWING accommodation (purple)
 
@@ -165,7 +166,7 @@ def corner(tag, cx, fz, zc, cin, side):
     if is_bot:
         rlabel, r_x0, r_len = "Acetal wheel Ø32 (weight)", cx - 8, 16
     else:
-        rlabel, r_x0, r_len = "Acetal guide wheel Ø32 (narrow; free space each side)", cx - 12, 24
+        rlabel, r_x0, r_len = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side)", cx - 26, 52
     kx, kz = cx - 6, zc + CD_BOT / 2 - HB_T - 10   # bottom keeper (anti-lift, under the top flange); Ø20 on a stub axle
     for ry in (ty - 30, ty + 14):
         P.append(ov.ruby_cylinder(f"{rlabel} {tag} {int(ry)}", r_x0, ry, rz, 16, r_len, color=C_CAR, axis="x"))
@@ -205,7 +206,10 @@ def corner(tag, cx, fz, zc, cin, side):
     # Kept INBOARD of the web (outboard edge at the web inboard face) so the beam-flush cut support clears it.
     ybk = min(ty - 8, FP_Y - 4)
     fbx = cx - cin * (CW_BOT / 2 - HB_T)                 # web inboard face = the moving assembly's outboard limit
-    P.append(ov.ruby_box(f"Frame corner bracket (plane→U-joint) {tag}", min(fbx, fbx + cin * 48), ybk, fz - 26, 48, (FP_Y + 8) - ybk, 52, color=C_STEEL))
+    P.append(ov.ruby_box(f"Frame corner bracket (angle frame → U-joint) {tag}", min(fbx, fbx + cin * 48), ybk, fz - 26, 48, (FP_Y + 8) - ybk, 52, color=C_STEEL))
+    # the film-frame angle CORNER bolts onto this bracket → the ACM is carried ACM → angle frame → bracket → U-joint
+    fcx = cx + cin * FILM_INSET                          # film-plane corner (frame heel)
+    P.append(ov.ruby_cylinder(f"Frame-corner bolt (angle frame → bracket) {tag}", fcx, FP_Y - 6, fz, 3, 18, color=C_STEEL, axis="y"))
     return "\n".join(P)
 
 
@@ -223,10 +227,30 @@ def corners():
 
 
 def film_plane():
-    # edges seated on the carriage line (FCX_L..FCX_R), so the panel sits IN the four carriers
-    # rather than skewering the bottom beam at the rail line.
-    return ov.ruby_box("Film plane (ghost)", FCX_L, FP_Y, PZ0, FP_W_CORNER, 4, PZ1 - PZ0,
-                       color=C_PANEL, alpha=0.14)
+    # The film plane is NOT a bare sheet butted to the corner brackets. It is a rigid ACM BACKING captured in a
+    # 2x2 Al angle PERIMETER FRAME (McMaster 8982K27, 2"×2"×3/16"): the ACM seats against the frame's in-plane
+    # leg; the muslin wraps + clamps to the perp leg (Sheet 6); and the frame's four CORNERS bolt onto the frame
+    # corner brackets — which carry it through the U-joint to the cross-slides. So the load path is
+    # ACM → angle frame → corner bracket → U-joint, never a butt joint.
+    AL, AT = 50, 5                                # 2x2 angle leg / wall
+    yperp = FP_Y - AL                             # perp leg projects toward the pinhole (muslin side)
+    yin = FP_Y - AT                               # in-plane leg lies against the ACM front face
+    P = [
+        # ACM rigid backing (ghost), seated against the frame in-plane leg
+        ov.ruby_box("Film-plane ACM backing (ghost)", FCX_L, FP_Y, PZ0, FP_W_CORNER, 4, PZ1 - PZ0,
+                    color=C_PANEL, alpha=0.14),
+        # 2x2 Al angle perimeter frame — top / bottom (perp leg + in-plane leg = an L)
+        ov.ruby_box("Film frame 2x2 Al angle — top (perp leg / muslin clamp)", FCX_L, yperp, PZ1 - AT, FP_W_CORNER, AL, AT, color=C_ALUM),
+        ov.ruby_box("Film frame 2x2 Al angle — top (in-plane leg / ACM seat)", FCX_L, yin, PZ1 - AL, FP_W_CORNER, AT, AL, color=C_ALUM),
+        ov.ruby_box("Film frame 2x2 Al angle — bottom (perp leg / muslin clamp)", FCX_L, yperp, PZ0, FP_W_CORNER, AL, AT, color=C_ALUM),
+        ov.ruby_box("Film frame 2x2 Al angle — bottom (in-plane leg / ACM seat)", FCX_L, yin, PZ0, FP_W_CORNER, AT, AL, color=C_ALUM),
+        # left / right
+        ov.ruby_box("Film frame 2x2 Al angle — left (perp leg / muslin clamp)", FCX_L, yperp, PZ0, AT, AL, PZ1 - PZ0, color=C_ALUM),
+        ov.ruby_box("Film frame 2x2 Al angle — left (in-plane leg / ACM seat)", FCX_L, yin, PZ0, AL, AT, PZ1 - PZ0, color=C_ALUM),
+        ov.ruby_box("Film frame 2x2 Al angle — right (perp leg / muslin clamp)", FCX_R - AT, yperp, PZ0, AT, AL, PZ1 - PZ0, color=C_ALUM),
+        ov.ruby_box("Film frame 2x2 Al angle — right (in-plane leg / ACM seat)", FCX_R - AL, yin, PZ0, AL, AT, PZ1 - PZ0, color=C_ALUM),
+    ]
+    return "\n".join(P)
 
 
 def pinhole():

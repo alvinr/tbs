@@ -345,12 +345,25 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame corner bracket (plane→U-joint) BL
+  # Frame corner bracket (angle frame → U-joint) BL
   grp = ents.add_group
-  grp.name = "Frame corner bracket (plane→U-joint) BL"
+  grp.name = "Frame corner bracket (angle frame → U-joint) BL"
   face = grp.entities.add_face([136.mm,2254.mm,134.mm], [184.mm,2254.mm,134.mm], [184.mm,2270.mm,134.mm], [136.mm,2270.mm,134.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(52.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame-corner bolt (angle frame → bracket) BL
+  grp = ents.add_group
+  grp.name = "Frame-corner bolt (angle frame → bracket) BL"
+  ge = grp.entities
+  circle = ge.add_circle([183.mm,2256.mm,160.mm], [0,1,0], 3.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -596,12 +609,25 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame corner bracket (plane→U-joint) BR
+  # Frame corner bracket (angle frame → U-joint) BR
   grp = ents.add_group
-  grp.name = "Frame corner bracket (plane→U-joint) BR"
+  grp.name = "Frame corner bracket (angle frame → U-joint) BR"
   face = grp.entities.add_face([4590.mm,2254.mm,134.mm], [4638.mm,2254.mm,134.mm], [4638.mm,2270.mm,134.mm], [4590.mm,2270.mm,134.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(52.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame-corner bolt (angle frame → bracket) BR
+  grp = ents.add_group
+  grp.name = "Frame-corner bolt (angle frame → bracket) BR"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2256.mm,160.mm], [0,1,0], 3.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -730,14 +756,14 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (narrow; free space each side) TL 2232
+  # Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TL 2232
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (narrow; free space each side) TL 2232"
+  grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TL 2232"
   ge = grp.entities
-  circle = ge.add_circle([138.mm,2232.mm,2361.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([124.mm,2232.mm,2361.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(24.mm)
+  cface.pushpull(52.mm)
   mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -756,14 +782,14 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (narrow; free space each side) TL 2276
+  # Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TL 2276
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (narrow; free space each side) TL 2276"
+  grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TL 2276"
   ge = grp.entities
-  circle = ge.add_circle([138.mm,2276.mm,2361.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([124.mm,2276.mm,2361.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(24.mm)
+  cface.pushpull(52.mm)
   mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -896,12 +922,25 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame corner bracket (plane→U-joint) TL
+  # Frame corner bracket (angle frame → U-joint) TL
   grp = ents.add_group
-  grp.name = "Frame corner bracket (plane→U-joint) TL"
+  grp.name = "Frame corner bracket (angle frame → U-joint) TL"
   face = grp.entities.add_face([136.mm,2254.mm,2308.mm], [184.mm,2254.mm,2308.mm], [184.mm,2270.mm,2308.mm], [136.mm,2270.mm,2308.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(52.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame-corner bolt (angle frame → bracket) TL
+  grp = ents.add_group
+  grp.name = "Frame-corner bolt (angle frame → bracket) TL"
+  ge = grp.entities
+  circle = ge.add_circle([183.mm,2256.mm,2334.mm], [0,1,0], 3.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -962,14 +1001,14 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (narrow; free space each side) TR 2232
+  # Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TR 2232
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (narrow; free space each side) TR 2232"
+  grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TR 2232"
   ge = grp.entities
-  circle = ge.add_circle([4612.mm,2232.mm,2361.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4598.mm,2232.mm,2361.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(24.mm)
+  cface.pushpull(52.mm)
   mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -988,14 +1027,14 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (narrow; free space each side) TR 2276
+  # Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TR 2276
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (narrow; free space each side) TR 2276"
+  grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TR 2276"
   ge = grp.entities
-  circle = ge.add_circle([4612.mm,2276.mm,2361.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4598.mm,2276.mm,2361.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(24.mm)
+  cface.pushpull(52.mm)
   mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -1128,12 +1167,25 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame corner bracket (plane→U-joint) TR
+  # Frame corner bracket (angle frame → U-joint) TR
   grp = ents.add_group
-  grp.name = "Frame corner bracket (plane→U-joint) TR"
+  grp.name = "Frame corner bracket (angle frame → U-joint) TR"
   face = grp.entities.add_face([4590.mm,2254.mm,2308.mm], [4638.mm,2254.mm,2308.mm], [4638.mm,2270.mm,2308.mm], [4590.mm,2270.mm,2308.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(52.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame-corner bolt (angle frame → bracket) TR
+  grp = ents.add_group
+  grp.name = "Frame-corner bolt (angle frame → bracket) TR"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2256.mm,2334.mm], [0,1,0], 3.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -1168,15 +1220,103 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # ═══ Film Plane ═══
   defn = model.definitions.add("Film Plane")
   ents = defn.entities
-  # Film plane (ghost)
+  # Film-plane ACM backing (ghost)
   grp = ents.add_group
-  grp.name = "Film plane (ghost)"
+  grp.name = "Film-plane ACM backing (ghost)"
   face = grp.entities.add_face([183.mm,2262.mm,160.mm], [4591.mm,2262.mm,160.mm], [4591.mm,2266.mm,160.mm], [183.mm,2266.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2174.mm)
-  mat = model.materials["Film plane (ghost)"] || model.materials.add("Film plane (ghost)")
+  mat = model.materials["Film-plane ACM backing (ghost)"] || model.materials.add("Film-plane ACM backing (ghost)")
   mat.color = Sketchup::Color.new(31, 59, 102)
   mat.alpha = 0.14
+  grp.material = mat
+
+  # Film frame 2x2 Al angle — top (perp leg / muslin clamp)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 Al angle — top (perp leg / muslin clamp)"
+  face = grp.entities.add_face([183.mm,2212.mm,2329.mm], [4591.mm,2212.mm,2329.mm], [4591.mm,2262.mm,2329.mm], [183.mm,2262.mm,2329.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["Film frame 2x2 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 Al angle — top (perp leg / muslin clamp)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 Al angle — top (in-plane leg / ACM seat)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 Al angle — top (in-plane leg / ACM seat)"
+  face = grp.entities.add_face([183.mm,2257.mm,2284.mm], [4591.mm,2257.mm,2284.mm], [4591.mm,2262.mm,2284.mm], [183.mm,2262.mm,2284.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Film frame 2x2 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 Al angle — top (perp leg / muslin clamp)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 Al angle — bottom (perp leg / muslin clamp)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 Al angle — bottom (perp leg / muslin clamp)"
+  face = grp.entities.add_face([183.mm,2212.mm,160.mm], [4591.mm,2212.mm,160.mm], [4591.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["Film frame 2x2 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 Al angle — top (perp leg / muslin clamp)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 Al angle — bottom (in-plane leg / ACM seat)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 Al angle — bottom (in-plane leg / ACM seat)"
+  face = grp.entities.add_face([183.mm,2257.mm,160.mm], [4591.mm,2257.mm,160.mm], [4591.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Film frame 2x2 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 Al angle — top (perp leg / muslin clamp)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 Al angle — left (perp leg / muslin clamp)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 Al angle — left (perp leg / muslin clamp)"
+  face = grp.entities.add_face([183.mm,2212.mm,160.mm], [188.mm,2212.mm,160.mm], [188.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2174.mm)
+  mat = model.materials["Film frame 2x2 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 Al angle — top (perp leg / muslin clamp)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 Al angle — left (in-plane leg / ACM seat)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 Al angle — left (in-plane leg / ACM seat)"
+  face = grp.entities.add_face([183.mm,2257.mm,160.mm], [233.mm,2257.mm,160.mm], [233.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2174.mm)
+  mat = model.materials["Film frame 2x2 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 Al angle — top (perp leg / muslin clamp)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 Al angle — right (perp leg / muslin clamp)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 Al angle — right (perp leg / muslin clamp)"
+  face = grp.entities.add_face([4586.mm,2212.mm,160.mm], [4591.mm,2212.mm,160.mm], [4591.mm,2262.mm,160.mm], [4586.mm,2262.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2174.mm)
+  mat = model.materials["Film frame 2x2 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 Al angle — top (perp leg / muslin clamp)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 Al angle — right (in-plane leg / ACM seat)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 Al angle — right (in-plane leg / ACM seat)"
+  face = grp.entities.add_face([4541.mm,2257.mm,160.mm], [4591.mm,2257.mm,160.mm], [4591.mm,2262.mm,160.mm], [4541.mm,2262.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2174.mm)
+  mat = model.materials["Film frame 2x2 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 Al angle — top (perp leg / muslin clamp)")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)

@@ -532,8 +532,11 @@ PARTS: list[Part] = [
     Part("pivot-pin", "Pivot pin SS316", "fasteners-hardware",
          "film", 4, "ea", 8, 8, "McMaster-Carr", "Fastenal", spec='Ø25mm × 80mm SS316 — slip-fit in the 25mm rod-end bore (a 1\"/25.4mm pin is 0.4mm oversize and will not enter). Metric Ø25 clevis/pivot pin spanning the rod-end eye + corner-bracket clevis; 80mm is the longest stocked Ø25 clevis pin (2026-07 check). Confirm exact SKU at order.', dims="Ø25 × 80mm"),
     # — Film Plane Frame (1,046) —
-    Part("alu-angle-2x2", 'Aluminum angle 2"×2"×3/16"', "aluminum",
-         "film", 10, "ea", 22, 22, "Metal Supermarkets", "Online Metals", spec="8 ft lengths"),
+    Part("ss-angle-2x2", 'Stainless angle 2"×2"×3/16" (304)', "steel-structural",
+         "film", 10, "ea", 165, 220, "Speedy Metals", "Online Metals",
+         url="https://www.onlinemetals.com/en/buy/stainless-steel/2-x-2-x-0-1875-stainless-angle-304-304l/pid/12",
+         spec="304/304L SS angle (ASTM A276), 8 ft lengths — the film-plane PERIMETER FRAME. The muslin/ACM zone is splash-wetted with cyanotype chemistry + rinse water, so aluminum is out; 304 matches the depth rails' splash-not-immersed grade.",
+         note="Was aluminum ($22/8ft) — changed to 304 SS for the wet-chemistry zone. 2026-07 price: Speedy Metals 304 2×2×3/16 angle ~$27.45/ft ($102.12/60\") → ~$165–220 per 8 ft length; Online Metals stocks the same size (pid/12). Firms at the Aug-2026 re-price."),
     Part("dibond-acm-film", "Dibond ACM panel 4mm", "plastics-sheet",
          "film", 6, "sheet", 85, 85, "Grimco", "Signwarehouse",
          spec="4 ft × 8 ft sheets — single rigid backing, {{fact:film_plane_width_mm}}×{{fact:film_plane_height_mm}}mm"),

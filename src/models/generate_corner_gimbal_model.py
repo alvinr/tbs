@@ -32,7 +32,7 @@ import generate_corridor_water_panel as cp    # IBC corridor deep-box frame + to
 TAGS = ["Corners", "Film Plane", "Pinhole", "Context", "Labels"]
 
 C_STEEL = "#B0B0B8"; C_CROSS = "#8A8A92"; C_PANEL = "#1F3B66"; C_CAR = "#C04010"
-C_ALUM = "#C8D8E8"   # film-plane 2x2 Al angle perimeter frame (the ACM backing is captured in it)
+C_FRAME = "#8FB0C8"   # film-plane 2x2 304 SS angle perimeter frame (the ACM backing is captured in it)
 C_TILT = "#2E8B57"   # vertical (Z) slide — TILT accommodation (green)
 C_SWING = "#7B5EA7"  # horizontal (X) slide — SWING accommodation (purple)
 
@@ -228,8 +228,9 @@ def corners():
 
 def film_plane():
     # The film plane is NOT a bare sheet butted to the corner brackets. It is a rigid ACM BACKING captured in a
-    # 2x2 Al angle PERIMETER FRAME (McMaster 8982K27, 2"×2"×3/16"): the ACM seats against the frame's in-plane
-    # leg; the muslin wraps + clamps to the perp leg (Sheet 6); and the frame's four CORNERS bolt onto the frame
+    # 2x2 304 SS angle PERIMETER FRAME (304/304L, 2"×2"×3/16" — wet cyanotype zone, so stainless not aluminum):
+    # the ACM seats against the frame's in-plane leg; the muslin wraps + clamps to the perp leg (Sheet 6); and
+    # the frame's four CORNERS bolt onto the frame
     # corner brackets — which carry it through the U-joint to the cross-slides. So the load path is
     # ACM → angle frame → corner bracket → U-joint, never a butt joint.
     AL, AT = 50, 5                                # 2x2 angle leg / wall
@@ -239,16 +240,16 @@ def film_plane():
         # ACM rigid backing (ghost), seated against the frame in-plane leg
         ov.ruby_box("Film-plane ACM backing (ghost)", FCX_L, FP_Y, PZ0, FP_W_CORNER, 4, PZ1 - PZ0,
                     color=C_PANEL, alpha=0.14),
-        # 2x2 Al angle perimeter frame — top / bottom (perp leg + in-plane leg = an L)
-        ov.ruby_box("Film frame 2x2 Al angle — top (perp leg / muslin clamp)", FCX_L, yperp, PZ1 - AT, FP_W_CORNER, AL, AT, color=C_ALUM),
-        ov.ruby_box("Film frame 2x2 Al angle — top (in-plane leg / ACM seat)", FCX_L, yin, PZ1 - AL, FP_W_CORNER, AT, AL, color=C_ALUM),
-        ov.ruby_box("Film frame 2x2 Al angle — bottom (perp leg / muslin clamp)", FCX_L, yperp, PZ0, FP_W_CORNER, AL, AT, color=C_ALUM),
-        ov.ruby_box("Film frame 2x2 Al angle — bottom (in-plane leg / ACM seat)", FCX_L, yin, PZ0, FP_W_CORNER, AT, AL, color=C_ALUM),
+        # 2x2 304 SS angle perimeter frame — top / bottom (perp leg + in-plane leg = an L)
+        ov.ruby_box("Film frame 2x2 304 SS angle — top (perp leg / muslin clamp)", FCX_L, yperp, PZ1 - AT, FP_W_CORNER, AL, AT, color=C_FRAME),
+        ov.ruby_box("Film frame 2x2 304 SS angle — top (in-plane leg / ACM seat)", FCX_L, yin, PZ1 - AL, FP_W_CORNER, AT, AL, color=C_FRAME),
+        ov.ruby_box("Film frame 2x2 304 SS angle — bottom (perp leg / muslin clamp)", FCX_L, yperp, PZ0, FP_W_CORNER, AL, AT, color=C_FRAME),
+        ov.ruby_box("Film frame 2x2 304 SS angle — bottom (in-plane leg / ACM seat)", FCX_L, yin, PZ0, FP_W_CORNER, AT, AL, color=C_FRAME),
         # left / right
-        ov.ruby_box("Film frame 2x2 Al angle — left (perp leg / muslin clamp)", FCX_L, yperp, PZ0, AT, AL, PZ1 - PZ0, color=C_ALUM),
-        ov.ruby_box("Film frame 2x2 Al angle — left (in-plane leg / ACM seat)", FCX_L, yin, PZ0, AL, AT, PZ1 - PZ0, color=C_ALUM),
-        ov.ruby_box("Film frame 2x2 Al angle — right (perp leg / muslin clamp)", FCX_R - AT, yperp, PZ0, AT, AL, PZ1 - PZ0, color=C_ALUM),
-        ov.ruby_box("Film frame 2x2 Al angle — right (in-plane leg / ACM seat)", FCX_R - AL, yin, PZ0, AL, AT, PZ1 - PZ0, color=C_ALUM),
+        ov.ruby_box("Film frame 2x2 304 SS angle — left (perp leg / muslin clamp)", FCX_L, yperp, PZ0, AT, AL, PZ1 - PZ0, color=C_FRAME),
+        ov.ruby_box("Film frame 2x2 304 SS angle — left (in-plane leg / ACM seat)", FCX_L, yin, PZ0, AL, AT, PZ1 - PZ0, color=C_FRAME),
+        ov.ruby_box("Film frame 2x2 304 SS angle — right (perp leg / muslin clamp)", FCX_R - AT, yperp, PZ0, AT, AL, PZ1 - PZ0, color=C_FRAME),
+        ov.ruby_box("Film frame 2x2 304 SS angle — right (in-plane leg / ACM seat)", FCX_R - AL, yin, PZ0, AL, AT, PZ1 - PZ0, color=C_FRAME),
     ]
     return "\n".join(P)
 

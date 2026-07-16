@@ -85,7 +85,7 @@ FP_Y_MIN = 100    # minimum carriage depth (mm)     [unchanged]
 
 # ── Muslin clamp system ──────────────────────────────────────────────────────
 # Cam-lever spring clamps bolted to the perpendicular leg of the 2"x2"x3/16"
-# aluminum angle frame at 150mm centers. Jaw presses muslin hem against the
+# 304 SS angle frame at 150mm centers. Jaw presses muslin hem against the
 # pinhole-facing leg. Torsion spring biases clamp closed at any tilt angle.
 FP_ANGLE_LEG  = 50.8   # angle leg size (mm) — 2" = 50.8mm
 FP_ANGLE_T    = 4.8    # angle thickness (mm) — 3/16" = 4.76mm ≈ 4.8mm

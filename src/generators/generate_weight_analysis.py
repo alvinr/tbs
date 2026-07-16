@@ -277,11 +277,12 @@ def _shelf_weight():
 
 
 def _film_plane_carriage_weight():
-    """Film plane carriage: Al angle frame + 92 cam-lever clamps + carriages."""
-    # Perimeter frame: 2"×2"×3/16" Al angle (50.8×50.8×4.8mm)
+    """Film plane carriage: 304 SS angle frame + 92 cam-lever clamps + carriages."""
+    # Perimeter frame: 2"×2"×3/16" 304 SS angle (50.8×50.8×4.8mm) — stainless (wet cyanotype zone),
+    # ~2.9× the mass of the old aluminum frame (RHO 7930 vs 2700).
     perimeter = 2 * (FP_W + FP_H) / 1000  # m
     angle_area = (2 * FP_ANGLE_LEG * FP_ANGLE_T - FP_ANGLE_T**2) * 1e-6  # m²
-    frame_kg = perimeter * angle_area * RHO_ALUM
+    frame_kg = perimeter * angle_area * RHO_SS304
     # 92 cam-lever clamps: ~0.15 kg each
     clamp_kg = CLAMP_N_TOTAL * 0.15
     # 4× HGH20CA carriage blocks: ~0.5 kg each

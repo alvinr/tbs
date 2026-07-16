@@ -26,7 +26,7 @@ This report describes the **cam-lever spring clamp system** that secures the mus
 
 ## 3. Clamp Mechanism
 
-Each clamp uses an **over-center cam mechanism** with a torsion spring to provide ~5N clamping force, gripping the muslin hem against the pinhole-facing leg of the aluminum angle frame through a 60A neoprene jaw pad.
+Each clamp uses an **over-center cam mechanism** with a torsion spring to provide ~5N clamping force, gripping the muslin hem against the pinhole-facing leg of the 304 stainless angle frame through a 60A neoprene jaw pad.
 
 The cam-lever design provides tactile **snap-open / snap-closed** feedback, critical for loading and unloading muslin in safelight conditions. The torsion spring biases each clamp closed at any tilt angle, so the film plane can be tilted or swung without clamps releasing.
 

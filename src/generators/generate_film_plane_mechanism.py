@@ -737,7 +737,7 @@ def view_a(ax):
     draw_circle(ax, 316, CT + 89, 5.5, color=C_PIN, fill=True, fc=C_PIN, lw=1.0, zorder=6)
     ax.plot([316, 316], [CT + 70, CT + 108], color=C_PIN, lw=1.6, zorder=5)
 
-    # film-frame corner (2x2 Al angle) + film plane edge (ghost)
+    # film-frame corner (2x2 304 SS angle) + film plane edge (ghost)
     _rect(ax, 308, CT + 104, 44, 8, C_FRAME)            # horizontal leg
     _rect(ax, 308, CT + 104, 8, 214, C_FRAME)          # vertical leg
     ax.add_patch(plt.Rectangle((320, CT + 112), 6, 202, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))
@@ -759,7 +759,7 @@ def view_a(ax):
            ha="left", fs=6.2, color=C_SWING, font=FONT, bbox=LBL_BG)
     leader(ax, 332, CT + 89, 372, CT + 110, "single U-joint\n(Ruland US12-6-6-SS)",
            ha="left", fs=6.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 318, 336, 352, 358, "film-frame corner\n(2x2 Al angle) + film",
+    leader(ax, 318, 336, 352, 358, "film-frame corner\n(2x2 304 SS angle) + film",
            ha="left", fs=6.2, color=OUT, font=FONT, bbox=LBL_BG)
 
     ax.text(-58, 424, "A — CORNER ASSEMBLY ELEVATION  (lower / floor corner; Yd × Z; nominal pose)",
@@ -1358,7 +1358,7 @@ def sheet5():
 # Sheet 6 — Muslin Clamp Detail: Cam-Lever Spring Clamp
 #
 # Three sub-panels:
-#   A (top-left):  Cross-section of clamp on 2"×2" aluminum angle profile
+#   A (top-left):  Cross-section of clamp on 2"×2" 304 SS angle profile
 #   B (top-right): Clamp in open vs closed positions (side view)
 #   C (bottom):    Elevation: 3 clamps at 150mm spacing along frame edge
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1505,13 +1505,13 @@ def sheet6():
            color=C_BEAR, fs=5, ha="right", va="center",
            arrow_style="-|>", font=FONT)
 
-    # ── Aluminum angle — L-profile ───────────────────────────────────────────
+    # ── 304 SS angle — L-profile ─────────────────────────────────────────────
     # Pinhole-facing leg: horizontal
     ax_a.add_patch(Rectangle(((0), (0)), (LEG), (T),
-                              fc=C_ALUM, ec=ANNO, lw=1.5, zorder=3))
+                              fc=C_FRAME, ec=ANNO, lw=1.5, zorder=3))
     # Perpendicular leg: vertical (going down)
     ax_a.add_patch(Rectangle(((0), (-LEG + T)), (T), (LEG - T),
-                              fc=C_ALUM, ec=ANNO, lw=1.5, zorder=3))
+                              fc=C_FRAME, ec=ANNO, lw=1.5, zorder=3))
     # Hatching
     ax_a.add_patch(Rectangle(((0), (0)), (LEG), (T),
                               fc="none", ec="#8898A8", lw=0.3, hatch="///", zorder=4))
@@ -2142,7 +2142,7 @@ def sheet7():
     # Frame leader (from right side midpoint)
     leader(ax, fp_right, fp_cz,
            fp_right + 450, fp_cz - 150,
-           "2\"×2\"×3/16\"\nALUMINUM ANGLE\n(welded frame)",
+           "2\"×2\"×3/16\"\n304 SS ANGLE\n(welded frame)",
            color=C_FLAT, ha="left", fs=6.5, font=FONT)
 
     # ── Dimensions ────────────────────────────────────────────────────────────

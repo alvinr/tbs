@@ -76,7 +76,7 @@ Each corner of the film plane frame rides on its own carriage assembly (driven i
 - **8 depth carriages** — HGH20CA flanged blocks, 2 per rail, joined by an L-bracket at each corner.
 - **4 leadscrews** — ¾"-6 Acme, 8 ft (2,438mm) length, one per corner (TL, TR, BL, BR). Each turns in a bronze Acme nut fixed to the corner bracket and drives that corner's depth.
 - **8 corner cross-slides (Option A)** — a **2-axis X-Z floating stage** at each corner (one X slide + one Z slide, ~300mm travel each, on HGR15 rail + block), bolted on top of the depth carriage. These absorb the small in-plane arc travel that a **rigid** rotation forces on each corner (≈250mm in Z at max tilt, ≈263mm in X at max swing), so the film plane stays a **fixed-size flat rectangle** instead of stretching.
-- **Film plane frame** — welded 2"×2"×3/16" 304 stainless angle (the muslin/ACM zone is splash-wetted with cyanotype chemistry, so aluminum is out; 304 matches the depth rails), a **FIXED-SIZE rigid rectangle, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm** (rail span × container height). Each corner connects to its cross-slide through a **rod-end spherical bearing** (GIR25-DO or equivalent, 25mm bore), which provides the angular freedom; the cross-slide provides the translation. The rod-end's threaded shank anchors into the cross-slide stage, and its ball is captured on the **Ø25 × 80mm pivot pin** by a welded **fork clevis** (two ears) at each frame corner, so the pin runs in **double shear** — through both ears and the ball bore (see Sheet 3). Together they let the rigid plane tilt and swing without the frame ever changing size. The following diagrams show the range of movements of the film plane.
+- **Film plane frame** — welded 2"×2"×3/16" anodized-6061 aluminum angle, kept as an **expendable part** (in the splash-not-immersed cyanotype zone anodized 6061 corrodes slowly — inspect annually, replace on pitting; chosen over 304 SS to save ~32 kg and ~$1.5k, with the ACM backing carrying the flatness), a **FIXED-SIZE rigid rectangle, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm** (rail span × container height). Each corner connects to its cross-slide through a **rod-end spherical bearing** (GIR25-DO or equivalent, 25mm bore), which provides the angular freedom; the cross-slide provides the translation. The rod-end's threaded shank anchors into the cross-slide stage, and its ball is captured on the **Ø25 × 80mm pivot pin** by a welded **fork clevis** (two ears) at each frame corner, so the pin runs in **double shear** — through both ears and the ball bore (see Sheet 3). Together they let the rigid plane tilt and swing without the frame ever changing size. The following diagrams show the range of movements of the film plane.
 
 ![Sheet 1 — Plan view](assets/film-plane-sheet1.png)
 
@@ -159,13 +159,13 @@ All items ship within the United States. Local Southern California pickup noted 
 | Acme nut bronze ¾"-6 (6289K512) | — | 4 ea | Roton Products / McMaster-Carr | $48 |
 | Handwheel 8" dia (6440K64) | ¾" bore, cast aluminum | 4 ea | Grainger / McMaster-Carr | $140 |
 | Locking collar SS316 (6436K12) | ¾" bore | 4 ea | McMaster-Carr / Fastenal | $48 |
-| Corner bracket L-plate | ¼" alum. plate, 6"×8" | 4 ea | Metal Supermarkets / Online Metals | $80 |
+| Corner bracket L-plate (6061, anodized) | ¼" 6061-T6 alum. plate, clear-anodized, 6"×8" — the frame-corner ↔ U-joint bracket. EXPENDABLE, same wet-zone caveat as the frame angle: anodized 6061, inspect-annually / replace-on-pitting. | 4 ea | Metal Supermarkets / Online Metals | $80 |
 | Cross-slide rail HGR15 (Option A) | 300mm, X-Z stage | 8 ea | Automation Overstock / McMaster-Carr | $200 |
 | Cross-slide carriage HGH15CA (Option A) | Flanged block | 8 ea | Automation Overstock / McMaster-Carr | $96 |
 | Cross-slide intermediate plate (Option A) | ¼" alum., joins X slide to Z slide | 4 ea | Metal Supermarkets / Online Metals | $60 |
 | Rod-end spherical bearing (60645K73) | GIR25-DO or equiv., 25mm bore — one per corner (4 corners) | 4 ea | McMaster-Carr / Amazon Industrial | $88 |
 | Pivot pin SS316 | Ø25mm × 80mm SS316 — slip-fit in the 25mm rod-end bore (a 1"/25.4mm pin is 0.4mm oversize and will not enter). Metric Ø25 clevis/pivot pin spanning the rod-end eye + corner-bracket clevis; 80mm is the longest stocked Ø25 clevis pin (2026-07 check). Confirm exact SKU at order. | 4 ea | McMaster-Carr / Fastenal | $32 |
-| [Stainless angle 2"×2"×3/16" (304)](https://www.onlinemetals.com/en/buy/stainless-steel/2-x-2-x-0-1875-stainless-angle-304-304l/pid/12) | 304/304L SS angle (ASTM A276), 8 ft lengths — the film-plane PERIMETER FRAME. The muslin/ACM zone is splash-wetted with cyanotype chemistry + rinse water, so aluminum is out; 304 matches the depth rails' splash-not-immersed grade. | 10 ea | Speedy Metals / Online Metals | $1,650–$2,200 |
+| Aluminum angle 2"×2"×3/16" (6061, anodized) | 6061-T6 angle, clear-anodized, 8 ft lengths — the film-plane PERIMETER FRAME, an EXPENDABLE part. In the splash (not immersed) cyanotype zone anodized 6061 corrodes slowly; treated as inspect-annually / replace-on-pitting to save ~32 kg + ~$1.5k vs 304 SS (the ACM backing does the flatness work, so Al's lower stiffness is acceptable). | 10 ea | Metal Supermarkets / Online Metals | $220 |
 | Dibond ACM panel 4mm | 4 ft × 8 ft sheets — single rigid backing, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->×<!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm | 6 sheet | Grimco / Signwarehouse | $510 |
 | Black EPDM foam tape 1"×½" (8614K84) | 50 ft rolls | 3 roll | McMaster-Carr / Grainger | $84 |
 | Rosco Duvetyne | 60" wide, 10 yd | 1 ea | B&H Photo / Rosco direct | $95 |
@@ -175,7 +175,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | M12×90mm hex through-bolt + nut + washers, SS | ICP-12: wall sandwich through-bolt; 4/saddle ×6 + 4 spare | 28 ea | McMaster-Carr / Amazon | $70 |
 | M8×25mm knurled thumbscrew DIN 464 | ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare | 12 ea | Amazon / Maedler | $36 |
 | M8 hex fixing bolt + nut, SS | ICP-14: right-rail permanent fixing; 2/saddle ×2 TR + spare | 8 ea | McMaster-Carr / Amazon | $16 |
-| **Film total** | | | | **$4,395–$4,973** |
+| **Film total** | | | | **$2,965–$2,993** |
 <!-- END parts:film -->
 
 *The cross-slide rails/carriages/intermediate plates (HGR15) are the **Option A** additions — the
@@ -210,7 +210,7 @@ See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) f
 | 12V 30A power supply | Enclosed | 1 | Mouser | Digi-Key | $55 |
 | DPDT momentary rocker | Panel-mount, 20A | **4** | Mouser | Grainger | $8 |
 
-**Estimated materials total (manual actuation, incl. wall-seat saddles + Option A cross-slides): ~<!-- BEGIN costing:film-total -->$4,739<!-- END costing:film-total -->** (rev 12: the 2 BR saddles move to the walkway's combined corner plates)
+**Estimated materials total (manual actuation, incl. wall-seat saddles + Option A cross-slides): ~<!-- BEGIN costing:film-total -->$3,309<!-- END costing:film-total -->** (rev 12: the 2 BR saddles move to the walkway's combined corner plates)
 *Excludes fasteners, fabrication labor, and electric actuation option.*
 *Option A net change vs the earlier four-corner design: added 8 cross-slide rails +$200, 8 cross-slide carriages +$96, 4 intermediate plates +$60 (= +$356); removed the folding-backing piano hinge –$56 → net +$300. The single rigid ACM backing replaces the hinged two-panel system.*
 

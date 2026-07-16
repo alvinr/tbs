@@ -95,7 +95,7 @@ RAIL_W   = 60           # rail width in plan view
 
 # ── LEFT-rail transport drop-in (Sheet 4). These MIRROR generate_corner_gimbal_model.py; promote
 # both to tbs_constants at the FP_W/FP_H cascade so 2D + 3D single-source them (see TODO). ──
-from tbs_constants import PIVOT_YD, SWING_LOCK_DEG, PIVOT_POST_OD, RAIL_OFF_BOT, WALKWAY_H
+from tbs_constants import PIVOT_YD, PIVOT_POST_OD, RAIL_OFF_BOT, WALKWAY_H
 LEFT_CUT_YD = 2090      # cut Yd on the X150 rail = the panel-swing-envelope edge; stub = C_WID−2090 = 272mm
 SPLICE_YD   = 260       # length splice at the PINHOLE end (removable = 6 ft stock + 260mm)
 
@@ -695,71 +695,74 @@ def view_a(ax):
     """Corner assembly elevation — LOWER (floor) corner. Yd (horizontal) × Z (vertical), mm.
     Shown at the NOMINAL (flat) pose: the vertical carriage sits LOW, the green rail towers
     above it as the ~280 mm tilt-travel headroom."""
-    ax.set_xlim(-60, 500); ax.set_ylim(-60, 400); ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(-60, 500); ax.set_ylim(-60, 432); ax.set_aspect("equal"); ax.axis("off")
 
     ax.plot([-30, 460], [0, 0], color="#999", lw=0.8, zorder=1)   # floor line
 
     # depth RAIL — 3x1.5 (76x38) 304 U-CHANNEL stood WEB-VERTICAL, seen along Yd (opening toward the
-    # viewer = film side); partial w/ break marks. The BOTTOM flange is the running surface (weight rail).
-    ax.add_patch(plt.Rectangle((30, 0), 430, 47, fc=C_STEEL, ec="none", alpha=0.16, zorder=2))  # outboard web (behind)
+    # viewer = film side); 76 mm deep web, partial w/ break marks. The BOTTOM flange is the running surface.
+    CT = 76                                                            # channel top Z (= carriage / stack base)
+    ax.add_patch(plt.Rectangle((30, 0), 430, CT, fc=C_STEEL, ec="none", alpha=0.16, zorder=2))  # outboard web (behind)
     _rect(ax, 30, 0, 430, 5, C_STEEL, z=5)                             # BOTTOM flange — the rollers run on this
-    _rect(ax, 30, 42, 430, 5, C_STEEL, z=5)                            # top flange
-    for bx in (44, 446):
-        ax.plot([bx - 6, bx + 6], [-4, 51], color=OUT, lw=0.8, zorder=6)   # break marks
-    # 4-wheel acetal skate — 2 LOAD rollers on the bottom flange + 2 KEEPER rollers under the top flange (captive)
+    _rect(ax, 30, CT - 5, 430, 5, C_STEEL, z=5)                        # top flange
+    for bx in (44, 446):                                                   # zigzag break symbols (rail continues)
+        zz = [(bx - 5, -2), (bx + 4, CT * 0.28), (bx - 4, CT * 0.55), (bx + 4, CT * 0.82), (bx - 5, CT + 2)]
+        ax.plot([p[0] for p in zz], [p[1] for p in zz], color=OUT, lw=0.7, zorder=6)
+    # 4-wheel acetal skate — 2 LOAD rollers on the bottom flange + 2 KEEPER rollers under the top flange
     for wx in (238, 298):
-        draw_circle(ax, wx, 21, 16, color=OUT, fill=True, fc=C_ACET, lw=1.1, zorder=7)   # load roller Ø32
-        draw_circle(ax, wx, 21, 4, color=OUT, fill=True, fc=C_STEEL, lw=0.6, zorder=8)   # Ø10 axle end
-        draw_circle(ax, wx, 35, 5.5, color=OUT, fill=True, fc=C_ACET, lw=0.9, zorder=9)  # keeper roller (anti-lift)
-    _rect(ax, 224, 40, 90, 7, C_CAR, z=6)                             # carriage plate on the axle ends → stack
-    ax.plot([268, 268], [47, 62], color=OUT, lw=0.6, zorder=8)         # section cut A-A marker
+        draw_circle(ax, wx, 21, 16, color=OUT, fill=True, fc=C_ACET, lw=1.1, zorder=7)      # load roller Ø32 (bottom flange)
+        draw_circle(ax, wx, 21, 4, color=OUT, fill=True, fc=C_STEEL, lw=0.6, zorder=8)      # Ø10 axle end
+        draw_circle(ax, wx, CT - 15, 10, color=OUT, fill=True, fc=C_ACET, lw=0.9, zorder=7) # keeper roller Ø20 (under top flange)
+        draw_circle(ax, wx, CT - 15, 3, color=OUT, fill=True, fc=C_STEEL, lw=0.5, zorder=8)
+    _rect(ax, 224, CT, 90, 7, C_CAR, z=6)                             # carriage plate on the axle ends → stack
+    ax.plot([268, 268], [CT + 7, CT + 22], color=OUT, lw=0.6, zorder=8)   # section cut A-A marker
     ax.plot([268, 268], [-14, 0], color=OUT, lw=0.6, zorder=8)
-    ax.text(268, 66, "A", fontsize=6.5, ha="center", va="bottom", color=OUT, **FONT)
+    ax.text(268, CT + 26, "A", fontsize=6.5, ha="center", va="bottom", color=OUT, **FONT)
     ax.text(268, -20, "A", fontsize=6.5, ha="center", va="top", color=OUT, **FONT)
-    _rect(ax, 312, 40, 14, 16, C_CLAMP, z=8)                           # cam clamp / rail brake on the carriage
-    ax.plot([326, 350], [52, 44], color=C_CLAMP, lw=2.0, zorder=8)
+    _rect(ax, 312, CT, 14, 16, C_CLAMP, z=8)                          # cam clamp / rail brake on the carriage
+    ax.plot([326, 350], [CT + 12, CT + 4], color=C_CLAMP, lw=2.0, zorder=8)
 
     # vertical (TILT) slide rail — green; low carriage at nominal, rail = ~280 mm tilt headroom
-    _rect(ax, 236, 40, 18, 280, C_TILT)                 # tall rail (travel envelope)
-    _rect(ax, 228, 48, 34, 52, C_TILT)                  # vertical friction carriage (LOW = nominal)
-    _rect(ax, 262, 60, 14, 20, C_CLAMP)                 # cam clamp body
-    ax.plot([276, 306], [70, 62], color=C_CLAMP, lw=2.2, zorder=6)   # clamp lever
-    _rect(ax, 262, 86, 44, 12, C_UJ)                    # bracket carriage → corner stack
+    _rect(ax, 236, CT, 18, 280, C_TILT)                 # tall rail (travel envelope)
+    _rect(ax, 228, CT + 8, 34, 52, C_TILT)              # vertical friction carriage (LOW = nominal)
+    _rect(ax, 262, CT + 20, 14, 20, C_CLAMP)            # cam clamp body
+    ax.plot([276, 306], [CT + 30, CT + 22], color=C_CLAMP, lw=2.2, zorder=6)   # clamp lever
+    _rect(ax, 262, CT + 46, 44, 12, C_UJ)               # bracket carriage → corner stack
 
     # horizontal (SWING) slide — purple, runs into the page (X); shown edge-on
-    _rect(ax, 292, 98, 48, 16, C_SWING)
+    _rect(ax, 292, CT + 58, 48, 16, C_SWING)
 
     # single U-joint (Ruland US12-6-6-SS)
-    _rect(ax, 300, 114, 32, 30, C_UJ)
-    draw_circle(ax, 316, 129, 5.5, color=C_PIN, fill=True, fc=C_PIN, lw=1.0, zorder=6)
-    ax.plot([316, 316], [110, 148], color=C_PIN, lw=1.6, zorder=5)
+    _rect(ax, 300, CT + 74, 32, 30, C_UJ)
+    draw_circle(ax, 316, CT + 89, 5.5, color=C_PIN, fill=True, fc=C_PIN, lw=1.0, zorder=6)
+    ax.plot([316, 316], [CT + 70, CT + 108], color=C_PIN, lw=1.6, zorder=5)
 
     # film-frame corner (2x2 Al angle) + film plane edge (ghost)
-    _rect(ax, 308, 144, 44, 8, C_FRAME)                 # horizontal leg
-    _rect(ax, 308, 144, 8, 214, C_FRAME)               # vertical leg
-    ax.add_patch(plt.Rectangle((320, 152), 6, 202, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))
+    _rect(ax, 308, CT + 104, 44, 8, C_FRAME)            # horizontal leg
+    _rect(ax, 308, CT + 104, 8, 214, C_FRAME)          # vertical leg
+    ax.add_patch(plt.Rectangle((320, CT + 112), 6, 202, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))
 
     # ── dimensions (both on the left, near the green rail) ──
-    draw_dim_v(ax, 8, 18, 144, "~150mm\nnominal\nstack", offset=28, fs=6, color=DIM, font=FONT)
-    draw_dim_v(ax, 206, 40, 320, "~280mm\ntilt travel", offset=26, fs=6, color=DIM, font=FONT)
+    draw_dim_v(ax, 8, CT, CT + 104, "~150mm\nnominal\nstack", offset=28, fs=6, color=DIM, font=FONT)
+    draw_dim_v(ax, 206, CT, CT + 280, "~280mm\ntilt travel", offset=26, fs=6, color=DIM, font=FONT)
 
     # ── leaders ──
     leader(ax, 90, 23, 40, -44, "DEPTH RAIL (Y) — 3×1.5 304 U-CHANNEL, web-vertical; the traverse; ~2.4 m (floor rail)",
            ha="left", fs=6.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 268, 35, 336, -36, "4-wheel acetal skate — Ø32 LOAD rollers on the bottom flange\n+ KEEPER rollers under the top flange (captive); carriage plate → stack",
+    leader(ax, 268, 45, 336, -36, "4-wheel acetal skate — Ø32 LOAD rollers on the bottom flange\n+ Ø20 KEEPER rollers under the top flange (captive); carriage plate → stack",
            ha="left", fs=6.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 245, 300, 250, 344, "VERTICAL way (Z, green) — 316 flat bar\n+ UHMW pads; TILT accommodation",
+    leader(ax, 245, 340, 250, 372, "VERTICAL way (Z, green) — 316 flat bar\n+ UHMW pads; TILT accommodation",
            ha="left", fs=6.2, color=C_TILT, font=FONT, bbox=LBL_BG)
-    leader(ax, 306, 62, 352, 48, "cam clamp — one per slide\n(push → lock)",
+    leader(ax, 306, CT + 30, 352, CT + 16, "cam clamp — one per slide\n(push → lock)",
            ha="left", fs=6.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 316, 106, 356, 98, "HORIZONTAL way (X, purple) — 316 flat bar\n+ UHMW pads; SWING accom. (into page)",
+    leader(ax, 316, CT + 66, 356, CT + 58, "HORIZONTAL way (X, purple) — 316 flat bar\n+ UHMW pads; SWING accom. (into page)",
            ha="left", fs=6.2, color=C_SWING, font=FONT, bbox=LBL_BG)
-    leader(ax, 332, 129, 372, 150, "single U-joint\n(Ruland US12-6-6-SS)",
+    leader(ax, 332, CT + 89, 372, CT + 110, "single U-joint\n(Ruland US12-6-6-SS)",
            ha="left", fs=6.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 318, 300, 352, 322, "film-frame corner\n(2x2 Al angle) + film",
+    leader(ax, 318, 336, 352, 358, "film-frame corner\n(2x2 Al angle) + film",
            ha="left", fs=6.2, color=OUT, font=FONT, bbox=LBL_BG)
 
-    ax.text(-58, 392, "A — CORNER ASSEMBLY ELEVATION  (lower / floor corner; Yd × Z; nominal pose)",
+    ax.text(-58, 424, "A — CORNER ASSEMBLY ELEVATION  (lower / floor corner; Yd × Z; nominal pose)",
             fontsize=8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
 
@@ -831,18 +834,18 @@ def section_aa(ax):
     # ── Ø32 acetal LOAD roller, gravity-seated on the bottom flange (edge-on: axis = X, in-plane) ──
     _rect(ax, 9, 5, 16, 32, C_ACET, z=7)
     draw_circle(ax, 17, 21, 5, color=OUT, fill=True, fc=C_STEEL, lw=0.8, zorder=8)   # Ø10 axle (end-on)
-    _rect(ax, 25, 16, 38, 10, C_STEEL, z=6)                                         # axle → carriage (inboard only)
+    _rect(ax, 25, 16, 25, 10, C_STEEL, z=6)                                         # short axle → carriage (inboard only)
     # ── KEEPER roller, just under the top flange (anti-lift), on its own stub axle ──
     _rect(ax, 11, 55, 13, 15, C_ACET, z=7)
     draw_circle(ax, 17, 62, 4, color=OUT, fill=True, fc=C_STEEL, lw=0.7, zorder=8)
-    _rect(ax, 21, 58, 42, 8, C_STEEL, z=6)                                          # keeper stub axle → carriage
-    # ── carriage plate (inboard) — the MOVING part; both axles land on it ──
-    _rect(ax, 63, -2, 14, 74, C_CAR, z=6)
-    ax.plot([70, 70], [-2, 70], color=C_PIN, lw=1.8, zorder=8)                       # retainer bolt DOWN thru plate
-    draw_circle(ax, 70, 68, 3, color=OUT, fill=True, fc=C_PIN, lw=0.6, zorder=9)
+    _rect(ax, 21, 58, 29, 8, C_STEEL, z=6)                                          # keeper stub axle → carriage
+    # ── carriage plate (inboard, close to the channel opening) — the MOVING part; both axles land on it ──
+    _rect(ax, 50, -2, 14, 74, C_CAR, z=6)
+    ax.plot([57, 57], [-2, 70], color=C_PIN, lw=1.8, zorder=8)                       # retainer bolt DOWN thru plate
+    draw_circle(ax, 57, 68, 3, color=OUT, fill=True, fc=C_PIN, lw=0.6, zorder=9)
     # ── the stack inboard: green Z slide begins on the plate ──
-    _rect(ax, 77, 10, 12, 46, C_TILT, z=5)
-    ax.annotate("", xy=(114, 33), xytext=(89, 33), arrowprops=dict(arrowstyle="->", color=DIM, lw=1.0))
+    _rect(ax, 64, 10, 12, 46, C_TILT, z=5)
+    ax.annotate("", xy=(108, 33), xytext=(76, 33), arrowprops=dict(arrowstyle="->", color=DIM, lw=1.0))
     # seating + lift arrows
     ax.annotate("", xy=(17, 42), xytext=(17, 52), arrowprops=dict(arrowstyle="->", color=OUT, lw=1.4))
     ax.text(6, 47, "WEIGHT", fontsize=5.4, ha="right", va="center", color=OUT, **FONT)
@@ -854,8 +857,8 @@ def section_aa(ax):
     leader(ax, 17, 9, -8, -12, "Ø32 LOAD roller\n(gravity-seated)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 17, 68, 30, 84, "KEEPER roller — runs under the top\nflange = anti-lift (shock / reversal)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 41, 12, 52, -2, "LIP on the bottom flange —\nstops X walk-off on swing", ha="left", fs=5.0, color=C_TILT, font=FONT, bbox=LBL_BG)
-    leader(ax, 70, 2, 92, -12, "retainer bolt DOWN through the plate\n(saddle clamp — not through the rail)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 110, 33, 98, 50, "→ cross-slide stack (Z/X)\n→ U-joint → film corner", ha="left", fs=5.0, color=DIM, font=FONT, bbox=LBL_BG)
+    leader(ax, 57, 2, 84, -12, "retainer bolt DOWN through the plate\n(saddle clamp — not through the rail)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 104, 33, 96, 50, "→ cross-slide stack (Z/X)\n→ U-joint → film corner", ha="left", fs=5.0, color=DIM, font=FONT, bbox=LBL_BG)
     ax.text(-26, 92, "SECTION A-A — BOTTOM (weight) carriage",
             fontsize=6.8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
     ax.text(-26, 85, "web-vertical channel", fontsize=5.4, color=DIM, ha="left", va="top", **FONT)
@@ -868,29 +871,35 @@ def section_top(ax):
     channel and a KEEPER roller hooks under a flange lip to hold the skate captive against dynamic drift.
     Short in Z = minimum ceiling cost. The carriage plate + stack hang BELOW; the film top rides ~10 mm
     under the web (guide gap)."""
-    ax.set_xlim(-26, 118); ax.set_ylim(-54, 50); ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(-26, 130); ax.set_ylim(-58, 50); ax.set_aspect("equal"); ax.axis("off")
     # inverted-U: web on top (closed), flanges hang down — opening faces DOWN
     _uchan_hatch(ax, 0, 33, 76, 5)          # web = closed top / splice face (76 wide)
     for fx in (0, 71):
         _uchan_hatch(ax, fx, 0, 5, 38)      # flanges hang down (38)
-    # Ø32 acetal GUIDE roller inside the channel (edge-on), light against the web
-    _rect(ax, 30, 1, 16, 30, C_ACET, z=7)
-    draw_circle(ax, 38, 16, 5, color=OUT, fill=True, fc=C_STEEL, lw=0.8, zorder=8)
-    # KEEPER roller hooks under the right flange lip (anti-drop capture)
-    _rect(ax, 63, -3, 12, 8, C_ACET, z=7)
-    draw_circle(ax, 69, 1, 3, color=OUT, fill=True, fc=C_STEEL, lw=0.6, zorder=8)
-    # carriage plate hangs BELOW → cross-slide stack → film top corner (hangs)
-    _rect(ax, 31, -34, 44, 8, C_CAR, z=6)   # carriage plate (spans to the keeper)
-    _rect(ax, 32, -48, 12, 14, C_TILT, z=5) # cross-slide begins below
-    ax.add_patch(plt.Rectangle((8, -54), 60, 5, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))  # film top edge ghost
-    draw_dim_v(ax, 92, 0, 38, "38\n(short:\nceiling)", offset=7, fs=5.2, color=DIM, right=True, font=FONT)
-    leader(ax, 38, 29, 50, 20, "Ø32 GUIDE roller — NO weight\n(depth + lateral tracking only)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 70, 1, 84, 14, "KEEPER roller hooks the\nflange lip = anti-drop", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 45, -34, 74, -32, "carriage + stack hang BELOW", ha="left", fs=5.0, color=DIM, font=FONT, bbox=LBL_BG)
-    leader(ax, 38, -51, 70, -49, "film top edge — ~10 mm under web", ha="left", fs=5.0, color=DIM, font=FONT, bbox=LBL_BG)
+    # WIDE Ø32 acetal guide DRUM — nearly spans the throat, so BOTH flanges locate it laterally (tight X)
+    _rect(ax, 8, 1, 60, 32, C_ACET, z=7)
+    draw_circle(ax, 38, 17, 5, color=OUT, fill=True, fc=C_STEEL, lw=0.8, zorder=8)   # Ø10 axle end
+    for gx in (7, 69):                                                               # lateral-clearance marks to the flanges
+        ax.plot([gx, gx], [4, 30], color=DIM, lw=0.4, dashes=(1, 1), zorder=8)
+    # KEEPER roller — hooks under the inboard (right) flange lip from BELOW (anti-drop; holds the drum to the web)
+    _rect(ax, 66, -10, 12, 12, C_ACET, z=7)
+    draw_circle(ax, 72, -4, 3, color=OUT, fill=True, fc=C_STEEL, lw=0.6, zorder=8)
+    # carriage plate — INBOARD; the drum axle + keeper axle land on it, stack hangs below
+    _rect(ax, 88, -40, 14, 62, C_CAR, z=6)
+    _rect(ax, 68, 13, 20, 8, C_STEEL, z=6)                                           # drum axle → carriage
+    _rect(ax, 78, -6, 12, 8, C_STEEL, z=6)                                           # keeper axle → carriage
+    ax.plot([95, 95], [-40, 20], color=C_PIN, lw=1.6, zorder=8)                       # retainer bolt through plate
+    _rect(ax, 88, -54, 12, 14, C_TILT, z=5)                                          # cross-slide (green) hangs below
+    ax.add_patch(plt.Rectangle((62, -58), 50, 5, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))  # film top edge ghost (hangs)
+    ax.annotate("", xy=(38, 33), xytext=(38, 25), arrowprops=dict(arrowstyle="->", color=OUT, lw=1.0))  # guide reaction UP
+    draw_dim_v(ax, -14, 0, 38, "38\n(short:\nceiling)", offset=7, fs=5.2, color=DIM, font=FONT)
+    leader(ax, 30, 18, 46, -16, "wide guide DRUM (Ø32) — no weight", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 72, -8, 90, -30, "KEEPER hooks the flange lip from below\n(anti-drop — holds the drum to the web)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 95, -18, 108, -18, "carriage + cross-slide\nstack hang BELOW", ha="left", fs=5.0, color=DIM, font=FONT, bbox=LBL_BG)
     ax.text(-26, 50, "SECTION B-B — TOP (guide) carriage",
             fontsize=6.8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
-    ax.text(-26, 43, "captive under the flat inverted-U", fontsize=5.4, color=DIM, ha="left", va="top", **FONT)
+    ax.text(-26, 43, "wide drum spans the throat → flanges locate it in X (the flat rail's lip)",
+            fontsize=5.0, color=DIM, ha="left", va="top", **FONT)
 
 
 def view_c(ax):
@@ -933,12 +942,14 @@ def sheet3():
     fig.patch.set_facecolor(BG)
 
     ax_a = fig.add_axes([0.03, 0.42, 0.45, 0.55]); ax_a.set_facecolor(BG)
-    ax_b = fig.add_axes([0.52, 0.68, 0.45, 0.29]); ax_b.set_facecolor(BG)
+    ax_b = fig.add_axes([0.52, 0.68, 0.24, 0.29]); ax_b.set_facecolor(BG)
+    ax_stub = fig.add_axes([0.78, 0.68, 0.21, 0.28]); ax_stub.set_facecolor(BG)
     ax_sec = fig.add_axes([0.52, 0.45, 0.23, 0.21]); ax_sec.set_facecolor(BG)
     ax_sec2 = fig.add_axes([0.75, 0.45, 0.22, 0.21]); ax_sec2.set_facecolor(BG)
     ax_c = fig.add_axes([0.03, 0.10, 0.45, 0.28]); ax_c.set_facecolor(BG)
     view_a(ax_a)
     view_b(ax_b)
+    _stub_carrier(ax_stub)
     section_aa(ax_sec)
     section_top(ax_sec2)
     view_c(ax_c)
@@ -950,28 +961,31 @@ def sheet3():
         "CORNER MECHANISM — ONE OF FOUR:",
         "1. A pinhole has infinite depth of field, so the plane is positioned for scene control "
         "(tilt / swing / rise), not focus — hence slide-and-clamp, not leadscrews.",
-        "2. Three axes per corner: DEPTH (Y) is the traverse — a 4-wheel acetal skate (Ø32 rollers on "
-        "Ø10 axles) riding IN a 3x1.5 (76x38) 304 U-channel (McMaster 1262T21; a top-bottom depth "
-        "difference = tilt, left-right = swing); VERTICAL (Z, green) absorbs the tilt foreshortening "
-        "(~280mm) and HORIZONTAL (X, purple) the swing foreshortening (~260mm) — both 316 flat-bar + "
-        "UHMW-pad cross-slides with an adjustable gib.",
+        "2. Three axes per corner: DEPTH (Y) is the traverse — a 4-wheel acetal skate in a 3x1.5 304 "
+        "U-channel (McMaster 1262T21; top-bottom depth = tilt, left-right = swing); VERTICAL (Z, green, "
+        "~280mm) + HORIZONTAL (X, purple, ~260mm) cross-slides (316 flat bar + UHMW pad + gib) absorb the "
+        "tilt/swing foreshortening.",
         "3. Roll the skate / push each cross-slide into position; the gib drag holds the vertical, "
         "then throw the cam clamp (rail brake) to lock for the shot and for transport.",
         "4. The U-joint (Ruland US12-6-6-SS, 303 SS, self-lube, grease-free, nitrile-booted) gives "
         "tilt + swing and locks twist so the flat plane stays square. The plane's WEIGHT is carried by "
         "the BOTTOM rail (web-vertical, load rollers gravity-seated on the bottom flange); the TOP rail "
         "is a GUIDE only (flat inverted-U, minimum ceiling cost).",
-        "5. WHEEL CAPTURE (both rails): load/guide rollers run on one flange, a KEEPER roller under the "
-        "OTHER flange holds the skate captive (anti-lift on the bottom, anti-drop on the top) against "
-        "transport shock / load reversal; a shallow LIP on the bottom flange's inboard edge stops X "
-        "walk-off when the plane swings. (LEFT rails = a transport drop-in — see Sheet 4.)",
-    ], 2, 99, 4.6, fs=5.8, title_fs=6.6, color=DIM, width=96, wrap=80, font=FONT)
+        "5. WHEEL CAPTURE: BOTTOM rail — load rollers on the bottom flange + a KEEPER under the top flange "
+        "(anti-lift) + a LIP on the inboard flange edge (stops X walk-off on swing). TOP rail — a WIDE guide "
+        "DRUM spans the throat so both flanges locate it in X, + a KEEPER hooking a flange (anti-drop). "
+        "(LEFT rails = a transport drop-in — see Sheet 4.)",
+        "6. OVERTURNING COUPLE: the film-corner load is ~50mm INBOARD of the rail (via the stack) — a moment "
+        "about the rollers. The load↓ / keeper↑ pair, spaced by the channel depth, reacts it — so the keepers "
+        "carry this static couple too. Tightest link: the 316 cross-slide bar in weak-axis bending; keep the "
+        "stack compact.",
+    ], 2, 99, 4.2, fs=5.2, title_fs=6.4, color=DIM, width=96, wrap=90, font=FONT)
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 3 OF 7",
                 drawing_title="MOVEABLE FILM PLANE",
-                subtitle="Corner carriage detail — acetal skate on 3×1.5 304 U-channel + cross-slides + U-joint",
+                subtitle="Corner carriage detail — acetal skate on 3×1.5 304 U-channel + cross-slides + U-joint + stub clamp",
                 scale_note="DIMS IN mm",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.75)
@@ -1032,20 +1046,16 @@ def _stub_carrier(ax):
     for bx in (9, 43):
         draw_rect(ax, bx - 1.9, -32, 3.8, 32, fc=C_SS, color=OUT, lw=0.7, zorder=6)   # shank y-32..0 (continuous)
         ax.add_patch(plt.Rectangle((bx - 3, 0), 6, 3.4, fc=C_SS, ec=OUT, lw=0.7, zorder=9))  # head on the flange
-    draw_dim_v(ax, 56, -6, 6, "9.5mm\n(3/8)", offset=10, fs=5.5, color=DIM, right=True,
+    draw_dim_v(ax, 56, -6, 6, "9.5mm\n(3/8)", offset=9, fs=5.0, color=DIM, right=True,
                perpendicular=True, font=FONT)
-    leader(ax, cx + 4, 2, cx + 34, 24, "STUB SHAFT (end-on) — continues out of the page\ninto the U-joint hub (Sheet 3, view B)",
-           ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, cx + 9, 9, cx + 26, 28, "2× clamp screws pull the removable\nCAP down onto the shaft",
-           ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 6, -12, -42, -8, "base-mount clamping shaft support\n(McMaster 4040N12, 304 SS)",
-           ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 9, -22, -20, -36, "2× mounting bolts\n(flange → carrier)",
-           ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 64, -27, 70, -14, "X-slide carriage face (the CARRIER)",
-           ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-42, 32, "STUB SHAFT → CARRIER CLAMP  (McMaster 4040N12, 304 SS)",
-            fontsize=6.7, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+    leader(ax, cx + 4, 4, cx + 26, 24, "STUB (end-on) →\nU-joint hub (view B)",
+           ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, cx + 9, 10, cx + 4, 30, "clamp screws pull the\nCAP onto the shaft",
+           ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 30, -27, 34, -39, "base-mount clamp (4040N12, 304 SS)\nbolts to the X-slide carrier",
+           ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    ax.text(-42, 32, "STUB → CARRIER CLAMP", fontsize=6.5, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+    ax.text(-42, 25, "section across the shaft; frame end identical", fontsize=4.9, color=DIM, ha="left", va="top", **FONT)
     ax.text(-42, 27, "section ACROSS the shaft; the film-frame end is identical", fontsize=5.4, color=DIM, ha="left", va="top", **FONT)
 
 
@@ -1076,15 +1086,16 @@ def transport_elev(ax):
     _rail_band(ax, 0, LEFT_CUT_YD, rz0, rz1, "#D6DEEA")
     _rail_band(ax, LEFT_CUT_YD, C_WID - LEFT_CUT_YD, rz0, rz1, C_STEEL)
     # CUT parting line
-    ax.plot([LEFT_CUT_YD, LEFT_CUT_YD], [rz0 - 12, rz1 + 34], color=OUT, lw=1.1, dashes=(4, 3), zorder=7)
-    # welded BRIDGE — WELDED to the REMOVABLE beam (left of cut), LAPS + BEARS on the STUB (right of cut);
-    # a retaining SCREW into the stub just holds it (weight on the bridge, not the screw).
-    _rect(ax, LEFT_CUT_YD - 96, rz1, 168, 12, C_CAR, z=8)                       # fishplate straddling the cut
-    for wx in (LEFT_CUT_YD - 86, LEFT_CUT_YD - 66, LEFT_CUT_YD - 46, LEFT_CUT_YD - 26):
-        ax.plot([wx, wx + 8], [rz1 + 1, rz1 + 1], color=OUT, lw=2.0, zorder=10)  # fillet weld bead (removable side)
-    draw_circle(ax, LEFT_CUT_YD + 46, rz1 + 6, 5.5, color=OUT, fill=True, fc=C_PIN, lw=0.9, zorder=9)  # retaining screw (stub side)
-    # length splice at the pinhole end
-    _rect(ax, SPLICE_YD - 55, rz1, 110, 10, C_CAR, z=8)
+    ax.plot([LEFT_CUT_YD, LEFT_CUT_YD], [rz0 - 12, rz1 + 14], color=OUT, lw=1.1, dashes=(4, 3), zorder=7)
+    # welded BRIDGE — sits ON TOP of the rail at the cut so GRAVITY holds it down; WELDED to the REMOVABLE
+    # (left of cut), it laps + BEARS on the STUB (right of cut). A retaining SCREW into the stub stops it
+    # lifting/sliding (the weight rides the bridge, not the screw).
+    _rect(ax, LEFT_CUT_YD - 96, rz1, 168, 12, C_CAR, z=8)                       # fishplate ON TOP, straddling the cut
+    for wx in (LEFT_CUT_YD - 84, LEFT_CUT_YD - 60, LEFT_CUT_YD - 36):           # fillet weld beads (removable side, on top)
+        ax.plot([wx, wx + 10], [rz1 + 1, rz1 + 1], color=OUT, lw=2.0, zorder=10)
+    draw_circle(ax, LEFT_CUT_YD + 44, rz1 + 6, 5.5, color=OUT, fill=True, fc=C_PIN, lw=0.9, zorder=11)  # retaining screw (stub side)
+    # length SPLICE at the pinhole end — on the OUTBOARD WEB-BACK (far side), so shown as a GHOST outline
+    ax.add_patch(plt.Rectangle((SPLICE_YD - 55, rz0), 110, rz1 - rz0, fc="none", ec=OUT, lw=1.0, ls=(0, (5, 3)), zorder=8))
     # pinhole-wall gusset/seat (Yd 0)
     _rect(ax, 0, rz0 - 36, 44, (rz1 - rz0) + 42, C_STEEL, z=3)
     # pivot post down to floor (Ø89 CHS)
@@ -1092,28 +1103,19 @@ def transport_elev(ax):
     hatch_rect(ax, PIVOT_YD - PIVOT_POST_OD / 2, 0, PIVOT_POST_OD, rz0, color="#8A93A0", hatch="//", lw=0.0)
     # far flange (stub → far wall)
     _rect(ax, C_WID - 42, rz0 - 8, 42, (rz1 - rz0) + 16, C_CAR, z=6)
-    # parked corner skate on the STUB
-    skx = 2205
-    for dx in (-22, 22):
-        draw_circle(ax, skx + dx, rz0 + 9, 9, color=OUT, fill=True, fc=C_ACET, lw=1.0, zorder=9)
-    _rect(ax, skx - 34, rz1 - 2, 68, 8, C_CAR, z=9)
-    # swing fold arrow near the pivot
-    ax.add_patch(Arc((PIVOT_YD, rz1 + 40), 260, 200, angle=0, theta1=160, theta2=250, color=C_T3, lw=1.5, zorder=6))
-    ax.annotate("", xy=(PIVOT_YD - 128, rz1 + 44), xytext=(PIVOT_YD - 96, rz1 + 78),
-                arrowprops=dict(arrowstyle="->", color=C_T3, lw=1.5))
-    ax.text(PIVOT_YD - 30, rz1 + 96, f"panel folds {SWING_LOCK_DEG:.0f}° for transport →\nthis rail line is swept",
-            fontsize=5.8, color=C_T3, ha="center", va="bottom", **FONT)
+    # transport-fold note — the fold is about the VERTICAL pivot (a plan-view motion, 90° to this elevation),
+    # so no in-plane arc; the removable simply lifts UP/out of the channel first. Placed below the rail.
+    ax.text(1000, -20, "REMOVABLE lifts OUT (↑) for transport; the panel then folds about\nthe vertical pivot (a plan-view motion — see Sheet 1)",
+            fontsize=5.8, color=C_T3, ha="center", va="top", **FONT)
     # ── dimensions (Yd) ──
     draw_dim_h(ax, 0, LEFT_CUT_YD, -70, f"REMOVABLE = {LEFT_CUT_YD} (lifts out)", offset=12, fs=6, color=DIM, above=False, font=FONT)
     draw_dim_h(ax, LEFT_CUT_YD, C_WID, -130, f"STUB = {C_WID - LEFT_CUT_YD}\n(parks corner)", offset=12, fs=6, color=DIM, above=False, font=FONT)
     # ── leaders (spread above / below the rail to keep the crowded cut region legible) ──
-    leader(ax, SPLICE_YD + 40, rz1 + 6, 560, 150, "length SPLICE (pinhole end) — 6 ft stock + reach",
+    leader(ax, SPLICE_YD, (rz0 + rz1) / 2, 470, -55, "length SPLICE (web-back, GHOST — far side) — 6 ft stock + reach",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 22, rz0 - 18, 60, -58, "pinhole-wall GUSSET / seat",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, LEFT_CUT_YD - 30, rz1 + 12, 1300, 152, "welded BRIDGE — welded to the REMOVABLE beam; laps + BEARS on the stub (weight on the bridge)\n— a retaining SCREW into the stub just holds it (drops in, then lock — no load on the screw)",
-           ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, skx, rz0 + 3, skx - 90, -52, "corner skate PARKED on the stub",
+    leader(ax, LEFT_CUT_YD + 44, rz1 + 6, 1380, 150, "welded BRIDGE (ON TOP) — welded to the REMOVABLE; GRAVITY bears it on the STUB;\na retaining SCREW into the stub stops it lifting (weight on the bridge, not the screw)",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, PIVOT_YD, 30, PIVOT_YD + 30, -150, f"swing PIVOT POST (Ø{PIVOT_POST_OD} CHS)\nanchors the stub — no floor post at the cut",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
@@ -1139,8 +1141,13 @@ def right_flanged(ax):
         _rect(ax, yf, rz0 - 8, 40, (rz1 - rz0) + 16, C_CAR, z=6)
         for bz in (rz0 + 4, rz1 - 4):
             draw_circle(ax, yf + 20, bz, 3, color=OUT, fill=True, fc=C_PIN, lw=0.7, zorder=8)
+    # length SPLICE (GHOST) — the 2362 mm wall-to-wall rail also exceeds 6 ft stock, so it too takes one splice
+    sx = 900
+    ax.add_patch(plt.Rectangle((sx - 55, rz0), 110, rz1 - rz0, fc="none", ec=OUT, lw=1.0, ls=(0, (5, 3)), zorder=8))
+    leader(ax, sx, rz1, sx + 40, 132, "length SPLICE (web-back, GHOST) — rail > 6 ft stock",
+           ha="left", fs=5.8, color=DIM, font=FONT, bbox=LBL_BG)
     leader(ax, 20, rz1, 120, 132, "end flange → wall (through-bolted)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, C_WID - 20, rz0 - 4, C_WID - 260, -40, "outboard end plate trimmed 35mm (IBC clearance);\nshares the IBC combined corner plate",
+    leader(ax, C_WID - 20, rz0 - 4, C_WID - 260, -44, "outboard end plate trimmed 35mm (IBC clearance);\nshares the IBC combined corner plate",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     ax.text(-260, 146, "RIGHT RAIL — FLANGED WALL-TO-WALL  (permanent; no transport split)",
             fontsize=7.4, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
@@ -1148,16 +1155,14 @@ def right_flanged(ax):
 
 def sheet4():
     reset_label_registry()
-    fig = plt.figure(figsize=(15, 12)); fig.patch.set_facecolor(BG)
-    ax_te = fig.add_axes([0.03, 0.60, 0.94, 0.36]); ax_te.set_facecolor(BG)
-    ax_rf = fig.add_axes([0.03, 0.40, 0.55, 0.17]); ax_rf.set_facecolor(BG)
-    ax_sc = fig.add_axes([0.60, 0.36, 0.37, 0.22]); ax_sc.set_facecolor(BG)
+    fig = plt.figure(figsize=(15, 11)); fig.patch.set_facecolor(BG)
+    ax_te = fig.add_axes([0.03, 0.56, 0.94, 0.40]); ax_te.set_facecolor(BG)
+    ax_rf = fig.add_axes([0.03, 0.34, 0.94, 0.18]); ax_rf.set_facecolor(BG)
     transport_elev(ax_te)
     right_flanged(ax_rf)
-    _stub_carrier(ax_sc)
 
     # notes
-    ax_n = fig.add_axes([0.03, 0.085, 0.94, 0.26]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100); ax_n.axis("off")
+    ax_n = fig.add_axes([0.03, 0.075, 0.94, 0.25]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100); ax_n.axis("off")
     draw_notes(ax_n, [
         "RAIL MOUNTING & TRANSPORT:",
         "1. RIGHT rail (BR/TR) is flanged WALL-TO-WALL — an end flange through-bolted to each container wall, "
@@ -1165,21 +1170,21 @@ def sheet4():
         "2. LEFT rail (BL/TL) is a TRANSPORT DROP-IN: the hinge panel folds about the pivot post (Yd "
         f"{PIVOT_YD}) and sweeps the X150 rail line, so the near ~{LEFT_CUT_YD}mm of BOTH left rails (top + "
         "bottom) LIFTS OUT. The fixed STUB parks the corner and is anchored at the pivot post + far wall.",
-        "3. At the cut: a BRIDGE (fishplate) is WELDED to the REMOVABLE beam and LAPS onto the STUB — the "
-        "removable's end BEARS on the stub through the bridge, so the WEIGHT rides the bridge, not the "
-        "fastener. A retaining SCREW into the stub then just holds it (hand-releasable): the removable drops "
-        "straight in and the screw stays unloaded. No floor post at the cut — the stub cantilevers only ~"
+        "3. At the cut: a BRIDGE (fishplate) sits ON TOP and is WELDED to the REMOVABLE beam, lapping onto the "
+        "STUB — GRAVITY bears the removable's end on the stub through the bridge (the WEIGHT rides the bridge, "
+        "not the fastener). A retaining SCREW into the stub stops it lifting (hand-releasable): the removable "
+        "drops straight in and the screw stays unloaded. No floor post at the cut — the stub cantilevers only ~"
         f"{PIVOT_YD - LEFT_CUT_YD}mm from the pivot post, so nothing fouls the sliding carriage.",
         "4. Each removable exceeds 6 ft stock, so a length SPLICE sits at the PINHOLE end (Yd ~"
         f"{SPLICE_YD}) — the shortest-throw, least-travelled zone, least likely for the skate to roll over it.",
-        "5. The U-joint stub shafts clamp to the X-slide carrier and the film-frame corner via a 304 SS "
-        "base-mount clamp (McMaster 4040N12) — see the section at right. (U-joint body detail: Sheet 3, view B.)",
+        "5. The length-SPLICE fishplate sits on the OUTBOARD WEB-BACK (far side, ghosted), clear of the rollers; "
+        "the cut BRIDGE sits on top (gravity-held). U-joint stub→carrier clamp (4040N12) + U-joint body: Sheet 3.",
     ], 2, 99, 4.7, fs=6.2, title_fs=6.8, color=DIM, width=96, wrap=132, font=FONT)
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
     title_block(ax_tb, "SHEET 4 OF 7", drawing_title="MOVEABLE FILM PLANE",
-                subtitle="Rail mounting & transport drop-in — left split (stub + removable + bridge) · right flanged · U-joint stub clamp",
+                subtitle="Rail mounting & transport drop-in — left split (stub + removable + web-back bridge) · right flanged wall-to-wall",
                 scale_note="DIMS IN mm",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.75)

@@ -11,6 +11,17 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ---
 
+## Weight model — film-plane moving mass undercounts the ACM backing — OPEN
+
+_Surfaced 2026-07-16. `generate_weight_analysis._film_plane_carriage_weight()` = frame + 92 clamps +
+4 carriages ≈ 32 kg, but does NOT include the ~53 kg Dibond ACM backing (9.6 m² × ~5.5 kg/m²) that
+moves with the plane. So the "Film plane carriage" line (and thus total-dry + CG) under-books the
+moving plane by ~50 kg._
+
+- [ ] Add the ACM backing mass to the film-plane moving-mass term (RHO/area from the dibond-acm-film
+  part), re-inject the weight blocks + PNGs, and re-check the CG/floor-load. Also feeds the (still
+  un-quantified) per-corner load used to firm the cross-slide section.
+
 ## Film-plane report reconciliation (leadscrew Option A → U-channel redesign) — OPEN
 
 _Surfaced 2026-07-16 during the 304-SS frame material fix. The mechanism CASCADE (constants/parts/

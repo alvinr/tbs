@@ -86,15 +86,15 @@ dimensions are single-sourced in the table above (`generate_plate_drawing.py` re
 | Cross-slide stroke (spec) | <!-- BEGIN cdm:XSLIDE_STROKE -->300<!-- END cdm:XSLIDE_STROKE -->mm | `XSLIDE_STROKE` |
 | Cross-slides total (2/corner) | <!-- BEGIN cdm:XSLIDE_N -->8<!-- END cdm:XSLIDE_N --> | `XSLIDE_N` |
 
-*Components (**Option A** — a fixed-size rigid plane on floating-corner cross-slides; rev7,
-2026-06-06): welded aluminum angle frame (2"×2"×3/16"), 4× HGR20 depth rails (ceiling + floor),
-8× HGH20CA carriage blocks, 4× ¾"-6 Acme leadscrews, 4× bronze nuts, 4× 8" handwheels,
-**8× HGR15 cross-slide rails + 8× HGH15CA blocks + 4× intermediate plates** (the 2-axis X-Z corner
-stage that absorbs the rigid-rotation arc travel), 8× GIR25-DO rod-end spherical bearings,
-**single rigid ACM backing panel** (the old folding two-panel piano-hinge system removed),
-Duvetyne curtain seals, rail felt light-trap strips, 90× cam-lever spring clamps at 150mm centers
-(muslin attachment). The plane stays a fixed-size flat rectangle — it no longer stretches/twists,
-so the old ±42°/±25.7° stretch-mechanism stops and the compound-twist config are dropped.*
+*Components (a fixed-size rigid plane on slide-and-clamp corners): 2"×2"×3/16" **anodized-6061
+aluminum** angle frame (expendable) + corner L-brackets, 4× **3×1.5 304 U-channel** depth rails
+(McMaster 1262T21, ceiling + floor), 4× **4-wheel acetal skates** (Ø32 load + Ø20 keeper rollers
+on Ø10 316 axles), **8× 316 flat-bar cross-slides (Z tilt + X swing) on UHMW self-lube pads +
+adjustable gibs** (the 2-axis corner stage that absorbs the rigid-rotation arc travel), 4× **Ruland
+US12-6-6-SS U-joints** (303 SS, nitrile-booted), 12× cam-lever rail clamps, **single rigid ACM
+backing panel**, Duvetyne curtain seals, rail felt light-trap strips, 90× cam-lever spring clamps
+at 150mm centers (muslin attachment). The plane stays a fixed-size flat rectangle — it does not
+stretch or twist; single-axis tilt/swing envelope (tilt ±40° / swing ±28°).*
 
 *Reports: [Film Plane Mechanism](film-plane-mechanism-report.md) §4/§5/§7 (mechanism design, tilt/swing configurations, parts list); [Muslin Clamp System](film-clamp-mechanism-report.md) §2/§3 (cam-lever clamp layout + jaw mechanism).*
 
@@ -435,7 +435,7 @@ Every generator script, its output PNGs, and the subsystems it renders.
 | **WK** | `generate_walkway_diagram.py` | `diagrams/walkway-sheet1.png`<br>`diagrams/walkway-sheet2.png`<br>`diagrams/walkway-sheet3.png`<br>`diagrams/walkway-sheet4.png`<br>`diagrams/walkway-sheet5.png`<br>`diagrams/walkway-sheet6.png` | 1, 16, 17 |
 | **SC** | `generate_schematic.py`<br>`generate_portrait_viz.py` | `diagrams/portrait-camera-schematic.png`<br>`diagrams/portrait-optimal-3m.png`<br>`diagrams/portrait-scale-comparison.png` | 1, 2 (optical visualization) |
 
-> **FPM / FPD redrawn for Option A:** the film-plane mechanism sheets and optical-distortion renders now show the **fixed-size rigid plane on floating-corner cross-slides** — **axis tilt/swing** about the plane center (foreshortening, not growth), tilt ±40° / swing ±28°, single rigid ACM backing, cross-slides at each corner, and the compound twist dropped (FPD now C0–C5). `generate_film_plane_mechanism.py` uses `rigid_corners3d`/`tilt_edge`/`swing_edge` (asin, not atan) and reads `MAX_TILT_DEG`/`MAX_SWING_DEG` from `tbs_constants.py`. Consistent with `film-plane-mechanism-report.md`, `master-shopping-list.md`, `project-cost-breakdown.md`, and `models/film-plane.skp`.
+> **FPM / FPD — rigid-plane slide-and-clamp corners:** the film-plane mechanism sheets and optical-distortion renders show the **fixed-size rigid plane on slide-and-clamp corners** — **axis tilt/swing** about the plane center (foreshortening, not growth), tilt ±40° / swing ±28°, single rigid ACM backing, a 316 flat-bar Z/X cross-slide at each corner, and a single-axis envelope (FPD C0–C5). `generate_film_plane_mechanism.py` uses `rigid_corners3d`/`tilt_edge`/`swing_edge` (asin, not atan) and reads `MAX_TILT_DEG`/`MAX_SWING_DEG` from `tbs_constants.py`. Consistent with `film-plane-mechanism-report.md`, `master-shopping-list.md`, `project-cost-breakdown.md`, and `models/corner-gimbal.skp`.
 
 ---
 

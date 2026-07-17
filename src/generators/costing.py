@@ -277,7 +277,7 @@ FILM = [
     point("Linear guide rails HGR20 2,200mm (×4) + carriages HGH20CA (×8)", 324, "2 carriages per rail"),
     point("Acme leadscrews ¾\"-6 8 ft (×4) + bronze nuts (×4)", 428, "manual handwheel drive"),
     point("Handwheels 8\" (×4) + locking collars SS316 (×4)", 188),
-    point("Corner bracket L-plates, ¼\" alum 6×8 (×4)", 80),
+    LineItem("Corner plates, ¼\" 304 SS 6×8 (×4)", 152, 180, 208, "U-joint mount — steel, not aluminum"),
     point("Option-A cross-slides — HGR15 rails (×8) + HGH15CA (×8) + intermediate plates (×4)", 356, "floating-corner X–Z stage"),
     point("Rod-end spherical bearings GIR25-DO (×4) + pivot pins SS316 (×4)", 120),
     # 4.2 Film plane frame & backing
@@ -1017,7 +1017,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 816,  "total": 1120, "per_print": 22},  # 2026-07-15: chemistry tiers ×0.8953 (plane 10.74→9.62 m²)
     "standard": {"chem": 1216, "total": 1520, "per_print": 30},  # 2026-07-15: ×0.8953
     "rich":     {"chem": 2401, "total": 2700, "per_print": 54},  # 2026-07-15: ×0.8953
-    "grand_total": (22633, 28521, 36294),  # 2026-07-15: chemistry tiers ×0.8953 (FP_H 2388→2138) −$90/$130/$280 §7; clamp 92→90 −$8/$13/$18.  2026-07-12: §5 water +$334/+$281 (bulkhead-2in verified $137 ea; spray fab-from-stock). EP plywood backboard + IP65 enclosure over the fuse/busbar terminals (+$60 §5a — enclosure kept ALONGSIDE the plywood). audit 2026-07: pinhole retaining ring (+$15/$25); D-ring 4→8; +$2 Powerpole (1/pump); filter 3-separate design (−$50/−$65). pump switches 5→1 master (−$26 §5a). IBC frame deep 4-leg box (+$25/+$38/+$50). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (+$52/+$64/+$76, SS beam); + corridor plumbing-panel structure (+$215/+$380 — previously uncosted)
+    "grand_total": (22705, 28621, 36422),  # 2026-07-17: film corner plates → 304 SS +$72/$100/$128.  2026-07-15: chemistry tiers ×0.8953 (FP_H 2388→2138) −$90/$130/$280 §7; clamp 92→90 −$8/$13/$18.  2026-07-12: §5 water +$334/+$281 (bulkhead-2in verified $137 ea; spray fab-from-stock). EP plywood backboard + IP65 enclosure over the fuse/busbar terminals (+$60 §5a — enclosure kept ALONGSIDE the plywood). audit 2026-07: pinhole retaining ring (+$15/$25); D-ring 4→8; +$2 Powerpole (1/pump); filter 3-separate design (−$50/−$65). pump switches 5→1 master (−$26 §5a). IBC frame deep 4-leg box (+$25/+$38/+$50). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (+$52/+$64/+$76, SS beam); + corridor plumbing-panel structure (+$215/+$380 — previously uncosted)
     "walkway": (2000, 2488, 2975),   # §6a fab line raised so bracket scope matches walkway-report §10 ($742–$1,255 all-in)
     "water": (5356, 6647, 7929),   # 2026-07-12: bulkhead-2in verified $137 ea (was $25-40 → +$335/+$290 on storage); spray saddle+wheel → fab-from-stock qty=1 (−$1/−$9). audit 2026-07: D-ring 4→8 (+$20/+$35); +$2 Powerpole 5 pair (1/pump); filter combo → 3 separate housings + frame (−$50/−$65). IBC frame portal → deep 4-leg box (+$25/+$38/+$50: 4 feet + 16 anchors). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105: 20" housings + cartridges). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (40×40 alu → 40×25 304-SS + Ø32 wheels, spray line +$52/+$64/+$76); + corridor plumbing-panel structure (+$215/+$298/+$380 — was uncosted); panel-split cascade 2026-06-28 (+P-05, +SV-02, +5th bracket, −2 CV, +X1 4-way cross, BVs, +Blue equalization tie)
     "container": (2300, 3300, 4300),
@@ -1027,7 +1027,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "shelf": (203, 203, 203),          # §6d = chemistry-prep-shelves §7 (point estimates) — was MISSING from the model
     "interior": (950, 1138, 1350),
     "optics": (110, 185, 265),
-    "film": (3309, 3548, 3787),   # 2026-07-16: film-plane frame kept EXPENDABLE anodized 6061 Al (a 304 SS swap was evaluated +$1430/$1705/$1980 and rejected for weight+cost)   # 2026-07-15: clamp count 92→90 (FP_H 2388→2138, film-plane-redesign) −$8/$13/$18   # 2026-07-12: rod-end + pivot pin 8→4 (one per corner; report prose + 3D agree) −$120   # saddles ×8→×6 (rev12: 2 BR ends are walkway combined plates) + fasteners 150→122 + clamp-mounting 70→76
+    "film": (3381, 3648, 3915),   # 2026-07-17: corner brackets → 304 SS corner plates (U-joint mount — steel, not aluminum; concentrated U-joint load + wet-zone/galvanic match) +$72/$100/$128   # 2026-07-16: film-plane frame kept EXPENDABLE anodized 6061 Al (a 304 SS swap was evaluated +$1430/$1705/$1980 and rejected for weight+cost)   # 2026-07-15: clamp count 92→90 (FP_H 2388→2138, film-plane-redesign) −$8/$13/$18   # 2026-07-12: rod-end + pivot pin 8→4 (one per corner; report prose + 3D agree) −$120   # saddles ×8→×6 (rev12: 2 BR ends are walkway combined plates) + fasteners 150→122 + clamp-mounting 70→76
     "ventilation": (757, 841, 924),   # §5b BOM (point estimates); report total was stale at $769
     "power": (2608, 2806, 3003),       # §5a authoritative subtotal (+$60 IP65 enclosure over the fuse/busbar terminals)
 }

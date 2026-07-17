@@ -158,7 +158,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | Acme nut bronze ¾"-6 (6289K512) | — | 4 ea | Roton Products / McMaster-Carr | $48 |
 | Handwheel 8" dia (6440K64) | ¾" bore, cast aluminum | 4 ea | Grainger / McMaster-Carr | $140 |
 | Locking collar SS316 (6436K12) | ¾" bore | 4 ea | McMaster-Carr / Fastenal | $48 |
-| Corner bracket L-plate (6061, anodized) | ¼" 6061-T6 alum. plate, clear-anodized, 6"×8" — the frame-corner ↔ U-joint bracket. EXPENDABLE, same wet-zone caveat as the frame angle: anodized 6061, inspect-annually / replace-on-pitting. | 4 ea | Metal Supermarkets / Online Metals | $80 |
+| Corner plate 304 SS (U-joint mount) | ¼" 304 SS plate, ~6"×8" L-bracket — the frame-corner ↔ U-joint mount. Carries the concentrated U-joint corner load in STEEL, not aluminum; stainless for the cyanotype splash zone + galvanic match to the 303 SS U-joint. NOT expendable (the perimeter angle stays expendable 6061). Firm the 304 SS cut-plate price at the §7 corner-hardware re-price. | 4 ea | Metal Supermarkets / Online Metals | $152–$208 |
 | Cross-slide rail HGR15 (Option A) | 300mm, X-Z stage | 8 ea | Automation Overstock / McMaster-Carr | $200 |
 | Cross-slide carriage HGH15CA (Option A) | Flanged block | 8 ea | Automation Overstock / McMaster-Carr | $96 |
 | Cross-slide intermediate plate (Option A) | ¼" alum., joins X slide to Z slide | 4 ea | Metal Supermarkets / Online Metals | $60 |
@@ -174,7 +174,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | M12×90mm hex through-bolt + nut + washers, SS | ICP-12: wall sandwich through-bolt; 4/saddle ×6 + 4 spare | 28 ea | McMaster-Carr / Amazon | $70 |
 | M8×25mm knurled thumbscrew DIN 464 | ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare | 12 ea | Amazon / Maedler | $36 |
 | M8 hex fixing bolt + nut, SS | ICP-14: right-rail permanent fixing; 2/saddle ×2 TR + spare | 8 ea | McMaster-Carr / Amazon | $16 |
-| **Film total** | | | | **$2,965–$2,993** |
+| **Film total** | | | | **$3,037–$3,121** |
 <!-- END parts:film -->
 
 *The corner-mechanism hardware (U-channel depth rails, acetal skates, Z/X cross-slides, and the
@@ -199,7 +199,7 @@ Each of the **8 rail ends** anchors to the container — **6 of them** with a st
 
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
 
-**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$3,309<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
+**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$3,381<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
 *Excludes fasteners and fabrication labor.*
 
 ### Local SoCal Metal Sourcing

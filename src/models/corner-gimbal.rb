@@ -345,9 +345,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame corner L-bracket (6061 Al anodized, expendable — angle frame → U-joint) BL
+  # Corner plate 304 SS (U-joint mount — angle frame → U-joint) BL
   grp = ents.add_group
-  grp.name = "Frame corner L-bracket (6061 Al anodized, expendable — angle frame → U-joint) BL"
+  grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) BL"
   face = grp.entities.add_face([136.mm,2254.mm,134.mm], [184.mm,2254.mm,134.mm], [184.mm,2270.mm,134.mm], [136.mm,2270.mm,134.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(52.mm)
@@ -609,9 +609,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame corner L-bracket (6061 Al anodized, expendable — angle frame → U-joint) BR
+  # Corner plate 304 SS (U-joint mount — angle frame → U-joint) BR
   grp = ents.add_group
-  grp.name = "Frame corner L-bracket (6061 Al anodized, expendable — angle frame → U-joint) BR"
+  grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) BR"
   face = grp.entities.add_face([4590.mm,2254.mm,134.mm], [4638.mm,2254.mm,134.mm], [4638.mm,2270.mm,134.mm], [4590.mm,2270.mm,134.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(52.mm)
@@ -922,9 +922,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame corner L-bracket (6061 Al anodized, expendable — angle frame → U-joint) TL
+  # Corner plate 304 SS (U-joint mount — angle frame → U-joint) TL
   grp = ents.add_group
-  grp.name = "Frame corner L-bracket (6061 Al anodized, expendable — angle frame → U-joint) TL"
+  grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) TL"
   face = grp.entities.add_face([136.mm,2254.mm,2308.mm], [184.mm,2254.mm,2308.mm], [184.mm,2270.mm,2308.mm], [136.mm,2270.mm,2308.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(52.mm)
@@ -1167,9 +1167,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame corner L-bracket (6061 Al anodized, expendable — angle frame → U-joint) TR
+  # Corner plate 304 SS (U-joint mount — angle frame → U-joint) TR
   grp = ents.add_group
-  grp.name = "Frame corner L-bracket (6061 Al anodized, expendable — angle frame → U-joint) TR"
+  grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) TR"
   face = grp.entities.add_face([4590.mm,2254.mm,2308.mm], [4638.mm,2254.mm,2308.mm], [4638.mm,2270.mm,2308.mm], [4590.mm,2270.mm,2308.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(52.mm)

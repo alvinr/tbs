@@ -13,7 +13,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $110 | $265 |
-| 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,309 | $3,787 |
+| 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,381 | $3,915 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,356 | $7,929 |
 | 6. Electrical — power, circuits, wiring | $2,608 | $3,003 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,405 | $2,130 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,120 | $2,700 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$22,583** | **~$33,354** |
+| **TOTAL (base build + 50-print run)** | **~$22,655** | **~$33,482** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -71,11 +71,10 @@ indicative low–high estimates — get quotes before ordering.
 | Aluminum angle 2"×2"×3/16" (6061, anodized) | 10 ea | Metal Supermarkets | film | $220 |
 | Aluminum face plate 340×240×3mm (flush power panel) | 1 ea | Online Metals | electrical | $18 |
 | Aluminum U-channel (per meter) | 40 m | Online Metals | panel | $120–$200 |
-| Corner bracket L-plate (6061, anodized) | 4 ea | Metal Supermarkets | film | $80 |
 | Cross-slide intermediate plate (Option A) | 4 ea | Metal Supermarkets | film | $60 |
 | Disc retaining ring (Al 6061-T6, M52×0.75) | 1 ea | Local fab | optics | $15–$25 |
 | Telescoping aluminum pool pole, 4–8 ft | 1 ea | Amazon | spray | $15 |
-| **aluminum subtotal** | | | | **$910–$1,112** |
+| **aluminum subtotal** | | | | **$830–$1,032** |
 
 ### bearings-motion
 
@@ -345,6 +344,7 @@ indicative low–high estimates — get quotes before ordering.
 | Cantilever bracket — widened (near) | 4 ea | Local fab | walkway | $160–$280 |
 | Combined corner plate (right corners) | 2 ea | Local fab | walkway | $50–$80 |
 | Corner gusset plate, 3 mm | 4 ea | Steel offcut | shelf | $5 |
+| Corner plate 304 SS (U-joint mount) | 4 ea | Metal Supermarkets | film | $152–$208 |
 | Drop-in rail saddles + tapered dowels | 4 ea | Local fab | swing | $80–$130 |
 | Drum support cage, 40 × 40 × 3mm SHS | 1 lot | Local fab | swing | $70–$120 |
 | Floor-leg cantilever bracket (left walkway, ×5) | 5 ea | Local fab | walkway | $55–$95 |
@@ -358,7 +358,7 @@ indicative low–high estimates — get quotes before ordering.
 | Wall cleat (left corners) | 2 ea | Local fab | walkway | $20–$35 |
 | Wall mounting cleat + anchors | 1 lot | Local fab | shelf | $18 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$2,288–$3,391** |
+| **steel-structural subtotal** | | | | **$2,440–$3,599** |
 
 ### substrate-fabric
 
@@ -421,8 +421,8 @@ indicative low–high estimates — get quotes before ordering.
 | Local fab | 17 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,961–$3,181 |
 | McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $2,056–$2,985 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
+| Metal Supermarkets | 12 | aluminum, steel-structural | $1,373–$1,766 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
-| Metal Supermarkets | 12 | aluminum, steel-structural | $1,301–$1,638 |
 | Amazon | 58 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,208–$1,530 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |

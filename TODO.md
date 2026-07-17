@@ -78,6 +78,24 @@ The remaining §7 parts BOM is gated on confirmed prices._
   costing (film band + grand_total move ~$1–2k) → §7 auto-injects; retires the parts-identity dead-SKU
   lint warnings. This is also the FP_W/FP_H dead-BOM retirement folded in.
 
+## Muslin clamp → spring clip redesign (Sheet 6) — IN PROGRESS
+
+_Alvin review 2026-07-17: the muslin clamp is NOT a cam-lever toggle — it's a **spring clip**:
+a FIXED jaw bolted to the ALU frame edge (countersunk bolts) + a SPRING-loaded jaw that pinches the
+muslin against the frame edge; squeeze the handle to open (torsion spring holds closed). Sheet 6
+Panel A redrawn to this; Panel B removed (redundant — open/closed now a ghost + arc on Panel A);
+CLAMP NOTES relocated + rewritten. NOT committed yet._
+
+- [ ] **Panel A frame is the L (2×2 angle) for now.** An **offset-T** cross-section (flange holds the
+  ACM + bolts to the corner carriage; ACM flush to the clamp edge) was drawn then **reverted at
+  Alvin's request — PARKED**. Resolve the frame section (L vs offset-T) with Alvin later.
+- [ ] **Sheet 6 Panels C (plan) + D (elevation) still show the OLD cam-lever design** — awaiting
+  Alvin's call: redraw to the spring clip, or trim as redundant (like B).
+- [ ] **Downstream cascade once the drawing locks:** `film-clamp-mechanism-report.md` (describes a
+  cam-lever toggle), the `clamp` BOM in `parts.py` ("Cam-lever spring clamp"), and the `CLAMP_*`
+  constants (`CLAMP_BASE_W/H/T`, `CLAMP_LEVER_L`, `CLAMP_OPEN_GAP`… base-plate/lever dims don't map
+  to a spring clip) all need reconciling to the spring clip.
+
 ## Walkway pop-out extension — revisit past the pinhole — OPEN
 
 _Surfaced 2026-07-17 (Alvin)._

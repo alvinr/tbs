@@ -969,7 +969,7 @@ def sheet3():
         "about the rollers. The load↓ / keeper↑ pair, spaced by the channel depth, reacts it — so the keepers "
         "carry this static couple too. Tightest link: the 316 cross-slide bar in weak-axis bending; keep the "
         "stack compact.",
-    ], 2, 99, 4.2, fs=5.2, title_fs=6.4, color=DIM, width=96, wrap=90, font=FONT)
+    ], 2, 99, 3.6, fs=5.4, title_fs=6.6, color=DIM, width=52, wrap=88, font=FONT)
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
@@ -1169,7 +1169,7 @@ def sheet4():
         f"{SPLICE_YD}) — the shortest-throw, least-travelled zone, least likely for the skate to roll over it.",
         "5. The length-SPLICE fishplate sits on the OUTBOARD WEB-BACK (far side, ghosted), clear of the rollers; "
         "the cut BRIDGE sits on top (gravity-held). U-joint stub→carrier clamp (4040N12) + U-joint body: Sheet 3.",
-    ], 2, 99, 4.7, fs=6.2, title_fs=6.8, color=DIM, width=96, wrap=132, font=FONT)
+    ], 2, 99, 4.1, fs=6.2, title_fs=6.8, color=DIM, width=79, wrap=132, font=FONT)
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
@@ -1371,123 +1371,12 @@ def sheet6():
     LEG = FP_ANGLE_LEG   # 50.8mm
     T   = FP_ANGLE_T     # 4.8mm
 
-    # Geometry constants for the suspension chain
-    RAIL_H = 30       # 3×1.5 304 U-channel depth rail height (schematic)
-    RAIL_W = 20       # 3×1.5 304 U-channel depth rail visible width (schematic)
-    CARRIAGE_H = 28   # UHMW-pad carriage height (schematic)
-    CARRIAGE_W = 44   # UHMW-pad carriage width (schematic)
-    BRACKET_H = 40    # suspension bracket height
-    BRACKET_W = 60    # suspension bracket width
-    LBRACKET_H = 50   # corner L-bracket vertical extent
-    LBRACKET_W = 40   # corner L-bracket horizontal extent
-    LBRACKET_T = 6    # 1/4" aluminum plate
-    BEARING_D = 25    # U-joint hub (schematic)
-    CEILING_T = 8     # visual ceiling thickness
-
-    # Coordinate system: angle corner at (0, 0).
-    # Positive Y = up toward ceiling. Negative Y = down toward floor.
-    # Positive X = toward pinhole (horizontal leg direction).
-
-    # Stack heights above angle frame top (Y=T). Chain (bottom→top): angle → L-bracket → STUB → U-joint →
-    # STUB → cross-slides → carriage → rail. The U-joint sits in its own band BETWEEN the L-bracket and the
-    # cross-slides, connected to each by a stub shaft, so nothing is left floating.
-    lbracket_bot = T + 5          # small gap above angle
-    lbracket_top = lbracket_bot + LBRACKET_H
-    bearing_cy = lbracket_top + BEARING_D / 2 + 4   # U-joint ABOVE the L-bracket (own band)
-    bracket_bot = bearing_cy + BEARING_D / 2 + 4    # cross-slides ABOVE the U-joint
-    bracket_top = bracket_bot + BRACKET_H
-    carriage_bot = bracket_top
-    carriage_top = carriage_bot + CARRIAGE_H
-    rail_bot = carriage_top
-    rail_top = rail_bot + RAIL_H
-    ceiling_bot = rail_top
-    ceiling_top = ceiling_bot + CEILING_T
-
-    ax_a.set_xlim((-35), (LEG + 85))
-    ax_a.set_ylim((-LEG - 10), (ceiling_top + 15))
+    # Coordinate system: angle corner at (0, 0). +Y = up (pinhole-facing leg); -Y = down (perp leg + clamp).
+    # This panel focuses ONLY on the muslin CLIP + how it clamps to the frame; the frame-support chain
+    # above the angle (rail -> skate -> cross-slides -> U-joint -> L-bracket) is on Sheets 3 & 8.
+    ax_a.set_xlim((-40), (LEG + 58))
+    ax_a.set_ylim((-LEG - 18), (T + 32))
     ax_a.set_aspect("equal")
-
-    # ── Ceiling ──────────────────────────────────────────────────────────────
-    C_CEIL = "#A0A0A0"
-    ax_a.add_patch(Rectangle(((-30), (ceiling_bot)),
-                              (LEG + 110), (CEILING_T),
-                              fc=C_CEIL, ec=ANNO, lw=1.2, hatch="xxx", zorder=3))
-    ax_a.text((LEG + 85), (ceiling_bot + CEILING_T / 2),
-              "CONTAINER\nCEILING", ha="left", va="center",
-              fontsize=5, color=DIM, **FONT, zorder=15)
-
-    # ── 304 U-channel depth rail (bolted to ceiling, hangs down) ──────────────
-    C_RAIL = "#708090"
-    rail_cx = LEG / 2  # centered on angle
-    ax_a.add_patch(Rectangle(((rail_cx - RAIL_W / 2), (rail_bot)),
-                              (RAIL_W), (RAIL_H),
-                              fc=C_RAIL, ec=ANNO, lw=1.2, zorder=4))
-    leader(ax_a, (rail_cx), (rail_bot + RAIL_H / 2),
-           (rail_cx + 50), (rail_bot + RAIL_H / 2),
-           "3×1.5 304 U-CHANNEL\nDEPTH RAIL",
-           color=C_RAIL, fs=5.5, ha="left", va="center",
-           arrow_style="-|>", font=FONT)
-
-    # ── Acetal skate + carriage plate ────────────────────────────────────────
-    C_CARR = "#607080"
-    ax_a.add_patch(Rectangle(((rail_cx - CARRIAGE_W / 2), (carriage_bot)),
-                              (CARRIAGE_W), (CARRIAGE_H),
-                              fc=C_CARR, ec=ANNO, lw=1.2, zorder=5))
-    leader(ax_a, (rail_cx + CARRIAGE_W / 2), (carriage_bot + CARRIAGE_H / 2),
-           (rail_cx + 55), (carriage_bot + CARRIAGE_H / 2 - 10),
-           "acetal SKATE\n+ carriage plate",
-           color=C_CARR, fs=5.5, ha="left", va="center",
-           arrow_style="-|>", font=FONT)
-
-    # ── Z (tilt) + X (swing) cross-slides — the suspension stack ──────────────
-    C_ZS = "#2E8B57"   # Z tilt slide (green)
-    C_XS = "#7B5EA7"   # X swing slide (purple)
-    half = BRACKET_H / 2
-    ax_a.add_patch(Rectangle(((rail_cx - BRACKET_W / 2), (bracket_bot + half)),
-                              (BRACKET_W), (half), fc=C_ZS, ec=ANNO, lw=1.0, zorder=4))
-    ax_a.add_patch(Rectangle(((rail_cx - BRACKET_W / 2), (bracket_bot)),
-                              (BRACKET_W), (half), fc=C_XS, ec=ANNO, lw=1.0, zorder=4))
-    leader(ax_a, (rail_cx + BRACKET_W / 2), (bracket_bot + BRACKET_H * 0.75),
-           (rail_cx + 55), (bracket_bot + BRACKET_H - 3),
-           "Z cross-slide (TILT)", color=C_ZS, fs=5, ha="left", va="center",
-           arrow_style="-|>", font=FONT)
-    leader(ax_a, (rail_cx + BRACKET_W / 2), (bracket_bot + BRACKET_H * 0.25),
-           (rail_cx + 55), (bracket_bot + 1),
-           "X cross-slide (SWING)", color=C_XS, fs=5, ha="left", va="center",
-           arrow_style="-|>", font=FONT)
-
-    # ── Corner L-bracket (1/4" Al plate): vertical arm UNDER the U-joint; horizontal arm reaches the angle ──
-    lbk_vx = rail_cx - LBRACKET_T / 2                      # vertical arm centred under the U-joint / cross-slides
-    ax_a.add_patch(Rectangle(((lbk_vx), (lbracket_bot)),
-                              (LBRACKET_T), (LBRACKET_H),
-                              fc=C_ALUM, ec=ANNO, lw=1.0, zorder=4))          # vertical arm
-    ax_a.add_patch(Rectangle(((T), (lbracket_bot)),
-                              ((lbk_vx + LBRACKET_T) - T), (LBRACKET_T),
-                              fc=C_ALUM, ec=ANNO, lw=1.0, zorder=4))          # horizontal arm → angle perp leg
-    leader(ax_a, (lbk_vx), (lbracket_bot + LBRACKET_H / 2),
-           (-25), (lbracket_bot + LBRACKET_H / 2 + 6),
-           f"L-BRACKET\n(1/4\" Al PLATE)",
-           color=DIM, fs=5, ha="right", va="center",
-           arrow_style="-|>", font=FONT)
-
-    # ── Single U-joint (Ruland US12-6-6-SS) — BETWEEN the cross-slides and the L-bracket, a STUB SHAFT each side ──
-    C_BEAR = "#C08040"
-    C_STUB = "#8A8A92"
-    ax_a.add_patch(Rectangle(((rail_cx - 3), (bearing_cy + BEARING_D / 2 - 1)),
-                              (6), (bracket_bot - (bearing_cy + BEARING_D / 2) + 2),
-                              fc=C_STUB, ec=ANNO, lw=0.8, zorder=5))          # stub: cross-slides → U-joint (carrier side)
-    ax_a.add_patch(Rectangle(((rail_cx - 3), (lbracket_top - 1)),
-                              (6), (bearing_cy - BEARING_D / 2 - lbracket_top + 2),
-                              fc=C_STUB, ec=ANNO, lw=0.8, zorder=5))          # stub: U-joint → L-bracket (frame side)
-    ax_a.add_patch(Circle(((rail_cx), (bearing_cy)), (BEARING_D / 2),
-                           fc=C_BEAR, ec=ANNO, lw=1.0, zorder=6))
-    ax_a.add_patch(Circle(((rail_cx), (bearing_cy)), (BEARING_D / 4),
-                           fc=BG, ec=ANNO, lw=0.8, zorder=7))
-    leader(ax_a, (rail_cx - BEARING_D / 2), (bearing_cy),
-           (-25), (bearing_cy),
-           f"SINGLE U-JOINT (US12-6-6-SS)\nTILT/SWING, TWIST-LOCKED\n— a STUB SHAFT to the cross-slides\n(above) + to the L-bracket (below)",
-           color=C_BEAR, fs=5, ha="right", va="center",
-           arrow_style="-|>", font=FONT)
 
     # ── 6061 Al angle — L-profile ─────────────────────────────────────────────
     # Pinhole-facing leg: horizontal
@@ -1590,39 +1479,13 @@ def sheet6():
            f"CAM LEVER\nCLOSED", color=C_CLAMP, fs=5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Load path annotation (right side) ────────────────────────────────────
-    # Vertical arrow showing load path direction
-    path_x = LEG + 70
-    arrow_positions = [
-        (ceiling_bot - 2, "CEILING"),
-        (rail_bot + RAIL_H / 2, "DEPTH TROLLEY"),
-        (carriage_bot + CARRIAGE_H / 2, "CARRIAGE"),
-        (bracket_bot + BRACKET_H / 2, "BRACKET"),
-        (bearing_cy, "U-JOINT"),
-        (lbracket_bot + 5, "L-BRACKET"),
-        (T / 2, "ANGLE FRAME"),
-        (-25, "CLAMP"),
-        (-LEG + T, "MUSLIN"),
-    ]
-    for i in range(len(arrow_positions) - 1):
-        y1 = arrow_positions[i][0]
-        y2 = arrow_positions[i + 1][0]
-        ax_a.annotate("", xy=((path_x), (y2 + 3)),
-                      xytext=((path_x), (y1 - 3)),
-                      arrowprops=dict(arrowstyle="-|>", color="#C04010",
-                                      lw=1.0, alpha=0.6))
-
-    ax_a.text((path_x), (ceiling_top + 5),
-              "LOAD\nPATH", ha="center", va="bottom",
-              fontsize=5, color="#C04010", fontweight="bold", **FONT, zorder=15)
-
     # Panel title
-    ax_a.text((LEG / 2), (ceiling_top + 12),
-              "PANEL A — CONTEXT: CEILING RAIL TO MUSLIN",
+    ax_a.text((LEG / 2), (T + 27),
+              "PANEL A — MUSLIN CLIP: HOW IT CLAMPS TO THE FRAME",
               ha="center", va="bottom", fontsize=7, color=ANNO,
               fontweight="bold", **FONT, zorder=15)
-    ax_a.text((LEG / 2), (ceiling_top + 6),
-              "AXES IN mm · CROSS-SECTION SHOWING FULL SUSPENSION CHAIN",
+    ax_a.text((LEG / 2), (T + 21),
+              "AXES IN mm · CAM-LEVER SPRING CLAMP ON THE 6061 ANGLE (support chain: Sheets 3 & 8)",
               ha="center", va="bottom", fontsize=5.5, color=DIM, **FONT, zorder=15)
 
     # ── PANEL B: Open vs closed positions (top-right) ────────────────────────
@@ -2222,12 +2085,12 @@ def attach_elevation(ax):
     film plane hangs BELOW the bottom rail (BUILD_BOT, matches the 3D model). The film/ACM then rises back
     UP past the rail. Chain, rail→frame: carriage plate → Z (tilt) slide → X (swing) slide → U-joint →
     L-bracket → 6061 Al frame angle. (Spread vertically for label clarity — schematic, not to scale.)"""
-    ax.set_xlim(-30, 214); ax.set_ylim(118, 548); ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(-30, 214); ax.set_ylim(118, 420); ax.set_aspect("equal"); ax.axis("off")
     # Local coords: x = Yd − 2210 (film corner Yd2262 → x52); y = Z (mm). True proportions, matches the 3D BL corner.
 
     # ── film plane / ACM rising UP behind the mechanism (the plane hangs below, then climbs the full height) ──
-    ax.add_patch(plt.Rectangle((49, 160), 7, 378, fc=C_PANEL, ec="none", alpha=0.18, zorder=1))
-    ax.plot([46,58,46,58,46],[452,458,464,470,476], color=OUT, lw=0.6, zorder=6)                  # break on the rising ACM
+    ax.add_patch(plt.Rectangle((49, 160), 7, 264, fc=C_PANEL, ec="none", alpha=0.18, zorder=1))
+    ax.plot([46,58,46,58,46],[384,390,396,402,408], color=OUT, lw=0.6, zorder=6)                  # break on the rising ACM
 
     # ── the compact hanging cluster BELOW the rail: WIDE carriage plate (red) with the Z-slide (green) up its CENTRE ──
     _rect(ax, 12, 134, 80, 98, C_CAR, z=3)                                                        # carriage plate Yd2222-2302, Z134-232 (visible below the rail)
@@ -2267,14 +2130,14 @@ def attach_elevation(ax):
     ax.annotate("", xy=(96, 300), xytext=(96, 156), arrowprops=dict(arrowstyle="<->", color=C_TILT, lw=0.6))
     ax.text(99, 228, "Z-slide TILT travel ~250mm (way runs up behind the rail)", fontsize=5.0, color=C_TILT, ha="left", va="center", rotation=90, **FONT)
     # ── leaders / joint callouts ──
-    leader(ax, 30, 278, 102, 290, "BOTTOM weight rail (3×1.5 304 U-channel, runs in Yd) + 4-wheel skate — carries the plane", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 20, 210, 102, 262, "wide carriage plate (red) — hangs from the skate axles", ha="left", fs=5.2, color=C_CAR, font=FONT, bbox=LBL_BG)
+    leader(ax, 30, 278, 102, 290, "BOTTOM weight rail (3×1.5 304 U-channel)\n+ 4-wheel skate — carries the plane", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 20, 210, 102, 262, "wide carriage plate (red)\nhangs from the skate axles", ha="left", fs=5.2, color=C_CAR, font=FONT, bbox=LBL_BG)
     leader(ax, 55, 210, 102, 238, "Z (TILT) slide — 316 flat bar + UHMW + gib\n(green, up the CENTRE of the plate)", ha="left", fs=5.2, color=C_TILT, font=FONT, bbox=LBL_BG)
-    leader(ax, 64, 208, 102, 212, "J1 — Z-way seats on the carriage-plate face (M8 ×4)", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 64, 208, 102, 212, "J1 — Z-way seats on the\ncarriage-plate face (M8 ×4)", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 52, 162, 102, 188, "X (SWING) slide — 260mm bar, INTO PAGE\n(end-on here; real length in plan B)", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
-    leader(ax, 52, 156, 102, 166, "U-joint (Ruland US12-6-6-SS) + J3 stub set screw — tilt + swing, twist-locked", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 46, 146, 102, 148, "L-bracket + J4 set-screw clamp on the U-joint output", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 66, 160, 102, 132, "6061 Al frame angle + J5 (M6 ×2, vertical) → ACM/muslin rises UP", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 52, 156, 102, 166, "U-joint (Ruland US12-6-6-SS) + J3 set screw\n— tilt + swing, twist-locked", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 46, 146, 102, 148, "L-bracket + J4 set-screw clamp\non the U-joint output", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 66, 160, 102, 132, "6061 Al frame angle + J5 (M6 ×2, vertical)\n→ ACM/muslin rises UP", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
     ax.text(-30, 546, "A — ASSEMBLED ELEVATION  (BOTTOM corner; Yd × Z, swing into page — true proportions, matches the 3D)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
     ax.text(-30, 532, "the mechanism is a COMPACT cluster hanging ~110mm below the weight rail; the Z-slide (green) runs up the centre of the wide carriage plate (red)", fontsize=5.0, color=DIM, ha="left", va="top", **FONT)
 
@@ -2314,12 +2177,12 @@ def attach_plan(ax):
 def sheet8():
     reset_label_registry()
     fig = plt.figure(figsize=(17, 12)); fig.patch.set_facecolor(BG)
-    axA = fig.add_axes([0.03, 0.30, 0.34, 0.64]); axA.set_facecolor(BG)
-    axB = fig.add_axes([0.42, 0.60, 0.55, 0.34]); axB.set_facecolor(BG)
+    axA = fig.add_axes([0.005, 0.10, 0.44, 0.82]); axA.set_facecolor(BG)
+    axB = fig.add_axes([0.45, 0.68, 0.54, 0.27]); axB.set_facecolor(BG)
     attach_elevation(axA)
     attach_plan(axB)
     # notes + fastener schedule
-    axN = fig.add_axes([0.42, 0.095, 0.55, 0.44]); axN.set_xlim(0, 100); axN.set_ylim(0, 100); axN.axis("off")
+    axN = fig.add_axes([0.45, 0.05, 0.54, 0.575]); axN.set_xlim(0, 100); axN.set_ylim(0, 100); axN.axis("off")
     draw_notes(axN, [
         "FRAME ↔ CROSS-SLIDE ATTACHMENT — ONE OF FOUR CORNERS:",
         "The film frame is NOT bolted straight to a slide. Each corner hangs off BOTH cross-slides "
@@ -2341,7 +2204,7 @@ def sheet8():
         "The U-joint's two bores are its ONLY rotating link; everything else is a rigid bolted/clamped "
         "stack. Set the pose by hand (push each slide), then throw the cam clamps — no leadscrews "
         "(a pinhole's infinite depth of field makes this scene control, not focus).",
-    ], 2, 99, 4.0, fs=6.0, title_fs=7.2, color=DIM, width=96, wrap=90, font=FONT)
+    ], 2, 99, 3.6, fs=6.2, title_fs=7.4, color=DIM, width=67, wrap=112, font=FONT)
     # title block
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 8 OF 8",

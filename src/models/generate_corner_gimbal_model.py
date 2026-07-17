@@ -199,9 +199,11 @@ def corner(tag, cx, fz, zc, cin, side):
         P.append(ov.ruby_cylinder(f"Axle retainer bolt (thru plate) {tag} {int(ry)}", inb, ry, rz - 22, 2.5, 44, color=C_CROSS, axis="z"))
 
     # ── mechanism, inboard: Z slide (tilt) → X slide (swing) → U-joint → the FILM-PLANE CORNER ──
-    P.append(ov.ruby_box(f"Vertical Z slide rail (TILT, green) {tag}", inb - 3, ty - 9, min(fz, rz) - 4, 16, 18, abs(rz - fz) + 20, color=C_TILT))
-    P.append(ov.ruby_box(f"Horizontal X slide rail (SWING, purple) {tag}", xr0, ty - 7, fz - 4, 260, 14, 14, color=C_SWING))
-    P.append(ov.ruby_box(f"U-joint {tag}", cx - 12, ty - 12, fz - 14, 24, 24, 24, color=C_CROSS))
+    # The cross-slides sit on the BACKING side of the film plane (Yd > FP_Y) so the frame SITS ON them — the
+    # muslin-clamp perp leg projects the other way (toward the pinhole), so nothing is drawn through the slides.
+    P.append(ov.ruby_box(f"Vertical Z slide rail (TILT, green) {tag}", inb - 3, ty + 1, min(fz, rz) - 4, 16, 18, abs(rz - fz) + 20, color=C_TILT))
+    P.append(ov.ruby_box(f"Horizontal X slide rail (SWING, purple) {tag}", xr0, ty + 1, fz - 4, 260, 14, 14, color=C_SWING))
+    P.append(ov.ruby_box(f"U-joint {tag}", cx - 12, ty - 4, fz - 14, 24, 24, 24, color=C_CROSS))
     # FILM-PLANE FRAME CORNER — bolts onto the U-joint, so the ghost panel is carried by this corner.
     # Kept INBOARD of the web (outboard edge at the web inboard face) so the beam-flush cut support clears it.
     ybk = min(ty - 8, FP_Y - 4)

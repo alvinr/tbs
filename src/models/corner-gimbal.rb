@@ -171,24 +171,24 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal wheel Ø32 (weight) BL 2232
+  # Acetal wheel Ø32 (weight) BL 2270
   grp = ents.add_group
-  grp.name = "Acetal wheel Ø32 (weight) BL 2232"
+  grp.name = "Acetal wheel Ø32 (weight) BL 2270"
   ge = grp.entities
-  circle = ge.add_circle([142.mm,2232.mm,253.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([142.mm,2270.mm,253.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wheel axle Ø10 BL 2232
+  # Wheel axle Ø10 BL 2270
   grp = ents.add_group
-  grp.name = "Wheel axle Ø10 BL 2232"
+  grp.name = "Wheel axle Ø10 BL 2270"
   ge = grp.entities
-  circle = ge.add_circle([142.mm,2232.mm,253.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([142.mm,2270.mm,253.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(47.mm)
@@ -197,24 +197,24 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Keeper roller Ø20 (anti-lift) BL 2232
+  # Keeper roller Ø20 (anti-lift) BL 2270
   grp = ents.add_group
-  grp.name = "Keeper roller Ø20 (anti-lift) BL 2232"
+  grp.name = "Keeper roller Ø20 (anti-lift) BL 2270"
   ge = grp.entities
-  circle = ge.add_circle([144.mm,2232.mm,293.mm], [1,0,0], 10.mm, 24)
+  circle = ge.add_circle([144.mm,2270.mm,293.mm], [1,0,0], 10.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Keeper axle Ø8 BL 2232
+  # Keeper axle Ø8 BL 2270
   grp = ents.add_group
-  grp.name = "Keeper axle Ø8 BL 2232"
+  grp.name = "Keeper axle Ø8 BL 2270"
   ge = grp.entities
-  circle = ge.add_circle([144.mm,2232.mm,293.mm], [1,0,0], 4.mm, 24)
+  circle = ge.add_circle([144.mm,2270.mm,293.mm], [1,0,0], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(49.mm)
@@ -223,24 +223,24 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal wheel Ø32 (weight) BL 2276
+  # Acetal wheel Ø32 (weight) BL 2310
   grp = ents.add_group
-  grp.name = "Acetal wheel Ø32 (weight) BL 2276"
+  grp.name = "Acetal wheel Ø32 (weight) BL 2310"
   ge = grp.entities
-  circle = ge.add_circle([142.mm,2276.mm,253.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([142.mm,2310.mm,253.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wheel axle Ø10 BL 2276
+  # Wheel axle Ø10 BL 2310
   grp = ents.add_group
-  grp.name = "Wheel axle Ø10 BL 2276"
+  grp.name = "Wheel axle Ø10 BL 2310"
   ge = grp.entities
-  circle = ge.add_circle([142.mm,2276.mm,253.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([142.mm,2310.mm,253.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(47.mm)
@@ -249,24 +249,24 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Keeper roller Ø20 (anti-lift) BL 2276
+  # Keeper roller Ø20 (anti-lift) BL 2310
   grp = ents.add_group
-  grp.name = "Keeper roller Ø20 (anti-lift) BL 2276"
+  grp.name = "Keeper roller Ø20 (anti-lift) BL 2310"
   ge = grp.entities
-  circle = ge.add_circle([144.mm,2276.mm,293.mm], [1,0,0], 10.mm, 24)
+  circle = ge.add_circle([144.mm,2310.mm,293.mm], [1,0,0], 10.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Keeper axle Ø8 BL 2276
+  # Keeper axle Ø8 BL 2310
   grp = ents.add_group
-  grp.name = "Keeper axle Ø8 BL 2276"
+  grp.name = "Keeper axle Ø8 BL 2310"
   ge = grp.entities
-  circle = ge.add_circle([144.mm,2276.mm,293.mm], [1,0,0], 4.mm, 24)
+  circle = ge.add_circle([144.mm,2310.mm,293.mm], [1,0,0], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(49.mm)
@@ -278,19 +278,19 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Carriage plate (bolted to skate axles) BL
   grp = ents.add_group
   grp.name = "Carriage plate (bolted to skate axles) BL"
-  face = grp.entities.add_face([177.mm,2222.mm,154.mm], [191.mm,2222.mm,154.mm], [191.mm,2302.mm,154.mm], [177.mm,2302.mm,154.mm])
+  face = grp.entities.add_face([177.mm,2263.mm,154.mm], [191.mm,2263.mm,154.mm], [191.mm,2349.mm,154.mm], [177.mm,2349.mm,154.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(157.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Axle retainer bolt (thru plate) BL 2232
+  # Axle retainer bolt (thru plate) BL 2270
   grp = ents.add_group
-  grp.name = "Axle retainer bolt (thru plate) BL 2232"
+  grp.name = "Axle retainer bolt (thru plate) BL 2270"
   ge = grp.entities
-  circle = ge.add_circle([183.mm,2232.mm,231.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([183.mm,2270.mm,231.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
@@ -299,11 +299,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Axle retainer bolt (thru plate) BL 2276
+  # Axle retainer bolt (thru plate) BL 2310
   grp = ents.add_group
-  grp.name = "Axle retainer bolt (thru plate) BL 2276"
+  grp.name = "Axle retainer bolt (thru plate) BL 2310"
   ge = grp.entities
-  circle = ge.add_circle([183.mm,2276.mm,231.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([183.mm,2310.mm,231.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
@@ -435,24 +435,24 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal wheel Ø32 (weight) BR 2232
+  # Acetal wheel Ø32 (weight) BR 2270
   grp = ents.add_group
-  grp.name = "Acetal wheel Ø32 (weight) BR 2232"
+  grp.name = "Acetal wheel Ø32 (weight) BR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4616.mm,2232.mm,253.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4616.mm,2270.mm,253.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wheel axle Ø10 BR 2232
+  # Wheel axle Ø10 BR 2270
   grp = ents.add_group
-  grp.name = "Wheel axle Ø10 BR 2232"
+  grp.name = "Wheel axle Ø10 BR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4585.mm,2232.mm,253.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([4585.mm,2270.mm,253.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(47.mm)
@@ -461,24 +461,24 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Keeper roller Ø20 (anti-lift) BR 2232
+  # Keeper roller Ø20 (anti-lift) BR 2270
   grp = ents.add_group
-  grp.name = "Keeper roller Ø20 (anti-lift) BR 2232"
+  grp.name = "Keeper roller Ø20 (anti-lift) BR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4618.mm,2232.mm,293.mm], [1,0,0], 10.mm, 24)
+  circle = ge.add_circle([4618.mm,2270.mm,293.mm], [1,0,0], 10.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Keeper axle Ø8 BR 2232
+  # Keeper axle Ø8 BR 2270
   grp = ents.add_group
-  grp.name = "Keeper axle Ø8 BR 2232"
+  grp.name = "Keeper axle Ø8 BR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4591.mm,2232.mm,293.mm], [1,0,0], 4.mm, 24)
+  circle = ge.add_circle([4591.mm,2270.mm,293.mm], [1,0,0], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(37.mm)
@@ -487,24 +487,24 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal wheel Ø32 (weight) BR 2276
+  # Acetal wheel Ø32 (weight) BR 2310
   grp = ents.add_group
-  grp.name = "Acetal wheel Ø32 (weight) BR 2276"
+  grp.name = "Acetal wheel Ø32 (weight) BR 2310"
   ge = grp.entities
-  circle = ge.add_circle([4616.mm,2276.mm,253.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4616.mm,2310.mm,253.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Wheel axle Ø10 BR 2276
+  # Wheel axle Ø10 BR 2310
   grp = ents.add_group
-  grp.name = "Wheel axle Ø10 BR 2276"
+  grp.name = "Wheel axle Ø10 BR 2310"
   ge = grp.entities
-  circle = ge.add_circle([4585.mm,2276.mm,253.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([4585.mm,2310.mm,253.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(47.mm)
@@ -513,24 +513,24 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Keeper roller Ø20 (anti-lift) BR 2276
+  # Keeper roller Ø20 (anti-lift) BR 2310
   grp = ents.add_group
-  grp.name = "Keeper roller Ø20 (anti-lift) BR 2276"
+  grp.name = "Keeper roller Ø20 (anti-lift) BR 2310"
   ge = grp.entities
-  circle = ge.add_circle([4618.mm,2276.mm,293.mm], [1,0,0], 10.mm, 24)
+  circle = ge.add_circle([4618.mm,2310.mm,293.mm], [1,0,0], 10.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Keeper axle Ø8 BR 2276
+  # Keeper axle Ø8 BR 2310
   grp = ents.add_group
-  grp.name = "Keeper axle Ø8 BR 2276"
+  grp.name = "Keeper axle Ø8 BR 2310"
   ge = grp.entities
-  circle = ge.add_circle([4591.mm,2276.mm,293.mm], [1,0,0], 4.mm, 24)
+  circle = ge.add_circle([4591.mm,2310.mm,293.mm], [1,0,0], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(37.mm)
@@ -542,19 +542,19 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Carriage plate (bolted to skate axles) BR
   grp = ents.add_group
   grp.name = "Carriage plate (bolted to skate axles) BR"
-  face = grp.entities.add_face([4585.mm,2222.mm,154.mm], [4599.mm,2222.mm,154.mm], [4599.mm,2302.mm,154.mm], [4585.mm,2302.mm,154.mm])
+  face = grp.entities.add_face([4585.mm,2263.mm,154.mm], [4599.mm,2263.mm,154.mm], [4599.mm,2349.mm,154.mm], [4585.mm,2349.mm,154.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(157.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Axle retainer bolt (thru plate) BR 2232
+  # Axle retainer bolt (thru plate) BR 2270
   grp = ents.add_group
-  grp.name = "Axle retainer bolt (thru plate) BR 2232"
+  grp.name = "Axle retainer bolt (thru plate) BR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4591.mm,2232.mm,231.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4591.mm,2270.mm,231.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
@@ -563,11 +563,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Axle retainer bolt (thru plate) BR 2276
+  # Axle retainer bolt (thru plate) BR 2310
   grp = ents.add_group
-  grp.name = "Axle retainer bolt (thru plate) BR 2276"
+  grp.name = "Axle retainer bolt (thru plate) BR 2310"
   ge = grp.entities
-  circle = ge.add_circle([4591.mm,2276.mm,231.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4591.mm,2310.mm,231.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
@@ -756,24 +756,24 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TL 2232
+  # Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TL 2270
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TL 2232"
+  grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TL 2270"
   ge = grp.entities
-  circle = ge.add_circle([124.mm,2232.mm,2361.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([124.mm,2270.mm,2361.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(52.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Guide axle Ø10 (in throat) TL 2232
+  # Guide axle Ø10 (in throat) TL 2270
   grp = ents.add_group
-  grp.name = "Guide axle Ø10 (in throat) TL 2232"
+  grp.name = "Guide axle Ø10 (in throat) TL 2270"
   ge = grp.entities
-  circle = ge.add_circle([117.mm,2232.mm,2361.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([117.mm,2270.mm,2361.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
@@ -782,24 +782,24 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TL 2276
+  # Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TL 2310
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TL 2276"
+  grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TL 2310"
   ge = grp.entities
-  circle = ge.add_circle([124.mm,2276.mm,2361.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([124.mm,2310.mm,2361.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(52.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Guide axle Ø10 (in throat) TL 2276
+  # Guide axle Ø10 (in throat) TL 2310
   grp = ents.add_group
-  grp.name = "Guide axle Ø10 (in throat) TL 2276"
+  grp.name = "Guide axle Ø10 (in throat) TL 2310"
   ge = grp.entities
-  circle = ge.add_circle([117.mm,2276.mm,2361.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([117.mm,2310.mm,2361.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
@@ -814,7 +814,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([115.mm,2228.mm,2330.mm], [119.mm,2228.mm,2330.mm], [119.mm,2296.mm,2330.mm], [115.mm,2296.mm,2330.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -825,7 +825,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([181.mm,2228.mm,2330.mm], [185.mm,2228.mm,2330.mm], [185.mm,2296.mm,2330.mm], [181.mm,2296.mm,2330.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -836,7 +836,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([115.mm,2228.mm,2322.mm], [185.mm,2228.mm,2322.mm], [185.mm,2296.mm,2322.mm], [115.mm,2296.mm,2322.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -847,7 +847,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([183.mm,2228.mm,2324.mm], [208.mm,2228.mm,2324.mm], [208.mm,2296.mm,2324.mm], [183.mm,2296.mm,2324.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -855,19 +855,19 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Carriage plate (bolted to skate axles) TL
   grp = ents.add_group
   grp.name = "Carriage plate (bolted to skate axles) TL"
-  face = grp.entities.add_face([196.mm,2222.mm,2328.mm], [210.mm,2222.mm,2328.mm], [210.mm,2302.mm,2328.mm], [196.mm,2302.mm,2328.mm])
+  face = grp.entities.add_face([196.mm,2263.mm,2328.mm], [210.mm,2263.mm,2328.mm], [210.mm,2349.mm,2328.mm], [196.mm,2349.mm,2328.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(76.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Axle retainer bolt (thru plate) TL 2232
+  # Axle retainer bolt (thru plate) TL 2270
   grp = ents.add_group
-  grp.name = "Axle retainer bolt (thru plate) TL 2232"
+  grp.name = "Axle retainer bolt (thru plate) TL 2270"
   ge = grp.entities
-  circle = ge.add_circle([202.mm,2232.mm,2339.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([202.mm,2270.mm,2339.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
@@ -876,11 +876,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Axle retainer bolt (thru plate) TL 2276
+  # Axle retainer bolt (thru plate) TL 2310
   grp = ents.add_group
-  grp.name = "Axle retainer bolt (thru plate) TL 2276"
+  grp.name = "Axle retainer bolt (thru plate) TL 2310"
   ge = grp.entities
-  circle = ge.add_circle([202.mm,2276.mm,2339.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([202.mm,2310.mm,2339.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
@@ -1001,24 +1001,24 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TR 2232
+  # Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TR 2270
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TR 2232"
+  grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4598.mm,2232.mm,2361.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4598.mm,2270.mm,2361.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(52.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Guide axle Ø10 (in throat) TR 2232
+  # Guide axle Ø10 (in throat) TR 2270
   grp = ents.add_group
-  grp.name = "Guide axle Ø10 (in throat) TR 2232"
+  grp.name = "Guide axle Ø10 (in throat) TR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4591.mm,2232.mm,2361.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([4591.mm,2270.mm,2361.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
@@ -1027,24 +1027,24 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TR 2276
+  # Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TR 2310
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TR 2276"
+  grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TR 2310"
   ge = grp.entities
-  circle = ge.add_circle([4598.mm,2276.mm,2361.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4598.mm,2310.mm,2361.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(52.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Guide axle Ø10 (in throat) TR 2276
+  # Guide axle Ø10 (in throat) TR 2310
   grp = ents.add_group
-  grp.name = "Guide axle Ø10 (in throat) TR 2276"
+  grp.name = "Guide axle Ø10 (in throat) TR 2310"
   ge = grp.entities
-  circle = ge.add_circle([4591.mm,2276.mm,2361.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([4591.mm,2310.mm,2361.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
@@ -1059,7 +1059,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4589.mm,2228.mm,2330.mm], [4593.mm,2228.mm,2330.mm], [4593.mm,2296.mm,2330.mm], [4589.mm,2296.mm,2330.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -1070,7 +1070,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4655.mm,2228.mm,2330.mm], [4659.mm,2228.mm,2330.mm], [4659.mm,2296.mm,2330.mm], [4655.mm,2296.mm,2330.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -1081,7 +1081,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4589.mm,2228.mm,2322.mm], [4659.mm,2228.mm,2322.mm], [4659.mm,2296.mm,2322.mm], [4589.mm,2296.mm,2322.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -1092,7 +1092,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4572.mm,2228.mm,2324.mm], [4663.mm,2228.mm,2324.mm], [4663.mm,2296.mm,2324.mm], [4572.mm,2296.mm,2324.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -1100,19 +1100,19 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Carriage plate (bolted to skate axles) TR
   grp = ents.add_group
   grp.name = "Carriage plate (bolted to skate axles) TR"
-  face = grp.entities.add_face([4566.mm,2222.mm,2328.mm], [4580.mm,2222.mm,2328.mm], [4580.mm,2302.mm,2328.mm], [4566.mm,2302.mm,2328.mm])
+  face = grp.entities.add_face([4566.mm,2263.mm,2328.mm], [4580.mm,2263.mm,2328.mm], [4580.mm,2349.mm,2328.mm], [4566.mm,2349.mm,2328.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(76.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2232"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2232")
+  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Axle retainer bolt (thru plate) TR 2232
+  # Axle retainer bolt (thru plate) TR 2270
   grp = ents.add_group
-  grp.name = "Axle retainer bolt (thru plate) TR 2232"
+  grp.name = "Axle retainer bolt (thru plate) TR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4572.mm,2232.mm,2339.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4572.mm,2270.mm,2339.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
@@ -1121,11 +1121,11 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Axle retainer bolt (thru plate) TR 2276
+  # Axle retainer bolt (thru plate) TR 2310
   grp = ents.add_group
-  grp.name = "Axle retainer bolt (thru plate) TR 2276"
+  grp.name = "Axle retainer bolt (thru plate) TR 2310"
   ge = grp.entities
-  circle = ge.add_circle([4572.mm,2276.mm,2339.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4572.mm,2310.mm,2339.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)

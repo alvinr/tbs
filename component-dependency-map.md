@@ -91,7 +91,7 @@ aluminum** angle frame (expendable) + corner L-brackets, 4× **3×1.5 304 U-chan
 (McMaster 1262T21, ceiling + floor), 4× **4-wheel acetal skates** (Ø32 load + Ø20 keeper rollers
 on Ø10 316 axles), **8× 316 flat-bar cross-slides (Z tilt + X swing) on UHMW self-lube pads +
 adjustable gibs** (the 2-axis corner stage that absorbs the rigid-rotation arc travel), 4× **Ruland
-US12-6-6-SS U-joints** (303 SS, nitrile-booted), 12× cam-lever rail clamps, **single rigid ACM
+USKC12-6-6-SS U-joints** (303 SS, nitrile-booted), 12× cam-lever rail clamps, **single rigid ACM
 backing panel**, Duvetyne curtain seals, rail felt light-trap strips, 90× cam-lever spring clamps
 at 150mm centers (muslin attachment). The plane stays a fixed-size flat rectangle — it does not
 stretch or twist; single-axis tilt/swing envelope (tilt ±40° / swing ±28°).*

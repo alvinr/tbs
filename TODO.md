@@ -69,14 +69,34 @@ The remaining §7 parts BOM is gated on confirmed prices._
 - [ ] **§7 parts BOM — GATED on Alvin's SKU paste-check.** `parts.py` film section still holds the 11
   leadscrew SKUs (hgr20-rail, hgh20ca, acme-leadscrew/nut, handwheel-8in, locking-collar, crossslide-
   hgr15/hgh15ca/plate, rod-end-bearing, pivot-pin) → the report §7 table + master §4 inject them. Swap
-  to the Sheet-5 corner hardware (Ruland US12-6-6-SS + UBOOT12/19-NI-KIT, McMaster 4040N12 supports,
-  89535K873 3/8" stubs, Ø32 acetal rollers on Ø10 316 axles, carriage plate, 316 flat-bar cross-slides +
-  UHMW + gib, cam clamps, 1262T21 U-channel). **Blocked:** McMaster + Ruland block crawlers, so 4040N12 /
-  1262T21 / 89535K873 SKUs + the US12-6-6-SS price could not be auto-verified. Alvin to paste-check:
-  4040N12 (304 shaft support), 1262T21 ($/ft), 89535K873 (3/8" 304 rod), US12-6-6-SS (U-joint price).
-  Verified so far: boot $22–29, 10mm 316 rod $33–50/ft, UHMW $23–93/sheet. Then reconcile parts.py +
-  costing (film band + grand_total move ~$1–2k) → §7 auto-injects; retires the parts-identity dead-SKU
-  lint warnings. This is also the FP_W/FP_H dead-BOM retirement folded in.
+  to the Sheet-5 corner hardware (Ruland **USKC12-6-6-SS keyway-clamp U-joint @ $276** + UBOOT12/19-NI-KIT,
+  McMaster 4040N12 supports, 89535K873 3/8" KEYED stubs, Ø32 acetal rollers on Ø10 316 axles, carriage
+  plate, 316 flat-bar cross-slides + UHMW + gib, cam clamps, 1262T21 U-channel). **Blocked:** McMaster
+  blocks crawlers, so 4040N12 / 1262T21 / 89535K873 SKUs could not be auto-verified. Alvin to paste-check:
+  4040N12 (304 shaft support), 1262T21 ($/ft), 89535K873 (3/8" 304 rod). Confirmed: **U-joint USKC12-6-6-SS
+  $276**, boot $22–29, 10mm 316 rod $33–50/ft, UHMW $23–93/sheet. Then reconcile parts.py + costing (film
+  band + grand_total move up ~$1.5–2.5k — the U-joint alone is $276×4) → §7 auto-injects; retires the
+  parts-identity dead-SKU lint warnings. This is also the FP_W/FP_H dead-BOM retirement folded in.
+
+## Film-plane U-joint — research a cheaper alternative — OPEN
+
+_Alvin 2026-07-17: chose **Ruland USKC12-6-6-SS** (keyway+clamp, **$276 ea**) as the interim part —
+expensive at ×4 corners = **$1,104**. Research a cheaper joint that meets the FULL spec below (a MISUMI
+HS-10-A-A at $96 was a candidate but its max angle was unconfirmed and its material must be verified)._
+
+**Spec the U-joint MUST meet (one per corner ×4):**
+- **Type:** single universal joint (2-axis — tilt + swing).
+- **Bore:** 3/8" (9.5 mm) both ends — or metric (10 mm), then the 304 stubs resize to match.
+- **Material: STAINLESS** (303/304/316) — it sits in the cyanotype **splash (wet) zone**; plain carbon/
+  alloy steel (e.g. MISUMI's default S45C HS series) would rust and is NOT acceptable.
+- **Max operating angle: ≥ 40°** — the plane tilts ±40° (`MAX_TILT_DEG`) and each corner's U-joint bends
+  the full angle (rigid plane; the joint is the only angular DOF). Swing needs ±28°.
+- **Shaft securing: POSITIVE** — keyway+clamp (as the USKC) OR set-screw-on-a-flat + threadlocker/Nypatch.
+  A bare point-contact set screw is NOT acceptable (backs out under transport vibration).
+- **Envelope:** ~0.745" OD × 2.688" L (Ruland size 12) or similar — fits the corner-plate/carriage stack.
+- **Cost target:** << $276 ea. Candidates to chase: MISUMI HS-series **stainless** (confirm ≥40° angle;
+  ~$96), McMaster stainless U-joints (SKU crawler-blocked — needs a human paste-check), Belden UJ-SS
+  set-screw stainless (~$126–178). Update Sheets 3/5/8/9 + the BOM if a cheaper part is adopted.
 
 ## Muslin clamp → spring clip redesign (Sheet 6) — IN PROGRESS
 

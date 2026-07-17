@@ -87,7 +87,7 @@ Getting it right was hard until we grounded it; here is the reasoning, in order.
 - We first assumed a Cardan cross binds too early (~±37°) and would need a **custom offset-pin gimbal**
   (two perpendicular pins on a block, offset so their bores clear, each in double shear). **Grounded
   catalog research corrected that:** relieved-yoke **single stainless universal joints are published to
-  45°** ([Ruland US12-6-6-SS](https://www.ruland.com/us12-6-6-ss.html) — 303 SS, self-lubricating
+  45°** ([Ruland USKC12-6-6-SS](https://www.ruland.com/us12-6-6-ss.html) — 303 SS, self-lubricating
   sintered-bronze plain bearing, grease-free), which covers our ±40° tilt / ±28° swing at trivial load.
   Because this is *static articulation*, not continuous high-speed rotation, the joint is usable to its
   full angle. **So the 2-axis, twist-locked joint is an off-the-shelf single U-joint — no custom gimbal
@@ -124,7 +124,7 @@ Getting it right was hard until we grounded it; here is the reasoning, in order.
 
 Per corner (×4):
 
-- **1 × single universal joint** — [Ruland US12-6-6-SS](https://www.ruland.com/us12-6-6-ss.html): 303
+- **1 × single universal joint** — [Ruland USKC12-6-6-SS](https://www.ruland.com/us12-6-6-ss.html): 303
   stainless, self-lubricating **sintered-bronze plain bearing**, **45° max articulation**, 3/8" bore,
   68 mm long, grease-free — the off-the-shelf 2-axis torsion-locked pivot (~$195, in stock)
 - **2 × base-mount shaft support** — [McMaster 4040N12](https://www.mcmaster.com/4040N12/), 304 SS,
@@ -147,7 +147,7 @@ train** — cheaper, simpler, factory-aligned, and in stock. Drawn in `diagrams/
 1. **Articulate on determinate freedoms; float the redundant horizontal DOF** — the X slide absorbs the
    horizontal arc travel, so four corners aren't over-constrained on that axis; the gravity-loaded vertical
    is held by a friction slide + clamp, not a screw.
-2. **2-axis, torsion-locked joint** — an off-the-shelf single stainless U-joint (Ruland US12-6-6-SS, 45°)
+2. **2-axis, torsion-locked joint** — an off-the-shelf single stainless U-joint (Ruland USKC12-6-6-SS, 45°)
    gives tilt + swing, enforces "no twist," clears our ±40°/±28° at trivial load, and needs no custom fab.
 3. **Self-lubricating plain-bearing joint, grease-free** — the U-joint's sintered-bronze plain bearing
    (no needle/ball rollers to corrode or wash out); 303 SS suits splash/rinse exposure (316 if soaked).

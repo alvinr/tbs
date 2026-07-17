@@ -2034,13 +2034,13 @@ def _corner_section(ax):
 
 def sheet9():
     reset_label_registry()
-    fig = plt.figure(figsize=(16, 9)); fig.patch.set_facecolor(BG)
-    axA = fig.add_axes([0.02, 0.40, 0.42, 0.56]); axA.set_facecolor(BG)   # View A — square-on elevation
-    axB = fig.add_axes([0.46, 0.55, 0.53, 0.40]); axB.set_facecolor(BG)   # View B — cross-section
+    fig = plt.figure(figsize=(16, 10.5)); fig.patch.set_facecolor(BG)
+    axA = fig.add_axes([0.02, 0.55, 0.31, 0.42]); axA.set_facecolor(BG)   # View A — square-on elevation (smaller)
+    axB = fig.add_axes([0.35, 0.40, 0.64, 0.57]); axB.set_facecolor(BG)   # View B — cross-section (~50% larger)
     _corner_elevation(axA)
     _corner_section(axB)
     # notes
-    axN = fig.add_axes([0.05, 0.10, 0.90, 0.26]); axN.set_xlim(0, 100); axN.set_ylim(0, 100); axN.axis("off")
+    axN = fig.add_axes([0.05, 0.08, 0.90, 0.26]); axN.set_xlim(0, 100); axN.set_ylim(0, 100); axN.axis("off")
     draw_notes(axN, [
         "HOW THE FILM PLANE HANGS OFF THE X (SWING) SLIDE — ONE OF FOUR CORNERS:",
         "The ACM backing board is captured in the 2x2 6061 Al angle perimeter frame (the muslin wraps + "

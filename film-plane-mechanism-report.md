@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-The configuration the photosensitive film plane is flush against one of the 20ft long-side walls of the container. This report describes a **view-camera-style moveable film plane** — a mechanism with **four corner carriages** (TL, TR, BL, BR) driven in **coordinated pairs**, carrying a **fixed-size rigid** plane (Option A) that changes only its angle — allowing tilt, swing, and limited combined movements comparable to a large-format view camera's rear standard.
+The configuration the photosensitive film plane is flush against one of the 20ft long-side walls of the container. This report describes a **view-camera-style moveable film plane** — a mechanism with **four corner carriages** (TL, TR, BL, BR) driven in **coordinated pairs**, carrying a **fixed-size rigid** plane that changes only its angle — allowing tilt, swing, and limited combined movements comparable to a large-format view camera's rear standard.
 
 **System context — container floor plan:**
 The floor plan below shows the film plane rail positions in the context of the complete TBS-001 interior, including left end zone (light trap), processing tray and perimeter walkway in the optical zone, and right end zone (4× IBCs in 2×2 stack, pump manifold on the Corridor Plumbing Panel and the filter skid on the Pinhole Wall Plumbing Panel).
@@ -12,13 +12,13 @@ The floor plan below shows the film plane rail positions in the context of the c
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
 <!-- brochure:skip -->
-**Interactive 3D model** — the fixed-size rigid film plane on its four floating-corner cross-slide carriages (Option A), posed in an example tilt + swing, with the processing tray and a ghost of the container. Drag to orbit, scroll to zoom; the per-corner detail scenes show each HGR20 rail, carriage, leadscrew, and X/Z cross-slides.
+**Interactive 3D model** — the fixed-size rigid film plane on its four slide-and-clamp corner carriages, posed in an example tilt + swing, with the processing tray and a ghost of the container. Drag to orbit, scroll to zoom; the per-corner detail scenes show each 304 U-channel depth rail, acetal skate, Z/X cross-slide, and the single U-joint.
 
 <div class="sketchfab-embed-wrapper">
   <div style="position:relative;width:100%;padding-bottom:56.25%;">
-    <iframe title="TBS-001 Film Plane Model" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/bb5394a8983a491fa541088b901c24f8/embed" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+    <iframe title="TBS-001 Articulated Film Plane Model" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/572b4aaa2d394de1b8852160d7cdcfc3/embed" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
   </div>
-  <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/3d-models/tbs-001-film-plane-model-bb5394a8983a491fa541088b901c24f8?utm_medium=embed&utm_campaign=share-popup&utm_content=bb5394a8983a491fa541088b901c24f8" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">TBS-001 Film Plane Model</a> by <a href="https://sketchfab.com/alvin91403?utm_medium=embed&utm_campaign=share-popup&utm_content=bb5394a8983a491fa541088b901c24f8" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">alvin91403</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=bb5394a8983a491fa541088b901c24f8" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p>
+  <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/3d-models/tbs-001-articulated-film-plane-model-572b4aaa2d394de1b8852160d7cdcfc3?utm_medium=embed&utm_campaign=share-popup&utm_content=572b4aaa2d394de1b8852160d7cdcfc3" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">TBS-001 Articulated Film Plane Model</a> by <a href="https://sketchfab.com/alvin91403?utm_medium=embed&utm_campaign=share-popup&utm_content=572b4aaa2d394de1b8852160d7cdcfc3" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">alvin91403</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=572b4aaa2d394de1b8852160d7cdcfc3" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p>
 </div>
 <!-- brochure:endskip -->
 
@@ -64,19 +64,19 @@ Because the plane is a **fixed-size rigid rectangle**, its physical height stays
 
 ## 4. Mechanism Design
 
-> **Note:** The drawings (Sheets 1–6) and distortion renders show **axis tilt/swing** — the rigid plane rotates about its center and **foreshortens** (it never grows), illustrated about the mid-rail position (the film back-focuses anywhere along the rail; flat-at-far-wall is the max-focal-length extreme). The interactive 3D model `models/film-plane.skp` also reflects this.
+> **Note:** The drawings (Sheets 1–8) and distortion renders show **axis tilt/swing** — the rigid plane rotates about its center and **foreshortens** (it never grows), illustrated about the mid-rail position (the film back-focuses anywhere along the rail; flat-at-far-wall is the max-focal-length extreme). The interactive 3D model `models/corner-gimbal.skp` also reflects this.
 
 ### Four-Corner Frame
 
 Each corner of the film plane frame rides on its own carriage assembly (driven in coordinated pairs, not independently — a rigid plane cannot warp):
 
-![Sheet 6 — System Schematic: Four-Corner Frame Front Elevation](assets/film-plane-sheet6.png)
+![Sheet 7 — Four-Corner Frame Front Elevation](assets/film-plane-sheet7.png)
 
-- **4 depth rails** — HiWin HGR20 profile, 2,200mm length, mounted at X=150mm (left pair) and X=4,649mm (right pair) on ceiling and floor. Rails run along the 2,362mm optical axis direction; their carriages set each corner's **depth** (focus / back-focus).
-- **8 depth carriages** — HGH20CA flanged blocks, 2 per rail, joined by an L-bracket at each corner.
-- **4 leadscrews** — ¾"-6 Acme, 8 ft (2,438mm) length, one per corner (TL, TR, BL, BR). Each turns in a bronze Acme nut fixed to the corner bracket and drives that corner's depth.
-- **8 corner cross-slides (Option A)** — a **2-axis X-Z floating stage** at each corner (one X slide + one Z slide, ~300mm travel each, on HGR15 rail + block), bolted on top of the depth carriage. These absorb the small in-plane arc travel that a **rigid** rotation forces on each corner (≈250mm in Z at max tilt, ≈263mm in X at max swing), so the film plane stays a **fixed-size flat rectangle** instead of stretching.
-- **Film plane frame** — welded 2"×2"×3/16" anodized-6061 aluminum angle, kept as an **expendable part** (in the splash-not-immersed cyanotype zone anodized 6061 corrodes slowly — inspect annually, replace on pitting; chosen over 304 SS to save ~32 kg and ~$1.5k, with the ACM backing carrying the flatness), a **FIXED-SIZE rigid rectangle, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm** (rail span × container height). Each corner connects to its cross-slide through a **rod-end spherical bearing** (GIR25-DO or equivalent, 25mm bore), which provides the angular freedom; the cross-slide provides the translation. The rod-end's threaded shank anchors into the cross-slide stage, and its ball is captured on the **Ø25 × 80mm pivot pin** by a welded **fork clevis** (two ears) at each frame corner, so the pin runs in **double shear** — through both ears and the ball bore (see Sheet 3). Together they let the rigid plane tilt and swing without the frame ever changing size. The following diagrams show the range of movements of the film plane.
+- **4 depth rails** — 3×1½" (76×38mm) **304 stainless U-channel** (McMaster 1262T21), one at each corner, running wall-to-wall along the <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm optical axis. An acetal skate rides inside each; sliding it sets that corner's **depth** (focus / back-focus). The **right** rails (X=4,649mm) are permanently flanged to their wall seats; the **left** rails (X=150mm) are transport drop-ins that lift out.
+- **4 acetal skates** — a 4-wheel skate per corner: **Ø32 acetal load rollers** gravity-seated on the channel's bottom flange plus **Ø20 keeper rollers** captive under the top flange, all on **Ø10 316 axles**, carrying the corner's carriage plate.
+- **12 cam clamps** — three per corner. Each corner is slid by hand into position, then a **cam-lever rail brake** locks the skate to the U-channel — there are no leadscrews. The lock holds for the exposure and for transport.
+- **8 corner cross-slides** — a **Z (tilt)** slide plus an **X (swing)** slide at each corner, each a **316 stainless flat bar (¼"×1½")** captured on **UHMW self-lube pads** with an adjustable brass-tip **gib**. The Z slide (~250mm) and X slide (~260mm) absorb the in-plane arc travel that a **rigid** rotation forces on each corner (≈250mm in Z at max tilt, ≈263mm in X at max swing), so the film plane stays a **fixed-size flat rectangle** instead of stretching; the gib drag holds the gravity-loaded vertical axis while the clamp is set.
+- **Film plane frame** — welded 2"×2"×3/16" anodized-6061 aluminum angle, kept as an **expendable part** (in the splash-not-immersed cyanotype zone anodized 6061 corrodes slowly — inspect annually, replace on pitting; chosen over 304 SS to save ~32 kg and ~$1.5k, with the ACM backing carrying the flatness), a **FIXED-SIZE rigid rectangle, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm** (rail span × container height). Each corner connects to its cross-slide stack through a **single universal joint** (Ruland US12-6-6-SS, 303 stainless, twist-locked, nitrile-booted): the U-joint supplies the two angular degrees of freedom (tilt + swing) while the cross-slides supply the translation. The joint bolts to the frame through an anodized-6061 L-bracket and to the X-slide carriage on 3/8" 304 stub shafts held in McMaster 4040N12 supports (see Sheet 3). Together they let the rigid plane tilt and swing without the frame ever changing size. The following diagrams show the range of movements of the film plane.
 
 ![Sheet 1 — Plan view](assets/film-plane-sheet1.png)
 
@@ -91,22 +91,21 @@ The master diagram for the components can be see in the diagram below. The follo
 
 ![Sheet 3 — Hardware detail](assets/film-plane-sheet3.png)
 
-### Why Rod-End Spherical Bearings + Cross-Slides
+### Why a U-Joint + Cross-Slides
 
-The film plane is a **fixed-size rigid rectangle**; tilt and swing are a true **rigid-body rotation** of that rectangle. A rigid rotation moves each corner along an arc — partly along its depth rail (handled by the leadscrew carriage) and partly *across* it (in X and Z). The **2-axis cross-slide** absorbs that across-rail travel, and the **rod-end spherical bearing** (±45° freedom in all axes) takes up the angular change so nothing binds. This pairing is what lets a rigid plane tilt/swing **without stretching** — the earlier scheme instead let the frame twist into a ruled surface and grow, which a fixed-size plane does not do.
+The film plane is a **fixed-size rigid rectangle**; tilt and swing are a true **rigid-body rotation** of that rectangle. A rigid rotation moves each corner along an arc — partly along its depth rail (handled by the acetal skate) and partly *across* it (in X and Z). The **2-axis cross-slide** absorbs that across-rail travel, and the **single universal joint** (Ruland US12-6-6-SS, 45° per axis) takes up the angular change so nothing binds. This pairing is what lets a rigid plane tilt and swing **without stretching**, and keeps the plane a single flat rectangle at every angle.
 
-### Actuation
+### Positioning
 
-Each of the four leadscrews is turned by an **8" cast aluminum handwheel** (¾" bore). One turn of the ¾"-6 screw = **4.2mm travel**. A SS316 locking collar on each screw holds position during exposure.
-
+Each corner is set by hand: roll the acetal skate along its U-channel to the target depth, slide the Z and X cross-slides to take up the rotation arc, then throw the **cam clamp** to lock the skate to the rail. The gib drag holds the vertical (Z) axis while the clamp is set, and the U-joint's twist-lock holds the angle.
 
 **Named movement modes:**
-- **Pure tilt**: turn TL and TR handwheels together by the same amount; turn BL and BR by the same amount (different from TL/TR).
-- **Pure swing**: turn TL and BL together; turn TR and BR together.
-- **Back focus**: turn all four handwheels by the same amount.
-- **Compound (limited)**: turn all four to a coordinated set of depths — the rigid plane stays flat (no twist).
+- **Pure tilt**: slide the two top corners (TL + TR) together to one depth; slide the two bottom corners (BL + BR) together to another.
+- **Pure swing**: slide TL and BL together; slide TR and BR together.
+- **Back focus**: slide all four corners by the same amount.
+- **Compound (limited)**: set all four to a coordinated set of depths — the rigid plane stays flat (no twist).
 
-**Optional electric actuation:** replace the handwheels with **Progressive Automations PA-14** 12V linear actuators (20" / 508mm stroke, 150 lb force rating). Four actuators, one per corner, each controlled by a panel-mount DPDT momentary switch. A labeled panel outside the container allows full repositioning without entry.
+All four corners lock independently on their own cam clamps, so a set position holds through the exposure and through transport.
 
 ### Fixed-Size Plane — No Variable Geometry
 
@@ -178,11 +177,9 @@ All items ship within the United States. Local Southern California pickup noted 
 | **Film total** | | | | **$2,965–$2,993** |
 <!-- END parts:film -->
 
-*The cross-slide rails/carriages/intermediate plates (HGR15) are the **Option A** additions — the
-2-axis X–Z cross-slide stage at each corner (8 slides total, ≈300mm travel) that lets the
-**fixed-size rigid** plane tilt/swing without stretching. The two 5,893mm T-slot beams of the
-original two-beam design remain removed. The wall-seat saddles (ICP-11–14) are itemized in the
-table above; see below for their design.*
+*The corner-mechanism hardware (U-channel depth rails, acetal skates, Z/X cross-slides, and the
+per-corner U-joint) and the wall-seat saddles (ICP-11–14) are itemized in the table above; the
+saddle design is described below.*
 
 ### Wall-Seat Saddles
 
@@ -202,25 +199,16 @@ Each of the **8 rail ends** anchors to the container — **6 of them** with a st
 
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
 
-### Optional Electric Actuation
-
-| Item | Spec | Qty | Source A | Source B | Est. Unit |
-|------|------|-----|---------|---------|-----------|
-| PA-14 linear actuator | 12V, 20" stroke, 150 lb | **4** | Progressive Automations | Amazon | $185 |
-| 12V 30A power supply | Enclosed | 1 | Mouser | Digi-Key | $55 |
-| DPDT momentary rocker | Panel-mount, 20A | **4** | Mouser | Grainger | $8 |
-
-**Estimated materials total (manual actuation, incl. wall-seat saddles + Option A cross-slides): ~<!-- BEGIN costing:film-total -->$3,309<!-- END costing:film-total -->** (rev 12: the 2 BR saddles move to the walkway's combined corner plates)
-*Excludes fasteners, fabrication labor, and electric actuation option.*
-*Option A net change vs the earlier four-corner design: added 8 cross-slide rails +$200, 8 cross-slide carriages +$96, 4 intermediate plates +$60 (= +$356); removed the folding-backing piano hinge –$56 → net +$300. The single rigid ACM backing replaces the hinged two-panel system.*
+**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$3,309<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
+*Excludes fasteners and fabrication labor.*
 
 ### Local SoCal Metal Sourcing
 
-- **Metal Supermarkets** — Anaheim (714-630-8463), Van Nuys (818-988-1301), San Diego (619-280-7600). Will cut to length on-site, no minimum order.
+- **Metal Supermarkets** — Anaheim (714-630-8463), Van Nuys (818-988-1301), San Diego (619-280-7600). Cut-to-length 304 U-channel, 316 flat bar, and aluminum angle on-site, no minimum order.
 - **Grimco** — City of Industry, CA. Sign-industry ACM panel supplier, large sheet stock.
-- **Automation Overstock** — Gardena, CA. Industrial surplus linear motion components; walk-in available.
+- **McMaster-Carr** — U-channel (1262T21), 304 shaft supports, acetal rollers, 316 axle rod, and cam clamps; ships nationally.
+- **Ruland** — universal joints (US12-6-6-SS) and nitrile boot kits; ships nationally.
 - **Grainger** — branches throughout LA, Orange County, San Diego. Same-day local pickup.
-- **Roton Products** — ships from the LA area; Acme screw stock cut to length.
 
 ---
 
@@ -229,22 +217,21 @@ See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) f
 | Interval | Task |
 |----------|------|
 | Before each session | Inspect muslin clamp engagement — see [Clamp System](film-clamp-mechanism-report.md) |
-| Before each session | Verify all four locking collars are tight after repositioning |
+| Before each session | Verify all four cam clamps are locked after repositioning |
 | Before each session | Check EPDM foam edge seal for tears or compression set |
-| Monthly | Lubricate HGR20 rails and HGH20CA carriage blocks (lithium grease) |
-| Monthly | Inspect Acme leadscrew threads and bronze nuts for wear |
-| Every 6 months | Check rod-end spherical bearings for play — replace if radial slop exceeds 0.2mm |
+| Monthly | Wipe the U-channel rails clean of grit — the acetal skate and UHMW pads run **dry** (no lubricant) |
+| Monthly | Inspect the acetal rollers and UHMW slide pads for wear or embedded grit |
+| Every 6 months | Check each U-joint for play and its nitrile boot for tears — replace the boot if split |
 | Every 6 months | Inspect Duvetyne blackout curtains for light leaks (pinholes, fraying) |
-| Annually | Check ACM panel hinge pins for corrosion; replace if stiff |
+| Annually | Inspect the anodized-6061 frame angle and corner L-brackets for pitting; replace on pitting (expendable) |
 | Annually | Verify rail mounting bolts for torque at all four rail positions |
-| Before transport | Lock all four corners at matching depth; tighten locking collars |
+| Before transport | Lock all four corners at matching depth; set all four cam clamps |
 
 ---
 
 ## 9. Source References
 
-1. [HIWIN HGR20 Linear Guideway](https://hiwin.com/products/linear-guideways/) — 20mm profile linear guide rail and HGH20CA carriage block specifications.
-2. [McMaster-Carr GIR25-DO Rod-End Bearing](https://www.mcmaster.com/rod-end-bearings) — Spherical rod-end bearing specifications (25mm bore).
-3. [Progressive Automations PA-14](https://www.progressiveautomations.com/products/linear-actuator-pa-14) — 12V linear actuator specifications (optional electric actuation).
-4. [Tilt-Swing Front Board Report](tilt-swing-board-report.md) — Front board mechanism for combined distortion analysis.
-5. [Equipment Layout Report](equipment-layout-report.md) — Rail positions and shadow-free zone verification.
+1. [McMaster-Carr 304 Stainless U-Channel](https://www.mcmaster.com/stainless-steel-u-channels) — 3×1½" (76×38mm) 304 stainless U-channel (1262T21), the depth rail the acetal skate runs in.
+2. [Ruland US12-6-6-SS Universal Joint](https://www.ruland.com/us12-6-6-ss.html) — single universal joint, 3/8" bores, 303 stainless, 45° per axis — the per-corner tilt+swing joint (nitrile boot UBOOT12/19-NI-KIT).
+3. [Tilt-Swing Front Board Report](tilt-swing-board-report.md) — Front board mechanism for combined distortion analysis.
+4. [Equipment Layout Report](equipment-layout-report.md) — Rail positions and shadow-free zone verification.

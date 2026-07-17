@@ -699,37 +699,38 @@ def view_a(ax):
     film/ACM rises back up. Section A-A is cut through the bottom carriage."""
     ax.set_xlim(-60, 470); ax.set_ylim(110, 560); ax.set_aspect("equal"); ax.axis("off")
 
-    # depth RAIL at the TOP — 3×1.5 304 U-CHANNEL, web-vertical, runs in Yd; drawn OVER the plate so the stack hangs BELOW
-    ax.add_patch(plt.Rectangle((-30, 232), 420, 76, fc=C_STEEL, ec=OUT, lw=1.0, zorder=8))
-    ax.plot([-30, 390], [237, 237], color=OUT, lw=0.8, zorder=9)                     # bottom flange (running surface)
-    ax.plot([-30, 390], [303, 303], color=OUT, lw=0.8, zorder=9)                     # top flange
+    # depth RAIL at the TOP — 3×1.5 304 U-CHANNEL, web-vertical, runs in Yd (BEHIND the carriage plate)
+    ax.add_patch(plt.Rectangle((-30, 232), 420, 76, fc=C_STEEL, ec=OUT, lw=1.0, zorder=3))
+    ax.plot([-30, 390], [237, 237], color=OUT, lw=0.8, zorder=4)                     # bottom flange (running surface)
+    ax.plot([-30, 390], [303, 303], color=OUT, lw=0.8, zorder=4)                     # top flange
     for bx in (-20, 380):                                                            # zigzag break symbols (rail continues in Yd)
         zz = [(bx-5,234),(bx+4,252),(bx-4,270),(bx+4,288),(bx-5,306)]
-        ax.plot([p[0] for p in zz],[p[1] for p in zz], color=OUT, lw=0.7, zorder=10)
-    # 4-wheel acetal skate — 2 LOAD rollers on the bottom flange + 2 KEEPER rollers under the top flange
+        ax.plot([p[0] for p in zz],[p[1] for p in zz], color=OUT, lw=0.7, zorder=4)
+    # ── WIDE carriage plate (red) — the MOVING part, drawn FULLY and IN FRONT: it extends UP over the skate, so
+    #    the 4 wheels sit BEHIND it and are shown ghosted (dotted). The Z-slide (green) runs up its centre. ──
+    _rect(ax, 130, 134, 80, 171, C_CAR, z=5)                                         # carriage plate Z134-305 (covers the wheels)
+    _rect(ax, 161, 156, 18, 76, C_TILT, z=6); _hatch316(ax, 161, 156, 18, 76)        # Z (tilt) slide — centred, IN FRONT
+    _rect(ax, 161, 156, 2.5, 76, C_POLY, z=7); _rect(ax, 176.5, 156, 2.5, 76, C_POLY, z=7)
+    ax.plot([170, 170], [232, 210], color=C_PIN, lw=1.4, zorder=8)                   # axle-retainer bolt down through the plate
+    _rect(ax, 200, 200, 14, 16, C_CLAMP, z=7)                                        # cam clamp on the carriage
+    # 4-wheel skate — GHOSTED (dotted), hidden behind the plate: 2 LOAD rollers + 2 KEEPER rollers + the axle
     for wx in (150, 190):
-        draw_circle(ax, wx, 253, 16, color=OUT, fill=True, fc=C_ACET, lw=1.1, zorder=9)   # load roller Ø32
-        draw_circle(ax, wx, 253, 4, color=OUT, fill=True, fc=C_STEEL, lw=0.6, zorder=10)  # Ø10 axle end
-        draw_circle(ax, wx, 291, 10, color=OUT, fill=True, fc=C_ACET, lw=0.9, zorder=9)   # keeper roller Ø20
-    # ── the hanging cluster BELOW the rail: WIDE carriage plate (red) with the Z-slide (green) up its CENTRE ──
-    _rect(ax, 130, 134, 80, 98, C_CAR, z=3)                                          # carriage plate, visible below the rail
-    _rect(ax, 161, 156, 18, 76, C_TILT, z=5); _hatch316(ax, 161, 156, 18, 76)        # Z (tilt) slide — centred
-    _rect(ax, 161, 156, 2.5, 76, C_POLY, z=6); _rect(ax, 176.5, 156, 2.5, 76, C_POLY, z=6)
-    ax.plot([170, 170], [232, 210], color=C_PIN, lw=1.4, zorder=7)                   # axle-retainer bolt down through the plate
-    _rect(ax, 200, 200, 14, 16, C_CLAMP, z=6)                                        # cam clamp on the carriage
+        ax.add_patch(plt.Circle((wx, 253), 16, fc="none", ec=OUT, lw=0.7, ls=(0, (3, 2)), zorder=10))  # load roller Ø32
+        ax.add_patch(plt.Circle((wx, 291), 10, fc="none", ec=OUT, lw=0.6, ls=(0, (3, 2)), zorder=10))  # keeper Ø20
+    ax.plot([150, 190], [253, 253], color=OUT, lw=0.6, dashes=(3, 2), zorder=10)     # axle (ghost) through both load rollers
     # section A-A cut through the bottom carriage
     ax.plot([170, 170], [232, 250], color=OUT, lw=0.6, zorder=11)
     ax.plot([170, 170], [120, 134], color=OUT, lw=0.6, zorder=11)
     ax.text(170, 254, "A", fontsize=6.5, ha="center", va="bottom", color=OUT, **FONT)
     ax.text(170, 116, "A", fontsize=6.5, ha="center", va="top", color=OUT, **FONT)
-    # ── compact cluster: U-joint + X (swing) slide + L-bracket + frame angle ──
-    _rect(ax, 158, 146, 24, 24, C_UJ, z=6)                                           # U-joint
-    draw_circle(ax, 170, 158, 5, color=C_PIN, fill=True, fc=C_PIN, lw=1.0, zorder=7)
-    _rect(ax, 164, 156, 12, 12, C_SWING, z=7)                                        # X (swing) slide — end-on
-    _rect(ax, 160, 134, 26, 24, C_STEEL, z=5)                                        # L-bracket
-    _rect(ax, 168, 158, 30, 6, C_FRAME, z=7)                                         # frame angle in-plane leg
-    _rect(ax, 168, 158, 6, 26, C_FRAME, z=7)                                         # frame angle perp leg
-    ax.add_patch(plt.Rectangle((178, 160), 6, 380, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))  # ACM rises UP
+    # ── compact cluster: U-joint + X (swing) slide + L-bracket + frame angle (IN FRONT of the plate) ──
+    _rect(ax, 158, 146, 24, 24, C_UJ, z=7)                                           # U-joint
+    draw_circle(ax, 170, 158, 5, color=C_PIN, fill=True, fc=C_PIN, lw=1.0, zorder=8)
+    _rect(ax, 164, 156, 12, 12, C_SWING, z=8)                                        # X (swing) slide — end-on
+    _rect(ax, 160, 134, 26, 24, C_STEEL, z=6)                                        # L-bracket
+    _rect(ax, 168, 158, 30, 6, C_FRAME, z=8)                                         # frame angle in-plane leg
+    _rect(ax, 168, 158, 6, 26, C_FRAME, z=8)                                         # frame angle perp leg
+    ax.add_patch(plt.Rectangle((178, 160), 6, 380, fc=C_PANEL, ec="none", alpha=0.16, zorder=1))  # ACM rises UP
     ax.plot([176,186,176,186,176],[455,461,467,473,479], color=OUT, lw=0.6, zorder=6)  # break on the ACM
 
     # ── dimensions ──
@@ -816,13 +817,13 @@ def section_aa(ax):
     _uchan_hatch(ax, 39, 5, 4, 9)          # inboard LIP on the bottom flange (lateral keeper, X)
     _uchan_hatch(ax, 5, 71, 38, 5)         # top flange
     # ── Ø32 acetal LOAD roller, gravity-seated on the bottom flange (edge-on: axis = X, in-plane) ──
-    _rect(ax, 9, 5, 16, 32, C_ACET, z=7)
-    draw_circle(ax, 17, 21, 5, color=OUT, fill=True, fc=C_STEEL, lw=0.8, zorder=8)   # Ø10 axle (end-on)
-    _rect(ax, 25, 16, 25, 10, C_STEEL, z=6)                                         # short axle → carriage (inboard only)
+    _rect(ax, 9, 5, 16, 32, C_ACET, z=7)                                            # Ø32 LOAD roller (rim, cut)
+    _rect(ax, 6, 16, 44, 10, C_STEEL, z=8)                                          # Ø10 axle/shaft — runs THROUGH the wheel, cantilevered to the carriage
+    draw_circle(ax, 17, 21, 3.2, color=OUT, fill=True, fc="#9AA0A8", lw=0.5, zorder=9)  # hub at the wheel centre (shaft goes through)
     # ── KEEPER roller, just under the top flange (anti-lift), on its own stub axle ──
-    _rect(ax, 11, 55, 13, 15, C_ACET, z=7)
-    draw_circle(ax, 17, 62, 4, color=OUT, fill=True, fc=C_STEEL, lw=0.7, zorder=8)
-    _rect(ax, 21, 58, 29, 8, C_STEEL, z=6)                                          # keeper stub axle → carriage
+    _rect(ax, 11, 55, 13, 15, C_ACET, z=7)                                          # keeper roller (rim, cut)
+    _rect(ax, 8, 58, 42, 8, C_STEEL, z=8)                                           # keeper stub axle — THROUGH the wheel to the carriage
+    draw_circle(ax, 17, 62, 2.6, color=OUT, fill=True, fc="#9AA0A8", lw=0.5, zorder=9)  # hub at the keeper centre
     # ── carriage plate (inboard, close to the channel opening) — the MOVING part; both axles land on it ──
     _rect(ax, 50, -2, 14, 74, C_CAR, z=6)
     ax.plot([57, 57], [-2, 70], color=C_PIN, lw=1.8, zorder=8)                       # retainer bolt DOWN thru plate
@@ -864,6 +865,8 @@ def section_top(ax):
     _rect(ax, 15, 1, 46, 32, C_ACET, z=7)
     # AXLE — a HORIZONTAL shaft along the wheel's length (X); it runs out to the yoke arms and stays in the throat
     _rect(ax, 10, 12, 56, 10, C_STEEL, z=6)
+    # ghost the axle where it is HIDDEN behind the wheel — shows the shaft passing THROUGH the wheel
+    ax.add_patch(plt.Rectangle((15, 12), 46, 10, fc="none", ec=OUT, lw=0.6, ls=(0, (3, 2)), zorder=9))
     ax.plot([38, 38], [12, 22], color="#6A6A72", lw=0.5, zorder=8)
     # ~5mm running-clearance marks between the wide wheel and each yoke arm
     for gx0, gx1 in ((10, 15), (61, 66)):
@@ -1146,7 +1149,7 @@ def right_flanged(ax):
 def sheet4():
     reset_label_registry()
     fig = plt.figure(figsize=(15, 11)); fig.patch.set_facecolor(BG)
-    ax_te = fig.add_axes([0.03, 0.56, 0.94, 0.40]); ax_te.set_facecolor(BG)
+    ax_te = fig.add_axes([0.03, 0.52, 0.94, 0.40]); ax_te.set_facecolor(BG)
     ax_rf = fig.add_axes([0.03, 0.34, 0.94, 0.18]); ax_rf.set_facecolor(BG)
     transport_elev(ax_te)
     right_flanged(ax_rf)
@@ -1395,6 +1398,10 @@ def sheet6():
               ha="center", va="bottom", fontsize=5, color=DIM, **FONT, zorder=15)
     ax_a.text((-5), (-LEG / 2 + T), "PERP. LEG",
               ha="right", va="center", fontsize=5, color=DIM, rotation=90, **FONT, zorder=15)
+    # identify the L-beam the clamp bolts to
+    leader(ax_a, (LEG * 0.72), (T / 2), (LEG + 18), (T + 14),
+           "2x2 6061 Al ANGLE FRAME\n— the muslin clip bolts to this",
+           color=C_FRAME, fs=5.5, ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # ── Muslin wrap path ──────────────────────────────────────────────────────
     muslin_t = 1.5
@@ -2173,29 +2180,62 @@ def attach_plan(ax):
     ax.text(-20, 88, "B — PLAN  (Yd × X; looking down Z) — the SWING slide + U-joint swing pin", fontsize=8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
 
+def attach_tilt(ax):
+    """SECTION (Yd × Z), looking along +X — the TILT stack (companion to plan B, which does the SWING / X slide).
+    Here the Z (tilt) slide shows its real VERTICAL travel and the U-joint's TILT pin is seen true; the X (swing)
+    slide is edge-on (into the page)."""
+    ax.set_xlim(-96, 118); ax.set_ylim(-44, 332); ax.set_aspect("equal"); ax.axis("off")
+    cx = 30
+    # carriage plate (top, hangs from the skate) + X (swing) slide edge-on (into page)
+    _rect(ax, cx - 24, 296, 48, 24, C_CAR, z=4)
+    _rect(ax, cx - 10, 300, 20, 16, C_SWING, z=5); _hatch316(ax, cx - 10, 300, 20, 16)
+    ax.text(cx, 324, "carriage plate + X slide (edge-on)", fontsize=5.2, color=DIM, ha="center", va="bottom", **FONT)
+    # Z (TILT) way — a long 316 flat bar running in Z (vertical) + carriage traversing it (lower = nominal)
+    _rect(ax, cx - 8, 44, 16, 256, C_TILT, z=5); _hatch316(ax, cx - 8, 44, 16, 256)
+    _rect(ax, cx - 15, 44, 30, 50, C_TILT, z=6)
+    _rect(ax, cx - 11, 48, 4, 42, C_POLY, z=7); _rect(ax, cx + 7, 48, 4, 42, C_POLY, z=7)   # UHMW pads
+    _rect(ax, cx - 15, 66, 8, 10, C_PIN, z=7)                                               # gib
+    ax.annotate("", xy=(cx + 34, 300), xytext=(cx + 34, 44), arrowprops=dict(arrowstyle="<->", color=C_TILT, lw=1.0))
+    ax.text(cx + 38, 172, "Z travel ~250mm = TILT accommodation", fontsize=6, color=C_TILT, ha="left", va="center", rotation=90, **FONT)
+    # stub → U-joint (TILT pin seen true) → L-bracket → frame angle (below)
+    _rect(ax, cx - 6, 30, 12, 16, C_STEEL, z=6)                                             # stub
+    _rect(ax, cx - 18, -4, 36, 34, C_UJ, z=6)                                               # U-joint
+    ax.plot([cx - 24, cx + 24], [13, 13], color=C_PIN, lw=2.4, zorder=8)                    # TILT pin (horizontal, true)
+    draw_circle(ax, cx - 16, 13, 3.5, color=C_PIN, fill=True, fc=C_PIN, lw=0.7, zorder=9)
+    draw_circle(ax, cx + 16, 13, 3.5, color=C_PIN, fill=True, fc=C_PIN, lw=0.7, zorder=9)
+    _rect(ax, cx - 12, -26, 24, 22, C_STEEL, z=6)                                           # L-bracket
+    _rect(ax, cx - 12, -32, 34, 6, C_FRAME, z=7)                                            # frame angle
+    ax.add_patch(plt.Rectangle((cx - 12, -40), 34, 8, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))
+    _joint(ax, cx, 37); _joint(ax, cx, -8)
+    leader(ax, cx - 15, 68, -94, 128, "Z carriage — 316 on UHMW + gib; cam-clamp locks tilt", ha="left", fs=5.6, color=C_TILT, font=FONT, bbox=LBL_BG)
+    leader(ax, cx - 24, 13, -94, 44, "U-joint TILT pin (true here)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, cx + 20, -30, 44, -38, "frame angle + ACM", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    ax.text(-96, 330, "A — SECTION  (Yd × Z; looking along X) — the TILT slide + U-joint tilt pin", fontsize=7.6, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+
+
 # ── Run all sheets ─────────────────────────────────────────────────────────────
 def sheet8():
     reset_label_registry()
     fig = plt.figure(figsize=(17, 12)); fig.patch.set_facecolor(BG)
-    axA = fig.add_axes([0.005, 0.10, 0.44, 0.82]); axA.set_facecolor(BG)
-    axB = fig.add_axes([0.45, 0.68, 0.54, 0.27]); axB.set_facecolor(BG)
-    attach_elevation(axA)
+    axA = fig.add_axes([0.01, 0.08, 0.32, 0.86]); axA.set_facecolor(BG)   # tall left — the TILT (green) slide
+    axB = fig.add_axes([0.37, 0.66, 0.61, 0.30]); axB.set_facecolor(BG)   # wide top-right — the SWING (purple) slide
+    attach_tilt(axA)
     attach_plan(axB)
     # notes + fastener schedule
-    axN = fig.add_axes([0.45, 0.05, 0.54, 0.575]); axN.set_xlim(0, 100); axN.set_ylim(0, 100); axN.axis("off")
+    axN = fig.add_axes([0.37, 0.06, 0.61, 0.55]); axN.set_xlim(0, 100); axN.set_ylim(0, 100); axN.axis("off")
     draw_notes(axN, [
         "FRAME ↔ CROSS-SLIDE ATTACHMENT — ONE OF FOUR CORNERS:",
         "The film frame is NOT bolted straight to a slide. Each corner hangs off BOTH cross-slides "
         "through a single U-joint, so the rigid plane can tilt AND swing while every corner stays "
         "square (the U-joint locks twist). Load path, film → rail: 2x2 6061 Al frame angle → corner "
         "bracket → U-joint → X (swing) slide → Z (tilt) slide → carriage plate → 4-wheel skate. At the "
-        "BOTTOM corner the film hangs ~110mm BELOW the weight rail (View A) — the stack hangs off the "
+        "BOTTOM corner the film hangs ~110mm BELOW the weight rail (Sheet 3, View A) — the stack hangs off "
         "skate and the ACM rises back up; the TOP corner is the mirror (film below its guide rail).",
         "THE TWO SLIDES do different jobs: the Z (tilt, green) slide takes the vertical arc-travel a "
         "rigid tilt forces on the corner (~250mm); the X (swing, purple) slide takes the horizontal "
         "arc-travel of a swing (~260mm). Both are 316 flat bar on UHMW pads with a gib; the gib drag "
         "holds the gravity-loaded Z axis, and a cam clamp locks each for the shot.",
-        "FIVE JOINTS make the chain (rail→frame, top-down in View A):",
+        "FIVE JOINTS make the chain (rail→frame, top-down — the full stack is on Sheet 3, View A):",
         "  J1  Z-way seats on the carriage-plate face  M8 ×4 SS (the green Z-slide runs up the plate centre)",
         "  J2  X-way → Z-carriage ................... M8 ×4 SS",
         "  J3  X-carriage stub Ø9.5 (3/8\") → U-joint . slip into the bore + set screw (Ruland US12-6-6-SS)",
@@ -2204,7 +2244,7 @@ def sheet8():
         "The U-joint's two bores are its ONLY rotating link; everything else is a rigid bolted/clamped "
         "stack. Set the pose by hand (push each slide), then throw the cam clamps — no leadscrews "
         "(a pinhole's infinite depth of field makes this scene control, not focus).",
-    ], 2, 99, 3.6, fs=6.2, title_fs=7.4, color=DIM, width=67, wrap=112, font=FONT)
+    ], 2, 99, 3.6, fs=6.2, title_fs=7.4, color=DIM, width=78, wrap=128, font=FONT)
     # title block
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 8 OF 8",

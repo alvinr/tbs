@@ -315,7 +315,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z slide rail (TILT, green) BL
   grp = ents.add_group
   grp.name = "Vertical Z slide rail (TILT, green) BL"
-  face = grp.entities.add_face([180.mm,2253.mm,156.mm], [196.mm,2253.mm,156.mm], [196.mm,2271.mm,156.mm], [180.mm,2271.mm,156.mm])
+  face = grp.entities.add_face([180.mm,2263.mm,156.mm], [196.mm,2263.mm,156.mm], [196.mm,2281.mm,156.mm], [180.mm,2281.mm,156.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(113.mm)
   mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
@@ -326,7 +326,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X slide rail (SWING, purple) BL
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING, purple) BL"
-  face = grp.entities.add_face([150.mm,2255.mm,156.mm], [410.mm,2255.mm,156.mm], [410.mm,2269.mm,156.mm], [150.mm,2269.mm,156.mm])
+  face = grp.entities.add_face([150.mm,2263.mm,156.mm], [410.mm,2263.mm,156.mm], [410.mm,2277.mm,156.mm], [150.mm,2277.mm,156.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
@@ -337,7 +337,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-joint BL
   grp = ents.add_group
   grp.name = "U-joint BL"
-  face = grp.entities.add_face([138.mm,2250.mm,146.mm], [162.mm,2250.mm,146.mm], [162.mm,2274.mm,146.mm], [138.mm,2274.mm,146.mm])
+  face = grp.entities.add_face([138.mm,2258.mm,146.mm], [162.mm,2258.mm,146.mm], [162.mm,2282.mm,146.mm], [138.mm,2282.mm,146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
@@ -579,7 +579,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z slide rail (TILT, green) BR
   grp = ents.add_group
   grp.name = "Vertical Z slide rail (TILT, green) BR"
-  face = grp.entities.add_face([4588.mm,2253.mm,156.mm], [4604.mm,2253.mm,156.mm], [4604.mm,2271.mm,156.mm], [4588.mm,2271.mm,156.mm])
+  face = grp.entities.add_face([4588.mm,2263.mm,156.mm], [4604.mm,2263.mm,156.mm], [4604.mm,2281.mm,156.mm], [4588.mm,2281.mm,156.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(113.mm)
   mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
@@ -590,7 +590,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X slide rail (SWING, purple) BR
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING, purple) BR"
-  face = grp.entities.add_face([4364.mm,2255.mm,156.mm], [4624.mm,2255.mm,156.mm], [4624.mm,2269.mm,156.mm], [4364.mm,2269.mm,156.mm])
+  face = grp.entities.add_face([4364.mm,2263.mm,156.mm], [4624.mm,2263.mm,156.mm], [4624.mm,2277.mm,156.mm], [4364.mm,2277.mm,156.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
@@ -601,7 +601,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-joint BR
   grp = ents.add_group
   grp.name = "U-joint BR"
-  face = grp.entities.add_face([4612.mm,2250.mm,146.mm], [4636.mm,2250.mm,146.mm], [4636.mm,2274.mm,146.mm], [4612.mm,2274.mm,146.mm])
+  face = grp.entities.add_face([4612.mm,2258.mm,146.mm], [4636.mm,2258.mm,146.mm], [4636.mm,2282.mm,146.mm], [4612.mm,2282.mm,146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
@@ -892,7 +892,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z slide rail (TILT, green) TL
   grp = ents.add_group
   grp.name = "Vertical Z slide rail (TILT, green) TL"
-  face = grp.entities.add_face([199.mm,2253.mm,2330.mm], [215.mm,2253.mm,2330.mm], [215.mm,2271.mm,2330.mm], [199.mm,2271.mm,2330.mm])
+  face = grp.entities.add_face([199.mm,2263.mm,2330.mm], [215.mm,2263.mm,2330.mm], [215.mm,2281.mm,2330.mm], [199.mm,2281.mm,2330.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(47.mm)
   mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
@@ -903,7 +903,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X slide rail (SWING, purple) TL
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING, purple) TL"
-  face = grp.entities.add_face([150.mm,2255.mm,2330.mm], [410.mm,2255.mm,2330.mm], [410.mm,2269.mm,2330.mm], [150.mm,2269.mm,2330.mm])
+  face = grp.entities.add_face([150.mm,2263.mm,2330.mm], [410.mm,2263.mm,2330.mm], [410.mm,2277.mm,2330.mm], [150.mm,2277.mm,2330.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
@@ -914,7 +914,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-joint TL
   grp = ents.add_group
   grp.name = "U-joint TL"
-  face = grp.entities.add_face([138.mm,2250.mm,2320.mm], [162.mm,2250.mm,2320.mm], [162.mm,2274.mm,2320.mm], [138.mm,2274.mm,2320.mm])
+  face = grp.entities.add_face([138.mm,2258.mm,2320.mm], [162.mm,2258.mm,2320.mm], [162.mm,2282.mm,2320.mm], [138.mm,2282.mm,2320.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
@@ -1137,7 +1137,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z slide rail (TILT, green) TR
   grp = ents.add_group
   grp.name = "Vertical Z slide rail (TILT, green) TR"
-  face = grp.entities.add_face([4569.mm,2253.mm,2330.mm], [4585.mm,2253.mm,2330.mm], [4585.mm,2271.mm,2330.mm], [4569.mm,2271.mm,2330.mm])
+  face = grp.entities.add_face([4569.mm,2263.mm,2330.mm], [4585.mm,2263.mm,2330.mm], [4585.mm,2281.mm,2330.mm], [4569.mm,2281.mm,2330.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(47.mm)
   mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
@@ -1148,7 +1148,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X slide rail (SWING, purple) TR
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING, purple) TR"
-  face = grp.entities.add_face([4364.mm,2255.mm,2330.mm], [4624.mm,2255.mm,2330.mm], [4624.mm,2269.mm,2330.mm], [4364.mm,2269.mm,2330.mm])
+  face = grp.entities.add_face([4364.mm,2263.mm,2330.mm], [4624.mm,2263.mm,2330.mm], [4624.mm,2277.mm,2330.mm], [4364.mm,2277.mm,2330.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
@@ -1159,7 +1159,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-joint TR
   grp = ents.add_group
   grp.name = "U-joint TR"
-  face = grp.entities.add_face([4612.mm,2250.mm,2320.mm], [4636.mm,2250.mm,2320.mm], [4636.mm,2274.mm,2320.mm], [4612.mm,2274.mm,2320.mm])
+  face = grp.entities.add_face([4612.mm,2258.mm,2320.mm], [4636.mm,2258.mm,2320.mm], [4636.mm,2282.mm,2320.mm], [4612.mm,2282.mm,2320.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")

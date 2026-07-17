@@ -58,10 +58,14 @@ The remaining §7 parts BOM is gated on confirmed prices._
   mechanism; optics §3/§5/§6 affirmed; hardware/BOM → report). **STILL OPEN (task #30):** the §4
   mechanism + §7 BOM + §8 maintenance are a leadscrew decision-record snapshot — DECIDE keep-collapse-
   to-optics-only vs **retire** (it's nav-labeled "(superseded)" and its optics overlap distortion-renders).
-- [ ] `component-dependency-map.md` §3.1 **model table** (line ~480) — still documents the retired
-  `generate_film_plane_model.py` / `film-plane.skp` (Option-A leadscrew DC); no `corner-gimbal` row yet.
-  Deferred: it describes actively-changing 3D internals under Alvin's review. Add a corner-gimbal row +
-  retire/point the film-plane row once the 3D review settles.
+- [ ] **Reconcile the two film-plane 3D models — `film-plane.skp` ↔ `corner-gimbal.skp`.** Both are
+  KEPT (film-plane.skp is NOT retired). `film-plane.skp` = the full film-plane model (older Option-A
+  leadscrew DC); `corner-gimbal.skp` = the current corner mechanism (U-channel/skate/U-joint). They
+  describe overlapping geometry and have diverged — reconcile so the full model carries the current
+  corner design (or define a clear split of responsibility). The report now embeds corner-gimbal; both
+  stay in `models/sketchfab.json`. Also: `component-dependency-map.md` §3.1 model table (line ~480)
+  still documents only the film-plane row (leadscrew DC) with no corner-gimbal row — update once the
+  two models are reconciled (deferred: describes 3D internals under Alvin's active review).
 - [ ] **§7 parts BOM — GATED on Alvin's SKU paste-check.** `parts.py` film section still holds the 11
   leadscrew SKUs (hgr20-rail, hgh20ca, acme-leadscrew/nut, handwheel-8in, locking-collar, crossslide-
   hgr15/hgh15ca/plate, rod-end-bearing, pivot-pin) → the report §7 table + master §4 inject them. Swap
@@ -73,6 +77,15 @@ The remaining §7 parts BOM is gated on confirmed prices._
   Verified so far: boot $22–29, 10mm 316 rod $33–50/ft, UHMW $23–93/sheet. Then reconcile parts.py +
   costing (film band + grand_total move ~$1–2k) → §7 auto-injects; retires the parts-identity dead-SKU
   lint warnings. This is also the FP_W/FP_H dead-BOM retirement folded in.
+
+## Walkway pop-out extension — revisit past the pinhole — OPEN
+
+_Surfaced 2026-07-17 (Alvin)._
+
+- [ ] Extend the walkway pop-out (punch-out bay) another IBC-width **past the pinhole, toward the
+  filter skid** — revisit the right/pinhole-end walkway so the deck reaches further along that end.
+  Study the clearance vs the pinhole wall, filter skid, and IBC stack; cascade to the walkway 2D
+  (`generate_walkway_diagram.py`) + 3D (`walkway.skp` / `overview.skp`) + master-shopping-list.
 
 ## Full audit (2026-07-04) — 53 confirmed findings → [audit-2026-07.md](audit-2026-07.md)
 _Multi-agent audit across all subsystems × 5 dimensions (3 high / 28 med / 22 low), every finding independently verified. Verdict: **design is sound — no structural/optical defect**; the debt is documentation cascade-leakage. Full detail + per-finding fixes in the linked report; fix in priority order:_

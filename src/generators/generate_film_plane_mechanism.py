@@ -744,7 +744,7 @@ def view_a(ax):
     leader(ax, 210, 210, 232, 210, "wide carriage plate (red) + cam clamp — hangs from the skate axles", ha="left", fs=5.8, color=C_CAR, font=FONT, bbox=LBL_BG)
     leader(ax, 170, 200, 232, 186, "Z (TILT) slide — 316 flat bar + UHMW + gib (green, up the plate centre)", ha="left", fs=5.8, color=C_TILT, font=FONT, bbox=LBL_BG)
     leader(ax, 176, 162, 232, 160, "X (SWING) slide — 316 flat bar, INTO PAGE (end-on)", ha="left", fs=5.8, color=C_SWING, font=FONT, bbox=LBL_BG)
-    leader(ax, 182, 158, 232, 138, "single U-joint (Ruland US12-6-6-SS) + L-bracket → frame angle", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 182, 158, 232, 138, "single U-joint (Ruland US12-6-6-SS) + 304 SS corner plate → frame angle", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 181, 300, 232, 118, "2x2 6061 Al frame angle + ACM/muslin — rises UP (the rigid plane)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
 
     ax.text(-60, 558, "A — CORNER ASSEMBLY ELEVATION  (BOTTOM / weight corner; Yd × Z — film hangs below the rail, matches the 3D)",
@@ -1925,7 +1925,7 @@ def attach_tilt(ax):
     _rect(ax, cx - 15, 66, 8, 10, C_PIN, z=7)                                               # gib
     ax.annotate("", xy=(cx + 34, 300), xytext=(cx + 34, 44), arrowprops=dict(arrowstyle="<->", color=C_TILT, lw=1.0))
     ax.text(cx + 38, 172, "Z travel ~250mm = TILT accommodation", fontsize=6, color=C_TILT, ha="left", va="center", rotation=90, **FONT)
-    # stub → U-joint (TILT pin seen true) → L-bracket → frame angle (below)
+    # stub → U-joint (TILT pin seen true) → 304 SS corner plate → frame angle (below)
     _rect(ax, cx - 6, 30, 12, 16, C_STEEL, z=6)                                             # stub
     _rect(ax, cx - 18, -4, 36, 34, C_UJ, z=6)                                               # U-joint
     ax.plot([cx - 24, cx + 24], [13, 13], color=C_PIN, lw=2.4, zorder=8)                    # TILT pin (horizontal, true)
@@ -1955,8 +1955,8 @@ def sheet8():
         "FRAME ↔ CROSS-SLIDE ATTACHMENT — ONE OF FOUR CORNERS:",
         "The film frame is NOT bolted straight to a slide. Each corner hangs off BOTH cross-slides "
         "through a single U-joint, so the rigid plane can tilt AND swing while every corner stays "
-        "square (the U-joint locks twist). Load path, film → rail: 2x2 6061 Al frame angle → corner "
-        "bracket → U-joint → X (swing) slide → Z (tilt) slide → carriage plate → 4-wheel skate. At the "
+        "square (the U-joint locks twist). Load path, film → rail: 2x2 6061 Al frame angle → 304 SS "
+        "corner plate → U-joint → X (swing) slide → Z (tilt) slide → carriage plate → 4-wheel skate. At the "
         "BOTTOM corner the film hangs ~110mm BELOW the weight rail (Sheet 3, View A) — the stack hangs off "
         "skate and the ACM rises back up; the TOP corner is the mirror (film below its guide rail).",
         "THE TWO SLIDES do different jobs: the Z (tilt, green) slide takes the vertical arc-travel a "
@@ -1967,8 +1967,8 @@ def sheet8():
         "  J1  Z-way seats on the carriage-plate face  M8 ×4 SS (the green Z-slide runs up the plate centre)",
         "  J2  X-way → Z-carriage ................... M8 ×4 SS",
         "  J3  X-carriage stub Ø9.5 (3/8\") → U-joint . slip into the bore + set screw (Ruland US12-6-6-SS)",
-        "  J4  U-joint output stub → L-bracket ...... slip + set-screw clamp",
-        "  J5  2x2 6061 Al frame angle → L-bracket .. M6 ×2 per leg, vertical (tapped into the angle)",
+        "  J4  U-joint output stub → 304 SS corner plate .. slip + set-screw clamp",
+        "  J5  2x2 6061 Al frame angle → 304 SS corner plate .. M6 ×2 per leg, vertical (tapped into the angle)",
         "The U-joint's two bores are its ONLY rotating link; everything else is a rigid bolted/clamped "
         "stack. Set the pose by hand (push each slide), then throw the cam clamps — no leadscrews "
         "(a pinhole's infinite depth of field makes this scene control, not focus).",

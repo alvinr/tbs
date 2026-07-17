@@ -208,8 +208,8 @@ def corner(tag, cx, fz, zc, cin, side):
     # Kept INBOARD of the web (outboard edge at the web inboard face) so the beam-flush cut support clears it.
     ybk = min(ty - 8, FP_Y - 4)
     fbx = cx - cin * (CW_BOT / 2 - HB_T)                 # web inboard face = the moving assembly's outboard limit
-    P.append(ov.ruby_box(f"Frame corner L-bracket (6061 Al anodized, expendable — angle frame → U-joint) {tag}", min(fbx, fbx + cin * 48), ybk, fz - 26, 48, (FP_Y + 8) - ybk, 52, color=C_STEEL))
-    # the film-frame angle CORNER bolts onto this bracket → the ACM is carried ACM → angle frame → bracket → U-joint
+    P.append(ov.ruby_box(f"Corner plate 304 SS (U-joint mount — angle frame → U-joint) {tag}", min(fbx, fbx + cin * 48), ybk, fz - 26, 48, (FP_Y + 8) - ybk, 52, color=C_STEEL))
+    # the film-frame angle CORNER bolts onto this 304 SS plate → the ACM is carried ACM → angle frame → 304 SS corner plate → U-joint
     fcx = cx + cin * FILM_INSET                          # film-plane corner (frame heel)
     P.append(ov.ruby_cylinder(f"Frame-corner bolt (angle frame → bracket) {tag}", fcx, FP_Y - 6, fz, 3, 18, color=C_STEEL, axis="y"))
     return "\n".join(P)
@@ -234,8 +234,10 @@ def film_plane():
     # splash-not-immersed cyanotype zone, replaced on pitting, chosen over 304 SS for weight + cost):
     # the ACM seats against the frame's in-plane leg; the muslin wraps + clamps to the perp leg (Sheet 6); and
     # the frame's four CORNERS bolt onto the frame
-    # corner brackets — which carry it through the U-joint to the cross-slides. So the load path is
-    # ACM → angle frame → corner bracket → U-joint, never a butt joint.
+    # 304 SS corner plates — which carry it through the U-joint to the cross-slides. So the load path is
+    # ACM → angle frame → 304 SS corner plate → U-joint, never a butt joint. The corner plate is STEEL
+    # (not the expendable 6061 angle): the U-joint funnels the corner load into a few bolts, too concentrated
+    # for aluminum — 304 SS for strength + a galvanic/wet-zone match to the 303 SS U-joint.
     AL, AT = 50, 5                                # 2x2 angle leg / wall
     yperp = FP_Y - AL                             # perp leg projects toward the pinhole (muslin side)
     yin = FP_Y - AT                               # in-plane leg lies against the ACM front face

@@ -44,22 +44,35 @@ moving plane by ~50 kg._
   part), re-inject the weight blocks + PNGs, and re-check the CG/floor-load. Also feeds the (still
   un-quantified) per-corner load used to firm the cross-slide section.
 
-## Film-plane report reconciliation (leadscrew Option A → U-channel redesign) — OPEN
+## Film-plane report reconciliation (leadscrew Option A → U-channel redesign) — PROSE DONE, BOM GATED
 
-_Surfaced 2026-07-16 during the 304-SS frame material fix. The mechanism CASCADE (constants/parts/
-costing/weight/2D sheets 1–5,7,8/3D) is on `film-plane-redesign` and current, but the PROSE still
-describes the superseded leadscrew Option A. To reconcile in one pass:_
+_Surfaced 2026-07-16 during the frame material fix. Prose reconciled 2026-07-17 (commit 47d87d10).
+The remaining §7 parts BOM is gated on confirmed prices._
 
-- [ ] `film-plane-mechanism-report.md` §1/§3/§4 — HGR20 rails, HGH20CA carriages, ¾"-6 Acme leadscrews,
-  8" handwheels, rod-end + Ø25 pivot-pin fork clevis, and the stale Sketchfab embed (film-plane.skp
-  bb5394…, not corner-gimbal 572b…). The §4 diagram callout labels Sheet 6 "Four-Corner Frame" but
-  Sheet 6 is now the muslin-clamp detail. Movement travels still cite 2,262 depth.
-- [ ] `component-dependency-map.md` §3.1 film-plane narrative (line ~90) — rev7 leadscrew snapshot
-  ("welded aluminum angle frame … 4× HGR20 … Acme leadscrews … handwheels"); refresh to the U-channel +
-  316 flat-bar cross-slide + Ruland U-joint design and the 304 SS frame.
-- [ ] `film-plane-mechanism-analysis.md` — the existing partial reconciliation (task #30); still describes
-  the leadscrew drive. Fold the FP_W/FP_H cascade (retire the dead HGR20/Acme/handwheel/rod-end BOM) into
-  the same pass; the Sheet-3 "~280mm" tilt label should become "~250mm".
+- [x] `film-plane-mechanism-report.md` §1/§4/§8/§9 — replaced the leadscrew Option-A narrative with the
+  304 U-channel + acetal skate + 316 flat-bar Z/X cross-slide + Ruland US12-6-6-SS U-joint + cam-clamp
+  design; dropped handwheels/Acme/rod-end/pivot-pin/PA-14 + old-vs-new archaeology; §4 image now Sheet 7
+  (front elevation); Sketchfab embed + `models/sketchfab.json` → corner-gimbal 572b… .
+- [x] `component-dependency-map.md` §3.1 component roster + §3 diagram-matrix note → U-channel design.
+- [~] `film-plane-mechanism-analysis.md` — scope note fixed (stops claiming it describes the built
+  mechanism; optics §3/§5/§6 affirmed; hardware/BOM → report). **STILL OPEN (task #30):** the §4
+  mechanism + §7 BOM + §8 maintenance are a leadscrew decision-record snapshot — DECIDE keep-collapse-
+  to-optics-only vs **retire** (it's nav-labeled "(superseded)" and its optics overlap distortion-renders).
+- [ ] `component-dependency-map.md` §3.1 **model table** (line ~480) — still documents the retired
+  `generate_film_plane_model.py` / `film-plane.skp` (Option-A leadscrew DC); no `corner-gimbal` row yet.
+  Deferred: it describes actively-changing 3D internals under Alvin's review. Add a corner-gimbal row +
+  retire/point the film-plane row once the 3D review settles.
+- [ ] **§7 parts BOM — GATED on Alvin's SKU paste-check.** `parts.py` film section still holds the 11
+  leadscrew SKUs (hgr20-rail, hgh20ca, acme-leadscrew/nut, handwheel-8in, locking-collar, crossslide-
+  hgr15/hgh15ca/plate, rod-end-bearing, pivot-pin) → the report §7 table + master §4 inject them. Swap
+  to the Sheet-5 corner hardware (Ruland US12-6-6-SS + UBOOT12/19-NI-KIT, McMaster 4040N12 supports,
+  89535K873 3/8" stubs, Ø32 acetal rollers on Ø10 316 axles, carriage plate, 316 flat-bar cross-slides +
+  UHMW + gib, cam clamps, 1262T21 U-channel). **Blocked:** McMaster + Ruland block crawlers, so 4040N12 /
+  1262T21 / 89535K873 SKUs + the US12-6-6-SS price could not be auto-verified. Alvin to paste-check:
+  4040N12 (304 shaft support), 1262T21 ($/ft), 89535K873 (3/8" 304 rod), US12-6-6-SS (U-joint price).
+  Verified so far: boot $22–29, 10mm 316 rod $33–50/ft, UHMW $23–93/sheet. Then reconcile parts.py +
+  costing (film band + grand_total move ~$1–2k) → §7 auto-injects; retires the parts-identity dead-SKU
+  lint warnings. This is also the FP_W/FP_H dead-BOM retirement folded in.
 
 ## Full audit (2026-07-04) — 53 confirmed findings → [audit-2026-07.md](audit-2026-07.md)
 _Multi-agent audit across all subsystems × 5 dimensions (3 high / 28 med / 22 low), every finding independently verified. Verdict: **design is sound — no structural/optical defect**; the debt is documentation cascade-leakage. Full detail + per-finding fixes in the linked report; fix in priority order:_

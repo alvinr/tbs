@@ -1944,37 +1944,39 @@ def attach_tilt(ax):
 
 
 def _corner_elevation(ax):
-    """VIEW A — the corner SQUARE-ON from the PINHOLE side (X × Z), TO SCALE (mm). Depth order BACK→FRONT:
-    X-slide → U-joint (Ø19) → 304 SS corner plate → 6061 angle L (2") → ACM. The ACM is FRONTMOST; the
-    back layers are hidden → dashed/faint. Bottom-LEFT corner."""
+    """VIEW A — the corner SQUARE-ON from the X-SLIDE / RAIL side (X × Z), TO SCALE (mm): the assembly turned
+    180° about the vertical axis so we view it FROM BEHIND the film plane. Depth order BACK→FRONT is now
+    reversed vs the pinhole view: ACM → 6061 angle L → 304 SS corner plate → U-joint (Ø19) → X-slide. The
+    mechanism (plate, U-joint, X-slide) is FRONTMOST and solid; the ACM + frame are hidden → dashed/faint."""
     AL = 50.8                                                        # 2" angle leg
     ax.set_xlim(-70, 250); ax.set_ylim(-48, 258); ax.set_aspect("equal"); ax.axis("off")
-    # BACK → FRONT
-    ax.add_patch(plt.Rectangle((-58, 21), 168, 38, fc=C_SWING, ec=OUT, lw=0.8, ls=(0, (4, 2)),
-                               alpha=0.22, zorder=3))                                    # X (swing) slide (¼×1½ bar, 38 wide), backmost
-    ax.add_patch(plt.Circle((40, 40), 9.5, fc=C_UJ, ec=OUT, lw=1.0, ls=(0, (4, 2)), alpha=0.5, zorder=4))  # U-joint Ø19 end-on (ghost)
-    ax.add_patch(plt.Rectangle((-2, -2), 152, 152, fc=C_STEEL, ec=OUT, lw=1.0, ls=(0, (4, 2)),
-                               alpha=0.4, zorder=5))                                     # 304 SS corner plate 6×8 (ghost)
-    ax.add_patch(plt.Rectangle((0, 0), 232, AL, fc=C_FRAME, ec=OUT, lw=1.4, zorder=6))   # 6061 angle L — bottom leg
-    ax.add_patch(plt.Rectangle((0, 0), AL, 214, fc=C_FRAME, ec=OUT, lw=1.4, zorder=6))   # 6061 angle L — left leg
-    ax.add_patch(plt.Rectangle((AL - 6, AL - 6), 214, 190, fc=C_ACM, ec=OUT, lw=0.9, alpha=0.5, zorder=8))  # ACM FRONTMOST
-    ax.text(150, 165, "muslin over ACM\n(faces the pinhole)", fontsize=6, color=DIM,
-            ha="center", va="center", zorder=15, **FONT)
-    # M6 bolts, angle → 304 SS corner plate behind (J5, 2 per leg) — end-on
+    ax.invert_xaxis()                                               # 180° about the vertical axis — view from the other side
+    # BACK → FRONT (from behind: ACM farthest, X-slide nearest)
+    ax.add_patch(plt.Rectangle((AL - 6, AL - 6), 214, 190, fc=C_ACM, ec=OUT, lw=0.8, ls=(0, (4, 2)),
+                               alpha=0.22, zorder=3))                                    # ACM — backmost now (hidden)
+    ax.add_patch(plt.Rectangle((0, 0), 232, AL, fc=C_FRAME, ec=OUT, lw=1.0, ls=(0, (4, 2)),
+                               alpha=0.30, zorder=4))                                    # 6061 angle L — bottom leg (behind the plate)
+    ax.add_patch(plt.Rectangle((0, 0), AL, 214, fc=C_FRAME, ec=OUT, lw=1.0, ls=(0, (4, 2)),
+                               alpha=0.30, zorder=4))                                    # 6061 angle L — left leg
+    ax.add_patch(plt.Rectangle((-2, -2), 152, 152, fc=C_STEEL, ec=OUT, lw=1.2, zorder=5))  # 304 SS corner plate — NOW the visible face
+    _hatch316(ax, -2, -2, 152, 152)
+    ax.add_patch(plt.Rectangle((-58, 21), 168, 38, fc=C_SWING, ec=OUT, lw=1.0, zorder=6))   # X (swing) slide — frontmost now, solid
+    ax.add_patch(plt.Circle((40, 40), 9.5, fc=C_UJ, ec=OUT, lw=1.1, zorder=7))              # U-joint Ø19 end-on — yoke toward us
+    draw_circle(ax, 40, 40, 2.6, color=OUT, fill=False, lw=0.9, zorder=8)                   # swing pin (end-on)
+    # M6 bolt HEADS on the plate back face, angle → 304 SS corner plate (J5, 2 per leg) — end-on, now toward us
     for (bx, bz) in [(96, 25.4), (134, 25.4), (25.4, 96), (25.4, 134)]:
-        draw_circle(ax, bx, bz, 3.0, color=OUT, fill=False, lw=0.9, zorder=9)
-        draw_circle(ax, bx, bz, 1.1, color=OUT, fill=True, fc=C_PIN, lw=0.5, zorder=10)
-    draw_dim_v(ax, -14, 0, AL, "2\" (50.8)", fs=5.4, font=FONT)                          # angle leg size
+        draw_circle(ax, bx, bz, 3.0, color=OUT, fill=True, fc=C_PIN, lw=0.9, zorder=9)
+    draw_dim_v(ax, 162, 0, AL, "2\" (50.8)", fs=5.4, font=FONT)                          # angle leg size (on the now-right leg)
     # labels
-    leader(ax, 25.4, 150, -66, 190, "2x2 6061 Al angle L (FRAME)\n— its face toward us", ha="left", fs=5.6, color=C_FRAME, font=FONT, bbox=LBL_BG)
-    leader(ax, 120, 120, 150, 128, "304 SS corner plate 6×8 (behind, hidden)\nU-joint mount", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 47, 47, -66, 92, "U-joint Ø19 (behind, end-on)\nRuland USKC12-6-6-SS", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 96, 25.4, 96, -34, "M6 ×2 per leg (angle → plate, J5)", ha="left", fs=5.2, color=C_PIN, font=FONT, bbox=LBL_BG)
-    leader(ax, -40, 40, -68, 12, "X (swing) slide\n(backmost — View B)", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
-    ax.text(-70, 256, "A — CORNER SQUARE-ON FROM THE PINHOLE  (X × Z, to scale)",
-            fontsize=7.2, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
-    ax.text(-70, 247, "ACM front; frame L; 304 SS plate + U-joint hidden behind",
-            fontsize=5.8, color=DIM, ha="left", va="top", **FONT)
+    leader(ax, 75, 120, 175, 150, "304 SS corner plate 6×8 — U-joint mount\n(this face toward us now)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 40, 40, -40, 92, "U-joint Ø19 end-on (yoke toward us)\nRuland USKC12-6-6-SS", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 90, 40, 150, 15, "X (swing) slide — frontmost this view", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(ax, 25.4, 134, -30, 175, "M6 ×2 per leg (angle → plate, J5)\nheads on the plate back", ha="left", fs=5.2, color=C_PIN, font=FONT, bbox=LBL_BG)
+    leader(ax, 200, 25.4, 210, -34, "2x2 6061 Al angle L (FRAME)\n— behind the plate now (ACM behind it)", ha="left", fs=5.4, color=C_FRAME, font=FONT, bbox=LBL_BG)
+    ax.text(-70, 256, "A — FROM THE X-SLIDE / RAIL SIDE  (X × Z)",
+            fontsize=7.0, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+    ax.text(-70, 247, "180° flip of the pinhole view — mechanism forward,\nACM + frame hidden behind (to scale)",
+            fontsize=5.6, color=DIM, ha="left", va="top", **FONT)
 
 
 def _corner_section(ax):
@@ -2007,13 +2009,19 @@ def _corner_section(ax):
     ax.plot([180.8, 180.8, 172 + AW + AL, 172 + AW + AL], [56, -51.2, -51.2, -60],
             color=C_MUSLIN, lw=2.6, alpha=0.95, zorder=12)                                        # muslin — front, wraps the perp leg
     # retaining bolts — COUNTERSUNK (M6). J5: angle → 304 SS plate; and angle → ACM (flush).
-    for by in (-24, 24):                                            # J5 angle → SS corner plate
-        ax.fill([176.8, 176.8, 174, 174], [by - 3, by + 3, by + 1.1, by - 1.1], color=C_PIN, zorder=11)
-        ax.add_patch(plt.Rectangle((168, by - 0.9), 8, 1.8, fc=C_PIN, ec=OUT, lw=0.3, zorder=9))
+    for by in (-24, 24):                                            # J5 frame → SS corner plate — secured FROM THE PLATE side
+        ax.fill([166, 166, 168.5, 168.5], [by - 3, by + 3, by + 1.1, by - 1.1], color=C_PIN, zorder=12)  # countersunk head in the plate back (U-joint side)
+        ax.add_patch(plt.Rectangle((168.5, by - 0.9), 8.3, 1.8, fc=C_PIN, ec=OUT, lw=0.3, zorder=11))     # shank forward through the plate, threads into the frame leg
     for by in (-10, 10):                                           # ACM secured FROM the frame INTO the ACM — head
         ax.fill([172, 172, 175, 175], [by - 3, by + 3, by + 1.1, by - 1.1], color=C_PIN, zorder=11)  # countersunk in the frame BACK
         ax.add_patch(plt.Rectangle((175, by - 0.9), 6, 1.8, fc=C_PIN, ec=OUT, lw=0.3, zorder=9))       # shank forward into the ACM (front clean)
-    _joint(ax, 68, 0); _joint(ax, 140, 0)                          # J3/J4 set screws (end-on)
+    # countersunk cap screw, 304 SS corner plate → output stub — secures the shaft that carries the U-joint (axial, on CL)
+    ax.fill([172, 172, 168.5, 168.5], [-3.4, 3.4, 1.2, -1.2], color=C_PIN, zorder=12)               # countersunk head in the plate (frame-side face)
+    ax.add_patch(plt.Rectangle((148, -1.2), 20.5, 2.4, fc=C_PIN, ec=OUT, lw=0.3, zorder=12))         # shank axial into the output stub
+    # USKC clamp hubs — a clamp screw locks each hub onto its KEYED shaft (shown on the U-joint, radial)
+    for hx in (84, 128):                          # input hub (→ X-carriage stub) · output hub (→ corner-plate stub)
+        ax.add_patch(plt.Rectangle((hx - 0.9, 2.5), 1.8, 7.0, fc=C_PIN, ec=OUT, lw=0.3, zorder=13))   # clamp-screw shank into the hub
+        ax.add_patch(plt.Rectangle((hx - 2.2, 9.5), 4.4, 2.4, fc=C_PIN, ec=OUT, lw=0.4, zorder=13))    # cap-screw head at the hub OD
     # dimensions
     draw_dim_h(ax, 72, 140, 30, "68", fs=5.2, font=FONT)                                   # U-joint length
     draw_dim_v(ax, 150, -9.5, 9.5, "Ø19", fs=5.2, font=FONT)                               # U-joint dia
@@ -2024,14 +2032,15 @@ def _corner_section(ax):
     # labels
     leader(ax, 26, -18, 6, -74, "X carriage — 316 on UHMW;\ncam-clamp locks swing", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
     leader(ax, 60, -6, 40, -78, "J3  X-carriage stub Ø9.5 (3/8\") → U-joint bore", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 106, 13, 60, 86, "U-joint (tilt + swing, twist-locked) — Ruland USKC12-6-6-SS", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 169, -40, 150, -92, "304 SS corner plate — J4 U-joint stub KEYED + CLAMPED", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 175, 24, 150, 66, "J5 COUNTERSUNK, angle → SS plate (M6 ×2/leg)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
+    leader(ax, 84, 11.9, 56, 86, "U-joint (tilt + swing, twist-locked) — Ruland USKC12-6-6-SS\nclamp screw per hub locks it on its keyed shaft", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 169, -40, 170, -74, "304 SS corner plate — J4 U-joint stub KEYED + CLAMPED", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 167, 24, 150, 66, "J5 COUNTERSUNK from the plate side → frame (M6 ×2/leg)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
     leader(ax, 174, 10, 202, 38, "ACM secured FROM the frame INTO the ACM\n(countersunk in the frame back; front face clean)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
+    leader(ax, 170, -1.2, 128, -46, "countersunk cap screw:\ncorner plate → output stub (secures the shaft)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
     leader(ax, 178, 40, 208, 90, "6061 angle L cradles the ACM (4mm) + muslin;\nACM on the pinhole face — Sheet 6", ha="left", fs=5.2, color=DIM, font=FONT, bbox=LBL_BG)
-    ax.text(250, -92, "B — CROSS-SECTION  (Yd × X, to scale)",
+    ax.text(170, -92, "B — CROSS-SECTION  (Yd × X, to scale)",
             fontsize=7.0, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
-    ax.text(250, -84, "pinhole at left · X-slide at right (90° to it)",
+    ax.text(170, -85, "pinhole at left · X-slide at right (90° to it)",
             fontsize=5.6, color=DIM, ha="left", va="top", **FONT)
 
 

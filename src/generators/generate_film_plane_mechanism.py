@@ -1950,19 +1950,20 @@ def _corner_elevation(ax):
     further back along the optical axis — shown square-on it is fully occluded, so see View B for it.
     Bottom-LEFT corner."""
     ax.set_xlim(-42, 206); ax.set_ylim(-36, 200); ax.set_aspect("equal"); ax.axis("off")
-    # ── hidden BEHIND the frame corner (dashed = occluded): 304 SS corner plate + U-joint ──
-    ax.add_patch(plt.Rectangle((0, 0), 98, 98, fc=C_STEEL, ec=OUT, lw=1.0, ls=(0, (4, 2)),
-                               alpha=0.5, zorder=4))                                     # 304 SS corner plate
+    # ── depth order square-on from the pinhole (BACK → FRONT): X-slide → U-joint → 304 SS corner
+    #    plate → 6061 angle L → ACM. Back layers are HIDDEN behind the front ones → dashed/faint. ──
+    ax.add_patch(plt.Rectangle((-40, 38), 156, 22, fc=C_SWING, ec=OUT, lw=0.8, ls=(0, (4, 2)),
+                               alpha=0.22, zorder=3))                                    # X (swing) slide — BACKMOST, runs along X
     ax.add_patch(plt.Rectangle((34, 34), 30, 30, fc=C_UJ, ec=OUT, lw=1.0, ls=(0, (4, 2)),
-                               alpha=0.7, zorder=5))                                     # U-joint (end-on)
-    # ── the film face we SEE (frontmost): muslin over the ACM, inboard of the frame L; semi-transparent
-    #    so the hidden plate/U-joint read through ──
-    ax.add_patch(plt.Rectangle((26, 26), 172, 150, fc=C_ACM, ec=OUT, lw=0.8, alpha=0.35, zorder=6))
+                               alpha=0.45, zorder=4))                                    # U-joint (ghost, behind the plate)
+    ax.add_patch(plt.Rectangle((0, 0), 98, 98, fc=C_STEEL, ec=OUT, lw=1.0, ls=(0, (4, 2)),
+                               alpha=0.4, zorder=5))                                     # 304 SS corner plate (ghost)
+    ax.add_patch(plt.Rectangle((0, 0), 198, 26, fc=C_FRAME, ec=OUT, lw=1.4, zorder=6))   # 6061 angle L — bottom leg
+    ax.add_patch(plt.Rectangle((0, 0), 26, 178, fc=C_FRAME, ec=OUT, lw=1.4, zorder=6))   # 6061 angle L — left leg
+    # ── ACM — FRONTMOST (faces the pinhole); semi-transparent so the ghosts behind read through ──
+    ax.add_patch(plt.Rectangle((20, 20), 178, 156, fc=C_ACM, ec=OUT, lw=0.9, alpha=0.5, zorder=8))
     ax.text(128, 150, "muslin over ACM\n(faces the pinhole)", fontsize=5.4, color=DIM,
             ha="center", va="center", zorder=15, **FONT)
-    # ── 6061 angle L frame — the perimeter border, its face toward us (solid) ──
-    ax.add_patch(plt.Rectangle((0, 0), 198, 26, fc=C_FRAME, ec=OUT, lw=1.4, zorder=7))   # bottom leg
-    ax.add_patch(plt.Rectangle((0, 0), 26, 178, fc=C_FRAME, ec=OUT, lw=1.4, zorder=7))   # left leg
     # M6 bolts, angle → 304 SS corner plate behind (J5, 2 per leg) — end-on (run along Yd into the plate)
     for (bx, bz) in [(60, 13), (90, 13), (13, 60), (13, 90)]:
         draw_circle(ax, bx, bz, 3.2, color=OUT, fill=False, lw=0.9, zorder=9)
@@ -1976,8 +1977,7 @@ def _corner_elevation(ax):
            ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 60, 13, 46, -28, "M6 ×2 per leg\n(angle → plate, J5)",
            ha="left", fs=5.2, color=C_PIN, font=FONT, bbox=LBL_BG)
-    ax.text(150, 44, "X (swing) slide is\nfurther back — View B", fontsize=5.2, color=C_SWING,
-            ha="left", va="center", style="italic", zorder=15, **FONT)
+    leader(ax, -30, 49, -42, 24, "X (swing) slide\n(backmost — see View B)", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
     ax.text(-42, 198, "A — CORNER SQUARE-ON FROM THE PINHOLE  (X × Z) — the film face + frame L; plate + U-joint hidden behind",
             fontsize=7.4, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 

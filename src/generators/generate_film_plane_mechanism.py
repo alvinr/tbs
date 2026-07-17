@@ -1405,16 +1405,17 @@ def sheet6():
            "MUSLIN\n(100mm HEM)", color=C_MUSLIN, fs=5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Clamp base plate ─────────────────────────────────────────────────────
+    # ── Clamp base plate — bolted flat to the perp-leg OUTBOARD face (x=T),
+    #    extends DOWN below the corner. The whole clamp lives OUTBOARD. ────────
     base_x = T
     base_y_bot = -CLAMP_BASE_H
     ax_a.add_patch(Rectangle(((base_x), (base_y_bot)),
                               (CLAMP_BASE_T), (CLAMP_BASE_H),
                               fc=C_CLAMP, ec=ANNO, lw=1.2, zorder=7, alpha=0.9))
 
-    # M5 bolts
-    bolt_z1 = -15
-    bolt_z2 = -35
+    # M5 bolts — through the perp leg + base, both BELOW the corner
+    bolt_z1 = -22
+    bolt_z2 = -40
     bolt_d = 5
     for bz in [bolt_z1, bolt_z2]:
         ax_a.add_patch(Rectangle(((0), (bz - bolt_d * 0.2)),
@@ -1427,47 +1428,44 @@ def sheet6():
                                   (5), (bolt_d),
                                   fc=C_BOLT, ec=ANNO, lw=0.8, zorder=10))
 
-    # ── Cam lever + jaw (closed) ─────────────────────────────────────────────
-    pivot_x = T + CLAMP_BASE_T / 2
-    pivot_z = 0
-
-    jaw_x = LEG - CLAMP_JAW_T
-    jaw_z_top = T + muslin_t + CLAMP_JAW_H / 2
-    jaw_z_bot = T + muslin_t - CLAMP_JAW_H / 2
-    ax_a.add_patch(Rectangle(((jaw_x), (jaw_z_bot)),
+    # ── Neoprene jaw — presses the muslin HEM against the perp-leg OUTBOARD
+    #    face (x=T), ~15mm below the corner. Jaw + lever stay at x>=T, y<=0. ──
+    jaw_y = -15
+    jaw_inner_x = T + muslin_t                 # hem lies on the x=T face; jaw pins it there
+    ax_a.add_patch(Rectangle(((jaw_inner_x), (jaw_y - CLAMP_JAW_H / 2)),
                               (CLAMP_JAW_T), (CLAMP_JAW_H),
                               fc=C_NEOP, ec=ANNO, lw=1.0, zorder=8))
 
-    ax_a.plot([(pivot_x), (jaw_x + CLAMP_JAW_T / 2)],
-              [(pivot_z), (T + muslin_t)],
-              color=C_CLAMP, lw=2.5, solid_capstyle="round", zorder=7)
+    # clamp-force arrow — jaw pressing -x onto the hem/face
+    ax_a.annotate("", xy=((T + muslin_t), (jaw_y)),
+                  xytext=((jaw_inner_x + CLAMP_JAW_T + 7), (jaw_y)),
+                  arrowprops=dict(arrowstyle="-|>", color="#208020", lw=1.4),
+                  zorder=11)
 
+    # ── Cam lever (closed) — pivot on the base (outboard, low); short arm up
+    #    to the jaw. Entire linkage is OUTBOARD of the L — never crosses it. ──
+    pivot_x = T + CLAMP_BASE_T
+    pivot_z = -36
+    ax_a.plot([(pivot_x), (jaw_inner_x + CLAMP_JAW_T)],
+              [(pivot_z), (jaw_y)],
+              color=C_CLAMP, lw=2.5, solid_capstyle="round", zorder=7)
     ax_a.add_patch(Circle(((pivot_x), (pivot_z)), (2.5),
                            fc=C_CLAMP, ec=ANNO, lw=1.0, zorder=9))
 
-    # Spring schematic
-    sp_x = pivot_x + 5
-    sp_z = pivot_z + 3
-    spring_xs = [(sp_x), (sp_x + 2), (sp_x + 4), (sp_x + 6),
-                 (sp_x + 8), (sp_x + 10)]
-    spring_zs = [(sp_z), (sp_z + 3), (sp_z - 2), (sp_z + 3),
-                 (sp_z - 2), (sp_z)]
-    ax_a.plot(spring_xs, spring_zs, color=C_CLAMP, lw=1.0, zorder=8)
-
     # Leader labels for clamp components
-    leader(ax_a, (T + CLAMP_BASE_T + 6), (bolt_z1),
-           (LEG - 20), (bolt_z1 - 20),
-           f"clamp BASE PLATE → bolted to\nthe PERP LEG (2× M5 + nylock)", color=C_BOLT, fs=5,
-           ha="left", va="center", arrow_style="-|>", font=FONT)
+    leader(ax_a, (T + CLAMP_BASE_T), (-31),
+           (LEG + 8), (-38),
+           "clamp BASE PLATE → bolted to the\nPERP-LEG OUTBOARD face (2× M5 + nylock)",
+           color=C_BOLT, fs=5, ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    leader(ax_a, (jaw_x + CLAMP_JAW_T / 2), (jaw_z_top + 1),
-           (LEG), (jaw_z_top + 25),
-           f"NEOPRENE JAW\n60A SHORE", color=C_NEOP, fs=5,
-           ha="left", va="center", arrow_style="-|>", font=FONT)
+    leader(ax_a, (jaw_inner_x + CLAMP_JAW_T), (jaw_y),
+           (LEG + 8), (-8),
+           "NEOPRENE JAW 60A — presses the HEM\nonto the frame's OUTSIDE face",
+           color=C_NEOP, fs=5, ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    leader(ax_a, (pivot_x + 3), (pivot_z - 5),
-           (LEG + 40), (-20),
-           f"CAM LEVER\nCLOSED", color=C_CLAMP, fs=5,
+    leader(ax_a, (pivot_x + 1), (pivot_z - 1),
+           (LEG + 8), (-56),
+           "CAM LEVER (CLOSED) — all\noutboard, clear of the L", color=C_CLAMP, fs=5,
            ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # Panel title
@@ -1501,8 +1499,8 @@ def sheet6():
                               (CLAMP_BASE_T), (CLAMP_BASE_H),
                               fc=C_CLAMP, ec=ANNO, lw=1.0, zorder=5, alpha=0.9))
 
-    pv_x = T + CLAMP_BASE_T / 2
-    pv_z = 0
+    pv_x = T + CLAMP_BASE_T
+    pv_z = -36
 
     # Muslin wrap on pinhole-facing leg (same path as Panel A)
     muslin_b_pts_x = [(LEG + 8), (LEG), (LEG), (LEG + 1.5),
@@ -1513,68 +1511,65 @@ def sheet6():
               solid_capstyle="round", zorder=4, alpha=0.9)
     ax_b.plot(muslin_b_pts_x, muslin_b_pts_y, color=ANNO, lw=0.8, zorder=4.5)
 
-    # ── CLOSED position (solid) ──────────────────────────────────────────────
-    jaw_x_closed = LEG - CLAMP_JAW_T
-    jaw_z_closed = T + 2  # pressing against muslin on pinhole leg face
-    ax_b.add_patch(Rectangle(((jaw_x_closed), (jaw_z_closed)),
+    import math
+
+    # ── CLOSED position (solid) — jaw pins the hem to the perp-leg face ──────
+    muslin_b_t = 1.5
+    jaw_inner_x_c = T + muslin_b_t             # hem on the x=T face
+    jaw_y_c = -15                              # ~15mm below the corner
+    ax_b.add_patch(Rectangle(((jaw_inner_x_c), (jaw_y_c - CLAMP_JAW_H / 2)),
                               (CLAMP_JAW_T), (CLAMP_JAW_H),
                               fc=C_NEOP, ec=ANNO, lw=1.0, zorder=7))
-    ax_b.plot([(pv_x), (jaw_x_closed + CLAMP_JAW_T / 2)],
-              [(pv_z), (jaw_z_closed + CLAMP_JAW_H / 2)],
+    jaw_outer_x_c = jaw_inner_x_c + CLAMP_JAW_T
+    ax_b.plot([(pv_x), (jaw_outer_x_c)],
+              [(pv_z), (jaw_y_c)],
               color=C_CLAMP, lw=3, solid_capstyle="round", zorder=6)
     ax_b.add_patch(Circle(((pv_x), (pv_z)), (3),
                            fc=C_CLAMP, ec=ANNO, lw=1.0, zorder=8))
-    ax_b.text((jaw_x_closed - 3), (jaw_z_closed + CLAMP_JAW_H / 2),
-              "CLOSED", ha="right", va="center", fontsize=6, color=C_CLAMP,
+    ax_b.text((jaw_outer_x_c + 3), (jaw_y_c + 7),
+              "CLOSED", ha="left", va="center", fontsize=6, color=C_CLAMP,
               fontweight="bold", **FONT, zorder=15)
 
-    # ── OPEN position (dashed, rotated ~120 degrees from closed) ─────────────
-    import math
-    # Closed angle from pivot to jaw
-    dx_c = (jaw_x_closed + CLAMP_JAW_T / 2) - pv_x
-    dz_c = (jaw_z_closed + CLAMP_JAW_H / 2) - pv_z
+    # clamp-force arrow — jaw pressing -x onto the hem/face
+    ax_b.annotate("", xy=((T + muslin_b_t), (jaw_y_c)),
+                  xytext=((jaw_outer_x_c + 9), (jaw_y_c)),
+                  arrowprops=dict(arrowstyle="-|>", color="#208020", lw=1.5),
+                  zorder=11)
+    ax_b.text((jaw_outer_x_c + 11), (jaw_y_c),
+              f"~{CLAMP_SPRING_F}N\nCLAMP FORCE", ha="left", va="center",
+              fontsize=5.5, color="#208020", fontweight="bold", **FONT, zorder=15)
+
+    # ── OPEN position (dashed) — cam flips the jaw down-outboard off the face ─
+    dx_c = jaw_outer_x_c - pv_x
+    dz_c = jaw_y_c - pv_z
     closed_angle = math.atan2(dz_c, dx_c)
     lever_len = math.sqrt(dx_c**2 + dz_c**2)
-    open_angle = closed_angle + math.radians(120)  # flip open 120 degrees
+    open_angle = closed_angle - math.radians(110)   # swing away from the face
 
     open_end_x = pv_x + lever_len * math.cos(open_angle)
     open_end_z = pv_z + lever_len * math.sin(open_angle)
-
     ax_b.plot([(pv_x), (open_end_x)],
               [(pv_z), (open_end_z)],
               color=C_CLAMP, lw=2.5, ls="--", alpha=0.5, zorder=5)
-
-    # Open jaw position
-    jaw_open_x = open_end_x - CLAMP_JAW_T / 2
-    jaw_open_z = open_end_z - CLAMP_JAW_H / 2
-    ax_b.add_patch(Rectangle(((jaw_open_x), (jaw_open_z)),
+    jaw_open_x = open_end_x - CLAMP_JAW_T
+    ax_b.add_patch(Rectangle(((jaw_open_x), (open_end_z - CLAMP_JAW_H / 2)),
                               (CLAMP_JAW_T), (CLAMP_JAW_H),
                               fc=C_NEOP, ec=ANNO, lw=0.8, ls="--",
-                              alpha=0.3, zorder=5))
-
-    ax_b.text((open_end_x + 3), (open_end_z),
-              "OPEN\n(120° FLIP)", ha="left", va="center", fontsize=6,
-              color=C_CLAMP, alpha=0.7, fontweight="bold", **FONT, zorder=15)
+                              alpha=0.35, zorder=5))
+    ax_b.text((open_end_x + 3), (open_end_z - 2),
+              "OPEN\n(cam flip)", ha="left", va="center", fontsize=6,
+              color=C_CLAMP, alpha=0.8, fontweight="bold", **FONT, zorder=15)
 
     # Arc showing rotation
-    arc_r = lever_len * 0.4
-    arc_start_deg = math.degrees(closed_angle)
-    arc_end_deg = math.degrees(open_angle)
+    arc_r = lever_len * 0.45
     ax_b.add_patch(Arc(((pv_x), (pv_z)), (arc_r * 2), (arc_r * 2),
-                        angle=0, theta1=arc_start_deg, theta2=arc_end_deg,
+                        angle=0, theta1=math.degrees(open_angle),
+                        theta2=math.degrees(closed_angle),
                         color=C_CLAMP, lw=1.0, ls=":", zorder=5, alpha=0.5))
 
-    # Gap dimension when open
-    draw_dim_h(ax_b, (T + CLAMP_BASE_T), (LEG), (-CLAMP_BASE_H - 10),
+    # Gap dimension when open — frame face (x=T) to the retracted jaw
+    draw_dim_h(ax_b, (T), (T + CLAMP_OPEN_GAP), (-60),
                f"{CLAMP_OPEN_GAP}mm GAP\n(OPEN)", offset=(3), fs=6, font=FONT)
-
-    # Force annotation
-    ax_b.annotate("", xy=((jaw_x_closed + CLAMP_JAW_T / 2), (jaw_z_closed)),
-                  xytext=((jaw_x_closed + CLAMP_JAW_T / 2), (jaw_z_closed - 12)),
-                  arrowprops=dict(arrowstyle="-|>", color="#208020", lw=1.5))
-    ax_b.text((jaw_x_closed + CLAMP_JAW_T / 2), (jaw_z_closed - 14),
-              f"~{CLAMP_SPRING_F}N\nCLAMP\nFORCE", ha="center", va="top",
-              fontsize=5.5, color="#208020", fontweight="bold", **FONT, zorder=15)
 
     ax_b.text((LEG / 2), (LEG + CLAMP_LEVER_L - 5),
               "PANEL B — CLAMP OPEN vs CLOSED",
@@ -1631,34 +1626,29 @@ def sheet6():
             ax_c.add_patch(Circle(((bolt_cx), (bp_y + CLAMP_BASE_T / 2)),
                                    (2.5), fc=C_BOLT, ec=ANNO, lw=0.6, zorder=9))
 
-        # Lever arm — from base plate to jaw (in plan, it's a strip from
-        # the perp leg outer face reaching over to the pinhole-facing leg)
-        lever_tip_y = T + 2  # jaw presses on top of pinhole-facing leg
-        ax_c.plot([(cx), (cx)],
-                  [(bp_y), (lever_tip_y)],
-                  color=C_CLAMP, lw=2.5, solid_capstyle="round", zorder=6)
-
-        # Pivot dot at base plate
-        ax_c.add_patch(Circle(((cx), (bp_y)), (2),
+        # No lever/jaw drawn IN the plan — the clamp presses NORMAL to this view
+        # (perp-leg outboard face); its cam-lever detail is in Panels A/B. The plan
+        # shows the base-plate footprint + bolts + spacing only.
+        ax_c.add_patch(Circle(((cx), (bp_y + CLAMP_BASE_T)), (2),
                                fc=C_CLAMP, ec=ANNO, lw=0.8, zorder=9))
 
-        # Jaw pad (in plan view — width along frame edge, depth into frame)
-        ax_c.add_patch(Rectangle(((cx - CLAMP_JAW_W / 2), (lever_tip_y - 1)),
-                                  (CLAMP_JAW_W), (CLAMP_JAW_T),
-                                  fc=C_NEOP, ec=ANNO, lw=0.8, zorder=8))
+    # muslin hem — wraps around the corner and lies along the perp-leg OUTBOARD
+    # edge (y=LEG); the jaws pin it there (press shown in Panels A/B).
+    ax_c.plot([(-10), (frame_len + 10)], [(LEG), (LEG)],
+              color=C_MUSLIN, lw=3, solid_capstyle="butt", alpha=0.85, zorder=5)
 
     # Leader labels
     clamp_x = CLAMP_SPACING * 0.5
     leader(ax_c, (clamp_x), (LEG + CLAMP_BASE_T / 2),
-           (clamp_x - 40), (LEG + 30),
-           f"BASE PLATE\n({CLAMP_BASE_W}×{CLAMP_BASE_H}×{CLAMP_BASE_T}mm)\n2× M5 BOLTS TO PERP LEG",
+           (clamp_x - 42), (LEG + 30),
+           f"BASE PLATE ({CLAMP_BASE_W}×{CLAMP_BASE_H}×{CLAMP_BASE_T}mm)\n2× M5 BOLTS TO PERP-LEG OUTBOARD FACE",
            color=C_CLAMP, fs=5, ha="center", va="center",
            arrow_style="-|>", font=FONT)
 
-    leader(ax_c, (clamp_x), (T + 2),
-           (clamp_x), (-25),
-           f"NEOPRENE JAW\n({CLAMP_JAW_W}×{CLAMP_JAW_H}×{CLAMP_JAW_T}mm)\nPRESSES MUSLIN\nAGAINST FRAME",
-           color=C_NEOP, fs=5, ha="center", va="center",
+    leader(ax_c, (clamp_x + CLAMP_BASE_W / 2 + 4), (LEG),
+           (clamp_x + 78), (LEG + 12),
+           "muslin HEM wraps to the OUTBOARD edge —\nthe jaw pins it here (press: Panels A/B)",
+           color=C_MUSLIN, fs=5, ha="left", va="center",
            arrow_style="-|>", font=FONT)
 
     # Spacing dimension
@@ -1715,21 +1705,22 @@ def sheet6():
                                   (CLAMP_BASE_T), (CLAMP_BASE_H),
                                   fc=C_CLAMP, ec=ANNO, lw=0.8, zorder=6, alpha=0.9))
 
-        # Lever arm (simplified)
-        pv_cx = bp_x + CLAMP_BASE_T / 2
-        jaw_cx = cx + LEG / 2
-        ax_d.plot([(pv_cx), (jaw_cx)],
-                  [(0), (T + 2)],
-                  color=C_CLAMP, lw=2.5, solid_capstyle="round", zorder=6)
-
-        # Pivot dot
-        ax_d.add_patch(Circle(((pv_cx), (0)), (2),
-                               fc=C_CLAMP, ec=ANNO, lw=0.8, zorder=8))
-
-        # Jaw pad
-        ax_d.add_patch(Rectangle(((jaw_cx - CLAMP_JAW_T / 2), (muslin_y - 1)),
+        # Cam lever + jaw — on the perp-leg OUTBOARD face; does NOT reach the
+        # pinhole-facing leg. Jaw pins the hem ~15mm below the corner.
+        jaw_dy = -15
+        jaw_dx = bp_x + CLAMP_BASE_T
+        ax_d.add_patch(Rectangle(((jaw_dx), (jaw_dy - CLAMP_JAW_H / 2)),
                                   (CLAMP_JAW_T), (CLAMP_JAW_H),
                                   fc=C_NEOP, ec=ANNO, lw=0.8, zorder=7))
+        ax_d.plot([(bp_x + CLAMP_BASE_T / 2), (jaw_dx + CLAMP_JAW_T)],
+                  [(-34), (jaw_dy)],
+                  color=C_CLAMP, lw=2, solid_capstyle="round", zorder=6)
+        ax_d.add_patch(Circle(((bp_x + CLAMP_BASE_T / 2), (-34)), (2),
+                               fc=C_CLAMP, ec=ANNO, lw=0.8, zorder=8))
+
+        # muslin hem hanging down the perp-leg outboard face
+        ax_d.plot([(bp_x - 0.6), (bp_x - 0.6)], [(0), (-CLAMP_BASE_H)],
+                  color=C_MUSLIN, lw=2, alpha=0.8, zorder=4)
 
     # Spacing dimension lines
     for i in range(2):

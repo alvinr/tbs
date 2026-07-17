@@ -10,7 +10,7 @@ Shows the WHOLE film plane with all FOUR corners + the pinhole, so tilt and swin
         DEPTH slide (Y)      — the drive: a top↔bottom depth diff = TILT, a left↔right diff = SWING
         VERTICAL slide (Z)   — absorbs the TILT foreshortening
         HORIZONTAL slide (X) — absorbs the SWING foreshortening
-        U-JOINT (Ruland US12-6-6-SS) — tilt + swing, twist locked
+        U-JOINT (Ruland USKC12-6-6-SS) — tilt + swing, twist locked
     A light cone from the pinhole to the four corners shows the plane faces the pinhole.
 
 No screws/handwheels — a pinhole's infinite DoF makes this scene control, not focus: push each

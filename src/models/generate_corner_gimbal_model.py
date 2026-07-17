@@ -168,7 +168,7 @@ def corner(tag, cx, fz, zc, cin, side):
     else:
         rlabel, r_x0, r_len = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side)", cx - 26, 52
     kx, kz = cx - 6, zc + CD_BOT / 2 - HB_T - 10   # bottom keeper (anti-lift, under the top flange); Ø20 on a stub axle
-    for ry in (ty - 30, ty + 14):
+    for ry in (ty + 8, ty + 48):
         P.append(ov.ruby_cylinder(f"{rlabel} {tag} {int(ry)}", r_x0, ry, rz, 16, r_len, color=C_CAR, axis="x"))
         if is_bot:
             # BOTTOM: the channel opens INBOARD, so the Ø10 axle exits the OPENING to the inboard carriage (correct).
@@ -194,8 +194,8 @@ def corner(tag, cx, fz, zc, cin, side):
     # carriage plate on the axle ends + axle-retainer bolts DOWN THROUGH THE PLATE (saddle-clamp, not the beam).
     # Spans the FULL Z of film-corner / load-roller / KEEPER-roller so every axle lands on it (keeper included).
     zlo, zhi = min(fz, rz, kz), max(fz, rz, kz)
-    P.append(ov.ruby_box(f"Carriage plate (bolted to skate axles) {tag}", inb - 6, ty - 40, zlo - 6, 14, 80, (zhi - zlo) + 24, color=C_CAR))
-    for ry in (ty - 30, ty + 14):
+    P.append(ov.ruby_box(f"Carriage plate (bolted to skate axles) {tag}", inb - 6, ty + 1, zlo - 6, 14, 86, (zhi - zlo) + 24, color=C_CAR))
+    for ry in (ty + 8, ty + 48):
         P.append(ov.ruby_cylinder(f"Axle retainer bolt (thru plate) {tag} {int(ry)}", inb, ry, rz - 22, 2.5, 44, color=C_CROSS, axis="z"))
 
     # ── mechanism, inboard: Z slide (tilt) → X slide (swing) → U-joint → the FILM-PLANE CORNER ──

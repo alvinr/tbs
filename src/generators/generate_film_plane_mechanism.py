@@ -1474,96 +1474,68 @@ def sheet6():
     ax_b.set_ylim(0, 100)
     ax_b.axis("off")
 
-    # ── PANEL C: Plan view — clamp attachment to frame edge (bottom-left) ─────
+    # ── PANEL C: Plan view — spring clips along the frame edge (bottom-left) ───
     ax_c = fig.add_axes([0.04, 0.06, 0.46, 0.36])
     ax_c.set_facecolor(BG)
     ax_c.axis("off")
 
-
-    # Plan view: looking down (Z-axis). X = along frame edge, Y = across frame.
-    # Frame angle in plan: pinhole-facing leg runs along X,
-    # perpendicular leg sticks out in +Y direction.
-    frame_len = CLAMP_SPACING * 2 + 40  # show ~2 clamp spacings
-    ax_c.set_xlim((-30), (frame_len + 30))
-    ax_c.set_ylim((-50), (LEG + 50))
+    # Plan (looking down the pinhole axis): X = along the frame edge; +Y = inboard
+    # (ACM / image side), -Y = outboard (clip side).
+    frame_len = CLAMP_SPACING * 2 + 40  # ~2 clip spacings
+    ax_c.set_xlim(-34, frame_len + 48)
+    ax_c.set_ylim(-40, 46)
     ax_c.set_aspect("equal")
+    C_ACM = "#E4E0D6"
 
-    # Pinhole-facing leg (horizontal bar along X, depth = LEG, thickness = T)
-    ax_c.add_patch(Rectangle(((-10), (0)), (frame_len + 20), (T),
-                              fc=C_ALUM, ec=ANNO, lw=1.2, hatch="///", zorder=3))
-    ax_c.text((frame_len + 15), (T / 2), "PINHOLE-\nFACING LEG",
-              ha="left", va="center", fontsize=5, color=DIM, **FONT, zorder=15)
+    # ACM board surface (pinhole face), inboard
+    ax_c.add_patch(Rectangle((-22, 4), frame_len + 60, 30, fc=C_ACM, ec=ANNO, lw=1.0,
+                              hatch="///", zorder=3))
+    ax_c.text((frame_len / 2), (20), "ACM BOARD (pinhole face)", ha="center", va="center",
+              fontsize=5, color=DIM, **FONT, zorder=15)
+    # ALU frame outboard edge (the strip the clips grip), running along X
+    ax_c.add_patch(Rectangle((-22, 0), frame_len + 60, 4, fc=C_FRAME, ec=ANNO, lw=1.0, zorder=4))
+    ax_c.text((frame_len + 30), (2), "ALU FRAME EDGE", ha="left", va="center",
+              fontsize=5, color=DIM, **FONT, zorder=15)
+    # muslin wraps the edge (a line along the edge)
+    ax_c.plot([-22, frame_len + 36], [0, 0], color=C_MUSLIN, lw=3, alpha=0.85, zorder=5)
 
-    # Perpendicular leg — continuous strip in +Y from the angle corner
-    ax_c.add_patch(Rectangle(((-10), (T)), (frame_len + 20), (LEG - T),
-                              fc=C_ALUM, ec=ANNO, lw=1.2, hatch="///",
-                              alpha=0.5, zorder=2))
-    ax_c.text((frame_len + 15), (LEG / 2 + T / 2), "PERP.\nLEG",
-              ha="left", va="center", fontsize=5, color=DIM, **FONT, zorder=15)
-
-    # Muslin — draped over pinhole-facing leg (covers the full surface)
-    ax_c.add_patch(Rectangle(((-10), (-8)), (frame_len + 20), (8 + T + 3),
-                              fc=C_MUSLIN, ec=ANNO, lw=0.8, alpha=0.6, zorder=4))
-    ax_c.text((frame_len / 2), (-12), "MUSLIN (DRAPES OVER PINHOLE LEG, HEM WRAPS AROUND CORNER)",
-              ha="center", va="top", fontsize=5, color=DIM, style="italic", **FONT, zorder=15)
-
-    # Draw 2 clamps in plan view
+    # 2 spring clips at 150mm spacing (footprint seen from above)
     for cx in [CLAMP_SPACING * 0.5, CLAMP_SPACING * 1.5]:
-        # Base plate — bolted to outer face of perpendicular leg
-        bp_y = LEG  # outer face of perp leg
-        ax_c.add_patch(Rectangle(((cx - CLAMP_BASE_W / 2), (bp_y)),
-                                  (CLAMP_BASE_W), (CLAMP_BASE_T),
-                                  fc=C_CLAMP, ec=ANNO, lw=1.0, zorder=7, alpha=0.9))
+        # fixed jaw on the frame edge + 2 countersunk bolts (spaced along the edge)
+        ax_c.add_patch(Rectangle((cx - CLAMP_JAW_W / 2, -3), CLAMP_JAW_W, 3,
+                                  fc=C_CLAMP, ec=ANNO, lw=0.9, zorder=7))
+        for boff in (-11, 11):
+            ax_c.add_patch(Circle((cx + boff, -1.5), 1.6, fc=C_BOLT, ec=ANNO, lw=0.5, zorder=9))
+        # spring jaw + squeeze handle projecting outboard (-Y)
+        ax_c.add_patch(Rectangle((cx - CLAMP_JAW_W / 2, -7), CLAMP_JAW_W, 2.6,
+                                  fc=C_CLAMP, ec=ANNO, lw=0.9, alpha=0.95, zorder=6))
+        ax_c.plot([cx, cx], [-7, -22], color=C_CLAMP, lw=2.0, solid_capstyle="round", zorder=6)
+        for i in range(4):   # knurled grip
+            ax_c.plot([cx - 4, cx + 4], [-18 - i * 1.2, -18 - i * 1.2], color=C_CLAMP, lw=0.8, zorder=6)
 
-        # M5 bolts (circles in plan view) — through base plate + perp leg
-        for boff in [-12, 12]:
-            bolt_cx = cx + boff
-            ax_c.add_patch(Circle(((bolt_cx), (bp_y + CLAMP_BASE_T / 2)),
-                                   (2.5), fc=C_BOLT, ec=ANNO, lw=0.6, zorder=9))
-
-        # No lever/jaw drawn IN the plan — the clamp presses NORMAL to this view
-        # (perp-leg outboard face); its cam-lever detail is in Panels A/B. The plan
-        # shows the base-plate footprint + bolts + spacing only.
-        ax_c.add_patch(Circle(((cx), (bp_y + CLAMP_BASE_T)), (2),
-                               fc=C_CLAMP, ec=ANNO, lw=0.8, zorder=9))
-
-    # muslin hem — wraps around the corner and lies along the perp-leg OUTBOARD
-    # edge (y=LEG); the jaws pin it there (press shown in Panels A/B).
-    ax_c.plot([(-10), (frame_len + 10)], [(LEG), (LEG)],
-              color=C_MUSLIN, lw=3, solid_capstyle="butt", alpha=0.85, zorder=5)
-
-    # Leader labels
-    clamp_x = CLAMP_SPACING * 0.5
-    leader(ax_c, (clamp_x), (LEG + CLAMP_BASE_T / 2),
-           (clamp_x - 42), (LEG + 30),
-           f"BASE PLATE ({CLAMP_BASE_W}×{CLAMP_BASE_H}×{CLAMP_BASE_T}mm)\n2× M5 BOLTS TO PERP-LEG OUTBOARD FACE",
-           color=C_CLAMP, fs=5, ha="center", va="center",
-           arrow_style="-|>", font=FONT)
-
-    leader(ax_c, (clamp_x + CLAMP_BASE_W / 2 + 4), (LEG),
-           (clamp_x + 78), (LEG + 12),
-           "muslin HEM wraps to the OUTBOARD edge —\nthe jaw pins it here (press: Panels A/B)",
-           color=C_MUSLIN, fs=5, ha="left", va="center",
-           arrow_style="-|>", font=FONT)
+    # Leaders
+    leader(ax_c, (CLAMP_SPACING * 0.5), (-1.5), (CLAMP_SPACING * 0.5 - 32), (-14),
+           "FIXED JAW + 2 countersunk\nbolts on the frame edge",
+           color=C_BOLT, fs=5, ha="center", va="center", arrow_style="-|>", font=FONT)
+    leader(ax_c, (CLAMP_SPACING * 1.5), (-15), (CLAMP_SPACING * 1.5 + 34), (-15),
+           "SPRING jaw + squeeze\nhandle (project outboard)",
+           color=C_CLAMP, fs=5, ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # Spacing dimension
-    draw_dim_h(ax_c, (CLAMP_SPACING * 0.5), (CLAMP_SPACING * 1.5),
-               (LEG + 20), f"{CLAMP_SPACING}mm SPACING",
-               offset=(3), fs=6, font=FONT)
-
-    # Direction arrows / labels
-    ax_c.annotate("", xy=((-20), (LEG / 2)), xytext=((-20), (LEG / 2 - 15)),
+    draw_dim_h(ax_c, (CLAMP_SPACING * 0.5), (CLAMP_SPACING * 1.5), (-30),
+               f"{CLAMP_SPACING}mm SPACING", offset=(3), fs=6, font=FONT)
+    # direction arrow
+    ax_c.annotate("", xy=(-26, 22), xytext=(-26, 6),
                   arrowprops=dict(arrowstyle="-|>", color=DIM, lw=1.0))
-    ax_c.text((-25), (LEG / 2 - 8), "→ TO\nPINHOLE",
-              ha="right", va="center", fontsize=5, color=DIM, **FONT, zorder=15)
+    ax_c.text(-29, 14, "↑ TO\nPINHOLE", ha="right", va="center", fontsize=5, color=DIM, **FONT, zorder=15)
 
-    ax_c.text((frame_len / 2), (LEG + 42),
-              "PANEL C — PLAN VIEW: CLAMP ATTACHMENT TO FRAME EDGE",
-              ha="center", va="bottom", fontsize=8, color=ANNO,
+    ax_c.text((frame_len / 2), (44),
+              "PANEL C — PLAN VIEW: SPRING CLIPS ALONG THE FRAME EDGE",
+              ha="center", va="bottom", fontsize=7, color=ANNO,
               fontweight="bold", **FONT, zorder=15)
-    ax_c.text((frame_len / 2), (LEG + 35),
-              f"AXES IN mm · LOOKING DOWN (Z-AXIS) AT FRAME EDGE",
-              ha="center", va="bottom", fontsize=6, color=DIM, **FONT, zorder=15)
+    ax_c.text((frame_len / 2), (40.5),
+              "AXES IN mm · LOOKING DOWN THE PINHOLE AXIS AT THE FRAME EDGE",
+              ha="center", va="bottom", fontsize=5.2, color=DIM, **FONT, zorder=15)
 
     # ── PANEL D: Elevation — 3 clamps at 150mm spacing (bottom-right) ────────
     ax_d = fig.add_axes([0.54, 0.06, 0.42, 0.36])
@@ -1572,64 +1544,43 @@ def sheet6():
 
 
     span = CLAMP_SPACING * 3  # show 3 spacings = 450mm
-    ax_d.set_xlim((-50), (span + 60))
-    ax_d.set_ylim((-LEG - 30), (T + CLAMP_JAW_H + 40))
+    ax_d.set_xlim(-42, span + 52)
+    ax_d.set_ylim(-40, 52)
     ax_d.set_aspect("equal")
 
-    # Frame angle profile — shown as continuous bar (pinhole-facing leg seen end-on)
-    ax_d.add_patch(Rectangle(((-20), (0)), (span + 70), (T),
-                              fc=C_ALUM, ec=ANNO, lw=1.0, hatch="///", zorder=3))
+    # Elevation looking at the frame's outboard face: ACM board above, frame edge
+    # band below, spring clips mounted on the edge at 150mm.
+    ax_d.add_patch(Rectangle((-26, 6), span + 76, 28, fc="#E4E0D6", ec=ANNO, lw=1.0,
+                              hatch="///", zorder=3))
+    ax_d.text((span / 2), (21), "ACM BOARD", ha="center", va="center",
+              fontsize=5, color=DIM, **FONT, zorder=15)
+    ax_d.add_patch(Rectangle((-26, 0), span + 76, 6, fc=C_FRAME, ec=ANNO, lw=1.0, zorder=4))
+    ax_d.plot([-26, span + 50], [6, 6], color=C_MUSLIN, lw=2.5, alpha=0.85, zorder=5)
 
-    # Muslin (continuous line across top of frame)
-    muslin_y = T + 2
-    ax_d.plot([(-20), (span + 50)], [(muslin_y), (muslin_y)],
-              color=C_MUSLIN, lw=6, solid_capstyle="butt", alpha=0.9, zorder=4)
-    ax_d.plot([(-20), (span + 50)], [(muslin_y), (muslin_y)],
-              color=ANNO, lw=1.0, zorder=5)
+    # 3 spring clips at 150mm — face-on: fixed jaw bar (bolted) + spring jaw bar
+    # + squeeze handle hanging down
+    for cx in [0, CLAMP_SPACING, CLAMP_SPACING * 2]:
+        ax_d.add_patch(Rectangle((cx - CLAMP_JAW_W / 2, 1), CLAMP_JAW_W, 4,
+                                  fc=C_CLAMP, ec=ANNO, lw=0.8, zorder=7))       # fixed jaw on the edge
+        for boff in (-11, 11):
+            ax_d.add_patch(Circle((cx + boff, 3), 1.5, fc=C_BOLT, ec=ANNO, lw=0.5, zorder=9))
+        ax_d.add_patch(Rectangle((cx - CLAMP_JAW_W / 2, -4), CLAMP_JAW_W, 3,
+                                  fc=C_CLAMP, ec=ANNO, lw=0.8, alpha=0.95, zorder=6))  # spring jaw
+        ax_d.plot([cx, cx], [-4, -22], color=C_CLAMP, lw=2.2, solid_capstyle="round", zorder=6)  # handle
+        for i in range(4):
+            ax_d.plot([cx - 4, cx + 4], [-18 - i * 1.2, -18 - i * 1.2], color=C_CLAMP, lw=0.8, zorder=6)
 
-    # Draw 3 clamps at 0, 150, 300mm
-    for i, cx in enumerate([0, CLAMP_SPACING, CLAMP_SPACING * 2]):
-        # Perpendicular leg (going down)
-        ax_d.add_patch(Rectangle(((cx - T / 2), (-LEG + T)),
-                                  (T), (LEG - T),
-                                  fc=C_ALUM, ec=ANNO, lw=0.8, zorder=3))
-
-        # Base plate on perp leg
-        bp_x = cx + T / 2
-        ax_d.add_patch(Rectangle(((bp_x), (-CLAMP_BASE_H)),
-                                  (CLAMP_BASE_T), (CLAMP_BASE_H),
-                                  fc=C_CLAMP, ec=ANNO, lw=0.8, zorder=6, alpha=0.9))
-
-        # Cam lever + jaw — on the perp-leg OUTBOARD face; does NOT reach the
-        # pinhole-facing leg. Jaw pins the hem ~15mm below the corner.
-        jaw_dy = -15
-        jaw_dx = bp_x + CLAMP_BASE_T
-        ax_d.add_patch(Rectangle(((jaw_dx), (jaw_dy - CLAMP_JAW_H / 2)),
-                                  (CLAMP_JAW_T), (CLAMP_JAW_H),
-                                  fc=C_NEOP, ec=ANNO, lw=0.8, zorder=7))
-        ax_d.plot([(bp_x + CLAMP_BASE_T / 2), (jaw_dx + CLAMP_JAW_T)],
-                  [(-34), (jaw_dy)],
-                  color=C_CLAMP, lw=2, solid_capstyle="round", zorder=6)
-        ax_d.add_patch(Circle(((bp_x + CLAMP_BASE_T / 2), (-34)), (2),
-                               fc=C_CLAMP, ec=ANNO, lw=0.8, zorder=8))
-
-        # muslin hem hanging down the perp-leg outboard face
-        ax_d.plot([(bp_x - 0.6), (bp_x - 0.6)], [(0), (-CLAMP_BASE_H)],
-                  color=C_MUSLIN, lw=2, alpha=0.8, zorder=4)
-
-    # Spacing dimension lines
+    # Spacing dims
     for i in range(2):
-        x1 = CLAMP_SPACING * i
-        x2 = CLAMP_SPACING * (i + 1)
-        draw_dim_h(ax_d, (x1), (x2), (-LEG - 10),
-                   f"{CLAMP_SPACING}mm", offset=(4), fs=6, font=FONT)
+        draw_dim_h(ax_d, CLAMP_SPACING * i, CLAMP_SPACING * (i + 1), -30,
+                   f"{CLAMP_SPACING}mm", offset=(3), fs=6, font=FONT)
 
-    ax_d.text((span / 2), (T + CLAMP_JAW_H + 30),
-              "PANEL D — ELEVATION: CLAMPS AT 150mm SPACING",
+    ax_d.text((span / 2), (48),
+              "PANEL D — ELEVATION: SPRING CLIPS AT 150mm SPACING",
               ha="center", va="bottom", fontsize=7, color=ANNO,
               fontweight="bold", **FONT, zorder=15)
-    ax_d.text((span / 2), (T + CLAMP_JAW_H + 22),
-              f"AXES IN mm · {CLAMP_N_TOTAL} CLAMPS TOTAL",
+    ax_d.text((span / 2), (44),
+              f"AXES IN mm · {CLAMP_N_TOTAL} CLIPS TOTAL",
               ha="center", va="bottom", fontsize=5.5, color=DIM, **FONT, zorder=15)
 
     # Notes — CLAMP NOTES panel (top-right; ax_b, 0–100 data coords)

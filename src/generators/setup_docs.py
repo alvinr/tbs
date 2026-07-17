@@ -114,6 +114,7 @@ DIAG_IMAGE_FILES = [
     "film-plane-sheet6.png",
     "film-plane-sheet7.png",
     "film-plane-sheet8.png",
+    "film-plane-sheet9.png",
     "film-plane-distortion-c0.png",
     "film-plane-distortion-c1.png",
     "film-plane-distortion-c2.png",

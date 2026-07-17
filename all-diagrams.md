@@ -68,6 +68,8 @@
 
 ![TBS-001 Film Plane Mechanism — Sheet 8: Frame-Corner ↔ Cross-Slide Attachment](assets/film-plane-sheet8.png)
 
+![TBS-001 Film Plane Mechanism — Sheet 9: Frame + ACM ↔ U-joint ↔ X-Slide Connection Detail](assets/film-plane-sheet9.png)
+
 ---
 
 ## 8. Tilt-Swing Front Board

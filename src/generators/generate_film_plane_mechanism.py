@@ -1983,57 +1983,49 @@ def _corner_elevation(ax):
 
 
 def _corner_section(ax):
-    """VIEW B — CROSS-SECTION (Yd × X, looking down Z) through the stack: ACM + 6061 angle → 304 SS
-    corner plate → U-joint (swing pin true) → X (swing) slide + its carriage. Film/pinhole to the RIGHT,
-    the moving mechanism to the LEFT (toward the skate/rail)."""
-    ax.set_xlim(-20, 526); ax.set_ylim(-72, 96); ax.set_aspect("equal"); ax.axis("off")
-    cyy = 0
-    # ── film side (RIGHT): ACM backing + 6061 angle (in-plane leg on the ACM, perp leg toward pinhole) ──
-    ax.add_patch(plt.Rectangle((470, cyy - 30), 6, 60, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))  # panel ghost
-    _rect(ax, 462, cyy - 28, 8, 56, C_ACM, z=7)                        # ACM backing
-    _rect(ax, 454, cyy - 30, 8, 60, C_FRAME, z=7)                      # angle in-plane leg (on the ACM)
-    _rect(ax, 454, cyy + 22, 30, 8, C_FRAME, z=7)                      # angle perp leg (projects toward pinhole → muslin)
-    ax.plot([454, 490], [cyy + 33, cyy + 33], color=C_MUSLIN, lw=3, alpha=0.85, zorder=6)  # muslin over the perp leg
-    # ── 304 SS corner plate ──
-    _rect(ax, 420, cyy - 24, 34, 48, C_STEEL, z=6)
-    # ── U-joint + swing pin (true here) + input/output stubs ──
-    _rect(ax, 404, cyy - 6, 16, 12, C_STEEL, z=6)                      # output stub → corner plate
-    _rect(ax, 366, cyy - 20, 38, 40, C_UJ, z=6)                        # U-joint body
-    ax.plot([385, 385], [cyy - 24, cyy + 24], color=C_PIN, lw=2.4, zorder=8)     # SWING pin (true)
-    draw_circle(ax, 385, cyy + 15, 3.5, color=OUT, fill=True, fc=C_PIN, lw=0.7, zorder=9)
-    draw_circle(ax, 385, cyy - 15, 3.5, color=OUT, fill=True, fc=C_PIN, lw=0.7, zorder=9)
-    _rect(ax, 350, cyy - 6, 16, 12, C_STEEL, z=6)                      # input stub (X-carriage 3/8" → U-joint bore)
-    # ── X (SWING) slide — long 316 flat bar along X + carriage traversing it ──
-    _rect(ax, 60, cyy - 8, 296, 16, C_SWING, z=5); _hatch316(ax, 60, cyy - 8, 296, 16)
-    _rect(ax, 306, cyy - 12, 44, 24, C_SWING, z=6)                     # X carriage (near the swung end)
-    ax.annotate("", xy=(66, cyy + 30), xytext=(350, cyy + 30), arrowprops=dict(arrowstyle="<->", color=C_SWING, lw=1.0))
-    ax.text(208, cyy + 34, "X travel ~260mm = SWING accommodation", fontsize=6, color=C_SWING, ha="center", va="bottom", **FONT)
-    # J3/J4 set screws (radial, seen end-on down Z) = dots; J5 angle→plate bolts run
-    # along Yd → drawn as HORIZONTAL shanks (head-ring at the plate end)
-    _joint(ax, 358, cyy); _joint(ax, 412, cyy)
-    for bz in (cyy - 16, cyy + 16):
-        ax.plot([438, 462], [bz, bz], color=C_PIN, lw=1.8, zorder=9)
-        draw_circle(ax, 440, bz, 1.9, color=OUT, fill=True, fc=C_PIN, lw=0.5, zorder=10)
-    # → TO PINHOLE (the muslin/ACM face the pinhole, to the right)
-    ax.annotate("", xy=(520, cyy), xytext=(498, cyy), arrowprops=dict(arrowstyle="-|>", color=DIM, lw=1.3))
-    ax.text(509, cyy + 6, "TO\nPINHOLE", ha="center", va="bottom", fontsize=5.6, color=DIM, **FONT)
-    # J-labels (right → left is film → mechanism)
-    leader(ax, 458, cyy + 16, 470, -50, "J5  6061 angle → 304 SS corner plate\nM6 ×2 per leg (tapped into the angle)",
-           ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 412, cyy, 400, -64, "J4  U-joint output stub → corner plate\nslip + set-screw clamp",
-           ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 385, cyy + 20, 300, 62, "U-joint SWING pin (true here) — Ruland US12-6-6-SS",
-           ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 437, cyy + 22, 398, 48, "304 SS corner plate (U-joint mount)",
-           ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 358, cyy, 250, -60, "J3  X-carriage stub Ø9.5 (3/8\") → U-joint bore\nslip + set screw",
-           ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 328, cyy - 12, 300, -40, "X carriage — 316 on UHMW; cam-clamp locks swing",
-           ha="left", fs=5.4, color=C_SWING, font=FONT, bbox=LBL_BG)
-    leader(ax, 466, cyy - 28, 476, 40, "ACM board + 6061 angle\n(muslin wraps the perp leg)",
-           ha="left", fs=5.4, color=DIM, font=FONT, bbox=LBL_BG)
-    ax.text(-20, 94, "B — CROSS-SECTION  (Yd × X; looking down Z) — ACM/frame → 304 SS corner plate → U-joint → X (swing) slide",
-            fontsize=7.4, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+    """VIEW B — CROSS-SECTION (Yd × X, looking down Z). The X (SWING) slide runs VERTICAL (along X, its
+    ~260mm travel, shown broken); the corner stacks 90° to it toward the PINHOLE (right, along Yd):
+    X-carriage → U-joint → 304 SS corner plate → 6061 angle → ACM → muslin. The muslin is the FRONTMOST
+    (pinhole-facing) layer, the ACM is mounted on the angle's PINHOLE face."""
+    ax.set_xlim(-78, 300); ax.set_ylim(-104, 116); ax.set_aspect("equal"); ax.axis("off")
+    # ── X (SWING) slide — VERTICAL bar (runs along X) + carriage, shown broken ──
+    _rect(ax, 0, -78, 20, 156, C_SWING, z=5); _hatch316(ax, 0, -78, 20, 156)
+    for yb in (78, -78):                                              # break ticks (slide continues)
+        s = 1 if yb > 0 else -1
+        ax.plot([-2, 6, 14, 22], [yb, yb + 5 * s, yb - 5 * s, yb], color=OUT, lw=0.8, zorder=6)
+    _rect(ax, 0, -22, 44, 44, C_SWING, z=6)                          # X carriage
+    ax.annotate("", xy=(-34, 70), xytext=(-34, -70), arrowprops=dict(arrowstyle="<->", color=C_SWING, lw=1.0))
+    ax.text(-40, 0, "X travel ~260mm = SWING", fontsize=6, color=C_SWING, ha="center", va="center", rotation=90, **FONT)
+    # ── the corner stack, projecting toward the PINHOLE (right, along Yd) ──
+    _rect(ax, 44, -6, 30, 12, C_STEEL, z=6)                          # input stub (X-carriage 3/8" → U-joint bore)
+    _rect(ax, 74, -24, 48, 48, C_UJ, z=6)                            # U-joint body
+    ax.plot([98, 98], [-28, 28], color=C_PIN, lw=2.2, zorder=8)      # tilt pin along X (in-plane, true)
+    draw_circle(ax, 98, 0, 3.4, color=OUT, fill=False, lw=1.0, zorder=9)   # swing pin along Z (end-on)
+    _rect(ax, 122, -6, 28, 12, C_STEEL, z=6)                         # output stub → corner plate
+    _rect(ax, 150, -34, 44, 68, C_STEEL, z=6)                        # 304 SS corner plate
+    _rect(ax, 194, -40, 12, 80, C_FRAME, z=7)                        # 6061 angle in-plane leg (behind the ACM)
+    _rect(ax, 206, -40, 8, 80, C_ACM, z=7)                           # ACM backing — mounted on the angle's PINHOLE face
+    ax.plot([214.5, 214.5], [-44, 44], color=C_MUSLIN, lw=4, alpha=0.9, zorder=8)   # muslin — frontmost, faces pinhole
+    ax.plot([214.5, 206], [44, 52], color=C_MUSLIN, lw=3, alpha=0.85, zorder=8)     # muslin wraps the edge (top)
+    ax.plot([214.5, 206], [-44, -52], color=C_MUSLIN, lw=3, alpha=0.85, zorder=8)   # muslin wraps the edge (bottom)
+    # J5 angle → plate bolts run along Yd → HORIZONTAL shanks (head-ring at the plate end)
+    for by in (-18, 18):
+        ax.plot([172, 206], [by, by], color=C_PIN, lw=1.8, zorder=9)
+        draw_circle(ax, 174, by, 1.9, color=OUT, fill=True, fc=C_PIN, lw=0.5, zorder=10)
+    # J3/J4 set screws (radial, seen end-on down Z) = dots
+    _joint(ax, 68, 0); _joint(ax, 128, 0)
+    # → TO PINHOLE — horizontal, 90° to the vertical X slide
+    ax.annotate("", xy=(268, 0), xytext=(240, 0), arrowprops=dict(arrowstyle="-|>", color=DIM, lw=1.4))
+    ax.text(254, 6, "TO PINHOLE", ha="center", va="bottom", fontsize=6, color=DIM, **FONT)
+    # labels
+    leader(ax, 30, -14, 8, -78, "X carriage — 316 on UHMW;\ncam-clamp locks swing", ha="left", fs=5.4, color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(ax, 108, -12, 90, -76, "J3  X-carriage stub Ø9.5 (3/8\") → U-joint bore (slip + set screw)", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 98, 24, 40, 86, "U-joint (tilt + swing, twist-locked)\nRuland US12-6-6-SS", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 172, -30, 150, -95, "304 SS corner plate — J4 U-joint stub slips in + set screw", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 189, 18, 158, 66, "J5  M6 ×2 per leg\n(6061 angle → plate)", ha="left", fs=5.2, color=C_PIN, font=FONT, bbox=LBL_BG)
+    leader(ax, 210, 30, 234, 88, "ACM on the angle's PINHOLE face;\nmuslin in front (faces pinhole) — Sheet 6", ha="left", fs=5.4, color=DIM, font=FONT, bbox=LBL_BG)
+    ax.text(-78, 114, "B — CROSS-SECTION  (Yd × X; looking down Z) — X (swing) slide runs along X; the corner stacks 90° to it toward the pinhole",
+            fontsize=7.0, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
 
 def sheet9():

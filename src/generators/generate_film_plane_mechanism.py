@@ -835,8 +835,8 @@ def section_aa(ax):
     ax.annotate("", xy=(17, 42), xytext=(17, 52), arrowprops=dict(arrowstyle="->", color=OUT, lw=1.4))
     ax.text(6, 47, "WEIGHT", fontsize=5.4, ha="right", va="center", color=OUT, **FONT)
     # dims
-    draw_dim_v(ax, -14, 0, 76, "76\n(3\")", offset=9, fs=5.4, color=DIM, font=FONT)
-    draw_dim_h(ax, 5, 43, -10, "38 flange", offset=7, fs=5.4, color=DIM, above=False, font=FONT)
+    draw_dim_v(ax, -14, 0, 76, "76mm\n(3\")", offset=9, fs=5.4, color=DIM, font=FONT)
+    draw_dim_h(ax, 5, 43, -10, "38mm flange", offset=7, fs=5.4, color=DIM, above=False, font=FONT)
     # leaders
     leader(ax, 2, 38, -25, 28, "WEB (outboard,\nsplice face)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 17, 9, -8, -12, "Ø32 LOAD roller\n(gravity-seated)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
@@ -882,7 +882,7 @@ def section_top(ax):
     _rect(ax, 40, -60, 12, 14, C_TILT, z=5)                                          # cross-slide (green) hangs below
     ax.add_patch(plt.Rectangle((16, -64), 56, 5, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))  # film top edge ghost (hangs)
     ax.annotate("", xy=(38, 33), xytext=(38, 25), arrowprops=dict(arrowstyle="->", color=OUT, lw=1.0))  # guide reaction UP
-    draw_dim_v(ax, -14, 0, 38, "38\n(short:\nceiling)", offset=7, fs=5.2, color=DIM, font=FONT)
+    draw_dim_v(ax, -14, 0, 38, "38mm\n(short:\nceiling)", offset=7, fs=5.2, color=DIM, font=FONT)
     leader(ax, 38, 30, 52, 44, "Ø32 guide WHEEL — 10mm narrower than the yoke (~5mm clearance each side)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 18, 17, -24, 2, "AXLE — a horizontal shaft along the wheel;\nheld by the yoke arms (never crosses a flange)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 4, -18, -24, -38, "YOKE — a JOINED U up through the OPENING;\narms bear the flanges + hook the lips (anti-drop)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)

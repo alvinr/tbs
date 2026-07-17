@@ -24,6 +24,22 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Film-plane corner mechanism — U-joint mount is now a 304 SS corner plate** — the U-joint funnels
+  the whole corner load into a few bolts, too concentrated for the 6061 angle, so each corner now bolts
+  to a **304 stainless corner plate** (steel for the load, stainless for the wet zone + a galvanic match
+  to the 303 SS U-joint); the perimeter angle stays expendable 6061. Cascaded across parts/costing
+  (film +$72/$100/$128), the 3D corner-gimbal, and 2D Sheets 3/8. New **Sheet 9** details the
+  frame + ACM ↔ 304 SS corner plate ↔ U-joint ↔ X (swing) slide connection square-on and in section.
+- **Film-plane Sheet 6 — muslin clamp corrected to a spring clip** — the muslin attachment was redrawn
+  from a cam-lever toggle to a **spring clip**: a fixed jaw bolted to the ALU frame edge (countersunk)
+  + a spring-loaded jaw that pinches the muslin against the frame edge, squeeze-to-open (torsion spring
+  holds closed). The separate open/closed panel was folded into the main detail as a ghost + swing arc,
+  and the plan/elevation panels reworked to match.
+- **Film-plane report reconciled to the U-channel corner design** — the report, dependency-map, and
+  analysis-doc scope note were rewritten from the superseded leadscrew Option-A prose to the current
+  304 U-channel + acetal skate + 316 cross-slide + Ruland U-joint mechanism; the Sketchfab embed now
+  points at the corner-gimbal model.
+
 - **Film-plane frame + corner L-bracket → expendable anodized 6061** — the wetted-zone film
   structure was clarified as an **expendable** part: a 304 SS swap was evaluated (~+$1,430–1,980,
   +32 kg) and rejected in favor of **anodized 6061-T6** (inspect annually / replace on pitting),

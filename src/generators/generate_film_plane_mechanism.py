@@ -62,6 +62,8 @@ C_PANEL = "#1F3B66"   # film-plane panel ghost
 C_CLAMP = "#3A3A40"   # cam-clamp body
 C_POLY  = "#C9B78F"   # self-lube UHMW pad (tan)
 C_ACET  = "#ECE7DA"   # acetal roller (natural off-white)
+C_ACM   = "#E4E0D6"   # ACM backing board (warm grey)
+C_MUSLIN = "#D4B896"  # muslin fabric (warm tan)
 LBL_BG  = dict(fc="white", ec="none", alpha=0.85, pad=1)
 
 # ── Container dimensions (mm) ─────────────────────────────────────────────────
@@ -409,7 +411,7 @@ def sheet1():
                 color=col, fontsize=6, va="center", **FONT)
 
     # Title block
-    title_block(ax, "SHEET 1 OF 8",
+    title_block(ax, "SHEET 1 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Plan view — 4-corner rail layout",
                 scale_note="Proportional (mm)",
@@ -666,7 +668,7 @@ def sheet2():
     # Title block (full-figure overlay for multi-subplot sheet)
     ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 2 OF 8",
+    title_block(ax_tb, "SHEET 2 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Tilt elevation & Swing cross-section",
                 scale_note="Proportional (mm)",
@@ -976,7 +978,7 @@ def sheet3():
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 3 OF 8",
+    title_block(ax_tb, "SHEET 3 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Corner carriage detail — acetal skate on 3×1.5 304 U-channel + cross-slides + U-joint + stub clamp",
                 scale_note="DIMS IN mm",
@@ -1160,7 +1162,7 @@ def sheet4():
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 4 OF 8", drawing_title="MOVEABLE FILM PLANE",
+    title_block(ax_tb, "SHEET 4 OF 9", drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Rail mounting & transport drop-in — left split (stub + removable + web-back bridge) · right flanged wall-to-wall",
                 scale_note="DIMS IN mm",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
@@ -1314,7 +1316,7 @@ def sheet5():
                 ha="left", va="top", fontweight=fw, style=st, **FONT)
 
     # Title block
-    title_block(ax, "SHEET 5 OF 8",
+    title_block(ax, "SHEET 5 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Movement specification & BOM",
                 scale_note="Not to scale",
@@ -1605,7 +1607,7 @@ def sheet6():
     ax_tb.set_xlim(0, 1)
     ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 6 OF 8",
+    title_block(ax_tb, "SHEET 6 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Muslin clamp detail — spring-clip at the ALU frame edge",
                 scale_note="MULTIPLE SCALES — SEE INDIVIDUAL PANELS",
@@ -1856,7 +1858,7 @@ def sheet7():
             color=DIM, fontsize=7, ha="center", **FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 7 OF 8",
+    title_block(ax, "SHEET 7 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="System schematic — four-corner frame front elevation",
                 scale_note="Schematic — not to scale",
@@ -1941,6 +1943,122 @@ def attach_tilt(ax):
     ax.text(-96, 330, "A — SECTION  (Yd × Z; looking along X) — the TILT slide + U-joint tilt pin", fontsize=7.6, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
 
+def _corner_elevation(ax):
+    """VIEW A — the corner seen SQUARE-ON from the PINHOLE side (X × Z). The muslin/ACM face is toward
+    the viewer; the frame angle L is solid; the 304 SS corner plate + U-joint + X (swing) slide sit
+    BEHIND the plane and are ghosted (dashed). Bottom-LEFT corner shown."""
+    ax.set_xlim(-40, 210); ax.set_ylim(-40, 205); ax.set_aspect("equal"); ax.axis("off")
+    # ACM board face (ghost) — fills the corner quadrant
+    ax.add_patch(plt.Rectangle((0, 0), 205, 180, fc=C_ACM, ec="none", alpha=0.30, zorder=1))
+    # ── BEHIND the plane (ghosted, dashed) ──
+    ax.add_patch(plt.Rectangle((-16, 40), 150, 26, fc=C_SWING, ec=OUT, lw=0.8, ls=(0, (4, 2)),
+                               alpha=0.30, zorder=3))                                   # X (swing) slide, runs along X
+    ax.add_patch(plt.Rectangle((10, 18), 96, 96, fc=C_STEEL, ec=OUT, lw=1.0, ls=(0, (4, 2)),
+                               alpha=0.55, zorder=4))                                   # 304 SS corner plate
+    ax.add_patch(plt.Rectangle((44, 52), 28, 28, fc=C_UJ, ec=OUT, lw=1.0, ls=(0, (4, 2)),
+                               alpha=0.9, zorder=5))                                    # U-joint (end-on)
+    # ── the 2x2 6061 angle FRAME corner (solid, in front) ──
+    ax.add_patch(plt.Rectangle((0, 0), 170, 26, fc=C_FRAME, ec=OUT, lw=1.4, zorder=7))  # horizontal leg
+    ax.add_patch(plt.Rectangle((0, 0), 26, 155, fc=C_FRAME, ec=OUT, lw=1.4, zorder=7))  # vertical leg
+    # M6 bolts, angle → 304 SS corner plate (J5 — 2 per leg)
+    for (bx, bz) in [(52, 13), (92, 13), (13, 52), (13, 92)]:
+        draw_circle(ax, bx, bz, 3, color=OUT, fill=True, fc=C_PIN, lw=0.7, zorder=9)
+    # labels
+    leader(ax, 150, 13, 168, 60, "2x2 6061 Al angle FRAME\n(holds the ACM; muslin clamps to it)",
+           ha="left", fs=5.6, color=C_FRAME, font=FONT, bbox=LBL_BG)
+    leader(ax, 150, 150, 150, 190, "ACM backing board (face toward pinhole)",
+           ha="left", fs=5.6, color=DIM, font=FONT, bbox=LBL_BG)
+    leader(ax, 100, 100, 150, 118, "304 SS corner plate (behind) — U-joint mount",
+           ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 58, 66, -34, 96, "U-joint (behind, end-on)\nRuland US12-6-6-SS",
+           ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, -14, 53, -36, 20, "X (SWING) slide\n(behind, runs along X)",
+           ha="left", fs=5.6, color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(ax, 52, 13, 40, -30, "M6 ×2 per leg\n(angle → corner plate, J5)",
+           ha="left", fs=5.4, color=C_PIN, font=FONT, bbox=LBL_BG)
+    ax.text(-40, 203, "A — CORNER SQUARE-ON FROM THE PINHOLE  (X × Z) — frame solid; plate / U-joint / X-slide ghosted behind",
+            fontsize=7.4, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+
+
+def _corner_section(ax):
+    """VIEW B — CROSS-SECTION (Yd × X, looking down Z) through the stack: ACM + 6061 angle → 304 SS
+    corner plate → U-joint (swing pin true) → X (swing) slide + its carriage. Film/pinhole to the RIGHT,
+    the moving mechanism to the LEFT (toward the skate/rail)."""
+    ax.set_xlim(-20, 500); ax.set_ylim(-72, 96); ax.set_aspect("equal"); ax.axis("off")
+    cyy = 0
+    # ── film side (RIGHT): ACM backing + 6061 angle (in-plane leg on the ACM, perp leg toward pinhole) ──
+    ax.add_patch(plt.Rectangle((470, cyy - 30), 6, 60, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))  # panel ghost
+    _rect(ax, 462, cyy - 28, 8, 56, C_ACM, z=7)                        # ACM backing
+    _rect(ax, 454, cyy - 30, 8, 60, C_FRAME, z=7)                      # angle in-plane leg (on the ACM)
+    _rect(ax, 454, cyy + 22, 30, 8, C_FRAME, z=7)                      # angle perp leg (projects toward pinhole → muslin)
+    ax.plot([454, 490], [cyy + 33, cyy + 33], color=C_MUSLIN, lw=3, alpha=0.85, zorder=6)  # muslin over the perp leg
+    # ── 304 SS corner plate ──
+    _rect(ax, 420, cyy - 24, 34, 48, C_STEEL, z=6)
+    # ── U-joint + swing pin (true here) + input/output stubs ──
+    _rect(ax, 404, cyy - 6, 16, 12, C_STEEL, z=6)                      # output stub → corner plate
+    _rect(ax, 366, cyy - 20, 38, 40, C_UJ, z=6)                        # U-joint body
+    ax.plot([385, 385], [cyy - 24, cyy + 24], color=C_PIN, lw=2.4, zorder=8)     # SWING pin (true)
+    draw_circle(ax, 385, cyy + 15, 3.5, color=OUT, fill=True, fc=C_PIN, lw=0.7, zorder=9)
+    draw_circle(ax, 385, cyy - 15, 3.5, color=OUT, fill=True, fc=C_PIN, lw=0.7, zorder=9)
+    _rect(ax, 350, cyy - 6, 16, 12, C_STEEL, z=6)                      # input stub (X-carriage 3/8" → U-joint bore)
+    # ── X (SWING) slide — long 316 flat bar along X + carriage traversing it ──
+    _rect(ax, 60, cyy - 8, 296, 16, C_SWING, z=5); _hatch316(ax, 60, cyy - 8, 296, 16)
+    _rect(ax, 306, cyy - 12, 44, 24, C_SWING, z=6)                     # X carriage (near the swung end)
+    ax.annotate("", xy=(66, cyy + 30), xytext=(350, cyy + 30), arrowprops=dict(arrowstyle="<->", color=C_SWING, lw=1.0))
+    ax.text(208, cyy + 34, "X travel ~260mm = SWING accommodation", fontsize=6, color=C_SWING, ha="center", va="bottom", **FONT)
+    # joint markers
+    _joint(ax, 358, cyy); _joint(ax, 412, cyy); _joint(ax, 458, cyy - 16); _joint(ax, 458, cyy + 16)
+    # J-labels (right → left is film → mechanism)
+    leader(ax, 458, cyy + 16, 470, -50, "J5  6061 angle → 304 SS corner plate\nM6 ×2 per leg (tapped into the angle)",
+           ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 412, cyy, 400, -64, "J4  U-joint output stub → corner plate\nslip + set-screw clamp",
+           ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 385, cyy + 20, 320, 60, "U-joint SWING pin (true here) — Ruland US12-6-6-SS",
+           ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 358, cyy, 250, -60, "J3  X-carriage stub Ø9.5 (3/8\") → U-joint bore\nslip + set screw",
+           ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 328, cyy - 12, 300, -40, "X carriage — 316 on UHMW; cam-clamp locks swing",
+           ha="left", fs=5.4, color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(ax, 466, cyy - 28, 476, 40, "ACM board + 6061 angle\n(muslin wraps the perp leg)",
+           ha="left", fs=5.4, color=DIM, font=FONT, bbox=LBL_BG)
+    ax.text(-20, 94, "B — CROSS-SECTION  (Yd × X; looking down Z) — ACM/frame → 304 SS corner plate → U-joint → X (swing) slide",
+            fontsize=7.4, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
+
+
+def sheet9():
+    reset_label_registry()
+    fig = plt.figure(figsize=(16, 9)); fig.patch.set_facecolor(BG)
+    axA = fig.add_axes([0.02, 0.40, 0.42, 0.56]); axA.set_facecolor(BG)   # View A — square-on elevation
+    axB = fig.add_axes([0.46, 0.55, 0.53, 0.40]); axB.set_facecolor(BG)   # View B — cross-section
+    _corner_elevation(axA)
+    _corner_section(axB)
+    # notes
+    axN = fig.add_axes([0.05, 0.10, 0.90, 0.26]); axN.set_xlim(0, 100); axN.set_ylim(0, 100); axN.axis("off")
+    draw_notes(axN, [
+        "HOW THE FILM PLANE HANGS OFF THE X (SWING) SLIDE — ONE OF FOUR CORNERS:",
+        "The ACM backing board is captured in the 2x2 6061 Al angle perimeter frame (the muslin wraps + "
+        "clamps to the angle's perp leg — Sheet 6). At each corner the angle bolts to a 304 SS CORNER PLATE "
+        "(steel, not the expendable aluminum: the U-joint funnels the whole corner load into a few bolts — "
+        "too concentrated for 6061 — and stainless matches the 303 SS U-joint in the wet zone).",
+        "The corner plate carries a single U-JOINT (Ruland US12-6-6-SS). The U-joint's other yoke bolts to "
+        "the X (SWING) slide carriage. So the corner is CARRIED BY the purple X-slide THROUGH the U-joint — "
+        "it never bolts to the slide directly. The U-joint gives tilt + swing angular freedom (twist-locked); "
+        "the X slide (~260mm) + the Z slide beneath it (~250mm, Sheet 8) take the in-plane arc travel.",
+        "LOAD PATH, film → rail:  ACM board → 6061 angle frame → 304 SS corner plate → U-joint → "
+        "X (swing) slide → Z (tilt) slide → carriage plate → 4-wheel acetal skate → 304 U-channel rail.",
+    ], 1, 97, spacing=6.0, fs=7, title_fs=7.6, color=DIM, title_color=ANNO, font=FONT, width=140)
+    # title block
+    ax_tb = fig.add_axes([0.02, 0.0, 0.96, 0.055]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, "SHEET 9 OF 9",
+                drawing_title="MOVEABLE FILM PLANE",
+                subtitle="Frame + ACM ↔ U-joint ↔ X (swing) slide — corner connection detail",
+                scale_note="Not to scale",
+                doc_id="TBS-FM01 · Film Plane Mechanism", height=0.75)
+    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet9.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet9.png")
+
+
 # ── Run all sheets ─────────────────────────────────────────────────────────────
 def sheet8():
     reset_label_registry()
@@ -1975,7 +2093,7 @@ def sheet8():
     ], 2, 99, 3.6, fs=6.2, title_fs=7.4, color=DIM, width=78, wrap=128, font=FONT)
     # title block
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 8 OF 8",
+    title_block(ax_tb, "SHEET 8 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Frame-corner ↔ cross-slide attachment — how the film frame hangs off the two slides through the U-joint",
                 scale_note="DIMS IN mm · SCHEMATIC",
@@ -1996,4 +2114,5 @@ if __name__ == "__main__":
     sheet6()
     sheet7()
     sheet8()
+    sheet9()
     print("Done.")

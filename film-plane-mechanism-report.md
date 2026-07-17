@@ -95,6 +95,10 @@ The master diagram for the components can be see in the diagram below. The follo
 
 The film plane is a **fixed-size rigid rectangle**; tilt and swing are a true **rigid-body rotation** of that rectangle. A rigid rotation moves each corner along an arc — partly along its depth rail (handled by the acetal skate) and partly *across* it (in X and Z). The **2-axis cross-slide** absorbs that across-rail travel, and the **single universal joint** (Ruland US12-6-6-SS, 45° per axis) takes up the angular change so nothing binds. This pairing is what lets a rigid plane tilt and swing **without stretching**, and keeps the plane a single flat rectangle at every angle.
 
+Each corner connects to that mechanism through a **304 stainless corner plate**: the 6061 angle frame bolts to the plate, the plate carries the U-joint, and the U-joint's other yoke mounts on the **X (swing) slide** — so the corner is *carried by* the slide **through** the U-joint, never bolted to it directly. The plate is steel (not the expendable aluminum) because the U-joint funnels the whole corner load into a few bolts, and stainless for a galvanic/wet-zone match to the 303 SS U-joint. Sheet 9 details this connection square-on and in section.
+
+![Sheet 9 — Frame + ACM ↔ U-joint ↔ X-slide connection detail](assets/film-plane-sheet9.png)
+
 ### Positioning
 
 Each corner is set by hand: roll the acetal skate along its U-channel to the target depth, slide the Z and X cross-slides to take up the rotation arc, then throw the **cam clamp** to lock the skate to the rail. The gib drag holds the vertical (Z) axis while the clamp is set, and the U-joint's twist-lock holds the angle.

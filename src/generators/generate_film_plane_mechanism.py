@@ -25,7 +25,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, Circle, Arc
+from matplotlib.patches import Rectangle, Circle, Arc, Polygon
 
 from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH_X_C, MAX_TILT_DEG, MAX_SWING_DEG, DIAGRAMS_DIR, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_BASE_W, CLAMP_BASE_H, CLAMP_BASE_T, CLAMP_LEVER_L, CLAMP_JAW_W, CLAMP_JAW_H, CLAMP_JAW_T, CLAMP_OPEN_GAP, CLAMP_SPRING_F, CLAMP_N_TOTAL, BRACE_Z_BOT, BRACE_Z_TOP, C_WID, WALL_T, IBC_WBKT_PLATE_W, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, DRUM_CY, DRUM_R, DRUM_CX, DRUM_D
 from tbs_title_block import title_block
@@ -1360,112 +1360,134 @@ def sheet6():
     LEG = FP_ANGLE_LEG   # 50.8mm
     T   = FP_ANGLE_T     # 4.8mm
 
-    # Cross-section at the frame edge (outboard = -x left, image = +x right,
-    # pinhole = +y up). Per Alvin's sketch: a SPRING CLIP holds the muslin at the
-    # ALU frame edge — a FIXED jaw BOLTED to the frame + a SPRING-loaded jaw that
-    # pinches the muslin against the frame edge; squeeze the handle to open. The
-    # ACM backing board sits behind the muslin. Support chain (rail->skate->slides
-    # ->U-joint) is on Sheets 3 & 8.
-    ax_a.set_xlim(-40, 134)
-    ax_a.set_ylim(-46, 38)
+    # Cross-section at the frame edge, ROTATED 90° CCW so the PINHOLE is at LEFT
+    # (matching Sheet 9 View B). The geometry below is authored in a "logical" frame
+    # (pinhole = +y up, outboard = -x) and every primitive is pushed through _R (a
+    # 90° CCW rotation) on the way to the axes; leaders/titles are placed directly in
+    # the rotated frame. Per Sheet 9: the ACM board is NESTED into the corner of the
+    # 2×2 ALU angle — butted against the flat leg (behind the board) AND against the
+    # upstand leg. The upstand stands PROUD toward the pinhole; the clip mounts on the
+    # upstand INBOARD face and presses the muslin toward the board. Support chain
+    # (rail->skate->slides->U-joint) is on Sheets 3 & 8.
+    ACM_T = 4                                    # ACM board thickness (matches Sheet 9)
+    XO    = 11                                    # upstand outboard face (logical x)
+    XI    = XO + T                                # upstand inboard face (logical x = 15.8)
+    BL    = 46                                    # board length shown (cut short)
+    ax_a.set_xlim(-74, 46)
+    ax_a.set_ylim(-24, 84)
     ax_a.set_aspect("equal")
 
     C_ACM = "#E4E0D6"
 
-    # ── ACM backing board (hatched) — muslin lies on its pinhole (top) face ────
-    ax_a.add_patch(Rectangle((16, 0), 112, 6, fc=C_ACM, ec=ANNO, lw=1.4, zorder=3))
-    ax_a.add_patch(Rectangle((16, 0), 112, 6, fc="none", ec="#9a9a9a", lw=0.3,
-                              hatch="///", zorder=4))
-    ax_a.text((84), (3), "ACM BACKING BOARD", ha="center", va="center",
-              fontsize=5, color=DIM, **FONT, zorder=15)
+    def _R(x, y):                                # 90° CCW rotation
+        return (-y, x)
+    def _rr(x, y, w, h, **kw):                   # rotated rectangle
+        nx, ny = -(y + h), x
+        ax_a.add_patch(Rectangle((nx, ny), h, w, **kw))
+    def _rc(cx, cy, r, **kw):                    # rotated circle
+        ax_a.add_patch(Circle(_R(cx, cy), r, **kw))
+    def _rl(xs, ys, **kw):                        # rotated polyline
+        p = [_R(a, b) for a, b in zip(xs, ys)]
+        ax_a.plot([q[0] for q in p], [q[1] for q in p], **kw)
+    def _rf(xs, ys, **kw):                        # rotated filled polygon
+        p = [_R(a, b) for a, b in zip(xs, ys)]
+        ax_a.fill([q[0] for q in p], [q[1] for q in p], **kw)
 
-    # ── ALU frame — L cradling the board: a vertical outboard leg (the FRAME EDGE
-    #    the clip bolts to) + a horizontal bottom leg under the board.
-    #    (An offset-T refinement is parked for later — see TODO.) ────────────────
-    FR_T = 5
-    for (rx, ry, rw, rh) in [(11, -38, FR_T, 44), (11, -38, 92, FR_T)]:
-        ax_a.add_patch(Rectangle((rx, ry), rw, rh, fc=C_FRAME, ec=ANNO, lw=1.5, zorder=3))
-        ax_a.add_patch(Rectangle((rx, ry), rw, rh, fc="none", ec="#8898A8",
-                                  lw=0.3, hatch="///", zorder=4))
-    leader(ax_a, (60), (-35.5), (86), (-30),
-           "2×2 ALU FRAME — surrounds the ACM board;\nthe muslin clip bolts to its outboard edge",
+    # ── 2×2 (50.8) × 3/16" (4.8) ALU angle — a SINGLE L-section (no internal seam) ─
+    _Lpts = [_R(x, y) for (x, y) in
+             [(XO, -T), (XO + LEG, -T), (XO + LEG, 0), (XI, 0), (XI, -T + LEG), (XO, -T + LEG)]]
+    ax_a.add_patch(Polygon(_Lpts, closed=True, fc=C_FRAME, ec=ANNO, lw=1.5, zorder=3))
+    ax_a.add_patch(Polygon(_Lpts, closed=True, fc="none", ec="#8898A8", lw=0.3, hatch="///", zorder=4))
+    leader(ax_a, (2), (40), (16), (30),
+           "2×2 ALU ANGLE (3/16\")\nflat leg behind the board;\nupstand proud toward the pinhole",
            color=C_FRAME, fs=5, ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Muslin — over the board, wraps over the frame edge and down the outboard
-    #    face, where the clip pinches it ─────────────────────────────────────────
-    mx = [128, 11, 7.6, 7.6]
-    my = [7.2, 7.2, 4, -17]
-    ax_a.plot(mx, my, color=C_MUSLIN, lw=4, solid_capstyle="round", zorder=6, alpha=0.95)
-    ax_a.plot(mx, my, color=ANNO, lw=0.8, zorder=6.5)
-    leader(ax_a, (104), (7.2), (100), (18),
-           "MUSLIN — over the board, wraps to the frame edge",
-           color="#8a6d3b", fs=5, ha="center", va="center", arrow_style="-|>", font=FONT)
+    # ── ACM backing board — NESTED in the corner ─────────────────────────────────
+    _rr(XI, 0, BL, ACM_T, fc=C_ACM, ec=ANNO, lw=1.4, zorder=3)
+    _rr(XI, 0, BL, ACM_T, fc="none", ec="#9a9a9a", lw=0.3, hatch="///", zorder=4)
+    leader(ax_a, (-2), (52), (16), (50),
+           "ACM BACKING BOARD", color=DIM, fs=5, ha="left", va="center", arrow_style="-|>", font=FONT)
+    leader(ax_a, (-2), (18), (16), (12),
+           "ACM butts into the frame corner",
+           color=DIM, fs=4.7, ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    # ── Spring clip ───────────────────────────────────────────────────────────
-    # FIXED jaw — bolted to the frame's outboard face (x=11) with COUNTERSUNK bolts
-    ax_a.add_patch(Rectangle((8, -20), 3, 27, fc=C_CLAMP, ec=ANNO, lw=1.2, zorder=7))
-    def _csk_bolt(by):   # countersunk head flush on the fixed-jaw outboard face + shank into the frame
-        ax_a.fill([8, 8, 10, 10], [by - 1.7, by + 1.7, by + 0.7, by - 0.7],
-                  color=C_BOLT, zorder=11)
-        ax_a.add_patch(Rectangle((10, by - 0.7), 6, 1.4, fc=C_BOLT, ec=ANNO, lw=0.4, zorder=10))
-    _csk_bolt(-3); _csk_bolt(-14)
-    # SPRING jaw — pinches the muslin (+x) against the fixed jaw
-    ax_a.add_patch(Rectangle((4, -18), 2.6, 24, fc=C_CLAMP, ec=ANNO, lw=1.2,
-                              zorder=7, alpha=0.95))
-    ax_a.annotate("", xy=(7.0, -6), xytext=(1.5, -6),
-                  arrowprops=dict(arrowstyle="-|>", color="#208020", lw=1.4), zorder=12)
-    # torsion-spring coil at the pivot (bottom)
-    ax_a.add_patch(Circle((5.3, -21), 2.6, fc="none", ec=C_CLAMP, lw=1.1, zorder=8))
-    ax_a.add_patch(Circle((5.3, -21), 1.3, fc="none", ec=C_CLAMP, lw=0.9, zorder=8))
-    # squeeze handle — extends outboard from the spring jaw (knurled tip)
-    ax_a.plot([5.3, -20], [4, 12], color=C_CLAMP, lw=2.2, solid_capstyle="round", zorder=7)
+    # ── Muslin — over the board (pinhole face); a short tuck around the upstand ───
+    mx = [XI + BL, XI + 0.2, XI + 0.2]
+    my = [ACM_T + 0.7, ACM_T + 0.7, 9]
+    _rl(mx, my, color=C_MUSLIN, lw=4, solid_capstyle="round", zorder=6, alpha=0.95)
+    _rl(mx, my, color=ANNO, lw=0.8, zorder=6.5)
+    leader(ax_a, _R(XI + 26, ACM_T + 0.7)[0], _R(XI + 26, ACM_T + 0.7)[1], (16), (64),
+           "MUSLIN — on the pinhole face;\nclamped toward the board at the edge",
+           color="#8a6d3b", fs=5, ha="left", va="center", arrow_style="-|>", font=FONT)
+
+    # ── Spring clip — mounted on the INBOARD side of the upstand; presses the muslin
+    #    toward the board. Bracket bolted through the upstand, nuts on the inside. ──
+    _rr(XI, 10, 3.2, 42, fc=C_CLAMP, ec=ANNO, lw=1.2, zorder=7)                      # bracket
+    def _thru_bolt(by):   # csk head flush on the upstand OUTBOARD face; shank THROUGH the leg + bracket; NUT on the inside edge
+        _rf([XO, XO, XO + 2, XO + 2], [by - 1.7, by + 1.7, by + 0.7, by - 0.7], color=C_BOLT, zorder=11)   # csk head
+        _rr(XO + 2, by - 0.7, 9.5, 1.4, fc=C_BOLT, ec=ANNO, lw=0.4, zorder=10)                              # shank through to inside
+        _rr(XI + 3.2, by - 1.6, 2.2, 3.2, fc=C_BOLT, ec=ANNO, lw=0.5, zorder=11)                            # hex NUT on the inside edge
+    _thru_bolt(18); _thru_bolt(32)
+    _rl([17.5, 33], [49, 8.4], color=C_CLAMP, lw=2.6, solid_capstyle="round", zorder=7)   # lever
+    _rr(27, 5.0, 11, 2.6, fc=C_NEOP, ec=ANNO, lw=0.8, zorder=8)                            # neoprene pad
+    ax_a.annotate("", xy=_R(33, 4.9), xytext=_R(33, 14),
+                  arrowprops=dict(arrowstyle="-|>", color="#208020", lw=1.4), zorder=12)   # press force (toward board)
+    _rc(17.5, 49, 2.6, fc="none", ec=C_CLAMP, lw=1.1, zorder=9)                            # torsion coil
+    _rc(17.5, 49, 1.3, fc="none", ec=C_CLAMP, lw=0.9, zorder=9)
+    _rl([17.5, -14], [49, 55], color=C_CLAMP, lw=2.2, solid_capstyle="round", zorder=7)    # squeeze handle
     for i in range(5):
-        ax_a.plot([-20 - 1 + i * 0.4, -18 - 1 + i * 0.4],
-                  [10 - i * 1.5, 14 - i * 1.5], color=C_CLAMP, lw=0.9, zorder=8)
+        _rl([-14 - 1 + i * 0.4, -12 - 1 + i * 0.4], [53 - i * 1.4, 57 - i * 1.4],
+            color=C_CLAMP, lw=0.9, zorder=8)
 
-    # ── OPEN position (ghost) — squeeze the handle; the spring jaw + handle swing
-    #    about the coil so the jaw lifts off the muslin. Dashed + arc + note. ────
+    # ── OPEN position (ghost) — squeeze the handle; the pad lifts off the muslin ──
     import math as _ma
-    _pv = (5.3, -21)                             # pivot (torsion-spring coil)
+    _pv = (17.5, 49)                             # pivot (torsion-spring coil), logical
     def _rot(p, deg):
         a = _ma.radians(deg); dx, dy = p[0] - _pv[0], p[1] - _pv[1]
         return (_pv[0] + dx * _ma.cos(a) - dy * _ma.sin(a),
                 _pv[1] + dx * _ma.sin(a) + dy * _ma.cos(a))
-    _od = 24                                     # open swing (deg, CCW = jaw lifts outboard)
-    _jt_c = (5.3, 6)                             # closed spring-jaw top
-    _jt_o = _rot(_jt_c, _od)
-    _ht_o = _rot((-20, 12), _od)
-    ax_a.plot([_pv[0], _jt_o[0]], [_pv[1], _jt_o[1]], color=C_CLAMP, lw=2.0,
-              ls=(0, (4, 2)), alpha=0.5, zorder=6)
-    ax_a.plot([_pv[0], _ht_o[0]], [_pv[1], _ht_o[1]], color=C_CLAMP, lw=2.0,
-              ls=(0, (4, 2)), alpha=0.5, zorder=6)
-    _r = _ma.hypot(_jt_c[0] - _pv[0], _jt_c[1] - _pv[1])
-    _a_c = _ma.degrees(_ma.atan2(_jt_c[1] - _pv[1], _jt_c[0] - _pv[0]))
-    ax_a.add_patch(Arc(_pv, 2 * _r, 2 * _r, angle=0, theta1=_a_c, theta2=_a_c + _od,
+    _od = -20
+    _pad_c = (33, 8.4)
+    _pad_o = _rot(_pad_c, _od)
+    _ht_o = _rot((-14, 55), _od)
+    _rl([_pv[0], _pad_o[0]], [_pv[1], _pad_o[1]], color=C_CLAMP, lw=2.0, ls=(0, (4, 2)), alpha=0.5, zorder=6)
+    _rl([_pv[0], _ht_o[0]], [_pv[1], _ht_o[1]], color=C_CLAMP, lw=2.0, ls=(0, (4, 2)), alpha=0.5, zorder=6)
+    _r = _ma.hypot(_pad_c[0] - _pv[0], _pad_c[1] - _pv[1])
+    _a_c = _ma.degrees(_ma.atan2(_pad_c[1] - _pv[1], _pad_c[0] - _pv[0]))
+    ax_a.add_patch(Arc(_R(*_pv), 2 * _r, 2 * _r, angle=0, theta1=_a_c + _od + 90, theta2=_a_c + 90,
                         color=C_CLAMP, lw=0.9, ls=":", alpha=0.6, zorder=6))
-    leader(ax_a, _jt_o[0], _jt_o[1], (-34), (24),
-           f"OPEN (ghost) — squeeze the\nhandle; the jaw swings clear\n(~{CLAMP_OPEN_GAP}mm gap)",
+    _po = _R(*_pad_o)
+    leader(ax_a, _po[0], _po[1], (-50), (68),
+           f"OPEN (ghost) — squeeze the\nhandle; the pad lifts off\n(~{CLAMP_OPEN_GAP}mm gap)",
            color=C_CLAMP, fs=5, ha="left", va="center", arrow_style="-|>", font=FONT)
 
-    # Leaders
-    leader(ax_a, (9.5), (4), (40), (16),
-           "FIXED JAW — bolted to the ALU frame\n(2× COUNTERSUNK bolts, flush)",
+    # Leaders (rotated frame)
+    _b = _R(XI + 1.6, 40)
+    leader(ax_a, _b[0], _b[1], (-73), (6),
+           "CLIP BRACKET — through-bolted to the\nupstand; 2× csk screws, nuts on the inside",
            color=C_BOLT, fs=5, ha="left", va="center", arrow_style="-|>", font=FONT)
-    leader(ax_a, (5.3), (-6), (38), (-8),
-           "SPRING JAW — pinches the muslin against the frame edge",
+    _p = _R(32, 6.5)
+    leader(ax_a, _p[0], _p[1], (-56), (54),
+           "SPRING JAW — presses the\nmuslin toward the board",
            color=C_CLAMP, fs=5, ha="left", va="center", arrow_style="-|>", font=FONT)
-    leader(ax_a, (5.3), (-23.5), (40), (-20),
-           "TORSION SPRING — closed;\nsqueeze the handle to open",
+    _c = _R(17.5, 51.6)
+    leader(ax_a, _c[0], _c[1], (-73), (28),
+           "TORSION SPRING — holds it closed;\nsqueeze the handle to lift",
            color=C_CLAMP, fs=5, ha="left", va="center", arrow_style="-|>", font=FONT)
+
+    # → TO PINHOLE (pinhole is at left)
+    ax_a.annotate("", xy=(-66, 42), xytext=(-54, 42),
+                  arrowprops=dict(arrowstyle="-|>", color=DIM, lw=1.4))
+    ax_a.text(-60, 44.5, "TO PINHOLE", ha="center", va="bottom", fontsize=6, color=DIM, **FONT)
 
     # Panel title
-    ax_a.text((60), (35),
+    ax_a.text((-23), (80),
               "PANEL A — MUSLIN CLIP: SPRING CLAMP AT THE FRAME EDGE",
-              ha="center", va="bottom", fontsize=7, color=ANNO,
+              ha="center", va="top", fontsize=6.6, color=ANNO,
               fontweight="bold", **FONT, zorder=15)
-    ax_a.text((60), (30),
-              "AXES IN mm · fixed jaw bolts to the ALU frame; spring jaw pinches the muslin (support: Sheets 3 & 8)",
-              ha="center", va="bottom", fontsize=5.0, color=DIM, **FONT, zorder=15)
+    ax_a.text((-23), (75),
+              "AXES IN mm · pinhole at LEFT — ACM nested in the corner; clip on the upstand inboard face",
+              ha="center", va="top", fontsize=5.0, color=DIM, **FONT, zorder=15)
 
     # ── CLAMP NOTES (top-right) — Panel B (a separate open/closed diagram) was
     #    redundant and removed; open/closed is now shown INLINE on Panel A as a
@@ -1501,30 +1523,35 @@ def sheet6():
     # muslin wraps the edge (a line along the edge)
     ax_c.plot([-22, frame_len + 36], [0, 0], color=C_MUSLIN, lw=3, alpha=0.85, zorder=5)
 
-    # 2 spring clips at 150mm spacing (footprint seen from above)
+    # 2 spring clips at 150mm — CLIP ON THE INSIDE of the frame: neoprene pad on the
+    # board (inboard), bracket through-bolted in the upstand, handle projecting outboard
     for cx in [CLAMP_SPACING * 0.5, CLAMP_SPACING * 1.5]:
-        # fixed jaw on the frame edge + 2 countersunk bolts (spaced along the edge)
-        ax_c.add_patch(Rectangle((cx - CLAMP_JAW_W / 2, -3), CLAMP_JAW_W, 3,
-                                  fc=C_CLAMP, ec=ANNO, lw=0.9, zorder=7))
-        for boff in (-11, 11):
-            ax_c.add_patch(Circle((cx + boff, -1.5), 1.6, fc=C_BOLT, ec=ANNO, lw=0.5, zorder=9))
-        # spring jaw + squeeze handle projecting outboard (-Y)
-        ax_c.add_patch(Rectangle((cx - CLAMP_JAW_W / 2, -7), CLAMP_JAW_W, 2.6,
+        # neoprene pad pressing the muslin onto the board (inboard side, +Y)
+        ax_c.add_patch(Rectangle((cx - CLAMP_JAW_W / 2, 5), CLAMP_JAW_W, 7,
+                                  fc=C_NEOP, ec=ANNO, lw=0.9, zorder=7))
+        # bracket footprint on the upstand + 2 through-bolts (nuts on the inside)
+        ax_c.add_patch(Rectangle((cx - CLAMP_JAW_W / 2, 0.5), CLAMP_JAW_W, 4.5,
                                   fc=C_CLAMP, ec=ANNO, lw=0.9, alpha=0.95, zorder=6))
-        ax_c.plot([cx, cx], [-7, -22], color=C_CLAMP, lw=2.0, solid_capstyle="round", zorder=6)
+        for boff in (-11, 11):
+            ax_c.add_patch(Circle((cx + boff, 2.4), 1.6, fc=C_BOLT, ec=ANNO, lw=0.5, zorder=9))
+        # squeeze handle projecting OUTBOARD (over the frame edge, -Y)
+        ax_c.plot([cx, cx], [0.5, -16], color=C_CLAMP, lw=2.0, solid_capstyle="round", zorder=6)
         for i in range(4):   # knurled grip
-            ax_c.plot([cx - 4, cx + 4], [-18 - i * 1.2, -18 - i * 1.2], color=C_CLAMP, lw=0.8, zorder=6)
+            ax_c.plot([cx - 4, cx + 4], [-12 - i * 1.2, -12 - i * 1.2], color=C_CLAMP, lw=0.8, zorder=6)
 
-    # Leaders
-    leader(ax_c, (CLAMP_SPACING * 0.5), (-1.5), (CLAMP_SPACING * 0.5 - 32), (-14),
-           "FIXED JAW + 2 countersunk\nbolts on the frame edge",
-           color=C_BOLT, fs=5, ha="center", va="center", arrow_style="-|>", font=FONT)
-    leader(ax_c, (CLAMP_SPACING * 1.5), (-15), (CLAMP_SPACING * 1.5 + 34), (-15),
-           "SPRING jaw + squeeze\nhandle (project outboard)",
+    # Leaders (kept below the frame edge — clear of the board)
+    leader(ax_c, (CLAMP_SPACING * 0.5 - 6), (8), (CLAMP_SPACING * 0.5 - 48), (-22),
+           "NEOPRENE PAD — presses the\nmuslin onto the board (inboard)",
+           color=C_CLAMP, fs=5, ha="center", va="center", arrow_style="-|>", font=FONT)
+    leader(ax_c, (CLAMP_SPACING * 0.5 + 11), (2.4), (CLAMP_SPACING * 0.5 + 34), (-22),
+           "2 csk through-bolts\n(nuts on the inside)",
+           color=C_BOLT, fs=5, ha="left", va="center", arrow_style="-|>", font=FONT)
+    leader(ax_c, (CLAMP_SPACING * 1.5), (-14), (CLAMP_SPACING * 1.5 + 26), (-16),
+           "handle projects outboard\n(over the frame edge)",
            color=C_CLAMP, fs=5, ha="left", va="center", arrow_style="-|>", font=FONT)
 
     # Spacing dimension
-    draw_dim_h(ax_c, (CLAMP_SPACING * 0.5), (CLAMP_SPACING * 1.5), (-30),
+    draw_dim_h(ax_c, (CLAMP_SPACING * 0.5), (CLAMP_SPACING * 1.5), (-34),
                f"{CLAMP_SPACING}mm SPACING", offset=(3), fs=6, font=FONT)
     # direction arrow
     ax_c.annotate("", xy=(-26, 22), xytext=(-26, 6),
@@ -1539,61 +1566,18 @@ def sheet6():
               "AXES IN mm · LOOKING DOWN THE PINHOLE AXIS AT THE FRAME EDGE",
               ha="center", va="bottom", fontsize=5.2, color=DIM, **FONT, zorder=15)
 
-    # ── PANEL D: Elevation — 3 clamps at 150mm spacing (bottom-right) ────────
-    ax_d = fig.add_axes([0.54, 0.06, 0.42, 0.36])
-    ax_d.set_facecolor(BG)
-    ax_d.axis("off")
-
-
-    span = CLAMP_SPACING * 3  # show 3 spacings = 450mm
-    ax_d.set_xlim(-42, span + 52)
-    ax_d.set_ylim(-40, 52)
-    ax_d.set_aspect("equal")
-
-    # Elevation looking at the frame's outboard face: ACM board above, frame edge
-    # band below, spring clips mounted on the edge at 150mm.
-    ax_d.add_patch(Rectangle((-26, 6), span + 76, 28, fc="#E4E0D6", ec=ANNO, lw=1.0,
-                              hatch="///", zorder=3))
-    ax_d.text((span / 2), (21), "ACM BOARD", ha="center", va="center",
-              fontsize=5, color=DIM, **FONT, zorder=15)
-    ax_d.add_patch(Rectangle((-26, 0), span + 76, 6, fc=C_FRAME, ec=ANNO, lw=1.0, zorder=4))
-    ax_d.plot([-26, span + 50], [6, 6], color=C_MUSLIN, lw=2.5, alpha=0.85, zorder=5)
-
-    # 3 spring clips at 150mm — face-on: fixed jaw bar (bolted) + spring jaw bar
-    # + squeeze handle hanging down
-    for cx in [0, CLAMP_SPACING, CLAMP_SPACING * 2]:
-        ax_d.add_patch(Rectangle((cx - CLAMP_JAW_W / 2, 1), CLAMP_JAW_W, 4,
-                                  fc=C_CLAMP, ec=ANNO, lw=0.8, zorder=7))       # fixed jaw on the edge
-        for boff in (-11, 11):
-            ax_d.add_patch(Circle((cx + boff, 3), 1.5, fc=C_BOLT, ec=ANNO, lw=0.5, zorder=9))
-        ax_d.add_patch(Rectangle((cx - CLAMP_JAW_W / 2, -4), CLAMP_JAW_W, 3,
-                                  fc=C_CLAMP, ec=ANNO, lw=0.8, alpha=0.95, zorder=6))  # spring jaw
-        ax_d.plot([cx, cx], [-4, -22], color=C_CLAMP, lw=2.2, solid_capstyle="round", zorder=6)  # handle
-        for i in range(4):
-            ax_d.plot([cx - 4, cx + 4], [-18 - i * 1.2, -18 - i * 1.2], color=C_CLAMP, lw=0.8, zorder=6)
-
-    # Spacing dims
-    for i in range(2):
-        draw_dim_h(ax_d, CLAMP_SPACING * i, CLAMP_SPACING * (i + 1), -30,
-                   f"{CLAMP_SPACING}mm", offset=(3), fs=6, font=FONT)
-
-    ax_d.text((span / 2), (48),
-              "PANEL D — ELEVATION: SPRING CLIPS AT 150mm SPACING",
-              ha="center", va="bottom", fontsize=7, color=ANNO,
-              fontweight="bold", **FONT, zorder=15)
-    ax_d.text((span / 2), (44),
-              f"AXES IN mm · {CLAMP_N_TOTAL} CLIPS TOTAL",
-              ha="center", va="bottom", fontsize=5.5, color=DIM, **FONT, zorder=15)
+    # ── PANEL D removed — the elevation only re-stated Panel C's 150mm spacing.
+    #    Bottom-right is free for a repurposed detail if wanted (see report TODO).
 
     # Notes — CLAMP NOTES panel (top-right; ax_b, 0–100 data coords)
     notes = [
         "CLAMP NOTES:",
         f"1. {CLAMP_N_TOTAL} spring clips at {CLAMP_SPACING}mm centers around the frame perimeter.",
-        "2. ALU frame surrounds the ACM board; the clip bolts to the frame's outboard edge.",
-        "3. Muslin drapes over the board and wraps the frame edge, where the clip pinches it.",
-        "4. FIXED jaw bolts to the frame edge (2 countersunk bolts, flush); SPRING jaw pinches the muslin.",
-        f"5. Torsion spring holds the clip closed (~{CLAMP_SPRING_F}N); squeeze the handle to open (~{CLAMP_OPEN_GAP}mm gap).",
-        "6. Neoprene jaw face grips the muslin without tearing; snap open/closed by feel in safelight.",
+        "2. ALU angle frames the ACM board; the clip mounts on the upstand's inboard face.",
+        "3. Muslin lies over the board (pinhole face); the clip presses it onto the board at the edge.",
+        "4. Bracket through-bolts to the upstand (2 countersunk screws, nuts on the inside); the spring jaw presses the muslin onto the board.",
+        f"5. Torsion spring holds the jaw closed (~{CLAMP_SPRING_F}N); squeeze the handle to lift it (~{CLAMP_OPEN_GAP}mm gap).",
+        "6. Neoprene jaw pad grips the muslin without tearing; snap open/closed by feel in safelight.",
     ]
     notes_x = 2
     notes_y_start = 96

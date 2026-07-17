@@ -997,22 +997,6 @@ def _body(ax, x, y, w, h, z=4):
     hatch_rect(ax, x, y, w, h, color="#7A8AA0", hatch="////", lw=0.0)
 
 
-def _setscrew(ax, cx, y0, w=5.0, h=6.5, hub_top=None):
-    """Set screw with serrated (threaded) sides + hex socket, plus the MATING thread cut into the
-    (blue) hub wall where it threads in."""
-    import numpy as np
-    if hub_top is None:
-        hub_top = y0 + 4.9
-    for yy in np.arange(y0 + 0.3, hub_top, 1.3):
-        ax.plot([cx - w / 2, cx - w / 2 - 1.3], [yy, yy + 0.9], color="#4E627E", lw=0.5, zorder=7)
-        ax.plot([cx + w / 2, cx + w / 2 + 1.3], [yy, yy + 0.9], color="#4E627E", lw=0.5, zorder=7)
-    draw_rect(ax, cx - w / 2, y0, w, h, fc="#7C7C86", color=OUT, lw=0.8, zorder=9)
-    ys = list(np.arange(y0 + 0.3, y0 + h - 0.2, 1.3))
-    ax.plot([cx - w / 2 + (0.9 if i % 2 else 0.0) for i in range(len(ys))], ys, color=OUT, lw=0.5, zorder=10)
-    ax.plot([cx + w / 2 - (0.9 if i % 2 else 0.0) for i in range(len(ys))], ys, color=OUT, lw=0.5, zorder=10)
-    ax.plot([cx - 1.2, cx + 1.2], [y0 + h - 0.9, y0 + h - 0.9], color=OUT, lw=1.0, zorder=11)
-
-
 def _stub_carrier(ax):
     """Section ACROSS the stub shaft (shaft end-on) at the 304 SS base-mount clamping shaft
     support (McMaster 4040N12): the base flange bolts down to the X-slide carriage, the removable
@@ -2051,102 +2035,8 @@ def _joint(ax, x, y, r=3.4):
     draw_circle(ax, x, y, r, color=OUT, fill=True, fc=C_PIN, lw=0.8, zorder=12)
 
 
-def _vbolt(ax, x, y0, y1):
-    """A VERTICAL bolt joining two stacked pieces — shank in the plane of the page, hex head on top,
-    nut below. Use where the load path stacks vertically (the bolt axis is vertical, NOT into the page)."""
-    ax.plot([x, x], [y0, y1], color="#3A3A40", lw=1.7, zorder=13)                                   # shank
-    ax.add_patch(plt.Rectangle((x - 3, y1 - 1), 6, 3, fc=C_PIN, ec=OUT, lw=0.5, zorder=14))          # hex head (top)
-    ax.add_patch(plt.Rectangle((x - 2.4, y0 - 2), 4.8, 2.4, fc="#8A8A92", ec=OUT, lw=0.4, zorder=14))  # nut (bottom)
-
-
-def _setscrew(ax, x, y, dx=7):
-    """A RADIAL set screw into a hub/clamp — axis horizontal (into the bore side), head seen edge-on."""
-    ax.plot([x, x + dx], [y, y], color="#3A3A40", lw=1.5, zorder=13)
-    ax.add_patch(plt.Rectangle((x - 1.6 if dx > 0 else x, y - 1.6), 1.8, 3.2, fc=C_PIN, ec=OUT, lw=0.4, zorder=14))
-
-
-def _vdimchain(ax, x, segs):
-    """Chained vertical dimension at column x: segs = [(y0, y1, label), ...] — one arrow + label per component."""
-    ys = sorted(set([s[0] for s in segs] + [s[1] for s in segs]))
-    for yy in ys:
-        ax.plot([x - 3, x + 1.5], [yy, yy], color=DIM, lw=0.4, zorder=9)                 # extension ticks
-    for (y0, y1, lab) in segs:
-        ax.annotate("", xy=(x, y1), xytext=(x, y0), arrowprops=dict(arrowstyle="<->", color=DIM, lw=0.5))
-        ax.text(x - 4, (y0 + y1) / 2, lab, fontsize=4.4, color=DIM, ha="right", va="center", **FONT)
-
-
-def _hbolt(ax, y, x0, x1):
-    """A HORIZONTAL bolt joining two face-to-face parallel (vertical) plates — shank in-plane, head one end."""
-    ax.plot([x0, x1], [y, y], color="#3A3A40", lw=1.7, zorder=13)
-    ax.add_patch(plt.Rectangle((x1 - 1, y - 3), 3, 6, fc=C_PIN, ec=OUT, lw=0.5, zorder=14))            # head
-    ax.add_patch(plt.Rectangle((x0 - 2, y - 2.4), 2.4, 4.8, fc="#8A8A92", ec=OUT, lw=0.4, zorder=14))  # nut
-
-
 def _hatch316(ax, x, y, w, h, z=6):
     hatch_rect(ax, x, y, w, h, color="#6E747C", hatch="\\\\\\", lw=0.0)
-
-
-def attach_elevation(ax):
-    """ASSEMBLED ELEVATION of the BOTTOM corner (Yd × Z; swing axis into page). The WEIGHT rail is at the
-    TOP — the 4-wheel skate rides it and the whole stack HANGS DOWN ~110mm to the film corner, because the
-    film plane hangs BELOW the bottom rail (BUILD_BOT, matches the 3D model). The film/ACM then rises back
-    UP past the rail. Chain, rail→frame: carriage plate → Z (tilt) slide → X (swing) slide → U-joint →
-    L-bracket → 6061 Al frame angle. (Spread vertically for label clarity — schematic, not to scale.)"""
-    ax.set_xlim(-30, 214); ax.set_ylim(118, 420); ax.set_aspect("equal"); ax.axis("off")
-    # Local coords: x = Yd − 2210 (film corner Yd2262 → x52); y = Z (mm). True proportions, matches the 3D BL corner.
-
-    # ── film plane / ACM rising UP behind the mechanism (the plane hangs below, then climbs the full height) ──
-    ax.add_patch(plt.Rectangle((49, 160), 7, 264, fc=C_PANEL, ec="none", alpha=0.18, zorder=1))
-    ax.plot([46,58,46,58,46],[384,390,396,402,408], color=OUT, lw=0.6, zorder=6)                  # break on the rising ACM
-
-    # ── the compact hanging cluster BELOW the rail: WIDE carriage plate (red) with the Z-slide (green) up its CENTRE ──
-    _rect(ax, 12, 134, 80, 98, C_CAR, z=3)                                                        # carriage plate Yd2222-2302, Z134-232 (visible below the rail)
-    _rect(ax, 43, 156, 18, 76, C_TILT, z=5); _hatch316(ax, 43, 156, 18, 76)                       # Z (tilt) slide — vertical, centred on the plate
-    _rect(ax, 43, 156, 2.5, 76, C_POLY, z=6); _rect(ax, 58.5, 156, 2.5, 76, C_POLY, z=6)          # UHMW pads (both faces)
-    _rect(ax, 45, 176, 6, 10, C_PIN, z=6)                                                         # gib
-    for zj in (210, 168):                                                                         # J1 — Z-way seats on the plate face (fasteners seen end-on)
-        _joint(ax, 40, zj, r=2.6); _joint(ax, 64, zj, r=2.6)
-    # ── U-joint tucked at the bottom (grey), on the film line ──
-    _rect(ax, 40, 146, 24, 24, C_UJ, z=6)
-    _setscrew(ax, 40, 158, dx=6)                                                                  # J3 — input-hub radial set screw
-    # ── X (SWING) slide — a 260mm bar running in X (into the page) — seen END-ON here (a small square) ──
-    _rect(ax, 46, 156, 12, 12, C_SWING, z=7)
-    # ── frame corner L-bracket (6061 Al, anodized, expendable) wraps the corner + holds the U-joint output ──
-    _rect(ax, 42, 134, 26, 24, C_STEEL, z=5)
-    _setscrew(ax, 42, 146, dx=6)                                                                  # J4 — bracket radial set screw
-    # ── 6061 Al frame ANGLE + the frame-corner bolt (angle → L-bracket) ──
-    _rect(ax, 50, 158, 30, 6, C_FRAME, z=7)                                                       # in-plane leg (ACM seat / film bottom edge)
-    _rect(ax, 50, 158, 6, 26, C_FRAME, z=7)                                                       # short perp leg (muslin-clamp face)
-    _vbolt(ax, 60, 148, 164)                                                                      # J5 — frame angle → L-bracket (vertical)
-
-    # ── WEIGHT RAIL on top (grey, web-vertical U-channel, runs in Yd) — drawn OVER the plate, so the cluster hangs BELOW it ──
-    ax.add_patch(plt.Rectangle((-24, 232), 200, 76, fc=C_STEEL, ec=OUT, lw=1.1, zorder=8))
-    ax.plot([-24, 176], [237, 237], color=OUT, lw=0.8, zorder=9)                                  # bottom flange (running surface)
-    ax.plot([-24, 176], [303, 303], color=OUT, lw=0.8, zorder=9)                                  # top flange
-    for bx in (-14, 166):                                                                         # break zigzags (rail continues in Yd)
-        zz = [(bx-4,234),(bx+4,250),(bx-4,266),(bx+4,282),(bx-4,298),(bx+4,306)]
-        ax.plot([p[0] for p in zz],[p[1] for p in zz], color=OUT, lw=0.7, zorder=10)
-    for wx in (34, 70):                                                                           # 2 load wheels IN the channel (on the bottom flange)
-        draw_circle(ax, wx, 253, 16, color=OUT, fill=True, fc=C_ACET, lw=1.0, zorder=9)
-        draw_circle(ax, wx, 253, 4, color=OUT, fill=True, fc=C_STEEL, lw=0.5, zorder=10)
-    draw_circle(ax, 52, 288, 10, color=OUT, fill=True, fc=C_ACET, lw=0.9, zorder=9)               # keeper (anti-lift, under the top flange)
-    ax.plot([52, 52], [232, 210], color=C_PIN, lw=1.4, zorder=7)                                # axle-retainer bolt down through the plate
-
-    # ── dimensions ──
-    draw_dim_v(ax, -6, 160, 270, "≈110mm\nfilm corner\nBELOW the\nrail centre\n(BUILD_BOT)", offset=14, fs=5.0, color=DIM, font=FONT)
-    ax.annotate("", xy=(96, 300), xytext=(96, 156), arrowprops=dict(arrowstyle="<->", color=C_TILT, lw=0.6))
-    ax.text(99, 228, "Z-slide TILT travel ~250mm (way runs up behind the rail)", fontsize=5.0, color=C_TILT, ha="left", va="center", rotation=90, **FONT)
-    # ── leaders / joint callouts ──
-    leader(ax, 30, 278, 102, 290, "BOTTOM weight rail (3×1.5 304 U-channel)\n+ 4-wheel skate — carries the plane", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 20, 210, 102, 262, "wide carriage plate (red)\nhangs from the skate axles", ha="left", fs=5.2, color=C_CAR, font=FONT, bbox=LBL_BG)
-    leader(ax, 55, 210, 102, 238, "Z (TILT) slide — 316 flat bar + UHMW + gib\n(green, up the CENTRE of the plate)", ha="left", fs=5.2, color=C_TILT, font=FONT, bbox=LBL_BG)
-    leader(ax, 64, 208, 102, 212, "J1 — Z-way seats on the\ncarriage-plate face (M8 ×4)", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 52, 162, 102, 188, "X (SWING) slide — 260mm bar, INTO PAGE\n(end-on here; real length in plan B)", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
-    leader(ax, 52, 156, 102, 166, "U-joint (Ruland US12-6-6-SS) + J3 set screw\n— tilt + swing, twist-locked", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 46, 146, 102, 148, "L-bracket + J4 set-screw clamp\non the U-joint output", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 66, 160, 102, 132, "6061 Al frame angle + J5 (M6 ×2, vertical)\n→ ACM/muslin rises UP", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-30, 546, "A — ASSEMBLED ELEVATION  (BOTTOM corner; Yd × Z, swing into page — true proportions, matches the 3D)", fontsize=7.4, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
-    ax.text(-30, 532, "the mechanism is a COMPACT cluster hanging ~110mm below the weight rail; the Z-slide (green) runs up the centre of the wide carriage plate (red)", fontsize=5.0, color=DIM, ha="left", va="top", **FONT)
 
 
 def attach_plan(ax):

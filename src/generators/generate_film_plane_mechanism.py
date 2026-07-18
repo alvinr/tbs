@@ -2006,6 +2006,13 @@ def _corner_section(ax):
     for hx in (84, 128):                          # input hub (→ X-carriage stub) · output hub (→ corner-plate stub)
         ax.add_patch(plt.Rectangle((hx - 0.9, 2.5), 1.8, 7.0, fc=C_PIN, ec=OUT, lw=0.3, zorder=13))   # clamp-screw shank into the hub
         ax.add_patch(plt.Rectangle((hx - 2.2, 9.5), 4.4, 2.4, fc=C_PIN, ec=OUT, lw=0.4, zorder=13))    # cap-screw head at the hub OD
+    # 4040N12 304 shaft support — a two-piece clamp on the input stub, bolted to the X-carriage,
+    # so the stub (and the whole corner load through it) is positively secured to the purple X-slide
+    for (yb, yh) in [(4.75, 7.0), (-11.75, 7.0)]:                 # upper & lower halves — bore = the Ø9.5 stub between them
+        ax.add_patch(plt.Rectangle((47, yb), 13, yh, fc=C_STEEL, ec=OUT, lw=1.0, zorder=8)); _hatch316(ax, 47, yb, 13, yh)
+    ax.add_patch(plt.Rectangle((52.4, 11.75), 2.2, 4.5, fc=C_PIN, ec=OUT, lw=0.3, zorder=13))          # clamp screw — pulls the halves onto the stub
+    for by in (-8.5, 8.5):                                        # 2 bolts fix the support to the carriage (purple slide)
+        ax.add_patch(plt.Rectangle((40, by - 0.9), 9.6, 1.8, fc=C_PIN, ec=OUT, lw=0.3, zorder=13))
     # dimensions
     draw_dim_h(ax, 72, 140, 30, "68", fs=5.2, font=FONT)                                   # U-joint length
     draw_dim_v(ax, 150, -9.5, 9.5, "Ø19", fs=5.2, font=FONT)                               # U-joint dia
@@ -2016,6 +2023,7 @@ def _corner_section(ax):
     # labels
     leader(ax, 26, -18, 6, -74, "X carriage — 316 on UHMW;\ncam-clamp locks swing", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
     leader(ax, 60, -6, 40, -78, "J3  X-carriage stub Ø9.5 (3/8\") → U-joint bore", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 53, 11.75, 12, 58, "4040N12 304 shaft support — two-piece clamp\nsecures the input stub to the X-slide (purple)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 84, 11.9, 56, 86, "U-joint (tilt + swing, twist-locked) — Ruland USKC12-6-6-SS\nclamp screw per hub locks it on its keyed shaft", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 169, -40, 170, -74, "304 SS corner plate — J4 U-joint stub KEYED + CLAMPED", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 167, 24, 150, 66, "J5 COUNTERSUNK from the plate side → frame (M6 ×2/leg)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)

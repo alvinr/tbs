@@ -16,7 +16,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,374 | $3,898 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,356 | $7,929 |
 | 6. Electrical — power, circuits, wiring | $2,608 | $3,003 |
-| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,405 | $2,130 |
+| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,416 | $2,061 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $939 | $1,479 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,000 | $2,975 |
 | 7c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,140 | $1,695 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$22,712** | **~$33,464** |
+| **TOTAL (base build + 50-print run)** | **~$22,723** | **~$33,395** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -91,10 +91,10 @@ indicative low–high estimates — get quotes before ordering.
 | Locking collar SS316 | 4 ea | McMaster-Carr | film | $48 |
 | Rail carriage HGH20CA | 8 ea | Automation Overstock | film | $144 |
 | Rod-end spherical bearing | 4 ea | McMaster-Carr | film | $88 |
-| SKF 6215-2RS1 sealed bearing | 2 ea | Bearing World | lightlock | $110–$190 |
+| SKF 6215-2RS1 sealed bearing | 2 ea | Bearings Direct | lightlock | $121 |
 | Turntable thrust bearing, 12″ (Ø305) 1000 lb | 1 ea | VXB | swing | $40–$60 |
 | Ø20mm ball joint, zinc socket, M12 stud | 1 ea | Amazon | spray | $12 |
-| **bearings-motion subtotal** | | | | **$1,557–$1,707** |
+| **bearings-motion subtotal** | | | | **$1,568–$1,638** |
 
 ### chemistry-reagents
 
@@ -445,11 +445,11 @@ indicative low–high estimates — get quotes before ordering.
 | Hessaire | 1 | ducting-ventilation | $185–$230 |
 | Cable Master | 1 | electrical-distribution | $199–$211 |
 | Waytek Wire | 7 | electrical-distribution | $208 |
-| Bearing World | 1 | bearings-motion | $110–$190 |
 | AllFilters | 1 | water-equipment | $114–$186 |
 | Lenox Laser | 1 | stainless-sheet | $50–$150 |
 | Grainger | 1 | bearings-motion | $140 |
 | Bostick & Sullivan | 1 | chemistry-reagents | $138 |
+| Bearings Direct | 1 | bearings-motion | $121 |
 | Ferguson | 4 | plumbing-fittings | $74–$120 |
 | JME Sales | 1 | plumbing-fittings | $64–$120 |
 | Apera Instruments | 1 | tools-safety | $100–$110 |

@@ -577,7 +577,7 @@ PARTS: list[Part] = [
          "lightlock", 1, "lot", 150, 240, "TAP Plastics", "Curbell",
          spec="Ø864 revolving drum shell + top/bottom caps — LT_DRUM_T (~7 m²)"),
     Part("ll-skf-bearing", "SKF 6215-2RS1 sealed bearing", "bearings-motion",
-         "lightlock", 2, "ea", 55, 95, "Bearing World", "Applied", spec="Top and bottom (drum rotation). Ø75 bore × Ø130 OD × 25mm wide, C=52.7 kN, both-sides sealed. '2RS1' is SKF's both-sides-sealed suffix; the McMaster generic equivalent is listed as 6215-2RS (no SKF branding)."),
+         "lightlock", 2, "ea", 60.59, 60.59, "Bearings Direct", "McMaster-Carr", part_no="6215-2RS", url="https://bearingsdirect.com/6215-2rs-ball-bearing-75x130x25-sealed-6215-2nse/", spec="Top and bottom (drum rotation). Ø75 bore × Ø130 OD × 25mm wide, C=52.7 kN, both-sides sealed (6215-2RS / 6215-2NSE; SKF designation 6215-2RS1). Buy the ABEC-1 grade: the drum is a hand-rotated, low-speed, low-load light-lock — the tighter ABEC-3 tolerance buys nothing here (SKF's standard 6215-2RS1 is Normal/P0 = ABEC 1). VERIFIED $60.59 ea at Bearings Direct 2026-07-18. ALT: McMaster 6138K125 @ $394.88 ea — a heavy commodity-bearing premium, prefer the distributor."),
     Part("ll-stub-shafts", "75mm Ø × 150mm steel stub shaft", "steel-structural",
          "lightlock", 2, "ea", 15, 25, "steel service center", spec="Bearing shafts"),
     Part("ll-wiper-seal", "Felt/brush wiper strip + 12mm closed-cell neoprene", "seals-gaskets",

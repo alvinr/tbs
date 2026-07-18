@@ -40,7 +40,7 @@ models:
   ibc-stack: {script: src/models/generate_ibc_model.py, outputs: [models/ibc-stack.skp, src/models/ibc-stack.rb]}
   walkway: {script: src/models/generate_walkway_model.py, outputs: [models/walkway.skp, src/models/walkway.rb]}
   film-plane: {script: src/models/generate_film_plane_model.py, outputs: [models/film-plane.skp, src/models/film-plane.rb]}
-  corner-gimbal: {script: src/models/generate_corner_gimbal_model.py, outputs: [models/corner-gimbal.skp, src/models/corner-gimbal.rb]}
+  film-plane-mechanism: {script: src/models/generate_film_plane_mechanism_model.py, outputs: [models/film-plane-mechanism.skp, src/models/film-plane-mechanism.rb]}
   lighttrap: {script: src/models/generate_lighttrap_model.py, outputs: [models/lighttrap.skp, src/models/lighttrap.rb]}
   electrical: {script: src/models/generate_electrical_model.py, outputs: [models/electrical.skp, src/models/electrical.rb]}
   mini-tbs: {script: src/models/generate_mini_tbs_model.py, outputs: [models/mini-tbs.skp, src/models/mini-tbs.rb]}

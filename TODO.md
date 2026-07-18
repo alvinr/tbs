@@ -52,19 +52,19 @@ The remaining §7 parts BOM is gated on confirmed prices._
 - [x] `film-plane-mechanism-report.md` §1/§4/§8/§9 — replaced the leadscrew Option-A narrative with the
   304 U-channel + acetal skate + 316 flat-bar Z/X cross-slide + Ruland US12-6-6-SS U-joint + cam-clamp
   design; dropped handwheels/Acme/rod-end/pivot-pin/PA-14 + old-vs-new archaeology; §4 image now Sheet 7
-  (front elevation); Sketchfab embed + `models/sketchfab.json` → corner-gimbal 572b… .
+  (front elevation); Sketchfab embed + `models/sketchfab.json` → film-plane-mechanism 572b… .
 - [x] `component-dependency-map.md` §3.1 component roster + §3 diagram-matrix note → U-channel design.
 - [~] `film-plane-mechanism-analysis.md` — scope note fixed (stops claiming it describes the built
   mechanism; optics §3/§5/§6 affirmed; hardware/BOM → report). **STILL OPEN (task #30):** the §4
   mechanism + §7 BOM + §8 maintenance are a leadscrew decision-record snapshot — DECIDE keep-collapse-
   to-optics-only vs **retire** (it's nav-labeled "(superseded)" and its optics overlap distortion-renders).
-- [ ] **Reconcile the two film-plane 3D models — `film-plane.skp` ↔ `corner-gimbal.skp`.** Both are
+- [ ] **Reconcile the two film-plane 3D models — `film-plane.skp` ↔ `film-plane-mechanism.skp`.** Both are
   KEPT (film-plane.skp is NOT retired). `film-plane.skp` = the full film-plane model (older Option-A
-  leadscrew DC); `corner-gimbal.skp` = the current corner mechanism (U-channel/skate/U-joint). They
+  leadscrew DC); `film-plane-mechanism.skp` = the current corner mechanism (U-channel/skate/U-joint). They
   describe overlapping geometry and have diverged — reconcile so the full model carries the current
-  corner design (or define a clear split of responsibility). The report now embeds corner-gimbal; both
+  corner design (or define a clear split of responsibility). The report now embeds film-plane-mechanism; both
   stay in `models/sketchfab.json`. Also: `component-dependency-map.md` §3.1 model table (line ~480)
-  still documents only the film-plane row (leadscrew DC) with no corner-gimbal row — update once the
+  still documents only the film-plane row (leadscrew DC) with no film-plane-mechanism row — update once the
   two models are reconciled (deferred: describes 3D internals under Alvin's active review).
 - [ ] **§7 parts BOM — GATED on Alvin's SKU paste-check.** `parts.py` film section still holds the 11
   leadscrew SKUs (hgr20-rail, hgh20ca, acme-leadscrew/nut, handwheel-8in, locking-collar, crossslide-
@@ -173,9 +173,9 @@ bath is available. Both are cheap; nothing downstream is finalized until they pa
 - [ ] **FP_H 2,388→2,138 cascade — `.skp` re-sends PENDING (code side DONE).** Branch `film-plane-redesign`:
   the active film-plane height dropped to 2,138mm (low-profile wheels-on-pipe corner, BUILD 140→110). Constants,
   parts/costing (clamp 92→90, −$8/$13/$18), all FP_H diagrams, weight, and the report prose/config table are
-  cascaded + committed; `overview.rb` (film-plane geometry) and `corner-gimbal.rb` (BUILD 110) regenerated.
+  cascaded + committed; `overview.rb` (film-plane geometry) and `film-plane-mechanism.rb` (BUILD 110) regenerated.
   **Alvin owes two re-saves:** (1) open **overview.skp** → re-send `generate_sketchup_model.py` → save + re-upload;
-  (2) open **corner-gimbal.skp** (still BUILD 140 in repo) → re-send `generate_corner_gimbal_model.py` → save +
+  (2) open **film-plane-mechanism.skp** (still BUILD 140 in repo) → re-send `generate_film_plane_mechanism_model.py` → save +
   re-upload. Commit each `.skp` after its upload. (Corner-gimbal Sketchfab UID `572b4aaa2d394de1b8852160d7cdcfc3`.)
 - [x] **spraybar.skp axle-saddle re-spec — DONE.** The axle-retention saddle was re-specced to a fabricated
   1/8" (3.18mm) × 3/4" (19mm) 304 SS flat-bar clamp with 12mm M5 feet (was a schematic 2mm/6mm-wide token that

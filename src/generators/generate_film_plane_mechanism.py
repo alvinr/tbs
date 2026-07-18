@@ -96,7 +96,7 @@ RAIL_X_L = FP_X_L       # left rail X position (mm) — tracks FP_X_L from const
 RAIL_X_R = FP_X_R       # right rail X position (mm) — tracks FP_X_R from constants
 RAIL_W   = 60           # rail width in plan view
 
-# ── LEFT-rail transport drop-in (Sheet 4). These MIRROR generate_corner_gimbal_model.py; promote
+# ── LEFT-rail transport drop-in (Sheet 4). These MIRROR generate_film_plane_mechanism_model.py; promote
 # both to tbs_constants at the FP_W/FP_H cascade so 2D + 3D single-source them (see TODO). ──
 from tbs_constants import PIVOT_YD, PIVOT_POST_OD, RAIL_OFF, RAIL_OFF_BOT, WALKWAY_H
 LEFT_CUT_YD = 2090      # cut Yd on the X150 rail = the panel-swing-envelope edge; stub = C_WID−2090 = 272mm

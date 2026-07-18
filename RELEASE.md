@@ -24,11 +24,22 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Renamed the articulated-corner 3D model `corner-gimbal` → `film-plane-mechanism`** — the
+  `.skp`, `.rb`, generator (`generate_film_plane_mechanism_model.py`), dependency-map key and
+  Sketchfab config key all follow; the Sketchfab UID (embed URL) is unchanged.
+- **Film-plane spring-clip muslin clamp** — retired the cam-lever design for a spring clip
+  (bracket through-bolted to the frame upstand, nuts on the inside; spring jaw presses a neoprene
+  pad + the muslin onto the ACM board). Cascaded across constants, parts, costing (cost unchanged),
+  the clamp report, and Sheet 6 (Panel A rotated to pinhole-left, Panels C/D reworked).
+- **Sheet 9 View B** gained a **4040N12 304 shaft support** clamping the U-joint input stub to the
+  X (swing) slide — mirrored into the 3D model at each corner.
+- **Sheet 7** rebuilt as a true-scale proportional elevation (frame at its real Z extent, components
+  drawn to size); Sheets 3/4/8 scale notes corrected; Sheet 9 relabelled "to scale."
 - **Film-plane corner mechanism — U-joint mount is now a 304 SS corner plate** — the U-joint funnels
   the whole corner load into a few bolts, too concentrated for the 6061 angle, so each corner now bolts
   to a **304 stainless corner plate** (steel for the load, stainless for the wet zone + a galvanic match
   to the 303 SS U-joint); the perimeter angle stays expendable 6061. Cascaded across parts/costing
-  (film +$72/$100/$128), the 3D corner-gimbal, and 2D Sheets 3/8. New **Sheet 9** details the
+  (film +$72/$100/$128), the 3D film-plane-mechanism, and 2D Sheets 3/8. New **Sheet 9** details the
   frame + ACM ↔ 304 SS corner plate ↔ U-joint ↔ X (swing) slide connection square-on and in section.
 - **Film-plane Sheet 6 — muslin clamp corrected to a spring clip** — the muslin attachment was redrawn
   from a cam-lever toggle to a **spring clip**: a fixed jaw bolted to the ALU frame edge (countersunk)
@@ -38,14 +49,14 @@ file** — a release must not ship without a changelog entry:
 - **Film-plane report reconciled to the U-channel corner design** — the report, dependency-map, and
   analysis-doc scope note were rewritten from the superseded leadscrew Option-A prose to the current
   304 U-channel + acetal skate + 316 cross-slide + Ruland U-joint mechanism; the Sketchfab embed now
-  points at the corner-gimbal model.
+  points at the film-plane-mechanism model.
 
 - **Film-plane frame + corner L-bracket → expendable anodized 6061** — the wetted-zone film
   structure was clarified as an **expendable** part: a 304 SS swap was evaluated (~+$1,430–1,980,
   +32 kg) and rejected in favor of **anodized 6061-T6** (inspect annually / replace on pitting),
   chosen for weight + cost — anodized Al corrodes slowly in the splash-not-immersed cyanotype zone,
   and the ACM backing carries the flatness. Both the perimeter angle and the corner L-bracket carry
-  the caveat; specs updated across parts, the weight-model note, the 3D corner-gimbal, and 2D Sheets 3/6.
+  the caveat; specs updated across parts, the weight-model note, the 3D film-plane-mechanism, and 2D Sheets 3/6.
 - **Film-plane Sheet 8 (new)** — a dedicated *frame-corner ↔ cross-slide attachment* detail:
   an assembled elevation (the tilt stack) + a plan (the swing stack) showing how each corner
   hangs off BOTH cross-slides through the single U-joint, with the five bolted joints J1–J5 and

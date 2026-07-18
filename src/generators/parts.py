@@ -577,7 +577,7 @@ PARTS: list[Part] = [
          "lightlock", 1, "lot", 150, 240, "TAP Plastics", "Curbell",
          spec="Ø864 revolving drum shell + top/bottom caps — LT_DRUM_T (~7 m²)"),
     Part("ll-skf-bearing", "SKF 6215-2RS1 sealed bearing", "bearings-motion",
-         "lightlock", 2, "ea", 55, 95, "Bearing World", "Applied", spec="Top and bottom (drum rotation)"),
+         "lightlock", 2, "ea", 55, 95, "Bearing World", "Applied", spec="Top and bottom (drum rotation). Ø75 bore × Ø130 OD × 25mm wide, C=52.7 kN, both-sides sealed. '2RS1' is SKF's both-sides-sealed suffix; the McMaster generic equivalent is listed as 6215-2RS (no SKF branding)."),
     Part("ll-stub-shafts", "75mm Ø × 150mm steel stub shaft", "steel-structural",
          "lightlock", 2, "ea", 15, 25, "steel service center", spec="Bearing shafts"),
     Part("ll-wiper-seal", "Felt/brush wiper strip + 12mm closed-cell neoprene", "seals-gaskets",
@@ -610,8 +610,8 @@ PARTS: list[Part] = [
     # ═══ door (hinged-panel §8.4) — fixed door frame; sums to the SWINGPIVOT door lines ($335–$550) ═══
     Part("sp-door-frame-rhs", "50 × 50 × 3mm RHS mild steel (6 m lengths)", "steel-structural",
          "door", 3, "ea", 30, 40, "Metal Supermarkets", spec="Frame members"),
-    Part("sp-door-seal-lips", "3mm steel plate/angle (~110mm × ~4 m)", "steel-structural",
-         "door", 1, "lot", 45, 80, "Metal Supermarkets", spec="Top + bottom seal lips — threshold upstand + frame-top downstand; seal paths #3–#4"),
+    Part("sp-door-seal-lips", "Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)", "seals-gaskets",
+         "door", 1, "lot", 129, 129, "McMaster-Carr", part_no="74405T12", url="https://www.mcmaster.com/74405T12-74405T126/", spec="Top + bottom door-frame light seals (paths #3–#4) — 2× McMaster 74405T12 nylon Tight-Seal Strip Brush (8 ft, 1\" overall height, $28.88 ea) in 2× McMaster 8813T53 aluminum holder channel (8 ft, $35.37 ea) = $128.50 firm; covers full panel width top + bottom (~2× C_WID ≈ 4.7 m ≈ 15.5 ft, from 4× 8 ft lengths). The swinging panel edge SWEEPS THROUGH the bristles, so a brush (not a compression EPDM, which would drag under the sideways sweep) — same principle as the drum-opening brush seals.", note="Changed 2026-07-18 from 3mm steel seal lips + panel-edge EPDM compression to a strip brush: the top/bottom seal is swept through by the swinging panel, so a brush is the correct type. Brush 74405T12 ($28.88/8ft), holder 8813T53 ($35.37/8ft) — prices verified 2026-07-18."),
     Part("sp-door-fab", "Welding / fabrication", "fabrication-labor",
          "door", 1, "lot", 200, 350, "local fab", spec="Frame assembly + wall attachment"),
 

@@ -50,6 +50,18 @@ FAN_B_YD, FAN_B_H = ov.FAN_B_YD, ov.FAN_B_H
 C_STEEL, C_ALUM, C_PLY = ov.C_STEEL, ov.C_ALUM, ov.C_PLY
 C_PLASTIC = ov.C_PLASTIC                       # 4mm PP panel skins + bay (rev11; C_PLY now = wood fan band only)
 C_DRUM, C_GASKT, C_RAIL, C_CARR = ov.C_DRUM, ov.C_GASKT, ov.C_RAIL, ov.C_CARR
+# Seal geometry renders GREEN so it's never mistaken for the steel-grey structure — in TWO
+# shades so the two seal TYPES read distinctly from each other:
+#   C_SEAL  (medium green) = the top/bottom BRUSH seals — the panel edge SWEEPS THROUGH them.
+#   C_GASKT (dark green)   = the EPDM compression seals that STAY (panel perimeter left/right,
+#                            the vertical cut seals, and the housing-surround ring).
+# (The door-frame top/bottom seal LIPS were formerly C_RAIL steel-grey, which read as structure
+# and made a clash inspection ambiguous, 2026-07-18.)
+# DELIBERATE OVERLAP: the panel + drum-box top edge intentionally overlaps the top brush seal
+# ~30mm and sweeps THROUGH it as the panel swings — a brush, not a compression EPDM (which would
+# drag under the sideways sweep). The overlap is by design; do not "fix" it.
+C_SEAL  = "#2FA84F"   # top/bottom brush seals
+C_GASKT = "#14532D"   # EPDM compression seals (perimeter / cut / housing)
 C_SHELL, C_VALVE = ov.C_SHELL, ov.C_VALVE
 
 PANEL_Z_BOT = PANEL_FLOOR_GAP                 # 80 — bottom edge (floor gap)
@@ -227,27 +239,26 @@ def door_frame(include_seal=True):
         ruby_box("Door Frame right stile", x0, C_WID - s, 0, s, s, C_HGT,
                  color=C_RAIL),
     ]
-    # Bottom seal lip — an upstand rising from the threshold to just above the
-    # panel bottom edge (Z=110), exterior of the EPDM (X=-32..-20). It closes the
-    # 80mm floor gap as a continuous wall; the panel bottom edge recedes behind it
-    # and the EPDM bottom seal compresses against it when the cam latches engage
-    # (operational only — release to slide to transport). Now that the drum is
-    # SUSPENDED (its bottom hangs at Z=80, not on the floor), the floor gap is
-    # uniform full-width, so this lip runs CONTINUOUS with no notch — like the top.
+    # Bottom BRUSH seal — a filament strip on the frame (X=-32..-20) rising from the
+    # threshold to just above the panel bottom edge (Z=110). It closes the 80mm floor gap
+    # as a light-tight bristle wall the panel bottom edge SWEEPS THROUGH as the panel swings
+    # (a compression EPDM would drag under the sideways sweep). Now that the drum is
+    # SUSPENDED (its bottom hangs at Z=80, not on the floor), the floor gap is uniform
+    # full-width, so this brush runs CONTINUOUS with no notch — like the top.
     lt, lz = 12, 110
-    parts.append(ruby_box("Door Frame bottom seal lip", -20 - lt, 0, 0,
-                          lt, C_WID, lz, color=C_RAIL))
-    # Top seal lip — the mirror of the bottom: a downstand from the frame top
-    # rail to just below the panel top edge (Z=2270), exterior of the EPDM. It
-    # closes the gap between the panel top and the frame as a continuous wall;
-    # the panel top edge recedes behind it and the EPDM top seal compresses
-    # against it under the upper cam latches. The drum doesn't reach the top
-    # (its shaft stops below the lip), so this lip runs the FULL width as one
+    parts.append(ruby_box("Door Frame bottom brush seal", -20 - lt, 0, 0,
+                          lt, C_WID, lz, color=C_SEAL))
+    # Top BRUSH seal — the mirror of the bottom: a filament strip on the frame top rail
+    # reaching to just below the panel top edge (Z=2270). It closes the panel-top↔frame gap
+    # as a light-tight bristle wall the panel + drum-box top edge SWEEPS THROUGH as the panel
+    # swings. The drum shaft stops below it, so the brush runs the FULL width as one
     # continuous member — no notch — and meets across the center.
-    tz0 = PANEL_Z_TOP - 30                 # 2270 — lip reaches 30mm past panel top
+    tz0 = PANEL_Z_TOP - 30                 # 2270 — brush reaches 30mm past panel top; the panel +
+                                           # drum-box top edge DELIBERATELY overlaps this ~30mm
+                                           # (sweeps THROUGH the bristles, not a clash — see C_SEAL note)
     th = C_HGT - tz0                       # up to the frame top / ceiling
-    parts.append(ruby_box("Door Frame top seal lip", -20 - lt, 0, tz0,
-                          lt, C_WID, th, color=C_RAIL))
+    parts.append(ruby_box("Door Frame top brush seal", -20 - lt, 0, tz0,
+                          lt, C_WID, th, color=C_SEAL))
 
     # ── Interface 2: drum-housing surround → frame EPDM ring (built by
     # housing_surround_seal()). It is bonded to the housing, so the transport
@@ -346,8 +357,8 @@ def drum_housing(cx, cy):
     parts.append(ov.ruby_arc_wall("LT Housing arc (far Yd)", cx, cy, HOUSING_R,
                                   HOUSING_T, H - ZB, gap_center_deg=90, gap_deg=180 + od,
                                   color=C_ALUM, alpha=0.5, z0=ZB))
-    parts.append(ruby_cylinder("LT Upper bearing (SKF 6215)", cx, cy, H, 65, 45,
-                               color=C_STEEL, axis="z"))
+    parts.append(ruby_cylinder("LT Upper bearing (SKF 6215)", cx, cy, H, 65, 25,
+                               color=C_STEEL, axis="z"))   # Ø130 OD (r65) × 25mm B — SKF 6215 datasheet
     # (Lower bearing collar + mount plate omitted in this model — the drum is
     # top-suspended, and the bottom hardware read as a plate sitting on the floor
     # as the panel slides. Below the drum is just floor.)
@@ -560,15 +571,22 @@ def stay_rods():
     return '\n'.join(p)
 
 
+def _rail_clamp_bar(ys, z):
+    """The removable clamp bar that holds a 40×40 rail end down in its U-saddle. Part of
+    the LIFT-OUT — it comes out with the rail for transport, so it's built into
+    liftout_film_rail() (a Panel-Swing DC child that HIDES on swing), not the static cradle."""
+    return ruby_box("Rail clamp bar (removable)", 133, ys + 22, z + 40, 74, 36, 14, color="#7A7A82")
+
+
 def _rail_saddle(ys, z):
-    """Drop-in U-saddle cradling a removable 40×40 rail end: shelf + X-side cheeks +
-    tapered locating dowel (to the film datum) + a removable clamp bar."""
-    c, cclamp, cdowel = C_STEEL, "#7A7A82", "#9A9AA2"
+    """Drop-in U-saddle CRADLE for a removable 40×40 rail end: shelf + X-side cheeks +
+    tapered locating dowel (to the film datum). STAYS put — the rail + its clamp bar (the
+    lift-out) come out for transport (see liftout_film_rail() / _rail_clamp_bar())."""
+    c, cdowel = C_STEEL, "#9A9AA2"
     return '\n'.join([
         ruby_box("Rail saddle shelf", 133, ys, z - 14, 74, 80, 14, color=c),
         ruby_box("Rail saddle cheek -X", 133, ys, z, 12, 80, 44, color=c),
         ruby_box("Rail saddle cheek +X", 195, ys, z, 12, 80, 44, color=c),
-        ruby_box("Rail clamp bar (removable)", 133, ys + 22, z + 40, 74, 36, 14, color=cclamp),
         ruby_cylinder("Rail locating dowel (taper)", 170, ys + 40, z - 14, 5, 22, color=cdowel, axis="z"),
     ])
 
@@ -683,31 +701,51 @@ def liftout_walkways():
 
 
 def film_plane_left():
-    """LEFT (cargo-door) end of the film-plane rail mechanism. The left RAIL PAIR (TL+BL,
-    X=RAIL_X_L) is REMOVABLE for transport — it lifts straight up out of drop-in U-saddles
-    (shelf + cheeks + tapered datum dowel + clamp bar) at each end so the swinging drum cage
-    can transition the X=150 rail plane, then re-seats to the film datum. The brace-cage
-    beams (upper+lower, run to the container/walkway far extent) + the near-wall corner post
-    stay; the FAR post is the Ø89 pivot (the original 50×50 far post is struck post-build)."""
-    rail = 40
+    """LEFT (cargo-door) end of the film-plane rail mechanism — the STATIC parts that STAY:
+    the brace-cage beams (upper+lower, run to the container/walkway far extent) + the
+    near-wall corner post + the drop-in U-saddle CRADLES (shelf/cheeks/dowel). The removable
+    left RAIL PAIR (TL+BL) + its clamp bars are the LIFT-OUT — built by liftout_film_rail()
+    as a Panel-Swing DC child that HIDES when swung, so the swinging drum surround can
+    transition the X=150 rail plane in transport. (The FAR post is the Ø89 pivot; the
+    original 50×50 far post is struck post-build.)"""
     s = ov.BRACE_RHS                            # 50
     xL = ov.RAIL_X_L                            # 150
     z_bot = ov.RAIL_OFF                         # 100
-    z_top = ov.C_HGT - ov.RAIL_OFF_TOP - rail   # 2204 — film-plane top rail (dropped 44mm via RAIL_OFF_TOP)
+    z_top = ov.C_HGT - ov.RAIL_OFF_TOP - 40     # 2204 — film-plane top rail seat (dropped 44mm via RAIL_OFF_TOP)
     yN, yF = ov.FP_Y_MIN, ov.FP_Y               # 100, 2262
     blen = WALL_FAR - xL                         # beams run X150..WALL_FAR (match container/walkway)
+    C = ov.C_STEEL
+    parts = []
+    for py, pn in [(yN, "near wall"), (yF, "far wall")]:
+        parts.append(ruby_box(f"FP Brace Beam Lower ({pn})", xL, py, z_bot, blen, s, s, color=C))
+        parts.append(ruby_box(f"FP Brace Beam Upper ({pn})", xL, py, z_top, blen, s, s, color=C))
+        parts.append(ruby_box(f"FP Brace Post L ({pn})", xL, py, z_bot, s, s, z_top - z_bot, color=C))
+    for ys in (yN, yF - 80):                     # drop-in saddle CRADLES just inside each rail end
+        parts.append(_rail_saddle(ys, z_bot))
+        parts.append(_rail_saddle(ys, z_top))
+    return '\n'.join(parts)
+
+
+def liftout_film_rail():
+    """The REMOVABLE left film-plane rail — the LIFT-OUT beam. The rail PAIR (TL+BL,
+    X=RAIL_X_L) + their clamp bars lift straight up out of the drop-in U-saddles for
+    transport. Built at WORLD coords; placed as a CHILD of the Panel Swing DC so it HIDES
+    when the panel swings open (removed for the transport swing) — the same child-DC +
+    hidden-formula pattern as the lift-out walkways. As a swing child it also rides rigidly
+    with the drum surround through the animation, so it never sweeps into it."""
+    rail = 40
+    xL = ov.RAIL_X_L                            # 150
+    z_bot = ov.RAIL_OFF                         # 100
+    z_top = ov.C_HGT - ov.RAIL_OFF_TOP - rail   # 2204
+    yN, yF = ov.FP_Y_MIN, ov.FP_Y               # 100, 2262
     C = ov.C_STEEL
     parts = [
         ruby_box("FP Rail BL (lower left)", xL, yN, z_bot, rail, yF - yN, rail, color=C),
         ruby_box("FP Rail TL (upper left)", xL, yN, z_top, rail, yF - yN, rail, color=C),
     ]
-    for py, pn in [(yN, "near wall"), (yF, "far wall")]:
-        parts.append(ruby_box(f"FP Brace Beam Lower ({pn})", xL, py, z_bot, blen, s, s, color=C))
-        parts.append(ruby_box(f"FP Brace Beam Upper ({pn})", xL, py, z_top, blen, s, s, color=C))
-        parts.append(ruby_box(f"FP Brace Post L ({pn})", xL, py, z_bot, s, s, z_top - z_bot, color=C))
-    for ys in (yN, yF - 80):                     # drop-in saddles just inside each rail end
-        parts.append(_rail_saddle(ys, z_bot))
-        parts.append(_rail_saddle(ys, z_top))
+    for ys in (yN, yF - 80):                     # the removable clamp bars come out with the rail
+        parts.append(_rail_clamp_bar(ys, z_bot))
+        parts.append(_rail_clamp_bar(ys, z_top))
     return '\n'.join(parts)
 
 
@@ -885,6 +923,22 @@ fbc_inst.layer = model.layers["Fan B Cable"]
 fbc_inst.set_attribute("dynamic_attributes", "_name", "FanBCable")
 fbc_inst.set_attribute("dynamic_attributes", "hidden", 0.0)
 fbc_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing>0.5")
+
+# ── Lift-out film rail — a CHILD DC component inside the swing def: HIDDEN when the panel
+#    swings (the removable left rail pair + clamp bars are lifted out for transport, clearing
+#    the X=150 rail plane for the swinging drum surround). Built at world coords; same child-DC
+#    + hidden-formula pattern as the lift-out walkways. As a swing child it also rides rigidly
+#    with the surround through the animation, so it never sweeps into it. ──
+lfr_defn = model.definitions.add("Lift-out Film Rail")
+ents = lfr_defn.entities
+{liftout_film_rail()}
+ents = defn.entities
+lfr_inst = ents.add_instance(lfr_defn, Geom::Transformation.new)
+lfr_inst.name = "Lift-out Film Rail"
+lfr_inst.layer = model.layers["Film Plane Rails"]
+lfr_inst.set_attribute("dynamic_attributes", "_name", "LiftoutFilmRail")
+lfr_inst.set_attribute("dynamic_attributes", "hidden", 0.0)
+lfr_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swing>0.5")
 
 # Shift the moving def by -pivot so the def origin sits at the pivot — then the instance's
 # RotZ swings the assembly about the pivot (same origin-at-rotation-point pattern the

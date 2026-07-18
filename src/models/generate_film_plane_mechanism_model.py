@@ -19,7 +19,7 @@ slide, cam-clamp to lock. Scenes: Overview (iso) · Tilt (side) · Swing (top) �
 REUSES generate_sketchup_model.py helpers. Open a NEW blank SketchUp doc before --send.
 
 Usage:
-    /usr/bin/python3 src/models/generate_corner_gimbal_model.py --save [--send]
+    /usr/bin/python3 src/models/generate_film_plane_mechanism_model.py --save [--send]
 """
 import argparse
 import os
@@ -203,7 +203,13 @@ def corner(tag, cx, fz, zc, cin, side):
     # muslin-clamp perp leg projects the other way (toward the pinhole), so nothing is drawn through the slides.
     P.append(ov.ruby_box(f"Vertical Z slide rail (TILT, green) {tag}", inb - 3, ty + 1, min(fz, rz) - 4, 16, 18, abs(rz - fz) + 20, color=C_TILT))
     P.append(ov.ruby_box(f"Horizontal X slide rail (SWING, purple) {tag}", xr0, ty + 1, fz - 4, 260, 14, 14, color=C_SWING))
-    P.append(ov.ruby_box(f"U-joint {tag}", cx - 12, ty - 4, fz - 14, 24, 24, 24, color=C_CROSS))
+    P.append(ov.ruby_box(f"U-joint (Ruland USKC12-6-6-SS, keyway+clamp) {tag}", cx - 12, ty - 4, fz - 14, 24, 24, 24, color=C_CROSS))
+    # input stub Ø9.5 (3/8") from the X-carriage into the U-joint bore, and the 4040N12 304 shaft
+    # support (two-piece clamp) that fixes that stub to the X (swing) slide — Sheet 9 View B.
+    stub_x0 = cx + 5 if cin > 0 else cx - 51
+    sup_x0  = cx + 26 if cin > 0 else cx - 49
+    P.append(ov.ruby_cylinder(f"Input stub 3/8 (X slide → U-joint) {tag}", stub_x0, ty + 8, fz, 4.75, 46, color=C_STEEL, axis="x"))
+    P.append(ov.ruby_box(f"4040N12 304 shaft support (clamps input stub → X slide) {tag}", sup_x0, ty - 1, fz - 11, 23, 18, 22, color=C_STEEL))
     # FILM-PLANE FRAME CORNER — bolts onto the U-joint, so the ghost panel is carried by this corner.
     # Kept INBOARD of the web (outboard edge at the web inboard face) so the beam-flush cut support clears it.
     ybk = min(ty - 8, FP_Y - 4)
@@ -232,7 +238,7 @@ def film_plane():
     # The film plane is NOT a bare sheet butted to the corner brackets. It is a rigid ACM BACKING captured in a
     # 2x2 6061 Al angle PERIMETER FRAME (anodized 6061-T6, 2"×2"×3/16" — an EXPENDABLE part; anodized Al in the
     # splash-not-immersed cyanotype zone, replaced on pitting, chosen over 304 SS for weight + cost):
-    # the ACM seats against the frame's in-plane leg; the muslin wraps + clamps to the perp leg (Sheet 6); and
+    # the ACM seats against the frame's in-plane leg; the muslin is clamped onto the ACM by spring clips on the upstand (Sheet 6); and
     # the frame's four CORNERS bolt onto the frame
     # 304 SS corner plates — which carry it through the U-joint to the cross-slides. So the load path is
     # ACM → angle frame → 304 SS corner plate → U-joint, never a butt joint. The corner plate is STEEL
@@ -246,14 +252,14 @@ def film_plane():
         ov.ruby_box("Film-plane ACM backing (ghost)", FCX_L, FP_Y, PZ0, FP_W_CORNER, 4, PZ1 - PZ0,
                     color=C_PANEL, alpha=0.14),
         # 2x2 6061 Al angle perimeter frame — top / bottom (perp leg + in-plane leg = an L)
-        ov.ruby_box("Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)", FCX_L, yperp, PZ1 - AT, FP_W_CORNER, AL, AT, color=C_FRAME),
+        ov.ruby_box("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)", FCX_L, yperp, PZ1 - AT, FP_W_CORNER, AL, AT, color=C_FRAME),
         ov.ruby_box("Film frame 2x2 6061 Al angle — top (in-plane leg / ACM seat)", FCX_L, yin, PZ1 - AL, FP_W_CORNER, AT, AL, color=C_FRAME),
-        ov.ruby_box("Film frame 2x2 6061 Al angle — bottom (perp leg / muslin clamp)", FCX_L, yperp, PZ0, FP_W_CORNER, AL, AT, color=C_FRAME),
+        ov.ruby_box("Film frame 2x2 6061 Al angle — bottom (upstand / muslin spring clip)", FCX_L, yperp, PZ0, FP_W_CORNER, AL, AT, color=C_FRAME),
         ov.ruby_box("Film frame 2x2 6061 Al angle — bottom (in-plane leg / ACM seat)", FCX_L, yin, PZ0, FP_W_CORNER, AT, AL, color=C_FRAME),
         # left / right
-        ov.ruby_box("Film frame 2x2 6061 Al angle — left (perp leg / muslin clamp)", FCX_L, yperp, PZ0, AT, AL, PZ1 - PZ0, color=C_FRAME),
+        ov.ruby_box("Film frame 2x2 6061 Al angle — left (upstand / muslin spring clip)", FCX_L, yperp, PZ0, AT, AL, PZ1 - PZ0, color=C_FRAME),
         ov.ruby_box("Film frame 2x2 6061 Al angle — left (in-plane leg / ACM seat)", FCX_L, yin, PZ0, AL, AT, PZ1 - PZ0, color=C_FRAME),
-        ov.ruby_box("Film frame 2x2 6061 Al angle — right (perp leg / muslin clamp)", FCX_R - AT, yperp, PZ0, AT, AL, PZ1 - PZ0, color=C_FRAME),
+        ov.ruby_box("Film frame 2x2 6061 Al angle — right (upstand / muslin spring clip)", FCX_R - AT, yperp, PZ0, AT, AL, PZ1 - PZ0, color=C_FRAME),
         ov.ruby_box("Film frame 2x2 6061 Al angle — right (in-plane leg / ACM seat)", FCX_R - AL, yin, PZ0, AL, AT, PZ1 - PZ0, color=C_FRAME),
     ]
     return "\n".join(P)
@@ -290,6 +296,7 @@ tt.layer = model.layers["Labels"] rescue nil''')
     txt("VERTICAL slide (Z, GREEN) — absorbs TILT", X_L - 30, FP_Y, PZ0 + 20, -60, -40, 10)
     txt("HORIZONTAL slide (X, PURPLE) — absorbs SWING", X_L + 120, FP_Y, PZ0 + 10, 55, -40, 5)
     txt("U-joint (tilt + swing, twist locked)", X_L, FP_Y - 12, PZ0, -55, -45, 15)
+    txt("4040N12 304 shaft support — clamps the input stub to the X (swing) slide", X_L + 40, FP_Y + 8, PZ0 - 8, 55, 45, -14)
     return "\n".join(L)
 
 
@@ -337,7 +344,7 @@ def generate_ruby():
 
     return f'''# SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards
-# Generated from src/models/generate_corner_gimbal_model.py — do not edit this .rb directly.
+# Generated from src/models/generate_film_plane_mechanism_model.py — do not edit this .rb directly.
 model = Sketchup.active_model
 model.start_operation("Film-Plane Corner Mechanism", true)
 entities = model.active_entities
@@ -414,13 +421,13 @@ model.commit_operation
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate the film-plane combined corner mechanism model")
-    parser.add_argument("--save", action="store_true", help="Write Ruby to src/models/corner-gimbal.rb")
+    parser.add_argument("--save", action="store_true", help="Write Ruby to src/models/film-plane-mechanism.rb")
     parser.add_argument("--send", action="store_true", help="Send to the ACTIVE SketchUp doc (open a NEW doc first)")
     args = parser.parse_args()
 
     ruby = generate_ruby()
     if args.save:
-        out = os.path.join(os.path.dirname(__file__), "corner-gimbal.rb")
+        out = os.path.join(os.path.dirname(__file__), "film-plane-mechanism.rb")
         with open(out, "w") as f:
             f.write(ruby)
         print(f"  {out} saved ({len(ruby)} bytes)")

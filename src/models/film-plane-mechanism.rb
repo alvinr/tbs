@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards
-# Generated from src/models/generate_corner_gimbal_model.py — do not edit this .rb directly.
+# Generated from src/models/generate_film_plane_mechanism_model.py — do not edit this .rb directly.
 model = Sketchup.active_model
 model.start_operation("Film-Plane Corner Mechanism", true)
 entities = model.active_entities
@@ -334,14 +334,38 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint BL
+  # U-joint (Ruland USKC12-6-6-SS, keyway+clamp) BL
   grp = ents.add_group
-  grp.name = "U-joint BL"
+  grp.name = "U-joint (Ruland USKC12-6-6-SS, keyway+clamp) BL"
   face = grp.entities.add_face([138.mm,2258.mm,146.mm], [162.mm,2258.mm,146.mm], [162.mm,2282.mm,146.mm], [138.mm,2282.mm,146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Input stub 3/8 (X slide → U-joint) BL
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 (X slide → U-joint) BL"
+  ge = grp.entities
+  circle = ge.add_circle([155.mm,2270.mm,160.mm], [1,0,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(46.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 4040N12 304 shaft support (clamps input stub → X slide) BL
+  grp = ents.add_group
+  grp.name = "4040N12 304 shaft support (clamps input stub → X slide) BL"
+  face = grp.entities.add_face([176.mm,2261.mm,149.mm], [199.mm,2261.mm,149.mm], [199.mm,2279.mm,149.mm], [176.mm,2279.mm,149.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -598,14 +622,38 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint BR
+  # U-joint (Ruland USKC12-6-6-SS, keyway+clamp) BR
   grp = ents.add_group
-  grp.name = "U-joint BR"
+  grp.name = "U-joint (Ruland USKC12-6-6-SS, keyway+clamp) BR"
   face = grp.entities.add_face([4612.mm,2258.mm,146.mm], [4636.mm,2258.mm,146.mm], [4636.mm,2282.mm,146.mm], [4612.mm,2282.mm,146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Input stub 3/8 (X slide → U-joint) BR
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 (X slide → U-joint) BR"
+  ge = grp.entities
+  circle = ge.add_circle([4573.mm,2270.mm,160.mm], [1,0,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(46.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 4040N12 304 shaft support (clamps input stub → X slide) BR
+  grp = ents.add_group
+  grp.name = "4040N12 304 shaft support (clamps input stub → X slide) BR"
+  face = grp.entities.add_face([4575.mm,2261.mm,149.mm], [4598.mm,2261.mm,149.mm], [4598.mm,2279.mm,149.mm], [4575.mm,2279.mm,149.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -911,14 +959,38 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint TL
+  # U-joint (Ruland USKC12-6-6-SS, keyway+clamp) TL
   grp = ents.add_group
-  grp.name = "U-joint TL"
+  grp.name = "U-joint (Ruland USKC12-6-6-SS, keyway+clamp) TL"
   face = grp.entities.add_face([138.mm,2258.mm,2320.mm], [162.mm,2258.mm,2320.mm], [162.mm,2282.mm,2320.mm], [138.mm,2282.mm,2320.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Input stub 3/8 (X slide → U-joint) TL
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 (X slide → U-joint) TL"
+  ge = grp.entities
+  circle = ge.add_circle([155.mm,2270.mm,2334.mm], [1,0,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(46.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 4040N12 304 shaft support (clamps input stub → X slide) TL
+  grp = ents.add_group
+  grp.name = "4040N12 304 shaft support (clamps input stub → X slide) TL"
+  face = grp.entities.add_face([176.mm,2261.mm,2323.mm], [199.mm,2261.mm,2323.mm], [199.mm,2279.mm,2323.mm], [176.mm,2279.mm,2323.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1156,14 +1228,38 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint TR
+  # U-joint (Ruland USKC12-6-6-SS, keyway+clamp) TR
   grp = ents.add_group
-  grp.name = "U-joint TR"
+  grp.name = "U-joint (Ruland USKC12-6-6-SS, keyway+clamp) TR"
   face = grp.entities.add_face([4612.mm,2258.mm,2320.mm], [4636.mm,2258.mm,2320.mm], [4636.mm,2282.mm,2320.mm], [4612.mm,2282.mm,2320.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Input stub 3/8 (X slide → U-joint) TR
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 (X slide → U-joint) TR"
+  ge = grp.entities
+  circle = ge.add_circle([4573.mm,2270.mm,2334.mm], [1,0,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(46.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 4040N12 304 shaft support (clamps input stub → X slide) TR
+  grp = ents.add_group
+  grp.name = "4040N12 304 shaft support (clamps input stub → X slide) TR"
+  face = grp.entities.add_face([4575.mm,2261.mm,2323.mm], [4598.mm,2261.mm,2323.mm], [4598.mm,2279.mm,2323.mm], [4575.mm,2279.mm,2323.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1231,13 +1327,13 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 0.14
   grp.material = mat
 
-  # Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)
+  # Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)
   grp = ents.add_group
-  grp.name = "Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)"
+  grp.name = "Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"
   face = grp.entities.add_face([183.mm,2212.mm,2329.mm], [4591.mm,2212.mm,2329.mm], [4591.mm,2262.mm,2329.mm], [183.mm,2262.mm,2329.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)")
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
@@ -1248,18 +1344,18 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([183.mm,2257.mm,2284.mm], [4591.mm,2257.mm,2284.mm], [4591.mm,2262.mm,2284.mm], [183.mm,2262.mm,2284.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)")
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Film frame 2x2 6061 Al angle — bottom (perp leg / muslin clamp)
+  # Film frame 2x2 6061 Al angle — bottom (upstand / muslin spring clip)
   grp = ents.add_group
-  grp.name = "Film frame 2x2 6061 Al angle — bottom (perp leg / muslin clamp)"
+  grp.name = "Film frame 2x2 6061 Al angle — bottom (upstand / muslin spring clip)"
   face = grp.entities.add_face([183.mm,2212.mm,160.mm], [4591.mm,2212.mm,160.mm], [4591.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)")
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
@@ -1270,18 +1366,18 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([183.mm,2257.mm,160.mm], [4591.mm,2257.mm,160.mm], [4591.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)")
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Film frame 2x2 6061 Al angle — left (perp leg / muslin clamp)
+  # Film frame 2x2 6061 Al angle — left (upstand / muslin spring clip)
   grp = ents.add_group
-  grp.name = "Film frame 2x2 6061 Al angle — left (perp leg / muslin clamp)"
+  grp.name = "Film frame 2x2 6061 Al angle — left (upstand / muslin spring clip)"
   face = grp.entities.add_face([183.mm,2212.mm,160.mm], [188.mm,2212.mm,160.mm], [188.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2174.mm)
-  mat = model.materials["Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)")
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
@@ -1292,18 +1388,18 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([183.mm,2257.mm,160.mm], [233.mm,2257.mm,160.mm], [233.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2174.mm)
-  mat = model.materials["Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)")
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Film frame 2x2 6061 Al angle — right (perp leg / muslin clamp)
+  # Film frame 2x2 6061 Al angle — right (upstand / muslin spring clip)
   grp = ents.add_group
-  grp.name = "Film frame 2x2 6061 Al angle — right (perp leg / muslin clamp)"
+  grp.name = "Film frame 2x2 6061 Al angle — right (upstand / muslin spring clip)"
   face = grp.entities.add_face([4586.mm,2212.mm,160.mm], [4591.mm,2212.mm,160.mm], [4591.mm,2262.mm,160.mm], [4586.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2174.mm)
-  mat = model.materials["Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)")
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
@@ -1314,7 +1410,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4541.mm,2257.mm,160.mm], [4591.mm,2257.mm,160.mm], [4591.mm,2262.mm,160.mm], [4541.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2174.mm)
-  mat = model.materials["Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (perp leg / muslin clamp)")
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
@@ -3959,6 +4055,9 @@ tt = entities.add_text("HORIZONTAL slide (X, PURPLE) — absorbs SWING", Geom::P
 tt.layer = model.layers["Labels"] rescue nil
 
 tt = entities.add_text("U-joint (tilt + swing, twist locked)", Geom::Point3d.new(150.mm, 2250.mm, 160.mm), Geom::Vector3d.new(-55.mm, -45.mm, 15.mm))
+tt.layer = model.layers["Labels"] rescue nil
+
+tt = entities.add_text("4040N12 304 shaft support — clamps the input stub to the X (swing) slide", Geom::Point3d.new(190.mm, 2270.mm, 152.mm), Geom::Vector3d.new(55.mm, 45.mm, -14.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
 # ── In-model © + license credit (default layer → shown in every scene) ──

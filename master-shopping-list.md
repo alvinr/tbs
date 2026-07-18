@@ -13,7 +13,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $110 | $265 |
-| 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,381 | $3,915 |
+| 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,374 | $3,898 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,356 | $7,929 |
 | 6. Electrical — power, circuits, wiring | $2,608 | $3,003 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,405 | $2,130 |
@@ -22,10 +22,10 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 7c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,140 | $1,695 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $203 | $203 |
 | 8. Cooling & ventilation | $757 | $907 |
-| 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,120 | $2,700 |
+| 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$22,655** | **~$33,482** |
+| **TOTAL (base build + 50-print run)** | **~$22,628** | **~$33,415** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -101,9 +101,9 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | Ammonium dichromate | 1 run | Photographers' Formulary | chemistry | $25 |
-| Ammonium iron(III) oxalate (AmFe) | 17.5 kg | Photographers' Formulary | chemistry | $1,050 |
-| Potassium ferricyanide | 5.8 kg | Bostick & Sullivan | chemistry | $141 |
-| **chemistry-reagents subtotal** | | | | **$1,216** |
+| Ammonium iron(III) oxalate (AmFe) | 17.1 kg | Photographers' Formulary | chemistry | $1,026 |
+| Potassium ferricyanide | 5.7 kg | Bostick & Sullivan | chemistry | $138 |
+| **chemistry-reagents subtotal** | | | | **$1,189** |
 
 ### container
 
@@ -221,9 +221,9 @@ indicative low–high estimates — get quotes before ordering.
 | M12 × 40 bolt, Grade 8.8 | 12 ea | McMaster-Carr | ibc-frame | $12–$22 |
 | M12×80mm through-bolt kit | 58 ea | McMaster-Carr | walkway | $87–$145 |
 | M12×90mm hex through-bolt + nut + washers, SS | 28 ea | McMaster-Carr | film | $70 |
-| M5 SS Nylock nut | 180 ea | McMaster-Carr | clamp | $14 |
+| M5 SS Nylock nut | 176 ea | McMaster-Carr | clamp | $14 |
 | M5×16 mm CSK screws | 8 ea | McMaster-Carr | shelf | $4 |
-| M5×16 SS countersunk screw | 180 ea | McMaster-Carr | clamp | $45 |
+| M5×16 SS countersunk screw | 176 ea | McMaster-Carr | clamp | $44 |
 | M6 bolt+nut+washer set, SS (panel mount) | 4 set | McMaster-Carr | electrical | $5 |
 | M6 SS hex bolt + nut | 1 ea | McMaster-Carr | spray | $1 |
 | M6 SS hex bolts + flange nuts | 12 ea | McMaster-Carr | tray | $12 |
@@ -232,7 +232,7 @@ indicative low–high estimates — get quotes before ordering.
 | M8 wall bolts + washers/nuts | 12 ea | McMaster-Carr | shelf | $12 |
 | M8×25mm knurled thumbscrew DIN 464 | 12 ea | Amazon | film | $36 |
 | Misc. conversion hardware | 1 lot | Home Depot | interior | $80–$130 |
-| Muslin spring clip | 90 ea | McMaster-Carr | clamp | $270–$720 |
+| Muslin spring clip | 88 ea | McMaster-Carr | clamp | $264–$704 |
 | Nylon zip ties, 200mm | 6 ea | Amazon | spray | $1 |
 | Pivot pin SS316 | 4 ea | McMaster-Carr | film | $32 |
 | Ratchet straps, 25mm | 2 ea | Home Depot | ventilation | $12 |
@@ -244,7 +244,7 @@ indicative low–high estimates — get quotes before ordering.
 | Stainless fasteners + nylon isolation washers | 1 lot | McMaster-Carr | lightlock | $30–$50 |
 | Top + bottom wall stays + 4-bolt anchor plates | 2 set | McMaster-Carr | swing | $90–$160 |
 | Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
-| **fasteners-hardware subtotal** | | | | **$1,359–$2,301** |
+| **fasteners-hardware subtotal** | | | | **$1,352–$2,284** |
 
 ### plastics-sheet
 
@@ -419,7 +419,7 @@ indicative low–high estimates — get quotes before ordering.
 |----------|-----------|-------|-----------|
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 17 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,961–$3,181 |
-| McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $2,056–$2,985 |
+| McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $2,049–$2,968 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,373–$1,766 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
@@ -427,7 +427,7 @@ indicative low–high estimates — get quotes before ordering.
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | Home Depot | 23 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $876–$1,146 |
-| Photographers' Formulary | 2 | chemistry-reagents | $1,075 |
+| Photographers' Formulary | 2 | chemistry-reagents | $1,051 |
 | Renogy | 3 | electrical-power | $833–$975 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
@@ -448,8 +448,8 @@ indicative low–high estimates — get quotes before ordering.
 | Bearing World | 1 | bearings-motion | $110–$190 |
 | AllFilters | 1 | water-equipment | $114–$186 |
 | Lenox Laser | 1 | stainless-sheet | $50–$150 |
-| Bostick & Sullivan | 1 | chemistry-reagents | $141 |
 | Grainger | 1 | bearings-motion | $140 |
+| Bostick & Sullivan | 1 | chemistry-reagents | $138 |
 | Ferguson | 4 | plumbing-fittings | $74–$120 |
 | JME Sales | 1 | plumbing-fittings | $64–$120 |
 | Apera Instruments | 1 | tools-safety | $100–$110 |
@@ -476,11 +476,11 @@ suppliers, and the muslin substrate — is in the Procurement BOM above (`chemis
 **recipe + per-print basis** only.*
 
 **Mike Ware New Cyanotype** — 3:1 ammonium iron(III) oxalate (AmFe) : potassium ferricyanide by weight
-+ ammonium dichromate for contrast, applied as **two wet-on-wet coats** over the 9.62 m² active plane.
++ ammonium dichromate for contrast, applied as **two wet-on-wet coats** over the 9.42 m² active plane.
 
 | Reagent | Per print (Standard ½-Ware) | × 50 prints |
 |---------|-----------------------------|-------------|
-| Ammonium iron(III) oxalate (AmFe) | <!-- BEGIN costing:om-amfe-g-standard -->350<!-- END costing:om-amfe-g-standard -->g | <!-- BEGIN costing:om-amfe-kg-standard -->17.5<!-- END costing:om-amfe-kg-standard --> kg |
+| Ammonium iron(III) oxalate (AmFe) | <!-- BEGIN costing:om-amfe-g-standard -->342<!-- END costing:om-amfe-g-standard -->g | <!-- BEGIN costing:om-amfe-kg-standard -->17.1<!-- END costing:om-amfe-kg-standard --> kg |
 | Potassium ferricyanide (3:1) | 130g | 6.5 kg |
 | Ammonium dichromate (contrast, 0.1–0.4%) | ~1–4g | ~0.2 kg |
 | Distilled water | ~2.6 L | ~130 L |

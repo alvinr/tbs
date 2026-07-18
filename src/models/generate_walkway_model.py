@@ -90,7 +90,7 @@ def film_plane_right_beams():
     right_walkway_cantilever), so BR is skipped."""
     rail = 40
     x_right = ov.RAIL_X_R - rail                 # 4609 — matches overview/water (was a ghost at 4629)
-    z_top = ov.C_HGT - ov.RAIL_OFF - rail
+    z_top = ov.C_HGT - ov.RAIL_OFF_TOP - rail
     z_bot = ov.RAIL_OFF_BOT
     p = []
     for zl, rz in (("bot", z_bot), ("top", z_top)):

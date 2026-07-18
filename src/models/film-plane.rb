@@ -242,7 +242,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail TL web
   grp = ents.add_group
   grp.name = "U-channel rail TL web"
-  face = grp.entities.add_face([112.mm,0.mm,2301.mm], [188.mm,0.mm,2301.mm], [188.mm,2362.mm,2301.mm], [112.mm,2362.mm,2301.mm])
+  face = grp.entities.add_face([112.mm,0.mm,2257.mm], [188.mm,0.mm,2257.mm], [188.mm,2362.mm,2257.mm], [112.mm,2362.mm,2257.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
@@ -253,7 +253,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail TL flange -X
   grp = ents.add_group
   grp.name = "U-channel rail TL flange -X"
-  face = grp.entities.add_face([112.mm,0.mm,2269.mm], [118.mm,0.mm,2269.mm], [118.mm,2362.mm,2269.mm], [112.mm,2362.mm,2269.mm])
+  face = grp.entities.add_face([112.mm,0.mm,2225.mm], [118.mm,0.mm,2225.mm], [118.mm,2362.mm,2225.mm], [112.mm,2362.mm,2225.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
@@ -264,7 +264,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail TL flange +X
   grp = ents.add_group
   grp.name = "U-channel rail TL flange +X"
-  face = grp.entities.add_face([182.mm,0.mm,2269.mm], [188.mm,0.mm,2269.mm], [188.mm,2362.mm,2269.mm], [182.mm,2362.mm,2269.mm])
+  face = grp.entities.add_face([182.mm,0.mm,2225.mm], [188.mm,0.mm,2225.mm], [188.mm,2362.mm,2225.mm], [182.mm,2362.mm,2225.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
@@ -275,7 +275,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail TR web
   grp = ents.add_group
   grp.name = "U-channel rail TR web"
-  face = grp.entities.add_face([4611.mm,0.mm,2301.mm], [4687.mm,0.mm,2301.mm], [4687.mm,2362.mm,2301.mm], [4611.mm,2362.mm,2301.mm])
+  face = grp.entities.add_face([4611.mm,0.mm,2257.mm], [4687.mm,0.mm,2257.mm], [4687.mm,2362.mm,2257.mm], [4611.mm,2362.mm,2257.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
@@ -286,7 +286,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail TR flange -X
   grp = ents.add_group
   grp.name = "U-channel rail TR flange -X"
-  face = grp.entities.add_face([4611.mm,0.mm,2269.mm], [4617.mm,0.mm,2269.mm], [4617.mm,2362.mm,2269.mm], [4611.mm,2362.mm,2269.mm])
+  face = grp.entities.add_face([4611.mm,0.mm,2225.mm], [4617.mm,0.mm,2225.mm], [4617.mm,2362.mm,2225.mm], [4611.mm,2362.mm,2225.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
@@ -297,7 +297,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail TR flange +X
   grp = ents.add_group
   grp.name = "U-channel rail TR flange +X"
-  face = grp.entities.add_face([4681.mm,0.mm,2269.mm], [4687.mm,0.mm,2269.mm], [4687.mm,2362.mm,2269.mm], [4681.mm,2362.mm,2269.mm])
+  face = grp.entities.add_face([4681.mm,0.mm,2225.mm], [4687.mm,0.mm,2225.mm], [4687.mm,2362.mm,2225.mm], [4681.mm,2362.mm,2225.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
@@ -374,7 +374,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Saddle back-plate TL near
   grp = ents.add_group
   grp.name = "Saddle back-plate TL near"
-  face = grp.entities.add_face([75.mm,0.mm,2213.mm], [225.mm,0.mm,2213.mm], [225.mm,8.mm,2213.mm], [75.mm,8.mm,2213.mm])
+  face = grp.entities.add_face([75.mm,0.mm,2169.mm], [225.mm,0.mm,2169.mm], [225.mm,8.mm,2169.mm], [75.mm,8.mm,2169.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -385,7 +385,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Saddle OUTSIDE plate TL near
   grp = ents.add_group
   grp.name = "Saddle OUTSIDE plate TL near"
-  face = grp.entities.add_face([75.mm,-48.mm,2213.mm], [225.mm,-48.mm,2213.mm], [225.mm,-40.mm,2213.mm], [75.mm,-40.mm,2213.mm])
+  face = grp.entities.add_face([75.mm,-48.mm,2169.mm], [225.mm,-48.mm,2169.mm], [225.mm,-40.mm,2169.mm], [75.mm,-40.mm,2169.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -396,7 +396,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Saddle seat TL near
   grp = ents.add_group
   grp.name = "Saddle seat TL near"
-  face = grp.entities.add_face([126.mm,0.mm,2278.mm], [174.mm,0.mm,2278.mm], [174.mm,110.mm,2278.mm], [126.mm,110.mm,2278.mm])
+  face = grp.entities.add_face([126.mm,0.mm,2234.mm], [174.mm,0.mm,2234.mm], [174.mm,110.mm,2234.mm], [126.mm,110.mm,2234.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -408,7 +408,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle gusset TL near"
   ge = grp.entities
-  f = ge.add_face([150.mm,110.mm,2278.mm], [150.mm,0.mm,2278.mm], [150.mm,0.mm,2158.mm])
+  f = ge.add_face([150.mm,110.mm,2234.mm], [150.mm,0.mm,2234.mm], [150.mm,0.mm,2114.mm])
   f.pushpull(8.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -419,7 +419,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TL near"
   ge = grp.entities
-  circle = ge.add_circle([100.mm,-48.mm,2238.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([100.mm,-48.mm,2194.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -432,7 +432,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TL near"
   ge = grp.entities
-  circle = ge.add_circle([100.mm,-48.mm,2338.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([100.mm,-48.mm,2294.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -445,7 +445,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TL near"
   ge = grp.entities
-  circle = ge.add_circle([200.mm,-48.mm,2238.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([200.mm,-48.mm,2194.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -458,7 +458,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TL near"
   ge = grp.entities
-  circle = ge.add_circle([200.mm,-48.mm,2338.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([200.mm,-48.mm,2294.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -471,7 +471,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Thumb screw TL near"
   ge = grp.entities
-  circle = ge.add_circle([150.mm,25.mm,2288.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([150.mm,25.mm,2244.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -484,7 +484,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Thumb screw TL near"
   ge = grp.entities
-  circle = ge.add_circle([150.mm,85.mm,2288.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([150.mm,85.mm,2244.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -496,7 +496,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Saddle back-plate TL far
   grp = ents.add_group
   grp.name = "Saddle back-plate TL far"
-  face = grp.entities.add_face([75.mm,2354.mm,2213.mm], [225.mm,2354.mm,2213.mm], [225.mm,2362.mm,2213.mm], [75.mm,2362.mm,2213.mm])
+  face = grp.entities.add_face([75.mm,2354.mm,2169.mm], [225.mm,2354.mm,2169.mm], [225.mm,2362.mm,2169.mm], [75.mm,2362.mm,2169.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -507,7 +507,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Saddle OUTSIDE plate TL far
   grp = ents.add_group
   grp.name = "Saddle OUTSIDE plate TL far"
-  face = grp.entities.add_face([75.mm,2402.mm,2213.mm], [225.mm,2402.mm,2213.mm], [225.mm,2410.mm,2213.mm], [75.mm,2410.mm,2213.mm])
+  face = grp.entities.add_face([75.mm,2402.mm,2169.mm], [225.mm,2402.mm,2169.mm], [225.mm,2410.mm,2169.mm], [75.mm,2410.mm,2169.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -518,7 +518,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Saddle seat TL far
   grp = ents.add_group
   grp.name = "Saddle seat TL far"
-  face = grp.entities.add_face([126.mm,2252.mm,2278.mm], [174.mm,2252.mm,2278.mm], [174.mm,2362.mm,2278.mm], [126.mm,2362.mm,2278.mm])
+  face = grp.entities.add_face([126.mm,2252.mm,2234.mm], [174.mm,2252.mm,2234.mm], [174.mm,2362.mm,2234.mm], [126.mm,2362.mm,2234.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -530,7 +530,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle gusset TL far"
   ge = grp.entities
-  f = ge.add_face([150.mm,2252.mm,2278.mm], [150.mm,2362.mm,2278.mm], [150.mm,2362.mm,2158.mm])
+  f = ge.add_face([150.mm,2252.mm,2234.mm], [150.mm,2362.mm,2234.mm], [150.mm,2362.mm,2114.mm])
   f.pushpull(8.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -541,7 +541,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TL far"
   ge = grp.entities
-  circle = ge.add_circle([100.mm,2354.mm,2238.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([100.mm,2354.mm,2194.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -554,7 +554,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TL far"
   ge = grp.entities
-  circle = ge.add_circle([100.mm,2354.mm,2338.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([100.mm,2354.mm,2294.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -567,7 +567,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TL far"
   ge = grp.entities
-  circle = ge.add_circle([200.mm,2354.mm,2238.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([200.mm,2354.mm,2194.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -580,7 +580,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TL far"
   ge = grp.entities
-  circle = ge.add_circle([200.mm,2354.mm,2338.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([200.mm,2354.mm,2294.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -593,7 +593,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Thumb screw TL far"
   ge = grp.entities
-  circle = ge.add_circle([150.mm,2277.mm,2288.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([150.mm,2277.mm,2244.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -606,7 +606,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Thumb screw TL far"
   ge = grp.entities
-  circle = ge.add_circle([150.mm,2337.mm,2288.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([150.mm,2337.mm,2244.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -618,7 +618,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Saddle back-plate TR near
   grp = ents.add_group
   grp.name = "Saddle back-plate TR near"
-  face = grp.entities.add_face([4574.mm,0.mm,2213.mm], [4724.mm,0.mm,2213.mm], [4724.mm,8.mm,2213.mm], [4574.mm,8.mm,2213.mm])
+  face = grp.entities.add_face([4574.mm,0.mm,2169.mm], [4724.mm,0.mm,2169.mm], [4724.mm,8.mm,2169.mm], [4574.mm,8.mm,2169.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -629,7 +629,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Saddle OUTSIDE plate TR near
   grp = ents.add_group
   grp.name = "Saddle OUTSIDE plate TR near"
-  face = grp.entities.add_face([4574.mm,-48.mm,2213.mm], [4724.mm,-48.mm,2213.mm], [4724.mm,-40.mm,2213.mm], [4574.mm,-40.mm,2213.mm])
+  face = grp.entities.add_face([4574.mm,-48.mm,2169.mm], [4724.mm,-48.mm,2169.mm], [4724.mm,-40.mm,2169.mm], [4574.mm,-40.mm,2169.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -640,7 +640,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Saddle seat TR near
   grp = ents.add_group
   grp.name = "Saddle seat TR near"
-  face = grp.entities.add_face([4625.mm,0.mm,2278.mm], [4673.mm,0.mm,2278.mm], [4673.mm,110.mm,2278.mm], [4625.mm,110.mm,2278.mm])
+  face = grp.entities.add_face([4625.mm,0.mm,2234.mm], [4673.mm,0.mm,2234.mm], [4673.mm,110.mm,2234.mm], [4625.mm,110.mm,2234.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -652,7 +652,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle gusset TR near"
   ge = grp.entities
-  f = ge.add_face([4649.mm,110.mm,2278.mm], [4649.mm,0.mm,2278.mm], [4649.mm,0.mm,2158.mm])
+  f = ge.add_face([4649.mm,110.mm,2234.mm], [4649.mm,0.mm,2234.mm], [4649.mm,0.mm,2114.mm])
   f.pushpull(8.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -663,7 +663,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TR near"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,-48.mm,2238.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,-48.mm,2194.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -676,7 +676,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TR near"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,-48.mm,2338.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,-48.mm,2294.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -689,7 +689,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TR near"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,-48.mm,2238.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,-48.mm,2194.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -702,7 +702,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TR near"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,-48.mm,2338.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,-48.mm,2294.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -715,7 +715,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Rail fixing bolt TR near"
   ge = grp.entities
-  circle = ge.add_circle([4649.mm,25.mm,2288.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([4649.mm,25.mm,2244.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -728,7 +728,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Rail fixing bolt TR near"
   ge = grp.entities
-  circle = ge.add_circle([4649.mm,85.mm,2288.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([4649.mm,85.mm,2244.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -740,7 +740,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Saddle back-plate TR far
   grp = ents.add_group
   grp.name = "Saddle back-plate TR far"
-  face = grp.entities.add_face([4574.mm,2354.mm,2213.mm], [4724.mm,2354.mm,2213.mm], [4724.mm,2362.mm,2213.mm], [4574.mm,2362.mm,2213.mm])
+  face = grp.entities.add_face([4574.mm,2354.mm,2169.mm], [4724.mm,2354.mm,2169.mm], [4724.mm,2362.mm,2169.mm], [4574.mm,2362.mm,2169.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -751,7 +751,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Saddle OUTSIDE plate TR far
   grp = ents.add_group
   grp.name = "Saddle OUTSIDE plate TR far"
-  face = grp.entities.add_face([4574.mm,2402.mm,2213.mm], [4724.mm,2402.mm,2213.mm], [4724.mm,2410.mm,2213.mm], [4574.mm,2410.mm,2213.mm])
+  face = grp.entities.add_face([4574.mm,2402.mm,2169.mm], [4724.mm,2402.mm,2169.mm], [4724.mm,2410.mm,2169.mm], [4574.mm,2410.mm,2169.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -762,7 +762,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Saddle seat TR far
   grp = ents.add_group
   grp.name = "Saddle seat TR far"
-  face = grp.entities.add_face([4625.mm,2252.mm,2278.mm], [4673.mm,2252.mm,2278.mm], [4673.mm,2362.mm,2278.mm], [4625.mm,2362.mm,2278.mm])
+  face = grp.entities.add_face([4625.mm,2252.mm,2234.mm], [4673.mm,2252.mm,2234.mm], [4673.mm,2362.mm,2234.mm], [4625.mm,2362.mm,2234.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -774,7 +774,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle gusset TR far"
   ge = grp.entities
-  f = ge.add_face([4649.mm,2252.mm,2278.mm], [4649.mm,2362.mm,2278.mm], [4649.mm,2362.mm,2158.mm])
+  f = ge.add_face([4649.mm,2252.mm,2234.mm], [4649.mm,2362.mm,2234.mm], [4649.mm,2362.mm,2114.mm])
   f.pushpull(8.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -785,7 +785,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TR far"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,2354.mm,2238.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,2354.mm,2194.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -798,7 +798,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TR far"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,2354.mm,2338.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,2354.mm,2294.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -811,7 +811,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TR far"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,2354.mm,2238.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,2354.mm,2194.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -824,7 +824,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TR far"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,2354.mm,2338.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,2354.mm,2294.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -837,7 +837,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Rail fixing bolt TR far"
   ge = grp.entities
-  circle = ge.add_circle([4649.mm,2277.mm,2288.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([4649.mm,2277.mm,2244.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -850,7 +850,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Rail fixing bolt TR far"
   ge = grp.entities
-  circle = ge.add_circle([4649.mm,2337.mm,2288.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([4649.mm,2337.mm,2244.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -2914,7 +2914,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail Detail TR web
   grp = ents.add_group
   grp.name = "U-channel rail Detail TR web"
-  face = grp.entities.add_face([2861.mm,100.mm,2301.mm], [2937.mm,100.mm,2301.mm], [2937.mm,2300.mm,2301.mm], [2861.mm,2300.mm,2301.mm])
+  face = grp.entities.add_face([2861.mm,100.mm,2257.mm], [2937.mm,100.mm,2257.mm], [2937.mm,2300.mm,2257.mm], [2861.mm,2300.mm,2257.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
@@ -2925,7 +2925,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail Detail TR flange -X
   grp = ents.add_group
   grp.name = "U-channel rail Detail TR flange -X"
-  face = grp.entities.add_face([2861.mm,100.mm,2269.mm], [2867.mm,100.mm,2269.mm], [2867.mm,2300.mm,2269.mm], [2861.mm,2300.mm,2269.mm])
+  face = grp.entities.add_face([2861.mm,100.mm,2225.mm], [2867.mm,100.mm,2225.mm], [2867.mm,2300.mm,2225.mm], [2861.mm,2300.mm,2225.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
@@ -2936,7 +2936,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail Detail TR flange +X
   grp = ents.add_group
   grp.name = "U-channel rail Detail TR flange +X"
-  face = grp.entities.add_face([2931.mm,100.mm,2269.mm], [2937.mm,100.mm,2269.mm], [2937.mm,2300.mm,2269.mm], [2931.mm,2300.mm,2269.mm])
+  face = grp.entities.add_face([2931.mm,100.mm,2225.mm], [2937.mm,100.mm,2225.mm], [2937.mm,2300.mm,2225.mm], [2931.mm,2300.mm,2225.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
@@ -2954,7 +2954,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail Swing TR web
   grp = ents.add_group
   grp.name = "U-channel rail Swing TR web"
-  face = grp.entities.add_face([1111.mm,100.mm,2301.mm], [1187.mm,100.mm,2301.mm], [1187.mm,2300.mm,2301.mm], [1111.mm,2300.mm,2301.mm])
+  face = grp.entities.add_face([1111.mm,100.mm,2257.mm], [1187.mm,100.mm,2257.mm], [1187.mm,2300.mm,2257.mm], [1111.mm,2300.mm,2257.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
@@ -2965,7 +2965,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail Swing TR flange -X
   grp = ents.add_group
   grp.name = "U-channel rail Swing TR flange -X"
-  face = grp.entities.add_face([1111.mm,100.mm,2269.mm], [1117.mm,100.mm,2269.mm], [1117.mm,2300.mm,2269.mm], [1111.mm,2300.mm,2269.mm])
+  face = grp.entities.add_face([1111.mm,100.mm,2225.mm], [1117.mm,100.mm,2225.mm], [1117.mm,2300.mm,2225.mm], [1111.mm,2300.mm,2225.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
@@ -2976,7 +2976,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail Swing TR flange +X
   grp = ents.add_group
   grp.name = "U-channel rail Swing TR flange +X"
-  face = grp.entities.add_face([1181.mm,100.mm,2269.mm], [1187.mm,100.mm,2269.mm], [1187.mm,2300.mm,2269.mm], [1181.mm,2300.mm,2269.mm])
+  face = grp.entities.add_face([1181.mm,100.mm,2225.mm], [1187.mm,100.mm,2225.mm], [1187.mm,2300.mm,2225.mm], [1181.mm,2300.mm,2225.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
@@ -2994,7 +2994,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail Static TR web
   grp = ents.add_group
   grp.name = "U-channel rail Static TR web"
-  face = grp.entities.add_face([-1514.mm,100.mm,2301.mm], [-1438.mm,100.mm,2301.mm], [-1438.mm,2300.mm,2301.mm], [-1514.mm,2300.mm,2301.mm])
+  face = grp.entities.add_face([-1514.mm,100.mm,2257.mm], [-1438.mm,100.mm,2257.mm], [-1438.mm,2300.mm,2257.mm], [-1514.mm,2300.mm,2257.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
@@ -3005,7 +3005,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail Static TR flange -X
   grp = ents.add_group
   grp.name = "U-channel rail Static TR flange -X"
-  face = grp.entities.add_face([-1514.mm,100.mm,2269.mm], [-1508.mm,100.mm,2269.mm], [-1508.mm,2300.mm,2269.mm], [-1514.mm,2300.mm,2269.mm])
+  face = grp.entities.add_face([-1514.mm,100.mm,2225.mm], [-1508.mm,100.mm,2225.mm], [-1508.mm,2300.mm,2225.mm], [-1514.mm,2300.mm,2225.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
@@ -3016,7 +3016,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail Static TR flange +X
   grp = ents.add_group
   grp.name = "U-channel rail Static TR flange +X"
-  face = grp.entities.add_face([-1444.mm,100.mm,2269.mm], [-1438.mm,100.mm,2269.mm], [-1438.mm,2300.mm,2269.mm], [-1444.mm,2300.mm,2269.mm])
+  face = grp.entities.add_face([-1444.mm,100.mm,2225.mm], [-1438.mm,100.mm,2225.mm], [-1438.mm,2300.mm,2225.mm], [-1444.mm,2300.mm,2225.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
@@ -3029,7 +3029,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Acetal wheel Ø32 Static TR A"
   ge = grp.entities
   vec = Geom::Vector3d.new(28.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([-1490.mm,1385.7039226776096.mm,2286.mm], vec, 16.mm, 16)
+  circle = ge.add_circle([-1490.mm,1392.9719766476956.mm,2242.mm], vec, 16.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3043,7 +3043,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Acetal wheel Ø32 Static TR B"
   ge = grp.entities
   vec = Geom::Vector3d.new(28.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([-1490.mm,1437.7039226776096.mm,2286.mm], vec, 16.mm, 16)
+  circle = ge.add_circle([-1490.mm,1444.9719766476956.mm,2242.mm], vec, 16.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3057,7 +3057,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Skate axle Ø10 Static TR A"
   ge = grp.entities
   vec = Geom::Vector3d.new(40.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([-1476.mm,1385.7039226776096.mm,2286.mm], vec, 5.mm, 16)
+  circle = ge.add_circle([-1476.mm,1392.9719766476956.mm,2242.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3071,7 +3071,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Skate axle Ø10 Static TR B"
   ge = grp.entities
   vec = Geom::Vector3d.new(40.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([-1476.mm,1437.7039226776096.mm,2286.mm], vec, 5.mm, 16)
+  circle = ge.add_circle([-1476.mm,1444.9719766476956.mm,2242.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3083,7 +3083,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Carriage plate Static TR
   grp = ents.add_group
   grp.name = "Carriage plate Static TR"
-  face = grp.entities.add_face([-1442.mm,1377.7039226776096.mm,2263.mm], [-1428.mm,1377.7039226776096.mm,2263.mm], [-1428.mm,1445.7039226776096.mm,2263.mm], [-1442.mm,1445.7039226776096.mm,2263.mm])
+  face = grp.entities.add_face([-1442.mm,1384.9719766476956.mm,2219.mm], [-1428.mm,1384.9719766476956.mm,2219.mm], [-1428.mm,1452.9719766476956.mm,2219.mm], [-1442.mm,1452.9719766476956.mm,2219.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(44.mm)
   mat = model.materials["Carriage plate Detail TR"] || model.materials.add("Carriage plate Detail TR")
@@ -3094,9 +3094,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Z slide Static TR (TILT — 316 flat bar + UHMW)
   grp = ents.add_group
   grp.name = "Z slide Static TR (TILT — 316 flat bar + UHMW)"
-  face = grp.entities.add_face([-1484.mm,1396.7039226776096.mm,2223.8329485162067.mm], [-1468.mm,1396.7039226776096.mm,2223.8329485162067.mm], [-1468.mm,1426.7039226776096.mm,2223.8329485162067.mm], [-1484.mm,1426.7039226776096.mm,2223.8329485162067.mm])
+  face = grp.entities.add_face([-1484.mm,1403.9719766476956.mm,2181.1597108589167.mm], [-1468.mm,1403.9719766476956.mm,2181.1597108589167.mm], [-1468.mm,1433.9719766476956.mm,2181.1597108589167.mm], [-1484.mm,1433.9719766476956.mm,2181.1597108589167.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(98.16705148379333.mm)
+  face.pushpull(96.8402891410833.mm)
   mat = model.materials["Z slide Detail TR (TILT — 316 flat bar + UHMW)"] || model.materials.add("Z slide Detail TR (TILT — 316 flat bar + UHMW)")
   mat.color = Sketchup::Color.new(44, 160, 44)
   mat.alpha = 1.0
@@ -3105,7 +3105,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # X slide Static TR (SWING — 316 flat bar + UHMW)
   grp = ents.add_group
   grp.name = "X slide Static TR (SWING — 316 flat bar + UHMW)"
-  face = grp.entities.add_face([-1476.mm,1397.7039226776096.mm,2216.8329485162067.mm], [-1424.463161939676.mm,1397.7039226776096.mm,2216.8329485162067.mm], [-1424.463161939676.mm,1425.7039226776096.mm,2216.8329485162067.mm], [-1476.mm,1425.7039226776096.mm,2216.8329485162067.mm])
+  face = grp.entities.add_face([-1476.mm,1404.9719766476956.mm,2174.1597108589167.mm], [-1426.4106311315063.mm,1404.9719766476956.mm,2174.1597108589167.mm], [-1426.4106311315063.mm,1432.9719766476956.mm,2174.1597108589167.mm], [-1476.mm,1432.9719766476956.mm,2174.1597108589167.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["X slide Detail TR (SWING — 316 flat bar + UHMW)"] || model.materials.add("X slide Detail TR (SWING — 316 flat bar + UHMW)")
@@ -3116,7 +3116,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cam clamp Static TR
   grp = ents.add_group
   grp.name = "Cam clamp Static TR"
-  face = grp.entities.add_face([-1490.mm,1403.7039226776096.mm,2217.8329485162067.mm], [-1476.mm,1403.7039226776096.mm,2217.8329485162067.mm], [-1476.mm,1419.7039226776096.mm,2217.8329485162067.mm], [-1490.mm,1419.7039226776096.mm,2217.8329485162067.mm])
+  face = grp.entities.add_face([-1490.mm,1410.9719766476956.mm,2175.1597108589167.mm], [-1476.mm,1410.9719766476956.mm,2175.1597108589167.mm], [-1476.mm,1426.9719766476956.mm,2175.1597108589167.mm], [-1490.mm,1426.9719766476956.mm,2175.1597108589167.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cam clamp Detail TR"] || model.materials.add("Cam clamp Detail TR")
@@ -3129,7 +3129,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Input stub 3/8 Static TR"
   ge = grp.entities
   vec = Geom::Vector3d.new(-24.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([-1432.463161939676.mm,1411.7039226776096.mm,2223.8329485162067.mm], vec, 5.mm, 16)
+  circle = ge.add_circle([-1434.4106311315063.mm,1418.9719766476956.mm,2181.1597108589167.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3141,7 +3141,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # 4040N12 shaft support Static TR
   grp = ents.add_group
   grp.name = "4040N12 shaft support Static TR"
-  face = grp.entities.add_face([-1436.463161939676.mm,1402.7039226776096.mm,2212.8329485162067.mm], [-1420.463161939676.mm,1402.7039226776096.mm,2212.8329485162067.mm], [-1420.463161939676.mm,1420.7039226776096.mm,2212.8329485162067.mm], [-1436.463161939676.mm,1420.7039226776096.mm,2212.8329485162067.mm])
+  face = grp.entities.add_face([-1438.4106311315063.mm,1409.9719766476956.mm,2170.1597108589167.mm], [-1422.4106311315063.mm,1409.9719766476956.mm,2170.1597108589167.mm], [-1422.4106311315063.mm,1427.9719766476956.mm,2170.1597108589167.mm], [-1438.4106311315063.mm,1427.9719766476956.mm,2170.1597108589167.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -3152,7 +3152,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-joint Static TR (USKC12-6-6-SS)
   grp = ents.add_group
   grp.name = "U-joint Static TR (USKC12-6-6-SS)"
-  face = grp.entities.add_face([-1469.463161939676.mm,1400.7039226776096.mm,2212.8329485162067.mm], [-1447.463161939676.mm,1400.7039226776096.mm,2212.8329485162067.mm], [-1447.463161939676.mm,1422.7039226776096.mm,2212.8329485162067.mm], [-1469.463161939676.mm,1422.7039226776096.mm,2212.8329485162067.mm])
+  face = grp.entities.add_face([-1471.4106311315063.mm,1407.9719766476956.mm,2170.1597108589167.mm], [-1449.4106311315063.mm,1407.9719766476956.mm,2170.1597108589167.mm], [-1449.4106311315063.mm,1429.9719766476956.mm,2170.1597108589167.mm], [-1471.4106311315063.mm,1429.9719766476956.mm,2170.1597108589167.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -3165,7 +3165,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Output stub 3/8 Static TR"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 24.mm, 0.mm)
-  circle = ge.add_circle([-1458.463161939676.mm,1411.7039226776096.mm,2223.8329485162067.mm], vec, 5.mm, 16)
+  circle = ge.add_circle([-1460.4106311315063.mm,1418.9719766476956.mm,2181.1597108589167.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3177,7 +3177,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # 304 SS corner plate Static TR
   grp = ents.add_group
   grp.name = "304 SS corner plate Static TR"
-  face = grp.entities.add_face([-1475.463161939676.mm,1433.7039226776096.mm,2203.8329485162067.mm], [-1441.463161939676.mm,1433.7039226776096.mm,2203.8329485162067.mm], [-1441.463161939676.mm,1439.7039226776096.mm,2203.8329485162067.mm], [-1475.463161939676.mm,1439.7039226776096.mm,2203.8329485162067.mm])
+  face = grp.entities.add_face([-1477.4106311315063.mm,1440.9719766476956.mm,2161.1597108589167.mm], [-1443.4106311315063.mm,1440.9719766476956.mm,2161.1597108589167.mm], [-1443.4106311315063.mm,1446.9719766476956.mm,2161.1597108589167.mm], [-1477.4106311315063.mm,1446.9719766476956.mm,2161.1597108589167.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -3188,7 +3188,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Static Flat-corner ghost TR
   grp = ents.add_group
   grp.name = "Static Flat-corner ghost TR"
-  face = grp.entities.add_face([-1489.mm,1398.7039226776096.mm,2275.mm], [-1463.mm,1398.7039226776096.mm,2275.mm], [-1463.mm,1424.7039226776096.mm,2275.mm], [-1489.mm,1424.7039226776096.mm,2275.mm])
+  face = grp.entities.add_face([-1489.mm,1405.9719766476956.mm,2231.mm], [-1463.mm,1405.9719766476956.mm,2231.mm], [-1463.mm,1431.9719766476956.mm,2231.mm], [-1489.mm,1431.9719766476956.mm,2231.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(26.mm)
   mat = model.materials["Detail Flat-corner ghost TR"] || model.materials.add("Detail Flat-corner ghost TR")
@@ -3206,7 +3206,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail Rotate TR web
   grp = ents.add_group
   grp.name = "U-channel rail Rotate TR web"
-  face = grp.entities.add_face([4611.mm,100.mm,2301.mm], [4687.mm,100.mm,2301.mm], [4687.mm,2300.mm,2301.mm], [4611.mm,2300.mm,2301.mm])
+  face = grp.entities.add_face([4611.mm,100.mm,2257.mm], [4687.mm,100.mm,2257.mm], [4687.mm,2300.mm,2257.mm], [4611.mm,2300.mm,2257.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
@@ -3217,7 +3217,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail Rotate TR flange -X
   grp = ents.add_group
   grp.name = "U-channel rail Rotate TR flange -X"
-  face = grp.entities.add_face([4611.mm,100.mm,2269.mm], [4617.mm,100.mm,2269.mm], [4617.mm,2300.mm,2269.mm], [4611.mm,2300.mm,2269.mm])
+  face = grp.entities.add_face([4611.mm,100.mm,2225.mm], [4617.mm,100.mm,2225.mm], [4617.mm,2300.mm,2225.mm], [4611.mm,2300.mm,2225.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
@@ -3228,7 +3228,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail Rotate TR flange +X
   grp = ents.add_group
   grp.name = "U-channel rail Rotate TR flange +X"
-  face = grp.entities.add_face([4681.mm,100.mm,2269.mm], [4687.mm,100.mm,2269.mm], [4687.mm,2300.mm,2269.mm], [4681.mm,2300.mm,2269.mm])
+  face = grp.entities.add_face([4681.mm,100.mm,2225.mm], [4687.mm,100.mm,2225.mm], [4687.mm,2300.mm,2225.mm], [4681.mm,2300.mm,2225.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
@@ -3241,7 +3241,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Acetal wheel Ø32 Rotate TR A"
   ge = grp.entities
   vec = Geom::Vector3d.new(28.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4635.mm,1155.mm,2286.mm], vec, 16.mm, 16)
+  circle = ge.add_circle([4635.mm,1155.mm,2242.mm], vec, 16.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3255,7 +3255,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Acetal wheel Ø32 Rotate TR B"
   ge = grp.entities
   vec = Geom::Vector3d.new(28.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4635.mm,1207.mm,2286.mm], vec, 16.mm, 16)
+  circle = ge.add_circle([4635.mm,1207.mm,2242.mm], vec, 16.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3269,7 +3269,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Skate axle Ø10 Rotate TR A"
   ge = grp.entities
   vec = Geom::Vector3d.new(40.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4649.mm,1155.mm,2286.mm], vec, 5.mm, 16)
+  circle = ge.add_circle([4649.mm,1155.mm,2242.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3283,7 +3283,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Skate axle Ø10 Rotate TR B"
   ge = grp.entities
   vec = Geom::Vector3d.new(40.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4649.mm,1207.mm,2286.mm], vec, 5.mm, 16)
+  circle = ge.add_circle([4649.mm,1207.mm,2242.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3295,7 +3295,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Carriage plate Rotate TR
   grp = ents.add_group
   grp.name = "Carriage plate Rotate TR"
-  face = grp.entities.add_face([4683.mm,1147.mm,2263.mm], [4697.mm,1147.mm,2263.mm], [4697.mm,1215.mm,2263.mm], [4683.mm,1215.mm,2263.mm])
+  face = grp.entities.add_face([4683.mm,1147.mm,2219.mm], [4697.mm,1147.mm,2219.mm], [4697.mm,1215.mm,2219.mm], [4683.mm,1215.mm,2219.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(44.mm)
   mat = model.materials["Carriage plate Detail TR"] || model.materials.add("Carriage plate Detail TR")
@@ -3306,7 +3306,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Z slide Rotate TR (TILT — 316 flat bar + UHMW)
   grp = ents.add_group
   grp.name = "Z slide Rotate TR (TILT — 316 flat bar + UHMW)"
-  face = grp.entities.add_face([4641.mm,1166.mm,2288.mm], [4657.mm,1166.mm,2288.mm], [4657.mm,1196.mm,2288.mm], [4641.mm,1196.mm,2288.mm])
+  face = grp.entities.add_face([4641.mm,1166.mm,2244.mm], [4657.mm,1166.mm,2244.mm], [4657.mm,1196.mm,2244.mm], [4641.mm,1196.mm,2244.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(34.mm)
   mat = model.materials["Z slide Detail TR (TILT — 316 flat bar + UHMW)"] || model.materials.add("Z slide Detail TR (TILT — 316 flat bar + UHMW)")
@@ -3317,7 +3317,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # X slide Rotate TR (SWING — 316 flat bar + UHMW)
   grp = ents.add_group
   grp.name = "X slide Rotate TR (SWING — 316 flat bar + UHMW)"
-  face = grp.entities.add_face([4649.mm,1167.mm,2281.mm], [4683.mm,1167.mm,2281.mm], [4683.mm,1195.mm,2281.mm], [4649.mm,1195.mm,2281.mm])
+  face = grp.entities.add_face([4649.mm,1167.mm,2237.mm], [4683.mm,1167.mm,2237.mm], [4683.mm,1195.mm,2237.mm], [4649.mm,1195.mm,2237.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["X slide Detail TR (SWING — 316 flat bar + UHMW)"] || model.materials.add("X slide Detail TR (SWING — 316 flat bar + UHMW)")
@@ -3328,7 +3328,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cam clamp Rotate TR
   grp = ents.add_group
   grp.name = "Cam clamp Rotate TR"
-  face = grp.entities.add_face([4635.mm,1173.mm,2282.mm], [4649.mm,1173.mm,2282.mm], [4649.mm,1189.mm,2282.mm], [4635.mm,1189.mm,2282.mm])
+  face = grp.entities.add_face([4635.mm,1173.mm,2238.mm], [4649.mm,1173.mm,2238.mm], [4649.mm,1189.mm,2238.mm], [4635.mm,1189.mm,2238.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cam clamp Detail TR"] || model.materials.add("Cam clamp Detail TR")
@@ -3341,7 +3341,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Input stub 3/8 Rotate TR"
   ge = grp.entities
   vec = Geom::Vector3d.new(-24.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4675.mm,1181.mm,2288.mm], vec, 5.mm, 16)
+  circle = ge.add_circle([4675.mm,1181.mm,2244.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3353,7 +3353,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # 4040N12 shaft support Rotate TR
   grp = ents.add_group
   grp.name = "4040N12 shaft support Rotate TR"
-  face = grp.entities.add_face([4671.mm,1172.mm,2277.mm], [4687.mm,1172.mm,2277.mm], [4687.mm,1190.mm,2277.mm], [4671.mm,1190.mm,2277.mm])
+  face = grp.entities.add_face([4671.mm,1172.mm,2233.mm], [4687.mm,1172.mm,2233.mm], [4687.mm,1190.mm,2233.mm], [4671.mm,1190.mm,2233.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -3364,7 +3364,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-joint Rotate TR (USKC12-6-6-SS)
   grp = ents.add_group
   grp.name = "U-joint Rotate TR (USKC12-6-6-SS)"
-  face = grp.entities.add_face([4638.mm,1170.mm,2277.mm], [4660.mm,1170.mm,2277.mm], [4660.mm,1192.mm,2277.mm], [4638.mm,1192.mm,2277.mm])
+  face = grp.entities.add_face([4638.mm,1170.mm,2233.mm], [4660.mm,1170.mm,2233.mm], [4660.mm,1192.mm,2233.mm], [4638.mm,1192.mm,2233.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -3377,7 +3377,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Output stub 3/8 Rotate TR"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 24.mm, 0.mm)
-  circle = ge.add_circle([4649.mm,1181.mm,2288.mm], vec, 5.mm, 16)
+  circle = ge.add_circle([4649.mm,1181.mm,2244.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3389,7 +3389,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # 304 SS corner plate Rotate TR
   grp = ents.add_group
   grp.name = "304 SS corner plate Rotate TR"
-  face = grp.entities.add_face([4632.mm,1203.mm,2268.mm], [4666.mm,1203.mm,2268.mm], [4666.mm,1209.mm,2268.mm], [4632.mm,1209.mm,2268.mm])
+  face = grp.entities.add_face([4632.mm,1203.mm,2224.mm], [4666.mm,1203.mm,2224.mm], [4666.mm,1209.mm,2224.mm], [4632.mm,1209.mm,2224.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -3410,9 +3410,9 @@ ents = fp_defn.entities
   # Film Plane Screen (muslin)
   grp = ents.add_group
   grp.name = "Film Plane Screen (muslin)"
-  face = grp.entities.add_face([-2249.5.mm,-6.mm,-1064.mm], [2249.5.mm,-6.mm,-1064.mm], [2249.5.mm,6.mm,-1064.mm], [-2249.5.mm,6.mm,-1064.mm])
+  face = grp.entities.add_face([-2249.5.mm,-6.mm,-1042.mm], [2249.5.mm,-6.mm,-1042.mm], [2249.5.mm,6.mm,-1042.mm], [-2249.5.mm,6.mm,-1042.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2128.mm)
+  face.pushpull(2084.mm)
   mat = model.materials["Film Plane Screen (muslin)"] || model.materials.add("Film Plane Screen (muslin)")
   mat.color = Sketchup::Color.new(32, 96, 160)
   mat.alpha = 0.3
@@ -3423,7 +3423,7 @@ ents = fp_defn.entities
   grp.name = "FP Frame Top"
   ge = grp.entities
   vec = Geom::Vector3d.new(4499.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([-2249.5.mm,0.mm,1064.mm], vec, 25.4.mm, 16)
+  circle = ge.add_circle([-2249.5.mm,0.mm,1042.mm], vec, 25.4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3437,7 +3437,7 @@ ents = fp_defn.entities
   grp.name = "FP Frame Bottom"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4499.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2249.5.mm,0.mm,-1064.mm], vec, 25.4.mm, 16)
+  circle = ge.add_circle([2249.5.mm,0.mm,-1042.mm], vec, 25.4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3450,8 +3450,8 @@ ents = fp_defn.entities
   grp = ents.add_group
   grp.name = "FP Frame Left"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -2128.mm)
-  circle = ge.add_circle([-2249.5.mm,0.mm,1064.mm], vec, 25.4.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -2084.mm)
+  circle = ge.add_circle([-2249.5.mm,0.mm,1042.mm], vec, 25.4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3464,8 +3464,8 @@ ents = fp_defn.entities
   grp = ents.add_group
   grp.name = "FP Frame Right"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -2128.mm)
-  circle = ge.add_circle([2249.5.mm,0.mm,1064.mm], vec, 25.4.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -2084.mm)
+  circle = ge.add_circle([2249.5.mm,0.mm,1042.mm], vec, 25.4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3477,7 +3477,7 @@ ents = fp_defn.entities
   # Acetal skate carriage TL
   grp = ents.add_group
   grp.name = "Acetal skate carriage TL"
-  face = grp.entities.add_face([-2273.5.mm,-32.mm,1052.mm], [-2225.5.mm,-32.mm,1052.mm], [-2225.5.mm,32.mm,1052.mm], [-2273.5.mm,32.mm,1052.mm])
+  face = grp.entities.add_face([-2273.5.mm,-32.mm,1030.mm], [-2225.5.mm,-32.mm,1030.mm], [-2225.5.mm,32.mm,1030.mm], [-2273.5.mm,32.mm,1030.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Carriage plate Detail TR"] || model.materials.add("Carriage plate Detail TR")
@@ -3488,7 +3488,7 @@ ents = fp_defn.entities
   # U-joint TL (USKC12-6-6-SS)
   grp = ents.add_group
   grp.name = "U-joint TL (USKC12-6-6-SS)"
-  face = grp.entities.add_face([-2260.5.mm,-11.mm,1053.mm], [-2238.5.mm,-11.mm,1053.mm], [-2238.5.mm,11.mm,1053.mm], [-2260.5.mm,11.mm,1053.mm])
+  face = grp.entities.add_face([-2260.5.mm,-11.mm,1031.mm], [-2238.5.mm,-11.mm,1031.mm], [-2238.5.mm,11.mm,1031.mm], [-2260.5.mm,11.mm,1031.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -3499,7 +3499,7 @@ ents = fp_defn.entities
   # 304 SS corner plate TL
   grp = ents.add_group
   grp.name = "304 SS corner plate TL"
-  face = grp.entities.add_face([-2266.5.mm,4.mm,1044.mm], [-2232.5.mm,4.mm,1044.mm], [-2232.5.mm,10.mm,1044.mm], [-2266.5.mm,10.mm,1044.mm])
+  face = grp.entities.add_face([-2266.5.mm,4.mm,1022.mm], [-2232.5.mm,4.mm,1022.mm], [-2232.5.mm,10.mm,1022.mm], [-2266.5.mm,10.mm,1022.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -3510,7 +3510,7 @@ ents = fp_defn.entities
   # Acetal skate carriage TR
   grp = ents.add_group
   grp.name = "Acetal skate carriage TR"
-  face = grp.entities.add_face([2225.5.mm,-32.mm,1052.mm], [2273.5.mm,-32.mm,1052.mm], [2273.5.mm,32.mm,1052.mm], [2225.5.mm,32.mm,1052.mm])
+  face = grp.entities.add_face([2225.5.mm,-32.mm,1030.mm], [2273.5.mm,-32.mm,1030.mm], [2273.5.mm,32.mm,1030.mm], [2225.5.mm,32.mm,1030.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Carriage plate Detail TR"] || model.materials.add("Carriage plate Detail TR")
@@ -3521,7 +3521,7 @@ ents = fp_defn.entities
   # U-joint TR (USKC12-6-6-SS)
   grp = ents.add_group
   grp.name = "U-joint TR (USKC12-6-6-SS)"
-  face = grp.entities.add_face([2238.5.mm,-11.mm,1053.mm], [2260.5.mm,-11.mm,1053.mm], [2260.5.mm,11.mm,1053.mm], [2238.5.mm,11.mm,1053.mm])
+  face = grp.entities.add_face([2238.5.mm,-11.mm,1031.mm], [2260.5.mm,-11.mm,1031.mm], [2260.5.mm,11.mm,1031.mm], [2238.5.mm,11.mm,1031.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -3532,7 +3532,7 @@ ents = fp_defn.entities
   # 304 SS corner plate TR
   grp = ents.add_group
   grp.name = "304 SS corner plate TR"
-  face = grp.entities.add_face([2232.5.mm,4.mm,1044.mm], [2266.5.mm,4.mm,1044.mm], [2266.5.mm,10.mm,1044.mm], [2232.5.mm,10.mm,1044.mm])
+  face = grp.entities.add_face([2232.5.mm,4.mm,1022.mm], [2266.5.mm,4.mm,1022.mm], [2266.5.mm,10.mm,1022.mm], [2232.5.mm,10.mm,1022.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -3543,7 +3543,7 @@ ents = fp_defn.entities
   # Acetal skate carriage BL
   grp = ents.add_group
   grp.name = "Acetal skate carriage BL"
-  face = grp.entities.add_face([-2273.5.mm,-32.mm,-1076.mm], [-2225.5.mm,-32.mm,-1076.mm], [-2225.5.mm,32.mm,-1076.mm], [-2273.5.mm,32.mm,-1076.mm])
+  face = grp.entities.add_face([-2273.5.mm,-32.mm,-1054.mm], [-2225.5.mm,-32.mm,-1054.mm], [-2225.5.mm,32.mm,-1054.mm], [-2273.5.mm,32.mm,-1054.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Carriage plate Detail TR"] || model.materials.add("Carriage plate Detail TR")
@@ -3554,7 +3554,7 @@ ents = fp_defn.entities
   # U-joint BL (USKC12-6-6-SS)
   grp = ents.add_group
   grp.name = "U-joint BL (USKC12-6-6-SS)"
-  face = grp.entities.add_face([-2260.5.mm,-11.mm,-1075.mm], [-2238.5.mm,-11.mm,-1075.mm], [-2238.5.mm,11.mm,-1075.mm], [-2260.5.mm,11.mm,-1075.mm])
+  face = grp.entities.add_face([-2260.5.mm,-11.mm,-1053.mm], [-2238.5.mm,-11.mm,-1053.mm], [-2238.5.mm,11.mm,-1053.mm], [-2260.5.mm,11.mm,-1053.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -3565,7 +3565,7 @@ ents = fp_defn.entities
   # 304 SS corner plate BL
   grp = ents.add_group
   grp.name = "304 SS corner plate BL"
-  face = grp.entities.add_face([-2266.5.mm,4.mm,-1084.mm], [-2232.5.mm,4.mm,-1084.mm], [-2232.5.mm,10.mm,-1084.mm], [-2266.5.mm,10.mm,-1084.mm])
+  face = grp.entities.add_face([-2266.5.mm,4.mm,-1062.mm], [-2232.5.mm,4.mm,-1062.mm], [-2232.5.mm,10.mm,-1062.mm], [-2266.5.mm,10.mm,-1062.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -3576,7 +3576,7 @@ ents = fp_defn.entities
   # Acetal skate carriage BR
   grp = ents.add_group
   grp.name = "Acetal skate carriage BR"
-  face = grp.entities.add_face([2225.5.mm,-32.mm,-1076.mm], [2273.5.mm,-32.mm,-1076.mm], [2273.5.mm,32.mm,-1076.mm], [2225.5.mm,32.mm,-1076.mm])
+  face = grp.entities.add_face([2225.5.mm,-32.mm,-1054.mm], [2273.5.mm,-32.mm,-1054.mm], [2273.5.mm,32.mm,-1054.mm], [2225.5.mm,32.mm,-1054.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Carriage plate Detail TR"] || model.materials.add("Carriage plate Detail TR")
@@ -3587,7 +3587,7 @@ ents = fp_defn.entities
   # U-joint BR (USKC12-6-6-SS)
   grp = ents.add_group
   grp.name = "U-joint BR (USKC12-6-6-SS)"
-  face = grp.entities.add_face([2238.5.mm,-11.mm,-1075.mm], [2260.5.mm,-11.mm,-1075.mm], [2260.5.mm,11.mm,-1075.mm], [2238.5.mm,11.mm,-1075.mm])
+  face = grp.entities.add_face([2238.5.mm,-11.mm,-1053.mm], [2260.5.mm,-11.mm,-1053.mm], [2260.5.mm,11.mm,-1053.mm], [2238.5.mm,11.mm,-1053.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -3598,7 +3598,7 @@ ents = fp_defn.entities
   # 304 SS corner plate BR
   grp = ents.add_group
   grp.name = "304 SS corner plate BR"
-  face = grp.entities.add_face([2232.5.mm,4.mm,-1084.mm], [2266.5.mm,4.mm,-1084.mm], [2266.5.mm,10.mm,-1084.mm], [2232.5.mm,10.mm,-1084.mm])
+  face = grp.entities.add_face([2232.5.mm,4.mm,-1062.mm], [2266.5.mm,4.mm,-1062.mm], [2266.5.mm,10.mm,-1062.mm], [2232.5.mm,10.mm,-1062.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -3606,7 +3606,7 @@ ents = fp_defn.entities
   mat.alpha = 1.0
   grp.material = mat
 
-fp_inst = entities.add_instance(fp_defn, Geom::Transformation.translation([2399.5.mm, 1181.mm, 1224.mm]))
+fp_inst = entities.add_instance(fp_defn, Geom::Transformation.translation([2399.5.mm, 1181.mm, 1202.mm]))
 fp_inst.name = "Film Plane"
 fp_inst.layer = model.layers["Film Plane"]
 fda = "dynamic_attributes"
@@ -3633,7 +3633,7 @@ ents = cd_defn.entities
   grp.name = "Acetal wheel Ø32 Detail TR A"
   ge = grp.entities
   vec = Geom::Vector3d.new(28.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2885.mm,1385.7039226776096.mm,2286.mm], vec, 16.mm, 16)
+  circle = ge.add_circle([2885.mm,1392.9719766476956.mm,2242.mm], vec, 16.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3647,7 +3647,7 @@ ents = cd_defn.entities
   grp.name = "Acetal wheel Ø32 Detail TR B"
   ge = grp.entities
   vec = Geom::Vector3d.new(28.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2885.mm,1437.7039226776096.mm,2286.mm], vec, 16.mm, 16)
+  circle = ge.add_circle([2885.mm,1444.9719766476956.mm,2242.mm], vec, 16.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3661,7 +3661,7 @@ ents = cd_defn.entities
   grp.name = "Skate axle Ø10 Detail TR A"
   ge = grp.entities
   vec = Geom::Vector3d.new(40.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2899.mm,1385.7039226776096.mm,2286.mm], vec, 5.mm, 16)
+  circle = ge.add_circle([2899.mm,1392.9719766476956.mm,2242.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3675,7 +3675,7 @@ ents = cd_defn.entities
   grp.name = "Skate axle Ø10 Detail TR B"
   ge = grp.entities
   vec = Geom::Vector3d.new(40.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2899.mm,1437.7039226776096.mm,2286.mm], vec, 5.mm, 16)
+  circle = ge.add_circle([2899.mm,1444.9719766476956.mm,2242.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3687,7 +3687,7 @@ ents = cd_defn.entities
   # Carriage plate Detail TR
   grp = ents.add_group
   grp.name = "Carriage plate Detail TR"
-  face = grp.entities.add_face([2933.mm,1377.7039226776096.mm,2263.mm], [2947.mm,1377.7039226776096.mm,2263.mm], [2947.mm,1445.7039226776096.mm,2263.mm], [2933.mm,1445.7039226776096.mm,2263.mm])
+  face = grp.entities.add_face([2933.mm,1384.9719766476956.mm,2219.mm], [2947.mm,1384.9719766476956.mm,2219.mm], [2947.mm,1452.9719766476956.mm,2219.mm], [2933.mm,1452.9719766476956.mm,2219.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(44.mm)
   mat = model.materials["Carriage plate Detail TR"] || model.materials.add("Carriage plate Detail TR")
@@ -3698,9 +3698,9 @@ ents = cd_defn.entities
   # Z slide Detail TR (TILT — 316 flat bar + UHMW)
   grp = ents.add_group
   grp.name = "Z slide Detail TR (TILT — 316 flat bar + UHMW)"
-  face = grp.entities.add_face([2891.mm,1396.7039226776096.mm,2223.8329485162067.mm], [2907.mm,1396.7039226776096.mm,2223.8329485162067.mm], [2907.mm,1426.7039226776096.mm,2223.8329485162067.mm], [2891.mm,1426.7039226776096.mm,2223.8329485162067.mm])
+  face = grp.entities.add_face([2891.mm,1403.9719766476956.mm,2181.1597108589167.mm], [2907.mm,1403.9719766476956.mm,2181.1597108589167.mm], [2907.mm,1433.9719766476956.mm,2181.1597108589167.mm], [2891.mm,1433.9719766476956.mm,2181.1597108589167.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(98.16705148379333.mm)
+  face.pushpull(96.8402891410833.mm)
   mat = model.materials["Z slide Detail TR (TILT — 316 flat bar + UHMW)"] || model.materials.add("Z slide Detail TR (TILT — 316 flat bar + UHMW)")
   mat.color = Sketchup::Color.new(44, 160, 44)
   mat.alpha = 1.0
@@ -3709,7 +3709,7 @@ ents = cd_defn.entities
   # X slide Detail TR (SWING — 316 flat bar + UHMW)
   grp = ents.add_group
   grp.name = "X slide Detail TR (SWING — 316 flat bar + UHMW)"
-  face = grp.entities.add_face([2899.mm,1397.7039226776096.mm,2216.8329485162067.mm], [2950.536838060324.mm,1397.7039226776096.mm,2216.8329485162067.mm], [2950.536838060324.mm,1425.7039226776096.mm,2216.8329485162067.mm], [2899.mm,1425.7039226776096.mm,2216.8329485162067.mm])
+  face = grp.entities.add_face([2899.mm,1404.9719766476956.mm,2174.1597108589167.mm], [2948.5893688684937.mm,1404.9719766476956.mm,2174.1597108589167.mm], [2948.5893688684937.mm,1432.9719766476956.mm,2174.1597108589167.mm], [2899.mm,1432.9719766476956.mm,2174.1597108589167.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["X slide Detail TR (SWING — 316 flat bar + UHMW)"] || model.materials.add("X slide Detail TR (SWING — 316 flat bar + UHMW)")
@@ -3720,7 +3720,7 @@ ents = cd_defn.entities
   # Cam clamp Detail TR
   grp = ents.add_group
   grp.name = "Cam clamp Detail TR"
-  face = grp.entities.add_face([2885.mm,1403.7039226776096.mm,2217.8329485162067.mm], [2899.mm,1403.7039226776096.mm,2217.8329485162067.mm], [2899.mm,1419.7039226776096.mm,2217.8329485162067.mm], [2885.mm,1419.7039226776096.mm,2217.8329485162067.mm])
+  face = grp.entities.add_face([2885.mm,1410.9719766476956.mm,2175.1597108589167.mm], [2899.mm,1410.9719766476956.mm,2175.1597108589167.mm], [2899.mm,1426.9719766476956.mm,2175.1597108589167.mm], [2885.mm,1426.9719766476956.mm,2175.1597108589167.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cam clamp Detail TR"] || model.materials.add("Cam clamp Detail TR")
@@ -3733,7 +3733,7 @@ ents = cd_defn.entities
   grp.name = "Input stub 3/8 Detail TR"
   ge = grp.entities
   vec = Geom::Vector3d.new(-24.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2942.536838060324.mm,1411.7039226776096.mm,2223.8329485162067.mm], vec, 5.mm, 16)
+  circle = ge.add_circle([2940.5893688684937.mm,1418.9719766476956.mm,2181.1597108589167.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3745,7 +3745,7 @@ ents = cd_defn.entities
   # 4040N12 shaft support Detail TR
   grp = ents.add_group
   grp.name = "4040N12 shaft support Detail TR"
-  face = grp.entities.add_face([2938.536838060324.mm,1402.7039226776096.mm,2212.8329485162067.mm], [2954.536838060324.mm,1402.7039226776096.mm,2212.8329485162067.mm], [2954.536838060324.mm,1420.7039226776096.mm,2212.8329485162067.mm], [2938.536838060324.mm,1420.7039226776096.mm,2212.8329485162067.mm])
+  face = grp.entities.add_face([2936.5893688684937.mm,1409.9719766476956.mm,2170.1597108589167.mm], [2952.5893688684937.mm,1409.9719766476956.mm,2170.1597108589167.mm], [2952.5893688684937.mm,1427.9719766476956.mm,2170.1597108589167.mm], [2936.5893688684937.mm,1427.9719766476956.mm,2170.1597108589167.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -3756,7 +3756,7 @@ ents = cd_defn.entities
   # U-joint Detail TR (USKC12-6-6-SS)
   grp = ents.add_group
   grp.name = "U-joint Detail TR (USKC12-6-6-SS)"
-  face = grp.entities.add_face([2905.536838060324.mm,1400.7039226776096.mm,2212.8329485162067.mm], [2927.536838060324.mm,1400.7039226776096.mm,2212.8329485162067.mm], [2927.536838060324.mm,1422.7039226776096.mm,2212.8329485162067.mm], [2905.536838060324.mm,1422.7039226776096.mm,2212.8329485162067.mm])
+  face = grp.entities.add_face([2903.5893688684937.mm,1407.9719766476956.mm,2170.1597108589167.mm], [2925.5893688684937.mm,1407.9719766476956.mm,2170.1597108589167.mm], [2925.5893688684937.mm,1429.9719766476956.mm,2170.1597108589167.mm], [2903.5893688684937.mm,1429.9719766476956.mm,2170.1597108589167.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -3769,7 +3769,7 @@ ents = cd_defn.entities
   grp.name = "Output stub 3/8 Detail TR"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 24.mm, 0.mm)
-  circle = ge.add_circle([2916.536838060324.mm,1411.7039226776096.mm,2223.8329485162067.mm], vec, 5.mm, 16)
+  circle = ge.add_circle([2914.5893688684937.mm,1418.9719766476956.mm,2181.1597108589167.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3781,7 +3781,7 @@ ents = cd_defn.entities
   # 304 SS corner plate Detail TR
   grp = ents.add_group
   grp.name = "304 SS corner plate Detail TR"
-  face = grp.entities.add_face([2899.536838060324.mm,1433.7039226776096.mm,2203.8329485162067.mm], [2933.536838060324.mm,1433.7039226776096.mm,2203.8329485162067.mm], [2933.536838060324.mm,1439.7039226776096.mm,2203.8329485162067.mm], [2899.536838060324.mm,1439.7039226776096.mm,2203.8329485162067.mm])
+  face = grp.entities.add_face([2897.5893688684937.mm,1440.9719766476956.mm,2161.1597108589167.mm], [2931.5893688684937.mm,1440.9719766476956.mm,2161.1597108589167.mm], [2931.5893688684937.mm,1446.9719766476956.mm,2161.1597108589167.mm], [2897.5893688684937.mm,1446.9719766476956.mm,2161.1597108589167.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -3792,7 +3792,7 @@ ents = cd_defn.entities
   # Detail Flat-corner ghost TR
   grp = ents.add_group
   grp.name = "Detail Flat-corner ghost TR"
-  face = grp.entities.add_face([2886.mm,1398.7039226776096.mm,2275.mm], [2912.mm,1398.7039226776096.mm,2275.mm], [2912.mm,1424.7039226776096.mm,2275.mm], [2886.mm,1424.7039226776096.mm,2275.mm])
+  face = grp.entities.add_face([2886.mm,1405.9719766476956.mm,2231.mm], [2912.mm,1405.9719766476956.mm,2231.mm], [2912.mm,1431.9719766476956.mm,2231.mm], [2886.mm,1431.9719766476956.mm,2231.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(26.mm)
   mat = model.materials["Detail Flat-corner ghost TR"] || model.materials.add("Detail Flat-corner ghost TR")
@@ -3817,7 +3817,7 @@ cd_inst.set_attribute(cda, "_slide_label", "Slide carriage on rail")
 cd_inst.set_attribute(cda, "_y_formula", "-400*slide")
 cd_inst.set_attribute(cda, "onclick", 'ANIMATE("slide", 0, 1)')
 cd_inst.set_attribute(cda, "_onclick_access", "NONE")
-tsl = entities.add_text("RAIL SLIDE\n(click: carriage slides on rail)", Geom::Point3d.new(2916.536838060324.mm, 1411.7039226776096.mm, 2223.8329485162067.mm), Geom::Vector3d.new(220.mm, -700.mm, 350.mm))
+tsl = entities.add_text("RAIL SLIDE\n(click: carriage slides on rail)", Geom::Point3d.new(2914.5893688684937.mm, 1418.9719766476956.mm, 2181.1597108589167.mm), Geom::Vector3d.new(220.mm, -700.mm, 350.mm))
 tsl.layer = model.layers["Corner Detail"] rescue nil
 
 
@@ -3830,7 +3830,7 @@ ents = cg_defn.entities
   # Film Plane (partial ghost)
   grp = ents.add_group
   grp.name = "Film Plane (partial ghost)"
-  face = grp.entities.add_face([1349.5.mm,-6.mm,164.mm], [2249.5.mm,-6.mm,164.mm], [2249.5.mm,6.mm,164.mm], [1349.5.mm,6.mm,164.mm])
+  face = grp.entities.add_face([1349.5.mm,-6.mm,142.mm], [2249.5.mm,-6.mm,142.mm], [2249.5.mm,6.mm,142.mm], [1349.5.mm,6.mm,142.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(900.mm)
   mat = model.materials["Swing Plane (partial ghost)"] || model.materials.add("Swing Plane (partial ghost)")
@@ -3843,7 +3843,7 @@ ents = cg_defn.entities
   grp.name = "FP Frame ghost (top)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-900.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2249.5.mm,0.mm,1064.mm], vec, 25.4.mm, 16)
+  circle = ge.add_circle([2249.5.mm,0.mm,1042.mm], vec, 25.4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3857,7 +3857,7 @@ ents = cg_defn.entities
   grp.name = "FP Frame ghost (right)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -900.mm)
-  circle = ge.add_circle([2249.5.mm,0.mm,1064.mm], vec, 25.4.mm, 16)
+  circle = ge.add_circle([2249.5.mm,0.mm,1042.mm], vec, 25.4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3866,7 +3866,7 @@ ents = cg_defn.entities
   mat.alpha = 0.35
   grp.material = mat
 
-cg_t = Geom::Transformation.translation([649.5.mm, 1181.mm, 1224.mm]) *
+cg_t = Geom::Transformation.translation([649.5.mm, 1181.mm, 1202.mm]) *
        Geom::Transformation.rotation(ORIGIN, Z_AXIS, (15.0).degrees) *
        Geom::Transformation.rotation(ORIGIN, X_AXIS, (20.0).degrees)
 cg_inst = cd_defn.entities.add_instance(cg_defn, cg_t)
@@ -3884,7 +3884,7 @@ ents = cs_defn.entities
   grp.name = "Acetal wheel Ø32 Swing TR A"
   ge = grp.entities
   vec = Geom::Vector3d.new(28.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1135.mm,1155.mm,2286.mm], vec, 16.mm, 16)
+  circle = ge.add_circle([1135.mm,1155.mm,2242.mm], vec, 16.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3898,7 +3898,7 @@ ents = cs_defn.entities
   grp.name = "Acetal wheel Ø32 Swing TR B"
   ge = grp.entities
   vec = Geom::Vector3d.new(28.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1135.mm,1207.mm,2286.mm], vec, 16.mm, 16)
+  circle = ge.add_circle([1135.mm,1207.mm,2242.mm], vec, 16.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3912,7 +3912,7 @@ ents = cs_defn.entities
   grp.name = "Skate axle Ø10 Swing TR A"
   ge = grp.entities
   vec = Geom::Vector3d.new(40.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1149.mm,1155.mm,2286.mm], vec, 5.mm, 16)
+  circle = ge.add_circle([1149.mm,1155.mm,2242.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3926,7 +3926,7 @@ ents = cs_defn.entities
   grp.name = "Skate axle Ø10 Swing TR B"
   ge = grp.entities
   vec = Geom::Vector3d.new(40.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1149.mm,1207.mm,2286.mm], vec, 5.mm, 16)
+  circle = ge.add_circle([1149.mm,1207.mm,2242.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -3938,7 +3938,7 @@ ents = cs_defn.entities
   # Carriage plate Swing TR
   grp = ents.add_group
   grp.name = "Carriage plate Swing TR"
-  face = grp.entities.add_face([1183.mm,1147.mm,2263.mm], [1197.mm,1147.mm,2263.mm], [1197.mm,1215.mm,2263.mm], [1183.mm,1215.mm,2263.mm])
+  face = grp.entities.add_face([1183.mm,1147.mm,2219.mm], [1197.mm,1147.mm,2219.mm], [1197.mm,1215.mm,2219.mm], [1183.mm,1215.mm,2219.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(44.mm)
   mat = model.materials["Carriage plate Detail TR"] || model.materials.add("Carriage plate Detail TR")
@@ -3949,7 +3949,7 @@ ents = cs_defn.entities
   # Z slide Swing TR (TILT — 316 flat bar + UHMW)
   grp = ents.add_group
   grp.name = "Z slide Swing TR (TILT — 316 flat bar + UHMW)"
-  face = grp.entities.add_face([1141.mm,1166.mm,2288.mm], [1157.mm,1166.mm,2288.mm], [1157.mm,1196.mm,2288.mm], [1141.mm,1196.mm,2288.mm])
+  face = grp.entities.add_face([1141.mm,1166.mm,2244.mm], [1157.mm,1166.mm,2244.mm], [1157.mm,1196.mm,2244.mm], [1141.mm,1196.mm,2244.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(34.mm)
   mat = model.materials["Z slide Detail TR (TILT — 316 flat bar + UHMW)"] || model.materials.add("Z slide Detail TR (TILT — 316 flat bar + UHMW)")
@@ -3967,7 +3967,7 @@ ents = cf_defn.entities
   # X slide Swing TR (SWING — 316 flat bar + UHMW)
   grp = ents.add_group
   grp.name = "X slide Swing TR (SWING — 316 flat bar + UHMW)"
-  face = grp.entities.add_face([1149.mm,1167.mm,2281.mm], [1183.mm,1167.mm,2281.mm], [1183.mm,1195.mm,2281.mm], [1149.mm,1195.mm,2281.mm])
+  face = grp.entities.add_face([1149.mm,1167.mm,2237.mm], [1183.mm,1167.mm,2237.mm], [1183.mm,1195.mm,2237.mm], [1149.mm,1195.mm,2237.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["X slide Detail TR (SWING — 316 flat bar + UHMW)"] || model.materials.add("X slide Detail TR (SWING — 316 flat bar + UHMW)")
@@ -3978,7 +3978,7 @@ ents = cf_defn.entities
   # Cam clamp Swing TR
   grp = ents.add_group
   grp.name = "Cam clamp Swing TR"
-  face = grp.entities.add_face([1135.mm,1173.mm,2282.mm], [1149.mm,1173.mm,2282.mm], [1149.mm,1189.mm,2282.mm], [1135.mm,1189.mm,2282.mm])
+  face = grp.entities.add_face([1135.mm,1173.mm,2238.mm], [1149.mm,1173.mm,2238.mm], [1149.mm,1189.mm,2238.mm], [1135.mm,1189.mm,2238.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cam clamp Detail TR"] || model.materials.add("Cam clamp Detail TR")
@@ -3991,7 +3991,7 @@ ents = cf_defn.entities
   grp.name = "Input stub 3/8 Swing TR"
   ge = grp.entities
   vec = Geom::Vector3d.new(-24.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1175.mm,1181.mm,2288.mm], vec, 5.mm, 16)
+  circle = ge.add_circle([1175.mm,1181.mm,2244.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -4003,7 +4003,7 @@ ents = cf_defn.entities
   # 4040N12 shaft support Swing TR
   grp = ents.add_group
   grp.name = "4040N12 shaft support Swing TR"
-  face = grp.entities.add_face([1171.mm,1172.mm,2277.mm], [1187.mm,1172.mm,2277.mm], [1187.mm,1190.mm,2277.mm], [1171.mm,1190.mm,2277.mm])
+  face = grp.entities.add_face([1171.mm,1172.mm,2233.mm], [1187.mm,1172.mm,2233.mm], [1187.mm,1190.mm,2233.mm], [1171.mm,1190.mm,2233.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -4014,7 +4014,7 @@ ents = cf_defn.entities
   # U-joint Swing TR (USKC12-6-6-SS)
   grp = ents.add_group
   grp.name = "U-joint Swing TR (USKC12-6-6-SS)"
-  face = grp.entities.add_face([1138.mm,1170.mm,2277.mm], [1160.mm,1170.mm,2277.mm], [1160.mm,1192.mm,2277.mm], [1138.mm,1192.mm,2277.mm])
+  face = grp.entities.add_face([1138.mm,1170.mm,2233.mm], [1160.mm,1170.mm,2233.mm], [1160.mm,1192.mm,2233.mm], [1138.mm,1192.mm,2233.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -4027,7 +4027,7 @@ ents = cf_defn.entities
   grp.name = "Output stub 3/8 Swing TR"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 24.mm, 0.mm)
-  circle = ge.add_circle([1149.mm,1181.mm,2288.mm], vec, 5.mm, 16)
+  circle = ge.add_circle([1149.mm,1181.mm,2244.mm], vec, 5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -4039,7 +4039,7 @@ ents = cf_defn.entities
   # 304 SS corner plate Swing TR
   grp = ents.add_group
   grp.name = "304 SS corner plate Swing TR"
-  face = grp.entities.add_face([1132.mm,1203.mm,2268.mm], [1166.mm,1203.mm,2268.mm], [1166.mm,1209.mm,2268.mm], [1132.mm,1209.mm,2268.mm])
+  face = grp.entities.add_face([1132.mm,1203.mm,2224.mm], [1166.mm,1203.mm,2224.mm], [1166.mm,1209.mm,2224.mm], [1132.mm,1209.mm,2224.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
@@ -4050,7 +4050,7 @@ ents = cf_defn.entities
   # Swing Plane (partial ghost)
   grp = ents.add_group
   grp.name = "Swing Plane (partial ghost)"
-  face = grp.entities.add_face([49.mm,1175.mm,1188.mm], [1149.mm,1175.mm,1188.mm], [1149.mm,1187.mm,1188.mm], [49.mm,1187.mm,1188.mm])
+  face = grp.entities.add_face([49.mm,1175.mm,1144.mm], [1149.mm,1175.mm,1144.mm], [1149.mm,1187.mm,1144.mm], [49.mm,1187.mm,1144.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(1100.mm)
   mat = model.materials["Swing Plane (partial ghost)"] || model.materials.add("Swing Plane (partial ghost)")
@@ -4063,7 +4063,7 @@ ents = cf_defn.entities
   grp.name = "Swing FP Frame (top)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-1100.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1149.mm,1181.mm,2288.mm], vec, 25.4.mm, 16)
+  circle = ge.add_circle([1149.mm,1181.mm,2244.mm], vec, 25.4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -4077,7 +4077,7 @@ ents = cf_defn.entities
   grp.name = "Swing FP Frame (right)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -1100.mm)
-  circle = ge.add_circle([1149.mm,1181.mm,2288.mm], vec, 25.4.mm, 16)
+  circle = ge.add_circle([1149.mm,1181.mm,2244.mm], vec, 25.4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -4106,7 +4106,7 @@ cs_inst.set_attribute(csa, "_onclick_access", "NONE")
   e.set_attribute(csa, "x", 0.0); e.set_attribute(csa, "y", 0.0); e.set_attribute(csa, "z", 0.0)
 end
 cf_inst.set_attribute(csa, "_x_formula", "2249.5*(COS(15.0*CornerSwing!swing)-1)")
-ts = entities.add_text("SWING ARC\n(carriage in Y + X float; click to animate)", Geom::Point3d.new(1149.mm, 1181.mm, 2288.mm), Geom::Vector3d.new(250.mm, -700.mm, 350.mm))
+ts = entities.add_text("SWING ARC\n(carriage in Y + X float; click to animate)", Geom::Point3d.new(1149.mm, 1181.mm, 2244.mm), Geom::Vector3d.new(250.mm, -700.mm, 350.mm))
 ts.layer = model.layers["Corner Detail"] rescue nil
 
 
@@ -4154,7 +4154,7 @@ ents = rp_defn.entities
   mat.alpha = 0.35
   grp.material = mat
 
-rp_inst = entities.add_instance(rp_defn, Geom::Transformation.translation([4649.mm, 1181.mm, 2288.mm]))
+rp_inst = entities.add_instance(rp_defn, Geom::Transformation.translation([4649.mm, 1181.mm, 2244.mm]))
 rp_inst.name = "Rotate Plane"
 rp_inst.layer = model.layers["Corner Detail"]
 rpa = "dynamic_attributes"
@@ -4171,20 +4171,20 @@ rp_inst.set_attribute(rpa, "_rotx_formula", "20.0*rotate")
 rp_inst.set_attribute(rpa, "_rotz_formula", "15.0*rotate")
 rp_inst.set_attribute(rpa, "onclick", 'ANIMATE("rotate", 0, 1)')
 rp_inst.set_attribute(rpa, "_onclick_access", "NONE")
-tr = entities.add_text("RAIL + PLANE\n(click: plane rotates about its corner)", Geom::Point3d.new(4649.mm, 1181.mm, 2288.mm), Geom::Vector3d.new(220.mm, -700.mm, 350.mm))
+tr = entities.add_text("RAIL + PLANE\n(click: plane rotates about its corner)", Geom::Point3d.new(4649.mm, 1181.mm, 2244.mm), Geom::Vector3d.new(220.mm, -700.mm, 350.mm))
 tr.layer = model.layers["Corner Detail"] rescue nil
 
 
 # ── Corner-detail callouts (Corner Detail tag — shown on the STATIC detail) ──
-t=entities.add_text("3x1.5 304 U-channel rail - FIXED (depth guide)", Geom::Point3d.new(-1476.mm,1161.7039226776096.mm,2288.mm), Geom::Vector3d.new(24.0,0,21.0)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("3x1.5 304 U-channel rail - FIXED (depth guide)", Geom::Point3d.new(-1476.mm,1168.9719766476956.mm,2244.mm), Geom::Vector3d.new(24.0,0,21.0)); t.layer=model.layers["Corner Detail"] rescue nil
 t=entities.add_text("acetal skate (Ø32 wheels) + cam clamp
-(push to pose - no leadscrew)", Geom::Point3d.new(-1442.mm,711.7039226776096.mm,2288.mm), Geom::Vector3d.new(1.5,0,39.0)); t.layer=model.layers["Corner Detail"] rescue nil
+(push to pose - no leadscrew)", Geom::Point3d.new(-1442.mm,718.9719766476956.mm,2244.mm), Geom::Vector3d.new(1.5,0,39.0)); t.layer=model.layers["Corner Detail"] rescue nil
 t=entities.add_text("carriage plate
-(click: slides on rail)", Geom::Point3d.new(-1496.mm,1411.7039226776096.mm,2276.mm), Geom::Vector3d.new(-25.5,0,-33.0)); t.layer=model.layers["Corner Detail"] rescue nil
-t=entities.add_text("X (SWING) slide = 316 flat bar (blue)", Geom::Point3d.new(-1467.231580969838.mm,1411.7039226776096.mm,2302.mm), Geom::Vector3d.new(-36.0,0,4.5)); t.layer=model.layers["Corner Detail"] rescue nil
-t=entities.add_text("Z (TILT) slide = 316 flat bar (green)", Geom::Point3d.new(-1458.463161939676.mm,1411.7039226776096.mm,2255.9164742581033.mm), Geom::Vector3d.new(28.5,0,-30.0)); t.layer=model.layers["Corner Detail"] rescue nil
-t=entities.add_text("U-joint (USKC12-6-6-SS) -> 304 SS corner plate -> frame", Geom::Point3d.new(-1458.463161939676.mm,1411.7039226776096.mm,2223.8329485162067.mm), Geom::Vector3d.new(39.0,0,10.5)); t.layer=model.layers["Corner Detail"] rescue nil
-t=entities.add_text("ghost = corner if it stayed on rail", Geom::Point3d.new(-1476.mm,1411.7039226776096.mm,2288.mm), Geom::Vector3d.new(-33.0,0,30.0)); t.layer=model.layers["Corner Detail"] rescue nil
+(click: slides on rail)", Geom::Point3d.new(-1496.mm,1418.9719766476956.mm,2232.mm), Geom::Vector3d.new(-25.5,0,-33.0)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("X (SWING) slide = 316 flat bar (blue)", Geom::Point3d.new(-1468.2053155657532.mm,1418.9719766476956.mm,2258.mm), Geom::Vector3d.new(-36.0,0,4.5)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("Z (TILT) slide = 316 flat bar (green)", Geom::Point3d.new(-1460.4106311315063.mm,1418.9719766476956.mm,2212.5798554294583.mm), Geom::Vector3d.new(28.5,0,-30.0)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("U-joint (USKC12-6-6-SS) -> 304 SS corner plate -> frame", Geom::Point3d.new(-1460.4106311315063.mm,1418.9719766476956.mm,2181.1597108589167.mm), Geom::Vector3d.new(39.0,0,10.5)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("ghost = corner if it stayed on rail", Geom::Point3d.new(-1476.mm,1418.9719766476956.mm,2244.mm), Geom::Vector3d.new(-33.0,0,30.0)); t.layer=model.layers["Corner Detail"] rescue nil
 
 # ── Component callouts (Labels tag — shown only in the "Labeled" scene) ──
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Film Plane" }
@@ -4243,7 +4243,7 @@ eye = ctr.offset(dir, bb.diagonal * 1.4)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
-[["Overview", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever"], nil, 0], ["No Container", ["Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["Corner detail (TR)", ["Corner Detail"], [1814.018419030162.mm, 1296.3519613388048.mm, 2255.9164742581033.mm], 350], ["Labeled", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever", "Labels"], nil, 0]].each { |name, tags, tgt, so|
+[["Overview", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever"], nil, 0], ["No Container", ["Film Plane", "Corner Mechanism", "Processing Tray"], nil, 0], ["Corner detail (TR)", ["Corner Detail"], [1813.0446844342468.mm, 1299.9859883238478.mm, 2212.5798554294583.mm], 350], ["Labeled", ["Context", "Film Plane", "Corner Mechanism", "Processing Tray", "Walkways", "IBC Cantilever", "Labels"], nil, 0]].each { |name, tags, tgt, so|
   model.layers.each { |l| l.visible = (l == dl || tags.include?(l.name)) }
   if tgt
     t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])

@@ -18,9 +18,9 @@ mixing kilograms of chemistry.
 
 ## Why this matters (not a rounding error)
 
-The active image plane is **<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm --> mm = 9.62 m²** and is coated **two wet-on-wet
+The active image plane is **<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm --> mm = 9.42 m²** and is coated **two wet-on-wet
 coats** (§2.5). The per-print chemistry therefore scales as
-`coverage (ml/m²) × 2 coats × 9.62 m² × concentration`. Two of those terms are estimates:
+`coverage (ml/m²) × 2 coats × 9.42 m² × concentration`. Two of those terms are estimates:
 
 - **Coverage (muslin absorption):** sourced at **~120 ml/m²/coat** for cotton
   ([AlternativePhotography / Ruth Brown](https://www.alternativephotography.com/cyanotypes-on-fabric-preparing-the-fabric/):

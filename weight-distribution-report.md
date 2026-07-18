@@ -71,7 +71,7 @@ UV-HDPE 950 kg/m³, water 1,000 kg/m³.
 | Solar controller | 2 | 1,700–1,800 | 0–100 | MPPT charge controller |
 | Plumbing — Corridor panel | 5 | 4,760–4,874 | 1,046–1,160 | 4× Shurflo 2088 (P-01/P-03/P-04/P-05) + ACC-01 |
 | Plumbing — Pinhole Wall panel | 8 | 3,300–4,016 | 12–196 | P-02 + 3-stage Big Blue filter (dry); on the pinhole wall — est. |
-| Film plane carriage | 32 | 150–4,649 | 2,212–2,312 | Anodized 6061 Al angle frame (50.8×50.8×4.8mm; EXPENDABLE — kept aluminum for weight + cost, replace on pitting) + 90 cam-lever clamps + 4 HGH20CA carriages |
+| Film plane carriage | 32 | 150–4,649 | 2,212–2,312 | Anodized 6061 Al angle frame (50.8×50.8×4.8mm; EXPENDABLE — kept aluminum for weight + cost, replace on pitting) + 88 spring clips + 4 HGH20CA carriages |
 | Tilt-swing board | 30 | 2,089–2,709 | 0–100 | 620×620×45mm Al plate + spherical pivot + screws |
 | Fans (A+B) | 4 | End walls | Near corners | 2× 150mm axial panel fans |
 | Baffle ducts | 6 | Distributed | Distributed | 2× galvanized steel baffle ducts |

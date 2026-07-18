@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Film-plane active height FP_H 2138 → 2094mm** — the film-plane top rail was lowered 44mm
+  (to raise the top carriage/fittings 25mm clear of the ceiling), dropping the active image top edge
+  the same 44mm: active plane 4499×2138 → 4499×2094mm, area 104 → 101 sq ft (9.62 → 9.42 m²).
+  The overloaded `RAIL_OFF` (100mm) was split — new `RAIL_OFF_TOP` (144mm) drives the film-plane
+  top rail + `BRACE_Z_TOP`, while floor-standing equipment stays on `RAIL_OFF`. Chemistry tiers
+  and muslin yardage rescaled with the area; vertical muslin-clip count 15 → 14 (total 90 → 88).
+  Cascaded across `tbs_constants` / facts / costing / parts / 2D diagrams / 3D models / docs.
+
 - **`film-plane.skp` reconciled to the current corner mechanism** — the older leadscrew-DC
   model's Option-A hardware (HGR20 rails + Acme leadscrews + rod-ends) replaced by the current
   design (304 U-channel rails + acetal skate + 316 flat-bar X/Z slides + cam clamp + U-joint

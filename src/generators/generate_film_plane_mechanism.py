@@ -98,7 +98,7 @@ RAIL_W   = 60           # rail width in plan view
 
 # ── LEFT-rail transport drop-in (Sheet 4). These MIRROR generate_film_plane_mechanism_model.py; promote
 # both to tbs_constants at the FP_W/FP_H cascade so 2D + 3D single-source them (see TODO). ──
-from tbs_constants import PIVOT_YD, PIVOT_POST_OD, RAIL_OFF, RAIL_OFF_BOT, WALKWAY_H
+from tbs_constants import PIVOT_YD, PIVOT_POST_OD, RAIL_OFF_TOP, RAIL_OFF_BOT, WALKWAY_H
 LEFT_CUT_YD = 2090      # cut Yd on the X150 rail = the panel-swing-envelope edge; stub = C_WID−2090 = 272mm
 SPLICE_YD   = 260       # length splice at the PINHOLE end (removable = 6 ft stock + 260mm)
 
@@ -1724,7 +1724,7 @@ def sheet7():
     fp_left = RAIL_X_L
     fp_right = RAIL_X_R
     fp_bot = RAIL_OFF_BOT          # true frame bottom Z (floor offset, 160mm)
-    fp_top = FH - RAIL_OFF         # true frame top Z (ceiling offset, 2288mm)
+    fp_top = FH - RAIL_OFF_TOP     # true frame top Z (ceiling offset, 2244mm)
     frame_t = FP_ANGLE_LEG         # 2×2 angle leg = 50.8mm (to scale)
 
     # Frame outline (thick rectangle)

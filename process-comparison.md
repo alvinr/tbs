@@ -149,7 +149,7 @@ Cyanotype (Mike Ware's New Cyanotype) is the process TBS-001 uses; its full proc
 
 **Notes on paper rolls:**
 - Ilford MGRC 50"×98' confirmed listed at B&H Photo (product #ILMG50981P). Price is not shown publicly — call B&H at 800-606-6969 or log in for current pricing.
-- 50" width × 98' length yields 4 strips of 50" × 84" per print (4 × 1,270mm = 5,080mm covers the 4,499mm active width with 581mm spare; each strip height = 2,138mm = 84"). 14 strips per roll ÷ 4 strips per print = **3 prints per roll** (2 strips spare).
+- 50" width × 98' length yields 4 strips of 50" × 84" per print (4 × 1,270mm = 5,080mm covers the 4,499mm active width with 581mm spare; each strip height = 2,094mm = 82.4"). 14 strips per roll ÷ 4 strips per print = **3 prints per roll** (2 strips spare).
 - Paper must be cut and handled in **sfaelight conditions**.
 
 ---
@@ -165,7 +165,7 @@ Cyanotype (Mike Ware's New Cyanotype) is the process TBS-001 uses; its full proc
 | Rockland Liquid Light | 141 oz (double coat) | **7,050 oz** | 221 × 32oz OR contact Rockland for bulk |
 | Developer (Dektol) | 11.1 L | 555 L | As above |
 | Fixer | 15 L working | 750 L | As above |
-| Substrate (muslin) | ~104 sq ft | ~5,200 sq ft | ~400 yd of 60" muslin |
+| Substrate (muslin) | ~101 sq ft | ~5,050 sq ft | ~400 yd of 60" muslin |
 
 ### Shopping list
 
@@ -238,7 +238,7 @@ Ammonium iron(III) oxalate (AmFe) requires **warm water (50–60°C)** to dissol
 Regardless of process, all muslin must be pre-washed twice to remove commercial sizing. Sizing is a starch/synthetic compound applied by fabric mills that repels water-based sensitizers. If not removed, the sensitizer will bead off the fabric rather than absorbing. Test a small piece before processing the full batch.
 
 ### 7. Bulk muslin ordering — consider width carefully
-The active film plane is 14'9" × 7'0" (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm). The image plane is 7'0" (2,138mm) tall. 60" (1,524mm) muslin requires multiple widths joined in the height direction. For the 14'9" × 7'0" active plane, the most efficient lay is: fabric width = 7'0" height (requires ~88" / 224cm wide fabric), which is not commercially common. At 60" wide, 4 strips of 60"×177" are cut and joined to cover the 14'9" width. Alternatively, buy 120" (10ft) wide muslin from theatrical/backdrop suppliers and cut a single panel per print — at 14'9" wide, two widths of 120" fabric joined give exactly the right width with minimal waste. This eliminates all but one vertical seam.
+The active film plane is 14'9" × 6'10" (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm). The image plane is 6'10" (2,094mm) tall. 60" (1,524mm) muslin requires multiple widths joined in the height direction. For the 14'9" × 6'10" active plane, the most efficient lay is: fabric width = 7'0" height (requires ~88" / 224cm wide fabric), which is not commercially common. At 60" wide, 4 strips of 60"×177" are cut and joined to cover the 14'9" width. Alternatively, buy 120" (10ft) wide muslin from theatrical/backdrop suppliers and cut a single panel per print — at 14'9" wide, two widths of 120" fabric joined give exactly the right width with minimal waste. This eliminates all but one vertical seam.
 
 ---
 

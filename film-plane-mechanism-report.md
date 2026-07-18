@@ -30,7 +30,7 @@ The floor plan below shows the film plane rail positions in the context of the c
 |-----------|-------|-------|
 | Interior length | <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm (19 ft 4 in) | Film plane spans this direction |
 | Interior width | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm (7 ft 9 in) | **Optical axis = focal length** |
-| Interior height | <!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm (7 ft 10 in) | Film plane height |
+| Interior height | <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (6 ft 10 in) | Film plane height |
 | Pinhole position | Center of one 20ft long-side wall | |
 | Nominal film plane | Opposite 20ft long-side wall | flush to wall |
 | Structural ribs | Every 457mm (18 in) along length | Rail mounting points |
@@ -58,7 +58,7 @@ The four-corner mechanism supports all view-camera movements. Corners are labele
 
 Swing is the binding limit because the plane is <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm wide — the same depth travel over a wider span sweeps the corner further along the rail. Combined tilt+swing is further limited — see §5.
 
-Because the plane is a **fixed-size rigid rectangle**, its physical height stays **2,138mm at every angle** — it does not grow. Corner **cross-slides** absorb the rigid-rotation arc travel instead, so a single rigid backing panel suffices.
+Because the plane is a **fixed-size rigid rectangle**, its physical height stays **2,094mm at every angle** — it does not grow. Corner **cross-slides** absorb the rigid-rotation arc travel instead, so a single rigid backing panel suffices.
 
 ---
 
@@ -75,8 +75,8 @@ Each corner of the film plane frame rides on its own carriage assembly (driven i
 - **4 depth rails** — 3×1½" (76×38mm) **304 stainless U-channel** (McMaster 1262T21), one at each corner, running wall-to-wall along the <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm optical axis. An acetal skate rides inside each; sliding it sets that corner's **depth** (focus / back-focus). The **right** rails (X=4,649mm) are permanently flanged to their wall seats; the **left** rails (X=150mm) are transport drop-ins that lift out.
 - **4 acetal skates** — a 4-wheel skate per corner: **Ø32 acetal load rollers** gravity-seated on the channel's bottom flange plus **Ø20 keeper rollers** captive under the top flange, all on **Ø10 316 axles**, carrying the corner's carriage plate.
 - **12 cam clamps** — three per corner. Each corner is slid by hand into position, then a **cam-lever rail brake** locks the skate to the U-channel — there are no leadscrews. The lock holds for the exposure and for transport.
-- **8 corner cross-slides** — a **Z (tilt)** slide plus an **X (swing)** slide at each corner, each a **316 stainless flat bar (¼"×1½")** captured on **UHMW self-lube pads** with an adjustable brass-tip **gib**. The Z slide (~250mm) and X slide (~260mm) absorb the in-plane arc travel that a **rigid** rotation forces on each corner (≈250mm in Z at max tilt, ≈263mm in X at max swing), so the film plane stays a **fixed-size flat rectangle** instead of stretching; the gib drag holds the gravity-loaded vertical axis while the clamp is set.
-- **Film plane frame** — welded 2"×2"×3/16" anodized-6061 aluminum angle, kept as an **expendable part** (in the splash-not-immersed cyanotype zone anodized 6061 corrodes slowly — inspect annually, replace on pitting; chosen over 304 SS to save ~32 kg and ~$1.5k, with the ACM backing carrying the flatness), a **FIXED-SIZE rigid rectangle, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm** (rail span × container height). Each corner connects to its cross-slide stack through a **single universal joint** (Ruland USKC12-6-6-SS, 303 stainless, twist-locked, nitrile-booted): the U-joint supplies the two angular degrees of freedom (tilt + swing) while the cross-slides supply the translation. The joint bolts to the frame through an anodized-6061 L-bracket and to the X-slide carriage on 3/8" 304 stub shafts held in McMaster 4040N12 supports (see Sheet 3). Together they let the rigid plane tilt and swing without the frame ever changing size. The following diagrams show the range of movements of the film plane.
+- **8 corner cross-slides** — a **Z (tilt)** slide plus an **X (swing)** slide at each corner, each a **316 stainless flat bar (¼"×1½")** captured on **UHMW self-lube pads** with an adjustable brass-tip **gib**. The Z slide (~245mm) and X slide (~260mm) absorb the in-plane arc travel that a **rigid** rotation forces on each corner (≈245mm in Z at max tilt, ≈263mm in X at max swing), so the film plane stays a **fixed-size flat rectangle** instead of stretching; the gib drag holds the gravity-loaded vertical axis while the clamp is set.
+- **Film plane frame** — welded 2"×2"×3/16" anodized-6061 aluminum angle, kept as an **expendable part** (in the splash-not-immersed cyanotype zone anodized 6061 corrodes slowly — inspect annually, replace on pitting; chosen over 304 SS to save ~32 kg and ~$1.5k, with the ACM backing carrying the flatness), a **FIXED-SIZE rigid rectangle, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm** (rail span × film-plane height). Each corner connects to its cross-slide stack through a **single universal joint** (Ruland USKC12-6-6-SS, 303 stainless, twist-locked, nitrile-booted): the U-joint supplies the two angular degrees of freedom (tilt + swing) while the cross-slides supply the translation. The joint bolts to the frame through an anodized-6061 L-bracket and to the X-slide carriage on 3/8" 304 stub shafts held in McMaster 4040N12 supports (see Sheet 3). Together they let the rigid plane tilt and swing without the frame ever changing size. The following diagrams show the range of movements of the film plane.
 
 ![Sheet 1 — Plan view](assets/film-plane-sheet1.png)
 
@@ -113,9 +113,9 @@ All four corners lock independently on their own cam clamps, so a set position h
 
 ### Fixed-Size Plane — No Variable Geometry
 
-Because the plane is a **fixed-size rigid rectangle**, its physical dimensions never change: the along-plane height stays **2,138mm at every tilt angle**. The arc travel that the rotation forces on each corner is taken up entirely by the **cross-slides** (≈250mm Z at max tilt, ≈263mm X at max swing), not by the frame.
+Because the plane is a **fixed-size rigid rectangle**, its physical dimensions never change: the along-plane height stays **2,094mm at every tilt angle**. The arc travel that the rotation forces on each corner is taken up entirely by the **cross-slides** (≈245mm Z at max tilt, ≈263mm X at max swing), not by the frame.
 
-**Single rigid backing panel:** the backing is **one flat ACM (aluminum composite) sheet, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm**, bonded to the rear of the angle frame — the panel simply rotates with the rigid plane.
+**Single rigid backing panel:** the backing is **one flat ACM (aluminum composite) sheet, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm**, bonded to the rear of the angle frame — the panel simply rotates with the rigid plane.
 
 ---
 
@@ -125,15 +125,15 @@ The plane stays flat at all times, so it is always a single tilt **or** swing (o
 
 | Config | Name | TL | TR | BL | BR | Tilt | Swing | Film Height |
 |--------|------|----|----|----|----|------|-------|-------------|
-| C0 | Flat | 1181 | 1181 | 1181 | 1181 | 0° | 0° | 2,138mm |
-| C1 | Mild tilt | 977 | 977 | 1385 | 1385 | 11.0° | 0° | 2,138mm |
-| C2 | Strong tilt | 622 | 622 | 1740 | 1740 | 31.5° | 0° | 2,138mm |
-| C3 | Max tilt | 494 | 494 | 1868 | 1868 | 40.0° | 0° | 2,138mm |
-| C4 | Mild swing | 923 | 1439 | 923 | 1439 | 0° | 6.6° | 2,138mm |
-| C5 | Strong swing | 412 | 1950 | 412 | 1950 | 0° | 20.0° | 2,138mm |
-| C6 | Max swing | 125 | 2237 | 125 | 2237 | 0° | 28.0° | 2,138mm |
+| C0 | Flat | 1181 | 1181 | 1181 | 1181 | 0° | 0° | 2,094mm |
+| C1 | Mild tilt | 977 | 977 | 1385 | 1385 | 11.0° | 0° | 2,094mm |
+| C2 | Strong tilt | 622 | 622 | 1740 | 1740 | 31.5° | 0° | 2,094mm |
+| C3 | Max tilt | 494 | 494 | 1868 | 1868 | 40.0° | 0° | 2,094mm |
+| C4 | Mild swing | 923 | 1439 | 923 | 1439 | 0° | 6.6° | 2,094mm |
+| C5 | Strong swing | 412 | 1950 | 412 | 1950 | 0° | 20.0° | 2,094mm |
+| C6 | Max swing | 125 | 2237 | 125 | 2237 | 0° | 28.0° | 2,094mm |
 
-*Depths measured from the pinhole wall about the mid-rail center. Tilt = asin(2·Δd_top-bottom / FP_H) about the plane center (FP_H=2138); swing = asin(2·Δd_left-right / FP_W) (FP_W=4499). Rail positions: left X=150mm, right X=4,649mm.*
+*Depths measured from the pinhole wall about the mid-rail center. Tilt = asin(2·Δd_top-bottom / FP_H) about the plane center (FP_H=2094); swing = asin(2·Δd_left-right / FP_W) (FP_W=4499). Rail positions: left X=150mm, right X=4,649mm.*
 
 **Combined tilt+swing is limited** — the corners must all stay on the rails, so the full single-axis maxima cannot be used together.
 
@@ -169,7 +169,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | Rod-end spherical bearing (60645K73) | GIR25-DO or equiv., 25mm bore — one per corner (4 corners) | 4 ea | McMaster-Carr / Amazon Industrial | $88 |
 | Pivot pin SS316 | Ø25mm × 80mm SS316 — slip-fit in the 25mm rod-end bore (a 1"/25.4mm pin is 0.4mm oversize and will not enter). Metric Ø25 clevis/pivot pin spanning the rod-end eye + corner-bracket clevis; 80mm is the longest stocked Ø25 clevis pin (2026-07 check). Confirm exact SKU at order. | 4 ea | McMaster-Carr / Fastenal | $32 |
 | Aluminum angle 2"×2"×3/16" (6061, anodized) | 6061-T6 angle, clear-anodized, 8 ft lengths — the film-plane PERIMETER FRAME, an EXPENDABLE part. In the splash (not immersed) cyanotype zone anodized 6061 corrodes slowly; treated as inspect-annually / replace-on-pitting to save ~32 kg + ~$1.5k vs 304 SS (the ACM backing does the flatness work, so Al's lower stiffness is acceptable). | 10 ea | Metal Supermarkets / Online Metals | $220 |
-| Dibond ACM panel 4mm | 4 ft × 8 ft sheets — single rigid backing, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->×<!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm | 6 sheet | Grimco / Signwarehouse | $510 |
+| Dibond ACM panel 4mm | 4 ft × 8 ft sheets — single rigid backing, <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->×<!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm | 6 sheet | Grimco / Signwarehouse | $510 |
 | Black EPDM foam tape 1"×½" (8614K84) | 50 ft rolls | 3 roll | McMaster-Carr / Grainger | $84 |
 | Rosco Duvetyne | 60" wide, 10 yd | 1 ea | B&H Photo / Rosco direct | $95 |
 | 6-mil black poly sheeting | 10 ft × 100 ft | 1 roll | Home Depot / Uline | $66–$70 |
@@ -203,7 +203,7 @@ Each of the **8 rail ends** anchors to the container — **6 of them** with a st
 
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
 
-**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$3,381<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
+**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$3,374<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
 *Excludes fasteners and fabrication labor.*
 
 ### Local SoCal Metal Sourcing

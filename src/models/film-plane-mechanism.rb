@@ -114,27 +114,38 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 0.3
   grp.material = mat
 
-  # Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL
+  # Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL
   grp = ents.add_group
-  grp.name = "Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"
-  face = grp.entities.add_face([119.mm,2030.mm,232.mm], [131.mm,2030.mm,232.mm], [131.mm,2180.mm,232.mm], [119.mm,2180.mm,232.mm])
+  grp.name = "Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"
+  face = grp.entities.add_face([131.mm,2030.mm,308.mm], [169.mm,2030.mm,308.mm], [169.mm,2180.mm,308.mm], [131.mm,2180.mm,308.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(76.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  face.pushpull(12.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Retaining screw (bridge→STUB) BL
+  # Locating pin (bridge↔STUB, flush to inner-rail top) BL
   grp = ents.add_group
-  grp.name = "Retaining screw (bridge→STUB) BL"
+  grp.name = "Locating pin (bridge↔STUB, flush to inner-rail top) BL"
   ge = grp.entities
-  circle = ge.add_circle([109.mm,2135.mm,270.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([150.mm,2135.mm,303.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(26.mm)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(17.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
   mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bottom support bridge (STUB → beam underside) BL
+  grp = ents.add_group
+  grp.name = "Bottom support bridge (STUB → beam underside) BL"
+  face = grp.entities.add_face([131.mm,2058.mm,220.mm], [169.mm,2058.mm,220.mm], [169.mm,2122.mm,220.mm], [131.mm,2122.mm,220.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -144,7 +155,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([95.mm,2350.mm,227.mm], [205.mm,2350.mm,227.mm], [205.mm,2362.mm,227.mm], [95.mm,2362.mm,227.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(86.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -155,7 +166,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([94.mm,0.mm,202.mm], [206.mm,0.mm,202.mm], [206.mm,45.mm,202.mm], [94.mm,45.mm,202.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(131.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -166,7 +177,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([119.mm,205.mm,232.mm], [131.mm,205.mm,232.mm], [131.mm,315.mm,232.mm], [119.mm,315.mm,232.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(76.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -192,7 +203,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(47.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -218,7 +229,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(49.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -244,7 +255,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(47.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -270,7 +281,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(49.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -294,7 +305,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -307,7 +318,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -340,7 +351,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([138.mm,2258.mm,146.mm], [162.mm,2258.mm,146.mm], [162.mm,2282.mm,146.mm], [138.mm,2282.mm,146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -369,12 +380,25 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # Output stub 3/8 (U-joint → corner plate) BL
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 (U-joint → corner plate) BL"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,2248.mm,160.mm], [0,1,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Corner plate 304 SS (U-joint mount — angle frame → U-joint) BL
   grp = ents.add_group
   grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) BL"
-  face = grp.entities.add_face([136.mm,2254.mm,134.mm], [184.mm,2254.mm,134.mm], [184.mm,2270.mm,134.mm], [136.mm,2270.mm,134.mm])
+  face = grp.entities.add_face([136.mm,2254.mm,165.mm], [170.mm,2254.mm,165.mm], [170.mm,2270.mm,165.mm], [136.mm,2270.mm,165.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(52.mm)
+  face.pushpull(40.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -443,7 +467,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4569.mm,0.mm,227.mm], [4644.mm,0.mm,227.mm], [4644.mm,12.mm,227.mm], [4569.mm,12.mm,227.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(86.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -454,7 +478,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4569.mm,2350.mm,227.mm], [4644.mm,2350.mm,227.mm], [4644.mm,2362.mm,227.mm], [4569.mm,2362.mm,227.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(86.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -480,7 +504,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(47.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -506,7 +530,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(37.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -532,7 +556,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(47.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -558,7 +582,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(37.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -582,7 +606,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -595,7 +619,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -628,7 +652,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4612.mm,2258.mm,146.mm], [4636.mm,2258.mm,146.mm], [4636.mm,2282.mm,146.mm], [4612.mm,2282.mm,146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -657,12 +681,25 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # Output stub 3/8 (U-joint → corner plate) BR
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 (U-joint → corner plate) BR"
+  ge = grp.entities
+  circle = ge.add_circle([4624.mm,2248.mm,160.mm], [0,1,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Corner plate 304 SS (U-joint mount — angle frame → U-joint) BR
   grp = ents.add_group
   grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) BR"
-  face = grp.entities.add_face([4590.mm,2254.mm,134.mm], [4638.mm,2254.mm,134.mm], [4638.mm,2270.mm,134.mm], [4590.mm,2270.mm,134.mm])
+  face = grp.entities.add_face([4604.mm,2254.mm,165.mm], [4638.mm,2254.mm,165.mm], [4638.mm,2270.mm,165.mm], [4604.mm,2270.mm,165.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(52.mm)
+  face.pushpull(40.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -753,7 +790,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([112.mm,2030.mm,2382.mm], [188.mm,2030.mm,2382.mm], [188.mm,2180.mm,2382.mm], [112.mm,2180.mm,2382.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -777,7 +814,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([95.mm,2350.mm,2339.mm], [205.mm,2350.mm,2339.mm], [205.mm,2362.mm,2339.mm], [95.mm,2362.mm,2339.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -788,7 +825,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([94.mm,0.mm,2314.mm], [206.mm,0.mm,2314.mm], [206.mm,45.mm,2314.mm], [94.mm,45.mm,2314.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(93.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -799,7 +836,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([112.mm,205.mm,2382.mm], [188.mm,205.mm,2382.mm], [188.mm,315.mm,2382.mm], [112.mm,315.mm,2382.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -825,7 +862,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -851,7 +888,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -919,7 +956,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -932,7 +969,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -965,7 +1002,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([138.mm,2258.mm,2320.mm], [162.mm,2258.mm,2320.mm], [162.mm,2282.mm,2320.mm], [138.mm,2282.mm,2320.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -994,12 +1031,25 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # Output stub 3/8 (U-joint → corner plate) TL
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 (U-joint → corner plate) TL"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,2248.mm,2334.mm], [0,1,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Corner plate 304 SS (U-joint mount — angle frame → U-joint) TL
   grp = ents.add_group
   grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) TL"
-  face = grp.entities.add_face([136.mm,2254.mm,2308.mm], [184.mm,2254.mm,2308.mm], [184.mm,2270.mm,2308.mm], [136.mm,2270.mm,2308.mm])
+  face = grp.entities.add_face([136.mm,2254.mm,2320.mm], [170.mm,2254.mm,2320.mm], [170.mm,2270.mm,2320.mm], [136.mm,2270.mm,2320.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(52.mm)
+  face.pushpull(40.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -1057,7 +1107,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4569.mm,0.mm,2339.mm], [4644.mm,0.mm,2339.mm], [4644.mm,12.mm,2339.mm], [4569.mm,12.mm,2339.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1068,7 +1118,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4569.mm,2350.mm,2339.mm], [4644.mm,2350.mm,2339.mm], [4644.mm,2362.mm,2339.mm], [4569.mm,2362.mm,2339.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1094,7 +1144,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1120,7 +1170,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1188,7 +1238,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1201,7 +1251,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1234,7 +1284,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4612.mm,2258.mm,2320.mm], [4636.mm,2258.mm,2320.mm], [4636.mm,2282.mm,2320.mm], [4612.mm,2282.mm,2320.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, outboard web) BL")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1263,12 +1313,25 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
+  # Output stub 3/8 (U-joint → corner plate) TR
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 (U-joint → corner plate) TR"
+  ge = grp.entities
+  circle = ge.add_circle([4624.mm,2248.mm,2334.mm], [0,1,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Corner plate 304 SS (U-joint mount — angle frame → U-joint) TR
   grp = ents.add_group
   grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) TR"
-  face = grp.entities.add_face([4590.mm,2254.mm,2308.mm], [4638.mm,2254.mm,2308.mm], [4638.mm,2270.mm,2308.mm], [4590.mm,2270.mm,2308.mm])
+  face = grp.entities.add_face([4604.mm,2254.mm,2320.mm], [4638.mm,2254.mm,2320.mm], [4638.mm,2270.mm,2320.mm], [4604.mm,2270.mm,2320.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(52.mm)
+  face.pushpull(40.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -1422,17 +1485,6 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # ═══ Pinhole ═══
   defn = model.definitions.add("Pinhole")
   ents = defn.entities
-  # Pinhole wall (far)
-  grp = ents.add_group
-  grp.name = "Pinhole wall (far)"
-  face = grp.entities.add_face([0.mm,-14.mm,0.mm], [5893.mm,-14.mm,0.mm], [5893.mm,0.mm,0.mm], [0.mm,0.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2388.mm)
-  mat = model.materials["Pinhole wall (far)"] || model.materials.add("Pinhole wall (far)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 0.06
-  grp.material = mat
-
   # Pinhole aperture
   grp = ents.add_group
   grp.name = "Pinhole aperture"

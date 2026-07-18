@@ -137,9 +137,13 @@ def corner(tag, cx, fz, zc, cin, side):
         P += rail("U-rail REMOVABLE (out for transport)", 0, LEFT_CUT_YD, 0.30)
         # the bridge is WELDED to the REMOVABLE beam and LAPS + BEARS on the stub (weight rides the bridge,
         # not the screw); a retaining SCREW into the STUB just holds it — drops straight in, then lock
-        if is_bot:   # bottom: fishplate on the OUTBOARD web face — clear of the inboard carriage
-            P.append(ov.ruby_box(f"Welded bridge (welded to REMOVABLE, bears on stub, outboard web) {tag}", cx - cin * (CW_BOT / 2 + 12), LEFT_CUT_YD - 60, botf, 12, 150, CD_BOT, color=C_CROSS))
-            P.append(ov.ruby_cylinder(f"Retaining screw (bridge→STUB) {tag}", cx - cin * (CW_BOT / 2 + 22), LEFT_CUT_YD + 45, botf + CD_BOT / 2, 5, 26, color=C_STEEL, axis="x"))
+        if is_bot:   # bottom: cut BRIDGE ON TOP (gravity-held) + a locating PIN (flush to rail underside) + a short bottom support bridge
+            P.append(ov.ruby_box(f"Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) {tag}", cx - CW_BOT / 2, LEFT_CUT_YD - 60, zc + CD_BOT / 2, CW_BOT, 150, 12, color=C_CROSS))
+            # locating pin — drops through the bridge + top flange; BOTTOM flush to the TOP OF THE INNER RAIL
+            # (underside of the top flange = zc + CD_BOT/2 - HB_T), head shown on top
+            P.append(ov.ruby_cylinder(f"Locating pin (bridge↔STUB, flush to inner-rail top) {tag}", cx, LEFT_CUT_YD + 45, zc + CD_BOT / 2 - HB_T, 5, HB_T + 12, color=C_STEEL, axis="z"))
+            # short bottom support bridge welded to the STUB, laps under + carries the removable beam (~64mm)
+            P.append(ov.ruby_box(f"Bottom support bridge (STUB → beam underside) {tag}", cx - CW_BOT / 2, LEFT_CUT_YD - 32, botf - 12, CW_BOT, 64, 12, color=C_CROSS))
         else:        # top: splice plate over the web (above the mechanism — already clear), flush to the web width
             P.append(ov.ruby_box(f"Welded bridge (welded to REMOVABLE, bears on stub, over web) {tag}", cx - CD_TOP / 2, LEFT_CUT_YD - 60, splice_z, CD_TOP, 150, 12, color=C_CROSS))
             P.append(ov.ruby_cylinder(f"Retaining screw (bridge→STUB) {tag}", cx, LEFT_CUT_YD + 45, splice_z + 4, 5, 26, color=C_STEEL, axis="z"))
@@ -210,11 +214,16 @@ def corner(tag, cx, fz, zc, cin, side):
     sup_x0  = cx + 26 if cin > 0 else cx - 49
     P.append(ov.ruby_cylinder(f"Input stub 3/8 (X slide → U-joint) {tag}", stub_x0, ty + 8, fz, 4.75, 46, color=C_STEEL, axis="x"))
     P.append(ov.ruby_box(f"4040N12 304 shaft support (clamps input stub → X slide) {tag}", sup_x0, ty - 1, fz - 11, 23, 18, 22, color=C_STEEL))
+    # output stub Ø9.5 (U-joint 2nd bore → 304 SS corner plate), secured by a countersunk cap screw (Sheet 9 B, J4)
+    P.append(ov.ruby_cylinder(f"Output stub 3/8 (U-joint → corner plate) {tag}", cx, ty - 14, fz, 4.75, 20, color=C_STEEL, axis="y"))
     # FILM-PLANE FRAME CORNER — bolts onto the U-joint, so the ghost panel is carried by this corner.
     # Kept INBOARD of the web (outboard edge at the web inboard face) so the beam-flush cut support clears it.
     ybk = min(ty - 8, FP_Y - 4)
     fbx = cx - cin * (CW_BOT / 2 - HB_T)                 # web inboard face = the moving assembly's outboard limit
-    P.append(ov.ruby_box(f"Corner plate 304 SS (U-joint mount — angle frame → U-joint) {tag}", min(fbx, fbx + cin * 48), ybk, fz - 26, 48, (FP_Y + 8) - ybk, 52, color=C_STEEL))
+    # Corner plate reduced (was 48×52); on the BOTTOM corners its floor is held 25mm above the walkway top
+    _walk_top = ov.RAIL_OFF_BOT - 20                       # walkway (hard-floor) top = Z140
+    plate_z0 = (_walk_top + 25) if is_bot else (fz - 14)   # bottom: 25mm clearance to the walkway
+    P.append(ov.ruby_box(f"Corner plate 304 SS (U-joint mount — angle frame → U-joint) {tag}", min(fbx, fbx + cin * 34), ybk, plate_z0, 34, (FP_Y + 8) - ybk, 40, color=C_STEEL))
     # the film-frame angle CORNER bolts onto this 304 SS plate → the ACM is carried ACM → angle frame → 304 SS corner plate → U-joint
     fcx = cx + cin * FILM_INSET                          # film-plane corner (frame heel)
     P.append(ov.ruby_cylinder(f"Frame-corner bolt (angle frame → bracket) {tag}", fcx, FP_Y - 6, fz, 3, 18, color=C_STEEL, axis="y"))
@@ -266,8 +275,9 @@ def film_plane():
 
 
 def pinhole():
+    # Pinhole WALL removed (2026-07-17) — the full-width ghost plane made orbiting awkward;
+    # the aperture marker + light cone still fix the pinhole in space.
     P = [
-        ov.ruby_box("Pinhole wall (far)", 0, -14, 0, 5893, 14, CH, color=C_STEEL, alpha=0.06),
         ov.ruby_box("Pinhole aperture", PH_X - 11, -18, PH_Z - 11, 22, 22, 22, color="#101014"),
     ]
     corners_xyz = [(FCX_L, PZ1), (FCX_R, PZ1), (FCX_L, PZ0), (FCX_R, PZ0)]

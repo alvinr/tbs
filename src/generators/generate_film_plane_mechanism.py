@@ -16,7 +16,7 @@ Sheet 2 — Elevations: side elevation (tilt) + plan cross-section (swing)
 Sheet 3 — Corner carriage detail: acetal skate on U-channel + capture sections + cross-slide + U-joint
 Sheet 4 — Rail mounting & transport drop-in: left split (stub + removable + bridge) · right flanged · stub clamp
 Sheet 5 — Movement specification table & BOM
-Sheet 6 — Muslin clamp detail: suspension chain + cam-lever spring clamp
+Sheet 6 — Muslin clamp detail: spring clip at the ALU frame edge
 Sheet 7 — System schematic: four-corner frame front elevation
 Sheet 8 — Frame-corner ↔ cross-slide attachment: how the frame hangs off the two slides through the U-joint
 """
@@ -27,7 +27,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle, Arc, Polygon
 
-from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH_X_C, MAX_TILT_DEG, MAX_SWING_DEG, DIAGRAMS_DIR, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_BASE_W, CLAMP_BASE_H, CLAMP_BASE_T, CLAMP_LEVER_L, CLAMP_JAW_W, CLAMP_JAW_H, CLAMP_JAW_T, CLAMP_OPEN_GAP, CLAMP_SPRING_F, CLAMP_N_TOTAL, BRACE_Z_BOT, BRACE_Z_TOP, C_WID, WALL_T, IBC_WBKT_PLATE_W, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, DRUM_CY, DRUM_R, DRUM_CX, DRUM_D
+from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH_X_C, MAX_TILT_DEG, MAX_SWING_DEG, DIAGRAMS_DIR, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_JAW_W, CLAMP_OPEN_GAP, CLAMP_SPRING_F, CLAMP_N_TOTAL, BRACE_Z_BOT, BRACE_Z_TOP, C_WID, WALL_T, IBC_WBKT_PLATE_W, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, DRUM_CY, DRUM_R, DRUM_CX, DRUM_D
 from tbs_title_block import title_block
 from tbs_drawing import (leader, draw_notes, draw_dim_h, draw_dim_v,
                          draw_rect, draw_circle, hatch_rect, reset_label_registry)
@@ -1337,8 +1337,7 @@ def sheet5():
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet6():
     from tbs_constants import (
-        FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_BASE_W, CLAMP_BASE_H,
-        CLAMP_BASE_T, CLAMP_LEVER_L, CLAMP_JAW_W, CLAMP_JAW_H, CLAMP_JAW_T,
+        FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_JAW_W,
         CLAMP_OPEN_GAP, CLAMP_SPRING_F, CLAMP_N_TOTAL,
     )
 

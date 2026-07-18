@@ -277,13 +277,13 @@ def _shelf_weight():
 
 
 def _film_plane_carriage_weight():
-    """Film plane carriage: anodized 6061 Al angle frame (EXPENDABLE) + 92 cam-lever clamps + carriages."""
+    """Film plane carriage: anodized 6061 Al angle frame (EXPENDABLE) + muslin spring clips + carriages."""
     # Perimeter frame: 2"×2"×3/16" anodized 6061 Al angle (50.8×50.8×4.8mm) — kept aluminum as an expendable
     # part (weight + cost) rather than 304 SS; a 304 SS swap (~2.9× the mass) was evaluated and rejected.
     perimeter = 2 * (FP_W + FP_H) / 1000  # m
     angle_area = (2 * FP_ANGLE_LEG * FP_ANGLE_T - FP_ANGLE_T**2) * 1e-6  # m²
     frame_kg = perimeter * angle_area * RHO_ALUM
-    # 92 cam-lever clamps: ~0.15 kg each
+    # muslin spring clips: ~0.15 kg each
     clamp_kg = CLAMP_N_TOTAL * 0.15
     # 4× HGH20CA carriage blocks: ~0.5 kg each
     carriage_kg = 4 * 0.5

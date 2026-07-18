@@ -44,7 +44,7 @@ Capital systems ranked by mid cost:
 | System | Mid | % of capital | Notes |
 |---|--:|--:|---|
 | **Processing water system** | $6,647 | 26% | Tray (304 SS) + IBC frame dominate |
-| **Film-plane mechanism** | $3,648 | 14% | Carriages, Option-A cross-slides, cam-lever clamps, wall-seat saddles |
+| **Film-plane mechanism** | $3,648 | 14% | Carriages, Option-A cross-slides, muslin spring clips, wall-seat saddles |
 | **Container + delivery** | $3,300 | 13% | Grade-dependent (CW vs WWT) |
 | **Power & electrical** | $2,806 | 11% | Battery + solar + distribution + protection |
 | **Perimeter walkway** | $2,488 | 10% | GRP grating + steel cantilevers |

@@ -267,8 +267,8 @@ OPTICS = [
 
 
 # §4 Film plane mechanism (4-corner Option A, manual handwheel actuation). Line items own the truth;
-# the section total sums them. The only documented source of Low/High spread is the cam-lever muslin
-# clamps ($3/$5.50/$8 ea × 90 = $270/$495/$720) plus a modest band on the est. wall-seat saddle plate;
+# the section total sums them. The only documented source of Low/High spread is the muslin spring
+# clips ($3/$5.50/$8 ea × 90 = $270/$495/$720) plus a modest band on the est. wall-seat saddle plate;
 # everything else is single-source-specced (point()). Folding this BOM in raised the §4 floor ~$480:
 # the hand-set summary ($3,100/$3,650/$4,200) sat BELOW the section's own bill of materials.
 # Source: project-cost-breakdown.md §4.1–4.3 / film-plane-mechanism-report.md.
@@ -284,8 +284,8 @@ FILM = [
     point("Aluminum angle 2×2×3/16 (6061 anodized, expendable) 8 ft (×10)", 220),
     point("Dibond ACM 4mm 4×8 sheets (×6) — single rigid plane", 510, "Option A: no folding hinge"),
     LineItem("Light-seal set — EPDM tape (×3) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6)", 299, 313, 327),
-    LineItem("Cam-lever spring clamps, muslin (×90)", 270, 495, 720, "$3/$5.50/$8 ea — the section's main Low/High driver"),
-    point("Clamp mounting — M5×16 SS bolts (×180) + Nylocks (×180) + neoprene jaw strip", 74, "item-sum: $45 bolts + $14 nuts + $15 neoprene"),
+    LineItem("Spring clips, muslin (×90)", 270, 495, 720, "$3/$5.50/$8 ea — the section's main Low/High driver"),
+    point("Clamp mounting — M5×16 SS csk screws (×180) + Nylocks (×180) + neoprene pad strip", 74, "item-sum: $45 screws + $14 nuts + $15 neoprene"),
     # 4.3 Wall-seat saddles (rev 11, ICP-11–14) — estimates, confirm at procurement
     point("Wall-seat saddles ×6 — 8mm steel plate, cut + welded (ICP-11)", 318, "rev12: 2 BR ends moved to the walkway combined corner plates; ~$53/saddle"),
     point("Saddle fasteners — M12×90 through-bolts (×28) + M8 thumbscrews (×12) + M8 hex bolts (×8)", 122, "ICP-12/13/14"),
@@ -590,7 +590,7 @@ def emit_ca_buckets() -> str:
 # (system label, section id, note) — the §3 ranking, sorted by Mid descending in the emitter.
 _CA_SYSTEMS = [
     ("Processing water system", "5",  "Tray (304 SS) + IBC frame dominate"),
-    ("Film-plane mechanism",    "4",  "Carriages, Option-A cross-slides, cam-lever clamps, wall-seat saddles"),
+    ("Film-plane mechanism",    "4",  "Carriages, Option-A cross-slides, muslin spring clips, wall-seat saddles"),
     ("Container + delivery",    "1",  "Grade-dependent (CW vs WWT)"),
     ("Power & electrical",      "5a", "Battery + solar + distribution + protection"),
     ("Perimeter walkway",       "6a", "GRP grating + steel cantilevers"),
@@ -828,7 +828,7 @@ def _inline_blocks() -> dict:
         # film-plane-mechanism-report.md §7 materials total — the §4 FILM BOM low (base estimate;
         # the old hand-set ~$3,100 sat below this BOM).
         "film-total":          (_FPM, lambda: f"${total(FILM)[0]:,}"),
-        # film-clamp-mechanism-report.md §4 — clamp-system band (generic toggle → Destaco-equiv).
+        # film-clamp-mechanism-report.md §4 — clamp-system band (generic spring clip → quality).
         "clamp-system-low":    (_FC, lambda: f"${_clamp_system('low'):,}"),
         "clamp-system-high":   (_FC, lambda: f"${_clamp_system('high'):,}"),
         # tilt-swing-board-report.md §12.4 — the board's own BOM low (= FRONT_BOARD_MID, which the
@@ -896,7 +896,7 @@ def _film_line(prefix: str) -> LineItem:
 
 
 def _clamp_system(which: str) -> int:    # which = 'low' | 'high'
-    return getattr(_film_line("Cam-lever spring clamps"), which) + _film_line("Clamp mounting").mid
+    return getattr(_film_line("Spring clips"), which) + _film_line("Clamp mounting").mid
 
 
 # hinged-panel-report.md §8.3/§8.4 — §6b SWINGPIVOT bundles the swing pivot (§8.3) + door frame (§8.4);

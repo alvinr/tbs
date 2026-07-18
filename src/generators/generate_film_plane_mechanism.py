@@ -98,7 +98,7 @@ RAIL_W   = 60           # rail width in plan view
 
 # ── LEFT-rail transport drop-in (Sheet 4). These MIRROR generate_corner_gimbal_model.py; promote
 # both to tbs_constants at the FP_W/FP_H cascade so 2D + 3D single-source them (see TODO). ──
-from tbs_constants import PIVOT_YD, PIVOT_POST_OD, RAIL_OFF_BOT, WALKWAY_H
+from tbs_constants import PIVOT_YD, PIVOT_POST_OD, RAIL_OFF, RAIL_OFF_BOT, WALKWAY_H
 LEFT_CUT_YD = 2090      # cut Yd on the X150 rail = the panel-swing-envelope edge; stub = C_WID−2090 = 272mm
 SPLICE_YD   = 260       # length splice at the PINHOLE end (removable = 6 ft stock + 260mm)
 
@@ -981,7 +981,7 @@ def sheet3():
     title_block(ax_tb, "SHEET 3 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Corner carriage detail — acetal skate on 3×1.5 304 U-channel + cross-slides + U-joint + stub clamp",
-                scale_note="DIMS IN mm",
+                scale_note="Proportional (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.75)
 
@@ -1164,7 +1164,7 @@ def sheet4():
     ax_tb.axis("off")
     title_block(ax_tb, "SHEET 4 OF 9", drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Rail mounting & transport drop-in — left split (stub + removable + web-back bridge) · right flanged wall-to-wall",
-                scale_note="DIMS IN mm",
+                scale_note="Proportional (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.75)
 
@@ -1603,7 +1603,7 @@ def sheet6():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SHEET 7 — SYSTEM SCHEMATIC: Four-corner frame front elevation
+# SHEET 7 — SYSTEM ELEVATION (to scale): Four-corner frame front elevation
 #
 # View: looking at the film plane from the pinhole side (interior elevation).
 # Shows ceiling/floor depth-rail pairs (3×1.5 304 U-channel), four corner acetal-skate
@@ -1616,7 +1616,8 @@ def sheet7():
     ax.set_facecolor(BG)
     ax.axis("off")
 
-    # Schematic coordinates (mm) — front elevation
+    # True-scale coordinates (mm) — front elevation, aspect equal (container, rails,
+    # frame all at real mm; corner mechanisms drawn to size — small at this scale)
     # X = container width (0=left wall, L=5893=right wall)
     # Z = height (0=floor, H=2388=ceiling)
     FW = L       # frame width extent for drawing
@@ -1651,8 +1652,10 @@ def sheet7():
     ax.add_patch(Rectangle((0, 0), FW, FH, fc=GRID, ec="none", zorder=2))
 
     # ── Rail positions (X coords in this elevation = RAIL_X_L, RAIL_X_R) ─────
-    rail_len = 200    # schematic rail length along optical axis (shown as width here)
-    rail_h = 28       # rail profile height
+    # 3×1.5" 304 U-channel seen END-ON (it runs into the page along the optical axis):
+    # its cross-section is 76mm (3") wide × 38mm (1.5") tall — drawn to scale.
+    rail_len = 76     # rail cross-section width (3")
+    rail_h = 38       # rail cross-section height (1.5")
 
     # Ceiling rails
     for rx, label in [(RAIL_X_L, "LEFT"), (RAIL_X_R, "RIGHT")]:
@@ -1676,8 +1679,8 @@ def sheet7():
     # Each corner = a 4-wheel acetal skate (the long depth rail runs into
     # the page, so it reads end-on as a block) locked by a hand cam clamp. No
     # leadscrews, no handwheels — push to position, flip the clamp to lock.
-    carr_w = 70
-    carr_h = 50
+    carr_w = 110      # acetal-skate carriage plate width (to scale)
+    carr_h = 60       # skate carriage height (to scale — fits the true rail↔frame gap)
     x_mid = (RAIL_X_L + RAIL_X_R) / 2
 
     corners = [
@@ -1710,9 +1713,9 @@ def sheet7():
     # ── Film plane frame ──────────────────────────────────────────────────────
     fp_left = RAIL_X_L
     fp_right = RAIL_X_R
-    fp_bot = rail_h + carr_h
-    fp_top = FH - rail_h - carr_h
-    frame_t = 12  # frame member thickness (visual)
+    fp_bot = RAIL_OFF_BOT          # true frame bottom Z (floor offset, 160mm)
+    fp_top = FH - RAIL_OFF         # true frame top Z (ceiling offset, 2288mm)
+    frame_t = FP_ANGLE_LEG         # 2×2 angle leg = 50.8mm (to scale)
 
     # Frame outline (thick rectangle)
     frame_style = dict(fc="none", ec=C_FLAT, lw=2.8, zorder=8, linestyle="-")
@@ -1743,7 +1746,7 @@ def sheet7():
 
     # ── Single U-joint at each corner of the frame ────────────────────────────
     # Ruland USKC12-6-6-SS: light-blue body, two crossed pins (tilt + swing, twist-locked).
-    joint_r = 22
+    joint_r = 9.5     # Ø19 U-joint (to scale — small at this system scale; detail on Sheets 8-9)
     joint_positions = [
         (fp_left, fp_top),    # TL
         (fp_right, fp_top),   # TR
@@ -1834,7 +1837,7 @@ def sheet7():
 
     # ── Title text ────────────────────────────────────────────────────────────
     ax.text(FW / 2, FH + 380,
-            "SHEET 7 — SYSTEM SCHEMATIC  (FRONT ELEVATION — LOOKING FROM PINHOLE SIDE)",
+            "SHEET 7 — SYSTEM ELEVATION, TO SCALE  (FRONT — LOOKING FROM PINHOLE SIDE)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
     ax.text(FW / 2, FH + 290,
             "4 CORNER ACETAL SKATES (4-wheel on 304 U-channel, COORDINATED PAIRS)  ·  CAM CLAMP + SINGLE U-JOINT + X-Z UHMW-PAD CROSS-SLIDES AT EACH CORNER",
@@ -1843,8 +1846,8 @@ def sheet7():
     # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 7 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
-                subtitle="System schematic — four-corner frame front elevation",
-                scale_note="Schematic — not to scale",
+                subtitle="System elevation — four-corner frame front elevation (proportional)",
+                scale_note="Proportional (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.05)
 

@@ -11,7 +11,7 @@ capital from recurring/consumable spend, and ranks the realistic savings levers.
 
 All figures are the **mid-column** estimates from the
 [Cost Breakdown](project-cost-breakdown.md) (the itemized source of truth); the build
-mid-total is **~<!-- BEGIN costing:ca-mid-total -->$28,645<!-- END costing:ca-mid-total -->**.
+mid-total is **~<!-- BEGIN costing:ca-mid-total -->$28,616<!-- END costing:ca-mid-total -->**.
 
 ---
 
@@ -24,13 +24,13 @@ recurs or is consumed — savings strategy is different for each.
 <!-- BEGIN costing:ca-buckets -->
 | Bucket | Mid | What it is |
 |---|--:|---|
-| **Capital build** (one-time hardware) | **$25,615** | The systems you build once — this is where build-savings live |
+| **Capital build** (one-time hardware) | **$25,586** | The systems you build once — this is where build-savings live |
 | Consumable (per 50-print batch) | $1,490 | Cyanotype chemistry + substrate (Standard ½-Ware) — recurs every batch |
 | Recurring (per deployment) | $750 | Commercial-hire transport |
 | Soft / regulatory | $790 | Licenses & permits |
 <!-- END costing:ca-buckets -->
 
-Build-savings work on the **<!-- BEGIN costing:ca-capital -->$25,615<!-- END costing:ca-capital --> capital**. The <!-- BEGIN costing:ca-consumable -->$1,490<!-- END costing:ca-consumable --> consumable is attacked
+Build-savings work on the **<!-- BEGIN costing:ca-capital -->$25,586<!-- END costing:ca-capital --> capital**. The <!-- BEGIN costing:ca-consumable -->$1,490<!-- END costing:ca-consumable --> consumable is attacked
 separately (bulk chemistry, cheaper substrate) because it repeats every batch and
 quickly dominates lifetime cost.
 
@@ -48,7 +48,7 @@ Capital systems ranked by mid cost:
 | **Container + delivery** | $3,300 | 13% | Grade-dependent (CW vs WWT) |
 | **Power & electrical** | $2,806 | 11% | Battery + solar + distribution + protection |
 | **Perimeter walkway** | $2,488 | 10% | GRP grating + steel cantilevers |
-| **Light lock** | $1,768 | 7% | Plastic-skin custom fabrication |
+| **Light lock** | $1,739 | 7% | Plastic-skin custom fabrication |
 | **Hinged panel structure** | $1,418 | 6% | Stepped frame + PP skins + Al core + EPDM + latches + B2 bay |
 | **Swing pivot** | $1,209 | 5% | Pivot post + bearings + cage + fixed RHS door frame |
 | **Interior conversion** | $1,138 | 4% | Insulation, sealing, safelight |
@@ -75,7 +75,7 @@ Ranked by dollar potential and ease. Status is updated as levers are actioned.
 | 5 | **Solar 3 → 2 panels** (if the power budget allows) | Power | ~<!-- BEGIN costing:ca-lever-solar -->$133<!-- END costing:ca-lever-solar --> | Easy | Available — computed (drop 1× 200W panel) |
 | 6 | **Valves / fittings value-engineering** | Water | ~<!-- BEGIN costing:ca-lever-valves-low -->$100<!-- END costing:ca-lever-valves-low -->–<!-- BEGIN costing:ca-lever-valves-high -->$200<!-- END costing:ca-lever-valves-high --> | Medium | Available |
 
-After the material decisions, the only still-**available** build-savings levers are **1 (container grade) + 5 (solar)** — together **~<!-- BEGIN costing:ca-savings-low -->$1,500<!-- END costing:ca-savings-low -->** off the <!-- BEGIN costing:ca-capital -->$25,615<!-- END costing:ca-capital --> capital build (**~<!-- BEGIN costing:ca-savings-pct-low -->6<!-- END costing:ca-savings-pct-low -->%**), plus ~$100–200 of valve value-engineering (#6). Everything else is settled: lever 2 **banked** (manual is the standard build), lever 3 **kept 304 SS** (decision), lever 4 **already 1×100 Ah**.
+After the material decisions, the only still-**available** build-savings levers are **1 (container grade) + 5 (solar)** — together **~<!-- BEGIN costing:ca-savings-low -->$1,500<!-- END costing:ca-savings-low -->** off the <!-- BEGIN costing:ca-capital -->$25,586<!-- END costing:ca-capital --> capital build (**~<!-- BEGIN costing:ca-savings-pct-low -->6<!-- END costing:ca-savings-pct-low -->%**), plus ~$100–200 of valve value-engineering (#6). Everything else is settled: lever 2 **banked** (manual is the standard build), lever 3 **kept 304 SS** (decision), lever 4 **already 1×100 Ah**.
 
 > **Derivation note.** Lever 1 (container grade), lever 5 (solar), and the roll-up total +
 > percentage are computed in `costing.py` — container is a true CW − WWT subtraction off the
@@ -107,7 +107,7 @@ versa. Worth keeping in view when prioritizing:
 
 - **Container shell** — already the cheapest large steel box; only the *grade* is a lever
   (#1).
-- **Light lock** — already the cheap custom option (<!-- BEGIN costing:ca-lightlock-mid -->$1,768<!-- END costing:ca-lightlock-mid --> mid vs $2,500–4,500 for a
+- **Light lock** — already the cheap custom option (<!-- BEGIN costing:ca-lightlock-mid -->$1,739<!-- END costing:ca-lightlock-mid --> mid vs $2,500–4,500 for a
   commercial darkroom door).
 - **Swing pivot, ventilation, optics** — small absolute spend; diminishing returns.
 - **IBC frame, pumps, filters** — load-bearing or commodity; little to cut safely.

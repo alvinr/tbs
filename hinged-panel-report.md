@@ -443,7 +443,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 |------|------|-----|----------|-----------|
 | 5mm UV-stabilized HDPE sheet (black) | Ø900 fixed housing shell — LT_HOUSING_T (rolled + extrusion-welded, ~7 m²) | 1 lot | TAP Plastics / Online Metals | $180–$280 |
 | 4mm black polypropylene sheet | Ø864 revolving drum shell + top/bottom caps — LT_DRUM_T (~7 m²) | 1 lot | TAP Plastics / Curbell | $150–$240 |
-| SKF 6215-2RS1 sealed bearing | Top and bottom (drum rotation). Ø75 bore × Ø130 OD × 25mm wide, C=52.7 kN, both-sides sealed. '2RS1' is SKF's both-sides-sealed suffix; the McMaster generic equivalent is listed as 6215-2RS (no SKF branding). | 2 ea | Bearing World / Applied | $110–$190 |
+| [SKF 6215-2RS1 sealed bearing](https://bearingsdirect.com/6215-2rs-ball-bearing-75x130x25-sealed-6215-2nse/) (6215-2RS) | Top and bottom (drum rotation). Ø75 bore × Ø130 OD × 25mm wide, C=52.7 kN, both-sides sealed (6215-2RS / 6215-2NSE; SKF designation 6215-2RS1). Buy the ABEC-1 grade: the drum is a hand-rotated, low-speed, low-load light-lock — the tighter ABEC-3 tolerance buys nothing here (SKF's standard 6215-2RS1 is Normal/P0 = ABEC 1). VERIFIED $60.59 ea at Bearings Direct 2026-07-18. ALT: McMaster 6138K125 @ $394.88 ea — a heavy commodity-bearing premium, prefer the distributor. | 2 ea | Bearings Direct / McMaster-Carr | $121 |
 | 75mm Ø × 150mm steel stub shaft | Bearing shafts | 2 ea | Steel service center | $30–$50 |
 | Felt/brush wiper strip + 12mm closed-cell neoprene | Drum↔housing rotating seal (opening edges + top/bottom rings) + drum top/bottom | 1 lot | McMaster-Carr | $40–$60 |
 | Silicone bead sealant (black, UV-stable) | Bearing housing seal | 1 ea | McMaster-Carr | $10–$15 |
@@ -451,7 +451,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Matte-black interior finish | Black-pigmented sheet (no etch-prime); scuff + flat-black touch-in at welds | 1 ea | Local fab | $40–$70 |
 | Stainless fasteners + nylon isolation washers | Steel shaft/bearing ↔ plastic shell joints (no galvanic couple) | 1 lot | McMaster-Carr | $30–$50 |
 | Plastic fabrication (roll 2 cylinders, hot-air / extrusion weld, fit, bearings) | 16–22 hrs labor | 1 lot | Local plastic fab | $800–$1,150 |
-| **Lightlock total** | | | | **$1,405–$2,130** |
+| **Lightlock total** | | | | **$1,416–$2,061** |
 <!-- END parts:lightlock -->
 
 
@@ -487,10 +487,10 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
 | Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,140<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,695<!-- END costing:hp-panel-high --> |
-| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$1,405<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$2,130<!-- END costing:hp-housing-high --> |
+| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$1,416<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$2,061<!-- END costing:hp-housing-high --> |
 | Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$520<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$880<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$3,484<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$5,304<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$3,495<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$5,235<!-- END costing:hp-total-high -->** |
 
 ---
 

@@ -221,6 +221,20 @@ def housing_surround_seal():
     return '\n'.join(parts)
 
 
+def _brush_bristles(z0, zlen, n=176):
+    """Thin near-black vertical bristle lines annotating a top/bottom strip-brush seal across
+    the door-frame width (Z=z0..z0+zlen), drawn on BOTH long faces of the 12mm strip — outer
+    face (X≈-32) and inner/panel face (X≈-20) — so the green seal strip reads as a brush the
+    panel edge sweeps through. n lines per face → 2n total."""
+    step = C_WID / n
+    out = []
+    for i in range(n):
+        y = step * (i + 0.5)
+        out.append(ruby_box("Brush bristle", -33, y, z0, 2, 2, zlen, color="#141414"))  # outer face
+        out.append(ruby_box("Brush bristle", -21, y, z0, 2, 2, zlen, color="#141414"))  # inner face
+    return out
+
+
 def door_frame(include_seal=True):
     """50×50×3 RHS welded frame lining the cargo-door opening at X≈0. Sits
     just exterior of the panel (X=-50..0); the EPDM gasket seals against it.
@@ -248,6 +262,7 @@ def door_frame(include_seal=True):
     lt, lz = 12, 110
     parts.append(ruby_box("Door Frame bottom brush seal", -20 - lt, 0, 0,
                           lt, C_WID, lz, color=C_SEAL))
+    parts.extend(_brush_bristles(40, 70))          # bristles rise to the panel bottom edge
     # Top BRUSH seal — the mirror of the bottom: a filament strip on the frame top rail
     # reaching to just below the panel top edge (Z=2270). It closes the panel-top↔frame gap
     # as a light-tight bristle wall the panel + drum-box top edge SWEEPS THROUGH as the panel
@@ -259,6 +274,7 @@ def door_frame(include_seal=True):
     th = C_HGT - tz0                       # up to the frame top / ceiling
     parts.append(ruby_box("Door Frame top brush seal", -20 - lt, 0, tz0,
                           lt, C_WID, th, color=C_SEAL))
+    parts.extend(_brush_bristles(2270, 70))        # bristles hang down to the panel top edge
 
     # ── Interface 2: drum-housing surround → frame EPDM ring (built by
     # housing_surround_seal()). It is bonded to the housing, so the transport

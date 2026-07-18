@@ -209,7 +209,6 @@ indicative low–high estimates — get quotes before ordering.
 | 25mm welded D-ring | 8 ea | McMaster-Carr | ibc-frame | $40–$70 |
 | 316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black | 1 ea | McMaster-Carr | panel | $20–$35 |
 | Axle saddle clamps ×8 (304 SS flat-bar stock) | 1 2 ft bar | McMaster-Carr | spray | $10 |
-| Cam-lever spring clamp | 90 ea | McMaster-Carr | clamp | $270–$720 |
 | Continuous (piano) hinge, 600 mm | 1 ea | McMaster-Carr | shelf | $20 |
 | Corridor panel mount hardware (brackets + fasteners) | 1 lot | Home Depot | water | $25–$50 |
 | Cushioned pipe clip | 16 ea | Amazon | water | $16–$32 |
@@ -224,7 +223,7 @@ indicative low–high estimates — get quotes before ordering.
 | M12×90mm hex through-bolt + nut + washers, SS | 28 ea | McMaster-Carr | film | $70 |
 | M5 SS Nylock nut | 180 ea | McMaster-Carr | clamp | $14 |
 | M5×16 mm CSK screws | 8 ea | McMaster-Carr | shelf | $4 |
-| M5×16 SS socket head bolt | 180 ea | McMaster-Carr | clamp | $45 |
+| M5×16 SS countersunk screw | 180 ea | McMaster-Carr | clamp | $45 |
 | M6 bolt+nut+washer set, SS (panel mount) | 4 set | McMaster-Carr | electrical | $5 |
 | M6 SS hex bolt + nut | 1 ea | McMaster-Carr | spray | $1 |
 | M6 SS hex bolts + flange nuts | 12 ea | McMaster-Carr | tray | $12 |
@@ -233,6 +232,7 @@ indicative low–high estimates — get quotes before ordering.
 | M8 wall bolts + washers/nuts | 12 ea | McMaster-Carr | shelf | $12 |
 | M8×25mm knurled thumbscrew DIN 464 | 12 ea | Amazon | film | $36 |
 | Misc. conversion hardware | 1 lot | Home Depot | interior | $80–$130 |
+| Muslin spring clip | 90 ea | McMaster-Carr | clamp | $270–$720 |
 | Nylon zip ties, 200mm | 6 ea | Amazon | spray | $1 |
 | Pivot pin SS316 | 4 ea | McMaster-Carr | film | $32 |
 | Ratchet straps, 25mm | 2 ea | Home Depot | ventilation | $12 |

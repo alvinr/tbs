@@ -2062,7 +2062,7 @@ def sheet9():
     title_block(ax_tb, "SHEET 9 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Frame + ACM ↔ U-joint ↔ X (swing) slide — corner connection detail",
-                scale_note="Not to scale",
+                scale_note="TO SCALE — SEE PANELS",
                 doc_id="TBS-FM01 · Film Plane Mechanism", height=0.75)
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet9.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
@@ -2106,7 +2106,7 @@ def sheet8():
     title_block(ax_tb, "SHEET 8 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Frame-corner ↔ cross-slide attachment — how the film frame hangs off the two slides through the U-joint",
-                scale_note="DIMS IN mm · SCHEMATIC",
+                scale_note="Proportional (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.75)
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet8.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)

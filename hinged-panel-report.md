@@ -25,7 +25,7 @@ time without opening the panel or breaking the light seal. In case of emergency,
 - Single-person mode conversion (~5 minutes)
 
 <!-- brochure:skip -->
-**Interactive 3D model** — the revolving light-trap drum, hinged stepped panel, Ø89 swing pivot, fixed door frame (with the bottom seal lip), and Fan B. Drag to orbit, scroll to zoom.
+**Interactive 3D model** — the revolving light-trap drum, hinged stepped panel, Ø89 swing pivot, fixed door frame (with the bottom brush seal), and Fan B. Drag to orbit, scroll to zoom.
 
 <div class="sketchfab-embed-wrapper">
   <div style="position:relative;width:100%;padding-bottom:56.25%;">
@@ -68,12 +68,15 @@ flush-faced panels that seal against the fixed door frame.
 | Frame perimeter | Welded corners, mitered joints |
 | Panel weight (full panel: skins + Ø900 housing + B2 bay, excl. drum) | ~171 kg (first-principles: 125 kg framed skins + 22 kg housing + 25 kg B2 bay). The 4mm-PP-skin swap cut ~72 kg vs the 18mm-ply build. See §2.4–2.5 for the movable breakdown + trade study |
 
-### 2.3 EPDM Perimeter Seal
+### 2.3 Perimeter Seals
 
-A 20mm closed-cell EPDM compression gasket runs the full perimeter of the panel,
-seated in an extruded aluminum channel. The gasket compresses against a fixed welded
-door frame (50 × 50 × 3mm RHS) when the four cam latches engage. The seal
-provides light-tight compression on all four sides.
+A 20mm closed-cell EPDM compression gasket runs the two **vertical** edges of the panel,
+seated in an extruded aluminum channel, and compresses against the fixed welded door
+frame (50 × 50 × 3mm RHS) when the four cam latches engage. The **top and bottom** edges
+are **nylon strip-brush** light seals instead (§6, paths #3/#4): because the panel edge
+**sweeps sideways** through the seal as it swings, a brush passes the edge through cleanly
+where a compression EPDM would drag and deform. Together they give a light-tight seal on
+all four sides.
 
 A **second** 20mm EPDM gasket — the **housing-surround seal** — runs as a ring around
 the Ø900 light-trap housing aperture. Because the housing is **fixed** (only the drum
@@ -104,7 +107,7 @@ is slightly lower than the whole-panel figure carried in the
 | **C · Drum** | PP C-shell + caps + Ø75 shafts + 2× SKF 6215 + stiffeners + grab rail | Ø864×4mm | 37.8 |
 | **D · Bay** | B2 punch-out bay walls | 4mm PP, 4-wall tube 0.89m deep | 24.9 |
 | **E · Cage** | Drum support cage frame | ~25×25×3 angle, 16.1m box | 16.1 |
-| **F · Seals** | Perimeter + housing EPDM + drum wipers | 20mm foam + felt/brush | 2.7 |
+| **F · Seals** | Vertical perimeter + housing EPDM + top/bottom strip brush + drum wipers | 20mm foam + strip/felt brush | 2.7 |
 | **G · Latches** | Cam latches (4) | ~0.5 kg each | 2.0 |
 | **H · Pivot (rotating)** | Thrust/journal bearings + collar/hub | carries leaf at pivot | 13.0 |
 | | **MOVABLE TOTAL (carried-rotating)** | | **≈226** |
@@ -315,7 +318,7 @@ near-deck section lift out** before the swing; all are re-seated to datum afterw
 
 | State | Method |
 |-------|--------|
-| Operational (0°) | 4 × interior cam latches (§4) compress the EPDM perimeter + cut seals against the door frame |
+| Operational (0°) | 4 × interior cam latches (§4) compress the EPDM **vertical** perimeter + cut seals against the door frame; the top + bottom **strip-brush** seals are passive (always engaged, no compression) |
 | Transport (swung <!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->°) | Top + bottom **wall stays** — hook welded to the **swinging panel's left perimeter 50×50×3 RHS stile** (the steel frame member at the swing cut) ↔ eye on the near wall, tensioned by turnbuckle, forming a couple. Engaged after the swing, released before swing-back. |
 
 > **Stay hooks land on steel, not the skin.** The transport-stay couple carries real tension, so both hooks weld to the **left perimeter RHS stile** of the swinging frame — *not* the 4mm PP plastic skin (rev11). They were relocated from the mid-corner (Yd≈350), which the plastic-skin swap left unbacked above the plywood band; the perimeter stile is the farthest point from the pivot (best lever arm) and a continuous welded steel load path into the frame.
@@ -332,14 +335,14 @@ tray basin — and over the Z115 door-end walkway brackets — rather than colli
 them. The swing (about a vertical pivot, so the bottom edge stays at Z=130 throughout)
 is what makes the deep Ø900 housing transport-feasible without a slide; a floor-mounted
 housing would have fouled the tray. The 130mm floor gap is closed in the operational
-position by the continuous bottom seal lip (§6).
+position by the continuous bottom brush seal (§6).
 
-The 130mm gap would otherwise be a straight light path, so it is light-sealed in the
-operational position by the fixed-frame bottom seal lip described in §6 — a threshold
-upstand the panel bottom edge recedes into, with an EPDM strip compressed by the lower
-cam latches. Because the seal is a non-floor compression seal against a frame lip (not
-a contact seal to the floor), it never fouls the tray rim and lifts clear the moment
-the latches are released for the swing.
+The 130mm gap would otherwise be a straight light path, so it is light-sealed by the
+fixed-frame **bottom brush seal** described in §6 — a threshold-mounted nylon-filament
+strip brush whose bristles the panel bottom edge sweeps through. Because it is a brush
+(neither a floor-contact seal nor a compression EPDM), it never fouls the tray rim, seals
+continuously without cam-latch compression, and the panel edge passes through it cleanly
+on the swing.
 
 ### 5.4 Transport Conversion Sequence
 
@@ -381,10 +384,10 @@ position. Five light ingress paths are sealed:
 
 | # | Light path | Seal method |
 |---|-----------|-------------|
-| 1 | Panel perimeter → door frame | 20mm EPDM gasket in an aluminum channel, compressed by the 4 × Southco C2-33 cam latches against the fixed door frame at X=0 |
+| 1 | Panel perimeter (left/right) → door frame | 20mm EPDM gasket in an aluminum channel down each **vertical** edge, compressed by the 4 × Southco C2-33 cam latches against the fixed door frame at X=0. (The **top + bottom** edges are strip-brush seals — paths #3/#4 — not compression EPDM.) |
 | 2 | Swing cuts → fixed strips | The swinging center+corners separate from the two FIXED strips (near Yd0–180, far Yd2287–2362, which carries the pivot) along vertical cuts. A 20mm EPDM **cut seal** runs the full panel height down each cut, compressed by the cam latches when the panel is latched at the door plane. Replaces the old sliding-carriage beam/guide-slot brush seals. (Sheet 3, Detail D.) |
-| 3 | Panel bottom → 130mm floor gap | Fixed-frame **bottom seal lip** — a continuous steel upstand welded to the threshold, rising above the panel bottom edge (Z=130) across the **full panel-bottom width, continuous (no notch)** — the housing/drum ride at Z=130 and never reach the floor, so the gap is uniform and the lip closes it as a solid wall; a 20mm EPDM strip on the panel bottom edge **recedes into / sandwiches against the lip**, compressed by the lower pair of Southco cam latches in the operational ("camera") position. The latches release to lift the seal before the swing. (Sheet 3, Detail B.) |
-| 4 | Panel top → frame gap | Fixed-frame **top seal lip** — the mirror of #3: a steel downstand from the frame top rail reaching ~30mm below the panel top edge. The drum stub shaft stops below the lip, so this lip runs as **one continuous member across the full panel-top width — no notch — meeting across the center**. A 20mm EPDM strip on the panel top edge sandwiches against it, compressed by the upper pair of cam latches in the operational position; released before the swing. (Sheet 3, Detail C.) |
+| 3 | Panel bottom → 130mm floor gap | Fixed-frame **bottom brush seal** — a continuous nylon-filament strip brush in an aluminum holder on the threshold, its bristles rising above the panel bottom edge (Z=130) across the **full panel-bottom width, continuous (no notch)** — the housing/drum ride at Z=130 and never reach the floor, so the gap is uniform and the bristle wall closes it light-tight. The panel bottom edge **sweeps through the bristles** as the panel swings — so this edge is a **brush, not a compression seal** (a compression EPDM would drag and deform under the sideways sweep; a brush passes the edge through cleanly — the same principle as the drum-opening brush seals). The bristle density is the seal; no cam-latch compression on this edge. (Sheet 3, Detail B.) |
+| 4 | Panel top → frame gap | Fixed-frame **top brush seal** — the mirror of #3: a nylon-filament strip brush in a holder on the frame top rail, its bristles reaching ~30mm below the panel top edge. The drum stub shaft stops below it, so the brush runs as **one continuous member across the full panel-top width — no notch — meeting across the center**. The panel + drum-box top edge **sweeps through the bristles** as the panel swings — a deliberate ~30mm bristle overlap in the closed position, **not a clash**. No cam-latch compression on this edge; the bristles are the seal. (Sheet 3, Detail C.) |
 | 5 | Housing surround → door frame | The Ø900 light-trap housing carries the revolving drum and swings with the panel. A **second 20mm EPDM gasket** rings the housing aperture (floor gap up to the housing top at Z=2250), concentric **inboard** of the panel-perimeter seal (#1), seated in the door plane. In the closed position it seals the housing surround to the frame all the way around the opening — light-tight. (3D: the `door_frame()` "Housing surround seal", in both the light-trap and overview models.) |
 
 **Seal verification:** After mode conversion, the operator performs a 5-minute
@@ -402,11 +405,11 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 |-----------|-------|
 | Material | 50 × 50 × 3mm RHS mild steel |
 | Position | X=0 (container end wall inner face) |
-| Function | EPDM seal landing for the swinging panel perimeter + cut seals + housing surround |
+| Function | Seal landing for the swinging-panel **vertical** perimeter + cut seals + housing-surround EPDM, plus the **top + bottom strip-brush** light seals |
 | Attachment | Welded to container end wall structural members |
 | Cut-seal landings | 2 × vertical EPDM landings (the swing cuts between the swinging panel and the fixed strips) |
-| Bottom seal lip | Continuous 3mm steel upstand welded to the threshold, **full panel-bottom width (no notch — drum rides at Z=130)** — the EPDM bottom seal compresses against it (see §6 path #3) |
-| Top seal lip | Mirror of the bottom: continuous 3mm steel downstand from the frame top rail, reaching ~30mm below the panel top edge, full panel-top width and **continuous across the center** (the drum does not reach the top, so no notch) — the EPDM top seal compresses against it (see §6 path #4) |
+| Bottom brush seal | Continuous nylon-filament **strip brush** in an aluminum holder on the threshold, **full panel-bottom width (no notch — drum rides at Z=130)** — the panel bottom edge sweeps through the bristles (see §6 path #3) |
+| Top brush seal | Mirror of the bottom: continuous nylon-filament **strip brush** in a holder on the frame top rail, bristles reaching ~30mm below the panel top edge, full panel-top width and **continuous across the center** (the drum does not reach the top, so no notch) — the panel + drum-box top edge sweeps through the bristles (see §6 path #4) |
 
 ---
 
@@ -440,7 +443,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 |------|------|-----|----------|-----------|
 | 5mm UV-stabilized HDPE sheet (black) | Ø900 fixed housing shell — LT_HOUSING_T (rolled + extrusion-welded, ~7 m²) | 1 lot | TAP Plastics / Online Metals | $180–$280 |
 | 4mm black polypropylene sheet | Ø864 revolving drum shell + top/bottom caps — LT_DRUM_T (~7 m²) | 1 lot | TAP Plastics / Curbell | $150–$240 |
-| SKF 6215-2RS1 sealed bearing | Top and bottom (drum rotation) | 2 ea | Bearing World / Applied | $110–$190 |
+| SKF 6215-2RS1 sealed bearing | Top and bottom (drum rotation). Ø75 bore × Ø130 OD × 25mm wide, C=52.7 kN, both-sides sealed. '2RS1' is SKF's both-sides-sealed suffix; the McMaster generic equivalent is listed as 6215-2RS (no SKF branding). | 2 ea | Bearing World / Applied | $110–$190 |
 | 75mm Ø × 150mm steel stub shaft | Bearing shafts | 2 ea | Steel service center | $30–$50 |
 | Felt/brush wiper strip + 12mm closed-cell neoprene | Drum↔housing rotating seal (opening edges + top/bottom rings) + drum top/bottom | 1 lot | McMaster-Carr | $40–$60 |
 | Silicone bead sealant (black, UV-stable) | Bearing housing seal | 1 ea | McMaster-Carr | $10–$15 |
@@ -473,9 +476,9 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame members | 3 ea | Metal Supermarkets | $90–$120 |
-| 3mm steel plate/angle (~110mm × ~4 m) | Top + bottom seal lips — threshold upstand + frame-top downstand; seal paths #3–#4 | 1 lot | Metal Supermarkets | $45–$80 |
+| [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | Top + bottom door-frame light seals (paths #3–#4) — 2× McMaster 74405T12 nylon Tight-Seal Strip Brush (8 ft, 1" overall height, $28.88 ea) in 2× McMaster 8813T53 aluminum holder channel (8 ft, $35.37 ea) = $128.50 firm; covers full panel width top + bottom (~2× C_WID ≈ 4.7 m ≈ 15.5 ft, from 4× 8 ft lengths). The swinging panel edge SWEEPS THROUGH the bristles, so a brush (not a compression EPDM, which would drag under the sideways sweep) — same principle as the drum-opening brush seals. | 1 lot | McMaster-Carr | $129 |
 | Welding / fabrication | Frame assembly + wall attachment | 1 lot | Local fab | $200–$350 |
-| **Door total** | | | | **$335–$550** |
+| **Door total** | | | | **$419–$599** |
 <!-- END parts:door -->
 
 
@@ -486,8 +489,8 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,140<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,695<!-- END costing:hp-panel-high --> |
 | Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$1,405<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$2,130<!-- END costing:hp-housing-high --> |
 | Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$520<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$880<!-- END costing:hp-swing-high --> |
-| Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$335<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$550<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$3,400<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$5,255<!-- END costing:hp-total-high -->** |
+| Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$3,484<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$5,304<!-- END costing:hp-total-high -->** |
 
 ---
 

@@ -24,6 +24,17 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Light-trap door top/bottom seals → strip brush** — the two horizontal door-frame seals the
+  swinging panel edge *sweeps across* were changed from a steel seal-lip + EPDM compression to a
+  **nylon-filament strip brush** (McMaster 74405T12 brush in an 8813T53 holder): a compression seal
+  drags under the sideways sweep, a brush passes the edge through cleanly (same principle as the
+  drum-opening brush seals). The panel/drum-box top edge's deliberate ~30mm overlap is now recorded
+  as intended bristle engagement, **not** a clash. Cascaded across the light-trap 3D model (seals
+  recolored for clarity — medium green = brush, dark green = the EPDM that stays on the verticals /
+  cut seals / housing surround), `hinged-panel-report.md` §2.3/§5/§6/§7, `parts.py`, and `costing.py`
+  (door §6b +$65/$92/$120). Also landed in the light-trap model: the **removable left film rail is now
+  a Panel-Swing DC child** that hides in the transport (swung) position so it can't clash the drum
+  surround, and the **SKF 6215 drum bearing width corrected to 25mm** (was drawn 45mm).
 - **Film-plane active height FP_H 2138 → 2094mm** — the film-plane top rail was lowered 44mm
   (to raise the top carriage/fittings 25mm clear of the ceiling), dropping the active image top edge
   the same 44mm: active plane 4499×2138 → 4499×2094mm, area 104 → 101 sq ft (9.62 → 9.42 m²).

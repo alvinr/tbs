@@ -11,7 +11,7 @@ LEFT edge forward (toward the pinhole wall) and the RIGHT edge back. The DC is k
 deliberately simple — a single top-level RotZ swing (no tilt). A pure swing never
 changes Z, so the bottom edge stays at rail height and the plane can't drop through
 the floor; the corners travel along the rails in depth. The per-corner carriages +
-rod-ends travel WITH the plane; the HGR20 rails + leadscrews stay fixed.
+U-joints travel WITH the plane; the 304 U-channel rails stay fixed.
 
 The FULL chain — tilt AND swing plus the X-Z cross-slides that absorb the arc travel
 — is shown statically (with labels) in the non-interactive "Corner detail (TR)" scene,
@@ -100,7 +100,7 @@ def context():
 
 # ── Dynamic Component: the rigid plane + travelling corner hardware ──────────
 def dc_geometry_local():
-    """Frame + muslin screen + per-corner carriage/drive-nut/rod-end, built FLAT in
+    """Frame + muslin screen + per-corner skate + U-joint + 304 SS corner plate, built FLAT in
     LOCAL coords about the plane centre. The DC rotates this rigidly (RotX=tilt,
     RotZ=swing) so the plane AND its corner hardware travel together on click.
 
@@ -115,13 +115,12 @@ def dc_geometry_local():
     for a, b, nm in [("TL", "TR", "Top"), ("BR", "BL", "Bottom"),
                      ("TL", "BL", "Left"), ("TR", "BR", "Right")]:
         parts.append(ov.ruby_pipe(f"FP Frame {nm}", P[a], P[b], leg, color=ov.C_STEEL))
-    # travelling corner hardware (carriage + drive nut + rod-end), flat = on rails
+    # travelling corner hardware (current design): acetal-skate carriage + U-joint + 304 SS corner
+    # plate at each corner, flat = on the rails (no drive nut — push-to-pose)
     for cid, (lx, ly, lz) in LOCAL.items():
-        parts.append(ov.ruby_box(f"Carriage {cid} (HGH20CA)",
-                     lx - 26, -32, lz - 12, 52, 64, 24, color=ov.C_CARR))
-        parts.append(ov.ruby_box(f"Drive Nut {cid}",
-                     lx + 20, -14, lz - 13, 28, 28, 26, color=ov.C_CARR))
-        parts.append(joint_ball(f"Rod-End {cid}", (lx, 0, lz), 16, ov.C_STEEL))
+        parts.append(ov.ruby_box(f"Acetal skate carriage {cid}", lx - 24, -32, lz - 12, 48, 64, 24, color=ov.C_CARR))
+        parts.append(ov.ruby_box(f"U-joint {cid} (USKC12-6-6-SS)", lx - 11, -11, lz - 11, 22, 22, 22, color=ov.C_STEEL))
+        parts.append(ov.ruby_box(f"304 SS corner plate {cid}", lx - 17, 4, lz - 20, 34, 6, 40, color=ov.C_STEEL))
     return '\n'.join(parts)
 
 
@@ -192,23 +191,64 @@ def near_wall_ghost():
 
 
 def static_rails():
-    """The FIXED guides: 4 HGR20 rails + leadscrews along depth (Yd). The carriages
-    (in the DC) run along these. The RAILS now span the full width saddle-to-saddle
-    (Yd 0 → C_WID) so each end lands on its wall-seat saddle with no gap; the leadscrew
-    (the drive) stays within the carriage-travel band (FP_Y_MIN..+RAIL_LEN)."""
+    """The FIXED guides: 4 304 U-CHANNEL depth rails (Yd) — bottom pair 4×2 web-vertical (weight),
+    top pair 3×1.5 flat (guide) — spanning the full width saddle-to-saddle (Yd 0 → C_WID). The
+    acetal-skate carriages run along them; there is no leadscrew (push-to-pose + cam clamp)."""
     parts = []
-    y0, rlen = ov.FP_Y_MIN, ov.RAIL_LEN              # leadscrew / carriage travel band
+    RT = 6                                            # 3/16" wall
     for cid, (cxr, czr) in RAILS.items():
-        parts.append(ov.ruby_box(f"HGR20 Rail {cid}",
-                     cxr - 12, 0, czr - 8, 24, ov.C_WID, 16, color=ov.C_RAIL))  # saddle→saddle
-        parts.append(ov.ruby_pipe(f"Leadscrew {cid}",
-                     (cxr + 34, y0, czr), (cxr + 34, y0 + rlen, czr), 7,
-                     color=ov.C_STEEL))
+        RW, RD = (50, 100) if czr < CZ else (76, 38)  # bottom 4×2 (web-vert) / top 3×1.5 (flat)
+        parts.append(ov.ruby_box(f"U-channel rail {cid} web",       cxr - RW/2, 0, czr + RD/2 - RT, RW, ov.C_WID, RT, color=ov.C_RAIL))
+        parts.append(ov.ruby_box(f"U-channel rail {cid} flange -X", cxr - RW/2, 0, czr - RD/2, RT, ov.C_WID, RD, color=ov.C_RAIL))
+        parts.append(ov.ruby_box(f"U-channel rail {cid} flange +X", cxr + RW/2 - RT, 0, czr - RD/2, RT, ov.C_WID, RD, color=ov.C_RAIL))
     return '\n'.join(parts)
 
 
 # ── Static, labeled corner-detail (the cross-slide story a DC can't animate) ──
 CORNER_SLIDE_TRAVEL = -400      # carriage slide along the rail on click (-Y, toward the near end)
+
+# colours for the built-out corner mechanism
+C_ACET = "#EDE9DC"              # acetal skate wheels
+C_CLAMP = "#B0402A"            # cam clamp (burnt orange)
+
+
+def _corner_parts(tag, fx, fz, px, py, pz):
+    """The CURRENT corner mechanism, built out, from the flat rail point (fx,fz) to the corner
+    (px,py,pz) — pass (fx, cy, fz) for a FLAT diagram (dx=dz=0). Returns three lists:
+      rail     — fixed 3×1.5 304 U-CHANNEL depth rail (opening down); no leadscrew
+      carriage — acetal skate (2× Ø32 wheels + Ø10 axles) + carriage plate + Z (TILT) 316 flat-bar slide;
+                 rides the rail in Y
+      slider   — X (SWING) 316 flat-bar slide + cam clamp + input stub + 4040N12 support + U-joint
+                 (USKC12-6-6-SS) + output stub + 304 SS corner plate; floats to the corner
+    Load path film→rail: corner plate → U-joint → X slide → Z slide → carriage plate → acetal skate → rail."""
+    y0, rlen = ov.FP_Y_MIN, ov.RAIL_LEN
+    dx, dz = px - fx, pz - fz
+    x0, z0 = min(fx, px), min(fz, pz)
+    RW, RD, RT = 76, 38, 6                       # 3×1.5 channel: web(X) × flange(Z) × 3/16" wall
+    thr = fz - 2                                  # wheel centre, in the channel throat
+    rail = [
+        ov.ruby_box(f"U-channel rail {tag} web",       fx - RW/2, y0, fz + RD/2 - RT, RW, rlen, RT, color=ov.C_RAIL),
+        ov.ruby_box(f"U-channel rail {tag} flange -X",  fx - RW/2, y0, fz - RD/2, RT, rlen, RD, color=ov.C_RAIL),
+        ov.ruby_box(f"U-channel rail {tag} flange +X",  fx + RW/2 - RT, y0, fz - RD/2, RT, rlen, RD, color=ov.C_RAIL),
+    ]
+    carriage = [
+        ov.ruby_pipe(f"Acetal wheel Ø32 {tag} A", (fx - 14, py - 26, thr), (fx + 14, py - 26, thr), 16, color=C_ACET),
+        ov.ruby_pipe(f"Acetal wheel Ø32 {tag} B", (fx - 14, py + 26, thr), (fx + 14, py + 26, thr), 16, color=C_ACET),
+        ov.ruby_pipe(f"Skate axle Ø10 {tag} A", (fx, py - 26, thr), (fx + 40, py - 26, thr), 5, color=ov.C_STEEL),
+        ov.ruby_pipe(f"Skate axle Ø10 {tag} B", (fx, py + 26, thr), (fx + 40, py + 26, thr), 5, color=ov.C_STEEL),
+        ov.ruby_box(f"Carriage plate {tag}", fx + 34, py - 34, fz - RD/2 - 6, 14, 68, 44, color=ov.C_CARR),
+        ov.ruby_box(f"Z slide {tag} (TILT — 316 flat bar + UHMW)", fx - 8, py - 15, z0, 16, 30, abs(dz) + 34, color=C_ZSL),
+    ]
+    slider = [
+        ov.ruby_box(f"X slide {tag} (SWING — 316 flat bar + UHMW)", x0, py - 14, pz - 7, abs(dx) + 34, 28, 14, color=C_XSL),
+        ov.ruby_box(f"Cam clamp {tag}", x0 - 14, py - 8, pz - 6, 14, 16, 18, color=C_CLAMP),
+        ov.ruby_pipe(f"Input stub 3/8 {tag}", (px + 26, py, pz), (px + 2, py, pz), 5, color=ov.C_STEEL),
+        ov.ruby_box(f"4040N12 shaft support {tag}", px + 22, py - 9, pz - 11, 16, 18, 22, color=ov.C_STEEL),
+        ov.ruby_box(f"U-joint {tag} (USKC12-6-6-SS)", px - 11, py - 11, pz - 11, 22, 22, 22, color=ov.C_STEEL),
+        ov.ruby_pipe(f"Output stub 3/8 {tag}", (px, py, pz), (px, py + 24, pz), 5, color=ov.C_STEEL),
+        ov.ruby_box(f"304 SS corner plate {tag}", px - 17, py + 22, pz - 20, 34, 6, 40, color=ov.C_STEEL),
+    ]
+    return rail, carriage, slider
 
 
 def corner_detail(ox=0):
@@ -224,29 +264,10 @@ def corner_detail(ox=0):
     fx, fz = CX + lx + ox, cz + lz            # flat rail point (offset in X for layout)
     d = _pose((lx, ly, lz)); px, py, pz = CX + d[0] + ox, CY + d[1], cz + d[2]
     dx, dz = px - fx, pz - fz
-    y0, rlen = ov.FP_Y_MIN, ov.RAIL_LEN
-    # ── fixed guide (static) ──
-    static = [
-        ov.ruby_box("Detail Rail TR", fx - 12, y0, fz - 8, 24, rlen, 16, color=ov.C_RAIL),
-        ov.ruby_pipe("Detail Leadscrew TR", (fx + 34, y0, fz), (fx + 34, y0 + rlen, fz),
-                     7, color=ov.C_STEEL),
-    ]
-    # ── moving carriage assembly (the DC — slides along the rail in Y on click) ──
-    x0 = min(fx, px) - 16
-    z0 = min(fz, pz) - 16
-    slide = [
-        ov.ruby_box("Detail Carriage TR", fx - 26, py - 32, fz - 18, 52, 64, 24, color=ov.C_CARR),
-        ov.ruby_box("Detail Drive Nut TR", fx + 20, py - 14, fz - 12, 28, 28, 26, color=ov.C_CARR),
-        ov.ruby_box("Detail X cross-slide TR (SWING)", x0, py - 16, fz + 6,
-                    abs(dx) + 32, 32, 14, color=C_XSL),
-        ov.ruby_box("Detail X slider TR", px - 16, py - 20, fz + 4, 32, 40, 20, color=ov.C_CARR),
-        ov.ruby_box("Detail Z cross-slide TR (TILT)", px - 9, py - 15, z0, 18, 30,
-                    abs(dz) + 32, color=C_ZSL),
-        ov.ruby_box("Detail Z slider TR", px - 13, py - 18, pz - 16, 26, 36, 32, color=ov.C_CARR),
-        joint_ball("Detail Rod-End TR", (px, py, pz), 17, ov.C_STEEL),
-        joint_ball("Detail Flat-corner ghost TR", (fx, py, fz), 13, C_GHOST),
-    ]
-    return '\n'.join(static), '\n'.join(slide), (px, py, pz), (fx, fz)
+    # built-out current mechanism (shared helper): static = U-channel rail; slide = carriage + slider
+    rail, carriage, slider = _corner_parts("Detail TR", fx, fz, px, py, pz)
+    slide = carriage + slider + [joint_ball("Detail Flat-corner ghost TR", (fx, py, fz), 13, C_GHOST)]
+    return '\n'.join(rail), '\n'.join(slide), (px, py, pz), (fx, fz)
 
 
 def corner_slide_block(slide_ruby, anchor):
@@ -332,30 +353,15 @@ def corner_swing_detail(ox):
     lx, ly, lz = LOCAL["TR"]
     fx, fz = CX + lx + ox, CZ + lz            # flat rail point (offset −X), top-rail height
     cy = CY                                    # flat depth (on the rail)
-    y0, rlen = ov.FP_Y_MIN, ov.RAIL_LEN
-    # fixed guide
-    static = [
-        ov.ruby_box("Swing Rail TR", fx - 12, y0, fz - 8, 24, rlen, 16, color=ov.C_RAIL),
-        ov.ruby_pipe("Swing Leadscrew TR", (fx + 34, y0, fz), (fx + 34, y0 + rlen, fz), 7, color=ov.C_STEEL),
-    ]
-    # parent — carriage rides the rail (moves in Y); carries the X cross-slide channel
-    parent = [
-        ov.ruby_box("Swing Carriage TR", fx - 26, cy - 32, fz - 18, 52, 64, 24, color=ov.C_CARR),
-        ov.ruby_box("Swing Drive Nut TR", fx + 20, cy - 14, fz - 12, 28, 28, 26, color=ov.C_CARR),
-        ov.ruby_box("Swing X cross-slide TR (SWING float)", fx - 100, cy - 16, fz + 6, 130, 32, 14, color=C_XSL),
-    ]
-    # child — the slider floats in X (cross-slide); carries the Z stub + rod-end
-    child = [
-        ov.ruby_box("Swing X slider TR", fx - 16, cy - 20, fz + 4, 32, 40, 20, color=ov.C_CARR),
-        ov.ruby_box("Swing Z cross-slide TR", fx - 9, cy - 15, fz - 9, 18, 30, 50, color=C_ZSL),
-        ov.ruby_box("Swing Z slider TR", fx - 13, cy - 18, fz - 16, 26, 36, 32, color=ov.C_CARR),
-        joint_ball("Swing Rod-End TR", (fx, cy, fz), 17, ov.C_STEEL),
-    ]
+    # built FLAT (corner = rail point): rail static; carriage rides the rail in Y; slider floats in X
+    rail, carriage, slider = _corner_parts("Swing TR", fx, fz, fx, cy, fz)
+    static = rail
+    parent = carriage
     # partial film-plane ghost at the corner (flat, extends toward TL/-X and BR/-Z), nested in
     # the float child so it rides the corner along the arc — same faint look as the other two.
     pl = 1100
     leg = ov.FP_ANGLE_LEG / 2
-    child += [
+    child = slider + [
         ov.ruby_box("Swing Plane (partial ghost)", fx - pl, cy - 6, fz - pl, pl, 12, pl, color=ov.C_FILM, alpha=0.16),
         ov.ruby_pipe("Swing FP Frame (top)", (fx, cy, fz), (fx - pl, cy, fz), leg, color=ov.C_STEEL, alpha=0.35),
         ov.ruby_pipe("Swing FP Frame (right)", (fx, cy, fz), (fx, cy, fz - pl), leg, color=ov.C_STEEL, alpha=0.35),
@@ -426,22 +432,9 @@ def corner_static_labeled(ox):
     lx, ly, lz = LOCAL["TR"]
     fx, fz = CX + lx + ox, cz + lz
     d = _pose((lx, ly, lz)); px, py, pz = CX + d[0] + ox, CY + d[1], cz + d[2]
-    dx, dz = px - fx, pz - fz
-    x0 = min(fx, px) - 16
-    z0 = min(fz, pz) - 16
-    y0, rlen = ov.FP_Y_MIN, ov.RAIL_LEN
-    parts = [
-        ov.ruby_box("Static Rail TR", fx - 12, y0, fz - 8, 24, rlen, 16, color=ov.C_RAIL),
-        ov.ruby_pipe("Static Leadscrew TR", (fx + 34, y0, fz), (fx + 34, y0 + rlen, fz), 7, color=ov.C_STEEL),
-        ov.ruby_box("Static Carriage TR", fx - 26, py - 32, fz - 18, 52, 64, 24, color=ov.C_CARR),
-        ov.ruby_box("Static Drive Nut TR", fx + 20, py - 14, fz - 12, 28, 28, 26, color=ov.C_CARR),
-        ov.ruby_box("Static X cross-slide TR (SWING)", x0, py - 16, fz + 6, abs(dx) + 32, 32, 14, color=C_XSL),
-        ov.ruby_box("Static X slider TR", px - 16, py - 20, fz + 4, 32, 40, 20, color=ov.C_CARR),
-        ov.ruby_box("Static Z cross-slide TR (TILT)", px - 9, py - 15, z0, 18, 30, abs(dz) + 32, color=C_ZSL),
-        ov.ruby_box("Static Z slider TR", px - 13, py - 18, pz - 16, 26, 36, 32, color=ov.C_CARR),
-        joint_ball("Static Rod-End TR", (px, py, pz), 17, ov.C_STEEL),
-        joint_ball("Static Flat-corner ghost TR", (fx, py, fz), 13, C_GHOST),
-    ]
+    # built-out current mechanism (shared helper), all static/posed — the labelled reference
+    rail, carriage, slider = _corner_parts("Static TR", fx, fz, px, py, pz)
+    parts = rail + carriage + slider + [joint_ball("Static Flat-corner ghost TR", (fx, py, fz), 13, C_GHOST)]
     return '\n'.join(parts), (px, py, pz), (fx, fz)
 
 
@@ -453,12 +446,9 @@ def corner_rotate_plane(ox):
     lx, ly, lz = LOCAL["TR"]
     fx, fz = CX + lx + ox, CZ + lz
     cy = CY
-    y0, rlen = ov.FP_Y_MIN, ov.RAIL_LEN
-    rail = [
-        ov.ruby_box("Rotate Rail TR", fx - 12, y0, fz - 8, 24, rlen, 16, color=ov.C_RAIL),
-        ov.ruby_box("Rotate Carriage TR", fx - 26, cy - 32, fz - 18, 52, 64, 24, color=ov.C_CARR),
-        joint_ball("Rotate Rod-End TR", (fx, cy, fz), 16, ov.C_STEEL),
-    ]
+    # built-out current mechanism (shared helper), flat (corner = rail point) — static; the plane rotates
+    r, carriage, slider = _corner_parts("Rotate TR", fx, fz, fx, cy, fz)
+    rail = r + carriage + slider
     t = 12
     plen = 1100
     leg = ov.FP_ANGLE_LEG / 2
@@ -547,15 +537,15 @@ def film_plane_labels():
 def labels_ruby(tr_world, flat_xz):
     px, py, pz = tr_world
     fx, fz = flat_xz
-    L = 10
+    L = 15
     notes = [
-        ("HGR20 rail - FIXED (depth guide)", (fx, py - 250, fz), (L, 0, 1.1 * L)),
-        ("Leadscrew - DEPTH / focus drive", (fx + 34, py - 700, fz), (0.4 * L, 0, 1.9 * L)),
-        ("Carriage + drive nut\n(click: slides on rail)", (fx - 20, py, fz - 12), (-1.0 * L, 0, -1.5 * L)),
-        ("X cross-slide = SWING float (blue)", ((fx + px) / 2, py, fz + 14), (-1.2 * L, 0, 0.4 * L)),
-        ("Z cross-slide = TILT float (green)", (px, py, (fz + pz) / 2), (1.7 * L, 0, -1.2 * L)),
-        ("Rod-end -> rigid frame corner", (px, py, pz), (1.7 * L, 0, 0.5 * L)),
-        ("ghost = corner if it stayed on rail", (fx, py, fz), (-1.7 * L, 0, 1.3 * L)),
+        ("3x1.5 304 U-channel rail - FIXED (depth guide)", (fx, py - 250, fz), (1.6 * L, 0, 1.4 * L)),
+        ("acetal skate (Ø32 wheels) + cam clamp\n(push to pose - no leadscrew)", (fx + 34, py - 700, fz), (0.1 * L, 0, 2.6 * L)),
+        ("carriage plate\n(click: slides on rail)", (fx - 20, py, fz - 12), (-1.7 * L, 0, -2.2 * L)),
+        ("X (SWING) slide = 316 flat bar (blue)", ((fx + px) / 2, py, fz + 14), (-2.4 * L, 0, 0.3 * L)),
+        ("Z (TILT) slide = 316 flat bar (green)", (px, py, (fz + pz) / 2), (1.9 * L, 0, -2.0 * L)),
+        ("U-joint (USKC12-6-6-SS) -> 304 SS corner plate -> frame", (px, py, pz), (2.6 * L, 0, 0.7 * L)),
+        ("ghost = corner if it stayed on rail", (fx, py, fz), (-2.2 * L, 0, 2.0 * L)),
     ]
     out = []
     for txt, anc, vec in notes:

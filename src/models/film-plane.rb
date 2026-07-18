@@ -239,103 +239,135 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # ═══ Corner Mechanism ═══
   defn = model.definitions.add("Corner Mechanism")
   ents = defn.entities
-  # HGR20 Rail TL
+  # U-channel rail TL web
   grp = ents.add_group
-  grp.name = "HGR20 Rail TL"
-  face = grp.entities.add_face([138.mm,0.mm,2280.mm], [162.mm,0.mm,2280.mm], [162.mm,2362.mm,2280.mm], [138.mm,2362.mm,2280.mm])
+  grp.name = "U-channel rail TL web"
+  face = grp.entities.add_face([112.mm,0.mm,2301.mm], [188.mm,0.mm,2301.mm], [188.mm,2362.mm,2301.mm], [112.mm,2362.mm,2301.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
+  face.pushpull(6.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Leadscrew TL
+  # U-channel rail TL flange -X
   grp = ents.add_group
-  grp.name = "Leadscrew TL"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 2200.mm, 0.mm)
-  circle = ge.add_circle([184.mm,100.mm,2288.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # HGR20 Rail TR
-  grp = ents.add_group
-  grp.name = "HGR20 Rail TR"
-  face = grp.entities.add_face([4637.mm,0.mm,2280.mm], [4661.mm,0.mm,2280.mm], [4661.mm,2362.mm,2280.mm], [4637.mm,2362.mm,2280.mm])
+  grp.name = "U-channel rail TL flange -X"
+  face = grp.entities.add_face([112.mm,0.mm,2269.mm], [118.mm,0.mm,2269.mm], [118.mm,2362.mm,2269.mm], [112.mm,2362.mm,2269.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
+  face.pushpull(38.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Leadscrew TR
+  # U-channel rail TL flange +X
   grp = ents.add_group
-  grp.name = "Leadscrew TR"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 2200.mm, 0.mm)
-  circle = ge.add_circle([4683.mm,100.mm,2288.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # HGR20 Rail BL
-  grp = ents.add_group
-  grp.name = "HGR20 Rail BL"
-  face = grp.entities.add_face([138.mm,0.mm,152.mm], [162.mm,0.mm,152.mm], [162.mm,2362.mm,152.mm], [138.mm,2362.mm,152.mm])
+  grp.name = "U-channel rail TL flange +X"
+  face = grp.entities.add_face([182.mm,0.mm,2269.mm], [188.mm,0.mm,2269.mm], [188.mm,2362.mm,2269.mm], [182.mm,2362.mm,2269.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
+  face.pushpull(38.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Leadscrew BL
+  # U-channel rail TR web
   grp = ents.add_group
-  grp.name = "Leadscrew BL"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 2200.mm, 0.mm)
-  circle = ge.add_circle([184.mm,100.mm,160.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # HGR20 Rail BR
-  grp = ents.add_group
-  grp.name = "HGR20 Rail BR"
-  face = grp.entities.add_face([4637.mm,0.mm,152.mm], [4661.mm,0.mm,152.mm], [4661.mm,2362.mm,152.mm], [4637.mm,2362.mm,152.mm])
+  grp.name = "U-channel rail TR web"
+  face = grp.entities.add_face([4611.mm,0.mm,2301.mm], [4687.mm,0.mm,2301.mm], [4687.mm,2362.mm,2301.mm], [4611.mm,2362.mm,2301.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
+  face.pushpull(6.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Leadscrew BR
+  # U-channel rail TR flange -X
   grp = ents.add_group
-  grp.name = "Leadscrew BR"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 2200.mm, 0.mm)
-  circle = ge.add_circle([4683.mm,100.mm,160.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.name = "U-channel rail TR flange -X"
+  face = grp.entities.add_face([4611.mm,0.mm,2269.mm], [4617.mm,0.mm,2269.mm], [4617.mm,2362.mm,2269.mm], [4611.mm,2362.mm,2269.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(38.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
+  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail TR flange +X
+  grp = ents.add_group
+  grp.name = "U-channel rail TR flange +X"
+  face = grp.entities.add_face([4681.mm,0.mm,2269.mm], [4687.mm,0.mm,2269.mm], [4687.mm,2362.mm,2269.mm], [4681.mm,2362.mm,2269.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(38.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
+  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail BL web
+  grp = ents.add_group
+  grp.name = "U-channel rail BL web"
+  face = grp.entities.add_face([125.mm,0.mm,204.mm], [175.mm,0.mm,204.mm], [175.mm,2362.mm,204.mm], [125.mm,2362.mm,204.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
+  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail BL flange -X
+  grp = ents.add_group
+  grp.name = "U-channel rail BL flange -X"
+  face = grp.entities.add_face([125.mm,0.mm,110.mm], [131.mm,0.mm,110.mm], [131.mm,2362.mm,110.mm], [125.mm,2362.mm,110.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
+  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail BL flange +X
+  grp = ents.add_group
+  grp.name = "U-channel rail BL flange +X"
+  face = grp.entities.add_face([169.mm,0.mm,110.mm], [175.mm,0.mm,110.mm], [175.mm,2362.mm,110.mm], [169.mm,2362.mm,110.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
+  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail BR web
+  grp = ents.add_group
+  grp.name = "U-channel rail BR web"
+  face = grp.entities.add_face([4624.mm,0.mm,204.mm], [4674.mm,0.mm,204.mm], [4674.mm,2362.mm,204.mm], [4624.mm,2362.mm,204.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
+  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail BR flange -X
+  grp = ents.add_group
+  grp.name = "U-channel rail BR flange -X"
+  face = grp.entities.add_face([4624.mm,0.mm,110.mm], [4630.mm,0.mm,110.mm], [4630.mm,2362.mm,110.mm], [4624.mm,2362.mm,110.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
+  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail BR flange +X
+  grp = ents.add_group
+  grp.name = "U-channel rail BR flange +X"
+  face = grp.entities.add_face([4668.mm,0.mm,110.mm], [4674.mm,0.mm,110.mm], [4674.mm,2362.mm,110.mm], [4668.mm,2362.mm,110.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(100.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -345,7 +377,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([75.mm,0.mm,2213.mm], [225.mm,0.mm,2213.mm], [225.mm,8.mm,2213.mm], [75.mm,8.mm,2213.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -356,7 +388,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([75.mm,-48.mm,2213.mm], [225.mm,-48.mm,2213.mm], [225.mm,-40.mm,2213.mm], [75.mm,-40.mm,2213.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -367,7 +399,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([126.mm,0.mm,2278.mm], [174.mm,0.mm,2278.mm], [174.mm,110.mm,2278.mm], [126.mm,110.mm,2278.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -378,7 +410,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([150.mm,110.mm,2278.mm], [150.mm,0.mm,2278.mm], [150.mm,0.mm,2158.mm])
   f.pushpull(8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -391,7 +423,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -404,7 +436,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -417,7 +449,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -430,7 +462,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -467,7 +499,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([75.mm,2354.mm,2213.mm], [225.mm,2354.mm,2213.mm], [225.mm,2362.mm,2213.mm], [75.mm,2362.mm,2213.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -478,7 +510,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([75.mm,2402.mm,2213.mm], [225.mm,2402.mm,2213.mm], [225.mm,2410.mm,2213.mm], [75.mm,2410.mm,2213.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -489,7 +521,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([126.mm,2252.mm,2278.mm], [174.mm,2252.mm,2278.mm], [174.mm,2362.mm,2278.mm], [126.mm,2362.mm,2278.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -500,7 +532,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([150.mm,2252.mm,2278.mm], [150.mm,2362.mm,2278.mm], [150.mm,2362.mm,2158.mm])
   f.pushpull(8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -513,7 +545,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -526,7 +558,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -539,7 +571,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -552,7 +584,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -589,7 +621,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4574.mm,0.mm,2213.mm], [4724.mm,0.mm,2213.mm], [4724.mm,8.mm,2213.mm], [4574.mm,8.mm,2213.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -600,7 +632,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4574.mm,-48.mm,2213.mm], [4724.mm,-48.mm,2213.mm], [4724.mm,-40.mm,2213.mm], [4574.mm,-40.mm,2213.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -611,7 +643,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4625.mm,0.mm,2278.mm], [4673.mm,0.mm,2278.mm], [4673.mm,110.mm,2278.mm], [4625.mm,110.mm,2278.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -622,7 +654,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([4649.mm,110.mm,2278.mm], [4649.mm,0.mm,2278.mm], [4649.mm,0.mm,2158.mm])
   f.pushpull(8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -635,7 +667,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -648,7 +680,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -661,7 +693,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -674,7 +706,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -687,7 +719,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -700,7 +732,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -711,7 +743,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4574.mm,2354.mm,2213.mm], [4724.mm,2354.mm,2213.mm], [4724.mm,2362.mm,2213.mm], [4574.mm,2362.mm,2213.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -722,7 +754,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4574.mm,2402.mm,2213.mm], [4724.mm,2402.mm,2213.mm], [4724.mm,2410.mm,2213.mm], [4574.mm,2410.mm,2213.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -733,7 +765,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4625.mm,2252.mm,2278.mm], [4673.mm,2252.mm,2278.mm], [4673.mm,2362.mm,2278.mm], [4625.mm,2362.mm,2278.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -744,7 +776,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([4649.mm,2252.mm,2278.mm], [4649.mm,2362.mm,2278.mm], [4649.mm,2362.mm,2158.mm])
   f.pushpull(8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -757,7 +789,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -770,7 +802,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -783,7 +815,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -796,7 +828,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -809,7 +841,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -822,7 +854,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -833,7 +865,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([75.mm,0.mm,85.mm], [225.mm,0.mm,85.mm], [225.mm,8.mm,85.mm], [75.mm,8.mm,85.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -844,7 +876,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([75.mm,-48.mm,85.mm], [225.mm,-48.mm,85.mm], [225.mm,-40.mm,85.mm], [75.mm,-40.mm,85.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -855,7 +887,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([126.mm,0.mm,150.mm], [174.mm,0.mm,150.mm], [174.mm,110.mm,150.mm], [126.mm,110.mm,150.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -866,7 +898,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([150.mm,110.mm,150.mm], [150.mm,0.mm,150.mm], [150.mm,0.mm,30.mm])
   f.pushpull(8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -879,7 +911,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -892,7 +924,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -905,7 +937,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -918,7 +950,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -955,7 +987,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([75.mm,2354.mm,85.mm], [225.mm,2354.mm,85.mm], [225.mm,2362.mm,85.mm], [75.mm,2362.mm,85.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -966,7 +998,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([75.mm,2402.mm,85.mm], [225.mm,2402.mm,85.mm], [225.mm,2410.mm,85.mm], [75.mm,2410.mm,85.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -977,7 +1009,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([126.mm,2252.mm,150.mm], [174.mm,2252.mm,150.mm], [174.mm,2362.mm,150.mm], [126.mm,2362.mm,150.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -988,7 +1020,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([150.mm,2252.mm,150.mm], [150.mm,2362.mm,150.mm], [150.mm,2362.mm,30.mm])
   f.pushpull(8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1001,7 +1033,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1014,7 +1046,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1027,7 +1059,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1040,7 +1072,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1077,7 +1109,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4574.mm,0.mm,58.mm], [4724.mm,0.mm,58.mm], [4724.mm,10.mm,58.mm], [4574.mm,10.mm,58.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(177.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1088,7 +1120,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4574.mm,-50.mm,58.mm], [4724.mm,-50.mm,58.mm], [4724.mm,-40.mm,58.mm], [4574.mm,-40.mm,58.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(177.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1099,7 +1131,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4574.mm,0.mm,58.mm], [4724.mm,0.mm,58.mm], [4724.mm,55.mm,58.mm], [4574.mm,55.mm,58.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1110,7 +1142,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4619.mm,0.mm,148.mm], [4679.mm,0.mm,148.mm], [4679.mm,55.mm,148.mm], [4619.mm,55.mm,148.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1123,7 +1155,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1136,7 +1168,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1149,7 +1181,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1162,7 +1194,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1173,7 +1205,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4574.mm,2352.mm,58.mm], [4724.mm,2352.mm,58.mm], [4724.mm,2362.mm,58.mm], [4574.mm,2362.mm,58.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(177.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1184,7 +1216,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4574.mm,2402.mm,58.mm], [4724.mm,2402.mm,58.mm], [4724.mm,2412.mm,58.mm], [4574.mm,2412.mm,58.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(177.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1195,7 +1227,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4574.mm,2307.mm,58.mm], [4724.mm,2307.mm,58.mm], [4724.mm,2362.mm,58.mm], [4574.mm,2362.mm,58.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1206,7 +1238,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4619.mm,2307.mm,148.mm], [4679.mm,2307.mm,148.mm], [4679.mm,2362.mm,148.mm], [4619.mm,2362.mm,148.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1219,7 +1251,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1232,7 +1264,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1245,7 +1277,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1258,7 +1290,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1353,7 +1385,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([638.mm,0.mm,0.mm], [758.mm,0.mm,0.mm], [758.mm,8.mm,0.mm], [638.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1403,7 +1435,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([694.mm,8.mm,105.mm], [702.mm,8.mm,105.mm], [702.mm,300.mm,105.mm], [694.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1414,7 +1446,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([694.mm,8.mm,0.mm], [694.mm,8.mm,105.mm], [694.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1425,7 +1457,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([1095.mm,0.mm,0.mm], [1215.mm,0.mm,0.mm], [1215.mm,10.mm,0.mm], [1095.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1488,7 +1520,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([1150.mm,10.mm,103.mm], [1160.mm,10.mm,103.mm], [1160.mm,500.mm,103.mm], [1150.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1499,7 +1531,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([1150.mm,10.mm,0.mm], [1150.mm,10.mm,103.mm], [1150.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1510,7 +1542,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([1552.mm,0.mm,0.mm], [1672.mm,0.mm,0.mm], [1672.mm,10.mm,0.mm], [1552.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1573,7 +1605,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([1607.mm,10.mm,103.mm], [1617.mm,10.mm,103.mm], [1617.mm,500.mm,103.mm], [1607.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1584,7 +1616,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([1607.mm,10.mm,0.mm], [1607.mm,10.mm,103.mm], [1607.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1595,7 +1627,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2009.mm,0.mm,0.mm], [2129.mm,0.mm,0.mm], [2129.mm,10.mm,0.mm], [2009.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1658,7 +1690,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2064.mm,10.mm,103.mm], [2074.mm,10.mm,103.mm], [2074.mm,500.mm,103.mm], [2064.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1669,7 +1701,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([2064.mm,10.mm,0.mm], [2064.mm,10.mm,103.mm], [2064.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1680,7 +1712,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2466.mm,0.mm,0.mm], [2586.mm,0.mm,0.mm], [2586.mm,8.mm,0.mm], [2466.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1730,7 +1762,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2522.mm,8.mm,105.mm], [2530.mm,8.mm,105.mm], [2530.mm,300.mm,105.mm], [2522.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1741,7 +1773,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([2522.mm,8.mm,0.mm], [2522.mm,8.mm,105.mm], [2522.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1752,7 +1784,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2923.mm,0.mm,0.mm], [3043.mm,0.mm,0.mm], [3043.mm,8.mm,0.mm], [2923.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1802,7 +1834,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2979.mm,8.mm,105.mm], [2987.mm,8.mm,105.mm], [2987.mm,300.mm,105.mm], [2979.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1813,7 +1845,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([2979.mm,8.mm,0.mm], [2979.mm,8.mm,105.mm], [2979.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1824,7 +1856,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([3380.mm,0.mm,0.mm], [3500.mm,0.mm,0.mm], [3500.mm,8.mm,0.mm], [3380.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1874,7 +1906,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([3436.mm,8.mm,105.mm], [3444.mm,8.mm,105.mm], [3444.mm,300.mm,105.mm], [3436.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1885,7 +1917,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([3436.mm,8.mm,0.mm], [3436.mm,8.mm,105.mm], [3436.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1896,7 +1928,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([3837.mm,0.mm,0.mm], [3957.mm,0.mm,0.mm], [3957.mm,8.mm,0.mm], [3837.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1946,7 +1978,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([3893.mm,8.mm,105.mm], [3901.mm,8.mm,105.mm], [3901.mm,300.mm,105.mm], [3893.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1957,7 +1989,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([3893.mm,8.mm,0.mm], [3893.mm,8.mm,105.mm], [3893.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1968,7 +2000,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([638.mm,2354.mm,0.mm], [758.mm,2354.mm,0.mm], [758.mm,2362.mm,0.mm], [638.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2018,7 +2050,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([694.mm,2062.mm,105.mm], [702.mm,2062.mm,105.mm], [702.mm,2354.mm,105.mm], [694.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2029,7 +2061,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([694.mm,2354.mm,0.mm], [694.mm,2354.mm,105.mm], [694.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2040,7 +2072,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([1095.mm,2354.mm,0.mm], [1215.mm,2354.mm,0.mm], [1215.mm,2362.mm,0.mm], [1095.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2090,7 +2122,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([1151.mm,2062.mm,105.mm], [1159.mm,2062.mm,105.mm], [1159.mm,2354.mm,105.mm], [1151.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2101,7 +2133,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([1151.mm,2354.mm,0.mm], [1151.mm,2354.mm,105.mm], [1151.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2112,7 +2144,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([1552.mm,2354.mm,0.mm], [1672.mm,2354.mm,0.mm], [1672.mm,2362.mm,0.mm], [1552.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2162,7 +2194,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([1608.mm,2062.mm,105.mm], [1616.mm,2062.mm,105.mm], [1616.mm,2354.mm,105.mm], [1608.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2173,7 +2205,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([1608.mm,2354.mm,0.mm], [1608.mm,2354.mm,105.mm], [1608.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2184,7 +2216,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2009.mm,2354.mm,0.mm], [2129.mm,2354.mm,0.mm], [2129.mm,2362.mm,0.mm], [2009.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2234,7 +2266,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2065.mm,2062.mm,105.mm], [2073.mm,2062.mm,105.mm], [2073.mm,2354.mm,105.mm], [2065.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2245,7 +2277,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([2065.mm,2354.mm,0.mm], [2065.mm,2354.mm,105.mm], [2065.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2256,7 +2288,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2466.mm,2354.mm,0.mm], [2586.mm,2354.mm,0.mm], [2586.mm,2362.mm,0.mm], [2466.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2306,7 +2338,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2522.mm,2062.mm,105.mm], [2530.mm,2062.mm,105.mm], [2530.mm,2354.mm,105.mm], [2522.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2317,7 +2349,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([2522.mm,2354.mm,0.mm], [2522.mm,2354.mm,105.mm], [2522.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2328,7 +2360,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2923.mm,2354.mm,0.mm], [3043.mm,2354.mm,0.mm], [3043.mm,2362.mm,0.mm], [2923.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2378,7 +2410,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2979.mm,2062.mm,105.mm], [2987.mm,2062.mm,105.mm], [2987.mm,2354.mm,105.mm], [2979.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2389,7 +2421,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([2979.mm,2354.mm,0.mm], [2979.mm,2354.mm,105.mm], [2979.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2400,7 +2432,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([3380.mm,2354.mm,0.mm], [3500.mm,2354.mm,0.mm], [3500.mm,2362.mm,0.mm], [3380.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2450,7 +2482,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([3436.mm,2062.mm,105.mm], [3444.mm,2062.mm,105.mm], [3444.mm,2354.mm,105.mm], [3436.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2461,7 +2493,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([3436.mm,2354.mm,0.mm], [3436.mm,2354.mm,105.mm], [3436.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2472,7 +2504,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([3837.mm,2354.mm,0.mm], [3957.mm,2354.mm,0.mm], [3957.mm,2362.mm,0.mm], [3837.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2522,7 +2554,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([3893.mm,2062.mm,105.mm], [3901.mm,2062.mm,105.mm], [3901.mm,2354.mm,105.mm], [3893.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2533,7 +2565,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([3893.mm,2354.mm,0.mm], [3893.mm,2354.mm,105.mm], [3893.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2544,7 +2576,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([38.mm,220.mm,0.mm], [166.mm,220.mm,0.mm], [166.mm,280.mm,0.mm], [38.mm,280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2555,7 +2587,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([115.mm,220.mm,0.mm], [165.mm,220.mm,0.mm], [165.mm,280.mm,0.mm], [115.mm,280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2566,7 +2598,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([165.mm,230.mm,75.mm], [470.mm,230.mm,75.mm], [470.mm,270.mm,75.mm], [165.mm,270.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2577,7 +2609,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([38.mm,770.mm,0.mm], [166.mm,770.mm,0.mm], [166.mm,830.mm,0.mm], [38.mm,830.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2588,7 +2620,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([115.mm,770.mm,0.mm], [165.mm,770.mm,0.mm], [165.mm,830.mm,0.mm], [115.mm,830.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2599,7 +2631,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([165.mm,770.mm,75.mm], [770.mm,770.mm,75.mm], [770.mm,830.mm,75.mm], [165.mm,830.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2610,7 +2642,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([38.mm,1150.mm,0.mm], [166.mm,1150.mm,0.mm], [166.mm,1210.mm,0.mm], [38.mm,1210.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2621,7 +2653,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([115.mm,1150.mm,0.mm], [165.mm,1150.mm,0.mm], [165.mm,1210.mm,0.mm], [115.mm,1210.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2632,7 +2664,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([165.mm,1150.mm,75.mm], [770.mm,1150.mm,75.mm], [770.mm,1210.mm,75.mm], [165.mm,1210.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2643,7 +2675,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([38.mm,1530.mm,0.mm], [166.mm,1530.mm,0.mm], [166.mm,1590.mm,0.mm], [38.mm,1590.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2654,7 +2686,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([115.mm,1530.mm,0.mm], [165.mm,1530.mm,0.mm], [165.mm,1590.mm,0.mm], [115.mm,1590.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2665,7 +2697,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([165.mm,1530.mm,75.mm], [770.mm,1530.mm,75.mm], [770.mm,1590.mm,75.mm], [165.mm,1590.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2676,7 +2708,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([38.mm,2080.mm,0.mm], [166.mm,2080.mm,0.mm], [166.mm,2140.mm,0.mm], [38.mm,2140.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2687,7 +2719,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([115.mm,2080.mm,0.mm], [165.mm,2080.mm,0.mm], [165.mm,2140.mm,0.mm], [115.mm,2140.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2698,7 +2730,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([165.mm,2090.mm,75.mm], [470.mm,2090.mm,75.mm], [470.mm,2130.mm,75.mm], [165.mm,2130.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2716,7 +2748,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4329.mm,1046.mm,70.mm], [4654.mm,1046.mm,70.mm], [4654.mm,1086.mm,70.mm], [4329.mm,1086.mm,70.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2727,7 +2759,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4369.mm,1046.mm,95.mm], [4589.mm,1046.mm,95.mm], [4589.mm,1086.mm,95.mm], [4369.mm,1086.mm,95.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2738,7 +2770,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4629.mm,1046.mm,95.mm], [4654.mm,1046.mm,95.mm], [4654.mm,1086.mm,95.mm], [4629.mm,1086.mm,95.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2749,7 +2781,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4650.mm,1038.mm,45.mm], [4708.mm,1038.mm,45.mm], [4708.mm,1046.mm,45.mm], [4650.mm,1046.mm,45.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(100.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2760,7 +2792,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4650.mm,1086.mm,45.mm], [4708.mm,1086.mm,45.mm], [4708.mm,1094.mm,45.mm], [4650.mm,1094.mm,45.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(100.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2773,7 +2805,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(64.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2786,7 +2818,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(64.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2797,7 +2829,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4329.mm,1266.mm,70.mm], [4654.mm,1266.mm,70.mm], [4654.mm,1306.mm,70.mm], [4329.mm,1306.mm,70.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2808,7 +2840,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4369.mm,1266.mm,95.mm], [4589.mm,1266.mm,95.mm], [4589.mm,1306.mm,95.mm], [4369.mm,1306.mm,95.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2819,7 +2851,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4629.mm,1266.mm,95.mm], [4654.mm,1266.mm,95.mm], [4654.mm,1306.mm,95.mm], [4629.mm,1306.mm,95.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2830,7 +2862,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4650.mm,1258.mm,45.mm], [4708.mm,1258.mm,45.mm], [4708.mm,1266.mm,45.mm], [4650.mm,1266.mm,45.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(100.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2841,7 +2873,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4650.mm,1306.mm,45.mm], [4708.mm,1306.mm,45.mm], [4708.mm,1314.mm,45.mm], [4650.mm,1314.mm,45.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(100.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2854,7 +2886,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(64.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2867,7 +2899,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(64.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2879,28 +2911,36 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # ═══ Corner Detail (TR) ═══
   defn = model.definitions.add("Corner Detail (TR)")
   ents = defn.entities
-  # Detail Rail TR
+  # U-channel rail Detail TR web
   grp = ents.add_group
-  grp.name = "Detail Rail TR"
-  face = grp.entities.add_face([2887.mm,100.mm,2280.mm], [2911.mm,100.mm,2280.mm], [2911.mm,2300.mm,2280.mm], [2887.mm,2300.mm,2280.mm])
+  grp.name = "U-channel rail Detail TR web"
+  face = grp.entities.add_face([2861.mm,100.mm,2301.mm], [2937.mm,100.mm,2301.mm], [2937.mm,2300.mm,2301.mm], [2861.mm,2300.mm,2301.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
+  face.pushpull(6.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Detail Leadscrew TR
+  # U-channel rail Detail TR flange -X
   grp = ents.add_group
-  grp.name = "Detail Leadscrew TR"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 2200.mm, 0.mm)
-  circle = ge.add_circle([2933.mm,100.mm,2288.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.name = "U-channel rail Detail TR flange -X"
+  face = grp.entities.add_face([2861.mm,100.mm,2269.mm], [2867.mm,100.mm,2269.mm], [2867.mm,2300.mm,2269.mm], [2861.mm,2300.mm,2269.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(38.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
+  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail Detail TR flange +X
+  grp = ents.add_group
+  grp.name = "U-channel rail Detail TR flange +X"
+  face = grp.entities.add_face([2931.mm,100.mm,2269.mm], [2937.mm,100.mm,2269.mm], [2937.mm,2300.mm,2269.mm], [2931.mm,2300.mm,2269.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(38.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2911,28 +2951,36 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # ═══ Corner Detail Swing (TR) ═══
   defn = model.definitions.add("Corner Detail Swing (TR)")
   ents = defn.entities
-  # Swing Rail TR
+  # U-channel rail Swing TR web
   grp = ents.add_group
-  grp.name = "Swing Rail TR"
-  face = grp.entities.add_face([1137.mm,100.mm,2280.mm], [1161.mm,100.mm,2280.mm], [1161.mm,2300.mm,2280.mm], [1137.mm,2300.mm,2280.mm])
+  grp.name = "U-channel rail Swing TR web"
+  face = grp.entities.add_face([1111.mm,100.mm,2301.mm], [1187.mm,100.mm,2301.mm], [1187.mm,2300.mm,2301.mm], [1111.mm,2300.mm,2301.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
+  face.pushpull(6.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Swing Leadscrew TR
+  # U-channel rail Swing TR flange -X
   grp = ents.add_group
-  grp.name = "Swing Leadscrew TR"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 2200.mm, 0.mm)
-  circle = ge.add_circle([1183.mm,100.mm,2288.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  grp.name = "U-channel rail Swing TR flange -X"
+  face = grp.entities.add_face([1111.mm,100.mm,2269.mm], [1117.mm,100.mm,2269.mm], [1117.mm,2300.mm,2269.mm], [1111.mm,2300.mm,2269.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(38.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
+  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail Swing TR flange +X
+  grp = ents.add_group
+  grp.name = "U-channel rail Swing TR flange +X"
+  face = grp.entities.add_face([1181.mm,100.mm,2269.mm], [1187.mm,100.mm,2269.mm], [1187.mm,2300.mm,2269.mm], [1181.mm,2300.mm,2269.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(38.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
+  mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2943,104 +2991,196 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # ═══ Corner Detail Static (TR) ═══
   defn = model.definitions.add("Corner Detail Static (TR)")
   ents = defn.entities
-  # Static Rail TR
+  # U-channel rail Static TR web
   grp = ents.add_group
-  grp.name = "Static Rail TR"
-  face = grp.entities.add_face([-1488.mm,100.mm,2280.mm], [-1464.mm,100.mm,2280.mm], [-1464.mm,2300.mm,2280.mm], [-1488.mm,2300.mm,2280.mm])
+  grp.name = "U-channel rail Static TR web"
+  face = grp.entities.add_face([-1514.mm,100.mm,2301.mm], [-1438.mm,100.mm,2301.mm], [-1438.mm,2300.mm,2301.mm], [-1514.mm,2300.mm,2301.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
+  face.pushpull(6.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Static Leadscrew TR
+  # U-channel rail Static TR flange -X
   grp = ents.add_group
-  grp.name = "Static Leadscrew TR"
+  grp.name = "U-channel rail Static TR flange -X"
+  face = grp.entities.add_face([-1514.mm,100.mm,2269.mm], [-1508.mm,100.mm,2269.mm], [-1508.mm,2300.mm,2269.mm], [-1514.mm,2300.mm,2269.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(38.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
+  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail Static TR flange +X
+  grp = ents.add_group
+  grp.name = "U-channel rail Static TR flange +X"
+  face = grp.entities.add_face([-1444.mm,100.mm,2269.mm], [-1438.mm,100.mm,2269.mm], [-1438.mm,2300.mm,2269.mm], [-1444.mm,2300.mm,2269.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(38.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
+  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal wheel Ø32 Static TR A
+  grp = ents.add_group
+  grp.name = "Acetal wheel Ø32 Static TR A"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 2200.mm, 0.mm)
-  circle = ge.add_circle([-1442.mm,100.mm,2288.mm], vec, 7.mm, 16)
+  vec = Geom::Vector3d.new(28.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([-1490.mm,1385.7039226776096.mm,2286.mm], vec, 16.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Acetal wheel Ø32 Detail TR A"] || model.materials.add("Acetal wheel Ø32 Detail TR A")
+  mat.color = Sketchup::Color.new(237, 233, 220)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal wheel Ø32 Static TR B
+  grp = ents.add_group
+  grp.name = "Acetal wheel Ø32 Static TR B"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(28.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([-1490.mm,1437.7039226776096.mm,2286.mm], vec, 16.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Acetal wheel Ø32 Detail TR A"] || model.materials.add("Acetal wheel Ø32 Detail TR A")
+  mat.color = Sketchup::Color.new(237, 233, 220)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Skate axle Ø10 Static TR A
+  grp = ents.add_group
+  grp.name = "Skate axle Ø10 Static TR A"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(40.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([-1476.mm,1385.7039226776096.mm,2286.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Static Carriage TR
+  # Skate axle Ø10 Static TR B
   grp = ents.add_group
-  grp.name = "Static Carriage TR"
-  face = grp.entities.add_face([-1502.mm,1379.7039226776096.mm,2270.mm], [-1450.mm,1379.7039226776096.mm,2270.mm], [-1450.mm,1443.7039226776096.mm,2270.mm], [-1502.mm,1443.7039226776096.mm,2270.mm])
+  grp.name = "Skate axle Ø10 Static TR B"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(40.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([-1476.mm,1437.7039226776096.mm,2286.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate Static TR
+  grp = ents.add_group
+  grp.name = "Carriage plate Static TR"
+  face = grp.entities.add_face([-1442.mm,1377.7039226776096.mm,2263.mm], [-1428.mm,1377.7039226776096.mm,2263.mm], [-1428.mm,1445.7039226776096.mm,2263.mm], [-1442.mm,1445.7039226776096.mm,2263.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(24.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  face.pushpull(44.mm)
+  mat = model.materials["Carriage plate Detail TR"] || model.materials.add("Carriage plate Detail TR")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Static Drive Nut TR
+  # Z slide Static TR (TILT — 316 flat bar + UHMW)
   grp = ents.add_group
-  grp.name = "Static Drive Nut TR"
-  face = grp.entities.add_face([-1456.mm,1397.7039226776096.mm,2276.mm], [-1428.mm,1397.7039226776096.mm,2276.mm], [-1428.mm,1425.7039226776096.mm,2276.mm], [-1456.mm,1425.7039226776096.mm,2276.mm])
+  grp.name = "Z slide Static TR (TILT — 316 flat bar + UHMW)"
+  face = grp.entities.add_face([-1484.mm,1396.7039226776096.mm,2223.8329485162067.mm], [-1468.mm,1396.7039226776096.mm,2223.8329485162067.mm], [-1468.mm,1426.7039226776096.mm,2223.8329485162067.mm], [-1484.mm,1426.7039226776096.mm,2223.8329485162067.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(26.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Static X cross-slide TR (SWING)
-  grp = ents.add_group
-  grp.name = "Static X cross-slide TR (SWING)"
-  face = grp.entities.add_face([-1492.mm,1395.7039226776096.mm,2294.mm], [-1442.463161939676.mm,1395.7039226776096.mm,2294.mm], [-1442.463161939676.mm,1427.7039226776096.mm,2294.mm], [-1492.mm,1427.7039226776096.mm,2294.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Detail X cross-slide TR (SWING)"] || model.materials.add("Detail X cross-slide TR (SWING)")
-  mat.color = Sketchup::Color.new(31, 119, 180)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Static X slider TR
-  grp = ents.add_group
-  grp.name = "Static X slider TR"
-  face = grp.entities.add_face([-1474.463161939676.mm,1391.7039226776096.mm,2292.mm], [-1442.463161939676.mm,1391.7039226776096.mm,2292.mm], [-1442.463161939676.mm,1431.7039226776096.mm,2292.mm], [-1474.463161939676.mm,1431.7039226776096.mm,2292.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(20.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Static Z cross-slide TR (TILT)
-  grp = ents.add_group
-  grp.name = "Static Z cross-slide TR (TILT)"
-  face = grp.entities.add_face([-1467.463161939676.mm,1396.7039226776096.mm,2207.8329485162067.mm], [-1449.463161939676.mm,1396.7039226776096.mm,2207.8329485162067.mm], [-1449.463161939676.mm,1426.7039226776096.mm,2207.8329485162067.mm], [-1467.463161939676.mm,1426.7039226776096.mm,2207.8329485162067.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(96.16705148379333.mm)
-  mat = model.materials["Detail Z cross-slide TR (TILT)"] || model.materials.add("Detail Z cross-slide TR (TILT)")
+  face.pushpull(98.16705148379333.mm)
+  mat = model.materials["Z slide Detail TR (TILT — 316 flat bar + UHMW)"] || model.materials.add("Z slide Detail TR (TILT — 316 flat bar + UHMW)")
   mat.color = Sketchup::Color.new(44, 160, 44)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Static Z slider TR
+  # X slide Static TR (SWING — 316 flat bar + UHMW)
   grp = ents.add_group
-  grp.name = "Static Z slider TR"
-  face = grp.entities.add_face([-1471.463161939676.mm,1393.7039226776096.mm,2207.8329485162067.mm], [-1445.463161939676.mm,1393.7039226776096.mm,2207.8329485162067.mm], [-1445.463161939676.mm,1429.7039226776096.mm,2207.8329485162067.mm], [-1471.463161939676.mm,1429.7039226776096.mm,2207.8329485162067.mm])
+  grp.name = "X slide Static TR (SWING — 316 flat bar + UHMW)"
+  face = grp.entities.add_face([-1476.mm,1397.7039226776096.mm,2216.8329485162067.mm], [-1424.463161939676.mm,1397.7039226776096.mm,2216.8329485162067.mm], [-1424.463161939676.mm,1425.7039226776096.mm,2216.8329485162067.mm], [-1476.mm,1425.7039226776096.mm,2216.8329485162067.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(32.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
-  mat.color = Sketchup::Color.new(192, 64, 16)
+  face.pushpull(14.mm)
+  mat = model.materials["X slide Detail TR (SWING — 316 flat bar + UHMW)"] || model.materials.add("X slide Detail TR (SWING — 316 flat bar + UHMW)")
+  mat.color = Sketchup::Color.new(31, 119, 180)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Static Rod-End TR
+  # Cam clamp Static TR
   grp = ents.add_group
-  grp.name = "Static Rod-End TR"
-  face = grp.entities.add_face([-1475.463161939676.mm,1394.7039226776096.mm,2206.8329485162067.mm], [-1441.463161939676.mm,1394.7039226776096.mm,2206.8329485162067.mm], [-1441.463161939676.mm,1428.7039226776096.mm,2206.8329485162067.mm], [-1475.463161939676.mm,1428.7039226776096.mm,2206.8329485162067.mm])
+  grp.name = "Cam clamp Static TR"
+  face = grp.entities.add_face([-1490.mm,1403.7039226776096.mm,2217.8329485162067.mm], [-1476.mm,1403.7039226776096.mm,2217.8329485162067.mm], [-1476.mm,1419.7039226776096.mm,2217.8329485162067.mm], [-1490.mm,1419.7039226776096.mm,2217.8329485162067.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(34.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  face.pushpull(18.mm)
+  mat = model.materials["Cam clamp Detail TR"] || model.materials.add("Cam clamp Detail TR")
+  mat.color = Sketchup::Color.new(176, 64, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Input stub 3/8 Static TR
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 Static TR"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-24.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([-1432.463161939676.mm,1411.7039226776096.mm,2223.8329485162067.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 4040N12 shaft support Static TR
+  grp = ents.add_group
+  grp.name = "4040N12 shaft support Static TR"
+  face = grp.entities.add_face([-1436.463161939676.mm,1402.7039226776096.mm,2212.8329485162067.mm], [-1420.463161939676.mm,1402.7039226776096.mm,2212.8329485162067.mm], [-1420.463161939676.mm,1420.7039226776096.mm,2212.8329485162067.mm], [-1436.463161939676.mm,1420.7039226776096.mm,2212.8329485162067.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-joint Static TR (USKC12-6-6-SS)
+  grp = ents.add_group
+  grp.name = "U-joint Static TR (USKC12-6-6-SS)"
+  face = grp.entities.add_face([-1469.463161939676.mm,1400.7039226776096.mm,2212.8329485162067.mm], [-1447.463161939676.mm,1400.7039226776096.mm,2212.8329485162067.mm], [-1447.463161939676.mm,1422.7039226776096.mm,2212.8329485162067.mm], [-1469.463161939676.mm,1422.7039226776096.mm,2212.8329485162067.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Output stub 3/8 Static TR
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 Static TR"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 24.mm, 0.mm)
+  circle = ge.add_circle([-1458.463161939676.mm,1411.7039226776096.mm,2223.8329485162067.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 304 SS corner plate Static TR
+  grp = ents.add_group
+  grp.name = "304 SS corner plate Static TR"
+  face = grp.entities.add_face([-1475.463161939676.mm,1433.7039226776096.mm,2203.8329485162067.mm], [-1441.463161939676.mm,1433.7039226776096.mm,2203.8329485162067.mm], [-1441.463161939676.mm,1439.7039226776096.mm,2203.8329485162067.mm], [-1475.463161939676.mm,1439.7039226776096.mm,2203.8329485162067.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3063,35 +3203,196 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # ═══ Rotate Rail (TR) ═══
   defn = model.definitions.add("Rotate Rail (TR)")
   ents = defn.entities
-  # Rotate Rail TR
+  # U-channel rail Rotate TR web
   grp = ents.add_group
-  grp.name = "Rotate Rail TR"
-  face = grp.entities.add_face([4637.mm,100.mm,2280.mm], [4661.mm,100.mm,2280.mm], [4661.mm,2300.mm,2280.mm], [4637.mm,2300.mm,2280.mm])
+  grp.name = "U-channel rail Rotate TR web"
+  face = grp.entities.add_face([4611.mm,100.mm,2301.mm], [4687.mm,100.mm,2301.mm], [4687.mm,2300.mm,2301.mm], [4611.mm,2300.mm,2301.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Detail Rail TR"] || model.materials.add("Detail Rail TR")
+  face.pushpull(6.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Rotate Carriage TR
+  # U-channel rail Rotate TR flange -X
   grp = ents.add_group
-  grp.name = "Rotate Carriage TR"
-  face = grp.entities.add_face([4623.mm,1149.mm,2270.mm], [4675.mm,1149.mm,2270.mm], [4675.mm,1213.mm,2270.mm], [4623.mm,1213.mm,2270.mm])
+  grp.name = "U-channel rail Rotate TR flange -X"
+  face = grp.entities.add_face([4611.mm,100.mm,2269.mm], [4617.mm,100.mm,2269.mm], [4617.mm,2300.mm,2269.mm], [4611.mm,2300.mm,2269.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(24.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  face.pushpull(38.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
+  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail Rotate TR flange +X
+  grp = ents.add_group
+  grp.name = "U-channel rail Rotate TR flange +X"
+  face = grp.entities.add_face([4681.mm,100.mm,2269.mm], [4687.mm,100.mm,2269.mm], [4687.mm,2300.mm,2269.mm], [4681.mm,2300.mm,2269.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(38.mm)
+  mat = model.materials["U-channel rail Detail TR web"] || model.materials.add("U-channel rail Detail TR web")
+  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal wheel Ø32 Rotate TR A
+  grp = ents.add_group
+  grp.name = "Acetal wheel Ø32 Rotate TR A"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(28.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4635.mm,1155.mm,2286.mm], vec, 16.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Acetal wheel Ø32 Detail TR A"] || model.materials.add("Acetal wheel Ø32 Detail TR A")
+  mat.color = Sketchup::Color.new(237, 233, 220)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal wheel Ø32 Rotate TR B
+  grp = ents.add_group
+  grp.name = "Acetal wheel Ø32 Rotate TR B"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(28.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4635.mm,1207.mm,2286.mm], vec, 16.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Acetal wheel Ø32 Detail TR A"] || model.materials.add("Acetal wheel Ø32 Detail TR A")
+  mat.color = Sketchup::Color.new(237, 233, 220)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Skate axle Ø10 Rotate TR A
+  grp = ents.add_group
+  grp.name = "Skate axle Ø10 Rotate TR A"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(40.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4649.mm,1155.mm,2286.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Skate axle Ø10 Rotate TR B
+  grp = ents.add_group
+  grp.name = "Skate axle Ø10 Rotate TR B"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(40.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4649.mm,1207.mm,2286.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate Rotate TR
+  grp = ents.add_group
+  grp.name = "Carriage plate Rotate TR"
+  face = grp.entities.add_face([4683.mm,1147.mm,2263.mm], [4697.mm,1147.mm,2263.mm], [4697.mm,1215.mm,2263.mm], [4683.mm,1215.mm,2263.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(44.mm)
+  mat = model.materials["Carriage plate Detail TR"] || model.materials.add("Carriage plate Detail TR")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Rotate Rod-End TR
+  # Z slide Rotate TR (TILT — 316 flat bar + UHMW)
   grp = ents.add_group
-  grp.name = "Rotate Rod-End TR"
-  face = grp.entities.add_face([4633.mm,1165.mm,2272.mm], [4665.mm,1165.mm,2272.mm], [4665.mm,1197.mm,2272.mm], [4633.mm,1197.mm,2272.mm])
+  grp.name = "Z slide Rotate TR (TILT — 316 flat bar + UHMW)"
+  face = grp.entities.add_face([4641.mm,1166.mm,2288.mm], [4657.mm,1166.mm,2288.mm], [4657.mm,1196.mm,2288.mm], [4641.mm,1196.mm,2288.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(32.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  face.pushpull(34.mm)
+  mat = model.materials["Z slide Detail TR (TILT — 316 flat bar + UHMW)"] || model.materials.add("Z slide Detail TR (TILT — 316 flat bar + UHMW)")
+  mat.color = Sketchup::Color.new(44, 160, 44)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X slide Rotate TR (SWING — 316 flat bar + UHMW)
+  grp = ents.add_group
+  grp.name = "X slide Rotate TR (SWING — 316 flat bar + UHMW)"
+  face = grp.entities.add_face([4649.mm,1167.mm,2281.mm], [4683.mm,1167.mm,2281.mm], [4683.mm,1195.mm,2281.mm], [4649.mm,1195.mm,2281.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["X slide Detail TR (SWING — 316 flat bar + UHMW)"] || model.materials.add("X slide Detail TR (SWING — 316 flat bar + UHMW)")
+  mat.color = Sketchup::Color.new(31, 119, 180)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam clamp Rotate TR
+  grp = ents.add_group
+  grp.name = "Cam clamp Rotate TR"
+  face = grp.entities.add_face([4635.mm,1173.mm,2282.mm], [4649.mm,1173.mm,2282.mm], [4649.mm,1189.mm,2282.mm], [4635.mm,1189.mm,2282.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(18.mm)
+  mat = model.materials["Cam clamp Detail TR"] || model.materials.add("Cam clamp Detail TR")
+  mat.color = Sketchup::Color.new(176, 64, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Input stub 3/8 Rotate TR
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 Rotate TR"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-24.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4675.mm,1181.mm,2288.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 4040N12 shaft support Rotate TR
+  grp = ents.add_group
+  grp.name = "4040N12 shaft support Rotate TR"
+  face = grp.entities.add_face([4671.mm,1172.mm,2277.mm], [4687.mm,1172.mm,2277.mm], [4687.mm,1190.mm,2277.mm], [4671.mm,1190.mm,2277.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-joint Rotate TR (USKC12-6-6-SS)
+  grp = ents.add_group
+  grp.name = "U-joint Rotate TR (USKC12-6-6-SS)"
+  face = grp.entities.add_face([4638.mm,1170.mm,2277.mm], [4660.mm,1170.mm,2277.mm], [4660.mm,1192.mm,2277.mm], [4638.mm,1192.mm,2277.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Output stub 3/8 Rotate TR
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 Rotate TR"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 24.mm, 0.mm)
+  circle = ge.add_circle([4649.mm,1181.mm,2288.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 304 SS corner plate Rotate TR
+  grp = ents.add_group
+  grp.name = "304 SS corner plate Rotate TR"
+  face = grp.entities.add_face([4632.mm,1203.mm,2268.mm], [4666.mm,1203.mm,2268.mm], [4666.mm,1209.mm,2268.mm], [4632.mm,1209.mm,2268.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3126,7 +3427,7 @@ ents = fp_defn.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3140,7 +3441,7 @@ ents = fp_defn.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3154,7 +3455,7 @@ ents = fp_defn.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3168,139 +3469,139 @@ ents = fp_defn.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Carriage TL (HGH20CA)
+  # Acetal skate carriage TL
   grp = ents.add_group
-  grp.name = "Carriage TL (HGH20CA)"
-  face = grp.entities.add_face([-2275.5.mm,-32.mm,1052.mm], [-2223.5.mm,-32.mm,1052.mm], [-2223.5.mm,32.mm,1052.mm], [-2275.5.mm,32.mm,1052.mm])
+  grp.name = "Acetal skate carriage TL"
+  face = grp.entities.add_face([-2273.5.mm,-32.mm,1052.mm], [-2225.5.mm,-32.mm,1052.mm], [-2225.5.mm,32.mm,1052.mm], [-2273.5.mm,32.mm,1052.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat = model.materials["Carriage plate Detail TR"] || model.materials.add("Carriage plate Detail TR")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Drive Nut TL
+  # U-joint TL (USKC12-6-6-SS)
   grp = ents.add_group
-  grp.name = "Drive Nut TL"
-  face = grp.entities.add_face([-2229.5.mm,-14.mm,1051.mm], [-2201.5.mm,-14.mm,1051.mm], [-2201.5.mm,14.mm,1051.mm], [-2229.5.mm,14.mm,1051.mm])
+  grp.name = "U-joint TL (USKC12-6-6-SS)"
+  face = grp.entities.add_face([-2260.5.mm,-11.mm,1053.mm], [-2238.5.mm,-11.mm,1053.mm], [-2238.5.mm,11.mm,1053.mm], [-2260.5.mm,11.mm,1053.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(26.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rod-End TL
-  grp = ents.add_group
-  grp.name = "Rod-End TL"
-  face = grp.entities.add_face([-2265.5.mm,-16.mm,1048.mm], [-2233.5.mm,-16.mm,1048.mm], [-2233.5.mm,16.mm,1048.mm], [-2265.5.mm,16.mm,1048.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(32.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  face.pushpull(22.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Carriage TR (HGH20CA)
+  # 304 SS corner plate TL
   grp = ents.add_group
-  grp.name = "Carriage TR (HGH20CA)"
-  face = grp.entities.add_face([2223.5.mm,-32.mm,1052.mm], [2275.5.mm,-32.mm,1052.mm], [2275.5.mm,32.mm,1052.mm], [2223.5.mm,32.mm,1052.mm])
+  grp.name = "304 SS corner plate TL"
+  face = grp.entities.add_face([-2266.5.mm,4.mm,1044.mm], [-2232.5.mm,4.mm,1044.mm], [-2232.5.mm,10.mm,1044.mm], [-2266.5.mm,10.mm,1044.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(24.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Drive Nut TR
-  grp = ents.add_group
-  grp.name = "Drive Nut TR"
-  face = grp.entities.add_face([2269.5.mm,-14.mm,1051.mm], [2297.5.mm,-14.mm,1051.mm], [2297.5.mm,14.mm,1051.mm], [2269.5.mm,14.mm,1051.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(26.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rod-End TR
-  grp = ents.add_group
-  grp.name = "Rod-End TR"
-  face = grp.entities.add_face([2233.5.mm,-16.mm,1048.mm], [2265.5.mm,-16.mm,1048.mm], [2265.5.mm,16.mm,1048.mm], [2233.5.mm,16.mm,1048.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(32.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  face.pushpull(40.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Carriage BL (HGH20CA)
+  # Acetal skate carriage TR
   grp = ents.add_group
-  grp.name = "Carriage BL (HGH20CA)"
-  face = grp.entities.add_face([-2275.5.mm,-32.mm,-1076.mm], [-2223.5.mm,-32.mm,-1076.mm], [-2223.5.mm,32.mm,-1076.mm], [-2275.5.mm,32.mm,-1076.mm])
+  grp.name = "Acetal skate carriage TR"
+  face = grp.entities.add_face([2225.5.mm,-32.mm,1052.mm], [2273.5.mm,-32.mm,1052.mm], [2273.5.mm,32.mm,1052.mm], [2225.5.mm,32.mm,1052.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat = model.materials["Carriage plate Detail TR"] || model.materials.add("Carriage plate Detail TR")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Drive Nut BL
+  # U-joint TR (USKC12-6-6-SS)
   grp = ents.add_group
-  grp.name = "Drive Nut BL"
-  face = grp.entities.add_face([-2229.5.mm,-14.mm,-1077.mm], [-2201.5.mm,-14.mm,-1077.mm], [-2201.5.mm,14.mm,-1077.mm], [-2229.5.mm,14.mm,-1077.mm])
+  grp.name = "U-joint TR (USKC12-6-6-SS)"
+  face = grp.entities.add_face([2238.5.mm,-11.mm,1053.mm], [2260.5.mm,-11.mm,1053.mm], [2260.5.mm,11.mm,1053.mm], [2238.5.mm,11.mm,1053.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(26.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rod-End BL
-  grp = ents.add_group
-  grp.name = "Rod-End BL"
-  face = grp.entities.add_face([-2265.5.mm,-16.mm,-1080.mm], [-2233.5.mm,-16.mm,-1080.mm], [-2233.5.mm,16.mm,-1080.mm], [-2265.5.mm,16.mm,-1080.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(32.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  face.pushpull(22.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Carriage BR (HGH20CA)
+  # 304 SS corner plate TR
   grp = ents.add_group
-  grp.name = "Carriage BR (HGH20CA)"
-  face = grp.entities.add_face([2223.5.mm,-32.mm,-1076.mm], [2275.5.mm,-32.mm,-1076.mm], [2275.5.mm,32.mm,-1076.mm], [2223.5.mm,32.mm,-1076.mm])
+  grp.name = "304 SS corner plate TR"
+  face = grp.entities.add_face([2232.5.mm,4.mm,1044.mm], [2266.5.mm,4.mm,1044.mm], [2266.5.mm,10.mm,1044.mm], [2232.5.mm,10.mm,1044.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal skate carriage BL
+  grp = ents.add_group
+  grp.name = "Acetal skate carriage BL"
+  face = grp.entities.add_face([-2273.5.mm,-32.mm,-1076.mm], [-2225.5.mm,-32.mm,-1076.mm], [-2225.5.mm,32.mm,-1076.mm], [-2273.5.mm,32.mm,-1076.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  mat = model.materials["Carriage plate Detail TR"] || model.materials.add("Carriage plate Detail TR")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Drive Nut BR
+  # U-joint BL (USKC12-6-6-SS)
   grp = ents.add_group
-  grp.name = "Drive Nut BR"
-  face = grp.entities.add_face([2269.5.mm,-14.mm,-1077.mm], [2297.5.mm,-14.mm,-1077.mm], [2297.5.mm,14.mm,-1077.mm], [2269.5.mm,14.mm,-1077.mm])
+  grp.name = "U-joint BL (USKC12-6-6-SS)"
+  face = grp.entities.add_face([-2260.5.mm,-11.mm,-1075.mm], [-2238.5.mm,-11.mm,-1075.mm], [-2238.5.mm,11.mm,-1075.mm], [-2260.5.mm,11.mm,-1075.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(26.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  face.pushpull(22.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 304 SS corner plate BL
+  grp = ents.add_group
+  grp.name = "304 SS corner plate BL"
+  face = grp.entities.add_face([-2266.5.mm,4.mm,-1084.mm], [-2232.5.mm,4.mm,-1084.mm], [-2232.5.mm,10.mm,-1084.mm], [-2266.5.mm,10.mm,-1084.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal skate carriage BR
+  grp = ents.add_group
+  grp.name = "Acetal skate carriage BR"
+  face = grp.entities.add_face([2225.5.mm,-32.mm,-1076.mm], [2273.5.mm,-32.mm,-1076.mm], [2273.5.mm,32.mm,-1076.mm], [2225.5.mm,32.mm,-1076.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Carriage plate Detail TR"] || model.materials.add("Carriage plate Detail TR")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Rod-End BR
+  # U-joint BR (USKC12-6-6-SS)
   grp = ents.add_group
-  grp.name = "Rod-End BR"
-  face = grp.entities.add_face([2233.5.mm,-16.mm,-1080.mm], [2265.5.mm,-16.mm,-1080.mm], [2265.5.mm,16.mm,-1080.mm], [2233.5.mm,16.mm,-1080.mm])
+  grp.name = "U-joint BR (USKC12-6-6-SS)"
+  face = grp.entities.add_face([2238.5.mm,-11.mm,-1075.mm], [2260.5.mm,-11.mm,-1075.mm], [2260.5.mm,11.mm,-1075.mm], [2238.5.mm,11.mm,-1075.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(32.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  face.pushpull(22.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 304 SS corner plate BR
+  grp = ents.add_group
+  grp.name = "304 SS corner plate BR"
+  face = grp.entities.add_face([2232.5.mm,4.mm,-1084.mm], [2266.5.mm,4.mm,-1084.mm], [2266.5.mm,10.mm,-1084.mm], [2232.5.mm,10.mm,-1084.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3327,79 +3628,163 @@ fp_inst.set_attribute(fda, "_onclick_access", "NONE")
 # ═══ Corner Slide TR — DYNAMIC COMPONENT (click: carriage slides along the rail) ═══
 cd_defn = model.definitions.add("Corner Slide TR")
 ents = cd_defn.entities
-  # Detail Carriage TR
+  # Acetal wheel Ø32 Detail TR A
   grp = ents.add_group
-  grp.name = "Detail Carriage TR"
-  face = grp.entities.add_face([2873.mm,1379.7039226776096.mm,2270.mm], [2925.mm,1379.7039226776096.mm,2270.mm], [2925.mm,1443.7039226776096.mm,2270.mm], [2873.mm,1443.7039226776096.mm,2270.mm])
+  grp.name = "Acetal wheel Ø32 Detail TR A"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(28.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2885.mm,1385.7039226776096.mm,2286.mm], vec, 16.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Acetal wheel Ø32 Detail TR A"] || model.materials.add("Acetal wheel Ø32 Detail TR A")
+  mat.color = Sketchup::Color.new(237, 233, 220)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal wheel Ø32 Detail TR B
+  grp = ents.add_group
+  grp.name = "Acetal wheel Ø32 Detail TR B"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(28.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2885.mm,1437.7039226776096.mm,2286.mm], vec, 16.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Acetal wheel Ø32 Detail TR A"] || model.materials.add("Acetal wheel Ø32 Detail TR A")
+  mat.color = Sketchup::Color.new(237, 233, 220)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Skate axle Ø10 Detail TR A
+  grp = ents.add_group
+  grp.name = "Skate axle Ø10 Detail TR A"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(40.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2899.mm,1385.7039226776096.mm,2286.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Skate axle Ø10 Detail TR B
+  grp = ents.add_group
+  grp.name = "Skate axle Ø10 Detail TR B"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(40.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2899.mm,1437.7039226776096.mm,2286.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate Detail TR
+  grp = ents.add_group
+  grp.name = "Carriage plate Detail TR"
+  face = grp.entities.add_face([2933.mm,1377.7039226776096.mm,2263.mm], [2947.mm,1377.7039226776096.mm,2263.mm], [2947.mm,1445.7039226776096.mm,2263.mm], [2933.mm,1445.7039226776096.mm,2263.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(24.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  face.pushpull(44.mm)
+  mat = model.materials["Carriage plate Detail TR"] || model.materials.add("Carriage plate Detail TR")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Detail Drive Nut TR
+  # Z slide Detail TR (TILT — 316 flat bar + UHMW)
   grp = ents.add_group
-  grp.name = "Detail Drive Nut TR"
-  face = grp.entities.add_face([2919.mm,1397.7039226776096.mm,2276.mm], [2947.mm,1397.7039226776096.mm,2276.mm], [2947.mm,1425.7039226776096.mm,2276.mm], [2919.mm,1425.7039226776096.mm,2276.mm])
+  grp.name = "Z slide Detail TR (TILT — 316 flat bar + UHMW)"
+  face = grp.entities.add_face([2891.mm,1396.7039226776096.mm,2223.8329485162067.mm], [2907.mm,1396.7039226776096.mm,2223.8329485162067.mm], [2907.mm,1426.7039226776096.mm,2223.8329485162067.mm], [2891.mm,1426.7039226776096.mm,2223.8329485162067.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(26.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Detail X cross-slide TR (SWING)
-  grp = ents.add_group
-  grp.name = "Detail X cross-slide TR (SWING)"
-  face = grp.entities.add_face([2883.mm,1395.7039226776096.mm,2294.mm], [2932.536838060324.mm,1395.7039226776096.mm,2294.mm], [2932.536838060324.mm,1427.7039226776096.mm,2294.mm], [2883.mm,1427.7039226776096.mm,2294.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Detail X cross-slide TR (SWING)"] || model.materials.add("Detail X cross-slide TR (SWING)")
-  mat.color = Sketchup::Color.new(31, 119, 180)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Detail X slider TR
-  grp = ents.add_group
-  grp.name = "Detail X slider TR"
-  face = grp.entities.add_face([2900.536838060324.mm,1391.7039226776096.mm,2292.mm], [2932.536838060324.mm,1391.7039226776096.mm,2292.mm], [2932.536838060324.mm,1431.7039226776096.mm,2292.mm], [2900.536838060324.mm,1431.7039226776096.mm,2292.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(20.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Detail Z cross-slide TR (TILT)
-  grp = ents.add_group
-  grp.name = "Detail Z cross-slide TR (TILT)"
-  face = grp.entities.add_face([2907.536838060324.mm,1396.7039226776096.mm,2207.8329485162067.mm], [2925.536838060324.mm,1396.7039226776096.mm,2207.8329485162067.mm], [2925.536838060324.mm,1426.7039226776096.mm,2207.8329485162067.mm], [2907.536838060324.mm,1426.7039226776096.mm,2207.8329485162067.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(96.16705148379333.mm)
-  mat = model.materials["Detail Z cross-slide TR (TILT)"] || model.materials.add("Detail Z cross-slide TR (TILT)")
+  face.pushpull(98.16705148379333.mm)
+  mat = model.materials["Z slide Detail TR (TILT — 316 flat bar + UHMW)"] || model.materials.add("Z slide Detail TR (TILT — 316 flat bar + UHMW)")
   mat.color = Sketchup::Color.new(44, 160, 44)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Detail Z slider TR
+  # X slide Detail TR (SWING — 316 flat bar + UHMW)
   grp = ents.add_group
-  grp.name = "Detail Z slider TR"
-  face = grp.entities.add_face([2903.536838060324.mm,1393.7039226776096.mm,2207.8329485162067.mm], [2929.536838060324.mm,1393.7039226776096.mm,2207.8329485162067.mm], [2929.536838060324.mm,1429.7039226776096.mm,2207.8329485162067.mm], [2903.536838060324.mm,1429.7039226776096.mm,2207.8329485162067.mm])
+  grp.name = "X slide Detail TR (SWING — 316 flat bar + UHMW)"
+  face = grp.entities.add_face([2899.mm,1397.7039226776096.mm,2216.8329485162067.mm], [2950.536838060324.mm,1397.7039226776096.mm,2216.8329485162067.mm], [2950.536838060324.mm,1425.7039226776096.mm,2216.8329485162067.mm], [2899.mm,1425.7039226776096.mm,2216.8329485162067.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(32.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
-  mat.color = Sketchup::Color.new(192, 64, 16)
+  face.pushpull(14.mm)
+  mat = model.materials["X slide Detail TR (SWING — 316 flat bar + UHMW)"] || model.materials.add("X slide Detail TR (SWING — 316 flat bar + UHMW)")
+  mat.color = Sketchup::Color.new(31, 119, 180)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Detail Rod-End TR
+  # Cam clamp Detail TR
   grp = ents.add_group
-  grp.name = "Detail Rod-End TR"
-  face = grp.entities.add_face([2899.536838060324.mm,1394.7039226776096.mm,2206.8329485162067.mm], [2933.536838060324.mm,1394.7039226776096.mm,2206.8329485162067.mm], [2933.536838060324.mm,1428.7039226776096.mm,2206.8329485162067.mm], [2899.536838060324.mm,1428.7039226776096.mm,2206.8329485162067.mm])
+  grp.name = "Cam clamp Detail TR"
+  face = grp.entities.add_face([2885.mm,1403.7039226776096.mm,2217.8329485162067.mm], [2899.mm,1403.7039226776096.mm,2217.8329485162067.mm], [2899.mm,1419.7039226776096.mm,2217.8329485162067.mm], [2885.mm,1419.7039226776096.mm,2217.8329485162067.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(34.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  face.pushpull(18.mm)
+  mat = model.materials["Cam clamp Detail TR"] || model.materials.add("Cam clamp Detail TR")
+  mat.color = Sketchup::Color.new(176, 64, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Input stub 3/8 Detail TR
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 Detail TR"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-24.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2942.536838060324.mm,1411.7039226776096.mm,2223.8329485162067.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 4040N12 shaft support Detail TR
+  grp = ents.add_group
+  grp.name = "4040N12 shaft support Detail TR"
+  face = grp.entities.add_face([2938.536838060324.mm,1402.7039226776096.mm,2212.8329485162067.mm], [2954.536838060324.mm,1402.7039226776096.mm,2212.8329485162067.mm], [2954.536838060324.mm,1420.7039226776096.mm,2212.8329485162067.mm], [2938.536838060324.mm,1420.7039226776096.mm,2212.8329485162067.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-joint Detail TR (USKC12-6-6-SS)
+  grp = ents.add_group
+  grp.name = "U-joint Detail TR (USKC12-6-6-SS)"
+  face = grp.entities.add_face([2905.536838060324.mm,1400.7039226776096.mm,2212.8329485162067.mm], [2927.536838060324.mm,1400.7039226776096.mm,2212.8329485162067.mm], [2927.536838060324.mm,1422.7039226776096.mm,2212.8329485162067.mm], [2905.536838060324.mm,1422.7039226776096.mm,2212.8329485162067.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Output stub 3/8 Detail TR
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 Detail TR"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 24.mm, 0.mm)
+  circle = ge.add_circle([2916.536838060324.mm,1411.7039226776096.mm,2223.8329485162067.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 304 SS corner plate Detail TR
+  grp = ents.add_group
+  grp.name = "304 SS corner plate Detail TR"
+  face = grp.entities.add_face([2899.536838060324.mm,1433.7039226776096.mm,2203.8329485162067.mm], [2933.536838060324.mm,1433.7039226776096.mm,2203.8329485162067.mm], [2933.536838060324.mm,1439.7039226776096.mm,2203.8329485162067.mm], [2899.536838060324.mm,1439.7039226776096.mm,2203.8329485162067.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3494,36 +3879,81 @@ cg_inst.layer = model.layers["Corner Detail"]
 # ═══ Corner Swing — DYNAMIC COMPONENT (click: corner traces the swing arc) ═══
 cs_defn = model.definitions.add("Corner Swing")
 ents = cs_defn.entities
-  # Swing Carriage TR
+  # Acetal wheel Ø32 Swing TR A
   grp = ents.add_group
-  grp.name = "Swing Carriage TR"
-  face = grp.entities.add_face([1123.mm,1149.mm,2270.mm], [1175.mm,1149.mm,2270.mm], [1175.mm,1213.mm,2270.mm], [1123.mm,1213.mm,2270.mm])
+  grp.name = "Acetal wheel Ø32 Swing TR A"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(28.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1135.mm,1155.mm,2286.mm], vec, 16.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Acetal wheel Ø32 Detail TR A"] || model.materials.add("Acetal wheel Ø32 Detail TR A")
+  mat.color = Sketchup::Color.new(237, 233, 220)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal wheel Ø32 Swing TR B
+  grp = ents.add_group
+  grp.name = "Acetal wheel Ø32 Swing TR B"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(28.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1135.mm,1207.mm,2286.mm], vec, 16.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Acetal wheel Ø32 Detail TR A"] || model.materials.add("Acetal wheel Ø32 Detail TR A")
+  mat.color = Sketchup::Color.new(237, 233, 220)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Skate axle Ø10 Swing TR A
+  grp = ents.add_group
+  grp.name = "Skate axle Ø10 Swing TR A"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(40.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1149.mm,1155.mm,2286.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Skate axle Ø10 Swing TR B
+  grp = ents.add_group
+  grp.name = "Skate axle Ø10 Swing TR B"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(40.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1149.mm,1207.mm,2286.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate Swing TR
+  grp = ents.add_group
+  grp.name = "Carriage plate Swing TR"
+  face = grp.entities.add_face([1183.mm,1147.mm,2263.mm], [1197.mm,1147.mm,2263.mm], [1197.mm,1215.mm,2263.mm], [1183.mm,1215.mm,2263.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(24.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
+  face.pushpull(44.mm)
+  mat = model.materials["Carriage plate Detail TR"] || model.materials.add("Carriage plate Detail TR")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Swing Drive Nut TR
+  # Z slide Swing TR (TILT — 316 flat bar + UHMW)
   grp = ents.add_group
-  grp.name = "Swing Drive Nut TR"
-  face = grp.entities.add_face([1169.mm,1167.mm,2276.mm], [1197.mm,1167.mm,2276.mm], [1197.mm,1195.mm,2276.mm], [1169.mm,1195.mm,2276.mm])
+  grp.name = "Z slide Swing TR (TILT — 316 flat bar + UHMW)"
+  face = grp.entities.add_face([1141.mm,1166.mm,2288.mm], [1157.mm,1166.mm,2288.mm], [1157.mm,1196.mm,2288.mm], [1141.mm,1196.mm,2288.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(26.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Swing X cross-slide TR (SWING float)
-  grp = ents.add_group
-  grp.name = "Swing X cross-slide TR (SWING float)"
-  face = grp.entities.add_face([1049.mm,1165.mm,2294.mm], [1179.mm,1165.mm,2294.mm], [1179.mm,1197.mm,2294.mm], [1049.mm,1197.mm,2294.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Detail X cross-slide TR (SWING)"] || model.materials.add("Detail X cross-slide TR (SWING)")
-  mat.color = Sketchup::Color.new(31, 119, 180)
+  face.pushpull(34.mm)
+  mat = model.materials["Z slide Detail TR (TILT — 316 flat bar + UHMW)"] || model.materials.add("Z slide Detail TR (TILT — 316 flat bar + UHMW)")
+  mat.color = Sketchup::Color.new(44, 160, 44)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -3534,46 +3964,85 @@ csa = "dynamic_attributes"
 # nested child — the floating slider (built flat, world coords)
 cf_defn = model.definitions.add("Corner Swing Float")
 ents = cf_defn.entities
-  # Swing X slider TR
+  # X slide Swing TR (SWING — 316 flat bar + UHMW)
   grp = ents.add_group
-  grp.name = "Swing X slider TR"
-  face = grp.entities.add_face([1133.mm,1161.mm,2292.mm], [1165.mm,1161.mm,2292.mm], [1165.mm,1201.mm,2292.mm], [1133.mm,1201.mm,2292.mm])
+  grp.name = "X slide Swing TR (SWING — 316 flat bar + UHMW)"
+  face = grp.entities.add_face([1149.mm,1167.mm,2281.mm], [1183.mm,1167.mm,2281.mm], [1183.mm,1195.mm,2281.mm], [1149.mm,1195.mm,2281.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(20.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
-  mat.color = Sketchup::Color.new(192, 64, 16)
+  face.pushpull(14.mm)
+  mat = model.materials["X slide Detail TR (SWING — 316 flat bar + UHMW)"] || model.materials.add("X slide Detail TR (SWING — 316 flat bar + UHMW)")
+  mat.color = Sketchup::Color.new(31, 119, 180)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Swing Z cross-slide TR
+  # Cam clamp Swing TR
   grp = ents.add_group
-  grp.name = "Swing Z cross-slide TR"
-  face = grp.entities.add_face([1140.mm,1166.mm,2279.mm], [1158.mm,1166.mm,2279.mm], [1158.mm,1196.mm,2279.mm], [1140.mm,1196.mm,2279.mm])
+  grp.name = "Cam clamp Swing TR"
+  face = grp.entities.add_face([1135.mm,1173.mm,2282.mm], [1149.mm,1173.mm,2282.mm], [1149.mm,1189.mm,2282.mm], [1135.mm,1189.mm,2282.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["Detail Z cross-slide TR (TILT)"] || model.materials.add("Detail Z cross-slide TR (TILT)")
-  mat.color = Sketchup::Color.new(44, 160, 44)
+  face.pushpull(18.mm)
+  mat = model.materials["Cam clamp Detail TR"] || model.materials.add("Cam clamp Detail TR")
+  mat.color = Sketchup::Color.new(176, 64, 42)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Swing Z slider TR
+  # Input stub 3/8 Swing TR
   grp = ents.add_group
-  grp.name = "Swing Z slider TR"
-  face = grp.entities.add_face([1136.mm,1163.mm,2272.mm], [1162.mm,1163.mm,2272.mm], [1162.mm,1199.mm,2272.mm], [1136.mm,1199.mm,2272.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(32.mm)
-  mat = model.materials["Detail Carriage TR"] || model.materials.add("Detail Carriage TR")
-  mat.color = Sketchup::Color.new(192, 64, 16)
+  grp.name = "Input stub 3/8 Swing TR"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-24.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([1175.mm,1181.mm,2288.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Swing Rod-End TR
+  # 4040N12 shaft support Swing TR
   grp = ents.add_group
-  grp.name = "Swing Rod-End TR"
-  face = grp.entities.add_face([1132.mm,1164.mm,2271.mm], [1166.mm,1164.mm,2271.mm], [1166.mm,1198.mm,2271.mm], [1132.mm,1198.mm,2271.mm])
+  grp.name = "4040N12 shaft support Swing TR"
+  face = grp.entities.add_face([1171.mm,1172.mm,2277.mm], [1187.mm,1172.mm,2277.mm], [1187.mm,1190.mm,2277.mm], [1171.mm,1190.mm,2277.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(34.mm)
-  mat = model.materials["Detail Leadscrew TR"] || model.materials.add("Detail Leadscrew TR")
+  face.pushpull(22.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-joint Swing TR (USKC12-6-6-SS)
+  grp = ents.add_group
+  grp.name = "U-joint Swing TR (USKC12-6-6-SS)"
+  face = grp.entities.add_face([1138.mm,1170.mm,2277.mm], [1160.mm,1170.mm,2277.mm], [1160.mm,1192.mm,2277.mm], [1138.mm,1192.mm,2277.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Output stub 3/8 Swing TR
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 Swing TR"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 24.mm, 0.mm)
+  circle = ge.add_circle([1149.mm,1181.mm,2288.mm], vec, 5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 304 SS corner plate Swing TR
+  grp = ents.add_group
+  grp.name = "304 SS corner plate Swing TR"
+  face = grp.entities.add_face([1132.mm,1203.mm,2268.mm], [1166.mm,1203.mm,2268.mm], [1166.mm,1209.mm,2268.mm], [1132.mm,1209.mm,2268.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Skate axle Ø10 Detail TR A"] || model.materials.add("Skate axle Ø10 Detail TR A")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3707,14 +4176,15 @@ tr.layer = model.layers["Corner Detail"] rescue nil
 
 
 # ── Corner-detail callouts (Corner Detail tag — shown on the STATIC detail) ──
-t=entities.add_text("HGR20 rail - FIXED (depth guide)", Geom::Point3d.new(-1476.mm,1161.7039226776096.mm,2288.mm), Geom::Vector3d.new(10,0,11.0)); t.layer=model.layers["Corner Detail"] rescue nil
-t=entities.add_text("Leadscrew - DEPTH / focus drive", Geom::Point3d.new(-1442.mm,711.7039226776096.mm,2288.mm), Geom::Vector3d.new(4.0,0,19.0)); t.layer=model.layers["Corner Detail"] rescue nil
-t=entities.add_text("Carriage + drive nut
-(click: slides on rail)", Geom::Point3d.new(-1496.mm,1411.7039226776096.mm,2276.mm), Geom::Vector3d.new(-10.0,0,-15.0)); t.layer=model.layers["Corner Detail"] rescue nil
-t=entities.add_text("X cross-slide = SWING float (blue)", Geom::Point3d.new(-1467.231580969838.mm,1411.7039226776096.mm,2302.mm), Geom::Vector3d.new(-12.0,0,4.0)); t.layer=model.layers["Corner Detail"] rescue nil
-t=entities.add_text("Z cross-slide = TILT float (green)", Geom::Point3d.new(-1458.463161939676.mm,1411.7039226776096.mm,2255.9164742581033.mm), Geom::Vector3d.new(17.0,0,-12.0)); t.layer=model.layers["Corner Detail"] rescue nil
-t=entities.add_text("Rod-end -> rigid frame corner", Geom::Point3d.new(-1458.463161939676.mm,1411.7039226776096.mm,2223.8329485162067.mm), Geom::Vector3d.new(17.0,0,5.0)); t.layer=model.layers["Corner Detail"] rescue nil
-t=entities.add_text("ghost = corner if it stayed on rail", Geom::Point3d.new(-1476.mm,1411.7039226776096.mm,2288.mm), Geom::Vector3d.new(-17.0,0,13.0)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("3x1.5 304 U-channel rail - FIXED (depth guide)", Geom::Point3d.new(-1476.mm,1161.7039226776096.mm,2288.mm), Geom::Vector3d.new(24.0,0,21.0)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("acetal skate (Ø32 wheels) + cam clamp
+(push to pose - no leadscrew)", Geom::Point3d.new(-1442.mm,711.7039226776096.mm,2288.mm), Geom::Vector3d.new(1.5,0,39.0)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("carriage plate
+(click: slides on rail)", Geom::Point3d.new(-1496.mm,1411.7039226776096.mm,2276.mm), Geom::Vector3d.new(-25.5,0,-33.0)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("X (SWING) slide = 316 flat bar (blue)", Geom::Point3d.new(-1467.231580969838.mm,1411.7039226776096.mm,2302.mm), Geom::Vector3d.new(-36.0,0,4.5)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("Z (TILT) slide = 316 flat bar (green)", Geom::Point3d.new(-1458.463161939676.mm,1411.7039226776096.mm,2255.9164742581033.mm), Geom::Vector3d.new(28.5,0,-30.0)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("U-joint (USKC12-6-6-SS) -> 304 SS corner plate -> frame", Geom::Point3d.new(-1458.463161939676.mm,1411.7039226776096.mm,2223.8329485162067.mm), Geom::Vector3d.new(39.0,0,10.5)); t.layer=model.layers["Corner Detail"] rescue nil
+t=entities.add_text("ghost = corner if it stayed on rail", Geom::Point3d.new(-1476.mm,1411.7039226776096.mm,2288.mm), Geom::Vector3d.new(-33.0,0,30.0)); t.layer=model.layers["Corner Detail"] rescue nil
 
 # ── Component callouts (Labels tag — shown only in the "Labeled" scene) ──
 inst = entities.grep(Sketchup::ComponentInstance).find { |i| i.name == "Film Plane" }

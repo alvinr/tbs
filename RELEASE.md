@@ -24,6 +24,12 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **`film-plane.skp` reconciled to the current corner mechanism** — the older leadscrew-DC
+  model's Option-A hardware (HGR20 rails + Acme leadscrews + rod-ends) replaced by the current
+  design (304 U-channel rails + acetal skate + 316 flat-bar X/Z slides + cam clamp + U-joint
+  USKC12-6-6-SS + 304 SS corner plate) across every scene — the Overview/No-Container main model
+  and all four Corner-detail diagrams — built from one shared `_corner_parts()` helper. The
+  click Dynamic Components (swing / rail-slide / swing-arc / rotate-plane) are unchanged.
 - **Renamed the articulated-corner 3D model `corner-gimbal` → `film-plane-mechanism`** — the
   `.skp`, `.rb`, generator (`generate_film_plane_mechanism_model.py`), dependency-map key and
   Sketchfab config key all follow; the Sketchfab UID (embed URL) is unchanged.

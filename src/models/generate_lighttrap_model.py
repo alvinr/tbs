@@ -693,7 +693,7 @@ def film_plane_left():
     s = ov.BRACE_RHS                            # 50
     xL = ov.RAIL_X_L                            # 150
     z_bot = ov.RAIL_OFF                         # 100
-    z_top = ov.C_HGT - ov.RAIL_OFF - rail       # 2248
+    z_top = ov.C_HGT - ov.RAIL_OFF_TOP - rail   # 2204 — film-plane top rail (dropped 44mm via RAIL_OFF_TOP)
     yN, yF = ov.FP_Y_MIN, ov.FP_Y               # 100, 2262
     blen = WALL_FAR - xL                         # beams run X150..WALL_FAR (match container/walkway)
     C = ov.C_STEEL

@@ -17,7 +17,7 @@
 | **1. Container purchase & delivery** | $2,300 | $3,300 | $4,300 |
 | **2. Interior conversion** | $950 | $1,138 | $1,350 |
 | **3. Optics — pinhole plate** | $110 | $185 | $265 |
-| **4. Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)** | $3,381 | $3,648 | $3,915 |
+| **4. Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)** | $3,374 | $3,636 | $3,898 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $5,356 | $6,647 | $7,929 |
 | **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)** | $2,608 | $2,806 | $3,003 |
 | **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $757 | $817 | $907 |
@@ -26,10 +26,10 @@
 | **6b. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)** | $855 | $1,143 | $1,430 |
 | **6c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle)** | $1,140 | $1,418 | $1,695 |
 | **6d. Chemistry prep shelf (fold-down phenolic board + steel frame + hinge/stays + TAP-01 trunk extension)** | $203 | $203 | $203 |
-| **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,120 | $1,520 | $2,700 |
+| **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,100 | $1,490 | $2,650 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licenses & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$22,705** | **$28,621** | **$36,422** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$22,678** | **$28,579** | **$36,355** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware AmFe** chemistry + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,120), Mid = Standard ½-Ware ($1,520), High = Rich full-Ware ($2,700)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
@@ -213,7 +213,7 @@ View-camera-style moveable film plane (Option A — a **fixed-size rigid** plane
 | Dibond ACM backing — single rigid panel (Option A: no folding hinge) | included above | — | — | — |
 | 6-mil black poly sheeting | 10'×100' roll | 1 | $65† | $65 |
 | 2" black Gorilla Tape | 35 yd rolls | 6 | $12† | $72 |
-| Cam-lever spring clamps (muslin) | Over-center cam, neoprene jaw | 90 | $3-8† | $270-720 |
+| Muslin spring clips | Bracket + spring jaw, neoprene pad | 88 | $3-8† | $264-704 |
 | M5×16 SS bolts + Nylock nuts | Clamp mounting (2 per clamp) | 184+184 | — | $55 |
 | Neoprene strip 60A | Jaw pads, 35mm×6mm, 10m roll | 1 | $15† | $15 |
 
@@ -257,16 +257,16 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 | Aluminum angle 2×2×3/16 (6061 anodized, expendable) 8 ft (×10) | $220 | $220 | $220 |
 | Dibond ACM 4mm 4×8 sheets (×6) — single rigid plane | $510 | $510 | $510 |
 | Light-seal set — EPDM tape (×3) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6) | $299 | $313 | $327 |
-| Cam-lever spring clamps, muslin (×90) | $270 | $495 | $720 |
-| Clamp mounting — M5×16 SS bolts/Nylocks (×180+180) + neoprene jaw strip | $74 | $74 | $74 |
+| Muslin spring clips (×88) | $264 | $484 | $704 |
+| Clamp mounting — M5×16 SS bolts/Nylocks (×180+180) + neoprene jaw strip | $73 | $73 | $73 |
 | Wall-seat saddles ×8 — 8mm steel plate, cut + welded (ICP-11) | $318 | $318 | $318 |
 | Saddle fasteners — M12 through-bolts (×36) + M8 thumbscrews (×12) + M8 rail bolts (×12) | $122 | $122 | $122 |
-| **Section total — film plane mechanism (manual, incl. saddles + cross-slides)** | **$3,381** | **$3,648** | **$3,915** |
+| **Section total — film plane mechanism (manual, incl. saddles + cross-slides)** | **$3,374** | **$3,636** | **$3,898** |
 <!-- END costing:film -->
 
 *Electric actuation (optional add-on, not in any standard build): +$827 — see §4.4.*
 
-*Includes $344–794 for muslin clamp system (90 cam-lever clamps). Range reflects generic vs Destaco-equivalent quality.*
+*Includes $344–794 for muslin clamp system (88 spring clips). Range reflects generic vs quality.*
 
 ---
 
@@ -274,7 +274,7 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 
 **Source document:** `water-system-report.md`
 
-Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides ~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> full-size prints (~<!-- BEGIN fact:image_area_sqft -->104<!-- END fact:image_area_sqft --> sq ft each) between water resupply runs, with Brown wash-2 recycling (~8–10 on fresh Blue alone).
+Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides ~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> full-size prints (~<!-- BEGIN fact:image_area_sqft -->101<!-- END fact:image_area_sqft --> sq ft each) between water resupply runs, with Brown wash-2 recycling (~8–10 on fresh Blue alone).
 
 <!-- BEGIN costing:water -->
 | Category | Low† | High† |
@@ -392,7 +392,7 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 
 > **⚠ Chemistry is now a RANGE — pending [Sensitizer Trials](sensitizer-trials.md).** Corrected to the
 > **Mike Ware New Cyanotype** formula: ammonium iron(III) oxalate (**AmFe** — not the old ferric ammonium
-> citrate), **3:1 AmFe:ferricyanide ratio**, and **two wet-on-wet coats** over the 9.62 m² active plane.
+> citrate), **3:1 AmFe:ferricyanide ratio**, and **two wet-on-wet coats** over the 9.42 m² active plane.
 > Per-print AmFe is **260–780 g** by concentration tier (Lean ⅓-Ware / Standard ½-Ware / Rich full-Ware —
 > operating-manual §0.2), so the chemistry cost spans a wide band until a tier is trialled. **Standard
 > (½-Ware) is the working default.**
@@ -400,16 +400,16 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 <!-- BEGIN costing:chemistry-7-1 -->
 | Item (50 prints) | Lean (⅓-Ware) | **Standard (½-Ware) — default** | Rich (full-Ware) | Source |
 |---|---|---|---|---|
-| Ammonium iron(III) oxalate (AmFe) | 11.6 kg / ~$700 | **17.5 kg / ~$1,050** | 34.9 kg / ~$2,090 | Photographers' Formulary (~$60/kg) |
-| Potassium ferricyanide (3:1 ratio) | 3.9 kg / ~$95 | **5.8 kg / ~$141** | 11.6 kg / ~$282 | Bostick & Sullivan ($24.29/kg) |
+| Ammonium iron(III) oxalate (AmFe) | 11.4 kg / ~$680 | **17.1 kg / ~$1,030** | 34.2 kg / ~$2,050 | Photographers' Formulary (~$60/kg) |
+| Potassium ferricyanide (3:1 ratio) | 3.8 kg / ~$92 | **5.7 kg / ~$138** | 11.4 kg / ~$277 | Bostick & Sullivan ($24.29/kg) |
 | Ammonium dichromate (contrast, 0.1–0.4%) | ~$25 | **~$25** | ~$25 | Photographers' Formulary |
-| Unbleached cotton muslin, 60″ — 3 × 150-yd rolls (~399 yd) | ~$300 | **~$300** | ~$300 | Fabric Direct (~$100/roll) |
-| **Cyanotype total — 50 prints** | **~$1,120** | **~$1,520** | **~$2,700** | |
+| Unbleached cotton muslin, 60″ — 3 × 150-yd rolls (~388 yd) | ~$300 | **~$300** | ~$300 | Fabric Direct (~$100/roll) |
+| **Cyanotype total — 50 prints** | **~$1,100** | **~$1,490** | **~$2,650** | |
 <!-- END costing:chemistry-7-1 -->
 
 *Note: development requires only plain cold water — no darkroom chemistry. The §5 water system provides all wash water.*
 
-*Muslin reconciled (2026-06-18): the earlier $1,100 / $900 / $43-per-print figures all over-counted the fabric ~3×. The [shopping list](chemistry-shopping-list.md) derived 5,980 sq ft ÷ 60″(5 ft) wide = "1,340 linear **yards**," but 5,980 ÷ 5 = 1,196 linear **feet** ≈ **399 yd** — feet were labelled yards. Three 60″ strips cover the <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> mm width (×<!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm --> mm tall = ~21 ft/print); 50 prints + 15% waste = ~400 yd = **3 × 150-yd rolls ≈ $300 (~$6/print)**. §7.1 and §7.2 now agree on this figure.*
+*Muslin reconciled (2026-06-18): the earlier $1,100 / $900 / $43-per-print figures all over-counted the fabric ~3×. The [shopping list](chemistry-shopping-list.md) derived 5,980 sq ft ÷ 60″(5 ft) wide = "1,340 linear **yards**," but 5,980 ÷ 5 = 1,196 linear **feet** ≈ **399 yd** — feet were labelled yards. Three 60″ strips cover the <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> mm width (×<!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm --> mm tall = ~21 ft/print); 50 prints + 15% waste = ~400 yd = **3 × 150-yd rolls ≈ $300 (~$6/print)**. §7.1 and §7.2 now agree on this figure.*
 
 ### 7.2 Per-print cost (cyanotype — Standard ½-Ware tier; range locked by trial)
 
@@ -418,7 +418,7 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 | Ammonium iron(III) oxalate (AmFe, Part A) | ~$23 |
 | Potassium ferricyanide (Part B) | ~$3 |
 | Ammonium dichromate (contrast) | ~$0.50 |
-| Muslin substrate (~<!-- BEGIN fact:image_area_sqft -->104<!-- END fact:image_area_sqft --> sq ft = ~9 yd of 60″ + 15% waste) | ~$6 |
+| Muslin substrate (~<!-- BEGIN fact:image_area_sqft -->101<!-- END fact:image_area_sqft --> sq ft = ~9 yd of 60″ + 15% waste) | ~$6 |
 | Water & consumables (6-mil liner, gloves) | ~$3 |
 | **Total per print (Standard)** | **~$36** |
 
@@ -428,7 +428,7 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 
 | Process | 50-print total† | Per print | Key constraint |
 |---------|----------------|-----------|----------------|
-| **Cyanotype** | **~<!-- BEGIN costing:s73-50run-range -->$1,250–2,850<!-- END costing:s73-50run-range -->** (Std ~<!-- BEGIN costing:s73-50run-std -->$1,650<!-- END costing:s73-50run-std -->)‡ | **~<!-- BEGIN costing:s73-pp-range -->$25–57<!-- END costing:s73-pp-range -->** (Std ~<!-- BEGIN costing:s73-pp-std -->$33<!-- END costing:s73-pp-std -->)‡ | None — easiest |
+| **Cyanotype** | **~<!-- BEGIN costing:s73-50run-range -->$1,250–2,800<!-- END costing:s73-50run-range -->** (Std ~<!-- BEGIN costing:s73-50run-std -->$1,650<!-- END costing:s73-50run-std -->)‡ | **~<!-- BEGIN costing:s73-pp-range -->$25–56<!-- END costing:s73-pp-range -->** (Std ~<!-- BEGIN costing:s73-pp-std -->$33<!-- END costing:s73-pp-std -->)‡ | None — easiest |
 | Gum bichromate | ~$5,150 | ~$103 | Hazmat shipping (dichromate) |
 | Van Dyke Brown | ~$11,000 | ~$220 | DEA form; AgNO₃ price volatility |
 | Ilford RC paper | ~$20,500 | ~$410 | Paper rolls very expensive at this size |
@@ -558,7 +558,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Container (WWT) + delivery | $1,800 |
 | Interior conversion (minimal) | $950 |
 | Pinhole plate | $110 |
-| Film plane mechanism (manual Option A, incl. wall-seat saddles + cross-slides) | $3,381 |
+| Film plane mechanism (manual Option A, incl. wall-seat saddles + cross-slides) | $3,374 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $5,356 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $2,608 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $757 |
@@ -567,10 +567,10 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $855 |
 | Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle) | $1,140 |
 | Chemistry prep shelf (fold-down board + tap trunk extension) | $203 |
-| Cyanotype chemistry + substrate (50 prints) | $1,120 |
+| Cyanotype chemistry + substrate (50 prints) | $1,100 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$22,135** |
+| **Scenario A total** | **~$22,108** |
 <!-- END costing:scenario-a -->
 
 ### Scenario B — Recommended build, regional deployment
@@ -581,7 +581,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Container (CW) + delivery | $3,150 |
 | Interior conversion (full) | $1,138 |
 | Pinhole plate | $185 |
-| Film plane mechanism (manual Option A + wall-seat saddles + cross-slides) | $3,648 |
+| Film plane mechanism (manual Option A + wall-seat saddles + cross-slides) | $3,636 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,647 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $2,806 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $817 |
@@ -590,11 +590,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,143 |
 | Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle) | $1,418 |
 | Chemistry prep shelf (fold-down board + tap trunk extension) | $203 |
-| Cyanotype chemistry + substrate (50 prints) | $1,520 |
+| Cyanotype chemistry + substrate (50 prints) | $1,490 |
 | Rodenstock Apo-Ronar 1,200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$28,931** |
+| **Scenario B total (excl. CDL)** | **~$28,889** |
 <!-- END costing:scenario-b -->
 
 ### Scenario C — Full production, own transport, CDL
@@ -602,11 +602,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:scenario-c -->
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $28,031 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $27,989 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$117,531–$147,531** |
+| **Scenario C total** | **~$117,489–$147,489** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

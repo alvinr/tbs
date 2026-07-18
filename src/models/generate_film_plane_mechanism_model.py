@@ -68,7 +68,8 @@ PZ0 = ov.RAIL_OFF_BOT                # 160 — film BOTTOM edge, ABOVE the Z140 
 BUILD_BOT = 110                      # bottom channel centre → film-corner stack (weight-bearing carriage)
 GUIDE_GAP = 10                       # top guide-follower gap (film top just below the flat guide channel)
 PZ_HB_BOT = PZ0 + BUILD_BOT          # 270 — bottom channel WEB-centre (bottom flange @220 clears the deck; film hangs below)
-PZ_HB_TOP = ov.C_HGT - CW_TOP // 2 - 6   # top flat-channel centre (just under the ceiling)
+PZ_HB_TOP = ov.C_HGT - CW_TOP // 2 - 50  # top flat-channel centre — lowered so the on-top rail fittings
+                                         # (bridge/splice/pinhole-wall gusset) clear the ceiling by 25mm
 PZ1 = PZ_HB_TOP - CW_TOP // 2 - GUIDE_GAP # film TOP edge — held just under the flat guide channel
 BUILD = BUILD_BOT                    # (label back-compat)
 CZ_F, CZ_C = 15, ov.C_HGT - 15       # (retained only for the faint floor/ceiling context boxes)
@@ -144,9 +145,9 @@ def corner(tag, cx, fz, zc, cin, side):
             P.append(ov.ruby_cylinder(f"Locating pin (bridge↔STUB, flush to inner-rail top) {tag}", cx, LEFT_CUT_YD + 45, zc + CD_BOT / 2 - HB_T, 5, HB_T + 12, color=C_STEEL, axis="z"))
             # short bottom support bridge welded to the STUB, laps under + carries the removable beam (~64mm)
             P.append(ov.ruby_box(f"Bottom support bridge (STUB → beam underside) {tag}", cx - CW_BOT / 2, LEFT_CUT_YD - 32, botf - 12, CW_BOT, 64, 12, color=C_CROSS))
-        else:        # top: splice plate over the web (above the mechanism — already clear), flush to the web width
+        else:        # top: splice plate over the web; locating pin FLUSH with the bridge top (not proud)
             P.append(ov.ruby_box(f"Welded bridge (welded to REMOVABLE, bears on stub, over web) {tag}", cx - CD_TOP / 2, LEFT_CUT_YD - 60, splice_z, CD_TOP, 150, 12, color=C_CROSS))
-            P.append(ov.ruby_cylinder(f"Retaining screw (bridge→STUB) {tag}", cx, LEFT_CUT_YD + 45, splice_z + 4, 5, 26, color=C_STEEL, axis="z"))
+            P.append(ov.ruby_cylinder(f"Locating pin (bridge↔STUB, flush) {tag}", cx, LEFT_CUT_YD + 45, splice_z - HB_T, 5, HB_T + 12, color=C_STEEL, axis="z"))
         # No floor post at the cut: the stub (Yd LEFT_CUT_YD→C_WID) is anchored at the pivot post (= film
         # far-left post) + the far wall, and the cut is only ~197mm cantilevered from it — the removable's
         # welded bridge BEARS on the stub, whose pivot-post anchor carries the reaction, so a floor post
@@ -196,11 +197,15 @@ def corner(tag, cx, fz, zc, cin, side):
         P.append(ov.ruby_box(f"Yoke cross-piece (joins the two arms) {tag}", cx - 35, ty - 34, yb - 22, 70, 68, 8, color=C_CAR))
         P.append(ov.ruby_box(f"Yoke rail (→ inboard carriage) {tag}", min(cx + 33, inb), ty - 34, yb - 20, abs(inb - (cx + 33)) + 6, 68, 6, color=C_CAR))
     # carriage plate on the axle ends + axle-retainer bolts DOWN THROUGH THE PLATE (saddle-clamp, not the beam).
-    # Spans the FULL Z of film-corner / load-roller / KEEPER-roller so every axle lands on it (keeper included).
-    zlo, zhi = min(fz, rz, kz), max(fz, rz, kz)
-    P.append(ov.ruby_box(f"Carriage plate (bolted to skate axles) {tag}", inb - 6, ty + 1, zlo - 6, 14, 86, (zhi - zlo) + 24, color=C_CAR))
+    # Spans the film-corner / load-roller (/ keeper on the bottom) so every axle lands on it. kz is the
+    # BOTTOM keeper only — exclude it at the top. TOP corners: cap the plate top 25mm below the ceiling.
+    zvals = (fz, rz, kz) if is_bot else (fz, rz)
+    zlo, zhi = min(zvals), max(zvals)
+    plate_top = min(zhi + 18, ov.C_HGT - 25)
+    P.append(ov.ruby_box(f"Carriage plate (bolted to skate axles) {tag}", inb - 6, ty + 1, zlo - 6, 14, 86, plate_top - (zlo - 6), color=C_CAR))
     for ry in (ty + 8, ty + 48):
-        P.append(ov.ruby_cylinder(f"Axle retainer bolt (thru plate) {tag} {int(ry)}", inb, ry, rz - 22, 2.5, 44, color=C_CROSS, axis="z"))
+        blen = min(44, plate_top - (rz - 22))                 # keep the retainer bolt within the (capped) plate
+        P.append(ov.ruby_cylinder(f"Axle retainer bolt (thru plate) {tag} {int(ry)}", inb, ry, rz - 22, 2.5, blen, color=C_CROSS, axis="z"))
 
     # ── mechanism, inboard: Z slide (tilt) → X slide (swing) → U-joint → the FILM-PLANE CORNER ──
     # The cross-slides sit on the BACKING side of the film plane (Yd > FP_Y) so the frame SITS ON them — the

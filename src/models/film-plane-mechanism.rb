@@ -721,7 +721,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-rail STUB (fixed, parks corner) web TL
   grp = ents.add_group
   grp.name = "U-rail STUB (fixed, parks corner) web TL"
-  face = grp.entities.add_face([112.mm,2090.mm,2377.mm], [188.mm,2090.mm,2377.mm], [188.mm,2362.mm,2377.mm], [112.mm,2362.mm,2377.mm])
+  face = grp.entities.add_face([112.mm,2090.mm,2333.mm], [188.mm,2090.mm,2333.mm], [188.mm,2362.mm,2333.mm], [112.mm,2362.mm,2333.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
@@ -732,7 +732,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-rail STUB (fixed, parks corner) flange TL 112
   grp = ents.add_group
   grp.name = "U-rail STUB (fixed, parks corner) flange TL 112"
-  face = grp.entities.add_face([112.mm,2090.mm,2344.mm], [117.mm,2090.mm,2344.mm], [117.mm,2362.mm,2344.mm], [112.mm,2362.mm,2344.mm])
+  face = grp.entities.add_face([112.mm,2090.mm,2300.mm], [117.mm,2090.mm,2300.mm], [117.mm,2362.mm,2300.mm], [112.mm,2362.mm,2300.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
@@ -743,7 +743,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-rail STUB (fixed, parks corner) flange TL 183
   grp = ents.add_group
   grp.name = "U-rail STUB (fixed, parks corner) flange TL 183"
-  face = grp.entities.add_face([183.mm,2090.mm,2344.mm], [188.mm,2090.mm,2344.mm], [188.mm,2362.mm,2344.mm], [183.mm,2362.mm,2344.mm])
+  face = grp.entities.add_face([183.mm,2090.mm,2300.mm], [188.mm,2090.mm,2300.mm], [188.mm,2362.mm,2300.mm], [183.mm,2362.mm,2300.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
@@ -754,7 +754,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-rail REMOVABLE (out for transport) web TL
   grp = ents.add_group
   grp.name = "U-rail REMOVABLE (out for transport) web TL"
-  face = grp.entities.add_face([112.mm,0.mm,2377.mm], [188.mm,0.mm,2377.mm], [188.mm,2090.mm,2377.mm], [112.mm,2090.mm,2377.mm])
+  face = grp.entities.add_face([112.mm,0.mm,2333.mm], [188.mm,0.mm,2333.mm], [188.mm,2090.mm,2333.mm], [112.mm,2090.mm,2333.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
@@ -765,7 +765,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-rail REMOVABLE (out for transport) flange TL 112
   grp = ents.add_group
   grp.name = "U-rail REMOVABLE (out for transport) flange TL 112"
-  face = grp.entities.add_face([112.mm,0.mm,2344.mm], [117.mm,0.mm,2344.mm], [117.mm,2090.mm,2344.mm], [112.mm,2090.mm,2344.mm])
+  face = grp.entities.add_face([112.mm,0.mm,2300.mm], [117.mm,0.mm,2300.mm], [117.mm,2090.mm,2300.mm], [112.mm,2090.mm,2300.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
@@ -776,7 +776,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-rail REMOVABLE (out for transport) flange TL 183
   grp = ents.add_group
   grp.name = "U-rail REMOVABLE (out for transport) flange TL 183"
-  face = grp.entities.add_face([183.mm,0.mm,2344.mm], [188.mm,0.mm,2344.mm], [188.mm,2090.mm,2344.mm], [183.mm,2090.mm,2344.mm])
+  face = grp.entities.add_face([183.mm,0.mm,2300.mm], [188.mm,0.mm,2300.mm], [188.mm,2090.mm,2300.mm], [183.mm,2090.mm,2300.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
@@ -787,7 +787,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Welded bridge (welded to REMOVABLE, bears on stub, over web) TL
   grp = ents.add_group
   grp.name = "Welded bridge (welded to REMOVABLE, bears on stub, over web) TL"
-  face = grp.entities.add_face([112.mm,2030.mm,2382.mm], [188.mm,2030.mm,2382.mm], [188.mm,2180.mm,2382.mm], [112.mm,2180.mm,2382.mm])
+  face = grp.entities.add_face([112.mm,2030.mm,2338.mm], [188.mm,2030.mm,2338.mm], [188.mm,2180.mm,2338.mm], [112.mm,2180.mm,2338.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
@@ -795,14 +795,14 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   mat.alpha = 1.0
   grp.material = mat
 
-  # Retaining screw (bridge→STUB) TL
+  # Locating pin (bridge↔STUB, flush) TL
   grp = ents.add_group
-  grp.name = "Retaining screw (bridge→STUB) TL"
+  grp.name = "Locating pin (bridge↔STUB, flush) TL"
   ge = grp.entities
-  circle = ge.add_circle([150.mm,2135.mm,2386.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([150.mm,2135.mm,2333.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(26.mm)
+  cface.pushpull(17.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -811,7 +811,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Rail far flange (pivot post) TL
   grp = ents.add_group
   grp.name = "Rail far flange (pivot post) TL"
-  face = grp.entities.add_face([95.mm,2350.mm,2339.mm], [205.mm,2350.mm,2339.mm], [205.mm,2362.mm,2339.mm], [95.mm,2362.mm,2339.mm])
+  face = grp.entities.add_face([95.mm,2350.mm,2295.mm], [205.mm,2350.mm,2295.mm], [205.mm,2362.mm,2295.mm], [95.mm,2362.mm,2295.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
@@ -822,7 +822,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Pinhole-wall gusset/seat TL
   grp = ents.add_group
   grp.name = "Pinhole-wall gusset/seat TL"
-  face = grp.entities.add_face([94.mm,0.mm,2314.mm], [206.mm,0.mm,2314.mm], [206.mm,45.mm,2314.mm], [94.mm,45.mm,2314.mm])
+  face = grp.entities.add_face([94.mm,0.mm,2270.mm], [206.mm,0.mm,2270.mm], [206.mm,45.mm,2270.mm], [94.mm,45.mm,2270.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(93.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
@@ -833,7 +833,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Length splice (pinhole end, over web) TL
   grp = ents.add_group
   grp.name = "Length splice (pinhole end, over web) TL"
-  face = grp.entities.add_face([112.mm,205.mm,2382.mm], [188.mm,205.mm,2382.mm], [188.mm,315.mm,2382.mm], [112.mm,315.mm,2382.mm])
+  face = grp.entities.add_face([112.mm,205.mm,2338.mm], [188.mm,205.mm,2338.mm], [188.mm,315.mm,2338.mm], [112.mm,315.mm,2338.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
@@ -845,7 +845,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TL 2270"
   ge = grp.entities
-  circle = ge.add_circle([124.mm,2270.mm,2361.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([124.mm,2270.mm,2317.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(52.mm)
@@ -858,7 +858,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Guide axle Ø10 (in throat) TL 2270"
   ge = grp.entities
-  circle = ge.add_circle([117.mm,2270.mm,2361.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([117.mm,2270.mm,2317.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
@@ -871,7 +871,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TL 2310"
   ge = grp.entities
-  circle = ge.add_circle([124.mm,2310.mm,2361.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([124.mm,2310.mm,2317.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(52.mm)
@@ -884,7 +884,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Guide axle Ø10 (in throat) TL 2310"
   ge = grp.entities
-  circle = ge.add_circle([117.mm,2310.mm,2361.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([117.mm,2310.mm,2317.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
@@ -896,7 +896,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Yoke arm + lip hook (thru opening) TL 117
   grp = ents.add_group
   grp.name = "Yoke arm + lip hook (thru opening) TL 117"
-  face = grp.entities.add_face([115.mm,2228.mm,2330.mm], [119.mm,2228.mm,2330.mm], [119.mm,2296.mm,2330.mm], [115.mm,2296.mm,2330.mm])
+  face = grp.entities.add_face([115.mm,2228.mm,2286.mm], [119.mm,2228.mm,2286.mm], [119.mm,2296.mm,2286.mm], [115.mm,2296.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
   mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
@@ -907,7 +907,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Yoke arm + lip hook (thru opening) TL 183
   grp = ents.add_group
   grp.name = "Yoke arm + lip hook (thru opening) TL 183"
-  face = grp.entities.add_face([181.mm,2228.mm,2330.mm], [185.mm,2228.mm,2330.mm], [185.mm,2296.mm,2330.mm], [181.mm,2296.mm,2330.mm])
+  face = grp.entities.add_face([181.mm,2228.mm,2286.mm], [185.mm,2228.mm,2286.mm], [185.mm,2296.mm,2286.mm], [181.mm,2296.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
   mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
@@ -918,7 +918,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Yoke cross-piece (joins the two arms) TL
   grp = ents.add_group
   grp.name = "Yoke cross-piece (joins the two arms) TL"
-  face = grp.entities.add_face([115.mm,2228.mm,2322.mm], [185.mm,2228.mm,2322.mm], [185.mm,2296.mm,2322.mm], [115.mm,2296.mm,2322.mm])
+  face = grp.entities.add_face([115.mm,2228.mm,2278.mm], [185.mm,2228.mm,2278.mm], [185.mm,2296.mm,2278.mm], [115.mm,2296.mm,2278.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
   mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
@@ -929,7 +929,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Yoke rail (→ inboard carriage) TL
   grp = ents.add_group
   grp.name = "Yoke rail (→ inboard carriage) TL"
-  face = grp.entities.add_face([183.mm,2228.mm,2324.mm], [208.mm,2228.mm,2324.mm], [208.mm,2296.mm,2324.mm], [183.mm,2296.mm,2324.mm])
+  face = grp.entities.add_face([183.mm,2228.mm,2280.mm], [208.mm,2228.mm,2280.mm], [208.mm,2296.mm,2280.mm], [183.mm,2296.mm,2280.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
@@ -940,9 +940,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Carriage plate (bolted to skate axles) TL
   grp = ents.add_group
   grp.name = "Carriage plate (bolted to skate axles) TL"
-  face = grp.entities.add_face([196.mm,2263.mm,2328.mm], [210.mm,2263.mm,2328.mm], [210.mm,2349.mm,2328.mm], [196.mm,2349.mm,2328.mm])
+  face = grp.entities.add_face([196.mm,2263.mm,2284.mm], [210.mm,2263.mm,2284.mm], [210.mm,2349.mm,2284.mm], [196.mm,2349.mm,2284.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(76.mm)
+  face.pushpull(51.mm)
   mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -952,10 +952,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle retainer bolt (thru plate) TL 2270"
   ge = grp.entities
-  circle = ge.add_circle([202.mm,2270.mm,2339.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([202.mm,2270.mm,2295.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(44.mm)
+  cface.pushpull(40.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -965,10 +965,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle retainer bolt (thru plate) TL 2310"
   ge = grp.entities
-  circle = ge.add_circle([202.mm,2310.mm,2339.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([202.mm,2310.mm,2295.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(44.mm)
+  cface.pushpull(40.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -977,7 +977,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z slide rail (TILT, green) TL
   grp = ents.add_group
   grp.name = "Vertical Z slide rail (TILT, green) TL"
-  face = grp.entities.add_face([199.mm,2263.mm,2330.mm], [215.mm,2263.mm,2330.mm], [215.mm,2281.mm,2330.mm], [199.mm,2281.mm,2330.mm])
+  face = grp.entities.add_face([199.mm,2263.mm,2286.mm], [215.mm,2263.mm,2286.mm], [215.mm,2281.mm,2286.mm], [199.mm,2281.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(47.mm)
   mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
@@ -988,7 +988,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X slide rail (SWING, purple) TL
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING, purple) TL"
-  face = grp.entities.add_face([150.mm,2263.mm,2330.mm], [410.mm,2263.mm,2330.mm], [410.mm,2277.mm,2330.mm], [150.mm,2277.mm,2330.mm])
+  face = grp.entities.add_face([150.mm,2263.mm,2286.mm], [410.mm,2263.mm,2286.mm], [410.mm,2277.mm,2286.mm], [150.mm,2277.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
@@ -999,7 +999,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-joint (Ruland USKC12-6-6-SS, keyway+clamp) TL
   grp = ents.add_group
   grp.name = "U-joint (Ruland USKC12-6-6-SS, keyway+clamp) TL"
-  face = grp.entities.add_face([138.mm,2258.mm,2320.mm], [162.mm,2258.mm,2320.mm], [162.mm,2282.mm,2320.mm], [138.mm,2282.mm,2320.mm])
+  face = grp.entities.add_face([138.mm,2258.mm,2276.mm], [162.mm,2258.mm,2276.mm], [162.mm,2282.mm,2276.mm], [138.mm,2282.mm,2276.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
@@ -1011,7 +1011,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Input stub 3/8 (X slide → U-joint) TL"
   ge = grp.entities
-  circle = ge.add_circle([155.mm,2270.mm,2334.mm], [1,0,0], 4.75.mm, 24)
+  circle = ge.add_circle([155.mm,2270.mm,2290.mm], [1,0,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
@@ -1023,7 +1023,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # 4040N12 304 shaft support (clamps input stub → X slide) TL
   grp = ents.add_group
   grp.name = "4040N12 304 shaft support (clamps input stub → X slide) TL"
-  face = grp.entities.add_face([176.mm,2261.mm,2323.mm], [199.mm,2261.mm,2323.mm], [199.mm,2279.mm,2323.mm], [176.mm,2279.mm,2323.mm])
+  face = grp.entities.add_face([176.mm,2261.mm,2279.mm], [199.mm,2261.mm,2279.mm], [199.mm,2279.mm,2279.mm], [176.mm,2279.mm,2279.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
@@ -1035,7 +1035,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Output stub 3/8 (U-joint → corner plate) TL"
   ge = grp.entities
-  circle = ge.add_circle([150.mm,2248.mm,2334.mm], [0,1,0], 4.75.mm, 24)
+  circle = ge.add_circle([150.mm,2248.mm,2290.mm], [0,1,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -1047,7 +1047,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Corner plate 304 SS (U-joint mount — angle frame → U-joint) TL
   grp = ents.add_group
   grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) TL"
-  face = grp.entities.add_face([136.mm,2254.mm,2320.mm], [170.mm,2254.mm,2320.mm], [170.mm,2270.mm,2320.mm], [136.mm,2270.mm,2320.mm])
+  face = grp.entities.add_face([136.mm,2254.mm,2276.mm], [170.mm,2254.mm,2276.mm], [170.mm,2270.mm,2276.mm], [136.mm,2270.mm,2276.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
@@ -1059,7 +1059,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Frame-corner bolt (angle frame → bracket) TL"
   ge = grp.entities
-  circle = ge.add_circle([183.mm,2256.mm,2334.mm], [0,1,0], 3.mm, 24)
+  circle = ge.add_circle([183.mm,2256.mm,2290.mm], [0,1,0], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
@@ -1071,7 +1071,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-rail (FLANGED) web TR
   grp = ents.add_group
   grp.name = "U-rail (FLANGED) web TR"
-  face = grp.entities.add_face([4586.mm,0.mm,2377.mm], [4662.mm,0.mm,2377.mm], [4662.mm,2362.mm,2377.mm], [4586.mm,2362.mm,2377.mm])
+  face = grp.entities.add_face([4586.mm,0.mm,2333.mm], [4662.mm,0.mm,2333.mm], [4662.mm,2362.mm,2333.mm], [4586.mm,2362.mm,2333.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
@@ -1082,7 +1082,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-rail (FLANGED) flange TR 4586
   grp = ents.add_group
   grp.name = "U-rail (FLANGED) flange TR 4586"
-  face = grp.entities.add_face([4586.mm,0.mm,2344.mm], [4591.mm,0.mm,2344.mm], [4591.mm,2362.mm,2344.mm], [4586.mm,2362.mm,2344.mm])
+  face = grp.entities.add_face([4586.mm,0.mm,2300.mm], [4591.mm,0.mm,2300.mm], [4591.mm,2362.mm,2300.mm], [4586.mm,2362.mm,2300.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
@@ -1093,7 +1093,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-rail (FLANGED) flange TR 4657
   grp = ents.add_group
   grp.name = "U-rail (FLANGED) flange TR 4657"
-  face = grp.entities.add_face([4657.mm,0.mm,2344.mm], [4662.mm,0.mm,2344.mm], [4662.mm,2362.mm,2344.mm], [4657.mm,2362.mm,2344.mm])
+  face = grp.entities.add_face([4657.mm,0.mm,2300.mm], [4662.mm,0.mm,2300.mm], [4662.mm,2362.mm,2300.mm], [4657.mm,2362.mm,2300.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
@@ -1104,7 +1104,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Rail end flange (outboard-trimmed) TR 0
   grp = ents.add_group
   grp.name = "Rail end flange (outboard-trimmed) TR 0"
-  face = grp.entities.add_face([4569.mm,0.mm,2339.mm], [4644.mm,0.mm,2339.mm], [4644.mm,12.mm,2339.mm], [4569.mm,12.mm,2339.mm])
+  face = grp.entities.add_face([4569.mm,0.mm,2295.mm], [4644.mm,0.mm,2295.mm], [4644.mm,12.mm,2295.mm], [4569.mm,12.mm,2295.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
@@ -1115,7 +1115,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Rail end flange (outboard-trimmed) TR 2350
   grp = ents.add_group
   grp.name = "Rail end flange (outboard-trimmed) TR 2350"
-  face = grp.entities.add_face([4569.mm,2350.mm,2339.mm], [4644.mm,2350.mm,2339.mm], [4644.mm,2362.mm,2339.mm], [4569.mm,2362.mm,2339.mm])
+  face = grp.entities.add_face([4569.mm,2350.mm,2295.mm], [4644.mm,2350.mm,2295.mm], [4644.mm,2362.mm,2295.mm], [4569.mm,2362.mm,2295.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
@@ -1127,7 +1127,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4598.mm,2270.mm,2361.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4598.mm,2270.mm,2317.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(52.mm)
@@ -1140,7 +1140,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Guide axle Ø10 (in throat) TR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4591.mm,2270.mm,2361.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([4591.mm,2270.mm,2317.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
@@ -1153,7 +1153,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TR 2310"
   ge = grp.entities
-  circle = ge.add_circle([4598.mm,2310.mm,2361.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4598.mm,2310.mm,2317.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(52.mm)
@@ -1166,7 +1166,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Guide axle Ø10 (in throat) TR 2310"
   ge = grp.entities
-  circle = ge.add_circle([4591.mm,2310.mm,2361.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([4591.mm,2310.mm,2317.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
@@ -1178,7 +1178,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Yoke arm + lip hook (thru opening) TR 4591
   grp = ents.add_group
   grp.name = "Yoke arm + lip hook (thru opening) TR 4591"
-  face = grp.entities.add_face([4589.mm,2228.mm,2330.mm], [4593.mm,2228.mm,2330.mm], [4593.mm,2296.mm,2330.mm], [4589.mm,2296.mm,2330.mm])
+  face = grp.entities.add_face([4589.mm,2228.mm,2286.mm], [4593.mm,2228.mm,2286.mm], [4593.mm,2296.mm,2286.mm], [4589.mm,2296.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
   mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
@@ -1189,7 +1189,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Yoke arm + lip hook (thru opening) TR 4657
   grp = ents.add_group
   grp.name = "Yoke arm + lip hook (thru opening) TR 4657"
-  face = grp.entities.add_face([4655.mm,2228.mm,2330.mm], [4659.mm,2228.mm,2330.mm], [4659.mm,2296.mm,2330.mm], [4655.mm,2296.mm,2330.mm])
+  face = grp.entities.add_face([4655.mm,2228.mm,2286.mm], [4659.mm,2228.mm,2286.mm], [4659.mm,2296.mm,2286.mm], [4655.mm,2296.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
   mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
@@ -1200,7 +1200,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Yoke cross-piece (joins the two arms) TR
   grp = ents.add_group
   grp.name = "Yoke cross-piece (joins the two arms) TR"
-  face = grp.entities.add_face([4589.mm,2228.mm,2322.mm], [4659.mm,2228.mm,2322.mm], [4659.mm,2296.mm,2322.mm], [4589.mm,2296.mm,2322.mm])
+  face = grp.entities.add_face([4589.mm,2228.mm,2278.mm], [4659.mm,2228.mm,2278.mm], [4659.mm,2296.mm,2278.mm], [4589.mm,2296.mm,2278.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
   mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
@@ -1211,7 +1211,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Yoke rail (→ inboard carriage) TR
   grp = ents.add_group
   grp.name = "Yoke rail (→ inboard carriage) TR"
-  face = grp.entities.add_face([4572.mm,2228.mm,2324.mm], [4663.mm,2228.mm,2324.mm], [4663.mm,2296.mm,2324.mm], [4572.mm,2296.mm,2324.mm])
+  face = grp.entities.add_face([4572.mm,2228.mm,2280.mm], [4663.mm,2228.mm,2280.mm], [4663.mm,2296.mm,2280.mm], [4572.mm,2296.mm,2280.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
@@ -1222,9 +1222,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Carriage plate (bolted to skate axles) TR
   grp = ents.add_group
   grp.name = "Carriage plate (bolted to skate axles) TR"
-  face = grp.entities.add_face([4566.mm,2263.mm,2328.mm], [4580.mm,2263.mm,2328.mm], [4580.mm,2349.mm,2328.mm], [4566.mm,2349.mm,2328.mm])
+  face = grp.entities.add_face([4566.mm,2263.mm,2284.mm], [4580.mm,2263.mm,2284.mm], [4580.mm,2349.mm,2284.mm], [4566.mm,2349.mm,2284.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(76.mm)
+  face.pushpull(51.mm)
   mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -1234,10 +1234,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle retainer bolt (thru plate) TR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4572.mm,2270.mm,2339.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4572.mm,2270.mm,2295.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(44.mm)
+  cface.pushpull(40.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -1247,10 +1247,10 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Axle retainer bolt (thru plate) TR 2310"
   ge = grp.entities
-  circle = ge.add_circle([4572.mm,2310.mm,2339.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4572.mm,2310.mm,2295.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(44.mm)
+  cface.pushpull(40.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -1259,7 +1259,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z slide rail (TILT, green) TR
   grp = ents.add_group
   grp.name = "Vertical Z slide rail (TILT, green) TR"
-  face = grp.entities.add_face([4569.mm,2263.mm,2330.mm], [4585.mm,2263.mm,2330.mm], [4585.mm,2281.mm,2330.mm], [4569.mm,2281.mm,2330.mm])
+  face = grp.entities.add_face([4569.mm,2263.mm,2286.mm], [4585.mm,2263.mm,2286.mm], [4585.mm,2281.mm,2286.mm], [4569.mm,2281.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(47.mm)
   mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
@@ -1270,7 +1270,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X slide rail (SWING, purple) TR
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING, purple) TR"
-  face = grp.entities.add_face([4364.mm,2263.mm,2330.mm], [4624.mm,2263.mm,2330.mm], [4624.mm,2277.mm,2330.mm], [4364.mm,2277.mm,2330.mm])
+  face = grp.entities.add_face([4364.mm,2263.mm,2286.mm], [4624.mm,2263.mm,2286.mm], [4624.mm,2277.mm,2286.mm], [4364.mm,2277.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
@@ -1281,7 +1281,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-joint (Ruland USKC12-6-6-SS, keyway+clamp) TR
   grp = ents.add_group
   grp.name = "U-joint (Ruland USKC12-6-6-SS, keyway+clamp) TR"
-  face = grp.entities.add_face([4612.mm,2258.mm,2320.mm], [4636.mm,2258.mm,2320.mm], [4636.mm,2282.mm,2320.mm], [4612.mm,2282.mm,2320.mm])
+  face = grp.entities.add_face([4612.mm,2258.mm,2276.mm], [4636.mm,2258.mm,2276.mm], [4636.mm,2282.mm,2276.mm], [4612.mm,2282.mm,2276.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
@@ -1293,7 +1293,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Input stub 3/8 (X slide → U-joint) TR"
   ge = grp.entities
-  circle = ge.add_circle([4573.mm,2270.mm,2334.mm], [1,0,0], 4.75.mm, 24)
+  circle = ge.add_circle([4573.mm,2270.mm,2290.mm], [1,0,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
@@ -1305,7 +1305,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # 4040N12 304 shaft support (clamps input stub → X slide) TR
   grp = ents.add_group
   grp.name = "4040N12 304 shaft support (clamps input stub → X slide) TR"
-  face = grp.entities.add_face([4575.mm,2261.mm,2323.mm], [4598.mm,2261.mm,2323.mm], [4598.mm,2279.mm,2323.mm], [4575.mm,2279.mm,2323.mm])
+  face = grp.entities.add_face([4575.mm,2261.mm,2279.mm], [4598.mm,2261.mm,2279.mm], [4598.mm,2279.mm,2279.mm], [4575.mm,2279.mm,2279.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
@@ -1317,7 +1317,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Output stub 3/8 (U-joint → corner plate) TR"
   ge = grp.entities
-  circle = ge.add_circle([4624.mm,2248.mm,2334.mm], [0,1,0], 4.75.mm, 24)
+  circle = ge.add_circle([4624.mm,2248.mm,2290.mm], [0,1,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -1329,7 +1329,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Corner plate 304 SS (U-joint mount — angle frame → U-joint) TR
   grp = ents.add_group
   grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) TR"
-  face = grp.entities.add_face([4604.mm,2254.mm,2320.mm], [4638.mm,2254.mm,2320.mm], [4638.mm,2270.mm,2320.mm], [4604.mm,2270.mm,2320.mm])
+  face = grp.entities.add_face([4604.mm,2254.mm,2276.mm], [4638.mm,2254.mm,2276.mm], [4638.mm,2270.mm,2276.mm], [4604.mm,2270.mm,2276.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
@@ -1341,7 +1341,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp = ents.add_group
   grp.name = "Frame-corner bolt (angle frame → bracket) TR"
   ge = grp.entities
-  circle = ge.add_circle([4591.mm,2256.mm,2334.mm], [0,1,0], 3.mm, 24)
+  circle = ge.add_circle([4591.mm,2256.mm,2290.mm], [0,1,0], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
@@ -1384,7 +1384,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Film-plane ACM backing (ghost)"
   face = grp.entities.add_face([183.mm,2262.mm,160.mm], [4591.mm,2262.mm,160.mm], [4591.mm,2266.mm,160.mm], [183.mm,2266.mm,160.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2174.mm)
+  face.pushpull(2130.mm)
   mat = model.materials["Film-plane ACM backing (ghost)"] || model.materials.add("Film-plane ACM backing (ghost)")
   mat.color = Sketchup::Color.new(31, 59, 102)
   mat.alpha = 0.14
@@ -1393,7 +1393,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"
-  face = grp.entities.add_face([183.mm,2212.mm,2329.mm], [4591.mm,2212.mm,2329.mm], [4591.mm,2262.mm,2329.mm], [183.mm,2262.mm,2329.mm])
+  face = grp.entities.add_face([183.mm,2212.mm,2285.mm], [4591.mm,2212.mm,2285.mm], [4591.mm,2262.mm,2285.mm], [183.mm,2262.mm,2285.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
@@ -1404,7 +1404,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Film frame 2x2 6061 Al angle — top (in-plane leg / ACM seat)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 Al angle — top (in-plane leg / ACM seat)"
-  face = grp.entities.add_face([183.mm,2257.mm,2284.mm], [4591.mm,2257.mm,2284.mm], [4591.mm,2262.mm,2284.mm], [183.mm,2262.mm,2284.mm])
+  face = grp.entities.add_face([183.mm,2257.mm,2240.mm], [4591.mm,2257.mm,2240.mm], [4591.mm,2262.mm,2240.mm], [183.mm,2262.mm,2240.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
@@ -1439,7 +1439,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Film frame 2x2 6061 Al angle — left (upstand / muslin spring clip)"
   face = grp.entities.add_face([183.mm,2212.mm,160.mm], [188.mm,2212.mm,160.mm], [188.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2174.mm)
+  face.pushpull(2130.mm)
   mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -1450,7 +1450,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Film frame 2x2 6061 Al angle — left (in-plane leg / ACM seat)"
   face = grp.entities.add_face([183.mm,2257.mm,160.mm], [233.mm,2257.mm,160.mm], [233.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2174.mm)
+  face.pushpull(2130.mm)
   mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -1461,7 +1461,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Film frame 2x2 6061 Al angle — right (upstand / muslin spring clip)"
   face = grp.entities.add_face([4586.mm,2212.mm,160.mm], [4591.mm,2212.mm,160.mm], [4591.mm,2262.mm,160.mm], [4586.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2174.mm)
+  face.pushpull(2130.mm)
   mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -1472,7 +1472,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.name = "Film frame 2x2 6061 Al angle — right (in-plane leg / ACM seat)"
   face = grp.entities.add_face([4541.mm,2257.mm,160.mm], [4591.mm,2257.mm,160.mm], [4591.mm,2262.mm,160.mm], [4541.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2174.mm)
+  face.pushpull(2130.mm)
   mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -1497,8 +1497,8 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   grp.material = mat
 
   # light cone — pinhole → 4 panel corners
-  ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(183.mm, 2262.mm, 2334.mm))
-  ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(4591.mm, 2262.mm, 2334.mm))
+  ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(183.mm, 2262.mm, 2290.mm))
+  ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(4591.mm, 2262.mm, 2290.mm))
   ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(183.mm, 2262.mm, 160.mm))
   ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(4591.mm, 2262.mm, 160.mm))
 
@@ -4082,7 +4082,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
 tt = entities.add_text("PINHOLE (far wall) — the film plane faces it across the throw", Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Vector3d.new(60.mm, -50.mm, 30.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("Film plane 4408.0 x 2174 (edges seated in the carriers; bottom @Z160 above walkway, weight on the bottom rail; top = light guide only)", Geom::Point3d.new(2400.mm, 2262.mm, 1194.mm), Geom::Vector3d.new(60.mm, 45.mm, 20.mm))
+tt = entities.add_text("Film plane 4408.0 x 2130 (edges seated in the carriers; bottom @Z160 above walkway, weight on the bottom rail; top = light guide only)", Geom::Point3d.new(2400.mm, 2262.mm, 1194.mm), Geom::Vector3d.new(60.mm, 45.mm, 20.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
 tt = entities.add_text("TOP pair vs BOTTOM pair depth = TILT", Geom::Point3d.new(150.mm, 2262.mm, 2388.mm), Geom::Vector3d.new(-60.mm, -40.mm, 30.mm))

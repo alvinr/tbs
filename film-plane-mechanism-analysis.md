@@ -4,7 +4,7 @@
 
 > ## Scope note — optical-distortion reference (mechanism superseded)
 >
-> **What this document is.** The optical-distortion derivation for the moveable four-corner film plane: the physics of tilted-/swung-plane projection (§6), the movement envelope (§3), and the per-configuration effects (§5). The plane is a **fixed-size rigid rectangle** (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm) that tilts and swings as a true **rigid-body rotation** — envelope **tilt ±40° / swing ±28°** (single-axis). The optics depend only on that rigid-rotation geometry, so §3/§5/§6 hold for the current mechanism.
+> **What this document is.** The optical-distortion derivation for the moveable four-corner film plane: the physics of tilted-/swung-plane projection (§6), the movement envelope (§3), and the per-configuration effects (§5). The plane is a **fixed-size rigid rectangle** (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm) that tilts and swings as a true **rigid-body rotation** — envelope **tilt ±40° / swing ±28°** (single-axis). The optics depend only on that rigid-rotation geometry, so §3/§5/§6 hold for the current mechanism.
 >
 > **Mechanism + BOM are governed by [`film-plane-mechanism-report.md`](film-plane-mechanism-report.md).** The current corner design is the **304 U-channel + acetal skate + 316 flat-bar cross-slide + Ruland U-joint** mechanism described there — **not** the leadscrew/rod-end hardware still shown in §4 and §7–§9 below, which is retained only as an earlier decision-record snapshot. For any hardware, quantity, or price, use the report.
 
@@ -20,7 +20,7 @@ The Giant Pinhole Camera uses a 20ft ISO shipping container as its light-tight b
 |-----------|-------|-------|
 | Interior length | 5,893mm (19 ft 4 in) | Film plane spans this direction |
 | Interior width | 2,362mm (7 ft 9 in) | **Optical axis = focal length** |
-| Interior height | 2,388mm (7 ft 10 in) | Container height; the active film plane is 2,138mm (mechanism-limited by the corner slides + walkway clearance) |
+| Interior height | 2,388mm (7 ft 10 in) | Container height; the active film plane is 2,094mm (mechanism-limited by the corner slides + walkway clearance) |
 | Pinhole position | Center of one 20ft long-side wall | |
 | Nominal film plane | Opposite 20ft long-side wall | flush to wall |
 | Structural ribs | Every 457mm (18 in) along length | Rail mounting points |
@@ -48,7 +48,7 @@ The four-corner mechanism supports all view-camera movements. Corners are labell
 
 (Swing angle is smaller than tilt angle because the active film plane is 4,499mm wide — the left rail sits at X=150mm and the right rail at X=4,649mm. The same Y-axis depth difference over a wider span produces a shallower angle.)
 
-Because the plane is a **fixed-size rigid rectangle**, its physical height stays **2,138mm at every angle** — it does not grow. The corner **cross-slides** absorb the in-plane arc travel that a rigid rotation forces on each corner, so a single rigid backing panel suffices — no folding.
+Because the plane is a **fixed-size rigid rectangle**, its physical height stays **2,094mm at every angle** — it does not grow. The corner **cross-slides** absorb the in-plane arc travel that a rigid rotation forces on each corner, so a single rigid backing panel suffices — no folding.
 
 ---
 
@@ -64,7 +64,7 @@ CEILING ────────────────────────
    corner TL (leadscrew A)              corner TR (leadscrew B)
         │                                       │
         │            FILM PLANE FRAME           │
-        │      4,499mm wide × 2,138mm tall    │
+        │      4,499mm wide × 2,094mm tall    │
         │       ROD-END BEARING each corner     │
    corner BL (leadscrew C)              corner BR (leadscrew D)
    [FLOOR RAIL — LEFT]                  [FLOOR RAIL — RIGHT]
@@ -74,7 +74,7 @@ FLOOR ────────────────────────�
 - **4 linear rails** — HiWin HGR20 profile, 2,200mm length, mounted at X=150mm (left pair) and X=4,649mm (right pair) on ceiling and floor. Rails run along the 2,362mm optical axis direction.
 - **8 carriages** — HGH20CA flanged blocks, 2 per rail, joined by an L-bracket at each corner. Each corner moves as a single independent unit.
 - **4 leadscrews** — ¾"-6 Acme, 8 ft (2,438mm) length, one per corner (TL, TR, BL, BR). Each turns in a bronze Acme nut fixed to the corner bracket.
-- **Film plane frame** — welded 2"×2"×3/16" aluminum angle, **4,499mm × 2,138mm** (rail span × film-plane height). Connected to each corner bracket via a **rod-end spherical bearing** (GIR25-DO or equivalent, 25mm bore) to allow free angular rotation as the rigid plane tilts and swings.
+- **Film plane frame** — welded 2"×2"×3/16" aluminum angle, **4,499mm × 2,094mm** (rail span × film-plane height). Connected to each corner bracket via a **rod-end spherical bearing** (GIR25-DO or equivalent, 25mm bore) to allow free angular rotation as the rigid plane tilts and swings.
 
 The rigid frame keeps the four corners **coplanar at all times**: every tilt, swing, or limited combined tilt+swing is a flat rectangle rotated in space. Depth is still set per corner — top pair vs bottom pair gives tilt (e.g. bottom at 2,262mm, top forward gives the tilt angle), left pair vs right pair gives swing — but a *twisted*, non-coplanar pose (e.g. TL and BR near, TR and BL far) is physically prevented by the rigid frame, unlike the abandoned stretching design.
 
@@ -96,7 +96,7 @@ Each of the four leadscrews is turned by an **8" cast aluminum handwheel** (¾" 
 
 ### Fixed-Size Rigid Backing
 
-Because the plane is a fixed-size rigid rectangle, its along-plane dimensions **never change** — 2,138mm tall at every tilt angle, 4,499mm wide at every swing. There is no growth to accommodate, so the backing is a **single rigid ACM (aluminum composite material) panel** — no folding hinge. The corner cross-slides take up the in-plane arc travel that the rigid rotation forces on each corner (≈250mm in Z at max tilt, ≈263mm in X at max swing), keeping the frame flat and full-size throughout the movement range.
+Because the plane is a fixed-size rigid rectangle, its along-plane dimensions **never change** — 2,094mm tall at every tilt angle, 4,499mm wide at every swing. There is no growth to accommodate, so the backing is a **single rigid ACM (aluminum composite material) panel** — no folding hinge. The corner cross-slides take up the in-plane arc travel that the rigid rotation forces on each corner (≈245mm in Z at max tilt, ≈263mm in X at max swing), keeping the frame flat and full-size throughout the movement range.
 
 ### Light Sealing
 
@@ -114,15 +114,15 @@ The plane is always flat, so every achievable pose is a single tilt **or** swing
 
 | Config | Name | TL | TR | BL | BR | Tilt | Swing | Film Height |
 |--------|------|----|----|----|----|------|-------|-------------|
-| C0 | Flat | 1181 | 1181 | 1181 | 1181 | 0° | 0° | 2,138mm |
-| C1 | Mild tilt | 977 | 977 | 1385 | 1385 | 11.0° | 0° | 2,138mm |
-| C2 | Strong tilt | 622 | 622 | 1740 | 1740 | 31.5° | 0° | 2,138mm |
-| C3 | Max tilt | 494 | 494 | 1868 | 1868 | 40.0° | 0° | 2,138mm |
-| C4 | Mild swing | 923 | 1439 | 923 | 1439 | 0° | 6.6° | 2,138mm |
-| C5 | Strong swing | 412 | 1950 | 412 | 1950 | 0° | 20.0° | 2,138mm |
-| C6 | Max swing | 125 | 2237 | 125 | 2237 | 0° | 28.0° | 2,138mm |
+| C0 | Flat | 1181 | 1181 | 1181 | 1181 | 0° | 0° | 2,094mm |
+| C1 | Mild tilt | 977 | 977 | 1385 | 1385 | 11.0° | 0° | 2,094mm |
+| C2 | Strong tilt | 622 | 622 | 1740 | 1740 | 31.5° | 0° | 2,094mm |
+| C3 | Max tilt | 494 | 494 | 1868 | 1868 | 40.0° | 0° | 2,094mm |
+| C4 | Mild swing | 923 | 1439 | 923 | 1439 | 0° | 6.6° | 2,094mm |
+| C5 | Strong swing | 412 | 1950 | 412 | 1950 | 0° | 20.0° | 2,094mm |
+| C6 | Max swing | 125 | 2237 | 125 | 2237 | 0° | 28.0° | 2,094mm |
 
-*Depths measured from the pinhole wall about the mid-rail center. Tilt = asin(2·Δd_top-bottom / FP_H) about the plane center (FP_H=2138); swing = asin(2·Δd_left-right / FP_W) (FP_W=4499). Rail positions: left X=150mm, right X=4,649mm.*
+*Depths measured from the pinhole wall about the mid-rail center. Tilt = asin(2·Δd_top-bottom / FP_H) about the plane center (FP_H=2094); swing = asin(2·Δd_left-right / FP_W) (FP_W=4499). Rail positions: left X=150mm, right X=4,649mm.*
 
 A compound *twist* (diagonal, non-coplanar) is **not achievable** — the rigid plane cannot form a ruled surface, so the old stretching design's twist config is dropped. Combined tilt+swing is available only as a flat rotation within the ±40° / ±28° envelope.
 

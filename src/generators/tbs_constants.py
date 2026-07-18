@@ -62,6 +62,13 @@ Redesign basis (2026-05-20 rev 7 — walkway reorg):
   triangle at right walkway/IBC junction.  Tray sump relocated to X=4550,
   Yd=80 (slope to IBC corner).  Filter housings reverted to 3× separate
   4.5"×10" Big Blue (combo unit Purcooflow WHF2045B302 does not fit corridor).
+
+Redesign basis (2026-07-17 — film-plane top rail lowered):
+  FP_H 2138→2094 — the film-plane top rail dropped 44mm (via new RAIL_OFF_TOP=144,
+  split out of the overloaded RAIL_OFF=100) to win +25mm ceiling clearance for the
+  top carriage/fittings.  Active image plane 4499×2138→4499×2094; area 104→101 sqft
+  (9.62→9.42 m²).  Cascades IMAGE_AREA_SQFT, CLAMP_N_VERT (15→14) → clip count → parts/
+  costing, XSLIDE_Z_TRAVEL (250→245), BRACE_Z_TOP (2288→2244), and chem/muslin consumables.
 """
 
 import math
@@ -76,7 +83,7 @@ C_WID  = 2362   # interior width = focal length = optical depth Y (mm)
 C_HGT  = 2388   # interior height Z (mm)
 
 # ── Film plane ────────────────────────────────────────────────────────────────
-FP_H     = 2138   # film plane height (mm)          [film-plane-redesign: 2388→2138 — active height with the low-profile V-trolley corner (BUILD 140→110); ~C_HGT − RAIL_OFF(top) − RAIL_OFF_BOT(walkway)]
+FP_H     = 2094   # film plane height (mm)          [film-plane-redesign: 2388→2138 — active height with the low-profile V-trolley corner (BUILD 140→110); 2138→2094 — top edge lowered 44mm for +25mm ceiling clearance (top rail dropped via RAIL_OFF_TOP); ~C_HGT − RAIL_OFF_TOP(144) − RAIL_OFF_BOT(walkway)]
 FP_X_L   = 150    # film plane left edge X (mm)     [rev6: was 625; panel inner face 120mm + 30mm]
 FP_X_R   = 4649   # film plane right edge X (mm)    [was 4019 → wider right zone]
 FP_W     = FP_X_R - FP_X_L   # = 4499mm          [rev6: was 4024]
@@ -119,7 +126,8 @@ RAIL_X_L  = FP_X_L   # left rail X  (mm)   [rev6: 150mm; was 625]
 RAIL_X_R  = FP_X_R   # right rail X (mm)   [was 4019 → now 4649]
 RAIL_SPAN = RAIL_X_R - RAIL_X_L   # = 4499mm  [rev6: was 4024]
 RAIL_LEN  = 2200      # rail length  (mm)   [unchanged — same Y travel]
-RAIL_OFF  = 100       # ceiling (TOP) offset (mm)  [unchanged]
+RAIL_OFF  = 100       # generic ceiling/floor offset (mm) — floor-standing equipment, drum, schematic rails  [unchanged]
+RAIL_OFF_TOP = 144    # film-plane TOP rail ceiling offset (mm) — dropped 44mm from RAIL_OFF(100) to win +25mm ceiling clearance for the top carriage/fittings; drives BRACE_Z_TOP + every film-plane top-rail model site
 RAIL_OFF_BOT = 160    # floor (BOTTOM) offset (mm) = WALKWAY_H 140 + 20mm so the film-plane bottom
                       # edge clears the raised Z140 walkway by 20mm as it travels in Yd (was 150 for the
                       # Z130 deck). Costs ~60mm of muslin height (~2.5% of the captured image).
@@ -140,7 +148,7 @@ MAX_SWING_DEG = 28.0   # design max single-axis swing (≈ rail-depth limit 28.7
 
 # Cross-slide strokes that absorb the rigid-rotation arc travel at the corners
 # (Option A spec; not yet drawn in the FPM sheets / 3D model):
-XSLIDE_Z_TRAVEL = round((FP_H / 2) * (1 - math.cos(math.radians(MAX_TILT_DEG))))   # ≈ 250mm (tilt, FP_H 2138) — reserved
+XSLIDE_Z_TRAVEL = round((FP_H / 2) * (1 - math.cos(math.radians(MAX_TILT_DEG))))   # ≈ 245mm (tilt, FP_H 2094) — reserved
 XSLIDE_X_TRAVEL = round((FP_W / 2) * (1 - math.cos(math.radians(MAX_SWING_DEG))))  # ≈ 263mm (swing) — reserved
 XSLIDE_STROKE   = 300   # specified linear cross-slide travel (mm) — covers both, with margin — reserved
 
@@ -164,7 +172,7 @@ FRONT_BOARD_CLICK_DEG = round(math.degrees(math.atan((FRONT_BOARD_SCREW_PITCH / 
 BOARD_TILT_REF_DEG   = 5     # round reference tilt for the image-shift unit-rate illustration
 IMAGE_SHIFT_PER_5DEG = round(C_WID * math.tan(math.radians(BOARD_TILT_REF_DEG)))   # = 207mm (focal × tan 5°)
 FRONT_BOARD_MAX_SHIFT_MM = round(C_WID * math.tan(math.radians(FRONT_BOARD_MAX_DEG)))   # = 219mm — image shift at the ±5.3° hard stop
-IMAGE_AREA_SQFT      = round(FP_W * FP_H / 1e6 * 10.7639)                          # = 116 sq ft (active film plane)
+IMAGE_AREA_SQFT      = round(FP_W * FP_H / 1e6 * 10.7639)                          # = 101 sq ft (active film plane)
 XSLIDE_N        = 8     # 2 cross-slides (X + Z) per corner × 4 corners — reserved
 
 # ── Equipment zones ───────────────────────────────────────────────────────────
@@ -266,7 +274,7 @@ BAY_WALL_T  = 6                        # bay box wall thickness (mm)
 BRACE_RHS   = 50                     # brace member section 50×50×3mm RHS (mm)
 BRACE_T     = 3                      # RHS wall thickness (mm)
 BRACE_Z_BOT = RAIL_OFF_BOT           # 150mm — bottom cross-beam Z (raised +50 to clear the Z130 walkway)
-BRACE_Z_TOP = C_HGT - RAIL_OFF       # 2288mm — top cross-beam Z (unchanged)
+BRACE_Z_TOP = C_HGT - RAIL_OFF_TOP   # 2244mm — top cross-beam Z (dropped 44mm with the film-plane top rail)
 # End portals sit at the rail travel limits (already defined): FP_Y_MIN, FP_Y.
 
 DRUM_CY     = C_WID // 2             # 1181mm — light-lock center in Yd (= container width center)

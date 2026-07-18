@@ -12,15 +12,15 @@ This report describes the **muslin spring-clip system** that secures the muslin 
 
 ## 2. Clamp Layout
 
-**90 spring clips** are spaced at 150mm centers around the full perimeter of the <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm film plane frame:
+**88 spring clips** are spaced at 150mm centers around the full perimeter of the <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm film plane frame:
 
 | Edge | Length | Clip Count |
 |------|--------|-------------|
 | Top horizontal | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm | 30 |
 | Bottom horizontal | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm | 30 |
-| Left vertical | <!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm | 15 |
-| Right vertical | <!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm | 15 |
-| **Total** | | **90** |
+| Left vertical | <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm | 14 |
+| Right vertical | <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm | 14 |
+| **Total** | | **88** |
 
 ---
 
@@ -51,14 +51,14 @@ All items ship within the United States. Local Southern California pickup noted 
 <!-- BEGIN parts:clamp -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Muslin spring clip | Bracket + spring jaw, ~5N, neoprene pad, torsion spring, squeeze handle; through-bolted to the frame upstand (nuts on the inside) | 90 ea | McMaster-Carr / Amazon | $270–$720 |
-| M5×16 SS countersunk screw (91292A128) | A2-70 stainless — through-bolts the clip bracket to the upstand | 180 ea | McMaster-Carr / Bolt Depot | $45 |
-| M5 SS Nylock nut (93625A200) | A2-70 stainless — on the inside edge of the upstand | 180 ea | McMaster-Carr / Bolt Depot | $14 |
+| Muslin spring clip | Bracket + spring jaw, ~5N, neoprene pad, torsion spring, squeeze handle; through-bolted to the frame upstand (nuts on the inside) | 88 ea | McMaster-Carr / Amazon | $264–$704 |
+| M5×16 SS countersunk screw (91292A128) | A2-70 stainless — through-bolts the clip bracket to the upstand | 176 ea | McMaster-Carr / Bolt Depot | $44 |
+| M5 SS Nylock nut (93625A200) | A2-70 stainless — on the inside edge of the upstand | 176 ea | McMaster-Carr / Bolt Depot | $14 |
 | Neoprene strip 60A (8614K44) | 35mm × 6mm, self-adhesive, 10m — the clip jaw pad | 1 roll | McMaster-Carr / Grainger | $15 |
-| **Clamp total** | | | | **$344–$794** |
+| **Clamp total** | | | | **$337–$777** |
 <!-- END parts:clamp -->
 
-**Clamp system estimated cost:** <!-- BEGIN costing:clamp-system-low -->$344<!-- END costing:clamp-system-low --> (generic spring clips) to <!-- BEGIN costing:clamp-system-high -->$794<!-- END costing:clamp-system-high --> (quality spring clips).
+**Clamp system estimated cost:** <!-- BEGIN costing:clamp-system-low -->$337<!-- END costing:clamp-system-low --> (generic spring clips) to <!-- BEGIN costing:clamp-system-high -->$777<!-- END costing:clamp-system-high --> (quality spring clips).
 
 ---
 
@@ -66,10 +66,10 @@ All items ship within the United States. Local Southern California pickup noted 
 
 | Interval | Task |
 |----------|------|
-| Before each session | Inspect muslin clip engagement — all 90 clips snapped closed |
+| Before each session | Inspect muslin clip engagement — all 88 clips snapped closed |
 | Monthly | Check neoprene jaw pads for compression set — replace if grip force is noticeably reduced |
 | Every 6 months | Inspect torsion springs for fatigue — clips should snap firmly to closed position under gravity at <!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt |
-| Annually | Replace neoprene jaw pads (preventive — $15 per roll covers all 90 clips) |
+| Annually | Replace neoprene jaw pads (preventive — $15 per roll covers all 88 clips) |
 
 ---
 

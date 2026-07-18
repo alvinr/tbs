@@ -39,7 +39,7 @@ For d = 2.17mm:
 A_pinhole = π × (1.085)² = 3.70mm²
 ```
 
-This is the collecting area. Every photon contributing to the image at any point on the <!-- BEGIN fact:image_area_sqft -->104<!-- END fact:image_area_sqft --> sq ft image plane has passed through this 3.70mm² opening. No others.
+This is the collecting area. Every photon contributing to the image at any point on the <!-- BEGIN fact:image_area_sqft -->101<!-- END fact:image_area_sqft --> sq ft image plane has passed through this 3.70mm² opening. No others.
 
 **Source:** Born, M. & Wolf, E., *Principles of Optics*, 7th ed., Cambridge University Press, 1999, §8.6.1. The treatment of the pinhole as a geometric aperture stop, passing only rays within the solid angle subtended by the opening, is the foundational model for pinhole imaging. The proportionality of image irradiance to aperture area follows directly from basic radiometric principles (see also Hecht, E., *Optics*, 5th ed., Pearson, 2017, §5.1).
 
@@ -284,7 +284,7 @@ The trade-off is that a lens only covers a 300–600mm diameter central circle o
 
 The two modes are not competing solutions to the same problem. They are different cameras sharing the same box:
 
-- **Pinhole mode:** The full <!-- BEGIN fact:image_area_sqft -->104<!-- END fact:image_area_sqft --> sq ft image plane records everything in the field of view, all at the same soft resolution, with 43-minute exposures. Best for scenes that do not move — landscapes, architecture, long-duration light painting.
+- **Pinhole mode:** The full <!-- BEGIN fact:image_area_sqft -->101<!-- END fact:image_area_sqft --> sq ft image plane records everything in the field of view, all at the same soft resolution, with 43-minute exposures. Best for scenes that do not move — landscapes, architecture, long-duration light painting.
 
 - **Lens mode:** A sharp central medallion (Ø 300–600mm) at short exposure (seconds). Best for portraits and any subject that moves. The remainder of the image plane is dark.
 

@@ -11,7 +11,7 @@ the resulting corner is drawn in `diagrams/film-corner-gimbal.png`.
 
 ## The job of a corner
 
-The film plane is a **fixed-size rigid flat rectangle** (4,499 × 2,138 mm). To act as a view-camera
+The film plane is a **fixed-size rigid flat rectangle** (4,499 × 2,094 mm). To act as a view-camera
 back it must **tilt** and **swing** — and also **focus** (move in depth) — while staying perfectly
 **flat**. It is supported at its **four corners**, each riding a **push-to-slide, cam-clamp** stage
 (friction slides in depth-Y and vertical-Z, plus a floating X slide). The corner joint is the piece that

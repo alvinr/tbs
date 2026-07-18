@@ -72,7 +72,7 @@ dimensions are single-sourced in the table above (`generate_plate_drawing.py` re
 | Film plane left edge X | <!-- BEGIN cdm:FP_X_L -->150<!-- END cdm:FP_X_L -->mm | `FP_X_L` |
 | Film plane right edge X | <!-- BEGIN cdm:FP_X_R -->4,649<!-- END cdm:FP_X_R -->mm | `FP_X_R` |
 | Film plane width | <!-- BEGIN cdm:FP_W -->4,499<!-- END cdm:FP_W -->mm | `FP_W` |
-| Film plane height | <!-- BEGIN cdm:FP_H -->2,138<!-- END cdm:FP_H -->mm | `FP_H` |
+| Film plane height | <!-- BEGIN cdm:FP_H -->2,094<!-- END cdm:FP_H -->mm | `FP_H` |
 | Nominal depth from pinhole wall | <!-- BEGIN cdm:FP_Y -->2,262<!-- END cdm:FP_Y -->mm | `FP_Y` |
 | Minimum carriage depth | <!-- BEGIN cdm:FP_Y_MIN -->100<!-- END cdm:FP_Y_MIN -->mm | `FP_Y_MIN` |
 | Left rail X | <!-- BEGIN cdm:RAIL_X_L -->150<!-- END cdm:RAIL_X_L -->mm | `RAIL_X_L` |
@@ -92,11 +92,11 @@ aluminum** angle frame (expendable) + corner L-brackets, 4× **3×1.5 304 U-chan
 on Ø10 316 axles), **8× 316 flat-bar cross-slides (Z tilt + X swing) on UHMW self-lube pads +
 adjustable gibs** (the 2-axis corner stage that absorbs the rigid-rotation arc travel), 4× **Ruland
 USKC12-6-6-SS U-joints** (303 SS, nitrile-booted), 12× cam-lever rail clamps, **single rigid ACM
-backing panel**, Duvetyne curtain seals, rail felt light-trap strips, 90× cam-lever spring clamps
+backing panel**, Duvetyne curtain seals, rail felt light-trap strips, 88× spring clips
 at 150mm centers (muslin attachment). The plane stays a fixed-size flat rectangle — it does not
 stretch or twist; single-axis tilt/swing envelope (tilt ±40° / swing ±28°).*
 
-*Reports: [Film Plane Mechanism](film-plane-mechanism-report.md) §4/§5/§7 (mechanism design, tilt/swing configurations, parts list); [Muslin Clamp System](film-clamp-mechanism-report.md) §2/§3 (cam-lever clamp layout + jaw mechanism).*
+*Reports: [Film Plane Mechanism](film-plane-mechanism-report.md) §4/§5/§7 (mechanism design, tilt/swing configurations, parts list); [Muslin Clamp System](film-clamp-mechanism-report.md) §2/§3 (spring-clip layout + jaw mechanism).*
 
 *Diagrams: floor plan (FP), line of sight (LOS), assembly overview (AO), assembly fabrication (AF), film plane mechanism (FPM), film plane distortion (FPD), tilt-swing distortion (TSD).*
 

@@ -44,10 +44,10 @@ SWING = math.radians(SWING_DEG)
 
 W = ov.FP_W                                  # 4499 — plane width (X)
 RZ_BOT = ov.RAIL_OFF_BOT                     # 160  — bottom rail = WALKWAY_H 140 + 20mm (clears the Z140 deck)
-RZ_TOP = ov.C_HGT - ov.RAIL_OFF              # 2288 — top rail Z (under ceiling)
-HF = RZ_TOP - RZ_BOT                         # 2188 — frame height, rail-to-rail
+RZ_TOP = ov.C_HGT - ov.RAIL_OFF_TOP          # 2244 — top rail Z (under ceiling, dropped 44mm)
+HF = RZ_TOP - RZ_BOT                         # 2084 — frame height, rail-to-rail
 CX = (ov.FP_X_L + ov.FP_X_R) / 2             # 2399.5 — plane centre X
-CZ = (RZ_BOT + RZ_TOP) / 2                   # 1194   — plane centre Z
+CZ = (RZ_BOT + RZ_TOP) / 2                   # 1202   — plane centre Z
 CY = (ov.FP_Y_MIN + ov.FP_Y) / 2             # 1181   — flat plane depth (mid-rail)
 
 C_XSL = "#1F77B4"   # blue  — X cross-slide (SWING float)

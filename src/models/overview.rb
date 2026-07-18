@@ -2235,7 +2235,7 @@ end
   grp.name = "Optical Cone"
   ge = grp.entities
   apex = [2399.mm,0.mm,1194.mm]
-  b0 = [150.mm,2262.mm,0.mm]; b1 = [4649.mm,2262.mm,0.mm]; b2 = [4649.mm,2262.mm,2138.mm]; b3 = [150.mm,2262.mm,2138.mm]
+  b0 = [150.mm,2262.mm,0.mm]; b1 = [4649.mm,2262.mm,0.mm]; b2 = [4649.mm,2262.mm,2094.mm]; b3 = [150.mm,2262.mm,2094.mm]
   edges = []
   edges.concat(ge.add_edges(b0, b1, b2, b3, b0))
   edges << ge.add_line(apex, b0)
@@ -2266,7 +2266,7 @@ end
   # FP Rail TR
   grp = ents.add_group
   grp.name = "FP Rail TR"
-  face = grp.entities.add_face([4609.mm,0.mm,2248.mm], [4649.mm,0.mm,2248.mm], [4649.mm,2362.mm,2248.mm], [4609.mm,2362.mm,2248.mm])
+  face = grp.entities.add_face([4609.mm,0.mm,2204.mm], [4649.mm,0.mm,2204.mm], [4649.mm,2362.mm,2204.mm], [4609.mm,2362.mm,2204.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2288,7 +2288,7 @@ end
   # FP Rail TL
   grp = ents.add_group
   grp.name = "FP Rail TL"
-  face = grp.entities.add_face([150.mm,0.mm,2248.mm], [190.mm,0.mm,2248.mm], [190.mm,2362.mm,2248.mm], [150.mm,2362.mm,2248.mm])
+  face = grp.entities.add_face([150.mm,0.mm,2204.mm], [190.mm,0.mm,2204.mm], [190.mm,2362.mm,2204.mm], [150.mm,2362.mm,2204.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2299,7 +2299,7 @@ end
   # Saddle back-plate TL near
   grp = ents.add_group
   grp.name = "Saddle back-plate TL near"
-  face = grp.entities.add_face([75.mm,0.mm,2173.mm], [225.mm,0.mm,2173.mm], [225.mm,8.mm,2173.mm], [75.mm,8.mm,2173.mm])
+  face = grp.entities.add_face([75.mm,0.mm,2129.mm], [225.mm,0.mm,2129.mm], [225.mm,8.mm,2129.mm], [75.mm,8.mm,2129.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2310,7 +2310,7 @@ end
   # Saddle OUTSIDE plate TL near
   grp = ents.add_group
   grp.name = "Saddle OUTSIDE plate TL near"
-  face = grp.entities.add_face([75.mm,-48.mm,2173.mm], [225.mm,-48.mm,2173.mm], [225.mm,-40.mm,2173.mm], [75.mm,-40.mm,2173.mm])
+  face = grp.entities.add_face([75.mm,-48.mm,2129.mm], [225.mm,-48.mm,2129.mm], [225.mm,-40.mm,2129.mm], [75.mm,-40.mm,2129.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2321,7 +2321,7 @@ end
   # Saddle seat TL near
   grp = ents.add_group
   grp.name = "Saddle seat TL near"
-  face = grp.entities.add_face([126.mm,0.mm,2238.mm], [174.mm,0.mm,2238.mm], [174.mm,110.mm,2238.mm], [126.mm,110.mm,2238.mm])
+  face = grp.entities.add_face([126.mm,0.mm,2194.mm], [174.mm,0.mm,2194.mm], [174.mm,110.mm,2194.mm], [126.mm,110.mm,2194.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2333,7 +2333,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle gusset TL near"
   ge = grp.entities
-  f = ge.add_face([150.mm,110.mm,2238.mm], [150.mm,0.mm,2238.mm], [150.mm,0.mm,2118.mm])
+  f = ge.add_face([150.mm,110.mm,2194.mm], [150.mm,0.mm,2194.mm], [150.mm,0.mm,2074.mm])
   f.pushpull(8.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -2344,7 +2344,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TL near"
   ge = grp.entities
-  circle = ge.add_circle([100.mm,-48.mm,2198.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([100.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2357,7 +2357,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TL near"
   ge = grp.entities
-  circle = ge.add_circle([100.mm,-48.mm,2298.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([100.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2370,7 +2370,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TL near"
   ge = grp.entities
-  circle = ge.add_circle([200.mm,-48.mm,2198.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([200.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2383,7 +2383,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TL near"
   ge = grp.entities
-  circle = ge.add_circle([200.mm,-48.mm,2298.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([200.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2396,7 +2396,7 @@ end
   grp = ents.add_group
   grp.name = "Thumb screw TL near"
   ge = grp.entities
-  circle = ge.add_circle([150.mm,25.mm,2248.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([150.mm,25.mm,2204.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -2409,7 +2409,7 @@ end
   grp = ents.add_group
   grp.name = "Thumb screw TL near"
   ge = grp.entities
-  circle = ge.add_circle([150.mm,85.mm,2248.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([150.mm,85.mm,2204.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -2421,7 +2421,7 @@ end
   # Saddle back-plate TL far
   grp = ents.add_group
   grp.name = "Saddle back-plate TL far"
-  face = grp.entities.add_face([75.mm,2354.mm,2173.mm], [225.mm,2354.mm,2173.mm], [225.mm,2362.mm,2173.mm], [75.mm,2362.mm,2173.mm])
+  face = grp.entities.add_face([75.mm,2354.mm,2129.mm], [225.mm,2354.mm,2129.mm], [225.mm,2362.mm,2129.mm], [75.mm,2362.mm,2129.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2432,7 +2432,7 @@ end
   # Saddle OUTSIDE plate TL far
   grp = ents.add_group
   grp.name = "Saddle OUTSIDE plate TL far"
-  face = grp.entities.add_face([75.mm,2402.mm,2173.mm], [225.mm,2402.mm,2173.mm], [225.mm,2410.mm,2173.mm], [75.mm,2410.mm,2173.mm])
+  face = grp.entities.add_face([75.mm,2402.mm,2129.mm], [225.mm,2402.mm,2129.mm], [225.mm,2410.mm,2129.mm], [75.mm,2410.mm,2129.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2443,7 +2443,7 @@ end
   # Saddle seat TL far
   grp = ents.add_group
   grp.name = "Saddle seat TL far"
-  face = grp.entities.add_face([126.mm,2252.mm,2238.mm], [174.mm,2252.mm,2238.mm], [174.mm,2362.mm,2238.mm], [126.mm,2362.mm,2238.mm])
+  face = grp.entities.add_face([126.mm,2252.mm,2194.mm], [174.mm,2252.mm,2194.mm], [174.mm,2362.mm,2194.mm], [126.mm,2362.mm,2194.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2455,7 +2455,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle gusset TL far"
   ge = grp.entities
-  f = ge.add_face([150.mm,2252.mm,2238.mm], [150.mm,2362.mm,2238.mm], [150.mm,2362.mm,2118.mm])
+  f = ge.add_face([150.mm,2252.mm,2194.mm], [150.mm,2362.mm,2194.mm], [150.mm,2362.mm,2074.mm])
   f.pushpull(8.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -2466,7 +2466,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TL far"
   ge = grp.entities
-  circle = ge.add_circle([100.mm,2354.mm,2198.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([100.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2479,7 +2479,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TL far"
   ge = grp.entities
-  circle = ge.add_circle([100.mm,2354.mm,2298.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([100.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2492,7 +2492,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TL far"
   ge = grp.entities
-  circle = ge.add_circle([200.mm,2354.mm,2198.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([200.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2505,7 +2505,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TL far"
   ge = grp.entities
-  circle = ge.add_circle([200.mm,2354.mm,2298.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([200.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2518,7 +2518,7 @@ end
   grp = ents.add_group
   grp.name = "Thumb screw TL far"
   ge = grp.entities
-  circle = ge.add_circle([150.mm,2277.mm,2248.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([150.mm,2277.mm,2204.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -2531,7 +2531,7 @@ end
   grp = ents.add_group
   grp.name = "Thumb screw TL far"
   ge = grp.entities
-  circle = ge.add_circle([150.mm,2337.mm,2248.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([150.mm,2337.mm,2204.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -2543,7 +2543,7 @@ end
   # Saddle back-plate TR near
   grp = ents.add_group
   grp.name = "Saddle back-plate TR near"
-  face = grp.entities.add_face([4534.mm,0.mm,2173.mm], [4684.mm,0.mm,2173.mm], [4684.mm,8.mm,2173.mm], [4534.mm,8.mm,2173.mm])
+  face = grp.entities.add_face([4534.mm,0.mm,2129.mm], [4684.mm,0.mm,2129.mm], [4684.mm,8.mm,2129.mm], [4534.mm,8.mm,2129.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2554,7 +2554,7 @@ end
   # Saddle OUTSIDE plate TR near
   grp = ents.add_group
   grp.name = "Saddle OUTSIDE plate TR near"
-  face = grp.entities.add_face([4534.mm,-48.mm,2173.mm], [4684.mm,-48.mm,2173.mm], [4684.mm,-40.mm,2173.mm], [4534.mm,-40.mm,2173.mm])
+  face = grp.entities.add_face([4534.mm,-48.mm,2129.mm], [4684.mm,-48.mm,2129.mm], [4684.mm,-40.mm,2129.mm], [4534.mm,-40.mm,2129.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2565,7 +2565,7 @@ end
   # Saddle seat TR near
   grp = ents.add_group
   grp.name = "Saddle seat TR near"
-  face = grp.entities.add_face([4585.mm,0.mm,2238.mm], [4633.mm,0.mm,2238.mm], [4633.mm,110.mm,2238.mm], [4585.mm,110.mm,2238.mm])
+  face = grp.entities.add_face([4585.mm,0.mm,2194.mm], [4633.mm,0.mm,2194.mm], [4633.mm,110.mm,2194.mm], [4585.mm,110.mm,2194.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2577,7 +2577,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle gusset TR near"
   ge = grp.entities
-  f = ge.add_face([4609.mm,110.mm,2238.mm], [4609.mm,0.mm,2238.mm], [4609.mm,0.mm,2118.mm])
+  f = ge.add_face([4609.mm,110.mm,2194.mm], [4609.mm,0.mm,2194.mm], [4609.mm,0.mm,2074.mm])
   f.pushpull(8.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -2588,7 +2588,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TR near"
   ge = grp.entities
-  circle = ge.add_circle([4559.mm,-48.mm,2198.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4559.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2601,7 +2601,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TR near"
   ge = grp.entities
-  circle = ge.add_circle([4559.mm,-48.mm,2298.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4559.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2614,7 +2614,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TR near"
   ge = grp.entities
-  circle = ge.add_circle([4659.mm,-48.mm,2198.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4659.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2627,7 +2627,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TR near"
   ge = grp.entities
-  circle = ge.add_circle([4659.mm,-48.mm,2298.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4659.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2640,7 +2640,7 @@ end
   grp = ents.add_group
   grp.name = "Rail fixing bolt TR near"
   ge = grp.entities
-  circle = ge.add_circle([4609.mm,25.mm,2248.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([4609.mm,25.mm,2204.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -2653,7 +2653,7 @@ end
   grp = ents.add_group
   grp.name = "Rail fixing bolt TR near"
   ge = grp.entities
-  circle = ge.add_circle([4609.mm,85.mm,2248.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([4609.mm,85.mm,2204.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -2665,7 +2665,7 @@ end
   # Saddle back-plate TR far
   grp = ents.add_group
   grp.name = "Saddle back-plate TR far"
-  face = grp.entities.add_face([4534.mm,2354.mm,2173.mm], [4684.mm,2354.mm,2173.mm], [4684.mm,2362.mm,2173.mm], [4534.mm,2362.mm,2173.mm])
+  face = grp.entities.add_face([4534.mm,2354.mm,2129.mm], [4684.mm,2354.mm,2129.mm], [4684.mm,2362.mm,2129.mm], [4534.mm,2362.mm,2129.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2676,7 +2676,7 @@ end
   # Saddle OUTSIDE plate TR far
   grp = ents.add_group
   grp.name = "Saddle OUTSIDE plate TR far"
-  face = grp.entities.add_face([4534.mm,2402.mm,2173.mm], [4684.mm,2402.mm,2173.mm], [4684.mm,2410.mm,2173.mm], [4534.mm,2410.mm,2173.mm])
+  face = grp.entities.add_face([4534.mm,2402.mm,2129.mm], [4684.mm,2402.mm,2129.mm], [4684.mm,2410.mm,2129.mm], [4534.mm,2410.mm,2129.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2687,7 +2687,7 @@ end
   # Saddle seat TR far
   grp = ents.add_group
   grp.name = "Saddle seat TR far"
-  face = grp.entities.add_face([4585.mm,2252.mm,2238.mm], [4633.mm,2252.mm,2238.mm], [4633.mm,2362.mm,2238.mm], [4585.mm,2362.mm,2238.mm])
+  face = grp.entities.add_face([4585.mm,2252.mm,2194.mm], [4633.mm,2252.mm,2194.mm], [4633.mm,2362.mm,2194.mm], [4585.mm,2362.mm,2194.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -2699,7 +2699,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle gusset TR far"
   ge = grp.entities
-  f = ge.add_face([4609.mm,2252.mm,2238.mm], [4609.mm,2362.mm,2238.mm], [4609.mm,2362.mm,2118.mm])
+  f = ge.add_face([4609.mm,2252.mm,2194.mm], [4609.mm,2362.mm,2194.mm], [4609.mm,2362.mm,2074.mm])
   f.pushpull(8.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -2710,7 +2710,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TR far"
   ge = grp.entities
-  circle = ge.add_circle([4559.mm,2354.mm,2198.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4559.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2723,7 +2723,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TR far"
   ge = grp.entities
-  circle = ge.add_circle([4559.mm,2354.mm,2298.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4559.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2736,7 +2736,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TR far"
   ge = grp.entities
-  circle = ge.add_circle([4659.mm,2354.mm,2198.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4659.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2749,7 +2749,7 @@ end
   grp = ents.add_group
   grp.name = "Saddle wall bolt M12 TR far"
   ge = grp.entities
-  circle = ge.add_circle([4659.mm,2354.mm,2298.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4659.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -2762,7 +2762,7 @@ end
   grp = ents.add_group
   grp.name = "Rail fixing bolt TR far"
   ge = grp.entities
-  circle = ge.add_circle([4609.mm,2277.mm,2248.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([4609.mm,2277.mm,2204.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -2775,7 +2775,7 @@ end
   grp = ents.add_group
   grp.name = "Rail fixing bolt TR far"
   ge = grp.entities
-  circle = ge.add_circle([4609.mm,2337.mm,2248.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([4609.mm,2337.mm,2204.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(36.mm)
@@ -3033,7 +3033,7 @@ end
   grp.name = "Film Plane Screen (muslin)"
   face = grp.entities.add_face([150.mm,2262.mm,0.mm], [4649.mm,2262.mm,0.mm], [4649.mm,2282.mm,0.mm], [150.mm,2282.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2138.mm)
+  face.pushpull(2094.mm)
   mat = model.materials["Film Plane Screen (muslin)"] || model.materials.add("Film Plane Screen (muslin)")
   mat.color = Sketchup::Color.new(32, 96, 160)
   mat.alpha = 0.3
@@ -3053,7 +3053,7 @@ end
   # FP Frame Top
   grp = ents.add_group
   grp.name = "FP Frame Top"
-  face = grp.entities.add_face([150.mm,2211.2.mm,2087.2.mm], [4649.mm,2211.2.mm,2087.2.mm], [4649.mm,2262.mm,2087.2.mm], [150.mm,2262.mm,2087.2.mm])
+  face = grp.entities.add_face([150.mm,2211.2.mm,2043.2.mm], [4649.mm,2211.2.mm,2043.2.mm], [4649.mm,2262.mm,2043.2.mm], [150.mm,2262.mm,2043.2.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.8.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -3066,7 +3066,7 @@ end
   grp.name = "FP Frame Left"
   face = grp.entities.add_face([150.mm,2211.2.mm,0.mm], [200.8.mm,2211.2.mm,0.mm], [200.8.mm,2262.mm,0.mm], [150.mm,2262.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2138.mm)
+  face.pushpull(2094.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3077,7 +3077,7 @@ end
   grp.name = "FP Frame Right"
   face = grp.entities.add_face([4598.2.mm,2211.2.mm,0.mm], [4649.mm,2211.2.mm,0.mm], [4649.mm,2262.mm,0.mm], [4598.2.mm,2262.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2138.mm)
+  face.pushpull(2094.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0

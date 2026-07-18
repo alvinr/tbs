@@ -27,16 +27,16 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 
 | Parameter | Value |
 |-----------|-------|
-| Image plane (active) | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,138<!-- END fact:film_plane_height_mm -->mm (~14'9" × 7'0") |
+| Image plane (active) | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~14'9" × 6'10") |
 | Container interior | <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm --> × <!-- BEGIN fact:container_height_mm -->2,388<!-- END fact:container_height_mm -->mm (~19'4" × 7'10") |
-| Image area | ~<!-- BEGIN fact:image_area_sqft -->104<!-- END fact:image_area_sqft --> sq ft |
+| Image area | ~<!-- BEGIN fact:image_area_sqft -->101<!-- END fact:image_area_sqft --> sq ft |
 | Focal length | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm (container interior depth) |
 | Optimal pinhole | Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm (Lord Rayleigh formula, λ = 550 nm) |
 | f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> |
 | Baseline exposure | ~30–45 min (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction) |
 | Process | Cyanotype (Ware formula) — water-based, non-toxic, no silver |
 | Per-print cost | ~<!-- BEGIN costing:summary-perprint -->$30<!-- END costing:summary-perprint --> |
-| 50-print run | ~<!-- BEGIN costing:summary-50run -->$1,520<!-- END costing:summary-50run --> |
+| 50-print run | ~<!-- BEGIN costing:summary-50run -->$1,490<!-- END costing:summary-50run --> |
 | License | [GNU AGPLv3](licensing.md) — © 2026 Alvin Richards |
 
 ---
@@ -79,7 +79,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Photosensitive Materials](photosensitive-plane-options.md) | All process options, ISO equivalents, spectral response, per-image costs |
 | [Processing System](water-system-report.md) | Off-grid three-circuit water system design and Bill of Materials |
 | [Film Plane Mechanism](film-plane-mechanism-report.md) | 4-corner independent actuation — design, drawings, shopping list |
-| [Film Clamp Mechanism](film-clamp-mechanism-report.md) | Cam-lever spring clamp system — 90 clamps at 150mm spacing, parts list |
+| [Film Clamp Mechanism](film-clamp-mechanism-report.md) | Spring-clip muslin clamp system — 88 clips at 150mm spacing, parts list |
 | [Pinhole Report](pinhole-report.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
 | [Tilt-Swing Front Board](tilt-swing-board-report.md) | Spherical-pivot mechanism — design, drawings, combined distortion renders |
 | [Cost Breakdown](project-cost-breakdown.md) | Full itemized build cost — three scenarios, all sources cited |

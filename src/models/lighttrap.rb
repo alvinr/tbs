@@ -471,7 +471,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP Rail TL (upper left)
   grp = ents.add_group
   grp.name = "FP Rail TL (upper left)"
-  face = grp.entities.add_face([150.mm,100.mm,2248.mm], [190.mm,100.mm,2248.mm], [190.mm,2262.mm,2248.mm], [150.mm,2262.mm,2248.mm])
+  face = grp.entities.add_face([150.mm,100.mm,2204.mm], [190.mm,100.mm,2204.mm], [190.mm,2262.mm,2204.mm], [150.mm,2262.mm,2204.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -493,7 +493,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP Brace Beam Upper (near wall)
   grp = ents.add_group
   grp.name = "FP Brace Beam Upper (near wall)"
-  face = grp.entities.add_face([150.mm,100.mm,2248.mm], [2000.mm,100.mm,2248.mm], [2000.mm,150.mm,2248.mm], [150.mm,150.mm,2248.mm])
+  face = grp.entities.add_face([150.mm,100.mm,2204.mm], [2000.mm,100.mm,2204.mm], [2000.mm,150.mm,2204.mm], [150.mm,150.mm,2204.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -506,7 +506,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "FP Brace Post L (near wall)"
   face = grp.entities.add_face([150.mm,100.mm,100.mm], [200.mm,100.mm,100.mm], [200.mm,150.mm,100.mm], [150.mm,150.mm,100.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2148.mm)
+  face.pushpull(2104.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -526,7 +526,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP Brace Beam Upper (far wall)
   grp = ents.add_group
   grp.name = "FP Brace Beam Upper (far wall)"
-  face = grp.entities.add_face([150.mm,2262.mm,2248.mm], [2000.mm,2262.mm,2248.mm], [2000.mm,2312.mm,2248.mm], [150.mm,2312.mm,2248.mm])
+  face = grp.entities.add_face([150.mm,2262.mm,2204.mm], [2000.mm,2262.mm,2204.mm], [2000.mm,2312.mm,2204.mm], [150.mm,2312.mm,2204.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -539,7 +539,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "FP Brace Post L (far wall)"
   face = grp.entities.add_face([150.mm,2262.mm,100.mm], [200.mm,2262.mm,100.mm], [200.mm,2312.mm,100.mm], [150.mm,2312.mm,100.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2148.mm)
+  face.pushpull(2104.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -605,7 +605,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Rail saddle shelf
   grp = ents.add_group
   grp.name = "Rail saddle shelf"
-  face = grp.entities.add_face([133.mm,100.mm,2234.mm], [207.mm,100.mm,2234.mm], [207.mm,180.mm,2234.mm], [133.mm,180.mm,2234.mm])
+  face = grp.entities.add_face([133.mm,100.mm,2190.mm], [207.mm,100.mm,2190.mm], [207.mm,180.mm,2190.mm], [133.mm,180.mm,2190.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -616,7 +616,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Rail saddle cheek -X
   grp = ents.add_group
   grp.name = "Rail saddle cheek -X"
-  face = grp.entities.add_face([133.mm,100.mm,2248.mm], [145.mm,100.mm,2248.mm], [145.mm,180.mm,2248.mm], [133.mm,180.mm,2248.mm])
+  face = grp.entities.add_face([133.mm,100.mm,2204.mm], [145.mm,100.mm,2204.mm], [145.mm,180.mm,2204.mm], [133.mm,180.mm,2204.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(44.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -627,7 +627,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Rail saddle cheek +X
   grp = ents.add_group
   grp.name = "Rail saddle cheek +X"
-  face = grp.entities.add_face([195.mm,100.mm,2248.mm], [207.mm,100.mm,2248.mm], [207.mm,180.mm,2248.mm], [195.mm,180.mm,2248.mm])
+  face = grp.entities.add_face([195.mm,100.mm,2204.mm], [207.mm,100.mm,2204.mm], [207.mm,180.mm,2204.mm], [195.mm,180.mm,2204.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(44.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -638,7 +638,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Rail clamp bar (removable)
   grp = ents.add_group
   grp.name = "Rail clamp bar (removable)"
-  face = grp.entities.add_face([133.mm,122.mm,2288.mm], [207.mm,122.mm,2288.mm], [207.mm,158.mm,2288.mm], [133.mm,158.mm,2288.mm])
+  face = grp.entities.add_face([133.mm,122.mm,2244.mm], [207.mm,122.mm,2244.mm], [207.mm,158.mm,2244.mm], [133.mm,158.mm,2244.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Rail clamp bar (removable)"] || model.materials.add("Rail clamp bar (removable)")
@@ -650,7 +650,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Rail locating dowel (taper)"
   ge = grp.entities
-  circle = ge.add_circle([170.mm,140.mm,2234.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([170.mm,140.mm,2190.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(22.mm)
@@ -719,7 +719,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Rail saddle shelf
   grp = ents.add_group
   grp.name = "Rail saddle shelf"
-  face = grp.entities.add_face([133.mm,2182.mm,2234.mm], [207.mm,2182.mm,2234.mm], [207.mm,2262.mm,2234.mm], [133.mm,2262.mm,2234.mm])
+  face = grp.entities.add_face([133.mm,2182.mm,2190.mm], [207.mm,2182.mm,2190.mm], [207.mm,2262.mm,2190.mm], [133.mm,2262.mm,2190.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -730,7 +730,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Rail saddle cheek -X
   grp = ents.add_group
   grp.name = "Rail saddle cheek -X"
-  face = grp.entities.add_face([133.mm,2182.mm,2248.mm], [145.mm,2182.mm,2248.mm], [145.mm,2262.mm,2248.mm], [133.mm,2262.mm,2248.mm])
+  face = grp.entities.add_face([133.mm,2182.mm,2204.mm], [145.mm,2182.mm,2204.mm], [145.mm,2262.mm,2204.mm], [133.mm,2262.mm,2204.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(44.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -741,7 +741,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Rail saddle cheek +X
   grp = ents.add_group
   grp.name = "Rail saddle cheek +X"
-  face = grp.entities.add_face([195.mm,2182.mm,2248.mm], [207.mm,2182.mm,2248.mm], [207.mm,2262.mm,2248.mm], [195.mm,2262.mm,2248.mm])
+  face = grp.entities.add_face([195.mm,2182.mm,2204.mm], [207.mm,2182.mm,2204.mm], [207.mm,2262.mm,2204.mm], [195.mm,2262.mm,2204.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(44.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -752,7 +752,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Rail clamp bar (removable)
   grp = ents.add_group
   grp.name = "Rail clamp bar (removable)"
-  face = grp.entities.add_face([133.mm,2204.mm,2288.mm], [207.mm,2204.mm,2288.mm], [207.mm,2240.mm,2288.mm], [133.mm,2240.mm,2288.mm])
+  face = grp.entities.add_face([133.mm,2204.mm,2244.mm], [207.mm,2204.mm,2244.mm], [207.mm,2240.mm,2244.mm], [133.mm,2240.mm,2244.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Rail clamp bar (removable)"] || model.materials.add("Rail clamp bar (removable)")
@@ -764,7 +764,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Rail locating dowel (taper)"
   ge = grp.entities
-  circle = ge.add_circle([170.mm,2222.mm,2234.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([170.mm,2222.mm,2190.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(22.mm)

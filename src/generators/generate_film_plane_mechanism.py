@@ -1050,8 +1050,8 @@ def transport_elev(ax):
     """LEFT depth rail — TRANSPORT DROP-IN, side elevation (Yd × Z; Yd positions dimensioned, Z schematic).
     For transport the hinge panel folds about the pivot post (Yd PIVOT_YD) and sweeps the X150 rail line, so
     the LEFT rail is SPLIT: a fixed STUB (parks the corner, anchored at the pivot post + far wall) and a
-    REMOVABLE section that lifts out. A welded BRIDGE (welded to the stub) spans the cut; the removable
-    THUMB-SCREWS to it. A length SPLICE at the pinhole end makes 6 ft stock reach; a pinhole-wall GUSSET seats
+    REMOVABLE section that lifts out. A welded BRIDGE (on top, welded to the removable) laps the cut; a
+    locating PIN + a short bottom support bridge secure it. A length SPLICE at the pinhole end makes 6 ft stock reach; a pinhole-wall GUSSET seats
     that end. (RIGHT rail = flanged wall-to-wall, panel at lower right.)"""
     ax.set_xlim(-320, 2660); ax.set_ylim(-235, 185); ax.axis("off")
     rz0, rz1 = 74, 118
@@ -1067,12 +1067,19 @@ def transport_elev(ax):
     # CUT parting line
     ax.plot([LEFT_CUT_YD, LEFT_CUT_YD], [rz0 - 12, rz1 + 14], color=OUT, lw=1.1, dashes=(4, 3), zorder=7)
     # welded BRIDGE — sits ON TOP of the rail at the cut so GRAVITY holds it down; WELDED to the REMOVABLE
-    # (left of cut), it laps + BEARS on the STUB (right of cut). A retaining SCREW into the stub stops it
-    # lifting/sliding (the weight rides the bridge, not the screw).
+    # (left of cut), it laps + BEARS on the STUB (right of cut). A locating PIN drops through it into the
+    # stub — flush to the top of the INNER rail — to stop it lifting/sliding (the weight rides the bridge, not the pin).
     _rect(ax, LEFT_CUT_YD - 96, rz1, 168, 12, C_CAR, z=8)                       # fishplate ON TOP, straddling the cut
     for wx in (LEFT_CUT_YD - 84, LEFT_CUT_YD - 60, LEFT_CUT_YD - 36):           # fillet weld beads (removable side, on top)
         ax.plot([wx, wx + 10], [rz1 + 1, rz1 + 1], color=OUT, lw=2.0, zorder=10)
-    draw_circle(ax, LEFT_CUT_YD + 44, rz1 + 6, 5.5, color=OUT, fill=True, fc=C_PIN, lw=0.9, zorder=11)  # retaining screw (stub side)
+    # locating PIN + hole — through the bridge + top flange; BOTTOM flush to the top of the INNER rail, head on top
+    _flg = 5
+    ax.add_patch(plt.Rectangle((LEFT_CUT_YD + 41, rz1 - _flg), 6, 12 + _flg, fc=C_PIN, ec=OUT, lw=0.7, zorder=11))
+    draw_circle(ax, LEFT_CUT_YD + 44, rz1 + 12, 4, color=OUT, fill=True, fc=C_PIN, lw=0.8, zorder=12)  # pin head, shown on top
+    # bottom support BRIDGE — welded to the STUB, laps UNDER + carries the removable beam (~64mm)
+    _rect(ax, LEFT_CUT_YD - 32, rz0 - 12, 64, 12, C_CAR, z=8)
+    for wx in (LEFT_CUT_YD + 6, LEFT_CUT_YD + 20):                              # fillet weld beads (stub side, underneath)
+        ax.plot([wx, wx + 10], [rz0 - 1, rz0 - 1], color=OUT, lw=2.0, zorder=10)
     # length SPLICE at the pinhole end — on the OUTBOARD WEB-BACK (far side), so shown as a GHOST outline
     ax.add_patch(plt.Rectangle((SPLICE_YD - 55, rz0), 110, rz1 - rz0, fc="none", ec=OUT, lw=1.0, ls=(0, (5, 3)), zorder=8))
     # pinhole-wall gusset/seat (Yd 0)
@@ -1094,7 +1101,9 @@ def transport_elev(ax):
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 22, rz0 - 18, 60, -58, "pinhole-wall GUSSET / seat",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, LEFT_CUT_YD + 44, rz1 + 6, 1380, 150, "welded BRIDGE (ON TOP) — welded to the REMOVABLE; GRAVITY bears it on the STUB;\na retaining SCREW into the stub stops it lifting (weight on the bridge, not the screw)",
+    leader(ax, LEFT_CUT_YD + 44, rz1 + 12, 1380, 150, "welded BRIDGE (ON TOP) — welded to the REMOVABLE; GRAVITY bears it on the STUB;\na locating PIN (flush to the inner-rail top) stops it lifting (weight on the bridge, not the pin)",
+           ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, LEFT_CUT_YD, rz0 - 12, LEFT_CUT_YD - 330, -205, "bottom support BRIDGE — welded to the STUB;\nlaps under + carries the removable beam (~64mm)",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, PIVOT_YD, 30, PIVOT_YD + 30, -150, f"swing PIVOT POST (Ø{PIVOT_POST_OD} CHS)\nanchors the stub — no floor post at the cut",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
@@ -1151,13 +1160,14 @@ def sheet4():
         "bottom) LIFTS OUT. The fixed STUB parks the corner and is anchored at the pivot post + far wall.",
         "3. At the cut: a BRIDGE (fishplate) sits ON TOP and is WELDED to the REMOVABLE beam, lapping onto the "
         "STUB — GRAVITY bears the removable's end on the stub through the bridge (the WEIGHT rides the bridge, "
-        "not the fastener). A retaining SCREW into the stub stops it lifting (hand-releasable): the removable "
-        "drops straight in and the screw stays unloaded. No floor post at the cut — the stub cantilevers only ~"
-        f"{PIVOT_YD - LEFT_CUT_YD}mm from the pivot post, so nothing fouls the sliding carriage.",
+        "not the fastener). A locating PIN drops through into the stub — flush to the top of the INNER rail — "
+        "to stop it lifting (hand-releasable): the removable drops straight in and the pin stays unloaded. A "
+        "short BOTTOM support bridge (~64mm), welded to the stub, laps under to carry the removable's end. No "
+        f"floor post at the cut — the stub cantilevers only ~{PIVOT_YD - LEFT_CUT_YD}mm from the pivot post, so nothing fouls the sliding carriage.",
         "4. Each removable exceeds 6 ft stock, so a length SPLICE sits at the PINHOLE end (Yd ~"
         f"{SPLICE_YD}) — the shortest-throw, least-travelled zone, least likely for the skate to roll over it.",
         "5. The length-SPLICE fishplate sits on the OUTBOARD WEB-BACK (far side, ghosted), clear of the rollers; "
-        "the cut BRIDGE sits on top (gravity-held). U-joint stub→carrier clamp (4040N12) + U-joint body: Sheet 3.",
+        "the cut BRIDGE sits on top (gravity-held) with a short bottom support bridge under. U-joint stub→carrier clamp (4040N12) + U-joint body: Sheet 3.",
     ], 2, 99, 4.1, fs=6.2, title_fs=6.8, color=DIM, width=79, wrap=132, font=FONT)
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1)
@@ -1303,7 +1313,7 @@ def sheet5():
         "U-joint  1× Ruland USKC12-6-6-SS (303 SS, KEYWAY+CLAMP hubs, 45° max, self-lube bronze)   ·   boot  1× Ruland UBOOT12/19-NI-KIT (nitrile, fitted dry)",
         "Shaft support  2× McMaster 4040N12 (304 SS)   ·   stub  2× 3/8\" 304 SS KEYED (McMaster 89535K873 + keyway machined for the U-joint)",
         "SKATE  Ø32 acetal rollers ×4 (2 load + 2 keeper) on Ø10 316 axles + carriage plate + inboard lip   ·   Z/X cross-slides  316 flat bar ¼\"×1.5\" + UHMW pads + adjustable gib   ·   cam clamp ×3",
-        "DEPTH RAIL  3×1.5 (76×38) 304 U-channel (McMaster 1262T21), wall-to-wall   ·   RIGHT flanged   ·   LEFT transport drop-in (stub + removable + welded bridge + retaining screw + pinhole gusset)",
+        "DEPTH RAIL  3×1.5 (76×38) 304 U-channel (McMaster 1262T21), wall-to-wall   ·   RIGHT flanged   ·   LEFT transport drop-in (stub + removable + welded bridge + locating pin + bottom support bridge + pinhole gusset)",
         "Full bill of materials: master-shopping-list.md — §4 Film Plane Mechanism",
     ]
     hw_top, hw_lh = 0.205, 0.026

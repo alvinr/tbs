@@ -266,23 +266,23 @@ OPTICS = [
 ]
 
 
-# §4 Film plane mechanism (4-corner Option A, manual handwheel actuation). Line items own the truth;
-# the section total sums them. The only documented source of Low/High spread is the muslin spring
-# clips ($3/$5.50/$8 ea × 90 = $270/$495/$720) plus a modest band on the est. wall-seat saddle plate;
-# everything else is single-source-specced (point()). Folding this BOM in raised the §4 floor ~$480:
-# the hand-set summary ($3,100/$3,650/$4,200) sat BELOW the section's own bill of materials.
-# Source: project-cost-breakdown.md §4.1–4.3 / film-plane-mechanism-report.md.
+# §4 Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + Ruland U-joint).
+# Line items own the truth; the section total sums them. The U-joint ($276×4), 4040N12 supports,
+# and 304 U-channel rails are firm-priced; the Low/High spread comes from the muslin spring clips
+# ($3/$5.50/$8 ea) + the estimated skate / cross-slide / cam-clamp fab lines + the wall-seat saddle
+# plate. Source: project-cost-breakdown.md §4.1–4.3 / film-plane-mechanism-report.md.
 FILM = [
-    # 4.1 Structural & rails (HGR20 carriage + Option-A floating cross-slides)
-    point("Linear guide rails HGR20 2,200mm (×4) + carriages HGH20CA (×8)", 324, "2 carriages per rail"),
-    point("Acme leadscrews ¾\"-6 8 ft (×4) + bronze nuts (×4)", 428, "manual handwheel drive"),
-    point("Handwheels 8\" (×4) + locking collars SS316 (×4)", 188),
+    # 4.1 Structural & rails (304 U-channel + acetal skate + 316 cross-slides + Ruland U-joint)
+    LineItem("304 U-channel depth rails 3×1½\" (1262T21, ×4 wall-to-wall)", 2172, 2172, 2172, "$362/6ft ×6 — 8ft lengths for continuous rails, firm at order"),
+    LineItem("Ruland USKC12-6-6-SS U-joints (×4) + nitrile boots (×4)", 1192, 1206, 1220, "$276 ea joint (interim; cheaper alt in research) + $22–29 boot"),
+    LineItem("McMaster 4040N12 304 shaft supports (×4) + 3/8\" 304 stub rod (89535K87, 3ft)", 245, 245, 245, "$58 ea support + $13.25 rod — firm"),
+    LineItem("Acetal 4-wheel skates (×4) — Ø32 rollers, Ø10 316 axles, carriage plates", 220, 290, 360, "same skate as the spray bar; fab est."),
+    LineItem("316 flat-bar Z/X cross-slides (×4) + UHMW pads + gibs", 180, 280, 380, "2-axis stack per corner; est."),
+    LineItem("Cam-lever rail brakes (×12, skate lock)", 96, 138, 180, "3 per corner; est."),
     LineItem("Corner plates, ¼\" 304 SS 6×8 (×4)", 152, 180, 208, "U-joint mount — steel, not aluminum"),
-    point("Option-A cross-slides — HGR15 rails (×8) + HGH15CA (×8) + intermediate plates (×4)", 356, "floating-corner X–Z stage"),
-    point("Rod-end spherical bearings GIR25-DO (×4) + pivot pins SS316 (×4)", 120),
     # 4.2 Film plane frame & backing
     point("Aluminum angle 2×2×3/16 (6061 anodized, expendable) 8 ft (×10)", 220),
-    point("Dibond ACM 4mm 4×8 sheets (×6) — single rigid plane", 510, "Option A: no folding hinge"),
+    point("Dibond ACM 4mm 4×8 sheets (×6) — single rigid plane", 510, "single rigid plane, no folding hinge"),
     LineItem("Light-seal set — EPDM tape (×3) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6)", 299, 313, 327),
     LineItem("Spring clips, muslin (×88)", 264, 484, 704, "$3/$5.50/$8 ea — the section's main Low/High driver"),
     point("Clamp mounting — M5×16 SS csk screws (×176) + Nylocks (×176) + neoprene pad strip", 73, "item-sum: $44 screws + $14 nuts + $15 neoprene"),
@@ -339,7 +339,7 @@ def emit_funding_level1() -> str:
         ("20ft container (Cargo Worthy grade) + delivery", _sec("1").mid),
         ("Interior conversion (light-seal, paint, image-plane backing)", _sec("2").mid),
         ("Pinhole plate (precision laser-drilled, SS-302, interchangeable frame)", _sec("3").mid),
-        ("Film plane mechanism (4-corner Option A, manual actuation)", _sec("4").mid),
+        ("Film plane mechanism (4-corner U-channel + acetal skate + Ruland U-joint)", _sec("4").mid),
         ("Tilt-swing front board mechanism", FRONT_BOARD_MID),
         ("Housed revolving-door light trap (plastic-skin Ø900 housing + C-shell drum, bearings, seals, fabrication)", _sec("6").mid),
         ("Processing water system (tray, spray bar, 3-stage filtration, IBC stacking frame)", _sec("5").mid),
@@ -367,7 +367,7 @@ def emit_master_summary() -> str:
         ("1. Container & delivery", _sec("1")),
         ("2. Interior conversion (light-seal, paint, backing)", _sec("2")),
         ("3. Pinhole optics plate", _sec("3")),
-        ("4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides)", _sec("4")),
+        ("4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles)", _sec("4")),
         ("5. Print washing — water system (incl. IBC stacking frame)", _sec("5")),
         ("6. Electrical — power, circuits, wiring", _sec("5a")),
         ("7. Housed revolving-door light lock (plastic-skin custom fabrication)", _sec("6")),
@@ -428,7 +428,7 @@ def _scenario_a_rows() -> list:
         ("Container (WWT) + delivery", SCEN_A["container"]),
         ("Interior conversion (minimal)", _sec("2").low),
         ("Pinhole plate", _sec("3").low),
-        ("Film plane mechanism (manual Option A, incl. wall-seat saddles + cross-slides)", _sec("4").low),
+        ("Film plane mechanism (4-corner U-channel + U-joint, incl. wall-seat saddles)", _sec("4").low),
         ("Water system (incl. processing tray, spray bar, IBC stacking frame)", _sec("5").low),
         ("Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch)", _sec("5a").low),
         ("Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy)", _sec("5b").low),
@@ -448,7 +448,7 @@ def _scenario_b_rows() -> list:
         ("Container (CW) + delivery", SCEN_B["container"]),
         ("Interior conversion (full)", _sec("2").mid),
         ("Pinhole plate", _sec("3").mid),
-        ("Film plane mechanism (manual Option A + wall-seat saddles + cross-slides)", _sec("4").mid),
+        ("Film plane mechanism (4-corner U-channel + U-joint + wall-seat saddles)", _sec("4").mid),
         ("Water system (incl. processing tray, spray bar, IBC stacking frame)", _sec("5").mid),
         ("Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch)", _sec("5a").mid),
         ("Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy)", _sec("5b").mid),
@@ -649,7 +649,7 @@ SECTIONS = [
     Section("1",  "Container purchase & delivery", *total(CONTAINER)),
     Section("2",  "Interior conversion", *total(INTERIOR)),
     Section("3",  "Optics — pinhole plate", *total(OPTICS)),
-    Section("4",  "Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)", *total(FILM)),
+    Section("4",  "Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)", *total(FILM)),
     Section("5",  "Processing water system (incl. tray, spray bar, IBC stacking frame)", *total(WATER)),
     Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2608, 2806, 3003),
     Section("5b", "Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)",
@@ -1017,7 +1017,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (22773, 28616, 36335),  # 2026-07-18: 6215-2RS bearing firm $60.59 ea (Bearings Direct) +$11/−$29/−$69.  2026-07-18: door top/bottom seal lips → nylon strip brush, firm $128.50 (McMaster 74405T12+8813T53 ×2) from 3mm steel.  2026-07-17: FP_H 2138→2094 — chemistry tiers ×0.97944 −$20/$30/$50 §7; clamp 90→88 −$7/$12/$17 §4.  2026-07-17: film corner plates → 304 SS +$72/$100/$128.  2026-07-15: chemistry tiers ×0.8953 (FP_H 2388→2138) −$90/$130/$280 §7; clamp 92→90 −$8/$13/$18.  2026-07-12: §5 water +$334/+$281 (bulkhead-2in verified $137 ea; spray fab-from-stock). EP plywood backboard + IP65 enclosure over the fuse/busbar terminals (+$60 §5a — enclosure kept ALONGSIDE the plywood). audit 2026-07: pinhole retaining ring (+$15/$25); D-ring 4→8; +$2 Powerpole (1/pump); filter 3-separate design (−$50/−$65). pump switches 5→1 master (−$26 §5a). IBC frame deep 4-leg box (+$25/+$38/+$50). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (+$52/+$64/+$76, SS beam); + corridor plumbing-panel structure (+$215/+$380 — previously uncosted)
+    "grand_total": (25462, 31531, 39476),  # 2026-07-19: film leadscrew→U-channel mechanism BOM +$2,691/$2,924/$3,158.  # 2026-07-18: 6215-2RS bearing firm $60.59 ea (Bearings Direct) +$11/−$29/−$69.  2026-07-18: door top/bottom seal lips → nylon strip brush, firm $128.50 (McMaster 74405T12+8813T53 ×2) from 3mm steel.  2026-07-17: FP_H 2138→2094 — chemistry tiers ×0.97944 −$20/$30/$50 §7; clamp 90→88 −$7/$12/$17 §4.  2026-07-17: film corner plates → 304 SS +$72/$100/$128.  2026-07-15: chemistry tiers ×0.8953 (FP_H 2388→2138) −$90/$130/$280 §7; clamp 92→90 −$8/$13/$18.  2026-07-12: §5 water +$334/+$281 (bulkhead-2in verified $137 ea; spray fab-from-stock). EP plywood backboard + IP65 enclosure over the fuse/busbar terminals (+$60 §5a — enclosure kept ALONGSIDE the plywood). audit 2026-07: pinhole retaining ring (+$15/$25); D-ring 4→8; +$2 Powerpole (1/pump); filter 3-separate design (−$50/−$65). pump switches 5→1 master (−$26 §5a). IBC frame deep 4-leg box (+$25/+$38/+$50). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (+$52/+$64/+$76, SS beam); + corridor plumbing-panel structure (+$215/+$380 — previously uncosted)
     "walkway": (2000, 2488, 2975),   # §6a fab line raised so bracket scope matches walkway-report §10 ($742–$1,255 all-in)
     "water": (5356, 6647, 7929),   # 2026-07-12: bulkhead-2in verified $137 ea (was $25-40 → +$335/+$290 on storage); spray saddle+wheel → fab-from-stock qty=1 (−$1/−$9). audit 2026-07: D-ring 4→8 (+$20/+$35); +$2 Powerpole 5 pair (1/pump); filter combo → 3 separate housings + frame (−$50/−$65). IBC frame portal → deep 4-leg box (+$25/+$38/+$50: 4 feet + 16 anchors). filter skid 4.5×10 → 4.5×20 (+$54/+$79/+$105: 20" housings + cartridges). Prior: under-walkway ribbon supports 2026-07-01 (+$24/+$36/+$48); spray-bar carriage shrink (40×40 alu → 40×25 304-SS + Ø32 wheels, spray line +$52/+$64/+$76); + corridor plumbing-panel structure (+$215/+$298/+$380 — was uncosted); panel-split cascade 2026-06-28 (+P-05, +SV-02, +5th bracket, −2 CV, +X1 4-way cross, BVs, +Blue equalization tie)
     "container": (2300, 3300, 4300),
@@ -1027,7 +1027,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "shelf": (203, 203, 203),          # §6d = chemistry-prep-shelves §7 (point estimates) — was MISSING from the model
     "interior": (950, 1138, 1350),
     "optics": (110, 185, 265),
-    "film": (3374, 3636, 3898),   # 2026-07-17: clamp count 90→88 (FP_H 2138→2094) −$7/$12/$17   # 2026-07-17: corner brackets → 304 SS corner plates (U-joint mount — steel, not aluminum; concentrated U-joint load + wet-zone/galvanic match) +$72/$100/$128   # 2026-07-16: film-plane frame kept EXPENDABLE anodized 6061 Al (a 304 SS swap was evaluated +$1430/$1705/$1980 and rejected for weight+cost)   # 2026-07-15: clamp count 92→90 (FP_H 2388→2138, film-plane-redesign) −$8/$13/$18   # 2026-07-12: rod-end + pivot pin 8→4 (one per corner; report prose + 3D agree) −$120   # saddles ×8→×6 (rev12: 2 BR ends are walkway combined plates) + fasteners 150→122 + clamp-mounting 70→76
+    "film": (6063, 6551, 7039),   # 2026-07-19: retired the Option-A leadscrew drive (HGR20/Acme/handwheel/rod-end) for the built U-channel + acetal skate + 316 cross-slide + Ruland USKC U-joint mechanism +$2,691/$2,924/$3,158 (U-channel $2,172 + U-joint $1,104 the drivers; skate/slide/clamp/stub estimates firm at order)
     "ventilation": (757, 841, 924),   # §5b BOM (point estimates); report total was stale at $769
     "power": (2608, 2806, 3003),       # §5a authoritative subtotal (+$60 IP65 enclosure over the fuse/busbar terminals)
 }

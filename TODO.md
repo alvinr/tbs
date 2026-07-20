@@ -66,7 +66,7 @@ The remaining §7 parts BOM is gated on confirmed prices._
   stay in `models/sketchfab.json`. Also: `component-dependency-map.md` §3.1 model table (line ~480)
   still documents only the film-plane row (leadscrew DC) with no film-plane-mechanism row — update once the
   two models are reconciled (deferred: describes 3D internals under Alvin's active review).
-- [ ] **§7 parts BOM — GATED on Alvin's SKU paste-check.** `parts.py` film section still holds the 11
+- [x] **§7 parts BOM — DONE 2026-07-19.** Swapped the 11 leadscrew SKUs → the U-channel mechanism (1262T21 U-channel $362/6ft, USKC12-6-6-SS U-joint $276, UBOOT boot, 4040N12 support $58, 89535K87 3ft stub rod $13.25, acetal skate, 316 cross-slides, cam clamps, 304 corner plate); costing §4.1 + EXPECTED + report §7 + master + cost-breakdown reconciled (+$2.9k mid; film $6,063–7,039); prose swept (funding/equipment/summary/dimension-audit). Skate/cross-slide/cam-clamp are fab estimates — firm at order. ~~GATED on Alvin's SKU paste-check.~~ `parts.py` film section still holds the 11
   leadscrew SKUs (hgr20-rail, hgh20ca, acme-leadscrew/nut, handwheel-8in, locking-collar, crossslide-
   hgr15/hgh15ca/plate, rod-end-bearing, pivot-pin) → the report §7 table + master §4 inject them. Swap
   to the Sheet-5 corner hardware (Ruland **USKC12-6-6-SS keyway-clamp U-joint @ $276** + UBOOT12/19-NI-KIT,
@@ -77,6 +77,9 @@ The remaining §7 parts BOM is gated on confirmed prices._
   $276**, boot $22–29, 10mm 316 rod $33–50/ft, UHMW $23–93/sheet. Then reconcile parts.py + costing (film
   band + grand_total move up ~$1.5–2.5k — the U-joint alone is $276×4) → §7 auto-injects; retires the
   parts-identity dead-SKU lint warnings. This is also the FP_W/FP_H dead-BOM retirement folded in.
+
+- [ ] **Master shopping list — add a part number for each primary supplier.** The per-supplier shopping tables should carry the primary-supplier SKU for every line (many rows list a supplier but no part number), so an order can be placed directly. (Alvin 2026-07-19.)
+- [ ] **Reconcile the EPDM gasket on the cargo-door-facing wall of the hinge panel.** Now that the top/bottom door seals are strip brushes, re-check the panel perimeter / housing-surround EPDM on the cargo-door-facing (exterior) wall of the hinge panel — confirm what stays EPDM vs brush and that the 3D/report/parts agree. (Alvin 2026-07-19.)
 
 ## Film-plane U-joint — research a cheaper alternative — OPEN
 

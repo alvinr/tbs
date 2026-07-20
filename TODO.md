@@ -241,32 +241,30 @@ bath is available. Both are cheap; nothing downstream is finalized until they pa
   labelled historical analysis of the old stretching design.)*
 - [x] **3D D-rings added — DONE.** Added 8 D-ring cylinders to the shared `cp.tote_restraint()` (4/tier on the front bars, mirroring the 2D). Overview sent + **verified 8 in the live model** (4/4 by tier). Shared function → the **ibc-stack + water** models pick them up on their next send. *(Dead `ibc_rack()` D-ring code left for a future delete.)*
 
-## Retire the superseded `film-plane.skp` + its generator — OPEN
+## Retire the superseded `film-plane.skp` + its generator — DONE 2026-07-20
 
 _Alvin 2026-07-20: `film-plane.skp` (the older full-plane "Option A" model) is superseded by
-`film-plane-mechanism.skp` + `generate_film_plane_mechanism_model.py` — retire it. Reverses the
+`film-plane-mechanism.skp` + `generate_film_plane_mechanism_model.py` — retired. Reversed the
 2026-07-19 "both KEPT" reconciliation above. `overview.skp` carries the film-plane geometry inline and
-**stays** — this retires only the standalone film-plane model._
+**stays** — this retired only the standalone film-plane model._
 
-- [ ] Delete `src/models/generate_film_plane_model.py`, `src/models/film-plane.rb`, and `models/film-plane.skp`.
-- [ ] Remove the `film-plane` script→output entry from `dependencies.yml` and drop it from the
-  `lint.py --verify-all` model set (7 → 6 model `.rb`), so the missing-cascade sweep stops expecting it.
-- [ ] Remove the `film-plane` entry from `models/sketchfab.json`; decide whether to unpublish the
-  Sketchfab model (Alvin's manual step) or leave the UID dormant. The report embeds
-  **film-plane-mechanism**, not film-plane, so no report embed changes.
-- [ ] Drop the `film-plane` row from `component-dependency-map.md` §3.1 (keep the film-plane-mechanism row).
-- [ ] Grep for stragglers (`publish.sh`, `setup_docs.py`, any doc referencing `film-plane.skp` /
-  `generate_film_plane_model.py`) and clear them; run `lint.py` + `lint.py --verify-all` green.
+- [x] Deleted `src/models/generate_film_plane_model.py`, `src/models/film-plane.rb`, and `models/film-plane.skp`.
+- [x] Removed the `film-plane` script→output entry from `dependencies.yml`; the `lint.py --verify-all`
+  model set derives from `dependencies.yml`, so it dropped 7 → 6 automatically.
+- [x] Removed the `film-plane` entry from `models/sketchfab.json`. **Alvin's manual step:** decide whether
+  to unpublish the dormant Sketchfab model (UID `bb5394a8983a491fa541088b901c24f8`) or leave it. The report
+  embeds **film-plane-mechanism**, not film-plane, so no report embed changed.
+- [x] Dropped the `film-plane` row from `component-dependency-map.md` §3.1 and fixed the
+  film-plane-mechanism row's cross-reference to it.
+- [x] Grep sweep clean (no stragglers in `publish.sh` / `setup_docs.py` / docs); `lint.py` +
+  `lint.py --verify-all` green. Added a `[Unreleased]` RELEASE.md entry.
 
-**Parked working-tree files (2026-07-20) — surfaced while checking branch cleanliness:**
-- `src/models/film-plane.rb` (modified — a stale regen: relabeled `"HGR20 RAILS + LEADSCREWS"` →
-  `"304 U-CHANNEL RAILS + ACETAL SKATES"`, title `"Film Plane (Option A)"` → `"Film Plane"`). **Folds into
-  this retirement** — the `.rb` is deleted with the model, so do **not** commit the regen; `git checkout`
-  it if the retirement slips.
+**Parked working-tree files (2026-07-20):**
+- `src/models/film-plane.rb` — **RESOLVED:** deleted with the model (the stale regen went with it).
 - `overrides/partials/copyright.html` (deleted — **UNRELATED** to the film-plane work). The MkDocs Material
   footer copyright partial, picked up by `custom_dir` convention (not referenced by name); deleting it
-  reverts the site footer to Material's stock copyright. **DECIDE:** intended removal (commit it) or stray
-  deletion (`git checkout` to restore). Needs Alvin's call.
+  reverts the site footer to Material's stock copyright. **STILL OPEN — DECIDE:** intended removal (commit it)
+  or stray deletion (`git checkout` to restore). Needs Alvin's call.
 
 ## Cost / data modeling
 - [ ] **Reconcile 304 vs 316 stainless steel usage — whole-system function + cost — OPEN.** Audit every SS

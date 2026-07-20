@@ -330,9 +330,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z slide rail (TILT, green) BL
   grp = ents.add_group
   grp.name = "Vertical Z slide rail (TILT, green) BL"
-  face = grp.entities.add_face([171.mm,2263.mm,156.mm], [181.mm,2263.mm,156.mm], [181.mm,2281.mm,156.mm], [171.mm,2281.mm,156.mm])
+  face = grp.entities.add_face([171.mm,2263.mm,140.mm], [181.mm,2263.mm,140.mm], [181.mm,2281.mm,140.mm], [171.mm,2281.mm,140.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(113.mm)
+  face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
   mat.color = Sketchup::Color.new(46, 139, 87)
   mat.alpha = 1.0
@@ -341,7 +341,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X slide rail (SWING, purple) BL
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING, purple) BL"
-  face = grp.entities.add_face([150.mm,2263.mm,142.mm], [410.mm,2263.mm,142.mm], [410.mm,2277.mm,142.mm], [150.mm,2277.mm,142.mm])
+  face = grp.entities.add_face([130.mm,2263.mm,142.mm], [390.mm,2263.mm,142.mm], [390.mm,2277.mm,142.mm], [130.mm,2277.mm,142.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -631,9 +631,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z slide rail (TILT, green) BR
   grp = ents.add_group
   grp.name = "Vertical Z slide rail (TILT, green) BR"
-  face = grp.entities.add_face([4593.mm,2263.mm,156.mm], [4603.mm,2263.mm,156.mm], [4603.mm,2281.mm,156.mm], [4593.mm,2281.mm,156.mm])
+  face = grp.entities.add_face([4593.mm,2263.mm,140.mm], [4603.mm,2263.mm,140.mm], [4603.mm,2281.mm,140.mm], [4593.mm,2281.mm,140.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(113.mm)
+  face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
   mat.color = Sketchup::Color.new(46, 139, 87)
   mat.alpha = 1.0
@@ -642,7 +642,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X slide rail (SWING, purple) BR
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING, purple) BR"
-  face = grp.entities.add_face([4364.mm,2263.mm,142.mm], [4624.mm,2263.mm,142.mm], [4624.mm,2277.mm,142.mm], [4364.mm,2277.mm,142.mm])
+  face = grp.entities.add_face([4384.mm,2263.mm,142.mm], [4644.mm,2263.mm,142.mm], [4644.mm,2277.mm,142.mm], [4384.mm,2277.mm,142.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -981,9 +981,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z slide rail (TILT, green) TL
   grp = ents.add_group
   grp.name = "Vertical Z slide rail (TILT, green) TL"
-  face = grp.entities.add_face([163.mm,2263.mm,2239.mm], [173.mm,2263.mm,2239.mm], [173.mm,2281.mm,2239.mm], [163.mm,2281.mm,2239.mm])
+  face = grp.entities.add_face([163.mm,2263.mm,2036.mm], [173.mm,2263.mm,2036.mm], [173.mm,2281.mm,2036.mm], [163.mm,2281.mm,2036.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(47.mm)
+  face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
   mat.color = Sketchup::Color.new(46, 139, 87)
   mat.alpha = 1.0
@@ -992,7 +992,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X slide rail (SWING, purple) TL
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING, purple) TL"
-  face = grp.entities.add_face([150.mm,2263.mm,2294.mm], [410.mm,2263.mm,2294.mm], [410.mm,2277.mm,2294.mm], [150.mm,2277.mm,2294.mm])
+  face = grp.entities.add_face([130.mm,2263.mm,2294.mm], [390.mm,2263.mm,2294.mm], [390.mm,2277.mm,2294.mm], [130.mm,2277.mm,2294.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -1051,7 +1051,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Corner plate 304 SS (U-joint mount — angle frame → U-joint) TL
   grp = ents.add_group
   grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) TL"
-  face = grp.entities.add_face([136.mm,2254.mm,2276.mm], [170.mm,2254.mm,2276.mm], [170.mm,2270.mm,2276.mm], [136.mm,2270.mm,2276.mm])
+  face = grp.entities.add_face([136.mm,2254.mm,2245.mm], [170.mm,2254.mm,2245.mm], [170.mm,2270.mm,2245.mm], [136.mm,2270.mm,2245.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -1263,9 +1263,9 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z slide rail (TILT, green) TR
   grp = ents.add_group
   grp.name = "Vertical Z slide rail (TILT, green) TR"
-  face = grp.entities.add_face([4595.mm,2263.mm,2239.mm], [4605.mm,2263.mm,2239.mm], [4605.mm,2281.mm,2239.mm], [4595.mm,2281.mm,2239.mm])
+  face = grp.entities.add_face([4595.mm,2263.mm,2036.mm], [4605.mm,2263.mm,2036.mm], [4605.mm,2281.mm,2036.mm], [4595.mm,2281.mm,2036.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(47.mm)
+  face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
   mat.color = Sketchup::Color.new(46, 139, 87)
   mat.alpha = 1.0
@@ -1274,7 +1274,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X slide rail (SWING, purple) TR
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING, purple) TR"
-  face = grp.entities.add_face([4364.mm,2263.mm,2294.mm], [4624.mm,2263.mm,2294.mm], [4624.mm,2277.mm,2294.mm], [4364.mm,2277.mm,2294.mm])
+  face = grp.entities.add_face([4384.mm,2263.mm,2294.mm], [4644.mm,2263.mm,2294.mm], [4644.mm,2277.mm,2294.mm], [4384.mm,2277.mm,2294.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -1333,7 +1333,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Corner plate 304 SS (U-joint mount — angle frame → U-joint) TR
   grp = ents.add_group
   grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) TR"
-  face = grp.entities.add_face([4604.mm,2254.mm,2276.mm], [4638.mm,2254.mm,2276.mm], [4638.mm,2270.mm,2276.mm], [4604.mm,2270.mm,2276.mm])
+  face = grp.entities.add_face([4604.mm,2254.mm,2245.mm], [4638.mm,2254.mm,2245.mm], [4638.mm,2270.mm,2245.mm], [4604.mm,2270.mm,2245.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")

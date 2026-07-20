@@ -10,9 +10,13 @@ with it and how it's solved. Manual actuation, corrosion-prone wet environment (
 
 ---
 
-> **Applied design rationale** — the "why the corners work the way they do" report that builds on this
-> research is [`film-plane-corner-rationale.md`](film-plane-corner-rationale.md); the resulting corner
-> is drawn in `diagrams/film-corner-gimbal.png`.
+> **Status — research record (moment in time).** This is the grounded research that *motivated* the
+> film-plane corner redesign; it argues against the pre-redesign mechanism (four rigidly-driven leadscrew
+> corners), which is what "the current design" refers to throughout below. The design this research led to
+> is set out in [`film-plane-corner-rationale.md`](film-plane-corner-rationale.md) — the "why each corner is
+> built this way" report — and specified in [`film-plane-mechanism-report.md`](film-plane-mechanism-report.md);
+> the resulting corner is drawn in `diagrams/film-corner-gimbal.png`. **§8 records what we built** and how it
+> maps to the finding.
 
 ## The finding, in one line
 
@@ -151,3 +155,27 @@ Modern Robotics, the 3-PRS ±40° arXiv paper, Keck LBNL/OSTI report, and the ma
 were retrieved and on-topic. Some journal PDFs bot-block automated fetch — their numbers are corroborated
 via search + the standard mobility results. Rod-end/Cardan angle figures are page-verified from Aurora/
 NHBB/Machinery's Handbook.*
+
+---
+
+## 8. Resolution — what we built
+
+The redesign kept the **four-corner architecture** — it is what gives rise, shift, and where-the-plane-sits,
+not just tilt and swing — but removed the over-constraint the way the theory sanctions: by **adding a real
+freedom at each corner**, not by dropping to three locating points.
+
+- **A 2-axis universal joint at every corner** — an off-the-shelf [Ruland USKC12-6-6-SS](https://www.ruland.com/us12-6-6-ss.html)
+  (303 SS, self-lubricating, published to 45°) supplies tilt + swing and locks twist: the wide-angle,
+  torsion-rigid joint §3–§4 demanded, not a plain spherical bearing or rod-end.
+- **A floating horizontal (X) cross-slide at every corner** — the gravity-neutral "added freedom" (§2)
+  that lets four corners carry a rigid plane without racking; the vertical (Z) slide absorbs the tilt
+  foreshortening on adjustable friction. Each corner is **positioned free, then cam-clamped at its natural
+  pose**, so four clamps never force the panel.
+- **Push-to-slide depth, no leadscrews** — a pinhole's effectively infinite depth of field makes corner
+  positioning scene control, not repeatable focus, so friction slides replace the whole leadscrew/handwheel
+  drive train.
+
+This is the research's **option A** family (keep the corners; relieve the over-constraint by floating the
+redundant freedom — here at all four corners), **not** the 3-leg 3-PRS platform (B) or the central axis-tilt
+gimbal (C). The corner-by-corner reasoning is in [`film-plane-corner-rationale.md`](film-plane-corner-rationale.md);
+the mechanism, hardware, and BOM of record are in [`film-plane-mechanism-report.md`](film-plane-mechanism-report.md).

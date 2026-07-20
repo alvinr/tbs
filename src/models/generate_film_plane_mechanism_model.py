@@ -582,41 +582,41 @@ def plane_frame(px, pz, yc):
         bx("Film frame — right upstand", FCX_R - AT, yperp, PZ0, AT, AL, PZ1 - PZ0, C_FRAME),
         bx("Film frame — right in-plane", FCX_R - AL, yin, PZ0, AL, AT, PZ1 - PZ0, C_FRAME),
     ]
-    Lz, Lx = 250, 260
+    # NOTE: the cross-slide ways are NOT here — they're fixed to the CARRIAGE (rail-aligned) in plane_carriage,
+    # and the U-joint (here, in the frame) SLIDES along them as the frame rotates. So the ways keep their
+    # positions and the frame moves relative to them (correct); they do not follow the frame's rotation.
     for (cx, fcx, fz, zc, cin, isb) in PLANE_CORNERS:
         t = f"({int(fcx)},{int(fz)})"
         stub_x0 = cx + 5 if cin > 0 else cx - 51
         sup_x0 = cx + 26 if cin > 0 else cx - 49
         cpx0 = (cx - 14) if cin > 0 else (cx - 20)
         cpz0 = (fz + 5) if isb else (fz - 45)
-        chan_w = CW_BOT if isb else CD_TOP
-        inb = cx + cin * (chan_w / 2 + 14)
-        gx0 = (cx + cin * 26 - 5) if isb else (inb - 3)  # green Z way in the rail↔film gap (bottom) / inboard (top)
-        gz0 = (fz - 20) if isb else (fz + 20 - Lz)
-        px0 = (cx - 20) if cin > 0 else (cx + 20 - Lx)
         P.append(bx(f"U-joint (Ruland USKC12-6-6-SS) {t}", cx - 12, ty - 4, fz - 14, 24, 24, 24, C_CROSS))
         P.append(bcyl(f"Input stub 3/8 {t}", stub_x0, ty + 8, fz, 4.75, 46, C_STEEL, "x"))
         P.append(bx(f"4040N12 304 shaft support {t}", sup_x0, ty - 1, fz - 11, 23, 18, 22, C_STEEL))
         P.append(bcyl(f"Output stub 3/8 {t}", cx, ty - 14, fz, 4.75, 20, C_STEEL, "y"))
         P.append(bcyl(f"Frame-corner bolt {t}", fcx, ty - 6, fz, 3, 18, C_STEEL, "y"))
         P.append(bx(f"304 SS corner plate {t}", cpx0, ty - 8, cpz0, 34, 16, 40, C_STEEL))
-        # the cross-slide ways ride ABOVE the U-joint, so they FOLLOW the frame angle (tilt/swing with it)
-        pz_purple = (fz - 18) if isb else (fz + 4)     # purple X way clear of the film face (below/above the edge)
-        P.append(bx(f"Vertical Z cross-slide way (green) {t}", gx0, ty + 1, gz0, 10, 18, Lz, C_TILT))
-        P.append(bx(f"Horizontal X cross-slide way (purple) {t}", px0, ty + 1, pz_purple, Lx, 14, 14, C_SWING))
     return "\n".join(P)
 
 
 def plane_carriage(cx, fz, zc, cin, isb, yc):
-    """The RAIL-BOUND body for ONE corner — just the skate (bottom: load rollers; top: guide drum + yoke) +
-    carriage plate. Built at ABSOLUTE coords (placed at identity); the DC translates it in Y ONLY (= the roll
-    along the depth rail). It never moves in X/Z, so it stays ON the rail. The cross-slide ways live in the
-    FRAME (they ride above the U-joint and follow the frame angle)."""
+    """The RAIL-BOUND body for ONE corner — the skate (bottom: load rollers; top: guide drum + yoke) +
+    carriage plate + the TWO cross-slide ways (green Z, purple X). Built at ABSOLUTE coords (placed at
+    identity); the DC translates it in Y ONLY (= the roll along the depth rail). It never rotates, so the
+    ways stay RAIL-ALIGNED and the frame's U-joint SLIDES along them (the ways keep their positions and the
+    frame moves relative to them — same rules as the Movement scene)."""
     ty = yc
+    Lz, Lx = 250, 260
     chan_w = CW_BOT if isb else CD_TOP
     inb = cx + cin * (chan_w / 2 + 14)
+    fcx = cx + cin * FILM_INSET
     rz = (zc - CD_BOT / 2 + HB_T + 16) if isb else (zc + CW_TOP / 2 - HB_T - 16)
     cpx0c = (inb - 6) if cin > 0 else (inb - 8)
+    gx0 = (cx + cin * 26 - 5) if isb else (inb - 3)     # green Z way in the rail↔film gap (bottom) / inboard (top)
+    gz0 = (fz - 20) if isb else (fz + 20 - Lz)
+    px0 = (cx - 20) if cin > 0 else (cx + 20 - Lx)
+    pz_purple = (fz - 18) if isb else (fz + 4)          # purple X way clear of the film face (below/above the edge)
     t = f"({int(cx)},{int(fz)})"
     P = []
     if isb:
@@ -633,6 +633,9 @@ def plane_carriage(cx, fz, zc, cin, isb, yc):
         P.append(ov.ruby_box(f"Yoke cross-piece {t}", cx - 35, ty - 34, yb - 22, 70, 68, 8, color=C_CAR))
         P.append(ov.ruby_box(f"Yoke rail {t}", min(cx + 33, inb), ty - 34, yb - 20, abs(inb - (cx + 33)) + 6, 68, 6, color=C_CAR))
         P.append(ov.ruby_box(f"Carriage plate {t}", cpx0c, ty + 1, zlo - 6, 14, 86, (zhi + 18) - (zlo - 6), color=C_CAR))
+    # the two cross-slide ways, RAIL-ALIGNED (fixed to the carriage) — the U-joint (in the frame) rides them
+    P.append(ov.ruby_box(f"Vertical Z cross-slide way (green) {t}", gx0, ty + 1, gz0, 10, 18, Lz, color=C_TILT))
+    P.append(ov.ruby_box(f"Horizontal X cross-slide way (purple) {t}", px0, ty + 1, pz_purple, Lx, 14, 14, color=C_SWING))
     return "\n".join(P)
 
 

@@ -5672,28 +5672,6 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Vertical Z cross-slide way (green) (183,160)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide way (green) (183,160)"
-  face = grp.entities.add_face([-2216.mm,1.mm,-1085.mm], [-2206.mm,1.mm,-1085.mm], [-2206.mm,19.mm,-1085.mm], [-2216.mm,19.mm,-1085.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(250.mm)
-  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
-  mat.color = Sketchup::Color.new(46, 139, 87)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Horizontal X cross-slide way (purple) (183,160)
-  grp = ents.add_group
-  grp.name = "Horizontal X cross-slide way (purple) (183,160)"
-  face = grp.entities.add_face([-2257.mm,1.mm,-1083.mm], [-1997.mm,1.mm,-1083.mm], [-1997.mm,15.mm,-1083.mm], [-2257.mm,15.mm,-1083.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
-  mat.color = Sketchup::Color.new(123, 94, 167)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # U-joint (Ruland USKC12-6-6-SS) (4591,160)
   grp = ents.add_group
   grp.name = "U-joint (Ruland USKC12-6-6-SS) (4591,160)"
@@ -5763,28 +5741,6 @@ ents = frmTilt.entities
   face.pushpull(40.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Vertical Z cross-slide way (green) (4591,160)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide way (green) (4591,160)"
-  face = grp.entities.add_face([2206.mm,1.mm,-1085.mm], [2216.mm,1.mm,-1085.mm], [2216.mm,19.mm,-1085.mm], [2206.mm,19.mm,-1085.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(250.mm)
-  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
-  mat.color = Sketchup::Color.new(46, 139, 87)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Horizontal X cross-slide way (purple) (4591,160)
-  grp = ents.add_group
-  grp.name = "Horizontal X cross-slide way (purple) (4591,160)"
-  face = grp.entities.add_face([1997.mm,1.mm,-1083.mm], [2257.mm,1.mm,-1083.mm], [2257.mm,15.mm,-1083.mm], [1997.mm,15.mm,-1083.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
-  mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5860,28 +5816,6 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Vertical Z cross-slide way (green) (183,2290)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide way (green) (183,2290)"
-  face = grp.entities.add_face([-2188.mm,1.mm,835.mm], [-2178.mm,1.mm,835.mm], [-2178.mm,19.mm,835.mm], [-2188.mm,19.mm,835.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(250.mm)
-  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
-  mat.color = Sketchup::Color.new(46, 139, 87)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Horizontal X cross-slide way (purple) (183,2290)
-  grp = ents.add_group
-  grp.name = "Horizontal X cross-slide way (purple) (183,2290)"
-  face = grp.entities.add_face([-2257.mm,1.mm,1069.mm], [-1997.mm,1.mm,1069.mm], [-1997.mm,15.mm,1069.mm], [-2257.mm,15.mm,1069.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
-  mat.color = Sketchup::Color.new(123, 94, 167)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # U-joint (Ruland USKC12-6-6-SS) (4591,2290)
   grp = ents.add_group
   grp.name = "U-joint (Ruland USKC12-6-6-SS) (4591,2290)"
@@ -5954,28 +5888,6 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Vertical Z cross-slide way (green) (4591,2290)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide way (green) (4591,2290)"
-  face = grp.entities.add_face([2182.mm,1.mm,835.mm], [2192.mm,1.mm,835.mm], [2192.mm,19.mm,835.mm], [2182.mm,19.mm,835.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(250.mm)
-  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
-  mat.color = Sketchup::Color.new(46, 139, 87)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Horizontal X cross-slide way (purple) (4591,2290)
-  grp = ents.add_group
-  grp.name = "Horizontal X cross-slide way (purple) (4591,2290)"
-  face = grp.entities.add_face([1997.mm,1.mm,1069.mm], [2257.mm,1.mm,1069.mm], [2257.mm,15.mm,1069.mm], [1997.mm,15.mm,1069.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
-  mat.color = Sketchup::Color.new(123, 94, 167)
-  mat.alpha = 1.0
-  grp.material = mat
-
 frmTilt_inst = plwTilt.entities.add_instance(frmTilt, Geom::Transformation.translation([2387.mm, 1181.mm, 1225.mm]))
 frmTilt_inst.name = "Plane frame Tilt"; frmTilt_inst.layer = model.layers["Plane Tilt"]
 [frmTilt, frmTilt_inst].each { |e| e.set_attribute(da, "_name", "PlaneFrameTilt"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "rotx", 0.0) }
@@ -6020,6 +5932,28 @@ ents = carTilt0.entities
   mat.alpha = 1.0
   grp.material = mat
 
+  # Vertical Z cross-slide way (green) (150,160)
+  grp = ents.add_group
+  grp.name = "Vertical Z cross-slide way (green) (150,160)"
+  face = grp.entities.add_face([171.mm,1182.mm,140.mm], [181.mm,1182.mm,140.mm], [181.mm,1200.mm,140.mm], [171.mm,1200.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X cross-slide way (purple) (150,160)
+  grp = ents.add_group
+  grp.name = "Horizontal X cross-slide way (purple) (150,160)"
+  face = grp.entities.add_face([130.mm,1182.mm,142.mm], [390.mm,1182.mm,142.mm], [390.mm,1196.mm,142.mm], [130.mm,1196.mm,142.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
 carTilt0_inst = plwTilt.entities.add_instance(carTilt0, Geom::Transformation.new)
 carTilt0_inst.name = "Plane carriage Tilt 0"; carTilt0_inst.layer = model.layers["Plane Tilt"]
 [carTilt0, carTilt0_inst].each { |e| e.set_attribute(da, "_name", "PlaneCarTilt0"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "y", 0.0) }
@@ -6061,6 +5995,28 @@ ents = carTilt1.entities
   face.pushpull(145.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z cross-slide way (green) (4624,160)
+  grp = ents.add_group
+  grp.name = "Vertical Z cross-slide way (green) (4624,160)"
+  face = grp.entities.add_face([4593.mm,1182.mm,140.mm], [4603.mm,1182.mm,140.mm], [4603.mm,1200.mm,140.mm], [4593.mm,1200.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X cross-slide way (purple) (4624,160)
+  grp = ents.add_group
+  grp.name = "Horizontal X cross-slide way (purple) (4624,160)"
+  face = grp.entities.add_face([4384.mm,1182.mm,142.mm], [4644.mm,1182.mm,142.mm], [4644.mm,1196.mm,142.mm], [4384.mm,1196.mm,142.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
+  mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6152,6 +6108,28 @@ ents = carTilt2.entities
   mat.alpha = 1.0
   grp.material = mat
 
+  # Vertical Z cross-slide way (green) (150,2290)
+  grp = ents.add_group
+  grp.name = "Vertical Z cross-slide way (green) (150,2290)"
+  face = grp.entities.add_face([199.mm,1182.mm,2060.mm], [209.mm,1182.mm,2060.mm], [209.mm,1200.mm,2060.mm], [199.mm,1200.mm,2060.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X cross-slide way (purple) (150,2290)
+  grp = ents.add_group
+  grp.name = "Horizontal X cross-slide way (purple) (150,2290)"
+  face = grp.entities.add_face([130.mm,1182.mm,2294.mm], [390.mm,1182.mm,2294.mm], [390.mm,1196.mm,2294.mm], [130.mm,1196.mm,2294.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
 carTilt2_inst = plwTilt.entities.add_instance(carTilt2, Geom::Transformation.new)
 carTilt2_inst.name = "Plane carriage Tilt 2"; carTilt2_inst.layer = model.layers["Plane Tilt"]
 [carTilt2, carTilt2_inst].each { |e| e.set_attribute(da, "_name", "PlaneCarTilt2"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "y", 0.0) }
@@ -6237,6 +6215,28 @@ ents = carTilt3.entities
   face.pushpull(51.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z cross-slide way (green) (4624,2290)
+  grp = ents.add_group
+  grp.name = "Vertical Z cross-slide way (green) (4624,2290)"
+  face = grp.entities.add_face([4569.mm,1182.mm,2060.mm], [4579.mm,1182.mm,2060.mm], [4579.mm,1200.mm,2060.mm], [4569.mm,1200.mm,2060.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X cross-slide way (purple) (4624,2290)
+  grp = ents.add_group
+  grp.name = "Horizontal X cross-slide way (purple) (4624,2290)"
+  face = grp.entities.add_face([4384.mm,1182.mm,2294.mm], [4644.mm,1182.mm,2294.mm], [4644.mm,1196.mm,2294.mm], [4384.mm,1196.mm,2294.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
+  mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6434,28 +6434,6 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Vertical Z cross-slide way (green) (183,160)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide way (green) (183,160)"
-  face = grp.entities.add_face([-2216.mm,1.mm,-1085.mm], [-2206.mm,1.mm,-1085.mm], [-2206.mm,19.mm,-1085.mm], [-2216.mm,19.mm,-1085.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(250.mm)
-  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
-  mat.color = Sketchup::Color.new(46, 139, 87)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Horizontal X cross-slide way (purple) (183,160)
-  grp = ents.add_group
-  grp.name = "Horizontal X cross-slide way (purple) (183,160)"
-  face = grp.entities.add_face([-2257.mm,1.mm,-1083.mm], [-1997.mm,1.mm,-1083.mm], [-1997.mm,15.mm,-1083.mm], [-2257.mm,15.mm,-1083.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
-  mat.color = Sketchup::Color.new(123, 94, 167)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # U-joint (Ruland USKC12-6-6-SS) (4591,160)
   grp = ents.add_group
   grp.name = "U-joint (Ruland USKC12-6-6-SS) (4591,160)"
@@ -6525,28 +6503,6 @@ ents = frmSwing.entities
   face.pushpull(40.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Vertical Z cross-slide way (green) (4591,160)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide way (green) (4591,160)"
-  face = grp.entities.add_face([2206.mm,1.mm,-1085.mm], [2216.mm,1.mm,-1085.mm], [2216.mm,19.mm,-1085.mm], [2206.mm,19.mm,-1085.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(250.mm)
-  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
-  mat.color = Sketchup::Color.new(46, 139, 87)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Horizontal X cross-slide way (purple) (4591,160)
-  grp = ents.add_group
-  grp.name = "Horizontal X cross-slide way (purple) (4591,160)"
-  face = grp.entities.add_face([1997.mm,1.mm,-1083.mm], [2257.mm,1.mm,-1083.mm], [2257.mm,15.mm,-1083.mm], [1997.mm,15.mm,-1083.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
-  mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6622,28 +6578,6 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Vertical Z cross-slide way (green) (183,2290)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide way (green) (183,2290)"
-  face = grp.entities.add_face([-2188.mm,1.mm,835.mm], [-2178.mm,1.mm,835.mm], [-2178.mm,19.mm,835.mm], [-2188.mm,19.mm,835.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(250.mm)
-  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
-  mat.color = Sketchup::Color.new(46, 139, 87)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Horizontal X cross-slide way (purple) (183,2290)
-  grp = ents.add_group
-  grp.name = "Horizontal X cross-slide way (purple) (183,2290)"
-  face = grp.entities.add_face([-2257.mm,1.mm,1069.mm], [-1997.mm,1.mm,1069.mm], [-1997.mm,15.mm,1069.mm], [-2257.mm,15.mm,1069.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
-  mat.color = Sketchup::Color.new(123, 94, 167)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # U-joint (Ruland USKC12-6-6-SS) (4591,2290)
   grp = ents.add_group
   grp.name = "U-joint (Ruland USKC12-6-6-SS) (4591,2290)"
@@ -6716,28 +6650,6 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Vertical Z cross-slide way (green) (4591,2290)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide way (green) (4591,2290)"
-  face = grp.entities.add_face([2182.mm,1.mm,835.mm], [2192.mm,1.mm,835.mm], [2192.mm,19.mm,835.mm], [2182.mm,19.mm,835.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(250.mm)
-  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
-  mat.color = Sketchup::Color.new(46, 139, 87)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Horizontal X cross-slide way (purple) (4591,2290)
-  grp = ents.add_group
-  grp.name = "Horizontal X cross-slide way (purple) (4591,2290)"
-  face = grp.entities.add_face([1997.mm,1.mm,1069.mm], [2257.mm,1.mm,1069.mm], [2257.mm,15.mm,1069.mm], [1997.mm,15.mm,1069.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
-  mat.color = Sketchup::Color.new(123, 94, 167)
-  mat.alpha = 1.0
-  grp.material = mat
-
 frmSwing_inst = plwSwing.entities.add_instance(frmSwing, Geom::Transformation.translation([2387.mm, 1181.mm, 1225.mm]))
 frmSwing_inst.name = "Plane frame Swing"; frmSwing_inst.layer = model.layers["Plane Swing"]
 [frmSwing, frmSwing_inst].each { |e| e.set_attribute(da, "_name", "PlaneFrameSwing"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "rotz", 0.0) }
@@ -6782,6 +6694,28 @@ ents = carSwing0.entities
   mat.alpha = 1.0
   grp.material = mat
 
+  # Vertical Z cross-slide way (green) (150,160)
+  grp = ents.add_group
+  grp.name = "Vertical Z cross-slide way (green) (150,160)"
+  face = grp.entities.add_face([171.mm,1182.mm,140.mm], [181.mm,1182.mm,140.mm], [181.mm,1200.mm,140.mm], [171.mm,1200.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X cross-slide way (purple) (150,160)
+  grp = ents.add_group
+  grp.name = "Horizontal X cross-slide way (purple) (150,160)"
+  face = grp.entities.add_face([130.mm,1182.mm,142.mm], [390.mm,1182.mm,142.mm], [390.mm,1196.mm,142.mm], [130.mm,1196.mm,142.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
 carSwing0_inst = plwSwing.entities.add_instance(carSwing0, Geom::Transformation.new)
 carSwing0_inst.name = "Plane carriage Swing 0"; carSwing0_inst.layer = model.layers["Plane Swing"]
 [carSwing0, carSwing0_inst].each { |e| e.set_attribute(da, "_name", "PlaneCarSwing0"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "y", 0.0) }
@@ -6823,6 +6757,28 @@ ents = carSwing1.entities
   face.pushpull(145.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z cross-slide way (green) (4624,160)
+  grp = ents.add_group
+  grp.name = "Vertical Z cross-slide way (green) (4624,160)"
+  face = grp.entities.add_face([4593.mm,1182.mm,140.mm], [4603.mm,1182.mm,140.mm], [4603.mm,1200.mm,140.mm], [4593.mm,1200.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X cross-slide way (purple) (4624,160)
+  grp = ents.add_group
+  grp.name = "Horizontal X cross-slide way (purple) (4624,160)"
+  face = grp.entities.add_face([4384.mm,1182.mm,142.mm], [4644.mm,1182.mm,142.mm], [4644.mm,1196.mm,142.mm], [4384.mm,1196.mm,142.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
+  mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6914,6 +6870,28 @@ ents = carSwing2.entities
   mat.alpha = 1.0
   grp.material = mat
 
+  # Vertical Z cross-slide way (green) (150,2290)
+  grp = ents.add_group
+  grp.name = "Vertical Z cross-slide way (green) (150,2290)"
+  face = grp.entities.add_face([199.mm,1182.mm,2060.mm], [209.mm,1182.mm,2060.mm], [209.mm,1200.mm,2060.mm], [199.mm,1200.mm,2060.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X cross-slide way (purple) (150,2290)
+  grp = ents.add_group
+  grp.name = "Horizontal X cross-slide way (purple) (150,2290)"
+  face = grp.entities.add_face([130.mm,1182.mm,2294.mm], [390.mm,1182.mm,2294.mm], [390.mm,1196.mm,2294.mm], [130.mm,1196.mm,2294.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
 carSwing2_inst = plwSwing.entities.add_instance(carSwing2, Geom::Transformation.new)
 carSwing2_inst.name = "Plane carriage Swing 2"; carSwing2_inst.layer = model.layers["Plane Swing"]
 [carSwing2, carSwing2_inst].each { |e| e.set_attribute(da, "_name", "PlaneCarSwing2"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "y", 0.0) }
@@ -6999,6 +6977,28 @@ ents = carSwing3.entities
   face.pushpull(51.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z cross-slide way (green) (4624,2290)
+  grp = ents.add_group
+  grp.name = "Vertical Z cross-slide way (green) (4624,2290)"
+  face = grp.entities.add_face([4569.mm,1182.mm,2060.mm], [4579.mm,1182.mm,2060.mm], [4579.mm,1200.mm,2060.mm], [4569.mm,1200.mm,2060.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X cross-slide way (purple) (4624,2290)
+  grp = ents.add_group
+  grp.name = "Horizontal X cross-slide way (purple) (4624,2290)"
+  face = grp.entities.add_face([4384.mm,1182.mm,2294.mm], [4644.mm,1182.mm,2294.mm], [4644.mm,1196.mm,2294.mm], [4384.mm,1196.mm,2294.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
+  mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
 

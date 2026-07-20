@@ -214,7 +214,8 @@ def corner(tag, cx, fz, zc, cin, side):
     # the purple X (swing) way sits in the gap CLEAR of the film face (below the bottom edge / above the top
     # edge) so the 260mm bar doesn't read as crossing the film in the 3D (2D shows it end-on, so unaffected)
     pz_purple = (fz - 18) if is_bot else (fz + 4)
-    P.append(ov.ruby_box(f"Vertical Z slide rail (TILT, green) {tag}", inb - 3, ty + 1, min(fz, rz) - 4, 16, 18, abs(rz - fz) + 20, color=C_TILT))
+    gx_green = (cx + cin * 26 - 5) if is_bot else (inb - 3)   # green way in the rail↔film gap (bottom) / inboard (top)
+    P.append(ov.ruby_box(f"Vertical Z slide rail (TILT, green) {tag}", gx_green, ty + 1, min(fz, rz) - 4, 10, 18, abs(rz - fz) + 20, color=C_TILT))
     P.append(ov.ruby_box(f"Horizontal X slide rail (SWING, purple) {tag}", xr0, ty + 1, pz_purple, 260, 14, 14, color=C_SWING))
     P.append(ov.ruby_box(f"U-joint (Ruland USKC12-6-6-SS, keyway+clamp) {tag}", cx - 12, ty - 4, fz - 14, 24, 24, 24, color=C_CROSS))
     # input stub Ø9.5 (3/8") from the X-carriage into the U-joint bore, and the 4040N12 304 shaft
@@ -380,7 +381,10 @@ def movement(corner="BL", two_way=False):
     chan_w = CW_BOT if is_bot else CD_TOP
     inb = cx + cin * (chan_w / 2 + 14)                 # carriage line — inboard of the channel opening
     rz = (zc - CD_BOT / 2 + HB_T + 16) if is_bot else (zc + CW_TOP / 2 - HB_T - 16)   # wheel-centre Z
-    gx0 = (inb - 3) if cin > 0 else (inb - 13)         # green Z-slide min-x (≈centred on inb)
+    # green Z way (10 wide): bottom corners → seat it IN the ~14mm gap between the rail and the film edge
+    # (clear of both); top corners → inboard (the wide flat guide rail leaves no outboard gap, but its rail
+    # is high so an inboard green clears it).
+    gx0 = (cx + cin * 26 - 5) if is_bot else (inb - 3)
     cpx0c = (inb - 6) if cin > 0 else (inb - 8)        # carriage-plate min-x
     # Per Sheet 3 EACH corner carries BOTH cross-slides: a ~250mm green Z + a ~260mm purple X (316 flat bar
     # + UHMW + gib), LOCAL (~inboard of the rail). The ACTIVE one (green for tilt, purple for swing) is the
@@ -392,7 +396,7 @@ def movement(corner="BL", two_way=False):
     # or above the top edge (top corners) — so it doesn't cross the film. (Bottom: fz is the bottom edge, film
     # grows up; top: fz is the top edge, film grows down.)
     pz_purple = (fz - 18) if is_bot else (fz + 4)
-    green_way = ov.ruby_box(f"Vertical Z cross-slide (TILT, green ~250) (Movement {corner})", gx0, ty + 1, gz0, 16, 18, Lz, color=C_TILT)
+    green_way = ov.ruby_box(f"Vertical Z cross-slide (TILT, green ~250) (Movement {corner})", gx0, ty + 1, gz0, 10, 18, Lz, color=C_TILT)
     purple_way = ov.ruby_box(f"Horizontal X cross-slide (SWING, purple ~260) (Movement {corner})", px0, ty + 1, pz_purple, Lx, 14, 14, color=C_SWING)
     if swing_corner:   # purple X is the ACTIVE way; green Z rides the stack
         deploy_rail, perp_slide = purple_way, green_way
@@ -587,7 +591,7 @@ def plane_frame(px, pz, yc):
         cpz0 = (fz + 5) if isb else (fz - 45)
         chan_w = CW_BOT if isb else CD_TOP
         inb = cx + cin * (chan_w / 2 + 14)
-        gx0 = (inb - 3) if cin > 0 else (inb - 13)
+        gx0 = (cx + cin * 26 - 5) if isb else (inb - 3)  # green Z way in the rail↔film gap (bottom) / inboard (top)
         gz0 = (fz - 20) if isb else (fz + 20 - Lz)
         px0 = (cx - 20) if cin > 0 else (cx + 20 - Lx)
         P.append(bx(f"U-joint (Ruland USKC12-6-6-SS) {t}", cx - 12, ty - 4, fz - 14, 24, 24, 24, C_CROSS))
@@ -598,7 +602,7 @@ def plane_frame(px, pz, yc):
         P.append(bx(f"304 SS corner plate {t}", cpx0, ty - 8, cpz0, 34, 16, 40, C_STEEL))
         # the cross-slide ways ride ABOVE the U-joint, so they FOLLOW the frame angle (tilt/swing with it)
         pz_purple = (fz - 18) if isb else (fz + 4)     # purple X way clear of the film face (below/above the edge)
-        P.append(bx(f"Vertical Z cross-slide way (green) {t}", gx0, ty + 1, gz0, 16, 18, Lz, C_TILT))
+        P.append(bx(f"Vertical Z cross-slide way (green) {t}", gx0, ty + 1, gz0, 10, 18, Lz, C_TILT))
         P.append(bx(f"Horizontal X cross-slide way (purple) {t}", px0, ty + 1, pz_purple, Lx, 14, 14, C_SWING))
     return "\n".join(P)
 

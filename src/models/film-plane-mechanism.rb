@@ -330,7 +330,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z slide rail (TILT, green) BL
   grp = ents.add_group
   grp.name = "Vertical Z slide rail (TILT, green) BL"
-  face = grp.entities.add_face([180.mm,2263.mm,156.mm], [196.mm,2263.mm,156.mm], [196.mm,2281.mm,156.mm], [180.mm,2281.mm,156.mm])
+  face = grp.entities.add_face([171.mm,2263.mm,156.mm], [181.mm,2263.mm,156.mm], [181.mm,2281.mm,156.mm], [171.mm,2281.mm,156.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(113.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -631,7 +631,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z slide rail (TILT, green) BR
   grp = ents.add_group
   grp.name = "Vertical Z slide rail (TILT, green) BR"
-  face = grp.entities.add_face([4588.mm,2263.mm,156.mm], [4604.mm,2263.mm,156.mm], [4604.mm,2281.mm,156.mm], [4588.mm,2281.mm,156.mm])
+  face = grp.entities.add_face([4593.mm,2263.mm,156.mm], [4603.mm,2263.mm,156.mm], [4603.mm,2281.mm,156.mm], [4593.mm,2281.mm,156.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(113.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -981,7 +981,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z slide rail (TILT, green) TL
   grp = ents.add_group
   grp.name = "Vertical Z slide rail (TILT, green) TL"
-  face = grp.entities.add_face([199.mm,2263.mm,2286.mm], [215.mm,2263.mm,2286.mm], [215.mm,2281.mm,2286.mm], [199.mm,2281.mm,2286.mm])
+  face = grp.entities.add_face([199.mm,2263.mm,2286.mm], [209.mm,2263.mm,2286.mm], [209.mm,2281.mm,2286.mm], [199.mm,2281.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(47.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -1263,7 +1263,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Vertical Z slide rail (TILT, green) TR
   grp = ents.add_group
   grp.name = "Vertical Z slide rail (TILT, green) TR"
-  face = grp.entities.add_face([4569.mm,2263.mm,2286.mm], [4585.mm,2263.mm,2286.mm], [4585.mm,2281.mm,2286.mm], [4569.mm,2281.mm,2286.mm])
+  face = grp.entities.add_face([4569.mm,2263.mm,2286.mm], [4579.mm,2263.mm,2286.mm], [4579.mm,2281.mm,2286.mm], [4569.mm,2281.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(47.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -4667,7 +4667,7 @@ ents = mvo_BL.entities
   # Vertical Z cross-slide (TILT, green ~250) (Movement BL)
   grp = ents.add_group
   grp.name = "Vertical Z cross-slide (TILT, green ~250) (Movement BL)"
-  face = grp.entities.add_face([180.mm,2263.mm,140.mm], [196.mm,2263.mm,140.mm], [196.mm,2281.mm,140.mm], [180.mm,2281.mm,140.mm])
+  face = grp.entities.add_face([171.mm,2263.mm,140.mm], [181.mm,2263.mm,140.mm], [181.mm,2281.mm,140.mm], [171.mm,2281.mm,140.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -4943,7 +4943,7 @@ ents = mvo_TL.entities
   # Vertical Z cross-slide (TILT, green ~250) (Movement TL)
   grp = ents.add_group
   grp.name = "Vertical Z cross-slide (TILT, green ~250) (Movement TL)"
-  face = grp.entities.add_face([199.mm,2263.mm,2060.mm], [215.mm,2263.mm,2060.mm], [215.mm,2281.mm,2060.mm], [199.mm,2281.mm,2060.mm])
+  face = grp.entities.add_face([199.mm,2263.mm,2060.mm], [209.mm,2263.mm,2060.mm], [209.mm,2281.mm,2060.mm], [199.mm,2281.mm,2060.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -5075,7 +5075,7 @@ ents = mvfl_BR.entities
   # Vertical Z cross-slide (TILT, green ~250) (Movement BR)
   grp = ents.add_group
   grp.name = "Vertical Z cross-slide (TILT, green ~250) (Movement BR)"
-  face = grp.entities.add_face([2154.mm,2263.mm,140.mm], [2170.mm,2263.mm,140.mm], [2170.mm,2281.mm,140.mm], [2154.mm,2281.mm,140.mm])
+  face = grp.entities.add_face([2169.mm,2263.mm,140.mm], [2179.mm,2263.mm,140.mm], [2179.mm,2281.mm,140.mm], [2169.mm,2281.mm,140.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -5307,7 +5307,7 @@ ents = mvfl_TR.entities
   # Vertical Z cross-slide (TILT, green ~250) (Movement TR)
   grp = ents.add_group
   grp.name = "Vertical Z cross-slide (TILT, green ~250) (Movement TR)"
-  face = grp.entities.add_face([2135.mm,2263.mm,2060.mm], [2151.mm,2263.mm,2060.mm], [2151.mm,2281.mm,2060.mm], [2135.mm,2281.mm,2060.mm])
+  face = grp.entities.add_face([2145.mm,2263.mm,2060.mm], [2155.mm,2263.mm,2060.mm], [2155.mm,2281.mm,2060.mm], [2145.mm,2281.mm,2060.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -5675,7 +5675,7 @@ ents = frmTilt.entities
   # Vertical Z cross-slide way (green) (183,160)
   grp = ents.add_group
   grp.name = "Vertical Z cross-slide way (green) (183,160)"
-  face = grp.entities.add_face([-2207.mm,1.mm,-1085.mm], [-2191.mm,1.mm,-1085.mm], [-2191.mm,19.mm,-1085.mm], [-2207.mm,19.mm,-1085.mm])
+  face = grp.entities.add_face([-2216.mm,1.mm,-1085.mm], [-2206.mm,1.mm,-1085.mm], [-2206.mm,19.mm,-1085.mm], [-2216.mm,19.mm,-1085.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -5769,7 +5769,7 @@ ents = frmTilt.entities
   # Vertical Z cross-slide way (green) (4591,160)
   grp = ents.add_group
   grp.name = "Vertical Z cross-slide way (green) (4591,160)"
-  face = grp.entities.add_face([2191.mm,1.mm,-1085.mm], [2207.mm,1.mm,-1085.mm], [2207.mm,19.mm,-1085.mm], [2191.mm,19.mm,-1085.mm])
+  face = grp.entities.add_face([2206.mm,1.mm,-1085.mm], [2216.mm,1.mm,-1085.mm], [2216.mm,19.mm,-1085.mm], [2206.mm,19.mm,-1085.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -5863,7 +5863,7 @@ ents = frmTilt.entities
   # Vertical Z cross-slide way (green) (183,2290)
   grp = ents.add_group
   grp.name = "Vertical Z cross-slide way (green) (183,2290)"
-  face = grp.entities.add_face([-2188.mm,1.mm,835.mm], [-2172.mm,1.mm,835.mm], [-2172.mm,19.mm,835.mm], [-2188.mm,19.mm,835.mm])
+  face = grp.entities.add_face([-2188.mm,1.mm,835.mm], [-2178.mm,1.mm,835.mm], [-2178.mm,19.mm,835.mm], [-2188.mm,19.mm,835.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -5957,7 +5957,7 @@ ents = frmTilt.entities
   # Vertical Z cross-slide way (green) (4591,2290)
   grp = ents.add_group
   grp.name = "Vertical Z cross-slide way (green) (4591,2290)"
-  face = grp.entities.add_face([2172.mm,1.mm,835.mm], [2188.mm,1.mm,835.mm], [2188.mm,19.mm,835.mm], [2172.mm,19.mm,835.mm])
+  face = grp.entities.add_face([2182.mm,1.mm,835.mm], [2192.mm,1.mm,835.mm], [2192.mm,19.mm,835.mm], [2182.mm,19.mm,835.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -6437,7 +6437,7 @@ ents = frmSwing.entities
   # Vertical Z cross-slide way (green) (183,160)
   grp = ents.add_group
   grp.name = "Vertical Z cross-slide way (green) (183,160)"
-  face = grp.entities.add_face([-2207.mm,1.mm,-1085.mm], [-2191.mm,1.mm,-1085.mm], [-2191.mm,19.mm,-1085.mm], [-2207.mm,19.mm,-1085.mm])
+  face = grp.entities.add_face([-2216.mm,1.mm,-1085.mm], [-2206.mm,1.mm,-1085.mm], [-2206.mm,19.mm,-1085.mm], [-2216.mm,19.mm,-1085.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -6531,7 +6531,7 @@ ents = frmSwing.entities
   # Vertical Z cross-slide way (green) (4591,160)
   grp = ents.add_group
   grp.name = "Vertical Z cross-slide way (green) (4591,160)"
-  face = grp.entities.add_face([2191.mm,1.mm,-1085.mm], [2207.mm,1.mm,-1085.mm], [2207.mm,19.mm,-1085.mm], [2191.mm,19.mm,-1085.mm])
+  face = grp.entities.add_face([2206.mm,1.mm,-1085.mm], [2216.mm,1.mm,-1085.mm], [2216.mm,19.mm,-1085.mm], [2206.mm,19.mm,-1085.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -6625,7 +6625,7 @@ ents = frmSwing.entities
   # Vertical Z cross-slide way (green) (183,2290)
   grp = ents.add_group
   grp.name = "Vertical Z cross-slide way (green) (183,2290)"
-  face = grp.entities.add_face([-2188.mm,1.mm,835.mm], [-2172.mm,1.mm,835.mm], [-2172.mm,19.mm,835.mm], [-2188.mm,19.mm,835.mm])
+  face = grp.entities.add_face([-2188.mm,1.mm,835.mm], [-2178.mm,1.mm,835.mm], [-2178.mm,19.mm,835.mm], [-2188.mm,19.mm,835.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -6719,7 +6719,7 @@ ents = frmSwing.entities
   # Vertical Z cross-slide way (green) (4591,2290)
   grp = ents.add_group
   grp.name = "Vertical Z cross-slide way (green) (4591,2290)"
-  face = grp.entities.add_face([2172.mm,1.mm,835.mm], [2188.mm,1.mm,835.mm], [2188.mm,19.mm,835.mm], [2172.mm,19.mm,835.mm])
+  face = grp.entities.add_face([2182.mm,1.mm,835.mm], [2192.mm,1.mm,835.mm], [2192.mm,19.mm,835.mm], [2182.mm,19.mm,835.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")

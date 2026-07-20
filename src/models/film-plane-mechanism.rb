@@ -4265,59 +4265,15 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # ═══ Container shell (no ceiling) ═══
   defn = model.definitions.add("Container shell (no ceiling)")
   ents = defn.entities
-  # Container floor
+  # Floor (reference)
   grp = ents.add_group
-  grp.name = "Container floor"
+  grp.name = "Floor (reference)"
   face = grp.entities.add_face([-300.mm,0.mm,-12.mm], [4974.mm,0.mm,-12.mm], [4974.mm,2362.mm,-12.mm], [-300.mm,2362.mm,-12.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Container floor"] || model.materials.add("Container floor")
+  mat = model.materials["Floor (reference)"] || model.materials.add("Floor (reference)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 0.08
-  grp.material = mat
-
-  # Far wall (backing)
-  grp = ents.add_group
-  grp.name = "Far wall (backing)"
-  face = grp.entities.add_face([-300.mm,2362.mm,0.mm], [4974.mm,2362.mm,0.mm], [4974.mm,2374.mm,0.mm], [-300.mm,2374.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2388.mm)
-  mat = model.materials["Floor"] || model.materials.add("Floor")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 0.05
-  grp.material = mat
-
-  # Pinhole wall
-  grp = ents.add_group
-  grp.name = "Pinhole wall"
-  face = grp.entities.add_face([-300.mm,-12.mm,0.mm], [4974.mm,-12.mm,0.mm], [4974.mm,0.mm,0.mm], [-300.mm,0.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2388.mm)
-  mat = model.materials["Floor"] || model.materials.add("Floor")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 0.05
-  grp.material = mat
-
-  # End wall (near pinhole X)
-  grp = ents.add_group
-  grp.name = "End wall (near pinhole X)"
-  face = grp.entities.add_face([-300.mm,0.mm,0.mm], [-288.mm,0.mm,0.mm], [-288.mm,2362.mm,0.mm], [-300.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2388.mm)
-  mat = model.materials["Floor"] || model.materials.add("Floor")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 0.05
-  grp.material = mat
-
-  # End wall (far X)
-  grp = ents.add_group
-  grp.name = "End wall (far X)"
-  face = grp.entities.add_face([4962.mm,0.mm,0.mm], [4974.mm,0.mm,0.mm], [4974.mm,2362.mm,0.mm], [4962.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2388.mm)
-  mat = model.materials["Floor"] || model.materials.add("Floor")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 0.05
   grp.material = mat
 
   # Depth rail BL web rBL
@@ -7073,7 +7029,7 @@ model.layers.to_a.each { |l|
 }
 
 # ── iso scenes (Overview [with context] / Corner detail) ──
-[["Overview", ["Corners", "Film Plane", "Pinhole", "Context"], [2400.mm, 1562.mm, 1194.mm, 9500.mm]], ["Corner detail", ["Corners", "Film Plane", "Pinhole"], [150.mm, 2262.mm, 190.mm, 620.mm]], ["Movement", ["Movement"], [1175.mm, 2512.mm, 1194.mm, 4400.mm]], ["Whole plane — tilt", ["Shell", "Plane Tilt"], [2400.mm, 1181.mm, 1194.mm, 6800.mm]], ["Whole plane — swing", ["Shell", "Plane Swing"], [2400.mm, 1181.mm, 1194.mm, 6800.mm]]].each { |name, tags, tgt|
+[["Overview", ["Corners", "Film Plane", "Pinhole", "Context"], [2400.mm, 1562.mm, 1194.mm, 9500.mm]], ["Corner detail", ["Corners", "Film Plane", "Pinhole"], [150.mm, 2262.mm, 190.mm, 620.mm]]].each { |name, tags, tgt|
   model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
   t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])
   cdir = Geom::Vector3d.new(0.5, -0.7, 0.4); cdir.normalize!
@@ -7094,6 +7050,16 @@ sc = Geom::Point3d.new(2399.mm, 1131.mm, 0)
 se = Geom::Point3d.new(2399.mm, 1131.mm, 9500.mm)
 model.active_view.camera = Sketchup::Camera.new(se, sc, Y_AXIS)
 ps2 = model.pages.add("Swing (top)"); ps2.use_camera = true
+
+# ── Movement + the two Whole-plane scenes (iso), AFTER Swing (top) ──
+[["Movement", ["Movement"], [1175.mm, 2512.mm, 1194.mm, 4400.mm]], ["Whole plane — tilt", ["Shell", "Plane Tilt"], [2400.mm, 1181.mm, 1194.mm, 6800.mm]], ["Whole plane — swing", ["Shell", "Plane Swing"], [2400.mm, 1181.mm, 1194.mm, 6800.mm]]].each { |name, tags, tgt|
+  model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
+  t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])
+  cdir = Geom::Vector3d.new(0.5, -0.7, 0.4); cdir.normalize!
+  model.active_view.camera = Sketchup::Camera.new(t.offset(cdir, tgt[3]), t, Z_AXIS)
+  page = model.pages.add(name)
+  page.use_camera = true
+}
 
 # ── Labeled (Labels tag) — LAST scene ──
 model.layers.each { |l| l.visible = (l == default_layer || ["Corners", "Film Plane", "Pinhole", "Labels"].include?(l.name)) }

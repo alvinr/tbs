@@ -538,16 +538,13 @@ MID_Y = ov.C_WID / 2.0   # middle of the container depth — where the whole-pla
 
 
 def shell():
-    """Faint container shell for the whole-plane scenes — floor + far/pinhole/end walls, NO CEILING (so the
-    plane is visible from above) — plus the FOUR full-depth rails the corners roll on (2 floor + 2 ceiling)."""
+    """Context for the whole-plane scenes — a faint floor + the FOUR full-depth rails the corners roll on
+    (2 floor web-vertical + 2 ceiling flat). NO container walls or ceiling (open, so the plane + rails read
+    clearly from any angle)."""
     x0, xw = -300, (X_R - X_L) + 800
     Wd = ov.C_WID
     P = [
-        ov.ruby_box("Container floor", x0, 0, -12, xw, Wd, 12, color=C_STEEL, alpha=0.08),
-        ov.ruby_box("Far wall (backing)", x0, Wd, 0, xw, 12, CH, color=C_STEEL, alpha=0.05),
-        ov.ruby_box("Pinhole wall", x0, -12, 0, xw, 12, CH, color=C_STEEL, alpha=0.05),
-        ov.ruby_box("End wall (near pinhole X)", x0, 0, 0, 12, Wd, CH, color=C_STEEL, alpha=0.05),
-        ov.ruby_box("End wall (far X)", x0 + xw - 12, 0, 0, 12, Wd, CH, color=C_STEEL, alpha=0.05),
+        ov.ruby_box("Floor (reference)", x0, 0, -12, xw, Wd, 12, color=C_STEEL, alpha=0.08),
     ]
     # the FOUR depth rails (run in Y the full container depth): BL/BR = floor web-vertical, TL/TR = ceiling flat
     P += channel_v("Depth rail BL", X_L, PZ_HB_BOT, 0, Wd, "rBL", +1)
@@ -732,7 +729,9 @@ def generate_ruby():
         tg = "[" + ", ".join(f'"{t}"' for t in tags) + "]"
         cam = f"[{ov.mm(tgt[0])}, {ov.mm(tgt[1])}, {ov.mm(tgt[2])}, {ov.mm(tgt[3])}]"
         return f'["{n}", {tg}, {cam}]'
-    iso_ruby = "[" + ", ".join(scene_lit(*s) for s in iso) + "]"
+    # Overview + Corner detail come first; Movement + the two Whole-plane scenes are created AFTER Swing (top)
+    iso_first_ruby = "[" + ", ".join(scene_lit(*s) for s in iso[:2]) + "]"
+    iso_last_ruby = "[" + ", ".join(scene_lit(*s) for s in iso[2:]) + "]"
     show_ruby = "[" + ", ".join(f'"{t}"' for t in show) + "]"
     lbl_show_ruby = "[" + ", ".join(f'"{t}"' for t in show + ["Labels"]) + "]"
 
@@ -776,7 +775,7 @@ model.layers.to_a.each {{ |l|
 }}
 
 # ── iso scenes (Overview [with context] / Corner detail) ──
-{iso_ruby}.each {{ |name, tags, tgt|
+{iso_first_ruby}.each {{ |name, tags, tgt|
   model.layers.each {{ |l| l.visible = (l == default_layer || tags.include?(l.name)) }}
   t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])
   cdir = Geom::Vector3d.new(0.5, -0.7, 0.4); cdir.normalize!
@@ -797,6 +796,16 @@ sc = Geom::Point3d.new({ov.mm(PH_X)}, {ov.mm(FP_Y/2)}, 0)
 se = Geom::Point3d.new({ov.mm(PH_X)}, {ov.mm(FP_Y/2)}, {ov.mm(9500)})
 model.active_view.camera = Sketchup::Camera.new(se, sc, Y_AXIS)
 ps2 = model.pages.add("Swing (top)"); ps2.use_camera = true
+
+# ── Movement + the two Whole-plane scenes (iso), AFTER Swing (top) ──
+{iso_last_ruby}.each {{ |name, tags, tgt|
+  model.layers.each {{ |l| l.visible = (l == default_layer || tags.include?(l.name)) }}
+  t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])
+  cdir = Geom::Vector3d.new(0.5, -0.7, 0.4); cdir.normalize!
+  model.active_view.camera = Sketchup::Camera.new(t.offset(cdir, tgt[3]), t, Z_AXIS)
+  page = model.pages.add(name)
+  page.use_camera = true
+}}
 
 # ── Labeled (Labels tag) — LAST scene ──
 model.layers.each {{ |l| l.visible = (l == default_layer || {lbl_show_ruby}.include?(l.name)) }}

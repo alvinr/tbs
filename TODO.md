@@ -242,6 +242,13 @@ bath is available. Both are cheap; nothing downstream is finalized until they pa
 - [x] **3D D-rings added — DONE.** Added 8 D-ring cylinders to the shared `cp.tote_restraint()` (4/tier on the front bars, mirroring the 2D). Overview sent + **verified 8 in the live model** (4/4 by tier). Shared function → the **ibc-stack + water** models pick them up on their next send. *(Dead `ibc_rack()` D-ring code left for a future delete.)*
 
 ## Cost / data modeling
+- [ ] **Reconcile 304 vs 316 stainless steel usage — whole-system function + cost — OPEN.** Audit every SS
+  part in `parts.py` (rails, U-channel, corner plates, U-joints, flat-bar cross-slides, shaft supports,
+  stub rod, tray, fasteners, shim, etc.) for its grade (304 vs 316), decide the grade each part actually
+  needs (corrosion exposure — cyanotype/wet-process wash vs dry structure — vs cost), and reconcile so the
+  choice is consistent and justified system-wide. 316 carries a marine/chemical-immunity premium; use it
+  only where the wet chemistry warrants it, 304 elsewhere. Update `parts.py` grades + costs and the reports
+  in the same pass.
 - [x] **Cost-analysis Bucket B — DONE (2026-07-05).** Solar lever computed (drop 1× `solar-panel-200w`);
   two **phantom levers** removed (film banked into the manual standard; battery already 1×100Ah). The
   two remaining alternatives were **decided by Alvin, not modeled**: **keep 304 SS tray** (poly needs a

@@ -341,7 +341,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X slide rail (SWING, purple) BL
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING, purple) BL"
-  face = grp.entities.add_face([150.mm,2263.mm,156.mm], [410.mm,2263.mm,156.mm], [410.mm,2277.mm,156.mm], [150.mm,2277.mm,156.mm])
+  face = grp.entities.add_face([150.mm,2263.mm,142.mm], [410.mm,2263.mm,142.mm], [410.mm,2277.mm,142.mm], [150.mm,2277.mm,142.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -642,7 +642,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X slide rail (SWING, purple) BR
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING, purple) BR"
-  face = grp.entities.add_face([4364.mm,2263.mm,156.mm], [4624.mm,2263.mm,156.mm], [4624.mm,2277.mm,156.mm], [4364.mm,2277.mm,156.mm])
+  face = grp.entities.add_face([4364.mm,2263.mm,142.mm], [4624.mm,2263.mm,142.mm], [4624.mm,2277.mm,142.mm], [4364.mm,2277.mm,142.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -992,7 +992,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X slide rail (SWING, purple) TL
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING, purple) TL"
-  face = grp.entities.add_face([150.mm,2263.mm,2286.mm], [410.mm,2263.mm,2286.mm], [410.mm,2277.mm,2286.mm], [150.mm,2277.mm,2286.mm])
+  face = grp.entities.add_face([150.mm,2263.mm,2294.mm], [410.mm,2263.mm,2294.mm], [410.mm,2277.mm,2294.mm], [150.mm,2277.mm,2294.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -1274,7 +1274,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # Horizontal X slide rail (SWING, purple) TR
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING, purple) TR"
-  face = grp.entities.add_face([4364.mm,2263.mm,2286.mm], [4624.mm,2263.mm,2286.mm], [4624.mm,2277.mm,2286.mm], [4364.mm,2277.mm,2286.mm])
+  face = grp.entities.add_face([4364.mm,2263.mm,2294.mm], [4624.mm,2263.mm,2294.mm], [4624.mm,2277.mm,2294.mm], [4364.mm,2277.mm,2294.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -4567,7 +4567,7 @@ ents = mvfl_BL.entities
   # Horizontal X cross-slide (SWING, purple ~260) (Movement BL)
   grp = ents.add_group
   grp.name = "Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"
-  face = grp.entities.add_face([130.mm,2263.mm,156.mm], [390.mm,2263.mm,156.mm], [390.mm,2277.mm,156.mm], [130.mm,2277.mm,156.mm])
+  face = grp.entities.add_face([130.mm,2263.mm,142.mm], [390.mm,2263.mm,142.mm], [390.mm,2277.mm,142.mm], [130.mm,2277.mm,142.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -4799,7 +4799,7 @@ ents = mvfl_TL.entities
   # Horizontal X cross-slide (SWING, purple ~260) (Movement TL)
   grp = ents.add_group
   grp.name = "Horizontal X cross-slide (SWING, purple ~260) (Movement TL)"
-  face = grp.entities.add_face([130.mm,2263.mm,2286.mm], [390.mm,2263.mm,2286.mm], [390.mm,2277.mm,2286.mm], [130.mm,2277.mm,2286.mm])
+  face = grp.entities.add_face([130.mm,2263.mm,2294.mm], [390.mm,2263.mm,2294.mm], [390.mm,2277.mm,2294.mm], [130.mm,2277.mm,2294.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -5175,7 +5175,7 @@ ents = mvo_BR.entities
   # Horizontal X cross-slide (SWING, purple ~260) (Movement BR)
   grp = ents.add_group
   grp.name = "Horizontal X cross-slide (SWING, purple ~260) (Movement BR)"
-  face = grp.entities.add_face([1960.mm,2263.mm,156.mm], [2220.mm,2263.mm,156.mm], [2220.mm,2277.mm,156.mm], [1960.mm,2277.mm,156.mm])
+  face = grp.entities.add_face([1960.mm,2263.mm,142.mm], [2220.mm,2263.mm,142.mm], [2220.mm,2277.mm,142.mm], [1960.mm,2277.mm,142.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -5451,7 +5451,7 @@ ents = mvo_TR.entities
   # Horizontal X cross-slide (SWING, purple ~260) (Movement TR)
   grp = ents.add_group
   grp.name = "Horizontal X cross-slide (SWING, purple ~260) (Movement TR)"
-  face = grp.entities.add_face([1960.mm,2263.mm,2286.mm], [2220.mm,2263.mm,2286.mm], [2220.mm,2277.mm,2286.mm], [1960.mm,2277.mm,2286.mm])
+  face = grp.entities.add_face([1960.mm,2263.mm,2294.mm], [2220.mm,2263.mm,2294.mm], [2220.mm,2277.mm,2294.mm], [1960.mm,2277.mm,2294.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -5686,7 +5686,7 @@ ents = frmTilt.entities
   # Horizontal X cross-slide way (purple) (183,160)
   grp = ents.add_group
   grp.name = "Horizontal X cross-slide way (purple) (183,160)"
-  face = grp.entities.add_face([-2257.mm,1.mm,-1069.mm], [-1997.mm,1.mm,-1069.mm], [-1997.mm,15.mm,-1069.mm], [-2257.mm,15.mm,-1069.mm])
+  face = grp.entities.add_face([-2257.mm,1.mm,-1083.mm], [-1997.mm,1.mm,-1083.mm], [-1997.mm,15.mm,-1083.mm], [-2257.mm,15.mm,-1083.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -5780,7 +5780,7 @@ ents = frmTilt.entities
   # Horizontal X cross-slide way (purple) (4591,160)
   grp = ents.add_group
   grp.name = "Horizontal X cross-slide way (purple) (4591,160)"
-  face = grp.entities.add_face([1997.mm,1.mm,-1069.mm], [2257.mm,1.mm,-1069.mm], [2257.mm,15.mm,-1069.mm], [1997.mm,15.mm,-1069.mm])
+  face = grp.entities.add_face([1997.mm,1.mm,-1083.mm], [2257.mm,1.mm,-1083.mm], [2257.mm,15.mm,-1083.mm], [1997.mm,15.mm,-1083.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -5874,7 +5874,7 @@ ents = frmTilt.entities
   # Horizontal X cross-slide way (purple) (183,2290)
   grp = ents.add_group
   grp.name = "Horizontal X cross-slide way (purple) (183,2290)"
-  face = grp.entities.add_face([-2257.mm,1.mm,1061.mm], [-1997.mm,1.mm,1061.mm], [-1997.mm,15.mm,1061.mm], [-2257.mm,15.mm,1061.mm])
+  face = grp.entities.add_face([-2257.mm,1.mm,1069.mm], [-1997.mm,1.mm,1069.mm], [-1997.mm,15.mm,1069.mm], [-2257.mm,15.mm,1069.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -5968,7 +5968,7 @@ ents = frmTilt.entities
   # Horizontal X cross-slide way (purple) (4591,2290)
   grp = ents.add_group
   grp.name = "Horizontal X cross-slide way (purple) (4591,2290)"
-  face = grp.entities.add_face([1997.mm,1.mm,1061.mm], [2257.mm,1.mm,1061.mm], [2257.mm,15.mm,1061.mm], [1997.mm,15.mm,1061.mm])
+  face = grp.entities.add_face([1997.mm,1.mm,1069.mm], [2257.mm,1.mm,1069.mm], [2257.mm,15.mm,1069.mm], [1997.mm,15.mm,1069.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -6448,7 +6448,7 @@ ents = frmSwing.entities
   # Horizontal X cross-slide way (purple) (183,160)
   grp = ents.add_group
   grp.name = "Horizontal X cross-slide way (purple) (183,160)"
-  face = grp.entities.add_face([-2257.mm,1.mm,-1069.mm], [-1997.mm,1.mm,-1069.mm], [-1997.mm,15.mm,-1069.mm], [-2257.mm,15.mm,-1069.mm])
+  face = grp.entities.add_face([-2257.mm,1.mm,-1083.mm], [-1997.mm,1.mm,-1083.mm], [-1997.mm,15.mm,-1083.mm], [-2257.mm,15.mm,-1083.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -6542,7 +6542,7 @@ ents = frmSwing.entities
   # Horizontal X cross-slide way (purple) (4591,160)
   grp = ents.add_group
   grp.name = "Horizontal X cross-slide way (purple) (4591,160)"
-  face = grp.entities.add_face([1997.mm,1.mm,-1069.mm], [2257.mm,1.mm,-1069.mm], [2257.mm,15.mm,-1069.mm], [1997.mm,15.mm,-1069.mm])
+  face = grp.entities.add_face([1997.mm,1.mm,-1083.mm], [2257.mm,1.mm,-1083.mm], [2257.mm,15.mm,-1083.mm], [1997.mm,15.mm,-1083.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -6636,7 +6636,7 @@ ents = frmSwing.entities
   # Horizontal X cross-slide way (purple) (183,2290)
   grp = ents.add_group
   grp.name = "Horizontal X cross-slide way (purple) (183,2290)"
-  face = grp.entities.add_face([-2257.mm,1.mm,1061.mm], [-1997.mm,1.mm,1061.mm], [-1997.mm,15.mm,1061.mm], [-2257.mm,15.mm,1061.mm])
+  face = grp.entities.add_face([-2257.mm,1.mm,1069.mm], [-1997.mm,1.mm,1069.mm], [-1997.mm,15.mm,1069.mm], [-2257.mm,15.mm,1069.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -6730,7 +6730,7 @@ ents = frmSwing.entities
   # Horizontal X cross-slide way (purple) (4591,2290)
   grp = ents.add_group
   grp.name = "Horizontal X cross-slide way (purple) (4591,2290)"
-  face = grp.entities.add_face([1997.mm,1.mm,1061.mm], [2257.mm,1.mm,1061.mm], [2257.mm,15.mm,1061.mm], [1997.mm,15.mm,1061.mm])
+  face = grp.entities.add_face([1997.mm,1.mm,1069.mm], [2257.mm,1.mm,1069.mm], [2257.mm,15.mm,1069.mm], [1997.mm,15.mm,1069.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")

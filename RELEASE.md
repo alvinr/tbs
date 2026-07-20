@@ -24,6 +24,18 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Film-plane parts BOM: leadscrew Option-A → U-channel mechanism** — retired the 11 superseded
+  leadscrew SKUs (HGR20 rail+carriage, Acme leadscrew/nut, 8" handwheel, locking collar, HGR15
+  cross-slides, rod-end + pivot pin) and swapped in the **built** corner mechanism: 304 U-channel
+  depth rails (McMaster 1262T21, $362/6ft), Ruland **USKC12-6-6-SS** U-joint ($276 ea) + nitrile
+  boot, McMaster **4040N12** 304 shaft support ($58 ea), 3/8" 304 stub rod (**89535K87**, $13.25/3ft),
+  acetal 4-wheel skate, 316 flat-bar Z/X cross-slides + UHMW + gib, cam-lever rail brakes, and the
+  304 corner plate. Cascaded across `parts.py`, `costing.py` (§4.1 + EXPECTED), report §7, master
+  shopping list, and project-cost-breakdown §4, and swept the leadscrew/handwheel prose from
+  funding-proposal / equipment-layout / project-summary / component-dimension-audit. **Film section
+  +~$2.9k mid → $6,063–7,039** (U-channel $2,172 + U-joint $1,104 the drivers); grand total →
+  $25,462 / $31,531 / $39,476. Skate / cross-slide / cam-clamp are fab estimates — firm at order.
+  Cleared 8 of the parts-identity dead-SKU lint warnings.
 - **Light-trap door top/bottom seals → strip brush** — the two horizontal door-frame seals the
   swinging panel edge *sweeps across* were changed from a steel seal-lip + EPDM compression to a
   **nylon-filament strip brush** (McMaster 74405T12 brush in an 8813T53 holder): a compression seal

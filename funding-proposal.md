@@ -41,7 +41,7 @@ A spherical-pivot adapter plate mounts in the same wall-frame interface as the v
 **Effect:** every 5° of board tilt steers the projected image <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm across the film plane. Used for compositional placement — shifting what part of the scene falls where on the print without moving the camera.
 
 ### Film Plane: 4-Corner Independent Actuation (±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing)
-Four independently-driven corners allow the fixed-size rigid image plane (Option A) to be tilted and swung — including limited combined tilt-and-swing — about its center. Each corner is driven by a 3/4"-6 Acme leadscrew via an 8" handwheel; a 2-axis cross-slide and rod-end spherical bearing at each corner absorb the rigid-rotation arc travel, so the plane rotates without stretching or twisting.
+Four independently-set corners allow the fixed-size rigid image plane to be tilted and swung — including limited combined tilt-and-swing — about its center. Each corner rides an acetal skate inside a 304 stainless U-channel depth rail (slid by hand and cam-clamped to set focus); a 2-axis 316 cross-slide plus a single Ruland universal joint at each corner absorb the rigid-rotation arc travel and supply the angular change, so the plane rotates without stretching or twisting.
 
 **Effect:** Scheimpflug-equivalent movements at pinhole focal lengths — not to adjust focus (pinholes have infinite depth of field) but to control perspective, convergence, and geometric projection.
 
@@ -84,8 +84,8 @@ The container moves by commercial hire tilt-bed truck. No CDL is required for th
 ## 6. Budget and Use of Funds
 All figures are drawn from the [full cost breakdown](project-cost-breakdown.md). Per-item procurement details with supplier URLs are in the [master shopping list](master-shopping-list.md). Three funding levels are presented to allow partial or phased support.
 
-### Level 1 — Core Build (~<!-- BEGIN costing:fund-l1-total -->$31,396<!-- END costing:fund-l1-total -->, Standard scenario)
-Everything required to operate the camera for a first deployment. Figures are the Standard (Mid) column of the [cost breakdown](project-cost-breakdown.md); Low–High scenarios span ~<!-- BEGIN costing:fund-scenario-span -->$23,000–$36,000<!-- END costing:fund-scenario-span -->.
+### Level 1 — Core Build (~<!-- BEGIN costing:fund-l1-total -->$34,611<!-- END costing:fund-l1-total -->, Standard scenario)
+Everything required to operate the camera for a first deployment. Figures are the Standard (Mid) column of the [cost breakdown](project-cost-breakdown.md); Low–High scenarios span ~<!-- BEGIN costing:fund-scenario-span -->$25,000–$39,000<!-- END costing:fund-scenario-span -->.
 
 <!-- BEGIN costing:funding-level1 -->
 | Item | Cost |
@@ -93,7 +93,7 @@ Everything required to operate the camera for a first deployment. Figures are th
 | 20ft container (Cargo Worthy grade) + delivery | $3,300 |
 | Interior conversion (light-seal, paint, image-plane backing) | $1,138 |
 | Pinhole plate (precision laser-drilled, SS-302, interchangeable frame) | $185 |
-| Film plane mechanism (4-corner Option A, manual actuation) | $3,636 |
+| Film plane mechanism (4-corner U-channel + acetal skate + Ruland U-joint) | $6,551 |
 | Tilt-swing front board mechanism | $1,470 |
 | Housed revolving-door light trap (plastic-skin Ø900 housing + C-shell drum, bearings, seals, fabrication) | $1,739 |
 | Processing water system (tray, spray bar, 3-stage filtration, IBC stacking frame) | $6,647 |
@@ -104,8 +104,8 @@ Everything required to operate the camera for a first deployment. Figures are th
 | Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle) | $1,418 |
 | Chemistry prep shelf (fold-down board + frame + hinge/stays + tap trunk extension) | $203 |
 | Cyanotype chemistry + muslin substrate (50-print run, Standard tier) | $1,490 |
-| Contingency (10%) | ~$2,850 |
-| **Level 1 total** | **~$31,396** |
+| Contingency (10%) | ~$3,150 |
+| **Level 1 total** | **~$34,611** |
 <!-- END costing:funding-level1 -->
 
 ### Level 2 — First Deployment (+$1,350–2,800)
@@ -128,7 +128,7 @@ Video documentation, process photography, and initial publication:
 | Publication design (zine or catalog, print run) | $500–1,500 |
 | **Level 3 total** | **~$2,000–4,000** |
 
-**Combined (Levels 1+2+3):** ~<!-- BEGIN costing:fund-combined -->$34,746–38,196<!-- END costing:fund-combined --> for a complete first-year program with three public deployments, 50-print edition, and full documentation.
+**Combined (Levels 1+2+3):** ~<!-- BEGIN costing:fund-combined -->$37,961–41,411<!-- END costing:fund-combined --> for a complete first-year program with three public deployments, 50-print edition, and full documentation.
 
 ## 7. Timeline
 A 12-month build and deployment program:

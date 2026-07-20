@@ -17,7 +17,7 @@
 | **1. Container purchase & delivery** | $2,300 | $3,300 | $4,300 |
 | **2. Interior conversion** | $950 | $1,138 | $1,350 |
 | **3. Optics — pinhole plate** | $110 | $185 | $265 |
-| **4. Film plane mechanism (4-corner Option A, incl. wall-seat saddles + cross-slides)** | $3,374 | $3,636 | $3,898 |
+| **4. Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)** | $6,063 | $6,551 | $7,039 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $5,356 | $6,647 | $7,929 |
 | **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)** | $2,608 | $2,806 | $3,003 |
 | **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $757 | $817 | $907 |
@@ -29,7 +29,7 @@
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,100 | $1,490 | $2,650 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licenses & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$22,773** | **$28,616** | **$36,335** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$25,462** | **$31,531** | **$39,476** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware AmFe** chemistry + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,120), Mid = Standard ½-Ware ($1,520), High = Rich full-Ware ($2,700)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
@@ -183,24 +183,21 @@ The pinhole plate is interchangeable. A lens plate can be swapped in for portrai
 
 **Source document:** `film-plane-mechanism-report.md`
 
-View-camera-style moveable film plane (Option A — a **fixed-size rigid** plane on floating-corner cross-slides) with four independently actuated corners (TL, TR, BL, BR), enabling tilt (±40°), swing (±28°), and limited compound movements.
+View-camera-style moveable film plane — a **fixed-size rigid** plane whose four corners each ride an acetal skate inside a 304 U-channel depth rail, coupled to a 2-axis 316 cross-slide through a single Ruland universal joint — with four independently set corners (TL, TR, BL, BR), enabling tilt (±40°), swing (±28°), and limited compound movements.
 
 ### 4.1 Structural & rails
 
 | Item | Spec | Qty | Unit | Total |
 |------|------|-----|------|-------|
-| Linear guide rail HGR20 | 2,200mm | 4 | $45† | $180 |
-| Rail carriage HGH20CA | Flanged block | 8 | $18† | $144 |
-| Acme leadscrew ¾"-6 | 8 ft length | 4 | $95† | $380 |
-| Acme nut bronze ¾"-6 | — | 4 | $12† | $48 |
-| Handwheel 8" dia | ¾" bore, cast alum. | 4 | $35† | $140 |
-| Locking collar SS316 | ¾" bore | 4 | $12† | $48 |
-| Corner bracket L-plate | ¼" alum., 6"×8" | 4 | $20† | $80 |
-| Cross-slide rail HGR15 (Option A) | 300mm, X-Z stage | 8 | $25† | $200 |
-| Cross-slide carriage HGH15CA (Option A) | Flanged block | 8 | $12† | $96 |
-| Cross-slide intermediate plate (Option A) | ¼" alum. | 4 | $15† | $60 |
-| Rod-end spherical bearing | GIR25-DO, 25mm | 4 | $22† | $88 |
-| Pivot pin SS316 | Ø25mm × 80mm | 4 | $8† | $32 |
+| 304 U-channel depth rail 3×1½" (76×38mm) | McMaster 1262T21; 4 rails wall-to-wall (~2,362mm) | 6× 6ft | $362† | $2,172 |
+| Ruland USKC12-6-6-SS U-joint (keyway+clamp, 303 SS) | 3/8" bores, 45°/axis — interim part | 4 | $276† | $1,104 |
+| Ruland UBOOT12/19-NI-KIT nitrile boot | over each U-joint | 4 | $22–29† | $88–116 |
+| McMaster 4040N12 304 shaft support | clamps U-joint input stub to X-slide | 4 | $58† | $232 |
+| 3/8" 304/304L SS rod — U-joint stubs | McMaster 89535K87, 1× 3ft yields 8 stubs | 1 | $13† | $13 |
+| Acetal 4-wheel skate — Ø32 rollers, Ø10 316 axles, carriage plate | 1 per corner (est.) | 4 | $55–90 | $220–360 |
+| 316 flat-bar Z/X cross-slides + UHMW pad + gib | 2-axis stack per corner (est.) | 4 | $45–95 | $180–380 |
+| Cam-lever rail brake (skate lock) | 3 per corner (est.) | 12 | $8–15 | $96–180 |
+| Corner plate ¼" 304 SS (~6"×8" L-bracket) | U-joint mount — steel, not aluminum | 4 | $38–52† | $152–208 |
 
 ### 4.2 Film plane frame & backing
 
@@ -210,7 +207,7 @@ View-camera-style moveable film plane (Option A — a **fixed-size rigid** plane
 | Dibond ACM panel 4mm | 4'×8' sheets | 6 | $85† | $510 |
 | Black EPDM foam tape | 1"×½", 50 ft rolls | 3 | $28† | $84 |
 | Rosco Duvetyne (light seal) | 60" wide, 10 yd | 1 | $95† | $95 |
-| Dibond ACM backing — single rigid panel (Option A: no folding hinge) | included above | — | — | — |
+| Dibond ACM backing — single rigid panel (no folding hinge) | included above | — | — | — |
 | 6-mil black poly sheeting | 10'×100' roll | 1 | $65† | $65 |
 | 2" black Gorilla Tape | 35 yd rolls | 6 | $12† | $72 |
 | Muslin spring clips | Bracket + spring jaw, neoprene pad | 88 | $3-8† | $264-704 |
@@ -233,7 +230,7 @@ The demountable brace cage is retired. Each of the 8 rail ends instead anchors t
 
 ### 4.4 Optional electric actuation
 
-*Not included in any standard build — Scenarios A–C are all **manual** handwheel actuation. This is a documented upgrade only (the [Cost Analysis](cost-analysis-report.md) drops it from the recommended build to save ~$827): it replaces the four handwheels with PA-14 actuators for entry-free repositioning. See the [Film Plane Mechanism Report §electric actuation](film-plane-mechanism-report.md).*
+*Not included in any standard build — Scenarios A–C are all **manual** (each corner is hand-slid along its U-channel and cam-clamped). This is a documented upgrade only (the [Cost Analysis](cost-analysis-report.md) drops it from the recommended build to save ~$827): it motorizes the four corners with PA-14 actuators for entry-free repositioning. See the [Film Plane Mechanism Report §electric actuation](film-plane-mechanism-report.md).*
 
 | Item | Spec | Qty | Unit | Total |
 |------|------|-----|------|-------|
@@ -248,20 +245,21 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 <!-- BEGIN costing:film -->
 | Item | Low | Mid | High |
 |------|-----|-----|------|
-| Linear guide rails HGR20 2,200mm (×4) + carriages HGH20CA (×8) | $324 | $324 | $324 |
-| Acme leadscrews ¾"-6 8 ft (×4) + bronze nuts (×4) | $428 | $428 | $428 |
-| Handwheels 8" (×4) + locking collars SS316 (×4) | $188 | $188 | $188 |
-| Corner bracket L-plates, ¼" alum 6×8 (×4) | $152 | $180 | $208 |
-| Option-A cross-slides — HGR15 rails (×8) + HGH15CA (×8) + intermediate plates (×4) | $356 | $356 | $356 |
-| Rod-end spherical bearings GIR25-DO (×8) + pivot pins SS316 (×8) | $120 | $120 | $120 |
+| 304 U-channel depth rails 3×1½" (1262T21, ×4 wall-to-wall) | $2,172 | $2,172 | $2,172 |
+| Ruland USKC12-6-6-SS U-joints (×4) + nitrile boots (×4) | $1,192 | $1,206 | $1,220 |
+| McMaster 4040N12 304 shaft supports (×4) + 3/8" 304 stub rod (89535K87) | $245 | $245 | $245 |
+| Acetal 4-wheel skates (×4) — Ø32 rollers, Ø10 316 axles, carriage plates | $220 | $290 | $360 |
+| 316 flat-bar Z/X cross-slides (×4) + UHMW pads + gibs | $180 | $280 | $380 |
+| Cam-lever rail brakes (×12, skate lock) | $96 | $138 | $180 |
+| Corner plates, ¼" 304 SS 6×8 (×4) | $152 | $180 | $208 |
 | Aluminum angle 2×2×3/16 (6061 anodized, expendable) 8 ft (×10) | $220 | $220 | $220 |
 | Dibond ACM 4mm 4×8 sheets (×6) — single rigid plane | $510 | $510 | $510 |
 | Light-seal set — EPDM tape (×3) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6) | $299 | $313 | $327 |
-| Muslin spring clips (×88) | $264 | $484 | $704 |
-| Clamp mounting — M5×16 SS bolts/Nylocks (×180+180) + neoprene jaw strip | $73 | $73 | $73 |
-| Wall-seat saddles ×8 — 8mm steel plate, cut + welded (ICP-11) | $318 | $318 | $318 |
-| Saddle fasteners — M12 through-bolts (×36) + M8 thumbscrews (×12) + M8 rail bolts (×12) | $122 | $122 | $122 |
-| **Section total — film plane mechanism (manual, incl. saddles + cross-slides)** | **$3,374** | **$3,636** | **$3,898** |
+| Spring clips, muslin (×88) | $264 | $484 | $704 |
+| Clamp mounting — M5×16 SS csk screws (×176) + Nylocks (×176) + neoprene pad strip | $73 | $73 | $73 |
+| Wall-seat saddles ×6 — 8mm steel plate, cut + welded (ICP-11) | $318 | $318 | $318 |
+| Saddle fasteners — M12 through-bolts (×28) + M8 thumbscrews (×12) + M8 hex bolts (×8) | $122 | $122 | $122 |
+| **Section total — film plane mechanism (U-channel + U-joint, incl. saddles)** | **$6,063** | **$6,551** | **$7,039** |
 <!-- END costing:film -->
 
 *Electric actuation (optional add-on, not in any standard build): +$827 — see §4.4.*
@@ -558,7 +556,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Container (WWT) + delivery | $1,800 |
 | Interior conversion (minimal) | $950 |
 | Pinhole plate | $110 |
-| Film plane mechanism (manual Option A, incl. wall-seat saddles + cross-slides) | $3,374 |
+| Film plane mechanism (4-corner U-channel + U-joint, incl. wall-seat saddles) | $6,063 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $5,356 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $2,608 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $757 |
@@ -570,7 +568,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Cyanotype chemistry + substrate (50 prints) | $1,100 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$22,203** |
+| **Scenario A total** | **~$24,892** |
 <!-- END costing:scenario-a -->
 
 ### Scenario B — Recommended build, regional deployment
@@ -581,7 +579,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Container (CW) + delivery | $3,150 |
 | Interior conversion (full) | $1,138 |
 | Pinhole plate | $185 |
-| Film plane mechanism (manual Option A + wall-seat saddles + cross-slides) | $3,636 |
+| Film plane mechanism (4-corner U-channel + U-joint + wall-seat saddles) | $6,551 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,647 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $2,806 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $817 |
@@ -594,7 +592,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1,200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$28,926** |
+| **Scenario B total (excl. CDL)** | **~$31,841** |
 <!-- END costing:scenario-b -->
 
 ### Scenario C — Full production, own transport, CDL
@@ -602,11 +600,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:scenario-c -->
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $28,026 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $30,941 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$117,526–$147,526** |
+| **Scenario C total** | **~$120,441–$150,441** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

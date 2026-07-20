@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Retired the standalone `film-plane.skp` 3D model** — the older whole-plane film-plane model
+  (`generate_film_plane_model.py` + `film-plane.rb` + `film-plane.skp`) was superseded by
+  `film-plane-mechanism.skp` and is removed; `overview.skp` still carries the film-plane geometry inline
+  at container scale, and `film-plane-mechanism` remains the dedicated corner-detail model. Cleared its
+  `dependencies.yml`, `models/sketchfab.json`, and `component-dependency-map.md` entries (the verify-all
+  model set drops 7 → 6). Also reconciled the film-plane report/analysis/joint-research docs to the built
+  U-channel + acetal-skate + cross-slide + Ruland-U-joint design and moved the light-sealing narrative
+  into the mechanism report.
 - **Film-plane parts BOM: leadscrew Option-A → U-channel mechanism** — retired the 11 superseded
   leadscrew SKUs (HGR20 rail+carriage, Acme leadscrew/nut, 8" handwheel, locking collar, HGR15
   cross-slides, rod-end + pivot pin) and swapped in the **built** corner mechanism: 304 U-channel

@@ -58,7 +58,7 @@ The remaining §7 parts BOM is gated on confirmed prices._
   mechanism; optics §3/§5/§6 affirmed; hardware/BOM → report). **STILL OPEN (task #30):** the §4
   mechanism + §7 BOM + §8 maintenance are a leadscrew decision-record snapshot — DECIDE keep-collapse-
   to-optics-only vs **retire** (it's nav-labeled "(superseded)" and its optics overlap distortion-renders).
-- [ ] **Reconcile the two film-plane 3D models — `film-plane.skp` ↔ `film-plane-mechanism.skp`.** Both are
+- [x] **Reconcile the two film-plane 3D models — DONE 2026-07-19.** `film-plane.skp` geometry was ported to the built U-channel/skate/U-joint design earlier this session (`_corner_parts()`, committed); `component-dependency-map.md` §3.1 now describes it as U-channel (not Option-A leadscrew) and a **film-plane-mechanism row was added** with the split of responsibility (mechanism = bolt-level single-corner detail; film-plane = same design at whole-plane scale + the animated DCs). ~~Both are~~ Both are
   KEPT (film-plane.skp is NOT retired). `film-plane.skp` = the full film-plane model (older Option-A
   leadscrew DC); `film-plane-mechanism.skp` = the current corner mechanism (U-channel/skate/U-joint). They
   describe overlapping geometry and have diverged — reconcile so the full model carries the current

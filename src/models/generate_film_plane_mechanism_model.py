@@ -29,7 +29,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov          # ruby helpers + component()
 import generate_corridor_water_panel as cp    # IBC corridor deep-box frame + tote restraint (beams) — reused verbatim
 
-TAGS = ["Corners", "Film Plane", "Pinhole", "Context", "Movement", "Labels"]
+TAGS = ["Corners", "Film Plane", "Pinhole", "Context", "Movement", "Shell", "Plane Tilt", "Plane Swing", "Labels"]
 
 C_STEEL = "#B0B0B8"; C_CROSS = "#8A8A92"; C_PANEL = "#1F3B66"; C_CAR = "#C04010"
 C_FRAME = "#8FB0C8"   # film-plane 2x2 6061 Al angle perimeter frame (the ACM backing is captured in it)
@@ -363,10 +363,11 @@ def movement(corner="BL"):
     swing_corner = corner in SWING_CORNERS             # SWING (rotz yaw) vs TILT (rotx) demo
     rot_attr = "rotz" if swing_corner else "rotx"
     rot_val = 30 if swing_corner else sz * 30          # PHASE 1 far edge toward the pinhole (-Y)
-    # DEPLOY (phase 2) rides the slide MATCHING the rotation: TILT → GREEN Z (bottom up / top down);
-    # SWING → PURPLE X, INBOARD (toward centre, AWAY from the corner beam) so the ACM never drives THROUGH
-    # the beam (the bottom weight beam overlaps the ACM in Z; only an inboard shift keeps it clear).
-    deploy = (cin * 300) if swing_corner else (sz * 300)
+    # PER SHEET 3: tilt/swing is DRIVEN by the depth (Y) ROLL; the green Z / purple X cross-slides only take
+    # up a SMALL foreshortening. So the roll is the star and the cross-slide floats just FORESHORTEN mm
+    # (TILT → GREEN Z; SWING → PURPLE X, inboard so the ACM clears the corner beam).
+    FORESHORTEN = 50
+    deploy = (cin * FORESHORTEN) if swing_corner else (sz * FORESHORTEN)
     # tilt about the U-JOINT CENTRE (not the film corner) so the frame + corner plate stay JOINED through the
     # tilt. U-joint box = (cx-12, ty-4, fz-14, 24³) → centre = (cx, ty+8, fz-2).
     pivot = (cx, ty + 8, fz - 2)
@@ -376,20 +377,18 @@ def movement(corner="BL"):
     rz = (zc - CD_BOT / 2 + HB_T + 16) if is_bot else (zc + CW_TOP / 2 - HB_T - 16)   # wheel-centre Z
     gx0 = (inb - 3) if cin > 0 else (inb - 13)         # green Z-slide min-x (≈centred on inb)
     cpx0c = (inb - 6) if cin > 0 else (inb - 8)        # carriage-plate min-x
-    # DEPLOY rail (long, in the CARRIAGE) + the PERPENDICULAR slide stub (short, in the FLOAT — rides along)
-    if swing_corner:   # PURPLE X = deploy rail (LOCAL slide-and-clamp, per Sheet 2 — NOT beam-spanning);
-        # GREEN Z = short stub. Per Sheet 2 View B the X cross-slide is a foreshortening absorber at the
-        # corner, so it stays inboard of / at the corner and does NOT cross the beam. Deploy INBOARD keeps
-        # the ACM clear of the corner beam.
-        Lx = abs(deploy) + 60                          # local purple rail, longer than the stroke
-        px0 = (cx - 20) if cin > 0 else (cx + 20 - Lx)
-        deploy_rail = ov.ruby_box(f"Horizontal X slide rail (SWING/deploy, purple) (Movement {corner})", px0, ty + 1, fz - 4, Lx, 14, 14, color=C_SWING)
-        perp_stub = ov.ruby_box(f"Vertical Z slide stub (TILT, green) (Movement {corner})", gx0, ty + 1, min(fz, rz) - 4, 16, 18, abs(rz - fz) + 20, color=C_TILT)
-    else:              # GREEN Z = deploy rail; PURPLE X = short stub
-        Ldep = abs(deploy) + 60                        # green rail longer than the Z stroke (U-joint stays ON it)
-        gz0 = (fz - 20) if deploy > 0 else (fz + 20 - Ldep)
-        deploy_rail = ov.ruby_box(f"Vertical Z slide rail (TILT/deploy, green) (Movement {corner})", gx0, ty + 1, gz0, 16, 18, Ldep, color=C_TILT)
-        perp_stub = ov.ruby_box(f"Horizontal X slide stub (SWING, purple) (Movement {corner})", cx - 70, ty + 1, fz - 4, 140, 14, 14, color=C_SWING)
+    # Per Sheet 3 EACH corner carries BOTH cross-slides: a ~250mm green Z + a ~260mm purple X (316 flat bar
+    # + UHMW + gib), LOCAL (~inboard of the rail). The ACTIVE one (green for tilt, purple for swing) is the
+    # base WAY (fixed to the carriage) that the stack floats along; the OTHER rides the stack.
+    Lz, Lx = 250, 260
+    gz0 = (fz - 20) if sz > 0 else (fz + 20 - Lz)       # green Z way (bottom up / top down)
+    px0 = (cx - 20) if cin > 0 else (cx + 20 - Lx)      # purple X way (local, inboard of the corner)
+    green_way = ov.ruby_box(f"Vertical Z cross-slide (TILT, green ~250) (Movement {corner})", gx0, ty + 1, gz0, 16, 18, Lz, color=C_TILT)
+    purple_way = ov.ruby_box(f"Horizontal X cross-slide (SWING, purple ~260) (Movement {corner})", px0, ty + 1, fz - 4, Lx, 14, 14, color=C_SWING)
+    if swing_corner:   # purple X is the ACTIVE way; green Z rides the stack
+        deploy_rail, perp_slide = purple_way, green_way
+    else:              # green Z is the ACTIVE way; purple X rides the stack
+        deploy_rail, perp_slide = green_way, purple_way
     # ── STATIC rail + CARRIAGE (skate + plate + the GREEN Z deploy rail) ──
     carr = []
     if is_bot:
@@ -408,12 +407,17 @@ def movement(corner="BL"):
         carr.append(ov.ruby_box(f"Yoke cross-piece (Movement {corner})", cx - 35, ty - 34, yb - 22, 70, 68, 8, color=C_CAR))
         carr.append(ov.ruby_box(f"Yoke rail → carriage (Movement {corner})", min(cx + 33, inb), ty - 34, yb - 20, abs(inb - (cx + 33)) + 6, 68, 6, color=C_CAR))
         carr.append(ov.ruby_box(f"Carriage plate (Movement {corner})", cpx0c, ty + 1, zlo - 6, 14, 86, (zhi + 18) - (zlo - 6), color=C_CAR))
-    # the DEPLOY rail (long) is fixed to the carriage; the U-joint rides it in phase 2
+    # the ACTIVE cross-slide way (fixed to the carriage); the stack floats a SMALL foreshortening along it
     carr.append(deploy_rail)
-    # FLOAT (perpendicular slide stub + U-joint) — DEPLOYS along the deploy rail, carrying the panel
+    # FLOAT (the OTHER cross-slide + U-joint + its mounting hardware) — floats FORESHORTEN mm along the way
+    stub_x0 = cx + 5 if cin > 0 else cx - 51
+    sup_x0 = cx + 26 if cin > 0 else cx - 49
     floatp = [
-        perp_stub,
+        perp_slide,
         ov.ruby_box(f"U-joint (Ruland USKC12-6-6-SS) (Movement {corner})", cx - 12, ty - 4, fz - 14, 24, 24, 24, color=C_CROSS),
+        ov.ruby_cylinder(f"Input stub 3/8 (X slide → U-joint) (Movement {corner})", stub_x0, ty + 8, fz, 4.75, 46, color=C_STEEL, axis="x"),
+        ov.ruby_box(f"4040N12 304 shaft support (clamps stub → carrier) (Movement {corner})", sup_x0, ty - 1, fz - 11, 23, 18, 22, color=C_STEEL),
+        ov.ruby_cylinder(f"Output stub 3/8 (U-joint → corner plate) (Movement {corner})", cx, ty - 14, fz, 4.75, 20, color=C_STEEL, axis="y"),
     ]
     # PANEL (corner plate + frame + ACM) — relative to the U-joint-centre pivot so it TILTS about the U-joint;
     # the 304 corner plate lives HERE (not the float) so it stays bolted to the frame through the tilt.
@@ -434,6 +438,7 @@ def movement(corner="BL"):
         ov.ruby_box(f"Film frame 2x2 6061 — {hlbl} in-plane leg (Movement {corner})", ax0 - px, yin - py, hz_in - pz, plen, AT, AL, color=C_FRAME),
         ov.ruby_box(f"Film frame 2x2 6061 — {vlbl} upstand (Movement {corner})", vx_up - px, yperp - py, az0 - pz, AT, AL, plen, color=C_FRAME),
         ov.ruby_box(f"Film frame 2x2 6061 — {vlbl} in-plane leg (Movement {corner})", vx_in - px, yin - py, az0 - pz, AL, AT, plen, color=C_FRAME),
+        ov.ruby_cylinder(f"Frame-corner bolt (angle frame → corner plate) (Movement {corner})", fcx - px, (FP_Y - 6) - py, fz - pz, 3, 18, color=C_STEEL, axis="y"),
     ]
     anchor = (cx + cin * 420, ty + 500, fz + sz * 520)
     return static_ruby, "\n".join(carr), "\n".join(floatp), "\n".join(panel), pivot, dy_fwd, deploy, rot_attr, rot_val, anchor
@@ -452,7 +457,8 @@ def movement_dc(sfx, carr, floatp, panel, pivot, dy_fwd, deploy, rot_attr, rot_v
     ldx = 300 if sfx[1] == "L" else -300               # L=left → +X, R=right → -X
     ldz = 300 if sfx[0] == "B" else -300               # B=bottom → +Z, T=top → -Z
     return f'''
-# ═══ Movement — {sfx} corner: ONE click FLIPS home <-> deployed (roll forward + tilt, then deploy along green Z). ═══
+# ═══ Movement — {sfx} corner (Sheet 3 model): ONE click — the depth-rail ROLL drives the {rot_label};
+# the {dep_color} cross-slide takes up the small foreshortening. One coordinated motion. ═══
 mvpan_{sfx} = model.definitions.add("Panel tilt {sfx}")
 ents = mvpan_{sfx}.entities
 {panel}
@@ -476,29 +482,155 @@ da = "dynamic_attributes"
   e.set_attribute(da, "_name", "Movement{sfx}"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "move", 0.0)
 end
 mvp_{sfx}_inst.set_attribute(da, "_move_access", "VIEW")
-mvp_{sfx}_inst.set_attribute(da, "_move_label", "Flip {sfx}: home <-> deployed (roll + {rot_label}, then deploy along {dep_color})")
+mvp_{sfx}_inst.set_attribute(da, "_move_label", "{sfx}: depth-roll drives the {rot_label} ({dep_color} cross-slide absorbs foreshortening)")
 mvp_{sfx}_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1)')
 mvp_{sfx}_inst.set_attribute(da, "_onclick_access", "NONE")
-# carriage rolls FORWARD in Y — PHASE 1 (drive 0->0.5)
+# carriage ROLLS along the depth rail (Y) — the DRIVER of {rot_label} (Sheet 3); one coordinated motion
 [mvo_{sfx}, mvo_{sfx}_inst].each do |e|
   e.set_attribute(da, "_name", "Carriage{sfx}"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "y", 0.0)
 end
 mvo_{sfx}_inst.set_attribute(da, "_drive_formula", "Movement{sfx}!move")
-mvo_{sfx}_inst.set_attribute(da, "_y_formula", "(drive + 0.5 - ABS(drive - 0.5)) * {dy_fwd}")
-# float (U-joint + panel) DEPLOYS by sliding along the {dep_color} slide — PHASE 2 (drive 0.5->1)
+mvo_{sfx}_inst.set_attribute(da, "_y_formula", "drive * {dy_fwd}")
+# float (U-joint + panel) — the cross-slide takes up a SMALL foreshortening along the {dep_color} way
 [mvfl_{sfx}, mvfl_{sfx}_inst].each do |e|
   e.set_attribute(da, "_name", "Float{sfx}"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "{dep_axis}", 0.0)
 end
 mvfl_{sfx}_inst.set_attribute(da, "_drive_formula", "Carriage{sfx}!drive")
-mvfl_{sfx}_inst.set_attribute(da, "_{dep_axis}_formula", "(drive - 0.5 + ABS(drive - 0.5)) * {deploy}")
-# panel {rot_label}S about the U-joint (rotx=tilt / rotz=swing) — PHASE 1 (drive 0->0.5)
+mvfl_{sfx}_inst.set_attribute(da, "_{dep_axis}_formula", "drive * {deploy}")
+# panel {rot_label}S about the U-joint (rotx=tilt / rotz=swing) — the DOF the depth-roll produces
 [mvpan_{sfx}, mvpan_{sfx}_inst].each do |e|
   e.set_attribute(da, "_name", "PanelTilt{sfx}"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "{rot_attr}", 0.0)
 end
 mvpan_{sfx}_inst.set_attribute(da, "_drive_formula", "Float{sfx}!drive")
-mvpan_{sfx}_inst.set_attribute(da, "_{rot_attr}_formula", "(drive + 0.5 - ABS(drive - 0.5)) * {rot_val}")
-mvtxt_{sfx} = entities.add_text("CLICK {sfx}: 1) {rot_label} toward pinhole  2) deploy along the {dep_color} slide", Geom::Point3d.new({ov.mm(anchor[0])}, {ov.mm(anchor[1])}, {ov.mm(anchor[2])}), Geom::Vector3d.new({ov.mm(ldx)}, {ov.mm(-400)}, {ov.mm(ldz)}))
+mvpan_{sfx}_inst.set_attribute(da, "_{rot_attr}_formula", "drive * {rot_val}")
+mvtxt_{sfx} = entities.add_text("CLICK {sfx}: depth-roll DRIVES the {rot_label}; the {dep_color} cross-slide takes up the foreshortening", Geom::Point3d.new({ov.mm(anchor[0])}, {ov.mm(anchor[1])}, {ov.mm(anchor[2])}), Geom::Vector3d.new({ov.mm(ldx)}, {ov.mm(-400)}, {ov.mm(ldz)}))
 mvtxt_{sfx}.layer = model.layers["Movement"] rescue nil
+'''
+
+
+MID_Y = ov.C_WID / 2.0   # middle of the container depth — where the whole-plane demo sits (room to tilt/swing)
+
+
+def shell():
+    """Faint container shell for the whole-plane scenes — floor + far/pinhole/end walls, NO CEILING (so the
+    plane is visible from above) — plus the FOUR full-depth rails the corners roll on (2 floor + 2 ceiling)."""
+    x0, xw = -300, (X_R - X_L) + 800
+    Wd = ov.C_WID
+    P = [
+        ov.ruby_box("Container floor", x0, 0, -12, xw, Wd, 12, color=C_STEEL, alpha=0.08),
+        ov.ruby_box("Far wall (backing)", x0, Wd, 0, xw, 12, CH, color=C_STEEL, alpha=0.05),
+        ov.ruby_box("Pinhole wall", x0, -12, 0, xw, 12, CH, color=C_STEEL, alpha=0.05),
+        ov.ruby_box("End wall (near pinhole X)", x0, 0, 0, 12, Wd, CH, color=C_STEEL, alpha=0.05),
+        ov.ruby_box("End wall (far X)", x0 + xw - 12, 0, 0, 12, Wd, CH, color=C_STEEL, alpha=0.05),
+    ]
+    # the FOUR depth rails (run in Y the full container depth): BL/BR = floor web-vertical, TL/TR = ceiling flat
+    P += channel_v("Depth rail BL", X_L, PZ_HB_BOT, 0, Wd, "rBL", +1)
+    P += channel_v("Depth rail BR", X_R, PZ_HB_BOT, 0, Wd, "rBR", -1)
+    P += channel_flat("Depth rail TL", X_L, PZ_HB_TOP, 0, Wd, "rTL")
+    P += channel_flat("Depth rail TR", X_R, PZ_HB_TOP, 0, Wd, "rTR")
+    return "\n".join(P)
+
+
+def plane_body(px, pz, yc):
+    """The whole rigid film plane (ACM ghost + 6061 frame + all four CORNER MECHANISMS) built RELATIVE to a
+    pivot (px, yc, pz) so a DC can rotate the WHOLE plane about its centre — tilt = rotx, swing = rotz. The
+    four corners (U-joint + green Z + purple X cross-slides + skate) ride WITH the plane, connected + moving."""
+    AL, AT = 50, 5
+    yperp, yin = yc - AL, yc - AT
+    W = FP_W_CORNER
+    ty = yc                                              # the mechanism sits on the backing side of the plane
+    def bx(name, x, y, z, w, d, h, color, alpha=None):
+        return ov.ruby_box(name, x - px, y - yc, z - pz, w, d, h, color=color, alpha=alpha)
+    def bcyl(name, x, y, z, dia, ln, color, axis):
+        return ov.ruby_cylinder(name, x - px, y - yc, z - pz, dia, ln, color=color, axis=axis)
+    # JUST THE FRAME (no ACM ghost) — the frame is the visible + clickable film plane.
+    P = [
+        bx("Film frame — top upstand", FCX_L, yperp, PZ1 - AT, W, AL, AT, C_FRAME),
+        bx("Film frame — top in-plane", FCX_L, yin, PZ1 - AL, W, AT, AL, C_FRAME),
+        bx("Film frame — bottom upstand", FCX_L, yperp, PZ0, W, AL, AT, C_FRAME),
+        bx("Film frame — bottom in-plane", FCX_L, yin, PZ0, W, AT, AL, C_FRAME),
+        bx("Film frame — left upstand", FCX_L, yperp, PZ0, AT, AL, PZ1 - PZ0, C_FRAME),
+        bx("Film frame — left in-plane", FCX_L, yin, PZ0, AL, AT, PZ1 - PZ0, C_FRAME),
+        bx("Film frame — right upstand", FCX_R - AT, yperp, PZ0, AT, AL, PZ1 - PZ0, C_FRAME),
+        bx("Film frame — right in-plane", FCX_R - AL, yin, PZ0, AL, AT, PZ1 - PZ0, C_FRAME),
+    ]
+    # FULL corner mechanism at each corner (SAME detail as the Movement scene) — skate + carriage plate +
+    # green Z / purple X cross-slides + U-joint + 304 corner plate; top corners get the guide drum + yoke.
+    # cx = rail line (X_L/X_R), zc = rail web-centre (PZ_HB_BOT/TOP). All ride WITH the plane.
+    Lz, Lx = 250, 260
+    for (cx, fcx, fz, zc, cin, isb) in ((X_L, FCX_L, PZ0, PZ_HB_BOT, +1, True), (X_R, FCX_R, PZ0, PZ_HB_BOT, -1, True),
+                                        (X_L, FCX_L, PZ1, PZ_HB_TOP, +1, False), (X_R, FCX_R, PZ1, PZ_HB_TOP, -1, False)):
+        t = f"({int(fcx)},{int(fz)})"
+        chan_w = CW_BOT if isb else CD_TOP
+        inb = cx + cin * (chan_w / 2 + 14)
+        rz = (zc - CD_BOT / 2 + HB_T + 16) if isb else (zc + CW_TOP / 2 - HB_T - 16)
+        gx0 = (inb - 3) if cin > 0 else (inb - 13)
+        cpx0c = (inb - 6) if cin > 0 else (inb - 8)
+        gz0 = (fz - 20) if isb else (fz + 20 - Lz)
+        px0 = (cx - 20) if cin > 0 else (cx + 20 - Lx)
+        if isb:  # BOTTOM — 2× Ø32 load rollers + carriage plate
+            for ry in (ty + 8, ty + 48):
+                P.append(bcyl(f"Acetal skate wheel Ø32 {t} {int(ry)}", cx - 8, ry, rz, 16, 16, C_CAR, "x"))
+            P.append(bx(f"Carriage plate {t}", cpx0c, ty + 1, fz - 6, 14, 86, (rz + 46) - (fz - 6), C_CAR))
+        else:    # TOP — wide guide drum + joined yoke up through the opening + carriage plate
+            yb = zc - CW_TOP / 2
+            zlo, zhi = min(fz, rz), max(fz, rz)
+            for ry in (ty + 8, ty + 48):
+                P.append(bcyl(f"Acetal guide wheel Ø32 {t} {int(ry)}", cx - 26, ry, rz, 16, 52, C_CAR, "x"))
+            for ax_x in (cx - 33, cx + 33):
+                P.append(bx(f"Yoke arm {t} {int(ax_x)}", ax_x - 2, ty - 34, yb - 14, 4, 68, rz - (yb - 14), C_CAR))
+            P.append(bx(f"Yoke cross-piece {t}", cx - 35, ty - 34, yb - 22, 70, 68, 8, C_CAR))
+            P.append(bx(f"Yoke rail {t}", min(cx + 33, inb), ty - 34, yb - 20, abs(inb - (cx + 33)) + 6, 68, 6, C_CAR))
+            P.append(bx(f"Carriage plate {t}", cpx0c, ty + 1, zlo - 6, 14, 86, (zhi + 18) - (zlo - 6), C_CAR))
+        # cross-slides (green Z way + purple X way) + U-joint + 304 corner plate
+        P.append(bx(f"Vertical Z cross-slide (green) {t}", gx0, ty + 1, gz0, 16, 18, Lz, C_TILT))
+        P.append(bx(f"Horizontal X cross-slide (purple) {t}", px0, ty + 1, fz - 4, Lx, 14, 14, C_SWING))
+        P.append(bx(f"U-joint (Ruland USKC12-6-6-SS) {t}", cx - 12, ty - 4, fz - 14, 24, 24, 24, C_CROSS))
+        # U-joint mounting hardware: input stub + 4040N12 shaft support + output stub + frame-corner bolt
+        stub_x0 = cx + 5 if cin > 0 else cx - 51
+        sup_x0 = cx + 26 if cin > 0 else cx - 49
+        P.append(bcyl(f"Input stub 3/8 {t}", stub_x0, ty + 8, fz, 4.75, 46, C_STEEL, "x"))
+        P.append(bx(f"4040N12 304 shaft support {t}", sup_x0, ty - 1, fz - 11, 23, 18, 22, C_STEEL))
+        P.append(bcyl(f"Output stub 3/8 {t}", cx, ty - 14, fz, 4.75, 20, C_STEEL, "y"))
+        P.append(bcyl(f"Frame-corner bolt {t}", fcx, ty - 6, fz, 3, 18, C_STEEL, "y"))
+        cpx0 = (cx - 14) if cin > 0 else (cx - 20)
+        cpz0 = (fz + 5) if isb else (fz - 45)
+        P.append(bx(f"304 SS corner plate {t}", cpx0, ty - 8, cpz0, 34, 16, 40, C_STEEL))
+    return "\n".join(P)
+
+
+def whole_plane_dc(mode):
+    """A single-click DC that rotates the WHOLE rigid plane about its centre (tilt = rotx / swing = rotz).
+    One clickable object per DC (the DC one-onclick rule), each on its own tag + scene so they never overlap.
+    The plane sits at the MIDDLE of the container depth (room to move); rotation about the plane CENTRE."""
+    rot_attr = "rotx" if mode == "Tilt" else "rotz"
+    rot_val = 15
+    cxr = (FCX_L + FCX_R) / 2.0
+    czr = (PZ0 + PZ1) / 2.0
+    yc = MID_Y
+    tag = f"Plane {mode}"
+    return f'''
+# ═══ Whole plane — {mode}: ONE click rotates the RIGID plane about its centre ({rot_attr}); all four
+# CORNER MECHANISMS ride with it (connected + moving). Sits at the container-depth MIDDLE. ═══
+plw{mode} = model.definitions.add("Whole plane {mode}")
+ents = plw{mode}.entities
+{plane_body(cxr, czr, yc)}
+plw{mode}_inst = entities.add_instance(plw{mode}, Geom::Transformation.translation([{ov.mm(cxr)}, {ov.mm(yc)}, {ov.mm(czr)}]))
+plw{mode}_inst.name = "Whole plane {mode}"
+plw{mode}_inst.layer = model.layers["{tag}"]
+da = "dynamic_attributes"
+# formula-driven rotation (like the corner demos) — a bare rotx + ANIMATE("rotx",..) does NOT drive the
+# transform, but a `move` 0->1 with a _{rot_attr}_formula does. Rotation is about the placement origin (centre).
+[plw{mode}, plw{mode}_inst].each do |e|
+  e.set_attribute(da, "_name", "WholePlane{mode}"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "move", 0.0); e.set_attribute(da, "{rot_attr}", 0.0)
+end
+plw{mode}_inst.set_attribute(da, "_move_access", "VIEW")
+plw{mode}_inst.set_attribute(da, "_move_label", "{mode}: click to {mode} the whole plane about its centre")
+plw{mode}_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1)')
+plw{mode}_inst.set_attribute(da, "_onclick_access", "NONE")
+plw{mode}_inst.set_attribute(da, "_{rot_attr}_formula", "move * {rot_val}")
+pltxt{mode} = entities.add_text("CLICK: {mode} the whole rigid plane about its centre ({rot_attr}) — the four corners move as one", Geom::Point3d.new({ov.mm(cxr)}, {ov.mm(yc + 300)}, {ov.mm(PZ1 + 150)}), Geom::Vector3d.new({ov.mm(300)}, {ov.mm(-300)}, {ov.mm(300)}))
+pltxt{mode}.layer = model.layers["{tag}"] rescue nil
 '''
 
 
@@ -510,7 +642,9 @@ def generate_ruby():
         ov.component("Film Plane", "Film Plane", film_plane()),
         ov.component("Pinhole", "Pinhole", pinhole()),
         ov.component("Context (walkway + IBC cantilever/beams)", "Context", context()),
-    ] + [ov.component(f"Movement base ({c} corner)", "Movement", mv[c][0]) for c in mv_corners]
+    ] + [ov.component(f"Movement base ({c} corner)", "Movement", mv[c][0]) for c in mv_corners] + [
+        ov.component("Container shell (no ceiling)", "Shell", shell()),
+    ]
     body = "\n".join(comps)
     tags_ruby = "\n".join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep = "[" + ", ".join(f'"{t}"' for t in TAGS) + "]"
@@ -524,8 +658,13 @@ def generate_ruby():
         ("Overview", show_ctx, (2400, FP_Y - 700, CH / 2, 9500)),
         ("Corner detail", show, (X_L, FP_Y, PZ0 + 30, 620)),
         ("Movement", ["Movement"], (mv_cx, FP_Y + 250, CH / 2, 4400)),
+        # Whole-plane tilt / swing — the clickable rigid plane (with all 4 corner mechanisms) at the
+        # container-depth MIDDLE, inside a ceiling-less shell.
+        ("Whole plane — tilt", ["Shell", "Plane Tilt"], (2400, MID_Y, CH / 2, 6800)),
+        ("Whole plane — swing", ["Shell", "Plane Swing"], (2400, MID_Y, CH / 2, 6800)),
     ]
     mv_dc = "".join(movement_dc(c, *mv[c][1:]) for c in mv_corners)
+    mv_dc += whole_plane_dc("Tilt") + whole_plane_dc("Swing")
 
     def scene_lit(n, tags, tgt):
         tg = "[" + ", ".join(f'"{t}"' for t in tags) + "]"

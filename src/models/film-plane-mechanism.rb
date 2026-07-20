@@ -4177,7 +4177,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-channel rail (Movement BR) web MoveBR
   grp = ents.add_group
   grp.name = "U-channel rail (Movement BR) web MoveBR"
-  face = grp.entities.add_face([2214.mm,2102.mm,232.mm], [2219.mm,2102.mm,232.mm], [2219.mm,3062.mm,232.mm], [2214.mm,3062.mm,232.mm])
+  face = grp.entities.add_face([2214.mm,1742.mm,232.mm], [2219.mm,1742.mm,232.mm], [2219.mm,3062.mm,232.mm], [2214.mm,3062.mm,232.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(76.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4188,7 +4188,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-channel rail (Movement BR) flange MoveBR 303
   grp = ents.add_group
   grp.name = "U-channel rail (Movement BR) flange MoveBR 303"
-  face = grp.entities.add_face([2181.mm,2102.mm,303.mm], [2219.mm,2102.mm,303.mm], [2219.mm,3062.mm,303.mm], [2181.mm,3062.mm,303.mm])
+  face = grp.entities.add_face([2181.mm,1742.mm,303.mm], [2219.mm,1742.mm,303.mm], [2219.mm,3062.mm,303.mm], [2181.mm,3062.mm,303.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4199,7 +4199,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-channel rail (Movement BR) flange MoveBR 232
   grp = ents.add_group
   grp.name = "U-channel rail (Movement BR) flange MoveBR 232"
-  face = grp.entities.add_face([2181.mm,2102.mm,232.mm], [2219.mm,2102.mm,232.mm], [2219.mm,3062.mm,232.mm], [2181.mm,3062.mm,232.mm])
+  face = grp.entities.add_face([2181.mm,1742.mm,232.mm], [2219.mm,1742.mm,232.mm], [2219.mm,3062.mm,232.mm], [2181.mm,3062.mm,232.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4210,7 +4210,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-channel rail (Movement BR) bottom-flange lip MoveBR
   grp = ents.add_group
   grp.name = "U-channel rail (Movement BR) bottom-flange lip MoveBR"
-  face = grp.entities.add_face([2181.mm,2102.mm,237.mm], [2186.mm,2102.mm,237.mm], [2186.mm,3062.mm,237.mm], [2181.mm,3062.mm,237.mm])
+  face = grp.entities.add_face([2181.mm,1742.mm,237.mm], [2186.mm,1742.mm,237.mm], [2186.mm,3062.mm,237.mm], [2181.mm,3062.mm,237.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(9.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4228,7 +4228,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-channel rail (Movement TR) web MoveTR
   grp = ents.add_group
   grp.name = "U-channel rail (Movement TR) web MoveTR"
-  face = grp.entities.add_face([2162.mm,2102.mm,2333.mm], [2238.mm,2102.mm,2333.mm], [2238.mm,3062.mm,2333.mm], [2162.mm,3062.mm,2333.mm])
+  face = grp.entities.add_face([2162.mm,1742.mm,2333.mm], [2238.mm,1742.mm,2333.mm], [2238.mm,3062.mm,2333.mm], [2162.mm,3062.mm,2333.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4239,7 +4239,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-channel rail (Movement TR) flange MoveTR 2162
   grp = ents.add_group
   grp.name = "U-channel rail (Movement TR) flange MoveTR 2162"
-  face = grp.entities.add_face([2162.mm,2102.mm,2300.mm], [2167.mm,2102.mm,2300.mm], [2167.mm,3062.mm,2300.mm], [2162.mm,3062.mm,2300.mm])
+  face = grp.entities.add_face([2162.mm,1742.mm,2300.mm], [2167.mm,1742.mm,2300.mm], [2167.mm,3062.mm,2300.mm], [2162.mm,3062.mm,2300.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4250,7 +4250,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-channel rail (Movement TR) flange MoveTR 2233
   grp = ents.add_group
   grp.name = "U-channel rail (Movement TR) flange MoveTR 2233"
-  face = grp.entities.add_face([2233.mm,2102.mm,2300.mm], [2238.mm,2102.mm,2300.mm], [2238.mm,3062.mm,2300.mm], [2233.mm,3062.mm,2300.mm])
+  face = grp.entities.add_face([2233.mm,1742.mm,2300.mm], [2238.mm,1742.mm,2300.mm], [2238.mm,3062.mm,2300.mm], [2233.mm,3062.mm,2300.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -5196,7 +5196,7 @@ da = "dynamic_attributes"
 end
 mvp_BR_inst.set_attribute(da, "_move_access", "VIEW")
 mvp_BR_inst.set_attribute(da, "_move_label", "BR: depth-roll drives the swing (purple X cross-slide absorbs foreshortening)")
-mvp_BR_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1)')
+mvp_BR_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1, -1)')
 mvp_BR_inst.set_attribute(da, "_onclick_access", "NONE")
 # carriage ROLLS along the depth rail (Y) — the DRIVER of swing (Sheet 3); one coordinated motion
 [mvo_BR, mvo_BR_inst].each do |e|
@@ -5209,14 +5209,14 @@ mvo_BR_inst.set_attribute(da, "_y_formula", "drive * 320")
   e.set_attribute(da, "_name", "FloatBR"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "x", 0.0)
 end
 mvfl_BR_inst.set_attribute(da, "_drive_formula", "CarriageBR!drive")
-mvfl_BR_inst.set_attribute(da, "_x_formula", "drive * -50")
+mvfl_BR_inst.set_attribute(da, "_x_formula", "ABS(drive) * -50")
 # panel swingS about the U-joint (rotx=tilt / rotz=swing) — the DOF the depth-roll produces
 [mvpan_BR, mvpan_BR_inst].each do |e|
   e.set_attribute(da, "_name", "PanelTiltBR"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "rotz", 0.0)
 end
 mvpan_BR_inst.set_attribute(da, "_drive_formula", "FloatBR!drive")
 mvpan_BR_inst.set_attribute(da, "_rotz_formula", "drive * 30")
-mvtxt_BR = entities.add_text("CLICK BR: depth-roll DRIVES the swing; the purple X cross-slide takes up the foreshortening", Geom::Point3d.new(1780.mm, 2762.mm, 680.mm), Geom::Vector3d.new(-300.mm, -400.mm, 300.mm))
+mvtxt_BR = entities.add_text("CLICK BR: 1st click swings toward the PINHOLE, 2nd toward the FAR WALL — the purple X slider foreshortens the SAME both ways", Geom::Point3d.new(1780.mm, 2762.mm, 680.mm), Geom::Vector3d.new(-300.mm, -400.mm, 300.mm))
 mvtxt_BR.layer = model.layers["Movement"] rescue nil
 
 # ═══ Movement — TR corner (Sheet 3 model): ONE click — the depth-rail ROLL drives the swing;
@@ -5472,7 +5472,7 @@ da = "dynamic_attributes"
 end
 mvp_TR_inst.set_attribute(da, "_move_access", "VIEW")
 mvp_TR_inst.set_attribute(da, "_move_label", "TR: depth-roll drives the swing (purple X cross-slide absorbs foreshortening)")
-mvp_TR_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1)')
+mvp_TR_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1, -1)')
 mvp_TR_inst.set_attribute(da, "_onclick_access", "NONE")
 # carriage ROLLS along the depth rail (Y) — the DRIVER of swing (Sheet 3); one coordinated motion
 [mvo_TR, mvo_TR_inst].each do |e|
@@ -5485,20 +5485,33 @@ mvo_TR_inst.set_attribute(da, "_y_formula", "drive * 320")
   e.set_attribute(da, "_name", "FloatTR"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "x", 0.0)
 end
 mvfl_TR_inst.set_attribute(da, "_drive_formula", "CarriageTR!drive")
-mvfl_TR_inst.set_attribute(da, "_x_formula", "drive * -50")
+mvfl_TR_inst.set_attribute(da, "_x_formula", "ABS(drive) * -50")
 # panel swingS about the U-joint (rotx=tilt / rotz=swing) — the DOF the depth-roll produces
 [mvpan_TR, mvpan_TR_inst].each do |e|
   e.set_attribute(da, "_name", "PanelTiltTR"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "rotz", 0.0)
 end
 mvpan_TR_inst.set_attribute(da, "_drive_formula", "FloatTR!drive")
 mvpan_TR_inst.set_attribute(da, "_rotz_formula", "drive * 30")
-mvtxt_TR = entities.add_text("CLICK TR: depth-roll DRIVES the swing; the purple X cross-slide takes up the foreshortening", Geom::Point3d.new(1780.mm, 2762.mm, 1770.mm), Geom::Vector3d.new(-300.mm, -400.mm, -300.mm))
+mvtxt_TR = entities.add_text("CLICK TR: 1st click swings toward the PINHOLE, 2nd toward the FAR WALL — the purple X slider foreshortens the SAME both ways", Geom::Point3d.new(1780.mm, 2762.mm, 1770.mm), Geom::Vector3d.new(-300.mm, -400.mm, -300.mm))
 mvtxt_TR.layer = model.layers["Movement"] rescue nil
 
-# ═══ Whole plane — Tilt: ONE click rotates the RIGID plane about its centre (rotx); all four
-# CORNER MECHANISMS ride with it (connected + moving). Sits at the container-depth MIDDLE. ═══
+# ═══ Whole plane — Tilt: FRAME rotates rotx about the centre; each CARRIAGE stays on its rail and
+# only ROLLS in Y (the cross-slide absorbs the perpendicular offset) — same rules as the Movement scene. ═══
 plwTilt = model.definitions.add("Whole plane Tilt")
-ents = plwTilt.entities
+da = "dynamic_attributes"
+frmTilt = model.definitions.add("Plane frame Tilt")
+ents = frmTilt.entities
+  # Film panel (near-invisible, clickable fill) — whole plane
+  grp = ents.add_group
+  grp.name = "Film panel (near-invisible, clickable fill) — whole plane"
+  face = grp.entities.add_face([-2204.mm,0.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [2204.mm,4.mm,-1065.mm], [-2204.mm,4.mm,-1065.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2130.mm)
+  mat = model.materials["Film panel (near-invisible, clickable fill) — whole plane"] || model.materials.add("Film panel (near-invisible, clickable fill) — whole plane")
+  mat.color = Sketchup::Color.new(31, 59, 102)
+  mat.alpha = 0.04
+  grp.material = mat
+
   # Film frame — top upstand
   grp = ents.add_group
   grp.name = "Film frame — top upstand"
@@ -5587,65 +5600,6 @@ ents = plwTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal skate wheel Ø32 (183,160) 1189
-  grp = ents.add_group
-  grp.name = "Acetal skate wheel Ø32 (183,160) 1189"
-  ge = grp.entities
-  circle = ge.add_circle([-2245.mm,8.mm,-972.mm], [1,0,0], 16.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Acetal skate wheel Ø32 (183,160) 1229
-  grp = ents.add_group
-  grp.name = "Acetal skate wheel Ø32 (183,160) 1229"
-  ge = grp.entities
-  circle = ge.add_circle([-2245.mm,48.mm,-972.mm], [1,0,0], 16.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Carriage plate (183,160)
-  grp = ents.add_group
-  grp.name = "Carriage plate (183,160)"
-  face = grp.entities.add_face([-2210.mm,1.mm,-1071.mm], [-2196.mm,1.mm,-1071.mm], [-2196.mm,87.mm,-1071.mm], [-2210.mm,87.mm,-1071.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(145.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Vertical Z cross-slide (green) (183,160)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide (green) (183,160)"
-  face = grp.entities.add_face([-2207.mm,1.mm,-1085.mm], [-2191.mm,1.mm,-1085.mm], [-2191.mm,19.mm,-1085.mm], [-2207.mm,19.mm,-1085.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(250.mm)
-  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
-  mat.color = Sketchup::Color.new(46, 139, 87)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Horizontal X cross-slide (purple) (183,160)
-  grp = ents.add_group
-  grp.name = "Horizontal X cross-slide (purple) (183,160)"
-  face = grp.entities.add_face([-2257.mm,1.mm,-1069.mm], [-1997.mm,1.mm,-1069.mm], [-1997.mm,15.mm,-1069.mm], [-2257.mm,15.mm,-1069.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
-  mat.color = Sketchup::Color.new(123, 94, 167)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # U-joint (Ruland USKC12-6-6-SS) (183,160)
   grp = ents.add_group
   grp.name = "U-joint (Ruland USKC12-6-6-SS) (183,160)"
@@ -5718,47 +5672,10 @@ ents = plwTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal skate wheel Ø32 (4591,160) 1189
+  # Vertical Z cross-slide way (green) (183,160)
   grp = ents.add_group
-  grp.name = "Acetal skate wheel Ø32 (4591,160) 1189"
-  ge = grp.entities
-  circle = ge.add_circle([2229.mm,8.mm,-972.mm], [1,0,0], 16.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Acetal skate wheel Ø32 (4591,160) 1229
-  grp = ents.add_group
-  grp.name = "Acetal skate wheel Ø32 (4591,160) 1229"
-  ge = grp.entities
-  circle = ge.add_circle([2229.mm,48.mm,-972.mm], [1,0,0], 16.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Carriage plate (4591,160)
-  grp = ents.add_group
-  grp.name = "Carriage plate (4591,160)"
-  face = grp.entities.add_face([2196.mm,1.mm,-1071.mm], [2210.mm,1.mm,-1071.mm], [2210.mm,87.mm,-1071.mm], [2196.mm,87.mm,-1071.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(145.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Vertical Z cross-slide (green) (4591,160)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide (green) (4591,160)"
-  face = grp.entities.add_face([2191.mm,1.mm,-1085.mm], [2207.mm,1.mm,-1085.mm], [2207.mm,19.mm,-1085.mm], [2191.mm,19.mm,-1085.mm])
+  grp.name = "Vertical Z cross-slide way (green) (183,160)"
+  face = grp.entities.add_face([-2207.mm,1.mm,-1085.mm], [-2191.mm,1.mm,-1085.mm], [-2191.mm,19.mm,-1085.mm], [-2207.mm,19.mm,-1085.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -5766,10 +5683,10 @@ ents = plwTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Horizontal X cross-slide (purple) (4591,160)
+  # Horizontal X cross-slide way (purple) (183,160)
   grp = ents.add_group
-  grp.name = "Horizontal X cross-slide (purple) (4591,160)"
-  face = grp.entities.add_face([1997.mm,1.mm,-1069.mm], [2257.mm,1.mm,-1069.mm], [2257.mm,15.mm,-1069.mm], [1997.mm,15.mm,-1069.mm])
+  grp.name = "Horizontal X cross-slide way (purple) (183,160)"
+  face = grp.entities.add_face([-2257.mm,1.mm,-1069.mm], [-1997.mm,1.mm,-1069.mm], [-1997.mm,15.mm,-1069.mm], [-2257.mm,15.mm,-1069.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -5849,91 +5766,10 @@ ents = plwTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (183,2290) 1189
+  # Vertical Z cross-slide way (green) (4591,160)
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (183,2290) 1189"
-  ge = grp.entities
-  circle = ge.add_circle([-2263.mm,8.mm,1092.mm], [1,0,0], 16.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Acetal guide wheel Ø32 (183,2290) 1229
-  grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (183,2290) 1229"
-  ge = grp.entities
-  circle = ge.add_circle([-2263.mm,48.mm,1092.mm], [1,0,0], 16.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke arm (183,2290) 117
-  grp = ents.add_group
-  grp.name = "Yoke arm (183,2290) 117"
-  face = grp.entities.add_face([-2272.mm,-34.mm,1061.mm], [-2268.mm,-34.mm,1061.mm], [-2268.mm,34.mm,1061.mm], [-2272.mm,34.mm,1061.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke arm (183,2290) 183
-  grp = ents.add_group
-  grp.name = "Yoke arm (183,2290) 183"
-  face = grp.entities.add_face([-2206.mm,-34.mm,1061.mm], [-2202.mm,-34.mm,1061.mm], [-2202.mm,34.mm,1061.mm], [-2206.mm,34.mm,1061.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke cross-piece (183,2290)
-  grp = ents.add_group
-  grp.name = "Yoke cross-piece (183,2290)"
-  face = grp.entities.add_face([-2272.mm,-34.mm,1053.mm], [-2202.mm,-34.mm,1053.mm], [-2202.mm,34.mm,1053.mm], [-2272.mm,34.mm,1053.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke rail (183,2290)
-  grp = ents.add_group
-  grp.name = "Yoke rail (183,2290)"
-  face = grp.entities.add_face([-2204.mm,-34.mm,1055.mm], [-2179.mm,-34.mm,1055.mm], [-2179.mm,34.mm,1055.mm], [-2204.mm,34.mm,1055.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Carriage plate (183,2290)
-  grp = ents.add_group
-  grp.name = "Carriage plate (183,2290)"
-  face = grp.entities.add_face([-2191.mm,1.mm,1059.mm], [-2177.mm,1.mm,1059.mm], [-2177.mm,87.mm,1059.mm], [-2191.mm,87.mm,1059.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(51.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Vertical Z cross-slide (green) (183,2290)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide (green) (183,2290)"
-  face = grp.entities.add_face([-2188.mm,1.mm,835.mm], [-2172.mm,1.mm,835.mm], [-2172.mm,19.mm,835.mm], [-2188.mm,19.mm,835.mm])
+  grp.name = "Vertical Z cross-slide way (green) (4591,160)"
+  face = grp.entities.add_face([2191.mm,1.mm,-1085.mm], [2207.mm,1.mm,-1085.mm], [2207.mm,19.mm,-1085.mm], [2191.mm,19.mm,-1085.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -5941,10 +5777,10 @@ ents = plwTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Horizontal X cross-slide (purple) (183,2290)
+  # Horizontal X cross-slide way (purple) (4591,160)
   grp = ents.add_group
-  grp.name = "Horizontal X cross-slide (purple) (183,2290)"
-  face = grp.entities.add_face([-2257.mm,1.mm,1061.mm], [-1997.mm,1.mm,1061.mm], [-1997.mm,15.mm,1061.mm], [-2257.mm,15.mm,1061.mm])
+  grp.name = "Horizontal X cross-slide way (purple) (4591,160)"
+  face = grp.entities.add_face([1997.mm,1.mm,-1069.mm], [2257.mm,1.mm,-1069.mm], [2257.mm,15.mm,-1069.mm], [1997.mm,15.mm,-1069.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -6024,91 +5860,10 @@ ents = plwTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (4591,2290) 1189
+  # Vertical Z cross-slide way (green) (183,2290)
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (4591,2290) 1189"
-  ge = grp.entities
-  circle = ge.add_circle([2211.mm,8.mm,1092.mm], [1,0,0], 16.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Acetal guide wheel Ø32 (4591,2290) 1229
-  grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (4591,2290) 1229"
-  ge = grp.entities
-  circle = ge.add_circle([2211.mm,48.mm,1092.mm], [1,0,0], 16.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke arm (4591,2290) 4591
-  grp = ents.add_group
-  grp.name = "Yoke arm (4591,2290) 4591"
-  face = grp.entities.add_face([2202.mm,-34.mm,1061.mm], [2206.mm,-34.mm,1061.mm], [2206.mm,34.mm,1061.mm], [2202.mm,34.mm,1061.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke arm (4591,2290) 4657
-  grp = ents.add_group
-  grp.name = "Yoke arm (4591,2290) 4657"
-  face = grp.entities.add_face([2268.mm,-34.mm,1061.mm], [2272.mm,-34.mm,1061.mm], [2272.mm,34.mm,1061.mm], [2268.mm,34.mm,1061.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke cross-piece (4591,2290)
-  grp = ents.add_group
-  grp.name = "Yoke cross-piece (4591,2290)"
-  face = grp.entities.add_face([2202.mm,-34.mm,1053.mm], [2272.mm,-34.mm,1053.mm], [2272.mm,34.mm,1053.mm], [2202.mm,34.mm,1053.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke rail (4591,2290)
-  grp = ents.add_group
-  grp.name = "Yoke rail (4591,2290)"
-  face = grp.entities.add_face([2185.mm,-34.mm,1055.mm], [2276.mm,-34.mm,1055.mm], [2276.mm,34.mm,1055.mm], [2185.mm,34.mm,1055.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Carriage plate (4591,2290)
-  grp = ents.add_group
-  grp.name = "Carriage plate (4591,2290)"
-  face = grp.entities.add_face([2177.mm,1.mm,1059.mm], [2191.mm,1.mm,1059.mm], [2191.mm,87.mm,1059.mm], [2177.mm,87.mm,1059.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(51.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Vertical Z cross-slide (green) (4591,2290)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide (green) (4591,2290)"
-  face = grp.entities.add_face([2172.mm,1.mm,835.mm], [2188.mm,1.mm,835.mm], [2188.mm,19.mm,835.mm], [2172.mm,19.mm,835.mm])
+  grp.name = "Vertical Z cross-slide way (green) (183,2290)"
+  face = grp.entities.add_face([-2188.mm,1.mm,835.mm], [-2172.mm,1.mm,835.mm], [-2172.mm,19.mm,835.mm], [-2188.mm,19.mm,835.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -6116,10 +5871,10 @@ ents = plwTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Horizontal X cross-slide (purple) (4591,2290)
+  # Horizontal X cross-slide way (purple) (183,2290)
   grp = ents.add_group
-  grp.name = "Horizontal X cross-slide (purple) (4591,2290)"
-  face = grp.entities.add_face([1997.mm,1.mm,1061.mm], [2257.mm,1.mm,1061.mm], [2257.mm,15.mm,1061.mm], [1997.mm,15.mm,1061.mm])
+  grp.name = "Horizontal X cross-slide way (purple) (183,2290)"
+  face = grp.entities.add_face([-2257.mm,1.mm,1061.mm], [-1997.mm,1.mm,1061.mm], [-1997.mm,15.mm,1061.mm], [-2257.mm,15.mm,1061.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -6199,27 +5954,326 @@ ents = plwTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-plwTilt_inst = entities.add_instance(plwTilt, Geom::Transformation.translation([2387.mm, 1181.mm, 1225.mm]))
-plwTilt_inst.name = "Whole plane Tilt"
-plwTilt_inst.layer = model.layers["Plane Tilt"]
-da = "dynamic_attributes"
-# formula-driven rotation (like the corner demos) — a bare rotx + ANIMATE("rotx",..) does NOT drive the
-# transform, but a `move` 0->1 with a _rotx_formula does. Rotation is about the placement origin (centre).
+  # Vertical Z cross-slide way (green) (4591,2290)
+  grp = ents.add_group
+  grp.name = "Vertical Z cross-slide way (green) (4591,2290)"
+  face = grp.entities.add_face([2172.mm,1.mm,835.mm], [2188.mm,1.mm,835.mm], [2188.mm,19.mm,835.mm], [2172.mm,19.mm,835.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X cross-slide way (purple) (4591,2290)
+  grp = ents.add_group
+  grp.name = "Horizontal X cross-slide way (purple) (4591,2290)"
+  face = grp.entities.add_face([1997.mm,1.mm,1061.mm], [2257.mm,1.mm,1061.mm], [2257.mm,15.mm,1061.mm], [1997.mm,15.mm,1061.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
+frmTilt_inst = plwTilt.entities.add_instance(frmTilt, Geom::Transformation.translation([2387.mm, 1181.mm, 1225.mm]))
+frmTilt_inst.name = "Plane frame Tilt"; frmTilt_inst.layer = model.layers["Plane Tilt"]
+[frmTilt, frmTilt_inst].each { |e| e.set_attribute(da, "_name", "PlaneFrameTilt"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "rotx", 0.0) }
+frmTilt_inst.set_attribute(da, "_rotx_formula", "WholePlaneTilt!move * 15")
+
+carTilt0 = model.definitions.add("Plane carriage Tilt 0")
+ents = carTilt0.entities
+  # Acetal skate wheel Ø32 (150,160) 1189
+  grp = ents.add_group
+  grp.name = "Acetal skate wheel Ø32 (150,160) 1189"
+  ge = grp.entities
+  circle = ge.add_circle([142.mm,1189.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal skate wheel Ø32 (150,160) 1229
+  grp = ents.add_group
+  grp.name = "Acetal skate wheel Ø32 (150,160) 1229"
+  ge = grp.entities
+  circle = ge.add_circle([142.mm,1229.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (150,160)
+  grp = ents.add_group
+  grp.name = "Carriage plate (150,160)"
+  face = grp.entities.add_face([177.mm,1182.mm,154.mm], [191.mm,1182.mm,154.mm], [191.mm,1268.mm,154.mm], [177.mm,1268.mm,154.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(145.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+carTilt0_inst = plwTilt.entities.add_instance(carTilt0, Geom::Transformation.new)
+carTilt0_inst.name = "Plane carriage Tilt 0"; carTilt0_inst.layer = model.layers["Plane Tilt"]
+[carTilt0, carTilt0_inst].each { |e| e.set_attribute(da, "_name", "PlaneCarTilt0"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "y", 0.0) }
+carTilt0_inst.set_attribute(da, "_y_formula", "WholePlaneTilt!move * 275.64")
+
+carTilt1 = model.definitions.add("Plane carriage Tilt 1")
+ents = carTilt1.entities
+  # Acetal skate wheel Ø32 (4624,160) 1189
+  grp = ents.add_group
+  grp.name = "Acetal skate wheel Ø32 (4624,160) 1189"
+  ge = grp.entities
+  circle = ge.add_circle([4616.mm,1189.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal skate wheel Ø32 (4624,160) 1229
+  grp = ents.add_group
+  grp.name = "Acetal skate wheel Ø32 (4624,160) 1229"
+  ge = grp.entities
+  circle = ge.add_circle([4616.mm,1229.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (4624,160)
+  grp = ents.add_group
+  grp.name = "Carriage plate (4624,160)"
+  face = grp.entities.add_face([4583.mm,1182.mm,154.mm], [4597.mm,1182.mm,154.mm], [4597.mm,1268.mm,154.mm], [4583.mm,1268.mm,154.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(145.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+carTilt1_inst = plwTilt.entities.add_instance(carTilt1, Geom::Transformation.new)
+carTilt1_inst.name = "Plane carriage Tilt 1"; carTilt1_inst.layer = model.layers["Plane Tilt"]
+[carTilt1, carTilt1_inst].each { |e| e.set_attribute(da, "_name", "PlaneCarTilt1"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "y", 0.0) }
+carTilt1_inst.set_attribute(da, "_y_formula", "WholePlaneTilt!move * 275.64")
+
+carTilt2 = model.definitions.add("Plane carriage Tilt 2")
+ents = carTilt2.entities
+  # Acetal guide wheel Ø32 (150,2290) 1189
+  grp = ents.add_group
+  grp.name = "Acetal guide wheel Ø32 (150,2290) 1189"
+  ge = grp.entities
+  circle = ge.add_circle([124.mm,1189.mm,2317.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal guide wheel Ø32 (150,2290) 1229
+  grp = ents.add_group
+  grp.name = "Acetal guide wheel Ø32 (150,2290) 1229"
+  ge = grp.entities
+  circle = ge.add_circle([124.mm,1229.mm,2317.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke arm (150,2290) 117
+  grp = ents.add_group
+  grp.name = "Yoke arm (150,2290) 117"
+  face = grp.entities.add_face([115.mm,1147.mm,2286.mm], [119.mm,1147.mm,2286.mm], [119.mm,1215.mm,2286.mm], [115.mm,1215.mm,2286.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(31.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke arm (150,2290) 183
+  grp = ents.add_group
+  grp.name = "Yoke arm (150,2290) 183"
+  face = grp.entities.add_face([181.mm,1147.mm,2286.mm], [185.mm,1147.mm,2286.mm], [185.mm,1215.mm,2286.mm], [181.mm,1215.mm,2286.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(31.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke cross-piece (150,2290)
+  grp = ents.add_group
+  grp.name = "Yoke cross-piece (150,2290)"
+  face = grp.entities.add_face([115.mm,1147.mm,2278.mm], [185.mm,1147.mm,2278.mm], [185.mm,1215.mm,2278.mm], [115.mm,1215.mm,2278.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke rail (150,2290)
+  grp = ents.add_group
+  grp.name = "Yoke rail (150,2290)"
+  face = grp.entities.add_face([183.mm,1147.mm,2280.mm], [208.mm,1147.mm,2280.mm], [208.mm,1215.mm,2280.mm], [183.mm,1215.mm,2280.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (150,2290)
+  grp = ents.add_group
+  grp.name = "Carriage plate (150,2290)"
+  face = grp.entities.add_face([196.mm,1182.mm,2284.mm], [210.mm,1182.mm,2284.mm], [210.mm,1268.mm,2284.mm], [196.mm,1268.mm,2284.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(51.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+carTilt2_inst = plwTilt.entities.add_instance(carTilt2, Geom::Transformation.new)
+carTilt2_inst.name = "Plane carriage Tilt 2"; carTilt2_inst.layer = model.layers["Plane Tilt"]
+[carTilt2, carTilt2_inst].each { |e| e.set_attribute(da, "_name", "PlaneCarTilt2"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "y", 0.0) }
+carTilt2_inst.set_attribute(da, "_y_formula", "WholePlaneTilt!move * -275.64")
+
+carTilt3 = model.definitions.add("Plane carriage Tilt 3")
+ents = carTilt3.entities
+  # Acetal guide wheel Ø32 (4624,2290) 1189
+  grp = ents.add_group
+  grp.name = "Acetal guide wheel Ø32 (4624,2290) 1189"
+  ge = grp.entities
+  circle = ge.add_circle([4598.mm,1189.mm,2317.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal guide wheel Ø32 (4624,2290) 1229
+  grp = ents.add_group
+  grp.name = "Acetal guide wheel Ø32 (4624,2290) 1229"
+  ge = grp.entities
+  circle = ge.add_circle([4598.mm,1229.mm,2317.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke arm (4624,2290) 4591
+  grp = ents.add_group
+  grp.name = "Yoke arm (4624,2290) 4591"
+  face = grp.entities.add_face([4589.mm,1147.mm,2286.mm], [4593.mm,1147.mm,2286.mm], [4593.mm,1215.mm,2286.mm], [4589.mm,1215.mm,2286.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(31.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke arm (4624,2290) 4657
+  grp = ents.add_group
+  grp.name = "Yoke arm (4624,2290) 4657"
+  face = grp.entities.add_face([4655.mm,1147.mm,2286.mm], [4659.mm,1147.mm,2286.mm], [4659.mm,1215.mm,2286.mm], [4655.mm,1215.mm,2286.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(31.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke cross-piece (4624,2290)
+  grp = ents.add_group
+  grp.name = "Yoke cross-piece (4624,2290)"
+  face = grp.entities.add_face([4589.mm,1147.mm,2278.mm], [4659.mm,1147.mm,2278.mm], [4659.mm,1215.mm,2278.mm], [4589.mm,1215.mm,2278.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke rail (4624,2290)
+  grp = ents.add_group
+  grp.name = "Yoke rail (4624,2290)"
+  face = grp.entities.add_face([4572.mm,1147.mm,2280.mm], [4663.mm,1147.mm,2280.mm], [4663.mm,1215.mm,2280.mm], [4572.mm,1215.mm,2280.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (4624,2290)
+  grp = ents.add_group
+  grp.name = "Carriage plate (4624,2290)"
+  face = grp.entities.add_face([4564.mm,1182.mm,2284.mm], [4578.mm,1182.mm,2284.mm], [4578.mm,1268.mm,2284.mm], [4564.mm,1268.mm,2284.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(51.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+carTilt3_inst = plwTilt.entities.add_instance(carTilt3, Geom::Transformation.new)
+carTilt3_inst.name = "Plane carriage Tilt 3"; carTilt3_inst.layer = model.layers["Plane Tilt"]
+[carTilt3, carTilt3_inst].each { |e| e.set_attribute(da, "_name", "PlaneCarTilt3"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "y", 0.0) }
+carTilt3_inst.set_attribute(da, "_y_formula", "WholePlaneTilt!move * -275.64")
+
+plwTilt_inst = entities.add_instance(plwTilt, Geom::Transformation.new)
+plwTilt_inst.name = "Whole plane Tilt"; plwTilt_inst.layer = model.layers["Plane Tilt"]
 [plwTilt, plwTilt_inst].each do |e|
-  e.set_attribute(da, "_name", "WholePlaneTilt"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "move", 0.0); e.set_attribute(da, "rotx", 0.0)
+  e.set_attribute(da, "_name", "WholePlaneTilt"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "move", 0.0)
 end
 plwTilt_inst.set_attribute(da, "_move_access", "VIEW")
-plwTilt_inst.set_attribute(da, "_move_label", "Tilt: click to Tilt the whole plane about its centre")
+plwTilt_inst.set_attribute(da, "_move_label", "Tilt: click — frame rotxs, carriages roll on the rails")
 plwTilt_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1)')
 plwTilt_inst.set_attribute(da, "_onclick_access", "NONE")
-plwTilt_inst.set_attribute(da, "_rotx_formula", "move * 15")
-pltxtTilt = entities.add_text("CLICK: Tilt the whole rigid plane about its centre (rotx) — the four corners move as one", Geom::Point3d.new(2387.mm, 1481.mm, 2440.mm), Geom::Vector3d.new(300.mm, -300.mm, 300.mm))
+pltxtTilt = entities.add_text("CLICK: Tilt — the frame rotxs; each carriage stays on its rail and rolls in Y", Geom::Point3d.new(2387.mm, 1481.mm, 2440.mm), Geom::Vector3d.new(300.mm, -300.mm, 300.mm))
 pltxtTilt.layer = model.layers["Plane Tilt"] rescue nil
 
-# ═══ Whole plane — Swing: ONE click rotates the RIGID plane about its centre (rotz); all four
-# CORNER MECHANISMS ride with it (connected + moving). Sits at the container-depth MIDDLE. ═══
+# ═══ Whole plane — Swing: FRAME rotates rotz about the centre; each CARRIAGE stays on its rail and
+# only ROLLS in Y (the cross-slide absorbs the perpendicular offset) — same rules as the Movement scene. ═══
 plwSwing = model.definitions.add("Whole plane Swing")
-ents = plwSwing.entities
+da = "dynamic_attributes"
+frmSwing = model.definitions.add("Plane frame Swing")
+ents = frmSwing.entities
+  # Film panel (near-invisible, clickable fill) — whole plane
+  grp = ents.add_group
+  grp.name = "Film panel (near-invisible, clickable fill) — whole plane"
+  face = grp.entities.add_face([-2204.mm,0.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [2204.mm,4.mm,-1065.mm], [-2204.mm,4.mm,-1065.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2130.mm)
+  mat = model.materials["Film panel (near-invisible, clickable fill) — whole plane"] || model.materials.add("Film panel (near-invisible, clickable fill) — whole plane")
+  mat.color = Sketchup::Color.new(31, 59, 102)
+  mat.alpha = 0.04
+  grp.material = mat
+
   # Film frame — top upstand
   grp = ents.add_group
   grp.name = "Film frame — top upstand"
@@ -6308,65 +6362,6 @@ ents = plwSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal skate wheel Ø32 (183,160) 1189
-  grp = ents.add_group
-  grp.name = "Acetal skate wheel Ø32 (183,160) 1189"
-  ge = grp.entities
-  circle = ge.add_circle([-2245.mm,8.mm,-972.mm], [1,0,0], 16.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Acetal skate wheel Ø32 (183,160) 1229
-  grp = ents.add_group
-  grp.name = "Acetal skate wheel Ø32 (183,160) 1229"
-  ge = grp.entities
-  circle = ge.add_circle([-2245.mm,48.mm,-972.mm], [1,0,0], 16.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Carriage plate (183,160)
-  grp = ents.add_group
-  grp.name = "Carriage plate (183,160)"
-  face = grp.entities.add_face([-2210.mm,1.mm,-1071.mm], [-2196.mm,1.mm,-1071.mm], [-2196.mm,87.mm,-1071.mm], [-2210.mm,87.mm,-1071.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(145.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Vertical Z cross-slide (green) (183,160)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide (green) (183,160)"
-  face = grp.entities.add_face([-2207.mm,1.mm,-1085.mm], [-2191.mm,1.mm,-1085.mm], [-2191.mm,19.mm,-1085.mm], [-2207.mm,19.mm,-1085.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(250.mm)
-  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
-  mat.color = Sketchup::Color.new(46, 139, 87)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Horizontal X cross-slide (purple) (183,160)
-  grp = ents.add_group
-  grp.name = "Horizontal X cross-slide (purple) (183,160)"
-  face = grp.entities.add_face([-2257.mm,1.mm,-1069.mm], [-1997.mm,1.mm,-1069.mm], [-1997.mm,15.mm,-1069.mm], [-2257.mm,15.mm,-1069.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
-  mat.color = Sketchup::Color.new(123, 94, 167)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # U-joint (Ruland USKC12-6-6-SS) (183,160)
   grp = ents.add_group
   grp.name = "U-joint (Ruland USKC12-6-6-SS) (183,160)"
@@ -6439,47 +6434,10 @@ ents = plwSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal skate wheel Ø32 (4591,160) 1189
+  # Vertical Z cross-slide way (green) (183,160)
   grp = ents.add_group
-  grp.name = "Acetal skate wheel Ø32 (4591,160) 1189"
-  ge = grp.entities
-  circle = ge.add_circle([2229.mm,8.mm,-972.mm], [1,0,0], 16.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Acetal skate wheel Ø32 (4591,160) 1229
-  grp = ents.add_group
-  grp.name = "Acetal skate wheel Ø32 (4591,160) 1229"
-  ge = grp.entities
-  circle = ge.add_circle([2229.mm,48.mm,-972.mm], [1,0,0], 16.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Carriage plate (4591,160)
-  grp = ents.add_group
-  grp.name = "Carriage plate (4591,160)"
-  face = grp.entities.add_face([2196.mm,1.mm,-1071.mm], [2210.mm,1.mm,-1071.mm], [2210.mm,87.mm,-1071.mm], [2196.mm,87.mm,-1071.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(145.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Vertical Z cross-slide (green) (4591,160)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide (green) (4591,160)"
-  face = grp.entities.add_face([2191.mm,1.mm,-1085.mm], [2207.mm,1.mm,-1085.mm], [2207.mm,19.mm,-1085.mm], [2191.mm,19.mm,-1085.mm])
+  grp.name = "Vertical Z cross-slide way (green) (183,160)"
+  face = grp.entities.add_face([-2207.mm,1.mm,-1085.mm], [-2191.mm,1.mm,-1085.mm], [-2191.mm,19.mm,-1085.mm], [-2207.mm,19.mm,-1085.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -6487,10 +6445,10 @@ ents = plwSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Horizontal X cross-slide (purple) (4591,160)
+  # Horizontal X cross-slide way (purple) (183,160)
   grp = ents.add_group
-  grp.name = "Horizontal X cross-slide (purple) (4591,160)"
-  face = grp.entities.add_face([1997.mm,1.mm,-1069.mm], [2257.mm,1.mm,-1069.mm], [2257.mm,15.mm,-1069.mm], [1997.mm,15.mm,-1069.mm])
+  grp.name = "Horizontal X cross-slide way (purple) (183,160)"
+  face = grp.entities.add_face([-2257.mm,1.mm,-1069.mm], [-1997.mm,1.mm,-1069.mm], [-1997.mm,15.mm,-1069.mm], [-2257.mm,15.mm,-1069.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -6570,91 +6528,10 @@ ents = plwSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (183,2290) 1189
+  # Vertical Z cross-slide way (green) (4591,160)
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (183,2290) 1189"
-  ge = grp.entities
-  circle = ge.add_circle([-2263.mm,8.mm,1092.mm], [1,0,0], 16.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Acetal guide wheel Ø32 (183,2290) 1229
-  grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (183,2290) 1229"
-  ge = grp.entities
-  circle = ge.add_circle([-2263.mm,48.mm,1092.mm], [1,0,0], 16.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke arm (183,2290) 117
-  grp = ents.add_group
-  grp.name = "Yoke arm (183,2290) 117"
-  face = grp.entities.add_face([-2272.mm,-34.mm,1061.mm], [-2268.mm,-34.mm,1061.mm], [-2268.mm,34.mm,1061.mm], [-2272.mm,34.mm,1061.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke arm (183,2290) 183
-  grp = ents.add_group
-  grp.name = "Yoke arm (183,2290) 183"
-  face = grp.entities.add_face([-2206.mm,-34.mm,1061.mm], [-2202.mm,-34.mm,1061.mm], [-2202.mm,34.mm,1061.mm], [-2206.mm,34.mm,1061.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke cross-piece (183,2290)
-  grp = ents.add_group
-  grp.name = "Yoke cross-piece (183,2290)"
-  face = grp.entities.add_face([-2272.mm,-34.mm,1053.mm], [-2202.mm,-34.mm,1053.mm], [-2202.mm,34.mm,1053.mm], [-2272.mm,34.mm,1053.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke rail (183,2290)
-  grp = ents.add_group
-  grp.name = "Yoke rail (183,2290)"
-  face = grp.entities.add_face([-2204.mm,-34.mm,1055.mm], [-2179.mm,-34.mm,1055.mm], [-2179.mm,34.mm,1055.mm], [-2204.mm,34.mm,1055.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Carriage plate (183,2290)
-  grp = ents.add_group
-  grp.name = "Carriage plate (183,2290)"
-  face = grp.entities.add_face([-2191.mm,1.mm,1059.mm], [-2177.mm,1.mm,1059.mm], [-2177.mm,87.mm,1059.mm], [-2191.mm,87.mm,1059.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(51.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Vertical Z cross-slide (green) (183,2290)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide (green) (183,2290)"
-  face = grp.entities.add_face([-2188.mm,1.mm,835.mm], [-2172.mm,1.mm,835.mm], [-2172.mm,19.mm,835.mm], [-2188.mm,19.mm,835.mm])
+  grp.name = "Vertical Z cross-slide way (green) (4591,160)"
+  face = grp.entities.add_face([2191.mm,1.mm,-1085.mm], [2207.mm,1.mm,-1085.mm], [2207.mm,19.mm,-1085.mm], [2191.mm,19.mm,-1085.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -6662,10 +6539,10 @@ ents = plwSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Horizontal X cross-slide (purple) (183,2290)
+  # Horizontal X cross-slide way (purple) (4591,160)
   grp = ents.add_group
-  grp.name = "Horizontal X cross-slide (purple) (183,2290)"
-  face = grp.entities.add_face([-2257.mm,1.mm,1061.mm], [-1997.mm,1.mm,1061.mm], [-1997.mm,15.mm,1061.mm], [-2257.mm,15.mm,1061.mm])
+  grp.name = "Horizontal X cross-slide way (purple) (4591,160)"
+  face = grp.entities.add_face([1997.mm,1.mm,-1069.mm], [2257.mm,1.mm,-1069.mm], [2257.mm,15.mm,-1069.mm], [1997.mm,15.mm,-1069.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -6745,91 +6622,10 @@ ents = plwSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (4591,2290) 1189
+  # Vertical Z cross-slide way (green) (183,2290)
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (4591,2290) 1189"
-  ge = grp.entities
-  circle = ge.add_circle([2211.mm,8.mm,1092.mm], [1,0,0], 16.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Acetal guide wheel Ø32 (4591,2290) 1229
-  grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (4591,2290) 1229"
-  ge = grp.entities
-  circle = ge.add_circle([2211.mm,48.mm,1092.mm], [1,0,0], 16.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke arm (4591,2290) 4591
-  grp = ents.add_group
-  grp.name = "Yoke arm (4591,2290) 4591"
-  face = grp.entities.add_face([2202.mm,-34.mm,1061.mm], [2206.mm,-34.mm,1061.mm], [2206.mm,34.mm,1061.mm], [2202.mm,34.mm,1061.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke arm (4591,2290) 4657
-  grp = ents.add_group
-  grp.name = "Yoke arm (4591,2290) 4657"
-  face = grp.entities.add_face([2268.mm,-34.mm,1061.mm], [2272.mm,-34.mm,1061.mm], [2272.mm,34.mm,1061.mm], [2268.mm,34.mm,1061.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke cross-piece (4591,2290)
-  grp = ents.add_group
-  grp.name = "Yoke cross-piece (4591,2290)"
-  face = grp.entities.add_face([2202.mm,-34.mm,1053.mm], [2272.mm,-34.mm,1053.mm], [2272.mm,34.mm,1053.mm], [2202.mm,34.mm,1053.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke rail (4591,2290)
-  grp = ents.add_group
-  grp.name = "Yoke rail (4591,2290)"
-  face = grp.entities.add_face([2185.mm,-34.mm,1055.mm], [2276.mm,-34.mm,1055.mm], [2276.mm,34.mm,1055.mm], [2185.mm,34.mm,1055.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Carriage plate (4591,2290)
-  grp = ents.add_group
-  grp.name = "Carriage plate (4591,2290)"
-  face = grp.entities.add_face([2177.mm,1.mm,1059.mm], [2191.mm,1.mm,1059.mm], [2191.mm,87.mm,1059.mm], [2177.mm,87.mm,1059.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(51.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Vertical Z cross-slide (green) (4591,2290)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide (green) (4591,2290)"
-  face = grp.entities.add_face([2172.mm,1.mm,835.mm], [2188.mm,1.mm,835.mm], [2188.mm,19.mm,835.mm], [2172.mm,19.mm,835.mm])
+  grp.name = "Vertical Z cross-slide way (green) (183,2290)"
+  face = grp.entities.add_face([-2188.mm,1.mm,835.mm], [-2172.mm,1.mm,835.mm], [-2172.mm,19.mm,835.mm], [-2188.mm,19.mm,835.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -6837,10 +6633,10 @@ ents = plwSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Horizontal X cross-slide (purple) (4591,2290)
+  # Horizontal X cross-slide way (purple) (183,2290)
   grp = ents.add_group
-  grp.name = "Horizontal X cross-slide (purple) (4591,2290)"
-  face = grp.entities.add_face([1997.mm,1.mm,1061.mm], [2257.mm,1.mm,1061.mm], [2257.mm,15.mm,1061.mm], [1997.mm,15.mm,1061.mm])
+  grp.name = "Horizontal X cross-slide way (purple) (183,2290)"
+  face = grp.entities.add_face([-2257.mm,1.mm,1061.mm], [-1997.mm,1.mm,1061.mm], [-1997.mm,15.mm,1061.mm], [-2257.mm,15.mm,1061.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -6920,21 +6716,307 @@ ents = plwSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-plwSwing_inst = entities.add_instance(plwSwing, Geom::Transformation.translation([2387.mm, 1181.mm, 1225.mm]))
-plwSwing_inst.name = "Whole plane Swing"
-plwSwing_inst.layer = model.layers["Plane Swing"]
-da = "dynamic_attributes"
-# formula-driven rotation (like the corner demos) — a bare rotx + ANIMATE("rotx",..) does NOT drive the
-# transform, but a `move` 0->1 with a _rotz_formula does. Rotation is about the placement origin (centre).
+  # Vertical Z cross-slide way (green) (4591,2290)
+  grp = ents.add_group
+  grp.name = "Vertical Z cross-slide way (green) (4591,2290)"
+  face = grp.entities.add_face([2172.mm,1.mm,835.mm], [2188.mm,1.mm,835.mm], [2188.mm,19.mm,835.mm], [2172.mm,19.mm,835.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X cross-slide way (purple) (4591,2290)
+  grp = ents.add_group
+  grp.name = "Horizontal X cross-slide way (purple) (4591,2290)"
+  face = grp.entities.add_face([1997.mm,1.mm,1061.mm], [2257.mm,1.mm,1061.mm], [2257.mm,15.mm,1061.mm], [1997.mm,15.mm,1061.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
+frmSwing_inst = plwSwing.entities.add_instance(frmSwing, Geom::Transformation.translation([2387.mm, 1181.mm, 1225.mm]))
+frmSwing_inst.name = "Plane frame Swing"; frmSwing_inst.layer = model.layers["Plane Swing"]
+[frmSwing, frmSwing_inst].each { |e| e.set_attribute(da, "_name", "PlaneFrameSwing"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "rotz", 0.0) }
+frmSwing_inst.set_attribute(da, "_rotz_formula", "WholePlaneSwing!move * 15")
+
+carSwing0 = model.definitions.add("Plane carriage Swing 0")
+ents = carSwing0.entities
+  # Acetal skate wheel Ø32 (150,160) 1189
+  grp = ents.add_group
+  grp.name = "Acetal skate wheel Ø32 (150,160) 1189"
+  ge = grp.entities
+  circle = ge.add_circle([142.mm,1189.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal skate wheel Ø32 (150,160) 1229
+  grp = ents.add_group
+  grp.name = "Acetal skate wheel Ø32 (150,160) 1229"
+  ge = grp.entities
+  circle = ge.add_circle([142.mm,1229.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (150,160)
+  grp = ents.add_group
+  grp.name = "Carriage plate (150,160)"
+  face = grp.entities.add_face([177.mm,1182.mm,154.mm], [191.mm,1182.mm,154.mm], [191.mm,1268.mm,154.mm], [177.mm,1268.mm,154.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(145.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+carSwing0_inst = plwSwing.entities.add_instance(carSwing0, Geom::Transformation.new)
+carSwing0_inst.name = "Plane carriage Swing 0"; carSwing0_inst.layer = model.layers["Plane Swing"]
+[carSwing0, carSwing0_inst].each { |e| e.set_attribute(da, "_name", "PlaneCarSwing0"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "y", 0.0) }
+carSwing0_inst.set_attribute(da, "_y_formula", "WholePlaneSwing!move * -570.44")
+
+carSwing1 = model.definitions.add("Plane carriage Swing 1")
+ents = carSwing1.entities
+  # Acetal skate wheel Ø32 (4624,160) 1189
+  grp = ents.add_group
+  grp.name = "Acetal skate wheel Ø32 (4624,160) 1189"
+  ge = grp.entities
+  circle = ge.add_circle([4616.mm,1189.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal skate wheel Ø32 (4624,160) 1229
+  grp = ents.add_group
+  grp.name = "Acetal skate wheel Ø32 (4624,160) 1229"
+  ge = grp.entities
+  circle = ge.add_circle([4616.mm,1229.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (4624,160)
+  grp = ents.add_group
+  grp.name = "Carriage plate (4624,160)"
+  face = grp.entities.add_face([4583.mm,1182.mm,154.mm], [4597.mm,1182.mm,154.mm], [4597.mm,1268.mm,154.mm], [4583.mm,1268.mm,154.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(145.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+carSwing1_inst = plwSwing.entities.add_instance(carSwing1, Geom::Transformation.new)
+carSwing1_inst.name = "Plane carriage Swing 1"; carSwing1_inst.layer = model.layers["Plane Swing"]
+[carSwing1, carSwing1_inst].each { |e| e.set_attribute(da, "_name", "PlaneCarSwing1"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "y", 0.0) }
+carSwing1_inst.set_attribute(da, "_y_formula", "WholePlaneSwing!move * 570.44")
+
+carSwing2 = model.definitions.add("Plane carriage Swing 2")
+ents = carSwing2.entities
+  # Acetal guide wheel Ø32 (150,2290) 1189
+  grp = ents.add_group
+  grp.name = "Acetal guide wheel Ø32 (150,2290) 1189"
+  ge = grp.entities
+  circle = ge.add_circle([124.mm,1189.mm,2317.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal guide wheel Ø32 (150,2290) 1229
+  grp = ents.add_group
+  grp.name = "Acetal guide wheel Ø32 (150,2290) 1229"
+  ge = grp.entities
+  circle = ge.add_circle([124.mm,1229.mm,2317.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke arm (150,2290) 117
+  grp = ents.add_group
+  grp.name = "Yoke arm (150,2290) 117"
+  face = grp.entities.add_face([115.mm,1147.mm,2286.mm], [119.mm,1147.mm,2286.mm], [119.mm,1215.mm,2286.mm], [115.mm,1215.mm,2286.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(31.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke arm (150,2290) 183
+  grp = ents.add_group
+  grp.name = "Yoke arm (150,2290) 183"
+  face = grp.entities.add_face([181.mm,1147.mm,2286.mm], [185.mm,1147.mm,2286.mm], [185.mm,1215.mm,2286.mm], [181.mm,1215.mm,2286.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(31.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke cross-piece (150,2290)
+  grp = ents.add_group
+  grp.name = "Yoke cross-piece (150,2290)"
+  face = grp.entities.add_face([115.mm,1147.mm,2278.mm], [185.mm,1147.mm,2278.mm], [185.mm,1215.mm,2278.mm], [115.mm,1215.mm,2278.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke rail (150,2290)
+  grp = ents.add_group
+  grp.name = "Yoke rail (150,2290)"
+  face = grp.entities.add_face([183.mm,1147.mm,2280.mm], [208.mm,1147.mm,2280.mm], [208.mm,1215.mm,2280.mm], [183.mm,1215.mm,2280.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (150,2290)
+  grp = ents.add_group
+  grp.name = "Carriage plate (150,2290)"
+  face = grp.entities.add_face([196.mm,1182.mm,2284.mm], [210.mm,1182.mm,2284.mm], [210.mm,1268.mm,2284.mm], [196.mm,1268.mm,2284.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(51.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+carSwing2_inst = plwSwing.entities.add_instance(carSwing2, Geom::Transformation.new)
+carSwing2_inst.name = "Plane carriage Swing 2"; carSwing2_inst.layer = model.layers["Plane Swing"]
+[carSwing2, carSwing2_inst].each { |e| e.set_attribute(da, "_name", "PlaneCarSwing2"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "y", 0.0) }
+carSwing2_inst.set_attribute(da, "_y_formula", "WholePlaneSwing!move * -570.44")
+
+carSwing3 = model.definitions.add("Plane carriage Swing 3")
+ents = carSwing3.entities
+  # Acetal guide wheel Ø32 (4624,2290) 1189
+  grp = ents.add_group
+  grp.name = "Acetal guide wheel Ø32 (4624,2290) 1189"
+  ge = grp.entities
+  circle = ge.add_circle([4598.mm,1189.mm,2317.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal guide wheel Ø32 (4624,2290) 1229
+  grp = ents.add_group
+  grp.name = "Acetal guide wheel Ø32 (4624,2290) 1229"
+  ge = grp.entities
+  circle = ge.add_circle([4598.mm,1229.mm,2317.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke arm (4624,2290) 4591
+  grp = ents.add_group
+  grp.name = "Yoke arm (4624,2290) 4591"
+  face = grp.entities.add_face([4589.mm,1147.mm,2286.mm], [4593.mm,1147.mm,2286.mm], [4593.mm,1215.mm,2286.mm], [4589.mm,1215.mm,2286.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(31.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke arm (4624,2290) 4657
+  grp = ents.add_group
+  grp.name = "Yoke arm (4624,2290) 4657"
+  face = grp.entities.add_face([4655.mm,1147.mm,2286.mm], [4659.mm,1147.mm,2286.mm], [4659.mm,1215.mm,2286.mm], [4655.mm,1215.mm,2286.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(31.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke cross-piece (4624,2290)
+  grp = ents.add_group
+  grp.name = "Yoke cross-piece (4624,2290)"
+  face = grp.entities.add_face([4589.mm,1147.mm,2278.mm], [4659.mm,1147.mm,2278.mm], [4659.mm,1215.mm,2278.mm], [4589.mm,1215.mm,2278.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke rail (4624,2290)
+  grp = ents.add_group
+  grp.name = "Yoke rail (4624,2290)"
+  face = grp.entities.add_face([4572.mm,1147.mm,2280.mm], [4663.mm,1147.mm,2280.mm], [4663.mm,1215.mm,2280.mm], [4572.mm,1215.mm,2280.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (4624,2290)
+  grp = ents.add_group
+  grp.name = "Carriage plate (4624,2290)"
+  face = grp.entities.add_face([4564.mm,1182.mm,2284.mm], [4578.mm,1182.mm,2284.mm], [4578.mm,1268.mm,2284.mm], [4564.mm,1268.mm,2284.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(51.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+carSwing3_inst = plwSwing.entities.add_instance(carSwing3, Geom::Transformation.new)
+carSwing3_inst.name = "Plane carriage Swing 3"; carSwing3_inst.layer = model.layers["Plane Swing"]
+[carSwing3, carSwing3_inst].each { |e| e.set_attribute(da, "_name", "PlaneCarSwing3"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "y", 0.0) }
+carSwing3_inst.set_attribute(da, "_y_formula", "WholePlaneSwing!move * 570.44")
+
+plwSwing_inst = entities.add_instance(plwSwing, Geom::Transformation.new)
+plwSwing_inst.name = "Whole plane Swing"; plwSwing_inst.layer = model.layers["Plane Swing"]
 [plwSwing, plwSwing_inst].each do |e|
-  e.set_attribute(da, "_name", "WholePlaneSwing"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "move", 0.0); e.set_attribute(da, "rotz", 0.0)
+  e.set_attribute(da, "_name", "WholePlaneSwing"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "move", 0.0)
 end
 plwSwing_inst.set_attribute(da, "_move_access", "VIEW")
-plwSwing_inst.set_attribute(da, "_move_label", "Swing: click to Swing the whole plane about its centre")
+plwSwing_inst.set_attribute(da, "_move_label", "Swing: click — frame rotzs, carriages roll on the rails")
 plwSwing_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1)')
 plwSwing_inst.set_attribute(da, "_onclick_access", "NONE")
-plwSwing_inst.set_attribute(da, "_rotz_formula", "move * 15")
-pltxtSwing = entities.add_text("CLICK: Swing the whole rigid plane about its centre (rotz) — the four corners move as one", Geom::Point3d.new(2387.mm, 1481.mm, 2440.mm), Geom::Vector3d.new(300.mm, -300.mm, 300.mm))
+pltxtSwing = entities.add_text("CLICK: Swing — the frame rotzs; each carriage stays on its rail and rolls in Y", Geom::Point3d.new(2387.mm, 1481.mm, 2440.mm), Geom::Vector3d.new(300.mm, -300.mm, 300.mm))
 pltxtSwing.layer = model.layers["Plane Swing"] rescue nil
 
 

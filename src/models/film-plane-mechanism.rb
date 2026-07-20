@@ -4086,7 +4086,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-channel rail (Movement BL) web MoveBL
   grp = ents.add_group
   grp.name = "U-channel rail (Movement BL) web MoveBL"
-  face = grp.entities.add_face([131.mm,2102.mm,232.mm], [136.mm,2102.mm,232.mm], [136.mm,3062.mm,232.mm], [131.mm,3062.mm,232.mm])
+  face = grp.entities.add_face([131.mm,1742.mm,232.mm], [136.mm,1742.mm,232.mm], [136.mm,3062.mm,232.mm], [131.mm,3062.mm,232.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(76.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4097,7 +4097,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-channel rail (Movement BL) flange MoveBL 303
   grp = ents.add_group
   grp.name = "U-channel rail (Movement BL) flange MoveBL 303"
-  face = grp.entities.add_face([131.mm,2102.mm,303.mm], [169.mm,2102.mm,303.mm], [169.mm,3062.mm,303.mm], [131.mm,3062.mm,303.mm])
+  face = grp.entities.add_face([131.mm,1742.mm,303.mm], [169.mm,1742.mm,303.mm], [169.mm,3062.mm,303.mm], [131.mm,3062.mm,303.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4108,7 +4108,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-channel rail (Movement BL) flange MoveBL 232
   grp = ents.add_group
   grp.name = "U-channel rail (Movement BL) flange MoveBL 232"
-  face = grp.entities.add_face([131.mm,2102.mm,232.mm], [169.mm,2102.mm,232.mm], [169.mm,3062.mm,232.mm], [131.mm,3062.mm,232.mm])
+  face = grp.entities.add_face([131.mm,1742.mm,232.mm], [169.mm,1742.mm,232.mm], [169.mm,3062.mm,232.mm], [131.mm,3062.mm,232.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4119,7 +4119,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-channel rail (Movement BL) bottom-flange lip MoveBL
   grp = ents.add_group
   grp.name = "U-channel rail (Movement BL) bottom-flange lip MoveBL"
-  face = grp.entities.add_face([164.mm,2102.mm,237.mm], [169.mm,2102.mm,237.mm], [169.mm,3062.mm,237.mm], [164.mm,3062.mm,237.mm])
+  face = grp.entities.add_face([164.mm,1742.mm,237.mm], [169.mm,1742.mm,237.mm], [169.mm,3062.mm,237.mm], [164.mm,3062.mm,237.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(9.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4137,7 +4137,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-channel rail (Movement TL) web MoveTL
   grp = ents.add_group
   grp.name = "U-channel rail (Movement TL) web MoveTL"
-  face = grp.entities.add_face([112.mm,2102.mm,2333.mm], [188.mm,2102.mm,2333.mm], [188.mm,3062.mm,2333.mm], [112.mm,3062.mm,2333.mm])
+  face = grp.entities.add_face([112.mm,1742.mm,2333.mm], [188.mm,1742.mm,2333.mm], [188.mm,3062.mm,2333.mm], [112.mm,3062.mm,2333.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4148,7 +4148,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-channel rail (Movement TL) flange MoveTL 112
   grp = ents.add_group
   grp.name = "U-channel rail (Movement TL) flange MoveTL 112"
-  face = grp.entities.add_face([112.mm,2102.mm,2300.mm], [117.mm,2102.mm,2300.mm], [117.mm,3062.mm,2300.mm], [112.mm,3062.mm,2300.mm])
+  face = grp.entities.add_face([112.mm,1742.mm,2300.mm], [117.mm,1742.mm,2300.mm], [117.mm,3062.mm,2300.mm], [112.mm,3062.mm,2300.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4159,7 +4159,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-channel rail (Movement TL) flange MoveTL 183
   grp = ents.add_group
   grp.name = "U-channel rail (Movement TL) flange MoveTL 183"
-  face = grp.entities.add_face([183.mm,2102.mm,2300.mm], [188.mm,2102.mm,2300.mm], [188.mm,3062.mm,2300.mm], [183.mm,3062.mm,2300.mm])
+  face = grp.entities.add_face([183.mm,1742.mm,2300.mm], [188.mm,1742.mm,2300.mm], [188.mm,3062.mm,2300.mm], [183.mm,3062.mm,2300.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4688,7 +4688,7 @@ da = "dynamic_attributes"
 end
 mvp_BL_inst.set_attribute(da, "_move_access", "VIEW")
 mvp_BL_inst.set_attribute(da, "_move_label", "BL: depth-roll drives the tilt (green Z cross-slide absorbs foreshortening)")
-mvp_BL_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1)')
+mvp_BL_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1, -1)')
 mvp_BL_inst.set_attribute(da, "_onclick_access", "NONE")
 # carriage ROLLS along the depth rail (Y) — the DRIVER of tilt (Sheet 3); one coordinated motion
 [mvo_BL, mvo_BL_inst].each do |e|
@@ -4701,14 +4701,14 @@ mvo_BL_inst.set_attribute(da, "_y_formula", "drive * 320")
   e.set_attribute(da, "_name", "FloatBL"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "z", 0.0)
 end
 mvfl_BL_inst.set_attribute(da, "_drive_formula", "CarriageBL!drive")
-mvfl_BL_inst.set_attribute(da, "_z_formula", "drive * 50")
+mvfl_BL_inst.set_attribute(da, "_z_formula", "ABS(drive) * 50")
 # panel tiltS about the U-joint (rotx=tilt / rotz=swing) — the DOF the depth-roll produces
 [mvpan_BL, mvpan_BL_inst].each do |e|
   e.set_attribute(da, "_name", "PanelTiltBL"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "rotx", 0.0)
 end
 mvpan_BL_inst.set_attribute(da, "_drive_formula", "FloatBL!drive")
 mvpan_BL_inst.set_attribute(da, "_rotx_formula", "drive * 30")
-mvtxt_BL = entities.add_text("CLICK BL: depth-roll DRIVES the tilt; the green Z cross-slide takes up the foreshortening", Geom::Point3d.new(570.mm, 2762.mm, 680.mm), Geom::Vector3d.new(300.mm, -400.mm, 300.mm))
+mvtxt_BL = entities.add_text("CLICK BL: 1st click tilts toward the PINHOLE, 2nd toward the FAR WALL — the green Z slider foreshortens the SAME both ways", Geom::Point3d.new(570.mm, 2762.mm, 680.mm), Geom::Vector3d.new(300.mm, -400.mm, 300.mm))
 mvtxt_BL.layer = model.layers["Movement"] rescue nil
 
 # ═══ Movement — TL corner (Sheet 3 model): ONE click — the depth-rail ROLL drives the tilt;
@@ -4964,7 +4964,7 @@ da = "dynamic_attributes"
 end
 mvp_TL_inst.set_attribute(da, "_move_access", "VIEW")
 mvp_TL_inst.set_attribute(da, "_move_label", "TL: depth-roll drives the tilt (green Z cross-slide absorbs foreshortening)")
-mvp_TL_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1)')
+mvp_TL_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1, -1)')
 mvp_TL_inst.set_attribute(da, "_onclick_access", "NONE")
 # carriage ROLLS along the depth rail (Y) — the DRIVER of tilt (Sheet 3); one coordinated motion
 [mvo_TL, mvo_TL_inst].each do |e|
@@ -4977,14 +4977,14 @@ mvo_TL_inst.set_attribute(da, "_y_formula", "drive * 320")
   e.set_attribute(da, "_name", "FloatTL"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "z", 0.0)
 end
 mvfl_TL_inst.set_attribute(da, "_drive_formula", "CarriageTL!drive")
-mvfl_TL_inst.set_attribute(da, "_z_formula", "drive * -50")
+mvfl_TL_inst.set_attribute(da, "_z_formula", "ABS(drive) * -50")
 # panel tiltS about the U-joint (rotx=tilt / rotz=swing) — the DOF the depth-roll produces
 [mvpan_TL, mvpan_TL_inst].each do |e|
   e.set_attribute(da, "_name", "PanelTiltTL"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "rotx", 0.0)
 end
 mvpan_TL_inst.set_attribute(da, "_drive_formula", "FloatTL!drive")
 mvpan_TL_inst.set_attribute(da, "_rotx_formula", "drive * -30")
-mvtxt_TL = entities.add_text("CLICK TL: depth-roll DRIVES the tilt; the green Z cross-slide takes up the foreshortening", Geom::Point3d.new(570.mm, 2762.mm, 1770.mm), Geom::Vector3d.new(300.mm, -400.mm, -300.mm))
+mvtxt_TL = entities.add_text("CLICK TL: 1st click tilts toward the PINHOLE, 2nd toward the FAR WALL — the green Z slider foreshortens the SAME both ways", Geom::Point3d.new(570.mm, 2762.mm, 1770.mm), Geom::Vector3d.new(300.mm, -400.mm, -300.mm))
 mvtxt_TL.layer = model.layers["Movement"] rescue nil
 
 # ═══ Movement — BR corner (Sheet 3 model): ONE click — the depth-rail ROLL drives the swing;

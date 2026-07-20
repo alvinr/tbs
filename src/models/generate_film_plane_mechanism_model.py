@@ -342,7 +342,7 @@ CORNER_SPEC = {  # cx, zc(rail web Z), fz(film-corner Z), cin(+left/-right), fcx
     "TR": (X_R, PZ_HB_TOP, PZ1, -1, FCX_R, False),
 }
 SWING_CORNERS = {"BR", "TR"}  # these demo a SWING (rotz, yaw about the vertical axis) instead of a TILT (rotx)
-MOVEMENT_TWO_WAY = {"BR", "TR"}  # these cycle 0 -> +1 -> -1 (toward pinhole, then toward the far wall)
+MOVEMENT_TWO_WAY = {"BL", "TL", "BR", "TR"}  # all cycle 0 -> +1 -> -1 (toward pinhole, then toward the far wall)
 # Movement is a SCHEMATIC demo scene — the real corners are 4.5 m apart, so the right-side corners are
 # DISPLAY-SHIFTED left to sit beside the left ones (reduce the L↔R gap). Edit the target X to taste.
 MV_TARGET_X = {"BR": 2200, "TR": 2200}

@@ -21,6 +21,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   model.layers.add("Film Plane") unless model.layers["Film Plane"]
   model.layers.add("Pinhole") unless model.layers["Pinhole"]
   model.layers.add("Context") unless model.layers["Context"]
+  model.layers.add("Movement") unless model.layers["Movement"]
   model.layers.add("Labels") unless model.layers["Labels"]
 
   # ═══ Corners ═══
@@ -32,7 +33,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([131.mm,2090.mm,232.mm], [136.mm,2090.mm,232.mm], [136.mm,2362.mm,232.mm], [131.mm,2362.mm,232.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(76.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -43,7 +44,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([131.mm,2090.mm,303.mm], [169.mm,2090.mm,303.mm], [169.mm,2362.mm,303.mm], [131.mm,2362.mm,303.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -54,7 +55,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([131.mm,2090.mm,232.mm], [169.mm,2090.mm,232.mm], [169.mm,2362.mm,232.mm], [131.mm,2362.mm,232.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -65,7 +66,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([164.mm,2090.mm,237.mm], [169.mm,2090.mm,237.mm], [169.mm,2362.mm,237.mm], [164.mm,2362.mm,237.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(9.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -120,7 +121,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([131.mm,2030.mm,308.mm], [169.mm,2030.mm,308.mm], [169.mm,2180.mm,308.mm], [131.mm,2180.mm,308.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -133,7 +134,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(17.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -144,7 +145,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([131.mm,2058.mm,220.mm], [169.mm,2058.mm,220.mm], [169.mm,2122.mm,220.mm], [131.mm,2122.mm,220.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -155,7 +156,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([95.mm,2350.mm,227.mm], [205.mm,2350.mm,227.mm], [205.mm,2362.mm,227.mm], [95.mm,2362.mm,227.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(86.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -166,7 +167,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([94.mm,0.mm,202.mm], [206.mm,0.mm,202.mm], [206.mm,45.mm,202.mm], [94.mm,45.mm,202.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(131.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -177,7 +178,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([119.mm,205.mm,232.mm], [131.mm,205.mm,232.mm], [131.mm,315.mm,232.mm], [119.mm,315.mm,232.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(76.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -190,7 +191,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -203,7 +204,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(47.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -216,7 +217,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -229,7 +230,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(49.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -242,7 +243,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -255,7 +256,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(47.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -268,7 +269,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -281,7 +282,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(49.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -292,7 +293,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([177.mm,2263.mm,154.mm], [191.mm,2263.mm,154.mm], [191.mm,2349.mm,154.mm], [177.mm,2349.mm,154.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(157.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -305,7 +306,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -318,7 +319,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -329,7 +330,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([180.mm,2263.mm,156.mm], [196.mm,2263.mm,156.mm], [196.mm,2281.mm,156.mm], [180.mm,2281.mm,156.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(113.mm)
-  mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
+  mat = model.materials["Vertical Z slide rail (TILT/deploy, green) (Movement BL)"] || model.materials.add("Vertical Z slide rail (TILT/deploy, green) (Movement BL)")
   mat.color = Sketchup::Color.new(46, 139, 87)
   mat.alpha = 1.0
   grp.material = mat
@@ -340,7 +341,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([150.mm,2263.mm,156.mm], [410.mm,2263.mm,156.mm], [410.mm,2277.mm,156.mm], [150.mm,2277.mm,156.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
-  mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
+  mat = model.materials["Horizontal X slide (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide (SWING, purple) (Movement BL)")
   mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
@@ -351,7 +352,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([138.mm,2258.mm,146.mm], [162.mm,2258.mm,146.mm], [162.mm,2282.mm,146.mm], [138.mm,2282.mm,146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -364,7 +365,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -375,7 +376,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([176.mm,2261.mm,149.mm], [199.mm,2261.mm,149.mm], [199.mm,2279.mm,149.mm], [176.mm,2279.mm,149.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -388,7 +389,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -399,7 +400,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([136.mm,2254.mm,165.mm], [170.mm,2254.mm,165.mm], [170.mm,2270.mm,165.mm], [136.mm,2270.mm,165.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -412,7 +413,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -423,7 +424,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4638.mm,0.mm,232.mm], [4643.mm,0.mm,232.mm], [4643.mm,2362.mm,232.mm], [4638.mm,2362.mm,232.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(76.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -434,7 +435,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4605.mm,0.mm,303.mm], [4643.mm,0.mm,303.mm], [4643.mm,2362.mm,303.mm], [4605.mm,2362.mm,303.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -445,7 +446,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4605.mm,0.mm,232.mm], [4643.mm,0.mm,232.mm], [4643.mm,2362.mm,232.mm], [4605.mm,2362.mm,232.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -456,7 +457,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4605.mm,0.mm,237.mm], [4610.mm,0.mm,237.mm], [4610.mm,2362.mm,237.mm], [4605.mm,2362.mm,237.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(9.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -467,7 +468,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4569.mm,0.mm,227.mm], [4644.mm,0.mm,227.mm], [4644.mm,12.mm,227.mm], [4569.mm,12.mm,227.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(86.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -478,7 +479,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4569.mm,2350.mm,227.mm], [4644.mm,2350.mm,227.mm], [4644.mm,2362.mm,227.mm], [4569.mm,2362.mm,227.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(86.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -491,7 +492,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -504,7 +505,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(47.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -517,7 +518,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -530,7 +531,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(37.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -543,7 +544,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(16.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -556,7 +557,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(47.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -569,7 +570,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(12.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -582,7 +583,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(37.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -593,7 +594,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4585.mm,2263.mm,154.mm], [4599.mm,2263.mm,154.mm], [4599.mm,2349.mm,154.mm], [4585.mm,2349.mm,154.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(157.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -606,7 +607,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -619,7 +620,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -630,7 +631,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4588.mm,2263.mm,156.mm], [4604.mm,2263.mm,156.mm], [4604.mm,2281.mm,156.mm], [4588.mm,2281.mm,156.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(113.mm)
-  mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
+  mat = model.materials["Vertical Z slide rail (TILT/deploy, green) (Movement BL)"] || model.materials.add("Vertical Z slide rail (TILT/deploy, green) (Movement BL)")
   mat.color = Sketchup::Color.new(46, 139, 87)
   mat.alpha = 1.0
   grp.material = mat
@@ -641,7 +642,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4364.mm,2263.mm,156.mm], [4624.mm,2263.mm,156.mm], [4624.mm,2277.mm,156.mm], [4364.mm,2277.mm,156.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
-  mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
+  mat = model.materials["Horizontal X slide (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide (SWING, purple) (Movement BL)")
   mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
@@ -652,7 +653,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4612.mm,2258.mm,146.mm], [4636.mm,2258.mm,146.mm], [4636.mm,2282.mm,146.mm], [4612.mm,2282.mm,146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -665,7 +666,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -676,7 +677,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4575.mm,2261.mm,149.mm], [4598.mm,2261.mm,149.mm], [4598.mm,2279.mm,149.mm], [4575.mm,2279.mm,149.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -689,7 +690,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -700,7 +701,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4604.mm,2254.mm,165.mm], [4638.mm,2254.mm,165.mm], [4638.mm,2270.mm,165.mm], [4604.mm,2270.mm,165.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -713,7 +714,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -724,7 +725,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([112.mm,2090.mm,2333.mm], [188.mm,2090.mm,2333.mm], [188.mm,2362.mm,2333.mm], [112.mm,2362.mm,2333.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -735,7 +736,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([112.mm,2090.mm,2300.mm], [117.mm,2090.mm,2300.mm], [117.mm,2362.mm,2300.mm], [112.mm,2362.mm,2300.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -746,7 +747,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([183.mm,2090.mm,2300.mm], [188.mm,2090.mm,2300.mm], [188.mm,2362.mm,2300.mm], [183.mm,2362.mm,2300.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -790,7 +791,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([112.mm,2030.mm,2338.mm], [188.mm,2030.mm,2338.mm], [188.mm,2180.mm,2338.mm], [112.mm,2180.mm,2338.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -803,7 +804,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(17.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -814,7 +815,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([95.mm,2350.mm,2295.mm], [205.mm,2350.mm,2295.mm], [205.mm,2362.mm,2295.mm], [95.mm,2362.mm,2295.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -825,7 +826,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([94.mm,0.mm,2270.mm], [206.mm,0.mm,2270.mm], [206.mm,45.mm,2270.mm], [94.mm,45.mm,2270.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(93.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -836,7 +837,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([112.mm,205.mm,2338.mm], [188.mm,205.mm,2338.mm], [188.mm,315.mm,2338.mm], [112.mm,315.mm,2338.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -849,7 +850,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(52.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -862,7 +863,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -875,7 +876,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(52.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -888,7 +889,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -899,7 +900,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([115.mm,2228.mm,2286.mm], [119.mm,2228.mm,2286.mm], [119.mm,2296.mm,2286.mm], [115.mm,2296.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -910,7 +911,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([181.mm,2228.mm,2286.mm], [185.mm,2228.mm,2286.mm], [185.mm,2296.mm,2286.mm], [181.mm,2296.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -921,7 +922,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([115.mm,2228.mm,2278.mm], [185.mm,2228.mm,2278.mm], [185.mm,2296.mm,2278.mm], [115.mm,2296.mm,2278.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -932,7 +933,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([183.mm,2228.mm,2280.mm], [208.mm,2228.mm,2280.mm], [208.mm,2296.mm,2280.mm], [183.mm,2296.mm,2280.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -943,7 +944,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([196.mm,2263.mm,2284.mm], [210.mm,2263.mm,2284.mm], [210.mm,2349.mm,2284.mm], [196.mm,2349.mm,2284.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(51.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -956,7 +957,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(40.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -969,7 +970,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(40.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -980,7 +981,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([199.mm,2263.mm,2286.mm], [215.mm,2263.mm,2286.mm], [215.mm,2281.mm,2286.mm], [199.mm,2281.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(47.mm)
-  mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
+  mat = model.materials["Vertical Z slide rail (TILT/deploy, green) (Movement BL)"] || model.materials.add("Vertical Z slide rail (TILT/deploy, green) (Movement BL)")
   mat.color = Sketchup::Color.new(46, 139, 87)
   mat.alpha = 1.0
   grp.material = mat
@@ -991,7 +992,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([150.mm,2263.mm,2286.mm], [410.mm,2263.mm,2286.mm], [410.mm,2277.mm,2286.mm], [150.mm,2277.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
-  mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
+  mat = model.materials["Horizontal X slide (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide (SWING, purple) (Movement BL)")
   mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
@@ -1002,7 +1003,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([138.mm,2258.mm,2276.mm], [162.mm,2258.mm,2276.mm], [162.mm,2282.mm,2276.mm], [138.mm,2282.mm,2276.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1015,7 +1016,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1026,7 +1027,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([176.mm,2261.mm,2279.mm], [199.mm,2261.mm,2279.mm], [199.mm,2279.mm,2279.mm], [176.mm,2279.mm,2279.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1039,7 +1040,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1050,7 +1051,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([136.mm,2254.mm,2276.mm], [170.mm,2254.mm,2276.mm], [170.mm,2270.mm,2276.mm], [136.mm,2270.mm,2276.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1063,7 +1064,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1074,7 +1075,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4586.mm,0.mm,2333.mm], [4662.mm,0.mm,2333.mm], [4662.mm,2362.mm,2333.mm], [4586.mm,2362.mm,2333.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1085,7 +1086,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4586.mm,0.mm,2300.mm], [4591.mm,0.mm,2300.mm], [4591.mm,2362.mm,2300.mm], [4586.mm,2362.mm,2300.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1096,7 +1097,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4657.mm,0.mm,2300.mm], [4662.mm,0.mm,2300.mm], [4662.mm,2362.mm,2300.mm], [4657.mm,2362.mm,2300.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1107,7 +1108,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4569.mm,0.mm,2295.mm], [4644.mm,0.mm,2295.mm], [4644.mm,12.mm,2295.mm], [4569.mm,12.mm,2295.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1118,7 +1119,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4569.mm,2350.mm,2295.mm], [4644.mm,2350.mm,2295.mm], [4644.mm,2362.mm,2295.mm], [4569.mm,2362.mm,2295.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1131,7 +1132,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(52.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -1144,7 +1145,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1157,7 +1158,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(52.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -1170,7 +1171,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1181,7 +1182,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4589.mm,2228.mm,2286.mm], [4593.mm,2228.mm,2286.mm], [4593.mm,2296.mm,2286.mm], [4589.mm,2296.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -1192,7 +1193,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4655.mm,2228.mm,2286.mm], [4659.mm,2228.mm,2286.mm], [4659.mm,2296.mm,2286.mm], [4655.mm,2296.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -1203,7 +1204,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4589.mm,2228.mm,2278.mm], [4659.mm,2228.mm,2278.mm], [4659.mm,2296.mm,2278.mm], [4589.mm,2296.mm,2278.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -1214,7 +1215,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4572.mm,2228.mm,2280.mm], [4663.mm,2228.mm,2280.mm], [4663.mm,2296.mm,2280.mm], [4572.mm,2296.mm,2280.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -1225,7 +1226,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4566.mm,2263.mm,2284.mm], [4580.mm,2263.mm,2284.mm], [4580.mm,2349.mm,2284.mm], [4566.mm,2349.mm,2284.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(51.mm)
-  mat = model.materials["Acetal wheel Ø32 (weight) BL 2270"] || model.materials.add("Acetal wheel Ø32 (weight) BL 2270")
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
@@ -1238,7 +1239,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(40.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1251,7 +1252,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(40.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1262,7 +1263,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4569.mm,2263.mm,2286.mm], [4585.mm,2263.mm,2286.mm], [4585.mm,2281.mm,2286.mm], [4569.mm,2281.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(47.mm)
-  mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
+  mat = model.materials["Vertical Z slide rail (TILT/deploy, green) (Movement BL)"] || model.materials.add("Vertical Z slide rail (TILT/deploy, green) (Movement BL)")
   mat.color = Sketchup::Color.new(46, 139, 87)
   mat.alpha = 1.0
   grp.material = mat
@@ -1273,7 +1274,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4364.mm,2263.mm,2286.mm], [4624.mm,2263.mm,2286.mm], [4624.mm,2277.mm,2286.mm], [4364.mm,2277.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
-  mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
+  mat = model.materials["Horizontal X slide (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide (SWING, purple) (Movement BL)")
   mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
@@ -1284,7 +1285,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4612.mm,2258.mm,2276.mm], [4636.mm,2258.mm,2276.mm], [4636.mm,2282.mm,2276.mm], [4612.mm,2282.mm,2276.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1297,7 +1298,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1308,7 +1309,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4575.mm,2261.mm,2279.mm], [4598.mm,2261.mm,2279.mm], [4598.mm,2279.mm,2279.mm], [4575.mm,2279.mm,2279.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1321,7 +1322,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1332,7 +1333,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4604.mm,2254.mm,2276.mm], [4638.mm,2254.mm,2276.mm], [4638.mm,2270.mm,2276.mm], [4604.mm,2270.mm,2276.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1345,7 +1346,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1396,7 +1397,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([183.mm,2212.mm,2285.mm], [4591.mm,2212.mm,2285.mm], [4591.mm,2262.mm,2285.mm], [183.mm,2262.mm,2285.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
@@ -1407,7 +1408,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([183.mm,2257.mm,2240.mm], [4591.mm,2257.mm,2240.mm], [4591.mm,2262.mm,2240.mm], [183.mm,2262.mm,2240.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
@@ -1418,7 +1419,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([183.mm,2212.mm,160.mm], [4591.mm,2212.mm,160.mm], [4591.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
-  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
@@ -1429,7 +1430,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([183.mm,2257.mm,160.mm], [4591.mm,2257.mm,160.mm], [4591.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
@@ -1440,7 +1441,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([183.mm,2212.mm,160.mm], [188.mm,2212.mm,160.mm], [188.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2130.mm)
-  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
@@ -1451,7 +1452,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([183.mm,2257.mm,160.mm], [233.mm,2257.mm,160.mm], [233.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2130.mm)
-  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
@@ -1462,7 +1463,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4586.mm,2212.mm,160.mm], [4591.mm,2212.mm,160.mm], [4591.mm,2262.mm,160.mm], [4586.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2130.mm)
-  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
@@ -1473,7 +1474,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4541.mm,2257.mm,160.mm], [4591.mm,2257.mm,160.mm], [4591.mm,2262.mm,160.mm], [4541.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2130.mm)
-  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
   grp.material = mat
@@ -1592,7 +1593,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([638.mm,0.mm,0.mm], [758.mm,0.mm,0.mm], [758.mm,8.mm,0.mm], [638.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1642,7 +1643,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([694.mm,8.mm,105.mm], [702.mm,8.mm,105.mm], [702.mm,300.mm,105.mm], [694.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1653,7 +1654,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   ge = grp.entities
   f = ge.add_face([694.mm,8.mm,0.mm], [694.mm,8.mm,105.mm], [694.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1664,7 +1665,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([1095.mm,0.mm,0.mm], [1215.mm,0.mm,0.mm], [1215.mm,10.mm,0.mm], [1095.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1727,7 +1728,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([1150.mm,10.mm,103.mm], [1160.mm,10.mm,103.mm], [1160.mm,500.mm,103.mm], [1150.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1738,7 +1739,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   ge = grp.entities
   f = ge.add_face([1150.mm,10.mm,0.mm], [1150.mm,10.mm,103.mm], [1150.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1749,7 +1750,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([1552.mm,0.mm,0.mm], [1672.mm,0.mm,0.mm], [1672.mm,10.mm,0.mm], [1552.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1812,7 +1813,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([1607.mm,10.mm,103.mm], [1617.mm,10.mm,103.mm], [1617.mm,500.mm,103.mm], [1607.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1823,7 +1824,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   ge = grp.entities
   f = ge.add_face([1607.mm,10.mm,0.mm], [1607.mm,10.mm,103.mm], [1607.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1834,7 +1835,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([2009.mm,0.mm,0.mm], [2129.mm,0.mm,0.mm], [2129.mm,10.mm,0.mm], [2009.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1897,7 +1898,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([2064.mm,10.mm,103.mm], [2074.mm,10.mm,103.mm], [2074.mm,500.mm,103.mm], [2064.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1908,7 +1909,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   ge = grp.entities
   f = ge.add_face([2064.mm,10.mm,0.mm], [2064.mm,10.mm,103.mm], [2064.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1919,7 +1920,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([2466.mm,0.mm,0.mm], [2586.mm,0.mm,0.mm], [2586.mm,8.mm,0.mm], [2466.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1969,7 +1970,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([2522.mm,8.mm,105.mm], [2530.mm,8.mm,105.mm], [2530.mm,300.mm,105.mm], [2522.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1980,7 +1981,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   ge = grp.entities
   f = ge.add_face([2522.mm,8.mm,0.mm], [2522.mm,8.mm,105.mm], [2522.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1991,7 +1992,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([2923.mm,0.mm,0.mm], [3043.mm,0.mm,0.mm], [3043.mm,8.mm,0.mm], [2923.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2041,7 +2042,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([2979.mm,8.mm,105.mm], [2987.mm,8.mm,105.mm], [2987.mm,300.mm,105.mm], [2979.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2052,7 +2053,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   ge = grp.entities
   f = ge.add_face([2979.mm,8.mm,0.mm], [2979.mm,8.mm,105.mm], [2979.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2063,7 +2064,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([3380.mm,0.mm,0.mm], [3500.mm,0.mm,0.mm], [3500.mm,8.mm,0.mm], [3380.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2113,7 +2114,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([3436.mm,8.mm,105.mm], [3444.mm,8.mm,105.mm], [3444.mm,300.mm,105.mm], [3436.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2124,7 +2125,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   ge = grp.entities
   f = ge.add_face([3436.mm,8.mm,0.mm], [3436.mm,8.mm,105.mm], [3436.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2135,7 +2136,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([3837.mm,0.mm,0.mm], [3957.mm,0.mm,0.mm], [3957.mm,8.mm,0.mm], [3837.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2185,7 +2186,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([3893.mm,8.mm,105.mm], [3901.mm,8.mm,105.mm], [3901.mm,300.mm,105.mm], [3893.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2196,7 +2197,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   ge = grp.entities
   f = ge.add_face([3893.mm,8.mm,0.mm], [3893.mm,8.mm,105.mm], [3893.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2207,7 +2208,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([638.mm,2354.mm,0.mm], [758.mm,2354.mm,0.mm], [758.mm,2362.mm,0.mm], [638.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2257,7 +2258,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([694.mm,2062.mm,105.mm], [702.mm,2062.mm,105.mm], [702.mm,2354.mm,105.mm], [694.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2268,7 +2269,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   ge = grp.entities
   f = ge.add_face([694.mm,2354.mm,0.mm], [694.mm,2354.mm,105.mm], [694.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2279,7 +2280,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([1095.mm,2354.mm,0.mm], [1215.mm,2354.mm,0.mm], [1215.mm,2362.mm,0.mm], [1095.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2329,7 +2330,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([1151.mm,2062.mm,105.mm], [1159.mm,2062.mm,105.mm], [1159.mm,2354.mm,105.mm], [1151.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2340,7 +2341,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   ge = grp.entities
   f = ge.add_face([1151.mm,2354.mm,0.mm], [1151.mm,2354.mm,105.mm], [1151.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2351,7 +2352,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([1552.mm,2354.mm,0.mm], [1672.mm,2354.mm,0.mm], [1672.mm,2362.mm,0.mm], [1552.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2401,7 +2402,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([1608.mm,2062.mm,105.mm], [1616.mm,2062.mm,105.mm], [1616.mm,2354.mm,105.mm], [1608.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2412,7 +2413,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   ge = grp.entities
   f = ge.add_face([1608.mm,2354.mm,0.mm], [1608.mm,2354.mm,105.mm], [1608.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2423,7 +2424,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([2009.mm,2354.mm,0.mm], [2129.mm,2354.mm,0.mm], [2129.mm,2362.mm,0.mm], [2009.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2473,7 +2474,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([2065.mm,2062.mm,105.mm], [2073.mm,2062.mm,105.mm], [2073.mm,2354.mm,105.mm], [2065.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2484,7 +2485,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   ge = grp.entities
   f = ge.add_face([2065.mm,2354.mm,0.mm], [2065.mm,2354.mm,105.mm], [2065.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2495,7 +2496,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([2466.mm,2354.mm,0.mm], [2586.mm,2354.mm,0.mm], [2586.mm,2362.mm,0.mm], [2466.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2545,7 +2546,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([2522.mm,2062.mm,105.mm], [2530.mm,2062.mm,105.mm], [2530.mm,2354.mm,105.mm], [2522.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2556,7 +2557,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   ge = grp.entities
   f = ge.add_face([2522.mm,2354.mm,0.mm], [2522.mm,2354.mm,105.mm], [2522.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2567,7 +2568,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([2923.mm,2354.mm,0.mm], [3043.mm,2354.mm,0.mm], [3043.mm,2362.mm,0.mm], [2923.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2617,7 +2618,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([2979.mm,2062.mm,105.mm], [2987.mm,2062.mm,105.mm], [2987.mm,2354.mm,105.mm], [2979.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2628,7 +2629,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   ge = grp.entities
   f = ge.add_face([2979.mm,2354.mm,0.mm], [2979.mm,2354.mm,105.mm], [2979.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2639,7 +2640,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([3380.mm,2354.mm,0.mm], [3500.mm,2354.mm,0.mm], [3500.mm,2362.mm,0.mm], [3380.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2689,7 +2690,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([3436.mm,2062.mm,105.mm], [3444.mm,2062.mm,105.mm], [3444.mm,2354.mm,105.mm], [3436.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2700,7 +2701,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   ge = grp.entities
   f = ge.add_face([3436.mm,2354.mm,0.mm], [3436.mm,2354.mm,105.mm], [3436.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2711,7 +2712,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([3837.mm,2354.mm,0.mm], [3957.mm,2354.mm,0.mm], [3957.mm,2362.mm,0.mm], [3837.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2761,7 +2762,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([3893.mm,2062.mm,105.mm], [3901.mm,2062.mm,105.mm], [3901.mm,2354.mm,105.mm], [3893.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2772,7 +2773,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   ge = grp.entities
   f = ge.add_face([3893.mm,2354.mm,0.mm], [3893.mm,2354.mm,105.mm], [3893.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2783,7 +2784,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([38.mm,220.mm,0.mm], [166.mm,220.mm,0.mm], [166.mm,280.mm,0.mm], [38.mm,280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2794,7 +2795,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([115.mm,220.mm,0.mm], [165.mm,220.mm,0.mm], [165.mm,280.mm,0.mm], [115.mm,280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2805,7 +2806,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([165.mm,230.mm,75.mm], [470.mm,230.mm,75.mm], [470.mm,270.mm,75.mm], [165.mm,270.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2816,7 +2817,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([38.mm,770.mm,0.mm], [166.mm,770.mm,0.mm], [166.mm,830.mm,0.mm], [38.mm,830.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2827,7 +2828,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([115.mm,770.mm,0.mm], [165.mm,770.mm,0.mm], [165.mm,830.mm,0.mm], [115.mm,830.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2838,7 +2839,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([165.mm,770.mm,75.mm], [770.mm,770.mm,75.mm], [770.mm,830.mm,75.mm], [165.mm,830.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2849,7 +2850,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([38.mm,1150.mm,0.mm], [166.mm,1150.mm,0.mm], [166.mm,1210.mm,0.mm], [38.mm,1210.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2860,7 +2861,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([115.mm,1150.mm,0.mm], [165.mm,1150.mm,0.mm], [165.mm,1210.mm,0.mm], [115.mm,1210.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2871,7 +2872,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([165.mm,1150.mm,75.mm], [770.mm,1150.mm,75.mm], [770.mm,1210.mm,75.mm], [165.mm,1210.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2882,7 +2883,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([38.mm,1530.mm,0.mm], [166.mm,1530.mm,0.mm], [166.mm,1590.mm,0.mm], [38.mm,1590.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2893,7 +2894,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([115.mm,1530.mm,0.mm], [165.mm,1530.mm,0.mm], [165.mm,1590.mm,0.mm], [115.mm,1590.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2904,7 +2905,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([165.mm,1530.mm,75.mm], [770.mm,1530.mm,75.mm], [770.mm,1590.mm,75.mm], [165.mm,1590.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2915,7 +2916,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([38.mm,2080.mm,0.mm], [166.mm,2080.mm,0.mm], [166.mm,2140.mm,0.mm], [38.mm,2140.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2926,7 +2927,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([115.mm,2080.mm,0.mm], [165.mm,2080.mm,0.mm], [165.mm,2140.mm,0.mm], [115.mm,2140.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2937,7 +2938,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([165.mm,2090.mm,75.mm], [470.mm,2090.mm,75.mm], [470.mm,2130.mm,75.mm], [165.mm,2130.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2948,7 +2949,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4574.mm,0.mm,58.mm], [4724.mm,0.mm,58.mm], [4724.mm,10.mm,58.mm], [4574.mm,10.mm,58.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(177.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2959,7 +2960,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4574.mm,-50.mm,58.mm], [4724.mm,-50.mm,58.mm], [4724.mm,-40.mm,58.mm], [4574.mm,-40.mm,58.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(177.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2970,7 +2971,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4574.mm,0.mm,58.mm], [4724.mm,0.mm,58.mm], [4724.mm,55.mm,58.mm], [4574.mm,55.mm,58.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2981,7 +2982,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4619.mm,0.mm,148.mm], [4679.mm,0.mm,148.mm], [4679.mm,55.mm,148.mm], [4619.mm,55.mm,148.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2994,7 +2995,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3007,7 +3008,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3020,7 +3021,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3033,7 +3034,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3044,7 +3045,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4574.mm,2352.mm,58.mm], [4724.mm,2352.mm,58.mm], [4724.mm,2362.mm,58.mm], [4574.mm,2362.mm,58.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(177.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3055,7 +3056,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4574.mm,2402.mm,58.mm], [4724.mm,2402.mm,58.mm], [4724.mm,2412.mm,58.mm], [4574.mm,2412.mm,58.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(177.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3066,7 +3067,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4574.mm,2307.mm,58.mm], [4724.mm,2307.mm,58.mm], [4724.mm,2362.mm,58.mm], [4574.mm,2362.mm,58.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3077,7 +3078,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4619.mm,2307.mm,148.mm], [4679.mm,2307.mm,148.mm], [4679.mm,2362.mm,148.mm], [4619.mm,2362.mm,148.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3090,7 +3091,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3103,7 +3104,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3116,7 +3117,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3129,7 +3130,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3140,7 +3141,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4654.mm,1046.mm,0.mm], [4704.mm,1046.mm,0.mm], [4704.mm,1096.mm,0.mm], [4654.mm,1096.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2296.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3151,7 +3152,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4654.mm,1266.mm,0.mm], [4704.mm,1266.mm,0.mm], [4704.mm,1316.mm,0.mm], [4654.mm,1316.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2296.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3162,7 +3163,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([5104.mm,1046.mm,0.mm], [5154.mm,1046.mm,0.mm], [5154.mm,1096.mm,0.mm], [5104.mm,1096.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2296.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3173,7 +3174,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([5104.mm,1266.mm,0.mm], [5154.mm,1266.mm,0.mm], [5154.mm,1316.mm,0.mm], [5104.mm,1316.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2296.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3184,7 +3185,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4654.mm,1096.mm,0.mm], [4704.mm,1096.mm,0.mm], [4704.mm,1266.mm,0.mm], [4654.mm,1266.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3195,7 +3196,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([5104.mm,1096.mm,0.mm], [5154.mm,1096.mm,0.mm], [5154.mm,1266.mm,0.mm], [5104.mm,1266.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3206,7 +3207,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4704.mm,1046.mm,0.mm], [5104.mm,1046.mm,0.mm], [5104.mm,1096.mm,0.mm], [4704.mm,1096.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3217,7 +3218,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4704.mm,1266.mm,0.mm], [5104.mm,1266.mm,0.mm], [5104.mm,1316.mm,0.mm], [4704.mm,1316.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3228,7 +3229,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4654.mm,1096.mm,2246.mm], [4704.mm,1096.mm,2246.mm], [4704.mm,1266.mm,2246.mm], [4654.mm,1266.mm,2246.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3239,7 +3240,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([5104.mm,1096.mm,2246.mm], [5154.mm,1096.mm,2246.mm], [5154.mm,1266.mm,2246.mm], [5104.mm,1266.mm,2246.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3250,7 +3251,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4704.mm,1046.mm,2246.mm], [5104.mm,1046.mm,2246.mm], [5104.mm,1096.mm,2246.mm], [4704.mm,1096.mm,2246.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3261,7 +3262,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4704.mm,1266.mm,2246.mm], [5104.mm,1266.mm,2246.mm], [5104.mm,1316.mm,2246.mm], [4704.mm,1316.mm,2246.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3272,7 +3273,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4604.mm,996.mm,0.mm], [4754.mm,996.mm,0.mm], [4754.mm,1146.mm,0.mm], [4604.mm,1146.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3335,7 +3336,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4604.mm,1216.mm,0.mm], [4754.mm,1216.mm,0.mm], [4754.mm,1366.mm,0.mm], [4604.mm,1366.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3398,7 +3399,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([5054.mm,996.mm,0.mm], [5204.mm,996.mm,0.mm], [5204.mm,1146.mm,0.mm], [5054.mm,1146.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3461,7 +3462,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([5054.mm,1216.mm,0.mm], [5204.mm,1216.mm,0.mm], [5204.mm,1366.mm,0.mm], [5054.mm,1366.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3524,7 +3525,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([5122.mm,1096.mm,90.mm], [5152.mm,1096.mm,90.mm], [5152.mm,1136.mm,90.mm], [5122.mm,1136.mm,90.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3535,7 +3536,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([5122.mm,1096.mm,1118.mm], [5152.mm,1096.mm,1118.mm], [5152.mm,1136.mm,1118.mm], [5122.mm,1136.mm,1118.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3546,7 +3547,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([5122.mm,1096.mm,2146.mm], [5152.mm,1096.mm,2146.mm], [5152.mm,1136.mm,2146.mm], [5122.mm,1136.mm,2146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3557,7 +3558,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([5122.mm,1226.mm,90.mm], [5152.mm,1226.mm,90.mm], [5152.mm,1266.mm,90.mm], [5122.mm,1266.mm,90.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3568,7 +3569,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([5122.mm,1226.mm,1118.mm], [5152.mm,1226.mm,1118.mm], [5152.mm,1266.mm,1118.mm], [5122.mm,1266.mm,1118.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3579,7 +3580,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([5122.mm,1226.mm,2146.mm], [5152.mm,1226.mm,2146.mm], [5152.mm,1266.mm,2146.mm], [5122.mm,1266.mm,2146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3590,7 +3591,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4654.mm,0.mm,560.mm], [4674.mm,0.mm,560.mm], [4674.mm,1096.mm,560.mm], [4654.mm,1096.mm,560.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3601,7 +3602,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4654.mm,0.mm,1760.mm], [4674.mm,0.mm,1760.mm], [4674.mm,1096.mm,1760.mm], [4654.mm,1096.mm,1760.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3612,7 +3613,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4654.mm,1266.mm,560.mm], [4674.mm,1266.mm,560.mm], [4674.mm,2362.mm,560.mm], [4654.mm,2362.mm,560.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3623,7 +3624,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4654.mm,1266.mm,1760.mm], [4674.mm,1266.mm,1760.mm], [4674.mm,2362.mm,1760.mm], [4654.mm,2362.mm,1760.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3636,7 +3637,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3649,7 +3650,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3662,7 +3663,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3675,7 +3676,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3688,7 +3689,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3701,7 +3702,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3714,7 +3715,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3727,7 +3728,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3738,7 +3739,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4646.mm,0.mm,530.mm], [4712.mm,0.mm,530.mm], [4712.mm,4.mm,530.mm], [4646.mm,4.mm,530.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(120.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3749,7 +3750,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4650.mm,0.mm,556.mm], [4708.mm,0.mm,556.mm], [4708.mm,70.mm,556.mm], [4650.mm,70.mm,556.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(4.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3760,7 +3761,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4629.mm,-48.mm,517.5.mm], [4729.mm,-48.mm,517.5.mm], [4729.mm,-40.mm,517.5.mm], [4629.mm,-40.mm,517.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(135.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3823,7 +3824,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4646.mm,0.mm,1730.mm], [4712.mm,0.mm,1730.mm], [4712.mm,4.mm,1730.mm], [4646.mm,4.mm,1730.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(120.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3834,7 +3835,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4650.mm,0.mm,1756.mm], [4708.mm,0.mm,1756.mm], [4708.mm,70.mm,1756.mm], [4650.mm,70.mm,1756.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(4.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3845,7 +3846,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4629.mm,-48.mm,1717.5.mm], [4729.mm,-48.mm,1717.5.mm], [4729.mm,-40.mm,1717.5.mm], [4629.mm,-40.mm,1717.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(135.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3908,7 +3909,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4646.mm,2358.mm,530.mm], [4712.mm,2358.mm,530.mm], [4712.mm,2362.mm,530.mm], [4646.mm,2362.mm,530.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(120.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3919,7 +3920,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4650.mm,2292.mm,556.mm], [4708.mm,2292.mm,556.mm], [4708.mm,2362.mm,556.mm], [4650.mm,2362.mm,556.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(4.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3930,7 +3931,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4629.mm,2402.mm,517.5.mm], [4729.mm,2402.mm,517.5.mm], [4729.mm,2410.mm,517.5.mm], [4629.mm,2410.mm,517.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(135.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3993,7 +3994,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4646.mm,2358.mm,1730.mm], [4712.mm,2358.mm,1730.mm], [4712.mm,2362.mm,1730.mm], [4646.mm,2362.mm,1730.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(120.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -4004,7 +4005,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4650.mm,2292.mm,1756.mm], [4708.mm,2292.mm,1756.mm], [4708.mm,2362.mm,1756.mm], [4650.mm,2362.mm,1756.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(4.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -4015,7 +4016,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4629.mm,2402.mm,1717.5.mm], [4729.mm,2402.mm,1717.5.mm], [4729.mm,2410.mm,1717.5.mm], [4629.mm,2410.mm,1717.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(135.mm)
-  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -4076,6 +4077,736 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   inst.name = "Context (walkway + IBC cantilever/beams)"
   inst.layer = model.layers["Context"]
 
+  # ═══ Movement base (BL corner) ═══
+  defn = model.definitions.add("Movement base (BL corner)")
+  ents = defn.entities
+  # U-channel rail (Movement BL) web MoveBL
+  grp = ents.add_group
+  grp.name = "U-channel rail (Movement BL) web MoveBL"
+  face = grp.entities.add_face([131.mm,2102.mm,232.mm], [136.mm,2102.mm,232.mm], [136.mm,3062.mm,232.mm], [131.mm,3062.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail (Movement BL) flange MoveBL 303
+  grp = ents.add_group
+  grp.name = "U-channel rail (Movement BL) flange MoveBL 303"
+  face = grp.entities.add_face([131.mm,2102.mm,303.mm], [169.mm,2102.mm,303.mm], [169.mm,3062.mm,303.mm], [131.mm,3062.mm,303.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail (Movement BL) flange MoveBL 232
+  grp = ents.add_group
+  grp.name = "U-channel rail (Movement BL) flange MoveBL 232"
+  face = grp.entities.add_face([131.mm,2102.mm,232.mm], [169.mm,2102.mm,232.mm], [169.mm,3062.mm,232.mm], [131.mm,3062.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail (Movement BL) bottom-flange lip MoveBL
+  grp = ents.add_group
+  grp.name = "U-channel rail (Movement BL) bottom-flange lip MoveBL"
+  face = grp.entities.add_face([164.mm,2102.mm,237.mm], [169.mm,2102.mm,237.mm], [169.mm,3062.mm,237.mm], [164.mm,3062.mm,237.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Movement base (BL corner)"
+  inst.layer = model.layers["Movement"]
+
+  # ═══ Movement base (TL corner) ═══
+  defn = model.definitions.add("Movement base (TL corner)")
+  ents = defn.entities
+  # U-channel rail (Movement TL) web MoveTL
+  grp = ents.add_group
+  grp.name = "U-channel rail (Movement TL) web MoveTL"
+  face = grp.entities.add_face([112.mm,2102.mm,2333.mm], [188.mm,2102.mm,2333.mm], [188.mm,3062.mm,2333.mm], [112.mm,3062.mm,2333.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail (Movement TL) flange MoveTL 112
+  grp = ents.add_group
+  grp.name = "U-channel rail (Movement TL) flange MoveTL 112"
+  face = grp.entities.add_face([112.mm,2102.mm,2300.mm], [117.mm,2102.mm,2300.mm], [117.mm,3062.mm,2300.mm], [112.mm,3062.mm,2300.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(38.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail (Movement TL) flange MoveTL 183
+  grp = ents.add_group
+  grp.name = "U-channel rail (Movement TL) flange MoveTL 183"
+  face = grp.entities.add_face([183.mm,2102.mm,2300.mm], [188.mm,2102.mm,2300.mm], [188.mm,3062.mm,2300.mm], [183.mm,3062.mm,2300.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(38.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Movement base (TL corner)"
+  inst.layer = model.layers["Movement"]
+
+  # ═══ Movement base (BR corner) ═══
+  defn = model.definitions.add("Movement base (BR corner)")
+  ents = defn.entities
+  # U-channel rail (Movement BR) web MoveBR
+  grp = ents.add_group
+  grp.name = "U-channel rail (Movement BR) web MoveBR"
+  face = grp.entities.add_face([1764.mm,2102.mm,232.mm], [1769.mm,2102.mm,232.mm], [1769.mm,3062.mm,232.mm], [1764.mm,3062.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail (Movement BR) flange MoveBR 303
+  grp = ents.add_group
+  grp.name = "U-channel rail (Movement BR) flange MoveBR 303"
+  face = grp.entities.add_face([1731.mm,2102.mm,303.mm], [1769.mm,2102.mm,303.mm], [1769.mm,3062.mm,303.mm], [1731.mm,3062.mm,303.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail (Movement BR) flange MoveBR 232
+  grp = ents.add_group
+  grp.name = "U-channel rail (Movement BR) flange MoveBR 232"
+  face = grp.entities.add_face([1731.mm,2102.mm,232.mm], [1769.mm,2102.mm,232.mm], [1769.mm,3062.mm,232.mm], [1731.mm,3062.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail (Movement BR) bottom-flange lip MoveBR
+  grp = ents.add_group
+  grp.name = "U-channel rail (Movement BR) bottom-flange lip MoveBR"
+  face = grp.entities.add_face([1731.mm,2102.mm,237.mm], [1736.mm,2102.mm,237.mm], [1736.mm,3062.mm,237.mm], [1731.mm,3062.mm,237.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Movement base (BR corner)"
+  inst.layer = model.layers["Movement"]
+
+
+# ═══ Movement — BL corner: ONE click FLIPS home <-> deployed (roll forward + tilt, then deploy along green Z). ═══
+mvpan_BL = model.definitions.add("Panel tilt BL")
+ents = mvpan_BL.entities
+  # 304 SS corner plate (Movement BL)
+  grp = ents.add_group
+  grp.name = "304 SS corner plate (Movement BL)"
+  face = grp.entities.add_face([-14.mm,-16.mm,7.mm], [20.mm,-16.mm,7.mm], [20.mm,0.mm,7.mm], [-14.mm,0.mm,7.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # ACM film-panel corner — partial ghost (Movement BL)
+  grp = ents.add_group
+  grp.name = "ACM film-panel corner — partial ghost (Movement BL)"
+  face = grp.entities.add_face([33.mm,-8.mm,2.mm], [753.mm,-8.mm,2.mm], [753.mm,-4.mm,2.mm], [33.mm,-4.mm,2.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(720.mm)
+  mat = model.materials["ACM film-panel corner — partial ghost (Movement BL)"] || model.materials.add("ACM film-panel corner — partial ghost (Movement BL)")
+  mat.color = Sketchup::Color.new(31, 59, 102)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # Film frame 2x2 6061 — bottom upstand (Movement BL)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 — bottom upstand (Movement BL)"
+  face = grp.entities.add_face([33.mm,-58.mm,2.mm], [753.mm,-58.mm,2.mm], [753.mm,-8.mm,2.mm], [33.mm,-8.mm,2.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 — bottom in-plane leg (Movement BL)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 — bottom in-plane leg (Movement BL)"
+  face = grp.entities.add_face([33.mm,-13.mm,2.mm], [753.mm,-13.mm,2.mm], [753.mm,-8.mm,2.mm], [33.mm,-8.mm,2.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 — left upstand (Movement BL)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 — left upstand (Movement BL)"
+  face = grp.entities.add_face([33.mm,-58.mm,2.mm], [38.mm,-58.mm,2.mm], [38.mm,-8.mm,2.mm], [33.mm,-8.mm,2.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(720.mm)
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 — left in-plane leg (Movement BL)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 — left in-plane leg (Movement BL)"
+  face = grp.entities.add_face([33.mm,-13.mm,2.mm], [83.mm,-13.mm,2.mm], [83.mm,-8.mm,2.mm], [33.mm,-8.mm,2.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(720.mm)
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+mvfl_BL = model.definitions.add("Float BL")
+ents = mvfl_BL.entities
+  # Horizontal X slide (SWING, purple) (Movement BL)
+  grp = ents.add_group
+  grp.name = "Horizontal X slide (SWING, purple) (Movement BL)"
+  face = grp.entities.add_face([80.mm,2263.mm,156.mm], [220.mm,2263.mm,156.mm], [220.mm,2277.mm,156.mm], [80.mm,2277.mm,156.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X slide (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide (SWING, purple) (Movement BL)")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-joint (Ruland USKC12-6-6-SS) (Movement BL)
+  grp = ents.add_group
+  grp.name = "U-joint (Ruland USKC12-6-6-SS) (Movement BL)"
+  face = grp.entities.add_face([138.mm,2258.mm,146.mm], [162.mm,2258.mm,146.mm], [162.mm,2282.mm,146.mm], [138.mm,2282.mm,146.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+mvpan_BL_inst = mvfl_BL.entities.add_instance(mvpan_BL, Geom::Transformation.translation([150.mm, 2270.mm, 158.mm]))
+mvpan_BL_inst.name = "Panel tilt BL"; mvpan_BL_inst.layer = model.layers["Movement"]
+mvo_BL = model.definitions.add("Carriage BL")
+ents = mvo_BL.entities
+  # Acetal skate wheel Ø32 (Movement BL) 2270
+  grp = ents.add_group
+  grp.name = "Acetal skate wheel Ø32 (Movement BL) 2270"
+  ge = grp.entities
+  circle = ge.add_circle([142.mm,2270.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal skate wheel Ø32 (Movement BL) 2310
+  grp = ents.add_group
+  grp.name = "Acetal skate wheel Ø32 (Movement BL) 2310"
+  ge = grp.entities
+  circle = ge.add_circle([142.mm,2310.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (Movement BL)
+  grp = ents.add_group
+  grp.name = "Carriage plate (Movement BL)"
+  face = grp.entities.add_face([177.mm,2263.mm,154.mm], [191.mm,2263.mm,154.mm], [191.mm,2349.mm,154.mm], [177.mm,2349.mm,154.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(145.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z slide rail (TILT/deploy, green) (Movement BL)
+  grp = ents.add_group
+  grp.name = "Vertical Z slide rail (TILT/deploy, green) (Movement BL)"
+  face = grp.entities.add_face([180.mm,2263.mm,140.mm], [196.mm,2263.mm,140.mm], [196.mm,2281.mm,140.mm], [180.mm,2281.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(360.mm)
+  mat = model.materials["Vertical Z slide rail (TILT/deploy, green) (Movement BL)"] || model.materials.add("Vertical Z slide rail (TILT/deploy, green) (Movement BL)")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+mvfl_BL_inst = mvo_BL.entities.add_instance(mvfl_BL, Geom::Transformation.new)
+mvfl_BL_inst.name = "Float BL"; mvfl_BL_inst.layer = model.layers["Movement"]
+mvp_BL = model.definitions.add("Movement BL")
+mvo_BL_inst = mvp_BL.entities.add_instance(mvo_BL, Geom::Transformation.new)
+mvo_BL_inst.name = "Carriage BL"; mvo_BL_inst.layer = model.layers["Movement"]
+mvp_BL_inst = entities.add_instance(mvp_BL, Geom::Transformation.new)
+mvp_BL_inst.name = "Movement BL"; mvp_BL_inst.layer = model.layers["Movement"]
+da = "dynamic_attributes"
+[mvp_BL, mvp_BL_inst].each do |e|
+  e.set_attribute(da, "_name", "MovementBL"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "move", 0.0)
+end
+mvp_BL_inst.set_attribute(da, "_move_access", "VIEW")
+mvp_BL_inst.set_attribute(da, "_move_label", "Flip BL: home <-> deployed (roll + tilt, then deploy along green Z)")
+mvp_BL_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1)')
+mvp_BL_inst.set_attribute(da, "_onclick_access", "NONE")
+# carriage rolls FORWARD in Y — PHASE 1 (drive 0->0.5)
+[mvo_BL, mvo_BL_inst].each do |e|
+  e.set_attribute(da, "_name", "CarriageBL"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "y", 0.0)
+end
+mvo_BL_inst.set_attribute(da, "_drive_formula", "MovementBL!move")
+mvo_BL_inst.set_attribute(da, "_y_formula", "(drive + 0.5 - ABS(drive - 0.5)) * 320")
+# float (U-joint + panel) DEPLOYS by sliding along the GREEN Z slide — PHASE 2 (drive 0.5->1)
+[mvfl_BL, mvfl_BL_inst].each do |e|
+  e.set_attribute(da, "_name", "FloatBL"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "z", 0.0)
+end
+mvfl_BL_inst.set_attribute(da, "_drive_formula", "CarriageBL!drive")
+mvfl_BL_inst.set_attribute(da, "_z_formula", "(drive - 0.5 + ABS(drive - 0.5)) * 300")
+# panel tiltS about the U-joint (rotx=tilt / rotz=swing) — PHASE 1 (drive 0->0.5)
+[mvpan_BL, mvpan_BL_inst].each do |e|
+  e.set_attribute(da, "_name", "PanelTiltBL"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "rotx", 0.0)
+end
+mvpan_BL_inst.set_attribute(da, "_drive_formula", "FloatBL!drive")
+mvpan_BL_inst.set_attribute(da, "_rotx_formula", "(drive + 0.5 - ABS(drive - 0.5)) * 30")
+mvtxt_BL = entities.add_text("CLICK BL: 1) tilt toward pinhole  2) deploy along the GREEN Z-slide", Geom::Point3d.new(570.mm, 2762.mm, 680.mm), Geom::Vector3d.new(300.mm, -400.mm, 300.mm))
+mvtxt_BL.layer = model.layers["Movement"] rescue nil
+
+# ═══ Movement — TL corner: ONE click FLIPS home <-> deployed (roll forward + tilt, then deploy along green Z). ═══
+mvpan_TL = model.definitions.add("Panel tilt TL")
+ents = mvpan_TL.entities
+  # 304 SS corner plate (Movement TL)
+  grp = ents.add_group
+  grp.name = "304 SS corner plate (Movement TL)"
+  face = grp.entities.add_face([-14.mm,-16.mm,-43.mm], [20.mm,-16.mm,-43.mm], [20.mm,0.mm,-43.mm], [-14.mm,0.mm,-43.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # ACM film-panel corner — partial ghost (Movement TL)
+  grp = ents.add_group
+  grp.name = "ACM film-panel corner — partial ghost (Movement TL)"
+  face = grp.entities.add_face([33.mm,-8.mm,-718.mm], [753.mm,-8.mm,-718.mm], [753.mm,-4.mm,-718.mm], [33.mm,-4.mm,-718.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(720.mm)
+  mat = model.materials["ACM film-panel corner — partial ghost (Movement BL)"] || model.materials.add("ACM film-panel corner — partial ghost (Movement BL)")
+  mat.color = Sketchup::Color.new(31, 59, 102)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # Film frame 2x2 6061 — top upstand (Movement TL)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 — top upstand (Movement TL)"
+  face = grp.entities.add_face([33.mm,-58.mm,-3.mm], [753.mm,-58.mm,-3.mm], [753.mm,-8.mm,-3.mm], [33.mm,-8.mm,-3.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 — top in-plane leg (Movement TL)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 — top in-plane leg (Movement TL)"
+  face = grp.entities.add_face([33.mm,-13.mm,-48.mm], [753.mm,-13.mm,-48.mm], [753.mm,-8.mm,-48.mm], [33.mm,-8.mm,-48.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 — left upstand (Movement TL)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 — left upstand (Movement TL)"
+  face = grp.entities.add_face([33.mm,-58.mm,-718.mm], [38.mm,-58.mm,-718.mm], [38.mm,-8.mm,-718.mm], [33.mm,-8.mm,-718.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(720.mm)
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 — left in-plane leg (Movement TL)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 — left in-plane leg (Movement TL)"
+  face = grp.entities.add_face([33.mm,-13.mm,-718.mm], [83.mm,-13.mm,-718.mm], [83.mm,-8.mm,-718.mm], [33.mm,-8.mm,-718.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(720.mm)
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+mvfl_TL = model.definitions.add("Float TL")
+ents = mvfl_TL.entities
+  # Horizontal X slide (SWING, purple) (Movement TL)
+  grp = ents.add_group
+  grp.name = "Horizontal X slide (SWING, purple) (Movement TL)"
+  face = grp.entities.add_face([80.mm,2263.mm,2286.mm], [220.mm,2263.mm,2286.mm], [220.mm,2277.mm,2286.mm], [80.mm,2277.mm,2286.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X slide (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide (SWING, purple) (Movement BL)")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-joint (Ruland USKC12-6-6-SS) (Movement TL)
+  grp = ents.add_group
+  grp.name = "U-joint (Ruland USKC12-6-6-SS) (Movement TL)"
+  face = grp.entities.add_face([138.mm,2258.mm,2276.mm], [162.mm,2258.mm,2276.mm], [162.mm,2282.mm,2276.mm], [138.mm,2282.mm,2276.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+mvpan_TL_inst = mvfl_TL.entities.add_instance(mvpan_TL, Geom::Transformation.translation([150.mm, 2270.mm, 2288.mm]))
+mvpan_TL_inst.name = "Panel tilt TL"; mvpan_TL_inst.layer = model.layers["Movement"]
+mvo_TL = model.definitions.add("Carriage TL")
+ents = mvo_TL.entities
+  # Acetal guide wheel Ø32 (Movement TL) 2270
+  grp = ents.add_group
+  grp.name = "Acetal guide wheel Ø32 (Movement TL) 2270"
+  ge = grp.entities
+  circle = ge.add_circle([124.mm,2270.mm,2317.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal guide wheel Ø32 (Movement TL) 2310
+  grp = ents.add_group
+  grp.name = "Acetal guide wheel Ø32 (Movement TL) 2310"
+  ge = grp.entities
+  circle = ge.add_circle([124.mm,2310.mm,2317.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke arm (Movement TL) 117
+  grp = ents.add_group
+  grp.name = "Yoke arm (Movement TL) 117"
+  face = grp.entities.add_face([115.mm,2228.mm,2286.mm], [119.mm,2228.mm,2286.mm], [119.mm,2296.mm,2286.mm], [115.mm,2296.mm,2286.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(31.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke arm (Movement TL) 183
+  grp = ents.add_group
+  grp.name = "Yoke arm (Movement TL) 183"
+  face = grp.entities.add_face([181.mm,2228.mm,2286.mm], [185.mm,2228.mm,2286.mm], [185.mm,2296.mm,2286.mm], [181.mm,2296.mm,2286.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(31.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke cross-piece (Movement TL)
+  grp = ents.add_group
+  grp.name = "Yoke cross-piece (Movement TL)"
+  face = grp.entities.add_face([115.mm,2228.mm,2278.mm], [185.mm,2228.mm,2278.mm], [185.mm,2296.mm,2278.mm], [115.mm,2296.mm,2278.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke rail → carriage (Movement TL)
+  grp = ents.add_group
+  grp.name = "Yoke rail → carriage (Movement TL)"
+  face = grp.entities.add_face([183.mm,2228.mm,2280.mm], [208.mm,2228.mm,2280.mm], [208.mm,2296.mm,2280.mm], [183.mm,2296.mm,2280.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (Movement TL)
+  grp = ents.add_group
+  grp.name = "Carriage plate (Movement TL)"
+  face = grp.entities.add_face([196.mm,2263.mm,2284.mm], [210.mm,2263.mm,2284.mm], [210.mm,2349.mm,2284.mm], [196.mm,2349.mm,2284.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(51.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z slide rail (TILT/deploy, green) (Movement TL)
+  grp = ents.add_group
+  grp.name = "Vertical Z slide rail (TILT/deploy, green) (Movement TL)"
+  face = grp.entities.add_face([199.mm,2263.mm,1950.mm], [215.mm,2263.mm,1950.mm], [215.mm,2281.mm,1950.mm], [199.mm,2281.mm,1950.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(360.mm)
+  mat = model.materials["Vertical Z slide rail (TILT/deploy, green) (Movement BL)"] || model.materials.add("Vertical Z slide rail (TILT/deploy, green) (Movement BL)")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+mvfl_TL_inst = mvo_TL.entities.add_instance(mvfl_TL, Geom::Transformation.new)
+mvfl_TL_inst.name = "Float TL"; mvfl_TL_inst.layer = model.layers["Movement"]
+mvp_TL = model.definitions.add("Movement TL")
+mvo_TL_inst = mvp_TL.entities.add_instance(mvo_TL, Geom::Transformation.new)
+mvo_TL_inst.name = "Carriage TL"; mvo_TL_inst.layer = model.layers["Movement"]
+mvp_TL_inst = entities.add_instance(mvp_TL, Geom::Transformation.new)
+mvp_TL_inst.name = "Movement TL"; mvp_TL_inst.layer = model.layers["Movement"]
+da = "dynamic_attributes"
+[mvp_TL, mvp_TL_inst].each do |e|
+  e.set_attribute(da, "_name", "MovementTL"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "move", 0.0)
+end
+mvp_TL_inst.set_attribute(da, "_move_access", "VIEW")
+mvp_TL_inst.set_attribute(da, "_move_label", "Flip TL: home <-> deployed (roll + tilt, then deploy along green Z)")
+mvp_TL_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1)')
+mvp_TL_inst.set_attribute(da, "_onclick_access", "NONE")
+# carriage rolls FORWARD in Y — PHASE 1 (drive 0->0.5)
+[mvo_TL, mvo_TL_inst].each do |e|
+  e.set_attribute(da, "_name", "CarriageTL"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "y", 0.0)
+end
+mvo_TL_inst.set_attribute(da, "_drive_formula", "MovementTL!move")
+mvo_TL_inst.set_attribute(da, "_y_formula", "(drive + 0.5 - ABS(drive - 0.5)) * 320")
+# float (U-joint + panel) DEPLOYS by sliding along the GREEN Z slide — PHASE 2 (drive 0.5->1)
+[mvfl_TL, mvfl_TL_inst].each do |e|
+  e.set_attribute(da, "_name", "FloatTL"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "z", 0.0)
+end
+mvfl_TL_inst.set_attribute(da, "_drive_formula", "CarriageTL!drive")
+mvfl_TL_inst.set_attribute(da, "_z_formula", "(drive - 0.5 + ABS(drive - 0.5)) * -300")
+# panel tiltS about the U-joint (rotx=tilt / rotz=swing) — PHASE 1 (drive 0->0.5)
+[mvpan_TL, mvpan_TL_inst].each do |e|
+  e.set_attribute(da, "_name", "PanelTiltTL"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "rotx", 0.0)
+end
+mvpan_TL_inst.set_attribute(da, "_drive_formula", "FloatTL!drive")
+mvpan_TL_inst.set_attribute(da, "_rotx_formula", "(drive + 0.5 - ABS(drive - 0.5)) * -30")
+mvtxt_TL = entities.add_text("CLICK TL: 1) tilt toward pinhole  2) deploy along the GREEN Z-slide", Geom::Point3d.new(570.mm, 2762.mm, 1770.mm), Geom::Vector3d.new(300.mm, -400.mm, -300.mm))
+mvtxt_TL.layer = model.layers["Movement"] rescue nil
+
+# ═══ Movement — BR corner: ONE click FLIPS home <-> deployed (roll forward + tilt, then deploy along green Z). ═══
+mvpan_BR = model.definitions.add("Panel tilt BR")
+ents = mvpan_BR.entities
+  # 304 SS corner plate (Movement BR)
+  grp = ents.add_group
+  grp.name = "304 SS corner plate (Movement BR)"
+  face = grp.entities.add_face([-20.mm,-16.mm,7.mm], [14.mm,-16.mm,7.mm], [14.mm,0.mm,7.mm], [-20.mm,0.mm,7.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # ACM film-panel corner — partial ghost (Movement BR)
+  grp = ents.add_group
+  grp.name = "ACM film-panel corner — partial ghost (Movement BR)"
+  face = grp.entities.add_face([-753.mm,-8.mm,2.mm], [-33.mm,-8.mm,2.mm], [-33.mm,-4.mm,2.mm], [-753.mm,-4.mm,2.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(720.mm)
+  mat = model.materials["ACM film-panel corner — partial ghost (Movement BL)"] || model.materials.add("ACM film-panel corner — partial ghost (Movement BL)")
+  mat.color = Sketchup::Color.new(31, 59, 102)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # Film frame 2x2 6061 — bottom upstand (Movement BR)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 — bottom upstand (Movement BR)"
+  face = grp.entities.add_face([-753.mm,-58.mm,2.mm], [-33.mm,-58.mm,2.mm], [-33.mm,-8.mm,2.mm], [-753.mm,-8.mm,2.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 — bottom in-plane leg (Movement BR)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 — bottom in-plane leg (Movement BR)"
+  face = grp.entities.add_face([-753.mm,-13.mm,2.mm], [-33.mm,-13.mm,2.mm], [-33.mm,-8.mm,2.mm], [-753.mm,-8.mm,2.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 — right upstand (Movement BR)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 — right upstand (Movement BR)"
+  face = grp.entities.add_face([-38.mm,-58.mm,2.mm], [-33.mm,-58.mm,2.mm], [-33.mm,-8.mm,2.mm], [-38.mm,-8.mm,2.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(720.mm)
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 — right in-plane leg (Movement BR)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 — right in-plane leg (Movement BR)"
+  face = grp.entities.add_face([-83.mm,-13.mm,2.mm], [-33.mm,-13.mm,2.mm], [-33.mm,-8.mm,2.mm], [-83.mm,-8.mm,2.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(720.mm)
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+mvfl_BR = model.definitions.add("Float BR")
+ents = mvfl_BR.entities
+  # Horizontal X slide (SWING, purple) (Movement BR)
+  grp = ents.add_group
+  grp.name = "Horizontal X slide (SWING, purple) (Movement BR)"
+  face = grp.entities.add_face([1680.mm,2263.mm,156.mm], [1820.mm,2263.mm,156.mm], [1820.mm,2277.mm,156.mm], [1680.mm,2277.mm,156.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X slide (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide (SWING, purple) (Movement BL)")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-joint (Ruland USKC12-6-6-SS) (Movement BR)
+  grp = ents.add_group
+  grp.name = "U-joint (Ruland USKC12-6-6-SS) (Movement BR)"
+  face = grp.entities.add_face([1738.mm,2258.mm,146.mm], [1762.mm,2258.mm,146.mm], [1762.mm,2282.mm,146.mm], [1738.mm,2282.mm,146.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+mvpan_BR_inst = mvfl_BR.entities.add_instance(mvpan_BR, Geom::Transformation.translation([1750.mm, 2270.mm, 158.mm]))
+mvpan_BR_inst.name = "Panel tilt BR"; mvpan_BR_inst.layer = model.layers["Movement"]
+mvo_BR = model.definitions.add("Carriage BR")
+ents = mvo_BR.entities
+  # Acetal skate wheel Ø32 (Movement BR) 2270
+  grp = ents.add_group
+  grp.name = "Acetal skate wheel Ø32 (Movement BR) 2270"
+  ge = grp.entities
+  circle = ge.add_circle([1742.mm,2270.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal skate wheel Ø32 (Movement BR) 2310
+  grp = ents.add_group
+  grp.name = "Acetal skate wheel Ø32 (Movement BR) 2310"
+  ge = grp.entities
+  circle = ge.add_circle([1742.mm,2310.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (Movement BR)
+  grp = ents.add_group
+  grp.name = "Carriage plate (Movement BR)"
+  face = grp.entities.add_face([1709.mm,2263.mm,154.mm], [1723.mm,2263.mm,154.mm], [1723.mm,2349.mm,154.mm], [1709.mm,2349.mm,154.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(145.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z slide rail (TILT/deploy, green) (Movement BR)
+  grp = ents.add_group
+  grp.name = "Vertical Z slide rail (TILT/deploy, green) (Movement BR)"
+  face = grp.entities.add_face([1704.mm,2263.mm,140.mm], [1720.mm,2263.mm,140.mm], [1720.mm,2281.mm,140.mm], [1704.mm,2281.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(360.mm)
+  mat = model.materials["Vertical Z slide rail (TILT/deploy, green) (Movement BL)"] || model.materials.add("Vertical Z slide rail (TILT/deploy, green) (Movement BL)")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+mvfl_BR_inst = mvo_BR.entities.add_instance(mvfl_BR, Geom::Transformation.new)
+mvfl_BR_inst.name = "Float BR"; mvfl_BR_inst.layer = model.layers["Movement"]
+mvp_BR = model.definitions.add("Movement BR")
+mvo_BR_inst = mvp_BR.entities.add_instance(mvo_BR, Geom::Transformation.new)
+mvo_BR_inst.name = "Carriage BR"; mvo_BR_inst.layer = model.layers["Movement"]
+mvp_BR_inst = entities.add_instance(mvp_BR, Geom::Transformation.new)
+mvp_BR_inst.name = "Movement BR"; mvp_BR_inst.layer = model.layers["Movement"]
+da = "dynamic_attributes"
+[mvp_BR, mvp_BR_inst].each do |e|
+  e.set_attribute(da, "_name", "MovementBR"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "move", 0.0)
+end
+mvp_BR_inst.set_attribute(da, "_move_access", "VIEW")
+mvp_BR_inst.set_attribute(da, "_move_label", "Flip BR: home <-> deployed (roll + swing, then deploy along green Z)")
+mvp_BR_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1)')
+mvp_BR_inst.set_attribute(da, "_onclick_access", "NONE")
+# carriage rolls FORWARD in Y — PHASE 1 (drive 0->0.5)
+[mvo_BR, mvo_BR_inst].each do |e|
+  e.set_attribute(da, "_name", "CarriageBR"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "y", 0.0)
+end
+mvo_BR_inst.set_attribute(da, "_drive_formula", "MovementBR!move")
+mvo_BR_inst.set_attribute(da, "_y_formula", "(drive + 0.5 - ABS(drive - 0.5)) * 320")
+# float (U-joint + panel) DEPLOYS by sliding along the GREEN Z slide — PHASE 2 (drive 0.5->1)
+[mvfl_BR, mvfl_BR_inst].each do |e|
+  e.set_attribute(da, "_name", "FloatBR"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "z", 0.0)
+end
+mvfl_BR_inst.set_attribute(da, "_drive_formula", "CarriageBR!drive")
+mvfl_BR_inst.set_attribute(da, "_z_formula", "(drive - 0.5 + ABS(drive - 0.5)) * 300")
+# panel swingS about the U-joint (rotx=tilt / rotz=swing) — PHASE 1 (drive 0->0.5)
+[mvpan_BR, mvpan_BR_inst].each do |e|
+  e.set_attribute(da, "_name", "PanelTiltBR"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "rotz", 0.0)
+end
+mvpan_BR_inst.set_attribute(da, "_drive_formula", "FloatBR!drive")
+mvpan_BR_inst.set_attribute(da, "_rotz_formula", "(drive + 0.5 - ABS(drive - 0.5)) * 30")
+mvtxt_BR = entities.add_text("CLICK BR: 1) swing toward pinhole  2) deploy along the GREEN Z-slide", Geom::Point3d.new(1330.mm, 2762.mm, 680.mm), Geom::Vector3d.new(-300.mm, -400.mm, 300.mm))
+mvtxt_BR.layer = model.layers["Movement"] rescue nil
+
 
 # ── "Labeled" callouts (Labels tag) ──
 
@@ -4122,7 +4853,7 @@ alvinr.github.io/tbs", lanc)
 model.definitions.purge_unused
 model.materials.purge_unused
 
-keep_tags = ["Corners", "Film Plane", "Pinhole", "Context", "Labels"]
+keep_tags = ["Corners", "Film Plane", "Pinhole", "Context", "Movement", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -4130,7 +4861,7 @@ model.layers.to_a.each { |l|
 }
 
 # ── iso scenes (Overview [with context] / Corner detail) ──
-[["Overview", ["Corners", "Film Plane", "Pinhole", "Context"], [2400.mm, 1562.mm, 1194.mm, 9500.mm]], ["Corner detail", ["Corners", "Film Plane", "Pinhole"], [150.mm, 2262.mm, 190.mm, 620.mm]]].each { |name, tags, tgt|
+[["Overview", ["Corners", "Film Plane", "Pinhole", "Context"], [2400.mm, 1562.mm, 1194.mm, 9500.mm]], ["Corner detail", ["Corners", "Film Plane", "Pinhole"], [150.mm, 2262.mm, 190.mm, 620.mm]], ["Movement — BL", ["Movement"], [400.mm, 2512.mm, 510.mm, 2000.mm]], ["Movement — TL", ["Movement"], [400.mm, 2512.mm, 1940.mm, 2000.mm]], ["Movement — BR", ["Movement"], [1500.mm, 2512.mm, 510.mm, 2000.mm]]].each { |name, tags, tgt|
   model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
   t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])
   cdir = Geom::Vector3d.new(0.5, -0.7, 0.4); cdir.normalize!

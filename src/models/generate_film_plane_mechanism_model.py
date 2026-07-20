@@ -112,13 +112,49 @@ def channel_flat(name, cx, zc, y0, ylen, tag, alpha=None):
     return P
 
 
+def corner_slide_parts(cx, fcx, fz, cin, is_bot, ty):
+    """SINGLE source for the drift-prone corner assembly — the green Z / purple X cross-slide ways, the U-joint
+    + its input/output stubs + 4040N12 shaft support, the frame-corner bolt, and the 304 corner plate. Returns
+    absolute-coordinate part-specs keyed by name; the CALLER supplies its own label (emit_slide) and any
+    coordinate OFFSET (0 = absolute; -centre for the whole-plane frame; -pivot for the Movement panel). ty is
+    the corner's backing-side Y (FP_Y, or MID_Y for the whole plane). Positions/dims match the Movement +
+    whole-plane scenes (Sheet-3 slide-clearance fixes); corner() re-syncs to these.
+      spec = (kind, x, y, z, a, b, c, color, axis)   kind ∈ {box (a×b×c), cyl (Ø a, len b, axis)}."""
+    Lz, Lx = 250, 260
+    gx0 = (cx + cin * 26 - 5) if is_bot else ((fcx - 20) if cin > 0 else (fcx + 4))  # green outboard of the frame leg
+    gz0 = (fz - 20) if is_bot else (fz - 4 - Lz)        # green Z (bottom up / top down, below the flat rail)
+    px0 = (cx - 20) if cin > 0 else (cx + 20 - Lx)
+    pz_purple = (fz - 18) if is_bot else (fz + 4)        # purple clear of the film face
+    stub_x0 = (cx + 5) if cin > 0 else (cx - 51)
+    sup_x0 = (cx + 26) if cin > 0 else (cx - 49)
+    cpx0 = (cx - 14) if cin > 0 else (cx - 20)
+    cpz0 = (fz + 5) if is_bot else (fz - 45)
+    return {
+        "green":         ("box", gx0, ty + 1, gz0, 10, 18, Lz, C_TILT, None),
+        "purple":        ("box", px0, ty + 1, pz_purple, Lx, 14, 14, C_SWING, None),
+        "ujoint":        ("box", cx - 12, ty - 4, fz - 14, 24, 24, 24, C_CROSS, None),
+        "input_stub":    ("cyl", stub_x0, ty + 8, fz, 4.75, 46, None, C_STEEL, "x"),
+        "shaft_support": ("box", sup_x0, ty - 1, fz - 11, 23, 18, 22, C_STEEL, None),
+        "output_stub":   ("cyl", cx, ty - 14, fz, 4.75, 20, None, C_STEEL, "y"),
+        "frame_bolt":    ("cyl", fcx, ty - 6, fz, 3, 18, None, C_STEEL, "y"),
+        "corner_plate":  ("box", cpx0, ty - 8, cpz0, 34, 16, 40, C_STEEL, None),
+    }
+
+
+def emit_slide(label, spec, ox=0, oy=0, oz=0):
+    """Emit one corner_slide_parts spec as ruby, applying an (ox,oy,oz) coordinate offset."""
+    kind, x, y, z, a, b, c, color, axis = spec
+    if kind == "box":
+        return ov.ruby_box(label, x + ox, y + oy, z + oz, a, b, c, color=color)
+    return ov.ruby_cylinder(label, x + ox, y + oy, z + oz, a, b, color=color, axis=axis)
+
+
 def corner(tag, cx, fz, zc, cin, side):
     """One corner on a 304 U-channel depth rail. BOTTOM = web-vertical 4×2 (weight); TOP = flat 3×1.5 (guide).
       cx = corner X   fz = film-corner Z   zc = rail web-centre Z   cin = +1 (left) / -1 (right)
       side = 'L' drop-in (stub + welded bridge + removable + support + pinhole gusset) / 'R' flanged."""
     P = []
     ty = FP_Y
-    xr0 = cx if cin > 0 else cx - 260
     is_bot = fz < ov.C_HGT / 2
     if is_bot:
         rail = lambda nm, y0, yl, al=None: channel_v(nm, cx, zc, y0, yl, tag, cin, al)
@@ -211,34 +247,19 @@ def corner(tag, cx, fz, zc, cin, side):
     # ── mechanism, inboard: Z slide (tilt) → X slide (swing) → U-joint → the FILM-PLANE CORNER ──
     # The cross-slides sit on the BACKING side of the film plane (Yd > FP_Y) so the frame SITS ON them — the
     # muslin-clamp perp leg projects the other way (toward the pinhole), so nothing is drawn through the slides.
-    # the purple X (swing) way sits in the gap CLEAR of the film face (below the bottom edge / above the top
-    # edge) so the 260mm bar doesn't read as crossing the film in the 3D (2D shows it end-on, so unaffected)
-    pz_purple = (fz - 18) if is_bot else (fz + 4)
-    _fcx = cx + cin * FILM_INSET
-    gx_green = (cx + cin * 26 - 5) if is_bot else ((_fcx - 20) if cin > 0 else (_fcx + 4))  # outboard of the frame leg
-    gz_green = (min(fz, rz) - 4) if is_bot else (fz - 4 - (abs(rz - fz) + 20))               # top: below the flat rail
-    P.append(ov.ruby_box(f"Vertical Z slide rail (TILT, green) {tag}", gx_green, ty + 1, gz_green, 10, 18, abs(rz - fz) + 20, color=C_TILT))
-    P.append(ov.ruby_box(f"Horizontal X slide rail (SWING, purple) {tag}", xr0, ty + 1, pz_purple, 260, 14, 14, color=C_SWING))
-    P.append(ov.ruby_box(f"U-joint (Ruland USKC12-6-6-SS, keyway+clamp) {tag}", cx - 12, ty - 4, fz - 14, 24, 24, 24, color=C_CROSS))
-    # input stub Ø9.5 (3/8") from the X-carriage into the U-joint bore, and the 4040N12 304 shaft
-    # support (two-piece clamp) that fixes that stub to the X (swing) slide — Sheet 9 View B.
-    stub_x0 = cx + 5 if cin > 0 else cx - 51
-    sup_x0  = cx + 26 if cin > 0 else cx - 49
-    P.append(ov.ruby_cylinder(f"Input stub 3/8 (X slide → U-joint) {tag}", stub_x0, ty + 8, fz, 4.75, 46, color=C_STEEL, axis="x"))
-    P.append(ov.ruby_box(f"4040N12 304 shaft support (clamps input stub → X slide) {tag}", sup_x0, ty - 1, fz - 11, 23, 18, 22, color=C_STEEL))
-    # output stub Ø9.5 (U-joint 2nd bore → 304 SS corner plate), secured by a countersunk cap screw (Sheet 9 B, J4)
-    P.append(ov.ruby_cylinder(f"Output stub 3/8 (U-joint → corner plate) {tag}", cx, ty - 14, fz, 4.75, 20, color=C_STEEL, axis="y"))
-    # FILM-PLANE FRAME CORNER — bolts onto the U-joint, so the ghost panel is carried by this corner.
-    # Kept INBOARD of the web (outboard edge at the web inboard face) so the beam-flush cut support clears it.
-    ybk = min(ty - 8, FP_Y - 4)
-    fbx = cx - cin * (CW_BOT / 2 - HB_T)                 # web inboard face = the moving assembly's outboard limit
-    # Corner plate reduced (was 48×52); on the BOTTOM corners its floor is held 25mm above the walkway top
-    _walk_top = ov.RAIL_OFF_BOT - 20                       # walkway (hard-floor) top = Z140
-    plate_z0 = (_walk_top + 25) if is_bot else (fz - 14)   # bottom: 25mm clearance to the walkway
-    P.append(ov.ruby_box(f"Corner plate 304 SS (U-joint mount — angle frame → U-joint) {tag}", min(fbx, fbx + cin * 34), ybk, plate_z0, 34, (FP_Y + 8) - ybk, 40, color=C_STEEL))
-    # the film-frame angle CORNER bolts onto this 304 SS plate → the ACM is carried ACM → angle frame → 304 SS corner plate → U-joint
+    # muslin-clamp perp leg projects the other way (toward the pinhole). Green Z / purple X ways, U-joint +
+    # stubs + 4040N12 shaft support, 304 corner plate, and the frame-corner bolt are the SHARED assembly
+    # (corner_slide_parts) — the single source these + the Movement + whole-plane scenes all draw from.
     fcx = cx + cin * FILM_INSET                          # film-plane corner (frame heel)
-    P.append(ov.ruby_cylinder(f"Frame-corner bolt (angle frame → bracket) {tag}", fcx, FP_Y - 6, fz, 3, 18, color=C_STEEL, axis="y"))
+    sp = corner_slide_parts(cx, fcx, fz, cin, is_bot, FP_Y)
+    P.append(emit_slide(f"Vertical Z slide rail (TILT, green) {tag}", sp["green"]))
+    P.append(emit_slide(f"Horizontal X slide rail (SWING, purple) {tag}", sp["purple"]))
+    P.append(emit_slide(f"U-joint (Ruland USKC12-6-6-SS, keyway+clamp) {tag}", sp["ujoint"]))
+    P.append(emit_slide(f"Input stub 3/8 (X slide → U-joint) {tag}", sp["input_stub"]))
+    P.append(emit_slide(f"4040N12 304 shaft support (clamps input stub → X slide) {tag}", sp["shaft_support"]))
+    P.append(emit_slide(f"Output stub 3/8 (U-joint → corner plate) {tag}", sp["output_stub"]))
+    P.append(emit_slide(f"Corner plate 304 SS (U-joint mount — angle frame → U-joint) {tag}", sp["corner_plate"]))
+    P.append(emit_slide(f"Frame-corner bolt (angle frame → bracket) {tag}", sp["frame_bolt"]))
     return "\n".join(P)
 
 
@@ -383,23 +404,13 @@ def movement(corner="BL", two_way=False):
     chan_w = CW_BOT if is_bot else CD_TOP
     inb = cx + cin * (chan_w / 2 + 14)                 # carriage line — inboard of the channel opening
     rz = (zc - CD_BOT / 2 + HB_T + 16) if is_bot else (zc + CW_TOP / 2 - HB_T - 16)   # wheel-centre Z
-    # green Z way (10 wide): bottom corners → seat it IN the ~14mm gap between the rail and the film edge
-    # (clear of both); top corners → inboard (the wide flat guide rail leaves no outboard gap, but its rail
-    # is high so an inboard green clears it).
-    Lz, Lx = 250, 260
-    gx0 = (cx + cin * 26 - 5) if is_bot else ((fcx - 20) if cin > 0 else (fcx + 4))  # outboard of the frame vertical leg
     cpx0c = (inb - 6) if cin > 0 else (inb - 8)        # carriage-plate min-x
-    # Per Sheet 3 EACH corner carries BOTH cross-slides: a ~250mm green Z + a ~260mm purple X (316 flat bar
-    # + UHMW + gib), LOCAL. The ACTIVE one (green for tilt, purple for swing) is the base WAY (fixed to the
-    # carriage) that the stack floats along; the OTHER rides the stack.
-    gz0 = (fz - 20) if is_bot else (fz - 4 - Lz)       # green Z way (bottom up / top down, top below the flat rail)
-    px0 = (cx - 20) if cin > 0 else (cx + 20 - Lx)      # purple X way (local, inboard of the corner)
-    # the purple X (swing) way sits in the gap CLEAR of the film face — below the bottom edge (bottom corners)
-    # or above the top edge (top corners) — so it doesn't cross the film. (Bottom: fz is the bottom edge, film
-    # grows up; top: fz is the top edge, film grows down.)
-    pz_purple = (fz - 18) if is_bot else (fz + 4)
-    green_way = ov.ruby_box(f"Vertical Z cross-slide (TILT, green ~250) (Movement {corner})", gx0, ty + 1, gz0, 10, 18, Lz, color=C_TILT)
-    purple_way = ov.ruby_box(f"Horizontal X cross-slide (SWING, purple ~260) (Movement {corner})", px0, ty + 1, pz_purple, Lx, 14, 14, color=C_SWING)
+    # Per Sheet 3 EACH corner carries BOTH cross-slides (green Z + purple X). The ACTIVE one (green for tilt,
+    # purple for swing) is the base WAY the stack floats along; the OTHER rides the stack. Both come from the
+    # SHARED corner_slide_parts (single source with corner() + the whole-plane scenes).
+    sp = corner_slide_parts(cx, fcx, fz, cin, is_bot, FP_Y)
+    green_way = emit_slide(f"Vertical Z cross-slide (TILT, green ~250) (Movement {corner})", sp["green"])
+    purple_way = emit_slide(f"Horizontal X cross-slide (SWING, purple ~260) (Movement {corner})", sp["purple"])
     if swing_corner:   # purple X is the ACTIVE way; green Z rides the stack
         deploy_rail, perp_slide = purple_way, green_way
     else:              # green Z is the ACTIVE way; purple X rides the stack
@@ -430,35 +441,31 @@ def movement(corner="BL", two_way=False):
     # the ACTIVE cross-slide way (fixed to the carriage); the stack floats a SMALL foreshortening along it
     carr.append(deploy_rail)
     # FLOAT (the OTHER cross-slide + U-joint + its mounting hardware) — floats FORESHORTEN mm along the way
-    stub_x0 = cx + 5 if cin > 0 else cx - 51
-    sup_x0 = cx + 26 if cin > 0 else cx - 49
     floatp = [
         perp_slide,
-        ov.ruby_box(f"U-joint (Ruland USKC12-6-6-SS) (Movement {corner})", cx - 12, ty - 4, fz - 14, 24, 24, 24, color=C_CROSS),
-        ov.ruby_cylinder(f"Input stub 3/8 (X slide → U-joint) (Movement {corner})", stub_x0, ty + 8, fz, 4.75, 46, color=C_STEEL, axis="x"),
-        ov.ruby_box(f"4040N12 304 shaft support (clamps stub → carrier) (Movement {corner})", sup_x0, ty - 1, fz - 11, 23, 18, 22, color=C_STEEL),
-        ov.ruby_cylinder(f"Output stub 3/8 (U-joint → corner plate) (Movement {corner})", cx, ty - 14, fz, 4.75, 20, color=C_STEEL, axis="y"),
+        emit_slide(f"U-joint (Ruland USKC12-6-6-SS) (Movement {corner})", sp["ujoint"]),
+        emit_slide(f"Input stub 3/8 (X slide → U-joint) (Movement {corner})", sp["input_stub"]),
+        emit_slide(f"4040N12 304 shaft support (clamps stub → carrier) (Movement {corner})", sp["shaft_support"]),
+        emit_slide(f"Output stub 3/8 (U-joint → corner plate) (Movement {corner})", sp["output_stub"]),
     ]
     # PANEL (corner plate + frame + ACM) — relative to the U-joint-centre pivot so it TILTS about the U-joint;
-    # the 304 corner plate lives HERE (not the float) so it stays bolted to the frame through the tilt.
+    # the 304 corner plate + frame bolt (shared parts, offset -pivot) live HERE so they stay bolted through the tilt.
     ax0 = fcx if cin > 0 else fcx - plen              # panel-body X min (grows inboard from the corner)
     az0 = fz if is_bot else fz - plen                 # panel-body Z min (grows into the film from the corner)
     hz_up = fz if is_bot else fz - AT                 # horizontal-leg (upstand / in-plane) Z, at the corner edge
     hz_in = fz if is_bot else fz - AL
     vx_up = fcx if cin > 0 else fcx - AT              # vertical-leg (upstand / in-plane) X, at the corner edge
     vx_in = fcx if cin > 0 else fcx - AL
-    cpx0 = (cx - 14) if cin > 0 else (cx - 20)        # corner-plate X min (mirrors across cx)
-    cpz0 = (fz + 5) if is_bot else (fz - 45)          # corner-plate Z min (above the U-joint / below for TR)
     hlbl = "bottom" if is_bot else "top"
     vlbl = "left" if cin > 0 else "right"
     panel = [
-        ov.ruby_box(f"304 SS corner plate (Movement {corner})", cpx0 - px, (FP_Y - 8) - py, cpz0 - pz, 34, 16, 40, color=C_STEEL),
+        emit_slide(f"304 SS corner plate (Movement {corner})", sp["corner_plate"], -px, -py, -pz),
         ov.ruby_box(f"ACM film-panel corner — partial ghost (Movement {corner})", ax0 - px, FP_Y - py, az0 - pz, plen, 4, plen, color=C_PANEL, alpha=0.30),
         ov.ruby_box(f"Film frame 2x2 6061 — {hlbl} upstand (Movement {corner})", ax0 - px, yperp - py, hz_up - pz, plen, AL, AT, color=C_FRAME),
         ov.ruby_box(f"Film frame 2x2 6061 — {hlbl} in-plane leg (Movement {corner})", ax0 - px, yin - py, hz_in - pz, plen, AT, AL, color=C_FRAME),
         ov.ruby_box(f"Film frame 2x2 6061 — {vlbl} upstand (Movement {corner})", vx_up - px, yperp - py, az0 - pz, AT, AL, plen, color=C_FRAME),
         ov.ruby_box(f"Film frame 2x2 6061 — {vlbl} in-plane leg (Movement {corner})", vx_in - px, yin - py, az0 - pz, AL, AT, plen, color=C_FRAME),
-        ov.ruby_cylinder(f"Frame-corner bolt (angle frame → corner plate) (Movement {corner})", fcx - px, (FP_Y - 6) - py, fz - pz, 3, 18, color=C_STEEL, axis="y"),
+        emit_slide(f"Frame-corner bolt (angle frame → corner plate) (Movement {corner})", sp["frame_bolt"], -px, -py, -pz),
     ]
     anchor = (cx + cin * 420, ty + 500, fz + sz * 520)
     return static_ruby, "\n".join(carr), "\n".join(floatp), "\n".join(panel), pivot, dy_fwd, deploy, rot_attr, rot_val, anchor
@@ -586,16 +593,12 @@ def plane_frame(px, pz, yc):
     # positions and the frame moves relative to them (correct); they do not follow the frame's rotation.
     for (cx, fcx, fz, zc, cin, isb) in PLANE_CORNERS:
         t = f"({int(fcx)},{int(fz)})"
-        stub_x0 = cx + 5 if cin > 0 else cx - 51
-        sup_x0 = cx + 26 if cin > 0 else cx - 49
-        cpx0 = (cx - 14) if cin > 0 else (cx - 20)
-        cpz0 = (fz + 5) if isb else (fz - 45)
-        P.append(bx(f"U-joint (Ruland USKC12-6-6-SS) {t}", cx - 12, ty - 4, fz - 14, 24, 24, 24, C_CROSS))
-        P.append(bcyl(f"Input stub 3/8 {t}", stub_x0, ty + 8, fz, 4.75, 46, C_STEEL, "x"))
-        P.append(bx(f"4040N12 304 shaft support {t}", sup_x0, ty - 1, fz - 11, 23, 18, 22, C_STEEL))
-        P.append(bcyl(f"Output stub 3/8 {t}", cx, ty - 14, fz, 4.75, 20, C_STEEL, "y"))
-        P.append(bcyl(f"Frame-corner bolt {t}", fcx, ty - 6, fz, 3, 18, C_STEEL, "y"))
-        P.append(bx(f"304 SS corner plate {t}", cpx0, ty - 8, cpz0, 34, 16, 40, C_STEEL))
+        # U-joint + stubs + shaft support + frame bolt + corner plate — SHARED (corner_slide_parts), offset -centre
+        sp = corner_slide_parts(cx, fcx, fz, cin, isb, yc)
+        for key, lbl in (("ujoint", "U-joint (Ruland USKC12-6-6-SS)"), ("input_stub", "Input stub 3/8"),
+                         ("shaft_support", "4040N12 304 shaft support"), ("output_stub", "Output stub 3/8"),
+                         ("frame_bolt", "Frame-corner bolt"), ("corner_plate", "304 SS corner plate")):
+            P.append(emit_slide(f"{lbl} {t}", sp[key], -px, -yc, -pz))
     return "\n".join(P)
 
 
@@ -606,19 +609,11 @@ def plane_carriage(cx, fz, zc, cin, isb, yc):
     ways stay RAIL-ALIGNED and the frame's U-joint SLIDES along them (the ways keep their positions and the
     frame moves relative to them — same rules as the Movement scene)."""
     ty = yc
-    Lz, Lx = 250, 260
     chan_w = CW_BOT if isb else CD_TOP
     inb = cx + cin * (chan_w / 2 + 14)
     fcx = cx + cin * FILM_INSET
     rz = (zc - CD_BOT / 2 + HB_T + 16) if isb else (zc + CW_TOP / 2 - HB_T - 16)
     cpx0c = (inb - 6) if cin > 0 else (inb - 8)
-    # green Z way — OUTBOARD of the frame vertical leg (clear of the film) so the tilting frame can't sweep
-    # through it: bottom → the rail↔film gap; top → just outboard of the film edge, dropped below the high
-    # flat guide rail (so it clears both the wide rail and the frame).
-    gx0 = (cx + cin * 26 - 5) if isb else ((fcx - 20) if cin > 0 else (fcx + 4))
-    gz0 = (fz - 20) if isb else (fz - 4 - Lz)
-    px0 = (cx - 20) if cin > 0 else (cx + 20 - Lx)
-    pz_purple = (fz - 18) if isb else (fz + 4)          # purple X way clear of the film face (below/above the edge)
     t = f"({int(cx)},{int(fz)})"
     P = []
     if isb:
@@ -635,9 +630,11 @@ def plane_carriage(cx, fz, zc, cin, isb, yc):
         P.append(ov.ruby_box(f"Yoke cross-piece {t}", cx - 35, ty - 34, yb - 22, 70, 68, 8, color=C_CAR))
         P.append(ov.ruby_box(f"Yoke rail {t}", min(cx + 33, inb), ty - 34, yb - 20, abs(inb - (cx + 33)) + 6, 68, 6, color=C_CAR))
         P.append(ov.ruby_box(f"Carriage plate {t}", cpx0c, ty + 1, zlo - 6, 14, 86, (zhi + 18) - (zlo - 6), color=C_CAR))
-    # the two cross-slide ways, RAIL-ALIGNED (fixed to the carriage) — the U-joint (in the frame) rides them
-    P.append(ov.ruby_box(f"Vertical Z cross-slide way (green) {t}", gx0, ty + 1, gz0, 10, 18, Lz, color=C_TILT))
-    P.append(ov.ruby_box(f"Horizontal X cross-slide way (purple) {t}", px0, ty + 1, pz_purple, Lx, 14, 14, color=C_SWING))
+    # the two cross-slide ways, RAIL-ALIGNED (fixed to the carriage) — SHARED (corner_slide_parts); the
+    # U-joint (in the frame) rides them, so they keep their positions and the frame moves relative to them.
+    sp = corner_slide_parts(cx, fcx, fz, cin, isb, yc)
+    P.append(emit_slide(f"Vertical Z cross-slide way (green) {t}", sp["green"]))
+    P.append(emit_slide(f"Horizontal X cross-slide way (purple) {t}", sp["purple"]))
     return "\n".join(P)
 
 

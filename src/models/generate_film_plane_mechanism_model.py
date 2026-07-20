@@ -214,8 +214,10 @@ def corner(tag, cx, fz, zc, cin, side):
     # the purple X (swing) way sits in the gap CLEAR of the film face (below the bottom edge / above the top
     # edge) so the 260mm bar doesn't read as crossing the film in the 3D (2D shows it end-on, so unaffected)
     pz_purple = (fz - 18) if is_bot else (fz + 4)
-    gx_green = (cx + cin * 26 - 5) if is_bot else (inb - 3)   # green way in the rail↔film gap (bottom) / inboard (top)
-    P.append(ov.ruby_box(f"Vertical Z slide rail (TILT, green) {tag}", gx_green, ty + 1, min(fz, rz) - 4, 10, 18, abs(rz - fz) + 20, color=C_TILT))
+    _fcx = cx + cin * FILM_INSET
+    gx_green = (cx + cin * 26 - 5) if is_bot else ((_fcx - 20) if cin > 0 else (_fcx + 4))  # outboard of the frame leg
+    gz_green = (min(fz, rz) - 4) if is_bot else (fz - 4 - (abs(rz - fz) + 20))               # top: below the flat rail
+    P.append(ov.ruby_box(f"Vertical Z slide rail (TILT, green) {tag}", gx_green, ty + 1, gz_green, 10, 18, abs(rz - fz) + 20, color=C_TILT))
     P.append(ov.ruby_box(f"Horizontal X slide rail (SWING, purple) {tag}", xr0, ty + 1, pz_purple, 260, 14, 14, color=C_SWING))
     P.append(ov.ruby_box(f"U-joint (Ruland USKC12-6-6-SS, keyway+clamp) {tag}", cx - 12, ty - 4, fz - 14, 24, 24, 24, color=C_CROSS))
     # input stub Ø9.5 (3/8") from the X-carriage into the U-joint bore, and the 4040N12 304 shaft
@@ -384,13 +386,13 @@ def movement(corner="BL", two_way=False):
     # green Z way (10 wide): bottom corners → seat it IN the ~14mm gap between the rail and the film edge
     # (clear of both); top corners → inboard (the wide flat guide rail leaves no outboard gap, but its rail
     # is high so an inboard green clears it).
-    gx0 = (cx + cin * 26 - 5) if is_bot else (inb - 3)
+    Lz, Lx = 250, 260
+    gx0 = (cx + cin * 26 - 5) if is_bot else ((fcx - 20) if cin > 0 else (fcx + 4))  # outboard of the frame vertical leg
     cpx0c = (inb - 6) if cin > 0 else (inb - 8)        # carriage-plate min-x
     # Per Sheet 3 EACH corner carries BOTH cross-slides: a ~250mm green Z + a ~260mm purple X (316 flat bar
-    # + UHMW + gib), LOCAL (~inboard of the rail). The ACTIVE one (green for tilt, purple for swing) is the
-    # base WAY (fixed to the carriage) that the stack floats along; the OTHER rides the stack.
-    Lz, Lx = 250, 260
-    gz0 = (fz - 20) if sz > 0 else (fz + 20 - Lz)       # green Z way (bottom up / top down)
+    # + UHMW + gib), LOCAL. The ACTIVE one (green for tilt, purple for swing) is the base WAY (fixed to the
+    # carriage) that the stack floats along; the OTHER rides the stack.
+    gz0 = (fz - 20) if is_bot else (fz - 4 - Lz)       # green Z way (bottom up / top down, top below the flat rail)
     px0 = (cx - 20) if cin > 0 else (cx + 20 - Lx)      # purple X way (local, inboard of the corner)
     # the purple X (swing) way sits in the gap CLEAR of the film face — below the bottom edge (bottom corners)
     # or above the top edge (top corners) — so it doesn't cross the film. (Bottom: fz is the bottom edge, film
@@ -613,8 +615,11 @@ def plane_carriage(cx, fz, zc, cin, isb, yc):
     fcx = cx + cin * FILM_INSET
     rz = (zc - CD_BOT / 2 + HB_T + 16) if isb else (zc + CW_TOP / 2 - HB_T - 16)
     cpx0c = (inb - 6) if cin > 0 else (inb - 8)
-    gx0 = (cx + cin * 26 - 5) if isb else (inb - 3)     # green Z way in the rail↔film gap (bottom) / inboard (top)
-    gz0 = (fz - 20) if isb else (fz + 20 - Lz)
+    # green Z way — OUTBOARD of the frame vertical leg (clear of the film) so the tilting frame can't sweep
+    # through it: bottom → the rail↔film gap; top → just outboard of the film edge, dropped below the high
+    # flat guide rail (so it clears both the wide rail and the frame).
+    gx0 = (cx + cin * 26 - 5) if isb else ((fcx - 20) if cin > 0 else (fcx + 4))
+    gz0 = (fz - 20) if isb else (fz - 4 - Lz)
     px0 = (cx - 20) if cin > 0 else (cx + 20 - Lx)
     pz_purple = (fz - 18) if isb else (fz + 4)          # purple X way clear of the film face (below/above the edge)
     t = f"({int(cx)},{int(fz)})"

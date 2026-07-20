@@ -337,10 +337,10 @@ CORNER_SPEC = {  # cx, zc(rail web Z), fz(film-corner Z), cin(+left/-right), fcx
     "TL": (X_L, PZ_HB_TOP, PZ1, +1, FCX_L, False),
     "TR": (X_R, PZ_HB_TOP, PZ1, -1, FCX_R, False),
 }
-SWING_CORNERS = {"BR"}  # these demo a SWING (rotz, yaw about the vertical axis) instead of a TILT (rotx)
+SWING_CORNERS = {"BR", "TR"}  # these demo a SWING (rotz, yaw about the vertical axis) instead of a TILT (rotx)
 # Movement is a SCHEMATIC demo scene — the real corners are 4.5 m apart, so the right-side corners are
 # DISPLAY-SHIFTED left to sit beside the left ones (reduce the L↔R gap). Edit the target X to taste.
-MV_TARGET_X = {"BR": 1750, "TR": 1750}
+MV_TARGET_X = {"BR": 2200, "TR": 2200}
 
 
 def movement(corner="BL"):
@@ -360,10 +360,13 @@ def movement(corner="BL"):
     cx += xdisp
     fcx += xdisp
     sz = 1 if is_bot else -1
-    deploy = sz * 300                                  # PHASE 2 slide along the GREEN (Z) slide: bottom UP / top DOWN
     swing_corner = corner in SWING_CORNERS             # SWING (rotz yaw) vs TILT (rotx) demo
     rot_attr = "rotz" if swing_corner else "rotx"
     rot_val = 30 if swing_corner else sz * 30          # PHASE 1 far edge toward the pinhole (-Y)
+    # DEPLOY (phase 2) rides the slide MATCHING the rotation: TILT → GREEN Z (bottom up / top down);
+    # SWING → PURPLE X, INBOARD (toward centre, AWAY from the corner beam) so the ACM never drives THROUGH
+    # the beam (the bottom weight beam overlaps the ACM in Z; only an inboard shift keeps it clear).
+    deploy = (cin * 300) if swing_corner else (sz * 300)
     # tilt about the U-JOINT CENTRE (not the film corner) so the frame + corner plate stay JOINED through the
     # tilt. U-joint box = (cx-12, ty-4, fz-14, 24³) → centre = (cx, ty+8, fz-2).
     pivot = (cx, ty + 8, fz - 2)
@@ -373,8 +376,20 @@ def movement(corner="BL"):
     rz = (zc - CD_BOT / 2 + HB_T + 16) if is_bot else (zc + CW_TOP / 2 - HB_T - 16)   # wheel-centre Z
     gx0 = (inb - 3) if cin > 0 else (inb - 13)         # green Z-slide min-x (≈centred on inb)
     cpx0c = (inb - 6) if cin > 0 else (inb - 8)        # carriage-plate min-x
-    glen = abs(deploy) + 60                            # GREEN (deploy) rail longer than the stroke (U-joint stays ON it)
-    gz0 = (fz - 20) if deploy > 0 else (fz + 20 - glen)  # green rail spans the Z travel (up for bottom, down for top)
+    # DEPLOY rail (long, in the CARRIAGE) + the PERPENDICULAR slide stub (short, in the FLOAT — rides along)
+    if swing_corner:   # PURPLE X = deploy rail (LOCAL slide-and-clamp, per Sheet 2 — NOT beam-spanning);
+        # GREEN Z = short stub. Per Sheet 2 View B the X cross-slide is a foreshortening absorber at the
+        # corner, so it stays inboard of / at the corner and does NOT cross the beam. Deploy INBOARD keeps
+        # the ACM clear of the corner beam.
+        Lx = abs(deploy) + 60                          # local purple rail, longer than the stroke
+        px0 = (cx - 20) if cin > 0 else (cx + 20 - Lx)
+        deploy_rail = ov.ruby_box(f"Horizontal X slide rail (SWING/deploy, purple) (Movement {corner})", px0, ty + 1, fz - 4, Lx, 14, 14, color=C_SWING)
+        perp_stub = ov.ruby_box(f"Vertical Z slide stub (TILT, green) (Movement {corner})", gx0, ty + 1, min(fz, rz) - 4, 16, 18, abs(rz - fz) + 20, color=C_TILT)
+    else:              # GREEN Z = deploy rail; PURPLE X = short stub
+        Ldep = abs(deploy) + 60                        # green rail longer than the Z stroke (U-joint stays ON it)
+        gz0 = (fz - 20) if deploy > 0 else (fz + 20 - Ldep)
+        deploy_rail = ov.ruby_box(f"Vertical Z slide rail (TILT/deploy, green) (Movement {corner})", gx0, ty + 1, gz0, 16, 18, Ldep, color=C_TILT)
+        perp_stub = ov.ruby_box(f"Horizontal X slide stub (SWING, purple) (Movement {corner})", cx - 70, ty + 1, fz - 4, 140, 14, 14, color=C_SWING)
     # ── STATIC rail + CARRIAGE (skate + plate + the GREEN Z deploy rail) ──
     carr = []
     if is_bot:
@@ -393,11 +408,11 @@ def movement(corner="BL"):
         carr.append(ov.ruby_box(f"Yoke cross-piece (Movement {corner})", cx - 35, ty - 34, yb - 22, 70, 68, 8, color=C_CAR))
         carr.append(ov.ruby_box(f"Yoke rail → carriage (Movement {corner})", min(cx + 33, inb), ty - 34, yb - 20, abs(inb - (cx + 33)) + 6, 68, 6, color=C_CAR))
         carr.append(ov.ruby_box(f"Carriage plate (Movement {corner})", cpx0c, ty + 1, zlo - 6, 14, 86, (zhi + 18) - (zlo - 6), color=C_CAR))
-    # GREEN Z slide = the DEPLOY RAIL (long; the U-joint rides it in phase 2). Fixed to the carriage.
-    carr.append(ov.ruby_box(f"Vertical Z slide rail (TILT/deploy, green) (Movement {corner})", gx0, ty + 1, gz0, 16, 18, glen, color=C_TILT))
-    # FLOAT (purple X stub + U-joint) — DEPLOYS by sliding along the GREEN Z rail, carrying the panel
+    # the DEPLOY rail (long) is fixed to the carriage; the U-joint rides it in phase 2
+    carr.append(deploy_rail)
+    # FLOAT (perpendicular slide stub + U-joint) — DEPLOYS along the deploy rail, carrying the panel
     floatp = [
-        ov.ruby_box(f"Horizontal X slide (SWING, purple) (Movement {corner})", cx - 70, ty + 1, fz - 4, 140, 14, 14, color=C_SWING),
+        perp_stub,
         ov.ruby_box(f"U-joint (Ruland USKC12-6-6-SS) (Movement {corner})", cx - 12, ty - 4, fz - 14, 24, 24, 24, color=C_CROSS),
     ]
     # PANEL (corner plate + frame + ACM) — relative to the U-joint-centre pivot so it TILTS about the U-joint;
@@ -432,6 +447,8 @@ def movement_dc(sfx, carr, floatp, panel, pivot, dy_fwd, deploy, rot_attr, rot_v
     (rot_attr = rotx TILT / rotz SWING)."""
     px, py, pz = pivot
     rot_label = "swing" if rot_attr == "rotz" else "tilt"
+    dep_axis = "x" if rot_attr == "rotz" else "z"      # SWING deploys along PURPLE X; TILT along GREEN Z
+    dep_color = "purple X" if dep_axis == "x" else "green Z"
     ldx = 300 if sfx[1] == "L" else -300               # L=left → +X, R=right → -X
     ldz = 300 if sfx[0] == "B" else -300               # B=bottom → +Z, T=top → -Z
     return f'''
@@ -459,7 +476,7 @@ da = "dynamic_attributes"
   e.set_attribute(da, "_name", "Movement{sfx}"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "move", 0.0)
 end
 mvp_{sfx}_inst.set_attribute(da, "_move_access", "VIEW")
-mvp_{sfx}_inst.set_attribute(da, "_move_label", "Flip {sfx}: home <-> deployed (roll + {rot_label}, then deploy along green Z)")
+mvp_{sfx}_inst.set_attribute(da, "_move_label", "Flip {sfx}: home <-> deployed (roll + {rot_label}, then deploy along {dep_color})")
 mvp_{sfx}_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1)')
 mvp_{sfx}_inst.set_attribute(da, "_onclick_access", "NONE")
 # carriage rolls FORWARD in Y — PHASE 1 (drive 0->0.5)
@@ -468,25 +485,25 @@ mvp_{sfx}_inst.set_attribute(da, "_onclick_access", "NONE")
 end
 mvo_{sfx}_inst.set_attribute(da, "_drive_formula", "Movement{sfx}!move")
 mvo_{sfx}_inst.set_attribute(da, "_y_formula", "(drive + 0.5 - ABS(drive - 0.5)) * {dy_fwd}")
-# float (U-joint + panel) DEPLOYS by sliding along the GREEN Z slide — PHASE 2 (drive 0.5->1)
+# float (U-joint + panel) DEPLOYS by sliding along the {dep_color} slide — PHASE 2 (drive 0.5->1)
 [mvfl_{sfx}, mvfl_{sfx}_inst].each do |e|
-  e.set_attribute(da, "_name", "Float{sfx}"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "z", 0.0)
+  e.set_attribute(da, "_name", "Float{sfx}"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "{dep_axis}", 0.0)
 end
 mvfl_{sfx}_inst.set_attribute(da, "_drive_formula", "Carriage{sfx}!drive")
-mvfl_{sfx}_inst.set_attribute(da, "_z_formula", "(drive - 0.5 + ABS(drive - 0.5)) * {deploy}")
+mvfl_{sfx}_inst.set_attribute(da, "_{dep_axis}_formula", "(drive - 0.5 + ABS(drive - 0.5)) * {deploy}")
 # panel {rot_label}S about the U-joint (rotx=tilt / rotz=swing) — PHASE 1 (drive 0->0.5)
 [mvpan_{sfx}, mvpan_{sfx}_inst].each do |e|
   e.set_attribute(da, "_name", "PanelTilt{sfx}"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "{rot_attr}", 0.0)
 end
 mvpan_{sfx}_inst.set_attribute(da, "_drive_formula", "Float{sfx}!drive")
 mvpan_{sfx}_inst.set_attribute(da, "_{rot_attr}_formula", "(drive + 0.5 - ABS(drive - 0.5)) * {rot_val}")
-mvtxt_{sfx} = entities.add_text("CLICK {sfx}: 1) {rot_label} toward pinhole  2) deploy along the GREEN Z-slide", Geom::Point3d.new({ov.mm(anchor[0])}, {ov.mm(anchor[1])}, {ov.mm(anchor[2])}), Geom::Vector3d.new({ov.mm(ldx)}, {ov.mm(-400)}, {ov.mm(ldz)}))
+mvtxt_{sfx} = entities.add_text("CLICK {sfx}: 1) {rot_label} toward pinhole  2) deploy along the {dep_color} slide", Geom::Point3d.new({ov.mm(anchor[0])}, {ov.mm(anchor[1])}, {ov.mm(anchor[2])}), Geom::Vector3d.new({ov.mm(ldx)}, {ov.mm(-400)}, {ov.mm(ldz)}))
 mvtxt_{sfx}.layer = model.layers["Movement"] rescue nil
 '''
 
 
 def generate_ruby():
-    mv_corners = ["BL", "TL", "BR"]
+    mv_corners = ["BL", "TL", "BR", "TR"]
     mv = {c: movement(c) for c in mv_corners}
     comps = [
         ov.component("Corners", "Corners", corners()),
@@ -499,14 +516,15 @@ def generate_ruby():
     keep = "[" + ", ".join(f'"{t}"' for t in TAGS) + "]"
     show = ["Corners", "Film Plane", "Pinhole"]
     show_ctx = show + ["Context"]
-    mv_scene_z = {"BL": PZ0 + 350, "BR": PZ0 + 350, "TL": PZ1 - 350, "TR": PZ1 - 350}
-    # camera X tracks the (display-shifted) corner: left corners look from +X, right corners from -X
-    mv_scene_x = {c: MV_TARGET_X.get(c, CORNER_SPEC[c][0]) + (250 if CORNER_SPEC[c][3] > 0 else -250) for c in mv_corners}
+    # ONE Movement scene framing all four corner demos (2×2 grid: left column @X_L, right column display-
+    # shifted to MV_TARGET_X). Centre on the grid mid-point, wide enough to hold all four + their motion.
+    mv_cx = (X_L + MV_TARGET_X["BR"]) / 2
     # Overview (with context) FIRST, then the zoomed corner detail; side/top + Labeled added after.
     iso = [
         ("Overview", show_ctx, (2400, FP_Y - 700, CH / 2, 9500)),
         ("Corner detail", show, (X_L, FP_Y, PZ0 + 30, 620)),
-    ] + [(f"Movement — {c}", ["Movement"], (mv_scene_x[c], FP_Y + 250, mv_scene_z[c], 2000)) for c in mv_corners]
+        ("Movement", ["Movement"], (mv_cx, FP_Y + 250, CH / 2, 4400)),
+    ]
     mv_dc = "".join(movement_dc(c, *mv[c][1:]) for c in mv_corners)
 
     def scene_lit(n, tags, tgt):
@@ -586,7 +604,10 @@ ldir = Geom::Vector3d.new(0.5, -0.7, 0.4); ldir.normalize!
 model.active_view.camera = Sketchup::Camera.new(lc.offset(ldir, {ov.mm(7200)}), lc, Z_AXIS)
 pl = model.pages.add("Labeled"); pl.use_camera = true
 
-model.layers.each {{ |l| l.visible = true }}
+# Land on the Overview scene (which hides Movement/Context) so the post-regen view matches a real
+# scene rather than an ad-hoc all-visible state (else the 4 Movement demos appear to "leak" into
+# whatever scene tab is selected until it is re-clicked).
+model.pages.selected_page = model.pages[0] if model.pages.count > 0
 
 model.commit_operation
 {{ success: true, model: "Film-Plane Corner Mechanism",

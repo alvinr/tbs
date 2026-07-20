@@ -341,7 +341,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([150.mm,2263.mm,156.mm], [410.mm,2263.mm,156.mm], [410.mm,2277.mm,156.mm], [150.mm,2277.mm,156.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
-  mat = model.materials["Horizontal X slide (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide (SWING, purple) (Movement BL)")
+  mat = model.materials["Horizontal X slide stub (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide stub (SWING, purple) (Movement BL)")
   mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
@@ -642,7 +642,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4364.mm,2263.mm,156.mm], [4624.mm,2263.mm,156.mm], [4624.mm,2277.mm,156.mm], [4364.mm,2277.mm,156.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
-  mat = model.materials["Horizontal X slide (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide (SWING, purple) (Movement BL)")
+  mat = model.materials["Horizontal X slide stub (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide stub (SWING, purple) (Movement BL)")
   mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
@@ -992,7 +992,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([150.mm,2263.mm,2286.mm], [410.mm,2263.mm,2286.mm], [410.mm,2277.mm,2286.mm], [150.mm,2277.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
-  mat = model.materials["Horizontal X slide (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide (SWING, purple) (Movement BL)")
+  mat = model.materials["Horizontal X slide stub (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide stub (SWING, purple) (Movement BL)")
   mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
@@ -1274,7 +1274,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   face = grp.entities.add_face([4364.mm,2263.mm,2286.mm], [4624.mm,2263.mm,2286.mm], [4624.mm,2277.mm,2286.mm], [4364.mm,2277.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
-  mat = model.materials["Horizontal X slide (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide (SWING, purple) (Movement BL)")
+  mat = model.materials["Horizontal X slide stub (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide stub (SWING, purple) (Movement BL)")
   mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
@@ -4174,7 +4174,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-channel rail (Movement BR) web MoveBR
   grp = ents.add_group
   grp.name = "U-channel rail (Movement BR) web MoveBR"
-  face = grp.entities.add_face([1764.mm,2102.mm,232.mm], [1769.mm,2102.mm,232.mm], [1769.mm,3062.mm,232.mm], [1764.mm,3062.mm,232.mm])
+  face = grp.entities.add_face([2214.mm,2102.mm,232.mm], [2219.mm,2102.mm,232.mm], [2219.mm,3062.mm,232.mm], [2214.mm,3062.mm,232.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(76.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4185,7 +4185,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-channel rail (Movement BR) flange MoveBR 303
   grp = ents.add_group
   grp.name = "U-channel rail (Movement BR) flange MoveBR 303"
-  face = grp.entities.add_face([1731.mm,2102.mm,303.mm], [1769.mm,2102.mm,303.mm], [1769.mm,3062.mm,303.mm], [1731.mm,3062.mm,303.mm])
+  face = grp.entities.add_face([2181.mm,2102.mm,303.mm], [2219.mm,2102.mm,303.mm], [2219.mm,3062.mm,303.mm], [2181.mm,3062.mm,303.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4196,7 +4196,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-channel rail (Movement BR) flange MoveBR 232
   grp = ents.add_group
   grp.name = "U-channel rail (Movement BR) flange MoveBR 232"
-  face = grp.entities.add_face([1731.mm,2102.mm,232.mm], [1769.mm,2102.mm,232.mm], [1769.mm,3062.mm,232.mm], [1731.mm,3062.mm,232.mm])
+  face = grp.entities.add_face([2181.mm,2102.mm,232.mm], [2219.mm,2102.mm,232.mm], [2219.mm,3062.mm,232.mm], [2181.mm,3062.mm,232.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4207,7 +4207,7 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
   # U-channel rail (Movement BR) bottom-flange lip MoveBR
   grp = ents.add_group
   grp.name = "U-channel rail (Movement BR) bottom-flange lip MoveBR"
-  face = grp.entities.add_face([1731.mm,2102.mm,237.mm], [1736.mm,2102.mm,237.mm], [1736.mm,3062.mm,237.mm], [1731.mm,3062.mm,237.mm])
+  face = grp.entities.add_face([2181.mm,2102.mm,237.mm], [2186.mm,2102.mm,237.mm], [2186.mm,3062.mm,237.mm], [2181.mm,3062.mm,237.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(9.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4217,6 +4217,46 @@ model.pages.to_a.each { |p| model.pages.erase(p) }
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Movement base (BR corner)"
+  inst.layer = model.layers["Movement"]
+
+  # ═══ Movement base (TR corner) ═══
+  defn = model.definitions.add("Movement base (TR corner)")
+  ents = defn.entities
+  # U-channel rail (Movement TR) web MoveTR
+  grp = ents.add_group
+  grp.name = "U-channel rail (Movement TR) web MoveTR"
+  face = grp.entities.add_face([2162.mm,2102.mm,2333.mm], [2238.mm,2102.mm,2333.mm], [2238.mm,3062.mm,2333.mm], [2162.mm,3062.mm,2333.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail (Movement TR) flange MoveTR 2162
+  grp = ents.add_group
+  grp.name = "U-channel rail (Movement TR) flange MoveTR 2162"
+  face = grp.entities.add_face([2162.mm,2102.mm,2300.mm], [2167.mm,2102.mm,2300.mm], [2167.mm,3062.mm,2300.mm], [2162.mm,3062.mm,2300.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(38.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail (Movement TR) flange MoveTR 2233
+  grp = ents.add_group
+  grp.name = "U-channel rail (Movement TR) flange MoveTR 2233"
+  face = grp.entities.add_face([2233.mm,2102.mm,2300.mm], [2238.mm,2102.mm,2300.mm], [2238.mm,3062.mm,2300.mm], [2233.mm,3062.mm,2300.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(38.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Movement base (TR corner)"
   inst.layer = model.layers["Movement"]
 
 
@@ -4291,13 +4331,13 @@ ents = mvpan_BL.entities
 
 mvfl_BL = model.definitions.add("Float BL")
 ents = mvfl_BL.entities
-  # Horizontal X slide (SWING, purple) (Movement BL)
+  # Horizontal X slide stub (SWING, purple) (Movement BL)
   grp = ents.add_group
-  grp.name = "Horizontal X slide (SWING, purple) (Movement BL)"
+  grp.name = "Horizontal X slide stub (SWING, purple) (Movement BL)"
   face = grp.entities.add_face([80.mm,2263.mm,156.mm], [220.mm,2263.mm,156.mm], [220.mm,2277.mm,156.mm], [80.mm,2277.mm,156.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
-  mat = model.materials["Horizontal X slide (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide (SWING, purple) (Movement BL)")
+  mat = model.materials["Horizontal X slide stub (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide stub (SWING, purple) (Movement BL)")
   mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
@@ -4386,7 +4426,7 @@ mvp_BL_inst.set_attribute(da, "_onclick_access", "NONE")
 end
 mvo_BL_inst.set_attribute(da, "_drive_formula", "MovementBL!move")
 mvo_BL_inst.set_attribute(da, "_y_formula", "(drive + 0.5 - ABS(drive - 0.5)) * 320")
-# float (U-joint + panel) DEPLOYS by sliding along the GREEN Z slide — PHASE 2 (drive 0.5->1)
+# float (U-joint + panel) DEPLOYS by sliding along the green Z slide — PHASE 2 (drive 0.5->1)
 [mvfl_BL, mvfl_BL_inst].each do |e|
   e.set_attribute(da, "_name", "FloatBL"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "z", 0.0)
 end
@@ -4398,7 +4438,7 @@ mvfl_BL_inst.set_attribute(da, "_z_formula", "(drive - 0.5 + ABS(drive - 0.5)) *
 end
 mvpan_BL_inst.set_attribute(da, "_drive_formula", "FloatBL!drive")
 mvpan_BL_inst.set_attribute(da, "_rotx_formula", "(drive + 0.5 - ABS(drive - 0.5)) * 30")
-mvtxt_BL = entities.add_text("CLICK BL: 1) tilt toward pinhole  2) deploy along the GREEN Z-slide", Geom::Point3d.new(570.mm, 2762.mm, 680.mm), Geom::Vector3d.new(300.mm, -400.mm, 300.mm))
+mvtxt_BL = entities.add_text("CLICK BL: 1) tilt toward pinhole  2) deploy along the green Z slide", Geom::Point3d.new(570.mm, 2762.mm, 680.mm), Geom::Vector3d.new(300.mm, -400.mm, 300.mm))
 mvtxt_BL.layer = model.layers["Movement"] rescue nil
 
 # ═══ Movement — TL corner: ONE click FLIPS home <-> deployed (roll forward + tilt, then deploy along green Z). ═══
@@ -4472,13 +4512,13 @@ ents = mvpan_TL.entities
 
 mvfl_TL = model.definitions.add("Float TL")
 ents = mvfl_TL.entities
-  # Horizontal X slide (SWING, purple) (Movement TL)
+  # Horizontal X slide stub (SWING, purple) (Movement TL)
   grp = ents.add_group
-  grp.name = "Horizontal X slide (SWING, purple) (Movement TL)"
+  grp.name = "Horizontal X slide stub (SWING, purple) (Movement TL)"
   face = grp.entities.add_face([80.mm,2263.mm,2286.mm], [220.mm,2263.mm,2286.mm], [220.mm,2277.mm,2286.mm], [80.mm,2277.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
-  mat = model.materials["Horizontal X slide (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide (SWING, purple) (Movement BL)")
+  mat = model.materials["Horizontal X slide stub (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide stub (SWING, purple) (Movement BL)")
   mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
@@ -4611,7 +4651,7 @@ mvp_TL_inst.set_attribute(da, "_onclick_access", "NONE")
 end
 mvo_TL_inst.set_attribute(da, "_drive_formula", "MovementTL!move")
 mvo_TL_inst.set_attribute(da, "_y_formula", "(drive + 0.5 - ABS(drive - 0.5)) * 320")
-# float (U-joint + panel) DEPLOYS by sliding along the GREEN Z slide — PHASE 2 (drive 0.5->1)
+# float (U-joint + panel) DEPLOYS by sliding along the green Z slide — PHASE 2 (drive 0.5->1)
 [mvfl_TL, mvfl_TL_inst].each do |e|
   e.set_attribute(da, "_name", "FloatTL"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "z", 0.0)
 end
@@ -4623,7 +4663,7 @@ mvfl_TL_inst.set_attribute(da, "_z_formula", "(drive - 0.5 + ABS(drive - 0.5)) *
 end
 mvpan_TL_inst.set_attribute(da, "_drive_formula", "FloatTL!drive")
 mvpan_TL_inst.set_attribute(da, "_rotx_formula", "(drive + 0.5 - ABS(drive - 0.5)) * -30")
-mvtxt_TL = entities.add_text("CLICK TL: 1) tilt toward pinhole  2) deploy along the GREEN Z-slide", Geom::Point3d.new(570.mm, 2762.mm, 1770.mm), Geom::Vector3d.new(300.mm, -400.mm, -300.mm))
+mvtxt_TL = entities.add_text("CLICK TL: 1) tilt toward pinhole  2) deploy along the green Z slide", Geom::Point3d.new(570.mm, 2762.mm, 1770.mm), Geom::Vector3d.new(300.mm, -400.mm, -300.mm))
 mvtxt_TL.layer = model.layers["Movement"] rescue nil
 
 # ═══ Movement — BR corner: ONE click FLIPS home <-> deployed (roll forward + tilt, then deploy along green Z). ═══
@@ -4697,21 +4737,21 @@ ents = mvpan_BR.entities
 
 mvfl_BR = model.definitions.add("Float BR")
 ents = mvfl_BR.entities
-  # Horizontal X slide (SWING, purple) (Movement BR)
+  # Vertical Z slide stub (TILT, green) (Movement BR)
   grp = ents.add_group
-  grp.name = "Horizontal X slide (SWING, purple) (Movement BR)"
-  face = grp.entities.add_face([1680.mm,2263.mm,156.mm], [1820.mm,2263.mm,156.mm], [1820.mm,2277.mm,156.mm], [1680.mm,2277.mm,156.mm])
+  grp.name = "Vertical Z slide stub (TILT, green) (Movement BR)"
+  face = grp.entities.add_face([2154.mm,2263.mm,156.mm], [2170.mm,2263.mm,156.mm], [2170.mm,2281.mm,156.mm], [2154.mm,2281.mm,156.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Horizontal X slide (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide (SWING, purple) (Movement BL)")
-  mat.color = Sketchup::Color.new(123, 94, 167)
+  face.pushpull(113.mm)
+  mat = model.materials["Vertical Z slide rail (TILT/deploy, green) (Movement BL)"] || model.materials.add("Vertical Z slide rail (TILT/deploy, green) (Movement BL)")
+  mat.color = Sketchup::Color.new(46, 139, 87)
   mat.alpha = 1.0
   grp.material = mat
 
   # U-joint (Ruland USKC12-6-6-SS) (Movement BR)
   grp = ents.add_group
   grp.name = "U-joint (Ruland USKC12-6-6-SS) (Movement BR)"
-  face = grp.entities.add_face([1738.mm,2258.mm,146.mm], [1762.mm,2258.mm,146.mm], [1762.mm,2282.mm,146.mm], [1738.mm,2282.mm,146.mm])
+  face = grp.entities.add_face([2188.mm,2258.mm,146.mm], [2212.mm,2258.mm,146.mm], [2212.mm,2282.mm,146.mm], [2188.mm,2282.mm,146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
@@ -4719,7 +4759,7 @@ ents = mvfl_BR.entities
   mat.alpha = 1.0
   grp.material = mat
 
-mvpan_BR_inst = mvfl_BR.entities.add_instance(mvpan_BR, Geom::Transformation.translation([1750.mm, 2270.mm, 158.mm]))
+mvpan_BR_inst = mvfl_BR.entities.add_instance(mvpan_BR, Geom::Transformation.translation([2200.mm, 2270.mm, 158.mm]))
 mvpan_BR_inst.name = "Panel tilt BR"; mvpan_BR_inst.layer = model.layers["Movement"]
 mvo_BR = model.definitions.add("Carriage BR")
 ents = mvo_BR.entities
@@ -4727,7 +4767,7 @@ ents = mvo_BR.entities
   grp = ents.add_group
   grp.name = "Acetal skate wheel Ø32 (Movement BR) 2270"
   ge = grp.entities
-  circle = ge.add_circle([1742.mm,2270.mm,253.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([2192.mm,2270.mm,253.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(16.mm)
@@ -4740,7 +4780,7 @@ ents = mvo_BR.entities
   grp = ents.add_group
   grp.name = "Acetal skate wheel Ø32 (Movement BR) 2310"
   ge = grp.entities
-  circle = ge.add_circle([1742.mm,2310.mm,253.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([2192.mm,2310.mm,253.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(16.mm)
@@ -4752,7 +4792,7 @@ ents = mvo_BR.entities
   # Carriage plate (Movement BR)
   grp = ents.add_group
   grp.name = "Carriage plate (Movement BR)"
-  face = grp.entities.add_face([1709.mm,2263.mm,154.mm], [1723.mm,2263.mm,154.mm], [1723.mm,2349.mm,154.mm], [1709.mm,2349.mm,154.mm])
+  face = grp.entities.add_face([2159.mm,2263.mm,154.mm], [2173.mm,2263.mm,154.mm], [2173.mm,2349.mm,154.mm], [2159.mm,2349.mm,154.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(145.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
@@ -4760,14 +4800,14 @@ ents = mvo_BR.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Vertical Z slide rail (TILT/deploy, green) (Movement BR)
+  # Horizontal X slide rail (SWING/deploy, purple) (Movement BR)
   grp = ents.add_group
-  grp.name = "Vertical Z slide rail (TILT/deploy, green) (Movement BR)"
-  face = grp.entities.add_face([1704.mm,2263.mm,140.mm], [1720.mm,2263.mm,140.mm], [1720.mm,2281.mm,140.mm], [1704.mm,2281.mm,140.mm])
+  grp.name = "Horizontal X slide rail (SWING/deploy, purple) (Movement BR)"
+  face = grp.entities.add_face([1860.mm,2263.mm,156.mm], [2220.mm,2263.mm,156.mm], [2220.mm,2277.mm,156.mm], [1860.mm,2277.mm,156.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(360.mm)
-  mat = model.materials["Vertical Z slide rail (TILT/deploy, green) (Movement BL)"] || model.materials.add("Vertical Z slide rail (TILT/deploy, green) (Movement BL)")
-  mat.color = Sketchup::Color.new(46, 139, 87)
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X slide stub (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide stub (SWING, purple) (Movement BL)")
+  mat.color = Sketchup::Color.new(123, 94, 167)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4783,7 +4823,7 @@ da = "dynamic_attributes"
   e.set_attribute(da, "_name", "MovementBR"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "move", 0.0)
 end
 mvp_BR_inst.set_attribute(da, "_move_access", "VIEW")
-mvp_BR_inst.set_attribute(da, "_move_label", "Flip BR: home <-> deployed (roll + swing, then deploy along green Z)")
+mvp_BR_inst.set_attribute(da, "_move_label", "Flip BR: home <-> deployed (roll + swing, then deploy along purple X)")
 mvp_BR_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1)')
 mvp_BR_inst.set_attribute(da, "_onclick_access", "NONE")
 # carriage rolls FORWARD in Y — PHASE 1 (drive 0->0.5)
@@ -4792,20 +4832,245 @@ mvp_BR_inst.set_attribute(da, "_onclick_access", "NONE")
 end
 mvo_BR_inst.set_attribute(da, "_drive_formula", "MovementBR!move")
 mvo_BR_inst.set_attribute(da, "_y_formula", "(drive + 0.5 - ABS(drive - 0.5)) * 320")
-# float (U-joint + panel) DEPLOYS by sliding along the GREEN Z slide — PHASE 2 (drive 0.5->1)
+# float (U-joint + panel) DEPLOYS by sliding along the purple X slide — PHASE 2 (drive 0.5->1)
 [mvfl_BR, mvfl_BR_inst].each do |e|
-  e.set_attribute(da, "_name", "FloatBR"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "z", 0.0)
+  e.set_attribute(da, "_name", "FloatBR"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "x", 0.0)
 end
 mvfl_BR_inst.set_attribute(da, "_drive_formula", "CarriageBR!drive")
-mvfl_BR_inst.set_attribute(da, "_z_formula", "(drive - 0.5 + ABS(drive - 0.5)) * 300")
+mvfl_BR_inst.set_attribute(da, "_x_formula", "(drive - 0.5 + ABS(drive - 0.5)) * -300")
 # panel swingS about the U-joint (rotx=tilt / rotz=swing) — PHASE 1 (drive 0->0.5)
 [mvpan_BR, mvpan_BR_inst].each do |e|
   e.set_attribute(da, "_name", "PanelTiltBR"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "rotz", 0.0)
 end
 mvpan_BR_inst.set_attribute(da, "_drive_formula", "FloatBR!drive")
 mvpan_BR_inst.set_attribute(da, "_rotz_formula", "(drive + 0.5 - ABS(drive - 0.5)) * 30")
-mvtxt_BR = entities.add_text("CLICK BR: 1) swing toward pinhole  2) deploy along the GREEN Z-slide", Geom::Point3d.new(1330.mm, 2762.mm, 680.mm), Geom::Vector3d.new(-300.mm, -400.mm, 300.mm))
+mvtxt_BR = entities.add_text("CLICK BR: 1) swing toward pinhole  2) deploy along the purple X slide", Geom::Point3d.new(1780.mm, 2762.mm, 680.mm), Geom::Vector3d.new(-300.mm, -400.mm, 300.mm))
 mvtxt_BR.layer = model.layers["Movement"] rescue nil
+
+# ═══ Movement — TR corner: ONE click FLIPS home <-> deployed (roll forward + tilt, then deploy along green Z). ═══
+mvpan_TR = model.definitions.add("Panel tilt TR")
+ents = mvpan_TR.entities
+  # 304 SS corner plate (Movement TR)
+  grp = ents.add_group
+  grp.name = "304 SS corner plate (Movement TR)"
+  face = grp.entities.add_face([-20.mm,-16.mm,-43.mm], [14.mm,-16.mm,-43.mm], [14.mm,0.mm,-43.mm], [-20.mm,0.mm,-43.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # ACM film-panel corner — partial ghost (Movement TR)
+  grp = ents.add_group
+  grp.name = "ACM film-panel corner — partial ghost (Movement TR)"
+  face = grp.entities.add_face([-753.mm,-8.mm,-718.mm], [-33.mm,-8.mm,-718.mm], [-33.mm,-4.mm,-718.mm], [-753.mm,-4.mm,-718.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(720.mm)
+  mat = model.materials["ACM film-panel corner — partial ghost (Movement BL)"] || model.materials.add("ACM film-panel corner — partial ghost (Movement BL)")
+  mat.color = Sketchup::Color.new(31, 59, 102)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # Film frame 2x2 6061 — top upstand (Movement TR)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 — top upstand (Movement TR)"
+  face = grp.entities.add_face([-753.mm,-58.mm,-3.mm], [-33.mm,-58.mm,-3.mm], [-33.mm,-8.mm,-3.mm], [-753.mm,-8.mm,-3.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 — top in-plane leg (Movement TR)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 — top in-plane leg (Movement TR)"
+  face = grp.entities.add_face([-753.mm,-13.mm,-48.mm], [-33.mm,-13.mm,-48.mm], [-33.mm,-8.mm,-48.mm], [-753.mm,-8.mm,-48.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 — right upstand (Movement TR)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 — right upstand (Movement TR)"
+  face = grp.entities.add_face([-38.mm,-58.mm,-718.mm], [-33.mm,-58.mm,-718.mm], [-33.mm,-8.mm,-718.mm], [-38.mm,-8.mm,-718.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(720.mm)
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 — right in-plane leg (Movement TR)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 — right in-plane leg (Movement TR)"
+  face = grp.entities.add_face([-83.mm,-13.mm,-718.mm], [-33.mm,-13.mm,-718.mm], [-33.mm,-8.mm,-718.mm], [-83.mm,-8.mm,-718.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(720.mm)
+  mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+mvfl_TR = model.definitions.add("Float TR")
+ents = mvfl_TR.entities
+  # Vertical Z slide stub (TILT, green) (Movement TR)
+  grp = ents.add_group
+  grp.name = "Vertical Z slide stub (TILT, green) (Movement TR)"
+  face = grp.entities.add_face([2135.mm,2263.mm,2286.mm], [2151.mm,2263.mm,2286.mm], [2151.mm,2281.mm,2286.mm], [2135.mm,2281.mm,2286.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(47.mm)
+  mat = model.materials["Vertical Z slide rail (TILT/deploy, green) (Movement BL)"] || model.materials.add("Vertical Z slide rail (TILT/deploy, green) (Movement BL)")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-joint (Ruland USKC12-6-6-SS) (Movement TR)
+  grp = ents.add_group
+  grp.name = "U-joint (Ruland USKC12-6-6-SS) (Movement TR)"
+  face = grp.entities.add_face([2188.mm,2258.mm,2276.mm], [2212.mm,2258.mm,2276.mm], [2212.mm,2282.mm,2276.mm], [2188.mm,2282.mm,2276.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+mvpan_TR_inst = mvfl_TR.entities.add_instance(mvpan_TR, Geom::Transformation.translation([2200.mm, 2270.mm, 2288.mm]))
+mvpan_TR_inst.name = "Panel tilt TR"; mvpan_TR_inst.layer = model.layers["Movement"]
+mvo_TR = model.definitions.add("Carriage TR")
+ents = mvo_TR.entities
+  # Acetal guide wheel Ø32 (Movement TR) 2270
+  grp = ents.add_group
+  grp.name = "Acetal guide wheel Ø32 (Movement TR) 2270"
+  ge = grp.entities
+  circle = ge.add_circle([2174.mm,2270.mm,2317.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal guide wheel Ø32 (Movement TR) 2310
+  grp = ents.add_group
+  grp.name = "Acetal guide wheel Ø32 (Movement TR) 2310"
+  ge = grp.entities
+  circle = ge.add_circle([2174.mm,2310.mm,2317.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(52.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke arm (Movement TR) 2167
+  grp = ents.add_group
+  grp.name = "Yoke arm (Movement TR) 2167"
+  face = grp.entities.add_face([2165.mm,2228.mm,2286.mm], [2169.mm,2228.mm,2286.mm], [2169.mm,2296.mm,2286.mm], [2165.mm,2296.mm,2286.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(31.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke arm (Movement TR) 2233
+  grp = ents.add_group
+  grp.name = "Yoke arm (Movement TR) 2233"
+  face = grp.entities.add_face([2231.mm,2228.mm,2286.mm], [2235.mm,2228.mm,2286.mm], [2235.mm,2296.mm,2286.mm], [2231.mm,2296.mm,2286.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(31.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke cross-piece (Movement TR)
+  grp = ents.add_group
+  grp.name = "Yoke cross-piece (Movement TR)"
+  face = grp.entities.add_face([2165.mm,2228.mm,2278.mm], [2235.mm,2228.mm,2278.mm], [2235.mm,2296.mm,2278.mm], [2165.mm,2296.mm,2278.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Yoke rail → carriage (Movement TR)
+  grp = ents.add_group
+  grp.name = "Yoke rail → carriage (Movement TR)"
+  face = grp.entities.add_face([2148.mm,2228.mm,2280.mm], [2239.mm,2228.mm,2280.mm], [2239.mm,2296.mm,2280.mm], [2148.mm,2296.mm,2280.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (Movement TR)
+  grp = ents.add_group
+  grp.name = "Carriage plate (Movement TR)"
+  face = grp.entities.add_face([2140.mm,2263.mm,2284.mm], [2154.mm,2263.mm,2284.mm], [2154.mm,2349.mm,2284.mm], [2140.mm,2349.mm,2284.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(51.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X slide rail (SWING/deploy, purple) (Movement TR)
+  grp = ents.add_group
+  grp.name = "Horizontal X slide rail (SWING/deploy, purple) (Movement TR)"
+  face = grp.entities.add_face([1860.mm,2263.mm,2286.mm], [2220.mm,2263.mm,2286.mm], [2220.mm,2277.mm,2286.mm], [1860.mm,2277.mm,2286.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X slide stub (SWING, purple) (Movement BL)"] || model.materials.add("Horizontal X slide stub (SWING, purple) (Movement BL)")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
+mvfl_TR_inst = mvo_TR.entities.add_instance(mvfl_TR, Geom::Transformation.new)
+mvfl_TR_inst.name = "Float TR"; mvfl_TR_inst.layer = model.layers["Movement"]
+mvp_TR = model.definitions.add("Movement TR")
+mvo_TR_inst = mvp_TR.entities.add_instance(mvo_TR, Geom::Transformation.new)
+mvo_TR_inst.name = "Carriage TR"; mvo_TR_inst.layer = model.layers["Movement"]
+mvp_TR_inst = entities.add_instance(mvp_TR, Geom::Transformation.new)
+mvp_TR_inst.name = "Movement TR"; mvp_TR_inst.layer = model.layers["Movement"]
+da = "dynamic_attributes"
+[mvp_TR, mvp_TR_inst].each do |e|
+  e.set_attribute(da, "_name", "MovementTR"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "move", 0.0)
+end
+mvp_TR_inst.set_attribute(da, "_move_access", "VIEW")
+mvp_TR_inst.set_attribute(da, "_move_label", "Flip TR: home <-> deployed (roll + swing, then deploy along purple X)")
+mvp_TR_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1)')
+mvp_TR_inst.set_attribute(da, "_onclick_access", "NONE")
+# carriage rolls FORWARD in Y — PHASE 1 (drive 0->0.5)
+[mvo_TR, mvo_TR_inst].each do |e|
+  e.set_attribute(da, "_name", "CarriageTR"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "y", 0.0)
+end
+mvo_TR_inst.set_attribute(da, "_drive_formula", "MovementTR!move")
+mvo_TR_inst.set_attribute(da, "_y_formula", "(drive + 0.5 - ABS(drive - 0.5)) * 320")
+# float (U-joint + panel) DEPLOYS by sliding along the purple X slide — PHASE 2 (drive 0.5->1)
+[mvfl_TR, mvfl_TR_inst].each do |e|
+  e.set_attribute(da, "_name", "FloatTR"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "x", 0.0)
+end
+mvfl_TR_inst.set_attribute(da, "_drive_formula", "CarriageTR!drive")
+mvfl_TR_inst.set_attribute(da, "_x_formula", "(drive - 0.5 + ABS(drive - 0.5)) * -300")
+# panel swingS about the U-joint (rotx=tilt / rotz=swing) — PHASE 1 (drive 0->0.5)
+[mvpan_TR, mvpan_TR_inst].each do |e|
+  e.set_attribute(da, "_name", "PanelTiltTR"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "drive", 0.0); e.set_attribute(da, "rotz", 0.0)
+end
+mvpan_TR_inst.set_attribute(da, "_drive_formula", "FloatTR!drive")
+mvpan_TR_inst.set_attribute(da, "_rotz_formula", "(drive + 0.5 - ABS(drive - 0.5)) * 30")
+mvtxt_TR = entities.add_text("CLICK TR: 1) swing toward pinhole  2) deploy along the purple X slide", Geom::Point3d.new(1780.mm, 2762.mm, 1770.mm), Geom::Vector3d.new(-300.mm, -400.mm, -300.mm))
+mvtxt_TR.layer = model.layers["Movement"] rescue nil
 
 
 # ── "Labeled" callouts (Labels tag) ──
@@ -4861,7 +5126,7 @@ model.layers.to_a.each { |l|
 }
 
 # ── iso scenes (Overview [with context] / Corner detail) ──
-[["Overview", ["Corners", "Film Plane", "Pinhole", "Context"], [2400.mm, 1562.mm, 1194.mm, 9500.mm]], ["Corner detail", ["Corners", "Film Plane", "Pinhole"], [150.mm, 2262.mm, 190.mm, 620.mm]], ["Movement — BL", ["Movement"], [400.mm, 2512.mm, 510.mm, 2000.mm]], ["Movement — TL", ["Movement"], [400.mm, 2512.mm, 1940.mm, 2000.mm]], ["Movement — BR", ["Movement"], [1500.mm, 2512.mm, 510.mm, 2000.mm]]].each { |name, tags, tgt|
+[["Overview", ["Corners", "Film Plane", "Pinhole", "Context"], [2400.mm, 1562.mm, 1194.mm, 9500.mm]], ["Corner detail", ["Corners", "Film Plane", "Pinhole"], [150.mm, 2262.mm, 190.mm, 620.mm]], ["Movement", ["Movement"], [1175.mm, 2512.mm, 1194.mm, 4400.mm]]].each { |name, tags, tgt|
   model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
   t = Geom::Point3d.new(tgt[0], tgt[1], tgt[2])
   cdir = Geom::Vector3d.new(0.5, -0.7, 0.4); cdir.normalize!
@@ -4890,7 +5155,10 @@ ldir = Geom::Vector3d.new(0.5, -0.7, 0.4); ldir.normalize!
 model.active_view.camera = Sketchup::Camera.new(lc.offset(ldir, 7200.mm), lc, Z_AXIS)
 pl = model.pages.add("Labeled"); pl.use_camera = true
 
-model.layers.each { |l| l.visible = true }
+# Land on the Overview scene (which hides Movement/Context) so the post-regen view matches a real
+# scene rather than an ad-hoc all-visible state (else the 4 Movement demos appear to "leak" into
+# whatever scene tab is selected until it is re-clicked).
+model.pages.selected_page = model.pages[0] if model.pages.count > 0
 
 model.commit_operation
 { success: true, model: "Film-Plane Corner Mechanism",

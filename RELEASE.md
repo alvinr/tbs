@@ -29,9 +29,10 @@ file** — a release must not ship without a changelog entry:
   `film-plane-mechanism.skp` and is removed; `overview.skp` still carries the film-plane geometry inline
   at container scale, and `film-plane-mechanism` remains the dedicated corner-detail model. Cleared its
   `dependencies.yml`, `models/sketchfab.json`, and `component-dependency-map.md` entries (the verify-all
-  model set drops 7 → 6). Also reconciled the film-plane report/analysis/joint-research docs to the built
-  U-channel + acetal-skate + cross-slide + Ruland-U-joint design and moved the light-sealing narrative
-  into the mechanism report.
+  model set drops 7 → 6). Also reconciled the film-plane report / analysis / joint-research docs and the
+  dependency-map from the superseded leadscrew Option-A prose to the built U-channel + acetal-skate +
+  cross-slide + Ruland-U-joint design, moved the light-sealing narrative into the mechanism report, and
+  pointed the report's Sketchfab embed at the film-plane-mechanism model.
 - **Film-plane parts BOM: leadscrew Option-A → U-channel mechanism** — retired the 11 superseded
   leadscrew SKUs (HGR20 rail+carriage, Acme leadscrew/nut, 8" handwheel, locking collar, HGR15
   cross-slides, rod-end + pivot pin) and swapped in the **built** corner mechanism: 304 U-channel
@@ -63,19 +64,15 @@ file** — a release must not ship without a changelog entry:
   and muslin yardage rescaled with the area; vertical muslin-clip count 15 → 14 (total 90 → 88).
   Cascaded across `tbs_constants` / facts / costing / parts / 2D diagrams / 3D models / docs.
 
-- **`film-plane.skp` reconciled to the current corner mechanism** — the older leadscrew-DC
-  model's Option-A hardware (HGR20 rails + Acme leadscrews + rod-ends) replaced by the current
-  design (304 U-channel rails + acetal skate + 316 flat-bar X/Z slides + cam clamp + U-joint
-  USKC12-6-6-SS + 304 SS corner plate) across every scene — the Overview/No-Container main model
-  and all four Corner-detail diagrams — built from one shared `_corner_parts()` helper. The
-  click Dynamic Components (swing / rail-slide / swing-arc / rotate-plane) are unchanged.
 - **Renamed the articulated-corner 3D model `corner-gimbal` → `film-plane-mechanism`** — the
   `.skp`, `.rb`, generator (`generate_film_plane_mechanism_model.py`), dependency-map key and
   Sketchfab config key all follow; the Sketchfab UID (embed URL) is unchanged.
-- **Film-plane spring-clip muslin clamp** — retired the cam-lever design for a spring clip
-  (bracket through-bolted to the frame upstand, nuts on the inside; spring jaw presses a neoprene
-  pad + the muslin onto the ACM board). Cascaded across constants, parts, costing (cost unchanged),
-  the clamp report, and Sheet 6 (Panel A rotated to pinhole-left, Panels C/D reworked).
+- **Film-plane muslin clamp: cam-lever → spring clip** — retired the cam-lever toggle for a spring
+  clip: a fixed jaw bolted to the ALU frame upstand (countersunk bolts, nuts on the inside) + a
+  spring-loaded jaw that pinches the muslin + a neoprene pad onto the ACM board, squeeze-to-open
+  (torsion spring holds closed). Cascaded across constants, parts, costing (cost unchanged), the clamp
+  report, and Sheet 6 (Panel A rotated to pinhole-left, the open/closed panel folded into the main
+  detail as a ghost + swing arc, Panels C/D reworked).
 - **Sheet 9 View B** gained a **4040N12 304 shaft support** clamping the U-joint input stub to the
   X (swing) slide — mirrored into the 3D model at each corner.
 - **Sheet 7** rebuilt as a true-scale proportional elevation (frame at its real Z extent, components
@@ -86,15 +83,6 @@ file** — a release must not ship without a changelog entry:
   to the 303 SS U-joint); the perimeter angle stays expendable 6061. Cascaded across parts/costing
   (film +$72/$100/$128), the 3D film-plane-mechanism, and 2D Sheets 3/8. New **Sheet 9** details the
   frame + ACM ↔ 304 SS corner plate ↔ U-joint ↔ X (swing) slide connection square-on and in section.
-- **Film-plane Sheet 6 — muslin clamp corrected to a spring clip** — the muslin attachment was redrawn
-  from a cam-lever toggle to a **spring clip**: a fixed jaw bolted to the ALU frame edge (countersunk)
-  + a spring-loaded jaw that pinches the muslin against the frame edge, squeeze-to-open (torsion spring
-  holds closed). The separate open/closed panel was folded into the main detail as a ghost + swing arc,
-  and the plan/elevation panels reworked to match.
-- **Film-plane report reconciled to the U-channel corner design** — the report, dependency-map, and
-  analysis-doc scope note were rewritten from the superseded leadscrew Option-A prose to the current
-  304 U-channel + acetal skate + 316 cross-slide + Ruland U-joint mechanism; the Sketchfab embed now
-  points at the film-plane-mechanism model.
 
 - **Film-plane frame + corner L-bracket → expendable anodized 6061** — the wetted-zone film
   structure was clarified as an **expendable** part: a 304 SS swap was evaluated (~+$1,430–1,980,

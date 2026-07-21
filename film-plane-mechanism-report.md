@@ -187,7 +187,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×65 wall-sandwich bolts (plain nut + split = locked). $11.97/pack of 100. | 28 ea | McMaster-Carr | $3 |
 | M8×25mm knurled thumbscrew DIN 464 | ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare | 12 ea | Amazon / Maedler | $36 |
 | M8 hex bolt, SS — length TBD (film right-rail fixing, confirm at order) | ICP-14: right-rail permanent fixing; 2/saddle ×2 TR + spare | 8 ea | McMaster-Carr / Amazon | $15 |
-| M8 hex nut, plain SS | Plain hex nut — M8 right-rail fixing (cost-neutral placeholder; re-price) | 8 ea | McMaster-Carr | $1 |
+| [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | Plain hex nut — M8 right-rail fixing. Pitch M8×1.25 (coarse, baseline — confirm vs SKU PDF, must match the bolt). $7.53/pack of 100. | 8 ea | McMaster-Carr | $1 |
 | **Film total** | | | | **$5,717–$6,225** |
 <!-- END parts:film -->
 

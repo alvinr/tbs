@@ -180,17 +180,38 @@ def warn_parts_identity() -> tuple[bool, list[str]]:
 
 
 # ── WARNING: markdown table arithmetic (every declared TOTAL = sum of its column) ──
+# Cells may be a single value ($25, ~$25, **$25**) or a low–high range
+# ($25–$45, $25 - $45, $25 to $45). Ranges are checked at BOTH bounds so a
+# range-format total can't slip past the way a scalar total can't.
 _MONEY = re.compile(r"^\*{0,2}~?\$?([\d,]+)\*{0,2}$")
+_MONEY_RANGE = re.compile(
+    r"^\*{0,2}~?\$?([\d,]+)\s*(?:–|—|-|to)\s*~?\$?([\d,]+)\*{0,2}$")
+
+
+def _int(s: str):
+    try:
+        return int(s.replace(",", ""))
+    except ValueError:
+        return None
 
 
 def _money(cell: str):
+    """Parse a scalar money cell. Returns an int or None (kept for callers that
+    only accept a single value)."""
     m = _MONEY.match(cell.strip())
-    if not m:
-        return None
-    try:
-        return int(m.group(1).replace(",", ""))
-    except ValueError:
-        return None
+    return _int(m.group(1)) if m else None
+
+
+def _money_range(cell: str):
+    """Parse a money cell that may be scalar or a low–high range.
+    Returns (lo, hi) — a scalar yields (v, v) — or None if it isn't money."""
+    s = cell.strip()
+    m = _MONEY_RANGE.match(s)
+    if m:
+        lo, hi = _int(m.group(1)), _int(m.group(2))
+        return None if lo is None or hi is None else (lo, hi)
+    v = _money(s)
+    return None if v is None else (v, v)
 
 
 def _cells(row: str) -> list[str]:
@@ -203,27 +224,35 @@ def _check_table(fname, start, block, issues):
                     if r and re.search(r"\btotal\b", r[0], re.I)), None)
     if tot_idx is None:
         return
+    if re.search(r"\(.*\)", rows[tot_idx][0]):           # scenario/selection total ("... (mid-range)"), not a column sum
+        return
     data = [r for k, r in enumerate(rows)
             if k != tot_idx and not all(set(c) <= set("-: ") for c in r)]
     if len(data) < 2:                                    # need a header + >=1 data row
         return
     for col in range(1, len(rows[tot_idx])):
-        tot = _money(rows[tot_idx][col])
+        tot = _money_range(rows[tot_idx][col])
         if tot is None:
             continue
-        vals, ok = [], True
+        pairs, ok = [], True
         for r in data[1:]:                               # data[0] is the header row
-            v = _money(r[col]) if col < len(r) else None
+            v = _money_range(r[col]) if col < len(r) else None
             if v is None:                                # ambiguous cell -> skip column (no FP)
                 ok = False
                 break
-            vals.append(v)
-        if not ok or not vals:
+            pairs.append(v)
+        if not ok or not pairs:
             continue
-        s = sum(vals)
-        if abs(s - tot) > max(round(0.01 * tot), 15):    # tolerance absorbs '~$' rounding
-            issues.append(f"{fname}:{start + tot_idx + 1}  col{col}: TOTAL ${tot:,} "
-                          f"!= sum ${s:,} (Δ${abs(s - tot):,})")
+        # A scalar column (total and every row single-valued) is reported once,
+        # unlabeled, as before; a range column is checked low and high separately.
+        is_range = tot[0] != tot[1] or any(p[0] != p[1] for p in pairs)
+        bounds = ((0, " (low)"), (1, " (high)")) if is_range else ((0, ""),)
+        for b, label in bounds:
+            s = sum(p[b] for p in pairs)
+            t = tot[b]
+            if abs(s - t) > max(round(0.01 * t), 15):    # tolerance absorbs '~$' rounding
+                issues.append(f"{fname}:{start + tot_idx + 1}  col{col}: TOTAL ${t:,}{label} "
+                              f"!= sum ${s:,} (Δ${abs(s - t):,})")
 
 
 def warn_arithmetic() -> tuple[bool, list[str]]:

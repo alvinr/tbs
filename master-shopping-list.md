@@ -197,12 +197,12 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [M5×16 countersunk screw, A2-70 SS](https://www.mcmaster.com/91292a126/) (91292A126) | 184 ea | McMaster-Carr | clamp, shelf | $32 |
-| M6 hex bolt, SS — length TBD (electrical panel mount, confirm at order) | 4 ea | McMaster-Carr | electrical | $5 |
-| M6 hex bolt, SS — length TBD (spray arm-tube pinch, confirm at order) | 1 ea | McMaster-Carr | spray | $1 |
-| M6 hex bolt, SS — length TBD (tray panel flange, confirm at order) | 12 ea | McMaster-Carr | tray | $11 |
+| M6 hex bolt — M6×20 (crest-seated) to M6×55 (corrugation-bridge), confirm mount | 4 ea | McMaster-Carr | electrical | $5 |
+| M6 hex bolt, SS — length BLOCKED (pinch-clamp geometry undesigned) | 1 ea | McMaster-Carr | spray | $1 |
+| M6 hex bolt, SS — ~M6×16 est (tray center flange) | 12 ea | McMaster-Carr | tray | $11 |
 | [M6×1.0 × 20 hex bolt, Grade 8.8 zinc](https://www.mcmaster.com/91280A330/) (91280A330) | 16 ea | McMaster-Carr | spray | $3 |
-| M8 hex bolt, SS — length TBD (film right-rail fixing, confirm at order) | 8 ea | McMaster-Carr | film | $15 |
-| M8 hex bolt, SS — length TBD (shelf hinge-cleat + stay wall anchors, confirm at order) | 12 ea | McMaster-Carr | shelf | $10 |
+| M8 hex bolt, SS — ~M8×30 (pending 1262T21 web thickness) | 8 ea | McMaster-Carr | film | $15 |
+| M8 hex bolt, SS — M8×20-25 (rib-flat) to longer (corrugation-bridge), confirm attach | 12 ea | McMaster-Carr | shelf | $10 |
 | M12×40 hex bolt, Grade 8.8 | 12 ea | McMaster-Carr | ibc-frame | $12–$22 |
 | [M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A728/) (91280A728) | 86 ea | McMaster-Carr | film, walkway | $137 |
 | [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | 24 ea | McMaster-Carr | walkway | $42 |

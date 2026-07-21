@@ -10603,7 +10603,7 @@ end
   circle = ge.add_circle([-400.mm,1181.mm,2250.mm], [0,0,1], 65.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(45.mm)
+  cface.pushpull(25.mm)
   mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -19401,25 +19401,7769 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Door Frame bottom seal lip
+  # Door Frame bottom brush seal
   grp = ents.add_group
-  grp.name = "Door Frame bottom seal lip"
+  grp.name = "Door Frame bottom brush seal"
   face = grp.entities.add_face([-32.mm,0.mm,0.mm], [-20.mm,0.mm,0.mm], [-20.mm,2362.mm,0.mm], [-32.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(110.mm)
-  mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
-  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat = model.materials["Door Frame bottom brush seal"] || model.materials.add("Door Frame bottom brush seal")
+  mat.color = Sketchup::Color.new(47, 168, 79)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Door Frame top seal lip
+  # Brush bristle
   grp = ents.add_group
-  grp.name = "Door Frame top seal lip"
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,6.7102272727272725.mm,40.mm], [-31.mm,6.7102272727272725.mm,40.mm], [-31.mm,8.710227272727273.mm,40.mm], [-33.mm,8.710227272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,6.7102272727272725.mm,40.mm], [-19.mm,6.7102272727272725.mm,40.mm], [-19.mm,8.710227272727273.mm,40.mm], [-21.mm,8.710227272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,20.130681818181817.mm,40.mm], [-31.mm,20.130681818181817.mm,40.mm], [-31.mm,22.130681818181817.mm,40.mm], [-33.mm,22.130681818181817.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,20.130681818181817.mm,40.mm], [-19.mm,20.130681818181817.mm,40.mm], [-19.mm,22.130681818181817.mm,40.mm], [-21.mm,22.130681818181817.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,33.55113636363636.mm,40.mm], [-31.mm,33.55113636363636.mm,40.mm], [-31.mm,35.55113636363636.mm,40.mm], [-33.mm,35.55113636363636.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,33.55113636363636.mm,40.mm], [-19.mm,33.55113636363636.mm,40.mm], [-19.mm,35.55113636363636.mm,40.mm], [-21.mm,35.55113636363636.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,46.97159090909091.mm,40.mm], [-31.mm,46.97159090909091.mm,40.mm], [-31.mm,48.97159090909091.mm,40.mm], [-33.mm,48.97159090909091.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,46.97159090909091.mm,40.mm], [-19.mm,46.97159090909091.mm,40.mm], [-19.mm,48.97159090909091.mm,40.mm], [-21.mm,48.97159090909091.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,60.39204545454545.mm,40.mm], [-31.mm,60.39204545454545.mm,40.mm], [-31.mm,62.39204545454545.mm,40.mm], [-33.mm,62.39204545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,60.39204545454545.mm,40.mm], [-19.mm,60.39204545454545.mm,40.mm], [-19.mm,62.39204545454545.mm,40.mm], [-21.mm,62.39204545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,73.8125.mm,40.mm], [-31.mm,73.8125.mm,40.mm], [-31.mm,75.8125.mm,40.mm], [-33.mm,75.8125.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,73.8125.mm,40.mm], [-19.mm,73.8125.mm,40.mm], [-19.mm,75.8125.mm,40.mm], [-21.mm,75.8125.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,87.23295454545455.mm,40.mm], [-31.mm,87.23295454545455.mm,40.mm], [-31.mm,89.23295454545455.mm,40.mm], [-33.mm,89.23295454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,87.23295454545455.mm,40.mm], [-19.mm,87.23295454545455.mm,40.mm], [-19.mm,89.23295454545455.mm,40.mm], [-21.mm,89.23295454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,100.6534090909091.mm,40.mm], [-31.mm,100.6534090909091.mm,40.mm], [-31.mm,102.6534090909091.mm,40.mm], [-33.mm,102.6534090909091.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,100.6534090909091.mm,40.mm], [-19.mm,100.6534090909091.mm,40.mm], [-19.mm,102.6534090909091.mm,40.mm], [-21.mm,102.6534090909091.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,114.07386363636363.mm,40.mm], [-31.mm,114.07386363636363.mm,40.mm], [-31.mm,116.07386363636363.mm,40.mm], [-33.mm,116.07386363636363.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,114.07386363636363.mm,40.mm], [-19.mm,114.07386363636363.mm,40.mm], [-19.mm,116.07386363636363.mm,40.mm], [-21.mm,116.07386363636363.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,127.49431818181817.mm,40.mm], [-31.mm,127.49431818181817.mm,40.mm], [-31.mm,129.4943181818182.mm,40.mm], [-33.mm,129.4943181818182.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,127.49431818181817.mm,40.mm], [-19.mm,127.49431818181817.mm,40.mm], [-19.mm,129.4943181818182.mm,40.mm], [-21.mm,129.4943181818182.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,140.91477272727272.mm,40.mm], [-31.mm,140.91477272727272.mm,40.mm], [-31.mm,142.91477272727272.mm,40.mm], [-33.mm,142.91477272727272.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,140.91477272727272.mm,40.mm], [-19.mm,140.91477272727272.mm,40.mm], [-19.mm,142.91477272727272.mm,40.mm], [-21.mm,142.91477272727272.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,154.33522727272728.mm,40.mm], [-31.mm,154.33522727272728.mm,40.mm], [-31.mm,156.33522727272728.mm,40.mm], [-33.mm,156.33522727272728.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,154.33522727272728.mm,40.mm], [-19.mm,154.33522727272728.mm,40.mm], [-19.mm,156.33522727272728.mm,40.mm], [-21.mm,156.33522727272728.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,167.7556818181818.mm,40.mm], [-31.mm,167.7556818181818.mm,40.mm], [-31.mm,169.7556818181818.mm,40.mm], [-33.mm,169.7556818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,167.7556818181818.mm,40.mm], [-19.mm,167.7556818181818.mm,40.mm], [-19.mm,169.7556818181818.mm,40.mm], [-21.mm,169.7556818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,181.17613636363635.mm,40.mm], [-31.mm,181.17613636363635.mm,40.mm], [-31.mm,183.17613636363635.mm,40.mm], [-33.mm,183.17613636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,181.17613636363635.mm,40.mm], [-19.mm,181.17613636363635.mm,40.mm], [-19.mm,183.17613636363635.mm,40.mm], [-21.mm,183.17613636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,194.5965909090909.mm,40.mm], [-31.mm,194.5965909090909.mm,40.mm], [-31.mm,196.5965909090909.mm,40.mm], [-33.mm,196.5965909090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,194.5965909090909.mm,40.mm], [-19.mm,194.5965909090909.mm,40.mm], [-19.mm,196.5965909090909.mm,40.mm], [-21.mm,196.5965909090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,208.01704545454544.mm,40.mm], [-31.mm,208.01704545454544.mm,40.mm], [-31.mm,210.01704545454544.mm,40.mm], [-33.mm,210.01704545454544.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,208.01704545454544.mm,40.mm], [-19.mm,208.01704545454544.mm,40.mm], [-19.mm,210.01704545454544.mm,40.mm], [-21.mm,210.01704545454544.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,221.4375.mm,40.mm], [-31.mm,221.4375.mm,40.mm], [-31.mm,223.4375.mm,40.mm], [-33.mm,223.4375.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,221.4375.mm,40.mm], [-19.mm,221.4375.mm,40.mm], [-19.mm,223.4375.mm,40.mm], [-21.mm,223.4375.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,234.85795454545453.mm,40.mm], [-31.mm,234.85795454545453.mm,40.mm], [-31.mm,236.85795454545453.mm,40.mm], [-33.mm,236.85795454545453.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,234.85795454545453.mm,40.mm], [-19.mm,234.85795454545453.mm,40.mm], [-19.mm,236.85795454545453.mm,40.mm], [-21.mm,236.85795454545453.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,248.2784090909091.mm,40.mm], [-31.mm,248.2784090909091.mm,40.mm], [-31.mm,250.2784090909091.mm,40.mm], [-33.mm,250.2784090909091.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,248.2784090909091.mm,40.mm], [-19.mm,248.2784090909091.mm,40.mm], [-19.mm,250.2784090909091.mm,40.mm], [-21.mm,250.2784090909091.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,261.6988636363636.mm,40.mm], [-31.mm,261.6988636363636.mm,40.mm], [-31.mm,263.6988636363636.mm,40.mm], [-33.mm,263.6988636363636.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,261.6988636363636.mm,40.mm], [-19.mm,261.6988636363636.mm,40.mm], [-19.mm,263.6988636363636.mm,40.mm], [-21.mm,263.6988636363636.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,275.1193181818182.mm,40.mm], [-31.mm,275.1193181818182.mm,40.mm], [-31.mm,277.1193181818182.mm,40.mm], [-33.mm,277.1193181818182.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,275.1193181818182.mm,40.mm], [-19.mm,275.1193181818182.mm,40.mm], [-19.mm,277.1193181818182.mm,40.mm], [-21.mm,277.1193181818182.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,288.5397727272727.mm,40.mm], [-31.mm,288.5397727272727.mm,40.mm], [-31.mm,290.5397727272727.mm,40.mm], [-33.mm,290.5397727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,288.5397727272727.mm,40.mm], [-19.mm,288.5397727272727.mm,40.mm], [-19.mm,290.5397727272727.mm,40.mm], [-21.mm,290.5397727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,301.96022727272725.mm,40.mm], [-31.mm,301.96022727272725.mm,40.mm], [-31.mm,303.96022727272725.mm,40.mm], [-33.mm,303.96022727272725.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,301.96022727272725.mm,40.mm], [-19.mm,301.96022727272725.mm,40.mm], [-19.mm,303.96022727272725.mm,40.mm], [-21.mm,303.96022727272725.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,315.3806818181818.mm,40.mm], [-31.mm,315.3806818181818.mm,40.mm], [-31.mm,317.3806818181818.mm,40.mm], [-33.mm,317.3806818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,315.3806818181818.mm,40.mm], [-19.mm,315.3806818181818.mm,40.mm], [-19.mm,317.3806818181818.mm,40.mm], [-21.mm,317.3806818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,328.8011363636364.mm,40.mm], [-31.mm,328.8011363636364.mm,40.mm], [-31.mm,330.8011363636364.mm,40.mm], [-33.mm,330.8011363636364.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,328.8011363636364.mm,40.mm], [-19.mm,328.8011363636364.mm,40.mm], [-19.mm,330.8011363636364.mm,40.mm], [-21.mm,330.8011363636364.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,342.2215909090909.mm,40.mm], [-31.mm,342.2215909090909.mm,40.mm], [-31.mm,344.2215909090909.mm,40.mm], [-33.mm,344.2215909090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,342.2215909090909.mm,40.mm], [-19.mm,342.2215909090909.mm,40.mm], [-19.mm,344.2215909090909.mm,40.mm], [-21.mm,344.2215909090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,355.64204545454544.mm,40.mm], [-31.mm,355.64204545454544.mm,40.mm], [-31.mm,357.64204545454544.mm,40.mm], [-33.mm,357.64204545454544.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,355.64204545454544.mm,40.mm], [-19.mm,355.64204545454544.mm,40.mm], [-19.mm,357.64204545454544.mm,40.mm], [-21.mm,357.64204545454544.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,369.0625.mm,40.mm], [-31.mm,369.0625.mm,40.mm], [-31.mm,371.0625.mm,40.mm], [-33.mm,371.0625.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,369.0625.mm,40.mm], [-19.mm,369.0625.mm,40.mm], [-19.mm,371.0625.mm,40.mm], [-21.mm,371.0625.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,382.4829545454545.mm,40.mm], [-31.mm,382.4829545454545.mm,40.mm], [-31.mm,384.4829545454545.mm,40.mm], [-33.mm,384.4829545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,382.4829545454545.mm,40.mm], [-19.mm,382.4829545454545.mm,40.mm], [-19.mm,384.4829545454545.mm,40.mm], [-21.mm,384.4829545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,395.90340909090907.mm,40.mm], [-31.mm,395.90340909090907.mm,40.mm], [-31.mm,397.90340909090907.mm,40.mm], [-33.mm,397.90340909090907.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,395.90340909090907.mm,40.mm], [-19.mm,395.90340909090907.mm,40.mm], [-19.mm,397.90340909090907.mm,40.mm], [-21.mm,397.90340909090907.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,409.3238636363636.mm,40.mm], [-31.mm,409.3238636363636.mm,40.mm], [-31.mm,411.3238636363636.mm,40.mm], [-33.mm,411.3238636363636.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,409.3238636363636.mm,40.mm], [-19.mm,409.3238636363636.mm,40.mm], [-19.mm,411.3238636363636.mm,40.mm], [-21.mm,411.3238636363636.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,422.7443181818182.mm,40.mm], [-31.mm,422.7443181818182.mm,40.mm], [-31.mm,424.7443181818182.mm,40.mm], [-33.mm,424.7443181818182.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,422.7443181818182.mm,40.mm], [-19.mm,422.7443181818182.mm,40.mm], [-19.mm,424.7443181818182.mm,40.mm], [-21.mm,424.7443181818182.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,436.1647727272727.mm,40.mm], [-31.mm,436.1647727272727.mm,40.mm], [-31.mm,438.1647727272727.mm,40.mm], [-33.mm,438.1647727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,436.1647727272727.mm,40.mm], [-19.mm,436.1647727272727.mm,40.mm], [-19.mm,438.1647727272727.mm,40.mm], [-21.mm,438.1647727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,449.58522727272725.mm,40.mm], [-31.mm,449.58522727272725.mm,40.mm], [-31.mm,451.58522727272725.mm,40.mm], [-33.mm,451.58522727272725.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,449.58522727272725.mm,40.mm], [-19.mm,449.58522727272725.mm,40.mm], [-19.mm,451.58522727272725.mm,40.mm], [-21.mm,451.58522727272725.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,463.0056818181818.mm,40.mm], [-31.mm,463.0056818181818.mm,40.mm], [-31.mm,465.0056818181818.mm,40.mm], [-33.mm,465.0056818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,463.0056818181818.mm,40.mm], [-19.mm,463.0056818181818.mm,40.mm], [-19.mm,465.0056818181818.mm,40.mm], [-21.mm,465.0056818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,476.4261363636364.mm,40.mm], [-31.mm,476.4261363636364.mm,40.mm], [-31.mm,478.4261363636364.mm,40.mm], [-33.mm,478.4261363636364.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,476.4261363636364.mm,40.mm], [-19.mm,476.4261363636364.mm,40.mm], [-19.mm,478.4261363636364.mm,40.mm], [-21.mm,478.4261363636364.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,489.8465909090909.mm,40.mm], [-31.mm,489.8465909090909.mm,40.mm], [-31.mm,491.8465909090909.mm,40.mm], [-33.mm,491.8465909090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,489.8465909090909.mm,40.mm], [-19.mm,489.8465909090909.mm,40.mm], [-19.mm,491.8465909090909.mm,40.mm], [-21.mm,491.8465909090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,503.26704545454544.mm,40.mm], [-31.mm,503.26704545454544.mm,40.mm], [-31.mm,505.26704545454544.mm,40.mm], [-33.mm,505.26704545454544.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,503.26704545454544.mm,40.mm], [-19.mm,503.26704545454544.mm,40.mm], [-19.mm,505.26704545454544.mm,40.mm], [-21.mm,505.26704545454544.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,516.6875.mm,40.mm], [-31.mm,516.6875.mm,40.mm], [-31.mm,518.6875.mm,40.mm], [-33.mm,518.6875.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,516.6875.mm,40.mm], [-19.mm,516.6875.mm,40.mm], [-19.mm,518.6875.mm,40.mm], [-21.mm,518.6875.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,530.1079545454545.mm,40.mm], [-31.mm,530.1079545454545.mm,40.mm], [-31.mm,532.1079545454545.mm,40.mm], [-33.mm,532.1079545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,530.1079545454545.mm,40.mm], [-19.mm,530.1079545454545.mm,40.mm], [-19.mm,532.1079545454545.mm,40.mm], [-21.mm,532.1079545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,543.5284090909091.mm,40.mm], [-31.mm,543.5284090909091.mm,40.mm], [-31.mm,545.5284090909091.mm,40.mm], [-33.mm,545.5284090909091.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,543.5284090909091.mm,40.mm], [-19.mm,543.5284090909091.mm,40.mm], [-19.mm,545.5284090909091.mm,40.mm], [-21.mm,545.5284090909091.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,556.9488636363636.mm,40.mm], [-31.mm,556.9488636363636.mm,40.mm], [-31.mm,558.9488636363636.mm,40.mm], [-33.mm,558.9488636363636.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,556.9488636363636.mm,40.mm], [-19.mm,556.9488636363636.mm,40.mm], [-19.mm,558.9488636363636.mm,40.mm], [-21.mm,558.9488636363636.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,570.3693181818181.mm,40.mm], [-31.mm,570.3693181818181.mm,40.mm], [-31.mm,572.3693181818181.mm,40.mm], [-33.mm,572.3693181818181.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,570.3693181818181.mm,40.mm], [-19.mm,570.3693181818181.mm,40.mm], [-19.mm,572.3693181818181.mm,40.mm], [-21.mm,572.3693181818181.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,583.7897727272727.mm,40.mm], [-31.mm,583.7897727272727.mm,40.mm], [-31.mm,585.7897727272727.mm,40.mm], [-33.mm,585.7897727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,583.7897727272727.mm,40.mm], [-19.mm,583.7897727272727.mm,40.mm], [-19.mm,585.7897727272727.mm,40.mm], [-21.mm,585.7897727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,597.2102272727273.mm,40.mm], [-31.mm,597.2102272727273.mm,40.mm], [-31.mm,599.2102272727273.mm,40.mm], [-33.mm,599.2102272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,597.2102272727273.mm,40.mm], [-19.mm,597.2102272727273.mm,40.mm], [-19.mm,599.2102272727273.mm,40.mm], [-21.mm,599.2102272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,610.6306818181818.mm,40.mm], [-31.mm,610.6306818181818.mm,40.mm], [-31.mm,612.6306818181818.mm,40.mm], [-33.mm,612.6306818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,610.6306818181818.mm,40.mm], [-19.mm,610.6306818181818.mm,40.mm], [-19.mm,612.6306818181818.mm,40.mm], [-21.mm,612.6306818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,624.0511363636364.mm,40.mm], [-31.mm,624.0511363636364.mm,40.mm], [-31.mm,626.0511363636364.mm,40.mm], [-33.mm,626.0511363636364.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,624.0511363636364.mm,40.mm], [-19.mm,624.0511363636364.mm,40.mm], [-19.mm,626.0511363636364.mm,40.mm], [-21.mm,626.0511363636364.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,637.4715909090909.mm,40.mm], [-31.mm,637.4715909090909.mm,40.mm], [-31.mm,639.4715909090909.mm,40.mm], [-33.mm,639.4715909090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,637.4715909090909.mm,40.mm], [-19.mm,637.4715909090909.mm,40.mm], [-19.mm,639.4715909090909.mm,40.mm], [-21.mm,639.4715909090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,650.8920454545454.mm,40.mm], [-31.mm,650.8920454545454.mm,40.mm], [-31.mm,652.8920454545454.mm,40.mm], [-33.mm,652.8920454545454.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,650.8920454545454.mm,40.mm], [-19.mm,650.8920454545454.mm,40.mm], [-19.mm,652.8920454545454.mm,40.mm], [-21.mm,652.8920454545454.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,664.3125.mm,40.mm], [-31.mm,664.3125.mm,40.mm], [-31.mm,666.3125.mm,40.mm], [-33.mm,666.3125.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,664.3125.mm,40.mm], [-19.mm,664.3125.mm,40.mm], [-19.mm,666.3125.mm,40.mm], [-21.mm,666.3125.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,677.7329545454545.mm,40.mm], [-31.mm,677.7329545454545.mm,40.mm], [-31.mm,679.7329545454545.mm,40.mm], [-33.mm,679.7329545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,677.7329545454545.mm,40.mm], [-19.mm,677.7329545454545.mm,40.mm], [-19.mm,679.7329545454545.mm,40.mm], [-21.mm,679.7329545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,691.1534090909091.mm,40.mm], [-31.mm,691.1534090909091.mm,40.mm], [-31.mm,693.1534090909091.mm,40.mm], [-33.mm,693.1534090909091.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,691.1534090909091.mm,40.mm], [-19.mm,691.1534090909091.mm,40.mm], [-19.mm,693.1534090909091.mm,40.mm], [-21.mm,693.1534090909091.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,704.5738636363636.mm,40.mm], [-31.mm,704.5738636363636.mm,40.mm], [-31.mm,706.5738636363636.mm,40.mm], [-33.mm,706.5738636363636.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,704.5738636363636.mm,40.mm], [-19.mm,704.5738636363636.mm,40.mm], [-19.mm,706.5738636363636.mm,40.mm], [-21.mm,706.5738636363636.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,717.9943181818181.mm,40.mm], [-31.mm,717.9943181818181.mm,40.mm], [-31.mm,719.9943181818181.mm,40.mm], [-33.mm,719.9943181818181.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,717.9943181818181.mm,40.mm], [-19.mm,717.9943181818181.mm,40.mm], [-19.mm,719.9943181818181.mm,40.mm], [-21.mm,719.9943181818181.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,731.4147727272727.mm,40.mm], [-31.mm,731.4147727272727.mm,40.mm], [-31.mm,733.4147727272727.mm,40.mm], [-33.mm,733.4147727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,731.4147727272727.mm,40.mm], [-19.mm,731.4147727272727.mm,40.mm], [-19.mm,733.4147727272727.mm,40.mm], [-21.mm,733.4147727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,744.8352272727273.mm,40.mm], [-31.mm,744.8352272727273.mm,40.mm], [-31.mm,746.8352272727273.mm,40.mm], [-33.mm,746.8352272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,744.8352272727273.mm,40.mm], [-19.mm,744.8352272727273.mm,40.mm], [-19.mm,746.8352272727273.mm,40.mm], [-21.mm,746.8352272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,758.2556818181818.mm,40.mm], [-31.mm,758.2556818181818.mm,40.mm], [-31.mm,760.2556818181818.mm,40.mm], [-33.mm,760.2556818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,758.2556818181818.mm,40.mm], [-19.mm,758.2556818181818.mm,40.mm], [-19.mm,760.2556818181818.mm,40.mm], [-21.mm,760.2556818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,771.6761363636364.mm,40.mm], [-31.mm,771.6761363636364.mm,40.mm], [-31.mm,773.6761363636364.mm,40.mm], [-33.mm,773.6761363636364.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,771.6761363636364.mm,40.mm], [-19.mm,771.6761363636364.mm,40.mm], [-19.mm,773.6761363636364.mm,40.mm], [-21.mm,773.6761363636364.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,785.0965909090909.mm,40.mm], [-31.mm,785.0965909090909.mm,40.mm], [-31.mm,787.0965909090909.mm,40.mm], [-33.mm,787.0965909090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,785.0965909090909.mm,40.mm], [-19.mm,785.0965909090909.mm,40.mm], [-19.mm,787.0965909090909.mm,40.mm], [-21.mm,787.0965909090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,798.5170454545454.mm,40.mm], [-31.mm,798.5170454545454.mm,40.mm], [-31.mm,800.5170454545454.mm,40.mm], [-33.mm,800.5170454545454.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,798.5170454545454.mm,40.mm], [-19.mm,798.5170454545454.mm,40.mm], [-19.mm,800.5170454545454.mm,40.mm], [-21.mm,800.5170454545454.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,811.9375.mm,40.mm], [-31.mm,811.9375.mm,40.mm], [-31.mm,813.9375.mm,40.mm], [-33.mm,813.9375.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,811.9375.mm,40.mm], [-19.mm,811.9375.mm,40.mm], [-19.mm,813.9375.mm,40.mm], [-21.mm,813.9375.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,825.3579545454545.mm,40.mm], [-31.mm,825.3579545454545.mm,40.mm], [-31.mm,827.3579545454545.mm,40.mm], [-33.mm,827.3579545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,825.3579545454545.mm,40.mm], [-19.mm,825.3579545454545.mm,40.mm], [-19.mm,827.3579545454545.mm,40.mm], [-21.mm,827.3579545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,838.778409090909.mm,40.mm], [-31.mm,838.778409090909.mm,40.mm], [-31.mm,840.778409090909.mm,40.mm], [-33.mm,840.778409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,838.778409090909.mm,40.mm], [-19.mm,838.778409090909.mm,40.mm], [-19.mm,840.778409090909.mm,40.mm], [-21.mm,840.778409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,852.1988636363636.mm,40.mm], [-31.mm,852.1988636363636.mm,40.mm], [-31.mm,854.1988636363636.mm,40.mm], [-33.mm,854.1988636363636.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,852.1988636363636.mm,40.mm], [-19.mm,852.1988636363636.mm,40.mm], [-19.mm,854.1988636363636.mm,40.mm], [-21.mm,854.1988636363636.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,865.6193181818181.mm,40.mm], [-31.mm,865.6193181818181.mm,40.mm], [-31.mm,867.6193181818181.mm,40.mm], [-33.mm,867.6193181818181.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,865.6193181818181.mm,40.mm], [-19.mm,865.6193181818181.mm,40.mm], [-19.mm,867.6193181818181.mm,40.mm], [-21.mm,867.6193181818181.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,879.0397727272727.mm,40.mm], [-31.mm,879.0397727272727.mm,40.mm], [-31.mm,881.0397727272727.mm,40.mm], [-33.mm,881.0397727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,879.0397727272727.mm,40.mm], [-19.mm,879.0397727272727.mm,40.mm], [-19.mm,881.0397727272727.mm,40.mm], [-21.mm,881.0397727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,892.4602272727273.mm,40.mm], [-31.mm,892.4602272727273.mm,40.mm], [-31.mm,894.4602272727273.mm,40.mm], [-33.mm,894.4602272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,892.4602272727273.mm,40.mm], [-19.mm,892.4602272727273.mm,40.mm], [-19.mm,894.4602272727273.mm,40.mm], [-21.mm,894.4602272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,905.8806818181818.mm,40.mm], [-31.mm,905.8806818181818.mm,40.mm], [-31.mm,907.8806818181818.mm,40.mm], [-33.mm,907.8806818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,905.8806818181818.mm,40.mm], [-19.mm,905.8806818181818.mm,40.mm], [-19.mm,907.8806818181818.mm,40.mm], [-21.mm,907.8806818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,919.3011363636364.mm,40.mm], [-31.mm,919.3011363636364.mm,40.mm], [-31.mm,921.3011363636364.mm,40.mm], [-33.mm,921.3011363636364.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,919.3011363636364.mm,40.mm], [-19.mm,919.3011363636364.mm,40.mm], [-19.mm,921.3011363636364.mm,40.mm], [-21.mm,921.3011363636364.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,932.7215909090909.mm,40.mm], [-31.mm,932.7215909090909.mm,40.mm], [-31.mm,934.7215909090909.mm,40.mm], [-33.mm,934.7215909090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,932.7215909090909.mm,40.mm], [-19.mm,932.7215909090909.mm,40.mm], [-19.mm,934.7215909090909.mm,40.mm], [-21.mm,934.7215909090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,946.1420454545454.mm,40.mm], [-31.mm,946.1420454545454.mm,40.mm], [-31.mm,948.1420454545454.mm,40.mm], [-33.mm,948.1420454545454.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,946.1420454545454.mm,40.mm], [-19.mm,946.1420454545454.mm,40.mm], [-19.mm,948.1420454545454.mm,40.mm], [-21.mm,948.1420454545454.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,959.5625.mm,40.mm], [-31.mm,959.5625.mm,40.mm], [-31.mm,961.5625.mm,40.mm], [-33.mm,961.5625.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,959.5625.mm,40.mm], [-19.mm,959.5625.mm,40.mm], [-19.mm,961.5625.mm,40.mm], [-21.mm,961.5625.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,972.9829545454545.mm,40.mm], [-31.mm,972.9829545454545.mm,40.mm], [-31.mm,974.9829545454545.mm,40.mm], [-33.mm,974.9829545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,972.9829545454545.mm,40.mm], [-19.mm,972.9829545454545.mm,40.mm], [-19.mm,974.9829545454545.mm,40.mm], [-21.mm,974.9829545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,986.403409090909.mm,40.mm], [-31.mm,986.403409090909.mm,40.mm], [-31.mm,988.403409090909.mm,40.mm], [-33.mm,988.403409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,986.403409090909.mm,40.mm], [-19.mm,986.403409090909.mm,40.mm], [-19.mm,988.403409090909.mm,40.mm], [-21.mm,988.403409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,999.8238636363636.mm,40.mm], [-31.mm,999.8238636363636.mm,40.mm], [-31.mm,1001.8238636363636.mm,40.mm], [-33.mm,1001.8238636363636.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,999.8238636363636.mm,40.mm], [-19.mm,999.8238636363636.mm,40.mm], [-19.mm,1001.8238636363636.mm,40.mm], [-21.mm,1001.8238636363636.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1013.2443181818181.mm,40.mm], [-31.mm,1013.2443181818181.mm,40.mm], [-31.mm,1015.2443181818181.mm,40.mm], [-33.mm,1015.2443181818181.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1013.2443181818181.mm,40.mm], [-19.mm,1013.2443181818181.mm,40.mm], [-19.mm,1015.2443181818181.mm,40.mm], [-21.mm,1015.2443181818181.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1026.6647727272727.mm,40.mm], [-31.mm,1026.6647727272727.mm,40.mm], [-31.mm,1028.6647727272727.mm,40.mm], [-33.mm,1028.6647727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1026.6647727272727.mm,40.mm], [-19.mm,1026.6647727272727.mm,40.mm], [-19.mm,1028.6647727272727.mm,40.mm], [-21.mm,1028.6647727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1040.0852272727273.mm,40.mm], [-31.mm,1040.0852272727273.mm,40.mm], [-31.mm,1042.0852272727273.mm,40.mm], [-33.mm,1042.0852272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1040.0852272727273.mm,40.mm], [-19.mm,1040.0852272727273.mm,40.mm], [-19.mm,1042.0852272727273.mm,40.mm], [-21.mm,1042.0852272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1053.5056818181818.mm,40.mm], [-31.mm,1053.5056818181818.mm,40.mm], [-31.mm,1055.5056818181818.mm,40.mm], [-33.mm,1055.5056818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1053.5056818181818.mm,40.mm], [-19.mm,1053.5056818181818.mm,40.mm], [-19.mm,1055.5056818181818.mm,40.mm], [-21.mm,1055.5056818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1066.9261363636363.mm,40.mm], [-31.mm,1066.9261363636363.mm,40.mm], [-31.mm,1068.9261363636363.mm,40.mm], [-33.mm,1068.9261363636363.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1066.9261363636363.mm,40.mm], [-19.mm,1066.9261363636363.mm,40.mm], [-19.mm,1068.9261363636363.mm,40.mm], [-21.mm,1068.9261363636363.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1080.3465909090908.mm,40.mm], [-31.mm,1080.3465909090908.mm,40.mm], [-31.mm,1082.3465909090908.mm,40.mm], [-33.mm,1082.3465909090908.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1080.3465909090908.mm,40.mm], [-19.mm,1080.3465909090908.mm,40.mm], [-19.mm,1082.3465909090908.mm,40.mm], [-21.mm,1082.3465909090908.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1093.7670454545455.mm,40.mm], [-31.mm,1093.7670454545455.mm,40.mm], [-31.mm,1095.7670454545455.mm,40.mm], [-33.mm,1095.7670454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1093.7670454545455.mm,40.mm], [-19.mm,1093.7670454545455.mm,40.mm], [-19.mm,1095.7670454545455.mm,40.mm], [-21.mm,1095.7670454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1107.1875.mm,40.mm], [-31.mm,1107.1875.mm,40.mm], [-31.mm,1109.1875.mm,40.mm], [-33.mm,1109.1875.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1107.1875.mm,40.mm], [-19.mm,1107.1875.mm,40.mm], [-19.mm,1109.1875.mm,40.mm], [-21.mm,1109.1875.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1120.6079545454545.mm,40.mm], [-31.mm,1120.6079545454545.mm,40.mm], [-31.mm,1122.6079545454545.mm,40.mm], [-33.mm,1122.6079545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1120.6079545454545.mm,40.mm], [-19.mm,1120.6079545454545.mm,40.mm], [-19.mm,1122.6079545454545.mm,40.mm], [-21.mm,1122.6079545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1134.028409090909.mm,40.mm], [-31.mm,1134.028409090909.mm,40.mm], [-31.mm,1136.028409090909.mm,40.mm], [-33.mm,1136.028409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1134.028409090909.mm,40.mm], [-19.mm,1134.028409090909.mm,40.mm], [-19.mm,1136.028409090909.mm,40.mm], [-21.mm,1136.028409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1147.4488636363635.mm,40.mm], [-31.mm,1147.4488636363635.mm,40.mm], [-31.mm,1149.4488636363635.mm,40.mm], [-33.mm,1149.4488636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1147.4488636363635.mm,40.mm], [-19.mm,1147.4488636363635.mm,40.mm], [-19.mm,1149.4488636363635.mm,40.mm], [-21.mm,1149.4488636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1160.8693181818182.mm,40.mm], [-31.mm,1160.8693181818182.mm,40.mm], [-31.mm,1162.8693181818182.mm,40.mm], [-33.mm,1162.8693181818182.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1160.8693181818182.mm,40.mm], [-19.mm,1160.8693181818182.mm,40.mm], [-19.mm,1162.8693181818182.mm,40.mm], [-21.mm,1162.8693181818182.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1174.2897727272727.mm,40.mm], [-31.mm,1174.2897727272727.mm,40.mm], [-31.mm,1176.2897727272727.mm,40.mm], [-33.mm,1176.2897727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1174.2897727272727.mm,40.mm], [-19.mm,1174.2897727272727.mm,40.mm], [-19.mm,1176.2897727272727.mm,40.mm], [-21.mm,1176.2897727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1187.7102272727273.mm,40.mm], [-31.mm,1187.7102272727273.mm,40.mm], [-31.mm,1189.7102272727273.mm,40.mm], [-33.mm,1189.7102272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1187.7102272727273.mm,40.mm], [-19.mm,1187.7102272727273.mm,40.mm], [-19.mm,1189.7102272727273.mm,40.mm], [-21.mm,1189.7102272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1201.1306818181818.mm,40.mm], [-31.mm,1201.1306818181818.mm,40.mm], [-31.mm,1203.1306818181818.mm,40.mm], [-33.mm,1203.1306818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1201.1306818181818.mm,40.mm], [-19.mm,1201.1306818181818.mm,40.mm], [-19.mm,1203.1306818181818.mm,40.mm], [-21.mm,1203.1306818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1214.5511363636363.mm,40.mm], [-31.mm,1214.5511363636363.mm,40.mm], [-31.mm,1216.5511363636363.mm,40.mm], [-33.mm,1216.5511363636363.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1214.5511363636363.mm,40.mm], [-19.mm,1214.5511363636363.mm,40.mm], [-19.mm,1216.5511363636363.mm,40.mm], [-21.mm,1216.5511363636363.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1227.9715909090908.mm,40.mm], [-31.mm,1227.9715909090908.mm,40.mm], [-31.mm,1229.9715909090908.mm,40.mm], [-33.mm,1229.9715909090908.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1227.9715909090908.mm,40.mm], [-19.mm,1227.9715909090908.mm,40.mm], [-19.mm,1229.9715909090908.mm,40.mm], [-21.mm,1229.9715909090908.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1241.3920454545455.mm,40.mm], [-31.mm,1241.3920454545455.mm,40.mm], [-31.mm,1243.3920454545455.mm,40.mm], [-33.mm,1243.3920454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1241.3920454545455.mm,40.mm], [-19.mm,1241.3920454545455.mm,40.mm], [-19.mm,1243.3920454545455.mm,40.mm], [-21.mm,1243.3920454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1254.8125.mm,40.mm], [-31.mm,1254.8125.mm,40.mm], [-31.mm,1256.8125.mm,40.mm], [-33.mm,1256.8125.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1254.8125.mm,40.mm], [-19.mm,1254.8125.mm,40.mm], [-19.mm,1256.8125.mm,40.mm], [-21.mm,1256.8125.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1268.2329545454545.mm,40.mm], [-31.mm,1268.2329545454545.mm,40.mm], [-31.mm,1270.2329545454545.mm,40.mm], [-33.mm,1270.2329545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1268.2329545454545.mm,40.mm], [-19.mm,1268.2329545454545.mm,40.mm], [-19.mm,1270.2329545454545.mm,40.mm], [-21.mm,1270.2329545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1281.653409090909.mm,40.mm], [-31.mm,1281.653409090909.mm,40.mm], [-31.mm,1283.653409090909.mm,40.mm], [-33.mm,1283.653409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1281.653409090909.mm,40.mm], [-19.mm,1281.653409090909.mm,40.mm], [-19.mm,1283.653409090909.mm,40.mm], [-21.mm,1283.653409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1295.0738636363635.mm,40.mm], [-31.mm,1295.0738636363635.mm,40.mm], [-31.mm,1297.0738636363635.mm,40.mm], [-33.mm,1297.0738636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1295.0738636363635.mm,40.mm], [-19.mm,1295.0738636363635.mm,40.mm], [-19.mm,1297.0738636363635.mm,40.mm], [-21.mm,1297.0738636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1308.4943181818182.mm,40.mm], [-31.mm,1308.4943181818182.mm,40.mm], [-31.mm,1310.4943181818182.mm,40.mm], [-33.mm,1310.4943181818182.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1308.4943181818182.mm,40.mm], [-19.mm,1308.4943181818182.mm,40.mm], [-19.mm,1310.4943181818182.mm,40.mm], [-21.mm,1310.4943181818182.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1321.9147727272727.mm,40.mm], [-31.mm,1321.9147727272727.mm,40.mm], [-31.mm,1323.9147727272727.mm,40.mm], [-33.mm,1323.9147727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1321.9147727272727.mm,40.mm], [-19.mm,1321.9147727272727.mm,40.mm], [-19.mm,1323.9147727272727.mm,40.mm], [-21.mm,1323.9147727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1335.3352272727273.mm,40.mm], [-31.mm,1335.3352272727273.mm,40.mm], [-31.mm,1337.3352272727273.mm,40.mm], [-33.mm,1337.3352272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1335.3352272727273.mm,40.mm], [-19.mm,1335.3352272727273.mm,40.mm], [-19.mm,1337.3352272727273.mm,40.mm], [-21.mm,1337.3352272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1348.7556818181818.mm,40.mm], [-31.mm,1348.7556818181818.mm,40.mm], [-31.mm,1350.7556818181818.mm,40.mm], [-33.mm,1350.7556818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1348.7556818181818.mm,40.mm], [-19.mm,1348.7556818181818.mm,40.mm], [-19.mm,1350.7556818181818.mm,40.mm], [-21.mm,1350.7556818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1362.1761363636363.mm,40.mm], [-31.mm,1362.1761363636363.mm,40.mm], [-31.mm,1364.1761363636363.mm,40.mm], [-33.mm,1364.1761363636363.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1362.1761363636363.mm,40.mm], [-19.mm,1362.1761363636363.mm,40.mm], [-19.mm,1364.1761363636363.mm,40.mm], [-21.mm,1364.1761363636363.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1375.5965909090908.mm,40.mm], [-31.mm,1375.5965909090908.mm,40.mm], [-31.mm,1377.5965909090908.mm,40.mm], [-33.mm,1377.5965909090908.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1375.5965909090908.mm,40.mm], [-19.mm,1375.5965909090908.mm,40.mm], [-19.mm,1377.5965909090908.mm,40.mm], [-21.mm,1377.5965909090908.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1389.0170454545455.mm,40.mm], [-31.mm,1389.0170454545455.mm,40.mm], [-31.mm,1391.0170454545455.mm,40.mm], [-33.mm,1391.0170454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1389.0170454545455.mm,40.mm], [-19.mm,1389.0170454545455.mm,40.mm], [-19.mm,1391.0170454545455.mm,40.mm], [-21.mm,1391.0170454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1402.4375.mm,40.mm], [-31.mm,1402.4375.mm,40.mm], [-31.mm,1404.4375.mm,40.mm], [-33.mm,1404.4375.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1402.4375.mm,40.mm], [-19.mm,1402.4375.mm,40.mm], [-19.mm,1404.4375.mm,40.mm], [-21.mm,1404.4375.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1415.8579545454545.mm,40.mm], [-31.mm,1415.8579545454545.mm,40.mm], [-31.mm,1417.8579545454545.mm,40.mm], [-33.mm,1417.8579545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1415.8579545454545.mm,40.mm], [-19.mm,1415.8579545454545.mm,40.mm], [-19.mm,1417.8579545454545.mm,40.mm], [-21.mm,1417.8579545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1429.278409090909.mm,40.mm], [-31.mm,1429.278409090909.mm,40.mm], [-31.mm,1431.278409090909.mm,40.mm], [-33.mm,1431.278409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1429.278409090909.mm,40.mm], [-19.mm,1429.278409090909.mm,40.mm], [-19.mm,1431.278409090909.mm,40.mm], [-21.mm,1431.278409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1442.6988636363635.mm,40.mm], [-31.mm,1442.6988636363635.mm,40.mm], [-31.mm,1444.6988636363635.mm,40.mm], [-33.mm,1444.6988636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1442.6988636363635.mm,40.mm], [-19.mm,1442.6988636363635.mm,40.mm], [-19.mm,1444.6988636363635.mm,40.mm], [-21.mm,1444.6988636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1456.119318181818.mm,40.mm], [-31.mm,1456.119318181818.mm,40.mm], [-31.mm,1458.119318181818.mm,40.mm], [-33.mm,1458.119318181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1456.119318181818.mm,40.mm], [-19.mm,1456.119318181818.mm,40.mm], [-19.mm,1458.119318181818.mm,40.mm], [-21.mm,1458.119318181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1469.5397727272727.mm,40.mm], [-31.mm,1469.5397727272727.mm,40.mm], [-31.mm,1471.5397727272727.mm,40.mm], [-33.mm,1471.5397727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1469.5397727272727.mm,40.mm], [-19.mm,1469.5397727272727.mm,40.mm], [-19.mm,1471.5397727272727.mm,40.mm], [-21.mm,1471.5397727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1482.9602272727273.mm,40.mm], [-31.mm,1482.9602272727273.mm,40.mm], [-31.mm,1484.9602272727273.mm,40.mm], [-33.mm,1484.9602272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1482.9602272727273.mm,40.mm], [-19.mm,1482.9602272727273.mm,40.mm], [-19.mm,1484.9602272727273.mm,40.mm], [-21.mm,1484.9602272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1496.3806818181818.mm,40.mm], [-31.mm,1496.3806818181818.mm,40.mm], [-31.mm,1498.3806818181818.mm,40.mm], [-33.mm,1498.3806818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1496.3806818181818.mm,40.mm], [-19.mm,1496.3806818181818.mm,40.mm], [-19.mm,1498.3806818181818.mm,40.mm], [-21.mm,1498.3806818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1509.8011363636363.mm,40.mm], [-31.mm,1509.8011363636363.mm,40.mm], [-31.mm,1511.8011363636363.mm,40.mm], [-33.mm,1511.8011363636363.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1509.8011363636363.mm,40.mm], [-19.mm,1509.8011363636363.mm,40.mm], [-19.mm,1511.8011363636363.mm,40.mm], [-21.mm,1511.8011363636363.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1523.2215909090908.mm,40.mm], [-31.mm,1523.2215909090908.mm,40.mm], [-31.mm,1525.2215909090908.mm,40.mm], [-33.mm,1525.2215909090908.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1523.2215909090908.mm,40.mm], [-19.mm,1523.2215909090908.mm,40.mm], [-19.mm,1525.2215909090908.mm,40.mm], [-21.mm,1525.2215909090908.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1536.6420454545455.mm,40.mm], [-31.mm,1536.6420454545455.mm,40.mm], [-31.mm,1538.6420454545455.mm,40.mm], [-33.mm,1538.6420454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1536.6420454545455.mm,40.mm], [-19.mm,1536.6420454545455.mm,40.mm], [-19.mm,1538.6420454545455.mm,40.mm], [-21.mm,1538.6420454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1550.0625.mm,40.mm], [-31.mm,1550.0625.mm,40.mm], [-31.mm,1552.0625.mm,40.mm], [-33.mm,1552.0625.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1550.0625.mm,40.mm], [-19.mm,1550.0625.mm,40.mm], [-19.mm,1552.0625.mm,40.mm], [-21.mm,1552.0625.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1563.4829545454545.mm,40.mm], [-31.mm,1563.4829545454545.mm,40.mm], [-31.mm,1565.4829545454545.mm,40.mm], [-33.mm,1565.4829545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1563.4829545454545.mm,40.mm], [-19.mm,1563.4829545454545.mm,40.mm], [-19.mm,1565.4829545454545.mm,40.mm], [-21.mm,1565.4829545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1576.903409090909.mm,40.mm], [-31.mm,1576.903409090909.mm,40.mm], [-31.mm,1578.903409090909.mm,40.mm], [-33.mm,1578.903409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1576.903409090909.mm,40.mm], [-19.mm,1576.903409090909.mm,40.mm], [-19.mm,1578.903409090909.mm,40.mm], [-21.mm,1578.903409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1590.3238636363635.mm,40.mm], [-31.mm,1590.3238636363635.mm,40.mm], [-31.mm,1592.3238636363635.mm,40.mm], [-33.mm,1592.3238636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1590.3238636363635.mm,40.mm], [-19.mm,1590.3238636363635.mm,40.mm], [-19.mm,1592.3238636363635.mm,40.mm], [-21.mm,1592.3238636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1603.744318181818.mm,40.mm], [-31.mm,1603.744318181818.mm,40.mm], [-31.mm,1605.744318181818.mm,40.mm], [-33.mm,1605.744318181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1603.744318181818.mm,40.mm], [-19.mm,1603.744318181818.mm,40.mm], [-19.mm,1605.744318181818.mm,40.mm], [-21.mm,1605.744318181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1617.1647727272727.mm,40.mm], [-31.mm,1617.1647727272727.mm,40.mm], [-31.mm,1619.1647727272727.mm,40.mm], [-33.mm,1619.1647727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1617.1647727272727.mm,40.mm], [-19.mm,1617.1647727272727.mm,40.mm], [-19.mm,1619.1647727272727.mm,40.mm], [-21.mm,1619.1647727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1630.5852272727273.mm,40.mm], [-31.mm,1630.5852272727273.mm,40.mm], [-31.mm,1632.5852272727273.mm,40.mm], [-33.mm,1632.5852272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1630.5852272727273.mm,40.mm], [-19.mm,1630.5852272727273.mm,40.mm], [-19.mm,1632.5852272727273.mm,40.mm], [-21.mm,1632.5852272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1644.0056818181818.mm,40.mm], [-31.mm,1644.0056818181818.mm,40.mm], [-31.mm,1646.0056818181818.mm,40.mm], [-33.mm,1646.0056818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1644.0056818181818.mm,40.mm], [-19.mm,1644.0056818181818.mm,40.mm], [-19.mm,1646.0056818181818.mm,40.mm], [-21.mm,1646.0056818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1657.4261363636363.mm,40.mm], [-31.mm,1657.4261363636363.mm,40.mm], [-31.mm,1659.4261363636363.mm,40.mm], [-33.mm,1659.4261363636363.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1657.4261363636363.mm,40.mm], [-19.mm,1657.4261363636363.mm,40.mm], [-19.mm,1659.4261363636363.mm,40.mm], [-21.mm,1659.4261363636363.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1670.8465909090908.mm,40.mm], [-31.mm,1670.8465909090908.mm,40.mm], [-31.mm,1672.8465909090908.mm,40.mm], [-33.mm,1672.8465909090908.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1670.8465909090908.mm,40.mm], [-19.mm,1670.8465909090908.mm,40.mm], [-19.mm,1672.8465909090908.mm,40.mm], [-21.mm,1672.8465909090908.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1684.2670454545455.mm,40.mm], [-31.mm,1684.2670454545455.mm,40.mm], [-31.mm,1686.2670454545455.mm,40.mm], [-33.mm,1686.2670454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1684.2670454545455.mm,40.mm], [-19.mm,1684.2670454545455.mm,40.mm], [-19.mm,1686.2670454545455.mm,40.mm], [-21.mm,1686.2670454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1697.6875.mm,40.mm], [-31.mm,1697.6875.mm,40.mm], [-31.mm,1699.6875.mm,40.mm], [-33.mm,1699.6875.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1697.6875.mm,40.mm], [-19.mm,1697.6875.mm,40.mm], [-19.mm,1699.6875.mm,40.mm], [-21.mm,1699.6875.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1711.1079545454545.mm,40.mm], [-31.mm,1711.1079545454545.mm,40.mm], [-31.mm,1713.1079545454545.mm,40.mm], [-33.mm,1713.1079545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1711.1079545454545.mm,40.mm], [-19.mm,1711.1079545454545.mm,40.mm], [-19.mm,1713.1079545454545.mm,40.mm], [-21.mm,1713.1079545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1724.528409090909.mm,40.mm], [-31.mm,1724.528409090909.mm,40.mm], [-31.mm,1726.528409090909.mm,40.mm], [-33.mm,1726.528409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1724.528409090909.mm,40.mm], [-19.mm,1724.528409090909.mm,40.mm], [-19.mm,1726.528409090909.mm,40.mm], [-21.mm,1726.528409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1737.9488636363635.mm,40.mm], [-31.mm,1737.9488636363635.mm,40.mm], [-31.mm,1739.9488636363635.mm,40.mm], [-33.mm,1739.9488636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1737.9488636363635.mm,40.mm], [-19.mm,1737.9488636363635.mm,40.mm], [-19.mm,1739.9488636363635.mm,40.mm], [-21.mm,1739.9488636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1751.369318181818.mm,40.mm], [-31.mm,1751.369318181818.mm,40.mm], [-31.mm,1753.369318181818.mm,40.mm], [-33.mm,1753.369318181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1751.369318181818.mm,40.mm], [-19.mm,1751.369318181818.mm,40.mm], [-19.mm,1753.369318181818.mm,40.mm], [-21.mm,1753.369318181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1764.7897727272727.mm,40.mm], [-31.mm,1764.7897727272727.mm,40.mm], [-31.mm,1766.7897727272727.mm,40.mm], [-33.mm,1766.7897727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1764.7897727272727.mm,40.mm], [-19.mm,1764.7897727272727.mm,40.mm], [-19.mm,1766.7897727272727.mm,40.mm], [-21.mm,1766.7897727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1778.2102272727273.mm,40.mm], [-31.mm,1778.2102272727273.mm,40.mm], [-31.mm,1780.2102272727273.mm,40.mm], [-33.mm,1780.2102272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1778.2102272727273.mm,40.mm], [-19.mm,1778.2102272727273.mm,40.mm], [-19.mm,1780.2102272727273.mm,40.mm], [-21.mm,1780.2102272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1791.6306818181818.mm,40.mm], [-31.mm,1791.6306818181818.mm,40.mm], [-31.mm,1793.6306818181818.mm,40.mm], [-33.mm,1793.6306818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1791.6306818181818.mm,40.mm], [-19.mm,1791.6306818181818.mm,40.mm], [-19.mm,1793.6306818181818.mm,40.mm], [-21.mm,1793.6306818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1805.0511363636363.mm,40.mm], [-31.mm,1805.0511363636363.mm,40.mm], [-31.mm,1807.0511363636363.mm,40.mm], [-33.mm,1807.0511363636363.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1805.0511363636363.mm,40.mm], [-19.mm,1805.0511363636363.mm,40.mm], [-19.mm,1807.0511363636363.mm,40.mm], [-21.mm,1807.0511363636363.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1818.4715909090908.mm,40.mm], [-31.mm,1818.4715909090908.mm,40.mm], [-31.mm,1820.4715909090908.mm,40.mm], [-33.mm,1820.4715909090908.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1818.4715909090908.mm,40.mm], [-19.mm,1818.4715909090908.mm,40.mm], [-19.mm,1820.4715909090908.mm,40.mm], [-21.mm,1820.4715909090908.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1831.8920454545455.mm,40.mm], [-31.mm,1831.8920454545455.mm,40.mm], [-31.mm,1833.8920454545455.mm,40.mm], [-33.mm,1833.8920454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1831.8920454545455.mm,40.mm], [-19.mm,1831.8920454545455.mm,40.mm], [-19.mm,1833.8920454545455.mm,40.mm], [-21.mm,1833.8920454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1845.3125.mm,40.mm], [-31.mm,1845.3125.mm,40.mm], [-31.mm,1847.3125.mm,40.mm], [-33.mm,1847.3125.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1845.3125.mm,40.mm], [-19.mm,1845.3125.mm,40.mm], [-19.mm,1847.3125.mm,40.mm], [-21.mm,1847.3125.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1858.7329545454545.mm,40.mm], [-31.mm,1858.7329545454545.mm,40.mm], [-31.mm,1860.7329545454545.mm,40.mm], [-33.mm,1860.7329545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1858.7329545454545.mm,40.mm], [-19.mm,1858.7329545454545.mm,40.mm], [-19.mm,1860.7329545454545.mm,40.mm], [-21.mm,1860.7329545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1872.153409090909.mm,40.mm], [-31.mm,1872.153409090909.mm,40.mm], [-31.mm,1874.153409090909.mm,40.mm], [-33.mm,1874.153409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1872.153409090909.mm,40.mm], [-19.mm,1872.153409090909.mm,40.mm], [-19.mm,1874.153409090909.mm,40.mm], [-21.mm,1874.153409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1885.5738636363635.mm,40.mm], [-31.mm,1885.5738636363635.mm,40.mm], [-31.mm,1887.5738636363635.mm,40.mm], [-33.mm,1887.5738636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1885.5738636363635.mm,40.mm], [-19.mm,1885.5738636363635.mm,40.mm], [-19.mm,1887.5738636363635.mm,40.mm], [-21.mm,1887.5738636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1898.994318181818.mm,40.mm], [-31.mm,1898.994318181818.mm,40.mm], [-31.mm,1900.994318181818.mm,40.mm], [-33.mm,1900.994318181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1898.994318181818.mm,40.mm], [-19.mm,1898.994318181818.mm,40.mm], [-19.mm,1900.994318181818.mm,40.mm], [-21.mm,1900.994318181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1912.4147727272727.mm,40.mm], [-31.mm,1912.4147727272727.mm,40.mm], [-31.mm,1914.4147727272727.mm,40.mm], [-33.mm,1914.4147727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1912.4147727272727.mm,40.mm], [-19.mm,1912.4147727272727.mm,40.mm], [-19.mm,1914.4147727272727.mm,40.mm], [-21.mm,1914.4147727272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1925.8352272727273.mm,40.mm], [-31.mm,1925.8352272727273.mm,40.mm], [-31.mm,1927.8352272727273.mm,40.mm], [-33.mm,1927.8352272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1925.8352272727273.mm,40.mm], [-19.mm,1925.8352272727273.mm,40.mm], [-19.mm,1927.8352272727273.mm,40.mm], [-21.mm,1927.8352272727273.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1939.2556818181818.mm,40.mm], [-31.mm,1939.2556818181818.mm,40.mm], [-31.mm,1941.2556818181818.mm,40.mm], [-33.mm,1941.2556818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1939.2556818181818.mm,40.mm], [-19.mm,1939.2556818181818.mm,40.mm], [-19.mm,1941.2556818181818.mm,40.mm], [-21.mm,1941.2556818181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1952.6761363636363.mm,40.mm], [-31.mm,1952.6761363636363.mm,40.mm], [-31.mm,1954.6761363636363.mm,40.mm], [-33.mm,1954.6761363636363.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1952.6761363636363.mm,40.mm], [-19.mm,1952.6761363636363.mm,40.mm], [-19.mm,1954.6761363636363.mm,40.mm], [-21.mm,1954.6761363636363.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1966.0965909090908.mm,40.mm], [-31.mm,1966.0965909090908.mm,40.mm], [-31.mm,1968.0965909090908.mm,40.mm], [-33.mm,1968.0965909090908.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1966.0965909090908.mm,40.mm], [-19.mm,1966.0965909090908.mm,40.mm], [-19.mm,1968.0965909090908.mm,40.mm], [-21.mm,1968.0965909090908.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1979.5170454545455.mm,40.mm], [-31.mm,1979.5170454545455.mm,40.mm], [-31.mm,1981.5170454545455.mm,40.mm], [-33.mm,1981.5170454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1979.5170454545455.mm,40.mm], [-19.mm,1979.5170454545455.mm,40.mm], [-19.mm,1981.5170454545455.mm,40.mm], [-21.mm,1981.5170454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1992.9375.mm,40.mm], [-31.mm,1992.9375.mm,40.mm], [-31.mm,1994.9375.mm,40.mm], [-33.mm,1994.9375.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1992.9375.mm,40.mm], [-19.mm,1992.9375.mm,40.mm], [-19.mm,1994.9375.mm,40.mm], [-21.mm,1994.9375.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2006.3579545454545.mm,40.mm], [-31.mm,2006.3579545454545.mm,40.mm], [-31.mm,2008.3579545454545.mm,40.mm], [-33.mm,2008.3579545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2006.3579545454545.mm,40.mm], [-19.mm,2006.3579545454545.mm,40.mm], [-19.mm,2008.3579545454545.mm,40.mm], [-21.mm,2008.3579545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2019.778409090909.mm,40.mm], [-31.mm,2019.778409090909.mm,40.mm], [-31.mm,2021.778409090909.mm,40.mm], [-33.mm,2021.778409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2019.778409090909.mm,40.mm], [-19.mm,2019.778409090909.mm,40.mm], [-19.mm,2021.778409090909.mm,40.mm], [-21.mm,2021.778409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2033.1988636363635.mm,40.mm], [-31.mm,2033.1988636363635.mm,40.mm], [-31.mm,2035.1988636363635.mm,40.mm], [-33.mm,2035.1988636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2033.1988636363635.mm,40.mm], [-19.mm,2033.1988636363635.mm,40.mm], [-19.mm,2035.1988636363635.mm,40.mm], [-21.mm,2035.1988636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2046.619318181818.mm,40.mm], [-31.mm,2046.619318181818.mm,40.mm], [-31.mm,2048.619318181818.mm,40.mm], [-33.mm,2048.619318181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2046.619318181818.mm,40.mm], [-19.mm,2046.619318181818.mm,40.mm], [-19.mm,2048.619318181818.mm,40.mm], [-21.mm,2048.619318181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2060.0397727272725.mm,40.mm], [-31.mm,2060.0397727272725.mm,40.mm], [-31.mm,2062.0397727272725.mm,40.mm], [-33.mm,2062.0397727272725.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2060.0397727272725.mm,40.mm], [-19.mm,2060.0397727272725.mm,40.mm], [-19.mm,2062.0397727272725.mm,40.mm], [-21.mm,2062.0397727272725.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2073.460227272727.mm,40.mm], [-31.mm,2073.460227272727.mm,40.mm], [-31.mm,2075.460227272727.mm,40.mm], [-33.mm,2075.460227272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2073.460227272727.mm,40.mm], [-19.mm,2073.460227272727.mm,40.mm], [-19.mm,2075.460227272727.mm,40.mm], [-21.mm,2075.460227272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2086.8806818181815.mm,40.mm], [-31.mm,2086.8806818181815.mm,40.mm], [-31.mm,2088.8806818181815.mm,40.mm], [-33.mm,2088.8806818181815.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2086.8806818181815.mm,40.mm], [-19.mm,2086.8806818181815.mm,40.mm], [-19.mm,2088.8806818181815.mm,40.mm], [-21.mm,2088.8806818181815.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2100.3011363636365.mm,40.mm], [-31.mm,2100.3011363636365.mm,40.mm], [-31.mm,2102.3011363636365.mm,40.mm], [-33.mm,2102.3011363636365.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2100.3011363636365.mm,40.mm], [-19.mm,2100.3011363636365.mm,40.mm], [-19.mm,2102.3011363636365.mm,40.mm], [-21.mm,2102.3011363636365.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2113.721590909091.mm,40.mm], [-31.mm,2113.721590909091.mm,40.mm], [-31.mm,2115.721590909091.mm,40.mm], [-33.mm,2115.721590909091.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2113.721590909091.mm,40.mm], [-19.mm,2113.721590909091.mm,40.mm], [-19.mm,2115.721590909091.mm,40.mm], [-21.mm,2115.721590909091.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2127.1420454545455.mm,40.mm], [-31.mm,2127.1420454545455.mm,40.mm], [-31.mm,2129.1420454545455.mm,40.mm], [-33.mm,2129.1420454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2127.1420454545455.mm,40.mm], [-19.mm,2127.1420454545455.mm,40.mm], [-19.mm,2129.1420454545455.mm,40.mm], [-21.mm,2129.1420454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2140.5625.mm,40.mm], [-31.mm,2140.5625.mm,40.mm], [-31.mm,2142.5625.mm,40.mm], [-33.mm,2142.5625.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2140.5625.mm,40.mm], [-19.mm,2140.5625.mm,40.mm], [-19.mm,2142.5625.mm,40.mm], [-21.mm,2142.5625.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2153.9829545454545.mm,40.mm], [-31.mm,2153.9829545454545.mm,40.mm], [-31.mm,2155.9829545454545.mm,40.mm], [-33.mm,2155.9829545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2153.9829545454545.mm,40.mm], [-19.mm,2153.9829545454545.mm,40.mm], [-19.mm,2155.9829545454545.mm,40.mm], [-21.mm,2155.9829545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2167.403409090909.mm,40.mm], [-31.mm,2167.403409090909.mm,40.mm], [-31.mm,2169.403409090909.mm,40.mm], [-33.mm,2169.403409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2167.403409090909.mm,40.mm], [-19.mm,2167.403409090909.mm,40.mm], [-19.mm,2169.403409090909.mm,40.mm], [-21.mm,2169.403409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2180.8238636363635.mm,40.mm], [-31.mm,2180.8238636363635.mm,40.mm], [-31.mm,2182.8238636363635.mm,40.mm], [-33.mm,2182.8238636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2180.8238636363635.mm,40.mm], [-19.mm,2180.8238636363635.mm,40.mm], [-19.mm,2182.8238636363635.mm,40.mm], [-21.mm,2182.8238636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2194.244318181818.mm,40.mm], [-31.mm,2194.244318181818.mm,40.mm], [-31.mm,2196.244318181818.mm,40.mm], [-33.mm,2196.244318181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2194.244318181818.mm,40.mm], [-19.mm,2194.244318181818.mm,40.mm], [-19.mm,2196.244318181818.mm,40.mm], [-21.mm,2196.244318181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2207.6647727272725.mm,40.mm], [-31.mm,2207.6647727272725.mm,40.mm], [-31.mm,2209.6647727272725.mm,40.mm], [-33.mm,2209.6647727272725.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2207.6647727272725.mm,40.mm], [-19.mm,2207.6647727272725.mm,40.mm], [-19.mm,2209.6647727272725.mm,40.mm], [-21.mm,2209.6647727272725.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2221.085227272727.mm,40.mm], [-31.mm,2221.085227272727.mm,40.mm], [-31.mm,2223.085227272727.mm,40.mm], [-33.mm,2223.085227272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2221.085227272727.mm,40.mm], [-19.mm,2221.085227272727.mm,40.mm], [-19.mm,2223.085227272727.mm,40.mm], [-21.mm,2223.085227272727.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2234.5056818181815.mm,40.mm], [-31.mm,2234.5056818181815.mm,40.mm], [-31.mm,2236.5056818181815.mm,40.mm], [-33.mm,2236.5056818181815.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2234.5056818181815.mm,40.mm], [-19.mm,2234.5056818181815.mm,40.mm], [-19.mm,2236.5056818181815.mm,40.mm], [-21.mm,2236.5056818181815.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2247.9261363636365.mm,40.mm], [-31.mm,2247.9261363636365.mm,40.mm], [-31.mm,2249.9261363636365.mm,40.mm], [-33.mm,2249.9261363636365.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2247.9261363636365.mm,40.mm], [-19.mm,2247.9261363636365.mm,40.mm], [-19.mm,2249.9261363636365.mm,40.mm], [-21.mm,2249.9261363636365.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2261.346590909091.mm,40.mm], [-31.mm,2261.346590909091.mm,40.mm], [-31.mm,2263.346590909091.mm,40.mm], [-33.mm,2263.346590909091.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2261.346590909091.mm,40.mm], [-19.mm,2261.346590909091.mm,40.mm], [-19.mm,2263.346590909091.mm,40.mm], [-21.mm,2263.346590909091.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2274.7670454545455.mm,40.mm], [-31.mm,2274.7670454545455.mm,40.mm], [-31.mm,2276.7670454545455.mm,40.mm], [-33.mm,2276.7670454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2274.7670454545455.mm,40.mm], [-19.mm,2274.7670454545455.mm,40.mm], [-19.mm,2276.7670454545455.mm,40.mm], [-21.mm,2276.7670454545455.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2288.1875.mm,40.mm], [-31.mm,2288.1875.mm,40.mm], [-31.mm,2290.1875.mm,40.mm], [-33.mm,2290.1875.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2288.1875.mm,40.mm], [-19.mm,2288.1875.mm,40.mm], [-19.mm,2290.1875.mm,40.mm], [-21.mm,2290.1875.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2301.6079545454545.mm,40.mm], [-31.mm,2301.6079545454545.mm,40.mm], [-31.mm,2303.6079545454545.mm,40.mm], [-33.mm,2303.6079545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2301.6079545454545.mm,40.mm], [-19.mm,2301.6079545454545.mm,40.mm], [-19.mm,2303.6079545454545.mm,40.mm], [-21.mm,2303.6079545454545.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2315.028409090909.mm,40.mm], [-31.mm,2315.028409090909.mm,40.mm], [-31.mm,2317.028409090909.mm,40.mm], [-33.mm,2317.028409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2315.028409090909.mm,40.mm], [-19.mm,2315.028409090909.mm,40.mm], [-19.mm,2317.028409090909.mm,40.mm], [-21.mm,2317.028409090909.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2328.4488636363635.mm,40.mm], [-31.mm,2328.4488636363635.mm,40.mm], [-31.mm,2330.4488636363635.mm,40.mm], [-33.mm,2330.4488636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2328.4488636363635.mm,40.mm], [-19.mm,2328.4488636363635.mm,40.mm], [-19.mm,2330.4488636363635.mm,40.mm], [-21.mm,2330.4488636363635.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2341.869318181818.mm,40.mm], [-31.mm,2341.869318181818.mm,40.mm], [-31.mm,2343.869318181818.mm,40.mm], [-33.mm,2343.869318181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2341.869318181818.mm,40.mm], [-19.mm,2341.869318181818.mm,40.mm], [-19.mm,2343.869318181818.mm,40.mm], [-21.mm,2343.869318181818.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2355.2897727272725.mm,40.mm], [-31.mm,2355.2897727272725.mm,40.mm], [-31.mm,2357.2897727272725.mm,40.mm], [-33.mm,2357.2897727272725.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2355.2897727272725.mm,40.mm], [-19.mm,2355.2897727272725.mm,40.mm], [-19.mm,2357.2897727272725.mm,40.mm], [-21.mm,2357.2897727272725.mm,40.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Door Frame top brush seal
+  grp = ents.add_group
+  grp.name = "Door Frame top brush seal"
   face = grp.entities.add_face([-32.mm,0.mm,2270.mm], [-20.mm,0.mm,2270.mm], [-20.mm,2362.mm,2270.mm], [-32.mm,2362.mm,2270.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(118.mm)
-  mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
-  mat.color = Sketchup::Color.new(88, 96, 112)
+  mat = model.materials["Door Frame bottom brush seal"] || model.materials.add("Door Frame bottom brush seal")
+  mat.color = Sketchup::Color.new(47, 168, 79)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,6.7102272727272725.mm,2270.mm], [-31.mm,6.7102272727272725.mm,2270.mm], [-31.mm,8.710227272727273.mm,2270.mm], [-33.mm,8.710227272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,6.7102272727272725.mm,2270.mm], [-19.mm,6.7102272727272725.mm,2270.mm], [-19.mm,8.710227272727273.mm,2270.mm], [-21.mm,8.710227272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,20.130681818181817.mm,2270.mm], [-31.mm,20.130681818181817.mm,2270.mm], [-31.mm,22.130681818181817.mm,2270.mm], [-33.mm,22.130681818181817.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,20.130681818181817.mm,2270.mm], [-19.mm,20.130681818181817.mm,2270.mm], [-19.mm,22.130681818181817.mm,2270.mm], [-21.mm,22.130681818181817.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,33.55113636363636.mm,2270.mm], [-31.mm,33.55113636363636.mm,2270.mm], [-31.mm,35.55113636363636.mm,2270.mm], [-33.mm,35.55113636363636.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,33.55113636363636.mm,2270.mm], [-19.mm,33.55113636363636.mm,2270.mm], [-19.mm,35.55113636363636.mm,2270.mm], [-21.mm,35.55113636363636.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,46.97159090909091.mm,2270.mm], [-31.mm,46.97159090909091.mm,2270.mm], [-31.mm,48.97159090909091.mm,2270.mm], [-33.mm,48.97159090909091.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,46.97159090909091.mm,2270.mm], [-19.mm,46.97159090909091.mm,2270.mm], [-19.mm,48.97159090909091.mm,2270.mm], [-21.mm,48.97159090909091.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,60.39204545454545.mm,2270.mm], [-31.mm,60.39204545454545.mm,2270.mm], [-31.mm,62.39204545454545.mm,2270.mm], [-33.mm,62.39204545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,60.39204545454545.mm,2270.mm], [-19.mm,60.39204545454545.mm,2270.mm], [-19.mm,62.39204545454545.mm,2270.mm], [-21.mm,62.39204545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,73.8125.mm,2270.mm], [-31.mm,73.8125.mm,2270.mm], [-31.mm,75.8125.mm,2270.mm], [-33.mm,75.8125.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,73.8125.mm,2270.mm], [-19.mm,73.8125.mm,2270.mm], [-19.mm,75.8125.mm,2270.mm], [-21.mm,75.8125.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,87.23295454545455.mm,2270.mm], [-31.mm,87.23295454545455.mm,2270.mm], [-31.mm,89.23295454545455.mm,2270.mm], [-33.mm,89.23295454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,87.23295454545455.mm,2270.mm], [-19.mm,87.23295454545455.mm,2270.mm], [-19.mm,89.23295454545455.mm,2270.mm], [-21.mm,89.23295454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,100.6534090909091.mm,2270.mm], [-31.mm,100.6534090909091.mm,2270.mm], [-31.mm,102.6534090909091.mm,2270.mm], [-33.mm,102.6534090909091.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,100.6534090909091.mm,2270.mm], [-19.mm,100.6534090909091.mm,2270.mm], [-19.mm,102.6534090909091.mm,2270.mm], [-21.mm,102.6534090909091.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,114.07386363636363.mm,2270.mm], [-31.mm,114.07386363636363.mm,2270.mm], [-31.mm,116.07386363636363.mm,2270.mm], [-33.mm,116.07386363636363.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,114.07386363636363.mm,2270.mm], [-19.mm,114.07386363636363.mm,2270.mm], [-19.mm,116.07386363636363.mm,2270.mm], [-21.mm,116.07386363636363.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,127.49431818181817.mm,2270.mm], [-31.mm,127.49431818181817.mm,2270.mm], [-31.mm,129.4943181818182.mm,2270.mm], [-33.mm,129.4943181818182.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,127.49431818181817.mm,2270.mm], [-19.mm,127.49431818181817.mm,2270.mm], [-19.mm,129.4943181818182.mm,2270.mm], [-21.mm,129.4943181818182.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,140.91477272727272.mm,2270.mm], [-31.mm,140.91477272727272.mm,2270.mm], [-31.mm,142.91477272727272.mm,2270.mm], [-33.mm,142.91477272727272.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,140.91477272727272.mm,2270.mm], [-19.mm,140.91477272727272.mm,2270.mm], [-19.mm,142.91477272727272.mm,2270.mm], [-21.mm,142.91477272727272.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,154.33522727272728.mm,2270.mm], [-31.mm,154.33522727272728.mm,2270.mm], [-31.mm,156.33522727272728.mm,2270.mm], [-33.mm,156.33522727272728.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,154.33522727272728.mm,2270.mm], [-19.mm,154.33522727272728.mm,2270.mm], [-19.mm,156.33522727272728.mm,2270.mm], [-21.mm,156.33522727272728.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,167.7556818181818.mm,2270.mm], [-31.mm,167.7556818181818.mm,2270.mm], [-31.mm,169.7556818181818.mm,2270.mm], [-33.mm,169.7556818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,167.7556818181818.mm,2270.mm], [-19.mm,167.7556818181818.mm,2270.mm], [-19.mm,169.7556818181818.mm,2270.mm], [-21.mm,169.7556818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,181.17613636363635.mm,2270.mm], [-31.mm,181.17613636363635.mm,2270.mm], [-31.mm,183.17613636363635.mm,2270.mm], [-33.mm,183.17613636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,181.17613636363635.mm,2270.mm], [-19.mm,181.17613636363635.mm,2270.mm], [-19.mm,183.17613636363635.mm,2270.mm], [-21.mm,183.17613636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,194.5965909090909.mm,2270.mm], [-31.mm,194.5965909090909.mm,2270.mm], [-31.mm,196.5965909090909.mm,2270.mm], [-33.mm,196.5965909090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,194.5965909090909.mm,2270.mm], [-19.mm,194.5965909090909.mm,2270.mm], [-19.mm,196.5965909090909.mm,2270.mm], [-21.mm,196.5965909090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,208.01704545454544.mm,2270.mm], [-31.mm,208.01704545454544.mm,2270.mm], [-31.mm,210.01704545454544.mm,2270.mm], [-33.mm,210.01704545454544.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,208.01704545454544.mm,2270.mm], [-19.mm,208.01704545454544.mm,2270.mm], [-19.mm,210.01704545454544.mm,2270.mm], [-21.mm,210.01704545454544.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,221.4375.mm,2270.mm], [-31.mm,221.4375.mm,2270.mm], [-31.mm,223.4375.mm,2270.mm], [-33.mm,223.4375.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,221.4375.mm,2270.mm], [-19.mm,221.4375.mm,2270.mm], [-19.mm,223.4375.mm,2270.mm], [-21.mm,223.4375.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,234.85795454545453.mm,2270.mm], [-31.mm,234.85795454545453.mm,2270.mm], [-31.mm,236.85795454545453.mm,2270.mm], [-33.mm,236.85795454545453.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,234.85795454545453.mm,2270.mm], [-19.mm,234.85795454545453.mm,2270.mm], [-19.mm,236.85795454545453.mm,2270.mm], [-21.mm,236.85795454545453.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,248.2784090909091.mm,2270.mm], [-31.mm,248.2784090909091.mm,2270.mm], [-31.mm,250.2784090909091.mm,2270.mm], [-33.mm,250.2784090909091.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,248.2784090909091.mm,2270.mm], [-19.mm,248.2784090909091.mm,2270.mm], [-19.mm,250.2784090909091.mm,2270.mm], [-21.mm,250.2784090909091.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,261.6988636363636.mm,2270.mm], [-31.mm,261.6988636363636.mm,2270.mm], [-31.mm,263.6988636363636.mm,2270.mm], [-33.mm,263.6988636363636.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,261.6988636363636.mm,2270.mm], [-19.mm,261.6988636363636.mm,2270.mm], [-19.mm,263.6988636363636.mm,2270.mm], [-21.mm,263.6988636363636.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,275.1193181818182.mm,2270.mm], [-31.mm,275.1193181818182.mm,2270.mm], [-31.mm,277.1193181818182.mm,2270.mm], [-33.mm,277.1193181818182.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,275.1193181818182.mm,2270.mm], [-19.mm,275.1193181818182.mm,2270.mm], [-19.mm,277.1193181818182.mm,2270.mm], [-21.mm,277.1193181818182.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,288.5397727272727.mm,2270.mm], [-31.mm,288.5397727272727.mm,2270.mm], [-31.mm,290.5397727272727.mm,2270.mm], [-33.mm,290.5397727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,288.5397727272727.mm,2270.mm], [-19.mm,288.5397727272727.mm,2270.mm], [-19.mm,290.5397727272727.mm,2270.mm], [-21.mm,290.5397727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,301.96022727272725.mm,2270.mm], [-31.mm,301.96022727272725.mm,2270.mm], [-31.mm,303.96022727272725.mm,2270.mm], [-33.mm,303.96022727272725.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,301.96022727272725.mm,2270.mm], [-19.mm,301.96022727272725.mm,2270.mm], [-19.mm,303.96022727272725.mm,2270.mm], [-21.mm,303.96022727272725.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,315.3806818181818.mm,2270.mm], [-31.mm,315.3806818181818.mm,2270.mm], [-31.mm,317.3806818181818.mm,2270.mm], [-33.mm,317.3806818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,315.3806818181818.mm,2270.mm], [-19.mm,315.3806818181818.mm,2270.mm], [-19.mm,317.3806818181818.mm,2270.mm], [-21.mm,317.3806818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,328.8011363636364.mm,2270.mm], [-31.mm,328.8011363636364.mm,2270.mm], [-31.mm,330.8011363636364.mm,2270.mm], [-33.mm,330.8011363636364.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,328.8011363636364.mm,2270.mm], [-19.mm,328.8011363636364.mm,2270.mm], [-19.mm,330.8011363636364.mm,2270.mm], [-21.mm,330.8011363636364.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,342.2215909090909.mm,2270.mm], [-31.mm,342.2215909090909.mm,2270.mm], [-31.mm,344.2215909090909.mm,2270.mm], [-33.mm,344.2215909090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,342.2215909090909.mm,2270.mm], [-19.mm,342.2215909090909.mm,2270.mm], [-19.mm,344.2215909090909.mm,2270.mm], [-21.mm,344.2215909090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,355.64204545454544.mm,2270.mm], [-31.mm,355.64204545454544.mm,2270.mm], [-31.mm,357.64204545454544.mm,2270.mm], [-33.mm,357.64204545454544.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,355.64204545454544.mm,2270.mm], [-19.mm,355.64204545454544.mm,2270.mm], [-19.mm,357.64204545454544.mm,2270.mm], [-21.mm,357.64204545454544.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,369.0625.mm,2270.mm], [-31.mm,369.0625.mm,2270.mm], [-31.mm,371.0625.mm,2270.mm], [-33.mm,371.0625.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,369.0625.mm,2270.mm], [-19.mm,369.0625.mm,2270.mm], [-19.mm,371.0625.mm,2270.mm], [-21.mm,371.0625.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,382.4829545454545.mm,2270.mm], [-31.mm,382.4829545454545.mm,2270.mm], [-31.mm,384.4829545454545.mm,2270.mm], [-33.mm,384.4829545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,382.4829545454545.mm,2270.mm], [-19.mm,382.4829545454545.mm,2270.mm], [-19.mm,384.4829545454545.mm,2270.mm], [-21.mm,384.4829545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,395.90340909090907.mm,2270.mm], [-31.mm,395.90340909090907.mm,2270.mm], [-31.mm,397.90340909090907.mm,2270.mm], [-33.mm,397.90340909090907.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,395.90340909090907.mm,2270.mm], [-19.mm,395.90340909090907.mm,2270.mm], [-19.mm,397.90340909090907.mm,2270.mm], [-21.mm,397.90340909090907.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,409.3238636363636.mm,2270.mm], [-31.mm,409.3238636363636.mm,2270.mm], [-31.mm,411.3238636363636.mm,2270.mm], [-33.mm,411.3238636363636.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,409.3238636363636.mm,2270.mm], [-19.mm,409.3238636363636.mm,2270.mm], [-19.mm,411.3238636363636.mm,2270.mm], [-21.mm,411.3238636363636.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,422.7443181818182.mm,2270.mm], [-31.mm,422.7443181818182.mm,2270.mm], [-31.mm,424.7443181818182.mm,2270.mm], [-33.mm,424.7443181818182.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,422.7443181818182.mm,2270.mm], [-19.mm,422.7443181818182.mm,2270.mm], [-19.mm,424.7443181818182.mm,2270.mm], [-21.mm,424.7443181818182.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,436.1647727272727.mm,2270.mm], [-31.mm,436.1647727272727.mm,2270.mm], [-31.mm,438.1647727272727.mm,2270.mm], [-33.mm,438.1647727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,436.1647727272727.mm,2270.mm], [-19.mm,436.1647727272727.mm,2270.mm], [-19.mm,438.1647727272727.mm,2270.mm], [-21.mm,438.1647727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,449.58522727272725.mm,2270.mm], [-31.mm,449.58522727272725.mm,2270.mm], [-31.mm,451.58522727272725.mm,2270.mm], [-33.mm,451.58522727272725.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,449.58522727272725.mm,2270.mm], [-19.mm,449.58522727272725.mm,2270.mm], [-19.mm,451.58522727272725.mm,2270.mm], [-21.mm,451.58522727272725.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,463.0056818181818.mm,2270.mm], [-31.mm,463.0056818181818.mm,2270.mm], [-31.mm,465.0056818181818.mm,2270.mm], [-33.mm,465.0056818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,463.0056818181818.mm,2270.mm], [-19.mm,463.0056818181818.mm,2270.mm], [-19.mm,465.0056818181818.mm,2270.mm], [-21.mm,465.0056818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,476.4261363636364.mm,2270.mm], [-31.mm,476.4261363636364.mm,2270.mm], [-31.mm,478.4261363636364.mm,2270.mm], [-33.mm,478.4261363636364.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,476.4261363636364.mm,2270.mm], [-19.mm,476.4261363636364.mm,2270.mm], [-19.mm,478.4261363636364.mm,2270.mm], [-21.mm,478.4261363636364.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,489.8465909090909.mm,2270.mm], [-31.mm,489.8465909090909.mm,2270.mm], [-31.mm,491.8465909090909.mm,2270.mm], [-33.mm,491.8465909090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,489.8465909090909.mm,2270.mm], [-19.mm,489.8465909090909.mm,2270.mm], [-19.mm,491.8465909090909.mm,2270.mm], [-21.mm,491.8465909090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,503.26704545454544.mm,2270.mm], [-31.mm,503.26704545454544.mm,2270.mm], [-31.mm,505.26704545454544.mm,2270.mm], [-33.mm,505.26704545454544.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,503.26704545454544.mm,2270.mm], [-19.mm,503.26704545454544.mm,2270.mm], [-19.mm,505.26704545454544.mm,2270.mm], [-21.mm,505.26704545454544.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,516.6875.mm,2270.mm], [-31.mm,516.6875.mm,2270.mm], [-31.mm,518.6875.mm,2270.mm], [-33.mm,518.6875.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,516.6875.mm,2270.mm], [-19.mm,516.6875.mm,2270.mm], [-19.mm,518.6875.mm,2270.mm], [-21.mm,518.6875.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,530.1079545454545.mm,2270.mm], [-31.mm,530.1079545454545.mm,2270.mm], [-31.mm,532.1079545454545.mm,2270.mm], [-33.mm,532.1079545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,530.1079545454545.mm,2270.mm], [-19.mm,530.1079545454545.mm,2270.mm], [-19.mm,532.1079545454545.mm,2270.mm], [-21.mm,532.1079545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,543.5284090909091.mm,2270.mm], [-31.mm,543.5284090909091.mm,2270.mm], [-31.mm,545.5284090909091.mm,2270.mm], [-33.mm,545.5284090909091.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,543.5284090909091.mm,2270.mm], [-19.mm,543.5284090909091.mm,2270.mm], [-19.mm,545.5284090909091.mm,2270.mm], [-21.mm,545.5284090909091.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,556.9488636363636.mm,2270.mm], [-31.mm,556.9488636363636.mm,2270.mm], [-31.mm,558.9488636363636.mm,2270.mm], [-33.mm,558.9488636363636.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,556.9488636363636.mm,2270.mm], [-19.mm,556.9488636363636.mm,2270.mm], [-19.mm,558.9488636363636.mm,2270.mm], [-21.mm,558.9488636363636.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,570.3693181818181.mm,2270.mm], [-31.mm,570.3693181818181.mm,2270.mm], [-31.mm,572.3693181818181.mm,2270.mm], [-33.mm,572.3693181818181.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,570.3693181818181.mm,2270.mm], [-19.mm,570.3693181818181.mm,2270.mm], [-19.mm,572.3693181818181.mm,2270.mm], [-21.mm,572.3693181818181.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,583.7897727272727.mm,2270.mm], [-31.mm,583.7897727272727.mm,2270.mm], [-31.mm,585.7897727272727.mm,2270.mm], [-33.mm,585.7897727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,583.7897727272727.mm,2270.mm], [-19.mm,583.7897727272727.mm,2270.mm], [-19.mm,585.7897727272727.mm,2270.mm], [-21.mm,585.7897727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,597.2102272727273.mm,2270.mm], [-31.mm,597.2102272727273.mm,2270.mm], [-31.mm,599.2102272727273.mm,2270.mm], [-33.mm,599.2102272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,597.2102272727273.mm,2270.mm], [-19.mm,597.2102272727273.mm,2270.mm], [-19.mm,599.2102272727273.mm,2270.mm], [-21.mm,599.2102272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,610.6306818181818.mm,2270.mm], [-31.mm,610.6306818181818.mm,2270.mm], [-31.mm,612.6306818181818.mm,2270.mm], [-33.mm,612.6306818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,610.6306818181818.mm,2270.mm], [-19.mm,610.6306818181818.mm,2270.mm], [-19.mm,612.6306818181818.mm,2270.mm], [-21.mm,612.6306818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,624.0511363636364.mm,2270.mm], [-31.mm,624.0511363636364.mm,2270.mm], [-31.mm,626.0511363636364.mm,2270.mm], [-33.mm,626.0511363636364.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,624.0511363636364.mm,2270.mm], [-19.mm,624.0511363636364.mm,2270.mm], [-19.mm,626.0511363636364.mm,2270.mm], [-21.mm,626.0511363636364.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,637.4715909090909.mm,2270.mm], [-31.mm,637.4715909090909.mm,2270.mm], [-31.mm,639.4715909090909.mm,2270.mm], [-33.mm,639.4715909090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,637.4715909090909.mm,2270.mm], [-19.mm,637.4715909090909.mm,2270.mm], [-19.mm,639.4715909090909.mm,2270.mm], [-21.mm,639.4715909090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,650.8920454545454.mm,2270.mm], [-31.mm,650.8920454545454.mm,2270.mm], [-31.mm,652.8920454545454.mm,2270.mm], [-33.mm,652.8920454545454.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,650.8920454545454.mm,2270.mm], [-19.mm,650.8920454545454.mm,2270.mm], [-19.mm,652.8920454545454.mm,2270.mm], [-21.mm,652.8920454545454.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,664.3125.mm,2270.mm], [-31.mm,664.3125.mm,2270.mm], [-31.mm,666.3125.mm,2270.mm], [-33.mm,666.3125.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,664.3125.mm,2270.mm], [-19.mm,664.3125.mm,2270.mm], [-19.mm,666.3125.mm,2270.mm], [-21.mm,666.3125.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,677.7329545454545.mm,2270.mm], [-31.mm,677.7329545454545.mm,2270.mm], [-31.mm,679.7329545454545.mm,2270.mm], [-33.mm,679.7329545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,677.7329545454545.mm,2270.mm], [-19.mm,677.7329545454545.mm,2270.mm], [-19.mm,679.7329545454545.mm,2270.mm], [-21.mm,679.7329545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,691.1534090909091.mm,2270.mm], [-31.mm,691.1534090909091.mm,2270.mm], [-31.mm,693.1534090909091.mm,2270.mm], [-33.mm,693.1534090909091.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,691.1534090909091.mm,2270.mm], [-19.mm,691.1534090909091.mm,2270.mm], [-19.mm,693.1534090909091.mm,2270.mm], [-21.mm,693.1534090909091.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,704.5738636363636.mm,2270.mm], [-31.mm,704.5738636363636.mm,2270.mm], [-31.mm,706.5738636363636.mm,2270.mm], [-33.mm,706.5738636363636.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,704.5738636363636.mm,2270.mm], [-19.mm,704.5738636363636.mm,2270.mm], [-19.mm,706.5738636363636.mm,2270.mm], [-21.mm,706.5738636363636.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,717.9943181818181.mm,2270.mm], [-31.mm,717.9943181818181.mm,2270.mm], [-31.mm,719.9943181818181.mm,2270.mm], [-33.mm,719.9943181818181.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,717.9943181818181.mm,2270.mm], [-19.mm,717.9943181818181.mm,2270.mm], [-19.mm,719.9943181818181.mm,2270.mm], [-21.mm,719.9943181818181.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,731.4147727272727.mm,2270.mm], [-31.mm,731.4147727272727.mm,2270.mm], [-31.mm,733.4147727272727.mm,2270.mm], [-33.mm,733.4147727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,731.4147727272727.mm,2270.mm], [-19.mm,731.4147727272727.mm,2270.mm], [-19.mm,733.4147727272727.mm,2270.mm], [-21.mm,733.4147727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,744.8352272727273.mm,2270.mm], [-31.mm,744.8352272727273.mm,2270.mm], [-31.mm,746.8352272727273.mm,2270.mm], [-33.mm,746.8352272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,744.8352272727273.mm,2270.mm], [-19.mm,744.8352272727273.mm,2270.mm], [-19.mm,746.8352272727273.mm,2270.mm], [-21.mm,746.8352272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,758.2556818181818.mm,2270.mm], [-31.mm,758.2556818181818.mm,2270.mm], [-31.mm,760.2556818181818.mm,2270.mm], [-33.mm,760.2556818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,758.2556818181818.mm,2270.mm], [-19.mm,758.2556818181818.mm,2270.mm], [-19.mm,760.2556818181818.mm,2270.mm], [-21.mm,760.2556818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,771.6761363636364.mm,2270.mm], [-31.mm,771.6761363636364.mm,2270.mm], [-31.mm,773.6761363636364.mm,2270.mm], [-33.mm,773.6761363636364.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,771.6761363636364.mm,2270.mm], [-19.mm,771.6761363636364.mm,2270.mm], [-19.mm,773.6761363636364.mm,2270.mm], [-21.mm,773.6761363636364.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,785.0965909090909.mm,2270.mm], [-31.mm,785.0965909090909.mm,2270.mm], [-31.mm,787.0965909090909.mm,2270.mm], [-33.mm,787.0965909090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,785.0965909090909.mm,2270.mm], [-19.mm,785.0965909090909.mm,2270.mm], [-19.mm,787.0965909090909.mm,2270.mm], [-21.mm,787.0965909090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,798.5170454545454.mm,2270.mm], [-31.mm,798.5170454545454.mm,2270.mm], [-31.mm,800.5170454545454.mm,2270.mm], [-33.mm,800.5170454545454.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,798.5170454545454.mm,2270.mm], [-19.mm,798.5170454545454.mm,2270.mm], [-19.mm,800.5170454545454.mm,2270.mm], [-21.mm,800.5170454545454.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,811.9375.mm,2270.mm], [-31.mm,811.9375.mm,2270.mm], [-31.mm,813.9375.mm,2270.mm], [-33.mm,813.9375.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,811.9375.mm,2270.mm], [-19.mm,811.9375.mm,2270.mm], [-19.mm,813.9375.mm,2270.mm], [-21.mm,813.9375.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,825.3579545454545.mm,2270.mm], [-31.mm,825.3579545454545.mm,2270.mm], [-31.mm,827.3579545454545.mm,2270.mm], [-33.mm,827.3579545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,825.3579545454545.mm,2270.mm], [-19.mm,825.3579545454545.mm,2270.mm], [-19.mm,827.3579545454545.mm,2270.mm], [-21.mm,827.3579545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,838.778409090909.mm,2270.mm], [-31.mm,838.778409090909.mm,2270.mm], [-31.mm,840.778409090909.mm,2270.mm], [-33.mm,840.778409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,838.778409090909.mm,2270.mm], [-19.mm,838.778409090909.mm,2270.mm], [-19.mm,840.778409090909.mm,2270.mm], [-21.mm,840.778409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,852.1988636363636.mm,2270.mm], [-31.mm,852.1988636363636.mm,2270.mm], [-31.mm,854.1988636363636.mm,2270.mm], [-33.mm,854.1988636363636.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,852.1988636363636.mm,2270.mm], [-19.mm,852.1988636363636.mm,2270.mm], [-19.mm,854.1988636363636.mm,2270.mm], [-21.mm,854.1988636363636.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,865.6193181818181.mm,2270.mm], [-31.mm,865.6193181818181.mm,2270.mm], [-31.mm,867.6193181818181.mm,2270.mm], [-33.mm,867.6193181818181.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,865.6193181818181.mm,2270.mm], [-19.mm,865.6193181818181.mm,2270.mm], [-19.mm,867.6193181818181.mm,2270.mm], [-21.mm,867.6193181818181.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,879.0397727272727.mm,2270.mm], [-31.mm,879.0397727272727.mm,2270.mm], [-31.mm,881.0397727272727.mm,2270.mm], [-33.mm,881.0397727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,879.0397727272727.mm,2270.mm], [-19.mm,879.0397727272727.mm,2270.mm], [-19.mm,881.0397727272727.mm,2270.mm], [-21.mm,881.0397727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,892.4602272727273.mm,2270.mm], [-31.mm,892.4602272727273.mm,2270.mm], [-31.mm,894.4602272727273.mm,2270.mm], [-33.mm,894.4602272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,892.4602272727273.mm,2270.mm], [-19.mm,892.4602272727273.mm,2270.mm], [-19.mm,894.4602272727273.mm,2270.mm], [-21.mm,894.4602272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,905.8806818181818.mm,2270.mm], [-31.mm,905.8806818181818.mm,2270.mm], [-31.mm,907.8806818181818.mm,2270.mm], [-33.mm,907.8806818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,905.8806818181818.mm,2270.mm], [-19.mm,905.8806818181818.mm,2270.mm], [-19.mm,907.8806818181818.mm,2270.mm], [-21.mm,907.8806818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,919.3011363636364.mm,2270.mm], [-31.mm,919.3011363636364.mm,2270.mm], [-31.mm,921.3011363636364.mm,2270.mm], [-33.mm,921.3011363636364.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,919.3011363636364.mm,2270.mm], [-19.mm,919.3011363636364.mm,2270.mm], [-19.mm,921.3011363636364.mm,2270.mm], [-21.mm,921.3011363636364.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,932.7215909090909.mm,2270.mm], [-31.mm,932.7215909090909.mm,2270.mm], [-31.mm,934.7215909090909.mm,2270.mm], [-33.mm,934.7215909090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,932.7215909090909.mm,2270.mm], [-19.mm,932.7215909090909.mm,2270.mm], [-19.mm,934.7215909090909.mm,2270.mm], [-21.mm,934.7215909090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,946.1420454545454.mm,2270.mm], [-31.mm,946.1420454545454.mm,2270.mm], [-31.mm,948.1420454545454.mm,2270.mm], [-33.mm,948.1420454545454.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,946.1420454545454.mm,2270.mm], [-19.mm,946.1420454545454.mm,2270.mm], [-19.mm,948.1420454545454.mm,2270.mm], [-21.mm,948.1420454545454.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,959.5625.mm,2270.mm], [-31.mm,959.5625.mm,2270.mm], [-31.mm,961.5625.mm,2270.mm], [-33.mm,961.5625.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,959.5625.mm,2270.mm], [-19.mm,959.5625.mm,2270.mm], [-19.mm,961.5625.mm,2270.mm], [-21.mm,961.5625.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,972.9829545454545.mm,2270.mm], [-31.mm,972.9829545454545.mm,2270.mm], [-31.mm,974.9829545454545.mm,2270.mm], [-33.mm,974.9829545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,972.9829545454545.mm,2270.mm], [-19.mm,972.9829545454545.mm,2270.mm], [-19.mm,974.9829545454545.mm,2270.mm], [-21.mm,974.9829545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,986.403409090909.mm,2270.mm], [-31.mm,986.403409090909.mm,2270.mm], [-31.mm,988.403409090909.mm,2270.mm], [-33.mm,988.403409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,986.403409090909.mm,2270.mm], [-19.mm,986.403409090909.mm,2270.mm], [-19.mm,988.403409090909.mm,2270.mm], [-21.mm,988.403409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,999.8238636363636.mm,2270.mm], [-31.mm,999.8238636363636.mm,2270.mm], [-31.mm,1001.8238636363636.mm,2270.mm], [-33.mm,1001.8238636363636.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,999.8238636363636.mm,2270.mm], [-19.mm,999.8238636363636.mm,2270.mm], [-19.mm,1001.8238636363636.mm,2270.mm], [-21.mm,1001.8238636363636.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1013.2443181818181.mm,2270.mm], [-31.mm,1013.2443181818181.mm,2270.mm], [-31.mm,1015.2443181818181.mm,2270.mm], [-33.mm,1015.2443181818181.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1013.2443181818181.mm,2270.mm], [-19.mm,1013.2443181818181.mm,2270.mm], [-19.mm,1015.2443181818181.mm,2270.mm], [-21.mm,1015.2443181818181.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1026.6647727272727.mm,2270.mm], [-31.mm,1026.6647727272727.mm,2270.mm], [-31.mm,1028.6647727272727.mm,2270.mm], [-33.mm,1028.6647727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1026.6647727272727.mm,2270.mm], [-19.mm,1026.6647727272727.mm,2270.mm], [-19.mm,1028.6647727272727.mm,2270.mm], [-21.mm,1028.6647727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1040.0852272727273.mm,2270.mm], [-31.mm,1040.0852272727273.mm,2270.mm], [-31.mm,1042.0852272727273.mm,2270.mm], [-33.mm,1042.0852272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1040.0852272727273.mm,2270.mm], [-19.mm,1040.0852272727273.mm,2270.mm], [-19.mm,1042.0852272727273.mm,2270.mm], [-21.mm,1042.0852272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1053.5056818181818.mm,2270.mm], [-31.mm,1053.5056818181818.mm,2270.mm], [-31.mm,1055.5056818181818.mm,2270.mm], [-33.mm,1055.5056818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1053.5056818181818.mm,2270.mm], [-19.mm,1053.5056818181818.mm,2270.mm], [-19.mm,1055.5056818181818.mm,2270.mm], [-21.mm,1055.5056818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1066.9261363636363.mm,2270.mm], [-31.mm,1066.9261363636363.mm,2270.mm], [-31.mm,1068.9261363636363.mm,2270.mm], [-33.mm,1068.9261363636363.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1066.9261363636363.mm,2270.mm], [-19.mm,1066.9261363636363.mm,2270.mm], [-19.mm,1068.9261363636363.mm,2270.mm], [-21.mm,1068.9261363636363.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1080.3465909090908.mm,2270.mm], [-31.mm,1080.3465909090908.mm,2270.mm], [-31.mm,1082.3465909090908.mm,2270.mm], [-33.mm,1082.3465909090908.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1080.3465909090908.mm,2270.mm], [-19.mm,1080.3465909090908.mm,2270.mm], [-19.mm,1082.3465909090908.mm,2270.mm], [-21.mm,1082.3465909090908.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1093.7670454545455.mm,2270.mm], [-31.mm,1093.7670454545455.mm,2270.mm], [-31.mm,1095.7670454545455.mm,2270.mm], [-33.mm,1095.7670454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1093.7670454545455.mm,2270.mm], [-19.mm,1093.7670454545455.mm,2270.mm], [-19.mm,1095.7670454545455.mm,2270.mm], [-21.mm,1095.7670454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1107.1875.mm,2270.mm], [-31.mm,1107.1875.mm,2270.mm], [-31.mm,1109.1875.mm,2270.mm], [-33.mm,1109.1875.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1107.1875.mm,2270.mm], [-19.mm,1107.1875.mm,2270.mm], [-19.mm,1109.1875.mm,2270.mm], [-21.mm,1109.1875.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1120.6079545454545.mm,2270.mm], [-31.mm,1120.6079545454545.mm,2270.mm], [-31.mm,1122.6079545454545.mm,2270.mm], [-33.mm,1122.6079545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1120.6079545454545.mm,2270.mm], [-19.mm,1120.6079545454545.mm,2270.mm], [-19.mm,1122.6079545454545.mm,2270.mm], [-21.mm,1122.6079545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1134.028409090909.mm,2270.mm], [-31.mm,1134.028409090909.mm,2270.mm], [-31.mm,1136.028409090909.mm,2270.mm], [-33.mm,1136.028409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1134.028409090909.mm,2270.mm], [-19.mm,1134.028409090909.mm,2270.mm], [-19.mm,1136.028409090909.mm,2270.mm], [-21.mm,1136.028409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1147.4488636363635.mm,2270.mm], [-31.mm,1147.4488636363635.mm,2270.mm], [-31.mm,1149.4488636363635.mm,2270.mm], [-33.mm,1149.4488636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1147.4488636363635.mm,2270.mm], [-19.mm,1147.4488636363635.mm,2270.mm], [-19.mm,1149.4488636363635.mm,2270.mm], [-21.mm,1149.4488636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1160.8693181818182.mm,2270.mm], [-31.mm,1160.8693181818182.mm,2270.mm], [-31.mm,1162.8693181818182.mm,2270.mm], [-33.mm,1162.8693181818182.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1160.8693181818182.mm,2270.mm], [-19.mm,1160.8693181818182.mm,2270.mm], [-19.mm,1162.8693181818182.mm,2270.mm], [-21.mm,1162.8693181818182.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1174.2897727272727.mm,2270.mm], [-31.mm,1174.2897727272727.mm,2270.mm], [-31.mm,1176.2897727272727.mm,2270.mm], [-33.mm,1176.2897727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1174.2897727272727.mm,2270.mm], [-19.mm,1174.2897727272727.mm,2270.mm], [-19.mm,1176.2897727272727.mm,2270.mm], [-21.mm,1176.2897727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1187.7102272727273.mm,2270.mm], [-31.mm,1187.7102272727273.mm,2270.mm], [-31.mm,1189.7102272727273.mm,2270.mm], [-33.mm,1189.7102272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1187.7102272727273.mm,2270.mm], [-19.mm,1187.7102272727273.mm,2270.mm], [-19.mm,1189.7102272727273.mm,2270.mm], [-21.mm,1189.7102272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1201.1306818181818.mm,2270.mm], [-31.mm,1201.1306818181818.mm,2270.mm], [-31.mm,1203.1306818181818.mm,2270.mm], [-33.mm,1203.1306818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1201.1306818181818.mm,2270.mm], [-19.mm,1201.1306818181818.mm,2270.mm], [-19.mm,1203.1306818181818.mm,2270.mm], [-21.mm,1203.1306818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1214.5511363636363.mm,2270.mm], [-31.mm,1214.5511363636363.mm,2270.mm], [-31.mm,1216.5511363636363.mm,2270.mm], [-33.mm,1216.5511363636363.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1214.5511363636363.mm,2270.mm], [-19.mm,1214.5511363636363.mm,2270.mm], [-19.mm,1216.5511363636363.mm,2270.mm], [-21.mm,1216.5511363636363.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1227.9715909090908.mm,2270.mm], [-31.mm,1227.9715909090908.mm,2270.mm], [-31.mm,1229.9715909090908.mm,2270.mm], [-33.mm,1229.9715909090908.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1227.9715909090908.mm,2270.mm], [-19.mm,1227.9715909090908.mm,2270.mm], [-19.mm,1229.9715909090908.mm,2270.mm], [-21.mm,1229.9715909090908.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1241.3920454545455.mm,2270.mm], [-31.mm,1241.3920454545455.mm,2270.mm], [-31.mm,1243.3920454545455.mm,2270.mm], [-33.mm,1243.3920454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1241.3920454545455.mm,2270.mm], [-19.mm,1241.3920454545455.mm,2270.mm], [-19.mm,1243.3920454545455.mm,2270.mm], [-21.mm,1243.3920454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1254.8125.mm,2270.mm], [-31.mm,1254.8125.mm,2270.mm], [-31.mm,1256.8125.mm,2270.mm], [-33.mm,1256.8125.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1254.8125.mm,2270.mm], [-19.mm,1254.8125.mm,2270.mm], [-19.mm,1256.8125.mm,2270.mm], [-21.mm,1256.8125.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1268.2329545454545.mm,2270.mm], [-31.mm,1268.2329545454545.mm,2270.mm], [-31.mm,1270.2329545454545.mm,2270.mm], [-33.mm,1270.2329545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1268.2329545454545.mm,2270.mm], [-19.mm,1268.2329545454545.mm,2270.mm], [-19.mm,1270.2329545454545.mm,2270.mm], [-21.mm,1270.2329545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1281.653409090909.mm,2270.mm], [-31.mm,1281.653409090909.mm,2270.mm], [-31.mm,1283.653409090909.mm,2270.mm], [-33.mm,1283.653409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1281.653409090909.mm,2270.mm], [-19.mm,1281.653409090909.mm,2270.mm], [-19.mm,1283.653409090909.mm,2270.mm], [-21.mm,1283.653409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1295.0738636363635.mm,2270.mm], [-31.mm,1295.0738636363635.mm,2270.mm], [-31.mm,1297.0738636363635.mm,2270.mm], [-33.mm,1297.0738636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1295.0738636363635.mm,2270.mm], [-19.mm,1295.0738636363635.mm,2270.mm], [-19.mm,1297.0738636363635.mm,2270.mm], [-21.mm,1297.0738636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1308.4943181818182.mm,2270.mm], [-31.mm,1308.4943181818182.mm,2270.mm], [-31.mm,1310.4943181818182.mm,2270.mm], [-33.mm,1310.4943181818182.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1308.4943181818182.mm,2270.mm], [-19.mm,1308.4943181818182.mm,2270.mm], [-19.mm,1310.4943181818182.mm,2270.mm], [-21.mm,1310.4943181818182.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1321.9147727272727.mm,2270.mm], [-31.mm,1321.9147727272727.mm,2270.mm], [-31.mm,1323.9147727272727.mm,2270.mm], [-33.mm,1323.9147727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1321.9147727272727.mm,2270.mm], [-19.mm,1321.9147727272727.mm,2270.mm], [-19.mm,1323.9147727272727.mm,2270.mm], [-21.mm,1323.9147727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1335.3352272727273.mm,2270.mm], [-31.mm,1335.3352272727273.mm,2270.mm], [-31.mm,1337.3352272727273.mm,2270.mm], [-33.mm,1337.3352272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1335.3352272727273.mm,2270.mm], [-19.mm,1335.3352272727273.mm,2270.mm], [-19.mm,1337.3352272727273.mm,2270.mm], [-21.mm,1337.3352272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1348.7556818181818.mm,2270.mm], [-31.mm,1348.7556818181818.mm,2270.mm], [-31.mm,1350.7556818181818.mm,2270.mm], [-33.mm,1350.7556818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1348.7556818181818.mm,2270.mm], [-19.mm,1348.7556818181818.mm,2270.mm], [-19.mm,1350.7556818181818.mm,2270.mm], [-21.mm,1350.7556818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1362.1761363636363.mm,2270.mm], [-31.mm,1362.1761363636363.mm,2270.mm], [-31.mm,1364.1761363636363.mm,2270.mm], [-33.mm,1364.1761363636363.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1362.1761363636363.mm,2270.mm], [-19.mm,1362.1761363636363.mm,2270.mm], [-19.mm,1364.1761363636363.mm,2270.mm], [-21.mm,1364.1761363636363.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1375.5965909090908.mm,2270.mm], [-31.mm,1375.5965909090908.mm,2270.mm], [-31.mm,1377.5965909090908.mm,2270.mm], [-33.mm,1377.5965909090908.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1375.5965909090908.mm,2270.mm], [-19.mm,1375.5965909090908.mm,2270.mm], [-19.mm,1377.5965909090908.mm,2270.mm], [-21.mm,1377.5965909090908.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1389.0170454545455.mm,2270.mm], [-31.mm,1389.0170454545455.mm,2270.mm], [-31.mm,1391.0170454545455.mm,2270.mm], [-33.mm,1391.0170454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1389.0170454545455.mm,2270.mm], [-19.mm,1389.0170454545455.mm,2270.mm], [-19.mm,1391.0170454545455.mm,2270.mm], [-21.mm,1391.0170454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1402.4375.mm,2270.mm], [-31.mm,1402.4375.mm,2270.mm], [-31.mm,1404.4375.mm,2270.mm], [-33.mm,1404.4375.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1402.4375.mm,2270.mm], [-19.mm,1402.4375.mm,2270.mm], [-19.mm,1404.4375.mm,2270.mm], [-21.mm,1404.4375.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1415.8579545454545.mm,2270.mm], [-31.mm,1415.8579545454545.mm,2270.mm], [-31.mm,1417.8579545454545.mm,2270.mm], [-33.mm,1417.8579545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1415.8579545454545.mm,2270.mm], [-19.mm,1415.8579545454545.mm,2270.mm], [-19.mm,1417.8579545454545.mm,2270.mm], [-21.mm,1417.8579545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1429.278409090909.mm,2270.mm], [-31.mm,1429.278409090909.mm,2270.mm], [-31.mm,1431.278409090909.mm,2270.mm], [-33.mm,1431.278409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1429.278409090909.mm,2270.mm], [-19.mm,1429.278409090909.mm,2270.mm], [-19.mm,1431.278409090909.mm,2270.mm], [-21.mm,1431.278409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1442.6988636363635.mm,2270.mm], [-31.mm,1442.6988636363635.mm,2270.mm], [-31.mm,1444.6988636363635.mm,2270.mm], [-33.mm,1444.6988636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1442.6988636363635.mm,2270.mm], [-19.mm,1442.6988636363635.mm,2270.mm], [-19.mm,1444.6988636363635.mm,2270.mm], [-21.mm,1444.6988636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1456.119318181818.mm,2270.mm], [-31.mm,1456.119318181818.mm,2270.mm], [-31.mm,1458.119318181818.mm,2270.mm], [-33.mm,1458.119318181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1456.119318181818.mm,2270.mm], [-19.mm,1456.119318181818.mm,2270.mm], [-19.mm,1458.119318181818.mm,2270.mm], [-21.mm,1458.119318181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1469.5397727272727.mm,2270.mm], [-31.mm,1469.5397727272727.mm,2270.mm], [-31.mm,1471.5397727272727.mm,2270.mm], [-33.mm,1471.5397727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1469.5397727272727.mm,2270.mm], [-19.mm,1469.5397727272727.mm,2270.mm], [-19.mm,1471.5397727272727.mm,2270.mm], [-21.mm,1471.5397727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1482.9602272727273.mm,2270.mm], [-31.mm,1482.9602272727273.mm,2270.mm], [-31.mm,1484.9602272727273.mm,2270.mm], [-33.mm,1484.9602272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1482.9602272727273.mm,2270.mm], [-19.mm,1482.9602272727273.mm,2270.mm], [-19.mm,1484.9602272727273.mm,2270.mm], [-21.mm,1484.9602272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1496.3806818181818.mm,2270.mm], [-31.mm,1496.3806818181818.mm,2270.mm], [-31.mm,1498.3806818181818.mm,2270.mm], [-33.mm,1498.3806818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1496.3806818181818.mm,2270.mm], [-19.mm,1496.3806818181818.mm,2270.mm], [-19.mm,1498.3806818181818.mm,2270.mm], [-21.mm,1498.3806818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1509.8011363636363.mm,2270.mm], [-31.mm,1509.8011363636363.mm,2270.mm], [-31.mm,1511.8011363636363.mm,2270.mm], [-33.mm,1511.8011363636363.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1509.8011363636363.mm,2270.mm], [-19.mm,1509.8011363636363.mm,2270.mm], [-19.mm,1511.8011363636363.mm,2270.mm], [-21.mm,1511.8011363636363.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1523.2215909090908.mm,2270.mm], [-31.mm,1523.2215909090908.mm,2270.mm], [-31.mm,1525.2215909090908.mm,2270.mm], [-33.mm,1525.2215909090908.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1523.2215909090908.mm,2270.mm], [-19.mm,1523.2215909090908.mm,2270.mm], [-19.mm,1525.2215909090908.mm,2270.mm], [-21.mm,1525.2215909090908.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1536.6420454545455.mm,2270.mm], [-31.mm,1536.6420454545455.mm,2270.mm], [-31.mm,1538.6420454545455.mm,2270.mm], [-33.mm,1538.6420454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1536.6420454545455.mm,2270.mm], [-19.mm,1536.6420454545455.mm,2270.mm], [-19.mm,1538.6420454545455.mm,2270.mm], [-21.mm,1538.6420454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1550.0625.mm,2270.mm], [-31.mm,1550.0625.mm,2270.mm], [-31.mm,1552.0625.mm,2270.mm], [-33.mm,1552.0625.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1550.0625.mm,2270.mm], [-19.mm,1550.0625.mm,2270.mm], [-19.mm,1552.0625.mm,2270.mm], [-21.mm,1552.0625.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1563.4829545454545.mm,2270.mm], [-31.mm,1563.4829545454545.mm,2270.mm], [-31.mm,1565.4829545454545.mm,2270.mm], [-33.mm,1565.4829545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1563.4829545454545.mm,2270.mm], [-19.mm,1563.4829545454545.mm,2270.mm], [-19.mm,1565.4829545454545.mm,2270.mm], [-21.mm,1565.4829545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1576.903409090909.mm,2270.mm], [-31.mm,1576.903409090909.mm,2270.mm], [-31.mm,1578.903409090909.mm,2270.mm], [-33.mm,1578.903409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1576.903409090909.mm,2270.mm], [-19.mm,1576.903409090909.mm,2270.mm], [-19.mm,1578.903409090909.mm,2270.mm], [-21.mm,1578.903409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1590.3238636363635.mm,2270.mm], [-31.mm,1590.3238636363635.mm,2270.mm], [-31.mm,1592.3238636363635.mm,2270.mm], [-33.mm,1592.3238636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1590.3238636363635.mm,2270.mm], [-19.mm,1590.3238636363635.mm,2270.mm], [-19.mm,1592.3238636363635.mm,2270.mm], [-21.mm,1592.3238636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1603.744318181818.mm,2270.mm], [-31.mm,1603.744318181818.mm,2270.mm], [-31.mm,1605.744318181818.mm,2270.mm], [-33.mm,1605.744318181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1603.744318181818.mm,2270.mm], [-19.mm,1603.744318181818.mm,2270.mm], [-19.mm,1605.744318181818.mm,2270.mm], [-21.mm,1605.744318181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1617.1647727272727.mm,2270.mm], [-31.mm,1617.1647727272727.mm,2270.mm], [-31.mm,1619.1647727272727.mm,2270.mm], [-33.mm,1619.1647727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1617.1647727272727.mm,2270.mm], [-19.mm,1617.1647727272727.mm,2270.mm], [-19.mm,1619.1647727272727.mm,2270.mm], [-21.mm,1619.1647727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1630.5852272727273.mm,2270.mm], [-31.mm,1630.5852272727273.mm,2270.mm], [-31.mm,1632.5852272727273.mm,2270.mm], [-33.mm,1632.5852272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1630.5852272727273.mm,2270.mm], [-19.mm,1630.5852272727273.mm,2270.mm], [-19.mm,1632.5852272727273.mm,2270.mm], [-21.mm,1632.5852272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1644.0056818181818.mm,2270.mm], [-31.mm,1644.0056818181818.mm,2270.mm], [-31.mm,1646.0056818181818.mm,2270.mm], [-33.mm,1646.0056818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1644.0056818181818.mm,2270.mm], [-19.mm,1644.0056818181818.mm,2270.mm], [-19.mm,1646.0056818181818.mm,2270.mm], [-21.mm,1646.0056818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1657.4261363636363.mm,2270.mm], [-31.mm,1657.4261363636363.mm,2270.mm], [-31.mm,1659.4261363636363.mm,2270.mm], [-33.mm,1659.4261363636363.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1657.4261363636363.mm,2270.mm], [-19.mm,1657.4261363636363.mm,2270.mm], [-19.mm,1659.4261363636363.mm,2270.mm], [-21.mm,1659.4261363636363.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1670.8465909090908.mm,2270.mm], [-31.mm,1670.8465909090908.mm,2270.mm], [-31.mm,1672.8465909090908.mm,2270.mm], [-33.mm,1672.8465909090908.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1670.8465909090908.mm,2270.mm], [-19.mm,1670.8465909090908.mm,2270.mm], [-19.mm,1672.8465909090908.mm,2270.mm], [-21.mm,1672.8465909090908.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1684.2670454545455.mm,2270.mm], [-31.mm,1684.2670454545455.mm,2270.mm], [-31.mm,1686.2670454545455.mm,2270.mm], [-33.mm,1686.2670454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1684.2670454545455.mm,2270.mm], [-19.mm,1684.2670454545455.mm,2270.mm], [-19.mm,1686.2670454545455.mm,2270.mm], [-21.mm,1686.2670454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1697.6875.mm,2270.mm], [-31.mm,1697.6875.mm,2270.mm], [-31.mm,1699.6875.mm,2270.mm], [-33.mm,1699.6875.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1697.6875.mm,2270.mm], [-19.mm,1697.6875.mm,2270.mm], [-19.mm,1699.6875.mm,2270.mm], [-21.mm,1699.6875.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1711.1079545454545.mm,2270.mm], [-31.mm,1711.1079545454545.mm,2270.mm], [-31.mm,1713.1079545454545.mm,2270.mm], [-33.mm,1713.1079545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1711.1079545454545.mm,2270.mm], [-19.mm,1711.1079545454545.mm,2270.mm], [-19.mm,1713.1079545454545.mm,2270.mm], [-21.mm,1713.1079545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1724.528409090909.mm,2270.mm], [-31.mm,1724.528409090909.mm,2270.mm], [-31.mm,1726.528409090909.mm,2270.mm], [-33.mm,1726.528409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1724.528409090909.mm,2270.mm], [-19.mm,1724.528409090909.mm,2270.mm], [-19.mm,1726.528409090909.mm,2270.mm], [-21.mm,1726.528409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1737.9488636363635.mm,2270.mm], [-31.mm,1737.9488636363635.mm,2270.mm], [-31.mm,1739.9488636363635.mm,2270.mm], [-33.mm,1739.9488636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1737.9488636363635.mm,2270.mm], [-19.mm,1737.9488636363635.mm,2270.mm], [-19.mm,1739.9488636363635.mm,2270.mm], [-21.mm,1739.9488636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1751.369318181818.mm,2270.mm], [-31.mm,1751.369318181818.mm,2270.mm], [-31.mm,1753.369318181818.mm,2270.mm], [-33.mm,1753.369318181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1751.369318181818.mm,2270.mm], [-19.mm,1751.369318181818.mm,2270.mm], [-19.mm,1753.369318181818.mm,2270.mm], [-21.mm,1753.369318181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1764.7897727272727.mm,2270.mm], [-31.mm,1764.7897727272727.mm,2270.mm], [-31.mm,1766.7897727272727.mm,2270.mm], [-33.mm,1766.7897727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1764.7897727272727.mm,2270.mm], [-19.mm,1764.7897727272727.mm,2270.mm], [-19.mm,1766.7897727272727.mm,2270.mm], [-21.mm,1766.7897727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1778.2102272727273.mm,2270.mm], [-31.mm,1778.2102272727273.mm,2270.mm], [-31.mm,1780.2102272727273.mm,2270.mm], [-33.mm,1780.2102272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1778.2102272727273.mm,2270.mm], [-19.mm,1778.2102272727273.mm,2270.mm], [-19.mm,1780.2102272727273.mm,2270.mm], [-21.mm,1780.2102272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1791.6306818181818.mm,2270.mm], [-31.mm,1791.6306818181818.mm,2270.mm], [-31.mm,1793.6306818181818.mm,2270.mm], [-33.mm,1793.6306818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1791.6306818181818.mm,2270.mm], [-19.mm,1791.6306818181818.mm,2270.mm], [-19.mm,1793.6306818181818.mm,2270.mm], [-21.mm,1793.6306818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1805.0511363636363.mm,2270.mm], [-31.mm,1805.0511363636363.mm,2270.mm], [-31.mm,1807.0511363636363.mm,2270.mm], [-33.mm,1807.0511363636363.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1805.0511363636363.mm,2270.mm], [-19.mm,1805.0511363636363.mm,2270.mm], [-19.mm,1807.0511363636363.mm,2270.mm], [-21.mm,1807.0511363636363.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1818.4715909090908.mm,2270.mm], [-31.mm,1818.4715909090908.mm,2270.mm], [-31.mm,1820.4715909090908.mm,2270.mm], [-33.mm,1820.4715909090908.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1818.4715909090908.mm,2270.mm], [-19.mm,1818.4715909090908.mm,2270.mm], [-19.mm,1820.4715909090908.mm,2270.mm], [-21.mm,1820.4715909090908.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1831.8920454545455.mm,2270.mm], [-31.mm,1831.8920454545455.mm,2270.mm], [-31.mm,1833.8920454545455.mm,2270.mm], [-33.mm,1833.8920454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1831.8920454545455.mm,2270.mm], [-19.mm,1831.8920454545455.mm,2270.mm], [-19.mm,1833.8920454545455.mm,2270.mm], [-21.mm,1833.8920454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1845.3125.mm,2270.mm], [-31.mm,1845.3125.mm,2270.mm], [-31.mm,1847.3125.mm,2270.mm], [-33.mm,1847.3125.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1845.3125.mm,2270.mm], [-19.mm,1845.3125.mm,2270.mm], [-19.mm,1847.3125.mm,2270.mm], [-21.mm,1847.3125.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1858.7329545454545.mm,2270.mm], [-31.mm,1858.7329545454545.mm,2270.mm], [-31.mm,1860.7329545454545.mm,2270.mm], [-33.mm,1860.7329545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1858.7329545454545.mm,2270.mm], [-19.mm,1858.7329545454545.mm,2270.mm], [-19.mm,1860.7329545454545.mm,2270.mm], [-21.mm,1860.7329545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1872.153409090909.mm,2270.mm], [-31.mm,1872.153409090909.mm,2270.mm], [-31.mm,1874.153409090909.mm,2270.mm], [-33.mm,1874.153409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1872.153409090909.mm,2270.mm], [-19.mm,1872.153409090909.mm,2270.mm], [-19.mm,1874.153409090909.mm,2270.mm], [-21.mm,1874.153409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1885.5738636363635.mm,2270.mm], [-31.mm,1885.5738636363635.mm,2270.mm], [-31.mm,1887.5738636363635.mm,2270.mm], [-33.mm,1887.5738636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1885.5738636363635.mm,2270.mm], [-19.mm,1885.5738636363635.mm,2270.mm], [-19.mm,1887.5738636363635.mm,2270.mm], [-21.mm,1887.5738636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1898.994318181818.mm,2270.mm], [-31.mm,1898.994318181818.mm,2270.mm], [-31.mm,1900.994318181818.mm,2270.mm], [-33.mm,1900.994318181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1898.994318181818.mm,2270.mm], [-19.mm,1898.994318181818.mm,2270.mm], [-19.mm,1900.994318181818.mm,2270.mm], [-21.mm,1900.994318181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1912.4147727272727.mm,2270.mm], [-31.mm,1912.4147727272727.mm,2270.mm], [-31.mm,1914.4147727272727.mm,2270.mm], [-33.mm,1914.4147727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1912.4147727272727.mm,2270.mm], [-19.mm,1912.4147727272727.mm,2270.mm], [-19.mm,1914.4147727272727.mm,2270.mm], [-21.mm,1914.4147727272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1925.8352272727273.mm,2270.mm], [-31.mm,1925.8352272727273.mm,2270.mm], [-31.mm,1927.8352272727273.mm,2270.mm], [-33.mm,1927.8352272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1925.8352272727273.mm,2270.mm], [-19.mm,1925.8352272727273.mm,2270.mm], [-19.mm,1927.8352272727273.mm,2270.mm], [-21.mm,1927.8352272727273.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1939.2556818181818.mm,2270.mm], [-31.mm,1939.2556818181818.mm,2270.mm], [-31.mm,1941.2556818181818.mm,2270.mm], [-33.mm,1941.2556818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1939.2556818181818.mm,2270.mm], [-19.mm,1939.2556818181818.mm,2270.mm], [-19.mm,1941.2556818181818.mm,2270.mm], [-21.mm,1941.2556818181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1952.6761363636363.mm,2270.mm], [-31.mm,1952.6761363636363.mm,2270.mm], [-31.mm,1954.6761363636363.mm,2270.mm], [-33.mm,1954.6761363636363.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1952.6761363636363.mm,2270.mm], [-19.mm,1952.6761363636363.mm,2270.mm], [-19.mm,1954.6761363636363.mm,2270.mm], [-21.mm,1954.6761363636363.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1966.0965909090908.mm,2270.mm], [-31.mm,1966.0965909090908.mm,2270.mm], [-31.mm,1968.0965909090908.mm,2270.mm], [-33.mm,1968.0965909090908.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1966.0965909090908.mm,2270.mm], [-19.mm,1966.0965909090908.mm,2270.mm], [-19.mm,1968.0965909090908.mm,2270.mm], [-21.mm,1968.0965909090908.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1979.5170454545455.mm,2270.mm], [-31.mm,1979.5170454545455.mm,2270.mm], [-31.mm,1981.5170454545455.mm,2270.mm], [-33.mm,1981.5170454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1979.5170454545455.mm,2270.mm], [-19.mm,1979.5170454545455.mm,2270.mm], [-19.mm,1981.5170454545455.mm,2270.mm], [-21.mm,1981.5170454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,1992.9375.mm,2270.mm], [-31.mm,1992.9375.mm,2270.mm], [-31.mm,1994.9375.mm,2270.mm], [-33.mm,1994.9375.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,1992.9375.mm,2270.mm], [-19.mm,1992.9375.mm,2270.mm], [-19.mm,1994.9375.mm,2270.mm], [-21.mm,1994.9375.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2006.3579545454545.mm,2270.mm], [-31.mm,2006.3579545454545.mm,2270.mm], [-31.mm,2008.3579545454545.mm,2270.mm], [-33.mm,2008.3579545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2006.3579545454545.mm,2270.mm], [-19.mm,2006.3579545454545.mm,2270.mm], [-19.mm,2008.3579545454545.mm,2270.mm], [-21.mm,2008.3579545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2019.778409090909.mm,2270.mm], [-31.mm,2019.778409090909.mm,2270.mm], [-31.mm,2021.778409090909.mm,2270.mm], [-33.mm,2021.778409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2019.778409090909.mm,2270.mm], [-19.mm,2019.778409090909.mm,2270.mm], [-19.mm,2021.778409090909.mm,2270.mm], [-21.mm,2021.778409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2033.1988636363635.mm,2270.mm], [-31.mm,2033.1988636363635.mm,2270.mm], [-31.mm,2035.1988636363635.mm,2270.mm], [-33.mm,2035.1988636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2033.1988636363635.mm,2270.mm], [-19.mm,2033.1988636363635.mm,2270.mm], [-19.mm,2035.1988636363635.mm,2270.mm], [-21.mm,2035.1988636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2046.619318181818.mm,2270.mm], [-31.mm,2046.619318181818.mm,2270.mm], [-31.mm,2048.619318181818.mm,2270.mm], [-33.mm,2048.619318181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2046.619318181818.mm,2270.mm], [-19.mm,2046.619318181818.mm,2270.mm], [-19.mm,2048.619318181818.mm,2270.mm], [-21.mm,2048.619318181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2060.0397727272725.mm,2270.mm], [-31.mm,2060.0397727272725.mm,2270.mm], [-31.mm,2062.0397727272725.mm,2270.mm], [-33.mm,2062.0397727272725.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2060.0397727272725.mm,2270.mm], [-19.mm,2060.0397727272725.mm,2270.mm], [-19.mm,2062.0397727272725.mm,2270.mm], [-21.mm,2062.0397727272725.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2073.460227272727.mm,2270.mm], [-31.mm,2073.460227272727.mm,2270.mm], [-31.mm,2075.460227272727.mm,2270.mm], [-33.mm,2075.460227272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2073.460227272727.mm,2270.mm], [-19.mm,2073.460227272727.mm,2270.mm], [-19.mm,2075.460227272727.mm,2270.mm], [-21.mm,2075.460227272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2086.8806818181815.mm,2270.mm], [-31.mm,2086.8806818181815.mm,2270.mm], [-31.mm,2088.8806818181815.mm,2270.mm], [-33.mm,2088.8806818181815.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2086.8806818181815.mm,2270.mm], [-19.mm,2086.8806818181815.mm,2270.mm], [-19.mm,2088.8806818181815.mm,2270.mm], [-21.mm,2088.8806818181815.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2100.3011363636365.mm,2270.mm], [-31.mm,2100.3011363636365.mm,2270.mm], [-31.mm,2102.3011363636365.mm,2270.mm], [-33.mm,2102.3011363636365.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2100.3011363636365.mm,2270.mm], [-19.mm,2100.3011363636365.mm,2270.mm], [-19.mm,2102.3011363636365.mm,2270.mm], [-21.mm,2102.3011363636365.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2113.721590909091.mm,2270.mm], [-31.mm,2113.721590909091.mm,2270.mm], [-31.mm,2115.721590909091.mm,2270.mm], [-33.mm,2115.721590909091.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2113.721590909091.mm,2270.mm], [-19.mm,2113.721590909091.mm,2270.mm], [-19.mm,2115.721590909091.mm,2270.mm], [-21.mm,2115.721590909091.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2127.1420454545455.mm,2270.mm], [-31.mm,2127.1420454545455.mm,2270.mm], [-31.mm,2129.1420454545455.mm,2270.mm], [-33.mm,2129.1420454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2127.1420454545455.mm,2270.mm], [-19.mm,2127.1420454545455.mm,2270.mm], [-19.mm,2129.1420454545455.mm,2270.mm], [-21.mm,2129.1420454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2140.5625.mm,2270.mm], [-31.mm,2140.5625.mm,2270.mm], [-31.mm,2142.5625.mm,2270.mm], [-33.mm,2142.5625.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2140.5625.mm,2270.mm], [-19.mm,2140.5625.mm,2270.mm], [-19.mm,2142.5625.mm,2270.mm], [-21.mm,2142.5625.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2153.9829545454545.mm,2270.mm], [-31.mm,2153.9829545454545.mm,2270.mm], [-31.mm,2155.9829545454545.mm,2270.mm], [-33.mm,2155.9829545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2153.9829545454545.mm,2270.mm], [-19.mm,2153.9829545454545.mm,2270.mm], [-19.mm,2155.9829545454545.mm,2270.mm], [-21.mm,2155.9829545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2167.403409090909.mm,2270.mm], [-31.mm,2167.403409090909.mm,2270.mm], [-31.mm,2169.403409090909.mm,2270.mm], [-33.mm,2169.403409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2167.403409090909.mm,2270.mm], [-19.mm,2167.403409090909.mm,2270.mm], [-19.mm,2169.403409090909.mm,2270.mm], [-21.mm,2169.403409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2180.8238636363635.mm,2270.mm], [-31.mm,2180.8238636363635.mm,2270.mm], [-31.mm,2182.8238636363635.mm,2270.mm], [-33.mm,2182.8238636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2180.8238636363635.mm,2270.mm], [-19.mm,2180.8238636363635.mm,2270.mm], [-19.mm,2182.8238636363635.mm,2270.mm], [-21.mm,2182.8238636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2194.244318181818.mm,2270.mm], [-31.mm,2194.244318181818.mm,2270.mm], [-31.mm,2196.244318181818.mm,2270.mm], [-33.mm,2196.244318181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2194.244318181818.mm,2270.mm], [-19.mm,2194.244318181818.mm,2270.mm], [-19.mm,2196.244318181818.mm,2270.mm], [-21.mm,2196.244318181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2207.6647727272725.mm,2270.mm], [-31.mm,2207.6647727272725.mm,2270.mm], [-31.mm,2209.6647727272725.mm,2270.mm], [-33.mm,2209.6647727272725.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2207.6647727272725.mm,2270.mm], [-19.mm,2207.6647727272725.mm,2270.mm], [-19.mm,2209.6647727272725.mm,2270.mm], [-21.mm,2209.6647727272725.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2221.085227272727.mm,2270.mm], [-31.mm,2221.085227272727.mm,2270.mm], [-31.mm,2223.085227272727.mm,2270.mm], [-33.mm,2223.085227272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2221.085227272727.mm,2270.mm], [-19.mm,2221.085227272727.mm,2270.mm], [-19.mm,2223.085227272727.mm,2270.mm], [-21.mm,2223.085227272727.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2234.5056818181815.mm,2270.mm], [-31.mm,2234.5056818181815.mm,2270.mm], [-31.mm,2236.5056818181815.mm,2270.mm], [-33.mm,2236.5056818181815.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2234.5056818181815.mm,2270.mm], [-19.mm,2234.5056818181815.mm,2270.mm], [-19.mm,2236.5056818181815.mm,2270.mm], [-21.mm,2236.5056818181815.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2247.9261363636365.mm,2270.mm], [-31.mm,2247.9261363636365.mm,2270.mm], [-31.mm,2249.9261363636365.mm,2270.mm], [-33.mm,2249.9261363636365.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2247.9261363636365.mm,2270.mm], [-19.mm,2247.9261363636365.mm,2270.mm], [-19.mm,2249.9261363636365.mm,2270.mm], [-21.mm,2249.9261363636365.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2261.346590909091.mm,2270.mm], [-31.mm,2261.346590909091.mm,2270.mm], [-31.mm,2263.346590909091.mm,2270.mm], [-33.mm,2263.346590909091.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2261.346590909091.mm,2270.mm], [-19.mm,2261.346590909091.mm,2270.mm], [-19.mm,2263.346590909091.mm,2270.mm], [-21.mm,2263.346590909091.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2274.7670454545455.mm,2270.mm], [-31.mm,2274.7670454545455.mm,2270.mm], [-31.mm,2276.7670454545455.mm,2270.mm], [-33.mm,2276.7670454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2274.7670454545455.mm,2270.mm], [-19.mm,2274.7670454545455.mm,2270.mm], [-19.mm,2276.7670454545455.mm,2270.mm], [-21.mm,2276.7670454545455.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2288.1875.mm,2270.mm], [-31.mm,2288.1875.mm,2270.mm], [-31.mm,2290.1875.mm,2270.mm], [-33.mm,2290.1875.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2288.1875.mm,2270.mm], [-19.mm,2288.1875.mm,2270.mm], [-19.mm,2290.1875.mm,2270.mm], [-21.mm,2290.1875.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2301.6079545454545.mm,2270.mm], [-31.mm,2301.6079545454545.mm,2270.mm], [-31.mm,2303.6079545454545.mm,2270.mm], [-33.mm,2303.6079545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2301.6079545454545.mm,2270.mm], [-19.mm,2301.6079545454545.mm,2270.mm], [-19.mm,2303.6079545454545.mm,2270.mm], [-21.mm,2303.6079545454545.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2315.028409090909.mm,2270.mm], [-31.mm,2315.028409090909.mm,2270.mm], [-31.mm,2317.028409090909.mm,2270.mm], [-33.mm,2317.028409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2315.028409090909.mm,2270.mm], [-19.mm,2315.028409090909.mm,2270.mm], [-19.mm,2317.028409090909.mm,2270.mm], [-21.mm,2317.028409090909.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2328.4488636363635.mm,2270.mm], [-31.mm,2328.4488636363635.mm,2270.mm], [-31.mm,2330.4488636363635.mm,2270.mm], [-33.mm,2330.4488636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2328.4488636363635.mm,2270.mm], [-19.mm,2328.4488636363635.mm,2270.mm], [-19.mm,2330.4488636363635.mm,2270.mm], [-21.mm,2330.4488636363635.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2341.869318181818.mm,2270.mm], [-31.mm,2341.869318181818.mm,2270.mm], [-31.mm,2343.869318181818.mm,2270.mm], [-33.mm,2343.869318181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2341.869318181818.mm,2270.mm], [-19.mm,2341.869318181818.mm,2270.mm], [-19.mm,2343.869318181818.mm,2270.mm], [-21.mm,2343.869318181818.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-33.mm,2355.2897727272725.mm,2270.mm], [-31.mm,2355.2897727272725.mm,2270.mm], [-31.mm,2357.2897727272725.mm,2270.mm], [-33.mm,2357.2897727272725.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brush bristle
+  grp = ents.add_group
+  grp.name = "Brush bristle"
+  face = grp.entities.add_face([-21.mm,2355.2897727272725.mm,2270.mm], [-19.mm,2355.2897727272725.mm,2270.mm], [-19.mm,2357.2897727272725.mm,2270.mm], [-21.mm,2357.2897727272725.mm,2270.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["Brush bristle"] || model.materials.add("Brush bristle")
+  mat.color = Sketchup::Color.new(20, 20, 20)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19430,7 +27174,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
-  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.color = Sketchup::Color.new(20, 83, 45)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19441,7 +27185,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
-  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.color = Sketchup::Color.new(20, 83, 45)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19452,7 +27196,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(2120.mm)
   mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
-  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.color = Sketchup::Color.new(20, 83, 45)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -19463,7 +27207,7 @@ end
   face.reverse! if face.normal.z < 0
   face.pushpull(2120.mm)
   mat = model.materials["Housing surround seal bottom"] || model.materials.add("Housing surround seal bottom")
-  mat.color = Sketchup::Color.new(90, 48, 32)
+  mat.color = Sketchup::Color.new(20, 83, 45)
   mat.alpha = 1.0
   grp.material = mat
 

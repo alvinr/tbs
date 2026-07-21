@@ -181,13 +181,13 @@ All items ship within the United States. Local Southern California pickup noted 
 | 6-mil black poly sheeting | 10 ft × 100 ft | 1 roll | Home Depot / Uline | $66–$70 |
 | 2" black Gorilla Tape | 35 yd rolls | 6 roll | Home Depot / Amazon | $54–$78 |
 | Mild steel plate 8mm (laser/plasma cut + welded) | ICP-11: back-plate + exterior plate + seat + gusset per saddle; ~21 kg over 6 saddles | 6 ea | Metal Supermarkets / Online Metals | $318 |
-| [M12×90 hex through-bolt, 18-8 SS](https://www.mcmaster.com/91310A145/) (91310A145) | ICP-12: wall sandwich through-bolt; 4/saddle ×6 + 4 spare. $18.31/pack of 10 → 3 packs for 28. | 28 ea | McMaster-Carr / Amazon | $51 |
+| [M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A728/) (91280A728) | ICP-12: wall-sandwich through-bolt (4/saddle ×6 + 4 spare), sized for the 30mm-corrugation grip (~50mm), partial thread. $15.95/pack of 10 → 3 packs for 28. Pad with 1–2 M12 flat washers if the actual container corrugation is <30mm. | 28 ea | McMaster-Carr | $45 |
 | M12 hex nut, plain | Plain hex nut — M12×90 wall-sandwich bolts (cost-neutral placeholder; re-price) | 28 ea | McMaster-Carr | $6 |
-| M12 flat washer | Flat washers (2/bolt) — M12×90 wall-sandwich bolts (cost-neutral placeholder; re-price) | 56 ea | McMaster-Carr | $3 |
+| M12 flat washer | Flat washers, M12×65 wall-sandwich bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm) (cost-neutral placeholder; re-price) | 112 ea | McMaster-Carr | $7 |
 | M8×25mm knurled thumbscrew DIN 464 | ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare | 12 ea | Amazon / Maedler | $36 |
 | M8 hex bolt, SS — length TBD (film right-rail fixing, confirm at order) | ICP-14: right-rail permanent fixing; 2/saddle ×2 TR + spare | 8 ea | McMaster-Carr / Amazon | $15 |
 | M8 hex nut, plain SS | Plain hex nut — M8 right-rail fixing (cost-neutral placeholder; re-price) | 8 ea | McMaster-Carr | $1 |
-| **Film total** | | | | **$5,711–$6,219** |
+| **Film total** | | | | **$5,708–$6,216** |
 <!-- END parts:film -->
 
 *The corner-mechanism hardware (U-channel depth rails, acetal skates, Z/X cross-slides, and the
@@ -212,7 +212,7 @@ Each of the **8 rail ends** anchors to the container — **6 of them** with a st
 
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
 
-**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$6,097<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
+**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$6,094<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
 *Excludes fasteners and fabrication labor.*
 
 ### Local SoCal Metal Sourcing

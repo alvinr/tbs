@@ -172,7 +172,7 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 | Continuous (piano) hinge, 600 mm | stainless/steel, ~32 mm leaf | 1 ea | McMaster-Carr | $20 |
 | Folding shelf stays/brackets | fold-flat, ~30–50 kg rating | 2 ea | Amazon / McMaster-Carr | $24 |
 | Wall mounting cleat + anchors | 6 mm steel cleat + 2 stay anchors (slotted) | 1 lot | Local fab | $18 |
-| M8 hex bolt, SS — length TBD (shelf hinge-cleat + stay wall anchors, confirm at order) | Hinge cleat + stay anchors into the wall ribs | 12 ea | McMaster-Carr | $10 |
+| M8 hex bolt, SS — M8×20-25 (rib-flat) to longer (corrugation-bridge), confirm attach | Shelf hinge cleat + 2 stay anchors, through-bolted (12 M8 nuts) to the pinhole END wall. Grip = 6mm cleat + wall → ~8mm/M8×20-25 if landing on a rib/flat backing, longer if bridging the end-wall corrugation — needs the attachment mode (see TODO). | 12 ea | McMaster-Carr | $10 |
 | [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | Plain hex nut — shelf wall bolts. Pitch M8×1.25 (coarse, baseline — confirm vs SKU PDF, must match the bolt). $7.53/pack of 100. | 12 ea | McMaster-Carr | $1 |
 | [M8 flat washer, SS](https://www.mcmaster.com/91166A270/) (91166A270) | Flat washer (1/bolt) — shelf wall bolts. $3.32/pack of 100. | 12 ea | McMaster-Carr | $0 |
 | Transport latch (over-center/barrel) | secures the folded board | 1 ea | Amazon | $8 |

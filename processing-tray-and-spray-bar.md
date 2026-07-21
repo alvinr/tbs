@@ -545,7 +545,7 @@ tray drainage plan and sump cross-section).
 | 1" SS foot valve with strainer screen | Sump pickup tube | 1 ea | Amazon | $20 |
 | 1" reinforced suction hose, 6 ft | Pickup tube to P-04 | 1 ea | Amazon | $15 |
 | Silicone gasket strip | Center flange seal | 1 ea | McMaster-Carr | $20 |
-| M6 hex bolt, SS — length TBD (tray panel flange, confirm at order) | Tray panel flange bolts (316 SS, wet zone) | 12 ea | McMaster-Carr | $11 |
+| M6 hex bolt, SS — ~M6×16 est (tray center flange) | Tray center-flange bolts (316 SS, wet zone). Grip ≈ 3mm (2× 1.5mm SS flange) + silicone gasket → ~M6×16, but the joint is BOM-only (not drawn) + gasket thickness unknown — see TODO. | 12 ea | McMaster-Carr | $11 |
 | [M6×1.0 flange nut, serrated SS](https://www.mcmaster.com/96194A101/) (96194A101) | Serrated flange nut — tray panel bolts. Pitch M6×1.0 (coarse, baseline — confirm vs SKU PDF, must match the mating bolt). $4.71/pack of 100. | 12 ea | McMaster-Carr | $1 |
 | 6-mil black LDPE sheet, 10 ft × 8 ft | Containment liner (consumable, per session) | 1 ea | Home Depot | $8 |
 | **Tray total** | | | | **$1,300–$2,015** |
@@ -576,7 +576,7 @@ tray drainage plan and sump cross-section).
 | Ø20mm ball joint, zinc socket, M12 stud | Multi-axis arm articulation | 1 ea | Amazon | $12 |
 | SS beam clamp plates (top + bottom) + spacers (25mm) | Beam to carriage plate (sandwich, countersunk underside bolts) | 4 ea | McMaster-Carr | $10 |
 | 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | Arm tube | 1 ea | Online Metals | $6 |
-| M6 hex bolt, SS — length TBD (spray arm-tube pinch, confirm at order) | Pinch bolt for the spray arm tube (316 SS) | 1 ea | McMaster-Carr | $1 |
+| M6 hex bolt, SS — length BLOCKED (pinch-clamp geometry undesigned) | Pinch bolt for the spray arm tube (Ø25×2 6061). Length CAN'T be derived — the pinch-clamp ear/slit geometry was never designed or drawn (see TODO). (316 SS) | 1 ea | McMaster-Carr | $1 |
 | [M6×1.0 hex nut, plain SS](https://www.mcmaster.com/90591A151/) (90591A151) | Plain hex nut — spray pinch bolt. Pitch M6×1.0 (coarse, baseline — confirm vs SKU PDF, must match the bolt). $3.42/pack of 100. | 1 ea | McMaster-Carr | $0 |
 | Nylon zip ties, 200mm | Hose to arm tube | 6 ea | Amazon | $1 |
 | **Spray total** | | | | **$282–$362** |

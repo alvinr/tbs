@@ -274,14 +274,16 @@ evap_cooler_w_bus:
     - '~(\d+) ?W vs the old'
 
 # IBC direct-stack ceiling headroom — COMPUTED (C_HGT − IBC_H_STK_1000). Anchored to the
-# headroom/clearance phrasings so a coincidental 52mm isn't policed.
+# headroom/clearance phrasings so a coincidental 52mm isn't policed. The 'ceiling clearance'
+# alias additionally requires a stacking word (stack/tote) in the same sentence, so it can't
+# false-match the film-plane top-rail's own '25mm ceiling clearance' (a different measurement).
 ibc_ceiling_clearance_mm:
   constant: IBC_CEILING_CLEARANCE_MM
   unit: mm
   owner: ibc-stacking-report.md
   aliases:
     - '(\d+) ?mm (?:of )?(?:ceiling )?headroom'
-    - '(\d+) ?mm ceiling clearance'
+    - '(?:stack|tote)\w*[^.]*?(\d+) ?mm ceiling clearance'
 
 # Water-balance figures — COMPUTED from BLUE_SUPPLY_L + the per-print loss (water-system §4); a
 # supply/print change re-derives them everywhere. Anchored to the recovered/collection/lost/gal

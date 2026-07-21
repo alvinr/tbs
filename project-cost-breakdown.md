@@ -17,19 +17,19 @@
 | **1. Container purchase & delivery** | $2,300 | $3,300 | $4,300 |
 | **2. Interior conversion** | $950 | $1,138 | $1,350 |
 | **3. Optics — pinhole plate** | $110 | $185 | $265 |
-| **4. Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)** | $6,094 | $6,568 | $7,042 |
+| **4. Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)** | $6,103 | $6,577 | $7,051 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $5,356 | $6,632 | $7,899 |
 | **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)** | $2,608 | $2,806 | $3,003 |
 | **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $757 | $817 | $907 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $1,416 | $1,739 | $2,061 |
-| **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $2,053 | $2,502 | $2,950 |
+| **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $2,080 | $2,529 | $2,977 |
 | **6b. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)** | $939 | $1,209 | $1,479 |
 | **6c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle)** | $1,140 | $1,418 | $1,695 |
 | **6d. Chemistry prep shelf (fold-down phenolic board + steel frame + hinge/stays + TAP-01 trunk extension)** | $203 | $203 | $203 |
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,100 | $1,490 | $2,650 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licenses & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$25,546** | **$31,547** | **$39,424** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$25,582** | **$31,583** | **$39,460** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware AmFe** chemistry + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,120), Mid = Standard ½-Ware ($1,520), High = Rich full-Ware ($2,700)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
@@ -258,8 +258,8 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 | Spring clips, muslin (×88) | $264 | $484 | $704 |
 | Clamp mounting — M5×16 SS csk screws (×176) + Nylocks (×176) + neoprene pad strip | $122 | $122 | $122 |
 | Wall-seat saddles ×6 — 8mm steel plate, cut + welded (ICP-11) | $318 | $318 | $318 |
-| Saddle fasteners — M12 through-bolts (×28) + M8 thumbscrews (×12) + M8 hex bolts (×8) | $109 | $109 | $109 |
-| **Section total — film plane mechanism (U-channel + U-joint, incl. saddles)** | **$6,094** | **$6,568** | **$7,042** |
+| Saddle fasteners — M12 through-bolts (×28) + M8 thumbscrews (×12) + M8 hex bolts (×8) | $118 | $118 | $118 |
+| **Section total — film plane mechanism (U-channel + U-joint, incl. saddles)** | **$6,103** | **$6,577** | **$7,051** |
 <!-- END costing:film -->
 
 *Electric actuation (optional add-on, not in any standard build): +$827 — see §4.4.*
@@ -341,18 +341,18 @@ Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted
 | Standard wall brackets, 8mm steel plate (×14) | $112 | $143 | $175 | Near/far walls; 150mm vert × 300mm arm |
 | Widened wall brackets, 10mm steel plate (×4) | $72 | $90 | $112 | EP/battery/slit zone; 200mm vert × 500mm arm |
 | Reinforcing plates, std 100×180×6mm (×14) + wide 120×220×6mm (×4) | $47 | $60 | $73 | Welded to wall exterior behind each bracket |
-| M12×60mm hex bolts + nuts + washers (×58) | $118 | $118 | $118 | 3 per std bracket (42) + 4 per widened (16) |
+| M12×60mm hex bolts + nuts + washers (×58) | $137 | $137 | $137 | 3 per std bracket (42) + 4 per widened (16) |
 | Transition bearing plates, 40×500×5mm flat bar (×2) | $5 | $8 | $10 | Welded to arm top at width transitions |
 | Right walkway cantilever frame, 40×40×3mm SHS (8m) | $28 | $34 | $40 | rev12: closed rectangle (2× 2,362mm long + 2× 300mm end beams) + 2× 405mm center arms |
 | Right walkway wall cleats, 8mm steel (×2) | $20 | $28 | $35 | Left corners — back-plate + exterior plate + shelf, through-bolted to the wall |
 | Combined corner plates, 10mm steel (×2) | $50 | $65 | $80 | Right corners — shared with the bottom film rail (replaces the BR rail saddle); interior + exterior plate + 2 seats |
-| M12 through-bolts + nuts/washers (~24) | $52 | $52 | $52 | Wall cleats + combined plates + 2 center-arm U-clamps to the IBC uprights |
+| M12 through-bolts + nuts/washers (~24) | $60 | $60 | $60 | Wall cleats + combined plates + 2 center-arm U-clamps to the IBC uprights |
 | 316 SS hold-down clips (FRP M/G-clip, ×20) | $25 | $32 | $40 | Near/far/right walkway GRP grating retention |
 | Drum-exit punch-out — extra GRP grating (~0.23 m²) | $50 | $57 | $65 | 600mm-deep landing at the light-lock exit; carried by the 3 extended bracket arms (no separate bearer/leg) |
 | Left floor-leg cantilever brackets (×5) | $55 | $75 | $95 | 50×50×3 SHS posts (~115mm) + 40×40×3 SHS arms (2 std to X470, 3 extended to X770) + 128×60×8 foot plates; bolted to bare floor outside the tray, arms 15mm over the spray bar |
 | M10 wedge floor anchors (×20) | $25 | $35 | $45 | 4 per foot plate; sealed penetrations into the container floor |
 | Fabrication (brackets, cantilever frame, install) | $424 | $590 | $750 | 14 std + 4 widened wall brackets, fabricate + fit the right walkway cantilever frame (clamp arms to IBC uprights, bolt cleats + combined plates), fit 5 left floor-leg cantilever brackets + drill/seal floor anchors, install |
-| **Perimeter walkway total** | **$2,053** | **$2,502** | **$2,950** | GRP grating swap: +$720/+$799/+$880 vs galvanized steel |
+| **Perimeter walkway total** | **$2,080** | **$2,529** | **$2,977** | GRP grating swap: +$720/+$799/+$880 vs galvanized steel |
 <!-- END costing:walkway -->
 
 ---
@@ -556,19 +556,19 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Container (WWT) + delivery | $1,800 |
 | Interior conversion (minimal) | $950 |
 | Pinhole plate | $110 |
-| Film plane mechanism (4-corner U-channel + U-joint, incl. wall-seat saddles) | $6,094 |
+| Film plane mechanism (4-corner U-channel + U-joint, incl. wall-seat saddles) | $6,103 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $5,356 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $2,608 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $757 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,416 |
-| Perimeter walkway (4 sections, removable, GRP grating) | $2,053 |
+| Perimeter walkway (4 sections, removable, GRP grating) | $2,080 |
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $939 |
 | Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle) | $1,140 |
 | Chemistry prep shelf (fold-down board + tap trunk extension) | $203 |
 | Cyanotype chemistry + substrate (50 prints) | $1,100 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$24,976** |
+| **Scenario A total** | **~$25,012** |
 <!-- END costing:scenario-a -->
 
 ### Scenario B — Recommended build, regional deployment
@@ -579,12 +579,12 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Container (CW) + delivery | $3,150 |
 | Interior conversion (full) | $1,138 |
 | Pinhole plate | $185 |
-| Film plane mechanism (4-corner U-channel + U-joint + wall-seat saddles) | $6,568 |
+| Film plane mechanism (4-corner U-channel + U-joint + wall-seat saddles) | $6,577 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,632 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $2,806 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $817 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $1,739 |
-| Perimeter walkway (4 sections, removable, GRP grating) | $2,502 |
+| Perimeter walkway (4 sections, removable, GRP grating) | $2,529 |
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,209 |
 | Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle) | $1,418 |
 | Chemistry prep shelf (fold-down board + tap trunk extension) | $203 |
@@ -592,7 +592,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1,200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$31,857** |
+| **Scenario B total (excl. CDL)** | **~$31,893** |
 <!-- END costing:scenario-b -->
 
 ### Scenario C — Full production, own transport, CDL
@@ -600,11 +600,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:scenario-c -->
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $30,957 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $30,993 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$120,457–$150,457** |
+| **Scenario C total** | **~$120,493–$150,493** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

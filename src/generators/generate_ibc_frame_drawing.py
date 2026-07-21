@@ -502,7 +502,7 @@ def sheet1():
 
     leader(ax, (NEAR_COL_R + FRAME_RHS), (1760 + FRAME_RHS / 2),
            (NEAR_COL_R - 70), (1900),
-           "FRONT RETAINING BAR (×4)\n50×20×3 RHS at IBC front\n(25mm gap), Z560 + Z1760 — slide-stop\n+ D-ring lash points",
+           "FRONT RETAINING BAR (×4)\n50×20×3 RHS at IBC front\n(25mm gap), Z560 + Z1760 — slide-stop\n+ weld-on ring lash points",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
@@ -550,7 +550,7 @@ def sheet1():
         f"3. Floor flange feet (×4): 150×150×12mm plate fillet welded to each leg base; 4× M12 anchors into the floor (uplift + lateral restraint). Front feet reach ~25mm under the tray edge.",
         f"4. Front retaining bars (×4, Z560 + Z1760): stop the totes sliding out the front; each bar's wall end drops into a Simpson-style wall joist",
         f"   hanger (×4), through-bolted (4× M12) to a 100×135×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",
-        f"5. D-ring lashing holders on the front bars (1,100 kg WLL); ratchet straps over each stack tie down to them.",
+        f"5. Weld-on lashing rings on the front bars (1,100 kg assembly WLL); ratchet straps over each stack tie down to them.",
         f"6. Surface finish: gray oxide primer + flat black powder coat.",
         f"7. IBC anatomy: US 48\"×40\" caged composite tote (1000L, 1168mm) — {IBC_PALLET_H}mm pallet base + HDPE bottle + galvanized wire cage.",
         f"   v2 layout: Brown/Waste bottom, Blue on top.",

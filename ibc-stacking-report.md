@@ -14,7 +14,7 @@ panel.
 **Design goals:**
 
 - Restrain 4× 1,000 L caged totes in a 2×2 direct-stack (2 columns × 2 tiers)
-- Restrain all totes for road transport with D-ring lashing points
+- Restrain all totes for road transport with weld-on lashing rings
 - Maintain a central plumbing corridor for pipe routing and valve access
 - Enable external fill and drain without opening cargo doors
 - Fit within the <!-- BEGIN fact:container_height_mm -->2,388<!-- END fact:container_height_mm -->mm container ceiling height with adequate clearance
@@ -92,7 +92,7 @@ front feet reach ~25mm under the tray edge). Transport restraint is provided by:
 - **front retaining bars** across each column at the IBC front that stop
   the totes sliding out the open front, their wall ends dropped into Simpson-style joist
   hangers;
-- **D-ring lashing** holders on the front bars, with ratchet straps over each stack;
+- **Weld-on lashing rings** on the front bars, with ratchet straps over each stack;
 - the totes are otherwise trapped by the container side walls (30mm gap) and sealed end wall.
 
 The box carries the **Corridor Plumbing Panel** (pumps) and its **drain-riser backing spine**
@@ -113,7 +113,7 @@ front uprights.
 | Front retaining bars | 4 × 50×20×3 RHS at the IBC front (seated in the 25mm gap to the film rail), wall → upright per column |
 | Wall joist hangers | 4 × Simpson-style U-pocket receiving the front-bar wall ends, **through-bolted (4 × M12 each) to an exterior backing plate** |
 | Exterior backing plates | 4 × 100 × 135 × 8mm steel, on the **outside** of the container side walls (hex heads outside) — spread the totes' transport thrust into the thin corrugated wall so the bolts can't pull through |
-| D-ring lashing | holders on the front bars, 1,100 kg WLL |
+| Weld-on lashing rings | on the front bars; 1,100 kg assembly WLL |
 | Panel mount | the box carries the Corridor (pump) Plumbing Panel + drain-riser spine on the back uprights, and the right-walkway cantilever arms on the front uprights |
 | Frame weight | ~90 kg (4 uprights + rings + 4 feet + front bars + hangers + exterior plates + rear-panel brackets — see [weight report](weight-distribution-report.md)) |
 | Joints | Welded (fillet weld throughout) |
@@ -132,7 +132,7 @@ rated for a full upper tote.
 
 The frame carries **no vertical service load** (the totes stack on themselves), so there
 is no platform-beam bending case. The governing check is **transport restraint**: the
-front retaining bars + D-ring lashing must resist the totes' inertia under
+front retaining bars + weld-on lashing rings must resist the totes' inertia under
 braking/cornering (loaded mass 5,044 kg, worst-case CG at Z=1,345mm — see the
 [weight-distribution report](weight-distribution-report.md)).
 
@@ -141,7 +141,7 @@ braking/cornering (loaded mass 5,044 kg, worst-case CG at Z=1,345mm — see the
 - **Wall joist hangers** receive the bar wall ends and are **through-bolted (4 × M12) to a
   100×135×8mm exterior backing plate** on the outside of each side wall — the plate spreads
   the bolt load so the thin corrugated wall cannot pull through under the totes' thrust.
-- **D-ring lashing** (1,100 kg WLL each) over each stack provides vertical tie-down and
+- **Weld-on lashing rings** (1,100 kg assembly WLL) over each stack provide vertical tie-down and
   supplements lateral restraint; the totes are otherwise wall-trapped.
 - **Floor feet** (150×150×12, 4 × M12 each) anchor the uprights against uplift and transfer
   the lateral loads into the slab.
@@ -150,15 +150,15 @@ braking/cornering (loaded mass 5,044 kg, worst-case CG at Z=1,345mm — see the
 
 ## 4. Securing for Transport
 
-### 4.1 D-Ring Lashing Points
+### 4.1 Weld-On Lashing Rings
 
 | Parameter | Value |
 |-----------|-------|
 | Quantity | 8 total (4 per tier) |
-| Type | 25mm welded D-ring on 6mm mounting plate |
-| Working load limit | 1,100 kg per ring |
-| Mounting | Fillet-welded to the front retaining bars |
-| Supplier | McMaster-Carr #3641T29 |
+| Type | 1½" (38mm) ID weld-on tie-down ring, ½" thick, zinc-plated steel |
+| Working load limit | 6,600 lb (2,994 kg) ring — assembly strap-limited to 1,100 kg |
+| Mounting | Fillet-welded directly to the front retaining bars (integrated weld base — no separate plate) |
+| Supplier | McMaster-Carr #3028T31 |
 
 ### 4.2 Ratchet Straps
 
@@ -166,7 +166,7 @@ braking/cornering (loaded mass 5,044 kg, worst-case CG at Z=1,345mm — see the
 |-----------|-------|
 | Type | 25mm ratchet strap |
 | Working load limit | 1,100 kg |
-| Routing | D-ring to D-ring, over IBC top, 1 strap per tier per side |
+| Routing | ring to ring, over IBC top, 1 strap per tier per side |
 | Total straps | 4 (2 per tier) |
 | Pre-transport | Tighten all straps; re-check tension after 50 km |
 
@@ -174,7 +174,7 @@ braking/cornering (loaded mass 5,044 kg, worst-case CG at Z=1,345mm — see the
 
 There is no anti-rotation lip. The direct-stacked totes are trapped
 laterally by the container side walls (30mm gap each side) and the sealed end wall;
-the front retaining bars + D-ring ratchet straps restrain the open front and
+the front retaining bars + lashing-ring ratchet straps restrain the open front and
 provide vertical tie-down. Together these restrain both tiers in all six DOF.
 
 ![TBS-001 IBC Stacking — Sheet 2: Fastening Details](assets/ibc-stacking-sheet2.png)
@@ -259,7 +259,7 @@ relevant sections above; the full set is collected here and in [Engineering Diag
 
 ### IBC Support Frame Fabrication (3 sheets)
 
-**Sheet 1 — Front elevation: deep-box uprights (front pair, back pair 450mm behind), floor feet, front retaining bars + wall hangers + D-ring holders, direct-stack junction**
+**Sheet 1 — Front elevation: deep-box uprights (front pair, back pair 450mm behind), floor feet, front retaining bars + wall hangers + weld-on lashing rings, direct-stack junction**
 ![TBS-001 IBC Frame — Sheet 1](assets/ibc-frame-sheet1.png)
 
 **Sheet 2 — Side elevation: deep 4-leg box (front + back uprights + top/bottom rings) + front bars (end-on) + walkway cantilever arm**
@@ -285,13 +285,13 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | Deep 4-leg box uprights (front + back pair) + top/bottom rings + front retaining bars + panel-mount rail (~19.5 m) | 4 ea | Metal Supermarkets | $120–$180 |
 | 12mm steel plate, 150 × 150 cut | Deep-box upright floor flange feet (one per leg; front feet reach under the tray) | 4 ea | Metal Supermarkets | $20–$40 |
 | 4mm folded plate | Simpson-style wall joist hangers | 4 ea | Local fab | $30–$50 |
-| 25mm welded D-ring (3641T29) | Lashing holders on the front bars (4 per tier × 2 tiers), 6mm mount plates | 8 ea | McMaster-Carr | $40–$70 |
+| [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | Zinc-plated steel weld-on tie-down rings — 1½" (38mm) inside × ½" thick, 6,600 lb WLL; fillet-welded to the front retaining bars (4 per tier × 2 tiers). Integrated weld base — no separate mount plate. Ring far exceeds the 25mm-strap-limited 1,100 kg assembly WLL. | 8 ea | McMaster-Carr | $40 |
 | 25mm ratchet strap, 1,100 kg WLL | Transport securing, over each stack | 4 ea | Amazon | $30–$50 |
 | M12 floor anchor (wedge/sleeve, container floor) | 4 deep-box flange feet × 4 anchors each | 16 ea | McMaster-Carr | $30–$60 |
 | M12 × 40 bolt, Grade 8.8 | Wall hangers (2 each) + front-bar cleats | 12 ea | McMaster-Carr | $12–$22 |
 | Welding / fabrication (frame assembly) | ~14–20 hrs labor (deep 4-leg box — the ring/back-upright welds sit at the upper end of the range) | 1 lot | Local fab | $688–$1,018 |
 | Primer + paint | Anti-corrosion coating | 1 lot | Hardware store | $30–$50 |
-| **Ibc-Frame total** | | | | **$1,000–$1,540** |
+| **Ibc-Frame total** | | | | **$1,000–$1,510** |
 <!-- END parts:ibc-frame -->
 
 ### 9.2 IBC Totes
@@ -311,7 +311,7 @@ the stacking structure and the totes it restrains.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,000<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,540<!-- END costing:ibc-frame-high --> |
+| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,000<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,510<!-- END costing:ibc-frame-high --> |
 | IBC totes (4×) | $300 | $900 |
 | **Total** | **$1,280** | **$2,405** |
 
@@ -324,8 +324,8 @@ the stacking structure and the totes it restrains.
 | Every use | Visually inspect ratchet strap tension before transport |
 | Every 10 prints | Inspect IBC valve seals (DN50 butterfly) for drips; tighten or replace O-ring |
 | Every 10 prints | Check external camlock fittings for cross-threading; clean dust caps |
-| Every 6 months | Inspect D-ring welds for cracking; load-test straps |
-| Every 6 months | Inspect D-ring holders + ratchet straps for wear; re-tension straps |
+| Every 6 months | Inspect lashing-ring welds for cracking; load-test straps |
+| Every 6 months | Inspect lashing rings + ratchet straps for wear; re-tension straps |
 | Annually | Inspect frame welds (all joints) for fatigue cracking |
 | Annually | Touch up paint on frame where chipped or rusted |
 | Annually | Inspect front-bar/wall-hanger bolts and upright floor-anchor bolts for loosening; re-torque to spec |
@@ -340,7 +340,7 @@ the stacking structure and the totes it restrains.
 | Item | Source |
 |------|--------|
 | Schütz Ecobulk MX 1000 L IBC | [Schütz product catalog](https://www.schuetz-packaging.net/schuetz-usa/en/ibcs/ecobulk/ecobulk-mx/) — US 48×40 composite tote, DN50 valve, UN31HA1/Y (all four totes are this size; "600 L"/"640 L" are fill levels, not tote sizes) |
-| D-ring lashing point | [McMaster-Carr #3641T29](https://www.mcmaster.com/3641T29) — 25mm, 1,100 kg WLL |
+| Weld-on lashing ring | [McMaster-Carr #3028T31](https://www.mcmaster.com/3028t31/) — 1½" ID, ½" thick, 6,600 lb WLL |
 | Plumbing fittings, pipe, valves, camlock, pumps | Specified and sourced in the [Water System Report](water-system-report.md) §11 and [Plumbing Report](plumbing-report.md) §11 |
 | Water system architecture | [Water System Report](water-system-report.md) §3 |
 | IBC layout and stacking | [Equipment Layout Report](equipment-layout-report.md) §5 |

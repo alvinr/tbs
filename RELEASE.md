@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **IBC transport lashing → weld-on tie-down rings.** Sourced the restraint lashing points to
+  [McMaster 3028T31](https://www.mcmaster.com/3028t31/) — a 1½" ID × ½" thick, 6,600 lb WLL,
+  zinc-plated-steel **weld-on** ring — replacing the plain-D-ring + separate-mounting-plate approach
+  with a single integrated weld-on part (fillet-welded straight to the front retaining bars, no
+  plate, no retainer). The 6,600 lb ring far exceeds the 25mm-strap-limited 1,100 kg assembly WLL,
+  so the full spec holds with no downrating. Report §4.1 + Sheet 1 label + BOM + the IBC frame cost
+  band updated (−$15/−$30); registry `ibcf-dring` now carries a real SKU + URL.
+
 - **Muslin clip jaw pad — new Sheet 6 attachment detail + material sourced.** Added Panel D to
   the film-plane clamp sheet, dimensioning how the 60A neoprene pad mounts (PSA-bonded flat to the
   jaw plate) and its footprint — the detail the old sheet never showed, so the pad quantity couldn't

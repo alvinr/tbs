@@ -261,10 +261,11 @@ _Alvin 2026-07-20: `film-plane.skp` (the older full-plane "Option A" model) is s
 
 **Parked working-tree files (2026-07-20):**
 - `src/models/film-plane.rb` — **RESOLVED:** deleted with the model (the stale regen went with it).
-- `overrides/partials/copyright.html` (deleted — **UNRELATED** to the film-plane work). The MkDocs Material
-  footer copyright partial, picked up by `custom_dir` convention (not referenced by name); deleting it
-  reverts the site footer to Material's stock copyright. **STILL OPEN — DECIDE:** intended removal (commit it)
-  or stray deletion (`git checkout` to restore). Needs Alvin's call.
+- `overrides/partials/copyright.html` → `src/overrides/partials/copyright.html` — **RESOLVED 2026-07-20:**
+  it was a half-finished move (file copied to `src/overrides/` + deleted from root, but `custom_dir` never
+  updated — would have broken the footer version stamp). Finished the move: `git mv` to `src/overrides/`,
+  updated `custom_dir: overrides` → `src/overrides` in **both** `mkdocs.yml` and `setup_docs.py`; verified a
+  build renders the "Version v0.3" footer from the new path.
 
 ## Cost / data modeling
 - [ ] **Reconcile 304 vs 316 stainless steel usage — whole-system function + cost — OPEN.** Audit every SS

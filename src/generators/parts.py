@@ -588,8 +588,8 @@ PARTS: list[Part] = [
     #   adopting nyloc locking for the M12 through-bolts; ~+$70 over the 110 bolts. https://www.mcmaster.com/94645A230/
     Part("saddle-m8-thumb", "M8×25mm knurled thumbscrew DIN 464", "fasteners-hardware",
          "film", 12, "ea", 3, 3, "Amazon", "Maedler", spec="ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare"),
-    Part("bolt-m8-fixing", "M8 hex bolt, SS — ~M8×30 (pending 1262T21 web thickness)", "fasteners-hardware",
-         "film", 8, "ea", 1.88, 1.88, "McMaster-Carr", "Amazon", spec="ICP-14: right depth-rail end flange → wall seat hold-down (does NOT cross the wall — the M12 ICP-12 does the sandwich). Grip = 1262T21 channel base web + 10mm seat ≈ 13mm → ~M8×30, pending the 1262T21 web thickness (McMaster PDF). 2/saddle ×2 TR + spare."),
+    Part("bolt-m8-fixing", "M8×25 hex bolt, SS — right-rail end fixing (ICP-14)", "fasteners-hardware",
+         "film", 8, "ea", 1.88, 1.88, "McMaster-Carr", "Amazon", spec="ICP-14: right depth-rail end flange → wall seat hold-down (does NOT cross the wall). Grip = 3/16\" (4.76mm) 1262T21 channel base + 10mm seat ≈ 15mm → M8×25 (short → fully threaded). 2/saddle ×2 TR + spare. Needs an M8×25 SS SKU at re-price."),
     Part("nut-m8-plain", "M8×1.25 hex nut, plain SS", "fasteners-hardware",
          "film", 8, "ea", 7.53 / 100, 7.53 / 100, "McMaster-Carr", part_no="90591A161", url="https://www.mcmaster.com/90591A161/", spec="Plain hex nut — M8 right-rail fixing. Pitch M8×1.25 (coarse, baseline — confirm vs SKU PDF, must match the bolt). $7.53/pack of 100."),
     # ═══ clamp (film-clamp-mechanism-report §4) — split out of FILM; itemized, sums to the FILM

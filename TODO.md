@@ -296,6 +296,12 @@ _Alvin 2026-07-20: `film-plane.skp` (the older full-plane "Option A" model) is s
   system values are now policed.** Method for any future find: `grep facts.yml constant:<NAME>` → tight alias → verify.
 
 ## Docs / gallery
+- [ ] **Register the film-plane joint-study generators in `dependencies.yml`.** `generate_corner_gimbal.py`
+  (→ `film-corner-gimbal.png`), `generate_joint_options.py` (→ `film-joint-options.png`), and
+  `generate_joint_study.py` (→ `film-joint-study-gimbal.png` + `film-joint-study-ujoint.png`) are NOT in
+  `dependencies.yml`, so the missing-cascade sweep can't tell when they go stale (per CLAUDE.md, every
+  generator should have an entry). Surfaced 2026-07-20 while adding these 4 to `all-diagrams.md` §7 (gallery
+  gate now green). Confirm each script's exact output set before adding, then re-run `lint.py`.
 - [x] **Gallery-only diagrams — DONE (won't-do).** Gallery-only PNGs are fine without a dedicated owning report — they live in the `all-diagrams.md` visual index. That gallery is now **excluded from the brochure PDF** (`BROCHURE_EXCLUDE`) so the 100+ images don't bloat it.
 - [x] **`tilt-swing-board-analysis.md` §4 — DONE 2026-07-07 (point-to-gallery).** Chose point-to-gallery over
   merge: distortion-renders §3 (the dedicated renders gallery) owns the 9 C0–C8 images; §4 renamed "Combined

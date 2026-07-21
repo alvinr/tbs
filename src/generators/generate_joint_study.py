@@ -14,7 +14,7 @@ import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, Circle, FancyArrowPatch, Arc, Polygon
+from matplotlib.patches import Rectangle, Circle, Arc, Polygon
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DIAGRAMS_DIR = os.path.normpath(os.path.join(HERE, "..", "..", "diagrams"))

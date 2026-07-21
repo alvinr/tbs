@@ -3,7 +3,7 @@
 # Chemistry Shopping List — Cyanotype
 ## Giant Pinhole Camera: Raw Material Procurement (chosen process)
 
-**Image plane per print:** <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft active film zone; container interior 5893 × 2,388mm)  
+**Image plane per print:** <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~<!-- BEGIN fact:image_area_sqft -->101<!-- END fact:image_area_sqft --> sq ft active film zone; container interior 5893 × 2,388mm)  
 **Run size:** 50 prints  
 **Total substrate area:** ~5,800 sq ft  
 **Pricing basis:** April 2026. Prices marked † are confirmed from supplier listings. All others are close estimates from current market data and should be verified before ordering. All prices USD unless noted.
@@ -18,12 +18,12 @@ Cyanotype is the chosen process. For the cost of the alternatives considered (gu
 
 ## Shared Item: Substrate Fabric
 
-All iron/silver processes use unbleached cotton muslin as the substrate. 50 prints at ~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft each, plus 15% waste = ~6,670 sq ft total; at 60" (5 ft) wide fabric that is 6,670 ÷ 5 = **~1,334 linear feet ≈ 445 linear yards**.
+All iron/silver processes use unbleached cotton muslin as the substrate. 50 prints at ~<!-- BEGIN fact:image_area_sqft -->101<!-- END fact:image_area_sqft --> sq ft each, plus 15% waste = ~5,980 sq ft total; at 60" (5 ft) wide fabric that is 5,980 ÷ 5 = **~1,196 linear feet ≈ 399 linear yards**.
 
 | Item | Qty | Supplier | Unit | Units needed | Unit price | Total |
 |---|---|---|---|---|---|---|
-| Unbleached cotton muslin, 60" wide | ~445 yd | **Fabric Direct** | 150-yd roll | 3 rolls | ~$100/roll | ~$300 |
-| OR by the yard | ~445 yd | **Fabric Wholesale Direct** | per yard | 445 | ~$0.80–$1.20/yd | ~$360–$540 |
+| Unbleached cotton muslin, 60" wide | ~399 yd | **Fabric Direct** | 150-yd roll | 3 rolls | ~$100/roll | ~$300 |
+| OR by the yard | ~399 yd | **Fabric Wholesale Direct** | per yard | 399 | ~$0.80–$1.20/yd | ~$320–$480 |
 
 **Fabric Direct** — 150-yard rolls of 60" unbleached muslin, medium weight  
 URL: [fabricdirect.com](https://www.fabricdirect.com/shop/craft-fabric/broadcloth-and-muslin-fabric/essence-60-medium-weight-muslin-fabric-unbleached-150-yard-roll/)
@@ -65,13 +65,13 @@ The **per-print masses are under trial** — two wet-on-wet coats at a diluted W
 <!-- BEGIN parts:chemistry -->
 | Reagent | Supplier | Lean ⅓-Ware | Standard ½-Ware (default) | Rich full-Ware |
 |---|---|---|---|---|
-| Ammonium iron(III) oxalate (AmFe) | Photographers' Formulary | 13 kg / $780 | 19.5 kg / $1,170 | 39 kg / $2,340 |
-| Potassium ferricyanide | Bostick & Sullivan | 4.3 kg / $104 | 6.5 kg / $158 | 13 kg / $316 |
+| Ammonium iron(III) oxalate (AmFe) | Photographers' Formulary | 11.4 kg / $684 | 17.1 kg / $1,026 | 34.2 kg / $2,052 |
+| Potassium ferricyanide | Bostick & Sullivan | 3.8 kg / $92 | 5.7 kg / $138 | 11.4 kg / $277 |
 | Ammonium dichromate | Photographers' Formulary | $25 | $25 | $25 |
-| **Chemistry subtotal** | | **$909** | **$1,353** | **$2,681** |
+| **Chemistry subtotal** | | **$801** | **$1,189** | **$2,354** |
 | Unbleached muslin (substrate) | Fabric Direct | $300 | $300 | $300 |
-| **Total (50 prints)** | | **$1,209** | **$1,653** | **$2,981** |
-| **Per print** | | **$24** | **$33** | **$60** |
+| **Total (50 prints)** | | **$1,101** | **$1,489** | **$2,654** |
+| **Per print** | | **$22** | **$30** | **$53** |
 <!-- END parts:chemistry -->
 
 *No fixer required. Development in plain cold water. No darkroom required for processing.*

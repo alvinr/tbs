@@ -13,24 +13,24 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $110 | $265 |
-| 4. Film plane mechanism (4-corner Option A, manual, incl. wall-seat saddles + cross-slides) | $3,317 | $3,805 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,063 | $7,039 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,356 | $7,929 |
 | 6. Electrical — power, circuits, wiring | $2,608 | $3,003 |
-| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,405 | $2,130 |
-| 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $855 | $1,430 |
+| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,416 | $2,061 |
+| 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $939 | $1,479 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,000 | $2,975 |
 | 7c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,140 | $1,695 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $203 | $203 |
 | 8. Cooling & ventilation | $757 | $907 |
-| 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,210 | $2,980 |
+| 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$22,681** | **~$33,652** |
+| **TOTAL (base build + 50-print run)** | **~$25,412** | **~$36,536** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
-*Line 9 (printmaking chemistry) is the **Mike Ware AmFe** recipe with the corrected ~$300 substrate, re-summed into the TOTAL: **Low = Lean ⅓-Ware (~$1,210), High = Rich full-Ware (~$2,980)**, working default Standard ½-Ware (~$1,650). The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md); the TOTAL spans the Lean–Rich range, so it shifts within ±~$1,330 of the §9 line once a tier is locked.*
+*Line 9 (printmaking chemistry) is the **Mike Ware AmFe** recipe with the corrected ~$300 substrate, re-summed into the TOTAL: **Low = Lean ⅓-Ware (~$1,120), High = Rich full-Ware (~$2,700)**, working default Standard ½-Ware (~$1,520). The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md); the TOTAL spans the Lean–Rich range, so it shifts within ±~$1,330 of the §9 line once a tier is locked.*
 
 ---
 
@@ -68,43 +68,35 @@ indicative low–high estimates — get quotes before ordering.
 | 3mm aluminum plate (1220 × 2,440mm) | 2 ea | Online Metals | panel | $360–$460 |
 | 6061-T6 AL plate 3/16" (5mm) | 1 ea | Online Metals | spray | $16–$28 |
 | 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | 1 ea | Online Metals | spray | $6 |
-| Aluminum angle 2"×2"×3/16" | 10 ea | Metal Supermarkets | film | $220 |
+| Aluminum angle 2"×2"×3/16" (6061, anodized) | 10 ea | Metal Supermarkets | film | $220 |
 | Aluminum face plate 340×240×3mm (flush power panel) | 1 ea | Online Metals | electrical | $18 |
 | Aluminum U-channel (per meter) | 40 m | Online Metals | panel | $120–$200 |
-| Corner bracket L-plate | 4 ea | Metal Supermarkets | film | $80 |
-| Cross-slide intermediate plate (Option A) | 4 ea | Metal Supermarkets | film | $60 |
 | Disc retaining ring (Al 6061-T6, M52×0.75) | 1 ea | Local fab | optics | $15–$25 |
 | Telescoping aluminum pool pole, 4–8 ft | 1 ea | Amazon | spray | $15 |
-| **aluminum subtotal** | | | | **$910–$1,112** |
+| **aluminum subtotal** | | | | **$770–$972** |
 
 ### bearings-motion
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
+| Acetal 4-wheel skate — Ø32 load + Ø20 keeper rollers, Ø10 316 axles + carriage plate | 4 set | McMaster-Carr | film | $220–$360 |
 | Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore) | 1 1 ft rod | McMaster-Carr | spray | $11 |
-| Acme leadscrew ¾"-6 | 4 ea | Roton Products | film | $380 |
-| Acme nut bronze ¾"-6 | 4 ea | Roton Products | film | $48 |
-| Cross-slide carriage HGH15CA (Option A) | 8 ea | Automation Overstock | film | $96 |
-| Cross-slide rail HGR15 (Option A) | 8 ea | Automation Overstock | film | $200 |
 | Flanged sleeve (journal) bearing, Ø90 bore | 2 ea | McMaster-Carr | swing | $60–$110 |
-| Handwheel 8" dia | 4 ea | Grainger | film | $140 |
-| Linear guide rail HGR20 | 4 ea | Automation Overstock | film | $180 |
-| Locking collar SS316 | 4 ea | McMaster-Carr | film | $48 |
-| Rail carriage HGH20CA | 8 ea | Automation Overstock | film | $144 |
-| Rod-end spherical bearing | 4 ea | McMaster-Carr | film | $88 |
-| SKF 6215-2RS1 sealed bearing | 2 ea | Bearing World | lightlock | $110–$190 |
+| McMaster 4040N12 304 shaft support | 4 ea | McMaster-Carr | film | $232 |
+| Ruland USKC12-6-6-SS U-joint (keyway+clamp, 303 SS) | 4 ea | Ruland | film | $1,104 |
+| SKF 6215-2RS1 sealed bearing | 2 ea | Bearings Direct | lightlock | $121 |
 | Turntable thrust bearing, 12″ (Ø305) 1000 lb | 1 ea | VXB | swing | $40–$60 |
 | Ø20mm ball joint, zinc socket, M12 stud | 1 ea | Amazon | spray | $12 |
-| **bearings-motion subtotal** | | | | **$1,557–$1,707** |
+| **bearings-motion subtotal** | | | | **$1,800–$2,010** |
 
 ### chemistry-reagents
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | Ammonium dichromate | 1 run | Photographers' Formulary | chemistry | $25 |
-| Ammonium iron(III) oxalate (AmFe) | 19.5 kg | Photographers' Formulary | chemistry | $1,170 |
-| Potassium ferricyanide | 6.5 kg | Bostick & Sullivan | chemistry | $158 |
-| **chemistry-reagents subtotal** | | | | **$1,353** |
+| Ammonium iron(III) oxalate (AmFe) | 17.1 kg | Photographers' Formulary | chemistry | $1,026 |
+| Potassium ferricyanide | 5.7 kg | Bostick & Sullivan | chemistry | $138 |
+| **chemistry-reagents subtotal** | | | | **$1,189** |
 
 ### container
 
@@ -210,7 +202,7 @@ indicative low–high estimates — get quotes before ordering.
 | 25mm welded D-ring | 8 ea | McMaster-Carr | ibc-frame | $40–$70 |
 | 316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black | 1 ea | McMaster-Carr | panel | $20–$35 |
 | Axle saddle clamps ×8 (304 SS flat-bar stock) | 1 2 ft bar | McMaster-Carr | spray | $10 |
-| Cam-lever spring clamp | 92 ea | McMaster-Carr | clamp | $276–$736 |
+| Cam-lever rail brake (skate lock) | 12 ea | McMaster-Carr | film | $96–$180 |
 | Continuous (piano) hinge, 600 mm | 1 ea | McMaster-Carr | shelf | $20 |
 | Corridor panel mount hardware (brackets + fasteners) | 1 lot | Home Depot | water | $25–$50 |
 | Cushioned pipe clip | 16 ea | Amazon | water | $16–$32 |
@@ -223,9 +215,9 @@ indicative low–high estimates — get quotes before ordering.
 | M12 × 40 bolt, Grade 8.8 | 12 ea | McMaster-Carr | ibc-frame | $12–$22 |
 | M12×80mm through-bolt kit | 58 ea | McMaster-Carr | walkway | $87–$145 |
 | M12×90mm hex through-bolt + nut + washers, SS | 28 ea | McMaster-Carr | film | $70 |
-| M5 SS Nylock nut | 184 ea | McMaster-Carr | clamp | $15 |
+| M5 SS Nylock nut | 176 ea | McMaster-Carr | clamp | $14 |
 | M5×16 mm CSK screws | 8 ea | McMaster-Carr | shelf | $4 |
-| M5×16 SS socket head bolt | 184 ea | McMaster-Carr | clamp | $46 |
+| M5×16 SS countersunk screw | 176 ea | McMaster-Carr | clamp | $44 |
 | M6 bolt+nut+washer set, SS (panel mount) | 4 set | McMaster-Carr | electrical | $5 |
 | M6 SS hex bolt + nut | 1 ea | McMaster-Carr | spray | $1 |
 | M6 SS hex bolts + flange nuts | 12 ea | McMaster-Carr | tray | $12 |
@@ -234,8 +226,8 @@ indicative low–high estimates — get quotes before ordering.
 | M8 wall bolts + washers/nuts | 12 ea | McMaster-Carr | shelf | $12 |
 | M8×25mm knurled thumbscrew DIN 464 | 12 ea | Amazon | film | $36 |
 | Misc. conversion hardware | 1 lot | Home Depot | interior | $80–$130 |
+| Muslin spring clip | 88 ea | McMaster-Carr | clamp | $264–$704 |
 | Nylon zip ties, 200mm | 6 ea | Amazon | spray | $1 |
-| Pivot pin SS316 | 4 ea | McMaster-Carr | film | $32 |
 | Ratchet straps, 25mm | 2 ea | Home Depot | ventilation | $12 |
 | Self-tapping SS screws (8-pack) | 4 ea | McMaster-Carr | spray | $5 |
 | Shurflo pump mounting bracket | 5 ea | Amazon | water | $50 |
@@ -245,7 +237,7 @@ indicative low–high estimates — get quotes before ordering.
 | Stainless fasteners + nylon isolation washers | 1 lot | McMaster-Carr | lightlock | $30–$50 |
 | Top + bottom wall stays + 4-bolt anchor plates | 2 set | McMaster-Carr | swing | $90–$160 |
 | Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
-| **fasteners-hardware subtotal** | | | | **$1,367–$2,319** |
+| **fasteners-hardware subtotal** | | | | **$1,416–$2,432** |
 
 ### plastics-sheet
 
@@ -314,8 +306,10 @@ indicative low–high estimates — get quotes before ordering.
 | Light-sealing materials (interior conversion) | 1 lot | McMaster-Carr | interior | $150–$210 |
 | Neoprene gasket 340×240×3mm (panel weatherseal) | 1 ea | McMaster-Carr | electrical | $6 |
 | Neoprene strip 60A | 1 roll | McMaster-Carr | clamp | $15 |
+| Ruland UBOOT12/19-NI-KIT nitrile boot | 4 ea | Ruland | film | $88–$116 |
 | Silicone gasket strip | 1 ea | McMaster-Carr | tray | $20 |
-| **seals-gaskets subtotal** | | | | **$399–$521** |
+| Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom) | 1 lot | McMaster-Carr | door | $129 |
+| **seals-gaskets subtotal** | | | | **$616–$766** |
 
 ### stainless-sheet
 
@@ -331,8 +325,10 @@ indicative low–high estimates — get quotes before ordering.
 |------|-----|----------|---------|-----------|
 | 12mm steel plate, 150 × 150 cut | 4 ea | Metal Supermarkets | ibc-frame | $20–$40 |
 | 25×25×3 mm steel SHS | 1 lot | Online Metals | shelf | $30 |
+| 3/8" 304/304L SS rod — U-joint stub shafts (1× 3 ft) | 1 lot | McMaster-Carr | film | $13 |
 | 304 SS RHS 40×25×3mm, 8 ft * | 2 ea | Online Metals | spray | $96–$144 |
-| 3mm steel plate/angle (~110mm × ~4 m) | 1 lot | Metal Supermarkets | door | $45–$80 |
+| 304 U-channel depth rail 3×1½" (76×38mm) | 6 ea | McMaster-Carr | film | $2,172 |
+| 316 flat-bar Z (tilt) + X (swing) cross-slides + UHMW pad + gib | 4 set | Metal Supermarkets | film | $180–$380 |
 | 4mm folded plate | 4 ea | Local fab | ibc-frame | $30–$50 |
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | 4 ea | Metal Supermarkets | ibc-frame | $120–$180 |
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | 3 ea | Metal Supermarkets | door | $90–$120 |
@@ -345,6 +341,7 @@ indicative low–high estimates — get quotes before ordering.
 | Cantilever bracket — widened (near) | 4 ea | Local fab | walkway | $160–$280 |
 | Combined corner plate (right corners) | 2 ea | Local fab | walkway | $50–$80 |
 | Corner gusset plate, 3 mm | 4 ea | Steel offcut | shelf | $5 |
+| Corner plate 304 SS (U-joint mount) | 4 ea | Metal Supermarkets | film | $152–$208 |
 | Drop-in rail saddles + tapered dowels | 4 ea | Local fab | swing | $80–$130 |
 | Drum support cage, 40 × 40 × 3mm SHS | 1 lot | Local fab | swing | $70–$120 |
 | Floor-leg cantilever bracket (left walkway, ×5) | 5 ea | Local fab | walkway | $55–$95 |
@@ -358,7 +355,7 @@ indicative low–high estimates — get quotes before ordering.
 | Wall cleat (left corners) | 2 ea | Local fab | walkway | $20–$35 |
 | Wall mounting cleat + anchors | 1 lot | Local fab | shelf | $18 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$2,288–$3,391** |
+| **steel-structural subtotal** | | | | **$4,760–$6,084** |
 
 ### substrate-fabric
 
@@ -417,27 +414,26 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
+| McMaster-Carr | 47 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $4,743–$5,886 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 17 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,961–$3,181 |
-| McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, water-equipment | $2,064–$3,003 |
+| Metal Supermarkets | 11 | aluminum, steel-structural | $1,448–$2,006 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
-| Metal Supermarkets | 12 | aluminum, steel-structural | $1,301–$1,638 |
 | Amazon | 58 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,208–$1,530 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
-| Photographers' Formulary | 2 | chemistry-reagents | $1,195 |
+| Ruland | 2 | bearings-motion, seals-gaskets | $1,192–$1,220 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | Home Depot | 23 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $876–$1,146 |
+| Photographers' Formulary | 2 | chemistry-reagents | $1,051 |
 | Renogy | 3 | electrical-power | $833–$975 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
 | Barn Door Ag | 7 | plumbing-fittings | $414–$652 |
-| Automation Overstock | 4 | bearings-motion | $620 |
 | Container Exchanger | 1 | water-equipment | $320–$600 |
 | Grimco | 1 | plastics-sheet | $510 |
 | Fresh Water Systems | 5 | water-equipment | $400–$445 |
 | West Marine | 2 | electrical-distribution | $313–$438 |
-| Roton Products | 2 | bearings-motion | $428 |
 | altE Store | 2 | electrical-power | $345–$410 |
 | marine plywood supplier | 2 | timber-ply | $190–$330 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
@@ -445,11 +441,10 @@ indicative low–high estimates — get quotes before ordering.
 | Hessaire | 1 | ducting-ventilation | $185–$230 |
 | Cable Master | 1 | electrical-distribution | $199–$211 |
 | Waytek Wire | 7 | electrical-distribution | $208 |
-| Bearing World | 1 | bearings-motion | $110–$190 |
 | AllFilters | 1 | water-equipment | $114–$186 |
-| Bostick & Sullivan | 1 | chemistry-reagents | $158 |
 | Lenox Laser | 1 | stainless-sheet | $50–$150 |
-| Grainger | 1 | bearings-motion | $140 |
+| Bostick & Sullivan | 1 | chemistry-reagents | $138 |
+| Bearings Direct | 1 | bearings-motion | $121 |
 | Ferguson | 4 | plumbing-fittings | $74–$120 |
 | JME Sales | 1 | plumbing-fittings | $64–$120 |
 | Apera Instruments | 1 | tools-safety | $100–$110 |
@@ -476,18 +471,18 @@ suppliers, and the muslin substrate — is in the Procurement BOM above (`chemis
 **recipe + per-print basis** only.*
 
 **Mike Ware New Cyanotype** — 3:1 ammonium iron(III) oxalate (AmFe) : potassium ferricyanide by weight
-+ ammonium dichromate for contrast, applied as **two wet-on-wet coats** over the 10.74 m² active plane.
++ ammonium dichromate for contrast, applied as **two wet-on-wet coats** over the 9.42 m² active plane.
 
 | Reagent | Per print (Standard ½-Ware) | × 50 prints |
 |---------|-----------------------------|-------------|
-| Ammonium iron(III) oxalate (AmFe) | <!-- BEGIN costing:om-amfe-g-standard -->390<!-- END costing:om-amfe-g-standard -->g | <!-- BEGIN costing:om-amfe-kg-standard -->19.5<!-- END costing:om-amfe-kg-standard --> kg |
+| Ammonium iron(III) oxalate (AmFe) | <!-- BEGIN costing:om-amfe-g-standard -->342<!-- END costing:om-amfe-g-standard -->g | <!-- BEGIN costing:om-amfe-kg-standard -->17.1<!-- END costing:om-amfe-kg-standard --> kg |
 | Potassium ferricyanide (3:1) | 130g | 6.5 kg |
 | Ammonium dichromate (contrast, 0.1–0.4%) | ~1–4g | ~0.2 kg |
 | Distilled water | ~2.6 L | ~130 L |
 
 Standard ½-Ware is the working default; the leanest/richest viable strength — and the final order — is
-pinned by the [Sensitizer Trials](sensitizer-trials.md). **Run cost ~$1,650 (Standard), range ~$1,210
-(Lean) – ~$2,980 (Rich)** per 50-print run (~$24–60/print), incl. ~$300 muslin substrate — ~445 linear
+pinned by the [Sensitizer Trials](sensitizer-trials.md). **Run cost ~$1,520 (Standard), range ~$1,120
+(Lean) – ~$2,700 (Rich)** per 50-print run (~$22–54/print), incl. ~$300 muslin substrate — ~399 linear
 yards of 60" unbleached cotton (pre-wash twice in hot water, no detergent, to remove sizing). The
 summary table maps Low = Lean, High = Rich.
 
@@ -547,7 +542,7 @@ above — this directory adds where-to-buy detail and omits alternative/optional
 | **[Metal Supermarkets](https://www.metalsupermarkets.com)** | Steel, aluminum, cut-to-length | Anaheim · Van Nuys · San Diego |
 | **[Grimco](https://www.grimco.com)** | Dibond ACM panels (sign industry) | City of Industry CA |
 | **Automation Overstock** | Linear guides, carriages, surplus motion components | Gardena CA (walk-in) |
-| **[Roton Products](https://www.roton.com)** | Acme leadscrews and nuts, cut to length | Ships from LA area |
+| **[Ruland](https://www.ruland.com)** | USKC12-6-6-SS universal joints + nitrile boots | Ships nationally |
 | **[Renogy](https://www.renogy.com)** | Solar panels, LiFePO4 battery, tilt mount | Online |
 | **[altE Store](https://www.altestore.com)** | Victron MPPT, Victron chargers, off-grid power | Online |
 | **[Powerwerx](https://powerwerx.com)** | Anderson Powerpole connectors and tools | Online |

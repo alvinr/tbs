@@ -52,17 +52,33 @@
 
 ## 7. Film Plane Mechanism
 
-![TBS-001 Film Plane Mechanism — Sheet 1: Assembly Overview](assets/film-plane-sheet1.png)
+![TBS-001 Film Plane Mechanism — Sheet 1: Plan View, 4-Corner Rail Layout](assets/film-plane-sheet1.png)
 
-![TBS-001 Film Plane Mechanism — Sheet 2: Corner Assembly Detail](assets/film-plane-sheet2.png)
+![TBS-001 Film Plane Mechanism — Sheet 2: Tilt Elevation and Swing Cross-Section](assets/film-plane-sheet2.png)
 
-![TBS-001 Film Plane Mechanism — Sheet 3: Drive Shaft and Handwheel](assets/film-plane-sheet3.png)
+![TBS-001 Film Plane Mechanism — Sheet 3: Corner Mechanism Detail (slide-and-clamp + U-joint)](assets/film-plane-sheet3.png)
 
-![TBS-001 Film Plane Mechanism — Sheet 4: Full Mechanism Cross-Section](assets/film-plane-sheet4.png)
+![TBS-001 Film Plane Mechanism — Sheet 4: U-Joint Sections](assets/film-plane-sheet4.png)
 
-![TBS-001 Film Plane Mechanism — Sheet 5: Muslin Clamp Detail](assets/film-plane-sheet5.png)
+![TBS-001 Film Plane Mechanism — Sheet 5: Movement Specification and BOM](assets/film-plane-sheet5.png)
 
-![TBS-001 Film Plane Mechanism — Sheet 6: System Schematic](assets/film-plane-sheet6.png)
+![TBS-001 Film Plane Mechanism — Sheet 6: Muslin Clamp Detail](assets/film-plane-sheet6.png)
+
+![TBS-001 Film Plane Mechanism — Sheet 7: System Schematic, Front Elevation](assets/film-plane-sheet7.png)
+
+![TBS-001 Film Plane Mechanism — Sheet 8: Frame-Corner ↔ Cross-Slide Attachment](assets/film-plane-sheet8.png)
+
+![TBS-001 Film Plane Mechanism — Sheet 9: Frame + ACM ↔ U-joint ↔ X-Slide Connection Detail](assets/film-plane-sheet9.png)
+
+### Corner Joint — Design Study
+
+![TBS-001 Film-Plane Corner Joint — Concept Options (2 axes, ±45°, carries the plane)](assets/film-joint-options.png)
+
+![TBS-001 Corner-Joint Design Study — A: Gimbal (two offset through-pins, each in double shear)](assets/film-joint-study-gimbal.png)
+
+![TBS-001 Corner-Joint Design Study — B: U-Joint (cross/spider between two yokes)](assets/film-joint-study-ujoint.png)
+
+![TBS-001 Film-Plane Corner Gimbal — Design A (2-axis universal joint, no twist, ±45°, ×4 corners)](assets/film-corner-gimbal.png)
 
 ---
 

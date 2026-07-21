@@ -11,13 +11,16 @@
 generators:
   assembly_fabrication: {script: src/generators/generate_assembly_fabrication.py, outputs: [diagrams/assembly-fab-sheet1.png, diagrams/assembly-fab-sheet2.png]}
   assembly_overview: {script: src/generators/generate_assembly_overview.py, outputs: [diagrams/assembly-overview-fp.png, diagrams/assembly-overview-plan.png, diagrams/assembly-overview.png]}
+  corner_gimbal: {script: src/generators/generate_corner_gimbal.py, outputs: [diagrams/film-corner-gimbal.png]}
   electrical_diagram: {script: src/generators/generate_electrical_diagram.py, outputs: [diagrams/electrical-sheet1.png, diagrams/electrical-sheet2.png, diagrams/electrical-sheet3.png, diagrams/electrical-sheet4.png, diagrams/electrical-sheet5.png, diagrams/electrical-sheet6.png, diagrams/electrical-sheet7.png]}
   film_plane_distortion: {script: src/generators/generate_film_plane_distortion.py, outputs: [diagrams/film-plane-distortion-summary.png]}
-  film_plane_mechanism: {script: src/generators/generate_film_plane_mechanism.py, outputs: [diagrams/film-plane-sheet1.png, diagrams/film-plane-sheet2.png, diagrams/film-plane-sheet3.png, diagrams/film-plane-sheet4.png, diagrams/film-plane-sheet5.png, diagrams/film-plane-sheet6.png]}
+  film_plane_mechanism: {script: src/generators/generate_film_plane_mechanism.py, outputs: [diagrams/film-plane-sheet1.png, diagrams/film-plane-sheet2.png, diagrams/film-plane-sheet3.png, diagrams/film-plane-sheet4.png, diagrams/film-plane-sheet5.png, diagrams/film-plane-sheet6.png, diagrams/film-plane-sheet7.png, diagrams/film-plane-sheet8.png, diagrams/film-plane-sheet9.png]}
   floorplan_diagram: {script: src/generators/generate_floorplan_diagram.py, outputs: [diagrams/container-floorplan-sheet2.png, diagrams/container-floorplan.png]}
   hingepanel_diagram: {script: src/generators/generate_hingepanel_diagram.py, outputs: [diagrams/hingepanel-sheet1.png, diagrams/hingepanel-sheet2.png, diagrams/hingepanel-sheet3.png, diagrams/hingepanel-sheet4.png, diagrams/hingepanel-sheet5.png, diagrams/hingepanel-sheet6.png]}
   ibc_frame_drawing: {script: src/generators/generate_ibc_frame_drawing.py, outputs: [diagrams/ibc-frame-sheet1.png, diagrams/ibc-frame-sheet2.png, diagrams/ibc-frame-sheet3.png]}
   ibc_stacking_diagram: {script: src/generators/generate_ibc_stacking_diagram.py, outputs: [diagrams/ibc-stacking-sheet1.png, diagrams/ibc-stacking-sheet2.png, diagrams/ibc-stacking-sheet3.png, diagrams/ibc-stacking-sheet4.png, diagrams/ibc-stacking-sheet5.png]}
+  joint_options: {script: src/generators/generate_joint_options.py, outputs: [diagrams/film-joint-options.png]}
+  joint_study: {script: src/generators/generate_joint_study.py, outputs: [diagrams/film-joint-study-gimbal.png, diagrams/film-joint-study-ujoint.png]}
   lighttrap_diagram: {script: src/generators/generate_lighttrap_diagram.py, outputs: [diagrams/lighttrap-sheet1.png, diagrams/lighttrap-sheet2.png]}
   line_of_sight: {script: src/generators/generate_line_of_sight.py, outputs: [diagrams/line-of-sight.png]}
   mini_tbs_diagram: {script: src/generators/generate_mini_tbs_diagram.py, outputs: [diagrams/mini-tbs-sheet1.png]}
@@ -39,7 +42,7 @@ models:
   spraybar: {script: src/models/generate_spraybar_model.py, outputs: [models/spraybar.skp, src/models/spraybar.rb]}
   ibc-stack: {script: src/models/generate_ibc_model.py, outputs: [models/ibc-stack.skp, src/models/ibc-stack.rb]}
   walkway: {script: src/models/generate_walkway_model.py, outputs: [models/walkway.skp, src/models/walkway.rb]}
-  film-plane: {script: src/models/generate_film_plane_model.py, outputs: [models/film-plane.skp, src/models/film-plane.rb]}
+  film-plane-mechanism: {script: src/models/generate_film_plane_mechanism_model.py, outputs: [models/film-plane-mechanism.skp, src/models/film-plane-mechanism.rb]}
   lighttrap: {script: src/models/generate_lighttrap_model.py, outputs: [models/lighttrap.skp, src/models/lighttrap.rb]}
   electrical: {script: src/models/generate_electrical_model.py, outputs: [models/electrical.skp, src/models/electrical.rb]}
   mini-tbs: {script: src/models/generate_mini_tbs_model.py, outputs: [models/mini-tbs.skp, src/models/mini-tbs.rb]}

@@ -505,7 +505,7 @@ def make_logo3():
     ax.text(19.5, 15, "GPC", color=KODAK_Y, fontsize=14, ha="center", va="center",
             fontweight="bold", zorder=6)
 
-    ax.text(32, 15, "f/1088  ·  2.17mm  ·  140 sq ft",
+    ax.text(32, 15, "f/1088  ·  2.17mm  ·  101 sq ft",
             color=BLACK, fontsize=7.5, ha="left", va="center",
             fontweight="bold", fontfamily="monospace", zorder=6)
 

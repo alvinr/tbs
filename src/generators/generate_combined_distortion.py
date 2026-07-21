@@ -30,7 +30,7 @@ from tbs_constants import DISTORTION_DPI
 # ── Camera constants ──────────────────────────────────────────────────────────
 F = C_WID         # focal length (container interior depth, mm) = 2362
 FP_W = _FP_W      # film plane width (mm) — from tbs_constants (4499mm rev 6)
-FP_H = _FP_H      # film plane height (mm) = 2388
+FP_H = _FP_H      # film plane height (mm) = 2094
 
 # ── Cyanotype palette (dark background — matches film-plane distortion renders) ─
 BG      = '#081A32'

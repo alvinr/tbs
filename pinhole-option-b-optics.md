@@ -18,7 +18,7 @@ All calculations on this page use these fixed values, derived from the 20-foot s
 | Rayleigh optimal pinhole (d) | **<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm** | d = 1.9 × √(f × 0.00055); Rayleigh, *Phil. Mag.* 1891 |
 | F-number (N) | **f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number -->** | N = f/d |
 | Image plane width | <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm (19 ft 4 in) | Container interior length |
-| Image plane height | <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (7 ft 10 in) | Container interior height |
+| Image plane height | <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (6 ft 10 in) | Container interior height |
 | Wavelength (λ) | 0.00055mm (550 nm) | Green light reference |
 
 ---
@@ -203,7 +203,7 @@ The image is **inverted** (upside down and mirror-reversed). The magnitude |M| g
 
 ### What Magnification Means for Subject Framing
 
-The image plane is <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm wide × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm tall. For a given subject distance, the portion of the real world captured within that frame is:
+The image plane is <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm wide × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm tall. For a given subject distance, the portion of the real world captured within that frame is:
 
 ```
 Scene width captured = image width / M = image width × (u / f)
@@ -221,11 +221,11 @@ Scene height captured = image height × (u / f)
 
 **Example:** A building 15 meters tall at 50 meters from the camera:
 - Image height = 15,000mm × (2362/50000) = 15,000 × 0.0472 = **708mm (2.3 ft)** on the image plane
-- This building fills 708/2388 = **30% of the image height**
+- This building fills 708/2094 = **34% of the image height**
 
 **Example:** A person 1.8 m tall at 5 meters:
 - Image height = 1,800mm × (2362/5000) = 1,800 × 0.4724 = **850mm (2.8 ft)**
-- Fills 850/2388 = **36% of the image height**
+- Fills 850/2094 = **41% of the image height**
 
 ### The 1:1 Point — Where Subjects Are Life-Size in the Image
 
@@ -273,25 +273,25 @@ This is the classical DoF near limit from Part 4. It depends on the viewing dist
 
 A fourth practical constraint: the subject must be far enough that they fit within the image plane boundaries.
 
-For a person 1.8 m (71 inches) tall to fit within the 2,388mm image height:
+For a person 1.8 m (71 inches) tall to fit within the 2,094mm image height:
 
 ```
-1,800 × M ≤ 2,388
-1,800 × (2362/u) ≤ 2,388
-u ≥ 1,800 × 2362 / 2388
-u ≥ 1780mm ≈ 1.78 m (5.8 ft)
+1,800 × M ≤ 2,094
+1,800 × (2362/u) ≤ 2,094
+u ≥ 1,800 × 2362 / 2094
+u ≥ 2030mm ≈ 2.03 m (6.7 ft)
 ```
 
 For a vehicle 4.5 m tall (truck/bus) to fit in frame:
 
 ```
-u ≥ 4,500 × 2362/2388 ≈ 4451mm ≈ 4.45 m (14.6 ft)
+u ≥ 4,500 × 2362/2094 ≈ 5076mm ≈ 5.08 m (16.6 ft)
 ```
 
 For a building 10 m tall to fit in frame:
 
 ```
-u ≥ 10,000 × 2362/2388 ≈ 9891mm ≈ 9.9 m (32.4 ft)
+u ≥ 10,000 × 2362/2094 ≈ 11279mm ≈ 11.28 m (37.0 ft)
 ```
 
 ---

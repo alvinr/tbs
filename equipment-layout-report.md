@@ -35,7 +35,7 @@ Overall floorplan can be seen below. Its essentially split into three areas, lef
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
-| Hinged panel (stepped) | 0–40 (corner) / 0–120 (center) | 0–2,362 | 0–<!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm --> | Stepped profile: 40mm corners, 120mm center (drum housing). Swings ~56° about the Ø89 pivot for transport. |
+| Hinged panel (stepped) | 0–40 (corner) / 0–120 (center) | 0–2,362 | 0–<!-- BEGIN fact:container_height_mm -->2,388<!-- END fact:container_height_mm --> | Stepped profile: 40mm corners, 120mm center (drum housing). Swings ~56° about the Ø89 pivot for transport. |
 | Light trap drum | −850–50 | 731–1,631 (centered at CW/2=1,181mm) | 130–2,250 | Centered at X=−400 (offset into container); integrated into panel center zone; rotary drum entry |
 
 ### 2.2 Pinhole Wall Face
@@ -60,7 +60,7 @@ spans this zone (nominal far position).
 | Processing tray (2 panels, 304 SS) | 170–4,629 | 80–2,280 | 0–50 | 50mm rim; 20mm clearance to film plane rails; sump well at X=2,399, Yd=80 with P-04 suction pickup to 3W-DV-02. On tapered HDPE shim strips. Permanently installed. |
 | Perimeter walkway (4 sections, removable) | 170–4,629 | 0–300 / 2,062–2,362 | 0–130 | 300mm wide, 130mm deck height (raised +50; 115mm support + 15mm grate). Near/far: wall-cantilevered 8mm gusset brackets at 457mm centers. Right: brackets on angle iron welded to end wall. Left: removable lift-out grate on 5 floor-leg cantilever brackets bolted to bare floor outside the tray (arms to X=470, 3 extended to X=770 on the punch-out; the panel occupies this end wall), 15mm grating. Left corners: butt joint (no miter). No tray contact (left brackets bolt to bare floor outside the tray). Floor-leg arm (Z=75–115) clears the 50mm tray rim and the Z60 spray bar by 15mm. |
 
-The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 40° tilt; the lower max angle only increases clearance), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the HGR20 rail channels.
+The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 40° tilt; the lower max angle only increases clearance), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the U-channel depth rails.
 
 ### 2.4 Right End Zone
 

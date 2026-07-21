@@ -9,7 +9,7 @@
 ---
 
 ## 1. The Hook
-A standard shipping container sits in a field. Inside, on 116 square feet of cotton fabric, a cyanotype image is forming. The image will be approximately 15 feet wide and 8 feet tall. The people who made it will wade into the image to develop it.
+A standard shipping container sits in a field. Inside, on 101 square feet of cotton fabric, a cyanotype image is forming. The image will be approximately 15 feet wide and 7 feet tall. The people who made it will wade into the image to develop it.
 
 The container is a camera.
 
@@ -20,7 +20,7 @@ Not a reference to a camera. Not a metaphor. A working, optically precise, trans
 ## 2. Project Overview
 
 ### What
-TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm, precision laser-drilled, stainless steel) sits at one side of the container. The image plane — a stretched cotton muslin surface spanning the active <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm film zone — sits at the other. Every exposure produces a latent cyanotype image on approximately 116 square feet of fabric, developed in plain water.
+TBS-001 is a 20-foot ISO shipping container converted into a functional large-format pinhole camera. The pinhole (<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm, precision laser-drilled, stainless steel) sits at one side of the container. The image plane — a stretched cotton muslin surface spanning the active <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm film zone — sits at the other. Every exposure produces a latent cyanotype image on approximately 101 square feet of fabric, developed in plain water.
 
 ![TBS-001 Container Floor Plan](assets/container-floorplan.png)
 
@@ -41,7 +41,7 @@ A spherical-pivot adapter plate mounts in the same wall-frame interface as the v
 **Effect:** every 5° of board tilt steers the projected image <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm across the film plane. Used for compositional placement — shifting what part of the scene falls where on the print without moving the camera.
 
 ### Film Plane: 4-Corner Independent Actuation (±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing)
-Four independently-driven corners allow the fixed-size rigid image plane (Option A) to be tilted and swung — including limited combined tilt-and-swing — about its center. Each corner is driven by a 3/4"-6 Acme leadscrew via an 8" handwheel; a 2-axis cross-slide and rod-end spherical bearing at each corner absorb the rigid-rotation arc travel, so the plane rotates without stretching or twisting.
+Four independently-set corners allow the fixed-size rigid image plane to be tilted and swung — including limited combined tilt-and-swing — about its center. Each corner rides an acetal skate inside a 304 stainless U-channel depth rail (slid by hand and cam-clamped to set focus); a 2-axis 316 cross-slide plus a single Ruland universal joint at each corner absorb the rigid-rotation arc travel and supply the angular change, so the plane rotates without stretching or twisting.
 
 **Effect:** Scheimpflug-equivalent movements at pinhole focal lengths — not to adjust focus (pinholes have infinite depth of field) but to control perspective, convergence, and geometric projection.
 
@@ -71,7 +71,7 @@ The camera is deployable. It comes to the subject. A landscape that could never 
 ### Chemistry
 Cyanotype uses the **Mike Ware New Cyanotype formula** — ammonium iron(III) oxalate and potassium ferricyanide, with an optional trace of ammonium dichromate (0.1–0.4%) for added contrast. The two base reagents require no DEA registration, hazmat shipping, or special disposal; only the trace dichromate needs careful handling — at a tiny fraction of the bulk quantities used by dichromate-sensitized processes. Development is plain cold water. The chemistry is mixed on-site; the substrate (unbleached cotton muslin) is coated by brush or roller in two wet-on-wet coats, dried, and loaded in darkness. The Ware formula is 4–8× more UV-sensitive than the classical Herschel formula, reducing baseline exposure from ~2 hours to ~30–45 minutes in full sun.
 
-Per-print cost: approximately <!-- BEGIN costing:fund-perprint -->$33<!-- END costing:fund-perprint --> (chemistry + fabric + water) at the Standard sensitizer strength — ranging <!-- BEGIN costing:fund-perprint-range -->$24–60<!-- END costing:fund-perprint-range --> by tier, to be pinned by post-build sensitizer trials. A 50-print run costs approximately <!-- BEGIN costing:fund-50run -->$1,650<!-- END costing:fund-50run -->. By comparison, the next cheapest alternative (gum bichromate) costs ~$49 per print and depends on bulk dichromate as its primary sensitizer, with full hazmat handling and disposal.
+Per-print cost: approximately <!-- BEGIN costing:fund-perprint -->$30<!-- END costing:fund-perprint --> (chemistry + fabric + water) at the Standard sensitizer strength — ranging <!-- BEGIN costing:fund-perprint-range -->$22–53<!-- END costing:fund-perprint-range --> by tier, to be pinned by post-build sensitizer trials. A 50-print run costs approximately <!-- BEGIN costing:fund-50run -->$1,490<!-- END costing:fund-50run -->. By comparison, the next cheapest alternative (gum bichromate) costs ~$49 per print and depends on bulk dichromate as its primary sensitizer, with full hazmat handling and disposal.
 
 ### Water System
 A self-contained three-circuit water system — Blue (wash), Brown (recycle), and Black (waste) — provides off-grid processing capability. Four 1,000L IBC totes in a 2×2 stack, 12V DC pumps, check valves on all external lines, and a 3-stage filtration skid. Capacity: ~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> full prints between resupply. Water recycling: approximately 40% of used wash water is recovered and reused. Power: 12V DC from a 100Ah LiFePO4 battery (expandable to 200Ah with an optional second pack; ~2–3 prints per charge), with a 600W solar array for field recharging — the system is solar-positive in sun, so it runs indefinitely — plus shore-power input for overnight top-up.
@@ -84,8 +84,8 @@ The container moves by commercial hire tilt-bed truck. No CDL is required for th
 ## 6. Budget and Use of Funds
 All figures are drawn from the [full cost breakdown](project-cost-breakdown.md). Per-item procurement details with supplier URLs are in the [master shopping list](master-shopping-list.md). Three funding levels are presented to allow partial or phased support.
 
-### Level 1 — Core Build (~<!-- BEGIN costing:fund-l1-total -->$31,454<!-- END costing:fund-l1-total -->, Standard scenario)
-Everything required to operate the camera for a first deployment. Figures are the Standard (Mid) column of the [cost breakdown](project-cost-breakdown.md); Low–High scenarios span ~<!-- BEGIN costing:fund-scenario-span -->$23,000–$37,000<!-- END costing:fund-scenario-span -->.
+### Level 1 — Core Build (~<!-- BEGIN costing:fund-l1-total -->$34,611<!-- END costing:fund-l1-total -->, Standard scenario)
+Everything required to operate the camera for a first deployment. Figures are the Standard (Mid) column of the [cost breakdown](project-cost-breakdown.md); Low–High scenarios span ~<!-- BEGIN costing:fund-scenario-span -->$25,000–$39,000<!-- END costing:fund-scenario-span -->.
 
 <!-- BEGIN costing:funding-level1 -->
 | Item | Cost |
@@ -93,19 +93,19 @@ Everything required to operate the camera for a first deployment. Figures are th
 | 20ft container (Cargo Worthy grade) + delivery | $3,300 |
 | Interior conversion (light-seal, paint, image-plane backing) | $1,138 |
 | Pinhole plate (precision laser-drilled, SS-302, interchangeable frame) | $185 |
-| Film plane mechanism (4-corner Option A, manual actuation) | $3,561 |
+| Film plane mechanism (4-corner U-channel + acetal skate + Ruland U-joint) | $6,551 |
 | Tilt-swing front board mechanism | $1,470 |
-| Housed revolving-door light trap (plastic-skin Ø900 housing + C-shell drum, bearings, seals, fabrication) | $1,768 |
+| Housed revolving-door light trap (plastic-skin Ø900 housing + C-shell drum, bearings, seals, fabrication) | $1,739 |
 | Processing water system (tray, spray bar, 3-stage filtration, IBC stacking frame) | $6,647 |
 | Power & electrical (600W solar · LiFePO4 · MPPT · distribution · protection · lighting) | $2,806 |
 | Ventilation & cooling (2 fans · evap cooler + 12V→120V inverter · light-safe ducting) | $817 |
 | Perimeter walkway (4 sections + drum-exit punch-out) | $2,488 |
-| Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + door frame) | $1,143 |
+| Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + door frame) | $1,209 |
 | Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle) | $1,418 |
 | Chemistry prep shelf (fold-down board + frame + hinge/stays + tap trunk extension) | $203 |
-| Cyanotype chemistry + muslin substrate (50-print run, Standard tier) | $1,650 |
-| Contingency (10%) | ~$2,860 |
-| **Level 1 total** | **~$31,454** |
+| Cyanotype chemistry + muslin substrate (50-print run, Standard tier) | $1,490 |
+| Contingency (10%) | ~$3,150 |
+| **Level 1 total** | **~$34,611** |
 <!-- END costing:funding-level1 -->
 
 ### Level 2 — First Deployment (+$1,350–2,800)
@@ -128,7 +128,7 @@ Video documentation, process photography, and initial publication:
 | Publication design (zine or catalog, print run) | $500–1,500 |
 | **Level 3 total** | **~$2,000–4,000** |
 
-**Combined (Levels 1+2+3):** ~<!-- BEGIN costing:fund-combined -->$34,804–38,254<!-- END costing:fund-combined --> for a complete first-year program with three public deployments, 50-print edition, and full documentation.
+**Combined (Levels 1+2+3):** ~<!-- BEGIN costing:fund-combined -->$37,961–41,411<!-- END costing:fund-combined --> for a complete first-year program with three public deployments, 50-print edition, and full documentation.
 
 ## 7. Timeline
 A 12-month build and deployment program:
@@ -150,7 +150,7 @@ A 12-month build and deployment program:
 Each deployment is a public event. The container is placed on-site; visitors can observe or participate in the coating, exposure, and development process. Invitations extended to local schools, photography programs, and community organizations at each site.
 
 ### Archival Print Edition
-50 cyanotype prints on cotton muslin, each approximately <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (~14'9" × 7'10"). Numbered, signed, with full exposure metadata. Available for acquisition by institutions and private collectors.
+50 cyanotype prints on cotton muslin, each approximately <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~14'9" × 6'10"). Numbered, signed, with full exposure metadata. Available for acquisition by institutions and private collectors.
 
 ### Open Documentation Site
 All design files, optical derivations, engineering drawings, and Python simulation source code are published openly at [alvinr.github.io/tbs](https://alvinr.github.io/tbs/) under a permissive license. Any institution or practitioner who wants to build a similar camera has everything required to do so — without starting from scratch.
@@ -178,9 +178,9 @@ My practice since has moved between classical portraiture and abstract color in 
 |-----------|-------|
 | Container | 20ft ISO standard (6,058 × 2438 × 2,591mm exterior) |
 | Focal length | <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm |
-| Image plane (active) | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,388<!-- END fact:film_plane_height_mm -->mm (~14'9" × 7'10") |
+| Image plane (active) | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~14'9" × 6'10") |
 | Container interior | 5893 × 2,388mm (~19'4" × 7'10") |
-| Image area | ~<!-- BEGIN fact:image_area_sqft -->116<!-- END fact:image_area_sqft --> sq ft |
+| Image area | ~<!-- BEGIN fact:image_area_sqft -->101<!-- END fact:image_area_sqft --> sq ft |
 | Optimal pinhole | Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm (Rayleigh formula, λ=550nm) |
 | f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> |
 | Baseline exposure | ~30–45 min (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction) |

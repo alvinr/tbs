@@ -112,6 +112,9 @@ DIAG_IMAGE_FILES = [
     "film-plane-sheet4.png",
     "film-plane-sheet5.png",
     "film-plane-sheet6.png",
+    "film-plane-sheet7.png",
+    "film-plane-sheet8.png",
+    "film-plane-sheet9.png",
     "film-plane-distortion-c0.png",
     "film-plane-distortion-c1.png",
     "film-plane-distortion-c2.png",
@@ -221,7 +224,7 @@ site_url: "{site_url}"
 
 theme:
   name: material
-  custom_dir: overrides
+  custom_dir: src/overrides
   favicon: assets/favicon.png
   logo: assets/favicon.png
   palette:
@@ -303,7 +306,7 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 | Parameter | Value |
 |-----------|-------|
 | Image plane | 5893 × 2388mm (~19'4" × 7'10") |
-| Image area | ~140 sq ft |
+| Image area | ~101 sq ft |
 | Focal length | 2362mm (container interior depth) |
 | Optimal pinhole | Ø2.17mm (Lord Rayleigh formula, λ = 550 nm) |
 | f-number | f/1088 |
@@ -354,7 +357,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Processing System](water-system-report.md) | Off-grid three-circuit water system design and Bill of Materials |
 | [Film Plane Mechanism](film-plane-mechanism-report.md) | 4-corner independent actuation — design, drawings, shopping list |
 | [Film Plane Distortion Analysis (superseded)](film-plane-mechanism-analysis.md) | Decision record + optical-distortion physics for the abandoned stretching four-corner design; the current mechanism is the [Film Plane Mechanism](film-plane-mechanism-report.md) |
-| [Film Clamp Mechanism](film-clamp-mechanism-report.md) | Cam-lever spring clamp system — 92 clamps at 150mm spacing, parts list |
+| [Film Clamp Mechanism](film-clamp-mechanism-report.md) | Muslin spring-clip system — 90 clips at 150mm spacing, parts list |
 | [Tilt-Swing Front Board](tilt-swing-board-report.md) | Spherical-pivot mechanism — design, drawings, combined distortion renders |
 | [Tilt & Swing Distortion Renders](tilt-swing-board-analysis.md) | Ray-traced projection renders for all combined board + film plane configurations |
 | [Pinhole Report](pinhole-report.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |

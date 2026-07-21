@@ -93,9 +93,9 @@ listed for completeness; confirm the drawn size equals the catalog dimension:
 
 | Component | Catalog | Expected dim | Status |
 |-----------|---------|--------------|--------|
-| Linear rail HGR20 | HGR20, 2,200 mm | 20 mm rail width, 2200 long (`RAIL_LEN`) | confirm |
+| ~~Linear rail HGR20~~ (retired → 304 U-channel 1262T21) | — | — | RETIRED — Option-A leadscrew drive superseded by the U-channel/skate/U-joint mechanism |
 | Carriage HGH20CA | HGH20CA flanged | standard HGH20CA block | confirm |
-| Acme leadscrew ¾"-6 | McMaster 6289K36 | Ø¾" (19 mm) | confirm |
+| ~~Acme leadscrew ¾"-6~~ (retired) | — | — | RETIRED — no leadscrews in the current design |
 | Rod-end bearing | GIR25-DO / McMaster 60645K73 | 25 mm bore | confirm |
 | Drum bearing | SKF 6215-2RS1 | 75×130×25 | confirm |
 | Tilt-swing bearing | GE50-DO-2RS | Ø50 bore | confirm |

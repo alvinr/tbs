@@ -81,7 +81,7 @@ def film_plane_beams():
     this view to keep the wet end readable."""
     rail = 40
     z_bot = ov.RAIL_OFF_BOT
-    z_top = ov.C_HGT - ov.RAIL_OFF - rail
+    z_top = ov.C_HGT - ov.RAIL_OFF_TOP - rail
     x_right = ov.RAIL_X_R - rail
     p = []
     for zl, rz in (("bot", z_bot), ("top", z_top)):

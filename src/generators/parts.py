@@ -583,6 +583,9 @@ PARTS: list[Part] = [
          "film", 112, "ea", 9.71 / 100, 9.71 / 100, "McMaster-Carr", part_no="91166A290", url="https://www.mcmaster.com/91166a290/", spec="Flat washers, M12×65 wall-sandwich bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). $9.71/pack of 100."),
     Part("washer-m12-split", "M12 split lock washer, zinc", "fasteners-hardware",
          "film", 28, "ea", 11.97 / 100, 11.97 / 100, "McMaster-Carr", part_no="91202A246", url="https://www.mcmaster.com/91202A246/", spec="Split lock washer under each nut — M12×65 wall-sandwich bolts (plain nut + split = locked). $11.97/pack of 100."),
+    # M12 nyloc nut — verified ALTERNATIVE locking (Option B), NOT USED (chose plain nut + split washer):
+    #   McMaster 94645A230, $10.08/pack of 10 = $1.008 ea. Swap in (and drop the split washers) if
+    #   adopting nyloc locking for the M12 through-bolts; ~+$70 over the 110 bolts. https://www.mcmaster.com/94645A230/
     Part("saddle-m8-thumb", "M8×25mm knurled thumbscrew DIN 464", "fasteners-hardware",
          "film", 12, "ea", 3, 3, "Amazon", "Maedler", spec="ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare"),
     Part("bolt-m8-fixing", "M8 hex bolt, SS — length TBD (film right-rail fixing, confirm at order)", "fasteners-hardware",

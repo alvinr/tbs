@@ -31,7 +31,7 @@ from tbs_constants import DISTORTION_DPI
 # ── Camera constants ──────────────────────────────────────────────────────────
 F = C_WID         # focal length (container interior depth, mm) = 2362
 FP_W = _FP_W      # film plane width (mm) — from tbs_constants (4499mm)
-FP_H = _FP_H      # film plane height (mm) = 2388
+FP_H = _FP_H      # film plane height (mm) = 2094
 SHIFT = round(F * np.tan(np.radians(FB)))   # full image shift at the ±FB° hard stop = 219mm (was hardcoded 207, the 5° value)
 
 # ── Cyanotype palette (dark background — matches combined distortion renders) ─

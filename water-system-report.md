@@ -93,7 +93,7 @@ Volume per flood = 106 sq ft × (6mm / 304.8) = 106 × 0.0197 ft = 2.09 cu ft
 **Water balance — recovered vs. consumed.** Of the <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply, a 14-print run processes ~1,690L
 (leaving ~110L of dregs, under one print): ~<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l -->L is recovered into the collection totes (Brown + Waste,
 ~<!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L each at their working fill) and ~<!-- BEGIN fact:lost_l -->434<!-- END fact:lost_l -->L (~31L per print, ~17% of the ~182L gross washed per print) is
-open-process loss — water **carried out in the wet prints** (each full-plane muslin sheet, ~10.7 m²,
+open-process loss — water **carried out in the wet prints** (each full-plane muslin sheet, ~9.42 m²,
 leaves saturated to dry), **evaporation** from the open spray-wash tray, and **unrecovered residual**
 (tray-surface film, the sump dead-volume below the P-04 pickup, hose/manifold hold-up). This loss is *why
 two <!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L collection totes balance the supply* — they are sized for the recovered fraction, not full

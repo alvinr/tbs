@@ -38,6 +38,7 @@ import re
 from dataclasses import dataclass
 
 import costing  # reconciliation guardrail (EXPECTED) + the cost cascade it still owns
+from tbs_constants import CLAMP_N_TOTAL, CLAMP_JAW_W, CLAMP_JAW_T  # muslin clip count (derives from perimeter) + neoprene pad size
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -505,34 +506,39 @@ PARTS: list[Part] = [
 
     # ═══ film (film-plane-mechanism-report §7) — itemized; structural+frame+saddles, sums to costing
     # FILM minus the clamp lines (= 3,102). The muslin clamps are the separate 'clamp' system below. ═══
-    # — Structural & Rails (1,616) —
-    Part("hgr20-rail", "Linear guide rail HGR20", "bearings-motion",
-         "film", 4, "ea", 45, 45, "Automation Overstock", "McMaster-Carr", part_no="5901T777", spec="2,200mm"),
-    Part("hgh20ca-carriage", "Rail carriage HGH20CA", "bearings-motion",
-         "film", 8, "ea", 18, 18, "Automation Overstock", "McMaster-Carr", spec="Flanged block"),
-    Part("acme-leadscrew", 'Acme leadscrew ¾"-6', "bearings-motion",
-         "film", 4, "ea", 95, 95, "Roton Products", "McMaster-Carr", part_no="6289K36", spec="8 ft length"),
-    Part("acme-nut", 'Acme nut bronze ¾"-6', "bearings-motion",
-         "film", 4, "ea", 12, 12, "Roton Products", "McMaster-Carr", part_no="6289K512"),
-    Part("handwheel-8in", 'Handwheel 8" dia', "bearings-motion",
-         "film", 4, "ea", 35, 35, "Grainger", "McMaster-Carr", part_no="6440K64", spec='¾" bore, cast aluminum'),
-    Part("locking-collar", "Locking collar SS316", "bearings-motion",
-         "film", 4, "ea", 12, 12, "McMaster-Carr", "Fastenal", part_no="6436K12", spec='¾" bore'),
-    Part("corner-l-plate", "Corner bracket L-plate", "aluminum",
-         "film", 4, "ea", 20, 20, "Metal Supermarkets", "Online Metals", spec='¼" alum. plate, 6"×8"'),
-    Part("crossslide-hgr15", "Cross-slide rail HGR15 (Option A)", "bearings-motion",
-         "film", 8, "ea", 25, 25, "Automation Overstock", "McMaster-Carr", spec="300mm, X-Z stage"),
-    Part("crossslide-hgh15ca", "Cross-slide carriage HGH15CA (Option A)", "bearings-motion",
-         "film", 8, "ea", 12, 12, "Automation Overstock", "McMaster-Carr", spec="Flanged block"),
-    Part("crossslide-plate", "Cross-slide intermediate plate (Option A)", "aluminum",
-         "film", 4, "ea", 15, 15, "Metal Supermarkets", "Online Metals", spec='¼" alum., joins X slide to Z slide'),
-    Part("rod-end-bearing", "Rod-end spherical bearing", "bearings-motion",
-         "film", 4, "ea", 22, 22, "McMaster-Carr", "Amazon Industrial", part_no="60645K73", spec="GIR25-DO or equiv., 25mm bore — one per corner (4 corners)"),
-    Part("pivot-pin", "Pivot pin SS316", "fasteners-hardware",
-         "film", 4, "ea", 8, 8, "McMaster-Carr", "Fastenal", spec='Ø25mm × 80mm SS316 — slip-fit in the 25mm rod-end bore (a 1\"/25.4mm pin is 0.4mm oversize and will not enter). Metric Ø25 clevis/pivot pin spanning the rod-end eye + corner-bracket clevis; 80mm is the longest stocked Ø25 clevis pin (2026-07 check). Confirm exact SKU at order.', dims="Ø25 × 80mm"),
+    # — Structural & Rails (304 U-channel + acetal skate + 316 cross-slide + Ruland U-joint corner mechanism) —
+    # Replaced the superseded Option-A leadscrew drive (HGR20/Acme/handwheel/rod-end) 2026-07-19.
+    Part("fp-u-channel", '304 U-channel depth rail 3×1½" (76×38mm)', "steel-structural",
+         "film", 6, "ea", 362, 362, "McMaster-Carr", part_no="1262T21", url="https://www.mcmaster.com/1262T21/",
+         spec="4 depth rails, one per corner, running wall-to-wall (~2,362mm, Yd0→C_WID) along the optical axis — an acetal skate rides inside each to set that corner's depth/focus. $362.12/6ft firm. NOTE: a 2,362mm rail exceeds a 6ft (1,829mm) length, and the skate can't cross a splice — so buy 8ft lengths (4 rails) or confirm the continuous-length SKU/price at order. Qty 6× 6ft here is the conservative $-estimate."),
+    Part("fp-ujoint", "Ruland USKC12-6-6-SS U-joint (keyway+clamp, 303 SS)", "bearings-motion",
+         "film", 4, "ea", 276, 276, "Ruland", part_no="USKC12-6-6-SS", url="https://www.ruland.com/us12-6-6-ss.html",
+         spec='One per corner — supplies the tilt+swing angular DOF (45°/axis); 3/8" bores, 303 stainless (wet zone), twist-locked. $276 ea firm — INTERIM part; a cheaper joint is under research (see TODO). The U-joint alone is $276×4 = $1,104.'),
+    Part("fp-ujoint-boot", "Ruland UBOOT12/19-NI-KIT nitrile boot", "seals-gaskets",
+         "film", 4, "ea", 22, 29, "Ruland", part_no="UBOOT12/19-NI-KIT", spec="Nitrile boot over each U-joint — keeps cyanotype splash out of the joint."),
+    Part("fp-shaft-support", "McMaster 4040N12 304 shaft support", "bearings-motion",
+         "film", 4, "ea", 58, 58, "McMaster-Carr", part_no="4040N12", url="https://www.mcmaster.com/4040N12/",
+         spec="Two-piece 304 clamp securing the U-joint INPUT stub to the X (swing) slide, one per corner. $58 ea firm."),
+    Part("fp-stub-shaft", '3/8" 304/304L SS rod — U-joint stub shafts (1× 3 ft)', "steel-structural",
+         "film", 1, "lot", 13, 13, "McMaster-Carr", part_no="89535K87", url="https://www.mcmaster.com/89535K87/",
+         spec='Input + output stub shafts into the U-joint (2/corner ×4 = 8 short stubs, ~60–80mm each ≈ 560–640mm + kerf). ONE 3 ft (914mm) length ($13.25 firm) yields all 8 with margin. Plain 304 rod — the USKC clamp grips it (keyway optional).'),
+    Part("fp-skate", "Acetal 4-wheel skate — Ø32 load + Ø20 keeper rollers, Ø10 316 axles + carriage plate", "bearings-motion",
+         "film", 4, "set", 55, 90, "McMaster-Carr", "local fab",
+         spec="One skate per corner rides inside the U-channel: Ø32 acetal load rollers gravity-seated on the bottom flange + Ø20 keeper rollers captive under the top flange, all on Ø10 316 axles carrying the carriage plate (same acetal-on-316 skate as the spray bar). 10mm 316 axle rod $33–50/ft. Firm the wheel/fab price at order (est.)."),
+    Part("fp-cross-slide", "316 flat-bar Z (tilt) + X (swing) cross-slides + UHMW pad + gib", "steel-structural",
+         "film", 4, "set", 45, 95, "Metal Supermarkets", "McMaster-Carr",
+         spec="One 2-axis cross-slide stack per corner — 316 flat-bar Z and X slides on UHMW pads with an adjustable gib, absorbing the across-rail rotation travel. UHMW $23–93/sheet; 316 flat bar cut to length. Firm at order (est.)."),
+    Part("fp-cam-clamp", "Cam-lever rail brake (skate lock)", "fasteners-hardware",
+         "film", 12, "ea", 8, 15, "McMaster-Carr", "Amazon",
+         spec="Three per corner — a cam-lever brake locks the acetal skate to the U-channel after the corner is slid to depth (no leadscrews); holds for the exposure + transport. Firm SKU/price at order (est.)."),
+    Part("corner-l-plate", "Corner plate 304 SS (U-joint mount)", "steel-structural",
+         "film", 4, "ea", 38, 52, "Metal Supermarkets", "Online Metals",
+         spec='¼" 304 SS plate, ~6"×8" L-bracket — the frame-corner ↔ U-joint mount. Carries the concentrated U-joint corner load in STEEL, not aluminum; stainless for the cyanotype splash zone + galvanic match to the 303 SS U-joint. NOT expendable (the perimeter angle stays expendable 6061).'),
     # — Film Plane Frame (1,046) —
-    Part("alu-angle-2x2", 'Aluminum angle 2"×2"×3/16"', "aluminum",
-         "film", 10, "ea", 22, 22, "Metal Supermarkets", "Online Metals", spec="8 ft lengths"),
+    Part("alu-angle-2x2", 'Aluminum angle 2"×2"×3/16" (6061, anodized)', "aluminum",
+         "film", 10, "ea", 22, 22, "Metal Supermarkets", "Online Metals",
+         spec="6061-T6 angle, clear-anodized, 8 ft lengths — the film-plane PERIMETER FRAME, an EXPENDABLE part. In the splash (not immersed) cyanotype zone anodized 6061 corrodes slowly; treated as inspect-annually / replace-on-pitting to save ~32 kg + ~$1.5k vs 304 SS (the ACM backing does the flatness work, so Al's lower stiffness is acceptable).",
+         note="A 304 SS swap was evaluated 2026-07-16 (~$1,650–2,200, +32 kg) and rejected — kept as an expendable anodized-6061 frame per Alvin (weight + cost). Firm the anodized-6061 price at the Aug-2026 re-price."),
     Part("dibond-acm-film", "Dibond ACM panel 4mm", "plastics-sheet",
          "film", 6, "sheet", 85, 85, "Grimco", "Signwarehouse",
          spec="4 ft × 8 ft sheets — single rigid backing, {{fact:film_plane_width_mm}}×{{fact:film_plane_height_mm}}mm"),
@@ -555,15 +561,15 @@ PARTS: list[Part] = [
     Part("saddle-m8-hex", "M8 hex fixing bolt + nut, SS", "fasteners-hardware",
          "film", 8, "ea", 2, 2, "McMaster-Carr", "Amazon", spec="ICP-14: right-rail permanent fixing; 2/saddle ×2 TR + spare"),
     # ═══ clamp (film-clamp-mechanism-report §4) — split out of FILM; itemized, sums to the FILM
-    # clamp lines (clamps 276–736 + mounting 76) = 352–812 ═══
-    Part("cam-lever-clamp", "Cam-lever spring clamp", "fasteners-hardware",
-         "clamp", 92, "ea", 3, 8, "McMaster-Carr", "Amazon", spec="Toggle-style, ~5N, neoprene jaw (Destaco equiv. / generic)"),
-    Part("clamp-m5-bolt", "M5×16 SS socket head bolt", "fasteners-hardware",
-         "clamp", 184, "ea", 0.25, 0.25, "McMaster-Carr", "Bolt Depot", part_no="91292A128", spec="A2-70 stainless"),
+    # clamp lines (clips 270–720 + mounting 74) = 344–794 ═══
+    Part("spring-clip", "Muslin spring clip", "fasteners-hardware",
+         "clamp", CLAMP_N_TOTAL, "ea", 3, 8, "McMaster-Carr", "Amazon", spec="Bracket + spring jaw, ~5N, neoprene pad, torsion spring, squeeze handle; through-bolted to the frame upstand (nuts on the inside)"),
+    Part("clamp-m5-bolt", "M5×16 SS countersunk screw", "fasteners-hardware",
+         "clamp", 2 * CLAMP_N_TOTAL, "ea", 0.25, 0.25, "McMaster-Carr", "Bolt Depot", part_no="91292A128", spec="A2-70 stainless — through-bolts the clip bracket to the upstand"),
     Part("clamp-m5-nut", "M5 SS Nylock nut", "fasteners-hardware",
-         "clamp", 184, "ea", 0.08, 0.08, "McMaster-Carr", "Bolt Depot", part_no="93625A200", spec="A2-70 stainless"),
+         "clamp", 2 * CLAMP_N_TOTAL, "ea", 0.08, 0.08, "McMaster-Carr", "Bolt Depot", part_no="93625A200", spec="A2-70 stainless — on the inside edge of the upstand"),
     Part("clamp-neoprene", "Neoprene strip 60A", "seals-gaskets",
-         "clamp", 1, "roll", 15, 15, "McMaster-Carr", "Grainger", part_no="8614K44", spec="35mm × 6mm, self-adhesive, 10m"),
+         "clamp", 1, "roll", 15, 15, "McMaster-Carr", "Grainger", part_no="8614K44", spec=f"{CLAMP_JAW_W}mm × {CLAMP_JAW_T}mm, self-adhesive, 10m — the clip jaw pad"),
 
     # ═══ lightlock (hinged-panel §8.2) — housing + drum; sums to costing.LIGHTLOCK ($1,385–$2,070) ═══
     Part("ll-hdpe-housing", "5mm UV-stabilized HDPE sheet (black)", "plastics-sheet",
@@ -573,7 +579,7 @@ PARTS: list[Part] = [
          "lightlock", 1, "lot", 150, 240, "TAP Plastics", "Curbell",
          spec="Ø864 revolving drum shell + top/bottom caps — LT_DRUM_T (~7 m²)"),
     Part("ll-skf-bearing", "SKF 6215-2RS1 sealed bearing", "bearings-motion",
-         "lightlock", 2, "ea", 55, 95, "Bearing World", "Applied", spec="Top and bottom (drum rotation)"),
+         "lightlock", 2, "ea", 60.59, 60.59, "Bearings Direct", "McMaster-Carr", part_no="6215-2RS", url="https://bearingsdirect.com/6215-2rs-ball-bearing-75x130x25-sealed-6215-2nse/", spec="Top and bottom (drum rotation). Ø75 bore × Ø130 OD × 25mm wide, C=52.7 kN, both-sides sealed (6215-2RS / 6215-2NSE; SKF designation 6215-2RS1). Buy the ABEC-1 grade: the drum is a hand-rotated, low-speed, low-load light-lock — the tighter ABEC-3 tolerance buys nothing here (SKF's standard 6215-2RS1 is Normal/P0 = ABEC 1). VERIFIED $60.59 ea at Bearings Direct 2026-07-18. ALT: McMaster 6138K125 @ $394.88 ea — a heavy commodity-bearing premium, prefer the distributor."),
     Part("ll-stub-shafts", "75mm Ø × 150mm steel stub shaft", "steel-structural",
          "lightlock", 2, "ea", 15, 25, "steel service center", spec="Bearing shafts"),
     Part("ll-wiper-seal", "Felt/brush wiper strip + 12mm closed-cell neoprene", "seals-gaskets",
@@ -606,8 +612,8 @@ PARTS: list[Part] = [
     # ═══ door (hinged-panel §8.4) — fixed door frame; sums to the SWINGPIVOT door lines ($335–$550) ═══
     Part("sp-door-frame-rhs", "50 × 50 × 3mm RHS mild steel (6 m lengths)", "steel-structural",
          "door", 3, "ea", 30, 40, "Metal Supermarkets", spec="Frame members"),
-    Part("sp-door-seal-lips", "3mm steel plate/angle (~110mm × ~4 m)", "steel-structural",
-         "door", 1, "lot", 45, 80, "Metal Supermarkets", spec="Top + bottom seal lips — threshold upstand + frame-top downstand; seal paths #3–#4"),
+    Part("sp-door-seal-lips", "Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)", "seals-gaskets",
+         "door", 1, "lot", 129, 129, "McMaster-Carr", part_no="74405T12", url="https://www.mcmaster.com/74405T12-74405T126/", spec="Top + bottom door-frame light seals (paths #3–#4) — 2× McMaster 74405T12 nylon Tight-Seal Strip Brush (8 ft, 1\" overall height, $28.88 ea) in 2× McMaster 8813T53 aluminum holder channel (8 ft, $35.37 ea) = $128.50 firm; covers full panel width top + bottom (~2× C_WID ≈ 4.7 m ≈ 15.5 ft, from 4× 8 ft lengths). The swinging panel edge SWEEPS THROUGH the bristles, so a brush (not a compression EPDM, which would drag under the sideways sweep) — same principle as the drum-opening brush seals.", note="Changed 2026-07-18 from 3mm steel seal lips + panel-edge EPDM compression to a strip brush: the top/bottom seal is swept through by the swinging panel, so a brush is the correct type. Brush 74405T12 ($28.88/8ft), holder 8813T53 ($35.37/8ft) — prices verified 2026-07-18."),
     Part("sp-door-fab", "Welding / fabrication", "fabrication-labor",
          "door", 1, "lot", 200, 350, "local fab", spec="Frame assembly + wall attachment"),
 
@@ -1019,7 +1025,7 @@ def reconcile_key(sys: str) -> str:
 _WATER_SPLIT = {"ibc-frame": "IBC stacking frame", "tray": "Processing tray", "spray": "Spray bar"}
 # costing.FILM bundles the muslin clamps (which physically live in film-clamp-mechanism-report); the
 # registry splits them into a 'clamp' system, leaving 'film' = FILM minus these two lines.
-_CLAMP_LINES = ("Cam-lever spring clamps", "Clamp mounting")
+_CLAMP_LINES = ("Spring clips", "Clamp mounting")
 
 
 def _split_sum(lst, prefixes, keep: bool):

@@ -123,7 +123,7 @@ right — leaving the central span (the active film-plane width) as the clear op
 | Optical zone | Clear — no equipment; optical cone from pinhole traverses this central span unobstructed |
 | Cargo door end | Hinged panel with integrated revolving light-trap drum |
 | Pinhole aperture | Aperture Ø<!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm at Y_depth=0 |
-| Film plane | Muslin sensitized surface, spanning the active 4,499mm × 2,388mm (X=150–4,649mm) |
+| Film plane | Muslin sensitized surface, spanning the active 4,499mm × 2,094mm (X=150–4,649mm) |
 
 See [Engineering Diagrams](engineering-diagrams.md) §3 for the full floor plan drawing,
 and §13 for the optical line-of-sight clearance analysis.

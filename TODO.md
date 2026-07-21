@@ -11,6 +11,123 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ---
 
+## ★ MAJOR MILESTONE — manufacturing-ready blueprints (ALL drawing sets) — OPEN
+
+_Alvin's call (2026-07-16): the current 2D sets are arrangement-faithful schematics (true-proportion +
+topologically correct, reconciled to the 3D) but NOT manufacturing blueprints. The milestone is a
+**definitive, dimensionally-correct, shippable-to-a-fabricator drawing package for EVERY subsystem** —
+precise hole positions, tolerances, fastener callouts, datums, section views, material/finish, driven
+parametrically from `tbs_constants` so they can't drift. Do the **film-plane corner mechanism FIRST** (below)
+as the template, then roll the same standard out across all sets (film plane, water/tray/spray, IBC frame,
+walkway, hinged panel, light lock, electrical, optics, …)._
+
+### Definitive corner-mechanism engineering drawing (film plane — FIRST / template)
+
+- [ ] Fully-dimensioned multi-view detail of ONE corner: the weight rail + skate, the wide carriage plate,
+  the Z (tilt) + X (swing) 316 flat-bar cross-slides, the Ruland U-joint, the L-bracket, and the 6061 frame
+  angle — with **precise hole positions** (PCD/edge distances), **fastener callouts** (J1–J5: sizes, thread,
+  torque), section views, material/finish notes, and a datum/tolerance scheme. Dimensionally exact.
+- [ ] Drive it from `tbs_constants` (or add the missing constants: cross-slide bar section — currently
+  `XSLIDE_*` are `reserved` — U-joint model dims, hole PCDs) so the drawing can't drift from the 3D. This
+  is also what firms the (still un-quantified) cross-slide bending SF and the per-corner load.
+- [ ] Reconcile the TL/TR (guide) corner: it is the mirror (film below its guide rail) — the drawing set
+  should cover both bottom (weight) and top (guide) corners.
+
+## Weight model — film-plane moving mass undercounts the ACM backing — OPEN
+
+_Surfaced 2026-07-16. `generate_weight_analysis._film_plane_carriage_weight()` = frame + 92 clamps +
+4 carriages ≈ 32 kg, but does NOT include the ~53 kg Dibond ACM backing (9.6 m² × ~5.5 kg/m²) that
+moves with the plane. So the "Film plane carriage" line (and thus total-dry + CG) under-books the
+moving plane by ~50 kg._
+
+- [ ] Add the ACM backing mass to the film-plane moving-mass term (RHO/area from the dibond-acm-film
+  part), re-inject the weight blocks + PNGs, and re-check the CG/floor-load. Also feeds the (still
+  un-quantified) per-corner load used to firm the cross-slide section.
+
+## Film-plane report reconciliation (leadscrew Option A → U-channel redesign) — PROSE DONE, BOM GATED
+
+_Surfaced 2026-07-16 during the frame material fix. Prose reconciled 2026-07-17 (commit 47d87d10).
+The remaining §7 parts BOM is gated on confirmed prices._
+
+- [x] `film-plane-mechanism-report.md` §1/§4/§8/§9 — replaced the leadscrew Option-A narrative with the
+  304 U-channel + acetal skate + 316 flat-bar Z/X cross-slide + Ruland US12-6-6-SS U-joint + cam-clamp
+  design; dropped handwheels/Acme/rod-end/pivot-pin/PA-14 + old-vs-new archaeology; §4 image now Sheet 7
+  (front elevation); Sketchfab embed + `models/sketchfab.json` → film-plane-mechanism 572b… .
+- [x] `component-dependency-map.md` §3.1 component roster + §3 diagram-matrix note → U-channel design.
+- [~] `film-plane-mechanism-analysis.md` — scope note fixed (stops claiming it describes the built
+  mechanism; optics §3/§5/§6 affirmed; hardware/BOM → report). **STILL OPEN (task #30):** the §4
+  mechanism + §7 BOM + §8 maintenance are a leadscrew decision-record snapshot — DECIDE keep-collapse-
+  to-optics-only vs **retire** (it's nav-labeled "(superseded)" and its optics overlap distortion-renders).
+- [x] **Reconcile the two film-plane 3D models — DONE 2026-07-19.** _(⤳ **REVERSED 2026-07-20** — Alvin's call to **retire** `film-plane.skp` instead of keeping both; see "Retire the superseded film-plane.skp" below.)_ `film-plane.skp` geometry was ported to the built U-channel/skate/U-joint design earlier this session (`_corner_parts()`, committed); `component-dependency-map.md` §3.1 now describes it as U-channel (not Option-A leadscrew) and a **film-plane-mechanism row was added** with the split of responsibility (mechanism = bolt-level single-corner detail; film-plane = same design at whole-plane scale + the animated DCs). ~~Both are~~ Both are
+  KEPT (film-plane.skp is NOT retired). `film-plane.skp` = the full film-plane model (older Option-A
+  leadscrew DC); `film-plane-mechanism.skp` = the current corner mechanism (U-channel/skate/U-joint). They
+  describe overlapping geometry and have diverged — reconcile so the full model carries the current
+  corner design (or define a clear split of responsibility). The report now embeds film-plane-mechanism; both
+  stay in `models/sketchfab.json`. Also: `component-dependency-map.md` §3.1 model table (line ~480)
+  still documents only the film-plane row (leadscrew DC) with no film-plane-mechanism row — update once the
+  two models are reconciled (deferred: describes 3D internals under Alvin's active review).
+- [x] **§7 parts BOM — DONE 2026-07-19.** Swapped the 11 leadscrew SKUs → the U-channel mechanism (1262T21 U-channel $362/6ft, USKC12-6-6-SS U-joint $276, UBOOT boot, 4040N12 support $58, 89535K87 3ft stub rod $13.25, acetal skate, 316 cross-slides, cam clamps, 304 corner plate); costing §4.1 + EXPECTED + report §7 + master + cost-breakdown reconciled (+$2.9k mid; film $6,063–7,039); prose swept (funding/equipment/summary/dimension-audit). Skate/cross-slide/cam-clamp are fab estimates — firm at order. ~~GATED on Alvin's SKU paste-check.~~ `parts.py` film section still holds the 11
+  leadscrew SKUs (hgr20-rail, hgh20ca, acme-leadscrew/nut, handwheel-8in, locking-collar, crossslide-
+  hgr15/hgh15ca/plate, rod-end-bearing, pivot-pin) → the report §7 table + master §4 inject them. Swap
+  to the Sheet-5 corner hardware (Ruland **USKC12-6-6-SS keyway-clamp U-joint @ $276** + UBOOT12/19-NI-KIT,
+  McMaster 4040N12 supports, 89535K873 3/8" KEYED stubs, Ø32 acetal rollers on Ø10 316 axles, carriage
+  plate, 316 flat-bar cross-slides + UHMW + gib, cam clamps, 1262T21 U-channel). **Blocked:** McMaster
+  blocks crawlers, so 4040N12 / 1262T21 / 89535K873 SKUs could not be auto-verified. Alvin to paste-check:
+  4040N12 (304 shaft support), 1262T21 ($/ft), 89535K873 (3/8" 304 rod). Confirmed: **U-joint USKC12-6-6-SS
+  $276**, boot $22–29, 10mm 316 rod $33–50/ft, UHMW $23–93/sheet. Then reconcile parts.py + costing (film
+  band + grand_total move up ~$1.5–2.5k — the U-joint alone is $276×4) → §7 auto-injects; retires the
+  parts-identity dead-SKU lint warnings. This is also the FP_W/FP_H dead-BOM retirement folded in.
+
+- [ ] **Master shopping list — add a part number for each primary supplier.** The per-supplier shopping tables should carry the primary-supplier SKU for every line (many rows list a supplier but no part number), so an order can be placed directly. (Alvin 2026-07-19.)
+- [ ] **Reconcile the EPDM gasket on the cargo-door-facing wall of the hinge panel.** Now that the top/bottom door seals are strip brushes, re-check the panel perimeter / housing-surround EPDM on the cargo-door-facing (exterior) wall of the hinge panel — confirm what stays EPDM vs brush and that the 3D/report/parts agree. (Alvin 2026-07-19.)
+
+## Film-plane U-joint — research a cheaper alternative — OPEN
+
+_Alvin 2026-07-17: chose **Ruland USKC12-6-6-SS** (keyway+clamp, **$276 ea**) as the interim part —
+expensive at ×4 corners = **$1,104**. Research a cheaper joint that meets the FULL spec below (a MISUMI
+HS-10-A-A at $96 was a candidate but its max angle was unconfirmed and its material must be verified)._
+
+**Spec the U-joint MUST meet (one per corner ×4):**
+- **Type:** single universal joint (2-axis — tilt + swing).
+- **Bore:** 3/8" (9.5 mm) both ends — or metric (10 mm), then the 304 stubs resize to match.
+- **Material: STAINLESS** (303/304/316) — it sits in the cyanotype **splash (wet) zone**; plain carbon/
+  alloy steel (e.g. MISUMI's default S45C HS series) would rust and is NOT acceptable.
+- **Max operating angle: ≥ 40°** — the plane tilts ±40° (`MAX_TILT_DEG`) and each corner's U-joint bends
+  the full angle (rigid plane; the joint is the only angular DOF). Swing needs ±28°.
+- **Shaft securing: POSITIVE** — keyway+clamp (as the USKC) OR set-screw-on-a-flat + threadlocker/Nypatch.
+  A bare point-contact set screw is NOT acceptable (backs out under transport vibration).
+- **Envelope:** ~0.745" OD × 2.688" L (Ruland size 12) or similar — fits the corner-plate/carriage stack.
+- **Cost target:** << $276 ea. Candidates to chase: MISUMI HS-series **stainless** (confirm ≥40° angle;
+  ~$96), McMaster stainless U-joints (SKU crawler-blocked — needs a human paste-check), Belden UJ-SS
+  set-screw stainless (~$126–178). Update Sheets 3/5/8/9 + the BOM if a cheaper part is adopted.
+
+## Muslin clamp → spring clip redesign (Sheet 6) — IN PROGRESS
+
+_Alvin review 2026-07-17: the muslin clamp is NOT a cam-lever toggle — it's a **spring clip**:
+a FIXED jaw bolted to the ALU frame edge (countersunk bolts) + a SPRING-loaded jaw that pinches the
+muslin against the frame edge; squeeze the handle to open (torsion spring holds closed). Sheet 6
+Panel A redrawn to this; Panel B removed (redundant — open/closed now a ghost + arc on Panel A);
+CLAMP NOTES relocated + rewritten. NOT committed yet._
+
+- [ ] **Panel A frame is the L (2×2 angle) for now.** An **offset-T** cross-section (flange holds the
+  ACM + bolts to the corner carriage; ACM flush to the clamp edge) was drawn then **reverted at
+  Alvin's request — PARKED**. Resolve the frame section (L vs offset-T) with Alvin later.
+- [ ] **Sheet 6 Panels C (plan) + D (elevation) still show the OLD cam-lever design** — awaiting
+  Alvin's call: redraw to the spring clip, or trim as redundant (like B).
+- [ ] **Downstream cascade once the drawing locks:** `film-clamp-mechanism-report.md` (describes a
+  cam-lever toggle), the `clamp` BOM in `parts.py` ("Cam-lever spring clamp"), and the `CLAMP_*`
+  constants (`CLAMP_BASE_W/H/T`, `CLAMP_LEVER_L`, `CLAMP_OPEN_GAP`… base-plate/lever dims don't map
+  to a spring clip) all need reconciling to the spring clip.
+
+## Walkway pop-out extension — revisit past the pinhole — OPEN
+
+_Surfaced 2026-07-17 (Alvin)._
+
+- [ ] Extend the walkway pop-out (punch-out bay) another IBC-width **past the pinhole, toward the
+  filter skid** — revisit the right/pinhole-end walkway so the deck reaches further along that end.
+  Study the clearance vs the pinhole wall, filter skid, and IBC stack; cascade to the walkway 2D
+  (`generate_walkway_diagram.py`) + 3D (`walkway.skp` / `overview.skp`) + master-shopping-list.
+
 ## Full audit (2026-07-04) — 53 confirmed findings → [audit-2026-07.md](audit-2026-07.md)
 _Multi-agent audit across all subsystems × 5 dimensions (3 high / 28 med / 22 low), every finding independently verified. Verdict: **design is sound — no structural/optical defect**; the debt is documentation cascade-leakage. Full detail + per-finding fixes in the linked report; fix in priority order:_
 
@@ -43,7 +160,28 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   `apply_parts_csv.py parts-worklist.csv` → `parts.py --inject` + `costing.py --inject` + `lint.py`.
   Alvin fills at his own cadence from logged-in supplier sessions. (Reminder block atop `parts.py`.)
 
+## Material validation — soak tests (deferred)
+Physical coupon soaks in the actual potassium-ferricyanide / citric-acid wash, deferred until the
+bath is available. Both are cheap; nothing downstream is finalized until they pass.
+- [ ] **UHMW pad coupon soak** — confirm virgin UHMW-PE survives the wash. It is the one
+  medium-confidence item in the Option-B film-plane slide (UHMW pads on 316 flat-bar ways):
+  compatibility charts list citric acid explicitly, but potassium ferricyanide is only *inferred*
+  from the mild-oxidizer class. Soak a scrap ~24 h in the real bath; check for swelling, softening,
+  discoloration, and mass change. Fallback if it fails: acetal copolymer (POM-C) pads.
+- [ ] **Muslin soak test** — validate the muslin (cyanotype substrate) in the wash: dimensional
+  stability when wet, adhesion to the ACM backing sheet, and whether it holds under the perimeter
+  cam clamps. (Paired with the UHMW test — same bath, same session.)
+
 ## Design / 3D (deferred)
+- [x] **FP_H cascade — `.skp` re-sends DONE 2026-07-20.** Branch `film-plane-redesign`:
+  the active film-plane height is now **2,094mm** (top rail lowered 44mm via the `RAIL_OFF`→`RAIL_OFF_TOP`/`RAIL_OFF_BOT`
+  split). Constants, parts/costing, all FP_H diagrams, weight, and the report prose/config table are cascaded + committed.
+  - [x] **overview.skp — DONE 2026-07-20.** Re-sent `generate_sketchup_model.py` into the live doc; verified FP top
+    rails at Z2244 (= C_HGT − RAIL_OFF_TOP) + bottom rails at Z160; Alvin saved + re-uploaded (UID `e624e210…`);
+    `overview.skp` + `overview.rb` committed (`105ec8bc`). `lint.py --verify-all` now fully clean.
+  - [x] **film-plane-mechanism.skp — DONE 2026-07-20.** Confirmed current: a fresh `--save` regen was
+    byte-identical to the committed `.rb`, so the model was already built from the post-FP_H code. Re-sent into
+    the live doc anyway to be certain; Alvin saved + re-uploaded (UID `572b4aaa…`); `.skp` committed.
 - [x] **spraybar.skp axle-saddle re-spec — DONE.** The axle-retention saddle was re-specced to a fabricated
   1/8" (3.18mm) × 3/4" (19mm) 304 SS flat-bar clamp with 12mm M5 feet (was a schematic 2mm/6mm-wide token that
   couldn't hold its own bolt). 2D (sheet 2 cross-section + sheet 6 plan) + `parts.py`/report/master +
@@ -105,7 +243,40 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   labelled historical analysis of the old stretching design.)*
 - [x] **3D D-rings added — DONE.** Added 8 D-ring cylinders to the shared `cp.tote_restraint()` (4/tier on the front bars, mirroring the 2D). Overview sent + **verified 8 in the live model** (4/4 by tier). Shared function → the **ibc-stack + water** models pick them up on their next send. *(Dead `ibc_rack()` D-ring code left for a future delete.)*
 
+## Retire the superseded `film-plane.skp` + its generator — DONE 2026-07-20
+
+_Alvin 2026-07-20: `film-plane.skp` (the older full-plane "Option A" model) is superseded by
+`film-plane-mechanism.skp` + `generate_film_plane_mechanism_model.py` — retired. Reversed the
+2026-07-19 "both KEPT" reconciliation above. `overview.skp` carries the film-plane geometry inline and
+**stays** — this retired only the standalone film-plane model._
+
+- [x] Deleted `src/models/generate_film_plane_model.py`, `src/models/film-plane.rb`, and `models/film-plane.skp`.
+- [x] Removed the `film-plane` script→output entry from `dependencies.yml`; the `lint.py --verify-all`
+  model set derives from `dependencies.yml`, so it dropped 7 → 6 automatically.
+- [x] Removed the `film-plane` entry from `models/sketchfab.json`. **Alvin's manual step:** decide whether
+  to unpublish the dormant Sketchfab model (UID `bb5394a8983a491fa541088b901c24f8`) or leave it. The report
+  embeds **film-plane-mechanism**, not film-plane, so no report embed changed.
+- [x] Dropped the `film-plane` row from `component-dependency-map.md` §3.1 and fixed the
+  film-plane-mechanism row's cross-reference to it.
+- [x] Grep sweep clean (no stragglers in `publish.sh` / `setup_docs.py` / docs); `lint.py` +
+  `lint.py --verify-all` green. Added a `[Unreleased]` RELEASE.md entry.
+
+**Parked working-tree files (2026-07-20):**
+- `src/models/film-plane.rb` — **RESOLVED:** deleted with the model (the stale regen went with it).
+- `overrides/partials/copyright.html` → `src/overrides/partials/copyright.html` — **RESOLVED 2026-07-20:**
+  it was a half-finished move (file copied to `src/overrides/` + deleted from root, but `custom_dir` never
+  updated — would have broken the footer version stamp). Finished the move: `git mv` to `src/overrides/`,
+  updated `custom_dir: overrides` → `src/overrides` in **both** `mkdocs.yml` and `setup_docs.py`; verified a
+  build renders the "Version v0.3" footer from the new path.
+
 ## Cost / data modeling
+- [ ] **Reconcile 304 vs 316 stainless steel usage — whole-system function + cost — OPEN.** Audit every SS
+  part in `parts.py` (rails, U-channel, corner plates, U-joints, flat-bar cross-slides, shaft supports,
+  stub rod, tray, fasteners, shim, etc.) for its grade (304 vs 316), decide the grade each part actually
+  needs (corrosion exposure — cyanotype/wet-process wash vs dry structure — vs cost), and reconcile so the
+  choice is consistent and justified system-wide. 316 carries a marine/chemical-immunity premium; use it
+  only where the wet chemistry warrants it, 304 elsewhere. Update `parts.py` grades + costs and the reports
+  in the same pass.
 - [x] **Cost-analysis Bucket B — DONE (2026-07-05).** Solar lever computed (drop 1× `solar-panel-200w`);
   two **phantom levers** removed (film banked into the manual standard; battery already 1×100Ah). The
   two remaining alternatives were **decided by Alvin, not modeled**: **keep 304 SS tray** (poly needs a
@@ -125,6 +296,11 @@ _Each needs a call (or a re-source), then the noted cascade. Independent — tak
   system values are now policed.** Method for any future find: `grep facts.yml constant:<NAME>` → tight alias → verify.
 
 ## Docs / gallery
+- [x] **Register the film-plane joint-study generators in `dependencies.yml` — DONE 2026-07-20.** Added
+  `corner_gimbal` (→ `film-corner-gimbal.png`), `joint_options` (→ `film-joint-options.png`), and
+  `joint_study` (→ `film-joint-study-gimbal.png` + `film-joint-study-ujoint.png`) to the `generators:` block;
+  `lint.py` `dependencies.yml valid` gate green (each script references its declared outputs), so the
+  missing-cascade sweep now covers them.
 - [x] **Gallery-only diagrams — DONE (won't-do).** Gallery-only PNGs are fine without a dedicated owning report — they live in the `all-diagrams.md` visual index. That gallery is now **excluded from the brochure PDF** (`BROCHURE_EXCLUDE`) so the 100+ images don't bloat it.
 - [x] **`tilt-swing-board-analysis.md` §4 — DONE 2026-07-07 (point-to-gallery).** Chose point-to-gallery over
   merge: distortion-renders §3 (the dedicated renders gallery) owns the 9 C0–C8 images; §4 renamed "Combined

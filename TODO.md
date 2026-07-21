@@ -78,7 +78,7 @@ The remaining §7 parts BOM is gated on confirmed prices._
   band + grand_total move up ~$1.5–2.5k — the U-joint alone is $276×4) → §7 auto-injects; retires the
   parts-identity dead-SKU lint warnings. This is also the FP_W/FP_H dead-BOM retirement folded in.
 
-- [ ] **Master shopping list — add a part number for each primary supplier.** The per-supplier shopping tables should carry the primary-supplier SKU for every line (many rows list a supplier but no part number), so an order can be placed directly. (Alvin 2026-07-19.)
+- [x] **Master shopping list — add a part number for each primary supplier — DONE 2026-07-21.** The master by-type BOM (`emit_master`) now renders each line through the same `_item_cell` convention the per-report §Parts-Lists use — the item name is hyperlinked to its supplier URL and the registry `part_no` is appended `(SKU)` — so an order can be placed directly from the master. Every registry row that carries a `part_no` now shows it (17 SKUs + 22 URL-linked at time of change); the remaining branded rows show no SKU only because the *registry itself* doesn't carry one yet — that data backfill is the job of the parts-identity worklist item below (Alvin's supplier paste-check), and each SKU auto-appears in the master on the next `parts.py --inject`. (Alvin 2026-07-19.)
 - [ ] **Reconcile the EPDM gasket on the cargo-door-facing wall of the hinge panel.** Now that the top/bottom door seals are strip brushes, re-check the panel perimeter / housing-surround EPDM on the cargo-door-facing (exterior) wall of the hinge panel — confirm what stays EPDM vs brush and that the 3D/report/parts agree. (Alvin 2026-07-19.)
 
 ## Film-plane U-joint — research a cheaper alternative — OPEN

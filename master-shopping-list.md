@@ -69,7 +69,7 @@ indicative low–high estimates — get quotes before ordering.
 | 6061-T6 AL plate 3/16" (5mm) | 1 ea | Online Metals | spray | $16–$28 |
 | 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | 1 ea | Online Metals | spray | $6 |
 | Aluminum angle 2"×2"×3/16" (6061, anodized) | 10 ea | Metal Supermarkets | film | $220 |
-| Aluminum face plate 340×240×3mm (flush power panel) | 1 ea | Online Metals | electrical | $18 |
+| [Aluminum face plate 340×240×3mm (flush power panel)](https://www.onlinemetals.com) | 1 ea | Online Metals | electrical | $18 |
 | Aluminum U-channel (per meter) | 40 m | Online Metals | panel | $120–$200 |
 | Disc retaining ring (Al 6061-T6, M52×0.75) | 1 ea | Local fab | optics | $15–$25 |
 | Telescoping aluminum pool pole, 4–8 ft | 1 ea | Amazon | spray | $15 |
@@ -80,11 +80,11 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | Acetal 4-wheel skate — Ø32 load + Ø20 keeper rollers, Ø10 316 axles + carriage plate | 4 set | McMaster-Carr | film | $220–$360 |
-| Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore) | 1 1 ft rod | McMaster-Carr | spray | $11 |
+| [Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore)](https://www.mcmaster.com/8576K23/) (8576K23) | 1 1 ft rod | McMaster-Carr | spray | $11 |
 | Flanged sleeve (journal) bearing, Ø90 bore | 2 ea | McMaster-Carr | swing | $60–$110 |
-| McMaster 4040N12 304 shaft support | 4 ea | McMaster-Carr | film | $232 |
-| Ruland USKC12-6-6-SS U-joint (keyway+clamp, 303 SS) | 4 ea | Ruland | film | $1,104 |
-| SKF 6215-2RS1 sealed bearing | 2 ea | Bearings Direct | lightlock | $121 |
+| [McMaster 4040N12 304 shaft support](https://www.mcmaster.com/4040N12/) (4040N12) | 4 ea | McMaster-Carr | film | $232 |
+| [Ruland USKC12-6-6-SS U-joint (keyway+clamp, 303 SS)](https://www.ruland.com/us12-6-6-ss.html) (USKC12-6-6-SS) | 4 ea | Ruland | film | $1,104 |
+| [SKF 6215-2RS1 sealed bearing](https://bearingsdirect.com/6215-2rs-ball-bearing-75x130x25-sealed-6215-2nse/) (6215-2RS) | 2 ea | Bearings Direct | lightlock | $121 |
 | Turntable thrust bearing, 12″ (Ø305) 1000 lb | 1 ea | VXB | swing | $40–$60 |
 | Ø20mm ball joint, zinc socket, M12 stud | 1 ea | Amazon | spray | $12 |
 | **bearings-motion subtotal** | | | | **$1,800–$2,010** |
@@ -94,8 +94,8 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | Ammonium dichromate | 1 run | Photographers' Formulary | chemistry | $25 |
-| Ammonium iron(III) oxalate (AmFe) | 17.1 kg | Photographers' Formulary | chemistry | $1,026 |
-| Potassium ferricyanide | 5.7 kg | Bostick & Sullivan | chemistry | $138 |
+| [Ammonium iron(III) oxalate (AmFe)](https://stores.photoformulary.com/ammonium-ferric-oxalate/) | 17.1 kg | Photographers' Formulary | chemistry | $1,026 |
+| [Potassium ferricyanide](https://www.bostick-sullivan.com/product/potassium-ferricyanide-250gm/) | 5.7 kg | Bostick & Sullivan | chemistry | $138 |
 | **chemistry-reagents subtotal** | | | | **$1,189** |
 
 ### container
@@ -113,7 +113,7 @@ indicative low–high estimates — get quotes before ordering.
 | 200mm 90° duct elbow | 1 ea | Home Depot | ventilation | $14 |
 | 200mm insulated flex duct | 1 ea | Home Depot | ventilation | $22 |
 | Duct collar + hose clamp | 1 ea | Home Depot | ventilation | $12 |
-| Evaporative cooler | 1 ea | Hessaire | ventilation | $185–$230 |
+| [Evaporative cooler](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) | 1 ea | Hessaire | ventilation | $185–$230 |
 | Ventilation (inline fans + light-trap baffles) — interior-conversion allowance | 1 lot | Amazon | interior | $80–$130 |
 | Weatherproof duct cap | 1 ea | Home Depot | ventilation | $8 |
 | **ducting-ventilation subtotal** | | | | **$371–$466** |
@@ -122,7 +122,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| 10mm corrugated conduit, drop runs (McMaster 7828K48) | 10 m | McMaster-Carr | electrical | $30 |
+| 10mm corrugated conduit, drop runs (McMaster 7828K48) (7828K48) | 10 m | McMaster-Carr | electrical | $30 |
 | 12V LED flat panel 300×600mm, 20W 4000K | 3 ea | Amazon | electrical | $75 |
 | 14 AWG duplex marine wire | 1 roll | Amazon | water | $22 |
 | 15A blade fuse | 1 ea | Amazon | water | $5 |
@@ -131,7 +131,7 @@ indicative low–high estimates — get quotes before ordering.
 | 200A main fuse — MRBF terminal-mount (ABYC E-11) | 1 ea | Amazon | electrical | $23–$27 |
 | 4 AWG ground wire, green/yellow, 3m | 1 lot | Amazon | electrical | $15 |
 | 40×25mm PVC cable trunking, 5m | 4 ea | McMaster-Carr | electrical | $40 |
-| Anderson Powerpole 30A connectors, 50 pairs | 1 kit | Powerwerx | electrical | $40 |
+| [Anderson Powerpole 30A connectors, 50 pairs](https://powerwerx.com) | 1 kit | Powerwerx | electrical | $40 |
 | Anderson Powerpole connectors 30A | 5 pair | Amazon | water | $10 |
 | Battery main disconnect — Blue Sea m-Series 300A isolator | 1 ea | West Marine | electrical | $33–$42 |
 | Battery terminal covers (pair), insulating boots | 1 pair | Amazon | electrical | $10 |
@@ -165,12 +165,12 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | Cooler inverter | 1 ea | Victron | ventilation | $153–$275 |
-| LiFePO4 battery, 100Ah 12V (Renogy Smart Lithium) | 1 ea | Renogy | electrical | $350–$430 |
-| PV array disconnect — DC load-break isolator, 50A/150VDC (NEC 690.13) | 1 ea | AutomationDirect | electrical | $40 |
-| Solar panel ground-mount tilt frame, 30° | 1 ea | Renogy | electrical | $33–$50 |
-| Solar panel, 200W monocrystalline 12V | 3 ea | Renogy | electrical | $450–$495 |
-| Victron Blue Smart IP65 12/15 shore backup charger | 1 ea | altE Store | electrical | $160–$180 |
-| Victron SmartSolar MPPT 100/50 charge controller | 1 ea | altE Store | electrical | $185–$230 |
+| [LiFePO4 battery, 100Ah 12V (Renogy Smart Lithium)](https://www.renogy.com/12v-100ah-smart-lithium-iron-phosphate-battery/) | 1 ea | Renogy | electrical | $350–$430 |
+| [PV array disconnect — DC load-break isolator, 50A/150VDC (NEC 690.13)](https://www.automationdirect.com/) | 1 ea | AutomationDirect | electrical | $40 |
+| [Solar panel ground-mount tilt frame, 30°](https://www.renogy.com) | 1 ea | Renogy | electrical | $33–$50 |
+| [Solar panel, 200W monocrystalline 12V](https://www.renogy.com/200-watt-12-volt-monocrystalline-solar-panel/) | 3 ea | Renogy | electrical | $450–$495 |
+| [Victron Blue Smart IP65 12/15 shore backup charger](https://www.altestore.com) | 1 ea | altE Store | electrical | $160–$180 |
+| [Victron SmartSolar MPPT 100/50 charge controller](https://www.altestore.com) | 1 ea | altE Store | electrical | $185–$230 |
 | **electrical-power subtotal** | | | | **$1,371–$1,700** |
 
 ### fabric-textile
@@ -197,11 +197,11 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | 100mm Ø SS grab rail | 1 ea | McMaster-Carr | lightlock | $15–$25 |
-| 10mm × 60mm 304 SS axle pin (4-pack) | 1 pack | Amazon | spray | $5 |
+| [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 1 pack | Amazon | spray | $5 |
 | 25mm ratchet strap, 1,100 kg WLL | 4 ea | Amazon | ibc-frame | $30–$50 |
-| 25mm welded D-ring | 8 ea | McMaster-Carr | ibc-frame | $40–$70 |
+| 25mm welded D-ring (3641T29) | 8 ea | McMaster-Carr | ibc-frame | $40–$70 |
 | 316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black | 1 ea | McMaster-Carr | panel | $20–$35 |
-| Axle saddle clamps ×8 (304 SS flat-bar stock) | 1 2 ft bar | McMaster-Carr | spray | $10 |
+| [Axle saddle clamps ×8 (304 SS flat-bar stock)](https://www.mcmaster.com/8992K794/) (8992K794) | 1 2 ft bar | McMaster-Carr | spray | $10 |
 | Cam-lever rail brake (skate lock) | 12 ea | McMaster-Carr | film | $96–$180 |
 | Continuous (piano) hinge, 600 mm | 1 ea | McMaster-Carr | shelf | $20 |
 | Corridor panel mount hardware (brackets + fasteners) | 1 lot | Home Depot | water | $25–$50 |
@@ -215,9 +215,9 @@ indicative low–high estimates — get quotes before ordering.
 | M12 × 40 bolt, Grade 8.8 | 12 ea | McMaster-Carr | ibc-frame | $12–$22 |
 | M12×80mm through-bolt kit | 58 ea | McMaster-Carr | walkway | $87–$145 |
 | M12×90mm hex through-bolt + nut + washers, SS | 28 ea | McMaster-Carr | film | $70 |
-| M5 SS Nylock nut | 176 ea | McMaster-Carr | clamp | $14 |
+| M5 SS Nylock nut (93625A200) | 176 ea | McMaster-Carr | clamp | $14 |
 | M5×16 mm CSK screws | 8 ea | McMaster-Carr | shelf | $4 |
-| M5×16 SS countersunk screw | 176 ea | McMaster-Carr | clamp | $44 |
+| M5×16 SS countersunk screw (91292A128) | 176 ea | McMaster-Carr | clamp | $44 |
 | M6 bolt+nut+washer set, SS (panel mount) | 4 set | McMaster-Carr | electrical | $5 |
 | M6 SS hex bolt + nut | 1 ea | McMaster-Carr | spray | $1 |
 | M6 SS hex bolts + flange nuts | 12 ea | McMaster-Carr | tray | $12 |
@@ -271,7 +271,7 @@ indicative low–high estimates — get quotes before ordering.
 | 1/2" NPT polypropylene tee | 6 ea | Amazon | water | $12–$24 |
 | 1/2" NPT polypropylene union | 6 ea | Amazon | water | $24–$36 |
 | 1/2" reinforced braided PVC hose, 15 ft | 1 ea | Amazon | spray | $15 |
-| 1/2" SDR-11 HDPE pipe | 4 stick | Ferguson | water | $24–$40 |
+| [1/2" SDR-11 HDPE pipe](https://www.ferguson.com) | 4 stick | Ferguson | water | $24–$40 |
 | 1/2"×1" NPT bushing reducer | 1 ea | Amazon | water | $3–$5 |
 | 1/4" irrigation poly tube | 1 ea | Amazon | spray | $6 |
 | 2" polypropylene camlock pairs (M+F) | 4 pair | Amazon | water | $20–$32 |
@@ -287,7 +287,7 @@ indicative low–high estimates — get quotes before ordering.
 | Banjo V050FP ball valve 1/2" FNPT | 2 ea | Barn Door Ag | water | $60–$90 |
 | Banjo V100FP ball valve 1" FNPT | 6 ea | Barn Door Ag | water | $198–$330 |
 | Barbed tees, tube into the side poly manifold | 7 ea | Amazon | spray | $10 |
-| Bulkhead fitting 2" NPT (304 SS) | 3 ea | McMaster-Carr | water | $410 |
+| [Bulkhead fitting 2" NPT (304 SS)](https://www.mcmaster.com/4464K115) (4464K115) | 3 ea | McMaster-Carr | water | $410 |
 | Distribution manifold, 1/2" → 7 barb outlets | 1 ea | Amazon | spray | $12 |
 | Flat-fan irrigation spray nozzles, barbed | 26 ea | Amazon | spray | $30–$50 |
 | pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | Amazon | water | $10–$18 |
@@ -301,14 +301,14 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | 20mm EPDM gasket (per meter, closed-cell) | 21 m | McMaster-Carr | panel | $84–$126 |
-| Black EPDM foam tape 1"×½" | 3 roll | McMaster-Carr | film | $84 |
+| Black EPDM foam tape 1"×½" (8614K84) | 3 roll | McMaster-Carr | film | $84 |
 | Felt/brush wiper strip + 12mm closed-cell neoprene | 1 lot | McMaster-Carr | lightlock | $40–$60 |
 | Light-sealing materials (interior conversion) | 1 lot | McMaster-Carr | interior | $150–$210 |
 | Neoprene gasket 340×240×3mm (panel weatherseal) | 1 ea | McMaster-Carr | electrical | $6 |
-| Neoprene strip 60A | 1 roll | McMaster-Carr | clamp | $15 |
-| Ruland UBOOT12/19-NI-KIT nitrile boot | 4 ea | Ruland | film | $88–$116 |
+| Neoprene strip 60A (8614K44) | 1 roll | McMaster-Carr | clamp | $15 |
+| Ruland UBOOT12/19-NI-KIT nitrile boot (UBOOT12/19-NI-KIT) | 4 ea | Ruland | film | $88–$116 |
 | Silicone gasket strip | 1 ea | McMaster-Carr | tray | $20 |
-| Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom) | 1 lot | McMaster-Carr | door | $129 |
+| [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | 1 lot | McMaster-Carr | door | $129 |
 | **seals-gaskets subtotal** | | | | **$616–$766** |
 
 ### stainless-sheet
@@ -325,9 +325,9 @@ indicative low–high estimates — get quotes before ordering.
 |------|-----|----------|---------|-----------|
 | 12mm steel plate, 150 × 150 cut | 4 ea | Metal Supermarkets | ibc-frame | $20–$40 |
 | 25×25×3 mm steel SHS | 1 lot | Online Metals | shelf | $30 |
-| 3/8" 304/304L SS rod — U-joint stub shafts (1× 3 ft) | 1 lot | McMaster-Carr | film | $13 |
+| [3/8" 304/304L SS rod — U-joint stub shafts (1× 3 ft)](https://www.mcmaster.com/89535K87/) (89535K87) | 1 lot | McMaster-Carr | film | $13 |
 | 304 SS RHS 40×25×3mm, 8 ft * | 2 ea | Online Metals | spray | $96–$144 |
-| 304 U-channel depth rail 3×1½" (76×38mm) | 6 ea | McMaster-Carr | film | $2,172 |
+| [304 U-channel depth rail 3×1½" (76×38mm)](https://www.mcmaster.com/1262T21/) (1262T21) | 6 ea | McMaster-Carr | film | $2,172 |
 | 316 flat-bar Z (tilt) + X (swing) cross-slides + UHMW pad + gib | 4 set | Metal Supermarkets | film | $180–$380 |
 | 4mm folded plate | 4 ea | Local fab | ibc-frame | $30–$50 |
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | 4 ea | Metal Supermarkets | ibc-frame | $120–$180 |
@@ -361,7 +361,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Unbleached muslin, 60" wide | 3 roll | Fabric Direct | chemistry | $300 |
+| [Unbleached muslin, 60" wide](https://www.fabricdirect.com/shop/craft-fabric/broadcloth-and-muslin-fabric/essence-60-medium-weight-muslin-fabric-unbleached-150-yard-roll/) | 3 roll | Fabric Direct | chemistry | $300 |
 | **substrate-fabric subtotal** | | | | **$300** |
 
 ### timber-ply
@@ -383,7 +383,7 @@ indicative low–high estimates — get quotes before ordering.
 | 6-mil black LDPE sheet, 10 ft × 8 ft | 1 ea | Home Depot | tray | $8 |
 | 6-mil black LDPE sheeting | 1 roll | Home Depot | water | $66–$70 |
 | 6-mil black poly sheeting | 1 roll | Home Depot | film | $66–$70 |
-| Apera Instruments AI311 PH60 pH meter | 1 ea | Apera Instruments | water | $100–$110 |
+| [Apera Instruments AI311 PH60 pH meter](https://www.amazon.com/Apera-Instruments-AI311-Replaceable-2-00-16-00/dp/B01ENFOIQE) | 1 ea | Apera Instruments | water | $100–$110 |
 | Chemical-resistant labels (GHS) | 1 pack | Amazon | water | $20 |
 | Citric acid, food grade, 5 lb | 2 bag | Amazon | water | $28 |
 | Nitrile gloves, box of 100 | 2 box | Amazon | water | $18–$40 |
@@ -397,12 +397,12 @@ indicative low–high estimates — get quotes before ordering.
 | Big Blue filter housing 4.5"×20" (separate) | 3 ea | AllFilters | water | $114–$186 |
 | CTO carbon block cartridge 4.5"×20" | 2 ea | RonAqua | water | $32–$60 |
 | HDPE spacer blocks 25mm (filter skid) | 1 lot | McMaster-Carr | water | $12–$22 |
-| IBC tote (1,000 L caged) | 4 ea | Container Exchanger | water | $320–$600 |
+| [IBC tote (1,000 L caged)](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | 4 ea | Container Exchanger | water | $320–$600 |
 | KDF-55 heavy-metal cartridge 4.5"×20" | 1 ea | FilterWay | water | $65–$95 |
 | MPP 5-micron sediment cartridge 4.5"×20" | 2 ea | Amazon | water | $24–$40 |
-| SeaFlo accumulator (0.75 L) | 1 ea | Environmental Marine | water | $30–$41 |
-| Shurflo 2088-554-144 pump (P-01 Blue supply) | 1 ea | Fresh Water Systems | water | $80–$89 |
-| Shurflo 2088-554-144 pump (P-02 filter loop) | 1 ea | Fresh Water Systems | water | $80–$89 |
+| [SeaFlo accumulator (0.75 L)](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) (SFAT-075-125-01) | 1 ea | Environmental Marine | water | $30–$41 |
+| [Shurflo 2088-554-144 pump (P-01 Blue supply)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 1 ea | Fresh Water Systems | water | $80–$89 |
+| [Shurflo 2088-554-144 pump (P-02 filter loop)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 1 ea | Fresh Water Systems | water | $80–$89 |
 | Shurflo 2088-554-144 pump (P-03 waste evacuation) | 1 ea | Fresh Water Systems | water | $80–$89 |
 | Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 1 ea | Fresh Water Systems | water | $80–$89 |
 | Shurflo 2088-554-144 pump (P-05 Brown drain) | 1 ea | Fresh Water Systems | water | $80–$89 |

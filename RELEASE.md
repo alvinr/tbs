@@ -24,6 +24,12 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Master shopping list now carries the supplier SKU on every line** — the by-type procurement BOM
+  (`parts.py emit_master`) rendered plain item names, while the per-report §Parts-Lists already
+  hyperlinked the name and appended the registry part number. The master now uses the same
+  `_item_cell` convention, so each line is order-ready (name → supplier URL, `(SKU)` appended) and
+  new part numbers auto-populate from the registry on `parts.py --inject`.
+
 - **Lint: the table-arithmetic warning now checks range-format totals** — `warn_arithmetic` only
   parsed scalar money cells (`$25`, `~$25`, `**$25**`), so any cost table whose column used a
   low–high range (`$25–$45`) was silently skipped and its `**Total**` could drift unchecked. The

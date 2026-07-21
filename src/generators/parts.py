@@ -889,18 +889,19 @@ def emit_master() -> str:
         out.append(f"### {t}\n")
         out.append("| Item | Qty | Supplier | Systems | Est. cost |")
         out.append("|------|-----|----------|---------|-----------|")
-        # aggregate the same key across systems
+        # aggregate the same key across systems (identity fields — desc/url/part_no/supplier — are
+        # shared by every row of a key, so keep a representative Part `p` to render the item cell)
         agg: dict[str, dict] = {}
         for p in items:
-            a = agg.setdefault(p.key, {"desc": p.desc, "qty": 0.0, "unit": p.unit,
+            a = agg.setdefault(p.key, {"p": p, "qty": 0.0, "unit": p.unit,
                                        "sup": canon_supplier(p.supplier), "sys": set(), "lo": 0.0, "hi": 0.0})
             a["qty"] += p.qty
             a["sys"].add(p.system)
             lo, hi = line(p); a["lo"] += lo; a["hi"] += hi
         sub_lo = sub_hi = 0.0
-        for a in sorted(agg.values(), key=lambda x: x["desc"].lower()):   # rows A–Z by item name
+        for a in sorted(agg.values(), key=lambda x: x["p"].desc.lower()):   # rows A–Z by item name
             cost = _money(a["lo"]) if round(a["lo"]) == round(a["hi"]) else f"{_money(a['lo'])}–{_money(a['hi'])}"
-            out.append(f"| {a['desc']} | {a['qty']:g} {a['unit']} | {a['sup']} | "
+            out.append(f"| {_item_cell(a['p'])} | {a['qty']:g} {a['unit']} | {a['sup']} | "
                        f"{', '.join(sorted(a['sys']))} | {cost} |")
             sub_lo += a["lo"]; sub_hi += a["hi"]
         st = _money(sub_lo) if round(sub_lo) == round(sub_hi) else f"{_money(sub_lo)}–{_money(sub_hi)}"

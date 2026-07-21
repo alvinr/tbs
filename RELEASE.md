@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Film-plane seal parts sourced; parts-identity lint fully clear.** Swapped the EPDM foam tape to
+  [McMaster 8694K88](https://www.mcmaster.com/8694K88/) (1"×½", 25 ft rolls) and right-sized the qty
+  to **2 rolls (50 ft)** against the ~43 ft film-plane perimeter — the old 3×50 ft = 150 ft was ~3.5×
+  over (provisional; logged in TODO for the EPDM-seal revisit). Verified the Ruland U-joint boot
+  ([UBOOT12/19-NI-KIT](https://www.ruland.com/uboot12-19-ni-kit.html), $30.59 ea). With these, **every
+  registry part now carries a verified SKU + URL** — the `parts identity` advisory (7 URL-missing at
+  the start of this pass) is at zero. Net film cost −$5/−$33 (EPDM −$39, boot +$34/+$6).
+
 - **IBC transport lashing → weld-on tie-down rings.** Sourced the restraint lashing points to
   [McMaster 3028T31](https://www.mcmaster.com/3028t31/) — a 1½" ID × ½" thick, 6,600 lb WLL,
   zinc-plated-steel **weld-on** ring — replacing the plain-D-ring + separate-mounting-plate approach

@@ -224,7 +224,7 @@ site_url: "{site_url}"
 
 theme:
   name: material
-  custom_dir: overrides
+  custom_dir: src/overrides
   favicon: assets/favicon.png
   logo: assets/favicon.png
   palette:

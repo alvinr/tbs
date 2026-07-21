@@ -24,6 +24,17 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Wall through-bolts finalized: partial-thread, right-sized to the container-wall grip.** A grip
+  analysis against the ISO container spec (side-wall corrugation ~25–30mm, not the ~38mm the prose
+  assumed) showed the M12×80/×90 through-bolts were oversized. Re-sized every wall bolt: film saddle
+  90→**M12×65**, walkway cantilever 80→**M12×65**, right-walkway →**M12×70** — all now **partial
+  thread** ([91280A728](https://www.mcmaster.com/91280A728/) $1.595, [91280A732](https://www.mcmaster.com/91280A732/)
+  $1.736, Grade 8.8 zinc), ~50% cheaper than fully-threaded. Designed for the **30mm worst-case grip**
+  with a flat-washer shim allowance (2→4 M12 washers/bolt) so the bolt spec is robust across 25–30mm
+  corrugation with **no container measurement needed** — pad to suit. Added `CONTAINER_CORRUGATION_DEPTH`
+  constant. Cascade: film −$3, walkway +$53/−$25 (fab line reconciled to the parts registry). The IBC
+  M12×40 grip/count conflict and the A36 bracket-plate material are logged in TODO.
+
 - **Fastener BOM decomposed into bolts / washers / nuts for ordering.** Split the 11 bundled
   "bolt + nut + washer" kit lines into separate component parts, using **shared keys** so nuts and
   washers total **by size + type across the whole build** (M12 flat washers **220**, M12 plain nuts

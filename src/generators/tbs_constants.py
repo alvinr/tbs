@@ -210,7 +210,12 @@ PANEL_FAN_BAND_Z  = 1125  # ply band top Z (AFF) = FAN_B_H(600) + FAN_DIAM/2(75)
 PANEL_CORNER_YD_L = 653   # corner-to-center transition, near side (mm) [rev8: widened]
 PANEL_CORNER_YD_R = 1709  # center-to-corner transition, far side (mm)  [rev8: widened]
 PANEL_CENTER_W    = PANEL_CORNER_YD_R - PANEL_CORNER_YD_L  # = 1056mm center zone width
-WALL_T            = 40    # container end-wall steel thickness (mm)
+WALL_T            = 40    # container wall envelope depth (mm) — nominal solid block in the 3D models
+# Container side-wall corrugation depth — the grip a wall through-bolt spans (peak-to-valley + skins).
+# ISO side walls are ~25mm (1"), 25–30mm range; end walls ~36mm trapezium (1.6/2.0mm sheets). Wall
+# through-bolts pass the long SIDE walls → design for the 30mm worst case and pad with flat washers
+# if the actual container measures shallower. MEASURE the real container to confirm before ordering.
+CONTAINER_CORRUGATION_DEPTH = 30   # mm — side-wall corrugation, conservative max of the 25–30mm ISO range
 
 # ── Rotating cargo-door panel — transport mode (rev 10: supersedes the B2 slide) ──
 # The panel + drum + drum-cage assembly ROTATES ~56° about a VERTICAL pivot — the

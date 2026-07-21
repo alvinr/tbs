@@ -13,7 +13,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $110 | $265 |
-| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,107 | $7,055 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,097 | $7,045 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,356 | $7,899 |
 | 6. Electrical — power, circuits, wiring | $2,608 | $3,003 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,416 | $2,061 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,456** | **~$36,522** |
+| **TOTAL (base build + 50-print run)** | **~$25,446** | **~$36,512** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -206,7 +206,7 @@ indicative low–high estimates — get quotes before ordering.
 | M12 hex through-bolt, Grade 8.8 — length TBD (right-walkway wall cleats/plates/U-clamps, confirm at order) | 24 ea | McMaster-Carr | walkway | $22–$42 |
 | M12×40 hex bolt, Grade 8.8 | 12 ea | McMaster-Carr | ibc-frame | $12–$22 |
 | M12×80 hex through-bolt, Grade 8.8 | 58 ea | McMaster-Carr | walkway | $68–$126 |
-| M12×90 hex through-bolt, SS | 28 ea | McMaster-Carr | film | $61 |
+| [M12×90 hex through-bolt, 18-8 SS](https://www.mcmaster.com/91310A145/) (91310A145) | 28 ea | McMaster-Carr | film | $51 |
 | M6 flat washer, SS | 8 ea | McMaster-Carr | electrical | $0 |
 | M8 flat washer, SS | 12 ea | McMaster-Carr | shelf | $0 |
 | M12 flat washer | 220 ea | McMaster-Carr | film, walkway | $13 |
@@ -244,7 +244,7 @@ indicative low–high estimates — get quotes before ordering.
 | Muslin spring clip | 88 ea | McMaster-Carr | clamp | $264–$704 |
 | M10 wedge floor anchors | 20 ea | McMaster-Carr | walkway | $25–$45 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,401–$2,387** |
+| **fasteners-hardware subtotal** | | | | **$1,392–$2,378** |
 
 ### plastics-sheet
 
@@ -421,7 +421,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 61 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $4,752–$5,865 |
+| McMaster-Carr | 61 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $4,742–$5,855 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 17 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,961–$3,181 |
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,448–$2,006 |

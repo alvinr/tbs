@@ -196,47 +196,54 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| 100mm Ø SS grab rail | 1 ea | McMaster-Carr | lightlock | $15–$25 |
-| [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 1 pack | Amazon | spray | $5 |
-| 25mm ratchet strap, 1,100 kg WLL | 4 ea | Amazon | ibc-frame | $30–$50 |
-| 316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black | 1 ea | McMaster-Carr | panel | $20–$35 |
-| [Axle saddle clamps ×8 (304 SS flat-bar stock)](https://www.mcmaster.com/8992K794/) (8992K794) | 1 2 ft bar | McMaster-Carr | spray | $10 |
-| Cam-lever rail brake (skate lock) | 12 ea | McMaster-Carr | film | $96–$180 |
-| Continuous (piano) hinge, 600 mm | 1 ea | McMaster-Carr | shelf | $20 |
-| Corridor panel mount hardware (brackets + fasteners) | 1 lot | Home Depot | water | $25–$50 |
-| Cushioned pipe clip | 16 ea | Amazon | water | $16–$32 |
-| Door & access upgrades | 1 lot | Home Depot | interior | $50–$100 |
-| Folding shelf stays/brackets | 2 ea | Amazon | shelf | $24 |
-| Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| M10 wedge floor anchors | 20 ea | McMaster-Carr | walkway | $25–$45 |
-| M12 floor anchor (wedge/sleeve, container floor) | 16 ea | McMaster-Carr | ibc-frame | $30–$60 |
-| M12 through-bolt kit (right walkway) | 24 ea | McMaster-Carr | walkway | $30–$50 |
-| M12 × 40 bolt, Grade 8.8 | 12 ea | McMaster-Carr | ibc-frame | $12–$22 |
-| M12×80mm through-bolt kit | 58 ea | McMaster-Carr | walkway | $87–$145 |
-| M12×90mm hex through-bolt + nut + washers, SS | 28 ea | McMaster-Carr | film | $70 |
-| [M5 SS Nylock nut](https://www.mcmaster.com/93625A200/) (93625A200) | 176 ea | McMaster-Carr | clamp | $16 |
-| M5×16 mm CSK screws | 8 ea | McMaster-Carr | shelf | $4 |
-| [M5×16 SS countersunk screw](https://www.mcmaster.com/91292a126/) (91292A126) | 176 ea | McMaster-Carr | clamp | $28 |
-| M6 bolt+nut+washer set, SS (panel mount) | 4 set | McMaster-Carr | electrical | $5 |
-| M6 SS hex bolt + nut | 1 ea | McMaster-Carr | spray | $1 |
-| M6 SS hex bolts + flange nuts | 12 ea | McMaster-Carr | tray | $12 |
-| M6×20 SS bolts + nyloc nuts | 16 ea | McMaster-Carr | spray | $7 |
-| M8 hex fixing bolt + nut, SS | 8 ea | McMaster-Carr | film | $16 |
-| M8 wall bolts + washers/nuts | 12 ea | McMaster-Carr | shelf | $12 |
+| [M5×16 countersunk screw, A2-70 SS](https://www.mcmaster.com/91292a126/) (91292A126) | 184 ea | McMaster-Carr | clamp, shelf | $32 |
+| M6 hex bolt, SS — length TBD (electrical panel mount, confirm at order) | 4 ea | McMaster-Carr | electrical | $5 |
+| M6 hex bolt, SS — length TBD (spray arm-tube pinch, confirm at order) | 1 ea | McMaster-Carr | spray | $1 |
+| M6 hex bolt, SS — length TBD (tray panel flange, confirm at order) | 12 ea | McMaster-Carr | tray | $11 |
+| M6×20 hex bolt, SS | 16 ea | McMaster-Carr | spray | $6 |
+| M8 hex bolt, SS — length TBD (film right-rail fixing, confirm at order) | 8 ea | McMaster-Carr | film | $15 |
+| M8 hex bolt, SS — length TBD (shelf hinge-cleat + stay wall anchors, confirm at order) | 12 ea | McMaster-Carr | shelf | $10 |
+| M12 hex through-bolt, Grade 8.8 — length TBD (right-walkway wall cleats/plates/U-clamps, confirm at order) | 24 ea | McMaster-Carr | walkway | $22–$42 |
+| M12×40 hex bolt, Grade 8.8 | 12 ea | McMaster-Carr | ibc-frame | $12–$22 |
+| M12×80 hex through-bolt, Grade 8.8 | 58 ea | McMaster-Carr | walkway | $68–$126 |
+| M12×90 hex through-bolt, SS | 28 ea | McMaster-Carr | film | $61 |
+| M6 flat washer, SS | 8 ea | McMaster-Carr | electrical | $0 |
+| M8 flat washer, SS | 12 ea | McMaster-Carr | shelf | $0 |
+| M12 flat washer | 220 ea | McMaster-Carr | film, walkway | $13 |
+| [M5 hex nut, nyloc A2-70 SS](https://www.mcmaster.com/93625A200/) (93625A200) | 176 ea | McMaster-Carr | clamp | $16 |
+| M6 flange nut, serrated SS | 12 ea | McMaster-Carr | tray | $1 |
+| M6 hex nut, nyloc SS | 16 ea | McMaster-Carr | spray | $1 |
+| M6 hex nut, plain SS | 5 ea | McMaster-Carr | electrical, spray | $0 |
+| M8 hex nut, plain SS | 20 ea | McMaster-Carr | film, shelf | $2 |
+| M12 hex nut, plain | 110 ea | McMaster-Carr | film, walkway | $22 |
 | M8×25mm knurled thumbscrew DIN 464 | 12 ea | Amazon | film | $36 |
+| Corridor panel mount hardware (brackets + fasteners) | 1 lot | Home Depot | water | $25–$50 |
+| Door & access upgrades | 1 lot | Home Depot | interior | $50–$100 |
+| Cam-lever rail brake (skate lock) | 12 ea | McMaster-Carr | film | $96–$180 |
+| [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | 8 ea | McMaster-Carr | ibc-frame | $40 |
+| M12 floor anchor (wedge/sleeve, container floor) | 16 ea | McMaster-Carr | ibc-frame | $30–$60 |
+| 25mm ratchet strap, 1,100 kg WLL | 4 ea | Amazon | ibc-frame | $30–$50 |
+| Stainless fasteners + nylon isolation washers | 1 lot | McMaster-Carr | lightlock | $30–$50 |
+| 100mm Ø SS grab rail | 1 ea | McMaster-Carr | lightlock | $15–$25 |
 | Misc. conversion hardware | 1 lot | Home Depot | interior | $80–$130 |
-| Muslin spring clip | 88 ea | McMaster-Carr | clamp | $264–$704 |
-| Nylon zip ties, 200mm | 6 ea | Amazon | spray | $1 |
-| Ratchet straps, 25mm | 2 ea | Home Depot | ventilation | $12 |
-| Self-tapping SS screws (8-pack) | 4 ea | McMaster-Carr | spray | $5 |
-| Shurflo pump mounting bracket | 5 ea | Amazon | water | $50 |
+| 316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black | 1 ea | McMaster-Carr | panel | $20–$35 |
 | Southco C2-33 cam compression latch | 4 ea | Southco | panel | $76–$104 |
+| Ratchet straps, 25mm | 2 ea | Home Depot | ventilation | $12 |
+| Cushioned pipe clip | 16 ea | Amazon | water | $16–$32 |
+| Folding shelf stays/brackets | 2 ea | Amazon | shelf | $24 |
+| Continuous (piano) hinge, 600 mm | 1 ea | McMaster-Carr | shelf | $20 |
+| Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
+| Shurflo pump mounting bracket | 5 ea | Amazon | water | $50 |
+| Top + bottom wall stays + 4-bolt anchor plates | 2 set | McMaster-Carr | swing | $90–$160 |
+| [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 1 pack | Amazon | spray | $5 |
 | SS beam clamp plates (top + bottom) + spacers (25mm) | 4 ea | McMaster-Carr | spray | $10 |
 | SS/nylon retainer clips for 3/4" LDPE | 2 ea | Amazon | spray | $4 |
-| Stainless fasteners + nylon isolation washers | 1 lot | McMaster-Carr | lightlock | $30–$50 |
-| Top + bottom wall stays + 4-bolt anchor plates | 2 set | McMaster-Carr | swing | $90–$160 |
-| Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
-| [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | 8 ea | McMaster-Carr | ibc-frame | $40 |
+| [Axle saddle clamps ×8 (304 SS flat-bar stock)](https://www.mcmaster.com/8992K794/) (8992K794) | 1 2 ft bar | McMaster-Carr | spray | $10 |
+| Self-tapping SS screws (8-pack) | 4 ea | McMaster-Carr | spray | $5 |
+| Nylon zip ties, 200mm | 6 ea | Amazon | spray | $1 |
+| Muslin spring clip | 88 ea | McMaster-Carr | clamp | $264–$704 |
+| M10 wedge floor anchors | 20 ea | McMaster-Carr | walkway | $25–$45 |
+| Grating clips | 30 ea | McNichols | walkway | $30–$50 |
 | **fasteners-hardware subtotal** | | | | **$1,401–$2,387** |
 
 ### plastics-sheet
@@ -414,7 +421,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 47 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $4,752–$5,865 |
+| McMaster-Carr | 61 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $4,752–$5,865 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 17 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,961–$3,181 |
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,448–$2,006 |

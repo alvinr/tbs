@@ -296,7 +296,7 @@ PARTS: list[Part] = [
          "ibc-frame", 4, "ea", 7.5, 12.5, "Amazon", spec="Transport securing, over each stack"),
     Part("ibcf-floor-anchor", "M12 floor anchor (wedge/sleeve, container floor)", "fasteners-hardware",
          "ibc-frame", 16, "ea", 1.875, 3.75, "McMaster-Carr", spec="4 deep-box flange feet × 4 anchors each"),
-    Part("ibcf-m12-bolt", "M12 × 40 bolt, Grade 8.8", "fasteners-hardware",
+    Part("bolt-m12x40", "M12×40 hex bolt, Grade 8.8", "fasteners-hardware",
          "ibc-frame", 12, "ea", 1, 22 / 12, "McMaster-Carr", spec="Wall hangers (2 each) + front-bar cleats"),
     Part("ibcf-fabrication", "Welding / fabrication (frame assembly)", "fabrication-labor",
          "ibc-frame", 1, "lot", 688, 1018, "local fab", spec="~14–20 hrs labor (deep 4-leg box — the ring/back-upright welds sit at the upper end of the range)"),
@@ -317,8 +317,10 @@ PARTS: list[Part] = [
          "tray", 1, "ea", 15, 15, "Amazon", spec="Pickup tube to P-04"),
     Part("tray-silicone-gasket", "Silicone gasket strip", "seals-gaskets",
          "tray", 1, "ea", 20, 20, "McMaster-Carr", spec="Center flange seal"),
-    Part("tray-m6-bolts", "M6 SS hex bolts + flange nuts", "fasteners-hardware",
-         "tray", 12, "ea", 1, 1, "McMaster-Carr", spec="Panel flange bolts"),
+    Part("bolt-m6-tray", "M6 hex bolt, SS — length TBD (tray panel flange, confirm at order)", "fasteners-hardware",
+         "tray", 12, "ea", 0.92, 0.92, "McMaster-Carr", spec="Tray panel flange bolts (316 SS, wet zone)"),
+    Part("nut-m6-flange", "M6 flange nut, serrated SS", "fasteners-hardware",
+         "tray", 12, "ea", 0.08, 0.08, "McMaster-Carr", spec="Serrated flange nut — tray panel bolts (cost-neutral placeholder; re-price)"),
     Part("tray-liner", "6-mil black LDPE sheet, 10 ft × 8 ft", "tools-safety",
          "tray", 1, "ea", 8, 8, "Home Depot", spec="Containment liner (consumable, per session)"),
     # — spray (processing-tray-and-spray-bar §6.2) — itemized, sums to costing spray (287–375;
@@ -361,8 +363,10 @@ PARTS: list[Part] = [
     Part("spray-saddle-clamp", "Axle saddle clamps ×8 (304 SS flat-bar stock)", "fasteners-hardware",
          "spray", 1, "2 ft bar", 9.84, 9.84, "McMaster-Carr", part_no="8992K794",
          url="https://www.mcmaster.com/8992K794/", spec='Axle retention — formed from 1/8" (3.18mm) × 3/4" (19mm) 304 SS flat bar, wrapped over the Ø10 axle (1mm cradle clearance) with two ~12mm feet bolted up through the carriage plate (2× Ø5.5 M5). ~48mm developed per saddle; all 8 cut from one 2 ft (610mm) length of flat bar. A stamped conduit saddle clamp is only ~0.5mm — too thin for a rolling-carriage axle retainer. Alt: 304 SS + EPDM Adel loop clamp ~3/8–7/16\" ID.', dims="3.18×19 flat bar, ~48mm dev/pc", note="One 2 ft (610mm) 1/8x3/4 304 flat bar (McMaster 8992K794) yields all 8 saddles; formed + drilled (waste per part); price verified 2026-07-12."),
-    Part("spray-m6-bolts", "M6×20 SS bolts + nyloc nuts", "fasteners-hardware",
-         "spray", 16, "ea", 7 / 16, 7 / 16, "McMaster-Carr", spec="Carriage plate, beam clamp, saddle fasteners"),
+    Part("bolt-m6x20", "M6×20 hex bolt, SS", "fasteners-hardware",
+         "spray", 16, "ea", 0.3575, 0.3575, "McMaster-Carr", spec="Carriage plate, beam clamp, saddle fasteners (316 SS, wet zone)"),
+    Part("nut-m6-nyloc", "M6 hex nut, nyloc SS", "fasteners-hardware",
+         "spray", 16, "ea", 0.08, 0.08, "McMaster-Carr", spec="Nyloc nut — M6×20 spray fasteners (cost-neutral placeholder; re-price)"),
     Part("spray-self-tap", "Self-tapping SS screws (8-pack)", "fasteners-hardware",
          "spray", 4, "ea", 5 / 4, 5 / 4, "McMaster-Carr", spec="Ball-joint flange to beam top wall"),
     Part("spray-ball-joint", "Ø20mm ball joint, zinc socket, M12 stud", "bearings-motion",
@@ -371,8 +375,10 @@ PARTS: list[Part] = [
          "spray", 4, "ea", 2.5, 2.5, "McMaster-Carr", spec="Beam to carriage plate (sandwich, countersunk underside bolts)"),
     Part("spray-arm-tube", "6061-T6 AL round tube 25mm OD × 2mm wall, 500mm", "aluminum",
          "spray", 1, "ea", 6, 6, "Online Metals", spec="Arm tube"),
-    Part("spray-pinch-bolt", "M6 SS hex bolt + nut", "fasteners-hardware",
-         "spray", 1, "ea", 1, 1, "McMaster-Carr", spec="Pinch bolt for arm tube"),
+    Part("bolt-m6-pinch", "M6 hex bolt, SS — length TBD (spray arm-tube pinch, confirm at order)", "fasteners-hardware",
+         "spray", 1, "ea", 0.94, 0.94, "McMaster-Carr", spec="Pinch bolt for the spray arm tube (316 SS)"),
+    Part("nut-m6-plain", "M6 hex nut, plain SS", "fasteners-hardware",
+         "spray", 1, "ea", 0.06, 0.06, "McMaster-Carr", spec="Plain hex nut — spray pinch bolt (cost-neutral placeholder; re-price)"),
     Part("spray-zip-ties", "Nylon zip ties, 200mm", "fasteners-hardware",
          "spray", 6, "ea", 1 / 6, 1 / 6, "Amazon", spec="Hose to arm tube"),
 
@@ -405,8 +411,12 @@ PARTS: list[Part] = [
          "electrical", 1, "ea", 18, 18, "Online Metals", url="https://www.onlinemetals.com"),
     Part("power-panel-gasket", "Neoprene gasket 340×240×3mm (panel weatherseal)", "seals-gaskets",
          "electrical", 1, "ea", 6, 6, "McMaster-Carr"),
-    Part("power-panel-bolts", "M6 bolt+nut+washer set, SS (panel mount)", "fasteners-hardware",
-         "electrical", 4, "set", 1.25, 1.25, "McMaster-Carr"),
+    Part("bolt-m6-panel", "M6 hex bolt, SS — length TBD (electrical panel mount, confirm at order)", "fasteners-hardware",
+         "electrical", 4, "ea", 1.13, 1.13, "McMaster-Carr", spec="Panel-mount bolt (A2/304 SS)"),
+    Part("nut-m6-plain", "M6 hex nut, plain SS", "fasteners-hardware",
+         "electrical", 4, "ea", 0.06, 0.06, "McMaster-Carr", spec="Plain hex nut — panel-mount bolts (cost-neutral placeholder; re-price)"),
+    Part("washer-m6-flat", "M6 flat washer, SS", "fasteners-hardware",
+         "electrical", 8, "ea", 0.03, 0.03, "McMaster-Carr", spec="Flat washers (2/bolt) — panel mount (cost-neutral placeholder; re-price)"),
     Part("mc4-bulkhead", "MC4 bulkhead connector pairs, IP67 panel-mount", "electrical-distribution",
          "electrical", 3, "pair", 8.33, 8.33, "Amazon"),
     # — Distribution & wiring, ≈$1,016 —
@@ -563,19 +573,25 @@ PARTS: list[Part] = [
     Part("wall-seat-saddle", "Mild steel plate 8mm (laser/plasma cut + welded)", "steel-structural",
          "film", 6, "ea", 53, 53, "Metal Supermarkets", "Online Metals",
          spec="ICP-11: back-plate + exterior plate + seat + gusset per saddle; ~21 kg over 6 saddles"),
-    Part("saddle-m12-bolt", "M12×90mm hex through-bolt + nut + washers, SS", "fasteners-hardware",
-         "film", 28, "ea", 2.5, 2.5, "McMaster-Carr", "Amazon", spec="ICP-12: wall sandwich through-bolt; 4/saddle ×6 + 4 spare"),
+    Part("bolt-m12x90", "M12×90 hex through-bolt, SS", "fasteners-hardware",
+         "film", 28, "ea", 2.18, 2.18, "McMaster-Carr", "Amazon", spec="ICP-12: wall sandwich through-bolt; 4/saddle ×6 + 4 spare"),
+    Part("nut-m12-plain", "M12 hex nut, plain", "fasteners-hardware",
+         "film", 28, "ea", 0.20, 0.20, "McMaster-Carr", spec="Plain hex nut — M12×90 wall-sandwich bolts (cost-neutral placeholder; re-price)"),
+    Part("washer-m12-flat", "M12 flat washer", "fasteners-hardware",
+         "film", 56, "ea", 0.06, 0.06, "McMaster-Carr", spec="Flat washers (2/bolt) — M12×90 wall-sandwich bolts (cost-neutral placeholder; re-price)"),
     Part("saddle-m8-thumb", "M8×25mm knurled thumbscrew DIN 464", "fasteners-hardware",
          "film", 12, "ea", 3, 3, "Amazon", "Maedler", spec="ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare"),
-    Part("saddle-m8-hex", "M8 hex fixing bolt + nut, SS", "fasteners-hardware",
-         "film", 8, "ea", 2, 2, "McMaster-Carr", "Amazon", spec="ICP-14: right-rail permanent fixing; 2/saddle ×2 TR + spare"),
+    Part("bolt-m8-fixing", "M8 hex bolt, SS — length TBD (film right-rail fixing, confirm at order)", "fasteners-hardware",
+         "film", 8, "ea", 1.88, 1.88, "McMaster-Carr", "Amazon", spec="ICP-14: right-rail permanent fixing; 2/saddle ×2 TR + spare"),
+    Part("nut-m8-plain", "M8 hex nut, plain SS", "fasteners-hardware",
+         "film", 8, "ea", 0.12, 0.12, "McMaster-Carr", spec="Plain hex nut — M8 right-rail fixing (cost-neutral placeholder; re-price)"),
     # ═══ clamp (film-clamp-mechanism-report §4) — split out of FILM; itemized, sums to the FILM
     # clamp lines (clips 264–704 + mounting 122) = 386–826 ═══
     Part("spring-clip", "Muslin spring clip", "fasteners-hardware",
          "clamp", CLAMP_N_TOTAL, "ea", 3, 8, "McMaster-Carr", "Amazon", spec="Bracket + spring jaw, ~5N, neoprene pad, torsion spring, squeeze handle; through-bolted to the frame upstand (nuts on the inside)"),
-    Part("clamp-m5-bolt", "M5×16 SS countersunk screw", "fasteners-hardware",
+    Part("bolt-m5x16-csk", "M5×16 countersunk screw, A2-70 SS", "fasteners-hardware",
          "clamp", 2 * CLAMP_N_TOTAL, "ea", 0.16, 0.16, "McMaster-Carr", "Bolt Depot", part_no="91292A126", spec="A2-70 stainless — through-bolts the clip bracket to the upstand", url="https://www.mcmaster.com/91292a126/", dims="M5×16mm"),
-    Part("clamp-m5-nut", "M5 SS Nylock nut", "fasteners-hardware",
+    Part("nut-m5-nyloc", "M5 hex nut, nyloc A2-70 SS", "fasteners-hardware",
          "clamp", 2 * CLAMP_N_TOTAL, "ea", 0.09, 0.09, "McMaster-Carr", "Bolt Depot", part_no="93625A200", spec="A2-70 stainless — on the inside edge of the upstand", url="https://www.mcmaster.com/93625A200/"),
     Part("clamp-neoprene", "Neoprene pad strip 60A", "seals-gaskets",
          "clamp", 3, "strip", 25.99, 25.99, "McMaster-Carr", "Grainger", part_no="4568N57",
@@ -665,12 +681,16 @@ PARTS: list[Part] = [
          "shelf", 2, "ea", 12, 12, "Amazon", "McMaster-Carr", spec="fold-flat, ~30–50 kg rating"),
     Part("shelf-wall-cleat", "Wall mounting cleat + anchors", "steel-structural",
          "shelf", 1, "lot", 18, 18, "Local fab", spec="6 mm steel cleat + 2 stay anchors (slotted)"),
-    Part("shelf-m8-bolts", "M8 wall bolts + washers/nuts", "fasteners-hardware",
-         "shelf", 12, "ea", 1, 1, "McMaster-Carr", spec="hinge cleat + stay anchors into the wall ribs"),
+    Part("bolt-m8-wall", "M8 hex bolt, SS — length TBD (shelf hinge-cleat + stay wall anchors, confirm at order)", "fasteners-hardware",
+         "shelf", 12, "ea", 0.84, 0.84, "McMaster-Carr", spec="Hinge cleat + stay anchors into the wall ribs"),
+    Part("nut-m8-plain", "M8 hex nut, plain SS", "fasteners-hardware",
+         "shelf", 12, "ea", 0.12, 0.12, "McMaster-Carr", spec="Plain hex nut — shelf wall bolts (cost-neutral placeholder; re-price)"),
+    Part("washer-m8-flat", "M8 flat washer, SS", "fasteners-hardware",
+         "shelf", 12, "ea", 0.04, 0.04, "McMaster-Carr", spec="Flat washer (1/bolt) — shelf wall bolts (cost-neutral placeholder; re-price)"),
     Part("shelf-transport-latch", "Transport latch (over-center/barrel)", "fasteners-hardware",
          "shelf", 1, "ea", 8, 8, "Amazon", spec="secures the folded board"),
-    Part("shelf-csk-screws", "M5×16 mm CSK screws", "fasteners-hardware",
-         "shelf", 8, "ea", 0.5, 0.5, "McMaster-Carr", spec="ply panel attachment"),
+    Part("bolt-m5x16-csk", "M5×16 countersunk screw, A2-70 SS", "fasteners-hardware",
+         "shelf", 8, "ea", 0.5, 0.5, "McMaster-Carr", part_no="91292A126", url="https://www.mcmaster.com/91292a126/", spec="Ply panel attachment (same screw as the clamp clips; re-price to unify)"),
     Part("shelf-gusset-plates", "Corner gusset plate, 3 mm", "steel-structural",
          "shelf", 4, "ea", 1.25, 1.25, "Steel offcut", spec="50×50 mm triangular"),
     Part("shelf-paint", "Flat black epoxy spray paint", "adhesives-finishes",
@@ -691,8 +711,12 @@ PARTS: list[Part] = [
     Part("walkway-wide-brackets", "Cantilever bracket — widened (near)", "steel-structural",
          "walkway", 4, "ea", 40, 70, "Local fab",
          spec="10mm steel plate: 200mm vert leg + 500mm arm + 70mm gusset, welded (EP/battery/slit zone)"),
-    Part("walkway-m12-bolts", "M12×80mm through-bolt kit", "fasteners-hardware",
-         "walkway", 58, "ea", 1.5, 2.5, "McMaster-Carr", spec="Hex bolt + 2× washers + nut, grade 8.8 (3 per std + 4 per widened)"),
+    Part("bolt-m12x80", "M12×80 hex through-bolt, Grade 8.8", "fasteners-hardware",
+         "walkway", 58, "ea", 1.18, 2.18, "McMaster-Carr", spec="Cantilever-bracket wall bolts (3 per std + 4 per widened)"),
+    Part("nut-m12-plain", "M12 hex nut, plain", "fasteners-hardware",
+         "walkway", 58, "ea", 0.20, 0.20, "McMaster-Carr", spec="Plain hex nut — M12×80 cantilever bolts (cost-neutral placeholder; re-price)"),
+    Part("washer-m12-flat", "M12 flat washer", "fasteners-hardware",
+         "walkway", 116, "ea", 0.06, 0.06, "McMaster-Carr", spec="Flat washers (2/bolt) — M12×80 cantilever bolts (cost-neutral placeholder; re-price)"),
     Part("walkway-reinf-plates", "Reinforcing plate (exterior)", "steel-structural",
          "walkway", 18, "ea", 4.1667, 7.2222, "Local fab", spec="6mm steel: 100×180mm std (×14) + 120×220mm widened (×4)"),
     Part("walkway-transition-plates", "Transition bearing plate", "steel-structural",
@@ -705,8 +729,12 @@ PARTS: list[Part] = [
     Part("walkway-corner-plates", "Combined corner plate (right corners)", "steel-structural",
          "walkway", 2, "ea", 25, 40, "Local fab",
          spec="10mm steel, 150mm wide — carries the walkway right beam AND the bottom film rail"),
-    Part("walkway-throughbolts", "M12 through-bolt kit (right walkway)", "fasteners-hardware",
-         "walkway", 24, "ea", 1.25, 2.0833, "McMaster-Carr", spec="Wall cleats + combined plates + 2 center-arm U-clamps to the IBC uprights"),
+    Part("bolt-m12-cleat", "M12 hex through-bolt, Grade 8.8 — length TBD (right-walkway wall cleats/plates/U-clamps, confirm at order)", "fasteners-hardware",
+         "walkway", 24, "ea", 0.93, 1.7633, "McMaster-Carr", spec="Wall cleats + combined plates + 2 center-arm U-clamps to the IBC uprights"),
+    Part("nut-m12-plain", "M12 hex nut, plain", "fasteners-hardware",
+         "walkway", 24, "ea", 0.20, 0.20, "McMaster-Carr", spec="Plain hex nut — right-walkway M12 through-bolts (cost-neutral placeholder; re-price)"),
+    Part("washer-m12-flat", "M12 flat washer", "fasteners-hardware",
+         "walkway", 48, "ea", 0.06, 0.06, "McMaster-Carr", spec="Flat washers (2/bolt) — right-walkway M12 through-bolts (cost-neutral placeholder; re-price)"),
     Part("walkway-floor-legs", "Floor-leg cantilever bracket (left walkway, ×5)", "steel-structural",
          "walkway", 5, "ea", 11, 19, "Local fab",
          spec="50×50×3mm SHS post (~115mm) + 40×40×3mm SHS arm (2 reach X470, 3 extended to X770) + 128×60×8mm foot plate"),
@@ -912,7 +940,16 @@ def emit_master() -> str:
             a["sys"].add(p.system)
             lo, hi = line(p); a["lo"] += lo; a["hi"] += hi
         sub_lo = sub_hi = 0.0
-        for a in sorted(agg.values(), key=lambda x: x["p"].desc.lower()):   # rows A–Z by item name
+        # Fasteners read as a purchasing block: bolts (by size×length) → washers → nuts → other
+        # hardware, each by thread size (M5<M6<…). Other type sections stay A–Z by item name.
+        def _fsort(x):
+            k = x["p"].key
+            cls = 0 if k.startswith("bolt-") else 1 if k.startswith("washer-") else 2 if k.startswith("nut-") else 3
+            mm = re.search(r"m(\d+)", k)
+            return (cls, int(mm.group(1)) if mm else 999, k)
+        order = (sorted(agg.values(), key=_fsort) if t == "fasteners-hardware"
+                 else sorted(agg.values(), key=lambda x: x["p"].desc.lower()))
+        for a in order:                                                     # rows A–Z by item name (fasteners: by class/size)
             cost = _money(a["lo"]) if round(a["lo"]) == round(a["hi"]) else f"{_money(a['lo'])}–{_money(a['hi'])}"
             out.append(f"| {_item_cell(a['p'])} | {a['qty']:g} {a['unit']} | {a['sup']} | "
                        f"{', '.join(sorted(a['sys']))} | {cost} |")

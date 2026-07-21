@@ -288,7 +288,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | Zinc-plated steel weld-on tie-down rings — 1½" (38mm) inside × ½" thick, 6,600 lb WLL; fillet-welded to the front retaining bars (4 per tier × 2 tiers). Integrated weld base — no separate mount plate. Ring far exceeds the 25mm-strap-limited 1,100 kg assembly WLL. | 8 ea | McMaster-Carr | $40 |
 | 25mm ratchet strap, 1,100 kg WLL | Transport securing, over each stack | 4 ea | Amazon | $30–$50 |
 | M12 floor anchor (wedge/sleeve, container floor) | 4 deep-box flange feet × 4 anchors each | 16 ea | McMaster-Carr | $30–$60 |
-| M12 × 40 bolt, Grade 8.8 | Wall hangers (2 each) + front-bar cleats | 12 ea | McMaster-Carr | $12–$22 |
+| M12×40 hex bolt, Grade 8.8 | Wall hangers (2 each) + front-bar cleats | 12 ea | McMaster-Carr | $12–$22 |
 | Welding / fabrication (frame assembly) | ~14–20 hrs labor (deep 4-leg box — the ring/back-upright welds sit at the upper end of the range) | 1 lot | Local fab | $688–$1,018 |
 | Primer + paint | Anti-corrosion coating | 1 lot | Hardware store | $30–$50 |
 | **Ibc-Frame total** | | | | **$1,000–$1,510** |

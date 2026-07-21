@@ -545,7 +545,8 @@ tray drainage plan and sump cross-section).
 | 1" SS foot valve with strainer screen | Sump pickup tube | 1 ea | Amazon | $20 |
 | 1" reinforced suction hose, 6 ft | Pickup tube to P-04 | 1 ea | Amazon | $15 |
 | Silicone gasket strip | Center flange seal | 1 ea | McMaster-Carr | $20 |
-| M6 SS hex bolts + flange nuts | Panel flange bolts | 12 ea | McMaster-Carr | $12 |
+| M6 hex bolt, SS — length TBD (tray panel flange, confirm at order) | Tray panel flange bolts (316 SS, wet zone) | 12 ea | McMaster-Carr | $11 |
+| M6 flange nut, serrated SS | Serrated flange nut — tray panel bolts (cost-neutral placeholder; re-price) | 12 ea | McMaster-Carr | $1 |
 | 6-mil black LDPE sheet, 10 ft × 8 ft | Containment liner (consumable, per session) | 1 ea | Home Depot | $8 |
 | **Tray total** | | | | **$1,300–$2,015** |
 <!-- END parts:tray -->
@@ -569,12 +570,14 @@ tray drainage plan and sump cross-section).
 | 1/2" reinforced braided PVC hose, 15 ft | BV-02 to beam feed (4 m coiled) | 1 ea | Amazon | $15 |
 | [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins | 1 pack | Amazon | $5 |
 | [Axle saddle clamps ×8 (304 SS flat-bar stock)](https://www.mcmaster.com/8992K794/) (8992K794) | Axle retention — formed from 1/8" (3.18mm) × 3/4" (19mm) 304 SS flat bar, wrapped over the Ø10 axle (1mm cradle clearance) with two ~12mm feet bolted up through the carriage plate (2× Ø5.5 M5). ~48mm developed per saddle; all 8 cut from one 2 ft (610mm) length of flat bar. A stamped conduit saddle clamp is only ~0.5mm — too thin for a rolling-carriage axle retainer. Alt: 304 SS + EPDM Adel loop clamp ~3/8–7/16" ID. | 1 2 ft bar | McMaster-Carr | $10 |
-| M6×20 SS bolts + nyloc nuts | Carriage plate, beam clamp, saddle fasteners | 16 ea | McMaster-Carr | $7 |
+| M6×20 hex bolt, SS | Carriage plate, beam clamp, saddle fasteners (316 SS, wet zone) | 16 ea | McMaster-Carr | $6 |
+| M6 hex nut, nyloc SS | Nyloc nut — M6×20 spray fasteners (cost-neutral placeholder; re-price) | 16 ea | McMaster-Carr | $1 |
 | Self-tapping SS screws (8-pack) | Ball-joint flange to beam top wall | 4 ea | McMaster-Carr | $5 |
 | Ø20mm ball joint, zinc socket, M12 stud | Multi-axis arm articulation | 1 ea | Amazon | $12 |
 | SS beam clamp plates (top + bottom) + spacers (25mm) | Beam to carriage plate (sandwich, countersunk underside bolts) | 4 ea | McMaster-Carr | $10 |
 | 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | Arm tube | 1 ea | Online Metals | $6 |
-| M6 SS hex bolt + nut | Pinch bolt for arm tube | 1 ea | McMaster-Carr | $1 |
+| M6 hex bolt, SS — length TBD (spray arm-tube pinch, confirm at order) | Pinch bolt for the spray arm tube (316 SS) | 1 ea | McMaster-Carr | $1 |
+| M6 hex nut, plain SS | Plain hex nut — spray pinch bolt (cost-neutral placeholder; re-price) | 1 ea | McMaster-Carr | $0 |
 | Nylon zip ties, 200mm | Hose to arm tube | 6 ea | Amazon | $1 |
 | **Spray total** | | | | **$286–$366** |
 <!-- END parts:spray -->

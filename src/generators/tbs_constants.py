@@ -99,8 +99,9 @@ FP_Y_MIN = 100    # minimum carriage depth (mm)     [unchanged]
 FP_ANGLE_LEG  = 50.8   # angle leg size (mm) — 2" = 50.8mm
 FP_ANGLE_T    = 4.8    # angle thickness (mm) — 3/16" = 4.76mm ≈ 4.8mm
 CLAMP_SPACING = 150    # clip center-to-center spacing (mm)
-CLAMP_JAW_W   = 35     # neoprene pad width along the frame edge (mm)
-CLAMP_JAW_T   = 6      # neoprene pad thickness (mm — 60A neoprene)
+CLAMP_JAW_W   = 25.4   # neoprene pad width along the frame edge (mm — = 1" strip width, McMaster 4568N57)
+CLAMP_JAW_D   = 20     # neoprene pad bite depth, inboard from the frame edge (mm — cut length per pad)
+CLAMP_JAW_T   = 6      # neoprene pad thickness (mm — 1/4" = 6mm, 60A neoprene)
 CLAMP_OPEN_GAP = 15    # pad clearance from the board when the clip is squeezed open (mm)
 CLAMP_SPRING_F = 5     # nominal clamping force per clip (N)
 CLAMP_N_HORIZ = FP_W // CLAMP_SPACING + 1   # clips per horizontal edge

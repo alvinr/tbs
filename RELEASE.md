@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Muslin clip jaw pad — new Sheet 6 attachment detail + material sourced.** Added Panel D to
+  the film-plane clamp sheet, dimensioning how the 60A neoprene pad mounts (PSA-bonded flat to the
+  jaw plate) and its footprint — the detail the old sheet never showed, so the pad quantity couldn't
+  be derived. Sourced the pad to [McMaster 4568N57](https://www.mcmaster.com/4568N57/) (1″ × ¼″ 60A
+  strip); the 1″ width narrowed the jaw (`CLAMP_JAW_W` 35 → 25.4mm) and pinned the bite depth (new
+  `CLAMP_JAW_D` = 20mm), from which the strip count derives (88 pads × 20mm = 1,760mm → 3 strips, $78,
+  was a $15 roll). Also applied verified prices/URLs for the M5 clip fasteners (91292A126 bolt $0.16,
+  93625A200 nut $0.09). Clamp mounting +$49 → film total $6,063 → $6,112; grand total cascaded.
+
 - **Master shopping list now carries the supplier SKU on every line** — the by-type procurement BOM
   (`parts.py emit_master`) rendered plain item names, while the per-report §Parts-Lists already
   hyperlinked the name and appended the registry part number. The master now uses the same

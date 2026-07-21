@@ -1347,7 +1347,7 @@ def sheet5():
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet6():
     from tbs_constants import (
-        FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_JAW_W,
+        FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_JAW_W, CLAMP_JAW_D, CLAMP_JAW_T,
         CLAMP_OPEN_GAP, CLAMP_SPRING_F, CLAMP_N_TOTAL,
     )
 
@@ -1535,8 +1535,9 @@ def sheet6():
     # 2 spring clips at 150mm — CLIP ON THE INSIDE of the frame: neoprene pad on the
     # board (inboard), bracket through-bolted in the upstand, handle projecting outboard
     for cx in [CLAMP_SPACING * 0.5, CLAMP_SPACING * 1.5]:
-        # neoprene pad pressing the muslin onto the board (inboard side, +Y)
-        ax_c.add_patch(Rectangle((cx - CLAMP_JAW_W / 2, 5), CLAMP_JAW_W, 7,
+        # neoprene pad pressing the muslin onto the board (inboard side, +Y) — true
+        # footprint CLAMP_JAW_W (along edge) × CLAMP_JAW_D (bite depth); detail on Panel D
+        ax_c.add_patch(Rectangle((cx - CLAMP_JAW_W / 2, 5), CLAMP_JAW_W, CLAMP_JAW_D,
                                   fc=C_NEOP, ec=ANNO, lw=0.9, zorder=7))
         # bracket footprint on the upstand + 2 through-bolts (nuts on the inside)
         ax_c.add_patch(Rectangle((cx - CLAMP_JAW_W / 2, 0.5), CLAMP_JAW_W, 4.5,
@@ -1575,8 +1576,63 @@ def sheet6():
               "AXES IN mm · LOOKING DOWN THE PINHOLE AXIS AT THE FRAME EDGE",
               ha="center", va="bottom", fontsize=5.2, color=DIM, **FONT, zorder=15)
 
-    # ── PANEL D removed — the elevation only re-stated Panel C's 150mm spacing.
-    #    Bottom-right is free for a repurposed detail if wanted (see report TODO).
+    # ── PANEL D: Neoprene pad — footprint + PSA attachment (bottom-right) ─────────
+    #    Answers "how the pad attaches" and dimensions the footprint the strip qty
+    #    derives from: CLAMP_JAW_W (along edge) × CLAMP_JAW_D (bite) × CLAMP_JAW_T.
+    ax_d = fig.add_axes([0.55, 0.06, 0.42, 0.36])
+    ax_d.set_facecolor(BG)
+    ax_d.set_xlim(0, 140)
+    ax_d.set_ylim(0, 98)
+    ax_d.set_aspect("equal")
+    ax_d.axis("off")
+    C_JAW = "#9AA0A8"   # spring-jaw plate (metal)
+
+    # — FACE VIEW (left): the pad footprint on the flat jaw plate —
+    JW, JD = CLAMP_JAW_W, CLAMP_JAW_D
+    px, py = 20, 40                                     # pad lower-left
+    ax_d.add_patch(Rectangle((px - 5, py - 5), JW + 10, JD + 10, fc=C_JAW, ec=ANNO, lw=1.2, zorder=3))   # jaw plate
+    ax_d.add_patch(Rectangle((px, py), JW, JD, fc=C_NEOP, ec=ANNO, lw=1.0, zorder=5))                    # neoprene pad
+    draw_dim_h(ax_d, px, px + JW, py - 9, f"{JW:g}mm (1\")", offset=3, fs=6, font=FONT)
+    draw_dim_v(ax_d, px + JW + 10, py, py + JD, f"{JD}mm", offset=3, fs=6, font=FONT)
+    leader(ax_d, px + JW, py + JD - 4, px + JW + 13, py + JD + 3,
+           "neoprene pad —\nPSA back, bonded\nflat to the jaw plate",
+           color=C_NEOP, fs=5, ha="left", va="center", arrow_style="-|>", font=FONT)
+    ax_d.annotate("", xy=(px + JW + 2, py - 15), xytext=(px - 2, py - 15),
+                  arrowprops=dict(arrowstyle="-|>", color=DIM, lw=0.9))
+    ax_d.text(px + JW / 2, py - 18, "along frame edge", ha="center", va="top", fontsize=4.8, color=DIM, **FONT)
+    ax_d.text(px + JW / 2, 74, "FACE VIEW", ha="center", va="center",
+              fontsize=6, color=ANNO, fontweight="bold", **FONT)
+
+    # — SECTION VIEW (right): the stack + PSA bond line, thru the bite —
+    sx = 82                                            # section left (depth runs +x for JD)
+    yb, ym = 30, 37                                    # ACM top / muslin level
+    ax_d.add_patch(Rectangle((sx - 6, yb - 7), JD + 24, 7, fc=C_ACM, ec=ANNO, lw=1.0, hatch="///", zorder=3))  # ACM anvil
+    ax_d.text(sx + JD / 2 + 2, yb - 3.5, "ACM ANVIL", ha="center", va="center", fontsize=4.6, color=DIM, **FONT, zorder=8)
+    ax_d.plot([sx - 6, sx + JD + 20], [ym - 0.2, ym - 0.2], color=C_MUSLIN, lw=2.4, alpha=0.9, zorder=4)        # muslin
+    ax_d.add_patch(Rectangle((sx, ym), JD, CLAMP_JAW_T, fc=C_NEOP, ec=ANNO, lw=1.0, zorder=5))                  # neoprene (6mm)
+    ax_d.plot([sx, sx + JD], [ym + CLAMP_JAW_T, ym + CLAMP_JAW_T], color="#C0392B", lw=1.6, ls=(0, (3, 1.5)), zorder=7)  # PSA line
+    ax_d.add_patch(Rectangle((sx - 3, ym + CLAMP_JAW_T), JD + 6, 7, fc=C_JAW, ec=ANNO, lw=1.1, zorder=6))       # jaw plate
+    for ax0 in (sx + 5, sx + JD - 5):                  # press force onto the board
+        ax_d.annotate("", xy=(ax0, ym - 0.5), xytext=(ax0, ym + 4),
+                      arrowprops=dict(arrowstyle="-|>", color="#208020", lw=1.2), zorder=8)
+    draw_dim_v(ax_d, sx + JD + 12, ym, ym + CLAMP_JAW_T, f"{CLAMP_JAW_T}mm", offset=3, fs=6, font=FONT)
+    leader(ax_d, sx + JD, ym + CLAMP_JAW_T, sx + JD + 8, ym + CLAMP_JAW_T + 10,
+           "PSA self-adhesive\nback (peel + stick)", color="#C0392B", fs=5, ha="left", va="bottom",
+           arrow_style="-|>", font=FONT)
+    leader(ax_d, sx + 3, ym + CLAMP_JAW_T + 7, sx - 4, ym + CLAMP_JAW_T + 16,
+           "spring-jaw plate", color=DIM, fs=5, ha="right", va="bottom", arrow_style="-|>", font=FONT)
+    ax_d.text(sx + JD / 2, 74, "SECTION (thru bite)", ha="center", va="center",
+              fontsize=6, color=ANNO, fontweight="bold", **FONT)
+
+    # — Panel title + spec/quantity note —
+    ax_d.text(70, 92, "PANEL D — NEOPRENE PAD: FOOTPRINT & PSA ATTACHMENT",
+              ha="center", va="top", fontsize=6.6, color=ANNO, fontweight="bold", **FONT)
+    ax_d.text(4, 14,
+              f"60A neoprene, {CLAMP_JAW_T}mm (1/4\") thick, PSA back — cut from McMaster 4568N57 (1\" × 36\" strip).",
+              ha="left", va="center", fontsize=5.2, color=DIM, **FONT)
+    ax_d.text(4, 7,
+              f"{CLAMP_N_TOTAL} pads × {JD}mm = {int(CLAMP_N_TOTAL * JD):,}mm  →  3 strips (2 needed + cutting-waste/spare).",
+              ha="left", va="center", fontsize=5.2, color=DIM, **FONT)
 
     # Notes — CLAMP NOTES panel (top-right; ax_b, 0–100 data coords)
     notes = [
@@ -1586,7 +1642,7 @@ def sheet6():
         "3. Muslin lies over the board (pinhole face); the clip presses it onto the board at the edge.",
         "4. Bracket through-bolts to the upstand (2 countersunk screws, nuts on the inside); the spring jaw presses the muslin onto the board.",
         f"5. Torsion spring holds the jaw closed (~{CLAMP_SPRING_F}N); squeeze the handle to lift it (~{CLAMP_OPEN_GAP}mm gap).",
-        "6. Neoprene jaw pad grips the muslin without tearing; snap open/closed by feel in safelight.",
+        f"6. Jaw pad = {CLAMP_JAW_W:g}×{CLAMP_JAW_D}×{CLAMP_JAW_T}mm 60A neoprene, PSA-bonded to the flat jaw plate (Panel D); grips the muslin without tearing.",
     ]
     notes_x = 2
     notes_y_start = 96

@@ -36,11 +36,11 @@ The overall design can be seen in the diagram below and discussed in the followi
 
 ### 3.1 Muslin Path
 
-The muslin lies over the ACM backing board (the pinhole face); its edge is clamped **onto the board** just inboard of the upstand. Each clip's neoprene pad presses the muslin down onto the board ~10–15mm from the frame edge, providing direct tension — the ACM is the anvil, so no separate hem wrap is needed.
+The muslin lies over the ACM backing board (the pinhole face); its edge is clamped **onto the board** just inboard of the upstand. Each clip's neoprene pad presses the muslin down onto the board across a ~20mm-deep bite just inboard of the frame edge, providing direct tension — the ACM is the anvil, so no separate hem wrap is needed.
 
 ### 3.2 Neoprene Jaw Pad
 
-Each clip jaw is faced with a 35mm × 6mm strip of **60A neoprene**, self-adhesive backed. The neoprene grips the muslin without damaging the fibers and compensates for slight variations in fabric thickness at the clamped edge.
+Each clip jaw is faced with a **25.4 × 20mm pad of 60A neoprene** (6mm / ¼″ thick), self-adhesive (PSA) backed and bonded flat to the jaw plate — see Sheet 6, Panel D. The pads are cut from a 1″ × ¼″ neoprene strip ([McMaster 4568N57](https://www.mcmaster.com/4568N57/), 36″ per strip; 88 pads → 3 strips). The neoprene grips the muslin without damaging the fibers and compensates for slight variations in fabric thickness at the clamped edge.
 
 ---
 
@@ -52,13 +52,13 @@ All items ship within the United States. Local Southern California pickup noted 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | Muslin spring clip | Bracket + spring jaw, ~5N, neoprene pad, torsion spring, squeeze handle; through-bolted to the frame upstand (nuts on the inside) | 88 ea | McMaster-Carr / Amazon | $264–$704 |
-| M5×16 SS countersunk screw (91292A128) | A2-70 stainless — through-bolts the clip bracket to the upstand | 176 ea | McMaster-Carr / Bolt Depot | $44 |
-| M5 SS Nylock nut (93625A200) | A2-70 stainless — on the inside edge of the upstand | 176 ea | McMaster-Carr / Bolt Depot | $14 |
-| Neoprene strip 60A (8614K44) | 35mm × 6mm, self-adhesive, 10m — the clip jaw pad | 1 roll | McMaster-Carr / Grainger | $15 |
-| **Clamp total** | | | | **$337–$777** |
+| [M5×16 SS countersunk screw](https://www.mcmaster.com/91292a126/) (91292A126) | A2-70 stainless — through-bolts the clip bracket to the upstand | 176 ea | McMaster-Carr / Bolt Depot | $28 |
+| [M5 SS Nylock nut](https://www.mcmaster.com/93625A200/) (93625A200) | A2-70 stainless — on the inside edge of the upstand | 176 ea | McMaster-Carr / Bolt Depot | $16 |
+| [Neoprene pad strip 60A](https://www.mcmaster.com/4568N57/) (4568N57) | 1" × 1/4" 60A neoprene, PSA-backed, 36"/strip — the clip jaw pad. Cut into 25.4×20mm pads (6mm thick); 88 pads × 20mm = 1,760mm → 3 strips (2 + 1 cutting-waste/spare) | 3 strip | McMaster-Carr / Grainger | $78 |
+| **Clamp total** | | | | **$386–$826** |
 <!-- END parts:clamp -->
 
-**Clamp system estimated cost:** <!-- BEGIN costing:clamp-system-low -->$337<!-- END costing:clamp-system-low --> (generic spring clips) to <!-- BEGIN costing:clamp-system-high -->$777<!-- END costing:clamp-system-high --> (quality spring clips).
+**Clamp system estimated cost:** <!-- BEGIN costing:clamp-system-low -->$386<!-- END costing:clamp-system-low --> (generic spring clips) to <!-- BEGIN costing:clamp-system-high -->$826<!-- END costing:clamp-system-high --> (quality spring clips).
 
 ---
 
@@ -69,7 +69,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | Before each session | Inspect muslin clip engagement — all 88 clips snapped closed |
 | Monthly | Check neoprene jaw pads for compression set — replace if grip force is noticeably reduced |
 | Every 6 months | Inspect torsion springs for fatigue — clips should snap firmly to closed position under gravity at <!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt |
-| Annually | Replace neoprene jaw pads (preventive — $15 per roll covers all 88 clips) |
+| Annually | Replace neoprene jaw pads (preventive — ~$78 for 3× 4568N57 strips covers all 88 pads) |
 
 ---
 

@@ -38,7 +38,7 @@ import re
 from dataclasses import dataclass
 
 import costing  # reconciliation guardrail (EXPECTED) + the cost cascade it still owns
-from tbs_constants import CLAMP_N_TOTAL, CLAMP_JAW_W, CLAMP_JAW_T  # muslin clip count (derives from perimeter) + neoprene pad size
+from tbs_constants import CLAMP_N_TOTAL, CLAMP_JAW_W, CLAMP_JAW_D, CLAMP_JAW_T  # muslin clip count (derives from perimeter) + neoprene pad size
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -561,15 +561,19 @@ PARTS: list[Part] = [
     Part("saddle-m8-hex", "M8 hex fixing bolt + nut, SS", "fasteners-hardware",
          "film", 8, "ea", 2, 2, "McMaster-Carr", "Amazon", spec="ICP-14: right-rail permanent fixing; 2/saddle ×2 TR + spare"),
     # ═══ clamp (film-clamp-mechanism-report §4) — split out of FILM; itemized, sums to the FILM
-    # clamp lines (clips 270–720 + mounting 74) = 344–794 ═══
+    # clamp lines (clips 264–704 + mounting 122) = 386–826 ═══
     Part("spring-clip", "Muslin spring clip", "fasteners-hardware",
          "clamp", CLAMP_N_TOTAL, "ea", 3, 8, "McMaster-Carr", "Amazon", spec="Bracket + spring jaw, ~5N, neoprene pad, torsion spring, squeeze handle; through-bolted to the frame upstand (nuts on the inside)"),
     Part("clamp-m5-bolt", "M5×16 SS countersunk screw", "fasteners-hardware",
-         "clamp", 2 * CLAMP_N_TOTAL, "ea", 0.25, 0.25, "McMaster-Carr", "Bolt Depot", part_no="91292A128", spec="A2-70 stainless — through-bolts the clip bracket to the upstand"),
+         "clamp", 2 * CLAMP_N_TOTAL, "ea", 0.16, 0.16, "McMaster-Carr", "Bolt Depot", part_no="91292A126", spec="A2-70 stainless — through-bolts the clip bracket to the upstand", url="https://www.mcmaster.com/91292a126/", dims="M5×16mm"),
     Part("clamp-m5-nut", "M5 SS Nylock nut", "fasteners-hardware",
-         "clamp", 2 * CLAMP_N_TOTAL, "ea", 0.08, 0.08, "McMaster-Carr", "Bolt Depot", part_no="93625A200", spec="A2-70 stainless — on the inside edge of the upstand"),
-    Part("clamp-neoprene", "Neoprene strip 60A", "seals-gaskets",
-         "clamp", 1, "roll", 15, 15, "McMaster-Carr", "Grainger", part_no="8614K44", spec=f"{CLAMP_JAW_W}mm × {CLAMP_JAW_T}mm, self-adhesive, 10m — the clip jaw pad"),
+         "clamp", 2 * CLAMP_N_TOTAL, "ea", 0.09, 0.09, "McMaster-Carr", "Bolt Depot", part_no="93625A200", spec="A2-70 stainless — on the inside edge of the upstand", url="https://www.mcmaster.com/93625A200/"),
+    Part("clamp-neoprene", "Neoprene pad strip 60A", "seals-gaskets",
+         "clamp", 3, "strip", 25.99, 25.99, "McMaster-Carr", "Grainger", part_no="4568N57",
+         url="https://www.mcmaster.com/4568N57/",
+         spec=f"1\" × 1/4\" 60A neoprene, PSA-backed, 36\"/strip — the clip jaw pad. Cut into "
+              f"{CLAMP_JAW_W:g}×{CLAMP_JAW_D}mm pads ({CLAMP_JAW_T}mm thick); "
+              f"{CLAMP_N_TOTAL} pads × {CLAMP_JAW_D}mm = {int(CLAMP_N_TOTAL*CLAMP_JAW_D):,}mm → 3 strips (2 + 1 cutting-waste/spare)"),
 
     # ═══ lightlock (hinged-panel §8.2) — housing + drum; sums to costing.LIGHTLOCK ($1,385–$2,070) ═══
     Part("ll-hdpe-housing", "5mm UV-stabilized HDPE sheet (black)", "plastics-sheet",

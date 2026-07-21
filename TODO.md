@@ -173,13 +173,15 @@ bath is available. Both are cheap; nothing downstream is finalized until they pa
   cam clamps. (Paired with the UHMW test — same bath, same session.)
 
 ## Design / 3D (deferred)
-- [ ] **FP_H 2,388→2,138 cascade — `.skp` re-sends PENDING (code side DONE).** Branch `film-plane-redesign`:
-  the active film-plane height dropped to 2,138mm (low-profile wheels-on-pipe corner, BUILD 140→110). Constants,
-  parts/costing (clamp 92→90, −$8/$13/$18), all FP_H diagrams, weight, and the report prose/config table are
-  cascaded + committed; `overview.rb` (film-plane geometry) and `film-plane-mechanism.rb` (BUILD 110) regenerated.
-  **Alvin owes two re-saves:** (1) open **overview.skp** → re-send `generate_sketchup_model.py` → save + re-upload;
-  (2) open **film-plane-mechanism.skp** (still BUILD 140 in repo) → re-send `generate_film_plane_mechanism_model.py` → save +
-  re-upload. Commit each `.skp` after its upload. (Corner-gimbal Sketchfab UID `572b4aaa2d394de1b8852160d7cdcfc3`.)
+- [~] **FP_H cascade — `.skp` re-sends (code side DONE; overview re-sent 2026-07-20).** Branch `film-plane-redesign`:
+  the active film-plane height is now **2,094mm** (top rail lowered 44mm via the `RAIL_OFF`→`RAIL_OFF_TOP`/`RAIL_OFF_BOT`
+  split). Constants, parts/costing, all FP_H diagrams, weight, and the report prose/config table are cascaded + committed.
+  - [x] **overview.skp — DONE 2026-07-20.** Re-sent `generate_sketchup_model.py` into the live doc; verified FP top
+    rails at Z2244 (= C_HGT − RAIL_OFF_TOP) + bottom rails at Z160; Alvin saved + re-uploaded (UID `e624e210…`);
+    `overview.skp` + `overview.rb` committed (`105ec8bc`). `lint.py --verify-all` now fully clean.
+  - [ ] **film-plane-mechanism.skp — CONFIRM.** `film-plane-mechanism.rb` verifies byte-clean and the `.skp` was
+    re-sent + saved this session (corner_slide_parts refactor, `50972aa0`, UID `572b4aaa…`). Confirm it was sent
+    AFTER the FP_H=2094 change (else re-send `generate_film_plane_mechanism_model.py` + save + re-upload).
 - [x] **spraybar.skp axle-saddle re-spec — DONE.** The axle-retention saddle was re-specced to a fabricated
   1/8" (3.18mm) × 3/4" (19mm) 304 SS flat-bar clamp with 12mm M5 feet (was a schematic 2mm/6mm-wide token that
   couldn't hold its own bolt). 2D (sheet 2 cross-section + sheet 6 plan) + `parts.py`/report/master +

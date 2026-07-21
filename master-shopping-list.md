@@ -13,7 +13,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $110 | $265 |
-| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,063 | $7,039 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,112 | $7,088 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,356 | $7,929 |
 | 6. Electrical — power, circuits, wiring | $2,608 | $3,003 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,416 | $2,061 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,412** | **~$36,536** |
+| **TOTAL (base build + 50-print run)** | **~$25,461** | **~$36,585** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -215,9 +215,9 @@ indicative low–high estimates — get quotes before ordering.
 | M12 × 40 bolt, Grade 8.8 | 12 ea | McMaster-Carr | ibc-frame | $12–$22 |
 | M12×80mm through-bolt kit | 58 ea | McMaster-Carr | walkway | $87–$145 |
 | M12×90mm hex through-bolt + nut + washers, SS | 28 ea | McMaster-Carr | film | $70 |
-| M5 SS Nylock nut (93625A200) | 176 ea | McMaster-Carr | clamp | $14 |
+| [M5 SS Nylock nut](https://www.mcmaster.com/93625A200/) (93625A200) | 176 ea | McMaster-Carr | clamp | $16 |
 | M5×16 mm CSK screws | 8 ea | McMaster-Carr | shelf | $4 |
-| M5×16 SS countersunk screw (91292A128) | 176 ea | McMaster-Carr | clamp | $44 |
+| [M5×16 SS countersunk screw](https://www.mcmaster.com/91292a126/) (91292A126) | 176 ea | McMaster-Carr | clamp | $28 |
 | M6 bolt+nut+washer set, SS (panel mount) | 4 set | McMaster-Carr | electrical | $5 |
 | M6 SS hex bolt + nut | 1 ea | McMaster-Carr | spray | $1 |
 | M6 SS hex bolts + flange nuts | 12 ea | McMaster-Carr | tray | $12 |
@@ -237,7 +237,7 @@ indicative low–high estimates — get quotes before ordering.
 | Stainless fasteners + nylon isolation washers | 1 lot | McMaster-Carr | lightlock | $30–$50 |
 | Top + bottom wall stays + 4-bolt anchor plates | 2 set | McMaster-Carr | swing | $90–$160 |
 | Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
-| **fasteners-hardware subtotal** | | | | **$1,416–$2,432** |
+| **fasteners-hardware subtotal** | | | | **$1,402–$2,418** |
 
 ### plastics-sheet
 
@@ -305,11 +305,11 @@ indicative low–high estimates — get quotes before ordering.
 | Felt/brush wiper strip + 12mm closed-cell neoprene | 1 lot | McMaster-Carr | lightlock | $40–$60 |
 | Light-sealing materials (interior conversion) | 1 lot | McMaster-Carr | interior | $150–$210 |
 | Neoprene gasket 340×240×3mm (panel weatherseal) | 1 ea | McMaster-Carr | electrical | $6 |
-| Neoprene strip 60A (8614K44) | 1 roll | McMaster-Carr | clamp | $15 |
+| [Neoprene pad strip 60A](https://www.mcmaster.com/4568N57/) (4568N57) | 3 strip | McMaster-Carr | clamp | $78 |
 | Ruland UBOOT12/19-NI-KIT nitrile boot (UBOOT12/19-NI-KIT) | 4 ea | Ruland | film | $88–$116 |
 | Silicone gasket strip | 1 ea | McMaster-Carr | tray | $20 |
 | [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | 1 lot | McMaster-Carr | door | $129 |
-| **seals-gaskets subtotal** | | | | **$616–$766** |
+| **seals-gaskets subtotal** | | | | **$679–$829** |
 
 ### stainless-sheet
 
@@ -414,7 +414,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 47 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $4,743–$5,886 |
+| McMaster-Carr | 47 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $4,792–$5,935 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 17 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,961–$3,181 |
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,448–$2,006 |

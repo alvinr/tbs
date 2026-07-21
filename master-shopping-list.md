@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $110 | $265 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,091 | $7,039 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $5,352 | $7,895 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $5,372 | $7,928 |
 | 6. Electrical — power, circuits, wiring | $2,608 | $3,003 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,416 | $2,061 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $939 | $1,479 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,515** | **~$36,503** |
+| **TOTAL (base build + 50-print run)** | **~$25,535** | **~$36,536** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -71,9 +71,10 @@ indicative low–high estimates — get quotes before ordering.
 | Aluminum angle 2"×2"×3/16" (6061, anodized) | 10 ea | Metal Supermarkets | film | $220 |
 | [Aluminum face plate 340×240×3mm (flush power panel)](https://www.onlinemetals.com) | 1 ea | Online Metals | electrical | $18 |
 | Aluminum U-channel (per meter) | 40 m | Online Metals | panel | $120–$200 |
+| Arm-to-stud adapter, turned 6061-T6 AL (anodized) | 1 ea | Local machine shop | spray | $12–$18 |
 | Disc retaining ring (Al 6061-T6, M52×0.75) | 1 ea | Local fab | optics | $15–$25 |
 | Telescoping aluminum pool pole, 4–8 ft | 1 ea | Amazon | spray | $15 |
-| **aluminum subtotal** | | | | **$770–$972** |
+| **aluminum subtotal** | | | | **$782–$990** |
 
 ### bearings-motion
 
@@ -198,7 +199,6 @@ indicative low–high estimates — get quotes before ordering.
 |------|-----|----------|---------|-----------|
 | [M5×16 countersunk screw, A2-70 SS](https://www.mcmaster.com/91292a126/) (91292A126) | 184 ea | McMaster-Carr | clamp, shelf | $32 |
 | M6 hex bolt — M6×20 (crest-seated) to M6×55 (corrugation-bridge), confirm mount | 4 ea | McMaster-Carr | electrical | $5 |
-| M6 hex bolt, SS — length BLOCKED (pinch-clamp geometry undesigned) | 1 ea | McMaster-Carr | spray | $1 |
 | M6 hex bolt, SS — ~M6×16 est (tray center flange) | 12 ea | McMaster-Carr | tray | $11 |
 | [M6×1.0 × 20 hex bolt, Grade 8.8 zinc](https://www.mcmaster.com/91280A330/) (91280A330) | 16 ea | McMaster-Carr | spray | $3 |
 | [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — right-rail end fixing (ICP-14)](https://www.mcmaster.com/91280A534/) (91280A534) | 8 ea | McMaster-Carr | film | $3 |
@@ -213,7 +213,7 @@ indicative low–high estimates — get quotes before ordering.
 | [M5 hex nut, nyloc A2-70 SS](https://www.mcmaster.com/93625A200/) (93625A200) | 176 ea | McMaster-Carr | clamp | $16 |
 | [M6×1.0 flange nut, serrated SS](https://www.mcmaster.com/96194A101/) (96194A101) | 12 ea | McMaster-Carr | tray | $1 |
 | [M6×1.0 hex nut, nyloc SS](https://www.mcmaster.com/90576A115/) (90576A115) | 16 ea | McMaster-Carr | spray | $1 |
-| [M6×1.0 hex nut, plain SS](https://www.mcmaster.com/90591A151/) (90591A151) | 5 ea | McMaster-Carr | electrical, spray | $0 |
+| [M6×1.0 hex nut, plain SS](https://www.mcmaster.com/90591A151/) (90591A151) | 4 ea | McMaster-Carr | electrical | $0 |
 | [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | 20 ea | McMaster-Carr | film, shelf | $2 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | 110 ea | McMaster-Carr | film, walkway | $28 |
 | M8×25mm knurled thumbscrew DIN 464 | 12 ea | Amazon | film | $36 |
@@ -235,6 +235,8 @@ indicative low–high estimates — get quotes before ordering.
 | Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
 | Shurflo pump mounting bracket | 5 ea | Amazon | water | $50 |
 | Top + bottom wall stays + 4-bolt anchor plates | 2 set | McMaster-Carr | swing | $90–$160 |
+| Clamp-style shaft collar, 25mm/1" bore, SS | 1 ea | McMaster-Carr | spray | $8–$15 |
+| M12×1.75 jam nut, SS | 1 ea | McMaster-Carr | spray | $0 |
 | [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 1 pack | Amazon | spray | $5 |
 | SS beam clamp plates (top + bottom) + spacers (25mm) | 4 ea | McMaster-Carr | spray | $10 |
 | SS/nylon retainer clips for 3/4" LDPE | 2 ea | Amazon | spray | $4 |
@@ -244,7 +246,7 @@ indicative low–high estimates — get quotes before ordering.
 | Muslin spring clip | 88 ea | McMaster-Carr | clamp | $264–$704 |
 | M10 wedge floor anchors | 20 ea | McMaster-Carr | walkway | $25–$45 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,460–$2,368** |
+| **fasteners-hardware subtotal** | | | | **$1,468–$2,383** |
 
 ### plastics-sheet
 
@@ -421,7 +423,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 64 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $4,811–$5,846 |
+| McMaster-Carr | 64 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $4,819–$5,861 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 17 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,961–$3,181 |
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,448–$2,006 |
@@ -467,6 +469,7 @@ indicative low–high estimates — get quotes before ordering.
 | Environmental Marine | 1 | water-equipment | $30–$41 |
 | Powerwerx | 1 | electrical-distribution | $40 |
 | Blue Sea | 2 | electrical-distribution | $30 |
+| Local machine shop | 1 | aluminum | $12–$18 |
 | Irrigation supply | 1 | plumbing-fittings | $10 |
 | Steel offcut | 1 | steel-structural | $5 |
 <!-- END parts:master -->

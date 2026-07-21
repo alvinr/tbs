@@ -166,7 +166,8 @@ down-and-in, at 150mm pitch along the beam.
 | Ball joint | Ø20mm SS ball, zinc socket, M12 stud, 50mm flange base | 1 | Multi-axis arm articulation on beam top face |
 | Self-tapping screws | SS thread-forming, into 3mm SHS top wall (no internal access for nuts) | 4 | Fasten the ball-joint flange to the beam |
 | Arm tube | 6061-T6 AL round tube, 25mm OD × 2mm wall, ~500mm | 1 | Vertical arm from ball joint to pole |
-| M6 pinch bolt | SS hex bolt + nut | 1 | Clamps arm tube onto ball joint stud |
+| Arm adapter | Turned 6061-T6 AL: M12 female bore (onto the stud + M12 jam nut) → Ø21 male spigot | 1 | Reduces the M12 stud to the Ø21 tube bore |
+| Clamp collar | 25mm/1" bore clamp-style shaft collar (SS), integral clamp screw | 1 | Pinches the slit arm-tube bottom onto the adapter spigot |
 | Push pole | Telescoping aluminum pool pole, 1.2–2.4 m | 1 | Operator controls bar position from walkway |
 | Flexible hose | 1/2" reinforced braided PVC, ~4 m coiled | 1 | Connects BV-02 to the distribution manifold |
 | Zip ties | Nylon, 200mm | ~6 | Secure flex hose to arm tube |
@@ -486,7 +487,7 @@ beam is sealed, so there is no internal access to tighten nuts. Nothing overhang
 ball, so the arm articulates freely in every direction.
 
 A 25mm OD × 2mm wall aluminum round tube (~500mm long) connects from the ball joint
-stud to the telescoping pole. An M6 pinch bolt clamps the arm tube onto the stud. The
+stud to the telescoping pole. Because the M12 stud is too small to pinch inside the Ø21 tube bore, a **turned aluminum adapter** reduces the M12 stud to a **Ø21 spigot** (threaded onto the stud, locked with an M12 jam nut); the tube bottom is **slit ~30mm** and a **25mm clamp-style shaft collar** pinches the tube onto the spigot — rotationally adjustable, and it lifts off for transport. The
 1/2" flexible hose is zip-tied to the arm tube at ~200mm intervals.
 
 ---
@@ -575,11 +576,12 @@ tray drainage plan and sump cross-section).
 | Self-tapping SS screws (8-pack) | Ball-joint flange to beam top wall | 4 ea | McMaster-Carr | $5 |
 | Ø20mm ball joint, zinc socket, M12 stud | Multi-axis arm articulation | 1 ea | Amazon | $12 |
 | SS beam clamp plates (top + bottom) + spacers (25mm) | Beam to carriage plate (sandwich, countersunk underside bolts) | 4 ea | McMaster-Carr | $10 |
-| 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | Arm tube | 1 ea | Online Metals | $6 |
-| M6 hex bolt, SS — length BLOCKED (pinch-clamp geometry undesigned) | Pinch bolt for the spray arm tube (Ø25×2 6061). Length CAN'T be derived — the pinch-clamp ear/slit geometry was never designed or drawn (see TODO). (316 SS) | 1 ea | McMaster-Carr | $1 |
-| [M6×1.0 hex nut, plain SS](https://www.mcmaster.com/90591A151/) (90591A151) | Plain hex nut — spray pinch bolt. Pitch M6×1.0 (coarse, baseline — confirm vs SKU PDF, must match the bolt). $3.42/pack of 100. | 1 ea | McMaster-Carr | $0 |
+| 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | Arm tube — slit ~30mm at the bottom for the clamp-collar pinch onto the adapter's Ø21 spigot | 1 ea | Online Metals | $6 |
+| Arm-to-stud adapter, turned 6061-T6 AL (anodized) | Reducer coupling: M12×1.75 tapped bore (onto the ball-joint stud, locked with an M12 jam nut) → Ø21 male spigot the slit arm tube slips over. ~40mm long; anodized to match the AL tube (galvanic). Turned one-off / est. | 1 ea | Local machine shop | $12–$18 |
+| M12×1.75 jam nut, SS | Locks the arm adapter on the ball-joint M12 stud (M12×1.75 coarse). | 1 ea | McMaster-Carr | $0 |
+| Clamp-style shaft collar, 25mm/1" bore, SS | Over the slit arm-tube bottom; its integral clamp screw squeezes the Ø25×2 tube onto the adapter's Ø21 spigot — rotational adjust + lift-off for transport. Replaces the loose M6 pinch bolt. Confirm SKU/bore/price at order. | 1 ea | McMaster-Carr | $8–$15 |
 | Nylon zip ties, 200mm | Hose to arm tube | 6 ea | Amazon | $1 |
-| **Spray total** | | | | **$282–$362** |
+| **Spray total** | | | | **$302–$395** |
 <!-- END parts:spray -->
 
 ### 6.3 Combined Total
@@ -587,8 +589,8 @@ tray drainage plan and sump cross-section).
 | Subsystem | Cost Range |
 |-----------|-----------|
 | Processing tray | <!-- BEGIN costing:tray-low -->$1,300<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,015<!-- END costing:tray-high --> |
-| Spray bar assembly | <!-- BEGIN costing:spray-low -->$282<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$362<!-- END costing:spray-high --> |
-| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,582<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,377<!-- END costing:tray-spray-total-high -->** |
+| Spray bar assembly | <!-- BEGIN costing:spray-low -->$302<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$395<!-- END costing:spray-high --> |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,602<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,410<!-- END costing:tray-spray-total-high -->** |
 
 ---
 

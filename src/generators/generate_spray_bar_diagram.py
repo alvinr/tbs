@@ -853,13 +853,28 @@ def draw_sheet2():
                   ARM_ID, arm_top_z_bj - stud_top_z,
                   fc=C_BG, ec=C_FRAME, lw=0.5, zorder=8.5))
 
-    # Pinch bolt
-    pinch_z = arm_base_z_bj + 12
-    ax2.add_patch(Rectangle((bj_yd - ARM_OD / 2 - 8, pinch_z - 2), 8, 4,
-                 fc=C_BOLT, ec=C_FRAME, lw=0.6, zorder=9))
-    ax2.plot([bj_yd - ARM_OD / 2 - 8, bj_yd - ARM_ID / 2],
-             [pinch_z, pinch_z],
-             color=C_BOLT, lw=1.5, zorder=9)
+    # ── Reducer adapter: M12-female body onto the stud (below the tube) + jam nut ──
+    ADAPT_OD = 18
+    adapt_bot_z = ball_ctr_z + BALL_DIA / 2 + 8
+    ax2.add_patch(Rectangle((bj_yd - ADAPT_OD / 2, adapt_bot_z),
+                 ADAPT_OD, arm_base_z_bj - adapt_bot_z + 4,
+                 fc="#C9C2A8", ec=C_FRAME, lw=1.0, zorder=7.6))
+    ax2.add_patch(Rectangle((bj_yd - 9, adapt_bot_z - 6), 18, 6,
+                 fc=C_BOLT, ec=C_FRAME, lw=0.8, zorder=7.7))   # M12 jam nut
+
+    # ── Clamp shaft collar over the slit tube bottom (pinches tube onto the spigot) ──
+    pinch_z = arm_base_z_bj + 8
+    COLLAR_H = 12
+    COLLAR_OD = ARM_OD + 8
+    ax2.add_patch(Rectangle((bj_yd - COLLAR_OD / 2, pinch_z), COLLAR_OD, COLLAR_H,
+                 fc="#B8B8C0", ec=C_FRAME, lw=1.2, hatch="\\\\", zorder=9))
+    ax2.add_patch(Rectangle((bj_yd - ARM_OD / 2, pinch_z), ARM_OD, COLLAR_H,
+                 fc=C_ALUM_FILL, ec=C_FRAME, lw=0.5, zorder=9.1))
+    ax2.add_patch(Rectangle((bj_yd - COLLAR_OD / 2 - 4, pinch_z + COLLAR_H / 2 - 1.5), 6, 3,
+                 fc=C_BOLT, ec=C_FRAME, lw=0.5, zorder=9.2))   # integral clamp screw
+    ax2.plot([bj_yd - ARM_OD / 2 + 1.5, bj_yd - ARM_OD / 2 + 1.5],
+             [arm_base_z_bj, arm_base_z_bj + 28], color=C_FRAME, lw=0.8,
+             ls=(0, (3, 2)), zorder=8.6)                        # tube slit
 
     # Continuation arrow
     ax2.annotate("", xy=(bj_yd, arm_top_z_bj + 8),
@@ -913,10 +928,14 @@ def draw_sheet2():
            "4× SELF-TAPPING\nSCREW (FLANGE\n-> BEAM TOP WALL)",
            fs=4.5, color=C_BOLT, font=FONT, zorder=20)
 
-    leader(ax2, bj_yd - ARM_OD / 2 - 8, pinch_z,
-           bj_yd - 35, pinch_z + 12,
-           "M6 PINCH BOLT",
+    leader(ax2, bj_yd - COLLAR_OD / 2, pinch_z + COLLAR_H / 2,
+           bj_yd - 42, pinch_z + 14,
+           "25mm CLAMP COLLAR\n(pinches slit tube\nonto the spigot)",
            fs=4.5, color=C_BOLT, font=FONT, zorder=20)
+    leader(ax2, bj_yd + ADAPT_OD / 2, (adapt_bot_z + arm_base_z_bj) / 2,
+           bj_yd + 40, (adapt_bot_z + arm_base_z_bj) / 2 - 4,
+           "TURNED AL ADAPTER\nM12 female → Ø21 spigot\n+ M12 jam nut",
+           fs=4.5, color=C_JOINT, font=FONT, zorder=20)
 
     leader(ax2, bj_yd - ARM_OD / 2, arm_base_z_bj + 50,
            bj_yd - 45, arm_base_z_bj + 62,

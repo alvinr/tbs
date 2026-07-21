@@ -122,7 +122,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| 10mm corrugated conduit, drop runs (McMaster 7828K48) (7828K48) | 10 m | McMaster-Carr | electrical | $30 |
+| 10mm corrugated conduit, drop runs | 10 m | McMaster-Carr | electrical | $30 |
 | 12V LED flat panel 300×600mm, 20W 4000K | 3 ea | Amazon | electrical | $75 |
 | 14 AWG duplex marine wire | 1 roll | Amazon | water | $22 |
 | 15A blade fuse | 1 ea | Amazon | water | $5 |

@@ -108,7 +108,7 @@ Everything required to operate the camera for a first deployment. Figures are th
 | **Level 1 total** | **~$34,611** |
 <!-- END costing:funding-level1 -->
 
-### Level 2 — First Deployment (+$1,350–2,800)
+### Level 2 — First Deployment (+$1,025–2,750)
 Transport, permits, and water resupply for a single public deployment:
 
 | Item | Cost |
@@ -116,9 +116,9 @@ Transport, permits, and water resupply for a single public deployment:
 | Commercial transport (short haul, 30–100 miles, round trip) | $1,000–2,400 |
 | Location permit (public land, non-commercial art use) | $0–300 |
 | Water resupply (~<!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal / <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue tank ≈ <!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints) | $25–50 |
-| **Level 2 total** | **~$1,350–2,800** |
+| **Level 2 total** | **~$1,025–2,750** |
 
-### Level 3 — Documentation (+$2,000–4,000)
+### Level 3 — Documentation (+$2,000–5,000)
 Video documentation, process photography, and initial publication:
 
 | Item | Cost |
@@ -126,9 +126,9 @@ Video documentation, process photography, and initial publication:
 | Videography (1–2 deployment days) | $1,000–2,500 |
 | Photography (behind-the-scenes, prints) | $500–1,000 |
 | Publication design (zine or catalog, print run) | $500–1,500 |
-| **Level 3 total** | **~$2,000–4,000** |
+| **Level 3 total** | **~$2,000–5,000** |
 
-**Combined (Levels 1+2+3):** ~<!-- BEGIN costing:fund-combined -->$37,961–41,411<!-- END costing:fund-combined --> for a complete first-year program with three public deployments, 50-print edition, and full documentation.
+**Combined (Levels 1+2+3):** ~<!-- BEGIN costing:fund-combined -->$37,636–42,361<!-- END costing:fund-combined --> for a complete first-year program with three public deployments, 50-print edition, and full documentation.
 
 ## 7. Timeline
 A 12-month build and deployment program:

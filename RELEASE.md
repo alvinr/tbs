@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Lint: the table-arithmetic warning now checks range-format totals** — `warn_arithmetic` only
+  parsed scalar money cells (`$25`, `~$25`, `**$25**`), so any cost table whose column used a
+  low–high range (`$25–$45`) was silently skipped and its `**Total**` could drift unchecked. The
+  gate now parses ranges and reconciles a total's low and high bounds independently, and it skips
+  "scenario" totals whose label carries a parenthetical qualifier (`Total all-in (mid-range)`) so
+  comparison tables aren't false-flagged. On its first run it caught two drifted totals in
+  `funding-proposal.md` — Level 2 (`$1,350–2,800` → `$1,025–2,750`) and Level 3
+  (`$2,000–4,000` → `$2,000–5,000`) had diverged from their own line items; the `costing.py`
+  `FUNDING_L2/L3` constants and the derived first-year `fund-combined` band were corrected to match.
+
 - **Fix: 4 gallery diagrams were broken images on the site** — the film-plane corner-joint study
   diagrams (`film-joint-options`, `film-joint-study-gimbal`, `film-joint-study-ujoint`,
   `film-corner-gimbal`) were listed in `all-diagrams.md` but not registered in `publish.sh` /

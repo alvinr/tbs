@@ -405,8 +405,8 @@ def funding_level1_total() -> int:
 
 # Funding-proposal Level 2/3 ranges (deployment + documentation — funding-doc-specific, not in the
 # 13 build sections). The combined first-year band is computed from them + Level 1.
-FUNDING_L2 = (1350, 2800)   # transport + permits + water resupply (one deployment)
-FUNDING_L3 = (2000, 4000)   # video + photography + publication
+FUNDING_L2 = (1025, 2750)   # transport ($1,000–2,400) + permits ($0–300) + water resupply ($25–50), one deployment
+FUNDING_L3 = (2000, 5000)   # videography ($1,000–2,500) + photography ($500–1,000) + publication ($500–1,500)
 
 
 def funding_combined() -> tuple[int, int]:

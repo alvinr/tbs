@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $110 | $265 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,112 | $7,088 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $5,356 | $7,929 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $5,356 | $7,899 |
 | 6. Electrical — power, circuits, wiring | $2,608 | $3,003 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,416 | $2,061 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $939 | $1,479 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,461** | **~$36,585** |
+| **TOTAL (base build + 50-print run)** | **~$25,461** | **~$36,555** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -199,7 +199,6 @@ indicative low–high estimates — get quotes before ordering.
 | 100mm Ø SS grab rail | 1 ea | McMaster-Carr | lightlock | $15–$25 |
 | [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 1 pack | Amazon | spray | $5 |
 | 25mm ratchet strap, 1,100 kg WLL | 4 ea | Amazon | ibc-frame | $30–$50 |
-| 25mm welded D-ring (3641T29) | 8 ea | McMaster-Carr | ibc-frame | $40–$70 |
 | 316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black | 1 ea | McMaster-Carr | panel | $20–$35 |
 | [Axle saddle clamps ×8 (304 SS flat-bar stock)](https://www.mcmaster.com/8992K794/) (8992K794) | 1 2 ft bar | McMaster-Carr | spray | $10 |
 | Cam-lever rail brake (skate lock) | 12 ea | McMaster-Carr | film | $96–$180 |
@@ -237,7 +236,8 @@ indicative low–high estimates — get quotes before ordering.
 | Stainless fasteners + nylon isolation washers | 1 lot | McMaster-Carr | lightlock | $30–$50 |
 | Top + bottom wall stays + 4-bolt anchor plates | 2 set | McMaster-Carr | swing | $90–$160 |
 | Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
-| **fasteners-hardware subtotal** | | | | **$1,402–$2,418** |
+| [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | 8 ea | McMaster-Carr | ibc-frame | $40 |
+| **fasteners-hardware subtotal** | | | | **$1,401–$2,387** |
 
 ### plastics-sheet
 
@@ -414,7 +414,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 47 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $4,792–$5,935 |
+| McMaster-Carr | 47 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $4,791–$5,904 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 17 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,961–$3,181 |
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,448–$2,006 |

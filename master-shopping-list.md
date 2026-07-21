@@ -201,7 +201,7 @@ indicative low–high estimates — get quotes before ordering.
 | M6 hex bolt, SS — length BLOCKED (pinch-clamp geometry undesigned) | 1 ea | McMaster-Carr | spray | $1 |
 | M6 hex bolt, SS — ~M6×16 est (tray center flange) | 12 ea | McMaster-Carr | tray | $11 |
 | [M6×1.0 × 20 hex bolt, Grade 8.8 zinc](https://www.mcmaster.com/91280A330/) (91280A330) | 16 ea | McMaster-Carr | spray | $3 |
-| M8 hex bolt, SS — ~M8×30 (pending 1262T21 web thickness) | 8 ea | McMaster-Carr | film | $15 |
+| M8×25 hex bolt, SS — right-rail end fixing (ICP-14) | 8 ea | McMaster-Carr | film | $15 |
 | M8 hex bolt, SS — M8×20-25 (rib-flat) to longer (corrugation-bridge), confirm attach | 12 ea | McMaster-Carr | shelf | $10 |
 | M12×40 hex bolt, Grade 8.8 | 12 ea | McMaster-Carr | ibc-frame | $12–$22 |
 | [M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A728/) (91280A728) | 86 ea | McMaster-Carr | film, walkway | $137 |

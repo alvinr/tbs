@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Fastener BOM decomposed into bolts / washers / nuts for ordering.** Split the 11 bundled
+  "bolt + nut + washer" kit lines into separate component parts, using **shared keys** so nuts and
+  washers total **by size + type across the whole build** (M12 flat washers **220**, M12 plain nuts
+  **110**, M5×16 CSK screws **184**, …) while bolts stay itemized **by size × length**. The master
+  BOM's fastener section now reads as a purchasing block (bolts → washers → nuts → other hardware, by
+  thread size). Decomposition is **cost-neutral** — each system's total is unchanged, so reconciliation
+  stays green; the bolt line absorbs each kit's cost and nuts/washers carry nominal placeholders until
+  the re-pricing pass pins real per-component SKUs/prices.
+
 - **Film-plane seal parts sourced; parts-identity lint fully clear.** Swapped the EPDM foam tape to
   [McMaster 8694K88](https://www.mcmaster.com/8694K88/) (1"×½", 25 ft rolls) and right-sized the qty
   to **2 rolls (50 ft)** against the ~43 ft film-plane perimeter — the old 3×50 ft = 150 ft was ~3.5×

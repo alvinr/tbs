@@ -52,8 +52,8 @@ All items ship within the United States. Local Southern California pickup noted 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | Muslin spring clip | Bracket + spring jaw, ~5N, neoprene pad, torsion spring, squeeze handle; through-bolted to the frame upstand (nuts on the inside) | 88 ea | McMaster-Carr / Amazon | $264–$704 |
-| [M5×16 SS countersunk screw](https://www.mcmaster.com/91292a126/) (91292A126) | A2-70 stainless — through-bolts the clip bracket to the upstand | 176 ea | McMaster-Carr / Bolt Depot | $28 |
-| [M5 SS Nylock nut](https://www.mcmaster.com/93625A200/) (93625A200) | A2-70 stainless — on the inside edge of the upstand | 176 ea | McMaster-Carr / Bolt Depot | $16 |
+| [M5×16 countersunk screw, A2-70 SS](https://www.mcmaster.com/91292a126/) (91292A126) | A2-70 stainless — through-bolts the clip bracket to the upstand | 176 ea | McMaster-Carr / Bolt Depot | $28 |
+| [M5 hex nut, nyloc A2-70 SS](https://www.mcmaster.com/93625A200/) (93625A200) | A2-70 stainless — on the inside edge of the upstand | 176 ea | McMaster-Carr / Bolt Depot | $16 |
 | [Neoprene pad strip 60A](https://www.mcmaster.com/4568N57/) (4568N57) | 1" × 1/4" 60A neoprene, PSA-backed, 36"/strip — the clip jaw pad. Cut into 25.4×20mm pads (6mm thick); 88 pads × 20mm = 1,760mm → 3 strips (2 + 1 cutting-waste/spare) | 3 strip | McMaster-Carr / Grainger | $78 |
 | **Clamp total** | | | | **$386–$826** |
 <!-- END parts:clamp -->

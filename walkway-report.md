@@ -437,13 +437,17 @@ bounces noticeably less than the rod-hung version it replaces.
 | Drum-exit punch-out grating | Extra GRP landing (~0.23 m²) at the light-lock exit | 1 lot | McNichols | $50–$65 |
 | Cantilever bracket — standard (near/far) | 8mm steel plate: 150mm vert leg + 300mm arm + 70mm gusset, welded (5 near + 9 far at 457mm centers) | 14 ea | Local fab | $420–$700 |
 | Cantilever bracket — widened (near) | 10mm steel plate: 200mm vert leg + 500mm arm + 70mm gusset, welded (EP/battery/slit zone) | 4 ea | Local fab | $160–$280 |
-| M12×80mm through-bolt kit | Hex bolt + 2× washers + nut, grade 8.8 (3 per std + 4 per widened) | 58 ea | McMaster-Carr | $87–$145 |
+| M12×80 hex through-bolt, Grade 8.8 | Cantilever-bracket wall bolts (3 per std + 4 per widened) | 58 ea | McMaster-Carr | $68–$126 |
+| M12 hex nut, plain | Plain hex nut — M12×80 cantilever bolts (cost-neutral placeholder; re-price) | 58 ea | McMaster-Carr | $12 |
+| M12 flat washer | Flat washers (2/bolt) — M12×80 cantilever bolts (cost-neutral placeholder; re-price) | 116 ea | McMaster-Carr | $7 |
 | Reinforcing plate (exterior) | 6mm steel: 100×180mm std (×14) + 120×220mm widened (×4) | 18 ea | Local fab | $75–$130 |
 | Transition bearing plate | 40×500×5mm flat bar, welded to bracket arm top at width transitions | 2 ea | Local fab | $5–$10 |
 | Right walkway cantilever frame | 40×40×3mm SHS — 2 long beams (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + 2 end beams (300mm) + 2 center arms (325mm), ~8 m | 1 lot | Metal Supermarkets | $28–$40 |
 | Wall cleat (left corners) | 8mm steel: back-plate + exterior plate + shelf, through-bolted to the wall | 2 ea | Local fab | $20–$35 |
 | Combined corner plate (right corners) | 10mm steel, 150mm wide — carries the walkway right beam AND the bottom film rail | 2 ea | Local fab | $50–$80 |
-| M12 through-bolt kit (right walkway) | Wall cleats + combined plates + 2 center-arm U-clamps to the IBC uprights | 24 ea | McMaster-Carr | $30–$50 |
+| M12 hex through-bolt, Grade 8.8 — length TBD (right-walkway wall cleats/plates/U-clamps, confirm at order) | Wall cleats + combined plates + 2 center-arm U-clamps to the IBC uprights | 24 ea | McMaster-Carr | $22–$42 |
+| M12 hex nut, plain | Plain hex nut — right-walkway M12 through-bolts (cost-neutral placeholder; re-price) | 24 ea | McMaster-Carr | $5 |
+| M12 flat washer | Flat washers (2/bolt) — right-walkway M12 through-bolts (cost-neutral placeholder; re-price) | 48 ea | McMaster-Carr | $3 |
 | Floor-leg cantilever bracket (left walkway, ×5) | 50×50×3mm SHS post (~115mm) + 40×40×3mm SHS arm (2 reach X470, 3 extended to X770) + 128×60×8mm foot plate | 5 ea | Local fab | $55–$95 |
 | M10 wedge floor anchors | 4 per foot plate (20 total), sealed into the container floor | 20 ea | McMaster-Carr | $25–$45 |
 | Grating clips | Removable spring clips, stainless | 30 ea | McNichols / McMaster-Carr | $30–$50 |

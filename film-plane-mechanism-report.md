@@ -181,9 +181,12 @@ All items ship within the United States. Local Southern California pickup noted 
 | 6-mil black poly sheeting | 10 ft × 100 ft | 1 roll | Home Depot / Uline | $66–$70 |
 | 2" black Gorilla Tape | 35 yd rolls | 6 roll | Home Depot / Amazon | $54–$78 |
 | Mild steel plate 8mm (laser/plasma cut + welded) | ICP-11: back-plate + exterior plate + seat + gusset per saddle; ~21 kg over 6 saddles | 6 ea | Metal Supermarkets / Online Metals | $318 |
-| M12×90mm hex through-bolt + nut + washers, SS | ICP-12: wall sandwich through-bolt; 4/saddle ×6 + 4 spare | 28 ea | McMaster-Carr / Amazon | $70 |
+| M12×90 hex through-bolt, SS | ICP-12: wall sandwich through-bolt; 4/saddle ×6 + 4 spare | 28 ea | McMaster-Carr / Amazon | $61 |
+| M12 hex nut, plain | Plain hex nut — M12×90 wall-sandwich bolts (cost-neutral placeholder; re-price) | 28 ea | McMaster-Carr | $6 |
+| M12 flat washer | Flat washers (2/bolt) — M12×90 wall-sandwich bolts (cost-neutral placeholder; re-price) | 56 ea | McMaster-Carr | $3 |
 | M8×25mm knurled thumbscrew DIN 464 | ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare | 12 ea | Amazon / Maedler | $36 |
-| M8 hex fixing bolt + nut, SS | ICP-14: right-rail permanent fixing; 2/saddle ×2 TR + spare | 8 ea | McMaster-Carr / Amazon | $16 |
+| M8 hex bolt, SS — length TBD (film right-rail fixing, confirm at order) | ICP-14: right-rail permanent fixing; 2/saddle ×2 TR + spare | 8 ea | McMaster-Carr / Amazon | $15 |
+| M8 hex nut, plain SS | Plain hex nut — M8 right-rail fixing (cost-neutral placeholder; re-price) | 8 ea | McMaster-Carr | $1 |
 | **Film total** | | | | **$5,721–$6,229** |
 <!-- END parts:film -->
 

@@ -17,7 +17,7 @@
 | **1. Container purchase & delivery** | $2,300 | $3,300 | $4,300 |
 | **2. Interior conversion** | $950 | $1,138 | $1,350 |
 | **3. Optics — pinhole plate** | $110 | $185 | $265 |
-| **4. Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)** | $6,103 | $6,577 | $7,051 |
+| **4. Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)** | $6,091 | $6,565 | $7,039 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $5,352 | $6,628 | $7,895 |
 | **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)** | $2,608 | $2,806 | $3,003 |
 | **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $757 | $817 | $907 |
@@ -29,7 +29,7 @@
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,100 | $1,490 | $2,650 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licenses & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$25,577** | **$31,578** | **$39,455** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$25,565** | **$31,566** | **$39,443** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware AmFe** chemistry + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,120), Mid = Standard ½-Ware ($1,520), High = Rich full-Ware ($2,700)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
@@ -258,8 +258,8 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 | Spring clips, muslin (×88) | $264 | $484 | $704 |
 | Clamp mounting — M5×16 SS csk screws (×176) + Nylocks (×176) + neoprene pad strip | $122 | $122 | $122 |
 | Wall-seat saddles ×6 — 8mm steel plate, cut + welded (ICP-11) | $318 | $318 | $318 |
-| Saddle fasteners — M12 through-bolts (×28) + M8 thumbscrews (×12) + M8 hex bolts (×8) | $118 | $118 | $118 |
-| **Section total — film plane mechanism (U-channel + U-joint, incl. saddles)** | **$6,103** | **$6,577** | **$7,051** |
+| Saddle fasteners — M12 through-bolts (×28) + M8 thumbscrews (×12) + M8 hex bolts (×8) | $106 | $106 | $106 |
+| **Section total — film plane mechanism (U-channel + U-joint, incl. saddles)** | **$6,091** | **$6,565** | **$7,039** |
 <!-- END costing:film -->
 
 *Electric actuation (optional add-on, not in any standard build): +$827 — see §4.4.*
@@ -556,7 +556,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Container (WWT) + delivery | $1,800 |
 | Interior conversion (minimal) | $950 |
 | Pinhole plate | $110 |
-| Film plane mechanism (4-corner U-channel + U-joint, incl. wall-seat saddles) | $6,103 |
+| Film plane mechanism (4-corner U-channel + U-joint, incl. wall-seat saddles) | $6,091 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $5,352 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $2,608 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $757 |
@@ -568,7 +568,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Cyanotype chemistry + substrate (50 prints) | $1,100 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$25,007** |
+| **Scenario A total** | **~$24,995** |
 <!-- END costing:scenario-a -->
 
 ### Scenario B — Recommended build, regional deployment
@@ -579,7 +579,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Container (CW) + delivery | $3,150 |
 | Interior conversion (full) | $1,138 |
 | Pinhole plate | $185 |
-| Film plane mechanism (4-corner U-channel + U-joint + wall-seat saddles) | $6,577 |
+| Film plane mechanism (4-corner U-channel + U-joint + wall-seat saddles) | $6,565 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,628 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $2,806 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $817 |
@@ -592,7 +592,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1,200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$31,888** |
+| **Scenario B total (excl. CDL)** | **~$31,876** |
 <!-- END costing:scenario-b -->
 
 ### Scenario C — Full production, own transport, CDL
@@ -600,11 +600,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:scenario-c -->
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $30,988 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $30,976 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$120,488–$150,488** |
+| **Scenario C total** | **~$120,476–$150,476** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

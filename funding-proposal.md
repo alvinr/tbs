@@ -84,7 +84,7 @@ The container moves by commercial hire tilt-bed truck. No CDL is required for th
 ## 6. Budget and Use of Funds
 All figures are drawn from the [full cost breakdown](project-cost-breakdown.md). Per-item procurement details with supplier URLs are in the [master shopping list](master-shopping-list.md). Three funding levels are presented to allow partial or phased support.
 
-### Level 1 — Core Build (~<!-- BEGIN costing:fund-l1-total -->$34,658<!-- END costing:fund-l1-total -->, Standard scenario)
+### Level 1 — Core Build (~<!-- BEGIN costing:fund-l1-total -->$34,646<!-- END costing:fund-l1-total -->, Standard scenario)
 Everything required to operate the camera for a first deployment. Figures are the Standard (Mid) column of the [cost breakdown](project-cost-breakdown.md); Low–High scenarios span ~<!-- BEGIN costing:fund-scenario-span -->$26,000–$39,000<!-- END costing:fund-scenario-span -->.
 
 <!-- BEGIN costing:funding-level1 -->
@@ -93,7 +93,7 @@ Everything required to operate the camera for a first deployment. Figures are th
 | 20ft container (Cargo Worthy grade) + delivery | $3,300 |
 | Interior conversion (light-seal, paint, image-plane backing) | $1,138 |
 | Pinhole plate (precision laser-drilled, SS-302, interchangeable frame) | $185 |
-| Film plane mechanism (4-corner U-channel + acetal skate + Ruland U-joint) | $6,577 |
+| Film plane mechanism (4-corner U-channel + acetal skate + Ruland U-joint) | $6,565 |
 | Tilt-swing front board mechanism | $1,470 |
 | Housed revolving-door light trap (plastic-skin Ø900 housing + C-shell drum, bearings, seals, fabrication) | $1,739 |
 | Processing water system (tray, spray bar, 3-stage filtration, IBC stacking frame) | $6,628 |
@@ -105,7 +105,7 @@ Everything required to operate the camera for a first deployment. Figures are th
 | Chemistry prep shelf (fold-down board + frame + hinge/stays + tap trunk extension) | $202 |
 | Cyanotype chemistry + muslin substrate (50-print run, Standard tier) | $1,490 |
 | Contingency (10%) | ~$3,150 |
-| **Level 1 total** | **~$34,658** |
+| **Level 1 total** | **~$34,646** |
 <!-- END costing:funding-level1 -->
 
 ### Level 2 — First Deployment (+$1,025–2,750)
@@ -128,7 +128,7 @@ Video documentation, process photography, and initial publication:
 | Publication design (zine or catalog, print run) | $500–1,500 |
 | **Level 3 total** | **~$2,000–5,000** |
 
-**Combined (Levels 1+2+3):** ~<!-- BEGIN costing:fund-combined -->$37,683–42,408<!-- END costing:fund-combined --> for a complete first-year program with three public deployments, 50-print edition, and full documentation.
+**Combined (Levels 1+2+3):** ~<!-- BEGIN costing:fund-combined -->$37,671–42,396<!-- END costing:fund-combined --> for a complete first-year program with three public deployments, 50-print edition, and full documentation.
 
 ## 7. Timeline
 A 12-month build and deployment program:

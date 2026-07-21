@@ -588,8 +588,8 @@ PARTS: list[Part] = [
     #   adopting nyloc locking for the M12 through-bolts; ~+$70 over the 110 bolts. https://www.mcmaster.com/94645A230/
     Part("saddle-m8-thumb", "M8×25mm knurled thumbscrew DIN 464", "fasteners-hardware",
          "film", 12, "ea", 3, 3, "Amazon", "Maedler", spec="ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare"),
-    Part("bolt-m8-fixing", "M8×25 hex bolt, SS — right-rail end fixing (ICP-14)", "fasteners-hardware",
-         "film", 8, "ea", 1.88, 1.88, "McMaster-Carr", "Amazon", spec="ICP-14: right depth-rail end flange → wall seat hold-down (does NOT cross the wall). Grip = 3/16\" (4.76mm) 1262T21 channel base + 10mm seat ≈ 15mm → M8×25 (short → fully threaded). 2/saddle ×2 TR + spare. Needs an M8×25 SS SKU at re-price."),
+    Part("bolt-m8-fixing", "M8×1.25 × 25 hex bolt, Grade 8.8 zinc — right-rail end fixing (ICP-14)", "fasteners-hardware",
+         "film", 8, "ea", 18.51 / 50, 18.51 / 50, "McMaster-Carr", part_no="91280A534", url="https://www.mcmaster.com/91280A534/", spec="ICP-14: right depth-rail end flange → wall seat hold-down (does NOT cross the wall). Grip = 3/16\" (4.76mm) 1262T21 channel base + 10mm seat ≈ 15mm → M8×25 (short → fully threaded). Pitch M8×1.25 coarse (matches the M8 plain nut). $18.51/pack of 50. ⚠ VALIDATE: 91280A534 is zinc — the film plane wets during development; a 316-SS M8×25 resists corrosion better."),
     Part("nut-m8-plain", "M8×1.25 hex nut, plain SS", "fasteners-hardware",
          "film", 8, "ea", 7.53 / 100, 7.53 / 100, "McMaster-Carr", part_no="90591A161", url="https://www.mcmaster.com/90591A161/", spec="Plain hex nut — M8 right-rail fixing. Pitch M8×1.25 (coarse, baseline — confirm vs SKU PDF, must match the bolt). $7.53/pack of 100."),
     # ═══ clamp (film-clamp-mechanism-report §4) — split out of FILM; itemized, sums to the FILM

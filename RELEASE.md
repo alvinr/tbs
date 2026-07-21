@@ -24,7 +24,12 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-_Nothing yet — add a bullet per notable change here as work lands._
+- **Fix: 4 gallery diagrams were broken images on the site** — the film-plane corner-joint study
+  diagrams (`film-joint-options`, `film-joint-study-gimbal`, `film-joint-study-ujoint`,
+  `film-corner-gimbal`) were listed in `all-diagrams.md` but not registered in `publish.sh` /
+  `setup_docs.py`, so their PNGs never synced to `published/assets/` (404 on the live gallery). Added
+  them to both sync registries and re-published. (Shipped broken in 0.4 — the lint gallery-gate checks
+  the markdown lists every PNG but not that each is wired for syncing.)
 
 ## [0.4] — 2026-07-20
 

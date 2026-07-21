@@ -13,19 +13,19 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, backing) | $950 | $1,350 |
 | 3. Pinhole optics plate | $110 | $265 |
-| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,094 | $7,042 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,103 | $7,051 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,356 | $7,899 |
 | 6. Electrical — power, circuits, wiring | $2,608 | $3,003 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,416 | $2,061 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $939 | $1,479 |
-| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,053 | $2,950 |
+| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,080 | $2,977 |
 | 7c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,140 | $1,695 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $203 | $203 |
 | 8. Cooling & ventilation | $757 | $907 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,496** | **~$36,484** |
+| **TOTAL (base build + 50-print run)** | **~$25,532** | **~$36,520** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -208,13 +208,14 @@ indicative low–high estimates — get quotes before ordering.
 | [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | 24 ea | McMaster-Carr | walkway | $42 |
 | M6 flat washer, SS | 8 ea | McMaster-Carr | electrical | $0 |
 | M8 flat washer, SS | 12 ea | McMaster-Carr | shelf | $0 |
-| M12 flat washer | 440 ea | McMaster-Carr | film, walkway | $26 |
+| [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | 440 ea | McMaster-Carr | film, walkway | $43 |
+| [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | 110 ea | McMaster-Carr | film, walkway | $13 |
 | [M5 hex nut, nyloc A2-70 SS](https://www.mcmaster.com/93625A200/) (93625A200) | 176 ea | McMaster-Carr | clamp | $16 |
 | M6 flange nut, serrated SS | 12 ea | McMaster-Carr | tray | $1 |
 | M6 hex nut, nyloc SS | 16 ea | McMaster-Carr | spray | $1 |
 | M6 hex nut, plain SS | 5 ea | McMaster-Carr | electrical, spray | $0 |
 | M8 hex nut, plain SS | 20 ea | McMaster-Carr | film, shelf | $2 |
-| M12 hex nut, plain | 110 ea | McMaster-Carr | film, walkway | $22 |
+| [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | 110 ea | McMaster-Carr | film, walkway | $28 |
 | M8×25mm knurled thumbscrew DIN 464 | 12 ea | Amazon | film | $36 |
 | Corridor panel mount hardware (brackets + fasteners) | 1 lot | Home Depot | water | $25–$50 |
 | Door & access upgrades | 1 lot | Home Depot | interior | $50–$100 |
@@ -243,7 +244,7 @@ indicative low–high estimates — get quotes before ordering.
 | Muslin spring clip | 88 ea | McMaster-Carr | clamp | $264–$704 |
 | M10 wedge floor anchors | 20 ea | McMaster-Carr | walkway | $25–$45 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,442–$2,350** |
+| **fasteners-hardware subtotal** | | | | **$1,477–$2,385** |
 
 ### plastics-sheet
 
@@ -420,7 +421,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 61 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $4,792–$5,827 |
+| McMaster-Carr | 64 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $4,828–$5,863 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 17 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,961–$3,181 |
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,448–$2,006 |

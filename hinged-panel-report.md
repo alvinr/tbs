@@ -461,12 +461,12 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | Upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever — SF 3.7 in S355. Two journal bands (where the DU sleeves ride) turned/ground to Ra ≤0.5 µm — unhardened S355 acceptable per GGB DU (hardening improves life). | 1 ea | Metal Supermarkets / Local fab | $180–$300 |
-| [Thrust ball bearing, 51118 (Ø90 bore, single-direction)](https://bearingsdirect.com/51118-thrust-ball-bearing-90x120x22-grooved-ubc-usbc/) (51118) | Carries the ~330 kg (3.24 kN) vertical load at the post base; thrust-only (radial + moment taken by the DU sleeves). 51118 = 90 × 120 × 22mm, static Cₒ ≈190 kN → SF >50; single-direction (gravity-down). Ø90 bore matches the Ø89 post — the machined thrust collar bears on the shaft washer. Commodity part: generic ~$25–40, branded FAG/SKF ~$50–85 (do NOT buy at Motion/Applied industrial list ~$430). Chrome steel: grease + wipe annually (humid darkroom); stainless S51118 available ~$100+ if preferred. | 1 ea | Bearings Direct / Amazon / VXB | $40–$60 |
+| [Thrust ball bearing, 51118 (Ø90 bore, single-direction)](https://bearingsdirect.com/51118-thrust-ball-bearing-90x120x22-grooved-ubc-usbc/) (51118) | Carries the ~330 kg (3.24 kN) vertical load at the post base; thrust-only (radial + moment taken by the DU sleeves). 51118 = 90 × 120 × 22mm, static Cₒ ≈190 kN → SF >50; single-direction (gravity-down). Ø90 bore matches the Ø89 post — the machined thrust collar bears on the shaft washer. Commodity part: generic ~$25–40, branded FAG/SKF ~$50–85 (do NOT buy at Motion/Applied industrial list ~$430). Chrome steel: grease + wipe annually (humid darkroom); stainless S51118 available ~$100+ if preferred. | 1 ea | Bearings Direct / Amazon / VXB | $80 |
 | [DU self-lubricating sleeve (journal) bearing, Ø90 bore](https://www.applied.com/c-brands/c-ggb/mb9060du/DU-Self-Lubricating-Bearing/p/102013642) (MB9060DU) | Top + bottom radial location of the post. GGB DU steel-backed PTFE, Ø90 ID × Ø95 OD × 60L (0.796 lb). Cylindrical — pressed into the hub bores (H7/r6); the axial load is on the 51118 thrust bearing so no flange needed. Maintenance-free (dry-running), no oil to re-embed. Service pressure ≈2 N/mm² vs 140 N/mm² dynamic (>60× margin). Price TBD from Applied — placeholder band. | 2 ea | Applied / Isostatic (TU equiv.) | $60–$110 |
 | Drum support cage, 40 × 40 × 3mm SHS | Steel frame carrying the Ø900 housing + drum on the swinging leaf | 1 lot | Local fab | $70–$120 |
 | Top + bottom wall stays + 4-bolt anchor plates | Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates | 2 set | McMaster-Carr | $90–$160 |
 | Drop-in rail saddles + tapered dowels | For the 2 removable left film rails (TL + BL); dowels set the film datum | 4 ea | Local fab / McMaster-Carr | $80–$130 |
-| **Swing total** | | | | **$520–$880** |
+| **Swing total** | | | | **$560–$900** |
 <!-- END parts:swing -->
 
 
@@ -488,9 +488,9 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 |----------|------------|--------------|
 | Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,140<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,695<!-- END costing:hp-panel-high --> |
 | Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$1,416<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$2,061<!-- END costing:hp-housing-high --> |
-| Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$520<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$880<!-- END costing:hp-swing-high --> |
+| Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$560<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$900<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$3,495<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$5,235<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$3,535<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$5,255<!-- END costing:hp-total-high -->** |
 
 ---
 

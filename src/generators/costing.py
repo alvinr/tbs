@@ -202,8 +202,8 @@ LIGHTLOCK = [
 SWINGPIVOT = [
     # §8.3 swing pivot hardware
     LineItem("Ø89×8 CHS pivot post + machined hub / thrust collar", 180, 240, 300, "carries ~3.6 kN·m swing cantilever; Metal Supermarkets / local fab"),
-    LineItem("Turntable thrust bearing, 12″ (Ø305) 1000 lb", 40, 50, 60, "VXB"),
-    LineItem("Flanged sleeve (journal) bearings, Ø90 bore (×2)", 60, 85, 110, "McMaster SAE 841"),
+    LineItem("Thrust ball bearing, 51118 (Ø90 bore, single-direction)", 80, 80, 80, "Bearings Direct $80.03 firm; SF>50 on the 3.24 kN axial"),
+    LineItem("DU self-lubricating journal bushings, Ø90 bore (×2)", 60, 85, 110, "GGB MB9060DU, Applied"),
     LineItem("Drum support cage, 40×40×3mm SHS", 70, 95, 120, "Local fab"),
     LineItem("Top + bottom wall stays + 4-bolt anchor plates", 90, 125, 160, "turnbuckles + rods + plates"),
     LineItem("Drop-in rail saddles + tapered dowels (×4, removable left film rails)", 80, 105, 130, "Local fab / McMaster"),
@@ -1018,12 +1018,12 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (25583, 31596, 39486),  # updated 2026-07-21: fastener re-pricing pass + spray arm pinch joint + pinhole END-wall mounts (panel weld-in frame, shelf backing plates). Per-change history in git log.
+    "grand_total": (25623, 31626, 39506),  # updated 2026-07-21: swing-pivot 51118 thrust bearing firmed to $80.03 (Bearings Direct). Per-change history in git log.
     "walkway": (2080, 2529, 2977),   # 2026-07-21: M12 flat washer/split/plain-nut re-price +$27.  2026-07-21: M12 bracket/cleat bolts re-sized 80/cleat→65/70 (91280A728/732 partial, real flat) + 4 washers/bolt, fab line reconciled to parts −$30/−$58 → low +$53/high −$25.  §6a fab line matches walkway-report §10 ($742–$1,255 all-in)
     "water": (5368, 6650, 7924),  # updated 2026-07-21: spray arm pinch joint + M6 fastener re-price; IBC lashing weld-on rings; bulkhead-2in. Detail in git log.
     "container": (2300, 3300, 4300),
     "lightlock": (1416, 1739, 2061),   # 2026-07-18: 6215-2RS bearing firm $60.59 ea (Bearings Direct) from $55–95 band.  §6 = hinged-panel §8.2 (housing + drum) line items
-    "swingpivot": (939, 1209, 1479),   # 2026-07-18: door top/bottom seal lips (3mm steel) → nylon strip brush, firm $128.50 (McMaster 74405T12 brush + 8813T53 holder ×2).  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
+    "swingpivot": (979, 1239, 1499),   # 2026-07-21: 51118 thrust bearing firmed to $80.03 (Bearings Direct); journal bushings → GGB MB9060DU DU (value unchanged).  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
     "panel": (1140, 1418, 1695),       # §6c = hinged-panel §8.1 (panel structure) — was MISSING from the model
     "shelf": (212, 218, 224),          # 2026-07-21: + 3 welded 8mm wall backing plates (end-wall mount) +$18/$30.  §6d = chemistry-prep-shelves §7
     "interior": (950, 1138, 1350),

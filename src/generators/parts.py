@@ -514,8 +514,8 @@ PARTS: list[Part] = [
          "interior", 1, "lot", 157, 178, "Amazon (bundle)", "Amazon"),
     Part("interior-paint", "Interior matte-black paint", "adhesives-finishes",
          "interior", 1, "lot", 100, 160, "Home Depot"),
-    Part("image-plane-backing", "Image-plane flat backing — Dibond ACM", "plastics-sheet",
-         "interior", 1, "lot", 490, 620, "TAP Plastics", "Online Metals"),
+    # image-plane-backing RETIRED 2026-07-22 — the same ACM backing as film 'dibond-acm-film'
+    # (bonded to the moveable film-plane frame); the old fixed-wall backing line was a double-count.
     Part("interior-ventilation", "Ventilation (inline fans + light-trap baffles) — interior-conversion allowance",
          "ducting-ventilation", "interior", 1, "lot", 80, 130, "Amazon"),
     Part("door-access-upgrades", "Door & access upgrades", "fasteners-hardware",

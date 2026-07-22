@@ -15,7 +15,7 @@
 | Category | Low | Mid | High |
 |----------|-----|-----|------|
 | **1. Container purchase & delivery** | $2,300 | $3,300 | $4,300 |
-| **2. Interior conversion** | $957 | $1,128 | $1,318 |
+| **2. Interior conversion** | $467 | $578 | $698 |
 | **3. Optics — pinhole plate** | $110 | $185 | $265 |
 | **4. Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)** | $5,779 | $6,082 | $6,385 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $5,442 | $6,709 | $7,970 |
@@ -29,7 +29,7 @@
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,100 | $1,490 | $2,650 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licenses & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$25,653** | **$31,420** | **$39,065** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$25,163** | **$30,870** | **$38,445** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware AmFe** chemistry + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,120), Mid = Standard ½-Ware ($1,520), High = Rich full-Ware ($2,700)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
@@ -74,7 +74,7 @@ The 20 ft standard container is the camera body. Minimum acceptable grade is Win
 
 **Source document:** `container-report.md`
 
-Converting the container interior from cargo hold to pinhole camera. Includes light-sealing, interior painting, flat image-plane backing, door upgrades, and ventilation.
+Converting the container interior from cargo hold to pinhole camera. Includes light-sealing, interior painting, door upgrades, and ventilation. (The rigid ACM image-plane backing is bonded to the moveable film-plane frame and costed with the film-plane mechanism, not here — §2.3.)
 
 ### 2.1 Light-sealing materials
 
@@ -95,13 +95,9 @@ Converting the container interior from cargo hold to pinhole camera. Includes li
 | Rollers, brushes, trays | 1 kit | $25 | $25 | |
 | **Paint subtotal** | | | **$130** | |
 
-### 2.3 Image-plane flat backing
+### 2.3 Image-plane flat backing — costed with the Film Plane Mechanism
 
-| Item | Qty | Unit | Total | Notes |
-|------|-----|------|-------|-------|
-| Dibond ACM 4mm panel (4'×8' sheets) | 6 | $85† | $510 | Grimco, City of Industry CA — flat backing surface |
-| Through-bolts + hardware | 1 lot | $40 | $40 | Into structural ribs every 18" |
-| **Backing subtotal** | | | **$550** | |
+The rigid ACM backing is **bonded to the moveable film-plane frame**, so it is costed with the film-plane mechanism (`dibond-acm-film`: 4× black 4mm 4'×8' ACM ≈ $380 — see [Film Plane Mechanism](film-plane-mechanism-report.md)). It was previously double-listed here as a fixed-wall backing; that entry is **retired** (the design uses the moveable back, not a wall-mounted panel).
 
 ### 2.4 Ventilation
 
@@ -135,11 +131,10 @@ Converting the container interior from cargo hold to pinhole camera. Includes li
 |----------|-----|-----|------|
 | Light-sealing | $157 | $168 | $178 |
 | Interior paint | $100 | $130 | $160 |
-| Image-plane backing | $490 | $550 | $620 |
 | Ventilation | $80 | $100 | $130 |
 | Door & access | $50 | $70 | $100 |
 | Misc. hardware | $80 | $110 | $130 |
-| **Interior conversion total** | **$957** | **$1,128** | **$1,318** |
+| **Interior conversion total** | **$467** | **$578** | **$698** |
 <!-- END costing:interior -->
 
 ---
@@ -554,7 +549,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Item | Cost |
 |------|------|
 | Container (WWT) + delivery | $1,800 |
-| Interior conversion (minimal) | $957 |
+| Interior conversion (minimal) | $467 |
 | Pinhole plate | $110 |
 | Film plane mechanism (4-corner U-channel + U-joint, incl. wall-seat saddles) | $5,779 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $5,442 |
@@ -568,7 +563,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Cyanotype chemistry + substrate (50 prints) | $1,100 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$25,083** |
+| **Scenario A total** | **~$24,593** |
 <!-- END costing:scenario-a -->
 
 ### Scenario B — Recommended build, regional deployment
@@ -577,7 +572,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Item | Cost |
 |------|------|
 | Container (CW) + delivery | $3,150 |
-| Interior conversion (full) | $1,128 |
+| Interior conversion (full) | $578 |
 | Pinhole plate | $185 |
 | Film plane mechanism (4-corner U-channel + U-joint + wall-seat saddles) | $6,082 |
 | Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,709 |
@@ -592,7 +587,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1,200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$31,730** |
+| **Scenario B total (excl. CDL)** | **~$31,180** |
 <!-- END costing:scenario-b -->
 
 ### Scenario C — Full production, own transport, CDL
@@ -600,11 +595,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:scenario-c -->
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $30,830 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $30,280 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$120,330–$150,330** |
+| **Scenario C total** | **~$119,780–$149,780** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

@@ -191,7 +191,7 @@ LIGHTLOCK = [
     LineItem("6215-2RS sealed bearing ×2 (Ø75×130×25, ABEC-1)", 121, 121, 121, "$60.59 ea firm, Bearings Direct; alt McMaster 6138K125 $394.88"),
     LineItem("75mm Ø × 150mm steel stub shafts (×2)", 30, 40, 50, "steel service center"),
     LineItem("Felt/brush wiper + 12mm neoprene (drum↔housing seal)", 40, 57, 75, "Frost King BP17A brush + 1/2\" neoprene by yard"),
-    LineItem("Silicone bead sealant (bearing housing)", 9, 10, 12, "DOWSIL 795 black $9.15"),
+    LineItem("Silicone bead sealant (bearing housing)", 6, 8, 10, "generic black UV silicone, Home Depot"),
     LineItem("100mm Ø SS grab rail (400mm cut)", 25, 35, 45, "16\" marine SS grab bar; 316 $45 / 304 ~$25"),
     LineItem("Matte-black interior finish", 40, 55, 70, "scuff + flat-black touch-in"),
     LineItem("Stainless fasteners + nylon isolation washers (no galvanic couple)", 45, 52, 60, "US Plastic 92674 shoulder washers + SS fastener kit"),
@@ -321,7 +321,7 @@ VENTILATION = [
 # §5b ventilation items, so we own the two authoritative subtotals rather than re-entering it.
 POWER = [
     LineItem("Solar & battery (3× 200W panels, MPPT 100/50, 1× 100Ah LiFePO4, shore charger, mounts, PV cabling, PV disconnect, panel)", 1236, 1340, 1443),
-    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop, charge/shore fuses, protection, conduit, LED, master pump switch, power-panel raised weld-in frame)", 1364, 1487, 1610, "2026-07-22: grommets/conduit/trunking re-priced to real SKUs (−$34 low/−$7 high); power-panel neoprene gasket (Pres-Bond)"),
+    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop, charge/shore fuses, protection, conduit, LED, master pump switch, power-panel raised weld-in frame)", 1440, 1549, 1659, "2026-07-22: grommets/conduit/trunking re-priced to real SKUs (−$34 low/−$7 high); power-panel neoprene gasket (Pres-Bond)"),
 ]
 
 
@@ -652,7 +652,7 @@ SECTIONS = [
     Section("3",  "Optics — pinhole plate", *total(OPTICS)),
     Section("4",  "Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)", *total(FILM)),
     Section("5",  "Processing water system (incl. tray, spray bar, IBC stacking frame)", *total(WATER)),
-    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2589, 2811, 3032),
+    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2665, 2873, 3081),
     Section("5b", "Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)",
             total(VENTILATION)[0], total(VENTILATION)[0] + 60, total(VENTILATION)[0] + 150),
     Section("6",  "Housed revolving-door light lock (plastic-skin custom fabrication)", *total(LIGHTLOCK)),
@@ -1018,11 +1018,11 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (25500, 31385, 39148),  # 2026-07-22: swing journal bushings DU → igus iglide J (−$162/pair). Per-change history in git log.  # 2026-07-22: floor anchors wedge→self-drill (−$32 low)  # updated 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (+$363/pair on the swing pivot). Per-change history in git log.
+    "grand_total": (25573, 31445, 39195),  # 2026-07-22: swing journal bushings DU → igus iglide J (−$162/pair). Per-change history in git log.  # 2026-07-22: floor anchors wedge→self-drill (−$32 low)  # updated 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (+$363/pair on the swing pivot). Per-change history in git log.
     "walkway": (2062, 2503, 2943),   # 2026-07-22: floor anchors → 410 SS self-drillers (−$18/−$34)   # 2026-07-21: M12 flat washer/split/plain-nut re-price +$27.  2026-07-21: M12 bracket/cleat bolts re-sized 80/cleat→65/70 (91280A728/732 partial, real flat) + 4 washers/bolt, fab line reconciled to parts −$30/−$58 → low +$53/high −$25.  §6a fab line matches walkway-report §10 ($742–$1,255 all-in)
     "water": (5442, 6709, 7970),  # updated 2026-07-22: parts-identity batch — spray-bar (jam nut/collar/self-tap/beam-clamp), tray silicone gasket, S60×6 adapter re-spec, M12×40 hanger bolt. Detail in git log.
     "container": (2300, 3300, 4300),
-    "lightlock": (1440, 1770, 2103),   # 2026-07-22: parts-identity batch — wiper seal (Frost King BP17A), grab rail (16" marine SS), SS fasteners+isolation washers re-priced.  §6 = hinged-panel §8.2 (housing + drum) line items
+    "lightlock": (1437, 1768, 2101),   # 2026-07-22: parts-identity batch — wiper seal (Frost King BP17A), grab rail (16" marine SS), SS fasteners+isolation washers re-priced.  §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (1180, 1395, 1610),   # 2026-07-22: journal bushings → igus iglide J JFM-9095-100 $130.53/ea (from GGB DU $211.25) −$162/pair.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame)   # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
     "panel": (1130, 1403, 1676),       # 2026-07-22: EPDM gasket re-priced (OKAYASU rolls, −$60/−$74) + grab handle 316→304 (+$50/+$55).  §6c = hinged-panel §8.1 (panel structure)
     "shelf": (214, 227, 239),          # 2026-07-22: piano hinge re-priced (Würth 32×600 satin SS, $22–35).  §6d = chemistry-prep-shelves §7
@@ -1030,7 +1030,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "optics": (110, 185, 265),
     "film": (5699, 6107, 6515),  # updated 2026-07-22: muslin clamp mechanism → off-the-shelf nylon spring clamps (×58) + HDPE filler; retired the custom bracket/spring/neoprene (−$189/−$531). Detail in git log.
     "ventilation": (757, 841, 924),   # §5b BOM (point estimates); report total was stale at $769
-    "power": (2600, 2827, 3053),       # 2026-07-22: power-panel neoprene gasket re-priced (Pres-Bond $21–42) +$15/$36.  §5a authoritative subtotal
+    "power": (2676, 2889, 3102),       # 2026-07-22: power-panel neoprene gasket re-priced (Pres-Bond $21–42) +$15/$36.  §5a authoritative subtotal
 }
 
 

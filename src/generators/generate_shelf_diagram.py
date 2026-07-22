@@ -209,6 +209,13 @@ def sheet3():
                            fc="#E8E6DD", ec=C_OUT, lw=1.0, zorder=2))
     ax.text(-25, STAY_Z + 40, "PINHOLE WALL", fontsize=5.5, color=C_DIM, ha="center", rotation=90, **FONT)
 
+    # welded 8mm steel backing plates on the wall face (behind the hinge cleat + each stay anchor)
+    for (bz, bh) in [(SHELF_H - 8, 68), (STAY_Z - 14, 28)]:
+        ax.add_patch(Rectangle((-6, bz), 8, bh, fc="#9AA0A8", ec=C_OUT, lw=1.0, hatch="///", zorder=3))
+    leader(ax, -6, SHELF_H + 30, -34, SHELF_H + 60,
+           "8mm WELDED BACKING PLATE\n(flat load anchor — behind the\nhinge cleat + each stay anchor;\nM8×25 weld-nuts)",
+           color=C_OUT, fs=6, ha="right", font=FONT)
+
     # hinge: wall leaf + knuckle + shelf leaf
     ax.add_patch(Rectangle((0, SHELF_H - 4), 8, 60, fc=C_HINGE, ec=C_OUT, lw=1.0, zorder=4))   # wall leaf (up)
     ax.add_patch(Circle((10, SHELF_H), 8, fc="#9098A0", ec=C_OUT, lw=1.0, zorder=6))            # knuckle

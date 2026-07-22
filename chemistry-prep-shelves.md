@@ -89,7 +89,10 @@ edges retains bottles/items. Flat black powder coat.
 ![Chemistry Prep Shelf — Sheet 2: Section (fold-down mechanism)](assets/shelf-sheet2.png)
 
 **Piano hinge:** a continuous steel piano hinge runs the full 600 mm back edge,
-bolted to a mounting cleat on the pinhole wall. The shelf swings between
+bolted to a 6 mm mounting cleat on the pinhole wall. Because the pinhole wall is
+corrugated, the cleat and each stay anchor bolt to **flat 8 mm steel backing plates
+welded to the wall crests** (M8×25 into M8 weld-nuts, ~14 mm grip) — flat, solid load
+anchors rather than bridging the corrugation. The shelf swings between
 horizontal (deployed) and vertical-up (stowed) about this hinge.
 
 **Stays:** two stays run from wall anchors ~230 mm above the hinge to the shelf's front
@@ -172,7 +175,8 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 | Continuous (piano) hinge, 600 mm | stainless/steel, ~32 mm leaf | 1 ea | McMaster-Carr | $20 |
 | Folding shelf stays/brackets | fold-flat, ~30–50 kg rating | 2 ea | Amazon / McMaster-Carr | $24 |
 | Wall mounting cleat + anchors | 6 mm steel cleat + 2 stay anchors (slotted) | 1 lot | Local fab | $18 |
-| M8 hex bolt, SS — M8×20-25 (rib-flat) to longer (corrugation-bridge), confirm attach | Shelf hinge cleat + 2 stay anchors, through-bolted (12 M8 nuts) to the pinhole END wall. Grip = 6mm cleat + wall → ~8mm/M8×20-25 if landing on a rib/flat backing, longer if bridging the end-wall corrugation — needs the attachment mode (see TODO). | 12 ea | McMaster-Carr | $10 |
+| Shelf mount backing plates, 8mm steel (welded, ×3) | Flat 8mm steel backing plates welded to the pinhole-wall interior crests — one behind the hinge cleat + one per stay anchor — giving flat, solid load anchors with M8 weld-nuts. | 3 ea | Local fab | $18–$30 |
+| M8×25 hex bolt, SS — shelf cleat + stay mount | Clamps the shelf hinge cleat (6mm) + 2 stay anchors to their welded 8mm backing plates (M8 weld-nut). Grip ≈ 14mm → M8×25 (short → fully threaded). Needs an M8×25 SS SKU at re-price. | 12 ea | McMaster-Carr | $10 |
 | [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | Plain hex nut — shelf wall bolts. Pitch M8×1.25 (coarse, baseline — confirm vs SKU PDF, must match the bolt). $7.53/pack of 100. | 12 ea | McMaster-Carr | $1 |
 | [M8 flat washer, SS](https://www.mcmaster.com/91166A270/) (91166A270) | Flat washer (1/bolt) — shelf wall bolts. $3.32/pack of 100. | 12 ea | McMaster-Carr | $0 |
 | Transport latch (over-center/barrel) | secures the folded board | 1 ea | Amazon | $8 |
@@ -180,7 +184,7 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 | Corner gusset plate, 3 mm | 50×50 mm triangular | 4 ea | Steel offcut | $5 |
 | Flat black epoxy spray paint | frame + hardware finish | 1 can | Hardware store | $12 |
 | ½" HDPE pipe (tap relocation) | extend the blue supply trunk ~1.3 m left to TAP-01 | 1 lot | Irrigation supply | $10 |
-| **Shelf total** | | | | **$202** |
+| **Shelf total** | | | | **$220–$232** |
 <!-- END parts:shelf -->
 
 *The relocated TAP-01 + BV-06 hardware itself is unchanged (carried in the water-system

@@ -171,7 +171,7 @@ WATER = [
     LineItem("Filter skid (3× Big Blue 4.5×20 separate housings on slotted-angle frame + cartridges)", 311, 411, 510),
     LineItem("Valves and fittings (6× BV ball valves, X1 4-way cross, S60×6 adapters, CV1, SV-01 + SV-02 taps, Blue equalization tie)", 651, 873, 1095),
     LineItem("Pipe (HDPE, spray bar)", 80, 97, 114),
-    LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1300, 1660, 2015),
+    LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1296, 1656, 2011, "2026-07-21: center-seam M6×16 bolt 93635A210 $0.63 −$4"),
     LineItem("Spray bar assembly (40×25 SS RHS beam, side LDPE manifold, 26 nozzles, manifold + 7 feed tubes, 4 Ø32 wheels, ball joint, arm + turned adapter + jam nut + clamp collar, hose)", 302, 348, 395, "2026-07-21: arm pinch joint designed — retired the loose M6 pinch bolt + nut, added turned AL adapter + M12 jam nut + Ø25 clamp collar +$20/+$33"),
     LineItem("Electrical (wiring only — fuse block in Electrical Report)", 37, 37, 37),
     LineItem("Processing consumables (6-mil poly, pH meter, citric acid)", 242, 260, 278),
@@ -237,7 +237,7 @@ SHELF = [
     point("Folding shelf stays/brackets (×2, fold-flat)", 24, "Amazon / McMaster-Carr"),
     point("Wall mounting cleat + 2 stay anchors (6mm steel, slotted)", 18, "Local fab / offcut"),
     LineItem("Wall backing plates, 8mm steel welded (×3: cleat + 2 stays)", 18, 24, 30, "flat load anchors on the corrugated end wall"),
-    point("M8 wall bolts + washers/nuts (~12)", 11, "M8 nut 90591A161 + washer 91166A270 re-priced −$1"),
+    point("M8 wall bolts + washers/nuts (~12)", 6, "M8×25 bolt 91280A534 $0.37 + nut 90591A161 + washer 91166A270"),
     point("Transport latch (over-center / barrel)", 8, "Amazon"),
     point("M5×16 CSK screws (×8) — ply panel", 1, "91420A326 $0.115 ea"),
     point("Corner gusset plates, 3mm (×4)", 5, "steel offcut"),
@@ -1018,14 +1018,14 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (25592, 31605, 39495),  # updated 2026-07-21: fastener re-pricing pass + spray arm pinch joint + pinhole END-wall mounts (panel weld-in frame, shelf backing plates). Per-change history in git log.
+    "grand_total": (25583, 31596, 39486),  # updated 2026-07-21: fastener re-pricing pass + spray arm pinch joint + pinhole END-wall mounts (panel weld-in frame, shelf backing plates). Per-change history in git log.
     "walkway": (2080, 2529, 2977),   # 2026-07-21: M12 flat washer/split/plain-nut re-price +$27.  2026-07-21: M12 bracket/cleat bolts re-sized 80/cleat→65/70 (91280A728/732 partial, real flat) + 4 washers/bolt, fab line reconciled to parts −$30/−$58 → low +$53/high −$25.  §6a fab line matches walkway-report §10 ($742–$1,255 all-in)
-    "water": (5372, 6654, 7928),  # updated 2026-07-21: spray arm pinch joint + M6 fastener re-price; IBC lashing weld-on rings; bulkhead-2in. Detail in git log.
+    "water": (5368, 6650, 7924),  # updated 2026-07-21: spray arm pinch joint + M6 fastener re-price; IBC lashing weld-on rings; bulkhead-2in. Detail in git log.
     "container": (2300, 3300, 4300),
     "lightlock": (1416, 1739, 2061),   # 2026-07-18: 6215-2RS bearing firm $60.59 ea (Bearings Direct) from $55–95 band.  §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (939, 1209, 1479),   # 2026-07-18: door top/bottom seal lips (3mm steel) → nylon strip brush, firm $128.50 (McMaster 74405T12 brush + 8813T53 holder ×2).  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
     "panel": (1140, 1418, 1695),       # §6c = hinged-panel §8.1 (panel structure) — was MISSING from the model
-    "shelf": (217, 223, 229),          # 2026-07-21: + 3 welded 8mm wall backing plates (end-wall mount) +$18/$30.  §6d = chemistry-prep-shelves §7
+    "shelf": (212, 218, 224),          # 2026-07-21: + 3 welded 8mm wall backing plates (end-wall mount) +$18/$30.  §6d = chemistry-prep-shelves §7
     "interior": (950, 1138, 1350),
     "optics": (110, 185, 265),
     "film": (6083, 6557, 7031),  # updated 2026-07-21: M12/M8 saddle+clamp fastener re-price to real SKUs, U-joint boot, EPDM tape, jaw pad, U-channel mechanism. Detail in git log.

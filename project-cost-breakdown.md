@@ -17,7 +17,7 @@
 | **1. Container purchase & delivery** | $2,300 | $3,300 | $4,300 |
 | **2. Interior conversion** | $467 | $578 | $698 |
 | **3. Optics — pinhole plate** | $110 | $185 | $265 |
-| **4. Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)** | $5,780 | $6,082 | $6,384 |
+| **4. Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)** | $5,780 | $6,082 | $6,386 |
 | **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $5,424 | $6,690 | $7,949 |
 | **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)** | $2,665 | $2,873 | $3,081 |
 | **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $757 | $817 | $907 |
@@ -29,7 +29,7 @@
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,100 | $1,490 | $2,650 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licenses & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$25,146** | **$30,851** | **$38,423** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$25,146** | **$30,851** | **$38,425** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware AmFe** chemistry + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,120), Mid = Standard ½-Ware ($1,520), High = Rich full-Ware ($2,700)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
@@ -243,7 +243,7 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 | 304 U-channel depth rails 3×1½" (1262T21, ×4 wall-to-wall) | $2,172 | $2,172 | $2,172 |
 | Ruland USKC12-6-6-SS U-joints (×4) + nitrile boots (×4) | $1,226 | $1,226 | $1,226 |
 | McMaster 4040N12 304 shaft supports (×4) + 3/8" 304 stub rod (89535K87) | $245 | $245 | $245 |
-| Acetal 4-wheel skates (×4) — Ø32 rollers, Ø10 316 axles, carriage plates | $221 | $290 | $359 |
+| Acetal 4-wheel skates (×4) — Ø32 rollers, Ø10 316 axles, carriage plates | $221 | $290 | $361 |
 | 316 flat-bar Z/X cross-slides (×4) + UHMW pads + gibs | $180 | $280 | $380 |
 | Cam-lever rail brakes (×12, skate lock) | $96 | $138 | $180 |
 | Corner plates, ¼" 304 SS 6×8 (×4) | $152 | $180 | $208 |
@@ -254,7 +254,7 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 | Clamp mounting — M5×16 SS csk screws (×176) + Nylocks (×176) + neoprene pad strip | $30 | $50 | $70 |
 | Wall-seat saddles ×6 — 8mm steel plate, cut + welded (ICP-11) | $318 | $318 | $318 |
 | Saddle fasteners — M12 through-bolts (×28) + M8 thumbscrews (×12) + M8 hex bolts (×8) | $106 | $106 | $106 |
-| **Section total — film plane mechanism (U-channel + U-joint, incl. saddles)** | **$5,780** | **$6,082** | **$6,384** |
+| **Section total — film plane mechanism (U-channel + U-joint, incl. saddles)** | **$5,780** | **$6,082** | **$6,386** |
 <!-- END costing:film -->
 
 *Electric actuation (optional add-on, not in any standard build): +$827 — see §4.4.*

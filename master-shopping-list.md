@@ -11,7 +11,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | Area | Low | High |
 |------|-----|------|
 | 1. Container & delivery | $2,300 | $4,300 |
-| 2. Interior conversion (light-seal, paint, backing) | $957 | $1,318 |
+| 2. Interior conversion (light-seal, paint, ventilation) | $467 | $698 |
 | 3. Pinhole optics plate | $110 | $265 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $5,779 | $6,385 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,442 | $7,970 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,603** | **~$36,125** |
+| **TOTAL (base build + 50-print run)** | **~$25,113** | **~$35,505** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -258,9 +258,8 @@ indicative low–high estimates — get quotes before ordering.
 | Drum-exit punch-out grating | 1 lot | McNichols | walkway | $50–$65 |
 | HDPE filler strip (L-channel packer) | 1 lot | TAP Plastics | clamp | $30–$70 |
 | HDPE flat bar, 50mm wide | 5 ea | Online Metals | tray | $40–$75 |
-| Image-plane flat backing — Dibond ACM | 1 lot | TAP Plastics | interior | $490–$620 |
 | Molded GRP (fiberglass) grating | 1 lot | McNichols | walkway | $965–$1,250 |
-| **plastics-sheet subtotal** | | | | **$2,605–$3,520** |
+| **plastics-sheet subtotal** | | | | **$2,115–$2,900** |
 
 ### plumbing-fittings
 
@@ -428,12 +427,12 @@ indicative low–high estimates — get quotes before ordering.
 | Local fab | 19 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,994–$3,236 |
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,448–$2,006 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
-| TAP Plastics | 6 | plastics-sheet | $1,170–$1,750 |
 | Amazon | 62 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,335–$1,657 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
 | Home Depot | 24 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $882–$1,156 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
+| TAP Plastics | 5 | plastics-sheet | $680–$1,130 |
 | Photographers' Formulary | 2 | chemistry-reagents | $1,051 |
 | Renogy | 3 | electrical-power | $833–$975 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |

@@ -251,7 +251,7 @@ SHELF = [
 INTERIOR = [
     LineItem("Light-sealing materials", 157, 168, 178, "blackout bundle: weatherstrip + felt + gaffer"),
     LineItem("Interior paint", 100, 130, 160),
-    LineItem("Image-plane flat backing (Dibond ACM)", 490, 550, 620),
+    # Image-plane flat backing RETIRED 2026-07-22 — same ACM as film 'Dibond ACM 4×8 sheets' (double-count)
     LineItem("Ventilation (inline fans + light-trap baffles)", 80, 100, 130),
     LineItem("Door & access upgrades", 50, 70, 100),
     LineItem("Misc. conversion hardware", 80, 110, 130),
@@ -338,7 +338,7 @@ def emit_funding_level1() -> str:
     plus 10% contingency. A 2nd VIEW of the same costing source (so it can't drift)."""
     rows = [
         ("20ft container (Cargo Worthy grade) + delivery", _sec("1").mid),
-        ("Interior conversion (light-seal, paint, image-plane backing)", _sec("2").mid),
+        ("Interior conversion (light-seal, paint, ventilation, door)", _sec("2").mid),
         ("Pinhole plate (precision laser-drilled, SS-302, interchangeable frame)", _sec("3").mid),
         ("Film plane mechanism (4-corner U-channel + acetal skate + Ruland U-joint)", _sec("4").mid),
         ("Tilt-swing front board mechanism", FRONT_BOARD_MID),
@@ -366,7 +366,7 @@ def emit_master_summary() -> str:
     Excludes transport/permits (master = base build + 50-print run); adds tools + safety (§10/§11)."""
     rows = [
         ("1. Container & delivery", _sec("1")),
-        ("2. Interior conversion (light-seal, paint, backing)", _sec("2")),
+        ("2. Interior conversion (light-seal, paint, ventilation)", _sec("2")),
         ("3. Pinhole optics plate", _sec("3")),
         ("4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles)", _sec("4")),
         ("5. Print washing — water system (incl. IBC stacking frame)", _sec("5")),
@@ -1018,7 +1018,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (25653, 31420, 39065),  # 2026-07-22: swing journal bushings DU → igus iglide J (−$162/pair). Per-change history in git log.  # 2026-07-22: floor anchors wedge→self-drill (−$32 low)  # updated 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (+$363/pair on the swing pivot). Per-change history in git log.
+    "grand_total": (25163, 30870, 38445),  # 2026-07-22: retired duplicate image-plane-backing ACM (−$490/−$620). Per-change history in git log.
     "walkway": (2062, 2503, 2943),   # 2026-07-22: floor anchors → 410 SS self-drillers (−$18/−$34)   # 2026-07-21: M12 flat washer/split/plain-nut re-price +$27.  2026-07-21: M12 bracket/cleat bolts re-sized 80/cleat→65/70 (91280A728/732 partial, real flat) + 4 washers/bolt, fab line reconciled to parts −$30/−$58 → low +$53/high −$25.  §6a fab line matches walkway-report §10 ($742–$1,255 all-in)
     "water": (5442, 6709, 7970),  # updated 2026-07-22: parts-identity batch — spray-bar (jam nut/collar/self-tap/beam-clamp), tray silicone gasket, S60×6 adapter re-spec, M12×40 hanger bolt. Detail in git log.
     "container": (2300, 3300, 4300),
@@ -1026,7 +1026,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "swingpivot": (1180, 1395, 1610),   # 2026-07-22: journal bushings → igus iglide J JFM-9095-100 $130.53/ea (from GGB DU $211.25) −$162/pair.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame)   # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
     "panel": (1130, 1403, 1676),       # 2026-07-22: EPDM gasket re-priced (OKAYASU rolls, −$60/−$74) + grab handle 316→304 (+$50/+$55).  §6c = hinged-panel §8.1 (panel structure)
     "shelf": (214, 227, 239),          # 2026-07-22: piano hinge re-priced (Würth 32×600 satin SS, $22–35).  §6d = chemistry-prep-shelves §7
-    "interior": (957, 1128, 1318),     # 2026-07-22: light-sealing materials re-priced (blackout bundle $157–178)
+    "interior": (467, 578, 698),      # 2026-07-22: retired the Image-plane flat-backing ACM line (double-counted the film dibond-acm-film)
     "optics": (110, 185, 265),
     "film": (5779, 6082, 6385),  # updated 2026-07-22: muslin clamp mechanism → off-the-shelf nylon spring clamps (×58) + HDPE filler; retired the custom bracket/spring/neoprene (−$189/−$531). Detail in git log.
     "ventilation": (757, 841, 924),   # §5b BOM (point estimates); report total was stale at $769

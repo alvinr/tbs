@@ -13,10 +13,10 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, backing) | $957 | $1,318 |
 | 3. Pinhole optics plate | $110 | $265 |
-| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $5,909 | $6,515 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $5,699 | $6,515 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,442 | $7,970 |
-| 6. Electrical — power, circuits, wiring | $2,623 | $3,039 |
-| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,441 | $2,106 |
+| 6. Electrical — power, circuits, wiring | $2,589 | $3,032 |
+| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,440 | $2,103 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,062 | $2,943 |
 | 7c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,130 | $1,676 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,695** | **~$36,218** |
+| **TOTAL (base build + 50-print run)** | **~$25,450** | **~$36,208** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -57,9 +57,9 @@ indicative low–high estimates — get quotes before ordering.
 | Loctite PL Premium construction adhesive | 2 tube | Home Depot | tray | $15 |
 | Matte-black interior finish | 1 ea | Local fab | lightlock | $40–$70 |
 | Primer + paint | 1 lot | Hardware store | ibc-frame | $30–$50 |
-| Silicone bead sealant (black, UV-stable) | 1 ea | McMaster-Carr | lightlock | $10–$15 |
+| [Silicone bead sealant (black, UV-stable) — DOWSIL 795](https://metrosealant.com/product/dowsil-795-silicone-sealant-10-oz-tube/) (DOWSIL 795) | 1 ea | Metro Sealant | lightlock | $9–$12 |
 | Thread seal tape (PTFE) | 4 roll | Home Depot | water | $8 |
-| **adhesives-finishes subtotal** | | | | **$289–$438** |
+| **adhesives-finishes subtotal** | | | | **$288–$435** |
 
 ### aluminum
 
@@ -123,7 +123,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| 10mm corrugated conduit, drop runs | 10 m | McMaster-Carr | electrical | $30 |
+| [10mm split corrugated wire loom, drop runs](https://www.amazon.com/Split-Wire-Loom-Tubing-Polyethylene/dp/B017L3GWIW) (B017L3GWIW) | 10 m | Amazon | electrical | $20–$23 |
 | 12V LED flat panel 300×600mm, 20W 4000K | 3 ea | Amazon | electrical | $75 |
 | 14 AWG duplex marine wire | 1 roll | Amazon | water | $22 |
 | 15A blade fuse | 1 ea | Amazon | water | $5 |
@@ -131,14 +131,14 @@ indicative low–high estimates — get quotes before ordering.
 | 2/0 AWG battery cable, 3ft (battery–fuse–busbar) | 1 lot | Amazon | electrical | $30 |
 | 200A main fuse — MRBF terminal-mount (ABYC E-11) | 1 ea | Amazon | electrical | $23–$27 |
 | 4 AWG ground wire, green/yellow, 3m | 1 lot | Amazon | electrical | $15 |
-| 40×25mm PVC cable trunking, 5m | 4 ea | McMaster-Carr | electrical | $40 |
+| [40×25mm PVC cable trunking, 5m](https://www.amazon.com/GenSDH-Raceway-Speaker-Concealer-Coffee-Width/dp/B0DK6GMHGL) (B0DK6GMHGL) | 4 ea | Amazon | electrical | $18–$25 |
 | [Anderson Powerpole 30A connectors, 50 pairs](https://powerwerx.com) | 1 kit | Powerwerx | electrical | $40 |
 | Anderson Powerpole connectors 30A | 5 pair | Amazon | water | $10 |
 | Battery main disconnect — Blue Sea m-Series 300A isolator | 1 ea | West Marine | electrical | $33–$42 |
 | Battery terminal covers (pair), insulating boots | 1 pair | Amazon | electrical | $10 |
 | Blue Sea 5026 fuse block, 12-circuit ST-blade | 1 ea | Amazon | electrical | $55–$77 |
 | Brady M210 wire label kit | 1 ea | Cable Master | electrical | $199–$211 |
-| Cable grommets / glands — steel-shell penetrations | 1 lot | McMaster-Carr | electrical | $15 |
+| [Cable grommets / glands — steel-shell penetrations](https://www.amazon.com/YUFANNET-Assortment-Grommets-Automotive-Electrical/dp/B09K5GNFHF) (B09K5GNFHF) | 1 lot | Amazon | electrical | $13–$30 |
 | Cooler external power cable | 1 ea | Waytek Wire | ventilation | $20 |
 | Copper ground stake, 8ft × ⅝" dia | 1 ea | Home Depot | electrical | $25–$30 |
 | Deutsch DT 2-pin connectors | 2 set | Waytek Wire | ventilation | $8 |
@@ -159,7 +159,7 @@ indicative low–high estimates — get quotes before ordering.
 | Shore-charger output fuse — 20A inline | 1 ea | Amazon | electrical | $5 |
 | Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs) | 1 lot | Waytek Wire | electrical | $30 |
 | Wiring kit — 12/14/16/18 AWG tinned, 50ft/color | 1 kit | Waytek Wire | electrical | $80 |
-| **electrical-distribution subtotal** | | | | **$1,371–$1,559** |
+| **electrical-distribution subtotal** | | | | **$1,337–$1,552** |
 
 ### electrical-power
 
@@ -254,13 +254,13 @@ indicative low–high estimates — get quotes before ordering.
 | 4mm black PP plastic sheet (1220 × 2,440mm) | 4 sheet | TAP Plastics | panel | $260–$420 |
 | 4mm black PP sheet + EPDM lip | 1 lot | TAP Plastics | panel | $60–$120 |
 | 5mm UV-stabilized HDPE sheet (black) | 1 lot | TAP Plastics | lightlock | $180–$280 |
-| Dibond ACM panel 4mm | 6 sheet | Grimco | film | $510 |
+| [Dibond ACM panel 4mm (black)](https://www.grimco.com/catalog/products/maxmetal) (MAXMETAL) | 6 sheet | Grimco | film | $300–$510 |
 | Drum-exit punch-out grating | 1 lot | McNichols | walkway | $50–$65 |
 | HDPE filler strip (L-channel packer) | 1 lot | TAP Plastics | clamp | $30–$70 |
 | HDPE flat bar, 50mm wide | 5 ea | Online Metals | tray | $40–$75 |
 | Image-plane flat backing — Dibond ACM | 1 lot | TAP Plastics | interior | $490–$620 |
 | Molded GRP (fiberglass) grating | 1 lot | McNichols | walkway | $965–$1,250 |
-| **plastics-sheet subtotal** | | | | **$2,735–$3,650** |
+| **plastics-sheet subtotal** | | | | **$2,525–$3,650** |
 
 ### plumbing-fittings
 
@@ -423,13 +423,13 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 42 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $3,792–$4,040 |
+| McMaster-Carr | 38 | bearings-motion, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $3,697–$3,940 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 19 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,994–$3,236 |
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,448–$2,006 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | TAP Plastics | 6 | plastics-sheet | $1,170–$1,750 |
-| Amazon | 59 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,209–$1,531 |
+| Amazon | 62 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,260–$1,609 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
@@ -440,7 +440,7 @@ indicative low–high estimates — get quotes before ordering.
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
 | Barn Door Ag | 7 | plumbing-fittings | $414–$652 |
 | Container Exchanger | 1 | water-equipment | $320–$600 |
-| Grimco | 1 | plastics-sheet | $510 |
+| Grimco | 1 | plastics-sheet | $300–$510 |
 | Fresh Water Systems | 5 | water-equipment | $400–$445 |
 | West Marine | 2 | electrical-distribution | $313–$438 |
 | altE Store | 2 | electrical-power | $345–$410 |
@@ -483,6 +483,7 @@ indicative low–high estimates — get quotes before ordering.
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |
 | Local machine shop | 1 | aluminum | $12–$18 |
 | FMW Fasteners | 1 | fasteners-hardware | $9–$17 |
+| Metro Sealant | 1 | adhesives-finishes | $9–$12 |
 | Bridge Fasteners | 1 | fasteners-hardware | $7–$11 |
 | Irrigation supply | 1 | plumbing-fittings | $10 |
 | Steel offcut | 1 | steel-structural | $5 |

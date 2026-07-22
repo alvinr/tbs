@@ -95,7 +95,7 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 | Drum seals (top/bottom) | Two-layer: closed-cell neoprene wiper + silicone bead — IP44 rated |
 | Handle | 100mm Ø SS grab rail, interior face only, at 900mm height |
 | Finish | Interior: flat black RAL 9005; exterior drum face: gray oxide |
-| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$1,441<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$2,106<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
+| Approximate cost | USD <!-- BEGIN costing:hp-housing-low -->$1,440<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$2,103<!-- END costing:hp-housing-high --> (local plastic fabrication shop) |
 | Lead time | 2–3 weeks |
 
 **Assessment — Recommended.**
@@ -167,7 +167,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | Matte-black interior finish | Black-pigmented sheet; rattle-can / local shop | Touch-in at welds |
 | Plastic fabrication (rolling, hot-air / extrusion welding, fitting) | Local plastic shop | Estimate 16–22 hrs labor |
 
-**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$1,441<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$2,106<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §6 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
+**Total custom housing + drum estimate: <!-- BEGIN costing:hp-housing-low -->$1,440<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$2,103<!-- END costing:hp-housing-high -->** — priced line-item BOM in the [Project Cost Breakdown](project-cost-breakdown.md) §6 and [Hinged Panel Report](hinged-panel-report.md) §8.2.
 
 ---
 
@@ -203,7 +203,7 @@ and [Hinged Panel Report](hinged-panel-report.md) §3.3 / §3.6.
 |---|---|---|---|
 | Clear bore / passage | 800mm | 750–900mm | **Ø850mm bore / ~555mm passage** |
 | Height | 2,000–2,200mm | 2,000mm | **2,200mm** |
-| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$1,441<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$2,106<!-- END costing:hp-housing-high -->** |
+| Price (USD) | $2,500–$3,500 | $3,000–$4,500 | **<!-- BEGIN costing:hp-housing-low -->$1,440<!-- END costing:hp-housing-low -->–<!-- BEGIN costing:hp-housing-high -->$2,103<!-- END costing:hp-housing-high -->** |
 | Weatherproofing | None | None | **IP44 (neoprene/silicone)** |
 | Panel integration | Requires surround wall | Requires panel-bay frame | **Direct bolt-in (120mm panel)** |
 | Transport-rated | No | No | **Yes (plastic skin, sealed bearings)** |

@@ -2476,7 +2476,7 @@ cost and where can it be saved</strong>. It breaks the build down by system, sep
 capital from recurring/consumable spend, and ranks the realistic savings levers.</p>
 <p>All figures are the <strong>mid-column</strong> estimates from the
 <a href="../project-cost-breakdown/">Cost Breakdown</a> (the itemized source of truth); the build
-mid-total is <strong>~<!-- BEGIN costing:ca-mid-total -->$31,513<!-- END costing:ca-mid-total --></strong>.</p>
+mid-total is <strong>~<!-- BEGIN costing:ca-mid-total -->$30,870<!-- END costing:ca-mid-total --></strong>.</p>
 <hr />
 <h2 id="2-method-capital-vs-recurring">2. Method — Capital vs Recurring<a class="headerlink" href="#2-method-capital-vs-recurring" title="Permanent link">&para;</a></h2>
 <p>Just as the weight study set aside the fixed container shell to find the <em>addressable</em>
@@ -2494,7 +2494,7 @@ recurs or is consumed — savings strategy is different for each.</p>
 <tbody>
 <tr>
 <td><strong>Capital build</strong> (one-time hardware)</td>
-<td style="text-align: right;"><strong>$28,483</strong></td>
+<td style="text-align: right;"><strong>$27,840</strong></td>
 <td>The systems you build once — this is where build-savings live</td>
 </tr>
 <tr>
@@ -2516,7 +2516,7 @@ recurs or is consumed — savings strategy is different for each.</p>
 </table>
 <!-- END costing:ca-buckets -->
 
-<p>Build-savings work on the <strong><!-- BEGIN costing:ca-capital -->$28,483<!-- END costing:ca-capital --> capital</strong>. The <!-- BEGIN costing:ca-consumable -->$1,490<!-- END costing:ca-consumable --> consumable is attacked
+<p>Build-savings work on the <strong><!-- BEGIN costing:ca-capital -->$27,840<!-- END costing:ca-capital --> capital</strong>. The <!-- BEGIN costing:ca-consumable -->$1,490<!-- END costing:ca-consumable --> consumable is attacked
 separately (bulk chemistry, cheaper substrate) because it repeats every batch and
 quickly dominates lifetime cost.</p>
 <hr />
@@ -2541,7 +2541,7 @@ quickly dominates lifetime cost.</p>
 </tr>
 <tr>
 <td><strong>Film-plane mechanism</strong></td>
-<td style="text-align: right;">$6,212</td>
+<td style="text-align: right;">$6,082</td>
 <td style="text-align: right;">22%</td>
 <td>Carriages, Option-A cross-slides, muslin spring clips, wall-seat saddles</td>
 </tr>
@@ -2553,7 +2553,7 @@ quickly dominates lifetime cost.</p>
 </tr>
 <tr>
 <td><strong>Power &amp; electrical</strong></td>
-<td style="text-align: right;">$2,831</td>
+<td style="text-align: right;">$2,873</td>
 <td style="text-align: right;">10%</td>
 <td>Battery + solar + distribution + protection</td>
 </tr>
@@ -2565,7 +2565,7 @@ quickly dominates lifetime cost.</p>
 </tr>
 <tr>
 <td><strong>Light lock</strong></td>
-<td style="text-align: right;">$1,773</td>
+<td style="text-align: right;">$1,768</td>
 <td style="text-align: right;">6%</td>
 <td>Plastic-skin custom fabrication</td>
 </tr>
@@ -2582,16 +2582,16 @@ quickly dominates lifetime cost.</p>
 <td>Pivot post + bearings + cage + fixed RHS door frame</td>
 </tr>
 <tr>
-<td><strong>Interior conversion</strong></td>
-<td style="text-align: right;">$1,128</td>
-<td style="text-align: right;">4%</td>
-<td>Insulation, sealing, safelight</td>
-</tr>
-<tr>
 <td><strong>Ventilation &amp; cooling</strong></td>
 <td style="text-align: right;">$817</td>
 <td style="text-align: right;">3%</td>
 <td>Fans + cooler + inverter + baffle-duct fab + canopy</td>
+</tr>
+<tr>
+<td><strong>Interior conversion</strong></td>
+<td style="text-align: right;">$578</td>
+<td style="text-align: right;">2%</td>
+<td>Insulation, sealing, safelight</td>
 </tr>
 <tr>
 <td><strong>Chemistry prep shelf</strong></td>
@@ -2602,7 +2602,7 @@ quickly dominates lifetime cost.</p>
 <tr>
 <td><strong>Optics — pinhole</strong></td>
 <td style="text-align: right;">$185</td>
-<td style="text-align: right;">0.6%</td>
+<td style="text-align: right;">0.7%</td>
 <td>Trivial (it is a pinhole)</td>
 </tr>
 </tbody>
@@ -2676,7 +2676,7 @@ single biggest line</strong> (<!-- BEGIN costing:tray-low -->$1,293<!-- END cost
 </tr>
 </tbody>
 </table>
-<p>After the material decisions, the only still-<strong>available</strong> build-savings levers are <strong>1 (container grade) + 5 (solar)</strong> — together <strong>~<!-- BEGIN costing:ca-savings-low -->$1,500<!-- END costing:ca-savings-low --></strong> off the <!-- BEGIN costing:ca-capital -->$28,483<!-- END costing:ca-capital --> capital build (<strong>~<!-- BEGIN costing:ca-savings-pct-low -->5<!-- END costing:ca-savings-pct-low -->%</strong>), plus ~$100–200 of valve value-engineering (#6). Everything else is settled: lever 2 <strong>banked</strong> (manual is the standard build), lever 3 <strong>kept 304 SS</strong> (decision), lever 4 <strong>already 1×100 Ah</strong>.</p>
+<p>After the material decisions, the only still-<strong>available</strong> build-savings levers are <strong>1 (container grade) + 5 (solar)</strong> — together <strong>~<!-- BEGIN costing:ca-savings-low -->$1,500<!-- END costing:ca-savings-low --></strong> off the <!-- BEGIN costing:ca-capital -->$27,840<!-- END costing:ca-capital --> capital build (<strong>~<!-- BEGIN costing:ca-savings-pct-low -->5<!-- END costing:ca-savings-pct-low -->%</strong>), plus ~$100–200 of valve value-engineering (#6). Everything else is settled: lever 2 <strong>banked</strong> (manual is the standard build), lever 3 <strong>kept 304 SS</strong> (decision), lever 4 <strong>already 1×100 Ah</strong>.</p>
 <blockquote>
 <p><strong>Derivation note.</strong> Lever 1 (container grade), lever 5 (solar), and the roll-up total +
 percentage are computed in <code>costing.py</code> — container is a true CW − WWT subtraction off the
@@ -2705,7 +2705,7 @@ versa. Worth keeping in view when prioritizing:</p>
 <ul>
 <li><strong>Container shell</strong> — already the cheapest large steel box; only the <em>grade</em> is a lever
   (#1).</li>
-<li><strong>Light lock</strong> — already the cheap custom option (<!-- BEGIN costing:ca-lightlock-mid -->$1,773<!-- END costing:ca-lightlock-mid --> mid vs $2,500–4,500 for a
+<li><strong>Light lock</strong> — already the cheap custom option (<!-- BEGIN costing:ca-lightlock-mid -->$1,768<!-- END costing:ca-lightlock-mid --> mid vs $2,500–4,500 for a
   commercial darkroom door).</li>
 <li><strong>Swing pivot, ventilation, optics</strong> — small absolute spend; diminishing returns.</li>
 <li><strong>IBC frame, pumps, filters</strong> — load-bearing or commodity; little to cut safely.</li>

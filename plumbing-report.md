@@ -92,9 +92,9 @@ operator reaches up to service them. Flow path: P-02 output → F-01 (5μm sedim
 Each housing has 1" NPT inlet and outlet on the head; the heads sit on a common
 line and the sumps hang below on a shared 25×25×3mm slotted-angle backing frame.
 Inter-housing piping connects F-01 OUT → F-02 IN and F-02 OUT → F-03 IN using
-1" HDPE pipe with 90° elbows routed outside the housing bodies. U-bracket clamps
-with 25mm HDPE spacer blocks hold each housing to the 18mm ply backing and give
-sump-bowl clearance.
+1" HDPE pipe with 90° elbows routed outside the housing bodies. Each housing
+lag-screws through its own mounting-hole ears (on 25mm HDPE standoff blocks) into
+the 18mm ply backing, giving sump-bowl clearance — no custom bracket.
 
 **Head clearance:** the 20" sumps hang ~250mm lower than a 10" housing would —
 to roughly shoulder height for the 1.75m scale operator — in exchange for ~2× the
@@ -331,12 +331,13 @@ plywood panel. The frame provides:
 
 - Adjustable housing height via slotted holes in the uprights
 - Rigid support for the ~5kg weight of each filled filter housing
-- Backing board (18mm plywood) within the frame for U-bracket attachment
+- Backing board (18mm plywood) within the frame for the housing lag-screws
 
-Each filter housing mounts via a steel U-bracket that wraps around the head
-section. HDPE spacer blocks (25mm) between the bracket and backing board provide
-clearance for the sump bowl to hang freely below. Two bolts per bracket
-through the backing board.
+Each filter housing mounts through its own **mounting-hole ears** — Big Blue
+heads are pre-drilled for wall mounting — with **SS lag/wood screws straight into
+the 18mm plywood backing** (no custom bracket). 25mm HDPE standoff blocks behind
+each ear space the housing off the ply so the sump bowl hangs free and clears for
+cartridge changes. Two lag screws per housing.
 
 ### 7.3 Pump Mounting
 
@@ -446,8 +447,8 @@ hardware are sourced there and in the IBC stacking frame line.
 | [Shurflo 2088-554-144 pump (P-02 filter loop)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
 | Big Blue filter housing 4.5"×20" (separate) | Ø184×594mm/housing (4.5×20), 1" NPT ports — three SEPARATE housings on the slotted-angle skid frame (Pentek / iSpring / Geekpure) | 3 ea | AllFilters / Amazon | $114–$186 |
 | Slotted steel angle frame 25×25×3mm (filter skid) | ~2.5 m 25×25×3mm slotted steel angle + fasteners; bolts to the 18mm ply backing (adjustable housing height) | 1 lot | Home Depot | $25–$45 |
-| Steel U-bracket (filter housing) | Wraps the housing head; 2 bolts/bracket through the backing board | 3 ea | McMaster-Carr | $21–$30 |
-| HDPE spacer blocks 25mm (filter skid) | 25mm HDPE blocks between U-bracket and backing board — sump-bowl hang clearance | 1 lot | McMaster-Carr | $12–$22 |
+| SS lag/wood screws — filter housings to ply backing | 2 per housing × 3 — 5/16 SS lag/wood screws through the housing's mounting-hole ears into the 18mm plywood backing (no custom bracket). Pin SKU at order. | 6 ea | Home Depot | $3–$9 |
+| HDPE spacer blocks 25mm (filter skid) | 25mm HDPE standoff blocks between the housing's mounting ears and the ply backing — sump-bowl hang clearance (the housing lag-screws through them into the ply) | 1 lot | McMaster-Carr | $12–$22 |
 | 1" HDPE inter-housing jumpers | F-01 OUT→F-02 IN, F-02 OUT→F-03 IN — 1" HDPE + 90° elbows routed outside the bodies | 1 lot | Ferguson | $18–$32 |
 | MPP 5-micron sediment cartridge 4.5"×20" | Melt-blown polypropylene depth filter (F-1 stage); ~50-print interval | 2 ea | Amazon | $24–$40 |
 | KDF-55 heavy-metal cartridge 4.5"×20" | KDF-55 media for dissolved iron/metal removal (F-2 stage); ~60-print interval | 1 ea | FilterWay / Amazon | $65–$95 |
@@ -455,7 +456,7 @@ hardware are sourced there and in the IBC stacking frame line.
 | Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; pump-suction isolation BV-03 (P-02) | 1 ea | Barn Door Ag / Amazon | $30–$45 |
 | 3-way diverter valve 1" FNPT | L/T-port; 3W-DV-01 (filter output) | 1 ea | Amazon | $18–$30 |
 | pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line | 1 ea | Amazon | $10–$18 |
-| **Pinhole Wall Plumbing Panel total** | | | | **$449–$692** |
+| **Pinhole Wall Plumbing Panel total** | | | | **$431–$671** |
 <!-- END parts:pinhole-wall-plumbing-panel -->
 
 ---
@@ -470,7 +471,7 @@ hardware are sourced there and in the IBC stacking frame line.
 | After each session | Run P-04 to evacuate residual tray water to Brown or Black as appropriate |
 | Monthly | Inspect all pipe joints for leaks; tighten compression fittings if needed |
 | Monthly | Check pump mounting bracket bolts for tightness |
-| Monthly | Inspect filter housing clamp bands and U-bracket bolts |
+| Monthly | Inspect filter housing clamp bands and mounting lag screws |
 | Every ~40 prints | Replace F-03 (CTO carbon block) cartridge |
 | Every ~50 prints | Replace F-01 (5μm sediment) cartridge |
 | Every ~60 prints | Replace F-02 (KDF-55) cartridge |

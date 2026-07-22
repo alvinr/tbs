@@ -171,7 +171,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | [McMaster 4040N12 304 shaft support](https://www.mcmaster.com/4040N12/) (4040N12) | Two-piece 304 clamp securing the U-joint INPUT stub to the X (swing) slide, one per corner. $58 ea firm. | 4 ea | McMaster-Carr | $232 |
 | [3/8" 304/304L SS rod — U-joint stub shafts (1× 3 ft)](https://www.mcmaster.com/89535K87/) (89535K87) | Input + output stub shafts into the U-joint (2/corner ×4 = 8 short stubs, ~60–80mm each ≈ 560–640mm + kerf). ONE 3 ft (914mm) length ($13.25 firm) yields all 8 with margin. Plain 304 rod — the USKC clamp grips it (keyway optional). | 1 lot | McMaster-Carr | $13 |
 | [1-1/4" OD acetal load rollers — Delrin rod (cut ×8)](https://www.mcmaster.com/8576K23-8576K232/) (8576K23) | Load rollers — 2 per skate × 4 = 8, cut 20mm wide from one 1 ft 1-1/4" OD (Ø31.75 ≈ Ø32) Delrin rod (8576K23, same stock as the spray skate), each drilled Ø10 bore to spin on the axle pin. Gravity-seated on the U-channel bottom flange. | 1 1 ft rod | McMaster-Carr | $11 |
-| [3/4" OD acetal keeper rollers — Delrin rod (cut ×8)](https://www.mcmaster.com/8497K276-8497K273/) (8497K276) | Keeper rollers — 2 per skate × 4 = 8, cut 20mm wide from a 3/4" OD (Ø19.05 ≈ Ø20) Delrin rod (8497K276, 4 ft — min stock, ample spare), each drilled Ø10 bore; captive under the U-channel top flange. Price TBD — confirm the 4 ft rod price at order. | 1 4 ft rod | McMaster-Carr | $8–$12 |
+| [3/4" OD acetal keeper rollers — Delrin rod (cut ×8)](https://www.mcmaster.com/8497K276-8497K273/) (8497K276) | Keeper rollers — 2 per skate × 4 = 8, cut 20mm wide from a 3/4" OD (Ø19.05 ≈ Ø20) Delrin rod (8497K276, 4 ft — min stock, ample spare), each drilled Ø10 bore; captive under the U-channel top flange. $14.60/4ft firm. | 1 4 ft rod | McMaster-Carr | $15 |
 | [10mm × 60mm 304 SS axle pins (4-pack) — skate axles](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) (B0816MQ5T6) | 16 skate axles (4 per skate × 4) — the same 10mm×60mm 304 SS clevis/axle pins the spray skate uses; 4 packs = 16 pins. The acetal rollers spin on these Ø10 pins. 304 (splash zone, matches the spray). $5/4-pack = $20 — replaced the $88/600mm 316 precision rod (overkill for a plain-bearing axle). | 4 pack | Amazon | $20 |
 | Skate carriage plate (×4) — fab | One carriage plate per corner — carries the 4 rollers on their axles + the inboard lip; the U-joint/cross-slide stack bolts to it. The only fab piece of the skate. Est. — firm at fab quote. | 4 ea | Local fab | $136–$236 |
 | 316 flat-bar Z (tilt) + X (swing) cross-slides + UHMW pad + gib | One 2-axis cross-slide stack per corner — 316 flat-bar Z and X slides on UHMW pads with an adjustable gib, absorbing the across-rail rotation travel. UHMW $23–93/sheet; 316 flat bar cut to length. Firm at order (est.). | 4 set | Metal Supermarkets / McMaster-Carr | $180–$380 |
@@ -191,7 +191,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | M8×25mm knurled thumbscrew DIN 464 | ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare | 12 ea | Amazon / Maedler | $36 |
 | [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — right-rail end fixing (ICP-14)](https://www.mcmaster.com/91280A534/) (91280A534) | ICP-14: right depth-rail end flange → wall seat hold-down (does NOT cross the wall). Grip = 3/16" (4.76mm) 1262T21 channel base + 10mm seat ≈ 15mm → M8×25 (short → fully threaded). Pitch M8×1.25 coarse (matches the M8 plain nut). $18.51/pack of 50. ⚠ VALIDATE: 91280A534 is zinc — the film plane wets during development; a 316-SS M8×25 resists corrosion better. | 8 ea | McMaster-Carr | $3 |
 | [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | Plain hex nut — M8 right-rail fixing. Pitch M8×1.25 (coarse, baseline — confirm vs SKU PDF, must match the bolt). $7.53/pack of 100. | 8 ea | McMaster-Carr | $1 |
-| **Film total** | | | | **$5,530–$6,002** |
+| **Film total** | | | | **$5,537–$6,005** |
 <!-- END parts:film -->
 
 *The corner-mechanism hardware (U-channel depth rails, acetal skates, Z/X cross-slides, and the
@@ -216,7 +216,7 @@ Each of the **8 rail ends** anchors to the container — **6 of them** with a st
 
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
 
-**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$5,734<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
+**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$5,741<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
 *Excludes fasteners and fabrication labor.*
 
 ### Local SoCal Metal Sourcing

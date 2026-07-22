@@ -13,8 +13,8 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, ventilation) | $467 | $698 |
 | 3. Pinhole optics plate | $110 | $265 |
-| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $5,779 | $6,385 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $5,442 | $7,970 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $5,780 | $6,384 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $5,424 | $7,949 |
 | 6. Electrical — power, circuits, wiring | $2,665 | $3,081 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,437 | $2,101 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,113** | **~$35,505** |
+| **TOTAL (base build + 50-print run)** | **~$25,096** | **~$35,483** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -80,15 +80,16 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Acetal 4-wheel skate — Ø32 load + Ø20 keeper rollers, Ø10 316 axles + carriage plate | 4 set | McMaster-Carr | film | $220–$360 |
 | [Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore)](https://www.mcmaster.com/8576K23/) (8576K23) | 1 1 ft rod | McMaster-Carr | spray | $11 |
 | [iglide J flange bushing, Ø90 bore (JFM-9095-100)](https://www.igus.com/iglide-ibh/flange-bearings/product-details/iglide-j-m?artnr=JFM-9095-100) (JFM-9095-100) | 2 ea | igus | swing | $261 |
 | [McMaster 4040N12 304 shaft support](https://www.mcmaster.com/4040N12/) (4040N12) | 4 ea | McMaster-Carr | film | $232 |
 | [Ruland USKC12-6-6-SS U-joint (keyway+clamp, 303 SS)](https://www.ruland.com/us12-6-6-ss.html) (USKC12-6-6-SS) | 4 ea | Ruland | film | $1,104 |
 | [SKF 6215-2RS1 sealed bearing](https://bearingsdirect.com/6215-2rs-ball-bearing-75x130x25-sealed-6215-2nse/) (6215-2RS) | 2 ea | Bearings Direct | lightlock | $121 |
 | [Thrust ball bearing, 51118 (Ø90 bore, single-direction)](https://bearingsdirect.com/51118-thrust-ball-bearing-90x120x22-grooved-ubc-usbc/) (51118) | 1 ea | Bearings Direct | swing | $80 |
+| Ø20 acetal keeper rollers — Delrin rod (cut ×8) | 1 1 ft rod | McMaster-Carr | film | $8–$12 |
 | Ø20mm ball joint, zinc socket, M12 stud | 1 ea | Amazon | spray | $12 |
-| **bearings-motion subtotal** | | | | **$2,041–$2,181** |
+| [Ø32 acetal load rollers — Delrin rod (cut ×8)](https://www.mcmaster.com/8576K23/) (8576K23) | 1 1 ft rod | McMaster-Carr | film | $11 |
+| **bearings-motion subtotal** | | | | **$1,840–$1,844** |
 
 ### chemistry-reagents
 
@@ -217,6 +218,7 @@ indicative low–high estimates — get quotes before ordering.
 | M8×25mm knurled thumbscrew DIN 464 | 12 ea | Amazon | film | $36 |
 | Corridor panel mount hardware (brackets + fasteners) | 1 lot | Home Depot | water | $25–$50 |
 | Door & access upgrades | 1 lot | Home Depot | interior | $50–$100 |
+| SS lag/wood screws — filter housings to ply backing | 6 ea | Home Depot | water | $3–$9 |
 | Cam-lever rail brake (skate lock) | 12 ea | McMaster-Carr | film | $96–$180 |
 | [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | 8 ea | McMaster-Carr | ibc-frame | $40 |
 | [Self-drilling structural screw, #14×3¼″ winged, 410 SS](https://www.fastenersplus.com/products/14-x-3-1-4-self-drilling-flat-head-screw-with-wings-410-stainless-steel-pkg-100) (F14C325FDC) | 16 ea | Fasteners Plus | ibc-frame | $16 |
@@ -244,7 +246,7 @@ indicative low–high estimates — get quotes before ordering.
 | Nylon zip ties, 200mm | 6 ea | Amazon | spray | $1 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,408–$1,895** |
+| **fasteners-hardware subtotal** | | | | **$1,411–$1,904** |
 
 ### plastics-sheet
 
@@ -357,13 +359,15 @@ indicative low–high estimates — get quotes before ordering.
 | Right walkway cantilever frame | 1 lot | Metal Supermarkets | walkway | $28–$40 |
 | Shelf mount backing plates, 8mm steel (welded, ×3) | 3 ea | Local fab | shelf | $18–$30 |
 | Shutter plate (⅛ steel 10×8) + slide channel | 1 ea | Local fab | optics | $25–$50 |
+| Skate carriage plate (×4) — fab | 4 ea | Local fab | film | $136–$236 |
 | Steel backing plate 6×6×⅛ + welded frame | 1 ea | Metal Supermarkets | optics | $20–$40 |
 | Steel flat bar 25×3mm — ribbon support cross-brace | 4 ea | Home Depot | water | $8–$16 |
 | Transition bearing plate | 2 ea | Local fab | walkway | $5–$10 |
 | Wall cleat (left corners) | 2 ea | Local fab | walkway | $20–$35 |
 | Wall mounting cleat + anchors | 1 lot | Local fab | shelf | $18 |
+| Ø10 316 SS rod — skate axles (cut ×16) | 2 1 ft rod | McMaster-Carr | film | $66–$100 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$4,794–$6,140** |
+| **steel-structural subtotal** | | | | **$4,996–$6,476** |
 
 ### substrate-fabric
 
@@ -415,22 +419,21 @@ indicative low–high estimates — get quotes before ordering.
 | Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 1 ea | Fresh Water Systems | water | $80–$89 |
 | Shurflo 2088-554-144 pump (P-05 Brown drain) | 1 ea | Fresh Water Systems | water | $80–$89 |
 | Slotted steel angle frame 25×25×3mm (filter skid) | 1 lot | Home Depot | water | $25–$45 |
-| Steel U-bracket (filter housing) | 3 ea | McMaster-Carr | water | $21–$30 |
-| **water-equipment subtotal** | | | | **$1,043–$1,564** |
+| **water-equipment subtotal** | | | | **$1,022–$1,534** |
 
 ## Supplier consolidation (largest orders first)
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 38 | bearings-motion, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $3,697–$3,940 |
+| McMaster-Carr | 39 | bearings-motion, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $3,541–$3,673 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
-| Local fab | 19 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,994–$3,236 |
+| Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,130–$3,472 |
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,448–$2,006 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | Amazon | 62 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,335–$1,657 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
-| Home Depot | 24 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $882–$1,156 |
+| Home Depot | 25 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $885–$1,165 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | TAP Plastics | 5 | plastics-sheet | $680–$1,130 |
 | Photographers' Formulary | 2 | chemistry-reagents | $1,051 |

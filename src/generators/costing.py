@@ -168,7 +168,7 @@ WATER = [
     LineItem("Pumps and accumulator (P-01..P-05 + ACC-01, 5× mount brackets)", 480, 508, 536),
     LineItem("Corridor plumbing panel structure (18mm marine-ply backing board + drain-riser spine, 25mm pump-mount shirt, mount brackets + fasteners)", 215, 298, 380),
     LineItem("Under-walkway pipe-ribbon supports (4× welded cross-braces + 16 pipe clips)", 24, 36, 48),
-    LineItem("Filter skid (3× Big Blue 4.5×20 separate housings on slotted-angle frame + cartridges)", 311, 411, 510),
+    LineItem("Filter skid (3× Big Blue 4.5×20 separate housings on slotted-angle frame + cartridges)", 293, 392, 489, "2026-07-22: U-bracket retired → lag screws to ply backing −$18/−$21"),
     LineItem("Valves and fittings (6× BV ball valves, X1 4-way cross, S60×6 adapters, CV1, SV-01 + SV-02 taps, Blue equalization tie)", 699, 909, 1119, "2026-07-22: S60×6 adapter re-spec'd female-buttress×2\"NPT + 2→1\" bushing (CPP HMFN/20UD/027) +$48/+$24"),
     LineItem("Pipe (HDPE, spray bar)", 80, 97, 114),
     LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1293, 1655, 2016, "2026-07-22: tray silicone gasket re-priced (Aqueon $17–25)"),
@@ -277,7 +277,7 @@ FILM = [
     LineItem("304 U-channel depth rails 3×1½\" (1262T21, ×4 wall-to-wall)", 2172, 2172, 2172, "$362/6ft ×6 — 8ft lengths for continuous rails, firm at order"),
     LineItem("Ruland USKC12-6-6-SS U-joints (×4) + nitrile boots (×4)", 1226, 1226, 1226, "$276 ea joint (interim; cheaper alt in research) + $30.59 boot (UBOOT12/19-NI-KIT, verified)"),
     LineItem("McMaster 4040N12 304 shaft supports (×4) + 3/8\" 304 stub rod (89535K87, 3ft)", 245, 245, 245, "$58 ea support + $13.25 rod — firm"),
-    LineItem("Acetal 4-wheel skates (×4) — Ø32 rollers, Ø10 316 axles, carriage plates", 220, 290, 360, "same skate as the spray bar; fab est."),
+    LineItem("Acetal skates (×4) — Ø32/Ø20 acetal rollers + Ø10 316 axles + fab carriage plates", 221, 290, 359, "2026-07-22: decomposed to off-the-shelf rollers/axles (8576K23 etc.) + fab plate"),
     LineItem("316 flat-bar Z/X cross-slides (×4) + UHMW pads + gibs", 180, 280, 380, "2-axis stack per corner; est."),
     LineItem("Cam-lever rail brakes (×12, skate lock)", 96, 138, 180, "3 per corner; est."),
     LineItem("Corner plates, ¼\" 304 SS 6×8 (×4)", 152, 180, 208, "U-joint mount — steel, not aluminum"),
@@ -1018,9 +1018,9 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (25163, 30870, 38445),  # 2026-07-22: retired duplicate image-plane-backing ACM (−$490/−$620). Per-change history in git log.
+    "grand_total": (25146, 30851, 38423),  # 2026-07-22: retired duplicate image-plane-backing ACM (−$490/−$620). Per-change history in git log.
     "walkway": (2062, 2503, 2943),   # 2026-07-22: floor anchors → 410 SS self-drillers (−$18/−$34)   # 2026-07-21: M12 flat washer/split/plain-nut re-price +$27.  2026-07-21: M12 bracket/cleat bolts re-sized 80/cleat→65/70 (91280A728/732 partial, real flat) + 4 washers/bolt, fab line reconciled to parts −$30/−$58 → low +$53/high −$25.  §6a fab line matches walkway-report §10 ($742–$1,255 all-in)
-    "water": (5442, 6709, 7970),  # updated 2026-07-22: parts-identity batch — spray-bar (jam nut/collar/self-tap/beam-clamp), tray silicone gasket, S60×6 adapter re-spec, M12×40 hanger bolt. Detail in git log.
+    "water": (5424, 6690, 7949),  # updated 2026-07-22: parts-identity batch — spray-bar (jam nut/collar/self-tap/beam-clamp), tray silicone gasket, S60×6 adapter re-spec, M12×40 hanger bolt. Detail in git log.
     "container": (2300, 3300, 4300),
     "lightlock": (1437, 1768, 2101),   # 2026-07-22: parts-identity batch — wiper seal (Frost King BP17A), grab rail (16" marine SS), SS fasteners+isolation washers re-priced.  §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (1180, 1395, 1610),   # 2026-07-22: journal bushings → igus iglide J JFM-9095-100 $130.53/ea (from GGB DU $211.25) −$162/pair.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame)   # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
@@ -1028,7 +1028,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "shelf": (214, 227, 239),          # 2026-07-22: piano hinge re-priced (Würth 32×600 satin SS, $22–35).  §6d = chemistry-prep-shelves §7
     "interior": (467, 578, 698),      # 2026-07-22: retired the Image-plane flat-backing ACM line (double-counted the film dibond-acm-film)
     "optics": (110, 185, 265),
-    "film": (5779, 6082, 6385),  # updated 2026-07-22: muslin clamp mechanism → off-the-shelf nylon spring clamps (×58) + HDPE filler; retired the custom bracket/spring/neoprene (−$189/−$531). Detail in git log.
+    "film": (5780, 6082, 6384),  # updated 2026-07-22: muslin clamp mechanism → off-the-shelf nylon spring clamps (×58) + HDPE filler; retired the custom bracket/spring/neoprene (−$189/−$531). Detail in git log.
     "ventilation": (757, 841, 924),   # §5b BOM (point estimates); report total was stale at $769
     "power": (2676, 2889, 3102),       # 2026-07-22: power-panel neoprene gasket re-priced (Pres-Bond $21–42) +$15/$36.  §5a authoritative subtotal
 }

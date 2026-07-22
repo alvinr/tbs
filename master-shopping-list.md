@@ -17,7 +17,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,368 | $7,924 |
 | 6. Electrical — power, circuits, wiring | $2,608 | $3,003 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,416 | $2,061 |
-| 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $939 | $1,479 |
+| 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $979 | $1,499 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,080 | $2,977 |
 | 7c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,140 | $1,695 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $212 | $224 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,533** | **~$36,546** |
+| **TOTAL (base build + 50-print run)** | **~$25,573** | **~$36,566** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -86,9 +86,9 @@ indicative low–high estimates — get quotes before ordering.
 | [McMaster 4040N12 304 shaft support](https://www.mcmaster.com/4040N12/) (4040N12) | 4 ea | McMaster-Carr | film | $232 |
 | [Ruland USKC12-6-6-SS U-joint (keyway+clamp, 303 SS)](https://www.ruland.com/us12-6-6-ss.html) (USKC12-6-6-SS) | 4 ea | Ruland | film | $1,104 |
 | [SKF 6215-2RS1 sealed bearing](https://bearingsdirect.com/6215-2rs-ball-bearing-75x130x25-sealed-6215-2nse/) (6215-2RS) | 2 ea | Bearings Direct | lightlock | $121 |
-| [Thrust ball bearing, 51118 (Ø90 bore, single-direction)](https://bearingsdirect.com/51118-thrust-ball-bearing-90x120x22-grooved-ubc-usbc/) (51118) | 1 ea | Bearings Direct | swing | $40–$60 |
+| [Thrust ball bearing, 51118 (Ø90 bore, single-direction)](https://bearingsdirect.com/51118-thrust-ball-bearing-90x120x22-grooved-ubc-usbc/) (51118) | 1 ea | Bearings Direct | swing | $80 |
 | Ø20mm ball joint, zinc socket, M12 stud | 1 ea | Amazon | spray | $12 |
-| **bearings-motion subtotal** | | | | **$1,800–$2,010** |
+| **bearings-motion subtotal** | | | | **$1,840–$2,030** |
 
 ### chemistry-reagents
 
@@ -451,8 +451,8 @@ indicative low–high estimates — get quotes before ordering.
 | Hessaire | 1 | ducting-ventilation | $185–$230 |
 | Cable Master | 1 | electrical-distribution | $199–$211 |
 | Waytek Wire | 7 | electrical-distribution | $208 |
+| Bearings Direct | 2 | bearings-motion | $201 |
 | AllFilters | 1 | water-equipment | $114–$186 |
-| Bearings Direct | 2 | bearings-motion | $161–$181 |
 | Lenox Laser | 1 | stainless-sheet | $50–$150 |
 | Bostick & Sullivan | 1 | chemistry-reagents | $138 |
 | Ferguson | 4 | plumbing-fittings | $74–$120 |

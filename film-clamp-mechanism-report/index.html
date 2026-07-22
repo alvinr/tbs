@@ -1211,10 +1211,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#32-neoprene-jaw-pad" class="md-nav__link">
+  <a href="#32-hdpe-filler-strip" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3.2 Neoprene Jaw Pad
+        3.2 HDPE Filler Strip
       
     </span>
   </a>
@@ -2502,26 +2502,21 @@
 <h1 id="muslin-clamp-system-mechanism-design">Muslin Clamp System — Mechanism Design<a class="headerlink" href="#muslin-clamp-system-mechanism-design" title="Permanent link">&para;</a></h1>
 <h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
 <p>The photosensitive muslin must be held taut against the <a href="../film-plane-mechanism-report/">film plane frame</a> throughout exposures lasting 30–45 minutes, at any tilt angle up to ±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° and any swing angle up to ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->°. Loading and unloading happens under mixed safelight conditions, so the clamp mechanism must provide clear tactile feedback without visual confirmation.</p>
-<p>This report describes the <strong>muslin spring-clip system</strong> that secures the muslin to the <strong>2"×2"×3/16" aluminum L-angle</strong> perimeter frame (the film-plane frame — <a href="../film-plane-mechanism-report/">Film Plane Mechanism §4</a>). Its two 2-inch (≈51mm) legs are the <em>flat leg</em> (bonded behind the ACM backing board) and the <em>upstand</em> (standing proud toward the pinhole) — each clip mounts on the upstand's inboard face.</p>
+<p>This report describes the <strong>muslin clamp system</strong> that secures the muslin to the <strong>2"×2"×3/16" aluminum L-angle</strong> perimeter frame (the film-plane frame — <a href="../film-plane-mechanism-report/">Film Plane Mechanism §4</a>). Rather than a custom mechanism, it uses <strong>off-the-shelf inert nylon spring clamps</strong> clipped over the frame edge, with an <strong>inert HDPE filler strip</strong> packing the open L channel so each clamp bites a solid full-depth edge. The angle's two 2-inch (≈51mm) legs are the <em>flat leg</em> (bonded behind the ACM backing board) and the <em>upstand</em> (standing proud toward the pinhole).</p>
 <hr />
 <h2 id="2-clamp-layout">2. Clamp Layout<a class="headerlink" href="#2-clamp-layout" title="Permanent link">&para;</a></h2>
-<p><strong>88 spring clips</strong> are spaced at 150mm centers around the full perimeter of the <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm film plane frame:</p>
+<p><strong>58 nylon spring clamps</strong> at 150mm centers grip the muslin on <strong>three edges</strong> of the <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm film-plane frame — the top and the two sides. The <strong>bottom edge is left unclamped</strong>: there is no clearance between the raised walkway deck and the board's bottom edge for a clamp body, and leaving it open keeps the swing/tilt envelope clear. The muslin is held taut by the three clamped edges.</p>
 <table>
 <thead>
 <tr>
 <th>Edge</th>
 <th>Length</th>
-<th>Clip Count</th>
+<th>Clamp Count</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Top horizontal</td>
-<td><!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm</td>
-<td>30</td>
-</tr>
-<tr>
-<td>Bottom horizontal</td>
 <td><!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm</td>
 <td>30</td>
 </tr>
@@ -2536,22 +2531,26 @@
 <td>14</td>
 </tr>
 <tr>
+<td>Bottom horizontal</td>
+<td>—</td>
+<td>0 (walkway clearance)</td>
+</tr>
+<tr>
 <td><strong>Total</strong></td>
 <td></td>
-<td><strong>88</strong></td>
+<td><strong>58</strong></td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="3-clamp-mechanism">3. Clamp Mechanism<a class="headerlink" href="#3-clamp-mechanism" title="Permanent link">&para;</a></h2>
-<p>Each clip is a bracket <strong>through-bolted to the angle upstand</strong> (inboard face, nuts on the inside edge) carrying a spring-loaded jaw. A torsion spring provides ~5N, pressing a 60A neoprene pad — and the muslin under it — onto the ACM backing board at the frame edge.</p>
-<p>The spring clip gives tactile <strong>snap-open / snap-closed</strong> feedback, critical for loading and unloading muslin in safelight conditions: squeeze the handle to lift the pad, release to snap it closed. The torsion spring holds each clip closed at any tilt angle, so the film plane can be tilted or swung without a clip releasing.</p>
-<p>The overall design can be seen in the diagram below and discussed in the following sections</p>
+<p>Each clamp is an <strong>off-the-shelf inert nylon spring clamp</strong> (Pittsburgh 69289 — a fiberglass body with swivel pads) clipped over the frame edge. Because the clamp must open around the full 2″ angle leg to reach the muslin on the board (leg + ACM + muslin ≈ 55mm), a <strong>≥3″ clamp</strong> is used — a 2″ clamp is too tight. An inert <strong>HDPE filler strip</strong> packs the open L channel so the clamp closes on a solid full-depth sandwich (ALU upstand + HDPE + ACM + muslin) instead of collapsing into the void.</p>
+<p>The clamp is <strong>fiberglass/nylon, not steel</strong> — deliberately, for the cyanotype/ferricyanide splash zone where a steel spring would rust. It clips on and off by hand (squeeze the handle), giving clear tactile feedback for loading/unloading muslin under safelight, and its spring holds it closed at any tilt or swing angle. This replaces the earlier custom through-bolted bracket + torsion-spring + neoprene-jaw clip — no fabrication, and chemistry-safe.</p>
 <p><img alt="Muslin clamp detail — Sheet 6" src="../assets/film-plane-sheet6.png" /></p>
 <h3 id="31-muslin-path">3.1 Muslin Path<a class="headerlink" href="#31-muslin-path" title="Permanent link">&para;</a></h3>
-<p>The muslin lies over the ACM backing board (the pinhole face); its edge is clamped <strong>onto the board</strong> just inboard of the upstand. Each clip's neoprene pad presses the muslin down onto the board across a ~20mm-deep bite just inboard of the frame edge, providing direct tension — the ACM is the anvil, so no separate hem wrap is needed.</p>
-<h3 id="32-neoprene-jaw-pad">3.2 Neoprene Jaw Pad<a class="headerlink" href="#32-neoprene-jaw-pad" title="Permanent link">&para;</a></h3>
-<p>Each clip jaw is faced with a <strong>25.4 × 20mm pad of 60A neoprene</strong> (6mm / ¼″ thick), self-adhesive (PSA) backed and bonded flat to the jaw plate — see Sheet 6, Panel D. The pads are cut from a 1″ × ¼″ neoprene strip (<a href="https://www.mcmaster.com/4568N57/">McMaster 4568N57</a>, 36″ per strip; 88 pads → 3 strips). The neoprene grips the muslin without damaging the fibers and compensates for slight variations in fabric thickness at the clamped edge.</p>
+<p>The muslin lies over the ACM backing board (the pinhole face) and its edge wraps the frame lip. Each clamp grips the whole frame edge as one sandwich — the muslin, the ACM, the HDPE filler, and the ALU upstand — pinning the muslin directly against the rigid ACM/filler stack. The ACM is the anvil; no separate hem wrap is needed.</p>
+<h3 id="32-hdpe-filler-strip">3.2 HDPE Filler Strip<a class="headerlink" href="#32-hdpe-filler-strip" title="Permanent link">&para;</a></h3>
+<p>An inert <strong>HDPE strip, 41.5mm deep</strong> (= frame leg 50.8 − ACM 4 − muslin 0.5 − angle 4.8), runs continuously in the L channel along the three clamped edges (~8.7 m). It brings the open channel up to a solid full-depth edge so the clamp's swivel pads bear on solid material rather than air. HDPE is inert (chemistry-safe, the same family as the tray liner), rigid enough to back the clamp, and cut to suit — firm at fabrication.</p>
 <hr />
 <h2 id="4-parts-list">4. Parts List<a class="headerlink" href="#4-parts-list" title="Permanent link">&para;</a></h2>
 <p>All items ship within the United States. Local Southern California pickup noted where available.</p>
@@ -2568,45 +2567,31 @@
 </thead>
 <tbody>
 <tr>
-<td>Muslin spring clip</td>
-<td>Bracket + spring jaw, ~5N, neoprene pad, torsion spring, squeeze handle; through-bolted to the frame upstand (nuts on the inside)</td>
-<td>88 ea</td>
-<td>McMaster-Carr / Amazon</td>
-<td>$264–$704</td>
+<td><a href="https://www.harborfreight.com/3-12-in-nylon-spring-clamp-69289.html">Nylon spring clamp, 3½″ (Pittsburgh 69289)</a> (69289)</td>
+<td>Inert fiberglass/nylon spring clamp with swivel pads — no corrosion in the cyanotype splash zone (replaces the custom steel-bracket clip). Clips over the filler-filled L-frame edge to grip the muslin; the jaw must clear ~55mm (2" leg + ACM + muslin), so a ≥3" clamp. Top + 2 side edges only (bottom = walkway/swing clearance). Confirm the open-jaw ≥2" at purchase; 2½" 69290 is the smaller-body fallback.</td>
+<td>58 ea</td>
+<td>Harbor Freight / Amazon</td>
+<td>$174–$232</td>
 </tr>
 <tr>
-<td><a href="https://www.mcmaster.com/91420A326/">M5×16 countersunk screw, A2-70 SS</a> (91420A326)</td>
-<td>A2-70 stainless flat-head (CSK) — through-bolts the clip bracket to the upstand. $11.54/pack of 100 (91420A = flat-head series; supersedes the socket-head 91292A126).</td>
-<td>176 ea</td>
-<td>McMaster-Carr / Bolt Depot</td>
-<td>$20</td>
-</tr>
-<tr>
-<td><a href="https://www.mcmaster.com/93625A200/">M5 hex nut, nyloc A2-70 SS</a> (93625A200)</td>
-<td>A2-70 stainless — on the inside edge of the upstand</td>
-<td>176 ea</td>
-<td>McMaster-Carr / Bolt Depot</td>
-<td>$16</td>
-</tr>
-<tr>
-<td><a href="https://www.mcmaster.com/4568N57/">Neoprene pad strip 60A</a> (4568N57)</td>
-<td>1" × 1/4" 60A neoprene, PSA-backed, 36"/strip — the clip jaw pad. Cut into 25.4×20mm pads (6mm thick); 88 pads × 20mm = 1,760mm → 3 strips (2 + 1 cutting-waste/spare)</td>
-<td>3 strip</td>
-<td>McMaster-Carr / Grainger</td>
-<td>$78</td>
+<td>HDPE filler strip (L-channel packer)</td>
+<td>Inert HDPE strip, 41.5mm deep (= frame leg − ACM − muslin − angle), filling the aluminum-angle L channel along the 3 clamped edges (~8.7 m) so the nylon clamp bites a solid full-depth sandwich. Cut to suit; chemistry-safe (same family as the tray liner). Firm at fab.</td>
+<td>1 lot</td>
+<td>TAP Plastics / McMaster-Carr</td>
+<td>$30–$70</td>
 </tr>
 <tr>
 <td><strong>Clamp total</strong></td>
 <td></td>
 <td></td>
 <td></td>
-<td><strong>$378–$818</strong></td>
+<td><strong>$204–$302</strong></td>
 </tr>
 </tbody>
 </table>
 <!-- END parts:clamp -->
 
-<p><strong>Clamp system estimated cost:</strong> <!-- BEGIN costing:clamp-system-low -->$378<!-- END costing:clamp-system-low --> (generic spring clips) to <!-- BEGIN costing:clamp-system-high -->$818<!-- END costing:clamp-system-high --> (quality spring clips).</p>
+<p><strong>Clamp system estimated cost:</strong> <!-- BEGIN costing:clamp-system-low -->$224<!-- END costing:clamp-system-low --> to <!-- BEGIN costing:clamp-system-high -->$282<!-- END costing:clamp-system-high --> (58 nylon clamps + HDPE filler strip).</p>
 <hr />
 <h2 id="5-maintenance">5. Maintenance<a class="headerlink" href="#5-maintenance" title="Permanent link">&para;</a></h2>
 <table>
@@ -2619,19 +2604,19 @@
 <tbody>
 <tr>
 <td>Before each session</td>
-<td>Inspect muslin clip engagement — all 88 clips snapped closed</td>
+<td>Inspect muslin clamp engagement — all 58 clamps clipped on the three edges</td>
 </tr>
 <tr>
 <td>Monthly</td>
-<td>Check neoprene jaw pads for compression set — replace if grip force is noticeably reduced</td>
+<td>Check each nylon clamp still springs firmly closed; swap out any weak or cracked clamp (inexpensive, off-the-shelf)</td>
 </tr>
 <tr>
 <td>Every 6 months</td>
-<td>Inspect torsion springs for fatigue — clips should snap firmly to closed position under gravity at <!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt</td>
+<td>Verify the clamps hold the muslin taut under gravity at <!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt; re-seat any that have crept</td>
 </tr>
 <tr>
 <td>Annually</td>
-<td>Replace neoprene jaw pads (preventive — ~$78 for 3× 4568N57 strips covers all 88 pads)</td>
+<td>Inspect the HDPE filler strip for damage; wipe the clamps + filler clean of chemistry residue</td>
 </tr>
 </tbody>
 </table>
@@ -2639,8 +2624,8 @@
 <h2 id="6-source-references">6. Source References<a class="headerlink" href="#6-source-references" title="Permanent link">&para;</a></h2>
 <ol>
 <li><a href="../film-plane-mechanism-report/">Film Plane Mechanism Report</a> — Parent report: four-corner independent actuation mechanism that the clamp system attaches to.</li>
-<li><a href="https://www.mcmaster.com/products/clamps/">McMaster-Carr Clamps</a> — spring-loaded clamp mechanisms (spring-clip reference).</li>
-<li><a href="https://www.mcmaster.com/neoprene">McMaster-Carr Neoprene Strip</a> — 60A self-adhesive neoprene jaw pad material.</li>
+<li><a href="https://www.harborfreight.com/3-12-in-nylon-spring-clamp-69289.html">Harbor Freight 69289 — 3½″ nylon spring clamp</a> — inert fiberglass spring clamp with swivel pads (the muslin clamp).</li>
+<li><a href="https://www.tapplastics.com/product/plastics/cut_to_size_plastic/hdpe_sheet/155">HDPE sheet — TAP Plastics</a> — inert, chemistry-safe L-channel filler material.</li>
 </ol>
 
 

@@ -17,7 +17,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,442 | $7,970 |
 | 6. Electrical — power, circuits, wiring | $2,623 | $3,039 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,441 | $2,106 |
-| 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,342 | $1,772 |
+| 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,062 | $2,943 |
 | 7c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,130 | $1,676 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $214 | $239 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,857** | **~$36,380** |
+| **TOTAL (base build + 50-print run)** | **~$25,695** | **~$36,218** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -82,13 +82,13 @@ indicative low–high estimates — get quotes before ordering.
 |------|-----|----------|---------|-----------|
 | Acetal 4-wheel skate — Ø32 load + Ø20 keeper rollers, Ø10 316 axles + carriage plate | 4 set | McMaster-Carr | film | $220–$360 |
 | [Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore)](https://www.mcmaster.com/8576K23/) (8576K23) | 1 1 ft rod | McMaster-Carr | spray | $11 |
-| [DU self-lubricating sleeve (journal) bearing, Ø90 bore](https://www.applied.com/c-brands/c-ggb/mb9060du/DU-Self-Lubricating-Bearing/p/102013642) (MB9060DU) | 2 ea | Applied | swing | $422 |
+| [iglide J flange bushing, Ø90 bore (JFM-9095-100)](https://www.igus.com/iglide-ibh/flange-bearings/product-details/iglide-j-m?artnr=JFM-9095-100) (JFM-9095-100) | 2 ea | igus | swing | $261 |
 | [McMaster 4040N12 304 shaft support](https://www.mcmaster.com/4040N12/) (4040N12) | 4 ea | McMaster-Carr | film | $232 |
 | [Ruland USKC12-6-6-SS U-joint (keyway+clamp, 303 SS)](https://www.ruland.com/us12-6-6-ss.html) (USKC12-6-6-SS) | 4 ea | Ruland | film | $1,104 |
 | [SKF 6215-2RS1 sealed bearing](https://bearingsdirect.com/6215-2rs-ball-bearing-75x130x25-sealed-6215-2nse/) (6215-2RS) | 2 ea | Bearings Direct | lightlock | $121 |
 | [Thrust ball bearing, 51118 (Ø90 bore, single-direction)](https://bearingsdirect.com/51118-thrust-ball-bearing-90x120x22-grooved-ubc-usbc/) (51118) | 1 ea | Bearings Direct | swing | $80 |
 | Ø20mm ball joint, zinc socket, M12 stud | 1 ea | Amazon | spray | $12 |
-| **bearings-motion subtotal** | | | | **$2,203–$2,343** |
+| **bearings-motion subtotal** | | | | **$2,041–$2,181** |
 
 ### chemistry-reagents
 
@@ -443,11 +443,11 @@ indicative low–high estimates — get quotes before ordering.
 | Grimco | 1 | plastics-sheet | $510 |
 | Fresh Water Systems | 5 | water-equipment | $400–$445 |
 | West Marine | 2 | electrical-distribution | $313–$438 |
-| Applied | 1 | bearings-motion | $422 |
 | altE Store | 2 | electrical-power | $345–$410 |
 | marine plywood supplier | 2 | timber-ply | $190–$330 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | Victron | 1 | electrical-power | $153–$275 |
+| igus | 1 | bearings-motion | $261 |
 | Harbor Freight | 1 | fasteners-hardware | $174–$232 |
 | Hessaire | 1 | ducting-ventilation | $185–$230 |
 | Cable Master | 1 | electrical-distribution | $199–$211 |

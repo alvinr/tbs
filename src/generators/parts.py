@@ -38,7 +38,7 @@ import re
 from dataclasses import dataclass
 
 import costing  # reconciliation guardrail (EXPECTED) + the cost cascade it still owns
-from tbs_constants import CLAMP_N_TOTAL, CLAMP_JAW_W, CLAMP_JAW_D, CLAMP_JAW_T  # muslin clip count (derives from perimeter) + neoprene pad size
+from tbs_constants import CLAMP_N_TOTAL, CLAMP_FILLER_D  # muslin clamp count (3 edges) + L-channel filler depth
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -601,19 +601,14 @@ PARTS: list[Part] = [
     Part("nut-m8-plain", "M8×1.25 hex nut, plain SS", "fasteners-hardware",
          "film", 8, "ea", 7.53 / 100, 7.53 / 100, "McMaster-Carr", part_no="90591A161", url="https://www.mcmaster.com/90591A161/", spec="Plain hex nut — M8 right-rail fixing. Pitch M8×1.25 (coarse, baseline — confirm vs SKU PDF, must match the bolt). $7.53/pack of 100."),
     # ═══ clamp (film-clamp-mechanism-report §4) — split out of FILM; itemized, sums to the FILM
-    # clamp lines (clips 264–704 + mounting 122) = 386–826 ═══
-    Part("spring-clip", "Muslin spring clip", "fasteners-hardware",
-         "clamp", CLAMP_N_TOTAL, "ea", 3, 8, "McMaster-Carr", "Amazon", spec="Bracket + spring jaw, ~5N, neoprene pad, torsion spring, squeeze handle; through-bolted to the frame upstand (nuts on the inside)"),
-    Part("bolt-m5x16-csk", "M5×16 countersunk screw, A2-70 SS", "fasteners-hardware",
-         "clamp", 2 * CLAMP_N_TOTAL, "ea", 11.54 / 100, 11.54 / 100, "McMaster-Carr", "Bolt Depot", part_no="91420A326", spec="A2-70 stainless flat-head (CSK) — through-bolts the clip bracket to the upstand. $11.54/pack of 100 (91420A = flat-head series; supersedes the socket-head 91292A126).", url="https://www.mcmaster.com/91420A326/", dims="M5×16mm"),
-    Part("nut-m5-nyloc", "M5 hex nut, nyloc A2-70 SS", "fasteners-hardware",
-         "clamp", 2 * CLAMP_N_TOTAL, "ea", 0.1742, 0.1742, "McMaster-Carr", "Bolt Depot", part_no="94205A240", spec="A2-70 stainless — on the inside edge of the upstand. $8.71/pack of 50.", url="https://www.mcmaster.com/94205A240/"),
-    Part("clamp-neoprene", "Neoprene pad strip 60A", "seals-gaskets",
-         "clamp", 3, "strip", 25.99, 25.99, "McMaster-Carr", "Grainger", part_no="4568N57",
-         url="https://www.mcmaster.com/4568N57/",
-         spec=f"1\" × 1/4\" 60A neoprene, PSA-backed, 36\"/strip — the clip jaw pad. Cut into "
-              f"{CLAMP_JAW_W:g}×{CLAMP_JAW_D}mm pads ({CLAMP_JAW_T}mm thick); "
-              f"{CLAMP_N_TOTAL} pads × {CLAMP_JAW_D}mm = {int(CLAMP_N_TOTAL*CLAMP_JAW_D):,}mm → 3 strips (2 + 1 cutting-waste/spare)"),
+    # clamp lines (off-the-shelf nylon clamps + HDPE filler) ═══
+    Part("muslin-clamp", "Nylon spring clamp, 3½″ (Pittsburgh 69289)", "fasteners-hardware",
+         "clamp", CLAMP_N_TOTAL, "ea", 3, 4, "Harbor Freight", "Amazon", part_no="69289",
+         url="https://www.harborfreight.com/3-12-in-nylon-spring-clamp-69289.html",
+         spec="Inert fiberglass/nylon spring clamp with swivel pads — no corrosion in the cyanotype splash zone (replaces the custom steel-bracket clip). Clips over the filler-filled L-frame edge to grip the muslin; the jaw must clear ~55mm (2\" leg + ACM + muslin), so a ≥3\" clamp. Top + 2 side edges only (bottom = walkway/swing clearance). Confirm the open-jaw ≥2\" at purchase; 2½\" 69290 is the smaller-body fallback."),
+    Part("clamp-filler", "HDPE filler strip (L-channel packer)", "plastics-sheet",
+         "clamp", 1, "lot", 30, 70, "TAP Plastics", "McMaster-Carr",
+         spec=f"Inert HDPE strip, {CLAMP_FILLER_D:g}mm deep (= frame leg − ACM − muslin − angle), filling the aluminum-angle L channel along the 3 clamped edges (~8.7 m) so the nylon clamp bites a solid full-depth sandwich. Cut to suit; chemistry-safe (same family as the tray liner). Firm at fab."),
 
     # ═══ lightlock (hinged-panel §8.2) — housing + drum; sums to costing.LIGHTLOCK ($1,385–$2,070) ═══
     Part("ll-hdpe-housing", "5mm UV-stabilized HDPE sheet (black)", "plastics-sheet",
@@ -1105,7 +1100,7 @@ def reconcile_key(sys: str) -> str:
 _WATER_SPLIT = {"ibc-frame": "IBC stacking frame", "tray": "Processing tray", "spray": "Spray bar"}
 # costing.FILM bundles the muslin clamps (which physically live in film-clamp-mechanism-report); the
 # registry splits them into a 'clamp' system, leaving 'film' = FILM minus these two lines.
-_CLAMP_LINES = ("Spring clips", "Clamp mounting")
+_CLAMP_LINES = ("Muslin clamp",)   # matches both "Muslin clamps …" (clamps) + "Muslin clamp filler …" (HDPE)
 
 
 def _split_sum(lst, prefixes, keep: bool):

@@ -91,22 +91,24 @@ FP_Y     = 2262   # nominal depth from pinhole wall (mm)  [unchanged]
 FP_Y_MIN = 100    # minimum carriage depth (mm)     [unchanged]
 
 # ── Muslin clamp system ──────────────────────────────────────────────────────
-# Spring CLIPS at 150mm centers around the 2"x2"x3/16" aluminum angle perimeter frame.
-# Each clip is a bracket through-bolted to the angle UPSTAND (inboard face, nuts on the
-# inside) carrying a spring-loaded jaw with a neoprene pad; the pad presses the muslin
-# onto the ACM board at the frame edge. A torsion spring holds it closed at any tilt
-# angle; squeeze the handle to lift the pad. See film-clamp-mechanism-report.md.
+# Off-the-shelf inert NYLON spring clamps (Pittsburgh 69289 — fiberglass body + swivel
+# pads, no corrosion in the cyanotype splash zone) at 150mm centers grip the muslin
+# against the 2"x2"x3/16" aluminum angle perimeter frame. An inert HDPE FILLER STRIP fills
+# the open L channel so the clamp bites a solid full-depth sandwich: the clamp jaw must
+# clear the 2" leg + ACM + muslin (~55mm), so a ≥3" clamp is used. The bottom
+# (walkway-facing) edge is left UNCLAMPED — no clearance between the raised walkway deck
+# and the board (also keeps the swing/tilt envelope clear); the muslin is secured on the
+# top + two side edges. Replaced the custom through-bolted bracket + torsion-spring + neoprene
+# jaw (2026-07-22). See film-clamp-mechanism-report.md.
 FP_ANGLE_LEG  = 50.8   # angle leg size (mm) — 2" = 50.8mm
 FP_ANGLE_T    = 4.8    # angle thickness (mm) — 3/16" = 4.76mm ≈ 4.8mm
-CLAMP_SPACING = 150    # clip center-to-center spacing (mm)
-CLAMP_JAW_W   = 25.4   # neoprene pad width along the frame edge (mm — = 1" strip width, McMaster 4568N57)
-CLAMP_JAW_D   = 20     # neoprene pad bite depth, inboard from the frame edge (mm — cut length per pad)
-CLAMP_JAW_T   = 6      # neoprene pad thickness (mm — 1/4" = 6mm, 60A neoprene)
-CLAMP_OPEN_GAP = 15    # pad clearance from the board when the clip is squeezed open (mm)
-CLAMP_SPRING_F = 5     # nominal clamping force per clip (N)
-CLAMP_N_HORIZ = FP_W // CLAMP_SPACING + 1   # clips per horizontal edge
-CLAMP_N_VERT  = FP_H // CLAMP_SPACING + 1   # clips per vertical edge
-CLAMP_N_TOTAL = 2 * CLAMP_N_HORIZ + 2 * CLAMP_N_VERT
+DIBOND_T      = 4      # ACM (Dibond) backing sheet thickness (mm)
+MUSLIN_T      = 0.5    # muslin fabric thickness (mm, approx)
+CLAMP_SPACING = 150    # clamp center-to-center spacing (mm)
+CLAMP_FILLER_D = FP_ANGLE_LEG - DIBOND_T - MUSLIN_T - FP_ANGLE_T   # inert HDPE filler depth into the L channel (mm) = 41.5
+CLAMP_N_HORIZ = FP_W // CLAMP_SPACING + 1   # clamps per horizontal edge
+CLAMP_N_VERT  = FP_H // CLAMP_SPACING + 1   # clamps per vertical edge
+CLAMP_N_TOTAL = CLAMP_N_HORIZ + 2 * CLAMP_N_VERT   # top edge + 2 sides; bottom (walkway) edge omitted
 
 # ── Pinhole (recenterd on new film plane) ─────────────────────────────────────
 PH_X   = FP_X_L + FP_W // 2   # = 2399mm  [rev6: was 2637]
@@ -980,7 +982,7 @@ if __name__ == "__main__":
     print("TBS-001 Constants (rev 7)")
     print(f"  Container:      {C_LEN} × {C_WID} × {C_HGT}mm")
     print(f"  Film plane:     {FP_W} × {FP_H}mm  (X={FP_X_L}–{FP_X_R})")
-    print(f"  Muslin clips:   {CLAMP_N_TOTAL} spring clips at {CLAMP_SPACING}mm centers")
+    print(f"  Muslin clamps:  {CLAMP_N_TOTAL} nylon spring clamps at {CLAMP_SPACING}mm centers (top + 2 sides; filler {CLAMP_FILLER_D:g}mm)")
     print(f"  Pinhole:        X={PH_X}  H={PH_H}  Ø{PH_D}mm  f/{PH_FNO}")
     print(f"  Rails:          X={RAIL_X_L} – {RAIL_X_R}  span={RAIL_SPAN}mm")
     print(f"  Max tilt:       {MAX_TILT_DEG:.1f}°")

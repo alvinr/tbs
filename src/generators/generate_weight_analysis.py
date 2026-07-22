@@ -284,7 +284,7 @@ def _film_plane_carriage_weight():
     angle_area = (2 * FP_ANGLE_LEG * FP_ANGLE_T - FP_ANGLE_T**2) * 1e-6  # m²
     frame_kg = perimeter * angle_area * RHO_ALUM
     # muslin spring clips: ~0.15 kg each
-    clamp_kg = CLAMP_N_TOTAL * 0.15
+    clamp_kg = CLAMP_N_TOTAL * 0.05   # nylon spring clamp ~50 g each (was steel bracket ~150 g)
     # 4× HGH20CA carriage blocks: ~0.5 kg each
     carriage_kg = 4 * 0.5
     return frame_kg + clamp_kg + carriage_kg

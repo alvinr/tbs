@@ -13,7 +13,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, backing) | $957 | $1,318 |
 | 3. Pinhole optics plate | $110 | $265 |
-| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,098 | $7,046 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $5,909 | $6,515 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,456 | $8,014 |
 | 6. Electrical — power, circuits, wiring | $2,623 | $3,039 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,441 | $2,106 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,715** | **~$36,676** |
+| **TOTAL (base build + 50-print run)** | **~$25,526** | **~$36,145** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -197,7 +197,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| [M5×16 countersunk screw, A2-70 SS](https://www.mcmaster.com/91420A326/) (91420A326) | 184 ea | McMaster-Carr | clamp, shelf | $21 |
+| [M5×16 countersunk screw, A2-70 SS](https://www.mcmaster.com/91420A326/) (91420A326) | 8 ea | McMaster-Carr | shelf | $1 |
 | [M6×1.0 × 16 hex bolt, 316 SS — tray center-seam lap joint](https://www.mcmaster.com/93635A210/) (93635A210) | 12 ea | McMaster-Carr | tray | $8 |
 | [M6×1.0 × 20 hex bolt, Grade 8.8 zinc](https://www.mcmaster.com/91280A330/) (91280A330) | 20 ea | McMaster-Carr | electrical, spray | $4 |
 | [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — right-rail end fixing (ICP-14)](https://www.mcmaster.com/91280A534/) (91280A534) | 8 ea | McMaster-Carr | film | $3 |
@@ -209,7 +209,6 @@ indicative low–high estimates — get quotes before ordering.
 | [M8 flat washer, SS](https://www.mcmaster.com/91166A270/) (91166A270) | 12 ea | McMaster-Carr | shelf | $0 |
 | [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | 440 ea | McMaster-Carr | film, walkway | $43 |
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | 110 ea | McMaster-Carr | film, walkway | $13 |
-| [M5 hex nut, nyloc A2-70 SS](https://www.mcmaster.com/94205A240/) (94205A240) | 176 ea | McMaster-Carr | clamp | $31 |
 | [M6×1.0 flange nut, serrated SS](https://www.mcmaster.com/96194A101/) (96194A101) | 12 ea | McMaster-Carr | tray | $1 |
 | [M6×1.0 hex nut, nyloc SS](https://www.mcmaster.com/90576A115/) (90576A115) | 16 ea | McMaster-Carr | spray | $1 |
 | [M6×1.0 hex nut, plain SS](https://www.mcmaster.com/90591A151/) (90591A151) | 4 ea | McMaster-Carr | electrical | $0 |
@@ -225,6 +224,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Stainless fasteners + nylon isolation washers](https://www.usplastic.com/catalog/item.aspx?itemid=155501) (92674) | 1 lot | US Plastic + Amazon | lightlock | $45–$60 |
 | [100mm Ø SS grab rail](https://www.marinefiberglassdirect.com/products/16-stainless-steel-safety-grab-bar-bolt-on-for-marine-dock-deck-boat-pool-hot-tub) | 1 ea | Marine Fiberglass Direct | lightlock | $25–$45 |
 | Misc. conversion hardware | 1 lot | Home Depot | interior | $80–$130 |
+| [Nylon spring clamp, 3½″ (Pittsburgh 69289)](https://www.harborfreight.com/3-12-in-nylon-spring-clamp-69289.html) (69289) | 58 ea | Harbor Freight | clamp | $174–$232 |
 | [304 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black](https://www.strongarhardware.com/pro-line-series-ladder-pull-handle-back-to-back-matte-black-powder-coated-finish-316-exterior-grade-stainless-steel-alloy/) | 1 ea | StrongAr Hardware | panel | $70–$90 |
 | Southco C2-33 cam compression latch | 4 ea | Southco | panel | $76–$104 |
 | Ratchet straps, 25mm | 2 ea | Home Depot | ventilation | $12 |
@@ -242,10 +242,9 @@ indicative low–high estimates — get quotes before ordering.
 | [Axle saddle clamps ×8 (304 SS flat-bar stock)](https://www.mcmaster.com/8992K794/) (8992K794) | 1 2 ft bar | McMaster-Carr | spray | $10 |
 | [Self-tapping SS screws (8-pack)](https://www.lowes.com/pd/Hillman-25-Count-10-x-1-in-Stainless-Steel-Self-Drilling-Interior-Exterior-Sheet-Metal-Screws/3691866) (3691866) | 4 ea | Lowe's (Hillman) | spray | $2–$3 |
 | Nylon zip ties, 200mm | 6 ea | Amazon | spray | $1 |
-| Muslin spring clip | 88 ea | McMaster-Carr | clamp | $264–$704 |
 | M10 wedge floor anchors | 20 ea | McMaster-Carr | walkway | $25–$45 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,580–$2,496** |
+| **fasteners-hardware subtotal** | | | | **$1,439–$1,973** |
 
 ### plastics-sheet
 
@@ -257,10 +256,11 @@ indicative low–high estimates — get quotes before ordering.
 | 5mm UV-stabilized HDPE sheet (black) | 1 lot | TAP Plastics | lightlock | $180–$280 |
 | Dibond ACM panel 4mm | 6 sheet | Grimco | film | $510 |
 | Drum-exit punch-out grating | 1 lot | McNichols | walkway | $50–$65 |
+| HDPE filler strip (L-channel packer) | 1 lot | TAP Plastics | clamp | $30–$70 |
 | HDPE flat bar, 50mm wide | 5 ea | Online Metals | tray | $40–$75 |
 | Image-plane flat backing — Dibond ACM | 1 lot | TAP Plastics | interior | $490–$620 |
 | Molded GRP (fiberglass) grating | 1 lot | McNichols | walkway | $965–$1,250 |
-| **plastics-sheet subtotal** | | | | **$2,705–$3,580** |
+| **plastics-sheet subtotal** | | | | **$2,735–$3,650** |
 
 ### plumbing-fittings
 
@@ -313,11 +313,10 @@ indicative low–high estimates — get quotes before ordering.
 | [Felt/brush wiper strip + 12mm closed-cell neoprene](https://www.doitbest.com/product/146005/) (BP17A) | 1 lot | Frost King + Canal Rubber | lightlock | $40–$75 |
 | Light-sealing materials (interior conversion) | 1 lot | Amazon (bundle) | interior | $157–$178 |
 | [Neoprene gasket 340×240×3mm (panel weatherseal)](https://presbond.com/products/2c1-closed-cell-neoprene-foam-sheet-12-x-12-acrylic-adhesive) (NE4112-12X12-XFV) | 1 ea | Pres-Bond | electrical | $21–$42 |
-| [Neoprene pad strip 60A](https://www.mcmaster.com/4568N57/) (4568N57) | 3 strip | McMaster-Carr | clamp | $78 |
 | [Ruland UBOOT12/19-NI-KIT nitrile boot](https://www.ruland.com/uboot12-19-ni-kit.html) (UBOOT12/19-NI-KIT) | 4 ea | Ruland | film | $122 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | 1 ea | CountryMax (Aqueon) | tray | $17–$25 |
 | [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | 1 lot | McMaster-Carr | door | $129 |
-| **seals-gaskets subtotal** | | | | **$633–$746** |
+| **seals-gaskets subtotal** | | | | **$555–$668** |
 
 ### stainless-sheet
 
@@ -424,12 +423,12 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 48 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $4,240–$4,978 |
+| McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $3,847–$4,145 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 19 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,994–$3,236 |
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,448–$2,006 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
-| TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |
+| TAP Plastics | 6 | plastics-sheet | $1,170–$1,750 |
 | Amazon | 59 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,209–$1,531 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
@@ -448,6 +447,7 @@ indicative low–high estimates — get quotes before ordering.
 | marine plywood supplier | 2 | timber-ply | $190–$330 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | Victron | 1 | electrical-power | $153–$275 |
+| Harbor Freight | 1 | fasteners-hardware | $174–$232 |
 | Hessaire | 1 | ducting-ventilation | $185–$230 |
 | Cable Master | 1 | electrical-distribution | $199–$211 |
 | Waytek Wire | 7 | electrical-distribution | $208 |

@@ -285,8 +285,8 @@ FILM = [
     point("Aluminum angle 2×2×3/16 (6061 anodized, expendable) 8 ft (×10)", 220),
     point("Dibond ACM 4mm 4×8 sheets (×6) — single rigid plane", 510, "single rigid plane, no folding hinge"),
     LineItem("Light-seal set — EPDM tape (×2) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6)", 260, 274, 288),
-    LineItem("Spring clips, muslin (×88)", 264, 484, 704, "$3/$5.50/$8 ea — the section's main Low/High driver"),
-    point("Clamp mounting — M5×16 SS csk screws (×176) + Nylocks (×176) + neoprene pad strips", 129, "item-sum: $20 screws (91420A326) + $31 nuts (94205A240 A2 SS) + $78 neoprene (3× 4568N57 strips)"),
+    LineItem("Muslin clamps — nylon spring clamp ×58 (Pittsburgh 69289)", 174, 203, 232, "$3–4 ea; inert fiberglass + swivel pads, top + 2 side edges (bottom = walkway clearance)"),
+    LineItem("Muslin clamp filler — HDPE L-channel strip", 30, 50, 70, "inert HDPE packer, ~8.7 m, firm at fab — lets the clamp bite a solid full-depth edge"),
     # 4.3 Wall-seat saddles (rev 11, ICP-11–14) — estimates, confirm at procurement
     point("Wall-seat saddles ×6 — 8mm steel plate, cut + welded (ICP-11)", 318, "rev12: 2 BR ends moved to the walkway combined corner plates; ~$53/saddle"),
     point("Saddle fasteners — M12×65 through-bolts (×28) + M8 thumbscrews (×12) + M8×25 hex bolts (×8)", 106, "ICP-12/13/14; M12×65 91280A728 + plain nut 90591A181 + 4 flat 91166A290 + split 91202A246 per bolt; M8×25 fixing 91280A534 $0.37"),
@@ -897,7 +897,7 @@ def _film_line(prefix: str) -> LineItem:
 
 
 def _clamp_system(which: str) -> int:    # which = 'low' | 'high'
-    return getattr(_film_line("Spring clips"), which) + _film_line("Clamp mounting").mid
+    return getattr(_film_line("Muslin clamps"), which) + _film_line("Muslin clamp filler").mid
 
 
 # hinged-panel-report.md §8.3/§8.4 — §6b SWINGPIVOT bundles the swing pivot (§8.3) + door frame (§8.4);
@@ -1018,7 +1018,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (25765, 31752, 39616),  # updated 2026-07-22: parts-identity batch — 16 spec-driven parts sourced to real SKUs + researched prices; nut-m5-nyloc → 94205A240 A2 SS. Per-change history in git log.
+    "grand_total": (25576, 31392, 39085),  # updated 2026-07-22: muslin clamp mechanism → off-the-shelf nylon clamps + HDPE filler (−$189/−$531 on film). Per-change history in git log.
     "walkway": (2080, 2529, 2977),   # 2026-07-21: M12 flat washer/split/plain-nut re-price +$27.  2026-07-21: M12 bracket/cleat bolts re-sized 80/cleat→65/70 (91280A728/732 partial, real flat) + 4 washers/bolt, fab line reconciled to parts −$30/−$58 → low +$53/high −$25.  §6a fab line matches walkway-report §10 ($742–$1,255 all-in)
     "water": (5456, 6738, 8014),  # updated 2026-07-22: parts-identity batch — spray-bar (jam nut/collar/self-tap/beam-clamp), tray silicone gasket, S60×6 adapter re-spec, M12×40 hanger bolt. Detail in git log.
     "container": (2300, 3300, 4300),
@@ -1028,7 +1028,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "shelf": (214, 227, 239),          # 2026-07-22: piano hinge re-priced (Würth 32×600 satin SS, $22–35).  §6d = chemistry-prep-shelves §7
     "interior": (957, 1128, 1318),     # 2026-07-22: light-sealing materials re-priced (blackout bundle $157–178)
     "optics": (110, 185, 265),
-    "film": (6098, 6572, 7046),  # updated 2026-07-22: clamp-mounting line (M5 nyloc → 94205A240 A2 SS $8.71/50). Detail in git log.
+    "film": (5909, 6212, 6515),  # updated 2026-07-22: muslin clamp mechanism → off-the-shelf nylon spring clamps (×58) + HDPE filler; retired the custom bracket/spring/neoprene (−$189/−$531). Detail in git log.
     "ventilation": (757, 841, 924),   # §5b BOM (point estimates); report total was stale at $769
     "power": (2634, 2847, 3060),       # 2026-07-22: power-panel neoprene gasket re-priced (Pres-Bond $21–42) +$15/$36.  §5a authoritative subtotal
 }

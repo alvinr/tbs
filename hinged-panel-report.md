@@ -460,9 +460,9 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 <!-- BEGIN parts:swing -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Ø89×8mm CHS pivot post + machined hub / thrust collar | Upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever — SF 3.7 in S355 | 1 ea | Metal Supermarkets / Local fab | $180–$300 |
+| Ø89×8mm CHS pivot post + machined hub / thrust collar | Upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever — SF 3.7 in S355. Two journal bands (where the DU sleeves ride) turned/ground to Ra ≤0.5 µm — unhardened S355 acceptable per GGB DU (hardening improves life). | 1 ea | Metal Supermarkets / Local fab | $180–$300 |
 | Turntable thrust bearing, 12″ (Ø305) 1000 lb | Carries the ~330 kg (3.24 kN) vertical load at the post base; thrust-only | 1 ea | VXB | $40–$60 |
-| Flanged sleeve (journal) bearing, Ø90 bore | Top + bottom radial location of the post / hub (SAE 841 bronze) | 2 ea | McMaster-Carr | $60–$110 |
+| [DU self-lubricating sleeve (journal) bearing, Ø90 bore](https://www.applied.com/c-brands/c-ggb/mb9060du/DU-Self-Lubricating-Bearing/p/102013642) (MB9060DU) | Top + bottom radial location of the post. GGB DU steel-backed PTFE, Ø90 ID × Ø95 OD × 60L (0.796 lb). Cylindrical — pressed into the hub bores (H7/r6); thrust is on the turntable bearing so no flange needed. Maintenance-free (dry-running), no oil to re-embed. Service pressure ≈2 N/mm² vs 140 N/mm² dynamic (>60× margin). Price TBD from Applied — placeholder band. | 2 ea | Applied / Isostatic (TU equiv.) | $60–$110 |
 | Drum support cage, 40 × 40 × 3mm SHS | Steel frame carrying the Ø900 housing + drum on the swinging leaf | 1 lot | Local fab | $70–$120 |
 | Top + bottom wall stays + 4-bolt anchor plates | Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates | 2 set | McMaster-Carr | $90–$160 |
 | Drop-in rail saddles + tapered dowels | For the 2 removable left film rails (TL + BL); dowels set the film datum | 4 ea | Local fab / McMaster-Carr | $80–$130 |
@@ -503,7 +503,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Every 6 months | Inspect EPDM perimeter gasket compression; replace if permanently deformed |
 | Every 6 months | Inspect neoprene drum seals (top/bottom) for wear and adhesion |
 | Annually | Inspect the wall-stay turnbuckles, hooks, and eye anchors; verify tension at the locked angle |
-| Annually | Grease the pivot thrust + journal bearings; check the post for free, smooth rotation |
+| Annually | Grease the pivot thrust (turntable) bearing; the DU journal bushings run dry — do **not** oil/grease them — wipe the post journal bands clean and check for free, smooth rotation |
 | Annually | Check SKF 6215 bearings for roughness — sealed for life, replace only if failed |
 | Annually | Check the drop-in rail saddles + tapered dowels seat the left film rails square to datum |
 | Annually | Inspect Southco cam latches for compression force; adjust or replace striker |

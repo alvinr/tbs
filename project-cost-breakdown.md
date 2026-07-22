@@ -15,21 +15,21 @@
 | Category | Low | Mid | High |
 |----------|-----|-----|------|
 | **1. Container purchase & delivery** | $2,300 | $3,300 | $4,300 |
-| **2. Interior conversion** | $950 | $1,138 | $1,350 |
+| **2. Interior conversion** | $957 | $1,128 | $1,318 |
 | **3. Optics — pinhole plate** | $110 | $185 | $265 |
-| **4. Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)** | $6,083 | $6,557 | $7,031 |
-| **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $5,368 | $6,650 | $7,924 |
-| **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)** | $2,608 | $2,806 | $3,003 |
+| **4. Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)** | $6,095 | $6,569 | $7,043 |
+| **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $5,456 | $6,738 | $8,014 |
+| **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)** | $2,623 | $2,831 | $3,039 |
 | **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $757 | $817 | $907 |
-| **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $1,416 | $1,739 | $2,061 |
+| **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $1,441 | $1,773 | $2,106 |
 | **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $2,080 | $2,529 | $2,977 |
-| **6b. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)** | $979 | $1,239 | $1,499 |
-| **6c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle)** | $1,140 | $1,418 | $1,695 |
-| **6d. Chemistry prep shelf (fold-down phenolic board + steel frame + hinge/stays + TAP-01 trunk extension)** | $212 | $218 | $224 |
+| **6b. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)** | $979 | $1,219 | $1,459 |
+| **6c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle)** | $1,130 | $1,403 | $1,676 |
+| **6d. Chemistry prep shelf (fold-down phenolic board + steel frame + hinge/stays + TAP-01 trunk extension)** | $214 | $227 | $239 |
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,100 | $1,490 | $2,650 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licenses & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$25,623** | **$31,626** | **$39,506** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$25,762** | **$31,749** | **$39,613** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware AmFe** chemistry + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,120), Mid = Standard ½-Ware ($1,520), High = Rich full-Ware ($2,700)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
@@ -133,13 +133,13 @@ Converting the container interior from cargo hold to pinhole camera. Includes li
 <!-- BEGIN costing:interior -->
 | Category | Low | Mid | High |
 |----------|-----|-----|------|
-| Light-sealing | $150 | $178 | $210 |
+| Light-sealing | $157 | $168 | $178 |
 | Interior paint | $100 | $130 | $160 |
 | Image-plane backing | $490 | $550 | $620 |
 | Ventilation | $80 | $100 | $130 |
 | Door & access | $50 | $70 | $100 |
 | Misc. hardware | $80 | $110 | $130 |
-| **Interior conversion total** | **$950** | **$1,138** | **$1,350** |
+| **Interior conversion total** | **$957** | **$1,128** | **$1,318** |
 <!-- END costing:interior -->
 
 ---
@@ -256,10 +256,10 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 | Dibond ACM 4mm 4×8 sheets (×6) — single rigid plane | $510 | $510 | $510 |
 | Light-seal set — EPDM tape (×3) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6) | $260 | $274 | $288 |
 | Spring clips, muslin (×88) | $264 | $484 | $704 |
-| Clamp mounting — M5×16 SS csk screws (×176) + Nylocks (×176) + neoprene pad strip | $114 | $114 | $114 |
+| Clamp mounting — M5×16 SS csk screws (×176) + Nylocks (×176) + neoprene pad strip | $126 | $126 | $126 |
 | Wall-seat saddles ×6 — 8mm steel plate, cut + welded (ICP-11) | $318 | $318 | $318 |
 | Saddle fasteners — M12 through-bolts (×28) + M8 thumbscrews (×12) + M8 hex bolts (×8) | $106 | $106 | $106 |
-| **Section total — film plane mechanism (U-channel + U-joint, incl. saddles)** | **$6,083** | **$6,557** | **$7,031** |
+| **Section total — film plane mechanism (U-channel + U-joint, incl. saddles)** | **$6,095** | **$6,569** | **$7,043** |
 <!-- END costing:film -->
 
 *Electric actuation (optional add-on, not in any standard build): +$827 — see §4.4.*
@@ -278,18 +278,18 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 | Category | Low† | High† |
 |----------|------|-------|
 | Water storage (4× IBC totes, 3× bulkhead fittings, X1 fill tee) | $730 | $1,010 |
-| IBC stacking frame (50×50×3mm RHS restraint deep 4-leg box + 4 floor feet + 50×20 front retaining bars + wall joist hangers through-bolted to exterior backing plates + fabrication, per [Stacking §9.1](ibc-stacking-report.md)) | $1,000 | $1,510 |
+| IBC stacking frame (50×50×3mm RHS restraint deep 4-leg box + 4 floor feet + 50×20 front retaining bars + wall joist hangers through-bolted to exterior backing plates + fabrication, per [Stacking §9.1](ibc-stacking-report.md)) | $996 | $1,505 |
 | Pumps and accumulator (P-01, P-02, P-04 manifold + P-03, P-05 IBC corridor) | $480 | $536 |
 | Corridor plumbing panel structure (18mm marine-ply backing board + drain-riser spine, 25mm pump-mount shirt, mount brackets + fasteners) | $215 | $380 |
 | Under-walkway pipe-ribbon supports (4× welded cross-braces + 16 pipe clips) | $24 | $48 |
 | Filter skid (3× Big Blue housings + cartridges) | $311 | $510 |
-| Valves and fittings (incl. S60×6 adapters, check valve CV-1 (pumps have integral checks)) | $651 | $1,095 |
+| Valves and fittings (incl. S60×6 adapters, check valve CV-1 (pumps have integral checks)) | $699 | $1,119 |
 | Pipe (HDPE, spray bar) | $80 | $114 |
-| Processing tray (304 SS, fabricated, 2 panels) | $1,296 | $2,011 |
-| Spray bar assembly (gantry: beam, LDPE pipe, 26 nozzles, manifold + 7 feed tubes, 4 wheels, ball joint, arm, hose) | $302 | $395 |
+| Processing tray (304 SS, fabricated, 2 panels) | $1,293 | $2,016 |
+| Spray bar assembly (gantry: beam, LDPE pipe, 26 nozzles, manifold + 7 feed tubes, 4 wheels, ball joint, arm, hose) | $349 | $461 |
 | Electrical (wiring only — fuse block in Electrical Report) | $37 | $37 |
 | Processing consumables (6-mil poly, pH meter, citric acid) | $242 | $278 |
-| **Water system total** | **$5,368** | **$7,924** |
+| **Water system total** | **$5,456** | **$8,014** |
 <!-- END costing:water -->
 
 *Used IBC totes (available locally, ~$80–$150 each from Container Exchanger CA) drive significant savings vs. new.*
@@ -309,13 +309,13 @@ Personnel access during operation is via a **Ø900 fixed housing + single-openin
 | 4mm PP — Ø864 drum shell + top/bottom caps (~7 m²) | $150 | $195 | $240 | TAP / Curbell |
 | SKF 6215-2RS1 sealed bearing (×2) | $121 | $121 | $121 | Bearing World / Applied |
 | 75mm Ø × 150mm steel stub shafts (×2) | $30 | $40 | $50 | steel service center |
-| Felt/brush wiper + 12mm neoprene (drum↔housing seal) | $40 | $50 | $60 | McMaster-Carr |
+| Felt/brush wiper + 12mm neoprene (drum↔housing seal) | $40 | $57 | $75 | McMaster-Carr |
 | Silicone bead sealant (bearing housing) | $10 | $13 | $15 | McMaster-Carr |
-| 100mm Ø SS grab rail (400mm cut) | $15 | $20 | $25 | McMaster-Carr |
+| 100mm Ø SS grab rail (400mm cut) | $25 | $35 | $45 | McMaster-Carr |
 | Matte-black interior finish | $40 | $55 | $70 | scuff + flat-black touch-in |
-| Stainless fasteners + nylon isolation washers (no galvanic couple) | $30 | $40 | $50 | McMaster-Carr |
+| Stainless fasteners + nylon isolation washers (no galvanic couple) | $45 | $52 | $60 | McMaster-Carr |
 | Plastic fabrication — roll + weld 2 cylinders, fit (16–22 hrs) | $800 | $975 | $1,150 | Local plastic fab |
-| **Housing + drum total** | **$1,416** | **$1,739** | **$2,061** | |
+| **Housing + drum total** | **$1,441** | **$1,773** | **$2,106** | |
 <!-- END costing:lightlock -->
 
 *Note: the hinged panel that the housing mounts into (50×50mm RHS frame, 4mm PP plastic skins (18mm-ply Fan-B mount band), EPDM perimeter gasket) is part of the interior conversion covered in Section 2. Still below the $2,500–$4,500 commercial darkroom-door range, and weatherproof + transport-rated.*
@@ -370,7 +370,7 @@ The panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post, carrying
 | Turntable thrust bearing, 12″ (Ø305) 1000 lb | $80 | $80 | $80 | VXB |
 | Flanged sleeve (journal) bearings, Ø90 bore (×2) | $60 | $85 | $110 | McMaster SAE 841 |
 | Drum support cage, 40×40×3mm SHS | $70 | $95 | $120 | Local fab |
-| Top + bottom wall stays + 4-bolt anchor plates | $90 | $125 | $160 | turnbuckles + rods + plates |
+| Top + bottom wall stays + 4-bolt anchor plates | $90 | $105 | $120 | turnbuckles + rods + plates |
 | Drop-in rail saddles + tapered dowels (×4, removable left film rails) | $80 | $105 | $130 | Local fab / McMaster |
 | Fixed door frame — 50×50×3 RHS members (×3) | $90 | $105 | $120 | Metal Supermarkets |
 | Fixed door frame — top/bottom seal lips (3mm steel ~110×4m) | $128.5 | $128.5 | $128.5 | seal paths #3–#4 |
@@ -554,21 +554,21 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Item | Cost |
 |------|------|
 | Container (WWT) + delivery | $1,800 |
-| Interior conversion (minimal) | $950 |
+| Interior conversion (minimal) | $957 |
 | Pinhole plate | $110 |
-| Film plane mechanism (4-corner U-channel + U-joint, incl. wall-seat saddles) | $6,083 |
-| Water system (incl. processing tray, spray bar, IBC stacking frame) | $5,368 |
-| Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $2,608 |
+| Film plane mechanism (4-corner U-channel + U-joint, incl. wall-seat saddles) | $6,095 |
+| Water system (incl. processing tray, spray bar, IBC stacking frame) | $5,456 |
+| Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $2,623 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $757 |
-| Revolving drum light trap (plastic-skin custom fabrication) | $1,416 |
+| Revolving drum light trap (plastic-skin custom fabrication) | $1,441 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,080 |
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $979 |
-| Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle) | $1,140 |
-| Chemistry prep shelf (fold-down board + tap trunk extension) | $212 |
+| Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle) | $1,130 |
+| Chemistry prep shelf (fold-down board + tap trunk extension) | $214 |
 | Cyanotype chemistry + substrate (50 prints) | $1,100 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$25,053** |
+| **Scenario A total** | **~$25,192** |
 <!-- END costing:scenario-a -->
 
 ### Scenario B — Recommended build, regional deployment
@@ -577,22 +577,22 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Item | Cost |
 |------|------|
 | Container (CW) + delivery | $3,150 |
-| Interior conversion (full) | $1,138 |
+| Interior conversion (full) | $1,128 |
 | Pinhole plate | $185 |
-| Film plane mechanism (4-corner U-channel + U-joint + wall-seat saddles) | $6,557 |
-| Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,650 |
-| Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $2,806 |
+| Film plane mechanism (4-corner U-channel + U-joint + wall-seat saddles) | $6,569 |
+| Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,738 |
+| Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $2,831 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $817 |
-| Revolving drum light trap (plastic-skin custom fabrication) | $1,739 |
+| Revolving drum light trap (plastic-skin custom fabrication) | $1,773 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,529 |
-| Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,239 |
-| Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle) | $1,418 |
-| Chemistry prep shelf (fold-down board + tap trunk extension) | $218 |
+| Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,219 |
+| Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle) | $1,403 |
+| Chemistry prep shelf (fold-down board + tap trunk extension) | $227 |
 | Cyanotype chemistry + substrate (50 prints) | $1,490 |
 | Rodenstock Apo-Ronar 1,200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$31,936** |
+| **Scenario B total (excl. CDL)** | **~$32,059** |
 <!-- END costing:scenario-b -->
 
 ### Scenario C — Full production, own transport, CDL
@@ -600,11 +600,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:scenario-c -->
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $31,036 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $31,159 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$120,536–$150,536** |
+| **Scenario C total** | **~$120,659–$150,659** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

@@ -172,7 +172,7 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 |------|------|-----|----------|-----------|
 | Phenolic-faced plywood (work surface) | ¾" (18mm) phenolic-faced concrete-form sheet (1220×2440mm), cut to 300×600 | 1 4'×8' ¾" sheet | Home Depot / Lumber yard | $60 |
 | 25×25×3 mm steel SHS | 6 m (frame + spill lip) | 1 lot | Online Metals / Metal Supermarkets | $30 |
-| Continuous (piano) hinge, 600 mm | stainless/steel, ~32 mm leaf | 1 ea | McMaster-Carr | $20 |
+| [Continuous (piano) hinge, 600 mm](https://wurthlac.com/product/165974/) (LSN8-32-600) | stainless/steel, ~32 mm leaf | 1 ea | Wurth LAC | $23–$36 |
 | Folding shelf stays/brackets | fold-flat, ~30–50 kg rating | 2 ea | Amazon / McMaster-Carr | $24 |
 | Wall mounting cleat + anchors | 6 mm steel cleat + 2 stay anchors (slotted) | 1 lot | Local fab | $18 |
 | Shelf mount backing plates, 8mm steel (welded, ×3) | Flat 8mm steel backing plates welded to the pinhole-wall interior crests — one behind the hinge cleat + one per stay anchor — giving flat, solid load anchors with M8 weld-nuts. | 3 ea | Local fab | $18–$30 |
@@ -184,7 +184,7 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 | Corner gusset plate, 3 mm | 50×50 mm triangular | 4 ea | Steel offcut | $5 |
 | Flat black epoxy spray paint | frame + hardware finish | 1 can | Hardware store | $12 |
 | ½" HDPE pipe (tap relocation) | extend the blue supply trunk ~1.3 m left to TAP-01 | 1 lot | Irrigation supply | $10 |
-| **Shelf total** | | | | **$212–$224** |
+| **Shelf total** | | | | **$214–$239** |
 <!-- END parts:shelf -->
 
 *The relocated TAP-01 + BV-06 hardware itself is unchanged (carried in the water-system

@@ -164,15 +164,15 @@ WALKWAY = [
 # $4,063/$6,104). Source: project-cost-breakdown.md §5.
 WATER = [
     LineItem("Water storage (4× IBC totes, 3× bulkhead fittings @ $137 ea, X1 fill tee)", 730, 871, 1010),
-    LineItem("IBC stacking frame (RHS deep 4-leg box + 4 feet + retaining bars + hangers + 8 weld-on lashing rings + fab)", 1000, 1255, 1510),
+    LineItem("IBC stacking frame (RHS deep 4-leg box + 4 feet + retaining bars + hangers + 8 weld-on lashing rings + fab)", 996, 1251, 1505, "2026-07-22: M12×40 hanger bolt re-priced to real SKU (FMW 1634027) −$4/−$5"),
     LineItem("Pumps and accumulator (P-01..P-05 + ACC-01, 5× mount brackets)", 480, 508, 536),
     LineItem("Corridor plumbing panel structure (18mm marine-ply backing board + drain-riser spine, 25mm pump-mount shirt, mount brackets + fasteners)", 215, 298, 380),
     LineItem("Under-walkway pipe-ribbon supports (4× welded cross-braces + 16 pipe clips)", 24, 36, 48),
     LineItem("Filter skid (3× Big Blue 4.5×20 separate housings on slotted-angle frame + cartridges)", 311, 411, 510),
-    LineItem("Valves and fittings (6× BV ball valves, X1 4-way cross, S60×6 adapters, CV1, SV-01 + SV-02 taps, Blue equalization tie)", 651, 873, 1095),
+    LineItem("Valves and fittings (6× BV ball valves, X1 4-way cross, S60×6 adapters, CV1, SV-01 + SV-02 taps, Blue equalization tie)", 699, 909, 1119, "2026-07-22: S60×6 adapter re-spec'd female-buttress×2\"NPT + 2→1\" bushing (CPP HMFN/20UD/027) +$48/+$24"),
     LineItem("Pipe (HDPE, spray bar)", 80, 97, 114),
-    LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1296, 1656, 2011, "2026-07-21: center-seam M6×16 bolt 93635A210 $0.63 −$4"),
-    LineItem("Spray bar assembly (40×25 SS RHS beam, side LDPE manifold, 26 nozzles, manifold + 7 feed tubes, 4 Ø32 wheels, ball joint, arm + turned adapter + jam nut + clamp collar, hose)", 302, 348, 395, "2026-07-21: arm pinch joint designed — retired the loose M6 pinch bolt + nut, added turned AL adapter + M12 jam nut + Ø25 clamp collar +$20/+$33"),
+    LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1293, 1655, 2016, "2026-07-22: tray silicone gasket re-priced (Aqueon $17–25)"),
+    LineItem("Spray bar assembly (40×25 SS RHS beam, side LDPE manifold, 26 nozzles, manifold + 7 feed tubes, 4 Ø32 wheels, ball joint, arm + turned adapter + jam nut + clamp collar, hose)", 349, 405, 461, "2026-07-22: arm jam nut/collar/self-tap/beam-clamp re-priced to real SKUs (Ruland CL-16-ST, Bobco flat-bar) +$47/+$66"),
     LineItem("Electrical (wiring only — fuse block in Electrical Report)", 37, 37, 37),
     LineItem("Processing consumables (6-mil poly, pH meter, citric acid)", 242, 260, 278),
 ]
@@ -190,11 +190,11 @@ LIGHTLOCK = [
     LineItem("4mm PP — Ø864 drum shell + top/bottom caps (~7 m²)", 150, 195, 240, "TAP / Curbell"),
     LineItem("6215-2RS sealed bearing ×2 (Ø75×130×25, ABEC-1)", 121, 121, 121, "$60.59 ea firm, Bearings Direct; alt McMaster 6138K125 $394.88"),
     LineItem("75mm Ø × 150mm steel stub shafts (×2)", 30, 40, 50, "steel service center"),
-    LineItem("Felt/brush wiper + 12mm neoprene (drum↔housing seal)", 40, 50, 60, "McMaster-Carr"),
+    LineItem("Felt/brush wiper + 12mm neoprene (drum↔housing seal)", 40, 57, 75, "Frost King BP17A brush + 1/2\" neoprene by yard"),
     LineItem("Silicone bead sealant (bearing housing)", 10, 13, 15, "McMaster-Carr"),
-    LineItem("100mm Ø SS grab rail (400mm cut)", 15, 20, 25, "McMaster-Carr"),
+    LineItem("100mm Ø SS grab rail (400mm cut)", 25, 35, 45, "16\" marine SS grab bar; 316 $45 / 304 ~$25"),
     LineItem("Matte-black interior finish", 40, 55, 70, "scuff + flat-black touch-in"),
-    LineItem("Stainless fasteners + nylon isolation washers (no galvanic couple)", 30, 40, 50, "McMaster-Carr"),
+    LineItem("Stainless fasteners + nylon isolation washers (no galvanic couple)", 45, 52, 60, "US Plastic 92674 shoulder washers + SS fastener kit"),
     LineItem("Plastic fabrication — roll + weld 2 cylinders, fit (16–22 hrs)", 800, 975, 1150, "Local plastic fab"),
 ]
 
@@ -205,7 +205,7 @@ SWINGPIVOT = [
     LineItem("Thrust ball bearing, 51118 (Ø90 bore, single-direction)", 80, 80, 80, "Bearings Direct $80.03 firm; SF>50 on the 3.24 kN axial"),
     LineItem("DU self-lubricating journal bushings, Ø90 bore (×2)", 60, 85, 110, "GGB MB9060DU, Applied"),
     LineItem("Drum support cage, 40×40×3mm SHS", 70, 95, 120, "Local fab"),
-    LineItem("Top + bottom wall stays + 4-bolt anchor plates", 90, 125, 160, "turnbuckles + rods + plates"),
+    LineItem("Top + bottom wall stays + 4-bolt anchor plates", 90, 105, 120, "5/8\" turnbuckle (JETBGV58X6) + eye rods + fab plates"),
     LineItem("Drop-in rail saddles + tapered dowels (×4, removable left film rails)", 80, 105, 130, "Local fab / McMaster"),
     # §8.4 fixed door frame
     LineItem("Fixed door frame — 50×50×3 RHS members (×3)", 90, 105, 120, "Metal Supermarkets"),
@@ -221,19 +221,19 @@ PANEL = [
     LineItem("4mm black PP sheet — panel skins both faces (~12 m², ×4)", 260, 340, 420, "rev11; TAP / Curbell"),
     LineItem("18mm exterior-grade plywood — Fan B mount band (0.5 sheet)", 30, 40, 50, "Home Depot"),
     LineItem("3mm aluminum plate — corner-zone core plates (×2)", 360, 410, 460, "Online Metals"),
-    LineItem("20mm EPDM gasket — perimeter + housing-surround + cut seals (~21 m)", 84, 105, 126, "McMaster-Carr"),
+    LineItem("20mm EPDM gasket — perimeter + housing-surround + cut seals (~21 m)", 24, 38, 52, "OKAYASU 3/4\"×1/8\"×65ft EPDM ×2 rolls (~$52/21m)"),
     LineItem("Aluminum U-channel — gasket + PP-skin retention (~40 m)", 120, 160, 200, "Online Metals"),
     LineItem("Southco C2-33 cam compression latch (×4)", 76, 90, 104, "Southco / McMaster"),
     LineItem("4mm PP + EPDM lip — B2 punch-out bay (4-wall tube ~890mm)", 60, 90, 120, "rev11"),
     LineItem("Flat-black paint (RAL 9005) — bay/weld touch-in", 10, 15, 20, "local"),
-    LineItem("316 SS D-grab pull handle (~300mm) + 2× M8 + backing plate", 20, 28, 35, "matte-black, §4.3"),
+    LineItem("304 SS D-grab pull handle (~300mm) + 2× M8 + backing plate", 70, 80, 90, "matte-black, §4.3; chose 304 over 316 (~$186); interior/non-wet"),
 ]
 
 # §6d = chemistry-prep-shelves.md §7 (fold-down chemistry prep shelf). Point estimates.
 SHELF = [
     point("Phenolic-faced plywood, 18mm (300×600)", 60, "Home Depot / lumber yard"),
     point("25×25×3mm steel SHS — frame + spill lip (6m)", 30, "Online Metals / Metal Supermarkets"),
-    point("Continuous (piano) hinge, 600mm", 20, "McMaster-Carr"),
+    LineItem("Continuous (piano) hinge, 600mm", 22, 29, 35, "Würth LSN8-32-600 $22.68 / LSN15 $35.72 (32×600 satin SS)"),
     point("Folding shelf stays/brackets (×2, fold-flat)", 24, "Amazon / McMaster-Carr"),
     point("Wall mounting cleat + 2 stay anchors (6mm steel, slotted)", 18, "Local fab / offcut"),
     LineItem("Wall backing plates, 8mm steel welded (×3: cleat + 2 stays)", 18, 24, 30, "flat load anchors on the corrugated end wall"),
@@ -249,7 +249,7 @@ SHELF = [
 # §2 Interior conversion — the detail "Section total" category breakdown is correct ($950/$1,138/
 # $1,350); the SCENARIO row ($970/$1,140/$1,310) was the drifted one.
 INTERIOR = [
-    LineItem("Light-sealing materials", 150, 178, 210),
+    LineItem("Light-sealing materials", 157, 168, 178, "blackout bundle: weatherstrip + felt + gaffer"),
     LineItem("Interior paint", 100, 130, 160),
     LineItem("Image-plane flat backing (Dibond ACM)", 490, 550, 620),
     LineItem("Ventilation (inline fans + light-trap baffles)", 80, 100, 130),
@@ -286,7 +286,7 @@ FILM = [
     point("Dibond ACM 4mm 4×8 sheets (×6) — single rigid plane", 510, "single rigid plane, no folding hinge"),
     LineItem("Light-seal set — EPDM tape (×2) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6)", 260, 274, 288),
     LineItem("Spring clips, muslin (×88)", 264, 484, 704, "$3/$5.50/$8 ea — the section's main Low/High driver"),
-    point("Clamp mounting — M5×16 SS csk screws (×176) + Nylocks (×176) + neoprene pad strips", 114, "item-sum: $20 screws (91420A326) + $16 nuts + $78 neoprene (3× 4568N57 strips)"),
+    point("Clamp mounting — M5×16 SS csk screws (×176) + Nylocks (×176) + neoprene pad strips", 126, "item-sum: $20 screws (91420A326) + $28 nuts (94645A102) + $78 neoprene (3× 4568N57 strips)"),
     # 4.3 Wall-seat saddles (rev 11, ICP-11–14) — estimates, confirm at procurement
     point("Wall-seat saddles ×6 — 8mm steel plate, cut + welded (ICP-11)", 318, "rev12: 2 BR ends moved to the walkway combined corner plates; ~$53/saddle"),
     point("Saddle fasteners — M12×65 through-bolts (×28) + M8 thumbscrews (×12) + M8×25 hex bolts (×8)", 106, "ICP-12/13/14; M12×65 91280A728 + plain nut 90591A181 + 4 flat 91166A290 + split 91202A246 per bolt; M8×25 fixing 91280A534 $0.37"),
@@ -321,7 +321,7 @@ VENTILATION = [
 # §5b ventilation items, so we own the two authoritative subtotals rather than re-entering it.
 POWER = [
     LineItem("Solar & battery (3× 200W panels, MPPT 100/50, 1× 100Ah LiFePO4, shore charger, mounts, PV cabling, PV disconnect, panel)", 1236, 1340, 1443),
-    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop, charge/shore fuses, protection, conduit, LED, master pump switch, power-panel raised weld-in frame)", 1383, 1482, 1581),
+    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop, charge/shore fuses, protection, conduit, LED, master pump switch, power-panel raised weld-in frame)", 1398, 1507, 1617, "2026-07-22: power-panel neoprene gasket re-priced (Pres-Bond $21–42) +$15/+$36"),
 ]
 
 
@@ -652,7 +652,7 @@ SECTIONS = [
     Section("3",  "Optics — pinhole plate", *total(OPTICS)),
     Section("4",  "Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)", *total(FILM)),
     Section("5",  "Processing water system (incl. tray, spray bar, IBC stacking frame)", *total(WATER)),
-    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2608, 2806, 3003),
+    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2623, 2831, 3039),
     Section("5b", "Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)",
             total(VENTILATION)[0], total(VENTILATION)[0] + 60, total(VENTILATION)[0] + 150),
     Section("6",  "Housed revolving-door light lock (plastic-skin custom fabrication)", *total(LIGHTLOCK)),
@@ -1018,19 +1018,19 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (25623, 31626, 39506),  # updated 2026-07-21: swing-pivot 51118 thrust bearing firmed to $80.03 (Bearings Direct). Per-change history in git log.
+    "grand_total": (25762, 31749, 39613),  # updated 2026-07-22: parts-identity batch — 16 spec-driven parts sourced to real SKUs + researched prices (net +$139/+$123/+$107). Per-change history in git log.
     "walkway": (2080, 2529, 2977),   # 2026-07-21: M12 flat washer/split/plain-nut re-price +$27.  2026-07-21: M12 bracket/cleat bolts re-sized 80/cleat→65/70 (91280A728/732 partial, real flat) + 4 washers/bolt, fab line reconciled to parts −$30/−$58 → low +$53/high −$25.  §6a fab line matches walkway-report §10 ($742–$1,255 all-in)
-    "water": (5368, 6650, 7924),  # updated 2026-07-21: spray arm pinch joint + M6 fastener re-price; IBC lashing weld-on rings; bulkhead-2in. Detail in git log.
+    "water": (5456, 6738, 8014),  # updated 2026-07-22: parts-identity batch — spray-bar (jam nut/collar/self-tap/beam-clamp), tray silicone gasket, S60×6 adapter re-spec, M12×40 hanger bolt. Detail in git log.
     "container": (2300, 3300, 4300),
-    "lightlock": (1416, 1739, 2061),   # 2026-07-18: 6215-2RS bearing firm $60.59 ea (Bearings Direct) from $55–95 band.  §6 = hinged-panel §8.2 (housing + drum) line items
-    "swingpivot": (979, 1239, 1499),   # 2026-07-21: 51118 thrust bearing firmed to $80.03 (Bearings Direct); journal bushings → GGB MB9060DU DU (value unchanged).  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
-    "panel": (1140, 1418, 1695),       # §6c = hinged-panel §8.1 (panel structure) — was MISSING from the model
-    "shelf": (212, 218, 224),          # 2026-07-21: + 3 welded 8mm wall backing plates (end-wall mount) +$18/$30.  §6d = chemistry-prep-shelves §7
-    "interior": (950, 1138, 1350),
+    "lightlock": (1441, 1773, 2106),   # 2026-07-22: parts-identity batch — wiper seal (Frost King BP17A), grab rail (16" marine SS), SS fasteners+isolation washers re-priced.  §6 = hinged-panel §8.2 (housing + drum) line items
+    "swingpivot": (979, 1219, 1459),   # 2026-07-22: wall-stays re-priced (5/8\" turnbuckle + eye rods + fab plates), high $160→$120/set.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
+    "panel": (1130, 1403, 1676),       # 2026-07-22: EPDM gasket re-priced (OKAYASU rolls, −$60/−$74) + grab handle 316→304 (+$50/+$55).  §6c = hinged-panel §8.1 (panel structure)
+    "shelf": (214, 227, 239),          # 2026-07-22: piano hinge re-priced (Würth 32×600 satin SS, $22–35).  §6d = chemistry-prep-shelves §7
+    "interior": (957, 1128, 1318),     # 2026-07-22: light-sealing materials re-priced (blackout bundle $157–178)
     "optics": (110, 185, 265),
-    "film": (6083, 6557, 7031),  # updated 2026-07-21: M12/M8 saddle+clamp fastener re-price to real SKUs, U-joint boot, EPDM tape, jaw pad, U-channel mechanism. Detail in git log.
+    "film": (6095, 6569, 7043),  # updated 2026-07-22: clamp-mounting line +$12 (M5 nyloc 93625A200→94645A102). Detail in git log.
     "ventilation": (757, 841, 924),   # §5b BOM (point estimates); report total was stale at $769
-    "power": (2619, 2822, 3024),       # 2026-07-21: + power-panel raised weld-in frame (end-wall mount) +$15/$25.  §5a authoritative subtotal
+    "power": (2634, 2847, 3060),       # 2026-07-22: power-panel neoprene gasket re-priced (Pres-Bond $21–42) +$15/$36.  §5a authoritative subtotal
 }
 
 

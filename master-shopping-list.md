@@ -86,7 +86,7 @@ indicative low–high estimates — get quotes before ordering.
 | [McMaster 4040N12 304 shaft support](https://www.mcmaster.com/4040N12/) (4040N12) | 4 ea | McMaster-Carr | film | $232 |
 | [Ruland USKC12-6-6-SS U-joint (keyway+clamp, 303 SS)](https://www.ruland.com/us12-6-6-ss.html) (USKC12-6-6-SS) | 4 ea | Ruland | film | $1,104 |
 | [SKF 6215-2RS1 sealed bearing](https://bearingsdirect.com/6215-2rs-ball-bearing-75x130x25-sealed-6215-2nse/) (6215-2RS) | 2 ea | Bearings Direct | lightlock | $121 |
-| Turntable thrust bearing, 12″ (Ø305) 1000 lb | 1 ea | VXB | swing | $40–$60 |
+| [Thrust ball bearing, 51118 (Ø90 bore, single-direction)](https://www.motion.com/products/sku/00132858) (51118) | 1 ea | Motion | swing | $40–$60 |
 | Ø20mm ball joint, zinc socket, M12 stud | 1 ea | Amazon | spray | $12 |
 | **bearings-motion subtotal** | | | | **$1,800–$2,010** |
 
@@ -466,7 +466,7 @@ indicative low–high estimates — get quotes before ordering.
 | Hardware store | 2 | adhesives-finishes | $42–$62 |
 | RonAqua | 1 | water-equipment | $32–$60 |
 | Polycase | 1 | electrical-distribution | $60 |
-| VXB | 1 | bearings-motion | $40–$60 |
+| Motion | 1 | bearings-motion | $40–$60 |
 | Steel service center | 1 | steel-structural | $30–$50 |
 | Environmental Marine | 1 | water-equipment | $30–$41 |
 | Powerwerx | 1 | electrical-distribution | $40 |

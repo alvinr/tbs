@@ -198,7 +198,7 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [M5×16 countersunk screw, A2-70 SS](https://www.mcmaster.com/91420A326/) (91420A326) | 184 ea | McMaster-Carr | clamp, shelf | $21 |
-| M6 hex bolt, SS — ~M6×16 est (tray center flange) | 12 ea | McMaster-Carr | tray | $11 |
+| M6×16 hex bolt, 316 SS — tray center-seam lap joint | 12 ea | McMaster-Carr | tray | $11 |
 | [M6×1.0 × 20 hex bolt, Grade 8.8 zinc](https://www.mcmaster.com/91280A330/) (91280A330) | 20 ea | McMaster-Carr | electrical, spray | $4 |
 | [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — right-rail end fixing (ICP-14)](https://www.mcmaster.com/91280A534/) (91280A534) | 8 ea | McMaster-Carr | film | $3 |
 | M8×25 hex bolt, SS — shelf cleat + stay mount | 12 ea | McMaster-Carr | shelf | $10 |

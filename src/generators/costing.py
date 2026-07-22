@@ -277,7 +277,7 @@ FILM = [
     LineItem("304 U-channel depth rails 3×1½\" (1262T21, ×4 wall-to-wall)", 2172, 2172, 2172, "$362/6ft ×6 — 8ft lengths for continuous rails, firm at order"),
     LineItem("Ruland USKC12-6-6-SS U-joints (×4) + nitrile boots (×4)", 1226, 1226, 1226, "$276 ea joint (interim; cheaper alt in research) + $30.59 boot (UBOOT12/19-NI-KIT, verified)"),
     LineItem("McMaster 4040N12 304 shaft supports (×4) + 3/8\" 304 stub rod (89535K87, 3ft)", 245, 245, 245, "$58 ea support + $13.25 rod — firm"),
-    LineItem("Acetal skates (×4) — Ø32/Ø20 acetal rollers + 304 axle pins + fab carriage plates", 175, 227, 279, "2026-07-22: decomposed; axle = spray 304 pins (B0816MQ5T6) $20 (was $176 316 rod)"),
+    LineItem("Acetal skates (×4) — Ø32/Ø20 acetal rollers + 304 axle pins + fab carriage plates", 182, 230, 282, "2026-07-22: decomposed; axle = spray 304 pins (B0816MQ5T6) $20 (was $176 316 rod)"),
     LineItem("316 flat-bar Z/X cross-slides (×4) + UHMW pads + gibs", 180, 280, 380, "2-axis stack per corner; est."),
     LineItem("Cam-lever rail brakes (×12, skate lock)", 96, 138, 180, "3 per corner; est."),
     LineItem("Corner plates, ¼\" 304 SS 6×8 (×4)", 152, 180, 208, "U-joint mount — steel, not aluminum"),
@@ -1018,7 +1018,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (25100, 30788, 38343),  # 2026-07-22: retired duplicate image-plane-backing ACM (−$490/−$620). Per-change history in git log.
+    "grand_total": (25107, 30791, 38346),  # 2026-07-22: retired duplicate image-plane-backing ACM (−$490/−$620). Per-change history in git log.
     "walkway": (2062, 2503, 2943),   # 2026-07-22: floor anchors → 410 SS self-drillers (−$18/−$34)   # 2026-07-21: M12 flat washer/split/plain-nut re-price +$27.  2026-07-21: M12 bracket/cleat bolts re-sized 80/cleat→65/70 (91280A728/732 partial, real flat) + 4 washers/bolt, fab line reconciled to parts −$30/−$58 → low +$53/high −$25.  §6a fab line matches walkway-report §10 ($742–$1,255 all-in)
     "water": (5424, 6690, 7949),  # updated 2026-07-22: parts-identity batch — spray-bar (jam nut/collar/self-tap/beam-clamp), tray silicone gasket, S60×6 adapter re-spec, M12×40 hanger bolt. Detail in git log.
     "container": (2300, 3300, 4300),
@@ -1028,7 +1028,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "shelf": (214, 227, 239),          # 2026-07-22: piano hinge re-priced (Würth 32×600 satin SS, $22–35).  §6d = chemistry-prep-shelves §7
     "interior": (467, 578, 698),      # 2026-07-22: retired the Image-plane flat-backing ACM line (double-counted the film dibond-acm-film)
     "optics": (110, 185, 265),
-    "film": (5734, 6019, 6304),  # updated 2026-07-22: muslin clamp mechanism → off-the-shelf nylon spring clamps (×58) + HDPE filler; retired the custom bracket/spring/neoprene (−$189/−$531). Detail in git log.
+    "film": (5741, 6022, 6307),  # updated 2026-07-22: muslin clamp mechanism → off-the-shelf nylon spring clamps (×58) + HDPE filler; retired the custom bracket/spring/neoprene (−$189/−$531). Detail in git log.
     "ventilation": (757, 841, 924),   # §5b BOM (point estimates); report total was stale at $769
     "power": (2676, 2889, 3102),       # 2026-07-22: power-panel neoprene gasket re-priced (Pres-Bond $21–42) +$15/$36.  §5a authoritative subtotal
 }

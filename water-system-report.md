@@ -373,7 +373,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | 1" NPT 4-way cross fitting | X1 fresh-fill 4-way: X1 inlet + IBC-1 + IBC-2 + DV-01 blue recycle return (was a 3-way tee). Cost est. | 1 ea | Amazon | $8–$14 |
 | 1/2" NPT polypropylene union | Maintenance disconnects on pump runs | 6 ea | Amazon | $24–$36 |
 | 1/2"×1" NPT bushing reducer | P-02 riser to F1 filter inlet | 1 ea | Amazon | $3–$5 |
-| S60×6 to 1" NPT adapter | IBC DN50 valve to 1" HDPE; PP S60×6 male × 1" NPT female | 8 ea | JME Sales / Amazon | $64–$120 |
+| [S60×6 female-buttress → 2" NPT + 2→1" bushing](https://us.cpp.parts/collections/fits-s60x6) (HMFN/20UD/027) | IBC DN50 valve to 1" HDPE. The DN50 valve is a MALE S60×6, so the adapter is FEMALE S60×6 buttress × 2" male NPT PP (a 1" NPT-female config isn't stocked); add a 2→1" PP reducer bushing to land on 1" HDPE. | 8 ea | CPP.parts / Amazon | $112–$144 |
 | 1" bulkhead tank-body fittings (Blue equalization cross-tie) | Low tank-body penetration in each Blue tote (IBC-1 + IBC-2) for the 1" equalization cross-tie that self-balances the two Blue levels (run made from the 1" HDPE stock). Cost est. | 2 ea | Amazon | $12–$24 |
 | 1" NPT spring check valve (CV1 — X1 gravity fill) | PVC body, EPDM seal, 1" FNPT × FNPT. Only CV-1 (X1 fill) remains — the Shurflo 2088 pumps have integral check valves, so CV-2/CV-3/CV-4 are redundant and dropped | 1 ea | Amazon | $8–$14 |
 | Steel flat bar 25×3mm — ribbon support cross-brace | Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (the four corridor↔pinhole lines); ~300mm each | 4 ea | Home Depot | $8–$16 |
@@ -393,7 +393,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $18–$40 |
-| **Water total** | | | | **$2,770–$4,008** |
+| **Water total** | | | | **$2,818–$4,032** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own
@@ -407,8 +407,8 @@ reports — [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) and
 | Category | Low estimate | High estimate |
 |----------|-------------|--------------|
 | Water equipment — §8 BOM (IBC storage, pumps + accumulator, 3-stage filter train, valves & fittings, pipe, wiring, consumables) | $2,073 | $3,123 |
-| Processing tray (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.1) | <!-- BEGIN costing:tray-low -->$1,296<!-- END costing:tray-low --> | <!-- BEGIN costing:tray-high -->$2,011<!-- END costing:tray-high --> |
-| Spray bar assembly (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.2) | <!-- BEGIN costing:spray-low -->$302<!-- END costing:spray-low --> | <!-- BEGIN costing:spray-high -->$395<!-- END costing:spray-high --> |
+| Processing tray (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.1) | <!-- BEGIN costing:tray-low -->$1,293<!-- END costing:tray-low --> | <!-- BEGIN costing:tray-high -->$2,016<!-- END costing:tray-high --> |
+| Spray bar assembly (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.2) | <!-- BEGIN costing:spray-low -->$349<!-- END costing:spray-low --> | <!-- BEGIN costing:spray-high -->$461<!-- END costing:spray-high --> |
 | **TOTAL** | **$3,660** | **$5,513** |
 
 *The Water-equipment row is the generated §8 `parts:water` BOM total (single source of record for the water subsystem — storage/pumps/filters/valves/pipe/consumables); the tray and spray-bar rows are `costing.py` blocks. The TOTAL is a hand sum of the three and should itself become a generated block (Phase-1 backlog).*

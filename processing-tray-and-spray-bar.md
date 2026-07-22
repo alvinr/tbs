@@ -550,11 +550,11 @@ tray drainage plan and sump cross-section).
 | Loctite PL Premium construction adhesive | Shim-to-floor bond | 2 tube | Home Depot | $15 |
 | 1" SS foot valve with strainer screen | Sump pickup tube | 1 ea | Amazon | $20 |
 | 1" reinforced suction hose, 6 ft | Pickup tube to P-04 | 1 ea | Amazon | $15 |
-| Silicone gasket strip | Silicone sealant bed in the center-seam lap joint (between the overlapped panels) + a top bead — the seam seal | 1 ea | McMaster-Carr | $20 |
+| [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | Silicone sealant bed in the center-seam lap joint (between the overlapped panels) + a top bead — the seam seal | 1 ea | CountryMax (Aqueon) | $17–$25 |
 | [M6×1.0 × 16 hex bolt, 316 SS — tray center-seam lap joint](https://www.mcmaster.com/93635A210/) (93635A210) | Tray center-seam LAP-joint bolts (316 SS, wet zone) + M6 serrated flange nuts underneath. Through both overlapped 1.5mm panels + silicone bed. Grip ≈ 4mm → M6×16. Pitch M6×1.0 coarse. $15.86/pack of 25. | 12 ea | McMaster-Carr | $8 |
 | [M6×1.0 flange nut, serrated SS](https://www.mcmaster.com/96194A101/) (96194A101) | Serrated flange nut — tray panel bolts. Pitch M6×1.0 (coarse, baseline — confirm vs SKU PDF, must match the mating bolt). $4.71/pack of 100. | 12 ea | McMaster-Carr | $1 |
 | 6-mil black LDPE sheet, 10 ft × 8 ft | Containment liner (consumable, per session) | 1 ea | Home Depot | $8 |
-| **Tray total** | | | | **$1,296–$2,011** |
+| **Tray total** | | | | **$1,293–$2,016** |
 <!-- END parts:tray -->
 
 ### 6.2 Spray Bar Assembly
@@ -578,24 +578,24 @@ tray drainage plan and sump cross-section).
 | [Axle saddle clamps ×8 (304 SS flat-bar stock)](https://www.mcmaster.com/8992K794/) (8992K794) | Axle retention — formed from 1/8" (3.18mm) × 3/4" (19mm) 304 SS flat bar, wrapped over the Ø10 axle (1mm cradle clearance) with two ~12mm feet bolted up through the carriage plate (2× Ø5.5 M5). ~48mm developed per saddle; all 8 cut from one 2 ft (610mm) length of flat bar. A stamped conduit saddle clamp is only ~0.5mm — too thin for a rolling-carriage axle retainer. Alt: 304 SS + EPDM Adel loop clamp ~3/8–7/16" ID. | 1 2 ft bar | McMaster-Carr | $10 |
 | [M6×1.0 × 20 hex bolt, Grade 8.8 zinc](https://www.mcmaster.com/91280A330/) (91280A330) | Carriage plate, beam clamp, saddle fasteners (M6×1.0). $17.86/pack of 100. ⚠ VALIDATE: 91280A330 is zinc-plated but the spray sits in the WET cyanotype zone — a 316-SS M6×20 resists corrosion better. | 16 ea | McMaster-Carr | $3 |
 | [M6×1.0 hex nut, nyloc SS](https://www.mcmaster.com/90576A115/) (90576A115) | Nyloc nut — M6×20 spray fasteners. Pitch M6×1.0 (coarse, baseline — confirm vs SKU PDF, must match the bolt). $4.77/pack of 100. | 16 ea | McMaster-Carr | $1 |
-| Self-tapping SS screws (8-pack) | Ball-joint flange to beam top wall | 4 ea | McMaster-Carr | $5 |
+| [Self-tapping SS screws (8-pack)](https://www.lowes.com/pd/Hillman-25-Count-10-x-1-in-Stainless-Steel-Self-Drilling-Interior-Exterior-Sheet-Metal-Screws/3691866) (3691866) | Ball-joint flange to beam top wall. #10×1 SS self-drill, 25-pk ~$11–16 (per-unit est). | 4 ea | Lowe's (Hillman) | $2–$3 |
 | Ø20mm ball joint, zinc socket, M12 stud | Multi-axis arm articulation | 1 ea | Amazon | $12 |
-| SS beam clamp plates (top + bottom) + spacers (25mm) | Beam to carriage plate (sandwich, countersunk underside bolts) | 4 ea | McMaster-Carr | $10 |
+| [SS beam clamp plates (top + bottom) + spacers (25mm)](https://www.bobcometal.com/stainless-steel-flat-bar-304-1-4-inch-x-2-inch.html) (SS04FB.250X2.00) | Beam to carriage plate (sandwich, countersunk underside bolts) | 4 ea | Bobco Metals | $40–$60 |
 | 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | Arm tube — slit ~30mm at the bottom for the clamp-collar pinch onto the adapter's Ø21 spigot | 1 ea | Online Metals | $6 |
 | Arm-to-stud adapter, turned 6061-T6 AL (anodized) | Reducer coupling: M12×1.75 tapped bore (onto the ball-joint stud, locked with an M12 jam nut) → Ø21 male spigot the slit arm tube slips over. ~40mm long; anodized to match the AL tube (galvanic). Turned one-off / est. | 1 ea | Local machine shop | $12–$18 |
-| M12×1.75 jam nut, SS | Locks the arm adapter on the ball-joint M12 stud (M12×1.75 coarse). | 1 ea | McMaster-Carr | $0 |
-| Clamp-style shaft collar, 25mm/1" bore, SS | Over the slit arm-tube bottom; its integral clamp screw squeezes the Ø25×2 tube onto the adapter's Ø21 spigot — rotational adjust + lift-off for transport. Replaces the loose M6 pinch bolt. Confirm SKU/bore/price at order. | 1 ea | McMaster-Carr | $8–$15 |
+| [M12×1.75 jam nut, SS](https://www.amazon.com/M12-1-75-Plain-Finish-Stainless-Steel/dp/B007IA07PS) (B007IA07PS) | Locks the arm adapter on the ball-joint M12 stud (M12×1.75 coarse). | 1 ea | Amazon | $1 |
+| [Clamp-style shaft collar, 25mm/1" bore, SS](https://www.ruland.com/cl-16-st.html) (CL-16-ST) | Over the slit arm-tube bottom; its integral clamp screw squeezes the Ø25×2 tube onto the adapter's Ø21 spigot — rotational adjust + lift-off for transport. Replaces the loose M6 pinch bolt. Confirm SKU/bore/price at order. | 1 ea | Ruland | $28–$33 |
 | Nylon zip ties, 200mm | Hose to arm tube | 6 ea | Amazon | $1 |
-| **Spray total** | | | | **$302–$395** |
+| **Spray total** | | | | **$349–$461** |
 <!-- END parts:spray -->
 
 ### 6.3 Combined Total
 
 | Subsystem | Cost Range |
 |-----------|-----------|
-| Processing tray | <!-- BEGIN costing:tray-low -->$1,296<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,011<!-- END costing:tray-high --> |
-| Spray bar assembly | <!-- BEGIN costing:spray-low -->$302<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$395<!-- END costing:spray-high --> |
-| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,598<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,406<!-- END costing:tray-spray-total-high -->** |
+| Processing tray | <!-- BEGIN costing:tray-low -->$1,293<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,016<!-- END costing:tray-high --> |
+| Spray bar assembly | <!-- BEGIN costing:spray-low -->$349<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$461<!-- END costing:spray-high --> |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,642<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,477<!-- END costing:tray-spray-total-high -->** |
 
 ---
 

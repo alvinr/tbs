@@ -424,13 +424,13 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | 4mm black PP plastic sheet (1220 × 2,440mm) | Panel skins, both faces (~12 m²) — rev11, replaces 18mm ply | 4 sheet | TAP Plastics / Curbell | $260–$420 |
 | Exterior-grade plywood (Fan B mount band) | ¾" (18mm) exterior-grade project panel (610×1220mm); Fan B mount band, one corner bottom→1,125mm | 1 2'×4' ¾" panel | Home Depot | $30–$50 |
 | 3mm aluminum plate (1220 × 2,440mm) | Corner zone core plates | 2 ea | Online Metals | $360–$460 |
-| 20mm EPDM gasket (per meter, closed-cell) | Perimeter seal (~10 m) + housing-surround ring (~6 m) + 2× vertical cut seals at Yd180/2287 (~5 m) | 21 m | McMaster-Carr | $84–$126 |
+| [20mm EPDM gasket (per meter, closed-cell)](https://www.amazon.com/dp/B089GJQ96Z) (B089GJQ96Z) | Perimeter seal (~10 m) + housing-surround ring (~6 m) + 2× vertical cut seals at Yd180/2287 (~5 m) | 21 m | Amazon (OKAYASU) | $24–$52 |
 | Aluminum U-channel (per meter) | Gasket retainer + PP-skin retention (perimeter + housing-surround + stiffener grid) | 40 m | Online Metals | $120–$200 |
 | Southco C2-33 cam compression latch | Interior-mounted corner latches (compress the perimeter + cut + lip seals) | 4 ea | Southco / McMaster-Carr | $76–$104 |
 | 4mm black PP sheet + EPDM lip | B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing (rev11) | 1 lot | TAP Plastics | $60–$120 |
 | Flat black paint (RAL 9005) | Bay/weld touch-in (PP skins are pre-pigmented black) | 1 qt | Local fab | $10–$20 |
-| 316 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black | Interior pull handle — through-bolted to the frame (§4.3) | 1 ea | McMaster-Carr | $20–$35 |
-| **Panel total** | | | | **$1,140–$1,695** |
+| [304 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black](https://www.strongarhardware.com/pro-line-series-ladder-pull-handle-back-to-back-matte-black-powder-coated-finish-316-exterior-grade-stainless-steel-alloy/) | Interior pull handle — through-bolted to the frame (§4.3). 304 chosen over 316 (~$186); interior / non-wet location. | 1 ea | StrongAr Hardware | $70–$90 |
+| **Panel total** | | | | **$1,130–$1,676** |
 <!-- END parts:panel -->
 
 
@@ -445,13 +445,13 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | 4mm black polypropylene sheet | Ø864 revolving drum shell + top/bottom caps — LT_DRUM_T (~7 m²) | 1 lot | TAP Plastics / Curbell | $150–$240 |
 | [SKF 6215-2RS1 sealed bearing](https://bearingsdirect.com/6215-2rs-ball-bearing-75x130x25-sealed-6215-2nse/) (6215-2RS) | Top and bottom (drum rotation). Ø75 bore × Ø130 OD × 25mm wide, C=52.7 kN, both-sides sealed (6215-2RS / 6215-2NSE; SKF designation 6215-2RS1). Buy the ABEC-1 grade: the drum is a hand-rotated, low-speed, low-load light-lock — the tighter ABEC-3 tolerance buys nothing here (SKF's standard 6215-2RS1 is Normal/P0 = ABEC 1). VERIFIED $60.59 ea at Bearings Direct 2026-07-18. ALT: McMaster 6138K125 @ $394.88 ea — a heavy commodity-bearing premium, prefer the distributor. | 2 ea | Bearings Direct / McMaster-Carr | $121 |
 | 75mm Ø × 150mm steel stub shaft | Bearing shafts | 2 ea | Steel service center | $30–$50 |
-| Felt/brush wiper strip + 12mm closed-cell neoprene | Drum↔housing rotating seal (opening edges + top/bottom rings) + drum top/bottom | 1 lot | McMaster-Carr | $40–$60 |
+| [Felt/brush wiper strip + 12mm closed-cell neoprene](https://www.doitbest.com/product/146005/) (BP17A) | Drum↔housing rotating seal (opening edges + top/bottom rings) + drum top/bottom | 1 lot | Frost King + Canal Rubber | $40–$75 |
 | Silicone bead sealant (black, UV-stable) | Bearing housing seal | 1 ea | McMaster-Carr | $10–$15 |
-| 100mm Ø SS grab rail | Interior handle, 400mm cut length | 1 ea | McMaster-Carr | $15–$25 |
+| [100mm Ø SS grab rail](https://www.marinefiberglassdirect.com/products/16-stainless-steel-safety-grab-bar-bolt-on-for-marine-dock-deck-boat-pool-hot-tub) | Interior handle, 400mm cut length | 1 ea | Marine Fiberglass Direct | $25–$45 |
 | Matte-black interior finish | Black-pigmented sheet (no etch-prime); scuff + flat-black touch-in at welds | 1 ea | Local fab | $40–$70 |
-| Stainless fasteners + nylon isolation washers | Steel shaft/bearing ↔ plastic shell joints (no galvanic couple) | 1 lot | McMaster-Carr | $30–$50 |
+| [Stainless fasteners + nylon isolation washers](https://www.usplastic.com/catalog/item.aspx?itemid=155501) (92674) | Steel shaft/bearing ↔ plastic shell joints (no galvanic couple) | 1 lot | US Plastic + Amazon | $45–$60 |
 | Plastic fabrication (roll 2 cylinders, hot-air / extrusion weld, fit, bearings) | 16–22 hrs labor | 1 lot | Local plastic fab | $800–$1,150 |
-| **Lightlock total** | | | | **$1,416–$2,061** |
+| **Lightlock total** | | | | **$1,441–$2,106** |
 <!-- END parts:lightlock -->
 
 
@@ -464,9 +464,9 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | [Thrust ball bearing, 51118 (Ø90 bore, single-direction)](https://bearingsdirect.com/51118-thrust-ball-bearing-90x120x22-grooved-ubc-usbc/) (51118) | Carries the ~330 kg (3.24 kN) vertical load at the post base; thrust-only (radial + moment taken by the DU sleeves). 51118 = 90 × 120 × 22mm, static Cₒ ≈190 kN → SF >50; single-direction (gravity-down). Ø90 bore matches the Ø89 post — the machined thrust collar bears on the shaft washer. Commodity part: generic ~$25–40, branded FAG/SKF ~$50–85 (do NOT buy at Motion/Applied industrial list ~$430). Chrome steel: grease + wipe annually (humid darkroom); stainless S51118 available ~$100+ if preferred. | 1 ea | Bearings Direct / Amazon / VXB | $80 |
 | [DU self-lubricating sleeve (journal) bearing, Ø90 bore](https://www.applied.com/c-brands/c-ggb/mb9060du/DU-Self-Lubricating-Bearing/p/102013642) (MB9060DU) | Top + bottom radial location of the post. GGB DU steel-backed PTFE, Ø90 ID × Ø95 OD × 60L (0.796 lb). Cylindrical — pressed into the hub bores (H7/r6); the axial load is on the 51118 thrust bearing so no flange needed. Maintenance-free (dry-running), no oil to re-embed. Service pressure ≈2 N/mm² vs 140 N/mm² dynamic (>60× margin). Price TBD from Applied — placeholder band. | 2 ea | Applied / Isostatic (TU equiv.) | $60–$110 |
 | Drum support cage, 40 × 40 × 3mm SHS | Steel frame carrying the Ø900 housing + drum on the swinging leaf | 1 lot | Local fab | $70–$120 |
-| Top + bottom wall stays + 4-bolt anchor plates | Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates | 2 set | McMaster-Carr | $90–$160 |
+| [Top + bottom wall stays + 4-bolt anchor plates](https://www.fastenersplus.com/products/5-8-x-6-jaw-eye-galvanized-turnbuckle) (JETBGV58X6) | Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates | 2 set | Fasteners Plus | $90–$120 |
 | Drop-in rail saddles + tapered dowels | For the 2 removable left film rails (TL + BL); dowels set the film datum | 4 ea | Local fab / McMaster-Carr | $80–$130 |
-| **Swing total** | | | | **$560–$900** |
+| **Swing total** | | | | **$560–$860** |
 <!-- END parts:swing -->
 
 
@@ -486,11 +486,11 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,140<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,695<!-- END costing:hp-panel-high --> |
-| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$1,416<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$2,061<!-- END costing:hp-housing-high --> |
-| Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$560<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$900<!-- END costing:hp-swing-high --> |
+| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,130<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,676<!-- END costing:hp-panel-high --> |
+| Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$1,441<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$2,106<!-- END costing:hp-housing-high --> |
+| Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$560<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$860<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$3,535<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$5,255<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$3,550<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$5,241<!-- END costing:hp-total-high -->** |
 
 ---
 

@@ -165,7 +165,7 @@ All items ship within the United States. Local Southern California pickup noted 
 <!-- BEGIN parts:film -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [304 U-channel depth rail 3×1½" (76×38mm)](https://www.mcmaster.com/1262T21/) (1262T21) | 4 depth rails, one per corner, running wall-to-wall (~2,362mm, Yd0→C_WID) along the optical axis — an acetal skate rides inside each to set that corner's depth/focus. $362.12/6ft firm. NOTE: a 2,362mm rail exceeds a 6ft (1,829mm) length, and the skate can't cross a splice — so buy 8ft lengths (4 rails) or confirm the continuous-length SKU/price at order. Qty 6× 6ft here is the conservative $-estimate. | 6 ea | McMaster-Carr | $2,172 |
+| [304 U-channel depth rail 3×1½" (76×38mm)](https://www.mcmaster.com/1262T41-1262T21/) (1262T41) | 4 depth rails, one per corner, running wall-to-wall (~2,362mm, Yd0→C_WID) along the optical axis — an acetal skate rides inside each to set that corner's depth/focus. $362.12/6ft firm. NOTE: a 2,362mm rail exceeds a 6ft (1,829mm) length, and the skate can't cross a splice — so buy 8ft lengths (4 rails) or confirm the continuous-length SKU/price at order. Qty 6× 6ft here is the conservative $-estimate. | 6 ea | McMaster-Carr | $2,173 |
 | [Ruland USKC12-6-6-SS U-joint (keyway+clamp, 303 SS)](https://www.ruland.com/us12-6-6-ss.html) (USKC12-6-6-SS) | One per corner — supplies the tilt+swing angular DOF (45°/axis); 3/8" bores, 303 stainless (wet zone), twist-locked. $276 ea firm — INTERIM part; a cheaper joint is under research (see TODO). The U-joint alone is $276×4 = $1,104. | 4 ea | Ruland | $1,104 |
 | [Ruland UBOOT12/19-NI-KIT nitrile boot](https://www.ruland.com/uboot12-19-ni-kit.html) (UBOOT12/19-NI-KIT) | Nitrile boot over each U-joint — keeps cyanotype splash out of the joint. | 4 ea | Ruland | $122 |
 | [McMaster 4040N12 304 shaft support](https://www.mcmaster.com/4040N12/) (4040N12) | Two-piece 304 clamp securing the U-joint INPUT stub to the X (swing) slide, one per corner. $58 ea firm. | 4 ea | McMaster-Carr | $232 |
@@ -213,7 +213,7 @@ Each of the **8 rail ends** anchors to the container — **6 of them** with a st
 
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
 
-**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$6,083<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
+**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$6,095<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
 *Excludes fasteners and fabrication labor.*
 
 ### Local SoCal Metal Sourcing

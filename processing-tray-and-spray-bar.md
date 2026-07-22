@@ -39,7 +39,7 @@ full print width. Together they form the print washing subsystem of the
 |-----------|-------|-----------|
 | Material | 16-gauge (1.5mm) 304 stainless steel, #4 brushed finish | Chemically inert to ferricyanide wash water; resists pitting from citric acid pH adjustment |
 | Overall footprint | 4,459 × 2,200mm (2 panels, field-bolted) | Fits inside film plane rails (X=<!-- BEGIN fact:film_plane_left_x_mm -->150<!-- END fact:film_plane_left_x_mm -->–<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm -->) with 20mm clearance per side |
-| Panel size (each) | 2,229 × 2,200mm | Two equal panels, butted at midpoint with silicone gasket + bolted flange. Each panel fits through the cargo door opening (2,340 × 2,280mm) |
+| Panel size (each) | 2,229 × 2,200mm | Two equal panels, joined at the midpoint by a ~40mm shingle-oriented lap (silicone-sealed, 12× M6×16). Each panel fits through the cargo door opening (2,340 × 2,280mm) |
 | Rim height | 50mm (all four sides) | Contains 6mm flood depth with margin; constrained to ≤75mm by film plane carriage clearance |
 | Floor-to-rim height | 50mm | Tray sits on tapered HDPE shim strips on the container floor |
 | Fall | 1:200 dual-axis (10mm over 2,200mm Yd + 11mm over 2,229mm X) toward sump | Water converges from both axes toward the sump well |
@@ -112,7 +112,10 @@ fold the liner around the sump pickup tube.
 
 The processing tray is permanently installed — it remains in place during both
 operational and transport modes. The two panels are positioned between the film plane
-rails, bolted together at the center flange. The P-04 suction pickup tube sits in the
+rails and joined at the center seam by a **~40mm lap** — the uphill panel laps *over* the
+downhill one (shingle-oriented) so water sheets down over the step without damming on the
+sloped floor — bedded in silicone and bolted with 12× M6×16 + serrated flange nuts on the
+underside, with a silicone bead along the top lap edge. The P-04 suction pickup tube sits in the
 sump well permanently. The 50mm rim height is below all transport-mode clearance
 envelopes, so no removal is required for mode conversion.
 
@@ -540,13 +543,13 @@ tray drainage plan and sump cross-section).
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | 304 SS sheet, 16-gauge (1.5mm), #4 brushed | 2,229 × 2,200mm panels | 2 ea | Online Metals | $720–$1,000 |
-| Fabrication (cut, brake, weld, press sump) | Two panels with center flange + sump well | 1 lot | Local sheet metal | $450–$850 |
+| Fabrication (cut, brake, weld, press sump) | Two panels + a ~40mm center-seam lap (shingle-oriented downhill) + sump well | 1 lot | Local sheet metal | $450–$850 |
 | HDPE flat bar, 50mm wide | Tapered shim strips, 2,200mm each | 5 ea | Online Metals | $40–$75 |
 | Loctite PL Premium construction adhesive | Shim-to-floor bond | 2 tube | Home Depot | $15 |
 | 1" SS foot valve with strainer screen | Sump pickup tube | 1 ea | Amazon | $20 |
 | 1" reinforced suction hose, 6 ft | Pickup tube to P-04 | 1 ea | Amazon | $15 |
-| Silicone gasket strip | Center flange seal | 1 ea | McMaster-Carr | $20 |
-| M6 hex bolt, SS — ~M6×16 est (tray center flange) | Tray center-flange bolts (316 SS, wet zone). Grip ≈ 3mm (2× 1.5mm SS flange) + silicone gasket → ~M6×16, but the joint is BOM-only (not drawn) + gasket thickness unknown — see TODO. | 12 ea | McMaster-Carr | $11 |
+| Silicone gasket strip | Silicone sealant bed in the center-seam lap joint (between the overlapped panels) + a top bead — the seam seal | 1 ea | McMaster-Carr | $20 |
+| M6×16 hex bolt, 316 SS — tray center-seam lap joint | Tray center-seam LAP-joint bolts (316 SS, wet zone) + M6 serrated flange nuts underneath. Through both overlapped 1.5mm panels + silicone bed. Grip ≈ 4mm → M6×16 (short → fully threaded). Needs an M6×16 316-SS SKU at re-price. | 12 ea | McMaster-Carr | $11 |
 | [M6×1.0 flange nut, serrated SS](https://www.mcmaster.com/96194A101/) (96194A101) | Serrated flange nut — tray panel bolts. Pitch M6×1.0 (coarse, baseline — confirm vs SKU PDF, must match the mating bolt). $4.71/pack of 100. | 12 ea | McMaster-Carr | $1 |
 | 6-mil black LDPE sheet, 10 ft × 8 ft | Containment liner (consumable, per session) | 1 ea | Home Depot | $8 |
 | **Tray total** | | | | **$1,300–$2,015** |

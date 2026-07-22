@@ -51,14 +51,12 @@ All items ship within the United States. Local Southern California pickup noted 
 <!-- BEGIN parts:clamp -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Muslin spring clip | Bracket + spring jaw, ~5N, neoprene pad, torsion spring, squeeze handle; through-bolted to the frame upstand (nuts on the inside) | 88 ea | McMaster-Carr / Amazon | $264–$704 |
-| [M5×16 countersunk screw, A2-70 SS](https://www.mcmaster.com/91420A326/) (91420A326) | A2-70 stainless flat-head (CSK) — through-bolts the clip bracket to the upstand. $11.54/pack of 100 (91420A = flat-head series; supersedes the socket-head 91292A126). | 176 ea | McMaster-Carr / Bolt Depot | $20 |
-| [M5 hex nut, nyloc A2-70 SS](https://www.mcmaster.com/94205A240/) (94205A240) | A2-70 stainless — on the inside edge of the upstand. $8.71/pack of 50. | 176 ea | McMaster-Carr / Bolt Depot | $31 |
-| [Neoprene pad strip 60A](https://www.mcmaster.com/4568N57/) (4568N57) | 1" × 1/4" 60A neoprene, PSA-backed, 36"/strip — the clip jaw pad. Cut into 25.4×20mm pads (6mm thick); 88 pads × 20mm = 1,760mm → 3 strips (2 + 1 cutting-waste/spare) | 3 strip | McMaster-Carr / Grainger | $78 |
-| **Clamp total** | | | | **$393–$833** |
+| [Nylon spring clamp, 3½″ (Pittsburgh 69289)](https://www.harborfreight.com/3-12-in-nylon-spring-clamp-69289.html) (69289) | Inert fiberglass/nylon spring clamp with swivel pads — no corrosion in the cyanotype splash zone (replaces the custom steel-bracket clip). Clips over the filler-filled L-frame edge to grip the muslin; the jaw must clear ~55mm (2" leg + ACM + muslin), so a ≥3" clamp. Top + 2 side edges only (bottom = walkway/swing clearance). Confirm the open-jaw ≥2" at purchase; 2½" 69290 is the smaller-body fallback. | 58 ea | Harbor Freight / Amazon | $174–$232 |
+| HDPE filler strip (L-channel packer) | Inert HDPE strip, 41.5mm deep (= frame leg − ACM − muslin − angle), filling the aluminum-angle L channel along the 3 clamped edges (~8.7 m) so the nylon clamp bites a solid full-depth sandwich. Cut to suit; chemistry-safe (same family as the tray liner). Firm at fab. | 1 lot | TAP Plastics / McMaster-Carr | $30–$70 |
+| **Clamp total** | | | | **$204–$302** |
 <!-- END parts:clamp -->
 
-**Clamp system estimated cost:** <!-- BEGIN costing:clamp-system-low -->$393<!-- END costing:clamp-system-low --> (generic spring clips) to <!-- BEGIN costing:clamp-system-high -->$833<!-- END costing:clamp-system-high --> (quality spring clips).
+**Clamp system estimated cost:** <!-- BEGIN costing:clamp-system-low -->$224<!-- END costing:clamp-system-low --> (generic spring clips) to <!-- BEGIN costing:clamp-system-high -->$282<!-- END costing:clamp-system-high --> (quality spring clips).
 
 ---
 

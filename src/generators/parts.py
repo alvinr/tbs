@@ -607,7 +607,7 @@ PARTS: list[Part] = [
     Part("bolt-m5x16-csk", "M5×16 countersunk screw, A2-70 SS", "fasteners-hardware",
          "clamp", 2 * CLAMP_N_TOTAL, "ea", 11.54 / 100, 11.54 / 100, "McMaster-Carr", "Bolt Depot", part_no="91420A326", spec="A2-70 stainless flat-head (CSK) — through-bolts the clip bracket to the upstand. $11.54/pack of 100 (91420A = flat-head series; supersedes the socket-head 91292A126).", url="https://www.mcmaster.com/91420A326/", dims="M5×16mm"),
     Part("nut-m5-nyloc", "M5 hex nut, nyloc A2-70 SS", "fasteners-hardware",
-         "clamp", 2 * CLAMP_N_TOTAL, "ea", 0.1566, 0.1566, "McMaster-Carr", "Bolt Depot", part_no="94645A102", spec="A2-70 stainless — on the inside edge of the upstand", url="https://www.mcmaster.com/94645A102/"),
+         "clamp", 2 * CLAMP_N_TOTAL, "ea", 0.1742, 0.1742, "McMaster-Carr", "Bolt Depot", part_no="94205A240", spec="A2-70 stainless — on the inside edge of the upstand. $8.71/pack of 50.", url="https://www.mcmaster.com/94205A240/"),
     Part("clamp-neoprene", "Neoprene pad strip 60A", "seals-gaskets",
          "clamp", 3, "strip", 25.99, 25.99, "McMaster-Carr", "Grainger", part_no="4568N57",
          url="https://www.mcmaster.com/4568N57/",

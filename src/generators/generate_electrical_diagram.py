@@ -1930,9 +1930,20 @@ def draw_sheet6():
               (cut_h_draw),
               fc="white", color=C_OUT, lw=1.0, zorder=2)
 
-    # Gasket (between plate and wall exterior face, around cutout perimeter)
-    gasket_x = wall_x - gasket_t_draw
+    # Raised welded steel frame on the wall exterior crests (top + bottom strips around
+    # the cutout) — the flat, sealable surface the gasket + plate seat on
+    frame_t_draw = 12
+    frame_x = wall_x - frame_t_draw
     gasket_strip_h = (plate_h_draw - cut_h_draw) / 2 + 3 * mm_v  # overlap cutout edge
+    draw_rect(ax_b, (frame_x), (cut_top - 3 * mm_v),
+              (frame_t_draw), (gasket_strip_h),
+              fc="#9AA0A8", color=C_OUT, lw=1.0, zorder=4.5)
+    draw_rect(ax_b, (frame_x), (cut_bot - (gasket_strip_h - 3 * mm_v)),
+              (frame_t_draw), (gasket_strip_h),
+              fc="#9AA0A8", color=C_OUT, lw=1.0, zorder=4.5)
+
+    # Gasket (between plate and the welded frame's flat face, around cutout perimeter)
+    gasket_x = frame_x - gasket_t_draw
     # Top gasket strip
     draw_rect(ax_b, (gasket_x), (cut_top - 3 * mm_v),
               (gasket_t_draw), (gasket_strip_h),
@@ -1983,13 +1994,11 @@ def draw_sheet6():
               [(dt_cy), (dt_cy)],
               color=C_DT, lw=1.5, ls="--", zorder=5)
 
-    # Mounting bolts (through plate + gasket + wall, nut clamped against wall)
-    washer_w = 1.5 * mm_v * (plate_t_draw / (3 * mm_v))  # washer thickness
-    washer_h = 12 * mm_v     # washer OD ~12mm
+    # Mounting bolts — M6×20 into the welded frame's weld-nut (does NOT cross the wall)
     for by_pos in bolt_positions:
-        # Bolt shaft — from bolt head through plate, gasket, wall to nut
+        # Bolt shaft — from the head through plate + gasket + into the frame
         shaft_start = plate_x - bolt_head_w
-        shaft_end = wall_x + wall_thick + washer_w + nut_w
+        shaft_end = wall_x                      # terminates in the frame's weld-nut
         draw_rect(ax_b, (shaft_start),
                   (by_pos - bolt_shaft_h / 2),
                   (shaft_end - shaft_start),
@@ -2000,16 +2009,17 @@ def draw_sheet6():
                   (by_pos - bolt_head_h / 2),
                   (bolt_head_w), (bolt_head_h),
                   fc=C_STEEL, color=C_OUT, lw=0.8, zorder=8)
-        # Washer (against interior face of wall)
-        draw_rect(ax_b, (wall_x + wall_thick),
-                  (by_pos - washer_h / 2),
-                  (washer_w), (washer_h),
-                  fc="#E0E0E0", color=C_OUT, lw=0.6, zorder=8)
-        # Nut (clamped against washer, flush with interior wall face)
-        draw_rect(ax_b, (wall_x + wall_thick + washer_w),
+        # M6 weld-nut on the back (interior face) of the frame
+        draw_rect(ax_b, (wall_x - nut_w),
                   (by_pos - nut_h / 2),
                   (nut_w), (nut_h),
-                  fc=C_STEEL, color=C_OUT, lw=0.8, zorder=8)
+                  fc="#707078", color=C_OUT, lw=0.8, zorder=8)
+
+    ax_b.annotate("8mm WELDED RAISED FRAME\n(on the wall crests; M6 weld-nuts)",
+                  xy=(frame_x + frame_t_draw / 2, plate_top - 4 * mm_v),
+                  xytext=(frame_x - 24, plate_top + 26),
+                  ha="center", va="bottom", fontsize=6, color=C_OUT,
+                  arrowprops=dict(arrowstyle="-|>", color=C_OUT, lw=0.8), **FONT, zorder=9)
 
     # Interior destination labels
     int_label_x = wall_x + wall_thick + int_pad - 25
@@ -2057,7 +2067,7 @@ def draw_sheet6():
 
     leader(ax_b, (plate_x + PLATE_T / 2), (cut_top + 23),
            (plate_x - 25), (sec_h + 40),
-           f"ALUMINUM FACE PLATE\n{PLATE_W}×{PLATE_H}×{PLATE_T}mm\nFLUSH WITH WALL",
+           f"ALUMINUM FACE PLATE\n{PLATE_W}×{PLATE_H}×{PLATE_T}mm\n(seats on the raised frame)",
            fs=6, color=C_OUT, ha="center", arrow_style="-|>", font=FONT)
 
     leader(ax_b, (wall_x + wall_thick / 2), (-15),
@@ -2065,9 +2075,9 @@ def draw_sheet6():
            "CONTAINER WALL\n(CORRUGATED STEEL)",
            fs=6, color=C_WALL, ha="center", va="top", arrow_style="-|>", font=FONT)
 
-    leader(ax_b, (wall_x + wall_thick + 5), (bolt_positions[1]),
-           (wall_x + wall_thick + 25), (bolt_positions[1] + 25),
-           "M6 BOLT + NUT\nW/ WASHER (×4)",
+    leader(ax_b, (wall_x - nut_w / 2), (bolt_positions[1]),
+           (wall_x + wall_thick + 20), (bolt_positions[1] + 30),
+           "M6×20 into the frame\nweld-nut (×4) —\nno wall crossing",
            fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
 
     # ═════════════════════════════════════════════════════════════════════════

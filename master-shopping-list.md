@@ -20,12 +20,12 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $939 | $1,479 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,080 | $2,977 |
 | 7c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,140 | $1,695 |
-| 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $202 | $202 |
+| 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $220 | $232 |
 | 8. Cooling & ventilation | $757 | $907 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,535** | **~$36,536** |
+| **TOTAL (base build + 50-print run)** | **~$25,553** | **~$36,566** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -198,11 +198,11 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [M5×16 countersunk screw, A2-70 SS](https://www.mcmaster.com/91292a126/) (91292A126) | 184 ea | McMaster-Carr | clamp, shelf | $32 |
-| M6 hex bolt — M6×20 (crest-seated) to M6×55 (corrugation-bridge), confirm mount | 4 ea | McMaster-Carr | electrical | $5 |
+| M6×20 hex bolt, SS — power-panel mount | 4 ea | McMaster-Carr | electrical | $5 |
 | M6 hex bolt, SS — ~M6×16 est (tray center flange) | 12 ea | McMaster-Carr | tray | $11 |
 | [M6×1.0 × 20 hex bolt, Grade 8.8 zinc](https://www.mcmaster.com/91280A330/) (91280A330) | 16 ea | McMaster-Carr | spray | $3 |
 | [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — right-rail end fixing (ICP-14)](https://www.mcmaster.com/91280A534/) (91280A534) | 8 ea | McMaster-Carr | film | $3 |
-| M8 hex bolt, SS — M8×20-25 (rib-flat) to longer (corrugation-bridge), confirm attach | 12 ea | McMaster-Carr | shelf | $10 |
+| M8×25 hex bolt, SS — shelf cleat + stay mount | 12 ea | McMaster-Carr | shelf | $10 |
 | M12×40 hex bolt, Grade 8.8 | 12 ea | McMaster-Carr | ibc-frame | $12–$22 |
 | [M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A728/) (91280A728) | 86 ea | McMaster-Carr | film, walkway | $137 |
 | [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | 24 ea | McMaster-Carr | walkway | $42 |
@@ -355,8 +355,10 @@ indicative low–high estimates — get quotes before ordering.
 | Drum support cage, 40 × 40 × 3mm SHS | 1 lot | Local fab | swing | $70–$120 |
 | Floor-leg cantilever bracket (left walkway, ×5) | 5 ea | Local fab | walkway | $55–$95 |
 | Mild steel plate 8mm (laser/plasma cut + welded) | 6 ea | Metal Supermarkets | film | $318 |
+| Power-panel raised mounting frame, 8mm steel (welded) | 1 ea | Local fab | electrical | $15–$25 |
 | Reinforcing plate (exterior) | 18 ea | Local fab | walkway | $75–$130 |
 | Right walkway cantilever frame | 1 lot | Metal Supermarkets | walkway | $28–$40 |
+| Shelf mount backing plates, 8mm steel (welded, ×3) | 3 ea | Local fab | shelf | $18–$30 |
 | Shutter plate (⅛ steel 10×8) + slide channel | 1 ea | Local fab | optics | $25–$50 |
 | Steel backing plate 6×6×⅛ + welded frame | 1 ea | Metal Supermarkets | optics | $20–$40 |
 | Steel flat bar 25×3mm — ribbon support cross-brace | 4 ea | Home Depot | water | $8–$16 |
@@ -364,7 +366,7 @@ indicative low–high estimates — get quotes before ordering.
 | Wall cleat (left corners) | 2 ea | Local fab | walkway | $20–$35 |
 | Wall mounting cleat + anchors | 1 lot | Local fab | shelf | $18 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$4,760–$6,084** |
+| **steel-structural subtotal** | | | | **$4,793–$6,139** |
 
 ### substrate-fabric
 
@@ -425,7 +427,7 @@ indicative low–high estimates — get quotes before ordering.
 |----------|-----------|-------|-----------|
 | McMaster-Carr | 64 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $4,819–$5,861 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
-| Local fab | 17 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,961–$3,181 |
+| Local fab | 19 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,994–$3,236 |
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,448–$2,006 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | TAP Plastics | 5 | plastics-sheet | $1,140–$1,680 |

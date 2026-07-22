@@ -180,11 +180,11 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 | [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | Plain hex nut — shelf wall bolts. Pitch M8×1.25 (coarse, baseline — confirm vs SKU PDF, must match the bolt). $7.53/pack of 100. | 12 ea | McMaster-Carr | $1 |
 | [M8 flat washer, SS](https://www.mcmaster.com/91166A270/) (91166A270) | Flat washer (1/bolt) — shelf wall bolts. $3.32/pack of 100. | 12 ea | McMaster-Carr | $0 |
 | Transport latch (over-center/barrel) | secures the folded board | 1 ea | Amazon | $8 |
-| [M5×16 countersunk screw, A2-70 SS](https://www.mcmaster.com/91292a126/) (91292A126) | Ply panel attachment (same screw as the clamp clips; re-price to unify) | 8 ea | McMaster-Carr | $4 |
+| [M5×16 countersunk screw, A2-70 SS](https://www.mcmaster.com/91420A326/) (91420A326) | Ply panel attachment (same M5×16 CSK as the clamp clips — 91420A326) | 8 ea | McMaster-Carr | $1 |
 | Corner gusset plate, 3 mm | 50×50 mm triangular | 4 ea | Steel offcut | $5 |
 | Flat black epoxy spray paint | frame + hardware finish | 1 can | Hardware store | $12 |
 | ½" HDPE pipe (tap relocation) | extend the blue supply trunk ~1.3 m left to TAP-01 | 1 lot | Irrigation supply | $10 |
-| **Shelf total** | | | | **$220–$232** |
+| **Shelf total** | | | | **$217–$229** |
 <!-- END parts:shelf -->
 
 *The relocated TAP-01 + BV-06 hardware itself is unchanged (carried in the water-system

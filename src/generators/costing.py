@@ -203,7 +203,7 @@ SWINGPIVOT = [
     # §8.3 swing pivot hardware
     LineItem("Ø89×8 CHS pivot post + machined hub / thrust collar", 180, 240, 300, "carries ~3.6 kN·m swing cantilever; Metal Supermarkets / local fab"),
     LineItem("Thrust ball bearing, 51118 (Ø90 bore, single-direction)", 80, 80, 80, "Bearings Direct $80.03 firm; SF>50 on the 3.24 kN axial"),
-    LineItem("DU self-lubricating journal bushings, Ø90 bore (×2)", 60, 85, 110, "GGB MB9060DU, Applied"),
+    LineItem("DU self-lubricating journal bushings, Ø90 bore (×2)", 423, 423, 423, "GGB MB9060DU $211.25 ea firm (made-to-order, ~3-mo lead), Applied"),
     LineItem("Drum support cage, 40×40×3mm SHS", 70, 95, 120, "Local fab"),
     LineItem("Top + bottom wall stays + 4-bolt anchor plates", 90, 105, 120, "5/8\" turnbuckle (JETBGV58X6) + eye rods + fab plates"),
     LineItem("Drop-in rail saddles + tapered dowels (×4, removable left film rails)", 80, 105, 130, "Local fab / McMaster"),
@@ -1018,12 +1018,12 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (25576, 31392, 39085),  # updated 2026-07-22: muslin clamp mechanism → off-the-shelf nylon clamps + HDPE filler (−$189/−$531 on film). Per-change history in git log.
+    "grand_total": (25939, 31730, 39398),  # updated 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (+$363/pair on the swing pivot). Per-change history in git log.
     "walkway": (2080, 2529, 2977),   # 2026-07-21: M12 flat washer/split/plain-nut re-price +$27.  2026-07-21: M12 bracket/cleat bolts re-sized 80/cleat→65/70 (91280A728/732 partial, real flat) + 4 washers/bolt, fab line reconciled to parts −$30/−$58 → low +$53/high −$25.  §6a fab line matches walkway-report §10 ($742–$1,255 all-in)
     "water": (5456, 6738, 8014),  # updated 2026-07-22: parts-identity batch — spray-bar (jam nut/collar/self-tap/beam-clamp), tray silicone gasket, S60×6 adapter re-spec, M12×40 hanger bolt. Detail in git log.
     "container": (2300, 3300, 4300),
     "lightlock": (1441, 1773, 2106),   # 2026-07-22: parts-identity batch — wiper seal (Frost King BP17A), grab rail (16" marine SS), SS fasteners+isolation washers re-priced.  §6 = hinged-panel §8.2 (housing + drum) line items
-    "swingpivot": (979, 1219, 1459),   # 2026-07-22: wall-stays re-priced (5/8\" turnbuckle + eye rods + fab plates), high $160→$120/set.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
+    "swingpivot": (1342, 1557, 1772),   # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
     "panel": (1130, 1403, 1676),       # 2026-07-22: EPDM gasket re-priced (OKAYASU rolls, −$60/−$74) + grab handle 316→304 (+$50/+$55).  §6c = hinged-panel §8.1 (panel structure)
     "shelf": (214, 227, 239),          # 2026-07-22: piano hinge re-priced (Würth 32×600 satin SS, $22–35).  §6d = chemistry-prep-shelves §7
     "interior": (957, 1128, 1318),     # 2026-07-22: light-sealing materials re-priced (blackout bundle $157–178)

@@ -219,6 +219,7 @@ DIAG_IMAGE_FILES = [
     "spray-bar-sheet5.png",
     "spray-bar-sheet6.png",
     "spray-bar-sheet7.png",
+    "spray-bar-sheet8.png",
 ]
 
 MKDOCS_YML = """\

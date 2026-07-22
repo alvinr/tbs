@@ -119,6 +119,8 @@ underside, with a silicone bead along the top lap edge. The P-04 suction pickup 
 sump well permanently. The 50mm rim height is below all transport-mode clearance
 envelopes, so no removal is required for mode conversion.
 
+![Processing Tray — Sheet 8: Center-seam shingle-lap joint detail](assets/spray-bar-sheet8.png)
+
 ---
 
 ## 3. Spray Bar Assembly — Gantry Design
@@ -549,10 +551,10 @@ tray drainage plan and sump cross-section).
 | 1" SS foot valve with strainer screen | Sump pickup tube | 1 ea | Amazon | $20 |
 | 1" reinforced suction hose, 6 ft | Pickup tube to P-04 | 1 ea | Amazon | $15 |
 | Silicone gasket strip | Silicone sealant bed in the center-seam lap joint (between the overlapped panels) + a top bead — the seam seal | 1 ea | McMaster-Carr | $20 |
-| M6×16 hex bolt, 316 SS — tray center-seam lap joint | Tray center-seam LAP-joint bolts (316 SS, wet zone) + M6 serrated flange nuts underneath. Through both overlapped 1.5mm panels + silicone bed. Grip ≈ 4mm → M6×16 (short → fully threaded). Needs an M6×16 316-SS SKU at re-price. | 12 ea | McMaster-Carr | $11 |
+| [M6×1.0 × 16 hex bolt, 316 SS — tray center-seam lap joint](https://www.mcmaster.com/93635A210/) (93635A210) | Tray center-seam LAP-joint bolts (316 SS, wet zone) + M6 serrated flange nuts underneath. Through both overlapped 1.5mm panels + silicone bed. Grip ≈ 4mm → M6×16. Pitch M6×1.0 coarse. $15.86/pack of 25. | 12 ea | McMaster-Carr | $8 |
 | [M6×1.0 flange nut, serrated SS](https://www.mcmaster.com/96194A101/) (96194A101) | Serrated flange nut — tray panel bolts. Pitch M6×1.0 (coarse, baseline — confirm vs SKU PDF, must match the mating bolt). $4.71/pack of 100. | 12 ea | McMaster-Carr | $1 |
 | 6-mil black LDPE sheet, 10 ft × 8 ft | Containment liner (consumable, per session) | 1 ea | Home Depot | $8 |
-| **Tray total** | | | | **$1,300–$2,015** |
+| **Tray total** | | | | **$1,296–$2,011** |
 <!-- END parts:tray -->
 
 ### 6.2 Spray Bar Assembly
@@ -591,9 +593,9 @@ tray drainage plan and sump cross-section).
 
 | Subsystem | Cost Range |
 |-----------|-----------|
-| Processing tray | <!-- BEGIN costing:tray-low -->$1,300<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,015<!-- END costing:tray-high --> |
+| Processing tray | <!-- BEGIN costing:tray-low -->$1,296<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,011<!-- END costing:tray-high --> |
 | Spray bar assembly | <!-- BEGIN costing:spray-low -->$302<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$395<!-- END costing:spray-high --> |
-| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,602<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,410<!-- END costing:tray-spray-total-high -->** |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,598<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,406<!-- END costing:tray-spray-total-high -->** |
 
 ---
 

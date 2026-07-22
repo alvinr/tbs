@@ -246,6 +246,8 @@
 
 ![TBS-001 — Spray Bar Detail B: Center Feed Connection](assets/spray-bar-sheet7.png)
 
+![TBS-001 — Processing Tray Detail C: Center-Seam Shingle-Lap Joint](assets/spray-bar-sheet8.png)
+
 ---
 
 ## 19. Weight Distribution Analysis

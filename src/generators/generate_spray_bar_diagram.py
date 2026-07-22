@@ -101,7 +101,7 @@ POLE_X = (PROC_OPEN_X_L + PROC_OPEN_X_R) / 2
 SLIT_WIDTH = SPRAY_BAR_SLIT_W
 CARRIAGE_YD_CENTER = 220
 
-TOTAL_SHEETS = 7
+TOTAL_SHEETS = 8
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -2090,6 +2090,88 @@ def draw_sheet7():
 
 
 # ═════════════════════════════════════════════════════════════════════════════
+# SHEET 8 — Detail C: Tray center-seam lap joint
+# ═════════════════════════════════════════════════════════════════════════════
+def draw_sheet8():
+    fig = plt.figure(figsize=(14, 9))
+    fig.patch.set_facecolor(C_BG)
+    ax = fig.add_axes([0.05, 0.30, 0.90, 0.60])
+    ax.set_facecolor(C_BG); ax.set_aspect("equal"); ax.axis("off")
+
+    C_SS = "#B8C0C8"; C_SIL = "#C88070"; C_BOLT_L = "#505058"
+    T = 5             # exaggerated panel thickness (real 1.5mm / 16 ga)
+    SIL = 1.6         # exaggerated silicone bed
+    LAP = 40          # real lap overlap (mm)
+    seam = 0
+    z_r = 0.0         # downhill (right) panel top-surface Z
+    z_l = z_r + SIL   # uphill (left) panel bottom — sits on the silicone bed
+
+    ax.set_xlim(seam - 92, seam + 92)
+    ax.set_ylim(-42, 46)
+
+    # Downhill (right) panel
+    ax.add_patch(Rectangle((seam - 10, z_r - T), 95, T, fc=C_SS, ec=C_FRAME, lw=1.3, zorder=4))
+    # Silicone bed in the overlap
+    ax.add_patch(Rectangle((seam, z_r), LAP, SIL, fc=C_SIL, ec="none", zorder=5))
+    # Uphill (left) panel — laps OVER to seam+LAP, on the silicone bed
+    ax.add_patch(Rectangle((seam - 85, z_l), 85 + LAP, T, fc=C_SS, ec=C_FRAME, lw=1.3, zorder=6))
+    # Top silicone bead sealing the lap-edge step
+    ax.add_patch(Polygon([(seam + LAP, z_l + T), (seam + LAP + 7, z_r), (seam + LAP, z_r)],
+                 closed=True, fc=C_SIL, ec="none", zorder=6.5))
+
+    # M6×16 bolt at mid-lap + serrated flange nut underneath
+    bx = seam + LAP / 2
+    ax.add_patch(Rectangle((bx - 1.6, z_r - T - 6), 3.2, (z_l + T) - (z_r - T - 6),
+                 fc=C_BOLT_L, ec=C_FRAME, lw=0.5, zorder=7))            # shaft
+    ax.add_patch(Rectangle((bx - 4, z_l + T), 8, 4, fc=C_BOLT_L, ec=C_FRAME, lw=0.8, zorder=8))   # head
+    ax.add_patch(Rectangle((bx - 6, z_r - T - 6), 12, 6, fc="#707078", ec=C_FRAME, lw=0.8, zorder=8))  # flange nut
+
+    # Water / slope arrow (uphill left → downhill right)
+    ax.annotate("", xy=(seam + 52, z_l + T + 15), xytext=(seam - 52, z_l + T + 21),
+                arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=1.6), zorder=9)
+    ax.text(seam - 50, z_l + T + 23, "WATER — 1:200 downhill → sheets off the lap step (no dam)",
+            ha="left", va="bottom", fontsize=6.5, color=C_BLUE, **FONT)
+
+    # Labels
+    leader(ax, seam - 45, z_l + T, seam - 72, z_l + T + 8,
+           "UPHILL PANEL\n(laps OVER — shingle)", fs=6.5, color=C_FRAME, font=FONT)
+    leader(ax, seam + 55, z_r - T, seam + 60, z_r - T - 13, "DOWNHILL PANEL", fs=6.5, color=C_FRAME, font=FONT)
+    leader(ax, seam + LAP / 2, z_r + SIL / 2, seam + 34, z_r - 22,
+           "SILICONE BED (lap)\n+ top bead (step)", fs=6.5, color="#a04030", font=FONT)
+    leader(ax, bx - 3, z_r - T - 6, bx - 34, z_r - T - 16,
+           "M6×16 316-SS + serrated\nflange nut, ×12 along the seam", fs=6.5, color=C_BOLT_L, font=FONT)
+
+    # Dims
+    draw_dim_h(ax, seam, seam + LAP, z_l + T + 7, "~40 LAP", fs=6, font=FONT)
+    draw_dim_v(ax, seam - 82, z_l, z_l + T, "1.5", fs=5.5, font=FONT)
+
+    ax.text(seam, 42, "TRAY CENTER-SEAM LAP JOINT — SECTION ACROSS THE SEAM",
+            ha="center", va="top", fontsize=8, color=C_FRAME, fontweight="bold", **FONT)
+    ax.text(seam, 37, "(section in the X / slope plane · panel thickness exaggerated ~3× for clarity)",
+            ha="center", va="top", fontsize=5.5, color=C_DIM, **FONT)
+
+    # Notes
+    ax_n = fig.add_axes([0.05, 0.08, 0.90, 0.18]); ax_n.axis("off")
+    ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100)
+    draw_notes(ax_n, [
+        "TRAY CENTER-SEAM NOTES:",
+        "1. The tray ships as 2 equal 16 ga (1.5mm) 304-SS panels (each fits the cargo door); joined in the field at the midpoint.",
+        "2. LAP joint, shingle-oriented: the UPHILL panel laps ~40mm OVER the downhill panel so wash water sheets off the step (no dam on the 1:200 sloped floor).",
+        "3. Silicone bed through the full lap + a top bead at the lap edge = the seam seal.",
+        "4. 12× M6×16 (316 SS) + serrated flange nuts underneath, evenly along the 2,200mm seam. Grip ≈ 4mm (2× 1.5 panels + bed).",
+    ], 2, 96, spacing=15, fs=7, title_fs=7.5, color=C_DIM, title_color=C_FRAME, font=FONT, width=96)
+
+    ax_tb = fig.add_axes([0.04, 0.005, 0.92, 0.06])
+    ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
+    title_block(ax_tb, f"SHEET 8 OF {TOTAL_SHEETS}",
+                drawing_title="PROCESSING TRAY",
+                subtitle="DETAIL C — CENTER-SEAM SHINGLE-LAP JOINT",
+                scale_note="SECTION · AXES IN mm · THICKNESS EXAGGERATED",
+                height=0.7)
+    _save(fig, "spray-bar-sheet8")
+
+
+# ═════════════════════════════════════════════════════════════════════════════
 # Shared helpers
 # ═════════════════════════════════════════════════════════════════════════════
 
@@ -2113,3 +2195,4 @@ if __name__ == "__main__":
     draw_sheet5()
     draw_sheet6()
     draw_sheet7()
+    draw_sheet8()

@@ -13,7 +13,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, ventilation) | $467 | $698 |
 | 3. Pinhole optics plate | $110 | $265 |
-| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $5,780 | $6,384 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $5,780 | $6,386 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,424 | $7,949 |
 | 6. Electrical — power, circuits, wiring | $2,665 | $3,081 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,437 | $2,101 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,096** | **~$35,483** |
+| **TOTAL (base build + 50-print run)** | **~$25,096** | **~$35,485** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -365,9 +365,9 @@ indicative low–high estimates — get quotes before ordering.
 | Transition bearing plate | 2 ea | Local fab | walkway | $5–$10 |
 | Wall cleat (left corners) | 2 ea | Local fab | walkway | $20–$35 |
 | Wall mounting cleat + anchors | 1 lot | Local fab | shelf | $18 |
-| Ø10 316 SS rod — skate axles (cut ×16) | 2 1 ft rod | McMaster-Carr | film | $66–$100 |
+| Ø10 316 SS rod — skate axles (6× 200mm) | 6 200mm rod | McMaster-Carr | film | $66–$102 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$4,996–$6,476** |
+| **steel-structural subtotal** | | | | **$4,996–$6,478** |
 
 ### substrate-fabric
 
@@ -425,7 +425,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 39 | bearings-motion, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $3,541–$3,673 |
+| McMaster-Carr | 39 | bearings-motion, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $3,541–$3,675 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,130–$3,472 |
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,448–$2,006 |

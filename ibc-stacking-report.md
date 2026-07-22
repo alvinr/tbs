@@ -287,11 +287,11 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | 4mm folded plate | Simpson-style wall joist hangers | 4 ea | Local fab | $30–$50 |
 | [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | Zinc-plated steel weld-on tie-down rings — 1½" (38mm) inside × ½" thick, 6,600 lb WLL; fillet-welded to the front retaining bars (4 per tier × 2 tiers). Integrated weld base — no separate mount plate. Ring far exceeds the 25mm-strap-limited 1,100 kg assembly WLL. | 8 ea | McMaster-Carr | $40 |
 | 25mm ratchet strap, 1,100 kg WLL | Transport securing, over each stack | 4 ea | Amazon | $30–$50 |
-| M12 floor anchor (wedge/sleeve, container floor) | 4 deep-box flange feet × 4 anchors each | 16 ea | McMaster-Carr | $30–$60 |
+| [Self-drilling structural screw, #14×3¼″ winged, 410 SS](https://www.fastenersplus.com/products/14-x-3-1-4-self-drilling-flat-head-screw-with-wings-410-stainless-steel-pkg-100) (F14C325FDC) | 4 deep-box flange feet × 4 each. Self-drills the 6mm foot plate + 28mm plywood and taps the ~4mm steel crossmember — LAND EACH FOOT OVER A CROSSMEMBER (~450mm centers). Wings ream the plate/ply clearance then snap off at the steel. 410 SS (martensitic — self-drills steel; 316 can't). The IBC dead load bears in compression on the floor; the screws resist sliding/uplift only. Through-bolt 316 + backing nut instead where a crossmember underside is reachable. $1.02/ea (100-pk). | 16 ea | Fasteners Plus / ASMC | $16 |
 | [M12×40 hex bolt, Grade 8.8](https://www.fmwfasteners.com/products/m12-1-75-x-40-hex-cap-screw-8-8-din-933-zinc-plated-fully-threaded) (1634027) | Wall hangers (2 each) + front-bar cleats. M12×40 8.8 zinc DIN933; FMW 1634027 $1.44ea / US Bolt Kits $0.71ea. | 12 ea | FMW Fasteners / US Bolt Kits | $9–$17 |
 | Welding / fabrication (frame assembly) | ~14–20 hrs labor (deep 4-leg box — the ring/back-upright welds sit at the upper end of the range) | 1 lot | Local fab | $688–$1,018 |
 | Primer + paint | Anti-corrosion coating | 1 lot | Hardware store | $30–$50 |
-| **Ibc-Frame total** | | | | **$996–$1,505** |
+| **Ibc-Frame total** | | | | **$982–$1,461** |
 <!-- END parts:ibc-frame -->
 
 ### 9.2 IBC Totes
@@ -311,7 +311,7 @@ the stacking structure and the totes it restrains.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$996<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,505<!-- END costing:ibc-frame-high --> |
+| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$982<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,461<!-- END costing:ibc-frame-high --> |
 | IBC totes (4×) | $300 | $900 |
 | **Total** | **$1,280** | **$2,405** |
 

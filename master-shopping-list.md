@@ -14,18 +14,18 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, backing) | $957 | $1,318 |
 | 3. Pinhole optics plate | $110 | $265 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $5,909 | $6,515 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $5,456 | $8,014 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $5,442 | $7,970 |
 | 6. Electrical — power, circuits, wiring | $2,623 | $3,039 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,441 | $2,106 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,342 | $1,772 |
-| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,080 | $2,977 |
+| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,062 | $2,943 |
 | 7c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,130 | $1,676 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $214 | $239 |
 | 8. Cooling & ventilation | $757 | $907 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,889** | **~$36,458** |
+| **TOTAL (base build + 50-print run)** | **~$25,857** | **~$36,380** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -219,7 +219,7 @@ indicative low–high estimates — get quotes before ordering.
 | Door & access upgrades | 1 lot | Home Depot | interior | $50–$100 |
 | Cam-lever rail brake (skate lock) | 12 ea | McMaster-Carr | film | $96–$180 |
 | [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | 8 ea | McMaster-Carr | ibc-frame | $40 |
-| M12 floor anchor (wedge/sleeve, container floor) | 16 ea | McMaster-Carr | ibc-frame | $30–$60 |
+| [Self-drilling structural screw, #14×3¼″ winged, 410 SS](https://www.fastenersplus.com/products/14-x-3-1-4-self-drilling-flat-head-screw-with-wings-410-stainless-steel-pkg-100) (F14C325FDC) | 16 ea | Fasteners Plus | ibc-frame | $16 |
 | 25mm ratchet strap, 1,100 kg WLL | 4 ea | Amazon | ibc-frame | $30–$50 |
 | [Stainless fasteners + nylon isolation washers](https://www.usplastic.com/catalog/item.aspx?itemid=155501) (92674) | 1 lot | US Plastic + Amazon | lightlock | $45–$60 |
 | [100mm Ø SS grab rail](https://www.marinefiberglassdirect.com/products/16-stainless-steel-safety-grab-bar-bolt-on-for-marine-dock-deck-boat-pool-hot-tub) | 1 ea | Marine Fiberglass Direct | lightlock | $25–$45 |
@@ -242,9 +242,9 @@ indicative low–high estimates — get quotes before ordering.
 | [Axle saddle clamps ×8 (304 SS flat-bar stock)](https://www.mcmaster.com/8992K794/) (8992K794) | 1 2 ft bar | McMaster-Carr | spray | $10 |
 | [Self-tapping SS screws (8-pack)](https://www.lowes.com/pd/Hillman-25-Count-10-x-1-in-Stainless-Steel-Self-Drilling-Interior-Exterior-Sheet-Metal-Screws/3691866) (3691866) | 4 ea | Lowe's (Hillman) | spray | $2–$3 |
 | Nylon zip ties, 200mm | 6 ea | Amazon | spray | $1 |
-| M10 wedge floor anchors | 20 ea | McMaster-Carr | walkway | $25–$45 |
+| [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,439–$1,973** |
+| **fasteners-hardware subtotal** | | | | **$1,408–$1,895** |
 
 ### plastics-sheet
 
@@ -423,7 +423,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 44 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $3,847–$4,145 |
+| McMaster-Carr | 42 | adhesives-finishes, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $3,792–$4,040 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 19 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $1,994–$3,236 |
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,448–$2,006 |
@@ -458,8 +458,8 @@ indicative low–high estimates — get quotes before ordering.
 | Lenox Laser | 1 | stainless-sheet | $50–$150 |
 | CPP.parts | 1 | plumbing-fittings | $112–$144 |
 | Bostick & Sullivan | 1 | chemistry-reagents | $138 |
+| Fasteners Plus | 2 | fasteners-hardware | $106–$136 |
 | Ferguson | 4 | plumbing-fittings | $74–$120 |
-| Fasteners Plus | 1 | fasteners-hardware | $90–$120 |
 | Apera Instruments | 1 | tools-safety | $100–$110 |
 | Southco | 1 | fasteners-hardware | $76–$104 |
 | FilterWay | 1 | water-equipment | $65–$95 |
@@ -483,6 +483,7 @@ indicative low–high estimates — get quotes before ordering.
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |
 | Local machine shop | 1 | aluminum | $12–$18 |
 | FMW Fasteners | 1 | fasteners-hardware | $9–$17 |
+| Bridge Fasteners | 1 | fasteners-hardware | $7–$11 |
 | Irrigation supply | 1 | plumbing-fittings | $10 |
 | Steel offcut | 1 | steel-structural | $5 |
 | Lowe's (Hillman) | 1 | fasteners-hardware | $2–$3 |

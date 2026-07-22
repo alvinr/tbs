@@ -365,7 +365,7 @@ indicative low–high estimates — get quotes before ordering.
 | Transition bearing plate | 2 ea | Local fab | walkway | $5–$10 |
 | Wall cleat (left corners) | 2 ea | Local fab | walkway | $20–$35 |
 | Wall mounting cleat + anchors | 1 lot | Local fab | shelf | $18 |
-| Ø10 316 SS rod — skate axles (6× 200mm) | 6 200mm rod | McMaster-Carr | film | $66–$102 |
+| Ø10 316 SS rod — skate axles (2× 600mm) | 2 600mm rod | McMaster-Carr | film | $66–$102 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
 | **steel-structural subtotal** | | | | **$4,996–$6,478** |
 

@@ -283,7 +283,7 @@ FILM = [
     LineItem("Corner plates, ¼\" 304 SS 6×8 (×4)", 152, 180, 208, "U-joint mount — steel, not aluminum"),
     # 4.2 Film plane frame & backing
     point("Aluminum angle 2×2×3/16 (6061 anodized, expendable) 8 ft (×10)", 220),
-    LineItem("Dibond ACM 4mm 4×8 black sheets (×6) — single rigid plane", 300, 405, 510, "MAXMETAL/Curbell 4mm black ~$50–85/sheet; single rigid plane, no folding hinge"),
+    LineItem("Dibond ACM 4mm 4×8 black sheets (×4, Option A strips) — single rigid plane", 380, 380, 380, "Curbell 4mm black $95/sheet firm; 4 full-height vertical strips, 3 vertical seams"),
     LineItem("Light-seal set — EPDM tape (×2) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6)", 260, 274, 288),
     LineItem("Muslin clamps — nylon spring clamp ×58 (Pittsburgh 69289)", 174, 203, 232, "$3–4 ea; inert fiberglass + swivel pads, top + 2 side edges (bottom = walkway clearance)"),
     LineItem("Muslin clamp filler — HDPE L-channel strip", 30, 50, 70, "inert HDPE packer, ~8.7 m, firm at fab — lets the clamp bite a solid full-depth edge"),
@@ -1018,7 +1018,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (25573, 31445, 39195),  # 2026-07-22: swing journal bushings DU → igus iglide J (−$162/pair). Per-change history in git log.  # 2026-07-22: floor anchors wedge→self-drill (−$32 low)  # updated 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (+$363/pair on the swing pivot). Per-change history in git log.
+    "grand_total": (25653, 31420, 39065),  # 2026-07-22: swing journal bushings DU → igus iglide J (−$162/pair). Per-change history in git log.  # 2026-07-22: floor anchors wedge→self-drill (−$32 low)  # updated 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (+$363/pair on the swing pivot). Per-change history in git log.
     "walkway": (2062, 2503, 2943),   # 2026-07-22: floor anchors → 410 SS self-drillers (−$18/−$34)   # 2026-07-21: M12 flat washer/split/plain-nut re-price +$27.  2026-07-21: M12 bracket/cleat bolts re-sized 80/cleat→65/70 (91280A728/732 partial, real flat) + 4 washers/bolt, fab line reconciled to parts −$30/−$58 → low +$53/high −$25.  §6a fab line matches walkway-report §10 ($742–$1,255 all-in)
     "water": (5442, 6709, 7970),  # updated 2026-07-22: parts-identity batch — spray-bar (jam nut/collar/self-tap/beam-clamp), tray silicone gasket, S60×6 adapter re-spec, M12×40 hanger bolt. Detail in git log.
     "container": (2300, 3300, 4300),
@@ -1028,7 +1028,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "shelf": (214, 227, 239),          # 2026-07-22: piano hinge re-priced (Würth 32×600 satin SS, $22–35).  §6d = chemistry-prep-shelves §7
     "interior": (957, 1128, 1318),     # 2026-07-22: light-sealing materials re-priced (blackout bundle $157–178)
     "optics": (110, 185, 265),
-    "film": (5699, 6107, 6515),  # updated 2026-07-22: muslin clamp mechanism → off-the-shelf nylon spring clamps (×58) + HDPE filler; retired the custom bracket/spring/neoprene (−$189/−$531). Detail in git log.
+    "film": (5779, 6082, 6385),  # updated 2026-07-22: muslin clamp mechanism → off-the-shelf nylon spring clamps (×58) + HDPE filler; retired the custom bracket/spring/neoprene (−$189/−$531). Detail in git log.
     "ventilation": (757, 841, 924),   # §5b BOM (point estimates); report total was stale at $769
     "power": (2676, 2889, 3102),       # 2026-07-22: power-panel neoprene gasket re-priced (Pres-Bond $21–42) +$15/$36.  §5a authoritative subtotal
 }

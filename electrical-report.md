@@ -128,7 +128,7 @@ The MPPT delivers up to 50 A to the battery, so its battery lead carries far mor
 | **Charge temperature** | **0–45 °C — the BMS blocks charging above ~45 °C** (cell protection); this drives the thermal siting below |
 | Cycle life | 3,000–5,000 cycles to 80% capacity |
 | BMS | Internal per-cell BMS (standard on Battle Born, Renogy LiFePO4 units) |
-| Recommended brands | Battle Born 100Ah, Renogy 100Ah Smart Lithium |
+| Recommended brands | Battle Born 100Ah, Renogy 100Ah Core Series |
 | Approximate cost | **~$350 (one unit)**; +$350 for the optional 2nd pack |
 
 **Thermal siting (required).** Because the BMS inhibits charging above ~45 °C while a sun-exposed steel container can reach 60 °C interior, the pack is **mounted low (floor level, in the coolest stratified air), shaded from the sun-baked shell, and kept in the evaporative-cooler / ventilation airflow path** — so it stays inside the charge window during peak sun rather than locking out the solar charge. A commissioning temperature check confirms the bay stays < 45 °C under load (see [Electrical Safety §4 #4](electrical-safety-report.md)).
@@ -376,7 +376,7 @@ All US/SoCal sources. Prices approximate as of 2026.
 |------|------|--------|-----------|
 | Solar panels | 200W mono × 3 | Renogy (renogy.com), Amazon | ~$400 |
 | MPPT charge controller | Victron SmartSolar MPPT 100/50 | altE Store (altestore.com) | ~$200 |
-| LiFePO4 battery × 1 (standard) | 100Ah 12V (Battle Born or Renogy) | battleborncotteries.com / renogy.com | ~$350 |
+| LiFePO4 battery × 1 (standard) | 100Ah 12V (Renogy Core RBT12100LFP-US) | offgridstores.com / renogy.com | $306 |
 | LiFePO4 battery — 2nd pack (optional, plug-in) | 100Ah 12V, parallel onto the busbar (no rewiring) + its **own MRBF terminal fuse** | same | +$375 |
 | Shore backup charger | Victron Blue Smart IP65 12/15 | altE Store | ~$150 |
 | Fuse block | Blue Sea 5026 ST Blade 12-circuit | West Marine (Torrance CA) / Amazon | ~$55 |
@@ -418,10 +418,10 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Ventilation fans × 2 | 150×150×50mm 12V DC axial panel fan, ~150–200 CFM (dimension-audit correction; not the AC Infinity S6 inline) | Amazon | ~$50 |
 | 12V LED flat panel, 300×600mm, 4000K | 20W, neutral white, ceiling-mount | Amazon / superbrightleds.com | ~$75 (×3) |
 | Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting circuits D & G | Amazon / Lowe's | ~$16 (×2) |
-| **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$3,042<!-- END costing:elec-system-total -->** |
+| **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$2,958<!-- END costing:elec-system-total -->** |
 | **Shade canopy total** | | | **~<!-- BEGIN costing:elec-canopy-total -->$200<!-- END costing:elec-canopy-total -->** |
 | **Cooling (cooler + inverter + DC protection + AC outlet + cord)** | | | **~<!-- BEGIN costing:elec-cooling-total -->$442<!-- END costing:elec-cooling-total -->** |
-| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$3,684<!-- END costing:elec-grand-total -->** |
+| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$3,600<!-- END costing:elec-grand-total -->** |
 
 *Electrical system total is the **standard 1-pack build** and matches the consolidated [Master Shopping List §6](master-shopping-list.md) (Solar & battery $1,335 + Distribution & wiring $989 = $2,324, the authoritative electrical BOM). The optional 2nd battery pack adds +$375 (its own MRBF fuse). It includes ~$410 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (interior **+** exterior emergency cut-offs + battery contactor, disconnect switch, terminal-mount fuse, **PV array disconnect, MPPT charge-line + shore-charger fuses**, sealed connectors, bonding, grommets), plus ~$25 of Circuit-C pump-control hardware (1 master pump switch + distribution block).*
 

@@ -45,7 +45,7 @@ Overall floorplan can be seen below. Its essentially split into three areas, lef
 | Evaporative cooler | 700–1,300 | ground | Hessaire MC18M, 120V AC <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W (<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus via inverter); ground-placed outside, flex duct to wall stub at Z=1,900mm |
 | Cooler inverter (Cct E) | 1,910–2,030 | 1,180–1,415 | Victron Phoenix 12/375 GFCI, wall-mounted below the EP (12V→120V for the cooler) |
 | Electrical panel | 1,910–2,210 | 1,500–2,100 | IP65, wall-mount (stacked above the battery bank; clears the upper transport-stay anchor) |
-| Battery bank (2× 100Ah LiFePO4, each 330×172×214mm) | 1,540–2,220 | 150–364 | Wall shelf below panel; side-by-side, clears the optical cone |
+| Battery bank (1× 100Ah LiFePO4 Core, 260×169×211mm; stacked provision for 2nd) | 1,829–2,089 | 160–371 | Skinny EP column, vertically stacked (side busbar); clears the optical cone |
 | Solar charge controller | Within panel | — | Mounted inside enclosure |
 | Cable trunking | Along wall face, H=1,800mm | — | Full length |
 | Blue supply pipe → spray bar | along wall to X=2,399 | — | Rigid 1/2" HDPE from the corridor pump panel to the spray-bar feed; pumps themselves are on the plumbing panel in the IBC corridor (§2.4 / [Plumbing Report](plumbing-report.md)) |

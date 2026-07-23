@@ -11122,9 +11122,9 @@ end
   # Battery 1 (12V 100Ah LiFePO4)
   grp = ents.add_group
   grp.name = "Battery 1 (12V 100Ah LiFePO4)"
-  face = grp.entities.add_face([1829.mm,0.mm,160.mm], [2159.mm,0.mm,160.mm], [2159.mm,172.mm,160.mm], [1829.mm,172.mm,160.mm])
+  face = grp.entities.add_face([1829.mm,0.mm,160.mm], [2089.mm,0.mm,160.mm], [2089.mm,169.mm,160.mm], [1829.mm,169.mm,160.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(214.mm)
+  face.pushpull(211.mm)
   mat = model.materials["Battery 1 (12V 100Ah LiFePO4)"] || model.materials.add("Battery 1 (12V 100Ah LiFePO4)")
   mat.color = Sketchup::Color.new(106, 90, 205)
   mat.alpha = 1.0
@@ -11133,9 +11133,9 @@ end
   # Battery 2 (optional 2nd pack, ghosted)
   grp = ents.add_group
   grp.name = "Battery 2 (optional 2nd pack, ghosted)"
-  face = grp.entities.add_face([1829.mm,0.mm,390.mm], [2159.mm,0.mm,390.mm], [2159.mm,172.mm,390.mm], [1829.mm,172.mm,390.mm])
+  face = grp.entities.add_face([1829.mm,0.mm,387.mm], [2089.mm,0.mm,387.mm], [2089.mm,169.mm,387.mm], [1829.mm,169.mm,387.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(214.mm)
+  face.pushpull(211.mm)
   mat = model.materials["Battery 2 (optional 2nd pack, ghosted)"] || model.materials.add("Battery 2 (optional 2nd pack, ghosted)")
   mat.color = Sketchup::Color.new(106, 90, 205)
   mat.alpha = 0.28
@@ -11144,7 +11144,7 @@ end
   # Battery Contactor (ML-RBS)
   grp = ents.add_group
   grp.name = "Battery Contactor (ML-RBS)"
-  face = grp.entities.add_face([1839.mm,15.mm,624.mm], [1959.mm,15.mm,624.mm], [1959.mm,105.mm,624.mm], [1839.mm,105.mm,624.mm])
+  face = grp.entities.add_face([1839.mm,15.mm,618.mm], [1959.mm,15.mm,618.mm], [1959.mm,105.mm,618.mm], [1839.mm,105.mm,618.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(100.mm)
   mat = model.materials["Interior E-stop button (red mushroom)"] || model.materials.add("Interior E-stop button (red mushroom)")
@@ -11155,7 +11155,7 @@ end
   # MRBF Main Fuse (on + post)
   grp = ents.add_group
   grp.name = "MRBF Main Fuse (on + post)"
-  face = grp.entities.add_face([1979.mm,20.mm,624.mm], [2019.mm,20.mm,624.mm], [2019.mm,60.mm,624.mm], [1979.mm,60.mm,624.mm])
+  face = grp.entities.add_face([1979.mm,20.mm,618.mm], [2019.mm,20.mm,618.mm], [2019.mm,60.mm,618.mm], [1979.mm,60.mm,618.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
@@ -11167,8 +11167,8 @@ end
   grp = ents.add_group
   grp.name = "Battery + cable (2/0 AWG, MRBF → main disconnect)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 326.mm)
-  circle = ge.add_circle([1999.mm,45.mm,662.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 332.mm)
+  circle = ge.add_circle([1999.mm,45.mm,656.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11238,7 +11238,7 @@ end
   grp.name = "Battery − cable (2/0 AWG)"
   ge = grp.entities
   vec = Geom::Vector3d.new(78.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1869.mm,60.mm,604.mm], vec, 11.mm, 16)
+  circle = ge.add_circle([1869.mm,60.mm,598.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -11251,8 +11251,8 @@ end
   grp = ents.add_group
   grp.name = "Battery − cable (2/0 AWG) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1947.mm,60.mm,626.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1947.mm,60.mm,604.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
+  arc = ge.add_arc([1947.mm,60.mm,620.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 22.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1947.mm,60.mm,598.mm], [1.000000,0.000000,0.000000], 11.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -11265,8 +11265,8 @@ end
   grp = ents.add_group
   grp.name = "Battery − cable (2/0 AWG)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 652.mm)
-  circle = ge.add_circle([1969.mm,60.mm,626.mm], vec, 11.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 658.mm)
+  circle = ge.add_circle([1969.mm,60.mm,620.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12968,7 +12968,7 @@ end
   grp.name = "E-stop trip line (contactor coil -> interior E-stop)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -28.054054863004325.mm, 16.030888493145312.mm)
-  circle = ge.add_circle([1899.mm,45.mm,724.mm], vec, 4.mm, 16)
+  circle = ge.add_circle([1899.mm,45.mm,718.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -12981,8 +12981,8 @@ end
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1907.mm,16.945945136995675.mm,740.0308884931453.mm], [-1.000000,0.000000,0.000000], [-0.000000,0.496139,0.868243], 8.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1899.mm,16.945945136995675.mm,740.0308884931453.mm], [0.000000,-0.868243,0.496139], 4.mm, 16)
+  arc = ge.add_arc([1907.mm,16.945945136995675.mm,734.0308884931453.mm], [-1.000000,0.000000,0.000000], [-0.000000,0.496139,0.868243], 8.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([1899.mm,16.945945136995675.mm,734.0308884931453.mm], [0.000000,-0.868243,0.496139], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -12996,7 +12996,7 @@ end
   grp.name = "E-stop trip line (contactor coil -> interior E-stop)"
   ge = grp.entities
   vec = Geom::Vector3d.new(184.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1907.mm,10.mm,744.mm], vec, 4.mm, 16)
+  circle = ge.add_circle([1907.mm,10.mm,738.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -13009,8 +13009,8 @@ end
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2091.mm,10.mm,752.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 8.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2091.mm,10.mm,744.mm], [1.000000,0.000000,0.000000], 4.mm, 16)
+  arc = ge.add_arc([2091.mm,10.mm,746.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 8.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2091.mm,10.mm,738.mm], [1.000000,0.000000,0.000000], 4.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -13023,8 +13023,8 @@ end
   grp = ents.add_group
   grp.name = "E-stop trip line (contactor coil -> interior E-stop)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 308.0999999999999.mm)
-  circle = ge.add_circle([2099.mm,10.mm,752.mm], vec, 4.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 314.0999999999999.mm)
+  circle = ge.add_circle([2099.mm,10.mm,746.mm], vec, 4.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

@@ -9712,7 +9712,7 @@ ents = lw_defn.entities
   # Left walkway (removable)
   grp = ents.add_group
   grp.name = "Left walkway (removable)"
-  face = grp.entities.add_face([170.mm,0.mm,115.mm], [470.mm,0.mm,115.mm], [470.mm,2362.mm,115.mm], [170.mm,2362.mm,115.mm])
+  face = grp.entities.add_face([170.mm,0.mm,115.mm], [470.mm,0.mm,115.mm], [470.mm,1912.mm,115.mm], [370.mm,1912.mm,115.mm], [370.mm,2062.mm,115.mm], [470.mm,2062.mm,115.mm], [470.mm,2362.mm,115.mm], [170.mm,2362.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Left walkway (removable)"] || model.materials.add("Left walkway (removable)")

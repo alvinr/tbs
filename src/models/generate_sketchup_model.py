@@ -698,7 +698,7 @@ def fp_combined_corner_plates():
     return '\n'.join(parts)
 
 
-def _notch_grate(name, gx0, z, gw, t, color, nx0, nx1):
+def _notch_grate(name, gx0, z, gw, t, color, nx0, nx1, alpha=None):
     """Full-width (Yd 0..C_WID) walkway grate with a MUSLIN-DROP notch bitten out of its INBOARD
     (open-tray-facing) edge at the far end: X [nx0,nx1], Yd [WALKWAY_MUSLIN_NOTCH_YD0 .. +DY].
     ONE continuous notched deck (a bite cut out of the inboard edge) — NOT split sections, so no
@@ -710,7 +710,7 @@ def _notch_grate(name, gx0, z, gw, t, color, nx0, nx1):
         pts = [(gx0, 0), (gx1, 0), (gx1, ny0), (nx0, ny0), (nx0, ny1), (gx1, ny1), (gx1, C_WID), (gx0, C_WID)]
     else:            # notch bitten out of the LEFT (inboard) edge, x=gx0
         pts = [(gx0, 0), (gx1, 0), (gx1, C_WID), (gx0, C_WID), (gx0, ny1), (nx1, ny1), (nx1, ny0), (gx0, ny0)]
-    return ruby_prism(name, pts, z, t, color=color)
+    return ruby_prism(name, pts, z, t, color=color, alpha=alpha)
 
 
 def right_walkway_grate():

@@ -705,8 +705,9 @@ def liftout_walkways():
     x0 = ov.WALKWAY_LEFT_X + ov.WALKWAY_W          # 470 — long decks begin
     liftout_x = ov.WALKWAY_NEAR_LIFTOUT_X_R        # 950 — door-end band end
     return '\n'.join([
-        ruby_box("Left walkway (removable)", ov.WALKWAY_LEFT_X, 0, full_z,
-                 ov.WALKWAY_W, C_WID, t, color=ov.C_REMOVABLE, alpha=0.6),
+        ov._notch_grate("Left walkway (removable)", ov.WALKWAY_LEFT_X, full_z,
+                        ov.WALKWAY_W, t, ov.C_REMOVABLE,
+                        ov.WALKWAY_MUSLIN_NOTCH_L_X0, ov.WALKWAY_MUSLIN_NOTCH_L_X1, alpha=0.6),
         ruby_box("Left walkway punch-out (removable)",
                  ov.WALKWAY_LEFT_X + ov.WALKWAY_W, ov.WALKWAY_LEFT_WIDE_YD_L, full_z,
                  ov.WALKWAY_LEFT_WIDE_W - ov.WALKWAY_W,

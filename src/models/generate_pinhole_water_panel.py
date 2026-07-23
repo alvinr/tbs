@@ -61,6 +61,10 @@ def context():
     return "\n".join(p)
 
 
+# Cascade hint: walkway_full() reuses ov.walkways(), which draws the near-wide bump-out and the
+# muslin-drop notches — so water.skp inherits WALKWAY_NEAR_WIDE_X_R, WALKWAY_MUSLIN_NOTCH_L_X0,
+# WALKWAY_MUSLIN_NOTCH_R_X0. Named here so the grep-based missing-cascade check flags water.skp
+# when any of them change (the deps are indirect via ov.*, which the import scan can't see).
 def walkway_full():
     """Real walkway geometry so the cantilevers + brackets read: perimeter decks
     (near with punch-out, stopping at the IBC; left; right — FAR deck erased post-build),

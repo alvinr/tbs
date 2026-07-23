@@ -29,7 +29,7 @@ Without any mitigation, the container is unusable in summer daytime. The system 
 |--------|------------|------|-------|-----------|
 | 80% shade cloth canopy over container | −15 to −20°C | ~<!-- BEGIN costing:vent-shade -->$200<!-- END costing:vent-shade --> | None | **Yes — always** |
 | Scheduling (shoot before 09:00 / after 18:00 in summer) | −10 to −15°C effective | $0 | None | Recommended |
-| Evaporative cooler (swamp cooler) — 120V AC via 12V inverter | −10 to −15°C additional | ~<!-- BEGIN costing:vent-cooler-inverter -->$422<!-- END costing:vent-cooler-inverter --> (cooler + inverter) | <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus | **Yes — in temperatures above 30°C ambient** |
+| Evaporative cooler (swamp cooler) — 120V AC via 12V inverter | −10 to −15°C additional | ~<!-- BEGIN costing:vent-cooler-inverter -->$341<!-- END costing:vent-cooler-inverter --> (cooler + inverter) | <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus | **Yes — in temperatures above 30°C ambient** |
 
 Combined (shade canopy + cooler + scheduling): interior temperature reaches 25–32°C — within operator working range.
 
@@ -193,7 +193,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 |------|------|-----|----------|-----------|
 | 150×150×50mm axial fans | 12V DC, ~150–200 CFM each (GDSTIME/Wathai 15050) | 2 ea | Amazon | $50 |
 | [Evaporative cooler](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) | Hessaire MC18M, 120V AC, <!-- BEGIN fact:cooler_cfm_rated -->1,300<!-- END fact:cooler_cfm_rated --> CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W | 1 ea | Hessaire / Amazon | $185–$230 |
-| Cooler inverter | Victron Phoenix 12/375 GFCI (12V→120V) + DC fuse/disconnect + GFCI AC outlet | 1 ea | Victron / Amazon | $153–$275 |
+| [Cooler inverter — Victron Phoenix 12/375 GFCI](https://www.invertersupply.com/index.php?main_page=product_info&products_id=200695) (PIN123750510) | Victron Phoenix 12/375 120V VE.Direct GFCI (12V→120V, 375VA/300W) — GFCI in the faceplate outlet satisfies the wet-cooler requirement (no separate GFCI needed). Firm $132.60. | 1 ea | Inverter Supply / PKYS | $133 |
 | Shade canopy — 80% shade cloth | 20 × 10 ft | 1 ea | Amazon / Farm supply | $80 |
 | Canopy frame | 1.5" EMT conduit + fittings | 1 lot | Home Depot | $120 |
 | Baffle duct sheet metal (fans) | 22 ga galvanized, 2 × 300mm stubs | 1 lot | Local sheet metal / Home Depot | $30 |
@@ -207,7 +207,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | Cooler external power cable | 1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end | 1 ea | Waytek Wire / Amazon | $20 |
 | Ratchet straps, 25mm | Cooler stowage | 2 ea | Home Depot / Amazon | $12 |
 | Plywood base plate (cooler stowage) | ½" (12mm) plywood project panel (610×1220mm), cut to 600×350 | 1 2'×4' ½" panel | Home Depot / Lumber yard | $8 |
-| **Ventilation total** | | | | **$757–$924** |
+| **Ventilation total** | | | | **$737–$782** |
 <!-- END parts:ventilation -->
 
 ---

@@ -425,14 +425,14 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame perimeter + internal members | 4 ea | Metal Supermarkets | $120–$160 |
 | [1/8" black HDPE sheet (48×96)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | Panel skins, both faces (~12 m², 4× 4×8 ft sheets) — rev11, replaces 18mm ply. 1/8" HDPE is nearest stock to the 4mm PANEL_SKIN_T nominal (weld-compatible with the HDPE housing/drum); the U-channel grid (~400–450mm centers) keeps the skin flat, so the 0.8mm is immaterial. US Plastics 46684 $123.34/sheet. | 4 sheet | US Plastics / TAP Plastics | $493 |
 | Exterior-grade plywood (Fan B mount band) | ¾" (18mm) exterior-grade project panel (610×1220mm); Fan B mount band, one corner bottom→1,125mm | 1 2'×4' ¾" panel | Home Depot | $30–$50 |
-| 3mm aluminum plate (1220 × 2,440mm) | Corner zone core plates | 2 ea | Online Metals | $360–$460 |
+| [3mm aluminum plate 5052-H32 (48×96)](https://www.mkmetal.net/5052-h32sht.125x48x96) (52SH125408) | Corner-zone core plates — 3mm (.125") 5052-H32, 48×96" sheet, one 653mm-wide plate per sheet → 2 sheets. Firm $293.16/sheet (M&K Metal SoCal). | 2 ea | M&K Metal / Industrial Metal Supply | $586 |
 | [20mm EPDM gasket (per meter, closed-cell)](https://www.amazon.com/dp/B089GJQ96Z) (B089GJQ96Z) | Perimeter seal (~10 m) + housing-surround ring (~6 m) + 2× vertical cut seals at Yd180/2287 (~5 m) | 21 m | Amazon (OKAYASU) | $24–$52 |
 | Aluminum U-channel (per meter) | Gasket retainer + PP-skin retention (perimeter + housing-surround + stiffener grid) | 40 m | Online Metals | $120–$200 |
 | Southco C2-33 cam compression latch | Interior-mounted corner latches (compress the perimeter + cut + lip seals) | 4 ea | Southco / McMaster-Carr | $76–$104 |
 | [1/8" black HDPE sheet (48×96, ×2)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing (rev11); 4 walls, 2 per 4×8 sheet. 1/8" HDPE nearest stock to 4mm (weld-compatible with the HDPE housing/drum); EPDM lip cut from the panel-epdm perimeter roll (not billed here). US Plastics 46684 $123.34/sheet. | 2 sheet | US Plastics / TAP Plastics | $247 |
 | Flat black paint (RAL 9005) | Bay/weld touch-in (HDPE skins are pre-pigmented black) | 1 qt | Local fab | $10–$20 |
 | [304 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black](https://www.strongarhardware.com/pro-line-series-ladder-pull-handle-back-to-back-matte-black-powder-coated-finish-316-exterior-grade-stainless-steel-alloy/) | Interior pull handle — through-bolted to the frame (§4.3). 304 chosen over 316 (~$186); interior / non-wet location. | 1 ea | StrongAr Hardware | $70–$90 |
-| **Panel total** | | | | **$1,550–$1,876** |
+| **Panel total** | | | | **$1,776–$2,002** |
 <!-- END parts:panel -->
 
 
@@ -462,7 +462,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 <!-- BEGIN parts:swing -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Ø89×8mm CHS pivot post + machined hub / thrust collar | Upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever — SF 3.7 in S355. Two journal bands (where the iglide bushings ride) turned to a smooth finish (Ra ~0.4 µm); unhardened S355 is fine — iglide J runs on soft shafts, no hardening needed. | 1 ea | Metal Supermarkets / Local fab | $180–$300 |
+| Ø89×8mm CHS pivot post + machined hub / thrust collar | Upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever — SF 3.7 in S355. PIPE sourced: 3" NPS Sch 80 (Ø88.9 OD × 7.6mm wall), 36" ≈ $135 (Speedy Metals). The machined hub / thrust collar + 2 journal bands (Ra ~0.4 µm, iglide runs on soft shafts) are FAB → pending blueprints. Band held est pending the fab quote. | 1 ea | Metal Supermarkets / Speedy Metals | $180–$300 |
 | [Thrust ball bearing, 51118 (Ø90 bore, single-direction)](https://bearingsdirect.com/51118-thrust-ball-bearing-90x120x22-grooved-ubc-usbc/) (51118) | Carries the ~330 kg (3.24 kN) vertical load at the post base; thrust-only (radial + moment taken by the iglide sleeves). 51118 = 90 × 120 × 22mm, static Cₒ ≈190 kN → SF >50; single-direction (gravity-down). Ø90 bore matches the Ø89 post — the machined thrust collar bears on the shaft washer. Commodity part: generic ~$25–40, branded FAG/SKF ~$50–85 (do NOT buy at Motion/Applied industrial list ~$430). Chrome steel: grease + wipe annually (humid darkroom); stainless S51118 available ~$100+ if preferred. | 1 ea | Bearings Direct / Amazon / VXB | $80 |
 | [iglide J flange bushing, Ø90 bore (JFM-9095-100)](https://www.igus.com/iglide-ibh/flange-bearings/product-details/iglide-j-m?artnr=JFM-9095-100) (JFM-9095-100) | Top + bottom radial location of the post. igus iglide J self-lubricating polymer, Ø90 ID × Ø95 OD × Ø103 flange × 100 mm long. The FLANGE gives axial location against the hub face; the OD is a light press into the hub bore. Axial load is on the 51118 thrust bearing. Maintenance-free, no oil; inert plastic — chemical-resistant (iglide J passed the igus chemical filter; iglide X isn't offered at Ø90). Service pressure ≈1.3 N/mm² vs ≈35 N/mm² allowable (>25× margin); runs on the unhardened S355 post. $130.53/ea, ships in days — replaces the made-to-order GGB DU (was $211/ea, 3-mo lead). | 2 ea | igus | $261 |
 | Drum support cage, 40 × 40 × 3mm SHS | Steel frame carrying the Ø900 housing + drum on the swinging leaf | 1 lot | Local fab | $70–$120 |
@@ -488,11 +488,11 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,550<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,876<!-- END costing:hp-panel-high --> |
+| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,776<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$2,002<!-- END costing:hp-panel-high --> |
 | Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$2,032<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$2,506<!-- END costing:hp-housing-high --> |
 | Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$761<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$1,011<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$4,762<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$5,992<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$4,988<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$6,118<!-- END costing:hp-total-high -->** |
 
 ---
 

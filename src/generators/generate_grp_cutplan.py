@@ -29,13 +29,13 @@ C_CUT = "#B00020"    # cut lines (rip/crosscut callouts)
 # 11.8" (300mm).  Near/far runs are 151.9" (3859mm) → one seam, split 120 + 31.9.
 PANEL_A = [
     # Near-A: 120" of the near deck WITH the EP/battery bump-out as an integral tab
-    # (baseline 11.8 wide; tab out to 19.7 over x 23.0..84.8 — one L-shaped cut).
+    # (baseline 11.8 wide; tab out to 19.7 over x 23.0..102.9 — one L-shaped cut).
     ("Near-A + bump\n(integral L, 120)",
-     [(0, 0), (120, 0), (120, 11.8), (84.8, 11.8), (84.8, 19.7),
+     [(0, 0), (120, 0), (120, 11.8), (102.9, 11.8), (102.9, 19.7),
       (23.0, 19.7), (23.0, 11.8), (0, 11.8)], "keep"),
     ("Far-A\n11.8 × 120", [(0, 19.7), (120, 19.7), (120, 31.5), (0, 31.5)], "keep"),
     ("offcut", [(0, 11.8), (23.0, 11.8), (23.0, 19.7), (0, 19.7)], "off"),
-    ("offcut", [(84.8, 11.8), (120, 11.8), (120, 19.7), (84.8, 19.7)], "off"),
+    ("offcut", [(102.9, 11.8), (120, 11.8), (120, 19.7), (102.9, 19.7)], "off"),
     ("waste 4.5 × 120", [(0, 31.5), (120, 31.5), (120, 36), (0, 36)], "waste"),
 ]
 PANEL_B = [

@@ -295,6 +295,21 @@ def sheet1():
            color=C_OUT, fs=6,
            ha="center", va="center", arrow_style="-|>", font=FONT)
 
+    # \u2500\u2500 Sheet seams (molded GRP max 3'\u00d710' = 3048mm/panel) \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+    # The near & far runs are longer than one sheet, so each is spliced at ONE seam,
+    # drawn in dashed RED to distinguish it from the black corner butt joints. The
+    # seam is placed past the bump-out shoulder (WXR) so the widening is never a joint.
+    GRP_MAX_LEN = 3048
+    seam_x = LXR + GRP_MAX_LEN
+    if near_len > GRP_MAX_LEN:
+        for (y0, y1) in [(NY, NYI), (FY, FYO)]:
+            ax.plot([seam_x, seam_x], [y0, y1], color="#B00020", lw=1.4,
+                    ls=(0, (4, 2)), zorder=8)
+        leader(ax, seam_x, NYI + 20, seam_x + 260, NYI + 360,
+               f"SHEET SEAM AT X={int(seam_x)}\n(near/far spliced here \u2014 GRP\nmax 3'\u00d710'; clear of the\nbump-out shoulder at X={int(WXR)})",
+               color="#B00020", fs=5.5, ha="center", va="center",
+               arrow_style="-|>", font=FONT)
+
     # Label right walkway cantilever detail
     hanger_lbl_x = RX + W / 2
     leader(ax, hanger_lbl_x + 120, W / 2 + 90,
@@ -487,7 +502,7 @@ def sheet1():
         f"   grating for telescoping pole passage. See Spray Bar Assembly drawings.",
         f"9. EVAP COOLER TRANSPORT: stow on near walkway (X={EVAP_STOW_X}–{EVAP_STOW_X + EVAP_W}mm),",
         f"   ply base plate on grating, 2× ratchet straps to wall brackets. ~20 kg dry.",
-        f"10. WIDENED BRACKETS (2): {WALKWAY_WIDE_BRACKET_T}mm plate, {WALKWAY_WIDE_BRACKET_H}mm vert leg, 4× M12 rectangular",
+        f"10. WIDENED BRACKETS ({len(_wide_brkt)}): {WALKWAY_WIDE_BRACKET_T}mm plate, {WALKWAY_WIDE_BRACKET_H}mm vert leg, 4× M12 rectangular",
         f"    pattern. 500mm arm reach for EP + battery access. See Sheet 2 View C.",
         f"11. LOWERED DECK: deck top at Z={WALKWAY_H}mm; {WALKWAY_GRATE_T}mm grate bottom at Z=65, bracket arm",
         f"    clears the {PROC_TRAY_RIM}mm tray rim by 5mm. Film-plane frame bottom at Z=100mm gives {100 - WALKWAY_H}mm clearance.",

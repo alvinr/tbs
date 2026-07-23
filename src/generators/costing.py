@@ -142,10 +142,10 @@ def point(label: str, cost: int, note: str = "") -> LineItem:
 WALKWAY = [
     LineItem("Molded GRP grating (American Grating cut-to-size)", 835, 945, 1060, "2026-07-23: PRIMARY American Grating public list ~$830 (2×3'×10' @ $415) + freight/cut band to $1,050; McNichols $1,700.51 held as secondary ceiling. +$5/$10 walkway reconcile rounding"),
     LineItem("GRP grating edge-seal kit (Fibergrate)", 40, 50, 60, "field-seal molded FRP cut edges (epoxy, not snap-trim)"),
-    LineItem("Standard wall brackets, 8mm steel plate (×14)", 112, 143, 175, "Near/far walls; 150mm vert × 300mm arm"),
-    LineItem("Widened wall brackets, 10mm steel plate (×4)", 72, 90, 112, "EP/battery/slit zone; 200mm vert × 500mm arm"),
-    LineItem("Reinforcing plates, std 100×180×6mm (×14) + wide 120×220×6mm (×4)", 47, 60, 73, "Welded to wall exterior behind each bracket"),
-    LineItem("M12×65 partial-thread bolts + nuts + washers (×58)", 137, 137, 137, "91280A728 $1.595 + plain nut 90591A181 $0.256 + 4 flat 91166A290 + split 91202A246 /bolt; 3 per std bracket (42) + 4 per widened (16)"),
+    LineItem("Standard wall brackets, 8mm steel plate (×13)", 112, 143, 175, "Near/far walls; 150mm vert × 300mm arm"),
+    LineItem("Widened wall brackets, 10mm steel plate (×5)", 84, 102, 134, "EP/battery/slit zone; 200mm vert × 500mm arm (bump extended a 2nd rib toward IBC, X1055–3083 = 5 bays)"),
+    LineItem("Reinforcing plates, std 100×180×6mm (×13) + wide 120×220×6mm (×5)", 47, 60, 73, "Welded to wall exterior behind each bracket"),
+    LineItem("M12×65 partial-thread bolts + nuts + washers (×59)", 137, 137, 137, "91280A728 $1.595 + plain nut 90591A181 $0.256 + 4 flat 91166A290 + split 91202A246 /bolt; 3 per std bracket (39) + 4 per widened (20)"),
     LineItem("Transition bearing plates, 40×500×5mm flat bar (×2)", 5, 8, 10, "Welded to arm top at width transitions"),
     LineItem("Right walkway cantilever frame, 40×40×3mm SHS (8m)", 28, 34, 40, "rev12: closed rectangle + 2× 405mm center arms"),
     LineItem("Right walkway wall cleats, 8mm steel (×2)", 20, 28, 35, "Left corners — through-bolted to the wall"),
@@ -155,7 +155,7 @@ WALKWAY = [
     LineItem("Drum-exit punch-out — extra GRP grating (~0.23 m²)", 50, 57, 65, "600mm-deep landing at the light-lock exit"),
     LineItem("Left floor-leg cantilever brackets (×5)", 55, 75, 95, "50×50×3 SHS posts + 40×40×3 arms + foot plates"),
     LineItem("Floor screws — #14×2″ HWH 410 SS self-drilling (×20)", 7, 9, 11, "2026-07-22: wedge anchors → structural self-drillers (ply-over-steel container floor); Bridge Fasteners ~$0.35–0.55 ea"),
-    LineItem("Fabrication (brackets, cantilever frame, install)", 424, 590, 750, "14 std + 4 widened brackets, right cantilever frame, 5 left floor-leg brackets, install; bracket scope matches the walkway-report §10 all-in figures; trimmed −$30/−$58 to reconcile with the parts registry after the M12 bolts firmed to real flat prices"),
+    LineItem("Fabrication (brackets, cantilever frame, install)", 424, 590, 750, "13 std + 5 widened brackets, right cantilever frame, 5 left floor-leg brackets, install; bracket scope matches the walkway-report §10 all-in figures; trimmed −$30/−$58 to reconcile with the parts registry after the M12 bolts firmed to real flat prices"),
 ]
 
 
@@ -1019,8 +1019,8 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (27219, 32217, 39093),  # 2026-07-23: walkway grating → American Grating primary (~$830, −$870 low). Per-change history in git log.
-    "walkway": (1967, 2383, 2803),  # 2026-07-23: grating supplier → American Grating primary (~$830 list); McNichols $1,700.51 secondary
+    "grand_total": (27231, 32229, 39115),  # 2026-07-23b: bump-out extended a 2nd rib toward the IBC (bracket reclassify). Per-change history in git log.
+    "walkway": (1979, 2395, 2825),  # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
     "water": (5738, 6810, 7878),  # 2026-07-23: both corridor ply parts firm 23/32" RTD $29.30 (Home Depot)
     "container": (2300, 3300, 4300),
     "lightlock": (2032, 2268, 2506),   # 2026-07-22: Ø900 housing (46685 3/16" HDPE ×3 = $555) + Ø864 drum firmed to 1/8" black HDPE ×3 = $370 (was $150–240 est).  §6 = hinged-panel §8.2 (housing + drum) line items

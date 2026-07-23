@@ -533,7 +533,7 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each {{ |pg| model.pages.erase(pg) }}
 opts = model.options["UnitsOptions"]; opts["LengthUnit"]=2; opts["LengthFormat"]=0
-{ov.sketchfab_meta_ruby(SF_TITLE, SF_DESC, SF_ID, SF_TAGS)}
+{ov.sketchfab_meta_ruby(SF_TITLE, SF_DESC, SF_ID, SF_TAGS, force_name=True)}
 {tags_ruby}{body}
 # remove the FAR walkway deck AND its cantilever brackets (not wanted in this view)
 model.definitions.each {{ |d| d.entities.grep(Sketchup::Group).each {{ |g| g.erase! if g.valid? && g.name =~ /^Walkway Far/ }} }}

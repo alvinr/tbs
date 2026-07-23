@@ -387,7 +387,7 @@ def component(defn_name, tag, body):
 '''
 
 
-def sketchfab_meta_ruby(title, description, model_id, tags="tbs sketchup"):
+def sketchfab_meta_ruby(title, description, model_id, tags="tbs sketchup", force_name=False):
     """Ruby that stamps the Sketchfab upload metadata onto the active model so a
     `--send` regen carries its identity — the `sketchfab` attribute dict (title,
     description, tags, and the stable `model_id`) plus model.name/description.
@@ -395,15 +395,23 @@ def sketchfab_meta_ruby(title, description, model_id, tags="tbs sketchup"):
     Setting `model_id` is what makes the manual Sketchfab re-upload REUSE the same
     model (stable UID → the embedded iframe never has to change); without it a fresh
     doc uploads as a brand-new model and the name/description come up empty.
+
+    `force_name=True` sets model.name/description UNCONDITIONALLY (the generator is the
+    source of truth for the model's identity). Use it for models whose on-disk .skp keeps
+    coming back with a blank/filename name so fill-if-blank never re-stamps it (water.skp).
+    The sketchfab attribute dict below stays fill-if-blank regardless, so the stable
+    model_id and any Sketchfab-UI edits to the dict are never clobbered.
     """
     import json
     t, d, mid, tg = (json.dumps(x) for x in (title, description, model_id, tags))
-    # NON-DESTRUCTIVE: fill each field ONLY if it's currently blank, so a regen / re-send (or even a
+    # NON-DESTRUCTIVE by default: fill each field ONLY if blank, so a regen / re-send (or even a
     # mis-directed send) NEVER overwrites metadata you've edited. A fresh blank doc still gets the full
     # identity + the stable model_id for the manual re-upload; an existing doc keeps whatever it has.
-    return ("# ── Sketchfab metadata — fill-only-if-blank; never overwrites existing values ──\n"
-            f"model.name = {t} if model.name.to_s.strip.empty?\n"
-            f"model.description = {d} if model.description.to_s.strip.empty?\n"
+    name_guard = "" if force_name else " if model.name.to_s.strip.empty?"
+    desc_guard = "" if force_name else " if model.description.to_s.strip.empty?"
+    return ("# ── Sketchfab metadata — sketchfab dict fill-only-if-blank; name/desc forced when requested ──\n"
+            f"model.name = {t}{name_guard}\n"
+            f"model.description = {d}{desc_guard}\n"
             f'model.set_attribute("sketchfab", "model_title", {t}) if model.get_attribute("sketchfab", "model_title").to_s.strip.empty?\n'
             f'model.set_attribute("sketchfab", "model_description", {d}) if model.get_attribute("sketchfab", "model_description").to_s.strip.empty?\n'
             f'model.set_attribute("sketchfab", "model_id", {mid}) if model.get_attribute("sketchfab", "model_id").to_s.strip.empty?\n'

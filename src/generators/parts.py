@@ -581,10 +581,10 @@ PARTS: list[Part] = [
          spec='¼" 304 SS plate, ~6"×8" L-bracket — the frame-corner ↔ U-joint mount. Carries the concentrated U-joint corner load in STEEL, not aluminum; stainless for the cyanotype splash zone + galvanic match to the 303 SS U-joint. NOT expendable (the perimeter angle stays expendable 6061).'),
     # — Film Plane Frame (1,046) —
     Part("alu-angle-2x2", 'Aluminum angle 2"×2"×3/16" (6061-T6, anodized)', "aluminum",
-         "film", 10, "ea", 131.24, 131.24, "McMaster-Carr", "Metal Supermarkets", part_no="8982K509",
+         "film", 10, "ea", 116.31, 116.31, "Metal Supermarkets", "Online Metals",
          url="https://www.mcmaster.com/8982K509-8982K479/",
-         spec="6061-T6 angle (NOT 2024/7075 — those trade the corrosion resistance + weldability we NEED, for strength we don't; the ACM does the flatness). Clear-anodized, 8 ft lengths — the film-plane PERIMETER FRAME, EXPENDABLE (inspect-annually / replace-on-pitting). ⚠ McMaster 8982K509 is $131.24/8ft — a heavy premium on raw stock; the identical 6061 angle is materially cheaper by the length at a metal service center (Metal Supermarkets / Online Metals). Get a service-center quote to firm the real (lower) price — that's what preserves the cost saving vs 304 SS.",
-         note="304 SS swap evaluated 2026-07-16 (~$1,650–2,200, +32 kg) and rejected — expendable anodized-6061 per Alvin. 8982K509 = pinnable McMaster spec/SKU; actual buy should be a service center (cheaper by the length). Re-quote to firm."),
+         spec="6061-T6 angle (NOT 2024/7075 — those lose the corrosion resistance + weldability we need). Clear-anodized — the film-plane PERIMETER FRAME, EXPENDABLE (inspect-annually / replace-on-pitting). Metal Supermarkets $116.31/8ft (order by spec, 2×2×0.188); McMaster 8982K509 (url) is the catalog reference at $131.24/8ft. Confirm anodized-vs-bare on the quote. WELDS: the 4,499mm horizontal edges exceed an 8 ft (2,438mm) length → a mid-span splice weld unless bought in ≥14.8 ft stock (16 ft covers it); the 2,094mm vertical edges fit one 8 ft length weld-free. Corners welded/bolted regardless.",
+         note="304 SS swap evaluated 2026-07-16 (~$1,650–2,200, +32 kg) and rejected — expendable anodized-6061 per Alvin. Metal Supermarkets $116.31/8ft. Consider 16 ft lengths for the 2 horizontals to drop the mid-span welds."),
     Part("dibond-acm-film", "Dibond ACM panel 4mm (black), 4×8 sheet", "plastics-sheet",
          "film", 4, "sheet", 95, 95, "Curbell Plastics", "Central Coast Plastics",
          url="https://www.curbellplastics.com/product-category/material/aluminum-composite-material-acm/dibond-panels/",

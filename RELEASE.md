@@ -24,6 +24,17 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Walkway grating supplier → American Grating (primary), McNichols held as secondary.** The molded
+  1″ vinyl-ester GRP is now priced to American Grating's public list (~$830 for 2× 3′×10′ @ $415),
+  banded to **$830–$1,050** to cover freight + edge cut pending a firm cut quote; McNichols' revised
+  8-sheet quote ($1,700.51) stays on the line as the firm secondary ceiling. Walkway section
+  **−$870 low** → grand total **$27,219 / $32,217 / $39,093**.
+
+- **Corridor pump-mount shirt ply firmed to 23/32″ (was ~1″ estimate).** Both corridor panel ply parts
+  now share one SKU — Home Depot RTD 23/32″ SYP sheathing at **$29.30** (#303564747). The 1″ spec was
+  nominal; 5× Shurflo 2088 pumps (~6.5 kg) need no more than 3/4″. May nest with the backing board in
+  one sheet at cut. Standard exterior grade per the plywood rule (was mis-spec'd marine ~$212).
+
 - **Light-lock plastics firmed to US Plastics stock — one weld-compatible HDPE, real pricing.**
   Priced all four light-lock/panel plastic parts to actual [US Plastics](https://www.usplastic.com/)
   sheet: the Ø900 housing to **3/16″ HDPE** ([46685](https://www.usplastic.com/catalog/item.aspx?itemid=136962&catid=705),

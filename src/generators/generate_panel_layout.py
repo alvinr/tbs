@@ -892,6 +892,36 @@ def draw_pinhole_panel():
                 doc_id="TBS-001 · Plumbing Panel",
                 height=0.05)
 
+    # ── MOUNTING DETAIL (side section) — how each Big Blue head fixes to the ply ──
+    #   Replaces the retired steel U-bracket: the head's own mounting ear lag-screws
+    #   through a 25mm HDPE standoff straight into the 18mm ply; the Ø184 sump hangs
+    #   below and clears the wall.
+    axd = fig.add_axes([0.775, 0.60, 0.20, 0.30])
+    axd.set_facecolor("white")
+    axd.set_xlim(-50, 160); axd.set_ylim(-165, 150); axd.set_aspect("equal"); axd.axis("off")
+    C_HDPE = "#7FBF8A"
+    axd.text(55, 138, "DETAIL — HOUSING MOUNT (section)", ha="center", va="bottom",
+             fontsize=7, color=C_DIM, fontweight="bold", **FONT)
+    axd.add_patch(mpatches.Rectangle((-18, -150), 18, 268, fc=C_PLY, ec=C_OUT, lw=1.3,
+                  hatch="////", zorder=3))                                             # 18mm ply
+    axd.text(-9, -142, "18mm\nply", ha="center", va="bottom", fontsize=5.5, color=C_PLY_EC, zorder=7, **FONT)
+    axd.add_patch(mpatches.Rectangle((0, 40), 25, 55, fc=C_HDPE, ec=C_OUT, lw=1.1, zorder=5))   # 25mm HDPE standoff
+    axd.add_patch(mpatches.Rectangle((25, 48), 9, 40, fc="#3A70B0", ec=C_OUT, lw=1.0, zorder=6)) # head mounting ear
+    axd.add_patch(mpatches.Rectangle((34, 40), 95, 60, fc="#3A70B0", ec=C_OUT, lw=1.0, alpha=0.85, zorder=6))  # head
+    axd.add_patch(mpatches.Rectangle((45, -150), 90, 190, fc=C_FILTER, ec=C_OUT, lw=1.2, alpha=0.5, zorder=4))  # Ø184 sump
+    axd.text(90, -55, "Ø184\nsump", ha="center", va="center", fontsize=6, color=C_OUT, zorder=7, **FONT)
+    axd.plot([-14, 34], [66, 66], color="#505058", lw=2.6, zorder=8, solid_capstyle="butt")     # lag/wood screw
+    axd.add_patch(mpatches.Rectangle((30, 62), 5, 8, fc="#505058", ec=C_OUT, lw=0.5, zorder=9))  # screw head
+    leader(axd, 14, 67, 52, 116, "SS lag screw into the ply\n(no bracket)",
+           color="#505058", fs=5.3, ha="left", va="top", arrow_style="-|>", font=FONT)
+    leader(axd, 12, 55, -36, 96, "25mm HDPE\nstandoff",
+           color="#2e7d32", fs=5.3, ha="right", va="bottom", arrow_style="-|>", font=FONT)
+    leader(axd, 30, 55, 74, 24, "head mounting ear",
+           color="#3A70B0", fs=5.3, ha="left", va="center", arrow_style="-|>", font=FONT)
+    axd.annotate("", xy=(45, -105), xytext=(0, -105), arrowprops=dict(arrowstyle="<|-|>", color=C_DIM, lw=0.9), zorder=8)
+    axd.text(22, -99, "sump hangs\nclear of the ply", ha="center", va="bottom", fontsize=5, color=C_DIM, zorder=8, **FONT)
+    axd.add_patch(mpatches.Rectangle((-50, -165), 210, 315, fc="none", ec=C_DIM, lw=1.2, zorder=2))
+
     os.makedirs(DIAGRAMS_DIR, exist_ok=True)
     out = os.path.join(DIAGRAMS_DIR, "pinhole-panel.png")
     fig.savefig(out, dpi=DIAGRAM_DPI, facecolor="white", edgecolor="none",

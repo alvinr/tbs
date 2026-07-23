@@ -206,7 +206,7 @@ def walkway_decks():
     # Left deck — removable lift-out (distinct color) + drum-exit punch-out.
     # Far corner carries the muslin-drop notch (grate-only) — reuse the overview helper.
     parts.append(ov._notch_grate("Walkway Left (removable)", WK_LEFT_X, GRATE_Z,
-                                 WK_W, t, C_REMOVABLE, k.WALKWAY_MUSLIN_NOTCH_L_X0))
+                                 WK_W, t, C_REMOVABLE, k.WALKWAY_MUSLIN_NOTCH_L_X0, k.WALKWAY_MUSLIN_NOTCH_L_X1))
     parts.append(ruby_box("Walkway Left punch-out", WK_LEFT_X + WK_W, WK_LEFT_WIDE_YL,
                           GRATE_Z, WK_LEFT_WIDE_W - WK_W, WK_LEFT_WIDE_YR - WK_LEFT_WIDE_YL,
                           t, color=C_REMOVABLE))

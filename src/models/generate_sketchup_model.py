@@ -38,7 +38,7 @@ import argparse
 import contextlib
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
-from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_W, FP_H, FP_Y, FP_Y_MIN, RAIL_X_L, RAIL_X_R, RAIL_OFF, RAIL_OFF_TOP, RAIL_OFF_BOT, FP_ANGLE_LEG, BRACE_RHS, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, PUMP_H_HI, EQPANEL_X, EQPANEL_T, EQPANEL_Z_HI, EQPANEL_YD, EQPANEL_YD_SPAN, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, IBC_FRAME_RHS, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_CAP_T, LT_OPENING_DEG, WALKWAY_MUSLIN_NOTCH_W, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, PULL_CORD_BOTTOM_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV02_X, BV02_Z, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z
+from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_W, FP_H, FP_Y, FP_Y_MIN, RAIL_X_L, RAIL_X_R, RAIL_OFF, RAIL_OFF_TOP, RAIL_OFF_BOT, FP_ANGLE_LEG, BRACE_RHS, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, PUMP_H_HI, EQPANEL_X, EQPANEL_T, EQPANEL_Z_HI, EQPANEL_YD, EQPANEL_YD_SPAN, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, IBC_FRAME_RHS, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_CAP_T, LT_OPENING_DEG, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_L_X1, WALKWAY_MUSLIN_NOTCH_R_X0, WALKWAY_MUSLIN_NOTCH_R_X1, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, PULL_CORD_BOTTOM_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV02_X, BV02_Z, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z
 
 # Material colors used only by the 3D model (not in tbs_constants).
 C_STEEL = "#B0B0B8"     # steel sections (rails, mount plate, brackets, rack)
@@ -340,6 +340,33 @@ def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False, m
             lines.append(f'  grp.entities.grep(Sketchup::Face).each '
                          f'{{ |f| f.material = mat; f.back_material = mat }}')
 
+    lines.append('')
+    return '\n'.join(lines)
+
+
+def ruby_prism(name, pts, z, h, color=None, alpha=None, mute=None):
+    """A vertical prism from an arbitrary polygon (list of (x, y) mm points) at height z,
+    pushpulled up by h. Same material handling as ruby_box. Used for NOTCHED grates so the deck
+    is ONE continuous piece (a bite cut out of one edge), not separate sections needing support."""
+    mute, alpha = _mute_ctx(mute, alpha)
+    z0, h_mm = mm(z), mm(h)
+    face_pts = ", ".join(f"[{mm(px)},{mm(py)},{z0}]" for px, py in pts)
+    lines = [
+        f'  # {name}',
+        f'  grp = ents.add_group',
+        f'  grp.name = "{name}"',
+        f'  face = grp.entities.add_face({face_pts})',
+        f'  face.reverse! if face.normal.z < 0',
+        f'  face.pushpull({h_mm})',
+    ]
+    if color:
+        color = mute_hex(color, mute)
+        r, g, b = hex_to_rgb(color)
+        mat_nm = shared_mat_name(name, color, alpha)
+        lines.append(f'  mat = model.materials["{mat_nm}"] || model.materials.add("{mat_nm}")')
+        lines.append(f'  mat.color = Sketchup::Color.new({r}, {g}, {b})')
+        lines.append(f'  mat.alpha = {alpha if alpha is not None else 1.0}')
+        lines.append(f'  grp.material = mat')
     lines.append('')
     return '\n'.join(lines)
 
@@ -671,18 +698,19 @@ def fp_combined_corner_plates():
     return '\n'.join(parts)
 
 
-def _notch_grate(name, x0, z, w, t, color, notch_x0):
-    """Full-width (Yd 0..C_WID) walkway grate with a MUSLIN-DROP NOTCH at its far corner —
-    WALKWAY_MUSLIN_NOTCH_W wide from notch_x0, WALKWAY_MUSLIN_NOTCH_D deep off the far wall.
-    Drawn as an L: main body (Yd 0..notch) + the far strip minus the notch. Grate-only."""
+def _notch_grate(name, gx0, z, gw, t, color, nx0, nx1):
+    """Full-width (Yd 0..C_WID) walkway grate with a MUSLIN-DROP notch bitten out of its INBOARD
+    (open-tray-facing) edge at the far end: X [nx0,nx1], Yd [WALKWAY_MUSLIN_NOTCH_YD0 .. +DY].
+    ONE continuous notched deck (a bite cut out of the inboard edge) — NOT split sections, so no
+    extra support/join is introduced. Grate-only."""
+    gx1 = gx0 + gw
     ny0 = WALKWAY_MUSLIN_NOTCH_YD0
-    nw = WALKWAY_MUSLIN_NOTCH_W
-    parts = [ruby_box(name, x0, 0, z, w, ny0, t, color=color)]
-    if notch_x0 > x0:            # notch at the strip's RIGHT end -> keep the LEFT part of the far strip
-        parts.append(ruby_box(name + " (far strip)", x0, ny0, z, notch_x0 - x0, C_WID - ny0, t, color=color))
-    else:                        # notch at the strip's LEFT end -> keep the RIGHT part
-        parts.append(ruby_box(name + " (far strip)", notch_x0 + nw, ny0, z, (x0 + w) - (notch_x0 + nw), C_WID - ny0, t, color=color))
-    return '\n'.join(parts)
+    ny1 = ny0 + WALKWAY_MUSLIN_NOTCH_DY
+    if nx1 >= gx1:   # notch bitten out of the RIGHT (inboard) edge, x=gx1, over Yd ny0..ny1
+        pts = [(gx0, 0), (gx1, 0), (gx1, ny0), (nx0, ny0), (nx0, ny1), (gx1, ny1), (gx1, C_WID), (gx0, C_WID)]
+    else:            # notch bitten out of the LEFT (inboard) edge, x=gx0
+        pts = [(gx0, 0), (gx1, 0), (gx1, C_WID), (gx0, C_WID), (gx0, ny1), (nx1, ny1), (nx1, ny0), (gx0, ny0)]
+    return ruby_prism(name, pts, z, t, color=color)
 
 
 def right_walkway_grate():
@@ -690,7 +718,7 @@ def right_walkway_grate():
     the Walkways tag — letting the walkway-model 'Right Cantilever' scene show the bare
     beams + brackets while the grate still reads with the other decks."""
     return _notch_grate("Right walkway grate (cantilevered)", RWK_X_L, RWK_GRATE_Z,
-                        WALKWAY_RIGHT_W, WALKWAY_GRATE_T, C_WALKWAY, WALKWAY_MUSLIN_NOTCH_R_X0)
+                        WALKWAY_RIGHT_W, WALKWAY_GRATE_T, C_WALKWAY, WALKWAY_MUSLIN_NOTCH_R_X0, WALKWAY_MUSLIN_NOTCH_R_X1)
 
 
 def right_walkway_cantilever(include_combined=True, include_grate=True):
@@ -781,12 +809,12 @@ def walkways(include_right=True, include_right_hangers=None):
         else:
             parts.append(_notch_grate("Walkway Right (IBC end)",
                                       WALKWAY_RIGHT_X, grate_z, WALKWAY_RIGHT_W, t,
-                                      C_WALKWAY, WALKWAY_MUSLIN_NOTCH_R_X0))
+                                      C_WALKWAY, WALKWAY_MUSLIN_NOTCH_R_X0, WALKWAY_MUSLIN_NOTCH_R_X1))
 
     # Left walkway — removable lift-out for transport (distinct color).
     parts.append(_notch_grate("Walkway Left (REMOVABLE — transport)",
                               WALKWAY_LEFT_X, grate_z, WALKWAY_W, t, C_REMOVABLE,
-                              WALKWAY_MUSLIN_NOTCH_L_X0))
+                              WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_L_X1))
     # Drum-exit punch-out — deepened landing in front of the revolving-door exit.
     parts.append(ruby_box("Walkway Left punch-out (drum exit)",
                           WALKWAY_LEFT_X + WALKWAY_W, WALKWAY_LEFT_WIDE_YD_L, grate_z,

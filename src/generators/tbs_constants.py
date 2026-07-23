@@ -835,15 +835,17 @@ WALKWAY_NEAR_WIDE_X_R = _CANT0 + 4 * CONTAINER_RIB_SPACING + WALKWAY_MAX_OVERHAN
 WALKWAY_WIDE_BRACKET_T = 10             # widened bracket plate thickness (mm) — heavier than std 8mm
 WALKWAY_WIDE_BRACKET_H = 200            # widened bracket vertical leg height (mm) — taller for 4-bolt pattern
 # ── Muslin-drop notches (rev 2026-07-23) ──
-# A grate notch cut into the FAR corner of the LEFT and RIGHT walkways, where the far walkway
-# butt-joins each, so the exposed muslin can be slid from the image plane (far wall) down into the
-# wash tray. GRATE-ONLY — brackets, beams, and the shared film-rail corner plate are untouched.
-WALKWAY_MUSLIN_NOTCH_W  = 150   # notch width in X (mm)
-WALKWAY_MUSLIN_NOTCH_D  = 100   # notch depth in Yd, measured in from the far wall (mm)
-_WK_LXR = WALKWAY_LEFT_X + WALKWAY_W                                               # 470 — left walkway / far walkway butt line
-WALKWAY_MUSLIN_NOTCH_L_X0 = _WK_LXR - WALKWAY_MUSLIN_NOTCH_W                        # 320 — left notch X start
-WALKWAY_MUSLIN_NOTCH_R_X0 = WALKWAY_RIGHT_X                                        # 4329 — right notch X start (right walkway inner edge)
-WALKWAY_MUSLIN_NOTCH_YD0  = C_WID - WALKWAY_MUSLIN_NOTCH_D                          # 2262 — notch Yd start (100mm off the far wall)
+# A grate notch bitten out of the INBOARD (open-tray-facing) edge of the LEFT and RIGHT walkways,
+# at the far end (near the image plane), so the exposed muslin can be slid off the image plane
+# (far wall) and dropped into the open wash tray. GRATE-ONLY — brackets, beams, and the shared
+# film-rail corner plate are untouched.
+WALKWAY_MUSLIN_NOTCH_DX = 100   # depth into the walkway from the tray-facing (inboard) edge (X, mm)
+WALKWAY_MUSLIN_NOTCH_DY = 150   # width along the tray-facing edge (Yd, mm)
+WALKWAY_MUSLIN_NOTCH_YD0 = WALKWAY_FAR_YD - WALKWAY_MUSLIN_NOTCH_DY                 # 1912 — notch Yd start (far end of the open zone, just inboard of the far walkway)
+WALKWAY_MUSLIN_NOTCH_L_X1 = WALKWAY_LEFT_X + WALKWAY_W                              # 470 — left walkway INBOARD (tray) edge
+WALKWAY_MUSLIN_NOTCH_L_X0 = WALKWAY_MUSLIN_NOTCH_L_X1 - WALKWAY_MUSLIN_NOTCH_DX     # 370 — left notch cut in from X470
+WALKWAY_MUSLIN_NOTCH_R_X0 = WALKWAY_RIGHT_X                                        # 4329 — right walkway INBOARD (tray) edge
+WALKWAY_MUSLIN_NOTCH_R_X1 = WALKWAY_MUSLIN_NOTCH_R_X0 + WALKWAY_MUSLIN_NOTCH_DX     # 4429 — right notch cut in from X4329
 # Open processing area (center, clear of walkways):
 PROC_OPEN_X_L  = WALKWAY_LEFT_X + WALKWAY_W   # = 470mm
 PROC_OPEN_X_R  = WALKWAY_RIGHT_X              # = 4329mm

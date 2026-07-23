@@ -15,6 +15,9 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 **Open DECISIONS (need Alvin):** _(none — batch clear)_
 
+**Open DESIGN items:**
+- [ ] **Right walkway muslin-notch — beam clash.** The muslin-drop notch on the right walkway (grate cut at X4329–4429, Yd1912–2062) is crossed by a cantilever-rectangle beam under it — the beam blocks the drop. Resolve later (notch/relieve the beam, or shift the notch off the beam line). Left walkway notch is clear.
+
 **Pending ACTIONS:**
 - [x] **GRP panels — DONE 2026-07-23:** firmed to **2× 36″×120″ @ $415 = $830** (min-sheet nest; cut plan + PNG in `grp-grating-quote.md` / `diagrams/grp-cutplan.png`). Get vendor quote against that.
 - [x] **Tray shims — DONE 2026-07-23:** plate route confirmed → `tray-hdpe-shim` = 1-1/4″ HDPE plate cut-to-size, $210–300 (taper-cut bundles with tray fab).

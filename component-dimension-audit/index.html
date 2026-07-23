@@ -2554,8 +2554,8 @@ Modeled dimensions are the <code>tbs_constants.py</code> value(s) the generators
 </tr>
 <tr>
 <td>2</td>
-<td>LiFePO4 battery, 100Ah 12V (Renogy Smart Lithium)</td>
-<td>330×172×214 — Renogy 12V 100Ah Smart Lithium</td>
+<td>LiFePO4 battery, 100Ah 12V (Renogy Core Series)</td>
+<td>260×169×211 — Renogy 12V 100Ah Core Series</td>
 <td><code>BA_W/BA_D/BA_H</code></td>
 <td>✅ FIXED</td>
 </tr>
@@ -2614,10 +2614,10 @@ is retained as the </em><em>as-found</em><em> audit record — the Problem/Actio
 discrepancy and the fix that was applied.</em></p>
 <h3 id="2-battery-renogy-12-v-100-ah-lifepo4-resolved-4">2. Battery — Renogy 12 V 100 Ah LiFePO4 ✅ RESOLVED (§4)<a class="headerlink" href="#2-battery-renogy-12-v-100-ah-lifepo4-resolved-4" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Real:</strong> 330 × 172 × 214 mm (L×W×H). <a href="https://www.renogy.com/12v-100ah-smart-lithium-iron-phosphate-battery/">Renogy product page</a> · spec via <a href="https://www.renogy.com/pages/12v-100ah-smart-lithium-iron-phosphate-battery-rbt100lfp12s-html">Renogy spec listing</a></li>
+<li><strong>Real:</strong> 260 × 169 × 211 mm (L×W×H), 10.5 kg, side busbar terminals. <a href="https://offgridstores.com/products/renogy-12v-100ah-core-series-deep-cycle-lithium-iron-phosphate-battery">Renogy Core Series (Off Grid Stores)</a> (RBT12100LFP-US; switched from the Smart Lithium 330×172×214 for the side busbar → simpler vertical stacking)</li>
 <li><strong>Modeled:</strong> <code>BA_X</code>=1810, <code>BA_W</code>=500, <code>BA_D</code>=120, <code>BA_H_LO</code>=150, <code>BA_H_HI</code>=650 → bank 500(X)×120(Yd)×500(Z); each of 2 packs ~240×120×500.</li>
 <li><strong>Problem:</strong> the modeled pack is <strong>500 mm tall and only 120 mm deep</strong>; the real pack is <strong>214 mm tall and 172 mm deep</strong>. Two packs side-by-side along X are 2×330 = <strong>660 mm</strong> (vs modeled 500), or stacked are 428 mm tall (vs 500). The battery-bank footprint on the pinhole wall and its clearances (electrical panel above, cable runs) are all drawn against the wrong box.</li>
-<li><strong>Action:</strong> set <code>BA_*</code> to two real 330×172×214 packs (decide side-by-side vs stacked), re-render electrical/floorplan/assembly + the film-plane near-wall ghost, re-check EP-above-battery clearance.</li>
+<li><strong>Action:</strong> set <code>BA_*</code> to two real 260×169×211 packs (decide side-by-side vs stacked), re-render electrical/floorplan/assembly + the film-plane near-wall ghost, re-check EP-above-battery clearance.</li>
 </ul>
 <h3 id="3-pump-shurflo-2088-554-144-resolved-4">3. Pump — Shurflo 2088-554-144 ✅ RESOLVED (§4)<a class="headerlink" href="#3-pump-shurflo-2088-554-144-resolved-4" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2752,10 +2752,10 @@ listed for completeness; confirm the drawn size equals the catalog dimension:</p
 </tr>
 <tr>
 <td><strong>Battery</strong></td>
-<td>resize to real pack, <strong>side-by-side</strong></td>
-<td>2× 330×172×214</td>
-<td><code>BA_D</code>172/<code>BA_H_HI</code>364/<code>BA_W</code>680/<code>BA_X</code>1540</td>
-<td>dims added</td>
+<td>Core pack, <strong>stacked</strong></td>
+<td>1× 260×169×211 (+ opt. 2nd stacked)</td>
+<td><code>BA_D</code>169/<code>BA_H_HI</code>371/<code>BA_W</code>260/<code>BA_X</code>1829</td>
+<td>dims updated</td>
 <td>✅ done (line-of-sight passes)</td>
 </tr>
 <tr>

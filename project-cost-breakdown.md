@@ -22,14 +22,14 @@
 | **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)** | $2,942 | $2,958 | $2,973 |
 | **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $757 | $817 | $907 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $2,032 | $2,268 | $2,506 |
-| **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,742 | $2,353 | $2,963 |
+| **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $1,967 | $2,276 | $2,583 |
 | **6b. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)** | $1,180 | $1,395 | $1,610 |
 | **6c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle)** | $1,550 | $1,713 | $1,876 |
 | **6d. Chemistry prep shelf (fold-down phenolic board + steel frame + hinge/stays + TAP-01 trunk extension)** | $214 | $227 | $239 |
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,100 | $1,490 | $2,650 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licenses & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$26,479** | **$31,926** | **$39,243** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$26,704** | **$31,849** | **$38,863** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware AmFe** chemistry + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,120), Mid = Standard ½-Ware ($1,520), High = Rich full-Ware ($2,700)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
@@ -332,7 +332,7 @@ Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted
 <!-- BEGIN costing:walkway -->
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
-| Molded GRP grating panels, 1" (vinyl-ester, grit) | $610 | $915 | $1,220 | 2026-07-23: ~47 ft² = 1–2× 4'×12' @ $605 (American Grating public / McNichols quote); qty pending quote (near/far 4,159mm run > 12ft → 1 panel splices, 2 splice-free). +$5/$10 absorbs a pre-existing walkway reconcile rounding |
+| Molded GRP grating panels, 1" (vinyl-ester, grit) | $835 | $838 | $840 | 2026-07-23: firmed to 2× 3'×10' (36×120) @ $415 = $830 (American Grating) — min sheets to nest the ~47 ft²; +$5/$10 absorbs a pre-existing walkway reconcile rounding |
 | GRP grating edge-seal kit (Fibergrate) | $40 | $50 | $60 | field-seal molded FRP cut edges (epoxy, not snap-trim) |
 | Standard wall brackets, 8mm steel plate (×14) | $112 | $143 | $175 | Near/far walls; 150mm vert × 300mm arm |
 | Widened wall brackets, 10mm steel plate (×4) | $72 | $90 | $112 | EP/battery/slit zone; 200mm vert × 500mm arm |
@@ -348,7 +348,7 @@ Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted
 | Left floor-leg cantilever brackets (×5) | $55 | $75 | $95 | 50×50×3 SHS posts + 40×40×3 arms + foot plates |
 | Floor screws — #14×2″ HWH 410 SS self-drilling (×20) | $7 | $9 | $11 | 2026-07-22: wedge anchors → structural self-drillers (ply-over-steel container floor); Bridge Fasteners ~$0.35–0.55 ea |
 | Fabrication (brackets, cantilever frame, install) | $424 | $590 | $750 | 14 std + 4 widened brackets, right cantilever frame, 5 left floor-leg brackets, install; bracket scope matches the walkway-report §10 all-in figures; trimmed −$30/−$58 to reconcile with the parts registry after the M12 bolts firmed to real flat prices |
-| **Perimeter walkway total** | **$1,742** | **$2,353** | **$2,963** | |
+| **Perimeter walkway total** | **$1,967** | **$2,276** | **$2,583** | |
 <!-- END costing:walkway -->
 
 ---
@@ -557,14 +557,14 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $2,942 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $757 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $2,032 |
-| Perimeter walkway (4 sections, removable, GRP grating) | $1,742 |
+| Perimeter walkway (4 sections, removable, GRP grating) | $1,967 |
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,180 |
 | Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,550 |
 | Chemistry prep shelf (fold-down board + tap trunk extension) | $214 |
 | Cyanotype chemistry + substrate (50 prints) | $1,100 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$25,909** |
+| **Scenario A total** | **~$26,134** |
 <!-- END costing:scenario-a -->
 
 ### Scenario B — Recommended build, regional deployment
@@ -580,7 +580,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $2,958 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $817 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $2,268 |
-| Perimeter walkway (4 sections, removable, GRP grating) | $2,353 |
+| Perimeter walkway (4 sections, removable, GRP grating) | $2,276 |
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,395 |
 | Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,713 |
 | Chemistry prep shelf (fold-down board + tap trunk extension) | $227 |
@@ -588,7 +588,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1,200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$32,236** |
+| **Scenario B total (excl. CDL)** | **~$32,159** |
 <!-- END costing:scenario-b -->
 
 ### Scenario C — Full production, own transport, CDL
@@ -596,11 +596,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:scenario-c -->
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $31,336 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $31,259 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$120,836–$150,836** |
+| **Scenario C total** | **~$120,759–$150,759** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

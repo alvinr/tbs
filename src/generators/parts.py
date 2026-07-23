@@ -757,9 +757,9 @@ PARTS: list[Part] = [
 
     # ═══ walkway (§10) — re-decomposed to match the report (fab bundled into each bracket, no
     # separate fab line) → $2,005–$2,985 (reconciles to EXPECTED walkway $2,000–$2,975 within tol) ═══
-    Part("walkway-grp-panel", "Molded GRP (fiberglass) grating panels", "plastics-sheet",
-         "walkway", 1, "lot", 605, 1210, "McNichols", "American Grating",
-         spec="1\" (25mm) MS-S-100, 1½×1½ square mesh, vinyl-ester, grit top, 2.60 lb/sf; ~47 ft² (4 sections + wide-zone landings). 4'×12' panel = $605 (American Grating public / McNichols quote-only). QTY 1–2 panels PENDING QUOTE — 1 forces near/far splices (4,159mm run > 12ft panel), 2 gives splice-free runs. See grp-grating-quote.md."),
+    Part("walkway-grp-panel", "Molded GRP grating panels, 3'×10' (36×120)", "plastics-sheet",
+         "walkway", 2, "panel", 415, 415, "American Grating", "McNichols",
+         spec="1\" MS-S-100, 1½×1½ square mesh, vinyl-ester, grit, 2.60 lb/sf. 2× 3'×10' (36\"×120\") = MIN sheets to yield the ~47 ft² of walkway pieces (near/far each splice 120\"+43.7\"); $415/panel (American Grating public / McNichols quote). 2× 36×120 ($830) beats 1× 48×144 + offcut and is the min-cost fit. Cut plan: grp-grating-quote.md."),
     Part("walkway-grp-sealant", "GRP grating edge-seal kit", "adhesives-finishes",
          "walkway", 1, "kit", 40, 60, "Fibergrate", spec="Fibergrate Sealing & Bonding Kit — molded FRP cut edges are field-SEALED (epoxy), not snap-trimmed; ½-pint kit seals ~20–40 linear ft of cut edge."),
     Part("walkway-drum-exit-grp", "Drum-exit punch-out grating", "plastics-sheet",

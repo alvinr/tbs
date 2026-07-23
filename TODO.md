@@ -14,11 +14,10 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 ## ⚡ Parts firm-up tracker (active) — decisions + actions
 
 **Open DECISIONS (need Alvin):**
-- [ ] **GRP grating panels** — buy **1× 4′×12′ ($605, near/far splice)** or **2× ($1,210, splice-free)**? Quote pending — see `grp-grating-quote.md`.
 - [ ] **Tray slope shims** — confirm **plate route ~$250** (rip 5 strips from 1-1/4″ HDPE plate + taper-cut with tray fab) vs $1,656 bar route.
 
 **Pending ACTIONS:**
-- [ ] `walkway-grp-panel` — firm price once quote lands (currently est $605–1,210, qty pending).
+- [x] **GRP panels — DONE 2026-07-23:** firmed to **2× 36″×120″ @ $415 = $830** (min-sheet nest; cut plan in `grp-grating-quote.md`). Get the vendor quote (American Grating / McNichols) against that.
 - [ ] `tray-hdpe-shim` — apply plate route once confirmed (currently est).
 - [ ] **PARKED (fab quote):** `tray-ss-sheet` (304 SS tray, $360–500), + the fab-labor batch (`tray-fabrication` / `ll-fabrication` / `ibcf-fabrication`) — send drawing set out for shop quotes.
 - [ ] **Stale doc:** walkway-report §20/21/48 still says "15mm" grating — real product is **1″ MS-S-100** (weight model already fixed). De-stale in a prose pass.

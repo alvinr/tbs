@@ -17,26 +17,40 @@ Working doc (unpublished) to send a vendor for a molded-FRP grating quote. Not a
 | Open area | ~70% |
 | Reference SKU | McNichols **MS-S-100** (vinyl-ester = SVF/XVE) · American Grating equivalent |
 
-## Cut list (walkway sections) — inches
+## Pieces needed (inches)
 
-| # | Section | Width × Length (in) | ft² | Note |
-|---|---------|---------------------|-----|------|
-| 1 | Near walkway | 11.8″ × 163.7″ | 1.34 | **>144″ (12 ft) — splice or 2 pieces** |
-| 2 | Near-wide landing | 19.7″ × 43.9″ | 0.60 | EP/battery/slit zone bump-out |
-| 3 | Far walkway | 11.8″ × 163.7″ | 1.34 | **>144″ (12 ft) — splice or 2 pieces** |
-| 4 | Right walkway | 11.8″ × 93.0″ | 0.76 | |
-| 5 | Left walkway (removable) | 11.8″ × 93.0″ | 0.76 | lift-out |
-| 6 | Left-wide landing | 23.6″ × 29.9″ | 0.49 | |
-| 7 | Drum-exit landing | ~23.6″ deep, ~2.5 ft² | 2.5 | *separate line — `walkway-drum-exit-grp`* |
-| | **Total** | | **~47 ft²** (excl. drum-exit) | |
+Walkway = 11.8″ (300mm) wide base strips + two "landing" add-on strips where it widens.
 
-## Panels + supply
+| # | Piece | W × L (in) | ft² | Note |
+|---|-------|------------|-----|------|
+| 1 | Near walkway | 11.8 × 163.7 | 13.4 | **>144″ — must splice (120 + 43.7)** |
+| 2 | Far walkway | 11.8 × 163.7 | 13.4 | **>144″ — must splice (120 + 43.7)** |
+| 3 | Right walkway | 11.8 × 93.0 | 7.6 | |
+| 4 | Left walkway (removable) | 11.8 × 93.0 | 7.6 | lift-out |
+| 5 | Near-wide add | 7.9 × 43.9 | 2.4 | extra width, EP/battery/slit bump |
+| 6 | Left-wide add | 11.8 × 29.9 | 2.5 | extra width, left landing |
+| | **Total** | | **46.9** | excl. drum-exit |
 
-- Stock panel: **4′×12′ (48 ft²)** — American Grating **$605/panel** (public; McNichols quote-only).
-- **QTY DECISION:** 1 panel (tight; near/far runs splice, since 163.7″ > 144″ panel) **vs** 2 panels (splice-free long runs, some waste).
-- Ask vendor to **cut-to-size** per the list above (+ note any cut/notch fee).
+## Panels to order — **2× 36″×120″** ($415 ea = **$830**, min sheets)
+
+1× 48×144 can't do it (163.7″ runs splice anyway, and 47 ft² in 48 ft² = no cutting margin). 2× 36×120 nests with room to spare and is cheaper than 1×48×144 + a second panel.
+
+**Panel A (36×120)** — 3 strips @ 11.8″ × 120″:
+- Near-A `11.8 × 120`
+- Far-A `11.8 × 120`
+- Right `11.8 × 93` (27″ offcut)
+
+**Panel B (36×120)** — 3 strips @ 11.8″ × 120″:
+- Left `11.8 × 93` (27″ offcut)
+- Near-B `11.8 × 43.7` ┐ splice onto the -A halves → 163.7″
+- Far-B `11.8 × 43.7` ┘
+- Left-wide `11.8 × 29.9`
+- Near-wide `7.9 × 43.9`
+
+## Also
 - Edge treatment: **Fibergrate Sealing & Bonding Kit** (~$50) — molded FRP cut edges are field-sealed with epoxy, not snap-trimmed.
 - Hold-down: 30× SS grating clips (`walkway-holddown-clips`, separate).
+- Drum-exit landing (~2.5 ft²): separate line `walkway-drum-exit-grp` (won't nest in the ≤11.8″ offcuts).
 
 ## Vendors
 - **McNichols** — 877.891.7418 (quote-only, no public pricing)

@@ -177,7 +177,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | 316 flat-bar Z (tilt) + X (swing) cross-slides + UHMW pad + gib | One 2-axis cross-slide stack per corner — 316 flat-bar Z and X slides on UHMW pads with an adjustable gib, absorbing the across-rail rotation travel. UHMW $23–93/sheet; 316 flat bar cut to length. Firm at order (est.). | 4 set | Metal Supermarkets / McMaster-Carr | $180–$380 |
 | Cam-lever rail brake (skate lock) | Three per corner — a cam-lever brake locks the acetal skate to the U-channel after the corner is slid to depth (no leadscrews); holds for the exposure + transport. Firm SKU/price at order (est.). | 12 ea | McMaster-Carr / Amazon | $96–$180 |
 | Corner plate 304 SS (U-joint mount) | ¼" 304 SS plate, ~6"×8" L-bracket — the frame-corner ↔ U-joint mount. Carries the concentrated U-joint corner load in STEEL, not aluminum; stainless for the cyanotype splash zone + galvanic match to the 303 SS U-joint. NOT expendable (the perimeter angle stays expendable 6061). | 4 ea | Metal Supermarkets / Online Metals | $152–$208 |
-| [Aluminum angle 2"×2"×3/16" (6061-T6, anodized)](https://www.mcmaster.com/8982K509-8982K479/) | 6061-T6 angle (NOT 2024/7075 — those lose the corrosion resistance + weldability we need). Clear-anodized — the film-plane PERIMETER FRAME, EXPENDABLE (inspect-annually / replace-on-pitting). Metal Supermarkets $116.31/8ft (order by spec, 2×2×0.188); McMaster 8982K509 (url) is the catalog reference at $131.24/8ft. Confirm anodized-vs-bare on the quote. WELDS: the 4,499mm horizontal edges exceed an 8 ft (2,438mm) length → a mid-span splice weld unless bought in ≥14.8 ft stock (16 ft covers it); the 2,094mm vertical edges fit one 8 ft length weld-free. Corners welded/bolted regardless. | 10 ea | Metal Supermarkets / Online Metals | $1,163 |
+| [Aluminum angle 2"×2"×3/16" (6061-T6, plain) — 16 ft lengths](https://www.mcmaster.com/8982K509-8982K479/) | 6061-T6 angle (NOT 2024/7075 — corrosion + weldability). PLAIN mill finish (NOT anodized) — the film-plane PERIMETER FRAME, EXPENDABLE (inspect-annually / replace-on-pitting; bare 6061 pits sooner than anodized in the splash zone, so a shorter interval — anodizing is an option for longer life). WELD-FREE cut plan from 3× 16 ft (192") lengths: 2 lengths → the two horizontal edges (4,499mm each, one per length, 378mm offcut); 1 length → both vertical edges (2,094mm ×2 from one 16 ft). No mid-span splices — only the 4 corner joints are welded/bolted. Metal Supermarkets 192" @ $208.41 (cheaper per length than 8 ft @ $116.31 AND drops the welds). One frame — re-order to replace. McMaster 8982K509 (url) = catalog reference. | 3 16 ft length | Metal Supermarkets / Online Metals | $625 |
 | [Dibond ACM panel 4mm (black), 4×8 sheet](https://www.curbellplastics.com/product-category/material/aluminum-composite-material-acm/dibond-panels/) | 4× 48×96" black 4mm ACM sheets as full-height VERTICAL STRIPS (Option A) — 3 vertical butt seams, splice-battened behind; no horizontal seam (2094mm plane height fits one 2438mm sheet). Covers the <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->×<!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm rigid backing (4499 ÷ 1219 = 4 strips). $95/sheet firm; qty corrected 6→4. | 4 sheet | Curbell Plastics / Central Coast Plastics | $380 |
 | [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8694K88/) (8694K88) | 25 ft rolls — 2 (50 ft) cover the ~43 ft film-plane perimeter primary seal | 2 roll | McMaster-Carr / Grainger | $45 |
 | Rosco Duvetyne | 60" wide, 10 yd | 1 ea | B&H Photo / Rosco direct | $95 |
@@ -191,7 +191,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | M8×25mm knurled thumbscrew DIN 464 | ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare | 12 ea | Amazon / Maedler | $36 |
 | [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — right-rail end fixing (ICP-14)](https://www.mcmaster.com/91280A534/) (91280A534) | ICP-14: right depth-rail end flange → wall seat hold-down (does NOT cross the wall). Grip = 3/16" (4.76mm) 1262T21 channel base + 10mm seat ≈ 15mm → M8×25 (short → fully threaded). Pitch M8×1.25 coarse (matches the M8 plain nut). $18.51/pack of 50. ⚠ VALIDATE: 91280A534 is zinc — the film plane wets during development; a 316-SS M8×25 resists corrosion better. | 8 ea | McMaster-Carr | $3 |
 | [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | Plain hex nut — M8 right-rail fixing. Pitch M8×1.25 (coarse, baseline — confirm vs SKU PDF, must match the bolt). $7.53/pack of 100. | 8 ea | McMaster-Carr | $1 |
-| **Film total** | | | | **$6,480–$6,948** |
+| **Film total** | | | | **$5,942–$6,410** |
 <!-- END parts:film -->
 
 *The corner-mechanism hardware (U-channel depth rails, acetal skates, Z/X cross-slides, and the
@@ -216,7 +216,7 @@ Each of the **8 rail ends** anchors to the container — **6 of them** with a st
 
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
 
-**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$6,684<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
+**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$6,146<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
 *Excludes fasteners and fabrication labor.*
 
 ### Local SoCal Metal Sourcing
@@ -240,7 +240,7 @@ See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) f
 | Monthly | Inspect the acetal rollers and UHMW slide pads for wear or embedded grit |
 | Every 6 months | Check each U-joint for play and its nitrile boot for tears — replace the boot if split |
 | Every 6 months | Inspect Duvetyne blackout curtains for light leaks (pinholes, fraying) |
-| Annually | Inspect the anodized-6061 frame angle and corner L-brackets for pitting; replace on pitting (expendable) |
+| Annually | Inspect the plain-6061 frame angle and corner L-brackets for pitting; replace on pitting (expendable — bare 6061 pits sooner than anodized) |
 | Annually | Verify rail mounting bolts for torque at all four rail positions |
 | Before transport | Lock all four corners at matching depth; set all four cam clamps |
 

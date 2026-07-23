@@ -187,7 +187,7 @@ CONTAINER = [
 # §6 = hinged-panel-report.md §8.2 (housing + drum). Line items mirror that BOM.
 LIGHTLOCK = [
     LineItem("3/16\" UV-stab HDPE — Ø900 housing shell (3× 4×8 ft, ~65 ft²)", 555, 555, 555, "rolled + extrusion-welded; US Plastics 46685 @ $184.99/sheet"),
-    LineItem("4mm PP — Ø864 drum shell + top/bottom caps (~7 m²)", 150, 195, 240, "TAP / Curbell"),
+    LineItem("1/8\" PP — Ø864 drum shell + 2 caps (3× 4×8 ft)", 370, 370, 370, "US Plastics 1/8\" black PP @ $123.34/sheet"),
     LineItem("6215-2RS sealed bearing ×2 (Ø75×130×25, ABEC-1)", 121, 121, 121, "$60.59 ea firm, Bearings Direct; alt McMaster 6138K125 $394.88"),
     LineItem("75mm Ø × 150mm steel stub shafts (×2)", 30, 40, 50, "steel service center"),
     LineItem("Felt/brush wiper + 12mm neoprene (drum↔housing seal)", 40, 57, 75, "Frost King BP17A brush + 1/2\" neoprene by yard"),
@@ -218,13 +218,13 @@ SWINGPIVOT = [
 # no home, so the grand total undercounted the hinged panel by its full cost.
 PANEL = [
     LineItem("50×50×3mm RHS mild steel — frame perimeter + members (4× 6m)", 120, 140, 160, "Metal Supermarkets"),
-    LineItem("4mm black PP sheet — panel skins both faces (~12 m², ×4)", 260, 340, 420, "rev11; TAP / Curbell"),
+    LineItem("1/8\" PP — panel skins both faces (4× 4×8 ft)", 493, 493, 493, "US Plastics 1/8\" black PP @ $123.34/sheet"),
     LineItem("18mm exterior-grade plywood — Fan B mount band (0.5 sheet)", 30, 40, 50, "Home Depot"),
     LineItem("3mm aluminum plate — corner-zone core plates (×2)", 360, 410, 460, "Online Metals"),
     LineItem("20mm EPDM gasket — perimeter + housing-surround + cut seals (~21 m)", 24, 38, 52, "OKAYASU 3/4\"×1/8\"×65ft EPDM ×2 rolls (~$52/21m)"),
     LineItem("Aluminum U-channel — gasket + PP-skin retention (~40 m)", 120, 160, 200, "Online Metals"),
     LineItem("Southco C2-33 cam compression latch (×4)", 76, 90, 104, "Southco / McMaster"),
-    LineItem("4mm PP + EPDM lip — B2 punch-out bay (4-wall tube ~890mm)", 60, 90, 120, "rev11"),
+    LineItem("1/8\" PP — B2 punch-out bay (4-wall tube ~890mm, 2× 4×8 ft)", 247, 247, 247, "US Plastics @ $123.34/sheet; EPDM lip from perimeter roll"),
     LineItem("Flat-black paint (RAL 9005) — bay/weld touch-in", 10, 15, 20, "local"),
     LineItem("304 SS D-grab pull handle (~300mm) + 2× M8 + backing plate", 70, 80, 90, "matte-black, §4.3; chose 304 over 316 (~$186); interior/non-wet"),
 ]
@@ -1018,13 +1018,13 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (25882, 31506, 39001),  # 2026-07-22: Ø900 housing shell firmed to US Plastics 46685 (3× 3/16" HDPE sheets, +$275–375). Per-change history in git log.
+    "grand_total": (26522, 31991, 39331),  # 2026-07-22: light-lock + panel plastics firmed to US Plastics solid sheet (housing/drum/skins/bay, +$330–640 vs estimates). Per-change history in git log.
     "walkway": (2062, 2503, 2943),   # 2026-07-22: floor anchors → 410 SS self-drillers (−$18/−$34)   # 2026-07-21: M12 flat washer/split/plain-nut re-price +$27.  2026-07-21: M12 bracket/cleat bolts re-sized 80/cleat→65/70 (91280A728/732 partial, real flat) + 4 washers/bolt, fab line reconciled to parts −$30/−$58 → low +$53/high −$25.  §6a fab line matches walkway-report §10 ($742–$1,255 all-in)
     "water": (5419, 6675, 7924),  # updated 2026-07-22: parts-identity batch — spray-bar (jam nut/collar/self-tap/beam-clamp), tray silicone gasket, S60×6 adapter re-spec, M12×40 hanger bolt. Detail in git log.
     "container": (2300, 3300, 4300),
-    "lightlock": (1812, 2093, 2376),   # 2026-07-22: Ø900 housing shell firmed — US Plastics 46685 3/16" HDPE 3× 4×8 ft @ $184.99 = $555 (was $180–280 est).  §6 = hinged-panel §8.2 (housing + drum) line items
+    "lightlock": (2032, 2268, 2506),   # 2026-07-22: Ø900 housing (46685 3/16" HDPE ×3 = $555) + Ø864 drum firmed to 1/8" black PP ×3 = $370 (was $150–240 est).  §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (1180, 1395, 1610),   # 2026-07-22: journal bushings → igus iglide J JFM-9095-100 $130.53/ea (from GGB DU $211.25) −$162/pair.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame)   # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
-    "panel": (1130, 1403, 1676),       # 2026-07-22: EPDM gasket re-priced (OKAYASU rolls, −$60/−$74) + grab handle 316→304 (+$50/+$55).  §6c = hinged-panel §8.1 (panel structure)
+    "panel": (1550, 1713, 1876),       # 2026-07-22: PP skins (4× 1/8" @ $123.34 = $493, was $260–420) + B2 bay (2× = $247, was $60–120) firmed to US Plastics solid PP.  §6c = hinged-panel §8.1 (panel structure)
     "shelf": (214, 227, 239),          # 2026-07-22: piano hinge re-priced (Würth 32×600 satin SS, $22–35).  §6d = chemistry-prep-shelves §7
     "interior": (467, 578, 698),      # 2026-07-22: retired the Image-plane flat-backing ACM line (double-counted the film dibond-acm-film)
     "optics": (110, 185, 265),

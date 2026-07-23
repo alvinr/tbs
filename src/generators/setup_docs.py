@@ -176,6 +176,7 @@ DIAG_IMAGE_FILES = [
     "plate-drawing-sheet1.png",
     "plate-drawing-sheet2.png",
     "walkway-sheet1.png",
+    "grp-cutplan.png",
     "walkway-sheet2.png",
     "walkway-sheet3.png",
     "walkway-sheet4.png",

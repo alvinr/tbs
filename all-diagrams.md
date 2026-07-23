@@ -154,6 +154,8 @@
 
 ![TBS-001 Walkway — Sheet 1: Plan View](assets/walkway-sheet1.png)
 
+![GRP Walkway Grating — Cut Plan (2× 36×120 panels)](assets/grp-cutplan.png)
+
 ![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet2.png)
 
 ![TBS-001 Walkway — Sheet 3: Cantilever Support](assets/walkway-sheet3.png)

@@ -47,6 +47,8 @@ Walkway = 11.8″ (300mm) wide base strips + two "landing" add-on strips where i
 - Left-wide `11.8 × 29.9`
 - Near-wide `7.9 × 43.9`
 
+![GRP grating cut plan — 2× 36×120 panels](diagrams/grp-cutplan.png)
+
 ## Cut coordinates (each panel 36″ W × 120″ L)
 
 **Panel A** — rip at **11.8, 23.6, 35.4″**; crosscut strip 3 at **93″**:

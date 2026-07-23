@@ -195,18 +195,20 @@ def cone_right(y):
 # rev 8.1: drum, housing, and corner core plates switched from steel to 3mm
 # 5052-H32 ALUMINUM to roughly halve the panel+drum mass (~488 → ~286 kg).
 # Steel retained for the center RHS frame, seal lips, and bearing stub shafts.
-# rev 11: the panel SKINS switched from 18mm marine plywood to 4mm PP plastic
+# rev 11: the panel SKINS switched from 18mm marine plywood to HDPE plastic
 # sheet (same material as the drum/housing), set in U-channels on the frame faces.
 # The frame ENVELOPE is unchanged (40mm corner / 120mm center); only the skin
 # material + thickness change, dropping ~44 kg (see hinged-panel-report §2.4–2.5).
 # EXCEPTION: an 18mm plywood band stays on the Fan B corner (bottom up to
 # PANEL_FAN_BAND_Z) for rigid fan/duct mounting + screw retention.
-# Corner zones (Yd=0–653 and Yd=1709–2362): thin framed panel, 4mm PP skins.
+# Corner zones (Yd=0–653 and Yd=1709–2362): thin framed panel, HDPE skins.
 # Center zone (Yd=653–1709): full RHS frame housing the Ø900 light-trap housing.
-PANEL_CORNER_T    = 40    # corner zone ENVELOPE thickness (mm) — 4mm PP + 3mm Al core + 4mm PP on a 40mm frame
-PANEL_CENTER_T    = 120   # center zone ENVELOPE thickness (mm) — 4mm PP + 84mm RHS frame + 4mm PP
+# rev (2026-07-22): skin firmed to 1/8" (3.18mm) black HDPE — US Plastics 46684
+# (nearest imperial stock; all light-lock plastic now one weld-compatible material).
+PANEL_CORNER_T    = 40    # corner zone ENVELOPE thickness (mm) — HDPE skin + 3mm Al core + HDPE skin on a 40mm frame
+PANEL_CENTER_T    = 120   # center zone ENVELOPE thickness (mm) — HDPE skin + 84mm RHS frame + HDPE skin
 PANEL_STEP        = PANEL_CENTER_T - PANEL_CORNER_T  # = 80mm step depth
-PANEL_SKIN_T      = 4     # panel skin thickness (mm) — 4mm PP plastic sheet (rev11; was 18mm ply), U-channel set
+PANEL_SKIN_T      = 3.18  # panel skin thickness (mm) — 1/8" black HDPE (US Plastics 46684; rev11 was 18mm ply, nom 1/8″ HDPE), U-channel set
 PANEL_FAN_PLY_T   = 18    # plywood fan-mount band thickness (mm) — local to the Fan B corner only — reserved (spec; band drawn with a literal)
 PANEL_FAN_BAND_Z  = 1125  # ply band top Z (AFF) = FAN_B_H(600) + FAN_DIAM/2(75) + 450; literal — fan consts defined below
 PANEL_CORNER_YD_L = 653   # corner-to-center transition, near side (mm) [rev8: widened]
@@ -268,7 +270,7 @@ DRUM_H_LT  = 2250    # light-lock TOP Z (mm) — LIFTED +50 with the walkway (wa
 LT_HOUSING_R   = DRUM_R   # 450 — fixed housing radius
 LT_HOUSING_T   = 5        # housing wall (mm) [rev9 B2: 3mm Al → 5mm UV-HDPE plastic skin]
 LT_DRUM_OR     = 432      # rotating drum outer radius (Ø864) — 15mm running gap
-LT_DRUM_T      = 4        # drum wall (mm) [rev9 B2: 3mm Al → 4mm PP plastic skin]
+LT_DRUM_T      = 3.18     # drum wall (mm) [rev9 B2: 3mm Al → 1/8″ HDPE; 2026-07-22: 1/8" HDPE, US Plastics 46684 — weld-compatible with the 3/16" HDPE housing]
 LT_OPENING_DEG = 80       # each opening arc, degrees (<90° for light-tightness)
 
 # ── B2 punch-out bay (rev9) — the hinge-panel center zone protrudes forward,
@@ -276,7 +278,7 @@ LT_OPENING_DEG = 80       # each opening arc, degrees (<90° for light-tightness
 # See docs/superpowers/specs/2026-06-05-lighttrap-punchout-bay-design.md.
 BAY_FRONT_X = DRUM_CX - DRUM_R - 40   # -890 — bay outer (exterior) face
 BAY_BACK_X  = 0                        # bay meets the panel side-zone door plane
-BAY_WALL_T  = 6                        # bay box wall thickness (mm)
+BAY_WALL_T  = 3.18                     # bay box wall thickness (mm) — 1/8" HDPE, US Plastics 46684 (2026-07-22; was 6mm nom); 4-wall corner-welded box + EPDM lip gives the rigidity, not the skin gauge
 
 # ── Film-plane demountable brace cage (rev: rigidity + drum + walkway) ────────
 BRACE_RHS   = 50                     # brace member section 50×50×3mm RHS (mm)
@@ -971,7 +973,7 @@ C_PUMP         = "#E8884A"   # pump manifold
 C_WALL         = "#B0B0B8"   # container walls / structural steel
 C_HINGE_PANEL  = "#C8C8C0"   # hinge panel body (generic / schematic block)
 C_WOOD         = "#C9A36B"   # plywood — fan-mount band + equipment panel (rev11 material legend)
-C_PLASTIC      = "#6E8CA0"   # 4mm PP panel skins + B2 bay (rev11; differentiates plastic from wood)
+C_PLASTIC      = "#6E8CA0"   # 1/8″ HDPE panel skins + B2 bay (rev11; differentiates plastic from wood)
 C_FILM         = "#2060A0"   # film plane / muslin
 C_PINHOLE_EQ   = "#CC6600"   # pinhole aperture
 C_FAN          = "#A0A0A8"   # fans (A and B)

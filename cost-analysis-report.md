@@ -49,7 +49,7 @@ Capital systems ranked by mid cost:
 | **Power & electrical** | $2,873 | 10% | Battery + solar + distribution + protection |
 | **Perimeter walkway** | $2,503 | 9% | GRP grating + steel cantilevers |
 | **Light lock** | $2,268 | 8% | Plastic-skin custom fabrication |
-| **Hinged panel structure** | $1,713 | 6% | Stepped frame + PP skins + Al core + EPDM + latches + B2 bay |
+| **Hinged panel structure** | $1,713 | 6% | Stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay |
 | **Swing pivot** | $1,395 | 5% | Pivot post + bearings + cage + fixed RHS door frame |
 | **Ventilation & cooling** | $817 | 3% | Fans + cooler + inverter + baffle-duct fab + canopy |
 | **Interior conversion** | $578 | 2% | Insulation, sealing, safelight |

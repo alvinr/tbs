@@ -49,9 +49,9 @@ while keeping the corners flush with the container walls.
 
 | Zone | Width (mm) | Thickness (mm) | Construction |
 |------|--------------|-----------|---------------|-------------|
-| Near corner | 653 | 40 | 4mm PP skin + 3mm Al core + 4mm PP skin (40mm framed); **18mm-ply Fan-B mount band** bottom→1,125mm |
-| Center | 1,056 | 120 | 4mm PP skin + 84mm RHS frame + 4mm PP skin |
-| Far corner | 653 | 40 | 4mm PP skin + 3mm Al core + 4mm PP skin (40mm framed) |
+| Near corner | 653 | 40 | 1/8" HDPE skin + 3mm Al core + 1/8" HDPE skin (40mm framed); **18mm-ply Fan-B mount band** bottom→1,125mm |
+| Center | 1,056 | 120 | 1/8" HDPE skin + 84mm RHS frame + 1/8" HDPE skin |
+| Far corner | 653 | 40 | 1/8" HDPE skin + 3mm Al core + 1/8" HDPE skin (40mm framed) |
 
 The 80mm step between corner and center zones to locate the
 light-trap housing; the corner zones are
@@ -63,10 +63,10 @@ flush-faced panels that seal against the fixed door frame.
 |-----------|-------|
 | Frame material | 50 × 50 × 3mm RHS mild steel |
 | Outer dimensions | <!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm --> × <!-- BEGIN fact:container_height_mm -->2,388<!-- END fact:container_height_mm -->mm |
-| Skin (each face) | **4mm PP plastic sheet** (rev11; same material as the drum/housing), set in U-channels — black-pigmented, light-tight, moisture/chemical-proof. **Exception:** an 18mm exterior-grade plywood band on the Fan B corner (bottom up to 1,125mm) for rigid fan/duct mounting + screw retention |
-| Interior finish | Black-pigmented sheet (PP) + flat-black touch-in — optically dead at visible wavelengths |
+| Skin (each face) | **1/8" HDPE plastic sheet** (rev11; same material as the drum/housing), set in U-channels — black-pigmented, light-tight, moisture/chemical-proof. **Exception:** an 18mm exterior-grade plywood band on the Fan B corner (bottom up to 1,125mm) for rigid fan/duct mounting + screw retention |
+| Interior finish | Black-pigmented sheet (HDPE) + flat-black touch-in — optically dead at visible wavelengths |
 | Frame perimeter | Welded corners, mitered joints |
-| Panel weight (full panel: skins + Ø900 housing + B2 bay, excl. drum) | ~171 kg (first-principles: 125 kg framed skins + 22 kg housing + 25 kg B2 bay). The 4mm-PP-skin swap cut ~72 kg vs the 18mm-ply build. See §2.4–2.5 for the movable breakdown + trade study |
+| Panel weight (full panel: skins + Ø900 housing + B2 bay, excl. drum) | ~161 kg (first-principles: 119 kg framed skins + 22 kg housing + 21 kg B2 bay). The 1/8"-HDPE-skin swap cut ~82 kg vs the 18mm-ply build. See §2.4–2.5 for the movable breakdown + trade study |
 
 ### 2.3 Perimeter Seals
 
@@ -98,23 +98,24 @@ is slightly lower than the whole-panel figure carried in the
 | Group | Component | Construction | kg |
 |-------|-----------|-------------|---:|
 | **A · Skins + frame** | Fan B mount band | 18mm ply, 0.47m × 0.99m, 2 faces | 10.2 |
-| | PP corner skins | 4mm PP (near above band + far) | 14.8 |
+| | HDPE corner skins | 1/8" HDPE (near above band + far) | 12.3 |
 | | Corner Al core plates | 3mm 5052 | 20.3 |
 | | Center RHS frame | 50×50×3 steel SHS, 11.1m | 49.2 |
-| | PP center skins | 4mm PP, Ø900 aperture deducted | 13.7 |
-| | **A subtotal** | | **108.1** |
-| **B · Housing** | HDPE shell + steel flange/hub | Ø900×5mm, two 80° openings | 21.8 |
-| **C · Drum** | PP C-shell + caps + Ø75 shafts + 2× SKF 6215 + stiffeners + grab rail | Ø864×4mm | 37.8 |
-| **D · Bay** | B2 punch-out bay walls | 4mm PP, 4-wall tube 0.89m deep | 24.9 |
+| | HDPE center skins | 1/8" HDPE, Ø900 aperture deducted | 11.4 |
+| | **A subtotal** | | **103.4** |
+| **B · Housing** | HDPE shell + steel flange/hub | Ø900×3/16", two 80° openings | 21.8 |
+| **C · Drum** | HDPE C-shell + caps + Ø75 shafts + 2× SKF 6215 + stiffeners + grab rail | Ø864×1/8" | 34.6 |
+| **D · Bay** | B2 punch-out bay walls | 1/8" HDPE, 4-wall tube 0.89m deep | 20.8 |
 | **E · Cage** | Drum support cage frame | ~25×25×3 angle, 16.1m box | 16.1 |
 | **F · Seals** | Vertical perimeter + housing EPDM + top/bottom strip brush + drum wipers | 20mm foam + strip/felt brush | 2.7 |
 | **G · Latches** | Cam latches (4) | ~0.5 kg each | 2.0 |
 | **H · Pivot (rotating)** | Thrust/journal bearings + collar/hub | carries leaf at pivot | 13.0 |
-| | **MOVABLE TOTAL (carried-rotating)** | | **≈226** |
+| | **MOVABLE TOTAL (carried-rotating)** | | **≈214** |
 | | *+ transport-only locks (stays + 4 saddles)* | engaged only when swung | +10 |
 
-**By material:** steel 103 kg (46%), PP 74 kg (33%), aluminum 20 kg (9%),
-HDPE 16 kg (7%), plywood 10 kg (4%, Fan B band only), EPDM/other 3 kg.
+**By material:** steel 103 kg (48%), HDPE 78 kg (36%), aluminum 20 kg (9%),
+plywood 10 kg (5%, Fan B band only), EPDM/other 3 kg. (All light-lock plastic —
+skins, drum, bay, housing — is now one weld-compatible HDPE.)
 
 **Findings.** The largest remaining single item is the **steel center
 RHS frame (49 kg)** — the structural spine carrying the drum — which is the only
@@ -126,14 +127,15 @@ container payload.
 
 ### 2.5 Weight-Reduction
 
-Black-pigmented PP
+Black-pigmented HDPE
 is light-tight (proven on the drum), moisture- and chemical-proof in the wet darkroom,
 and floats in its channel to absorb its higher thermal expansion. A tighter stiffener-
-channel grid (~400–450mm centers) keeps the floppier 4mm sheet flat at the EPDM seal
+channel grid (~400–450mm centers) keeps the floppier 1/8" sheet flat at the EPDM seal
 line. **One exception:** the Fan B corner keeps an **18mm plywood band** (bottom up to
-1,125mm) for rigid fan/duct mounting + screw retention. Net: **~72 kg off** the panel
-(243 → 171 kg), at roughly comparable material cost (PP sheet + U-channel ≈ ply +
-adhesive/fasteners; panel BOM rises ~$100, see §8.1).
+1,125mm) for rigid fan/duct mounting + screw retention. Net: **~82 kg off** the panel
+(243 → 161 kg). The HDPE skin + U-channel costs more than the ply build it replaces
+(§8.1), buying the weight cut plus a moisture/chemical-proof, light-tight, weld-sealed
+envelope (same material and weld process as the drum/housing).
 
 ---
 
@@ -158,12 +160,12 @@ adhesive/fasteners; panel BOM rises ~$100, see §8.1).
 | Passage width | **~555mm** (the 80° opening) — single operator, sideways entry |
 | Height | Top at Z=2,250mm (upper bearing on panel top rail) |
 | Mounting | **Carried with the panel** — rides at Z=130 on the panel bottom rail (130mm floor gap → clears the tray rim, and the swinging cage passes over the Z115 walkway brackets). Operator steps up ~130mm over the threshold to enter; exits level onto the walkway deck (also Z=130). |
-| Wall thickness | 5mm UV-HDPE housing (LT_HOUSING_T) + 4mm PP drum (LT_DRUM_T) — rolled and extrusion-welded plastic skin (rev 9 / B2; was 3mm aluminum); opening edge-stiffened |
+| Wall thickness | 5mm UV-HDPE housing (LT_HOUSING_T) + 1/8" HDPE drum (LT_DRUM_T) — rolled and extrusion-welded plastic skin (rev 9 / B2; was 3mm aluminum); opening edge-stiffened |
 | Interior finish | Black-pigmented sheet + flat-black touch-in at welds (no etch-prime) |
 | Exterior finish | UV-stabilized black/gray sheet — inherent, no primer |
 | Clear walking height | 1,910mm (between bearings) |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (§3.3) |
-| Weight | housing ~22 kg + rotating drum ~38 kg = **~60 kg** (plastic skin, ≈60% of the 3mm-aluminum ~99 kg; the steel shaft/bearings set a floor the shell mass can't drop below) |
+| Weight | housing ~22 kg + rotating drum ~35 kg = **~57 kg** (plastic skin, ≈58% of the 3mm-aluminum ~99 kg; the steel shaft/bearings set a floor the shell mass can't drop below) |
 
 ### 3.2 Bearings
 
@@ -243,7 +245,7 @@ the exterior opening is covered. There is no straight-line path at any angle.
 | Mounting | Post fixed top + bottom to the container end structure; the swinging frame rotates on the hub bearings (vertical axis ⇒ balanced at any angle, no gravity torque) |
 | Swing | ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° inboard to the transport position (locked by the top + bottom wall stays); swings clear of the door plane for personnel/equipment access |
 
-The plastic-skinned drum/housing (LT_DRUM_T = 4mm PP,
+The plastic-skinned drum/housing (LT_DRUM_T = 1/8" HDPE,
 LT_HOUSING_T = 5mm UV-HDPE) keeps the added mass modest. Because the pivot axis is
 **vertical**, the assembly is balanced at any swing angle — no gravity torque and no
 free-edge sag, so no swing-support caster is needed (the old B2 barrel-hinge + caster
@@ -269,15 +271,15 @@ interior equipment.
 
 A grab/pull handle is **through-bolted to the panel's structural frame on the interior
 face** — the **left jamb of the drum aperture**, at waist height — so a single operator
-can grip it and swing the heavy (~171 kg movable) panel open from **inside** the container,
+can grip it and swing the heavy (~161 kg movable) panel open from **inside** the container,
 both for the emergency-egress swing (§4.2) and to initiate the transport rotation (§5). It
-bolts to the steel frame, not the PP skin.
+bolts to the steel frame, not the HDPE skin.
 
 | Parameter | Value |
 |-----------|-------|
 | Type | 316 SS D-grab pull handle, ~300mm grip span, 25mm round bar |
-| Mounting | Through-bolted to the 50 × 50 × 3mm RHS frame jamb beside the drum aperture — **2 × M8 SS bolts** passing through **both** RHS walls into an interior backing plate/washers (not screwed to the PP skin) |
-| Position | Interior face of the **swinging** panel, on the **left drum-aperture jamb**. The transport swing pivots on the **far** edge (§5), so this near-of-center jamb keeps the operator's leverage while landing the load on frame steel right beside the drum (rather than the unbacked PP skin) |
+| Mounting | Through-bolted to the 50 × 50 × 3mm RHS frame jamb beside the drum aperture — **2 × M8 SS bolts** passing through **both** RHS walls into an interior backing plate/washers (not screwed to the HDPE skin) |
+| Position | Interior face of the **swinging** panel, on the **left drum-aperture jamb**. The transport swing pivots on the **far** edge (§5), so this near-of-center jamb keeps the operator's leverage while landing the load on frame steel right beside the drum (rather than the unbacked HDPE skin) |
 | Finish | **Matte-black powder-coat** — the interior must stay optically dead (stray-light control for the pinhole), so the handle is not left bare/reflective |
 
 See [§8.1](#81-panel-structure) for the part; the handle is also shown on the interior-face
@@ -321,7 +323,7 @@ near-deck section lift out** before the swing; all are re-seated to datum afterw
 | Operational (0°) | 4 × interior cam latches (§4) compress the EPDM **vertical** perimeter + cut seals against the door frame; the top + bottom **strip-brush** seals are passive (always engaged, no compression) |
 | Transport (swung <!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->°) | Top + bottom **wall stays** — hook welded to the **swinging panel's left perimeter 50×50×3 RHS stile** (the steel frame member at the swing cut) ↔ eye on the near wall, tensioned by turnbuckle, forming a couple. Engaged after the swing, released before swing-back. |
 
-> **Stay hooks land on steel, not the skin.** The transport-stay couple carries real tension, so both hooks weld to the **left perimeter RHS stile** of the swinging frame — *not* the 4mm PP plastic skin (rev11). They were relocated from the mid-corner (Yd≈350), which the plastic-skin swap left unbacked above the plywood band; the perimeter stile is the farthest point from the pivot (best lever arm) and a continuous welded steel load path into the frame.
+> **Stay hooks land on steel, not the skin.** The transport-stay couple carries real tension, so both hooks weld to the **left perimeter RHS stile** of the swinging frame — *not* the 1/8" HDPE plastic skin (rev11). They were relocated from the mid-corner (Yd≈350), which the plastic-skin swap left unbacked above the plywood band; the perimeter stile is the farthest point from the pivot (best lever arm) and a continuous welded steel load path into the frame.
 
 ### 5.3 Floor Gap
 
@@ -428,7 +430,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Aluminum U-channel (per meter) | Gasket retainer + PP-skin retention (perimeter + housing-surround + stiffener grid) | 40 m | Online Metals | $120–$200 |
 | Southco C2-33 cam compression latch | Interior-mounted corner latches (compress the perimeter + cut + lip seals) | 4 ea | Southco / McMaster-Carr | $76–$104 |
 | [1/8" black HDPE sheet (48×96, ×2)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing (rev11); 4 walls, 2 per 4×8 sheet. 1/8" HDPE nearest stock to 4mm (weld-compatible with the HDPE housing/drum); EPDM lip cut from the panel-epdm perimeter roll (not billed here). US Plastics 46684 $123.34/sheet. | 2 sheet | US Plastics / TAP Plastics | $247 |
-| Flat black paint (RAL 9005) | Bay/weld touch-in (PP skins are pre-pigmented black) | 1 qt | Local fab | $10–$20 |
+| Flat black paint (RAL 9005) | Bay/weld touch-in (HDPE skins are pre-pigmented black) | 1 qt | Local fab | $10–$20 |
 | [304 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black](https://www.strongarhardware.com/pro-line-series-ladder-pull-handle-back-to-back-matte-black-powder-coated-finish-316-exterior-grade-stainless-steel-alloy/) | Interior pull handle — through-bolted to the frame (§4.3). 304 chosen over 316 (~$186); interior / non-wet location. | 1 ea | StrongAr Hardware | $70–$90 |
 | **Panel total** | | | | **$1,550–$1,876** |
 <!-- END parts:panel -->

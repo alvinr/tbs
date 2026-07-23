@@ -48,7 +48,7 @@ YD_L, YD_R = ov.PANEL_CORNER_YD_L, ov.PANEL_CORNER_YD_R   # 653, 1709 step lines
 FAN_B_YD, FAN_B_H = ov.FAN_B_YD, ov.FAN_B_H
 
 C_STEEL, C_ALUM, C_PLY = ov.C_STEEL, ov.C_ALUM, ov.C_PLY
-C_PLASTIC = ov.C_PLASTIC                       # 4mm PP panel skins + bay (rev11; C_PLY now = wood fan band only)
+C_PLASTIC = ov.C_PLASTIC                       # 1/8″ HDPE panel skins + bay (rev11; C_PLY now = wood fan band only)
 C_DRUM, C_GASKT, C_RAIL, C_CARR = ov.C_DRUM, ov.C_GASKT, ov.C_RAIL, ov.C_CARR
 # Seal geometry renders GREEN so it's never mistaken for the steel-grey structure — in TWO
 # shades so the two seal TYPES read distinctly from each other:
@@ -96,7 +96,7 @@ STAY_Z = (500, 2050)                               # bottom + top transport-stay
 #  The 2050↔500 couple arm (1550mm) is still ample for the transport stay.)
 LOCK_BOLT = (20, CUT + 25)                         # stay hook on the swinging frame's LEFT
 # perimeter 50×50 RHS STILE (Yd≈205, centred on the stile at the swing cut) — STEEL load
-# path, not the 4mm-PP skin. Relocated from the mid-corner (Yd350, which the rev11 plastic
+# path, not the 1/8″-HDPE skin. Relocated from the mid-corner (Yd350, which the rev11 plastic
 # skin left unbacked above the Z1125 ply band); the stile is also the farthest point from
 # the pivot (FAR0=2287) → best lever arm for the transport-stay couple.
 
@@ -299,7 +299,7 @@ def hinge_panel():
                           0, NEW_YD_R, PANEL_Z_BOT, tc, C_WID - NEW_YD_R, h, color=C_PLASTIC, alpha=0.5))
 
     # Center zone (120mm) — the structural FRAME around the housing aperture: two jambs +
-    # header. Colored STEEL (vs the blue PP skin) so the frame reads distinctly from the
+    # header. Colored STEEL (vs the blue HDPE skin) so the frame reads distinctly from the
     # flat corner panels — and it's the member the interior pull handle bolts to.
     parts.append(ruby_box("Panel center jamb L (120mm frame)",
                           0, NEW_YD_L, PANEL_Z_BOT, tk, APER_L - NEW_YD_L, h, color=C_STEEL))
@@ -341,7 +341,7 @@ def hinge_panel():
 
     # Interior pull handle (matte-black 316 SS D-grab) — through-bolted to the panel's
     # structural FRAME: the left drum-aperture jamb (the 120mm center-zone stud just left
-    # of the Ø900 housing), NOT the 4mm PP skin. Mounted on the interior face. The transport
+    # of the Ø900 housing), NOT the 1/8″ HDPE skin. Mounted on the interior face. The transport
     # swing pivots on the FAR edge, so this near-of-center jamb keeps good leverage while
     # landing the load on steel right beside the drum (report §4.3).
     hy = (NEW_YD_L + APER_L) // 2                         # ≈683 — center of the left drum jamb
@@ -811,7 +811,7 @@ def generate_ruby():
     dc_body = '\n'.join([
         hinge_panel(),
         # Fan B corner: 18mm PLYWOOD mount band (bottom up to PANEL_FAN_BAND_Z) for
-        # rigid fan/duct mounting; 4mm PP skin above. (rev11 material differentiation.)
+        # rigid fan/duct mounting; 1/8″ HDPE skin above. (rev11 material differentiation.)
         ruby_box("Fan B mount band (18mm ply)", 0, CUT, PANEL_Z_BOT, 40,
                  NEW_YD_L - CUT, ov.PANEL_FAN_BAND_Z - PANEL_Z_BOT, color=C_PLY, alpha=0.5),
         ruby_box(f"Panel near (swing, Yd{CUT}-{NEW_YD_L})", 0, CUT, ov.PANEL_FAN_BAND_Z, 40,

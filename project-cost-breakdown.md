@@ -24,7 +24,7 @@
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $2,032 | $2,268 | $2,506 |
 | **6a. Perimeter walkway (4 sections + drum-exit punch-out)** | $2,062 | $2,503 | $2,943 |
 | **6b. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)** | $1,180 | $1,395 | $1,610 |
-| **6c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle)** | $1,550 | $1,713 | $1,876 |
+| **6c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle)** | $1,550 | $1,713 | $1,876 |
 | **6d. Chemistry prep shelf (fold-down phenolic board + steel frame + hinge/stays + TAP-01 trunk extension)** | $214 | $227 | $239 |
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,100 | $1,490 | $2,650 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
@@ -295,13 +295,13 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 
 **Source document:** `light-trap-selection.md`
 
-Personnel access during operation is via a **Ø900 fixed housing + single-opening C-shell drum** built into the hinged cargo-door panel — light-tight by geometry (two 80° housing openings 180° apart; the drum opening can never bridge both). The drum rotates on two SKF 6215 bearings. The drum and housing from a hybrid plastic skin — 5mm UV-HDPE housing + 4mm PP drum. Custom fabrication remains preferred over commercial darkroom doors (~$2,500–$4,500) — those are not weatherproof, transport-rated, or adaptable to a removable panel.
+Personnel access during operation is via a **Ø900 fixed housing + single-opening C-shell drum** built into the hinged cargo-door panel — light-tight by geometry (two 80° housing openings 180° apart; the drum opening can never bridge both). The drum rotates on two SKF 6215 bearings. The drum and housing from a all-HDPE plastic skin — 5mm UV-HDPE housing + 1/8" HDPE drum. Custom fabrication remains preferred over commercial darkroom doors (~$2,500–$4,500) — those are not weatherproof, transport-rated, or adaptable to a removable panel.
 
 <!-- BEGIN costing:lightlock -->
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
 | 5mm UV-stabilized HDPE — Ø900 housing shell (~7 m²) | $555 | $555 | $555 | rolled + extrusion-welded; TAP / Online Metals |
-| 4mm PP — Ø864 drum shell + top/bottom caps (~7 m²) | $370 | $370 | $370 | TAP / Curbell |
+| 1/8" HDPE — Ø864 drum shell + top/bottom caps (~7 m²) | $370 | $370 | $370 | TAP / Curbell |
 | SKF 6215-2RS1 sealed bearing (×2) | $121 | $121 | $121 | Bearing World / Applied |
 | 75mm Ø × 150mm steel stub shafts (×2) | $30 | $40 | $50 | steel service center |
 | Felt/brush wiper + 12mm neoprene (drum↔housing seal) | $40 | $57 | $75 | McMaster-Carr |
@@ -313,7 +313,7 @@ Personnel access during operation is via a **Ø900 fixed housing + single-openin
 | **Housing + drum total** | **$2,032** | **$2,268** | **$2,506** | |
 <!-- END costing:lightlock -->
 
-*Note: the hinged panel that the housing mounts into (50×50mm RHS frame, 4mm PP plastic skins (18mm-ply Fan-B mount band), EPDM perimeter gasket) is part of the interior conversion covered in Section 2. Still below the $2,500–$4,500 commercial darkroom-door range, and weatherproof + transport-rated.*
+*Note: the hinged panel that the housing mounts into (50×50mm RHS frame, 1/8" HDPE plastic skins (18mm-ply Fan-B mount band), EPDM perimeter gasket) is part of the interior conversion covered in Section 2. Still below the $2,500–$4,500 commercial darkroom-door range, and weatherproof + transport-rated.*
 
 ---
 
@@ -558,7 +558,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Revolving drum light trap (plastic-skin custom fabrication) | $2,032 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,062 |
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,180 |
-| Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle) | $1,550 |
+| Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,550 |
 | Chemistry prep shelf (fold-down board + tap trunk extension) | $214 |
 | Cyanotype chemistry + substrate (50 prints) | $1,100 |
 | Transport per deployment (local) | $400 |
@@ -581,7 +581,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Revolving drum light trap (plastic-skin custom fabrication) | $2,268 |
 | Perimeter walkway (4 sections, removable, GRP grating) | $2,503 |
 | Panel swing pivot + fixed door frame (Ø89 pivot + bearings + cage + wall stays + saddles + door frame) | $1,395 |
-| Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle) | $1,713 |
+| Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,713 |
 | Chemistry prep shelf (fold-down board + tap trunk extension) | $227 |
 | Cyanotype chemistry + substrate (50 prints) | $1,490 |
 | Rodenstock Apo-Ronar 1,200mm lens | $800 |

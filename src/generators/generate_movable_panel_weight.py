@@ -29,8 +29,7 @@ import tbs_constants as k
 RHO_STEEL = 7850      # mild / Corten steel
 RHO_ALUM  = 2700      # 5052 aluminum
 RHO_PLY   = 600       # marine plywood
-RHO_HDPE  = 950       # UV-HDPE housing skin
-RHO_PP    = 905       # polypropylene drum skin
+RHO_HDPE  = 950       # HDPE — ALL light-lock plastic (housing 3/16", drum/skins/bay 1/8"; 2026-07-22)
 RHO_EPDM  = 140       # closed-cell EPDM/neoprene compression foam (typ.)
 
 # 50×50×3 SHS section: 50² − 44² = 564 mm² → 4.43 kg/m (first-principles; EN table 4.35)
@@ -50,26 +49,26 @@ def _rows():
     w_far  = (k.PIVOT_YD - k.PANEL_CORNER_YD_R) / 1000.0        # 1709→2287
     aperture = math.pi * (k.LT_HOUSING_R / 1000.0) ** 2         # Ø900 opening
 
-    # ── A. Stepped framed panel (swing zone only) — rev11: 4mm PP skins + Fan ply band ──
-    ts = k.PANEL_SKIN_T / 1000.0                                # 0.004 m PP skin
+    # ── A. Stepped framed panel (swing zone only) — rev11: 1/8" HDPE skins + Fan ply band ──
+    ts = k.PANEL_SKIN_T / 1000.0                                # 0.00318 m HDPE skin
     band = (k.PANEL_FAN_BAND_Z - k.PANEL_FLOOR_GAP) / 1000.0    # ply band height ≈ 0.995 m
     add("A Sandwich", "Fan ply band (18mm)", f"Fan B corner, {w_near:.3f}m × {band:.2f}m, 2 faces",
         2 * (w_near * band) * 0.018 * RHO_PLY)
-    add("A Sandwich", "PP corner skins (4mm)", f"near above band + far, 2 faces",
-        2 * (w_near * (H - band) + w_far * H) * ts * RHO_PP)
+    add("A Sandwich", "HDPE corner skins (1/8\")", f"near above band + far, 2 faces",
+        2 * (w_near * (H - band) + w_far * H) * ts * RHO_HDPE)
     add("A Sandwich", "Corner Al core plates", f"3mm 5052, {w_near+w_far:.3f}m × {H:.2f}m",
         (w_near + w_far) * H * 0.003 * RHO_ALUM)
     frame_len = 2 * (w_ctr + H) + 4 * w_ctr
     add("A Sandwich", "Center RHS frame", f"50×50×3 SHS, {frame_len:.1f}m total",
         frame_len * RHS_KG_PER_M)
-    add("A Sandwich", "PP center skins (4mm)", "2×4mm PP, Ø900 aperture deducted",
-        2 * (w_ctr * H - aperture) * ts * RHO_PP)
+    add("A Sandwich", "HDPE center skins (1/8\")", "2×1/8\" HDPE, Ø900 aperture deducted",
+        2 * (w_ctr * H - aperture) * ts * RHO_HDPE)
 
     # ── B. Fixed Ø900 housing (bolts into panel, swings with it) ──
     open_frac = k.LT_OPENING_DEG / 360.0
     Hd = (k.DRUM_H_LT - k.PANEL_FLOOR_GAP) / 1000.0            # suspended height ≈ 2.12 m
     house_circ = math.pi * (2 * k.LT_HOUSING_R / 1000.0)
-    add("B Housing", "HDPE housing shell", f"Ø900×5mm, two {k.LT_OPENING_DEG}° openings",
+    add("B Housing", "HDPE housing shell", f"Ø900×3/16\", two {k.LT_OPENING_DEG}° openings",
         house_circ * (1 - 2 * open_frac) * Hd * (k.LT_HOUSING_T / 1000.0) * RHO_HDPE)
     add("B Housing", "Steel flange/hub + bearing mounts", "bolt inserts, isolation", 6.0)
 
@@ -77,22 +76,22 @@ def _rows():
     drum_circ = math.pi * (2 * k.LT_DRUM_OR / 1000.0)
     td = k.LT_DRUM_T / 1000.0
     cap_area = math.pi * (k.LT_DRUM_OR / 1000.0) ** 2 * (1 - open_frac)
-    add("C Drum", "PP C-shell", f"Ø864×4mm, one {k.LT_OPENING_DEG}° opening",
-        drum_circ * (1 - open_frac) * Hd * td * RHO_PP)
-    add("C Drum", "PP end caps (2)", "C-shaped, 4mm", 2 * cap_area * td * RHO_PP)
+    add("C Drum", "HDPE C-shell", f"Ø864×1/8\", one {k.LT_OPENING_DEG}° opening",
+        drum_circ * (1 - open_frac) * Hd * td * RHO_HDPE)
+    add("C Drum", "HDPE end caps (2)", "C-shaped, 1/8\"", 2 * cap_area * td * RHO_HDPE)
     add("C Drum", "Steel stub shafts (2)", "Ø75×150",
         2 * math.pi * (0.0375 ** 2) * 0.150 * RHO_STEEL)
     add("C Drum", "SKF 6215 bearings (2)", "sealed deep-groove", 2 * 1.3)
-    add("C Drum", "PP edge stiffeners (2)", "~0.30 kg/m", 2 * Hd * 0.30)
+    add("C Drum", "HDPE edge stiffeners (2)", "~0.30 kg/m", 2 * Hd * 0.30)
     add("C Drum", "Grab rail + misc", "interior pull rail, fasteners", 4.0)
 
-    # ── D. B2 punch-out bay (6mm ply 4-wall tube + front face) ──
+    # ── D. B2 punch-out bay (1/8" HDPE 4-wall tube + front face) ──
     bay_depth = (k.BAY_BACK_X - k.BAY_FRONT_X) / 1000.0
     bay_w = (k.DRUM_CAGE_YD_R - k.DRUM_CAGE_YD_L) / 1000.0
     bay_area = (2 * bay_depth * Hd + 2 * bay_depth * bay_w
                 + max(bay_w * Hd - aperture, 0))
-    add("D Bay", "Punch-out bay walls", f"4mm PP, {bay_area:.2f}m² ({bay_depth:.2f}m deep)",
-        bay_area * ts * RHO_PP)
+    add("D Bay", "Punch-out bay walls", f"1/8\" HDPE, {bay_area:.2f}m² ({bay_depth:.2f}m deep)",
+        bay_area * ts * RHO_HDPE)
 
     # ── E. Drum support cage (light steel box frame) ──
     cage_depth = (k.DRUM_CAGE_X1 - k.DRUM_CAGE_X0) / 1000.0
@@ -120,8 +119,7 @@ def _material_of(item):
     s = item.lower()
     if "ply" in s: return "Plywood"               # fan ply band only
     if "al core" in s or "aluminum" in s: return "Aluminum"
-    if "hdpe" in s: return "HDPE"
-    if item.startswith("PP ") or "bay" in s: return "PP"   # PP skins + PP bay
+    if "hdpe" in s or "bay" in s: return "HDPE"   # all light-lock plastic is HDPE (skins, drum, bay)
     if "epdm" in s or "wiper" in s: return "EPDM/other"
     return "Steel"
 

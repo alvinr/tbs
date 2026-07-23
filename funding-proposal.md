@@ -101,7 +101,7 @@ Everything required to operate the camera for a first deployment. Figures are th
 | Ventilation & cooling (2 fans · evap cooler + 12V→120V inverter · light-safe ducting) | $817 |
 | Perimeter walkway (4 sections + drum-exit punch-out) | $2,503 |
 | Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + door frame) | $1,395 |
-| Hinged panel structure (stepped frame + PP skins + Al core + EPDM + latches + B2 bay + handle) | $1,713 |
+| Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,713 |
 | Chemistry prep shelf (fold-down board + frame + hinge/stays + tap trunk extension) | $227 |
 | Cyanotype chemistry + muslin substrate (50-print run, Standard tier) | $1,490 |
 | Contingency (10%) | ~$3,190 |

@@ -346,8 +346,8 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Shurflo 2088-554-144 pump (P-05 Brown drain) | 12VDC, 3.5 GPM, 45 PSI; evacuates IBC-3 (Brown) residual to the X3 end-wall port | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
 | [SeaFlo accumulator (0.75 L)](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) (SFAT-075-125-01) | 0.75 L, 125 PSI, 1/2" MNPT | 1 ea | Environmental Marine / Amazon | $30–$41 |
 | Shurflo pump mounting bracket | Stainless, 2088 series — one per pump (P-01..P-05) | 5 ea | Amazon | $50 |
-| [Corridor plumbing-panel marine ply (18mm)](https://publiclumber.com/products/3-4-18mm-4x8-hydrotek-marine-plywood) | 4×8 ft 18mm Hydrotek marine plywood (BS 1088 equiv) — rear backing board + drain-riser spine + spacer offcuts; ~1.3 m² used. $250 Public Lumber SoCal / $179 Woodworkers Source AZ. ⚠ MARINE IS ~3-4× standard: a plumbing backboard sees no marine loads — exterior BC/ACX (~$55-70/sheet) would cut this ~$130-190. Decision open. | 1 sheet | Public Lumber / Woodworkers Source | $179–$250 |
-| [Pump-mount shirt marine ply (25mm)](https://www.dunnlumber.com/marine-grade-abx-1-inches-softwood-face-plywood-4-feet-x-8-feet-net-thickness-1-16-inches-marineab1.html) | 1" (25mm) AB marine plywood 4×8, ~610×1650 cut piece — pump-mount shirt behind P-01..P-05 + 6× spacer blocks. Firm $211.88 Dunn Lumber. ⚠ MARINE premium — exterior AC ply would cut this substantially (see ply-18). Decision open. | 1 piece | Dunn Lumber | $212 |
+| [Corridor plumbing-panel ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — rear backing board + drain-riser spine + spacer offcuts. STANDARD exterior per project rule (was mis-spec'd marine ~$179-250). Firm $29.30 (Home Depot 2026-07-23). Seal cut edges. | 1 sheet | Home Depot | $29 |
+| Pump-mount shirt ply (~1" exterior) | ~1" (25mm) exterior plywood 4×8, ~610×1650 cut piece — pump-mount shirt behind P-01..P-05 + 6× spacer blocks. STANDARD exterior per project rule (was marine ~$212). Est $30-55 (1-1/8" T&G sheathing or 2× 23/32"); confirm the exact 1" Home Depot SKU. | 1 piece | Home Depot | $30–$55 |
 | Corridor panel mount hardware (brackets + fasteners) | 6× steel angle brackets (panel → IBC-frame front-portal uprights), shirt-to-panel screws, lag bolts. Price est. | 1 lot | Home Depot | $25–$50 |
 | Big Blue filter housing 4.5"×20" (separate) | Ø184×594mm/housing (4.5×20), 1" NPT ports — three SEPARATE housings on the slotted-angle skid frame (Pentek / iSpring / Geekpure) | 3 ea | AllFilters / Amazon | $114–$186 |
 | Slotted steel angle frame 25×25×3mm (filter skid) | ~2.5 m 25×25×3mm slotted steel angle + fasteners; bolts to the 18mm ply backing (adjustable housing height) | 1 lot | Home Depot | $25–$45 |
@@ -393,7 +393,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $18–$40 |
-| **Water total** | | | | **$3,281–$4,143** |
+| **Water total** | | | | **$2,949–$3,765** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

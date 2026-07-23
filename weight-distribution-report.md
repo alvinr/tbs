@@ -53,7 +53,7 @@ water 1,000 kg/m³.
 | Hinged panel (incl. Ø900 housing + punch-out bay) | 161 | 0–80 (deployed); swung ~56° about the pivot (transport) | 0–2,362 | Framed panel: 1/8" HDPE plastic skins + 18mm-ply Fan-B mount band + 3mm-Al corner cores + 50×50×3 steel RHS center ≈ 119 kg + bolted 5mm-HDPE Ø900 housing ≈ 22 kg + 1/8"-HDPE punch-out bay ≈ 21 kg (first-principles). The Ø89 pivot post + bearings + cage are counted under "Swing pivot + cage hardware". See [Hinged Panel Report §2.4–2.5](hinged-panel-report.md) for the full movable-assembly breakdown |
 | Light-trap drum (rotating) | 36 | 0–40 (deployed); swung ~56° about the pivot (transport) | 653–1,709 | Ø864 C-shell, 1/8" HDPE plastic skin, no fins (suspended with panel) + HDPE end caps + steel Ø75 stub shafts + 2× SKF 6215 bearings |
 | Processing tray | 116 | 170–4,629 | 80–2,280 | 304 SS 1.5mm, 2 panels × 58 kg ([Water System Report](water-system-report.md) §4) |
-| Near walkway | 37 | 470–4,629 | 0–300 | 10 brackets @ ~2.7 kg + 11 kg/m² GRP grating |
+| Near walkway | 37 | 470–4,629 | 0–300 | 10 brackets @ ~2.7 kg + 12.7 kg/m² GRP grating |
 | Far walkway | 37 | 470–4,629 | 2,062–2,362 | Same as near walkway |
 | Right walkway | 44 | 4,329–4,629 | 0–2,362 | Cantilever-rectangle: closed frame (2 long + 2 end beams) + 2 center cantilever arms off the IBC uprights (40×40×3 SHS) + wall cleats + combined corner plates (shared with the BR film rail) + GRP grating |
 | Left walkway | 25 | 170–470 | 0–2,362 | Removable lift-out: GRP grating + 5 floor-leg cantilever brackets (50×50 post + arm on bare floor outside the tray) + drum-exit punch-out (deeper grating) |
@@ -91,13 +91,13 @@ water 1,000 kg/m³.
 | Equipment | <!-- BEGIN weight:wt-cat-equipment -->452<!-- END weight:wt-cat-equipment --> | <!-- BEGIN weight:wt-pct-equipment -->14.0<!-- END weight:wt-pct-equipment -->% |
 | **Total dry** | **<!-- BEGIN weight:wt-total-dry -->3,224<!-- END weight:wt-total-dry -->** | **100%** |
 
-**Grating weight assumption:** 5/8" (15mm) molded GRP (fiberglass) grating,
-vinyl-ester resin with grit top, weighs approximately 11 kg/m² over the 4.14 m²
-of deck. GRP is specified for corrosion immunity in the wet photo-chemistry
-environment, at a cost premium of ~$720–$890 (see [cost breakdown §6a](project-cost-breakdown.md)).
-The 15mm depth keeps the lowered deck and the spray-bar carriage clearance under
-the left cantilever arms unchanged. Confirm the final product's kg/m² against its
-datasheet; a 1"/25mm GRP would weigh more and force a deck-height redesign.
+**Grating weight assumption:** 1" (25mm) molded GRP (fiberglass) grating,
+vinyl-ester resin with grit top, weighs ≈12.7 kg/m² (McNichols MS-S-100, 2.60 lb/sf)
+over the 4.14 m² of deck. GRP is specified for corrosion immunity in the wet
+photo-chemistry environment, at a cost premium of ~$720–$890 (see [cost breakdown §6a](project-cost-breakdown.md)).
+1" is the thinnest molded FRP made (15mm molded GRP doesn't exist), so the deck
+sits at 140mm (115mm support arm + 25mm grate) — raised to keep the spray-bar
+carriage clearance under the left cantilever arms.
 
 ---
 
@@ -290,11 +290,11 @@ remains migrates from the top tier to the bottom tier, dropping the center of gr
 
 The walkway system contributes <!-- BEGIN weight:wt-walkway-total -->150<!-- END weight:wt-walkway-total --> kg (<!-- BEGIN weight:wt-walkway-pct -->4.7<!-- END weight:wt-walkway-pct -->% of dry weight), making it the
 second-largest structural subsystem after the hinged panel. The deck grating —
-15mm molded GRP (fiberglass) at ≈11 kg/m² — is the largest single line in the
+1" (25mm) molded GRP (fiberglass) at ≈12.7 kg/m² — is the largest single line in the
 walkway; GRP is specified for corrosion immunity in the wet photo-chemistry
 environment. The GRP is vinyl-ester resin with a grit
-top for slip resistance; the 15mm grate depth keeps the lowered deck height
-unchanged (the spray-bar carriage clearance beneath it is set by the Ø32-wheel /
+top for slip resistance; the 25mm (1") grate sets the 140mm deck height (the
+spray-bar carriage clearance beneath it is set by the Ø32-wheel /
 40×25-SS-beam shrink — see the [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) report).
 
 ---

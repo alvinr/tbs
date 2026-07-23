@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $467 | $698 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,146 | $6,712 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $5,738 | $7,903 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $5,738 | $7,878 |
 | 6. Electrical — power, circuits, wiring | $2,942 | $2,973 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,032 | $2,506 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$28,039** | **~$36,828** |
+| **TOTAL (base build + 50-print run)** | **~$28,039** | **~$36,803** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -386,8 +386,8 @@ indicative low–high estimates — get quotes before ordering.
 | Exterior-grade plywood (Fan B mount band) | 1 2'×4' ¾" panel | Home Depot | panel | $30–$50 |
 | Phenolic-faced plywood (work surface) | 1 4'×8' ¾" sheet | Home Depot | shelf | $60 |
 | Plywood base plate (cooler stowage) | 1 2'×4' ½" panel | Home Depot | ventilation | $8 |
-| Pump-mount shirt ply (~1" exterior) | 1 piece | Home Depot | water | $30–$55 |
-| **timber-ply subtotal** | | | | **$217–$262** |
+| [Pump-mount shirt ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 1 sheet | Home Depot | water | $29 |
+| **timber-ply subtotal** | | | | **$217–$237** |
 
 ### tools-safety
 
@@ -435,7 +435,7 @@ indicative low–high estimates — get quotes before ordering.
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Online Metals | 7 | aluminum, stainless-sheet, steel-structural | $1,006–$1,426 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
-| Home Depot | 27 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $946–$1,246 |
+| Home Depot | 27 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $945–$1,220 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | Photographers' Formulary | 2 | chemistry-reagents | $1,051 |
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |

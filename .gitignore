@@ -43,3 +43,8 @@ eng-specs/
 # Numbers/Excel working copies of the parts worklist (the tracked source is parts-worklist.csv)
 parts-worklist.numbers
 parts-worklist.xlsx
+
+# Downloaded vendor quotes
+quoates/
+
+

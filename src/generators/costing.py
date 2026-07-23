@@ -140,7 +140,7 @@ def point(label: str, cost: int, note: str = "") -> LineItem:
 # §6a Perimeter walkway — line items own the truth; the section total sums them (was hand-typed
 # at $1,801/$2,186/$2,572, $25–35 low). Source: project-cost-breakdown.md §6a / generate_walkway_diagram.
 WALKWAY = [
-    LineItem("Molded GRP grating (McNichols cut-to-size)", 3041, 3043, 3046, "2026-07-23: FIRM to McNichols quote 2026-3819515 = $3,035.73 (was est $830 via American Grating public price — which is ~3.6× cheaper for the same spec; supplier decision flagged). +$5/$10 absorbs a pre-existing walkway reconcile rounding"),
+    LineItem("Molded GRP grating (McNichols cut-to-size, 8 sheets)", 1705, 1707, 1710, "2026-07-23: FIRM to McNichols revised quote $1,700.51 / 8 sheets (was 13-sheet $3,035.73). American Grating alt ~$830 still ~2× cheaper. +$5/$10 walkway reconcile rounding"),
     LineItem("GRP grating edge-seal kit (Fibergrate)", 40, 50, 60, "field-seal molded FRP cut edges (epoxy, not snap-trim)"),
     LineItem("Standard wall brackets, 8mm steel plate (×14)", 112, 143, 175, "Near/far walls; 150mm vert × 300mm arm"),
     LineItem("Widened wall brackets, 10mm steel plate (×4)", 72, 90, 112, "EP/battery/slit zone; 200mm vert × 500mm arm"),
@@ -1019,8 +1019,8 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (29425, 34328, 41104),  # 2026-07-23: corridor ply downgraded marine→standard (−$330). Per-change history in git log.
-    "walkway": (4173, 4481, 4789),  # 2026-07-23: GRP grating FIRM to McNichols quote 2026-3819515 $3,035.73 (was est $830; American Grating alt ~$830 flagged)
+    "grand_total": (28089, 32992, 39768),  # 2026-07-23: McNichols walkway grating revised to 8 sheets $1,700.51 (−$1,335). Per-change history in git log.
+    "walkway": (2837, 3145, 3453),  # 2026-07-23: McNichols revised to 8 sheets $1,700.51 (was 13-sheet $3,035.73)
     "water": (5738, 6823, 7903),  # 2026-07-23: corridor ply marine→standard exterior (18mm RTD $29.30 Home Depot)
     "container": (2300, 3300, 4300),
     "lightlock": (2032, 2268, 2506),   # 2026-07-22: Ø900 housing (46685 3/16" HDPE ×3 = $555) + Ø864 drum firmed to 1/8" black HDPE ×3 = $370 (was $150–240 est).  §6 = hinged-panel §8.2 (housing + drum) line items

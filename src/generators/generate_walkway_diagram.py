@@ -56,7 +56,7 @@ from matplotlib.patches import Rectangle, Circle, Polygon
 import os
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_legend
-from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_R, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
+from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_R, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_W, WALKWAY_MUSLIN_NOTCH_D, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
 from tbs_constants import DIAGRAM_DPI
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -241,6 +241,19 @@ def sheet1():
            f"REMOVE FOR TRANSPORT\n(panel + drum swing 56° about the pivot)",
            color=C_REMOVABLE, fs=5.5,
            ha="center", va="center", arrow_style="-|>", font=FONT)
+
+    # ── Muslin-drop notches (rev 2026-07-23) ──────────────────────────────────
+    # 150(X)×100(Yd) grate notch at the FAR corner of the LEFT + RIGHT walkways where the
+    # far walkway butt-joins — the exposed muslin slides from the image plane down into the tray.
+    _NW, _ND = WALKWAY_MUSLIN_NOTCH_W, WALKWAY_MUSLIN_NOTCH_D
+    for _nx0 in (WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0):
+        ax.add_patch(Rectangle((_nx0, C_WID - _ND), _NW, _ND, fc="white", ec="none", zorder=14))
+        ax.add_patch(Rectangle((_nx0, C_WID - _ND), _NW, _ND, fc="none", ec="#B00020",
+                               lw=1.6, ls=(0, (4, 2)), zorder=15))
+    leader(ax, WALKWAY_MUSLIN_NOTCH_R_X0 + _NW / 2, C_WID - _ND / 2,
+           WALKWAY_MUSLIN_NOTCH_R_X0 + 260, C_WID - _ND - 300,
+           f"MUSLIN-DROP NOTCH ({_NW}\u00d7{_ND}mm)\ngrate cut at far corners L + R —\nslide muslin from image plane into tray",
+           color="#B00020", fs=5.0, ha="center", va="center", arrow_style="-|>", font=FONT)
 
     # ── Drum-exit punch-out ───────────────────────────────────────────────────
     # The left walkway deepens from 300mm to WALKWAY_LEFT_WIDE_W (600mm) in +X

@@ -166,7 +166,7 @@ down-and-in, at 150mm pitch along the beam.
 | [Axle pins (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 10mm × 60mm 304 SS axle pin, flat head | 4 (1 pack) | Wheel spindles |
 | [Axle retention saddle clamps (10-pack)](https://www.amazon.com/Boxonly-Fixing-Stainless-Saddle-Tension/dp/B0CG1CNQKX) | 304 SS, curved conduit-style saddle, 10mm, two bolt holes | 8 | Retain the wheel axles — bolted to the carriage plate underside |
 | Carriage plates | 6061-T6 AL plate 5mm, wings extend in to meet beam faces | 2 | Carry wheels; captured between beam clamp plates |
-| Beam clamp plates | SS, top + bottom plate (~3mm) sandwiching the 25mm RHS; countersunk underside bolts | 4 (2 per carriage) | Clamp beam to carriage plate, bolted vertically |
+| Beam clamp plates | SS, top + bottom plate (**1/4″ / 6.35mm**, 304) sandwiching the 25mm RHS; countersunk underside bolts | 4 (2 per carriage) | Clamp beam to carriage plate, bolted vertically — stiff enough that the bolts grip the beam, not bend the plates |
 | Spacer blocks | 6061-T6 AL, between top & bottom clamp plates, one each side of beam | 4 | Set clamp gap to beam height so bolts grip the beam rather than bend the plates |
 | Ball joint | Ø20mm SS ball, zinc socket, M12 stud, 50mm flange base | 1 | Multi-axis arm articulation on beam top face |
 | Self-tapping screws | SS thread-forming, into 3mm SHS top wall (no internal access for nuts) | 4 | Fasten the ball-joint flange to the beam |
@@ -253,13 +253,13 @@ wheels spaced 200mm apart in the Yd direction for stability against tipping.
 |-----------------|------------|
 | Container floor | 0 |
 | Raised tray floor (near/low rim, on the shim ramp) — the wheels roll here | 20 |
-| Bottom clamp plate (under beam) | 26–29 |
+| Bottom clamp plate (under beam, 1/4″) | 22.6–29 |
 | Beam bottom | 29 |
 | Wheel axle centerline | 36 |
 | Carriage plate (2mm above axle) | 38–43 |
 | Wheel top | 52 |
 | Beam top | 54 |
-| Top clamp plate | 54–57 |
+| Top clamp plate (1/4″) | 54–60.4 |
 | Left-walkway support arm bottom (over spray bar) | 75 |
 | Walkway grating bottom | 115 |
 | Walkway grating top (deck surface) | 130 |
@@ -580,7 +580,7 @@ tray drainage plan and sump cross-section).
 | [M6×1.0 hex nut, nyloc SS](https://www.mcmaster.com/90576A115/) (90576A115) | Nyloc nut — M6×20 spray fasteners. Pitch M6×1.0 (coarse, baseline — confirm vs SKU PDF, must match the bolt). $4.77/pack of 100. | 16 ea | McMaster-Carr | $1 |
 | [Self-tapping SS screws (8-pack)](https://www.lowes.com/pd/Hillman-25-Count-10-x-1-in-Stainless-Steel-Self-Drilling-Interior-Exterior-Sheet-Metal-Screws/3691866) (3691866) | Ball-joint flange to beam top wall. #10×1 SS self-drill, 25-pk ~$11–16 (per-unit est). | 4 ea | Lowe's (Hillman) | $2–$3 |
 | Ø20mm ball joint, zinc socket, M12 stud | Multi-axis arm articulation | 1 ea | Amazon | $12 |
-| [SS beam clamp plates (4, cut from 1× 2 ft 304 flat bar)](https://www.mcmaster.com/8992K512/) (8992K512) | 2 top + 2 bottom beam-clamp plates (beam-to-carriage sandwich, countersunk underside bolts), cut from one 2 ft 304 SS flat bar; + 4× 25mm 6061 AL spacers (from offcut). ⚠ CONFIRM bar thickness (8992K512): the report stack-up has 3mm plates (bottom Z26–29, top Z54–57) — if it's 1/4" the stack-up shifts +3.4mm/plate (a stiffer, better clamp, but the heights need re-checking); if 1/8" it matches the design as-is. | 1 2 ft bar | McMaster-Carr | $35 |
+| [SS beam clamp plates (4, cut from 1× 2 ft 304 flat bar)](https://www.mcmaster.com/8992K512/) (8992K512) | 2 top + 2 bottom beam-clamp plates (1/4"/6.35mm 304, beam-to-carriage sandwich, countersunk underside bolts), cut from one 2 ft flat bar (8992K512); + 4× 25mm 6061 AL spacers (from offcut). 1/4" chosen for stiffness (bolts grip the beam, not bend the plates). Stack-up: plates thicken OUTWARD (wheel/carriage/beam fixed) — bottom plate Z22.6–29 (2.6mm clear of the Z20 roll surface), top plate Z54–60.4. | 1 2 ft bar | McMaster-Carr | $35 |
 | 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | Arm tube — slit ~30mm at the bottom for the clamp-collar pinch onto the adapter's Ø21 spigot | 1 ea | Online Metals | $6 |
 | Arm-to-stud adapter, turned 6061-T6 AL (anodized) | Reducer coupling: M12×1.75 tapped bore (onto the ball-joint stud, locked with an M12 jam nut) → Ø21 male spigot the slit arm tube slips over. ~40mm long; anodized to match the AL tube (galvanic). Turned one-off / est. | 1 ea | Local machine shop | $12–$18 |
 | [M12×1.75 jam nut, SS](https://www.amazon.com/M12-1-75-Plain-Finish-Stainless-Steel/dp/B007IA07PS) (B007IA07PS) | Locks the arm adapter on the ball-joint M12 stud (M12×1.75 coarse). | 1 ea | Amazon | $1 |

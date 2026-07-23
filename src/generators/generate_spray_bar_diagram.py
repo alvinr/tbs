@@ -708,7 +708,7 @@ def draw_sheet2():
     # ── Beam clamp: a bottom plate under the beam + a top plate over it, drawn
     #    together by bolts each side with a solid spacer block — sandwiches the
     #    beam (and carriage plate) vertically ──────────────────────────────
-    clp_t = 3                                   # clamp plate thickness
+    clp_t = 6.35                                # clamp plate thickness — 1/4" 304 flat bar (8992K512)
     clp_half = BEAM_W / 2 + 12                  # plate Yd half-width (32)
     spacer_w = 8                                # spacer block Yd width
     clamp_bolt_yd = BEAM_W / 2 + 4              # bolt just outside the beam face (24)

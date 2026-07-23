@@ -381,7 +381,7 @@ PARTS: list[Part] = [
     Part("spray-beam-clamp", "SS beam clamp plates (4, cut from 1× 2 ft 304 flat bar)", "fasteners-hardware",
          "spray", 1, "2 ft bar", 35.33, 35.33, "McMaster-Carr", part_no="8992K512",
          url="https://www.mcmaster.com/8992K512/",
-         spec="2 top + 2 bottom beam-clamp plates (beam-to-carriage sandwich, countersunk underside bolts), cut from one 2 ft 304 SS flat bar; + 4× 25mm 6061 AL spacers (from offcut). ⚠ CONFIRM bar thickness (8992K512): the report stack-up has 3mm plates (bottom Z26–29, top Z54–57) — if it's 1/4\" the stack-up shifts +3.4mm/plate (a stiffer, better clamp, but the heights need re-checking); if 1/8\" it matches the design as-is."),
+         spec="2 top + 2 bottom beam-clamp plates (1/4\"/6.35mm 304, beam-to-carriage sandwich, countersunk underside bolts), cut from one 2 ft flat bar (8992K512); + 4× 25mm 6061 AL spacers (from offcut). 1/4\" chosen for stiffness (bolts grip the beam, not bend the plates). Stack-up: plates thicken OUTWARD (wheel/carriage/beam fixed) — bottom plate Z22.6–29 (2.6mm clear of the Z20 roll surface), top plate Z54–60.4."),
     Part("spray-arm-tube", "6061-T6 AL round tube 25mm OD × 2mm wall, 500mm", "aluminum",
          "spray", 1, "ea", 6, 6, "Online Metals", spec="Arm tube — slit ~30mm at the bottom for the clamp-collar pinch onto the adapter's Ø21 spigot"),
     Part("spray-arm-adapter", "Arm-to-stud adapter, turned 6061-T6 AL (anodized)", "aluminum",

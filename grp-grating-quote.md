@@ -33,7 +33,7 @@ Working doc (unpublished) to send a vendor for a molded-FRP grating quote. Not a
 ## Panels + supply
 
 - Stock panel: **4′×12′ (48 ft²)** — American Grating **$605/panel** (public; McNichols quote-only).
-- **QTY DECISION:** 1 panel (tight; near/far runs splice, since 4,159mm > 12ft) **vs** 2 panels (splice-free long runs, some waste).
+- **QTY DECISION:** 1 panel (tight; near/far runs splice, since 163.7″ > 144″ panel) **vs** 2 panels (splice-free long runs, some waste).
 - Ask vendor to **cut-to-size** per the list above (+ note any cut/notch fee).
 - Edge treatment: **Fibergrate Sealing & Bonding Kit** (~$50) — molded FRP cut edges are field-sealed with epoxy, not snap-trimmed.
 - Hold-down: 30× SS grating clips (`walkway-holddown-clips`, separate).

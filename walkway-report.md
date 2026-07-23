@@ -433,7 +433,7 @@ bounces noticeably less than the rod-hung version it replaces.
 <!-- BEGIN parts:walkway -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Molded GRP grating (McNichols quote, cut-to-size) | 1" MS-S-100 vinyl-ester grit, ~48 ft² cut to the walkway sections. FIRM: McNichols quote 2026-3819515 = $3,035.73 (see quotes/2026-3819515.pdf). ⚠ ALTERNATIVE: American Grating public price for the IDENTICAL spec ≈ $830 (2× 3'×10' @ $415) — ~3.6× cheaper; reconsider supplier vs McNichols' cut/vinyl-ester special-order/freight premium. Cut plan: grp-grating-quote.md. | 1 lot | McNichols / American Grating | $3,036 |
+| Molded GRP grating (McNichols quote, cut-to-size) | 1" MS-S-100 vinyl-ester grit, ~48 ft² cut to the walkway sections. McNichols quote 2026-3819515 = $3,035.73 (quotes/) — ⚠ that quote is for 13 SHEETS (ALVIN confirming; 13 seems high for ~48 ft² — likely a mis-spec or nesting assumption to resolve). ⚠ ALTERNATIVE: American Grating public price for the IDENTICAL spec ≈ $830 (2× 3'×10' @ $415) — ~3.6× cheaper; reconsider supplier vs McNichols' cut/vinyl-ester special-order/freight premium. Cut plan: grp-grating-quote.md. | 1 lot | McNichols / American Grating | $3,036 |
 | GRP grating edge-seal kit | Fibergrate Sealing & Bonding Kit — molded FRP cut edges are field-SEALED (epoxy), not snap-trimmed; ½-pint kit seals ~20–40 linear ft of cut edge. | 1 kit | Fibergrate | $40–$60 |
 | Drum-exit punch-out grating | Extra GRP landing (~0.23 m²) at the light-lock exit | 1 lot | McNichols | $50–$65 |
 | Cantilever bracket — standard (near/far) | 8mm steel plate: 150mm vert leg + 300mm arm + 70mm gusset, welded (5 near + 9 far at 457mm centers) | 14 ea | Local fab | $420–$700 |

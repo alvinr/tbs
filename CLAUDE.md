@@ -104,6 +104,7 @@ Always annotate: `HORIZONTAL SCALE 1:5 / VERTICAL SCALE 1:1 — thickness exagge
 - Distortion renders: dark background (`PRU_DEEP = "#0F2D5E"`), 800×600px per configuration, 3×3 summary grid as a separate PNG.
 - Logo/favicon palette constants live in `generate_logo_final.py` and `generate_favicon.py` — reuse if needed.
 - **Use American English spelling throughout** — e.g. "center" not "centre", "color" not "colour", "aluminum" not "aluminium", "analyze" not "analyse".
+- **Plywood = standard exterior grade (BC / ACX, exterior glue), NOT marine, unless a part carries a genuine marine / water-immersion load.** Marine ply is ~3–4× the price for no benefit on backboards, mounts, or shirts (e.g. the corridor plumbing panel, Fan-B band). A spec must never drift back to "marine" for a dry/backing use — flag it if it does.
 - **Describe the current design only; put design history in a changelog** (the `tbs_constants.py` rev-history header is the pattern). No "Old vs New" comparison tables in a living report — they accumulate stale archaeology.
 - **Report narrative house style is codified in `skills/skill_report_writing.md`** (prose-vs-single-source-vs-diagram triage, one-source-of-record / summaries-point-not-restate, source citation, terminology). Read it before writing or editing a report. `python3 src/generators/editorial_lint.py` is a **manual** check (not in the hook) for spelling, bare source links, and raw values that should be placeholders.
 

@@ -396,14 +396,14 @@ Permanently installed — no removal for transport mode conversion.*
 | Left walkway unsupported span | <!-- BEGIN cdm:WALKWAY_LEFT_SPAN -->1,762<!-- END cdm:WALKWAY_LEFT_SPAN -->mm | `WALKWAY_LEFT_SPAN` |
 | Right walkway X | <!-- BEGIN cdm:WALKWAY_RIGHT_X -->4,329<!-- END cdm:WALKWAY_RIGHT_X -->mm | `WALKWAY_RIGHT_X` |
 
-*Components: Near/far: 15mm grating on 8mm gusset brackets bolted to corrugated wall ribs.
+*Components: Near/far: 25mm grating on 8mm gusset brackets bolted to corrugated wall ribs.
 
 Right: cantilever rectangle — a closed 40×40×3mm SHS frame (2 long beams at X=4329/4629 +
 2 end beams) picked up at mid-span by 2 arms cantilevering off the IBC corridor uprights (half-lapped
 where the long beams cross), on wall cleats at the left corners and combined corner plates (shared with
 the bottom film rail BR) at the right corners. No floor contact, no roof penetrations — clears IBC stack entirely.
 
-Left: removable lift-out, 15mm grating resting on butt joints (no brackets —
+Left: removable lift-out, 25mm grating resting on butt joints (no brackets —
 panel conflict, must remove before the panel swings to transport). No floor contact on
 any section. 4 removable sections.*
 

@@ -321,7 +321,7 @@ Personnel access during operation is via a **Ø900 fixed housing + single-openin
 
 **Source documents:** `engineering-diagrams.md` §14, `generate_walkway_diagram.py`
 
-Four removable grated walkway sections around all 4 sides of the processing tray. Near walkway widens to 500mm at EP/battery/slit zone. 130mm deck height to clear the processing tray and spray bar. No tray contact on any section — entire tray interior completely clear for film loading.
+Four removable grated walkway sections around all 4 sides of the processing tray. Near walkway widens to 500mm at EP/battery/slit zone. 140mm deck height to clear the processing tray and spray bar. No tray contact on any section — entire tray interior completely clear for film loading.
 
 Near/far walkways: wall-cantilevered brackets bolted to corrugated wall ribs (14 standard 8mm + 4 widened 10mm).
 

@@ -17,8 +17,8 @@ access functions:
 - **Right walkway** (IBC end) — access to IBC valves, filter skid, and pump
   manifold. Carried on a cantilever rectangle off the IBC frame to clear the IBC stack below.
 
-All four sections share a common 130mm deck height (115mm bracket arm, L-angle, or
-floor-leg arm + 15mm grating) and 300mm standard width, creating a level perimeter walking
+All four sections share a common 140mm deck height (115mm bracket arm, L-angle, or
+floor-leg arm + 25mm grating) and 300mm standard width, creating a level perimeter walking
 surface. There are two sections that _punch out_ to allows easier access of the lightrap and around the battery stack.
 
 The design enforces **zero processing tray contact** — all walkway supports are
@@ -44,8 +44,8 @@ tray's watertight seal.
 | Parameter | Value |
 |-----------|-------|
 | Standard walkway width | 300mm |
-| Deck height (floor to grate top) | 130mm (raised +50 to clear the floor-level spray bar) |
-| Grating | 15mm molded GRP (fiberglass), vinyl-ester, grit top (thin grate, lowered deck; corrosion-proof in the chemistry zone) |
+| Deck height (floor to grate top) | 140mm (raised to clear the floor-level spray bar) |
+| Grating | 1" (25mm) molded GRP (fiberglass), vinyl-ester, grit top — McNichols MS-S-100, the thinnest molded FRP made (15mm doesn't exist); corrosion-proof in the chemistry zone |
 | Grating bearing bars | 15×3mm at 34.2mm pitch |
 | Bracket arm height | 115mm above finished floor |
 | Bracket spacing (near/far) | 457mm (18") — aligned to container rib spacing |
@@ -313,7 +313,7 @@ floor-bolted posts stay in place. No through-wall hardware at all.
 | Panel transport motion | SWING ~56° about the Ø89 pivot |
 | Swing sweep reach (near-walkway zone) | X≈1,395mm |
 | Butt joint / near-far walkway start | X=470mm |
-| Panel / cage bottom edge | Z=130mm (grate-top level) |
+| Panel / cage bottom edge | Z=130mm (panel floor gap; 10mm below the Z140 grate top) |
 
 ![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet4.png)
 
@@ -371,7 +371,7 @@ All four walkway sections use the same grating:
 | Parameter | Value |
 |-----------|-------|
 | Type | Molded GRP (fiberglass) grating |
-| Thickness | 15mm (5/8") — keeps the lowered deck + 15mm spray-bar clearance |
+| Thickness | 1" (25mm) — McNichols MS-S-100 (thinnest molded FRP); deck raised to 140mm to suit |
 | Resin | Vinyl-ester (resists both alkaline developer and acidic fixer splash) |
 | Mesh | ~38×38mm square, molded |
 | Open area | ~40% |

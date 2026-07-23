@@ -47,6 +47,33 @@ Walkway = 11.8″ (300mm) wide base strips + two "landing" add-on strips where i
 - Left-wide `11.8 × 29.9`
 - Near-wide `7.9 × 43.9`
 
+## Cut coordinates (each panel 36″ W × 120″ L)
+
+**Panel A** — rip at **11.8, 23.6, 35.4″**; crosscut strip 3 at **93″**:
+
+| Piece | Width span (in) | Length span (in) | Size |
+|---|---|---|---|
+| Near-A | 0 – 11.8 | 0 – 120 | 11.8 × 120 |
+| Far-A | 11.8 – 23.6 | 0 – 120 | 11.8 × 120 |
+| Right | 23.6 – 35.4 | 0 – 93 | 11.8 × 93 |
+| (offcut) | 23.6 – 35.4 | 93 – 120 | 11.8 × 27 |
+| (waste edge) | 35.4 – 36 | 0 – 120 | 0.6 × 120 |
+
+**Panel B** — rip at **11.8, 23.6, 35.4″**; crosscuts as noted:
+
+| Piece | Width span (in) | Length span (in) | Size |
+|---|---|---|---|
+| Left | 0 – 11.8 | 0 – 93 | 11.8 × 93 |
+| (offcut) | 0 – 11.8 | 93 – 120 | 11.8 × 27 |
+| Near-B | 11.8 – 23.6 | 0 – 43.7 | 11.8 × 43.7 |
+| Far-B | 11.8 – 23.6 | 43.7 – 87.4 | 11.8 × 43.7 |
+| (offcut) | 11.8 – 23.6 | 87.4 – 120 | 11.8 × 32.6 |
+| Left-wide | 23.6 – 35.4 | 0 – 29.9 | 11.8 × 29.9 |
+| Near-wide | 23.6 – 31.5 | 29.9 – 73.8 | 7.9 × 43.9 |
+| (waste edge) | 35.4 – 36 | 0 – 120 | 0.6 × 120 |
+
+Crosscuts: Panel B strip 1 at 93″; strip 2 at 43.7″ and 87.4″; strip 3 at 29.9″, then rip Near-wide at 31.5″ (width) over length 29.9–73.8 and crosscut at 73.8″.
+
 ## Also
 - Edge treatment: **Fibergrate Sealing & Bonding Kit** (~$50) — molded FRP cut edges are field-sealed with epoxy, not snap-trimmed.
 - Hold-down: 30× SS grating clips (`walkway-holddown-clips`, separate).

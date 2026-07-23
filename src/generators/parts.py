@@ -542,7 +542,7 @@ PARTS: list[Part] = [
     # ═══ optics (§3) — mirrors costing.OPTICS → exact $95–$240 ═══
     Part("pinhole-shim", "Custom laser-drilled pinhole — SS-302/304 shim, 3×3", "stainless-sheet",
          "optics", 1, "ea", 40, 100, "Lenox Laser", part_no="SS-3/8-DISC", url="https://lenoxlaser.com/shop/optical-apertures/standard-apertures/standard-aperture/",
-         note="Ø2.17mm optical element — Lenox SS-3/8-DISC standard aperture (302 SS, 3/8\" mounted disc); config-dependent $22-100, confirm the exact Ø2.17mm price via their RFQ (1-800-49-HOLES)."),
+         note="Ø2.17mm optical element — Lenox SS-3/8-DISC standard aperture (302 SS, 3/8\" mounted disc). ⏳ DEFERRED to v1.0: config-dependent $22-100, firm via RFQ (1-800-49-HOLES) at design-complete."),
     Part("pinhole-backing-plate", "Steel backing plate 6×6×⅛ + welded frame", "steel-structural",
          "optics", 1, "ea", 20, 40, "Metal Supermarkets", "local fab"),
     Part("shutter-plate", "Shutter plate (⅛ steel 10×8) + slide channel", "steel-structural",
@@ -765,7 +765,7 @@ PARTS: list[Part] = [
     # separate fab line) → $2,005–$2,985 (reconciles to EXPECTED walkway $2,000–$2,975 within tol) ═══
     Part("walkway-grp-panel", "Molded GRP grating (McNichols quote, cut-to-size)", "plastics-sheet",
          "walkway", 1, "lot", 3035.73, 3035.73, "McNichols", "American Grating",
-         spec="1\" MS-S-100 vinyl-ester grit, ~48 ft² cut to the walkway sections. FIRM: McNichols quote 2026-3819515 = $3,035.73 (see quotes/2026-3819515.pdf). ⚠ ALTERNATIVE: American Grating public price for the IDENTICAL spec ≈ $830 (2× 3'×10' @ $415) — ~3.6× cheaper; reconsider supplier vs McNichols' cut/vinyl-ester special-order/freight premium. Cut plan: grp-grating-quote.md."),
+         spec="1\" MS-S-100 vinyl-ester grit, ~48 ft² cut to the walkway sections. McNichols quote 2026-3819515 = $3,035.73 (quotes/) — ⚠ that quote is for 13 SHEETS (ALVIN confirming; 13 seems high for ~48 ft² — likely a mis-spec or nesting assumption to resolve). ⚠ ALTERNATIVE: American Grating public price for the IDENTICAL spec ≈ $830 (2× 3'×10' @ $415) — ~3.6× cheaper; reconsider supplier vs McNichols' cut/vinyl-ester special-order/freight premium. Cut plan: grp-grating-quote.md."),
     Part("walkway-grp-sealant", "GRP grating edge-seal kit", "adhesives-finishes",
          "walkway", 1, "kit", 40, 60, "Fibergrate", spec="Fibergrate Sealing & Bonding Kit — molded FRP cut edges are field-SEALED (epoxy), not snap-trimmed; ½-pint kit seals ~20–40 linear ft of cut edge."),
     Part("walkway-drum-exit-grp", "Drum-exit punch-out grating", "plastics-sheet",

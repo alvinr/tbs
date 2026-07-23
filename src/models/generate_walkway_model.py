@@ -172,7 +172,6 @@ def walkway_decks():
     # Inset each deck's WALL edge by the bracket plate thickness so the grate sits on the
     # INSIDE of the gusset-bracket plates (which mount flat on the wall) instead of through
     # them — matches the overview fix.
-    btw = k.WALKWAY_WIDE_BRACKET_T            # 10mm — widened bracket plate (BRK_T = 8 std)
     # Near/far grates start at the left-walkway inner edge (X = WK_LEFT_X+WK_W). With the
     # floor-leg cantilever redesign there is no full-width kerb beam to cut around.
     near_x_l = WK_LEFT_X + WK_W
@@ -183,18 +182,14 @@ def walkway_decks():
     # (Z130); the door-end band of the left run (near_x_l..~X900) is a REMOVABLE lift-out for
     # transport (distinct color) — the panel/cage underside sweeps the near deck there, so it
     # lifts out with the left walkway rather than dropping the grate (#8). The rest is fixed.
-    if WK_NEAR_WIDE_XL > near_x_l:
-        liftout_x = min(ov.WALKWAY_NEAR_LIFTOUT_X_R, WK_NEAR_WIDE_XL)   # X950 (sweep X≈896 +50mm)
-        parts.append(ruby_box("Walkway Near (door-end, removable)", near_x_l, BRK_T, GRATE_Z,
-                              liftout_x - near_x_l, WK_W - BRK_T, t, color=C_REMOVABLE))
-        if WK_NEAR_WIDE_XL > liftout_x:
-            parts.append(ruby_box("Walkway Near (left)", liftout_x, BRK_T, GRATE_Z,
-                                  WK_NEAR_WIDE_XL - liftout_x, WK_W - BRK_T, t, color=C_WALKWAY))
-    parts.append(ruby_box("Walkway Near (widened)", WK_NEAR_WIDE_XL, btw, GRATE_Z,
-                          WK_NEAR_WIDE_XR - WK_NEAR_WIDE_XL, WK_NEAR_WIDE_W - btw, t, color=C_WALKWAY))
-    if WK_NEAR_WIDE_XR < near_x_r:
-        parts.append(ruby_box("Walkway Near (right)", WK_NEAR_WIDE_XR, BRK_T, GRATE_Z,
-                              near_x_r - WK_NEAR_WIDE_XR, WK_W - BRK_T, t, color=C_WALKWAY))
+    # Removable door-end band (near_x_l..X950) lifts out for transport — its own piece by design.
+    # The rest of the near deck is ONE continuous fixed piece with the EP/battery bump-out
+    # integral (no butt joints at the widening) — shared helper so it can't drift from overview.
+    liftout_x = min(ov.WALKWAY_NEAR_LIFTOUT_X_R, WK_NEAR_WIDE_XL)   # X950 (sweep X≈896 +50mm)
+    parts.append(ruby_box("Walkway Near (door-end, removable)", near_x_l, BRK_T, GRATE_Z,
+                          liftout_x - near_x_l, WK_W - BRK_T, t, color=C_REMOVABLE))
+    parts.append(ov.near_fixed_deck_grate("Walkway Near (fixed, bump integral)",
+                                          liftout_x, GRATE_Z, t, C_WALKWAY))
 
     # Far deck.
     parts.append(ruby_box("Walkway Far", near_x_l, WK_FAR_YD, GRATE_Z,
@@ -203,13 +198,9 @@ def walkway_decks():
     # (The right grate rides the Walkways tag via ov.right_walkway_grate() — see the
     #  component list — so it shows with the decks but not in the bare Right-Cantilever scene.)
 
-    # Left deck — removable lift-out (distinct color) + drum-exit punch-out.
-    # Far corner carries the muslin-drop notch (grate-only) — reuse the overview helper.
-    parts.append(ov._notch_grate("Walkway Left (removable)", WK_LEFT_X, GRATE_Z,
-                                 WK_W, t, C_REMOVABLE, k.WALKWAY_MUSLIN_NOTCH_L_X0, k.WALKWAY_MUSLIN_NOTCH_L_X1))
-    parts.append(ruby_box("Walkway Left punch-out", WK_LEFT_X + WK_W, WK_LEFT_WIDE_YL,
-                          GRATE_Z, WK_LEFT_WIDE_W - WK_W, WK_LEFT_WIDE_YR - WK_LEFT_WIDE_YL,
-                          t, color=C_REMOVABLE))
+    # Left deck — removable lift-out (distinct color) as ONE continuous piece: drum-exit
+    # punch-out tab + muslin-drop notch both integral (no butt-jointed add-on). Shared helper.
+    parts.append(ov.left_liftout_grate("Walkway Left (removable)", GRATE_Z, t, C_REMOVABLE))
     return '\n'.join(parts)
 
 

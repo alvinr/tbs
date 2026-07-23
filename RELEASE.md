@@ -24,6 +24,18 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Walkway decks reworked to continuous cut pieces — bump-out & punch-out now integral, not
+  butt-jointed add-ons.** The near-walkway EP/battery bump-out and the left lift-out's drum-exit
+  punch-out were each modeled as a *separate* box butt-jointed onto the deck — which reads as
+  "needs its own support." Both are now **one continuous L-cut** (new shared `near_fixed_deck_grate`
+  + `left_liftout_grate` prism helpers), matching how they're cut from flat GRP stock: no mid-deck
+  joint at either widening. The muslin-drop notch folds into the same left piece. Only the four
+  corner joins and the **one unavoidable near/far sheet seam** (molded GRP tops out at 3′×10′, and
+  the near run is ~3.9m) remain as joints — the seam is placed away from the bump shoulders. The
+  bump-out itself is carried by the deeper 500mm-arm wall-cantilever brackets at 457mm rib centers.
+  Rippled through all 5 models (overview / walkway / lighttrap / film-plane / water) + the plan-view
+  construction notes + the GRP cut-plan (now drawn as integral-L polygons). No cost/area change.
+
 - **Walkway grating supplier → American Grating (primary), McNichols held as secondary.** The molded
   1″ vinyl-ester GRP is now priced to American Grating's public list (~$830 for 2× 3′×10′ @ $415),
   banded to **$830–$1,050** to cover freight + edge cut pending a firm cut quote; McNichols' revised

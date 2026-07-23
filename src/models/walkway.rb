@@ -199,35 +199,13 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Walkway Near (left)
+  # Walkway Near (fixed, bump integral)
   grp = ents.add_group
-  grp.name = "Walkway Near (left)"
-  face = grp.entities.add_face([950.mm,8.mm,115.mm], [1055.mm,8.mm,115.mm], [1055.mm,300.mm,115.mm], [950.mm,300.mm,115.mm])
+  grp.name = "Walkway Near (fixed, bump integral)"
+  face = grp.entities.add_face([950.mm,8.mm,115.mm], [4329.mm,8.mm,115.mm], [4329.mm,300.mm,115.mm], [2626.mm,300.mm,115.mm], [2626.mm,500.mm,115.mm], [1055.mm,500.mm,115.mm], [1055.mm,300.mm,115.mm], [950.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
-  mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
-  mat.color = Sketchup::Color.new(119, 119, 119)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near (widened)
-  grp = ents.add_group
-  grp.name = "Walkway Near (widened)"
-  face = grp.entities.add_face([1055.mm,10.mm,115.mm], [2626.mm,10.mm,115.mm], [2626.mm,500.mm,115.mm], [1055.mm,500.mm,115.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(25.mm)
-  mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
-  mat.color = Sketchup::Color.new(119, 119, 119)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near (right)
-  grp = ents.add_group
-  grp.name = "Walkway Near (right)"
-  face = grp.entities.add_face([2626.mm,8.mm,115.mm], [4329.mm,8.mm,115.mm], [4329.mm,300.mm,115.mm], [2626.mm,300.mm,115.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(25.mm)
-  mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
+  mat = model.materials["Walkway Near (fixed, bump integral)"] || model.materials.add("Walkway Near (fixed, bump integral)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -238,7 +216,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([470.mm,2062.mm,115.mm], [4329.mm,2062.mm,115.mm], [4329.mm,2354.mm,115.mm], [470.mm,2354.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
-  mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
+  mat = model.materials["Walkway Near (fixed, bump integral)"] || model.materials.add("Walkway Near (fixed, bump integral)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -246,18 +224,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Left (removable)
   grp = ents.add_group
   grp.name = "Walkway Left (removable)"
-  face = grp.entities.add_face([170.mm,0.mm,115.mm], [470.mm,0.mm,115.mm], [470.mm,1912.mm,115.mm], [370.mm,1912.mm,115.mm], [370.mm,2062.mm,115.mm], [470.mm,2062.mm,115.mm], [470.mm,2362.mm,115.mm], [170.mm,2362.mm,115.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(25.mm)
-  mat = model.materials["Walkway Near (door-end, removable)"] || model.materials.add("Walkway Near (door-end, removable)")
-  mat.color = Sketchup::Color.new(192, 96, 0)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Left punch-out
-  grp = ents.add_group
-  grp.name = "Walkway Left punch-out"
-  face = grp.entities.add_face([470.mm,800.mm,115.mm], [770.mm,800.mm,115.mm], [770.mm,1560.mm,115.mm], [470.mm,1560.mm,115.mm])
+  face = grp.entities.add_face([170.mm,0.mm,115.mm], [170.mm,2362.mm,115.mm], [470.mm,2362.mm,115.mm], [470.mm,2062.mm,115.mm], [370.mm,2062.mm,115.mm], [370.mm,1912.mm,115.mm], [470.mm,1912.mm,115.mm], [470.mm,1560.mm,115.mm], [770.mm,1560.mm,115.mm], [770.mm,800.mm,115.mm], [470.mm,800.mm,115.mm], [470.mm,0.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (door-end, removable)"] || model.materials.add("Walkway Near (door-end, removable)")
@@ -271,7 +238,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4329.mm,0.mm,115.mm], [4629.mm,0.mm,115.mm], [4629.mm,2362.mm,115.mm], [4329.mm,2362.mm,115.mm], [4329.mm,2062.mm,115.mm], [4429.mm,2062.mm,115.mm], [4429.mm,1912.mm,115.mm], [4329.mm,1912.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
-  mat = model.materials["Walkway Near (left)"] || model.materials.add("Walkway Near (left)")
+  mat = model.materials["Walkway Near (fixed, bump integral)"] || model.materials.add("Walkway Near (fixed, bump integral)")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat

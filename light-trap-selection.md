@@ -125,8 +125,8 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 | Rotating drum | 1/8" HDPE C-shell (LT_DRUM_T), **Ø864mm OD** (~Ø850mm bore), single **80° opening**, edge-stiffened, rotates inside the housing on a 15mm running gap |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (openings <90°, 180° apart; see §5) |
 | Drum/housing height | 2,200mm |
-| Top cap | 1/8" HDPE plate, flanged, welded to the drum; steel hub insert for the stub shaft |
-| Bottom cap | 1/8" HDPE plate, flanged, steel hub insert with 75mm stub shaft for lower bearing |
+| Top cap | 3/16" HDPE plate, flanged, welded to the drum; steel hub insert for the stub shaft |
+| Bottom cap | 3/16" HDPE plate, flanged, steel hub insert with 75mm stub shaft for lower bearing |
 | Upper stub shaft | 75mm Ø × 150mm steel stub, into the drum top-cap steel hub (nylon-isolated) |
 | Surface treatment | Interior: black-pigmented sheet + flat-black at welds; exterior: UV-stabilized sheet (no primer) |
 

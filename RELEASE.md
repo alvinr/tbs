@@ -32,7 +32,9 @@ file** — a release must not ship without a changelog entry:
   This consolidated the drum/skins/bay off the nominal *4mm PP* onto HDPE — all light-lock plastic is
   now **one weld-compatible material** (PP↔HDPE won't extrusion-weld). Booked the real **1/8″ (3.18mm)**
   thickness through the constants + weight model (`LT_DRUM_T`/`PANEL_SKIN_T`/`BAY_WALL_T` → 3.18), cutting
-  the swinging-panel assembly **~13 kg** (panel 171→161, drum 38→35; structure 584→571, dry 3,238→3,225).
+  the swinging-panel assembly **~12 kg** (panel 171→161, drum 38→36; structure 584→572, dry 3,238→3,226).
+  The drum's 2 **end caps stay 3/16″** (`LT_CAP_T`, thicker than the 1/8″ shell) — they carry the stub
+  shafts into the SKF 6215 bearings, so the hub load path keeps its stiffness; cut from the housing offcut.
   The solid-sheet pricing also corrected badly-low estimates (+~$920–1,210 across the four): grand total
   → **$26,522 / $31,991 / $39,331**. Housing kept at 3/16″ for the drum-gap stiffness margin.
   *Pending: overview.skp + lighttrap.skp re-send/re-save.*

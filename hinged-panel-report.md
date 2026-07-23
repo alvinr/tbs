@@ -104,16 +104,16 @@ is slightly lower than the whole-panel figure carried in the
 | | HDPE center skins | 1/8" HDPE, Ø900 aperture deducted | 11.4 |
 | | **A subtotal** | | **103.4** |
 | **B · Housing** | HDPE shell + steel flange/hub | Ø900×3/16", two 80° openings | 21.8 |
-| **C · Drum** | HDPE C-shell + caps + Ø75 shafts + 2× SKF 6215 + stiffeners + grab rail | Ø864×1/8" | 34.6 |
+| **C · Drum** | HDPE C-shell (1/8") + caps (3/16") + Ø75 shafts + 2× SKF 6215 + stiffeners + grab rail | Ø864 | 35.9 |
 | **D · Bay** | B2 punch-out bay walls | 1/8" HDPE, 4-wall tube 0.89m deep | 20.8 |
 | **E · Cage** | Drum support cage frame | ~25×25×3 angle, 16.1m box | 16.1 |
 | **F · Seals** | Vertical perimeter + housing EPDM + top/bottom strip brush + drum wipers | 20mm foam + strip/felt brush | 2.7 |
 | **G · Latches** | Cam latches (4) | ~0.5 kg each | 2.0 |
 | **H · Pivot (rotating)** | Thrust/journal bearings + collar/hub | carries leaf at pivot | 13.0 |
-| | **MOVABLE TOTAL (carried-rotating)** | | **≈214** |
+| | **MOVABLE TOTAL (carried-rotating)** | | **≈216** |
 | | *+ transport-only locks (stays + 4 saddles)* | engaged only when swung | +10 |
 
-**By material:** steel 103 kg (48%), HDPE 78 kg (36%), aluminum 20 kg (9%),
+**By material:** steel 103 kg (48%), HDPE 79 kg (37%), aluminum 20 kg (9%),
 plywood 10 kg (5%, Fan B band only), EPDM/other 3 kg. (All light-lock plastic —
 skins, drum, bay, housing — is now one weld-compatible HDPE.)
 
@@ -165,7 +165,7 @@ envelope (same material and weld process as the drum/housing).
 | Exterior finish | UV-stabilized black/gray sheet — inherent, no primer |
 | Clear walking height | 1,910mm (between bearings) |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (§3.3) |
-| Weight | housing ~22 kg + rotating drum ~35 kg = **~57 kg** (plastic skin, ≈58% of the 3mm-aluminum ~99 kg; the steel shaft/bearings set a floor the shell mass can't drop below) |
+| Weight | housing ~22 kg + rotating drum ~36 kg = **~58 kg** (plastic skin, ≈59% of the 3mm-aluminum ~99 kg; the steel shaft/bearings set a floor the shell mass can't drop below) |
 
 ### 3.2 Bearings
 
@@ -444,7 +444,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | [3/16" UV-stab HDPE sheet, black — 48×96 (×3)](https://www.usplastic.com/catalog/item.aspx?itemid=136962&catid=705) (46685) | Ø900 fixed housing shell (~65 ft²), rolled + extrusion-welded from 3× 4×8 ft 3/16" (≈5mm) UV-stab HDPE sheets — the 111" circumference needs 3× 48" sheet widths (2 fall ~15" short). ~33% offcut on the 3rd sheet; a 5×10 ft sheet would cut to 2 (optimize at order). US Plastics 46685 $184.99/sheet. | 3 sheet | US Plastics / TAP Plastics | $555 |
-| [1/8" black HDPE sheet — 48×96 (×3)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | Ø864 revolving drum shell (~65 ft²) + 2 end caps from the 3rd-sheet offcut — rolled + extrusion-welded. 1/8" HDPE is nearest stock to the 4mm LT_DRUM_T nominal AND weld-compatible with the 3/16" HDPE housing (46685); the skin is a light-tight cover over the steel shaft + caps + edge-stiffening, so the 0.8mm is non-structural (and lighter = easier revolve, less bearing load). 106.9" circ needs 3× 48" widths. US Plastics 46684 $123.34/sheet. | 3 sheet | US Plastics / TAP Plastics | $370 |
+| [1/8" black HDPE sheet — 48×96 (×3)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | Ø864 revolving drum shell (~65 ft²) — rolled + extrusion-welded 1/8" HDPE (106.9" circ needs 3× 48" widths). The shell is a light-tight cover over the steel shaft + caps + edge-stiffening, so its 1/8" is non-structural (lighter = easier revolve, less bearing load). The 2 end caps are STRUCTURAL (they carry the stub shafts into the SKF 6215 bearings) → 3/16" HDPE (LT_CAP_T), cut from the housing 46685 offcut — no extra sheet. All HDPE, weld-compatible. US Plastics 46684 $123.34/sheet. | 3 sheet | US Plastics / TAP Plastics | $370 |
 | [SKF 6215-2RS1 sealed bearing](https://bearingsdirect.com/6215-2rs-ball-bearing-75x130x25-sealed-6215-2nse/) (6215-2RS) | Top and bottom (drum rotation). Ø75 bore × Ø130 OD × 25mm wide, C=52.7 kN, both-sides sealed (6215-2RS / 6215-2NSE; SKF designation 6215-2RS1). Buy the ABEC-1 grade: the drum is a hand-rotated, low-speed, low-load light-lock — the tighter ABEC-3 tolerance buys nothing here (SKF's standard 6215-2RS1 is Normal/P0 = ABEC 1). VERIFIED $60.59 ea at Bearings Direct 2026-07-18. ALT: McMaster 6138K125 @ $394.88 ea — a heavy commodity-bearing premium, prefer the distributor. | 2 ea | Bearings Direct / McMaster-Carr | $121 |
 | 75mm Ø × 150mm steel stub shaft | Bearing shafts | 2 ea | Steel service center | $30–$50 |
 | [Felt/brush wiper strip + 12mm closed-cell neoprene](https://www.doitbest.com/product/146005/) (BP17A) | Drum↔housing rotating seal (opening edges + top/bottom rings) + drum top/bottom | 1 lot | Frost King + Canal Rubber | $40–$75 |

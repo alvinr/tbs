@@ -271,6 +271,7 @@ LT_HOUSING_R   = DRUM_R   # 450 — fixed housing radius
 LT_HOUSING_T   = 5        # housing wall (mm) [rev9 B2: 3mm Al → 5mm UV-HDPE plastic skin]
 LT_DRUM_OR     = 432      # rotating drum outer radius (Ø864) — 15mm running gap
 LT_DRUM_T      = 3.18     # drum wall (mm) [rev9 B2: 3mm Al → 1/8″ HDPE; 2026-07-22: 1/8" HDPE, US Plastics 46684 — weld-compatible with the 3/16" HDPE housing]
+LT_CAP_T       = 4.76     # drum top/bottom cap thickness (mm) — 3/16" HDPE, THICKER than the 1/8" shell: the caps carry the steel stub shafts into the SKF 6215 bearings (structural hub load path). Cut from the housing 46685 offcut (no extra sheet).
 LT_OPENING_DEG = 80       # each opening arc, degrees (<90° for light-tightness)
 
 # ── B2 punch-out bay (rev9) — the hinge-panel center zone protrudes forward,

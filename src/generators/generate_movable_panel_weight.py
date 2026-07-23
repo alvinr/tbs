@@ -78,7 +78,7 @@ def _rows():
     cap_area = math.pi * (k.LT_DRUM_OR / 1000.0) ** 2 * (1 - open_frac)
     add("C Drum", "HDPE C-shell", f"Ø864×1/8\", one {k.LT_OPENING_DEG}° opening",
         drum_circ * (1 - open_frac) * Hd * td * RHO_HDPE)
-    add("C Drum", "HDPE end caps (2)", "C-shaped, 1/8\"", 2 * cap_area * td * RHO_HDPE)
+    add("C Drum", "HDPE end caps (2)", "C-shaped, 3/16\" (hub load path)", 2 * cap_area * (k.LT_CAP_T / 1000.0) * RHO_HDPE)
     add("C Drum", "Steel stub shafts (2)", "Ø75×150",
         2 * math.pi * (0.0375 ** 2) * 0.150 * RHO_STEEL)
     add("C Drum", "SKF 6215 bearings (2)", "sealed deep-groove", 2 * 1.3)

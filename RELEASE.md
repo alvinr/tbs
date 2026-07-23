@@ -24,6 +24,19 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Light-lock plastics firmed to US Plastics stock — one weld-compatible HDPE, real pricing.**
+  Priced all four light-lock/panel plastic parts to actual [US Plastics](https://www.usplastic.com/)
+  sheet: the Ø900 housing to **3/16″ HDPE** ([46685](https://www.usplastic.com/catalog/item.aspx?itemid=136962&catid=705),
+  3 sheets = $555) and the drum, panel skins, and B2 bay to **1/8″ HDPE**
+  ([46684](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705), $123.34/sheet).
+  This consolidated the drum/skins/bay off the nominal *4mm PP* onto HDPE — all light-lock plastic is
+  now **one weld-compatible material** (PP↔HDPE won't extrusion-weld). Booked the real **1/8″ (3.18mm)**
+  thickness through the constants + weight model (`LT_DRUM_T`/`PANEL_SKIN_T`/`BAY_WALL_T` → 3.18), cutting
+  the swinging-panel assembly **~13 kg** (panel 171→161, drum 38→35; structure 584→571, dry 3,238→3,225).
+  The solid-sheet pricing also corrected badly-low estimates (+~$920–1,210 across the four): grand total
+  → **$26,522 / $31,991 / $39,331**. Housing kept at 3/16″ for the drum-gap stiffness margin.
+  *Pending: overview.skp + lighttrap.skp re-send/re-save.*
+
 - **Wall through-bolts finalized: partial-thread, right-sized to the container-wall grip.** A grip
   analysis against the ISO container spec (side-wall corrugation ~25–30mm, not the ~38mm the prose
   assumed) showed the M12×80/×90 through-bolts were oversized. Re-sized every wall bolt: film saddle

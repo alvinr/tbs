@@ -27,7 +27,7 @@ Modeled dimensions are the `tbs_constants.py` value(s) the generators draw. mm.
 | # | Component | Real product (datasheet) | Modeled | Verdict |
 |---|-----------|--------------------------|---------|---------|
 | 1 | IBC tote (1,000 L caged) | 1219×1016×1168 | `IBC_W/IBC_D/IBC_H_1000` | ✅ FIXED (v2) |
-| 2 | LiFePO4 battery, 100Ah 12V (Renogy Smart Lithium) | 330×172×214 — Renogy 12V 100Ah Smart Lithium | `BA_W/BA_D/BA_H` | ✅ FIXED |
+| 2 | LiFePO4 battery, 100Ah 12V (Renogy Core Series) | 260×169×211 — Renogy 12V 100Ah Core Series | `BA_W/BA_D/BA_H` | ✅ FIXED |
 | 3 | Shurflo 2088-554-144 pump (P-01 Blue supply) | 216×127×114 — Shurflo 2088-554-144 | `PUMP_D×PUMP_YD_SPAN×Z` | ✅ FIXED (minor) — protrusion PUMP_D 100→114 |
 | 4 | Big Blue filter housing 4.5"×20" (separate) | Ø184×594 — Pentek 4.5×20 BB | `BB_OD/BB_H` | 3-separate design of record (2026-07): combo → 3 separate housings + frame per plumbing-report §3.1/§7.2. Prices indicative — firm at the Aug-2026 re-price. |
 | 5 | 150×150×50mm axial fans | 150×150×50 | `FAN_DIAM/FAN_BODY_D` | ✅ FIXED |
@@ -48,10 +48,10 @@ is retained as the **as-found** audit record — the Problem/Action text describ
 discrepancy and the fix that was applied.*
 
 ### 2. Battery — Renogy 12 V 100 Ah LiFePO4 ✅ RESOLVED (§4)
-- **Real:** 330 × 172 × 214 mm (L×W×H). [Renogy product page](https://www.renogy.com/12v-100ah-smart-lithium-iron-phosphate-battery/) · spec via [Renogy spec listing](https://www.renogy.com/pages/12v-100ah-smart-lithium-iron-phosphate-battery-rbt100lfp12s-html)
+- **Real:** 260 × 169 × 211 mm (L×W×H), 10.5 kg, side busbar terminals. [Renogy Core Series (Off Grid Stores)](https://offgridstores.com/products/renogy-12v-100ah-core-series-deep-cycle-lithium-iron-phosphate-battery) (RBT12100LFP-US; switched from the Smart Lithium 330×172×214 for the side busbar → simpler vertical stacking)
 - **Modeled:** `BA_X`=1810, `BA_W`=500, `BA_D`=120, `BA_H_LO`=150, `BA_H_HI`=650 → bank 500(X)×120(Yd)×500(Z); each of 2 packs ~240×120×500.
 - **Problem:** the modeled pack is **500 mm tall and only 120 mm deep**; the real pack is **214 mm tall and 172 mm deep**. Two packs side-by-side along X are 2×330 = **660 mm** (vs modeled 500), or stacked are 428 mm tall (vs 500). The battery-bank footprint on the pinhole wall and its clearances (electrical panel above, cable runs) are all drawn against the wrong box.
-- **Action:** set `BA_*` to two real 330×172×214 packs (decide side-by-side vs stacked), re-render electrical/floorplan/assembly + the film-plane near-wall ghost, re-check EP-above-battery clearance.
+- **Action:** set `BA_*` to two real 260×169×211 packs (decide side-by-side vs stacked), re-render electrical/floorplan/assembly + the film-plane near-wall ghost, re-check EP-above-battery clearance.
 
 ### 3. Pump — Shurflo 2088-554-144 ✅ RESOLVED (§4)
 - **Real:** 8.5"L × 5"W × 4.5"H = **216 × 127 × 114 mm**. [Fresh Water Systems](https://www.freshwatersystems.com/products/shurflo-2088-554-144-delivery-pump-3-5-gpm-45-psi-12vdc-no-cord) · [datasheet PDF](https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf)
@@ -110,7 +110,7 @@ listed for completeness; confirm the drawn size equals the catalog dimension:
 |-----------|----------|---------------|--------------|------------|--------|
 | **Fan** | keep the drawn 150 mm axial **panel** fan; swap the product | 150×150×50 | none (model already 150×50) | "AC Infinity S6" → 150×150×50 mm 12 V DC axial fan ([15050-12V](https://www.coolingfanfactory.com/product/DC-Fan-15050-12V-24V-48V-150mm.html)) | ✅ done |
 | **Filter** | keep **4.5"×20"** (media life) | 594 × Ø184 | `BB_OD` 130 → 184, `BB_H` 340 → 594 | spec/model = 4.5×20; cost ~$336–550; cartridge intervals ~2× | ✅ done |
-| **Battery** | resize to real pack, **side-by-side** | 2× 330×172×214 | `BA_D`172/`BA_H_HI`364/`BA_W`680/`BA_X`1540 | dims added | ✅ done (line-of-sight passes) |
+| **Battery** | Core pack, **stacked** | 1× 260×169×211 (+ opt. 2nd stacked) | `BA_D`169/`BA_H_HI`371/`BA_W`260/`BA_X`1829 | dims updated | ✅ done (line-of-sight passes) |
 | **Pump** | resize | 216×127×114 | `PUMP_D` 100→114 (W/L already matched) | dims added | ✅ done |
 | **Accumulator** | minor | 200×127×125 | cyl 150→200 | dims added | ✅ done |
 | **Spray beam** | metric | 40×25×3 (304 SS RHS) | none | alu SHS 40×40 → SS RHS 40×25 (carriage shrink, 2026-07-01) | ✅ done |

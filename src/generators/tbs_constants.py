@@ -384,10 +384,10 @@ EP_H_LO    = 1150    # IP65 enclosure / fuse-busbar zone bottom Z (mm) — REACH
 EP_H_HI    = 1560    # electrical panel top Z (mm) — REACH RE-LAY: MPPT top now no-stool reachable (was 2100)
 
 BA_X       = EP_X    # battery bank left edge X (mm) — in the EP skinny column (= EP_X); the 2 packs STACK vertically (was 1540, 680-wide side-by-side, before the skinny-column reorg)
-BA_W       = 330     # battery bank width (mm) — 1× Renogy 100Ah (330 long); the 2 packs now STACK vertically (BA_STACK_Z2), not side-by-side
+BA_W       = 260     # battery bank width (mm) — 1× Renogy 100Ah Core (260 long); the 2 packs STACK vertically (BA_STACK_Z2), not side-by-side
 BA_H_LO    = 160     # battery bank bottom Z (mm) — sits on a 20mm pad on the Z140 grate deck [+10 for 25mm grate; was 150]
-BA_H_HI    = BA_H_LO + 214   # LOWER pack top Z (mm) = 160 + 214 (real Renogy 100Ah height); the upper pack stacks above (BA_STACK_TOP)
-BA_D       = 172     # battery bank depth from wall (mm) — real Renogy 100Ah width (the rev7 'slim-profile 120mm' assumption was wrong — see component-dimension-audit.md)
+BA_H_HI    = BA_H_LO + 211   # LOWER pack top Z (mm) = 160 + 211 (real Renogy 100Ah Core height); the upper pack stacks above (BA_STACK_TOP)
+BA_D       = 169     # battery bank depth from wall (mm) — real Renogy 100Ah Core width (side busbar terminals; the rev7 'slim-profile 120mm' assumption was wrong — see component-dimension-audit.md)
 
 # ── EP skinny-column layout (2026-07-06) — the EP is a tall NARROW column shifted left so it fits
 # inside the cantilever-limited widened walkway (column right edge = cantilever X2069 + 100mm = X2169);

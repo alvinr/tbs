@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 3. Pinhole optics plate | $110 | $265 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,146 | $6,712 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,419 | $7,924 |
-| 6. Electrical — power, circuits, wiring | $2,986 | $3,097 |
+| 6. Electrical — power, circuits, wiring | $2,942 | $2,973 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,032 | $2,506 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,062 | $2,943 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$26,793** | **~$36,407** |
+| **TOTAL (base build + 50-print run)** | **~$26,749** | **~$36,283** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -167,13 +167,13 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | Cooler inverter | 1 ea | Victron | ventilation | $153–$275 |
-| [LiFePO4 battery, 100Ah 12V (Renogy Smart Lithium)](https://www.renogy.com/12v-100ah-smart-lithium-iron-phosphate-battery/) | 1 ea | Renogy | electrical | $350–$430 |
+| [LiFePO4 battery, 100Ah 12V (Renogy Core Series)](https://offgridstores.com/products/renogy-12v-100ah-core-series-deep-cycle-lithium-iron-phosphate-battery) (RBT12100LFP-US) | 1 ea | Off Grid Stores | electrical | $306 |
 | [PV array disconnect — DC load-break isolator, 50A/150VDC (NEC 690.13)](https://www.automationdirect.com/) | 1 ea | AutomationDirect | electrical | $40 |
 | [Solar panel adjustable tilt mount set (per panel)](https://www.amazon.com/Renogy-Adjustable-Solar-Panel-Brackets/dp/B07CSKFWK7) (RNG-MTS-TMB-G1-US) | 3 ea | Amazon | electrical | $108 |
 | [Solar panel, 200W monocrystalline 12V (Renogy RSP200D)](https://offgridstores.com/products/renogy-200-watt-12-volt-monocrystalline-solar-panel) (RSP200D-US) | 3 ea | Off Grid Stores | electrical | $510 |
 | [Victron Blue Smart IP65 12/15 shore backup charger](https://powerwerx.com/victron-bpc121531104r-bluesmart-ip65-1215) (BPC121531104R) | 1 ea | Powerwerx | electrical | $176 |
 | [Victron SmartSolar MPPT 100/50 charge controller](https://powerwerx.com/victron-scc110050210-smartsolar-mppt-10050) (SCC110050210) | 1 ea | Powerwerx | electrical | $194 |
-| **electrical-power subtotal** | | | | **$1,531–$1,733** |
+| **electrical-power subtotal** | | | | **$1,487–$1,609** |
 
 ### fabric-textile
 
@@ -437,14 +437,13 @@ indicative low–high estimates — get quotes before ordering.
 | Home Depot | 25 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $887–$1,162 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | Photographers' Formulary | 2 | chemistry-reagents | $1,051 |
+| Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
 | Powerwerx | 4 | electrical-distribution, electrical-power | $758 |
 | Barn Door Ag | 7 | plumbing-fittings | $414–$652 |
-| Off Grid Stores | 3 | electrical-distribution, electrical-power | $606 |
 | Container Exchanger | 1 | water-equipment | $320–$600 |
 | Fresh Water Systems | 5 | water-equipment | $400–$445 |
-| Renogy | 1 | electrical-power | $350–$430 |
 | Curbell Plastics | 1 | plastics-sheet | $380 |
 | marine plywood supplier | 2 | timber-ply | $190–$330 |
 | Fabric Direct | 1 | substrate-fabric | $300 |

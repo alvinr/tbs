@@ -18,14 +18,14 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 6. Electrical — power, circuits, wiring | $2,942 | $2,973 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,032 | $2,506 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
-| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $4,173 | $4,789 |
+| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,837 | $3,453 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,776 | $2,002 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $214 | $239 |
 | 8. Cooling & ventilation | $737 | $887 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$29,375** | **~$38,164** |
+| **TOTAL (base build + 50-print run)** | **~$28,039** | **~$36,828** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -262,8 +262,8 @@ indicative low–high estimates — get quotes before ordering.
 | [Dibond ACM panel 4mm (black), 4×8 sheet](https://www.curbellplastics.com/product-category/material/aluminum-composite-material-acm/dibond-panels/) | 4 sheet | Curbell Plastics | film | $380 |
 | Drum-exit punch-out grating | 1 lot | McNichols | walkway | $50–$65 |
 | HDPE filler strip (L-channel packer) | 1 lot | TAP Plastics | clamp | $30–$70 |
-| Molded GRP grating (McNichols quote, cut-to-size) | 1 lot | McNichols | walkway | $3,036 |
-| **plastics-sheet subtotal** | | | | **$5,371–$5,516** |
+| Molded GRP grating (McNichols quote, cut-to-size) | 1 lot | McNichols | walkway | $1,701 |
+| **plastics-sheet subtotal** | | | | **$4,036–$4,181** |
 
 ### plumbing-fittings
 
@@ -429,9 +429,9 @@ indicative low–high estimates — get quotes before ordering.
 | McMaster-Carr | 41 | bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $3,607–$3,701 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,130–$3,472 |
-| McNichols | 3 | fasteners-hardware, plastics-sheet | $3,116–$3,151 |
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,853–$2,411 |
 | Amazon | 63 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,579–$1,875 |
+| McNichols | 3 | fasteners-hardware, plastics-sheet | $1,781–$1,816 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Online Metals | 7 | aluminum, stainless-sheet, steel-structural | $1,006–$1,426 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |

@@ -10625,10 +10625,10 @@ end
   grp = ents.add_group
   grp.name = "LT Drum top cap"
   ge = grp.entities
-  circle = ge.add_circle([-400.mm,1181.mm,2245.mm], [0,0,1], 432.mm, 24)
+  circle = ge.add_circle([-400.mm,1181.mm,2245.24.mm], [0,0,1], 432.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(5.mm)
+  cface.pushpull(4.76.mm)
   mat = model.materials["Carriage Plate L L"] || model.materials.add("Carriage Plate L L")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
@@ -10641,7 +10641,7 @@ end
   circle = ge.add_circle([-400.mm,1181.mm,130.mm], [0,0,1], 432.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(5.mm)
+  cface.pushpull(4.76.mm)
   mat = model.materials["Carriage Plate L L"] || model.materials.add("Carriage Plate L L")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0

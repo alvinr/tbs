@@ -433,7 +433,7 @@ bounces noticeably less than the rod-hung version it replaces.
 <!-- BEGIN parts:walkway -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Molded GRP (fiberglass) grating panels | 1" (25mm) MS-S-100, 1½×1½ square mesh, vinyl-ester, grit top, 2.60 lb/sf; ~47 ft² (4 sections + wide-zone landings). 4'×12' panel = $605 (American Grating public / McNichols quote-only). QTY 1–2 panels PENDING QUOTE — 1 forces near/far splices (4,159mm run > 12ft panel), 2 gives splice-free runs. See grp-grating-quote.md. | 1 lot | McNichols / American Grating | $605–$1,210 |
+| Molded GRP grating panels, 3'×10' (36×120) | 1" MS-S-100, 1½×1½ square mesh, vinyl-ester, grit, 2.60 lb/sf. 2× 3'×10' (36"×120") = MIN sheets to yield the ~47 ft² of walkway pieces (near/far each splice 120"+43.7"); $415/panel (American Grating public / McNichols quote). 2× 36×120 ($830) beats 1× 48×144 + offcut and is the min-cost fit. Cut plan: grp-grating-quote.md. | 2 panel | American Grating / McNichols | $830 |
 | GRP grating edge-seal kit | Fibergrate Sealing & Bonding Kit — molded FRP cut edges are field-SEALED (epoxy), not snap-trimmed; ½-pint kit seals ~20–40 linear ft of cut edge. | 1 kit | Fibergrate | $40–$60 |
 | Drum-exit punch-out grating | Extra GRP landing (~0.23 m²) at the light-lock exit | 1 lot | McNichols | $50–$65 |
 | Cantilever bracket — standard (near/far) | 8mm steel plate: 150mm vert leg + 300mm arm + 70mm gusset, welded (5 near + 9 far at 457mm centers) | 14 ea | Local fab | $420–$700 |
@@ -454,7 +454,7 @@ bounces noticeably less than the rod-hung version it replaces.
 | Floor-leg cantilever bracket (left walkway, ×5) | 50×50×3mm SHS post (~115mm) + 40×40×3mm SHS arm (2 reach X470, 3 extended to X770) + 128×60×8mm foot plate | 5 ea | Local fab | $55–$95 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 4 per foot plate (20 total). Self-drills the 6mm plate + 28mm plywood (structural bite in the ply — wedge/concrete anchors don't hold in a ply-over-steel container floor). Hex washer head bears on the plate. 410 SS. Simpson SDWS 316 (pre-drilled plate holes) if max corrosion is wanted. | 20 ea | Bridge Fasteners / ASMC | $7–$11 |
 | Grating clips | Removable spring clips, stainless | 30 ea | McNichols / McMaster-Carr | $30–$50 |
-| **Walkway total** | | | | **$1,742–$2,963** |
+| **Walkway total** | | | | **$1,967–$2,583** |
 <!-- END parts:walkway -->
 
 *Evap-cooler transport-stowage hardware (plywood base plate + ratchet straps, §7) is costed in the [Ventilation & Cooling parts list](ventilation-report.md), not here.*

@@ -407,7 +407,7 @@ reports — [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) and
 | Category | Low estimate | High estimate |
 |----------|-------------|--------------|
 | Water equipment — §8 BOM (IBC storage, pumps + accumulator, 3-stage filter train, valves & fittings, pipe, wiring, consumables) | $2,073 | $3,123 |
-| Processing tray (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.1) | <!-- BEGIN costing:tray-low -->$1,293<!-- END costing:tray-low --> | <!-- BEGIN costing:tray-high -->$2,016<!-- END costing:tray-high --> |
+| Processing tray (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.1) | <!-- BEGIN costing:tray-low -->$1,463<!-- END costing:tray-low --> | <!-- BEGIN costing:tray-high -->$2,241<!-- END costing:tray-high --> |
 | Spray bar assembly (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.2) | <!-- BEGIN costing:spray-low -->$344<!-- END costing:spray-low --> | <!-- BEGIN costing:spray-high -->$436<!-- END costing:spray-high --> |
 | **TOTAL** | **$3,660** | **$5,513** |
 

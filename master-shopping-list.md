@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $467 | $698 |
 | 3. Pinhole optics plate | $110 | $265 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,146 | $6,712 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $5,419 | $7,924 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $5,589 | $8,149 |
 | 6. Electrical — power, circuits, wiring | $2,942 | $2,973 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,032 | $2,506 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$26,654** | **~$35,923** |
+| **TOTAL (base build + 50-print run)** | **~$26,824** | **~$36,148** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -254,6 +254,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
+| 1-1/4" HDPE plate, cut-to-size (slope shims) | 1 lot | US Plastic Corp | tray | $210–$300 |
 | [1/8" black HDPE sheet (48×96)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | 4 sheet | US Plastics | panel | $493 |
 | [1/8" black HDPE sheet (48×96, ×2)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | 2 sheet | US Plastics | panel | $247 |
 | [1/8" black HDPE sheet — 48×96 (×3)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | 3 sheet | US Plastics | lightlock | $370 |
@@ -261,9 +262,8 @@ indicative low–high estimates — get quotes before ordering.
 | [Dibond ACM panel 4mm (black), 4×8 sheet](https://www.curbellplastics.com/product-category/material/aluminum-composite-material-acm/dibond-panels/) | 4 sheet | Curbell Plastics | film | $380 |
 | Drum-exit punch-out grating | 1 lot | McNichols | walkway | $50–$65 |
 | HDPE filler strip (L-channel packer) | 1 lot | TAP Plastics | clamp | $30–$70 |
-| HDPE flat bar, 50mm wide | 5 ea | Online Metals | tray | $40–$75 |
 | Molded GRP grating panels, 3'×10' (36×120) | 2 panel | American Grating | walkway | $830 |
-| **plastics-sheet subtotal** | | | | **$2,995–$3,085** |
+| **plastics-sheet subtotal** | | | | **$3,165–$3,310** |
 
 ### plumbing-fittings
 
@@ -430,7 +430,7 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,130–$3,472 |
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,853–$2,411 |
-| Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
+| Online Metals | 8 | aluminum, stainless-sheet, steel-structural | $1,366–$1,886 |
 | Amazon | 63 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,579–$1,875 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
@@ -447,6 +447,7 @@ indicative low–high estimates — get quotes before ordering.
 | Fresh Water Systems | 5 | water-equipment | $400–$445 |
 | Curbell Plastics | 1 | plastics-sheet | $380 |
 | marine plywood supplier | 2 | timber-ply | $190–$330 |
+| US Plastic Corp | 1 | plastics-sheet | $210–$300 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | Victron | 1 | electrical-power | $153–$275 |
 | igus | 1 | bearings-motion | $261 |

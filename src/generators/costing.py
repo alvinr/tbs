@@ -172,7 +172,7 @@ WATER = [
     LineItem("Filter skid (3× Big Blue 4.5×20 separate housings on slotted-angle frame + cartridges)", 293, 392, 489, "2026-07-22: U-bracket retired → lag screws to ply backing −$18/−$21"),
     LineItem("Valves and fittings (6× BV ball valves, X1 4-way cross, S60×6 adapters, CV1, SV-01 + SV-02 taps, Blue equalization tie)", 699, 909, 1119, "2026-07-22: S60×6 adapter re-spec'd female-buttress×2\"NPT + 2→1\" bushing (CPP HMFN/20UD/027) +$48/+$24"),
     LineItem("Pipe (HDPE, spray bar)", 80, 97, 114),
-    LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1293, 1655, 2016, "2026-07-22: tray silicone gasket re-priced (Aqueon $17–25)"),
+    LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1463, 1853, 2241, "2026-07-23: slope shims firmed to the 1-1/4\" HDPE plate route ($210–300, from the $40–75 flat-bar est)"),
     LineItem("Spray bar assembly (40×25 SS RHS beam, side LDPE manifold, 26 nozzles, manifold + 7 feed tubes, 4 Ø32 wheels, ball joint, arm + turned adapter + jam nut + clamp collar, hose)", 344, 390, 436, "2026-07-22: arm jam nut/collar/self-tap/beam-clamp re-priced to real SKUs (Ruland CL-16-ST, Bobco flat-bar) +$47/+$66"),
     LineItem("Electrical (wiring only — fuse block in Electrical Report)", 37, 37, 37),
     LineItem("Processing consumables (6-mil poly, pH meter, citric acid)", 242, 260, 278),
@@ -1019,9 +1019,9 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (26704, 31849, 38863),  # 2026-07-23: GRP panel firmed to 2× 3'×10' @ $415 = $830 (min-sheet nest); high −$380 as the panel band collapses to firm. Per-change history in git log.
+    "grand_total": (26874, 32047, 39088),  # 2026-07-23: tray slope shims firmed to HDPE plate route (+$170/$225). Per-change history in git log.
     "walkway": (1967, 2276, 2583),  # 2026-07-23: GRP panel firmed to 2x 3ftx10ft (36x120) @ $415 = $830 (min sheets); band tightens vs the 1-2 panel estimate
-    "water": (5419, 6675, 7924),  # updated 2026-07-22: parts-identity batch — spray-bar (jam nut/collar/self-tap/beam-clamp), tray silicone gasket, S60×6 adapter re-spec, M12×40 hanger bolt. Detail in git log.
+    "water": (5589, 6873, 8149),  # 2026-07-23: tray slope shims → 1-1/4" HDPE plate route (+$170/$225)
     "container": (2300, 3300, 4300),
     "lightlock": (2032, 2268, 2506),   # 2026-07-22: Ø900 housing (46685 3/16" HDPE ×3 = $555) + Ø864 drum firmed to 1/8" black HDPE ×3 = $370 (was $150–240 est).  §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (1180, 1395, 1610),   # 2026-07-22: journal bushings → igus iglide J JFM-9095-100 $130.53/ea (from GGB DU $211.25) −$162/pair.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame)   # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items

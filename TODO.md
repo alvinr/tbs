@@ -13,12 +13,13 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ## ⚡ Parts firm-up tracker (active) — decisions + actions
 
-**Open DECISIONS (need Alvin):**
-- [ ] **Tray slope shims** — confirm **plate route ~$250** (rip 5 strips from 1-1/4″ HDPE plate + taper-cut with tray fab) vs $1,656 bar route.
+**Open DECISIONS (need Alvin):** _(none — batch clear)_
 
 **Pending ACTIONS:**
-- [x] **GRP panels — DONE 2026-07-23:** firmed to **2× 36″×120″ @ $415 = $830** (min-sheet nest; cut plan in `grp-grating-quote.md`). Get the vendor quote (American Grating / McNichols) against that.
-- [ ] `tray-hdpe-shim` — apply plate route once confirmed (currently est).
+- [x] **GRP panels — DONE 2026-07-23:** firmed to **2× 36″×120″ @ $415 = $830** (min-sheet nest; cut plan + PNG in `grp-grating-quote.md` / `diagrams/grp-cutplan.png`). Get vendor quote against that.
+- [x] **Tray shims — DONE 2026-07-23:** plate route confirmed → `tray-hdpe-shim` = 1-1/4″ HDPE plate cut-to-size, $210–300 (taper-cut bundles with tray fab).
+- [ ] **PARKED (fab quote):** `tray-ss-sheet` + fab-labor batch (`tray-fabrication`/`ll-fabrication`/`ibcf-fabrication`) — send drawings for shop quotes.
+- [ ] **Stale doc:** walkway-report §20/21/48 says "15mm" grating — real is 1″ MS-S-100. De-stale in a prose pass.
 - [ ] **PARKED (fab quote):** `tray-ss-sheet` (304 SS tray, $360–500), + the fab-labor batch (`tray-fabrication` / `ll-fabrication` / `ibcf-fabrication`) — send drawing set out for shop quotes.
 - [ ] **Stale doc:** walkway-report §20/21/48 still says "15mm" grating — real product is **1″ MS-S-100** (weight model already fixed). De-stale in a prose pass.
 

@@ -140,7 +140,7 @@ def point(label: str, cost: int, note: str = "") -> LineItem:
 # §6a Perimeter walkway — line items own the truth; the section total sums them (was hand-typed
 # at $1,801/$2,186/$2,572, $25–35 low). Source: project-cost-breakdown.md §6a / generate_walkway_diagram.
 WALKWAY = [
-    LineItem("Molded GRP grating panels, 1\" (vinyl-ester, grit)", 835, 838, 840, "2026-07-23: firmed to 2× 3'×10' (36×120) @ $415 = $830 (American Grating) — min sheets to nest the ~47 ft²; +$5/$10 absorbs a pre-existing walkway reconcile rounding"),
+    LineItem("Molded GRP grating (McNichols cut-to-size)", 3041, 3043, 3046, "2026-07-23: FIRM to McNichols quote 2026-3819515 = $3,035.73 (was est $830 via American Grating public price — which is ~3.6× cheaper for the same spec; supplier decision flagged). +$5/$10 absorbs a pre-existing walkway reconcile rounding"),
     LineItem("GRP grating edge-seal kit (Fibergrate)", 40, 50, 60, "field-seal molded FRP cut edges (epoxy, not snap-trim)"),
     LineItem("Standard wall brackets, 8mm steel plate (×14)", 112, 143, 175, "Near/far walls; 150mm vert × 300mm arm"),
     LineItem("Widened wall brackets, 10mm steel plate (×4)", 72, 90, 112, "EP/battery/slit zone; 200mm vert × 500mm arm"),
@@ -1019,8 +1019,8 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (26874, 32047, 39088),  # 2026-07-23: tray slope shims firmed to HDPE plate route (+$170/$225). Per-change history in git log.
-    "walkway": (1967, 2276, 2583),  # 2026-07-23: GRP panel firmed to 2x 3ftx10ft (36x120) @ $415 = $830 (min sheets); band tightens vs the 1-2 panel estimate
+    "grand_total": (29080, 34252, 41294),  # 2026-07-23: walkway GRP grating firmed to McNichols quote $3,035.73 (+$2,206 vs American Grating est). Per-change history in git log.
+    "walkway": (4173, 4481, 4789),  # 2026-07-23: GRP grating FIRM to McNichols quote 2026-3819515 $3,035.73 (was est $830; American Grating alt ~$830 flagged)
     "water": (5589, 6873, 8149),  # 2026-07-23: tray slope shims → 1-1/4" HDPE plate route (+$170/$225)
     "container": (2300, 3300, 4300),
     "lightlock": (2032, 2268, 2506),   # 2026-07-22: Ø900 housing (46685 3/16" HDPE ×3 = $555) + Ø864 drum firmed to 1/8" black HDPE ×3 = $370 (was $150–240 est).  §6 = hinged-panel §8.2 (housing + drum) line items

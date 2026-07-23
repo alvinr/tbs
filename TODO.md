@@ -21,9 +21,11 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 **Pending ACTIONS:**
 - [x] **GRP panels — DONE 2026-07-23:** firmed to **2× 36″×120″ @ $415 = $830** (min-sheet nest; cut plan + PNG in `grp-grating-quote.md` / `diagrams/grp-cutplan.png`). Get vendor quote against that.
 - [x] **Tray shims — DONE 2026-07-23:** plate route confirmed → `tray-hdpe-shim` = 1-1/4″ HDPE plate cut-to-size, $210–300 (taper-cut bundles with tray fab).
-- [ ] **FAB-QUOTE BATCH (next best action):** send the now-published drawing set to shops for `tray-fabrication` ($450–850), `ll-fabrication` ($800–1,150), `ibcf-fabrication` ($688–1,018), `sp-door-fab` ($200–350) + `tray-ss-sheet` (304 SS, $360–500). ≈±$1,500 uncertainty — the biggest actionable block.
-- [ ] **Sourceable big-ticket remainder (~±$570):** `cooler-inverter` (Victron), `sp-pivot-post`, `pinhole-shim` (Lenox Laser custom), `ibc-tote-1000l`, `corridor-panel-ply-18/25`, `panel-corner-plates` — firm to SKUs like the electrical batch.
-- [ ] **Container** (`container-20ft` ±$1,500, `container-delivery` ±$500) — market-priced; firms at purchase.
+- [ ] **FABRICATION → PENDING BLUEPRINTS.** All `*-fabrication` lines (`tray-fabrication`, `ll-fabrication`, `ibcf-fabrication`, `sp-door-fab`) + `tray-ss-sheet` stay est until the drawing set is complete — then send to shops for quote. **Gated on the blueprints milestone (below).** ≈±$1,500.
+- [ ] **Blueprints milestone** = the pending action that unblocks all fab quotes (see ★ MAJOR MILESTONE below).
+- [~] **Sourceable big-ticket remainder — IN PROGRESS 2026-07-23:** `cooler-inverter`, `sp-pivot-post`, `pinhole-shim`, `ibc-tote-1000l`, `corridor-panel-ply-18/25`, `panel-corner-plates` — sourcing to SKUs now.
+- [ ] **Container — DEFERRED to v1.0 design-complete.** `container-20ft` (±$1,500) + `container-delivery` (±$500) firm at purchase, once the design is locked. Treat current state as **v1.0**.
+- [x] **Walkway GRP grating — FIRM 2026-07-23:** McNichols quote 2026-3819515 = **$3,035.73** (`quotes/`). ⚠ American Grating public price for the same spec ≈ **$830** (~3.6× cheaper) — supplier decision open.
 - [x] **Stale doc — DONE 2026-07-23:** walkway-report "15mm"→1″ MS-S-100 de-staled across 5 docs (commit ec4c0e23).
 
 **Done this session:** light-lock plastics → US Plastics HDPE; drum caps 3/16″ (`LT_CAP_T`); electrical 13 parts + 2 E-stops + battery → Renogy Core; walkway grating 2× 36×120 panels + Fibergrate kit; tray shims → HDPE plate; walkway bump-out + muslin notches (5 models).

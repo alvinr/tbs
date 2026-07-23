@@ -17,6 +17,14 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
+# ── Sketchfab metadata — sketchfab dict fill-only-if-blank; name/desc forced when requested ──
+model.name = "TBS-001 Articulated Film Plane Model" if model.name.to_s.strip.empty?
+model.description = "The configuration the photosensitive film plane is flush against one of the 20ft long-side walls of the container. This has a view-camera-style moveable film plane \u2014 a mechanism with four independently actuated corners." if model.description.to_s.strip.empty?
+model.set_attribute("sketchfab", "model_title", "TBS-001 Articulated Film Plane Model") if model.get_attribute("sketchfab", "model_title").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_description", "The configuration the photosensitive film plane is flush against one of the 20ft long-side walls of the container. This has a view-camera-style moveable film plane \u2014 a mechanism with four independently actuated corners.") if model.get_attribute("sketchfab", "model_description").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_id", "572b4aaa2d394de1b8852160d7cdcfc3") if model.get_attribute("sketchfab", "model_id").to_s.strip.empty?
+model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribute("sketchfab", "model_tags").to_s.strip.empty?
+
   model.layers.add("Corners") unless model.layers["Corners"]
   model.layers.add("Film Plane") unless model.layers["Film Plane"]
   model.layers.add("Pinhole") unless model.layers["Pinhole"]

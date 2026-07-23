@@ -50,7 +50,7 @@ tray's watertight seal.
 | Bracket arm height | 115mm above finished floor |
 | Bracket spacing (near/far) | 457mm (18") — aligned to container rib spacing |
 | Container rib spacing | 457mm (18") — ISO standard corrugation pitch |
-| Near walkway widened section | 500mm at X≈1,155–2,629mm |
+| Near walkway widened section | 500mm at X≈1,055–3,083mm (5 widened brackets) |
 | Open processing area | <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->×1,762mm = 6.80 m² |
 | Spray bar slit width | 30mm (near and far walkways) |
 | Total walkway sections | 4 (all removable) |
@@ -98,7 +98,7 @@ through the spray bar slit zone. These wall-mounted equipment
 items require front access for operation and maintenance, and the wider
 platform gives the operator full-width standing room during spray bar passes.
 
-Four brackets in this zone use a heavier design to support the 500mm cantilever arm. The
+Five brackets in this zone use a heavier design to support the 500mm cantilever arm. The
 bracket positions align to container corrugation ribs.
 Extending the widened zone past the slit ensures 500mm-arm brackets support
 the grating on both sides of the slit, eliminating unsupported overhang.

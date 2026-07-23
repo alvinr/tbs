@@ -760,7 +760,7 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
-{ov.sketchfab_meta_ruby(SF_TITLE, SF_DESC, SF_ID, SF_TAGS, force_name=True)}
+{ov.sketchfab_meta_ruby(SF_TITLE, SF_DESC, SF_ID, SF_TAGS)}
 {tags_ruby}
 
 {body}

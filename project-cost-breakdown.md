@@ -323,7 +323,7 @@ Personnel access during operation is via a **Ø900 fixed housing + single-openin
 
 Four removable grated walkway sections around all 4 sides of the processing tray. Near walkway widens to 500mm at EP/battery/slit zone. 140mm deck height to clear the processing tray and spray bar. No tray contact on any section — entire tray interior completely clear for film loading.
 
-Near/far walkways: wall-cantilevered brackets bolted to corrugated wall ribs (14 standard 8mm + 4 widened 10mm).
+Near/far walkways: wall-cantilevered brackets bolted to corrugated wall ribs (13 standard 8mm + 5 widened 10mm).
 
 Right walkway: cantilever rectangle — a closed 40×40 SHS frame on 2 center arms off the IBC corridor uprights, left corners on wall cleats, right corners on combined corner plates shared with the bottom film rail.
 
@@ -332,12 +332,12 @@ Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted
 <!-- BEGIN costing:walkway -->
 | Item | Low | Mid | High | Notes |
 |------|-----|-----|------|-------|
-| Molded GRP grating (McNichols cut-to-size, 8 sheets) | $835 | $945 | $1,060 | 2026-07-23: FIRM to McNichols revised quote $1,700.51 / 8 sheets (was 13-sheet $3,035.73). American Grating alt ~$830 still ~2× cheaper. +$5/$10 walkway reconcile rounding |
+| Molded GRP grating (American Grating cut-to-size) | $835 | $945 | $1,060 | 2026-07-23: PRIMARY American Grating public list ~$830 (2×3'×10' @ $415) + freight/cut band to $1,050; McNichols $1,700.51 held as secondary ceiling. +$5/$10 walkway reconcile rounding |
 | GRP grating edge-seal kit (Fibergrate) | $40 | $50 | $60 | field-seal molded FRP cut edges (epoxy, not snap-trim) |
-| Standard wall brackets, 8mm steel plate (×14) | $112 | $143 | $175 | Near/far walls; 150mm vert × 300mm arm |
-| Widened wall brackets, 10mm steel plate (×4) | $84 | $102 | $134 | EP/battery/slit zone; 200mm vert × 500mm arm |
-| Reinforcing plates, std 100×180×6mm (×14) + wide 120×220×6mm (×4) | $47 | $60 | $73 | Welded to wall exterior behind each bracket |
-| M12×65 partial-thread bolts + nuts + washers (×58) | $137 | $137 | $137 | 91280A728 $1.595 + plain nut 90591A181 $0.256 + 4 flat 91166A290 + split 91202A246 /bolt; 3 per std bracket (42) + 4 per widened (16) |
+| Standard wall brackets, 8mm steel plate (×13) | $112 | $143 | $175 | Near/far walls; 150mm vert × 300mm arm |
+| Widened wall brackets, 10mm steel plate (×5) | $84 | $102 | $134 | EP/battery/slit zone; 200mm vert × 500mm arm (bump extended a 2nd rib toward IBC, X1055–3083 = 5 bays) |
+| Reinforcing plates, std 100×180×6mm (×13) + wide 120×220×6mm (×5) | $47 | $60 | $73 | Welded to wall exterior behind each bracket |
+| M12×65 partial-thread bolts + nuts + washers (×59) | $137 | $137 | $137 | 91280A728 $1.595 + plain nut 90591A181 $0.256 + 4 flat 91166A290 + split 91202A246 /bolt; 3 per std bracket (39) + 4 per widened (20) |
 | Transition bearing plates, 40×500×5mm flat bar (×2) | $5 | $8 | $10 | Welded to arm top at width transitions |
 | Right walkway cantilever frame, 40×40×3mm SHS (8m) | $28 | $34 | $40 | rev12: closed rectangle + 2× 405mm center arms |
 | Right walkway wall cleats, 8mm steel (×2) | $20 | $28 | $35 | Left corners — through-bolted to the wall |
@@ -347,7 +347,7 @@ Left walkway: removable lift-out grate on 5 floor-leg cantilever brackets bolted
 | Drum-exit punch-out — extra GRP grating (~0.23 m²) | $50 | $57 | $65 | 600mm-deep landing at the light-lock exit |
 | Left floor-leg cantilever brackets (×5) | $55 | $75 | $95 | 50×50×3 SHS posts + 40×40×3 arms + foot plates |
 | Floor screws — #14×2″ HWH 410 SS self-drilling (×20) | $7 | $9 | $11 | 2026-07-22: wedge anchors → structural self-drillers (ply-over-steel container floor); Bridge Fasteners ~$0.35–0.55 ea |
-| Fabrication (brackets, cantilever frame, install) | $424 | $590 | $750 | 14 std + 4 widened brackets, right cantilever frame, 5 left floor-leg brackets, install; bracket scope matches the walkway-report §10 all-in figures; trimmed −$30/−$58 to reconcile with the parts registry after the M12 bolts firmed to real flat prices |
+| Fabrication (brackets, cantilever frame, install) | $424 | $590 | $750 | 13 std + 5 widened brackets, right cantilever frame, 5 left floor-leg brackets, install; bracket scope matches the walkway-report §10 all-in figures; trimmed −$30/−$58 to reconcile with the parts registry after the M12 bolts firmed to real flat prices |
 | **Perimeter walkway total** | **$1,979** | **$2,395** | **$2,825** | |
 <!-- END costing:walkway -->
 

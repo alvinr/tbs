@@ -21,12 +21,12 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 **Pending ACTIONS:**
 - [x] **GRP panels — DONE 2026-07-23:** firmed to **2× 36″×120″ @ $415 = $830** (min-sheet nest; cut plan + PNG in `grp-grating-quote.md` / `diagrams/grp-cutplan.png`). Get vendor quote against that.
 - [x] **Tray shims — DONE 2026-07-23:** plate route confirmed → `tray-hdpe-shim` = 1-1/4″ HDPE plate cut-to-size, $210–300 (taper-cut bundles with tray fab).
-- [ ] **PARKED (fab quote):** `tray-ss-sheet` + fab-labor batch (`tray-fabrication`/`ll-fabrication`/`ibcf-fabrication`) — send drawings for shop quotes.
-- [ ] **Stale doc:** walkway-report §20/21/48 says "15mm" grating — real is 1″ MS-S-100. De-stale in a prose pass.
-- [ ] **PARKED (fab quote):** `tray-ss-sheet` (304 SS tray, $360–500), + the fab-labor batch (`tray-fabrication` / `ll-fabrication` / `ibcf-fabrication`) — send drawing set out for shop quotes.
-- [ ] **Stale doc:** walkway-report §20/21/48 still says "15mm" grating — real product is **1″ MS-S-100** (weight model already fixed). De-stale in a prose pass.
+- [ ] **FAB-QUOTE BATCH (next best action):** send the now-published drawing set to shops for `tray-fabrication` ($450–850), `ll-fabrication` ($800–1,150), `ibcf-fabrication` ($688–1,018), `sp-door-fab` ($200–350) + `tray-ss-sheet` (304 SS, $360–500). ≈±$1,500 uncertainty — the biggest actionable block.
+- [ ] **Sourceable big-ticket remainder (~±$570):** `cooler-inverter` (Victron), `sp-pivot-post`, `pinhole-shim` (Lenox Laser custom), `ibc-tote-1000l`, `corridor-panel-ply-18/25`, `panel-corner-plates` — firm to SKUs like the electrical batch.
+- [ ] **Container** (`container-20ft` ±$1,500, `container-delivery` ±$500) — market-priced; firms at purchase.
+- [x] **Stale doc — DONE 2026-07-23:** walkway-report "15mm"→1″ MS-S-100 de-staled across 5 docs (commit ec4c0e23).
 
-**Done this session (electrical + plastics fully firm):** light-lock plastics → US Plastics HDPE; drum caps 3/16″ (`LT_CAP_T`); electrical 13 parts + 2 E-stops (McMaster 6741K41/8382K45); battery → Renogy Core; walkway grating split → panel + Fibergrate seal kit. Grand total **$26,479 / $31,926 / $39,243**.
+**Done this session:** light-lock plastics → US Plastics HDPE; drum caps 3/16″ (`LT_CAP_T`); electrical 13 parts + 2 E-stops + battery → Renogy Core; walkway grating 2× 36×120 panels + Fibergrate kit; tray shims → HDPE plate; walkway bump-out + muslin notches (5 models).
 
 ---
 

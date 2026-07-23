@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 3. Pinhole optics plate | $110 | $265 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,146 | $6,712 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,419 | $7,924 |
-| 6. Electrical — power, circuits, wiring | $2,931 | $3,062 |
+| 6. Electrical — power, circuits, wiring | $2,986 | $3,097 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,032 | $2,506 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,062 | $2,943 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$26,738** | **~$36,372** |
+| **TOTAL (base build + 50-print run)** | **~$26,793** | **~$36,407** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -145,8 +145,8 @@ indicative low–high estimates — get quotes before ordering.
 | Deutsch DT 2-pin connectors | 2 set | Waytek Wire | ventilation | $8 |
 | Deutsch DT 2-pin connectors, IP67 (exterior penetrations) | 10 set | Waytek Wire | electrical | $30 |
 | Equipotential bonding kit — 6 AWG + ring lugs | 1 ea | Amazon | electrical | $20 |
-| [External emergency cut-off — red mushroom IP66/NEMA 4X + control loop](https://www.mcmaster.com/6741K41/) (6741K41) | 1 ea | McMaster-Carr | electrical | $18–$30 |
-| [Interior emergency cut-off — red mushroom IP66 metal (paralleled to exterior)](https://www.mcmaster.com/8382K45/) (8382K45) | 1 ea | McMaster-Carr | electrical | $18–$25 |
+| [External emergency cut-off — red mushroom IP66/NEMA 4X + control loop](https://www.mcmaster.com/6741K41/) (6741K41) | 1 ea | McMaster-Carr | electrical | $48 |
+| [Interior emergency cut-off — red mushroom IP66 metal (paralleled to exterior)](https://www.mcmaster.com/8382K45/) (8382K45) | 1 ea | McMaster-Carr | electrical | $42 |
 | IP65 enclosure ~200×220×140mm (fuse block + busbars, on the plywood) | 1 ea | Polycase | electrical | $60 |
 | Master pump switch (Circuit C) — IP67 sealed rocker/disconnect 12V 16A | 1 ea | Amazon | electrical | $10 |
 | MC4 bulkhead connector pairs, IP67 panel-mount | 3 pair | Amazon | electrical | $25 |
@@ -160,7 +160,7 @@ indicative low–high estimates — get quotes before ordering.
 | Shore-charger output fuse — 20A inline | 1 ea | Amazon | electrical | $5 |
 | Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs) | 1 lot | Waytek Wire | electrical | $30 |
 | Wiring kit — 12/14/16/18 AWG tinned, 50ft/color | 1 kit | Waytek Wire | electrical | $80 |
-| **electrical-distribution subtotal** | | | | **$1,508–$1,528** |
+| **electrical-distribution subtotal** | | | | **$1,563** |
 
 ### electrical-power
 
@@ -425,7 +425,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 41 | bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $3,552–$3,666 |
+| McMaster-Carr | 41 | bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $3,607–$3,701 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,130–$3,472 |
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,853–$2,411 |

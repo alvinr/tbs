@@ -186,7 +186,7 @@ CONTAINER = [
 # §6 Housed revolving-door light lock (plastic-skin) — detail already = scenario.
 # §6 = hinged-panel-report.md §8.2 (housing + drum). Line items mirror that BOM.
 LIGHTLOCK = [
-    LineItem("5mm UV-stabilized HDPE — Ø900 housing shell (~7 m²)", 180, 230, 280, "rolled + extrusion-welded; TAP / Online Metals"),
+    LineItem("3/16\" UV-stab HDPE — Ø900 housing shell (3× 4×8 ft, ~65 ft²)", 555, 555, 555, "rolled + extrusion-welded; US Plastics 46685 @ $184.99/sheet"),
     LineItem("4mm PP — Ø864 drum shell + top/bottom caps (~7 m²)", 150, 195, 240, "TAP / Curbell"),
     LineItem("6215-2RS sealed bearing ×2 (Ø75×130×25, ABEC-1)", 121, 121, 121, "$60.59 ea firm, Bearings Direct; alt McMaster 6138K125 $394.88"),
     LineItem("75mm Ø × 150mm steel stub shafts (×2)", 30, 40, 50, "steel service center"),
@@ -1018,11 +1018,11 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (25507, 31181, 38726),  # 2026-07-22: retired duplicate image-plane-backing ACM (−$490/−$620). Per-change history in git log.
+    "grand_total": (25882, 31506, 39001),  # 2026-07-22: Ø900 housing shell firmed to US Plastics 46685 (3× 3/16" HDPE sheets, +$275–375). Per-change history in git log.
     "walkway": (2062, 2503, 2943),   # 2026-07-22: floor anchors → 410 SS self-drillers (−$18/−$34)   # 2026-07-21: M12 flat washer/split/plain-nut re-price +$27.  2026-07-21: M12 bracket/cleat bolts re-sized 80/cleat→65/70 (91280A728/732 partial, real flat) + 4 washers/bolt, fab line reconciled to parts −$30/−$58 → low +$53/high −$25.  §6a fab line matches walkway-report §10 ($742–$1,255 all-in)
     "water": (5419, 6675, 7924),  # updated 2026-07-22: parts-identity batch — spray-bar (jam nut/collar/self-tap/beam-clamp), tray silicone gasket, S60×6 adapter re-spec, M12×40 hanger bolt. Detail in git log.
     "container": (2300, 3300, 4300),
-    "lightlock": (1437, 1768, 2101),   # 2026-07-22: parts-identity batch — wiper seal (Frost King BP17A), grab rail (16" marine SS), SS fasteners+isolation washers re-priced.  §6 = hinged-panel §8.2 (housing + drum) line items
+    "lightlock": (1812, 2093, 2376),   # 2026-07-22: Ø900 housing shell firmed — US Plastics 46685 3/16" HDPE 3× 4×8 ft @ $184.99 = $555 (was $180–280 est).  §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (1180, 1395, 1610),   # 2026-07-22: journal bushings → igus iglide J JFM-9095-100 $130.53/ea (from GGB DU $211.25) −$162/pair.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame)   # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
     "panel": (1130, 1403, 1676),       # 2026-07-22: EPDM gasket re-priced (OKAYASU rolls, −$60/−$74) + grab handle 316→304 (+$50/+$55).  §6c = hinged-panel §8.1 (panel structure)
     "shelf": (214, 227, 239),          # 2026-07-22: piano hinge re-priced (Würth 32×600 satin SS, $22–35).  §6d = chemistry-prep-shelves §7

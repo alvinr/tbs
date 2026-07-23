@@ -433,7 +433,7 @@ bounces noticeably less than the rod-hung version it replaces.
 <!-- BEGIN parts:walkway -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Molded GRP grating panels, 3'×10' (36×120) | 1" MS-S-100, 1½×1½ square mesh, vinyl-ester, grit, 2.60 lb/sf. 2× 3'×10' (36"×120") = MIN sheets to yield the ~47 ft² of walkway pieces (near/far each splice 120"+43.7"); $415/panel (American Grating public / McNichols quote). 2× 36×120 ($830) beats 1× 48×144 + offcut and is the min-cost fit. Cut plan: grp-grating-quote.md. | 2 panel | American Grating / McNichols | $830 |
+| Molded GRP grating panels, 3'×10' (36×120) | 1" MS-S-100, 1½×1½ square mesh, vinyl-ester, grit, 2.60 lb/sf. 2× 3'×10' (36"×120") = MIN sheets to yield the ~48 ft² of walkway pieces (near/far each splice 120"+43.7"); $415/panel (American Grating public / McNichols quote). 2× 36×120 ($830) beats 1× 48×144 + offcut and is the min-cost fit. Cut plan: grp-grating-quote.md. | 2 panel | American Grating / McNichols | $830 |
 | GRP grating edge-seal kit | Fibergrate Sealing & Bonding Kit — molded FRP cut edges are field-SEALED (epoxy), not snap-trimmed; ½-pint kit seals ~20–40 linear ft of cut edge. | 1 kit | Fibergrate | $40–$60 |
 | Drum-exit punch-out grating | Extra GRP landing (~0.23 m²) at the light-lock exit | 1 lot | McNichols | $50–$65 |
 | Cantilever bracket — standard (near/far) | 8mm steel plate: 150mm vert leg + 300mm arm + 70mm gusset, welded (5 near + 9 far at 457mm centers) | 14 ea | Local fab | $420–$700 |

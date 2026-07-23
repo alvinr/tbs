@@ -817,11 +817,13 @@ LEFT_WK_CANT_STD_REACH  = WALKWAY_LEFT_X + WALKWAY_W            # = 470 — stan
 LEFT_WK_CANT_WIDE_REACH = WALKWAY_LEFT_X + WALKWAY_LEFT_WIDE_W  # = 770 — widened arm tip (punch-out inner edge)
 # Right walkway (IBC end): ceiling-hung, same 300mm width as near/far
 WALKWAY_RIGHT_X = PROC_TRAY_X_R - WALKWAY_RIGHT_W  # = 4329mm (grating inner edge)
-# Near walkway widened section — 500mm-wide access band for the chem shelf + EP column. The band is
-# CANTILEVER-LIMITED: the grate may overhang the outer widened brackets by at most WALKWAY_MAX_OVERHANG,
-# so it runs from cantilever X1155−100 to cantilever X2069+100 (X1055–2169). The EP column is placed so
-# its right edge (EP_X + EP_COL_W = 2169) lands exactly at that right limit; the chem shelf (X1180-1780)
-# sits inside with a 125mm margin on its left. The slit cuts only to the tray lip (Yd=80), not the full depth.
+# Near walkway widened section — 500mm-wide access band for the chem shelf + EP column + spray-bar
+# operating room. CANTILEVER-LIMITED: the grate may overhang the outer widened brackets by at most
+# WALKWAY_MAX_OVERHANG. rev 2026-07-23: extended one rib to the RIGHT (cantilever X2526+100 = 2626) so
+# the band reaches PAST the spray bar / pinhole (X2399) — the operator can stand past the spray bar to
+# work it. It now runs X1055–2626 (cantilever X1155−100 to X2526+100). The EP column right edge
+# (EP_X + EP_COL_W = 2169) sits INSIDE the band; the chem shelf (X1180-1780) sits inside with a 125mm
+# margin on its left. The slit cuts only to the tray lip (Yd=80), not the full depth.
 WALKWAY_NEAR_WIDE_W   = 500             # widened section width (mm)
 WALKWAY_MAX_OVERHANG  = 100             # max grate cantilever past an end bracket (deflection to be checked)
 _NX0 = WALKWAY_LEFT_X + WALKWAY_W                       # near walkway start = 470
@@ -829,7 +831,7 @@ _CANT0 = _NX0 + CONTAINER_RIB_SPACING // 2             # first cantilever statio
 _SLIT_CX = (_NX0 + WALKWAY_RIGHT_X) // 2                # spray bar slit center X ≈ 2399
 SPRAY_BEAM_SPAN = WALKWAY_RIGHT_X - _NX0                # = 3859mm — spray-bar beam span (left↔right walkway inner edges)
 WALKWAY_NEAR_WIDE_X_L = _CANT0 + CONTAINER_RIB_SPACING - WALKWAY_MAX_OVERHANG      # 1055 = cantilever 1155 − 100
-WALKWAY_NEAR_WIDE_X_R = _CANT0 + 3 * CONTAINER_RIB_SPACING + WALKWAY_MAX_OVERHANG  # 2169 = cantilever 2069 + 100
+WALKWAY_NEAR_WIDE_X_R = _CANT0 + 4 * CONTAINER_RIB_SPACING + WALKWAY_MAX_OVERHANG  # 2626 = cantilever 2526 + 100 (rev 2026-07-23: +1 rib past the spray bar X2399)
 WALKWAY_WIDE_BRACKET_T = 10             # widened bracket plate thickness (mm) — heavier than std 8mm
 WALKWAY_WIDE_BRACKET_H = 200            # widened bracket vertical leg height (mm) — taller for 4-bolt pattern
 # Open processing area (center, clear of walkways):

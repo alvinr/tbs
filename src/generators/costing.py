@@ -140,7 +140,8 @@ def point(label: str, cost: int, note: str = "") -> LineItem:
 # §6a Perimeter walkway — line items own the truth; the section total sums them (was hand-typed
 # at $1,801/$2,186/$2,572, $25–35 low). Source: project-cost-breakdown.md §6a / generate_walkway_diagram.
 WALKWAY = [
-    LineItem("Molded GRP (fiberglass) grating, 15mm (vinyl-ester, grit top)", 970, 1115, 1260, "~4.5 m² (incl. 1474×500mm near-walkway bump-out); McNichols / Grating Pacific"),
+    LineItem("Molded GRP grating panels, 1\" (vinyl-ester, grit)", 610, 915, 1220, "2026-07-23: ~47 ft² = 1–2× 4'×12' @ $605 (American Grating public / McNichols quote); qty pending quote (near/far 4,159mm run > 12ft → 1 panel splices, 2 splice-free). +$5/$10 absorbs a pre-existing walkway reconcile rounding"),
+    LineItem("GRP grating edge-seal kit (Fibergrate)", 40, 50, 60, "field-seal molded FRP cut edges (epoxy, not snap-trim)"),
     LineItem("Standard wall brackets, 8mm steel plate (×14)", 112, 143, 175, "Near/far walls; 150mm vert × 300mm arm"),
     LineItem("Widened wall brackets, 10mm steel plate (×4)", 72, 90, 112, "EP/battery/slit zone; 200mm vert × 500mm arm"),
     LineItem("Reinforcing plates, std 100×180×6mm (×14) + wide 120×220×6mm (×4)", 47, 60, 73, "Welded to wall exterior behind each bracket"),
@@ -1018,8 +1019,8 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (26799, 32076, 39223),  # 2026-07-23: battery → Renogy Core (RBT12100LFP-US $306.46) — electrical system fully firm. §5a → 2942/2958/2973. Per-change history in git log.
-    "walkway": (2062, 2503, 2943),   # 2026-07-22: floor anchors → 410 SS self-drillers (−$18/−$34)   # 2026-07-21: M12 flat washer/split/plain-nut re-price +$27.  2026-07-21: M12 bracket/cleat bolts re-sized 80/cleat→65/70 (91280A728/732 partial, real flat) + 4 washers/bolt, fab line reconciled to parts −$30/−$58 → low +$53/high −$25.  §6a fab line matches walkway-report §10 ($742–$1,255 all-in)
+    "grand_total": (26479, 31926, 39243),  # 2026-07-23: walkway grating split → GRP panel (quote-pending) + seal kit; low −$320 as the panel band drops to the American Grating anchor. Per-change history in git log.
+    "walkway": (1742, 2353, 2963),  # 2026-07-23: split grating → panel (quote-pending 1–2× 4x12) + Fibergrate seal kit; panel firmed to American Grating $605/4x12   # 2026-07-22: floor anchors → 410 SS self-drillers (−$18/−$34)   # 2026-07-21: M12 flat washer/split/plain-nut re-price +$27.  2026-07-21: M12 bracket/cleat bolts re-sized 80/cleat→65/70 (91280A728/732 partial, real flat) + 4 washers/bolt, fab line reconciled to parts −$30/−$58 → low +$53/high −$25.  §6a fab line matches walkway-report §10 ($742–$1,255 all-in)
     "water": (5419, 6675, 7924),  # updated 2026-07-22: parts-identity batch — spray-bar (jam nut/collar/self-tap/beam-clamp), tray silicone gasket, S60×6 adapter re-spec, M12×40 hanger bolt. Detail in git log.
     "container": (2300, 3300, 4300),
     "lightlock": (2032, 2268, 2506),   # 2026-07-22: Ø900 housing (46685 3/16" HDPE ×3 = $555) + Ø864 drum firmed to 1/8" black HDPE ×3 = $370 (was $150–240 est).  §6 = hinged-panel §8.2 (housing + drum) line items

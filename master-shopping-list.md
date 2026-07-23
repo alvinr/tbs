@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $467 | $698 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,146 | $6,712 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,070 | $8,281 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $5,738 | $7,903 |
 | 6. Electrical — power, circuits, wiring | $2,942 | $2,973 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,032 | $2,506 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$29,707** | **~$38,542** |
+| **TOTAL (base build + 50-print run)** | **~$29,375** | **~$38,164** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -381,13 +381,13 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| [Corridor plumbing-panel marine ply (18mm)](https://publiclumber.com/products/3-4-18mm-4x8-hydrotek-marine-plywood) | 1 sheet | Public Lumber | water | $179–$250 |
+| [Corridor plumbing-panel ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 1 sheet | Home Depot | water | $29 |
 | EP plywood backing panel (18mm, ~700×2000mm) | 1 sheet | Home Depot | electrical | $60 |
 | Exterior-grade plywood (Fan B mount band) | 1 2'×4' ¾" panel | Home Depot | panel | $30–$50 |
 | Phenolic-faced plywood (work surface) | 1 4'×8' ¾" sheet | Home Depot | shelf | $60 |
 | Plywood base plate (cooler stowage) | 1 2'×4' ½" panel | Home Depot | ventilation | $8 |
-| [Pump-mount shirt marine ply (25mm)](https://www.dunnlumber.com/marine-grade-abx-1-inches-softwood-face-plywood-4-feet-x-8-feet-net-thickness-1-16-inches-marineab1.html) | 1 piece | Dunn Lumber | water | $212 |
-| **timber-ply subtotal** | | | | **$549–$640** |
+| Pump-mount shirt ply (~1" exterior) | 1 piece | Home Depot | water | $30–$55 |
+| **timber-ply subtotal** | | | | **$217–$262** |
 
 ### tools-safety
 
@@ -435,7 +435,7 @@ indicative low–high estimates — get quotes before ordering.
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Online Metals | 7 | aluminum, stainless-sheet, steel-structural | $1,006–$1,426 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
-| Home Depot | 25 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $887–$1,162 |
+| Home Depot | 27 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $946–$1,246 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | Photographers' Formulary | 2 | chemistry-reagents | $1,051 |
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |
@@ -450,10 +450,8 @@ indicative low–high estimates — get quotes before ordering.
 | US Plastic Corp | 1 | plastics-sheet | $210–$300 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | igus | 1 | bearings-motion | $261 |
-| Public Lumber | 1 | timber-ply | $179–$250 |
 | Harbor Freight | 1 | fasteners-hardware | $174–$232 |
 | Hessaire | 1 | ducting-ventilation | $185–$230 |
-| Dunn Lumber | 1 | timber-ply | $212 |
 | Waytek Wire | 7 | electrical-distribution | $208 |
 | Bearings Direct | 2 | bearings-motion | $201 |
 | AllFilters | 1 | water-equipment | $114–$186 |

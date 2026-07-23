@@ -167,7 +167,7 @@ WATER = [
     LineItem("Water storage (4× IBC totes @ $150, 3× bulkhead fittings @ $137 ea, X1 fill tee)", 1010, 1010, 1010, "2026-07-23: IBC totes firm ~$150/ea (reconditioned food-grade SoCal)"),
     LineItem("IBC stacking frame (RHS deep 4-leg box + 4 feet + retaining bars + hangers + 8 weld-on lashing rings + fab)", 982, 1222, 1461, "2026-07-22: floor anchors → #14×3¼″ 410 SS self-drillers (land feet over crossmembers) −$14/−$44; M12×40 hanger bolt FMW 1634027"),
     LineItem("Pumps and accumulator (P-01..P-05 + ACC-01, 5× mount brackets)", 480, 508, 536),
-    LineItem("Corridor plumbing panel structure (18mm marine-ply backing board + drain-riser spine, 25mm pump-mount shirt, mount brackets + fasteners)", 416, 464, 512, "2026-07-23: marine ply firmed (18mm $179-250 Public Lumber, 25mm $212 Dunn) — ⚠ marine ~3-4× standard, decision open"),
+    LineItem("Corridor plumbing panel structure (23/32\" exterior ply backing + drain-riser spine, ~1\" pump-mount shirt, mount brackets + fasteners)", 84, 109, 134, "2026-07-23: ply DOWNGRADED marine→standard exterior per rule (18mm RTD $29.30 Home Depot firm; 1\" $30-55 est)"),
     LineItem("Under-walkway pipe-ribbon supports (4× welded cross-braces + 16 pipe clips)", 24, 36, 48),
     LineItem("Filter skid (3× Big Blue 4.5×20 separate housings on slotted-angle frame + cartridges)", 293, 392, 489, "2026-07-22: U-bracket retired → lag screws to ply backing −$18/−$21"),
     LineItem("Valves and fittings (6× BV ball valves, X1 4-way cross, S60×6 adapters, CV1, SV-01 + SV-02 taps, Blue equalization tie)", 699, 909, 1119, "2026-07-22: S60×6 adapter re-spec'd female-buttress×2\"NPT + 2→1\" bushing (CPP HMFN/20UD/027) +$48/+$24"),
@@ -1019,9 +1019,9 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (29757, 34683, 41482),  # 2026-07-23: list-2 sourcing (inverter/corner-plates/IBC/marine-ply/pinhole). Per-change history in git log.
+    "grand_total": (29425, 34328, 41104),  # 2026-07-23: corridor ply downgraded marine→standard (−$330). Per-change history in git log.
     "walkway": (4173, 4481, 4789),  # 2026-07-23: GRP grating FIRM to McNichols quote 2026-3819515 $3,035.73 (was est $830; American Grating alt ~$830 flagged)
-    "water": (6070, 7178, 8281),  # 2026-07-23: IBC totes firm $150/ea + marine ply firmed (18/25mm)
+    "water": (5738, 6823, 7903),  # 2026-07-23: corridor ply marine→standard exterior (18mm RTD $29.30 Home Depot)
     "container": (2300, 3300, 4300),
     "lightlock": (2032, 2268, 2506),   # 2026-07-22: Ø900 housing (46685 3/16" HDPE ×3 = $555) + Ø864 drum firmed to 1/8" black HDPE ×3 = $370 (was $150–240 est).  §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (1180, 1395, 1610),   # 2026-07-22: journal bushings → igus iglide J JFM-9095-100 $130.53/ea (from GGB DU $211.25) −$162/pair.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame)   # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items

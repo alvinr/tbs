@@ -18,14 +18,14 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 6. Electrical — power, circuits, wiring | $2,942 | $2,973 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,032 | $2,506 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
-| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,062 | $2,943 |
+| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,742 | $2,963 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,550 | $1,876 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $214 | $239 |
 | 8. Cooling & ventilation | $757 | $907 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$26,749** | **~$36,283** |
+| **TOTAL (base build + 50-print run)** | **~$26,429** | **~$36,303** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -53,13 +53,14 @@ indicative low–high estimates — get quotes before ordering.
 | Dielectric grease, marine-grade (terminal protection) | 1 ea | Amazon | electrical | $10 |
 | Flat black epoxy spray paint | 1 can | Hardware store | shelf | $12 |
 | Flat black paint (RAL 9005) | 1 qt | Local fab | panel | $10–$20 |
+| GRP grating edge-seal kit | 1 kit | Fibergrate | walkway | $40–$60 |
 | Interior matte-black paint | 1 lot | Home Depot | interior | $100–$160 |
 | Loctite PL Premium construction adhesive | 2 tube | Home Depot | tray | $15 |
 | Matte-black interior finish | 1 ea | Local fab | lightlock | $40–$70 |
 | Primer + paint | 1 lot | Hardware store | ibc-frame | $30–$50 |
 | Silicone bead sealant (black, UV-stable) | 1 ea | Home Depot | lightlock | $6–$10 |
 | Thread seal tape (PTFE) | 4 roll | Home Depot | water | $8 |
-| **adhesives-finishes subtotal** | | | | **$285–$433** |
+| **adhesives-finishes subtotal** | | | | **$325–$493** |
 
 ### aluminum
 
@@ -261,8 +262,8 @@ indicative low–high estimates — get quotes before ordering.
 | Drum-exit punch-out grating | 1 lot | McNichols | walkway | $50–$65 |
 | HDPE filler strip (L-channel packer) | 1 lot | TAP Plastics | clamp | $30–$70 |
 | HDPE flat bar, 50mm wide | 5 ea | Online Metals | tray | $40–$75 |
-| Molded GRP (fiberglass) grating | 1 lot | McNichols | walkway | $965–$1,250 |
-| **plastics-sheet subtotal** | | | | **$3,130–$3,505** |
+| Molded GRP (fiberglass) grating panels | 1 lot | McNichols | walkway | $605–$1,210 |
+| **plastics-sheet subtotal** | | | | **$2,770–$3,465** |
 
 ### plumbing-fittings
 
@@ -432,7 +433,7 @@ indicative low–high estimates — get quotes before ordering.
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | Amazon | 63 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,579–$1,875 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
-| McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
+| McNichols | 3 | fasteners-hardware, plastics-sheet | $685–$1,325 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
 | Home Depot | 25 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $887–$1,162 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
@@ -472,6 +473,7 @@ indicative low–high estimates — get quotes before ordering.
 | RonAqua | 1 | water-equipment | $32–$60 |
 | Polycase | 1 | electrical-distribution | $60 |
 | US Plastic + Amazon | 1 | fasteners-hardware | $45–$60 |
+| Fibergrate | 1 | adhesives-finishes | $40–$60 |
 | Amazon (OKAYASU) | 1 | seals-gaskets | $24–$52 |
 | Steel service center | 1 | steel-structural | $30–$50 |
 | Marine Fiberglass Direct | 1 | fasteners-hardware | $25–$45 |

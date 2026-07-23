@@ -40,6 +40,11 @@ FIT_TYPES = {"fasteners-hardware", "bearings-motion", "plumbing-fittings", "seal
 # suppliers whose live prices the automated web pass can't read (JS / account / bot-blocked)
 GATED = {"McMaster-Carr", "Roton Products", "Grainger", "Grimco", "Automation Overstock",
          "Bearing World", "VXB", "JME Sales", "Fastenal"}
+# Cut-to-order metal/plastic SERVICE CENTERS — priced by spec (indicative until quoted). A catalog
+# SKU isn't strictly required (they cut to order), but the price must still be verified so these
+# raw-stock rows don't hide from the worklist the way alu-angle-2x2 did.
+SPEC_STOCK = {"Metal Supermarkets", "Online Metals", "Bobco Metals", "TAP Plastics",
+              "Central Coast Plastics", "Curbell Plastics"}
 
 COLS = [
     # identity (reference — do not edit)
@@ -64,7 +69,7 @@ def flags_for(p) -> list[str]:
         f.append("SKU≠SUPP")
     if pn and not url:
         f.append("URL-MISSING")
-    if p.supplier in GATED:
+    if p.supplier in GATED or p.supplier in SPEC_STOCK:
         f.append("PRICE-VERIFY")
     return f
 

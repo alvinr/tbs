@@ -76,6 +76,7 @@ HOUSING_R = ov.LT_HOUSING_R           # 450 — fixed housing radius (Ø900 OD)
 HOUSING_T = ov.LT_HOUSING_T           # 3 — housing wall
 DRUM_OR = ov.LT_DRUM_OR               # 432 — drum outer radius (Ø864), 15mm gap
 DRUM_T = ov.LT_DRUM_T                 # 3 — drum wall → ~Ø850 bore, ~555mm passage
+DRUM_CAP_T = ov.LT_CAP_T              # 4.76 — 3/16" HDPE end caps (structural: carry the stub shafts into the bearings)
 OPENING_DEG = ov.LT_OPENING_DEG       # 80 — each opening arc (<90°)
 APERTURE_R = HOUSING_R + 18           # 468 — panel aperture radius around housing
 NEW_YD_L = YD_L                       # 653 — widened center-zone step lines
@@ -396,9 +397,9 @@ def drum_rotor(cx=0, cy=0):
     parts.append(ov.ruby_arc_wall("LT Drum C-shell", cx, cy, DRUM_OR, DRUM_T, H - ZB,
                                   gap_center_deg=180, gap_deg=od,
                                   color=C_ALUM, alpha=0.5, z0=ZB))
-    parts.append(ruby_cylinder("LT Drum top cap", cx, cy, H - 5, DRUM_OR, 5,
+    parts.append(ruby_cylinder("LT Drum top cap", cx, cy, H - DRUM_CAP_T, DRUM_OR, DRUM_CAP_T,
                                color=C_ALUM, axis="z"))
-    parts.append(ruby_cylinder("LT Drum bottom cap", cx, cy, ZB, DRUM_OR, 5,
+    parts.append(ruby_cylinder("LT Drum bottom cap", cx, cy, ZB, DRUM_OR, DRUM_CAP_T,
                                color=C_ALUM, axis="z"))
     parts.append(ruby_cylinder("LT Drum top shaft", cx, cy, H, 37.5, 65,
                                color=C_STEEL, axis="z"))

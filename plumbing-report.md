@@ -430,14 +430,14 @@ hardware are sourced there and in the IBC stacking frame line.
 | Shurflo 2088-554-144 pump (P-05 Brown drain) | 12VDC, 3.5 GPM, 45 PSI; evacuates IBC-3 (Brown) residual to the X3 end-wall port | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
 | [SeaFlo accumulator (0.75 L)](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) (SFAT-075-125-01) | 0.75 L, 125 PSI, 1/2" MNPT | 1 ea | Environmental Marine / Amazon | $30–$41 |
 | [Corridor plumbing-panel ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — rear backing board + drain-riser spine + spacer offcuts. STANDARD exterior per project rule (was mis-spec'd marine ~$179-250). Firm $29.30 (Home Depot 2026-07-23). Seal cut edges. | 1 sheet | Home Depot | $29 |
-| Pump-mount shirt ply (~1" exterior) | ~1" (25mm) exterior plywood 4×8, ~610×1650 cut piece — pump-mount shirt behind P-01..P-05 + 6× spacer blocks. STANDARD exterior per project rule (was marine ~$212). Est $30-55 (1-1/8" T&G sheathing or 2× 23/32"); confirm the exact 1" Home Depot SKU. | 1 piece | Home Depot | $30–$55 |
+| [Pump-mount shirt ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — pump-mount shirt (~610×1650 cut) behind P-01..P-05 + 6× spacer blocks. Same SKU as ply-18; 5× Shurflo 2088 (~6.5 kg total) need no more than 3/4". STANDARD exterior per project rule (was marine ~$212). Firm $29.30 (Home Depot 2026-07-23). May nest with ply-18 in one sheet at cut — carried separate for margin. Double-layer locally if extra pump-rail stiffness wanted. | 1 sheet | Home Depot | $29 |
 | Corridor panel mount hardware (brackets + fasteners) | 6× steel angle brackets (panel → IBC-frame front-portal uprights), shirt-to-panel screws, lag bolts. Price est. | 1 lot | Home Depot | $25–$50 |
 | Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; pump-suction isolation BV-01 (P-01), BV-02 (P-05), BV-06 (P-03) | 3 ea | Barn Door Ag / Amazon | $90–$135 |
 | 3-way diverter valve 1/2" FNPT | L/T-port HDPE-compatible; 3W-DV-02 (tray drain) | 1 ea | Amazon | $12–$22 |
 | pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build as SV-01 | 1 ea | Amazon | $10–$18 |
 | Steel flat bar 25×3mm — ribbon support cross-brace | Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (the four corridor↔pinhole lines); ~300mm each | 4 ea | Home Depot | $8–$16 |
 | Cushioned pipe clip | Secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports) | 16 ea | Amazon | $16–$32 |
-| **Corridor Plumbing Panel total** | | | | **$570–$754** |
+| **Corridor Plumbing Panel total** | | | | **$570–$729** |
 <!-- END parts:corridor-plumbing-panel -->
 
 ### 9.2 Pinhole Wall Plumbing Panel

@@ -320,8 +320,8 @@ VENTILATION = [
 # Distribution & wiring $970; = the scenario §5a Mid). The full 43-row combined BOM overlaps the
 # §5b ventilation items, so we own the two authoritative subtotals rather than re-entering it.
 POWER = [
-    LineItem("Solar & battery (3× 200W panels, MPPT 100/50, 1× 100Ah LiFePO4, shore charger, mounts, PV cabling, PV disconnect, panel)", 1236, 1340, 1443),
-    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop, charge/shore fuses, protection, conduit, LED, master pump switch, power-panel raised weld-in frame)", 1440, 1549, 1659, "2026-07-22: grommets/conduit/trunking re-priced to real SKUs (−$34 low/−$7 high); power-panel neoprene gasket (Pres-Bond)"),
+    LineItem("Solar & battery (3× 200W panels, MPPT 100/50, 1× 100Ah LiFePO4, shore charger, 3× tilt mounts, PV cabling, PV disconnect, panel)", 1378, 1418, 1458, "2026-07-23: panels/MPPT/shore/mounts firmed to real SKUs (Renogy/Victron); battery still est pending Smart-vs-Core"),
+    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop, charge/shore fuses, protection, conduit, LED, master pump switch, power-panel raised weld-in frame)", 1553, 1579, 1604, "2026-07-23: fuse block/MRBF/disconnect/ML-RBS/label-kit/ground-rod firmed to real SKUs (Blue Sea/Brady/ERICO); 2× E-stop → McMaster 6741K41/8382K45 (est pending price)"),
 ]
 
 
@@ -652,7 +652,7 @@ SECTIONS = [
     Section("3",  "Optics — pinhole plate", *total(OPTICS)),
     Section("4",  "Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)", *total(FILM)),
     Section("5",  "Processing water system (incl. tray, spray bar, IBC stacking frame)", *total(WATER)),
-    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2665, 2873, 3081),
+    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2931, 2997, 3062),
     Section("5b", "Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)",
             total(VENTILATION)[0], total(VENTILATION)[0] + 60, total(VENTILATION)[0] + 150),
     Section("6",  "Housed revolving-door light lock (plastic-skin custom fabrication)", *total(LIGHTLOCK)),
@@ -1018,7 +1018,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (26522, 31991, 39331),  # 2026-07-22: light-lock + panel plastics firmed to US Plastics solid sheet (housing/drum/skins/bay, +$330–640 vs estimates). Per-change history in git log.
+    "grand_total": (26788, 32115, 39312),  # 2026-07-23: electrical batch firmed to real SKUs (§5a 2665→2931 low; +$255 firming + $11 pre-existing 5a/LineItem reconcile). Per-change history in git log.
     "walkway": (2062, 2503, 2943),   # 2026-07-22: floor anchors → 410 SS self-drillers (−$18/−$34)   # 2026-07-21: M12 flat washer/split/plain-nut re-price +$27.  2026-07-21: M12 bracket/cleat bolts re-sized 80/cleat→65/70 (91280A728/732 partial, real flat) + 4 washers/bolt, fab line reconciled to parts −$30/−$58 → low +$53/high −$25.  §6a fab line matches walkway-report §10 ($742–$1,255 all-in)
     "water": (5419, 6675, 7924),  # updated 2026-07-22: parts-identity batch — spray-bar (jam nut/collar/self-tap/beam-clamp), tray silicone gasket, S60×6 adapter re-spec, M12×40 hanger bolt. Detail in git log.
     "container": (2300, 3300, 4300),
@@ -1030,7 +1030,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "optics": (110, 185, 265),
     "film": (6146, 6427, 6712),  # updated 2026-07-22: muslin clamp mechanism → off-the-shelf nylon spring clamps (×58) + HDPE filler; retired the custom bracket/spring/neoprene (−$189/−$531). Detail in git log.
     "ventilation": (757, 841, 924),   # §5b BOM (point estimates); report total was stale at $769
-    "power": (2676, 2889, 3102),       # 2026-07-22: power-panel neoprene gasket re-priced (Pres-Bond $21–42) +$15/$36.  §5a authoritative subtotal
+    "power": (2931, 2997, 3062),       # 2026-07-23: electrical batch firmed to real SKUs — solar/MPPT/shore/battery-disc/fuse-block/MRBF/ML-RBS/label-kit/ground-rod/tilt-mounts×3 (Renogy/Victron/Blue Sea/Brady/ERICO). Still est: lifepo4 (Smart-vs-Core) + 2× E-stop (McMaster 6741K41/8382K45, pending price).  §5a authoritative subtotal
 }
 
 

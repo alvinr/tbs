@@ -94,7 +94,8 @@ line and the sumps hang below on a shared 25×25×3mm slotted-angle backing fram
 Inter-housing piping connects F-01 OUT → F-02 IN and F-02 OUT → F-03 IN using
 1" HDPE pipe with 90° elbows routed outside the housing bodies. Each housing
 lag-screws through its own mounting-hole ears (on 25mm HDPE standoff blocks) into
-the 18mm ply backing, giving sump-bowl clearance — no custom bracket.
+the 18mm ply backing, giving sump-bowl clearance — no custom bracket (see the
+**DETAIL — HOUSING MOUNT (section)** inset on the panel elevation above).
 
 **Head clearance:** the 20" sumps hang ~250mm lower than a 10" housing would —
 to roughly shoulder height for the 1.75m scale operator — in exchange for ~2× the

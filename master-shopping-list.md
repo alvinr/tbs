@@ -16,16 +16,16 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,146 | $6,712 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,419 | $7,924 |
 | 6. Electrical — power, circuits, wiring | $2,665 | $3,081 |
-| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $1,812 | $2,376 |
+| 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,032 | $2,506 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,062 | $2,943 |
-| 7c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,130 | $1,676 |
+| 7c. Hinged panel structure (stepped frame + PP skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,550 | $1,876 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $214 | $239 |
 | 8. Cooling & ventilation | $757 | $907 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,832** | **~$36,061** |
+| **TOTAL (base build + 50-print run)** | **~$26,472** | **~$36,391** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -253,16 +253,16 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
+| 1/8" black PP sheet (48×96) | 4 sheet | US Plastics | panel | $493 |
+| 1/8" black PP sheet (48×96, ×2) | 2 sheet | US Plastics | panel | $247 |
+| 1/8" black PP sheet — 48×96 (×3) | 3 sheet | US Plastics | lightlock | $370 |
 | [3/16" UV-stab HDPE sheet, black — 48×96 (×3)](https://www.usplastic.com/catalog/item.aspx?itemid=136962&catid=705) (46685) | 3 sheet | US Plastics | lightlock | $555 |
-| 4mm black polypropylene sheet | 1 lot | TAP Plastics | lightlock | $150–$240 |
-| 4mm black PP plastic sheet (1220 × 2,440mm) | 4 sheet | TAP Plastics | panel | $260–$420 |
-| 4mm black PP sheet + EPDM lip | 1 lot | TAP Plastics | panel | $60–$120 |
 | [Dibond ACM panel 4mm (black), 4×8 sheet](https://www.curbellplastics.com/product-category/material/aluminum-composite-material-acm/dibond-panels/) | 4 sheet | Curbell Plastics | film | $380 |
 | Drum-exit punch-out grating | 1 lot | McNichols | walkway | $50–$65 |
 | HDPE filler strip (L-channel packer) | 1 lot | TAP Plastics | clamp | $30–$70 |
 | HDPE flat bar, 50mm wide | 5 ea | Online Metals | tray | $40–$75 |
 | Molded GRP (fiberglass) grating | 1 lot | McNichols | walkway | $965–$1,250 |
-| **plastics-sheet subtotal** | | | | **$2,490–$3,175** |
+| **plastics-sheet subtotal** | | | | **$3,130–$3,505** |
 
 ### plumbing-fittings
 
@@ -431,6 +431,7 @@ indicative low–high estimates — get quotes before ordering.
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,853–$2,411 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
 | Amazon | 63 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,355–$1,677 |
+| US Plastics | 4 | plastics-sheet | $1,665 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
 | Home Depot | 25 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $885–$1,165 |
@@ -438,11 +439,9 @@ indicative low–high estimates — get quotes before ordering.
 | Photographers' Formulary | 2 | chemistry-reagents | $1,051 |
 | Renogy | 3 | electrical-power | $833–$975 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
-| TAP Plastics | 4 | plastics-sheet | $500–$850 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
 | Barn Door Ag | 7 | plumbing-fittings | $414–$652 |
 | Container Exchanger | 1 | water-equipment | $320–$600 |
-| US Plastics | 1 | plastics-sheet | $555 |
 | Fresh Water Systems | 5 | water-equipment | $400–$445 |
 | West Marine | 2 | electrical-distribution | $313–$438 |
 | altE Store | 2 | electrical-power | $345–$410 |
@@ -470,6 +469,7 @@ indicative low–high estimates — get quotes before ordering.
 | B&H Photo | 1 | fabric-textile | $95 |
 | StrongAr Hardware | 1 | fasteners-hardware | $70–$90 |
 | Frost King + Canal Rubber | 1 | seals-gaskets | $40–$75 |
+| TAP Plastics | 1 | plastics-sheet | $30–$70 |
 | Hardware store | 2 | adhesives-finishes | $42–$62 |
 | RonAqua | 1 | water-equipment | $32–$60 |
 | Polycase | 1 | electrical-distribution | $60 |

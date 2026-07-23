@@ -636,9 +636,10 @@ PARTS: list[Part] = [
          spec=f"Inert HDPE strip, {CLAMP_FILLER_D:g}mm deep (= frame leg − ACM − muslin − angle), filling the aluminum-angle L channel along the 3 clamped edges (~8.7 m) so the nylon clamp bites a solid full-depth sandwich. Cut to suit; chemistry-safe (same family as the tray liner). Firm at fab."),
 
     # ═══ lightlock (hinged-panel §8.2) — housing + drum; sums to costing.LIGHTLOCK ($1,385–$2,070) ═══
-    Part("ll-hdpe-housing", "5mm UV-stabilized HDPE sheet (black)", "plastics-sheet",
-         "lightlock", 1, "lot", 180, 280, "TAP Plastics", "Online Metals",
-         spec="Ø900 fixed housing shell — LT_HOUSING_T (rolled + extrusion-welded, ~7 m²)"),
+    Part("ll-hdpe-housing", "3/16\" UV-stab HDPE sheet, black — 48×96 (×3)", "plastics-sheet",
+         "lightlock", 3, "sheet", 184.99, 184.99, "US Plastics", "TAP Plastics", part_no="46685",
+         url="https://www.usplastic.com/catalog/item.aspx?itemid=136962&catid=705",
+         spec="Ø900 fixed housing shell (~65 ft²), rolled + extrusion-welded from 3× 4×8 ft 3/16\" (≈5mm) UV-stab HDPE sheets — the 111\" circumference needs 3× 48\" sheet widths (2 fall ~15\" short). ~33% offcut on the 3rd sheet; a 5×10 ft sheet would cut to 2 (optimize at order). US Plastics 46685 $184.99/sheet."),
     Part("ll-pp-drum", "4mm black polypropylene sheet", "plastics-sheet",
          "lightlock", 1, "lot", 150, 240, "TAP Plastics", "Curbell",
          spec="Ø864 revolving drum shell + top/bottom caps — LT_DRUM_T (~7 m²)"),

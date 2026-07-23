@@ -580,13 +580,13 @@ tray drainage plan and sump cross-section).
 | [M6×1.0 hex nut, nyloc SS](https://www.mcmaster.com/90576A115/) (90576A115) | Nyloc nut — M6×20 spray fasteners. Pitch M6×1.0 (coarse, baseline — confirm vs SKU PDF, must match the bolt). $4.77/pack of 100. | 16 ea | McMaster-Carr | $1 |
 | [Self-tapping SS screws (8-pack)](https://www.lowes.com/pd/Hillman-25-Count-10-x-1-in-Stainless-Steel-Self-Drilling-Interior-Exterior-Sheet-Metal-Screws/3691866) (3691866) | Ball-joint flange to beam top wall. #10×1 SS self-drill, 25-pk ~$11–16 (per-unit est). | 4 ea | Lowe's (Hillman) | $2–$3 |
 | Ø20mm ball joint, zinc socket, M12 stud | Multi-axis arm articulation | 1 ea | Amazon | $12 |
-| [SS beam clamp plates (top + bottom) + spacers (25mm)](https://www.bobcometal.com/stainless-steel-flat-bar-304-1-4-inch-x-2-inch.html) (SS04FB.250X2.00) | Beam to carriage plate (sandwich, countersunk underside bolts) | 4 ea | Bobco Metals | $40–$60 |
+| [SS beam clamp plates (4, cut from 1× 2 ft 304 flat bar)](https://www.mcmaster.com/8992K512/) (8992K512) | 2 top + 2 bottom beam-clamp plates (beam-to-carriage sandwich, countersunk underside bolts), cut from one 2 ft 304 SS flat bar; + 4× 25mm 6061 AL spacers (from offcut). ⚠ CONFIRM bar thickness (8992K512): the report stack-up has 3mm plates (bottom Z26–29, top Z54–57) — if it's 1/4" the stack-up shifts +3.4mm/plate (a stiffer, better clamp, but the heights need re-checking); if 1/8" it matches the design as-is. | 1 2 ft bar | McMaster-Carr | $35 |
 | 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | Arm tube — slit ~30mm at the bottom for the clamp-collar pinch onto the adapter's Ø21 spigot | 1 ea | Online Metals | $6 |
 | Arm-to-stud adapter, turned 6061-T6 AL (anodized) | Reducer coupling: M12×1.75 tapped bore (onto the ball-joint stud, locked with an M12 jam nut) → Ø21 male spigot the slit arm tube slips over. ~40mm long; anodized to match the AL tube (galvanic). Turned one-off / est. | 1 ea | Local machine shop | $12–$18 |
 | [M12×1.75 jam nut, SS](https://www.amazon.com/M12-1-75-Plain-Finish-Stainless-Steel/dp/B007IA07PS) (B007IA07PS) | Locks the arm adapter on the ball-joint M12 stud (M12×1.75 coarse). | 1 ea | Amazon | $1 |
 | [Clamp-style shaft collar, 25mm/1" bore, SS](https://www.ruland.com/cl-16-st.html) (CL-16-ST) | Over the slit arm-tube bottom; its integral clamp screw squeezes the Ø25×2 tube onto the adapter's Ø21 spigot — rotational adjust + lift-off for transport. Replaces the loose M6 pinch bolt. Confirm SKU/bore/price at order. | 1 ea | Ruland | $28–$33 |
 | Nylon zip ties, 200mm | Hose to arm tube | 6 ea | Amazon | $1 |
-| **Spray total** | | | | **$349–$461** |
+| **Spray total** | | | | **$344–$436** |
 <!-- END parts:spray -->
 
 ### 6.3 Combined Total
@@ -594,8 +594,8 @@ tray drainage plan and sump cross-section).
 | Subsystem | Cost Range |
 |-----------|-----------|
 | Processing tray | <!-- BEGIN costing:tray-low -->$1,293<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,016<!-- END costing:tray-high --> |
-| Spray bar assembly | <!-- BEGIN costing:spray-low -->$349<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$461<!-- END costing:spray-high --> |
-| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,642<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,477<!-- END costing:tray-spray-total-high -->** |
+| Spray bar assembly | <!-- BEGIN costing:spray-low -->$344<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$436<!-- END costing:spray-high --> |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,637<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,452<!-- END costing:tray-spray-total-high -->** |
 
 ---
 

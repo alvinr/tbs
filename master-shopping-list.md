@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 3. Pinhole optics plate | $110 | $265 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,146 | $6,712 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,419 | $7,924 |
-| 6. Electrical — power, circuits, wiring | $2,665 | $3,081 |
+| 6. Electrical — power, circuits, wiring | $2,931 | $3,062 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,032 | $2,506 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,062 | $2,943 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$26,472** | **~$36,391** |
+| **TOTAL (base build + 50-print run)** | **~$26,738** | **~$36,372** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -130,23 +130,23 @@ indicative low–high estimates — get quotes before ordering.
 | 15A blade fuse | 1 ea | Amazon | water | $5 |
 | 16 AWG silicone coiled cable | 1 ea | Waytek Wire | ventilation | $15 |
 | 2/0 AWG battery cable, 3ft (battery–fuse–busbar) | 1 lot | Amazon | electrical | $30 |
-| 200A main fuse — MRBF terminal-mount (ABYC E-11) | 1 ea | Amazon | electrical | $23–$27 |
+| [200A main fuse (Blue Sea 5187) + single MRBF holder (5191)](https://defender.com/en_us/blue-sea-systems-single-mrbf-terminal-fuse-block-5191) (5187+5191) | 1 ea | Blue Sea | electrical | $46 |
 | 4 AWG ground wire, green/yellow, 3m | 1 lot | Amazon | electrical | $15 |
 | [40×25mm PVC cable trunking, 5m](https://www.amazon.com/GenSDH-Raceway-Speaker-Concealer-Coffee-Width/dp/B0DK6GMHGL) (B0DK6GMHGL) | 4 ea | Amazon | electrical | $74 |
 | [Anderson Powerpole 30A connectors, 50 pairs](https://powerwerx.com) | 1 kit | Powerwerx | electrical | $40 |
 | Anderson Powerpole connectors 30A | 5 pair | Amazon | water | $10 |
-| Battery main disconnect — Blue Sea m-Series 300A isolator | 1 ea | West Marine | electrical | $33–$42 |
+| [Battery main disconnect — Blue Sea 6006 m-Series (300A)](https://offgridstores.com/products/blue-sea-6006-m-series-mini-battery-switch-single-circuit-on-off-red) (6006) | 1 ea | Off Grid Stores | electrical | $36 |
 | Battery terminal covers (pair), insulating boots | 1 pair | Amazon | electrical | $10 |
-| Blue Sea 5026 fuse block, 12-circuit ST-blade | 1 ea | Amazon | electrical | $55–$77 |
-| Brady M210 wire label kit | 1 ea | Cable Master | electrical | $199–$211 |
+| [Blue Sea 5026 fuse block, 12-circuit ST-blade](https://offgridstores.com/products/blue-sea-5026-st-blade-fuse-block-w-cover-12-circuit-w-negative-bus) (5026) | 1 ea | Off Grid Stores | electrical | $59 |
+| [Brady M210 wire label printer kit](https://www.digikey.com/en/products/detail/brady-corporation/M210-KIT/16643735) (M210-KIT) | 1 ea | Amazon | electrical | $194 |
 | [Cable grommets / glands — steel-shell penetrations](https://www.amazon.com/YUFANNET-Assortment-Grommets-Automotive-Electrical/dp/B09K5GNFHF) (B09K5GNFHF) | 1 lot | Amazon | electrical | $28 |
 | Cooler external power cable | 1 ea | Waytek Wire | ventilation | $20 |
-| Copper ground stake, 8ft × ⅝" dia | 1 ea | Home Depot | electrical | $25–$30 |
+| [Copper-bonded ground rod, 8ft × ⅝" + acorn clamp](https://www.homedepot.com/p/ERICO-5-8-in-x-8-ft-Copper-Ground-Rod-615880UPC/202195738) (615880UPC) | 1 lot | Home Depot | electrical | $27 |
 | Deutsch DT 2-pin connectors | 2 set | Waytek Wire | ventilation | $8 |
 | Deutsch DT 2-pin connectors, IP67 (exterior penetrations) | 10 set | Waytek Wire | electrical | $30 |
 | Equipotential bonding kit — 6 AWG + ring lugs | 1 ea | Amazon | electrical | $20 |
-| External emergency cut-off — red mushroom IP66 + control loop | 1 ea | AutomationDirect | electrical | $18–$30 |
-| Interior emergency cut-off — red mushroom IP65 (paralleled to exterior) | 1 ea | AutomationDirect | electrical | $18–$25 |
+| [External emergency cut-off — red mushroom IP66/NEMA 4X + control loop](https://www.mcmaster.com/6741K41/) (6741K41) | 1 ea | McMaster-Carr | electrical | $18–$30 |
+| [Interior emergency cut-off — red mushroom IP66 metal (paralleled to exterior)](https://www.mcmaster.com/8382K45/) (8382K45) | 1 ea | McMaster-Carr | electrical | $18–$25 |
 | IP65 enclosure ~200×220×140mm (fuse block + busbars, on the plywood) | 1 ea | Polycase | electrical | $60 |
 | Master pump switch (Circuit C) — IP67 sealed rocker/disconnect 12V 16A | 1 ea | Amazon | electrical | $10 |
 | MC4 bulkhead connector pairs, IP67 panel-mount | 3 pair | Amazon | electrical | $25 |
@@ -155,12 +155,12 @@ indicative low–high estimates — get quotes before ordering.
 | Pull-cord ceiling switch, 12V 6A SPST | 2 ea | Amazon | electrical | $16 |
 | Pump distribution block — 12V DC + / − bus, 6-way | 1 ea | Blue Sea | electrical | $15 |
 | PV cable 10 AWG + MC4 connectors | 1 lot | Amazon | electrical | $30 |
-| Remote battery switch — Blue Sea ML-RBS 500A magnetic-latch (E-stop trip) | 1 ea | West Marine | electrical | $280–$396 |
+| [Remote battery switch — Blue Sea ML-RBS 500A magnetic-latch (E-stop trip)](https://powerwerx.com/blue-sea-7700-ml-rbs-remote-battery-switch) (7700) | 1 ea | Powerwerx | electrical | $349 |
 | Sealed wet-zone connectors — Deutsch DT / adhesive heat-shrink | 1 lot | Waytek Wire | electrical | $25 |
 | Shore-charger output fuse — 20A inline | 1 ea | Amazon | electrical | $5 |
 | Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs) | 1 lot | Waytek Wire | electrical | $30 |
 | Wiring kit — 12/14/16/18 AWG tinned, 50ft/color | 1 kit | Waytek Wire | electrical | $80 |
-| **electrical-distribution subtotal** | | | | **$1,413–$1,601** |
+| **electrical-distribution subtotal** | | | | **$1,508–$1,528** |
 
 ### electrical-power
 
@@ -169,11 +169,11 @@ indicative low–high estimates — get quotes before ordering.
 | Cooler inverter | 1 ea | Victron | ventilation | $153–$275 |
 | [LiFePO4 battery, 100Ah 12V (Renogy Smart Lithium)](https://www.renogy.com/12v-100ah-smart-lithium-iron-phosphate-battery/) | 1 ea | Renogy | electrical | $350–$430 |
 | [PV array disconnect — DC load-break isolator, 50A/150VDC (NEC 690.13)](https://www.automationdirect.com/) | 1 ea | AutomationDirect | electrical | $40 |
-| [Solar panel ground-mount tilt frame, 30°](https://www.renogy.com) | 1 ea | Renogy | electrical | $33–$50 |
-| [Solar panel, 200W monocrystalline 12V](https://www.renogy.com/200-watt-12-volt-monocrystalline-solar-panel/) | 3 ea | Renogy | electrical | $450–$495 |
-| [Victron Blue Smart IP65 12/15 shore backup charger](https://www.altestore.com) | 1 ea | altE Store | electrical | $160–$180 |
-| [Victron SmartSolar MPPT 100/50 charge controller](https://www.altestore.com) | 1 ea | altE Store | electrical | $185–$230 |
-| **electrical-power subtotal** | | | | **$1,371–$1,700** |
+| [Solar panel adjustable tilt mount set (per panel)](https://www.amazon.com/Renogy-Adjustable-Solar-Panel-Brackets/dp/B07CSKFWK7) (RNG-MTS-TMB-G1-US) | 3 ea | Amazon | electrical | $108 |
+| [Solar panel, 200W monocrystalline 12V (Renogy RSP200D)](https://offgridstores.com/products/renogy-200-watt-12-volt-monocrystalline-solar-panel) (RSP200D-US) | 3 ea | Off Grid Stores | electrical | $510 |
+| [Victron Blue Smart IP65 12/15 shore backup charger](https://powerwerx.com/victron-bpc121531104r-bluesmart-ip65-1215) (BPC121531104R) | 1 ea | Powerwerx | electrical | $176 |
+| [Victron SmartSolar MPPT 100/50 charge controller](https://powerwerx.com/victron-scc110050210-smartsolar-mppt-10050) (SCC110050210) | 1 ea | Powerwerx | electrical | $194 |
+| **electrical-power subtotal** | | | | **$1,531–$1,733** |
 
 ### fabric-textile
 
@@ -425,26 +425,26 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 39 | bearings-motion, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $3,517–$3,611 |
+| McMaster-Carr | 41 | bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $3,552–$3,666 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,130–$3,472 |
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,853–$2,411 |
 | Online Metals | 9 | aluminum, plastics-sheet, stainless-sheet, steel-structural | $1,406–$1,961 |
-| Amazon | 63 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,355–$1,677 |
+| Amazon | 63 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,579–$1,875 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $1,045–$1,365 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
-| Home Depot | 25 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $885–$1,165 |
+| Home Depot | 25 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $887–$1,162 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | Photographers' Formulary | 2 | chemistry-reagents | $1,051 |
-| Renogy | 3 | electrical-power | $833–$975 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
+| Powerwerx | 4 | electrical-distribution, electrical-power | $758 |
 | Barn Door Ag | 7 | plumbing-fittings | $414–$652 |
+| Off Grid Stores | 3 | electrical-distribution, electrical-power | $606 |
 | Container Exchanger | 1 | water-equipment | $320–$600 |
 | Fresh Water Systems | 5 | water-equipment | $400–$445 |
-| West Marine | 2 | electrical-distribution | $313–$438 |
-| altE Store | 2 | electrical-power | $345–$410 |
+| Renogy | 1 | electrical-power | $350–$430 |
 | Curbell Plastics | 1 | plastics-sheet | $380 |
 | marine plywood supplier | 2 | timber-ply | $190–$330 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
@@ -452,7 +452,6 @@ indicative low–high estimates — get quotes before ordering.
 | igus | 1 | bearings-motion | $261 |
 | Harbor Freight | 1 | fasteners-hardware | $174–$232 |
 | Hessaire | 1 | ducting-ventilation | $185–$230 |
-| Cable Master | 1 | electrical-distribution | $199–$211 |
 | Waytek Wire | 7 | electrical-distribution | $208 |
 | Bearings Direct | 2 | bearings-motion | $201 |
 | AllFilters | 1 | water-equipment | $114–$186 |
@@ -465,9 +464,9 @@ indicative low–high estimates — get quotes before ordering.
 | Apera Instruments | 1 | tools-safety | $100–$110 |
 | Southco | 1 | fasteners-hardware | $76–$104 |
 | FilterWay | 1 | water-equipment | $65–$95 |
-| AutomationDirect | 3 | electrical-distribution, electrical-power | $75–$95 |
 | B&H Photo | 1 | fabric-textile | $95 |
 | StrongAr Hardware | 1 | fasteners-hardware | $70–$90 |
+| Blue Sea | 3 | electrical-distribution | $76 |
 | Frost King + Canal Rubber | 1 | seals-gaskets | $40–$75 |
 | TAP Plastics | 1 | plastics-sheet | $30–$70 |
 | Hardware store | 2 | adhesives-finishes | $42–$62 |
@@ -479,9 +478,8 @@ indicative low–high estimates — get quotes before ordering.
 | Marine Fiberglass Direct | 1 | fasteners-hardware | $25–$45 |
 | Pres-Bond | 1 | seals-gaskets | $21–$42 |
 | Environmental Marine | 1 | water-equipment | $30–$41 |
-| Powerwerx | 1 | electrical-distribution | $40 |
+| AutomationDirect | 1 | electrical-power | $40 |
 | Wurth LAC | 1 | fasteners-hardware | $23–$36 |
-| Blue Sea | 2 | electrical-distribution | $30 |
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |
 | Local machine shop | 1 | aluminum | $12–$18 |
 | FMW Fasteners | 1 | fasteners-hardware | $9–$17 |

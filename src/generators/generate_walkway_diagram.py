@@ -470,9 +470,12 @@ def sheet1():
     n_brackets_total = n_brackets_near * 2  # near + far only (no right brackets)
     notes = [
         "CONSTRUCTION NOTES:",
-        f"1. 4 removable grated sections, {WALKWAY_W}mm wide standard. Butt joints at all corners.",
-        f"2. Near walkway WIDENED to {WALKWAY_NEAR_WIDE_W}mm at X={WXL}\u2013{WXR} (clears EP + battery bank).",
-        f"   Deeper cantilever brackets ({WALKWAY_NEAR_WIDE_W}mm arm) with heavier gussets in bump-out zone.",
+        f"1. 4 removable grated sections, {WALKWAY_W}mm wide standard. Butt joints ONLY at the 4 corners;",
+        f"   the bump-out + drum-exit widenings are INTEGRAL (cut as one piece, no mid-deck joint).",
+        f"2. Near walkway WIDENED to {WALKWAY_NEAR_WIDE_W}mm at X={WXL}\u2013{WXR} (clears EP + battery bank) \u2014 an",
+        f"   integral inboard tab, not a bolted-on section. Deeper cantilever brackets ({WALKWAY_NEAR_WIDE_W}mm arm)",
+        f"   with heavier gussets carry the bump-out; the near deck is >3m so it splits at ONE sheet",
+        f"   seam placed away from the bump shoulders (molded GRP max 3'\u00d710').",
         f"3. Near/far: wall-cantilevered brackets ({WALKWAY_BRACKET_T}mm gussets) at {WALKWAY_BRACKET_SPACING}mm centers.",
         f"   Start at X={LXR} (butt joint), clear of the door-end panel swing sweep.",
         f"4. Right: CANTILEVER RECTANGLE \u2014 closed 40\u00d740 SHS frame on 2 arms off the IBC uprights + combined corner plates.",

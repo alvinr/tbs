@@ -24,13 +24,11 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 - [ ] **FABRICATION → PENDING BLUEPRINTS.** All `*-fabrication` lines (`tray-fabrication`, `ll-fabrication`, `ibcf-fabrication`, `sp-door-fab`) + `tray-ss-sheet` stay est until the drawing set is complete — then send to shops for quote. **Gated on the blueprints milestone (below).** ≈±$1,500.
 - [ ] **Blueprints milestone** = the pending action that unblocks all fab quotes (see ★ MAJOR MILESTONE below).
 - [x] **Sourceable remainder — SOURCED 2026-07-23:** `cooler-inverter` (Victron PIN123750510 GFCI $132.60), `panel-corner-plates` (5052-H32 $293/sheet ×2), `ibc-tote-1000l` ($150/ea SoCal reconditioned), `corridor-panel-ply-18/25` (marine, firmed), `pinhole-shim` (Lenox SS-3/8-DISC $40-100 RFQ), `sp-pivot-post` (pipe $135 Speedy Metals; collar = fab, pending blueprints).
-- [x] **Plywood → STANDARD — RULE MADE 2026-07-23:** downgrade corridor ply marine→exterior BC/ACX (saves ~$300); codified as a CLAUDE.md rule so it can't drift back. `corridor-panel-ply-18/25` $ pending Home Depot price (research running; Alvin to provide if searches blocked).
+- [x] **Plywood → STANDARD — DONE 2026-07-23:** `corridor-panel-ply-18` firm $29.30 (Home Depot RTD 23/32″ SYP, SKU 303564747); `corridor-panel-ply-25` standard ~1″ est $30–55 (exact 1″ HD SKU still to drop). Codified as a CLAUDE.md rule so it can't drift back to marine. (−$330)
 - [ ] **DESIGN FLAG — panel-corner-plates are huge.** Each 3mm Al corner core is 653×2388mm (~16.8 ft², ~half a sheet); 2 don't nest → 2 full sheets = $586 + weight. Reconsider whether the core needs to be full-size solid plate (vs a lighter frame/partial) at design-complete.
 - [x] **Walkway grating — McNichols FIRM 2026-07-23: 8 sheets $1,700.51** (revised from 13-sheet $3,035.73). American Grating alt ~$830 still ~2× cheaper — supplier decision open.
 - [ ] **`pinhole-shim` — DEFERRED to v1.0** (Lenox SS-3/8-DISC, firm via RFQ at design-complete).
 - [ ] **Container — DEFERRED to v1.0 design-complete.** `container-20ft` (±$1,500) + `container-delivery` (±$500) firm at purchase, once the design is locked. Treat current state as **v1.0**.
-- [x] **Walkway GRP grating — FIRM 2026-07-23:** McNichols quote 2026-3819515 = **$3,035.73** (`quotes/`). ⚠ American Grating public price for the same spec ≈ **$830** (~3.6× cheaper) — supplier decision open.
-- [x] **Stale doc — DONE 2026-07-23:** walkway-report "15mm"→1″ MS-S-100 de-staled across 5 docs (commit ec4c0e23).
 
 **Done this session:** light-lock plastics → US Plastics HDPE; drum caps 3/16″ (`LT_CAP_T`); electrical 13 parts + 2 E-stops + battery → Renogy Core; walkway grating 2× 36×120 panels + Fibergrate kit; tray shims → HDPE plate; walkway bump-out + muslin notches (5 models).
 

@@ -32,6 +32,15 @@ import generate_corridor_water_panel as cp    # IBC corridor deep-box frame + to
 
 TAGS = ["Corners", "Film Plane", "Pinhole", "Context", "Movement", "Shell", "Plane Tilt", "Plane Swing", "Labels"]
 
+# Sketchfab identity — stamped on every --send (force_name) so the model never re-uploads blank.
+# Values are the ones already carried in the live .skp's `sketchfab` attribute dict (stable UID).
+SF_TITLE = "TBS-001 Articulated Film Plane Model"
+SF_ID    = "572b4aaa2d394de1b8852160d7cdcfc3"   # stable Sketchfab UID — re-uploads REPLACE this model
+SF_TAGS  = "sketchup"
+SF_DESC  = ("The configuration the photosensitive film plane is flush against one of the 20ft "
+            "long-side walls of the container. This has a view-camera-style moveable film plane — "
+            "a mechanism with four independently actuated corners.")
+
 C_STEEL = "#B0B0B8"; C_CROSS = "#8A8A92"; C_PANEL = "#1F3B66"; C_CAR = "#C04010"
 C_FRAME = "#8FB0C8"   # film-plane 2x2 6061 Al angle perimeter frame (the ACM backing is captured in it)
 C_TILT = "#2E8B57"   # vertical (Z) slide — TILT accommodation (green)
@@ -751,6 +760,7 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
+{ov.sketchfab_meta_ruby(SF_TITLE, SF_DESC, SF_ID, SF_TAGS, force_name=True)}
 {tags_ruby}
 
 {body}

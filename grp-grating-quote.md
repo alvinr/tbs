@@ -9,7 +9,7 @@ Working doc (unpublished) to send a vendor for a molded-FRP grating quote. Not a
 | Attribute | Value |
 |-----------|-------|
 | Type | Molded fiberglass (FRP/GRP) grating |
-| Grid height | **1″ (25mm)** |
+| Grid height | **1″** |
 | Mesh | **1½″ × 1½″ square** |
 | Resin | **Vinyl-ester** (chemistry-zone corrosion) |
 | Surface | **Grit top** (non-slip) |
@@ -17,17 +17,17 @@ Working doc (unpublished) to send a vendor for a molded-FRP grating quote. Not a
 | Open area | ~70% |
 | Reference SKU | McNichols **MS-S-100** (vinyl-ester = SVF/XVE) · American Grating equivalent |
 
-## Cut list (walkway sections)
+## Cut list (walkway sections) — inches
 
-| # | Section | Size (mm) | ft² | Note |
-|---|---------|-----------|-----|------|
-| 1 | Near walkway | 300 × 4,159 | 1.34 | **>12 ft — splice or 2 pieces** |
-| 2 | Near-wide landing | 500 × 1,114 | 0.60 | EP/battery/slit zone bump-out |
-| 3 | Far walkway | 300 × 4,159 | 1.34 | **>12 ft — splice or 2 pieces** |
-| 4 | Right walkway | 300 × 2,362 | 0.76 | |
-| 5 | Left walkway (removable) | 300 × 2,362 | 0.76 | lift-out |
-| 6 | Left-wide landing | 600 × 760 | 0.49 | |
-| 7 | Drum-exit landing | ~600 deep, ~0.23 m² | 2.5 | *separate line — `walkway-drum-exit-grp`* |
+| # | Section | Width × Length (in) | ft² | Note |
+|---|---------|---------------------|-----|------|
+| 1 | Near walkway | 11.8″ × 163.7″ | 1.34 | **>144″ (12 ft) — splice or 2 pieces** |
+| 2 | Near-wide landing | 19.7″ × 43.9″ | 0.60 | EP/battery/slit zone bump-out |
+| 3 | Far walkway | 11.8″ × 163.7″ | 1.34 | **>144″ (12 ft) — splice or 2 pieces** |
+| 4 | Right walkway | 11.8″ × 93.0″ | 0.76 | |
+| 5 | Left walkway (removable) | 11.8″ × 93.0″ | 0.76 | lift-out |
+| 6 | Left-wide landing | 23.6″ × 29.9″ | 0.49 | |
+| 7 | Drum-exit landing | ~23.6″ deep, ~2.5 ft² | 2.5 | *separate line — `walkway-drum-exit-grp`* |
 | | **Total** | | **~47 ft²** (excl. drum-exit) | |
 
 ## Panels + supply

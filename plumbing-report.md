@@ -429,15 +429,15 @@ hardware are sourced there and in the IBC stacking frame line.
 | Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 12VDC, 3.5 GPM, 45 PSI; tray drain to IBC-3 (~900mm lift) | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
 | Shurflo 2088-554-144 pump (P-05 Brown drain) | 12VDC, 3.5 GPM, 45 PSI; evacuates IBC-3 (Brown) residual to the X3 end-wall port | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
 | [SeaFlo accumulator (0.75 L)](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) (SFAT-075-125-01) | 0.75 L, 125 PSI, 1/2" MNPT | 1 ea | Environmental Marine / Amazon | $30–$41 |
-| Corridor plumbing-panel marine ply (18mm) | 4×8 ft 18mm BS 1088 (or equivalent) marine plywood — rear backing board (~170×2196) + drain-riser backing spine (~456×1966) + spacer offcuts; ~1.3 m² used. Price est. | 1 sheet | marine plywood supplier / Home Depot | $120–$200 |
-| Pump-mount shirt marine ply (25mm) | 25mm BS 1088 (or equivalent) marine plywood, ~610×1650 cut piece — pump-mount shirt behind P-01..P-05 + 6× shirt-to-panel spacer blocks. Price est. | 1 piece | marine plywood supplier / Home Depot | $70–$130 |
+| [Corridor plumbing-panel marine ply (18mm)](https://publiclumber.com/products/3-4-18mm-4x8-hydrotek-marine-plywood) | 4×8 ft 18mm Hydrotek marine plywood (BS 1088 equiv) — rear backing board + drain-riser spine + spacer offcuts; ~1.3 m² used. $250 Public Lumber SoCal / $179 Woodworkers Source AZ. ⚠ MARINE IS ~3-4× standard: a plumbing backboard sees no marine loads — exterior BC/ACX (~$55-70/sheet) would cut this ~$130-190. Decision open. | 1 sheet | Public Lumber / Woodworkers Source | $179–$250 |
+| [Pump-mount shirt marine ply (25mm)](https://www.dunnlumber.com/marine-grade-abx-1-inches-softwood-face-plywood-4-feet-x-8-feet-net-thickness-1-16-inches-marineab1.html) | 1" (25mm) AB marine plywood 4×8, ~610×1650 cut piece — pump-mount shirt behind P-01..P-05 + 6× spacer blocks. Firm $211.88 Dunn Lumber. ⚠ MARINE premium — exterior AC ply would cut this substantially (see ply-18). Decision open. | 1 piece | Dunn Lumber | $212 |
 | Corridor panel mount hardware (brackets + fasteners) | 6× steel angle brackets (panel → IBC-frame front-portal uprights), shirt-to-panel screws, lag bolts. Price est. | 1 lot | Home Depot | $25–$50 |
 | Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; pump-suction isolation BV-01 (P-01), BV-02 (P-05), BV-06 (P-03) | 3 ea | Barn Door Ag / Amazon | $90–$135 |
 | 3-way diverter valve 1/2" FNPT | L/T-port HDPE-compatible; 3W-DV-02 (tray drain) | 1 ea | Amazon | $12–$22 |
 | pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build as SV-01 | 1 ea | Amazon | $10–$18 |
 | Steel flat bar 25×3mm — ribbon support cross-brace | Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (the four corridor↔pinhole lines); ~300mm each | 4 ea | Home Depot | $8–$16 |
 | Cushioned pipe clip | Secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports) | 16 ea | Amazon | $16–$32 |
-| **Corridor Plumbing Panel total** | | | | **$701–$1,000** |
+| **Corridor Plumbing Panel total** | | | | **$902–$1,132** |
 <!-- END parts:corridor-plumbing-panel -->
 
 ### 9.2 Pinhole Wall Plumbing Panel

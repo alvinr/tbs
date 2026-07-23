@@ -164,10 +164,10 @@ WALKWAY = [
 # $4,128/$6,201 and scenario $4,143/$5,180/$6,216 both drifted from the items, which sum to
 # $4,063/$6,104). Source: project-cost-breakdown.md §5.
 WATER = [
-    LineItem("Water storage (4× IBC totes, 3× bulkhead fittings @ $137 ea, X1 fill tee)", 730, 871, 1010),
+    LineItem("Water storage (4× IBC totes @ $150, 3× bulkhead fittings @ $137 ea, X1 fill tee)", 1010, 1010, 1010, "2026-07-23: IBC totes firm ~$150/ea (reconditioned food-grade SoCal)"),
     LineItem("IBC stacking frame (RHS deep 4-leg box + 4 feet + retaining bars + hangers + 8 weld-on lashing rings + fab)", 982, 1222, 1461, "2026-07-22: floor anchors → #14×3¼″ 410 SS self-drillers (land feet over crossmembers) −$14/−$44; M12×40 hanger bolt FMW 1634027"),
     LineItem("Pumps and accumulator (P-01..P-05 + ACC-01, 5× mount brackets)", 480, 508, 536),
-    LineItem("Corridor plumbing panel structure (18mm marine-ply backing board + drain-riser spine, 25mm pump-mount shirt, mount brackets + fasteners)", 215, 298, 380),
+    LineItem("Corridor plumbing panel structure (18mm marine-ply backing board + drain-riser spine, 25mm pump-mount shirt, mount brackets + fasteners)", 416, 464, 512, "2026-07-23: marine ply firmed (18mm $179-250 Public Lumber, 25mm $212 Dunn) — ⚠ marine ~3-4× standard, decision open"),
     LineItem("Under-walkway pipe-ribbon supports (4× welded cross-braces + 16 pipe clips)", 24, 36, 48),
     LineItem("Filter skid (3× Big Blue 4.5×20 separate housings on slotted-angle frame + cartridges)", 293, 392, 489, "2026-07-22: U-bracket retired → lag screws to ply backing −$18/−$21"),
     LineItem("Valves and fittings (6× BV ball valves, X1 4-way cross, S60×6 adapters, CV1, SV-01 + SV-02 taps, Blue equalization tie)", 699, 909, 1119, "2026-07-22: S60×6 adapter re-spec'd female-buttress×2\"NPT + 2→1\" bushing (CPP HMFN/20UD/027) +$48/+$24"),
@@ -221,7 +221,7 @@ PANEL = [
     LineItem("50×50×3mm RHS mild steel — frame perimeter + members (4× 6m)", 120, 140, 160, "Metal Supermarkets"),
     LineItem("1/8\" HDPE — panel skins both faces (4× 4×8 ft)", 493, 493, 493, "US Plastics 46684 1/8\" black HDPE @ $123.34/sheet"),
     LineItem("18mm exterior-grade plywood — Fan B mount band (0.5 sheet)", 30, 40, 50, "Home Depot"),
-    LineItem("3mm aluminum plate — corner-zone core plates (×2)", 360, 410, 460, "Online Metals"),
+    LineItem("3mm aluminum plate — corner-zone core plates (×2)", 586, 586, 586, "2026-07-23: firm 5052-H32 .125×48×96 @ $293.16/sheet ×2 (M&K Metal SoCal)"),
     LineItem("20mm EPDM gasket — perimeter + housing-surround + cut seals (~21 m)", 24, 38, 52, "OKAYASU 3/4\"×1/8\"×65ft EPDM ×2 rolls (~$52/21m)"),
     LineItem("Aluminum U-channel — gasket + HDPE-skin retention (~40 m)", 120, 160, 200, "Online Metals"),
     LineItem("Southco C2-33 cam compression latch (×4)", 76, 90, 104, "Southco / McMaster"),
@@ -261,7 +261,7 @@ INTERIOR = [
 # §3 Optics — pinhole plate (§3.1; the optional lens §3.2 is NOT in the base total). Detail
 # ($95/$165/$240) is correct; the scenario row ($80/$150/$280) was drifted.
 OPTICS = [
-    LineItem("Custom laser-drilled pinhole, SS-302/304 shim, 3×3", 50, 100, 150, "Lenox Laser"),
+    LineItem("Custom laser-drilled pinhole, SS-302/304 shim, 3×3", 40, 70, 100, "Lenox Laser SS-3/8-DISC; config $22-100, RFQ for Ø2.17"),
     LineItem("Steel backing plate 6×6×⅛, welded frame", 20, 30, 40),
     LineItem("Shutter plate (⅛ steel, 10×8) + slide channel", 25, 35, 50),
     LineItem("Disc retaining ring (Al 6061-T6, M52×0.75 thread)", 15, 20, 25, "local fab"),
@@ -300,7 +300,7 @@ FILM = [
 VENTILATION = [
     point("150×150×50mm axial fans ×2 (12V DC)", 50),
     LineItem("Evaporative cooler (Hessaire MC18M)", 185, 208, 230),
-    LineItem("Cooler inverter (Victron Phoenix 12/375 GFCI + DC fuse/disconnect + GFCI outlet)", 153, 214, 275),
+    LineItem("Cooler inverter (Victron Phoenix 12/375 GFCI, PIN123750510)", 133, 133, 133, "2026-07-23: firm $132.60 Inverter Supply"),
     point("Shade canopy — 80% shade cloth (20×10 ft)", 80),
     point('Canopy frame (1.5" EMT conduit + fittings)', 120),
     point("Baffle duct sheet metal (fans)", 30),
@@ -1019,18 +1019,18 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (29080, 34252, 41294),  # 2026-07-23: walkway GRP grating firmed to McNichols quote $3,035.73 (+$2,206 vs American Grating est). Per-change history in git log.
+    "grand_total": (29757, 34683, 41482),  # 2026-07-23: list-2 sourcing (inverter/corner-plates/IBC/marine-ply/pinhole). Per-change history in git log.
     "walkway": (4173, 4481, 4789),  # 2026-07-23: GRP grating FIRM to McNichols quote 2026-3819515 $3,035.73 (was est $830; American Grating alt ~$830 flagged)
-    "water": (5589, 6873, 8149),  # 2026-07-23: tray slope shims → 1-1/4" HDPE plate route (+$170/$225)
+    "water": (6070, 7178, 8281),  # 2026-07-23: IBC totes firm $150/ea + marine ply firmed (18/25mm)
     "container": (2300, 3300, 4300),
     "lightlock": (2032, 2268, 2506),   # 2026-07-22: Ø900 housing (46685 3/16" HDPE ×3 = $555) + Ø864 drum firmed to 1/8" black HDPE ×3 = $370 (was $150–240 est).  §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (1180, 1395, 1610),   # 2026-07-22: journal bushings → igus iglide J JFM-9095-100 $130.53/ea (from GGB DU $211.25) −$162/pair.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame)   # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
-    "panel": (1550, 1713, 1876),       # 2026-07-22: HDPE skins (4× 1/8" @ $123.34 = $493, was $260–420) + B2 bay (2× = $247, was $60–120) firmed to US Plastics solid HDPE (46684).  §6c = hinged-panel §8.1 (panel structure)
+    "panel": (1776, 1889, 2002),       # 2026-07-23: corner core plates firm 5052-H32 @ $293.16/sheet ×2 (M&K Metal).  §6c = hinged-panel §8.1
     "shelf": (214, 227, 239),          # 2026-07-22: piano hinge re-priced (Würth 32×600 satin SS, $22–35).  §6d = chemistry-prep-shelves §7
     "interior": (467, 578, 698),      # 2026-07-22: retired the Image-plane flat-backing ACM line (double-counted the film dibond-acm-film)
-    "optics": (110, 185, 265),
+    "optics": (100, 155, 215),         # 2026-07-23: pinhole → Lenox SS-3/8-DISC $40-100 (config, RFQ)
     "film": (6146, 6427, 6712),  # updated 2026-07-22: muslin clamp mechanism → off-the-shelf nylon spring clamps (×58) + HDPE filler; retired the custom bracket/spring/neoprene (−$189/−$531). Detail in git log.
-    "ventilation": (757, 841, 924),   # §5b BOM (point estimates); report total was stale at $769
+    "ventilation": (737, 760, 782),   # 2026-07-23: cooler inverter firm Victron PIN123750510 GFCI $132.60
     "power": (2942, 2958, 2973),       # 2026-07-23: electrical batch firmed to real SKUs — solar/MPPT/shore/battery-disc/fuse-block/MRBF/ML-RBS/label-kit/ground-rod/tilt-mounts×3 (Renogy/Victron/Blue Sea/Brady/ERICO). Still est: lifepo4 (Smart-vs-Core) + 2× E-stop (McMaster 6741K41/8382K45, pending price).  §5a authoritative subtotal
 }
 

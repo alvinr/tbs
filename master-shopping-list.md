@@ -12,20 +12,20 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 |------|-----|------|
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, ventilation) | $467 | $698 |
-| 3. Pinhole optics plate | $110 | $265 |
+| 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,146 | $6,712 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $5,589 | $8,149 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,070 | $8,281 |
 | 6. Electrical — power, circuits, wiring | $2,942 | $2,973 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,032 | $2,506 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $4,173 | $4,789 |
-| 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,550 | $1,876 |
+| 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,776 | $2,002 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $214 | $239 |
-| 8. Cooling & ventilation | $757 | $907 |
+| 8. Cooling & ventilation | $737 | $887 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$29,030** | **~$38,354** |
+| **TOTAL (base build + 50-print run)** | **~$29,707** | **~$38,542** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -66,7 +66,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| 3mm aluminum plate (1220 × 2,440mm) | 2 ea | Online Metals | panel | $360–$460 |
+| [3mm aluminum plate 5052-H32 (48×96)](https://www.mkmetal.net/5052-h32sht.125x48x96) (52SH125408) | 2 ea | M&K Metal | panel | $586 |
 | 6061-T6 AL plate 3/16" (5mm) | 1 ea | Online Metals | spray | $16–$28 |
 | 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | 1 ea | Online Metals | spray | $6 |
 | [Aluminum angle 2"×2"×3/16" (6061-T6, plain) — 16 ft lengths](https://www.mcmaster.com/8982K509-8982K479/) | 3 16 ft length | Metal Supermarkets | film | $625 |
@@ -75,7 +75,7 @@ indicative low–high estimates — get quotes before ordering.
 | Arm-to-stud adapter, turned 6061-T6 AL (anodized) | 1 ea | Local machine shop | spray | $12–$18 |
 | Disc retaining ring (Al 6061-T6, M52×0.75) | 1 ea | Local fab | optics | $15–$25 |
 | Telescoping aluminum pool pole, 4–8 ft | 1 ea | Amazon | spray | $15 |
-| **aluminum subtotal** | | | | **$1,187–$1,395** |
+| **aluminum subtotal** | | | | **$1,414–$1,522** |
 
 ### bearings-motion
 
@@ -167,14 +167,14 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Cooler inverter | 1 ea | Victron | ventilation | $153–$275 |
+| [Cooler inverter — Victron Phoenix 12/375 GFCI](https://www.invertersupply.com/index.php?main_page=product_info&products_id=200695) (PIN123750510) | 1 ea | Inverter Supply | ventilation | $133 |
 | [LiFePO4 battery, 100Ah 12V (Renogy Core Series)](https://offgridstores.com/products/renogy-12v-100ah-core-series-deep-cycle-lithium-iron-phosphate-battery) (RBT12100LFP-US) | 1 ea | Off Grid Stores | electrical | $306 |
 | [PV array disconnect — DC load-break isolator, 50A/150VDC (NEC 690.13)](https://www.automationdirect.com/) | 1 ea | AutomationDirect | electrical | $40 |
 | [Solar panel adjustable tilt mount set (per panel)](https://www.amazon.com/Renogy-Adjustable-Solar-Panel-Brackets/dp/B07CSKFWK7) (RNG-MTS-TMB-G1-US) | 3 ea | Amazon | electrical | $108 |
 | [Solar panel, 200W monocrystalline 12V (Renogy RSP200D)](https://offgridstores.com/products/renogy-200-watt-12-volt-monocrystalline-solar-panel) (RSP200D-US) | 3 ea | Off Grid Stores | electrical | $510 |
 | [Victron Blue Smart IP65 12/15 shore backup charger](https://powerwerx.com/victron-bpc121531104r-bluesmart-ip65-1215) (BPC121531104R) | 1 ea | Powerwerx | electrical | $176 |
 | [Victron SmartSolar MPPT 100/50 charge controller](https://powerwerx.com/victron-scc110050210-smartsolar-mppt-10050) (SCC110050210) | 1 ea | Powerwerx | electrical | $194 |
-| **electrical-power subtotal** | | | | **$1,487–$1,609** |
+| **electrical-power subtotal** | | | | **$1,467** |
 
 ### fabric-textile
 
@@ -326,8 +326,8 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | 304 SS sheet, 16-gauge (1.5mm), #4 brushed | 2 ea | Online Metals | tray | $720–$1,000 |
-| Custom laser-drilled pinhole — SS-302/304 shim, 3×3 | 1 ea | Lenox Laser | optics | $50–$150 |
-| **stainless-sheet subtotal** | | | | **$770–$1,150** |
+| [Custom laser-drilled pinhole — SS-302/304 shim, 3×3](https://lenoxlaser.com/shop/optical-apertures/standard-apertures/standard-aperture/) (SS-3/8-DISC) | 1 ea | Lenox Laser | optics | $40–$100 |
+| **stainless-sheet subtotal** | | | | **$760–$1,100** |
 
 ### steel-structural
 
@@ -381,13 +381,13 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Corridor plumbing-panel marine ply (18mm) | 1 sheet | marine plywood supplier | water | $120–$200 |
+| [Corridor plumbing-panel marine ply (18mm)](https://publiclumber.com/products/3-4-18mm-4x8-hydrotek-marine-plywood) | 1 sheet | Public Lumber | water | $179–$250 |
 | EP plywood backing panel (18mm, ~700×2000mm) | 1 sheet | Home Depot | electrical | $60 |
 | Exterior-grade plywood (Fan B mount band) | 1 2'×4' ¾" panel | Home Depot | panel | $30–$50 |
 | Phenolic-faced plywood (work surface) | 1 4'×8' ¾" sheet | Home Depot | shelf | $60 |
 | Plywood base plate (cooler stowage) | 1 2'×4' ½" panel | Home Depot | ventilation | $8 |
-| Pump-mount shirt marine ply (25mm) | 1 piece | marine plywood supplier | water | $70–$130 |
-| **timber-ply subtotal** | | | | **$348–$508** |
+| [Pump-mount shirt marine ply (25mm)](https://www.dunnlumber.com/marine-grade-abx-1-inches-softwood-face-plywood-4-feet-x-8-feet-net-thickness-1-16-inches-marineab1.html) | 1 piece | Dunn Lumber | water | $212 |
+| **timber-ply subtotal** | | | | **$549–$640** |
 
 ### tools-safety
 
@@ -410,7 +410,7 @@ indicative low–high estimates — get quotes before ordering.
 | Big Blue filter housing 4.5"×20" (separate) | 3 ea | AllFilters | water | $114–$186 |
 | CTO carbon block cartridge 4.5"×20" | 2 ea | RonAqua | water | $32–$60 |
 | HDPE spacer blocks 25mm (filter skid) | 1 lot | McMaster-Carr | water | $12–$22 |
-| [IBC tote (1,000 L caged)](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) | 4 ea | Container Exchanger | water | $320–$600 |
+| [IBC tote (1,000 L caged)](https://www.repackify.com/buy-ibc-totes/california) | 4 ea | SoCal reconditioner | water | $600 |
 | KDF-55 heavy-metal cartridge 4.5"×20" | 1 ea | FilterWay | water | $65–$95 |
 | MPP 5-micron sediment cartridge 4.5"×20" | 2 ea | Amazon | water | $24–$40 |
 | [SeaFlo accumulator (0.75 L)](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) (SFAT-075-125-01) | 1 ea | Environmental Marine | water | $30–$41 |
@@ -420,7 +420,7 @@ indicative low–high estimates — get quotes before ordering.
 | Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 1 ea | Fresh Water Systems | water | $80–$89 |
 | Shurflo 2088-554-144 pump (P-05 Brown drain) | 1 ea | Fresh Water Systems | water | $80–$89 |
 | Slotted steel angle frame 25×25×3mm (filter skid) | 1 lot | Home Depot | water | $25–$45 |
-| **water-equipment subtotal** | | | | **$1,022–$1,534** |
+| **water-equipment subtotal** | | | | **$1,302–$1,534** |
 
 ## Supplier consolidation (largest orders first)
 
@@ -431,9 +431,9 @@ indicative low–high estimates — get quotes before ordering.
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,130–$3,472 |
 | McNichols | 3 | fasteners-hardware, plastics-sheet | $3,116–$3,151 |
 | Metal Supermarkets | 11 | aluminum, steel-structural | $1,853–$2,411 |
-| Online Metals | 8 | aluminum, stainless-sheet, steel-structural | $1,366–$1,886 |
 | Amazon | 63 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,579–$1,875 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
+| Online Metals | 7 | aluminum, stainless-sheet, steel-structural | $1,006–$1,426 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
 | Home Depot | 25 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $887–$1,162 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
@@ -443,27 +443,29 @@ indicative low–high estimates — get quotes before ordering.
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
 | Powerwerx | 4 | electrical-distribution, electrical-power | $758 |
 | Barn Door Ag | 7 | plumbing-fittings | $414–$652 |
-| Container Exchanger | 1 | water-equipment | $320–$600 |
+| SoCal reconditioner | 1 | water-equipment | $600 |
+| M&K Metal | 1 | aluminum | $586 |
 | Fresh Water Systems | 5 | water-equipment | $400–$445 |
 | Curbell Plastics | 1 | plastics-sheet | $380 |
-| marine plywood supplier | 2 | timber-ply | $190–$330 |
 | US Plastic Corp | 1 | plastics-sheet | $210–$300 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
-| Victron | 1 | electrical-power | $153–$275 |
 | igus | 1 | bearings-motion | $261 |
+| Public Lumber | 1 | timber-ply | $179–$250 |
 | Harbor Freight | 1 | fasteners-hardware | $174–$232 |
 | Hessaire | 1 | ducting-ventilation | $185–$230 |
+| Dunn Lumber | 1 | timber-ply | $212 |
 | Waytek Wire | 7 | electrical-distribution | $208 |
 | Bearings Direct | 2 | bearings-motion | $201 |
 | AllFilters | 1 | water-equipment | $114–$186 |
 | Amazon (bundle) | 1 | seals-gaskets | $157–$178 |
-| Lenox Laser | 1 | stainless-sheet | $50–$150 |
 | CPP.parts | 1 | plumbing-fittings | $112–$144 |
 | Bostick & Sullivan | 1 | chemistry-reagents | $138 |
 | Fasteners Plus | 2 | fasteners-hardware | $106–$136 |
+| Inverter Supply | 1 | electrical-power | $133 |
 | Ferguson | 4 | plumbing-fittings | $74–$120 |
 | Apera Instruments | 1 | tools-safety | $100–$110 |
 | Southco | 1 | fasteners-hardware | $76–$104 |
+| Lenox Laser | 1 | stainless-sheet | $40–$100 |
 | FilterWay | 1 | water-equipment | $65–$95 |
 | B&H Photo | 1 | fabric-textile | $95 |
 | StrongAr Hardware | 1 | fasteners-hardware | $70–$90 |

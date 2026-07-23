@@ -669,18 +669,7 @@ end
   # Right walkway grate (cantilevered)
   grp = ents.add_group
   grp.name = "Right walkway grate (cantilevered)"
-  face = grp.entities.add_face([4329.mm,0.mm,115.mm], [4629.mm,0.mm,115.mm], [4629.mm,2262.mm,115.mm], [4329.mm,2262.mm,115.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(25.mm)
-  mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
-  mat.color = Sketchup::Color.new(119, 119, 119)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Right walkway grate (cantilevered) (far strip)
-  grp = ents.add_group
-  grp.name = "Right walkway grate (cantilevered) (far strip)"
-  face = grp.entities.add_face([4479.mm,2262.mm,115.mm], [4629.mm,2262.mm,115.mm], [4629.mm,2362.mm,115.mm], [4479.mm,2362.mm,115.mm])
+  face = grp.entities.add_face([4329.mm,0.mm,115.mm], [4629.mm,0.mm,115.mm], [4629.mm,2362.mm,115.mm], [4329.mm,2362.mm,115.mm], [4329.mm,2062.mm,115.mm], [4429.mm,2062.mm,115.mm], [4429.mm,1912.mm,115.mm], [4329.mm,1912.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (left section)"] || model.materials.add("Walkway Near (left section)")
@@ -691,18 +680,7 @@ end
   # Walkway Left (REMOVABLE — transport)
   grp = ents.add_group
   grp.name = "Walkway Left (REMOVABLE — transport)"
-  face = grp.entities.add_face([170.mm,0.mm,115.mm], [470.mm,0.mm,115.mm], [470.mm,2262.mm,115.mm], [170.mm,2262.mm,115.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(25.mm)
-  mat = model.materials["Walkway Left (REMOVABLE — transport)"] || model.materials.add("Walkway Left (REMOVABLE — transport)")
-  mat.color = Sketchup::Color.new(192, 96, 0)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Left (REMOVABLE — transport) (far strip)
-  grp = ents.add_group
-  grp.name = "Walkway Left (REMOVABLE — transport) (far strip)"
-  face = grp.entities.add_face([170.mm,2262.mm,115.mm], [320.mm,2262.mm,115.mm], [320.mm,2362.mm,115.mm], [170.mm,2362.mm,115.mm])
+  face = grp.entities.add_face([170.mm,0.mm,115.mm], [470.mm,0.mm,115.mm], [470.mm,1912.mm,115.mm], [370.mm,1912.mm,115.mm], [370.mm,2062.mm,115.mm], [470.mm,2062.mm,115.mm], [470.mm,2362.mm,115.mm], [170.mm,2362.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Left (REMOVABLE — transport)"] || model.materials.add("Walkway Left (REMOVABLE — transport)")

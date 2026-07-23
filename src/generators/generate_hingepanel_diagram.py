@@ -42,8 +42,8 @@ C_ALUM  = "#C8D8E8"   # aluminum (3mm corner core plate)
 C_STEEL = "#B0B0B8"   # steel section fill
 C_GASKT = "#5A3020"   # EPDM gasket fill
 C_WOOD    = "#C9A36B"  # plywood — Fan B mount band (rev11 material legend)
-C_PLASTIC = "#6E8CA0"  # 4mm PP plastic sheet — panel skins + B2 bay (rev11)
-C_HOLLOW  = "#EEEEE8"  # framed hollow core between the PP skins (rev11)
+C_PLASTIC = "#6E8CA0"  # 1/8″ HDPE plastic sheet — panel skins + B2 bay (rev11)
+C_HOLLOW  = "#EEEEE8"  # framed hollow core between the HDPE skins (rev11)
 C_LIGHT = "#FFE0A0"   # light-path indication (amber)
 FONT    = {"fontfamily": "monospace"}
 
@@ -93,12 +93,12 @@ def sheet1():
     # ── Panel body ────────────────────────────────────────────────────────────
     # Outer steel frame (50mm wide)
     ax.add_patch(Rectangle((0, 0), PW, PH, fc=C_STEEL, ec=C_OUT, lw=2.5, zorder=2))
-    # Skin area (inset of frame): rev11 — 4mm PP plastic sheet (C_PLASTIC)
+    # Skin area (inset of frame): rev11 — 1/8″ HDPE plastic sheet (C_PLASTIC)
     FR = 55  # visible frame width at face
     ax.add_patch(Rectangle((FR, FR), PW - 2 * FR, PH - 2 * FR,
                             fc=C_PLASTIC, ec=C_OUT, lw=0.8, zorder=3))
     ax.text(PW / 4 - 225, PH * 0.62,
-            "4mm PP PLASTIC SKIN\n(U-channel set\nflat-black interior)",
+            "1/8″ HDPE PLASTIC SKIN\n(U-channel set\nflat-black interior)",
             color=C_DIM, fontsize=6.5, ha="center", va="center", **FONT, zorder=15, alpha=0.8)
     # Fan B corner keeps an 18mm PLYWOOD mount band (bottom up to PANEL_FAN_BAND_Z)
     from tbs_constants import PANEL_FAN_BAND_Z as _PFBZ
@@ -459,7 +459,7 @@ def sheet2():
     for x, w in [(STEP_YD_L, D_XL - STEP_YD_L), (D_XR, STEP_YD_R - D_XR)]:
         ax.add_patch(Rectangle((x, BAY_FRONT_X), w, Y_INT - BAY_FRONT_X,
                                 fc=C_PLASTIC, ec=C_OUT, lw=1.0, hatch="\\\\",
-                                zorder=3, alpha=0.85))  # rev11: 4mm PP bay walls
+                                zorder=3, alpha=0.85))  # rev11: 1/8″ HDPE bay walls
     ax.add_patch(Rectangle((STEP_YD_L, BAY_FRONT_X), STEP_YD_R - STEP_YD_L, BAY_WALL_T,
                             fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="///", zorder=4))
     ax.text((STEP_YD_L + STEP_YD_R) / 2, BAY_FRONT_X - 110, "PUNCH-OUT BAY (rev9)",
@@ -467,9 +467,9 @@ def sheet2():
             fontweight="bold", zorder=15)
 
     # ── CORNER ZONES (40mm envelope, Yd=0→653 and Yd=1709→2362) ──────────────
-    # rev11: 4mm PP skin + framed HOLLOW core (3mm Al stiffener mid) + 4mm PP skin.
+    # rev11: 1/8″ HDPE skin + framed HOLLOW core (3mm Al stiffener mid) + 1/8″ HDPE skin.
     # The 40mm envelope is unchanged (frame depth); only the skins changed material.
-    CORN_SKIN  = PANEL_SKIN_T                     # 4mm PP skin each face
+    CORN_SKIN  = PANEL_SKIN_T                     # 1/8″ HDPE skin each face
     CORN_PLATE = 3                               # 3mm Al core stiffener
     CORN_Y_OUT = Y1_W                            # 40 — outer face (= wall inner face)
     CORN_Y_IN  = Y1_W + CORNER_T                  # 80 — inner face (40mm envelope)
@@ -477,7 +477,7 @@ def sheet2():
 
     # This section is cut at H=1000mm — BELOW the Fan B ply-band top (1125mm), so the
     # NEAR corner (Yd 0→653, the fan side) is cut through the 18mm PLYWOOD band, while
-    # the FAR corner is the 4mm PP skin. Both keep the 40mm envelope + 3mm Al core.
+    # the FAR corner is the 1/8″ HDPE skin. Both keep the 40mm envelope + 3mm Al core.
     for x0, x1, skin_c, skin_t in [(0, STEP_YD_L, C_WOOD, 18),
                                     (STEP_YD_R, PW, C_PLASTIC, CORN_SKIN)]:
         w = x1 - x0
@@ -716,7 +716,7 @@ def sheet2():
 
     # ── Material legend (rev11 wood/plastic differentiation) ──────────────────
     draw_legend(ax, [
-        (C_PLASTIC, "4mm PP skin + B2 bay"),
+        (C_PLASTIC, "1/8″ HDPE skin + B2 bay"),
         (C_WOOD, "18mm ply — Fan B mount band"),
         (C_ALUM, "3mm Al corner core"),
         (C_STEEL, "steel RHS frame / wall"),
@@ -749,7 +749,7 @@ def sheet2():
 def sheet3():
     # ── Key dimensions (re-use Sheet 2 depth constants) ──────────────────────
     from tbs_constants import WALL_T    # container end-wall steel thickness
-    PLY_T   = PANEL_SKIN_T   # rev11: 4mm PP skin each face (was 18mm ply); envelope kept via FRAME_T
+    PLY_T   = PANEL_SKIN_T   # rev11: 1/8″ HDPE skin each face (was 18mm ply); envelope kept via FRAME_T
     PT      = 120   # panel overall thickness (envelope unchanged)
     FRAME_T = PT - 2 * PLY_T   # = 112mm framed core
 
@@ -1547,7 +1547,7 @@ def sheet4():
 def sheet6():
     """Sheet 6 — interior pull-handle mounting detail. Horizontal section through the
     panel's left drum-aperture jamb: the matte-black 316 SS D-grab handle through-bolted
-    to the 50×50×3 RHS frame stud (NOT the PP skin), reacting into an interior backing
+    to the 50×50×3 RHS frame stud (NOT the HDPE skin), reacting into an interior backing
     plate. The two M8 bolts pass THROUGH both walls of the RHS, well inside its width."""
     fig, ax = plt.subplots(figsize=(11, 8.0))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
@@ -1569,9 +1569,9 @@ def sheet6():
     ax.add_patch(Rectangle((0, -25), 50, 50, fc=C_STEEL, ec=C_OUT, lw=1.8, zorder=3))
     ax.add_patch(Rectangle((3, -22), 44, 44, fc=BG, ec=C_OUT, lw=1.0, zorder=4))
     leader(ax, (24, -25), (50, -50), "50×50×3 RHS frame jamb\n(beside drum aperture)", col=C_OUT)
-    # 4mm PP interior skin on the +X face
+    # 1/8″ HDPE interior skin on the +X face
     ax.add_patch(Rectangle((50, -25), 4, 50, fc=C_PLASTIC, ec=C_OUT, lw=0.8, zorder=4))
-    leader(ax, (52, 24), (72, 72), "4mm PP\ninterior skin", col=C_OUT)
+    leader(ax, (52, 24), (72, 72), "1/8″ HDPE\ninterior skin", col=C_OUT)
     # interior backing plate behind the exterior wall (spreads the load)
     ax.add_patch(Rectangle((-7, -22), 7, 44, fc="#9AA0A6", ec=C_OUT, lw=1.0, zorder=3))
     leader(ax, (-2, -22), (-25, -50), "exterior backing\nplate", col=C_OUT)
@@ -1597,7 +1597,7 @@ def sheet6():
 
     ax.text(60, -103,
             "The handle bolts to the STEEL FRAME with a backing plate — the swing load\n"
-            "reacts into the 50×50 RHS, never the PP skin. Matte-black keeps the container\n"
+            "reacts into the 50×50 RHS, never the HDPE skin. Matte-black keeps the container\n"
             "interior optically dead (stray-light control for the pinhole).",
             ha="center", fontsize=7.5, color=C_OUT, **FONT,
             bbox=dict(boxstyle="round,pad=0.4", fc="#F4F1E8", ec=C_DIM, lw=0.7))

@@ -403,7 +403,7 @@ The pinhole goes in the center of the opposite long wall.
 TBS-001 supplements the original cargo doors with a purpose-built stepped hinged panel incorporating a revolving light trap drum. This provides two things simultaneously: a light-tight seal for operations, and the ability to swing the full panel 180° open for loading IBC totes and equipment.
 
 **Panel design (see engineering drawings below):**
-- <!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm --> × 2,388mm stepped panel, 50×50mm RHS steel frame, 4mm PP plastic skins (18mm-ply Fan-B band)
+- <!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm --> × 2,388mm stepped panel, 50×50mm RHS steel frame, 1/8" HDPE plastic skins (18mm-ply Fan-B band)
 - **Stepped profile:** 40mm thick at corner zones and 120mm thick at center zone where the light trap drum is mounted
 - Carried on a vertical **Ø89×8mm CHS pivot post** at the far-left edge (the reused film-plane far-left upright) on a thrust collar + top/bottom hub bearings — swings open about the pivot for access, and ~56° inboard for transport
 - 4 × Southco C2-33 cam compression latches at corners, compressing the 20mm EPDM perimeter + cut seals against a fixed welded door frame (50×50×3mm RHS)

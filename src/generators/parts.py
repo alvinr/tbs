@@ -711,7 +711,7 @@ PARTS: list[Part] = [
          url="https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705",
          spec="B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing (rev11); 4 walls, 2 per 4×8 sheet. 1/8\" HDPE nearest stock to 4mm (weld-compatible with the HDPE housing/drum); EPDM lip cut from the panel-epdm perimeter roll (not billed here). US Plastics 46684 $123.34/sheet."),
     Part("panel-paint", "Flat black paint (RAL 9005)", "adhesives-finishes",
-         "panel", 1, "qt", 10, 20, "local", spec="Bay/weld touch-in (PP skins are pre-pigmented black)"),
+         "panel", 1, "qt", 10, 20, "local", spec="Bay/weld touch-in (HDPE skins are pre-pigmented black)"),
     Part("panel-grab-handle", "304 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black", "fasteners-hardware",
          "panel", 1, "ea", 70, 90, "StrongAr Hardware", spec="Interior pull handle — through-bolted to the frame (§4.3). 304 chosen over 316 (~$186); interior / non-wet location.", url="https://www.strongarhardware.com/pro-line-series-ladder-pull-handle-back-to-back-matte-black-powder-coated-finish-316-exterior-grade-stainless-steel-alloy/"),
 

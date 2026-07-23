@@ -87,7 +87,7 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 |-----------|-------|
 | Housing outer diameter | Ø900mm (fixed) + Ø864mm rotating drum, ~Ø850mm bore |
 | Height | 2,250mm (floor to upper bearing) |
-| Wall thickness | 5mm UV-HDPE housing + 4mm PP drum, rolled and extrusion-welded |
+| Wall thickness | 5mm UV-HDPE housing + 1/8" HDPE drum, rolled and extrusion-welded |
 | Surface finish | Black-pigmented sheet + flat-black touch-in at welds (interior); UV-stabilized sheet (exterior) — no primer |
 | Baffles | None — two 80° housing openings 180° apart + single-opening C-shell drum (see §4, §5) |
 | Top bearing | SKF 6215 sealed deep-groove ball bearing on 75mm steel stub shaft, bolted to the drum cap via a nylon-isolated hub |
@@ -100,13 +100,13 @@ The Porta-Fab system is modular and more robust than the Vario range, but shares
 
 **Assessment — Recommended.**
 
-Custom fabrication is the correct choice for a field-deployed, transport-rated camera system — every specification can be set to exactly what is required (clear bore, panel-thickness interface, bearing grade, seal type, drum height). The shell is a hybrid plastic skin: a 5mm UV-stabilized HDPE fixed housing and a 4mm polypropylene revolving drum. Three properties make plastic the right skin here:
+Custom fabrication is the correct choice for a field-deployed, transport-rated camera system — every specification can be set to exactly what is required (clear bore, panel-thickness interface, bearing grade, seal type, drum height). The shell is a all-HDPE plastic skin: a 5mm UV-stabilized HDPE fixed housing and a 1/8" HDPE revolving drum. Three properties make plastic the right skin here:
 
 1. **Weight / center of gravity.** The plastic skin holds the drum/housing shell mass to ~60 kg (the steel shaft, bearings, and grab rail set a floor the shell cannot drop below). Because the whole assembly hangs off the swinging leaf and revolves ~56° about the pivot post for transport, low shell mass keeps the swing cantilever moment on the pivot — and the container CG shift — small.
 2. **No galvanic couple.** Plastic-to-steel has no galvanic couple, so isolation reduces to plain nylon washers at the shaft only — no full isolation kit, and no outdoor-corrosion risk at the panel-frame and bearing interfaces.
-3. **Cost and fabrication.** UV-HDPE / PP sheet is inexpensive, and hot-air / extrusion welding of a Ø900 cylinder is low-skill labor relative to metal seam welding.
+3. **Cost and fabrication.** HDPE sheet is inexpensive, and hot-air / extrusion welding of a Ø900 cylinder is low-skill labor relative to metal seam welding.
 
-A 4–5mm plastic cylinder, edge-stiffened along the opening, is rigid as a freestanding shell without a surrounding wall frame, and bolts into the panel opening on 8 × M10 flush bolts (stainless, nylon-isolated). UV-stabilized HDPE/PP is inherently weatherproof and needs no primer or anodize; the drum is in the dry walk-through entry zone, not the chemistry zone, so only ambient/outdoor exposure applies. The trade-off is plastic's higher thermal expansion, accommodated by the 15mm running gap between drum and housing.
+A 3–5mm plastic cylinder, edge-stiffened along the opening, is rigid as a freestanding shell without a surrounding wall frame, and bolts into the panel opening on 8 × M10 flush bolts (stainless, nylon-isolated). UV-stabilized HDPE is inherently weatherproof and needs no primer or anodize; the drum is in the dry walk-through entry zone, not the chemistry zone, so only ambient/outdoor exposure applies. The trade-off is plastic's higher thermal expansion, accommodated by the 15mm running gap between drum and housing.
 
 The SKF 6215 sealed bearing is rated for radial loads to 52.7 kN and operates at 0–120°C — far beyond any field requirement. The neoprene/silicone top seal provides IP44 protection against splash and rain ingress. Black-pigmented sheet with flat-black touch-in at the welds is optically dead at visible wavelengths.
 
@@ -122,11 +122,11 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 |------|--------------|
 | Fixed housing shell | 5mm UV-HDPE (LT_HOUSING_T), rolled to **Ø900mm OD**, extrusion-welded full height; bolted (isolated) into the panel center zone, set in the punch-out bay |
 | Housing openings | Two, **80° arc each, 180° apart** (full height) — one facing the exterior, one facing the interior/walkway |
-| Rotating drum | 4mm PP C-shell (LT_DRUM_T), **Ø864mm OD** (~Ø850mm bore), single **80° opening**, edge-stiffened, rotates inside the housing on a 15mm running gap |
+| Rotating drum | 1/8" HDPE C-shell (LT_DRUM_T), **Ø864mm OD** (~Ø850mm bore), single **80° opening**, edge-stiffened, rotates inside the housing on a 15mm running gap |
 | Internal baffles | **None** — light-tightness is by the fixed-housing geometry (openings <90°, 180° apart; see §5) |
 | Drum/housing height | 2,200mm |
-| Top cap | 5mm PP plate, flanged, welded to the drum; steel hub insert for the stub shaft |
-| Bottom cap | 5mm PP plate, flanged, steel hub insert with 75mm stub shaft for lower bearing |
+| Top cap | 1/8" HDPE plate, flanged, welded to the drum; steel hub insert for the stub shaft |
+| Bottom cap | 1/8" HDPE plate, flanged, steel hub insert with 75mm stub shaft for lower bearing |
 | Upper stub shaft | 75mm Ø × 150mm steel stub, into the drum top-cap steel hub (nylon-isolated) |
 | Surface treatment | Interior: black-pigmented sheet + flat-black at welds; exterior: UV-stabilized sheet (no primer) |
 
@@ -158,7 +158,7 @@ The light lock is a **fixed housing + single-opening C-shell drum** (no internal
 
 | Item | Supplier | Part / Notes |
 |------|----------|-------------|
-| 5mm UV-HDPE sheet (housing, ~7 m²) + 4mm PP sheet (drum, ~7 m²) | [TAP Plastics](https://www.tapplastics.com/) / Curbell Plastics (SoCal); or Online Metals plastics | Rolled + extrusion-welded cylinders |
+| 5mm UV-HDPE sheet (housing, ~7 m²) + 1/8" HDPE sheet (drum, ~7 m²) | [TAP Plastics](https://www.tapplastics.com/) / Curbell Plastics (SoCal); or Online Metals plastics | Rolled + extrusion-welded cylinders |
 | SKF 6215-2RS1 bearing (×2) | Bearing World — Anaheim CA; or Applied Industrial Technologies | 75mm ID, sealed, C3 clearance |
 | 75mm × 150mm steel stub shaft (×2) | Pacific Coast Steel or any steel service center | 75mm Ø solid round bar, cut to length |
 | Closed-cell neoprene strip 12mm (3m) | McMaster-Carr #93855K6 | Closed-cell, pressure-sensitive adhesive back |
@@ -217,7 +217,7 @@ Custom fabrication is comparable to or below commercial alternatives while provi
 
 ## 7. Integration Notes
 
-- The drum is installed into the hinged panel before the panel is hung. The combined panel + drum weight (~209 kg; itemized breakdown in [Hinged Panel Report §2.4–2.5](hinged-panel-report.md) and [Weight Distribution §3.2](weight-distribution-report.md)) is beyond a two-person lift, so hanging requires an engine crane or gantry hoist. The pivot post, bearings, and cage are separate transport hardware, not carried in the panel + drum lift.
+- The drum is installed into the hinged panel before the panel is hung. The combined panel + drum weight (~196 kg; itemized breakdown in [Hinged Panel Report §2.4–2.5](hinged-panel-report.md) and [Weight Distribution §3.2](weight-distribution-report.md)) is beyond a two-person lift, so hanging requires an engine crane or gantry hoist. The pivot post, bearings, and cage are separate transport hardware, not carried in the panel + drum lift.
 - The lower bearing collar is bolted to the panel bottom rail with 8 × M10 stainless bolts. The upper bearing housing is bolted to the panel top rail with 6 × M10. Both connections can be disassembled with standard hex keys for maintenance.
 - The drum rotates freely in both directions; there is no rotation limit. The exterior face carries no handle — the operator pushes the bare drum wall to enter. An interior grab rail (100mm Ø SS, welded bracket, no through-hole) at 900mm height allows the operator to pull the drum closed from inside and brace during exit. This eliminates any through-bolt penetration of the drum wall on the exterior face, removing a potential light leak path.
 - Interior safelight (Circuit D, per [Electrical Report](electrical-report.md)) illuminates the drum interior during loading operations, allowing operators to orient themselves in darkness.

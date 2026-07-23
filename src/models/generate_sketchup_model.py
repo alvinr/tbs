@@ -48,7 +48,7 @@ C_RAIL = "#606068"      # HGR20 linear rail
 C_CARR = "#C04010"      # HGH20CA carriage block
 C_ALUM = "#C8D8E8"      # aluminum (cargo door panel, spray bar beam)
 C_PLY = "#9C7B4D"       # marine ply (plumbing panel + hinge-panel Fan B mount band)
-C_PLASTIC = "#6E8CA0"   # 4mm PP plastic sheet (rev11 hinge-panel skins + B2 bay; differentiates from wood C_PLY)
+C_PLASTIC = "#6E8CA0"   # 1/8″ HDPE plastic sheet (rev11 hinge-panel skins + B2 bay; differentiates from wood C_PLY)
 C_PUMP = "#454552"      # pump bodies (Shurflo 2088)
 C_ACC = "#5A9ACC"       # ACC-01 accumulator
 C_FILTER = "#3A6EA5"    # Big Blue filter housings
@@ -949,7 +949,7 @@ def panel_pivot():
     """
     import generate_lighttrap_model as lt
     parts = [lt.axle()]
-    # Cargo-door panel, operational position (X=0). rev11: 4mm PP plastic skins
+    # Cargo-door panel, operational position (X=0). rev11: 1/8″ HDPE plastic skins
     # (C_PLASTIC), with an 18mm PLYWOOD (C_PLY) mount band on the Fan B corner.
     parts.append(ruby_box("Cargo Door Panel",
                           0, 0, PANEL_FLOOR_GAP,

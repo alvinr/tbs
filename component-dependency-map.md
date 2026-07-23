@@ -86,10 +86,10 @@ dimensions are single-sourced in the table above (`generate_plate_drawing.py` re
 | Cross-slide stroke (spec) | <!-- BEGIN cdm:XSLIDE_STROKE -->300<!-- END cdm:XSLIDE_STROKE -->mm | `XSLIDE_STROKE` |
 | Cross-slides total (2/corner) | <!-- BEGIN cdm:XSLIDE_N -->8<!-- END cdm:XSLIDE_N --> | `XSLIDE_N` |
 
-*Components (a fixed-size rigid plane on slide-and-clamp corners): 2"×2"×3/16" **anodized-6061
+*Components (a fixed-size rigid plane on slide-and-clamp corners): 2"×2"×3/16" **plain-6061
 aluminum** angle frame (expendable) + corner L-brackets, 4× **3×1.5 304 U-channel** depth rails
 (McMaster 1262T21, ceiling + floor), 4× **4-wheel acetal skates** (Ø32 load + Ø20 keeper rollers
-on Ø10 316 axles), **8× 316 flat-bar cross-slides (Z tilt + X swing) on UHMW self-lube pads +
+on Ø10 304 axle pins), **8× 316 flat-bar cross-slides (Z tilt + X swing) on UHMW self-lube pads +
 adjustable gibs** (the 2-axis corner stage that absorbs the rigid-rotation arc travel), 4× **Ruland
 USKC12-6-6-SS U-joints** (303 SS, nitrile-booted), 12× cam-lever rail clamps, **single rigid ACM
 backing panel**, Duvetyne curtain seals, rail felt light-trap strips, 88× spring clips

@@ -11,26 +11,30 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ---
 
-## ⚡ Parts firm-up tracker (active) — decisions + actions
+## ⚡ Parts firm-up tracker (active) — 3 buckets by when they're actionable
 
-**Open DECISIONS (need Alvin):** _(none — batch clear)_
+_Everything sourceable today is sourced (parts-identity SKU/URL lint at zero). What remains,
+bucketed by WHEN it can be acted on:_
 
 **Open DESIGN items:**
 - [ ] **Right walkway muslin-notch — beam clash.** The muslin-drop notch on the right walkway (grate cut at X4329–4429, Yd1912–2062) is crossed by a cantilever-rectangle beam under it — the beam blocks the drop. Resolve later (notch/relieve the beam, or shift the notch off the beam line). Left walkway notch is clear.
 
-**Pending ACTIONS:**
-- [x] **GRP panels — DONE 2026-07-23:** firmed to **2× 36″×120″ @ $415 = $830** (min-sheet nest; cut plan + PNG in `grp-grating-quote.md` / `diagrams/grp-cutplan.png`). Get vendor quote against that.
-- [x] **Tray shims — DONE 2026-07-23:** plate route confirmed → `tray-hdpe-shim` = 1-1/4″ HDPE plate cut-to-size, $210–300 (taper-cut bundles with tray fab).
-- [ ] **FABRICATION → PENDING BLUEPRINTS.** All `*-fabrication` lines (`tray-fabrication`, `ll-fabrication`, `ibcf-fabrication`, `sp-door-fab`) + `tray-ss-sheet` stay est until the drawing set is complete — then send to shops for quote. **Gated on the blueprints milestone (below).** ≈±$1,500.
-- [ ] **Blueprints milestone** = the pending action that unblocks all fab quotes (see ★ MAJOR MILESTONE below).
-- [x] **Sourceable remainder — SOURCED 2026-07-23:** `cooler-inverter` (Victron PIN123750510 GFCI $132.60), `panel-corner-plates` (5052-H32 $293/sheet ×2), `ibc-tote-1000l` ($150/ea SoCal reconditioned), `corridor-panel-ply-18/25` (marine, firmed), `pinhole-shim` (Lenox SS-3/8-DISC $40-100 RFQ), `sp-pivot-post` (pipe $135 Speedy Metals; collar = fab, pending blueprints).
-- [x] **Plywood → STANDARD — DONE 2026-07-23:** `corridor-panel-ply-18` firm $29.30 (Home Depot RTD 23/32″ SYP, SKU 303564747); `corridor-panel-ply-25` standard ~1″ est $30–55 (exact 1″ HD SKU still to drop). Codified as a CLAUDE.md rule so it can't drift back to marine. (−$330)
-- [ ] **DESIGN FLAG — panel-corner-plates are huge.** Each 3mm Al corner core is 653×2388mm (~16.8 ft², ~half a sheet); 2 don't nest → 2 full sheets = $586 + weight. Reconsider whether the core needs to be full-size solid plate (vs a lighter frame/partial) at design-complete.
-- [x] **Walkway grating — McNichols FIRM 2026-07-23: 8 sheets $1,700.51** (revised from 13-sheet $3,035.73). American Grating alt ~$830 still ~2× cheaper — supplier decision open.
-- [ ] **`pinhole-shim` — DEFERRED to v1.0** (Lenox SS-3/8-DISC, firm via RFQ at design-complete).
-- [ ] **Container — DEFERRED to v1.0 design-complete.** `container-20ft` (±$1,500) + `container-delivery` (±$500) firm at purchase, once the design is locked. Treat current state as **v1.0**.
+### Bucket 1 — ACTIONABLE NOW
+- [ ] **Fastener thread-pitch cross-check.** Each sourced bolt SKU's actual pitch vs its mating nut (coarse baseline recorded, "confirm vs SKU PDF"); pitch must match at order. See the fastener item lower in this file for the M8×1.0-fine vs M8×1.25-coarse trap. Prices don't matter — pitch does.
+- [ ] **panel-corner-plates — design flag (huge cores).** Each 3mm 5052 Al corner core is 653×2388mm (~16.8 ft², ~half a sheet); the 4 don't nest → 2 full sheets = $586 + weight. Decide full solid plate vs a lighter frame/partial before buying.
+- [ ] **Aug 2026 full re-price.** Sweep every `parts.py` line against current listings (reminder atop the file); edit band → `--inject` cascades.
+- [ ] **Master-BOM SKU backfill.** Branded rows that don't yet carry a registry `part_no` — Alvin's supplier paste-check; each SKU auto-appears in the master on the next `--inject`.
 
-**Done this session:** light-lock plastics → US Plastics HDPE; drum caps 3/16″ (`LT_CAP_T`); electrical 13 parts + 2 E-stops + battery → Renogy Core; walkway grating 2× 36×120 panels + Fibergrate kit; tray shims → HDPE plate; walkway bump-out + muslin notches (5 models).
+### Bucket 2 — ACTIONABLE WHEN BLUEPRINTS FINALIZED (v1.0)
+- [ ] **`pinhole-shim`** — Lenox SS-3/8-DISC laser-drilled pinhole; firm via RFQ once the optics drawing set is design-complete.
+
+### Bucket 3 — ACTIONABLE ON BUILD
+- [ ] **Container corrugation depth.** Measure the actual side-wall (~25mm assumed) → recompute the wall through-bolt grip/length/thread; apply **A36** to the bracket-plate specs. Needs the physical container.
+- [ ] **Walkway grating.** American Grating is primary (~$830 public list, banded $830–$1,050 for freight/cut); get the **firm cut quote + SoCal freight** at build. McNichols $1,700.51 held as the firm ceiling.
+- [ ] **Container** — `container-20ft` (±$1,500) + `container-delivery` (±$500), firm at purchase.
+- [ ] **Fab estimates.** All `*-fabrication` lines (`tray-fabrication`, `ll-fabrication`, `ibcf-fabrication`, `sp-door-fab`) + `tray-ss-sheet`, the film-plane fab (skate carriage, 316 cross-slides, cam clamp), and the `sp-pivot-post` collar — quote to shops once the drawing set ships. ≈±$1,500.
+
+**Recently firmed (this drive):** light-lock plastics → US Plastics HDPE; drum caps 3/16″ (`LT_CAP_T`); electrical 13 parts + 2 E-stops + battery → Renogy Core; walkway grating supplier → American Grating primary; tray shims → HDPE plate; **corridor ply both parts 23/32″ RTD $29.30** (ply-18 + ply-25, standard-not-marine rule); `cooler-inverter`, `panel-corner-plates`, `ibc-tote-1000l`, `sp-pivot-post` pipe. Design: walkway deck continuity + bump extended a 2nd rib to IBC (5 widened brackets) + muslin notches (5 models); walkway sheets merged (5) + new Sheet 9 near-wall bump-out; water/film-plane Sketchfab name/desc fix.
 
 ---
 

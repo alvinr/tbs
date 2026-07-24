@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Right-walkway muslin-rod / beam clash resolved by cranking the inner cantilever beam.** The muslin's
+  rigid bottom rod must drop straight down at the tray edge through the muslin-drop notch (Yd1912–2062),
+  but the inner long beam of the cantilever rectangle sits directly under it. Rather than cut the beam at
+  mid-span of its ~1.1m end bay, the inner beam is **cranked outboard 100mm** (the full notch depth) over
+  the notch with ~100mm angled ramps each side — vacating the notch footprint so the rod passes clear
+  while the beam stays **one continuous, uncut member** (full bending/tension continuity). No support lost
+  (the notch already voids the grate there); left notch needs no change (no beam beneath it). New
+  `_rwk_inner_beam_cranked` builder (overview/walkway/water); Sheet 3 (Detail A) shows the crank + rod
+  slot; report §4.1 + docstring updated. No new parts.
+
 - **Walkway drawing set reorganized: merged the two left-walkway support sheets, added a pinhole-side
   bump-out detail.** The drum-exit punch-out support (former Sheet 9, Detail E) was a zoomed re-draw of
   the middle of Sheet 5 — folded into **Sheet 5 (Detail C — left walkway floor-leg support + drum-exit

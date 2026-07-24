@@ -25,6 +25,9 @@ Sheet 3 — Detail A: Right walkway cantilever support (IBC end)  [rev 12]:
   cleats at the left corners and combined corner plates (shared with the
   bottom film rail) at the right corners.  Replaces the ceiling-hung
   hangers.  Zero tray contact, zero floor contact, zero roof penetrations.
+  The INNER long beam is CRANKED outboard 100mm around the muslin-drop rod
+  slot (Yd 1912-2062) so the rigid rod drops straight at the tray edge while
+  the beam stays ONE continuous, uncut member.
 
 Sheet 4 — Detail B: Left walkway butt joint and panel clearance:
   View looking along Yd (near wall toward far wall), X horizontal, Z vertical.
@@ -1151,16 +1154,34 @@ def sheet3():
                             fc=C_GRATE, ec="none", alpha=0.30, zorder=4, hatch="++"))
 
     # ── Closed SHS rectangle: 2 long beams + 2 end beams ─────────────────────
-    for bx in [WK_L_X, WK_R_X]:
-        ax.add_patch(Rectangle(((bx), (0)), (SHS), (C_WID),
-                                fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=8, alpha=0.9))
+    # Outer long beam — straight; inner long beam — CRANKED outboard around the muslin-drop rod
+    # slot (mirrors the model's _rwk_inner_beam_cranked: jog = notch depth, 100mm angled ramps).
+    ax.add_patch(Rectangle(((WK_R_X), (0)), (SHS), (C_WID),
+                            fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=8, alpha=0.9))
+    cN0 = WALKWAY_MUSLIN_NOTCH_YD0
+    cN1 = WALKWAY_MUSLIN_NOTCH_YD0 + WALKWAY_MUSLIN_NOTCH_DY
+    cDX = WALKWAY_MUSLIN_NOTCH_DX                 # 100 — jog = notch depth
+    cRAMP = 100
+    cY0, cY1 = cN0 - cRAMP, cN1 + cRAMP
+    xi, xo = WK_L_X, WK_L_X + SHS
+    inner_beam = [(xi, 0), (xi, cY0), (xi + cDX, cN0), (xi + cDX, cN1), (xi, cY1), (xi, C_WID),
+                  (xo, C_WID), (xo, cY1), (xo + cDX, cN1), (xo + cDX, cN0), (xo, cY0), (xo, 0)]
+    ax.add_patch(Polygon(inner_beam, closed=True, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=8, alpha=0.9))
     for ey in [0, C_WID - SHS]:
         ax.add_patch(Rectangle(((WK_L_X), (ey)), ((WK_R_X + SHS) - WK_L_X), (SHS),
                                 fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=8, alpha=0.9))
 
+    # Muslin-rod drop slot — vacated by the crank (clear vertical passage at the tray edge)
+    ax.add_patch(Rectangle((WK_L_X, cN0), cDX, cN1 - cN0, fc="#FFFFFF", ec="#C03028",
+                           lw=1.1, ls=(0, (3, 2)), zorder=9))
+    ax.plot([WK_L_X + cDX / 2], [(cN0 + cN1) / 2], marker="v", color="#C03028", ms=8, zorder=10)
+    leader(ax, (WK_L_X + cDX / 2), (cN0), (GUT_X - 150), (cN0 - 240),
+           "MUSLIN ROD DROPS HERE\n(inner beam CRANKED out 100mm\nto clear the full notch — one\ncontinuous, uncut member)",
+           color="#C03028", fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
+
     leader(ax, (WK_L_X + SHS / 2), (C_WID * 0.80),
            (GUT_X - 150), (C_WID * 0.84),
-           f"LONG BEAM\n40×40×3 SHS\n(×2, X={WK_L_X}/{WK_R_X})",
+           f"LONG BEAM\n40×40×3 SHS\n(×2, X={WK_L_X}/{WK_R_X};\ninner cranked at the rod slot)",
            color=C_STEEL, fs=6, ha="left", va="center", arrow_style="-|>", font=FONT)
     leader(ax, ((WK_L_X + WK_R_X) / 2), (C_WID - SHS / 2),
            ((WK_L_X + WK_R_X) / 2), (C_WID + 120),

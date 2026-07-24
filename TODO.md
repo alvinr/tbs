@@ -17,7 +17,7 @@ _Everything sourceable today is sourced (parts-identity SKU/URL lint at zero). W
 bucketed by WHEN it can be acted on:_
 
 **Open DESIGN items:**
-- [ ] **Right walkway muslin-notch — beam clash.** The muslin-drop notch on the right walkway (grate cut at X4329–4429, Yd1912–2062) is crossed by a cantilever-rectangle beam under it — the beam blocks the drop. Resolve later (notch/relieve the beam, or shift the notch off the beam line). Left walkway notch is clear.
+- [x] **Right walkway muslin-notch — beam clash — RESOLVED 2026-07-23.** The inner cantilever-rectangle long beam under the notch (X4329) is **cranked outboard 100mm** (full notch depth) over Yd1812–2162 with angled ramps, vacating the notch footprint so the rigid muslin rod drops straight at the tray edge — beam stays ONE continuous uncut member. `_rwk_inner_beam_cranked` (overview/walkway/water), Sheet 3 + report §4.1 updated. Left notch was already clear (between floor-leg brackets).
 
 ### Bucket 1 — ACTIONABLE NOW
 - [ ] **Fastener thread-pitch cross-check.** Each sourced bolt SKU's actual pitch vs its mating nut (coarse baseline recorded, "confirm vs SKU PDF"); pitch must match at order. See the fastener item lower in this file for the M8×1.0-fine vs M8×1.25-coarse trap. Prices don't matter — pitch does.

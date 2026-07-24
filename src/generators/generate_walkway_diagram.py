@@ -35,11 +35,11 @@ Sheet 4 — Detail B: Left walkway butt joint and panel clearance:
   zone, riding the Z130 floor gap over the brackets. Bearing strip and floor leg
   shown in cross-section.
 
-Sheet 5 — Detail C: Left walkway support system (floor-leg cantilevers, plan):
-  Elevation showing all support elements: floor-standing leg (X=140, on bare
-  floor) with cantilever arm, the full-width steel edge beam (40×40×3mm steel
-  SHS at X=470, Z52-92, kerb proud of the deck) on bolt-through wall seats, and
-  bearing strip on tray rim (X=170). Zero processing tray contact.
+Sheet 5 — Detail C: Left walkway floor-leg support + drum-exit punch-out (plan):
+  All 5 floor-leg cantilever brackets (post on bare floor X=140 + arm to the grate
+  edge X=470) carrying the removable left grate, PLUS the drum-exit punch-out — the
+  deck deepened to 600×760mm at the light-lock exit, on the 3 middle brackets whose
+  arms extend to X=770. Zero processing tray contact. (Merged from the former Sheet 9.)
 
 Sheet 6 — Detail D: Left walkway floor-leg cantilever bracket (section + foot plate):
   Two views of how the steel edge beam is simply supported at each end — an
@@ -56,7 +56,7 @@ from matplotlib.patches import Rectangle, Circle, Polygon
 import os
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_legend
-from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_R, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
+from tbs_constants import C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_BRACKET_H, WALKWAY_BRACKET_T, WALKWAY_BRACKET_SPACING, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, IBC_COL_X, IBC_W, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, RAIL_X_R, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_OPEN_YD_N, PROC_OPEN_YD_F, PROC_OPEN_AREA, PANEL_FLOOR_GAP, LEFT_WK_CANT_LEG_X, LEFT_WK_CANT_LEG_YDS, LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_W, LEFT_WK_CANT_FOOT, LEFT_WK_CANT_FOOT_X0, LEFT_WK_CANT_FOOT_BOLT_N, LEFT_WK_CANT_ARM_Z0, LEFT_WK_CANT_ARM_W, LEFT_WK_CANT_ARM_W_WIDE, LEFT_WK_CANT_STD_REACH, LEFT_WK_CANT_WIDE_REACH, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_MAX_OVERHANG, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_MUSLIN_NOTCH_DX, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, SPRAY_BAR_SLIT_W, EP_X, EP_W, BA_X, BA_W, EVAP_W, EVAP_D, EVAP_STOW_X, EVAP_STOW_YD, DIAGRAMS_DIR
 from tbs_constants import DIAGRAM_DPI
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -1531,7 +1531,7 @@ def sheet5():
     ax.set_xlim(-110, 2460)                   # Yd (along the walkway)
     ax.set_ylim(-360, 980)                    # X (reach toward the tray)
     ax.set_aspect("equal"); ax.axis("off")
-    ax.text(1181, 955, "DETAIL C - LEFT WALKWAY SUPPORT SYSTEM (plan, looking down)",
+    ax.text(1181, 955, "DETAIL C - LEFT WALKWAY SUPPORT + DRUM-EXIT PUNCH-OUT (plan, looking down)",
             ha="center", va="bottom", fontsize=9, color=C_OUT, fontweight="bold", **FONT)
 
     # Spray-bar travel zone (X>=470, under the grate)
@@ -1548,7 +1548,7 @@ def sheet5():
     ax.add_patch(Rectangle((wyl, std), wyr - wyl, wide - std, fc=C_LEFT_WK, ec=C_OUT, lw=1.0, alpha=0.62, zorder=2))
     ax.text(450, (lwx + std) / 2, "LEFT WALKWAY GRATE\n(300mm, removable lift-out)",
             ha="center", va="center", fontsize=7, color="#206020", fontweight="bold", zorder=5)
-    ax.text(990, (std + wide) / 2, "DRUM-EXIT\nPUNCH-OUT (600mm)",
+    ax.text(990, (std + wide) / 2, "DRUM-EXIT PUNCH-OUT\n600×760mm (lift-out landing\nat the light-lock exit)",
             ha="center", va="center", fontsize=6, color="#206020", fontweight="bold", zorder=5)
 
     # The 5 floor-leg cantilever brackets
@@ -1587,14 +1587,17 @@ def sheet5():
         "1. 5 brackets bolted to BARE FLOOR (X<170) - zero tray/wall contact.",
         "2. foot plate + 50x50x3 post + 40mm arm (Z75-115) to grate edge X470.",
         "3. 3 punch-out brackets EXTEND to X770 - widened section supported.",
-        "4. arms pass 15mm over the floor-level spray bar (+50 raise enables it).",
-        "5. grate lifts out; brackets stay bolted. No kerb. Detail on Sheet 6.",
+        "4. arms pass 15mm over the floor-level spray bar (Z60, +50 raise enables it); zero tray contact.",
+        "5. DRUM-EXIT PUNCH-OUT: deck deepened to 600mm (X170-770) over Yd800-1560 — landing at the",
+        "   light-lock exit, on the 3 extended (X770) brackets.",
+        "6. grate + punch-out lift out together before panel transport; brackets stay floor-bolted.",
+        "   No kerb. Bracket section on Sheet 6.",
     ]
-    draw_notes(ax, notes, 10, 930, spacing=26, fs=6, ha="left", width=725, font=FONT)
+    draw_notes(ax, notes, 10, 930, spacing=24, fs=6, ha="left", width=760, font=FONT)
 
     title_block(ax, "SHEET 5 OF 9",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="DETAIL C - LEFT WALKWAY SUPPORT SYSTEM (FLOOR-LEG CANTILEVERS)",
+                subtitle="DETAIL C - LEFT WALKWAY FLOOR-LEG SUPPORT + DRUM-EXIT PUNCH-OUT",
                 scale_note="Axes in mm . PLAN (looking down)",
                 height=0.07)
 
@@ -2484,98 +2487,117 @@ def sheet8():
 
 
 def sheet9():
-    """Sheet 9 — Detail E: Drum-exit punch-out support (plan).
+    """Sheet 9 — Detail F: Near-walkway BUMP-OUT on the pinhole wall (plan, looking down).
 
-    Shows how the 600mm-deep landing in front of the light-lock exit is attached
-    and supported: a small cantilever sub-frame off the main X=470mm bearer,
-    overhanging the processing tray with zero tray contact.
+    The pinhole-wall counterpart to the left drum-exit punch-out (now folded into Sheet 5).
+    The near walkway widens from WALKWAY_W to WALKWAY_NEAR_WIDE_W over
+    X=WALKWAY_NEAR_WIDE_X_L..X_R, giving the operator standing room at the wall-mounted EP
+    panel + battery bank and a full bay past the spray-bar pole slit. Carried by 5 WIDENED
+    wall-cantilever brackets (500mm arm) at the ribs; standard 300mm-arm brackets flank it.
     """
-    LX = WALKWAY_LEFT_X                              # 170 — tray rim / strip line
-    BEARER_X = WALKWAY_LEFT_X + WALKWAY_W             # 470 — main bearer
-    OUTER_X = WALKWAY_LEFT_X + WALKWAY_LEFT_WIDE_W    # 770 — outer trim bearer
-    yL = WALKWAY_LEFT_WIDE_YD_L                       # 800
-    yR = WALKWAY_LEFT_WIDE_YD_R                       # 1560
-    C_SUPPORT = "#D08020"
-    C_WK = "#D0C8B8"
+    C_STD = "#707888"; C_WIDE = "#CC6644"; C_WK = "#D0C8B8"
+    nxl = WALKWAY_LEFT_X + WALKWAY_W                 # 470 — near deck start
+    nxr = WALKWAY_RIGHT_X                            # 4329 — near deck end
+    W, WW = WALKWAY_W, WALKWAY_NEAR_WIDE_W           # 300, 500
+    WXL, WXR = WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R   # 1055, 3083
+    slit_cx = int((PROC_OPEN_X_L + PROC_OPEN_X_R) / 2)       # 2399 — pole slit / pinhole X
+    stations = list(np.arange(nxl + WALKWAY_BRACKET_SPACING / 2, nxr, WALKWAY_BRACKET_SPACING))
+    wide_st = [s for s in stations if WXL <= s <= WXR]        # the 5 widened ribs
+    ovh = WALKWAY_MAX_OVERHANG                       # 100 — deck overhang past the end bracket
 
-    fig, ax = plt.subplots(figsize=(16, 11))
-    fig.patch.set_facecolor(BG)
-    ax.set_facecolor(BG)
-    ax.set_xlim(20, 1580)
-    ax.set_ylim(yL - 420, yR + 460)
-    ax.set_aspect("equal")
-    ax.axis("off")
+    x0, x1 = 620, 3560
+    fig, ax = plt.subplots(figsize=(17, 8.4))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_xlim(x0, x1); ax.set_ylim(-360, 1160)
+    ax.set_aspect("equal"); ax.axis("off")
+    ax.text((x0 + x1) / 2, 1140, "DETAIL F - NEAR-WALKWAY BUMP-OUT (PINHOLE WALL, plan looking down)",
+            ha="center", va="bottom", fontsize=9, color=C_OUT, fontweight="bold", **FONT)
 
-    # Processing tray it overhangs (ghost — everything right of the tray rim)
-    ax.add_patch(Rectangle((LX, yL - 380), 1580 - LX, (yR + 380) - (yL - 380),
-                           fc="#EAF2F8", ec="#9CC0D8", lw=0.8, ls=(0, (4, 3)),
-                           alpha=0.5, zorder=1))
-    ax.text(1555, yR + 360, "PROCESSING TRAY\n(basin below, Z<50mm)",
-            ha="right", va="top", fontsize=6, color="#5A88A8", **FONT, zorder=2)
+    # Processing tray beyond the inboard deck edge (ghost)
+    ax.add_patch(Rectangle((x0, WW), x1 - x0, 150, fc="#EAF2F8", ec="none", zorder=1))
+    ax.text(x0 + 40, WW + 118, "PROCESSING TRAY (open, beyond the deck)",
+            ha="left", va="top", fontsize=6, color="#5A88A8", style="italic", **FONT, zorder=2)
 
-    # Normal 300mm walkway deck above & below the punch-out (ghost)
-    for ya, yb in [(yL - 380, yL), (yR, yR + 380)]:
-        ax.add_patch(Rectangle((LX, ya), WALKWAY_W, yb - ya,
-                               fc=C_WK, ec=C_OUT, lw=0.8, hatch="xx",
-                               alpha=0.35, zorder=3))
+    # Pinhole wall at Yd 0, with the EP panel + battery column mounted on it (shared X footprint)
+    ax.add_patch(Rectangle((x0, -46), x1 - x0, 46, fc="#C8C8C8", ec=C_OUT, lw=1.2, zorder=3))
+    ax.text(x0 + 30, -58, "PINHOLE WALL", ha="left", va="top", fontsize=7, color=C_OUT, fontweight="bold", **FONT)
+    eq_x0 = min(EP_X, BA_X); eq_x1 = max(EP_X + EP_W, BA_X + BA_W)
+    ax.add_patch(Rectangle((eq_x0, -46), eq_x1 - eq_x0, 46, fc="#B8C4D0", ec=C_OUT, lw=0.9, zorder=4))
+    ax.text((eq_x0 + eq_x1) / 2, -22, "EP PANEL + BATTERY (wall-mounted, stacked)",
+            ha="center", va="center", fontsize=5, color=C_OUT, **FONT, zorder=5)
 
-    # Punch-out deck (X 170-770) over Yd 800-1560
-    ax.add_patch(Rectangle((LX, yL), WALKWAY_LEFT_WIDE_W, yR - yL,
-                           fc=C_WK, ec=C_OUT, lw=1.2, hatch="xx",
-                           alpha=0.65, zorder=4))
-    ax.text((LX + OUTER_X) / 2, (yL + yR) / 2 + 150,
-            "DRUM-EXIT PUNCH-OUT DECK\n600 × 760mm grating (lift-out)",
-            ha="center", va="center", fontsize=7.5, color="#206020",
-            fontweight="bold", **FONT, zorder=12)
+    # Near deck — ONE continuous L-piece (std strip + integral bump tab), matching the model
+    deck = [(nxl, 0), (nxr, 0), (nxr, W), (WXR, W), (WXR, WW), (WXL, WW), (WXL, W), (nxl, W)]
+    ax.add_patch(Polygon(deck, closed=True, fc=C_WK, ec=C_OUT, lw=1.4, hatch="xx", alpha=0.5, zorder=6))
+    # Highlight the added band (the 200mm-deep bump tab) so it reads as the widening
+    ax.add_patch(Rectangle((WXL, W), WXR - WXL, WW - W, fc="#8FBF8F", ec="none", alpha=0.35, zorder=7))
+    ax.text((WXL + WXR) / 2, (W + WW) / 2, "NEAR-WALKWAY BUMP-OUT  ·  500mm-deep standing band",
+            ha="center", va="center", fontsize=7, color="#1D5A1D", fontweight="bold", **FONT, zorder=12)
+    ax.text((nxl + WXL) / 2, W / 2, "300mm\nstd deck", ha="center", va="center",
+            fontsize=5.5, color="#206020", **FONT, zorder=12)
 
-    # ── 3 EXTENDED floor-leg cantilever arms support the punch-out ──
-    arm_x0 = LEFT_WK_CANT_LEG_X + LEFT_WK_CANT_POST / 2   # 165
-    leg_x = LEFT_WK_CANT_LEG_X                            # 140
-    punch_yds = [cy for cy in LEFT_WK_CANT_LEG_YDS if yL <= cy <= yR]   # 800,1180,1560
-    # Spray-bar travel zone (X>=470) under the deck
-    ax.add_patch(Rectangle((BEARER_X, yL - 60), (OUTER_X + 150) - BEARER_X, (yR + 60) - (yL - 60),
-                           fc="#EAF2FA", ec="none", zorder=1))
-    ax.text(OUTER_X + 40, (yL + yR) / 2, "SPRAY BAR travels here\n(under the deck, on the sloped floor)",
-            ha="left", va="center", fontsize=5.5, color="#3A7AB0", style="italic", zorder=2)
-    for cy in punch_yds:
-        ax.add_patch(Rectangle((arm_x0, cy - 16), OUTER_X - arm_x0, 32,
-                               fc=C_SUPPORT, ec=C_OUT, lw=1.2, zorder=8))    # extended arm to X770
-        ax.add_patch(Rectangle((leg_x - 14, cy - 14), 28, 28, fc=C_SUPPORT, ec=C_OUT, lw=0.9, zorder=9))  # foot/post
+    # Wall-cantilever brackets: standard (300mm arm) + widened (500mm arm, heavier)
+    for s in stations:
+        wide = s in wide_st
+        reach = WW if wide else W
+        bw = 46 if wide else 30
+        ax.add_patch(Rectangle((s - bw / 2, 0), bw, reach,
+                               fc=(C_WIDE if wide else C_STD), ec=C_OUT,
+                               lw=(1.2 if wide else 0.7), alpha=0.9 if wide else 0.7, zorder=8))
 
-    # ── Leaders ──────────────────────────────────────────────────────────────
-    leader(ax, (arm_x0 + OUTER_X) / 2, yR + 16, (arm_x0 + OUTER_X) / 2 + 180, yR + 250,
-           "EXTENDED CANTILEVER ARMS x3\n(floor-leg brackets at Yd 800/1180/1560\nreach to X770, OVER the spray bar)",
-           color=C_SUPPORT, fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
-    leader(ax, leg_x, yL - 14, leg_x - 60, yL - 100,
-           "FLOOR LEG (X140)\non bare floor,\noutside the tray",
-           color=C_SUPPORT, fs=5.5, ha="center", va="top", arrow_style="-|>", font=FONT)
+    # Spray-bar pole slit through the bump deck at the beam center
+    ax.add_patch(Rectangle((slit_cx - SPRAY_BAR_SLIT_W / 2, 0), SPRAY_BAR_SLIT_W, WW,
+                           fc="#C03028", ec=C_OUT, lw=0.8, zorder=10))
+    leader(ax, slit_cx + SPRAY_BAR_SLIT_W / 2, WW - 40, slit_cx + 360, WW + 150,
+           f"SPRAY-BAR POLE SLIT ({SPRAY_BAR_SLIT_W}mm)\nat pinhole X{slit_cx}",
+           color="#C03028", fs=5.5, ha="center", va="bottom", arrow_style="-|>", font=FONT)
+
+    # Bracket callouts — widened (up-right, clear of the notes box) + a small standard tag.
+    # Full bracket specs live in the notes + Sheet 7, so keep these short.
+    wcx = wide_st[-1]
+    leader(ax, wcx, WW - 30, wcx + 150, WW + 175,
+           f"WIDENED (×{len(wide_st)})\n500mm arm, 4× M12",
+           color=C_WIDE, fs=6, ha="center", va="bottom", arrow_style="-|>", font=FONT)
+    std_right = [s for s in stations if s > WXR and s < x1]
+    if std_right:
+        leader(ax, std_right[0], W - 20, std_right[0] + 30, W + 150,
+               "STANDARD\n300mm arm, 3× M12",
+               color=C_STD, fs=6, ha="center", va="bottom", arrow_style="-|>", font=FONT)
+
+    # Toward-IBC arrow (the extension direction)
+    ax.annotate("", xy=(x1 - 40, -150), xytext=(x1 - 360, -150),
+                arrowprops=dict(arrowstyle="-|>", color=C_OUT, lw=1.4))
+    ax.text(x1 - 200, -172, "toward IBC", ha="center", va="top", fontsize=6, color=C_OUT, style="italic", **FONT)
 
     # ── Dimensions ───────────────────────────────────────────────────────────
-    draw_dim_h(ax, LX, OUTER_X, yL - 200,
-               f"{WALKWAY_LEFT_WIDE_W}mm PUNCH-OUT DEPTH", offset=5, fs=6.5,
-               above=False, font=FONT)
-    draw_dim_h(ax, arm_x0, OUTER_X, yR + 90,
-               f"{int(OUTER_X - arm_x0)}mm ARM REACH (X140->770)", offset=4, fs=5.5, font=FONT)
+    draw_dim_v(ax, WXL - 70, 0, WW, f"{WW}mm", offset=6, fs=6, right=False, font=FONT)
+    draw_dim_v(ax, nxl - 10, 0, W, f"{W}mm", offset=6, fs=5.5, right=False, font=FONT)
+    draw_dim_h(ax, WXL, WXR, WW + 60, f"{int(WXR - WXL)}mm BUMP-OUT (X{WXL}-{WXR})", offset=6, fs=6.5, font=FONT)
+    # 100mm deck overhang past the end widened brackets
+    draw_dim_h(ax, WXL, wide_st[0], -110, f"{ovh}mm ovh", offset=5, fs=5, above=False, font=FONT)
+    draw_dim_h(ax, wide_st[-1], WXR, -110, f"{ovh}mm ovh", offset=5, fs=5, above=False, font=FONT)
+    # rib spacing between two widened brackets
+    draw_dim_h(ax, wide_st[0], wide_st[1], -200,
+               f"{int(WALKWAY_BRACKET_SPACING)}mm rib", offset=5, fs=5, above=False, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────────
     notes = [
-        "DRUM-EXIT PUNCH-OUT - SUPPORT:",
-        f"1. Deck deepened to {WALKWAY_LEFT_WIDE_W}mm (X={LX}-{OUTER_X}) over Yd {yL}-{yR} - landing at the",
-         "   light-lock exit.",
-        "2. SUPPORTED by 3 floor-leg cantilever brackets (Yd 800/1180/1560) whose arms",
-        "   EXTEND to X770.",
-        "3. The arms pass 15mm OVER the floor-level spray bar (Z60); ZERO tray",
-        "   contact.",
-        "4. Lifts out with the left-walkway grating before panel transport; brackets",
-        "   stay floor-bolted.",
+        "NEAR-WALKWAY BUMP-OUT (PINHOLE WALL):",
+        f"1. Widens {W}->{WW}mm over X{WXL}-{WXR} ({int(WXR - WXL)}mm) — standing room at the",
+        "   wall-mounted EP panel + battery bank and full room for spray-bar work.",
+        f"2. Carried by {len(wide_st)} WIDENED wall-cantilever brackets (10mm plate, 500mm arm,",
+        f"   4× M12) at {int(WALKWAY_BRACKET_SPACING)}mm ribs; deck overhangs the end brackets {ovh}mm.",
+        f"3. Extended a 2nd rib toward the IBC so the operator has a full bay PAST the",
+        f"   spray-bar pole slit (X{slit_cx}).",
+        "4. Standard 300mm-arm brackets flank it. Widened-bracket section on Sheet 7;",
+        "   the left drum-exit punch-out counterpart is on Sheet 5.",
     ]
-    draw_notes(ax, notes, 850, yL + 230, spacing=30, fs=7, ha="left",
-               width=900, font=FONT)
+    draw_notes(ax, notes, 700, 1085, spacing=40, fs=6.5, ha="left", width=1950, font=FONT)
 
     title_block(ax, "SHEET 9 OF 9",
                 drawing_title="PERIMETER WALKWAY",
-                subtitle="DETAIL E — DRUM-EXIT PUNCH-OUT SUPPORT (PLAN)",
-                scale_note="Axes in mm · PLAN VIEW (X right, Yd up)",
+                subtitle="DETAIL F — NEAR-WALKWAY BUMP-OUT (PINHOLE WALL, PLAN)",
+                scale_note="Axes in mm · PLAN VIEW (X right, Yd up from pinhole wall)",
                 height=0.07)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "walkway-sheet9.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)

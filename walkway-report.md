@@ -103,6 +103,13 @@ bracket positions align to container corrugation ribs.
 Extending the widened zone past the slit ensures 500mm-arm brackets support
 the grating on both sides of the slit, eliminating unsupported overhang.
 
+**Sheet 9 — Detail F: Near-Walkway Bump-Out (pinhole wall, plan).** The 500mm-deep standing
+band over X1,055–3,083, its 5 widened wall-cantilever brackets on the ribs, the 100mm deck
+overhang past each end bracket, and the spray-bar pole slit at the pinhole (X2,399) — the
+pinhole-side counterpart to the left drum-exit punch-out (Sheet 5).
+
+![TBS-001 Walkway — Sheet 9: Near-Walkway Bump-Out (Pinhole Wall)](assets/walkway-sheet9.png)
+
 ![TBS-001 Walkway — Sheet 2: Cross-Section with Bracket Detail](assets/walkway-sheet7.png)
 
 | Parameter | Standard bracket | Widened bracket |
@@ -279,12 +286,10 @@ post on bare floor, with **zero tray contact**, and lifts out with the rest
 of the left walkway for transport. No separate sub-frame, edge beam, or bearing
 strip is needed.
 
-**Sheet 9 — Detail E: Drum-Exit Punch-Out Support (plan).** How the deeper
-landing is supported — the 3 middle floor-leg brackets with arms extended,
-cantilevering over the tray with zero tray contact. See also **Sheet 6
-(Detail D)** for the floor-leg bracket itself.
-
-![TBS-001 Walkway — Sheet 9: Drum-Exit Punch-Out Support](assets/walkway-sheet9.png)
+The drum-exit punch-out and its support are shown on **Sheet 5 (Detail C)** — the deeper
+landing on the 3 middle floor-leg brackets with arms extended to X770, cantilevering over
+the tray with zero tray contact — alongside the rest of the left-walkway floor-leg system.
+See also **Sheet 6 (Detail D)** for the floor-leg bracket itself.
 
 ### 5.3 Floor-Leg Cantilever Bracket Detail
 

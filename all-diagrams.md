@@ -162,7 +162,7 @@
 
 ![TBS-001 Walkway — Sheet 4: Lift-Out at Butt Joint](assets/walkway-sheet4.png)
 
-![TBS-001 Walkway — Sheet 5: Support System Detail](assets/walkway-sheet5.png)
+![TBS-001 Walkway — Sheet 5: Left Walkway Support + Drum-Exit Punch-Out](assets/walkway-sheet5.png)
 
 ![TBS-001 Walkway — Sheet 6: Bearer Beam Connection](assets/walkway-sheet6.png)
 
@@ -170,7 +170,7 @@
 
 ![TBS-001 Walkway — Sheet 8: Width Transition Detail](assets/walkway-sheet8.png)
 
-![TBS-001 Walkway — Sheet 9: Drum-Exit Punch-Out Support](assets/walkway-sheet9.png)
+![TBS-001 Walkway — Sheet 9: Near-Walkway Bump-Out (Pinhole Wall)](assets/walkway-sheet9.png)
 
 ---
 

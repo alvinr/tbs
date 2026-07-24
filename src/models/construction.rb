@@ -34,10 +34,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   model.layers.add("P1 Corridor Wiring") unless model.layers["P1 Corridor Wiring"]
   model.layers.add("P1 Far IBCs") unless model.layers["P1 Far IBCs"]
   model.layers.add("P1 Hinge Panel") unless model.layers["P1 Hinge Panel"]
-  model.layers.add("P3 Right Cantilever") unless model.layers["P3 Right Cantilever"]
-  model.layers.add("P3 Wall Brackets") unless model.layers["P3 Wall Brackets"]
+  model.layers.add("P3 Far+Right Cantilevers") unless model.layers["P3 Far+Right Cantilevers"]
   model.layers.add("P3 Processing Tray") unless model.layers["P3 Processing Tray"]
+  model.layers.add("P3 Near Cantilevers") unless model.layers["P3 Near Cantilevers"]
   model.layers.add("P3 Pinhole Plumbing") unless model.layers["P3 Pinhole Plumbing"]
+  model.layers.add("P3 Filter Skid") unless model.layers["P3 Filter Skid"]
+  model.layers.add("P3 Film-Plane Beams") unless model.layers["P3 Film-Plane Beams"]
   model.layers.add("P3 Left Cantilevers") unless model.layers["P3 Left Cantilevers"]
   model.layers.add("P3 Walkway") unless model.layers["P3 Walkway"]
   model.layers.add("P4 Electrical Panel") unless model.layers["P4 Electrical Panel"]
@@ -5082,785 +5084,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   inst.name = "Step 4.4 — Fan B + its Cct-B wiring + shelf"
   inst.layer = model.layers["P4 Wiring + Fit-out"]
 
-  # ═══ Step 5.1 — Film plane + carriages (+ rails/beams) ═══
-  defn = model.definitions.add("Step 5.1 — Film plane + carriages (+ rails/beams)")
+  # ═══ Step 5.1 — Film plane + carriages (screen + frame) ═══
+  defn = model.definitions.add("Step 5.1 — Film plane + carriages (screen + frame)")
   ents = defn.entities
-  # FP Rail BR
-  grp = ents.add_group
-  grp.name = "FP Rail BR"
-  face = grp.entities.add_face([4609.mm,0.mm,160.mm], [4649.mm,0.mm,160.mm], [4649.mm,2362.mm,160.mm], [4609.mm,2362.mm,160.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP Rail TR
-  grp = ents.add_group
-  grp.name = "FP Rail TR"
-  face = grp.entities.add_face([4609.mm,0.mm,2204.mm], [4649.mm,0.mm,2204.mm], [4649.mm,2362.mm,2204.mm], [4609.mm,2362.mm,2204.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP Rail BL
-  grp = ents.add_group
-  grp.name = "FP Rail BL"
-  face = grp.entities.add_face([150.mm,0.mm,160.mm], [190.mm,0.mm,160.mm], [190.mm,2362.mm,160.mm], [150.mm,2362.mm,160.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP Rail TL
-  grp = ents.add_group
-  grp.name = "FP Rail TL"
-  face = grp.entities.add_face([150.mm,0.mm,2204.mm], [190.mm,0.mm,2204.mm], [190.mm,2362.mm,2204.mm], [150.mm,2362.mm,2204.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle back-plate TL near
-  grp = ents.add_group
-  grp.name = "Saddle back-plate TL near"
-  face = grp.entities.add_face([75.mm,0.mm,2129.mm], [225.mm,0.mm,2129.mm], [225.mm,8.mm,2129.mm], [75.mm,8.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle OUTSIDE plate TL near
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate TL near"
-  face = grp.entities.add_face([75.mm,-48.mm,2129.mm], [225.mm,-48.mm,2129.mm], [225.mm,-40.mm,2129.mm], [75.mm,-40.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle seat TL near
-  grp = ents.add_group
-  grp.name = "Saddle seat TL near"
-  face = grp.entities.add_face([126.mm,0.mm,2194.mm], [174.mm,0.mm,2194.mm], [174.mm,110.mm,2194.mm], [126.mm,110.mm,2194.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle gusset TL near
-  grp = ents.add_group
-  grp.name = "Saddle gusset TL near"
-  ge = grp.entities
-  f = ge.add_face([150.mm,110.mm,2194.mm], [150.mm,0.mm,2194.mm], [150.mm,0.mm,2074.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL near"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL near"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL near"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL near"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Thumb screw TL near
-  grp = ents.add_group
-  grp.name = "Thumb screw TL near"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,25.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Thumb screw TL near
-  grp = ents.add_group
-  grp.name = "Thumb screw TL near"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,85.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle back-plate TL far
-  grp = ents.add_group
-  grp.name = "Saddle back-plate TL far"
-  face = grp.entities.add_face([75.mm,2354.mm,2129.mm], [225.mm,2354.mm,2129.mm], [225.mm,2362.mm,2129.mm], [75.mm,2362.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle OUTSIDE plate TL far
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate TL far"
-  face = grp.entities.add_face([75.mm,2402.mm,2129.mm], [225.mm,2402.mm,2129.mm], [225.mm,2410.mm,2129.mm], [75.mm,2410.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle seat TL far
-  grp = ents.add_group
-  grp.name = "Saddle seat TL far"
-  face = grp.entities.add_face([126.mm,2252.mm,2194.mm], [174.mm,2252.mm,2194.mm], [174.mm,2362.mm,2194.mm], [126.mm,2362.mm,2194.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle gusset TL far
-  grp = ents.add_group
-  grp.name = "Saddle gusset TL far"
-  ge = grp.entities
-  f = ge.add_face([150.mm,2252.mm,2194.mm], [150.mm,2362.mm,2194.mm], [150.mm,2362.mm,2074.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL far"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL far"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL far"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL far"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Thumb screw TL far
-  grp = ents.add_group
-  grp.name = "Thumb screw TL far"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,2277.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Thumb screw TL far
-  grp = ents.add_group
-  grp.name = "Thumb screw TL far"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,2337.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle back-plate TR near
-  grp = ents.add_group
-  grp.name = "Saddle back-plate TR near"
-  face = grp.entities.add_face([4534.mm,0.mm,2129.mm], [4684.mm,0.mm,2129.mm], [4684.mm,8.mm,2129.mm], [4534.mm,8.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle OUTSIDE plate TR near
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate TR near"
-  face = grp.entities.add_face([4534.mm,-48.mm,2129.mm], [4684.mm,-48.mm,2129.mm], [4684.mm,-40.mm,2129.mm], [4534.mm,-40.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle seat TR near
-  grp = ents.add_group
-  grp.name = "Saddle seat TR near"
-  face = grp.entities.add_face([4585.mm,0.mm,2194.mm], [4633.mm,0.mm,2194.mm], [4633.mm,110.mm,2194.mm], [4585.mm,110.mm,2194.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle gusset TR near
-  grp = ents.add_group
-  grp.name = "Saddle gusset TR near"
-  ge = grp.entities
-  f = ge.add_face([4609.mm,110.mm,2194.mm], [4609.mm,0.mm,2194.mm], [4609.mm,0.mm,2074.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4559.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4559.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4659.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4659.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail fixing bolt TR near
-  grp = ents.add_group
-  grp.name = "Rail fixing bolt TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4609.mm,25.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail fixing bolt TR near
-  grp = ents.add_group
-  grp.name = "Rail fixing bolt TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4609.mm,85.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle back-plate TR far
-  grp = ents.add_group
-  grp.name = "Saddle back-plate TR far"
-  face = grp.entities.add_face([4534.mm,2354.mm,2129.mm], [4684.mm,2354.mm,2129.mm], [4684.mm,2362.mm,2129.mm], [4534.mm,2362.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle OUTSIDE plate TR far
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate TR far"
-  face = grp.entities.add_face([4534.mm,2402.mm,2129.mm], [4684.mm,2402.mm,2129.mm], [4684.mm,2410.mm,2129.mm], [4534.mm,2410.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle seat TR far
-  grp = ents.add_group
-  grp.name = "Saddle seat TR far"
-  face = grp.entities.add_face([4585.mm,2252.mm,2194.mm], [4633.mm,2252.mm,2194.mm], [4633.mm,2362.mm,2194.mm], [4585.mm,2362.mm,2194.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle gusset TR far
-  grp = ents.add_group
-  grp.name = "Saddle gusset TR far"
-  ge = grp.entities
-  f = ge.add_face([4609.mm,2252.mm,2194.mm], [4609.mm,2362.mm,2194.mm], [4609.mm,2362.mm,2074.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4559.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4559.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4659.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4659.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail fixing bolt TR far
-  grp = ents.add_group
-  grp.name = "Rail fixing bolt TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4609.mm,2277.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail fixing bolt TR far
-  grp = ents.add_group
-  grp.name = "Rail fixing bolt TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4609.mm,2337.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle back-plate BL near
-  grp = ents.add_group
-  grp.name = "Saddle back-plate BL near"
-  face = grp.entities.add_face([75.mm,0.mm,85.mm], [225.mm,0.mm,85.mm], [225.mm,8.mm,85.mm], [75.mm,8.mm,85.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle OUTSIDE plate BL near
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate BL near"
-  face = grp.entities.add_face([75.mm,-48.mm,85.mm], [225.mm,-48.mm,85.mm], [225.mm,-40.mm,85.mm], [75.mm,-40.mm,85.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle seat BL near
-  grp = ents.add_group
-  grp.name = "Saddle seat BL near"
-  face = grp.entities.add_face([126.mm,0.mm,150.mm], [174.mm,0.mm,150.mm], [174.mm,110.mm,150.mm], [126.mm,110.mm,150.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle gusset BL near
-  grp = ents.add_group
-  grp.name = "Saddle gusset BL near"
-  ge = grp.entities
-  f = ge.add_face([150.mm,110.mm,150.mm], [150.mm,0.mm,150.mm], [150.mm,0.mm,30.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL near"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,-48.mm,110.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL near"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,-48.mm,210.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL near"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,-48.mm,110.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL near"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,-48.mm,210.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Thumb screw BL near
-  grp = ents.add_group
-  grp.name = "Thumb screw BL near"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,25.mm,160.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Thumb screw BL near
-  grp = ents.add_group
-  grp.name = "Thumb screw BL near"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,85.mm,160.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle back-plate BL far
-  grp = ents.add_group
-  grp.name = "Saddle back-plate BL far"
-  face = grp.entities.add_face([75.mm,2354.mm,85.mm], [225.mm,2354.mm,85.mm], [225.mm,2362.mm,85.mm], [75.mm,2362.mm,85.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle OUTSIDE plate BL far
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate BL far"
-  face = grp.entities.add_face([75.mm,2402.mm,85.mm], [225.mm,2402.mm,85.mm], [225.mm,2410.mm,85.mm], [75.mm,2410.mm,85.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle seat BL far
-  grp = ents.add_group
-  grp.name = "Saddle seat BL far"
-  face = grp.entities.add_face([126.mm,2252.mm,150.mm], [174.mm,2252.mm,150.mm], [174.mm,2362.mm,150.mm], [126.mm,2362.mm,150.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle gusset BL far
-  grp = ents.add_group
-  grp.name = "Saddle gusset BL far"
-  ge = grp.entities
-  f = ge.add_face([150.mm,2252.mm,150.mm], [150.mm,2362.mm,150.mm], [150.mm,2362.mm,30.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL far"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,2354.mm,110.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL far"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,2354.mm,210.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL far"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,2354.mm,110.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL far"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,2354.mm,210.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Thumb screw BL far
-  grp = ents.add_group
-  grp.name = "Thumb screw BL far"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,2277.mm,160.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Thumb screw BL far
-  grp = ents.add_group
-  grp.name = "Thumb screw BL far"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,2337.mm,160.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # Film Plane Screen (muslin)
   grp = ents.add_group
   grp.name = "Film Plane Screen (muslin)"
@@ -5916,200 +5142,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined corner plate (near)
-  grp = ents.add_group
-  grp.name = "FP combined corner plate (near)"
-  face = grp.entities.add_face([4574.mm,0.mm,58.mm], [4724.mm,0.mm,58.mm], [4724.mm,10.mm,58.mm], [4574.mm,10.mm,58.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(177.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined corner ext plate (near)
-  grp = ents.add_group
-  grp.name = "FP combined corner ext plate (near)"
-  face = grp.entities.add_face([4574.mm,-50.mm,58.mm], [4724.mm,-50.mm,58.mm], [4724.mm,-40.mm,58.mm], [4574.mm,-40.mm,58.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(177.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined right-beam seat (near)
-  grp = ents.add_group
-  grp.name = "FP combined right-beam seat (near)"
-  face = grp.entities.add_face([4574.mm,0.mm,58.mm], [4724.mm,0.mm,58.mm], [4724.mm,55.mm,58.mm], [4574.mm,55.mm,58.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined BR rail seat (near)
-  grp = ents.add_group
-  grp.name = "FP combined BR rail seat (near)"
-  face = grp.entities.add_face([4619.mm,0.mm,148.mm], [4679.mm,0.mm,148.mm], [4679.mm,55.mm,148.mm], [4619.mm,55.mm,148.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined bolt M12 (near) X4599 Z84
-  grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4599 Z84"
-  ge = grp.entities
-  circle = ge.add_circle([4599.mm,-50.mm,84.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined bolt M12 (near) X4599 Z188
-  grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4599 Z188"
-  ge = grp.entities
-  circle = ge.add_circle([4599.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined bolt M12 (near) X4699 Z84
-  grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4699 Z84"
-  ge = grp.entities
-  circle = ge.add_circle([4699.mm,-50.mm,84.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined bolt M12 (near) X4699 Z188
-  grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4699 Z188"
-  ge = grp.entities
-  circle = ge.add_circle([4699.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined corner plate (far)
-  grp = ents.add_group
-  grp.name = "FP combined corner plate (far)"
-  face = grp.entities.add_face([4574.mm,2352.mm,58.mm], [4724.mm,2352.mm,58.mm], [4724.mm,2362.mm,58.mm], [4574.mm,2362.mm,58.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(177.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined corner ext plate (far)
-  grp = ents.add_group
-  grp.name = "FP combined corner ext plate (far)"
-  face = grp.entities.add_face([4574.mm,2402.mm,58.mm], [4724.mm,2402.mm,58.mm], [4724.mm,2412.mm,58.mm], [4574.mm,2412.mm,58.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(177.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined right-beam seat (far)
-  grp = ents.add_group
-  grp.name = "FP combined right-beam seat (far)"
-  face = grp.entities.add_face([4574.mm,2307.mm,58.mm], [4724.mm,2307.mm,58.mm], [4724.mm,2362.mm,58.mm], [4574.mm,2362.mm,58.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined BR rail seat (far)
-  grp = ents.add_group
-  grp.name = "FP combined BR rail seat (far)"
-  face = grp.entities.add_face([4619.mm,2307.mm,148.mm], [4679.mm,2307.mm,148.mm], [4679.mm,2362.mm,148.mm], [4619.mm,2362.mm,148.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined bolt M12 (far) X4599 Z84
-  grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4599 Z84"
-  ge = grp.entities
-  circle = ge.add_circle([4599.mm,2352.mm,84.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined bolt M12 (far) X4599 Z188
-  grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4599 Z188"
-  ge = grp.entities
-  circle = ge.add_circle([4599.mm,2352.mm,188.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined bolt M12 (far) X4699 Z84
-  grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4699 Z84"
-  ge = grp.entities
-  circle = ge.add_circle([4699.mm,2352.mm,84.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP combined bolt M12 (far) X4699 Z188
-  grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4699 Z188"
-  ge = grp.entities
-  circle = ge.add_circle([4699.mm,2352.mm,188.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(60.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
   inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "Step 5.1 — Film plane + carriages (+ rails/beams)"
+  inst.name = "Step 5.1 — Film plane + carriages (screen + frame)"
   inst.layer = model.layers["P5 Film Plane"]
 
   # ═══ Step 5.2 — Pinhole mechanism ═══
@@ -18951,7 +17985,7 @@ ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase1Build!step<7")
 p1_inst = entities.add_instance(p1_defn, Geom::Transformation.new)
 p1_inst.name = "Phase 1 Build"
 p1_inst.set_attribute("dynamic_attributes", "_name", "Phase1Build")
-p1_inst.set_attribute("dynamic_attributes", "step", 1.0)
+p1_inst.set_attribute("dynamic_attributes", "step", 7.0)
 p1_inst.set_attribute("dynamic_attributes", "_step_access", "VIEW")
 p1_inst.set_attribute("dynamic_attributes", "_step_label", "Build step")
 p1_inst.set_attribute("dynamic_attributes", "onclick", 'ANIMATE("step",1,2,3,4,5,6,7)')
@@ -18960,6 +17994,582 @@ p1_inst.set_attribute("dynamic_attributes", "_onclick_access", "NONE")
 p3_defn = model.definitions.add("Phase 3 Build")
 child = model.definitions.add("P3Step3_1")
 ents = child.entities
+  # Walkway Far bracket 1 plate
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 1 plate"
+  face = grp.entities.add_face([638.mm,2354.mm,0.mm], [758.mm,2354.mm,0.mm], [758.mm,2362.mm,0.mm], [638.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 1 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 1 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([698.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 1 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 1 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([663.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 1 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 1 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([733.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 1 arm
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 1 arm"
+  face = grp.entities.add_face([694.mm,2062.mm,105.mm], [702.mm,2062.mm,105.mm], [702.mm,2354.mm,105.mm], [694.mm,2354.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 1 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 1 gusset"
+  ge = grp.entities
+  f = ge.add_face([694.mm,2354.mm,0.mm], [694.mm,2354.mm,105.mm], [694.mm,2292.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 2 plate
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 2 plate"
+  face = grp.entities.add_face([1095.mm,2354.mm,0.mm], [1215.mm,2354.mm,0.mm], [1215.mm,2362.mm,0.mm], [1095.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 2 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 2 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1155.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 2 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 2 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1120.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 2 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 2 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1190.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 2 arm
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 2 arm"
+  face = grp.entities.add_face([1151.mm,2062.mm,105.mm], [1159.mm,2062.mm,105.mm], [1159.mm,2354.mm,105.mm], [1151.mm,2354.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 2 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 2 gusset"
+  ge = grp.entities
+  f = ge.add_face([1151.mm,2354.mm,0.mm], [1151.mm,2354.mm,105.mm], [1151.mm,2292.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 3 plate
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 3 plate"
+  face = grp.entities.add_face([1552.mm,2354.mm,0.mm], [1672.mm,2354.mm,0.mm], [1672.mm,2362.mm,0.mm], [1552.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 3 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 3 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1612.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 3 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 3 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1577.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 3 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 3 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1647.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 3 arm
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 3 arm"
+  face = grp.entities.add_face([1608.mm,2062.mm,105.mm], [1616.mm,2062.mm,105.mm], [1616.mm,2354.mm,105.mm], [1608.mm,2354.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 3 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 3 gusset"
+  ge = grp.entities
+  f = ge.add_face([1608.mm,2354.mm,0.mm], [1608.mm,2354.mm,105.mm], [1608.mm,2292.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 4 plate
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 4 plate"
+  face = grp.entities.add_face([2009.mm,2354.mm,0.mm], [2129.mm,2354.mm,0.mm], [2129.mm,2362.mm,0.mm], [2009.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 4 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 4 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2069.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 4 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 4 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2034.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 4 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 4 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2104.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 4 arm
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 4 arm"
+  face = grp.entities.add_face([2065.mm,2062.mm,105.mm], [2073.mm,2062.mm,105.mm], [2073.mm,2354.mm,105.mm], [2065.mm,2354.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 4 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 4 gusset"
+  ge = grp.entities
+  f = ge.add_face([2065.mm,2354.mm,0.mm], [2065.mm,2354.mm,105.mm], [2065.mm,2292.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 5 plate
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 5 plate"
+  face = grp.entities.add_face([2466.mm,2354.mm,0.mm], [2586.mm,2354.mm,0.mm], [2586.mm,2362.mm,0.mm], [2466.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 5 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 5 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2526.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 5 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 5 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2491.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 5 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 5 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2561.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 5 arm
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 5 arm"
+  face = grp.entities.add_face([2522.mm,2062.mm,105.mm], [2530.mm,2062.mm,105.mm], [2530.mm,2354.mm,105.mm], [2522.mm,2354.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 5 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 5 gusset"
+  ge = grp.entities
+  f = ge.add_face([2522.mm,2354.mm,0.mm], [2522.mm,2354.mm,105.mm], [2522.mm,2292.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 6 plate
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 6 plate"
+  face = grp.entities.add_face([2923.mm,2354.mm,0.mm], [3043.mm,2354.mm,0.mm], [3043.mm,2362.mm,0.mm], [2923.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 6 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 6 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2983.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 6 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 6 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2948.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 6 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 6 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3018.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 6 arm
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 6 arm"
+  face = grp.entities.add_face([2979.mm,2062.mm,105.mm], [2987.mm,2062.mm,105.mm], [2987.mm,2354.mm,105.mm], [2979.mm,2354.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 6 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 6 gusset"
+  ge = grp.entities
+  f = ge.add_face([2979.mm,2354.mm,0.mm], [2979.mm,2354.mm,105.mm], [2979.mm,2292.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 7 plate
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 7 plate"
+  face = grp.entities.add_face([3380.mm,2354.mm,0.mm], [3500.mm,2354.mm,0.mm], [3500.mm,2362.mm,0.mm], [3380.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 7 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 7 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3440.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 7 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 7 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3405.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 7 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 7 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3475.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 7 arm
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 7 arm"
+  face = grp.entities.add_face([3436.mm,2062.mm,105.mm], [3444.mm,2062.mm,105.mm], [3444.mm,2354.mm,105.mm], [3436.mm,2354.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 7 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 7 gusset"
+  ge = grp.entities
+  f = ge.add_face([3436.mm,2354.mm,0.mm], [3436.mm,2354.mm,105.mm], [3436.mm,2292.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 8 plate
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 8 plate"
+  face = grp.entities.add_face([3837.mm,2354.mm,0.mm], [3957.mm,2354.mm,0.mm], [3957.mm,2362.mm,0.mm], [3837.mm,2362.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 8 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 8 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3897.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 8 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 8 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3862.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 8 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 8 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3932.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 8 arm
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 8 arm"
+  face = grp.entities.add_face([3893.mm,2062.mm,105.mm], [3901.mm,2062.mm,105.mm], [3901.mm,2354.mm,105.mm], [3893.mm,2354.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Far bracket 8 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Far bracket 8 gusset"
+  ge = grp.entities
+  f = ge.add_face([3893.mm,2354.mm,0.mm], [3893.mm,2354.mm,105.mm], [3893.mm,2292.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # RWk Long beam X4329 upper
   grp = ents.add_group
   grp.name = "RWk Long beam X4329 upper"
@@ -19719,1236 +19329,11 @@ ents = child.entities
   grp.material = mat
 
 ci = p3_defn.entities.add_instance(child, Geom::Transformation.new)
-ci.name = "Step 3.1 — Right-wall cantilever rectangle"
-ci.layer = model.layers["P3 Right Cantilever"]
+ci.name = "Step 3.1 — Cantilevers — far wall + right-end rectangle"
+ci.layer = model.layers["P3 Far+Right Cantilevers"]
 ci.set_attribute("dynamic_attributes", "_name", "P3Step3_1")
 ci.set_attribute("dynamic_attributes", "hidden", 1.0)
 ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase3Build!step<1")
-child = model.definitions.add("P3Step3_1b")
-ents = child.entities
-  # Walkway Near bracket 1 plate
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 1 plate"
-  face = grp.entities.add_face([638.mm,0.mm,0.mm], [758.mm,0.mm,0.mm], [758.mm,8.mm,0.mm], [638.mm,8.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 1 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 1 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([698.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 1 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 1 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([663.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 1 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 1 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([733.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 1 arm
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 1 arm"
-  face = grp.entities.add_face([694.mm,8.mm,105.mm], [702.mm,8.mm,105.mm], [702.mm,300.mm,105.mm], [694.mm,300.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 1 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 1 gusset"
-  ge = grp.entities
-  f = ge.add_face([694.mm,8.mm,0.mm], [694.mm,8.mm,105.mm], [694.mm,70.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 2 (widened) plate
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 2 (widened) plate"
-  face = grp.entities.add_face([1095.mm,0.mm,0.mm], [1215.mm,0.mm,0.mm], [1215.mm,10.mm,0.mm], [1095.mm,10.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(200.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 2 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 2 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1120.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 2 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 2 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1190.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 2 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 2 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1120.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 2 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 2 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1190.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 2 (widened) arm
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 2 (widened) arm"
-  face = grp.entities.add_face([1150.mm,10.mm,103.mm], [1160.mm,10.mm,103.mm], [1160.mm,500.mm,103.mm], [1150.mm,500.mm,103.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 2 (widened) gusset
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 2 (widened) gusset"
-  ge = grp.entities
-  f = ge.add_face([1150.mm,10.mm,0.mm], [1150.mm,10.mm,103.mm], [1150.mm,70.mm,103.mm])
-  f.pushpull(-10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 3 (widened) plate
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 3 (widened) plate"
-  face = grp.entities.add_face([1552.mm,0.mm,0.mm], [1672.mm,0.mm,0.mm], [1672.mm,10.mm,0.mm], [1552.mm,10.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(200.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 3 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 3 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1577.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 3 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 3 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1647.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 3 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 3 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1577.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 3 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 3 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1647.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 3 (widened) arm
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 3 (widened) arm"
-  face = grp.entities.add_face([1607.mm,10.mm,103.mm], [1617.mm,10.mm,103.mm], [1617.mm,500.mm,103.mm], [1607.mm,500.mm,103.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 3 (widened) gusset
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 3 (widened) gusset"
-  ge = grp.entities
-  f = ge.add_face([1607.mm,10.mm,0.mm], [1607.mm,10.mm,103.mm], [1607.mm,70.mm,103.mm])
-  f.pushpull(-10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 4 (widened) plate
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 4 (widened) plate"
-  face = grp.entities.add_face([2009.mm,0.mm,0.mm], [2129.mm,0.mm,0.mm], [2129.mm,10.mm,0.mm], [2009.mm,10.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(200.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 4 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 4 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2034.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 4 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 4 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2104.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 4 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 4 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2034.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 4 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 4 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2104.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 4 (widened) arm
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 4 (widened) arm"
-  face = grp.entities.add_face([2064.mm,10.mm,103.mm], [2074.mm,10.mm,103.mm], [2074.mm,500.mm,103.mm], [2064.mm,500.mm,103.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 4 (widened) gusset
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 4 (widened) gusset"
-  ge = grp.entities
-  f = ge.add_face([2064.mm,10.mm,0.mm], [2064.mm,10.mm,103.mm], [2064.mm,70.mm,103.mm])
-  f.pushpull(-10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 5 (widened) plate
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 5 (widened) plate"
-  face = grp.entities.add_face([2466.mm,0.mm,0.mm], [2586.mm,0.mm,0.mm], [2586.mm,10.mm,0.mm], [2466.mm,10.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(200.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 5 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 5 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2491.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 5 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 5 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2561.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 5 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 5 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2491.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 5 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 5 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2561.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 5 (widened) arm
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 5 (widened) arm"
-  face = grp.entities.add_face([2521.mm,10.mm,103.mm], [2531.mm,10.mm,103.mm], [2531.mm,500.mm,103.mm], [2521.mm,500.mm,103.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 5 (widened) gusset
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 5 (widened) gusset"
-  ge = grp.entities
-  f = ge.add_face([2521.mm,10.mm,0.mm], [2521.mm,10.mm,103.mm], [2521.mm,70.mm,103.mm])
-  f.pushpull(-10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 6 (widened) plate
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 6 (widened) plate"
-  face = grp.entities.add_face([2923.mm,0.mm,0.mm], [3043.mm,0.mm,0.mm], [3043.mm,10.mm,0.mm], [2923.mm,10.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(200.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 6 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 6 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2948.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 6 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 6 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3018.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 6 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 6 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2948.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 6 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 6 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3018.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 6 (widened) arm
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 6 (widened) arm"
-  face = grp.entities.add_face([2978.mm,10.mm,103.mm], [2988.mm,10.mm,103.mm], [2988.mm,500.mm,103.mm], [2978.mm,500.mm,103.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 6 (widened) gusset
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 6 (widened) gusset"
-  ge = grp.entities
-  f = ge.add_face([2978.mm,10.mm,0.mm], [2978.mm,10.mm,103.mm], [2978.mm,70.mm,103.mm])
-  f.pushpull(-10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 7 plate
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 7 plate"
-  face = grp.entities.add_face([3380.mm,0.mm,0.mm], [3500.mm,0.mm,0.mm], [3500.mm,8.mm,0.mm], [3380.mm,8.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 7 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 7 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3440.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 7 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 7 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3405.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 7 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 7 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3475.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 7 arm
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 7 arm"
-  face = grp.entities.add_face([3436.mm,8.mm,105.mm], [3444.mm,8.mm,105.mm], [3444.mm,300.mm,105.mm], [3436.mm,300.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 7 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 7 gusset"
-  ge = grp.entities
-  f = ge.add_face([3436.mm,8.mm,0.mm], [3436.mm,8.mm,105.mm], [3436.mm,70.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 8 plate
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 8 plate"
-  face = grp.entities.add_face([3837.mm,0.mm,0.mm], [3957.mm,0.mm,0.mm], [3957.mm,8.mm,0.mm], [3837.mm,8.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 8 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 8 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3897.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 8 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 8 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3862.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 8 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 8 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3932.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 8 arm
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 8 arm"
-  face = grp.entities.add_face([3893.mm,8.mm,105.mm], [3901.mm,8.mm,105.mm], [3901.mm,300.mm,105.mm], [3893.mm,300.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 8 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 8 gusset"
-  ge = grp.entities
-  f = ge.add_face([3893.mm,8.mm,0.mm], [3893.mm,8.mm,105.mm], [3893.mm,70.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 1 plate
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 1 plate"
-  face = grp.entities.add_face([638.mm,2354.mm,0.mm], [758.mm,2354.mm,0.mm], [758.mm,2362.mm,0.mm], [638.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 1 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 1 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([698.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 1 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 1 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([663.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 1 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 1 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([733.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 1 arm
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 1 arm"
-  face = grp.entities.add_face([694.mm,2062.mm,105.mm], [702.mm,2062.mm,105.mm], [702.mm,2354.mm,105.mm], [694.mm,2354.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 1 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 1 gusset"
-  ge = grp.entities
-  f = ge.add_face([694.mm,2354.mm,0.mm], [694.mm,2354.mm,105.mm], [694.mm,2292.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 2 plate
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 2 plate"
-  face = grp.entities.add_face([1095.mm,2354.mm,0.mm], [1215.mm,2354.mm,0.mm], [1215.mm,2362.mm,0.mm], [1095.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 2 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 2 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1155.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 2 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 2 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1120.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 2 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 2 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1190.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 2 arm
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 2 arm"
-  face = grp.entities.add_face([1151.mm,2062.mm,105.mm], [1159.mm,2062.mm,105.mm], [1159.mm,2354.mm,105.mm], [1151.mm,2354.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 2 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 2 gusset"
-  ge = grp.entities
-  f = ge.add_face([1151.mm,2354.mm,0.mm], [1151.mm,2354.mm,105.mm], [1151.mm,2292.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 3 plate
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 3 plate"
-  face = grp.entities.add_face([1552.mm,2354.mm,0.mm], [1672.mm,2354.mm,0.mm], [1672.mm,2362.mm,0.mm], [1552.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 3 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 3 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1612.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 3 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 3 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1577.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 3 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 3 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1647.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 3 arm
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 3 arm"
-  face = grp.entities.add_face([1608.mm,2062.mm,105.mm], [1616.mm,2062.mm,105.mm], [1616.mm,2354.mm,105.mm], [1608.mm,2354.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 3 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 3 gusset"
-  ge = grp.entities
-  f = ge.add_face([1608.mm,2354.mm,0.mm], [1608.mm,2354.mm,105.mm], [1608.mm,2292.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 4 plate
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 4 plate"
-  face = grp.entities.add_face([2009.mm,2354.mm,0.mm], [2129.mm,2354.mm,0.mm], [2129.mm,2362.mm,0.mm], [2009.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 4 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 4 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2069.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 4 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 4 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2034.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 4 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 4 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2104.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 4 arm
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 4 arm"
-  face = grp.entities.add_face([2065.mm,2062.mm,105.mm], [2073.mm,2062.mm,105.mm], [2073.mm,2354.mm,105.mm], [2065.mm,2354.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 4 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 4 gusset"
-  ge = grp.entities
-  f = ge.add_face([2065.mm,2354.mm,0.mm], [2065.mm,2354.mm,105.mm], [2065.mm,2292.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 5 plate
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 5 plate"
-  face = grp.entities.add_face([2466.mm,2354.mm,0.mm], [2586.mm,2354.mm,0.mm], [2586.mm,2362.mm,0.mm], [2466.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 5 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 5 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2526.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 5 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 5 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2491.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 5 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 5 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2561.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 5 arm
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 5 arm"
-  face = grp.entities.add_face([2522.mm,2062.mm,105.mm], [2530.mm,2062.mm,105.mm], [2530.mm,2354.mm,105.mm], [2522.mm,2354.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 5 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 5 gusset"
-  ge = grp.entities
-  f = ge.add_face([2522.mm,2354.mm,0.mm], [2522.mm,2354.mm,105.mm], [2522.mm,2292.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 6 plate
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 6 plate"
-  face = grp.entities.add_face([2923.mm,2354.mm,0.mm], [3043.mm,2354.mm,0.mm], [3043.mm,2362.mm,0.mm], [2923.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 6 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 6 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2983.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 6 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 6 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2948.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 6 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 6 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3018.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 6 arm
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 6 arm"
-  face = grp.entities.add_face([2979.mm,2062.mm,105.mm], [2987.mm,2062.mm,105.mm], [2987.mm,2354.mm,105.mm], [2979.mm,2354.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 6 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 6 gusset"
-  ge = grp.entities
-  f = ge.add_face([2979.mm,2354.mm,0.mm], [2979.mm,2354.mm,105.mm], [2979.mm,2292.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 7 plate
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 7 plate"
-  face = grp.entities.add_face([3380.mm,2354.mm,0.mm], [3500.mm,2354.mm,0.mm], [3500.mm,2362.mm,0.mm], [3380.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 7 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 7 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3440.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 7 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 7 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3405.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 7 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 7 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3475.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 7 arm
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 7 arm"
-  face = grp.entities.add_face([3436.mm,2062.mm,105.mm], [3444.mm,2062.mm,105.mm], [3444.mm,2354.mm,105.mm], [3436.mm,2354.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 7 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 7 gusset"
-  ge = grp.entities
-  f = ge.add_face([3436.mm,2354.mm,0.mm], [3436.mm,2354.mm,105.mm], [3436.mm,2292.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 8 plate
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 8 plate"
-  face = grp.entities.add_face([3837.mm,2354.mm,0.mm], [3957.mm,2354.mm,0.mm], [3957.mm,2362.mm,0.mm], [3837.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 8 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 8 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3897.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 8 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 8 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3862.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 8 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 8 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3932.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 8 arm
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 8 arm"
-  face = grp.entities.add_face([3893.mm,2062.mm,105.mm], [3901.mm,2062.mm,105.mm], [3901.mm,2354.mm,105.mm], [3893.mm,2354.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 8 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 8 gusset"
-  ge = grp.entities
-  f = ge.add_face([3893.mm,2354.mm,0.mm], [3893.mm,2354.mm,105.mm], [3893.mm,2292.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-ci = p3_defn.entities.add_instance(child, Geom::Transformation.new)
-ci.name = "Step 3.1b — Near + far wall cantilever brackets"
-ci.layer = model.layers["P3 Wall Brackets"]
-ci.set_attribute("dynamic_attributes", "_name", "P3Step3_1b")
-ci.set_attribute("dynamic_attributes", "hidden", 1.0)
-ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase3Build!step<2")
 child = model.definitions.add("P3Step3_2")
 ents = child.entities
   # Tray Shim Base
@@ -22781,7 +21166,7 @@ ents = child.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(9.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
   mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
@@ -22794,7 +21179,7 @@ ents = child.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2.5.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
   mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
@@ -22807,7 +21192,7 @@ ents = child.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(9.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
   mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
@@ -22820,7 +21205,7 @@ ents = child.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2.5.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
   mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
@@ -22833,7 +21218,7 @@ ents = child.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(9.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
   mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
@@ -22846,7 +21231,7 @@ ents = child.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2.5.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
   mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
@@ -22859,7 +21244,7 @@ ents = child.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(9.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
   mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
@@ -22872,7 +21257,7 @@ ents = child.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2.5.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
   mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
@@ -22926,7 +21311,7 @@ ents = child.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(36.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
   mat.color = Sketchup::Color.new(80, 80, 90)
   mat.alpha = 1.0
   grp.material = mat
@@ -24871,1571 +23256,658 @@ ci.name = "Step 3.2 — Processing tray + spray bar"
 ci.layer = model.layers["P3 Processing Tray"]
 ci.set_attribute("dynamic_attributes", "_name", "P3Step3_2")
 ci.set_attribute("dynamic_attributes", "hidden", 1.0)
+ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase3Build!step<2")
+child = model.definitions.add("P3Step3_3")
+ents = child.entities
+  # Walkway Near bracket 1 plate
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 1 plate"
+  face = grp.entities.add_face([638.mm,0.mm,0.mm], [758.mm,0.mm,0.mm], [758.mm,8.mm,0.mm], [638.mm,8.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 1 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 1 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([698.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 1 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 1 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([663.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 1 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 1 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([733.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 1 arm
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 1 arm"
+  face = grp.entities.add_face([694.mm,8.mm,105.mm], [702.mm,8.mm,105.mm], [702.mm,300.mm,105.mm], [694.mm,300.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 1 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 1 gusset"
+  ge = grp.entities
+  f = ge.add_face([694.mm,8.mm,0.mm], [694.mm,8.mm,105.mm], [694.mm,70.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 2 (widened) plate
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 2 (widened) plate"
+  face = grp.entities.add_face([1095.mm,0.mm,0.mm], [1215.mm,0.mm,0.mm], [1215.mm,10.mm,0.mm], [1095.mm,10.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 2 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 2 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1120.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 2 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 2 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1190.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 2 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 2 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1120.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 2 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 2 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1190.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 2 (widened) arm
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 2 (widened) arm"
+  face = grp.entities.add_face([1150.mm,10.mm,103.mm], [1160.mm,10.mm,103.mm], [1160.mm,500.mm,103.mm], [1150.mm,500.mm,103.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 2 (widened) gusset
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 2 (widened) gusset"
+  ge = grp.entities
+  f = ge.add_face([1150.mm,10.mm,0.mm], [1150.mm,10.mm,103.mm], [1150.mm,70.mm,103.mm])
+  f.pushpull(-10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 3 (widened) plate
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 3 (widened) plate"
+  face = grp.entities.add_face([1552.mm,0.mm,0.mm], [1672.mm,0.mm,0.mm], [1672.mm,10.mm,0.mm], [1552.mm,10.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 3 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 3 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1577.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 3 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 3 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1647.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 3 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 3 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1577.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 3 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 3 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([1647.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 3 (widened) arm
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 3 (widened) arm"
+  face = grp.entities.add_face([1607.mm,10.mm,103.mm], [1617.mm,10.mm,103.mm], [1617.mm,500.mm,103.mm], [1607.mm,500.mm,103.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 3 (widened) gusset
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 3 (widened) gusset"
+  ge = grp.entities
+  f = ge.add_face([1607.mm,10.mm,0.mm], [1607.mm,10.mm,103.mm], [1607.mm,70.mm,103.mm])
+  f.pushpull(-10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 4 (widened) plate
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 4 (widened) plate"
+  face = grp.entities.add_face([2009.mm,0.mm,0.mm], [2129.mm,0.mm,0.mm], [2129.mm,10.mm,0.mm], [2009.mm,10.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 4 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 4 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2034.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 4 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 4 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2104.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 4 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 4 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2034.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 4 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 4 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2104.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 4 (widened) arm
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 4 (widened) arm"
+  face = grp.entities.add_face([2064.mm,10.mm,103.mm], [2074.mm,10.mm,103.mm], [2074.mm,500.mm,103.mm], [2064.mm,500.mm,103.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 4 (widened) gusset
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 4 (widened) gusset"
+  ge = grp.entities
+  f = ge.add_face([2064.mm,10.mm,0.mm], [2064.mm,10.mm,103.mm], [2064.mm,70.mm,103.mm])
+  f.pushpull(-10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 5 (widened) plate
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 5 (widened) plate"
+  face = grp.entities.add_face([2466.mm,0.mm,0.mm], [2586.mm,0.mm,0.mm], [2586.mm,10.mm,0.mm], [2466.mm,10.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 5 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 5 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2491.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 5 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 5 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2561.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 5 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 5 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2491.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 5 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 5 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2561.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 5 (widened) arm
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 5 (widened) arm"
+  face = grp.entities.add_face([2521.mm,10.mm,103.mm], [2531.mm,10.mm,103.mm], [2531.mm,500.mm,103.mm], [2521.mm,500.mm,103.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 5 (widened) gusset
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 5 (widened) gusset"
+  ge = grp.entities
+  f = ge.add_face([2521.mm,10.mm,0.mm], [2521.mm,10.mm,103.mm], [2521.mm,70.mm,103.mm])
+  f.pushpull(-10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 6 (widened) plate
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 6 (widened) plate"
+  face = grp.entities.add_face([2923.mm,0.mm,0.mm], [3043.mm,0.mm,0.mm], [3043.mm,10.mm,0.mm], [2923.mm,10.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 6 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 6 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2948.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 6 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 6 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3018.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 6 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 6 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([2948.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 6 (widened) bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 6 (widened) bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3018.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(22.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 6 (widened) arm
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 6 (widened) arm"
+  face = grp.entities.add_face([2978.mm,10.mm,103.mm], [2988.mm,10.mm,103.mm], [2988.mm,500.mm,103.mm], [2978.mm,500.mm,103.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 6 (widened) gusset
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 6 (widened) gusset"
+  ge = grp.entities
+  f = ge.add_face([2978.mm,10.mm,0.mm], [2978.mm,10.mm,103.mm], [2978.mm,70.mm,103.mm])
+  f.pushpull(-10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 7 plate
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 7 plate"
+  face = grp.entities.add_face([3380.mm,0.mm,0.mm], [3500.mm,0.mm,0.mm], [3500.mm,8.mm,0.mm], [3380.mm,8.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 7 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 7 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3440.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 7 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 7 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3405.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 7 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 7 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3475.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 7 arm
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 7 arm"
+  face = grp.entities.add_face([3436.mm,8.mm,105.mm], [3444.mm,8.mm,105.mm], [3444.mm,300.mm,105.mm], [3436.mm,300.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 7 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 7 gusset"
+  ge = grp.entities
+  f = ge.add_face([3436.mm,8.mm,0.mm], [3436.mm,8.mm,105.mm], [3436.mm,70.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 8 plate
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 8 plate"
+  face = grp.entities.add_face([3837.mm,0.mm,0.mm], [3957.mm,0.mm,0.mm], [3957.mm,8.mm,0.mm], [3837.mm,8.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 8 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 8 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3897.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 8 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 8 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3862.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 8 bolt M12
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 8 bolt M12"
+  ge = grp.entities
+  circle = ge.add_circle([3932.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Walkway Far bracket 1 bolt M12"] || model.materials.add("Walkway Far bracket 1 bolt M12")
+  mat.color = Sketchup::Color.new(80, 80, 90)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 8 arm
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 8 arm"
+  face = grp.entities.add_face([3893.mm,8.mm,105.mm], [3901.mm,8.mm,105.mm], [3901.mm,300.mm,105.mm], [3893.mm,300.mm,105.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Walkway Near bracket 8 gusset
+  grp = ents.add_group
+  grp.name = "Walkway Near bracket 8 gusset"
+  ge = grp.entities
+  f = ge.add_face([3893.mm,8.mm,0.mm], [3893.mm,8.mm,105.mm], [3893.mm,70.mm,105.mm])
+  f.pushpull(-8.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+ci = p3_defn.entities.add_instance(child, Geom::Transformation.new)
+ci.name = "Step 3.3 — Cantilevers — near wall"
+ci.layer = model.layers["P3 Near Cantilevers"]
+ci.set_attribute("dynamic_attributes", "_name", "P3Step3_3")
+ci.set_attribute("dynamic_attributes", "hidden", 1.0)
 ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase3Build!step<3")
 child = model.definitions.add("P3Step3_4")
 ents = child.entities
-  # Filter F1 sump
-  grp = ents.add_group
-  grp.name = "Filter F1 sump"
-  ge = grp.entities
-  circle = ge.add_circle([3300.mm,104.mm,1746.mm], [0,0,1], 92.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(516.mm)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Filter F1 cap
-  grp = ents.add_group
-  grp.name = "Filter F1 cap"
-  ge = grp.entities
-  circle = ge.add_circle([3300.mm,104.mm,2262.mm], [0,0,1], 95.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(78.mm)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(26, 26, 26)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Filter F1 in port
-  grp = ents.add_group
-  grp.name = "Filter F1 in port"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-36.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([3214.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(26, 26, 26)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Filter F1 out port
-  grp = ents.add_group
-  grp.name = "Filter F1 out port"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(36.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([3386.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(26, 26, 26)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Filter F1 PR button
-  grp = ents.add_group
-  grp.name = "Filter F1 PR button"
-  ge = grp.entities
-  circle = ge.add_circle([3300.mm,104.mm,2340.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(9.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Filter F2 sump
-  grp = ents.add_group
-  grp.name = "Filter F2 sump"
-  ge = grp.entities
-  circle = ge.add_circle([3638.mm,104.mm,1746.mm], [0,0,1], 92.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(516.mm)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Filter F2 cap
-  grp = ents.add_group
-  grp.name = "Filter F2 cap"
-  ge = grp.entities
-  circle = ge.add_circle([3638.mm,104.mm,2262.mm], [0,0,1], 95.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(78.mm)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(26, 26, 26)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Filter F2 in port
-  grp = ents.add_group
-  grp.name = "Filter F2 in port"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-36.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([3552.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(26, 26, 26)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Filter F2 out port
-  grp = ents.add_group
-  grp.name = "Filter F2 out port"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(36.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([3724.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(26, 26, 26)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Filter F2 PR button
-  grp = ents.add_group
-  grp.name = "Filter F2 PR button"
-  ge = grp.entities
-  circle = ge.add_circle([3638.mm,104.mm,2340.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(9.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Filter F3 sump
-  grp = ents.add_group
-  grp.name = "Filter F3 sump"
-  ge = grp.entities
-  circle = ge.add_circle([3976.mm,104.mm,1746.mm], [0,0,1], 92.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(516.mm)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Filter F3 cap
-  grp = ents.add_group
-  grp.name = "Filter F3 cap"
-  ge = grp.entities
-  circle = ge.add_circle([3976.mm,104.mm,2262.mm], [0,0,1], 95.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(78.mm)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(26, 26, 26)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Filter F3 in port
-  grp = ents.add_group
-  grp.name = "Filter F3 in port"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-36.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([3890.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(26, 26, 26)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Filter F3 out port
-  grp = ents.add_group
-  grp.name = "Filter F3 out port"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(36.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4062.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
-  mat.color = Sketchup::Color.new(26, 26, 26)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Filter F3 PR button
-  grp = ents.add_group
-  grp.name = "Filter F3 PR button"
-  ge = grp.entities
-  circle = ge.add_circle([3976.mm,104.mm,2340.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(9.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pump P-02 (Brown) body
-  grp = ents.add_group
-  grp.name = "Pump P-02 (Brown) body"
-  ge = grp.entities
-  circle = ge.add_circle([3058.mm,104.mm,2139.mm], [0,0,1], 50.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(180.mm)
-  mat = model.materials["Pump P-02 (Brown) body"] || model.materials.add("Pump P-02 (Brown) body")
-  mat.color = Sketchup::Color.new(69, 69, 82)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pump P-02 (Brown) head
-  grp = ents.add_group
-  grp.name = "Pump P-02 (Brown) head"
-  ge = grp.entities
-  circle = ge.add_circle([3058.mm,104.mm,2319.mm], [0,0,1], 53.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(30.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(51, 52, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pump P-02 (Brown) in port
-  grp = ents.add_group
-  grp.name = "Pump P-02 (Brown) in port"
-  ge = grp.entities
-  circle = ge.add_circle([2978.mm,104.mm,2301.mm], [1,0,0], 10.5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(30.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(51, 52, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Pump P-02 (Brown) out port
-  grp = ents.add_group
-  grp.name = "Pump P-02 (Brown) out port"
-  ge = grp.entities
-  circle = ge.add_circle([3108.mm,104.mm,2301.mm], [1,0,0], 10.5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(30.mm)
-  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
-  mat.color = Sketchup::Color.new(51, 52, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 sample valve
-  grp = ents.add_group
-  grp.name = "SV-01 sample valve"
-  face = grp.entities.add_face([4225.mm,85.mm,975.mm], [4275.mm,85.mm,975.mm], [4275.mm,135.mm,975.mm], [4225.mm,135.mm,975.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(70.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 sample valve spout
-  grp = ents.add_group
-  grp.name = "SV-01 sample valve spout"
-  ge = grp.entities
-  circle = ge.add_circle([4250.mm,110.mm,885.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(90.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 sample valve handwheel stem
-  grp = ents.add_group
-  grp.name = "SV-01 sample valve handwheel stem"
-  ge = grp.entities
-  circle = ge.add_circle([4250.mm,110.mm,1045.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["BV-01 (P-01 suction) handle stem"] || model.materials.add("BV-01 (P-01 suction) handle stem")
-  mat.color = Sketchup::Color.new(192, 32, 42)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 sample valve handwheel
-  grp = ents.add_group
-  grp.name = "SV-01 sample valve handwheel"
-  ge = grp.entities
-  circle = ge.add_circle([4250.mm,110.mm,1061.mm], [0,0,1], 30.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(10.mm)
-  mat = model.materials["BV-01 (P-01 suction) handle stem"] || model.materials.add("BV-01 (P-01 suction) handle stem")
-  mat.color = Sketchup::Color.new(192, 32, 42)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # 3W-DV-01 body
-  grp = ents.add_group
-  grp.name = "3W-DV-01 body"
-  face = grp.entities.add_face([4777.mm,1218.mm,212.mm], [4823.mm,1218.mm,212.mm], [4823.mm,1264.mm,212.mm], [4777.mm,1264.mm,212.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(46.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # 3W-DV-01 run +
-  grp = ents.add_group
-  grp.name = "3W-DV-01 run +"
-  ge = grp.entities
-  circle = ge.add_circle([4823.mm,1241.mm,235.mm], [1,0,0], 13.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(10.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # 3W-DV-01 run -
-  grp = ents.add_group
-  grp.name = "3W-DV-01 run -"
-  ge = grp.entities
-  circle = ge.add_circle([4767.mm,1241.mm,235.mm], [1,0,0], 13.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(10.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # 3W-DV-01 branch
-  grp = ents.add_group
-  grp.name = "3W-DV-01 branch"
-  ge = grp.entities
-  circle = ge.add_circle([4800.mm,1208.mm,235.mm], [0,1,0], 13.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(10.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # 3W-DV-01 handle stem
-  grp = ents.add_group
-  grp.name = "3W-DV-01 handle stem"
-  ge = grp.entities
-  circle = ge.add_circle([4800.mm,1241.mm,258.mm], [0,0,1], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(42.mm)
-  mat = model.materials["BV-01 (P-01 suction) handle stem"] || model.materials.add("BV-01 (P-01 suction) handle stem")
-  mat.color = Sketchup::Color.new(192, 32, 42)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # 3W-DV-01 handle lever
-  grp = ents.add_group
-  grp.name = "3W-DV-01 handle lever"
-  face = grp.entities.add_face([4768.mm,1233.mm,299.mm], [4832.mm,1233.mm,299.mm], [4832.mm,1249.mm,299.mm], [4768.mm,1249.mm,299.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["BV-01 (P-01 suction) handle stem"] || model.materials.add("BV-01 (P-01 suction) handle stem")
-  mat.color = Sketchup::Color.new(192, 32, 42)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-109.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4850.mm,1101.mm,308.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet elbow
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4741.mm,1101.mm,287.mm], [0.000000,0.000000,1.000000], [-0.000000,-1.000000,-0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4741.mm,1101.mm,308.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -217.59.mm)
-  circle = ge.add_circle([4720.mm,1101.mm,287.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet elbow
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4720.mm,1105.41.mm,69.41.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 4.410000000000001.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4720.mm,1101.mm,69.41.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 2.3408999999999196.mm, 0.mm)
-  circle = ge.add_circle([4720.mm,1105.41.mm,65.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet elbow
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4717.7509.mm,1107.7509.mm,65.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 2.2490999999999604.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4720.mm,1107.7509.mm,65.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-57.39590000000044.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4717.7509.mm,1110.mm,65.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet elbow
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4660.355.mm,1110.mm,84.355.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 19.355000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4660.355.mm,1110.mm,65.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 10.27395.mm)
-  circle = ge.add_circle([4641.mm,1110.mm,84.355.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet elbow
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4631.12895.mm,1110.mm,94.62895.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 9.87105.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4641.mm,1110.mm,94.62895.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-54.12895000000026.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4631.12895.mm,1110.mm,104.5.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet elbow
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4577.mm,1110.mm,125.5.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4577.mm,1110.mm,104.5.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 13.514999999999986.mm)
-  circle = ge.add_circle([4556.mm,1110.mm,125.5.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet elbow
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4556.mm,1097.015.mm,139.015.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4556.mm,1110.mm,139.015.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -76.0150000000001.mm, 0.mm)
-  circle = ge.add_circle([4556.mm,1097.015.mm,152.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet elbow
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4556.mm,1021.mm,131.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4556.mm,1021.mm,152.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -13.515.mm)
-  circle = ge.add_circle([4556.mm,1000.mm,131.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet elbow
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4556.mm,987.015.mm,117.485.mm], [0.000000,1.000000,0.000000], [-1.000000,-0.000000,-0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4556.mm,1000.mm,117.485.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -911.015.mm, 0.mm)
-  circle = ge.add_circle([4556.mm,987.015.mm,104.5.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet elbow
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4556.mm,76.mm,83.5.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4556.mm,76.mm,104.5.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -37.5.mm)
-  circle = ge.add_circle([4556.mm,55.mm,83.5.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet elbow
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4535.mm,55.mm,46.mm], [1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4556.mm,55.mm,46.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-1554.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4535.mm,55.mm,25.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet elbow
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2981.mm,55.mm,46.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2981.mm,55.mm,25.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 2234.mm)
-  circle = ge.add_circle([2960.mm,55.mm,46.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet elbow
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2960.mm,76.mm,2280.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2960.mm,55.mm,2280.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 19.180000000000007.mm, 0.mm)
-  circle = ge.add_circle([2960.mm,76.mm,2301.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet elbow
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2968.82.mm,95.18.mm,2301.mm], [-1.000000,0.000000,0.000000], [0.000000,0.000000,-1.000000], 8.820000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2960.mm,95.18.mm,2301.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC-3 (Brown) tap -> P-02 inlet
-  grp = ents.add_group
-  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(9.179999999999836.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2968.82.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # BV-03 (P-02 suction)
-  grp = ents.add_group
-  grp.name = "BV-03 (P-02 suction)"
-  ge = grp.entities
-  circle = ge.add_circle([2960.mm,43.mm,978.mm], [0,0,1], 18.5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(44.mm)
-  mat = model.materials["BV-01 (P-01 suction)"] || model.materials.add("BV-01 (P-01 suction)")
-  mat.color = Sketchup::Color.new(128, 128, 138)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # BV-03 (P-02 suction) handle stem
-  grp = ents.add_group
-  grp.name = "BV-03 (P-02 suction) handle stem"
-  ge = grp.entities
-  circle = ge.add_circle([2960.mm,61.5.mm,1000.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(28.mm)
-  mat = model.materials["BV-01 (P-01 suction) handle stem"] || model.materials.add("BV-01 (P-01 suction) handle stem")
-  mat.color = Sketchup::Color.new(192, 32, 42)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # BV-03 (P-02 suction) handle
-  grp = ents.add_group
-  grp.name = "BV-03 (P-02 suction) handle"
-  face = grp.entities.add_face([2953.mm,89.5.mm,976.mm], [2967.mm,89.5.mm,976.mm], [2967.mm,98.5.mm,976.mm], [2953.mm,98.5.mm,976.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(48.mm)
-  mat = model.materials["BV-01 (P-01 suction) handle stem"] || model.materials.add("BV-01 (P-01 suction) handle stem")
-  mat.color = Sketchup::Color.new(192, 32, 42)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # P-02 -> F1
-  grp = ents.add_group
-  grp.name = "P-02 -> F1"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(40.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([3138.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # F1 out -> F2 in
-  grp = ents.add_group
-  grp.name = "F1 out -> F2 in"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(94.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([3422.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # F2 out -> F3 in
-  grp = ents.add_group
-  grp.name = "F2 out -> F3 in"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(94.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([3760.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # F3 -> SV-01 (wall-mounted drop)
-  grp = ents.add_group
-  grp.name = "F3 -> SV-01 (wall-mounted drop)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -48.mm, 0.mm)
-  circle = ge.add_circle([4098.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # F3 -> SV-01 (wall-mounted drop) elbow
-  grp = ents.add_group
-  grp.name = "F3 -> SV-01 (wall-mounted drop) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4119.mm,56.mm,2301.mm], [-1.000000,0.000000,0.000000], [-0.000000,0.000000,1.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4098.mm,56.mm,2301.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # F3 -> SV-01 (wall-mounted drop)
-  grp = ents.add_group
-  grp.name = "F3 -> SV-01 (wall-mounted drop)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(110.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4119.mm,35.mm,2301.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # F3 -> SV-01 (wall-mounted drop) elbow
-  grp = ents.add_group
-  grp.name = "F3 -> SV-01 (wall-mounted drop) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4229.mm,35.mm,2280.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4229.mm,35.mm,2301.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # F3 -> SV-01 (wall-mounted drop)
-  grp = ents.add_group
-  grp.name = "F3 -> SV-01 (wall-mounted drop)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1259.mm)
-  circle = ge.add_circle([4250.mm,35.mm,2280.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # F3 -> SV-01 (wall-mounted drop) elbow
-  grp = ents.add_group
-  grp.name = "F3 -> SV-01 (wall-mounted drop) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4250.mm,56.mm,1021.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4250.mm,35.mm,1021.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # F3 -> SV-01 (wall-mounted drop)
-  grp = ents.add_group
-  grp.name = "F3 -> SV-01 (wall-mounted drop)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 54.mm, 0.mm)
-  circle = ge.add_circle([4250.mm,56.mm,1000.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line)
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -54.mm, 0.mm)
-  circle = ge.add_circle([4250.mm,110.mm,1000.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line) elbow
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4250.mm,56.mm,979.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4250.mm,56.mm,1000.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line)
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -916.75.mm)
-  circle = ge.add_circle([4250.mm,35.mm,979.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line) elbow
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4250.mm,47.25.mm,62.25.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 12.250000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4250.mm,35.mm,62.25.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line)
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 6.502499999999998.mm, 0.mm)
-  circle = ge.add_circle([4250.mm,47.25.mm,50.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line) elbow
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4256.2475.mm,53.7525.mm,50.mm], [-1.000000,0.000000,0.000000], [0.000000,0.000000,-1.000000], 6.2475000000000005.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4250.mm,53.7525.mm,50.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line)
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(200.7524999999996.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4256.2475.mm,60.mm,50.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line) elbow
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4457.mm,60.mm,71.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4457.mm,60.mm,50.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line)
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 17.085000000000008.mm)
-  circle = ge.add_circle([4478.mm,60.mm,71.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line) elbow
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4478.mm,76.415.mm,88.08500000000001.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 16.415000000000003.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4478.mm,60.mm,88.08500000000001.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line)
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 902.585.mm, 0.mm)
-  circle = ge.add_circle([4478.mm,76.41499999999999.mm,104.5.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line) elbow
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4478.mm,979.mm,125.5.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4478.mm,979.mm,104.5.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line)
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 13.514999999999986.mm)
-  circle = ge.add_circle([4478.mm,1000.mm,125.5.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line) elbow
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4478.mm,1012.985.mm,139.015.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4478.mm,1000.mm,139.015.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line)
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 76.01499999999999.mm, 0.mm)
-  circle = ge.add_circle([4478.mm,1012.985.mm,152.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line) elbow
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4478.mm,1089.mm,131.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4478.mm,1089.mm,152.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line)
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -13.515.mm)
-  circle = ge.add_circle([4478.mm,1110.mm,131.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line) elbow
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4478.mm,1122.985.mm,117.485.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4478.mm,1110.mm,117.485.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line)
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 97.0150000000001.mm, 0.mm)
-  circle = ge.add_circle([4478.mm,1122.985.mm,104.5.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line) elbow
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4499.mm,1220.mm,104.5.mm], [-1.000000,0.000000,0.000000], [0.000000,0.000000,-1.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4478.mm,1220.mm,104.5.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line)
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(122.64500000000044.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4499.mm,1241.mm,104.5.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line) elbow
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4621.645.mm,1241.mm,85.145.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 19.355000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4621.645.mm,1241.mm,104.5.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line)
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -10.27395.mm)
-  circle = ge.add_circle([4641.mm,1241.mm,85.145.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line) elbow
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4650.87105.mm,1241.mm,74.87105.mm], [-1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 9.87105.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4641.mm,1241.mm,74.87105.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line)
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(28.12895000000026.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4650.87105.mm,1241.mm,65.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line) elbow
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4679.mm,1241.mm,86.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4679.mm,1241.mm,65.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line)
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 128.mm)
-  circle = ge.add_circle([4700.mm,1241.mm,86.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line) elbow
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4721.mm,1241.mm,214.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4700.mm,1241.mm,214.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # SV-01 -> DV-01 (single filtered line)
-  grp = ents.add_group
-  grp.name = "SV-01 -> DV-01 (single filtered line)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(46.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4721.mm,1241.mm,235.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
-  mat.color = Sketchup::Color.new(58, 110, 165)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # DV-01 blue recycle -> X1 cross
-  grp = ents.add_group
-  grp.name = "DV-01 blue recycle -> X1 cross"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(385.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4833.mm,1241.mm,235.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # DV-01 blue recycle -> X1 cross elbow
-  grp = ents.add_group
-  grp.name = "DV-01 blue recycle -> X1 cross elbow"
-  ge = grp.entities
-  arc = ge.add_arc([5218.mm,1220.mm,235.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,-1.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5218.mm,1241.mm,235.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # DV-01 blue recycle -> X1 cross
-  grp = ents.add_group
-  grp.name = "DV-01 blue recycle -> X1 cross"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -12.49499999999989.mm, 0.mm)
-  circle = ge.add_circle([5239.mm,1220.mm,235.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # DV-01 blue recycle -> X1 cross elbow
-  grp = ents.add_group
-  grp.name = "DV-01 blue recycle -> X1 cross elbow"
-  ge = grp.entities
-  arc = ge.add_arc([5239.mm,1207.505.mm,247.005.mm], [0.000000,0.000000,-1.000000], [-1.000000,0.000000,0.000000], 12.005.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5239.mm,1207.505.mm,235.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # DV-01 blue recycle -> X1 cross
-  grp = ents.add_group
-  grp.name = "DV-01 blue recycle -> X1 cross"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 1981.995.mm)
-  circle = ge.add_circle([5239.mm,1195.5.mm,247.005.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # DV-01 blue recycle -> X1 cross elbow
-  grp = ents.add_group
-  grp.name = "DV-01 blue recycle -> X1 cross elbow"
-  ge = grp.entities
-  arc = ge.add_arc([5260.mm,1195.5.mm,2229.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5239.mm,1195.5.mm,2229.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # DV-01 blue recycle -> X1 cross
-  grp = ents.add_group
-  grp.name = "DV-01 blue recycle -> X1 cross"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(240.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([5260.mm,1195.5.mm,2250.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # DV-01 -> IBC-4 merge
-  grp = ents.add_group
-  grp.name = "DV-01 -> IBC-4 merge"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -22.mm, 0.mm)
-  circle = ge.add_circle([4800.mm,1208.mm,235.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # DV-01 -> IBC-4 merge elbow
-  grp = ents.add_group
-  grp.name = "DV-01 -> IBC-4 merge elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4821.mm,1186.mm,235.mm], [-1.000000,0.000000,0.000000], [-0.000000,0.000000,1.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4800.mm,1186.mm,235.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # DV-01 -> IBC-4 merge
-  grp = ents.add_group
-  grp.name = "DV-01 -> IBC-4 merge"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(568.3000000000002.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([4821.mm,1165.mm,235.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # DV-01 -> IBC-4 merge elbow
-  grp = ents.add_group
-  grp.name = "DV-01 -> IBC-4 merge elbow"
-  ge = grp.entities
-  arc = ge.add_arc([5389.3.mm,1179.7.mm,235.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 14.700000000000001.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5389.3.mm,1165.mm,235.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # DV-01 -> IBC-4 merge
-  grp = ents.add_group
-  grp.name = "DV-01 -> IBC-4 merge"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 7.802999999999884.mm, 0.mm)
-  circle = ge.add_circle([5404.mm,1179.7.mm,235.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # DV-01 -> IBC-4 merge elbow
-  grp = ents.add_group
-  grp.name = "DV-01 -> IBC-4 merge elbow"
-  ge = grp.entities
-  arc = ge.add_arc([5404.mm,1187.503.mm,242.49699999999999.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 7.496999999999979.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5404.mm,1187.503.mm,235.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # DV-01 -> IBC-4 merge
-  grp = ents.add_group
-  grp.name = "DV-01 -> IBC-4 merge"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 987.503.mm)
-  circle = ge.add_circle([5404.mm,1195.mm,242.49699999999999.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # Blue trunk: corridor -> ribbon -> outside-rim strip
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip"
@@ -28343,11 +25815,2365 @@ ents = child.entities
   grp.material = mat
 
 ci = p3_defn.entities.add_instance(child, Geom::Transformation.new)
-ci.name = "Step 3.4 — Plumbing extended to the pinhole-wall panel + filter skid"
+ci.name = "Step 3.4 — Extend plumbing to the pinhole-wall panel"
 ci.layer = model.layers["P3 Pinhole Plumbing"]
 ci.set_attribute("dynamic_attributes", "_name", "P3Step3_4")
 ci.set_attribute("dynamic_attributes", "hidden", 1.0)
 ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase3Build!step<4")
+child = model.definitions.add("P3Step3_5")
+ents = child.entities
+  # Filter F1 sump
+  grp = ents.add_group
+  grp.name = "Filter F1 sump"
+  ge = grp.entities
+  circle = ge.add_circle([3300.mm,104.mm,1746.mm], [0,0,1], 92.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(516.mm)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filter F1 cap
+  grp = ents.add_group
+  grp.name = "Filter F1 cap"
+  ge = grp.entities
+  circle = ge.add_circle([3300.mm,104.mm,2262.mm], [0,0,1], 95.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(78.mm)
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filter F1 in port
+  grp = ents.add_group
+  grp.name = "Filter F1 in port"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-36.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3214.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filter F1 out port
+  grp = ents.add_group
+  grp.name = "Filter F1 out port"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(36.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3386.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filter F1 PR button
+  grp = ents.add_group
+  grp.name = "Filter F1 PR button"
+  ge = grp.entities
+  circle = ge.add_circle([3300.mm,104.mm,2340.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(9.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filter F2 sump
+  grp = ents.add_group
+  grp.name = "Filter F2 sump"
+  ge = grp.entities
+  circle = ge.add_circle([3638.mm,104.mm,1746.mm], [0,0,1], 92.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(516.mm)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filter F2 cap
+  grp = ents.add_group
+  grp.name = "Filter F2 cap"
+  ge = grp.entities
+  circle = ge.add_circle([3638.mm,104.mm,2262.mm], [0,0,1], 95.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(78.mm)
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filter F2 in port
+  grp = ents.add_group
+  grp.name = "Filter F2 in port"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-36.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3552.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filter F2 out port
+  grp = ents.add_group
+  grp.name = "Filter F2 out port"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(36.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3724.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filter F2 PR button
+  grp = ents.add_group
+  grp.name = "Filter F2 PR button"
+  ge = grp.entities
+  circle = ge.add_circle([3638.mm,104.mm,2340.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(9.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filter F3 sump
+  grp = ents.add_group
+  grp.name = "Filter F3 sump"
+  ge = grp.entities
+  circle = ge.add_circle([3976.mm,104.mm,1746.mm], [0,0,1], 92.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(516.mm)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filter F3 cap
+  grp = ents.add_group
+  grp.name = "Filter F3 cap"
+  ge = grp.entities
+  circle = ge.add_circle([3976.mm,104.mm,2262.mm], [0,0,1], 95.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(78.mm)
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filter F3 in port
+  grp = ents.add_group
+  grp.name = "Filter F3 in port"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-36.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3890.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filter F3 out port
+  grp = ents.add_group
+  grp.name = "Filter F3 out port"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(36.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4062.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Master pump switch (Cct C, on EP)"] || model.materials.add("Master pump switch (Cct C, on EP)")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Filter F3 PR button
+  grp = ents.add_group
+  grp.name = "Filter F3 PR button"
+  ge = grp.entities
+  circle = ge.add_circle([3976.mm,104.mm,2340.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(9.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pump P-02 (Brown) body
+  grp = ents.add_group
+  grp.name = "Pump P-02 (Brown) body"
+  ge = grp.entities
+  circle = ge.add_circle([3058.mm,104.mm,2139.mm], [0,0,1], 50.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(180.mm)
+  mat = model.materials["Pump P-02 (Brown) body"] || model.materials.add("Pump P-02 (Brown) body")
+  mat.color = Sketchup::Color.new(69, 69, 82)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pump P-02 (Brown) head
+  grp = ents.add_group
+  grp.name = "Pump P-02 (Brown) head"
+  ge = grp.entities
+  circle = ge.add_circle([3058.mm,104.mm,2319.mm], [0,0,1], 53.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(30.mm)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pump P-02 (Brown) in port
+  grp = ents.add_group
+  grp.name = "Pump P-02 (Brown) in port"
+  ge = grp.entities
+  circle = ge.add_circle([2978.mm,104.mm,2301.mm], [1,0,0], 10.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(30.mm)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pump P-02 (Brown) out port
+  grp = ents.add_group
+  grp.name = "Pump P-02 (Brown) out port"
+  ge = grp.entities
+  circle = ge.add_circle([3108.mm,104.mm,2301.mm], [1,0,0], 10.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(30.mm)
+  mat = model.materials["IBC Brown (developer) pallet"] || model.materials.add("IBC Brown (developer) pallet")
+  mat.color = Sketchup::Color.new(51, 52, 58)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 sample valve
+  grp = ents.add_group
+  grp.name = "SV-01 sample valve"
+  face = grp.entities.add_face([4225.mm,85.mm,975.mm], [4275.mm,85.mm,975.mm], [4275.mm,135.mm,975.mm], [4225.mm,135.mm,975.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(70.mm)
+  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 sample valve spout
+  grp = ents.add_group
+  grp.name = "SV-01 sample valve spout"
+  ge = grp.entities
+  circle = ge.add_circle([4250.mm,110.mm,885.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(90.mm)
+  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 sample valve handwheel stem
+  grp = ents.add_group
+  grp.name = "SV-01 sample valve handwheel stem"
+  ge = grp.entities
+  circle = ge.add_circle([4250.mm,110.mm,1045.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(16.mm)
+  mat = model.materials["BV-01 (P-01 suction) handle stem"] || model.materials.add("BV-01 (P-01 suction) handle stem")
+  mat.color = Sketchup::Color.new(192, 32, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 sample valve handwheel
+  grp = ents.add_group
+  grp.name = "SV-01 sample valve handwheel"
+  ge = grp.entities
+  circle = ge.add_circle([4250.mm,110.mm,1061.mm], [0,0,1], 30.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(10.mm)
+  mat = model.materials["BV-01 (P-01 suction) handle stem"] || model.materials.add("BV-01 (P-01 suction) handle stem")
+  mat.color = Sketchup::Color.new(192, 32, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 3W-DV-01 body
+  grp = ents.add_group
+  grp.name = "3W-DV-01 body"
+  face = grp.entities.add_face([4777.mm,1218.mm,212.mm], [4823.mm,1218.mm,212.mm], [4823.mm,1264.mm,212.mm], [4777.mm,1264.mm,212.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(46.mm)
+  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 3W-DV-01 run +
+  grp = ents.add_group
+  grp.name = "3W-DV-01 run +"
+  ge = grp.entities
+  circle = ge.add_circle([4823.mm,1241.mm,235.mm], [1,0,0], 13.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(10.mm)
+  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 3W-DV-01 run -
+  grp = ents.add_group
+  grp.name = "3W-DV-01 run -"
+  ge = grp.entities
+  circle = ge.add_circle([4767.mm,1241.mm,235.mm], [1,0,0], 13.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(10.mm)
+  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 3W-DV-01 branch
+  grp = ents.add_group
+  grp.name = "3W-DV-01 branch"
+  ge = grp.entities
+  circle = ge.add_circle([4800.mm,1208.mm,235.mm], [0,1,0], 13.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(10.mm)
+  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 3W-DV-01 handle stem
+  grp = ents.add_group
+  grp.name = "3W-DV-01 handle stem"
+  ge = grp.entities
+  circle = ge.add_circle([4800.mm,1241.mm,258.mm], [0,0,1], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(42.mm)
+  mat = model.materials["BV-01 (P-01 suction) handle stem"] || model.materials.add("BV-01 (P-01 suction) handle stem")
+  mat.color = Sketchup::Color.new(192, 32, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 3W-DV-01 handle lever
+  grp = ents.add_group
+  grp.name = "3W-DV-01 handle lever"
+  face = grp.entities.add_face([4768.mm,1233.mm,299.mm], [4832.mm,1233.mm,299.mm], [4832.mm,1249.mm,299.mm], [4768.mm,1249.mm,299.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["BV-01 (P-01 suction) handle stem"] || model.materials.add("BV-01 (P-01 suction) handle stem")
+  mat.color = Sketchup::Color.new(192, 32, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-109.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4850.mm,1101.mm,308.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet elbow
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4741.mm,1101.mm,287.mm], [0.000000,0.000000,1.000000], [-0.000000,-1.000000,-0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4741.mm,1101.mm,308.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -217.59.mm)
+  circle = ge.add_circle([4720.mm,1101.mm,287.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet elbow
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4720.mm,1105.41.mm,69.41.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 4.410000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4720.mm,1101.mm,69.41.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 2.3408999999999196.mm, 0.mm)
+  circle = ge.add_circle([4720.mm,1105.41.mm,65.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet elbow
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4717.7509.mm,1107.7509.mm,65.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 2.2490999999999604.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4720.mm,1107.7509.mm,65.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-57.39590000000044.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4717.7509.mm,1110.mm,65.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet elbow
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4660.355.mm,1110.mm,84.355.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 19.355000000000004.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4660.355.mm,1110.mm,65.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 10.27395.mm)
+  circle = ge.add_circle([4641.mm,1110.mm,84.355.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet elbow
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4631.12895.mm,1110.mm,94.62895.mm], [1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 9.87105.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4641.mm,1110.mm,94.62895.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-54.12895000000026.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4631.12895.mm,1110.mm,104.5.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet elbow
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4577.mm,1110.mm,125.5.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4577.mm,1110.mm,104.5.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 13.514999999999986.mm)
+  circle = ge.add_circle([4556.mm,1110.mm,125.5.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet elbow
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4556.mm,1097.015.mm,139.015.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4556.mm,1110.mm,139.015.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -76.0150000000001.mm, 0.mm)
+  circle = ge.add_circle([4556.mm,1097.015.mm,152.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet elbow
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4556.mm,1021.mm,131.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4556.mm,1021.mm,152.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -13.515.mm)
+  circle = ge.add_circle([4556.mm,1000.mm,131.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet elbow
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4556.mm,987.015.mm,117.485.mm], [0.000000,1.000000,0.000000], [-1.000000,-0.000000,-0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4556.mm,1000.mm,117.485.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -911.015.mm, 0.mm)
+  circle = ge.add_circle([4556.mm,987.015.mm,104.5.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet elbow
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4556.mm,76.mm,83.5.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4556.mm,76.mm,104.5.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -37.5.mm)
+  circle = ge.add_circle([4556.mm,55.mm,83.5.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet elbow
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4535.mm,55.mm,46.mm], [1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4556.mm,55.mm,46.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1554.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4535.mm,55.mm,25.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet elbow
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2981.mm,55.mm,46.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2981.mm,55.mm,25.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 2234.mm)
+  circle = ge.add_circle([2960.mm,55.mm,46.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet elbow
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2960.mm,76.mm,2280.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2960.mm,55.mm,2280.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 19.180000000000007.mm, 0.mm)
+  circle = ge.add_circle([2960.mm,76.mm,2301.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet elbow
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2968.82.mm,95.18.mm,2301.mm], [-1.000000,0.000000,0.000000], [0.000000,0.000000,-1.000000], 8.820000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2960.mm,95.18.mm,2301.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-3 (Brown) tap -> P-02 inlet
+  grp = ents.add_group
+  grp.name = "IBC-3 (Brown) tap -> P-02 inlet"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(9.179999999999836.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2968.82.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # BV-03 (P-02 suction)
+  grp = ents.add_group
+  grp.name = "BV-03 (P-02 suction)"
+  ge = grp.entities
+  circle = ge.add_circle([2960.mm,43.mm,978.mm], [0,0,1], 18.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["BV-01 (P-01 suction)"] || model.materials.add("BV-01 (P-01 suction)")
+  mat.color = Sketchup::Color.new(128, 128, 138)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # BV-03 (P-02 suction) handle stem
+  grp = ents.add_group
+  grp.name = "BV-03 (P-02 suction) handle stem"
+  ge = grp.entities
+  circle = ge.add_circle([2960.mm,61.5.mm,1000.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["BV-01 (P-01 suction) handle stem"] || model.materials.add("BV-01 (P-01 suction) handle stem")
+  mat.color = Sketchup::Color.new(192, 32, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # BV-03 (P-02 suction) handle
+  grp = ents.add_group
+  grp.name = "BV-03 (P-02 suction) handle"
+  face = grp.entities.add_face([2953.mm,89.5.mm,976.mm], [2967.mm,89.5.mm,976.mm], [2967.mm,98.5.mm,976.mm], [2953.mm,98.5.mm,976.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(48.mm)
+  mat = model.materials["BV-01 (P-01 suction) handle stem"] || model.materials.add("BV-01 (P-01 suction) handle stem")
+  mat.color = Sketchup::Color.new(192, 32, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 -> F1
+  grp = ents.add_group
+  grp.name = "P-02 -> F1"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(40.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3138.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # F1 out -> F2 in
+  grp = ents.add_group
+  grp.name = "F1 out -> F2 in"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(94.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3422.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # F2 out -> F3 in
+  grp = ents.add_group
+  grp.name = "F2 out -> F3 in"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(94.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3760.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # F3 -> SV-01 (wall-mounted drop)
+  grp = ents.add_group
+  grp.name = "F3 -> SV-01 (wall-mounted drop)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -48.mm, 0.mm)
+  circle = ge.add_circle([4098.mm,104.mm,2301.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # F3 -> SV-01 (wall-mounted drop) elbow
+  grp = ents.add_group
+  grp.name = "F3 -> SV-01 (wall-mounted drop) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4119.mm,56.mm,2301.mm], [-1.000000,0.000000,0.000000], [-0.000000,0.000000,1.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4098.mm,56.mm,2301.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # F3 -> SV-01 (wall-mounted drop)
+  grp = ents.add_group
+  grp.name = "F3 -> SV-01 (wall-mounted drop)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(110.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4119.mm,35.mm,2301.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # F3 -> SV-01 (wall-mounted drop) elbow
+  grp = ents.add_group
+  grp.name = "F3 -> SV-01 (wall-mounted drop) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4229.mm,35.mm,2280.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4229.mm,35.mm,2301.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # F3 -> SV-01 (wall-mounted drop)
+  grp = ents.add_group
+  grp.name = "F3 -> SV-01 (wall-mounted drop)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1259.mm)
+  circle = ge.add_circle([4250.mm,35.mm,2280.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # F3 -> SV-01 (wall-mounted drop) elbow
+  grp = ents.add_group
+  grp.name = "F3 -> SV-01 (wall-mounted drop) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4250.mm,56.mm,1021.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4250.mm,35.mm,1021.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # F3 -> SV-01 (wall-mounted drop)
+  grp = ents.add_group
+  grp.name = "F3 -> SV-01 (wall-mounted drop)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 54.mm, 0.mm)
+  circle = ge.add_circle([4250.mm,56.mm,1000.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line)
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -54.mm, 0.mm)
+  circle = ge.add_circle([4250.mm,110.mm,1000.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line) elbow
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4250.mm,56.mm,979.mm], [0.000000,0.000000,1.000000], [1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4250.mm,56.mm,1000.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line)
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -916.75.mm)
+  circle = ge.add_circle([4250.mm,35.mm,979.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line) elbow
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4250.mm,47.25.mm,62.25.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 12.250000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4250.mm,35.mm,62.25.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line)
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 6.502499999999998.mm, 0.mm)
+  circle = ge.add_circle([4250.mm,47.25.mm,50.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line) elbow
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4256.2475.mm,53.7525.mm,50.mm], [-1.000000,0.000000,0.000000], [0.000000,0.000000,-1.000000], 6.2475000000000005.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4250.mm,53.7525.mm,50.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line)
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(200.7524999999996.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4256.2475.mm,60.mm,50.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line) elbow
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4457.mm,60.mm,71.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4457.mm,60.mm,50.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line)
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 17.085000000000008.mm)
+  circle = ge.add_circle([4478.mm,60.mm,71.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line) elbow
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4478.mm,76.415.mm,88.08500000000001.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 16.415000000000003.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4478.mm,60.mm,88.08500000000001.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line)
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 902.585.mm, 0.mm)
+  circle = ge.add_circle([4478.mm,76.41499999999999.mm,104.5.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line) elbow
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4478.mm,979.mm,125.5.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4478.mm,979.mm,104.5.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line)
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 13.514999999999986.mm)
+  circle = ge.add_circle([4478.mm,1000.mm,125.5.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line) elbow
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4478.mm,1012.985.mm,139.015.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4478.mm,1000.mm,139.015.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line)
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 76.01499999999999.mm, 0.mm)
+  circle = ge.add_circle([4478.mm,1012.985.mm,152.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line) elbow
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4478.mm,1089.mm,131.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4478.mm,1089.mm,152.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line)
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -13.515.mm)
+  circle = ge.add_circle([4478.mm,1110.mm,131.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line) elbow
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4478.mm,1122.985.mm,117.485.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4478.mm,1110.mm,117.485.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line)
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 97.0150000000001.mm, 0.mm)
+  circle = ge.add_circle([4478.mm,1122.985.mm,104.5.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line) elbow
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4499.mm,1220.mm,104.5.mm], [-1.000000,0.000000,0.000000], [0.000000,0.000000,-1.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4478.mm,1220.mm,104.5.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line)
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(122.64500000000044.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4499.mm,1241.mm,104.5.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line) elbow
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4621.645.mm,1241.mm,85.145.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 19.355000000000004.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4621.645.mm,1241.mm,104.5.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line)
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -10.27395.mm)
+  circle = ge.add_circle([4641.mm,1241.mm,85.145.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line) elbow
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4650.87105.mm,1241.mm,74.87105.mm], [-1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 9.87105.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4641.mm,1241.mm,74.87105.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line)
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(28.12895000000026.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4650.87105.mm,1241.mm,65.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line) elbow
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4679.mm,1241.mm,86.mm], [0.000000,0.000000,-1.000000], [0.000000,-1.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4679.mm,1241.mm,65.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line)
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 128.mm)
+  circle = ge.add_circle([4700.mm,1241.mm,86.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line) elbow
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4721.mm,1241.mm,214.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4700.mm,1241.mm,214.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # SV-01 -> DV-01 (single filtered line)
+  grp = ents.add_group
+  grp.name = "SV-01 -> DV-01 (single filtered line)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(46.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4721.mm,1241.mm,235.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Filter F1 sump"] || model.materials.add("Filter F1 sump")
+  mat.color = Sketchup::Color.new(58, 110, 165)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 blue recycle -> X1 cross
+  grp = ents.add_group
+  grp.name = "DV-01 blue recycle -> X1 cross"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(385.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4833.mm,1241.mm,235.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 blue recycle -> X1 cross elbow
+  grp = ents.add_group
+  grp.name = "DV-01 blue recycle -> X1 cross elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5218.mm,1220.mm,235.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,-1.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5218.mm,1241.mm,235.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 blue recycle -> X1 cross
+  grp = ents.add_group
+  grp.name = "DV-01 blue recycle -> X1 cross"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -12.49499999999989.mm, 0.mm)
+  circle = ge.add_circle([5239.mm,1220.mm,235.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 blue recycle -> X1 cross elbow
+  grp = ents.add_group
+  grp.name = "DV-01 blue recycle -> X1 cross elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5239.mm,1207.505.mm,247.005.mm], [0.000000,0.000000,-1.000000], [-1.000000,0.000000,0.000000], 12.005.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5239.mm,1207.505.mm,235.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 blue recycle -> X1 cross
+  grp = ents.add_group
+  grp.name = "DV-01 blue recycle -> X1 cross"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1981.995.mm)
+  circle = ge.add_circle([5239.mm,1195.5.mm,247.005.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 blue recycle -> X1 cross elbow
+  grp = ents.add_group
+  grp.name = "DV-01 blue recycle -> X1 cross elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5260.mm,1195.5.mm,2229.mm], [-1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5239.mm,1195.5.mm,2229.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 blue recycle -> X1 cross
+  grp = ents.add_group
+  grp.name = "DV-01 blue recycle -> X1 cross"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(240.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([5260.mm,1195.5.mm,2250.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 -> IBC-4 merge
+  grp = ents.add_group
+  grp.name = "DV-01 -> IBC-4 merge"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -22.mm, 0.mm)
+  circle = ge.add_circle([4800.mm,1208.mm,235.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 -> IBC-4 merge elbow
+  grp = ents.add_group
+  grp.name = "DV-01 -> IBC-4 merge elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4821.mm,1186.mm,235.mm], [-1.000000,0.000000,0.000000], [-0.000000,0.000000,1.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4800.mm,1186.mm,235.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 -> IBC-4 merge
+  grp = ents.add_group
+  grp.name = "DV-01 -> IBC-4 merge"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(568.3000000000002.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([4821.mm,1165.mm,235.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 -> IBC-4 merge elbow
+  grp = ents.add_group
+  grp.name = "DV-01 -> IBC-4 merge elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5389.3.mm,1179.7.mm,235.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 14.700000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5389.3.mm,1165.mm,235.mm], [1.000000,0.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 -> IBC-4 merge
+  grp = ents.add_group
+  grp.name = "DV-01 -> IBC-4 merge"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.802999999999884.mm, 0.mm)
+  circle = ge.add_circle([5404.mm,1179.7.mm,235.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 -> IBC-4 merge elbow
+  grp = ents.add_group
+  grp.name = "DV-01 -> IBC-4 merge elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5404.mm,1187.503.mm,242.49699999999999.mm], [0.000000,0.000000,-1.000000], [1.000000,0.000000,0.000000], 7.496999999999979.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5404.mm,1187.503.mm,235.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-01 -> IBC-4 merge
+  grp = ents.add_group
+  grp.name = "DV-01 -> IBC-4 merge"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 987.503.mm)
+  circle = ge.add_circle([5404.mm,1195.mm,242.49699999999999.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+ci = p3_defn.entities.add_instance(child, Geom::Transformation.new)
+ci.name = "Step 3.5 — Pinhole filter skid (F-1..F-3 + pumps + ACC)"
+ci.layer = model.layers["P3 Filter Skid"]
+ci.set_attribute("dynamic_attributes", "_name", "P3Step3_5")
+ci.set_attribute("dynamic_attributes", "hidden", 1.0)
+ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase3Build!step<5")
+child = model.definitions.add("P3Step3_6")
+ents = child.entities
+  # FP Rail BR
+  grp = ents.add_group
+  grp.name = "FP Rail BR"
+  face = grp.entities.add_face([4609.mm,0.mm,160.mm], [4649.mm,0.mm,160.mm], [4649.mm,2362.mm,160.mm], [4609.mm,2362.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Rail TR
+  grp = ents.add_group
+  grp.name = "FP Rail TR"
+  face = grp.entities.add_face([4609.mm,0.mm,2204.mm], [4649.mm,0.mm,2204.mm], [4649.mm,2362.mm,2204.mm], [4609.mm,2362.mm,2204.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Rail BL
+  grp = ents.add_group
+  grp.name = "FP Rail BL"
+  face = grp.entities.add_face([150.mm,0.mm,160.mm], [190.mm,0.mm,160.mm], [190.mm,2362.mm,160.mm], [150.mm,2362.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # FP Rail TL
+  grp = ents.add_group
+  grp.name = "FP Rail TL"
+  face = grp.entities.add_face([150.mm,0.mm,2204.mm], [190.mm,0.mm,2204.mm], [190.mm,2362.mm,2204.mm], [150.mm,2362.mm,2204.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle back-plate TL near
+  grp = ents.add_group
+  grp.name = "Saddle back-plate TL near"
+  face = grp.entities.add_face([75.mm,0.mm,2129.mm], [225.mm,0.mm,2129.mm], [225.mm,8.mm,2129.mm], [75.mm,8.mm,2129.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle OUTSIDE plate TL near
+  grp = ents.add_group
+  grp.name = "Saddle OUTSIDE plate TL near"
+  face = grp.entities.add_face([75.mm,-48.mm,2129.mm], [225.mm,-48.mm,2129.mm], [225.mm,-40.mm,2129.mm], [75.mm,-40.mm,2129.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle seat TL near
+  grp = ents.add_group
+  grp.name = "Saddle seat TL near"
+  face = grp.entities.add_face([126.mm,0.mm,2194.mm], [174.mm,0.mm,2194.mm], [174.mm,110.mm,2194.mm], [126.mm,110.mm,2194.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle gusset TL near
+  grp = ents.add_group
+  grp.name = "Saddle gusset TL near"
+  ge = grp.entities
+  f = ge.add_face([150.mm,110.mm,2194.mm], [150.mm,0.mm,2194.mm], [150.mm,0.mm,2074.mm])
+  f.pushpull(8.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TL near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TL near"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TL near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TL near"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TL near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TL near"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TL near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TL near"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Thumb screw TL near
+  grp = ents.add_group
+  grp.name = "Thumb screw TL near"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,25.mm,2204.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Thumb screw TL near
+  grp = ents.add_group
+  grp.name = "Thumb screw TL near"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,85.mm,2204.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle back-plate TL far
+  grp = ents.add_group
+  grp.name = "Saddle back-plate TL far"
+  face = grp.entities.add_face([75.mm,2354.mm,2129.mm], [225.mm,2354.mm,2129.mm], [225.mm,2362.mm,2129.mm], [75.mm,2362.mm,2129.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle OUTSIDE plate TL far
+  grp = ents.add_group
+  grp.name = "Saddle OUTSIDE plate TL far"
+  face = grp.entities.add_face([75.mm,2402.mm,2129.mm], [225.mm,2402.mm,2129.mm], [225.mm,2410.mm,2129.mm], [75.mm,2410.mm,2129.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle seat TL far
+  grp = ents.add_group
+  grp.name = "Saddle seat TL far"
+  face = grp.entities.add_face([126.mm,2252.mm,2194.mm], [174.mm,2252.mm,2194.mm], [174.mm,2362.mm,2194.mm], [126.mm,2362.mm,2194.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle gusset TL far
+  grp = ents.add_group
+  grp.name = "Saddle gusset TL far"
+  ge = grp.entities
+  f = ge.add_face([150.mm,2252.mm,2194.mm], [150.mm,2362.mm,2194.mm], [150.mm,2362.mm,2074.mm])
+  f.pushpull(8.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TL far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TL far"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TL far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TL far"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TL far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TL far"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TL far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TL far"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Thumb screw TL far
+  grp = ents.add_group
+  grp.name = "Thumb screw TL far"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,2277.mm,2204.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Thumb screw TL far
+  grp = ents.add_group
+  grp.name = "Thumb screw TL far"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,2337.mm,2204.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle back-plate TR near
+  grp = ents.add_group
+  grp.name = "Saddle back-plate TR near"
+  face = grp.entities.add_face([4534.mm,0.mm,2129.mm], [4684.mm,0.mm,2129.mm], [4684.mm,8.mm,2129.mm], [4534.mm,8.mm,2129.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle OUTSIDE plate TR near
+  grp = ents.add_group
+  grp.name = "Saddle OUTSIDE plate TR near"
+  face = grp.entities.add_face([4534.mm,-48.mm,2129.mm], [4684.mm,-48.mm,2129.mm], [4684.mm,-40.mm,2129.mm], [4534.mm,-40.mm,2129.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle seat TR near
+  grp = ents.add_group
+  grp.name = "Saddle seat TR near"
+  face = grp.entities.add_face([4585.mm,0.mm,2194.mm], [4633.mm,0.mm,2194.mm], [4633.mm,110.mm,2194.mm], [4585.mm,110.mm,2194.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle gusset TR near
+  grp = ents.add_group
+  grp.name = "Saddle gusset TR near"
+  ge = grp.entities
+  f = ge.add_face([4609.mm,110.mm,2194.mm], [4609.mm,0.mm,2194.mm], [4609.mm,0.mm,2074.mm])
+  f.pushpull(8.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4559.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4559.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4659.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4659.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail fixing bolt TR near
+  grp = ents.add_group
+  grp.name = "Rail fixing bolt TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4609.mm,25.mm,2204.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail fixing bolt TR near
+  grp = ents.add_group
+  grp.name = "Rail fixing bolt TR near"
+  ge = grp.entities
+  circle = ge.add_circle([4609.mm,85.mm,2204.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle back-plate TR far
+  grp = ents.add_group
+  grp.name = "Saddle back-plate TR far"
+  face = grp.entities.add_face([4534.mm,2354.mm,2129.mm], [4684.mm,2354.mm,2129.mm], [4684.mm,2362.mm,2129.mm], [4534.mm,2362.mm,2129.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle OUTSIDE plate TR far
+  grp = ents.add_group
+  grp.name = "Saddle OUTSIDE plate TR far"
+  face = grp.entities.add_face([4534.mm,2402.mm,2129.mm], [4684.mm,2402.mm,2129.mm], [4684.mm,2410.mm,2129.mm], [4534.mm,2410.mm,2129.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle seat TR far
+  grp = ents.add_group
+  grp.name = "Saddle seat TR far"
+  face = grp.entities.add_face([4585.mm,2252.mm,2194.mm], [4633.mm,2252.mm,2194.mm], [4633.mm,2362.mm,2194.mm], [4585.mm,2362.mm,2194.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle gusset TR far
+  grp = ents.add_group
+  grp.name = "Saddle gusset TR far"
+  ge = grp.entities
+  f = ge.add_face([4609.mm,2252.mm,2194.mm], [4609.mm,2362.mm,2194.mm], [4609.mm,2362.mm,2074.mm])
+  f.pushpull(8.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4559.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4559.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4659.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 TR far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4659.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail fixing bolt TR far
+  grp = ents.add_group
+  grp.name = "Rail fixing bolt TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4609.mm,2277.mm,2204.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail fixing bolt TR far
+  grp = ents.add_group
+  grp.name = "Rail fixing bolt TR far"
+  ge = grp.entities
+  circle = ge.add_circle([4609.mm,2337.mm,2204.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle back-plate BL near
+  grp = ents.add_group
+  grp.name = "Saddle back-plate BL near"
+  face = grp.entities.add_face([75.mm,0.mm,85.mm], [225.mm,0.mm,85.mm], [225.mm,8.mm,85.mm], [75.mm,8.mm,85.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle OUTSIDE plate BL near
+  grp = ents.add_group
+  grp.name = "Saddle OUTSIDE plate BL near"
+  face = grp.entities.add_face([75.mm,-48.mm,85.mm], [225.mm,-48.mm,85.mm], [225.mm,-40.mm,85.mm], [75.mm,-40.mm,85.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle seat BL near
+  grp = ents.add_group
+  grp.name = "Saddle seat BL near"
+  face = grp.entities.add_face([126.mm,0.mm,150.mm], [174.mm,0.mm,150.mm], [174.mm,110.mm,150.mm], [126.mm,110.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle gusset BL near
+  grp = ents.add_group
+  grp.name = "Saddle gusset BL near"
+  ge = grp.entities
+  f = ge.add_face([150.mm,110.mm,150.mm], [150.mm,0.mm,150.mm], [150.mm,0.mm,30.mm])
+  f.pushpull(8.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BL near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BL near"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,-48.mm,110.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BL near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BL near"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,-48.mm,210.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BL near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BL near"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,-48.mm,110.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BL near
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BL near"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,-48.mm,210.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Thumb screw BL near
+  grp = ents.add_group
+  grp.name = "Thumb screw BL near"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,25.mm,160.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Thumb screw BL near
+  grp = ents.add_group
+  grp.name = "Thumb screw BL near"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,85.mm,160.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle back-plate BL far
+  grp = ents.add_group
+  grp.name = "Saddle back-plate BL far"
+  face = grp.entities.add_face([75.mm,2354.mm,85.mm], [225.mm,2354.mm,85.mm], [225.mm,2362.mm,85.mm], [75.mm,2362.mm,85.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle OUTSIDE plate BL far
+  grp = ents.add_group
+  grp.name = "Saddle OUTSIDE plate BL far"
+  face = grp.entities.add_face([75.mm,2402.mm,85.mm], [225.mm,2402.mm,85.mm], [225.mm,2410.mm,85.mm], [75.mm,2410.mm,85.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle seat BL far
+  grp = ents.add_group
+  grp.name = "Saddle seat BL far"
+  face = grp.entities.add_face([126.mm,2252.mm,150.mm], [174.mm,2252.mm,150.mm], [174.mm,2362.mm,150.mm], [126.mm,2362.mm,150.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(10.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle gusset BL far
+  grp = ents.add_group
+  grp.name = "Saddle gusset BL far"
+  ge = grp.entities
+  f = ge.add_face([150.mm,2252.mm,150.mm], [150.mm,2362.mm,150.mm], [150.mm,2362.mm,30.mm])
+  f.pushpull(8.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BL far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BL far"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,2354.mm,110.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BL far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BL far"
+  ge = grp.entities
+  circle = ge.add_circle([100.mm,2354.mm,210.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BL far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BL far"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,2354.mm,110.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Saddle wall bolt M12 BL far
+  grp = ents.add_group
+  grp.name = "Saddle wall bolt M12 BL far"
+  ge = grp.entities
+  circle = ge.add_circle([200.mm,2354.mm,210.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(56.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Thumb screw BL far
+  grp = ents.add_group
+  grp.name = "Thumb screw BL far"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,2277.mm,160.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Thumb screw BL far
+  grp = ents.add_group
+  grp.name = "Thumb screw BL far"
+  ge = grp.entities
+  circle = ge.add_circle([150.mm,2337.mm,160.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(36.mm)
+  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
+  mat.color = Sketchup::Color.new(184, 184, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+ci = p3_defn.entities.add_instance(child, Geom::Transformation.new)
+ci.name = "Step 3.6 — Film-plane beams (corner rails + wall-seat saddles)"
+ci.layer = model.layers["P3 Film-Plane Beams"]
+ci.set_attribute("dynamic_attributes", "_name", "P3Step3_6")
+ci.set_attribute("dynamic_attributes", "hidden", 1.0)
+ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase3Build!step<6")
 child = model.definitions.add("P3Step3_7")
 ents = child.entities
   # Left cantilever 1 foot plate
@@ -28520,7 +28346,7 @@ ci.name = "Step 3.7 — Left-walkway floor-leg cantilevers"
 ci.layer = model.layers["P3 Left Cantilevers"]
 ci.set_attribute("dynamic_attributes", "_name", "P3Step3_7")
 ci.set_attribute("dynamic_attributes", "hidden", 1.0)
-ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase3Build!step<5")
+ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase3Build!step<7")
 child = model.definitions.add("P3Step3_8")
 ents = child.entities
   # Walkway Near (fixed, bump integral)
@@ -28567,1401 +28393,19 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Walkway Near bracket 1 plate
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 1 plate"
-  face = grp.entities.add_face([638.mm,0.mm,0.mm], [758.mm,0.mm,0.mm], [758.mm,8.mm,0.mm], [638.mm,8.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 1 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 1 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([698.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 1 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 1 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([663.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 1 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 1 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([733.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 1 arm
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 1 arm"
-  face = grp.entities.add_face([694.mm,8.mm,105.mm], [702.mm,8.mm,105.mm], [702.mm,300.mm,105.mm], [694.mm,300.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 1 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 1 gusset"
-  ge = grp.entities
-  f = ge.add_face([694.mm,8.mm,0.mm], [694.mm,8.mm,105.mm], [694.mm,70.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 2 (widened) plate
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 2 (widened) plate"
-  face = grp.entities.add_face([1095.mm,0.mm,0.mm], [1215.mm,0.mm,0.mm], [1215.mm,10.mm,0.mm], [1095.mm,10.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(200.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 2 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 2 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1120.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 2 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 2 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1190.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 2 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 2 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1120.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 2 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 2 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1190.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 2 (widened) arm
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 2 (widened) arm"
-  face = grp.entities.add_face([1150.mm,10.mm,103.mm], [1160.mm,10.mm,103.mm], [1160.mm,500.mm,103.mm], [1150.mm,500.mm,103.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 2 (widened) gusset
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 2 (widened) gusset"
-  ge = grp.entities
-  f = ge.add_face([1150.mm,10.mm,0.mm], [1150.mm,10.mm,103.mm], [1150.mm,70.mm,103.mm])
-  f.pushpull(-10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 3 (widened) plate
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 3 (widened) plate"
-  face = grp.entities.add_face([1552.mm,0.mm,0.mm], [1672.mm,0.mm,0.mm], [1672.mm,10.mm,0.mm], [1552.mm,10.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(200.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 3 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 3 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1577.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 3 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 3 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1647.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 3 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 3 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1577.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 3 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 3 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1647.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 3 (widened) arm
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 3 (widened) arm"
-  face = grp.entities.add_face([1607.mm,10.mm,103.mm], [1617.mm,10.mm,103.mm], [1617.mm,500.mm,103.mm], [1607.mm,500.mm,103.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 3 (widened) gusset
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 3 (widened) gusset"
-  ge = grp.entities
-  f = ge.add_face([1607.mm,10.mm,0.mm], [1607.mm,10.mm,103.mm], [1607.mm,70.mm,103.mm])
-  f.pushpull(-10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 4 (widened) plate
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 4 (widened) plate"
-  face = grp.entities.add_face([2009.mm,0.mm,0.mm], [2129.mm,0.mm,0.mm], [2129.mm,10.mm,0.mm], [2009.mm,10.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(200.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 4 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 4 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2034.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 4 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 4 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2104.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 4 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 4 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2034.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 4 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 4 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2104.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 4 (widened) arm
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 4 (widened) arm"
-  face = grp.entities.add_face([2064.mm,10.mm,103.mm], [2074.mm,10.mm,103.mm], [2074.mm,500.mm,103.mm], [2064.mm,500.mm,103.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 4 (widened) gusset
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 4 (widened) gusset"
-  ge = grp.entities
-  f = ge.add_face([2064.mm,10.mm,0.mm], [2064.mm,10.mm,103.mm], [2064.mm,70.mm,103.mm])
-  f.pushpull(-10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 5 (widened) plate
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 5 (widened) plate"
-  face = grp.entities.add_face([2466.mm,0.mm,0.mm], [2586.mm,0.mm,0.mm], [2586.mm,10.mm,0.mm], [2466.mm,10.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(200.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 5 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 5 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2491.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 5 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 5 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2561.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 5 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 5 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2491.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 5 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 5 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2561.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 5 (widened) arm
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 5 (widened) arm"
-  face = grp.entities.add_face([2521.mm,10.mm,103.mm], [2531.mm,10.mm,103.mm], [2531.mm,500.mm,103.mm], [2521.mm,500.mm,103.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 5 (widened) gusset
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 5 (widened) gusset"
-  ge = grp.entities
-  f = ge.add_face([2521.mm,10.mm,0.mm], [2521.mm,10.mm,103.mm], [2521.mm,70.mm,103.mm])
-  f.pushpull(-10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 6 (widened) plate
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 6 (widened) plate"
-  face = grp.entities.add_face([2923.mm,0.mm,0.mm], [3043.mm,0.mm,0.mm], [3043.mm,10.mm,0.mm], [2923.mm,10.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(200.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 6 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 6 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2948.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 6 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 6 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3018.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 6 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 6 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2948.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 6 (widened) bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 6 (widened) bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3018.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 6 (widened) arm
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 6 (widened) arm"
-  face = grp.entities.add_face([2978.mm,10.mm,103.mm], [2988.mm,10.mm,103.mm], [2988.mm,500.mm,103.mm], [2978.mm,500.mm,103.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 6 (widened) gusset
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 6 (widened) gusset"
-  ge = grp.entities
-  f = ge.add_face([2978.mm,10.mm,0.mm], [2978.mm,10.mm,103.mm], [2978.mm,70.mm,103.mm])
-  f.pushpull(-10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 7 plate
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 7 plate"
-  face = grp.entities.add_face([3380.mm,0.mm,0.mm], [3500.mm,0.mm,0.mm], [3500.mm,8.mm,0.mm], [3380.mm,8.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 7 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 7 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3440.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 7 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 7 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3405.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 7 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 7 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3475.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 7 arm
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 7 arm"
-  face = grp.entities.add_face([3436.mm,8.mm,105.mm], [3444.mm,8.mm,105.mm], [3444.mm,300.mm,105.mm], [3436.mm,300.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 7 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 7 gusset"
-  ge = grp.entities
-  f = ge.add_face([3436.mm,8.mm,0.mm], [3436.mm,8.mm,105.mm], [3436.mm,70.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 8 plate
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 8 plate"
-  face = grp.entities.add_face([3837.mm,0.mm,0.mm], [3957.mm,0.mm,0.mm], [3957.mm,8.mm,0.mm], [3837.mm,8.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 8 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 8 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3897.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 8 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 8 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3862.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 8 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 8 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3932.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 8 arm
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 8 arm"
-  face = grp.entities.add_face([3893.mm,8.mm,105.mm], [3901.mm,8.mm,105.mm], [3901.mm,300.mm,105.mm], [3893.mm,300.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Near bracket 8 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Near bracket 8 gusset"
-  ge = grp.entities
-  f = ge.add_face([3893.mm,8.mm,0.mm], [3893.mm,8.mm,105.mm], [3893.mm,70.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 1 plate
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 1 plate"
-  face = grp.entities.add_face([638.mm,2354.mm,0.mm], [758.mm,2354.mm,0.mm], [758.mm,2362.mm,0.mm], [638.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 1 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 1 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([698.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 1 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 1 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([663.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 1 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 1 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([733.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 1 arm
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 1 arm"
-  face = grp.entities.add_face([694.mm,2062.mm,105.mm], [702.mm,2062.mm,105.mm], [702.mm,2354.mm,105.mm], [694.mm,2354.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 1 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 1 gusset"
-  ge = grp.entities
-  f = ge.add_face([694.mm,2354.mm,0.mm], [694.mm,2354.mm,105.mm], [694.mm,2292.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 2 plate
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 2 plate"
-  face = grp.entities.add_face([1095.mm,2354.mm,0.mm], [1215.mm,2354.mm,0.mm], [1215.mm,2362.mm,0.mm], [1095.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 2 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 2 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1155.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 2 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 2 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1120.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 2 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 2 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1190.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 2 arm
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 2 arm"
-  face = grp.entities.add_face([1151.mm,2062.mm,105.mm], [1159.mm,2062.mm,105.mm], [1159.mm,2354.mm,105.mm], [1151.mm,2354.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 2 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 2 gusset"
-  ge = grp.entities
-  f = ge.add_face([1151.mm,2354.mm,0.mm], [1151.mm,2354.mm,105.mm], [1151.mm,2292.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 3 plate
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 3 plate"
-  face = grp.entities.add_face([1552.mm,2354.mm,0.mm], [1672.mm,2354.mm,0.mm], [1672.mm,2362.mm,0.mm], [1552.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 3 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 3 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1612.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 3 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 3 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1577.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 3 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 3 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([1647.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 3 arm
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 3 arm"
-  face = grp.entities.add_face([1608.mm,2062.mm,105.mm], [1616.mm,2062.mm,105.mm], [1616.mm,2354.mm,105.mm], [1608.mm,2354.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 3 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 3 gusset"
-  ge = grp.entities
-  f = ge.add_face([1608.mm,2354.mm,0.mm], [1608.mm,2354.mm,105.mm], [1608.mm,2292.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 4 plate
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 4 plate"
-  face = grp.entities.add_face([2009.mm,2354.mm,0.mm], [2129.mm,2354.mm,0.mm], [2129.mm,2362.mm,0.mm], [2009.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 4 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 4 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2069.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 4 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 4 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2034.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 4 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 4 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2104.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 4 arm
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 4 arm"
-  face = grp.entities.add_face([2065.mm,2062.mm,105.mm], [2073.mm,2062.mm,105.mm], [2073.mm,2354.mm,105.mm], [2065.mm,2354.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 4 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 4 gusset"
-  ge = grp.entities
-  f = ge.add_face([2065.mm,2354.mm,0.mm], [2065.mm,2354.mm,105.mm], [2065.mm,2292.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 5 plate
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 5 plate"
-  face = grp.entities.add_face([2466.mm,2354.mm,0.mm], [2586.mm,2354.mm,0.mm], [2586.mm,2362.mm,0.mm], [2466.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 5 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 5 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2526.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 5 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 5 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2491.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 5 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 5 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2561.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 5 arm
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 5 arm"
-  face = grp.entities.add_face([2522.mm,2062.mm,105.mm], [2530.mm,2062.mm,105.mm], [2530.mm,2354.mm,105.mm], [2522.mm,2354.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 5 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 5 gusset"
-  ge = grp.entities
-  f = ge.add_face([2522.mm,2354.mm,0.mm], [2522.mm,2354.mm,105.mm], [2522.mm,2292.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 6 plate
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 6 plate"
-  face = grp.entities.add_face([2923.mm,2354.mm,0.mm], [3043.mm,2354.mm,0.mm], [3043.mm,2362.mm,0.mm], [2923.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 6 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 6 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2983.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 6 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 6 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([2948.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 6 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 6 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3018.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 6 arm
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 6 arm"
-  face = grp.entities.add_face([2979.mm,2062.mm,105.mm], [2987.mm,2062.mm,105.mm], [2987.mm,2354.mm,105.mm], [2979.mm,2354.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 6 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 6 gusset"
-  ge = grp.entities
-  f = ge.add_face([2979.mm,2354.mm,0.mm], [2979.mm,2354.mm,105.mm], [2979.mm,2292.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 7 plate
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 7 plate"
-  face = grp.entities.add_face([3380.mm,2354.mm,0.mm], [3500.mm,2354.mm,0.mm], [3500.mm,2362.mm,0.mm], [3380.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 7 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 7 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3440.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 7 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 7 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3405.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 7 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 7 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3475.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 7 arm
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 7 arm"
-  face = grp.entities.add_face([3436.mm,2062.mm,105.mm], [3444.mm,2062.mm,105.mm], [3444.mm,2354.mm,105.mm], [3436.mm,2354.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 7 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 7 gusset"
-  ge = grp.entities
-  f = ge.add_face([3436.mm,2354.mm,0.mm], [3436.mm,2354.mm,105.mm], [3436.mm,2292.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 8 plate
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 8 plate"
-  face = grp.entities.add_face([3837.mm,2354.mm,0.mm], [3957.mm,2354.mm,0.mm], [3957.mm,2362.mm,0.mm], [3837.mm,2362.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 8 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 8 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3897.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 8 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 8 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3862.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 8 bolt M12
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 8 bolt M12"
-  ge = grp.entities
-  circle = ge.add_circle([3932.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(20.mm)
-  mat = model.materials["Walkway Near bracket 1 bolt M12"] || model.materials.add("Walkway Near bracket 1 bolt M12")
-  mat.color = Sketchup::Color.new(80, 80, 90)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 8 arm
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 8 arm"
-  face = grp.entities.add_face([3893.mm,2062.mm,105.mm], [3901.mm,2062.mm,105.mm], [3901.mm,2354.mm,105.mm], [3893.mm,2354.mm,105.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Walkway Far bracket 8 gusset
-  grp = ents.add_group
-  grp.name = "Walkway Far bracket 8 gusset"
-  ge = grp.entities
-  f = ge.add_face([3893.mm,2354.mm,0.mm], [3893.mm,2354.mm,105.mm], [3893.mm,2292.mm,105.mm])
-  f.pushpull(-8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left cantilever 1 foot plate
-  grp = ents.add_group
-  grp.name = "Left cantilever 1 foot plate"
-  face = grp.entities.add_face([38.mm,220.mm,0.mm], [166.mm,220.mm,0.mm], [166.mm,280.mm,0.mm], [38.mm,280.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left cantilever 1 post (50x50x3 SHS)
-  grp = ents.add_group
-  grp.name = "Left cantilever 1 post (50x50x3 SHS)"
-  face = grp.entities.add_face([115.mm,220.mm,0.mm], [165.mm,220.mm,0.mm], [165.mm,280.mm,0.mm], [115.mm,280.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(115.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left cantilever 1 arm (to X470)
-  grp = ents.add_group
-  grp.name = "Left cantilever 1 arm (to X470)"
-  face = grp.entities.add_face([165.mm,230.mm,75.mm], [470.mm,230.mm,75.mm], [470.mm,270.mm,75.mm], [165.mm,270.mm,75.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left cantilever 2 foot plate
-  grp = ents.add_group
-  grp.name = "Left cantilever 2 foot plate"
-  face = grp.entities.add_face([38.mm,770.mm,0.mm], [166.mm,770.mm,0.mm], [166.mm,830.mm,0.mm], [38.mm,830.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left cantilever 2 post (50x50x3 SHS)
-  grp = ents.add_group
-  grp.name = "Left cantilever 2 post (50x50x3 SHS)"
-  face = grp.entities.add_face([115.mm,770.mm,0.mm], [165.mm,770.mm,0.mm], [165.mm,830.mm,0.mm], [115.mm,830.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(115.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left cantilever 2 arm (to X770)
-  grp = ents.add_group
-  grp.name = "Left cantilever 2 arm (to X770)"
-  face = grp.entities.add_face([165.mm,770.mm,75.mm], [770.mm,770.mm,75.mm], [770.mm,830.mm,75.mm], [165.mm,830.mm,75.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left cantilever 3 foot plate
-  grp = ents.add_group
-  grp.name = "Left cantilever 3 foot plate"
-  face = grp.entities.add_face([38.mm,1150.mm,0.mm], [166.mm,1150.mm,0.mm], [166.mm,1210.mm,0.mm], [38.mm,1210.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left cantilever 3 post (50x50x3 SHS)
-  grp = ents.add_group
-  grp.name = "Left cantilever 3 post (50x50x3 SHS)"
-  face = grp.entities.add_face([115.mm,1150.mm,0.mm], [165.mm,1150.mm,0.mm], [165.mm,1210.mm,0.mm], [115.mm,1210.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(115.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left cantilever 3 arm (to X770)
-  grp = ents.add_group
-  grp.name = "Left cantilever 3 arm (to X770)"
-  face = grp.entities.add_face([165.mm,1150.mm,75.mm], [770.mm,1150.mm,75.mm], [770.mm,1210.mm,75.mm], [165.mm,1210.mm,75.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left cantilever 4 foot plate
-  grp = ents.add_group
-  grp.name = "Left cantilever 4 foot plate"
-  face = grp.entities.add_face([38.mm,1530.mm,0.mm], [166.mm,1530.mm,0.mm], [166.mm,1590.mm,0.mm], [38.mm,1590.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left cantilever 4 post (50x50x3 SHS)
-  grp = ents.add_group
-  grp.name = "Left cantilever 4 post (50x50x3 SHS)"
-  face = grp.entities.add_face([115.mm,1530.mm,0.mm], [165.mm,1530.mm,0.mm], [165.mm,1590.mm,0.mm], [115.mm,1590.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(115.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left cantilever 4 arm (to X770)
-  grp = ents.add_group
-  grp.name = "Left cantilever 4 arm (to X770)"
-  face = grp.entities.add_face([165.mm,1530.mm,75.mm], [770.mm,1530.mm,75.mm], [770.mm,1590.mm,75.mm], [165.mm,1590.mm,75.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left cantilever 5 foot plate
-  grp = ents.add_group
-  grp.name = "Left cantilever 5 foot plate"
-  face = grp.entities.add_face([38.mm,2080.mm,0.mm], [166.mm,2080.mm,0.mm], [166.mm,2140.mm,0.mm], [38.mm,2140.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left cantilever 5 post (50x50x3 SHS)
-  grp = ents.add_group
-  grp.name = "Left cantilever 5 post (50x50x3 SHS)"
-  face = grp.entities.add_face([115.mm,2080.mm,0.mm], [165.mm,2080.mm,0.mm], [165.mm,2140.mm,0.mm], [115.mm,2140.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(115.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Left cantilever 5 arm (to X470)
-  grp = ents.add_group
-  grp.name = "Left cantilever 5 arm (to X470)"
-  face = grp.entities.add_face([165.mm,2090.mm,75.mm], [470.mm,2090.mm,75.mm], [470.mm,2130.mm,75.mm], [165.mm,2130.mm,75.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
 ci = p3_defn.entities.add_instance(child, Geom::Transformation.new)
 ci.name = "Step 3.8 — Walkway grating (all sections)"
 ci.layer = model.layers["P3 Walkway"]
 ci.set_attribute("dynamic_attributes", "_name", "P3Step3_8")
 ci.set_attribute("dynamic_attributes", "hidden", 1.0)
-ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase3Build!step<6")
+ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase3Build!step<8")
 p3_inst = entities.add_instance(p3_defn, Geom::Transformation.new)
 p3_inst.name = "Phase 3 Build"
 p3_inst.set_attribute("dynamic_attributes", "_name", "Phase3Build")
-p3_inst.set_attribute("dynamic_attributes", "step", 1.0)
+p3_inst.set_attribute("dynamic_attributes", "step", 8.0)
 p3_inst.set_attribute("dynamic_attributes", "_step_access", "VIEW")
 p3_inst.set_attribute("dynamic_attributes", "_step_label", "Build step")
-p3_inst.set_attribute("dynamic_attributes", "onclick", 'ANIMATE("step",1,2,3,4,5,6)')
+p3_inst.set_attribute("dynamic_attributes", "onclick", 'ANIMATE("step",1,2,3,4,5,6,7,8)')
 p3_inst.set_attribute("dynamic_attributes", "_onclick_access", "NONE")
 
 # ── Drop the external evap cooler UNIT + its cord (ov.electrical() draws them) — not part of
@@ -29978,7 +28422,7 @@ model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier versions ──
-keep_tags = ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Fan A", "P1 Corridor Wiring", "P1 Far IBCs", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway", "P4 Electrical Panel", "P4 External Panel", "P4 Lights", "P4 Wiring + Fit-out", "P5 Film Plane", "P5 Pinhole", "P5 Light Trap"]
+keep_tags = ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Fan A", "P1 Corridor Wiring", "P1 Far IBCs", "P1 Hinge Panel", "P3 Far+Right Cantilevers", "P3 Processing Tray", "P3 Near Cantilevers", "P3 Pinhole Plumbing", "P3 Filter Skid", "P3 Film-Plane Beams", "P3 Left Cantilevers", "P3 Walkway", "P4 Electrical Panel", "P4 External Panel", "P4 Lights", "P4 Wiring + Fit-out", "P5 Film Plane", "P5 Pinhole", "P5 Light Trap"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -29995,7 +28439,7 @@ model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
 # ── Cumulative phase scenes ──
-[["Phase 1 — Geometry Set-Out", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Fan A", "P1 Corridor Wiring", "P1 Far IBCs", "P1 Hinge Panel"]], ["Phase 3 — Hard Install", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Fan A", "P1 Corridor Wiring", "P1 Far IBCs", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway"]], ["Phase 4 — Electrical", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Fan A", "P1 Corridor Wiring", "P1 Far IBCs", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway", "P4 Electrical Panel", "P4 External Panel", "P4 Lights", "P4 Wiring + Fit-out"]], ["Phase 5 — Photo System", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Fan A", "P1 Corridor Wiring", "P1 Far IBCs", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway", "P4 Electrical Panel", "P4 External Panel", "P4 Lights", "P4 Wiring + Fit-out", "P5 Film Plane", "P5 Pinhole", "P5 Light Trap"]]].each { |name, tags|
+[["Phase 1 — Geometry Set-Out", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Fan A", "P1 Corridor Wiring", "P1 Far IBCs", "P1 Hinge Panel"]], ["Phase 3 — Hard Install", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Fan A", "P1 Corridor Wiring", "P1 Far IBCs", "P1 Hinge Panel", "P3 Far+Right Cantilevers", "P3 Processing Tray", "P3 Near Cantilevers", "P3 Pinhole Plumbing", "P3 Filter Skid", "P3 Film-Plane Beams", "P3 Left Cantilevers", "P3 Walkway"]], ["Phase 4 — Electrical", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Fan A", "P1 Corridor Wiring", "P1 Far IBCs", "P1 Hinge Panel", "P3 Far+Right Cantilevers", "P3 Processing Tray", "P3 Near Cantilevers", "P3 Pinhole Plumbing", "P3 Filter Skid", "P3 Film-Plane Beams", "P3 Left Cantilevers", "P3 Walkway", "P4 Electrical Panel", "P4 External Panel", "P4 Lights", "P4 Wiring + Fit-out"]], ["Phase 5 — Photo System", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Fan A", "P1 Corridor Wiring", "P1 Far IBCs", "P1 Hinge Panel", "P3 Far+Right Cantilevers", "P3 Processing Tray", "P3 Near Cantilevers", "P3 Pinhole Plumbing", "P3 Filter Skid", "P3 Film-Plane Beams", "P3 Left Cantilevers", "P3 Walkway", "P4 Electrical Panel", "P4 External Panel", "P4 Lights", "P4 Wiring + Fit-out", "P5 Film Plane", "P5 Pinhole", "P5 Light Trap"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
   page = model.pages.add(name)
   page.use_camera = true
@@ -30013,6 +28457,12 @@ if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
     cls.redraw_with_undo(p3_inst) rescue nil
   end
 end
+
+# Re-assert the fully-built default (the ANIMATE redraw above resets the first DC's step).
+p1_inst.set_attribute("dynamic_attributes", "step", 7.0)
+p1_inst.definition.entities.grep(Sketchup::ComponentInstance).each { |c| c.set_attribute("dynamic_attributes", "hidden", 0.0); c.visible = true }
+p3_inst.set_attribute("dynamic_attributes", "step", 8.0)
+p3_inst.definition.entities.grep(Sketchup::ComponentInstance).each { |c| c.set_attribute("dynamic_attributes", "hidden", 0.0); c.visible = true }
 
 { success: true, model: "Construction Sequence",
    components: model.entities.grep(Sketchup::ComponentInstance).length,

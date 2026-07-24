@@ -138,13 +138,14 @@ as the Overview 3D model, staged by install order:
   trapped work / access conflicts before the real build.
 
 **Interactive 3D model** — `construction.skp` (`generate_construction_model.py`), reusing the
-Overview component builders: **one tag per build step, one scene per phase.** Step through the
-scenes **Phase 1 → Phase 5** to watch the camera build up cumulatively — geometry set-out, then
-the hard structure, electrical, and the photo system. Drag to orbit, scroll to zoom.
+Overview component builders. Each phase is a **click-to-build Dynamic Component**: with the
+Interact tool, click a phase's assembly and each click reveals the next sub-step in install order.
+The model defaults to **fully built**, so any phase scene shows the prior phases complete — clicking
+a phase replays *its* build while the phases before it stay done. Drag to orbit, scroll to zoom.
 
-_Next iteration: a **click-to-build Dynamic Component** that reveals each step within a phase on
-click, plus finer per-step splits (IBC near/far totes, near/far brackets, film-plane rails vs
-plane) — a few Overview builders are grouped here because they don't yet take a per-wall argument._
+_Phases 1 and 3 are click-to-build DCs (the IBC totes split near/far, the wall brackets split
+near/far, and the film-plane rails/beams split from the plane, so the step order matches this
+report). Phases 4–5 are next._
 
 <!-- brochure:skip -->
 <div class="sketchfab-embed-wrapper">

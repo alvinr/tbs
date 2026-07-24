@@ -21,7 +21,7 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
-# ── Sketchfab metadata — fill-only-if-blank; never overwrites existing values ──
+# ── Sketchfab metadata — sketchfab dict fill-only-if-blank; name/desc forced when requested ──
 model.name = "TBS-001 Overview" if model.name.to_s.strip.empty?
 model.description = "A fully operational pinhole camera built inside a standard 20-foot ISO shipping container. It makes photographs \u2014 real, large-format photographs \u2014 on contact-scale cyanotype prints measuring approximately 15 feet wide by 8 feet tall. It is transportable, deployable in remote locations, and self-sufficient for water and processing. It is not an installation that resembles a camera. It is a camera." if model.description.to_s.strip.empty?
 model.set_attribute("sketchfab", "model_title", "TBS-001 Overview") if model.get_attribute("sketchfab", "model_title").to_s.strip.empty?

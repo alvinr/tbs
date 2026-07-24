@@ -18,7 +18,7 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
-# ── Sketchfab metadata — fill-only-if-blank; never overwrites existing values ──
+# ── Sketchfab metadata — sketchfab dict fill-only-if-blank; name/desc forced when requested ──
 model.name = "TBS-001 Walkway Model" if model.name.to_s.strip.empty?
 model.description = "The perimeter walkway provides dry-foot operator access around all four sides of the processing tray without wading through chemical solution." if model.description.to_s.strip.empty?
 model.set_attribute("sketchfab", "model_title", "TBS-001 Walkway Model") if model.get_attribute("sketchfab", "model_title").to_s.strip.empty?

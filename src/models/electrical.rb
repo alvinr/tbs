@@ -18,7 +18,7 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
-# ── Sketchfab metadata — fill-only-if-blank; never overwrites existing values ──
+# ── Sketchfab metadata — sketchfab dict fill-only-if-blank; name/desc forced when requested ──
 model.name = "TBS-001 Electrical Model" if model.name.to_s.strip.empty?
 model.description = "There are a number of discrete systems, color-coded in the diagram below. This view is shown from the optical axis, looking through the container wall. Each of these sub-systems, has a detailed breakdown of construction, schematic and other diagrams to show how each system it built, installed, used and maintained. The 3d model below provides a simply way to view the whole system." if model.description.to_s.strip.empty?
 model.set_attribute("sketchfab", "model_title", "TBS-001 Electrical Model") if model.get_attribute("sketchfab", "model_title").to_s.strip.empty?

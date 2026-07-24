@@ -30,7 +30,7 @@ bucketed by WHEN it can be acted on:_
 
 ### Bucket 3 — ACTIONABLE ON BUILD
 - [ ] **Container corrugation depth.** Measure the actual side-wall (~25mm assumed) → recompute the wall through-bolt grip/length/thread; apply **A36** to the bracket-plate specs. Needs the physical container.
-- [ ] **Walkway grating.** American Grating is primary (~$830 public list, banded $830–$1,050 for freight/cut); get the **firm cut quote + SoCal freight** at build. McNichols $1,700.51 held as the firm ceiling.
+- [ ] **Walkway grating.** American Grating is primary (~$830 public list, banded $830–$1,050 for freight/cut); get the **firm cut quote + SoCal freight** at build. **McNichols is a FIRM SHIPPED fallback: 2× 48″×144″ @ $796.77 = $1,593.54 + $456 freight = $2,049.98 shipped (firm 2026-07-24)** — ~2× the American estimate, and its 4′×12′ sheet would re-nest the cut plan if chosen.
 - [ ] **Container** — `container-20ft` (±$1,500) + `container-delivery` (±$500), firm at purchase.
 - [ ] **Fab estimates.** All `*-fabrication` lines (`tray-fabrication`, `ll-fabrication`, `ibcf-fabrication`, `sp-door-fab`) + `tray-ss-sheet`, the film-plane fab (skate carriage, 316 cross-slides, cam clamp), and the `sp-pivot-post` collar — quote to shops once the drawing set ships. ≈±$1,500.
 

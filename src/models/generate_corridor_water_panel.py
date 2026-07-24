@@ -575,22 +575,18 @@ def plumbing():
     #   exactly where the beam is slotted); threads the GAP between the DV-01 grey-waste (Yd1147) and blue-recycle
     #   (Yd1241) floor lanes — clear of the P-05 brown feed (Yd1101, z258).
     # Sump pickup: the foot sits DOWN IN the (widened) sump well at the ribbon-lane X (slx) with the strainer
-    # on it; the pipe rises STRAIGHT up out of the sump (NO jog — the depression was widened LEFT to reach the
-    # relocated lane, so the pipe never crosses the other lanes) and LOOPS back down UNDER the walkway into the
-    # ribbon (the brown sump line runs in the ribbon — the middle two lanes swapped so blue TAP-01 and brown
-    # sump alternate).  At the corridor it stays FLUSH, crosses the notched outer beam, drops in the tray-edge
-    # slot, and rejoins the ORIGINAL P-04 rise/port approach — we only re-route up to the drop.
+    # on it; the pipe rises STRAIGHT up out of the sump to FLUSH height and elbows 90° straight into the ribbon
+    # lane — NO over-deck loop.  (The old +Yd hop over the deck was avoidable: the ribbon lane runs flush at
+    # RIBBON_Z the full length, nothing sits at slx/Z104.5 in the sump corner, and the spray-bar carriage crown
+    # (Z66) clears below — verified against the model.)  It then runs FLUSH, up-and-over the first cantilever
+    # (Rule 5), crosses the notched outer beam, drops in the tray-edge slot, and rejoins the ORIGINAL P-04
+    # rise/port approach.  Bonus: removes an avoidable crest from a SUCTION line (no air-trap at the corner).
     slx = RIBBON_LANE_X[2]                              # lane-2 X (was lane-1; swapped with the blue TAP-01 trunk)
-    loop_yd = 328                                       # extend the surface loop +Yd toward the film plane, out of
-    #                                                    the cramped sump corner, before dropping under the walkway
-    loop_z  = ov.WALKWAY_H + 5                           # 135 — first loop crest kept low, just over the walkway deck
     sump_foot = (slx, sumpY, sump_foot_z)               # pipe intake == strainer point: SINGLE SOURCE so the strainer stays welded to the pipe's foot
     pipe("Tray sump -> P-04 suction",
          [sump_foot,                                   # pickup foot DOWN IN the (widened) sump well, at the ribbon-lane X — STRAIGHT down, no jog
-          (slx, sumpY, loop_z),                         # straight UP out of the sump, crest just over the walkway
-          (slx, loop_yd, loop_z),                       # extend +Yd toward the film plane, just over the walkway (uncramp)
-          (slx, loop_yd, RIBBON_Z),                     # LOOP back down UNDER the walkway to the ribbon
-          (slx, RIBBON_YD_UP, RIBBON_Z),                # +Yd in the ribbon to just before the first cantilever
+          (slx, sumpY, RIBBON_Z),                      # straight UP out of the sump to FLUSH height (no over-deck crest)
+          (slx, RIBBON_YD_UP, RIBBON_Z),               # flat 90° elbow, +Yd along the ribbon lane to just before the first cantilever
           (slx, RIBBON_YD_UP, RIBBON_OVER_Z),           # UP through the grate, OVER the cantilever (Rule 5)
           (slx, RIBBON_YD_DOWN, RIBBON_OVER_Z),         # +Yd over the cantilever, past it
           (slx, RIBBON_YD_DOWN, RIBBON_Z),              # DOWN through the grate into the corridor

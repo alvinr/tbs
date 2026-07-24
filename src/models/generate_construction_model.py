@@ -31,6 +31,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov            # Overview helpers + component builders
+import generate_electrical_model as em          # EP sub-builders (external panel box vs interior core + links)
 import generate_corridor_water_panel as cp      # IBC corridor frame + plumbing
 import generate_pinhole_water_panel as pw        # pinhole-wall kit + spray supply
 import generate_walkway_model as wm              # left floor-leg cantilevers
@@ -47,10 +48,10 @@ STEPS = [
     # ── Phase 1 — Geometry set-out ──
     (1, "1.1", "P1 Near IBCs",     "IBC totes — pinhole wall (near column)",   # [1.1]
         lambda: ov.ibc_stack(alpha=0.85, cols="near")),
-    (1, "1.2", "P1 IBC Frame",     "IBC restraint frame (deep box)",           # [1.2]
-        lambda: _join(cp.frame(), cp.tote_restraint())),
-    (1, "1.3", "P1 IBC Plumbing",  "IBC corridor plumbing + drains",           # [1.3 (+ finalize plumbing grouped here)]
-        lambda: _join(cp.plumbing(), cp.drains_ports())),
+    (1, "1.2", "P1 IBC Frame",     "IBC restraint frame + plumbing-panel backing",   # [1.2] (+ corridor rear panel)
+        lambda: _join(cp.frame(), cp.tote_restraint(), cp.rear_panel())),
+    (1, "1.3", "P1 IBC Plumbing",  "Corridor plumbing + panel equipment + ribbon supports + drains",  # [1.3] (+ equipment + ribbon cross-beams)
+        lambda: _join(cp.equipment(), cp.plumbing(), cp.drains_ports(), cp.ribbon_supports())),
     (1, "1.4", "P1 Fan A",         "Fan A (exhaust) + its Cct-A electrical — pinhole wall",  # NEW — before the far IBCs bury it
         lambda: _join(ov.fans(which="A"), ov.fan_wiring(which="A"))),
     (1, "1.5", "P1 Corridor Wiring", "Corridor pump wiring (Cct C) to the pinhole wall",     # NEW — before the far IBCs block the wall
@@ -64,38 +65,41 @@ STEPS = [
     (3, "3.1", "P3 Far+Right Cantilevers", "Cantilevers — far wall + right-end rectangle",   # [3.1]
         lambda: _join(ov.walkway_brackets(which="far"),
                       ov.right_walkway_cantilever(include_combined=True, include_grate=False))),
-    (3, "3.2", "P3 Processing Tray",   "Processing tray + spray bar",       # [3.2]
-        lambda: _join(ov.processing_tray(), ov.spray_bar())),
+    (3, "3.2", "P3 Processing Tray",   "Processing tray",                   # [3.2] (spray bar moved to Phase 5)
+        lambda: ov.processing_tray()),
     (3, "3.3", "P3 Near Cantilevers",  "Cantilevers — near wall",           # [3.3]
         lambda: ov.walkway_brackets(which="near")),
     (3, "3.4", "P3 Pinhole Plumbing",  "Extend plumbing to the pinhole-wall panel",  # [3.4]
         lambda: pw.tap01_supply()),
     (3, "3.5", "P3 Filter Skid",       "Pinhole filter skid (F-1..F-3 + pumps + ACC)",  # [3.5]
         lambda: pw.kit()),
-    (3, "3.6", "P3 Film-Plane Beams",  "Film-plane beams (corner rails + wall-seat saddles)",  # [3.6]
-        lambda: ov.film_plane_mechanism(part="beams")),
+    (3, "3.6", "P3 Film-Plane Beams",  "Film-plane beams + combined corner plates",  # [3.6] (+ FP↔walkway corner plates)
+        lambda: _join(ov.film_plane_mechanism(part="beams"), ov.fp_combined_corner_plates())),
     (3, "3.7", "P3 Left Cantilevers",  "Left-walkway floor-leg cantilevers",  # [3.7]
         lambda: '\n'.join(wm.left_floor_cantilevers())),
     (3, "3.8", "P3 Walkway",           "Walkway grating (all sections)",     # [3.8] — grates only; supports are 3.1/3.3/3.7
         lambda: ov.walkways(include_right=True, include_right_hangers=False, grates_only=True)),
 
     # ── Phase 4 — Electrical ──
-    (4, "4.1", "P4 Electrical Panel",  "Interior electrical panel + batteries",  # [4.1]
-        lambda: ov.electrical()),
-    (4, "4.2", "P4 External Panel",    "External power panel (PV + E-stop)",     # [4.2]
-        lambda: ov.ep_external_wiring()),
+    (4, "4.1", "P4 External Panel",    "External power panel (yellow box)",      # shown by default = the click target (box only — no cables, E-stop, or PV disconnect)
+        lambda: em.external_panel(include_estop=False, include_disconnect=False)),
+    (4, "4.2", "P4 Electrical Panel",  "Interior EP + E-stop + PV disconnect + cables + batteries",  # first click: interior core, links, E-stop, PV disconnect, batteries
+        lambda: _join(em.power_core(external_links=True), em.battery(),
+                      em.external_estop(), em.pv_disconnect())),
     (4, "4.3", "P4 Lights",            "Lights",                                 # [4.3]
         lambda: ov.lighting_wiring()),
     (4, "4.4", "P4 Wiring + Fit-out",  "Fan B + its Cct-B wiring + shelf",  # [4.4] (Fan A + Cct-A + Cct-C corridor wiring moved to Phase 1; external cooler/solar excluded)
         lambda: _join(ov.fans(which="B"), ov.fan_wiring(which="B"), ov.shelf())),
 
     # ── Phase 5 — Photo system ──
-    (5, "5.1", "P5 Film Plane",        "Film plane + carriages (screen + frame)",  # [5.1] — beams already in 3.6
-        lambda: ov.film_plane_mechanism(part="plane")),
-    (5, "5.2", "P5 Pinhole",           "Pinhole mechanism",                       # [5.2]
+    (5, "5.1", "P5 Pinhole",           "Pinhole mechanism (plate + aperture)",    # shown by default = the click target (the minimal element)
         lambda: ov.pinhole_assembly()),
+    (5, "5.2", "P5 Film Plane",        "Film plane + carriages (screen + frame)",  # beams already in 3.6
+        lambda: ov.film_plane_mechanism(part="plane")),
     (5, "5.3", "P5 Light Trap",        "Light-trap drum + bay",                   # [5.3]
         lambda: _join(ov.light_trap_drum(), ov.light_trap_bay())),
+    (5, "5.4", "P5 Spray Bar",         "Spray bar (over the processing tray)",    # [5.4] moved from Phase 3
+        lambda: ov.spray_bar()),
 ]
 
 PHASE_NAMES = {
@@ -160,7 +164,7 @@ def _phase_dc_ruby(pnum, p_steps):
     return '\n'.join(L), var
 
 
-DC_PHASES = (1, 3, 4)       # phases rendered as click-to-build Dynamic Components
+DC_PHASES = (1, 3, 4, 5)    # phases rendered as click-to-build Dynamic Components
 SCENE_PHASES = (1, 3, 4, 5)  # Phase 2 (re-measure) has no geometry → no scene
 
 

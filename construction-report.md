@@ -54,8 +54,8 @@ _TBD — the "why this order" rationale. Placeholders:_
 | # | Step | Depends on | Status |
 |---|------|-----------|:------:|
 | 1.1 | Install 2× IBC totes on the **pinhole wall** (near column) | — | ☐ |
-| 1.2 | Install the **IBC frame** (restraint deep-box) | 1.1 | ☐ |
-| 1.3 | Install + **plumb the IBC corridor** through to the walkway line | 1.2 | ☐ |
+| 1.2 | Install the **IBC frame** (restraint deep-box) + **plumbing-panel backing** | 1.1 | ☐ |
+| 1.3 | Install the **panel equipment** (pumps/filters/valves) + **plumb the IBC corridor** through to the walkway line (with the over-walkway **ribbon support cross-beams**) | 1.2 | ☐ |
 | 1.4 | Install **Fan A** (exhaust) + its **Cct-A electrical** on the pinhole wall — *before the far IBCs bury it* | 1.2 | ☐ |
 | 1.5 | Run the **corridor pump wiring (Cct C)** to the pinhole wall — *before the far IBCs block the wall* | 1.3 | ☐ |
 | 1.6 | Install 2× IBC totes on the **far wall** (far column) + **finalize IBC plumbing** | 1.5 | ☐ |
@@ -90,7 +90,7 @@ plumbing, the film-plane support, and the walkway.
 | 3.3 | Install **cantilevers on the near wall** | 3.2 | ☐ |
 | 3.4 | **Extend plumbing** to the pinhole-wall panel | 3.3 | ☐ |
 | 3.5 | Install the **pinhole filter skid** | 3.4 | ☐ |
-| 3.6 | Install the **film-plane beams** | 3.1 | ☐ |
+| 3.6 | Install the **film-plane beams** + **combined corner plates** (FP ↔ right-walkway) | 3.1 | ☐ |
 | 3.7 | Install the **left cantilevers** | 3.2 | ☐ |
 | 3.8 | Install the **walkway** (grating on all cantilevers) | 3.3, 3.6, 3.7 | ☐ |
 
@@ -104,8 +104,8 @@ plumbing, the film-plane support, and the walkway.
 
 | # | Step | Depends on | Status |
 |---|------|-----------|:------:|
-| 4.1 | Install the **electrical panel** (interior) | Phase 3 | ☐ |
-| 4.2 | Install the **external electrical panel** | 4.1 | ☐ |
+| 4.1 | Mount the **external power panel** (PV + E-stop) | Phase 3 | ☐ |
+| 4.2 | Install the **interior electrical panel** + batteries | 4.1 | ☐ |
 | 4.3 | **Hang the lights** | Phase 3 | ☐ |
 | 4.4 | **Run / wire the electrical paths** — IBC pumps, filter, lights, fans, etc. (circuits Blue / Brown / Black) | 4.1, 4.2, 4.3 | ☐ |
 
@@ -119,9 +119,10 @@ plumbing, the film-plane support, and the walkway.
 
 | # | Step | Depends on | Status |
 |---|------|-----------|:------:|
-| 5.1 | Install the **film plane + carriages** | Phase 3 (beams) | ☐ |
-| 5.2 | Install the **pinhole mechanism** | 5.1 | ☐ |
-| 5.3 | Install the **light trap** (drum into the hinge panel) | Phase 1 (panel), 5.1 | ☐ |
+| 5.1 | Install the **pinhole mechanism** (plate + aperture) | Phase 3 | ☐ |
+| 5.2 | Install the **film plane + carriages** | Phase 3 (beams), 5.1 | ☐ |
+| 5.3 | Install the **light trap** (drum into the hinge panel) | Phase 1 (panel), 5.2 | ☐ |
+| 5.4 | Install the **spray bar** (over the processing tray) | Phase 3 (tray) | ☐ |
 
 **Exit gate:** _TBD — plane travels through its full tilt/swing envelope; camera confirmed light-tight._
 
@@ -138,15 +139,16 @@ as the Overview 3D model, staged by install order:
   trapped work / access conflicts before the real build.
 
 **Interactive 3D model** — `construction.skp` (`generate_construction_model.py`), reusing the
-Overview component builders. Each phase is a **click-to-build Dynamic Component**: with the
-Interact tool, click a phase's assembly and each click reveals the next sub-step in install order.
-The model defaults to **fully built**, so any phase scene shows the prior phases complete — clicking
-a phase replays *its* build while the phases before it stay done. Drag to orbit, scroll to zoom.
+Overview component builders. All four phases (1, 3, 4, 5) are **click-to-build Dynamic Components**:
+with the Interact tool, each phase scene opens showing only its **first step** (the minimal element)
+and the prior phases complete as inert static context; each click reveals the next sub-step in
+install order. Drag to orbit, scroll to zoom.
 
-_Phases 1, 3, and 4 are click-to-build DCs (the IBC totes split near/far, the wall brackets split
-near/far, and the film-plane rails/beams split from the plane, so the step order matches this
-report). Each DC phase also draws a static built copy shown as inert context in the later phase
-scenes. Phase 5 is next._
+_Component builders are split so the step order matches this report (IBC totes near/far, wall
+brackets near/far, film-plane beams vs plane, external-panel shell vs interior EP/E-stop/PV
+disconnect). The model builds **every Overview component** except four deliberate omissions that
+would only obstruct the build view: the **container shell** (floor-only context, for orbit access),
+the **optical cone** (non-physical guidance geometry), the **solar array**, and the **evap cooler**._
 
 <!-- brochure:skip -->
 <div class="sketchfab-embed-wrapper">

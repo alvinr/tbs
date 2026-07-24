@@ -1101,7 +1101,7 @@ def spray_bar():
 
 # ── IBC stack (4× totes, 2×2) + support rack ─────────────────────────────────
 
-def ibc_stack(alpha=0.55, mute=0.0):
+def ibc_stack(alpha=0.55, mute=0.0, cols="both"):
     """Four IBC totes in a 2×2 stack: pallet base + translucent bottle each.
 
     Near column (Yd=30): Brown developer below, Blue #1 on top.
@@ -1111,6 +1111,8 @@ def ibc_stack(alpha=0.55, mute=0.0):
     `mute` (0–1) desaturates the bottle/pallet colors toward neutral so the stack
     reads as quiet CONTEXT (a faint tint) rather than saturated volumes — used where
     the IBC stack is a backdrop to other key systems (e.g. the corridor plumbing view).
+    `cols`: "both" (default), "near" (pinhole-wall column only), or "far" (far column only)
+    — used by the construction model to install the two columns as separate build steps.
     """
     parts = []
     pal = IBC_PALLET_H
@@ -1123,6 +1125,10 @@ def ibc_stack(alpha=0.55, mute=0.0):
         ("IBC Waste", WASTE_IBC_Y, 0, C_IBC_WASTE),
         ("IBC Blue #2", IBC_FAR_Y, IBC_H_1000, C_IBC_BLUE),
     ]
+    if cols == "near":
+        totes = totes[:2]     # near / pinhole-wall column (Brown + Blue #1)
+    elif cols == "far":
+        totes = totes[2:]     # far column (Waste + Blue #2)
     for nm, yd, z0, col in totes:
         parts.append(ruby_box(f"{nm} pallet",
                               IBC_COL_X, yd, z0, IBC_W, IBC_D, pal,

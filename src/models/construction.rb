@@ -27,9 +27,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
 
 # ── Tags (one per build step) ──
   model.layers.add("Context") unless model.layers["Context"]
-  model.layers.add("P1 IBC Totes") unless model.layers["P1 IBC Totes"]
+  model.layers.add("P1 Near IBCs") unless model.layers["P1 Near IBCs"]
   model.layers.add("P1 IBC Frame") unless model.layers["P1 IBC Frame"]
   model.layers.add("P1 IBC Plumbing") unless model.layers["P1 IBC Plumbing"]
+  model.layers.add("P1 Far IBCs") unless model.layers["P1 Far IBCs"]
   model.layers.add("P1 Hinge Panel") unless model.layers["P1 Hinge Panel"]
   model.layers.add("P3 Right Cantilever") unless model.layers["P3 Right Cantilever"]
   model.layers.add("P3 Wall Brackets") unless model.layers["P3 Wall Brackets"]
@@ -18068,53 +18069,9 @@ ents = child.entities
   mat.alpha = 0.85
   grp.material = mat
 
-  # IBC Waste pallet
-  grp = ents.add_group
-  grp.name = "IBC Waste pallet"
-  face = grp.entities.add_face([4674.mm,1316.mm,0.mm], [5893.mm,1316.mm,0.mm], [5893.mm,2332.mm,0.mm], [4674.mm,2332.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(168.mm)
-  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
-  mat.color = Sketchup::Color.new(51, 52, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC Waste bottle
-  grp = ents.add_group
-  grp.name = "IBC Waste bottle"
-  face = grp.entities.add_face([4704.mm,1346.mm,168.mm], [5863.mm,1346.mm,168.mm], [5863.mm,2302.mm,168.mm], [4704.mm,2302.mm,168.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(980.mm)
-  mat = model.materials["IBC Waste bottle"] || model.materials.add("IBC Waste bottle")
-  mat.color = Sketchup::Color.new(119, 119, 119)
-  mat.alpha = 0.85
-  grp.material = mat
-
-  # IBC Blue #2 pallet
-  grp = ents.add_group
-  grp.name = "IBC Blue #2 pallet"
-  face = grp.entities.add_face([4674.mm,1316.mm,1168.mm], [5893.mm,1316.mm,1168.mm], [5893.mm,2332.mm,1168.mm], [4674.mm,2332.mm,1168.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(168.mm)
-  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
-  mat.color = Sketchup::Color.new(51, 52, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # IBC Blue #2 bottle
-  grp = ents.add_group
-  grp.name = "IBC Blue #2 bottle"
-  face = grp.entities.add_face([4704.mm,1346.mm,1336.mm], [5863.mm,1346.mm,1336.mm], [5863.mm,2302.mm,1336.mm], [4704.mm,2302.mm,1336.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(980.mm)
-  mat = model.materials["IBC Blue #1 bottle"] || model.materials.add("IBC Blue #1 bottle")
-  mat.color = Sketchup::Color.new(46, 109, 180)
-  mat.alpha = 0.85
-  grp.material = mat
-
 ci = p1_defn.entities.add_instance(child, Geom::Transformation.new)
-ci.name = "Step 1.1 — IBC totes (pinhole + far wall)"
-ci.layer = model.layers["P1 IBC Totes"]
+ci.name = "Step 1.1 — IBC totes — pinhole wall (near column)"
+ci.layer = model.layers["P1 Near IBCs"]
 ci.set_attribute("dynamic_attributes", "_name", "P1Step1_1")
 ci.set_attribute("dynamic_attributes", "hidden", 1.0)
 ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase1Build!step<1")
@@ -21799,6 +21756,58 @@ ci.layer = model.layers["P1 IBC Plumbing"]
 ci.set_attribute("dynamic_attributes", "_name", "P1Step1_3")
 ci.set_attribute("dynamic_attributes", "hidden", 1.0)
 ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase1Build!step<3")
+child = model.definitions.add("P1Step1_4")
+ents = child.entities
+  # IBC Waste pallet
+  grp = ents.add_group
+  grp.name = "IBC Waste pallet"
+  face = grp.entities.add_face([4674.mm,1316.mm,0.mm], [5893.mm,1316.mm,0.mm], [5893.mm,2332.mm,0.mm], [4674.mm,2332.mm,0.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(168.mm)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Waste bottle
+  grp = ents.add_group
+  grp.name = "IBC Waste bottle"
+  face = grp.entities.add_face([4704.mm,1346.mm,168.mm], [5863.mm,1346.mm,168.mm], [5863.mm,2302.mm,168.mm], [4704.mm,2302.mm,168.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(980.mm)
+  mat = model.materials["IBC Waste bottle"] || model.materials.add("IBC Waste bottle")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 0.85
+  grp.material = mat
+
+  # IBC Blue #2 pallet
+  grp = ents.add_group
+  grp.name = "IBC Blue #2 pallet"
+  face = grp.entities.add_face([4674.mm,1316.mm,1168.mm], [5893.mm,1316.mm,1168.mm], [5893.mm,2332.mm,1168.mm], [4674.mm,2332.mm,1168.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(168.mm)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC Blue #2 bottle
+  grp = ents.add_group
+  grp.name = "IBC Blue #2 bottle"
+  face = grp.entities.add_face([4704.mm,1346.mm,1336.mm], [5863.mm,1346.mm,1336.mm], [5863.mm,2302.mm,1336.mm], [4704.mm,2302.mm,1336.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(980.mm)
+  mat = model.materials["IBC Blue #1 bottle"] || model.materials.add("IBC Blue #1 bottle")
+  mat.color = Sketchup::Color.new(46, 109, 180)
+  mat.alpha = 0.85
+  grp.material = mat
+
+ci = p1_defn.entities.add_instance(child, Geom::Transformation.new)
+ci.name = "Step 1.4 — IBC totes — far wall (far column)"
+ci.layer = model.layers["P1 Far IBCs"]
+ci.set_attribute("dynamic_attributes", "_name", "P1Step1_4")
+ci.set_attribute("dynamic_attributes", "hidden", 1.0)
+ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase1Build!step<4")
 child = model.definitions.add("P1Step1_5")
 ents = child.entities
   # Door Frame threshold
@@ -29954,14 +29963,14 @@ ci.name = "Step 1.5 — Hinge panel (excl. light-trap drum)"
 ci.layer = model.layers["P1 Hinge Panel"]
 ci.set_attribute("dynamic_attributes", "_name", "P1Step1_5")
 ci.set_attribute("dynamic_attributes", "hidden", 1.0)
-ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase1Build!step<4")
+ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase1Build!step<5")
 p1_inst = entities.add_instance(p1_defn, Geom::Transformation.new)
 p1_inst.name = "Phase 1 Build"
 p1_inst.set_attribute("dynamic_attributes", "_name", "Phase1Build")
 p1_inst.set_attribute("dynamic_attributes", "step", 1.0)
 p1_inst.set_attribute("dynamic_attributes", "_step_access", "VIEW")
 p1_inst.set_attribute("dynamic_attributes", "_step_label", "Build step")
-p1_inst.set_attribute("dynamic_attributes", "onclick", 'ANIMATE("step",1,2,3,4)')
+p1_inst.set_attribute("dynamic_attributes", "onclick", 'ANIMATE("step",1,2,3,4,5)')
 p1_inst.set_attribute("dynamic_attributes", "_onclick_access", "NONE")
 
 # ── Drop the external evap cooler UNIT + its cord (ov.electrical() draws them) — not part of
@@ -29978,7 +29987,7 @@ model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier versions ──
-keep_tags = ["Context", "P1 IBC Totes", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway", "P4 Electrical Panel", "P4 External Panel", "P4 Lights", "P4 Wiring + Fit-out", "P5 Film Plane", "P5 Pinhole", "P5 Light Trap"]
+keep_tags = ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Far IBCs", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway", "P4 Electrical Panel", "P4 External Panel", "P4 Lights", "P4 Wiring + Fit-out", "P5 Film Plane", "P5 Pinhole", "P5 Light Trap"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -29995,7 +30004,7 @@ model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
 # ── Cumulative phase scenes ──
-[["Phase 1 — Geometry Set-Out", ["Context", "P1 IBC Totes", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Hinge Panel"]], ["Phase 2 — Re-measure", ["Context", "P1 IBC Totes", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Hinge Panel"]], ["Phase 3 — Hard Install", ["Context", "P1 IBC Totes", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway"]], ["Phase 4 — Electrical", ["Context", "P1 IBC Totes", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway", "P4 Electrical Panel", "P4 External Panel", "P4 Lights", "P4 Wiring + Fit-out"]], ["Phase 5 — Photo System", ["Context", "P1 IBC Totes", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway", "P4 Electrical Panel", "P4 External Panel", "P4 Lights", "P4 Wiring + Fit-out", "P5 Film Plane", "P5 Pinhole", "P5 Light Trap"]]].each { |name, tags|
+[["Phase 1 — Geometry Set-Out", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Far IBCs", "P1 Hinge Panel"]], ["Phase 2 — Re-measure", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Far IBCs", "P1 Hinge Panel"]], ["Phase 3 — Hard Install", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Far IBCs", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway"]], ["Phase 4 — Electrical", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Far IBCs", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway", "P4 Electrical Panel", "P4 External Panel", "P4 Lights", "P4 Wiring + Fit-out"]], ["Phase 5 — Photo System", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Far IBCs", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway", "P4 Electrical Panel", "P4 External Panel", "P4 Lights", "P4 Wiring + Fit-out", "P5 Film Plane", "P5 Pinhole", "P5 Light Trap"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
   page = model.pages.add(name)
   page.use_camera = true

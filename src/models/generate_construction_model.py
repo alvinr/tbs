@@ -45,13 +45,15 @@ def _join(*parts):
 # phase N shows every tag whose phase <= N (cumulative). Report §4–§8 step ids in [].
 STEPS = [
     # ── Phase 1 — Geometry set-out ──
-    (1, "1.1", "P1 IBC Totes",     "IBC totes (pinhole + far wall)",   # [1.1 + 1.4 totes — grouped: ibc_stack draws all 4]
-        lambda: ov.ibc_stack(alpha=0.85)),
-    (1, "1.2", "P1 IBC Frame",     "IBC restraint frame (deep box)",   # [1.2]
+    (1, "1.1", "P1 Near IBCs",     "IBC totes — pinhole wall (near column)",   # [1.1]
+        lambda: ov.ibc_stack(alpha=0.85, cols="near")),
+    (1, "1.2", "P1 IBC Frame",     "IBC restraint frame (deep box)",           # [1.2]
         lambda: _join(cp.frame(), cp.tote_restraint())),
-    (1, "1.3", "P1 IBC Plumbing",  "IBC corridor plumbing + drains",   # [1.3 + 1.4 finalize — grouped]
+    (1, "1.3", "P1 IBC Plumbing",  "IBC corridor plumbing + drains",           # [1.3 (+ 1.4 finalize plumbing grouped here)]
         lambda: _join(cp.plumbing(), cp.drains_ports())),
-    (1, "1.5", "P1 Hinge Panel",   "Hinge panel (excl. light-trap drum)",  # [1.5]
+    (1, "1.4", "P1 Far IBCs",      "IBC totes — far wall (far column)",        # [1.4] — second-to-last
+        lambda: ov.ibc_stack(alpha=0.85, cols="far")),
+    (1, "1.5", "P1 Hinge Panel",   "Hinge panel (excl. light-trap drum)",      # [1.5]
         lambda: _join(ov.light_trap_frame(), ov.light_seal(), ov.panel_pivot())),
 
     # ── Phase 3 — Hard install (Phase 2 = re-measure, no geometry) ──

@@ -143,34 +143,45 @@ def diverter(name, cx, cy, cz, run="x", branch="z-", handle="y+", color=None, L=
     return "\n".join(p)
 
 
-def frame():
-    """Deep 4-leg box (uprights + butt-jointed rings + feet) with REAR-panel brackets only."""
+def frame(part="all"):
+    """Deep 4-leg box (uprights + butt-jointed rings + feet) with REAR-panel brackets only.
+
+    part="posts" emits only the vertical skeleton (uprights + feet + rear-panel brackets);
+    part="rails" emits only the horizontal ring rails. The construction model installs the
+    posts BEFORE the IBC totes and the rails AFTER — the top-ring rails would otherwise trap
+    the totes and block the far column going in. part="all" (default) = both, byte-identical
+    to the original single-pass output (posts' uprights, then rails, then posts' feet/brackets)."""
+    posts = part in ("all", "posts")
+    rails = part in ("all", "rails")
     p = []
     up_yds = (YD_NEAR, YD_FAR - S)
     box_xs = (FRONT_X, BACK_X)
-    for ux in box_xs:                                  # 4 corner uprights
-        for yd in up_yds:
-            p.append(ov.ruby_box("Frame upright", ux, yd, 0, S, S, TOP_Z, color=ov.C_STEEL))
-    for rz in (0, TOP_Z - S):                          # bottom + top rings, rails BUTT between uprights
+    if posts:
+        for ux in box_xs:                                  # 4 corner uprights
+            for yd in up_yds:
+                p.append(ov.ruby_box("Frame upright", ux, yd, 0, S, S, TOP_Z, color=ov.C_STEEL))
+    if rails:
+        for rz in (0, TOP_Z - S):                          # bottom + top rings, rails BUTT between uprights
+            for ux in box_xs:
+                p.append(ov.ruby_box("Frame rail (Yd)", ux, YD_NEAR + S, rz, S, (YD_FAR - S) - (YD_NEAR + S), S, color=ov.C_STEEL))
+            for yd in up_yds:
+                p.append(ov.ruby_box("Frame rail (X)", FRONT_X + S, yd, rz, BACK_X - (FRONT_X + S), S, S, color=ov.C_STEEL))
+    if posts:
+        # floor feet (150×150×12 plate + 4× M12) under each upright
+        fp, ft, bpc = ov.IBC_FOOT_PLATE, ov.IBC_FOOT_PLATE_T, ov.IBC_FOOT_BOLT_PCD // 2
         for ux in box_xs:
-            p.append(ov.ruby_box("Frame rail (Yd)", ux, YD_NEAR + S, rz, S, (YD_FAR - S) - (YD_NEAR + S), S, color=ov.C_STEEL))
-        for yd in up_yds:
-            p.append(ov.ruby_box("Frame rail (X)", FRONT_X + S, yd, rz, BACK_X - (FRONT_X + S), S, S, color=ov.C_STEEL))
-    # floor feet (150×150×12 plate + 4× M12) under each upright
-    fp, ft, bpc = ov.IBC_FOOT_PLATE, ov.IBC_FOOT_PLATE_T, ov.IBC_FOOT_BOLT_PCD // 2
-    for ux in box_xs:
-        for yd in up_yds:
-            cx, cy = ux + S / 2, yd + S / 2
-            p.append(ov.ruby_box("Foot plate", cx - fp / 2, cy - fp / 2, 0, fp, fp, ft, color=ov.C_STEEL))
-            for dx in (-bpc, bpc):
-                for dy in (-bpc, bpc):
-                    p.append(ov.ruby_cylinder("Foot anchor M12", cx + dx, cy + dy, 0, 7, ft + 4, color=C_BOLT, axis="z"))
-    # REAR-panel mount brackets only (on the back uprights, set back behind the inside face)
-    bw, bproj = 60, 40
-    for py, pdir in ((YD_NEAR + S, +1), (YD_FAR - S, -1)):
-        for bz in (120, TOP_Z / 2, TOP_Z - 120):
-            p.append(ov.ruby_box("Rear-panel bracket", BACK_X + EQT, (py if pdir > 0 else py - bproj), bz - bw / 2,
-                                 30, bproj, bw, color=ov.C_STEEL))
+            for yd in up_yds:
+                cx, cy = ux + S / 2, yd + S / 2
+                p.append(ov.ruby_box("Foot plate", cx - fp / 2, cy - fp / 2, 0, fp, fp, ft, color=ov.C_STEEL))
+                for dx in (-bpc, bpc):
+                    for dy in (-bpc, bpc):
+                        p.append(ov.ruby_cylinder("Foot anchor M12", cx + dx, cy + dy, 0, 7, ft + 4, color=C_BOLT, axis="z"))
+        # REAR-panel mount brackets only (on the back uprights, set back behind the inside face)
+        bw, bproj = 60, 40
+        for py, pdir in ((YD_NEAR + S, +1), (YD_FAR - S, -1)):
+            for bz in (120, TOP_Z / 2, TOP_Z - 120):
+                p.append(ov.ruby_box("Rear-panel bracket", BACK_X + EQT, (py if pdir > 0 else py - bproj), bz - bw / 2,
+                                     30, bproj, bw, color=ov.C_STEEL))
     return "\n".join(p)
 
 
@@ -538,14 +549,20 @@ def equipment():
     return "\n".join(p)
 
 
-def plumbing():
+def plumbing(part="all"):
     """Stage-A tray-drain chain (P-04 → SV-02 → 3W-DV-02 → IBC-3 Brown / IBC-4 Waste) + the Blue
     supply (Blue #1 → P-01 → ACC-01 → trunk).  Routing rules: every segment is single-axis (no
     diagonals); each pump port leaves with a perpendicular −X stub; each run gets its OWN X depth
     lane so pipes never share a plane (no pipe-through-pipe); horizontal runs sit at Z levels
-    clear of the pump bodies (tops ≤ 770)."""
+    clear of the pump bodies (tops ≤ 770).
+
+    part="corridor" omits the over-walkway sump-suction line (the only run that crosses the
+    walkway); part="sump" is ONLY that line + its strainer foot; "all" (default) = both, and is
+    byte-identical to the original (the sump line was the first thing emitted, so it stays first)."""
     p = []
+    sump = []
     def pipe(nm, wp, col): p.append(ov.ruby_pipe_run(nm, wp, RP, color=col))
+    def spipe(nm, wp, col): sump.append(ov.ruby_pipe_run(nm, wp, RP, color=col))
     def pin(k):  return (PXC, PIY, _piz(k))              # IN  tip (−Yd manifold side)
     def pout(k): return (PXC, POY, _piz(k))             # OUT tip (+Yd manifold side)
     tip = DVB / 2 + DVL                                  # 78 — diverter port-stub tip
@@ -583,7 +600,7 @@ def plumbing():
     # rise/port approach.  Bonus: removes an avoidable crest from a SUCTION line (no air-trap at the corner).
     slx = RIBBON_LANE_X[2]                              # lane-2 X (was lane-1; swapped with the blue TAP-01 trunk)
     sump_foot = (slx, sumpY, sump_foot_z)               # pipe intake == strainer point: SINGLE SOURCE so the strainer stays welded to the pipe's foot
-    pipe("Tray sump -> P-04 suction",
+    spipe("Tray sump -> P-04 suction",
          [sump_foot,                                   # pickup foot DOWN IN the (widened) sump well, at the ribbon-lane X — STRAIGHT down, no jog
           (slx, sumpY, RIBBON_Z),                      # straight UP out of the sump to FLUSH height (no over-deck crest)
           (slx, RIBBON_YD_UP, RIBBON_Z),               # flat 90° elbow, +Yd along the ribbon lane to just before the first cantilever
@@ -599,7 +616,7 @@ def plumbing():
           (xrise, ybr, z04),                            # −Yd at the IN-port height to the port-approach lane
           (PXC, ybr, z04), pin("P-04")],                # +X straight into the −Yd-facing IN port
          ov.C_IBC_BROWN)
-    p.append(ov.ruby_cylinder("Tray sump strainer foot", *sump_foot, 14, 36, color=CDK, axis="z"))
+    sump.append(ov.ruby_cylinder("Tray sump strainer foot", *sump_foot, 14, 36, color=CDK, axis="z"))
     # P-04 DISCHARGE → up the BACK of the panel (clear of the OUT-port stack), back to the front
     # ABOVE the pumps where it's clear → SV-02 (in-line) → DV-02 underside branch.
     # P-04 OUT leaves convention-style: a short +Yd stub straight OUT of the +Yd-facing OUT port to a
@@ -682,7 +699,11 @@ def plumbing():
          [acc_out(), (PXC, CTR_Y - ACC_R - 50, ACC_PZ), (PXC, CTR_Y - ACC_R - 50, trz),
           (PXC, GAP_CORR_Y, trz), (BLUE_TRUNK_HANDOFF_X, GAP_CORR_Y, trz),
           (BLUE_TRUNK_HANDOFF_X, GAP_CORR_Y, 60)], ov.C_BLUE)   # drop PAST the FP bottom rail (clears it)
-    return "\n".join(p)
+    if part == "sump":
+        return "\n".join(sump)
+    if part == "corridor":
+        return "\n".join(p)
+    return "\n".join(sump + p)      # "all" — sump first (original order), then the corridor chains
 
 
 def end_wall():

@@ -26,7 +26,7 @@ steel is cut.
 |-------|------|------|-------------------------------|
 | **1** | Geometry set-out | Install the fixed masses that fix the datum | IBC frame + totes plumbed and square; hinge panel hung |
 | **2** | Re-measure | Capture the **as-built** space before committing hard structure | Measured clearances reconciled against the model — TBD |
-| **3** | Hard install | Fit the tray, cantilevers, plumbing, film-plane beams, walkway | Walkway + tray in; perimeter structure loaded — TBD |
+| **3** | Framing | Fit the tray, cantilevers, plumbing, film-plane beams, walkway | Walkway + tray in; perimeter structure loaded — TBD |
 | **4** | Electrical | Panels, lights, and all wiring runs | Circuits terminated + tested (Blue / Brown / Black) — TBD |
 | **5** | Photo system | Film plane, pinhole mechanism, light trap | Camera light-tight and operable — TBD |
 
@@ -54,12 +54,11 @@ _TBD — the "why this order" rationale. Placeholders:_
 | # | Step | Depends on | Status |
 |---|------|-----------|:------:|
 | 1.1 | Install 2× IBC totes on the **pinhole wall** (near column) | — | ☐ |
-| 1.2 | Install the **IBC frame** (restraint deep-box) + **plumbing-panel backing** | 1.1 | ☐ |
-| 1.3 | Install the **panel equipment** (pumps/filters/valves) + **plumb the IBC corridor** through to the walkway line (with the over-walkway **ribbon support cross-beams**) | 1.2 | ☐ |
+| 1.2 | Install the **IBC frame posts** (upright skeleton + feet) + **plumbing-panel backing** — *rails deferred to 1.5 so the far totes can go in* | 1.1 | ☐ |
+| 1.3 | Install the **panel equipment** (pumps/filters/valves) + **plumb the IBC corridor** (corridor lines only — *the over-walkway sump line + its pipe supports are deferred to 3.9*) | 1.2 | ☐ |
 | 1.4 | Install **Fan A** (exhaust) + its **Cct-A electrical** on the pinhole wall — *before the far IBCs bury it* | 1.2 | ☐ |
-| 1.5 | Run the **corridor pump wiring (Cct C)** to the pinhole wall — *before the far IBCs block the wall* | 1.3 | ☐ |
-| 1.6 | Install 2× IBC totes on the **far wall** (far column) + **finalize IBC plumbing** | 1.5 | ☐ |
-| 1.7 | Install the **hinge panel** (light-trap door — *excluding* the light-trap drum) | 1.2 | ☐ |
+| 1.5 | Install 2× IBC totes on the **far wall** (far column), then fit the **frame rails + retaining bars** to trap all totes | 1.4 | ☐ |
+| 1.6 | Install the **hinge panel** (light-trap door — *excluding* the light-trap drum) | 1.2 | ☐ |
 
 **Exit gate:** _TBD — frame square, totes restrained, IBC plumbing pressure-checked._
 
@@ -78,7 +77,7 @@ hard structure is committed.
 
 ---
 
-## 6. Phase 3 — Hard Install
+## 6. Phase 3 — Framing
 
 **Goal:** fit the load-bearing perimeter structure, the processing tray, the remaining
 plumbing, the film-plane support, and the walkway.
@@ -86,13 +85,14 @@ plumbing, the film-plane support, and the walkway.
 | # | Step | Depends on | Status |
 |---|------|-----------|:------:|
 | 3.1 | Install **cantilevers on the far + right walls** | Phase 2 | ☐ |
-| 3.2 | Install the **processing tray** | 3.1 | ☐ |
-| 3.3 | Install **cantilevers on the near wall** | 3.2 | ☐ |
+| 3.2 | Lay the **under-grate ribbon** — sump line + pipe support beams — *span the space, so after the right beams* | 3.1 | ☐ |
+| 3.3 | Install **cantilevers on the near wall** | 3.1 | ☐ |
 | 3.4 | **Extend plumbing** to the pinhole-wall panel | 3.3 | ☐ |
 | 3.5 | Install the **pinhole filter skid** | 3.4 | ☐ |
-| 3.6 | Install the **film-plane beams** + **combined corner plates** (FP ↔ right-walkway) | 3.1 | ☐ |
-| 3.7 | Install the **left cantilevers** | 3.2 | ☐ |
-| 3.8 | Install the **walkway** (grating on all cantilevers) | 3.3, 3.6, 3.7 | ☐ |
+| 3.6 | Install the **processing tray** | 3.1 | ☐ |
+| 3.7 | Install the **film-plane beams** + **combined corner plates** (FP ↔ right-walkway) | 3.1 | ☐ |
+| 3.8 | Install the **left cantilevers** | 3.3 | ☐ |
+| 3.9 | Install the **walkway** (grating on all cantilevers) | 3.2, 3.3, 3.7, 3.8 | ☐ |
 
 **Exit gate:** _TBD — walkway decked, tray sealed, perimeter proof-loaded._
 
@@ -106,8 +106,9 @@ plumbing, the film-plane support, and the walkway.
 |---|------|-----------|:------:|
 | 4.1 | Mount the **external power panel** (PV + E-stop) | Phase 3 | ☐ |
 | 4.2 | Install the **interior electrical panel** + batteries | 4.1 | ☐ |
-| 4.3 | **Hang the lights** | Phase 3 | ☐ |
-| 4.4 | **Run / wire the electrical paths** — IBC pumps, filter, lights, fans, etc. (circuits Blue / Brown / Black) | 4.1, 4.2, 4.3 | ☐ |
+| 4.3 | Run the **corridor pump wiring (Cct-C)** — pinhole panel ↔ corridor panel (off the EP master switch) | 4.2 | ☐ |
+| 4.4 | **Hang the lights** | Phase 3 | ☐ |
+| 4.5 | **Run / wire the electrical paths** — IBC pumps, filter, lights, fans, etc. (circuits Blue / Brown / Black) | 4.2, 4.3, 4.4 | ☐ |
 
 **Exit gate:** _TBD — every circuit terminated, continuity + insulation tested, E-stops verified._
 

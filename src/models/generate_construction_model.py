@@ -48,36 +48,36 @@ STEPS = [
     # ── Phase 1 — Geometry set-out ──
     (1, "1.1", "P1 Near IBCs",     "IBC totes — pinhole wall (near column)",   # [1.1]
         lambda: ov.ibc_stack(alpha=0.85, cols="near")),
-    (1, "1.2", "P1 IBC Frame",     "IBC restraint frame + plumbing-panel backing",   # [1.2] (+ corridor rear panel)
-        lambda: _join(cp.frame(), cp.tote_restraint(), cp.rear_panel())),
-    (1, "1.3", "P1 IBC Plumbing",  "Corridor plumbing + panel equipment + ribbon supports + drains",  # [1.3] (+ equipment + ribbon cross-beams)
-        lambda: _join(cp.equipment(), cp.plumbing(), cp.drains_ports(), cp.ribbon_supports())),
-    (1, "1.4", "P1 Fan A",         "Fan A (exhaust) + its Cct-A electrical — pinhole wall",  # NEW — before the far IBCs bury it
+    (1, "1.2", "P1 IBC Frame",     "IBC frame posts + plumbing-panel backing",   # [1.2] posts only — rails/restraint deferred to 1.5 so the far totes can go in
+        lambda: _join(cp.frame(part="posts"), cp.rear_panel())),
+    (1, "1.3", "P1 IBC Plumbing",  "Corridor plumbing + panel equipment + drains",  # [1.3] corridor-only plumbing — the over-walkway sump line + its support beams move to Phase 3
+        lambda: _join(cp.equipment(), cp.plumbing(part="corridor"), cp.drains_ports())),
+    (1, "1.4", "P1 Fan A",         "Fan A (exhaust) + its Cct-A electrical — pinhole wall",  # before the far IBCs bury it
         lambda: _join(ov.fans(which="A"), ov.fan_wiring(which="A"))),
-    (1, "1.5", "P1 Corridor Wiring", "Corridor pump wiring (Cct C) to the pinhole wall",     # NEW — before the far IBCs block the wall
-        lambda: pw.panel_power(include_switch=True)),
-    (1, "1.6", "P1 Far IBCs",      "IBC totes — far wall (far column)",        # was 1.4 — second-to-last
-        lambda: ov.ibc_stack(alpha=0.85, cols="far")),
-    (1, "1.7", "P1 Hinge Panel",   "Hinge panel (excl. light-trap drum)",      # was 1.5 — last
+    (1, "1.5", "P1 Far IBCs",      "IBC totes — far column, then frame rails + restraint bars",  # far totes go in, THEN the horizontal rails + retaining bars trap all totes
+        lambda: _join(ov.ibc_stack(alpha=0.85, cols="far"), cp.frame(part="rails"), cp.tote_restraint())),
+    (1, "1.6", "P1 Hinge Panel",   "Hinge panel (excl. light-trap drum)",      # last
         lambda: _join(ov.light_trap_frame(), ov.light_seal(), ov.panel_pivot())),
 
-    # ── Phase 3 — Hard install (Phase 2 = re-measure, no geometry) ──
+    # ── Phase 3 — Framing (Phase 2 = re-measure, no geometry) ──
     (3, "3.1", "P3 Far+Right Cantilevers", "Cantilevers — far wall + right-end rectangle",   # [3.1]
         lambda: _join(ov.walkway_brackets(which="far"),
                       ov.right_walkway_cantilever(include_combined=True, include_grate=False))),
-    (3, "3.2", "P3 Processing Tray",   "Processing tray",                   # [3.2] (spray bar moved to Phase 5)
-        lambda: ov.processing_tray()),
+    (3, "3.2", "P3 Ribbons",           "Sump line + pipe support beams (under-grate ribbon)",  # [3.2] the over-walkway plumbing ribbon + its supports, once the right beams are up (Cct-C wiring is in Phase 4)
+        lambda: _join(cp.plumbing(part="sump"), cp.ribbon_supports())),
     (3, "3.3", "P3 Near Cantilevers",  "Cantilevers — near wall",           # [3.3]
         lambda: ov.walkway_brackets(which="near")),
     (3, "3.4", "P3 Pinhole Plumbing",  "Extend plumbing to the pinhole-wall panel",  # [3.4]
         lambda: pw.tap01_supply()),
     (3, "3.5", "P3 Filter Skid",       "Pinhole filter skid (F-1..F-3 + pumps + ACC)",  # [3.5]
         lambda: pw.kit()),
-    (3, "3.6", "P3 Film-Plane Beams",  "Film-plane beams + combined corner plates",  # [3.6] (+ FP↔walkway corner plates)
+    (3, "3.6", "P3 Processing Tray",   "Processing tray",                   # [3.6] (spray bar in Phase 5)
+        lambda: ov.processing_tray()),
+    (3, "3.7", "P3 Film-Plane Beams",  "Film-plane beams + combined corner plates",  # [3.7] (+ FP↔walkway corner plates)
         lambda: _join(ov.film_plane_mechanism(part="beams"), ov.fp_combined_corner_plates())),
-    (3, "3.7", "P3 Left Cantilevers",  "Left-walkway floor-leg cantilevers",  # [3.7]
+    (3, "3.8", "P3 Left Cantilevers",  "Left-walkway floor-leg cantilevers",  # [3.8]
         lambda: '\n'.join(wm.left_floor_cantilevers())),
-    (3, "3.8", "P3 Walkway",           "Walkway grating (all sections)",     # [3.8] — grates only; supports are 3.1/3.3/3.7
+    (3, "3.9", "P3 Walkway",           "Walkway grating (all sections)",     # [3.9] — grates only; supports are 3.1/3.3/3.8
         lambda: ov.walkways(include_right=True, include_right_hangers=False, grates_only=True)),
 
     # ── Phase 4 — Electrical ──
@@ -86,9 +86,11 @@ STEPS = [
     (4, "4.2", "P4 Electrical Panel",  "Interior EP + E-stop + PV disconnect + cables + batteries",  # first click: interior core, links, E-stop, PV disconnect, batteries
         lambda: _join(em.power_core(external_links=True), em.battery(),
                       em.external_estop(), em.pv_disconnect())),
-    (4, "4.3", "P4 Lights",            "Lights",                                 # [4.3]
+    (4, "4.3", "P4 Corridor Wiring",   "Corridor pump wiring (Cct-C) — pinhole panel ↔ corridor panel",  # [4.3] moved from Phase 3; feeds off the EP master switch (EP now present)
+        lambda: pw.panel_power(include_switch=False)),
+    (4, "4.4", "P4 Lights",            "Lights",                                 # [4.4]
         lambda: ov.lighting_wiring()),
-    (4, "4.4", "P4 Wiring + Fit-out",  "Fan B + its Cct-B wiring + shelf",  # [4.4] (Fan A + Cct-A + Cct-C corridor wiring moved to Phase 1; external cooler/solar excluded)
+    (4, "4.5", "P4 Wiring + Fit-out",  "Fan B + its Cct-B wiring + shelf",  # [4.5] (Fan A + Cct-A in Phase 1; external cooler/solar excluded)
         lambda: _join(ov.fans(which="B"), ov.fan_wiring(which="B"), ov.shelf())),
 
     # ── Phase 5 — Photo system ──
@@ -105,7 +107,7 @@ STEPS = [
 PHASE_NAMES = {
     1: "Phase 1 — Geometry Set-Out",
     2: "Phase 2 — Re-measure",
-    3: "Phase 3 — Hard Install",
+    3: "Phase 3 — Framing",
     4: "Phase 4 — Electrical",
     5: "Phase 5 — Photo System",
 }

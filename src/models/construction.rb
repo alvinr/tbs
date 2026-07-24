@@ -29958,10 +29958,10 @@ ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase1Build!step<4")
 p1_inst = entities.add_instance(p1_defn, Geom::Transformation.new)
 p1_inst.name = "Phase 1 Build"
 p1_inst.set_attribute("dynamic_attributes", "_name", "Phase1Build")
-p1_inst.set_attribute("dynamic_attributes", "step", 0.0)
+p1_inst.set_attribute("dynamic_attributes", "step", 1.0)
 p1_inst.set_attribute("dynamic_attributes", "_step_access", "VIEW")
 p1_inst.set_attribute("dynamic_attributes", "_step_label", "Build step")
-p1_inst.set_attribute("dynamic_attributes", "onclick", 'ANIMATE("step",0,1,2,3,4)')
+p1_inst.set_attribute("dynamic_attributes", "onclick", 'ANIMATE("step",1,2,3,4)')
 p1_inst.set_attribute("dynamic_attributes", "_onclick_access", "NONE")
 
 # ── Drop the external evap cooler UNIT + its cord (ov.electrical() draws them) — not part of

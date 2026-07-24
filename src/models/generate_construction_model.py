@@ -117,9 +117,11 @@ def context():
 
 def _phase1_dc_ruby(p1_steps):
     """Ruby for the Phase-1 CLICK-TO-BUILD Dynamic Component: a parent 'Phase 1 Build' DC whose
-    `onclick` cycles a `step` counter (ANIMATE 0→N); each Phase-1 sub-step is a child instance
+    `onclick` cycles a `step` counter (ANIMATE 1→N→1); each Phase-1 sub-step is a child instance
     HIDDEN until `step` reaches its index, so clicking the assembly reveals 1.1 → 1.2 → 1.3 → 1.5
-    in install order (then wraps back to empty). `step` starts at 0 (unbuilt)."""
+    in install order (then wraps back to 1.1). `step` starts at 1, so the first sub-step (1.1) is
+    always drawn — there's geometry to click, and since every sub-step is nested inside this parent
+    onclick DC, clicking anywhere on the shown assembly advances to the next step."""
     da = "dynamic_attributes"
     n = len(p1_steps)
     L = ['# ═══ Phase 1 Build — CLICK-TO-BUILD Dynamic Component ═══',
@@ -136,11 +138,11 @@ def _phase1_dc_ruby(p1_steps):
               f'ci.set_attribute("{da}", "_name", "{cdef}")',
               f'ci.set_attribute("{da}", "hidden", 1.0)',
               f'ci.set_attribute("{da}", "_hidden_formula", "Phase1Build!step<{i}")']
-    anim = ",".join(str(k) for k in range(0, n + 1))   # 0,1,2,...,N
+    anim = ",".join(str(k) for k in range(1, n + 1))   # 1,2,...,N (never 0 → always ≥1 bullet drawn)
     L += ['p1_inst = entities.add_instance(p1_defn, Geom::Transformation.new)',
           'p1_inst.name = "Phase 1 Build"',
           f'p1_inst.set_attribute("{da}", "_name", "Phase1Build")',
-          f'p1_inst.set_attribute("{da}", "step", 0.0)',
+          f'p1_inst.set_attribute("{da}", "step", 1.0)',
           f'p1_inst.set_attribute("{da}", "_step_access", "VIEW")',
           f'p1_inst.set_attribute("{da}", "_step_label", "Build step")',
           f'''p1_inst.set_attribute("{da}", "onclick", 'ANIMATE("step",{anim})')''',

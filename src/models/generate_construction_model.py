@@ -161,7 +161,7 @@ def _phase_dc_ruby(pnum, p_steps):
     return '\n'.join(L), var
 
 
-DC_PHASES = (1, 3)          # phases rendered as click-to-build Dynamic Components
+DC_PHASES = (1, 3, 4)       # phases rendered as click-to-build Dynamic Components
 SCENE_PHASES = (1, 3, 4, 5)  # Phase 2 (re-measure) has no geometry → no scene
 
 

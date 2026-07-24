@@ -143,9 +143,10 @@ Interact tool, click a phase's assembly and each click reveals the next sub-step
 The model defaults to **fully built**, so any phase scene shows the prior phases complete — clicking
 a phase replays *its* build while the phases before it stay done. Drag to orbit, scroll to zoom.
 
-_Phases 1 and 3 are click-to-build DCs (the IBC totes split near/far, the wall brackets split
+_Phases 1, 3, and 4 are click-to-build DCs (the IBC totes split near/far, the wall brackets split
 near/far, and the film-plane rails/beams split from the plane, so the step order matches this
-report). Phases 4–5 are next._
+report). Each DC phase also draws a static built copy shown as inert context in the later phase
+scenes. Phase 5 is next._
 
 <!-- brochure:skip -->
 <div class="sketchfab-embed-wrapper">

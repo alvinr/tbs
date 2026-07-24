@@ -126,12 +126,11 @@ def _phase_dc_ruby(pnum, p_steps):
     """Ruby for a phase's CLICK-TO-BUILD Dynamic Component: a parent 'Phase N Build' DC whose
     `onclick` cycles a `step` counter (ANIMATE 1→N→1); each sub-step is a child instance HIDDEN
     until `step` reaches its index, so clicking the assembly reveals the steps in install order
-    (then wraps back to the first). `step` DEFAULTS TO N (fully built), so every scene shows all
-    prior + current phases complete — this is what makes a later phase "start at the end point of"
-    the phases before it. To replay a phase's build, click its DC: the first click resets it to
-    step 1 (its first sub-step) while prior phases stay complete, then each click adds the next.
-    Since every sub-step is nested inside this parent onclick DC, clicking anywhere on the shown
-    assembly advances it. Returns (ruby, parent_instance_var_name)."""
+    (then wraps back to the first). `step` DEFAULTS TO 1, so a phase's scene opens with only its
+    FIRST sub-step drawn and each click adds the next. The prior phases still read as complete in a
+    later scene because they're shown there via their separate STATIC copy (not this DC). Since
+    every sub-step is nested inside this parent onclick DC, clicking anywhere on the shown assembly
+    advances it. Returns (ruby, parent_instance_var_name)."""
     da = "dynamic_attributes"
     n = len(p_steps)
     ref = f"Phase{pnum}Build"                       # ancestor-ref name used in child formulas
@@ -153,7 +152,7 @@ def _phase_dc_ruby(pnum, p_steps):
     L += [f'{var} = entities.add_instance(p{pnum}_defn, Geom::Transformation.new)',
           f'{var}.name = "Phase {pnum} Build"',
           f'{var}.set_attribute("{da}", "_name", "{ref}")',
-          f'{var}.set_attribute("{da}", "step", {float(n)})',   # default = fully built
+          f'{var}.set_attribute("{da}", "step", 1.0)',   # default = only the first sub-step shown
           f'{var}.set_attribute("{da}", "_step_access", "VIEW")',
           f'{var}.set_attribute("{da}", "_step_label", "Build step")',
           f'''{var}.set_attribute("{da}", "onclick", 'ANIMATE("step",{anim})')''',
@@ -189,13 +188,13 @@ def generate_ruby():
                 comps.append(ov.component(f"Step {sid} — {label}", tag, body()))
     body_ruby = '\n'.join(comps) + '\n' + '\n'.join(dc_blocks)
     dc_redraw = ''.join(f'    cls.redraw_with_undo({v}) rescue nil\n' for v in dc_vars)
-    # The ANIMATE-onclick redraw above resets the first DC's `step` to its first value; re-assert
-    # the fully-built default AFTER the redraw (step = max, every sub-step shown). A live Interact
-    # click still re-evaluates the hidden formulas, so click-to-replay is unaffected.
+    # Re-assert the step-1 default AFTER the DC redraw (the ANIMATE redraw can leave the first DC's
+    # step unstable): step = 1, only the FIRST sub-step shown. A live Interact click re-evaluates the
+    # hidden formulas, so click-to-build is unaffected.
     dc_fixup = ''.join(
-        f'{v}.set_attribute("dynamic_attributes", "step", {float(n)})\n'
-        f'{v}.definition.entities.grep(Sketchup::ComponentInstance).each {{ |c| '
-        f'c.set_attribute("dynamic_attributes", "hidden", 0.0); c.visible = true }}\n'
+        f'{v}.set_attribute("dynamic_attributes", "step", 1.0)\n'
+        f'{v}.definition.entities.grep(Sketchup::ComponentInstance).each_with_index {{ |c, i| '
+        f'c.set_attribute("dynamic_attributes", "hidden", i == 0 ? 0.0 : 1.0); c.visible = (i == 0) }}\n'
         for (v, n) in dc_info)
 
     tags_ruby = '\n'.join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)

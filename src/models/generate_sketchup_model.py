@@ -826,7 +826,7 @@ def right_walkway_cantilever(include_combined=True, include_grate=True):
     return '\n'.join(parts)
 
 
-def walkways(include_right=True, include_right_hangers=None):
+def walkways(include_right=True, include_right_hangers=None, grates_only=False):
     """Perimeter walkway sections — LOWERED deck, in place for operation.
 
     include_right=False omits the right (IBC-end) deck grate. include_right_hangers
@@ -868,7 +868,7 @@ def walkways(include_right=True, include_right_hangers=None):
                           near_len, WALKWAY_W - bt, t, color=C_WALKWAY))
 
     if include_right:
-        if include_right_hangers:
+        if include_right_hangers and not grates_only:
             # rev12: full CANTILEVER-rectangle support (+ grate), replaces the ceiling hangers.
             # The combined corner plates are drawn separately (own tag) so they also show in
             # the Film-Plane scene, so omit them here.
@@ -883,13 +883,16 @@ def walkways(include_right=True, include_right_hangers=None):
     parts.append(left_liftout_grate("Walkway Left (REMOVABLE — transport)",
                                     grate_z, t, C_REMOVABLE))
 
-    # Wall-cantilevered gusset brackets that actually hold the near & far decks up.
-    parts.append(walkway_brackets())
+    # grates_only (construction model): the brackets + left floor-leg cantilevers are their own
+    # install steps, so skip the supports here and draw only the decks.
+    if not grates_only:
+        # Wall-cantilevered gusset brackets that actually hold the near & far decks up.
+        parts.append(walkway_brackets())
 
-    # Left walkway support: floor-leg cantilever brackets. Reuse the walkway model's
-    # shared builder so the support design can't drift between the two models.
-    import generate_walkway_model as wm
-    parts.append('\n'.join(wm.left_floor_cantilevers()))
+        # Left walkway support: floor-leg cantilever brackets. Reuse the walkway model's
+        # shared builder so the support design can't drift between the two models.
+        import generate_walkway_model as wm
+        parts.append('\n'.join(wm.left_floor_cantilevers()))
 
     # Right walkway support is now the cantilever rectangle (right_walkway_cantilever, above),
     # built with the grate when include_right_hangers — the ceiling hangers are retired (rev12).
@@ -897,8 +900,10 @@ def walkways(include_right=True, include_right_hangers=None):
     return '\n'.join(parts)
 
 
-def walkway_brackets():
+def walkway_brackets(which="both"):
     """Wall-cantilevered gusset brackets carrying the NEAR and FAR walkway grates.
+    `which`: "both" (default), "near", or "far" — the construction model installs the far+right
+    brackets before the tray and the near brackets after it.
 
     Triangular-gusset steel brackets bolted to the long side-wall ribs at
     CONTAINER_RIB_SPACING (457mm / 18") centers — the cantilevers the decks rest
@@ -938,6 +943,10 @@ def walkway_brackets():
         ("Near", 0,     +1, WALKWAY_W),                 # grate Yd 0..300
         ("Far",  C_WID, -1, C_WID - WALKWAY_FAR_YD),    # grate inner edge .. far wall
     ]
+    if which == "near":
+        sides = [sides[0]]
+    elif which == "far":
+        sides = [sides[1]]
 
     parts = []
     for label, wall_yd, sign, reach in sides:
@@ -1293,8 +1302,11 @@ def film_plane_saddles(corners, skip=()):
     return '\n'.join(parts)
 
 
-def film_plane_mechanism():
+def film_plane_mechanism(part="all"):
     """Four corner rails + 8 wall-seat saddles + framed muslin screen.
+    `part`: "all" (default), "beams" (the 4 corner rails + wall-seat saddles — the structural
+    support installed in the hard-install phase), or "plane" (the muslin screen + 2" angle frame
+    — the film plane installed in the photo-system phase).
 
     Rails run in +Y (depth), now full-width saddle-to-saddle, at the four corners.
     rev11: the demountable brace cage is RETIRED — each rail end anchors to the
@@ -1310,38 +1322,40 @@ def film_plane_mechanism():
     x_right = RAIL_X_R - rail       # 4609
     # All four corner rails CONTINUOUS, now spanning the full width SADDLE-TO-SADDLE
     # (Yd 0 → C_WID) so each end lands on its wall-seat saddle with no gap (rev11).
-    for rz, nm in [(z_bot, "BR"), (z_top, "TR"), (z_bot, "BL"), (z_top, "TL")]:
-        x = x_right if nm.endswith("R") else x_left
-        parts.append(ruby_box(f"FP Rail {nm}",
-                              x, 0, rz, rail, C_WID, rail, color=C_STEEL))
+    if part in ("all", "beams"):
+        for rz, nm in [(z_bot, "BR"), (z_top, "TR"), (z_bot, "BL"), (z_top, "TL")]:
+            x = x_right if nm.endswith("R") else x_left
+            parts.append(ruby_box(f"FP Rail {nm}",
+                                  x, 0, rz, rail, C_WID, rail, color=C_STEEL))
 
-    # rev11: the demountable brace cage is RETIRED — each of the 8 rail ends is
-    # anchored to the container with an IBC-style wall-seat saddle instead (the
-    # container shell carries the rigidity). Right rails bolted, left thumb-screw.
-    corners = {"TL": (x_left, z_top), "TR": (x_right, z_top),
-               "BL": (x_left, z_bot), "BR": (x_right, z_bot)}
-    # rev12: BR corner is the COMBINED plate (built by the right walkway, fp_combined_corner_plate),
-    # so skip it here to avoid a duplicate saddle.
-    parts.append(film_plane_saddles(corners, skip={"BR"}))
+        # rev11: the demountable brace cage is RETIRED — each of the 8 rail ends is
+        # anchored to the container with an IBC-style wall-seat saddle instead (the
+        # container shell carries the rigidity). Right rails bolted, left thumb-screw.
+        corners = {"TL": (x_left, z_top), "TR": (x_right, z_top),
+                   "BL": (x_left, z_bot), "BR": (x_right, z_bot)}
+        # rev12: BR corner is the COMBINED plate (built by the right walkway, fp_combined_corner_plate),
+        # so skip it here to avoid a duplicate saddle.
+        parts.append(film_plane_saddles(corners, skip={"BR"}))
 
-    # Muslin screen — translucent panel at the nominal film-plane depth.
-    board_t = 20
-    parts.append(ruby_box("Film Plane Screen (muslin)",
-                          FP_X_L, FP_Y, 0,
-                          FP_W, board_t, FP_H,
-                          color=C_FILM, alpha=0.3))
+    if part in ("all", "plane"):
+        # Muslin screen — translucent panel at the nominal film-plane depth.
+        board_t = 20
+        parts.append(ruby_box("Film Plane Screen (muslin)",
+                              FP_X_L, FP_Y, 0,
+                              FP_W, board_t, FP_H,
+                              color=C_FILM, alpha=0.3))
 
-    # 2" steel angle frame around the screen, on the pinhole-facing side.
-    leg = FP_ANGLE_LEG  # 50.8mm
-    fy = FP_Y - leg
-    parts.append(ruby_box("FP Frame Bottom",
-                          FP_X_L, fy, 0, FP_W, leg, leg, color=C_STEEL))
-    parts.append(ruby_box("FP Frame Top",
-                          FP_X_L, fy, FP_H - leg, FP_W, leg, leg, color=C_STEEL))
-    parts.append(ruby_box("FP Frame Left",
-                          FP_X_L, fy, 0, leg, leg, FP_H, color=C_STEEL))
-    parts.append(ruby_box("FP Frame Right",
-                          FP_X_R - leg, fy, 0, leg, leg, FP_H, color=C_STEEL))
+        # 2" steel angle frame around the screen, on the pinhole-facing side.
+        leg = FP_ANGLE_LEG  # 50.8mm
+        fy = FP_Y - leg
+        parts.append(ruby_box("FP Frame Bottom",
+                              FP_X_L, fy, 0, FP_W, leg, leg, color=C_STEEL))
+        parts.append(ruby_box("FP Frame Top",
+                              FP_X_L, fy, FP_H - leg, FP_W, leg, leg, color=C_STEEL))
+        parts.append(ruby_box("FP Frame Left",
+                              FP_X_L, fy, 0, leg, leg, FP_H, color=C_STEEL))
+        parts.append(ruby_box("FP Frame Right",
+                              FP_X_R - leg, fy, 0, leg, leg, FP_H, color=C_STEEL))
 
     return '\n'.join(parts)
 

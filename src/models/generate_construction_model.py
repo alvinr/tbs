@@ -61,18 +61,23 @@ STEPS = [
         lambda: _join(ov.light_trap_frame(), ov.light_seal(), ov.panel_pivot())),
 
     # ── Phase 3 — Hard install (Phase 2 = re-measure, no geometry) ──
-    (3, "3.1", "P3 Right Cantilever",  "Right-wall cantilever rectangle",   # [3.1 right]
-        lambda: ov.right_walkway_cantilever(include_grate=False)),
-    (3, "3.1b", "P3 Wall Brackets",    "Near + far wall cantilever brackets",  # [3.1 far + 3.3 near — grouped: walkway_brackets draws both]
-        lambda: ov.walkway_brackets()),
-    (3, "3.2", "P3 Processing Tray",   "Processing tray + spray bar",       # [3.2 (+ spray bar co-installed)]
+    (3, "3.1", "P3 Far+Right Cantilevers", "Cantilevers — far wall + right-end rectangle",   # [3.1]
+        lambda: _join(ov.walkway_brackets(which="far"),
+                      ov.right_walkway_cantilever(include_combined=True, include_grate=False))),
+    (3, "3.2", "P3 Processing Tray",   "Processing tray + spray bar",       # [3.2]
         lambda: _join(ov.processing_tray(), ov.spray_bar())),
-    (3, "3.4", "P3 Pinhole Plumbing",  "Plumbing extended to the pinhole-wall panel + filter skid",  # [3.4 + 3.5]
-        lambda: _join(pw.kit(), pw.tap01_supply())),
+    (3, "3.3", "P3 Near Cantilevers",  "Cantilevers — near wall",           # [3.3]
+        lambda: ov.walkway_brackets(which="near")),
+    (3, "3.4", "P3 Pinhole Plumbing",  "Extend plumbing to the pinhole-wall panel",  # [3.4]
+        lambda: pw.tap01_supply()),
+    (3, "3.5", "P3 Filter Skid",       "Pinhole filter skid (F-1..F-3 + pumps + ACC)",  # [3.5]
+        lambda: pw.kit()),
+    (3, "3.6", "P3 Film-Plane Beams",  "Film-plane beams (corner rails + wall-seat saddles)",  # [3.6]
+        lambda: ov.film_plane_mechanism(part="beams")),
     (3, "3.7", "P3 Left Cantilevers",  "Left-walkway floor-leg cantilevers",  # [3.7]
         lambda: '\n'.join(wm.left_floor_cantilevers())),
-    (3, "3.8", "P3 Walkway",           "Walkway grating (all sections)",     # [3.8 (+ film-plane beams 3.6 shown with the film plane in P5)]
-        lambda: ov.walkways(include_right=True, include_right_hangers=False)),
+    (3, "3.8", "P3 Walkway",           "Walkway grating (all sections)",     # [3.8] — grates only; supports are 3.1/3.3/3.7
+        lambda: ov.walkways(include_right=True, include_right_hangers=False, grates_only=True)),
 
     # ── Phase 4 — Electrical ──
     (4, "4.1", "P4 Electrical Panel",  "Interior electrical panel + batteries",  # [4.1]
@@ -85,8 +90,8 @@ STEPS = [
         lambda: _join(ov.fans(which="B"), ov.fan_wiring(which="B"), ov.shelf())),
 
     # ── Phase 5 — Photo system ──
-    (5, "5.1", "P5 Film Plane",        "Film plane + carriages (+ rails/beams)",  # [5.1 (+ 3.6 beams — grouped: film_plane_mechanism draws both)]
-        lambda: _join(ov.film_plane_mechanism(), ov.fp_combined_corner_plates())),
+    (5, "5.1", "P5 Film Plane",        "Film plane + carriages (screen + frame)",  # [5.1] — beams already in 3.6
+        lambda: ov.film_plane_mechanism(part="plane")),
     (5, "5.2", "P5 Pinhole",           "Pinhole mechanism",                       # [5.2]
         lambda: ov.pinhole_assembly()),
     (5, "5.3", "P5 Light Trap",        "Light-trap drum + bay",                   # [5.3]
@@ -124,10 +129,12 @@ def _phase_dc_ruby(pnum, p_steps):
     """Ruby for a phase's CLICK-TO-BUILD Dynamic Component: a parent 'Phase N Build' DC whose
     `onclick` cycles a `step` counter (ANIMATE 1→N→1); each sub-step is a child instance HIDDEN
     until `step` reaches its index, so clicking the assembly reveals the steps in install order
-    (then wraps back to the first). `step` starts at 1, so the first sub-step is always drawn —
-    there's geometry to click, and since every sub-step is nested inside this parent onclick DC,
-    clicking anywhere on the shown assembly advances to the next step.
-    Returns (ruby, parent_instance_var_name)."""
+    (then wraps back to the first). `step` DEFAULTS TO N (fully built), so every scene shows all
+    prior + current phases complete — this is what makes a later phase "start at the end point of"
+    the phases before it. To replay a phase's build, click its DC: the first click resets it to
+    step 1 (its first sub-step) while prior phases stay complete, then each click adds the next.
+    Since every sub-step is nested inside this parent onclick DC, clicking anywhere on the shown
+    assembly advances it. Returns (ruby, parent_instance_var_name)."""
     da = "dynamic_attributes"
     n = len(p_steps)
     ref = f"Phase{pnum}Build"                       # ancestor-ref name used in child formulas
@@ -149,7 +156,7 @@ def _phase_dc_ruby(pnum, p_steps):
     L += [f'{var} = entities.add_instance(p{pnum}_defn, Geom::Transformation.new)',
           f'{var}.name = "Phase {pnum} Build"',
           f'{var}.set_attribute("{da}", "_name", "{ref}")',
-          f'{var}.set_attribute("{da}", "step", 1.0)',
+          f'{var}.set_attribute("{da}", "step", {float(n)})',   # default = fully built
           f'{var}.set_attribute("{da}", "_step_access", "VIEW")',
           f'{var}.set_attribute("{da}", "_step_label", "Build step")',
           f'''{var}.set_attribute("{da}", "onclick", 'ANIMATE("step",{anim})')''',
@@ -166,18 +173,27 @@ def generate_ruby():
     TAGS = ["Context"] + step_tags
 
     comps = [ov.component("Container (ghost)", "Context", context())]
-    dc_blocks, dc_vars = [], []
+    dc_blocks, dc_vars, dc_info = [], [], []
     for pn in SCENE_PHASES:
         p_steps = [(sid, tag, label, body) for (p, sid, tag, label, body) in STEPS if p == pn]
         if pn in DC_PHASES:
             block, var = _phase_dc_ruby(pn, p_steps)
             dc_blocks.append(block)
             dc_vars.append(var)
+            dc_info.append((var, len(p_steps)))
         else:
             for (sid, tag, label, body) in p_steps:
                 comps.append(ov.component(f"Step {sid} — {label}", tag, body()))
     body_ruby = '\n'.join(comps) + '\n' + '\n'.join(dc_blocks)
     dc_redraw = ''.join(f'    cls.redraw_with_undo({v}) rescue nil\n' for v in dc_vars)
+    # The ANIMATE-onclick redraw above resets the first DC's `step` to its first value; re-assert
+    # the fully-built default AFTER the redraw (step = max, every sub-step shown). A live Interact
+    # click still re-evaluates the hidden formulas, so click-to-replay is unaffected.
+    dc_fixup = ''.join(
+        f'{v}.set_attribute("dynamic_attributes", "step", {float(n)})\n'
+        f'{v}.definition.entities.grep(Sketchup::ComponentInstance).each {{ |c| '
+        f'c.set_attribute("dynamic_attributes", "hidden", 0.0); c.visible = true }}\n'
+        for (v, n) in dc_info)
 
     tags_ruby = '\n'.join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep_tags_ruby = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
@@ -261,6 +277,8 @@ if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
 {dc_redraw}  end
 end
 
+# Re-assert the fully-built default (the ANIMATE redraw above resets the first DC's step).
+{dc_fixup}
 {{ success: true, model: "Construction Sequence",
    components: model.entities.grep(Sketchup::ComponentInstance).length,
    tags: model.layers.count, scenes: model.pages.count }}.to_json

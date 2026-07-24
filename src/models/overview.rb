@@ -147,7 +147,7 @@ end
   # RWk Long beam X4329 upper
   grp = ents.add_group
   grp.name = "RWk Long beam X4329 upper"
-  face = grp.entities.add_face([4329.mm,0.mm,95.mm], [4369.mm,0.mm,95.mm], [4369.mm,2362.mm,95.mm], [4329.mm,2362.mm,95.mm])
+  face = grp.entities.add_face([4329.mm,0.mm,95.mm], [4369.mm,0.mm,95.mm], [4369.mm,1812.mm,95.mm], [4329.mm,1812.mm,95.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
@@ -180,7 +180,73 @@ end
   # RWk Long beam X4329 lower
   grp = ents.add_group
   grp.name = "RWk Long beam X4329 lower"
-  face = grp.entities.add_face([4329.mm,1306.mm,80.mm], [4369.mm,1306.mm,80.mm], [4369.mm,2362.mm,80.mm], [4329.mm,2362.mm,80.mm])
+  face = grp.entities.add_face([4329.mm,1306.mm,80.mm], [4369.mm,1306.mm,80.mm], [4369.mm,1812.mm,80.mm], [4329.mm,1812.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam inner ramp-out
+  grp = ents.add_group
+  grp.name = "RWk Long beam inner ramp-out"
+  face = grp.entities.add_face([4329.mm,1812.mm,80.mm], [4369.mm,1812.mm,80.mm], [4469.mm,1912.mm,80.mm], [4429.mm,1912.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(35.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4429 upper
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4429 upper"
+  face = grp.entities.add_face([4429.mm,1912.mm,95.mm], [4469.mm,1912.mm,95.mm], [4469.mm,2062.mm,95.mm], [4429.mm,2062.mm,95.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4429 lower
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4429 lower"
+  face = grp.entities.add_face([4429.mm,1912.mm,80.mm], [4469.mm,1912.mm,80.mm], [4469.mm,2062.mm,80.mm], [4429.mm,2062.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(15.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam inner ramp-in
+  grp = ents.add_group
+  grp.name = "RWk Long beam inner ramp-in"
+  face = grp.entities.add_face([4429.mm,2062.mm,80.mm], [4469.mm,2062.mm,80.mm], [4369.mm,2162.mm,80.mm], [4329.mm,2162.mm,80.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(35.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4329 upper
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4329 upper"
+  face = grp.entities.add_face([4329.mm,2162.mm,95.mm], [4369.mm,2162.mm,95.mm], [4369.mm,2362.mm,95.mm], [4329.mm,2362.mm,95.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(20.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # RWk Long beam X4329 lower
+  grp = ents.add_group
+  grp.name = "RWk Long beam X4329 lower"
+  face = grp.entities.add_face([4329.mm,2162.mm,80.mm], [4369.mm,2162.mm,80.mm], [4369.mm,2362.mm,80.mm], [4329.mm,2362.mm,80.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(15.mm)
   mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")

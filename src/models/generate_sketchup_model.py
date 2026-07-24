@@ -587,6 +587,19 @@ RWK_RIBBON_NOTCH_YDS = [1110, 1132, 1194, 1241]        # lanes 0,1,2,3 corridor-
 RWK_RIBBON_NOTCH_W   = 34                              # Yd width per notch (pipe OD 21 + clearance)
 RWK_NOTCH_FLOOR      = RWK_GRATE_Z - PUMP_PIPE_OD - 2  # 92 — notch floor, 2mm below the flush pipe soffit (Z94)
 
+# Inner long beam is CRANKED outboard around the muslin-drop rod slot: the rigid muslin batten drops
+# straight down at the tray edge (X=RWK_X_L), which sits over the inner beam — so over the notch Yd the
+# beam is jogged outboard by the full notch depth (its inboard face moves R_X0→R_X1) with angled ramps,
+# vacating the entire notch footprint for the rod while the beam stays ONE continuous (uncut) member.
+# Right walkway only — the left notch falls between floor-leg brackets, no beam under it. Tied to the
+# muslin-notch constants so the crank can't drift from the notch it clears.
+RWK_CRANK_N0   = WALKWAY_MUSLIN_NOTCH_YD0                              # 1912 — notch Yd start
+RWK_CRANK_N1   = WALKWAY_MUSLIN_NOTCH_YD0 + WALKWAY_MUSLIN_NOTCH_DY    # 2062 — notch Yd end
+RWK_CRANK_DX   = WALKWAY_MUSLIN_NOTCH_R_X1 - WALKWAY_MUSLIN_NOTCH_R_X0 # 100 — jog = notch depth (clears the full notch)
+RWK_CRANK_RAMP = 100                                                  # angled ramp Yd length each side
+RWK_CRANK_Y0   = RWK_CRANK_N0 - RWK_CRANK_RAMP                        # 1812 — ramp-out start
+RWK_CRANK_Y1   = RWK_CRANK_N1 + RWK_CRANK_RAMP                        # 2162 — ramp-in end
+
 
 def _yd_split(y0, y1, cuts):
     """Sub-intervals of [y0,y1] with each (cy0,cw) in `cuts` removed (used to segment a long
@@ -617,22 +630,43 @@ def _rwk_xbeam(name, yd, x0, x1):
     return out
 
 
-def _rwk_long_beam(x, cross_ranges, notches=()):
+def _rwk_long_beam(x, cross_ranges, notches=(), y0=0, y1=C_WID):
     """Yd long beam half-lapped at the arms it crosses (cross_ranges = (yd0, w)): continuous UPPER
     half + LOWER half cut away at each crossing.  `notches` = (yd0, w) OPEN-TOP pipe slots (outer beam
     only): the UPPER web is cut away and the lower web dropped to RWK_NOTCH_FLOOR so a flush ribbon pipe
-    crosses through the top of the beam."""
+    crosses through the top of the beam.  `y0..y1` restricts the run to a Yd sub-range (used to build the
+    STRAIGHT portions of the cranked inner beam either side of the muslin-rod jog)."""
     out = []
     # UPPER half (Z95-115): full Yd, minus the pipe notches (an open-top notch removes the upper web)
-    for s0, s1 in _yd_split(0, C_WID, list(notches)):
+    for s0, s1 in _yd_split(y0, y1, list(notches)):
         out.append(ruby_box(f"RWk Long beam X{int(x)} upper", x, s0, RWK_HL, RWK_BEARER_W, s1 - s0, RWK_ARM_TOP - RWK_HL, color=C_STEEL))
     # LOWER web (Z80-95): removed at arm half-laps AND at notches (a reduced-height web fills the notch below)
-    for s0, s1 in _yd_split(0, C_WID, list(cross_ranges) + list(notches)):
+    for s0, s1 in _yd_split(y0, y1, list(cross_ranges) + list(notches)):
         out.append(ruby_box(f"RWk Long beam X{int(x)} lower", x, s0, RWK_BEARER_Z0, RWK_BEARER_W, s1 - s0, RWK_HL - RWK_BEARER_Z0, color=C_STEEL))
     # at each notch: the surviving Z80-NOTCH_FLOOR bottom web (skip where an arm half-lap already removed it)
     for n0, nw in notches:
         for s0, s1 in _yd_split(n0, n0 + nw, list(cross_ranges)):
             out.append(ruby_box(f"RWk Long beam X{int(x)} notch web", x, s0, RWK_BEARER_Z0, RWK_BEARER_W, s1 - s0, RWK_NOTCH_FLOOR - RWK_BEARER_Z0, color=C_STEEL))
+    return out
+
+
+def _rwk_inner_beam_cranked(x, cross_ranges):
+    """The inner right-walkway long beam, CRANKED outboard by RWK_CRANK_DX over the muslin-drop notch
+    (Yd RWK_CRANK_N0..N1) with angled ramps, so the rigid muslin rod drops straight down at the tray
+    edge (X=x) clear of the beam — while the beam stays ONE continuous (uncut) member. Built as: the
+    straight run before the crank (carries the arm half-laps) + a ramp-out prism + the jogged straight
+    segment + a ramp-in prism + the straight run after. The crank zone has no arms/pipe-notches."""
+    w, z0, h, dx = RWK_BEARER_W, RWK_BEARER_Z0, RWK_ARM_TOP - RWK_BEARER_Z0, RWK_CRANK_DX
+    out = []
+    out += _rwk_long_beam(x, cross_ranges, y0=0, y1=RWK_CRANK_Y0)                 # straight (arms)
+    out.append(ruby_prism("RWk Long beam inner ramp-out",                        # angled ramp X→X+dx
+                          [(x, RWK_CRANK_Y0), (x + w, RWK_CRANK_Y0),
+                           (x + dx + w, RWK_CRANK_N0), (x + dx, RWK_CRANK_N0)], z0, h, color=C_STEEL))
+    out += _rwk_long_beam(x + dx, (), y0=RWK_CRANK_N0, y1=RWK_CRANK_N1)           # jogged clear of notch
+    out.append(ruby_prism("RWk Long beam inner ramp-in",                         # angled ramp X+dx→X
+                          [(x + dx, RWK_CRANK_N1), (x + dx + w, RWK_CRANK_N1),
+                           (x + w, RWK_CRANK_Y1), (x, RWK_CRANK_Y1)], z0, h, color=C_STEEL))
+    out += _rwk_long_beam(x, cross_ranges, y0=RWK_CRANK_Y1, y1=C_WID)            # straight run after
     return out
 
 
@@ -778,7 +812,7 @@ def right_walkway_cantilever(include_combined=True, include_grate=True):
     lx, rx = RWK_X_L, RWK_X_R - RWK_BEARER_W
     arm_ranges = [(yd, RWK_ARM_W) for yd in RWK_UP_YDS]
     notch_ranges = [(cy - RWK_RIBBON_NOTCH_W / 2, RWK_RIBBON_NOTCH_W) for cy in RWK_RIBBON_NOTCH_YDS]
-    parts += _rwk_long_beam(lx, arm_ranges)                    # inner beam — no pipe notches (ribbon exits the OUTER beam)
+    parts += _rwk_inner_beam_cranked(lx, arm_ranges)          # inner beam — CRANKED around the muslin-rod slot (uncut)
     parts += _rwk_long_beam(rx, arm_ranges, notch_ranges)     # outer beam — open-top notch at each ribbon lane
     for ey in (0, C_WID - RWK_BEARER_W):
         parts.append(ruby_box(f"RWk end beam Yd{int(ey)}", lx, ey, RWK_BEARER_Z0, (rx + RWK_BEARER_W) - lx, RWK_BEARER_W, RWK_ARM_TOP - RWK_BEARER_Z0, color=C_STEEL))

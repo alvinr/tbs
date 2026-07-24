@@ -187,6 +187,17 @@ A closed rectangular frame of **40×40×3mm SHS** sits directly under the deck:
 - **Two short end beams** (≈300mm) close the near and far ends, joining the long
   beams into a torsionally stiff closed rectangle (no free bearer ends to droop).
 
+**Cranked inner beam at the muslin-rod slot.** The muslin-drop notch on the right walkway
+(Yd 1,912–2,062) sits at the tray-facing edge, directly over the **inner** long beam — and the
+rigid batten on the muslin's bottom edge has to drop straight down through it into the tray. Rather
+than cut the beam (which would sever a continuous member at mid-span of its ~1.1m end bay), the inner
+beam is **cranked outboard 100mm** — the full notch depth — over the notch, with ~100mm angled ramps
+each side. Over Yd 1,912–2,062 it runs at X4,429 instead of X4,329, vacating the entire notch footprint
+so the rod passes clear, while the beam stays **one continuous, uncut member** — bending and tension
+continuity fully preserved. The grating loses no support (the notch already voids the deck there; the
+outboard strip still bears on the cranked beam and the outer beam). The left-walkway notch needs no
+such treatment — it falls between floor-leg brackets, with no beam beneath it. See **Sheet 3 (Detail A)**.
+
 ### 4.2 Center Cantilever Arms
 
 Two **40×40×3mm SHS arms** cantilever inward off the **IBC corridor uprights**

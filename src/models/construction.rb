@@ -30,6 +30,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   model.layers.add("P1 Near IBCs") unless model.layers["P1 Near IBCs"]
   model.layers.add("P1 IBC Frame") unless model.layers["P1 IBC Frame"]
   model.layers.add("P1 IBC Plumbing") unless model.layers["P1 IBC Plumbing"]
+  model.layers.add("P1 Fan A") unless model.layers["P1 Fan A"]
+  model.layers.add("P1 Corridor Wiring") unless model.layers["P1 Corridor Wiring"]
   model.layers.add("P1 Far IBCs") unless model.layers["P1 Far IBCs"]
   model.layers.add("P1 Hinge Panel") unless model.layers["P1 Hinge Panel"]
   model.layers.add("P3 Right Cantilever") unless model.layers["P3 Right Cantilever"]
@@ -15235,48 +15237,269 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   inst.name = "Step 4.3 — Lights"
   inst.layer = model.layers["P4 Lights"]
 
-  # ═══ Step 4.4 — Wiring paths (pumps/fans) + fans + shelf ═══
-  defn = model.definitions.add("Step 4.4 — Wiring paths (pumps/fans) + fans + shelf")
+  # ═══ Step 4.4 — Fan B + its Cct-B wiring + shelf ═══
+  defn = model.definitions.add("Step 4.4 — Fan B + its Cct-B wiring + shelf")
   ents = defn.entities
-  # Conduit to Fan A (exhaust, Cct A)
+  # Fan B (intake) baffle duct
   grp = ents.add_group
-  grp.name = "Conduit to Fan A (exhaust, Cct A)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 1147.mm, 0.mm)
-  circle = ge.add_circle([5618.mm,20.mm,2358.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["MC4 PV1 (-)"] || model.materials.add("MC4 PV1 (-)")
-  mat.color = Sketchup::Color.new(154, 160, 166)
+  grp.name = "Fan B (intake) baffle duct"
+  face = grp.entities.add_face([0.mm,265.mm,500.mm], [300.mm,265.mm,500.mm], [300.mm,465.mm,500.mm], [0.mm,465.mm,500.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Fan B (intake) baffle duct"] || model.materials.add("Fan B (intake) baffle duct")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 0.5
+  grp.material = mat
+
+  # Fan B (intake) baffle plate 1
+  grp = ents.add_group
+  grp.name = "Fan B (intake) baffle plate 1"
+  face = grp.entities.add_face([96.mm,265.mm,500.mm], [104.mm,265.mm,500.mm], [104.mm,390.mm,500.mm], [96.mm,390.mm,500.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Conduit to Fan A (exhaust, Cct A) elbow
+  # Fan B (intake) baffle plate 2
   grp = ents.add_group
-  grp.name = "Conduit to Fan A (exhaust, Cct A) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([5618.mm,1167.mm,2344.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5618.mm,1167.mm,2358.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["MC4 PV1 (-)"] || model.materials.add("MC4 PV1 (-)")
-  mat.color = Sketchup::Color.new(154, 160, 166)
+  grp.name = "Fan B (intake) baffle plate 2"
+  face = grp.entities.add_face([196.mm,340.mm,500.mm], [204.mm,340.mm,500.mm], [204.mm,465.mm,500.mm], [196.mm,465.mm,500.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Conduit to Fan A (exhaust, Cct A)
+  # Fan B (intake) fan frame top
   grp = ents.add_group
-  grp.name = "Conduit to Fan A (exhaust, Cct A)"
+  grp.name = "Fan B (intake) fan frame top"
+  face = grp.entities.add_face([250.mm,265.mm,675.mm], [300.mm,265.mm,675.mm], [300.mm,465.mm,675.mm], [250.mm,465.mm,675.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(25.mm)
+  mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) fan frame bottom
+  grp = ents.add_group
+  grp.name = "Fan B (intake) fan frame bottom"
+  face = grp.entities.add_face([250.mm,265.mm,500.mm], [300.mm,265.mm,500.mm], [300.mm,465.mm,500.mm], [250.mm,465.mm,500.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(25.mm)
+  mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) fan frame left
+  grp = ents.add_group
+  grp.name = "Fan B (intake) fan frame left"
+  face = grp.entities.add_face([250.mm,265.mm,525.mm], [300.mm,265.mm,525.mm], [300.mm,290.mm,525.mm], [250.mm,290.mm,525.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) fan frame right
+  grp = ents.add_group
+  grp.name = "Fan B (intake) fan frame right"
+  face = grp.entities.add_face([250.mm,440.mm,525.mm], [300.mm,440.mm,525.mm], [300.mm,465.mm,525.mm], [250.mm,465.mm,525.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) fan hub
+  grp = ents.add_group
+  grp.name = "Fan B (intake) fan hub"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -244.mm)
-  circle = ge.add_circle([5618.mm,1181.mm,2344.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["MC4 PV1 (-)"] || model.materials.add("MC4 PV1 (-)")
-  mat.color = Sketchup::Color.new(154, 160, 166)
+  circle = ge.add_circle([250.mm,365.mm,600.mm], [1,0,0], 19.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(50.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) fan blade up
+  grp = ents.add_group
+  grp.name = "Fan B (intake) fan blade up"
+  face = grp.entities.add_face([272.5.mm,350.mm,619.5.mm], [278.5.mm,350.mm,619.5.mm], [278.5.mm,380.mm,619.5.mm], [272.5.mm,380.mm,619.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(46.5.mm)
+  mat = model.materials["Carriage Plate L L"] || model.materials.add("Carriage Plate L L")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) fan blade down
+  grp = ents.add_group
+  grp.name = "Fan B (intake) fan blade down"
+  face = grp.entities.add_face([272.5.mm,350.mm,534.mm], [278.5.mm,350.mm,534.mm], [278.5.mm,380.mm,534.mm], [272.5.mm,380.mm,534.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(46.5.mm)
+  mat = model.materials["Carriage Plate L L"] || model.materials.add("Carriage Plate L L")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) fan blade left
+  grp = ents.add_group
+  grp.name = "Fan B (intake) fan blade left"
+  face = grp.entities.add_face([272.5.mm,299.mm,585.mm], [278.5.mm,299.mm,585.mm], [278.5.mm,345.5.mm,585.mm], [272.5.mm,345.5.mm,585.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(30.mm)
+  mat = model.materials["Carriage Plate L L"] || model.materials.add("Carriage Plate L L")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) fan blade right
+  grp = ents.add_group
+  grp.name = "Fan B (intake) fan blade right"
+  face = grp.entities.add_face([272.5.mm,384.5.mm,585.mm], [278.5.mm,384.5.mm,585.mm], [278.5.mm,431.mm,585.mm], [272.5.mm,431.mm,585.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(30.mm)
+  mat = model.materials["Carriage Plate L L"] || model.materials.add("Carriage Plate L L")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) wall flange
+  grp = ents.add_group
+  grp.name = "Fan B (intake) wall flange"
+  face = grp.entities.add_face([0.mm,235.mm,470.mm], [5.mm,235.mm,470.mm], [5.mm,495.mm,470.mm], [0.mm,495.mm,470.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(260.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) flange bolt M10
+  grp = ents.add_group
+  grp.name = "Fan B (intake) flange bolt M10"
+  ge = grp.entities
+  circle = ge.add_circle([-6.5.mm,250.mm,485.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(13.mm)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) flange bolt M10
+  grp = ents.add_group
+  grp.name = "Fan B (intake) flange bolt M10"
+  ge = grp.entities
+  circle = ge.add_circle([-6.5.mm,250.mm,715.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(13.mm)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) flange bolt M10
+  grp = ents.add_group
+  grp.name = "Fan B (intake) flange bolt M10"
+  ge = grp.entities
+  circle = ge.add_circle([-6.5.mm,480.mm,485.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(13.mm)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) flange bolt M10
+  grp = ents.add_group
+  grp.name = "Fan B (intake) flange bolt M10"
+  ge = grp.entities
+  circle = ge.add_circle([-6.5.mm,480.mm,715.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(13.mm)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) louvre grille
+  grp = ents.add_group
+  grp.name = "Fan B (intake) louvre grille"
+  face = grp.entities.add_face([-40.mm,265.mm,535.mm], [0.mm,265.mm,535.mm], [0.mm,465.mm,535.mm], [-40.mm,465.mm,535.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(130.mm)
+  mat = model.materials["Fan B (intake) louvre grille"] || model.materials.add("Fan B (intake) louvre grille")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 0.55
+  grp.material = mat
+
+  # Fan B (intake) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan B (intake) louvre slat"
+  face = grp.entities.add_face([-38.mm,269.mm,546.5.mm], [-2.mm,269.mm,546.5.mm], [-2.mm,461.mm,546.5.mm], [-38.mm,461.mm,546.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan B (intake) louvre slat"
+  face = grp.entities.add_face([-38.mm,269.mm,572.5.mm], [-2.mm,269.mm,572.5.mm], [-2.mm,461.mm,572.5.mm], [-38.mm,461.mm,572.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan B (intake) louvre slat"
+  face = grp.entities.add_face([-38.mm,269.mm,598.5.mm], [-2.mm,269.mm,598.5.mm], [-2.mm,461.mm,598.5.mm], [-38.mm,461.mm,598.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan B (intake) louvre slat"
+  face = grp.entities.add_face([-38.mm,269.mm,624.5.mm], [-2.mm,269.mm,624.5.mm], [-2.mm,461.mm,624.5.mm], [-38.mm,461.mm,624.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan B (intake) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan B (intake) louvre slat"
+  face = grp.entities.add_face([-38.mm,269.mm,650.5.mm], [-2.mm,269.mm,650.5.mm], [-2.mm,461.mm,650.5.mm], [-38.mm,461.mm,650.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -15739,873 +15962,6 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Fan feed riser (EP -> ceiling trunk, Cct A/B)
-  grp = ents.add_group
-  grp.name = "Fan feed riser (EP -> ceiling trunk, Cct A/B)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 798.mm)
-  circle = ge.add_circle([2060.mm,20.mm,1560.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["MC4 PV1 (-)"] || model.materials.add("MC4 PV1 (-)")
-  mat.color = Sketchup::Color.new(154, 160, 166)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A feed (EP -> Fan A tap, Cct A)
-  grp = ents.add_group
-  grp.name = "Fan A feed (EP -> Fan A tap, Cct A)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(3558.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2060.mm,20.mm,2358.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["MC4 PV1 (-)"] || model.materials.add("MC4 PV1 (-)")
-  mat.color = Sketchup::Color.new(154, 160, 166)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B feed (EP -> Fan B tap, Cct B)
-  grp = ents.add_group
-  grp.name = "Fan B feed (EP -> Fan B tap, Cct B)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-1760.mm, -2.mm, 0.mm)
-  circle = ge.add_circle([2060.mm,20.mm,2358.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["MC4 PV1 (-)"] || model.materials.add("MC4 PV1 (-)")
-  mat.color = Sketchup::Color.new(154, 160, 166)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Master pump switch (Cct C, on EP)
-  grp = ents.add_group
-  grp.name = "Master pump switch (Cct C, on EP)"
-  face = grp.entities.add_face([2153.mm,30.mm,1840.mm], [2205.mm,30.mm,1840.mm], [2205.mm,78.mm,1840.mm], [2153.mm,78.mm,1840.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(56.mm)
-  mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
-  mat.color = Sketchup::Color.new(26, 26, 26)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Master switch lever (OFF cutoff)
-  grp = ents.add_group
-  grp.name = "Master switch lever (OFF cutoff)"
-  face = grp.entities.add_face([2172.mm,78.mm,1852.mm], [2186.mm,78.mm,1852.mm], [2186.mm,124.mm,1852.mm], [2172.mm,124.mm,1852.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["SV-01 sample valve handwheel stem"] || model.materials.add("SV-01 sample valve handwheel stem")
-  mat.color = Sketchup::Color.new(192, 32, 42)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C feed (EP master sw -> corridor dist block)
-  grp = ents.add_group
-  grp.name = "Cct C feed (EP master sw -> corridor dist block)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 465.mm)
-  circle = ge.add_circle([2179.mm,54.mm,1896.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C feed (EP master sw -> corridor dist block) elbow
-  grp = ents.add_group
-  grp.name = "Cct C feed (EP master sw -> corridor dist block) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2179.mm,40.mm,2361.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 14.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2179.mm,54.mm,2361.mm], [0.000000,0.000000,1.000000], 7.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C feed (EP master sw -> corridor dist block)
-  grp = ents.add_group
-  grp.name = "Cct C feed (EP master sw -> corridor dist block)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -10.2.mm, 0.mm)
-  circle = ge.add_circle([2179.mm,40.mm,2375.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C feed (EP master sw -> corridor dist block) elbow
-  grp = ents.add_group
-  grp.name = "Cct C feed (EP master sw -> corridor dist block) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2188.8.mm,29.8.mm,2375.mm], [-1.000000,0.000000,0.000000], [-0.000000,0.000000,1.000000], 9.800000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2179.mm,29.8.mm,2375.mm], [0.000000,-1.000000,0.000000], 7.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C feed (EP master sw -> corridor dist block)
-  grp = ents.add_group
-  grp.name = "Cct C feed (EP master sw -> corridor dist block)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(2943.2.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2188.8.mm,20.mm,2375.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C feed (EP master sw -> corridor dist block) elbow
-  grp = ents.add_group
-  grp.name = "Cct C feed (EP master sw -> corridor dist block) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([5132.mm,34.mm,2375.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 14.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5132.mm,20.mm,2375.mm], [1.000000,0.000000,0.000000], 7.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C feed (EP master sw -> corridor dist block)
-  grp = ents.add_group
-  grp.name = "Cct C feed (EP master sw -> corridor dist block)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 1133.mm, 0.mm)
-  circle = ge.add_circle([5146.mm,34.mm,2375.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C feed (EP master sw -> corridor dist block) elbow
-  grp = ents.add_group
-  grp.name = "Cct C feed (EP master sw -> corridor dist block) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([5146.mm,1167.mm,2361.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5146.mm,1167.mm,2375.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C feed (EP master sw -> corridor dist block)
-  grp = ents.add_group
-  grp.name = "Cct C feed (EP master sw -> corridor dist block)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1045.5.mm)
-  circle = ge.add_circle([5146.mm,1181.mm,2361.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-02 (Pinhole-Wall panel)
-  grp = ents.add_group
-  grp.name = "Cct C branch P-02 (Pinhole-Wall panel)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 128.mm, 0.mm)
-  circle = ge.add_circle([3058.mm,20.mm,2375.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-02 (Pinhole-Wall panel) elbow
-  grp = ents.add_group
-  grp.name = "Cct C branch P-02 (Pinhole-Wall panel) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([3058.mm,148.mm,2361.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([3058.mm,148.mm,2375.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-02 (Pinhole-Wall panel)
-  grp = ents.add_group
-  grp.name = "Cct C branch P-02 (Pinhole-Wall panel)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -132.mm)
-  circle = ge.add_circle([3058.mm,162.mm,2361.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # 12V distribution block (Cct C, rear)
-  grp = ents.add_group
-  grp.name = "12V distribution block (Cct C, rear)"
-  face = grp.entities.add_face([5122.mm,1151.mm,1222.5.mm], [5170.mm,1151.mm,1222.5.mm], [5170.mm,1211.mm,1222.5.mm], [5122.mm,1211.mm,1222.5.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(90.mm)
-  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
-  mat.color = Sketchup::Color.new(51, 52, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C bus + P-03/P-01 elbow taps (rear)
-  grp = ents.add_group
-  grp.name = "Cct C bus + P-03/P-01 elbow taps (rear)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(108.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([5024.mm,1181.mm,1830.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C bus + P-03/P-01 elbow taps (rear) elbow
-  grp = ents.add_group
-  grp.name = "Cct C bus + P-03/P-01 elbow taps (rear) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([5132.mm,1181.mm,1816.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5132.mm,1181.mm,1830.mm], [1.000000,0.000000,0.000000], 7.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C bus + P-03/P-01 elbow taps (rear)
-  grp = ents.add_group
-  grp.name = "Cct C bus + P-03/P-01 elbow taps (rear)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1097.mm)
-  circle = ge.add_circle([5146.mm,1181.mm,1816.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C bus + P-03/P-01 elbow taps (rear) elbow
-  grp = ents.add_group
-  grp.name = "Cct C bus + P-03/P-01 elbow taps (rear) elbow"
-  ge = grp.entities
-  arc = ge.add_arc([5132.mm,1181.mm,719.mm], [1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([5146.mm,1181.mm,719.mm], [0.000000,0.000000,-1.000000], 7.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C bus + P-03/P-01 elbow taps (rear)
-  grp = ents.add_group
-  grp.name = "Cct C bus + P-03/P-01 elbow taps (rear)"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-108.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([5132.mm,1181.mm,705.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-04
-  grp = ents.add_group
-  grp.name = "Cct C branch P-04"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-122.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([5146.mm,1181.mm,1030.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-05
-  grp = ents.add_group
-  grp.name = "Cct C branch P-05"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-122.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([5146.mm,1181.mm,1430.mm], vec, 7.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
-  mat.color = Sketchup::Color.new(142, 68, 173)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) baffle duct
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) baffle duct"
-  face = grp.entities.add_face([5593.mm,1081.mm,1900.mm], [5893.mm,1081.mm,1900.mm], [5893.mm,1281.mm,1900.mm], [5593.mm,1281.mm,1900.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(200.mm)
-  mat = model.materials["Fan A (exhaust) baffle duct"] || model.materials.add("Fan A (exhaust) baffle duct")
-  mat.color = Sketchup::Color.new(128, 144, 160)
-  mat.alpha = 0.5
-  grp.material = mat
-
-  # Fan A (exhaust) baffle plate 1
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) baffle plate 1"
-  face = grp.entities.add_face([5689.mm,1081.mm,1900.mm], [5697.mm,1081.mm,1900.mm], [5697.mm,1206.mm,1900.mm], [5689.mm,1206.mm,1900.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(200.mm)
-  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
-  mat.color = Sketchup::Color.new(96, 96, 96)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) baffle plate 2
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) baffle plate 2"
-  face = grp.entities.add_face([5789.mm,1156.mm,1900.mm], [5797.mm,1156.mm,1900.mm], [5797.mm,1281.mm,1900.mm], [5789.mm,1281.mm,1900.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(200.mm)
-  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
-  mat.color = Sketchup::Color.new(96, 96, 96)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) fan frame top
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) fan frame top"
-  face = grp.entities.add_face([5593.mm,1081.mm,2075.mm], [5643.mm,1081.mm,2075.mm], [5643.mm,1281.mm,2075.mm], [5593.mm,1281.mm,2075.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(25.mm)
-  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
-  mat.color = Sketchup::Color.new(96, 96, 96)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) fan frame bottom
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) fan frame bottom"
-  face = grp.entities.add_face([5593.mm,1081.mm,1900.mm], [5643.mm,1081.mm,1900.mm], [5643.mm,1281.mm,1900.mm], [5593.mm,1281.mm,1900.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(25.mm)
-  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
-  mat.color = Sketchup::Color.new(96, 96, 96)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) fan frame left
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) fan frame left"
-  face = grp.entities.add_face([5593.mm,1081.mm,1925.mm], [5643.mm,1081.mm,1925.mm], [5643.mm,1106.mm,1925.mm], [5593.mm,1106.mm,1925.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
-  mat.color = Sketchup::Color.new(96, 96, 96)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) fan frame right
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) fan frame right"
-  face = grp.entities.add_face([5593.mm,1256.mm,1925.mm], [5643.mm,1256.mm,1925.mm], [5643.mm,1281.mm,1925.mm], [5593.mm,1281.mm,1925.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
-  mat.color = Sketchup::Color.new(96, 96, 96)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) fan hub
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) fan hub"
-  ge = grp.entities
-  circle = ge.add_circle([5593.mm,1181.mm,2000.mm], [1,0,0], 19.5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(50.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) fan blade up
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) fan blade up"
-  face = grp.entities.add_face([5615.5.mm,1166.mm,2019.5.mm], [5621.5.mm,1166.mm,2019.5.mm], [5621.5.mm,1196.mm,2019.5.mm], [5615.5.mm,1196.mm,2019.5.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(46.5.mm)
-  mat = model.materials["Carriage Plate L L"] || model.materials.add("Carriage Plate L L")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) fan blade down
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) fan blade down"
-  face = grp.entities.add_face([5615.5.mm,1166.mm,1934.mm], [5621.5.mm,1166.mm,1934.mm], [5621.5.mm,1196.mm,1934.mm], [5615.5.mm,1196.mm,1934.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(46.5.mm)
-  mat = model.materials["Carriage Plate L L"] || model.materials.add("Carriage Plate L L")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) fan blade left
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) fan blade left"
-  face = grp.entities.add_face([5615.5.mm,1115.mm,1985.mm], [5621.5.mm,1115.mm,1985.mm], [5621.5.mm,1161.5.mm,1985.mm], [5615.5.mm,1161.5.mm,1985.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(30.mm)
-  mat = model.materials["Carriage Plate L L"] || model.materials.add("Carriage Plate L L")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) fan blade right
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) fan blade right"
-  face = grp.entities.add_face([5615.5.mm,1200.5.mm,1985.mm], [5621.5.mm,1200.5.mm,1985.mm], [5621.5.mm,1247.mm,1985.mm], [5615.5.mm,1247.mm,1985.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(30.mm)
-  mat = model.materials["Carriage Plate L L"] || model.materials.add("Carriage Plate L L")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) wall flange
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) wall flange"
-  face = grp.entities.add_face([5888.mm,1051.mm,1870.mm], [5893.mm,1051.mm,1870.mm], [5893.mm,1311.mm,1870.mm], [5888.mm,1311.mm,1870.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(260.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) flange bolt M10
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) flange bolt M10"
-  ge = grp.entities
-  circle = ge.add_circle([5886.5.mm,1066.mm,1885.mm], [1,0,0], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(13.mm)
-  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
-  mat.color = Sketchup::Color.new(51, 52, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) flange bolt M10
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) flange bolt M10"
-  ge = grp.entities
-  circle = ge.add_circle([5886.5.mm,1066.mm,2115.mm], [1,0,0], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(13.mm)
-  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
-  mat.color = Sketchup::Color.new(51, 52, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) flange bolt M10
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) flange bolt M10"
-  ge = grp.entities
-  circle = ge.add_circle([5886.5.mm,1296.mm,1885.mm], [1,0,0], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(13.mm)
-  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
-  mat.color = Sketchup::Color.new(51, 52, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) flange bolt M10
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) flange bolt M10"
-  ge = grp.entities
-  circle = ge.add_circle([5886.5.mm,1296.mm,2115.mm], [1,0,0], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(13.mm)
-  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
-  mat.color = Sketchup::Color.new(51, 52, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) louvre grille
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) louvre grille"
-  face = grp.entities.add_face([5893.mm,1081.mm,1935.mm], [5933.mm,1081.mm,1935.mm], [5933.mm,1281.mm,1935.mm], [5893.mm,1281.mm,1935.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(130.mm)
-  mat = model.materials["Fan A (exhaust) louvre grille"] || model.materials.add("Fan A (exhaust) louvre grille")
-  mat.color = Sketchup::Color.new(128, 144, 160)
-  mat.alpha = 0.55
-  grp.material = mat
-
-  # Fan A (exhaust) louvre slat
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) louvre slat"
-  face = grp.entities.add_face([5895.mm,1085.mm,1946.5.mm], [5931.mm,1085.mm,1946.5.mm], [5931.mm,1277.mm,1946.5.mm], [5895.mm,1277.mm,1946.5.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(3.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) louvre slat
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) louvre slat"
-  face = grp.entities.add_face([5895.mm,1085.mm,1972.5.mm], [5931.mm,1085.mm,1972.5.mm], [5931.mm,1277.mm,1972.5.mm], [5895.mm,1277.mm,1972.5.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(3.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) louvre slat
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) louvre slat"
-  face = grp.entities.add_face([5895.mm,1085.mm,1998.5.mm], [5931.mm,1085.mm,1998.5.mm], [5931.mm,1277.mm,1998.5.mm], [5895.mm,1277.mm,1998.5.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(3.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) louvre slat
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) louvre slat"
-  face = grp.entities.add_face([5895.mm,1085.mm,2024.5.mm], [5931.mm,1085.mm,2024.5.mm], [5931.mm,1277.mm,2024.5.mm], [5895.mm,1277.mm,2024.5.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(3.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan A (exhaust) louvre slat
-  grp = ents.add_group
-  grp.name = "Fan A (exhaust) louvre slat"
-  face = grp.entities.add_face([5895.mm,1085.mm,2050.5.mm], [5931.mm,1085.mm,2050.5.mm], [5931.mm,1277.mm,2050.5.mm], [5895.mm,1277.mm,2050.5.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(3.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) baffle duct
-  grp = ents.add_group
-  grp.name = "Fan B (intake) baffle duct"
-  face = grp.entities.add_face([0.mm,265.mm,500.mm], [300.mm,265.mm,500.mm], [300.mm,465.mm,500.mm], [0.mm,465.mm,500.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(200.mm)
-  mat = model.materials["Fan A (exhaust) baffle duct"] || model.materials.add("Fan A (exhaust) baffle duct")
-  mat.color = Sketchup::Color.new(128, 144, 160)
-  mat.alpha = 0.5
-  grp.material = mat
-
-  # Fan B (intake) baffle plate 1
-  grp = ents.add_group
-  grp.name = "Fan B (intake) baffle plate 1"
-  face = grp.entities.add_face([96.mm,265.mm,500.mm], [104.mm,265.mm,500.mm], [104.mm,390.mm,500.mm], [96.mm,390.mm,500.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(200.mm)
-  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
-  mat.color = Sketchup::Color.new(96, 96, 96)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) baffle plate 2
-  grp = ents.add_group
-  grp.name = "Fan B (intake) baffle plate 2"
-  face = grp.entities.add_face([196.mm,340.mm,500.mm], [204.mm,340.mm,500.mm], [204.mm,465.mm,500.mm], [196.mm,465.mm,500.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(200.mm)
-  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
-  mat.color = Sketchup::Color.new(96, 96, 96)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) fan frame top
-  grp = ents.add_group
-  grp.name = "Fan B (intake) fan frame top"
-  face = grp.entities.add_face([250.mm,265.mm,675.mm], [300.mm,265.mm,675.mm], [300.mm,465.mm,675.mm], [250.mm,465.mm,675.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(25.mm)
-  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
-  mat.color = Sketchup::Color.new(96, 96, 96)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) fan frame bottom
-  grp = ents.add_group
-  grp.name = "Fan B (intake) fan frame bottom"
-  face = grp.entities.add_face([250.mm,265.mm,500.mm], [300.mm,265.mm,500.mm], [300.mm,465.mm,500.mm], [250.mm,465.mm,500.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(25.mm)
-  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
-  mat.color = Sketchup::Color.new(96, 96, 96)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) fan frame left
-  grp = ents.add_group
-  grp.name = "Fan B (intake) fan frame left"
-  face = grp.entities.add_face([250.mm,265.mm,525.mm], [300.mm,265.mm,525.mm], [300.mm,290.mm,525.mm], [250.mm,290.mm,525.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
-  mat.color = Sketchup::Color.new(96, 96, 96)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) fan frame right
-  grp = ents.add_group
-  grp.name = "Fan B (intake) fan frame right"
-  face = grp.entities.add_face([250.mm,440.mm,525.mm], [300.mm,440.mm,525.mm], [300.mm,465.mm,525.mm], [250.mm,465.mm,525.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Fan A (exhaust) baffle plate 1"] || model.materials.add("Fan A (exhaust) baffle plate 1")
-  mat.color = Sketchup::Color.new(96, 96, 96)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) fan hub
-  grp = ents.add_group
-  grp.name = "Fan B (intake) fan hub"
-  ge = grp.entities
-  circle = ge.add_circle([250.mm,365.mm,600.mm], [1,0,0], 19.5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(50.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) fan blade up
-  grp = ents.add_group
-  grp.name = "Fan B (intake) fan blade up"
-  face = grp.entities.add_face([272.5.mm,350.mm,619.5.mm], [278.5.mm,350.mm,619.5.mm], [278.5.mm,380.mm,619.5.mm], [272.5.mm,380.mm,619.5.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(46.5.mm)
-  mat = model.materials["Carriage Plate L L"] || model.materials.add("Carriage Plate L L")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) fan blade down
-  grp = ents.add_group
-  grp.name = "Fan B (intake) fan blade down"
-  face = grp.entities.add_face([272.5.mm,350.mm,534.mm], [278.5.mm,350.mm,534.mm], [278.5.mm,380.mm,534.mm], [272.5.mm,380.mm,534.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(46.5.mm)
-  mat = model.materials["Carriage Plate L L"] || model.materials.add("Carriage Plate L L")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) fan blade left
-  grp = ents.add_group
-  grp.name = "Fan B (intake) fan blade left"
-  face = grp.entities.add_face([272.5.mm,299.mm,585.mm], [278.5.mm,299.mm,585.mm], [278.5.mm,345.5.mm,585.mm], [272.5.mm,345.5.mm,585.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(30.mm)
-  mat = model.materials["Carriage Plate L L"] || model.materials.add("Carriage Plate L L")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) fan blade right
-  grp = ents.add_group
-  grp.name = "Fan B (intake) fan blade right"
-  face = grp.entities.add_face([272.5.mm,384.5.mm,585.mm], [278.5.mm,384.5.mm,585.mm], [278.5.mm,431.mm,585.mm], [272.5.mm,431.mm,585.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(30.mm)
-  mat = model.materials["Carriage Plate L L"] || model.materials.add("Carriage Plate L L")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) wall flange
-  grp = ents.add_group
-  grp.name = "Fan B (intake) wall flange"
-  face = grp.entities.add_face([0.mm,235.mm,470.mm], [5.mm,235.mm,470.mm], [5.mm,495.mm,470.mm], [0.mm,495.mm,470.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(260.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) flange bolt M10
-  grp = ents.add_group
-  grp.name = "Fan B (intake) flange bolt M10"
-  ge = grp.entities
-  circle = ge.add_circle([-6.5.mm,250.mm,485.mm], [1,0,0], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(13.mm)
-  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
-  mat.color = Sketchup::Color.new(51, 52, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) flange bolt M10
-  grp = ents.add_group
-  grp.name = "Fan B (intake) flange bolt M10"
-  ge = grp.entities
-  circle = ge.add_circle([-6.5.mm,250.mm,715.mm], [1,0,0], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(13.mm)
-  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
-  mat.color = Sketchup::Color.new(51, 52, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) flange bolt M10
-  grp = ents.add_group
-  grp.name = "Fan B (intake) flange bolt M10"
-  ge = grp.entities
-  circle = ge.add_circle([-6.5.mm,480.mm,485.mm], [1,0,0], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(13.mm)
-  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
-  mat.color = Sketchup::Color.new(51, 52, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) flange bolt M10
-  grp = ents.add_group
-  grp.name = "Fan B (intake) flange bolt M10"
-  ge = grp.entities
-  circle = ge.add_circle([-6.5.mm,480.mm,715.mm], [1,0,0], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.x < 0
-  cface.pushpull(13.mm)
-  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
-  mat.color = Sketchup::Color.new(51, 52, 58)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) louvre grille
-  grp = ents.add_group
-  grp.name = "Fan B (intake) louvre grille"
-  face = grp.entities.add_face([-40.mm,265.mm,535.mm], [0.mm,265.mm,535.mm], [0.mm,465.mm,535.mm], [-40.mm,465.mm,535.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(130.mm)
-  mat = model.materials["Fan A (exhaust) louvre grille"] || model.materials.add("Fan A (exhaust) louvre grille")
-  mat.color = Sketchup::Color.new(128, 144, 160)
-  mat.alpha = 0.55
-  grp.material = mat
-
-  # Fan B (intake) louvre slat
-  grp = ents.add_group
-  grp.name = "Fan B (intake) louvre slat"
-  face = grp.entities.add_face([-38.mm,269.mm,546.5.mm], [-2.mm,269.mm,546.5.mm], [-2.mm,461.mm,546.5.mm], [-38.mm,461.mm,546.5.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(3.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) louvre slat
-  grp = ents.add_group
-  grp.name = "Fan B (intake) louvre slat"
-  face = grp.entities.add_face([-38.mm,269.mm,572.5.mm], [-2.mm,269.mm,572.5.mm], [-2.mm,461.mm,572.5.mm], [-38.mm,461.mm,572.5.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(3.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) louvre slat
-  grp = ents.add_group
-  grp.name = "Fan B (intake) louvre slat"
-  face = grp.entities.add_face([-38.mm,269.mm,598.5.mm], [-2.mm,269.mm,598.5.mm], [-2.mm,461.mm,598.5.mm], [-38.mm,461.mm,598.5.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(3.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) louvre slat
-  grp = ents.add_group
-  grp.name = "Fan B (intake) louvre slat"
-  face = grp.entities.add_face([-38.mm,269.mm,624.5.mm], [-2.mm,269.mm,624.5.mm], [-2.mm,461.mm,624.5.mm], [-38.mm,461.mm,624.5.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(3.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Fan B (intake) louvre slat
-  grp = ents.add_group
-  grp.name = "Fan B (intake) louvre slat"
-  face = grp.entities.add_face([-38.mm,269.mm,650.5.mm], [-2.mm,269.mm,650.5.mm], [-2.mm,461.mm,650.5.mm], [-38.mm,461.mm,650.5.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(3.mm)
-  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # Chem Shelf (board, deployed)
   grp = ents.add_group
   grp.name = "Chem Shelf (board, deployed)"
@@ -16714,7 +16070,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "Step 4.4 — Wiring paths (pumps/fans) + fans + shelf"
+  inst.name = "Step 4.4 — Fan B + its Cct-B wiring + shelf"
   inst.layer = model.layers["P4 Wiring + Fit-out"]
 
   # ═══ Step 5.1 — Film plane + carriages (+ rails/beams) ═══
@@ -21758,6 +21114,626 @@ ci.set_attribute("dynamic_attributes", "hidden", 1.0)
 ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase1Build!step<3")
 child = model.definitions.add("P1Step1_4")
 ents = child.entities
+  # Fan A (exhaust) baffle duct
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) baffle duct"
+  face = grp.entities.add_face([5593.mm,1081.mm,1900.mm], [5893.mm,1081.mm,1900.mm], [5893.mm,1281.mm,1900.mm], [5593.mm,1281.mm,1900.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Fan B (intake) baffle duct"] || model.materials.add("Fan B (intake) baffle duct")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 0.5
+  grp.material = mat
+
+  # Fan A (exhaust) baffle plate 1
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) baffle plate 1"
+  face = grp.entities.add_face([5689.mm,1081.mm,1900.mm], [5697.mm,1081.mm,1900.mm], [5697.mm,1206.mm,1900.mm], [5689.mm,1206.mm,1900.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) baffle plate 2
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) baffle plate 2"
+  face = grp.entities.add_face([5789.mm,1156.mm,1900.mm], [5797.mm,1156.mm,1900.mm], [5797.mm,1281.mm,1900.mm], [5789.mm,1281.mm,1900.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(200.mm)
+  mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) fan frame top
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) fan frame top"
+  face = grp.entities.add_face([5593.mm,1081.mm,2075.mm], [5643.mm,1081.mm,2075.mm], [5643.mm,1281.mm,2075.mm], [5593.mm,1281.mm,2075.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(25.mm)
+  mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) fan frame bottom
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) fan frame bottom"
+  face = grp.entities.add_face([5593.mm,1081.mm,1900.mm], [5643.mm,1081.mm,1900.mm], [5643.mm,1281.mm,1900.mm], [5593.mm,1281.mm,1900.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(25.mm)
+  mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) fan frame left
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) fan frame left"
+  face = grp.entities.add_face([5593.mm,1081.mm,1925.mm], [5643.mm,1081.mm,1925.mm], [5643.mm,1106.mm,1925.mm], [5593.mm,1106.mm,1925.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) fan frame right
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) fan frame right"
+  face = grp.entities.add_face([5593.mm,1256.mm,1925.mm], [5643.mm,1256.mm,1925.mm], [5643.mm,1281.mm,1925.mm], [5593.mm,1281.mm,1925.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(150.mm)
+  mat = model.materials["Fan B (intake) baffle plate 1"] || model.materials.add("Fan B (intake) baffle plate 1")
+  mat.color = Sketchup::Color.new(96, 96, 96)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) fan hub
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) fan hub"
+  ge = grp.entities
+  circle = ge.add_circle([5593.mm,1181.mm,2000.mm], [1,0,0], 19.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(50.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) fan blade up
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) fan blade up"
+  face = grp.entities.add_face([5615.5.mm,1166.mm,2019.5.mm], [5621.5.mm,1166.mm,2019.5.mm], [5621.5.mm,1196.mm,2019.5.mm], [5615.5.mm,1196.mm,2019.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(46.5.mm)
+  mat = model.materials["Carriage Plate L L"] || model.materials.add("Carriage Plate L L")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) fan blade down
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) fan blade down"
+  face = grp.entities.add_face([5615.5.mm,1166.mm,1934.mm], [5621.5.mm,1166.mm,1934.mm], [5621.5.mm,1196.mm,1934.mm], [5615.5.mm,1196.mm,1934.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(46.5.mm)
+  mat = model.materials["Carriage Plate L L"] || model.materials.add("Carriage Plate L L")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) fan blade left
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) fan blade left"
+  face = grp.entities.add_face([5615.5.mm,1115.mm,1985.mm], [5621.5.mm,1115.mm,1985.mm], [5621.5.mm,1161.5.mm,1985.mm], [5615.5.mm,1161.5.mm,1985.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(30.mm)
+  mat = model.materials["Carriage Plate L L"] || model.materials.add("Carriage Plate L L")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) fan blade right
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) fan blade right"
+  face = grp.entities.add_face([5615.5.mm,1200.5.mm,1985.mm], [5621.5.mm,1200.5.mm,1985.mm], [5621.5.mm,1247.mm,1985.mm], [5615.5.mm,1247.mm,1985.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(30.mm)
+  mat = model.materials["Carriage Plate L L"] || model.materials.add("Carriage Plate L L")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) wall flange
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) wall flange"
+  face = grp.entities.add_face([5888.mm,1051.mm,1870.mm], [5893.mm,1051.mm,1870.mm], [5893.mm,1311.mm,1870.mm], [5888.mm,1311.mm,1870.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(260.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) flange bolt M10
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) flange bolt M10"
+  ge = grp.entities
+  circle = ge.add_circle([5886.5.mm,1066.mm,1885.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(13.mm)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) flange bolt M10
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) flange bolt M10"
+  ge = grp.entities
+  circle = ge.add_circle([5886.5.mm,1066.mm,2115.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(13.mm)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) flange bolt M10
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) flange bolt M10"
+  ge = grp.entities
+  circle = ge.add_circle([5886.5.mm,1296.mm,1885.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(13.mm)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) flange bolt M10
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) flange bolt M10"
+  ge = grp.entities
+  circle = ge.add_circle([5886.5.mm,1296.mm,2115.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(13.mm)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) louvre grille
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) louvre grille"
+  face = grp.entities.add_face([5893.mm,1081.mm,1935.mm], [5933.mm,1081.mm,1935.mm], [5933.mm,1281.mm,1935.mm], [5893.mm,1281.mm,1935.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(130.mm)
+  mat = model.materials["Fan B (intake) louvre grille"] || model.materials.add("Fan B (intake) louvre grille")
+  mat.color = Sketchup::Color.new(128, 144, 160)
+  mat.alpha = 0.55
+  grp.material = mat
+
+  # Fan A (exhaust) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) louvre slat"
+  face = grp.entities.add_face([5895.mm,1085.mm,1946.5.mm], [5931.mm,1085.mm,1946.5.mm], [5931.mm,1277.mm,1946.5.mm], [5895.mm,1277.mm,1946.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) louvre slat"
+  face = grp.entities.add_face([5895.mm,1085.mm,1972.5.mm], [5931.mm,1085.mm,1972.5.mm], [5931.mm,1277.mm,1972.5.mm], [5895.mm,1277.mm,1972.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) louvre slat"
+  face = grp.entities.add_face([5895.mm,1085.mm,1998.5.mm], [5931.mm,1085.mm,1998.5.mm], [5931.mm,1277.mm,1998.5.mm], [5895.mm,1277.mm,1998.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) louvre slat"
+  face = grp.entities.add_face([5895.mm,1085.mm,2024.5.mm], [5931.mm,1085.mm,2024.5.mm], [5931.mm,1277.mm,2024.5.mm], [5895.mm,1277.mm,2024.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Fan A (exhaust) louvre slat
+  grp = ents.add_group
+  grp.name = "Fan A (exhaust) louvre slat"
+  face = grp.entities.add_face([5895.mm,1085.mm,2050.5.mm], [5931.mm,1085.mm,2050.5.mm], [5931.mm,1277.mm,2050.5.mm], [5895.mm,1277.mm,2050.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["RWk Long beam X4329 upper"] || model.materials.add("RWk Long beam X4329 upper")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Conduit to Fan A (exhaust, Cct A)
+  grp = ents.add_group
+  grp.name = "Conduit to Fan A (exhaust, Cct A)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 1147.mm, 0.mm)
+  circle = ge.add_circle([5618.mm,20.mm,2358.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (-)"] || model.materials.add("MC4 PV1 (-)")
+  mat.color = Sketchup::Color.new(154, 160, 166)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Conduit to Fan A (exhaust, Cct A) elbow
+  grp = ents.add_group
+  grp.name = "Conduit to Fan A (exhaust, Cct A) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5618.mm,1167.mm,2344.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5618.mm,1167.mm,2358.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["MC4 PV1 (-)"] || model.materials.add("MC4 PV1 (-)")
+  mat.color = Sketchup::Color.new(154, 160, 166)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Conduit to Fan A (exhaust, Cct A)
+  grp = ents.add_group
+  grp.name = "Conduit to Fan A (exhaust, Cct A)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -244.mm)
+  circle = ge.add_circle([5618.mm,1181.mm,2344.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["MC4 PV1 (-)"] || model.materials.add("MC4 PV1 (-)")
+  mat.color = Sketchup::Color.new(154, 160, 166)
+  mat.alpha = 1.0
+  grp.material = mat
+
+ci = p1_defn.entities.add_instance(child, Geom::Transformation.new)
+ci.name = "Step 1.4 — Fan A (exhaust) + its Cct-A electrical — pinhole wall"
+ci.layer = model.layers["P1 Fan A"]
+ci.set_attribute("dynamic_attributes", "_name", "P1Step1_4")
+ci.set_attribute("dynamic_attributes", "hidden", 1.0)
+ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase1Build!step<4")
+child = model.definitions.add("P1Step1_5")
+ents = child.entities
+  # Master pump switch (Cct C, on EP)
+  grp = ents.add_group
+  grp.name = "Master pump switch (Cct C, on EP)"
+  face = grp.entities.add_face([2153.mm,30.mm,1840.mm], [2205.mm,30.mm,1840.mm], [2205.mm,78.mm,1840.mm], [2153.mm,78.mm,1840.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(56.mm)
+  mat = model.materials["Filter F1 cap"] || model.materials.add("Filter F1 cap")
+  mat.color = Sketchup::Color.new(26, 26, 26)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Master switch lever (OFF cutoff)
+  grp = ents.add_group
+  grp.name = "Master switch lever (OFF cutoff)"
+  face = grp.entities.add_face([2172.mm,78.mm,1852.mm], [2186.mm,78.mm,1852.mm], [2186.mm,124.mm,1852.mm], [2172.mm,124.mm,1852.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["SV-01 sample valve handwheel stem"] || model.materials.add("SV-01 sample valve handwheel stem")
+  mat.color = Sketchup::Color.new(192, 32, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C feed (EP master sw -> corridor dist block)
+  grp = ents.add_group
+  grp.name = "Cct C feed (EP master sw -> corridor dist block)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 465.mm)
+  circle = ge.add_circle([2179.mm,54.mm,1896.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C feed (EP master sw -> corridor dist block) elbow
+  grp = ents.add_group
+  grp.name = "Cct C feed (EP master sw -> corridor dist block) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2179.mm,40.mm,2361.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 14.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2179.mm,54.mm,2361.mm], [0.000000,0.000000,1.000000], 7.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C feed (EP master sw -> corridor dist block)
+  grp = ents.add_group
+  grp.name = "Cct C feed (EP master sw -> corridor dist block)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -10.2.mm, 0.mm)
+  circle = ge.add_circle([2179.mm,40.mm,2375.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C feed (EP master sw -> corridor dist block) elbow
+  grp = ents.add_group
+  grp.name = "Cct C feed (EP master sw -> corridor dist block) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2188.8.mm,29.8.mm,2375.mm], [-1.000000,0.000000,0.000000], [-0.000000,0.000000,1.000000], 9.800000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2179.mm,29.8.mm,2375.mm], [0.000000,-1.000000,0.000000], 7.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C feed (EP master sw -> corridor dist block)
+  grp = ents.add_group
+  grp.name = "Cct C feed (EP master sw -> corridor dist block)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(2943.2.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2188.8.mm,20.mm,2375.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C feed (EP master sw -> corridor dist block) elbow
+  grp = ents.add_group
+  grp.name = "Cct C feed (EP master sw -> corridor dist block) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5132.mm,34.mm,2375.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 14.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5132.mm,20.mm,2375.mm], [1.000000,0.000000,0.000000], 7.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C feed (EP master sw -> corridor dist block)
+  grp = ents.add_group
+  grp.name = "Cct C feed (EP master sw -> corridor dist block)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 1133.mm, 0.mm)
+  circle = ge.add_circle([5146.mm,34.mm,2375.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C feed (EP master sw -> corridor dist block) elbow
+  grp = ents.add_group
+  grp.name = "Cct C feed (EP master sw -> corridor dist block) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5146.mm,1167.mm,2361.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5146.mm,1167.mm,2375.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C feed (EP master sw -> corridor dist block)
+  grp = ents.add_group
+  grp.name = "Cct C feed (EP master sw -> corridor dist block)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1045.5.mm)
+  circle = ge.add_circle([5146.mm,1181.mm,2361.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-02 (Pinhole-Wall panel)
+  grp = ents.add_group
+  grp.name = "Cct C branch P-02 (Pinhole-Wall panel)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 128.mm, 0.mm)
+  circle = ge.add_circle([3058.mm,20.mm,2375.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-02 (Pinhole-Wall panel) elbow
+  grp = ents.add_group
+  grp.name = "Cct C branch P-02 (Pinhole-Wall panel) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([3058.mm,148.mm,2361.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([3058.mm,148.mm,2375.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-02 (Pinhole-Wall panel)
+  grp = ents.add_group
+  grp.name = "Cct C branch P-02 (Pinhole-Wall panel)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -132.mm)
+  circle = ge.add_circle([3058.mm,162.mm,2361.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 12V distribution block (Cct C, rear)
+  grp = ents.add_group
+  grp.name = "12V distribution block (Cct C, rear)"
+  face = grp.entities.add_face([5122.mm,1151.mm,1222.5.mm], [5170.mm,1151.mm,1222.5.mm], [5170.mm,1211.mm,1222.5.mm], [5122.mm,1211.mm,1222.5.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(90.mm)
+  mat = model.materials["Wheel L"] || model.materials.add("Wheel L")
+  mat.color = Sketchup::Color.new(51, 52, 58)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C bus + P-03/P-01 elbow taps (rear)
+  grp = ents.add_group
+  grp.name = "Cct C bus + P-03/P-01 elbow taps (rear)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(108.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([5024.mm,1181.mm,1830.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C bus + P-03/P-01 elbow taps (rear) elbow
+  grp = ents.add_group
+  grp.name = "Cct C bus + P-03/P-01 elbow taps (rear) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5132.mm,1181.mm,1816.mm], [0.000000,0.000000,1.000000], [-0.000000,1.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5132.mm,1181.mm,1830.mm], [1.000000,0.000000,0.000000], 7.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C bus + P-03/P-01 elbow taps (rear)
+  grp = ents.add_group
+  grp.name = "Cct C bus + P-03/P-01 elbow taps (rear)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1097.mm)
+  circle = ge.add_circle([5146.mm,1181.mm,1816.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C bus + P-03/P-01 elbow taps (rear) elbow
+  grp = ents.add_group
+  grp.name = "Cct C bus + P-03/P-01 elbow taps (rear) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([5132.mm,1181.mm,719.mm], [1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([5146.mm,1181.mm,719.mm], [0.000000,0.000000,-1.000000], 7.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C bus + P-03/P-01 elbow taps (rear)
+  grp = ents.add_group
+  grp.name = "Cct C bus + P-03/P-01 elbow taps (rear)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-108.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([5132.mm,1181.mm,705.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-04
+  grp = ents.add_group
+  grp.name = "Cct C branch P-04"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-122.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([5146.mm,1181.mm,1030.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-05
+  grp = ents.add_group
+  grp.name = "Cct C branch P-05"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-122.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([5146.mm,1181.mm,1430.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse D (5A — safelight)"] || model.materials.add("Fuse D (5A — safelight)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+ci = p1_defn.entities.add_instance(child, Geom::Transformation.new)
+ci.name = "Step 1.5 — Corridor pump wiring (Cct C) to the pinhole wall"
+ci.layer = model.layers["P1 Corridor Wiring"]
+ci.set_attribute("dynamic_attributes", "_name", "P1Step1_5")
+ci.set_attribute("dynamic_attributes", "hidden", 1.0)
+ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase1Build!step<5")
+child = model.definitions.add("P1Step1_6")
+ents = child.entities
   # IBC Waste pallet
   grp = ents.add_group
   grp.name = "IBC Waste pallet"
@@ -21803,12 +21779,12 @@ ents = child.entities
   grp.material = mat
 
 ci = p1_defn.entities.add_instance(child, Geom::Transformation.new)
-ci.name = "Step 1.4 — IBC totes — far wall (far column)"
+ci.name = "Step 1.6 — IBC totes — far wall (far column)"
 ci.layer = model.layers["P1 Far IBCs"]
-ci.set_attribute("dynamic_attributes", "_name", "P1Step1_4")
+ci.set_attribute("dynamic_attributes", "_name", "P1Step1_6")
 ci.set_attribute("dynamic_attributes", "hidden", 1.0)
-ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase1Build!step<4")
-child = model.definitions.add("P1Step1_5")
+ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase1Build!step<6")
+child = model.definitions.add("P1Step1_7")
 ents = child.entities
   # Door Frame threshold
   grp = ents.add_group
@@ -29959,18 +29935,18 @@ ents = child.entities
   grp.material = mat
 
 ci = p1_defn.entities.add_instance(child, Geom::Transformation.new)
-ci.name = "Step 1.5 — Hinge panel (excl. light-trap drum)"
+ci.name = "Step 1.7 — Hinge panel (excl. light-trap drum)"
 ci.layer = model.layers["P1 Hinge Panel"]
-ci.set_attribute("dynamic_attributes", "_name", "P1Step1_5")
+ci.set_attribute("dynamic_attributes", "_name", "P1Step1_7")
 ci.set_attribute("dynamic_attributes", "hidden", 1.0)
-ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase1Build!step<5")
+ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase1Build!step<7")
 p1_inst = entities.add_instance(p1_defn, Geom::Transformation.new)
 p1_inst.name = "Phase 1 Build"
 p1_inst.set_attribute("dynamic_attributes", "_name", "Phase1Build")
 p1_inst.set_attribute("dynamic_attributes", "step", 1.0)
 p1_inst.set_attribute("dynamic_attributes", "_step_access", "VIEW")
 p1_inst.set_attribute("dynamic_attributes", "_step_label", "Build step")
-p1_inst.set_attribute("dynamic_attributes", "onclick", 'ANIMATE("step",1,2,3,4,5)')
+p1_inst.set_attribute("dynamic_attributes", "onclick", 'ANIMATE("step",1,2,3,4,5,6,7)')
 p1_inst.set_attribute("dynamic_attributes", "_onclick_access", "NONE")
 
 # ── Drop the external evap cooler UNIT + its cord (ov.electrical() draws them) — not part of
@@ -29987,7 +29963,7 @@ model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier versions ──
-keep_tags = ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Far IBCs", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway", "P4 Electrical Panel", "P4 External Panel", "P4 Lights", "P4 Wiring + Fit-out", "P5 Film Plane", "P5 Pinhole", "P5 Light Trap"]
+keep_tags = ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Fan A", "P1 Corridor Wiring", "P1 Far IBCs", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway", "P4 Electrical Panel", "P4 External Panel", "P4 Lights", "P4 Wiring + Fit-out", "P5 Film Plane", "P5 Pinhole", "P5 Light Trap"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -30004,7 +29980,7 @@ model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents
 
 # ── Cumulative phase scenes ──
-[["Phase 1 — Geometry Set-Out", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Far IBCs", "P1 Hinge Panel"]], ["Phase 2 — Re-measure", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Far IBCs", "P1 Hinge Panel"]], ["Phase 3 — Hard Install", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Far IBCs", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway"]], ["Phase 4 — Electrical", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Far IBCs", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway", "P4 Electrical Panel", "P4 External Panel", "P4 Lights", "P4 Wiring + Fit-out"]], ["Phase 5 — Photo System", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Far IBCs", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway", "P4 Electrical Panel", "P4 External Panel", "P4 Lights", "P4 Wiring + Fit-out", "P5 Film Plane", "P5 Pinhole", "P5 Light Trap"]]].each { |name, tags|
+[["Phase 1 — Geometry Set-Out", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Fan A", "P1 Corridor Wiring", "P1 Far IBCs", "P1 Hinge Panel"]], ["Phase 2 — Re-measure", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Fan A", "P1 Corridor Wiring", "P1 Far IBCs", "P1 Hinge Panel"]], ["Phase 3 — Hard Install", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Fan A", "P1 Corridor Wiring", "P1 Far IBCs", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway"]], ["Phase 4 — Electrical", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Fan A", "P1 Corridor Wiring", "P1 Far IBCs", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway", "P4 Electrical Panel", "P4 External Panel", "P4 Lights", "P4 Wiring + Fit-out"]], ["Phase 5 — Photo System", ["Context", "P1 Near IBCs", "P1 IBC Frame", "P1 IBC Plumbing", "P1 Fan A", "P1 Corridor Wiring", "P1 Far IBCs", "P1 Hinge Panel", "P3 Right Cantilever", "P3 Wall Brackets", "P3 Processing Tray", "P3 Pinhole Plumbing", "P3 Left Cantilevers", "P3 Walkway", "P4 Electrical Panel", "P4 External Panel", "P4 Lights", "P4 Wiring + Fit-out", "P5 Film Plane", "P5 Pinhole", "P5 Light Trap"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || tags.include?(l.name)) }
   page = model.pages.add(name)
   page.use_camera = true

@@ -53,11 +53,13 @@ _TBD — the "why this order" rationale. Placeholders:_
 
 | # | Step | Depends on | Status |
 |---|------|-----------|:------:|
-| 1.1 | Install 2× IBC totes on the **pinhole wall** | — | ☐ |
+| 1.1 | Install 2× IBC totes on the **pinhole wall** (near column) | — | ☐ |
 | 1.2 | Install the **IBC frame** (restraint deep-box) | 1.1 | ☐ |
 | 1.3 | Install + **plumb the IBC corridor** through to the walkway line | 1.2 | ☐ |
-| 1.4 | Install 2× IBC totes on the **far wall** + **finalize IBC plumbing** | 1.3 | ☐ |
-| 1.5 | Install the **hinge panel** (light-trap door — *excluding* the light-trap drum) | 1.2 | ☐ |
+| 1.4 | Install **Fan A** (exhaust) + its **Cct-A electrical** on the pinhole wall — *before the far IBCs bury it* | 1.2 | ☐ |
+| 1.5 | Run the **corridor pump wiring (Cct C)** to the pinhole wall — *before the far IBCs block the wall* | 1.3 | ☐ |
+| 1.6 | Install 2× IBC totes on the **far wall** (far column) + **finalize IBC plumbing** | 1.5 | ☐ |
+| 1.7 | Install the **hinge panel** (light-trap door — *excluding* the light-trap drum) | 1.2 | ☐ |
 
 **Exit gate:** _TBD — frame square, totes restrained, IBC plumbing pressure-checked._
 

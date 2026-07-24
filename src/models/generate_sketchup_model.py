@@ -1690,10 +1690,13 @@ def lighting_wiring():
     return '\n'.join(parts)
 
 
-def fan_wiring():
+def fan_wiring(which="both"):
     """Power conduits to the two ventilation fans — Cct-A rigid run to Fan A (exhaust, far end)
     and Cct-B rigid run + wall box + flexible jumper to Fan B (intake, near end). On its OWN tag
-    so the Ventilation scene shows the fan cables without the rest of the Lighting & Wiring."""
+    so the Ventilation scene shows the fan cables without the rest of the Lighting & Wiring.
+    `which`: "both" (default), "A", or "B" — the construction model installs Fan A's conduit early
+    (with Fan A, before the far IBC column) and Fan B's later. The shared EP feeds are drawn only
+    for "both" (they connect back to the EP, installed in the electrical phase)."""
     parts = []
     cz = C_HGT
     # Conduits to the ventilation fans (orthogonal runs off the ceiling trunking,
@@ -1706,11 +1709,12 @@ def fan_wiring():
     #   (perpendicular entry). Rigid all the way — Fan A doesn't move.
     fa_x = (C_LEN - DUCT_DEPTH) + FAN_BODY_D / 2     # fan-body center X (5618)
     fa_top = FAN_A_H + DUCT_HEIGHT / 2               # fan-housing top Z (2300)
-    parts.append(ruby_pipe_run("Conduit to Fan A (exhaust, Cct A)",
-                               [(fa_x, 20, czr),
-                                (fa_x, FAN_A_YD, czr),
-                                (fa_x, FAN_A_YD, fa_top)],
-                               fcr, color=C_TRUNK))
+    if which in ("both", "A"):
+        parts.append(ruby_pipe_run("Conduit to Fan A (exhaust, Cct A)",
+                                   [(fa_x, 20, czr),
+                                    (fa_x, FAN_A_YD, czr),
+                                    (fa_x, FAN_A_YD, fa_top)],
+                                   fcr, color=C_TRUNK))
     # → Fan B (intake, Cct B): in the NEAR corner by the pinhole wall (rev9/B2 swap).
     #   The rigid conduit taps the ceiling trunking and DROPS STRAIGHT DOWN THE PINHOLE
     #   WALL (Yd≈18) at X≈300 (near the door end, by Fan B) to a wall-mounted electrical
@@ -1722,30 +1726,32 @@ def fan_wiring():
     fb_drop_x = 300                                  # near the door end, by Fan B
     fb_wall_yd = 18                                  # conduit hugs the pinhole wall
     fb_box_z = FAN_B_H                               # wall electrical box at the fan's height
-    parts.append(ruby_pipe_run("Conduit to Fan B (intake, Cct B)",
-                               [(fb_drop_x, fb_wall_yd, czr),
-                                (fb_drop_x, fb_wall_yd, fb_box_z + 45)],
-                               fcr, color=C_TRUNK))
-    parts.append(ruby_box("Fan B electrical box (Cct B — flex connector to fan, unplugged for swing)",
-                          fb_drop_x - 40, 0, fb_box_z - 45, 80, 60, 90, color=C_SWITCH))
-    # The short FLEXIBLE CONNECTOR from the fixed wall box out to Fan B on the swing panel —
-    # now drawn (a SOFT cord) as a curly coil, distinguishing it from the rigid Cct B conduit
-    # feeding the box. This is the jumper that is unplugged before the panel swings.
-    parts.append(ruby_coil_cord("Fan B flex connector (box -> fan, Cct B)",
-                                [(fb_drop_x, 55, fb_box_z),
-                                 (60, FAN_B_YD, FAN_B_H)],
-                                r=5, color="#E67E22"))
+    if which in ("both", "B"):
+        parts.append(ruby_pipe_run("Conduit to Fan B (intake, Cct B)",
+                                   [(fb_drop_x, fb_wall_yd, czr),
+                                    (fb_drop_x, fb_wall_yd, fb_box_z + 45)],
+                                   fcr, color=C_TRUNK))
+        parts.append(ruby_box("Fan B electrical box (Cct B — flex connector to fan, unplugged for swing)",
+                              fb_drop_x - 40, 0, fb_box_z - 45, 80, 60, 90, color=C_SWITCH))
+        # The short FLEXIBLE CONNECTOR from the fixed wall box out to Fan B on the swing panel —
+        # now drawn (a SOFT cord) as a curly coil, distinguishing it from the rigid Cct B conduit
+        # feeding the box. This is the jumper that is unplugged before the panel swings.
+        parts.append(ruby_coil_cord("Fan B flex connector (box -> fan, Cct B)",
+                                    [(fb_drop_x, 55, fb_box_z),
+                                     (60, FAN_B_YD, FAN_B_H)],
+                                    r=5, color="#E67E22"))
 
-    # ── Feed from the EP fan breakers up to the ceiling trunk, then along the trunk line to each
-    #    fan tap — so Cct-A / Cct-B visibly connect back to their power source (the EP) in the
-    #    Ventilation scene (the real trunking + EP drop are on the hidden Lighting tag). ──
-    ep_x = 2060                                      # EP column X (matches the lighting conduit drop)
-    parts.append(ruby_pipe_run("Fan feed riser (EP -> ceiling trunk, Cct A/B)",
-                               [(ep_x, 20, EP_H_HI), (ep_x, 20, czr)], fcr, color=C_TRUNK))
-    parts.append(ruby_pipe_run("Fan A feed (EP -> Fan A tap, Cct A)",
-                               [(ep_x, 20, czr), (fa_x, 20, czr)], fcr, color=C_TRUNK))
-    parts.append(ruby_pipe_run("Fan B feed (EP -> Fan B tap, Cct B)",
-                               [(ep_x, 20, czr), (fb_drop_x, fb_wall_yd, czr)], fcr, color=C_TRUNK))
+    if which == "both":
+        # ── Feed from the EP fan breakers up to the ceiling trunk, then along the trunk line to each
+        #    fan tap — so Cct-A / Cct-B visibly connect back to their power source (the EP) in the
+        #    Ventilation scene (the real trunking + EP drop are on the hidden Lighting tag). ──
+        ep_x = 2060                                      # EP column X (matches the lighting conduit drop)
+        parts.append(ruby_pipe_run("Fan feed riser (EP -> ceiling trunk, Cct A/B)",
+                                   [(ep_x, 20, EP_H_HI), (ep_x, 20, czr)], fcr, color=C_TRUNK))
+        parts.append(ruby_pipe_run("Fan A feed (EP -> Fan A tap, Cct A)",
+                                   [(ep_x, 20, czr), (fa_x, 20, czr)], fcr, color=C_TRUNK))
+        parts.append(ruby_pipe_run("Fan B feed (EP -> Fan B tap, Cct B)",
+                                   [(ep_x, 20, czr), (fb_drop_x, fb_wall_yd, czr)], fcr, color=C_TRUNK))
     return '\n'.join(parts)
 
 
@@ -1818,7 +1824,7 @@ def evap_cooler():
 
 # ── Ventilation fans (cargo-door end wall) ───────────────────────────────────
 
-def fans():
+def fans(which="both"):
     """Cross-ventilation fans + light-safe baffle ducts on OPPOSITE end walls,
     diagonal low-in / high-out:
       Fan A (exhaust) — sealed/IBC end wall (X=C_LEN), in the plumbing corridor
@@ -1834,9 +1840,14 @@ def fans():
     """
     # Fan A: far end wall (X=C_LEN, exterior on +X); duct projects -X into container.
     # Fan B: cargo-door panel (X=0, exterior on -X); duct projects +X into container.
-    return '\n'.join(
-        fan_duct("Fan A (exhaust)", C_LEN, +1, FAN_A_YD, FAN_A_H) +
-        fan_duct("Fan B (intake)", 0, -1, FAN_B_YD, FAN_B_H))
+    # `which`: "both" (default), "A", or "B" — the construction model installs Fan A early
+    # (before the far IBC column buries it) and Fan B later.
+    out = []
+    if which in ("both", "A"):
+        out += fan_duct("Fan A (exhaust)", C_LEN, +1, FAN_A_YD, FAN_A_H)
+    if which in ("both", "B"):
+        out += fan_duct("Fan B (intake)", 0, -1, FAN_B_YD, FAN_B_H)
+    return '\n'.join(out)
 
 
 def fan_duct(tag, wall_x, ext, yc, zc):

@@ -128,7 +128,7 @@ plumbing, the film-plane support, and the walkway.
 ## 9. Construction Model (3D, phased)
 
 The build order is verified by a dedicated **phased 3D model** — the same component builders
-as the [Overview model](project-summary.md), staged by install order:
+as the Overview 3D model, staged by install order:
 
 - **One scene per phase** (Phase 1 … Phase 5) — the model shown at the end of that phase.
 - **Click-to-build within a scene** — a Dynamic Component reveals each step's geometry in

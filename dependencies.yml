@@ -42,6 +42,7 @@ models:
   overview: {script: src/models/generate_sketchup_model.py, outputs: [models/overview.skp, src/models/overview.rb]}
   spraybar: {script: src/models/generate_spraybar_model.py, outputs: [models/spraybar.skp, src/models/spraybar.rb]}
   ibc-stack: {script: src/models/generate_ibc_model.py, outputs: [models/ibc-stack.skp, src/models/ibc-stack.rb]}
+  construction: {script: src/models/generate_construction_model.py, outputs: [models/construction.skp, src/models/construction.rb]}
   walkway: {script: src/models/generate_walkway_model.py, outputs: [models/walkway.skp, src/models/walkway.rb]}
   film-plane-mechanism: {script: src/models/generate_film_plane_mechanism_model.py, outputs: [models/film-plane-mechanism.skp, src/models/film-plane-mechanism.rb]}
   lighttrap: {script: src/models/generate_lighttrap_model.py, outputs: [models/lighttrap.skp, src/models/lighttrap.rb]}

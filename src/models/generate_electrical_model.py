@@ -402,9 +402,39 @@ def battery():
     return '\n'.join(p)
 
 
-def external_panel():
+def external_estop():
+    """The exterior E-stop (safety-yellow collar + red mushroom button) on the panel face.
+    Broken out so the construction sequence can reveal it WITH the interior EP rather than
+    with the empty panel shell."""
+    face_y = -WALL - 25
+    es_cx = PWR_PANEL_X + PWR_PANEL_W / 2
+    es_cz = PWR_PANEL_Z + PWR_PANEL_H / 2
+    return '\n'.join([
+        ov.ruby_cylinder("E-stop collar (safety yellow)", es_cx, face_y - 12,
+                         es_cz, 35, 12, color="#F2C200", axis="y"),
+        ov.ruby_cylinder("E-stop button (red mushroom)", es_cx, face_y - 40,
+                         es_cz, 26, 28, color="#C42B1C", axis="y"),
+    ])
+
+
+def pv_disconnect():
+    """PV array disconnect — red DC load-break isolator on the PV path (array -> MPPT), on
+    the skinny column at OPERATOR REACH (PV_DISC_Z), with a red switch LEVER on its face so
+    it reads as a switch (NEC 690.13). Broken out so the construction model reveals it with
+    the interior EP rather than with the empty panel shell."""
+    return '\n'.join([
+        ov.ruby_box("PV Array Disconnect (load-break isolator)",
+                    PV_DISC_X, 0, PV_DISC_Z, 70, 45, 70, color="#D43A2F"),
+        ov.ruby_box("PV disconnect lever (red switch)", PV_DISC_X + 28, 45, PV_DISC_Z + 20,
+                    14, 40, 14, color="#C0202A"),
+    ])
+
+
+def external_panel(include_estop=True, include_disconnect=True):
     """Flush external power panel + MC4 PV bulkheads, NEMA shore inlet, GFCI cooler
-    outlet (Circuit E), and the exterior E-stop."""
+    outlet (Circuit E), the exterior E-stop, and the PV disconnect. include_estop /
+    include_disconnect = False omit those devices (the construction model reveals them a
+    step later, with the interior EP)."""
     p = []
     face_y = -WALL - 25
     p.append(ov.ruby_box("Ext. Power Panel (exterior)", PWR_PANEL_X, face_y,
@@ -426,18 +456,11 @@ def external_panel():
     p.append(ov.ruby_cylinder("GFCI AC outlet (Cct E cooler)", px(0.767), face_y - 20,
                               pz(0.325), 12, 22, color="#E8884A", axis="y"))
     # E-stop on the exterior face.
-    es_cx = PWR_PANEL_X + PWR_PANEL_W / 2
-    es_cz = PWR_PANEL_Z + PWR_PANEL_H / 2
-    p.append(ov.ruby_cylinder("E-stop collar (safety yellow)", es_cx, face_y - 12,
-                              es_cz, 35, 12, color="#F2C200", axis="y"))
-    p.append(ov.ruby_cylinder("E-stop button (red mushroom)", es_cx, face_y - 40,
-                              es_cz, 26, 28, color="#C42B1C", axis="y"))
-    # PV array disconnect — DC load-break isolator on the PV path (array -> MPPT), on the skinny column
-    # at OPERATOR REACH (PV_DISC_Z), with a red switch LEVER on its face so it reads as a switch (NEC 690.13).
-    p.append(ov.ruby_box("PV Array Disconnect (load-break isolator)",
-                         PV_DISC_X, 0, PV_DISC_Z, 70, 45, 70, color="#D43A2F"))
-    p.append(ov.ruby_box("PV disconnect lever (red switch)", PV_DISC_X + 28, 45, PV_DISC_Z + 20,
-                         14, 40, 14, color="#C0202A"))
+    if include_estop:
+        p.append(external_estop())
+    # PV array disconnect on the skinny column.
+    if include_disconnect:
+        p.append(pv_disconnect())
 
     # Evap cooler (Hessaire MC18M) — external, ground-placed off the pinhole wall — and
     # its 120V AC cord from the panel GFCI outlet (Circuit E). The DC feed (fuse block ->

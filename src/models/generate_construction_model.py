@@ -116,13 +116,10 @@ SF_TAGS = "sketchup"
 
 def context():
     """Minimal container datum so the build reads in place but stays easy to orbit — just the
-    FLOOR + the sealed END WALL. The roof and both side walls are omitted (they enclose the
-    model and block the orbit)."""
+    FLOOR. The roof, both side walls, and the (right) sealed end wall are omitted so nothing
+    encloses the model or blocks the orbit."""
     t = ov.WALL_T
-    return _join(
-        ov.ruby_box("Floor (context)", 0, 0, -t, ov.C_LEN, ov.C_WID, t, color=ov.C_SHELL, alpha=0.18),
-        ov.ruby_box("End Wall sealed (context)", ov.C_LEN, 0, 0, t, ov.C_WID, ov.C_HGT, color=ov.C_SHELL, alpha=0.12),
-    )
+    return ov.ruby_box("Floor (context)", 0, 0, -t, ov.C_LEN, ov.C_WID, t, color=ov.C_SHELL, alpha=0.18)
 
 
 def _phase_dc_ruby(pnum, p_steps):
@@ -170,7 +167,10 @@ SCENE_PHASES = (1, 3, 4, 5)  # Phase 2 (re-measure) has no geometry → no scene
 
 def generate_ruby():
     step_tags = [tag for (_p, _s, tag, _l, _b) in STEPS]
-    TAGS = ["Context"] + step_tags
+    # Each DC phase also gets a STATIC (flat, non-clickable) copy on its own tag, shown as built
+    # context in LATER scenes — so clicking a later phase can only ever hit that later phase's DC.
+    static_tag = {pn: f"P{pn}-static" for pn in DC_PHASES}
+    TAGS = ["Context"] + step_tags + [static_tag[pn] for pn in DC_PHASES]
 
     comps = [ov.component("Container (ghost)", "Context", context())]
     dc_blocks, dc_vars, dc_info = [], [], []
@@ -181,6 +181,9 @@ def generate_ruby():
             dc_blocks.append(block)
             dc_vars.append(var)
             dc_info.append((var, len(p_steps)))
+            # static built copy (non-clickable) for use as prior context in later scenes
+            for (sid, tag, label, body) in p_steps:
+                comps.append(ov.component(f"[built] Step {sid} — {label}", static_tag[pn], body()))
         else:
             for (sid, tag, label, body) in p_steps:
                 comps.append(ov.component(f"Step {sid} — {label}", tag, body()))
@@ -198,11 +201,22 @@ def generate_ruby():
     tags_ruby = '\n'.join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep_tags_ruby = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
 
-    # Cumulative phase scenes: phase N shows Context + every step-tag with phase <= N.
-    scenes = []
-    for pn in SCENE_PHASES:
-        vis = ["Context"] + [tag for (p, _s, tag, _l, _b) in STEPS if p <= pn]
-        scenes.append((PHASE_NAMES[pn], vis))
+    # Scenes: for phase N show Context + the CURRENT phase's clickable geometry + every PRIOR phase
+    # as built context (DC phases → their static tag; flat phases → their step tags).
+    def scene_tags(N):
+        vis = ["Context"]
+        for pk in SCENE_PHASES:
+            if pk > N:
+                continue
+            ptags = [tag for (p, _s, tag, _l, _b) in STEPS if p == pk]
+            if pk == N:
+                vis += ptags                       # current phase: clickable DC (or flat) tags
+            elif pk in DC_PHASES:
+                vis.append(static_tag[pk])         # prior DC phase: static built copy
+            else:
+                vis += ptags                       # prior flat phase: its step tags
+        return vis
+    scenes = [(PHASE_NAMES[pn], scene_tags(pn)) for pn in SCENE_PHASES]
     scenes_ruby = '[' + ', '.join(
         '["%s", [%s]]' % (n, ', '.join(f'"{t}"' for t in tags)) for n, tags in scenes) + ']'
 

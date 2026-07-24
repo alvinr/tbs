@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Walkway drawing set reorganized: merged the two left-walkway support sheets, added a pinhole-side
+  bump-out detail.** The drum-exit punch-out support (former Sheet 9, Detail E) was a zoomed re-draw of
+  the middle of Sheet 5 — folded into **Sheet 5 (Detail C — left walkway floor-leg support + drum-exit
+  punch-out)**. The freed Sheet 9 is now **Detail F — Near-Walkway Bump-Out (pinhole wall)**: a plan of
+  the 500mm-deep standing band over X1,055–3,083, its 5 widened wall-cantilever brackets, the 100mm end
+  overhangs, the EP/battery wall footprint, and the spray-bar pole slit — the pinhole-side counterpart to
+  the left punch-out. Report + gallery captions updated.
+
 - **Walkway decks reworked to continuous cut pieces — bump-out & punch-out now integral, not
   butt-jointed add-ons.** The near-walkway EP/battery bump-out and the left lift-out's drum-exit
   punch-out were each modeled as a *separate* box butt-jointed onto the deck — which reads as

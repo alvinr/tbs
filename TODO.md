@@ -38,6 +38,15 @@ bucketed by WHEN it can be acted on:_
 
 ---
 
+## Deliverable — standalone TBS-002 brochure — OPEN
+- [ ] **Create a separate brochure for TBS-002** (the mini / proof-of-concept). Its docs
+  (`mini-tbs-poc.md`, `mini-tbs-shopping-list.md`) currently ride at the tail of the main TBS-001
+  brochure (`tbs-brochure.pdf`, pp. 213–215); split them into their own **`tbs-002-brochure.pdf`** so
+  TBS-002 can be shared on its own. Likely a `publish.sh` flag / separate MD list that builds only the
+  TBS-002 docs (+ cover). (Alvin 2026-07-24.)
+
+---
+
 ## ★ MAJOR MILESTONE — manufacturing-ready blueprints (ALL drawing sets) — OPEN
 
 _Alvin's call (2026-07-16): the current 2D sets are arrangement-faithful schematics (true-proportion +

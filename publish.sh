@@ -97,6 +97,7 @@ MD_FILES=(
     "ibc-stacking-report.md"
     "ventilation-report.md"
     "all-diagrams.md"
+    "construction-report.md"
     "mini-tbs/mini-tbs-poc.md"
     "mini-tbs/mini-tbs-shopping-list.md"
 )

@@ -83,6 +83,7 @@ MD_FILES = [
     ("plumbing-report.md",              (".",           "Plumbing")),
     ("walkway-routing-sections.md",     (".",           "Walkway Pipe Routing")),
     ("all-diagrams.md",                   (".",           "All Diagrams")),
+    ("construction-report.md",            (".",           "Construction Sequence")),
     ("mini-tbs/mini-tbs-poc.md",          ("mini-tbs",    "Mini-TBS PoC")),
     ("mini-tbs/mini-tbs-shopping-list.md",("mini-tbs",    "Mini-TBS Shopping List")),
 ]
@@ -397,6 +398,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Plumbing](plumbing-report.md) | Two plumbing panels &mdash; the Corridor Plumbing Panel (pumps, accumulator, diverters, valves in the IBC corridor) and the Pinhole Wall Plumbing Panel (wet-end 3-stage filter loop), with pipe routing and the interactive 3D water model |
 | [Walkway Pipe Routing](walkway-routing-sections.md) | Five cross-sections scanning pinhole wall &rarr; corridor, showing the pipe-routing envelope under and around the right walkway and the clearance/interference points they surface |
 | [All Diagrams](all-diagrams.md) | Complete visual gallery of every TBS-001 engineering diagram on a single page |
+| [Construction Sequence](construction-report.md) | The build order of record — the phased install sequence for TBS-001 (5 phases, IBC set-out through the photo system), each step gated and validated by a phased 3D construction model |
 
 """
 

@@ -75,9 +75,9 @@ STEPS = [
         lambda: ov.ep_external_wiring()),
     (4, "4.3", "P4 Lights",            "Lights",                                 # [4.3]
         lambda: ov.lighting_wiring()),
-    (4, "4.4", "P4 Wiring + Fit-out",  "Wiring paths (pumps/fans) + fans/cooler/shelf/solar",  # [4.4 (+ ventilation/chem fit-out)]
+    (4, "4.4", "P4 Wiring + Fit-out",  "Wiring paths (pumps/fans) + fans + shelf",  # [4.4] (external evap cooler + ground solar array excluded — not part of the container build)
         lambda: _join(ov.fan_wiring(), pw.panel_power(include_switch=True),
-                      ov.fans(), ov.evap_cooler(), ov.shelf(), ov.solar_array())),
+                      ov.fans(), ov.shelf())),
 
     # ── Phase 5 — Photo system ──
     (5, "5.1", "P5 Film Plane",        "Film plane + carriages (+ rails/beams)",  # [5.1 (+ 3.6 beams — grouped: film_plane_mechanism draws both)]
@@ -100,20 +100,52 @@ SF_TITLE = "TBS-001 Construction Sequence"
 SF_DESC = ("The TBS-001 build order — one scene per install phase (geometry set-out → IBC "
            "plumbing → hard install → electrical → photo system), each phase shown built up "
            "cumulatively, to validate the assembly sequence.")
-SF_ID = ""   # TODO: paste the stable Sketchfab UID after the first manual upload
+SF_ID = "dcc54fb3d02e46c3ab070dd49adc5d1e"   # stable Sketchfab UID — re-uploads REPLACE this model
 SF_TAGS = "sketchup"
 
 
 def context():
-    """Low-alpha ghost of the full container so every phase reads in place."""
+    """Minimal container datum so the build reads in place but stays easy to orbit — just the
+    FLOOR + the sealed END WALL. The roof and both side walls are omitted (they enclose the
+    model and block the orbit)."""
     t = ov.WALL_T
     return _join(
         ov.ruby_box("Floor (context)", 0, 0, -t, ov.C_LEN, ov.C_WID, t, color=ov.C_SHELL, alpha=0.18),
-        ov.ruby_box("Ceiling (context)", 0, 0, ov.C_HGT, ov.C_LEN, ov.C_WID, t, color=ov.C_SHELL, alpha=0.08),
-        ov.ruby_box("Side Wall near (context)", 0, -t, 0, ov.C_LEN, t, ov.C_HGT, color=ov.C_SHELL, alpha=0.12),
-        ov.ruby_box("Side Wall far (context)", 0, ov.C_WID, 0, ov.C_LEN, t, ov.C_HGT, color=ov.C_SHELL, alpha=0.12),
         ov.ruby_box("End Wall sealed (context)", ov.C_LEN, 0, 0, t, ov.C_WID, ov.C_HGT, color=ov.C_SHELL, alpha=0.12),
     )
+
+
+def _phase1_dc_ruby(p1_steps):
+    """Ruby for the Phase-1 CLICK-TO-BUILD Dynamic Component: a parent 'Phase 1 Build' DC whose
+    `onclick` cycles a `step` counter (ANIMATE 0→N); each Phase-1 sub-step is a child instance
+    HIDDEN until `step` reaches its index, so clicking the assembly reveals 1.1 → 1.2 → 1.3 → 1.5
+    in install order (then wraps back to empty). `step` starts at 0 (unbuilt)."""
+    da = "dynamic_attributes"
+    n = len(p1_steps)
+    L = ['# ═══ Phase 1 Build — CLICK-TO-BUILD Dynamic Component ═══',
+         '# Interact tool → each click reveals the NEXT Phase-1 step (step cycles 0..N, 0 = empty).',
+         'p1_defn = model.definitions.add("Phase 1 Build")']
+    for i, (sid, tag, label, body) in enumerate(p1_steps, start=1):
+        cdef = f'P1Step{sid.replace(".", "_")}'
+        L += [f'child = model.definitions.add("{cdef}")',
+              'ents = child.entities',
+              body(),
+              'ci = p1_defn.entities.add_instance(child, Geom::Transformation.new)',
+              f'ci.name = "Step {sid} — {label}"',
+              f'ci.layer = model.layers["{tag}"]',
+              f'ci.set_attribute("{da}", "_name", "{cdef}")',
+              f'ci.set_attribute("{da}", "hidden", 1.0)',
+              f'ci.set_attribute("{da}", "_hidden_formula", "Phase1Build!step<{i}")']
+    anim = ",".join(str(k) for k in range(0, n + 1))   # 0,1,2,...,N
+    L += ['p1_inst = entities.add_instance(p1_defn, Geom::Transformation.new)',
+          'p1_inst.name = "Phase 1 Build"',
+          f'p1_inst.set_attribute("{da}", "_name", "Phase1Build")',
+          f'p1_inst.set_attribute("{da}", "step", 0.0)',
+          f'p1_inst.set_attribute("{da}", "_step_access", "VIEW")',
+          f'p1_inst.set_attribute("{da}", "_step_label", "Build step")',
+          f'''p1_inst.set_attribute("{da}", "onclick", 'ANIMATE("step",{anim})')''',
+          f'p1_inst.set_attribute("{da}", "_onclick_access", "NONE")']
+    return '\n'.join(L)
 
 
 def generate_ruby():
@@ -121,9 +153,12 @@ def generate_ruby():
     TAGS = ["Context"] + step_tags
 
     comps = [ov.component("Container (ghost)", "Context", context())]
-    for (_p, sid, tag, label, body) in STEPS:
+    for (p, sid, tag, label, body) in STEPS:
+        if p == 1:
+            continue                       # Phase 1 → the click-to-build DC below
         comps.append(ov.component(f"Step {sid} — {label}", tag, body()))
-    body_ruby = '\n'.join(comps)
+    p1_dc = _phase1_dc_ruby([(sid, tag, label, body) for (p, sid, tag, label, body) in STEPS if p == 1])
+    body_ruby = '\n'.join(comps) + '\n' + p1_dc
 
     tags_ruby = '\n'.join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep_tags_ruby = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
@@ -165,6 +200,10 @@ model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 # ── Steps (each on its own tag, drawn in install order) ──
 {body_ruby}
 
+# ── Drop the external evap cooler UNIT + its cord (ov.electrical() draws them) — not part of
+#    the container construction. The panel provisions (Fuse E, Cct-E GFCI outlet) stay.
+model.definitions.each {{ |d| d.entities.grep(Sketchup::Group).each {{ |g| g.erase! if g.valid? && g.name =~ /Evap Cooler|cooler cord/ }} }}
+
 {ov.license_note()}
 model.definitions.purge_unused
 model.materials.purge_unused
@@ -195,6 +234,14 @@ model.active_view.zoom_extents
 model.layers.each {{ |l| l.visible = true }}
 
 model.commit_operation
+
+# Register the Phase-1 DC with the Dynamic Components engine so the Interact tool drives the
+# click-to-build (skipped silently if the DC extension isn't loaded).
+if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
+  cls = $dc_observers.get_latest_class
+  cls.redraw_with_undo(p1_inst) rescue nil if cls
+end
+
 {{ success: true, model: "Construction Sequence",
    components: model.entities.grep(Sketchup::ComponentInstance).length,
    tags: model.layers.count, scenes: model.pages.count }}.to_json

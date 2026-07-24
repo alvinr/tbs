@@ -135,10 +135,23 @@ as the Overview 3D model, staged by install order:
   order on click, so the assembly can be watched building up and the sequence checked for
   trapped work / access conflicts before the real build.
 
-_TBD — `generate_construction_model.py` → `construction.skp`; reuses `ov.*` builders, one
-tag per step, a phase-staged click DC. Sketchfab embed goes here once built._
+**Interactive 3D model** — `construction.skp` (`generate_construction_model.py`), reusing the
+Overview component builders: **one tag per build step, one scene per phase.** Step through the
+scenes **Phase 1 → Phase 5** to watch the camera build up cumulatively — geometry set-out, then
+the hard structure, electrical, and the photo system. Drag to orbit, scroll to zoom.
 
-<!-- Sketchfab embed placeholder — construction.skp -->
+_Next iteration: a **click-to-build Dynamic Component** that reveals each step within a phase on
+click, plus finer per-step splits (IBC near/far totes, near/far brackets, film-plane rails vs
+plane) — a few Overview builders are grouped here because they don't yet take a per-wall argument._
+
+<!-- brochure:skip -->
+<div class="sketchfab-embed-wrapper">
+  <div style="position:relative;width:100%;padding-bottom:56.25%;">
+    <iframe title="TBS-001 Construction Sequence" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/dcc54fb3d02e46c3ab070dd49adc5d1e/embed" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>
+  </div>
+  <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/3d-models/tbs-001-construction-sequence-dcc54fb3d02e46c3ab070dd49adc5d1e?utm_medium=embed&utm_campaign=share-popup&utm_content=dcc54fb3d02e46c3ab070dd49adc5d1e" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">TBS-001 Construction Sequence</a> by <a href="https://sketchfab.com/alvin91403?utm_medium=embed&utm_campaign=share-popup&utm_content=dcc54fb3d02e46c3ab070dd49adc5d1e" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">alvin91403</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=dcc54fb3d02e46c3ab070dd49adc5d1e" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p>
+</div>
+<!-- brochure:endskip -->
 
 ---
 

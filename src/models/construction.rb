@@ -40930,7 +40930,7 @@ ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase1Build!step<7")
 p1_inst = entities.add_instance(p1_defn, Geom::Transformation.new)
 p1_inst.name = "Phase 1 Build"
 p1_inst.set_attribute("dynamic_attributes", "_name", "Phase1Build")
-p1_inst.set_attribute("dynamic_attributes", "step", 7.0)
+p1_inst.set_attribute("dynamic_attributes", "step", 1.0)
 p1_inst.set_attribute("dynamic_attributes", "_step_access", "VIEW")
 p1_inst.set_attribute("dynamic_attributes", "_step_label", "Build step")
 p1_inst.set_attribute("dynamic_attributes", "onclick", 'ANIMATE("step",1,2,3,4,5,6,7)')
@@ -51347,7 +51347,7 @@ ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase3Build!step<8")
 p3_inst = entities.add_instance(p3_defn, Geom::Transformation.new)
 p3_inst.name = "Phase 3 Build"
 p3_inst.set_attribute("dynamic_attributes", "_name", "Phase3Build")
-p3_inst.set_attribute("dynamic_attributes", "step", 8.0)
+p3_inst.set_attribute("dynamic_attributes", "step", 1.0)
 p3_inst.set_attribute("dynamic_attributes", "_step_access", "VIEW")
 p3_inst.set_attribute("dynamic_attributes", "_step_label", "Build step")
 p3_inst.set_attribute("dynamic_attributes", "onclick", 'ANIMATE("step",1,2,3,4,5,6,7,8)')
@@ -56365,7 +56365,7 @@ ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase4Build!step<4")
 p4_inst = entities.add_instance(p4_defn, Geom::Transformation.new)
 p4_inst.name = "Phase 4 Build"
 p4_inst.set_attribute("dynamic_attributes", "_name", "Phase4Build")
-p4_inst.set_attribute("dynamic_attributes", "step", 4.0)
+p4_inst.set_attribute("dynamic_attributes", "step", 1.0)
 p4_inst.set_attribute("dynamic_attributes", "_step_access", "VIEW")
 p4_inst.set_attribute("dynamic_attributes", "_step_label", "Build step")
 p4_inst.set_attribute("dynamic_attributes", "onclick", 'ANIMATE("step",1,2,3,4)')
@@ -56423,12 +56423,12 @@ if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
 end
 
 # Re-assert the fully-built default (the ANIMATE redraw above resets the first DC's step).
-p1_inst.set_attribute("dynamic_attributes", "step", 7.0)
-p1_inst.definition.entities.grep(Sketchup::ComponentInstance).each { |c| c.set_attribute("dynamic_attributes", "hidden", 0.0); c.visible = true }
-p3_inst.set_attribute("dynamic_attributes", "step", 8.0)
-p3_inst.definition.entities.grep(Sketchup::ComponentInstance).each { |c| c.set_attribute("dynamic_attributes", "hidden", 0.0); c.visible = true }
-p4_inst.set_attribute("dynamic_attributes", "step", 4.0)
-p4_inst.definition.entities.grep(Sketchup::ComponentInstance).each { |c| c.set_attribute("dynamic_attributes", "hidden", 0.0); c.visible = true }
+p1_inst.set_attribute("dynamic_attributes", "step", 1.0)
+p1_inst.definition.entities.grep(Sketchup::ComponentInstance).each_with_index { |c, i| c.set_attribute("dynamic_attributes", "hidden", i == 0 ? 0.0 : 1.0); c.visible = (i == 0) }
+p3_inst.set_attribute("dynamic_attributes", "step", 1.0)
+p3_inst.definition.entities.grep(Sketchup::ComponentInstance).each_with_index { |c, i| c.set_attribute("dynamic_attributes", "hidden", i == 0 ? 0.0 : 1.0); c.visible = (i == 0) }
+p4_inst.set_attribute("dynamic_attributes", "step", 1.0)
+p4_inst.definition.entities.grep(Sketchup::ComponentInstance).each_with_index { |c, i| c.set_attribute("dynamic_attributes", "hidden", i == 0 ? 0.0 : 1.0); c.visible = (i == 0) }
 
 { success: true, model: "Construction Sequence",
    components: model.entities.grep(Sketchup::ComponentInstance).length,

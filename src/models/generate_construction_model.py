@@ -120,39 +120,45 @@ def context():
     )
 
 
-def _phase1_dc_ruby(p1_steps):
-    """Ruby for the Phase-1 CLICK-TO-BUILD Dynamic Component: a parent 'Phase 1 Build' DC whose
-    `onclick` cycles a `step` counter (ANIMATE 1→N→1); each Phase-1 sub-step is a child instance
-    HIDDEN until `step` reaches its index, so clicking the assembly reveals 1.1 → 1.2 → 1.3 → 1.5
-    in install order (then wraps back to 1.1). `step` starts at 1, so the first sub-step (1.1) is
-    always drawn — there's geometry to click, and since every sub-step is nested inside this parent
-    onclick DC, clicking anywhere on the shown assembly advances to the next step."""
+def _phase_dc_ruby(pnum, p_steps):
+    """Ruby for a phase's CLICK-TO-BUILD Dynamic Component: a parent 'Phase N Build' DC whose
+    `onclick` cycles a `step` counter (ANIMATE 1→N→1); each sub-step is a child instance HIDDEN
+    until `step` reaches its index, so clicking the assembly reveals the steps in install order
+    (then wraps back to the first). `step` starts at 1, so the first sub-step is always drawn —
+    there's geometry to click, and since every sub-step is nested inside this parent onclick DC,
+    clicking anywhere on the shown assembly advances to the next step.
+    Returns (ruby, parent_instance_var_name)."""
     da = "dynamic_attributes"
-    n = len(p1_steps)
-    L = ['# ═══ Phase 1 Build — CLICK-TO-BUILD Dynamic Component ═══',
-         '# Interact tool → each click reveals the NEXT Phase-1 step (step cycles 0..N, 0 = empty).',
-         'p1_defn = model.definitions.add("Phase 1 Build")']
-    for i, (sid, tag, label, body) in enumerate(p1_steps, start=1):
-        cdef = f'P1Step{sid.replace(".", "_")}'
+    n = len(p_steps)
+    ref = f"Phase{pnum}Build"                       # ancestor-ref name used in child formulas
+    var = f"p{pnum}_inst"
+    L = [f'# ═══ Phase {pnum} Build — CLICK-TO-BUILD Dynamic Component ═══',
+         f'p{pnum}_defn = model.definitions.add("Phase {pnum} Build")']
+    for i, (sid, tag, label, body) in enumerate(p_steps, start=1):
+        cdef = f'P{pnum}Step{sid.replace(".", "_")}'
         L += [f'child = model.definitions.add("{cdef}")',
               'ents = child.entities',
               body(),
-              'ci = p1_defn.entities.add_instance(child, Geom::Transformation.new)',
+              f'ci = p{pnum}_defn.entities.add_instance(child, Geom::Transformation.new)',
               f'ci.name = "Step {sid} — {label}"',
               f'ci.layer = model.layers["{tag}"]',
               f'ci.set_attribute("{da}", "_name", "{cdef}")',
               f'ci.set_attribute("{da}", "hidden", 1.0)',
-              f'ci.set_attribute("{da}", "_hidden_formula", "Phase1Build!step<{i}")']
-    anim = ",".join(str(k) for k in range(1, n + 1))   # 1,2,...,N (never 0 → always ≥1 bullet drawn)
-    L += ['p1_inst = entities.add_instance(p1_defn, Geom::Transformation.new)',
-          'p1_inst.name = "Phase 1 Build"',
-          f'p1_inst.set_attribute("{da}", "_name", "Phase1Build")',
-          f'p1_inst.set_attribute("{da}", "step", 1.0)',
-          f'p1_inst.set_attribute("{da}", "_step_access", "VIEW")',
-          f'p1_inst.set_attribute("{da}", "_step_label", "Build step")',
-          f'''p1_inst.set_attribute("{da}", "onclick", 'ANIMATE("step",{anim})')''',
-          f'p1_inst.set_attribute("{da}", "_onclick_access", "NONE")']
-    return '\n'.join(L)
+              f'ci.set_attribute("{da}", "_hidden_formula", "{ref}!step<{i}")']
+    anim = ",".join(str(k) for k in range(1, n + 1))   # 1,2,...,N (never 0 → always ≥1 sub-step drawn)
+    L += [f'{var} = entities.add_instance(p{pnum}_defn, Geom::Transformation.new)',
+          f'{var}.name = "Phase {pnum} Build"',
+          f'{var}.set_attribute("{da}", "_name", "{ref}")',
+          f'{var}.set_attribute("{da}", "step", 1.0)',
+          f'{var}.set_attribute("{da}", "_step_access", "VIEW")',
+          f'{var}.set_attribute("{da}", "_step_label", "Build step")',
+          f'''{var}.set_attribute("{da}", "onclick", 'ANIMATE("step",{anim})')''',
+          f'{var}.set_attribute("{da}", "_onclick_access", "NONE")']
+    return '\n'.join(L), var
+
+
+DC_PHASES = (1, 3)          # phases rendered as click-to-build Dynamic Components
+SCENE_PHASES = (1, 3, 4, 5)  # Phase 2 (re-measure) has no geometry → no scene
 
 
 def generate_ruby():
@@ -160,20 +166,25 @@ def generate_ruby():
     TAGS = ["Context"] + step_tags
 
     comps = [ov.component("Container (ghost)", "Context", context())]
-    for (p, sid, tag, label, body) in STEPS:
-        if p == 1:
-            continue                       # Phase 1 → the click-to-build DC below
-        comps.append(ov.component(f"Step {sid} — {label}", tag, body()))
-    p1_dc = _phase1_dc_ruby([(sid, tag, label, body) for (p, sid, tag, label, body) in STEPS if p == 1])
-    body_ruby = '\n'.join(comps) + '\n' + p1_dc
+    dc_blocks, dc_vars = [], []
+    for pn in SCENE_PHASES:
+        p_steps = [(sid, tag, label, body) for (p, sid, tag, label, body) in STEPS if p == pn]
+        if pn in DC_PHASES:
+            block, var = _phase_dc_ruby(pn, p_steps)
+            dc_blocks.append(block)
+            dc_vars.append(var)
+        else:
+            for (sid, tag, label, body) in p_steps:
+                comps.append(ov.component(f"Step {sid} — {label}", tag, body()))
+    body_ruby = '\n'.join(comps) + '\n' + '\n'.join(dc_blocks)
+    dc_redraw = ''.join(f'    cls.redraw_with_undo({v}) rescue nil\n' for v in dc_vars)
 
     tags_ruby = '\n'.join(f'  model.layers.add("{t}") unless model.layers["{t}"]' for t in TAGS)
     keep_tags_ruby = '[' + ', '.join(f'"{t}"' for t in TAGS) + ']'
 
     # Cumulative phase scenes: phase N shows Context + every step-tag with phase <= N.
-    # Phase 2 (re-measure) has no geometry → same as Phase 1.
     scenes = []
-    for pn in (1, 2, 3, 4, 5):
+    for pn in SCENE_PHASES:
         vis = ["Context"] + [tag for (p, _s, tag, _l, _b) in STEPS if p <= pn]
         scenes.append((PHASE_NAMES[pn], vis))
     scenes_ruby = '[' + ', '.join(
@@ -242,11 +253,12 @@ model.layers.each {{ |l| l.visible = true }}
 
 model.commit_operation
 
-# Register the Phase-1 DC with the Dynamic Components engine so the Interact tool drives the
-# click-to-build (skipped silently if the DC extension isn't loaded).
+# Register the phase click-to-build DCs with the Dynamic Components engine so the Interact tool
+# drives them (skipped silently if the DC extension isn't loaded).
 if defined?($dc_observers) && $dc_observers.respond_to?(:get_latest_class)
   cls = $dc_observers.get_latest_class
-  cls.redraw_with_undo(p1_inst) rescue nil if cls
+  if cls
+{dc_redraw}  end
 end
 
 {{ success: true, model: "Construction Sequence",

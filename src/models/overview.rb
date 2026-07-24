@@ -35123,7 +35123,7 @@ end
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 121.mm)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 80.5.mm)
   circle = ge.add_circle([4504.mm,155.mm,3.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -35137,8 +35137,8 @@ end
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction elbow"
   ge = grp.entities
-  arc = ge.add_arc([4504.mm,176.mm,124.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4504.mm,155.mm,124.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4504.mm,176.mm,83.5.mm], [0.000000,-1.000000,0.000000], [-1.000000,0.000000,0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4504.mm,155.mm,83.5.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -35151,64 +35151,8 @@ end
   grp = ents.add_group
   grp.name = "Tray sump -> P-04 suction"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 132.15499999999997.mm, 0.mm)
-  circle = ge.add_circle([4504.mm,176.mm,145.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Tray sump -> P-04 suction elbow
-  grp = ents.add_group
-  grp.name = "Tray sump -> P-04 suction elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4504.mm,308.155.mm,125.155.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 19.845000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4504.mm,308.155.mm,145.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Tray sump -> P-04 suction
-  grp = ents.add_group
-  grp.name = "Tray sump -> P-04 suction"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -10.534050000000008.mm)
-  circle = ge.add_circle([4504.mm,328.mm,125.155.mm], vec, 10.5.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Tray sump -> P-04 suction elbow
-  grp = ents.add_group
-  grp.name = "Tray sump -> P-04 suction elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4504.mm,338.12095.mm,114.62095.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 10.120950000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4504.mm,328.mm,114.62095.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Tray sump -> P-04 suction
-  grp = ents.add_group
-  grp.name = "Tray sump -> P-04 suction"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 640.87905.mm, 0.mm)
-  circle = ge.add_circle([4504.mm,338.12095.mm,104.5.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 803.mm, 0.mm)
+  circle = ge.add_circle([4504.mm,176.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

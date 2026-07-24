@@ -765,7 +765,7 @@ PARTS: list[Part] = [
     # separate fab line) → $2,005–$2,985 (reconciles to EXPECTED walkway $2,000–$2,975 within tol) ═══
     Part("walkway-grp-panel", "Molded GRP grating (American Grating, cut-to-size)", "plastics-sheet",
          "walkway", 1, "lot", 830, 1050, "American Grating", "McNichols",
-         spec="1\" MS-S-100 vinyl-ester grit, ~48 ft² cut to the walkway sections. PRIMARY: American Grating public list ≈ $830 (2× 3'×10' @ $415); band to $1,050 covers freight + edge cut — firm cut quote + SoCal freight still to confirm. SECONDARY (firm ceiling): McNichols revised quote $1,700.51 for 8 sheets (quotes/2026-3819515.pdf) — ~2× the American list, held as fallback. Cut plan: grp-grating-quote.md."),
+         spec="1\" MS-S-100 vinyl-ester grit, ~48 ft² cut to the walkway sections. PRIMARY: American Grating public list ≈ $830 (2× 3'×10' @ $415); band to $1,050 covers freight + edge cut — firm cut quote + SoCal freight still to confirm. SECONDARY (firm, shipped): McNichols 2× 48\"×144\" @ $796.77 = $1,593.54 + freight → $2,049.98 shipped (firm 2026-07-24) — ~2× the American list; held as the firm fallback while the American quote is pending. NB McNichols' sheet is 4'×12' (bigger than the American 3'×10'), so switching to it would re-nest the cut plan. Cut plan: grp-grating-quote.md."),
     Part("walkway-grp-sealant", "GRP grating edge-seal kit", "adhesives-finishes",
          "walkway", 1, "kit", 40, 60, "Fibergrate", spec="Fibergrate Sealing & Bonding Kit — molded FRP cut edges are field-SEALED (epoxy), not snap-trimmed; ½-pint kit seals ~20–40 linear ft of cut edge."),
     Part("walkway-drum-exit-grp", "Drum-exit punch-out grating", "plastics-sheet",

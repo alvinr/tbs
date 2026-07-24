@@ -253,7 +253,7 @@ def kit():
     # sump), runs under the grate to DV-01's Yd, then rises into DV-01's IN port.
     pipe("SV-01 -> DV-01 (single filtered line)",
          [(svx, sv_y, waist), (svx, yW, waist), (svx, yW, 50), (svx, 60, 50)]         # SV-01 → wall → DROP low → +Yd
-         + cp.ribbon_run(3, (DCX - 100, DCY, 65), (svx, 60, 50), up_yd=1120)[::-1][1:]  # flush across the notched beam; loop-over rises near the cantilever (short over-run, rest under the walkway)
+         + cp.ribbon_run(3, (DCX - 100, DCY, 65), (svx, 60, 50), up_yd=1110)[::-1][1:]  # flush across the notched beam; loop-over rises at Yd1110 = lane-0 crest far-end so pipe 4's over-crest length matches pipe 1 (Alvin 2026-07-24)
          + [(DCX - 100, DCY, DCZ),                                                      # rise −X of the port to the IN-port height
             (DCX - tipd, DCY, DCZ)],                                                    # +X 90° turn horizontally into DV-01's −X IN port
          ov.C_FILTER)

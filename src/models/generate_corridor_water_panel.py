@@ -42,7 +42,7 @@ RIBBON_Z       = ov.WALKWAY_H - ov.WALKWAY_GRATE_T - ov.PUMP_PIPE_OD / 2   # 104
 RIBBON_LANE_X  = [4556, 4530, 4504, 4478]       # 4 flat lanes in the clear channel BETWEEN the walkway long beams
 #   (inner X4329-4369, outer X4589-4629) — outer lane + its up-turn elbow clear the outer beam at 4589 (26mm pitch)
 RIBBON_YD_UP   = 1000                           # up-through-grate Yd — just BEFORE the first cantilever (Yd1046-1086)
-RIBBON_YD_DOWN = 1120                           # down-through-grate Yd — just PAST the cantilever (Yd1086)
+RIBBON_YD_DOWN = 1110                           # down-through-grate Yd — just PAST the cantilever (Yd1086); = lane-0 crest far-end (RWK_RIBBON_NOTCH_YDS[0]) so the sump over-crest length matches pipe 1 (Alvin 2026-07-24)
 RIBBON_OVER_Z  = ov.WALKWAY_H + 12              # 142 — loop crest, just above the grate (130) / cantilever top (115) — kept low
 RIBBON_SUP_YD  = [200, 450, 700, 950]           # welded cross-beam supports along the under-grate ribbon span
 # Corridor exit: the flush ribbon crosses the OUTER long beam (X4589-4629, Z80-115) through an OPEN-TOP NOTCH at

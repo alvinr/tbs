@@ -49,11 +49,15 @@ STEPS = [
         lambda: ov.ibc_stack(alpha=0.85, cols="near")),
     (1, "1.2", "P1 IBC Frame",     "IBC restraint frame (deep box)",           # [1.2]
         lambda: _join(cp.frame(), cp.tote_restraint())),
-    (1, "1.3", "P1 IBC Plumbing",  "IBC corridor plumbing + drains",           # [1.3 (+ 1.4 finalize plumbing grouped here)]
+    (1, "1.3", "P1 IBC Plumbing",  "IBC corridor plumbing + drains",           # [1.3 (+ finalize plumbing grouped here)]
         lambda: _join(cp.plumbing(), cp.drains_ports())),
-    (1, "1.4", "P1 Far IBCs",      "IBC totes — far wall (far column)",        # [1.4] — second-to-last
+    (1, "1.4", "P1 Fan A",         "Fan A (exhaust) + its Cct-A electrical — pinhole wall",  # NEW — before the far IBCs bury it
+        lambda: _join(ov.fans(which="A"), ov.fan_wiring(which="A"))),
+    (1, "1.5", "P1 Corridor Wiring", "Corridor pump wiring (Cct C) to the pinhole wall",     # NEW — before the far IBCs block the wall
+        lambda: pw.panel_power(include_switch=True)),
+    (1, "1.6", "P1 Far IBCs",      "IBC totes — far wall (far column)",        # was 1.4 — second-to-last
         lambda: ov.ibc_stack(alpha=0.85, cols="far")),
-    (1, "1.5", "P1 Hinge Panel",   "Hinge panel (excl. light-trap drum)",      # [1.5]
+    (1, "1.7", "P1 Hinge Panel",   "Hinge panel (excl. light-trap drum)",      # was 1.5 — last
         lambda: _join(ov.light_trap_frame(), ov.light_seal(), ov.panel_pivot())),
 
     # ── Phase 3 — Hard install (Phase 2 = re-measure, no geometry) ──
@@ -77,9 +81,8 @@ STEPS = [
         lambda: ov.ep_external_wiring()),
     (4, "4.3", "P4 Lights",            "Lights",                                 # [4.3]
         lambda: ov.lighting_wiring()),
-    (4, "4.4", "P4 Wiring + Fit-out",  "Wiring paths (pumps/fans) + fans + shelf",  # [4.4] (external evap cooler + ground solar array excluded — not part of the container build)
-        lambda: _join(ov.fan_wiring(), pw.panel_power(include_switch=True),
-                      ov.fans(), ov.shelf())),
+    (4, "4.4", "P4 Wiring + Fit-out",  "Fan B + its Cct-B wiring + shelf",  # [4.4] (Fan A + Cct-A + Cct-C corridor wiring moved to Phase 1; external cooler/solar excluded)
+        lambda: _join(ov.fans(which="B"), ov.fan_wiring(which="B"), ov.shelf())),
 
     # ── Phase 5 — Photo system ──
     (5, "5.1", "P5 Film Plane",        "Film plane + carriages (+ rails/beams)",  # [5.1 (+ 3.6 beams — grouped: film_plane_mechanism draws both)]

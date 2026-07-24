@@ -18,7 +18,7 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each { |p| model.pages.erase(p) }
 
-# ── Sketchfab metadata — fill-only-if-blank; never overwrites existing values ──
+# ── Sketchfab metadata — sketchfab dict fill-only-if-blank; name/desc forced when requested ──
 model.name = "TBS-001 Lighttrap Model" if model.name.to_s.strip.empty?
 model.description = "Personnel access during operation is via a revolving light trap drum built into the panel. Operators can enter or exit at any time without opening the full panel or admitting daylight \u2014 for example, between coating of the photosensitive material, or while the exposure is being made." if model.description.to_s.strip.empty?
 model.set_attribute("sketchfab", "model_title", "TBS-001 Lighttrap Model") if model.get_attribute("sketchfab", "model_title").to_s.strip.empty?

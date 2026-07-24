@@ -33294,7 +33294,7 @@ end
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-75.15790000000015.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(-85.37790000000041.mm, 0.mm, 0.mm)
   circle = ge.add_circle([4626.1579.mm,1132.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -33308,8 +33308,8 @@ end
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip elbow"
   ge = grp.entities
-  arc = ge.add_arc([4551.mm,1132.mm,125.5.mm], [0.000000,0.000000,-1.000000], [0.000000,1.000000,-0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4551.mm,1132.mm,104.5.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4540.78.mm,1121.22.mm,104.5.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 10.780000000000001.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4540.78.mm,1132.mm,104.5.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -33322,8 +33322,8 @@ end
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 13.514999999999986.mm)
-  circle = ge.add_circle([4530.mm,1132.mm,125.5.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, -5.72219999999993.mm, 0.mm)
+  circle = ge.add_circle([4530.mm,1121.22.mm,104.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -33336,8 +33336,8 @@ end
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip elbow"
   ge = grp.entities
-  arc = ge.add_arc([4530.mm,1119.015.mm,139.015.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 12.985000000000001.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4530.mm,1132.mm,139.015.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([4530.mm,1115.4978.mm,109.99780000000001.mm], [0.000000,0.000000,-1.000000], [-1.000000,0.000000,0.000000], 5.497800000000014.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4530.mm,1115.4978.mm,104.5.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -33350,8 +33350,36 @@ end
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, -98.0150000000001.mm, 0.mm)
-  circle = ge.add_circle([4530.mm,1119.015.mm,152.mm], vec, 10.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 21.421121999999997.mm)
+  circle = ge.add_circle([4530.mm,1110.mm,109.99780000000001.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue trunk: corridor -> ribbon -> outside-rim strip elbow
+  grp = ents.add_group
+  grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip elbow"
+  ge = grp.entities
+  arc = ge.add_arc([4530.mm,1089.418922.mm,131.418922.mm], [0.000000,1.000000,0.000000], [1.000000,0.000000,-0.000000], 20.581077999999998.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4530.mm,1110.mm,131.418922.mm], [0.000000,0.000000,1.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue trunk: corridor -> ribbon -> outside-rim strip
+  grp = ents.add_group
+  grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -68.41892200000007.mm, 0.mm)
+  circle = ge.add_circle([4530.mm,1089.418922.mm,152.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

@@ -221,7 +221,7 @@ def kit():
     # down into the ribbon channel → −Yd to the near-rim strip → rise up the wall to P-02's IN port.
     pipe("IBC-3 (Brown) tap -> P-02 inlet",
          [(tx - 30, ty, tz), (4720, ty, tz), (4720, ty, 65)]                       # tap → −X → down to the corridor pickup (past the tray edge)
-         + cp.ribbon_run(0, (4720, ov.RWK_RIBBON_NOTCH_YDS[0], 65), (2960, 55, 25))  # rise to flush, cross the NOTCHED beam (lane-0 Yd), loop over the cantilever
+         + cp.ribbon_run(0, (4720, ov.RWK_RIBBON_NOTCH_YDS[0], 65), (2960, 55, 25), up_yd=cp.RIBBON_YD_DOWN)  # rise to flush, cross the NOTCHED beam (lane-0 Yd); crest rises at the SHARED line-1 Yd (RIBBON_YD_DOWN) so all 4 ribbon crests are uniform (Alvin 2026-07-24)
          + [(2960, 55, p2_in[2]), (2960, p2cy, p2_in[2]), p2_in],                  # rise to P-02 IN
          ov.C_IBC_BROWN)
     # ^ OFF the tee's −X end; descent OFFSET from the blue trunk (Yd1170 not 1150); −Yd at z25 OVER the
@@ -253,7 +253,7 @@ def kit():
     # sump), runs under the grate to DV-01's Yd, then rises into DV-01's IN port.
     pipe("SV-01 -> DV-01 (single filtered line)",
          [(svx, sv_y, waist), (svx, yW, waist), (svx, yW, 50), (svx, 60, 50)]         # SV-01 → wall → DROP low → +Yd
-         + cp.ribbon_run(3, (DCX - 100, DCY, 65), (svx, 60, 50), up_yd=1110)[::-1][1:]  # flush across the notched beam; loop-over rises at Yd1110 = lane-0 crest far-end so pipe 4's over-crest length matches pipe 1 (Alvin 2026-07-24)
+         + cp.ribbon_run(3, (DCX - 100, DCY, 65), (svx, 60, 50), up_yd=cp.RIBBON_YD_DOWN)[::-1][1:]  # flush across the notched beam; crest rises at the SHARED line-1 Yd (RIBBON_YD_DOWN) so all 4 ribbon crests are uniform (Alvin 2026-07-24)
          + [(DCX - 100, DCY, DCZ),                                                      # rise −X of the port to the IN-port height
             (DCX - tipd, DCY, DCZ)],                                                    # +X 90° turn horizontally into DV-01's −X IN port
          ov.C_FILTER)
@@ -298,7 +298,7 @@ def tap01_supply():
     # the outside-rim strip, where the wall trunk continues.  (Moved from lane 2 → lane 1: the middle two lanes
     # swapped so the blue TAP-01 trunk and the brown tray-sump alternate, and the blue/brown no longer cross.)
     p.append(ov.ruby_pipe_run("Blue trunk: corridor -> ribbon -> outside-rim strip",
-        cp.ribbon_run(1, (cp.BLUE_TRUNK_HANDOFF_X, cp.GAP_CORR_Y, 60), (cp.RIBBON_LANE_X[1], yd, fz)), pr, color=ov.C_BLUE))
+        cp.ribbon_run(1, (cp.BLUE_TRUNK_HANDOFF_X, cp.GAP_CORR_Y, 60), (cp.RIBBON_LANE_X[1], yd, fz), up_yd=cp.RIBBON_YD_DOWN), pr, color=ov.C_BLUE))  # crest rises at the SHARED line-1 Yd (RIBBON_YD_DOWN) so all 4 ribbon crests are uniform (Alvin 2026-07-24)
     p.append(ov.ruby_cylinder("Blue Supply Trunk (1/2in HDPE)",   # trunk ends at the ribbon lane (clear of the saddle gusset)
         ov.TAP_X, yd, fz, pr, cp.RIBBON_LANE_X[1] - ov.TAP_X, color=ov.C_BLUE, axis="x"))
     # BV-05 spray-bar isolation (riser + valve at the pinhole centerline)

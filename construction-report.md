@@ -53,10 +53,10 @@ _TBD — the "why this order" rationale. Placeholders:_
 
 | # | Step | Depends on | Status |
 |---|------|-----------|:------:|
-| 1.1 | Install 2× IBC totes on the **pinhole wall** (near column) | — | ☐ |
-| 1.2 | Install the **IBC frame posts** (upright skeleton + feet) + **plumbing-panel backing** — *rails deferred to 1.5 so the far totes can go in* | 1.1 | ☐ |
-| 1.3 | Install the **panel equipment** (pumps/filters/valves) + **plumb the IBC corridor** (corridor lines only — *the over-walkway sump line + its pipe supports are deferred to 3.9*) | 1.2 | ☐ |
-| 1.4 | Install **Fan A** (exhaust) + its **Cct-A electrical** on the pinhole wall — *before the far IBCs bury it* | 1.2 | ☐ |
+| 1.1 | Install the **IBC frame posts** (upright skeleton + feet) + **plumbing-panel backing** — *rails deferred to 1.5 so the far totes can go in* | — | ☐ |
+| 1.2 | Install 2× IBC totes on the **pinhole wall** (near column) — dropped into the post skeleton | 1.1 | ☐ |
+| 1.3 | Install the **panel equipment** (pumps/filters/valves) + **plumb the IBC corridor** (corridor lines only — *sump + supports → 3.2*) + run the filter skid's **blue recycle** and **grey waste** corridor lines to the IBC panel + run the **purple Cct-C corridor pump wiring** to the pinhole wall (*EP drop connected in 4.3*) | 1.2 | ☐ |
+| 1.4 | Install **Fan A** (exhaust) + run its **Cct-A cable** along the pinhole-wall trunk and **down to the EP drop** (EP itself lands in Phase 4) — *before the far IBCs bury it* | 1.2 | ☐ |
 | 1.5 | Install 2× IBC totes on the **far wall** (far column), then fit the **frame rails + retaining bars** to trap all totes | 1.4 | ☐ |
 | 1.6 | Install the **hinge panel** (light-trap door — *excluding* the light-trap drum) | 1.2 | ☐ |
 
@@ -85,10 +85,10 @@ plumbing, the film-plane support, and the walkway.
 | # | Step | Depends on | Status |
 |---|------|-----------|:------:|
 | 3.1 | Install **cantilevers on the far + right walls** | Phase 2 | ☐ |
-| 3.2 | Lay the **under-grate ribbon** — sump line + pipe support beams — *span the space, so after the right beams* | 3.1 | ☐ |
+| 3.2 | Lay the **under-grate ribbons** — sump line + brown filter-suction ribbon + pipe support beams — *span the space, so after the right beams, before the grate* | 3.1 | ☐ |
 | 3.3 | Install **cantilevers on the near wall** | 3.1 | ☐ |
 | 3.4 | **Extend plumbing** to the pinhole-wall panel | 3.3 | ☐ |
-| 3.5 | Install the **pinhole filter skid** | 3.4 | ☐ |
+| 3.5 | Install the **pinhole filter skid** (skid + the short brown rise to P-02; connects to the recycle/waste lines from 1.3 and the brown ribbon from 3.2) | 3.4 | ☐ |
 | 3.6 | Install the **processing tray** | 3.1 | ☐ |
 | 3.7 | Install the **film-plane beams** + **combined corner plates** (FP ↔ right-walkway) | 3.1 | ☐ |
 | 3.8 | Install the **left cantilevers** | 3.3 | ☐ |
@@ -106,7 +106,7 @@ plumbing, the film-plane support, and the walkway.
 |---|------|-----------|:------:|
 | 4.1 | Mount the **external power panel** (PV + E-stop) | Phase 3 | ☐ |
 | 4.2 | Install the **interior electrical panel** + batteries | 4.1 | ☐ |
-| 4.3 | Run the **corridor pump wiring (Cct-C)** — pinhole panel ↔ corridor panel (off the EP master switch) | 4.2 | ☐ |
+| 4.3 | **Connect the Cct-C corridor wiring to the EP** (the corridor run was pre-installed to the pinhole wall in 1.3 — this closes the EP drop) | 4.2 | ☐ |
 | 4.4 | **Hang the lights** | Phase 3 | ☐ |
 | 4.5 | **Run / wire the electrical paths** — IBC pumps, filter, lights, fans, etc. (circuits Blue / Brown / Black) | 4.2, 4.3, 4.4 | ☐ |
 

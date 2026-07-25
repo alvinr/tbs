@@ -156,12 +156,19 @@ diverter = cp.diverter
 DV01_CX, DV01_CY, DV01_CZ = 4800, cp.CTR_Y + 60, 235   # +100mm toward the sealed (high-X) end so the port turns run square
 
 
-def kit():
+def kit(part="all"):
     """Pinhole-wall FILTER sub-loop (Stage B, agreed labels).  Chain:
     IBC-3 (Brown buffer) → P-02 → F1 → F2 → F3 → SV-01 (sample) → DV-01 → Blue/Grey IBC.
     Mounted HIGH so the walkway stays clear; PUMP on the side FURTHEST from the IBCs
     (low X); FILTERS shifted toward the IBCs (high X); SV-01 + DV-01 dropped to WAIST for
-    easy reach.  Plumbing orthogonal, perpendicular port stubs, routed around the bodies."""
+    easy reach.  Plumbing orthogonal, perpendicular port stubs, routed around the bodies.
+
+    Construction-model splits (default "all" = the full skid, byte-identical):
+      • "recycle"       — ONLY the blue DV-01→X1 recycle line (corridor run to the IBC panel; Phase 1)
+      • "waste"         — ONLY the grey DV-01→IBC-4 merge line (corridor run to the IBC panel; Phase 1)
+      • "brown_ribbon"  — ONLY the brown IBC-3→P-02 suction's under-grate RIBBON portion (Phase 3, 3.2)
+      • "skid"          — the skid bodies + on-panel plumbing + the short brown RISE to P-02, but NOT
+                          the three lines above (they install earlier)."""
     p = []
     fr = ov.BB_OD / 2          # 92
     BB_H, cap_h = ov.BB_H, 78
@@ -219,11 +226,15 @@ def kit():
     tx, ty, tz = cp.BROWN_TAP
     # UNDER-WALKWAY RIBBON (lane 0): IBC-3 tap (corridor) → loop UP over the first cantilever →
     # down into the ribbon channel → −Yd to the near-rim strip → rise up the wall to P-02's IN port.
-    pipe("IBC-3 (Brown) tap -> P-02 inlet",
-         [(tx - 30, ty, tz), (4720, ty, tz), (4720, ty, 65)]                       # tap → −X → down to the corridor pickup (past the tray edge)
-         + cp.ribbon_run(0, (4720, ov.RWK_RIBBON_NOTCH_YDS[0], 65), (2960, 55, 25), up_yd=cp.RIBBON_YD_DOWN)  # rise to flush, cross the NOTCHED beam (lane-0 Yd); crest rises at the SHARED line-1 Yd (RIBBON_YD_DOWN) so all 4 ribbon crests are uniform (Alvin 2026-07-24)
-         + [(2960, 55, p2_in[2]), (2960, p2cy, p2_in[2]), p2_in],                  # rise to P-02 IN
-         ov.C_IBC_BROWN)
+    # split for the construction model: the under-grate RIBBON portion lays with the other ribbons
+    # (Phase 3, step 3.2, before the grate); the short RISE to P-02 stays with the skid (3.5).
+    brown_pre = ([(tx - 30, ty, tz), (4720, ty, tz), (4720, ty, 65)]               # tap → −X → down to the corridor pickup (past the tray edge)
+                 + cp.ribbon_run(0, (4720, ov.RWK_RIBBON_NOTCH_YDS[0], 65), (2960, 55, 25), up_yd=cp.RIBBON_YD_DOWN))  # rise to flush, cross the NOTCHED beam (lane-0 Yd); crest at the SHARED line-1 Yd (uniform crests, Alvin 2026-07-24)
+    brown_rise_wps = [(2960, 55, p2_in[2]), (2960, p2cy, p2_in[2]), p2_in]         # rise to P-02 IN
+    brown_full_pipe = ov.ruby_pipe_run("IBC-3 (Brown) tap -> P-02 inlet", brown_pre + brown_rise_wps, rp, color=ov.C_IBC_BROWN)
+    p.append(brown_full_pipe)
+    brown_ribbon_pipe = ov.ruby_pipe_run("IBC-3 (Brown) tap -> ribbon (under-grate, to P-02)", brown_pre, rp, color=ov.C_IBC_BROWN)
+    brown_rise_pipe = ov.ruby_pipe_run("Brown ribbon -> P-02 inlet (rise)", [brown_pre[-1]] + brown_rise_wps, rp, color=ov.C_IBC_BROWN)
     # ^ OFF the tee's −X end; descent OFFSET from the blue trunk (Yd1170 not 1150); −Yd at z25 OVER the
     #   corridor foot-plate, then step DOWN to z10 (2 elbows) to pass UNDER the blue trunk; strip z10 to P-02.
     #   At x2960 the riser is nudged back to Yd43 (off the strip's Yd56) so it clears the Yd69 supply trunk
@@ -265,23 +276,35 @@ def kit():
     #   rises STRAIGHT into the cross's −X port — ONE elbow at the top, no jog (fewer connections, see skill)
     # STRAIGHT +X off the recycle port, THROUGH the rear panel to the spine riser (no −Yd jog along the
     # corridor floor) — this clears the corridor-floor lane so the brown BV-02 suction can thread through.
-    pipe("DV-01 blue recycle -> X1 cross",
+    recycle_pipe = ov.ruby_pipe_run("DV-01 blue recycle -> X1 cross",
          [(DCX + tipd, DCY, DCZ),                                    # off the +X port (Yd1241, z235)
           (xUp, DCY, DCZ),                                           # STRAIGHT +X through the rear panel to the spine riser
           (xUp, ryd, DCZ),                                           # short −Yd onto the spine riser lane (behind the panel)
           (xUp, ryd, cp.X1_TEE_Z),                                   # RISE up the spine (between the grey pipes)
-          (cp.X1_TEE_X, ryd, cp.X1_TEE_Z)], ov.C_BLUE)               # +X straight into the cross −X port
+          (cp.X1_TEE_X, ryd, cp.X1_TEE_Z)], rp, color=ov.C_BLUE)     # +X straight into the cross −X port
+    p.append(recycle_pipe)
     # 6. DV-01 WASTE (branch, z+) → the shared IBC-4 merge tee's z− branch (DV-02's waste also lands here,
     #    on the tee run, so the two legs make ONE tote entry).
     mx, my, mz = cp.MERGE4
-    pipe("DV-01 -> IBC-4 merge",
+    waste_pipe = ov.ruby_pipe_run("DV-01 -> IBC-4 merge",
          [(DCX, DCY - tipd, DCZ), (DCX, 1165, DCZ),                   # SHORT −Yd exit off the branch → 90° elbow sooner
           (mx, 1165, DCZ),                                            # +X across the corridor at Yd1165 — SHIFTED +Yd (toward the
           #   film plane, was 1147) to open a lane for the blue supply trunk; still clears the brown P-02 riser below and
           #   the blue recycle elbow above (−Yd edge 1185)
           (mx, my, DCZ),                                              # −Yd to the merge column at the far end
-          (mx, my, mz)],                                              # rise into the merge tee's z− branch
-         ov.C_IBC_WASTE)
+          (mx, my, mz)], rp, color=ov.C_IBC_WASTE)                    # rise into the merge tee's z− branch
+    p.append(waste_pipe)
+    if part == "recycle":
+        return recycle_pipe
+    if part == "waste":
+        return waste_pipe
+    if part == "brown_ribbon":
+        return brown_ribbon_pipe
+    if part == "skid":
+        # skid geometry only: drop the Phase-1 lines (recycle, waste) + the brown RIBBON (→3.2),
+        # and swap in the short brown RISE to P-02.
+        drop = {recycle_pipe, waste_pipe, brown_full_pipe}
+        return "\n".join([x for x in p if x not in drop] + [brown_rise_pipe])
     return "\n".join(p)
 
 
@@ -425,13 +448,21 @@ def labels_ruby():
     return '\n'.join(rows)
 
 
-def panel_power(include_switch=True):
+def panel_power(include_switch=True, part="all"):
     """Circuit-C power + cabling to the TWO plumbing panels ONLY (no other electrical shown).
     Routed to NEVER cross a pipe (plumbing-skill rule): the corridor run lives in the CHASE
     between the pump-mount shirt and the rear panel — a clear vertical channel behind the pump
     bodies. Ceiling feed → master switch + 12V distribution block in the chase → vertical bus
     down the chase → short back-taps to each pump (behind the body). One branch runs along the
-    ceiling (in the tote-free corridor lane) to the Pinhole-Wall panel → P-02."""
+    ceiling (in the tote-free corridor lane) to the Pinhole-Wall panel → P-02.
+
+    part="corridor" = everything EXCEPT the final EP drop (the dist block, bus, pump taps, P-02
+    branch + the ceiling feed run STOPPING at the pinhole-wall trunk above the EP) — the
+    construction model installs this in Phase 1, wired to the pinhole wall. part="ep_link" = just
+    the EP-drop segment (+ master switch), connected in Phase 4. "all" (default) = the original
+    single feed run + everything, byte-identical."""
+    do_corr = part in ("all", "corridor")
+    do_link = part in ("all", "ep_link")
     PWR = "#8E44AD"                                 # unique POWER conduit color (purple) — distinct from all water pipes
     cr = 7                                          # conduit radius (14mm OD)
     p = []
@@ -450,34 +481,43 @@ def panel_power(include_switch=True):
     #    corridor switch + its through-panel wiring; puts BOTH P-02 and the corridor pumps
     #    downstream of it).  Red disconnect lever like the DV handles. ──
     if include_switch:   # standalone: draw the master switch here + feed off it (swx)
-        p.append(ov.ruby_box("Master pump switch (Cct C, on EP)", swx - 26, 30, 1840, 52, 48, 56, color="#202020"))
-        p.append(ov.ruby_box("Master switch lever (OFF cutoff)", swx - 7, 78, 1852, 14, 46, 14, color=cp.C_HANDLE))
+        if do_link:
+            p.append(ov.ruby_box("Master pump switch (Cct C, on EP)", swx - 26, 30, 1840, 52, 48, 56, color="#202020"))
+            p.append(ov.ruby_box("Master switch lever (OFF cutoff)", swx - 7, 78, 1852, 14, 46, 14, color=cp.C_HANDLE))
         fx, fy, fz = swx, 54, 1896
     else:                # EP present (overview + water): feed off the EP panel's OWN master switch, ON the panel
         import generate_electrical_model as em
         fx, fy, fz = em.MASTER_SW_POS
     # ── feed: EP master switch → Yd20 ceiling trunk (per electrical.skp, clear of the center
-    #    LEDs) → down to the corridor 12V DISTRIBUTION BLOCK ──
-    p.append(ov.ruby_pipe_run("Cct C feed (EP master sw -> corridor dist block)",
-             [(fx, fy, fz), (fx, fy, TZ), (fx, TY, TZ), (p2x, TY, TZ), (BKX, TY, TZ),
-              (BKX, by, TZ), (BKX, by, zc + 48)], cr, color=PWR))
+    #    LEDs) → down to the corridor 12V DISTRIBUTION BLOCK.  Split at index 2 = (fx,TY,TZ), the
+    #    pinhole-wall ceiling trunk above the EP: corridor side (Phase 1) vs EP drop (Phase 4). ──
+    feed = [(fx, fy, fz), (fx, fy, TZ), (fx, TY, TZ), (p2x, TY, TZ), (BKX, TY, TZ),
+            (BKX, by, TZ), (BKX, by, zc + 48)]
+    if part == "all":
+        p.append(ov.ruby_pipe_run("Cct C feed (EP master sw -> corridor dist block)", feed, cr, color=PWR))
+    else:
+        if do_link:
+            p.append(ov.ruby_pipe_run("Cct C feed (EP master sw -> pinhole-wall ceiling)", feed[:3], cr, color=PWR))
+        if do_corr:
+            p.append(ov.ruby_pipe_run("Cct C feed (pinhole-wall ceiling -> corridor dist block)", feed[2:], cr, color=PWR))
     # ── P-02 taps the trunk directly off the master-switch feed → Pinhole-Wall panel ──
     cap_h = 78
     cap_z = ((ov.C_HGT - 48) - ov.BB_H) + ov.BB_H - cap_h / 2
     p2ty = (fr + 12) + cp.PVB_R + 8
     p2z = (cap_z - (cp.PVB_H - 18)) + cp.PVB_H / 2
-    p.append(ov.ruby_pipe_run("Cct C branch P-02 (Pinhole-Wall panel)",
-             [(p2x, TY, TZ), (p2x, p2ty, TZ), (p2x, p2ty, p2z)], cr, color=PWR))
-    # ── 12V DISTRIBUTION BLOCK on the REVERSE of the corridor panel + bus + back-taps to pumps ──
-    p.append(ov.ruby_box("12V distribution block (Cct C, rear)", BKX - 24, by - 30, zc - 45, 48, 60, 90, color="#3A3A42"))
-    # power bus down the back, with SMOOTH elbows turning into the TOP (P-03) and BOTTOM (P-01)
-    # pumps as one continuous run; the two middle pumps tee off the bus.
-    xin = cp.PXC + cp.PVB_R - 10                      # 5024 — tap tip, 10mm into each pump back
-    p.append(ov.ruby_pipe_run("Cct C bus + P-03/P-01 elbow taps (rear)",
-             [(xin, by, z_hi), (BKX, by, z_hi), (BKX, by, z_lo), (xin, by, z_lo)], cr, color=PWR))
-    for key in ("P-04", "P-05"):
-        z = cp.PSTACK[key] + 90
-        p.append(ov.ruby_pipe_run(f"Cct C branch {key}", [(BKX, by, z), (xin, by, z)], cr, color=PWR))
+    if do_corr:
+        p.append(ov.ruby_pipe_run("Cct C branch P-02 (Pinhole-Wall panel)",
+                 [(p2x, TY, TZ), (p2x, p2ty, TZ), (p2x, p2ty, p2z)], cr, color=PWR))
+        # ── 12V DISTRIBUTION BLOCK on the REVERSE of the corridor panel + bus + back-taps to pumps ──
+        p.append(ov.ruby_box("12V distribution block (Cct C, rear)", BKX - 24, by - 30, zc - 45, 48, 60, 90, color="#3A3A42"))
+        # power bus down the back, with SMOOTH elbows turning into the TOP (P-03) and BOTTOM (P-01)
+        # pumps as one continuous run; the two middle pumps tee off the bus.
+        xin = cp.PXC + cp.PVB_R - 10                      # 5024 — tap tip, 10mm into each pump back
+        p.append(ov.ruby_pipe_run("Cct C bus + P-03/P-01 elbow taps (rear)",
+                 [(xin, by, z_hi), (BKX, by, z_hi), (BKX, by, z_lo), (xin, by, z_lo)], cr, color=PWR))
+        for key in ("P-04", "P-05"):
+            z = cp.PSTACK[key] + 90
+            p.append(ov.ruby_pipe_run(f"Cct C branch {key}", [(BKX, by, z), (xin, by, z)], cr, color=PWR))
     return "\n".join(p)
 
 

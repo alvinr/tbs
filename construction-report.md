@@ -134,17 +134,9 @@ as the Overview 3D model, staged by install order:
   order on click, so the assembly can be watched building up and the sequence checked for
   trapped work / access conflicts before the real build.
 
-**Interactive 3D model** — `construction.skp` (`generate_construction_model.py`), reusing the
-Overview component builders. All four phases (1, 3, 4, 5) are **click-to-build Dynamic Components**:
-with the Interact tool, each phase scene opens showing only its **first step** (the minimal element)
-and the prior phases complete as inert static context; each click reveals the next sub-step in
-install order. Drag to orbit, scroll to zoom.
-
-_Component builders are split so the step order matches this report (IBC totes near/far, wall
-brackets near/far, film-plane beams vs plane, external-panel shell vs interior EP/E-stop/PV
-disconnect). The model builds **every Overview component** except four deliberate omissions that
-would only obstruct the build view: the **container shell** (floor-only context, for orbit access),
-the **optical cone** (non-physical guidance geometry), the **solar array**, and the **evap cooler**._
+With the Interact tool, each phase scene opens showing only its first step; each click reveals the
+next in install order (drag to orbit, scroll to zoom). Model-generation internals are documented in
+[component-dependency-map.md](component-dependency-map.md) §3.1 (the `construction` model row).
 
 <!-- brochure:skip -->
 <div class="sketchfab-embed-wrapper">

@@ -8,33 +8,28 @@ This report is the **build order of record** for TBS-001 — the sequence in whi
 is assembled inside the container, why that order is forced, and the gate that must be met
 before each phase begins. The install is **geometry-first**: the large fixed masses (the IBC
 totes and their frame) go in first and set the datum everything else is measured from; the
-precision optical system goes in last, once the real, as-built space is known.
+precision optical system goes in last, once the real, as-built space is known. Fabrication and
+ordering for subsequent phases of the install can only be performed one the **geometry is established**.
 
 The sequence is validated by a **phased 3D construction model** (§8) — one scene per phase,
 with a click-through that reveals each step in order — so the order can be walked before any
-steel is cut.
-
-> **Scaffolding:** this document is a skeleton. Per-step prerequisites, tools/crew, clearances,
-> and sign-off criteria are **TBD** and filled as each phase is detailed. Locations stay
-> qualitative here; exact coordinates live in the diagrams-of-record.
+components, steel is cut, etc.
 
 ---
 
 ## 2. Build Overview
 
-| Phase | Name | Goal | Exit gate (before next phase) |
+| Phase | Name | Goal | To Be Completed               |
 |-------|------|------|-------------------------------|
 | **1** | Geometry set-out | Install the fixed masses that fix the datum | IBC frame + totes plumbed and square; hinge panel hung |
-| **2** | Re-measure | Capture the **as-built** space before committing hard structure | Measured clearances reconciled against the model — TBD |
-| **3** | Framing | Fit the tray, cantilevers, plumbing, film-plane beams, walkway | Walkway + tray in; perimeter structure loaded — TBD |
-| **4** | Electrical | Panels, lights, and all wiring runs | Circuits terminated + tested (Blue / Brown / Black) — TBD |
-| **5** | Photo system | Film plane, pinhole mechanism, light trap | Camera light-tight and operable — TBD |
+| **2** | Re-measure | Capture the **as-built** space before committing hard structure | Measured clearances reconciled against the mode; refactor the design based on availbale space |
+| **3** | Framing | Fit the tray, cantilevers, plumbing, film-plane beams, walkway | Walkway + tray in; perimeter structure loaded |
+| **4** | Electrical | Panels, lights, and all wiring runs | Circuits terminated + tested (Blue / Brown / Black) |
+| **5** | Photo system | Film plane, pinhole mechanism, light trap | Camera light-tight and operable |
 
 ---
 
 ## 3. Sequencing Principles
-
-_TBD — the "why this order" rationale. Placeholders:_
 
 - **Geometry-first.** The IBC stack + frame are the heaviest, least-movable elements and
   define the corridor and walkway datums; everything downstream references them.
@@ -53,14 +48,14 @@ _TBD — the "why this order" rationale. Placeholders:_
 
 | # | Step | Depends on | Status |
 |---|------|-----------|:------:|
-| 1.1 | Install the **IBC frame posts** (upright skeleton + feet) + **plumbing-panel backing** — *rails deferred to 1.5 so the far totes can go in* | — | ☐ |
+| 1.1 | Install the **IBC frame posts** (upright skeleton + feet) + **plumbing-panel backing** | — | ☐ |
 | 1.2 | Install 2× IBC totes on the **pinhole wall** (near column) — dropped into the post skeleton | 1.1 | ☐ |
 | 1.3 | Install the **panel equipment** (pumps/filters/valves) + **plumb the IBC corridor** (corridor lines only — *sump + supports → 3.2*) + run the filter skid's **blue recycle** and **grey waste** corridor lines to the IBC panel + run the **purple Cct-C corridor pump wiring** to the pinhole wall (*EP drop connected in 4.3*) | 1.2 | ☐ |
 | 1.4 | Install **Fan A** (exhaust) + run its **Cct-A cable** along the pinhole-wall trunk and **down to the EP drop** (EP itself lands in Phase 4) — *before the far IBCs bury it* | 1.2 | ☐ |
 | 1.5 | Install 2× IBC totes on the **far wall** (far column), then fit the **frame rails + retaining bars** to trap all totes | 1.4 | ☐ |
 | 1.6 | Install the **hinge panel** (light-trap door — *excluding* the light-trap drum) | 1.2 | ☐ |
 
-**Exit gate:** _TBD — frame square, totes restrained, IBC plumbing pressure-checked._
+**Exit gate:** frame square, totes restrained, IBC plumbing pressure-checked.
 
 ---
 
@@ -73,7 +68,7 @@ hard structure is committed.
 |---|------|-----------|:------:|
 | 2.1 | **Re-measure the actual space left** — reconcile against the model; note deltas | Phase 1 complete | ☐ |
 
-**Exit gate:** _TBD — as-built clearances confirmed; any cut-lists adjusted to the measured space._
+**Exit gate:** as-built clearances confirmed; designs refined; any cut-lists adjusted to the measured space.
 
 ---
 
@@ -85,7 +80,7 @@ plumbing, the film-plane support, and the walkway.
 | # | Step | Depends on | Status |
 |---|------|-----------|:------:|
 | 3.1 | Install **cantilevers on the far + right walls** | Phase 2 | ☐ |
-| 3.2 | Lay the **under-grate ribbons** — sump line + brown filter-suction ribbon + pipe support beams — *span the space, so after the right beams, before the grate* | 3.1 | ☐ |
+| 3.2 | Lay the **under-grate ribbons** — sump line + brown filter-suction ribbon + pipe support beams — *span the space, so after the right beams, before the grate*; Note: Before the pipes can be glued, the walkwak has to be test fitted to locate the holes for the pipe bump through. | 3.1 | ☐ |
 | 3.3 | Install **cantilevers on the near wall** | 3.1 | ☐ |
 | 3.4 | **Extend plumbing** to the pinhole-wall panel | 3.3 | ☐ |
 | 3.5 | Install the **pinhole filter skid** (skid + the short brown rise to P-02; connects to the recycle/waste lines from 1.3 and the brown ribbon from 3.2) | 3.4 | ☐ |
@@ -94,7 +89,7 @@ plumbing, the film-plane support, and the walkway.
 | 3.8 | Install the **left cantilevers** | 3.3 | ☐ |
 | 3.9 | Install the **walkway** (grating on all cantilevers) | 3.2, 3.3, 3.7, 3.8 | ☐ |
 
-**Exit gate:** _TBD — walkway decked, tray sealed, perimeter proof-loaded._
+**Exit gate:** walkway decked, tray sealed, perimeter proof-loaded.
 
 ---
 
@@ -110,7 +105,7 @@ plumbing, the film-plane support, and the walkway.
 | 4.4 | **Hang the lights** | Phase 3 | ☐ |
 | 4.5 | **Run / wire the electrical paths** — IBC pumps, filter, lights, fans, etc. (circuits Blue / Brown / Black) | 4.2, 4.3, 4.4 | ☐ |
 
-**Exit gate:** _TBD — every circuit terminated, continuity + insulation tested, E-stops verified._
+**Exit gate:** every circuit terminated, continuity + insulation tested, E-stops verified.
 
 ---
 
@@ -125,7 +120,7 @@ plumbing, the film-plane support, and the walkway.
 | 5.3 | Install the **light trap** (drum into the hinge panel) | Phase 1 (panel), 5.2 | ☐ |
 | 5.4 | Install the **spray bar** (over the processing tray) | Phase 3 (tray) | ☐ |
 
-**Exit gate:** _TBD — plane travels through its full tilt/swing envelope; camera confirmed light-tight._
+**Exit gate:** plane travels through its full tilt/swing envelope; spray bar moveemnt is free; camera confirmed light-tight.
 
 ---
 
@@ -160,9 +155,3 @@ the **optical cone** (non-physical guidance geometry), the **solar array**, and 
 </div>
 <!-- brochure:endskip -->
 
----
-
-## 10. Source References
-
-_TBD — cross-links to the owning subsystem reports (IBC, plumbing, walkway, electrical,
-film-plane, light-trap) and any install-specific standards as the phases are detailed._

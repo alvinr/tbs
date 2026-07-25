@@ -246,10 +246,18 @@ def hex_to_rgb(h):
 # GhostEquip ghost so faded context reads as a quiet wash, not a saturated volume.
 MUTE_NEUTRAL = (190, 190, 195)
 
+GHOST_HEX = "#8C929B"   # single neutral blue-gray for ALL forced-ghost context (construction prior phases)
+
+
 def mute_hex(h, f, neutral=MUTE_NEUTRAL):
     """Blend a '#RRGGBB' color a fraction `f` toward `neutral` (0 = unchanged, 1 = full
     neutral).  Used to desaturate ghosted context (e.g. IBC tanks) so strong circuit
-    colors don't bury the key components — matches the muted feel of overview.skp."""
+    colors don't bury the key components — matches the muted feel of overview.skp.
+    Under a forced-muted (ghost) context, ALL colors collapse to the single GHOST_HEX so the
+    faded prior-phase context reads as one uniform gray (easiest to read against the current
+    phase's full-color additions) and shares ONE material (Sketchfab caps materials at ~100)."""
+    if _CTX_FORCE:
+        return GHOST_HEX
     if not f:
         return h
     r, g, b = hex_to_rgb(h)
@@ -266,9 +274,13 @@ _MAT_BY_COLOR = {}
 
 
 def shared_mat_name(name, color, alpha):
-    """Return a material name shared by every element of the same CANONICAL color + alpha."""
-    key = (hex_to_rgb(color), alpha if alpha is not None else 1.0)
-    return _MAT_BY_COLOR.setdefault(key, name)
+    """Return a material name shared by every element of the same CANONICAL color + alpha.
+    Under a forced-muted (ghost) context the name is namespaced ('ghost ' prefix) and keyed
+    separately, so a ghosted static copy never collides on the same material as its full-color
+    live twin (same group name, different color/alpha). Outside a forced context this is
+    byte-identical to before (the key gains a constant False prefix; the returned name is unchanged)."""
+    key = (_CTX_FORCE, hex_to_rgb(color), alpha if alpha is not None else 1.0)
+    return _MAT_BY_COLOR.setdefault(key, ("ghost " + name) if _CTX_FORCE else name)
 
 
 # Build-time MUTE CONTEXT.  Every drawing helper below takes `mute`/`alpha` that DEFAULT to `None`
@@ -277,23 +289,29 @@ def shared_mat_name(name, color, alpha):
 # SOURCE (color run through mute_hex(color, mute)).  Outside a context the defaults are 0.0 / opaque,
 # byte-identical to before.  This replaces the old post-build "mute_groups" re-coloring pass +
 # MUTE_TAGS allow-list that generate_pinhole_water_panel.py used to maintain.
-_CTX_MUTE, _CTX_ALPHA = 0.0, None
+_CTX_MUTE, _CTX_ALPHA, _CTX_FORCE = 0.0, None, False
 
 
 @contextlib.contextmanager
-def muted(mute, alpha):
-    """Within this block, drawing helpers build muted CONTEXT/backdrop geometry at source."""
-    global _CTX_MUTE, _CTX_ALPHA
-    prev = (_CTX_MUTE, _CTX_ALPHA)
-    _CTX_MUTE, _CTX_ALPHA = mute, alpha
+def muted(mute, alpha, force=False):
+    """Within this block, drawing helpers build muted CONTEXT/backdrop geometry at source.
+    force=True makes the context's mute/alpha WIN over whatever the caller passes — so builders
+    that hardcode their own alpha/mute (e.g. ibc_stack(alpha=0.85)) are still fully ghosted."""
+    global _CTX_MUTE, _CTX_ALPHA, _CTX_FORCE
+    prev = (_CTX_MUTE, _CTX_ALPHA, _CTX_FORCE)
+    _CTX_MUTE, _CTX_ALPHA, _CTX_FORCE = mute, alpha, force
     try:
         yield
     finally:
-        _CTX_MUTE, _CTX_ALPHA = prev
+        _CTX_MUTE, _CTX_ALPHA, _CTX_FORCE = prev
 
 
 def _mute_ctx(mute, alpha):
-    """Resolve a helper's mute/alpha against the current muted() context (idempotent)."""
+    """Resolve a helper's mute/alpha against the current muted() context (idempotent).
+    Under force, the context values override the caller's; otherwise the caller's explicit
+    (non-None) values win, so outside a muted() block this is byte-identical to passing them through."""
+    if _CTX_FORCE:
+        return (_CTX_MUTE, _CTX_ALPHA if _CTX_ALPHA is not None else alpha)
     return (_CTX_MUTE if mute is None else mute, _CTX_ALPHA if alpha is None else alpha)
 
 
@@ -1704,13 +1722,15 @@ def lighting_wiring():
     return '\n'.join(parts)
 
 
-def fan_wiring(which="both"):
+def fan_wiring(which="both", a_to_ep=False):
     """Power conduits to the two ventilation fans — Cct-A rigid run to Fan A (exhaust, far end)
     and Cct-B rigid run + wall box + flexible jumper to Fan B (intake, near end). On its OWN tag
     so the Ventilation scene shows the fan cables without the rest of the Lighting & Wiring.
     `which`: "both" (default), "A", or "B" — the construction model installs Fan A's conduit early
     (with Fan A, before the far IBC column) and Fan B's later. The shared EP feeds are drawn only
-    for "both" (they connect back to the EP, installed in the electrical phase)."""
+    for "both" (they connect back to the EP, installed in the electrical phase).
+    a_to_ep=True (construction Phase 1, which="A"): also run Cct-A along the pinhole-wall ceiling
+    trunk and DOWN to the EP drop point, so it's pre-run and waiting for the Phase-4 EP."""
     parts = []
     cz = C_HGT
     # Conduits to the ventilation fans (orthogonal runs off the ceiling trunking,
@@ -1729,6 +1749,14 @@ def fan_wiring(which="both"):
                                     (fa_x, FAN_A_YD, czr),
                                     (fa_x, FAN_A_YD, fa_top)],
                                    fcr, color=C_TRUNK))
+    if which == "A" and a_to_ep:
+        # Pre-run Cct-A along the pinhole-wall ceiling trunk from the Fan A tap to the EP column,
+        # then DOWN the pinhole wall to the EP drop point (the EP itself lands in Phase 4).
+        ep_x = 2060
+        parts.append(ruby_pipe_run("Fan A feed (Fan A tap -> pinhole-wall trunk to EP, Cct A)",
+                                   [(fa_x, 20, czr), (ep_x, 20, czr)], fcr, color=C_TRUNK))
+        parts.append(ruby_pipe_run("Fan A EP drop (down the pinhole wall to the EP, Cct A)",
+                                   [(ep_x, 20, czr), (ep_x, 20, EP_H_HI)], fcr, color=C_TRUNK))
     # → Fan B (intake, Cct B): in the NEAR corner by the pinhole wall (rev9/B2 swap).
     #   The rigid conduit taps the ceiling trunking and DROPS STRAIGHT DOWN THE PINHOLE
     #   WALL (Yd≈18) at X≈300 (near the door end, by Fan B) to a wall-mounted electrical

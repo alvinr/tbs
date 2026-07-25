@@ -46,14 +46,16 @@ def _join(*parts):
 # phase N shows every tag whose phase <= N (cumulative). Report §4–§8 step ids in [].
 STEPS = [
     # ── Phase 1 — Geometry set-out ──
-    (1, "1.1", "P1 Near IBCs",     "IBC totes — pinhole wall (near column)",   # [1.1]
-        lambda: ov.ibc_stack(alpha=0.85, cols="near")),
-    (1, "1.2", "P1 IBC Frame",     "IBC frame posts + plumbing-panel backing",   # [1.2] posts only — rails/restraint deferred to 1.5 so the far totes can go in
+    (1, "1.1", "P1 IBC Frame",     "IBC frame posts + plumbing-panel backing",   # [1.1] posts only — rails/restraint deferred to 1.5 so the far totes can go in
         lambda: _join(cp.frame(part="posts"), cp.rear_panel())),
-    (1, "1.3", "P1 IBC Plumbing",  "Corridor plumbing + panel equipment + drains",  # [1.3] corridor-only plumbing — the over-walkway sump line + its support beams move to Phase 3
-        lambda: _join(cp.equipment(), cp.plumbing(part="corridor"), cp.drains_ports())),
-    (1, "1.4", "P1 Fan A",         "Fan A (exhaust) + its Cct-A electrical — pinhole wall",  # before the far IBCs bury it
-        lambda: _join(ov.fans(which="A"), ov.fan_wiring(which="A"))),
+    (1, "1.2", "P1 Near IBCs",     "IBC totes — pinhole wall (near column)",   # [1.2] dropped into the post skeleton
+        lambda: ov.ibc_stack(alpha=0.85, cols="near")),
+    (1, "1.3", "P1 IBC Plumbing",  "Corridor plumbing + equipment + drains + filter-recycle + Cct-C corridor wiring",  # [1.3] corridor plumbing (sump+supports→3.2), the blue filter-recycle run to the IBC panel, AND the purple Cct-C corridor pump wiring run to the pinhole wall (EP drop connected in Phase 4)
+        lambda: _join(cp.equipment(), cp.plumbing(part="corridor"), cp.drains_ports(),
+                      pw.kit(part="recycle"), pw.kit(part="waste"),
+                      pw.panel_power(include_switch=False, part="corridor"))),
+    (1, "1.4", "P1 Fan A",         "Fan A (exhaust) + its Cct-A electrical run to the EP drop",  # before the far IBCs bury it; Cct-A pre-run down the pinhole wall to the EP drop (EP in Phase 4)
+        lambda: _join(ov.fans(which="A"), ov.fan_wiring(which="A", a_to_ep=True))),
     (1, "1.5", "P1 Far IBCs",      "IBC totes — far column, then frame rails + restraint bars",  # far totes go in, THEN the horizontal rails + retaining bars trap all totes
         lambda: _join(ov.ibc_stack(alpha=0.85, cols="far"), cp.frame(part="rails"), cp.tote_restraint())),
     (1, "1.6", "P1 Hinge Panel",   "Hinge panel (excl. light-trap drum)",      # last
@@ -63,14 +65,14 @@ STEPS = [
     (3, "3.1", "P3 Far+Right Cantilevers", "Cantilevers — far wall + right-end rectangle",   # [3.1]
         lambda: _join(ov.walkway_brackets(which="far"),
                       ov.right_walkway_cantilever(include_combined=True, include_grate=False))),
-    (3, "3.2", "P3 Ribbons",           "Sump line + pipe support beams (under-grate ribbon)",  # [3.2] the over-walkway plumbing ribbon + its supports, once the right beams are up (Cct-C wiring is in Phase 4)
-        lambda: _join(cp.plumbing(part="sump"), cp.ribbon_supports())),
+    (3, "3.2", "P3 Ribbons",           "Under-grate ribbons (sump + brown suction) + pipe support beams",  # [3.2] the over-walkway plumbing ribbons + supports, once the right beams are up, before the grate
+        lambda: _join(cp.plumbing(part="sump"), pw.kit(part="brown_ribbon"), cp.ribbon_supports())),
     (3, "3.3", "P3 Near Cantilevers",  "Cantilevers — near wall",           # [3.3]
         lambda: ov.walkway_brackets(which="near")),
     (3, "3.4", "P3 Pinhole Plumbing",  "Extend plumbing to the pinhole-wall panel",  # [3.4]
         lambda: pw.tap01_supply()),
-    (3, "3.5", "P3 Filter Skid",       "Pinhole filter skid (F-1..F-3 + pumps + ACC)",  # [3.5]
-        lambda: pw.kit()),
+    (3, "3.5", "P3 Filter Skid",       "Pinhole filter skid (F-1..F-3 + pumps + ACC)",  # [3.5] skid only — the blue DV-01→X1 recycle run was plumbed in Phase 1 (1.3)
+        lambda: pw.kit(part="skid")),
     (3, "3.6", "P3 Processing Tray",   "Processing tray",                   # [3.6] (spray bar in Phase 5)
         lambda: ov.processing_tray()),
     (3, "3.7", "P3 Film-Plane Beams",  "Film-plane beams + combined corner plates",  # [3.7] (+ FP↔walkway corner plates)
@@ -86,8 +88,8 @@ STEPS = [
     (4, "4.2", "P4 Electrical Panel",  "Interior EP + E-stop + PV disconnect + cables + batteries",  # first click: interior core, links, E-stop, PV disconnect, batteries
         lambda: _join(em.power_core(external_links=True), em.battery(),
                       em.external_estop(), em.pv_disconnect())),
-    (4, "4.3", "P4 Corridor Wiring",   "Corridor pump wiring (Cct-C) — pinhole panel ↔ corridor panel",  # [4.3] moved from Phase 3; feeds off the EP master switch (EP now present)
-        lambda: pw.panel_power(include_switch=False)),
+    (4, "4.3", "P4 Corridor Wiring",   "Connect Cct-C corridor wiring to the EP (EP drop)",  # [4.3] the corridor run was pre-installed to the pinhole wall in Phase 1; this closes the EP drop
+        lambda: pw.panel_power(include_switch=False, part="ep_link")),
     (4, "4.4", "P4 Lights",            "Lights",                                 # [4.4]
         lambda: ov.lighting_wiring()),
     (4, "4.5", "P4 Wiring + Fit-out",  "Fan B + its Cct-B wiring + shelf",  # [4.5] (Fan A + Cct-A in Phase 1; external cooler/solar excluded)
@@ -168,6 +170,7 @@ def _phase_dc_ruby(pnum, p_steps):
 
 DC_PHASES = (1, 3, 4, 5)    # phases rendered as click-to-build Dynamic Components
 SCENE_PHASES = (1, 3, 4, 5)  # Phase 2 (re-measure) has no geometry → no scene
+GHOST_MUTE, GHOST_ALPHA = 0.65, 0.15   # prior-phase static context: collapses to one faint GHOST_HEX gray at this alpha (uniform ghost = easiest to read)
 
 
 def generate_ruby():
@@ -186,9 +189,13 @@ def generate_ruby():
             dc_blocks.append(block)
             dc_vars.append(var)
             dc_info.append((var, len(p_steps)))
-            # static built copy (non-clickable) for use as prior context in later scenes
+            # static built copy (non-clickable) for use as prior context in later scenes —
+            # GHOSTED (desaturated + translucent) so the CURRENT phase's new geometry reads clearly
+            # against the already-installed context.
             for (sid, tag, label, body) in p_steps:
-                comps.append(ov.component(f"[built] Step {sid} — {label}", static_tag[pn], body()))
+                with ov.muted(GHOST_MUTE, GHOST_ALPHA, force=True):
+                    static_body = body()
+                comps.append(ov.component(f"[built] Step {sid} — {label}", static_tag[pn], static_body))
         else:
             for (sid, tag, label, body) in p_steps:
                 comps.append(ov.component(f"Step {sid} — {label}", tag, body()))

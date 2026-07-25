@@ -1501,17 +1501,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#10-source-references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. Source References
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2547,15 +2536,11 @@
 is assembled inside the container, why that order is forced, and the gate that must be met
 before each phase begins. The install is <strong>geometry-first</strong>: the large fixed masses (the IBC
 totes and their frame) go in first and set the datum everything else is measured from; the
-precision optical system goes in last, once the real, as-built space is known.</p>
+precision optical system goes in last, once the real, as-built space is known. Fabrication and
+ordering for subsequent phases of the install can only be performed one the <strong>geometry is established</strong>.</p>
 <p>The sequence is validated by a <strong>phased 3D construction model</strong> (§8) — one scene per phase,
 with a click-through that reveals each step in order — so the order can be walked before any
-steel is cut.</p>
-<blockquote>
-<p><strong>Scaffolding:</strong> this document is a skeleton. Per-step prerequisites, tools/crew, clearances,
-and sign-off criteria are <strong>TBD</strong> and filled as each phase is detailed. Locations stay
-qualitative here; exact coordinates live in the diagrams-of-record.</p>
-</blockquote>
+components, steel is cut, etc.</p>
 <hr />
 <h2 id="2-build-overview">2. Build Overview<a class="headerlink" href="#2-build-overview" title="Permanent link">&para;</a></h2>
 <table>
@@ -2564,7 +2549,7 @@ qualitative here; exact coordinates live in the diagrams-of-record.</p>
 <th>Phase</th>
 <th>Name</th>
 <th>Goal</th>
-<th>Exit gate (before next phase)</th>
+<th>To Be Completed</th>
 </tr>
 </thead>
 <tbody>
@@ -2578,31 +2563,30 @@ qualitative here; exact coordinates live in the diagrams-of-record.</p>
 <td><strong>2</strong></td>
 <td>Re-measure</td>
 <td>Capture the <strong>as-built</strong> space before committing hard structure</td>
-<td>Measured clearances reconciled against the model — TBD</td>
+<td>Measured clearances reconciled against the mode; refactor the design based on availbale space</td>
 </tr>
 <tr>
 <td><strong>3</strong></td>
 <td>Framing</td>
 <td>Fit the tray, cantilevers, plumbing, film-plane beams, walkway</td>
-<td>Walkway + tray in; perimeter structure loaded — TBD</td>
+<td>Walkway + tray in; perimeter structure loaded</td>
 </tr>
 <tr>
 <td><strong>4</strong></td>
 <td>Electrical</td>
 <td>Panels, lights, and all wiring runs</td>
-<td>Circuits terminated + tested (Blue / Brown / Black) — TBD</td>
+<td>Circuits terminated + tested (Blue / Brown / Black)</td>
 </tr>
 <tr>
 <td><strong>5</strong></td>
 <td>Photo system</td>
 <td>Film plane, pinhole mechanism, light trap</td>
-<td>Camera light-tight and operable — TBD</td>
+<td>Camera light-tight and operable</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="3-sequencing-principles">3. Sequencing Principles<a class="headerlink" href="#3-sequencing-principles" title="Permanent link">&para;</a></h2>
-<p><em>TBD — the "why this order" rationale. Placeholders:</em></p>
 <ul>
 <li><strong>Geometry-first.</strong> The IBC stack + frame are the heaviest, least-movable elements and
   define the corridor and walkway datums; everything downstream references them.</li>
@@ -2628,7 +2612,7 @@ qualitative here; exact coordinates live in the diagrams-of-record.</p>
 <tbody>
 <tr>
 <td>1.1</td>
-<td>Install the <strong>IBC frame posts</strong> (upright skeleton + feet) + <strong>plumbing-panel backing</strong> — <em>rails deferred to 1.5 so the far totes can go in</em></td>
+<td>Install the <strong>IBC frame posts</strong> (upright skeleton + feet) + <strong>plumbing-panel backing</strong></td>
 <td>—</td>
 <td style="text-align: center;">☐</td>
 </tr>
@@ -2664,7 +2648,7 @@ qualitative here; exact coordinates live in the diagrams-of-record.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Exit gate:</strong> <em>TBD — frame square, totes restrained, IBC plumbing pressure-checked.</em></p>
+<p><strong>Exit gate:</strong> frame square, totes restrained, IBC plumbing pressure-checked.</p>
 <hr />
 <h2 id="5-phase-2-re-measure">5. Phase 2 — Re-measure<a class="headerlink" href="#5-phase-2-re-measure" title="Permanent link">&para;</a></h2>
 <p><strong>Goal:</strong> capture the <strong>actual</strong> space remaining after the fixed masses are in, before any
@@ -2687,7 +2671,7 @@ hard structure is committed.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Exit gate:</strong> <em>TBD — as-built clearances confirmed; any cut-lists adjusted to the measured space.</em></p>
+<p><strong>Exit gate:</strong> as-built clearances confirmed; designs refined; any cut-lists adjusted to the measured space.</p>
 <hr />
 <h2 id="6-phase-3-framing">6. Phase 3 — Framing<a class="headerlink" href="#6-phase-3-framing" title="Permanent link">&para;</a></h2>
 <p><strong>Goal:</strong> fit the load-bearing perimeter structure, the processing tray, the remaining
@@ -2710,7 +2694,7 @@ plumbing, the film-plane support, and the walkway.</p>
 </tr>
 <tr>
 <td>3.2</td>
-<td>Lay the <strong>under-grate ribbons</strong> — sump line + brown filter-suction ribbon + pipe support beams — <em>span the space, so after the right beams, before the grate</em></td>
+<td>Lay the <strong>under-grate ribbons</strong> — sump line + brown filter-suction ribbon + pipe support beams — <em>span the space, so after the right beams, before the grate</em>; Note: Before the pipes can be glued, the walkwak has to be test fitted to locate the holes for the pipe bump through.</td>
 <td>3.1</td>
 <td style="text-align: center;">☐</td>
 </tr>
@@ -2758,7 +2742,7 @@ plumbing, the film-plane support, and the walkway.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Exit gate:</strong> <em>TBD — walkway decked, tray sealed, perimeter proof-loaded.</em></p>
+<p><strong>Exit gate:</strong> walkway decked, tray sealed, perimeter proof-loaded.</p>
 <hr />
 <h2 id="7-phase-4-electrical">7. Phase 4 — Electrical<a class="headerlink" href="#7-phase-4-electrical" title="Permanent link">&para;</a></h2>
 <p><strong>Goal:</strong> install the power panels, lighting, and all wiring runs.</p>
@@ -2804,7 +2788,7 @@ plumbing, the film-plane support, and the walkway.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Exit gate:</strong> <em>TBD — every circuit terminated, continuity + insulation tested, E-stops verified.</em></p>
+<p><strong>Exit gate:</strong> every circuit terminated, continuity + insulation tested, E-stops verified.</p>
 <hr />
 <h2 id="8-phase-5-photo-system">8. Phase 5 — Photo System<a class="headerlink" href="#8-phase-5-photo-system" title="Permanent link">&para;</a></h2>
 <p><strong>Goal:</strong> install the precision optical elements last, into the known as-built space.</p>
@@ -2844,7 +2828,7 @@ plumbing, the film-plane support, and the walkway.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Exit gate:</strong> <em>TBD — plane travels through its full tilt/swing envelope; camera confirmed light-tight.</em></p>
+<p><strong>Exit gate:</strong> plane travels through its full tilt/swing envelope; spray bar moveemnt is free; camera confirmed light-tight.</p>
 <hr />
 <h2 id="9-construction-model-3d-phased">9. Construction Model (3D, phased)<a class="headerlink" href="#9-construction-model-3d-phased" title="Permanent link">&para;</a></h2>
 <p>The build order is verified by a dedicated <strong>phased 3D model</strong> — the same component builders
@@ -2855,16 +2839,9 @@ as the Overview 3D model, staged by install order:</p>
   order on click, so the assembly can be watched building up and the sequence checked for
   trapped work / access conflicts before the real build.</li>
 </ul>
-<p><strong>Interactive 3D model</strong> — <code>construction.skp</code> (<code>generate_construction_model.py</code>), reusing the
-Overview component builders. All four phases (1, 3, 4, 5) are <strong>click-to-build Dynamic Components</strong>:
-with the Interact tool, each phase scene opens showing only its <strong>first step</strong> (the minimal element)
-and the prior phases complete as inert static context; each click reveals the next sub-step in
-install order. Drag to orbit, scroll to zoom.</p>
-<p><em>Component builders are split so the step order matches this report (IBC totes near/far, wall
-brackets near/far, film-plane beams vs plane, external-panel shell vs interior EP/E-stop/PV
-disconnect). The model builds <strong>every Overview component</strong> except four deliberate omissions that
-would only obstruct the build view: the <strong>container shell</strong> (floor-only context, for orbit access),
-the <strong>optical cone</strong> (non-physical guidance geometry), the <strong>solar array</strong>, and the <strong>evap cooler</strong>.</em></p>
+<p>With the Interact tool, each phase scene opens showing only its first step; each click reveals the
+next in install order (drag to orbit, scroll to zoom). Model-generation internals are documented in
+<a href="../component-dependency-map/">component-dependency-map.md</a> §3.1 (the <code>construction</code> model row).</p>
 <!-- brochure:skip -->
 <div class="sketchfab-embed-wrapper">
   <div style="position:relative;width:100%;padding-bottom:56.25%;">
@@ -2873,11 +2850,6 @@ the <strong>optical cone</strong> (non-physical guidance geometry), the <strong>
   <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"><a href="https://sketchfab.com/3d-models/tbs-001-construction-sequence-dcc54fb3d02e46c3ab070dd49adc5d1e?utm_medium=embed&utm_campaign=share-popup&utm_content=dcc54fb3d02e46c3ab070dd49adc5d1e" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">TBS-001 Construction Sequence</a> by <a href="https://sketchfab.com/alvin91403?utm_medium=embed&utm_campaign=share-popup&utm_content=dcc54fb3d02e46c3ab070dd49adc5d1e" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">alvin91403</a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=dcc54fb3d02e46c3ab070dd49adc5d1e" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p>
 </div>
 <!-- brochure:endskip -->
-
-<hr />
-<h2 id="10-source-references">10. Source References<a class="headerlink" href="#10-source-references" title="Permanent link">&para;</a></h2>
-<p><em>TBD — cross-links to the owning subsystem reports (IBC, plumbing, walkway, electrical,
-film-plane, light-trap) and any install-specific standards as the phases are detailed.</em></p>
 
 
 

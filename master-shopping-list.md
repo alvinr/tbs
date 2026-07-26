@@ -71,7 +71,7 @@ indicative low–high estimates — get quotes before ordering.
 | [6061-T6 AL round tube 25mm OD × 2mm wall, 8 ft](https://www.mcmaster.com/9056K36-9056K122/) (9056K36) | 1 ea | McMaster-Carr | spray | $64 |
 | [Aluminum angle 2"×2"×3/16" (6061-T6, plain) — 16 ft lengths](https://www.mcmaster.com/8982K509-8982K479/) | 3 16 ft length | Metal Supermarkets | film | $625 |
 | [Aluminum face plate 340×240×3mm (flush power panel)](https://www.onlinemetals.com) | 1 ea | Online Metals | electrical | $18 |
-| Aluminum U-channel (per meter) | 40 m | Online Metals | panel | $120–$200 |
+| Aluminum U-channel, 1/8-panel (per meter) | 40 m | Online Metals | panel | $120–$200 |
 | Arm-to-stud adapter, turned 6061-T6 AL (anodized) | 1 ea | Local machine shop | spray | $12–$18 |
 | Disc retaining ring (Al 6061-T6, M52×0.75) | 1 ea | Local fab | optics | $15–$25 |
 | Telescoping aluminum pool pole, 4–8 ft | 1 ea | Amazon | spray | $15 |

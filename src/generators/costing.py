@@ -31,8 +31,8 @@ PER_PRINT_CONSUMABLES = 3   # §7.3 all-in basis: water/citric/pH per print BEYO
 
 # ── Unit prices (USD) — each carries its source for traceability ─────────────
 PRICE_AMFE_PER_KG  = 218.16    # Photographers' Formulary — ferric ammonium oxalate (AmFe), $98.95/1 lb (firm 2026-07-26) ÷ 0.4536 kg/lb (was $60/kg — a ~3.6× underestimate)
-PRICE_FERRI_PER_KG = 61.71     # Photographers' Formulary — potassium ferricyanide, $139.95/5 lb (firm 2026-07-26) ÷ 2.268 kg (was $24.29/kg bulk — a ~2.5× underestimate)
-DICHROMATE_RUN     = 25.00     # ammonium dichromate — trace contrast agent, per run
+PRICE_FERRI_PER_KG = 61.71     # Photographers' Formulary — potassium ferricyanide, $139.95/5 lb (firm 2026-07-26) ÷ 2.268 kg (was $24.29/kg bulk). Bostick & Sullivan $151.99/2500 g = $60.80/kg confirms within <2%.
+DICHROMATE_RUN     = 25.00     # ammonium dichromate — trace contrast agent (0.1–0.4% w/v), per-run allowance. A $79.95/1000 g pack (Bostick & Sullivan, firm 2026-07-26 = $79.95/kg) covers ~3 runs (~300 g/run).
 MUSLIN_ROLL_PRICE  = 100.00    # Fabric Direct — 60" x 150-yd unbleached muslin roll
 MUSLIN_ROLLS       = 3         # ~388 yd / 150 -> 3 rolls (still 3 rolls after the FP_H 2138->2094 area drop)
 MUSLIN_YARDS       = 388       # 2026-07-17: 50 prints × 101 sqft × 1.15 waste = 5,808 sqft ÷ 5 ft = ~1,162 linear ft = 388 yd (was 399 at 104 sqft)
@@ -102,7 +102,7 @@ def emit_cost_breakdown_7_1() -> str:
         f"| **{TIERS[1].ferri_kg:g} kg / ~{dollars(S['ferri'])}** | {TIERS[2].ferri_kg:g} kg / ~{dollars(R['ferri'])} "
         f"| Photographers' Formulary (${PRICE_FERRI_PER_KG:.0f}/kg) |",
         f"| Ammonium dichromate (contrast, 0.1–0.4%) | ~{dollars(DICHROMATE_RUN)} | **~{dollars(DICHROMATE_RUN)}** "
-        f"| ~{dollars(DICHROMATE_RUN)} | Photographers' Formulary |",
+        f"| ~{dollars(DICHROMATE_RUN)} | Bostick & Sullivan |",
         f"| Unbleached cotton muslin, 60″ — {MUSLIN_ROLLS} × 150-yd rolls (~{MUSLIN_YARDS} yd) "
         f"| ~{dollars(muslin_cost())} | **~{dollars(muslin_cost())}** | ~{dollars(muslin_cost())} | Fabric Direct (~$100/roll) |",
         f"| **Cyanotype total — 50 prints** | **~{dollars(L['section_total'],10)}** "

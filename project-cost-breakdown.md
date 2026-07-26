@@ -396,7 +396,7 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 |---|---|---|---|---|
 | Ferric ammonium oxalate (AmFe) | 11.4 kg / ~$2,490 | **17.1 kg / ~$3,730** | 34.2 kg / ~$7,460 | Photographers' Formulary (~$218/kg) |
 | Potassium ferricyanide (3:1 ratio) | 3.8 kg / ~$234 | **5.7 kg / ~$352** | 11.4 kg / ~$703 | Photographers' Formulary ($62/kg) |
-| Ammonium dichromate (contrast, 0.1–0.4%) | ~$25 | **~$25** | ~$25 | Photographers' Formulary |
+| Ammonium dichromate (contrast, 0.1–0.4%) | ~$25 | **~$25** | ~$25 | Bostick & Sullivan |
 | Unbleached cotton muslin, 60″ — 3 × 150-yd rolls (~388 yd) | ~$300 | **~$300** | ~$300 | Fabric Direct (~$100/roll) |
 | **Cyanotype total — 50 prints** | **~$3,050** | **~$4,410** | **~$8,490** | |
 <!-- END costing:chemistry-7-1 -->

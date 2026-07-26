@@ -96,7 +96,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| Ammonium dichromate | 1 run | Photographers' Formulary | chemistry | $25 |
+| [Ammonium dichromate](https://www.bostick-sullivan.com/product/ammonium-dichromate-100gm/) | 1 run | Bostick & Sullivan | chemistry | $25 |
 | [Ferric ammonium oxalate (AmFe)](https://stores.photoformulary.com/ferric-ammonium-oxalate-class-6-1-ground-ups-only-choose-ups-ground-shipping-at-checkout/) | 17.1 kg | Photographers' Formulary | chemistry | $3,731 |
 | [Potassium ferricyanide](https://stores.photoformulary.com/potassium-ferricyanide/) | 5.7 kg | Photographers' Formulary | chemistry | $352 |
 | **chemistry-reagents subtotal** | | | | **$4,107** |
@@ -428,7 +428,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| Photographers' Formulary | 3 | chemistry-reagents | $4,107 |
+| Photographers' Formulary | 2 | chemistry-reagents | $4,082 |
 | McMaster-Carr | 43 | aluminum, bearings-motion, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $3,609–$3,693 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,140–$3,492 |
@@ -487,6 +487,7 @@ indicative low–high estimates — get quotes before ordering.
 | Wurth LAC | 1 | fasteners-hardware | $23–$36 |
 | Harfington | 2 | electrical-distribution | $25 |
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |
+| Bostick & Sullivan | 1 | chemistry-reagents | $25 |
 | Local machine shop | 1 | aluminum | $12–$18 |
 | FMW Fasteners | 1 | fasteners-hardware | $6–$12 |
 | Bridge Fasteners | 1 | fasteners-hardware | $7–$11 |

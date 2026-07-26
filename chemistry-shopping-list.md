@@ -67,7 +67,7 @@ The **per-print masses are under trial** — two wet-on-wet coats at a diluted W
 |---|---|---|---|---|
 | Ferric ammonium oxalate (AmFe) | Photographers' Formulary | 11.4 kg / $2,487 | 17.1 kg / $3,731 | 34.2 kg / $7,461 |
 | Potassium ferricyanide | Photographers' Formulary | 3.8 kg / $234 | 5.7 kg / $352 | 11.4 kg / $703 |
-| Ammonium dichromate | Photographers' Formulary | $25 | $25 | $25 |
+| Ammonium dichromate | Bostick & Sullivan | $25 | $25 | $25 |
 | **Chemistry subtotal** | | **$2,747** | **$4,107** | **$8,190** |
 | Unbleached muslin (substrate) | Fabric Direct | $300 | $300 | $300 |
 | **Total (50 prints)** | | **$3,047** | **$4,407** | **$8,490** |

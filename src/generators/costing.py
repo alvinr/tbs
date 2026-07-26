@@ -169,11 +169,11 @@ WATER = [
     LineItem("Pumps and accumulator (P-01..P-05 + ACC-01, 5× mount brackets)", 480, 508, 536),
     LineItem("Corridor plumbing panel structure (23/32\" exterior ply backing + drain-riser spine, pump-mount shirt, mount brackets + fasteners)", 84, 96, 109, "2026-07-23: both ply parts firm 23/32\" RTD $29.30 (Home Depot); shirt confirmed 3/4\" (5× Shurflo 2088, ~6.5 kg — no need for 1\"). Brackets $25-50 est."),
     LineItem("Under-walkway pipe-ribbon supports (4× welded cross-braces + 16 pipe clips)", 24, 36, 48),
-    LineItem("Filter skid (3× Big Blue 4.5×20 separate housings on slotted-angle frame + cartridges)", 293, 392, 489, "2026-07-22: U-bracket retired → lag screws to ply backing −$18/−$21"),
+    LineItem("Filter skid (3× Big Blue 4.5×20 separate housings on slotted-angle frame + cartridges)", 281, 375, 467, "2026-07-22: U-bracket retired → lag screws to ply backing −$18/−$21. 2026-07-25: housing standoff spacers HDPE → plywood offcuts (dry standoff, not immersion) −$12/−$22"),
     LineItem("Valves and fittings (6× BV ball valves, X1 4-way cross, S60×6 adapters, CV1, SV-01 + SV-02 taps, Blue equalization tie)", 699, 909, 1119, "2026-07-22: S60×6 adapter re-spec'd female-buttress×2\"NPT + 2→1\" bushing (CPP HMFN/20UD/027) +$48/+$24"),
     LineItem("Pipe (HDPE, spray bar)", 80, 97, 114),
     LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1463, 1853, 2241, "2026-07-23: slope shims firmed to the 1-1/4\" HDPE plate route ($210–300, from the $40–75 flat-bar est)"),
-    LineItem("Spray bar assembly (40×25 SS RHS beam, side LDPE manifold, 26 nozzles, manifold + 7 feed tubes, 4 Ø32 wheels, ball joint, arm + turned adapter + jam nut + clamp collar, hose)", 344, 390, 436, "2026-07-22: arm jam nut/collar/self-tap/beam-clamp re-priced to real SKUs (Ruland CL-16-ST, Bobco flat-bar) +$47/+$66"),
+    LineItem("Spray bar assembly (40×25 SS RHS beam, side LDPE manifold, 26 nozzles, manifold + 7 feed tubes, 4 Ø32 wheels, ball joint, arm + turned adapter + jam nut + clamp collar, hose)", 402, 448, 494, "2026-07-22: arm jam nut/collar/self-tap/beam-clamp re-priced to real SKUs. 2026-07-25: arm tube → McMaster 9056K36 8ft stock $64.03 (was a $6 500mm cut, too short to order) +$58"),
     LineItem("Electrical (wiring only — fuse block in Electrical Report)", 37, 37, 37),
     LineItem("Processing consumables (6-mil poly, pH meter, citric acid)", 242, 260, 278),
 ]
@@ -322,7 +322,7 @@ VENTILATION = [
 # §5b ventilation items, so we own the two authoritative subtotals rather than re-entering it.
 POWER = [
     LineItem("Solar & battery (3× 200W panels, MPPT 100/50, 1× 100Ah LiFePO4, shore charger, 3× tilt mounts, PV cabling, PV disconnect, panel)", 1334, 1334, 1334, "2026-07-23: fully firmed — battery → Renogy Core RBT12100LFP-US $306.46 (from Smart Lithium $350–430); panels/MPPT/shore/mounts real SKUs"),
-    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop, charge/shore fuses, protection, conduit, LED, master pump switch, power-panel raised weld-in frame)", 1608, 1624, 1639, "2026-07-23: fuse block/MRBF/disconnect/ML-RBS/label-kit/ground-rod + 2× E-stop (McMaster 6741K41 $47.93 / 8382K45 $42.27) all firmed to real SKUs"),
+    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop, charge/shore fuses, protection, conduit, LED, master pump switch, power-panel raised weld-in frame)", 1543, 1559, 1574, "2026-07-23: fuse block/MRBF/disconnect/ML-RBS/label-kit/ground-rod firmed. 2026-07-25: 2× E-stop → uxcell a19061100ux1510 $12.74 (Harfington, switch only) −$65 (external still needs a weatherproof enclosure, TBD)"),
 ]
 
 
@@ -653,7 +653,7 @@ SECTIONS = [
     Section("3",  "Optics — pinhole plate", *total(OPTICS)),
     Section("4",  "Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)", *total(FILM)),
     Section("5",  "Processing water system (incl. tray, spray bar, IBC stacking frame)", *total(WATER)),
-    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2942, 2958, 2973),
+    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2877, 2893, 2908),
     Section("5b", "Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)",
             total(VENTILATION)[0], total(VENTILATION)[0] + 60, total(VENTILATION)[0] + 150),
     Section("6",  "Housed revolving-door light lock (plastic-skin custom fabrication)", *total(LIGHTLOCK)),
@@ -1019,9 +1019,9 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (27290, 32294, 39187),  # 2026-07-25: IBC wall-hanger through-bolts M12×40→M12×65 + nuts/washers + 4 exterior backing plates (+$59/+$72). Per-change history in git log.
+    "grand_total": (27271, 32270, 39158),  # 2026-07-25: IBC wall-hanger M12×65 (+$59/+$72); E-stops → uxcell $12.74 (−$65); spray arm tube → 8ft McMaster (+$58); filter spacers → ply offcuts (−$12/−$22). Per-change history in git log.
     "walkway": (1979, 2395, 2825),  # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
-    "water": (5797, 6875, 7950),  # 2026-07-25: IBC wall-hanger through-bolts M12×65 + nuts/washers + exterior backing plates (+$59/+$72)
+    "water": (5843, 6916, 7986),  # 2026-07-25: IBC wall-hanger M12×65 (+$59/+$72); spray arm tube → 8ft McMaster (+$58); filter spacers → ply offcuts (−$12/−$22)
     "container": (2300, 3300, 4300),
     "lightlock": (2032, 2268, 2506),   # 2026-07-22: Ø900 housing (46685 3/16" HDPE ×3 = $555) + Ø864 drum firmed to 1/8" black HDPE ×3 = $370 (was $150–240 est).  §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (1180, 1395, 1610),   # 2026-07-22: journal bushings → igus iglide J JFM-9095-100 $130.53/ea (from GGB DU $211.25) −$162/pair.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame)   # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
@@ -1031,7 +1031,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "optics": (100, 155, 215),         # 2026-07-23: pinhole → Lenox SS-3/8-DISC $40-100 (config, RFQ)
     "film": (6146, 6427, 6712),  # updated 2026-07-22: muslin clamp mechanism → off-the-shelf nylon spring clamps (×58) + HDPE filler; retired the custom bracket/spring/neoprene (−$189/−$531). Detail in git log.
     "ventilation": (737, 760, 782),   # 2026-07-23: cooler inverter firm Victron PIN123750510 GFCI $132.60
-    "power": (2942, 2958, 2973),       # 2026-07-23: electrical batch firmed to real SKUs — solar/MPPT/shore/battery-disc/fuse-block/MRBF/ML-RBS/label-kit/ground-rod/tilt-mounts×3 (Renogy/Victron/Blue Sea/Brady/ERICO). Still est: lifepo4 (Smart-vs-Core) + 2× E-stop (McMaster 6741K41/8382K45, pending price).  §5a authoritative subtotal
+    "power": (2877, 2893, 2908),       # 2026-07-25: 2× E-stop → uxcell a19061100ux1510 $12.74 (Harfington, switch only) −$65. Still est: lifepo4 (Smart-vs-Core). §5a authoritative subtotal
 }
 
 

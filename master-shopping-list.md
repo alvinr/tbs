@@ -14,8 +14,8 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $467 | $698 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,146 | $6,712 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $5,797 | $7,950 |
-| 6. Electrical — power, circuits, wiring | $2,942 | $2,973 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $5,843 | $7,986 |
+| 6. Electrical — power, circuits, wiring | $2,877 | $2,908 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,032 | $2,506 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,979 | $2,825 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,240** | **~$36,247** |
+| **TOTAL (base build + 50-print run)** | **~$27,221** | **~$36,218** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -68,14 +68,14 @@ indicative low–high estimates — get quotes before ordering.
 |------|-----|----------|---------|-----------|
 | [3mm aluminum plate 5052-H32 (48×96)](https://www.mkmetal.net/5052-h32sht.125x48x96) (52SH125408) | 2 ea | M&K Metal | panel | $586 |
 | 6061-T6 AL plate 3/16" (5mm) | 1 ea | Online Metals | spray | $16–$28 |
-| 6061-T6 AL round tube 25mm OD × 2mm wall, 500mm | 1 ea | Online Metals | spray | $6 |
+| [6061-T6 AL round tube 25mm OD × 2mm wall, 8 ft](https://www.mcmaster.com/9056K36-9056K122/) (9056K36) | 1 ea | McMaster-Carr | spray | $64 |
 | [Aluminum angle 2"×2"×3/16" (6061-T6, plain) — 16 ft lengths](https://www.mcmaster.com/8982K509-8982K479/) | 3 16 ft length | Metal Supermarkets | film | $625 |
 | [Aluminum face plate 340×240×3mm (flush power panel)](https://www.onlinemetals.com) | 1 ea | Online Metals | electrical | $18 |
 | Aluminum U-channel (per meter) | 40 m | Online Metals | panel | $120–$200 |
 | Arm-to-stud adapter, turned 6061-T6 AL (anodized) | 1 ea | Local machine shop | spray | $12–$18 |
 | Disc retaining ring (Al 6061-T6, M52×0.75) | 1 ea | Local fab | optics | $15–$25 |
 | Telescoping aluminum pool pole, 4–8 ft | 1 ea | Amazon | spray | $15 |
-| **aluminum subtotal** | | | | **$1,414–$1,522** |
+| **aluminum subtotal** | | | | **$1,472–$1,580** |
 
 ### bearings-motion
 
@@ -146,8 +146,8 @@ indicative low–high estimates — get quotes before ordering.
 | Deutsch DT 2-pin connectors | 2 set | Waytek Wire | ventilation | $8 |
 | Deutsch DT 2-pin connectors, IP67 (exterior penetrations) | 10 set | Waytek Wire | electrical | $30 |
 | Equipotential bonding kit — 6 AWG + ring lugs | 1 ea | Amazon | electrical | $20 |
-| [External emergency cut-off — red mushroom IP66/NEMA 4X + control loop](https://www.mcmaster.com/6741K41/) (6741K41) | 1 ea | McMaster-Carr | electrical | $48 |
-| [Interior emergency cut-off — red mushroom IP66 metal (paralleled to exterior)](https://www.mcmaster.com/8382K45/) (8382K45) | 1 ea | McMaster-Carr | electrical | $42 |
+| [External emergency cut-off — red mushroom switch](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
+| [Interior emergency cut-off — red mushroom switch (paralleled to exterior)](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
 | IP65 enclosure ~200×220×140mm (fuse block + busbars, on the plywood) | 1 ea | Polycase | electrical | $60 |
 | Master pump switch (Circuit C) — IP67 sealed rocker/disconnect 12V 16A | 1 ea | Amazon | electrical | $10 |
 | MC4 bulkhead connector pairs, IP67 panel-mount | 3 pair | Amazon | electrical | $25 |
@@ -161,7 +161,7 @@ indicative low–high estimates — get quotes before ordering.
 | Shore-charger output fuse — 20A inline | 1 ea | Amazon | electrical | $5 |
 | Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs) | 1 lot | Waytek Wire | electrical | $30 |
 | Wiring kit — 12/14/16/18 AWG tinned, 50ft/color | 1 kit | Waytek Wire | electrical | $80 |
-| **electrical-distribution subtotal** | | | | **$1,563** |
+| **electrical-distribution subtotal** | | | | **$1,498** |
 
 ### electrical-power
 
@@ -410,10 +410,10 @@ indicative low–high estimates — get quotes before ordering.
 |------|-----|----------|---------|-----------|
 | Big Blue filter housing 4.5"×20" (separate) | 3 ea | AllFilters | water | $114–$186 |
 | CTO carbon block cartridge 4.5"×20" | 2 ea | RonAqua | water | $32–$60 |
-| HDPE spacer blocks 25mm (filter skid) | 1 lot | McMaster-Carr | water | $12–$22 |
 | [IBC tote (1,000 L caged)](https://www.repackify.com/buy-ibc-totes/california) | 4 ea | SoCal reconditioner | water | $600 |
 | KDF-55 heavy-metal cartridge 4.5"×20" | 1 ea | FilterWay | water | $65–$95 |
 | MPP 5-micron sediment cartridge 4.5"×20" | 2 ea | Amazon | water | $24–$40 |
+| Plywood offcut spacer blocks 25mm (filter skid) | 1 lot | offcuts | water | $0 |
 | [SeaFlo accumulator (0.75 L)](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) (SFAT-075-125-01) | 1 ea | Environmental Marine | water | $30–$41 |
 | [Shurflo 2088-554-144 pump (P-01 Blue supply)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 1 ea | Fresh Water Systems | water | $80–$89 |
 | [Shurflo 2088-554-144 pump (P-02 filter loop)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 1 ea | Fresh Water Systems | water | $80–$89 |
@@ -421,19 +421,19 @@ indicative low–high estimates — get quotes before ordering.
 | Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 1 ea | Fresh Water Systems | water | $80–$89 |
 | Shurflo 2088-554-144 pump (P-05 Brown drain) | 1 ea | Fresh Water Systems | water | $80–$89 |
 | Slotted steel angle frame 25×25×3mm (filter skid) | 1 lot | Home Depot | water | $25–$45 |
-| **water-equipment subtotal** | | | | **$1,302–$1,534** |
+| **water-equipment subtotal** | | | | **$1,290–$1,512** |
 
 ## Supplier consolidation (largest orders first)
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 45 | bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural, water-equipment | $3,647–$3,741 |
+| McMaster-Carr | 43 | aluminum, bearings-motion, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $3,609–$3,693 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,140–$3,492 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,877–$2,451 |
 | Amazon | 63 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,579–$1,875 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
-| Online Metals | 7 | aluminum, stainless-sheet, steel-structural | $1,006–$1,426 |
+| Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,000–$1,420 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
 | Home Depot | 27 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $945–$1,220 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
@@ -484,6 +484,7 @@ indicative low–high estimates — get quotes before ordering.
 | Environmental Marine | 1 | water-equipment | $30–$41 |
 | AutomationDirect | 1 | electrical-power | $40 |
 | Wurth LAC | 1 | fasteners-hardware | $23–$36 |
+| Harfington | 2 | electrical-distribution | $25 |
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |
 | Local machine shop | 1 | aluminum | $12–$18 |
 | FMW Fasteners | 1 | fasteners-hardware | $6–$12 |
@@ -491,6 +492,7 @@ indicative low–high estimates — get quotes before ordering.
 | Irrigation supply | 1 | plumbing-fittings | $10 |
 | Steel offcut | 1 | steel-structural | $5 |
 | Lowe's (Hillman) | 1 | fasteners-hardware | $2–$3 |
+| offcuts | 1 | water-equipment | $0 |
 <!-- END parts:master -->
 
 ## 9. Printmaking Chemistry — Cyanotype (50 prints)

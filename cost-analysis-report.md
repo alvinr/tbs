@@ -11,7 +11,7 @@ capital from recurring/consumable spend, and ranks the realistic savings levers.
 
 All figures are the **mid-column** estimates from the
 [Cost Breakdown](project-cost-breakdown.md) (the itemized source of truth); the build
-mid-total is **~<!-- BEGIN costing:ca-mid-total -->$32,294<!-- END costing:ca-mid-total -->**.
+mid-total is **~<!-- BEGIN costing:ca-mid-total -->$32,270<!-- END costing:ca-mid-total -->**.
 
 ---
 
@@ -24,13 +24,13 @@ recurs or is consumed — savings strategy is different for each.
 <!-- BEGIN costing:ca-buckets -->
 | Bucket | Mid | What it is |
 |---|--:|---|
-| **Capital build** (one-time hardware) | **$29,264** | The systems you build once — this is where build-savings live |
+| **Capital build** (one-time hardware) | **$29,240** | The systems you build once — this is where build-savings live |
 | Consumable (per 50-print batch) | $1,490 | Cyanotype chemistry + substrate (Standard ½-Ware) — recurs every batch |
 | Recurring (per deployment) | $750 | Commercial-hire transport |
 | Soft / regulatory | $790 | Licenses & permits |
 <!-- END costing:ca-buckets -->
 
-Build-savings work on the **<!-- BEGIN costing:ca-capital -->$29,264<!-- END costing:ca-capital --> capital**. The <!-- BEGIN costing:ca-consumable -->$1,490<!-- END costing:ca-consumable --> consumable is attacked
+Build-savings work on the **<!-- BEGIN costing:ca-capital -->$29,240<!-- END costing:ca-capital --> capital**. The <!-- BEGIN costing:ca-consumable -->$1,490<!-- END costing:ca-consumable --> consumable is attacked
 separately (bulk chemistry, cheaper substrate) because it repeats every batch and
 quickly dominates lifetime cost.
 
@@ -43,10 +43,10 @@ Capital systems ranked by mid cost:
 <!-- BEGIN costing:ca-ranking -->
 | System | Mid | % of capital | Notes |
 |---|--:|--:|---|
-| **Processing water system** | $6,875 | 23% | Tray (304 SS) + IBC frame dominate |
+| **Processing water system** | $6,916 | 24% | Tray (304 SS) + IBC frame dominate |
 | **Film-plane mechanism** | $6,427 | 22% | Carriages, Option-A cross-slides, muslin spring clips, wall-seat saddles |
 | **Container + delivery** | $3,300 | 11% | Grade-dependent (CW vs WWT) |
-| **Power & electrical** | $2,958 | 10% | Battery + solar + distribution + protection |
+| **Power & electrical** | $2,893 | 10% | Battery + solar + distribution + protection |
 | **Perimeter walkway** | $2,395 | 8% | GRP grating + steel cantilevers |
 | **Light lock** | $2,268 | 8% | Plastic-skin custom fabrication |
 | **Hinged panel structure** | $1,889 | 6% | Stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay |
@@ -57,7 +57,7 @@ Capital systems ranked by mid cost:
 | **Optics — pinhole** | $155 | 0.5% | Trivial (it is a pinhole) |
 <!-- END costing:ca-ranking -->
 
-The **water system is <!-- BEGIN costing:ca-water-pct -->23<!-- END costing:ca-water-pct -->% of the capital build** and the **304 SS processing tray is its
+The **water system is <!-- BEGIN costing:ca-water-pct -->24<!-- END costing:ca-water-pct -->% of the capital build** and the **304 SS processing tray is its
 single biggest line** (<!-- BEGIN costing:tray-low -->$1,463<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,241<!-- END costing:tray-high -->) — the same item that topped the weight study.
 
 ---
@@ -75,7 +75,7 @@ Ranked by dollar potential and ease. Status is updated as levers are actioned.
 | 5 | **Solar 3 → 2 panels** (if the power budget allows) | Power | ~<!-- BEGIN costing:ca-lever-solar -->$133<!-- END costing:ca-lever-solar --> | Easy | Available — computed (drop 1× 200W panel) |
 | 6 | **Valves / fittings value-engineering** | Water | ~<!-- BEGIN costing:ca-lever-valves-low -->$100<!-- END costing:ca-lever-valves-low -->–<!-- BEGIN costing:ca-lever-valves-high -->$200<!-- END costing:ca-lever-valves-high --> | Medium | Available |
 
-After the material decisions, the only still-**available** build-savings levers are **1 (container grade) + 5 (solar)** — together **~<!-- BEGIN costing:ca-savings-low -->$1,500<!-- END costing:ca-savings-low -->** off the <!-- BEGIN costing:ca-capital -->$29,264<!-- END costing:ca-capital --> capital build (**~<!-- BEGIN costing:ca-savings-pct-low -->5<!-- END costing:ca-savings-pct-low -->%**), plus ~$100–200 of valve value-engineering (#6). Everything else is settled: lever 2 **banked** (manual is the standard build), lever 3 **kept 304 SS** (decision), lever 4 **already 1×100 Ah**.
+After the material decisions, the only still-**available** build-savings levers are **1 (container grade) + 5 (solar)** — together **~<!-- BEGIN costing:ca-savings-low -->$1,500<!-- END costing:ca-savings-low -->** off the <!-- BEGIN costing:ca-capital -->$29,240<!-- END costing:ca-capital --> capital build (**~<!-- BEGIN costing:ca-savings-pct-low -->5<!-- END costing:ca-savings-pct-low -->%**), plus ~$100–200 of valve value-engineering (#6). Everything else is settled: lever 2 **banked** (manual is the standard build), lever 3 **kept 304 SS** (decision), lever 4 **already 1×100 Ah**.
 
 > **Derivation note.** Lever 1 (container grade), lever 5 (solar), and the roll-up total +
 > percentage are computed in `costing.py` — container is a true CW − WWT subtraction off the

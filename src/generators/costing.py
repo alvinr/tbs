@@ -165,7 +165,7 @@ WALKWAY = [
 # $4,063/$6,104). Source: project-cost-breakdown.md §5.
 WATER = [
     LineItem("Water storage (4× IBC totes @ $150, 3× bulkhead fittings @ $137 ea, X1 fill tee)", 1010, 1010, 1010, "2026-07-23: IBC totes firm ~$150/ea (reconditioned food-grade SoCal)"),
-    LineItem("IBC stacking frame (RHS deep 4-leg box + 4 feet + retaining bars + hangers + 8 weld-on lashing rings + fab)", 982, 1222, 1461, "2026-07-22: floor anchors → #14×3¼″ 410 SS self-drillers (land feet over crossmembers) −$14/−$44; M12×40 hanger bolt FMW 1634027"),
+    LineItem("IBC stacking frame (RHS deep 4-leg box + 4 feet + retaining bars + hangers + 8 weld-on lashing rings + fab)", 1041, 1287, 1533, "2026-07-22: floor anchors → #14×3¼″ 410 SS self-drillers (land feet over crossmembers) −$14/−$44. 2026-07-25: wall-hanger through-bolts M12×40→M12×65 ×16 (grip fix) + M12 nuts/washers + 4 exterior 100×135×8 backing plates (+$59/+$72); front-bar cleats stay M12×40 ×8."),
     LineItem("Pumps and accumulator (P-01..P-05 + ACC-01, 5× mount brackets)", 480, 508, 536),
     LineItem("Corridor plumbing panel structure (23/32\" exterior ply backing + drain-riser spine, pump-mount shirt, mount brackets + fasteners)", 84, 96, 109, "2026-07-23: both ply parts firm 23/32\" RTD $29.30 (Home Depot); shirt confirmed 3/4\" (5× Shurflo 2088, ~6.5 kg — no need for 1\"). Brackets $25-50 est."),
     LineItem("Under-walkway pipe-ribbon supports (4× welded cross-braces + 16 pipe clips)", 24, 36, 48),
@@ -1019,9 +1019,9 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (27231, 32229, 39115),  # 2026-07-23b: bump-out extended a 2nd rib toward the IBC (bracket reclassify). Per-change history in git log.
+    "grand_total": (27290, 32294, 39187),  # 2026-07-25: IBC wall-hanger through-bolts M12×40→M12×65 + nuts/washers + 4 exterior backing plates (+$59/+$72). Per-change history in git log.
     "walkway": (1979, 2395, 2825),  # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
-    "water": (5738, 6810, 7878),  # 2026-07-23: both corridor ply parts firm 23/32" RTD $29.30 (Home Depot)
+    "water": (5797, 6875, 7950),  # 2026-07-25: IBC wall-hanger through-bolts M12×65 + nuts/washers + exterior backing plates (+$59/+$72)
     "container": (2300, 3300, 4300),
     "lightlock": (2032, 2268, 2506),   # 2026-07-22: Ø900 housing (46685 3/16" HDPE ×3 = $555) + Ø864 drum firmed to 1/8" black HDPE ×3 = $370 (was $150–240 est).  §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (1180, 1395, 1610),   # 2026-07-22: journal bushings → igus iglide J JFM-9095-100 $130.53/ea (from GGB DU $211.25) −$162/pair.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame)   # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items

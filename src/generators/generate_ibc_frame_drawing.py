@@ -508,7 +508,7 @@ def sheet1():
 
     leader(ax, (30), (1760 + FRAME_RHS / 2),
            (330), (1500),
-           "WALL JOIST HANGER (×4)\nSimpson U-pocket, through-bolted\n(4× M12) to a 100×135×8 EXTERIOR\nbacking plate (hex heads outside)",
+           "WALL JOIST HANGER (×4)\nSimpson U-pocket, through-bolted\n(4× M12×65) to a 100×135×8 EXTERIOR\nbacking plate (hex heads outside)",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
@@ -549,7 +549,7 @@ def sheet1():
         f"   A DEEP 4-LEG BOX (front + back upright pairs, 450mm apart, tied by top + bottom rings) at the IBC front restrains them.",
         f"3. Floor flange feet (×4): 150×150×12mm plate fillet welded to each leg base; 4× M12 anchors into the floor (uplift + lateral restraint). Front feet reach ~25mm under the tray edge.",
         f"4. Front retaining bars (×4, Z560 + Z1760): stop the totes sliding out the front; each bar's wall end drops into a Simpson-style wall joist",
-        f"   hanger (×4), through-bolted (4× M12) to a 100×135×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",
+        f"   hanger (×4), through-bolted (4× M12×65) to a 100×135×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",
         f"5. Weld-on lashing rings on the front bars (1,100 kg assembly WLL); ratchet straps over each stack tie down to them.",
         f"6. Surface finish: gray oxide primer + flat black powder coat.",
         f"7. IBC anatomy: US 48\"×40\" caged composite tote (1000L, 1168mm) — {IBC_PALLET_H}mm pallet base + HDPE bottle + galvanized wire cage.",

@@ -66,12 +66,12 @@ The **per-print masses are under trial** — two wet-on-wet coats at a diluted W
 | Reagent | Supplier | Lean ⅓-Ware | Standard ½-Ware (default) | Rich full-Ware |
 |---|---|---|---|---|
 | Ferric ammonium oxalate (AmFe) | Photographers' Formulary | 11.4 kg / $2,487 | 17.1 kg / $3,731 | 34.2 kg / $7,461 |
-| Potassium ferricyanide | Bostick & Sullivan | 3.8 kg / $92 | 5.7 kg / $138 | 11.4 kg / $277 |
+| Potassium ferricyanide | Photographers' Formulary | 3.8 kg / $234 | 5.7 kg / $352 | 11.4 kg / $703 |
 | Ammonium dichromate | Photographers' Formulary | $25 | $25 | $25 |
-| **Chemistry subtotal** | | **$2,604** | **$3,894** | **$7,763** |
+| **Chemistry subtotal** | | **$2,747** | **$4,107** | **$8,190** |
 | Unbleached muslin (substrate) | Fabric Direct | $300 | $300 | $300 |
-| **Total (50 prints)** | | **$2,904** | **$4,194** | **$8,063** |
-| **Per print** | | **$58** | **$84** | **$161** |
+| **Total (50 prints)** | | **$3,047** | **$4,407** | **$8,490** |
+| **Per print** | | **$61** | **$88** | **$170** |
 <!-- END parts:chemistry -->
 
 *No fixer required. Development in plain cold water. No darkroom required for processing.*

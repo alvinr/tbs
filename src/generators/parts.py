@@ -856,8 +856,8 @@ def _chem_parts() -> list[Part]:
                         spec="Part A (Ware New Cyanotype sensitizer); warm water to dissolve. $98.95/1 lb (Photographers' Formulary, firm 2026-07-26; Class 6.1, UPS Ground only).", tier=t.key))
         out.append(Part(f"ferri-{t.key}", "Potassium ferricyanide", "chemistry-reagents",
                         "chemistry", t.ferri_kg, "kg", costing.PRICE_FERRI_PER_KG, costing.PRICE_FERRI_PER_KG,
-                        "Bostick & Sullivan", url="https://www.bostick-sullivan.com/product/potassium-ferricyanide-250gm/",
-                        spec="Part B", tier=t.key))
+                        "Photographers' Formulary", "Bostick & Sullivan", url="https://stores.photoformulary.com/potassium-ferricyanide/",
+                        spec="Part B (Ware New Cyanotype). $139.95/5 lb (Photographers' Formulary, firm 2026-07-26) = $61.71/kg.", tier=t.key))
         out.append(Part(f"dichromate-{t.key}", "Ammonium dichromate", "chemistry-reagents",
                         "chemistry", 1, "run", costing.DICHROMATE_RUN, costing.DICHROMATE_RUN,
                         "Photographers' Formulary", spec="Part B additive; contrast enhancer (Cat-1A carcinogen — handle with care)", tier=t.key))
@@ -939,7 +939,7 @@ def emit_chemistry() -> str:
         f"{t.label}{' (default)' if t.key == costing.DEFAULT_TIER else ''}" for t in tiers) + " |"
     rows = [hdr, "|" + "---|" * (len(tiers) + 2)]
     for desc, sup in (("Ferric ammonium oxalate (AmFe)", "Photographers' Formulary"),
-                      ("Potassium ferricyanide", "Bostick & Sullivan"),
+                      ("Potassium ferricyanide", "Photographers' Formulary"),
                       ("Ammonium dichromate", "Photographers' Formulary")):
         cells = []
         for t in tiers:

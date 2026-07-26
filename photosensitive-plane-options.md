@@ -22,7 +22,7 @@ At f/1088, even the fastest non-film material (ISO 6 silver gelatin paper) requi
 |---|---|---|---|
 | Gum bichromate | **~0.25–0.5** | ~8–17 hours | $55–73 |
 | Cyanotype (Herschel) | **~1–2** | ~2–4 hours | $30–40 |
-| **Cyanotype (Ware formula) ★ selected** | **~2–4** | **~30–45 min** | **~<!-- BEGIN costing:s73-pp-std -->$87<!-- END costing:s73-pp-std -->** |
+| **Cyanotype (Ware formula) ★ selected** | **~2–4** | **~30–45 min** | **~<!-- BEGIN costing:s73-pp-std -->$91<!-- END costing:s73-pp-std -->** |
 | Salt print | **~1–3** | ~1.5–4 hours | $251–323 |
 | Van Dyke Brown | **~2–6** | ~45 min–2 hours | $111–186 |
 | Ilford Multigrade RC paper | **~6** | **~43 min** | $405–480 |
@@ -43,9 +43,9 @@ For portraiture, the practical ranking for tonal fidelity is: **Ilford Multigrad
 
 | Goal | Process | Reason |
 |---|---|---|
-| **TBS-001 selected process** | Cyanotype (Ware formula) | ~<!-- BEGIN costing:s73-pp-std -->$87<!-- END costing:s73-pp-std -->/print (Standard ½-Ware; <!-- BEGIN costing:s73-pp-range -->$61–164<!-- END costing:s73-pp-range --> by tier); ~30–45 min exposure at f/1088; water development only; no silver, no fixer, no darkroom; archival permanence; iron-based — no reciprocity failure |
+| **TBS-001 selected process** | Cyanotype (Ware formula) | ~<!-- BEGIN costing:s73-pp-std -->$91<!-- END costing:s73-pp-std -->/print (Standard ½-Ware; <!-- BEGIN costing:s73-pp-range -->$64–173<!-- END costing:s73-pp-range --> by tier); ~30–45 min exposure at f/1088; water development only; no silver, no fixer, no darkroom; archival permanence; iron-based — no reciprocity failure |
 | **Best all-round portrait result** | Ilford Multigrade RC paper | ISO 6; ~43 min; best tonal fidelity of non-film options; proven at scale |
-| **Lowest cost, repeatable experimentation** | Cyanotype (Ware formula) | ~<!-- BEGIN costing:s73-pp-std -->$87<!-- END costing:s73-pp-std -->/image; no fixer; no darkroom for processing; home chemistry; archival |
+| **Lowest cost, repeatable experimentation** | Cyanotype (Ware formula) | ~<!-- BEGIN costing:s73-pp-std -->$91<!-- END costing:s73-pp-std -->/image; no fixer; no darkroom for processing; home chemistry; archival |
 | **Shortest exposures, practical subject movement** | Orthochromatic X-ray film | ISO 200–800; sub-2-minute exposures; operationally complex at scale |
 | **Most distinctive physical artifact** | Liquid Light on reclaimed wood/concrete | Surface texture visible through image; unrepeatable object |
 | **Ruled out at f/1088** | Gum bichromate (solo) | ISO 0.25–0.5; 8–17 hour exposures are not practical for in-camera capture |
@@ -68,7 +68,7 @@ Processes are ordered roughly by per-image cost (historic processes first, then 
 
 | Process | Per-Image Cost (est.) | Darkroom for Processing | Home-Makeable Chemistry | Permanence | Development |
 |---|---|---|---|---|---|
-| **Cyanotype** | **~<!-- BEGIN costing:s73-pp-std -->$87<!-- END costing:s73-pp-std -->** | No | Yes | Excellent (archival) | Water wash only |
+| **Cyanotype** | **~<!-- BEGIN costing:s73-pp-std -->$91<!-- END costing:s73-pp-std -->** | No | Yes | Excellent (archival) | Water wash only |
 | **Gum bichromate** | **$55–$73** | No | Yes | Good (pigment-dependent) | Water wash only |
 | **Salt print** | **$251–$323** | Yes (loading) | Yes | Moderate (needs gold toner for archival) | Printing-out, thiosulfate fix |
 | **Van Dyke Brown** | **$111–$186** | Yes (loading) | Yes | Good (thiosulfate fixed) | Water + thiosulfate |
@@ -81,7 +81,7 @@ Processes are ordered roughly by per-image cost (historic processes first, then 
 
 ## 1. Cyanotype
 
-**Estimated per-image cost: ~<!-- BEGIN costing:s73-pp-std -->$87<!-- END costing:s73-pp-std --> (Standard ½-Ware; <!-- BEGIN costing:s73-pp-range -->$61–164<!-- END costing:s73-pp-range --> by tier)**
+**Estimated per-image cost: ~<!-- BEGIN costing:s73-pp-std -->$91<!-- END costing:s73-pp-std --> (Standard ½-Ware; <!-- BEGIN costing:s73-pp-range -->$64–173<!-- END costing:s73-pp-range --> by tier)**
 **Darkroom required for processing: No**
 **Home-makeable chemistry: Yes**
 
@@ -116,15 +116,15 @@ Coverage on **muslin (cotton)** is **~120 ml/m²/coat** (sourced: AlternativePho
 | Reagent | Quantity (double coat) | Unit cost (2026) | Subtotal |
 |---|---|---|---|
 | Ferric ammonium oxalate (AmFe) — Ware | ~342 g | ~$99/454 g | **~$75** |
-| Potassium ferricyanide | ~114 g | ~$12–15/100 g | ~$15 |
+| Potassium ferricyanide | ~114 g | ~$6.17/100 g | ~$7 |
 | Ammonium dichromate | ~2.5 g | ~$12/100 g | ~$0.30 |
 | Distilled water | 2–3 liters | Negligible | — |
-| **Chemistry total (Ware, Standard ½-Ware)** | | | **~$90/print** |
+| **Chemistry total (Ware, Standard ½-Ware)** | | | **~$82/print** |
 
-_Reconciled 2026-07-26 to the cost model (`costing.py` TIERS, Standard ½-Ware = 15 g/100 ml at 120 ml/m²/coat × 2 × 9.42 m² → **342 g AmFe / 114 g ferricyanide per print**, Ware's 3:1 ratio). The prior 179 g / 90 g figures under-counted the fabric coverage. **Follow-up:** the potassium-ferricyanide **price** in the model ($24.29/kg) is bulk/industrial — retail photo-grade is ~$120–150/kg (per the ~$12–15/100 g above), so ferricyanide likely needs the same re-price AmFe just got._
+_Reconciled 2026-07-26 to the cost model (`costing.py` TIERS, Standard ½-Ware = 15 g/100 ml at 120 ml/m²/coat × 2 × 9.42 m² → **342 g AmFe / 114 g ferricyanide per print**, Ware's 3:1 ratio). The prior 179 g / 90 g figures under-counted the fabric coverage._
 
-**Source:** Photographers' Formulary and Bostick & Sullivan (photoformulary.com, bostick-sullivan.com). AmFe ~$35/lb as of 2026.
-**Source for potassium ferricyanide:** Bostick & Sullivan; ~$24.29/kg.
+**Source:** Photographers' Formulary and Bostick & Sullivan (photoformulary.com, bostick-sullivan.com). AmFe ~$98.95/lb (Photographers' Formulary, firm 2026-07-26).
+**Source for potassium ferricyanide:** Photographers' Formulary; $139.95/5 lb = $61.71/kg (firm 2026-07-26).
 
 ### Substrate Options and Costs
 
@@ -156,10 +156,10 @@ _Reconciled 2026-07-26 to the cost model (`costing.py` TIERS, Standard ½-Ware =
 ### Total Per-Image Cost (cyanotype on muslin)
 | Item | Cost |
 |---|---|
-| AmFe + potassium ferricyanide (Ware, Standard ½-Ware) | ~$27 |
+| AmFe + potassium ferricyanide (Ware, Standard ½-Ware) | ~$82 |
 | Muslin (101 sq ft, bulk-roll basis ~$300 ÷ 50 prints) | ~$6 |
 | Water / processing consumables | ~$3 |
-| **Total per print (Standard tier; ~<!-- BEGIN costing:s73-pp-range -->$61–164<!-- END costing:s73-pp-range --> by tier)** | **~<!-- BEGIN costing:s73-pp-std -->$87<!-- END costing:s73-pp-std -->** |
+| **Total per print (Standard tier; ~<!-- BEGIN costing:s73-pp-range -->$64–173<!-- END costing:s73-pp-range --> by tier)** | **~<!-- BEGIN costing:s73-pp-std -->$91<!-- END costing:s73-pp-std -->** |
 
 ---
 
@@ -546,7 +546,7 @@ Timber battens (2×4 lumber) are bolted to the container's internal structural r
 
 | Goal | Recommended Process | Reason |
 |---|---|---|
-| **Lowest cost, most repeatable** | Cyanotype on muslin | ~<!-- BEGIN costing:s73-pp-std -->$87<!-- END costing:s73-pp-std --> per image; no silver; no darkroom for processing; scales to any size; archivally stable; home-makeable chemistry |
+| **Lowest cost, most repeatable** | Cyanotype on muslin | ~<!-- BEGIN costing:s73-pp-std -->$91<!-- END costing:s73-pp-std --> per image; no silver; no darkroom for processing; scales to any size; archivally stable; home-makeable chemistry |
 | **Richest tonal range, conventional photograph look** | Ilford RC paper | Industry-standard; predictable; support widely available; ~$420 per image |
 | **Most unique physical artifact** | Liquid Light on reclaimed wood or concrete | Surface texture merges with image; unrepeatable object; highest cost |
 | **Fastest exposure time** | X-ray film | ~ISO 400–800 vs ISO 6 for paper; 5–10 min exposures possible; operationally complex |

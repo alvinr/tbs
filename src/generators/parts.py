@@ -852,8 +852,8 @@ def _chem_parts() -> list[Part]:
         out.append(Part(f"amfe-{t.key}", "Ferric ammonium oxalate (AmFe)", "chemistry-reagents",
                         "chemistry", t.amfe_kg, "kg", costing.PRICE_AMFE_PER_KG, costing.PRICE_AMFE_PER_KG,
                         "Artcraft Chemicals", "Photographers' Formulary",
-                        url="https://artcraftchemicals.com/products/ferric-ammonium-oxalate-part-1684",
-                        spec="Part A (Ware New Cyanotype sensitizer); warm water to dissolve. $29.12/1 lb (Artcraft Chemicals, firm 2026-07-26) = $64.20/kg (Class 6.1, UPS Ground only; bulk quote likely lower than 1-lb packs).", tier=t.key))
+                        url="https://artcraftchemicals.com/products/ferric-ammonium-oxalate-part-1684?variant=42896857825527",
+                        spec="Part A (Ware New Cyanotype sensitizer); warm water to dissolve. $29.12/1 lb (Artcraft Chemicals, confirmed 2026-07-26) = $64.20/kg (Class 6.1, UPS Ground only; bulk quote likely lower than 1-lb packs).", tier=t.key))
         out.append(Part(f"ferri-{t.key}", "Potassium ferricyanide", "chemistry-reagents",
                         "chemistry", t.ferri_kg, "kg", costing.PRICE_FERRI_PER_KG, costing.PRICE_FERRI_PER_KG,
                         "Artcraft Chemicals", url="https://artcraftchemicals.com/products/potassium-ferricyanide-part-1275",

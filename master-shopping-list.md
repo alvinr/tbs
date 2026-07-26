@@ -97,7 +97,7 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [Ammonium dichromate](https://artcraftchemicals.com/products/ammonium-bi-dichromate-part-1022) | 1 run | Artcraft Chemicals | chemistry | $25 |
-| [Ferric ammonium oxalate (AmFe)](https://artcraftchemicals.com/products/ferric-ammonium-oxalate-part-1684) | 17.1 kg | Artcraft Chemicals | chemistry | $1,098 |
+| [Ferric ammonium oxalate (AmFe)](https://artcraftchemicals.com/products/ferric-ammonium-oxalate-part-1684?variant=42896857825527) | 17.1 kg | Artcraft Chemicals | chemistry | $1,098 |
 | [Potassium ferricyanide](https://artcraftchemicals.com/products/potassium-ferricyanide-part-1275) | 5.7 kg | Artcraft Chemicals | chemistry | $291 |
 | **chemistry-reagents subtotal** | | | | **$1,414** |
 

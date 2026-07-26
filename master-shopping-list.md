@@ -22,15 +22,15 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,776 | $2,002 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $214 | $239 |
 | 8. Cooling & ventilation | $737 | $887 |
-| 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $3,040 | $8,480 |
+| 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$29,002** | **~$41,894** |
+| **TOTAL (base build + 50-print run)** | **~$27,212** | **~$36,514** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
 
-*Line 9 (printmaking chemistry) is the **Mike Ware AmFe** recipe with the corrected ~$300 substrate, re-summed into the TOTAL: **Low = Lean ⅓-Ware (~$3,040), High = Rich full-Ware (~$8,480)**, working default Standard ½-Ware (~$4,400). The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md); the TOTAL spans that Lean–Rich range ($3,040–$8,480), narrowing once a tier is locked.*
+*Line 9 (printmaking chemistry) is the **Mike Ware New Cyanotype** recipe (ferric ammonium oxalate sensitizer) with the corrected ~$300 substrate, re-summed into the TOTAL: **Low = Lean ⅓-Ware (~$1,250), High = Rich full-Ware (~$3,100)**, working default Standard ½-Ware (~$1,710). The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md); the TOTAL spans that Lean–Rich range ($1,250–$3,100), narrowing once a tier is locked.*
 
 ---
 
@@ -96,10 +96,10 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| [Ammonium dichromate](https://www.bostick-sullivan.com/product/ammonium-dichromate-100gm/) | 1 run | Bostick & Sullivan | chemistry | $25 |
-| [Ferric ammonium oxalate (AmFe)](https://stores.photoformulary.com/ferric-ammonium-oxalate-class-6-1-ground-ups-only-choose-ups-ground-shipping-at-checkout/) | 17.1 kg | Photographers' Formulary | chemistry | $3,731 |
-| [Potassium ferricyanide](https://www.bostick-sullivan.com/product/potassium-ferricyanide-250gm/) | 5.7 kg | Bostick & Sullivan | chemistry | $347 |
-| **chemistry-reagents subtotal** | | | | **$4,102** |
+| [Ammonium dichromate](https://artcraftchemicals.com/products/ammonium-bi-dichromate-part-1022) | 1 run | Artcraft Chemicals | chemistry | $25 |
+| [Ferric ammonium oxalate (AmFe)](https://artcraftchemicals.com/products/ferric-ammonium-oxalate-part-1684) | 17.1 kg | Artcraft Chemicals | chemistry | $1,098 |
+| [Potassium ferricyanide](https://artcraftchemicals.com/products/potassium-ferricyanide-part-1275) | 5.7 kg | Artcraft Chemicals | chemistry | $291 |
+| **chemistry-reagents subtotal** | | | | **$1,414** |
 
 ### container
 
@@ -428,7 +428,6 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| Photographers' Formulary | 1 | chemistry-reagents | $3,731 |
 | McMaster-Carr | 43 | aluminum, bearings-motion, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $3,609–$3,693 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,140–$3,492 |
@@ -436,6 +435,7 @@ indicative low–high estimates — get quotes before ordering.
 | Amazon | 64 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,587–$1,888 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,000–$1,420 |
+| Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
 | Home Depot | 27 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $945–$1,220 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
@@ -449,7 +449,6 @@ indicative low–high estimates — get quotes before ordering.
 | Fresh Water Systems | 5 | water-equipment | $400–$445 |
 | Inverter Supply | 2 | electrical-distribution, electrical-power | $396 |
 | Curbell Plastics | 1 | plastics-sheet | $380 |
-| Bostick & Sullivan | 2 | chemistry-reagents | $372 |
 | US Plastic Corp | 1 | plastics-sheet | $210–$300 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | igus | 1 | bearings-motion | $261 |
@@ -514,8 +513,8 @@ suppliers, and the muslin substrate — is in the Procurement BOM above (`chemis
 | Distilled water | ~2.6 L | ~130 L |
 
 Standard ½-Ware is the working default; the leanest/richest viable strength — and the final order — is
-pinned by the [Sensitizer Trials](sensitizer-trials.md). **Run cost ~$4,400 (Standard), range ~$3,040
-(Lean) – ~$8,480 (Rich)** per 50-print run (~$61–170/print), incl. ~$300 muslin substrate — ~399 linear
+pinned by the [Sensitizer Trials](sensitizer-trials.md). **Run cost ~$1,710 (Standard), range ~$1,250
+(Lean) – ~$3,100 (Rich)** per 50-print run (~$25–62/print), incl. ~$300 muslin substrate — ~399 linear
 yards of 60" unbleached cotton (pre-wash twice in hot water, no detergent, to remove sizing). The
 summary table maps Low = Lean, High = Rich.
 

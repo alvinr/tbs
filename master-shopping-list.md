@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,087 | $6,653 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,843 | $7,986 |
-| 6. Electrical — power, circuits, wiring | $2,886 | $2,922 |
+| 6. Electrical — power, circuits, wiring | $2,777 | $2,813 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,032 | $2,506 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,979 | $2,825 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,171** | **~$36,173** |
+| **TOTAL (base build + 50-print run)** | **~$27,062** | **~$36,064** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -156,13 +156,13 @@ indicative low–high estimates — get quotes before ordering.
 | Pull-cord ceiling switch, 12V 6A SPST | 2 ea | Amazon | electrical | $16 |
 | Pump distribution block — 12V DC + / − bus, 6-way | 1 ea | Blue Sea | electrical | $15 |
 | PV cable 10 AWG + MC4 connectors | 1 lot | Amazon | electrical | $30 |
-| [Remote battery switch — Blue Sea ML-RBS 500A magnetic-latch (E-stop trip)](https://powerwerx.com/blue-sea-7700-ml-rbs-remote-battery-switch) (7700) | 1 ea | Powerwerx | electrical | $349 |
+| [Remote battery switch — Blue Sea ML-RBS 500A magnetic-latch (E-stop trip)](https://www.invertersupply.com/index.php?main_page=product_info&products_id=5288) (7700) | 1 ea | Inverter Supply | electrical | $264 |
 | Sealed wet-zone connectors — Deutsch DT / adhesive heat-shrink | 1 lot | Waytek Wire | electrical | $25 |
 | Shore-charger output fuse — 20A inline | 1 ea | Amazon | electrical | $5 |
 | Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs) | 1 lot | Waytek Wire | electrical | $30 |
 | [Weatherproof control-station box, 22mm 1-hole](https://www.amazon.com/uxcell-Button-Control-Station-Waterproof/dp/B07GN5P3NF) (B07GN5P3NF) | 1 ea | Amazon | electrical | $8–$13 |
 | Wiring kit — 12/14/16/18 AWG tinned, 50ft/color | 1 kit | Waytek Wire | electrical | $80 |
-| **electrical-distribution subtotal** | | | | **$1,506–$1,511** |
+| **electrical-distribution subtotal** | | | | **$1,422–$1,427** |
 
 ### electrical-power
 
@@ -173,9 +173,9 @@ indicative low–high estimates — get quotes before ordering.
 | [PV array disconnect — DC load-break isolator, 50A/150VDC (NEC 690.13)](https://www.automationdirect.com/) | 1 ea | AutomationDirect | electrical | $40 |
 | [Solar panel adjustable tilt mount set (per panel)](https://www.amazon.com/Renogy-Adjustable-Solar-Panel-Brackets/dp/B07CSKFWK7) (RNG-MTS-TMB-G1-US) | 3 ea | Amazon | electrical | $108 |
 | [Solar panel, 200W monocrystalline 12V (Renogy RSP200D)](https://offgridstores.com/products/renogy-200-watt-12-volt-monocrystalline-solar-panel) (RSP200D-US) | 3 ea | Off Grid Stores | electrical | $510 |
-| [Victron Blue Smart IP65 12/15 shore backup charger](https://powerwerx.com/victron-bpc121531104r-bluesmart-ip65-1215) (BPC121531104R) | 1 ea | Powerwerx | electrical | $176 |
+| [Victron Blue Smart IP65 12/15 shore backup charger](https://inverterservicecenter.com/blue-smart-ip65-charger-12-15-1-victron-bpc121531104r) (BPC121531104R) | 1 ea | Inverter Service Center | electrical | $152 |
 | [Victron SmartSolar MPPT 100/50 charge controller](https://powerwerx.com/victron-scc110050210-smartsolar-mppt-10050) (SCC110050210) | 1 ea | Powerwerx | electrical | $194 |
-| **electrical-power subtotal** | | | | **$1,467** |
+| **electrical-power subtotal** | | | | **$1,443** |
 
 ### fabric-textile
 
@@ -443,25 +443,26 @@ indicative low–high estimates — get quotes before ordering.
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
-| Powerwerx | 4 | electrical-distribution, electrical-power | $758 |
 | Barn Door Ag | 7 | plumbing-fittings | $414–$652 |
 | SoCal reconditioner | 1 | water-equipment | $600 |
 | M&K Metal | 1 | aluminum | $586 |
 | Fresh Water Systems | 5 | water-equipment | $400–$445 |
+| Inverter Supply | 2 | electrical-distribution, electrical-power | $396 |
 | Curbell Plastics | 1 | plastics-sheet | $380 |
 | US Plastic Corp | 1 | plastics-sheet | $210–$300 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | igus | 1 | bearings-motion | $261 |
+| Powerwerx | 2 | electrical-distribution, electrical-power | $234 |
 | Hessaire | 1 | ducting-ventilation | $185–$230 |
 | Waytek Wire | 7 | electrical-distribution | $208 |
 | Bearings Direct | 2 | bearings-motion | $201 |
 | AllFilters | 1 | water-equipment | $114–$186 |
 | Amazon (bundle) | 1 | seals-gaskets | $157–$178 |
 | Harbor Freight | 1 | fasteners-hardware | $115–$173 |
+| Inverter Service Center | 1 | electrical-power | $152 |
 | CPP.parts | 1 | plumbing-fittings | $112–$144 |
 | Bostick & Sullivan | 1 | chemistry-reagents | $138 |
 | Fasteners Plus | 2 | fasteners-hardware | $106–$136 |
-| Inverter Supply | 1 | electrical-power | $133 |
 | Ferguson | 4 | plumbing-fittings | $74–$120 |
 | McNichols | 2 | fasteners-hardware, plastics-sheet | $80–$115 |
 | Apera Instruments | 1 | tools-safety | $100–$110 |

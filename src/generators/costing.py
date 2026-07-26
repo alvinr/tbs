@@ -321,8 +321,8 @@ VENTILATION = [
 # Distribution & wiring $970; = the scenario §5a Mid). The full 43-row combined BOM overlaps the
 # §5b ventilation items, so we own the two authoritative subtotals rather than re-entering it.
 POWER = [
-    LineItem("Solar & battery (3× 200W panels, MPPT 100/50, 1× 100Ah LiFePO4, shore charger, 3× tilt mounts, PV cabling, PV disconnect, panel)", 1334, 1334, 1334, "2026-07-23: fully firmed — battery → Renogy Core RBT12100LFP-US $306.46 (from Smart Lithium $350–430); panels/MPPT/shore/mounts real SKUs"),
-    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop + ext weatherproof box, charge/shore fuses, protection, conduit, LED, master pump switch, power-panel raised weld-in frame)", 1552, 1570, 1588, "2026-07-23: fuse block/MRBF/disconnect/ML-RBS/label-kit/ground-rod firmed. 2026-07-25: 2× E-stop → uxcell a19061100ux1510 $12.74 (Harfington) + external weatherproof control-station box (IP65, uxcell B07GN5P3NF ~$8-13); net −$56 vs the old McMaster IP66 pair"),
+    LineItem("Solar & battery (3× 200W panels, MPPT 100/50, 1× 100Ah LiFePO4, shore charger, 3× tilt mounts, PV cabling, PV disconnect, panel)", 1310, 1310, 1310, "2026-07-23: fully firmed. 2026-07-26: shore charger Victron BPC121531104R re-sourced Powerwerx $175.95 → Inverter Service Center $152.15 (−$24)"),
+    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop + ext weatherproof box, charge/shore fuses, protection, conduit, LED, master pump switch, power-panel raised weld-in frame)", 1467, 1485, 1503, "2026-07-23: fuse block/MRBF/disconnect/ground-rod firmed. 2026-07-25: 2× E-stop → uxcell $12.74 + ext weatherproof box (IP65) −$56. 2026-07-26: ML-RBS contactor re-sourced Powerwerx $348.59 → Inverter Supply $263.84 (−$85)"),
 ]
 
 
@@ -653,7 +653,7 @@ SECTIONS = [
     Section("3",  "Optics — pinhole plate", *total(OPTICS)),
     Section("4",  "Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)", *total(FILM)),
     Section("5",  "Processing water system (incl. tray, spray bar, IBC stacking frame)", *total(WATER)),
-    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2886, 2904, 2922),
+    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2777, 2795, 2813),
     Section("5b", "Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)",
             total(VENTILATION)[0], total(VENTILATION)[0] + 60, total(VENTILATION)[0] + 150),
     Section("6",  "Housed revolving-door light lock (plastic-skin custom fabrication)", *total(LIGHTLOCK)),
@@ -1019,7 +1019,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (27221, 32222, 39113),  # 2026-07-25: IBC wall-hanger M12×65; E-stops → uxcell + ext box; spray arm tube → 8ft; filter spacers → ply offcuts; muslin clamps re-price −$59. Per-change history in git log.
+    "grand_total": (27112, 32113, 39004),  # 2026-07-26: shore charger + ML-RBS contactor re-sourced (−$109); + the 2026-07-25 parts batch. Per-change history in git log.  # 2026-07-25: IBC wall-hanger M12×65; E-stops → uxcell + ext box; spray arm tube → 8ft; filter spacers → ply offcuts; muslin clamps re-price −$59. Per-change history in git log.
     "walkway": (1979, 2395, 2825),  # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
     "water": (5843, 6916, 7986),  # 2026-07-25: IBC wall-hanger M12×65 (+$59/+$72); spray arm tube → 8ft McMaster (+$58); filter spacers → ply offcuts (−$12/−$22)
     "container": (2300, 3300, 4300),
@@ -1031,7 +1031,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "optics": (100, 155, 215),         # 2026-07-23: pinhole → Lenox SS-3/8-DISC $40-100 (config, RFQ)
     "film": (6087, 6368, 6653),  # 2026-07-25 re-price: muslin clamps (×58) Harbor Freight 69289 $3–4 → $1.99–2.99 (−$59). (2026-07-22: clamp mechanism → off-the-shelf nylon spring clamps + HDPE filler.) Detail in git log.
     "ventilation": (737, 760, 782),   # 2026-07-23: cooler inverter firm Victron PIN123750510 GFCI $132.60
-    "power": (2886, 2904, 2922),       # 2026-07-25: 2× E-stop → uxcell $12.74 (Harfington) + external weatherproof control-station box (IP65) −$56 net. Still est: lifepo4 (Smart-vs-Core). §5a authoritative subtotal
+    "power": (2777, 2795, 2813),   # 2026-07-26: shore charger + ML-RBS contactor re-sourced (−$109)       # 2026-07-25: 2× E-stop → uxcell $12.74 (Harfington) + external weatherproof control-station box (IP65) −$56 net. Still est: lifepo4 (Smart-vs-Core). §5a authoritative subtotal
 }
 
 

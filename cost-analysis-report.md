@@ -11,7 +11,7 @@ capital from recurring/consumable spend, and ranks the realistic savings levers.
 
 All figures are the **mid-column** estimates from the
 [Cost Breakdown](project-cost-breakdown.md) (the itemized source of truth); the build
-mid-total is **~<!-- BEGIN costing:ca-mid-total -->$35,033<!-- END costing:ca-mid-total -->**.
+mid-total is **~<!-- BEGIN costing:ca-mid-total -->$35,023<!-- END costing:ca-mid-total -->**.
 
 ---
 
@@ -25,12 +25,12 @@ recurs or is consumed — savings strategy is different for each.
 | Bucket | Mid | What it is |
 |---|--:|---|
 | **Capital build** (one-time hardware) | **$29,083** | The systems you build once — this is where build-savings live |
-| Consumable (per 50-print batch) | $4,410 | Cyanotype chemistry + substrate (Standard ½-Ware) — recurs every batch |
+| Consumable (per 50-print batch) | $4,400 | Cyanotype chemistry + substrate (Standard ½-Ware) — recurs every batch |
 | Recurring (per deployment) | $750 | Commercial-hire transport |
 | Soft / regulatory | $790 | Licenses & permits |
 <!-- END costing:ca-buckets -->
 
-Build-savings work on the **<!-- BEGIN costing:ca-capital -->$29,083<!-- END costing:ca-capital --> capital**. The <!-- BEGIN costing:ca-consumable -->$4,410<!-- END costing:ca-consumable --> consumable is attacked
+Build-savings work on the **<!-- BEGIN costing:ca-capital -->$29,083<!-- END costing:ca-capital --> capital**. The <!-- BEGIN costing:ca-consumable -->$4,400<!-- END costing:ca-consumable --> consumable is attacked
 separately (bulk chemistry, cheaper substrate) because it repeats every batch and
 quickly dominates lifetime cost.
 

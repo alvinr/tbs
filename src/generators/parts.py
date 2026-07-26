@@ -856,8 +856,8 @@ def _chem_parts() -> list[Part]:
                         spec="Part A (Ware New Cyanotype sensitizer); warm water to dissolve. $98.95/1 lb (Photographers' Formulary, firm 2026-07-26; Class 6.1, UPS Ground only).", tier=t.key))
         out.append(Part(f"ferri-{t.key}", "Potassium ferricyanide", "chemistry-reagents",
                         "chemistry", t.ferri_kg, "kg", costing.PRICE_FERRI_PER_KG, costing.PRICE_FERRI_PER_KG,
-                        "Photographers' Formulary", "Bostick & Sullivan", url="https://stores.photoformulary.com/potassium-ferricyanide/",
-                        spec="Part B (Ware New Cyanotype). $139.95/5 lb (Photographers' Formulary, firm 2026-07-26) = $61.71/kg; Bostick & Sullivan $151.99/2500 g = $60.80/kg confirms.", tier=t.key))
+                        "Bostick & Sullivan", url="https://www.bostick-sullivan.com/product/potassium-ferricyanide-250gm/",
+                        spec="Part B (Ware New Cyanotype). $151.99/2500 g (Bostick & Sullivan, firm 2026-07-26) = $60.80/kg.", tier=t.key))
         out.append(Part(f"dichromate-{t.key}", "Ammonium dichromate", "chemistry-reagents",
                         "chemistry", 1, "run", costing.DICHROMATE_RUN, costing.DICHROMATE_RUN,
                         "Bostick & Sullivan", url="https://www.bostick-sullivan.com/product/ammonium-dichromate-100gm/",
@@ -940,7 +940,7 @@ def emit_chemistry() -> str:
         f"{t.label}{' (default)' if t.key == costing.DEFAULT_TIER else ''}" for t in tiers) + " |"
     rows = [hdr, "|" + "---|" * (len(tiers) + 2)]
     for desc, sup in (("Ferric ammonium oxalate (AmFe)", "Photographers' Formulary"),
-                      ("Potassium ferricyanide", "Photographers' Formulary"),
+                      ("Potassium ferricyanide", "Bostick & Sullivan"),
                       ("Ammonium dichromate", "Bostick & Sullivan")):
         cells = []
         for t in tiers:

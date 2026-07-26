@@ -11,14 +11,14 @@ size 50 prints; substrate as in the shopping list. Prices are April-2026 estimat
 
 | Process | Chemistry total | Substrate total | **50-print total** | **Per print** |
 |---|---|---|---|---|
-| **Cyanotype (Ware, lean)** | ~$816 | ~$300 | **~$1,116** | **~$22** |
-| **Gum bichromate** | ~$1,902 | ~$300 | **~$2,202** | **~$44** |
+| **Cyanotype (Ware, lean)** | ~$2,743 | ~$300 | **~$3,040** | **~$61** |
+| **Gum bichromate** | ~$1,292 | ~$300 | **~$1,592** | **~$32** |
 | **Van Dyke Brown** | ~$5,890 | ~$300 | **~$6,190** | **~$124** |
 | **Ilford RC paper** | ~$1,141 (chemistry) | ~$13,500 (paper) | **~$14,641** | **~$293** |
 | **Liquid Light** | ~$880 (chemistry) | ~$12,640 (emulsion+substrate) | **~$13,520** | **~$270** |
 | **Salt print** | ~$16,472 | ~$300 | **~$16,772** | **~$335** |
 
-Silver nitrate is the cost driver for salt print and Van Dyke Brown. Cyanotype is the only process where 50 prints can be made for under $2,000 total; gum bichromate remains under $2,500.
+Silver nitrate is the cost driver for salt print and Van Dyke Brown. Under the firm 2026 reagent prices (Photographers' Formulary ferric ammonium oxalate $218/kg; Bostick & Sullivan potassium ferricyanide $61/kg and ammonium dichromate $80/kg), **gum bichromate is the cheapest process (~$1,592)** and cyanotype second (~$3,040) — the two iron/dichromate processes sit far below the silver-based ones. Cyanotype is the chosen process not on lowest cost but on archival permanence, low hazard, and process simplicity (see Process 1). *The cyanotype figure is dominated by ferric ammonium oxalate at the firm retail 1-lb-pack price ($218/kg); a bulk AmFe source would lower it materially and could restore its cost lead.*
 
 ---
 
@@ -26,13 +26,21 @@ Silver nitrate is the cost driver for salt print and Van Dyke Brown. Cyanotype i
 
 Cyanotype (Mike Ware's New Cyanotype) is the process TBS-001 uses; its full procurement, tiered recipe, and quantities live in the [Chemistry Shopping List](chemistry-shopping-list.md) and [Operating Manual](operating-manual.md). It appears here only as the cost baseline the rejected alternatives are measured against.
 
-**Cost basis:** this document compares each process at its economical single-application formulation — for cyanotype that is the **lean tier (~$22/print)**. The project's as-built consumable budget instead uses **Standard ½-Ware (~$30/print, ~$1,520 per 50-print batch)**, per the [Cost Breakdown](project-cost-breakdown.md); the ~$22 here is cyanotype's floor, not a conflicting figure.
+**Cost basis:** this document compares each process at its economical single-application formulation — for cyanotype that is the **lean tier (~$61/print, ~$3,040 per 50-print batch)** at the firm 2026 reagent prices. The project's as-built consumable budget instead uses **Standard ½-Ware (~$88/print, ~$4,400 per 50-print batch)**, per the [Cost Breakdown](project-cost-breakdown.md); the ~$61 here is cyanotype's floor, not a conflicting figure.
+
+**Why cyanotype, given it is no longer the cheapest:** gum bichromate is now marginally cheaper (~$1,592 vs ~$3,040), but cyanotype is chosen on three grounds cost does not capture:
+
+- **Archival permanence.** The Prussian-blue image is among the most lightfast and chemically stable of all iron-based prints — no silver to tarnish, no gum layer to crack or lift.
+- **Low hazard.** Cyanotype's primary sensitizers (ferric ammonium oxalate + potassium ferricyanide) are far less hazardous than gum's bulk ammonium dichromate — a Category-1A carcinogen and Class-5.1 oxidizer used at 8.4 kg per run — or the DEA-controlled silver nitrate of the Van Dyke and salt processes. Cyanotype uses only a trace of dichromate as an optional contrast agent.
+- **Process simplicity.** Development is in plain water: no toxic developer, stop, or fixer bath, no darkroom silver chemistry, and no multi-coat registration as gum requires for full density.
+
+The cyanotype cost is also inflated by pricing its ferric ammonium oxalate at the firm retail 1-lb-pack rate ($218/kg); a bulk source would narrow or close the gap to gum.
 
 ---
 
 ## Process 2: Gum Bichromate
 
-**50-print total: ~$2,202 | Per print: ~$44**
+**50-print total: ~$1,592 | Per print: ~$32**
 
 ### Chemistry quantities
 
@@ -46,18 +54,18 @@ Cyanotype (Mike Ware's New Cyanotype) is the process TBS-001 uses; its full proc
 
 | Item | Supplier | URL | Unit size | Units | Unit price | Total |
 |---|---|---|---|---|---|---|
-| Ammonium Dichromate, 1 kg | **Chem-Impex** | [chemimpex.com/products/37420](https://www.chemimpex.com/products/37420) | 1 kg | 9 | **$142.41†** | **$1,282** |
-| Ammonium Dichromate (alt.) | **Photographers' Formulary** | [stores.photoformulary.com/ammonium-dichromate](https://stores.photoformulary.com/ammonium-dichromate-class-5-1-bichromate-ground-ups-only-choose-ups-ground-at-checkout/) | 100 g | 84 | ~$12 | ~$1,008 |
+| Ammonium Dichromate, 1,000 g | **Bostick & Sullivan** | [bostick-sullivan.com — ammonium dichromate](https://www.bostick-sullivan.com/product/ammonium-dichromate-100gm/) | 1,000 g | 9 | $79.95 | **~$720** |
+| Ammonium Dichromate (alt.) | **Chem-Impex** | [chemimpex.com/products/37420](https://www.chemimpex.com/products/37420) | 1 kg | 9 | ~$142.41† | ~$1,282 |
 | Gum Arabic Powder, bulk | **Gum Arabic USA** | [gumarabicusa.com/gum-arabic-bulk](https://www.gumarabicusa.com/gum-arabic-bulk) | Contact for 27 kg quote | — | ~$18–22/kg | ~$486–594 |
 | Gum Arabic Powder (alt.) | **Jedwards International** | [bulknaturaloils.com/acacia-gum-seyal-organic](https://bulknaturaloils.com/acacia-gum-seyal-organic.html) | Bulk kg | 27 | ~$20/kg | ~$540 |
 | Dry pigment — raw umber or lamp black | **Kremer Pigments** | kremer-pigmente.com | 1 kg | 2 | ~$20–40/kg | ~$40–80 |
 | Unbleached muslin | Fabric Direct | As above | 150-yd roll | 3 | ~$100 | ~$300 |
 
-**Process total: ~$2,202 (~$1,902 chemistry, ~$300 muslin)**
+**Process total: ~$1,592 (~$1,292 chemistry, ~$300 muslin)**
 
 **Hazard:** Ammonium dichromate is classified as an **oxidizer (UN Class 5.1)** and a known carcinogen (Category 1A, IARC). Must ship via UPS Ground only — no air freight. Wear nitrile gloves and N95 respirator when handling dry powder. Store away from flammables. The Photographers' Formulary listing explicitly states "Ground UPS only." Chem-Impex will require a completed hazmat shipping agreement.
 
-*Note: Gum bichromate at single coat per print. For multi-coat (4–8 coats for full density), multiply chemistry costs by 4–8. At 4 coats, total rises to ~$14,150.*
+*Note: Gum bichromate at single coat per print. For multi-coat (4–8 coats for full density), multiply chemistry costs by 4–8. At 4 coats, total rises to ~$5,470 (~$5,170 chemistry + $300 muslin).*
 
 ---
 
@@ -208,8 +216,8 @@ At 1:4 dilution: 5 L concentrate → 25 L working. 30 bottles × 25 L = 750 L wo
 
 | Process | AmFe / FAC | KFe | AgNO₃ | Amm. dichromate | Gum arabic | Na thiosulfate | Fabric/paper | Chemistry | **Total** |
 |---|---|---|---|---|---|---|---|---|---|
-| Cyanotype (Ware, lean) | 11.6 kg AmFe | 3.9 kg | — | 0.4 kg | — | — | ~399 yd muslin | ~$816 | **~$1,116** |
-| Gum bichromate | — | — | — | 8.4 kg | 26.3 kg | — | ~399 yd muslin | ~$1,902 | **~$2,202** |
+| Cyanotype (Ware, lean) | 11.4 kg AmFe | 3.8 kg | — | 0.4 kg | — | — | ~399 yd muslin | ~$2,743 | **~$3,040** |
+| Gum bichromate | — | — | — | 8.4 kg | 26.3 kg | — | ~399 yd muslin | ~$1,292 | **~$1,592** |
 | Van Dyke Brown | 5.3 kg FAC | — | 2.1 kg | — | — | 18.65 kg | ~399 yd muslin | ~$5,890 | **~$6,190** |
 | Salt print | — | — | 6.3 kg | — | — | 37.3 kg | ~399 yd muslin | ~$16,472 | **~$16,772** |
 | Ilford RC paper | — | — | — | — | — | — | 18 rolls paper | ~$1,141 (chem) | **~$14,641** |

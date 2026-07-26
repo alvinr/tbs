@@ -111,15 +111,17 @@ Invented by Sir John Herschel in 1842 and documented in *Philosophical Transacti
 
 ### Chemistry Quantities for 101 sq ft
 
-Coverage: approximately 1–1.5 ml of mixed solution per 50 cm², or ~2 ml/sq ft single coat. Double coat recommended for density.
+Coverage on **muslin (cotton)** is **~120 ml/m²/coat** (sourced: AlternativePhotography ~123, Jacquard ~183 → plausible range 100–180; unmeasured on our pre-washed muslin — [sensitizer-trials §T1](sensitizer-trials.md) pending). Double coat for density → ~240 ml/m² × 9.42 m² ≈ 2.3 L of mixed solution per print. Fabric over-deposits ~8× vs rod-coated paper, so the volumes are much higher than a paper print.
 
 | Reagent | Quantity (double coat) | Unit cost (2026) | Subtotal |
 |---|---|---|---|
-| Ferric ammonium oxalate (AmFe) — Ware | 179 g | ~$99/454 g | ~$39 |
-| Potassium ferricyanide | 90 g | ~$12–15/100 g | ~$12 |
-| Ammonium dichromate | 9 g | ~$12/100 g | ~$1.35 |
+| Ferric ammonium oxalate (AmFe) — Ware | ~342 g | ~$99/454 g | **~$75** |
+| Potassium ferricyanide | ~114 g | ~$12–15/100 g | ~$15 |
+| Ammonium dichromate | ~2.5 g | ~$12/100 g | ~$0.30 |
 | Distilled water | 2–3 liters | Negligible | — |
-| **Chemistry total (Ware)** | | | **~$27** |
+| **Chemistry total (Ware, Standard ½-Ware)** | | | **~$90/print** |
+
+_Reconciled 2026-07-26 to the cost model (`costing.py` TIERS, Standard ½-Ware = 15 g/100 ml at 120 ml/m²/coat × 2 × 9.42 m² → **342 g AmFe / 114 g ferricyanide per print**, Ware's 3:1 ratio). The prior 179 g / 90 g figures under-counted the fabric coverage. **Follow-up:** the potassium-ferricyanide **price** in the model ($24.29/kg) is bulk/industrial — retail photo-grade is ~$120–150/kg (per the ~$12–15/100 g above), so ferricyanide likely needs the same re-price AmFe just got._
 
 **Source:** Photographers' Formulary and Bostick & Sullivan (photoformulary.com, bostick-sullivan.com). AmFe ~$35/lb as of 2026.
 **Source for potassium ferricyanide:** Bostick & Sullivan; ~$24.29/kg.

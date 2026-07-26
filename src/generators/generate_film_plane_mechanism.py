@@ -16,7 +16,7 @@ Sheet 2 — Elevations: side elevation (tilt) + plan cross-section (swing)
 Sheet 3 — Corner carriage detail: acetal skate on U-channel + capture sections + cross-slide + U-joint
 Sheet 4 — Rail mounting & transport drop-in: left split (stub + removable + bridge) · right flanged · stub clamp
 Sheet 5 — Movement specification table & BOM
-Sheet 6 — Muslin clamp detail: spring clip at the ALU frame edge
+Sheet 6 — Muslin clamp detail: off-the-shelf nylon spring clamp + HDPE filler
 Sheet 7 — System schematic: four-corner frame front elevation
 Sheet 8 — Frame-corner ↔ cross-slide attachment: how the frame hangs off the two slides through the U-joint
 """
@@ -1338,7 +1338,7 @@ def sheet5():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# Sheet 6 — Muslin Clamp Detail: Cam-Lever Spring Clamp
+# Sheet 6 — Muslin Clamp Detail: off-the-shelf nylon spring clamp + HDPE filler
 #
 # Three sub-panels:
 #   A (top-left):  Section — nylon spring clamp biting the ALU-angle + HDPE-filler + ACM sandwich

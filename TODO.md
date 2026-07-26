@@ -147,32 +147,25 @@ HS-10-A-A at $96 was a candidate but its max angle was unconfirmed and its mater
   ~$96), McMaster stainless U-joints (SKU crawler-blocked — needs a human paste-check), Belden UJ-SS
   set-screw stainless (~$126–178). Update Sheets 3/5/8/9 + the BOM if a cheaper part is adopted.
 
-## Muslin clamp → spring clip redesign (Sheet 6) — IN PROGRESS
+## Muslin clamp → off-the-shelf clamp — DONE 2026-07-25
 
-_Alvin review 2026-07-17: the muslin clamp is NOT a cam-lever toggle — it's a **spring clip**:
-a FIXED jaw bolted to the ALU frame edge (countersunk bolts) + a SPRING-loaded jaw that pinches the
-muslin against the frame edge; squeeze the handle to open (torsion spring holds closed). Sheet 6
-Panel A redrawn to this; Panel B removed (redundant — open/closed now a ghost + arc on Panel A);
-CLAMP NOTES relocated + rewritten. NOT committed yet._
+_Shipped as an **off-the-shelf nylon spring clamp** (Pittsburgh 69289, 3½″ fiberglass body + swivel
+pads; 2½″ 69290 fallback) biting the ALU-angle + HDPE-filler + ACM sandwich — no fabrication. The
+intermediate bespoke "spring clip" and the original "cam-lever toggle" are both retired. Fully
+cascaded: `film-clamp-mechanism-report.md`, `parts.py` (`muslin-clamp` 69289 + `clamp-filler`),
+`tbs_constants.py` (bespoke `CLAMP_BASE/LEVER/JAW/OPEN_GAP/SPRING_F` deleted; only
+`CLAMP_SPACING`/`CLAMP_FILLER_D`/`CLAMP_N_*` remain), and Sheet 6
+(`generate_film_plane_mechanism.sheet6()` — Panels A/B/C, no Panel D, no cam-lever). Frame section =
+L (2×2 angle); the offset-T alternative was drawn then reverted — parked, not pursued._
 
-- [ ] **Panel A frame is the L (2×2 angle) for now.** An **offset-T** cross-section (flange holds the
-  ACM + bolts to the corner carriage; ACM flush to the clamp edge) was drawn then **reverted at
-  Alvin's request — PARKED**. Resolve the frame section (L vs offset-T) with Alvin later.
-- [ ] **Sheet 6 Panels C (plan) + D (elevation) still show the OLD cam-lever design** — awaiting
-  Alvin's call: redraw to the spring clip, or trim as redundant (like B).
-- [ ] **Downstream cascade once the drawing locks:** `film-clamp-mechanism-report.md` (describes a
-  cam-lever toggle), the `clamp` BOM in `parts.py` ("Cam-lever spring clamp"), and the `CLAMP_*`
-  constants (`CLAMP_BASE_W/H/T`, `CLAMP_LEVER_L`, `CLAMP_OPEN_GAP`… base-plate/lever dims don't map
-  to a spring clip) all need reconciling to the spring clip.
+## Walkway pop-out extension past the pinhole — DONE 2026-07-23
 
-## Walkway pop-out extension — revisit past the pinhole — OPEN
-
-_Surfaced 2026-07-17 (Alvin)._
-
-- [ ] Extend the walkway pop-out (punch-out bay) another IBC-width **past the pinhole, toward the
-  filter skid** — revisit the right/pinhole-end walkway so the deck reaches further along that end.
-  Study the clearance vs the pinhole wall, filter skid, and IBC stack; cascade to the walkway 2D
-  (`generate_walkway_diagram.py`) + 3D (`walkway.skp` / `overview.skp`) + master-shopping-list.
+_Built + fully cascaded (rev 2026-07-23b): the near-walkway bump-out was extended a 2nd rib toward
+the IBC to `WALKWAY_NEAR_WIDE_X_R = 3083` (band X1055–3083, 5 widened brackets) — a full standing bay
+past the pinhole (X2399) on the IBC/filter side. Cascaded to `tbs_constants.py`, Sheet 9 (Detail F),
+`walkway-report.md` §3.2 + BOM, and the 4 .skp models (walkway/overview/water/film-plane). Current
+extent accepted (Alvin 2026-07-25) — "an IBC-width past the pinhole" is met by the full-bay
+extension; no further geometry change._
 
 ## Full audit (2026-07-04) — 53 confirmed findings → [audit-2026-07.md](audit-2026-07.md)
 _Multi-agent audit across all subsystems × 5 dimensions (3 high / 28 med / 22 low), every finding independently verified. Verdict: **design is sound — no structural/optical defect**; the debt is documentation cascade-leakage. Full detail + per-finding fixes in the linked report; fix in priority order:_

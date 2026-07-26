@@ -69,16 +69,14 @@ walkway, hinged panel, light lock, electrical, optics, …)._
 - [ ] Reconcile the TL/TR (guide) corner: it is the mirror (film below its guide rail) — the drawing set
   should cover both bottom (weight) and top (guide) corners.
 
-## Weight model — film-plane moving mass undercounts the ACM backing — OPEN
+## Weight model — film-plane moving mass undercounts the ACM backing — DONE 2026-07-25
 
-_Surfaced 2026-07-16. `generate_weight_analysis._film_plane_carriage_weight()` = frame + 92 clamps +
-4 carriages ≈ 32 kg, but does NOT include the ~53 kg Dibond ACM backing (9.6 m² × ~5.5 kg/m²) that
-moves with the plane. So the "Film plane carriage" line (and thus total-dry + CG) under-books the
-moving plane by ~50 kg._
-
-- [ ] Add the ACM backing mass to the film-plane moving-mass term (RHO/area from the dibond-acm-film
-  part), re-inject the weight blocks + PNGs, and re-check the CG/floor-load. Also feeds the (still
-  un-quantified) per-corner load used to firm the cross-slide section.
+_Fixed: `_film_plane_carriage_weight()` now adds the Dibond ACM backing (`RHO_ACM_4MM = 4.75 kg/m²`,
+validated vs the 3A Composites/Curbell DIBOND datasheet — not the loose 5.5 — × the FP_W×FP_H face
+≈ 45 kg). Film-plane carriage line 21 → 66 kg. Weight blocks re-injected + 5 PNGs regenerated;
+§3.3 component row + the max-Blue-fill tip table hand-reconciled; CG/ISO still well within (loaded
+util 21%). The per-corner load for the cross-slide section is still un-quantified (see the film-plane
+milestone) but now has the correct moving mass to draw from._
 
 ## Film-plane report reconciliation (leadscrew Option A → U-channel redesign) — PROSE DONE, BOM GATED
 
@@ -121,7 +119,7 @@ The remaining §7 parts BOM is gated on confirmed prices._
 ## Through-bolt grips — bracket assembly spec (precedes bolt length/thread finalization)
 
 - [ ] **Formalize the container wall corrugation depth + re-size the wall through-bolts.** ISO research (2026-07-21): standard **side-wall corrugation ≈ 25mm (1″)** (25–30mm range; 1.6–2.0mm sheet); **end-wall ≈ 36mm** trapezium (pitch 278, outer 2.0mm / inner 1.6mm) — [DiscoverContainers](https://www.discovercontainers.com/shipping-container-components-classifications/), [FreightAmigo](https://www.freightamigo.com/en/blog/international-relocation/shipping-container-dimensions-and-wall-thickness-essential-guide-for-logistics-and-relocation/). The project prose assumed ~38mm; the through-bolts pass the **long side walls → use 25mm**. **Action:** add a `CONTAINER_CORRUGATION_DEPTH` constant (+ 1.6/2.0mm skin), fix the container/walkway/film prose (models draw a solid 40mm block — leave or annotate), then recompute each wall through-bolt grip → length → thread. Result: the M12×80/×90 are **oversized** (grip ≈ 43–45mm) → shorten to ~M12×65–70, which also flips them to **partial thread** (≈50% cheaper). **Measure the actual container side-wall corrugation to confirm 25mm before ordering.** Bracket plate material = **A36 mild steel** (Alvin 2026-07-21; apply to film-saddle / walkway-bracket / right-walkway-cleat / IBC-hanger plate specs — currently generic "steel"). (2026-07-21.)
-- [ ] **IBC wall-hanger M12×40 grip conflict — review the design.** The M12×40 can't span the computed ~53mm hanger stack (8mm backing + wall + 4mm hanger) if it crosses the corrugation gap — either it bolts to a same-face backing plate (no gap, 40mm OK) or the length is wrong (needs ~M12×70). Also a **count conflict**: report §3.4 says "4× M12 each" but the BOM says "2 each / 12 ea". Alvin to review the IBC frame designs (3D/2D) and resolve span + count. (Alvin 2026-07-21.)
+- [x] **IBC wall-hanger M12×40 grip conflict — DONE 2026-07-25 (exterior through-wall retained).** Alvin's call: keep the exterior through-wall sandwich. Wall-hanger through-bolts → **M12×65 ×16** (the partial-thread SKU that spans the ~42-54mm grip); front-bar → upright cleats stay **M12×40 ×8**. Added M12 nuts (16) + washers (64 flat + 16 split) + the 4 exterior 100×135×8 backing plates (were uncosted). Count reconciled to **24 total** (was an under-counted 12). parts.py + costing (LineItem + EXPECTED, +$59/+$72) + report §3.2/§3.4 + injected §5 BOM + 2D Detail B / frame-drawing all say 4× M12×65 hangers; 3D bolt left a generic cylinder (spec in 2D/parts — not worth re-sending 5 models for a 7mm visual). lint + verify-all green.
 - [ ] **Reconcile fastener thread pitches (bolt vs nut, per size) vs the saved McMaster PDF specs.** `parts.py` records a **coarse baseline** on each nut spec (M5×0.8, M6×1.0, M8×1.25, M12×1.75) marked "confirm vs SKU PDF, must match the bolt" — Alvin flagged that bolt/nut pitches may have been quoted inconsistently across SKUs; prices don't matter but the pitch must match at order. Cross-check each sourced bolt SKU's actual pitch against its mating nut (Alvin is saving the McMaster PDFs as he prices, so the data will be on hand). **Known non-coarse (self-consistent — don't confuse with the coarse batch):** tilt-swing front-board adjustment screws **M8×1.0 fine** (`FRONT_BOARD_SCREW_PITCH`, not in parts.py yet); pinhole retaining ring **M52×0.75**. In particular, source `bolt-m8-fixing` / `bolt-m8-wall` as **M8×1.25 coarse**, NOT the M8×1.0 fine adjustment screw. (Alvin 2026-07-21.)
 - [x] **Processing-tray center-seam joint — DONE 2026-07-21.** Resolved as a **~40mm shingle-oriented lap** (uphill panel laps *over* the downhill one so water sheets off the step on the 1:200 floor), **silicone-bedded** (lap + top bead), bolted with **12× M6×16 316-SS (93635A210) + serrated flange nuts** underneath. `bolt-m6-tray` sourced + priced. New detail sheet **spray-bar-sheet8** (`draw_sheet8`, "Detail C — Center-Seam Shingle-Lap Joint") drawn + registered (gallery + publish.sh + setup_docs.py) + embedded in report §2.6; report §2.1/§2.6 + parts updated.
 - [x] **Design the spray-arm pinch-clamp geometry — DONE 2026-07-21.** Resolved the Ø12-stud-in-Ø21-tube mismatch: a **turned 6061-T6 AL adapter** (M12 female bore onto the stud + M12 jam nut → Ø21 male spigot) reduces the stud to the tube bore; the arm-tube bottom is **slit ~30mm** and an off-the-shelf **25mm/1" clamp-style shaft collar** pinches the tube onto the spigot (rotational adjust + lift-off for transport). The loose `bolt-m6-pinch` + its nut are **retired** (replaced by the collar's integral screw). Parts (`spray-arm-adapter`, `spray-arm-jamnut`, `spray-arm-collar`) added; `spray-bar-sheet2` redrawn; report §arm table + prose updated; +$20/$33 on spray.

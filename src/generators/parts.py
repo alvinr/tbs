@@ -579,7 +579,7 @@ PARTS: list[Part] = [
          "film", 6, "ea", 362.12, 362.12, "McMaster-Carr", part_no="1262T41", url="https://www.mcmaster.com/1262T41-1262T21/",
          spec="4 depth rails, one per corner, running wall-to-wall (~2,362mm, Yd0→C_WID) along the optical axis — an acetal skate rides inside each to set that corner's depth/focus. $362.12/6ft firm. NOTE: a 2,362mm rail exceeds a 6ft (1,829mm) length, and the skate can't cross a splice — so buy 8ft lengths (4 rails) or confirm the continuous-length SKU/price at order. Qty 6× 6ft here is the conservative $-estimate."),
     Part("fp-ujoint", "Ruland USKC12-6-6-SS U-joint (keyway+clamp, 303 SS)", "bearings-motion",
-         "film", 4, "ea", 276, 276, "Ruland", part_no="USKC12-6-6-SS", url="https://www.ruland.com/us12-6-6-ss.html",
+         "film", 4, "ea", 276, 276, "Ruland", part_no="USKC12-6-6-SS", url="https://www.ruland.com/uskc12-6-6-ss.html",
          spec='One per corner — supplies the tilt+swing angular DOF (45°/axis); 3/8" bores, 303 stainless (wet zone), twist-locked. $276 ea firm — INTERIM part; a cheaper joint is under research (see TODO). The U-joint alone is $276×4 = $1,104.'),
     Part("fp-ujoint-boot", "Ruland UBOOT12/19-NI-KIT nitrile boot", "seals-gaskets",
          "film", 4, "ea", 30.59, 30.59, "Ruland", part_no="UBOOT12/19-NI-KIT",
@@ -663,7 +663,7 @@ PARTS: list[Part] = [
     # ═══ clamp (film-clamp-mechanism-report §4) — split out of FILM; itemized, sums to the FILM
     # clamp lines (off-the-shelf nylon clamps + HDPE filler) ═══
     Part("muslin-clamp", "Nylon spring clamp, 3½″ (Pittsburgh 69289)", "fasteners-hardware",
-         "clamp", CLAMP_N_TOTAL, "ea", 3, 4, "Harbor Freight", "Amazon", part_no="69289",
+         "clamp", CLAMP_N_TOTAL, "ea", 1.99, 2.99, "Harbor Freight", "Amazon", part_no="69289",
          url="https://www.harborfreight.com/3-12-in-nylon-spring-clamp-69289.html",
          spec="Inert fiberglass/nylon spring clamp with swivel pads — no corrosion in the cyanotype splash zone (replaces the custom steel-bracket clip). Clips over the filler-filled L-frame edge to grip the muslin; the jaw must clear ~55mm (2\" leg + ACM + muslin), so a ≥3\" clamp. Top + 2 side edges only (bottom = walkway/swing clearance). Confirm the open-jaw ≥2\" at purchase; 2½\" 69290 is the smaller-body fallback."),
     Part("clamp-filler", "HDPE filler strip (L-channel packer)", "plastics-sheet",

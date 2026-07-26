@@ -286,7 +286,7 @@ FILM = [
     point("Aluminum angle 2×2×3/16 (6061-T6 plain, expendable) 16 ft (×3) — weld-free frame", 625, "Metal Supermarkets 192\" @ $208.41; 2 horizontals + 1 for both verticals; 1 frame"),
     LineItem("Dibond ACM 4mm 4×8 black sheets (×4, Option A strips) — single rigid plane", 380, 380, 380, "Curbell 4mm black $95/sheet firm; 4 full-height vertical strips, 3 vertical seams"),
     LineItem("Light-seal set — EPDM tape (×2) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6)", 260, 274, 288),
-    LineItem("Muslin clamps — nylon spring clamp ×58 (Pittsburgh 69289)", 174, 203, 232, "$3–4 ea; inert fiberglass + swivel pads, top + 2 side edges (bottom = walkway clearance)"),
+    LineItem("Muslin clamps — nylon spring clamp ×58 (Pittsburgh 69289)", 115, 144, 173, "2026-07-25 re-price: Harbor Freight 69289 now $1.99–2.99 ea (was $3–4); inert fiberglass + swivel pads, top + 2 side edges (bottom = walkway clearance)"),
     LineItem("Muslin clamp filler — HDPE L-channel strip", 30, 50, 70, "inert HDPE packer, ~8.7 m, firm at fab — lets the clamp bite a solid full-depth edge"),
     # 4.3 Wall-seat saddles (rev 11, ICP-11–14) — estimates, confirm at procurement
     point("Wall-seat saddles ×6 — 8mm steel plate, cut + welded (ICP-11)", 318, "rev12: 2 BR ends moved to the walkway combined corner plates; ~$53/saddle"),
@@ -1019,7 +1019,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (27280, 32281, 39172),  # 2026-07-25: IBC wall-hanger M12×65 (+$59/+$72); E-stops → uxcell $12.74 + ext weatherproof box (−$56 net); spray arm tube → 8ft McMaster (+$58); filter spacers → ply offcuts (−$12/−$22). Per-change history in git log.
+    "grand_total": (27221, 32222, 39113),  # 2026-07-25: IBC wall-hanger M12×65; E-stops → uxcell + ext box; spray arm tube → 8ft; filter spacers → ply offcuts; muslin clamps re-price −$59. Per-change history in git log.
     "walkway": (1979, 2395, 2825),  # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
     "water": (5843, 6916, 7986),  # 2026-07-25: IBC wall-hanger M12×65 (+$59/+$72); spray arm tube → 8ft McMaster (+$58); filter spacers → ply offcuts (−$12/−$22)
     "container": (2300, 3300, 4300),
@@ -1029,7 +1029,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "shelf": (214, 227, 239),          # 2026-07-22: piano hinge re-priced (Würth 32×600 satin SS, $22–35).  §6d = chemistry-prep-shelves §7
     "interior": (467, 578, 698),      # 2026-07-22: retired the Image-plane flat-backing ACM line (double-counted the film dibond-acm-film)
     "optics": (100, 155, 215),         # 2026-07-23: pinhole → Lenox SS-3/8-DISC $40-100 (config, RFQ)
-    "film": (6146, 6427, 6712),  # updated 2026-07-22: muslin clamp mechanism → off-the-shelf nylon spring clamps (×58) + HDPE filler; retired the custom bracket/spring/neoprene (−$189/−$531). Detail in git log.
+    "film": (6087, 6368, 6653),  # 2026-07-25 re-price: muslin clamps (×58) Harbor Freight 69289 $3–4 → $1.99–2.99 (−$59). (2026-07-22: clamp mechanism → off-the-shelf nylon spring clamps + HDPE filler.) Detail in git log.
     "ventilation": (737, 760, 782),   # 2026-07-23: cooler inverter firm Victron PIN123750510 GFCI $132.60
     "power": (2886, 2904, 2922),       # 2026-07-25: 2× E-stop → uxcell $12.74 (Harfington) + external weatherproof control-station box (IP65) −$56 net. Still est: lifepo4 (Smart-vs-Core). §5a authoritative subtotal
 }

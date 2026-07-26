@@ -51,6 +51,7 @@ RHO_ALUM   = 2700     # aluminum 6061
 RHO_PLY    = 600      # marine plywood (typical)
 RHO_WATER  = 1000     # fresh water at ~20°C
 RHO_HDPE   = 950      # HDPE sheet — ALL light-lock plastic (housing 3/16", drum/skins/bay 1/8"; US Plastics 46685/46684, 2026-07-22; was a HDPE-housing + PP-drum hybrid)
+RHO_ACM_4MM = 4.75    # 4mm DIBOND ACM AREAL weight (kg/m², not kg/m³) — 3A Composites / Curbell datasheet (0.30mm Al skins + PE core)
 
 # ── Grating weight ──────────────────────────────────────────────────────────
 # 1" (25mm) molded fiberglass (GRP) grating, 1½" square mesh, vinyl-ester, grit top —
@@ -276,17 +277,21 @@ def _shelf_weight():
 
 
 def _film_plane_carriage_weight():
-    """Film plane carriage: anodized 6061 Al angle frame (EXPENDABLE) + muslin spring clips + carriages."""
+    """Film plane MOVING mass: Dibond ACM backing + anodized 6061 Al angle frame (EXPENDABLE)
+    + muslin spring clips + carriages — everything that travels with the plane through tilt/swing."""
     # Perimeter frame: 2"×2"×3/16" anodized 6061 Al angle (50.8×50.8×4.8mm) — kept aluminum as an expendable
     # part (weight + cost) rather than 304 SS; a 304 SS swap (~2.9× the mass) was evaluated and rejected.
     perimeter = 2 * (FP_W + FP_H) / 1000  # m
     angle_area = (2 * FP_ANGLE_LEG * FP_ANGLE_T - FP_ANGLE_T**2) * 1e-6  # m²
     frame_kg = perimeter * angle_area * RHO_ALUM
+    # Dibond ACM backing (dibond-acm-film) — the rigid sheet the muslin clamps to; it MOVES with the
+    # plane, so it belongs in the moving mass. 4mm black ACM ≈ 4.75 kg/m² over the FP_W×FP_H face.
+    acm_kg = (FP_W / 1000) * (FP_H / 1000) * RHO_ACM_4MM   # ≈ 44.7 kg
     # muslin spring clips: ~0.15 kg each
     clamp_kg = CLAMP_N_TOTAL * 0.05   # nylon spring clamp ~50 g each (was steel bracket ~150 g)
     # 4× HGH20CA carriage blocks: ~0.5 kg each
     carriage_kg = 4 * 0.5
-    return frame_kg + clamp_kg + carriage_kg
+    return frame_kg + acm_kg + clamp_kg + carriage_kg
 
 def _bay_weight():
     """B2 punch-out bay carried on the swinging leaf: a 6mm marine-ply 4-wall

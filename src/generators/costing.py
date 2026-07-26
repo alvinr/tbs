@@ -30,9 +30,9 @@ PRINTS = 50            # edition size every per-run figure is based on
 PER_PRINT_CONSUMABLES = 3   # §7.3 all-in basis: water/citric/pH per print BEYOND §7.1 chem+substrate
 
 # ── Unit prices (USD) — each carries its source for traceability ─────────────
-PRICE_AMFE_PER_KG  = 218.16    # Photographers' Formulary — ferric ammonium oxalate (AmFe), $98.95/1 lb (firm 2026-07-26) ÷ 0.4536 kg/lb (was $60/kg — a ~3.6× underestimate)
-PRICE_FERRI_PER_KG = 60.80     # Bostick & Sullivan — potassium ferricyanide, $151.99/2500 g (firm 2026-07-26) = $60.80/kg (was $24.29/kg bulk; Photographers' Formulary $61.71/kg was the interim firm price — consolidated to one supplier).
-DICHROMATE_RUN     = 25.00     # ammonium dichromate — trace contrast agent (0.1–0.4% w/v), per-run allowance. A $79.95/1000 g pack (Bostick & Sullivan, firm 2026-07-26 = $79.95/kg) covers ~3 runs (~300 g/run).
+PRICE_AMFE_PER_KG  = 64.20     # Artcraft Chemicals — ferric ammonium oxalate (AmFe), $29.12/1 lb (firm 2026-07-26) ÷ 0.4536 kg/lb (bulk alt-process source; was $218.16/kg at the retail 1-lb photo pack — a ~3.4× overcharge)
+PRICE_FERRI_PER_KG = 51.01     # Artcraft Chemicals — potassium ferricyanide, $104.12/4.5 lb (firm 2026-07-26) = $51.01/kg (was $60.80/kg Bostick — consolidated cyanotype chemistry to one supplier, Artcraft)
+DICHROMATE_RUN     = 25.00     # ammonium dichromate — trace contrast agent (0.1–0.4% w/v), per-run allowance. Artcraft Chemicals $33.66/0.5 lb (firm 2026-07-26; small pack ≈ $148/kg but trace use) — ~one 0.5-lb pack per run.
 MUSLIN_ROLL_PRICE  = 100.00    # Fabric Direct — 60" x 150-yd unbleached muslin roll
 MUSLIN_ROLLS       = 3         # ~388 yd / 150 -> 3 rolls (still 3 rolls after the FP_H 2138->2094 area drop)
 MUSLIN_YARDS       = 388       # 2026-07-17: 50 prints × 101 sqft × 1.15 waste = 5,808 sqft ÷ 5 ft = ~1,162 linear ft = 388 yd (was 399 at 104 sqft)
@@ -97,12 +97,12 @@ def emit_cost_breakdown_7_1() -> str:
         "|---|---|---|---|---|",
         f"| Ferric ammonium oxalate (AmFe) | {TIERS[0].amfe_kg:g} kg / ~{dollars(L['amfe'],10)} "
         f"| **{TIERS[1].amfe_kg:g} kg / ~{dollars(S['amfe'],10)}** | {TIERS[2].amfe_kg:g} kg / ~{dollars(R['amfe'],10)} "
-        f"| Photographers' Formulary (~${PRICE_AMFE_PER_KG:.0f}/kg) |",
+        f"| Artcraft Chemicals (~${PRICE_AMFE_PER_KG:.0f}/kg) |",
         f"| Potassium ferricyanide (3:1 ratio) | {TIERS[0].ferri_kg:g} kg / ~{dollars(L['ferri'])} "
         f"| **{TIERS[1].ferri_kg:g} kg / ~{dollars(S['ferri'])}** | {TIERS[2].ferri_kg:g} kg / ~{dollars(R['ferri'])} "
-        f"| Bostick & Sullivan (${PRICE_FERRI_PER_KG:.0f}/kg) |",
+        f"| Artcraft Chemicals (${PRICE_FERRI_PER_KG:.0f}/kg) |",
         f"| Ammonium dichromate (contrast, 0.1–0.4%) | ~{dollars(DICHROMATE_RUN)} | **~{dollars(DICHROMATE_RUN)}** "
-        f"| ~{dollars(DICHROMATE_RUN)} | Bostick & Sullivan |",
+        f"| ~{dollars(DICHROMATE_RUN)} | Artcraft Chemicals |",
         f"| Unbleached cotton muslin, 60″ — {MUSLIN_ROLLS} × 150-yd rolls (~{MUSLIN_YARDS} yd) "
         f"| ~{dollars(muslin_cost())} | **~{dollars(muslin_cost())}** | ~{dollars(muslin_cost())} | Fabric Direct (~$100/roll) |",
         f"| **Cyanotype total — 50 prints** | **~{dollars(L['section_total'],10)}** "
@@ -1016,10 +1016,10 @@ def check_blocks() -> list:
 # ── Self-check (regression guard — the canonical numbers, asserted) ──────────
 EXPECTED = {                       # the figures the docs are reconciled to (this session)
     "muslin": 300,
-    "lean":     {"chem": 2743, "total": 3040, "per_print": 61},  # 2026-07-26: AmFe $218.16/kg + ferricyanide $60.80/kg (Bostick & Sullivan $151.99/2500 g)
-    "standard": {"chem": 4102, "total": 4400, "per_print": 88},  # 2026-07-26: AmFe $218.16/kg + ferricyanide $60.80/kg (Bostick & Sullivan)
-    "rich":     {"chem": 8179, "total": 8480, "per_print": 170}, # 2026-07-26: AmFe $218.16/kg + ferricyanide $60.80/kg (Bostick & Sullivan)
-    "grand_total": (29052, 35023, 44834),  # 2026-07-26: AmFe $60→$218.16/kg + ferricyanide $24.29→$60.80/kg (Bostick & Sullivan); shore charger + ML-RBS re-sourced; + the 2026-07-25 parts batch. Per-change history in git log.  # 2026-07-25: IBC wall-hanger M12×65; E-stops → uxcell + ext box; spray arm tube → 8ft; filter spacers → ply offcuts; muslin clamps re-price −$59. Per-change history in git log.
+    "lean":     {"chem": 951,  "total": 1250, "per_print": 25},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
+    "standard": {"chem": 1414, "total": 1710, "per_print": 34},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
+    "rich":     {"chem": 2802, "total": 3100, "per_print": 62},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
+    "grand_total": (27262, 32333, 39454),  # 2026-07-26: Artcraft bulk chemistry — AmFe $218.16→$64.20/kg + ferricyanide $60.80→$51.01/kg; shore charger + ML-RBS re-sourced; + the 2026-07-25 parts batch. Per-change history in git log.  # 2026-07-25: IBC wall-hanger M12×65; E-stops → uxcell + ext box; spray arm tube → 8ft; filter spacers → ply offcuts; muslin clamps re-price −$59. Per-change history in git log.
     "walkway": (1979, 2395, 2825),  # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
     "water": (5843, 6916, 7986),  # 2026-07-25: IBC wall-hanger M12×65 (+$59/+$72); spray arm tube → 8ft McMaster (+$58); filter spacers → ply offcuts (−$12/−$22)
     "container": (2300, 3300, 4300),

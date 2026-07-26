@@ -35,8 +35,8 @@ A fully operational pinhole camera built inside a standard 20-foot ISO shipping 
 | f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> |
 | Baseline exposure | ~30–45 min (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction) |
 | Process | Cyanotype (Ware formula) — water-based, non-toxic, no silver |
-| Per-print cost | ~<!-- BEGIN costing:summary-perprint -->$88<!-- END costing:summary-perprint --> |
-| 50-print run | ~<!-- BEGIN costing:summary-50run -->$4,400<!-- END costing:summary-50run --> |
+| Per-print cost | ~<!-- BEGIN costing:summary-perprint -->$34<!-- END costing:summary-perprint --> |
+| 50-print run | ~<!-- BEGIN costing:summary-50run -->$1,710<!-- END costing:summary-50run --> |
 | License | [GNU AGPLv3](licensing.md) — © 2026 Alvin Richards |
 
 ---

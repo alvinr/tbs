@@ -49,7 +49,7 @@ The sensitizer is Ware's AmFe : potassium ferricyanide (Part A / Part B) with an
 
 | Reagent | Role | Notes |
 |---|---|---|
-| Ammonium iron(III) oxalate (AmFe) | Part A | requires warm water (50–60°C) to dissolve |
+| Ferric ammonium oxalate (AmFe) | Part A | requires warm water (50–60°C) to dissolve |
 | Potassium ferricyanide | Part B | mixed with AmFe at Ware's 3:1 ratio |
 | Ammonium dichromate | Part B additive | contrast enhancer — carcinogen, handle with care (see below) |
 | Distilled / DI water | solvent | tap water + DI filter adequate; warm for Part A |
@@ -65,13 +65,13 @@ The **per-print masses are under trial** — two wet-on-wet coats at a diluted W
 <!-- BEGIN parts:chemistry -->
 | Reagent | Supplier | Lean ⅓-Ware | Standard ½-Ware (default) | Rich full-Ware |
 |---|---|---|---|---|
-| Ammonium iron(III) oxalate (AmFe) | Photographers' Formulary | 11.4 kg / $684 | 17.1 kg / $1,026 | 34.2 kg / $2,052 |
+| Ferric ammonium oxalate (AmFe) | Photographers' Formulary | 11.4 kg / $2,487 | 17.1 kg / $3,731 | 34.2 kg / $7,461 |
 | Potassium ferricyanide | Bostick & Sullivan | 3.8 kg / $92 | 5.7 kg / $138 | 11.4 kg / $277 |
 | Ammonium dichromate | Photographers' Formulary | $25 | $25 | $25 |
-| **Chemistry subtotal** | | **$801** | **$1,189** | **$2,354** |
+| **Chemistry subtotal** | | **$2,604** | **$3,894** | **$7,763** |
 | Unbleached muslin (substrate) | Fabric Direct | $300 | $300 | $300 |
-| **Total (50 prints)** | | **$1,101** | **$1,489** | **$2,654** |
-| **Per print** | | **$22** | **$30** | **$53** |
+| **Total (50 prints)** | | **$2,904** | **$4,194** | **$8,063** |
+| **Per print** | | **$58** | **$84** | **$161** |
 <!-- END parts:chemistry -->
 
 *No fixer required. Development in plain cold water. No darkroom required for processing.*

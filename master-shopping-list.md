@@ -22,10 +22,10 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,776 | $2,002 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $214 | $239 |
 | 8. Cooling & ventilation | $737 | $887 |
-| 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,100 | $2,650 |
+| 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $2,900 | $8,060 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,062** | **~$36,064** |
+| **TOTAL (base build + 50-print run)** | **~$28,862** | **~$41,474** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -97,9 +97,9 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | Ammonium dichromate | 1 run | Photographers' Formulary | chemistry | $25 |
-| [Ammonium iron(III) oxalate (AmFe)](https://stores.photoformulary.com/ammonium-ferric-oxalate/) | 17.1 kg | Photographers' Formulary | chemistry | $1,026 |
+| [Ferric ammonium oxalate (AmFe)](https://stores.photoformulary.com/ferric-ammonium-oxalate-class-6-1-ground-ups-only-choose-ups-ground-shipping-at-checkout/) | 17.1 kg | Photographers' Formulary | chemistry | $3,731 |
 | [Potassium ferricyanide](https://www.bostick-sullivan.com/product/potassium-ferricyanide-250gm/) | 5.7 kg | Bostick & Sullivan | chemistry | $138 |
-| **chemistry-reagents subtotal** | | | | **$1,189** |
+| **chemistry-reagents subtotal** | | | | **$3,894** |
 
 ### container
 
@@ -428,6 +428,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
+| Photographers' Formulary | 2 | chemistry-reagents | $3,756 |
 | McMaster-Carr | 43 | aluminum, bearings-motion, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $3,609–$3,693 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,140–$3,492 |
@@ -438,7 +439,6 @@ indicative low–high estimates — get quotes before ordering.
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
 | Home Depot | 27 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $945–$1,220 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
-| Photographers' Formulary | 2 | chemistry-reagents | $1,051 |
 | American Grating | 1 | plastics-sheet | $830–$1,050 |
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
@@ -508,7 +508,7 @@ suppliers, and the muslin substrate — is in the Procurement BOM above (`chemis
 
 | Reagent | Per print (Standard ½-Ware) | × 50 prints |
 |---------|-----------------------------|-------------|
-| Ammonium iron(III) oxalate (AmFe) | <!-- BEGIN costing:om-amfe-g-standard -->342<!-- END costing:om-amfe-g-standard -->g | <!-- BEGIN costing:om-amfe-kg-standard -->17.1<!-- END costing:om-amfe-kg-standard --> kg |
+| Ferric ammonium oxalate (AmFe) | <!-- BEGIN costing:om-amfe-g-standard -->342<!-- END costing:om-amfe-g-standard -->g | <!-- BEGIN costing:om-amfe-kg-standard -->17.1<!-- END costing:om-amfe-kg-standard --> kg |
 | Potassium ferricyanide (3:1) | 130g | 6.5 kg |
 | Ammonium dichromate (contrast, 0.1–0.4%) | ~1–4g | ~0.2 kg |
 | Distilled water | ~2.6 L | ~130 L |
@@ -568,7 +568,7 @@ above — this directory adds where-to-buy detail and omits alternative/optional
 
 | Supplier | Category | URL / Location |
 |---------|---------|----------------|
-| **[Photographers' Formulary](https://stores.photoformulary.com)** | Ammonium iron(III) oxalate (AmFe), ammonium dichromate | Condon, MT |
+| **[Photographers' Formulary](https://stores.photoformulary.com)** | Ferric ammonium oxalate (AmFe), ammonium dichromate | Condon, MT |
 | **[Bostick & Sullivan](https://bostick-sullivan.com)** | Potassium ferricyanide + AmFe (cyanotype reagents) | Santa Fe, NM |
 | **[Fabric Direct](https://www.fabricdirect.com)** | Unbleached cotton muslin, 150-yd rolls | Online |
 | **[Fabric Wholesale Direct](https://www.fabricwholesaledirect.com)** | Unbleached muslin by yard or bolt | Online |

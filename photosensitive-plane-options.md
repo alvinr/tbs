@@ -117,7 +117,7 @@ Coverage on **muslin (cotton)** is **~120 ml/m²/coat** (sourced: AlternativePho
 |---|---|---|---|
 | Ferric ammonium oxalate (AmFe) — Ware | ~342 g | ~$99/454 g | **~$75** |
 | Potassium ferricyanide | ~114 g | ~$6.17/100 g | ~$7 |
-| Ammonium dichromate | ~2.5 g | ~$12/100 g | ~$0.30 |
+| Ammonium dichromate | ~2.5 g | ~$8/100 g | ~$0.20 |
 | Distilled water | 2–3 liters | Negligible | — |
 | **Chemistry total (Ware, Standard ½-Ware)** | | | **~$82/print** |
 

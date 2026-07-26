@@ -857,10 +857,11 @@ def _chem_parts() -> list[Part]:
         out.append(Part(f"ferri-{t.key}", "Potassium ferricyanide", "chemistry-reagents",
                         "chemistry", t.ferri_kg, "kg", costing.PRICE_FERRI_PER_KG, costing.PRICE_FERRI_PER_KG,
                         "Photographers' Formulary", "Bostick & Sullivan", url="https://stores.photoformulary.com/potassium-ferricyanide/",
-                        spec="Part B (Ware New Cyanotype). $139.95/5 lb (Photographers' Formulary, firm 2026-07-26) = $61.71/kg.", tier=t.key))
+                        spec="Part B (Ware New Cyanotype). $139.95/5 lb (Photographers' Formulary, firm 2026-07-26) = $61.71/kg; Bostick & Sullivan $151.99/2500 g = $60.80/kg confirms.", tier=t.key))
         out.append(Part(f"dichromate-{t.key}", "Ammonium dichromate", "chemistry-reagents",
                         "chemistry", 1, "run", costing.DICHROMATE_RUN, costing.DICHROMATE_RUN,
-                        "Photographers' Formulary", spec="Part B additive; contrast enhancer (Cat-1A carcinogen — handle with care)", tier=t.key))
+                        "Bostick & Sullivan", url="https://www.bostick-sullivan.com/product/ammonium-dichromate-100gm/",
+                        spec="Part B additive; contrast enhancer (Cat-1A carcinogen — handle with care). $79.95/1000 g (Bostick & Sullivan, firm 2026-07-26); ~$25/run allowance (a 1 kg pack covers ~3 runs).", tier=t.key))
     out.append(Part("muslin", 'Unbleached muslin, 60" wide', "substrate-fabric",
                     "chemistry", costing.MUSLIN_ROLLS, "roll", costing.MUSLIN_ROLL_PRICE, costing.MUSLIN_ROLL_PRICE,
                     "Fabric Direct", url="https://www.fabricdirect.com/shop/craft-fabric/broadcloth-and-muslin-fabric/essence-60-medium-weight-muslin-fabric-unbleached-150-yard-roll/",
@@ -940,7 +941,7 @@ def emit_chemistry() -> str:
     rows = [hdr, "|" + "---|" * (len(tiers) + 2)]
     for desc, sup in (("Ferric ammonium oxalate (AmFe)", "Photographers' Formulary"),
                       ("Potassium ferricyanide", "Photographers' Formulary"),
-                      ("Ammonium dichromate", "Photographers' Formulary")):
+                      ("Ammonium dichromate", "Bostick & Sullivan")):
         cells = []
         for t in tiers:
             p = by[(t.key, desc)]

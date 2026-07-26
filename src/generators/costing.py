@@ -322,7 +322,7 @@ VENTILATION = [
 # §5b ventilation items, so we own the two authoritative subtotals rather than re-entering it.
 POWER = [
     LineItem("Solar & battery (3× 200W panels, MPPT 100/50, 1× 100Ah LiFePO4, shore charger, 3× tilt mounts, PV cabling, PV disconnect, panel)", 1334, 1334, 1334, "2026-07-23: fully firmed — battery → Renogy Core RBT12100LFP-US $306.46 (from Smart Lithium $350–430); panels/MPPT/shore/mounts real SKUs"),
-    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop, charge/shore fuses, protection, conduit, LED, master pump switch, power-panel raised weld-in frame)", 1543, 1559, 1574, "2026-07-23: fuse block/MRBF/disconnect/ML-RBS/label-kit/ground-rod firmed. 2026-07-25: 2× E-stop → uxcell a19061100ux1510 $12.74 (Harfington, switch only) −$65 (external still needs a weatherproof enclosure, TBD)"),
+    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop + ext weatherproof box, charge/shore fuses, protection, conduit, LED, master pump switch, power-panel raised weld-in frame)", 1552, 1570, 1588, "2026-07-23: fuse block/MRBF/disconnect/ML-RBS/label-kit/ground-rod firmed. 2026-07-25: 2× E-stop → uxcell a19061100ux1510 $12.74 (Harfington) + external weatherproof control-station box (IP65, uxcell B07GN5P3NF ~$8-13); net −$56 vs the old McMaster IP66 pair"),
 ]
 
 
@@ -653,7 +653,7 @@ SECTIONS = [
     Section("3",  "Optics — pinhole plate", *total(OPTICS)),
     Section("4",  "Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)", *total(FILM)),
     Section("5",  "Processing water system (incl. tray, spray bar, IBC stacking frame)", *total(WATER)),
-    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2877, 2893, 2908),
+    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2886, 2904, 2922),
     Section("5b", "Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)",
             total(VENTILATION)[0], total(VENTILATION)[0] + 60, total(VENTILATION)[0] + 150),
     Section("6",  "Housed revolving-door light lock (plastic-skin custom fabrication)", *total(LIGHTLOCK)),
@@ -1019,7 +1019,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 801,  "total": 1100, "per_print": 22},  # 2026-07-17: chemistry tiers ×0.97944 (plane 9.62→9.42 m²)
     "standard": {"chem": 1189, "total": 1490, "per_print": 30},  # 2026-07-17: ×0.97944
     "rich":     {"chem": 2354, "total": 2650, "per_print": 53},  # 2026-07-17: ×0.97944
-    "grand_total": (27271, 32270, 39158),  # 2026-07-25: IBC wall-hanger M12×65 (+$59/+$72); E-stops → uxcell $12.74 (−$65); spray arm tube → 8ft McMaster (+$58); filter spacers → ply offcuts (−$12/−$22). Per-change history in git log.
+    "grand_total": (27280, 32281, 39172),  # 2026-07-25: IBC wall-hanger M12×65 (+$59/+$72); E-stops → uxcell $12.74 + ext weatherproof box (−$56 net); spray arm tube → 8ft McMaster (+$58); filter spacers → ply offcuts (−$12/−$22). Per-change history in git log.
     "walkway": (1979, 2395, 2825),  # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
     "water": (5843, 6916, 7986),  # 2026-07-25: IBC wall-hanger M12×65 (+$59/+$72); spray arm tube → 8ft McMaster (+$58); filter spacers → ply offcuts (−$12/−$22)
     "container": (2300, 3300, 4300),
@@ -1031,7 +1031,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "optics": (100, 155, 215),         # 2026-07-23: pinhole → Lenox SS-3/8-DISC $40-100 (config, RFQ)
     "film": (6146, 6427, 6712),  # updated 2026-07-22: muslin clamp mechanism → off-the-shelf nylon spring clamps (×58) + HDPE filler; retired the custom bracket/spring/neoprene (−$189/−$531). Detail in git log.
     "ventilation": (737, 760, 782),   # 2026-07-23: cooler inverter firm Victron PIN123750510 GFCI $132.60
-    "power": (2877, 2893, 2908),       # 2026-07-25: 2× E-stop → uxcell a19061100ux1510 $12.74 (Harfington, switch only) −$65. Still est: lifepo4 (Smart-vs-Core). §5a authoritative subtotal
+    "power": (2886, 2904, 2922),       # 2026-07-25: 2× E-stop → uxcell $12.74 (Harfington) + external weatherproof control-station box (IP65) −$56 net. Still est: lifepo4 (Smart-vs-Core). §5a authoritative subtotal
 }
 
 

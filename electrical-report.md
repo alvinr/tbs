@@ -383,7 +383,7 @@ All US/SoCal sources. Prices approximate as of 2026.
 | 200A main fuse (terminal-mount) | Blue Sea MRBF on the battery + post (≤180mm, ABYC E-11) | Amazon | ~$25 |
 | Battery main disconnect switch | Blue Sea m-Series 300A — manual isolator, contactor to busbar | West Marine (Torrance CA) / Amazon | ~$40 |
 | Remote battery switch (contactor) | Blue Sea ML-RBS 500A magnetic-latch — in battery + feed, tripped by the external E-stop | West Marine (Torrance CA) / Amazon | ~$150 |
-| External emergency cut-off (E-stop) | Red mushroom switch (uxcell a19061100ux1510) — **switch only; needs a weatherproof (IP66) enclosure for the external mount, TBD** + 2× 18 AWG control loop | [Harfington](https://www.harfington.com/products/p-1071142) / Amazon | ~$13 |
+| External emergency cut-off (E-stop) | Red mushroom switch (uxcell a19061100ux1510) in a **weatherproof control-station box** (uxcell B07GN5P3NF, IP65, 78×71×64mm — ample for rain; upgrade to a gasketed IP66 box only if washdown-rated) + 2× 18 AWG control loop | [Harfington](https://www.harfington.com/products/p-1071142) / Amazon | ~$21 |
 | Interior emergency cut-off (E-stop) | Red mushroom switch (uxcell a19061100ux1510), EP-face mount — paralleled to the exterior E-stop → ML-RBS trip | [Harfington](https://www.harfington.com/products/p-1071142) / Amazon | ~$13 |
 | PV array disconnect | DC load-break isolator, 50A / 150VDC, panel-mount (array → MPPT; NEC 690.13) | [AutomationDirect](https://www.automationdirect.com/) / Amazon | ~$40 |
 | MPPT charge-line fuse | 60A ANL/MIDI + holder on the MPPT→battery lead; 6 AWG charge conductor | Blue Sea / Amazon | ~$15 |
@@ -418,10 +418,10 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Ventilation fans × 2 | 150×150×50mm 12V DC axial panel fan, ~150–200 CFM (dimension-audit correction; not the AC Infinity S6 inline) | Amazon | ~$50 |
 | 12V LED flat panel, 300×600mm, 4000K | 20W, neutral white, ceiling-mount | Amazon / superbrightleds.com | ~$75 (×3) |
 | Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting circuits D & G | Amazon / Lowe's | ~$16 (×2) |
-| **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$2,893<!-- END costing:elec-system-total -->** |
+| **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$2,904<!-- END costing:elec-system-total -->** |
 | **Shade canopy total** | | | **~<!-- BEGIN costing:elec-canopy-total -->$200<!-- END costing:elec-canopy-total -->** |
 | **Cooling (cooler + inverter + DC protection + AC outlet + cord)** | | | **~<!-- BEGIN costing:elec-cooling-total -->$361<!-- END costing:elec-cooling-total -->** |
-| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$3,454<!-- END costing:elec-grand-total -->** |
+| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$3,465<!-- END costing:elec-grand-total -->** |
 
 *Electrical system total is the **standard 1-pack build** and matches the consolidated [Master Shopping List §6](master-shopping-list.md) (Solar & battery $1,335 + Distribution & wiring $989 = $2,324, the authoritative electrical BOM). The optional 2nd battery pack adds +$375 (its own MRBF fuse). It includes ~$410 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (interior **+** exterior emergency cut-offs + battery contactor, disconnect switch, terminal-mount fuse, **PV array disconnect, MPPT charge-line + shore-charger fuses**, sealed connectors, bonding, grommets), plus ~$25 of Circuit-C pump-control hardware (1 master pump switch + distribution block).*
 

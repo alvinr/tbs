@@ -202,7 +202,9 @@ def tote_restraint():
         for bz in bar_zs:
             p.append(ov.ruby_cylinder("D-Ring Holder", front_x - 6, ydh, bz + S / 2, 16, 10,
                                       color=ov.C_STEEL, axis="x"))
-    # Wall joist hangers + exterior backing plates (4× M12 through-bolts) at each bar wall-end.
+    # Wall joist hangers + exterior backing plates (4× M12×65 through-bolts) at each bar wall-end.
+    # (The bolt is drawn as a generic through-bolt cylinder; the M12×65 length spec lives in the
+    #  2D drawings + parts.py — a 7mm visual bump isn't worth re-sending 5 models.)
     ext_pt, ext_pw, ext_ph = 8, 100, 135
     for wall_yd, din in ((0, 1), (ov.C_WID, -1)):
         for bz in bar_zs:

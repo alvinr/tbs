@@ -443,7 +443,7 @@ def sheet2():
         ax.add_patch(Rectangle(((ext_face - 14), (by - 4)), (6), (8),
                                 fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=11))   # hex head outside
     leader(ax, (ext_face - 11), (hb_y - 8), (ext_face - 75), (hb_y - 55),
-           "EXTERIOR BACKING PLATE\n100x135x8 + 4x M12 THROUGH-BOLTS\n(hex heads outside, load-spread)",
+           "EXTERIOR BACKING PLATE\n100x135x8 + 4x M12x65 THROUGH-BOLTS\n(hex heads outside, load-spread)",
            color=C_FRAME, fs=6, ha="left", va="top", arrow_style="-|>", font=FONT)
     leader(ax, (wall_x + pocket_d), (hb_y - 4), (wall_x + pocket_d + 15), (hb_y - 25),
            "U-POCKET SEAT\n(bar drops in)", color=C_STEEL, fs=6, ha="left",
@@ -508,7 +508,7 @@ def sheet2():
         "FASTENING NOTES (RESTRAINT-ONLY FRAME):",
         "1. Direct-stack totes are restrained, not deck-supported. Active restraint + lash points are at the OPEN container front (side/back walls leave a 30mm gap — no hand/hook access).",
         "2. Detail A: each front retaining bar bolts to the front corridor upright via an angle cleat (2x M12); a weld-on lash eye takes the strap.",
-        "3. Detail B: the bar's wall end drops into a Simpson-style U-pocket joist hanger, through-bolted (4x M12) to a 100x135x8 EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",
+        "3. Detail B: the bar's wall end drops into a Simpson-style U-pocket joist hanger, through-bolted (4x M12x65) to a 100x135x8 EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall. M12x65 partial-thread spans the ~42-54mm sandwich; front-bar cleats stay M12x40.",
         "4. Detail C: 25mm poly ratchet straps (1100kg LC) pass over each stack and ratchet down to the front-bar lash eyes.",
         "5. Floor feet (150x150x12, 4x M12 each) anchor the corridor uprights to the slab — see Sheet 1.",
     ]

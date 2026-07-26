@@ -111,7 +111,7 @@ front uprights.
 | Uprights | 4 full-height (deep 4-leg box: front pair at the corridor mouth + back pair ~450mm behind), tied by butt-jointed top + bottom rings |
 | Floor anchorage | 4 × 150 × 150 × 12mm flange-plate feet, 4 × M12 anchors each (front feet reach ~25mm under the tray) |
 | Front retaining bars | 4 × 50×20×3 RHS at the IBC front (seated in the 25mm gap to the film rail), wall → upright per column |
-| Wall joist hangers | 4 × Simpson-style U-pocket receiving the front-bar wall ends, **through-bolted (4 × M12 each) to an exterior backing plate** |
+| Wall joist hangers | 4 × Simpson-style U-pocket receiving the front-bar wall ends, **through-bolted (4 × M12×65 each) to an exterior backing plate** (M12×65 spans the 8mm plate + corrugation + 4mm hanger grip) |
 | Exterior backing plates | 4 × 100 × 135 × 8mm steel, on the **outside** of the container side walls (hex heads outside) — spread the totes' transport thrust into the thin corrugated wall so the bolts can't pull through |
 | Weld-on lashing rings | on the front bars; 1,100 kg assembly WLL |
 | Panel mount | the box carries the Corridor (pump) Plumbing Panel + drain-riser spine on the back uprights, and the right-walkway cantilever arms on the front uprights |
@@ -138,9 +138,11 @@ braking/cornering (loaded mass 5,044 kg, worst-case CG at Z=1,345mm — see the
 
 - **Front retaining bars** (50×20×3 RHS) span wall→upright (~1,046mm) and take each tote's
   longitudinal (−X) thrust into the floor feet + wall hangers.
-- **Wall joist hangers** receive the bar wall ends and are **through-bolted (4 × M12) to a
+- **Wall joist hangers** receive the bar wall ends and are **through-bolted (4 × M12×65) to a
   100×135×8mm exterior backing plate** on the outside of each side wall — the plate spreads
-  the bolt load so the thin corrugated wall cannot pull through under the totes' thrust.
+  the bolt load so the thin corrugated wall cannot pull through under the totes' thrust. M12×65
+  (partial thread) spans the ~42–54mm sandwich (8mm plate + corrugation + 4mm hanger); the
+  front-bar → upright cleats stay M12×40 (short grip).
 - **Weld-on lashing rings** (1,100 kg assembly WLL) over each stack provide vertical tie-down and
   supplements lateral restraint; the totes are otherwise wall-trapped.
 - **Floor feet** (150×150×12, 4 × M12 each) anchor the uprights against uplift and transfer
@@ -284,14 +286,19 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 |------|------|-----|----------|-----------|
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | Deep 4-leg box uprights (front + back pair) + top/bottom rings + front retaining bars + panel-mount rail (~19.5 m) | 4 ea | Metal Supermarkets | $120–$180 |
 | 12mm steel plate, 150 × 150 cut | Deep-box upright floor flange feet (one per leg; front feet reach under the tray) | 4 ea | Metal Supermarkets | $20–$40 |
-| 4mm folded plate | Simpson-style wall joist hangers | 4 ea | Local fab | $30–$50 |
+| 4mm folded plate | Simpson-style U-pocket wall joist hangers (4 off) — each through-bolted (4× M12×65) to an exterior 100×135×8 backing plate on the outside of the container side wall. | 4 ea | Local fab | $30–$50 |
 | [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | Zinc-plated steel weld-on tie-down rings — 1½" (38mm) inside × ½" thick, 6,600 lb WLL; fillet-welded to the front retaining bars (4 per tier × 2 tiers). Integrated weld base — no separate mount plate. Ring far exceeds the 25mm-strap-limited 1,100 kg assembly WLL. | 8 ea | McMaster-Carr | $40 |
 | 25mm ratchet strap, 1,100 kg WLL | Transport securing, over each stack | 4 ea | Amazon | $30–$50 |
 | [Self-drilling structural screw, #14×3¼″ winged, 410 SS](https://www.fastenersplus.com/products/14-x-3-1-4-self-drilling-flat-head-screw-with-wings-410-stainless-steel-pkg-100) (F14C325FDC) | 4 deep-box flange feet × 4 each. Self-drills the 6mm foot plate + 28mm plywood and taps the ~4mm steel crossmember — LAND EACH FOOT OVER A CROSSMEMBER (~450mm centers). Wings ream the plate/ply clearance then snap off at the steel. 410 SS (martensitic — self-drills steel; 316 can't). The IBC dead load bears in compression on the floor; the screws resist sliding/uplift only. Through-bolt 316 + backing nut instead where a crossmember underside is reachable. $1.02/ea (100-pk). | 16 ea | Fasteners Plus / ASMC | $16 |
-| [M12×40 hex bolt, Grade 8.8](https://www.fmwfasteners.com/products/m12-1-75-x-40-hex-cap-screw-8-8-din-933-zinc-plated-fully-threaded) (1634027) | Wall hangers (2 each) + front-bar cleats. M12×40 8.8 zinc DIN933; FMW 1634027 $1.44ea / US Bolt Kits $0.71ea. | 12 ea | FMW Fasteners / US Bolt Kits | $9–$17 |
+| [M12×40 hex bolt, Grade 8.8](https://www.fmwfasteners.com/products/m12-1-75-x-40-hex-cap-screw-8-8-din-933-zinc-plated-fully-threaded) (1634027) | Front-bar → upright angle cleats (2 each × 4 bars = 8). Short grip (bar + cleat + upright flange) → M12×40 fully threaded is correct. M12×40 8.8 zinc DIN933; FMW 1634027 $1.44ea / US Bolt Kits $0.71ea. (Wall-hanger through-bolts are the M12×65 below.) | 8 ea | FMW Fasteners / US Bolt Kits | $6–$12 |
+| [M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A728/) (91280A728) | IBC wall-hanger through-bolts (4 each × 4 hangers = 16) — through the corrugated side wall to the exterior 100×135×8 backing plate (hex heads outside). Grip = 8mm plate + ~30mm corrugation + 4mm hanger flange ≈ 42–54mm → M12×65 partial-thread (the fully-threaded M12×40 could not span it). $15.95/pack of 10 → 2 packs for 16. Pad with 1–2 M12 flat washers if the actual corrugation is <30mm. | 16 ea | McMaster-Carr | $26 |
+| [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | Plain hex nut (inside the container) — M12×65 wall-hanger through-bolts (+ split lock washer). $12.78/pack of 50. | 16 ea | McMaster-Carr | $4 |
+| [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | Flat washers, M12×65 wall-hanger bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). $9.71/pack of 100. | 64 ea | McMaster-Carr | $6 |
+| [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×65 wall-hanger bolts (plain nut + split = locked). $11.97/pack of 100. | 16 ea | McMaster-Carr | $2 |
+| Steel backing plate 100×135×8mm | Exterior wall backing plates (one per hanger) — flat 100×135×8mm steel on the OUTSIDE of the container side wall (hex heads outside), 4× M12 holes; spreads the totes' transport thrust into the thin corrugated wall so the through-bolts can't pull through. | 4 ea | Metal Supermarkets | $24–$40 |
 | Welding / fabrication (frame assembly) | ~14–20 hrs labor (deep 4-leg box — the ring/back-upright welds sit at the upper end of the range) | 1 lot | Local fab | $688–$1,018 |
 | Primer + paint | Anti-corrosion coating | 1 lot | Hardware store | $30–$50 |
-| **Ibc-Frame total** | | | | **$982–$1,461** |
+| **Ibc-Frame total** | | | | **$1,041–$1,533** |
 <!-- END parts:ibc-frame -->
 
 ### 9.2 IBC Totes
@@ -311,7 +318,7 @@ the stacking structure and the totes it restrains.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$982<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,461<!-- END costing:ibc-frame-high --> |
+| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,041<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,533<!-- END costing:ibc-frame-high --> |
 | IBC totes (4×) | $300 | $900 |
 | **Total** | **$1,280** | **$2,405** |
 

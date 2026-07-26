@@ -116,7 +116,7 @@ Coverage on **muslin (cotton)** is **~120 ml/m²/coat** (sourced: AlternativePho
 | Reagent | Quantity (double coat) | Unit cost (2026) | Subtotal |
 |---|---|---|---|
 | Ferric ammonium oxalate (AmFe) — Ware | ~342 g | ~$99/454 g | **~$75** |
-| Potassium ferricyanide | ~114 g | ~$6.17/100 g | ~$7 |
+| Potassium ferricyanide | ~114 g | ~$6.08/100 g | ~$7 |
 | Ammonium dichromate | ~2.5 g | ~$8/100 g | ~$0.20 |
 | Distilled water | 2–3 liters | Negligible | — |
 | **Chemistry total (Ware, Standard ½-Ware)** | | | **~$82/print** |
@@ -124,7 +124,7 @@ Coverage on **muslin (cotton)** is **~120 ml/m²/coat** (sourced: AlternativePho
 _Reconciled 2026-07-26 to the cost model (`costing.py` TIERS, Standard ½-Ware = 15 g/100 ml at 120 ml/m²/coat × 2 × 9.42 m² → **342 g AmFe / 114 g ferricyanide per print**, Ware's 3:1 ratio). The prior 179 g / 90 g figures under-counted the fabric coverage._
 
 **Source:** Photographers' Formulary and Bostick & Sullivan (photoformulary.com, bostick-sullivan.com). AmFe ~$98.95/lb (Photographers' Formulary, firm 2026-07-26).
-**Source for potassium ferricyanide:** Photographers' Formulary; $139.95/5 lb = $61.71/kg (firm 2026-07-26).
+**Source for potassium ferricyanide:** Bostick & Sullivan; $151.99/2500 g = $60.80/kg (firm 2026-07-26).
 
 ### Substrate Options and Costs
 

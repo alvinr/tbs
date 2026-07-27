@@ -32,12 +32,18 @@ bucketed by WHEN it can be acted on:_
     `hdpe-three-quarter`→`pvc-three-quarter`; `filter-jumper` + §5 table + the "1" HDPE stock" spec refs
     (s60-adapter, blue-equalization-tie, valve-3way-half) all re-labeled PVC. Prices kept as estimates
     → **re-price/re-count PVC when sourced** (PVC = 10-ft sticks vs the assumed 20-ft; Home Depot).
-  **Two forks still need Alvin's go (each a real cost move):**
-  (b) **1" run tees/elbows** (`tee-100`, `tee-100-hdpe`, `elbow-el100`) are currently threaded **Banjo
-      FRPP** ($14.19 tee / $4.59 elbow) — per the rule they should be **PVC slip** (~$1–2). Re-source (cheaper).
-  (c) **Transition adapters MISSING** — a slip×NPT male adapter is needed at each of the ~15 component
-      interfaces (valves, pump/filter ports, bulkheads, check valve); none are in the BOM. Enumerate
-      from the schematic + add. Also settle `union-half` (a slip coupling can't disconnect — union or not?).
+  - [x] **(b) 1" run tees/elbows → PVC slip — DONE 2026-07-27.** `tee-100` (qty 3+1 consolidated with
+    `tee-100-hdpe` → qty 4) and `elbow-el100` re-spec'd from threaded Banjo FRPP ($14.19 tee / $4.59
+    elbow) to **1" PVC Sch-40 slip** at Home Depot (est ~$1.50 tee / ~$1 elbow). Saved ~$65. **Source
+    exact Home Depot SKU/price** (still an estimate range).
+  - [x] **(c) Transition adapters — ADDED 2026-07-27.** New `pvc-transition-adapters` line: PVC slip×NPT
+    male adapters where the glued run meets each threaded component (valves, filter ports, bulkheads,
+    sample taps, accumulator). **~40 est @ $0.50–1.00** — the exact count + ½"/1" split needs a
+    **schematic trace**, and the Home Depot SKUs still need sourcing.
+  - [ ] **`union-half` — union or coupling?** The sourced part is a slip COUPLING (permanent); if the
+    pump runs need service disconnects there, swap to a PVC union (~$3–4). Decide.
+  - [ ] **Re-price/re-count the PVC run** — `pvc-1in` / `pvc-three-quarter` / `filter-jumper` are still
+    Ferguson estimates (½" pipe `pvc-half` now firm at Home Depot $4.81/10ft). Source the rest at Home Depot.
 - [ ] **panel-corner-plates — design flag (huge cores).** Each 3mm 5052 Al corner core is 653×2388mm (~16.8 ft², ~half a sheet); the 4 don't nest → 2 full sheets = $586 + weight. Decide full solid plate vs a lighter frame/partial before buying.
 - [ ] **Aug 2026 full re-price.** Sweep every `parts.py` line against current listings (reminder atop the file); edit band → `--inject` cascades.
 - [ ] **Master-BOM SKU backfill.** Branded rows that don't yet carry a registry `part_no` — Alvin's supplier paste-check; each SKU auto-appears in the master on the next `--inject`.

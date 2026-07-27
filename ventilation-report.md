@@ -191,7 +191,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 <!-- BEGIN parts:ventilation -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| 150×150×50mm axial fans | 12V DC, ~150–200 CFM each (GDSTIME/Wathai 15050) | 2 ea | Amazon | $50 |
+| 150×150×50mm axial fans | 12V DC, ~150–200 CFM each (GDSTIME/Wathai 15050) | 2 ea | Digi-Key | $50 |
 | [Evaporative cooler](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) | Hessaire MC18M, 120V AC, <!-- BEGIN fact:cooler_cfm_rated -->1,300<!-- END fact:cooler_cfm_rated --> CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W | 1 ea | Hessaire / Amazon | $185–$230 |
 | [Cooler inverter — Victron Phoenix 12/375 GFCI](https://www.invertersupply.com/index.php?main_page=product_info&products_id=200695) (PIN123750510) | Victron Phoenix 12/375 120V VE.Direct GFCI (12V→120V, 375VA/300W) — GFCI in the faceplate outlet satisfies the wet-cooler requirement (no separate GFCI needed). Firm $132.60. | 1 ea | Inverter Supply / PKYS | $133 |
 | Shade canopy — 80% shade cloth | 20 × 10 ft | 1 ea | Amazon / Farm supply | $80 |

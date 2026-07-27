@@ -59,15 +59,15 @@ FS_MD = 8.0
 # ══════════════════════════════════════════════════════════════════════════════
 
 FIG_W = 30.0
-FIG_H = 22.0
+FIG_H = 26.0
 fig = plt.figure(figsize=(FIG_W, FIG_H), dpi=DIAGRAM_DPI)
 fig.patch.set_facecolor(BG)
 
 gs = fig.add_gridspec(3, 4,
-                      height_ratios=[1.0, 1.0, 0.55],
-                      width_ratios=[0.7, 1.0, 0.8, 0.65],
-                      hspace=0.22, wspace=0.18,
-                      left=0.03, right=0.97, bottom=0.06, top=0.95)
+                      height_ratios=[1.4, 1.4, 0.42],
+                      width_ratios=[0.95, 1.05, 0.78, 0.5],
+                      hspace=0.10, wspace=0.10,
+                      left=0.02, right=0.985, bottom=0.045, top=0.965)
 
 ax_board = fig.add_subplot(gs[0, 0])    # end face — operator side (top-left)
 ax_xsec  = fig.add_subplot(gs[0, 1:])   # side cross-section (top, columns 1-3)

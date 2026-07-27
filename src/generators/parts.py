@@ -243,8 +243,8 @@ PARTS: list[Part] = [
     # covered by the threaded ports on pumps/filters/valves).
     Part("coupling-half", '1/2" PVC Sch-40 slip coupling', "plumbing-fittings",
          "water", 4, "ea", 0.74, 0.74, "Home Depot", part_no="PVC021000600HD", url="https://www.homedepot.com/p/203811331", spec="Permanent solvent-weld run joins (4×). Charlotte PVC Sch40 S×S coupling."),
-    Part("union-half", '1/2" PVC Sch-40 union (serviceable break)', "plumbing-fittings",
-         "water", 2, "ea", 3, 4, "Home Depot", spec="True hand-unscrew unions at the 2 points where a whole sub-assembly must come out as a unit (pump manifold + filter-bank inlet). ½\" PVC Sch-40 socket union — source SKU/price (~$3–4)."),
+    Part("union-half", '1/2" PVC union (serviceable break)', "plumbing-fittings",
+         "water", 2, "ea", 4.96, 4.96, "Home Depot", part_no="PVCU12F", url="https://www.homedepot.com/p/317901071", spec="True hand-unscrew unions at the 2 points where a whole sub-assembly must come out as a unit (pump manifold + filter-bank inlet). Apollo ½\" PVC FIP×FIP (threaded) union — lands on the slip run via a slip×MNPT adapter each side (2 already in the transition-adapter allowance)."),
     Part("bushing-reducer", '1/2"×1" NPT bushing reducer', "plumbing-fittings",
          "water", 1, "ea", 2.86, 2.86, "Home Depot", part_no="PVC021121800HD", url="https://www.homedepot.com/p/204836713", spec="P-02 riser → F1 filter inlet — THREADED (lands on the filter = hard component, per the joint convention). Charlotte PVC Sch40 1×½ reducer bushing"),
     Part("s60-adapter", 'S60×6 female-buttress → 2" NPT + 2→1" bushing', "plumbing-fittings",

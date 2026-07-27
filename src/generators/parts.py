@@ -105,8 +105,13 @@ PARTS: list[Part] = [
          spec="Victron Phoenix 12/375 120V VE.Direct GFCI (12V→120V, 375VA/300W) — GFCI in the faceplate outlet satisfies the wet-cooler requirement (no separate GFCI needed). Firm $132.60."),
     Part("shade-cloth-80", "Shade canopy — 80% shade cloth", "fabric-textile",
          "ventilation", 1, "ea", 80, 80, "Amazon", "Farm supply", spec="20 × 10 ft"),
-    Part("canopy-frame-emt", "Canopy frame", "steel-structural",
-         "ventilation", 1, "lot", 120, 120, "Home Depot", spec='1.5" EMT conduit + fittings'),
+    # Shade-canopy frame (20×10 ft), itemized 2026-07-27 from the $120 "Canopy frame" lot:
+    Part("canopy-emt-conduit", '1.5" EMT conduit, 10 ft', "steel-structural",
+         "ventilation", 6, "stick", 14, 14, "Home Depot", spec='Shade-canopy frame legs + top rails. 1.5" EMT, 6× 10-ft sticks. Price est — source SKU.'),
+    Part("canopy-emt-fittings", "EMT canopy fittings (couplings, corner ells, connectors)", "steel-structural",
+         "ventilation", 1, "lot", 24, 24, "Home Depot", spec="Set-screw couplings + 90° corners + tee/cross connectors joining the EMT frame. Price est — source pieces."),
+    Part("canopy-emt-base", "EMT canopy base plates + ground stakes (×4)", "steel-structural",
+         "ventilation", 4, "ea", 3, 3, "Home Depot", spec="Floor flange/base plate at each leg + ground stakes/guys. Price est."),
     Part("baffle-metal-fan", "Baffle duct sheet metal (fans)", "steel-structural",
          "ventilation", 1, "lot", 30, 30, "Local sheet metal", "Home Depot", spec="22 ga galvanized, 2 × 300mm stubs"),
     Part("baffle-metal-cooler", "Baffle duct sheet metal (cooler)", "steel-structural",
@@ -171,9 +176,14 @@ PARTS: list[Part] = [
          url="https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747",
          spec='4×8 ft 23/32\" (18mm) RTD Southern Yellow Pine exterior sheathing — pump-mount shirt (~610×1650 cut) behind P-01..P-05 + 6× spacer blocks. Same SKU as ply-18; 5× Shurflo 2088 (~6.5 kg total) need no more than 3/4\". STANDARD exterior per project rule (was marine ~$212). Firm $29.30 (Home Depot 2026-07-23). May nest with ply-18 in one sheet at cut — carried separate for margin. Double-layer locally if extra pump-rail stiffness wanted.',
          panel="Corridor"),
-    Part("corridor-panel-mount", "Corridor panel mount hardware (brackets + fasteners)", "fasteners-hardware",
-         "water", 1, "lot", 25, 50, "Home Depot",
-         spec='6× steel angle brackets (panel → IBC-frame front-portal uprights), shirt-to-panel screws, lag bolts. Price est.',
+    # Corridor plumbing-panel mount, itemized 2026-07-27 from the $25–50 hardware lot:
+    Part("corridor-panel-brackets", "6× steel angle brackets (corridor panel → IBC uprights)", "fasteners-hardware",
+         "water", 6, "ea", 2.5, 6.5, "Home Depot",
+         spec="L-brackets fixing the corridor plumbing panel to the IBC-frame front-portal uprights. Price est.",
+         panel="Corridor"),
+    Part("corridor-panel-fasteners", "Corridor panel mount fasteners (shirt-to-panel screws + lag bolts)", "fasteners-hardware",
+         "water", 1, "lot", 10, 11, "Home Depot",
+         spec="Shirt-to-panel screws + lag bolts landing the brackets into the panel/uprights. Price est.",
          panel="Corridor"),
     # — filter (286–485): 3 separate 4.5×20 housings on a slotted-angle skid frame (§3.1/§7.2) —
     Part("bigblue-housing", 'Big Blue filter housing 4.5"×20" (separate)', "water-equipment",
@@ -181,8 +191,8 @@ PARTS: list[Part] = [
          spec='Ø184×594mm/housing (4.5×20), 1" NPT ports — three SEPARATE housings on the slotted-angle skid frame (Pentek / iSpring / Geekpure)',
          datasheet="Pentek 4.5×20 BB", modeled_const="BB_OD/BB_H",
          audit_status="3-separate design of record (2026-07): combo → 3 separate housings + frame per plumbing-report §3.1/§7.2. Prices indicative — firm at the Aug-2026 re-price.", panel="Pinhole Wall"),
-    Part("filter-skid-frame", "Steel angle frame 30×30mm (filter skid)", "water-equipment",
-         "water", 1, "6ft length", 116.76, 116.76, "McMaster-Carr", part_no="9017K61", url="https://www.mcmaster.com/9017K61-9017K596/", spec="30×30mm steel angle × 6 ft; bolts to the 18mm ply backing (adjustable housing height). ⚠ big jump from the $25–45 slotted-angle estimate (McMaster solid angle is premium) — CONFIRM one 6-ft length builds the full 3-housing skid (the ~2.5 m estimate would need 2 → ~$234) and that solid 30×30 is intended over cheaper Home Depot slotted angle.", panel="Pinhole Wall"),
+    Part("filter-skid-frame", "Big Blue housing mounting brackets (×3)", "water-equipment",
+         "water", 3, "ea", 10.50, 10.50, "Fresh Water Systems", part_no="150061", url="https://www.freshwatersystems.com/products/mounting-bracket-white-single-housing-for-10-20-big-blue-housings", spec="Pentair 150061 zinc-plated single-housing mounting bracket, one per 4.5×20 Big Blue (×3), lag-screwed to the 18mm ply backing. Purpose-built — replaces the welded slotted-angle frame (Alvin 2026-07-27).", panel="Pinhole Wall"),
     # filter-ubracket RETIRED 2026-07-22 — Big Blue housings have mounting-hole ears; lag-screw straight to the ply backing
     Part("filter-lag-screws", "SS lag/wood screws — filter housings to ply backing", "fasteners-hardware",
          "water", 2, "5-pack", 7.09, 7.09, "Home Depot", part_no="812670", url="https://www.homedepot.com/p/302007729", spec="2 per housing × 3 = 6 needed — Everbilt 5/16\"×1½\" SS hex lag screws through the housing's mounting-hole ears into the 18mm plywood backing (no custom bracket). Sold in 5-packs → 2 packs (10, 4 spare).", panel="Pinhole Wall"),
@@ -494,13 +504,12 @@ PARTS: list[Part] = [
     Part("bonding-kit", "Equipotential bonding kit — 6 AWG + ring lugs", "electrical-distribution",
          "electrical", 1, "ea", 20, 20, "Waytek Wire"),
     Part("ep-backing-panel", "EP plywood backing panel (18mm, ~700×2000mm)", "timber-ply",
-         "electrical", 1, "sheet", 75.18, 75.18, "Home Depot", part_no="97874", url="https://www.homedepot.com/p/203482483",
-         spec='¾" CDX fire-rated fir plywood, 4×8 sheet, cut to ~700×2000mm backboard — the wall-mounted '
-              'surface every EP component fixes to (MPPT on its forward sub-panel, battery bank, '
+         "electrical", 1, "2'×8' sheet", 64.94, 64.94, "Home Depot", part_no="2250", url="https://www.homedepot.com/p/204635471",
+         spec='¾" Columbia PureBond maple plywood (formaldehyde-free hardwood), 2\'×8\' project panel, as the ~700×2000mm backboard — '
+              'the wall-mounted surface every EP component fixes to (MPPT on its forward sub-panel, battery bank, '
               'inverter, main + PV disconnects); the DC-distribution terminals (fuse block + busbars) '
               'sit in a small IP65 enclosure bolted to it. Add DIN rail + standoffs for the DIN gear. '
-              'FIRE-RATED is the right call for an electrical backboard; the listing is also pressure-treated '
-              '(unneeded for a dry interior) — use SS/hot-dip fasteners, PT chemistry corrodes plain steel.'),
+              '⚠ 2\' (610mm) width is ~90mm under the ~700mm backboard — confirm the EP layout fits 610mm wide, else use a wider panel.'),
     Part("ip65-enclosure", "IP65 enclosure ~200×220×140mm (fuse block + busbars, on the plywood)", "electrical-distribution",
          "electrical", 1, "ea", 60, 60, "Polycase", "Amazon",
          spec='Weatherproof IP65 box bolted to the plywood backboard, sealing the DC-distribution '
@@ -551,10 +560,19 @@ PARTS: list[Part] = [
     # (bonded to the moveable film-plane frame); the old fixed-wall backing line was a double-count.
     Part("interior-ventilation", "Ventilation (inline fans + light-trap baffles) — interior-conversion allowance",
          "ducting-ventilation", "interior", 1, "lot", 80, 130, "Amazon"),
-    Part("door-access-upgrades", "Door & access upgrades", "fasteners-hardware",
-         "interior", 1, "lot", 50, 100, "Home Depot"),
-    Part("misc-conversion-hw", "Misc. conversion hardware", "fasteners-hardware",
-         "interior", 1, "lot", 80, 130, "Home Depot"),
+    # Personnel-door hardware, itemized 2026-07-27 from the $50–100 "Door & access upgrades" lot:
+    Part("door-hinges", "Personnel-door hinges (heavy-duty, ×3)", "fasteners-hardware",
+         "interior", 3, "ea", 5, 8, "Home Depot", spec="Weather-rated butt hinges for the personnel access door. Price est."),
+    Part("door-latch-lock", "Weatherproof door latch/lock set", "fasteners-hardware",
+         "interior", 1, "ea", 20, 45, "Home Depot", spec="Lockable latch/handle set for the personnel door. Price est."),
+    Part("door-weatherseal", "Door perimeter weatherstrip + threshold", "adhesives-finishes",
+         "interior", 1, "lot", 10, 22, "Home Depot", spec="Light-tight/weather seal around the personnel door + threshold sweep. Price est."),
+    Part("door-handle-hw", "Door pull handle + misc mounting hardware", "fasteners-hardware",
+         "interior", 1, "lot", 5, 9, "Home Depot", spec="Pull handle + screws/anchors. Price est."),
+    # misc-conversion-hw kept as a CONTINGENCY BUFFER (not itemized) — a deliberate "unknown-unknowns"
+    # allowance for a first-of-kind container conversion; inventing line items here would be false precision.
+    Part("misc-conversion-hw", "Misc. conversion hardware (contingency buffer)", "fasteners-hardware",
+         "interior", 1, "lot", 80, 130, "Home Depot", spec="Deliberate contingency allowance for unforeseen conversion hardware — NOT itemized by design. Draw down as real needs surface during build."),
 
     # ═══ optics (§3) — mirrors costing.OPTICS → exact $95–$240 ═══
     Part("pinhole-shim", "Custom laser-drilled pinhole — SS-302/304 shim, 3×3", "stainless-sheet",

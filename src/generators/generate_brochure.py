@@ -102,7 +102,7 @@ EDITIONS = {
     "tbs002": {
         "output":       "tbs-002-brochure.pdf",
         "subtitle":     "TBS-002  —  A Pinhole Camera for the Classroom",
-        "spec":         "Cardboard Box Camera  ·  Ø0.794mm Pinhole  ·  f/575  ·  457mm Focal Length",
+        "spec":         "Cardboard Box Camera  ·  Ø0.794mm Pinhole  ·  f/576  ·  457mm Focal Length",
         "source":       "explicit",
         "pages": [
             {"title": "A Pinhole Camera for the Classroom", "src": "mini-tbs/mini-tbs-poc.md",           "section": "TBS-002"},

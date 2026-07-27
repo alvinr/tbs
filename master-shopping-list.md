@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $467 | $698 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,193 | $6,759 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,121 | $8,004 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,221 | $8,059 |
 | 6. Electrical — power, circuits, wiring | $2,984 | $3,020 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,032 | $2,506 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,803** | **~$36,845** |
+| **TOTAL (base build + 50-print run)** | **~$27,903** | **~$36,900** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -416,13 +416,9 @@ indicative low–high estimates — get quotes before ordering.
 | MPP 5-micron sediment cartridge 4.5"×20" | 2 ea | Fresh Water Systems | water | $24–$40 |
 | Plywood offcut spacer blocks 25mm (filter skid) | 1 lot | offcuts | water | $0 |
 | [SeaFlo accumulator (0.75 L)](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) (SFAT-075-125-01) | 1 ea | Environmental Marine | water | $30–$41 |
-| [Shurflo 2088-554-144 pump (P-01 Blue supply)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 1 ea | Fresh Water Systems | water | $80–$89 |
-| [Shurflo 2088-554-144 pump (P-02 filter loop)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 1 ea | Fresh Water Systems | water | $80–$89 |
-| Shurflo 2088-554-144 pump (P-03 waste evacuation) | 1 ea | Fresh Water Systems | water | $80–$89 |
-| Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 1 ea | Fresh Water Systems | water | $80–$89 |
-| Shurflo 2088-554-144 pump (P-05 Brown drain) | 1 ea | Fresh Water Systems | water | $80–$89 |
+| [Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 filter loop / P-03 waste evac / P-04 tray drain / P-05 Brown drain)](https://www.amazon.com/dp/B00C1M6B1C) (B00C1M6B1C) | 5 ea | Amazon | water | $500 |
 | Slotted steel angle frame 25×25×3mm (filter skid) | 1 lot | Home Depot | water | $25–$45 |
-| **water-equipment subtotal** | | | | **$1,290–$1,512** |
+| **water-equipment subtotal** | | | | **$1,390–$1,567** |
 
 ## Supplier consolidation (largest orders first)
 
@@ -433,6 +429,7 @@ indicative low–high estimates — get quotes before ordering.
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,140–$3,492 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,877–$2,451 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
+| Amazon | 27 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, tools-safety, water-equipment | $1,358–$1,471 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,000–$1,420 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
 | US Plastic Corp | 23 | plastics-sheet, plumbing-fittings | $1,127–$1,347 |
@@ -440,13 +437,11 @@ indicative low–high estimates — get quotes before ordering.
 | Home Depot | 27 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $945–$1,220 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | American Grating | 1 | plastics-sheet | $830–$1,050 |
-| Amazon | 26 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, tools-safety | $858–$971 |
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
 | SoCal reconditioner | 1 | water-equipment | $600 |
 | M&K Metal | 1 | aluminum | $586 |
-| Fresh Water Systems | 7 | fasteners-hardware, water-equipment | $474–$535 |
 | Inverter Supply | 2 | electrical-distribution, electrical-power | $396 |
 | Curbell Plastics | 1 | plastics-sheet | $380 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
@@ -470,6 +465,7 @@ indicative low–high estimates — get quotes before ordering.
 | Lenox Laser | 1 | stainless-sheet | $40–$100 |
 | FilterWay | 1 | water-equipment | $65–$95 |
 | B&H Photo | 1 | fabric-textile | $95 |
+| Fresh Water Systems | 2 | fasteners-hardware, water-equipment | $74–$90 |
 | StrongAr Hardware | 1 | fasteners-hardware | $70–$90 |
 | Blue Sea | 3 | electrical-distribution | $76 |
 | Super Bright LEDs | 1 | electrical-distribution | $75 |

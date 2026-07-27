@@ -145,22 +145,13 @@ PARTS: list[Part] = [
          url="https://www.mcmaster.com/4464K115", spec="External fill/drain port, welded through container wall",
          note="Price verified 2026-07-12 (McMaster 4464K115, $136.70 ea)."),
     # — pumps (315–345) —
-    Part("shurflo-2088-p1", "Shurflo 2088-554-144 pump (P-01 Blue supply)", "water-equipment",
-         "water", 1, "ea", 80, 89, "Fresh Water Systems", "Amazon",
-         url="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C",
-         spec='12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports',
+    Part("shurflo-2088", "Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 filter loop / P-03 waste evac / P-04 tray drain / P-05 Brown drain)", "water-equipment",
+         "water", 5, "ea", 100, 100, "Amazon", "Fresh Water Systems",
+         part_no="B00C1M6B1C",
+         url="https://www.amazon.com/dp/B00C1M6B1C",
+         spec='12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports; 5 identical pumps, one per water-system duty (P-01..P-05). 2026-07-27: consolidated from 5 lines; firm $100 ea (Amazon B00C1M6B1C, was $80–89 Fresh Water Systems est)',
          dims="216×127×114", datasheet="Shurflo 2088-554-144", modeled_const="PUMP_D×PUMP_YD_SPAN×Z",
          audit_status="✅ FIXED (minor) — protrusion PUMP_D 100→114", panel="Corridor"),
-    Part("shurflo-2088-p2", "Shurflo 2088-554-144 pump (P-02 filter loop)", "water-equipment",
-         "water", 1, "ea", 80, 89, "Fresh Water Systems", "Amazon",
-         url="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C",
-         spec='12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports', panel="Pinhole Wall"),
-    Part("shurflo-2088-p3", "Shurflo 2088-554-144 pump (P-03 waste evacuation)", "water-equipment",
-         "water", 1, "ea", 80, 89, "Fresh Water Systems", "Amazon", spec="12VDC, 3.5 GPM, 45 PSI; empties IBC-4 residual below X4 (~120L)", panel="Corridor"),
-    Part("shurflo-2088-p4", "Shurflo 2088-554-144 pump (P-04 tray drain transfer)", "water-equipment",
-         "water", 1, "ea", 80, 89, "Fresh Water Systems", "Amazon", spec="12VDC, 3.5 GPM, 45 PSI; tray drain to IBC-3 (~900mm lift)", panel="Corridor"),
-    Part("shurflo-2088-p5", "Shurflo 2088-554-144 pump (P-05 Brown drain)", "water-equipment",
-         "water", 1, "ea", 80, 89, "Fresh Water Systems", "Amazon", spec="12VDC, 3.5 GPM, 45 PSI; evacuates IBC-3 (Brown) residual to the X3 end-wall port", panel="Corridor"),
     Part("seaflo-accumulator", "SeaFlo accumulator (0.75 L)", "water-equipment",
          "water", 1, "ea", 30, 41, "Environmental Marine", "Amazon",
          url="https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8",
@@ -1094,7 +1085,7 @@ SYSTEM_DOC = {
 # component-dimension-audit.md §1 findings — generated from the parts carrying size data, in this
 # order. The registry IS the single source of the verified real-vs-modeled sizes; the doc's §2 detail
 # (sources, reasoning) + §3 catalog checklist + §4 decision log stay hand-maintained narrative.
-_AUDIT_ORDER = ["ibc-tote-1000l", "lifepo4-100ah", "shurflo-2088-p1", "bigblue-housing",
+_AUDIT_ORDER = ["ibc-tote-1000l", "lifepo4-100ah", "shurflo-2088", "bigblue-housing",
                 "axial-fan-150", "evap-cooler-mc18m", "seaflo-accumulator", "spray-al-shs"]
 
 

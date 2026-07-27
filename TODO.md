@@ -22,6 +22,13 @@ bucketed by WHEN it can be acted on:_
 ### Bucket 1 — ACTIONABLE NOW
 - [x] **Cyanotype chemistry consolidated to Artcraft (bulk) — DONE 2026-07-26.** Bulk-price research (2 agents) + Alvin's confirmed Artcraft packs → all three reagents re-sourced to **Artcraft Chemicals**: ferric ammonium oxalate **$218.16→$64.20/kg** ($29.12/1 lb; the big mover), potassium ferricyanide **$60.80→$51.01/kg** ($104.12/4.5 lb), ammonium dichromate → Artcraft $33.66/0.5 lb (trace, $25/run allowance holds). Cascaded: costing tiers (Standard total **$4,400→$1,710**, per-print **$88→$34**), grand total **→$27,262–$39,454**, parts registry, all injected docs + prose restatements. **process-comparison.md re-inverted: cyanotype ($1,250 lean) is cheapest again**, below gum ($1,592) — "why cyanotype" reframed to cost + archival/hazard/simplicity. Remaining bulk option: request an Artcraft ~38-lb AmFe quote (could drop below $64/kg). Use FULL reagent names not "AmFe" per [[feedback_full_chemical_names]].
 - [ ] **Fastener thread-pitch cross-check.** Each sourced bolt SKU's actual pitch vs its mating nut (coarse baseline recorded, "confirm vs SKU PDF"); pitch must match at order. See the fastener item lower in this file for the M8×1.0-fine vs M8×1.25-coarse trap. Prices don't matter — pitch does.
+- [ ] **Plumbing thread-gender audit (M-F / F-F / M-M) — NOT yet worked through.** The whole
+  water/plumbing run needs a systematic pass on connection genders: every valve, tee, elbow, adapter,
+  bulkhead, and pump port checked for MNPT vs FNPT so the fittings actually mate (and the right
+  nipples/bushings are between them). Surfaced 2026-07-27 when the 1" elbow sourced at US Plastic
+  came back as **SL100-90 street (1" MNPT×FNPT)**, not the registry's **EL100-90 (F×F)** — we don't
+  currently know which the routing needs. Do it against the plumbing schematic + the Banjo/US Plastic
+  SKUs now in the registry; fix any gender mismatches and add the connecting nipples/bushings to the BOM.
 - [ ] **panel-corner-plates — design flag (huge cores).** Each 3mm 5052 Al corner core is 653×2388mm (~16.8 ft², ~half a sheet); the 4 don't nest → 2 full sheets = $586 + weight. Decide full solid plate vs a lighter frame/partial before buying.
 - [ ] **Aug 2026 full re-price.** Sweep every `parts.py` line against current listings (reminder atop the file); edit band → `--inject` cascades.
 - [ ] **Master-BOM SKU backfill.** Branded rows that don't yet carry a registry `part_no` — Alvin's supplier paste-check; each SKU auto-appears in the master on the next `--inject`.

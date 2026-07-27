@@ -353,6 +353,11 @@ def parse_nav(mkdocs_yml_path, extra_exclude=frozenset()):
             if isinstance(item, dict):
                 for key, val in item.items():
                     if isinstance(val, str):
+                        # Skip non-markdown nav entries (e.g. the "Printable
+                        # Instructions" PDF download link) — the brochure only
+                        # renders .md pages.
+                        if not val.endswith(".md"):
+                            continue
                         if val in BROCHURE_EXCLUDE or val in extra_exclude:
                             continue
                         src_md   = NAV_SOURCE_OVERRIDE.get(val, val)

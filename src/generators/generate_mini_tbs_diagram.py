@@ -681,7 +681,7 @@ steps = [
     "4.  Tack-dry, then fold panel up (dark, sealed).",
     "5.  Expose (sunlight through pinhole).",
     "6.  Open prep-box top flaps (daylight) — remove print.",
-    "7.  Wash in the tray — refill 3× (daylight).",
+    "7.  Wash 3× in fresh cold water, 5 min each (daylight).",
 ]
 
 y = 128

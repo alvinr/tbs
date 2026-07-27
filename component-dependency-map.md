@@ -246,7 +246,7 @@ C — water pumps P-01–P-04 (P-03 in IBC corridor); D — safelight vestibule;
 | Depth from pinhole wall | 1,046mm | `PUMP_YD` (= `CORRIDOR_YD_NEAR`) |
 | Protrusion from panel | <!-- BEGIN cdm:PUMP_D -->114<!-- END cdm:PUMP_D -->mm | `PUMP_D` |
 
-*Components: 1" HDPE header + isolation valves, 4× 12V pumps on plumbing panel (P-01 Blue spray bar supply,
+*Components: 1" PVC header + isolation valves, 4× 12V pumps on plumbing panel (P-01 Blue spray bar supply,
 P-02 Brown recycle via filter, P-03 waste evacuation, P-04 tray sump pickup),
 1-gal pressure accumulator ACC-01, DN50 butterfly valves V1–V4 (S60×6 thread) at IBC outlets,
 manifold ball valves VB1/VB2/VB3, check valves CV1/CV3/CV4 on bulkhead lines X1/X3/X4, X1 fill tee (splits to IBC-1 & IBC-2), Circuit C.
@@ -273,8 +273,8 @@ cage-on-cage in two columns (near: Brown developer + Blue #1; far: Waste + Blue 
 kept. Held by a **restraint DEEP 4-LEG BOX** at the corridor mouth (50×50×3 RHS front + back upright pairs
 450mm apart tied by rings + 50×20×3 front retaining bars in the 25mm tote↔film-rail gap + Simpson wall
 joist-hangers + D-ring lashing + 4 floor feet) —
-NOT a load-bearing platform; the totes carry their own stack load. 1" SDR-11 HDPE blue supply pipe, spray bar
-(¾" HDPE), Blue fill = gravity **side-entry near the top** (X1, shared T), Brown/Waste drains pumped (X3/X4).
+NOT a load-bearing platform; the totes carry their own stack load. 1" PVC Sch-40 blue supply pipe, spray bar
+(¾" PVC), Blue fill = gravity **side-entry near the top** (X1, shared T), Brown/Waste drains pumped (X3/X4).
 Legacy `IBC_H_600`=1010 / `IBC_H_STK`=2020 constants are the superseded "600L fill-level" values — kept only
 for the few generators not yet repointed (overview Blue-trunk shelf, walkway/weight context imports).*
 

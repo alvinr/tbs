@@ -1241,7 +1241,7 @@ def draw_sheet4():
     foot_valve_w = 35
 
     # Tube body — double-wall pipe section
-    TUBE_WALL = 3.0  # HDPE tube wall thickness (mm)
+    TUBE_WALL = 3.0  # PVC tube wall thickness (mm)
     draw_pipe_path(ax4a,
                    [tube_yd, tube_yd], [tube_z_bot + foot_valve_h, tube_z_top],
                    TUBE_OD, TUBE_WALL,

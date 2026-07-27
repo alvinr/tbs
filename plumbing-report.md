@@ -92,8 +92,8 @@ operator reaches up to service them. Flow path: P-02 output → F-01 (5μm sedim
 Each housing has 1" NPT inlet and outlet on the head; the heads sit on a common
 line and the sumps hang below on a shared 25×25×3mm slotted-angle backing frame.
 Inter-housing piping connects F-01 OUT → F-02 IN and F-02 OUT → F-03 IN using
-1" HDPE pipe with 90° elbows routed outside the housing bodies. Each housing
-lag-screws through its own mounting-hole ears (on 25mm HDPE standoff blocks) into
+1" PVC pipe (threaded at the filter ports) with 90° elbows routed outside the housing
+bodies. Each housing lag-screws through its own mounting-hole ears (on 25mm plywood-offcut standoff blocks) into
 the 18mm ply backing, giving sump-bowl clearance — no custom bracket (see the
 **DETAIL — HOUSING MOUNT (section)** inset on the panel elevation above).
 
@@ -260,12 +260,12 @@ or Black-waste (pH drift / discolored).
 
 | Run | Schedule | Nominal Size | OD (mm) | Material | Notes |
 |-----|----------|-------------|---------|----------|-------|
-| Pump suction/discharge | Sch 40 | 1/2" | 21 | HDPE | Matches Shurflo 2088 port thread |
-| DV-02 outputs | Sch 40 | 1/2" | 21 | HDPE | To IBC-3 or IBC-4 |
-| DV-01 outputs | Sch 40 | 1/2" | 21 | HDPE | To Blue IBC-2 or Black IBC-4 |
-| Filter inter-stage | Sch 40 | 1" | 33 | HDPE | Matches Big Blue 1" NPT ports |
-| Filter outlet → DV-01 | Sch 40 | 1" | 33 | HDPE | Gravity flow, lower restriction |
-| IBC fill/drain (internal) | Sch 40 | 1" | 33 | HDPE | IBC valve to corridor |
+| Pump suction/discharge | Sch 40 | 1/2" | 21 | PVC Sch 40 | Matches Shurflo 2088 port thread |
+| DV-02 outputs | Sch 40 | 1/2" | 21 | PVC Sch 40 | To IBC-3 or IBC-4 |
+| DV-01 outputs | Sch 40 | 1/2" | 21 | PVC Sch 40 | To Blue IBC-2 or Black IBC-4 |
+| Filter inter-stage | Sch 40 | 1" | 33 | PVC Sch 40 | Matches Big Blue 1" NPT ports |
+| Filter outlet → DV-01 | Sch 40 | 1" | 33 | PVC Sch 40 | Gravity flow, lower restriction |
+| IBC fill/drain (internal) | Sch 40 | 1" | 33 | PVC Sch 40 | IBC valve to corridor |
 | IBC fill/drain (external bulkhead) | Sch 40 | 2" | — | Steel/brass | Bulkhead unions with camlock |
 | Spray bar flex hose | — | 1/2" | — | Reinforced braided PVC | ~4m coiled, BV-05 to beam center feed |
 
@@ -291,14 +291,34 @@ Classifying the current BOM by this rule:
 | **Run joints — SLIP** | glued PVC socket | tees, elbows, cross, couplings, pipe |
 | **Component interfaces — THREADED** | NPT (via slip×NPT adapter) | ball/diverter/check valves, camlocks, tank bulkheads, pump & filter ports, sample taps, accumulator |
 
-**Open cascade to rationalize (see [TODO](TODO.md) — plumbing thread-gender audit).**
-This convention supersedes the **"HDPE"** material in the §5 table: solvent-weld
-requires **PVC** (HDPE can't be glued). Fully applying it means (a) the run pipe +
-run fittings become **PVC Sch-40 slip**; (b) a **slip×NPT male adapter** is added at
-each component interface (currently absent from the BOM); (c) the 1" run tees/elbows
-now carried as threaded **Banjo FRPP** move to PVC slip. The valves, camlocks,
-bulkheads, check valve, and pump/filter ports stay threaded. This is a material +
-fitting decision — pending Alvin's go before the full re-source.
+Applying this convention **(a) resolved 2026-07-27: the run material is PVC Sch-40**
+(see §5.2 — the §5 table is updated). **Still open (see [TODO](TODO.md)):** (b) the 1"
+run tees/elbows now carried as threaded **Banjo FRPP** move to PVC slip, and (c) a
+**slip×NPT male adapter** is added at each component interface (currently absent from
+the BOM). The valves, camlocks, bulkheads, check valve, and pump/filter ports stay threaded.
+
+### 5.2 Material: PVC Schedule 40 (justification)
+
+The run pipe is **PVC Sch-40, solvent-welded**. PVC is chosen over HDPE because for this
+service the deciding factors are **buildability and cost**, not the toughness where HDPE leads:
+
+- **Joining — decisive for a hand-built system.** PVC solvent-welds with primer + cement and
+  hand tools; HDPE *cannot be glued* — it needs heat-fusion equipment or bulkier, costlier
+  mechanical/barbed fittings. Solvent-weld is what makes the §5.1 slip convention practical.
+- **Pressure.** At the 45 PSI Shurflo 2088 service, Sch-40 (½" ≈ 600 PSI @ 73 °F) carries a
+  ~13× margin — a non-issue for either material.
+- **Chemistry.** Both are fully compatible with the dilute cyanotype wash (potassium
+  ferricyanide, ferric ammonium oxalate, citric acid) — no advantage either way.
+- **Cost & availability.** PVC pipe, fittings, and valves are the cheapest option and stocked
+  everywhere (Home Depot); HDPE fittings are scarcer and pricier.
+
+**The trade accepted:** HDPE's edge is toughness — impact, vibration, and freeze resistance
+for a transported system. Both risks are mitigated operationally: the system is **drained for
+transport** (no freeze-crack, less vibration mass) and every **pump connection uses flexible
+braided hose** (absorbs vibration that would fatigue rigid joints); rigid runs are clipped at
+close intervals. Keep runs off the sunniest wall face — PVC softens near 60 °C, though it
+retains > 200 PSI hot, far above service. (If a future deployment must travel wet or in freezing
+conditions, PEX is the tougher DIY alternative.)
 
 ---
 
@@ -362,7 +382,7 @@ plywood panel. The frame provides:
 
 Each filter housing mounts through its own **mounting-hole ears** — Big Blue
 heads are pre-drilled for wall mounting — with **SS lag/wood screws straight into
-the 18mm plywood backing** (no custom bracket). 25mm HDPE standoff blocks behind
+the 18mm plywood backing** (no custom bracket). 25mm plywood-offcut standoff blocks behind
 each ear space the housing off the ply so the sump bowl hangs free and clears for
 cartridge changes. Two lag screws per housing.
 
@@ -456,7 +476,7 @@ hardware are sourced there and in the IBC stacking frame line.
 | [Pump-mount shirt ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — pump-mount shirt (~610×1650 cut) behind P-01..P-05 + 6× spacer blocks. Same SKU as ply-18; 5× Shurflo 2088 (~6.5 kg total) need no more than 3/4". STANDARD exterior per project rule (was marine ~$212). Firm $29.30 (Home Depot 2026-07-23). May nest with ply-18 in one sheet at cut — carried separate for margin. Double-layer locally if extra pump-rail stiffness wanted. | 1 sheet | Home Depot | $29 |
 | Corridor panel mount hardware (brackets + fasteners) | 6× steel angle brackets (panel → IBC-frame front-portal uprights), shirt-to-panel screws, lag bolts. Price est. | 1 lot | Home Depot | $25–$50 |
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | PP full-port quarter-turn; pump-suction isolation BV-01 (P-01), BV-02 (P-05), BV-06 (P-03) | 3 ea | US Plastic Corp / Amazon | $133 |
-| [3-way diverter valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=22365) (22365) | L/T-port HDPE-compatible; 3W-DV-02 (tray drain) | 1 ea | US Plastic Corp | $24 |
+| [3-way diverter valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=22365) (22365) | L/T-port PVC-compatible; 3W-DV-02 (tray drain) | 1 ea | US Plastic Corp | $24 |
 | pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build as SV-01 | 1 ea | US Plastic Corp | $10–$18 |
 | Steel flat bar 25×3mm — ribbon support cross-brace | Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (the four corridor↔pinhole lines); ~300mm each | 4 ea | Home Depot | $8–$16 |
 | Cushioned pipe clip | Secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports) | 16 ea | Amazon | $16–$32 |
@@ -472,7 +492,7 @@ hardware are sourced there and in the IBC stacking frame line.
 | Slotted steel angle frame 25×25×3mm (filter skid) | ~2.5 m 25×25×3mm slotted steel angle + fasteners; bolts to the 18mm ply backing (adjustable housing height) | 1 lot | Home Depot | $25–$45 |
 | SS lag/wood screws — filter housings to ply backing | 2 per housing × 3 — 5/16 SS lag/wood screws through the housing's mounting-hole ears into the 18mm plywood backing (no custom bracket). Pin SKU at order. | 6 ea | Home Depot | $3–$9 |
 | Plywood offcut spacer blocks 25mm (filter skid) | 25mm standoff blocks between the housing's mounting ears and the ply backing — sump-bowl hang clearance (the housing lag-screws through them into the ply). Cut from PLYWOOD OFFCUTS (Alvin 2026-07-25 — no need for HDPE; dry standoff, not a wet-immersion part). | 1 lot | offcuts | $0 |
-| 1" HDPE inter-housing jumpers | F-01 OUT→F-02 IN, F-02 OUT→F-03 IN — 1" HDPE + 90° elbows routed outside the bodies | 1 lot | Ferguson | $18–$32 |
+| 1" PVC inter-housing jumpers | F-01 OUT→F-02 IN, F-02 OUT→F-03 IN — 1" PVC + 90° elbows routed outside the bodies (THREADED — filter ports are hard components) | 1 lot | Ferguson | $18–$32 |
 | MPP 5-micron sediment cartridge 4.5"×20" | Melt-blown polypropylene depth filter (F-1 stage); ~50-print interval | 2 ea | Fresh Water Systems | $24–$40 |
 | KDF-55 heavy-metal cartridge 4.5"×20" | KDF-55 media for dissolved iron/metal removal (F-2 stage); ~60-print interval | 1 ea | FilterWay / Amazon | $65–$95 |
 | CTO carbon block cartridge 4.5"×20" | Coconut shell activated carbon block (F-3 stage); ~40-print interval | 2 ea | RonAqua / Amazon | $32–$60 |

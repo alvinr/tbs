@@ -27,7 +27,7 @@ from tbs_constants import DIAGRAM_DPI
 # Pipe colors for Blue circuit (only Blue supply remains on this wall)
 C_BLUE  = "#2979B8"      # Blue circuit pipe fill
 C_BLUE_EC = "#1A5A8A"    # Blue circuit pipe edge
-OD_H = PUMP_PIPE_OD     # 21mm (1/2" HDPE)
+OD_H = PUMP_PIPE_OD     # 21mm (1/2" PVC)
 WALL_H = PUMP_PIPE_WALL  # 3mm
 
 # Walkway X range (near walkway = pinhole wall side)
@@ -121,8 +121,8 @@ def equip_block(x_mm, z_mm, w_mm, h_mm, label, fc, *,
             **FONT)
 
 # ── Helper: parallel-wall pipe drawing ──────────────────────────────────────
-C_HDPE_FILL = "#2A5A2A"   # HDPE pipe fill (dark green)
-C_HDPE_EDGE = "#1A3A1A"   # HDPE pipe edge
+C_HDPE_FILL = "#2A5A2A"   # PVC pipe fill (green)
+C_HDPE_EDGE = "#1A3A1A"   # PVC pipe edge
 
 def draw_pipe_path(ax, x_pts, z_pts, od_mm, wall_mm,
                    fc=C_HDPE_FILL, ec=C_HDPE_EDGE, bore_fc="white",
@@ -268,7 +268,7 @@ sump_pts_z = [sz(TRAY_FLOOR_Z), sz(0), sz(0), sz(TRAY_FLOOR_Z)]
 ax.fill(sump_pts_x, sump_pts_z, fc="#8BB8D8", ec=C_TRAY_EC, lw=0.8,
         alpha=0.5, zorder=2.9)
 
-# Pickup tube — 1" HDPE tube from Z=5 up to walkway level
+# Pickup tube — 1" PVC tube from Z=5 up to walkway level
 TUBE_OD_VIS = 25.4  # 1" OD
 TUBE_X = PROC_TRAY_DRAIN_X
 TUBE_Z_BOT = 5   # 5mm above sump floor
@@ -605,7 +605,7 @@ for ix_mm, ilabel in items:
 # ═══════════════════════════════════════════════════════════════════════════
 notes = [
     "NOTES",
-    f"1. Blue supply pipe: ½\" HDPE (OD=21mm) at Z={SUPPLY_Z} (below walkway grating),"
+    f"1. Blue supply pipe: ½\" PVC Sch-40 (OD=21mm) at Z={SUPPLY_Z} (below walkway grating),"
     " from IBC zone to spray bar. BV-02 riser at pinhole centerline to Z=900 (waist height)."
     " Chemistry tap branch (¾\") rises to shelf.",
     f"2. Evap cooler relocated EXTERNAL — only Ø{EVAP_DUCT_D}mm duct penetration remains at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}.",

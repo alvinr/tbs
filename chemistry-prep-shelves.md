@@ -183,7 +183,7 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 | [M5×16 countersunk screw, A2-70 SS](https://www.mcmaster.com/91420A326/) (91420A326) | Ply panel attachment (same M5×16 CSK as the clamp clips — 91420A326) | 8 ea | McMaster-Carr | $1 |
 | Corner gusset plate, 3 mm | 50×50 mm triangular | 4 ea | Steel offcut | $5 |
 | Flat black epoxy spray paint | frame + hardware finish | 1 can | Hardware store | $12 |
-| ½" HDPE pipe (tap relocation) | extend the blue supply trunk ~1.3 m left to TAP-01 | 1 lot | Irrigation supply | $10 |
+| ½" PVC Sch-40 pipe (tap relocation) | extend the blue supply trunk ~1.3 m left to TAP-01 (PVC Sch-40, per the joint convention) | 1 lot | Irrigation supply | $10 |
 | **Shelf total** | | | | **$214–$239** |
 <!-- END parts:shelf -->
 

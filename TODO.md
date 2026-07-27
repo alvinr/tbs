@@ -27,9 +27,12 @@ bucketed by WHEN it can be acted on:_
   PVC (slip)**; **threaded NPT only where it lands on a hard component** (pumps, filters, valves, check
   valve, tank bulkheads, sample taps, accumulator) via a **slip×NPT transition adapter**. Settled: the 4
   ½" run fittings are PVC Sch-40 slip (Home Depot Charlotte); the bushing at the filter is threaded.
-  **Three forks still need Alvin's go before the full re-source (each is a real cost move):**
-  (a) **Pipe material HDPE → PVC** — the §5 table says "HDPE," but glue = PVC (HDPE can't be
-      solvent-welded). Confirm PVC Sch-40, then re-spec `hdpe-1in`/`hdpe-half`/`hdpe-three-quarter`.
+  - [x] **(a) Pipe material HDPE → PVC — DONE 2026-07-27** (justification in plumbing-report §5.2). Run
+    is **PVC Sch-40 solvent-weld**; renamed `hdpe-half`→`pvc-half`, `hdpe-1in`→`pvc-1in`,
+    `hdpe-three-quarter`→`pvc-three-quarter`; `filter-jumper` + §5 table + the "1" HDPE stock" spec refs
+    (s60-adapter, blue-equalization-tie, valve-3way-half) all re-labeled PVC. Prices kept as estimates
+    → **re-price/re-count PVC when sourced** (PVC = 10-ft sticks vs the assumed 20-ft; Home Depot).
+  **Two forks still need Alvin's go (each a real cost move):**
   (b) **1" run tees/elbows** (`tee-100`, `tee-100-hdpe`, `elbow-el100`) are currently threaded **Banjo
       FRPP** ($14.19 tee / $4.59 elbow) — per the rule they should be **PVC slip** (~$1–2). Re-source (cheaper).
   (c) **Transition adapters MISSING** — a slip×NPT male adapter is needed at each of the ~15 component

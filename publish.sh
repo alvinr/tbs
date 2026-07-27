@@ -361,6 +361,23 @@ else
     info "$CHANGED file(s) updated."
 fi
 
+# ── Classroom brochure PDF (hosted for download) ──────────────────────────────
+# Build the TBS-002 booklet and stage it in published/assets/ BEFORE the site
+# build, so the "Printable Instructions" links (Educational Program nav + the
+# TBS-002 page) resolve to a downloadable PDF. Must precede the build so mkdocs
+# copies it into the deployed site.
+if python3 -c "import fpdf, markdown, yaml" 2>/dev/null; then
+    info "Generating TBS-002 classroom brochure (hosted for download)..."
+    if python3 "${SCRIPT_DIR}/src/generators/generate_brochure.py" --edition tbs002; then
+        cp "${SCRIPT_DIR}/tbs-002-brochure.pdf" "${ASSETS_DIR}/tbs-002-brochure.pdf"
+        info "PDF -> published/assets/tbs-002-brochure.pdf"
+    else
+        warn "TBS-002 brochure generation failed -- Printable Instructions link will 404"
+    fi
+else
+    warn "fpdf2 / markdown / pyyaml not installed -- TBS-002 brochure not staged (link will 404)"
+fi
+
 # ── Build / deploy ────────────────────────────────────────────────────────────
 cd "$SCRIPT_DIR"
 
@@ -420,19 +437,16 @@ case "$MODE" in
         ;;
 esac
 
-# -- Generate brochure PDF ----------------------------------------------------
+# -- Generate the TBS-001 brochure PDF ----------------------------------------
+# (The TBS-002 classroom booklet is built + staged for download before the site
+# build, above.) The TBS-001 prospectus is a local artifact only, not hosted.
 if [[ "$MODE" != "local" ]]; then
     if python3 -c "import fpdf, markdown, yaml" 2>/dev/null; then
-        info "Generating brochure PDFs..."
+        info "Generating TBS-001 brochure PDF..."
         if python3 "${SCRIPT_DIR}/src/generators/generate_brochure.py"; then
             info "PDF -> tbs-brochure.pdf (TBS-001)"
         else
             warn "PDF generation failed (TBS-001) -- check src/generators/generate_brochure.py output above"
-        fi
-        if python3 "${SCRIPT_DIR}/src/generators/generate_brochure.py" --edition tbs002; then
-            info "PDF -> tbs-002-brochure.pdf (TBS-002 classroom)"
-        else
-            warn "PDF generation failed (TBS-002) -- check src/generators/generate_brochure.py output above"
         fi
     else
         warn "fpdf2 / markdown / pyyaml not installed -- skipping PDF generation"

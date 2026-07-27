@@ -45,8 +45,10 @@ bucketed by WHEN it can be acted on:_
   project-forward cover + a "For Teachers — At a Glance" quick-reference page (ages, session time,
   group size, cost, curriculum, safety-at-a-glance) + the two mini-TBS docs. The mini-TBS docs are
   dropped from the TBS-001 PDF (via the tbs001 `exclude` set) but stay on the site. `publish.sh` builds
-  both PDFs; both are gitignored (generated on publish). NOTE: neither brochure PDF is currently linked
-  for download on the site — if teachers should self-serve, add a hosted download link (follow-up).
+  both PDFs; both PDFs are gitignored (generated on publish). The **TBS-002 booklet is hosted for download**:
+  publish.sh stages it in `published/assets/tbs-002-brochure.pdf` before the build, linked as
+  "Printable Instructions" from the Educational Program nav + the TBS-002 page. (The TBS-001
+  prospectus PDF remains a local artifact, not hosted.)
 
 ---
 

@@ -368,7 +368,8 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | [1" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812199) (PVC024001000HD) | 1" PVC slip run tees (joint convention §5.1): 3× IBC drain + 1× X1 fill split to both Blue totes. 2026-07-27 fork b — was threaded Banjo FRPP $14.19; consolidated tee-100 + tee-100-hdpe (×4). Charlotte PVC024001000HD S×S×S. | 4 ea | Home Depot | $9 |
 | PVC slip×MNPT male adapters (run → threaded components) | Joint convention §5.1 (fork c): one slip×NPT male adapter where the glued PVC run lands on each threaded component — ball/diverter/check valves, filter housing ports, tank bulkheads, sample taps, accumulator. ½" = Charlotte PVC021090600HD $0.79, 1" = PVC021091000HD $1.16 (unit prices firm; low/high spans the ½"–1" mix). ~40 est; exact count/size split from the schematic trace. | 40 ea | Home Depot | $32–$46 |
 | 1" NPT 4-way cross fitting | X1 fresh-fill 4-way: X1 inlet + IBC-1 + IBC-2 + DV-01 blue recycle return (was a 3-way tee). Cost est. 2026-07-27: NOT stocked at US Plastic (they don't carry 1" 4-way crosses) — source a Spears/PVC Sch-80 1" cross via an irrigation/PVC supplier, or redesign the X1 fill as 2× tees. | 1 ea | US Plastic Corp | $8–$14 |
-| [1/2" NPT polypropylene union](https://www.homedepot.com/p/203811331) (PVC021000600HD) | Maintenance disconnects on pump runs. 2026-07-27: sourced part is a Charlotte PVC Sch40 S×S COUPLING (permanent), NOT a union — can't disconnect for service; if breaks are needed swap to a PVC union (~$3-4). Also SLIP not NPT — see plumbing audit | 6 ea | Home Depot | $4 |
+| [1/2" PVC Sch-40 slip coupling](https://www.homedepot.com/p/203811331) (PVC021000600HD) | Permanent solvent-weld run joins (4×). Charlotte PVC Sch40 S×S coupling. | 4 ea | Home Depot | $3 |
+| 1/2" PVC Sch-40 union (serviceable break) | True hand-unscrew unions at the 2 points where a whole sub-assembly must come out as a unit (pump manifold + filter-bank inlet). ½" PVC Sch-40 socket union — source SKU/price (~$3–4). | 2 ea | Home Depot | $6–$8 |
 | [1/2"×1" NPT bushing reducer](https://www.homedepot.com/p/204836713) (PVC021121800HD) | P-02 riser → F1 filter inlet — THREADED (lands on the filter = hard component, per the joint convention). Charlotte PVC Sch40 1×½ reducer bushing | 1 ea | Home Depot | $3 |
 | [S60×6 female-buttress → 2" NPT + 2→1" bushing](https://us.cpp.parts/collections/fits-s60x6) (HMFN/20UD/027) | IBC DN50 valve to 1" PVC. The DN50 valve is a MALE S60×6, so the adapter is FEMALE S60×6 buttress × 2" male NPT PP (a 1" NPT-female config isn't stocked); add a 2→1" PP reducer bushing to land on 1" PVC. | 8 ea | CPP.parts / Amazon | $112–$144 |
 | [1" bulkhead tank-body fittings (Blue equalization cross-tie)](https://www.usplastic.com/catalog/item.aspx?itemid=32194) (32194) | Low tank-body penetration in each Blue tote (IBC-1 + IBC-2) for the 1" equalization cross-tie that self-balances the two Blue levels (run made from the 1" PVC stock). Cost est. | 2 ea | US Plastic Corp | $25 |
@@ -389,7 +390,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $18–$40 |
-| **Water total** | | | | **$3,358–$3,656** |
+| **Water total** | | | | **$3,362–$3,663** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

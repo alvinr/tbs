@@ -40,8 +40,10 @@ bucketed by WHEN it can be acted on:_
     slip×NPT male adapters where the glued run meets each threaded component. Unit prices firm at Home
     Depot (½" PVC021090600HD $0.79, 1" PVC021091000HD $1.16); qty held at **~40 est** — the exact count
     + ½"/1" split still needs a **schematic trace**.
-  - [ ] **`union-half` — union or coupling?** The sourced part is a slip COUPLING (permanent); if the
-    pump runs need service disconnects there, swap to a PVC union (~$3–4). Decide.
+  - [x] **`union-half` — RESOLVED 2026-07-27 (Option C hybrid).** Split into `coupling-half` (4× permanent
+    Charlotte slip couplings $0.74) + `union-half` (2× true ½" PVC service unions ~$3–4 at the pump manifold
+    + filter-bank inlet). Per-component service is already covered by the threaded ports, so only 2 mid-run
+    breaks needed. Residual: source the ½" PVC union SKU/price.
   - [x] **PVC run priced/firmed 2026-07-27.** `pvc-half` ($4.81×8), `pvc-1in` (Charlotte PVC040100600RS
     $8.65×2 — ⚠ listing is DWV not pressure; OK at 45 PSI, flagged), `pvc-three-quarter` (PVC-04007-0600
     $5.76×2), slip `tee-100`/`elbow-el100` all firm at Home Depot. `filter-jumper` bundle **retired** into

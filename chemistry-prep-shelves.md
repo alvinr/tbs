@@ -170,7 +170,7 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 <!-- BEGIN parts:shelf -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| Phenolic-faced plywood (work surface) | ¾" (18mm) phenolic-faced concrete-form sheet (1220×2440mm), cut to 300×600 | 1 4'×8' ¾" sheet | Home Depot / Lumber yard | $60 |
+| [UV-coated white plywood (work surface)](https://www.homedepot.com/p/302874373) (BPI6WUV2I) | Swaner 18mm × 4'×8' UV-coated white hardwood ply (1220×2440mm), cut to 300×600. UV-coated face gives a sealed, wipeable work surface — substitute for the phenolic concrete-form sheet (same purpose, readily stocked). | 1 4'×8' 18mm sheet | Home Depot | $73 |
 | 25×25×3 mm steel SHS | 6 m (frame + spill lip) | 1 lot | Online Metals / Metal Supermarkets | $30 |
 | [Continuous (piano) hinge, 600 mm](https://wurthlac.com/product/165974/) (LSN8-32-600) | stainless/steel, ~32 mm leaf | 1 ea | Wurth LAC | $23–$36 |
 | Folding shelf stays/brackets | fold-flat, ~30–50 kg rating | 2 ea | Amazon / McMaster-Carr | $24 |
@@ -184,7 +184,7 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 | Corner gusset plate, 3 mm | 50×50 mm triangular | 4 ea | Steel offcut | $5 |
 | Flat black epoxy spray paint | frame + hardware finish | 1 can | Hardware store | $12 |
 | ½" PVC Sch-40 pipe (tap relocation) | extend the blue supply trunk ~1.3 m left to TAP-01 (PVC Sch-40, per the joint convention) | 1 lot | Irrigation supply | $10 |
-| **Shelf total** | | | | **$214–$239** |
+| **Shelf total** | | | | **$228–$253** |
 <!-- END parts:shelf -->
 
 *The relocated TAP-01 + BV-06 hardware itself is unchanged (carried in the water-system

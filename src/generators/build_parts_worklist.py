@@ -21,8 +21,9 @@ A row is included when it is not confidently orderable as-is:
   • URL-MISSING— has a part number but no explicit URL (one gets auto-synthesized, maybe dead) [defect B]
   • PRICE-VERIFY— primary supplier is manual/JS-gated (McMaster/Roton/Grainger/…), so the price
                   needs a human check even when the SKU is known
-  • SOURCE-PRICE— Amazon-primary commodity row carried as an estimate (no confirmed SKU, or a
-                  low–high range) — pin the ASIN/URL + a firm price
+  • SOURCE-PRICE— open-web retail row (Amazon or a re-homed specialty channel — Waytek, US
+                  Plastic, DripDepot, …) carried as an estimate (no confirmed SKU, or a low–high
+                  range) — pin the SKU/URL + a firm price
 
 Clean rows (verified SKU + URL + consistent supplier + open-web price) are omitted — nothing to do.
 """
@@ -47,6 +48,12 @@ GATED = {"McMaster-Carr", "Roton Products", "Grainger", "Grimco", "Automation Ov
 # raw-stock rows don't hide from the worklist the way alu-angle-2x2 did.
 SPEC_STOCK = {"Metal Supermarkets", "Online Metals", "Bobco Metals", "TAP Plastics",
               "Central Coast Plastics", "Curbell Plastics"}
+# Open-web RETAIL sourcing channels — Amazon + the specialty stores commodity rows were re-homed
+# to (a part is *findable/filterable* here, unlike Amazon for e.g. DC voltage). A not-firm row at
+# one of these needs a listing pinned. Deliberately excludes fab/quote/service ("Local fab",
+# container, chemistry, Home Depot aisle) — those aren't sourced by picking a listing.
+RETAIL_SOURCE = {"Amazon", "Waytek Wire", "US Plastic Corp", "DripDepot", "Barn Door Ag",
+                 "Fresh Water Systems", "Powerwerx", "Signature Solar", "Super Bright LEDs", "Digi-Key"}
 
 COLS = [
     # identity (reference — do not edit)
@@ -78,10 +85,11 @@ def flags_for(p) -> list[str]:
         f.append("URL-MISSING")
     if p.supplier in GATED or p.supplier in SPEC_STOCK:
         f.append("PRICE-VERIFY")
-    # Amazon-primary commodity rows carried as an estimate (no confirmed listing, or only a
-    # low–high range). Orderable in principle, but the exact SKU/price isn't pinned — Alvin
-    # sources these directly (logged-in Amazon), so surface them to fill an ASIN/URL + price.
-    if (p.supplier or "").strip().lower() == "amazon" and not _firm(p):
+    # Open-web retail rows carried as an estimate (no confirmed listing, or only a low–high
+    # range) at a NON-gated, NON-spec-stock supplier — Amazon, or a specialty channel a
+    # commodity was re-homed to (Waytek, US Plastic, DripDepot, Barn Door Ag, …). Orderable in
+    # principle, but the exact SKU/price isn't pinned — source it directly + fill an SKU/URL + price.
+    if not _firm(p) and p.supplier in RETAIL_SOURCE:
         f.append("SOURCE-PRICE")
     return f
 
@@ -96,8 +104,8 @@ def hint_for(p, flags) -> str:
     if "URL-MISSING" in flags and "SKU≠SUPP" not in flags:
         bits.append("add the product URL (the CSV auto-guesses mcmaster.com/<sku> otherwise)")
     if "SOURCE-PRICE" in flags:
-        bits.append("source on Amazon: pin the listing (ASIN/URL) + confirm the current price "
-                    "(and a single price, not a range) in new_low/new_high")
+        bits.append(f"source at {p.supplier}: pin the listing (SKU/ASIN + URL) + confirm a firm "
+                    f"price (single value, not a range) in new_low/new_high")
     if not bits and "PRICE-VERIFY" in flags:
         bits.append("refresh the price at the supplier")
     return "; ".join(bits)

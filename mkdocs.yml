@@ -105,9 +105,10 @@ nav:
     - "Cost Analysis": cost-analysis-report.md
     - "Right Walkway Cantilever (decision record)": right-walkway-cantilever-study.md
     - "Process Comparison (alt processes)": process-comparison.md
-  - "Design for Educational Use":
+  - "Educational Program":
     - "TBS-002 Design": mini-tbs/mini-tbs-poc.md
     - "TBS-002 Shopping List": mini-tbs/mini-tbs-shopping-list.md
+    - "Printable Instructions": assets/tbs-002-brochure.pdf
   - Appendix:
     - License: licensing.md
     - Dependencies: component-dependency-map.md

@@ -21,6 +21,10 @@ A classroom-ready design for teaching **pinhole photography** — its process an
 
 The camera is two U-Haul Medium boxes joined end-to-end: a sealed **camera box** (the pinhole, and the dark interior where the image forms) and a light-sealed **prep box** (the coating workspace). The film plane is a panel cut from the wall between the two boxes, hinged along its bottom edge: it folds down into the prep box to hold the paper for coating, then folds up to stand facing the pinhole during exposure. The prep box's end face carries two arm sleeves — students reach in to coat the paper in the dark without opening the box — and the finished print is lifted out in daylight through the box's own **top flaps** (the boxes are built flaps-up, and joined with grey tape). The camera *is* its own darkroom, so the whole activity happens in a normal classroom.
 
+<!-- brochure:skip -->
+📄 **[Printable Instructions (PDF)](../assets/tbs-002-brochure.pdf)** — the complete teaching and build guide as a print-ready booklet to download and hand out.
+<!-- brochure:endskip -->
+
 # Part I — Teaching with the Camera
 
 ## 1. The Teaching Case

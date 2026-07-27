@@ -361,17 +361,17 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | [3-way diverter valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=31268) (31268) | L/T-port; 3W-DV-01 (filter output) | 1 ea | US Plastic Corp | $61 |
 | pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line | 1 ea | US Plastic Corp | $10–$18 |
 | pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build as SV-01 | 1 ea | US Plastic Corp | $10–$18 |
-| 2" polypropylene camlock pairs (M+F) | External bulkhead connections (X1/X3/X4 + spare) | 4 pair | US Plastic Corp | $20–$32 |
-| 1/2" NPT 90° elbow polypropylene | All pump-driven run bends | 14 ea | US Plastic Corp | $28–$56 |
+| [2" polypropylene camlock pairs (M+F)](https://www.usplastic.com/catalog/item.aspx?itemid=30754) (30754) | External bulkhead connections (X1/X3/X4 + spare). 2026-07-27: pair = US Plastic 30754 female coupler $16.23 + 30619 male adapter $6.70 = $22.93 (Banjo FRPP, EPDM) | 4 pair | US Plastic Corp | $92 |
+| 1/2" NPT 90° elbow polypropylene | All pump-driven run bends | 14 ea | Home Depot | $28–$56 |
 | [Banjo EL100-90 elbow 1" NPT](https://www.usplastic.com/catalog/item.aspx?itemid=31187) (31187) | PP 90°; IBC bends, filter outlet to DV-01 | 4 ea | US Plastic Corp / Amazon | $18 |
-| 1/2" NPT polypropylene tee | Blue suction/discharge tees, branches | 6 ea | US Plastic Corp | $12–$24 |
+| 1/2" NPT polypropylene tee | Blue suction/discharge tees, branches | 6 ea | Home Depot | $12–$24 |
 | [Banjo TEE100 equal tee 1" NPT](https://www.usplastic.com/catalog/item.aspx?itemid=36358) (36358) | PP; IBC drain tees (the X1 fill is now a 4-way cross) | 3 ea | US Plastic Corp / Amazon | $43 |
-| 1" NPT 4-way cross fitting | X1 fresh-fill 4-way: X1 inlet + IBC-1 + IBC-2 + DV-01 blue recycle return (was a 3-way tee). Cost est. | 1 ea | US Plastic Corp | $8–$14 |
-| 1/2" NPT polypropylene union | Maintenance disconnects on pump runs | 6 ea | US Plastic Corp | $24–$36 |
-| 1/2"×1" NPT bushing reducer | P-02 riser to F1 filter inlet | 1 ea | US Plastic Corp | $3–$5 |
+| 1" NPT 4-way cross fitting | X1 fresh-fill 4-way: X1 inlet + IBC-1 + IBC-2 + DV-01 blue recycle return (was a 3-way tee). Cost est. 2026-07-27: NOT stocked at US Plastic (they don't carry 1" 4-way crosses) — source a Spears/PVC Sch-80 1" cross via an irrigation/PVC supplier, or redesign the X1 fill as 2× tees. | 1 ea | US Plastic Corp | $8–$14 |
+| 1/2" NPT polypropylene union | Maintenance disconnects on pump runs | 6 ea | Home Depot | $24–$36 |
+| 1/2"×1" NPT bushing reducer | P-02 riser to F1 filter inlet | 1 ea | Home Depot | $3–$5 |
 | [S60×6 female-buttress → 2" NPT + 2→1" bushing](https://us.cpp.parts/collections/fits-s60x6) (HMFN/20UD/027) | IBC DN50 valve to 1" HDPE. The DN50 valve is a MALE S60×6, so the adapter is FEMALE S60×6 buttress × 2" male NPT PP (a 1" NPT-female config isn't stocked); add a 2→1" PP reducer bushing to land on 1" HDPE. | 8 ea | CPP.parts / Amazon | $112–$144 |
-| 1" bulkhead tank-body fittings (Blue equalization cross-tie) | Low tank-body penetration in each Blue tote (IBC-1 + IBC-2) for the 1" equalization cross-tie that self-balances the two Blue levels (run made from the 1" HDPE stock). Cost est. | 2 ea | US Plastic Corp | $12–$24 |
-| 1" NPT spring check valve (CV1 — X1 gravity fill) | PVC body, EPDM seal, 1" FNPT × FNPT. Only CV-1 (X1 fill) remains — the Shurflo 2088 pumps have integral check valves, so CV-2/CV-3/CV-4 are redundant and dropped | 1 ea | US Plastic Corp | $8–$14 |
+| [1" bulkhead tank-body fittings (Blue equalization cross-tie)](https://www.usplastic.com/catalog/item.aspx?itemid=32194) (32194) | Low tank-body penetration in each Blue tote (IBC-1 + IBC-2) for the 1" equalization cross-tie that self-balances the two Blue levels (run made from the 1" HDPE stock). Cost est. | 2 ea | US Plastic Corp | $25 |
+| [1" NPT spring check valve (CV1 — X1 gravity fill)](https://www.usplastic.com/catalog/item.aspx?itemid=31415) (31415) | PVC body, EPDM seal, 1" FNPT × FNPT. Only CV-1 (X1 fill) remains — the Shurflo 2088 pumps have integral check valves, so CV-2/CV-3/CV-4 are redundant and dropped | 1 ea | US Plastic Corp | $24 |
 | Steel flat bar 25×3mm — ribbon support cross-brace | Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (the four corridor↔pinhole lines); ~300mm each | 4 ea | Home Depot | $8–$16 |
 | Cushioned pipe clip | Secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports) | 16 ea | Amazon | $16–$32 |
 | Thread seal tape (PTFE) | 1/2" wide, 260" roll | 4 roll | Home Depot | $8 |
@@ -379,7 +379,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | 1" SDR-11 HDPE pipe | Food-safe blue-stripe 20 ft; filter outlet + IBC lines | 1 stick | Ferguson | $12–$18 |
 | [Banjo TEE100 equal tee, 1" HDPE NPT](https://www.usplastic.com/catalog/item.aspx?itemid=36358) (36358) | X1 fill tee — splits the fill to both Blue totes | 1 ea | US Plastic Corp / Amazon | $14 |
 | 3/4" SDR-11 HDPE pipe | Spray bar run, 20 ft sticks | 2 stick | Ferguson | $20–$30 |
-| 1/2" ID reinforced braided PVC hose | Pump inlet flexible connection, 6 ft per pump | 2 length | US Plastic Corp | $24–$48 |
+| [1/2" ID reinforced braided PVC hose](https://www.usplastic.com/catalog/item.aspx?itemid=60703) (60703) | Pump inlet flexible connection, 6 ft per pump | 2 length | US Plastic Corp | $12 |
 | 14 AWG duplex marine wire | Tinned copper, 25 ft | 1 roll | Waytek Wire | $22 |
 | Anderson Powerpole connectors 30A | Pump connections — one pair per pump (P-01..P-05) | 5 pair | Powerwerx | $10 |
 | 15A blade fuse | Pump Circuit C (single feed, all pumps) | 1 ea | Waytek Wire | $5 |
@@ -389,7 +389,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $18–$40 |
-| **Water total** | | | | **$3,315–$3,791** |
+| **Water total** | | | | **$3,404–$3,826** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

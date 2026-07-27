@@ -636,8 +636,14 @@ def _clean_html_for_fpdf(html):
     # Substitute glyphs missing from Arial Unicode (emoji etc.)
     for ch, sub in _MISSING_GLYPHS.items():
         html = html.replace(ch, sub)
-    # Remove HTML comments but preserve <!--TABLE:n--> markers
-    html = re.sub(r"<!--(?!TABLE:\d+).*?-->", "", html, flags=re.DOTALL)
+    # Normalize the explicit page-break directive to a bare marker the chapter
+    # renderer acts on (see chapter_body). `<!-- brochure:pagebreak -->` in a .md
+    # forces the following content onto a fresh page in the PDF; it is an HTML
+    # comment, so the website renders nothing there.
+    html = re.sub(r"<!--\s*brochure:pagebreak\s*-->", "<!--PAGEBREAK-->", html,
+                  flags=re.IGNORECASE)
+    # Remove HTML comments but preserve <!--TABLE:n--> and <!--PAGEBREAK--> markers
+    html = re.sub(r"<!--(?!TABLE:\d+|PAGEBREAK).*?-->", "", html, flags=re.DOTALL)
     html = re.sub(r"\n{3,}", "\n\n", html)
     return html
 
@@ -1046,20 +1052,27 @@ class BrochurePDF(FPDF):
                 from fpdf.enums import PageOrientation
                 if self.cur_orientation == PageOrientation.LANDSCAPE:
                     self.add_page(orientation="P")
-                # Split on table markers to interleave text and tables
-                parts = re.split(r"<!--TABLE:(\d+)-->", seg_html)
-                # parts alternates: text, table_idx, text, table_idx, text ...
-                for pi, part in enumerate(parts):
-                    if pi % 2 == 0:
-                        # Text fragment — render via write_html
-                        if part.strip():
-                            self._render_html_with_heading_breaks(
-                                part, tables)
-                    else:
-                        # Table marker — render the extracted table
-                        tidx = int(part)
-                        if tidx < len(tables):
-                            self._render_table(tables[tidx])
+                # Honor explicit page breaks (<!-- brochure:pagebreak -->) first,
+                # then interleave text and tables within each break-delimited block.
+                for bi, block in enumerate(re.split(r"<!--PAGEBREAK-->", seg_html)):
+                    if bi > 0:
+                        self.add_page()
+                    if not block.strip():
+                        continue
+                    # Split on table markers to interleave text and tables
+                    parts = re.split(r"<!--TABLE:(\d+)-->", block)
+                    # parts alternates: text, table_idx, text, table_idx, text ...
+                    for pi, part in enumerate(parts):
+                        if pi % 2 == 0:
+                            # Text fragment — render via write_html
+                            if part.strip():
+                                self._render_html_with_heading_breaks(
+                                    part, tables)
+                        else:
+                            # Table marker — render the extracted table
+                            tidx = int(part)
+                            if tidx < len(tables):
+                                self._render_table(tables[tidx])
 
             # ── full-page image ───────────────────────────────────────────────
             if img_path:

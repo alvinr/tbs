@@ -213,25 +213,27 @@ For compound conditions, multiply the factors: thin haze + early morning = ×3.0
 
 ---
 
+<!-- brochure:pagebreak -->
+
 ## 9. Construction
 
 ### 9.1 Two-Box Assembly
 
 The Mini-TBS uses two identical U-Haul Medium boxes joined end-to-end:
 
-- **Camera box** (left in diagram): Sealed, light-tight. Contains the pinhole and light cone. The hinged panel stands in the opening as the film plane during exposure.
-- **Prep box** (right in diagram): Light-sealed workspace for chemistry, coating, and drying. Its end face carries the arm sleeves; the finished print is removed in daylight through the box's own **top flaps** (§9.7).
+- [ ] **Camera box** (left in diagram): Sealed, light-tight. Contains the pinhole and light cone. The hinged panel stands in the opening as the film plane during exposure.
+- [ ] **Prep box** (right in diagram): Light-sealed workspace for chemistry, coating, and drying. Its end face carries the arm sleeves; the finished print is removed in daylight through the box's own **top flaps** (§9.7).
 
 The two adjacent walls between the boxes become the film-plane mechanism. On the **camera box**, a rectangular window is cut out and removed. On the **prep box**, a matching rectangle is cut on three sides only — the **bottom edge is left attached as a hinge**. The window is sized to the 10 × 14" print (about 16 × 11"), not the whole wall, and is **centered** on the face so the pinhole lines up with the middle of the sheet. The panel folds **down** into the prep box for coating, then folds back **up** to stand in the window as the film plane, facing the pinhole. No separate board is needed: the film plane is the box's own cardboard. Arm sleeves on the prep box end face give the operator sealed access to coat and mount paper.
 
 **Procedure:**
 
-1. Assemble both boxes, but **build them flaps-up** — orient each box so its opening flaps are on **top** (the prep box's become the print-extraction opening). Tape the bottom flaps shut on both boxes.
-2. Stand the boxes end-to-end so that two 18 × 16" faces are adjacent.
-3. On the **camera box's** adjacent face, cut out a rectangular window sized to the print (~16 × 11"), set in the upper part of the face, and remove it. This is the opening through which the image reaches the paper.
-4. On the **prep box's** adjacent face, cut the matching ~16 × 11" rectangle in the same position, on **three sides only**, leaving the **bottom edge uncut** as the hinge. Its bottom edge sits about 64mm above the floor, centering the panel on the face (detailed in §9.3).
-5. Tape the **camera box's** top flaps shut (light-tight — this end stays sealed). Leave the **prep box's** top flaps as the extraction opening (§9.7): they open in room light to load paper and chemistry and to remove the print, and are taped shut with masking tape during the dark coating and the exposure.
-6. Tape the two boxes together at the junction using duct tape on all four outer edges — floor, ceiling, and both side walls. The taped joint must be rigid, and the two window openings must line up.
+1. [ ] Assemble both boxes, but **build them flaps-up** — orient each box so its opening flaps are on **top** (the prep box's become the print-extraction opening). Tape the bottom flaps shut on both boxes.
+2. [ ] Stand the boxes end-to-end so that two 18 × 16" faces are adjacent.
+3. [ ] On the **camera box's** adjacent face, cut out a rectangular window sized to the print (~16 × 11"), set in the upper part of the face, and remove it. This is the opening through which the image reaches the paper.
+4. [ ] On the **prep box's** adjacent face, cut the matching ~16 × 11" rectangle in the same position, on **three sides only**, leaving the **bottom edge uncut** as the hinge. Its bottom edge sits about 64mm above the floor, centering the panel on the face (detailed in §9.3).
+5. [ ] Tape the **camera box's** top flaps shut (light-tight — this end stays sealed). Leave the **prep box's** top flaps as the extraction opening (§9.7): they open in room light to load paper and chemistry and to remove the print, and are taped shut with masking tape during the dark coating and the exposure.
+6. [ ] Tape the two boxes together at the junction using duct tape on all four outer edges — floor, ceiling, and both side walls. The taped joint must be rigid, and the two window openings must line up.
 
 ### 9.2 Light-Sealing the Camera Box
 
@@ -241,97 +243,97 @@ Only the camera box needs to be light-tight. The prep box remains open.
 
 **Procedure:**
 
-1. Seal every external seam on the camera box with a full strip of black duct tape. Pay special attention to:
-   - All four flap edges on the pinhole face
-   - Every corner where two panels meet
-   - The manufacturer's glued seam (usually one long edge)
-2. Cut 2-inch squares of cardboard and tape them over every 3-plane corner junction. These are the worst light-leak points.
-3. Apply a second layer of tape on all internal seams.
-4. **Light-leak test:** In a dark room, place a bright flashlight inside the sealed camera box (with the hinged flap upright). Inspect every seam from outside. Mark and seal any visible light.
+1. [ ] Seal every external seam on the camera box with a full strip of black duct tape. Pay special attention to:
+   - [ ] All four flap edges on the pinhole face
+   - [ ] Every corner where two panels meet
+   - [ ] The manufacturer's glued seam (usually one long edge)
+2. [ ] Cut 2-inch squares of cardboard and tape them over every 3-plane corner junction. These are the worst light-leak points.
+3. [ ] Apply a second layer of tape on all internal seams.
+4. [ ] **Light-leak test:** In a dark room, place a bright flashlight inside the sealed camera box (with the hinged flap upright). Inspect every seam from outside. Mark and seal any visible light.
 
 ### 9.3 Hinged Film-Plane Panel
 
 The film-plane panel is the cardboard flap cut into the prep box's camera-side wall (§9.1), sized to the 10 × 14" print and centered on the face so the pinhole lines up with the middle of the sheet. It is hinged along its **bottom edge**, about 64mm up the wall. Folded **up**, it stands in the window as the film plane with the paper facing the pinhole; folded **down**, it lies horizontal in the prep box as the surface on which the pinned paper is coated. The arm sleeves are on the prep box **end face** (§9.6), not on the panel.
 
 **Materials:**
-- Duct tape (same roll used for all sealing and hinging — it also reinforces the panel hinge, and can line the prep-box floor as a drip liner)
-- Push pins / map pins (~8 per print, reusable — mount the paper to the panel)
-- Binder clips (1-inch, a few — hold the panel upright in the window)
+- [ ] Duct tape (same roll used for all sealing and hinging — it also reinforces the panel hinge, and can line the prep-box floor as a drip liner)
+- [ ] Push pins / map pins (~8 per print, reusable — mount the paper to the panel)
+- [ ] Binder clips (1-inch, a few — hold the panel upright in the window)
 
 The film-plane panel needs no material of its own — it is cut from the prep box's camera-side wall (§9.1).
 
 **Procedure:**
 
-1. *(Optional)* Line the prep-box floor with overlapping strips of duct tape (the same roll) as a wipeable drip liner — it protects the cardboard from coating runoff over repeated sessions.
-2. The panel is already cut (§9.1, step 4): the ~16 × 11" flap in the prep box's camera-side wall, still attached along its bottom edge about 64mm above the floor, centered on the face.
-3. **Hinge:** Reinforce the bottom fold line with a full-width strip of duct tape on both faces so it flexes cleanly. Score the fold lightly first if the cardboard is stiff. This is a working hinge that will be folded repeatedly.
-4. **Folded-down position (prep):** Fold the panel down into the prep space, where it lies horizontal — a flat surface for coating the pinned paper, clear of the floor.
-5. **Exposure position:** Fold the panel up until it stands vertical in the window, filling the opening with the paper facing the pinhole. Hold it upright with duct tape tab at the top edge.
-6. **Test the hinge:** Fold the panel up and down 10–15 times. It should move freely without binding, and the taped hinge should not crack or separate.
+1. [ ] *(Optional)* Line the prep-box floor with overlapping strips of duct tape (the same roll) as a wipeable drip liner — it protects the cardboard from coating runoff over repeated sessions.
+2. [ ] The panel is already cut (§9.1, step 4): the ~16 × 11" flap in the prep box's camera-side wall, still attached along its bottom edge about 64mm above the floor, centered on the face.
+3. [ ] **Hinge:** Reinforce the bottom fold line with a full-width strip of duct tape on both faces so it flexes cleanly. Score the fold lightly first if the cardboard is stiff. This is a working hinge that will be folded repeatedly.
+4. [ ] **Folded-down position (prep):** Fold the panel down into the prep space, where it lies horizontal — a flat surface for coating the pinned paper, clear of the floor.
+5. [ ] **Exposure position:** Fold the panel up until it stands vertical in the window, filling the opening with the paper facing the pinhole. Hold it upright with duct tape tab at the top edge.
+6. [ ] **Test the hinge:** Fold the panel up and down 10–15 times. It should move freely without binding, and the taped hinge should not crack or separate.
 
 ### 9.4 Pinhole Fabrication
 
 **Materials:**
-- Aluminum beverage can (empty, clean, dry)
-- 400-grit and 600-grit sandpaper
-- 1/32" (0.794mm) drill bit
-- Pin vise (hand-held chuck for small drill bits — ~$5 at Home Depot)
+- [ ] Aluminum beverage can (empty, clean, dry)
+- [ ] 400-grit and 600-grit sandpaper
+- [ ] 1/32" (0.794mm) drill bit
+- [ ] Pin vise (hand-held chuck for small drill bits — ~$5 at Home Depot)
 
 **Procedure:**
 
-1. Cut a 3 × 3 inch piece from the flat side wall of an aluminum beverage can using scissors. Avoid the curved top and bottom.
-2. Sand both sides with 400-grit sandpaper to remove the printed coating and any burrs. The aluminum should be clean bare metal, approximately 0.1mm thick.
-3. Place the aluminum on a firm surface (hardwood or a book — not glass, which can chip the bit).
-4. Insert the 1/32" drill bit into the pin vise. Center the bit on the aluminum piece.
-5. **Drill slowly** — rotate the pin vise by hand with light pressure. Do not use a power drill (the bit will wander and the hole will be oversized or oblong).
-6. After the bit breaks through, flip the aluminum and lightly sand the exit side with 600-grit to remove the raised burr collar.
-7. Hold the finished pinhole up to a light source and inspect with a magnifying glass or loupe. The hole should be round, clean-edged, and centered.
-8. **Drill 3–4 test pinholes.** Select the cleanest, most circular one.
+1. [ ] Cut a 3 × 3 inch piece from the flat side wall of an aluminum beverage can using scissors. Avoid the curved top and bottom.
+2. [ ] Sand both sides with 400-grit sandpaper to remove the printed coating and any burrs. The aluminum should be clean bare metal, approximately 0.1mm thick.
+3. [ ] Place the aluminum on a firm surface (hardwood or a book — not glass, which can chip the bit).
+4. [ ] Insert the 1/32" drill bit into the pin vise. Center the bit on the aluminum piece.
+5. [ ] **Drill slowly** — rotate the pin vise by hand with light pressure. Do not use a power drill (the bit will wander and the hole will be oversized or oblong).
+6. [ ] After the bit breaks through, flip the aluminum and lightly sand the exit side with 600-grit to remove the raised burr collar.
+7. [ ] Hold the finished pinhole up to a light source and inspect with a magnifying glass or loupe. The hole should be round, clean-edged, and centered.
+8. [ ] **Drill 3–4 test pinholes.** Select the cleanest, most circular one.
 
 **Mounting:**
 
-1. Cut a 2 × 2 inch square hole in the center of the pinhole face (the 18 × 16" face).
-2. Center the aluminum pinhole plate over this hole on the inside of the box.
-3. Tape all four edges with black duct tape. The tape must be light-tight — overlap the aluminum by at least 1/2 inch on all sides.
+1. [ ] Cut a 2 × 2 inch square hole in the center of the pinhole face (the 18 × 16" face).
+2. [ ] Center the aluminum pinhole plate over this hole on the inside of the box.
+3. [ ] Tape all four edges with black duct tape. The tape must be light-tight — overlap the aluminum by at least 1/2 inch on all sides.
 
 ### 9.5 Shutter
 
 A simple flap shutter:
 
-1. Cut a 4 × 4 inch piece of stiff black cardboard (or 4 layers of black duct tape on regular cardboard).
-2. Tape the top edge of the flap to the box exterior, directly above the pinhole. The flap hangs down covering the pinhole.
-3. **To expose:** Lift the flap and tape it open above the pinhole. Start the timer.
-4. **To end exposure:** Untape the flap, let it drop. Smooth it flat over the pinhole.
+1. [ ] Cut a 4 × 4 inch piece of stiff black cardboard (or 4 layers of black duct tape on regular cardboard).
+2. [ ] Tape the top edge of the flap to the box exterior, directly above the pinhole. The flap hangs down covering the pinhole.
+3. [ ] **To expose:** Lift the flap and tape it open above the pinhole. Start the timer.
+4. [ ] **To end exposure:** Untape the flap, let it drop. Smooth it flat over the pinhole.
 
 ### 9.6 Arm Sleeves (on Prep Box End Face)
 
 The armholes are on the prep box end face — the operator's face. They are centered on the face, spaced 9 inches (230mm) apart. This gives sealed arm access for mixing the sensitizer, coating the pinned paper, and folding the panel up — all in the dark, without opening the box or breaking the light seal. This is what lets the Mini-TBS work as its own darkroom, with no darkened room.
 
 **Materials:**
-- Black opaque fabric (cotton knit from a black t-shirt works well)
-- Heavy-duty rubber bands or elastic hair ties
-- Black duct tape
+- [ ] Black opaque fabric (cotton knit from a black t-shirt works well)
+- [ ] Heavy-duty rubber bands or elastic hair ties
+- [ ] Black duct tape
 
 **Procedure** (see armhole detail in the engineering drawing):
 
-1. Cut two armholes in the prep box end face, each approximately 4 inches (102mm) in diameter. Space them 9 inches (230mm) apart center-to-center, centered on the face. Use a compass to trace the circle, then cut with a box cutter. Sand or trim any rough edges — the fabric will fold over this edge.
-2. Cut two sleeve tubes from black fabric: each approximately 18 inches (450mm) long and 6 inches in diameter (circumference ~19 inches). A t-shirt sleeve, cut at the shoulder seam, gives roughly the right dimensions.
-3. **Attach the sleeve to the wall (see detail cross-section):**
-   - Insert the sleeve through the armhole from the outside.
-   - Pull approximately 2 inches (50mm) of fabric through the hole and fold it back onto the inside surface of the cardboard wall. The fabric wraps over the cut edge of the hole, creating a smooth, sealed transition.
-   - Tape the fold-back down with a full ring of 2-inch black duct tape on the inside surface, covering the folded fabric completely. Press firmly — this is the primary light seal.
-   - Apply a second ring of duct tape on the outside surface where the sleeve exits the wall, overlapping the fabric and cardboard by at least 1 inch (25mm). This prevents the sleeve from pulling away under tension.
-4. **Wrist seal:** When in use, insert your arms through the sleeves and cinch heavy-duty rubber bands or elastic hair ties around your forearms to seal the openings. The cinch point should be snug enough to block light but not restrict circulation.
-5. **Test:** Insert your arms through the sleeves and verify you can reach the film-plane panel and handle the paper and pins with both hands. In a darkened room, shine a flashlight at the armhole from outside — check for any light leaks around the tape seal rings. Re-tape any gaps.
+1. [ ] Cut two armholes in the prep box end face, each approximately 4 inches (102mm) in diameter. Space them 9 inches (230mm) apart center-to-center, centered on the face. Use a compass to trace the circle, then cut with a box cutter. Sand or trim any rough edges — the fabric will fold over this edge.
+2. [ ] Cut two sleeve tubes from black fabric: each approximately 18 inches (450mm) long and 6 inches in diameter (circumference ~19 inches). A t-shirt sleeve, cut at the shoulder seam, gives roughly the right dimensions.
+3. [ ] **Attach the sleeve to the wall (see detail cross-section):**
+   - [ ] Insert the sleeve through the armhole from the outside.
+   - [ ] Pull approximately 2 inches (50mm) of fabric through the hole and fold it back onto the inside surface of the cardboard wall. The fabric wraps over the cut edge of the hole, creating a smooth, sealed transition.
+   - [ ] Tape the fold-back down with a full ring of 2-inch black duct tape on the inside surface, covering the folded fabric completely. Press firmly — this is the primary light seal.
+   - [ ] Apply a second ring of duct tape on the outside surface where the sleeve exits the wall, overlapping the fabric and cardboard by at least 1 inch (25mm). This prevents the sleeve from pulling away under tension.
+4. [ ] **Wrist seal:** When in use, insert your arms through the sleeves and cinch heavy-duty rubber bands or elastic hair ties around your forearms to seal the openings. The cinch point should be snug enough to block light but not restrict circulation.
+5. [ ] **Test:** Insert your arms through the sleeves and verify you can reach the film-plane panel and handle the paper and pins with both hands. In a darkened room, shine a flashlight at the armhole from outside — check for any light leaks around the tape seal rings. Re-tape any gaps.
 
 **Alternative — glovebox sleeves (built and tested).** Instead of fabric sleeves cinched with rubber bands, build a sealed **glovebox**: the gloves are attached to the sleeves, so no one needs their own gloves and there is no wrist band to fuss with — and a closed glove seals the hand opening more reliably than a rubber-band cinch.
 
 *Materials:* a heavy-duty **black contractor bag** (3-mil, opaque), one pair of **extra-large rubber gloves**, black duct tape.
 
-1. Cut two rectangles from the bag; roll each into a tube and duct-tape the long seam — two opaque arm tubes (~18" long).
-2. **Glove end (goes inside the box):** slip a rubber glove's cuff over one end of each tube and duct-tape it sealed. Your hand pushes into the glove.
-3. **Box end (outside):** thread the tube out through the armhole, cut ~1-inch slits around the outer end so it fans into tabs, and duct-tape the fanned tabs flat to the **outside** of the box around the armhole.
-4. **Use:** push your arms into the tubes and into the gloves, and work sealed inside — exactly like a lab glovebox.
+1. [ ] Cut two rectangles from the bag; roll each into a tube and duct-tape the long seam — two opaque arm tubes (~18" long).
+2. [ ] **Glove end (goes inside the box):** slip a rubber glove's cuff over one end of each tube and duct-tape it sealed. Your hand pushes into the glove.
+3. [ ] **Box end (outside):** thread the tube out through the armhole, cut ~1-inch slits around the outer end so it fans into tabs, and duct-tape the fanned tabs flat to the **outside** of the box around the armhole.
+4. [ ] **Use:** push your arms into the tubes and into the gloves, and work sealed inside — exactly like a lab glovebox.
 
 Use a **black, opaque** bag (a translucent one leaks light), double-tape the seams, and check the gloves for pinholes before each session — they are now the chemical PPE. This removes the wrist rubber bands and the per-session disposable gloves entirely.
 
@@ -341,8 +343,8 @@ Because the boxes are built **flaps-up** (§9.1), the prep box's own **top flaps
 
 **Procedure:**
 
-1. During the dark steps (mixing, coating, tack-drying) and the exposure, fold the prep box's top flaps shut and **tape them closed with masking tape** so the box is light-tight. (Masking tape peels cleanly for repeated opening — the duct tape is saved for the permanent joints.)
-2. **To load or extract (room light / daylight-safe):** peel the masking tape and fold the top flaps open. Before coating this is how you pin the paper and set the chemistry inside; after exposure it is how you fold the panel down, unpin the print, and lift it out to wash externally (§13).
+1. [ ] During the dark steps (mixing, coating, tack-drying) and the exposure, fold the prep box's top flaps shut and **tape them closed with masking tape** so the box is light-tight. (Masking tape peels cleanly for repeated opening — the duct tape is saved for the permanent joints.)
+2. [ ] **To load or extract (room light / daylight-safe):** peel the masking tape and fold the top flaps open. Before coating this is how you pin the paper and set the chemistry inside; after exposure it is how you fold the panel down, unpin the print, and lift it out to wash externally (§13).
 
 **Note:** The top flaps only need to be light-tight from the moment you mix the sensitizer until the exposure ends. Before that (loading dry paper and chemistry) and after it (removing and washing the print), they can be open in room light.
 
@@ -355,14 +357,14 @@ Watercolor paper is cyanotype's original and most forgiving substrate — Hersch
 **Alternative:** Fabriano Artistico hot-press, 140 lb (300 gsm), 100% cotton — also in 10 × 14" blocks.
 
 **Requirements:**
-- **Weight:** 140 lb / 300 gsm minimum. Lighter paper curls severely when wet.
-- **Fiber:** 100% cotton (rag paper). Wood-pulp paper degrades in the iron chemistry.
-- **Surface:** Hot-press (smooth). Cold-press texture interferes with fine detail at this resolution.
+- [ ] **Weight:** 140 lb / 300 gsm minimum. Lighter paper curls severely when wet.
+- [ ] **Fiber:** 100% cotton (rag paper). Wood-pulp paper degrades in the iron chemistry.
+- [ ] **Surface:** Hot-press (smooth). Cold-press texture interferes with fine detail at this resolution.
 
 **Mounting the paper:** The paper is pinned to the panel **dry, before coating** — the point of the sequence in §11, since pinning a dry sheet with the prep box top open is far easier than mounting a wet, coated one in the dark.
 
-1. With the prep box top flaps open, fold the panel down and center the dry 10 × 14" sheet on it (landscape — 14" across, 10" tall — it sits well within the ~16 × 11" panel).
-2. Fasten it with **push pins (map pins or thumbtacks)** pressed through the paper into the cardboard panel — one near each corner, plus one at the middle of each long edge. The pins sit flush and hold the paper when the panel stands vertical, and they leave the panel edges clear so it seats squarely in the window when folded up. (Binder clips would foul the window frame and the hinge and hold the panel off the opening.) Place the pins in the ~1" bare margin around the paper so their heads sit at the edge of the image.
+1. [ ] With the prep box top flaps open, fold the panel down and center the dry 10 × 14" sheet on it (landscape — 14" across, 10" tall — it sits well within the ~16 × 11" panel).
+2. [ ] Fasten it with **push pins (map pins or thumbtacks)** pressed through the paper into the cardboard panel — one near each corner, plus one at the middle of each long edge. The pins sit flush and hold the paper when the panel stands vertical, and they leave the panel edges clear so it seats squarely in the window when folded up. (Binder clips would foul the window frame and the hinge and hold the panel off the opening.) Place the pins in the ~1" bare margin around the paper so their heads sit at the edge of the image.
 
 The panel is then coated in place and folded up when dry (§11).
 

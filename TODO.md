@@ -22,13 +22,19 @@ bucketed by WHEN it can be acted on:_
 ### Bucket 1 — ACTIONABLE NOW
 - [x] **Cyanotype chemistry consolidated to Artcraft (bulk) — DONE 2026-07-26.** Bulk-price research (2 agents) + Alvin's confirmed Artcraft packs → all three reagents re-sourced to **Artcraft Chemicals**: ferric ammonium oxalate **$218.16→$64.20/kg** ($29.12/1 lb; the big mover), potassium ferricyanide **$60.80→$51.01/kg** ($104.12/4.5 lb), ammonium dichromate → Artcraft $33.66/0.5 lb (trace, $25/run allowance holds). Cascaded: costing tiers (Standard total **$4,400→$1,710**, per-print **$88→$34**), grand total **→$27,262–$39,454**, parts registry, all injected docs + prose restatements. **process-comparison.md re-inverted: cyanotype ($1,250 lean) is cheapest again**, below gum ($1,592) — "why cyanotype" reframed to cost + archival/hazard/simplicity. Remaining bulk option: request an Artcraft ~38-lb AmFe quote (could drop below $64/kg). Use FULL reagent names not "AmFe" per [[feedback_full_chemical_names]].
 - [ ] **Fastener thread-pitch cross-check.** Each sourced bolt SKU's actual pitch vs its mating nut (coarse baseline recorded, "confirm vs SKU PDF"); pitch must match at order. See the fastener item lower in this file for the M8×1.0-fine vs M8×1.25-coarse trap. Prices don't matter — pitch does.
-- [ ] **Plumbing thread-gender audit (M-F / F-F / M-M) — NOT yet worked through.** The whole
-  water/plumbing run needs a systematic pass on connection genders: every valve, tee, elbow, adapter,
-  bulkhead, and pump port checked for MNPT vs FNPT so the fittings actually mate (and the right
-  nipples/bushings are between them). Surfaced 2026-07-27 when the 1" elbow sourced at US Plastic
-  came back as **SL100-90 street (1" MNPT×FNPT)**, not the registry's **EL100-90 (F×F)** — we don't
-  currently know which the routing needs. Do it against the plumbing schematic + the Banjo/US Plastic
-  SKUs now in the registry; fix any gender mismatches and add the connecting nipples/bushings to the BOM.
+- [ ] **Plumbing joint-convention cascade (SLIP default, THREADED at hard components) — CONVENTION
+  SET 2026-07-27, re-source PENDING.** Rule established (plumbing-report §5.1): the run is **solvent-weld
+  PVC (slip)**; **threaded NPT only where it lands on a hard component** (pumps, filters, valves, check
+  valve, tank bulkheads, sample taps, accumulator) via a **slip×NPT transition adapter**. Settled: the 4
+  ½" run fittings are PVC Sch-40 slip (Home Depot Charlotte); the bushing at the filter is threaded.
+  **Three forks still need Alvin's go before the full re-source (each is a real cost move):**
+  (a) **Pipe material HDPE → PVC** — the §5 table says "HDPE," but glue = PVC (HDPE can't be
+      solvent-welded). Confirm PVC Sch-40, then re-spec `hdpe-1in`/`hdpe-half`/`hdpe-three-quarter`.
+  (b) **1" run tees/elbows** (`tee-100`, `tee-100-hdpe`, `elbow-el100`) are currently threaded **Banjo
+      FRPP** ($14.19 tee / $4.59 elbow) — per the rule they should be **PVC slip** (~$1–2). Re-source (cheaper).
+  (c) **Transition adapters MISSING** — a slip×NPT male adapter is needed at each of the ~15 component
+      interfaces (valves, pump/filter ports, bulkheads, check valve); none are in the BOM. Enumerate
+      from the schematic + add. Also settle `union-half` (a slip coupling can't disconnect — union or not?).
 - [ ] **panel-corner-plates — design flag (huge cores).** Each 3mm 5052 Al corner core is 653×2388mm (~16.8 ft², ~half a sheet); the 4 don't nest → 2 full sheets = $586 + weight. Decide full solid plate vs a lighter frame/partial before buying.
 - [ ] **Aug 2026 full re-price.** Sweep every `parts.py` line against current listings (reminder atop the file); edit band → `--inject` cascades.
 - [ ] **Master-BOM SKU backfill.** Branded rows that don't yet carry a registry `part_no` — Alvin's supplier paste-check; each SKU auto-appears in the master on the next `--inject`.

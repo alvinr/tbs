@@ -274,6 +274,32 @@ ports (1/2"-14 male parallel thread). This eliminates reducer fittings at pump
 connections. The only reducer is a single 1/2"→1" bushing at the filter skid
 inlet (P-02 output to F-01 input).
 
+### 5.1 Joint Convention
+
+**Pipe joints are solvent-weld (slip socket) by default — the run is glued PVC.**
+**Threaded (NPT) is used *only* where a run lands on a hard component that must be
+removable for service:** pumps, filter housings, valves, check valves, tank
+bulkheads, sample taps, and the accumulator. Each such interface uses a **slip×NPT
+transition adapter** (a male adapter glued into the run, threaded into the
+component's port). This keeps the run cheap and leak-free while every component
+stays unthreadable for maintenance.
+
+Classifying the current BOM by this rule:
+
+| Category | Connection | Parts |
+|---|---|---|
+| **Run joints — SLIP** | glued PVC socket | tees, elbows, cross, couplings, pipe |
+| **Component interfaces — THREADED** | NPT (via slip×NPT adapter) | ball/diverter/check valves, camlocks, tank bulkheads, pump & filter ports, sample taps, accumulator |
+
+**Open cascade to rationalize (see [TODO](TODO.md) — plumbing thread-gender audit).**
+This convention supersedes the **"HDPE"** material in the §5 table: solvent-weld
+requires **PVC** (HDPE can't be glued). Fully applying it means (a) the run pipe +
+run fittings become **PVC Sch-40 slip**; (b) a **slip×NPT male adapter** is added at
+each component interface (currently absent from the BOM); (c) the 1" run tees/elbows
+now carried as threaded **Banjo FRPP** move to PVC slip. The valves, camlocks,
+bulkheads, check valve, and pump/filter ports stay threaded. This is a material +
+fitting decision — pending Alvin's go before the full re-source.
+
 ---
 
 ## 6. Flow Paths

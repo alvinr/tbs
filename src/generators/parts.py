@@ -228,7 +228,7 @@ PARTS: list[Part] = [
     Part("union-half", '1/2" NPT polypropylene union', "plumbing-fittings",
          "water", 6, "ea", 0.74, 0.74, "Home Depot", part_no="PVC021000600HD", url="https://www.homedepot.com/p/203811331", spec="Maintenance disconnects on pump runs. 2026-07-27: sourced part is a Charlotte PVC Sch40 S×S COUPLING (permanent), NOT a union — can't disconnect for service; if breaks are needed swap to a PVC union (~$3-4). Also SLIP not NPT — see plumbing audit"),
     Part("bushing-reducer", '1/2"×1" NPT bushing reducer', "plumbing-fittings",
-         "water", 1, "ea", 1.83, 1.83, "Home Depot", part_no="PVC021070700HD", url="https://www.homedepot.com/p/203811447", spec="P-02 riser to F1 filter inlet. 2026-07-27: Charlotte PVC Sch40 1×½ reducer bushing (Spg×S, SLIP) — desc says NPT; confirm in the plumbing audit"),
+         "water", 1, "ea", 2.86, 2.86, "Home Depot", part_no="PVC021121800HD", url="https://www.homedepot.com/p/204836713", spec="P-02 riser → F1 filter inlet — THREADED (lands on the filter = hard component, per the joint convention). Charlotte PVC Sch40 1×½ reducer bushing"),
     Part("s60-adapter", 'S60×6 female-buttress → 2" NPT + 2→1" bushing', "plumbing-fittings",
          "water", 8, "ea", 14, 18, "CPP.parts", "Amazon", spec='IBC DN50 valve to 1" HDPE. The DN50 valve is a MALE S60×6, so the adapter is FEMALE S60×6 buttress × 2" male NPT PP (a 1" NPT-female config isn\'t stocked); add a 2→1" PP reducer bushing to land on 1" HDPE.', part_no="HMFN/20UD/027", url="https://us.cpp.parts/collections/fits-s60x6"),
     Part("blue-equalization-tie", '1" bulkhead tank-body fittings (Blue equalization cross-tie)', "plumbing-fittings",

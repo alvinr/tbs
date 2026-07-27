@@ -290,7 +290,7 @@ FILM = [
     LineItem("Muslin clamp filler — HDPE L-channel strip", 30, 50, 70, "inert HDPE packer, ~8.7 m, firm at fab — lets the clamp bite a solid full-depth edge"),
     # 4.3 Wall-seat saddles (rev 11, ICP-11–14) — estimates, confirm at procurement
     point("Wall-seat saddles ×6 — 8mm steel plate, cut + welded (ICP-11)", 318, "rev12: 2 BR ends moved to the walkway combined corner plates; ~$53/saddle"),
-    point("Saddle fasteners — M12×65 through-bolts (×28) + M8 thumbscrews (×12) + M8×25 hex bolts (×8)", 106, "ICP-12/13/14; M12×65 91280A728 + plain nut 90591A181 + 4 flat 91166A290 + split 91202A246 per bolt; M8×25 fixing 91280A534 $0.37"),
+    point("Saddle fasteners — M12×65 through-bolts (×28) + M8 thumbscrews (×12) + M8×25 hex bolts (×8)", 212, "ICP-12/13/14; M12×65 91280A728 + plain nut 90591A181 + 4 flat 91166A290 + split 91202A246 per bolt; M8×25 fixing 91280A534 $0.37. 2026-07-27: M8 thumbscrews ×12 sourced McMaster 92581A540 $11.80 ea (was $3 est, +$106)"),
 ]
 
 
@@ -322,7 +322,7 @@ VENTILATION = [
 # §5b ventilation items, so we own the two authoritative subtotals rather than re-entering it.
 POWER = [
     LineItem("Solar & battery (3× 200W panels, MPPT 100/50, 1× 100Ah LiFePO4, shore charger, 3× tilt mounts, PV cabling, PV disconnect, panel)", 1310, 1310, 1310, "2026-07-23: fully firmed. 2026-07-26: shore charger Victron BPC121531104R re-sourced Powerwerx $175.95 → Inverter Service Center $152.15 (−$24)"),
-    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop + ext weatherproof box, charge/shore fuses, protection, conduit, LED, master pump switch, power-panel raised weld-in frame)", 1467, 1485, 1503, "2026-07-23: fuse block/MRBF/disconnect/ground-rod firmed. 2026-07-25: 2× E-stop → uxcell $12.74 + ext weatherproof box (IP65) −$56. 2026-07-26: ML-RBS contactor re-sourced Powerwerx $348.59 → Inverter Supply $263.84 (−$85)"),
+    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop + ext weatherproof box, charge/shore fuses, protection, conduit, LED, master pump switch, power-panel raised weld-in frame)", 1674, 1692, 1710, "2026-07-23: fuse block/MRBF/disconnect/ground-rod firmed. 2026-07-25: 2× E-stop → uxcell $12.74 + ext weatherproof box (IP65) −$56. 2026-07-26: ML-RBS contactor re-sourced Powerwerx $348.59 → Inverter Supply $263.84 (−$85). 2026-07-27: pull-cord switch sourced americandoorsupply NEMA-4 $121.99 ×2 (was $8 est) +$228; nema-inlet −$15, pump-switch −$2, battery-cable −$4 → net +$207"),
 ]
 
 
@@ -653,7 +653,7 @@ SECTIONS = [
     Section("3",  "Optics — pinhole plate", *total(OPTICS)),
     Section("4",  "Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)", *total(FILM)),
     Section("5",  "Processing water system (incl. tray, spray bar, IBC stacking frame)", *total(WATER)),
-    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2777, 2795, 2813),
+    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2984, 3002, 3020),
     Section("5b", "Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)",
             total(VENTILATION)[0], total(VENTILATION)[0] + 60, total(VENTILATION)[0] + 150),
     Section("6",  "Housed revolving-door light lock (plastic-skin custom fabrication)", *total(LIGHTLOCK)),
@@ -1019,7 +1019,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 951,  "total": 1250, "per_print": 25},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "standard": {"chem": 1414, "total": 1710, "per_print": 34},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "rich":     {"chem": 2802, "total": 3100, "per_print": 62},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
-    "grand_total": (27262, 32333, 39454),  # 2026-07-26: Artcraft bulk chemistry — AmFe $218.16→$64.20/kg + ferricyanide $60.80→$51.01/kg; shore charger + ML-RBS re-sourced; + the 2026-07-25 parts batch. Per-change history in git log.  # 2026-07-25: IBC wall-hanger M12×65; E-stops → uxcell + ext box; spray arm tube → 8ft; filter spacers → ply offcuts; muslin clamps re-price −$59. Per-change history in git log.
+    "grand_total": (27575, 32646, 39767),  # 2026-07-27: Amazon/McMaster parts batch — pull-cord switch +$207, saddle thumbscrews +$106. 2026-07-26: Artcraft bulk chemistry — AmFe $218.16→$64.20/kg + ferricyanide $60.80→$51.01/kg; shore charger + ML-RBS re-sourced; + the 2026-07-25 parts batch. Per-change history in git log.  # 2026-07-25: IBC wall-hanger M12×65; E-stops → uxcell + ext box; spray arm tube → 8ft; filter spacers → ply offcuts; muslin clamps re-price −$59. Per-change history in git log.
     "walkway": (1979, 2395, 2825),  # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
     "water": (5843, 6916, 7986),  # 2026-07-25: IBC wall-hanger M12×65 (+$59/+$72); spray arm tube → 8ft McMaster (+$58); filter spacers → ply offcuts (−$12/−$22)
     "container": (2300, 3300, 4300),
@@ -1029,9 +1029,9 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "shelf": (214, 227, 239),          # 2026-07-22: piano hinge re-priced (Würth 32×600 satin SS, $22–35).  §6d = chemistry-prep-shelves §7
     "interior": (467, 578, 698),      # 2026-07-22: retired the Image-plane flat-backing ACM line (double-counted the film dibond-acm-film)
     "optics": (100, 155, 215),         # 2026-07-23: pinhole → Lenox SS-3/8-DISC $40-100 (config, RFQ)
-    "film": (6087, 6368, 6653),  # 2026-07-25 re-price: muslin clamps (×58) Harbor Freight 69289 $3–4 → $1.99–2.99 (−$59). (2026-07-22: clamp mechanism → off-the-shelf nylon spring clamps + HDPE filler.) Detail in git log.
+    "film": (6193, 6474, 6759),  # 2026-07-27: saddle M8 thumbscrews ×12 → McMaster $11.80 ea (+$106). 2026-07-25 re-price: muslin clamps (×58) Harbor Freight 69289 $3–4 → $1.99–2.99 (−$59). (2026-07-22: clamp mechanism → off-the-shelf nylon spring clamps + HDPE filler.) Detail in git log.
     "ventilation": (737, 760, 782),   # 2026-07-23: cooler inverter firm Victron PIN123750510 GFCI $132.60
-    "power": (2777, 2795, 2813),   # 2026-07-26: shore charger + ML-RBS contactor re-sourced (−$109)       # 2026-07-25: 2× E-stop → uxcell $12.74 (Harfington) + external weatherproof control-station box (IP65) −$56 net. Still est: lifepo4 (Smart-vs-Core). §5a authoritative subtotal
+    "power": (2984, 3002, 3020),   # 2026-07-27: pull-cord switch → americandoorsupply NEMA-4 $121.99 ×2 (+$228 net +$207). 2026-07-26: shore charger + ML-RBS contactor re-sourced (−$109)       # 2026-07-25: 2× E-stop → uxcell $12.74 (Harfington) + external weatherproof control-station box (IP65) −$56 net. Still est: lifepo4 (Smart-vs-Core). §5a authoritative subtotal
 }
 
 

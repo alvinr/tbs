@@ -13,9 +13,9 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, ventilation) | $467 | $698 |
 | 3. Pinhole optics plate | $100 | $215 |
-| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,087 | $6,653 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,193 | $6,759 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $5,843 | $7,986 |
-| 6. Electrical — power, circuits, wiring | $2,777 | $2,813 |
+| 6. Electrical — power, circuits, wiring | $2,984 | $3,020 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,032 | $2,506 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,979 | $2,825 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,212** | **~$36,514** |
+| **TOTAL (base build + 50-print run)** | **~$27,525** | **~$36,827** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -130,7 +130,7 @@ indicative low–high estimates — get quotes before ordering.
 | 14 AWG duplex marine wire | 1 roll | Amazon | water | $22 |
 | 15A blade fuse | 1 ea | Amazon | water | $5 |
 | 16 AWG silicone coiled cable | 1 ea | Waytek Wire | ventilation | $15 |
-| 2/0 AWG battery cable, 3ft (battery–fuse–busbar) | 1 lot | Amazon | electrical | $30 |
+| [2/0 AWG battery cable, 3ft (battery–fuse–busbar)](https://www.amazon.com/dp/B0B3HD7CWP) (B0B3HD7CWP) | 1 lot | Amazon | electrical | $26 |
 | [200A main fuse (Blue Sea 5187) + single MRBF holder (5191)](https://defender.com/en_us/blue-sea-systems-single-mrbf-terminal-fuse-block-5191) (5187+5191) | 1 ea | Blue Sea | electrical | $46 |
 | 4 AWG ground wire, green/yellow, 3m | 1 lot | Amazon | electrical | $15 |
 | [40×25mm PVC cable trunking, 5m](https://www.amazon.com/GenSDH-Raceway-Speaker-Concealer-Coffee-Width/dp/B0DK6GMHGL) (B0DK6GMHGL) | 4 ea | Amazon | electrical | $74 |
@@ -149,11 +149,11 @@ indicative low–high estimates — get quotes before ordering.
 | [External emergency cut-off — red mushroom switch](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
 | [Interior emergency cut-off — red mushroom switch (paralleled to exterior)](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
 | IP65 enclosure ~200×220×140mm (fuse block + busbars, on the plywood) | 1 ea | Polycase | electrical | $60 |
-| Master pump switch (Circuit C) — IP67 sealed rocker/disconnect 12V 16A | 1 ea | Amazon | electrical | $10 |
+| [Master pump switch (Circuit C) — IP67 sealed rocker/disconnect 12V 16A](https://www.amazon.com/dp/B0GF2ZBD1W) (B0GF2ZBD1W) | 1 ea | Amazon | electrical | $8 |
 | MC4 bulkhead connector pairs, IP67 panel-mount | 3 pair | Amazon | electrical | $25 |
 | MPPT charge-line fuse — 60A ANL/MIDI + holder | 1 ea | Blue Sea | electrical | $15 |
-| NEMA 5-15R weatherproof inlet (flush power panel) | 1 ea | Amazon | electrical | $25 |
-| Pull-cord ceiling switch, 12V 6A SPST | 2 ea | Amazon | electrical | $16 |
+| [NEMA 5-15R weatherproof inlet (flush power panel)](https://www.amazon.com/dp/B0CLDC8X5J) (B0CLDC8X5J) | 1 ea | Amazon | electrical | $10 |
+| [Pull-cord ceiling switch, 12V 6A SPST](https://americandoorsupply.com/products/ceiling-pull-switch-spst-nema-4-w-rotg-pivoting-cam?variant=45465874595971) | 2 ea | americandoorsupply | electrical | $244 |
 | Pump distribution block — 12V DC + / − bus, 6-way | 1 ea | Blue Sea | electrical | $15 |
 | PV cable 10 AWG + MC4 connectors | 1 lot | Amazon | electrical | $30 |
 | [Remote battery switch — Blue Sea ML-RBS 500A magnetic-latch (E-stop trip)](https://www.invertersupply.com/index.php?main_page=product_info&products_id=5288) (7700) | 1 ea | Inverter Supply | electrical | $264 |
@@ -162,7 +162,7 @@ indicative low–high estimates — get quotes before ordering.
 | Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs) | 1 lot | Waytek Wire | electrical | $30 |
 | [Weatherproof control-station box, 22mm 1-hole](https://www.amazon.com/uxcell-Button-Control-Station-Waterproof/dp/B07GN5P3NF) (B07GN5P3NF) | 1 ea | Amazon | electrical | $8–$13 |
 | Wiring kit — 12/14/16/18 AWG tinned, 50ft/color | 1 kit | Waytek Wire | electrical | $80 |
-| **electrical-distribution subtotal** | | | | **$1,422–$1,427** |
+| **electrical-distribution subtotal** | | | | **$1,629–$1,634** |
 
 ### electrical-power
 
@@ -217,7 +217,7 @@ indicative low–high estimates — get quotes before ordering.
 | [M6×1.0 hex nut, plain SS](https://www.mcmaster.com/90591A151/) (90591A151) | 4 ea | McMaster-Carr | electrical | $0 |
 | [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | 20 ea | McMaster-Carr | film, shelf | $2 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | 127 ea | McMaster-Carr | film, ibc-frame, walkway | $32 |
-| M8×25mm knurled thumbscrew DIN 464 | 12 ea | Amazon | film | $36 |
+| [M8×25mm knurled thumbscrew DIN 464](https://www.mcmaster.com/92581A540/) (92581A540) | 12 ea | McMaster-Carr | film | $142 |
 | Corridor panel mount hardware (brackets + fasteners) | 1 lot | Home Depot | water | $25–$50 |
 | Door & access upgrades | 1 lot | Home Depot | interior | $50–$100 |
 | SS lag/wood screws — filter housings to ply backing | 6 ea | Home Depot | water | $3–$9 |
@@ -249,7 +249,7 @@ indicative low–high estimates — get quotes before ordering.
 | Nylon zip ties, 200mm | 6 ea | Amazon | spray | $1 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,405–$1,875** |
+| **fasteners-hardware subtotal** | | | | **$1,510–$1,981** |
 
 ### plastics-sheet
 
@@ -428,11 +428,11 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 43 | aluminum, bearings-motion, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $3,609–$3,693 |
+| McMaster-Carr | 44 | aluminum, bearings-motion, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $3,751–$3,835 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,140–$3,492 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,877–$2,451 |
-| Amazon | 64 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,587–$1,888 |
+| Amazon | 62 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,514–$1,815 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,000–$1,420 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
@@ -452,6 +452,7 @@ indicative low–high estimates — get quotes before ordering.
 | US Plastic Corp | 1 | plastics-sheet | $210–$300 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | igus | 1 | bearings-motion | $261 |
+| americandoorsupply | 1 | electrical-distribution | $244 |
 | Powerwerx | 2 | electrical-distribution, electrical-power | $234 |
 | Hessaire | 1 | ducting-ventilation | $185–$230 |
 | Waytek Wire | 7 | electrical-distribution | $208 |

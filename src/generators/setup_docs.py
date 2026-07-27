@@ -226,6 +226,7 @@ DIAG_IMAGE_FILES = [
 
 MKDOCS_YML = """\
 site_name: "{site_name}"
+docs_dir: published
 site_description: "{site_description}"
 site_url: "{site_url}"
 
@@ -268,18 +269,77 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.arithmatex:
       generic: true
+      inline_syntax: [round]
+      block_syntax: [square, begin]
   - attr_list
   - md_in_html
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 extra_javascript:
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - https://cdn.jsdelivr.net/npm/tablesort@5.3.0/dist/tablesort.min.js
-  - javascripts/tablesort.js?v=3   # click any column header to sort (the BOM tables especially); bump ?v= when this init changes
+  - javascripts/tablesort.js?v=3
 
 nav:
   - Home: index.md
-{nav_entries}
+  - Proposal: funding-proposal.md
+  - "Costing": project-cost-breakdown.md
+  - Construction:
+    - "Overview": engineering-diagrams.md
+    - "Equipment Layout": equipment-layout-report.md
+    - Water System:
+      - "Processing System": water-system-report.md
+      - "Plumbing": plumbing-report.md
+      - "Walkway Pipe Routing": walkway-routing-sections.md
+      - "IBC Stacking System": ibc-stacking-report.md
+      - "Processing Tray & Spray Bar": processing-tray-and-spray-bar.md
+    - Electrical Systems:
+      - "Electrical": electrical-report.md
+      - "Electrical Safety": electrical-safety-report.md
+      - "Ventilation & Cooling": ventilation-report.md
+    - Film Plane & Pinhole:
+      - "Pinhole Report": pinhole-report.md
+      - "Film Plane Mechanism": film-plane-mechanism-report.md
+      - "Film Clamp Mechanism": film-clamp-mechanism-report.md
+      - "Tilt-Swing Front Board": tilt-swing-board-report.md
+    - Misc:
+      - "Walkway": walkway-report.md
+      - "Hinged Light-Trap Panel": hinged-panel-report.md
+      - "Chemistry Prep Shelves": chemistry-prep-shelves.md
+    - "Construction Sequence": construction-report.md
+    - "All Diagrams": all-diagrams.md
+  - Shopping:
+    - "Master Shopping List": master-shopping-list.md
+    - "Chem Shopping List": chemistry-shopping-list.md
+  - "Transportation":
+    - "Options": container-transport-options.md
+    - "Weight Distribution": weight-distribution-report.md
+  - "Operating Manual": operating-manual.md
+  - Research:
+    - "Daily Energy Use": daily-energy-report.md
+    - "Container Basics": container-report.md
+    - "Optics Report": pinhole-optics-report.md
+    - "Container Optics": pinhole-option-b-optics.md
+    - "Lens vs Pinhole": lens-vs-pinhole-exposure.md
+    - "Lens Options": lens-options.md
+    - "Photosensitive Materials": photosensitive-plane-options.md
+    - "Sensitizer Trials": sensitizer-trials.md
+    - "Distortion Renders": distortion-renders.md
+    - "Tilt & Swing Distortion Renders": tilt-swing-board-analysis.md
+    - "Film Plane Distortion Analysis (superseded)": film-plane-mechanism-analysis.md
+    - "Light Trap Selection": light-trap-selection.md
+    - "Cost Analysis": cost-analysis-report.md
+    - "Right Walkway Cantilever (decision record)": right-walkway-cantilever-study.md
+    - "Process Comparison (alt processes)": process-comparison.md
+  - "Educational Program":
+    - "TBS-002 Design": mini-tbs/mini-tbs-poc.md
+    - "TBS-002 Shopping List": mini-tbs/mini-tbs-shopping-list.md
+    - "Printable Instructions": assets/tbs-002-brochure.pdf
+  - Appendix:
+    - License: licensing.md
+    - Dependencies: component-dependency-map.md
+    - Dimension Audit: component-dimension-audit.md
 
 # Derive the released version from RELEASE.md at build time (single source — no stored copy)
 hooks:
@@ -290,7 +350,7 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/yourusername/tbs
 
-copyright: "© 2026 Alvin Richards — Released under <a href=\"../licensing/\">GNU AGPLv3</a>"
+copyright: "© 2026 Alvin Richards — Released under <a href=\\"../licensing/\\">GNU AGPLv3</a>"
 """
 
 INDEX_MD = """\
@@ -485,19 +545,14 @@ def main():
     # 5. Write mkdocs.yml
     print("\n[5/5] Writing mkdocs.yml and published/index.md...")
 
-    nav_entries = []
-    for src_name, (subdir, title) in MD_FILES:
-        if subdir == ".":
-            path = src_name
-        else:
-            path = f"{subdir}/{src_name}"
-        nav_entries.append(f'  - "{title}": {path}')
-
+    # The nav is authored literally in the MKDOCS_YML template (nested + hand-curated
+    # — sections, sub-sections, and the non-md "Printable Instructions" PDF link),
+    # which a flat MD_FILES list cannot express. MD_FILES still drives the doc-copy
+    # step above; when the nav changes, edit the template's nav block directly.
     yml_content = MKDOCS_YML.format(
         site_name=SITE_NAME,
         site_description=SITE_DESCRIPTION,
         site_url=SITE_URL,
-        nav_entries="\n".join(nav_entries),
     )
     (PROJECT_ROOT / "mkdocs.yml").write_text(yml_content)
     print("  mkdocs.yml written")

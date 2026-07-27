@@ -424,10 +424,7 @@ hardware are sourced there and in the IBC stacking frame line.
 <!-- BEGIN parts:corridor-plumbing-panel -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [Shurflo 2088-554-144 pump (P-01 Blue supply)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
-| Shurflo 2088-554-144 pump (P-03 waste evacuation) | 12VDC, 3.5 GPM, 45 PSI; empties IBC-4 residual below X4 (~120L) | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
-| Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 12VDC, 3.5 GPM, 45 PSI; tray drain to IBC-3 (~900mm lift) | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
-| Shurflo 2088-554-144 pump (P-05 Brown drain) | 12VDC, 3.5 GPM, 45 PSI; evacuates IBC-3 (Brown) residual to the X3 end-wall port | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
+| [Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 filter loop / P-03 waste evac / P-04 tray drain / P-05 Brown drain)](https://www.amazon.com/dp/B00C1M6B1C) (B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports; 5 identical pumps, one per water-system duty (P-01..P-05). 2026-07-27: consolidated from 5 lines; firm $100 ea (Amazon B00C1M6B1C, was $80–89 Fresh Water Systems est) | 5 ea | Amazon / Fresh Water Systems | $500 |
 | [SeaFlo accumulator (0.75 L)](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) (SFAT-075-125-01) | 0.75 L, 125 PSI, 1/2" MNPT | 1 ea | Environmental Marine / Amazon | $30–$41 |
 | [Corridor plumbing-panel ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — rear backing board + drain-riser spine + spacer offcuts. STANDARD exterior per project rule (was mis-spec'd marine ~$179-250). Firm $29.30 (Home Depot 2026-07-23). Seal cut edges. | 1 sheet | Home Depot | $29 |
 | [Pump-mount shirt ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — pump-mount shirt (~610×1650 cut) behind P-01..P-05 + 6× spacer blocks. Same SKU as ply-18; 5× Shurflo 2088 (~6.5 kg total) need no more than 3/4". STANDARD exterior per project rule (was marine ~$212). Firm $29.30 (Home Depot 2026-07-23). May nest with ply-18 in one sheet at cut — carried separate for margin. Double-layer locally if extra pump-rail stiffness wanted. | 1 sheet | Home Depot | $29 |
@@ -437,7 +434,7 @@ hardware are sourced there and in the IBC stacking frame line.
 | pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build as SV-01 | 1 ea | US Plastic Corp | $10–$18 |
 | Steel flat bar 25×3mm — ribbon support cross-brace | Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (the four corridor↔pinhole lines); ~300mm each | 4 ea | Home Depot | $8–$16 |
 | Cushioned pipe clip | Secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports) | 16 ea | Amazon | $16–$32 |
-| **Corridor Plumbing Panel total** | | | | **$624–$728** |
+| **Corridor Plumbing Panel total** | | | | **$804–$872** |
 <!-- END parts:corridor-plumbing-panel -->
 
 ### 9.2 Pinhole Wall Plumbing Panel
@@ -445,7 +442,6 @@ hardware are sourced there and in the IBC stacking frame line.
 <!-- BEGIN parts:pinhole-wall-plumbing-panel -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [Shurflo 2088-554-144 pump (P-02 filter loop)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
 | Big Blue filter housing 4.5"×20" (separate) | Ø184×594mm/housing (4.5×20), 1" NPT ports — three SEPARATE housings on the slotted-angle skid frame (Pentek / iSpring / Geekpure) | 3 ea | AllFilters / Amazon | $114–$186 |
 | Slotted steel angle frame 25×25×3mm (filter skid) | ~2.5 m 25×25×3mm slotted steel angle + fasteners; bolts to the 18mm ply backing (adjustable housing height) | 1 lot | Home Depot | $25–$45 |
 | SS lag/wood screws — filter housings to ply backing | 2 per housing × 3 — 5/16 SS lag/wood screws through the housing's mounting-hole ears into the 18mm plywood backing (no custom bracket). Pin SKU at order. | 6 ea | Home Depot | $3–$9 |
@@ -457,7 +453,7 @@ hardware are sourced there and in the IBC stacking frame line.
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | PP full-port quarter-turn; pump-suction isolation BV-03 (P-02) | 1 ea | US Plastic Corp / Amazon | $44 |
 | [3-way diverter valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=31268) (31268) | L/T-port; 3W-DV-01 (filter output) | 1 ea | US Plastic Corp | $61 |
 | pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line | 1 ea | US Plastic Corp | $10–$18 |
-| **Pinhole Wall Plumbing Panel total** | | | | **$477–$680** |
+| **Pinhole Wall Plumbing Panel total** | | | | **$397–$591** |
 <!-- END parts:pinhole-wall-plumbing-panel -->
 
 ---

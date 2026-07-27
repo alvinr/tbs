@@ -339,11 +339,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 |------|------|-----|----------|-----------|
 | [IBC tote (1,000 L caged)](https://www.repackify.com/buy-ibc-totes/california) | Reconditioned food-grade (prior-food-contents) 275-gal/1000L caged composite tote, DN50 butterfly valve (S60×6 thread); side-entry fittings near top. ~$150/ea local SoCal (Container Exchanger food-grade lots have a ~12-tote min; buy 4 local). Firm ~$150. | 4 ea | SoCal reconditioner / Repackify | $600 |
 | [Bulkhead fitting 2" NPT (304 SS)](https://www.mcmaster.com/4464K115) (4464K115) | External fill/drain port, welded through container wall | 3 ea | McMaster-Carr | $410 |
-| [Shurflo 2088-554-144 pump (P-01 Blue supply)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
-| [Shurflo 2088-554-144 pump (P-02 filter loop)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
-| Shurflo 2088-554-144 pump (P-03 waste evacuation) | 12VDC, 3.5 GPM, 45 PSI; empties IBC-4 residual below X4 (~120L) | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
-| Shurflo 2088-554-144 pump (P-04 tray drain transfer) | 12VDC, 3.5 GPM, 45 PSI; tray drain to IBC-3 (~900mm lift) | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
-| Shurflo 2088-554-144 pump (P-05 Brown drain) | 12VDC, 3.5 GPM, 45 PSI; evacuates IBC-3 (Brown) residual to the X3 end-wall port | 1 ea | Fresh Water Systems / Amazon | $80–$89 |
+| [Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 filter loop / P-03 waste evac / P-04 tray drain / P-05 Brown drain)](https://www.amazon.com/dp/B00C1M6B1C) (B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports; 5 identical pumps, one per water-system duty (P-01..P-05). 2026-07-27: consolidated from 5 lines; firm $100 ea (Amazon B00C1M6B1C, was $80–89 Fresh Water Systems est) | 5 ea | Amazon / Fresh Water Systems | $500 |
 | [SeaFlo accumulator (0.75 L)](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) (SFAT-075-125-01) | 0.75 L, 125 PSI, 1/2" MNPT | 1 ea | Environmental Marine / Amazon | $30–$41 |
 | Shurflo pump mounting bracket | Stainless, 2088 series — one per pump (P-01..P-05) | 5 ea | Fresh Water Systems | $50 |
 | [Corridor plumbing-panel ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — rear backing board + drain-riser spine + spacer offcuts. STANDARD exterior per project rule (was mis-spec'd marine ~$179-250). Firm $29.30 (Home Depot 2026-07-23). Seal cut edges. | 1 sheet | Home Depot | $29 |
@@ -393,7 +389,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $18–$40 |
-| **Water total** | | | | **$3,215–$3,736** |
+| **Water total** | | | | **$3,315–$3,791** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

@@ -357,19 +357,19 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | MPP 5-micron sediment cartridge 4.5"×20" | Melt-blown polypropylene depth filter (F-1 stage); ~50-print interval | 2 ea | Fresh Water Systems | $24–$40 |
 | KDF-55 heavy-metal cartridge 4.5"×20" | KDF-55 media for dissolved iron/metal removal (F-2 stage); ~60-print interval | 1 ea | FilterWay / Amazon | $65–$95 |
 | CTO carbon block cartridge 4.5"×20" | Coconut shell activated carbon block (F-3 stage); ~40-print interval | 2 ea | RonAqua / Amazon | $32–$60 |
-| Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; pump-suction isolation BV-01 (P-01), BV-02 (P-05), BV-06 (P-03) | 3 ea | Barn Door Ag / Amazon | $90–$135 |
-| Banjo V050FP ball valve 1/2" FNPT | PP full-port quarter-turn; pump-suction isolation BV-03 (P-02) | 1 ea | Barn Door Ag / Amazon | $30–$45 |
-| Banjo V050FP ball valve 1/2" FNPT | PP full-port; supply isolation BV-04 (TAP-01 chem tap), BV-05 (spray-bar feed) | 2 ea | Barn Door Ag / Amazon | $60–$90 |
-| Banjo V100FP ball valve 1" FNPT | PP full-port; V1/V3/V4, VB1–VB3 (IBC fill/drain) | 6 ea | Barn Door Ag / Amazon | $198–$330 |
-| 3-way diverter valve 1/2" FNPT | L/T-port HDPE-compatible; 3W-DV-02 (tray drain) | 1 ea | Barn Door Ag | $12–$22 |
-| 3-way diverter valve 1" FNPT | L/T-port; 3W-DV-01 (filter output) | 1 ea | Barn Door Ag | $18–$30 |
-| pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line | 1 ea | Barn Door Ag | $10–$18 |
-| pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build as SV-01 | 1 ea | Barn Door Ag | $10–$18 |
+| [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | PP full-port quarter-turn; pump-suction isolation BV-01 (P-01), BV-02 (P-05), BV-06 (P-03) | 3 ea | US Plastic Corp / Amazon | $133 |
+| [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | PP full-port quarter-turn; pump-suction isolation BV-03 (P-02) | 1 ea | US Plastic Corp / Amazon | $44 |
+| [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | PP full-port; supply isolation BV-04 (TAP-01 chem tap), BV-05 (spray-bar feed) | 2 ea | US Plastic Corp / Amazon | $89 |
+| [Banjo V100FP ball valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30653) (30653) | PP full-port; V1/V3/V4, VB1–VB3 (IBC fill/drain) | 6 ea | US Plastic Corp / Amazon | $297 |
+| [3-way diverter valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=22365) (22365) | L/T-port HDPE-compatible; 3W-DV-02 (tray drain) | 1 ea | US Plastic Corp | $24 |
+| [3-way diverter valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=31268) (31268) | L/T-port; 3W-DV-01 (filter output) | 1 ea | US Plastic Corp | $61 |
+| pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line | 1 ea | US Plastic Corp | $10–$18 |
+| pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build as SV-01 | 1 ea | US Plastic Corp | $10–$18 |
 | 2" polypropylene camlock pairs (M+F) | External bulkhead connections (X1/X3/X4 + spare) | 4 pair | US Plastic Corp | $20–$32 |
 | 1/2" NPT 90° elbow polypropylene | All pump-driven run bends | 14 ea | US Plastic Corp | $28–$56 |
-| Banjo EL100-90 elbow 1" NPT | PP 90°; IBC bends, filter outlet to DV-01 | 4 ea | Barn Door Ag / Amazon | $16–$24 |
+| [Banjo EL100-90 elbow 1" NPT](https://www.usplastic.com/catalog/item.aspx?itemid=31187) (31187) | PP 90°; IBC bends, filter outlet to DV-01 | 4 ea | US Plastic Corp / Amazon | $18 |
 | 1/2" NPT polypropylene tee | Blue suction/discharge tees, branches | 6 ea | US Plastic Corp | $12–$24 |
-| Banjo TEE100 equal tee 1" NPT | PP; IBC drain tees (the X1 fill is now a 4-way cross) | 3 ea | Barn Door Ag / Amazon | $15–$21 |
+| [Banjo TEE100 equal tee 1" NPT](https://www.usplastic.com/catalog/item.aspx?itemid=36358) (36358) | PP; IBC drain tees (the X1 fill is now a 4-way cross) | 3 ea | US Plastic Corp / Amazon | $43 |
 | 1" NPT 4-way cross fitting | X1 fresh-fill 4-way: X1 inlet + IBC-1 + IBC-2 + DV-01 blue recycle return (was a 3-way tee). Cost est. | 1 ea | US Plastic Corp | $8–$14 |
 | 1/2" NPT polypropylene union | Maintenance disconnects on pump runs | 6 ea | US Plastic Corp | $24–$36 |
 | 1/2"×1" NPT bushing reducer | P-02 riser to F1 filter inlet | 1 ea | US Plastic Corp | $3–$5 |
@@ -381,7 +381,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Thread seal tape (PTFE) | 1/2" wide, 260" roll | 4 roll | Home Depot | $8 |
 | [1/2" SDR-11 HDPE pipe](https://www.ferguson.com) | All pump-driven runs (80 ft); matches pump port size | 4 stick | Ferguson | $24–$40 |
 | 1" SDR-11 HDPE pipe | Food-safe blue-stripe 20 ft; filter outlet + IBC lines | 1 stick | Ferguson | $12–$18 |
-| Banjo TEE100 equal tee, 1" HDPE NPT | X1 fill tee — splits the fill to both Blue totes | 1 ea | Barn Door Ag / Amazon | $5–$7 |
+| [Banjo TEE100 equal tee, 1" HDPE NPT](https://www.usplastic.com/catalog/item.aspx?itemid=36358) (36358) | X1 fill tee — splits the fill to both Blue totes | 1 ea | US Plastic Corp / Amazon | $14 |
 | 3/4" SDR-11 HDPE pipe | Spray bar run, 20 ft sticks | 2 stick | Ferguson | $20–$30 |
 | 1/2" ID reinforced braided PVC hose | Pump inlet flexible connection, 6 ft per pump | 2 length | US Plastic Corp | $24–$48 |
 | 14 AWG duplex marine wire | Tinned copper, 25 ft | 1 roll | Waytek Wire | $22 |
@@ -393,7 +393,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $18–$40 |
-| **Water total** | | | | **$2,937–$3,718** |
+| **Water total** | | | | **$3,215–$3,736** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

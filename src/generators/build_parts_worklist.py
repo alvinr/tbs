@@ -21,6 +21,8 @@ A row is included when it is not confidently orderable as-is:
   • URL-MISSING— has a part number but no explicit URL (one gets auto-synthesized, maybe dead) [defect B]
   • PRICE-VERIFY— primary supplier is manual/JS-gated (McMaster/Roton/Grainger/…), so the price
                   needs a human check even when the SKU is known
+  • SOURCE-PRICE— Amazon-primary commodity row carried as an estimate (no confirmed SKU, or a
+                  low–high range) — pin the ASIN/URL + a firm price
 
 Clean rows (verified SKU + URL + consistent supplier + open-web price) are omitted — nothing to do.
 """
@@ -57,6 +59,11 @@ COLS = [
 ]
 
 
+def _firm(p) -> bool:
+    """A row is firm when it carries a confirmed SKU and a single (non-range) price."""
+    return bool((p.part_no or "").strip()) and p.low == p.high
+
+
 def flags_for(p) -> list[str]:
     pn = (p.part_no or "").strip()
     url = (p.url or "").strip()
@@ -71,6 +78,11 @@ def flags_for(p) -> list[str]:
         f.append("URL-MISSING")
     if p.supplier in GATED or p.supplier in SPEC_STOCK:
         f.append("PRICE-VERIFY")
+    # Amazon-primary commodity rows carried as an estimate (no confirmed listing, or only a
+    # low–high range). Orderable in principle, but the exact SKU/price isn't pinned — Alvin
+    # sources these directly (logged-in Amazon), so surface them to fill an ASIN/URL + price.
+    if (p.supplier or "").strip().lower() == "amazon" and not _firm(p):
+        f.append("SOURCE-PRICE")
     return f
 
 
@@ -83,6 +95,9 @@ def hint_for(p, flags) -> str:
         bits.append("pin an exact SKU + capture the fit-critical dims (bore/thread/Ø) in new_dims")
     if "URL-MISSING" in flags and "SKU≠SUPP" not in flags:
         bits.append("add the product URL (the CSV auto-guesses mcmaster.com/<sku> otherwise)")
+    if "SOURCE-PRICE" in flags:
+        bits.append("source on Amazon: pin the listing (ASIN/URL) + confirm the current price "
+                    "(and a single price, not a range) in new_low/new_high")
     if not bits and "PRICE-VERIFY" in flags:
         bits.append("refresh the price at the supplier")
     return "; ".join(bits)

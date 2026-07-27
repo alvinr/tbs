@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $467 | $698 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,193 | $6,759 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,232 | $7,972 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,230 | $7,929 |
 | 6. Electrical — power, circuits, wiring | $2,984 | $3,020 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,032 | $2,506 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,914** | **~$36,813** |
+| **TOTAL (base build + 50-print run)** | **~$27,912** | **~$36,770** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -273,10 +273,9 @@ indicative low–high estimates — get quotes before ordering.
 | [1" bulkhead tank-body fittings (Blue equalization cross-tie)](https://www.usplastic.com/catalog/item.aspx?itemid=32194) (32194) | 2 ea | US Plastic Corp | water | $25 |
 | 1" NPT 4-way cross fitting | 1 ea | US Plastic Corp | water | $8–$14 |
 | [1" NPT spring check valve (CV1 — X1 gravity fill)](https://www.usplastic.com/catalog/item.aspx?itemid=31415) (31415) | 1 ea | US Plastic Corp | water | $24 |
-| 1" PVC inter-housing jumpers | 1 lot | Ferguson | water | $18–$32 |
-| 1" PVC Sch-40 pipe | 1 stick | Ferguson | water | $12–$18 |
-| 1" PVC Sch-40 slip 90° elbow | 4 ea | Home Depot | water | $3–$5 |
-| 1" PVC Sch-40 slip tee | 4 ea | Home Depot | water | $5–$8 |
+| [1" PVC Sch-40 pipe](https://www.homedepot.com/p/100348473) (PVC040100600RS) | 2 stick | Home Depot | water | $17 |
+| [1" PVC Sch-40 slip 90° elbow](https://www.homedepot.com/p/203812125) (PVC023001000HD) | 4 ea | Home Depot | water | $6 |
+| [1" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812199) (PVC024001000HD) | 4 ea | Home Depot | water | $9 |
 | 1" reinforced suction hose, 6 ft | 1 ea | US Plastic Corp | tray | $15 |
 | 1" SS foot valve with strainer screen | 1 ea | US Plastic Corp | tray | $20 |
 | 1/2" barb × 1/2" hose barb, brass | 1 ea | DripDepot | spray | $4 |
@@ -292,7 +291,7 @@ indicative low–high estimates — get quotes before ordering.
 | [3-way diverter valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=31268) (31268) | 1 ea | US Plastic Corp | water | $61 |
 | [3-way diverter valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=22365) (22365) | 1 ea | US Plastic Corp | water | $24 |
 | 3/4" LDPE irrigation poly pipe, 15 ft | 1 ea | DripDepot | spray | $10 |
-| 3/4" PVC Sch-40 pipe | 2 stick | Ferguson | water | $20–$30 |
+| [3/4" PVC Sch-40 pipe](https://www.homedepot.com/p/100348472) (PVC-04007-0600) | 2 stick | Home Depot | water | $12 |
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | 3 ea | US Plastic Corp | water | $133 |
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | 1 ea | US Plastic Corp | water | $44 |
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | 2 ea | US Plastic Corp | water | $89 |
@@ -303,10 +302,10 @@ indicative low–high estimates — get quotes before ordering.
 | Flat-fan irrigation spray nozzles, barbed | 26 ea | DripDepot | spray | $30–$50 |
 | pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | US Plastic Corp | water | $10–$18 |
 | pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | US Plastic Corp | water | $10–$18 |
-| PVC slip×MNPT male adapters (run → threaded components) | 40 ea | Home Depot | water | $20–$40 |
+| PVC slip×MNPT male adapters (run → threaded components) | 40 ea | Home Depot | water | $32–$46 |
 | [S60×6 female-buttress → 2" NPT + 2→1" bushing](https://us.cpp.parts/collections/fits-s60x6) (HMFN/20UD/027) | 8 ea | CPP.parts | water | $112–$144 |
 | ½" PVC Sch-40 pipe (tap relocation) | 1 lot | Irrigation supply | shelf | $10 |
-| **plumbing-fittings subtotal** | | | | **$1,621–$1,750** |
+| **plumbing-fittings subtotal** | | | | **$1,618–$1,707** |
 
 ### seals-gaskets
 
@@ -432,7 +431,7 @@ indicative low–high estimates — get quotes before ordering.
 | Amazon | 27 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, tools-safety, water-equipment | $1,358–$1,471 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,000–$1,420 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
-| Home Depot | 35 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety, water-equipment | $1,034–$1,334 |
+| Home Depot | 37 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety, water-equipment | $1,081–$1,371 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
 | US Plastic Corp | 16 | plastics-sheet, plumbing-fittings | $1,073–$1,185 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
@@ -466,7 +465,6 @@ indicative low–high estimates — get quotes before ordering.
 | B&H Photo | 1 | fabric-textile | $95 |
 | Fresh Water Systems | 2 | fasteners-hardware, water-equipment | $74–$90 |
 | StrongAr Hardware | 1 | fasteners-hardware | $70–$90 |
-| Ferguson | 3 | plumbing-fittings | $50–$80 |
 | Blue Sea | 3 | electrical-distribution | $76 |
 | Super Bright LEDs | 1 | electrical-distribution | $75 |
 | Frost King + Canal Rubber | 1 | seals-gaskets | $40–$75 |

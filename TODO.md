@@ -36,14 +36,16 @@ bucketed by WHEN it can be acted on:_
     `tee-100-hdpe` → qty 4) and `elbow-el100` re-spec'd from threaded Banjo FRPP ($14.19 tee / $4.59
     elbow) to **1" PVC Sch-40 slip** at Home Depot (est ~$1.50 tee / ~$1 elbow). Saved ~$65. **Source
     exact Home Depot SKU/price** (still an estimate range).
-  - [x] **(c) Transition adapters — ADDED 2026-07-27.** New `pvc-transition-adapters` line: PVC slip×NPT
-    male adapters where the glued run meets each threaded component (valves, filter ports, bulkheads,
-    sample taps, accumulator). **~40 est @ $0.50–1.00** — the exact count + ½"/1" split needs a
-    **schematic trace**, and the Home Depot SKUs still need sourcing.
+  - [x] **(c) Transition adapters — ADDED + SKUs SOURCED 2026-07-27.** `pvc-transition-adapters`: PVC
+    slip×NPT male adapters where the glued run meets each threaded component. Unit prices firm at Home
+    Depot (½" PVC021090600HD $0.79, 1" PVC021091000HD $1.16); qty held at **~40 est** — the exact count
+    + ½"/1" split still needs a **schematic trace**.
   - [ ] **`union-half` — union or coupling?** The sourced part is a slip COUPLING (permanent); if the
     pump runs need service disconnects there, swap to a PVC union (~$3–4). Decide.
-  - [ ] **Re-price/re-count the PVC run** — `pvc-1in` / `pvc-three-quarter` / `filter-jumper` are still
-    Ferguson estimates (½" pipe `pvc-half` now firm at Home Depot $4.81/10ft). Source the rest at Home Depot.
+  - [x] **PVC run priced/firmed 2026-07-27.** `pvc-half` ($4.81×8), `pvc-1in` (Charlotte PVC040100600RS
+    $8.65×2 — ⚠ listing is DWV not pressure; OK at 45 PSI, flagged), `pvc-three-quarter` (PVC-04007-0600
+    $5.76×2), slip `tee-100`/`elbow-el100` all firm at Home Depot. `filter-jumper` bundle **retired** into
+    itemized pipe + elbows + adapters (was double-counting). Residual: re-count stick qtys vs final routing.
 - [ ] **panel-corner-plates — design flag (huge cores).** Each 3mm 5052 Al corner core is 653×2388mm (~16.8 ft², ~half a sheet); the 4 don't nest → 2 full sheets = $586 + weight. Decide full solid plate vs a lighter frame/partial before buying.
 - [ ] **Aug 2026 full re-price.** Sweep every `parts.py` line against current listings (reminder atop the file); edit band → `--inject` cascades.
 - [ ] **Master-BOM SKU backfill.** Branded rows that don't yet carry a registry `part_no` — Alvin's supplier paste-check; each SKU auto-appears in the master on the next `--inject`.

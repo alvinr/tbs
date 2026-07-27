@@ -349,7 +349,6 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Slotted steel angle frame 25×25×3mm (filter skid) | ~2.5 m 25×25×3mm slotted steel angle + fasteners; bolts to the 18mm ply backing (adjustable housing height) | 1 lot | Home Depot | $25–$45 |
 | SS lag/wood screws — filter housings to ply backing | 2 per housing × 3 — 5/16 SS lag/wood screws through the housing's mounting-hole ears into the 18mm plywood backing (no custom bracket). Pin SKU at order. | 6 ea | Home Depot | $3–$9 |
 | Plywood offcut spacer blocks 25mm (filter skid) | 25mm standoff blocks between the housing's mounting ears and the ply backing — sump-bowl hang clearance (the housing lag-screws through them into the ply). Cut from PLYWOOD OFFCUTS (Alvin 2026-07-25 — no need for HDPE; dry standoff, not a wet-immersion part). | 1 lot | offcuts | $0 |
-| 1" PVC inter-housing jumpers | F-01 OUT→F-02 IN, F-02 OUT→F-03 IN — 1" PVC + 90° elbows routed outside the bodies (THREADED — filter ports are hard components) | 1 lot | Ferguson | $18–$32 |
 | MPP 5-micron sediment cartridge 4.5"×20" | Melt-blown polypropylene depth filter (F-1 stage); ~50-print interval | 2 ea | Fresh Water Systems | $24–$40 |
 | KDF-55 heavy-metal cartridge 4.5"×20" | KDF-55 media for dissolved iron/metal removal (F-2 stage); ~60-print interval | 1 ea | FilterWay / Amazon | $65–$95 |
 | CTO carbon block cartridge 4.5"×20" | Coconut shell activated carbon block (F-3 stage); ~40-print interval | 2 ea | RonAqua / Amazon | $32–$60 |
@@ -363,10 +362,10 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build as SV-01 | 1 ea | US Plastic Corp | $10–$18 |
 | [2" polypropylene camlock pairs (M+F)](https://www.usplastic.com/catalog/item.aspx?itemid=30754) (30754) | External bulkhead connections (X1/X3/X4 + spare). 2026-07-27: pair = US Plastic 30754 female coupler $16.23 + 30619 male adapter $6.70 = $22.93 (Banjo FRPP, EPDM) | 4 pair | US Plastic Corp | $92 |
 | [1/2" NPT 90° elbow polypropylene](https://www.homedepot.com/p/203812033) (PVC023000600HD) | All pump-driven run bends. 2026-07-27: Charlotte PVC Sch40 90° S×S (SLIP) — desc says NPT; confirm slip-vs-threaded in the plumbing audit | 14 ea | Home Depot | $10 |
-| 1" PVC Sch-40 slip 90° elbow | 1" PVC slip run bends (joint convention §5.1): IBC bends, filter outlet to DV-01. 2026-07-27 fork b — was threaded Banjo FRPP $4.59. Source exact Home Depot SKU/price (~$1). | 4 ea | Home Depot | $3–$5 |
+| [1" PVC Sch-40 slip 90° elbow](https://www.homedepot.com/p/203812125) (PVC023001000HD) | 1" PVC slip run bends (joint convention §5.1): IBC bends, filter outlet to DV-01. 2026-07-27 fork b — was threaded Banjo FRPP $4.59. Charlotte PVC023001000HD 90° S×S. | 4 ea | Home Depot | $6 |
 | [1/2" NPT polypropylene tee](https://www.homedepot.com/p/203812195) (PVC024000600HD) | Blue suction/discharge tees, branches. 2026-07-27: Charlotte PVC Sch40 S×S×S (SLIP/solvent-weld) — desc says NPT; confirm slip-vs-threaded in the plumbing audit | 6 ea | Home Depot | $5 |
-| 1" PVC Sch-40 slip tee | 1" PVC slip run tees (joint convention §5.1): 3× IBC drain + 1× X1 fill split to both Blue totes. 2026-07-27 fork b — was threaded Banjo FRPP $14.19; consolidated tee-100 + tee-100-hdpe (×4). Source exact Home Depot SKU/price (~$1.50). | 4 ea | Home Depot | $5–$8 |
-| PVC slip×MNPT male adapters (run → threaded components) | Joint convention §5.1 (fork c): one slip×NPT male adapter where the glued PVC run lands on each threaded component — ball/diverter/check valves, filter housing ports, tank bulkheads, sample taps, accumulator. ½" + 1" mix, ~40 est; exact count/size split from the schematic trace. Source exact Home Depot SKUs. | 40 ea | Home Depot | $20–$40 |
+| [1" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812199) (PVC024001000HD) | 1" PVC slip run tees (joint convention §5.1): 3× IBC drain + 1× X1 fill split to both Blue totes. 2026-07-27 fork b — was threaded Banjo FRPP $14.19; consolidated tee-100 + tee-100-hdpe (×4). Charlotte PVC024001000HD S×S×S. | 4 ea | Home Depot | $9 |
+| PVC slip×MNPT male adapters (run → threaded components) | Joint convention §5.1 (fork c): one slip×NPT male adapter where the glued PVC run lands on each threaded component — ball/diverter/check valves, filter housing ports, tank bulkheads, sample taps, accumulator. ½" = Charlotte PVC021090600HD $0.79, 1" = PVC021091000HD $1.16 (unit prices firm; low/high spans the ½"–1" mix). ~40 est; exact count/size split from the schematic trace. | 40 ea | Home Depot | $32–$46 |
 | 1" NPT 4-way cross fitting | X1 fresh-fill 4-way: X1 inlet + IBC-1 + IBC-2 + DV-01 blue recycle return (was a 3-way tee). Cost est. 2026-07-27: NOT stocked at US Plastic (they don't carry 1" 4-way crosses) — source a Spears/PVC Sch-80 1" cross via an irrigation/PVC supplier, or redesign the X1 fill as 2× tees. | 1 ea | US Plastic Corp | $8–$14 |
 | [1/2" NPT polypropylene union](https://www.homedepot.com/p/203811331) (PVC021000600HD) | Maintenance disconnects on pump runs. 2026-07-27: sourced part is a Charlotte PVC Sch40 S×S COUPLING (permanent), NOT a union — can't disconnect for service; if breaks are needed swap to a PVC union (~$3-4). Also SLIP not NPT — see plumbing audit | 6 ea | Home Depot | $4 |
 | [1/2"×1" NPT bushing reducer](https://www.homedepot.com/p/204836713) (PVC021121800HD) | P-02 riser → F1 filter inlet — THREADED (lands on the filter = hard component, per the joint convention). Charlotte PVC Sch40 1×½ reducer bushing | 1 ea | Home Depot | $3 |
@@ -377,8 +376,8 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Cushioned pipe clip | Secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports) | 16 ea | Amazon | $16–$32 |
 | Thread seal tape (PTFE) | 1/2" wide, 260" roll | 4 roll | Home Depot | $8 |
 | [1/2" PVC Sch-40 pipe](https://www.homedepot.com/p/319692959) (30-05010HD) | All pump-driven runs (~80 ft = 8× 10-ft sticks), PVC Sch-40 solvent-weld (IPEX potable-pressure). Matches pump port size. | 8 stick | Home Depot | $38 |
-| 1" PVC Sch-40 pipe | PVC Sch-40 solvent-weld, ~20 ft; filter outlet + IBC lines. Re-price/re-count when sourced (10-ft sticks) | 1 stick | Ferguson | $12–$18 |
-| 3/4" PVC Sch-40 pipe | Spray bar run, PVC Sch-40 solvent-weld. Re-price/re-count when sourced (10-ft sticks) | 2 stick | Ferguson | $20–$30 |
+| [1" PVC Sch-40 pipe](https://www.homedepot.com/p/100348473) (PVC040100600RS) | PVC Sch-40, ~20 ft = 2× 10-ft sticks; filter outlet + IBC lines. ⚠ Charlotte listing is DWV (drain-waste-vent), not pressure — physically fine at 45 PSI (same Sch-40 wall), but a pressure-rated pipe is the by-the-book pick for the pumped filter section. Re-count vs routing. | 2 stick | Home Depot | $17 |
+| [3/4" PVC Sch-40 pipe](https://www.homedepot.com/p/100348472) (PVC-04007-0600) | Spray bar run, PVC Sch-40 pressure pipe (plain end), 2× 10-ft sticks. $5.76/stick (Alvin sent $576 — read as a decimal typo; ¾" pressure pipe sits between the ½" $4.81 and 1" $8.65). Re-count vs actual run length. | 2 stick | Home Depot | $12 |
 | [1/2" ID reinforced braided PVC hose](https://www.usplastic.com/catalog/item.aspx?itemid=60703) (60703) | Pump inlet flexible connection, 6 ft per pump | 2 length | US Plastic Corp | $12 |
 | 14 AWG duplex marine wire | Tinned copper, 25 ft | 1 roll | Waytek Wire | $22 |
 | Anderson Powerpole connectors 30A | Pump connections — one pair per pump (P-01..P-05) | 5 pair | Powerwerx | $10 |
@@ -389,7 +388,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $18–$40 |
-| **Water total** | | | | **$3,326–$3,704** |
+| **Water total** | | | | **$3,324–$3,661** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

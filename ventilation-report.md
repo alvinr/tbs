@@ -206,8 +206,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | 16 AWG silicone coiled cable | 1m, 2-conductor (Fan B flex) | 1 ea | Waytek Wire / Amazon | $15 |
 | Cooler external power cable | 1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end | 1 ea | Waytek Wire / Amazon | $20 |
 | [Ratchet straps, 25mm](https://www.homedepot.com/p/312994495) (FH0829) | Cooler stowage. Husky 12 ft × 1" ratchet tie-downs, S-hook, 4-pack — design uses 2, 2 spare | 1 4-pack | Home Depot | $10 |
-| Plywood base plate (cooler stowage) | ½" (12mm) plywood project panel (610×1220mm), cut to 600×350 | 1 2'×4' ½" panel | Home Depot / Lumber yard | $8 |
-| **Ventilation total** | | | | **$777–$824** |
+| **Ventilation total** | | | | **$769–$816** |
 <!-- END parts:ventilation -->
 
 ---

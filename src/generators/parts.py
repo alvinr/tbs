@@ -127,9 +127,9 @@ PARTS: list[Part] = [
          "ventilation", 1, "ea", 20, 20, "Waytek Wire", "Amazon", spec="1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end"),
     Part("ratchet-strap-25", "Ratchet straps, 25mm", "fasteners-hardware",
          "ventilation", 1, "4-pack", 9.97, 9.97, "Home Depot", part_no="FH0829", url="https://www.homedepot.com/p/312994495", spec='Cooler stowage. Husky 12 ft × 1" ratchet tie-downs, S-hook, 4-pack — design uses 2, 2 spare'),
-    Part("plywood-base-12", "Plywood base plate (cooler stowage)", "timber-ply",
-         "ventilation", 1, '2\'×4\' ½" panel', 8, 8, "Home Depot", "Lumber yard",
-         spec='½" (12mm) plywood project panel (610×1220mm), cut to 600×350'),
+    # plywood-base-12 RETIRED 2026-07-27 — the cooler stowage base plate (600×350) is now cut from the
+    # full panel-fanb-ply 4×8 sheet (Alvin: "use panel-fanb-ply instead"); a separate ½" panel line was
+    # redundant given the leftover from that sheet. See panel-fanb-ply.
 
     # ═══ water family (split per owning report; reconciled to costing.WATER lines — water-system §8
     # item-sums after the 2026 reconciliation). The §8 group ("water") = storage+pumps+filter+valves+
@@ -181,8 +181,8 @@ PARTS: list[Part] = [
          spec='Ø184×594mm/housing (4.5×20), 1" NPT ports — three SEPARATE housings on the slotted-angle skid frame (Pentek / iSpring / Geekpure)',
          datasheet="Pentek 4.5×20 BB", modeled_const="BB_OD/BB_H",
          audit_status="3-separate design of record (2026-07): combo → 3 separate housings + frame per plumbing-report §3.1/§7.2. Prices indicative — firm at the Aug-2026 re-price.", panel="Pinhole Wall"),
-    Part("filter-skid-frame", "Slotted steel angle frame 25×25×3mm (filter skid)", "water-equipment",
-         "water", 1, "lot", 25, 45, "Home Depot", spec="~2.5 m 25×25×3mm slotted steel angle + fasteners; bolts to the 18mm ply backing (adjustable housing height)", panel="Pinhole Wall"),
+    Part("filter-skid-frame", "Steel angle frame 30×30mm (filter skid)", "water-equipment",
+         "water", 1, "6ft length", 116.76, 116.76, "McMaster-Carr", part_no="9017K61", url="https://www.mcmaster.com/9017K61-9017K596/", spec="30×30mm steel angle × 6 ft; bolts to the 18mm ply backing (adjustable housing height). ⚠ big jump from the $25–45 slotted-angle estimate (McMaster solid angle is premium) — CONFIRM one 6-ft length builds the full 3-housing skid (the ~2.5 m estimate would need 2 → ~$234) and that solid 30×30 is intended over cheaper Home Depot slotted angle.", panel="Pinhole Wall"),
     # filter-ubracket RETIRED 2026-07-22 — Big Blue housings have mounting-hole ears; lag-screw straight to the ply backing
     Part("filter-lag-screws", "SS lag/wood screws — filter housings to ply backing", "fasteners-hardware",
          "water", 2, "5-pack", 7.09, 7.09, "Home Depot", part_no="812670", url="https://www.homedepot.com/p/302007729", spec="2 per housing × 3 = 6 needed — Everbilt 5/16\"×1½\" SS hex lag screws through the housing's mounting-hole ears into the 18mm plywood backing (no custom bracket). Sold in 5-packs → 2 packs (10, 4 spare).", panel="Pinhole Wall"),
@@ -239,7 +239,7 @@ PARTS: list[Part] = [
     Part("check-valve-1in", '1" NPT spring check valve (CV1 — X1 gravity fill)', "plumbing-fittings",
          "water", 1, "ea", 23.66, 23.66, "US Plastic Corp", spec='PVC body, EPDM seal, 1" FNPT × FNPT. Only CV-1 (X1 fill) remains — the Shurflo 2088 pumps have integral check valves, so CV-2/CV-3/CV-4 are redundant and dropped', part_no="31415", url="https://www.usplastic.com/catalog/item.aspx?itemid=31415"),
     Part("ribbon-support-beam", "Steel flat bar 25×3mm — ribbon support cross-brace", "steel-structural",
-         "water", 4, "ea", 2, 4, "Home Depot", spec="Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (the four corridor↔pinhole lines); ~300mm each", panel="Corridor"),
+         "water", 2, "3ft bar", 17.57, 17.57, "McMaster-Carr", part_no="6775T37", url="https://www.mcmaster.com/6775T37-6775T373/", spec="Low-carbon steel flat bar 25×3mm × 3 ft. Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (four corridor↔pinhole lines); 4 braces ~300mm each = cut from 2× 3-ft bars (2 spare pieces).", panel="Corridor"),
     Part("ribbon-pipe-clip", "Cushioned pipe clip", "fasteners-hardware",
          "water", 16, "ea", 1, 2, "Amazon", spec="Secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports)", panel="Corridor"),
     Part("ptfe-tape", "Thread seal tape (PTFE)", "adhesives-finishes",
@@ -494,11 +494,13 @@ PARTS: list[Part] = [
     Part("bonding-kit", "Equipotential bonding kit — 6 AWG + ring lugs", "electrical-distribution",
          "electrical", 1, "ea", 20, 20, "Waytek Wire"),
     Part("ep-backing-panel", "EP plywood backing panel (18mm, ~700×2000mm)", "timber-ply",
-         "electrical", 1, "sheet", 60, 60, "Home Depot", "Lumber yard",
-         spec='18mm sealed plywood backboard, ~700×2000mm cut from a 4×8 sheet — the wall-mounted '
+         "electrical", 1, "sheet", 75.18, 75.18, "Home Depot", part_no="97874", url="https://www.homedepot.com/p/203482483",
+         spec='¾" CDX fire-rated fir plywood, 4×8 sheet, cut to ~700×2000mm backboard — the wall-mounted '
               'surface every EP component fixes to (MPPT on its forward sub-panel, battery bank, '
               'inverter, main + PV disconnects); the DC-distribution terminals (fuse block + busbars) '
-              'sit in a small IP65 enclosure bolted to it. Add DIN rail + standoffs for the DIN gear.'),
+              'sit in a small IP65 enclosure bolted to it. Add DIN rail + standoffs for the DIN gear. '
+              'FIRE-RATED is the right call for an electrical backboard; the listing is also pressure-treated '
+              '(unneeded for a dry interior) — use SS/hot-dip fasteners, PT chemistry corrodes plain steel.'),
     Part("ip65-enclosure", "IP65 enclosure ~200×220×140mm (fuse block + busbars, on the plywood)", "electrical-distribution",
          "electrical", 1, "ea", 60, 60, "Polycase", "Amazon",
          spec='Weatherproof IP65 box bolted to the plywood backboard, sealing the DC-distribution '
@@ -627,8 +629,8 @@ PARTS: list[Part] = [
          note="Provisional qty: right-sized to the ~43 ft perimeter (old 3×50ft=150ft was ~3.5× over). Revisit with the EPDM-seal review."),
     Part("rosco-duvetyne", "Rosco Duvetyne", "fabric-textile",
          "film", 1, "ea", 95, 95, "B&H Photo", "Rosco direct", spec='60" wide, 10 yd'),
-    Part("poly-sheeting-film", "6-mil black poly sheeting", "tools-safety",
-         "film", 1, "roll", 66, 70, "Home Depot", "Uline", spec="10 ft × 100 ft"),
+    Part("poly-sheeting-film", "4-mil black poly sheeting", "tools-safety",
+         "film", 1, "roll", 40.12, 40.12, "Home Depot", part_no="51982", url="https://www.homedepot.com/p/332820356", spec="Film-Gard 10 ft × 100 ft × 4-mil black poly (film-plane blackout). 4-mil is fully opaque for a light-seal (opacity is the black pigment, not the gauge) — 6-mil was over-spec for a non-structural curtain."),
     Part("gorilla-tape", '2" black Gorilla Tape', "adhesives-finishes",
          "film", 6, "roll", 9.94, 9.94, "Home Depot", "Amazon", part_no="106718", url="https://www.homedepot.com/p/316372144", spec='Gorilla 30 yd × 1.88" black tape'),
     # — Wall-Seat Saddles (440; rev12 ×6, the 2 BR ends are walkway combined plates) —
@@ -725,9 +727,11 @@ PARTS: list[Part] = [
          "panel", 4, "sheet", 123.34, 123.34, "US Plastics", "TAP Plastics", part_no="46684",
          url="https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705",
          spec="Panel skins, both faces (~12 m², 4× 4×8 ft sheets) — rev11, replaces 18mm ply. 1/8\" HDPE is nearest stock to the 4mm PANEL_SKIN_T nominal (weld-compatible with the HDPE housing/drum); the U-channel grid (~400–450mm centers) keeps the skin flat, so the 0.8mm is immaterial. US Plastics 46684 $123.34/sheet."),
-    Part("panel-fanb-ply", "Exterior-grade plywood (Fan B mount band)", "timber-ply",
-         "panel", 1, '2\'×4\' ¾" panel', 30, 50, "Home Depot",
-         spec='¾" (18mm) exterior-grade project panel (610×1220mm); Fan B mount band, one corner bottom→1,125mm'),
+    Part("panel-fanb-ply", "Pressure-treated pine plywood (Fan B mount band + cooler base)", "timber-ply",
+         "panel", 1, '4\'×8\' ¾" sheet', 69.68, 69.68, "Home Depot", part_no="231428", url="https://www.homedepot.com/p/206343229",
+         spec='¾" CC pressure-treated pine, full 4\'×8\' sheet. Fan B mount band (610×1220mm, one corner bottom→1,125mm) '
+              'AND the cooler stowage base plate (600×350) are both cut from this one sheet (plywood-base-12 retired 2026-07-27). '
+              'PT is defensible at the vented cargo-door end; plenty of leftover from one sheet.'),
     Part("panel-corner-plates", "3mm aluminum plate 5052-H32 (48×96)", "aluminum",
          "panel", 2, "ea", 293.16, 293.16, "M&K Metal", "Industrial Metal Supply", part_no="52SH125408",
          url="https://www.mkmetal.net/5052-h32sht.125x48x96", spec="Corner-zone core plates — 3mm (.125\") 5052-H32, 48×96\" sheet, one 653mm-wide plate per sheet → 2 sheets. Firm $293.16/sheet (M&K Metal SoCal)."),
@@ -747,9 +751,9 @@ PARTS: list[Part] = [
          "panel", 1, "ea", 70, 90, "StrongAr Hardware", spec="Interior pull handle — through-bolted to the frame (§4.3). 304 chosen over 316 (~$186); interior / non-wet location.", url="https://www.strongarhardware.com/pro-line-series-ladder-pull-handle-back-to-back-matte-black-powder-coated-finish-316-exterior-grade-stainless-steel-alloy/"),
 
     # ═══ shelf (§7 chem-prep) — mirrors costing.SHELF → exact $203 ═══
-    Part("shelf-phenolic-ply", "Phenolic-faced plywood (work surface)", "timber-ply",
-         "shelf", 1, '4\'×8\' ¾" sheet', 60, 60, "Home Depot", "lumber yard",
-         spec='¾" (18mm) phenolic-faced concrete-form sheet (1220×2440mm), cut to 300×600'),
+    Part("shelf-phenolic-ply", "UV-coated white plywood (work surface)", "timber-ply",
+         "shelf", 1, '4\'×8\' 18mm sheet', 73.28, 73.28, "Home Depot", part_no="BPI6WUV2I", url="https://www.homedepot.com/p/302874373",
+         spec='Swaner 18mm × 4\'×8\' UV-coated white hardwood ply (1220×2440mm), cut to 300×600. UV-coated face gives a sealed, wipeable work surface — substitute for the phenolic concrete-form sheet (same purpose, readily stocked).'),
     Part("shelf-steel-shs", "25×25×3 mm steel SHS", "steel-structural",
          "shelf", 1, "lot", 30, 30, "Online Metals", "Metal Supermarkets", spec="6 m (frame + spill lip)"),
     Part("shelf-piano-hinge", "Continuous (piano) hinge, 600 mm", "fasteners-hardware",

@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $467 | $698 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,193 | $6,759 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $5,843 | $7,986 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,121 | $8,004 |
 | 6. Electrical — power, circuits, wiring | $2,984 | $3,020 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,032 | $2,506 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$27,525** | **~$36,827** |
+| **TOTAL (base build + 50-print run)** | **~$27,803** | **~$36,845** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -287,26 +287,26 @@ indicative low–high estimates — get quotes before ordering.
 | 1/2"×1" NPT bushing reducer | 1 ea | US Plastic Corp | water | $3–$5 |
 | 1/4" irrigation poly tube | 1 ea | DripDepot | spray | $6 |
 | 2" polypropylene camlock pairs (M+F) | 4 pair | US Plastic Corp | water | $20–$32 |
-| 3-way diverter valve 1" FNPT | 1 ea | Barn Door Ag | water | $18–$30 |
-| 3-way diverter valve 1/2" FNPT | 1 ea | Barn Door Ag | water | $12–$22 |
+| [3-way diverter valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=31268) (31268) | 1 ea | US Plastic Corp | water | $61 |
+| [3-way diverter valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=22365) (22365) | 1 ea | US Plastic Corp | water | $24 |
 | 3/4" LDPE irrigation poly pipe, 15 ft | 1 ea | DripDepot | spray | $10 |
 | 3/4" SDR-11 HDPE pipe | 2 stick | Ferguson | water | $20–$30 |
-| Banjo EL100-90 elbow 1" NPT | 4 ea | Barn Door Ag | water | $16–$24 |
-| Banjo TEE100 equal tee 1" NPT | 3 ea | Barn Door Ag | water | $15–$21 |
-| Banjo TEE100 equal tee, 1" HDPE NPT | 1 ea | Barn Door Ag | water | $5–$7 |
-| Banjo V050FP ball valve 1/2" FNPT | 3 ea | Barn Door Ag | water | $90–$135 |
-| Banjo V050FP ball valve 1/2" FNPT | 1 ea | Barn Door Ag | water | $30–$45 |
-| Banjo V050FP ball valve 1/2" FNPT | 2 ea | Barn Door Ag | water | $60–$90 |
-| Banjo V100FP ball valve 1" FNPT | 6 ea | Barn Door Ag | water | $198–$330 |
+| [Banjo EL100-90 elbow 1" NPT](https://www.usplastic.com/catalog/item.aspx?itemid=31187) (31187) | 4 ea | US Plastic Corp | water | $18 |
+| [Banjo TEE100 equal tee 1" NPT](https://www.usplastic.com/catalog/item.aspx?itemid=36358) (36358) | 3 ea | US Plastic Corp | water | $43 |
+| [Banjo TEE100 equal tee, 1" HDPE NPT](https://www.usplastic.com/catalog/item.aspx?itemid=36358) (36358) | 1 ea | US Plastic Corp | water | $14 |
+| [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | 3 ea | US Plastic Corp | water | $133 |
+| [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | 1 ea | US Plastic Corp | water | $44 |
+| [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | 2 ea | US Plastic Corp | water | $89 |
+| [Banjo V100FP ball valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30653) (30653) | 6 ea | US Plastic Corp | water | $297 |
 | Barbed tees, tube into the side poly manifold | 7 ea | DripDepot | spray | $10 |
 | [Bulkhead fitting 2" NPT (304 SS)](https://www.mcmaster.com/4464K115) (4464K115) | 3 ea | McMaster-Carr | water | $410 |
 | Distribution manifold, 1/2" → 7 barb outlets | 1 ea | DripDepot | spray | $12 |
 | Flat-fan irrigation spray nozzles, barbed | 26 ea | DripDepot | spray | $30–$50 |
-| pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | Barn Door Ag | water | $10–$18 |
-| pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | Barn Door Ag | water | $10–$18 |
+| pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | US Plastic Corp | water | $10–$18 |
+| pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | US Plastic Corp | water | $10–$18 |
 | [S60×6 female-buttress → 2" NPT + 2→1" bushing](https://us.cpp.parts/collections/fits-s60x6) (HMFN/20UD/027) | 8 ea | CPP.parts | water | $112–$144 |
 | ½" HDPE pipe (tap relocation) | 1 lot | Irrigation supply | shelf | $10 |
-| **plumbing-fittings subtotal** | | | | **$1,331–$1,819** |
+| **plumbing-fittings subtotal** | | | | **$1,610–$1,838** |
 
 ### seals-gaskets
 
@@ -435,6 +435,7 @@ indicative low–high estimates — get quotes before ordering.
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,000–$1,420 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
+| US Plastic Corp | 23 | plastics-sheet, plumbing-fittings | $1,127–$1,347 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
 | Home Depot | 27 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $945–$1,220 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
@@ -443,9 +444,7 @@ indicative low–high estimates — get quotes before ordering.
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
-| Barn Door Ag | 11 | plumbing-fittings | $464–$740 |
 | SoCal reconditioner | 1 | water-equipment | $600 |
-| US Plastic Corp | 12 | plastics-sheet, plumbing-fittings | $384–$588 |
 | M&K Metal | 1 | aluminum | $586 |
 | Fresh Water Systems | 7 | fasteners-hardware, water-equipment | $474–$535 |
 | Inverter Supply | 2 | electrical-distribution, electrical-power | $396 |

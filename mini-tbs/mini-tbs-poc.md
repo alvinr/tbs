@@ -153,7 +153,7 @@ where *f* is focal length in mm and *λ* = 0.00055mm (550 nm green light).
 | Rayleigh optimal d | 0.95mm | 1.9 × √(f × 0.00055) |
 | Drill bit used | 1/32" (0.794mm) | Closest Home Depot standard |
 | Actual pinhole Ø | ~0.80mm | Drill bit through aluminum can |
-| f-number | f/575 | f / d |
+| f-number | f/576 | f / d |
 | Film plane | 406 × 457mm | Box face |
 | Usable image area | 254 × 356mm | Paper size (centered on the film plane) |
 | Angle of view (diag.) | ~53° | 2 × arctan(half-diag / f) |
@@ -178,7 +178,7 @@ This is sufficient for a contact print viewed at arm's length — cyanotype on w
 
 A pinhole cyanotype is a slow exposure — **minutes, not an instant** — because the tiny hole passes very little light. There is no single "correct" time: it depends on how strong the sun is, the paper, and how fresh the sensitizer is. So a class finds the exposure the way photographers always have — start from a practical estimate and **bracket** around it.
 
-**Starting point for this camera:** about **10 minutes in full summer sun** (clear sky, mid-day). As pinholes go, this camera's f/575 aperture is relatively bright; a narrower hole or a deeper box would need proportionally longer.
+**Starting point for this camera:** about **10 minutes in full summer sun** (clear sky, mid-day). As pinholes go, this camera's f/576 aperture is relatively bright; a narrower hole or a deeper box would need proportionally longer.
 
 ### The f-number Sets the Pace
 
@@ -192,7 +192,7 @@ This is the exposure-scaling calculation students can do on paper. Say a class d
 
 Cyanotype is an iron-based process and does **not** exhibit classical Schwarzschild reciprocity failure, so its response stays linear even over these multi-minute exposures — the estimate holds without a long-exposure fudge factor. (See [Pinhole Optics Report](../pinhole-optics-report.md) §6.)
 
-This is a real advantage of cyanotype for pinhole work: a silver gelatin paper at f/575 would need a Schwarzschild correction (p ≈ 0.85), roughly doubling the exposure.
+This is a real advantage of cyanotype for pinhole work: a silver gelatin paper at f/576 would need a Schwarzschild correction (p ≈ 0.85), roughly doubling the exposure.
 
 ### Adjust for Conditions
 

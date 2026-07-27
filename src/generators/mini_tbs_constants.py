@@ -15,7 +15,7 @@ BOX_H = 406    # mm — box height (16")
 
 FOCAL = BOX_D  # focal length = depth
 PH_D = 0.794   # mm — pinhole diameter (1/32" drill bit)
-F_NO = round(FOCAL / PH_D)  # f/575
+F_NO = round(FOCAL / PH_D)  # f/576
 
 MARGIN = 25    # mm — mounting margin each side
 FP_W = BOX_W - 2 * MARGIN   # usable film plane width

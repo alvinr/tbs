@@ -39,12 +39,14 @@ bucketed by WHEN it can be acted on:_
 
 ---
 
-## Deliverable — standalone TBS-002 brochure — OPEN
-- [ ] **Create a separate brochure for TBS-002** (the mini / proof-of-concept). Its docs
-  (`mini-tbs-poc.md`, `mini-tbs-shopping-list.md`) currently ride at the tail of the main TBS-001
-  brochure (`tbs-brochure.pdf`, pp. 213–215); split them into their own **`tbs-002-brochure.pdf`** so
-  TBS-002 can be shared on its own. Likely a `publish.sh` flag / separate MD list that builds only the
-  TBS-002 docs (+ cover). (Alvin 2026-07-24.)
+## Deliverable — standalone TBS-002 brochure — DONE 2026-07-26
+- [x] **Standalone `tbs-002-brochure.pdf`** — teacher-facing classroom brochure. `generate_brochure.py`
+  now takes `--edition {tbs001,tbs002}` (default tbs001, unchanged): the tbs002 edition builds a
+  project-forward cover + a "For Teachers — At a Glance" quick-reference page (ages, session time,
+  group size, cost, curriculum, safety-at-a-glance) + the two mini-TBS docs. The mini-TBS docs are
+  dropped from the TBS-001 PDF (via the tbs001 `exclude` set) but stay on the site. `publish.sh` builds
+  both PDFs; both are gitignored (generated on publish). NOTE: neither brochure PDF is currently linked
+  for download on the site — if teachers should self-serve, add a hosted download link (follow-up).
 
 ---
 

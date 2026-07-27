@@ -423,11 +423,16 @@ esac
 # -- Generate brochure PDF ----------------------------------------------------
 if [[ "$MODE" != "local" ]]; then
     if python3 -c "import fpdf, markdown, yaml" 2>/dev/null; then
-        info "Generating brochure PDF..."
+        info "Generating brochure PDFs..."
         if python3 "${SCRIPT_DIR}/src/generators/generate_brochure.py"; then
-            info "PDF -> tbs-brochure.pdf"
+            info "PDF -> tbs-brochure.pdf (TBS-001)"
         else
-            warn "PDF generation failed -- check src/generators/generate_brochure.py output above"
+            warn "PDF generation failed (TBS-001) -- check src/generators/generate_brochure.py output above"
+        fi
+        if python3 "${SCRIPT_DIR}/src/generators/generate_brochure.py" --edition tbs002; then
+            info "PDF -> tbs-002-brochure.pdf (TBS-002 classroom)"
+        else
+            warn "PDF generation failed (TBS-002) -- check src/generators/generate_brochure.py output above"
         fi
     else
         warn "fpdf2 / markdown / pyyaml not installed -- skipping PDF generation"

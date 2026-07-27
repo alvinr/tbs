@@ -2,15 +2,20 @@
 # SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards
 """
-generate_brochure.py -- Build tbs-brochure.pdf from all TBS project pages.
+generate_brochure.py -- Build a TBS brochure PDF.
 
 Reads mkdocs.yml for page order, converts each .md source to HTML via the
 `markdown` library, then renders a combined PDF via fpdf2.
 
-Output: tbs-brochure.pdf (project root)
-Usage:  python3 generate_brochure.py
+Two editions (see EDITIONS):
+  tbs001 (default) -- the full engineering prospectus -> tbs-brochure.pdf
+  tbs002           -- a standalone classroom brochure (teacher quick-reference
+                      page + the two mini-TBS docs) -> tbs-002-brochure.pdf
+
+Usage:  python3 generate_brochure.py [--edition tbs001|tbs002]
 """
 
+import argparse
 import logging
 import os
 import re
@@ -42,7 +47,6 @@ except ImportError:
 # -- Constants -----------------------------------------------------------------
 PROJECT_ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 MKDOCS_YML   = os.path.join(PROJECT_ROOT, "mkdocs.yml")
-OUTPUT_PDF   = os.path.join(PROJECT_ROOT, "tbs-brochure.pdf")
 DIAGRAMS_DIR = os.path.join(PROJECT_ROOT, "diagrams")
 ASSETS_DIR   = os.path.join(PROJECT_ROOT, "assets")
 
@@ -75,6 +79,37 @@ BROCHURE_EXCLUDE = {
     "master-shopping-list.md", "chemistry-shopping-list.md",                  # procurement detail (cost-breakdown carries the money story)
     "distortion-renders.md",                                                  # covered in film-plane + tilt-swing reports
     "licensing.md",                                                           # full license is web-only; PDF carries the footer line
+}
+
+# ── Brochure editions ────────────────────────────────────────────────────────
+# The same pipeline builds two PDFs. `--edition` selects which:
+#   tbs001 — the full engineering prospectus, from the mkdocs nav.
+#   tbs002 — a standalone classroom brochure: a teacher quick-reference page + the
+#            two mini-TBS docs (which still live on the site and in the TBS-001
+#            nav, but are dropped from the TBS-001 PDF via `exclude`).
+# The cover title is shared; each edition sets its subtitle, spec line, output, and
+# page source.
+COVER_TITLE = "The Big Shoebox Project"
+EDITIONS = {
+    "tbs001": {
+        "output":       "tbs-brochure.pdf",
+        "subtitle":     "TBS-001  —  Research & Build Documentation",
+        "spec":         "20 ft ISO Container  ·  Ø2.17mm Pinhole  ·  f/1088  ·  2362mm Focal Length",
+        "source":       "nav",
+        "exclude":      {"mini-tbs/mini-tbs-poc.md", "mini-tbs/mini-tbs-shopping-list.md"},
+        "teacher_page": False,
+    },
+    "tbs002": {
+        "output":       "tbs-002-brochure.pdf",
+        "subtitle":     "TBS-002  —  A Pinhole Camera for the Classroom",
+        "spec":         "Cardboard Box Camera  ·  Ø0.794mm Pinhole  ·  f/575  ·  457mm Focal Length",
+        "source":       "explicit",
+        "pages": [
+            {"title": "A Pinhole Camera for the Classroom", "src": "mini-tbs/mini-tbs-poc.md",           "section": "TBS-002"},
+            {"title": "Shopping List",                      "src": "mini-tbs/mini-tbs-shopping-list.md", "section": "TBS-002"},
+        ],
+        "teacher_page": True,
+    },
 }
 
 # Unicode font path (macOS system font with broad Unicode coverage)
@@ -298,11 +333,13 @@ def _safe_html(html):
 
 # -- Nav parsing ---------------------------------------------------------------
 
-def parse_nav(mkdocs_yml_path):
+def parse_nav(mkdocs_yml_path, extra_exclude=frozenset()):
     """
     Flatten mkdocs.yml nav into:
       [{"title": str, "src": str, "section": str|None}, ...]
     Deduplicates by source path (first occurrence wins).
+    `extra_exclude` drops additional nav paths for a specific edition (on top of
+    the global BROCHURE_EXCLUDE).
     """
     with open(mkdocs_yml_path) as f:
         cfg = yaml.safe_load(f)
@@ -316,7 +353,7 @@ def parse_nav(mkdocs_yml_path):
             if isinstance(item, dict):
                 for key, val in item.items():
                     if isinstance(val, str):
-                        if val in BROCHURE_EXCLUDE:
+                        if val in BROCHURE_EXCLUDE or val in extra_exclude:
                             continue
                         src_md   = NAV_SOURCE_OVERRIDE.get(val, val)
                         src_path = os.path.join(PROJECT_ROOT, src_md)
@@ -651,6 +688,7 @@ class BrochurePDF(FPDF):
         self.set_auto_page_break(auto=True, margin=M_B)
         self._current_chapter = ""
         self._suppress_chrome = False   # when True, suppress header/footer
+        self.edition = EDITIONS["tbs001"]   # cover strings; overridden per edition in main()
 
         # Register Unicode fonts if available
         # All four variants must be registered so write_html never hits
@@ -756,13 +794,13 @@ class BrochurePDF(FPDF):
         self.set_font(FONT_BODY, "B", 28)
         self.set_text_color(*C_WHITE)
         self.set_xy(0, y_title)
-        self.cell(PAGE_W, 14, _safe("The Big Shoebox Project"), align="C",
+        self.cell(PAGE_W, 14, _safe(COVER_TITLE), align="C",
                   new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
         self.set_font(FONT_BODY, "", 14)
         self.set_text_color(*C_ACCENT)
         self.cell(PAGE_W, 8,
-                  _safe("TBS-001  —  Research & Build Documentation"),
+                  _safe(self.edition["subtitle"]),
                   align="C", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
         self.ln(4)
@@ -775,8 +813,7 @@ class BrochurePDF(FPDF):
         self.set_font(FONT_BODY, "", 10)
         self.set_text_color(*C_WHITE)
         self.cell(PAGE_W, 6,
-                  _safe("20 ft ISO Container  ·  Ø2.17mm Pinhole"
-                        "  ·  f/1088  ·  2362mm Focal Length"),
+                  _safe(self.edition["spec"]),
                   align="C", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
         self.ln(4)
@@ -838,6 +875,93 @@ class BrochurePDF(FPDF):
             self.cell(8, 5, f"{ch_num}.", align="L")
             self.cell(BODY_W - 8, 5, _safe(p["title"]), align="L",
                       new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+
+        self._suppress_chrome = False
+
+    # -- "For Teachers" quick-reference page (TBS-002 edition only) -------------
+
+    def teacher_summary_page(self):
+        """A one-page at-a-glance so a teacher can size up the project in 30 seconds.
+        Values are drawn from mini-tbs-poc.md (§1, §5, §10) and the shopping list."""
+        self._suppress_chrome = True
+        self.add_page()
+        self.set_fill_color(*C_DARK)
+        self.rect(0, 0, PAGE_W, 28, "F")
+        self.set_font(FONT_BODY, "B", 18)
+        self.set_text_color(*C_WHITE)
+        self.set_xy(M_L, 8)
+        self.cell(BODY_W, 12, "For Teachers — At a Glance", align="L")
+
+        self.set_xy(M_L, 32)
+        self.set_font(FONT_BODY, "I", 9)
+        self.set_text_color(*C_MUTED)
+        self.multi_cell(BODY_W, 5,
+                        _safe("Everything you need to decide whether this fits your class. "
+                              "The full teaching guide and build follow."), align="L")
+
+        rows = [
+            ("What students make",
+             "A cyanotype (Prussian-blue) pinhole photograph — a real lensless camera image, "
+             "developed in nothing but plain water."),
+            ("Ages",
+             "K–5 through college. The build and chemistry scale with the grade; for younger classes "
+             "the teacher handles all chemistry and students compose, expose, and wash."),
+            ("Time",
+             "Build once (~1–2 hours; the camera is reusable for years). Each printing session is "
+             "~30 min hands-on + 10–40 min unattended exposure + ~15 min wash — one class period "
+             "plus an exposure window."),
+            ("Group size",
+             "2–4 students per camera; a class set is one or two cameras run in rotation."),
+            ("Space & tools",
+             "A normal classroom, a sunny outdoor spot, and a sink. No darkroom required."),
+            ("Cost",
+             "~$108–165 for the camera and the first ~20 prints; about $6–10 per print in "
+             "consumables thereafter."),
+            ("Curriculum",
+             "Physics (light & optics) · Chemistry (an iron redox reaction) · Math (pinhole-size "
+             "& exposure formulas) · Art & history (composition; the 1842 “blueprint”)."),
+        ]
+
+        self.set_y(46)
+        label_w = 34
+        for label, value in rows:
+            y0 = self.get_y()
+            self.set_xy(M_L, y0)
+            self.set_font(FONT_BODY, "B", 9.5)
+            self.set_text_color(*C_ACCENT)
+            self.multi_cell(label_w, 5, _safe(label), align="L")
+            self.set_xy(M_L + label_w, y0)
+            self.set_font(FONT_BODY, "", 9.5)
+            self.set_text_color(*C_BODY)
+            self.multi_cell(BODY_W - label_w, 5, _safe(value), align="L")
+            self.set_y(max(self.get_y(), y0 + 5) + 3)
+
+        # Safety-at-a-glance callout: accent rule + bar, robust to text height.
+        self.ln(2)
+        y_start = self.get_y()
+        self.set_draw_color(*C_ACCENT)
+        self.set_line_width(0.4)
+        self.line(M_L, y_start, PAGE_W - M_R, y_start)
+        self.set_xy(M_L + 4, y_start + 3)
+        self.set_font(FONT_BODY, "B", 10)
+        self.set_text_color(*C_ACCENT)
+        self.cell(BODY_W - 4, 6, "Safety at a glance", align="L",
+                  new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+        self.set_x(M_L + 4)
+        self.set_font(FONT_BODY, "", 9)
+        self.set_text_color(*C_BODY)
+        self.multi_cell(BODY_W - 8, 5,
+            _safe("Cyanotype is among the lowest-hazard photographic chemistries. The teacher weighs "
+                  "and dissolves the dry powders wearing nitrile gloves and eye protection; students "
+                  "handle only the diluted working solution, and only from middle school up. Ammonium "
+                  "dichromate — a Category 1A carcinogen — is left out of the school design entirely. "
+                  "Never mix potassium ferricyanide with acids. The finished, washed print is inert "
+                  "and safe to touch."), align="L")
+        y_end = self.get_y() + 2
+        self.set_fill_color(*C_ACCENT)
+        self.rect(M_L, y_start, 1.5, y_end - y_start, "F")
+        self.set_draw_color(*C_ACCENT)
+        self.line(M_L, y_end, PAGE_W - M_R, y_end)
 
         self._suppress_chrome = False
 
@@ -1412,17 +1536,35 @@ def _build_tag_styles():
 # -- Main ----------------------------------------------------------------------
 
 def main():
-    print(f"Parsing navigation from {MKDOCS_YML}...")
-    pages = parse_nav(MKDOCS_YML)
-    print(f"  {len(pages)} unique pages found")
+    ap = argparse.ArgumentParser(description="Build a TBS brochure PDF.")
+    ap.add_argument("--edition", choices=sorted(EDITIONS), default="tbs001",
+                    help="tbs001 = full engineering prospectus (default); "
+                         "tbs002 = standalone classroom brochure")
+    args = ap.parse_args()
+    cfg = EDITIONS[args.edition]
+    output_pdf = os.path.join(PROJECT_ROOT, cfg["output"])
+
+    if cfg["source"] == "nav":
+        print(f"Parsing navigation from {MKDOCS_YML}...")
+        pages = parse_nav(MKDOCS_YML, cfg.get("exclude", frozenset()))
+    else:
+        pages = [{"title": p["title"],
+                  "src": os.path.join(PROJECT_ROOT, p["src"]),
+                  "section": p["section"]} for p in cfg["pages"]]
+    print(f"  {len(pages)} unique pages found ({args.edition})")
 
     pdf = BrochurePDF()
+    pdf.edition = cfg
 
     print("Building cover page...")
     pdf.cover_page(pages)
 
     print("Building table of contents...")
     pdf.toc_page(pages)
+
+    if cfg["teacher_page"]:
+        print("Building 'For Teachers' summary page...")
+        pdf.teacher_summary_page()
 
     prev_section = None
     for i, page in enumerate(pages, start=1):
@@ -1449,11 +1591,11 @@ def main():
         print(f"  [{i:2d}/{len(pages)}] {title}  ({basename})  "
               f"pp {page_before+1}-{pdf.page_no()}")
 
-    print(f"\nWriting {OUTPUT_PDF}...")
-    pdf.output(OUTPUT_PDF)
+    print(f"\nWriting {output_pdf}...")
+    pdf.output(output_pdf)
 
-    size_mb = os.path.getsize(OUTPUT_PDF) / 1_048_576
-    print(f"Done. {pdf.page_no()} pages, {size_mb:.1f} MB -> {OUTPUT_PDF}")
+    size_mb = os.path.getsize(output_pdf) / 1_048_576
+    print(f"Done. {pdf.page_no()} pages, {size_mb:.1f} MB -> {output_pdf}")
 
 
 if __name__ == "__main__":

@@ -555,7 +555,7 @@ def draw_corridor_panel():
         "8. SV-02: pH sample tap on the P-04 tray-drain discharge riser, before DV-02.",
         "9. DV-02: 3-way tray-sump diverter (high) — to IBC-3 (Brown) or IBC-4 (Waste).",
         f"10. Max protrusion: {max_depth}mm. Brown filter train is on the PINHOLE WALL panel.",
-        "11. PIPE: 1/2\" SDR-11 HDPE pump runs + PP threaded fittings; braided flex hose",
+        "11. PIPE: 1/2\" PVC Sch-40 pump runs (solvent-weld) + threaded transitions at components; braided flex hose",
         "     at each pump port. Pumps + ACC cam-clamp to a 25mm ply shirt; 4-bolt brackets.",
         "12. Pump-base Z (AFF): ACC-01 355 · P-01 615 · P-04 940 · P-05 1340 · P-03 1740.",
     ]
@@ -875,7 +875,7 @@ def draw_pinhole_panel():
         "7. Flow: IBC-3 → BV-03 → P-02 → F-01 → F-02 → F-03 → SV-01 → 3W-DV-01.",
         "8. Filters at 338mm centres (X3300/3638/3976); heads Z≈2300, sump bottoms",
         "    Z≈1746 AFF (4.5×20). BV-03 at Z≈1000; SV-01 at Z≈1010.",
-        "9. PIPE: 1\" SDR-11 HDPE (P-02 + filter loop) with PP/Banjo fittings; housings",
+        "9. PIPE: 1\" PVC Sch-40 (P-02 + filter loop), threaded at filter ports; housings",
         "    on their integral brackets through-bolted to the ply board.",
     ]
     draw_notes(ax_p, notes, pwx(2600), pwz(1560), spacing=32,
@@ -1351,7 +1351,7 @@ def spine_view(side):
         "7. Circuit C powers all 5 pumps (one IP switch each, run one at a time); P-02 lives on the Pinhole Wall panel and shares Circuit C.",
         "8. Spine riser X-lanes: X4 suction pickup 5200, blue-recycle 5239, DV-01-waste/merge 5404, X1 cross 5500. End-wall ports: X1 fill Z2250, X3 Z1700, X4 Z1620.",
         "9. X1 fill is a 4-way cross (X1 in + IBC-1 + IBC-2 + DV-01 recycle return) with CV-1 one-way valve + 2\" DC camlock at the end wall; X1/X2 balance = Blue equalization tank-body tie.",
-        "10. PIPE: 1\" SDR-11 HDPE (IBC fill/drain + recycle) and 1/2\" HDPE (pump runs), PP/Banjo fittings; risers stainless P-clipped to the spine face.",
+        "10. PIPE: 1\" PVC Sch-40 (IBC fill/drain + recycle) and 1/2\" PVC (pump runs), threaded at components; risers stainless P-clipped to the spine face.",
     ], mxa(6800), 2440, spacing=27, fs=9.3, ha="left", width=900, wrap=42, font=FB)
 
     # ── SYMBOL KEY (top-left screen corner; mxa anchors the screen-left edge,

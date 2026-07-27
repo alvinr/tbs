@@ -271,26 +271,26 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [1" bulkhead tank-body fittings (Blue equalization cross-tie)](https://www.usplastic.com/catalog/item.aspx?itemid=32194) (32194) | 2 ea | US Plastic Corp | water | $25 |
-| 1" HDPE inter-housing jumpers | 1 lot | Ferguson | water | $18–$32 |
 | 1" NPT 4-way cross fitting | 1 ea | US Plastic Corp | water | $8–$14 |
 | [1" NPT spring check valve (CV1 — X1 gravity fill)](https://www.usplastic.com/catalog/item.aspx?itemid=31415) (31415) | 1 ea | US Plastic Corp | water | $24 |
+| 1" PVC inter-housing jumpers | 1 lot | Ferguson | water | $18–$32 |
+| 1" PVC Sch-40 pipe | 1 stick | Ferguson | water | $12–$18 |
 | 1" reinforced suction hose, 6 ft | 1 ea | US Plastic Corp | tray | $15 |
-| 1" SDR-11 HDPE pipe | 1 stick | Ferguson | water | $12–$18 |
 | 1" SS foot valve with strainer screen | 1 ea | US Plastic Corp | tray | $20 |
 | 1/2" barb × 1/2" hose barb, brass | 1 ea | DripDepot | spray | $4 |
 | [1/2" ID reinforced braided PVC hose](https://www.usplastic.com/catalog/item.aspx?itemid=60703) (60703) | 2 length | US Plastic Corp | water | $12 |
 | [1/2" NPT 90° elbow polypropylene](https://www.homedepot.com/p/203812033) (PVC023000600HD) | 14 ea | Home Depot | water | $10 |
 | [1/2" NPT polypropylene tee](https://www.homedepot.com/p/203812195) (PVC024000600HD) | 6 ea | Home Depot | water | $5 |
 | [1/2" NPT polypropylene union](https://www.homedepot.com/p/203811331) (PVC021000600HD) | 6 ea | Home Depot | water | $4 |
+| [1/2" PVC Sch-40 pipe](https://www.ferguson.com) | 4 stick | Ferguson | water | $24–$40 |
 | 1/2" reinforced braided PVC hose, 15 ft | 1 ea | DripDepot | spray | $15 |
-| [1/2" SDR-11 HDPE pipe](https://www.ferguson.com) | 4 stick | Ferguson | water | $24–$40 |
 | [1/2"×1" NPT bushing reducer](https://www.homedepot.com/p/204836713) (PVC021121800HD) | 1 ea | Home Depot | water | $3 |
 | 1/4" irrigation poly tube | 1 ea | DripDepot | spray | $6 |
 | [2" polypropylene camlock pairs (M+F)](https://www.usplastic.com/catalog/item.aspx?itemid=30754) (30754) | 4 pair | US Plastic Corp | water | $92 |
 | [3-way diverter valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=31268) (31268) | 1 ea | US Plastic Corp | water | $61 |
 | [3-way diverter valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=22365) (22365) | 1 ea | US Plastic Corp | water | $24 |
 | 3/4" LDPE irrigation poly pipe, 15 ft | 1 ea | DripDepot | spray | $10 |
-| 3/4" SDR-11 HDPE pipe | 2 stick | Ferguson | water | $20–$30 |
+| 3/4" PVC Sch-40 pipe | 2 stick | Ferguson | water | $20–$30 |
 | [Banjo EL100-90 elbow 1" NPT](https://www.usplastic.com/catalog/item.aspx?itemid=31187) (31187) | 4 ea | US Plastic Corp | water | $18 |
 | [Banjo TEE100 equal tee 1" NPT](https://www.usplastic.com/catalog/item.aspx?itemid=36358) (36358) | 3 ea | US Plastic Corp | water | $43 |
 | [Banjo TEE100 equal tee, 1" HDPE NPT](https://www.usplastic.com/catalog/item.aspx?itemid=36358) (36358) | 1 ea | US Plastic Corp | water | $14 |
@@ -305,7 +305,7 @@ indicative low–high estimates — get quotes before ordering.
 | pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | US Plastic Corp | water | $10–$18 |
 | pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | US Plastic Corp | water | $10–$18 |
 | [S60×6 female-buttress → 2" NPT + 2→1" bushing](https://us.cpp.parts/collections/fits-s60x6) (HMFN/20UD/027) | 8 ea | CPP.parts | water | $112–$144 |
-| ½" HDPE pipe (tap relocation) | 1 lot | Irrigation supply | shelf | $10 |
+| ½" PVC Sch-40 pipe (tap relocation) | 1 lot | Irrigation supply | shelf | $10 |
 | **plumbing-fittings subtotal** | | | | **$1,654–$1,774** |
 
 ### seals-gaskets
@@ -581,7 +581,7 @@ above — this directory adds where-to-buy detail and omits alternative/optional
 | **[Waytek Wire](https://www.waytekwire.com)** | Deutsch DT connectors, automotive wire | Online |
 | **[West Marine](https://www.westmarine.com)** | Blue Sea fuse blocks, marine DC wiring | Torrance CA |
 | **[Container Exchanger](https://containerexchanger.com)** | Used IBC totes, food-grade — CA listings | Online |
-| **[Ferguson Plumbing](https://www.ferguson.com)** | HDPE pipe, valves, fittings | Multiple SoCal branches |
+| **[Ferguson Plumbing](https://www.ferguson.com)** | PVC pipe, valves, fittings | Multiple SoCal branches |
 | **Pacific Coast Steel** | Hot-rolled A36 sheet, round bar, structural steel | Santa Fe Springs CA |
 | **[TAP Plastics](https://www.tapplastics.com)** | UV-HDPE / PP / acrylic sheet + plastic fabrication | Multiple SoCal stores |
 | **[Curbell Plastics](https://www.curbellplastics.com)** | PP / engineering plastic sheet | Online / SoCal |

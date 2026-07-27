@@ -135,7 +135,7 @@ IBC-2 (900L) ──┘                                                      │
                                                               ↓ (Processing tray)
 ```
 
-- Two IBC totes plumbed in parallel via 1" HDPE manifold with isolation valves
+- Two IBC totes plumbed in parallel via 1" PVC manifold with isolation valves
 - The two Blue totes are tied at the base by a **1" equalization cross-tie** (tank body to tank body, low on the totes) so their levels self-balance as P-01 draws and X1 refills
 - P-01: Shurflo 2088 12VDC diaphragm pump — 3.5 GPM, 45 PSI, self-priming
 - **Check valves:** only **CV-1** is fitted, on the X1 gravity fill — the single flow path with no pump. Every return and drain leg is pump-driven, and the Shurflo 2088 pumps carry an **integral 1-way check valve** ([2088-554-144 datasheet](https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf)), so dedicated anti-siphon checks on the IBC-2 return, IBC-3 buffer return and IBC-4 waste legs would be redundant and are not used
@@ -175,7 +175,7 @@ Processing tray sump (P-04 suction pickup)
 
 **Filter train sizing:**
 
-The filter train is **three separate 4.5"×20" Big Blue housings** (Ø184 × 594mm each; Express Water / Geekpure / iSpring), mounted as a horizontal bank high on the pinhole wall — heads pinned near the ceiling, sumps hanging below. Each has 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer matches P-02's 1/2" output to F-1, and F-1 → F-2 → F-3 connect by short 1" HDPE jumpers with 90° elbows outside the bodies (full mechanical detail in [Plumbing Report](plumbing-report.md) §3.1).
+The filter train is **three separate 4.5"×20" Big Blue housings** (Ø184 × 594mm each; Express Water / Geekpure / iSpring), mounted as a horizontal bank high on the pinhole wall — heads pinned near the ceiling, sumps hanging below. Each has 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer matches P-02's 1/2" output to F-1, and F-1 → F-2 → F-3 connect by short 1" PVC jumpers with 90° elbows outside the bodies (full mechanical detail in [Plumbing Report](plumbing-report.md) §3.1).
 
 | Stage | Cartridge (4.5"×20") | Removes |
 |-------|---------------------|---------|
@@ -218,7 +218,7 @@ The processing tray and spray bar gantry are fully specified in the [Processing 
 
 **Spray bar:** A 3,859mm span 304 SS RHS beam gantry (40×25×3mm, laid flat) rolls on the raised/sloped tray floor beneath the walkway grating. Water from P-01 (Blue supply) reaches the bar via BV-05 → 4m flexible hose → ball-joint manifold → 7 feed tubes into the side LDPE manifold → 26 flat-fan nozzles at 150mm centers, spraying down-and-in.
 
-**Supply path:** P-01 → ACC-01 → rigid 1/2" HDPE pipe along pinhole wall → BV-05 → coiled flexible hose → bulkhead fitting → beam bore → spray holes.
+**Supply path:** P-01 → ACC-01 → rigid 1/2" PVC pipe along pinhole wall → BV-05 → coiled flexible hose → bulkhead fitting → beam bore → spray holes.
 
 **Containment liner:** A fresh 6-mil black LDPE sheet is laid over the tray surface before each session to prevent direct stainless-to-print contact and simplify cleanup.
 
@@ -230,47 +230,47 @@ For full construction details, structural analysis, parts list, and engineering 
 
 ### Pipe sizing
 
-All pump-driven internal runs use **1/2" pipe**, matching the Shurflo 2088 pump ports (1/2"-14 male parallel thread). This eliminates trunk-to-manifold reducer fittings entirely. The three Big Blue filter housings have 1" NPT ports: a single 1/2"→1" bushing reducer feeds F-1, the F-1→F-2 and F-2→F-3 jumpers are short 1" HDPE with 90° elbows, and the F-3 outlet connects to DV-01 (1" FNPT). Larger pipe (1" or 2") is used only for the IBC fill/drain lines at the external bulkhead ports and the short filter outlet to DV-01, where gravity flow requires lower restriction. P-03 is mounted separately in the IBC plumbing corridor on the X4 waste drain run.
+All pump-driven internal runs use **1/2" pipe**, matching the Shurflo 2088 pump ports (1/2"-14 male parallel thread). This eliminates trunk-to-manifold reducer fittings entirely. The three Big Blue filter housings have 1" NPT ports: a single 1/2"→1" bushing reducer feeds F-1, the F-1→F-2 and F-2→F-3 jumpers are short 1" PVC with 90° elbows, and the F-3 outlet connects to DV-01 (1" FNPT). Larger pipe (1" or 2") is used only for the IBC fill/drain lines at the external bulkhead ports and the short filter outlet to DV-01, where gravity flow requires lower restriction. P-03 is mounted separately in the IBC plumbing corridor on the X4 waste drain run.
 
-**Internal runs (1/2" HDPE Sch 40):**
-
-| Circuit | Pipe | Size | Pressure rating | Material |
-|---------|------|------|----------------|---------|
-| Blue supply (IBC → BV-01 → P-01) | Sch 40 / SDR-11 | 1/2" nominal (OD 21mm) | 100 PSI min | HDPE |
-| Blue discharge (P-01 → ACC-01 → BV-05 → spray bar) | Sch 40 / SDR-11 | 1/2" nominal (OD 21mm) | 100 PSI min | HDPE |
-| Brown suction (IBC-3 → P-02) | Sch 40 / SDR-11 | 1/2" nominal (OD 21mm) | 100 PSI min | HDPE |
-| Brown riser (P-02 → F1 inlet) | Sch 40 | 1/2" nominal (OD 21mm) | 100 PSI min | HDPE |
-| Tray drain suction (sump → P-04) | Reinforced flex hose | 1/2" nominal | pump suction | HDPE/PVC braid |
-| DV-02 outputs (→ IBC-3, → IBC-4) | Sch 40 | 1/2" nominal (OD 21mm) | 50 PSI min | HDPE |
-| DV-01 outputs (→ Blue IBC-2, → Black IBC-4) | Sch 40 | 1/2" nominal (OD 21mm) | 50 PSI min | HDPE |
-| ACC-01 inlet/outlet | Sch 40 | 1/2" nominal (OD 21mm) | 125 PSI min | HDPE |
-| Spray bar | SDR-11 | 3/4" nominal | 100 PSI min | HDPE |
-
-**Filter unit outlet (1" HDPE Sch 40):**
+**Internal runs (1/2" PVC Sch-40):**
 
 | Circuit | Pipe | Size | Pressure rating | Material |
 |---------|------|------|----------------|---------|
-| Filter train (F-3) outlet → SV-01 sample tap → DV-01 | Sch 40 | 1" nominal (OD 33mm) | 100 PSI min | HDPE |
+| Blue supply (IBC → BV-01 → P-01) | Sch 40 | 1/2" nominal (OD 21mm) | 100 PSI min | PVC |
+| Blue discharge (P-01 → ACC-01 → BV-05 → spray bar) | Sch 40 | 1/2" nominal (OD 21mm) | 100 PSI min | PVC |
+| Brown suction (IBC-3 → P-02) | Sch 40 | 1/2" nominal (OD 21mm) | 100 PSI min | PVC |
+| Brown riser (P-02 → F1 inlet) | Sch 40 | 1/2" nominal (OD 21mm) | 100 PSI min | PVC |
+| Tray drain suction (sump → P-04) | Reinforced flex hose | 1/2" nominal | pump suction | PVC braid |
+| DV-02 outputs (→ IBC-3, → IBC-4) | Sch 40 | 1/2" nominal (OD 21mm) | 50 PSI min | PVC |
+| DV-01 outputs (→ Blue IBC-2, → Black IBC-4) | Sch 40 | 1/2" nominal (OD 21mm) | 50 PSI min | PVC |
+| ACC-01 inlet/outlet | Sch 40 | 1/2" nominal (OD 21mm) | 125 PSI min | PVC |
+| Spray bar | Sch 40 | 3/4" nominal | 100 PSI min | PVC |
 
-**IBC fill/drain (1" HDPE Sch 40 — gravity flow, not pump-driven):**
+**Filter unit outlet (1" PVC Sch-40):**
 
 | Circuit | Pipe | Size | Pressure rating | Material |
 |---------|------|------|----------------|---------|
-| External fill line (X1 bulkhead → tee → both Blue totes) | Sch 40 | 1" nominal (OD 33mm) | 50 PSI min | HDPE |
-| External drain lines (X3/X4 bulkhead → IBCs) | Sch 40 | 1" nominal (OD 33mm) | 50 PSI min | HDPE |
-| X1 fill tee (splits to IBC-1 & IBC-2) | — | 1" HDPE equal tee (Banjo TEE100) | 50 PSI min | HDPE |
+| Filter train (F-3) outlet → SV-01 sample tap → DV-01 | Sch 40 | 1" nominal (OD 33mm) | 100 PSI min | PVC |
+
+**IBC fill/drain (1" PVC Sch-40 — gravity flow, not pump-driven):**
+
+| Circuit | Pipe | Size | Pressure rating | Material |
+|---------|------|------|----------------|---------|
+| External fill line (X1 bulkhead → tee → both Blue totes) | Sch 40 | 1" nominal (OD 33mm) | 50 PSI min | PVC |
+| External drain lines (X3/X4 bulkhead → IBCs) | Sch 40 | 1" nominal (OD 33mm) | 50 PSI min | PVC |
+| X1 fill tee (splits to IBC-1 & IBC-2) | — | 1" PVC equal tee (Banjo TEE100) | 50 PSI min | PVC |
 
 At 3.5 GPM, flow velocity in 1/2" pipe (ID ~15.8mm) is approximately 1.1 m/s — well within the recommended 0.5–2.5 m/s range for water systems. The longest internal run (~5.5m from manifold to far-column IBC) contributes less than 0.3 bar friction loss at this velocity.
 
-**Why HDPE, not PVC?** Standard gray PVC is not rated for photographic chemistry contact and can leach plasticizers. HDPE and CPVC are both acceptable. Do not use copper or galvanized fittings — iron compounds in the wash water will react.
+**Why PVC Sch-40?** **Rigid** PVC pipe (Sch-40/80, "uPVC") is *unplasticized* — the plasticizer-leaching concern applies to *flexible* PVC (vinyl tubing), not the rigid run, and NSF-61 potable-grade rigid PVC is water-safe and chemically compatible with the dilute cyanotype wash (potassium ferricyanide, ferric ammonium oxalate, citric acid). PVC is chosen over HDPE for **buildability** — it solvent-welds with primer + cement and hand tools, whereas HDPE can't be glued (see the joint convention in [Plumbing Report](plumbing-report.md) §5.1–5.2). Only the flexible pump-connection hose is braided PVC. Do not use copper or galvanized fittings — iron compounds in the wash water will react.
 
 ### Fittings and connections
 
 | Connection type | Use | Standard |
 |----------------|-----|---------|
 | 2" camlock (type A+B) | IBC tote inlet/outlet | Aluminum or polypropylene |
-| 1" NPT threaded | Filter (F-3) outlet → DV-01, inter-housing jumpers, IBC fill/drain lines | HDPE or brass |
-| 1/2" NPT threaded | All pump-driven runs, pump ports, manifold connections, ACC-01, ball valves | HDPE or brass |
+| 1" NPT threaded | Filter (F-3) outlet → DV-01, inter-housing jumpers, IBC fill/drain lines | PVC or brass |
+| 1/2" NPT threaded | All pump-driven runs, pump ports, manifold connections, ACC-01, ball valves | PVC or brass |
 | 1/2"×1" NPT bushing reducer | P-02 riser to F1 filter inlet (1 required) | Polypropylene or brass |
 | 2" NPT bulkhead | External fill/drain port (container wall) | 304 SS |
 | Push-fit / compression | Secondary connections | John Guest / Speedfit style |
@@ -316,7 +316,7 @@ IBCs are arranged in a **2x2 stack** in the right end zone, right-justified to t
 
 All equipment clears the optical cone at every depth — shadow-free proof in [Equipment Layout Report](equipment-layout-report.md).
 
-**Hose routing:** The corridor pumps (P-01, P-04, P-05, P-03) mount on the **Corridor Plumbing Panel** at the front of the IBC stack, reaching into the 270mm plumbing corridor between the two IBC columns — so the pump↔tote suction and return lines are **short**, running entirely within the corridor to the IBCs' corridor-facing DN50 valves. P-02 (Brown filter feed) and the 3-stage filter stack sit on the **Pinhole Wall Plumbing Panel** on the pinhole wall face. The longest run is the **Blue supply to the spray bar**: P-01 → ACC-01 → rigid 1/2" HDPE along the pinhole wall to the tray center → BV-05 → ~4m coiled flexible hose → the rolling beam in the optical zone. The **tray drain** returns the other way — P-04's sump pickup → 1" flexible hose over the near rim → P-04 on the panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste). **Waste evacuation** pumps P-05 (X3 / Brown) and P-03 (X4 / Waste) sit directly on the corridor drain risers, minimizing pipe to the external end-wall ports. The four lines that connect the corridor equipment to the Pinhole Wall panel run together as a flat **ribbon** in the dead space under the right-walkway grate — see [Plumbing Report](plumbing-report.md) §8.1 and [Walkway Pipe Routing](walkway-routing-sections.md).
+**Hose routing:** The corridor pumps (P-01, P-04, P-05, P-03) mount on the **Corridor Plumbing Panel** at the front of the IBC stack, reaching into the 270mm plumbing corridor between the two IBC columns — so the pump↔tote suction and return lines are **short**, running entirely within the corridor to the IBCs' corridor-facing DN50 valves. P-02 (Brown filter feed) and the 3-stage filter stack sit on the **Pinhole Wall Plumbing Panel** on the pinhole wall face. The longest run is the **Blue supply to the spray bar**: P-01 → ACC-01 → rigid 1/2" PVC along the pinhole wall to the tray center → BV-05 → ~4m coiled flexible hose → the rolling beam in the optical zone. The **tray drain** returns the other way — P-04's sump pickup → 1" flexible hose over the near rim → P-04 on the panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste). **Waste evacuation** pumps P-05 (X3 / Brown) and P-03 (X4 / Waste) sit directly on the corridor drain risers, minimizing pipe to the external end-wall ports. The four lines that connect the corridor equipment to the Pinhole Wall panel run together as a flat **ribbon** in the dead space under the right-walkway grate — see [Plumbing Report](plumbing-report.md) §8.1 and [Walkway Pipe Routing](walkway-routing-sections.md).
 
 **External fill/drain ports:** Three 2" NPT bulkhead fittings with camlock fittings on the exterior are mounted on the container end wall centerline, stacked vertically:
 
@@ -349,7 +349,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Slotted steel angle frame 25×25×3mm (filter skid) | ~2.5 m 25×25×3mm slotted steel angle + fasteners; bolts to the 18mm ply backing (adjustable housing height) | 1 lot | Home Depot | $25–$45 |
 | SS lag/wood screws — filter housings to ply backing | 2 per housing × 3 — 5/16 SS lag/wood screws through the housing's mounting-hole ears into the 18mm plywood backing (no custom bracket). Pin SKU at order. | 6 ea | Home Depot | $3–$9 |
 | Plywood offcut spacer blocks 25mm (filter skid) | 25mm standoff blocks between the housing's mounting ears and the ply backing — sump-bowl hang clearance (the housing lag-screws through them into the ply). Cut from PLYWOOD OFFCUTS (Alvin 2026-07-25 — no need for HDPE; dry standoff, not a wet-immersion part). | 1 lot | offcuts | $0 |
-| 1" HDPE inter-housing jumpers | F-01 OUT→F-02 IN, F-02 OUT→F-03 IN — 1" HDPE + 90° elbows routed outside the bodies | 1 lot | Ferguson | $18–$32 |
+| 1" PVC inter-housing jumpers | F-01 OUT→F-02 IN, F-02 OUT→F-03 IN — 1" PVC + 90° elbows routed outside the bodies (THREADED — filter ports are hard components) | 1 lot | Ferguson | $18–$32 |
 | MPP 5-micron sediment cartridge 4.5"×20" | Melt-blown polypropylene depth filter (F-1 stage); ~50-print interval | 2 ea | Fresh Water Systems | $24–$40 |
 | KDF-55 heavy-metal cartridge 4.5"×20" | KDF-55 media for dissolved iron/metal removal (F-2 stage); ~60-print interval | 1 ea | FilterWay / Amazon | $65–$95 |
 | CTO carbon block cartridge 4.5"×20" | Coconut shell activated carbon block (F-3 stage); ~40-print interval | 2 ea | RonAqua / Amazon | $32–$60 |
@@ -357,7 +357,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | PP full-port quarter-turn; pump-suction isolation BV-03 (P-02) | 1 ea | US Plastic Corp / Amazon | $44 |
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | PP full-port; supply isolation BV-04 (TAP-01 chem tap), BV-05 (spray-bar feed) | 2 ea | US Plastic Corp / Amazon | $89 |
 | [Banjo V100FP ball valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30653) (30653) | PP full-port; V1/V3/V4, VB1–VB3 (IBC fill/drain) | 6 ea | US Plastic Corp / Amazon | $297 |
-| [3-way diverter valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=22365) (22365) | L/T-port HDPE-compatible; 3W-DV-02 (tray drain) | 1 ea | US Plastic Corp | $24 |
+| [3-way diverter valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=22365) (22365) | L/T-port PVC-compatible; 3W-DV-02 (tray drain) | 1 ea | US Plastic Corp | $24 |
 | [3-way diverter valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=31268) (31268) | L/T-port; 3W-DV-01 (filter output) | 1 ea | US Plastic Corp | $61 |
 | pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line | 1 ea | US Plastic Corp | $10–$18 |
 | pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build as SV-01 | 1 ea | US Plastic Corp | $10–$18 |
@@ -369,16 +369,16 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | 1" NPT 4-way cross fitting | X1 fresh-fill 4-way: X1 inlet + IBC-1 + IBC-2 + DV-01 blue recycle return (was a 3-way tee). Cost est. 2026-07-27: NOT stocked at US Plastic (they don't carry 1" 4-way crosses) — source a Spears/PVC Sch-80 1" cross via an irrigation/PVC supplier, or redesign the X1 fill as 2× tees. | 1 ea | US Plastic Corp | $8–$14 |
 | [1/2" NPT polypropylene union](https://www.homedepot.com/p/203811331) (PVC021000600HD) | Maintenance disconnects on pump runs. 2026-07-27: sourced part is a Charlotte PVC Sch40 S×S COUPLING (permanent), NOT a union — can't disconnect for service; if breaks are needed swap to a PVC union (~$3-4). Also SLIP not NPT — see plumbing audit | 6 ea | Home Depot | $4 |
 | [1/2"×1" NPT bushing reducer](https://www.homedepot.com/p/204836713) (PVC021121800HD) | P-02 riser → F1 filter inlet — THREADED (lands on the filter = hard component, per the joint convention). Charlotte PVC Sch40 1×½ reducer bushing | 1 ea | Home Depot | $3 |
-| [S60×6 female-buttress → 2" NPT + 2→1" bushing](https://us.cpp.parts/collections/fits-s60x6) (HMFN/20UD/027) | IBC DN50 valve to 1" HDPE. The DN50 valve is a MALE S60×6, so the adapter is FEMALE S60×6 buttress × 2" male NPT PP (a 1" NPT-female config isn't stocked); add a 2→1" PP reducer bushing to land on 1" HDPE. | 8 ea | CPP.parts / Amazon | $112–$144 |
-| [1" bulkhead tank-body fittings (Blue equalization cross-tie)](https://www.usplastic.com/catalog/item.aspx?itemid=32194) (32194) | Low tank-body penetration in each Blue tote (IBC-1 + IBC-2) for the 1" equalization cross-tie that self-balances the two Blue levels (run made from the 1" HDPE stock). Cost est. | 2 ea | US Plastic Corp | $25 |
+| [S60×6 female-buttress → 2" NPT + 2→1" bushing](https://us.cpp.parts/collections/fits-s60x6) (HMFN/20UD/027) | IBC DN50 valve to 1" PVC. The DN50 valve is a MALE S60×6, so the adapter is FEMALE S60×6 buttress × 2" male NPT PP (a 1" NPT-female config isn't stocked); add a 2→1" PP reducer bushing to land on 1" PVC. | 8 ea | CPP.parts / Amazon | $112–$144 |
+| [1" bulkhead tank-body fittings (Blue equalization cross-tie)](https://www.usplastic.com/catalog/item.aspx?itemid=32194) (32194) | Low tank-body penetration in each Blue tote (IBC-1 + IBC-2) for the 1" equalization cross-tie that self-balances the two Blue levels (run made from the 1" PVC stock). Cost est. | 2 ea | US Plastic Corp | $25 |
 | [1" NPT spring check valve (CV1 — X1 gravity fill)](https://www.usplastic.com/catalog/item.aspx?itemid=31415) (31415) | PVC body, EPDM seal, 1" FNPT × FNPT. Only CV-1 (X1 fill) remains — the Shurflo 2088 pumps have integral check valves, so CV-2/CV-3/CV-4 are redundant and dropped | 1 ea | US Plastic Corp | $24 |
 | Steel flat bar 25×3mm — ribbon support cross-brace | Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (the four corridor↔pinhole lines); ~300mm each | 4 ea | Home Depot | $8–$16 |
 | Cushioned pipe clip | Secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports) | 16 ea | Amazon | $16–$32 |
 | Thread seal tape (PTFE) | 1/2" wide, 260" roll | 4 roll | Home Depot | $8 |
-| [1/2" SDR-11 HDPE pipe](https://www.ferguson.com) | All pump-driven runs (80 ft); matches pump port size | 4 stick | Ferguson | $24–$40 |
-| 1" SDR-11 HDPE pipe | Food-safe blue-stripe 20 ft; filter outlet + IBC lines | 1 stick | Ferguson | $12–$18 |
+| [1/2" PVC Sch-40 pipe](https://www.ferguson.com) | All pump-driven runs (~80 ft), PVC Sch-40 solvent-weld; matches pump port size. Re-price/re-count when sourced (PVC = 10-ft sticks) | 4 stick | Ferguson | $24–$40 |
+| 1" PVC Sch-40 pipe | PVC Sch-40 solvent-weld, ~20 ft; filter outlet + IBC lines. Re-price/re-count when sourced (10-ft sticks) | 1 stick | Ferguson | $12–$18 |
 | [Banjo TEE100 equal tee, 1" HDPE NPT](https://www.usplastic.com/catalog/item.aspx?itemid=36358) (36358) | X1 fill tee — splits the fill to both Blue totes | 1 ea | US Plastic Corp / Amazon | $14 |
-| 3/4" SDR-11 HDPE pipe | Spray bar run, 20 ft sticks | 2 stick | Ferguson | $20–$30 |
+| 3/4" PVC Sch-40 pipe | Spray bar run, PVC Sch-40 solvent-weld. Re-price/re-count when sourced (10-ft sticks) | 2 stick | Ferguson | $20–$30 |
 | [1/2" ID reinforced braided PVC hose](https://www.usplastic.com/catalog/item.aspx?itemid=60703) (60703) | Pump inlet flexible connection, 6 ft per pump | 2 length | US Plastic Corp | $12 |
 | 14 AWG duplex marine wire | Tinned copper, 25 ft | 1 roll | Waytek Wire | $22 |
 | Anderson Powerpole connectors 30A | Pump connections — one pair per pump (P-01..P-05) | 5 pair | Powerwerx | $10 |
@@ -409,7 +409,7 @@ reports — [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) and
 
 *The Water-equipment row is the generated §8 `parts:water` BOM total (single source of record for the water subsystem — storage/pumps/filters/valves/pipe/consumables); the tray and spray-bar rows are `costing.py` blocks. The TOTAL is a hand sum of the three and should itself become a generated block (Phase-1 backlog).*
 
-*Used IBC totes drive significant savings vs. new. The parts list consolidates to 4 primary suppliers: **Amazon** (~30 line items — qualifies for bulk/subscribe discounts), **McMaster-Carr** (tray hardware — single order, fast shipping), **Ferguson** (HDPE pipe — call for contractor pricing), and **Online Metals** (SS sheet). Obtain quotes from Ferguson before ordering pipe from Amazon — trade counter pricing is typically 20–30% below retail.*
+*Used IBC totes drive significant savings vs. new. The parts list consolidates to 4 primary suppliers: **Amazon** (~30 line items — qualifies for bulk/subscribe discounts), **McMaster-Carr** (tray hardware — single order, fast shipping), **Ferguson** (PVC pipe — call for contractor pricing), and **Online Metals** (SS sheet). Obtain quotes from Ferguson before ordering pipe from Amazon — trade counter pricing is typically 20–30% below retail.*
 
 ---
 
@@ -451,7 +451,7 @@ reports — [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) and
 **Suppliers — consolidated by provider (see shopping list for direct part links):**
 - [Amazon](https://www.amazon.com) — Pumps (Shurflo 2088), accumulator, filter housings, cartridges, Banjo valves/fittings, check valves, IBC adapters, electrical, consumables
 - [McMaster-Carr](https://www.mcmaster.com) — Bulkhead fittings, tray hardware (bulkhead union, gasket, bolts)
-- [Ferguson Plumbing Supply](https://www.ferguson.com) — HDPE pipe (1" and 3/4" SDR-11)
+- [Ferguson Plumbing Supply](https://www.ferguson.com) — PVC pipe (1" and 3/4" Sch-40)
 - [Container Exchanger](https://containerexchanger.com/geo-sale-ads/us-ca/bulk-containers/ibc-totes-for-sale) — Used IBC totes, California
 - [Online Metals](https://www.onlinemetals.com) — 304 SS sheet for processing tray
 - [Ronaqua](https://www.ronaqua.com) — GAC carbon filter cartridges

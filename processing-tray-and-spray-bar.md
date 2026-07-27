@@ -77,7 +77,7 @@ no penetration of the tray floor or the container floor.
 | Sump dimensions | 150mm (X) × 100mm (Yd) × 20mm deep |
 | Sump location | IBC-end corner (near rim, low point) |
 | Forming | Pressed/stamped into tray panel during fabrication |
-| Pickup tube | 1" HDPE dip tube, stainless foot valve with strainer screen |
+| Pickup tube | 1" PVC dip tube, stainless foot valve with strainer screen |
 | Pickup height | Tube bottom 5mm above sump floor (leaves ~0.75 L residual) |
 | Suction line | 1" flexible reinforced hose, routed over near rim to P-04 |
 | Pump | P-04 (Shurflo 2088, 12V DC, 3.5 GPM, 45 PSI, self-priming) |
@@ -461,7 +461,7 @@ wash coverage along the <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact
 
 BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Yd=0) at
 X=<!-- BEGIN fact:pinhole_x_mm -->2,399<!-- END fact:pinhole_x_mm -->mm (pinhole centerline), Z=900mm — waist height from the walkway deck. A
-1/2" HDPE riser runs from the Blue supply trunk up to BV-02. A 4 m length of 1/2"
+1/2" PVC riser runs from the Blue supply trunk up to BV-02. A 4 m length of 1/2"
 reinforced braided PVC hose connects from BV-02 down to the distribution manifold at the
 ball joint. The hose coils when the bar is near the pinhole wall and extends as the bar is
 pushed toward the far wall. The hose trails along the near tray rim, staying clear of
@@ -469,7 +469,7 @@ the print surface.
 
 ![Sheet 7 — Detail B: Manifold Feed & Nozzle Connections](assets/spray-bar-sheet7.png)
 
-**Supply path:** P-01 → ACC-01 → rigid 1/2" HDPE pipe along pinhole wall → BV-02 →
+**Supply path:** P-01 → ACC-01 → rigid 1/2" PVC pipe along pinhole wall → BV-02 →
 coiled flexible hose → manifold → 7 irrigation tubes → poly pipe bore → 26× spray nozzles.
 
 ### 3.11 Walkway Slit

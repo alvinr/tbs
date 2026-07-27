@@ -967,7 +967,7 @@ def sheet4():
            fs=5.5, color="#A09060", ha="left", font=FONT)
 
     # ── Pipe fitting helpers (matching sheet 5 conventions) ────────────────
-    PIPE_OD = 33.4    # 1" HDPE SDR-11 outer diameter (mm)
+    PIPE_OD = 33.4    # 1" PVC Sch-40 outer diameter (mm)
     PIPE_WALL_T = 3.0
     PIPE_HW = PIPE_OD / 2
 
@@ -1303,7 +1303,7 @@ def sheet5():
     """
 
     # ── Pipe fitting drawing helpers ─────────────────────────────────────────
-    PIPE_OD = 33.4    # 1" HDPE SDR-11 outer diameter (mm)
+    PIPE_OD = 33.4    # 1" PVC Sch-40 outer diameter (mm)
     PIPE_WALL = 3.0   # wall thickness
     PIPE_HW = PIPE_OD / 2  # half-width for double-wall rendering
 

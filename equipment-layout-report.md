@@ -48,7 +48,7 @@ Overall floorplan can be seen below. Its essentially split into three areas, lef
 | Battery bank (1× 100Ah LiFePO4 Core, 260×169×211mm; stacked provision for 2nd) | 1,829–2,089 | 160–371 | Skinny EP column, vertically stacked (side busbar); clears the optical cone |
 | Solar charge controller | Within panel | — | Mounted inside enclosure |
 | Cable trunking | Along wall face, H=1,800mm | — | Full length |
-| Blue supply pipe → spray bar | along wall to X=2,399 | — | Rigid 1/2" HDPE from the corridor pump panel to the spray-bar feed; pumps themselves are on the plumbing panel in the IBC corridor (§2.4 / [Plumbing Report](plumbing-report.md)) |
+| Blue supply pipe → spray bar | along wall to X=2,399 | — | Rigid 1/2" PVC Sch-40 from the corridor pump panel to the spray-bar feed; pumps themselves are on the plumbing panel in the IBC corridor (§2.4 / [Plumbing Report](plumbing-report.md)) |
 
 ### 2.3 Optical Zone
 

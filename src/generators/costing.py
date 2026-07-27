@@ -171,7 +171,7 @@ WATER = [
     LineItem("Under-walkway pipe-ribbon supports (4× welded cross-braces + 16 pipe clips)", 24, 36, 48),
     LineItem("Filter skid (3× Big Blue 4.5×20 separate housings on slotted-angle frame + cartridges)", 281, 375, 467, "2026-07-22: U-bracket retired → lag screws to ply backing −$18/−$21. 2026-07-25: housing standoff spacers HDPE → plywood offcuts (dry standoff, not immersion) −$12/−$22"),
     LineItem("Valves and fittings (6× BV ball valves, X1 4-way cross, S60×6 adapters, CV1, SV-01 + SV-02 taps, Blue equalization tie)", 1021, 1047, 1073, "2026-07-22: S60×6 adapter re-spec'd female-buttress×2\"NPT + 2→1\" bushing (CPP HMFN/20UD/027) +$48/+$24. 2026-07-27: Banjo valves/tees/elbows/3-ways sourced firm at US Plastic (V050 30651 $44.27, V100 30653 $49.45, tee 36358 $14.19, 3-way 31268 $61.31/22365 $23.99) — ranges collapsed up, +$279 low/+$19 high"),
-    LineItem("Pipe (HDPE, spray bar)", 80, 97, 114),
+    LineItem("Pipe (PVC Sch-40, spray bar)", 80, 97, 114),
     LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1463, 1853, 2241, "2026-07-23: slope shims firmed to the 1-1/4\" HDPE plate route ($210–300, from the $40–75 flat-bar est)"),
     LineItem("Spray bar assembly (40×25 SS RHS beam, side LDPE manifold, 26 nozzles, manifold + 7 feed tubes, 4 Ø32 wheels, ball joint, arm + turned adapter + jam nut + clamp collar, hose)", 402, 448, 494, "2026-07-22: arm jam nut/collar/self-tap/beam-clamp re-priced to real SKUs. 2026-07-25: arm tube → McMaster 9056K36 8ft stock $64.03 (was a $6 500mm cut, too short to order) +$58"),
     LineItem("Electrical (wiring only — fuse block in Electrical Report)", 37, 37, 37),
@@ -243,7 +243,7 @@ SHELF = [
     point("M5×16 CSK screws (×8) — ply panel", 1, "91420A326 $0.115 ea"),
     point("Corner gusset plates, 3mm (×4)", 5, "steel offcut"),
     point("Flat-black epoxy spray paint", 12, "hardware store"),
-    point("½\" HDPE pipe — TAP-01 trunk extension (~1.5m)", 10, "irrigation supply"),
+    point("½\" PVC Sch-40 pipe — TAP-01 trunk extension (~1.5m)", 10, "irrigation supply"),
 ]
 
 

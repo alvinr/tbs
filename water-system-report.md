@@ -368,7 +368,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | [Banjo TEE100 equal tee 1" NPT](https://www.usplastic.com/catalog/item.aspx?itemid=36358) (36358) | PP; IBC drain tees (the X1 fill is now a 4-way cross) | 3 ea | US Plastic Corp / Amazon | $43 |
 | 1" NPT 4-way cross fitting | X1 fresh-fill 4-way: X1 inlet + IBC-1 + IBC-2 + DV-01 blue recycle return (was a 3-way tee). Cost est. 2026-07-27: NOT stocked at US Plastic (they don't carry 1" 4-way crosses) — source a Spears/PVC Sch-80 1" cross via an irrigation/PVC supplier, or redesign the X1 fill as 2× tees. | 1 ea | US Plastic Corp | $8–$14 |
 | [1/2" NPT polypropylene union](https://www.homedepot.com/p/203811331) (PVC021000600HD) | Maintenance disconnects on pump runs. 2026-07-27: sourced part is a Charlotte PVC Sch40 S×S COUPLING (permanent), NOT a union — can't disconnect for service; if breaks are needed swap to a PVC union (~$3-4). Also SLIP not NPT — see plumbing audit | 6 ea | Home Depot | $4 |
-| [1/2"×1" NPT bushing reducer](https://www.homedepot.com/p/203811447) (PVC021070700HD) | P-02 riser to F1 filter inlet. 2026-07-27: Charlotte PVC Sch40 1×½ reducer bushing (Spg×S, SLIP) — desc says NPT; confirm in the plumbing audit | 1 ea | Home Depot | $2 |
+| [1/2"×1" NPT bushing reducer](https://www.homedepot.com/p/204836713) (PVC021121800HD) | P-02 riser → F1 filter inlet — THREADED (lands on the filter = hard component, per the joint convention). Charlotte PVC Sch40 1×½ reducer bushing | 1 ea | Home Depot | $3 |
 | [S60×6 female-buttress → 2" NPT + 2→1" bushing](https://us.cpp.parts/collections/fits-s60x6) (HMFN/20UD/027) | IBC DN50 valve to 1" HDPE. The DN50 valve is a MALE S60×6, so the adapter is FEMALE S60×6 buttress × 2" male NPT PP (a 1" NPT-female config isn't stocked); add a 2→1" PP reducer bushing to land on 1" HDPE. | 8 ea | CPP.parts / Amazon | $112–$144 |
 | [1" bulkhead tank-body fittings (Blue equalization cross-tie)](https://www.usplastic.com/catalog/item.aspx?itemid=32194) (32194) | Low tank-body penetration in each Blue tote (IBC-1 + IBC-2) for the 1" equalization cross-tie that self-balances the two Blue levels (run made from the 1" HDPE stock). Cost est. | 2 ea | US Plastic Corp | $25 |
 | [1" NPT spring check valve (CV1 — X1 gravity fill)](https://www.usplastic.com/catalog/item.aspx?itemid=31415) (31415) | PVC body, EPDM seal, 1" FNPT × FNPT. Only CV-1 (X1 fill) remains — the Shurflo 2088 pumps have integral check valves, so CV-2/CV-3/CV-4 are redundant and dropped | 1 ea | US Plastic Corp | $24 |
@@ -389,7 +389,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $18–$40 |
-| **Water total** | | | | **$3,358–$3,726** |
+| **Water total** | | | | **$3,359–$3,727** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

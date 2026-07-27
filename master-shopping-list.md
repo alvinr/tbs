@@ -112,7 +112,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| 150×150×50mm axial fans | 2 ea | Amazon | ventilation | $50 |
+| 150×150×50mm axial fans | 2 ea | Digi-Key | ventilation | $50 |
 | 200mm 90° duct elbow | 1 ea | Home Depot | ventilation | $14 |
 | 200mm insulated flex duct | 1 ea | Home Depot | ventilation | $22 |
 | Duct collar + hose clamp | 1 ea | Home Depot | ventilation | $12 |
@@ -126,18 +126,18 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [10mm split corrugated wire loom, drop runs](https://www.amazon.com/Split-Wire-Loom-Tubing-Polyethylene/dp/B017L3GWIW) (B017L3GWIW) | 10 m | Amazon | electrical | $25 |
-| 12V LED flat panel 300×600mm, 20W 4000K | 3 ea | Amazon | electrical | $75 |
-| 14 AWG duplex marine wire | 1 roll | Amazon | water | $22 |
-| 15A blade fuse | 1 ea | Amazon | water | $5 |
+| 12V LED flat panel 300×600mm, 20W 4000K | 3 ea | Super Bright LEDs | electrical | $75 |
+| 14 AWG duplex marine wire | 1 roll | Waytek Wire | water | $22 |
+| 15A blade fuse | 1 ea | Waytek Wire | water | $5 |
 | 16 AWG silicone coiled cable | 1 ea | Waytek Wire | ventilation | $15 |
 | [2/0 AWG battery cable, 3ft (battery–fuse–busbar)](https://www.amazon.com/dp/B0B3HD7CWP) (B0B3HD7CWP) | 1 lot | Amazon | electrical | $26 |
 | [200A main fuse (Blue Sea 5187) + single MRBF holder (5191)](https://defender.com/en_us/blue-sea-systems-single-mrbf-terminal-fuse-block-5191) (5187+5191) | 1 ea | Blue Sea | electrical | $46 |
-| 4 AWG ground wire, green/yellow, 3m | 1 lot | Amazon | electrical | $15 |
+| 4 AWG ground wire, green/yellow, 3m | 1 lot | Waytek Wire | electrical | $15 |
 | [40×25mm PVC cable trunking, 5m](https://www.amazon.com/GenSDH-Raceway-Speaker-Concealer-Coffee-Width/dp/B0DK6GMHGL) (B0DK6GMHGL) | 4 ea | Amazon | electrical | $74 |
 | [Anderson Powerpole 30A connectors, 50 pairs](https://powerwerx.com) | 1 kit | Powerwerx | electrical | $40 |
-| Anderson Powerpole connectors 30A | 5 pair | Amazon | water | $10 |
+| Anderson Powerpole connectors 30A | 5 pair | Powerwerx | water | $10 |
 | [Battery main disconnect — Blue Sea 6006 m-Series (300A)](https://offgridstores.com/products/blue-sea-6006-m-series-mini-battery-switch-single-circuit-on-off-red) (6006) | 1 ea | Off Grid Stores | electrical | $36 |
-| Battery terminal covers (pair), insulating boots | 1 pair | Amazon | electrical | $10 |
+| Battery terminal covers (pair), insulating boots | 1 pair | Waytek Wire | electrical | $10 |
 | [Blue Sea 5026 fuse block, 12-circuit ST-blade](https://offgridstores.com/products/blue-sea-5026-st-blade-fuse-block-w-cover-12-circuit-w-negative-bus) (5026) | 1 ea | Off Grid Stores | electrical | $59 |
 | [Brady M210 wire label printer kit](https://www.digikey.com/en/products/detail/brady-corporation/M210-KIT/16643735) (M210-KIT) | 1 ea | Amazon | electrical | $194 |
 | [Cable grommets / glands — steel-shell penetrations](https://www.amazon.com/YUFANNET-Assortment-Grommets-Automotive-Electrical/dp/B09K5GNFHF) (B09K5GNFHF) | 1 lot | Amazon | electrical | $28 |
@@ -145,20 +145,20 @@ indicative low–high estimates — get quotes before ordering.
 | [Copper-bonded ground rod, 8ft × ⅝" + acorn clamp](https://www.homedepot.com/p/ERICO-5-8-in-x-8-ft-Copper-Ground-Rod-615880UPC/202195738) (615880UPC) | 1 lot | Home Depot | electrical | $27 |
 | Deutsch DT 2-pin connectors | 2 set | Waytek Wire | ventilation | $8 |
 | Deutsch DT 2-pin connectors, IP67 (exterior penetrations) | 10 set | Waytek Wire | electrical | $30 |
-| Equipotential bonding kit — 6 AWG + ring lugs | 1 ea | Amazon | electrical | $20 |
+| Equipotential bonding kit — 6 AWG + ring lugs | 1 ea | Waytek Wire | electrical | $20 |
 | [External emergency cut-off — red mushroom switch](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
 | [Interior emergency cut-off — red mushroom switch (paralleled to exterior)](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
 | IP65 enclosure ~200×220×140mm (fuse block + busbars, on the plywood) | 1 ea | Polycase | electrical | $60 |
 | [Master pump switch (Circuit C) — IP67 sealed rocker/disconnect 12V 16A](https://www.amazon.com/dp/B0GF2ZBD1W) (B0GF2ZBD1W) | 1 ea | Amazon | electrical | $8 |
-| MC4 bulkhead connector pairs, IP67 panel-mount | 3 pair | Amazon | electrical | $25 |
+| MC4 bulkhead connector pairs, IP67 panel-mount | 3 pair | Signature Solar | electrical | $25 |
 | MPPT charge-line fuse — 60A ANL/MIDI + holder | 1 ea | Blue Sea | electrical | $15 |
 | [NEMA 5-15R weatherproof inlet (flush power panel)](https://www.amazon.com/dp/B0CLDC8X5J) (B0CLDC8X5J) | 1 ea | Amazon | electrical | $10 |
 | [Pull-cord ceiling switch, 12V 6A SPST](https://americandoorsupply.com/products/ceiling-pull-switch-spst-nema-4-w-rotg-pivoting-cam?variant=45465874595971) | 2 ea | americandoorsupply | electrical | $244 |
 | Pump distribution block — 12V DC + / − bus, 6-way | 1 ea | Blue Sea | electrical | $15 |
-| PV cable 10 AWG + MC4 connectors | 1 lot | Amazon | electrical | $30 |
+| PV cable 10 AWG + MC4 connectors | 1 lot | Signature Solar | electrical | $30 |
 | [Remote battery switch — Blue Sea ML-RBS 500A magnetic-latch (E-stop trip)](https://www.invertersupply.com/index.php?main_page=product_info&products_id=5288) (7700) | 1 ea | Inverter Supply | electrical | $264 |
 | Sealed wet-zone connectors — Deutsch DT / adhesive heat-shrink | 1 lot | Waytek Wire | electrical | $25 |
-| Shore-charger output fuse — 20A inline | 1 ea | Amazon | electrical | $5 |
+| Shore-charger output fuse — 20A inline | 1 ea | Waytek Wire | electrical | $5 |
 | Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs) | 1 lot | Waytek Wire | electrical | $30 |
 | [Weatherproof control-station box, 22mm 1-hole](https://www.amazon.com/uxcell-Button-Control-Station-Waterproof/dp/B07GN5P3NF) (B07GN5P3NF) | 1 ea | Amazon | electrical | $8–$13 |
 | Wiring kit — 12/14/16/18 AWG tinned, 50ft/color | 1 kit | Waytek Wire | electrical | $80 |
@@ -237,13 +237,13 @@ indicative low–high estimates — get quotes before ordering.
 | Folding shelf stays/brackets | 2 ea | Amazon | shelf | $24 |
 | [Continuous (piano) hinge, 600 mm](https://wurthlac.com/product/165974/) (LSN8-32-600) | 1 ea | Wurth LAC | shelf | $23–$36 |
 | Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
-| Shurflo pump mounting bracket | 5 ea | Amazon | water | $50 |
+| Shurflo pump mounting bracket | 5 ea | Fresh Water Systems | water | $50 |
 | [Top + bottom wall stays + 4-bolt anchor plates](https://www.fastenersplus.com/products/5-8-x-6-jaw-eye-galvanized-turnbuckle) (JETBGV58X6) | 2 set | Fasteners Plus | swing | $90–$120 |
 | [Clamp-style shaft collar, 25mm/1" bore, SS](https://www.ruland.com/cl-16-st.html) (CL-16-ST) | 1 ea | Ruland | spray | $28–$33 |
 | [M12×1.75 jam nut, SS](https://www.amazon.com/M12-1-75-Plain-Finish-Stainless-Steel/dp/B007IA07PS) (B007IA07PS) | 1 ea | Amazon | spray | $1 |
 | [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 1 pack | Amazon | spray | $5 |
 | [SS beam clamp plates (4, cut from 1× 2 ft 304 flat bar)](https://www.mcmaster.com/8992K512/) (8992K512) | 1 2 ft bar | McMaster-Carr | spray | $35 |
-| SS/nylon retainer clips for 3/4" LDPE | 2 ea | Amazon | spray | $4 |
+| SS/nylon retainer clips for 3/4" LDPE | 2 ea | DripDepot | spray | $4 |
 | [Axle saddle clamps ×8 (304 SS flat-bar stock)](https://www.mcmaster.com/8992K794/) (8992K794) | 1 2 ft bar | McMaster-Carr | spray | $10 |
 | [Self-tapping SS screws (8-pack)](https://www.lowes.com/pd/Hillman-25-Count-10-x-1-in-Stainless-Steel-Self-Drilling-Interior-Exterior-Sheet-Metal-Screws/3691866) (3691866) | 4 ea | Lowe's (Hillman) | spray | $2–$3 |
 | Nylon zip ties, 200mm | 6 ea | Amazon | spray | $1 |
@@ -270,26 +270,26 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| 1" bulkhead tank-body fittings (Blue equalization cross-tie) | 2 ea | Amazon | water | $12–$24 |
+| 1" bulkhead tank-body fittings (Blue equalization cross-tie) | 2 ea | US Plastic Corp | water | $12–$24 |
 | 1" HDPE inter-housing jumpers | 1 lot | Ferguson | water | $18–$32 |
-| 1" NPT 4-way cross fitting | 1 ea | Amazon | water | $8–$14 |
-| 1" NPT spring check valve (CV1 — X1 gravity fill) | 1 ea | Amazon | water | $8–$14 |
-| 1" reinforced suction hose, 6 ft | 1 ea | Amazon | tray | $15 |
+| 1" NPT 4-way cross fitting | 1 ea | US Plastic Corp | water | $8–$14 |
+| 1" NPT spring check valve (CV1 — X1 gravity fill) | 1 ea | US Plastic Corp | water | $8–$14 |
+| 1" reinforced suction hose, 6 ft | 1 ea | US Plastic Corp | tray | $15 |
 | 1" SDR-11 HDPE pipe | 1 stick | Ferguson | water | $12–$18 |
-| 1" SS foot valve with strainer screen | 1 ea | Amazon | tray | $20 |
-| 1/2" barb × 1/2" hose barb, brass | 1 ea | Amazon | spray | $4 |
-| 1/2" ID reinforced braided PVC hose | 2 length | Amazon | water | $24–$48 |
-| 1/2" NPT 90° elbow polypropylene | 14 ea | Amazon | water | $28–$56 |
-| 1/2" NPT polypropylene tee | 6 ea | Amazon | water | $12–$24 |
-| 1/2" NPT polypropylene union | 6 ea | Amazon | water | $24–$36 |
-| 1/2" reinforced braided PVC hose, 15 ft | 1 ea | Amazon | spray | $15 |
+| 1" SS foot valve with strainer screen | 1 ea | US Plastic Corp | tray | $20 |
+| 1/2" barb × 1/2" hose barb, brass | 1 ea | DripDepot | spray | $4 |
+| 1/2" ID reinforced braided PVC hose | 2 length | US Plastic Corp | water | $24–$48 |
+| 1/2" NPT 90° elbow polypropylene | 14 ea | US Plastic Corp | water | $28–$56 |
+| 1/2" NPT polypropylene tee | 6 ea | US Plastic Corp | water | $12–$24 |
+| 1/2" NPT polypropylene union | 6 ea | US Plastic Corp | water | $24–$36 |
+| 1/2" reinforced braided PVC hose, 15 ft | 1 ea | DripDepot | spray | $15 |
 | [1/2" SDR-11 HDPE pipe](https://www.ferguson.com) | 4 stick | Ferguson | water | $24–$40 |
-| 1/2"×1" NPT bushing reducer | 1 ea | Amazon | water | $3–$5 |
-| 1/4" irrigation poly tube | 1 ea | Amazon | spray | $6 |
-| 2" polypropylene camlock pairs (M+F) | 4 pair | Amazon | water | $20–$32 |
-| 3-way diverter valve 1" FNPT | 1 ea | Amazon | water | $18–$30 |
-| 3-way diverter valve 1/2" FNPT | 1 ea | Amazon | water | $12–$22 |
-| 3/4" LDPE irrigation poly pipe, 15 ft | 1 ea | Amazon | spray | $10 |
+| 1/2"×1" NPT bushing reducer | 1 ea | US Plastic Corp | water | $3–$5 |
+| 1/4" irrigation poly tube | 1 ea | DripDepot | spray | $6 |
+| 2" polypropylene camlock pairs (M+F) | 4 pair | US Plastic Corp | water | $20–$32 |
+| 3-way diverter valve 1" FNPT | 1 ea | Barn Door Ag | water | $18–$30 |
+| 3-way diverter valve 1/2" FNPT | 1 ea | Barn Door Ag | water | $12–$22 |
+| 3/4" LDPE irrigation poly pipe, 15 ft | 1 ea | DripDepot | spray | $10 |
 | 3/4" SDR-11 HDPE pipe | 2 stick | Ferguson | water | $20–$30 |
 | Banjo EL100-90 elbow 1" NPT | 4 ea | Barn Door Ag | water | $16–$24 |
 | Banjo TEE100 equal tee 1" NPT | 3 ea | Barn Door Ag | water | $15–$21 |
@@ -298,12 +298,12 @@ indicative low–high estimates — get quotes before ordering.
 | Banjo V050FP ball valve 1/2" FNPT | 1 ea | Barn Door Ag | water | $30–$45 |
 | Banjo V050FP ball valve 1/2" FNPT | 2 ea | Barn Door Ag | water | $60–$90 |
 | Banjo V100FP ball valve 1" FNPT | 6 ea | Barn Door Ag | water | $198–$330 |
-| Barbed tees, tube into the side poly manifold | 7 ea | Amazon | spray | $10 |
+| Barbed tees, tube into the side poly manifold | 7 ea | DripDepot | spray | $10 |
 | [Bulkhead fitting 2" NPT (304 SS)](https://www.mcmaster.com/4464K115) (4464K115) | 3 ea | McMaster-Carr | water | $410 |
-| Distribution manifold, 1/2" → 7 barb outlets | 1 ea | Amazon | spray | $12 |
-| Flat-fan irrigation spray nozzles, barbed | 26 ea | Amazon | spray | $30–$50 |
-| pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | Amazon | water | $10–$18 |
-| pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | Amazon | water | $10–$18 |
+| Distribution manifold, 1/2" → 7 barb outlets | 1 ea | DripDepot | spray | $12 |
+| Flat-fan irrigation spray nozzles, barbed | 26 ea | DripDepot | spray | $30–$50 |
+| pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | Barn Door Ag | water | $10–$18 |
+| pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | Barn Door Ag | water | $10–$18 |
 | [S60×6 female-buttress → 2" NPT + 2→1" bushing](https://us.cpp.parts/collections/fits-s60x6) (HMFN/20UD/027) | 8 ea | CPP.parts | water | $112–$144 |
 | ½" HDPE pipe (tap relocation) | 1 lot | Irrigation supply | shelf | $10 |
 | **plumbing-fittings subtotal** | | | | **$1,331–$1,819** |
@@ -413,7 +413,7 @@ indicative low–high estimates — get quotes before ordering.
 | CTO carbon block cartridge 4.5"×20" | 2 ea | RonAqua | water | $32–$60 |
 | [IBC tote (1,000 L caged)](https://www.repackify.com/buy-ibc-totes/california) | 4 ea | SoCal reconditioner | water | $600 |
 | KDF-55 heavy-metal cartridge 4.5"×20" | 1 ea | FilterWay | water | $65–$95 |
-| MPP 5-micron sediment cartridge 4.5"×20" | 2 ea | Amazon | water | $24–$40 |
+| MPP 5-micron sediment cartridge 4.5"×20" | 2 ea | Fresh Water Systems | water | $24–$40 |
 | Plywood offcut spacer blocks 25mm (filter skid) | 1 lot | offcuts | water | $0 |
 | [SeaFlo accumulator (0.75 L)](https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8) (SFAT-075-125-01) | 1 ea | Environmental Marine | water | $30–$41 |
 | [Shurflo 2088-554-144 pump (P-01 Blue supply)](https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C) | 1 ea | Fresh Water Systems | water | $80–$89 |
@@ -432,7 +432,6 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,140–$3,492 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,877–$2,451 |
-| Amazon | 62 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,514–$1,815 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,000–$1,420 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
@@ -440,22 +439,23 @@ indicative low–high estimates — get quotes before ordering.
 | Home Depot | 27 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, steel-structural, timber-ply, tools-safety, water-equipment | $945–$1,220 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | American Grating | 1 | plastics-sheet | $830–$1,050 |
+| Amazon | 26 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, tools-safety | $858–$971 |
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
-| Barn Door Ag | 7 | plumbing-fittings | $414–$652 |
+| Barn Door Ag | 11 | plumbing-fittings | $464–$740 |
 | SoCal reconditioner | 1 | water-equipment | $600 |
+| US Plastic Corp | 12 | plastics-sheet, plumbing-fittings | $384–$588 |
 | M&K Metal | 1 | aluminum | $586 |
-| Fresh Water Systems | 5 | water-equipment | $400–$445 |
+| Fresh Water Systems | 7 | fasteners-hardware, water-equipment | $474–$535 |
 | Inverter Supply | 2 | electrical-distribution, electrical-power | $396 |
 | Curbell Plastics | 1 | plastics-sheet | $380 |
-| US Plastic Corp | 1 | plastics-sheet | $210–$300 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
+| Waytek Wire | 13 | electrical-distribution | $285 |
 | igus | 1 | bearings-motion | $261 |
 | americandoorsupply | 1 | electrical-distribution | $244 |
-| Powerwerx | 2 | electrical-distribution, electrical-power | $234 |
+| Powerwerx | 3 | electrical-distribution, electrical-power | $244 |
 | Hessaire | 1 | ducting-ventilation | $185–$230 |
-| Waytek Wire | 7 | electrical-distribution | $208 |
 | Bearings Direct | 2 | bearings-motion | $201 |
 | AllFilters | 1 | water-equipment | $114–$186 |
 | Amazon (bundle) | 1 | seals-gaskets | $157–$178 |
@@ -465,6 +465,7 @@ indicative low–high estimates — get quotes before ordering.
 | Fasteners Plus | 2 | fasteners-hardware | $106–$136 |
 | Ferguson | 4 | plumbing-fittings | $74–$120 |
 | McNichols | 2 | fasteners-hardware, plastics-sheet | $80–$115 |
+| DripDepot | 8 | fasteners-hardware, plumbing-fittings | $91–$111 |
 | Apera Instruments | 1 | tools-safety | $100–$110 |
 | Southco | 1 | fasteners-hardware | $76–$104 |
 | Lenox Laser | 1 | stainless-sheet | $40–$100 |
@@ -472,6 +473,7 @@ indicative low–high estimates — get quotes before ordering.
 | B&H Photo | 1 | fabric-textile | $95 |
 | StrongAr Hardware | 1 | fasteners-hardware | $70–$90 |
 | Blue Sea | 3 | electrical-distribution | $76 |
+| Super Bright LEDs | 1 | electrical-distribution | $75 |
 | Frost King + Canal Rubber | 1 | seals-gaskets | $40–$75 |
 | TAP Plastics | 1 | plastics-sheet | $30–$70 |
 | Hardware store | 2 | adhesives-finishes | $42–$62 |
@@ -479,7 +481,9 @@ indicative low–high estimates — get quotes before ordering.
 | Polycase | 1 | electrical-distribution | $60 |
 | US Plastic + Amazon | 1 | fasteners-hardware | $45–$60 |
 | Fibergrate | 1 | adhesives-finishes | $40–$60 |
+| Signature Solar | 2 | electrical-distribution | $55 |
 | Amazon (OKAYASU) | 1 | seals-gaskets | $24–$52 |
+| Digi-Key | 1 | ducting-ventilation | $50 |
 | Steel service center | 1 | steel-structural | $30–$50 |
 | Marine Fiberglass Direct | 1 | fasteners-hardware | $25–$45 |
 | Pres-Bond | 1 | seals-gaskets | $21–$42 |

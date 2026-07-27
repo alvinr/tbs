@@ -169,13 +169,13 @@ WATER = [
     LineItem("Pumps and accumulator (P-01..P-05 + ACC-01, 5× mount brackets)", 580, 586, 591, "2026-07-27: 5× Shurflo 2088 consolidated → 1 line, firm $100 ea (Amazon B00C1M6B1C, was $80–89) +$100 low/+$55 high"),
     LineItem("Corridor plumbing panel structure (23/32\" exterior ply backing + drain-riser spine, pump-mount shirt, mount brackets + fasteners)", 84, 96, 109, "2026-07-23: both ply parts firm 23/32\" RTD $29.30 (Home Depot); shirt confirmed 3/4\" (5× Shurflo 2088, ~6.5 kg — no need for 1\"). Brackets $25-50 est."),
     LineItem("Under-walkway pipe-ribbon supports (4× welded cross-braces + 16 pipe clips)", 24, 36, 48),
-    LineItem("Filter skid (3× Big Blue 4.5×20 separate housings on slotted-angle frame + cartridges)", 281, 375, 467, "2026-07-22: U-bracket retired → lag screws to ply backing −$18/−$21. 2026-07-25: housing standoff spacers HDPE → plywood offcuts (dry standoff, not immersion) −$12/−$22"),
+    LineItem("Filter skid (3× Big Blue 4.5×20 separate housings on slotted-angle frame + cartridges)", 292, 380, 472, "2026-07-22: U-bracket retired → lag screws to ply backing −$18/−$21. 2026-07-25: housing standoff spacers HDPE → plywood offcuts (dry standoff, not immersion) −$12/−$22. 2026-07-27: filter lag screws firm Everbilt 5/16×1½ SS 5-pack $7.09 ×2 (+$11/+$5)"),
     LineItem("Valves and fittings (6× BV ball valves, X1 4-way cross, S60×6 adapters, CV1, SV-01 + SV-02 taps, Blue equalization tie, PVC slip tees/elbows/transition adapters)", 999, 1007, 1054, "2026-07-22: S60×6 adapter re-spec'd female-buttress×2\"NPT + 2→1\" bushing (CPP HMFN/20UD/027) +$48/+$24. 2026-07-27: Banjo valves/tees/elbows/3-ways sourced firm at US Plastic. 1\" PVC slip tees (PVC024001000HD $2.13) + elbows (PVC023001000HD $1.52) + slip×NPT transition adapters (PVC021090600HD $0.79/PVC021091000HD $1.16) firm at Home Depot; filter-jumper bundle retired into itemized pipe/elbows/adapters"),
     LineItem("Pipe (PVC Sch-40 — spray bar + 1\"/½\" runs, firm at Home Depot)", 67, 67, 67, "2026-07-27: all three sizes firm — ½\" IPEX 30-05010HD $4.81×8 + 1\" Charlotte PVC040100600RS $8.65×2 + ¾\" PVC-04007-0600 $5.76×2 = $67.30"),
-    LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1463, 1853, 2241, "2026-07-23: slope shims firmed to the 1-1/4\" HDPE plate route ($210–300, from the $40–75 flat-bar est)"),
+    LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1452, 1842, 2230, "2026-07-23: slope shims firmed to the 1-1/4\" HDPE plate route ($210–300, from the $40–75 flat-bar est). 2026-07-27: tray liner folded into ldpe-sheeting roll (−$8) + Loctite PL Premium 2-pack $11.94 (−$3)"),
     LineItem("Spray bar assembly (40×25 SS RHS beam, side LDPE manifold, 26 nozzles, manifold + 7 feed tubes, 4 Ø32 wheels, ball joint, arm + turned adapter + jam nut + clamp collar, hose)", 402, 448, 494, "2026-07-22: arm jam nut/collar/self-tap/beam-clamp re-priced to real SKUs. 2026-07-25: arm tube → McMaster 9056K36 8ft stock $64.03 (was a $6 500mm cut, too short to order) +$58"),
     LineItem("Electrical (wiring only — fuse block in Electrical Report)", 37, 37, 37),
-    LineItem("Processing consumables (6-mil poly, pH meter, citric acid)", 242, 260, 278),
+    LineItem("Processing consumables (6-mil poly, pH meter, citric acid)", 231, 249, 263, "2026-07-27: 6-mil black poly firm — Film-Gard 8ft×100ft $54.85 (was $66–70 est)"),
 ]
 
 # §1 Container — clean 2-item table; the scenario Mid was $3,150 but the items give $3,300.
@@ -192,7 +192,7 @@ LIGHTLOCK = [
     LineItem("6215-2RS sealed bearing ×2 (Ø75×130×25, ABEC-1)", 121, 121, 121, "$60.59 ea firm, Bearings Direct; alt McMaster 6138K125 $394.88"),
     LineItem("75mm Ø × 150mm steel stub shafts (×2)", 30, 40, 50, "steel service center"),
     LineItem("Felt/brush wiper + 12mm neoprene (drum↔housing seal)", 40, 57, 75, "Frost King BP17A brush + 1/2\" neoprene by yard"),
-    LineItem("Silicone bead sealant (bearing housing)", 6, 8, 10, "generic black UV silicone, Home Depot"),
+    LineItem("Silicone bead sealant (bearing housing)", 20, 20, 20, "2026-07-27: firm — Maxisil black natural-stone silicone 10.5 oz $19.91 (weather/UV, neutral-cure), Home Depot"),
     LineItem("100mm Ø SS grab rail (400mm cut)", 25, 35, 45, "16\" marine SS grab bar; 316 $45 / 304 ~$25"),
     LineItem("Matte-black interior finish", 40, 55, 70, "scuff + flat-black touch-in"),
     LineItem("Stainless fasteners + nylon isolation washers (no galvanic couple)", 45, 52, 60, "US Plastic 92674 shoulder washers + SS fastener kit"),
@@ -251,7 +251,7 @@ SHELF = [
 # $1,350); the SCENARIO row ($970/$1,140/$1,310) was the drifted one.
 INTERIOR = [
     LineItem("Light-sealing materials", 157, 168, 178, "blackout bundle: weatherstrip + felt + gaffer"),
-    LineItem("Interior paint", 100, 130, 160),
+    LineItem("Interior paint", 125, 125, 125, "2026-07-27: firm — BEHR PRO Jet Black Dead Flat $24.98/gal ×5 (coverage est, re-count at paint-out)"),
     # Image-plane flat backing RETIRED 2026-07-22 — same ACM as film 'Dibond ACM 4×8 sheets' (double-count)
     LineItem("Ventilation (inline fans + light-trap baffles)", 80, 100, 130),
     LineItem("Door & access upgrades", 50, 70, 100),
@@ -285,7 +285,7 @@ FILM = [
     # 4.2 Film plane frame & backing
     point("Aluminum angle 2×2×3/16 (6061-T6 plain, expendable) 16 ft (×3) — weld-free frame", 625, "Metal Supermarkets 192\" @ $208.41; 2 horizontals + 1 for both verticals; 1 frame"),
     LineItem("Dibond ACM 4mm 4×8 black sheets (×4, Option A strips) — single rigid plane", 380, 380, 380, "Curbell 4mm black $95/sheet firm; 4 full-height vertical strips, 3 vertical seams"),
-    LineItem("Light-seal set — EPDM tape (×2) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6)", 260, 274, 288),
+    LineItem("Light-seal set — EPDM tape (×2) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6)", 265, 268, 269, "2026-07-27: Gorilla 30yd black tape firm $9.94 ×6 (+$5 low/−$18 high)"),
     LineItem("Muslin clamps — nylon spring clamp ×58 (Pittsburgh 69289)", 115, 144, 173, "2026-07-25 re-price: Harbor Freight 69289 now $1.99–2.99 ea (was $3–4); inert fiberglass + swivel pads, top + 2 side edges (bottom = walkway clearance)"),
     LineItem("Muslin clamp filler — HDPE L-channel strip", 30, 50, 70, "inert HDPE packer, ~8.7 m, firm at fab — lets the clamp bite a solid full-depth edge"),
     # 4.3 Wall-seat saddles (rev 11, ICP-11–14) — estimates, confirm at procurement
@@ -305,14 +305,14 @@ VENTILATION = [
     point('Canopy frame (1.5" EMT conduit + fittings)', 120),
     point("Baffle duct sheet metal (fans)", 30),
     point("Baffle duct sheet metal (cooler, Ø200)", 20),
-    point("200mm insulated flex duct", 22),
-    point("200mm 90° duct elbow", 14),
-    point("Duct collar + hose clamp", 12),
-    point("Weatherproof duct cap", 8),
+    point("200mm insulated flex duct", 63),      # 2026-07-27: Rubber-Cal 8"×25ft coil $62.68
+    point("200mm 90° duct elbow", 15),            # 2026-07-27: Master Flow 90E8 $14.69
+    point("Duct collar + hose clamp", 10),        # 2026-07-27: Master Flow DSCF8 collar $8.98 + band clamp ~$2
+    point("Weatherproof duct cap", 12),           # 2026-07-27: Master Flow 8DC $11.98
     point("Deutsch DT 2-pin connectors (Fan B flex ×2)", 8),
     point("16 AWG silicone coiled cable (Fan B flex)", 15),
     point("Cooler external power cable", 20),
-    point("Ratchet straps ×2 (cooler stowage)", 12),
+    point("Ratchet straps ×2 (cooler stowage)", 10),   # 2026-07-27: Husky FH0829 4-pack $9.97 (2 used, 2 spare)
     point("Plywood base plate (cooler stowage)", 8),
 ]
 
@@ -1019,18 +1019,18 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 951,  "total": 1250, "per_print": 25},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "standard": {"chem": 1414, "total": 1710, "per_print": 34},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "rich":     {"chem": 2802, "total": 3100, "per_print": 62},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
-    "grand_total": (27962, 32792, 39710),  # 2026-07-27: PVC run + slip fittings firm at Home Depot, filter-jumper retired (−$2 low/−$43 high). 2026-07-27: Banjo→US Plastic firm sourcing +$279 low. Amazon/McMaster parts batch — pull-cord switch +$207, saddle thumbscrews +$106. 2026-07-26: Artcraft bulk chemistry — AmFe $218.16→$64.20/kg + ferricyanide $60.80→$51.01/kg; shore charger + ML-RBS re-sourced; + the 2026-07-25 parts batch. Per-change history in git log.  # 2026-07-25: IBC wall-hanger M12×65; E-stops → uxcell + ext box; spray arm tube → 8ft; filter spacers → ply offcuts; muslin clamps re-price −$59. Per-change history in git log.
+    "grand_total": (28037, 32818, 39687),  # 2026-07-27: Home Depot consumables batch firm — interior paint, 6-mil poly (tray liner folded in), filter lag screws, light-trap silicone, cooler ducting, ratchet straps (+$75 low/−$23 high). 2026-07-27: PVC run + slip fittings firm, filter-jumper retired. 2026-07-27: Banjo→US Plastic firm sourcing +$279 low. Amazon/McMaster parts batch — pull-cord switch +$207, saddle thumbscrews +$106. 2026-07-26: Artcraft bulk chemistry — AmFe $218.16→$64.20/kg + ferricyanide $60.80→$51.01/kg; shore charger + ML-RBS re-sourced; + the 2026-07-25 parts batch. Per-change history in git log.  # 2026-07-25: IBC wall-hanger M12×65; E-stops → uxcell + ext box; spray arm tube → 8ft; filter spacers → ply offcuts; muslin clamps re-price −$59. Per-change history in git log.
     "walkway": (1979, 2395, 2825),  # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
-    "water": (6230, 7062, 7929),  # 2026-07-27: PVC run + slip fittings firm at Home Depot (1" DWV/pressure pipe, ¾"/½" sticks, slip tees/elbows, transition adapters), filter-jumper bundle retired (−$2 low/−$43 high). 2026-07-27: Banjo valves/fittings sourced firm at US Plastic (+$279 low). 2026-07-25: IBC wall-hanger M12×65 (+$59/+$72); spray arm tube → 8ft McMaster (+$58); filter spacers → ply offcuts (−$12/−$22)
+    "water": (6219, 7045, 7908),  # 2026-07-27: consumables firm at Home Depot — 6-mil poly Film-Gard $54.85 (−$11/−$15), filter lag screws Everbilt 5-pack (+$11/+$5), tray liner folded into the poly roll (−$8), Loctite 2-pack (−$3). 2026-07-27: PVC run + slip fittings firm, filter-jumper retired. 2026-07-27: Banjo valves/fittings firm at US Plastic (+$279 low). 2026-07-25: IBC wall-hanger M12×65; spray arm tube → 8ft; filter spacers → ply offcuts
     "container": (2300, 3300, 4300),
-    "lightlock": (2032, 2268, 2506),   # 2026-07-22: Ø900 housing (46685 3/16" HDPE ×3 = $555) + Ø864 drum firmed to 1/8" black HDPE ×3 = $370 (was $150–240 est).  §6 = hinged-panel §8.2 (housing + drum) line items
+    "lightlock": (2046, 2280, 2516),   # 2026-07-27: light-trap seam silicone firm — Maxisil black 10.5oz $19.91 (+$14/+$10). 2026-07-22: Ø900 housing (46685 3/16" HDPE ×3 = $555) + Ø864 drum firmed to 1/8" black HDPE ×3 = $370.  §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (1180, 1395, 1610),   # 2026-07-22: journal bushings → igus iglide J JFM-9095-100 $130.53/ea (from GGB DU $211.25) −$162/pair.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame)   # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
     "panel": (1776, 1889, 2002),       # 2026-07-23: corner core plates firm 5052-H32 @ $293.16/sheet ×2 (M&K Metal).  §6c = hinged-panel §8.1
     "shelf": (214, 227, 239),          # 2026-07-22: piano hinge re-priced (Würth 32×600 satin SS, $22–35).  §6d = chemistry-prep-shelves §7
-    "interior": (467, 578, 698),      # 2026-07-22: retired the Image-plane flat-backing ACM line (double-counted the film dibond-acm-film)
+    "interior": (492, 573, 663),      # 2026-07-27: interior blackout paint firm — BEHR PRO Jet Black Dead Flat $24.98/gal ×5 (+$25 low/−$35 high). 2026-07-22: retired the Image-plane flat-backing ACM line (double-counted the film dibond-acm-film)
     "optics": (100, 155, 215),         # 2026-07-23: pinhole → Lenox SS-3/8-DISC $40-100 (config, RFQ)
-    "film": (6193, 6474, 6759),  # 2026-07-27: saddle M8 thumbscrews ×12 → McMaster $11.80 ea (+$106). 2026-07-25 re-price: muslin clamps (×58) Harbor Freight 69289 $3–4 → $1.99–2.99 (−$59). (2026-07-22: clamp mechanism → off-the-shelf nylon spring clamps + HDPE filler.) Detail in git log.
-    "ventilation": (737, 760, 782),   # 2026-07-23: cooler inverter firm Victron PIN123750510 GFCI $132.60
+    "film": (6198, 6468, 6740),  # 2026-07-27: Gorilla tape firm $9.94 ×6 (+$5 low/−$18 high). 2026-07-27: saddle M8 thumbscrews ×12 → McMaster $11.80 ea (+$106). 2026-07-25 re-price: muslin clamps (×58) Harbor Freight 69289 $3–4 → $1.99–2.99 (−$59). (2026-07-22: clamp mechanism → off-the-shelf nylon spring clamps + HDPE filler.) Detail in git log.
+    "ventilation": (779, 802, 824),   # 2026-07-27: cooler ducting firm at Home Depot — 8" flex-duct 25ft coil $62.68 (+$41), elbow 90E8 $14.69, collar DSCF8 $8.98, cap 8DC $11.98, Husky ratchet 4-pack $9.97. 2026-07-23: cooler inverter firm Victron PIN123750510 GFCI $132.60
     "power": (2984, 3002, 3020),   # 2026-07-27: pull-cord switch → americandoorsupply NEMA-4 $121.99 ×2 (+$228 net +$207). 2026-07-26: shore charger + ML-RBS contactor re-sourced (−$109)       # 2026-07-25: 2× E-stop → uxcell $12.74 (Harfington) + external weatherproof control-station box (IP65) −$56 net. Still est: lifepo4 (Smart-vs-Core). §5a authoritative subtotal
 }
 

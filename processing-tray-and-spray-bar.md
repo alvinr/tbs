@@ -547,14 +547,13 @@ tray drainage plan and sump cross-section).
 | 304 SS sheet, 16-gauge (1.5mm), #4 brushed | 2,229 × 2,200mm panels | 2 ea | Online Metals | $720–$1,000 |
 | Fabrication (cut, brake, weld, press sump) | Two panels + a ~40mm center-seam lap (shingle-oriented downhill) + sump well | 1 lot | Local sheet metal | $450–$850 |
 | 1-1/4" HDPE plate, cut-to-size (slope shims) | 5 tapered slope shims (50mm × 2,200mm, 20→30mm taper) RIP from ONE 1-1/4" HDPE plate cut-to-size ~14×84" (~7 ft²) — full-length one-piece strips (no splice); taper-cut bundles with the tray fab. ~$33–38/ft². Plate route ≈1/6 the solid-bar cost ($1,656). | 1 lot | US Plastic Corp / K-Mac Plastics | $210–$300 |
-| Loctite PL Premium construction adhesive | Shim-to-floor bond | 2 tube | Home Depot | $15 |
+| [Loctite PL Premium construction adhesive](https://www.homedepot.com/p/319654545) (1390595) | Shim-to-floor bond. Loctite PL Premium 10 oz, sold as a 2-pack ($11.94 → $5.97/tube) | 2 tube | Home Depot | $12 |
 | 1" SS foot valve with strainer screen | Sump pickup tube | 1 ea | US Plastic Corp | $20 |
 | 1" reinforced suction hose, 6 ft | Pickup tube to P-04 | 1 ea | US Plastic Corp | $15 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | Silicone sealant bed in the center-seam lap joint (between the overlapped panels) + a top bead — the seam seal | 1 ea | CountryMax (Aqueon) | $17–$25 |
 | [M6×1.0 × 16 hex bolt, 316 SS — tray center-seam lap joint](https://www.mcmaster.com/93635A210/) (93635A210) | Tray center-seam LAP-joint bolts (316 SS, wet zone) + M6 serrated flange nuts underneath. Through both overlapped 1.5mm panels + silicone bed. Grip ≈ 4mm → M6×16. Pitch M6×1.0 coarse. $15.86/pack of 25. | 12 ea | McMaster-Carr | $8 |
 | [M6×1.0 flange nut, serrated SS](https://www.mcmaster.com/96194A101/) (96194A101) | Serrated flange nut — tray panel bolts. Pitch M6×1.0 (coarse, baseline — confirm vs SKU PDF, must match the mating bolt). $4.71/pack of 100. | 12 ea | McMaster-Carr | $1 |
-| 6-mil black LDPE sheet, 10 ft × 8 ft | Containment liner (consumable, per session) | 1 ea | Home Depot | $8 |
-| **Tray total** | | | | **$1,463–$2,241** |
+| **Tray total** | | | | **$1,452–$2,230** |
 <!-- END parts:tray -->
 
 ### 6.2 Spray Bar Assembly
@@ -593,9 +592,9 @@ tray drainage plan and sump cross-section).
 
 | Subsystem | Cost Range |
 |-----------|-----------|
-| Processing tray | <!-- BEGIN costing:tray-low -->$1,463<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,241<!-- END costing:tray-high --> |
+| Processing tray | <!-- BEGIN costing:tray-low -->$1,452<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,230<!-- END costing:tray-high --> |
 | Spray bar assembly | <!-- BEGIN costing:spray-low -->$402<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$494<!-- END costing:spray-high --> |
-| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,865<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,735<!-- END costing:tray-spray-total-high -->** |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,854<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,724<!-- END costing:tray-spray-total-high -->** |
 
 ---
 

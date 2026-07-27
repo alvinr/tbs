@@ -195,7 +195,9 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | [Evaporative cooler](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) | Hessaire MC18M, 120V AC, <!-- BEGIN fact:cooler_cfm_rated -->1,300<!-- END fact:cooler_cfm_rated --> CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W | 1 ea | Hessaire / Amazon | $185–$230 |
 | [Cooler inverter — Victron Phoenix 12/375 GFCI](https://www.invertersupply.com/index.php?main_page=product_info&products_id=200695) (PIN123750510) | Victron Phoenix 12/375 120V VE.Direct GFCI (12V→120V, 375VA/300W) — GFCI in the faceplate outlet satisfies the wet-cooler requirement (no separate GFCI needed). Firm $132.60. | 1 ea | Inverter Supply / PKYS | $133 |
 | Shade canopy — 80% shade cloth | 20 × 10 ft | 1 ea | Amazon / Farm supply | $80 |
-| Canopy frame | 1.5" EMT conduit + fittings | 1 lot | Home Depot | $120 |
+| 1.5" EMT conduit, 10 ft | Shade-canopy frame legs + top rails. 1.5" EMT, 6× 10-ft sticks. Price est — source SKU. | 6 stick | Home Depot | $84 |
+| EMT canopy fittings (couplings, corner ells, connectors) | Set-screw couplings + 90° corners + tee/cross connectors joining the EMT frame. Price est — source pieces. | 1 lot | Home Depot | $24 |
+| EMT canopy base plates + ground stakes (×4) | Floor flange/base plate at each leg + ground stakes/guys. Price est. | 4 ea | Home Depot | $12 |
 | Baffle duct sheet metal (fans) | 22 ga galvanized, 2 × 300mm stubs | 1 lot | Local sheet metal / Home Depot | $30 |
 | Baffle duct sheet metal (cooler) | 22 ga galvanized, 1 × 300mm stub, Ø200mm | 1 lot | Local sheet metal / Home Depot | $20 |
 | [200mm insulated flex duct](https://www.homedepot.com/p/314398619) (23-183-08-25) | Rubber-Cal 8" × 25 ft flexible ducting coil (one coil covers the cooler riser run with margin) | 1 coil | Home Depot | $63 |

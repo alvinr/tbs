@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,173 | $6,711 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,261 | $7,922 |
-| 6. Electrical — power, circuits, wiring | $2,984 | $3,020 |
+| 6. Electrical — power, circuits, wiring | $2,993 | $3,029 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,979 | $2,825 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$28,050** | **~$36,758** |
+| **TOTAL (base build + 50-print run)** | **~$28,059** | **~$36,767** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -390,11 +390,11 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [Corridor plumbing-panel ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 1 sheet | Home Depot | water | $29 |
-| [EP plywood backing panel (18mm, ~700×2000mm)](https://www.homedepot.com/p/204635471) (2250) | 1 2'×8' sheet | Home Depot | electrical | $65 |
+| [EP plywood backing panel (18mm, ~700×2000mm)](https://www.homedepot.com/p/203414066) (454559) | 1 4'×8' sheet | Home Depot | electrical | $69 |
 | [Pressure-treated pine plywood (Fan B mount band + cooler base)](https://www.homedepot.com/p/206343229) (231428) | 1 4'×8' ¾" sheet | Home Depot | panel | $70 |
 | [Pump-mount shirt ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 1 sheet | Home Depot | water | $29 |
 | [UV-coated white plywood (work surface)](https://www.homedepot.com/p/302874373) (BPI6WUV2I) | 1 4'×8' 18mm sheet | Home Depot | shelf | $73 |
-| **timber-ply subtotal** | | | | **$266** |
+| **timber-ply subtotal** | | | | **$271** |
 
 ### tools-safety
 
@@ -436,7 +436,7 @@ indicative low–high estimates — get quotes before ordering.
 | Amazon | 27 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, tools-safety, water-equipment | $1,358–$1,471 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,000–$1,420 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
-| Home Depot | 40 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,154–$1,296 |
+| Home Depot | 40 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,158–$1,300 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
 | US Plastic Corp | 16 | plastics-sheet, plumbing-fittings | $1,073–$1,185 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |

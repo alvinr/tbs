@@ -322,7 +322,7 @@ VENTILATION = [
 # §5b ventilation items, so we own the two authoritative subtotals rather than re-entering it.
 POWER = [
     LineItem("Solar & battery (3× 200W panels, MPPT 100/50, 1× 100Ah LiFePO4, shore charger, 3× tilt mounts, PV cabling, PV disconnect, panel)", 1310, 1310, 1310, "2026-07-23: fully firmed. 2026-07-26: shore charger Victron BPC121531104R re-sourced Powerwerx $175.95 → Inverter Service Center $152.15 (−$24)"),
-    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop + ext weatherproof box, charge/shore fuses, protection, conduit, LED, master pump switch, power-panel raised weld-in frame)", 1679, 1697, 1715, "2026-07-23: fuse block/MRBF/disconnect/ground-rod firmed. 2026-07-25: 2× E-stop → uxcell $12.74 + ext weatherproof box (IP65) −$56. 2026-07-26: ML-RBS contactor re-sourced Powerwerx $348.59 → Inverter Supply $263.84 (−$85). 2026-07-27: pull-cord switch sourced americandoorsupply NEMA-4 $121.99 ×2 +$228. 2026-07-27: EP backboard → ¾\" PureBond maple project panel $64.94 (was CDX fire-rated $75.18, −$10)"),
+    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop + ext weatherproof box, charge/shore fuses, protection, conduit, LED, master pump switch, power-panel raised weld-in frame)", 1683, 1701, 1719, "2026-07-23: fuse block/MRBF/disconnect/ground-rod firmed. 2026-07-25: 2× E-stop → uxcell $12.74 + ext weatherproof box (IP65) −$56. 2026-07-26: ML-RBS contactor re-sourced Powerwerx $348.59 → Inverter Supply $263.84 (−$85). 2026-07-27: pull-cord switch sourced americandoorsupply NEMA-4 $121.99 ×2 +$228. 2026-07-27: EP backboard → 18mm SANDEPLY Sande 4×8 $68.98 (full sheet fits the ~700×2000 backboard, +$4)"),
 ]
 
 
@@ -653,7 +653,7 @@ SECTIONS = [
     Section("3",  "Optics — pinhole plate", *total(OPTICS)),
     Section("4",  "Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)", *total(FILM)),
     Section("5",  "Processing water system (incl. tray, spray bar, IBC stacking frame)", *total(WATER)),
-    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2984, 3002, 3020),
+    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 2993, 3011, 3029),  # KEEP IN SYNC WITH EXPECTED["power"] / total(POWER) — grand_total() sums this Section, not the POWER line items
     Section("5b", "Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)",
             total(VENTILATION)[0], total(VENTILATION)[0] + 60, total(VENTILATION)[0] + 150),
     Section("6",  "Housed revolving-door light lock (plastic-skin custom fabrication)", *total(LIGHTLOCK)),
@@ -1019,7 +1019,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 951,  "total": 1250, "per_print": 25},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "standard": {"chem": 1414, "total": 1710, "per_print": 34},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "rich":     {"chem": 2802, "total": 3100, "per_print": 62},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
-    "grand_total": (28100, 32854, 39698),  # 2026-07-27: Home Depot consumables batch firm — interior paint, 6-mil poly (tray liner folded in), filter lag screws, light-trap silicone, cooler ducting, ratchet straps (+$75 low/−$23 high). 2026-07-27: PVC run + slip fittings firm, filter-jumper retired. 2026-07-27: Banjo→US Plastic firm sourcing +$279 low. Amazon/McMaster parts batch — pull-cord switch +$207, saddle thumbscrews +$106. 2026-07-26: Artcraft bulk chemistry — AmFe $218.16→$64.20/kg + ferricyanide $60.80→$51.01/kg; shore charger + ML-RBS re-sourced; + the 2026-07-25 parts batch. Per-change history in git log.  # 2026-07-25: IBC wall-hanger M12×65; E-stops → uxcell + ext box; spray arm tube → 8ft; filter spacers → ply offcuts; muslin clamps re-price −$59. Per-change history in git log.
+    "grand_total": (28109, 32863, 39707),  # 2026-07-27: Home Depot consumables batch firm — interior paint, 6-mil poly (tray liner folded in), filter lag screws, light-trap silicone, cooler ducting, ratchet straps (+$75 low/−$23 high). 2026-07-27: PVC run + slip fittings firm, filter-jumper retired. 2026-07-27: Banjo→US Plastic firm sourcing +$279 low. Amazon/McMaster parts batch — pull-cord switch +$207, saddle thumbscrews +$106. 2026-07-26: Artcraft bulk chemistry — AmFe $218.16→$64.20/kg + ferricyanide $60.80→$51.01/kg; shore charger + ML-RBS re-sourced; + the 2026-07-25 parts batch. Per-change history in git log.  # 2026-07-25: IBC wall-hanger M12×65; E-stops → uxcell + ext box; spray arm tube → 8ft; filter spacers → ply offcuts; muslin clamps re-price −$59. Per-change history in git log.
     "walkway": (1979, 2395, 2825),  # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
     "water": (6261, 7073, 7922),  # 2026-07-27: service unions firm — Apollo ½" PVC union $4.96 ×2 (+$4/+$2). 2026-07-27: Option C — union-half split into 4 couplings + 2 unions; filter-skid → Pentair brackets −$85; PVC run + Banjo firm earlier.
     "container": (2300, 3300, 4300),
@@ -1031,7 +1031,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "optics": (100, 155, 215),         # 2026-07-23: pinhole → Lenox SS-3/8-DISC $40-100 (config, RFQ)
     "film": (6173, 6440, 6711),  # 2026-07-27: blackout poly → Film-Gard 10ft 4-mil $40.12 (was 6-mil $66–70, −$26/−$30); Gorilla tape firm $9.94 ×6; saddle M8 thumbscrews ×12 McMaster $11.80. (2026-07-22: clamp → off-the-shelf nylon spring clamps + HDPE filler.)
     "ventilation": (771, 794, 816),   # 2026-07-27: cooler ducting firm (8" flex 25ft coil $62.68, 90E8/DSCF8/8DC, Husky ratchet 4-pack); cooler base plate retired (cut from panel-fanb-ply). 2026-07-23: inverter Victron PIN123750510 $132.60 
-    "power": (2989, 3007, 3025),   # 2026-07-27: EP backboard → ¾" PureBond maple $64.94 (was CDX $75.18, −$10); pull-cord switch NEMA-4 $121.99 ×2. §5a authoritative subtotal
+    "power": (2993, 3011, 3029),   # 2026-07-27: EP backboard → 18mm SANDEPLY Sande 4×8 $68.98 (full sheet, +$4); pull-cord switch NEMA-4 $121.99 ×2. §5a authoritative subtotal
 }
 
 
@@ -1056,6 +1056,13 @@ def check() -> list[str]:
                        ("ventilation", VENTILATION), ("power", POWER)):
         if total(items) != EXPECTED[key]:
             errs.append(f"{key} {total(items)} != {EXPECTED[key]}")
+    # §5a is a hardcoded Section that grand_total() sums (NOT the POWER line items); it must mirror
+    # the power subtotal, else power edits silently miss the grand total. total(POWER)==EXPECTED["power"]
+    # is checked above, so pin §5a to it here to close the loop.
+    s5a = _sec("5a")
+    if (s5a.low, s5a.mid, s5a.high) != EXPECTED["power"]:
+        errs.append(f"§5a Section {(s5a.low, s5a.mid, s5a.high)} != EXPECTED['power'] {EXPECTED['power']} "
+                    f"(keep the Section('5a') literal in sync with the power subtotal)")
     if grand_total() != EXPECTED["grand_total"]:
         errs.append(f"grand total {grand_total()} != {EXPECTED['grand_total']}")
     return errs

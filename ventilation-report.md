@@ -198,16 +198,16 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | Canopy frame | 1.5" EMT conduit + fittings | 1 lot | Home Depot | $120 |
 | Baffle duct sheet metal (fans) | 22 ga galvanized, 2 × 300mm stubs | 1 lot | Local sheet metal / Home Depot | $30 |
 | Baffle duct sheet metal (cooler) | 22 ga galvanized, 1 × 300mm stub, Ø200mm | 1 lot | Local sheet metal / Home Depot | $20 |
-| 200mm insulated flex duct | Ø200mm × 1.2m, aluminum foil jacket | 1 ea | Home Depot / McMaster-Carr | $22 |
-| 200mm 90° duct elbow | Ø200mm (8") galvanized, cooler riser to wall stub | 1 ea | Home Depot | $14 |
-| Duct collar + hose clamp | Ø200mm, galvanized | 1 ea | Home Depot | $12 |
-| Weatherproof duct cap | Ø200mm, removable | 1 ea | Home Depot | $8 |
+| [200mm insulated flex duct](https://www.homedepot.com/p/314398619) (23-183-08-25) | Rubber-Cal 8" × 25 ft flexible ducting coil (one coil covers the cooler riser run with margin) | 1 coil | Home Depot | $63 |
+| [200mm 90° duct elbow](https://www.homedepot.com/p/100187427) (MF-90E8) | Master Flow 8" 90° adjustable galvanized elbow (model 90E8), cooler riser to wall stub | 1 ea | Home Depot | $15 |
+| [Duct collar + hose clamp](https://www.homedepot.com/p/100211540) (DSCF8) | Master Flow 8" starting collar/take-off $8.98 firm; add a worm-drive band clamp (~$2) to secure the flex duct — high band covers the clamp | 1 ea | Home Depot | $9–$11 |
+| [Weatherproof duct cap](https://www.homedepot.com/p/100396923) (8DC) | Master Flow 8" round removable duct cap | 1 ea | Home Depot | $12 |
 | Deutsch DT 2-pin connectors | Fan B flex connector (×2 sets) | 2 set | Waytek Wire | $8 |
 | 16 AWG silicone coiled cable | 1m, 2-conductor (Fan B flex) | 1 ea | Waytek Wire / Amazon | $15 |
 | Cooler external power cable | 1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end | 1 ea | Waytek Wire / Amazon | $20 |
-| Ratchet straps, 25mm | Cooler stowage | 2 ea | Home Depot / Amazon | $12 |
+| [Ratchet straps, 25mm](https://www.homedepot.com/p/312994495) (FH0829) | Cooler stowage. Husky 12 ft × 1" ratchet tie-downs, S-hook, 4-pack — design uses 2, 2 spare | 1 4-pack | Home Depot | $10 |
 | Plywood base plate (cooler stowage) | ½" (12mm) plywood project panel (610×1220mm), cut to 600×350 | 1 2'×4' ½" panel | Home Depot / Lumber yard | $8 |
-| **Ventilation total** | | | | **$737–$782** |
+| **Ventilation total** | | | | **$777–$824** |
 <!-- END parts:ventilation -->
 
 ---

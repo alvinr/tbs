@@ -112,13 +112,13 @@ PARTS: list[Part] = [
     Part("baffle-metal-cooler", "Baffle duct sheet metal (cooler)", "steel-structural",
          "ventilation", 1, "lot", 20, 20, "Local sheet metal", "Home Depot", spec="22 ga galvanized, 1 × 300mm stub, Ø200mm"),
     Part("flex-duct-200", "200mm insulated flex duct", "ducting-ventilation",
-         "ventilation", 1, "ea", 22, 22, "Home Depot", "McMaster-Carr", spec="Ø200mm × 1.2m, aluminum foil jacket"),
+         "ventilation", 1, "coil", 62.68, 62.68, "Home Depot", part_no="23-183-08-25", url="https://www.homedepot.com/p/314398619", spec='Rubber-Cal 8" × 25 ft flexible ducting coil (one coil covers the cooler riser run with margin)'),
     Part("duct-elbow-200", "200mm 90° duct elbow", "ducting-ventilation",
-         "ventilation", 1, "ea", 14, 14, "Home Depot", spec='Ø200mm (8") galvanized, cooler riser to wall stub'),
+         "ventilation", 1, "ea", 14.69, 14.69, "Home Depot", part_no="MF-90E8", url="https://www.homedepot.com/p/100187427", spec='Master Flow 8" 90° adjustable galvanized elbow (model 90E8), cooler riser to wall stub'),
     Part("duct-collar-clamp", "Duct collar + hose clamp", "ducting-ventilation",
-         "ventilation", 1, "ea", 12, 12, "Home Depot", spec="Ø200mm, galvanized"),
+         "ventilation", 1, "ea", 8.98, 11, "Home Depot", part_no="DSCF8", url="https://www.homedepot.com/p/100211540", spec='Master Flow 8" starting collar/take-off $8.98 firm; add a worm-drive band clamp (~$2) to secure the flex duct — high band covers the clamp'),
     Part("duct-cap-200", "Weatherproof duct cap", "ducting-ventilation",
-         "ventilation", 1, "ea", 8, 8, "Home Depot", spec="Ø200mm, removable"),
+         "ventilation", 1, "ea", 11.98, 11.98, "Home Depot", part_no="8DC", url="https://www.homedepot.com/p/100396923", spec='Master Flow 8" round removable duct cap'),
     Part("deutsch-dt-2pin", "Deutsch DT 2-pin connectors", "electrical-distribution",
          "ventilation", 2, "set", 4, 4, "Waytek Wire", spec="Fan B flex connector (×2 sets)"),
     Part("coiled-cable-16awg", "16 AWG silicone coiled cable", "electrical-distribution",
@@ -126,7 +126,7 @@ PARTS: list[Part] = [
     Part("cooler-power-cable", "Cooler external power cable", "electrical-distribution",
          "ventilation", 1, "ea", 20, 20, "Waytek Wire", "Amazon", spec="1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end"),
     Part("ratchet-strap-25", "Ratchet straps, 25mm", "fasteners-hardware",
-         "ventilation", 2, "ea", 6, 6, "Home Depot", "Amazon", spec="Cooler stowage"),
+         "ventilation", 1, "4-pack", 9.97, 9.97, "Home Depot", part_no="FH0829", url="https://www.homedepot.com/p/312994495", spec='Cooler stowage. Husky 12 ft × 1" ratchet tie-downs, S-hook, 4-pack — design uses 2, 2 spare'),
     Part("plywood-base-12", "Plywood base plate (cooler stowage)", "timber-ply",
          "ventilation", 1, '2\'×4\' ½" panel', 8, 8, "Home Depot", "Lumber yard",
          spec='½" (12mm) plywood project panel (610×1220mm), cut to 600×350'),
@@ -185,7 +185,7 @@ PARTS: list[Part] = [
          "water", 1, "lot", 25, 45, "Home Depot", spec="~2.5 m 25×25×3mm slotted steel angle + fasteners; bolts to the 18mm ply backing (adjustable housing height)", panel="Pinhole Wall"),
     # filter-ubracket RETIRED 2026-07-22 — Big Blue housings have mounting-hole ears; lag-screw straight to the ply backing
     Part("filter-lag-screws", "SS lag/wood screws — filter housings to ply backing", "fasteners-hardware",
-         "water", 6, "ea", 0.5, 1.5, "Home Depot", spec="2 per housing × 3 — 5/16 SS lag/wood screws through the housing's mounting-hole ears into the 18mm plywood backing (no custom bracket). Pin SKU at order.", panel="Pinhole Wall"),
+         "water", 2, "5-pack", 7.09, 7.09, "Home Depot", part_no="812670", url="https://www.homedepot.com/p/302007729", spec="2 per housing × 3 = 6 needed — Everbilt 5/16\"×1½\" SS hex lag screws through the housing's mounting-hole ears into the 18mm plywood backing (no custom bracket). Sold in 5-packs → 2 packs (10, 4 spare).", panel="Pinhole Wall"),
     Part("filter-hdpe-spacer", "Plywood offcut spacer blocks 25mm (filter skid)", "water-equipment",
          "water", 1, "lot", 0, 0, "offcuts", spec="25mm standoff blocks between the housing's mounting ears and the ply backing — sump-bowl hang clearance (the housing lag-screws through them into the ply). Cut from PLYWOOD OFFCUTS (Alvin 2026-07-25 — no need for HDPE; dry standoff, not a wet-immersion part).", panel="Pinhole Wall"),
     # filter-jumper RETIRED 2026-07-27 — the F-01→F-02→F-03 inter-housing jumpers are now itemized as
@@ -264,7 +264,7 @@ PARTS: list[Part] = [
          "water", 1, "ea", 5, 5, "Waytek Wire", spec="Pump Circuit C (single feed, all pumps)"),
     # — processing consumables (241) —
     Part("ldpe-sheeting", "6-mil black LDPE sheeting", "tools-safety",
-         "water", 1, "roll", 66, 70, "Home Depot", spec="20 ft × 100 ft roll"),
+         "water", 1, "roll", 54.85, 54.85, "Home Depot", part_no="59803", url="https://www.homedepot.com/p/332821399", spec="Film-Gard 8 ft × 100 ft × 6-mil black poly (800 sq ft). Water splash/light-proof sheeting + the tray liners are cut from this same roll (tray-liner line retired 2026-07-27 — same material, ~10 liners/roll). Re-count area if the water use alone exceeds 800 sq ft."),
     Part("ph-meter", "Apera Instruments AI311 PH60 pH meter", "tools-safety",
          "water", 1, "ea", 100, 110, "Apera Instruments", "Amazon",
          url="https://www.amazon.com/Apera-Instruments-AI311-Replaceable-2-00-16-00/dp/B01ENFOIQE",
@@ -324,7 +324,7 @@ PARTS: list[Part] = [
          "tray", 1, "lot", 210, 300, "US Plastic Corp", "K-Mac Plastics",
          spec="5 tapered slope shims (50mm × 2,200mm, 20→30mm taper) RIP from ONE 1-1/4\" HDPE plate cut-to-size ~14×84\" (~7 ft²) — full-length one-piece strips (no splice); taper-cut bundles with the tray fab. ~$33–38/ft². Plate route ≈1/6 the solid-bar cost ($1,656)."),
     Part("tray-loctite", "Loctite PL Premium construction adhesive", "adhesives-finishes",
-         "tray", 2, "tube", 7.5, 7.5, "Home Depot", spec="Shim-to-floor bond"),
+         "tray", 2, "tube", 5.97, 5.97, "Home Depot", part_no="1390595", url="https://www.homedepot.com/p/319654545", spec="Shim-to-floor bond. Loctite PL Premium 10 oz, sold as a 2-pack ($11.94 → $5.97/tube)"),
     Part("tray-foot-valve", '1" SS foot valve with strainer screen', "plumbing-fittings",
          "tray", 1, "ea", 20, 20, "US Plastic Corp", spec="Sump pickup tube"),
     Part("tray-suction-hose", '1" reinforced suction hose, 6 ft', "plumbing-fittings",
@@ -335,8 +335,9 @@ PARTS: list[Part] = [
          "tray", 12, "ea", 15.86 / 25, 15.86 / 25, "McMaster-Carr", part_no="93635A210", url="https://www.mcmaster.com/93635A210/", spec="Tray center-seam LAP-joint bolts (316 SS, wet zone) + M6 serrated flange nuts underneath. Through both overlapped 1.5mm panels + silicone bed. Grip ≈ 4mm → M6×16. Pitch M6×1.0 coarse. $15.86/pack of 25."),
     Part("nut-m6-flange", "M6×1.0 flange nut, serrated SS", "fasteners-hardware",
          "tray", 12, "ea", 4.71 / 100, 4.71 / 100, "McMaster-Carr", part_no="96194A101", url="https://www.mcmaster.com/96194A101/", spec="Serrated flange nut — tray panel bolts. Pitch M6×1.0 (coarse, baseline — confirm vs SKU PDF, must match the mating bolt). $4.71/pack of 100."),
-    Part("tray-liner", "6-mil black LDPE sheet, 10 ft × 8 ft", "tools-safety",
-         "tray", 1, "ea", 8, 8, "Home Depot", spec="Containment liner (consumable, per session)"),
+    # tray-liner RETIRED 2026-07-27 — the per-session containment liner is cut from the same
+    # 6-mil black poly roll as ldpe-sheeting (Film-Gard 8 ft × 100 ft, ~10 liners/roll); a
+    # separate $8 line double-counted the material. See ldpe-sheeting.
     # — spray (processing-tray-and-spray-bar §6.2) — itemized, sums to costing spray (287–375;
     #   the $1/$3 report-subtotal rounding is absorbed into the AL-plate estimate so the block total
     #   matches the canonical figure) —
@@ -543,7 +544,7 @@ PARTS: list[Part] = [
     Part("light-sealing-mat", "Light-sealing materials (interior conversion)", "seals-gaskets",
          "interior", 1, "lot", 157, 178, "Amazon (bundle)", "Amazon"),
     Part("interior-paint", "Interior matte-black paint", "adhesives-finishes",
-         "interior", 1, "lot", 100, 160, "Home Depot"),
+         "interior", 5, "gal", 24.98, 24.98, "Home Depot", part_no="PR31301", url="https://www.homedepot.com/p/316173659", spec="BEHR PRO Jet Black Dead Flat interior (ECC-10-2), ~400 sq ft/gal. 5 gal = 2 coats over the ~53 m² interior blackout + film wall + margin — re-count coverage at paint-out."),
     # image-plane-backing RETIRED 2026-07-22 — the same ACM backing as film 'dibond-acm-film'
     # (bonded to the moveable film-plane frame); the old fixed-wall backing line was a double-count.
     Part("interior-ventilation", "Ventilation (inline fans + light-trap baffles) — interior-conversion allowance",
@@ -629,7 +630,7 @@ PARTS: list[Part] = [
     Part("poly-sheeting-film", "6-mil black poly sheeting", "tools-safety",
          "film", 1, "roll", 66, 70, "Home Depot", "Uline", spec="10 ft × 100 ft"),
     Part("gorilla-tape", '2" black Gorilla Tape', "adhesives-finishes",
-         "film", 6, "roll", 9, 13, "Home Depot", "Amazon", spec="35 yd rolls"),
+         "film", 6, "roll", 9.94, 9.94, "Home Depot", "Amazon", part_no="106718", url="https://www.homedepot.com/p/316372144", spec='Gorilla 30 yd × 1.88" black tape'),
     # — Wall-Seat Saddles (440; rev12 ×6, the 2 BR ends are walkway combined plates) —
     Part("wall-seat-saddle", "Mild steel plate 8mm (laser/plasma cut + welded)", "steel-structural",
          "film", 6, "ea", 53, 53, "Metal Supermarkets", "Online Metals",
@@ -679,8 +680,9 @@ PARTS: list[Part] = [
     Part("ll-wiper-seal", "Felt/brush wiper strip + 12mm closed-cell neoprene", "seals-gaskets",
          "lightlock", 1, "lot", 40, 75, "Frost King + Canal Rubber", spec="Drum↔housing rotating seal (opening edges + top/bottom rings) + drum top/bottom", part_no="BP17A", url="https://www.doitbest.com/product/146005/"),
     Part("ll-silicone-sealant", "Silicone bead sealant (black, UV-stable)", "adhesives-finishes",
-         "lightlock", 1, "ea", 6, 10, "Home Depot",
-         spec="Bearing-housing / light-trap seam seal. Generic — source a black exterior/UV silicone at Home Depot (GE/DAP/Permatex black RTV); prefer a weather/UV grade over a mildewcide bath caulk. ~$6–10/tube."),
+         "lightlock", 1, "ea", 19.91, 19.91, "Home Depot", part_no="RDX1001bl",
+         url="https://www.homedepot.com/p/331895623",
+         spec="Bearing-housing / light-trap seam seal. Maxisil black natural-stone silicone, 10.5 oz (weather/UV grade, neutral-cure — not a mildewcide bath caulk)."),
     Part("ll-grab-rail", "100mm Ø SS grab rail", "fasteners-hardware",
          "lightlock", 1, "ea", 25, 45, "Marine Fiberglass Direct", spec="Interior handle, 400mm cut length", url="https://www.marinefiberglassdirect.com/products/16-stainless-steel-safety-grab-bar-bolt-on-for-marine-dock-deck-boat-pool-hot-tub"),
     Part("ll-matte-finish", "Matte-black interior finish", "adhesives-finishes",

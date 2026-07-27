@@ -347,7 +347,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Corridor panel mount hardware (brackets + fasteners) | 6× steel angle brackets (panel → IBC-frame front-portal uprights), shirt-to-panel screws, lag bolts. Price est. | 1 lot | Home Depot | $25–$50 |
 | Big Blue filter housing 4.5"×20" (separate) | Ø184×594mm/housing (4.5×20), 1" NPT ports — three SEPARATE housings on the slotted-angle skid frame (Pentek / iSpring / Geekpure) | 3 ea | AllFilters / Amazon | $114–$186 |
 | Slotted steel angle frame 25×25×3mm (filter skid) | ~2.5 m 25×25×3mm slotted steel angle + fasteners; bolts to the 18mm ply backing (adjustable housing height) | 1 lot | Home Depot | $25–$45 |
-| SS lag/wood screws — filter housings to ply backing | 2 per housing × 3 — 5/16 SS lag/wood screws through the housing's mounting-hole ears into the 18mm plywood backing (no custom bracket). Pin SKU at order. | 6 ea | Home Depot | $3–$9 |
+| [SS lag/wood screws — filter housings to ply backing](https://www.homedepot.com/p/302007729) (812670) | 2 per housing × 3 = 6 needed — Everbilt 5/16"×1½" SS hex lag screws through the housing's mounting-hole ears into the 18mm plywood backing (no custom bracket). Sold in 5-packs → 2 packs (10, 4 spare). | 2 5-pack | Home Depot | $14 |
 | Plywood offcut spacer blocks 25mm (filter skid) | 25mm standoff blocks between the housing's mounting ears and the ply backing — sump-bowl hang clearance (the housing lag-screws through them into the ply). Cut from PLYWOOD OFFCUTS (Alvin 2026-07-25 — no need for HDPE; dry standoff, not a wet-immersion part). | 1 lot | offcuts | $0 |
 | MPP 5-micron sediment cartridge 4.5"×20" | Melt-blown polypropylene depth filter (F-1 stage); ~50-print interval | 2 ea | Fresh Water Systems | $24–$40 |
 | KDF-55 heavy-metal cartridge 4.5"×20" | KDF-55 media for dissolved iron/metal removal (F-2 stage); ~60-print interval | 1 ea | FilterWay / Amazon | $65–$95 |
@@ -382,13 +382,13 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | 14 AWG duplex marine wire | Tinned copper, 25 ft | 1 roll | Waytek Wire | $22 |
 | Anderson Powerpole connectors 30A | Pump connections — one pair per pump (P-01..P-05) | 5 pair | Powerwerx | $10 |
 | 15A blade fuse | Pump Circuit C (single feed, all pumps) | 1 ea | Waytek Wire | $5 |
-| 6-mil black LDPE sheeting | 20 ft × 100 ft roll | 1 roll | Home Depot | $66–$70 |
+| [6-mil black LDPE sheeting](https://www.homedepot.com/p/332821399) (59803) | Film-Gard 8 ft × 100 ft × 6-mil black poly (800 sq ft). Water splash/light-proof sheeting + the tray liners are cut from this same roll (tray-liner line retired 2026-07-27 — same material, ~10 liners/roll). Re-count area if the water use alone exceeds 800 sq ft. | 1 roll | Home Depot | $55 |
 | [Apera Instruments AI311 PH60 pH meter](https://www.amazon.com/Apera-Instruments-AI311-Replaceable-2-00-16-00/dp/B01ENFOIQE) | Waterproof, 0–16 range, ±0.01 accuracy | 1 ea | Apera Instruments / Amazon | $100–$110 |
 | pH calibration solution set | pH 4 + pH 7 buffer sachets | 1 set | Amazon | $10 |
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $18–$40 |
-| **Water total** | | | | **$3,324–$3,661** |
+| **Water total** | | | | **$3,324–$3,651** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own
@@ -402,7 +402,7 @@ reports — [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) and
 | Category | Low estimate | High estimate |
 |----------|-------------|--------------|
 | Water equipment — §8 BOM (IBC storage, pumps + accumulator, 3-stage filter train, valves & fittings, pipe, wiring, consumables) | $2,073 | $3,123 |
-| Processing tray (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.1) | <!-- BEGIN costing:tray-low -->$1,463<!-- END costing:tray-low --> | <!-- BEGIN costing:tray-high -->$2,241<!-- END costing:tray-high --> |
+| Processing tray (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.1) | <!-- BEGIN costing:tray-low -->$1,452<!-- END costing:tray-low --> | <!-- BEGIN costing:tray-high -->$2,230<!-- END costing:tray-high --> |
 | Spray bar assembly (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.2) | <!-- BEGIN costing:spray-low -->$402<!-- END costing:spray-low --> | <!-- BEGIN costing:spray-high -->$494<!-- END costing:spray-high --> |
 | **TOTAL** | **$3,660** | **$5,513** |
 

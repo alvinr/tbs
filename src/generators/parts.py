@@ -509,12 +509,12 @@ PARTS: list[Part] = [
     Part("bonding-kit", "Equipotential bonding kit — 6 AWG + ring lugs", "electrical-distribution",
          "electrical", 1, "ea", 20, 20, "Waytek Wire"),
     Part("ep-backing-panel", "EP plywood backing panel (18mm, ~700×2000mm)", "timber-ply",
-         "electrical", 1, "2'×8' sheet", 64.94, 64.94, "Home Depot", part_no="2250", url="https://www.homedepot.com/p/204635471",
-         spec='¾" Columbia PureBond maple plywood (formaldehyde-free hardwood), 2\'×8\' project panel, as the ~700×2000mm backboard — '
+         "electrical", 1, "4'×8' sheet", 68.98, 68.98, "Home Depot", part_no="454559", url="https://www.homedepot.com/p/203414066",
+         spec='18mm SANDEPLY Sande hardwood plywood, full 4\'×8\' sheet, cut to the ~700×2000mm backboard (fits with margin — 1220×2440mm stock) — '
               'the wall-mounted surface every EP component fixes to (MPPT on its forward sub-panel, battery bank, '
               'inverter, main + PV disconnects); the DC-distribution terminals (fuse block + busbars) '
               'sit in a small IP65 enclosure bolted to it. Add DIN rail + standoffs for the DIN gear. '
-              '⚠ 2\' (610mm) width is ~90mm under the ~700mm backboard — confirm the EP layout fits 610mm wide, else use a wider panel.'),
+              '(Not fire-rated — acceptable for a small 12V DC system; seal/paint before mounting.)'),
     Part("ip65-enclosure", "IP65 enclosure ~200×220×140mm (fuse block + busbars, on the plywood)", "electrical-distribution",
          "electrical", 1, "ea", 60, 60, "Polycase", "Amazon",
          spec='Weatherproof IP65 box bolted to the plywood backboard, sealing the DC-distribution '

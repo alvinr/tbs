@@ -564,7 +564,7 @@ tray drainage plan and sump cross-section).
 | 304 SS RHS 40×25×3mm, 8 ft * | 40×25×3mm rectangular tube, laid flat (low profile); 2 sticks butt-welded to span | 2 ea | Online Metals | $96–$144 |
 | 6061-T6 AL plate 3/16" (5mm) | Carriage plates + spacer blocks (~300 × 500mm sheet) | 1 ea | Online Metals | $16–$28 |
 | 3/4" LDPE irrigation poly pipe, 15 ft | Side-mounted spray manifold, clipped to the beam's inboard face (OD 25mm, ID 19mm) | 1 ea | DripDepot | $10 |
-| Flat-fan irrigation spray nozzles, barbed | 180° fan pattern; side-tapped into the poly manifold, spray down-and-in | 26 ea | DripDepot | $30–$50 |
+| [90° spray jets, barbed](https://www.homedepot.com/p/302581648) (110B) | DIG 110B 90° spray jets, 10-pack ×3 = 30 (26 used, 4 spare); side-tapped into the poly manifold, spray down-and-in. ⚠ these are 90° jets, not the flat-fan/180° originally spec'd — confirm the 90° pattern gives even print-wash coverage as the bar traverses (may want more/closer jets, or a flat-fan nozzle). | 3 10-pack | Home Depot | $10 |
 | Distribution manifold, 1/2" → 7 barb outlets | Mounted at ball joint, splits feed to tubes | 1 ea | DripDepot | $12 |
 | 1/4" irrigation poly tube | Manifold to beam feed points (~7m total) | 1 ea | DripDepot | $6 |
 | Barbed tees, tube into the side poly manifold | Feed tube to the side poly manifold, 7 feed points | 7 ea | DripDepot | $10 |
@@ -585,7 +585,7 @@ tray drainage plan and sump cross-section).
 | [M12×1.75 jam nut, SS](https://www.amazon.com/M12-1-75-Plain-Finish-Stainless-Steel/dp/B007IA07PS) (B007IA07PS) | Locks the arm adapter on the ball-joint M12 stud (M12×1.75 coarse). | 1 ea | Amazon | $1 |
 | [Clamp-style shaft collar, 25mm/1" bore, SS](https://www.ruland.com/cl-16-st.html) (CL-16-ST) | Over the slit arm-tube bottom; its integral clamp screw squeezes the Ø25×2 tube onto the adapter's Ø21 spigot — rotational adjust + lift-off for transport. Replaces the loose M6 pinch bolt. Confirm SKU/bore/price at order. | 1 ea | Ruland | $28–$33 |
 | Nylon zip ties, 200mm | Hose to arm tube | 6 ea | Amazon | $1 |
-| **Spray total** | | | | **$402–$494** |
+| **Spray total** | | | | **$383–$455** |
 <!-- END parts:spray -->
 
 ### 6.3 Combined Total
@@ -593,8 +593,8 @@ tray drainage plan and sump cross-section).
 | Subsystem | Cost Range |
 |-----------|-----------|
 | Processing tray | <!-- BEGIN costing:tray-low -->$1,538<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,226<!-- END costing:tray-high --> |
-| Spray bar assembly | <!-- BEGIN costing:spray-low -->$402<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$494<!-- END costing:spray-high --> |
-| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,940<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,720<!-- END costing:tray-spray-total-high -->** |
+| Spray bar assembly | <!-- BEGIN costing:spray-low -->$382<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$454<!-- END costing:spray-high --> |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,920<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,680<!-- END costing:tray-spray-total-high -->** |
 
 ---
 

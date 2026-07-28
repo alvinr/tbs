@@ -52,6 +52,11 @@ bucketed by WHEN it can be acted on:_
     $8.65×2 — ⚠ listing is DWV not pressure; OK at 45 PSI, flagged), `pvc-three-quarter` (PVC-04007-0600
     $5.76×2), slip `tee-100`/`elbow-el100` all firm at Home Depot. `filter-jumper` bundle **retired** into
     itemized pipe + elbows + adapters (was double-counting). Residual: re-count stick qtys vs final routing.
+- [ ] **spray-nozzle pattern conflict (90° jet vs flat-fan).** `spray-nozzles` was priced as DIG 110B **90° jets**
+  ($3.47/10-pack, Home Depot), but the spray-bar report §5 is engineered around **180° flat-fan** nozzles at 150 mm
+  pitch (heavy overlap for even print-wash). DECISION: (a) keep the flat-fan design → source a flat-fan barbed
+  nozzle instead (revert the 90° jet); or (b) switch to 90° jets → rewrite §5 wash-pattern/pitch/overlap analysis
+  (90° footprint is narrower — likely needs closer pitch / more jets). Report prose still says flat-fan/180°.
 - [ ] **panel-corner-plates — design flag (huge cores).** Each 3mm 5052 Al corner core is 653×2388mm (~16.8 ft², ~half a sheet); the 4 don't nest → 2 full sheets = $586 + weight. Decide full solid plate vs a lighter frame/partial before buying.
 - [ ] **Aug 2026 full re-price.** Sweep every `parts.py` line against current listings (reminder atop the file); edit band → `--inject` cascades.
 - [ ] **Master-BOM SKU backfill.** Branded rows that don't yet carry a registry `part_no` — Alvin's supplier paste-check; each SKU auto-appears in the master on the next `--inject`.

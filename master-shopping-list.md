@@ -259,7 +259,6 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| 1-1/4" HDPE plate, cut-to-size (slope shims) | 1 lot | US Plastic Corp | tray | $210–$300 |
 | [1/8" black HDPE sheet (48×96)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | 4 sheet | US Plastics | panel | $493 |
 | [1/8" black HDPE sheet (48×96, ×2)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | 2 sheet | US Plastics | panel | $247 |
 | [1/8" black HDPE sheet — 48×96 (×3)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | 3 sheet | US Plastics | lightlock | $370 |
@@ -267,6 +266,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Dibond ACM panel 4mm (black), 4×8 sheet](https://www.curbellplastics.com/product-category/material/aluminum-composite-material-acm/dibond-panels/) | 4 sheet | Curbell Plastics | film | $380 |
 | Drum-exit punch-out grating | 1 lot | McNichols | walkway | $50–$65 |
 | HDPE filler strip (L-channel packer) | 1 lot | TAP Plastics | clamp | $30–$70 |
+| HDPE sheet, laminated to 1-1/4" (slope shims) | 1 lot | US Plastic Corp | tray | $210–$300 |
 | Molded GRP grating (American Grating, cut-to-size) | 1 lot | American Grating | walkway | $830–$1,050 |
 | **plastics-sheet subtotal** | | | | **$3,165–$3,530** |
 

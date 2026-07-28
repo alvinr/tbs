@@ -366,7 +366,8 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | [1" PVC Sch-40 slip 90° elbow](https://www.homedepot.com/p/203812125) (PVC023001000HD) | 1" PVC slip run bends (joint convention §5.1): IBC bends, filter outlet to DV-01. 2026-07-27 fork b — was threaded Banjo FRPP $4.59. Charlotte PVC023001000HD 90° S×S. | 4 ea | Home Depot | $6 |
 | [1/2" NPT polypropylene tee](https://www.homedepot.com/p/203812195) (PVC024000600HD) | Blue suction/discharge tees, branches. 2026-07-27: Charlotte PVC Sch40 S×S×S (SLIP/solvent-weld) — desc says NPT; confirm slip-vs-threaded in the plumbing audit | 6 ea | Home Depot | $5 |
 | [1" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812199) (PVC024001000HD) | 1" PVC slip run tees (joint convention §5.1): 3× IBC drain. 2026-07-27: X1 fill split dropped — X1 is a 4-way cross (cross-100), not a tee (was qty 4). Charlotte PVC024001000HD S×S×S. | 3 ea | Home Depot | $6 |
-| PVC slip×MNPT male adapters (run → threaded components) | Joint convention §5.1 (fork c): one slip×NPT male adapter where the glued PVC run lands on each threaded component — ball/diverter/check valves, filter housing ports, tank bulkheads, sample taps, accumulator. ½" = Charlotte PVC021090600HD $0.79, 1" = PVC021091000HD $1.16 (unit prices firm; low/high spans the ½"–1" mix). ~40 est; exact count/size split from the schematic trace. | 40 ea | Home Depot | $32–$46 |
+| [1/2" PVC slip×MNPT male adapter](https://www.homedepot.com/p/203811636) (PVC021090600HD) | ½" landings (~18): 6× BV ball valves + 3W-DV-02 (3 ports) + 5× pump discharges + SV-01/SV-02 taps + the accumulator (½" MNPT → needs a slip×FPT variant). Charlotte PVC021090600HD. | 18 ea | Home Depot | $14 |
+| [1" PVC slip×MNPT male adapter](https://www.homedepot.com/p/203811640) (PVC021091000HD) | 1" landings (~22): 6× V100 valves + 3W-DV-01 (3 ports) + CV-1 (2) + 3× Big Blue housing ports + 2× Blue equalization bulkheads. Charlotte PVC021091000HD. | 22 ea | Home Depot | $26 |
 | [1" PVC 4-way cross fitting](https://www.amazon.com/dp/B0CGGV74MB) (B0CGGV74MB) | X1 fresh-fill 4-way (Alvin-confirmed 2026-07-27): X1 inlet + IBC-1 + IBC-2 + DV-01 blue-recycle riser all join here on the corridor spine, then distribute to both Blue totes. 1" PVC cross — slip glue joint, gravity/low-pressure fill. Design of record: the 3D model + corridor panel-layout + plumbing-report all build this cross. | 1 ea | Amazon | $6 |
 | [1/2" PVC Sch-40 slip coupling](https://www.homedepot.com/p/203811331) (PVC021000600HD) | Permanent solvent-weld run joins (4×). Charlotte PVC Sch40 S×S coupling. | 4 ea | Home Depot | $3 |
 | [1/2" PVC union (serviceable break)](https://www.homedepot.com/p/317901071) (PVCU12F) | True hand-unscrew unions at the 2 points where a whole sub-assembly must come out as a unit (pump manifold + filter-bank inlet). Apollo ½" PVC FIP×FIP (threaded) union — lands on the slip run via a slip×MNPT adapter each side (2 already in the transition-adapter allowance). | 2 ea | Home Depot | $10 |
@@ -390,7 +391,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $18–$40 |
-| **Water total** | | | | **$3,536–$3,690** |
+| **Water total** | | | | **$3,544–$3,683** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own
@@ -404,7 +405,7 @@ reports — [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) and
 | Category | Low estimate | High estimate |
 |----------|-------------|--------------|
 | Water equipment — §8 BOM (IBC storage, pumps + accumulator, 3-stage filter train, valves & fittings, pipe, wiring, consumables) | $2,073 | $3,123 |
-| Processing tray (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.1) | <!-- BEGIN costing:tray-low -->$1,452<!-- END costing:tray-low --> | <!-- BEGIN costing:tray-high -->$2,230<!-- END costing:tray-high --> |
+| Processing tray (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.1) | <!-- BEGIN costing:tray-low -->$1,538<!-- END costing:tray-low --> | <!-- BEGIN costing:tray-high -->$2,226<!-- END costing:tray-high --> |
 | Spray bar assembly (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.2) | <!-- BEGIN costing:spray-low -->$402<!-- END costing:spray-low --> | <!-- BEGIN costing:spray-high -->$494<!-- END costing:spray-high --> |
 | **TOTAL** | **$3,660** | **$5,513** |
 

@@ -235,8 +235,13 @@ PARTS: list[Part] = [
          "water", 6, "ea", 0.81, 0.81, "Home Depot", part_no="PVC024000600HD", url="https://www.homedepot.com/p/203812195", spec="Blue suction/discharge tees, branches. 2026-07-27: Charlotte PVC Sch40 S×S×S (SLIP/solvent-weld) — desc says NPT; confirm slip-vs-threaded in the plumbing audit"),
     Part("tee-100", '1" PVC Sch-40 slip tee', "plumbing-fittings",
          "water", 3, "ea", 2.13, 2.13, "Home Depot", part_no="PVC024001000HD", url="https://www.homedepot.com/p/203812199", spec='1" PVC slip run tees (joint convention §5.1): 3× IBC drain. 2026-07-27: X1 fill split dropped — X1 is a 4-way cross (cross-100), not a tee (was qty 4). Charlotte PVC024001000HD S×S×S.'),
-    Part("pvc-transition-adapters", "PVC slip×MNPT male adapters (run → threaded components)", "plumbing-fittings",
-         "water", 40, "ea", 0.79, 1.16, "Home Depot", spec='Joint convention §5.1 (fork c): one slip×NPT male adapter where the glued PVC run lands on each threaded component — ball/diverter/check valves, filter housing ports, tank bulkheads, sample taps, accumulator. ½" = Charlotte PVC021090600HD $0.79, 1" = PVC021091000HD $1.16 (unit prices firm; low/high spans the ½"–1" mix). ~40 est; exact count/size split from the schematic trace.'),
+    # Joint convention §5.1 (fork c): one slip×MNPT male adapter where the glued PVC run lands on each
+    # threaded component. Sized to the run at each landing — ½" and 1" only (the ¾" spray run ends in
+    # barbed irrigation fittings, not threaded PVC). Counts are a P&ID takeoff (2026-07-28), firm with the fab.
+    Part("pvc-adapter-half", '1/2" PVC slip×MNPT male adapter', "plumbing-fittings",
+         "water", 18, "ea", 0.79, 0.79, "Home Depot", part_no="PVC021090600HD", url="https://www.homedepot.com/p/203811636", spec='½" landings (~18): 6× BV ball valves + 3W-DV-02 (3 ports) + 5× pump discharges + SV-01/SV-02 taps + the accumulator (½" MNPT → needs a slip×FPT variant). Charlotte PVC021090600HD.'),
+    Part("pvc-adapter-1in", '1" PVC slip×MNPT male adapter', "plumbing-fittings",
+         "water", 22, "ea", 1.16, 1.16, "Home Depot", part_no="PVC021091000HD", url="https://www.homedepot.com/p/203811640", spec='1" landings (~22): 6× V100 valves + 3W-DV-01 (3 ports) + CV-1 (2) + 3× Big Blue housing ports + 2× Blue equalization bulkheads. Charlotte PVC021091000HD.'),
     Part("cross-100", '1" PVC 4-way cross fitting', "plumbing-fittings",
          "water", 1, "ea", 5.99, 5.99, "Amazon", part_no="B0CGGV74MB", url="https://www.amazon.com/dp/B0CGGV74MB", spec="X1 fresh-fill 4-way (Alvin-confirmed 2026-07-27): X1 inlet + IBC-1 + IBC-2 + DV-01 blue-recycle riser all join here on the corridor spine, then distribute to both Blue totes. 1\" PVC cross — slip glue joint, gravity/low-pressure fill. Design of record: the 3D model + corridor panel-layout + plumbing-report all build this cross."),
     # Joint convention §5.1 — Option C hybrid (Alvin 2026-07-27): permanent slip couplings on the run,
@@ -337,8 +342,9 @@ PARTS: list[Part] = [
     Part("tray-fabrication", "Fabrication (cut, brake, weld, press sump)", "fabrication-labor",
          "tray", 1, "lot", 450, 850, "local sheet metal", spec="Two panels + a ~40mm center-seam lap (shingle-oriented downhill) + sump well"),
     Part("tray-hdpe-shim", "HDPE sheet, laminated to 1-1/4\" (slope shims)", "plastics-sheet",
-         "tray", 1, "lot", 210, 300, "US Plastic Corp", "K-Mac Plastics",
-         spec="5 tapered slope shims (2\"×86.6\" = 50×2,200mm, 20→30mm taper), ~6 ft²/layer footprint. US Plastic max sheet thickness = 1\", so LAMINATE two sheets to 1-1/4\" (1\"+1/4\" or 3/4\"+1/2\") then taper-cut. Only the 48×96 sheet exceeds the 86.6\" strip → OPTION A (no splice): 1× 48×96 + 1× 48×96 of the two thicknesses (uses ~20%). OPTION B (recommended, 1 mid-length butt splice per strip, spliced flat then taper-cut — fine for a floor-bonded compression shim): 1× 24×48 + 1× 24×48. Taper-cut bundles with the tray fab; cost firms from the sheet prices. (Was a single 1-1/4\" plate — that thickness isn't stocked.)"),
+         "tray", 1, "lot", 295.96, 295.96, "US Plastic Corp", part_no="46039+42591",
+         url="https://www.usplastic.com/catalog/item.aspx?itemid=31840",
+         spec="5 tapered slope shims (2\"×86.6\" = 50×2,200mm, 20→30mm taper). US Plastic max sheet = 1\", so LAMINATE two 24×48 sheets to 1-1/4\" then taper-cut (Option B: 1 mid-length butt splice/strip — fine for a floor-bonded compression shim). Combo = 3/4\" (US Plastic 46039 $177.58) + 1/2\" (42591 $118.38) = $295.96; the 3/4\"+1/2\" split keeps the taper cut inside the 3/4\" top layer so the glue line stays buried (the 1\"+1/4\" combo, same price, would cut through the seam). Taper-cut bundles with the tray fab."),
     Part("tray-loctite", "Loctite PL Premium construction adhesive", "adhesives-finishes",
          "tray", 2, "tube", 5.97, 5.97, "Home Depot", part_no="1390595", url="https://www.homedepot.com/p/319654545", spec="Shim-to-floor bond. Loctite PL Premium 10 oz, sold as a 2-pack ($11.94 → $5.97/tube)"),
     Part("tray-foot-valve", '1" SS foot valve with strainer screen', "plumbing-fittings",

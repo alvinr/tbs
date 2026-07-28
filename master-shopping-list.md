@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,173 | $6,711 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,469 | $7,965 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,563 | $7,954 |
 | 6. Electrical — power, circuits, wiring | $2,993 | $3,029 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$28,312** | **~$36,838** |
+| **TOTAL (base build + 50-print run)** | **~$28,406** | **~$36,827** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -266,9 +266,9 @@ indicative low–high estimates — get quotes before ordering.
 | [Dibond ACM panel 4mm (black), 4×8 sheet](https://www.curbellplastics.com/product-category/material/aluminum-composite-material-acm/dibond-panels/) | 4 sheet | Curbell Plastics | film | $380 |
 | Drum-exit punch-out grating | 1 lot | McNichols | walkway | $50–$65 |
 | HDPE filler strip (L-channel packer) | 1 lot | TAP Plastics | clamp | $30–$70 |
-| HDPE sheet, laminated to 1-1/4" (slope shims) | 1 lot | US Plastic Corp | tray | $210–$300 |
+| [HDPE sheet, laminated to 1-1/4" (slope shims)](https://www.usplastic.com/catalog/item.aspx?itemid=31840) (46039+42591) | 1 lot | US Plastic Corp | tray | $296 |
 | Molded GRP grating (American Grating, cut-to-size) | 1 lot | American Grating | walkway | $830–$1,050 |
-| **plastics-sheet subtotal** | | | | **$3,165–$3,530** |
+| **plastics-sheet subtotal** | | | | **$3,251–$3,526** |
 
 ### plumbing-fittings
 
@@ -280,6 +280,7 @@ indicative low–high estimates — get quotes before ordering.
 | [1" PVC Sch-40 pipe](https://www.homedepot.com/p/100348473) (PVC040100600RS) | 2 stick | Home Depot | water | $17 |
 | [1" PVC Sch-40 slip 90° elbow](https://www.homedepot.com/p/203812125) (PVC023001000HD) | 4 ea | Home Depot | water | $6 |
 | [1" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812199) (PVC024001000HD) | 3 ea | Home Depot | water | $6 |
+| [1" PVC slip×MNPT male adapter](https://www.homedepot.com/p/203811640) (PVC021091000HD) | 22 ea | Home Depot | water | $26 |
 | 1" reinforced suction hose, 6 ft | 1 ea | US Plastic Corp | tray | $15 |
 | 1" SS foot valve with strainer screen | 1 ea | US Plastic Corp | tray | $20 |
 | 1/2" barb × 1/2" hose barb, brass | 1 ea | DripDepot | spray | $4 |
@@ -288,6 +289,7 @@ indicative low–high estimates — get quotes before ordering.
 | [1/2" NPT polypropylene tee](https://www.homedepot.com/p/203812195) (PVC024000600HD) | 6 ea | Home Depot | water | $5 |
 | [1/2" PVC Sch-40 pipe](https://www.homedepot.com/p/319692959) (30-05010HD) | 8 stick | Home Depot | water | $38 |
 | [1/2" PVC Sch-40 slip coupling](https://www.homedepot.com/p/203811331) (PVC021000600HD) | 4 ea | Home Depot | water | $3 |
+| [1/2" PVC slip×MNPT male adapter](https://www.homedepot.com/p/203811636) (PVC021090600HD) | 18 ea | Home Depot | water | $14 |
 | [1/2" PVC union (serviceable break)](https://www.homedepot.com/p/317901071) (PVCU12F) | 2 ea | Home Depot | water | $10 |
 | 1/2" reinforced braided PVC hose, 15 ft | 1 ea | DripDepot | spray | $15 |
 | [1/2"×1" NPT bushing reducer](https://www.homedepot.com/p/204836713) (PVC021121800HD) | 1 ea | Home Depot | water | $3 |
@@ -307,10 +309,9 @@ indicative low–high estimates — get quotes before ordering.
 | Flat-fan irrigation spray nozzles, barbed | 26 ea | DripDepot | spray | $30–$50 |
 | pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | US Plastic Corp | water | $10–$18 |
 | pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee | 1 ea | US Plastic Corp | water | $10–$18 |
-| PVC slip×MNPT male adapters (run → threaded components) | 40 ea | Home Depot | water | $32–$46 |
 | [S60×6 female-buttress → 2" NPT + 2→1" bushing](https://us.cpp.parts/collections/fits-s60x6) (HMFN/20UD/027) | 8 ea | CPP.parts | water | $112–$144 |
 | [½" PVC Sch-40 pipe (tap relocation)](https://www.homedepot.com/p/319692959) (30-05010HD) | 1 stick | Home Depot | shelf | $5 |
-| **plumbing-fittings subtotal** | | | | **$1,617–$1,700** |
+| **plumbing-fittings subtotal** | | | | **$1,625–$1,693** |
 
 ### seals-gaskets
 
@@ -435,11 +436,11 @@ indicative low–high estimates — get quotes before ordering.
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,877–$2,451 |
 | Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,841–$1,934 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
-| Home Depot | 43 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,427–$1,563 |
+| Home Depot | 44 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,435–$1,556 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,000–$1,420 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
-| US Plastic Corp | 15 | plastics-sheet, plumbing-fittings | $1,065–$1,171 |
+| US Plastic Corp | 15 | plastics-sheet, plumbing-fittings | $1,151–$1,167 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | American Grating | 1 | plastics-sheet | $830–$1,050 |
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |

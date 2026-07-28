@@ -546,14 +546,14 @@ tray drainage plan and sump cross-section).
 |------|------|-----|----------|-----------|
 | 304 SS sheet, 16-gauge (1.5mm), #4 brushed | 2,229 × 2,200mm panels | 2 ea | Online Metals | $720–$1,000 |
 | Fabrication (cut, brake, weld, press sump) | Two panels + a ~40mm center-seam lap (shingle-oriented downhill) + sump well | 1 lot | Local sheet metal | $450–$850 |
-| HDPE sheet, laminated to 1-1/4" (slope shims) | 5 tapered slope shims (2"×86.6" = 50×2,200mm, 20→30mm taper), ~6 ft²/layer footprint. US Plastic max sheet thickness = 1", so LAMINATE two sheets to 1-1/4" (1"+1/4" or 3/4"+1/2") then taper-cut. Only the 48×96 sheet exceeds the 86.6" strip → OPTION A (no splice): 1× 48×96 + 1× 48×96 of the two thicknesses (uses ~20%). OPTION B (recommended, 1 mid-length butt splice per strip, spliced flat then taper-cut — fine for a floor-bonded compression shim): 1× 24×48 + 1× 24×48. Taper-cut bundles with the tray fab; cost firms from the sheet prices. (Was a single 1-1/4" plate — that thickness isn't stocked.) | 1 lot | US Plastic Corp / K-Mac Plastics | $210–$300 |
+| [HDPE sheet, laminated to 1-1/4" (slope shims)](https://www.usplastic.com/catalog/item.aspx?itemid=31840) (46039+42591) | 5 tapered slope shims (2"×86.6" = 50×2,200mm, 20→30mm taper). US Plastic max sheet = 1", so LAMINATE two 24×48 sheets to 1-1/4" then taper-cut (Option B: 1 mid-length butt splice/strip — fine for a floor-bonded compression shim). Combo = 3/4" (US Plastic 46039 $177.58) + 1/2" (42591 $118.38) = $295.96; the 3/4"+1/2" split keeps the taper cut inside the 3/4" top layer so the glue line stays buried (the 1"+1/4" combo, same price, would cut through the seam). Taper-cut bundles with the tray fab. | 1 lot | US Plastic Corp | $296 |
 | [Loctite PL Premium construction adhesive](https://www.homedepot.com/p/319654545) (1390595) | Shim-to-floor bond. Loctite PL Premium 10 oz, sold as a 2-pack ($11.94 → $5.97/tube) | 2 tube | Home Depot | $12 |
 | 1" SS foot valve with strainer screen | Sump pickup tube | 1 ea | US Plastic Corp | $20 |
 | 1" reinforced suction hose, 6 ft | Pickup tube to P-04 | 1 ea | US Plastic Corp | $15 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | Silicone sealant bed in the center-seam lap joint (between the overlapped panels) + a top bead — the seam seal | 1 ea | CountryMax (Aqueon) | $17–$25 |
 | [M6×1.0 × 16 hex bolt, 316 SS — tray center-seam lap joint](https://www.mcmaster.com/93635A210/) (93635A210) | Tray center-seam LAP-joint bolts (316 SS, wet zone) + M6 serrated flange nuts underneath. Through both overlapped 1.5mm panels + silicone bed. Grip ≈ 4mm → M6×16. Pitch M6×1.0 coarse. $15.86/pack of 25. | 12 ea | McMaster-Carr | $8 |
 | [M6×1.0 flange nut, serrated SS](https://www.mcmaster.com/96194A101/) (96194A101) | Serrated flange nut — tray panel bolts. Pitch M6×1.0 (coarse, baseline — confirm vs SKU PDF, must match the mating bolt). $4.71/pack of 100. | 12 ea | McMaster-Carr | $1 |
-| **Tray total** | | | | **$1,452–$2,230** |
+| **Tray total** | | | | **$1,538–$2,226** |
 <!-- END parts:tray -->
 
 ### 6.2 Spray Bar Assembly
@@ -592,9 +592,9 @@ tray drainage plan and sump cross-section).
 
 | Subsystem | Cost Range |
 |-----------|-----------|
-| Processing tray | <!-- BEGIN costing:tray-low -->$1,452<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,230<!-- END costing:tray-high --> |
+| Processing tray | <!-- BEGIN costing:tray-low -->$1,538<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,226<!-- END costing:tray-high --> |
 | Spray bar assembly | <!-- BEGIN costing:spray-low -->$402<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$494<!-- END costing:spray-high --> |
-| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,854<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,724<!-- END costing:tray-spray-total-high -->** |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,940<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,720<!-- END costing:tray-spray-total-high -->** |
 
 ---
 

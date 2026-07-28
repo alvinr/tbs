@@ -100,7 +100,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([524.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([-450.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -113,7 +113,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([524.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([-450.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -126,7 +126,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([674.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([-300.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -139,7 +139,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([674.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([-300.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -152,7 +152,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([824.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([-150.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -165,7 +165,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([824.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([-150.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -178,7 +178,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([974.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([-0.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -191,7 +191,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([974.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([-0.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -204,7 +204,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1124.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([149.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -217,7 +217,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1124.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([149.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -230,7 +230,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1274.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([299.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -243,7 +243,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1274.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([299.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -256,7 +256,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1424.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([449.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -269,7 +269,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1424.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([449.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -282,7 +282,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1574.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([599.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -295,7 +295,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1574.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([599.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -308,7 +308,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1724.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([749.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -321,7 +321,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1724.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([749.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -334,7 +334,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1874.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([899.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -347,7 +347,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1874.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([899.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -360,7 +360,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2024.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1049.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -373,7 +373,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2024.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1049.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -386,7 +386,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2174.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1199.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -399,7 +399,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2174.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1199.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -412,7 +412,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2324.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1349.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -425,7 +425,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2324.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1349.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -438,7 +438,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2474.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1499.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -451,7 +451,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2474.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1499.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -464,7 +464,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2624.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1649.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -477,7 +477,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2624.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1649.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -490,7 +490,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2774.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1799.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -503,7 +503,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2774.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1799.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -516,7 +516,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2924.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1949.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -529,7 +529,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2924.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1949.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -542,7 +542,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3074.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2099.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -555,7 +555,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3074.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2099.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -568,7 +568,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3224.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2249.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -581,7 +581,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3224.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2249.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -594,7 +594,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3374.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2399.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -607,7 +607,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3374.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2399.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -620,7 +620,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3524.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2549.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -633,7 +633,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3524.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2549.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -646,7 +646,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3674.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2699.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -659,7 +659,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3674.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2699.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -672,7 +672,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3824.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2849.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -685,7 +685,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3824.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2849.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -698,7 +698,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3974.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2999.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -711,7 +711,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3974.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2999.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -724,7 +724,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([4124.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3149.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -737,7 +737,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([4124.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3149.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -750,7 +750,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([4274.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3299.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -763,7 +763,345 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([4274.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3299.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(6.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Body
+  grp = ents.add_group
+  grp.name = "Nozzle Body"
+  ge = grp.entities
+  circle = ge.add_circle([3449.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Tip
+  grp = ents.add_group
+  grp.name = "Nozzle Tip"
+  ge = grp.entities
+  circle = ge.add_circle([3449.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(6.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Body
+  grp = ents.add_group
+  grp.name = "Nozzle Body"
+  ge = grp.entities
+  circle = ge.add_circle([3599.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Tip
+  grp = ents.add_group
+  grp.name = "Nozzle Tip"
+  ge = grp.entities
+  circle = ge.add_circle([3599.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(6.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Body
+  grp = ents.add_group
+  grp.name = "Nozzle Body"
+  ge = grp.entities
+  circle = ge.add_circle([3749.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Tip
+  grp = ents.add_group
+  grp.name = "Nozzle Tip"
+  ge = grp.entities
+  circle = ge.add_circle([3749.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(6.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Body
+  grp = ents.add_group
+  grp.name = "Nozzle Body"
+  ge = grp.entities
+  circle = ge.add_circle([3899.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Tip
+  grp = ents.add_group
+  grp.name = "Nozzle Tip"
+  ge = grp.entities
+  circle = ge.add_circle([3899.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(6.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Body
+  grp = ents.add_group
+  grp.name = "Nozzle Body"
+  ge = grp.entities
+  circle = ge.add_circle([4049.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Tip
+  grp = ents.add_group
+  grp.name = "Nozzle Tip"
+  ge = grp.entities
+  circle = ge.add_circle([4049.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(6.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Body
+  grp = ents.add_group
+  grp.name = "Nozzle Body"
+  ge = grp.entities
+  circle = ge.add_circle([4199.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Tip
+  grp = ents.add_group
+  grp.name = "Nozzle Tip"
+  ge = grp.entities
+  circle = ge.add_circle([4199.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(6.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Body
+  grp = ents.add_group
+  grp.name = "Nozzle Body"
+  ge = grp.entities
+  circle = ge.add_circle([4349.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Tip
+  grp = ents.add_group
+  grp.name = "Nozzle Tip"
+  ge = grp.entities
+  circle = ge.add_circle([4349.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(6.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Body
+  grp = ents.add_group
+  grp.name = "Nozzle Body"
+  ge = grp.entities
+  circle = ge.add_circle([4499.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Tip
+  grp = ents.add_group
+  grp.name = "Nozzle Tip"
+  ge = grp.entities
+  circle = ge.add_circle([4499.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(6.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Body
+  grp = ents.add_group
+  grp.name = "Nozzle Body"
+  ge = grp.entities
+  circle = ge.add_circle([4649.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Tip
+  grp = ents.add_group
+  grp.name = "Nozzle Tip"
+  ge = grp.entities
+  circle = ge.add_circle([4649.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(6.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Body
+  grp = ents.add_group
+  grp.name = "Nozzle Body"
+  ge = grp.entities
+  circle = ge.add_circle([4799.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Tip
+  grp = ents.add_group
+  grp.name = "Nozzle Tip"
+  ge = grp.entities
+  circle = ge.add_circle([4799.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(6.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Body
+  grp = ents.add_group
+  grp.name = "Nozzle Body"
+  ge = grp.entities
+  circle = ge.add_circle([4949.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Tip
+  grp = ents.add_group
+  grp.name = "Nozzle Tip"
+  ge = grp.entities
+  circle = ge.add_circle([4949.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(6.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Body
+  grp = ents.add_group
+  grp.name = "Nozzle Body"
+  ge = grp.entities
+  circle = ge.add_circle([5099.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Tip
+  grp = ents.add_group
+  grp.name = "Nozzle Tip"
+  ge = grp.entities
+  circle = ge.add_circle([5099.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(6.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Body
+  grp = ents.add_group
+  grp.name = "Nozzle Body"
+  ge = grp.entities
+  circle = ge.add_circle([5249.5.mm,1212.5.mm,29.5.mm], [0,0,1], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
+  mat.color = Sketchup::Color.new(59, 122, 59)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Nozzle Tip
+  grp = ents.add_group
+  grp.name = "Nozzle Tip"
+  ge = grp.entities
+  circle = ge.add_circle([5249.5.mm,1212.5.mm,23.5.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)

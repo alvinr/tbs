@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,173 | $6,711 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,622 | $7,927 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,625 | $7,930 |
 | 6. Electrical — power, circuits, wiring | $2,993 | $3,029 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$28,465** | **~$36,800** |
+| **TOTAL (base build + 50-print run)** | **~$28,468** | **~$36,803** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -299,7 +299,7 @@ indicative low–high estimates — get quotes before ordering.
 | [3-way diverter valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=22365) (22365) | 1 ea | US Plastic Corp | water | $24 |
 | 3/4" LDPE irrigation poly pipe, 15 ft | 1 ea | DripDepot | spray | $10 |
 | [3/4" PVC Sch-40 pipe](https://www.homedepot.com/p/100348472) (PVC-04007-0600) | 2 stick | Home Depot | water | $12 |
-| [90° spray jets, barbed](https://www.homedepot.com/p/302581648) (110B) | 3 10-pack | Home Depot | spray | $10 |
+| [90° spray jets, barbed](https://www.homedepot.com/p/302581648) (110B) | 4 10-pack | Home Depot | spray | $14 |
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | 3 ea | US Plastic Corp | water | $133 |
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | 1 ea | US Plastic Corp | water | $44 |
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | 2 ea | US Plastic Corp | water | $89 |
@@ -311,7 +311,7 @@ indicative low–high estimates — get quotes before ordering.
 | [pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | 1 ea | US Plastic Corp | water | $19 |
 | [S60×6 female-buttress → 2" NPT + 2→1" bushing](https://us.cpp.parts/collections/fits-s60x6) (HMFN/20UD/027) | 8 ea | CPP.parts | water | $112–$144 |
 | [½" PVC Sch-40 pipe (tap relocation)](https://www.homedepot.com/p/319692959) (30-05010HD) | 1 stick | Home Depot | shelf | $5 |
-| **plumbing-fittings subtotal** | | | | **$1,624–$1,656** |
+| **plumbing-fittings subtotal** | | | | **$1,628–$1,660** |
 
 ### seals-gaskets
 
@@ -436,7 +436,7 @@ indicative low–high estimates — get quotes before ordering.
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,877–$2,451 |
 | Amazon | 33 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,933–$2,004 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
-| Home Depot | 45 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,445–$1,566 |
+| Home Depot | 45 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,449–$1,570 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,000–$1,420 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |

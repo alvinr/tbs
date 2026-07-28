@@ -137,8 +137,8 @@ The beam spans <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_be
 two-wheel carriage rolls on the processing tray floor beneath the grating. A 3/4" LDPE irrigation poly pipe clipped to the beam's inboard side face serves as the
 spray manifold — the supply hose terminates at a distribution manifold by the ball joint,
 which feeds seven irrigation tubes that barb into the poly manifold along the beam; water
-then exits through twenty-six barbed flat-fan nozzles that side-tap the manifold and spray
-down-and-in, at 150mm pitch along the beam.
+then exits through thirty-nine barbed 90° down-jets that side-tap the manifold and spray
+straight down, at 100mm pitch along the beam.
 
 ![Sheet 2 — Cross Section: Beam Assembly](assets/spray-bar-sheet2.png)
 
@@ -157,7 +157,7 @@ down-and-in, at 150mm pitch along the beam.
 |-----------|--------------|-----|---------|
 | Beam | 304 SS RHS, 40×25×3mm (laid flat), <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm long (two 8 ft lengths butt-welded); ~15mm pre-camber | 1 | Low-profile structural beam; carries the side manifold |
 | Side spray manifold | 3/4" LDPE irrigation poly pipe (OD 25mm, ID 19mm) | 1 | Water distribution; clipped to the beam's inboard side face |
-| Flat-fan spray nozzles | Barbed saddle-tee inlet, irrigation-type, 180° fan pattern | 26 | Side-tapped into the manifold, spray down-and-in (150mm pitch) |
+| 90° down-jets | DIG 110B barbed saddle-tee inlet, irrigation-type, 90° cone (spray straight down) | 39 | Side-tapped into the manifold, spray straight down (100mm pitch) |
 | Distribution manifold | 1/2" inlet → 7 barbed outlets, mounted at the ball joint | 1 | Splits the supply hose to the 7 feed tubes |
 | Irrigation feed tubes | 1/4" poly/vinyl tube, manifold to beam feed points | 7 | Distribute water along the beam (~7m total) |
 | Barbed feed fittings | Barbed tee, feed tube into the side manifold | 7 | Feed points (~550mm pitch) into the manifold |
@@ -205,14 +205,14 @@ Metals, and metals suppliers. Two 8 ft lengths are required; see §3.8 for splic
 
 | Property | Value |
 |----------|-------|
-| Nozzle type | Flat-fan irrigation nozzle, barbed inlet |
-| Number of nozzles | 26 |
-| Nozzle spacing | 150mm center-to-center |
-| Spray pattern | 180° flat fan |
+| Nozzle type | 90° down-jet, barbed inlet (DIG 110B) |
+| Number of nozzles | 39 |
+| Nozzle spacing | 100mm center-to-center |
+| Spray pattern | 90° cone, directed straight down |
 | Manifold OD / ID | 25mm / 19mm (3/4" LDPE) |
 | Manifold mounting | Clipped to the beam's inboard side face (cushioned pipe clips + the nozzle saddle-tees) |
 
-The twenty-six nozzle saddle-tees plus the seven feed tees tap directly into the side
+The thirty-nine nozzle saddle-tees plus the seven feed tees tap directly into the side
 manifold and grip it by their barb ridges. Because the manifold is external, no beam-wall
 drilling is needed; the tees plus cushioned pipe clips locate the manifold along the beam.
 
@@ -447,15 +447,17 @@ the splice (and set the camber over the full length).
 | Supply pump | P-01 (Shurflo 2088), 3.5 GPM at 45 PSI |
 | Pipe bore (LDPE) | 19mm ID = 283.5mm² |
 | Feed points (manifold) | 7 (~550mm pitch) — 0.5 GPM per feed tube |
-| Spray nozzles | 26 × flat-fan irrigation nozzles |
-| Flow per nozzle | 0.135 GPM (0.51 L/min) |
+| Spray nozzles | 39 × 90° down-jets (DIG 110B) |
+| Flow per nozzle | 0.09 GPM (0.34 L/min) |
 
 Feeding the poly pipe at seven points (~550mm pitch) from the ball-joint manifold — rather
 than a single center feed — keeps the supply pressure uniform along the pipe, so each of
-the 26 nozzles sees nearly the same flow regardless of its distance from the inlet. The
-19mm bore provides adequate flow capacity at 3.5 GPM. Each irrigation nozzle delivers a
-180° flat fan pattern; at 150mm pitch the fans overlap heavily, giving near-continuous
-wash coverage along the <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm beam span.
+the 39 nozzles sees nearly the same flow regardless of its distance from the inlet. The
+19mm bore provides adequate flow capacity at 3.5 GPM. Each jet delivers a **90° cone directed
+straight down** — chosen over a flat-fan/180° pattern so the wash lands on the print rather
+than spraying sideways (180°) or up and away (360°), which wastes water and wets the container.
+A 90° cone at the ~50mm nozzle height footprints ~100mm, so the pitch was tightened 150→100mm
+(26→39 nozzles) for edge-to-edge coverage along the <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm beam span; the traverse sweeps the other axis.
 
 ### 3.10 Water Connection
 
@@ -564,7 +566,7 @@ tray drainage plan and sump cross-section).
 | 304 SS RHS 40×25×3mm, 8 ft * | 40×25×3mm rectangular tube, laid flat (low profile); 2 sticks butt-welded to span | 2 ea | Online Metals | $96–$144 |
 | 6061-T6 AL plate 3/16" (5mm) | Carriage plates + spacer blocks (~300 × 500mm sheet) | 1 ea | Online Metals | $16–$28 |
 | 3/4" LDPE irrigation poly pipe, 15 ft | Side-mounted spray manifold, clipped to the beam's inboard face (OD 25mm, ID 19mm) | 1 ea | DripDepot | $10 |
-| [90° spray jets, barbed](https://www.homedepot.com/p/302581648) (110B) | DIG 110B 90° spray jets, 10-pack ×3 = 30 (26 used, 4 spare); side-tapped into the poly manifold, spray down-and-in. ⚠ these are 90° jets, not the flat-fan/180° originally spec'd — confirm the 90° pattern gives even print-wash coverage as the bar traverses (may want more/closer jets, or a flat-fan nozzle). | 3 10-pack | Home Depot | $10 |
+| [90° spray jets, barbed](https://www.homedepot.com/p/302581648) (110B) | DIG 110B 90° spray jets, 10-pack ×4 = 40 (39 used, 1 spare); side-tapped into the poly manifold, spray straight down. 90° down chosen (Alvin 2026-07-28) over flat-fan/180° so the wash lands on the print, not sideways/up; pitch tightened 150→100mm (26→39 jets) for edge-to-edge coverage — see processing-tray §3.9. | 4 10-pack | Home Depot | $14 |
 | Distribution manifold, 1/2" → 7 barb outlets | Mounted at ball joint, splits feed to tubes | 1 ea | DripDepot | $12 |
 | 1/4" irrigation poly tube | Manifold to beam feed points (~7m total) | 1 ea | DripDepot | $6 |
 | Barbed tees, tube into the side poly manifold | Feed tube to the side poly manifold, 7 feed points | 7 ea | DripDepot | $10 |
@@ -585,7 +587,7 @@ tray drainage plan and sump cross-section).
 | [M12×1.75 jam nut, SS](https://www.amazon.com/M12-1-75-Plain-Finish-Stainless-Steel/dp/B007IA07PS) (B007IA07PS) | Locks the arm adapter on the ball-joint M12 stud (M12×1.75 coarse). | 1 ea | Amazon | $1 |
 | [Clamp-style shaft collar, 25mm/1" bore, SS](https://www.ruland.com/cl-16-st.html) (CL-16-ST) | Over the slit arm-tube bottom; its integral clamp screw squeezes the Ø25×2 tube onto the adapter's Ø21 spigot — rotational adjust + lift-off for transport. Replaces the loose M6 pinch bolt. Confirm SKU/bore/price at order. | 1 ea | Ruland | $28–$33 |
 | Nylon zip ties, 200mm | Hose to arm tube | 6 ea | Amazon | $1 |
-| **Spray total** | | | | **$383–$455** |
+| **Spray total** | | | | **$386–$458** |
 <!-- END parts:spray -->
 
 ### 6.3 Combined Total
@@ -593,8 +595,8 @@ tray drainage plan and sump cross-section).
 | Subsystem | Cost Range |
 |-----------|-----------|
 | Processing tray | <!-- BEGIN costing:tray-low -->$1,538<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,226<!-- END costing:tray-high --> |
-| Spray bar assembly | <!-- BEGIN costing:spray-low -->$382<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$454<!-- END costing:spray-high --> |
-| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,920<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,680<!-- END costing:tray-spray-total-high -->** |
+| Spray bar assembly | <!-- BEGIN costing:spray-low -->$385<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$457<!-- END costing:spray-high --> |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,923<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,683<!-- END costing:tray-spray-total-high -->** |
 
 ---
 

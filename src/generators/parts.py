@@ -373,7 +373,7 @@ PARTS: list[Part] = [
     Part("spray-ldpe-pipe", '3/4" LDPE irrigation poly pipe, 15 ft', "plumbing-fittings",
          "spray", 1, "ea", 10, 10, "DripDepot", spec="Side-mounted spray manifold, clipped to the beam's inboard face (OD 25mm, ID 19mm)"),
     Part("spray-nozzles", "90° spray jets, barbed", "plumbing-fittings",
-         "spray", 3, "10-pack", 3.47, 3.47, "Home Depot", part_no="110B", url="https://www.homedepot.com/p/302581648", spec="DIG 110B 90° spray jets, 10-pack ×3 = 30 (26 used, 4 spare); side-tapped into the poly manifold, spray down-and-in. ⚠ these are 90° jets, not the flat-fan/180° originally spec'd — confirm the 90° pattern gives even print-wash coverage as the bar traverses (may want more/closer jets, or a flat-fan nozzle)."),
+         "spray", 4, "10-pack", 3.47, 3.47, "Home Depot", part_no="110B", url="https://www.homedepot.com/p/302581648", spec="DIG 110B 90° spray jets, 10-pack ×4 = 40 (39 used, 1 spare); side-tapped into the poly manifold, spray straight down. 90° down chosen (Alvin 2026-07-28) over flat-fan/180° so the wash lands on the print, not sideways/up; pitch tightened 150→100mm (26→39 jets) for edge-to-edge coverage — see processing-tray §3.9."),
     Part("spray-manifold", 'Distribution manifold, 1/2" → 7 barb outlets', "plumbing-fittings",
          "spray", 1, "ea", 12, 12, "DripDepot", spec="Mounted at ball joint, splits feed to tubes"),
     Part("spray-feed-tube", '1/4" irrigation poly tube', "plumbing-fittings",

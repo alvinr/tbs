@@ -75,7 +75,7 @@ POLY_ID = SPRAY_BAR_POLY_ID              # 19
 POLY_WALL = (POLY_OD - POLY_ID) / 2
 C_POLY = "#2A2A2A"
 C_SS   = "#B8BCC4"                        # 304 stainless RHS fill (cooler than the old alu blue)
-N_NOZZLES = SPRAY_BAR_N_NOZZLES   # flat-fan nozzles (=26 today; tbs_constants computes from tray opening / 150mm pitch)
+N_NOZZLES = SPRAY_BAR_N_NOZZLES   # 90° down-jets (=39 today; tbs_constants computes from tray opening / 100mm pitch)
 NOZZLE_BODY_W = 10
 NOZZLE_BODY_H = 6
 C_NOZZLE = "#3B7A3B"
@@ -216,7 +216,7 @@ def draw_sheet1():
             ha="center", va="bottom", fontsize=5.5, color=C_FRAME,
             fontweight="bold", **FONT, zorder=15)
 
-    # Spray nozzles (irrigation flat-fan, 150mm pitch)
+    # Spray nozzles (irrigation 90° down-jet, 100mm pitch)
     spray_x_l = PROC_OPEN_X_L
     for i in range(N_NOZZLES):
         frac = (i + 0.5) / N_NOZZLES
@@ -409,7 +409,7 @@ def draw_sheet1():
         f"2. {SLIT_WIDTH}mm slit in walkway at beam center X for pole passage.",
         "3. BV-02 on pinhole wall at pinhole centerline, waist height → flex hose",
         "   → manifold at ball joint → 7 irrigation tubes → barbed into the side poly.",
-        f"4. {N_NOZZLES}× flat-fan nozzles side-tapped into the poly, spray down-and-in.",
+        f"4. {N_NOZZLES}× 90° down-jets side-tapped into the poly, spray down-and-in.",
     ]
     draw_notes(ax, notes, X_LO + 155, 520, spacing=14, fs=7, font=FONT, width=1500)
 
@@ -752,7 +752,7 @@ def draw_sheet2():
            "SS CLAMP PLATES\n(TOP + BOTTOM)\n+ SPACER + BOLTS",
            fs=4.5, color=C_BOLT, font=FONT, zorder=15)
 
-    # Flat-fan nozzle: barbs into the SIDE poly manifold and sprays DOWN-AND-IN over
+    # 90° down-jet: barbs into the SIDE poly manifold and sprays DOWN-AND-IN over
     #   the tray (no vertical cost — the reason side-mounting lets the beam sit low).
     FITTING_DIA = 8
     nz_barb_y = poly_cy + POLY_OD / 2
@@ -762,7 +762,7 @@ def draw_sheet2():
     nz_tip_z = pipe_cz - NOZZLE_BODY_W          # tip drops below the poly
     ax2.add_patch(Rectangle((nz_body_y, nz_tip_z), NOZZLE_BODY_H, pipe_cz - nz_tip_z,
                   fc=C_NOZZLE, ec=C_FRAME, lw=1.0, zorder=9.2))
-    # Flat-fan spray shown as a symmetric 45° fan triangle: apex at the nozzle tip, base
+    # 90° down-jet spray shown as a symmetric 45°-half (=90° full) fan triangle: apex at the nozzle tip, base
     # on the tray floor — three blue lines (the two fan edges + the wetted base line).
     spray_apex_x = nz_body_y + NOZZLE_BODY_H / 2
     spray_base_z = FLOOR_LOCAL
@@ -778,7 +778,7 @@ def draw_sheet2():
            "45° SPRAY FAN",
            fs=4.5, color=C_BLUE, font=FONT, zorder=15, bbox=LBL_BG)
     leader(ax2, nz_barb_y + 2, pipe_cz, nz_barb_y + 30, pipe_cz - 18,
-           f"FLAT-FAN NOZZLE ×{N_NOZZLES}\n(SIDE-TAP BARB)",
+           f"90° DOWN-JET ×{N_NOZZLES}\n(SIDE-TAP BARB)",
            fs=4.5, color=C_NOZZLE, font=FONT, zorder=15, bbox=LBL_BG)
 
     # ── Detail C callout ─────────────────────────────────────────────────
@@ -999,7 +999,7 @@ def draw_sheet2():
         f"1. Beam rides on Ø{SPRAY_BAR_WHEEL_DIA}mm nylon wheels; saddle clamps each side retain axle.",
         "2. Clamp plates sandwich beam; underside bolts COUNTERSUNK flush for clearance.",
         "3. Ball joint on plate wing → arm → pole through walkway slit.",
-        "4. Water: SIDE poly manifold → side-tap barb → flat-fan nozzle → spray down-and-in.",
+        "4. Water: SIDE poly manifold → side-tap barb → 90° down-jet → spray down-and-in.",
         "5. Tray = welded 304-SS pan, lifted whole on the tapered shim ramp (slope = pan tilt).",
     ]
     draw_notes(ax2, cs_notes, C_YD_LO + 100, C_Z_HI - 240, spacing=5,
@@ -1989,7 +1989,7 @@ def draw_sheet7():
            fs=5, color=C_BRASS, font=FONT, zorder=20)
     leader(ax_nz, NZ_BODY_OD / 2, nz_bot + NZ_BODY_H / 2,
            n_xr - 30, nz_bot + NZ_BODY_H / 2,
-           "FLAT-FAN\nSPRAY NOZZLE",
+           "90° DOWN-JET\nSPRAY NOZZLE",
            fs=5, color=C_NOZZLE, font=FONT, zorder=20)
     ax_nz.text(n_xl + 12, poly_ctr, "WATER", ha="center", va="center",
                fontsize=5, color=C_WATER, fontweight="bold",

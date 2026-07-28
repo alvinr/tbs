@@ -461,8 +461,10 @@ PARTS: list[Part] = [
          "electrical", 1, "set", 291.91, 291.91, "McMaster-Carr", part_no="7335K231", url="https://www.mcmaster.com/7335K231/",
          spec="Portrait IP-rated enclosure housing the external power-panel components (3× MC4 bulkhead pairs, shore NEMA inlet, GFCI cooler outlet, exterior E-stop, PV disconnect). McMaster 7335K231 enclosure $251.82 + 7335K43 mounting plate $24.34 + 7335K1 mounting hardware $15.75 = $291.91. Confirm the internal fits the ~280×180 component layout + the PV-disconnect depth. Supersedes the flush aluminum plate + gasket."),
     # power-panel-gasket RETIRED 2026-07-28 — superseded by the ep-ext-enclosure's integral lid gasket.
-    Part("power-panel-frame", "Power-panel raised mounting frame, 8mm steel (welded)", "steel-structural",
-         "electrical", 1, "ea", 15, 25, "Local fab", spec="Flat 8mm steel frame (~340×240 outer, 280×180 opening) welded onto the pinhole-wall corrugation crests around the cutout — a flat, sealable surface for the face plate + gasket, with 4× M6 weld-nuts. Sits a few mm proud (raised, not flush)."),
+    # power-panel-frame RETIRED 2026-07-28 — the McMaster enclosure ships with its own steel mounting plate
+    # (7335K43) and surface-mounts to the exterior wall, so the welded flush-plate frame is no longer needed.
+    Part("power-panel-wall-gland", "Light-tight weatherproof cable-bundle gland (wall penetration)", "electrical-distribution",
+         "electrical", 1, "ea", 12, 20, "Amazon", spec="ONE sealed hole through the container wall, aligned with the enclosure's mounting-plate hole, carries the single cable bundle (PV + shore + cooler-AC + E-stop + PV-disconnect wiring) into the interior. Compression cable gland (IP68) + interior light-baffle/sealant — MUST be light-tight (pinhole camera) as well as water-tight. Confirm gland bore vs the bundle OD at build."),
     Part("bolt-m6x20", "M6×1.0 × 20 hex bolt, Grade 8.8 zinc", "fasteners-hardware",
          "electrical", 4, "ea", 17.86 / 100, 17.86 / 100, "McMaster-Carr", part_no="91280A330", url="https://www.mcmaster.com/91280A330/", spec="Power-panel bolt: face plate 3mm + gasket 3mm into the welded raised frame's M6 weld-nut (~12mm grip → M6×20). $17.86/pack of 100. ⚠ VALIDATE: 91280A330 is zinc but the panel face is exterior (weather-facing) — a 316-SS M6×20 resists corrosion better."),
     Part("nut-m6-plain", "M6×1.0 hex nut, plain SS", "fasteners-hardware",

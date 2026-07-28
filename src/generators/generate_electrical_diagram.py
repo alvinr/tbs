@@ -13,7 +13,6 @@ Sheet 5: Main panel layout + fuse schedule
 """
 
 import textwrap
-import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -23,6 +22,8 @@ import os
 from tbs_constants import C_BLUE_IBC, C_EVAP, C_ELEC, C_BATT, C_PUMP, DIAGRAMS_DIR, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, EVAP_COOLER_W_AC, EVAP_COOLER_W_BUS
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_rect, draw_circle, draw_pipe_path
+from component_glyphs import (draw_mc4_bulkhead, draw_nema_inlet,
+                              draw_wr_duplex_outlet, draw_estop_22mm)
 from tbs_constants import DIAGRAM_DPI
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -1769,57 +1770,22 @@ def draw_sheet6():
     mc4_y_base = PLATE_H / 2 - MC4_PITCH
     for i in range(3):
         cy = mc4_y_base + i * MC4_PITCH
-        cx_pos = MC4_X - MC4_GAP / 2
-        draw_circle(ax_a, (cx_pos), (cy), (MC4_R),
-                     lw=1.5, color=C_MC4, fill=True, fc="#C0E8C0", zorder=5)
-        ax_a.text((cx_pos), (cy), "+", ha="center", va="center",
-                  fontsize=8, fontweight="bold", color=C_MC4, zorder=6)
-        cx_neg = MC4_X + MC4_GAP / 2
-        draw_circle(ax_a, (cx_neg), (cy), (MC4_R),
-                     lw=1.5, color=C_MC4, fill=True, fc="#E0E0E0", zorder=5)
-        ax_a.text((cx_neg), (cy), "−", ha="center", va="center",
-                  fontsize=8, fontweight="bold", color=C_DIM, zorder=6)
+        draw_mc4_bulkhead(ax_a, MC4_X - MC4_GAP / 2, cy, r=MC4_R, positive=True)
+        draw_mc4_bulkhead(ax_a, MC4_X + MC4_GAP / 2, cy, r=MC4_R, positive=False)
         ax_a.text((MC4_X + MC4_GAP / 2 + MC4_R + 8), (cy),
                   f"PV{i + 1}", ha="left", va="center",
                   fontsize=7, color=C_MC4, fontweight="bold", **FONT, zorder=6)
 
-    # NEMA 5-15R inlet — right side
-    nema_cx = NEMA_X + NEMA_W / 2
-    nema_cy = NEMA_Y + NEMA_H / 2
-    ax_a.add_patch(mpatches.FancyBboxPatch(
-        ((NEMA_X), (NEMA_Y)), (NEMA_W), (NEMA_H),
-        boxstyle="round,pad=3", fc=C_NEMA, ec=C_OUT, lw=1.5, zorder=5))
-    slot_w, slot_h = 4, 14
-    slot_gap = 18
-    for dx in [-slot_gap / 2, slot_gap / 2]:
-        ax_a.add_patch(mpatches.Rectangle(
-            ((nema_cx + dx - slot_w / 2), (nema_cy + 2)),
-            (slot_w), (slot_h),
-            fc="white", ec=C_OUT, lw=1.0, zorder=6))
-    ground_r = 5
-    theta = np.linspace(np.pi, 2 * np.pi, 20)
-    gx = (nema_cx) + (ground_r) * np.cos(theta)
-    gy = (nema_cy - 6) + (ground_r) * np.sin(theta)
-    ax_a.plot(gx, gy, color=C_OUT, lw=1.0, zorder=6)
+    # NEMA 5-15 weatherproof inlet (male) — right side, shore-power feed in
+    draw_nema_inlet(ax_a, NEMA_X + NEMA_W / 2, NEMA_Y + NEMA_H / 2,
+                    w=NEMA_W, h=NEMA_H)
 
-    # Weatherproof AC outlet — Circuit E (evap cooler, 120V) — WR duplex + in-use cover
-    _ow, _oh = 34, 46
-    draw_rect(ax_a, (DT_X - _ow / 2), (DT_Y - _oh / 2), (_ow), (_oh),
-              fc=C_NEMA, color=C_AC, lw=1.5, zorder=5)
-    ax_a.text((DT_X), (DT_Y), "AC\nOUT", ha="center", va="center",
-              fontsize=6, fontweight="bold", color=C_AC, zorder=6)
+    # Weatherproof AC outlet — Circuit E (evap cooler, 120V):
+    # Leviton W5320 WR duplex under a 5981-UCL bubble in-use cover
+    draw_wr_duplex_outlet(ax_a, DT_X, DT_Y)
 
-    # Emergency cut-off (E-stop) — red mushroom on safety-yellow collar
-    draw_circle(ax_a, (ESTOP_X), (ESTOP_Y), (ESTOP_RING_R),
-                 lw=1.5, color=C_OUT, fill=True, fc=C_ESTOP_RING, zorder=5)
-    draw_circle(ax_a, (ESTOP_X), (ESTOP_Y), (ESTOP_R),
-                 lw=1.5, color="#7A1810", fill=True, fc=C_ESTOP, zorder=6)
-    # raised-dome highlight (upper-left)
-    draw_circle(ax_a, (ESTOP_X - 5), (ESTOP_Y + 5), (ESTOP_R * 0.45),
-                 lw=0, color=C_ESTOP, fill=True, fc="#E05646", zorder=7)
-    ax_a.text((ESTOP_X), (ESTOP_Y - ESTOP_RING_R - 5), "STOP",
-              ha="center", va="top", fontsize=6.5, fontweight="bold",
-              color="#7A1810", zorder=7, **FONT)
+    # Emergency cut-off (E-stop) — Harfington 22mm red mushroom on yellow bezel
+    draw_estop_22mm(ax_a, ESTOP_X, ESTOP_Y, r=ESTOP_R)
 
     # Title
     ax_a.text((PLATE_W / 2), (PLATE_H + 55),

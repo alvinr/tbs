@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,173 | $6,711 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,625 | $7,930 |
-| 6. Electrical — power, circuits, wiring | $3,238 | $3,246 |
+| 6. Electrical — power, circuits, wiring | $3,009 | $3,064 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,979 | $2,825 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$28,713** | **~$37,020** |
+| **TOTAL (base build + 50-print run)** | **~$28,484** | **~$36,838** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -148,10 +148,8 @@ indicative low–high estimates — get quotes before ordering.
 | Deutsch DT 2-pin connectors, IP67 (exterior penetrations) | 10 set | Waytek Wire | electrical | $30 |
 | Equipotential bonding kit — 6 AWG + ring lugs | 1 ea | Waytek Wire | electrical | $20 |
 | [External emergency cut-off — red mushroom switch](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
-| [External power-panel IP-rated enclosure (box + mounting plate + hardware)](https://www.mcmaster.com/7335K231/) (7335K231) | 1 set | McMaster-Carr | electrical | $292 |
 | [Interior emergency cut-off — red mushroom switch (paralleled to exterior)](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
 | IP65 enclosure ~200×220×140mm (fuse block + busbars, on the plywood) | 1 ea | Polycase | electrical | $60 |
-| Light-tight weatherproof cable-bundle gland (wall penetration) | 1 ea | Amazon | electrical | $12–$20 |
 | [Master pump switch (Circuit C) — IP67 sealed rocker/disconnect 12V 16A](https://www.amazon.com/dp/B0GF2ZBD1W) (B0GF2ZBD1W) | 1 ea | Amazon | electrical | $8 |
 | [MC4 bulkhead passthrough pairs, IP67 panel-mount](https://powerwerx.com/mc4-bulkhead-passthrough-solar-input) | 3 pair | Powerwerx | electrical | $9 |
 | MPPT charge-line fuse — 60A ANL/MIDI + holder | 1 ea | Blue Sea | electrical | $15 |
@@ -164,7 +162,7 @@ indicative low–high estimates — get quotes before ordering.
 | Shore-charger output fuse — 20A inline | 1 ea | Waytek Wire | electrical | $5 |
 | Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs) | 1 lot | Waytek Wire | electrical | $30 |
 | Wiring kit — 12/14/16/18 AWG tinned, 50ft/color | 1 kit | Waytek Wire | electrical | $80 |
-| **electrical-distribution subtotal** | | | | **$1,933–$1,941** |
+| **electrical-distribution subtotal** | | | | **$1,629** |
 
 ### electrical-power
 
@@ -322,10 +320,11 @@ indicative low–high estimates — get quotes before ordering.
 | [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8694K88/) (8694K88) | 2 roll | McMaster-Carr | film | $45 |
 | [Felt/brush wiper strip + 12mm closed-cell neoprene](https://www.doitbest.com/product/146005/) (BP17A) | 1 lot | Frost King + Canal Rubber | lightlock | $40–$75 |
 | Light-sealing materials (interior conversion) | 1 lot | Amazon (bundle) | interior | $157–$178 |
+| Ribbed-wall flashing + silicone (power-panel box seal) | 1 lot | Hardware store | electrical | $15–$30 |
 | [Ruland UBOOT12/19-NI-KIT nitrile boot](https://www.ruland.com/uboot12-19-ni-kit.html) (UBOOT12/19-NI-KIT) | 4 ea | Ruland | film | $122 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | 1 ea | CountryMax (Aqueon) | tray | $17–$25 |
 | [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | 1 lot | McMaster-Carr | door | $129 |
-| **seals-gaskets subtotal** | | | | **$534–$626** |
+| **seals-gaskets subtotal** | | | | **$549–$656** |
 
 ### stainless-sheet
 
@@ -363,6 +362,7 @@ indicative low–high estimates — get quotes before ordering.
 | [EMT canopy base plates + ground stakes (×4)](https://www.homedepot.com/p/317889187) (PDB-F-1-4) | 1 4-pack | Home Depot | ventilation | $16 |
 | [EMT canopy corner pull elbows (×4)](https://www.homedepot.com/p/203776547) (94510) | 4 ea | Home Depot | ventilation | $47 |
 | [EMT canopy fittings (couplings, corner ells, connectors)](https://www.homedepot.com/p/100135091) (12210) | 8 ea | Home Depot | ventilation | $12 |
+| Fabricated flanged wall-penetration box (front face + flange) | 1 lot | Local fab | electrical | $60–$100 |
 | Floor-leg cantilever bracket (left walkway, ×5) | 5 ea | Local fab | walkway | $55–$95 |
 | Mild steel plate 8mm (laser/plasma cut + welded) | 6 ea | Metal Supermarkets | film | $318 |
 | Reinforcing plate (exterior) | 18 ea | Local fab | walkway | $75–$130 |
@@ -377,7 +377,7 @@ indicative low–high estimates — get quotes before ordering.
 | Wall cleat (left corners) | 2 ea | Local fab | walkway | $20–$35 |
 | Wall mounting cleat + anchors | 1 lot | Local fab | shelf | $18 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$5,062–$6,516** |
+| **steel-structural subtotal** | | | | **$5,122–$6,616** |
 
 ### substrate-fabric
 
@@ -429,11 +429,11 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 47 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $4,117–$4,201 |
+| McMaster-Carr | 46 | aluminum, bearings-motion, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $3,825–$3,909 |
+| Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,185–$3,567 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
-| Local fab | 19 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,125–$3,467 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,877–$2,451 |
-| Amazon | 33 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,937–$2,011 |
+| Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,925–$1,991 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Home Depot | 46 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,473–$1,594 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
@@ -464,13 +464,13 @@ indicative low–high estimates — get quotes before ordering.
 | Southco | 1 | fasteners-hardware | $76–$104 |
 | Lenox Laser | 1 | stainless-sheet | $40–$100 |
 | B&H Photo | 1 | fabric-textile | $95 |
+| Hardware store | 3 | adhesives-finishes, seals-gaskets | $57–$92 |
 | StrongAr Hardware | 1 | fasteners-hardware | $70–$90 |
 | Fresh Water Systems | 2 | fasteners-hardware, water-equipment | $82 |
 | Blue Sea | 3 | electrical-distribution | $76 |
 | Super Bright LEDs | 1 | electrical-distribution | $75 |
 | Frost King + Canal Rubber | 1 | seals-gaskets | $40–$75 |
 | TAP Plastics | 1 | plastics-sheet | $30–$70 |
-| Hardware store | 2 | adhesives-finishes | $42–$62 |
 | DripDepot | 7 | fasteners-hardware, plumbing-fittings | $61 |
 | Polycase | 1 | electrical-distribution | $60 |
 | US Plastic + Amazon | 1 | fasteners-hardware | $45–$60 |

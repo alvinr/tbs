@@ -149,7 +149,7 @@ Z=1,341mm (static sideways tip threshold ≈41°, ≈21% of the ISO gross limit)
 |------|----------|-------|
 | 50×50×3mm RHS mild steel | Pacific Coast Steel, Santa Fe Springs CA | A500 Grade B; ~$4/linear foot |
 | Weld-on lashing rings (×8) | McMaster-Carr #3028T31 | 6,600 lb/ring; 3,333 lb assembly (2" strap-limited) |
-| M12 bolts (wall-hanger through-bolts ×16 + front-bar cleats) | McMaster-Carr or local hardware | SS A2-70; M12×80 through-bolts for the exterior plates |
+| M12 bolts (wall-hanger through-bolts ×16 + front-bar cleats ×8) | McMaster-Carr or local hardware | SS A2-70; M12×65 through-bolts (span 8mm plate + corrugation + 4mm hanger) for the exterior plates, M12×40 for the front-bar cleats |
 | Simpson-style wall joist hangers (×4) | Simpson Strong-Tie or local | folded 4mm plate, through-bolted to exterior backing plate |
 | Exterior wall backing plates (×4) | Metal Supermarkets / local | 100×135×8mm steel, hex heads outside |
 

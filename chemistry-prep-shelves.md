@@ -183,8 +183,8 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 | [M5×16 countersunk screw, A2-70 SS](https://www.mcmaster.com/91420A326/) (91420A326) | Ply panel attachment (same M5×16 CSK as the clamp clips — 91420A326) | 8 ea | McMaster-Carr | $1 |
 | Corner gusset plate, 3 mm | 50×50 mm triangular | 4 ea | Steel offcut | $5 |
 | Flat black epoxy spray paint | frame + hardware finish | 1 can | Hardware store | $12 |
-| ½" PVC Sch-40 pipe (tap relocation) | extend the blue supply trunk ~1.3 m left to TAP-01 (PVC Sch-40, per the joint convention) | 1 lot | Irrigation supply | $10 |
-| **Shelf total** | | | | **$228–$253** |
+| [½" PVC Sch-40 pipe (tap relocation)](https://www.homedepot.com/p/319692959) (30-05010HD) | Extend the blue supply trunk ~1.3 m left to TAP-01 (PVC Sch-40, per the joint convention). IPEX ½" × 10 ft — same stick as pvc-half; one covers the run. | 1 stick | Home Depot | $5 |
+| **Shelf total** | | | | **$222–$247** |
 <!-- END parts:shelf -->
 
 *The relocated TAP-01 + BV-06 hardware itself is unchanged (carried in the water-system

@@ -27,9 +27,9 @@ Without any mitigation, the container is unusable in summer daytime. The system 
 
 | Method | Interior ΔT | Cost | Power | Required? |
 |--------|------------|------|-------|-----------|
-| 80% shade cloth canopy over container | −15 to −20°C | ~<!-- BEGIN costing:vent-shade -->$200<!-- END costing:vent-shade --> | None | **Yes — always** |
+| 80% shade cloth canopy over container | −15 to −20°C | ~<!-- BEGIN costing:vent-shade -->$419<!-- END costing:vent-shade --> | None | **Yes — always** |
 | Scheduling (shoot before 09:00 / after 18:00 in summer) | −10 to −15°C effective | $0 | None | Recommended |
-| Evaporative cooler (swamp cooler) — 120V AC via 12V inverter | −10 to −15°C additional | ~<!-- BEGIN costing:vent-cooler-inverter -->$341<!-- END costing:vent-cooler-inverter --> (cooler + inverter) | <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus | **Yes — in temperatures above 30°C ambient** |
+| Evaporative cooler (swamp cooler) — 120V AC via 12V inverter | −10 to −15°C additional | ~<!-- BEGIN costing:vent-cooler-inverter -->$242<!-- END costing:vent-cooler-inverter --> (cooler + inverter) | <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus | **Yes — in temperatures above 30°C ambient** |
 
 Combined (shade canopy + cooler + scheduling): interior temperature reaches 25–32°C — within operator working range.
 
@@ -192,23 +192,23 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | 150×150×50mm axial fans | 12V DC, ~150–200 CFM each (GDSTIME/Wathai 15050) | 2 ea | Digi-Key | $50 |
-| [Evaporative cooler](https://hessaire.com/mobile-cooling/1300-cfm-mobile-cooler) | Hessaire MC18M, 120V AC, <!-- BEGIN fact:cooler_cfm_rated -->1,300<!-- END fact:cooler_cfm_rated --> CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W | 1 ea | Hessaire / Amazon | $185–$230 |
+| [Evaporative cooler](https://www.homedepot.com/p/321429692) (MC18MT) | Hessaire MC18M, 120V AC, <!-- BEGIN fact:cooler_cfm_rated -->1,300<!-- END fact:cooler_cfm_rated --> CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W | 1 ea | Home Depot | $109 |
 | [Cooler inverter — Victron Phoenix 12/375 GFCI](https://www.invertersupply.com/index.php?main_page=product_info&products_id=200695) (PIN123750510) | Victron Phoenix 12/375 120V VE.Direct GFCI (12V→120V, 375VA/300W) — GFCI in the faceplate outlet satisfies the wet-cooler requirement (no separate GFCI needed). Firm $132.60. | 1 ea | Inverter Supply / PKYS | $133 |
 | Shade canopy — 80% shade cloth | 20 × 10 ft | 1 ea | Amazon / Farm supply | $80 |
-| 1.5" EMT conduit, 10 ft | Shade-canopy frame legs + top rails. 1.5" EMT, 6× 10-ft sticks. Price est — source SKU. | 6 stick | Home Depot | $84 |
-| EMT canopy fittings (couplings, corner ells, connectors) | Set-screw couplings + 90° corners + tee/cross connectors joining the EMT frame. Price est — source pieces. | 1 lot | Home Depot | $24 |
-| EMT canopy base plates + ground stakes (×4) | Floor flange/base plate at each leg + ground stakes/guys. Price est. | 4 ea | Home Depot | $12 |
+| [1.5" EMT conduit, 10 ft](https://www.homedepot.com/p/330385401) (8511-107HD) | Shade-canopy frame legs + top rails. 1.5" EMT, 6× 10-ft sticks. ⚠ 1.5" EMT is heavy-gauge for a shade canopy — a lighter ¾"/1" run would cut this ~60%; confirm 1.5" is intended (wind loading?). | 6 stick | Home Depot | $255 |
+| [EMT canopy fittings (couplings, corner ells, connectors)](https://www.homedepot.com/p/100537119) (62815) | Halex 1.5" EMT set-screw couplings joining the frame runs (×8). Corner turns via field-bent EMT or add 90° ells (extra if used). | 8 ea | Home Depot | $26 |
+| [EMT canopy base plates + ground stakes (×4)](https://www.homedepot.com/p/302074522) (310-F-112) | STZ 1.5" black-iron floor flange at each leg base (×4). Add ground stakes/guys if free-standing. | 4 ea | Home Depot | $59 |
 | Baffle duct sheet metal (fans) | 22 ga galvanized, 2 × 300mm stubs | 1 lot | Local sheet metal / Home Depot | $30 |
 | Baffle duct sheet metal (cooler) | 22 ga galvanized, 1 × 300mm stub, Ø200mm | 1 lot | Local sheet metal / Home Depot | $20 |
 | [200mm insulated flex duct](https://www.homedepot.com/p/314398619) (23-183-08-25) | Rubber-Cal 8" × 25 ft flexible ducting coil (one coil covers the cooler riser run with margin) | 1 coil | Home Depot | $63 |
 | [200mm 90° duct elbow](https://www.homedepot.com/p/100187427) (MF-90E8) | Master Flow 8" 90° adjustable galvanized elbow (model 90E8), cooler riser to wall stub | 1 ea | Home Depot | $15 |
-| [Duct collar + hose clamp](https://www.homedepot.com/p/100211540) (DSCF8) | Master Flow 8" starting collar/take-off $8.98 firm; add a worm-drive band clamp (~$2) to secure the flex duct — high band covers the clamp | 1 ea | Home Depot | $9–$11 |
+| [Duct collar + hose clamp](https://www.homedepot.com/p/100211540) (DSCF8) | Master Flow 8" starting collar/take-off (DSCF8 $8.98, Home Depot) + worm-drive band clamp (McMaster 4866N35 $7.25) = $16.23/set to secure the flex duct. | 1 set | Home Depot | $16 |
 | [Weatherproof duct cap](https://www.homedepot.com/p/100396923) (8DC) | Master Flow 8" round removable duct cap | 1 ea | Home Depot | $12 |
 | Deutsch DT 2-pin connectors | Fan B flex connector (×2 sets) | 2 set | Waytek Wire | $8 |
 | 16 AWG silicone coiled cable | 1m, 2-conductor (Fan B flex) | 1 ea | Waytek Wire / Amazon | $15 |
 | Cooler external power cable | 1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end | 1 ea | Waytek Wire / Amazon | $20 |
 | [Ratchet straps, 25mm](https://www.homedepot.com/p/312994495) (FH0829) | Cooler stowage. Husky 12 ft × 1" ratchet tie-downs, S-hook, 4-pack — design uses 2, 2 spare | 1 4-pack | Home Depot | $10 |
-| **Ventilation total** | | | | **$769–$816** |
+| **Ventilation total** | | | | **$920** |
 <!-- END parts:ventilation -->
 
 ---

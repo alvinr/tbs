@@ -302,7 +302,7 @@ VENTILATION = [
     LineItem("Evaporative cooler (Hessaire MC18MT)", 109, 109, 109, "2026-07-27: firm $109 Home Depot MC18MT Ice Blue (was $185–230 est)"),
     LineItem("Cooler inverter (Victron Phoenix 12/375 GFCI, PIN123750510)", 133, 133, 133, "2026-07-23: firm $132.60 Inverter Supply"),
     point("Shade canopy — 80% shade cloth (20×10 ft)", 80),
-    LineItem("Canopy frame (1\" EMT — 6× conduit + 8× couplings + 4× floor flanges)", 108, 132, 156, "2026-07-27: downsized from 1.5\" ($339) to 1\" for the shade-cloth canopy; estimates, source SKUs"),
+    LineItem("Canopy frame (1\" EMT — 6× conduit $21.86 + 8× couplings $1.45 + 4× floor flanges + 4× pull elbows $11.85)", 206, 206, 206, "2026-07-27: firm at 1\" EMT — conduit 550210000, couplings 12210, PIPE DECOR flange 4-pack PDB-F-1-4, Halex 94510 elbows (was $339 at 1.5\")"),
     point("Baffle duct sheet metal (fans)", 30),
     point("Baffle duct sheet metal (cooler, Ø200)", 20),
     point("200mm insulated flex duct", 63),      # 2026-07-27: Rubber-Cal 8"×25ft coil $62.68
@@ -1019,7 +1019,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 951,  "total": 1250, "per_print": 25},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "standard": {"chem": 1414, "total": 1710, "per_print": 34},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "rich":     {"chem": 2802, "total": 3100, "per_print": 62},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
-    "grand_total": (28177, 32882, 39677),  # 2026-07-27: Big Blue housings → verified Pentek 150234 $83.30 (+$35). Earlier: canopy 1" EMT; the Home Depot/McMaster/Pentair sourcing run.
+    "grand_total": (28275, 32980, 39775),  # 2026-07-27: canopy 1" EMT firm (+$98/+$50 vs the 1" estimate). Earlier: Big Blue 150234; the Home Depot/McMaster/Pentair sourcing run.
     "walkway": (1979, 2395, 2825),  # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
     "water": (6383, 7148, 7950),  # 2026-07-27: Big Blue housings verified Pentair Pentek 150234 $83.30 ×3 (1" NPT + standard cartridges, was 150468 $71.51). pH meter Apera AI311 $79.76; SeaFlo $35.99; filter-skid Pentair brackets; PVC run + Banjo firm.
     "container": (2300, 3300, 4300),
@@ -1030,7 +1030,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "interior": (526, 605, 693),      # 2026-07-27: door pull handle firm McMaster 3570N12 $39.10 (was $5–9 lot, +$34/+$30). Earlier: BEHR Jet Black paint firm.
     "optics": (100, 155, 215),         # 2026-07-23: pinhole → Lenox SS-3/8-DISC $40-100 (config, RFQ)
     "film": (6173, 6440, 6711),  # 2026-07-27: blackout poly → Film-Gard 10ft 4-mil $40.12 (was 6-mil $66–70, −$26/−$30); Gorilla tape firm $9.94 ×6; saddle M8 thumbscrews ×12 McMaster $11.80. (2026-07-22: clamp → off-the-shelf nylon spring clamps + HDPE filler.)
-    "ventilation": (689, 713, 737),   # 2026-07-27: canopy EMT downsized 1.5"→1" for the shade-cloth canopy (−$231/−$183); evap cooler MC18MT $109; duct collar+clamp $16.23.
+    "ventilation": (787, 787, 787),   # 2026-07-27: canopy 1" EMT firm ($206 — conduit $21.86×6, couplings $1.45×8, flange 4-pack $16.29, Halex 94510 elbows $11.85×4); evap cooler MC18MT $109; duct collar+clamp $16.23.
     "power": (2993, 3011, 3029),   # 2026-07-27: EP backboard → 18mm SANDEPLY Sande 4×8 $68.98 (full sheet, +$4); pull-cord switch NEMA-4 $121.99 ×2. §5a authoritative subtotal
 }
 

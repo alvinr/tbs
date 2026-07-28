@@ -27,7 +27,7 @@ Without any mitigation, the container is unusable in summer daytime. The system 
 
 | Method | Interior ΔT | Cost | Power | Required? |
 |--------|------------|------|-------|-----------|
-| 80% shade cloth canopy over container | −15 to −20°C | ~<!-- BEGIN costing:vent-shade -->$212<!-- END costing:vent-shade --> | None | **Yes — always** |
+| 80% shade cloth canopy over container | −15 to −20°C | ~<!-- BEGIN costing:vent-shade -->$286<!-- END costing:vent-shade --> | None | **Yes — always** |
 | Scheduling (shoot before 09:00 / after 18:00 in summer) | −10 to −15°C effective | $0 | None | Recommended |
 | Evaporative cooler (swamp cooler) — 120V AC via 12V inverter | −10 to −15°C additional | ~<!-- BEGIN costing:vent-cooler-inverter -->$242<!-- END costing:vent-cooler-inverter --> (cooler + inverter) | <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus | **Yes — in temperatures above 30°C ambient** |
 
@@ -195,9 +195,10 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | [Evaporative cooler](https://www.homedepot.com/p/321429692) (MC18MT) | Hessaire MC18M, 120V AC, <!-- BEGIN fact:cooler_cfm_rated -->1,300<!-- END fact:cooler_cfm_rated --> CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W | 1 ea | Home Depot | $109 |
 | [Cooler inverter — Victron Phoenix 12/375 GFCI](https://www.invertersupply.com/index.php?main_page=product_info&products_id=200695) (PIN123750510) | Victron Phoenix 12/375 120V VE.Direct GFCI (12V→120V, 375VA/300W) — GFCI in the faceplate outlet satisfies the wet-cooler requirement (no separate GFCI needed). Firm $132.60. | 1 ea | Inverter Supply / PKYS | $133 |
 | Shade canopy — 80% shade cloth | 20 × 10 ft | 1 ea | Amazon / Farm supply | $80 |
-| 1.5" EMT conduit, 10 ft | Shade-canopy frame legs + top rails. 1" EMT, 6× 10-ft sticks (downsized from 1.5" 2026-07-27 — adequate for a shade-cloth canopy). Source SKU/price. | 6 stick | Home Depot | $72–$96 |
-| EMT canopy fittings (couplings, corner ells, connectors) | 1" EMT set-screw couplings joining the frame runs (×8). Corner turns via field-bent EMT or add 1" 90° ells (extra if used). Source SKU/price. | 8 ea | Home Depot | $12–$20 |
-| EMT canopy base plates + ground stakes (×4) | 1" floor flange (black iron or EMT base) at each leg base (×4). Add ground stakes/guys if free-standing. Source SKU/price. | 4 ea | Home Depot | $24–$40 |
+| [1.5" EMT conduit, 10 ft](https://www.homedepot.com/p/304229415) (550210000) | Shade-canopy frame legs + top rails. 1" EMT, 6× 10-ft sticks (downsized from 1.5" 2026-07-27 — adequate for a shade-cloth canopy). | 6 stick | Home Depot | $131 |
+| [EMT canopy fittings (couplings, corner ells, connectors)](https://www.homedepot.com/p/100135091) (12210) | 1" EMT set-screw couplings joining the straight frame runs (×8). Corner turns handled by the 1" pull elbows (canopy-emt-elbows). | 8 ea | Home Depot | $12 |
+| [EMT canopy base plates + ground stakes (×4)](https://www.homedepot.com/p/317889187) (PDB-F-1-4) | PIPE DECOR 1" black-iron floor flange 4-pack — one per leg base (×4). Add ground stakes/guys if free-standing. | 1 4-pack | Home Depot | $16 |
+| [EMT canopy corner pull elbows (×4)](https://www.homedepot.com/p/203776547) (94510) | Halex 1" EMT rigid pull elbow at the 4 top-frame corners (Alvin chose bought elbows over field-bending). | 4 ea | Home Depot | $47 |
 | Baffle duct sheet metal (fans) | 22 ga galvanized, 2 × 300mm stubs | 1 lot | Local sheet metal / Home Depot | $30 |
 | Baffle duct sheet metal (cooler) | 22 ga galvanized, 1 × 300mm stub, Ø200mm | 1 lot | Local sheet metal / Home Depot | $20 |
 | [200mm insulated flex duct](https://www.homedepot.com/p/314398619) (23-183-08-25) | Rubber-Cal 8" × 25 ft flexible ducting coil (one coil covers the cooler riser run with margin) | 1 coil | Home Depot | $63 |
@@ -208,7 +209,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | 16 AWG silicone coiled cable | 1m, 2-conductor (Fan B flex) | 1 ea | Waytek Wire / Amazon | $15 |
 | Cooler external power cable | 1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end | 1 ea | Waytek Wire / Amazon | $20 |
 | [Ratchet straps, 25mm](https://www.homedepot.com/p/312994495) (FH0829) | Cooler stowage. Husky 12 ft × 1" ratchet tie-downs, S-hook, 4-pack — design uses 2, 2 spare | 1 4-pack | Home Depot | $10 |
-| **Ventilation total** | | | | **$688–$736** |
+| **Ventilation total** | | | | **$787** |
 <!-- END parts:ventilation -->
 
 ---

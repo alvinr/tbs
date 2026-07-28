@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,173 | $6,711 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,625 | $7,930 |
-| 6. Electrical — power, circuits, wiring | $3,254 | $3,262 |
+| 6. Electrical — power, circuits, wiring | $3,238 | $3,246 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,979 | $2,825 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$28,729** | **~$37,036** |
+| **TOTAL (base build + 50-print run)** | **~$28,713** | **~$37,020** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -153,7 +153,7 @@ indicative low–high estimates — get quotes before ordering.
 | IP65 enclosure ~200×220×140mm (fuse block + busbars, on the plywood) | 1 ea | Polycase | electrical | $60 |
 | Light-tight weatherproof cable-bundle gland (wall penetration) | 1 ea | Amazon | electrical | $12–$20 |
 | [Master pump switch (Circuit C) — IP67 sealed rocker/disconnect 12V 16A](https://www.amazon.com/dp/B0GF2ZBD1W) (B0GF2ZBD1W) | 1 ea | Amazon | electrical | $8 |
-| MC4 bulkhead connector pairs, IP67 panel-mount | 3 pair | Signature Solar | electrical | $25 |
+| [MC4 bulkhead passthrough pairs, IP67 panel-mount](https://powerwerx.com/mc4-bulkhead-passthrough-solar-input) | 3 pair | Powerwerx | electrical | $9 |
 | MPPT charge-line fuse — 60A ANL/MIDI + holder | 1 ea | Blue Sea | electrical | $15 |
 | [NEMA 5-15R weatherproof inlet (flush power panel)](https://www.amazon.com/dp/B0CLDC8X5J) (B0CLDC8X5J) | 1 ea | Amazon | electrical | $10 |
 | [Pull-cord ceiling switch, 12V 6A SPST](https://americandoorsupply.com/products/ceiling-pull-switch-spst-nema-4-w-rotg-pivoting-cam?variant=45465874595971) | 2 ea | americandoorsupply | electrical | $244 |
@@ -164,7 +164,7 @@ indicative low–high estimates — get quotes before ordering.
 | Shore-charger output fuse — 20A inline | 1 ea | Waytek Wire | electrical | $5 |
 | Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs) | 1 lot | Waytek Wire | electrical | $30 |
 | Wiring kit — 12/14/16/18 AWG tinned, 50ft/color | 1 kit | Waytek Wire | electrical | $80 |
-| **electrical-distribution subtotal** | | | | **$1,949–$1,957** |
+| **electrical-distribution subtotal** | | | | **$1,933–$1,941** |
 
 ### electrical-power
 
@@ -452,8 +452,8 @@ indicative low–high estimates — get quotes before ordering.
 | Waytek Wire | 14 | electrical-distribution, electrical-power | $319 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | igus | 1 | bearings-motion | $261 |
+| Powerwerx | 4 | electrical-distribution, electrical-power | $253 |
 | americandoorsupply | 1 | electrical-distribution | $244 |
-| Powerwerx | 3 | electrical-distribution, electrical-power | $244 |
 | Bearings Direct | 2 | bearings-motion | $201 |
 | Amazon (bundle) | 1 | seals-gaskets | $157–$178 |
 | Harbor Freight | 1 | fasteners-hardware | $115–$173 |
@@ -475,11 +475,11 @@ indicative low–high estimates — get quotes before ordering.
 | Polycase | 1 | electrical-distribution | $60 |
 | US Plastic + Amazon | 1 | fasteners-hardware | $45–$60 |
 | Fibergrate | 1 | adhesives-finishes | $40–$60 |
-| Signature Solar | 2 | electrical-distribution | $55 |
 | Amazon (OKAYASU) | 1 | seals-gaskets | $24–$52 |
 | Digi-Key | 1 | ducting-ventilation | $50 |
 | Steel service center | 1 | steel-structural | $30–$50 |
 | Marine Fiberglass Direct | 1 | fasteners-hardware | $25–$45 |
+| Signature Solar | 1 | electrical-distribution | $30 |
 | Harfington | 2 | electrical-distribution | $25 |
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |
 | Wurth Baer Supply | 1 | fasteners-hardware | $24 |

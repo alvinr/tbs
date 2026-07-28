@@ -57,14 +57,15 @@ bucketed by WHEN it can be acted on:_
   150→100mm (26→39 jets) for edge-to-edge coverage of the 90° footprint. Cascaded: constant, 2D spray-bar diagram,
   report §3.2/§3.9, part (4× 10-packs). **Residual: re-send + save the 3 .skp that draw the bar — spraybar,
   overview, construction (.rb regenerated; ALVIN re-sends + uploads).**
-- [ ] **External power panel: flush-plate → IP-rated enclosure — GEOMETRY cascade (report §5.4 prose + parts DONE 2026-07-28).**
-  Design now locked: McMaster **7335K231** enclosure surface-mounts to the exterior wall (its own **7335K43** mounting
-  plate + lid gasket — no welded frame, `power-panel-frame` retired); connectors bulkhead-mount on the box; **ONE** sealed
-  cable-bundle hole through the wall (aligned with a mounting-plate hole), **light-tight + water-tight** gland
-  (`power-panel-wall-gland`). REMAINING = redraw the geometry to match: **`PWR_PANEL_CUTOUT_W/H` constants** (280×180 → one
-  ~Ø50 bundle hole), **electrical-sheet6** detail diagram (draw the box, not the flush plate — read by generate_electrical_diagram),
-  the assembly-fab / floorplan / pinhole-wall-elevation diagrams that show the 280×180 cutout, and the **3D electrical +
-  overview + construction models** (power-panel geometry) → re-send. Big multi-file redraw; do as a focused block.
+- [ ] **External power panel — GEOMETRY cascade (report §5.4 prose + parts + component sourcing DONE 2026-07-28).**
+  Design FINAL (Alvin): a **fabricated flanged wall-penetration box** (`power-panel-box`) — the 4 weatherproof interfaces
+  (3× MC4 bulkheads Powerwerx, shore inlet, cooler outlet W5320-T0W + 5981-UCL, 22mm E-stop) surface-mount + seal to its
+  front face and are exposed; box opens to the interior for wiring; flange sealed to the ribbed wall with **flashing +
+  silicone** (`power-panel-flashing`), light- + water-tight. Blue Sea 6006 disconnect relocated to the **EP backboard**.
+  (Superseded ideas: original flush plate; a McMaster IP enclosure — both retired.) REMAINING = redraw the geometry:
+  **`PWR_PANEL_CUTOUT_W/H` constants** (280×180 → the box's face-cut set), **electrical-sheet6** detail (draw the
+  penetration box + face-mounted components, not the flush plate), the assembly-fab / floorplan / pinhole-wall-elevation
+  diagrams that show the 280×180 cutout, and the **3D electrical + overview + construction models** → re-send. Focused block.
 - [ ] **panel-corner-plates — design flag (huge cores).** Each 3mm 5052 Al corner core is 653×2388mm (~16.8 ft², ~half a sheet); the 4 don't nest → 2 full sheets = $586 + weight. Decide full solid plate vs a lighter frame/partial before buying.
 - [ ] **Aug 2026 full re-price.** Sweep every `parts.py` line against current listings (reminder atop the file); edit band → `--inject` cascades.
 - [ ] **Master-BOM SKU backfill.** Branded rows that don't yet carry a registry `part_no` — Alvin's supplier paste-check; each SKU auto-appears in the master on the next `--inject`.

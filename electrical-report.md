@@ -155,25 +155,25 @@ The MPPT delivers up to 50 A to the battery, so its battery lead carries far mor
 Connect whenever shore power is available at a deployment site (campground hookup, venue power, generator) to top up the battery bank overnight.
 
 ### 5.4 External Power Panel
-The solar PV inputs, shore power inlet, and the evaporative cooler's **120V AC output** are housed in a single **IP-rated enclosure** surface-mounted on the pinhole-wall exterior, close to the electrical panel and battery bank inside.
+The solar PV inputs, shore power inlet, and the evaporative cooler's **120V AC output** are carried on a **fabricated flanged penetration box** let into the pinhole wall, close to the electrical panel and battery bank inside.
 
 | Parameter | Specification |
 |-----------|--------------|
-| Enclosure | McMaster 7335K231 IP-rated box (portrait) + 7335K43 steel mounting plate + 7335K1 mounting hardware |
-| Solar inputs | 3 × MC4 bulkhead connector pairs (IP67 panel-mount) |
+| Box | Fabricated sheet-metal flanged box — front face (exterior) + exterior flange, **open to the container interior** |
+| Solar inputs | 3 × MC4 bulkhead pairs (IP67) — surface-mounted, sealed to the face |
 | Shore power | 1 × NEMA 5-15R weatherproof inlet |
-| Cooler output | 1 × NEMA 5-15R **GFCI-fed** weatherproof outlet with in-use (bubble) cover (Circuit E — fed from the interior inverter; the cooler plugs in here) |
+| Cooler output | 1 × NEMA 5-15R weatherproof duplex + in-use (bubble) cover (Circuit E — fed from the interior inverter, GFCI at the inverter §7.6) |
 | Emergency stop | 1 × exterior red mushroom E-stop (kills the battery contactor from outside, §7.5) |
-| PV disconnect | DC load-break isolator, handle on the enclosure face |
-| Wall penetration | **ONE** sealed cable-bundle hole through the container wall, aligned with a hole in the enclosure's mounting plate |
-| Location | Pinhole wall exterior, X ≈ 1,250–1,590mm (just left of EP) |
-| Approximate cost | ~$304 (enclosure set $292 + wall gland $12–20) |
+| Wall seal | Flashing + silicone bridging the corrugation crests around the flange — **water-tight AND light-tight** |
+| PV disconnect | **On the EP backboard** (Blue Sea 6006, with the main disconnect + master pump switch) — *not* on this box |
+| Location | Pinhole wall, X ≈ 1,250–1,590mm (just left of EP) |
+| Approximate cost | ~$85 (fab box $60–100 + flashing/silicone $15–30) |
 
-The outward-facing connectors (MC4 array pairs, shore inlet, GFCI cooler outlet, E-stop button) and the PV-disconnect handle are **bulkhead-mounted on the enclosure body/door**, so they are accessible and pluggable from outside without opening the box; all wiring is contained inside. The enclosure ships with its own steel mounting plate and lid gasket, so it **surface-mounts directly to the exterior wall** — no welded frame or aluminum face plate is needed. **A single hole is cut through the container wall, aligned with a hole in the mounting plate, and the entire wiring bundle** (PV → MPPT, shore → charger, cooler AC ← inverter, E-stop + PV-disconnect loops) **passes through it as one bundle.** That penetration is sealed with a compression cable gland and an interior light-baffle — it must be **both water-tight and light-tight** (this is a pinhole camera; any light leak fogs the print). The **cooler AC outlet is fed from the interior 12V→120V inverter** (Circuit E), GFCI-protected (§7.6); the cooler is unplugged and the cord stowed inside for transport. See the power panel detail drawing below.
+**All four exterior interfaces are already weatherproof** (MC4 IP67, weatherproof shore inlet, WR duplex under an in-use cover, IP65 E-stop), so they mount **exposed** — each surface-mounted and gasket-sealed to the box's front face, with the electrical **attached from the container-interior side** (the box opens inward). No secondary IP enclosure is needed. The container wall is **corrugated**, so the box's exterior flange can't seat flat: it is sealed to the wall with **flashing over the corrugation crests plus a silicone bead** — a seal that must be **light-tight as well as water-tight** (this is a pinhole camera; any perimeter gap or connector cavity fogs the print). Opaque front face + gasketed opaque devices + flashed flange give the light seal; the inlet/outlet socket cavities get a light-baffle behind them. Each device's wiring runs **inside the container** to the EP — the PV pairs to the **Blue Sea 6006 disconnect** on the EP backboard, the shore inlet to the charger, the cooler outlet from the inverter (Circuit E), the E-stop loop to the contactor. The cooler is unplugged and the cord stowed inside for transport. See the power panel detail drawing below.
 
 ![External Power Panel Detail](assets/electrical-sheet6.png)
 
-*Detail drawing update to the IP-enclosure layout is pending (tracked in TODO) — it currently shows the superseded flush-plate geometry.*
+*Detail drawing update to the penetration-box layout is pending (tracked in TODO) — it currently shows the superseded flush-plate geometry.*
 
 ## 6. Interior Lighting
 
@@ -420,10 +420,10 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Ventilation fans × 2 | 150×150×50mm 12V DC axial panel fan, ~150–200 CFM (dimension-audit correction; not the AC Infinity S6 inline) | Amazon | ~$50 |
 | 12V LED flat panel, 300×600mm, 4000K | 20W, neutral white, ceiling-mount | Amazon / superbrightleds.com | ~$75 (×3) |
 | Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting circuits D & G | Amazon / Lowe's | ~$16 (×2) |
-| **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$3,242<!-- END costing:elec-system-total -->** |
+| **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$3,037<!-- END costing:elec-system-total -->** |
 | **Shade canopy total** | | | **~<!-- BEGIN costing:elec-canopy-total -->$286<!-- END costing:elec-canopy-total -->** |
 | **Cooling (cooler + inverter + DC protection + AC outlet + cord)** | | | **~<!-- BEGIN costing:elec-cooling-total -->$262<!-- END costing:elec-cooling-total -->** |
-| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$3,790<!-- END costing:elec-grand-total -->** |
+| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$3,585<!-- END costing:elec-grand-total -->** |
 
 *Electrical system total is the **standard 1-pack build** and matches the consolidated [Master Shopping List §6](master-shopping-list.md) (Solar & battery $1,335 + Distribution & wiring $989 = $2,324, the authoritative electrical BOM). The optional 2nd battery pack adds +$375 (its own MRBF fuse). It includes ~$410 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (interior **+** exterior emergency cut-offs + battery contactor, disconnect switch, terminal-mount fuse, **PV array disconnect, MPPT charge-line + shore-charger fuses**, sealed connectors, bonding, grommets), plus ~$25 of Circuit-C pump-control hardware (1 master pump switch + distribution block).*
 

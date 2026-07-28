@@ -457,18 +457,22 @@ PARTS: list[Part] = [
     Part("pv-array-disconnect", "PV array disconnect — Blue Sea 6006 DC battery switch (NEC 690.13)",
          "electrical-power", "electrical", 1, "ea", 33.60, 33.60, "Waytek Wire", part_no="6006",
          url="https://www.waytekwire.com/product/blue-sea-systems-6006-m-series-battery-switch",
-         spec="Blue Sea 6006 m-Series single-circuit ON/OFF DC battery switch — load-break disconnect on the PV array + (array → MPPT). 300A / 48V DC (≫ our ~22V Voc / ~30A Isc = ~38A required; the earlier 50A/150VDC spec was wrong — the array is 3×200W in PARALLEL, 12V nominal, not a high-V string). 2× M10 tin-copper studs (ring lugs), 55×55mm face × 64mm deep, isolating cover with snap-off sides = wire access any direction. Mounts inside the ep-ext-enclosure (knob on the door)."),
+         spec="Blue Sea 6006 m-Series single-circuit ON/OFF DC battery switch — load-break disconnect on the PV array + (array → MPPT). 300A / 48V DC (≫ our ~22V Voc / ~30A Isc = ~38A required; the earlier 50A/150VDC spec was wrong — the array is 3×200W in PARALLEL, 12V nominal, not a high-V string). 2× M10 tin-copper studs (ring lugs), 55×55mm face × 64mm deep, isolating cover with snap-off sides = wire access any direction. Mounts on the EP backboard's IP65 disconnect cluster (with the main disconnect + master pump switch) — the array cables run from the power-panel-box MC4 bulkheads to here."),
     # power-panel-plate + power-panel-gasket RETIRED 2026-07-28 — the external power panel is now a proper
     # IP-rated McMaster enclosure (ep-ext-enclosure) with its own sealed lid + gasket, superseding the
     # flush aluminum face plate + neoprene gasket. See ep-ext-enclosure.
-    Part("ep-ext-enclosure", "External power-panel IP-rated enclosure (box + mounting plate + hardware)", "electrical-distribution",
-         "electrical", 1, "set", 291.91, 291.91, "McMaster-Carr", part_no="7335K231", url="https://www.mcmaster.com/7335K231/",
-         spec="Portrait IP-rated enclosure housing the external power-panel components (3× MC4 bulkhead pairs, shore NEMA inlet, GFCI cooler outlet, exterior E-stop, PV disconnect). McMaster 7335K231 enclosure $251.82 + 7335K43 mounting plate $24.34 + 7335K1 mounting hardware $15.75 = $291.91. Confirm the internal fits the ~280×180 component layout + the PV-disconnect depth. Supersedes the flush aluminum plate + gasket."),
-    # power-panel-gasket RETIRED 2026-07-28 — superseded by the ep-ext-enclosure's integral lid gasket.
-    # power-panel-frame RETIRED 2026-07-28 — the McMaster enclosure ships with its own steel mounting plate
-    # (7335K43) and surface-mounts to the exterior wall, so the welded flush-plate frame is no longer needed.
-    Part("power-panel-wall-gland", "Light-tight weatherproof cable-bundle gland (wall penetration)", "electrical-distribution",
-         "electrical", 1, "ea", 12, 20, "Amazon", spec="ONE sealed hole through the container wall, aligned with the enclosure's mounting-plate hole, carries the single cable bundle (PV + shore + cooler-AC + E-stop + PV-disconnect wiring) into the interior. Compression cable gland (IP68) + interior light-baffle/sealant — MUST be light-tight (pinhole camera) as well as water-tight. Confirm gland bore vs the bundle OD at build."),
+    # power-panel-plate/gasket/frame + the McMaster ep-ext-enclosure + power-panel-wall-gland all RETIRED
+    # 2026-07-28 — final design (Alvin) is a FABRICATED flanged penetration box (below): the 4 weatherproof
+    # exterior interfaces (MC4/inlet/outlet/E-stop) surface-mount + seal to its front face and are exposed
+    # (all IP65-67), the box opens to the container interior for wiring, and its flange seals to the ribbed
+    # wall with flashing + silicone. No IP enclosure needed (components are already weatherproof); the
+    # non-weatherproof gear (Blue Sea disconnect + terminals) lives on the EP backboard's IP65 area instead.
+    Part("power-panel-box", "Fabricated flanged wall-penetration box (front face + flange)", "steel-structural",
+         "electrical", 1, "lot", 60, 100, "Local fab",
+         spec="Sheet-metal flanged box spanning the corrugations: front face (exterior) cut for the 4 weatherproof interfaces — 3× MC4 bulkhead pairs, shore NEMA inlet, cooler outlet (1-gang), 22mm E-stop — each surface-mounted + gasket-sealed; shallow surround; exterior flange; OPEN to the container interior for wiring. Front face + gasketed opaque components + flashed flange = light-tight (pinhole camera). Local fab (cut/brake/weld + cutouts)."),
+    Part("power-panel-flashing", "Ribbed-wall flashing + silicone (power-panel box seal)", "seals-gaskets",
+         "electrical", 1, "lot", 15, 30, "Hardware store",
+         spec="Formed flashing to bridge the corrugation crests around the box flange + UV/weather silicone bead — seals the exterior box-to-wall interface WATER-tight AND LIGHT-tight (any perimeter gap = light into the container). Applied over the ribbed wall the box flange can't seat flat against."),
     Part("bolt-m6x20", "M6×1.0 × 20 hex bolt, Grade 8.8 zinc", "fasteners-hardware",
          "electrical", 4, "ea", 17.86 / 100, 17.86 / 100, "McMaster-Carr", part_no="91280A330", url="https://www.mcmaster.com/91280A330/", spec="Power-panel bolt: face plate 3mm + gasket 3mm into the welded raised frame's M6 weld-nut (~12mm grip → M6×20). $17.86/pack of 100. ⚠ VALIDATE: 91280A330 is zinc but the panel face is exterior (weather-facing) — a 316-SS M6×20 resists corrosion better."),
     Part("nut-m6-plain", "M6×1.0 hex nut, plain SS", "fasteners-hardware",

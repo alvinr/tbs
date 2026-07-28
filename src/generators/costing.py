@@ -322,7 +322,7 @@ VENTILATION = [
 # §5b ventilation items, so we own the two authoritative subtotals rather than re-entering it.
 POWER = [
     LineItem("Solar & battery (3× 200W panels, MPPT 100/50, 1× 100Ah LiFePO4, shore charger, 3× tilt mounts, PV cabling, PV disconnect, panel)", 1310, 1310, 1310, "2026-07-23: fully firmed. 2026-07-26: shore charger Victron BPC121531104R re-sourced Powerwerx $175.95 → Inverter Service Center $152.15 (−$24)"),
-    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop + ext weatherproof box, charge/shore fuses, protection, conduit, LED, master pump switch, external power-panel IP enclosure + wall gland)", 1928, 1932, 1936, "2026-07-23: fuse block/MRBF/disconnect/ground-rod firmed. 2026-07-25: 2× E-stop → uxcell $12.74 + ext weatherproof box (IP65) −$56. 2026-07-26: ML-RBS contactor re-sourced Powerwerx $348.59 → Inverter Supply $263.84 (−$85). 2026-07-27: pull-cord switch sourced americandoorsupply NEMA-4 $121.99 ×2 +$228. 2026-07-27: EP backboard → 18mm SANDEPLY Sande 4×8 $68.98 (full sheet fits the ~700×2000 backboard, +$4 2026-07-28: external power panel → IP-rated McMaster enclosure 7335K231+plate+hw $291.91, retired the flush Al plate+gasket (+$253/+$232)"),
+    LineItem("Distribution & wiring (plywood backboard + IP65 enclosure, fuse block, disconnect, contactor, 2× E-stop + ext weatherproof box, charge/shore fuses, protection, conduit, LED, master pump switch, external power-panel IP enclosure + wall gland)", 1699, 1727, 1754, "2026-07-23: fuse block/MRBF/disconnect/ground-rod firmed. 2026-07-25: 2× E-stop → uxcell $12.74 + ext weatherproof box (IP65) −$56. 2026-07-26: ML-RBS contactor re-sourced Powerwerx $348.59 → Inverter Supply $263.84 (−$85). 2026-07-27: pull-cord switch sourced americandoorsupply NEMA-4 $121.99 ×2 +$228. 2026-07-27: EP backboard → 18mm SANDEPLY Sande 4×8 $68.98 (full sheet fits the ~700×2000 backboard, +$4 2026-07-28: external power panel → IP-rated McMaster enclosure 7335K231+plate+hw $291.91, retired the flush Al plate+gasket (+$253/+$232)"),
 ]
 
 
@@ -653,7 +653,7 @@ SECTIONS = [
     Section("3",  "Optics — pinhole plate", *total(OPTICS)),
     Section("4",  "Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)", *total(FILM)),
     Section("5",  "Processing water system (incl. tray, spray bar, IBC stacking frame)", *total(WATER)),
-    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 3238, 3242, 3246),  # KEEP IN SYNC WITH EXPECTED["power"] / total(POWER) — grand_total() sums this Section, not the POWER line items
+    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 3009, 3037, 3064),  # KEEP IN SYNC WITH EXPECTED["power"] / total(POWER) — grand_total() sums this Section, not the POWER line items
     Section("5b", "Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)",
             total(VENTILATION)[0], total(VENTILATION)[0] + 60, total(VENTILATION)[0] + 150),
     Section("6",  "Housed revolving-door light lock (plastic-skin custom fabrication)", *total(LIGHTLOCK)),
@@ -1019,7 +1019,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 951,  "total": 1250, "per_print": 25},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "standard": {"chem": 1414, "total": 1710, "per_print": 34},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "rich":     {"chem": 2802, "total": 3100, "per_print": 62},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
-    "grand_total": (28763, 33335, 39960),  # 2026-07-28: MC4 bulkheads → Powerwerx passthrough $2.99/pair (−$16). Earlier: cooler AC outlet, PV disconnect Blue Sea 6006, ext power-panel IP enclosure.
+    "grand_total": (28534, 33130, 39778),  # 2026-07-28: external power panel → fabricated penetration box + flashing (McMaster IP enclosure retired, −$229 low). Earlier: MC4 bulkheads, cooler outlet, PV disconnect, spray 90° jets.
     "walkway": (1979, 2395, 2825),  # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
     "water": (6625, 7278, 7930),  # 2026-07-28: spray nozzles → 90° down-jets, pitch 150→100mm (26→39, 4× DIG 110B 10-packs); carbon Aquaboon; SV taps 36903; nitrile firm; tray shims $295.96.
     "container": (2300, 3300, 4300),
@@ -1031,7 +1031,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "optics": (100, 155, 215),         # 2026-07-23: pinhole → Lenox SS-3/8-DISC $40-100 (config, RFQ)
     "film": (6173, 6440, 6711),  # 2026-07-27: blackout poly → Film-Gard 10ft 4-mil $40.12 (was 6-mil $66–70, −$26/−$30); Gorilla tape firm $9.94 ×6; saddle M8 thumbscrews ×12 McMaster $11.80. (2026-07-22: clamp → off-the-shelf nylon spring clamps + HDPE filler.)
     "ventilation": (787, 787, 787),   # 2026-07-27: canopy 1" EMT firm ($206 — conduit $21.86×6, couplings $1.45×8, flange 4-pack $16.29, Halex 94510 elbows $11.85×4); evap cooler MC18MT $109; duct collar+clamp $16.23.
-    "power": (3238, 3242, 3246),   # 2026-07-28: MC4 bulkheads firm — Powerwerx passthrough $2.99/pair ×3 (was $8.33, −$16). Cooler AC outlet added; PV disconnect Blue Sea 6006; external power panel → McMaster IP enclosure. §5a authoritative subtotal
+    "power": (3009, 3037, 3064),   # 2026-07-28: external power panel FINAL — fabricated flanged wall-penetration box + flashing (weatherproof components exposed on the face, wired from inside), disconnect relocated to the EP. McMaster IP enclosure + wall gland retired (−$229/−$182). §5a authoritative subtotal
 }
 
 

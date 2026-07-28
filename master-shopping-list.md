@@ -14,18 +14,18 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,173 | $6,711 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,383 | $7,950 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,407 | $7,923 |
 | 6. Electrical — power, circuits, wiring | $2,993 | $3,029 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,979 | $2,825 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,816 | $2,022 |
-| 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $222 | $247 |
+| 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $223 | $235 |
 | 8. Cooling & ventilation | $787 | $937 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$28,225** | **~$36,835** |
+| **TOTAL (base build + 50-print run)** | **~$28,250** | **~$36,796** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -239,7 +239,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Ratchet straps, 25mm](https://www.homedepot.com/p/312994495) (FH0829) | 1 4-pack | Home Depot | ventilation | $10 |
 | Cushioned pipe clip | 16 ea | Amazon | water | $16–$32 |
 | Folding shelf stays/brackets | 2 ea | Amazon | shelf | $24 |
-| [Continuous (piano) hinge, 600 mm](https://wurthlac.com/product/165974/) (LSN8-32-600) | 1 ea | Wurth LAC | shelf | $23–$36 |
+| [Continuous (piano) hinge, 600 mm](https://wurthbaersupply.com/product/711558/1-1-4-WELD-ON-PIANO-HINGE-23-5-8-L-LSN8-32-600) (LSN8-32-600) | 1 ea | Wurth Baer Supply | shelf | $24 |
 | Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
 | Shurflo pump mounting bracket | 5 ea | Fresh Water Systems | water | $50 |
 | [Top + bottom wall stays + 4-bolt anchor plates](https://www.fastenersplus.com/products/5-8-x-6-jaw-eye-galvanized-turnbuckle) (JETBGV58X6) | 2 set | Fasteners Plus | swing | $90–$120 |
@@ -253,7 +253,7 @@ indicative low–high estimates — get quotes before ordering.
 | Nylon zip ties, 200mm | 6 ea | Amazon | spray | $1 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,543–$1,992** |
+| **fasteners-hardware subtotal** | | | | **$1,544–$1,980** |
 
 ### plastics-sheet
 
@@ -275,8 +275,8 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [1" bulkhead tank-body fittings (Blue equalization cross-tie)](https://www.usplastic.com/catalog/item.aspx?itemid=32194) (32194) | 2 ea | US Plastic Corp | water | $25 |
-| 1" NPT 4-way cross fitting | 1 ea | US Plastic Corp | water | $8–$14 |
 | [1" NPT spring check valve (CV1 — X1 gravity fill)](https://www.usplastic.com/catalog/item.aspx?itemid=31415) (31415) | 1 ea | US Plastic Corp | water | $24 |
+| [1" PVC 4-way cross fitting](https://www.homedepot.com/p/205749309) (F0014WT-WH-4) | 1 4-pack | Home Depot | water | $16 |
 | [1" PVC Sch-40 pipe](https://www.homedepot.com/p/100348473) (PVC040100600RS) | 2 stick | Home Depot | water | $17 |
 | [1" PVC Sch-40 slip 90° elbow](https://www.homedepot.com/p/203812125) (PVC023001000HD) | 4 ea | Home Depot | water | $6 |
 | [1" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812199) (PVC024001000HD) | 4 ea | Home Depot | water | $9 |
@@ -310,7 +310,7 @@ indicative low–high estimates — get quotes before ordering.
 | PVC slip×MNPT male adapters (run → threaded components) | 40 ea | Home Depot | water | $32–$46 |
 | [S60×6 female-buttress → 2" NPT + 2→1" bushing](https://us.cpp.parts/collections/fits-s60x6) (HMFN/20UD/027) | 8 ea | CPP.parts | water | $112–$144 |
 | [½" PVC Sch-40 pipe (tap relocation)](https://www.homedepot.com/p/319692959) (30-05010HD) | 1 stick | Home Depot | shelf | $5 |
-| **plumbing-fittings subtotal** | | | | **$1,621–$1,710** |
+| **plumbing-fittings subtotal** | | | | **$1,629–$1,712** |
 
 ### seals-gaskets
 
@@ -418,12 +418,12 @@ indicative low–high estimates — get quotes before ordering.
 | [Big Blue housing mounting brackets (×3)](https://www.freshwatersystems.com/products/mounting-bracket-white-single-housing-for-10-20-big-blue-housings) (150061) | 3 ea | Fresh Water Systems | water | $32 |
 | CTO carbon block cartridge 4.5"×20" | 2 ea | RonAqua | water | $32–$60 |
 | [IBC tote (1,000 L caged)](https://www.repackify.com/buy-ibc-totes/california) | 4 ea | SoCal reconditioner | water | $600 |
-| KDF-55 heavy-metal cartridge 4.5"×20" | 1 ea | FilterWay | water | $65–$95 |
-| MPP 5-micron sediment cartridge 4.5"×20" | 2 ea | Fresh Water Systems | water | $24–$40 |
+| [KDF-55 heavy-metal cartridge 4.5"×20"](https://www.amazon.com/dp/B0FH5BJ95T) (B0FH5BJ95T) | 1 ea | Amazon | water | $44 |
+| [MPP 5-micron sediment cartridge 4.5"×20"](https://www.amazon.com/dp/B0CJCVZ1L5) (B0CJCVZ1L5) | 2 ea | Amazon | water | $62 |
 | Plywood offcut spacer blocks 25mm (filter skid) | 1 lot | offcuts | water | $0 |
 | [SeaFlo accumulator (0.75 L)](https://www.amazon.com/dp/B01MUYL8F8) (SFAT-075-125-01) | 1 ea | Amazon | water | $36 |
 | [Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 filter loop / P-03 waste evac / P-04 tray drain / P-05 Brown drain)](https://www.amazon.com/dp/B00C1M6B1C) (B00C1M6B1C) | 5 ea | Amazon | water | $500 |
-| **water-equipment subtotal** | | | | **$1,538–$1,612** |
+| **water-equipment subtotal** | | | | **$1,555–$1,583** |
 
 ## Supplier consolidation (largest orders first)
 
@@ -433,13 +433,13 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,140–$3,492 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,877–$2,451 |
-| Amazon | 30 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, tools-safety, water-equipment | $1,724–$1,837 |
+| Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, tools-safety, water-equipment | $1,829–$1,943 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
-| Home Depot | 42 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,361–$1,497 |
+| Home Depot | 43 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,377–$1,513 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,000–$1,420 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
-| US Plastic Corp | 16 | plastics-sheet, plumbing-fittings | $1,073–$1,185 |
+| US Plastic Corp | 15 | plastics-sheet, plumbing-fittings | $1,065–$1,171 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | American Grating | 1 | plastics-sheet | $830–$1,050 |
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |
@@ -460,14 +460,13 @@ indicative low–high estimates — get quotes before ordering.
 | Inverter Service Center | 1 | electrical-power | $152 |
 | CPP.parts | 1 | plumbing-fittings | $112–$144 |
 | Fasteners Plus | 2 | fasteners-hardware | $106–$136 |
-| Fresh Water Systems | 3 | fasteners-hardware, water-equipment | $106–$122 |
 | McNichols | 2 | fasteners-hardware, plastics-sheet | $80–$115 |
 | DripDepot | 8 | fasteners-hardware, plumbing-fittings | $91–$111 |
 | Southco | 1 | fasteners-hardware | $76–$104 |
 | Lenox Laser | 1 | stainless-sheet | $40–$100 |
-| FilterWay | 1 | water-equipment | $65–$95 |
 | B&H Photo | 1 | fabric-textile | $95 |
 | StrongAr Hardware | 1 | fasteners-hardware | $70–$90 |
+| Fresh Water Systems | 2 | fasteners-hardware, water-equipment | $82 |
 | Blue Sea | 3 | electrical-distribution | $76 |
 | Super Bright LEDs | 1 | electrical-distribution | $75 |
 | Frost King + Canal Rubber | 1 | seals-gaskets | $40–$75 |
@@ -484,9 +483,9 @@ indicative low–high estimates — get quotes before ordering.
 | Marine Fiberglass Direct | 1 | fasteners-hardware | $25–$45 |
 | Pres-Bond | 1 | seals-gaskets | $21–$42 |
 | AutomationDirect | 1 | electrical-power | $40 |
-| Wurth LAC | 1 | fasteners-hardware | $23–$36 |
 | Harfington | 2 | electrical-distribution | $25 |
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |
+| Wurth Baer Supply | 1 | fasteners-hardware | $24 |
 | Local machine shop | 1 | aluminum | $12–$18 |
 | FMW Fasteners | 1 | fasteners-hardware | $6–$12 |
 | Bridge Fasteners | 1 | fasteners-hardware | $7–$11 |

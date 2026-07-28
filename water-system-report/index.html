@@ -2933,7 +2933,7 @@ collection totes must also rise proportionally — they are sized at ~<!-- BEGIN
 so the hard ceiling on a single hauled load is the <strong>per-tote 1,000L volume</strong>, capping it at ~16 prints.</p>
 <p><strong>On-site top-up — extended deployment.</strong> A deployment can run past the ~16-print single-load ceiling
 using the external end-wall bulkhead ports — <em>no cargo-door access required</em>: <strong>resupply Blue</strong> from a
-water bowser or tanker through the <strong>X1</strong> gravity-fill inlet (tees to both Blue totes), and <strong>discharge
+water bowser or tanker through the <strong>X1</strong> gravity-fill inlet (a 4-way cross feeds both Blue totes), and <strong>discharge
 Brown/Waste</strong> through the <strong>X3 / X4</strong> drain ports to a holding tank or tanker. In this mode the tote
 volumes act as <strong>buffers, not hard caps</strong>, and print count is set by water <em>logistics</em> (bowser visits,
 disposal access) rather than tote volume. This is a distinct operating mode from the hauled single load:
@@ -2958,7 +2958,7 @@ IBC-2 (900L) ──┘                                                      │
 <li>ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off</li>
 <li>Low-level float switch on IBC-2 alerts operator when Blue supply is low</li>
 <li>Spray bar: gantry design — 40×25×3mm 304 SS RHS beam (laid flat, ~15mm pre-camber) spanning the open processing area (3,859mm) between walkway inner edges, with Ø32 wheel carriages rolling on the raised/sloped tray floor beneath walkway grating. A 3/4" LDPE manifold clipped to the beam side feeds 26 side-tapped flat-fan nozzles. See the <a href="../processing-tray-and-spray-bar/">Processing Tray &amp; Spray Bar</a> report for full mechanical design</li>
-<li>Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline — gravity feed, no pump required. Inside, an internal tee (near X1) splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom), filling them in parallel and gravity-linked — one external hose. Remote resupply from water bowser or tanker (no cargo door access required)</li>
+<li>Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline — gravity feed, no pump required. Inside, an internal 4-way cross (near X1) — where the DV-01 blue recycle also joins — splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom), filling them in parallel and gravity-linked — one external hose. Remote resupply from water bowser or tanker (no cargo door access required)</li>
 </ul>
 <h3 id="42-brown-system-used-water-recycling">4.2 Brown System — Used Water Recycling<a class="headerlink" href="#42-brown-system-used-water-recycling" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>Processing tray sump (P-04 suction pickup)
@@ -3157,7 +3157,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </thead>
 <tbody>
 <tr>
-<td>External fill line (X1 bulkhead → tee → both Blue totes)</td>
+<td>External fill line (X1 bulkhead → 4-way cross → both Blue totes)</td>
 <td>Sch 40</td>
 <td>1" nominal (OD 33mm)</td>
 <td>50 PSI min</td>
@@ -3171,9 +3171,9 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td>PVC</td>
 </tr>
 <tr>
-<td>X1 fill tee (splits to IBC-1 &amp; IBC-2)</td>
+<td>X1 fill 4-way cross (X1 in + IBC-1 + IBC-2 + DV-01 recycle)</td>
 <td>—</td>
-<td>1" PVC equal tee (Banjo TEE100)</td>
+<td>1" PVC cross (cross-100)</td>
 <td>50 PSI min</td>
 <td>PVC</td>
 </tr>
@@ -3391,7 +3391,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 </tbody>
 </table>
-<p>A single external fill port (X1) feeds an internal 1" tee in the corridor, which splits the flow to BOTH Blue IBCs (each branch <strong>side-enters</strong> the tote's corridor face near the top, 150mm + flange — no top-cap access, only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom). The two top totes fill in parallel, so only one external hose is needed — without a separate cross-connect pipe.</p>
+<p>A single external fill port (X1) feeds an internal 1" 4-way cross in the corridor — where the DV-01 blue recycle return also joins — which splits the flow to BOTH Blue IBCs (each branch <strong>side-enters</strong> the tote's corridor face near the top, 150mm + flange — no top-cap access, only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom). The two top totes fill in parallel, so only one external hose is needed — without a separate cross-connect pipe.</p>
 <p>This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC-4 to disposal tanker) without opening the cargo doors or entering the container. Internal plumbing from each port routes through the 270mm central corridor between the two IBC columns to reach the respective tote. All ports are accessible from the container exterior.</p>
 <hr />
 <h2 id="8-parts-list">8. Parts List<a class="headerlink" href="#8-parts-list" title="Permanent link">&para;</a></h2>
@@ -3605,10 +3605,10 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td><a href="https://www.homedepot.com/p/203812199">1" PVC Sch-40 slip tee</a> (PVC024001000HD)</td>
-<td>1" PVC slip run tees (joint convention §5.1): 3× IBC drain + 1× X1 fill split to both Blue totes. 2026-07-27 fork b — was threaded Banjo FRPP $14.19; consolidated tee-100 + tee-100-hdpe (×4). Charlotte PVC024001000HD S×S×S.</td>
-<td>4 ea</td>
+<td>1" PVC slip run tees (joint convention §5.1): 3× IBC drain. 2026-07-27: X1 fill split dropped — X1 is a 4-way cross (cross-100), not a tee (was qty 4). Charlotte PVC024001000HD S×S×S.</td>
+<td>3 ea</td>
 <td>Home Depot</td>
-<td>$9</td>
+<td>$6</td>
 </tr>
 <tr>
 <td>PVC slip×MNPT male adapters (run → threaded components)</td>
@@ -3783,7 +3783,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td></td>
 <td></td>
 <td></td>
-<td><strong>$3,538–$3,692</strong></td>
+<td><strong>$3,536–$3,690</strong></td>
 </tr>
 </tbody>
 </table>

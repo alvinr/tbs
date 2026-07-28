@@ -172,7 +172,7 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 |------|------|-----|----------|-----------|
 | [UV-coated white plywood (work surface)](https://www.homedepot.com/p/302874373) (BPI6WUV2I) | Swaner 18mm × 4'×8' UV-coated white hardwood ply (1220×2440mm), cut to 300×600. UV-coated face gives a sealed, wipeable work surface — substitute for the phenolic concrete-form sheet (same purpose, readily stocked). | 1 4'×8' 18mm sheet | Home Depot | $73 |
 | 25×25×3 mm steel SHS | 6 m (frame + spill lip) | 1 lot | Online Metals / Metal Supermarkets | $30 |
-| [Continuous (piano) hinge, 600 mm](https://wurthlac.com/product/165974/) (LSN8-32-600) | stainless/steel, ~32 mm leaf | 1 ea | Wurth LAC | $23–$36 |
+| [Continuous (piano) hinge, 600 mm](https://wurthbaersupply.com/product/711558/1-1-4-WELD-ON-PIANO-HINGE-23-5-8-L-LSN8-32-600) (LSN8-32-600) | Weld-on continuous piano hinge, 1-1/4" open width (32 mm) × 23-5/8" (600 mm) long, stainless/steel | 1 ea | Wurth Baer Supply | $24 |
 | Folding shelf stays/brackets | fold-flat, ~30–50 kg rating | 2 ea | Amazon / McMaster-Carr | $24 |
 | Wall mounting cleat + anchors | 6 mm steel cleat + 2 stay anchors (slotted) | 1 lot | Local fab | $18 |
 | Shelf mount backing plates, 8mm steel (welded, ×3) | Flat 8mm steel backing plates welded to the pinhole-wall interior crests — one behind the hinge cleat + one per stay anchor — giving flat, solid load anchors with M8 weld-nuts. | 3 ea | Local fab | $18–$30 |
@@ -184,7 +184,7 @@ shelf is only down while mixing. Folded up, the walkway is fully clear in both d
 | Corner gusset plate, 3 mm | 50×50 mm triangular | 4 ea | Steel offcut | $5 |
 | Flat black epoxy spray paint | frame + hardware finish | 1 can | Hardware store | $12 |
 | [½" PVC Sch-40 pipe (tap relocation)](https://www.homedepot.com/p/319692959) (30-05010HD) | Extend the blue supply trunk ~1.3 m left to TAP-01 (PVC Sch-40, per the joint convention). IPEX ½" × 10 ft — same stick as pvc-half; one covers the run. | 1 stick | Home Depot | $5 |
-| **Shelf total** | | | | **$222–$247** |
+| **Shelf total** | | | | **$223–$235** |
 <!-- END parts:shelf -->
 
 *The relocated TAP-01 + BV-06 hardware itself is unchanged (carried in the water-system

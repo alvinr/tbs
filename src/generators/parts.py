@@ -203,9 +203,9 @@ PARTS: list[Part] = [
     # 1" PVC stock (pvc-1in) + 1" slip elbows (elbow-el100) + slip×NPT adapters (pvc-transition-adapters);
     # keeping the bundled "lot" line double-counted the pipe/elbows/adapters.
     Part("cartridge-sediment", 'MPP 5-micron sediment cartridge 4.5"×20"', "water-equipment",
-         "water", 2, "ea", 12, 20, "Fresh Water Systems", spec="Melt-blown polypropylene depth filter (F-1 stage); ~50-print interval", panel="Pinhole Wall"),
+         "water", 2, "ea", 30.83, 30.83, "Amazon", part_no="B0CJCVZ1L5", url="https://www.amazon.com/dp/B0CJCVZ1L5", spec="Pentek DGD-5005-20 dual-gradient-density 5-micron sediment cartridge (F-1 stage); ~50-print interval. $61.66/2-pack = $30.83 ea.", panel="Pinhole Wall"),
     Part("cartridge-kdf", 'KDF-55 heavy-metal cartridge 4.5"×20"', "water-equipment",
-         "water", 1, "ea", 65, 95, "FilterWay", "Amazon", spec="KDF-55 media for dissolved iron/metal removal (F-2 stage); ~60-print interval", panel="Pinhole Wall"),
+         "water", 1, "ea", 43.90, 43.90, "Amazon", part_no="B0FH5BJ95T", url="https://www.amazon.com/dp/B0FH5BJ95T", spec="KDF-55 media for dissolved iron/metal removal (F-2 stage); ~60-print interval. ⚠ VEVOR 'universal' cartridge is listed for chlorine reduction — CONFIRM it actually contains KDF-55 media (heavy-metal/iron removal), not just carbon; the F-2 stage needs KDF-55.", panel="Pinhole Wall"),
     Part("cartridge-carbon", 'CTO carbon block cartridge 4.5"×20"', "water-equipment",
          "water", 2, "ea", 16, 30, "RonAqua", "Amazon", spec="Coconut shell activated carbon block (F-3 stage); ~40-print interval", panel="Pinhole Wall"),
     # — valves & fittings (333–567) —
@@ -237,8 +237,8 @@ PARTS: list[Part] = [
          "water", 4, "ea", 2.13, 2.13, "Home Depot", part_no="PVC024001000HD", url="https://www.homedepot.com/p/203812199", spec='1" PVC slip run tees (joint convention §5.1): 3× IBC drain + 1× X1 fill split to both Blue totes. 2026-07-27 fork b — was threaded Banjo FRPP $14.19; consolidated tee-100 + tee-100-hdpe (×4). Charlotte PVC024001000HD S×S×S.'),
     Part("pvc-transition-adapters", "PVC slip×MNPT male adapters (run → threaded components)", "plumbing-fittings",
          "water", 40, "ea", 0.79, 1.16, "Home Depot", spec='Joint convention §5.1 (fork c): one slip×NPT male adapter where the glued PVC run lands on each threaded component — ball/diverter/check valves, filter housing ports, tank bulkheads, sample taps, accumulator. ½" = Charlotte PVC021090600HD $0.79, 1" = PVC021091000HD $1.16 (unit prices firm; low/high spans the ½"–1" mix). ~40 est; exact count/size split from the schematic trace.'),
-    Part("cross-100", '1" NPT 4-way cross fitting', "plumbing-fittings",
-         "water", 1, "ea", 8, 14, "US Plastic Corp", spec="X1 fresh-fill 4-way: X1 inlet + IBC-1 + IBC-2 + DV-01 blue recycle return (was a 3-way tee). Cost est. 2026-07-27: NOT stocked at US Plastic (they don't carry 1\" 4-way crosses) — source a Spears/PVC Sch-80 1\" cross via an irrigation/PVC supplier, or redesign the X1 fill as 2× tees."),
+    Part("cross-100", '1" PVC 4-way cross fitting', "plumbing-fittings",
+         "water", 1, "4-pack", 15.99, 15.99, "Home Depot", part_no="F0014WT-WH-4", url="https://www.homedepot.com/p/205749309", spec="X1 fresh-fill 4-way: X1 inlet + IBC-1 + IBC-2 + DV-01 blue recycle return. Formufit furniture-grade PVC 4-way tee, 4-pack (need 1, 3 spare). ⚠ FURNITURE-GRADE = slip + NOT pressure-rated — fine here since X1 is a gravity/low-pressure fill, solvent-welded; if this junction ever sees pump pressure, swap to a Sch-40/80 cross."),
     # Joint convention §5.1 — Option C hybrid (Alvin 2026-07-27): permanent slip couplings on the run,
     # true unions only where a whole sub-assembly pulls as a unit (per-component service is already
     # covered by the threaded ports on pumps/filters/valves).
@@ -781,7 +781,7 @@ PARTS: list[Part] = [
     Part("shelf-steel-shs", "25×25×3 mm steel SHS", "steel-structural",
          "shelf", 1, "lot", 30, 30, "Online Metals", "Metal Supermarkets", spec="6 m (frame + spill lip)"),
     Part("shelf-piano-hinge", "Continuous (piano) hinge, 600 mm", "fasteners-hardware",
-         "shelf", 1, "ea", 22.68, 35.72, "Wurth LAC", spec="stainless/steel, ~32 mm leaf", part_no="LSN8-32-600", url="https://wurthlac.com/product/165974/"),
+         "shelf", 1, "ea", 23.56, 23.56, "Wurth Baer Supply", spec="Weld-on continuous piano hinge, 1-1/4\" open width (32 mm) × 23-5/8\" (600 mm) long, stainless/steel", dims="32mm open × 600mm", part_no="LSN8-32-600", url="https://wurthbaersupply.com/product/711558/1-1-4-WELD-ON-PIANO-HINGE-23-5-8-L-LSN8-32-600"),
     Part("shelf-folding-stays", "Folding shelf stays/brackets", "fasteners-hardware",
          "shelf", 2, "ea", 12, 12, "Amazon", "McMaster-Carr", spec="fold-flat, ~30–50 kg rating"),
     Part("shelf-wall-cleat", "Wall mounting cleat + anchors", "steel-structural",

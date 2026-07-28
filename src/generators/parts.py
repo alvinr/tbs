@@ -490,10 +490,8 @@ PARTS: list[Part] = [
          "electrical", 1, "ea", 12.74, 12.74, "Harfington", part_no="a19061100ux1510", url="https://www.harfington.com/products/p-1071142",
          spec="uxcell a19061100ux1510 red mushroom E-stop switch, $12.74 (Harfington, firm 2026-07-25). Switch element ONLY — mounted in the weatherproof control-station box below (estop-external-enclosure).",
          note="Alvin 2026-07-25: 'just the switch' — houses in the estop-external-enclosure control station box."),
-    Part("estop-external-enclosure", "Weatherproof control-station box, 22mm 1-hole", "electrical-distribution",
-         "electrical", 1, "ea", 8, 13, "Amazon", "Harfington", part_no="B07GN5P3NF",
-         url="https://www.amazon.com/uxcell-Button-Control-Station-Waterproof/dp/B07GN5P3NF",
-         spec="uxcell 22mm 1-button-hole waterproof surface-mount control-station box, 78×71×64mm plastic — houses the external E-stop switch (a19061100ux1510) on the container exterior. Rated IP65 (dust-tight + water-jet); ample for rain exposure. Upgrade to a gasketed IP66 box only if a washdown rating is required. Price to confirm at order (~$8–13)."),
+    # estop-external-enclosure RETIRED 2026-07-28 — the exterior E-stop is now a 22mm button mounted directly
+    # on the ep-ext-enclosure door, so its own separate control-station box is redundant.
     Part("estop-internal", "Interior emergency cut-off — red mushroom switch (paralleled to exterior)",
          "electrical-distribution", "electrical", 1, "ea", 12.74, 12.74, "Harfington", part_no="a19061100ux1510", url="https://www.harfington.com/products/p-1071142",
          spec="uxcell a19061100ux1510 red mushroom E-stop switch, $12.74 (Harfington, firm 2026-07-25). Switch only — interior panel-mounted.",

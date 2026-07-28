@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,173 | $6,711 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,625 | $7,930 |
-| 6. Electrical — power, circuits, wiring | $3,243 | $3,256 |
+| 6. Electrical — power, circuits, wiring | $3,235 | $3,243 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,979 | $2,825 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$28,718** | **~$37,030** |
+| **TOTAL (base build + 50-print run)** | **~$28,710** | **~$37,017** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -162,9 +162,8 @@ indicative low–high estimates — get quotes before ordering.
 | Sealed wet-zone connectors — Deutsch DT / adhesive heat-shrink | 1 lot | Waytek Wire | electrical | $25 |
 | Shore-charger output fuse — 20A inline | 1 ea | Waytek Wire | electrical | $5 |
 | Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs) | 1 lot | Waytek Wire | electrical | $30 |
-| [Weatherproof control-station box, 22mm 1-hole](https://www.amazon.com/uxcell-Button-Control-Station-Waterproof/dp/B07GN5P3NF) (B07GN5P3NF) | 1 ea | Amazon | electrical | $8–$13 |
 | Wiring kit — 12/14/16/18 AWG tinned, 50ft/color | 1 kit | Waytek Wire | electrical | $80 |
-| **electrical-distribution subtotal** | | | | **$1,932–$1,945** |
+| **electrical-distribution subtotal** | | | | **$1,924–$1,932** |
 
 ### electrical-power
 
@@ -433,7 +432,7 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 19 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,125–$3,467 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,877–$2,451 |
-| Amazon | 34 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,945–$2,024 |
+| Amazon | 33 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,937–$2,011 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Home Depot | 45 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,449–$1,570 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |

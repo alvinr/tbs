@@ -57,6 +57,12 @@ bucketed by WHEN it can be acted on:_
   150→100mm (26→39 jets) for edge-to-edge coverage of the 90° footprint. Cascaded: constant, 2D spray-bar diagram,
   report §3.2/§3.9, part (4× 10-packs). **Residual: re-send + save the 3 .skp that draw the bar — spraybar,
   overview, construction (.rb regenerated; ALVIN re-sends + uploads).**
+- [ ] **External power panel: flush-plate → IP-rated enclosure (design cascade).** Procurement done 2026-07-28
+  (`ep-ext-enclosure` McMaster 7335K231+plate+hw $291.91; `power-panel-plate`+`power-panel-gasket` retired). Still
+  describes the OLD flush-plate design: **electrical-report §5.4**, **electrical-sheet6** detail diagram, the **3D
+  electrical + overview models** (power-panel geometry), and the **`PWR_PANEL_CUTOUT_W/H` constants** (280×180). Rewrite
+  to the enclosure-box approach — and resolve: does `power-panel-frame` stay as the box's wall mount, and does the
+  280×180 cutout change (connectors on the box vs protruding through a wall cutout)?
 - [ ] **panel-corner-plates — design flag (huge cores).** Each 3mm 5052 Al corner core is 653×2388mm (~16.8 ft², ~half a sheet); the 4 don't nest → 2 full sheets = $586 + weight. Decide full solid plate vs a lighter frame/partial before buying.
 - [ ] **Aug 2026 full re-price.** Sweep every `parts.py` line against current listings (reminder atop the file); edit band → `--inject` cascades.
 - [ ] **Master-BOM SKU backfill.** Branded rows that don't yet carry a registry `part_no` — Alvin's supplier paste-check; each SKU auto-appears in the master on the next `--inject`.

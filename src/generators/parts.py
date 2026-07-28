@@ -454,10 +454,13 @@ PARTS: list[Part] = [
     Part("pv-array-disconnect", "PV array disconnect — DC load-break isolator, 50A/150VDC (NEC 690.13)",
          "electrical-power", "electrical", 1, "ea", 40, 40, "AutomationDirect", "Amazon",
          url="https://www.automationdirect.com/"),
-    Part("power-panel-plate", "Aluminum face plate 340×240×3mm (flush power panel)", "aluminum",
-         "electrical", 1, "ea", 18, 18, "Online Metals", url="https://www.onlinemetals.com"),
-    Part("power-panel-gasket", "Neoprene gasket 340×240×3mm (panel weatherseal)", "seals-gaskets",
-         "electrical", 1, "ea", 21, 42, "Pres-Bond", part_no="NE4112-12X12-XFV", url="https://presbond.com/products/2c1-closed-cell-neoprene-foam-sheet-12-x-12-acrylic-adhesive"),
+    # power-panel-plate + power-panel-gasket RETIRED 2026-07-28 — the external power panel is now a proper
+    # IP-rated McMaster enclosure (ep-ext-enclosure) with its own sealed lid + gasket, superseding the
+    # flush aluminum face plate + neoprene gasket. See ep-ext-enclosure.
+    Part("ep-ext-enclosure", "External power-panel IP-rated enclosure (box + mounting plate + hardware)", "electrical-distribution",
+         "electrical", 1, "set", 291.91, 291.91, "McMaster-Carr", part_no="7335K231", url="https://www.mcmaster.com/7335K231/",
+         spec="Portrait IP-rated enclosure housing the external power-panel components (3× MC4 bulkhead pairs, shore NEMA inlet, GFCI cooler outlet, exterior E-stop, PV disconnect). McMaster 7335K231 enclosure $251.82 + 7335K43 mounting plate $24.34 + 7335K1 mounting hardware $15.75 = $291.91. Confirm the internal fits the ~280×180 component layout + the PV-disconnect depth. Supersedes the flush aluminum plate + gasket."),
+    # power-panel-gasket RETIRED 2026-07-28 — superseded by the ep-ext-enclosure's integral lid gasket.
     Part("power-panel-frame", "Power-panel raised mounting frame, 8mm steel (welded)", "steel-structural",
          "electrical", 1, "ea", 15, 25, "Local fab", spec="Flat 8mm steel frame (~340×240 outer, 280×180 opening) welded onto the pinhole-wall corrugation crests around the cutout — a flat, sealable surface for the face plate + gasket, with 4× M6 weld-nuts. Sits a few mm proud (raised, not flush)."),
     Part("bolt-m6x20", "M6×1.0 × 20 hex bolt, Grade 8.8 zinc", "fasteners-hardware",

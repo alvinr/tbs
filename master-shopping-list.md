@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,173 | $6,711 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,625 | $7,930 |
-| 6. Electrical — power, circuits, wiring | $2,993 | $3,029 |
+| 6. Electrical — power, circuits, wiring | $3,246 | $3,261 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,979 | $2,825 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$28,468** | **~$36,803** |
+| **TOTAL (base build + 50-print run)** | **~$28,721** | **~$37,035** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -71,12 +71,11 @@ indicative low–high estimates — get quotes before ordering.
 | 6061-T6 AL plate 3/16" (5mm) | 1 ea | Online Metals | spray | $16–$28 |
 | [6061-T6 AL round tube 25mm OD × 2mm wall, 8 ft](https://www.mcmaster.com/9056K36-9056K122/) (9056K36) | 1 ea | McMaster-Carr | spray | $64 |
 | [Aluminum angle 2"×2"×3/16" (6061-T6, plain) — 16 ft lengths](https://www.mcmaster.com/8982K509-8982K479/) | 3 16 ft length | Metal Supermarkets | film | $625 |
-| [Aluminum face plate 340×240×3mm (flush power panel)](https://www.onlinemetals.com) | 1 ea | Online Metals | electrical | $18 |
 | Aluminum U-channel, 1/8-panel (per meter) | 40 m | Online Metals | panel | $120–$200 |
 | Arm-to-stud adapter, turned 6061-T6 AL (anodized) | 1 ea | Local machine shop | spray | $12–$18 |
 | Disc retaining ring (Al 6061-T6, M52×0.75) | 1 ea | Local fab | optics | $15–$25 |
 | Telescoping aluminum pool pole, 4–8 ft | 1 ea | Amazon | spray | $15 |
-| **aluminum subtotal** | | | | **$1,472–$1,580** |
+| **aluminum subtotal** | | | | **$1,454–$1,562** |
 
 ### bearings-motion
 
@@ -148,6 +147,7 @@ indicative low–high estimates — get quotes before ordering.
 | Deutsch DT 2-pin connectors, IP67 (exterior penetrations) | 10 set | Waytek Wire | electrical | $30 |
 | Equipotential bonding kit — 6 AWG + ring lugs | 1 ea | Waytek Wire | electrical | $20 |
 | [External emergency cut-off — red mushroom switch](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
+| [External power-panel IP-rated enclosure (box + mounting plate + hardware)](https://www.mcmaster.com/7335K231/) (7335K231) | 1 set | McMaster-Carr | electrical | $292 |
 | [Interior emergency cut-off — red mushroom switch (paralleled to exterior)](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
 | IP65 enclosure ~200×220×140mm (fuse block + busbars, on the plywood) | 1 ea | Polycase | electrical | $60 |
 | [Master pump switch (Circuit C) — IP67 sealed rocker/disconnect 12V 16A](https://www.amazon.com/dp/B0GF2ZBD1W) (B0GF2ZBD1W) | 1 ea | Amazon | electrical | $8 |
@@ -163,7 +163,7 @@ indicative low–high estimates — get quotes before ordering.
 | Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs) | 1 lot | Waytek Wire | electrical | $30 |
 | [Weatherproof control-station box, 22mm 1-hole](https://www.amazon.com/uxcell-Button-Control-Station-Waterproof/dp/B07GN5P3NF) (B07GN5P3NF) | 1 ea | Amazon | electrical | $8–$13 |
 | Wiring kit — 12/14/16/18 AWG tinned, 50ft/color | 1 kit | Waytek Wire | electrical | $80 |
-| **electrical-distribution subtotal** | | | | **$1,629–$1,634** |
+| **electrical-distribution subtotal** | | | | **$1,920–$1,925** |
 
 ### electrical-power
 
@@ -321,11 +321,10 @@ indicative low–high estimates — get quotes before ordering.
 | [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8694K88/) (8694K88) | 2 roll | McMaster-Carr | film | $45 |
 | [Felt/brush wiper strip + 12mm closed-cell neoprene](https://www.doitbest.com/product/146005/) (BP17A) | 1 lot | Frost King + Canal Rubber | lightlock | $40–$75 |
 | Light-sealing materials (interior conversion) | 1 lot | Amazon (bundle) | interior | $157–$178 |
-| [Neoprene gasket 340×240×3mm (panel weatherseal)](https://presbond.com/products/2c1-closed-cell-neoprene-foam-sheet-12-x-12-acrylic-adhesive) (NE4112-12X12-XFV) | 1 ea | Pres-Bond | electrical | $21–$42 |
 | [Ruland UBOOT12/19-NI-KIT nitrile boot](https://www.ruland.com/uboot12-19-ni-kit.html) (UBOOT12/19-NI-KIT) | 4 ea | Ruland | film | $122 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | 1 ea | CountryMax (Aqueon) | tray | $17–$25 |
 | [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | 1 lot | McMaster-Carr | door | $129 |
-| **seals-gaskets subtotal** | | | | **$555–$668** |
+| **seals-gaskets subtotal** | | | | **$534–$626** |
 
 ### stainless-sheet
 
@@ -430,15 +429,15 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 46 | aluminum, bearings-motion, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $3,825–$3,909 |
+| McMaster-Carr | 47 | aluminum, bearings-motion, electrical-distribution, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $4,117–$4,201 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,140–$3,492 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,877–$2,451 |
 | Amazon | 33 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,933–$2,004 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Home Depot | 45 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,449–$1,570 |
-| Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,000–$1,420 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
+| Online Metals | 5 | aluminum, stainless-sheet, steel-structural | $982–$1,402 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
 | US Plastic Corp | 15 | plastics-sheet, plumbing-fittings | $1,170 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
@@ -481,7 +480,6 @@ indicative low–high estimates — get quotes before ordering.
 | Digi-Key | 1 | ducting-ventilation | $50 |
 | Steel service center | 1 | steel-structural | $30–$50 |
 | Marine Fiberglass Direct | 1 | fasteners-hardware | $25–$45 |
-| Pres-Bond | 1 | seals-gaskets | $21–$42 |
 | AutomationDirect | 1 | electrical-power | $40 |
 | Harfington | 2 | electrical-distribution | $25 |
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |

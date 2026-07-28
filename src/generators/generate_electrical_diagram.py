@@ -1891,21 +1891,28 @@ def draw_sheet6():
     # box is OPEN across the opening (cut_bot..cut_top) toward the interior
 
     # ── Face-mounted components: mate face OUT (exterior), body/wire INTO the box ──
-    def face_conn(cy, hh, body_fc, body_ec, lead_col, lead_ls="-"):
+    # cover=True adds the translucent weatherproof cover cap in profile (the
+    # covered-device family: NEMA inlet + WR duplex), matching VIEW A.
+    def face_conn(cy, hh, body_fc, body_ec, lead_col, lead_ls="-", cover=False):
         draw_rect(ax_b, face_x0 - conn_out, cy - hh / 2, conn_out, hh,
                   fc=body_fc, color=body_ec, lw=1.0, zorder=5)
         draw_rect(ax_b, face_x1, cy - hh * 0.42, conn_in, hh * 0.84,
                   fc=body_fc, color=body_ec, lw=0.8, zorder=4.5)
+        if cover:      # weatherproof cover cap over the protruding mate face
+            ax_b.add_patch(mpatches.FancyBboxPatch(
+                (face_x0 - conn_out - 9, cy - hh * 0.72), 12, hh * 1.44,
+                boxstyle="round,pad=1,rounding_size=4", fc="#EAF4FF", ec="#5A7A9A",
+                lw=1.2, alpha=0.6, zorder=5.6))
         ax_b.plot([face_x1 + conn_in, wall_int + int_pad - 42], [cy, cy],
                   color=lead_col, lw=1.6, ls=lead_ls, zorder=5)
 
     q = cut_h_draw / 4
-    mc4_cy   = cut_bot + q * 1        # MC4 group (bottom) -> MPPT
+    mc4_cy   = cut_bot + q * 1        # MC4 group (bottom) -> MPPT (uncovered bulkhead)
     face_conn(mc4_cy, 9 * mm_v, "#C0E8C0", C_MC4, C_MC4)
-    inlet_cy = cut_bot + q * 2        # shore inlet -> charger
-    face_conn(inlet_cy, 11 * mm_v, C_NEMA, C_AC, C_AC)
-    outlet_cy = cut_bot + q * 3       # cooler AC outlet <- inverter (CCT E)
-    face_conn(outlet_cy, 11 * mm_v, C_NEMA, C_AC, C_AC, lead_ls="--")
+    inlet_cy = cut_bot + q * 2        # shore inlet -> charger (weatherproof cover)
+    face_conn(inlet_cy, 11 * mm_v, C_NEMA, C_AC, C_AC, cover=True)
+    outlet_cy = cut_bot + q * 3       # cooler AC outlet <- inverter (CCT E, in-use cover)
+    face_conn(outlet_cy, 11 * mm_v, C_NEMA, C_AC, C_AC, lead_ls="--", cover=True)
 
     # E-stop on the face — red stub + dome protruding out, contact block into the box
     es_cy = cut_bot + q * 0.45

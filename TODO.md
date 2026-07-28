@@ -62,10 +62,14 @@ bucketed by WHEN it can be acted on:_
   (3× MC4 bulkheads Powerwerx, shore inlet, cooler outlet W5320-T0W + 5981-UCL, 22mm E-stop) surface-mount + seal to its
   front face and are exposed; box opens to the interior for wiring; flange sealed to the ribbed wall with **flashing +
   silicone** (`power-panel-flashing`), light- + water-tight. Blue Sea 6006 disconnect relocated to the **EP backboard**.
-  (Superseded ideas: original flush plate; a McMaster IP enclosure — both retired.) REMAINING = redraw the geometry:
-  **`PWR_PANEL_CUTOUT_W/H` constants** (280×180 → the box's face-cut set), **electrical-sheet6** detail (draw the
-  penetration box + face-mounted components, not the flush plate), the assembly-fab / floorplan / pinhole-wall-elevation
-  diagrams that show the 280×180 cutout, and the **3D electrical + overview + construction models** → re-send. Focused block.
+  (Superseded ideas: original flush plate; a McMaster IP enclosure — both retired.) GEOMETRY REDRAW (2026-07-28):
+  DONE — **electrical-sheet6** VIEW A drawn with component-accurate glyphs (`component_glyphs.py`: MC4 bulkhead, NEMA
+  weatherproof inlet, W5320 WR duplex under 5981-UCL cover, 22mm E-stop) + VIEW B section shows the penetration box with
+  cover caps in profile; **3D `external_panel()`** (shared by electrical/overview/construction) rebuilt flush plate → flange
+  front face + open shroud, WR duplex + covers, new consts `PWR_PANEL_BOX_D`/`PWR_PANEL_SHROUD_T`; **electrical.skp sent +
+  verified**; assembly-fab / floorplan / pinhole-wall-elevation flush-mount wording → penetration box.
+  REMAINING — **overview.skp + construction.skp**: Alvin open each → I `--send` + verify → he saves + uploads → commit `.skp`
+  (electrical.skp also awaiting Alvin save+upload). Then push + publish the local stack.
 - [ ] **panel-corner-plates — design flag (huge cores).** Each 3mm 5052 Al corner core is 653×2388mm (~16.8 ft², ~half a sheet); the 4 don't nest → 2 full sheets = $586 + weight. Decide full solid plate vs a lighter frame/partial before buying.
 - [ ] **Aug 2026 full re-price.** Sweep every `parts.py` line against current listings (reminder atop the file); edit band → `--inject` cascades.
 - [ ] **Master-BOM SKU backfill.** Branded rows that don't yet carry a registry `part_no` — Alvin's supplier paste-check; each SKU auto-appears in the master on the next `--inject`.

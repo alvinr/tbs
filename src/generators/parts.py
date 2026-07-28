@@ -205,7 +205,7 @@ PARTS: list[Part] = [
     Part("cartridge-sediment", 'MPP 5-micron sediment cartridge 4.5"×20"', "water-equipment",
          "water", 2, "ea", 30.83, 30.83, "Amazon", part_no="B0CJCVZ1L5", url="https://www.amazon.com/dp/B0CJCVZ1L5", spec="Pentek DGD-5005-20 dual-gradient-density 5-micron sediment cartridge (F-1 stage); ~50-print interval. $61.66/2-pack = $30.83 ea.", panel="Pinhole Wall"),
     Part("cartridge-kdf", 'KDF-55 heavy-metal cartridge 4.5"×20"', "water-equipment",
-         "water", 1, "ea", 43.90, 43.90, "Amazon", part_no="B0FH5BJ95T", url="https://www.amazon.com/dp/B0FH5BJ95T", spec="KDF-55 media for dissolved iron/metal removal (F-2 stage); ~60-print interval. ⚠ VEVOR 'universal' cartridge is listed for chlorine reduction — CONFIRM it actually contains KDF-55 media (heavy-metal/iron removal), not just carbon; the F-2 stage needs KDF-55.", panel="Pinhole Wall"),
+         "water", 1, "ea", 79.83, 79.83, "Amazon", part_no="B0DY1ZK47Z", url="https://www.amazon.com/dp/B0DY1ZK47Z", spec="KDF-55 media for dissolved iron/metal removal (F-2 stage); ~60-print interval. Aquaboon 20×4.5 KDF whole-house cartridge (proper KDF media — supersedes the earlier VEVOR chlorine-only cartridge).", panel="Pinhole Wall"),
     Part("cartridge-carbon", 'CTO carbon block cartridge 4.5"×20"', "water-equipment",
          "water", 2, "ea", 16, 30, "RonAqua", "Amazon", spec="Coconut shell activated carbon block (F-3 stage); ~40-print interval", panel="Pinhole Wall"),
     # — valves & fittings (333–567) —
@@ -238,7 +238,7 @@ PARTS: list[Part] = [
     Part("pvc-transition-adapters", "PVC slip×MNPT male adapters (run → threaded components)", "plumbing-fittings",
          "water", 40, "ea", 0.79, 1.16, "Home Depot", spec='Joint convention §5.1 (fork c): one slip×NPT male adapter where the glued PVC run lands on each threaded component — ball/diverter/check valves, filter housing ports, tank bulkheads, sample taps, accumulator. ½" = Charlotte PVC021090600HD $0.79, 1" = PVC021091000HD $1.16 (unit prices firm; low/high spans the ½"–1" mix). ~40 est; exact count/size split from the schematic trace.'),
     Part("cross-100", '1" PVC 4-way cross fitting', "plumbing-fittings",
-         "water", 1, "4-pack", 15.99, 15.99, "Home Depot", part_no="F0014WT-WH-4", url="https://www.homedepot.com/p/205749309", spec="X1 fresh-fill 4-way: X1 inlet + IBC-1 + IBC-2 + DV-01 blue recycle return. Formufit furniture-grade PVC 4-way tee, 4-pack (need 1, 3 spare). ⚠ FURNITURE-GRADE = slip + NOT pressure-rated — fine here since X1 is a gravity/low-pressure fill, solvent-welded; if this junction ever sees pump pressure, swap to a Sch-40/80 cross."),
+         "water", 1, "ea", 5.99, 5.99, "Amazon", part_no="B0CGGV74MB", url="https://www.amazon.com/dp/B0CGGV74MB", spec="X1 fresh-fill 4-way (Alvin-confirmed 2026-07-27): X1 inlet + IBC-1 + IBC-2 + DV-01 blue-recycle riser all join here on the corridor spine, then distribute to both Blue totes. 1\" PVC cross — slip glue joint, gravity/low-pressure fill. Design of record: the 3D model + corridor panel-layout + plumbing-report all build this cross."),
     # Joint convention §5.1 — Option C hybrid (Alvin 2026-07-27): permanent slip couplings on the run,
     # true unions only where a whole sub-assembly pulls as a unit (per-component service is already
     # covered by the threaded ports on pumps/filters/valves).

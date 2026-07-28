@@ -22,8 +22,7 @@ from matplotlib.patches import FancyBboxPatch
 import os
 from tbs_constants import C_BLUE_IBC, C_EVAP, C_ELEC, C_BATT, C_PUMP, DIAGRAMS_DIR, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, EVAP_COOLER_W_AC, EVAP_COOLER_W_BUS
 from tbs_title_block import title_block
-from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes,
-                         draw_rect, draw_circle, hatch_rect, draw_pipe_path)
+from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_rect, draw_circle, draw_pipe_path
 from tbs_constants import DIAGRAM_DPI
 
 # ── Palette ───────────────────────────────────────────────────────────────────
@@ -209,7 +208,7 @@ def draw_sheet1():
 
     # NEMA 5-15R inlet below shore charger
     rbox(ax, SC_X, SC_Y - 1.35, SC_W, 0.80,
-         "NEMA 5-15R INLET  (flush-mount power panel — pinhole wall)",
+         "NEMA 5-15R INLET  (external penetration box — pinhole wall)",
          "Weatherproof  |  Shore power input when grid power available",
          fc="white", ec=C_OUT, lw=1.0, ts=8.5, ss=7.5, bold=False)
     varrow(ax, SC_X + SC_W / 2, SC_Y - 0.55, SC_Y, col="#A07820")
@@ -695,11 +694,11 @@ def draw_sheet2():
     ax.text(BA_DX+BA_DW/2, OY + wt + WALL_MOUNT_H/2, "BAT",
             ha="center", va="center", fontsize=6.5, fontweight="bold", color=C_OUT)
 
-    # ── External power panel — flush-mount in pinhole wall ──────────────────
+    # ── External power panel — fabricated penetration box in the pinhole wall ──
     from tbs_constants import PWR_PANEL_X, PWR_PANEL_W
     PP_DX = ix(PWR_PANEL_X)
     PP_DW = PWR_PANEL_W * S_xi
-    PP_DH = wt                             # flush in the wall thickness
+    PP_DH = wt                             # box front-face at the wall face
     PP_DY = OY                             # sits in the wall itself
     ax.add_patch(mpatches.Rectangle((PP_DX, PP_DY), PP_DW, PP_DH,
                  fc=C_ALUM, ec=C_OUT, lw=1.2, zorder=7))
@@ -865,7 +864,7 @@ def draw_sheet2():
     # External power panel
     leader(ax, PP_DX + PP_DW * 4/5, PP_DY + (PP_DH * 0.5),
            PP_DX + PP_DW * 2, PP_DY - 175,
-           "External power panel\n3×MC4 + NEMA 5-15R\nSingle sealed penetration",
+           "External power panel\n3×MC4 + shore/cooler NEMA\nPenetration box (face-mounted)",
            fs=6.5, color="#806030", ha="center")
 
     # ── Solar panels — exterior (below container in plan) ─────────────────────
@@ -926,7 +925,7 @@ def draw_sheet2():
         ("D/G",   C_SWITCH,  "PULL-CORD SWITCHES",
          f"SPST 6A ceiling switches  |  D=safelight, G=white light  |  Left of EP (cleared), X≈{PS_X_MM}mm"),
         ("EXT\nPWR",C_ALUM,"EXTERNAL POWER PANEL",
-         "3×MC4 solar + NEMA 5-15R AC  |  Flush-mount in wall cutout  |  Pinhole wall"),
+         "3×MC4 solar + NEMA 5-15R AC  |  Fabricated penetration box  |  Pinhole wall"),
     ]
     for j, (badge, bc, title_k, spec) in enumerate(key_rows):
         ky = KY - 140 - j * 250
@@ -1128,7 +1127,7 @@ def draw_sheet3():
                 color=C_PIPE, lw=2.0, solid_capstyle="round", zorder=4)
         return ex, ey, ew, eh
 
-    # ── External power panel (flush in wall) ──────────────────────────────────
+    # ── External power panel (penetration box in wall) ────────────────────────
     # Centered vertically at ~EP mounting height
     PP_Z_LO = EP_H_LO   # align with bottom of EP
     PP_Z_HI = PP_Z_LO + PWR_PANEL_H
@@ -1351,7 +1350,7 @@ def draw_sheet3():
         (C_BATT,    "BATTERY BANK",      f"BAT  |  X={BA_X}–{BA_X+BA_W}  |  Z={BA_H_LO}–{BA_STACK_TOP}mm (2 stacked)"),
         ("#F5C8A0", "WATER PUMPS",   f"Cct C  |  P-01/03/04/05 corridor (Yd={CORRIDOR_YD_NEAR}–{CORRIDOR_YD_NEAR + CORRIDOR_W}) + P-02 (pinhole wall)"),
         (C_EVAP,    "DUCT PENETRATION",  f"Cct E  |  Ø{EVAP_DUCT_D}mm at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}mm  |  Evap cooler external"),
-        (C_ALUM,    "EXT POWER PANEL",   f"Flush-mount  |  X={PWR_PANEL_X}–{PWR_PANEL_X+PWR_PANEL_W}  |  3×MC4 + NEMA"),
+        (C_ALUM,    "EXT POWER PANEL",   f"Penetration box  |  X={PWR_PANEL_X}–{PWR_PANEL_X+PWR_PANEL_W}  |  3×MC4 + NEMA"),
         ("#FFFFF0", "LED PANELS (G)",    "3×20W  4000K  |  Ceiling-mount  |  X≈1000, 2900, 4800"),
         ("#E0E0FF", "PULL SWITCHES",     f"Ccts D & G  |  SPST 6A  |  X≈{PS_X_MM}mm  |  Cord to ~1500mm AFF"),
         ("#FFD700", "SAFELIGHT (D)",     f"3× red LED strips  |  Ceiling N–S  |  X≈{', '.join(str(x) for x in SL3_POSITIONS)}"),
@@ -1709,7 +1708,7 @@ def draw_sheet6():
     NEMA_Y   = 153            # NEMA bottom edge — center aligns with PV3 (175mm)
     NEMA_DEPTH = 45           # NEMA body protrusion behind plate (mm)
 
-    # Deutsch DT 2-pin bulkhead (Circuit E — evap cooler DC output)
+    # AC outlet position (Circuit E — evap cooler, 120V) — repurposed DT_* anchors
     DT_R     = 10             # connector body radius (mm)
     DT_X     = 230            # center X from panel left edge
     DT_Y     = 65             # center Y — aligns with PV1 (65mm)
@@ -1744,7 +1743,7 @@ def draw_sheet6():
     ax_a.set_xlim((-pad), (PLATE_W + pad))
     ax_a.set_ylim((-pad), (PLATE_H + pad))
 
-    # Face plate outline (aluminum, flat — no rounded box since it's a plate)
+    # Box front-face outline (the exterior face the components mount to)
     draw_rect(ax_a, (0), (0), (PLATE_W), (PLATE_H),
               fc=C_ALUM, color=C_OUT, lw=2.0, zorder=3)
 
@@ -1803,11 +1802,12 @@ def draw_sheet6():
     gy = (nema_cy - 6) + (ground_r) * np.sin(theta)
     ax_a.plot(gx, gy, color=C_OUT, lw=1.0, zorder=6)
 
-    # Deutsch DT 2-pin bulkhead — Circuit E (evap cooler DC output)
-    draw_circle(ax_a, (DT_X), (DT_Y), (DT_R),
-                 lw=1.5, color=C_DT, fill=True, fc="#FFE0C0", zorder=5)
-    ax_a.text((DT_X), (DT_Y), "E", ha="center", va="center",
-              fontsize=7, fontweight="bold", color=C_DT, zorder=6)
+    # Weatherproof AC outlet — Circuit E (evap cooler, 120V) — WR duplex + in-use cover
+    _ow, _oh = 34, 46
+    draw_rect(ax_a, (DT_X - _ow / 2), (DT_Y - _oh / 2), (_ow), (_oh),
+              fc=C_NEMA, color=C_AC, lw=1.5, zorder=5)
+    ax_a.text((DT_X), (DT_Y), "AC\nOUT", ha="center", va="center",
+              fontsize=6, fontweight="bold", color=C_AC, zorder=6)
 
     # Emergency cut-off (E-stop) — red mushroom on safety-yellow collar
     draw_circle(ax_a, (ESTOP_X), (ESTOP_Y), (ESTOP_RING_R),
@@ -1844,10 +1844,10 @@ def draw_sheet6():
            "NEMA 5-15R\nWEATHERPROOF INLET\n120V AC SHORE POWER",
            fs=6.5, color=C_AC, ha="left", arrow_style="-|>", font=FONT)
 
-    leader(ax_a, (DT_X + DT_R + 3), (DT_Y),
+    leader(ax_a, (DT_X + 20), (DT_Y),
            (PLATE_W + 25), (DT_Y - 25),
-           "GFCI WEATHERPROOF\nAC OUTLET (120V, in-use cover)\nCIRCUIT E — COOLER",
-           fs=6, color=C_DT, ha="left", arrow_style="-|>", font=FONT)
+           "WEATHERPROOF AC OUTLET\n(120V WR duplex + in-use cover;\nGFCI at inverter) — CIRCUIT E COOLER",
+           fs=6, color=C_AC, ha="left", arrow_style="-|>", font=FONT)
 
     leader(ax_a, (ESTOP_X), (ESTOP_Y + ESTOP_RING_R + 3),
            (ESTOP_X), (PLATE_H + 28),
@@ -1861,224 +1861,131 @@ def draw_sheet6():
            fs=6, color=C_DIM, arrow_style="-|>", font=FONT)
 
     # ═════════════════════════════════════════════════════════════════════════
-    # VIEW B — Cross-Section Through Wall (flush-mount detail)
+    # VIEW B — Cross-Section Through the Corrugated Wall (penetration-box detail)
     # ═════════════════════════════════════════════════════════════════════════
     ax_b = fig.add_subplot(gs[0, 1])
     ax_b.set_aspect("equal")
     ax_b.axis("off")
 
-    # Depth axis values are intentionally exaggerated for readability
+    mm_v         = 0.7                      # drawing units per real mm (height axis)
+    plate_h_draw = PLATE_H * mm_v           # box front-face height
+    cut_h_draw   = CUT_H * mm_v             # wall opening height
+    cut_bot      = (plate_h_draw - cut_h_draw) / 2
+    cut_top      = cut_bot + cut_h_draw
 
-    # All vertical dimensions use a consistent mm_unit so that the plate
-    # (3mm thick on depth axis), bolts (M6 = 6mm shaft), cutout (180mm),
-    # and plate height (200mm) are all proportionally correct.
-    #
-    # Depth axis (horizontal) is exaggerated for readability:
-    #   plate_t_draw and wall_thick are NOT to the same scale as height.
+    # Depth (horizontal) axis — exaggerated for readability
+    face_t    = 11         # box front-face thickness
+    box_depth = 52         # box shroud depth (front face -> wall crest)
+    corr_d    = 16         # corrugation crest->valley depth
+    sheet_t   = 7          # steel sheet thickness
+    conn_out  = 46         # connector protrusion OUTBOARD (exterior mate face)
+    conn_in   = 30         # connector body depth INBOARD (into the box)
 
-    wall_x = 100          # wall exterior face X position
-    wall_thick = 40       # exaggerated wall thickness (depth axis)
-    plate_t_draw = 12     # exaggerated plate thickness (depth axis)
-    gasket_t_draw = 6     # exaggerated gasket thickness (depth axis)
-    conn_depth = 50       # connector body protrusion (depth axis)
+    face_x0  = 0                     # box front face — exterior surface
+    face_x1  = face_t                # box front face — inner surface
+    crest_x  = face_x1 + box_depth   # corrugation crest plane (flange seats here)
+    valley_x = crest_x + corr_d      # corrugation valley
+    wall_int = valley_x + sheet_t    # wall interior face
 
-    # Vertical scale: 1mm_v = real mm in the height direction
-    mm_v = 0.7            # drawing units per real mm (height axis)
+    sec_h   = plate_h_draw
+    ext_pad = 135
+    int_pad = 210
+    ax_b.set_xlim(-ext_pad, wall_int + int_pad)
+    ax_b.set_ylim(-48, sec_h + 92)
 
-    # Derived vertical positions from real dimensions
-    plate_h_draw = PLATE_H * mm_v         # 200mm plate height
-    cut_h_draw = CUT_H * mm_v             # 180mm cutout height
-    plate_bot = 0                          # plate bottom edge
-    plate_top = plate_h_draw               # plate top edge
-    cut_bot = (plate_h_draw - cut_h_draw) / 2   # cutout centered in plate
-    cut_top = cut_bot + cut_h_draw
-    mount_inset_draw = MOUNT_INSET * mm_v  # 15mm bolt inset from plate edge
+    # Interior tint (right of the wall)
+    ax_b.add_patch(mpatches.Rectangle((wall_int, -28), int_pad, sec_h + 100,
+                   fc=C_INT, ec="none", alpha=0.3, zorder=1))
 
-    # Bolt positions (15mm from plate edge = well within plate)
-    bolt_positions = [plate_bot + mount_inset_draw,
-                      plate_top - mount_inset_draw]
+    # ── Corrugated container wall: solid bands above + below the opening ──
+    def corr_band(y0, y1):
+        n = max(4, int(round((y1 - y0) / (11 * mm_v))))
+        pts = []
+        for k in range(n + 1):
+            yy = y0 + (y1 - y0) * k / n
+            xx = crest_x if (k % 2 == 0) else valley_x
+            pts.append((xx, yy))
+        pts += [(wall_int, y1), (wall_int, y0)]
+        ax_b.add_patch(mpatches.Polygon(pts, closed=True, fc=C_WALL,
+                       ec=C_OUT, lw=1.3, zorder=3))
+    corr_band(cut_top, sec_h + 24)
+    corr_band(-24, cut_bot)
 
-    # Bolt dimensions (proportional to plate via mm_v)
-    bolt_shaft_h = 6 * mm_v      # M6 = 6mm diameter
-    bolt_head_w = 4 * mm_v * (plate_t_draw / (3 * mm_v))  # depth-axis exaggerated
-    bolt_head_h = 10 * mm_v      # 10mm across-flats
-    nut_w = 5 * mm_v * (plate_t_draw / (3 * mm_v))        # depth-axis exaggerated
-    nut_h = 10 * mm_v            # 10mm across-flats
+    # ── Flashing + silicone bead — bridges the flange over the corrugation ──
+    for (yy0, yy1) in [(cut_top, plate_h_draw), (0, cut_bot)]:
+        ax_b.add_patch(mpatches.Rectangle((face_x1, yy0), crest_x - face_x1, yy1 - yy0,
+                       fc=C_GASKT, ec="none", alpha=0.55, zorder=3.5))
 
-    sec_h = plate_h_draw
-    ext_pad = 80
-    int_pad = 180
-    ax_b.set_xlim((-ext_pad), (wall_x + wall_thick + int_pad))
-    ax_b.set_ylim((-40), (sec_h + 80))
+    # ── Fabricated box: front face (full height = flange) + shroud, OPEN to interior ──
+    draw_rect(ax_b, face_x0, 0, face_t, plate_h_draw, fc=C_BOX, color=C_OUT, lw=1.8, zorder=6)
+    draw_rect(ax_b, face_x1, cut_top, crest_x - face_x1, plate_h_draw - cut_top,
+              fc="none", color=C_OUT, lw=1.2, zorder=6)
+    draw_rect(ax_b, face_x1, 0, crest_x - face_x1, cut_bot,
+              fc="none", color=C_OUT, lw=1.2, zorder=6)
+    # box is OPEN across the opening (cut_bot..cut_top) toward the interior
 
-    # Interior zone fill
-    ax_b.add_patch(mpatches.Rectangle(
-        ((wall_x + wall_thick), (-20)), (int_pad), (sec_h + 80),
-        fc=C_INT, ec="none", alpha=0.3, zorder=1))
+    # ── Face-mounted components: mate face OUT (exterior), body/wire INTO the box ──
+    def face_conn(cy, hh, body_fc, body_ec, lead_col, lead_ls="-"):
+        draw_rect(ax_b, face_x0 - conn_out, cy - hh / 2, conn_out, hh,
+                  fc=body_fc, color=body_ec, lw=1.0, zorder=5)
+        draw_rect(ax_b, face_x1, cy - hh * 0.42, conn_in, hh * 0.84,
+                  fc=body_fc, color=body_ec, lw=0.8, zorder=4.5)
+        ax_b.plot([face_x1 + conn_in, wall_int + int_pad - 42], [cy, cy],
+                  color=lead_col, lw=1.6, ls=lead_ls, zorder=5)
 
-    # Container wall — top section (above cutout)
-    hatch_rect(ax_b, (wall_x), (cut_top), (wall_thick),
-               (sec_h - cut_top + 20),
-               color=C_WALL, edgecolor=C_OUT, lw=1.5, alpha=1.0, zorder=3)
-    # Container wall — bottom section (below cutout)
-    hatch_rect(ax_b, (wall_x), (-20), (wall_thick),
-               (cut_bot + 20),
-               color=C_WALL, edgecolor=C_OUT, lw=1.5, alpha=1.0, zorder=3)
+    q = cut_h_draw / 4
+    mc4_cy   = cut_bot + q * 3        # MC4 group (top) -> MPPT
+    face_conn(mc4_cy, 9 * mm_v, "#C0E8C0", C_MC4, C_MC4)
+    inlet_cy = cut_bot + q * 2        # shore inlet -> charger
+    face_conn(inlet_cy, 11 * mm_v, C_NEMA, C_AC, C_AC)
+    outlet_cy = cut_bot + q * 1       # cooler AC outlet <- inverter (CCT E)
+    face_conn(outlet_cy, 11 * mm_v, C_NEMA, C_AC, C_AC, lead_ls="--")
 
-    # Cutout opening (clear)
-    draw_rect(ax_b, (wall_x), (cut_bot), (wall_thick),
-              (cut_h_draw),
-              fc="white", color=C_OUT, lw=1.0, zorder=2)
+    # E-stop on the face — red stub + dome protruding out, contact block into the box
+    es_cy = cut_bot + q * 3.55
+    draw_rect(ax_b, face_x0 - conn_out * 0.45, es_cy - 4 * mm_v, conn_out * 0.45, 8 * mm_v,
+              fc=C_ESTOP, color=C_OUT, lw=0.8, zorder=5.4)
+    ax_b.add_patch(mpatches.Circle((face_x0 - conn_out * 0.45, es_cy), 5.5 * mm_v,
+                   fc=C_ESTOP, ec=C_OUT, lw=1.0, zorder=5.6))
+    draw_rect(ax_b, face_x1, es_cy - 3 * mm_v, conn_in * 0.7, 6 * mm_v,
+              fc=C_ESTOP, color=C_OUT, lw=0.7, zorder=4.4)
 
-    # Raised welded steel frame on the wall exterior crests (top + bottom strips around
-    # the cutout) — the flat, sealable surface the gasket + plate seat on
-    frame_t_draw = 12
-    frame_x = wall_x - frame_t_draw
-    gasket_strip_h = (plate_h_draw - cut_h_draw) / 2 + 3 * mm_v  # overlap cutout edge
-    draw_rect(ax_b, (frame_x), (cut_top - 3 * mm_v),
-              (frame_t_draw), (gasket_strip_h),
-              fc="#9AA0A8", color=C_OUT, lw=1.0, zorder=4.5)
-    draw_rect(ax_b, (frame_x), (cut_bot - (gasket_strip_h - 3 * mm_v)),
-              (frame_t_draw), (gasket_strip_h),
-              fc="#9AA0A8", color=C_OUT, lw=1.0, zorder=4.5)
+    # ── Labels ──
+    int_x = wall_int + int_pad - 38
+    ax_b.text(int_x, mc4_cy,   "→ MPPT", color=C_MC4, fontsize=7, fontweight="bold",
+              va="center", ha="left", **FONT, zorder=7)
+    ax_b.text(int_x, inlet_cy, "→ CHARGER", color=C_AC, fontsize=7, fontweight="bold",
+              va="center", ha="left", **FONT, zorder=7)
+    ax_b.text(int_x, outlet_cy,"← CCT E (inverter)", color=C_AC, fontsize=7,
+              fontweight="bold", va="center", ha="left", **FONT, zorder=7)
+    ax_b.text(face_x0 - conn_out - 6, es_cy, "E-STOP", color=C_ESTOP, fontsize=6.5,
+              fontweight="bold", va="center", ha="right", **FONT, zorder=7)
 
-    # Gasket (between plate and the welded frame's flat face, around cutout perimeter)
-    gasket_x = frame_x - gasket_t_draw
-    # Top gasket strip
-    draw_rect(ax_b, (gasket_x), (cut_top - 3 * mm_v),
-              (gasket_t_draw), (gasket_strip_h),
-              fc=C_GASKT, color=C_GASKT, lw=0.8, zorder=5)
-    # Bottom gasket strip
-    draw_rect(ax_b, (gasket_x), (cut_bot - (gasket_strip_h - 3 * mm_v)),
-              (gasket_t_draw), (gasket_strip_h),
-              fc=C_GASKT, color=C_GASKT, lw=0.8, zorder=5)
+    ax_b.text(-ext_pad + 12, sec_h + 62, "EXTERIOR", fontsize=9, fontweight="bold",
+              color=C_DIM, ha="left", va="bottom", **FONT)
+    ax_b.text(wall_int + int_pad / 2, sec_h + 62, "INTERIOR", fontsize=9,
+              fontweight="bold", color=C_DIM, ha="center", va="bottom", **FONT)
+    ax_b.text((face_x0 + wall_int) / 2, sec_h + 80,
+              "VIEW B — CROSS-SECTION (PENETRATION-BOX DETAIL)",
+              ha="center", va="bottom", fontsize=9, fontweight="bold", color=C_OUT, **FONT)
 
-    # Face plate (flush with exterior wall face)
-    plate_x = gasket_x - plate_t_draw
-    draw_rect(ax_b, (plate_x), (plate_bot), (plate_t_draw),
-              (plate_h_draw),
-              fc=C_ALUM, color=C_OUT, lw=1.5, zorder=6)
-
-    # Connector bodies protruding through cutout into interior
-    mc4_spacing = cut_h_draw / 4
-    for i in range(3):
-        cy = cut_bot + mc4_spacing * (i + 0.5)
-        draw_rect(ax_b, (wall_x - 5), (cy - 4 * mm_v),
-                  (wall_thick + conn_depth + 5), (8 * mm_v),
-                  fc="#C0E8C0", color=C_MC4, lw=1.0, zorder=4)
-        ax_b.plot([(wall_x + wall_thick + conn_depth),
-                   (wall_x + wall_thick + int_pad - 30)],
-                  [(cy), (cy)],
-                  color=C_MC4, lw=1.5, zorder=5)
-
-    # NEMA body through cutout — aligned with PV3
-    nema_cy = cut_bot + mc4_spacing * 2.5
-    draw_rect(ax_b, (wall_x - 5), (nema_cy - 5 * mm_v),
-              (wall_thick + conn_depth + 5), (10 * mm_v),
-              fc=C_NEMA, color=C_AC, lw=1.0, zorder=4)
-    ax_b.plot([(wall_x + wall_thick + conn_depth),
-               (wall_x + wall_thick + int_pad - 30)],
-              [(nema_cy), (nema_cy)],
-              color=C_AC, lw=1.5, ls="--", zorder=5)
-
-    # Deutsch DT body through cutout (Circuit E — cooler DC output) — aligned with PV1
-    dt_cy = cut_bot + mc4_spacing * 0.5
-    draw_rect(ax_b, (wall_x - 5), (dt_cy - 3 * mm_v),
-              (wall_thick + DT_DEPTH + 5), (6 * mm_v),
-              fc="#FFE0C0", color=C_DT, lw=1.0, zorder=4)
-    ax_b.plot([(wall_x + wall_thick + DT_DEPTH),
-               (wall_x + wall_thick + int_pad - 30)],
-              [(dt_cy), (dt_cy)],
-              color=C_DT, lw=1.5, zorder=5)
-    ax_b.plot([(wall_x - 5), (-ext_pad + 10)],
-              [(dt_cy), (dt_cy)],
-              color=C_DT, lw=1.5, ls="--", zorder=5)
-
-    # Mounting bolts — M6×20 into the welded frame's weld-nut (does NOT cross the wall)
-    for by_pos in bolt_positions:
-        # Bolt shaft — from the head through plate + gasket + into the frame
-        shaft_start = plate_x - bolt_head_w
-        shaft_end = wall_x                      # terminates in the frame's weld-nut
-        draw_rect(ax_b, (shaft_start),
-                  (by_pos - bolt_shaft_h / 2),
-                  (shaft_end - shaft_start),
-                  (bolt_shaft_h),
-                  fc=C_STEEL, color=C_OUT, lw=0.6, zorder=7)
-        # Bolt head (exterior side of plate)
-        draw_rect(ax_b, (plate_x - bolt_head_w),
-                  (by_pos - bolt_head_h / 2),
-                  (bolt_head_w), (bolt_head_h),
-                  fc=C_STEEL, color=C_OUT, lw=0.8, zorder=8)
-        # M6 weld-nut on the back (interior face) of the frame
-        draw_rect(ax_b, (wall_x - nut_w),
-                  (by_pos - nut_h / 2),
-                  (nut_w), (nut_h),
-                  fc="#707078", color=C_OUT, lw=0.8, zorder=8)
-
-    ax_b.annotate("8mm WELDED RAISED FRAME\n(on the wall crests; M6 weld-nuts)",
-                  xy=(frame_x + frame_t_draw / 2, plate_top - 4 * mm_v),
-                  xytext=(frame_x - 24, plate_top + 26),
-                  ha="center", va="bottom", fontsize=6, color=C_OUT,
-                  arrowprops=dict(arrowstyle="-|>", color=C_OUT, lw=0.8), **FONT, zorder=9)
-
-    # Interior destination labels
-    int_label_x = wall_x + wall_thick + int_pad - 25
-    ax_b.text((int_label_x), (cut_bot + mc4_spacing + 16),
-              "→ MPPT", ha="left", va="center", fontsize=7,
-              color=C_MC4, fontweight="bold", **FONT, zorder=7)
-    ax_b.text((int_label_x), (nema_cy),
-              "→ CHARGER", ha="left", va="center", fontsize=7,
-              color=C_AC, fontweight="bold", **FONT, zorder=7)
-    ax_b.text((int_label_x), (dt_cy),
-              "← CCT E", ha="left", va="center", fontsize=7,
-              color=C_DT, fontweight="bold", **FONT, zorder=7)
-    ax_b.text((-ext_pad + 8), (dt_cy + 5),
-              "→ COOLER", ha="left", va="bottom", fontsize=7,
-              color=C_DT, fontweight="bold", **FONT, zorder=7)
-
-    # Zone labels
-    ax_b.text((plate_x - 30), (sec_h + 55),
-              "EXTERIOR", ha="center", va="bottom", fontsize=9,
-              fontweight="bold", color=C_DIM, **FONT)
-    ax_b.text((wall_x + wall_thick + int_pad / 2), (sec_h + 55),
-              "INTERIOR", ha="center", va="bottom", fontsize=9,
-              fontweight="bold", color=C_DIM, **FONT)
-
-    # Title
-    ax_b.text(((wall_x + wall_thick + int_pad) / 2), (sec_h + 70),
-              "VIEW B — CROSS-SECTION (FLUSH-MOUNT DETAIL)",
-              ha="center", va="bottom", fontsize=9, fontweight="bold",
-              color=C_OUT, **FONT)
+    # Leaders
+    leader(ax_b, face_x0 + face_t / 2, plate_h_draw - 6,
+           face_x0 - 34, sec_h + 46,
+           "FABRICATED BOX FRONT FACE\n(components surface-mounted + sealed)",
+           fs=6, color=C_OUT, ha="center", arrow_style="-|>", font=FONT)
+    leader(ax_b, (face_x1 + crest_x) / 2, plate_h_draw - 3,
+           crest_x + 34, sec_h + 40,
+           "FLASHING + SILICONE\nover the corrugation crests\n(water- + light-tight)",
+           fs=6, color=C_GASKT, ha="left", arrow_style="-|>", font=FONT)
+    leader(ax_b, valley_x, cut_top - 8,
+           wall_int + 26, cut_top + 24,
+           "CORRUGATED WALL\n(box OPENS to interior;\nwired from inside)",
+           fs=6, color=C_WALL, ha="left", arrow_style="-|>", font=FONT)
 
     # Dimensions
-    draw_dim_h(ax_b, (plate_x), (plate_x + plate_t_draw), (-25),
-               f"{PLATE_T}mm\nPLATE", offset=(5), fs=6, above=False, font=FONT)
-    draw_dim_h(ax_b, (wall_x), (wall_x + wall_thick), (-25),
-               "WALL", offset=(5), fs=6, above=False, font=FONT)
-    draw_dim_v(ax_b, (wall_x + wall_thick + 8), (cut_bot), (cut_top),
-               f"{CUT_H}mm\nCUTOUT", offset=(5), fs=6, right=True, font=FONT)
-
-    # Leader labels
-    leader(ax_b, (gasket_x - gasket_t_draw / 2 + 3),
-           (cut_top + 5),
-           (gasket_x - 60), (cut_top - 5),
-           "NEOPRENE GASKET\n3mm — WEATHERSEAL",
-           fs=6, color=C_GASKT, ha="center", arrow_style="-|>", font=FONT)
-
-    leader(ax_b, (plate_x + PLATE_T / 2), (cut_top + 23),
-           (plate_x - 25), (sec_h + 40),
-           f"ALUMINUM FACE PLATE\n{PLATE_W}×{PLATE_H}×{PLATE_T}mm\n(seats on the raised frame)",
-           fs=6, color=C_OUT, ha="center", arrow_style="-|>", font=FONT)
-
-    leader(ax_b, (wall_x + wall_thick / 2), (-15),
-           (wall_x + wall_thick / 2), (-35),
-           "CONTAINER WALL\n(CORRUGATED STEEL)",
-           fs=6, color=C_WALL, ha="center", va="top", arrow_style="-|>", font=FONT)
-
-    leader(ax_b, (wall_x - nut_w / 2), (bolt_positions[1]),
-           (wall_x + wall_thick + 20), (bolt_positions[1] + 30),
-           "M6×20 into the frame\nweld-nut (×4) —\nno wall crossing",
-           fs=6, color=C_DIM, ha="left", arrow_style="-|>", font=FONT)
+    draw_dim_v(ax_b, wall_int + 8, cut_bot, cut_top,
+               f"{CUT_H}mm\nOPENING", offset=5, fs=6, right=True, font=FONT)
 
     # ═════════════════════════════════════════════════════════════════════════
     # VIEW C — Simplified Wiring Schematic
@@ -2121,7 +2028,7 @@ def draw_sheet6():
               color=C_MC4, ha="center", va="bottom", **FONT)
 
     sbox(ax_c, 4.5, row_top, 3.0, 0.9,
-         "FLUSH-MOUNT PANEL", "MC4 bulkhead ×3", fc=C_ALUM)
+         "PENETRATION BOX", "MC4 bulkhead ×3", fc=C_ALUM)
     sarrow(ax_c, 7.5, row_top + 0.45, 10.0, col=C_MC4)
     ax_c.text(8.75, row_top + 0.65, "10 AWG PV", fontsize=6, color=C_MC4,
               ha="center", **FONT)
@@ -2140,7 +2047,7 @@ def draw_sheet6():
               ha="center", **FONT)
 
     sbox(ax_c, 4.5, row_bot, 3.0, 0.9,
-         "FLUSH-MOUNT PANEL", "NEMA 5-15R inlet", fc=C_ALUM)
+         "PENETRATION BOX", "NEMA 5-15R inlet", fc=C_ALUM)
     sarrow(ax_c, 7.5, row_bot + 0.45, 10.0, col=C_AC)
 
     sbox(ax_c, 10.0, row_bot, 3.2, 0.9,
@@ -2164,7 +2071,7 @@ def draw_sheet6():
               ha="center", **FONT)
 
     sbox(ax_c, 4.5, row_cool, 3.0, 0.9,
-         "PANEL GFCI OUTLET", "120V AC, in-use cover", fc=C_ALUM)
+         "PENETRATION BOX", "120V AC WR outlet", fc=C_ALUM)
     sarrow(ax_c, 10.0, row_cool + 0.45, 7.5, col=C_DT)
     ax_c.text(8.75, row_cool + 0.65, "from inverter", fontsize=6, color=C_DT,
               ha="center", **FONT)
@@ -2191,7 +2098,7 @@ def draw_sheet6():
          "EMERGENCY E-STOP", "red mushroom · IP66", fc="#F6D6D2", tc=C_ESTOP)
     carrow(ax_c, 3.3, row_es + 0.45, 4.5)
     sbox(ax_c, 4.5, row_es, 3.0, 0.9,
-         "FLUSH-MOUNT PANEL", "E-stop button", fc=C_ALUM)
+         "PENETRATION BOX", "E-stop button", fc=C_ALUM)
     carrow(ax_c, 7.5, row_es + 0.45, 10.0)
     ax_c.text(8.75, row_es + 0.65, "control 2×18 AWG", fontsize=6, color=C_CTRL,
               ha="center", **FONT)
@@ -2205,7 +2112,7 @@ def draw_sheet6():
     ax_c.text(bat_cx + 0.45, row_es + 0.9, "main +", fontsize=5.5, color=C_OUT,
               ha="left", va="center", **FONT)
 
-    # Container wall indicator — single line (flush mount, no gland)
+    # Container wall indicator — the box opens to the interior
     wall_x_sch = 7.45
     ax_c.plot([wall_x_sch, wall_x_sch],
               [row_es - 0.5, row_top + 1.0],
@@ -2213,7 +2120,7 @@ def draw_sheet6():
     ax_c.text(wall_x_sch, row_es - 0.7, "CONTAINER\nWALL",
               ha="center", va="top", fontsize=6, color=C_WALL,
               fontweight="bold", **FONT)
-    ax_c.text(wall_x_sch + 0.15, row_es - 0.45, "(flush-mount\n panel)",
+    ax_c.text(wall_x_sch + 0.15, row_es - 0.45, "(penetration\n box)",
               ha="left", va="top", fontsize=5, color=C_DIM, **FONT)
 
     # Zone labels
@@ -2232,7 +2139,7 @@ def draw_sheet6():
     ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
     title_block(ax_tb, "SHEET 6 OF 7",
-                drawing_title="EXTERNAL POWER PANEL — FLUSH MOUNT",
+                drawing_title="EXTERNAL POWER PANEL — PENETRATION BOX",
                 subtitle="SOLAR + SHORE INPUT · COOLER DC OUTPUT · WIRING SCHEMATIC",
                 scale_note="AXES IN mm",
                 height=0.85)

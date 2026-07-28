@@ -21,11 +21,11 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,979 | $2,825 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,816 | $2,022 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $222 | $247 |
-| 8. Cooling & ventilation | $920 | $1,070 |
+| 8. Cooling & ventilation | $689 | $839 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$28,322** | **~$36,933** |
+| **TOTAL (base build + 50-print run)** | **~$28,091** | **~$36,702** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -338,7 +338,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| [1.5" EMT conduit, 10 ft](https://www.homedepot.com/p/330385401) (8511-107HD) | 6 stick | Home Depot | ventilation | $255 |
+| 1.5" EMT conduit, 10 ft | 6 stick | Home Depot | ventilation | $72–$96 |
 | 12mm steel plate, 150 × 150 cut | 4 ea | Metal Supermarkets | ibc-frame | $20–$40 |
 | 25×25×3 mm steel SHS | 1 lot | Online Metals | shelf | $30 |
 | [3/8" 304/304L SS rod — U-joint stub shafts (1× 3 ft)](https://www.mcmaster.com/89535K87/) (89535K87) | 1 lot | McMaster-Carr | film | $13 |
@@ -359,8 +359,8 @@ indicative low–high estimates — get quotes before ordering.
 | Corner plate 304 SS (U-joint mount) | 4 ea | Metal Supermarkets | film | $152–$208 |
 | Drop-in rail saddles + tapered dowels | 4 ea | Local fab | swing | $80–$130 |
 | Drum support cage, 40 × 40 × 3mm SHS | 1 lot | Local fab | swing | $70–$120 |
-| [EMT canopy base plates + ground stakes (×4)](https://www.homedepot.com/p/302074522) (310-F-112) | 4 ea | Home Depot | ventilation | $59 |
-| [EMT canopy fittings (couplings, corner ells, connectors)](https://www.homedepot.com/p/100537119) (62815) | 8 ea | Home Depot | ventilation | $26 |
+| EMT canopy base plates + ground stakes (×4) | 4 ea | Home Depot | ventilation | $24–$40 |
+| EMT canopy fittings (couplings, corner ells, connectors) | 8 ea | Home Depot | ventilation | $12–$20 |
 | Floor-leg cantilever bracket (left walkway, ×5) | 5 ea | Local fab | walkway | $55–$95 |
 | Mild steel plate 8mm (laser/plasma cut + welded) | 6 ea | Metal Supermarkets | film | $318 |
 | Power-panel raised mounting frame, 8mm steel (welded) | 1 ea | Local fab | electrical | $15–$25 |
@@ -376,7 +376,7 @@ indicative low–high estimates — get quotes before ordering.
 | Wall cleat (left corners) | 2 ea | Local fab | walkway | $20–$35 |
 | Wall mounting cleat + anchors | 1 lot | Local fab | shelf | $18 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$5,210–$6,674** |
+| **steel-structural subtotal** | | | | **$4,979–$6,491** |
 
 ### substrate-fabric
 
@@ -434,7 +434,7 @@ indicative low–high estimates — get quotes before ordering.
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,877–$2,451 |
 | Amazon | 30 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, tools-safety, water-equipment | $1,688–$1,802 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
-| Home Depot | 41 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,494–$1,630 |
+| Home Depot | 41 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,262–$1,446 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,000–$1,420 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |

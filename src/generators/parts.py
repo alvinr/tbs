@@ -234,7 +234,7 @@ PARTS: list[Part] = [
     Part("tee-half", '1/2" NPT polypropylene tee', "plumbing-fittings",
          "water", 6, "ea", 0.81, 0.81, "Home Depot", part_no="PVC024000600HD", url="https://www.homedepot.com/p/203812195", spec="Blue suction/discharge tees, branches. 2026-07-27: Charlotte PVC Sch40 S×S×S (SLIP/solvent-weld) — desc says NPT; confirm slip-vs-threaded in the plumbing audit"),
     Part("tee-100", '1" PVC Sch-40 slip tee', "plumbing-fittings",
-         "water", 4, "ea", 2.13, 2.13, "Home Depot", part_no="PVC024001000HD", url="https://www.homedepot.com/p/203812199", spec='1" PVC slip run tees (joint convention §5.1): 3× IBC drain + 1× X1 fill split to both Blue totes. 2026-07-27 fork b — was threaded Banjo FRPP $14.19; consolidated tee-100 + tee-100-hdpe (×4). Charlotte PVC024001000HD S×S×S.'),
+         "water", 3, "ea", 2.13, 2.13, "Home Depot", part_no="PVC024001000HD", url="https://www.homedepot.com/p/203812199", spec='1" PVC slip run tees (joint convention §5.1): 3× IBC drain. 2026-07-27: X1 fill split dropped — X1 is a 4-way cross (cross-100), not a tee (was qty 4). Charlotte PVC024001000HD S×S×S.'),
     Part("pvc-transition-adapters", "PVC slip×MNPT male adapters (run → threaded components)", "plumbing-fittings",
          "water", 40, "ea", 0.79, 1.16, "Home Depot", spec='Joint convention §5.1 (fork c): one slip×NPT male adapter where the glued PVC run lands on each threaded component — ball/diverter/check valves, filter housing ports, tank bulkheads, sample taps, accumulator. ½" = Charlotte PVC021090600HD $0.79, 1" = PVC021091000HD $1.16 (unit prices firm; low/high spans the ½"–1" mix). ~40 est; exact count/size split from the schematic trace.'),
     Part("cross-100", '1" PVC 4-way cross fitting', "plumbing-fittings",

@@ -475,8 +475,9 @@ PARTS: list[Part] = [
          "electrical", 4, "ea", 3.42 / 100, 3.42 / 100, "McMaster-Carr", part_no="90591A151", url="https://www.mcmaster.com/90591A151/", spec="Plain hex nut — panel-mount bolts. Pitch M6×1.0 (coarse, baseline — confirm vs SKU PDF). $3.42/pack of 100."),
     Part("washer-m6-flat", "M6 flat washer, SS", "fasteners-hardware",
          "electrical", 8, "ea", 4.51 / 100, 4.51 / 100, "McMaster-Carr", part_no="91455A120", url="https://www.mcmaster.com/91455a120/", spec="Flat washers (2/bolt) — panel mount. $4.51/pack of 100."),
-    Part("mc4-bulkhead", "MC4 bulkhead connector pairs, IP67 panel-mount", "electrical-distribution",
-         "electrical", 3, "pair", 8.33, 8.33, "Signature Solar"),
+    Part("mc4-bulkhead", "MC4 bulkhead passthrough pairs, IP67 panel-mount", "electrical-distribution",
+         "electrical", 3, "pair", 2.99, 2.99, "Powerwerx", url="https://powerwerx.com/mc4-bulkhead-passthrough-solar-input",
+         spec="Powerwerx MC4 bulkhead passthrough (+/− pair), threaded panel-mount into the ep-ext-enclosure wall — one pair per panel (3× 200W parallel array enters on 3 separate MC4 pairs, each ~15A, within the 30A MC4 rating; combined inside on the disconnect/busbar, NOT on one over-rated MC4). Passthrough = MC4 both sides, so add short MC4→ring-lug pigtails inside to land on the Blue Sea studs."),
     # — Distribution & wiring, ≈$1,016 —
     Part("fuse-block-5026", "Blue Sea 5026 fuse block, 12-circuit ST-blade", "electrical-distribution",
          "electrical", 1, "ea", 59.40, 59.40, "Off Grid Stores", "West Marine", part_no="5026",

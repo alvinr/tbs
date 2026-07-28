@@ -95,9 +95,9 @@ A representative daylight day of **3 sequential prints** draws **~<!-- BEGIN ene
 | Orientation | Due south (azimuth 180°) |
 | Cable | 10 AWG PV cable, MC4 connectors |
 | Combiner | 3-way MC4 branch connector + 30A inline fuse per string |
-| **PV disconnect** | **DC load-break isolator (50 A / 150 VDC), readily accessible at the power panel** — isolates the array from the MPPT for service/fault ([NEC 690.13](https://www.nfpa.org/codes-and-standards/nfpa-70-standard-development/70)). MC4 connectors are **not** load-break rated, and the external E-stop kills only the battery side — this kills the charge side |
+| **PV disconnect** | **Blue Sea 6006 DC battery switch (300 A / 48 V DC — sized against the array's ~30 A / ~22 V, since the panels are 3× parallel at 12 V nominal, not a high-voltage string), readily accessible at the power panel** — isolates the array from the MPPT for service/fault ([NEC 690.13](https://www.nfpa.org/codes-and-standards/nfpa-70-standard-development/70)). MC4 connectors are **not** load-break rated, and the external E-stop kills only the battery side — this kills the charge side |
 | Wall entry | Via the external power-panel enclosure (§5.4) — the PV cables join the single sealed wall-bundle penetration |
-| Approximate cost | ~$400 (panels) + ~$80 (mounting hardware) + ~$40 (PV disconnect) |
+| Approximate cost | ~$400 (panels) + ~$80 (mounting hardware) + ~$34 (PV disconnect — Blue Sea 6006) |
 
 **Siting:** deploy panels on south-facing ground adjacent the container. For example, 30° tilt is optimal at Palm Springs latitude (33°N) for year-round average. If deploying in summer only, increase tilt to 20° for higher peak output.
 
@@ -420,10 +420,10 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Ventilation fans × 2 | 150×150×50mm 12V DC axial panel fan, ~150–200 CFM (dimension-audit correction; not the AC Infinity S6 inline) | Amazon | ~$50 |
 | 12V LED flat panel, 300×600mm, 4000K | 20W, neutral white, ceiling-mount | Amazon / superbrightleds.com | ~$75 (×3) |
 | Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting circuits D & G | Amazon / Lowe's | ~$16 (×2) |
-| **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$3,239<!-- END costing:elec-system-total -->** |
+| **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$3,233<!-- END costing:elec-system-total -->** |
 | **Shade canopy total** | | | **~<!-- BEGIN costing:elec-canopy-total -->$286<!-- END costing:elec-canopy-total -->** |
 | **Cooling (cooler + inverter + DC protection + AC outlet + cord)** | | | **~<!-- BEGIN costing:elec-cooling-total -->$262<!-- END costing:elec-cooling-total -->** |
-| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$3,787<!-- END costing:elec-grand-total -->** |
+| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$3,781<!-- END costing:elec-grand-total -->** |
 
 *Electrical system total is the **standard 1-pack build** and matches the consolidated [Master Shopping List §6](master-shopping-list.md) (Solar & battery $1,335 + Distribution & wiring $989 = $2,324, the authoritative electrical BOM). The optional 2nd battery pack adds +$375 (its own MRBF fuse). It includes ~$410 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (interior **+** exterior emergency cut-offs + battery contactor, disconnect switch, terminal-mount fuse, **PV array disconnect, MPPT charge-line + shore-charger fuses**, sealed connectors, bonding, grommets), plus ~$25 of Circuit-C pump-control hardware (1 master pump switch + distribution block).*
 

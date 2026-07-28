@@ -957,6 +957,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="5. Pipe Specifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-joint-convention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Joint Convention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-material-pvc-schedule-40-justification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Material: PVC Schedule 40 (justification)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2965,8 +2993,8 @@ operator reaches up to service them. Flow path: P-02 output → F-01 (5μm sedim
 <p>Each housing has 1" NPT inlet and outlet on the head; the heads sit on a common
 line and the sumps hang below on a shared 25×25×3mm slotted-angle backing frame.
 Inter-housing piping connects F-01 OUT → F-02 IN and F-02 OUT → F-03 IN using
-1" HDPE pipe with 90° elbows routed outside the housing bodies. Each housing
-lag-screws through its own mounting-hole ears (on 25mm HDPE standoff blocks) into
+1" PVC pipe (threaded at the filter ports) with 90° elbows routed outside the housing
+bodies. Each housing lag-screws through its own mounting-hole ears (on 25mm plywood-offcut standoff blocks) into
 the 18mm ply backing, giving sump-bowl clearance — no custom bracket (see the
 <strong>DETAIL — HOUSING MOUNT (section)</strong> inset on the panel elevation above).</p>
 <p><strong>Head clearance:</strong> the 20" sumps hang ~250mm lower than a 10" housing would —
@@ -3298,7 +3326,7 @@ or Black-waste (pH drift / discolored).</p>
 <td>Sch 40</td>
 <td>1/2"</td>
 <td>21</td>
-<td>HDPE</td>
+<td>PVC Sch 40</td>
 <td>Matches Shurflo 2088 port thread</td>
 </tr>
 <tr>
@@ -3306,7 +3334,7 @@ or Black-waste (pH drift / discolored).</p>
 <td>Sch 40</td>
 <td>1/2"</td>
 <td>21</td>
-<td>HDPE</td>
+<td>PVC Sch 40</td>
 <td>To IBC-3 or IBC-4</td>
 </tr>
 <tr>
@@ -3314,7 +3342,7 @@ or Black-waste (pH drift / discolored).</p>
 <td>Sch 40</td>
 <td>1/2"</td>
 <td>21</td>
-<td>HDPE</td>
+<td>PVC Sch 40</td>
 <td>To Blue IBC-2 or Black IBC-4</td>
 </tr>
 <tr>
@@ -3322,7 +3350,7 @@ or Black-waste (pH drift / discolored).</p>
 <td>Sch 40</td>
 <td>1"</td>
 <td>33</td>
-<td>HDPE</td>
+<td>PVC Sch 40</td>
 <td>Matches Big Blue 1" NPT ports</td>
 </tr>
 <tr>
@@ -3330,7 +3358,7 @@ or Black-waste (pH drift / discolored).</p>
 <td>Sch 40</td>
 <td>1"</td>
 <td>33</td>
-<td>HDPE</td>
+<td>PVC Sch 40</td>
 <td>Gravity flow, lower restriction</td>
 </tr>
 <tr>
@@ -3338,7 +3366,7 @@ or Black-waste (pH drift / discolored).</p>
 <td>Sch 40</td>
 <td>1"</td>
 <td>33</td>
-<td>HDPE</td>
+<td>PVC Sch 40</td>
 <td>IBC valve to corridor</td>
 </tr>
 <tr>
@@ -3363,6 +3391,62 @@ or Black-waste (pH drift / discolored).</p>
 ports (1/2"-14 male parallel thread). This eliminates reducer fittings at pump
 connections. The only reducer is a single 1/2"→1" bushing at the filter skid
 inlet (P-02 output to F-01 input).</p>
+<h3 id="51-joint-convention">5.1 Joint Convention<a class="headerlink" href="#51-joint-convention" title="Permanent link">&para;</a></h3>
+<p><strong>Pipe joints are solvent-weld (slip socket) by default — the run is glued PVC.</strong>
+<strong>Threaded (NPT) is used <em>only</em> where a run lands on a hard component that must be
+removable for service:</strong> pumps, filter housings, valves, check valves, tank
+bulkheads, sample taps, and the accumulator. Each such interface uses a <strong>slip×NPT
+transition adapter</strong> (a male adapter glued into the run, threaded into the
+component's port). This keeps the run cheap and leak-free while every component
+stays unthreadable for maintenance.</p>
+<p>Classifying the current BOM by this rule:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Connection</th>
+<th>Parts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Run joints — SLIP</strong></td>
+<td>glued PVC socket</td>
+<td>tees, elbows, cross, couplings, pipe</td>
+</tr>
+<tr>
+<td><strong>Component interfaces — THREADED</strong></td>
+<td>NPT (via slip×NPT adapter)</td>
+<td>ball/diverter/check valves, camlocks, tank bulkheads, pump &amp; filter ports, sample taps, accumulator</td>
+</tr>
+</tbody>
+</table>
+<p>Applying this convention <strong>(a) resolved 2026-07-27: the run material is PVC Sch-40</strong>
+(see §5.2 — the §5 table is updated). <strong>Still open (see <a href="TODO.md">TODO</a>):</strong> (b) the 1"
+run tees/elbows now carried as threaded <strong>Banjo FRPP</strong> move to PVC slip, and (c) a
+<strong>slip×NPT male adapter</strong> is added at each component interface (currently absent from
+the BOM). The valves, camlocks, bulkheads, check valve, and pump/filter ports stay threaded.</p>
+<h3 id="52-material-pvc-schedule-40-justification">5.2 Material: PVC Schedule 40 (justification)<a class="headerlink" href="#52-material-pvc-schedule-40-justification" title="Permanent link">&para;</a></h3>
+<p>The run pipe is <strong>PVC Sch-40, solvent-welded</strong>. PVC is chosen over HDPE because for this
+service the deciding factors are <strong>buildability and cost</strong>, not the toughness where HDPE leads:</p>
+<ul>
+<li><strong>Joining — decisive for a hand-built system.</strong> PVC solvent-welds with primer + cement and
+  hand tools; HDPE <em>cannot be glued</em> — it needs heat-fusion equipment or bulkier, costlier
+  mechanical/barbed fittings. Solvent-weld is what makes the §5.1 slip convention practical.</li>
+<li><strong>Pressure.</strong> At the 45 PSI Shurflo 2088 service, Sch-40 (½" ≈ 600 PSI @ 73 °F) carries a
+  ~13× margin — a non-issue for either material.</li>
+<li><strong>Chemistry.</strong> Both are fully compatible with the dilute cyanotype wash (potassium
+  ferricyanide, ferric ammonium oxalate, citric acid) — no advantage either way.</li>
+<li><strong>Cost &amp; availability.</strong> PVC pipe, fittings, and valves are the cheapest option and stocked
+  everywhere (Home Depot); HDPE fittings are scarcer and pricier.</li>
+</ul>
+<p><strong>The trade accepted:</strong> HDPE's edge is toughness — impact, vibration, and freeze resistance
+for a transported system. Both risks are mitigated operationally: the system is <strong>drained for
+transport</strong> (no freeze-crack, less vibration mass) and every <strong>pump connection uses flexible
+braided hose</strong> (absorbs vibration that would fatigue rigid joints); rigid runs are clipped at
+close intervals. Keep runs off the sunniest wall face — PVC softens near 60 °C, though it
+retains &gt; 200 PSI hot, far above service. (If a future deployment must travel wet or in freezing
+conditions, PEX is the tougher DIY alternative.)</p>
 <hr />
 <h2 id="6-flow-paths">6. Flow Paths<a class="headerlink" href="#6-flow-paths" title="Permanent link">&para;</a></h2>
 <h3 id="61-blue-system-clean-water-supply">6.1 Blue System — Clean Water Supply<a class="headerlink" href="#61-blue-system-clean-water-supply" title="Permanent link">&para;</a></h3>
@@ -3406,7 +3490,7 @@ plywood panel. The frame provides:</p>
 </ul>
 <p>Each filter housing mounts through its own <strong>mounting-hole ears</strong> — Big Blue
 heads are pre-drilled for wall mounting — with <strong>SS lag/wood screws straight into
-the 18mm plywood backing</strong> (no custom bracket). 25mm HDPE standoff blocks behind
+the 18mm plywood backing</strong> (no custom bracket). 25mm plywood-offcut standoff blocks behind
 each ear space the housing off the ply so the sump bowl hangs free and clears for
 cartridge changes. Two lag screws per housing.</p>
 <h3 id="73-pump-mounting">7.3 Pump Mounting<a class="headerlink" href="#73-pump-mounting" title="Permanent link">&para;</a></h3>
@@ -3507,32 +3591,11 @@ hardware are sourced there and in the IBC stacking frame line.</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Shurflo 2088-554-144 pump (P-01 Blue supply)</a></td>
-<td>12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports</td>
-<td>1 ea</td>
-<td>Fresh Water Systems / Amazon</td>
-<td>$80–$89</td>
-</tr>
-<tr>
-<td>Shurflo 2088-554-144 pump (P-03 waste evacuation)</td>
-<td>12VDC, 3.5 GPM, 45 PSI; empties IBC-4 residual below X4 (~120L)</td>
-<td>1 ea</td>
-<td>Fresh Water Systems / Amazon</td>
-<td>$80–$89</td>
-</tr>
-<tr>
-<td>Shurflo 2088-554-144 pump (P-04 tray drain transfer)</td>
-<td>12VDC, 3.5 GPM, 45 PSI; tray drain to IBC-3 (~900mm lift)</td>
-<td>1 ea</td>
-<td>Fresh Water Systems / Amazon</td>
-<td>$80–$89</td>
-</tr>
-<tr>
-<td>Shurflo 2088-554-144 pump (P-05 Brown drain)</td>
-<td>12VDC, 3.5 GPM, 45 PSI; evacuates IBC-3 (Brown) residual to the X3 end-wall port</td>
-<td>1 ea</td>
-<td>Fresh Water Systems / Amazon</td>
-<td>$80–$89</td>
+<td><a href="https://www.amazon.com/dp/B00C1M6B1C">Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 filter loop / P-03 waste evac / P-04 tray drain / P-05 Brown drain)</a> (B00C1M6B1C)</td>
+<td>12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports; 5 identical pumps, one per water-system duty (P-01..P-05). 2026-07-27: consolidated from 5 lines; firm $100 ea (Amazon B00C1M6B1C, was $80–89 Fresh Water Systems est)</td>
+<td>5 ea</td>
+<td>Amazon / Fresh Water Systems</td>
+<td>$500</td>
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/Seaflo-Accumulator-Control-Internal-Bladder/dp/B01MUYL8F8">SeaFlo accumulator (0.75 L)</a> (SFAT-075-125-01)</td>
@@ -3556,39 +3619,46 @@ hardware are sourced there and in the IBC stacking frame line.</p>
 <td>$29</td>
 </tr>
 <tr>
-<td>Corridor panel mount hardware (brackets + fasteners)</td>
-<td>6× steel angle brackets (panel → IBC-frame front-portal uprights), shirt-to-panel screws, lag bolts. Price est.</td>
+<td>6× steel angle brackets (corridor panel → IBC uprights)</td>
+<td>L-brackets fixing the corridor plumbing panel to the IBC-frame front-portal uprights. Price est.</td>
+<td>6 ea</td>
+<td>Home Depot</td>
+<td>$15–$39</td>
+</tr>
+<tr>
+<td>Corridor panel mount fasteners (shirt-to-panel screws + lag bolts)</td>
+<td>Shirt-to-panel screws + lag bolts landing the brackets into the panel/uprights. Price est.</td>
 <td>1 lot</td>
 <td>Home Depot</td>
-<td>$25–$50</td>
+<td>$10–$11</td>
 </tr>
 <tr>
-<td>Banjo V050FP ball valve 1/2" FNPT</td>
+<td><a href="https://www.usplastic.com/catalog/item.aspx?itemid=30651">Banjo V050FP ball valve 1/2" FNPT</a> (30651)</td>
 <td>PP full-port quarter-turn; pump-suction isolation BV-01 (P-01), BV-02 (P-05), BV-06 (P-03)</td>
 <td>3 ea</td>
-<td>Barn Door Ag / Amazon</td>
-<td>$90–$135</td>
+<td>US Plastic Corp / Amazon</td>
+<td>$133</td>
 </tr>
 <tr>
-<td>3-way diverter valve 1/2" FNPT</td>
-<td>L/T-port HDPE-compatible; 3W-DV-02 (tray drain)</td>
+<td><a href="https://www.usplastic.com/catalog/item.aspx?itemid=22365">3-way diverter valve 1/2" FNPT</a> (22365)</td>
+<td>L/T-port PVC-compatible; 3W-DV-02 (tray drain)</td>
 <td>1 ea</td>
-<td>Amazon</td>
-<td>$12–$22</td>
+<td>US Plastic Corp</td>
+<td>$24</td>
 </tr>
 <tr>
 <td>pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee</td>
 <td>pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build as SV-01</td>
 <td>1 ea</td>
-<td>Amazon</td>
+<td>US Plastic Corp</td>
 <td>$10–$18</td>
 </tr>
 <tr>
-<td>Steel flat bar 25×3mm — ribbon support cross-brace</td>
-<td>Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (the four corridor↔pinhole lines); ~300mm each</td>
-<td>4 ea</td>
-<td>Home Depot</td>
-<td>$8–$16</td>
+<td><a href="https://www.mcmaster.com/6775T37-6775T373/">Steel flat bar 25×3mm — ribbon support cross-brace</a> (6775T37)</td>
+<td>Low-carbon steel flat bar 25×3mm × 3 ft. Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (four corridor↔pinhole lines); 4 braces ~300mm each = cut from 2× 3-ft bars (2 spare pieces).</td>
+<td>2 3ft bar</td>
+<td>McMaster-Carr</td>
+<td>$35</td>
 </tr>
 <tr>
 <td>Cushioned pipe clip</td>
@@ -3602,7 +3672,7 @@ hardware are sourced there and in the IBC stacking frame line.</p>
 <td></td>
 <td></td>
 <td></td>
-<td><strong>$570–$729</strong></td>
+<td><strong>$832–$892</strong></td>
 </tr>
 </tbody>
 </table>
@@ -3622,13 +3692,6 @@ hardware are sourced there and in the IBC stacking frame line.</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://www.amazon.com/Shurflo-2088-554-144-Fresh-Gallons-Minute/dp/B00C1M6B1C">Shurflo 2088-554-144 pump (P-02 filter loop)</a></td>
-<td>12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports</td>
-<td>1 ea</td>
-<td>Fresh Water Systems / Amazon</td>
-<td>$80–$89</td>
-</tr>
-<tr>
 <td>Big Blue filter housing 4.5"×20" (separate)</td>
 <td>Ø184×594mm/housing (4.5×20), 1" NPT ports — three SEPARATE housings on the slotted-angle skid frame (Pentek / iSpring / Geekpure)</td>
 <td>3 ea</td>
@@ -3636,18 +3699,18 @@ hardware are sourced there and in the IBC stacking frame line.</p>
 <td>$114–$186</td>
 </tr>
 <tr>
-<td>Slotted steel angle frame 25×25×3mm (filter skid)</td>
-<td>~2.5 m 25×25×3mm slotted steel angle + fasteners; bolts to the 18mm ply backing (adjustable housing height)</td>
-<td>1 lot</td>
-<td>Home Depot</td>
-<td>$25–$45</td>
+<td><a href="https://www.freshwatersystems.com/products/mounting-bracket-white-single-housing-for-10-20-big-blue-housings">Big Blue housing mounting brackets (×3)</a> (150061)</td>
+<td>Pentair 150061 zinc-plated single-housing mounting bracket, one per 4.5×20 Big Blue (×3), lag-screwed to the 18mm ply backing. Purpose-built — replaces the welded slotted-angle frame (Alvin 2026-07-27).</td>
+<td>3 ea</td>
+<td>Fresh Water Systems</td>
+<td>$32</td>
 </tr>
 <tr>
-<td>SS lag/wood screws — filter housings to ply backing</td>
-<td>2 per housing × 3 — 5/16 SS lag/wood screws through the housing's mounting-hole ears into the 18mm plywood backing (no custom bracket). Pin SKU at order.</td>
-<td>6 ea</td>
+<td><a href="https://www.homedepot.com/p/302007729">SS lag/wood screws — filter housings to ply backing</a> (812670)</td>
+<td>2 per housing × 3 = 6 needed — Everbilt 5/16"×1½" SS hex lag screws through the housing's mounting-hole ears into the 18mm plywood backing (no custom bracket). Sold in 5-packs → 2 packs (10, 4 spare).</td>
+<td>2 5-pack</td>
 <td>Home Depot</td>
-<td>$3–$9</td>
+<td>$14</td>
 </tr>
 <tr>
 <td>Plywood offcut spacer blocks 25mm (filter skid)</td>
@@ -3657,17 +3720,10 @@ hardware are sourced there and in the IBC stacking frame line.</p>
 <td>$0</td>
 </tr>
 <tr>
-<td>1" HDPE inter-housing jumpers</td>
-<td>F-01 OUT→F-02 IN, F-02 OUT→F-03 IN — 1" HDPE + 90° elbows routed outside the bodies</td>
-<td>1 lot</td>
-<td>Ferguson</td>
-<td>$18–$32</td>
-</tr>
-<tr>
 <td>MPP 5-micron sediment cartridge 4.5"×20"</td>
 <td>Melt-blown polypropylene depth filter (F-1 stage); ~50-print interval</td>
 <td>2 ea</td>
-<td>Amazon</td>
+<td>Fresh Water Systems</td>
 <td>$24–$40</td>
 </tr>
 <tr>
@@ -3685,24 +3741,24 @@ hardware are sourced there and in the IBC stacking frame line.</p>
 <td>$32–$60</td>
 </tr>
 <tr>
-<td>Banjo V050FP ball valve 1/2" FNPT</td>
+<td><a href="https://www.usplastic.com/catalog/item.aspx?itemid=30651">Banjo V050FP ball valve 1/2" FNPT</a> (30651)</td>
 <td>PP full-port quarter-turn; pump-suction isolation BV-03 (P-02)</td>
 <td>1 ea</td>
-<td>Barn Door Ag / Amazon</td>
-<td>$30–$45</td>
+<td>US Plastic Corp / Amazon</td>
+<td>$44</td>
 </tr>
 <tr>
-<td>3-way diverter valve 1" FNPT</td>
+<td><a href="https://www.usplastic.com/catalog/item.aspx?itemid=31268">3-way diverter valve 1" FNPT</a> (31268)</td>
 <td>L/T-port; 3W-DV-01 (filter output)</td>
 <td>1 ea</td>
-<td>Amazon</td>
-<td>$18–$30</td>
+<td>US Plastic Corp</td>
+<td>$61</td>
 </tr>
 <tr>
 <td>pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee</td>
 <td>Filtered-water sample draw before 3W-DV-01; Banjo V050FP 1/2" PP ball valve + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line</td>
 <td>1 ea</td>
-<td>Amazon</td>
+<td>US Plastic Corp</td>
 <td>$10–$18</td>
 </tr>
 <tr>
@@ -3710,7 +3766,7 @@ hardware are sourced there and in the IBC stacking frame line.</p>
 <td></td>
 <td></td>
 <td></td>
-<td><strong>$419–$649</strong></td>
+<td><strong>$396–$550</strong></td>
 </tr>
 </tbody>
 </table>

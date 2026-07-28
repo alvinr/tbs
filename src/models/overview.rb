@@ -11700,25 +11700,58 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Ext. Power Panel (exterior)
+  # EP box front face (flange)
   grp = ents.add_group
-  grp.name = "Ext. Power Panel (exterior)"
-  face = grp.entities.add_face([1250.mm,-65.mm,1830.mm], [1590.mm,-65.mm,1830.mm], [1590.mm,-40.mm,1830.mm], [1250.mm,-40.mm,1830.mm])
+  grp.name = "EP box front face (flange)"
+  face = grp.entities.add_face([1250.mm,-65.mm,1830.mm], [1590.mm,-65.mm,1830.mm], [1590.mm,-62.mm,1830.mm], [1250.mm,-62.mm,1830.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(240.mm)
-  mat = model.materials["Ext. Power Panel (exterior)"] || model.materials.add("Ext. Power Panel (exterior)")
-  mat.color = Sketchup::Color.new(200, 216, 232)
-  mat.alpha = 0.55
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
   grp.material = mat
 
-  # Ext. Power Panel (interior face)
+  # EP box shroud (left)
   grp = ents.add_group
-  grp.name = "Ext. Power Panel (interior face)"
-  face = grp.entities.add_face([1250.mm,0.mm,1830.mm], [1590.mm,0.mm,1830.mm], [1590.mm,20.mm,1830.mm], [1250.mm,20.mm,1830.mm])
+  grp.name = "EP box shroud (left)"
+  face = grp.entities.add_face([1272.mm,-62.mm,1852.mm], [1280.mm,-62.mm,1852.mm], [1280.mm,28.mm,1852.mm], [1272.mm,28.mm,1852.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(240.mm)
-  mat = model.materials["Fuse G (10A — white LED)"] || model.materials.add("Fuse G (10A — white LED)")
-  mat.color = Sketchup::Color.new(241, 196, 15)
+  face.pushpull(196.mm)
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EP box shroud (right)
+  grp = ents.add_group
+  grp.name = "EP box shroud (right)"
+  face = grp.entities.add_face([1560.mm,-62.mm,1852.mm], [1568.mm,-62.mm,1852.mm], [1568.mm,28.mm,1852.mm], [1560.mm,28.mm,1852.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(196.mm)
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EP box shroud (bottom)
+  grp = ents.add_group
+  grp.name = "EP box shroud (bottom)"
+  face = grp.entities.add_face([1272.mm,-62.mm,1852.mm], [1568.mm,-62.mm,1852.mm], [1568.mm,28.mm,1852.mm], [1272.mm,28.mm,1852.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # EP box shroud (top)
+  grp = ents.add_group
+  grp.name = "EP box shroud (top)"
+  face = grp.entities.add_face([1272.mm,-62.mm,2040.mm], [1568.mm,-62.mm,2040.mm], [1568.mm,28.mm,2040.mm], [1272.mm,28.mm,2040.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Left cantilever 1 foot plate"] || model.materials.add("Left cantilever 1 foot plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -11800,28 +11833,48 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # NEMA 5-15R shore inlet
+  # NEMA 5-15 shore inlet
   grp = ents.add_group
-  grp.name = "NEMA 5-15R shore inlet"
+  grp.name = "NEMA 5-15 shore inlet"
   face = grp.entities.add_face([1472.28.mm,-95.mm,2018.72.mm], [1532.28.mm,-95.mm,2018.72.mm], [1532.28.mm,-65.mm,2018.72.mm], [1472.28.mm,-65.mm,2018.72.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(45.mm)
-  mat = model.materials["NEMA 5-15R shore inlet"] || model.materials.add("NEMA 5-15R shore inlet")
+  mat = model.materials["NEMA 5-15 shore inlet"] || model.materials.add("NEMA 5-15 shore inlet")
   mat.color = Sketchup::Color.new(255, 240, 204)
   mat.alpha = 1.0
   grp.material = mat
 
-  # GFCI AC outlet (Cct E cooler)
+  # NEMA inlet weatherproof cover
   grp = ents.add_group
-  grp.name = "GFCI AC outlet (Cct E cooler)"
-  ge = grp.entities
-  circle = ge.add_circle([1510.78.mm,-85.mm,1908.mm], [0,1,0], 12.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
-  mat.color = Sketchup::Color.new(232, 136, 74)
+  grp.name = "NEMA inlet weatherproof cover"
+  face = grp.entities.add_face([1466.28.mm,-107.mm,2012.72.mm], [1538.28.mm,-107.mm,2012.72.mm], [1538.28.mm,-95.mm,2012.72.mm], [1466.28.mm,-95.mm,2012.72.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(57.mm)
+  mat = model.materials["NEMA inlet weatherproof cover"] || model.materials.add("NEMA inlet weatherproof cover")
+  mat.color = Sketchup::Color.new(214, 230, 245)
+  mat.alpha = 0.5
+  grp.material = mat
+
+  # WR duplex outlet (Cct E cooler)
+  grp = ents.add_group
+  grp.name = "WR duplex outlet (Cct E cooler)"
+  face = grp.entities.add_face([1487.78.mm,-87.mm,1878.mm], [1533.78.mm,-87.mm,1878.mm], [1533.78.mm,-65.mm,1878.mm], [1487.78.mm,-65.mm,1878.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(60.mm)
+  mat = model.materials["NEMA 5-15 shore inlet"] || model.materials.add("NEMA 5-15 shore inlet")
+  mat.color = Sketchup::Color.new(255, 240, 204)
   mat.alpha = 1.0
+  grp.material = mat
+
+  # WR duplex in-use cover
+  grp = ents.add_group
+  grp.name = "WR duplex in-use cover"
+  face = grp.entities.add_face([1481.78.mm,-101.mm,1872.mm], [1539.78.mm,-101.mm,1872.mm], [1539.78.mm,-87.mm,1872.mm], [1481.78.mm,-87.mm,1872.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(72.mm)
+  mat = model.materials["NEMA inlet weatherproof cover"] || model.materials.add("NEMA inlet weatherproof cover")
+  mat.color = Sketchup::Color.new(214, 230, 245)
+  mat.alpha = 0.5
   grp.material = mat
 
   # E-stop collar (safety yellow)
@@ -11892,7 +11945,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -11906,7 +11959,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -11920,7 +11973,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -11934,7 +11987,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -11948,7 +12001,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -11962,7 +12015,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -11976,7 +12029,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -11990,7 +12043,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12004,7 +12057,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12018,7 +12071,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12032,7 +12085,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12046,7 +12099,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12060,7 +12113,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12074,7 +12127,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12088,7 +12141,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12102,7 +12155,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12116,7 +12169,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12130,7 +12183,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12144,7 +12197,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12158,7 +12211,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12172,7 +12225,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12186,7 +12239,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12200,7 +12253,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12214,7 +12267,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12228,7 +12281,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12242,7 +12295,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12256,7 +12309,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12270,7 +12323,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12284,7 +12337,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12298,7 +12351,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12312,7 +12365,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12326,7 +12379,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12340,7 +12393,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12354,7 +12407,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12368,7 +12421,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12382,7 +12435,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12396,7 +12449,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12410,7 +12463,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12424,7 +12477,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12438,7 +12491,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12452,7 +12505,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12466,7 +12519,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12480,7 +12533,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12494,7 +12547,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12508,7 +12561,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12522,7 +12575,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12536,7 +12589,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12550,7 +12603,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12564,7 +12617,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12578,7 +12631,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12592,7 +12645,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12606,7 +12659,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12620,7 +12673,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12634,7 +12687,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12648,7 +12701,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12662,7 +12715,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12676,7 +12729,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12690,7 +12743,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12704,7 +12757,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12718,7 +12771,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12732,7 +12785,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12746,7 +12799,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12760,7 +12813,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12774,7 +12827,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12788,7 +12841,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12802,7 +12855,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12816,7 +12869,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12830,7 +12883,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12844,7 +12897,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12858,7 +12911,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12872,7 +12925,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12886,7 +12939,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12900,7 +12953,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12914,7 +12967,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12928,7 +12981,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12942,7 +12995,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12956,7 +13009,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12970,7 +13023,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12984,7 +13037,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -12998,7 +13051,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -13012,7 +13065,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -13026,7 +13079,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -13040,7 +13093,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -13054,7 +13107,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -13068,7 +13121,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -13082,7 +13135,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -13096,7 +13149,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -13110,7 +13163,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -13124,7 +13177,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -13138,7 +13191,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -13152,7 +13205,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -13166,7 +13219,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -13180,7 +13233,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -13194,7 +13247,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -13208,7 +13261,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -13222,7 +13275,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat
@@ -13236,7 +13289,7 @@ end
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["GFCI AC outlet (Cct E cooler)"] || model.materials.add("GFCI AC outlet (Cct E cooler)")
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
   mat.color = Sketchup::Color.new(232, 136, 74)
   mat.alpha = 1.0
   grp.material = mat

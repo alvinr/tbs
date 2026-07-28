@@ -367,9 +367,12 @@ PWR_PANEL_W = 340    # face plate width (mm)
 PWR_PANEL_H = 240    # face plate height (mm)
 PWR_PANEL_Z = 1830   # face plate bottom Z (mm) — exterior; kept here (no beam clash). NOTE: the interior
                      # EP DROPPED 150 in rev11 for brace-beam clearance, so it's no longer co-centered.
-PWR_PANEL_D = 3      # face plate thickness (mm) — flush-mount, no protrusion
-PWR_PANEL_CUTOUT_W = 280   # wall cutout width (mm) — 30mm overlap each side
+PWR_PANEL_D = 3      # front-face flange plate thickness (mm) — fabricated steel plate
+PWR_PANEL_CUTOUT_W = 280   # wall cutout width (mm) — 30mm flange overlap each side
 PWR_PANEL_CUTOUT_H = 180   # wall cutout height (mm)
+PWR_PANEL_BOX_D    = 90    # penetration-box shroud depth (mm) — flange face -> interior
+                           # opening; spans the corrugated wall + sits slightly proud inside
+PWR_PANEL_SHROUD_T = 8     # shroud side-wall thickness (mm)
 
 # ── Pinhole wall face (Y = 0, shadow-free) ────────────────────────────────────
 EP_X       = 1829    # electrical panel/column left edge X (mm) — set so the column right edge

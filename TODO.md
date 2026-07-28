@@ -40,11 +40,10 @@ bucketed by WHEN it can be acted on:_
     slip×NPT male adapters where the glued run meets each threaded component. Unit prices firm at Home
     Depot (½" PVC021090600HD $0.79, 1" PVC021091000HD $1.16); qty held at **~40 est** — the exact count
     + ½"/1" split still needs a **schematic trace**.
-  - [ ] **X1 topology — align the water schematic to the confirmed 4-way cross.** Alvin confirmed 2026-07-27
-    the DV-01 blue recycle **joins X1** (4-way cross — as the 3D model + corridor panel-layout + plumbing-report
-    already build). The **water-system schematic (`generate_water_system.py` sheet 1) + water-system-report §**
-    still show it as a 3-way tee with the recycle as a *separate* IBC-2 side-entry — reroute the recycle to join
-    X1 and regenerate, so all artifacts agree. (`cross-100` re-sourced Amazon B0CGGV74MB $5.99.)
+  - [x] **X1 topology — DONE 2026-07-27.** Water schematic (sheet 1) rerouted so the DV-01 blue recycle JOINS
+    the X1 fill header (4-way cross), not a separate IBC-2 side-entry; water-report prose + §5 pipe table
+    tee→cross; `tee-100` dropped its redundant X1-fill-split tee (qty 4→3). All 5 artifacts (parts, schematic,
+    panel-layout, 3D model, reports) now agree on the X1 4-way cross (`cross-100`, Amazon B0CGGV74MB $5.99).
   - [x] **`union-half` — RESOLVED 2026-07-27 (Option C hybrid).** Split into `coupling-half` (4× permanent
     Charlotte slip couplings $0.74) + `union-half` (2× true ½" PVC service unions ~$3–4 at the pump manifold
     + filter-bank inlet). Per-component service is already covered by the threaded ports, so only 2 mid-run

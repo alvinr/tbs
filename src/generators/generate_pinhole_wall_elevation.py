@@ -44,7 +44,7 @@ CORD_HANG_Z = PULL_CORD_BOTTOM_Z   # 1180 — cord bottom; clears the deployed c
 TK_H = 25                   # trunking height (mm)
 TK_Z = C_HGT - TK_H        # 2363mm — trunking bottom Z
 
-# Power panel Z (flush-mount, exterior — shown as dashed outline)
+# Power panel Z (penetration box, exterior — shown as dashed outline)
 PWR_PANEL_Z = 900              # external power panel bottom Z (fixed, not tied to EP height)
 
 # Colors
@@ -336,7 +336,7 @@ equip_block(EVAP_STOW_X, EVAP_STOW_Z, EVAP_W, EVAP_H,
             ls="--", alpha=0.25, lw=1.0, zorder=3, label_fs=4.5,
             label_color="#666666")
 
-# ── External power panel (flush-mount, exterior — dashed outline) ──────────
+# ── External power panel (penetration box, exterior — dashed outline) ──────
 equip_block(PWR_PANEL_X, PWR_PANEL_Z, PWR_PANEL_W, PWR_PANEL_H,
             "EXT. POWER\nPANEL\n(FLUSH)", C_ALUM,
             ls="--", alpha=0.4, label_fs=4.5)
@@ -612,7 +612,7 @@ notes = [
     "3. Pinhole wall carries the wet-end filter loop: P-02, the 3-stage Big Blue bank (F-01/F-02/F-03)"
     " high under the ceiling, and SV-01. Corridor pumps P-01/P-03/P-04/P-05 + ACC-01 + DV-01/DV-02 are",
     " in the IBC corridor (Yd=1046). See panel-layout / pinhole-panel detail.",
-    "4. Ext. power panel (dashed) is flush-mount on EXTERIOR face — no interior conflict.",
+    "4. Ext. power panel (dashed) is a penetration box on the EXTERIOR face — no interior conflict.",
     f"5. Chemistry shelf (dashed) is ceiling-hung, projecting Yd0–{SHELF_DEPTH}mm into the near walkway zone.",
     "6. Shelf hanger rods pass through cable trunking zone — requires grommets/slots in trunking lid.",
     f"7. Battery bank: 2×100Ah LiFePO4 stacked, {BA_D}mm deep. Right edge (X={BA_X + BA_W}) clears the pinhole cone"

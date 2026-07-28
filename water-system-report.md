@@ -346,7 +346,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | [Pump-mount shirt ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — pump-mount shirt (~610×1650 cut) behind P-01..P-05 + 6× spacer blocks. Same SKU as ply-18; 5× Shurflo 2088 (~6.5 kg total) need no more than 3/4". STANDARD exterior per project rule (was marine ~$212). Firm $29.30 (Home Depot 2026-07-23). May nest with ply-18 in one sheet at cut — carried separate for margin. Double-layer locally if extra pump-rail stiffness wanted. | 1 sheet | Home Depot | $29 |
 | 6× steel angle brackets (corridor panel → IBC uprights) | L-brackets fixing the corridor plumbing panel to the IBC-frame front-portal uprights. Price est. | 6 ea | Home Depot | $15–$39 |
 | Corridor panel mount fasteners (shirt-to-panel screws + lag bolts) | Shirt-to-panel screws + lag bolts landing the brackets into the panel/uprights. Price est. | 1 lot | Home Depot | $10–$11 |
-| [Big Blue filter housing 4.5"×20" (separate)](https://www.amazon.com/dp/B09QLKFJGV) (B09QLKFJGV) | Ø184×594mm/housing (4.5×20), 1" NPT ports — three SEPARATE Pentair Pentek 150468 high-flow PP housings on the mounting brackets | 3 ea | Amazon | $215 |
+| [Big Blue filter housing 4.5"×20" (separate)](https://www.amazon.com/dp/B0137680E6) (B0137680E6) | Ø184×594mm/housing (4.5×20), 1" NPT ports, accepts standard 20"×4.5" cartridges (Alvin-verified 2026-07-27) — three SEPARATE Pentair Pentek 150234 high-flow PP housings on the mounting brackets | 3 ea | Amazon | $250 |
 | [Big Blue housing mounting brackets (×3)](https://www.freshwatersystems.com/products/mounting-bracket-white-single-housing-for-10-20-big-blue-housings) (150061) | Pentair 150061 zinc-plated single-housing mounting bracket, one per 4.5×20 Big Blue (×3), lag-screwed to the 18mm ply backing. Purpose-built — replaces the welded slotted-angle frame (Alvin 2026-07-27). | 3 ea | Fresh Water Systems | $32 |
 | [SS lag/wood screws — filter housings to ply backing](https://www.homedepot.com/p/302007729) (812670) | 2 per housing × 3 = 6 needed — Everbilt 5/16"×1½" SS hex lag screws through the housing's mounting-hole ears into the 18mm plywood backing (no custom bracket). Sold in 5-packs → 2 packs (10, 4 spare). | 2 5-pack | Home Depot | $14 |
 | Plywood offcut spacer blocks 25mm (filter skid) | 25mm standoff blocks between the housing's mounting ears and the ply backing — sump-bowl hang clearance (the housing lag-screws through them into the ply). Cut from PLYWOOD OFFCUTS (Alvin 2026-07-25 — no need for HDPE; dry standoff, not a wet-immersion part). | 1 lot | offcuts | $0 |
@@ -390,7 +390,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $18–$40 |
-| **Water total** | | | | **$3,452–$3,658** |
+| **Water total** | | | | **$3,488–$3,693** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

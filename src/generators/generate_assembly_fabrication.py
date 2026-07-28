@@ -204,8 +204,8 @@ def sheet1():
     ax.text(PUMP_X+PUMP_W/2, (PUMP_H_LO+PUMP_H_HI)/2, "PUMP",
             ha="center", va="center", fontsize=FS_SM-2, color="white", zorder=5)
 
-    # ── External power panel (flush-mount in pinhole wall — ghost) ──────────
-    # Side elevation: panel is flush in the pinhole wall (bottom wall, Y=0).
+    # ── External power panel (penetration box in pinhole wall — ghost) ──────
+    # Side elevation: penetration box in the pinhole wall (bottom wall, Y=0).
     # Show the aluminum face plate as a ghost rectangle on the wall face,
     # and the cutout as a lighter dashed rectangle inside it.
     from tbs_constants import PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H
@@ -328,7 +328,7 @@ def sheet1():
         ("9",  "Exhaust fan",                        "TBS-EL01"),
         ("10", "Intake fan",                         "TBS-EL01"),
         ("11", "Processing tray (304 SS, 2 panels)", "TBS-WS01"),
-        ("12", "Ext power panel (flush-mount, exterior)", "TBS-EL01"),
+        ("12", "Ext power panel (penetration box, exterior)", "TBS-EL01"),
     ]
     for i, (num, desc, ref) in enumerate(refs):
         yy = REF_Y - 75 - i*REF_DY

@@ -213,8 +213,8 @@ def floor_plan():
     equip_rect(ax, EQPANEL_X, CORRIDOR_YD_NEAR, EQPANEL_W, CORRIDOR_W,
                C_PUMP, "EQUIP PANEL\n(PUMPS+FILTERS)", label_color="#000000", zorder=7, alpha=0.8)
 
-    # External power panel (flush-mount, exterior of pinhole wall)
-    PP_DEPTH = 60   # schematic depth on exterior face
+    # External power panel (penetration box, exterior of pinhole wall)
+    PP_DEPTH = 60   # schematic depth of the flange + proud devices on the exterior face
     ax.add_patch(Rectangle(
         (PWR_PANEL_X, -WALL - PP_DEPTH), PWR_PANEL_W, PP_DEPTH,
         fc=C_ALUM, ec=C_OUT, lw=1.2, alpha=0.9, zorder=6))
@@ -452,7 +452,7 @@ def floor_plan():
         (C_PINHOLE,   "Revolving light-trap drum"),
         (C_PROC_ZONE, "Processing tray (304 SS, 50mm rim)"),
         ("#D0C8B8",   f"Perimeter walkway ({WALKWAY_W}mm, removable grated)"),
-        (C_ALUM,     "Ext power panel (flush-mount, exterior)"),
+        (C_ALUM,     "Ext power panel (penetration box, exterior)"),
     ], 0, leg_y_top, cols=3, col_w=1900, font=FONT, zorder=8)
 
     # ── Film left-rail demountable segment (drum-mode clearance) ─────────────

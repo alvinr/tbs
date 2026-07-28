@@ -206,7 +206,7 @@ ax.text(FLT_X0 + FLT_W/2, (PWP_FILTER_BOT_Z + PWP_FILTER_TOP_Z)/2, "Filter panel
 leader(ax, FLT_X0, PWP_FILTER_TOP_Z, FLT_X0 - 900, PWP_FILTER_TOP_Z + 60,
        f"Pinhole-wall filter panel  (F1/F2/F3 + P-02, Yd\u22480)\nX={FLT_X0}\u2013{FLT_X0+FLT_W}mm", ha="right", fs=FS_SM)
 
-# External power panel — flush-mount on exterior of pinhole wall (ghost from this view)
+# External power panel — penetration box on exterior of pinhole wall (ghost from this view)
 PP_CTR_H = (EP_H_LO + EP_H_HI) / 2
 PP_H_BOT = PP_CTR_H - PWR_PANEL_H / 2
 ax.add_patch(mpatches.FancyBboxPatch(

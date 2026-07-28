@@ -165,7 +165,7 @@ WALKWAY = [
 # $4,063/$6,104). Source: project-cost-breakdown.md §5.
 WATER = [
     LineItem("Water storage (4× IBC totes @ $150, 3× bulkhead fittings @ $137 ea, X1 fill tee)", 1010, 1010, 1010, "2026-07-23: IBC totes firm ~$150/ea (reconditioned food-grade SoCal)"),
-    LineItem("IBC stacking frame (RHS deep 4-leg box + 4 feet + retaining bars + hangers + 8 weld-on lashing rings + fab)", 1041, 1287, 1533, "2026-07-22: floor anchors → #14×3¼″ 410 SS self-drillers (land feet over crossmembers) −$14/−$44. 2026-07-25: wall-hanger through-bolts M12×40→M12×65 ×16 (grip fix) + M12 nuts/washers + 4 exterior 100×135×8 backing plates (+$59/+$72); front-bar cleats stay M12×40 ×8."),
+    LineItem("IBC stacking frame (RHS deep 4-leg box + 4 feet + retaining bars + hangers + 8 weld-on lashing rings + 4× 2\" transport straps + fab)", 1079, 1315, 1551, "2026-07-22: floor anchors → #14×3¼″ 410 SS self-drillers (land feet over crossmembers) −$14/−$44. 2026-07-25: wall-hanger through-bolts M12×40→M12×65 ×16 (grip fix) + M12 nuts/washers + 4 exterior 100×135×8 backing plates (+$59/+$72); front-bar cleats stay M12×40 ×8."),
     LineItem("Pumps and accumulator (P-01..P-05 + ACC-01, 5× mount brackets)", 586, 586, 586, "2026-07-27: 5× Shurflo 2088 consolidated → 1 line, firm $100 ea (Amazon B00C1M6B1C, was $80–89) +$100 low/+$55 high"),
     LineItem("Corridor plumbing panel structure (23/32\" exterior ply backing + drain-riser spine, pump-mount shirt, mount brackets + fasteners)", 84, 96, 109, "2026-07-23: both ply parts firm 23/32\" RTD $29.30 (Home Depot); shirt confirmed 3/4\" (5× Shurflo 2088, ~6.5 kg — no need for 1\"). Brackets $25-50 est."),
     LineItem("Under-walkway pipe-ribbon supports (4× welded cross-braces + 16 pipe clips)", 51, 59, 67, "2026-07-27: cross-brace bar firm — McMaster 6775T37 25×3mm×3ft $17.57 ×2 (4 braces cut from 2 bars)"),
@@ -1019,9 +1019,9 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 951,  "total": 1250, "per_print": 25},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "standard": {"chem": 1414, "total": 1710, "per_print": 34},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "rich":     {"chem": 2802, "total": 3100, "per_print": 62},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
-    "grand_total": (28324, 32997, 39760),  # 2026-07-27: tee-100 X1-split de-dup (−$2, X1 is cross-100). Earlier: KDF Aquaboon, X1 cross, canopy 1" EMT, Big Blue 150234, the sourcing run.
+    "grand_total": (28362, 33025, 39778),  # 2026-07-28: IBC 2" transport straps firm (+$38 low). Earlier: X1 cross topology, KDF Aquaboon, canopy 1" EMT, Big Blue 150234, the sourcing run.
     "walkway": (1979, 2395, 2825),  # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
-    "water": (6431, 7171, 7947),  # 2026-07-27: X1 confirmed 4-way cross → tee-100 dropped its X1-fill-split tee (qty 4→3, −$2). KDF Aquaboon $79.83; X1 cross $5.99; sediment Pentek $30.83; Big Blue 150234.
+    "water": (6469, 7199, 7965),  # 2026-07-28: IBC transport strap firmed + spec-corrected — Keeper 82827 2" 3,333lb WLL $16.98 ×4 (was 25mm/1,100kg est, width fixed 25→50mm, +$38/+$18). Earlier: X1 cross de-dup; KDF Aquaboon; Big Blue 150234.
     "container": (2300, 3300, 4300),
     "lightlock": (2046, 2280, 2516),   # 2026-07-27: light-trap seam silicone firm — Maxisil black 10.5oz $19.91 (+$14/+$10). 2026-07-22: Ø900 housing (46685 3/16" HDPE ×3 = $555) + Ø864 drum firmed to 1/8" black HDPE ×3 = $370.  §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (1180, 1395, 1610),   # 2026-07-22: journal bushings → igus iglide J JFM-9095-100 $130.53/ea (from GGB DU $211.25) −$162/pair.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame)   # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items

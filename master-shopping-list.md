@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,173 | $6,711 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,431 | $7,947 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,469 | $7,965 |
 | 6. Electrical — power, circuits, wiring | $2,993 | $3,029 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$28,274** | **~$36,820** |
+| **TOTAL (base build + 50-print run)** | **~$28,312** | **~$36,838** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -229,7 +229,7 @@ indicative low–high estimates — get quotes before ordering.
 | [10mm × 60mm 304 SS axle pins (4-pack) — skate axles](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) (B0816MQ5T6) | 4 pack | Amazon | film | $20 |
 | [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | 8 ea | McMaster-Carr | ibc-frame | $40 |
 | [Self-drilling structural screw, #14×3¼″ winged, 410 SS](https://www.fastenersplus.com/products/14-x-3-1-4-self-drilling-flat-head-screw-with-wings-410-stainless-steel-pkg-100) (F14C325FDC) | 16 ea | Fasteners Plus | ibc-frame | $16 |
-| 25mm ratchet strap, 1,100 kg WLL | 4 ea | Amazon | ibc-frame | $30–$50 |
+| [2" (50mm) ratchet strap, 3,333 lb WLL](https://www.homedepot.com/p/331257450) (82827) | 4 ea | Home Depot | ibc-frame | $68 |
 | [Stainless fasteners + nylon isolation washers](https://www.usplastic.com/catalog/item.aspx?itemid=155501) (92674) | 1 lot | US Plastic + Amazon | lightlock | $45–$60 |
 | [100mm Ø SS grab rail](https://www.marinefiberglassdirect.com/products/16-stainless-steel-safety-grab-bar-bolt-on-for-marine-dock-deck-boat-pool-hot-tub) | 1 ea | Marine Fiberglass Direct | lightlock | $25–$45 |
 | Misc. conversion hardware (contingency buffer) | 1 lot | Home Depot | interior | $80–$130 |
@@ -253,7 +253,7 @@ indicative low–high estimates — get quotes before ordering.
 | Nylon zip ties, 200mm | 6 ea | Amazon | spray | $1 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,544–$1,980** |
+| **fasteners-hardware subtotal** | | | | **$1,582–$1,998** |
 
 ### plastics-sheet
 
@@ -433,9 +433,9 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,140–$3,492 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,877–$2,451 |
-| Amazon | 33 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,871–$1,984 |
+| Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,841–$1,934 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
-| Home Depot | 42 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,359–$1,495 |
+| Home Depot | 43 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,427–$1,563 |
 | Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,000–$1,420 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |

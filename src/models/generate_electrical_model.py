@@ -16,7 +16,7 @@ Tags / scenes:
     Solar Array    3x 200W panels on a 30deg ground tilt frame + PV run
     Power Core     ghosted enclosure + MPPT / fuse block / busbars / disconnect
     Battery        100Ah pack (+ ghost 2nd) + contactor + MRBF main fuse
-    External Panel flush face + MC4 / NEMA / GFCI cooler outlet + E-stop
+    External Panel penetration box + MC4 / NEMA inlet / WR cooler outlet + E-stop
     Inverter       Circuit-E 12->120V inverter
     Circuit Runs   ceiling trunking spine + 7 color-coded circuits A-G to the loads
   Scenes: Overview, Power Core, Distribution, External Panel, Labeled.
@@ -35,7 +35,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov   # helpers + conventions (Overview)
-from tbs_constants import EP_X, EP_W, EP_H_LO, EP_H_HI, EP_COL_W, BA_STACK_Z2, BA_STACK_TOP, EP_POST_Z, EP_RISE_X_M, PV_DISC_X, PV_DISC_Z, EP_DISC_Z, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PWP_P02_X, PWP_P02_Z0, PWP_P02_H
+from tbs_constants import EP_X, EP_W, EP_H_LO, EP_H_HI, EP_COL_W, BA_STACK_Z2, BA_STACK_TOP, EP_POST_Z, EP_RISE_X_M, PV_DISC_X, PV_DISC_Z, EP_DISC_Z, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, PWR_PANEL_BOX_D, PWR_PANEL_SHROUD_T, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PWP_P02_X, PWP_P02_Z0, PWP_P02_H
 
 TAGS = ["Context", "Solar Array", "Power Core", "Battery", "External Panel",
         "Inverter", "Circuit Runs", "Labels"]
@@ -130,7 +130,7 @@ ELEC_POINT_LABELS = [
     (INVERTER_X + INVERTER_W / 2, INVERTER_D / 2, INVERTER_Z + INVERTER_H,
      "CCT-E INVERTER\n12->120V AC (cooler)", -430, 820, 480),
     (PWR_PANEL_X + PWR_PANEL_W / 2, -WALL - 40, PWR_PANEL_Z + PWR_PANEL_H + 20,
-     "EXTERNAL PANEL\nMC4 PV / shore / GFCI cooler / E-STOP", 220, -520, 380),
+     "EXTERNAL PANEL\nMC4 PV / shore / WR cooler / E-STOP", 220, -520, 380),
     (EVAP_DUCT_X, -WALL - EVAP_D / 2 - 120, EVAP_H,
      "EVAP COOLER\n(Hessaire MC18M, Cct E)", -260, -520, 520),
     (EQPANEL_X, EQPANEL_YD + EQPANEL_YD_SPAN / 2, PUMP_H_HI - 40,
@@ -431,30 +431,50 @@ def pv_disconnect():
 
 
 def external_panel(include_estop=True, include_disconnect=True):
-    """Flush external power panel + MC4 PV bulkheads, NEMA shore inlet, GFCI cooler
-    outlet (Circuit E), the exterior E-stop, and the PV disconnect. include_estop /
-    include_disconnect = False omit those devices (the construction model reveals them a
-    step later, with the interior EP)."""
+    """Fabricated wall-penetration box (exterior flange front face + shroud open to the
+    interior) + MC4 PV bulkheads, NEMA weatherproof shore inlet, WR duplex cooler outlet
+    (Circuit E) under an in-use cover, the exterior E-stop, and the PV disconnect.
+    include_estop / include_disconnect = False omit those devices (the construction model
+    reveals them a step later, with the interior EP)."""
     p = []
-    face_y = -WALL - 25
-    p.append(ov.ruby_box("Ext. Power Panel (exterior)", PWR_PANEL_X, face_y,
-                         PWR_PANEL_Z, PWR_PANEL_W, 25, PWR_PANEL_H,
-                         color=ov.C_ALUM, alpha=0.55))
-    p.append(ov.ruby_box("Ext. Power Panel (interior face)", PWR_PANEL_X, 0,
-                         PWR_PANEL_Z, PWR_PANEL_W, 20, PWR_PANEL_H, color=ov.C_ELEC))
+    face_y = -WALL - 25                       # exterior surface of the box front face (flange)
+    # ── Fabricated penetration box: front-face flange (exterior, components mount to it)
+    #    + a shroud OPEN to the interior (4 side walls, no back) so it is wired from inside.
+    p.append(ov.ruby_box("EP box front face (flange)", PWR_PANEL_X, face_y,
+                         PWR_PANEL_Z, PWR_PANEL_W, PWR_PANEL_D, PWR_PANEL_H,
+                         color=ov.C_STEEL))
+    _cx0 = PWR_PANEL_X + (PWR_PANEL_W - PWR_PANEL_CUTOUT_W) / 2     # wall-opening corner
+    _cz0 = PWR_PANEL_Z + (PWR_PANEL_H - PWR_PANEL_CUTOUT_H) / 2
+    _sy0 = face_y + PWR_PANEL_D               # shroud starts behind the flange
+    _t   = PWR_PANEL_SHROUD_T
+    p.append(ov.ruby_box("EP box shroud (left)", _cx0 - _t, _sy0, _cz0 - _t,
+                         _t, PWR_PANEL_BOX_D, PWR_PANEL_CUTOUT_H + 2 * _t, color=ov.C_STEEL))
+    p.append(ov.ruby_box("EP box shroud (right)", _cx0 + PWR_PANEL_CUTOUT_W, _sy0, _cz0 - _t,
+                         _t, PWR_PANEL_BOX_D, PWR_PANEL_CUTOUT_H + 2 * _t, color=ov.C_STEEL))
+    p.append(ov.ruby_box("EP box shroud (bottom)", _cx0 - _t, _sy0, _cz0 - _t,
+                         PWR_PANEL_CUTOUT_W + 2 * _t, PWR_PANEL_BOX_D, _t, color=ov.C_STEEL))
+    p.append(ov.ruby_box("EP box shroud (top)", _cx0 - _t, _sy0, _cz0 + PWR_PANEL_CUTOUT_H,
+                         PWR_PANEL_CUTOUT_W + 2 * _t, PWR_PANEL_BOX_D, _t, color=ov.C_STEEL))
 
     def px(uf): return PWR_PANEL_X + uf * PWR_PANEL_W
     def pz(vf): return PWR_PANEL_Z + vf * PWR_PANEL_H
 
+    # MC4 PV bulkheads — 3 pairs (+ green, − gray), bare (no cover)
     for i, vf in enumerate((0.225, 0.5, 0.775)):
         p.append(ov.ruby_cylinder(f"MC4 PV{i + 1} (+)", px(0.192), face_y - 20, pz(vf),
                                   8, 20, color="#2D7A2D", axis="y"))
         p.append(ov.ruby_cylinder(f"MC4 PV{i + 1} (-)", px(0.275), face_y - 20, pz(vf),
                                   8, 20, color="#9AA0A6", axis="y"))
-    p.append(ov.ruby_box("NEMA 5-15R shore inlet", px(0.742) - 30, face_y - 30,
+    # NEMA 5-15 weatherproof shore inlet + its translucent flip-cover, mounted proud
+    p.append(ov.ruby_box("NEMA 5-15 shore inlet", px(0.742) - 30, face_y - 30,
                          pz(0.878) - 22, 60, 30, 45, color="#FFF0CC"))
-    p.append(ov.ruby_cylinder("GFCI AC outlet (Cct E cooler)", px(0.767), face_y - 20,
-                              pz(0.325), 12, 22, color="#E8884A", axis="y"))
+    p.append(ov.ruby_box("NEMA inlet weatherproof cover", px(0.742) - 36, face_y - 42,
+                         pz(0.878) - 28, 72, 12, 57, color="#D6E6F5", alpha=0.5))
+    # Cooler AC feed — Leviton W5320 WR duplex under a 5981-UCL bubble in-use cover
+    p.append(ov.ruby_box("WR duplex outlet (Cct E cooler)", px(0.767) - 23, face_y - 22,
+                         pz(0.325) - 30, 46, 22, 60, color="#FFF0CC"))
+    p.append(ov.ruby_box("WR duplex in-use cover", px(0.767) - 29, face_y - 36,
+                         pz(0.325) - 36, 58, 14, 72, color="#D6E6F5", alpha=0.5))
     # E-stop on the exterior face.
     if include_estop:
         p.append(external_estop())

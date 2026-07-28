@@ -186,8 +186,8 @@ PARTS: list[Part] = [
          panel="Corridor"),
     # — filter (286–485): 3 separate 4.5×20 housings on a slotted-angle skid frame (§3.1/§7.2) —
     Part("bigblue-housing", 'Big Blue filter housing 4.5"×20" (separate)', "water-equipment",
-         "water", 3, "ea", 71.51, 71.51, "Amazon", part_no="B09QLKFJGV", url="https://www.amazon.com/dp/B09QLKFJGV", dims="Ø184×594",
-         spec='Ø184×594mm/housing (4.5×20), 1" NPT ports — three SEPARATE Pentair Pentek 150468 high-flow PP housings on the mounting brackets',
+         "water", 3, "ea", 83.30, 83.30, "Amazon", part_no="B0137680E6", url="https://www.amazon.com/dp/B0137680E6", dims="Ø184×594",
+         spec='Ø184×594mm/housing (4.5×20), 1" NPT ports, accepts standard 20"×4.5" cartridges (Alvin-verified 2026-07-27) — three SEPARATE Pentair Pentek 150234 high-flow PP housings on the mounting brackets',
          datasheet="Pentek 4.5×20 BB", modeled_const="BB_OD/BB_H",
          audit_status="3-separate design of record (2026-07): combo → 3 separate housings + frame per plumbing-report §3.1/§7.2. Prices indicative — firm at the Aug-2026 re-price.", panel="Pinhole Wall"),
     Part("filter-skid-frame", "Big Blue housing mounting brackets (×3)", "water-equipment",

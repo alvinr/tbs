@@ -276,8 +276,8 @@ def draw_sheet1():
     tank(ax1, 3.3, 7.5, 1.4, 1.4, fc="#BBDEFB", ec=C_BLUE_IBC, lw=2,
          label="IBC-2", sublabel="264 gal (1000L)\nCLEAN B (~900L)")
 
-    # X1 fill tees to BOTH Blue totes; both supply the pump via BV-01 — the two
-    # totes are connected in parallel (no cross-connect), matching the 3D.
+    # X1 is a 4-way cross (external fill + DV-01 recycle) feeding BOTH Blue totes; both
+    # supply the pump via BV-01 — the two totes are connected in parallel, matching the 3D.
     VR = 0.06 * 1.6  # standard valve circle radius = 0.096
 
     # Blue totes dropped so their tops align with IBC-4 (whole supply train shifts
@@ -288,7 +288,7 @@ def draw_sheet1():
     # IBC-2 outlet → BV-01 (parallel with IBC-1)
     pipe(ax1, 3.3, 6.78, 3.3, 6.3, C_BLUE)
     pipe(ax1, 3.3, 6.3, 2.4 + VR, 6.3, C_BLUE)
-    ax1.text(2.4, 6.85, 'IBC-1 & IBC-2 IN PARALLEL  (X1 fill tee · shared BV-01 supply\n· 1" tank-to-tank EQUALIZATION, level balance)',
+    ax1.text(2.4, 6.85, 'IBC-1 & IBC-2 IN PARALLEL  (X1 fill 4-way cross · shared BV-01 supply\n· 1" tank-to-tank EQUALIZATION, level balance)',
              ha="center", fontsize=5.2, color=C_BLUE, style="italic")
 
     # Blue equalization — 1" cross-tie DIRECTLY between the two tank bodies, low on
@@ -348,20 +348,20 @@ def draw_sheet1():
     # External fill (X1) via end-wall bulkhead — gravity feed. A SINGLE check valve
     # (CV-1) sits right after the port — the ONLY check valve in the system, since this is the
     # only flow path with no pump (the pumps' integral checks cover the return legs).  The fill
-    # then tees to BOTH Blue totes near the top — a separate path from the dotted DV-01 return.
+    # then feeds the X1 4-way cross near the top — where the dotted DV-01 recycle also joins.
     ext_port(ax1, 1.5, 9.65, color=C_BLUE, label="X1")
     ax1.text(1.5, 9.95, "EXT. FILL\n2\" NPT\nGRAVITY", ha="center", fontsize=5.5,
              color=C_BLUE, style="italic")
     pipe(ax1, 1.5, 9.53, 1.5, 9.08, C_BLUE)                        # port → CV-1 → tee
     check_valve(ax1, 1.5, 9.38, 0, -1, color=C_BLUE)              # single anti-siphon on the fill
     ax1.text(1.18, 9.38, "CV-1", ha="right", va="center", fontsize=5.5, color=C_BLUE)
-    pipe(ax1, 1.5, 9.08, 2.9, 9.08, C_BLUE)                        # fill header → IBC-2 branch
-    ax1.plot([1.5], [9.08], "o", ms=3.5, color=C_BLUE, zorder=6)   # tee node
+    pipe(ax1, 1.5, 9.08, 3.1, 9.08, C_BLUE)                        # X1 fill header (4-way cross): IBC-1 + IBC-2 branches + DV-01 recycle join
+    ax1.plot([1.5], [9.08], "P", ms=6, color=C_BLUE, zorder=6)     # 4-way cross node
     pipe(ax1, 1.5, 9.08, 1.5, 8.2, C_BLUE)                         # drop into IBC-1
     arrow_pipe(ax1, 1.5, 8.42, 1.5, 8.30, color=C_BLUE)
     pipe(ax1, 2.9, 9.08, 2.9, 8.2, C_BLUE)                         # drop into IBC-2 (top-left)
     arrow_pipe(ax1, 2.9, 8.42, 2.9, 8.30, color=C_BLUE)
-    ax1.text(2.2, 9.22, "X1 fill → IBC-1 & IBC-2", ha="center", fontsize=5.2,
+    ax1.text(2.2, 9.22, "X1 4-WAY CROSS → IBC-1 & IBC-2\n(fill + DV-01 recycle)", ha="center", fontsize=5.2,
              color=C_BLUE, style="italic")
 
     # Water level sensor labels
@@ -468,18 +468,18 @@ def draw_sheet1():
     diverter(ax1, 9.7, 3.25, color="#777777", size=0.075, branch="up")  # branch up = recycle to Blue; through L→R = to Black
     ax1.text(9.7, 2.9, "3W-DV-01\nDIVERTER", ha="center", fontsize=6, color="#444")
 
-    # Path back to Blue IBC-2 — up at X=9.7, left at Y=9.2, into IBC-2 side-entry near top
+    # Path back to the X1 4-way cross — up at X=9.7, left at Y=9.2, dropping into the X1 fill header
     RET_Y = 9.2   # return horizontal — below ext fill port at Y=9.65
     pipe(ax1, 9.7, 3.25 + DVR,  9.7, 3.8 - BR,  C_BLUE, style="--")   # below blue supply
     pipe(ax1, 9.7, 3.8 + BR,   9.7, 6.3 - BR,  C_BLUE, style="--")   # between crossings
     pipe(ax1, 9.7, 6.3 + BR,   9.7, RET_Y,     C_BLUE, style="--")   # above brown drain → return level
     arrow_pipe(ax1, 9.7, 7.0, 9.7, 7.3, color=C_BLUE)                # short upward return arrow
-    pipe(ax1, 9.7, RET_Y, 3.7, RET_Y, C_BLUE, style="--")            # left to IBC-2 top-right
+    pipe(ax1, 9.7, RET_Y, 3.1, RET_Y, C_BLUE, style="--")            # left to the X1 cross
     pipe_bridge(ax1, BD_X, RET_Y, color=C_BLUE, lw=LW_PIPE, bg=C_BROWN_L, style="--")  # over brown drain-out pipe
     arrow_pipe(ax1, 5.0, RET_Y, 4.7, RET_Y, color=C_BLUE)            # short leftward return arrow
-    pipe(ax1, 3.7, RET_Y, 3.7, 8.2, C_BLUE, style="--")              # down to IBC-2 (top-right) — SEPARATE from the X1 fill (no CV-2 — P-02 has an integral check valve)
-    arrow_pipe(ax1, 3.7, 8.36, 3.7, 8.28, color=C_BLUE)             # downward return arrow
-    ax1.text(6.5, RET_Y + 0.15, "DV-01 RECYCLE → IBC-2 SIDE-ENTRY (separate return path)",
+    pipe(ax1, 3.1, RET_Y, 3.1, 9.08, C_BLUE, style="--")             # drop into the X1 fill header — recycle JOINS the 4-way cross (no CV-2 — P-02 has an integral check valve)
+    arrow_pipe(ax1, 3.1, 9.19, 3.1, 9.11, color=C_BLUE)             # downward arrow into the cross
+    ax1.text(6.5, RET_Y + 0.15, "DV-01 RECYCLE → JOINS X1 4-WAY CROSS",
              ha="center", fontsize=6, color=C_BLUE, style="italic")
 
     # Path to Black system — right from DV-01 at Y=3.25, then up via W_X vertical

@@ -111,7 +111,7 @@ so the hard ceiling on a single hauled load is the **per-tote 1,000L volume**, c
 
 **On-site top-up — extended deployment.** A deployment can run past the ~16-print single-load ceiling
 using the external end-wall bulkhead ports — *no cargo-door access required*: **resupply Blue** from a
-water bowser or tanker through the **X1** gravity-fill inlet (tees to both Blue totes), and **discharge
+water bowser or tanker through the **X1** gravity-fill inlet (a 4-way cross feeds both Blue totes), and **discharge
 Brown/Waste** through the **X3 / X4** drain ports to a holding tank or tanker. In this mode the tote
 volumes act as **buffers, not hard caps**, and print count is set by water *logistics* (bowser visits,
 disposal access) rather than tote volume. This is a distinct operating mode from the hauled single load:
@@ -142,7 +142,7 @@ IBC-2 (900L) ──┘                                                      │
 - ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off
 - Low-level float switch on IBC-2 alerts operator when Blue supply is low
 - Spray bar: gantry design — 40×25×3mm 304 SS RHS beam (laid flat, ~15mm pre-camber) spanning the open processing area (3,859mm) between walkway inner edges, with Ø32 wheel carriages rolling on the raised/sloped tray floor beneath walkway grating. A 3/4" LDPE manifold clipped to the beam side feeds 26 side-tapped flat-fan nozzles. See the [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) report for full mechanical design
-- Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline — gravity feed, no pump required. Inside, an internal tee (near X1) splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom), filling them in parallel and gravity-linked — one external hose. Remote resupply from water bowser or tanker (no cargo door access required)
+- Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline — gravity feed, no pump required. Inside, an internal 4-way cross (near X1) — where the DV-01 blue recycle also joins — splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom), filling them in parallel and gravity-linked — one external hose. Remote resupply from water bowser or tanker (no cargo door access required)
 
 ### 4.2 Brown System — Used Water Recycling
 
@@ -256,9 +256,9 @@ All pump-driven internal runs use **1/2" pipe**, matching the Shurflo 2088 pump 
 
 | Circuit | Pipe | Size | Pressure rating | Material |
 |---------|------|------|----------------|---------|
-| External fill line (X1 bulkhead → tee → both Blue totes) | Sch 40 | 1" nominal (OD 33mm) | 50 PSI min | PVC |
+| External fill line (X1 bulkhead → 4-way cross → both Blue totes) | Sch 40 | 1" nominal (OD 33mm) | 50 PSI min | PVC |
 | External drain lines (X3/X4 bulkhead → IBCs) | Sch 40 | 1" nominal (OD 33mm) | 50 PSI min | PVC |
-| X1 fill tee (splits to IBC-1 & IBC-2) | — | 1" PVC equal tee (Banjo TEE100) | 50 PSI min | PVC |
+| X1 fill 4-way cross (X1 in + IBC-1 + IBC-2 + DV-01 recycle) | — | 1" PVC cross (cross-100) | 50 PSI min | PVC |
 
 At 3.5 GPM, flow velocity in 1/2" pipe (ID ~15.8mm) is approximately 1.1 m/s — well within the recommended 0.5–2.5 m/s range for water systems. The longest internal run (~5.5m from manifold to far-column IBC) contributes less than 0.3 bar friction loss at this velocity.
 
@@ -326,7 +326,7 @@ All equipment clears the optical cone at every depth — shadow-free proof in [E
 | X3 — Drain Brown | Used water drain | IBC-3 (bottom, near column) |
 | X4 — Drain Waste | Waste water drain | IBC-4 (bottom, far column) |
 
-A single external fill port (X1) feeds an internal 1" tee in the corridor, which splits the flow to BOTH Blue IBCs (each branch **side-enters** the tote's corridor face near the top, 150mm + flange — no top-cap access, only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom). The two top totes fill in parallel, so only one external hose is needed — without a separate cross-connect pipe.
+A single external fill port (X1) feeds an internal 1" 4-way cross in the corridor — where the DV-01 blue recycle return also joins — which splits the flow to BOTH Blue IBCs (each branch **side-enters** the tote's corridor face near the top, 150mm + flange — no top-cap access, only <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom). The two top totes fill in parallel, so only one external hose is needed — without a separate cross-connect pipe.
 
 This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC-4 to disposal tanker) without opening the cargo doors or entering the container. Internal plumbing from each port routes through the 270mm central corridor between the two IBC columns to reach the respective tote. All ports are accessible from the container exterior.
 
@@ -365,7 +365,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | [1/2" NPT 90° elbow polypropylene](https://www.homedepot.com/p/203812033) (PVC023000600HD) | All pump-driven run bends. 2026-07-27: Charlotte PVC Sch40 90° S×S (SLIP) — desc says NPT; confirm slip-vs-threaded in the plumbing audit | 14 ea | Home Depot | $10 |
 | [1" PVC Sch-40 slip 90° elbow](https://www.homedepot.com/p/203812125) (PVC023001000HD) | 1" PVC slip run bends (joint convention §5.1): IBC bends, filter outlet to DV-01. 2026-07-27 fork b — was threaded Banjo FRPP $4.59. Charlotte PVC023001000HD 90° S×S. | 4 ea | Home Depot | $6 |
 | [1/2" NPT polypropylene tee](https://www.homedepot.com/p/203812195) (PVC024000600HD) | Blue suction/discharge tees, branches. 2026-07-27: Charlotte PVC Sch40 S×S×S (SLIP/solvent-weld) — desc says NPT; confirm slip-vs-threaded in the plumbing audit | 6 ea | Home Depot | $5 |
-| [1" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812199) (PVC024001000HD) | 1" PVC slip run tees (joint convention §5.1): 3× IBC drain + 1× X1 fill split to both Blue totes. 2026-07-27 fork b — was threaded Banjo FRPP $14.19; consolidated tee-100 + tee-100-hdpe (×4). Charlotte PVC024001000HD S×S×S. | 4 ea | Home Depot | $9 |
+| [1" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812199) (PVC024001000HD) | 1" PVC slip run tees (joint convention §5.1): 3× IBC drain. 2026-07-27: X1 fill split dropped — X1 is a 4-way cross (cross-100), not a tee (was qty 4). Charlotte PVC024001000HD S×S×S. | 3 ea | Home Depot | $6 |
 | PVC slip×MNPT male adapters (run → threaded components) | Joint convention §5.1 (fork c): one slip×NPT male adapter where the glued PVC run lands on each threaded component — ball/diverter/check valves, filter housing ports, tank bulkheads, sample taps, accumulator. ½" = Charlotte PVC021090600HD $0.79, 1" = PVC021091000HD $1.16 (unit prices firm; low/high spans the ½"–1" mix). ~40 est; exact count/size split from the schematic trace. | 40 ea | Home Depot | $32–$46 |
 | [1" PVC 4-way cross fitting](https://www.amazon.com/dp/B0CGGV74MB) (B0CGGV74MB) | X1 fresh-fill 4-way (Alvin-confirmed 2026-07-27): X1 inlet + IBC-1 + IBC-2 + DV-01 blue-recycle riser all join here on the corridor spine, then distribute to both Blue totes. 1" PVC cross — slip glue joint, gravity/low-pressure fill. Design of record: the 3D model + corridor panel-layout + plumbing-report all build this cross. | 1 ea | Amazon | $6 |
 | [1/2" PVC Sch-40 slip coupling](https://www.homedepot.com/p/203811331) (PVC021000600HD) | Permanent solvent-weld run joins (4×). Charlotte PVC Sch40 S×S coupling. | 4 ea | Home Depot | $3 |
@@ -390,7 +390,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | Nitrile gloves, box of 100 | Size M/L | 2 box | Amazon | $18–$40 |
-| **Water total** | | | | **$3,538–$3,692** |
+| **Water total** | | | | **$3,536–$3,690** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

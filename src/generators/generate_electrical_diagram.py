@@ -1934,15 +1934,15 @@ def draw_sheet6():
                   color=lead_col, lw=1.6, ls=lead_ls, zorder=5)
 
     q = cut_h_draw / 4
-    mc4_cy   = cut_bot + q * 3        # MC4 group (top) -> MPPT
+    mc4_cy   = cut_bot + q * 1        # MC4 group (bottom) -> MPPT
     face_conn(mc4_cy, 9 * mm_v, "#C0E8C0", C_MC4, C_MC4)
     inlet_cy = cut_bot + q * 2        # shore inlet -> charger
     face_conn(inlet_cy, 11 * mm_v, C_NEMA, C_AC, C_AC)
-    outlet_cy = cut_bot + q * 1       # cooler AC outlet <- inverter (CCT E)
+    outlet_cy = cut_bot + q * 3       # cooler AC outlet <- inverter (CCT E)
     face_conn(outlet_cy, 11 * mm_v, C_NEMA, C_AC, C_AC, lead_ls="--")
 
     # E-stop on the face — red stub + dome protruding out, contact block into the box
-    es_cy = cut_bot + q * 3.55
+    es_cy = cut_bot + q * 0.45
     draw_rect(ax_b, face_x0 - conn_out * 0.45, es_cy - 4 * mm_v, conn_out * 0.45, 8 * mm_v,
               fc=C_ESTOP, color=C_OUT, lw=0.8, zorder=5.4)
     ax_b.add_patch(mpatches.Circle((face_x0 - conn_out * 0.45, es_cy), 5.5 * mm_v,

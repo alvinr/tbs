@@ -3089,8 +3089,8 @@ toward the pinhole wall), flooding the print surface progressively.</p>
 two-wheel carriage rolls on the processing tray floor beneath the grating. A 3/4" LDPE irrigation poly pipe clipped to the beam's inboard side face serves as the
 spray manifold — the supply hose terminates at a distribution manifold by the ball joint,
 which feeds seven irrigation tubes that barb into the poly manifold along the beam; water
-then exits through twenty-six barbed flat-fan nozzles that side-tap the manifold and spray
-down-and-in, at 150mm pitch along the beam.</p>
+then exits through thirty-nine barbed 90° down-jets that side-tap the manifold and spray
+straight down, at 100mm pitch along the beam.</p>
 <p><img alt="Sheet 2 — Cross Section: Beam Assembly" src="../assets/spray-bar-sheet2.png" /></p>
 <p><strong>Design constraints:</strong></p>
 <ul>
@@ -3125,10 +3125,10 @@ down-and-in, at 150mm pitch along the beam.</p>
 <td>Water distribution; clipped to the beam's inboard side face</td>
 </tr>
 <tr>
-<td>Flat-fan spray nozzles</td>
-<td>Barbed saddle-tee inlet, irrigation-type, 180° fan pattern</td>
-<td>26</td>
-<td>Side-tapped into the manifold, spray down-and-in (150mm pitch)</td>
+<td>90° down-jets</td>
+<td>DIG 110B barbed saddle-tee inlet, irrigation-type, 90° cone (spray straight down)</td>
+<td>39</td>
+<td>Side-tapped into the manifold, spray straight down (100mm pitch)</td>
 </tr>
 <tr>
 <td>Distribution manifold</td>
@@ -3308,19 +3308,19 @@ Metals, and metals suppliers. Two 8 ft lengths are required; see §3.8 for splic
 <tbody>
 <tr>
 <td>Nozzle type</td>
-<td>Flat-fan irrigation nozzle, barbed inlet</td>
+<td>90° down-jet, barbed inlet (DIG 110B)</td>
 </tr>
 <tr>
 <td>Number of nozzles</td>
-<td>26</td>
+<td>39</td>
 </tr>
 <tr>
 <td>Nozzle spacing</td>
-<td>150mm center-to-center</td>
+<td>100mm center-to-center</td>
 </tr>
 <tr>
 <td>Spray pattern</td>
-<td>180° flat fan</td>
+<td>90° cone, directed straight down</td>
 </tr>
 <tr>
 <td>Manifold OD / ID</td>
@@ -3332,7 +3332,7 @@ Metals, and metals suppliers. Two 8 ft lengths are required; see §3.8 for splic
 </tr>
 </tbody>
 </table>
-<p>The twenty-six nozzle saddle-tees plus the seven feed tees tap directly into the side
+<p>The thirty-nine nozzle saddle-tees plus the seven feed tees tap directly into the side
 manifold and grip it by their barb ridges. Because the manifold is external, no beam-wall
 drilling is needed; the tees plus cushioned pipe clips locate the manifold along the beam.</p>
 <p><strong>Beam ends (open):</strong></p>
@@ -3831,20 +3831,22 @@ the splice (and set the camber over the full length).</p>
 </tr>
 <tr>
 <td>Spray nozzles</td>
-<td>26 × flat-fan irrigation nozzles</td>
+<td>39 × 90° down-jets (DIG 110B)</td>
 </tr>
 <tr>
 <td>Flow per nozzle</td>
-<td>0.135 GPM (0.51 L/min)</td>
+<td>0.09 GPM (0.34 L/min)</td>
 </tr>
 </tbody>
 </table>
 <p>Feeding the poly pipe at seven points (~550mm pitch) from the ball-joint manifold — rather
 than a single center feed — keeps the supply pressure uniform along the pipe, so each of
-the 26 nozzles sees nearly the same flow regardless of its distance from the inlet. The
-19mm bore provides adequate flow capacity at 3.5 GPM. Each irrigation nozzle delivers a
-180° flat fan pattern; at 150mm pitch the fans overlap heavily, giving near-continuous
-wash coverage along the <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm beam span.</p>
+the 39 nozzles sees nearly the same flow regardless of its distance from the inlet. The
+19mm bore provides adequate flow capacity at 3.5 GPM. Each jet delivers a <strong>90° cone directed
+straight down</strong> — chosen over a flat-fan/180° pattern so the wash lands on the print rather
+than spraying sideways (180°) or up and away (360°), which wastes water and wets the container.
+A 90° cone at the ~50mm nozzle height footprints ~100mm, so the pitch was tightened 150→100mm
+(26→39 nozzles) for edge-to-edge coverage along the <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm beam span; the traverse sweeps the other axis.</p>
 <h3 id="310-water-connection">3.10 Water Connection<a class="headerlink" href="#310-water-connection" title="Permanent link">&para;</a></h3>
 <p>BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Yd=0) at
 X=<!-- BEGIN fact:pinhole_x_mm -->2,399<!-- END fact:pinhole_x_mm -->mm (pinhole centerline), Z=900mm — waist height from the walkway deck. A
@@ -3965,11 +3967,11 @@ tray drainage plan and sump cross-section).</p>
 <td>$450–$850</td>
 </tr>
 <tr>
-<td>1-1/4" HDPE plate, cut-to-size (slope shims)</td>
-<td>5 tapered slope shims (50mm × 2,200mm, 20→30mm taper) RIP from ONE 1-1/4" HDPE plate cut-to-size ~14×84" (~7 ft²) — full-length one-piece strips (no splice); taper-cut bundles with the tray fab. ~$33–38/ft². Plate route ≈1/6 the solid-bar cost ($1,656).</td>
+<td><a href="https://www.usplastic.com/catalog/item.aspx?itemid=31840">HDPE sheet, laminated to 1-1/4" (slope shims)</a> (46039+42591)</td>
+<td>5 tapered slope shims (2"×86.6" = 50×2,200mm, 20→30mm taper). US Plastic max sheet = 1", so LAMINATE two 24×48 sheets to 1-1/4" then taper-cut (Option B: 1 mid-length butt splice/strip — fine for a floor-bonded compression shim). Combo = 3/4" (US Plastic 46039 $177.58) + 1/2" (42591 $118.38) = $295.96; the 3/4"+1/2" split keeps the taper cut inside the 3/4" top layer so the glue line stays buried (the 1"+1/4" combo, same price, would cut through the seam). Taper-cut bundles with the tray fab.</td>
 <td>1 lot</td>
-<td>US Plastic Corp / K-Mac Plastics</td>
-<td>$210–$300</td>
+<td>US Plastic Corp</td>
+<td>$296</td>
 </tr>
 <tr>
 <td><a href="https://www.homedepot.com/p/319654545">Loctite PL Premium construction adhesive</a> (1390595)</td>
@@ -4018,7 +4020,7 @@ tray drainage plan and sump cross-section).</p>
 <td></td>
 <td></td>
 <td></td>
-<td><strong>$1,452–$2,230</strong></td>
+<td><strong>$1,538–$2,226</strong></td>
 </tr>
 </tbody>
 </table>
@@ -4059,11 +4061,11 @@ tray drainage plan and sump cross-section).</p>
 <td>$10</td>
 </tr>
 <tr>
-<td>Flat-fan irrigation spray nozzles, barbed</td>
-<td>180° fan pattern; side-tapped into the poly manifold, spray down-and-in</td>
-<td>26 ea</td>
-<td>DripDepot</td>
-<td>$30–$50</td>
+<td><a href="https://www.homedepot.com/p/302581648">90° spray jets, barbed</a> (110B)</td>
+<td>DIG 110B 90° spray jets, 10-pack ×4 = 40 (39 used, 1 spare); side-tapped into the poly manifold, spray straight down. 90° down chosen (Alvin 2026-07-28) over flat-fan/180° so the wash lands on the print, not sideways/up; pitch tightened 150→100mm (26→39 jets) for edge-to-edge coverage — see processing-tray §3.9.</td>
+<td>4 10-pack</td>
+<td>Home Depot</td>
+<td>$14</td>
 </tr>
 <tr>
 <td>Distribution manifold, 1/2" → 7 barb outlets</td>
@@ -4210,7 +4212,7 @@ tray drainage plan and sump cross-section).</p>
 <td></td>
 <td></td>
 <td></td>
-<td><strong>$402–$494</strong></td>
+<td><strong>$386–$458</strong></td>
 </tr>
 </tbody>
 </table>
@@ -4227,15 +4229,15 @@ tray drainage plan and sump cross-section).</p>
 <tbody>
 <tr>
 <td>Processing tray</td>
-<td><!-- BEGIN costing:tray-low -->$1,452<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,230<!-- END costing:tray-high --></td>
+<td><!-- BEGIN costing:tray-low -->$1,538<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,226<!-- END costing:tray-high --></td>
 </tr>
 <tr>
 <td>Spray bar assembly</td>
-<td><!-- BEGIN costing:spray-low -->$402<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$494<!-- END costing:spray-high --></td>
+<td><!-- BEGIN costing:spray-low -->$385<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$457<!-- END costing:spray-high --></td>
 </tr>
 <tr>
 <td><strong>Total</strong></td>
-<td><strong><!-- BEGIN costing:tray-spray-total-low -->$1,854<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,724<!-- END costing:tray-spray-total-high --></strong></td>
+<td><strong><!-- BEGIN costing:tray-spray-total-low -->$1,923<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,683<!-- END costing:tray-spray-total-high --></strong></td>
 </tr>
 </tbody>
 </table>

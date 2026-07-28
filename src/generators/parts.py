@@ -451,9 +451,10 @@ PARTS: list[Part] = [
          url="https://www.amazon.com/Renogy-Adjustable-Solar-Panel-Brackets/dp/B07CSKFWK7", spec="One adjustable tilt-bracket set per 200W panel (4 fixed + 2 tilt L-brackets, rated to 220W) — 3 sets for the 3-panel array."),
     Part("pv-cable-10awg", "PV cable 10 AWG + MC4 connectors", "electrical-distribution",
          "electrical", 1, "lot", 30, 30, "Signature Solar"),
-    Part("pv-array-disconnect", "PV array disconnect — DC load-break isolator, 50A/150VDC (NEC 690.13)",
-         "electrical-power", "electrical", 1, "ea", 40, 40, "AutomationDirect", "Amazon",
-         url="https://www.automationdirect.com/"),
+    Part("pv-array-disconnect", "PV array disconnect — Blue Sea 6006 DC battery switch (NEC 690.13)",
+         "electrical-power", "electrical", 1, "ea", 33.60, 33.60, "Waytek Wire", part_no="6006",
+         url="https://www.waytekwire.com/product/blue-sea-systems-6006-m-series-battery-switch",
+         spec="Blue Sea 6006 m-Series single-circuit ON/OFF DC battery switch — load-break disconnect on the PV array + (array → MPPT). 300A / 48V DC (≫ our ~22V Voc / ~30A Isc = ~38A required; the earlier 50A/150VDC spec was wrong — the array is 3×200W in PARALLEL, 12V nominal, not a high-V string). 2× M10 tin-copper studs (ring lugs), 55×55mm face × 64mm deep, isolating cover with snap-off sides = wire access any direction. Mounts inside the ep-ext-enclosure (knob on the door)."),
     # power-panel-plate + power-panel-gasket RETIRED 2026-07-28 — the external power panel is now a proper
     # IP-rated McMaster enclosure (ep-ext-enclosure) with its own sealed lid + gasket, superseding the
     # flush aluminum face plate + neoprene gasket. See ep-ext-enclosure.

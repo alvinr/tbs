@@ -34,19 +34,28 @@ def draw_mc4_bulkhead(ax, cx, cy, r=8, positive=True, z=6):
 
 
 def draw_nema_inlet(ax, cx, cy, w=52, h=52, z=6):
-    """NEMA 5-15 weatherproof power INLET (male) — flange + lifted flip cover +
-    two flat blades + round ground pin."""
-    ax.add_patch(mpatches.FancyBboxPatch((cx - w / 2, cy - h / 2), w, h,
+    """NEMA 5-15 weatherproof power INLET (male) — flanged body, a spring flip-lid
+    shown flipped OPEN on its hinge (gasketed underside), two flat blades + ground.
+    The open sealing lid is what marks it weatherproof vs a bare inlet."""
+    # flanged body (the part bolted to the panel)
+    ax.add_patch(mpatches.FancyBboxPatch((cx - w / 2, cy - h / 2), w, h * 0.72,
                  boxstyle="round,pad=2,rounding_size=8", fc=C_NEMA, ec=C_AC, lw=1.6, zorder=z))
-    # hinged flip cover, shown lifted along the top edge
-    ax.add_patch(mpatches.FancyBboxPatch((cx - w * 0.34, cy + h * 0.30), w * 0.68, h * 0.20,
-                 boxstyle="round,pad=1,rounding_size=4", fc="#DAD2B2", ec=C_AC, lw=1.0, zorder=z + 0.3))
-    ax.plot([cx - w * 0.34, cx + w * 0.34], [cy + h * 0.30, cy + h * 0.30],
-            color=C_AC, lw=0.8, zorder=z + 0.4)
-    for dx in (-7, 7):                                    # two flat male blades
-        ax.add_patch(mpatches.Rectangle((cx + dx - 1.6, cy - 3), 3.2, 15,
+    # hinge knuckles along the top edge
+    hy = cy - h / 2 + h * 0.72
+    for hx in (cx - 8, cx, cx + 8):
+        ax.add_patch(mpatches.Circle((hx, hy), 2.4, fc="#B8B090", ec=C_AC, lw=0.8, zorder=z + 0.5))
+    # weatherproof flip-lid, flipped UP/open above the hinge; inner gasket ring
+    lid_cy = hy + h * 0.20
+    ax.add_patch(mpatches.FancyBboxPatch((cx - w * 0.40, lid_cy - h * 0.14), w * 0.80, h * 0.28,
+                 boxstyle="round,pad=1,rounding_size=6", fc="#DAD2B2", ec=C_AC, lw=1.3, zorder=z + 0.3))
+    ax.add_patch(mpatches.FancyBboxPatch((cx - w * 0.30, lid_cy - h * 0.09), w * 0.60, h * 0.18,
+                 boxstyle="round,pad=1,rounding_size=4", fc="none", ec="#8A6A2A",
+                 lw=0.9, ls=(0, (2, 1.5)), zorder=z + 0.4))          # gasket seal ring
+    # face pins: two flat male blades + round ground pin
+    for dx in (-7, 7):
+        ax.add_patch(mpatches.Rectangle((cx + dx - 1.6, cy - h * 0.10), 3.2, 13,
                      fc="#909098", ec=C_OUT, lw=0.8, zorder=z + 0.6))
-    ax.add_patch(mpatches.Circle((cx, cy - 10), 3.2, fc="#909098", ec=C_OUT, lw=0.8, zorder=z + 0.6))
+    ax.add_patch(mpatches.Circle((cx, cy - h * 0.20), 3.2, fc="#909098", ec=C_OUT, lw=0.8, zorder=z + 0.6))
 
 
 def draw_wr_duplex_outlet(ax, cx, cy, w=40, h=58, z=6):

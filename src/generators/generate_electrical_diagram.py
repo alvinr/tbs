@@ -1817,7 +1817,7 @@ def draw_sheet6():
 
     leader(ax_a, (ESTOP_X), (ESTOP_Y + ESTOP_RING_R + 3),
            (ESTOP_X), (PLATE_H + 28),
-           "EMERGENCY CUT-OFF (E-STOP)\n40mm IP66 · TRIPS BATTERY CONTACTOR",
+           "EMERGENCY CUT-OFF (E-STOP)\n22mm mount / ⌀40mm cap · IP66 · TRIPS BATTERY CONTACTOR",
            fs=6.5, color=C_ESTOP, ha="center", arrow_style="-|>", font=FONT)
 
     leader(ax_a, (PLATE_W - MOUNT_INSET + MOUNT_HOLE_D),

@@ -3087,10 +3087,11 @@ toward the pinhole wall), flooding the print surface progressively.</p>
 <p><img alt="Sheet 1 — Gantry Elevation" src="../assets/spray-bar-sheet1.png" /></p>
 <p>The beam spans <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm between the inner edges of the left and right walkways, extending under the walkway grating at each end. At each end, a
 two-wheel carriage rolls on the processing tray floor beneath the grating. A 3/4" LDPE irrigation poly pipe clipped to the beam's inboard side face serves as the
-spray manifold — the supply hose terminates at a distribution manifold by the ball joint,
-which feeds seven irrigation tubes that barb into the poly manifold along the beam; water
-then exits through thirty-nine barbed 90° down-jets that side-tap the manifold and spray
-straight down, at 100mm pitch along the beam.</p>
+spray manifold — the supply hose feeds it at its center through a single barbed inlet tee by
+the ball joint. The 3/4" bore is far larger than the 3.5 GPM flow demands, so pressure holds
+uniform end-to-end (~0.1 PSI drop across the full span) from that one feed — no multi-point
+distribution is needed. Water exits through thirty-nine barbed 90° down-jets that side-tap the
+manifold and spray straight down, at 100mm pitch along the beam.</p>
 <p><img alt="Sheet 2 — Cross Section: Beam Assembly" src="../assets/spray-bar-sheet2.png" /></p>
 <p><strong>Design constraints:</strong></p>
 <ul>
@@ -3131,22 +3132,10 @@ straight down, at 100mm pitch along the beam.</p>
 <td>Side-tapped into the manifold, spray straight down (100mm pitch)</td>
 </tr>
 <tr>
-<td>Distribution manifold</td>
-<td>1/2" inlet → 7 barbed outlets, mounted at the ball joint</td>
+<td>Center-feed inlet</td>
+<td>1/2" PVC barbed tee (DripDepot 1084), flex hose → manifold center</td>
 <td>1</td>
-<td>Splits the supply hose to the 7 feed tubes</td>
-</tr>
-<tr>
-<td>Irrigation feed tubes</td>
-<td>1/4" poly/vinyl tube, manifold to beam feed points</td>
-<td>7</td>
-<td>Distribute water along the beam (~7m total)</td>
-</tr>
-<tr>
-<td>Barbed feed fittings</td>
-<td>Barbed tee, feed tube into the side manifold</td>
-<td>7</td>
-<td>Feed points (~550mm pitch) into the manifold</td>
+<td>Single feed point at the beam center (the over-bored manifold needs no multi-point distribution)</td>
 </tr>
 <tr>
 <td>Retainer clips</td>
@@ -3230,7 +3219,7 @@ straight down, at 100mm pitch along the beam.</p>
 <td>Flexible hose</td>
 <td>1/2" reinforced braided PVC, ~4 m coiled</td>
 <td>1</td>
-<td>Connects BV-02 to the distribution manifold</td>
+<td>Connects BV-05 to the manifold center inlet</td>
 </tr>
 <tr>
 <td>Zip ties</td>
@@ -3848,10 +3837,10 @@ than spraying sideways (180°) or up and away (360°), which wastes water and we
 A 90° cone at the ~50mm nozzle height footprints ~100mm, so the pitch was tightened 150→100mm
 (26→39 nozzles) for edge-to-edge coverage along the <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm beam span; the traverse sweeps the other axis.</p>
 <h3 id="310-water-connection">3.10 Water Connection<a class="headerlink" href="#310-water-connection" title="Permanent link">&para;</a></h3>
-<p>BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Yd=0) at
+<p>BV-05 (1/2" ball valve, spray-bar feed isolation) is mounted on the pinhole wall (Yd=0) at
 X=<!-- BEGIN fact:pinhole_x_mm -->2,399<!-- END fact:pinhole_x_mm -->mm (pinhole centerline), Z=900mm — waist height from the walkway deck. A
-1/2" PVC riser runs from the Blue supply trunk up to BV-02. A 4 m length of 1/2"
-reinforced braided PVC hose connects from BV-02 down to the distribution manifold at the
+1/2" PVC riser runs from the Blue supply trunk up to BV-05. A 4 m length of 1/2"
+reinforced braided PVC hose connects from BV-05 down to the manifold center inlet at the
 ball joint. The hose coils when the bar is near the pinhole wall and extends as the bar is
 pushed toward the far wall. The hose trails along the near tray rim, staying clear of
 the print surface.</p>
@@ -3981,18 +3970,18 @@ tray drainage plan and sump cross-section).</p>
 <td>$12</td>
 </tr>
 <tr>
-<td>1" SS foot valve with strainer screen</td>
-<td>Sump pickup tube</td>
+<td><a href="https://www.misterworker.com/en-us/meclube/f1-brass-foot-valve-with-stainless-steel-filter/95953.html">1" brass foot valve with SS filter</a> (95953)</td>
+<td>Sump pickup foot valve — Meclube F1 brass body + SS filter screen (misterworker 95953). $14.23 firm 2026-07-28 (was a $20 est SS unit).</td>
 <td>1 ea</td>
-<td>US Plastic Corp</td>
-<td>$20</td>
+<td>misterworker</td>
+<td>$14</td>
 </tr>
 <tr>
-<td>1" reinforced suction hose, 6 ft</td>
-<td>Pickup tube to P-04</td>
-<td>1 ea</td>
-<td>US Plastic Corp</td>
-<td>$15</td>
+<td><a href="https://www.homedepot.com/p/310837595">1" reinforced PVC suction hose, 25 ft</a> (6213100025)</td>
+<td>Sump pickup tube → P-04. HYDROMAXX 1" clear flexible PVC suction/discharge hose, white reinforced helix; 25 ft coil (~6 ft used, balance spare). $65.65 firm 2026-07-28 (was a $15 est 6 ft cut — Home Depot stocks the 25 ft length).</td>
+<td>1 25ft coil</td>
+<td>Home Depot</td>
+<td>$66</td>
 </tr>
 <tr>
 <td><a href="https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/">Silicone gasket strip</a> (015952)</td>
@@ -4020,7 +4009,7 @@ tray drainage plan and sump cross-section).</p>
 <td></td>
 <td></td>
 <td></td>
-<td><strong>$1,538–$2,226</strong></td>
+<td><strong>$1,583–$2,271</strong></td>
 </tr>
 </tbody>
 </table>
@@ -4054,11 +4043,11 @@ tray drainage plan and sump cross-section).</p>
 <td>$16–$28</td>
 </tr>
 <tr>
-<td>3/4" LDPE irrigation poly pipe, 15 ft</td>
-<td>Side-mounted spray manifold, clipped to the beam's inboard face (OD 25mm, ID 19mm)</td>
-<td>1 ea</td>
+<td><a href="https://www.dripdepot.com/polyethylene-tubing-size-three-quarter-inch-0-820-inch-inside-diameter-by-0-940-inch-od-length-100-feet">3/4" LDPE irrigation poly pipe, 100 ft</a> (3552)</td>
+<td>Side-mounted spray manifold, clipped to the beam's inboard face. DripDepot 3552 ¾" poly tubing (0.820" ID × 0.940" OD ≈ 20.8×23.9mm); 100 ft roll, ~15 ft used on the ~3.86m beam (balance spare). $31.24 firm 2026-07-28.</td>
+<td>1 100ft roll</td>
 <td>DripDepot</td>
-<td>$10</td>
+<td>$31</td>
 </tr>
 <tr>
 <td><a href="https://www.homedepot.com/p/302581648">90° spray jets, barbed</a> (110B)</td>
@@ -4066,27 +4055,6 @@ tray drainage plan and sump cross-section).</p>
 <td>4 10-pack</td>
 <td>Home Depot</td>
 <td>$14</td>
-</tr>
-<tr>
-<td>Distribution manifold, 1/2" → 7 barb outlets</td>
-<td>Mounted at ball joint, splits feed to tubes</td>
-<td>1 ea</td>
-<td>DripDepot</td>
-<td>$12</td>
-</tr>
-<tr>
-<td>1/4" irrigation poly tube</td>
-<td>Manifold to beam feed points (~7m total)</td>
-<td>1 ea</td>
-<td>DripDepot</td>
-<td>$6</td>
-</tr>
-<tr>
-<td>Barbed tees, tube into the side poly manifold</td>
-<td>Feed tube to the side poly manifold, 7 feed points</td>
-<td>7 ea</td>
-<td>DripDepot</td>
-<td>$10</td>
 </tr>
 <tr>
 <td>SS/nylon retainer clips for 3/4" LDPE</td>
@@ -4103,11 +4071,11 @@ tray drainage plan and sump cross-section).</p>
 <td>$11</td>
 </tr>
 <tr>
-<td>1/2" barb × 1/2" hose barb, brass</td>
-<td>Flex hose to manifold inlet</td>
-<td>1 ea</td>
+<td><a href="https://www.dripdepot.com/barb-tubing-tee-size-half-inch">1/2" PVC barbed tee (flex hose → manifold center feed)</a> (1084)</td>
+<td>DripDepot 1084 ½" PVC barbed tee (Alvin 2026-07-28: PVC, NOT brass as previously specced), $0.57 ea × 5-pack = $2.85; the SINGLE center-feed inlet — ½" flex hose → manifold center (Option 1: single feed replaced the 7-tube distribution fan). 1 used. Firm 2026-07-28.</td>
+<td>1 5-pack</td>
 <td>DripDepot</td>
-<td>$4</td>
+<td>$3</td>
 </tr>
 <tr>
 <td>Telescoping aluminum pool pole, 4–8 ft</td>
@@ -4212,7 +4180,7 @@ tray drainage plan and sump cross-section).</p>
 <td></td>
 <td></td>
 <td></td>
-<td><strong>$386–$458</strong></td>
+<td><strong>$378–$450</strong></td>
 </tr>
 </tbody>
 </table>
@@ -4229,15 +4197,15 @@ tray drainage plan and sump cross-section).</p>
 <tbody>
 <tr>
 <td>Processing tray</td>
-<td><!-- BEGIN costing:tray-low -->$1,538<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,226<!-- END costing:tray-high --></td>
+<td><!-- BEGIN costing:tray-low -->$1,583<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,271<!-- END costing:tray-high --></td>
 </tr>
 <tr>
 <td>Spray bar assembly</td>
-<td><!-- BEGIN costing:spray-low -->$385<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$457<!-- END costing:spray-high --></td>
+<td><!-- BEGIN costing:spray-low -->$377<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$449<!-- END costing:spray-high --></td>
 </tr>
 <tr>
 <td><strong>Total</strong></td>
-<td><strong><!-- BEGIN costing:tray-spray-total-low -->$1,923<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,683<!-- END costing:tray-spray-total-high --></strong></td>
+<td><strong><!-- BEGIN costing:tray-spray-total-low -->$1,960<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,720<!-- END costing:tray-spray-total-high --></strong></td>
 </tr>
 </tbody>
 </table>

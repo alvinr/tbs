@@ -22,8 +22,11 @@ bucketed by WHEN it can be acted on:_
 ### Bucket 1 — ACTIONABLE NOW
 - [x] **Cyanotype chemistry consolidated to Artcraft (bulk) — DONE 2026-07-26.** Bulk-price research (2 agents) + Alvin's confirmed Artcraft packs → all three reagents re-sourced to **Artcraft Chemicals**: ferric ammonium oxalate **$218.16→$64.20/kg** ($29.12/1 lb; the big mover), potassium ferricyanide **$60.80→$51.01/kg** ($104.12/4.5 lb), ammonium dichromate → Artcraft $33.66/0.5 lb (trace, $25/run allowance holds). Cascaded: costing tiers (Standard total **$4,400→$1,710**, per-print **$88→$34**), grand total **→$27,262–$39,454**, parts registry, all injected docs + prose restatements. **process-comparison.md re-inverted: cyanotype ($1,250 lean) is cheapest again**, below gum ($1,592) — "why cyanotype" reframed to cost + archival/hazard/simplicity. Remaining bulk option: request an Artcraft ~38-lb AmFe quote (could drop below $64/kg). Use FULL reagent names not "AmFe" per [[feedback_full_chemical_names]].
 - [ ] **Fastener thread-pitch cross-check.** Each sourced bolt SKU's actual pitch vs its mating nut (coarse baseline recorded, "confirm vs SKU PDF"); pitch must match at order. See the fastener item lower in this file for the M8×1.0-fine vs M8×1.25-coarse trap. Prices don't matter — pitch does.
-- [ ] **Plumbing joint-convention cascade (SLIP default, THREADED at hard components) — CONVENTION
-  SET 2026-07-27, re-source PENDING.** Rule established (plumbing-report §5.1): the run is **solvent-weld
+- [x] **Plumbing joint-convention cascade — DONE 2026-07-29.** All sub-items complete: PVC slip run, transition-
+  adapter P&ID takeoff (½"22/1"26), all SKUs firmed, PVC stick recount (1"→4), and the IBC-tote FLEXIBLE-JUMPER
+  connection (2D schematic coils + 3D corrugated jumpers across all 5 models) + the spray nozzle-pitch overshoot fix.
+  Residual: only the 2 bench flags in Bucket 3 (s60-reducer interface, clamp size). Original notes ↓ (historical).
+  Rule established (plumbing-report §5.1): the run is **solvent-weld
   PVC (slip)**; **threaded NPT only where it lands on a hard component** (pumps, filters, valves, check
   valve, tank bulkheads, sample taps, accumulator) via a **slip×NPT transition adapter**. Settled: the 4
   ½" run fittings are PVC Sch-40 slip (Home Depot Charlotte); the bushing at the filter is threaded.

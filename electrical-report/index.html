@@ -2995,7 +2995,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </tr>
 <tr>
 <td><strong>PV disconnect</strong></td>
-<td><strong>DC load-break isolator (50 A / 150 VDC), readily accessible at the power panel</strong> — isolates the array from the MPPT for service/fault (<a href="https://www.nfpa.org/codes-and-standards/nfpa-70-standard-development/70">NEC 690.13</a>). MC4 connectors are <strong>not</strong> load-break rated, and the external E-stop kills only the battery side — this kills the charge side</td>
+<td><strong>Blue Sea 6006 DC battery switch (300 A / 48 V DC — sized against the array's ~30 A / ~22 V, since the panels are 3× parallel at 12 V nominal, not a high-voltage string), readily accessible at the power panel</strong> — isolates the array from the MPPT for service/fault (<a href="https://www.nfpa.org/codes-and-standards/nfpa-70-standard-development/70">NEC 690.13</a>). MC4 connectors are <strong>not</strong> load-break rated, and the external E-stop kills only the battery side — this kills the charge side</td>
 </tr>
 <tr>
 <td>Wall entry</td>
@@ -3003,7 +3003,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </tr>
 <tr>
 <td>Approximate cost</td>
-<td>~$400 (panels) + ~$80 (mounting hardware) + ~$40 (PV disconnect)</td>
+<td>~$400 (panels) + ~$80 (mounting hardware) + ~$34 (PV disconnect — Blue Sea 6006)</td>
 </tr>
 </tbody>
 </table>
@@ -3145,7 +3145,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </table>
 <p>Connect whenever shore power is available at a deployment site (campground hookup, venue power, generator) to top up the battery bank overnight.</p>
 <h3 id="54-external-power-panel">5.4 External Power Panel<a class="headerlink" href="#54-external-power-panel" title="Permanent link">&para;</a></h3>
-<p>The solar PV inputs, shore power inlet, and the evaporative cooler's <strong>120V AC output</strong> are housed in a single <strong>IP-rated enclosure</strong> surface-mounted on the pinhole-wall exterior, close to the electrical panel and battery bank inside.</p>
+<p>The solar PV inputs, shore power inlet, and the evaporative cooler's <strong>120V AC output</strong> are carried on a <strong>fabricated flanged penetration box</strong> let into the pinhole wall, close to the electrical panel and battery bank inside.</p>
 <table>
 <thead>
 <tr>
@@ -3155,12 +3155,12 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </thead>
 <tbody>
 <tr>
-<td>Enclosure</td>
-<td>McMaster 7335K231 IP-rated box (portrait) + 7335K43 steel mounting plate + 7335K1 mounting hardware</td>
+<td>Box</td>
+<td>Fabricated sheet-metal flanged box — front face (exterior) + exterior flange, <strong>open to the container interior</strong></td>
 </tr>
 <tr>
 <td>Solar inputs</td>
-<td>3 × MC4 bulkhead connector pairs (IP67 panel-mount)</td>
+<td>3 × MC4 bulkhead pairs (IP67) — surface-mounted, sealed to the face</td>
 </tr>
 <tr>
 <td>Shore power</td>
@@ -3168,33 +3168,33 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 </tr>
 <tr>
 <td>Cooler output</td>
-<td>1 × NEMA 5-15R <strong>GFCI-fed</strong> weatherproof outlet with in-use (bubble) cover (Circuit E — fed from the interior inverter; the cooler plugs in here)</td>
+<td>1 × NEMA 5-15R weatherproof duplex + in-use (bubble) cover (Circuit E — fed from the interior inverter, GFCI at the inverter §7.6)</td>
 </tr>
 <tr>
 <td>Emergency stop</td>
 <td>1 × exterior red mushroom E-stop (kills the battery contactor from outside, §7.5)</td>
 </tr>
 <tr>
-<td>PV disconnect</td>
-<td>DC load-break isolator, handle on the enclosure face</td>
+<td>Wall seal</td>
+<td>Flashing + silicone bridging the corrugation crests around the flange — <strong>water-tight AND light-tight</strong></td>
 </tr>
 <tr>
-<td>Wall penetration</td>
-<td><strong>ONE</strong> sealed cable-bundle hole through the container wall, aligned with a hole in the enclosure's mounting plate</td>
+<td>PV disconnect</td>
+<td><strong>On the EP backboard</strong> (Blue Sea 6006, with the main disconnect + master pump switch) — <em>not</em> on this box</td>
 </tr>
 <tr>
 <td>Location</td>
-<td>Pinhole wall exterior, X ≈ 1,250–1,590mm (just left of EP)</td>
+<td>Pinhole wall, X ≈ 1,250–1,590mm (just left of EP)</td>
 </tr>
 <tr>
 <td>Approximate cost</td>
-<td>~$304 (enclosure set $292 + wall gland $12–20)</td>
+<td>~$85 (fab box $60–100 + flashing/silicone $15–30)</td>
 </tr>
 </tbody>
 </table>
-<p>The outward-facing connectors (MC4 array pairs, shore inlet, GFCI cooler outlet, E-stop button) and the PV-disconnect handle are <strong>bulkhead-mounted on the enclosure body/door</strong>, so they are accessible and pluggable from outside without opening the box; all wiring is contained inside. The enclosure ships with its own steel mounting plate and lid gasket, so it <strong>surface-mounts directly to the exterior wall</strong> — no welded frame or aluminum face plate is needed. <strong>A single hole is cut through the container wall, aligned with a hole in the mounting plate, and the entire wiring bundle</strong> (PV → MPPT, shore → charger, cooler AC ← inverter, E-stop + PV-disconnect loops) <strong>passes through it as one bundle.</strong> That penetration is sealed with a compression cable gland and an interior light-baffle — it must be <strong>both water-tight and light-tight</strong> (this is a pinhole camera; any light leak fogs the print). The <strong>cooler AC outlet is fed from the interior 12V→120V inverter</strong> (Circuit E), GFCI-protected (§7.6); the cooler is unplugged and the cord stowed inside for transport. See the power panel detail drawing below.</p>
+<p><strong>All four exterior interfaces are already weatherproof</strong> (MC4 IP67, weatherproof shore inlet, WR duplex under an in-use cover, IP65 E-stop), so they mount <strong>exposed</strong> — each surface-mounted and gasket-sealed to the box's front face, with the electrical <strong>attached from the container-interior side</strong> (the box opens inward). No secondary IP enclosure is needed. The container wall is <strong>corrugated</strong>, so the box's exterior flange can't seat flat: it is sealed to the wall with <strong>flashing over the corrugation crests plus a silicone bead</strong> — a seal that must be <strong>light-tight as well as water-tight</strong> (this is a pinhole camera; any perimeter gap or connector cavity fogs the print). Opaque front face + gasketed opaque devices + flashed flange give the light seal; the inlet/outlet socket cavities get a light-baffle behind them. Each device's wiring runs <strong>inside the container</strong> to the EP — the PV pairs to the <strong>Blue Sea 6006 disconnect</strong> on the EP backboard, the shore inlet to the charger, the cooler outlet from the inverter (Circuit E), the E-stop loop to the contactor. The cooler is unplugged and the cord stowed inside for transport. See the power panel detail drawing below.</p>
 <p><img alt="External Power Panel Detail" src="../assets/electrical-sheet6.png" /></p>
-<p><em>Detail drawing update to the IP-enclosure layout is pending (tracked in TODO) — it currently shows the superseded flush-plate geometry.</em></p>
+<p><em>Detail drawing update to the penetration-box layout is pending (tracked in TODO) — it currently shows the superseded flush-plate geometry.</em></p>
 <h2 id="6-interior-lighting">6. Interior Lighting<a class="headerlink" href="#6-interior-lighting" title="Permanent link">&para;</a></h2>
 <h3 id="61-two-circuit-lighting-design">6.1 Two-Circuit Lighting Design<a class="headerlink" href="#61-two-circuit-lighting-design" title="Permanent link">&para;</a></h3>
 <p>TBS-001 requires two mutually exclusive lighting modes:</p>
@@ -3792,7 +3792,7 @@ the full hazard assessment including this AC branch.</p>
 <td><strong>Electrical system total</strong></td>
 <td></td>
 <td></td>
-<td><strong>~<!-- BEGIN costing:elec-system-total -->$3,249<!-- END costing:elec-system-total --></strong></td>
+<td><strong>~<!-- BEGIN costing:elec-system-total -->$3,037<!-- END costing:elec-system-total --></strong></td>
 </tr>
 <tr>
 <td><strong>Shade canopy total</strong></td>
@@ -3810,7 +3810,7 @@ the full hazard assessment including this AC branch.</p>
 <td><strong>Systems grand total</strong></td>
 <td></td>
 <td></td>
-<td><strong>~<!-- BEGIN costing:elec-grand-total -->$3,797<!-- END costing:elec-grand-total --></strong></td>
+<td><strong>~<!-- BEGIN costing:elec-grand-total -->$3,585<!-- END costing:elec-grand-total --></strong></td>
 </tr>
 </tbody>
 </table>

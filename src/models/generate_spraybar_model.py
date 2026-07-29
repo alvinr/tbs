@@ -24,7 +24,7 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov          # ruby helpers + component()
 
-from tbs_constants import PROC_OPEN_X_L, PROC_OPEN_X_R, SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_H, SPRAY_BAR_POLY_OD, SPRAY_BAR_POLY_ID, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEEL_SP, SPRAY_BAR_AXLE_Z, SPRAY_BAR_N_NOZZLES, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_RIM, SPRAY_BAR_TRAY_FLOOR, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D, PROC_TRAY_SUMP_Z
+from tbs_constants import PROC_OPEN_X_L, PROC_OPEN_X_R, SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_H, SPRAY_BAR_POLY_OD, SPRAY_BAR_POLY_ID, SPRAY_BAR_Z_BOT, SPRAY_BAR_Z_TOP, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEEL_SP, SPRAY_BAR_AXLE_Z, SPRAY_BAR_N_NOZZLES, SPRAY_BAR_NOZZLE_PITCH, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_RIM, SPRAY_BAR_TRAY_FLOOR, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D, PROC_TRAY_SUMP_Z
 
 TAGS = ["Beam", "Carriage L", "Carriage R", "Tray Ref", "Feed & Pole", "Tray", "Labels"]
 
@@ -109,9 +109,10 @@ def build_beam():
     parts.append(ov.ruby_cylinder("Water in Manifold",
                                   XL, poly_cy, poly_cz, SPRAY_BAR_POLY_ID / 2, XR - XL,
                                   color=C_WATER, axis="x", alpha=0.55))
-    # flat-fan nozzles — side-tapped (saddle-tee) into the poly manifold, spray down-and-in
-    # (true 150mm pitch, centered on the span)
-    sp = 150
+    # 90° down-jet nozzles — side-tapped (saddle-tee) into the poly manifold, spray straight
+    # down. Pitch keys off the constant (was a stale hardcoded 150 — with N=39 that overshot
+    # the beam by ~1.2m, flinging nozzles into the corridor; SPRAY_BAR_NOZZLE_PITCH is 100).
+    sp = SPRAY_BAR_NOZZLE_PITCH
     margin = ((NXR - NXL) - (SPRAY_BAR_N_NOZZLES - 1) * sp) / 2
     for i in range(SPRAY_BAR_N_NOZZLES):
         nx = NXL + margin + i * sp

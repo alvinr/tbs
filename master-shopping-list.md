@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,173 | $6,711 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,633 | $7,938 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,670 | $7,975 |
 | 6. Electrical — power, circuits, wiring | $3,009 | $3,064 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$28,492** | **~$36,846** |
+| **TOTAL (base build + 50-print run)** | **~$28,529** | **~$36,883** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -273,6 +273,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
+| [1" brass foot valve with SS filter](https://www.misterworker.com/en-us/meclube/f1-brass-foot-valve-with-stainless-steel-filter/95953.html) (95953) | 1 ea | misterworker | tray | $14 |
 | [1" bulkhead tank-body fittings (Blue equalization cross-tie)](https://www.usplastic.com/catalog/item.aspx?itemid=32194) (32194) | 2 ea | US Plastic Corp | water | $25 |
 | [1" NPT spring check valve (CV1 — X1 gravity fill)](https://www.usplastic.com/catalog/item.aspx?itemid=31415) (31415) | 1 ea | US Plastic Corp | water | $24 |
 | [1" PVC 4-way cross fitting](https://www.amazon.com/dp/B0CGGV74MB) (B0CGGV74MB) | 1 ea | Amazon | water | $6 |
@@ -280,37 +281,33 @@ indicative low–high estimates — get quotes before ordering.
 | [1" PVC Sch-40 slip 90° elbow](https://www.homedepot.com/p/203812125) (PVC023001000HD) | 4 ea | Home Depot | water | $6 |
 | [1" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812199) (PVC024001000HD) | 3 ea | Home Depot | water | $6 |
 | [1" PVC slip×MNPT male adapter](https://www.homedepot.com/p/203811640) (PVC021091000HD) | 26 ea | Home Depot | water | $30 |
-| 1" reinforced suction hose, 6 ft | 1 ea | US Plastic Corp | tray | $15 |
-| 1" SS foot valve with strainer screen | 1 ea | US Plastic Corp | tray | $20 |
-| 1/2" barb × 1/2" hose barb, brass | 1 ea | DripDepot | spray | $4 |
+| [1" reinforced PVC suction hose, 25 ft](https://www.homedepot.com/p/310837595) (6213100025) | 1 25ft coil | Home Depot | tray | $66 |
 | [1/2" ID reinforced braided PVC hose](https://www.usplastic.com/catalog/item.aspx?itemid=60703) (60703) | 2 length | US Plastic Corp | water | $12 |
 | [1/2" NPT 90° elbow polypropylene](https://www.homedepot.com/p/203812033) (PVC023000600HD) | 14 ea | Home Depot | water | $10 |
 | [1/2" NPT polypropylene tee](https://www.homedepot.com/p/203812195) (PVC024000600HD) | 6 ea | Home Depot | water | $5 |
+| [1/2" PVC barbed tee (flex hose → manifold center feed)](https://www.dripdepot.com/barb-tubing-tee-size-half-inch) (1084) | 1 5-pack | DripDepot | spray | $3 |
 | [1/2" PVC Sch-40 pipe](https://www.homedepot.com/p/319692959) (30-05010HD) | 8 stick | Home Depot | water | $38 |
 | [1/2" PVC Sch-40 slip coupling](https://www.homedepot.com/p/203811331) (PVC021000600HD) | 4 ea | Home Depot | water | $3 |
 | [1/2" PVC slip×MNPT male adapter](https://www.homedepot.com/p/203811636) (PVC021090600HD) | 22 ea | Home Depot | water | $17 |
 | [1/2" PVC union (serviceable break)](https://www.homedepot.com/p/317901071) (PVCU12F) | 2 ea | Home Depot | water | $10 |
 | 1/2" reinforced braided PVC hose, 15 ft | 1 ea | DripDepot | spray | $15 |
 | [1/2"×1" NPT bushing reducer](https://www.homedepot.com/p/204836713) (PVC021121800HD) | 1 ea | Home Depot | water | $3 |
-| 1/4" irrigation poly tube | 1 ea | DripDepot | spray | $6 |
 | [2" polypropylene camlock pairs (M+F)](https://www.usplastic.com/catalog/item.aspx?itemid=30754) (30754) | 4 pair | US Plastic Corp | water | $92 |
 | [3-way diverter valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=31268) (31268) | 1 ea | US Plastic Corp | water | $61 |
 | [3-way diverter valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=22365) (22365) | 1 ea | US Plastic Corp | water | $24 |
-| 3/4" LDPE irrigation poly pipe, 15 ft | 1 ea | DripDepot | spray | $10 |
+| [3/4" LDPE irrigation poly pipe, 100 ft](https://www.dripdepot.com/polyethylene-tubing-size-three-quarter-inch-0-820-inch-inside-diameter-by-0-940-inch-od-length-100-feet) (3552) | 1 100ft roll | DripDepot | spray | $31 |
 | [3/4" PVC Sch-40 pipe](https://www.homedepot.com/p/100348472) (PVC-04007-0600) | 2 stick | Home Depot | water | $12 |
 | [90° spray jets, barbed](https://www.homedepot.com/p/302581648) (110B) | 4 10-pack | Home Depot | spray | $14 |
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | 3 ea | US Plastic Corp | water | $133 |
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | 1 ea | US Plastic Corp | water | $44 |
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | 2 ea | US Plastic Corp | water | $89 |
 | [Banjo V100FP ball valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30653) (30653) | 6 ea | US Plastic Corp | water | $297 |
-| Barbed tees, tube into the side poly manifold | 7 ea | DripDepot | spray | $10 |
 | [Bulkhead fitting 2" NPT (304 SS)](https://www.mcmaster.com/4464K115) (4464K115) | 3 ea | McMaster-Carr | water | $410 |
-| Distribution manifold, 1/2" → 7 barb outlets | 1 ea | DripDepot | spray | $12 |
 | [pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | 1 ea | US Plastic Corp | water | $19 |
 | [pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | 1 ea | US Plastic Corp | water | $19 |
 | [S60×6 female-buttress → 2" NPT + 2→1" bushing](https://us.cpp.parts/collections/fits-s60x6) (HMFN/20UD/027) | 8 ea | CPP.parts | water | $112–$144 |
 | [½" PVC Sch-40 pipe (tap relocation)](https://www.homedepot.com/p/319692959) (30-05010HD) | 1 stick | Home Depot | shelf | $5 |
-| **plumbing-fittings subtotal** | | | | **$1,636–$1,668** |
+| **plumbing-fittings subtotal** | | | | **$1,673–$1,705** |
 
 ### seals-gaskets
 
@@ -434,13 +431,13 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,877–$2,451 |
 | Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $1,925–$1,991 |
+| Home Depot | 47 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,547–$1,668 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
-| Home Depot | 46 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,481–$1,602 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
 | Online Metals | 5 | aluminum, stainless-sheet, steel-structural | $982–$1,402 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
-| US Plastic Corp | 15 | plastics-sheet, plumbing-fittings | $1,170 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
+| US Plastic Corp | 13 | plastics-sheet, plumbing-fittings | $1,135 |
 | American Grating | 1 | plastics-sheet | $830–$1,050 |
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
@@ -471,10 +468,10 @@ indicative low–high estimates — get quotes before ordering.
 | Super Bright LEDs | 1 | electrical-distribution | $75 |
 | Frost King + Canal Rubber | 1 | seals-gaskets | $40–$75 |
 | TAP Plastics | 1 | plastics-sheet | $30–$70 |
-| DripDepot | 7 | fasteners-hardware, plumbing-fittings | $61 |
 | Polycase | 1 | electrical-distribution | $60 |
 | US Plastic + Amazon | 1 | fasteners-hardware | $45–$60 |
 | Fibergrate | 1 | adhesives-finishes | $40–$60 |
+| DripDepot | 4 | fasteners-hardware, plumbing-fittings | $53 |
 | Amazon (OKAYASU) | 1 | seals-gaskets | $24–$52 |
 | Digi-Key | 1 | ducting-ventilation | $50 |
 | Steel service center | 1 | steel-structural | $30–$50 |
@@ -484,6 +481,7 @@ indicative low–high estimates — get quotes before ordering.
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |
 | Wurth Baer Supply | 1 | fasteners-hardware | $24 |
 | Local machine shop | 1 | aluminum | $12–$18 |
+| misterworker | 1 | plumbing-fittings | $14 |
 | FMW Fasteners | 1 | fasteners-hardware | $6–$12 |
 | Bridge Fasteners | 1 | fasteners-hardware | $7–$11 |
 | Steel offcut | 1 | steel-structural | $5 |

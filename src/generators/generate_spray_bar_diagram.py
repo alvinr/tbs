@@ -107,7 +107,7 @@ TOTAL_SHEETS = 8
 # ═════════════════════════════════════════════════════════════════════════════
 # SHEET 1 — Gantry Elevation
 # X-Z section viewed from film plane (along Yd).
-# Centered on beam centerline.  Shows walkway slit, pole, beam, BV-02.
+# Centered on beam centerline.  Shows walkway slit, pole, beam, BV-05.
 # Horizontal scale 1:18, Vertical scale 1:4.5 (4× vert exaggeration)
 # ═════════════════════════════════════════════════════════════════════════════
 
@@ -283,7 +283,7 @@ def draw_sheet1():
            "TELESCOPING POLE\n(THROUGH WALKWAY SLIT)",
            fs=4.5, color="#8B6914", font=FONT, zorder=15)
 
-    # ── BV-02 on pinhole wall ────────────────────────────────────────────
+    # ── BV-05 on pinhole wall ────────────────────────────────────────────
     bv_z_real = BV02_Z
     bv_z = BV02_Z - PIPE_SKIP
     bv_size = 30
@@ -305,7 +305,7 @@ def draw_sheet1():
                  pipe_w, bv_z,
                  fc=C_BLUE, ec=C_FRAME, lw=0.8, alpha=0.4, zorder=11))
 
-    # BV-02 ball-valve symbol (bowtie inside white circle).
+    # BV-05 ball-valve symbol (bowtie inside white circle).
     # Axis aspect is 4.0 (1 X data-unit renders 4x wider than 1 Z data-unit), so
     # to make the symbol appear round/symmetric ON SCREEN every X extent is divided
     # by AR. The P&ID bowtie is drawn spread HORIZONTALLY on screen (the two
@@ -336,10 +336,10 @@ def draw_sheet1():
 
     leader(ax, BV02_X - 30, bv_z + 35,
            BV02_X - 375, bv_z + 80,
-           f"BV-02 @ Z={int(bv_z_real)}mm\n(1/2\" BALL VALVE)\nWAIST HEIGHT",
+           f"BV-05 @ Z={int(bv_z_real)}mm\n(1/2\" BALL VALVE)\nWAIST HEIGHT",
            fs=5.5, color=C_BLUE, font=FONT, zorder=15)
 
-    # ── Flex hose from BV-02 to beam center feed ─────────────────────────
+    # ── Flex hose from BV-05 to beam center feed ─────────────────────────
     hose_start_x = BV02_X
     hose_start_z = bv_z - bv_size / 2
     hose_end_x = pole_x
@@ -359,25 +359,18 @@ def draw_sheet1():
     ax.plot(hose_xs, hose_zs, color=C_HOSE, lw=2.0, alpha=0.7, zorder=11)
 
     ax.text(BV02_X + 75, bv_z - 60,
-            "1/2\" FLEX HOSE\n-> MANIFOLD\n(4m COILED)",
+            "1/2\" FLEX HOSE\n-> CENTER FEED\n(4m COILED)",
             ha="left", va="top", fontsize=4.5, color=C_HOSE, **FONT, zorder=15)
 
-    # ── Distribution manifold at the ball joint → irrigation feed tubes ──
-    man_w, man_h = 50, 12
-    ax.add_patch(Rectangle((pole_x - man_w / 2, BEAM_Z_TOP + 2), man_w, man_h,
-                 fc="#C0A860", ec=C_FRAME, lw=0.8, zorder=12))
-    # irrigation tube stubs fanning along the beam top to barbed feed points
-    for dx in (-1400, -900, -450, 450, 900, 1400):
-        fxp = pole_x + dx
-        if beam_x_l < fxp < beam_vis_r:
-            ax.plot([pole_x, fxp], [BEAM_Z_TOP + 8, BEAM_Z_TOP + 3],
-                    color=C_HOSE, lw=1.0, alpha=0.8, zorder=11)
-            ax.add_patch(Circle((fxp, BEAM_Z_TOP), 4,
-                         fc="#3B7A3B", ec=C_FRAME, lw=0.5, zorder=12))
-    leader(ax, pole_x + man_w / 2, BEAM_Z_TOP + 8,
+    # ── Single center-feed inlet (½" barbed tee) into the manifold center ──
+    # The ¾" manifold is over-bored for the 3.5 GPM flow, so pressure is uniform
+    # end-to-end from one central feed — no distribution manifold / feed-tube fan.
+    ax.add_patch(Circle((pole_x, BEAM_Z_TOP), 5,
+                 fc="#3B7A3B", ec=C_FRAME, lw=0.6, zorder=12))
+    leader(ax, pole_x, BEAM_Z_TOP + 6,
            pole_x + 350, BEAM_Z_TOP + 40,
-           "MANIFOLD -> 7 IRRIGATION\nFEED TUBES (see Sheet 7)",
-           fs=4.5, color="#C0A860", font=FONT, zorder=15)
+           "SINGLE CENTER FEED\n(1/2\" barbed inlet tee)",
+           fs=4.5, color="#3B7A3B", font=FONT, zorder=15)
 
     # ── Centerline through beam and slit ─────────────────────────────────
     ax.plot([pole_x, pole_x], [Z_LO, Z_HI - 200],
@@ -399,7 +392,7 @@ def draw_sheet1():
                offset=8, fs=4.5, font=FONT, right=True)
 
     draw_dim_v(ax, BV02_X - 60, 0, bv_z,
-               f"{int(bv_z_real)}mm BV-02",
+               f"{int(bv_z_real)}mm BV-05",
                offset=8, fs=4.5, font=FONT)
 
     # ── Notes ────────────────────────────────────────────────────────────
@@ -407,8 +400,8 @@ def draw_sheet1():
         "GANTRY ELEVATION — SECTION THROUGH NEAR WALKWAY:",
         f"1. 40×25×3mm 304-SS RHS beam spans {BEAM_SPAN}mm. 3/4\" LDPE poly SIDE-mounted.",
         f"2. {SLIT_WIDTH}mm slit in walkway at beam center X for pole passage.",
-        "3. BV-02 on pinhole wall at pinhole centerline, waist height → flex hose",
-        "   → manifold at ball joint → 7 irrigation tubes → barbed into the side poly.",
+        "3. BV-05 on pinhole wall at pinhole centerline, waist height → flex hose",
+        "   → single center feed into the side poly manifold.",
         f"4. {N_NOZZLES}× 90° down-jets side-tapped into the poly, spray down-and-in.",
     ]
     draw_notes(ax, notes, X_LO + 155, 520, spacing=14, fs=7, font=FONT, width=1500)

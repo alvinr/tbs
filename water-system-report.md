@@ -216,7 +216,7 @@ The processing tray and spray bar gantry are fully specified in the [Processing 
 
 **External drain-out risers:** The Brown (IBC-3) and Waste (IBC-4) totes are pumped out to the sealed end-wall ports — X3 via P-05, X4 via P-03. The two vertical drain risers run down the IBC corridor gap and are clamped at ~400mm centers to an 18mm marine-ply backing spine that tees perpendicular off the Corridor Plumbing Panel. Its top is capped with a horizontal ply shelf that the Blue fill trunk rests on — so both the drain risers and the fill trunk are supported at the T rather than free-hanging.
 
-**Spray bar:** A 3,859mm span 304 SS RHS beam gantry (40×25×3mm, laid flat) rolls on the raised/sloped tray floor beneath the walkway grating. Water from P-01 (Blue supply) reaches the bar via BV-05 → 4m flexible hose → ball-joint manifold → 7 feed tubes into the side LDPE manifold → 39 90° down-jet nozzles at 100mm centers, spraying straight down.
+**Spray bar:** A 3,859mm span 304 SS RHS beam gantry (40×25×3mm, laid flat) rolls on the raised/sloped tray floor beneath the walkway grating. Water from P-01 (Blue supply) reaches the bar via BV-05 → 4m flexible hose → single center feed into the side LDPE manifold → 39 90° down-jet nozzles at 100mm centers, spraying straight down.
 
 **Supply path:** P-01 → ACC-01 → rigid 1/2" PVC pipe along pinhole wall → BV-05 → coiled flexible hose → bulkhead fitting → beam bore → spray holes.
 
@@ -405,8 +405,8 @@ reports — [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) and
 | Category | Low estimate | High estimate |
 |----------|-------------|--------------|
 | Water equipment — §8 BOM (IBC storage, pumps + accumulator, 3-stage filter train, valves & fittings, pipe, wiring, consumables) | $2,073 | $3,123 |
-| Processing tray (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.1) | <!-- BEGIN costing:tray-low -->$1,538<!-- END costing:tray-low --> | <!-- BEGIN costing:tray-high -->$2,226<!-- END costing:tray-high --> |
-| Spray bar assembly (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.2) | <!-- BEGIN costing:spray-low -->$385<!-- END costing:spray-low --> | <!-- BEGIN costing:spray-high -->$457<!-- END costing:spray-high --> |
+| Processing tray (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.1) | <!-- BEGIN costing:tray-low -->$1,583<!-- END costing:tray-low --> | <!-- BEGIN costing:tray-high -->$2,271<!-- END costing:tray-high --> |
+| Spray bar assembly (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.2) | <!-- BEGIN costing:spray-low -->$377<!-- END costing:spray-low --> | <!-- BEGIN costing:spray-high -->$449<!-- END costing:spray-high --> |
 | **TOTAL** | **$3,660** | **$5,513** |
 
 *The Water-equipment row is the generated §8 `parts:water` BOM total (single source of record for the water subsystem — storage/pumps/filters/valves/pipe/consumables); the tray and spray-bar rows are `costing.py` blocks. The TOTAL is a hand sum of the three and should itself become a generated block (Phase-1 backlog).*

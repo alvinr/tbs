@@ -135,10 +135,11 @@ toward the pinhole wall), flooding the print surface progressively.
 
 The beam spans <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm between the inner edges of the left and right walkways, extending under the walkway grating at each end. At each end, a
 two-wheel carriage rolls on the processing tray floor beneath the grating. A 3/4" LDPE irrigation poly pipe clipped to the beam's inboard side face serves as the
-spray manifold — the supply hose terminates at a distribution manifold by the ball joint,
-which feeds seven irrigation tubes that barb into the poly manifold along the beam; water
-then exits through thirty-nine barbed 90° down-jets that side-tap the manifold and spray
-straight down, at 100mm pitch along the beam.
+spray manifold — the supply hose feeds it at its center through a single barbed inlet tee by
+the ball joint. The 3/4" bore is far larger than the 3.5 GPM flow demands, so pressure holds
+uniform end-to-end (~0.1 PSI drop across the full span) from that one feed — no multi-point
+distribution is needed. Water exits through thirty-nine barbed 90° down-jets that side-tap the
+manifold and spray straight down, at 100mm pitch along the beam.
 
 ![Sheet 2 — Cross Section: Beam Assembly](assets/spray-bar-sheet2.png)
 
@@ -158,9 +159,7 @@ straight down, at 100mm pitch along the beam.
 | Beam | 304 SS RHS, 40×25×3mm (laid flat), <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm long (two 8 ft lengths butt-welded); ~15mm pre-camber | 1 | Low-profile structural beam; carries the side manifold |
 | Side spray manifold | 3/4" LDPE irrigation poly pipe (OD 25mm, ID 19mm) | 1 | Water distribution; clipped to the beam's inboard side face |
 | 90° down-jets | DIG 110B barbed saddle-tee inlet, irrigation-type, 90° cone (spray straight down) | 39 | Side-tapped into the manifold, spray straight down (100mm pitch) |
-| Distribution manifold | 1/2" inlet → 7 barbed outlets, mounted at the ball joint | 1 | Splits the supply hose to the 7 feed tubes |
-| Irrigation feed tubes | 1/4" poly/vinyl tube, manifold to beam feed points | 7 | Distribute water along the beam (~7m total) |
-| Barbed feed fittings | Barbed tee, feed tube into the side manifold | 7 | Feed points (~550mm pitch) into the manifold |
+| Center-feed inlet | 1/2" PVC barbed tee (DripDepot 1084), flex hose → manifold center | 1 | Single feed point at the beam center (the over-bored manifold needs no multi-point distribution) |
 | Retainer clips | SS or nylon, for 3/4" LDPE fold-back closure | 2 | Seal both ends of poly pipe (fold-back termination) |
 | [Acetal (Delrin) roller wheels](https://www.mcmaster.com/products/acetal-round-stock/) | Ø32 × 20mm wide, Ø10 plain bore, flat tread | 4 | Low-profile, roll on tray floor beneath walkway grating (2 per carriage, 200mm Yd spacing) |
 | [Axle pins (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | 10mm × 60mm 304 SS axle pin, flat head | 4 (1 pack) | Wheel spindles |
@@ -174,7 +173,7 @@ straight down, at 100mm pitch along the beam.
 | Arm adapter | Turned 6061-T6 AL: M12 female bore (onto the stud + M12 jam nut) → Ø21 male spigot | 1 | Reduces the M12 stud to the Ø21 tube bore |
 | Clamp collar | 25mm/1" bore clamp-style shaft collar (SS), integral clamp screw | 1 | Pinches the slit arm-tube bottom onto the adapter spigot |
 | Push pole | Telescoping aluminum pool pole, 1.2–2.4 m | 1 | Operator controls bar position from walkway |
-| Flexible hose | 1/2" reinforced braided PVC, ~4 m coiled | 1 | Connects BV-02 to the distribution manifold |
+| Flexible hose | 1/2" reinforced braided PVC, ~4 m coiled | 1 | Connects BV-05 to the manifold center inlet |
 | Zip ties | Nylon, 200mm | ~6 | Secure flex hose to arm tube |
 
 ### 3.3 Beam / Spray Pipe
@@ -461,10 +460,10 @@ A 90° cone at the ~50mm nozzle height footprints ~100mm, so the pitch was tight
 
 ### 3.10 Water Connection
 
-BV-02 (1/2" ball valve, Blue supply isolation) is mounted on the pinhole wall (Yd=0) at
+BV-05 (1/2" ball valve, spray-bar feed isolation) is mounted on the pinhole wall (Yd=0) at
 X=<!-- BEGIN fact:pinhole_x_mm -->2,399<!-- END fact:pinhole_x_mm -->mm (pinhole centerline), Z=900mm — waist height from the walkway deck. A
-1/2" PVC riser runs from the Blue supply trunk up to BV-02. A 4 m length of 1/2"
-reinforced braided PVC hose connects from BV-02 down to the distribution manifold at the
+1/2" PVC riser runs from the Blue supply trunk up to BV-05. A 4 m length of 1/2"
+reinforced braided PVC hose connects from BV-05 down to the manifold center inlet at the
 ball joint. The hose coils when the bar is near the pinhole wall and extends as the bar is
 pushed toward the far wall. The hose trails along the near tray rim, staying clear of
 the print surface.
@@ -550,12 +549,12 @@ tray drainage plan and sump cross-section).
 | Fabrication (cut, brake, weld, press sump) | Two panels + a ~40mm center-seam lap (shingle-oriented downhill) + sump well | 1 lot | Local sheet metal | $450–$850 |
 | [HDPE sheet, laminated to 1-1/4" (slope shims)](https://www.usplastic.com/catalog/item.aspx?itemid=31840) (46039+42591) | 5 tapered slope shims (2"×86.6" = 50×2,200mm, 20→30mm taper). US Plastic max sheet = 1", so LAMINATE two 24×48 sheets to 1-1/4" then taper-cut (Option B: 1 mid-length butt splice/strip — fine for a floor-bonded compression shim). Combo = 3/4" (US Plastic 46039 $177.58) + 1/2" (42591 $118.38) = $295.96; the 3/4"+1/2" split keeps the taper cut inside the 3/4" top layer so the glue line stays buried (the 1"+1/4" combo, same price, would cut through the seam). Taper-cut bundles with the tray fab. | 1 lot | US Plastic Corp | $296 |
 | [Loctite PL Premium construction adhesive](https://www.homedepot.com/p/319654545) (1390595) | Shim-to-floor bond. Loctite PL Premium 10 oz, sold as a 2-pack ($11.94 → $5.97/tube) | 2 tube | Home Depot | $12 |
-| 1" SS foot valve with strainer screen | Sump pickup tube | 1 ea | US Plastic Corp | $20 |
-| 1" reinforced suction hose, 6 ft | Pickup tube to P-04 | 1 ea | US Plastic Corp | $15 |
+| [1" brass foot valve with SS filter](https://www.misterworker.com/en-us/meclube/f1-brass-foot-valve-with-stainless-steel-filter/95953.html) (95953) | Sump pickup foot valve — Meclube F1 brass body + SS filter screen (misterworker 95953). $14.23 firm 2026-07-28 (was a $20 est SS unit). | 1 ea | misterworker | $14 |
+| [1" reinforced PVC suction hose, 25 ft](https://www.homedepot.com/p/310837595) (6213100025) | Sump pickup tube → P-04. HYDROMAXX 1" clear flexible PVC suction/discharge hose, white reinforced helix; 25 ft coil (~6 ft used, balance spare). $65.65 firm 2026-07-28 (was a $15 est 6 ft cut — Home Depot stocks the 25 ft length). | 1 25ft coil | Home Depot | $66 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | Silicone sealant bed in the center-seam lap joint (between the overlapped panels) + a top bead — the seam seal | 1 ea | CountryMax (Aqueon) | $17–$25 |
 | [M6×1.0 × 16 hex bolt, 316 SS — tray center-seam lap joint](https://www.mcmaster.com/93635A210/) (93635A210) | Tray center-seam LAP-joint bolts (316 SS, wet zone) + M6 serrated flange nuts underneath. Through both overlapped 1.5mm panels + silicone bed. Grip ≈ 4mm → M6×16. Pitch M6×1.0 coarse. $15.86/pack of 25. | 12 ea | McMaster-Carr | $8 |
 | [M6×1.0 flange nut, serrated SS](https://www.mcmaster.com/96194A101/) (96194A101) | Serrated flange nut — tray panel bolts. Pitch M6×1.0 (coarse, baseline — confirm vs SKU PDF, must match the mating bolt). $4.71/pack of 100. | 12 ea | McMaster-Carr | $1 |
-| **Tray total** | | | | **$1,538–$2,226** |
+| **Tray total** | | | | **$1,583–$2,271** |
 <!-- END parts:tray -->
 
 ### 6.2 Spray Bar Assembly
@@ -565,14 +564,11 @@ tray drainage plan and sump cross-section).
 |------|------|-----|----------|-----------|
 | 304 SS RHS 40×25×3mm, 8 ft * | 40×25×3mm rectangular tube, laid flat (low profile); 2 sticks butt-welded to span | 2 ea | Online Metals | $96–$144 |
 | 6061-T6 AL plate 3/16" (5mm) | Carriage plates + spacer blocks (~300 × 500mm sheet) | 1 ea | Online Metals | $16–$28 |
-| 3/4" LDPE irrigation poly pipe, 15 ft | Side-mounted spray manifold, clipped to the beam's inboard face (OD 25mm, ID 19mm) | 1 ea | DripDepot | $10 |
+| [3/4" LDPE irrigation poly pipe, 100 ft](https://www.dripdepot.com/polyethylene-tubing-size-three-quarter-inch-0-820-inch-inside-diameter-by-0-940-inch-od-length-100-feet) (3552) | Side-mounted spray manifold, clipped to the beam's inboard face. DripDepot 3552 ¾" poly tubing (0.820" ID × 0.940" OD ≈ 20.8×23.9mm); 100 ft roll, ~15 ft used on the ~3.86m beam (balance spare). $31.24 firm 2026-07-28. | 1 100ft roll | DripDepot | $31 |
 | [90° spray jets, barbed](https://www.homedepot.com/p/302581648) (110B) | DIG 110B 90° spray jets, 10-pack ×4 = 40 (39 used, 1 spare); side-tapped into the poly manifold, spray straight down. 90° down chosen (Alvin 2026-07-28) over flat-fan/180° so the wash lands on the print, not sideways/up; pitch tightened 150→100mm (26→39 jets) for edge-to-edge coverage — see processing-tray §3.9. | 4 10-pack | Home Depot | $14 |
-| Distribution manifold, 1/2" → 7 barb outlets | Mounted at ball joint, splits feed to tubes | 1 ea | DripDepot | $12 |
-| 1/4" irrigation poly tube | Manifold to beam feed points (~7m total) | 1 ea | DripDepot | $6 |
-| Barbed tees, tube into the side poly manifold | Feed tube to the side poly manifold, 7 feed points | 7 ea | DripDepot | $10 |
 | SS/nylon retainer clips for 3/4" LDPE | Fold-back end closures | 2 ea | DripDepot | $4 |
 | [Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore)](https://www.mcmaster.com/8576K23/) (8576K23) | Solid acetal (Delrin), flat tread. Cut from 1-1/4" (31.75mm) Delrin rod into 4 × 20mm slugs; drill Ø10.5 running-clearance bore — the acetal plain bore IS the bearing (self-lubricating on the Ø10 304 SS axle; no ball bearing — the ferricyanide/citric wash rules steel bearings out). One 1 ft (305mm) rod yields all 4 (parting/facing waste). Light-duty ~2.6 kg/wheel wet; 2 per carriage, low-profile for grate clearance. OD Ø31.75 = Ø32 nominal (−0.25mm). | 1 1 ft rod | McMaster-Carr | $11 |
-| 1/2" barb × 1/2" hose barb, brass | Flex hose to manifold inlet | 1 ea | DripDepot | $4 |
+| [1/2" PVC barbed tee (flex hose → manifold center feed)](https://www.dripdepot.com/barb-tubing-tee-size-half-inch) (1084) | DripDepot 1084 ½" PVC barbed tee (Alvin 2026-07-28: PVC, NOT brass as previously specced), $0.57 ea × 5-pack = $2.85; the SINGLE center-feed inlet — ½" flex hose → manifold center (Option 1: single feed replaced the 7-tube distribution fan). 1 used. Firm 2026-07-28. | 1 5-pack | DripDepot | $3 |
 | Telescoping aluminum pool pole, 4–8 ft | Standard pool skimmer handle | 1 ea | Amazon | $15 |
 | 1/2" reinforced braided PVC hose, 15 ft | BV-02 to beam feed (4 m coiled) | 1 ea | DripDepot | $15 |
 | [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) | Wheel axle pins | 1 pack | Amazon | $5 |
@@ -587,16 +583,16 @@ tray drainage plan and sump cross-section).
 | [M12×1.75 jam nut, SS](https://www.amazon.com/M12-1-75-Plain-Finish-Stainless-Steel/dp/B007IA07PS) (B007IA07PS) | Locks the arm adapter on the ball-joint M12 stud (M12×1.75 coarse). | 1 ea | Amazon | $1 |
 | [Clamp-style shaft collar, 25mm/1" bore, SS](https://www.ruland.com/cl-16-st.html) (CL-16-ST) | Over the slit arm-tube bottom; its integral clamp screw squeezes the Ø25×2 tube onto the adapter's Ø21 spigot — rotational adjust + lift-off for transport. Replaces the loose M6 pinch bolt. Confirm SKU/bore/price at order. | 1 ea | Ruland | $28–$33 |
 | Nylon zip ties, 200mm | Hose to arm tube | 6 ea | Amazon | $1 |
-| **Spray total** | | | | **$386–$458** |
+| **Spray total** | | | | **$378–$450** |
 <!-- END parts:spray -->
 
 ### 6.3 Combined Total
 
 | Subsystem | Cost Range |
 |-----------|-----------|
-| Processing tray | <!-- BEGIN costing:tray-low -->$1,538<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,226<!-- END costing:tray-high --> |
-| Spray bar assembly | <!-- BEGIN costing:spray-low -->$385<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$457<!-- END costing:spray-high --> |
-| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,923<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,683<!-- END costing:tray-spray-total-high -->** |
+| Processing tray | <!-- BEGIN costing:tray-low -->$1,583<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,271<!-- END costing:tray-high --> |
+| Spray bar assembly | <!-- BEGIN costing:spray-low -->$377<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$449<!-- END costing:spray-high --> |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,960<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,720<!-- END costing:tray-spray-total-high -->** |
 
 ---
 

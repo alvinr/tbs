@@ -277,17 +277,17 @@ indicative low–high estimates — get quotes before ordering.
 | [1" bulkhead tank-body fittings (Blue equalization cross-tie)](https://www.usplastic.com/catalog/item.aspx?itemid=32194) (32194) | 2 ea | US Plastic Corp | water | $25 |
 | [1" NPT spring check valve (CV1 — X1 gravity fill)](https://www.usplastic.com/catalog/item.aspx?itemid=31415) (31415) | 1 ea | US Plastic Corp | water | $24 |
 | [1" PVC 4-way cross fitting](https://www.amazon.com/dp/B0CGGV74MB) (B0CGGV74MB) | 1 ea | Amazon | water | $6 |
-| [1" PVC Sch-40 pipe](https://www.homedepot.com/p/100348473) (PVC040100600RS) | 2 stick | Home Depot | water | $17 |
+| [1" PVC Sch-40 pressure pipe](https://www.homedepot.com/p/319692953) (22405) | 2 stick | Home Depot | water | $17 |
 | [1" PVC Sch-40 slip 90° elbow](https://www.homedepot.com/p/203812125) (PVC023001000HD) | 4 ea | Home Depot | water | $6 |
 | [1" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812199) (PVC024001000HD) | 3 ea | Home Depot | water | $6 |
 | [1" PVC slip×MNPT male adapter](https://www.homedepot.com/p/203811640) (PVC021091000HD) | 26 ea | Home Depot | water | $30 |
 | [1" reinforced PVC suction hose, 25 ft](https://www.homedepot.com/p/310837595) (6213100025) | 1 25ft coil | Home Depot | tray | $66 |
 | [1/2" ID reinforced braided PVC hose](https://www.usplastic.com/catalog/item.aspx?itemid=60703) (60703) | 2 length | US Plastic Corp | water | $12 |
-| [1/2" NPT 90° elbow polypropylene](https://www.homedepot.com/p/203812033) (PVC023000600HD) | 14 ea | Home Depot | water | $10 |
-| [1/2" NPT polypropylene tee](https://www.homedepot.com/p/203812195) (PVC024000600HD) | 6 ea | Home Depot | water | $5 |
 | [1/2" PVC barbed tee (flex hose → manifold center feed)](https://www.dripdepot.com/barb-tubing-tee-size-half-inch) (1084) | 1 5-pack | DripDepot | spray | $3 |
 | [1/2" PVC Sch-40 pipe](https://www.homedepot.com/p/319692959) (30-05010HD) | 8 stick | Home Depot | water | $38 |
+| [1/2" PVC Sch-40 slip 90° elbow](https://www.homedepot.com/p/203812033) (PVC023000600HD) | 14 ea | Home Depot | water | $10 |
 | [1/2" PVC Sch-40 slip coupling](https://www.homedepot.com/p/203811331) (PVC021000600HD) | 4 ea | Home Depot | water | $3 |
+| [1/2" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812195) (PVC024000600HD) | 6 ea | Home Depot | water | $5 |
 | [1/2" PVC slip×MNPT male adapter](https://www.homedepot.com/p/203811636) (PVC021090600HD) | 22 ea | Home Depot | water | $17 |
 | [1/2" PVC union (serviceable break)](https://www.homedepot.com/p/317901071) (PVCU12F) | 2 ea | Home Depot | water | $10 |
 | 1/2" reinforced braided PVC hose, 15 ft | 1 ea | DripDepot | spray | $15 |

@@ -57,7 +57,7 @@ bucketed by WHEN it can be acted on:_
   150→100mm (26→39 jets) for edge-to-edge coverage of the 90° footprint. Cascaded: constant, 2D spray-bar diagram,
   report §3.2/§3.9, part (4× 10-packs). **Residual: re-send + save the 3 .skp that draw the bar — spraybar,
   overview, construction (.rb regenerated; ALVIN re-sends + uploads).**
-- [ ] **External power panel — GEOMETRY cascade (report §5.4 prose + parts + component sourcing DONE 2026-07-28).**
+- [x] **External power panel — GEOMETRY cascade — DONE 2026-07-28 (report §5.4 prose + parts + component sourcing + 2D + 3D).**
   Design FINAL (Alvin): a **fabricated flanged wall-penetration box** (`power-panel-box`) — the 4 weatherproof interfaces
   (3× MC4 bulkheads Powerwerx, shore inlet, cooler outlet W5320-T0W + 5981-UCL, 22mm E-stop) surface-mount + seal to its
   front face and are exposed; box opens to the interior for wiring; flange sealed to the ribbed wall with **flashing +
@@ -68,8 +68,9 @@ bucketed by WHEN it can be acted on:_
   cover caps in profile; **3D `external_panel()`** (shared by electrical/overview/construction) rebuilt flush plate → flange
   front face + open shroud, WR duplex + covers, new consts `PWR_PANEL_BOX_D`/`PWR_PANEL_SHROUD_T`; **electrical.skp sent +
   verified**; assembly-fab / floorplan / pinhole-wall-elevation flush-mount wording → penetration box.
-  REMAINING — **overview.skp + construction.skp**: Alvin open each → I `--send` + verify → he saves + uploads → commit `.skp`
-  (electrical.skp also awaiting Alvin save+upload). Then push + publish the local stack.
+  DONE 2026-07-28 — all 3 `.skp` (electrical / overview / construction) sent, verified (flange Y−65..−62, shroud open to
+  Y+28, WR outlet raised 25mm Z1903..1963), saved + uploaded by Alvin, committed. View B also shows all 3 PV pairs →
+  busbar → MPPT and legible gold/orange AC wiring. Cascade COMPLETE.
 - [ ] **panel-corner-plates — design flag (huge cores).** Each 3mm 5052 Al corner core is 653×2388mm (~16.8 ft², ~half a sheet); the 4 don't nest → 2 full sheets = $586 + weight. Decide full solid plate vs a lighter frame/partial before buying.
 - [ ] **Aug 2026 full re-price.** Sweep every `parts.py` line against current listings (reminder atop the file); edit band → `--inject` cascades.
 - [ ] **Master-BOM SKU backfill.** Branded rows that don't yet carry a registry `part_no` — Alvin's supplier paste-check; each SKU auto-appears in the master on the next `--inject`.

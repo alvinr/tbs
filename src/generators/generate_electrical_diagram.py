@@ -1904,7 +1904,7 @@ def draw_sheet6():
                 boxstyle="round,pad=1,rounding_size=4", fc="#EAF4FF", ec="#5A7A9A",
                 lw=1.2, alpha=0.6, zorder=5.6))
         ax_b.plot([face_x1 + conn_in, wall_int + int_pad - 42], [cy, cy],
-                  color=lead_col, lw=1.6, ls=lead_ls, zorder=5)
+                  color=lead_col, lw=2.4, ls=lead_ls, zorder=5)   # bold conductor
 
     q = cut_h_draw / 4
     # MC4 group (bottom): all 3 PV pairs penetrate the face, each an uncovered
@@ -1927,10 +1927,15 @@ def draw_sheet6():
               fontsize=5.5, ha="center", va="top", **FONT, zorder=7)
     ax_b.plot([busbar_x, wall_int + int_pad - 42], [mc4_cy, mc4_cy],
               color=C_MC4, lw=1.8, zorder=5)           # single combined feed -> MPPT
+    # AC devices — saturated bodies + bold, distinctly-colored conductors so their
+    # wiring reads as clearly as the green PV and red E-stop (gold = shore/charger,
+    # orange = Circuit E cooler, matching VIEW A + the 3D cooler cord).
+    C_SHORE, C_SHORE_BODY   = C_AC, "#EBD494"
+    C_OUTLET, C_OUTLET_BODY = "#E8884A", "#F6C79E"
     inlet_cy = cut_bot + q * 2        # shore inlet -> charger (weatherproof cover)
-    face_conn(inlet_cy, 11 * mm_v, C_NEMA, C_AC, C_AC, cover=True)
+    face_conn(inlet_cy, 11 * mm_v, C_SHORE_BODY, C_SHORE, C_SHORE, cover=True)
     outlet_cy = cut_bot + q * 3       # cooler AC outlet <- inverter (CCT E, in-use cover)
-    face_conn(outlet_cy, 11 * mm_v, C_NEMA, C_AC, C_AC, lead_ls="--", cover=True)
+    face_conn(outlet_cy, 11 * mm_v, C_OUTLET_BODY, C_OUTLET, C_OUTLET, lead_ls="--", cover=True)
 
     # E-stop on the face — red stub + dome protruding out, contact block into the box
     es_cy = cut_bot + q * 0.45
@@ -1945,9 +1950,9 @@ def draw_sheet6():
     int_x = wall_int + int_pad - 38
     ax_b.text(int_x, mc4_cy,   "→ MPPT", color=C_MC4, fontsize=7, fontweight="bold",
               va="center", ha="left", **FONT, zorder=7)
-    ax_b.text(int_x, inlet_cy, "→ CHARGER", color=C_AC, fontsize=7, fontweight="bold",
+    ax_b.text(int_x, inlet_cy, "→ CHARGER", color=C_SHORE, fontsize=7, fontweight="bold",
               va="center", ha="left", **FONT, zorder=7)
-    ax_b.text(int_x, outlet_cy,"← CCT E (inverter)", color=C_AC, fontsize=7,
+    ax_b.text(int_x, outlet_cy,"← CCT E (inverter)", color=C_OUTLET, fontsize=7,
               fontweight="bold", va="center", ha="left", **FONT, zorder=7)
     ax_b.text(face_x0 - conn_out - 6, es_cy, "E-STOP", color=C_ESTOP, fontsize=6.5,
               fontweight="bold", va="center", ha="right", **FONT, zorder=7)

@@ -379,7 +379,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Cushioned pipe clip | Secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports) | 16 ea | Amazon | $16–$32 |
 | Thread seal tape (PTFE) | 1/2" wide, 260" roll | 4 roll | Home Depot | $8 |
 | [1/2" PVC Sch-40 pipe](https://www.homedepot.com/p/319692959) (30-05010HD) | All pump-driven runs (~80 ft = 8× 10-ft sticks), PVC Sch-40 solvent-weld (IPEX potable-pressure). Matches pump port size. | 8 stick | Home Depot | $38 |
-| [1" PVC Sch-40 pressure pipe](https://www.homedepot.com/p/319692953) (22405) | IPEX 1"×10 ft white PVC Sch-40 POTABLE PRESSURE water pipe (model 22405); ~20 ft = 2× 10-ft sticks; filter outlet + IBC lines. Pressure-rated (Alvin 2026-07-28 — replaced the earlier DWV listing for the pumped filter section). Re-count vs routing. | 2 stick | Home Depot | $17 |
+| [1" PVC Sch-40 pressure pipe](https://www.homedepot.com/p/319692953) (22405) | IPEX 1"×10 ft white PVC Sch-40 POTABLE PRESSURE water pipe (model 22405); ~40 ft = 4× 10-ft sticks; filter inter-stage/outlet + IBC internal fill/drain manifold + X1 fill + equalization tie. Pressure-rated (Alvin 2026-07-28). Re-count DONE 2026-07-29 (Alvin): 2→4 sticks — the IBC-zone 1" internal fill/drain (§5 pipe table, ~39 ft total) was omitted from the old 20 ft estimate. | 4 stick | Home Depot | $35 |
 | [3/4" PVC Sch-40 pipe](https://www.homedepot.com/p/100348472) (PVC-04007-0600) | Spray bar run, PVC Sch-40 pressure pipe (plain end), 2× 10-ft sticks. $5.76/stick (Alvin sent $576 — read as a decimal typo; ¾" pressure pipe sits between the ½" $4.81 and 1" $8.65). Re-count vs actual run length. | 2 stick | Home Depot | $12 |
 | [1/2" ID reinforced braided PVC hose](https://www.usplastic.com/catalog/item.aspx?itemid=60703) (60703) | Pump inlet flexible connection, 6 ft per pump | 2 length | US Plastic Corp | $12 |
 | 14 AWG duplex marine wire | Tinned copper, 25 ft | 1 roll | Waytek Wire | $22 |
@@ -391,7 +391,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | [Nitrile gloves, box of 100](https://www.amazon.com/dp/B0CMZ5VXMS) (B0CMZ5VXMS) | TitanFlex nitrile, textured, box of 100 (size M/L). | 2 box | Amazon | $30 |
-| **Water total** | | | | **$3,630–$3,703** |
+| **Water total** | | | | **$3,647–$3,720** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

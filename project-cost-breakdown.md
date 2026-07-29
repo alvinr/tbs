@@ -18,7 +18,7 @@
 | **2. Interior conversion** | $526 | $605 | $693 |
 | **3. Optics — pinhole plate** | $100 | $155 | $215 |
 | **4. Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)** | $6,173 | $6,440 | $6,711 |
-| **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $6,791 | $7,428 | $8,064 |
+| **5. Processing water system (incl. tray, spray bar, IBC stacking frame)** | $6,756 | $7,393 | $8,029 |
 | **5a. Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)** | $3,009 | $3,037 | $3,064 |
 | **5b. Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)** | $787 | $847 | $937 |
 | **6. Housed revolving-door light lock (plastic-skin custom fabrication)** | $2,046 | $2,280 | $2,516 |
@@ -29,7 +29,7 @@
 | **7. Printmaking — 50 prints (cyanotype; Low=Lean, Mid=Standard, High=Rich tier)** | $1,250 | $1,710 | $3,100 |
 | **8. Transportation (per deployment)** | $300 | $750 | $2,000 |
 | **9. Licenses & permits** | $220 | $790 | $1,620 |
-| **TOTAL (excl. own transport, CDL, lens)** | **$28,700** | **$33,280** | **$39,912** |
+| **TOTAL (excl. own transport, CDL, lens)** | **$28,665** | **$33,245** | **$39,877** |
 <!-- END costing:scenario -->
 
 *Line 7 (cyanotype printmaking) is now re-summed into the TOTAL on the **Mike Ware New Cyanotype** chemistry (ferric ammonium oxalate) + corrected ~$300 substrate: **Low = Lean ⅓-Ware ($1,250), Mid = Standard ½-Ware ($1,710), High = Rich full-Ware ($3,100)** — matching §7.1 and the master shopping list §9. The tier is pinned by the [Sensitizer Trials](sensitizer-trials.md).*
@@ -279,13 +279,13 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 | Under-walkway pipe-ribbon supports (4× welded cross-braces + 16 pipe clips) | $51 | $67 |
 | Filter skid (3× Big Blue housings + cartridges) | $541 | $541 |
 | Valves and fittings (BV/V100/3-way valves, X1 cross, CV-1, SV taps, equalization tie, PVC slip fittings + transition adapters, unions) | $920 | $920 |
-| IBC tote flexible connections (8× S60→2" tote adapter + 2→1 reducer + 1" hose barbs + SS clamps) | $216 | $216 |
+| IBC tote flexible connections (8× S60→2" tote adapter + 2→1 reducer + 1" hose barbs + SS clamps) | $181 | $181 |
 | Pipe (PVC Sch-40 — spray bar + 1"/½" runs) | $84 | $84 |
 | Processing tray (304 SS, fabricated, 2 panels) | $1,583 | $2,271 |
 | Spray bar assembly (gantry: beam, LDPE pipe, 39 nozzles, single center feed, 4 wheels, ball joint, arm, hose) | $377 | $449 |
 | Electrical (wiring only — fuse block in Electrical Report) | $37 | $37 |
 | Processing consumables (6-mil poly, pH meter, citric acid) | $223 | $223 |
-| **Water system total** | **$6,791** | **$8,064** |
+| **Water system total** | **$6,756** | **$8,029** |
 <!-- END costing:water -->
 
 *Used IBC totes (available locally, ~$80–$150 each from Container Exchanger CA) drive significant savings vs. new.*
@@ -554,7 +554,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Interior conversion (minimal) | $526 |
 | Pinhole plate | $100 |
 | Film plane mechanism (4-corner U-channel + U-joint, incl. wall-seat saddles) | $6,173 |
-| Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,791 |
+| Water system (incl. processing tray, spray bar, IBC stacking frame) | $6,756 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $3,009 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $787 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $2,046 |
@@ -565,7 +565,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Cyanotype chemistry + substrate (50 prints) | $1,250 |
 | Transport per deployment (local) | $400 |
 | Permits (minimal) | $50 |
-| **Scenario A total** | **~$28,130** |
+| **Scenario A total** | **~$28,095** |
 <!-- END costing:scenario-a -->
 
 ### Scenario B — Recommended build, regional deployment
@@ -577,7 +577,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Interior conversion (full) | $605 |
 | Pinhole plate | $155 |
 | Film plane mechanism (4-corner U-channel + U-joint + wall-seat saddles) | $6,440 |
-| Water system (incl. processing tray, spray bar, IBC stacking frame) | $7,428 |
+| Water system (incl. processing tray, spray bar, IBC stacking frame) | $7,393 |
 | Power & electrical system (solar · 1× LiFePO4 · distribution · lighting · protection · master pump switch) | $3,037 |
 | Ventilation & cooling system (2 fans · evap cooler + inverter · light-safe baffle-duct fab · shade canopy) | $847 |
 | Revolving drum light trap (plastic-skin custom fabrication) | $2,280 |
@@ -589,7 +589,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Rodenstock Apo-Ronar 1,200mm lens | $800 |
 | Transport per deployment (50–100 miles) | $900 |
 | Permits (typical public land) | $300 |
-| **Scenario B total (excl. CDL)** | **~$33,590** |
+| **Scenario B total (excl. CDL)** | **~$33,555** |
 <!-- END costing:scenario-b -->
 
 ### Scenario C — Full production, own transport, CDL
@@ -597,11 +597,11 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 <!-- BEGIN costing:scenario-c -->
 | Item | Cost |
 |------|------|
-| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $32,690 |
+| Scenario B build (less the $900 commercial transport, replaced here by owned transport) | $32,655 |
 | CDL Class A training + medical + DMV | $4,500 |
 | QuickLoadz self-loading trailer | $35,000 |
 | Ford F-350+ pickup (if needed) | $50,000–$80,000 (new) |
-| **Scenario C total** | **~$122,190–$152,190** |
+| **Scenario C total** | **~$122,155–$152,155** |
 <!-- END costing:scenario-c -->
 
 *Own transport only makes sense if the camera will be deployed frequently. For fewer than 60 moves, commercial hire is cheaper.*

@@ -271,7 +271,7 @@ PARTS: list[Part] = [
          url="https://www.homedepot.com/p/319692959",
          spec="All pump-driven runs (~80 ft = 8× 10-ft sticks), PVC Sch-40 solvent-weld (IPEX potable-pressure). Matches pump port size."),
     Part("pvc-1in", '1" PVC Sch-40 pressure pipe', "plumbing-fittings",
-         "water", 2, "stick", 8.65, 8.65, "Home Depot", part_no="22405", url="https://www.homedepot.com/p/319692953", spec="IPEX 1\"×10 ft white PVC Sch-40 POTABLE PRESSURE water pipe (model 22405); ~20 ft = 2× 10-ft sticks; filter outlet + IBC lines. Pressure-rated (Alvin 2026-07-28 — replaced the earlier DWV listing for the pumped filter section). Re-count vs routing."),
+         "water", 4, "stick", 8.65, 8.65, "Home Depot", part_no="22405", url="https://www.homedepot.com/p/319692953", spec="IPEX 1\"×10 ft white PVC Sch-40 POTABLE PRESSURE water pipe (model 22405); ~40 ft = 4× 10-ft sticks; filter inter-stage/outlet + IBC internal fill/drain manifold + X1 fill + equalization tie. Pressure-rated (Alvin 2026-07-28). Re-count DONE 2026-07-29 (Alvin): 2→4 sticks — the IBC-zone 1\" internal fill/drain (§5 pipe table, ~39 ft total) was omitted from the old 20 ft estimate."),
     Part("pvc-three-quarter", '3/4" PVC Sch-40 pipe', "plumbing-fittings",
          "water", 2, "stick", 5.76, 5.76, "Home Depot", part_no="PVC-04007-0600", url="https://www.homedepot.com/p/100348472", spec="Spray bar run, PVC Sch-40 pressure pipe (plain end), 2× 10-ft sticks. $5.76/stick (Alvin sent $576 — read as a decimal typo; ¾\" pressure pipe sits between the ½\" $4.81 and 1\" $8.65). Re-count vs actual run length."),
     Part("braided-hose", '1/2" ID reinforced braided PVC hose', "plumbing-fittings",

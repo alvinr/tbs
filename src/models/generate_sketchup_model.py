@@ -1102,9 +1102,9 @@ def panel_pivot():
 def spray_bar():
     """Spray-bar gantry — reuses the detailed spray-bar model builders so the
     overview stays in sync with models/spraybar.skp: 40×25 304-SS RHS beam (laid flat)
-    with a SIDE-mounted 3/4" LDPE manifold + 26 side-tapped flat-fan nozzles, two-wheel
+    with a SIDE-mounted 3/4" LDPE manifold + 39 side-tapped 90° down-jet nozzles, two-wheel
     Ø32 carriages (curved saddle axle clamps + top/bottom beam clamp plates), flange-base
-    ball joint, distribution manifold + 7 irrigation feed tubes, and the push pole bound
+    ball joint, a single center feed into the manifold, and the push pole bound
     to the supply hose with zip ties. The tray-floor ref patch is omitted (overview has
     its own tray)."""
     import generate_spraybar_model as sb

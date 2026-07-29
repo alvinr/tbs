@@ -27664,17 +27664,6 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # Feed Manifold
-  grp = ents.add_group
-  grp.name = "Feed Manifold"
-  face = grp.entities.add_face([2419.5.mm,1166.mm,58.mm], [2455.5.mm,1166.mm,58.mm], [2455.5.mm,1194.mm,58.mm], [2419.5.mm,1194.mm,58.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(18.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
   # Feed Hose (upper)
   grp = ents.add_group
   grp.name = "Feed Hose (upper)"
@@ -27707,7 +27696,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1475000000000364.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, 5.1666666666667425.mm, 0.mm)
   circle = ge.add_circle([2419.5.mm,1156.mm,95.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -27721,8 +27710,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1475000000000364.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2420.6475.mm,1156.mm,95.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 5.166666666666515.mm, 0.mm)
+  circle = ge.add_circle([2419.5.mm,1161.1666666666667.mm,95.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27735,8 +27724,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1475000000000364.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2421.795.mm,1156.mm,95.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 5.1666666666667425.mm, 0.mm)
+  circle = ge.add_circle([2419.5.mm,1166.3333333333333.mm,95.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27749,8 +27738,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1475000000000364.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2422.9425.mm,1156.mm,95.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 5.1666666666667425.mm, 0.mm)
+  circle = ge.add_circle([2419.5.mm,1171.5.mm,95.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27763,8 +27752,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1474999999995816.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2424.09.mm,1156.mm,95.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 5.166666666666515.mm, 0.mm)
+  circle = ge.add_circle([2419.5.mm,1176.6666666666667.mm,95.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27777,8 +27766,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1475000000000364.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2425.2374999999997.mm,1156.mm,95.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 5.1666666666667425.mm, 0.mm)
+  circle = ge.add_circle([2419.5.mm,1181.8333333333333.mm,95.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27791,8 +27780,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1475000000000364.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2426.3849999999998.mm,1156.mm,95.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 5.1666666666667425.mm, 0.mm)
+  circle = ge.add_circle([2419.5.mm,1187.mm,95.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27805,36 +27794,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1475000000000364.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2427.5325.mm,1156.mm,95.mm], vec, 5.6000000000000005.mm, 14)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Flex Connector elbow
-  grp = ents.add_group
-  grp.name = "Feed Flex Connector elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2428.68.mm,1164.82.mm,95.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 8.820000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2428.68.mm,1156.mm,95.mm], [1.000000,0.000000,0.000000], 7.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Flex Connector
-  grp = ents.add_group
-  grp.name = "Feed Flex Connector"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.9677249999999731.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1164.82.mm,95.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 5.166666666666515.mm, 0.mm)
+  circle = ge.add_circle([2419.5.mm,1192.1666666666667.mm,95.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27847,92 +27808,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.9677249999999731.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1165.787725.mm,95.mm], vec, 5.6000000000000005.mm, 14)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Flex Connector
-  grp = ents.add_group
-  grp.name = "Feed Flex Connector"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.9677249999999731.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1166.7554499999999.mm,95.mm], vec, 7.mm, 14)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Flex Connector
-  grp = ents.add_group
-  grp.name = "Feed Flex Connector"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.9677250000002005.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1167.7231749999999.mm,95.mm], vec, 5.6000000000000005.mm, 14)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Flex Connector
-  grp = ents.add_group
-  grp.name = "Feed Flex Connector"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.9677249999999731.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1168.6909.mm,95.mm], vec, 7.mm, 14)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Flex Connector
-  grp = ents.add_group
-  grp.name = "Feed Flex Connector"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.9677249999999731.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1169.658625.mm,95.mm], vec, 5.6000000000000005.mm, 14)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Flex Connector
-  grp = ents.add_group
-  grp.name = "Feed Flex Connector"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.9677249999999731.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1170.62635.mm,95.mm], vec, 7.mm, 14)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Flex Connector
-  grp = ents.add_group
-  grp.name = "Feed Flex Connector"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.9677249999999731.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1171.594075.mm,95.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 5.1666666666667425.mm, 0.mm)
+  circle = ge.add_circle([2419.5.mm,1197.3333333333333.mm,95.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27945,8 +27822,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector elbow"
   ge = grp.entities
-  arc = ge.add_arc([2437.5.mm,1172.5618.mm,87.56179999999996.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 7.438200000000032.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2437.5.mm,1172.5618.mm,95.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
+  arc = ge.add_arc([2419.5.mm,1202.5.mm,85.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 10.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2419.5.mm,1202.5.mm,95.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -27959,8 +27836,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.4452249999999935.mm)
-  circle = ge.add_circle([2437.5.mm,1180.mm,87.56179999999996.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.9625000000000057.mm)
+  circle = ge.add_circle([2419.5.mm,1212.5.mm,85.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27973,8 +27850,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.4452249999999935.mm)
-  circle = ge.add_circle([2437.5.mm,1180.mm,86.11657499999997.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.9624999999999915.mm)
+  circle = ge.add_circle([2419.5.mm,1212.5.mm,83.0375.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -27987,8 +27864,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.4452249999999935.mm)
-  circle = ge.add_circle([2437.5.mm,1180.mm,84.67134999999998.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.9625000000000057.mm)
+  circle = ge.add_circle([2419.5.mm,1212.5.mm,81.075.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -28001,8 +27878,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.4452250000000078.mm)
-  circle = ge.add_circle([2437.5.mm,1180.mm,83.22612499999998.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.9624999999999915.mm)
+  circle = ge.add_circle([2419.5.mm,1212.5.mm,79.1125.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -28015,8 +27892,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.4452249999999935.mm)
-  circle = ge.add_circle([2437.5.mm,1180.mm,81.78089999999997.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.9625000000000057.mm)
+  circle = ge.add_circle([2419.5.mm,1212.5.mm,77.15.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -28029,8 +27906,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.4452249999999935.mm)
-  circle = ge.add_circle([2437.5.mm,1180.mm,80.33567499999998.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.9625000000000057.mm)
+  circle = ge.add_circle([2419.5.mm,1212.5.mm,75.1875.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -28043,8 +27920,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.4452249999999935.mm)
-  circle = ge.add_circle([2437.5.mm,1180.mm,78.89044999999999.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.9624999999999915.mm)
+  circle = ge.add_circle([2419.5.mm,1212.5.mm,73.225.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -28057,8 +27934,134 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.4452249999999935.mm)
-  circle = ge.add_circle([2437.5.mm,1180.mm,77.445225.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.9625000000000057.mm)
+  circle = ge.add_circle([2419.5.mm,1212.5.mm,71.2625.mm], vec, 5.6000000000000005.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Flex Connector elbow
+  grp = ents.add_group
+  grp.name = "Feed Flex Connector elbow"
+  ge = grp.entities
+  arc = ge.add_arc([2409.7.mm,1212.5.mm,69.3.mm], [1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 9.800000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2419.5.mm,1212.5.mm,69.3.mm], [0.000000,0.000000,-1.000000], 7.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Flex Connector
+  grp = ents.add_group
+  grp.name = "Feed Flex Connector"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2409.7.mm,1212.5.mm,59.5.mm], vec, 7.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Flex Connector
+  grp = ents.add_group
+  grp.name = "Feed Flex Connector"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2408.4249999999997.mm,1212.5.mm,59.5.mm], vec, 5.6000000000000005.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Flex Connector
+  grp = ents.add_group
+  grp.name = "Feed Flex Connector"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.2749999999996362.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2407.1499999999996.mm,1212.5.mm,59.5.mm], vec, 7.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Flex Connector
+  grp = ents.add_group
+  grp.name = "Feed Flex Connector"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2405.875.mm,1212.5.mm,59.5.mm], vec, 5.6000000000000005.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Flex Connector
+  grp = ents.add_group
+  grp.name = "Feed Flex Connector"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2404.6.mm,1212.5.mm,59.5.mm], vec, 7.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Flex Connector
+  grp = ents.add_group
+  grp.name = "Feed Flex Connector"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.2749999999996362.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2403.325.mm,1212.5.mm,59.5.mm], vec, 5.6000000000000005.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Flex Connector
+  grp = ents.add_group
+  grp.name = "Feed Flex Connector"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2402.05.mm,1212.5.mm,59.5.mm], vec, 7.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Flex Connector
+  grp = ents.add_group
+  grp.name = "Feed Flex Connector"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2400.775.mm,1212.5.mm,59.5.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -28907,666 +28910,14 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Feed Tube
+  # Center Feed Barb Tee
   grp = ents.add_group
-  grp.name = "Feed Tube"
+  grp.name = "Center Feed Barb Tee"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 13.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1192.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2432.5.mm,1205.mm,67.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2437.5.mm,1205.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-1917.0607142857143.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2432.5.mm,1210.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([515.4392857142858.mm,1211.225.mm,67.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 1.2250000000000003.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([515.4392857142858.mm,1210.mm,67.mm], [-1.000000,0.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.6502500000001419.mm, 0.mm)
-  circle = ge.add_circle([514.2142857142858.mm,1211.225.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([514.2142857142858.mm,1211.87525.mm,66.37524999999995.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 0.6247500000000447.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([514.2142857142858.mm,1211.87525.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -10.875249999999951.mm)
-  circle = ge.add_circle([514.2142857142858.mm,1212.5.mm,66.37524999999995.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Barb Tee
-  grp = ents.add_group
-  grp.name = "Feed Barb Tee"
-  ge = grp.entities
-  circle = ge.add_circle([514.2142857142858.mm,1212.5.mm,39.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2399.5.mm,1212.5.mm,39.5.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 13.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1192.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2432.5.mm,1205.mm,67.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2437.5.mm,1205.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-1288.632142857143.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2432.5.mm,1210.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([1143.867857142857.mm,1211.225.mm,67.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 1.2250000000000003.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1143.867857142857.mm,1210.mm,67.mm], [-1.000000,0.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.6502500000001419.mm, 0.mm)
-  circle = ge.add_circle([1142.642857142857.mm,1211.225.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([1142.642857142857.mm,1211.87525.mm,66.37524999999995.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 0.6247500000000447.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1142.642857142857.mm,1211.87525.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -10.875249999999951.mm)
-  circle = ge.add_circle([1142.642857142857.mm,1212.5.mm,66.37524999999995.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Barb Tee
-  grp = ents.add_group
-  grp.name = "Feed Barb Tee"
-  ge = grp.entities
-  circle = ge.add_circle([1142.642857142857.mm,1212.5.mm,39.5.mm], [0,0,1], 4.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 13.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1192.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2432.5.mm,1205.mm,67.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2437.5.mm,1205.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-660.2035714285714.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2432.5.mm,1210.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([1772.2964285714286.mm,1211.225.mm,67.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 1.2250000000000003.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1772.2964285714286.mm,1210.mm,67.mm], [-1.000000,0.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.6502500000001419.mm, 0.mm)
-  circle = ge.add_circle([1771.0714285714287.mm,1211.225.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([1771.0714285714287.mm,1211.87525.mm,66.37524999999995.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 0.6247500000000447.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1771.0714285714287.mm,1211.87525.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -10.875249999999951.mm)
-  circle = ge.add_circle([1771.0714285714287.mm,1212.5.mm,66.37524999999995.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Barb Tee
-  grp = ents.add_group
-  grp.name = "Feed Barb Tee"
-  ge = grp.entities
-  circle = ge.add_circle([1771.0714285714287.mm,1212.5.mm,39.5.mm], [0,0,1], 4.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(23.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2451.5.mm,1180.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2474.5.mm,1185.mm,67.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2474.5.mm,1180.mm,67.mm], [1.000000,0.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 22.5.mm, 0.mm)
-  circle = ge.add_circle([2479.5.mm,1185.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2479.5.mm,1207.5.mm,62.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2479.5.mm,1207.5.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -6.5.mm)
-  circle = ge.add_circle([2479.5.mm,1212.5.mm,62.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Barb Tee
-  grp = ents.add_group
-  grp.name = "Feed Barb Tee"
-  ge = grp.entities
-  circle = ge.add_circle([2479.5.mm,1212.5.mm,39.5.mm], [0,0,1], 4.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(571.4285714285716.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2451.5.mm,1180.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([3022.9285714285716.mm,1185.mm,67.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([3022.9285714285716.mm,1180.mm,67.mm], [1.000000,0.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 22.5.mm, 0.mm)
-  circle = ge.add_circle([3027.9285714285716.mm,1185.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([3027.9285714285716.mm,1207.5.mm,62.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([3027.9285714285716.mm,1207.5.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -6.5.mm)
-  circle = ge.add_circle([3027.9285714285716.mm,1212.5.mm,62.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Barb Tee
-  grp = ents.add_group
-  grp.name = "Feed Barb Tee"
-  ge = grp.entities
-  circle = ge.add_circle([3027.9285714285716.mm,1212.5.mm,39.5.mm], [0,0,1], 4.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(1199.8571428571427.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2451.5.mm,1180.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([3651.3571428571427.mm,1185.mm,67.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([3651.3571428571427.mm,1180.mm,67.mm], [1.000000,0.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 22.5.mm, 0.mm)
-  circle = ge.add_circle([3656.3571428571427.mm,1185.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([3656.3571428571427.mm,1207.5.mm,62.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([3656.3571428571427.mm,1207.5.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -6.5.mm)
-  circle = ge.add_circle([3656.3571428571427.mm,1212.5.mm,62.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Barb Tee
-  grp = ents.add_group
-  grp.name = "Feed Barb Tee"
-  ge = grp.entities
-  circle = ge.add_circle([3656.3571428571427.mm,1212.5.mm,39.5.mm], [0,0,1], 4.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(1828.2857142857138.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2451.5.mm,1180.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4279.785714285714.mm,1185.mm,67.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4279.785714285714.mm,1180.mm,67.mm], [1.000000,0.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 22.5.mm, 0.mm)
-  circle = ge.add_circle([4284.785714285714.mm,1185.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4284.785714285714.mm,1207.5.mm,62.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4284.785714285714.mm,1207.5.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -6.5.mm)
-  circle = ge.add_circle([4284.785714285714.mm,1212.5.mm,62.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Barb Tee
-  grp = ents.add_group
-  grp.name = "Feed Barb Tee"
-  ge = grp.entities
-  circle = ge.add_circle([4284.785714285714.mm,1212.5.mm,39.5.mm], [0,0,1], 4.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(16.mm)
+  cface.pushpull(18.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 0.15
@@ -57219,17 +56570,6 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Feed Manifold
-  grp = ents.add_group
-  grp.name = "Feed Manifold"
-  face = grp.entities.add_face([2419.5.mm,1166.mm,58.mm], [2455.5.mm,1166.mm,58.mm], [2455.5.mm,1194.mm,58.mm], [2419.5.mm,1194.mm,58.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(18.mm)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # Feed Hose (upper)
   grp = ents.add_group
   grp.name = "Feed Hose (upper)"
@@ -57239,7 +56579,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57253,7 +56593,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57262,12 +56602,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1475000000000364.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(0.mm, 5.1666666666667425.mm, 0.mm)
   circle = ge.add_circle([2419.5.mm,1156.mm,95.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57276,12 +56616,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1475000000000364.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2420.6475.mm,1156.mm,95.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 5.166666666666515.mm, 0.mm)
+  circle = ge.add_circle([2419.5.mm,1161.1666666666667.mm,95.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57290,12 +56630,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1475000000000364.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2421.795.mm,1156.mm,95.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 5.1666666666667425.mm, 0.mm)
+  circle = ge.add_circle([2419.5.mm,1166.3333333333333.mm,95.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57304,12 +56644,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1475000000000364.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2422.9425.mm,1156.mm,95.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 5.1666666666667425.mm, 0.mm)
+  circle = ge.add_circle([2419.5.mm,1171.5.mm,95.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57318,12 +56658,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1474999999995816.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2424.09.mm,1156.mm,95.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 5.166666666666515.mm, 0.mm)
+  circle = ge.add_circle([2419.5.mm,1176.6666666666667.mm,95.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57332,12 +56672,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1475000000000364.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2425.2374999999997.mm,1156.mm,95.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 5.1666666666667425.mm, 0.mm)
+  circle = ge.add_circle([2419.5.mm,1181.8333333333333.mm,95.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57346,12 +56686,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1475000000000364.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2426.3849999999998.mm,1156.mm,95.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 5.1666666666667425.mm, 0.mm)
+  circle = ge.add_circle([2419.5.mm,1187.mm,95.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57360,12 +56700,26 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.1475000000000364.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2427.5325.mm,1156.mm,95.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 5.166666666666515.mm, 0.mm)
+  circle = ge.add_circle([2419.5.mm,1192.1666666666667.mm,95.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
+  mat.color = Sketchup::Color.new(32, 96, 192)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Feed Flex Connector
+  grp = ents.add_group
+  grp.name = "Feed Flex Connector"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 5.1666666666667425.mm, 0.mm)
+  circle = ge.add_circle([2419.5.mm,1197.3333333333333.mm,95.mm], vec, 7.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57374,12 +56728,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector elbow"
   ge = grp.entities
-  arc = ge.add_arc([2428.68.mm,1164.82.mm,95.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 8.820000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2428.68.mm,1156.mm,95.mm], [1.000000,0.000000,0.000000], 7.mm, 16)
+  arc = ge.add_arc([2419.5.mm,1202.5.mm,85.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 10.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2419.5.mm,1202.5.mm,95.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57388,12 +56742,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.9677249999999731.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1164.82.mm,95.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.9625000000000057.mm)
+  circle = ge.add_circle([2419.5.mm,1212.5.mm,85.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57402,12 +56756,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.9677249999999731.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1165.787725.mm,95.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.9624999999999915.mm)
+  circle = ge.add_circle([2419.5.mm,1212.5.mm,83.0375.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57416,12 +56770,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.9677249999999731.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1166.7554499999999.mm,95.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.9625000000000057.mm)
+  circle = ge.add_circle([2419.5.mm,1212.5.mm,81.075.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57430,12 +56784,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.9677250000002005.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1167.7231749999999.mm,95.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.9624999999999915.mm)
+  circle = ge.add_circle([2419.5.mm,1212.5.mm,79.1125.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57444,12 +56798,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.9677249999999731.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1168.6909.mm,95.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.9625000000000057.mm)
+  circle = ge.add_circle([2419.5.mm,1212.5.mm,77.15.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57458,12 +56812,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.9677249999999731.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1169.658625.mm,95.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.9625000000000057.mm)
+  circle = ge.add_circle([2419.5.mm,1212.5.mm,75.1875.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57472,12 +56826,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.9677249999999731.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1170.62635.mm,95.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.9624999999999915.mm)
+  circle = ge.add_circle([2419.5.mm,1212.5.mm,73.225.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57486,12 +56840,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.9677249999999731.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1171.594075.mm,95.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.9625000000000057.mm)
+  circle = ge.add_circle([2419.5.mm,1212.5.mm,71.2625.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57500,12 +56854,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector elbow"
   ge = grp.entities
-  arc = ge.add_arc([2437.5.mm,1172.5618.mm,87.56179999999996.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 7.438200000000032.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2437.5.mm,1172.5618.mm,95.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
+  arc = ge.add_arc([2409.7.mm,1212.5.mm,69.3.mm], [1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 9.800000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2419.5.mm,1212.5.mm,69.3.mm], [0.000000,0.000000,-1.000000], 7.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57514,12 +56868,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.4452249999999935.mm)
-  circle = ge.add_circle([2437.5.mm,1180.mm,87.56179999999996.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2409.7.mm,1212.5.mm,59.5.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57528,12 +56882,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.4452249999999935.mm)
-  circle = ge.add_circle([2437.5.mm,1180.mm,86.11657499999997.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2408.4249999999997.mm,1212.5.mm,59.5.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57542,12 +56896,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.4452249999999935.mm)
-  circle = ge.add_circle([2437.5.mm,1180.mm,84.67134999999998.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(-1.2749999999996362.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2407.1499999999996.mm,1212.5.mm,59.5.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57556,12 +56910,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.4452250000000078.mm)
-  circle = ge.add_circle([2437.5.mm,1180.mm,83.22612499999998.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2405.875.mm,1212.5.mm,59.5.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57570,12 +56924,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.4452249999999935.mm)
-  circle = ge.add_circle([2437.5.mm,1180.mm,81.78089999999997.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2404.6.mm,1212.5.mm,59.5.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57584,12 +56938,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.4452249999999935.mm)
-  circle = ge.add_circle([2437.5.mm,1180.mm,80.33567499999998.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(-1.2749999999996362.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2403.325.mm,1212.5.mm,59.5.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57598,12 +56952,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.4452249999999935.mm)
-  circle = ge.add_circle([2437.5.mm,1180.mm,78.89044999999999.mm], vec, 7.mm, 14)
+  vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2402.05.mm,1212.5.mm,59.5.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -57612,12 +56966,12 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -1.4452249999999935.mm)
-  circle = ge.add_circle([2437.5.mm,1180.mm,77.445225.mm], vec, 5.6000000000000005.mm, 14)
+  vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2400.775.mm,1212.5.mm,59.5.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
+  mat = model.materials["Feed Hose (upper)"] || model.materials.add("Feed Hose (upper)")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 1.0
   grp.material = mat
@@ -58462,666 +57816,14 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Feed Tube
+  # Center Feed Barb Tee
   grp = ents.add_group
-  grp.name = "Feed Tube"
+  grp.name = "Center Feed Barb Tee"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 13.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1192.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2432.5.mm,1205.mm,67.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2437.5.mm,1205.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-1917.0607142857143.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2432.5.mm,1210.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([515.4392857142858.mm,1211.225.mm,67.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 1.2250000000000003.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([515.4392857142858.mm,1210.mm,67.mm], [-1.000000,0.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.6502500000001419.mm, 0.mm)
-  circle = ge.add_circle([514.2142857142858.mm,1211.225.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([514.2142857142858.mm,1211.87525.mm,66.37524999999995.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 0.6247500000000447.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([514.2142857142858.mm,1211.87525.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -10.875249999999951.mm)
-  circle = ge.add_circle([514.2142857142858.mm,1212.5.mm,66.37524999999995.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Barb Tee
-  grp = ents.add_group
-  grp.name = "Feed Barb Tee"
-  ge = grp.entities
-  circle = ge.add_circle([514.2142857142858.mm,1212.5.mm,39.5.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2399.5.mm,1212.5.mm,39.5.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
-  mat.color = Sketchup::Color.new(59, 122, 59)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 13.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1192.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2432.5.mm,1205.mm,67.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2437.5.mm,1205.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-1288.632142857143.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2432.5.mm,1210.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([1143.867857142857.mm,1211.225.mm,67.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 1.2250000000000003.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1143.867857142857.mm,1210.mm,67.mm], [-1.000000,0.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.6502500000001419.mm, 0.mm)
-  circle = ge.add_circle([1142.642857142857.mm,1211.225.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([1142.642857142857.mm,1211.87525.mm,66.37524999999995.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 0.6247500000000447.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1142.642857142857.mm,1211.87525.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -10.875249999999951.mm)
-  circle = ge.add_circle([1142.642857142857.mm,1212.5.mm,66.37524999999995.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Barb Tee
-  grp = ents.add_group
-  grp.name = "Feed Barb Tee"
-  ge = grp.entities
-  circle = ge.add_circle([1142.642857142857.mm,1212.5.mm,39.5.mm], [0,0,1], 4.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
-  mat.color = Sketchup::Color.new(59, 122, 59)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 13.mm, 0.mm)
-  circle = ge.add_circle([2437.5.mm,1192.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2432.5.mm,1205.mm,67.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2437.5.mm,1205.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(-660.2035714285714.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2432.5.mm,1210.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([1772.2964285714286.mm,1211.225.mm,67.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 1.2250000000000003.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1772.2964285714286.mm,1210.mm,67.mm], [-1.000000,0.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.6502500000001419.mm, 0.mm)
-  circle = ge.add_circle([1771.0714285714287.mm,1211.225.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([1771.0714285714287.mm,1211.87525.mm,66.37524999999995.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 0.6247500000000447.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1771.0714285714287.mm,1211.87525.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -10.875249999999951.mm)
-  circle = ge.add_circle([1771.0714285714287.mm,1212.5.mm,66.37524999999995.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Barb Tee
-  grp = ents.add_group
-  grp.name = "Feed Barb Tee"
-  ge = grp.entities
-  circle = ge.add_circle([1771.0714285714287.mm,1212.5.mm,39.5.mm], [0,0,1], 4.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
-  mat.color = Sketchup::Color.new(59, 122, 59)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(23.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2451.5.mm,1180.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2474.5.mm,1185.mm,67.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2474.5.mm,1180.mm,67.mm], [1.000000,0.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 22.5.mm, 0.mm)
-  circle = ge.add_circle([2479.5.mm,1185.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([2479.5.mm,1207.5.mm,62.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2479.5.mm,1207.5.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -6.5.mm)
-  circle = ge.add_circle([2479.5.mm,1212.5.mm,62.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Barb Tee
-  grp = ents.add_group
-  grp.name = "Feed Barb Tee"
-  ge = grp.entities
-  circle = ge.add_circle([2479.5.mm,1212.5.mm,39.5.mm], [0,0,1], 4.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
-  mat.color = Sketchup::Color.new(59, 122, 59)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(571.4285714285716.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2451.5.mm,1180.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([3022.9285714285716.mm,1185.mm,67.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([3022.9285714285716.mm,1180.mm,67.mm], [1.000000,0.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 22.5.mm, 0.mm)
-  circle = ge.add_circle([3027.9285714285716.mm,1185.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([3027.9285714285716.mm,1207.5.mm,62.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([3027.9285714285716.mm,1207.5.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -6.5.mm)
-  circle = ge.add_circle([3027.9285714285716.mm,1212.5.mm,62.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Barb Tee
-  grp = ents.add_group
-  grp.name = "Feed Barb Tee"
-  ge = grp.entities
-  circle = ge.add_circle([3027.9285714285716.mm,1212.5.mm,39.5.mm], [0,0,1], 4.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
-  mat.color = Sketchup::Color.new(59, 122, 59)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(1199.8571428571427.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2451.5.mm,1180.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([3651.3571428571427.mm,1185.mm,67.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([3651.3571428571427.mm,1180.mm,67.mm], [1.000000,0.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 22.5.mm, 0.mm)
-  circle = ge.add_circle([3656.3571428571427.mm,1185.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([3656.3571428571427.mm,1207.5.mm,62.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([3656.3571428571427.mm,1207.5.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -6.5.mm)
-  circle = ge.add_circle([3656.3571428571427.mm,1212.5.mm,62.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Barb Tee
-  grp = ents.add_group
-  grp.name = "Feed Barb Tee"
-  ge = grp.entities
-  circle = ge.add_circle([3656.3571428571427.mm,1212.5.mm,39.5.mm], [0,0,1], 4.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(16.mm)
-  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
-  mat.color = Sketchup::Color.new(59, 122, 59)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(1828.2857142857138.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2451.5.mm,1180.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4279.785714285714.mm,1185.mm,67.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4279.785714285714.mm,1180.mm,67.mm], [1.000000,0.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 22.5.mm, 0.mm)
-  circle = ge.add_circle([4284.785714285714.mm,1185.mm,67.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube elbow
-  grp = ents.add_group
-  grp.name = "Feed Tube elbow"
-  ge = grp.entities
-  arc = ge.add_arc([4284.785714285714.mm,1207.5.mm,62.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 5.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4284.785714285714.mm,1207.5.mm,67.mm], [0.000000,1.000000,0.000000], 3.mm, 16)
-  f = ge.add_face(circle)
-  f.followme(arc)
-  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Tube
-  grp = ents.add_group
-  grp.name = "Feed Tube"
-  ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -6.5.mm)
-  circle = ge.add_circle([4284.785714285714.mm,1212.5.mm,62.mm], vec, 3.mm, 16)
-  pf = ge.add_face(circle)
-  pf.reverse! if pf.normal.dot(vec) < 0
-  pf.pushpull(vec.length)
-  mat = model.materials["Feed Manifold"] || model.materials.add("Feed Manifold")
-  mat.color = Sketchup::Color.new(32, 96, 192)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Feed Barb Tee
-  grp = ents.add_group
-  grp.name = "Feed Barb Tee"
-  ge = grp.entities
-  circle = ge.add_circle([4284.785714285714.mm,1212.5.mm,39.5.mm], [0,0,1], 4.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(16.mm)
+  cface.pushpull(18.mm)
   mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
   mat.color = Sketchup::Color.new(59, 122, 59)
   mat.alpha = 1.0

@@ -263,9 +263,9 @@ SPRAYBAR_POINT_LABELS = [   # (x,y,z,text,Δx,Δy,Δz)
     (1400, 1180,  60, "SPRAY BEAM\n(40 RHS + 3/4-in LDPE bore)", 0, -900,  650),
     (  XL, 1180,  60, "WHEEL CARRIAGE\n(saddle clamp + 2 wheels)", -750, -350, 600),
     (  XR, 1180,  60, "WHEEL CARRIAGE",                          700, -350,  600),  # 2nd (right) carriage
-    ( 950, 1180,  18, "SPRAY NOZZLES\n(26 flat-fan @ 150mm)",   250, -950,  380),
+    ( 950, 1180,  18, "SPRAY NOZZLES\n(39 90-deg down-jets @ 100mm)", 250, -950,  380),
     (2399, 1180,  90, "FEED POLE + BALL JOINT",                 700, -250,  800),  # anchor on the ball-joint socket
-    (2437, 1180,  75, "DISTRIBUTION MANIFOLD\n(7 feed tubes)", -600, -700,  650),  # anchor on the Feed Manifold box
+    (2399, 1200,  70, "CENTER FEED\n(single inlet tee)",       -600, -700,  650),  # anchor on the center feed tee
     (4550,   80,   0, "DRAIN SUMP",                             200, -600,  450),  # tray drain sump (near-right corner)
 ]
 
@@ -334,21 +334,16 @@ def build_feed_pole():
     parts.append(ov.ruby_cylinder("Pole Handle",
                                   cx - 90, op_y, op_z, 9, 180, color=C_STEEL, axis="x"))
 
-    # ── water feed: the blue hose runs down the pole and terminates at a manifold
-    #    by the ball joint; a series of irrigation tubes branch from it along the
-    #    beam top to feed points, each barbed via a saddle-tee into the SIDE
-    #    poly manifold (per Sheet 7 connection detail) ──
-    # distribution manifold on the beam top, beside the ball joint
-    man_cx, man_z = cx + 38, ZT + 4
-    man_top = man_z + 18
-    parts.append(ov.ruby_box("Feed Manifold",
-                             man_cx - 18, by - 14, man_z, 36, 28, 18, color=C_WATER))
-    # hose down the pole, then a CORRUGATED FLEX CONNECTOR (horizontal -> 90° elbow
-    # -> vertical drop) into the manifold top. The flex section absorbs the handle's
-    # articulation; it enters the box at a right angle and matches the evap-duct
-    # corrugated flex visual language.
-    # the hose runs tangent to the pole (no gap) the full length, then a corrugated
-    # flex connector into the manifold top (right angle); zip-tie loops bind it.
+    # ── water feed: the blue hose runs down the pole and makes a SINGLE center feed
+    #    into the side poly manifold at the beam center (Option 1 — the ¾" manifold is
+    #    over-bored for the 3.5 GPM flow, so pressure holds uniform end-to-end from one
+    #    feed; no distribution manifold or feed-tube fan needed). ──
+    BH = SPRAY_BAR_BEAM_H
+    poly_cy = GY + S / 2 + SPRAY_BAR_POLY_OD / 2     # side manifold Yd (inboard face)
+    poly_cz = ZB + BH / 2                            # side manifold Z (beam mid-height)
+    # hose down the pole, then a CORRUGATED FLEX CONNECTOR (right-angle) dropping onto
+    # the single center inlet tee on the side manifold. The flex absorbs the handle's
+    # articulation; zip-tie loops bind the hose to the pole.
     O = (cx, op_y, op_z)
     M = (cx, mid_y, mid_z)
     A = (cx, by - 24, ball_z + 20)          # arm base, near the ball joint
@@ -358,8 +353,9 @@ def build_feed_pole():
     parts.append(ov.ruby_pipe("Feed Hose (lower)",
                               (cx + hoff, M[1], M[2]), (cx + hoff, A[1], A[2]), 8, color=C_WATER))
     parts.append(ov.ruby_flex_run("Feed Flex Connector",
-                                  [(cx + hoff, A[1], A[2]), (man_cx, A[1], A[2]),
-                                   (man_cx, by, A[2]), (man_cx, by, man_top)],
+                                  [(cx + hoff, A[1], A[2]), (cx + hoff, poly_cy, A[2]),
+                                   (cx + hoff, poly_cy, poly_cz + 18),
+                                   (cx, poly_cy, poly_cz + 18)],
                                   7, color=C_WATER, elbow_r=10))
     # grey zip-tie loops binding the hose to the pole at ~200mm intervals (report §3.12)
     for q1, q2 in ((O, M), (M, A)):
@@ -381,29 +377,9 @@ def build_feed_pole():
             for k in range(10):
                 parts.append(ov.ruby_pipe("Zip Tie", loop[k], loop[(k + 1) % 10], 1.2,
                                           color="#888888", n=6))
-    # 7 irrigation tubes + barbed tees into the SIDE poly manifold. Tubes that must pass
-    # the ball joint detour along the beam BACK edge so they go AROUND the socket —
-    # never through it (no pipes through objects). The center feed is nudged clear
-    # of the ball joint footprint.
-    nfeed = 7
-    BH = SPRAY_BAR_BEAM_H
-    poly_cy = GY + S / 2 + SPRAY_BAR_POLY_OD / 2     # side manifold Yd (inboard face)
-    poly_cz = ZB + BH / 2                            # side manifold Z (beam mid-height)
-    rear = by + 30                                   # back-edge bypass lane (clear of socket + U-bolt)
-    fz = man_z + 9                                   # tube routing height
-    for j in range(nfeed):
-        fx = XL + (j + 0.5) / nfeed * (XR - XL)
-        if j == (nfeed - 1) / 2:                     # center slot lands on the ball joint
-            fx = cx + 80                             # nudge clear of the Ø36 socket
-        if fx > cx + 30:                             # clear of the joint — route directly
-            wp = [(man_cx + 14, by, fz), (fx, by, fz), (fx, poly_cy, fz), (fx, poly_cy, poly_cz + 14)]
-        else:                                        # left — detour around the joint via the back edge
-            wp = [(man_cx, by + 12, fz), (man_cx, rear, fz),
-                  (fx, rear, fz), (fx, poly_cy, fz), (fx, poly_cy, poly_cz + 14)]
-        # orthogonal run with swept-torus elbow fittings at every bend (per the rule)
-        parts.append(ov.ruby_pipe_run("Feed Tube", wp, 3.0, color=C_WATER, elbow_r=5))
-        parts.append(ov.ruby_cylinder("Feed Barb Tee", fx, poly_cy, poly_cz - 2, 4, 16,
-                     color=C_NOZZLE, axis="z"))
+    # single center-feed barbed inlet tee into the SIDE poly manifold at the beam center
+    parts.append(ov.ruby_cylinder("Center Feed Barb Tee", cx, poly_cy, poly_cz - 2, 5, 18,
+                 color=C_NOZZLE, axis="z"))
     return '\n'.join(parts)
 
 

@@ -110,6 +110,19 @@ def valve(ax, x, y, color=C_BLUE, zorder=5, size=0.06, label="V"):
     ax.add_patch(tri1)
     ax.add_patch(tri2)
 
+def flex_conn(ax, x, y, color=C_BLUE, zorder=7, n=4, amp=0.06, length=0.30, horiz=False):
+    """Flexible-connector symbol — a short coil marking the 1" flex jumper fitted at
+    each IBC tote penetration. It de-couples the fixed tote from the semi-rigid
+    plumbing panel so the solvent-weld PVC joints don't fatigue over time."""
+    t = np.linspace(0, 1, 60)
+    if horiz:
+        xs = x - length / 2 + t * length
+        ys = y + amp * np.sin(2 * np.pi * n * t)
+    else:
+        ys = y - length / 2 + t * length
+        xs = x + amp * np.sin(2 * np.pi * n * t)
+    ax.plot(xs, ys, color=color, lw=1.8, zorder=zorder, solid_capstyle="round")
+
 def diverter(ax, x, y, color=C_BLUE, zorder=5, size=0.075, branch="up", label="DV"):
     """Draw a 3-way diverter valve symbol — a ball-valve bowtie (two triangles
     tip-to-tip in a white circle) PLUS a third triangle pointing to the branch
@@ -514,6 +527,16 @@ def draw_sheet1():
     ax1.text(WD_X, 9.95, "EXT. DRAIN\n2\" NPT", ha="center", fontsize=5.5,
              color=C_BLACK, style="italic", va="bottom")
 
+    # ── Flexible connectors at every IBC tote penetration (stress relief) ─────────
+    # A short 1" flex jumper de-couples each fixed tote from the semi-rigid plumbing
+    # panel so the solvent-weld PVC joints don't fatigue (Alvin 2026-07-29). TYP. all
+    # tote penetrations — coils drawn on the main ones; see SYMBOLS.
+    flex_conn(ax1, 1.5, 8.62, color=C_BLUE)                 # X1 fill → IBC-1
+    flex_conn(ax1, 2.9, 8.62, color=C_BLUE)                 # X1 fill → IBC-2
+    flex_conn(ax1, 6.4, 7.20, color=C_BROWN)                # IBC-3 bottom tap (→ P-02/P-05)
+    flex_conn(ax1, 7.7, 6.95, color=C_BROWN)                # IBC-3 recycle return riser
+    flex_conn(ax1, 12.0, 7.80, color=C_BLACK, horiz=True)   # IBC-4 waste outlet stub
+
     # ── PROCESSING AREA ───────────────────────────────────────────────────────────
     ax1.add_patch(plt.Rectangle((13.7, 3.5), 3.8, 5.5, fc="#C8E6C9", ec="#388E3C",
                                  lw=1.5, zorder=2))
@@ -629,10 +652,11 @@ def draw_sheet1():
         ("▷|",        "Check valve — CV-1 (X1 gravity fill only; pumps have integral checks)"),
         ("F1/F2/F3",  "Filter cartridge"),
         ("⬡",         "External bulkhead port (2\" NPT)"),
+        ("∿",         "Flex connector — TYP. every IBC tote penetration"),
     ]
     for i, (sym, desc) in enumerate(syms):
-        ax1.text(SYM_X + 0.15, ly - 0.10 - i * 0.25,
-                 f"{sym} — {desc}", va="center", fontsize=6.2, color=C_TEXT, zorder=7)
+        ax1.text(SYM_X + 0.15, ly - 0.10 - i * 0.215,
+                 f"{sym} — {desc}", va="center", fontsize=6.0, color=C_TEXT, zorder=7)
 
 
     _save(fig1, "water-system-sheet1")

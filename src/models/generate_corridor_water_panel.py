@@ -457,6 +457,11 @@ def _side_entry(p, nm, approach, x, yface, z, into, col, drop=-150, check=True):
     yin = yface + into * 150                # 150mm penetration into the tote
     p.append(ov.ruby_pipe_run(nm + " entry", list(approach) + [(x, yin, z), (x, yin, z + drop)], RP, color=col))
     p.append(ov.ruby_cylinder(nm + " flange", x, yface - into * 8, z, 36, 16, color=ov.C_STEEL, axis="y"))
+    # flexible jumper on the corridor-side approach — de-couples the fixed tote from the
+    # semi-rigid panel so the solvent-weld joint can't fatigue (2026-07-29 design)
+    p.append(ov.ruby_flex_run(nm + " flex jumper",
+                              [(x, yface - into * 18, z), (x, yface - into * 110, z)],
+                              RP, color=col, elbow_r=6))
     if check:   # in-line on the straight Yd approach, just outside the flange
         p.append(check_valve(nm + " check valve", x, yface - into * 60, z, "y"))
     return af
@@ -473,6 +478,10 @@ def _bottom_pickup(p, nm, x, yface, into, col, riser_path):
     wps = [(x, yin, z0 - 50), (x, yin, z0), (x, yface - into * 120, z0)] + list(riser_path)
     p.append(ov.ruby_pipe_run(nm + " pickup", wps, RP, color=col))
     p.append(ov.ruby_cylinder(nm + " pickup flange", x, yface - into * 8, z0, 36, 16, color=ov.C_STEEL, axis="y"))
+    # flexible jumper on the corridor-side approach (stress relief tote↔panel)
+    p.append(ov.ruby_flex_run(nm + " flex jumper",
+                              [(x, yface - into * 18, z0), (x, yface - into * 110, z0)],
+                              RP, color=col, elbow_r=6))
 
 
 # Pumps in a SINGLE vertical column (like the filter row) at (PXC, CTR_Y); IN −Yd / OUT +Yd.

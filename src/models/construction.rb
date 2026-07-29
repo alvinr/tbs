@@ -1409,6 +1409,174 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1064.mm,1130.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1071.6666666666667.mm,1130.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1079.3333333333333.mm,1130.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1087.mm,1130.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1094.6666666666667.mm,1130.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1102.3333333333333.mm,1130.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1110.mm,1130.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1117.6666666666667.mm,1130.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1125.3333333333333.mm,1130.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1133.mm,1130.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1140.6666666666667.mm,1130.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1148.3333333333333.mm,1130.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # DV-02 -> IBC-4 merge
   grp = ents.add_group
   grp.name = "DV-02 -> IBC-4 merge"
@@ -1711,6 +1879,174 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1298.mm,1230.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1290.3333333333333.mm,1230.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1282.6666666666667.mm,1230.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1275.mm,1230.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1267.3333333333333.mm,1230.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1259.6666666666667.mm,1230.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1252.mm,1230.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1244.3333333333333.mm,1230.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1236.6666666666667.mm,1230.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1229.mm,1230.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1221.3333333333333.mm,1230.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1213.6666666666667.mm,1230.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Blue #1 -> P-01 suction entry
   grp = ents.add_group
   grp.name = "Blue #1 -> P-01 suction entry"
@@ -1932,6 +2268,174 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 0.15
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1064.mm,1400.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1071.6666666666667.mm,1400.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1079.3333333333333.mm,1400.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1087.mm,1400.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1094.6666666666667.mm,1400.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1102.3333333333333.mm,1400.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1110.mm,1400.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1117.6666666666667.mm,1400.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1125.3333333333333.mm,1400.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1133.mm,1400.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1140.6666666666667.mm,1400.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1148.3333333333333.mm,1400.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
   grp.material = mat
 
   # BV-01 (P-01 suction)
@@ -2340,6 +2844,174 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1064.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1071.6666666666667.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1079.3333333333333.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1087.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1094.6666666666667.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1102.3333333333333.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1110.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1117.6666666666667.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1125.3333333333333.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1133.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1140.6666666666667.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1148.3333333333333.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # X1 fill -> Blue #2 (IBC-2) entry
   grp = ents.add_group
   grp.name = "X1 fill -> Blue #2 (IBC-2) entry"
@@ -2393,6 +3065,174 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 0.15
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1298.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1290.3333333333333.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1282.6666666666667.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1275.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1267.3333333333333.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1259.6666666666667.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1252.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1244.3333333333333.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1236.6666666666667.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1229.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1221.3333333333333.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1213.6666666666667.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
   grp.material = mat
 
   # Blue equalization (IBC-1 <-> IBC-2)
@@ -3218,6 +4058,174 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 0.15
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1298.mm,258.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1290.3333333333333.mm,258.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1282.6666666666667.mm,258.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1275.mm,258.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1267.3333333333333.mm,258.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1259.6666666666667.mm,258.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1252.mm,258.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1244.3333333333333.mm,258.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1236.6666666666667.mm,258.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1229.mm,258.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1221.3333333333333.mm,258.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1213.6666666666667.mm,258.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
   grp.material = mat
 
   # BV-06 (P-03 suction)
@@ -30264,6 +31272,174 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1064.mm,1130.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1071.6666666666667.mm,1130.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1079.3333333333333.mm,1130.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1087.mm,1130.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1094.6666666666667.mm,1130.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1102.3333333333333.mm,1130.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1110.mm,1130.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1117.6666666666667.mm,1130.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1125.3333333333333.mm,1130.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1133.mm,1130.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1140.6666666666667.mm,1130.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # DV-02 -> IBC-3 (Brown) flex jumper
+  grp = ents.add_group
+  grp.name = "DV-02 -> IBC-3 (Brown) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5028.5.mm,1148.3333333333333.mm,1130.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Tray sump -> P-04 suction"] || model.materials.add("Tray sump -> P-04 suction")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # DV-02 -> IBC-4 merge
   grp = ents.add_group
   grp.name = "DV-02 -> IBC-4 merge"
@@ -30566,6 +31742,174 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1298.mm,1230.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1290.3333333333333.mm,1230.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1282.6666666666667.mm,1230.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1275.mm,1230.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1267.3333333333333.mm,1230.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1259.6666666666667.mm,1230.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1252.mm,1230.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1244.3333333333333.mm,1230.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1236.6666666666667.mm,1230.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1229.mm,1230.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1221.3333333333333.mm,1230.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # IBC-4 (Waste) flex jumper
+  grp = ents.add_group
+  grp.name = "IBC-4 (Waste) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5504.mm,1213.6666666666667.mm,1230.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Blue #1 -> P-01 suction entry
   grp = ents.add_group
   grp.name = "Blue #1 -> P-01 suction entry"
@@ -30786,6 +32130,174 @@ ents = child.entities
   cface.pushpull(16.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1064.mm,1400.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1071.6666666666667.mm,1400.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1079.3333333333333.mm,1400.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1087.mm,1400.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1094.6666666666667.mm,1400.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1102.3333333333333.mm,1400.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1110.mm,1400.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1117.6666666666667.mm,1400.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1125.3333333333333.mm,1400.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1133.mm,1400.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1140.6666666666667.mm,1400.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Blue #1 -> P-01 suction flex jumper
+  grp = ents.add_group
+  grp.name = "Blue #1 -> P-01 suction flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1148.3333333333333.mm,1400.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -31195,6 +32707,174 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1064.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1071.6666666666667.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1079.3333333333333.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1087.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1094.6666666666667.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1102.3333333333333.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1110.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1117.6666666666667.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1125.3333333333333.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1133.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1140.6666666666667.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #1 (IBC-1) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #1 (IBC-1) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1148.3333333333333.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # X1 fill -> Blue #2 (IBC-2) entry
   grp = ents.add_group
   grp.name = "X1 fill -> Blue #2 (IBC-2) entry"
@@ -31247,6 +32927,174 @@ ents = child.entities
   cface.pushpull(16.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1298.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1290.3333333333333.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1282.6666666666667.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1275.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1267.3333333333333.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1259.6666666666667.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1252.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1244.3333333333333.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1236.6666666666667.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1229.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1221.3333333333333.mm,2250.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X1 fill -> Blue #2 (IBC-2) flex jumper
+  grp = ents.add_group
+  grp.name = "X1 fill -> Blue #2 (IBC-2) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5500.mm,1213.6666666666667.mm,2250.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -32072,6 +33920,174 @@ ents = child.entities
   cface.pushpull(16.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1298.mm,258.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1290.3333333333333.mm,258.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1282.6666666666667.mm,258.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1275.mm,258.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1267.3333333333333.mm,258.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1259.6666666666667.mm,258.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1252.mm,258.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1244.3333333333333.mm,258.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1236.6666666666667.mm,258.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1229.mm,258.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.666666666666515.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1221.3333333333333.mm,258.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # X4 Waste (P-03) flex jumper
+  grp = ents.add_group
+  grp.name = "X4 Waste (P-03) flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -7.6666666666667425.mm, 0.mm)
+  circle = ge.add_circle([5200.mm,1213.6666666666667.mm,258.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["DV-02 -> IBC-4 merge"] || model.materials.add("DV-02 -> IBC-4 merge")
+  mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
 

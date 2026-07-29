@@ -253,8 +253,22 @@ PARTS: list[Part] = [
          "water", 2, "ea", 4.96, 4.96, "Home Depot", part_no="PVCU12F", url="https://www.homedepot.com/p/317901071", spec="True hand-unscrew unions at the 2 points where a whole sub-assembly must come out as a unit (pump manifold + filter-bank inlet). Apollo ½\" PVC FIP×FIP (threaded) union — lands on the slip run via a slip×MNPT adapter each side (4 total across the 2 unions, in the pvc-adapter-half allowance)."),
     Part("bushing-reducer", '1/2"×1" NPT bushing reducer', "plumbing-fittings",
          "water", 1, "ea", 2.86, 2.86, "Home Depot", part_no="PVC021121800HD", url="https://www.homedepot.com/p/204836713", spec="P-02 riser → F1 filter inlet — THREADED (lands on the filter = hard component, per the joint convention). Charlotte PVC Sch40 1×½ reducer bushing"),
-    Part("s60-adapter", 'S60×6 female-buttress → 2" NPT + 2→1" bushing', "plumbing-fittings",
-         "water", 8, "ea", 14, 18, "CPP.parts", "Amazon", spec='IBC DN50 valve to 1" PVC. The DN50 valve is a MALE S60×6, so the adapter is FEMALE S60×6 buttress × 2" male NPT PP (a 1" NPT-female config isn\'t stocked); add a 2→1" PP reducer bushing to land on 1" PVC.', part_no="HMFN/20UD/027", url="https://us.cpp.parts/collections/fits-s60x6"),
+    # IBC tote → 1" PVC run: FLEXIBLE-JUMPER connection (Alvin 2026-07-29). A semi-rigid plumbing
+    # panel flexing against fixed totes would fatigue a solvent-welded PVC joint, so a short 1" flex
+    # hose de-couples each tote outlet from the rigid run. Chain per tote (×8):
+    #   S60x6 valve → s60-adapter (→2"MNPT) → s60-reducer (→1"FNPT) → ibc-flex-barb-m → flex hose
+    #   (cut from the tray-suction-hose coil) → ibc-flex-barb-f → pvc-adapter-1in (1"MNPT) → glued 1" PVC.
+    # Camlock idea dropped — quick-release not a driver (totes are fixed in place once installed).
+    Part("s60-adapter", 'S60×6 female buttress → 2" MNPT IBC tote adapter', "plumbing-fittings",
+         "water", 8, "ea", 13, 13, "Amazon", part_no="B095SCHBC6", url="https://www.amazon.com/Granatan-Adapter-Buttress-Fittings-Connector/dp/B095SCHBC6", spec='IBC DN50 tote outlet (male S60×6) → 2" male NPT, polypropylene (Granatan). No US single-piece S60→1" NPT exists (the 1" ones are BSP or garden-hose thread), so reduce 2"→1" via s60-reducer. Research-sourced 2026-07-29 — confirm at order.'),
+    Part("s60-reducer", '2"→1" PVC Sch-80 reducing coupling (FNPT×FNPT)', "plumbing-fittings",
+         "water", 8, "ea", 4.50, 4.50, "Home Depot", spec='Threads onto the s60-adapter 2" male output and presents a 1" FNPT port for the flex-jumper barb. Sch-80 PVC 2" FNPT × 1" FNPT reducing coupling. ~$4-5 research est — confirm SKU + FNPT×FNPT gender at order (Charlotte/Spears).'),
+    Part("ibc-flex-barb-m", '1" MNPT × 1" hose barb (Banjo HB100)', "plumbing-fittings",
+         "water", 8, "ea", 1.79, 1.79, "US Plastic Corp", part_no="31527", url="https://www.usplastic.com/catalog/item.aspx?itemid=135135", spec='Tote-side barb — its 1" MNPT threads into the s60-reducer 1" FNPT; the flex hose slips onto the barb. Banjo HB100 glass-reinforced PP, 300 psi. Research-sourced 2026-07-29 — confirm at order.'),
+    Part("ibc-flex-barb-f", '1" FNPT × 1" hose barb (Banjo)', "plumbing-fittings",
+         "water", 8, "ea", 3.00, 3.00, "US Plastic Corp", part_no="31544", url="https://www.usplastic.com/catalog/item.aspx?itemid=135154", spec='Run-side barb — flex hose slips on; its 1" FNPT receives the pvc-adapter-1in (1" MNPT) that glues to the run. Banjo glass-reinforced PP. Research-sourced 2026-07-29 — confirm at order.'),
+    Part("ibc-flex-clamp", '#20 stainless hose clamp (10-pack)', "fasteners-hardware",
+         "water", 2, "10-pack", 18.44, 18.44, "Home Depot", part_no="IDL0710PK", url="https://www.homedepot.com/p/330548115", spec='2 clamps per flex jumper × 8 = 16 (2× 10-packs, 4 spare). Apollo 300-series SS #20, external (not wetted). Research-sourced 2026-07-29 — confirm price at order.'),
     Part("blue-equalization-tie", '1" bulkhead tank-body fittings (Blue equalization cross-tie)', "plumbing-fittings",
          "water", 2, "ea", 12.62, 12.62, "US Plastic Corp", spec='Low tank-body penetration in each Blue tote (IBC-1 + IBC-2) for the 1" equalization cross-tie that self-balances the two Blue levels (run made from the 1" PVC stock). Confirmed firm $12.62 (Alvin 2026-07-28); SKU 32194 (alternate listing itemid 65992).', part_no="32194", url="https://www.usplastic.com/catalog/item.aspx?itemid=32194"),
     Part("check-valve-1in", '1" NPT spring check valve (CV1 — X1 gravity fill)', "plumbing-fittings",
@@ -350,7 +364,7 @@ PARTS: list[Part] = [
     Part("tray-foot-valve", '1" brass foot valve with SS filter', "plumbing-fittings",
          "tray", 1, "ea", 14.23, 14.23, "misterworker", part_no="95953", url="https://www.misterworker.com/en-us/meclube/f1-brass-foot-valve-with-stainless-steel-filter/95953.html", spec="Sump pickup foot valve — Meclube F1 brass body + SS filter screen (misterworker 95953). $14.23 firm 2026-07-28 (was a $20 est SS unit)."),
     Part("tray-suction-hose", '1" reinforced PVC suction hose, 25 ft', "plumbing-fittings",
-         "tray", 1, "25ft coil", 65.65, 65.65, "Home Depot", part_no="6213100025", url="https://www.homedepot.com/p/310837595", spec="Sump pickup tube → P-04. HYDROMAXX 1\" clear flexible PVC suction/discharge hose, white reinforced helix; 25 ft coil (~6 ft used, balance spare). $65.65 firm 2026-07-28 (was a $15 est 6 ft cut — Home Depot stocks the 25 ft length)."),
+         "tray", 1, "25ft coil", 65.65, 65.65, "Home Depot", part_no="6213100025", url="https://www.homedepot.com/p/310837595", spec="Sump pickup tube → P-04. HYDROMAXX 1\" clear flexible PVC suction/discharge hose, white reinforced helix; 25 ft coil — ~6 ft for the sump pickup + ~12 ft for the 8 IBC flex jumpers (18\" each, Alvin 2026-07-29 flexible-connection design) = ~18 ft used, ~7 ft spare. $65.65 firm 2026-07-28 (Home Depot stocks the 25 ft length)."),
     Part("tray-silicone-gasket", "Silicone gasket strip", "seals-gaskets",
          "tray", 1, "ea", 17, 25, "CountryMax (Aqueon)", spec="Silicone sealant bed in the center-seam lap joint (between the overlapped panels) + a top bead — the seam seal", part_no="015952", url="https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/"),
     Part("bolt-m6-tray", "M6×1.0 × 16 hex bolt, 316 SS — tray center-seam lap joint", "fasteners-hardware",

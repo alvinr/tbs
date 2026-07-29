@@ -2957,7 +2957,7 @@ IBC-2 (900L) ──┘                                                      │
 <li><strong>Check valves:</strong> only <strong>CV-1</strong> is fitted, on the X1 gravity fill — the single flow path with no pump. Every return and drain leg is pump-driven, and the Shurflo 2088 pumps carry an <strong>integral 1-way check valve</strong> (<a href="https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf">2088-554-144 datasheet</a>), so dedicated anti-siphon checks on the IBC-2 return, IBC-3 buffer return and IBC-4 waste legs would be redundant and are not used</li>
 <li>ACC-01: 0.75 L (23.5 oz) pressure accumulator — smooths pump cycling, maintains pressure when pump is off</li>
 <li>Low-level float switch on IBC-2 alerts operator when Blue supply is low</li>
-<li>Spray bar: gantry design — 40×25×3mm 304 SS RHS beam (laid flat, ~15mm pre-camber) spanning the open processing area (3,859mm) between walkway inner edges, with Ø32 wheel carriages rolling on the raised/sloped tray floor beneath walkway grating. A 3/4" LDPE manifold clipped to the beam side feeds 26 side-tapped flat-fan nozzles. See the <a href="../processing-tray-and-spray-bar/">Processing Tray &amp; Spray Bar</a> report for full mechanical design</li>
+<li>Spray bar: gantry design — 40×25×3mm 304 SS RHS beam (laid flat, ~15mm pre-camber) spanning the open processing area (3,859mm) between walkway inner edges, with Ø32 wheel carriages rolling on the raised/sloped tray floor beneath walkway grating. A 3/4" LDPE manifold clipped to the beam side feeds 39 side-tapped 90° down-jet nozzles. See the <a href="../processing-tray-and-spray-bar/">Processing Tray &amp; Spray Bar</a> report for full mechanical design</li>
 <li>Fill inlet: single external 2" NPT bulkhead fitting (X1) with camlock on the container end wall centerline — gravity feed, no pump required. Inside, an internal 4-way cross (near X1) — where the DV-01 blue recycle also joins — splits to a SIDE entry near the top of BOTH Blue totes (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom), filling them in parallel and gravity-linked — one external hose. Remote resupply from water bowser or tanker (no cargo door access required)</li>
 </ul>
 <h3 id="42-brown-system-used-water-recycling">4.2 Brown System — Used Water Recycling<a class="headerlink" href="#42-brown-system-used-water-recycling" title="Permanent link">&para;</a></h3>
@@ -3038,7 +3038,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <p><strong>Processing tray:</strong> A permanently installed 4459 × 2,200mm stainless steel tray sits on the optical zone floor between the film plane rails. A 1:200 dual-axis slope drains wash water to a pressed sump well on the right side nearest the pinhole wall. P-04 draws from the sump via a suction pickup tube — no penetration of the tray floor or container floor.</p>
 <p><strong>Drain path:</strong> P-04 suction pickup → 1" flexible hose over near rim → P-04 pump on the Corridor Plumbing Panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste).</p>
 <p><strong>External drain-out risers:</strong> The Brown (IBC-3) and Waste (IBC-4) totes are pumped out to the sealed end-wall ports — X3 via P-05, X4 via P-03. The two vertical drain risers run down the IBC corridor gap and are clamped at ~400mm centers to an 18mm marine-ply backing spine that tees perpendicular off the Corridor Plumbing Panel. Its top is capped with a horizontal ply shelf that the Blue fill trunk rests on — so both the drain risers and the fill trunk are supported at the T rather than free-hanging.</p>
-<p><strong>Spray bar:</strong> A 3,859mm span 304 SS RHS beam gantry (40×25×3mm, laid flat) rolls on the raised/sloped tray floor beneath the walkway grating. Water from P-01 (Blue supply) reaches the bar via BV-05 → 4m flexible hose → ball-joint manifold → 7 feed tubes into the side LDPE manifold → 26 flat-fan nozzles at 150mm centers, spraying down-and-in.</p>
+<p><strong>Spray bar:</strong> A 3,859mm span 304 SS RHS beam gantry (40×25×3mm, laid flat) rolls on the raised/sloped tray floor beneath the walkway grating. Water from P-01 (Blue supply) reaches the bar via BV-05 → 4m flexible hose → ball-joint manifold → 7 feed tubes into the side LDPE manifold → 39 90° down-jet nozzles at 100mm centers, spraying straight down.</p>
 <p><strong>Supply path:</strong> P-01 → ACC-01 → rigid 1/2" PVC pipe along pinhole wall → BV-05 → coiled flexible hose → bulkhead fitting → beam bore → spray holes.</p>
 <p><strong>Containment liner:</strong> A fresh 6-mil black LDPE sheet is laid over the tray surface before each session to prevent direct stainless-to-print contact and simplify cleanup.</p>
 <p>For full construction details, structural analysis, parts list, and engineering drawings, see <a href="../processing-tray-and-spray-bar/">Processing Tray &amp; Spray Bar</a>.</p>
@@ -3612,17 +3612,17 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td><a href="https://www.homedepot.com/p/203811636">1/2" PVC slip×MNPT male adapter</a> (PVC021090600HD)</td>
-<td>½" landings (~18): 6× BV ball valves + 3W-DV-02 (3 ports) + 5× pump discharges + SV-01/SV-02 taps + the accumulator (½" MNPT → needs a slip×FPT variant). Charlotte PVC021090600HD.</td>
-<td>18 ea</td>
+<td>½" landings (22 — P&amp;ID takeoff 2026-07-28): 6× BV ball valves (BV-01–06, run side) + 5× pump discharges (P-01–05, hose→run) + 3W-DV-02 (3 ports) + SV-01/SV-02 taps (2) + accumulator ACC-01 (1, slip×FPT) + 2× ½" unions (4, slip×MNPT each side) + bushing-reducer ½" run side (1). Charlotte PVC021090600HD.</td>
+<td>22 ea</td>
 <td>Home Depot</td>
-<td>$14</td>
+<td>$17</td>
 </tr>
 <tr>
 <td><a href="https://www.homedepot.com/p/203811640">1" PVC slip×MNPT male adapter</a> (PVC021091000HD)</td>
-<td>1" landings (~22): 6× V100 valves + 3W-DV-01 (3 ports) + CV-1 (2) + 3× Big Blue housing ports + 2× Blue equalization bulkheads. Charlotte PVC021091000HD.</td>
-<td>22 ea</td>
+<td>1" landings (26 — P&amp;ID takeoff 2026-07-28): 6× V100 valves (V1/V3/V4, VB1–3, run side) + 8× s60-adapter IBC-valve landings (each lands on its own 1" glued-run segment) + 3W-DV-01 (3 ports) + CV-1 (2 ports) + 5× filter housing ports (F-01 OUT, F-02 IN/OUT, F-03 IN/OUT; F-01 IN = bushing-reducer) + 2× Blue equalization bulkheads. Charlotte PVC021091000HD.</td>
+<td>26 ea</td>
 <td>Home Depot</td>
-<td>$26</td>
+<td>$30</td>
 </tr>
 <tr>
 <td><a href="https://www.amazon.com/dp/B0CGGV74MB">1" PVC 4-way cross fitting</a> (B0CGGV74MB)</td>
@@ -3640,7 +3640,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 </tr>
 <tr>
 <td><a href="https://www.homedepot.com/p/317901071">1/2" PVC union (serviceable break)</a> (PVCU12F)</td>
-<td>True hand-unscrew unions at the 2 points where a whole sub-assembly must come out as a unit (pump manifold + filter-bank inlet). Apollo ½" PVC FIP×FIP (threaded) union — lands on the slip run via a slip×MNPT adapter each side (2 already in the transition-adapter allowance).</td>
+<td>True hand-unscrew unions at the 2 points where a whole sub-assembly must come out as a unit (pump manifold + filter-bank inlet). Apollo ½" PVC FIP×FIP (threaded) union — lands on the slip run via a slip×MNPT adapter each side (4 total across the 2 unions, in the pvc-adapter-half allowance).</td>
 <td>2 ea</td>
 <td>Home Depot</td>
 <td>$10</td>
@@ -3790,7 +3790,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 <td></td>
 <td></td>
 <td></td>
-<td><strong>$3,622–$3,695</strong></td>
+<td><strong>$3,630–$3,703</strong></td>
 </tr>
 </tbody>
 </table>

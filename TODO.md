@@ -36,10 +36,12 @@ bucketed by WHEN it can be acted on:_
     `tee-100-hdpe` → qty 4) and `elbow-el100` re-spec'd from threaded Banjo FRPP ($14.19 tee / $4.59
     elbow) to **1" PVC Sch-40 slip** at Home Depot (est ~$1.50 tee / ~$1 elbow). Saved ~$65. **Source
     exact Home Depot SKU/price** (still an estimate range).
-  - [x] **(c) Transition adapters — ADDED + SKUs SOURCED 2026-07-27.** `pvc-transition-adapters`: PVC
-    slip×NPT male adapters where the glued run meets each threaded component. Unit prices firm at Home
-    Depot (½" PVC021090600HD $0.79, 1" PVC021091000HD $1.16); qty held at **~40 est** — the exact count
-    + ½"/1" split still needs a **schematic trace**.
+  - [x] **(c) Transition adapters — ADDED + SKUs SOURCED 2026-07-27; COUNT FIRMED via P&ID takeoff 2026-07-28.**
+    `pvc-adapter-half`/`pvc-adapter-1in`: PVC slip×NPT male adapters where the glued run meets each threaded
+    component. Unit prices firm (½" PVC021090600HD $0.79, 1" PVC021091000HD $1.16). **Trace done:** ½" **22**
+    (6 BV + 5 pump discharges + 3 DV-02 + 2 SV taps + 1 ACC + 4 union sides + 1 bushing) + 1" **26** (6 V100 +
+    8 s60-adapter IBC landings + 3 DV-01 + 2 CV-1 + 5 filter ports + 2 equalization bulkheads) = 48 (+$8;
+    costing §5 + grand_total cascaded). Alvin's calls: unions = 4 (both sides), s60 = all 8 land on run.
   - [x] **X1 topology — DONE 2026-07-27.** Water schematic (sheet 1) rerouted so the DV-01 blue recycle JOINS
     the X1 fill header (4-way cross), not a separate IBC-2 side-entry; water-report prose + §5 pipe table
     tee→cross; `tee-100` dropped its redundant X1-fill-split tee (qty 4→3). All 5 artifacts (parts, schematic,

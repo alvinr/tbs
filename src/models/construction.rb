@@ -20096,7 +20096,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # WR duplex outlet (Cct E cooler)
   grp = ents.add_group
   grp.name = "WR duplex outlet (Cct E cooler)"
-  face = grp.entities.add_face([1487.78.mm,-87.mm,1878.mm], [1533.78.mm,-87.mm,1878.mm], [1533.78.mm,-65.mm,1878.mm], [1487.78.mm,-65.mm,1878.mm])
+  face = grp.entities.add_face([1487.78.mm,-87.mm,1903.008.mm], [1533.78.mm,-87.mm,1903.008.mm], [1533.78.mm,-65.mm,1903.008.mm], [1487.78.mm,-65.mm,1903.008.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -20107,7 +20107,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # WR duplex in-use cover
   grp = ents.add_group
   grp.name = "WR duplex in-use cover"
-  face = grp.entities.add_face([1481.78.mm,-101.mm,1872.mm], [1539.78.mm,-101.mm,1872.mm], [1539.78.mm,-87.mm,1872.mm], [1481.78.mm,-87.mm,1872.mm])
+  face = grp.entities.add_face([1481.78.mm,-101.mm,1897.008.mm], [1539.78.mm,-101.mm,1897.008.mm], [1539.78.mm,-87.mm,1897.008.mm], [1481.78.mm,-87.mm,1897.008.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(72.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -20130,8 +20130,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-33.67800000000011.mm, -19.200000000000003.mm, -126.70000000000005.mm)
-  circle = ge.add_circle([1510.78.mm,-75.mm,1908.mm], vec, 5.mm, 10)
+  vec = Geom::Vector3d.new(-33.67800000000011.mm, -19.200000000000003.mm, -129.20080000000007.mm)
+  circle = ge.add_circle([1510.78.mm,-75.mm,1933.008.mm], vec, 5.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20144,8 +20144,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.050258649607485.mm, -20.41799152611219.mm, -2.8371845833123643.mm)
-  circle = ge.add_circle([1477.1019999999999.mm,-94.2.mm,1781.3.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.966373224972585.mm, -20.470150400952107.mm, -2.9682282298904283.mm)
+  circle = ge.add_circle([1477.1019999999999.mm,-94.2.mm,1803.8072.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20158,8 +20158,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-10.762396429380487.mm, 18.318390346148945.mm, -11.70767515789953.mm)
-  circle = ge.add_circle([1455.0517413503924.mm,-114.61799152611219.mm,1778.4628154166876.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.759890839617356.mm, 18.262731376249448.mm, -11.645289392795576.mm)
+  circle = ge.add_circle([1455.1356267750273.mm,-114.67015040095211.mm,1800.8389717701095.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20172,8 +20172,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(5.171567754890248.mm, 17.630856254124225.mm, -15.838877930046692.mm)
-  circle = ge.add_circle([1444.289344921012.mm,-96.29960117996325.mm,1766.755140258788.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.098476936704174.mm, 17.68217736709191.mm, -15.692721552620242.mm)
+  circle = ge.add_circle([1444.37573593541.mm,-96.40741902470266.mm,1789.193682377314.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20186,8 +20186,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.376114608425723.mm, 5.607886209617149.mm, -16.995197614962308.mm)
-  circle = ge.add_circle([1449.4609126759021.mm,-78.66874492583902.mm,1750.9162623287414.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.333276291792345.mm, 5.823606093500217.mm, -16.858975973860424.mm)
+  circle = ge.add_circle([1449.474212872114.mm,-78.72524165761075.mm,1773.5009608246937.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20200,8 +20200,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.25850650487473.mm, -10.676223251416957.mm, -14.496257541061368.mm)
-  circle = ge.add_circle([1465.8370272843279.mm,-73.06085871622187.mm,1733.921064713779.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.373347824044913.mm, -10.376982997526383.mm, -14.461918204214044.mm)
+  circle = ge.add_circle([1465.8074891639064.mm,-72.90163556411053.mm,1756.6419848508333.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20214,8 +20214,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.887943866135629.mm, -21.639927907802658.mm, -9.812430090784801.mm)
-  circle = ge.add_circle([1482.0955337892026.mm,-83.73708196763883.mm,1719.4248071727177.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.19525396082895.mm, -21.44397312349608.mm, -9.903571386361364.mm)
+  circle = ge.add_circle([1482.1808369879514.mm,-83.27861856163692.mm,1742.1800666466193.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20228,8 +20228,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.04515225631053.mm, -20.83220130062095.mm, -5.699671919088587.mm)
-  circle = ge.add_circle([1486.9834776553382.mm,-105.37700987544149.mm,1709.612377081933.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.663012561207779.mm, -20.904355384541404.mm, -5.850082248978424.mm)
+  circle = ge.add_circle([1487.3760909487803.mm,-104.722591685133.mm,1732.276495260258.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20242,8 +20242,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.165773333888183.mm, -8.728308486511821.mm, -4.577923421695459.mm)
-  circle = ge.add_circle([1475.9383253990277.mm,-126.20921117606244.mm,1703.9127051628443.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.926057152821613.mm, -9.073748606288973.mm, -4.672309622075545.mm)
+  circle = ge.add_circle([1476.7130783875725.mm,-125.6269470696744.mm,1726.4264130112795.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20256,8 +20256,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.930563533923987.mm, 7.5498391690757956.mm, -7.107219638194692.mm)
-  circle = ge.add_circle([1453.7725520651395.mm,-134.93751966257426.mm,1699.3347817411488.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.006199961473385.mm, 7.128204011547922.mm, -7.05912487981891.mm)
+  circle = ge.add_circle([1454.787021234751.mm,-134.70069567596337.mm,1721.754103389204.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20270,8 +20270,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-10.477919930264989.mm, 18.42420536185068.mm, -11.799326679909655.mm)
-  circle = ge.add_circle([1431.8419885312155.mm,-127.38768049349846.mm,1692.2275621029542.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.856565991543903.mm, 18.225088168717193.mm, -11.614495656602003.mm)
+  circle = ge.add_circle([1432.7808212732775.mm,-127.57249166441545.mm,1714.694978509385.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20284,8 +20284,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(5.453440115823014.mm, 17.496330243416097.mm, -15.89341619339234.mm)
-  circle = ge.add_circle([1421.3640686009505.mm,-108.96347513164778.mm,1680.4282354230445.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.001498022568057.mm, 17.72641014537723.mm, -15.67401589037081.mm)
+  circle = ge.add_circle([1421.9242552817336.mm,-109.34740349569826.mm,1703.080482852783.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20298,8 +20298,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.48952958034465.mm, 5.3121740641793735.mm, -16.98053239185174.mm)
-  circle = ge.add_circle([1426.8175087167735.mm,-91.46714488823169.mm,1664.5348192296522.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.29271593715839.mm, 5.923843399849332.mm, -16.863299202962253.mm)
+  circle = ge.add_circle([1426.9257533043017.mm,-91.62099335032103.mm,1687.4064669624122.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20312,8 +20312,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.13673089789404.mm, -10.95912497346545.mm, -14.421017825550507.mm)
-  circle = ge.add_circle([1443.3070382971182.mm,-86.15497082405231.mm,1647.5542868378004.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.412929510503773.mm, -10.279369296753416.mm, -14.48674169672654.mm)
+  circle = ge.add_circle([1443.21846924146.mm,-85.6971499504717.mm,1670.54316775945.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20326,8 +20326,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.602630254572659.mm, -21.743560281180137.mm, -9.720886812338904.mm)
-  circle = ge.add_circle([1459.4437691950122.mm,-97.11409579751776.mm,1633.13326901225.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.2918266232945825.mm, -21.40607663249162.mm, -9.93437604665587.mm)
+  circle = ge.add_circle([1459.6313987519638.mm,-95.97651924722511.mm,1656.0564260627234.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20340,8 +20340,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.326125795203325.mm, -20.695587200932792.mm, -5.645688997788056.mm)
-  circle = ge.add_circle([1464.046399449585.mm,-118.8576560786979.mm,1623.412382199911.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.565933630547306.mm, -20.948341508781724.mm, -5.868850636181378.mm)
+  circle = ge.add_circle([1464.9232253752584.mm,-117.38259587971673.mm,1646.1220500160675.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20354,8 +20354,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.2770824147442.mm, -8.431831433687648.mm, -4.593264322951427.mm)
-  circle = ge.add_circle([1452.7202736543816.mm,-139.5532432796307.mm,1617.766693202123.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.885252774678065.mm, -9.173890154330365.mm, -4.668064231371545.mm)
+  circle = ge.add_circle([1454.3572917447111.mm,-138.33093738849846.mm,1640.2531993798862.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20368,8 +20368,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.806714069824466.mm, 7.831732546622135.mm, -7.182857800000875.mm)
-  circle = ge.add_circle([1430.4431912396374.mm,-147.98507471331834.mm,1613.1734288791715.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.045536345165146.mm, 7.030479164948332.mm, -7.034348811987911.mm)
+  circle = ge.add_circle([1432.472038970033.mm,-147.50482754282882.mm,1635.5851351485146.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20382,8 +20382,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-10.191784749771614.mm, 18.525649447145852.mm, -11.890756727631242.mm)
-  circle = ge.add_circle([1408.636477169813.mm,-140.1533421666962.mm,1605.9905710791706.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.953035547940999.mm, 18.18693863620618.mm, -11.583680268891158.mm)
+  circle = ge.add_circle([1410.426502624868.mm,-140.4743483778805.mm,1628.5507863365267.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20396,8 +20396,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(5.733499525599427.mm, 17.35763549730781.mm, -15.946840831728423.mm)
-  circle = ge.add_circle([1398.4446924200413.mm,-121.62769271955035.mm,1594.0998143515394.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.904319695224103.mm, 17.77014933472509.mm, -15.655184898048674.mm)
+  circle = ge.add_circle([1399.473467076927.mm,-122.28740974167431.mm,1616.9671060676355.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20410,8 +20410,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.59872670616255.mm, 5.014948255656421.mm, -16.96451664820256.mm)
-  circle = ge.add_circle([1404.1781919456407.mm,-104.27005722224254.mm,1578.152973519811.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.251667796037054.mm, 6.023888550187962.mm, -16.867466728161617.mm)
+  circle = ge.add_circle([1404.377786772151.mm,-104.51726040694922.mm,1601.3119211695869.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20424,8 +20424,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.01081432383444.mm, -11.2399946493219.mm, -14.344985338118704.mm)
-  circle = ge.add_circle([1420.7769186518033.mm,-99.25510896658612.mm,1561.1884568716084.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.4520203402692.mm, -10.181533928291742.mm, -14.51147018168399.mm)
+  circle = ge.add_circle([1420.629454568188.mm,-98.49337185676126.mm,1584.4444544414253.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20438,8 +20438,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.31568909342468.mm, -21.84281055185005.mm, -9.629574976332606.mm)
-  circle = ge.add_circle([1436.7877329756377.mm,-110.49510361590802.mm,1546.8434715334897.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.38819245767354.mm, -21.367674302055462.mm, -9.965201965029564.mm)
+  circle = ge.add_circle([1437.0814749084573.mm,-108.674905785053.mm,1569.9329842597413.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20452,8 +20452,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.60525581858792.mm, -20.554819364315364.mm, -5.592825552922022.mm)
-  circle = ge.add_circle([1441.1034220690624.mm,-132.33791416775807.mm,1537.213896557157.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.468656526994437.mm, -20.991833483966246.mm, -5.887744113388408.mm)
+  circle = ge.add_circle([1442.4696673661308.mm,-130.04258008710846.mm,1559.9677822947117.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20466,8 +20466,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.38416163660486.mm, -8.133873061944655.mm, -4.609954036476665.mm)
-  circle = ge.add_circle([1429.4981662504745.mm,-152.89273353207344.mm,1531.621071004235.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.84396113266871.mm, -9.273838268186807.mm, -4.6639745982849945.mm)
+  circle = ge.add_circle([1432.0010108391364.mm,-151.0344135710747.mm,1554.0800381813233.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20480,8 +20480,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.678737245577622.mm, 8.111563219370822.mm, -7.259280470906788.mm)
-  circle = ge.add_circle([1407.1140046138696.mm,-161.0266065940181.mm,1527.0111169677584.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.084381371412064.mm, 6.932533899294725.mm, -7.009668067793655.mm)
+  circle = ge.add_circle([1410.1570497064677.mm,-160.30825183926152.mm,1549.4160635830383.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20494,8 +20494,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.904053240154099.mm, 18.62270049616356.mm, -11.981945377371176.mm)
-  circle = ge.add_circle([1385.435267368292.mm,-152.91504337464727.mm,1519.7518364968516.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-11.049297045014555.mm, 18.148283753040573.mm, -11.552844016675635.mm)
+  circle = ge.add_circle([1388.0726683350556.mm,-153.3757179399668.mm,1542.4063955152446.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20508,8 +20508,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.011684955948567.mm, 17.21480223903177.mm, -15.999140203191473.mm)
-  circle = ge.add_circle([1375.531214128138.mm,-134.2923428784837.mm,1507.7698911194805.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.806944436568074.mm, 17.813393818053754.mm, -15.63622905659031.mm)
+  circle = ge.add_circle([1377.023371290041.mm,-135.22743418692622.mm,1530.853551498569.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20522,8 +20522,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.703682190528752.mm, 4.716273553081294.mm, -16.94715387403562.mm)
-  circle = ge.add_circle([1381.5428990840865.mm,-117.07754063945194.mm,1491.770750916289.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.210132916783323.mm, 6.123738989402284.mm, -16.871478443022852.mm)
+  circle = ge.add_circle([1381.8303157266091.mm,-117.41404036887246.mm,1515.2173224419787.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20536,8 +20536,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.880784221412796.mm, -11.518771074148674.mm, -14.268176647147584.mm)
-  circle = ge.add_circle([1398.2465812746152.mm,-112.36126708637065.mm,1474.8235970422534.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.490619314975447.mm, -10.083479390818155.mm, -14.536103027530544.mm)
+  circle = ge.add_circle([1398.0404486433924.mm,-111.29030137947018.mm,1498.3458439989558.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20550,8 +20550,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.027182910578858.mm, -21.937657091999625.mm, -9.538514480699178.mm)
-  circle = ge.add_circle([1414.127365496028.mm,-123.88003816051932.mm,1460.5554203951058.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.484349002820409.mm, -21.328767112968478.mm, -9.99604835419973.mm)
+  circle = ge.add_circle([1414.5310679583679.mm,-121.37378077028833.mm,1483.8097409714253.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20564,8 +20564,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.882481500717631.mm, -20.409928465752188.mm, -5.541093104063748.mm)
-  circle = ge.add_circle([1418.1545484066069.mm,-145.81769525251894.mm,1451.0169059144066.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.371183734968099.mm, -21.034830199326763.mm, -5.906762198067327.mm)
+  circle = ge.add_circle([1420.0154169611883.mm,-142.7025478832568.mm,1473.8136926172256.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20578,8 +20578,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.48698766563757.mm, -7.834498299950155.mm, -4.627988925383988.mm)
-  circle = ge.add_circle([1406.2720669058892.mm,-166.22762371827113.mm,1445.4758128103429.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.802183281366524.mm, -9.373590395222635.mm, -4.660040827264083.mm)
+  circle = ge.add_circle([1409.6442332262202.mm,-163.73737808258358.mm,1467.9069304191582.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20592,8 +20592,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.546660948853287.mm, 8.38927020889551.mm, -7.336470997504421.mm)
-  circle = ge.add_circle([1383.7850792402517.mm,-174.0621220182213.mm,1440.8478238849589.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.122734048127086.mm, 6.834370716070822.mm, -6.98508327757304.mm)
+  circle = ge.add_circle([1387.8420499448537.mm,-173.1109684778062.mm,1463.2468895918942.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20606,8 +20606,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.614788101524482.mm, 18.71533736032785.mm, -12.072872758040148.mm)
-  circle = ge.add_circle([1362.2384182913984.mm,-165.67285180932578.mm,1433.5113528874544.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-11.145348024283294.mm, 18.10912450645108.mm, -11.521987687501905.mm)
+  circle = ge.add_circle([1365.7193158967266.mm,-166.2765977617354.mm,1456.2618063143211.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20620,8 +20620,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.28793578696127.mm, 17.06786159365069.mm, -16.050302911127574.mm)
-  circle = ge.add_circle([1352.623630189874.mm,-146.95751444899793.mm,1421.4384801294143.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.709374733526374.mm, 17.856142490915857.mm, -15.617148850119975.mm)
+  circle = ge.add_circle([1354.5739678724433.mm,-148.1674732552843.mm,1444.7398186268192.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20634,8 +20634,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.804373162397496.mm, 4.416215041218436.mm, -16.928447852905492.mm)
-  circle = ge.add_circle([1358.9115659768352.mm,-129.88965285534724.mm,1405.3881772182867.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.168112360180658.mm, 6.223392167351136.mm, -16.87533424508706.mm)
+  circle = ge.add_circle([1359.2833426059697.mm,-130.31133076436845.mm,1429.1226697766992.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20648,8 +20648,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.746668925732365.mm, -11.79539349925247.mm, -14.190608490163186.mm)
-  circle = ge.add_circle([1375.7159391392327.mm,-125.4734378141288.mm,1388.4597293653812.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.52872544882098.mm, -9.985208188607203.mm, -14.560639605153256.mm)
+  circle = ge.add_circle([1375.4514549661503.mm,-124.08793859701731.mm,1412.2473355316122.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20662,8 +20662,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(3.737174574957862.mm, -22.028079233441417.mm, -9.447725168602119.mm)
-  circle = ge.add_circle([1391.462608064965.mm,-137.26883131338127.mm,1374.269120875218.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.580293802934193.mm, -21.289356058904616.mm, -10.02691442636251.mm)
+  circle = ge.add_circle([1391.9801804149713.mm,-134.07314678562452.mm,1397.686695926459.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20676,8 +20676,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-12.157742430824555.mm, -20.260946078690495.mm, -5.490502924327757.mm)
-  circle = ge.add_circle([1395.199782639923.mm,-159.2969105468227.mm,1364.821395706616.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.273517743884895.mm, -21.077330556744215.mm, -5.925904404502944.mm)
+  circle = ge.add_circle([1397.5604742179055.mm,-155.36250284452913.mm,1387.6597815000964.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20690,8 +20690,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.585538094828053.mm, -7.53377238501983.mm, -4.6473650596567495.mm)
-  circle = ge.add_circle([1383.0420402090983.mm,-179.55785662551318.mm,1359.3308927822882.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.759920287761588.mm, -9.473143987807731.mm, -4.656263018775462.mm)
+  circle = ge.add_circle([1387.2869564740206.mm,-176.43983340127335.mm,1381.7338770955935.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20704,8 +20704,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.41051396064495.mm, 8.664792999545284.mm, -7.414412559062157.mm)
-  circle = ge.add_circle([1360.4565021142703.mm,-187.091629010533.mm,1354.6835277226314.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.160593395798287.mm, 6.735992122325769.mm, -6.960595069212104.mm)
+  circle = ge.add_circle([1365.527036186259.mm,-185.91297738908108.mm,1377.077614076818.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20718,8 +20718,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.324052368192497.mm, 18.80353985296594.mm, -12.163519055481174.mm)
-  circle = ge.add_circle([1339.0459881536253.mm,-178.42683601098773.mm,1347.2691151635693.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-11.2411860326431.mm, 18.069461896549342.mm, -11.491112069428027.mm)
+  circle = ge.add_circle([1343.3664427904607.mm,-179.1769852667553.mm,1370.117019007606.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20732,8 +20732,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.562191820301905.mm, 16.916845581276448.mm, -16.10031780657596.mm)
-  circle = ge.add_circle([1329.7219357854328.mm,-159.6232961580218.mm,1335.105596108088.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.611613077991024.mm, 17.898394261527358.mm, -15.597944765939701.mm)
+  circle = ge.add_circle([1332.1252567578176.mm,-161.10752337020597.mm,1358.6259069381779.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20746,8 +20746,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.900777680009696.mm, 4.11483810638066.mm, -16.908402661076252.mm)
-  circle = ge.add_circle([1336.2841276057347.mm,-142.70645057674534.mm,1319.0052783015121.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.125607199418027.mm, 6.322845538931432.mm, -16.879034035879158.mm)
+  circle = ge.add_circle([1336.7368698358086.mm,-143.2091291086786.mm,1343.0279621722382.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20760,8 +20760,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.608497662108675.mm, -12.06980164532203.mm, -14.112297770188206.mm)
-  circle = ge.add_circle([1353.1849052857444.mm,-138.59161247036468.mm,1302.0968756404359.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.56633776858962.mm, -9.88672283146687.mm, -14.585079287897088.mm)
+  circle = ge.add_circle([1352.8624770352267.mm,-136.88628356974718.mm,1326.148928136359.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20774,8 +20774,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(3.4457272828217356.mm, -22.114057272117464.mm, -9.357226824109603.mm)
-  circle = ge.add_circle([1368.793402947853.mm,-150.6614141156867.mm,1287.9845778702477.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.676024407622435.mm, -21.249442146407034.mm, -10.057799393209734.mm)
+  circle = ge.add_circle([1369.4288148038163.mm,-146.77300640121405.mm,1311.563848848462.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20788,8 +20788,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-12.43097862628315.mm, -20.107904668161297.mm, -5.441066037915334.mm)
-  circle = ge.add_circle([1372.2391302306748.mm,-172.77547138780417.mm,1278.627351046138.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.175661048096345.mm, -21.119333470775842.mm, -5.945170243811617.mm)
+  circle = ge.add_circle([1375.1048392114387.mm,-168.02244854762108.mm,1301.5060494552522.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20802,8 +20802,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.679791448867718.mm, -7.23176084890153.mm, -4.668078217005814.mm)
-  circle = ge.add_circle([1359.8081516043917.mm,-192.88337605596547.mm,1273.1862850082227.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.717173231233346.mm, -9.572496503382382.mm, -4.652641269302649.mm)
+  circle = ge.add_circle([1364.9291781633424.mm,-189.14178201839692.mm,1295.5608792114406.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20816,8 +20816,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.27032594899856.mm, 8.938071551632532.mm, -7.493088171187765.mm)
-  circle = ge.add_circle([1337.128360155524.mm,-200.115136904867.mm,1268.518206791217.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.197958447512747.mm, 6.63740063061033.mm, -6.936204068130564.mm)
+  circle = ge.add_circle([1343.212004932109.mm,-198.7142785217793.mm,1290.908237942138.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20830,8 +20830,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.031909394925606.mm, 18.887288753707054.mm, -12.2538645167906.mm)
-  circle = ge.add_circle([1315.8580342065254.mm,-191.17706535323447.mm,1261.0251186200292.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-11.33680862242909.mm, 18.029296936302813.mm, -11.460217951004779.mm)
+  circle = ge.add_circle([1321.0140464845963.mm,-192.07687789116898.mm,1283.9720338740074.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20844,8 +20844,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.834393292323057.mm, 16.761787110091234.mm, -16.149173990695544.mm)
-  circle = ge.add_circle([1306.8261248115998.mm,-172.2897765995274.mm,1248.7712541032386.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.513661966756217.mm, 17.94014805079445.mm, -15.578617294513606.mm)
+  circle = ge.add_circle([1309.6772378621672.mm,-174.04758095486616.mm,1272.5118159230026.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20858,8 +20858,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.992874735676196.mm, 3.812208422181044.mm, -16.887022666633584.mm)
-  circle = ge.add_circle([1313.6605181039229.mm,-155.52798948943618.mm,1232.622080112543.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.082618520060578.mm, 6.4220965641432315.mm, -16.882577720908102.mm)
+  circle = ge.add_circle([1314.1908998289234.mm,-156.10743290407171.mm,1256.933198628489.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20872,8 +20872,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.466300539701024.mm, -12.341935715563608.mm, -14.033261552057866.mm)
-  circle = ge.add_circle([1330.653392839599.mm,-151.71578106725514.mm,1215.7350574459094.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.60345531367716.mm, -9.788025834674443.mm, -14.60942145158242.mm)
+  circle = ge.add_circle([1330.273518348984.mm,-149.68533633992848.mm,1240.0506209075809.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20886,8 +20886,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(3.1529045439970105.mm, -22.1955724723922.mm, -9.26703916788756.mm)
-  circle = ge.add_circle([1346.1196933793.mm,-164.05771678281874.mm,1201.7017958938516.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.771538371963743.mm, -21.209026394861326.mm, -10.088702465951883.mm)
+  circle = ge.add_circle([1346.8769736626612.mm,-159.47336217460293.mm,1225.4411994559985.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20900,8 +20900,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-12.702130545682166.mm, -19.950837583705464.mm, -5.39279321771005.mm)
-  circle = ge.add_circle([1349.272597923297.mm,-186.25328925521094.mm,1192.434756725964.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.077616146824312.mm, -21.160837868684098.mm, -5.964559223951028.mm)
+  circle = ge.add_circle([1352.648512034625.mm,-180.68238856946425.mm,1215.3524969900466.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20914,8 +20914,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.76972718883212.mm, -6.928529503495241.mm, -4.690123883787692.mm)
-  circle = ge.add_circle([1336.570467377615.mm,-206.2041268389164.mm,1187.041963508254.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.673943203525596.mm, -9.671645404522138.mm, -4.64917567134421.mm)
+  circle = ge.add_circle([1342.5708958878006.mm,-201.84322643814835.mm,1209.3879377660955.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20928,8 +20928,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.126127462545583.mm, 9.209046314515518.mm, -7.572480689531403.mm)
-  circle = ge.add_circle([1313.8007401887828.mm,-213.13265634241165.mm,1182.3518396244663.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.23482824898133.mm, 6.538598758912713.mm, -6.911910897264079.mm)
+  circle = ge.add_circle([1320.896952684275.mm,-211.5148718426705.mm,1204.7387620947513.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20942,8 +20942,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-8.738422843147646.mm, 18.966565812671746.mm, -12.343889454619102.mm)
-  circle = ge.add_circle([1292.6746127262372.mm,-203.92361002789613.mm,1174.7793589349349.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-11.432213351477003.mm, 17.98863065150877.mm, -11.429306121256559.mm)
+  circle = ge.add_circle([1298.6621244352937.mm,-204.97627308375777.mm,1197.8268511974873.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20956,8 +20956,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(7.10448088709245.mm, 16.602719969177087.mm, -16.196860817144625.mm)
-  circle = ge.add_circle([1283.9361898830896.mm,-184.95704421522439.mm,1162.4354694803158.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.415523901454662.mm, 17.981402792341868.mm, -15.559166929457888.mm)
+  circle = ge.add_circle([1287.2299110838167.mm,-186.987642432249.mm,1186.3975450762307.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20970,8 +20970,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(17.080644260355257.mm, 3.508391935220999.mm, -16.864312528532082.mm)
-  circle = ge.add_circle([1291.040670770182.mm,-168.3543242460473.mm,1146.2386086631711.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.039147420022573.mm, 6.521142708154002.mm, -16.885965209669166.mm)
+  circle = ge.add_circle([1291.6454349852713.mm,-169.00623963990714.mm,1170.8383781467728.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20984,8 +20984,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.320108544950472.mm, -12.611736408732071.mm, -13.953517058703255.mm)
-  circle = ge.add_circle([1308.1213150305373.mm,-164.8459323108263.mm,1129.374296134639.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.64007713611636.mm, -9.689119718912622.mm, -14.63366547451983.mm)
+  circle = ge.add_circle([1307.684582405294.mm,-162.48509693175313.mm,1153.9524129371036.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20998,8 +20998,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2.85877016803488.mm, -22.272607071134843.mm, -9.177181852895046.mm)
-  circle = ge.add_circle([1323.4414235754878.mm,-177.45766871955837.mm,1115.4207790759358.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.866833256568043.mm, -21.16810983647008.mm, -10.119622855336956.mm)
+  circle = ge.add_circle([1324.3246595414103.mm,-172.17421665066576.mm,1139.3187474625838.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21012,8 +21012,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-12.971139101797917.mm, -19.78977905210604.mm, -5.3456949829337645.mm)
-  circle = ge.add_circle([1326.3001937435226.mm,-199.7302757906932.mm,1106.2435972230408.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.979385544096658.mm, -21.201842690462456.mm, -5.984070849734508.mm)
+  circle = ge.add_circle([1330.1914927979783.mm,-193.34232648713584.mm,1129.1991246072469.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21026,8 +21026,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.855325716655216.mm, -6.624144426511975.mm, -4.713497255990205.mm)
-  circle = ge.add_circle([1313.3290546417247.mm,-219.52005484279925.mm,1100.897902240107.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.630231308715793.mm, -9.770588159003125.mm, -4.6458663134089875.mm)
+  circle = ge.add_circle([1320.2121072538816.mm,-214.5441691775983.mm,1123.2150537575124.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21040,8 +21040,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.97794992384911.mm, 9.477658239575618.mm, -7.65257281352001.mm)
-  circle = ge.add_circle([1290.4737289250695.mm,-226.14419926931123.mm,1096.1844049841168.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.27120185856461.mm, 6.439589030593709.mm, -6.887716177051743.mm)
+  circle = ge.add_circle([1298.5818759451658.mm,-224.31475733660142.mm,1118.5691874441034.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21054,8 +21054,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-8.443656667063124.mm, 19.041353754447215.mm, -12.433574251464506.mm)
-  circle = ge.add_circle([1269.4957790012204.mm,-216.6665410297356.mm,1088.5318321705968.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-11.527397783188007.mm, 17.94746408076861.mm, -11.398377369659329.mm)
+  circle = ge.add_circle([1276.3106740866012.mm,-217.8751683060077.mm,1111.6814712670516.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21068,8 +21068,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(7.372395749315729.mm, 16.43967882115294.mm, -16.243367894397124.mm)
-  circle = ge.add_circle([1261.0521223341573.mm,-197.6251872752884.mm,1076.0982579191323.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.317201388494368.mm, 18.022157432539245.mm, -15.539594167526502.mm)
+  circle = ge.add_circle([1264.7832763034132.mm,-199.9277042252391.mm,1100.2830938973923.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21082,8 +21082,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(17.16406712802518.mm, 3.2034548507211014.mm, -16.8402771955798.mm)
-  circle = ge.add_circle([1268.424518083473.mm,-181.18550845413546.mm,1059.8548900247351.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(15.995195009538293.mm, 6.6199814413643026.mm, -16.889196415647348.mm)
+  circle = ge.add_circle([1269.1004776919076.mm,-181.90554679269985.mm,1084.7434997298658.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21096,8 +21096,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.169953534828892.mm, -12.879144932052299.mm, -13.873081667396036.mm)
-  circle = ge.add_circle([1285.5885852114982.mm,-177.98205360341436.mm,1043.0146128291553.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.676202300600607.mm, -9.590007010204943.mm, -14.657810737526688.mm)
+  circle = ge.add_circle([1285.095672701446.mm,-175.28556535133555.mm,1067.8543033142184.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21110,8 +21110,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2.563388250309117.mm, -22.345144281592383.mm, -9.087674460109383.mm)
-  circle = ge.add_circle([1300.758538746327.mm,-190.86119853546666.mm,1029.1415311617593.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.961906627641611.mm, -21.12669351622563.mm, -10.150559771669577.mm)
+  circle = ge.add_circle([1301.7718750020465.mm,-184.8755723615405.mm,1053.1964925766918.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21124,8 +21124,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-13.237945674472485.mm, -19.624764169928937.mm, -5.299781596850721.mm)
-  circle = ge.add_circle([1303.3219269966362.mm,-213.20634281705904.mm,1020.0538567016499.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.880971748684487.mm, -21.242346888864432.mm, -6.003704622842406.mm)
+  circle = ge.add_circle([1307.733781629688.mm,-206.00226587776612.mm,1043.0459328050222.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21138,8 +21138,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.93656837940125.mm, -6.318671947074648.mm, -4.738193240277724.mm)
-  circle = ge.add_circle([1290.0839813221637.mm,-232.83110698698798.mm,1014.7540751047992.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.586038663189356.mm, -9.869322239865994.mm, -4.642713280018597.mm)
+  circle = ge.add_circle([1297.8528098810036.mm,-227.24461276663055.mm,1037.0422281821798.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21152,8 +21152,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.825825622553793.mm, 9.743848793084396.mm, -7.733347090129087.mm)
-  circle = ge.add_circle([1267.1474129427625.mm,-239.14977893406262.mm,1010.0158818645215.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.307078347293555.mm, 6.340373974323086.mm, -6.863620525416081.mm)
+  circle = ge.add_circle([1276.2667712178143.mm,-237.11393500649655.mm,1032.3995149021612.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21166,8 +21166,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-8.147675099722164.mm, 19.111636281853123.mm, -12.52289936394368.mm)
-  circle = ge.add_circle([1246.3215873202087.mm,-229.40593014097823.mm,1002.2825347743924.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-11.622359486589176.mm, 17.905798275459915.mm, -11.367432486120947.mm)
+  circle = ge.add_circle([1253.9596928705207.mm,-230.77356103217346.mm,1025.535894376745.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21180,8 +21180,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(7.638079497163062.mm, 16.27269919462117.mm, -16.288685088008606.mm)
-  circle = ge.add_circle([1238.1739122204865.mm,-210.2942938591251.mm,989.7596354104487.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.218696938993844.mm, 18.06241093052958.mm, -15.519899508601611.mm)
+  circle = ge.add_circle([1242.3373333839315.mm,-212.86776275671355.mm,1014.1684618906241.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21194,8 +21194,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(17.243125159851843.mm, 2.89746361809307.mm, -16.814921905362098.mm)
-  circle = ge.add_circle([1245.8119917176496.mm,-194.02159466450394.mm,973.4709503224401.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(15.950762411135429.mm, 6.718610239471559.mm, -16.89227125631885.mm)
+  circle = ge.add_circle([1246.5560303229254.mm,-194.80535182618397.mm,998.6485623820225.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21208,8 +21208,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.015868229896569.mm, -13.144103014032112.mm, -13.791972905963462.mm)
-  circle = ge.add_circle([1263.0551168775014.mm,-191.12413104641087.mm,956.656028417078.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.711829884506642.mm, -9.490690239850892.mm, -14.681856623942167.mm)
+  circle = ge.add_circle([1262.5067927340608.mm,-188.0867415867124.mm,981.7562911257037.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21222,8 +21222,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2.266823158046691.mm, -22.413168297044564.mm, -8.998536494253699.mm)
-  circle = ge.add_circle([1278.070985107398.mm,-204.26823406044298.mm,942.8640555111145.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(6.0567560570480055.mm, -21.084778491885032.mm, -10.181512424833159.mm)
+  circle = ge.add_circle([1279.2186226185675.mm,-197.5774318265633.mm,967.0744345017615.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21236,8 +21236,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-13.502492123384627.mm, -19.45582889587729.mm, -5.255063064533033.mm)
-  circle = ge.add_circle([1280.3378082654447.mm,-226.68140235748754.mm,933.8655190168608.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.782377274037572.mm, -21.28234942942828.mm, -6.023460041836188.mm)
+  circle = ge.add_circle([1285.2753786756155.mm,-218.66221031844833.mm,956.8929220769284.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21250,8 +21250,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-23.01343747332976.mm, -6.012178631263652.mm, -4.764206455102112.mm)
-  circle = ge.add_circle([1266.83531614206.mm,-246.13723125336483.mm,928.6104559523278.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.54136639560852.mm, -9.967845125481233.mm, -4.639716651698791.mm)
+  circle = ge.add_circle([1275.4930014015779.mm,-239.9445597478766.mm,950.8694620350922.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21264,8 +21264,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.669787708352032.mm, 10.007559968960038.mm, -7.814785917684617.mm)
-  circle = ge.add_circle([1243.8218786687303.mm,-252.14940988462848.mm,923.8462494972257.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.342456798897956.mm, 6.240956124014588.mm, -6.8396245577513355.mm)
+  circle = ge.add_circle([1253.9516350059694.mm,-249.91240487335784.mm,946.2297453833934.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21278,8 +21278,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-7.850542639022706.mm, 19.177398079491383.mm, -12.611845327054198.mm)
-  circle = ge.add_circle([1223.1520909603782.mm,-242.14184991566844.mm,916.0314635795411.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-11.717096036395105.mm, 17.863634299711066.mm, -11.336472260961727.mm)
+  circle = ge.add_circle([1231.6091782070714.mm,-243.67144874934326.mm,939.390120825642.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21292,8 +21292,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(7.901474234990701.mm, 16.101817476425225.mm, -16.332802522824636.mm)
-  circle = ge.add_circle([1215.3015483213555.mm,-222.96445183617706.mm,903.4196182524869.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.120013068717753.mm, 18.10216225825431.mm, -15.500083455675963.mm)
+  circle = ge.add_circle([1219.8920821706763.mm,-225.8078144496322.mm,928.0536485646803.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21306,8 +21306,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(17.317801128152723.mm, 2.5904849164599.mm, -16.788252183097597.mm)
-  circle = ge.add_circle([1223.2030225563462.mm,-206.86263435975184.mm,887.0868157296622.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(15.905850759605073.mm, 6.81702658353467.mm, -16.89518965315392.mm)
+  circle = ge.add_circle([1224.012095239394.mm,-207.70565219137788.mm,912.5535651090044.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21320,8 +21320,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(14.85788620716994.mm, -13.406552917158479.mm, -13.71020844896725.mm)
-  circle = ge.add_circle([1240.520823684499.mm,-204.27214944329194.mm,870.2985635465647.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.746958977920485.mm, -9.3911719443619.mm, -14.705802519643612.mm)
+  circle = ge.add_circle([1239.9179459989991.mm,-200.8886256078432.mm,895.6583754558504.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21334,8 +21334,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.9691395163033576.mm, -22.476664294251577.mm, -8.909787379549698.mm)
-  circle = ge.add_circle([1255.378709891669.mm,-217.67870236045042.mm,856.5883550975974.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(6.15137912236969.mm, -21.042365833941716.mm, -10.212480024309684.mm)
+  circle = ge.add_circle([1256.6649049769196.mm,-210.2797975522051.mm,880.9525729362068.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21348,8 +21348,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-13.764720800721761.mm, -19.28301004295247.mm, -5.2115491306796.mm)
-  circle = ge.add_circle([1257.3478494079723.mm,-240.155366654702.mm,847.6785677180477.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.683604638220459.mm, -21.32184929050473.mm, -6.043336602169916.mm)
+  circle = ge.add_circle([1262.8162840992893.mm,-231.32216338614683.mm,870.7400929118971.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21362,8 +21362,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-23.085916247752266.mm, -5.704731267612146.mm, -4.791531231875069.mm)
-  circle = ge.add_circle([1243.5831286072505.mm,-259.43837669765446.mm,842.4670185873681.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.496215646885275.mm, -10.066154299612691.mm, -4.636876504982638.mm)
+  circle = ge.add_circle([1253.1326794610688.mm,-252.64401267665156.mm,864.6967563097272.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21376,8 +21376,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.509870183758267.mm, 10.268734301405289.mm, -7.896871549699085.mm)
-  circle = ge.add_circle([1220.4972123594982.mm,-265.1431079652666.mm,837.675487355493.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.37733630982507.mm, 6.141338018760791.mm, -6.815728886905276.mm)
+  circle = ge.add_circle([1231.6364638141836.mm,-262.71016697626425.mm,860.0598798047446.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21390,8 +21390,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-7.5523240336560775.mm, 19.23862481708639.mm, -12.70039275841441.mm)
-  circle = ge.add_circle([1199.98734217574.mm,-254.87437366386132.mm,829.778615805794.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-11.811605013072722.mm, 17.820973230373966.mm, -11.305497484893635.mm)
+  circle = ge.add_circle([1209.2591275043585.mm,-256.56882895750346.mm,853.2441509178393.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21404,8 +21404,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.162522565957715.mm, 15.927070903720391.mm, -16.375710585132197.mm)
-  circle = ge.add_circle([1192.435018142084.mm,-235.63574884677493.mm,817.0782230473795.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.021152298013703.mm, 18.141410400479373.mm, -15.480146514843796.mm)
+  circle = ge.add_circle([1197.4475224912858.mm,-238.7478557271295.mm,841.9386534329457.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21418,8 +21418,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(17.388078760146072.mm, 2.282585640125916.mm, -16.760273840434934.mm)
-  circle = ge.add_circle([1200.5975407080416.mm,-219.70867794305454.mm,800.7025124622473.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(15.860461201973294.mm, 6.915227960039402.mm, -16.897951531617082.mm)
+  circle = ge.add_circle([1201.4686747892995.mm,-220.60644532665012.mm,826.4585069181019.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21432,8 +21432,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(14.69604189280949.mm, -13.666437450481851.mm, -13.627806113854149.mm)
-  circle = ge.add_circle([1217.9856194681877.mm,-217.42609230292862.mm,783.9422386218124.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.781588683658583.mm, -9.291454665396373.mm, -14.729647813062797.mm)
+  circle = ge.add_circle([1217.3291359912728.mm,-213.69121736661072.mm,809.5605553864848.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21446,8 +21446,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.6704021938789992.mm, -22.535618436680352.mm, -8.821446455483056.mm)
-  circle = ge.add_circle([1232.6816613609972.mm,-231.09252975341047.mm,770.3144325079583.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(6.245773406971011.mm, -20.99945662559759.mm, -10.243461779198242.mm)
+  circle = ge.add_circle([1234.1107246749314.mm,-222.9826720320071.mm,794.830907573422.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21460,8 +21460,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-26.674063554876284.mm, 5.828148190090815.mm, 6.207013947524729.mm)
-  circle = ge.add_circle([1234.3520635548762.mm,-253.62814819009083.mm,761.4929860524752.mm], vec, 5.mm, 8)
+  vec = Geom::Vector3d.new(-9.584656363846989.mm, -21.360845463283113.mm, -6.063333796204688.mm)
+  circle = ge.add_circle([1240.3564980819024.mm,-243.98212865760468.mm,784.5874457942238.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21474,8 +21474,36 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-33.677999999999884.mm, -19.19999999999999.mm, -126.69999999999993.mm)
-  circle = ge.add_circle([1207.6779999999999.mm,-247.8.mm,767.6999999999999.mm], vec, 5.mm, 10)
+  vec = Geom::Vector3d.new(-21.450587570153175.mm, -10.164247251483118.mm, -4.634192912406206.mm)
+  circle = ge.add_circle([1230.7718417180554.mm,-265.3429741208878.mm,778.5241119980191.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.6432541479023257.mm, 27.707221372370896.mm, -3.689119085613015.mm)
+  circle = ge.add_circle([1209.3212541479022.mm,-275.5072213723709.mm,773.8899190856129.mm], vec, 5.mm, 8)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost SV-02 tap"] || model.materials.add("ghost SV-02 tap")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-33.677999999999884.mm, -19.19999999999999.mm, -129.20079999999984.mm)
+  circle = ge.add_circle([1207.6779999999999.mm,-247.8.mm,770.2007999999998.mm], vec, 5.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49605,7 +49633,7 @@ ents = child.entities
   # WR duplex outlet (Cct E cooler)
   grp = ents.add_group
   grp.name = "WR duplex outlet (Cct E cooler)"
-  face = grp.entities.add_face([1487.78.mm,-87.mm,1878.mm], [1533.78.mm,-87.mm,1878.mm], [1533.78.mm,-65.mm,1878.mm], [1487.78.mm,-65.mm,1878.mm])
+  face = grp.entities.add_face([1487.78.mm,-87.mm,1903.008.mm], [1533.78.mm,-87.mm,1903.008.mm], [1533.78.mm,-65.mm,1903.008.mm], [1487.78.mm,-65.mm,1903.008.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
   mat = model.materials["NEMA 5-15 shore inlet"] || model.materials.add("NEMA 5-15 shore inlet")
@@ -49616,7 +49644,7 @@ ents = child.entities
   # WR duplex in-use cover
   grp = ents.add_group
   grp.name = "WR duplex in-use cover"
-  face = grp.entities.add_face([1481.78.mm,-101.mm,1872.mm], [1539.78.mm,-101.mm,1872.mm], [1539.78.mm,-87.mm,1872.mm], [1481.78.mm,-87.mm,1872.mm])
+  face = grp.entities.add_face([1481.78.mm,-101.mm,1897.008.mm], [1539.78.mm,-101.mm,1897.008.mm], [1539.78.mm,-87.mm,1897.008.mm], [1481.78.mm,-87.mm,1897.008.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(72.mm)
   mat = model.materials["NEMA inlet weatherproof cover"] || model.materials.add("NEMA inlet weatherproof cover")
@@ -49639,8 +49667,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-33.67800000000011.mm, -19.200000000000003.mm, -126.70000000000005.mm)
-  circle = ge.add_circle([1510.78.mm,-75.mm,1908.mm], vec, 5.mm, 10)
+  vec = Geom::Vector3d.new(-33.67800000000011.mm, -19.200000000000003.mm, -129.20080000000007.mm)
+  circle = ge.add_circle([1510.78.mm,-75.mm,1933.008.mm], vec, 5.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49653,8 +49681,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.050258649607485.mm, -20.41799152611219.mm, -2.8371845833123643.mm)
-  circle = ge.add_circle([1477.1019999999999.mm,-94.2.mm,1781.3.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.966373224972585.mm, -20.470150400952107.mm, -2.9682282298904283.mm)
+  circle = ge.add_circle([1477.1019999999999.mm,-94.2.mm,1803.8072.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49667,8 +49695,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-10.762396429380487.mm, 18.318390346148945.mm, -11.70767515789953.mm)
-  circle = ge.add_circle([1455.0517413503924.mm,-114.61799152611219.mm,1778.4628154166876.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.759890839617356.mm, 18.262731376249448.mm, -11.645289392795576.mm)
+  circle = ge.add_circle([1455.1356267750273.mm,-114.67015040095211.mm,1800.8389717701095.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49681,8 +49709,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(5.171567754890248.mm, 17.630856254124225.mm, -15.838877930046692.mm)
-  circle = ge.add_circle([1444.289344921012.mm,-96.29960117996325.mm,1766.755140258788.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.098476936704174.mm, 17.68217736709191.mm, -15.692721552620242.mm)
+  circle = ge.add_circle([1444.37573593541.mm,-96.40741902470266.mm,1789.193682377314.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49695,8 +49723,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.376114608425723.mm, 5.607886209617149.mm, -16.995197614962308.mm)
-  circle = ge.add_circle([1449.4609126759021.mm,-78.66874492583902.mm,1750.9162623287414.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.333276291792345.mm, 5.823606093500217.mm, -16.858975973860424.mm)
+  circle = ge.add_circle([1449.474212872114.mm,-78.72524165761075.mm,1773.5009608246937.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49709,8 +49737,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.25850650487473.mm, -10.676223251416957.mm, -14.496257541061368.mm)
-  circle = ge.add_circle([1465.8370272843279.mm,-73.06085871622187.mm,1733.921064713779.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.373347824044913.mm, -10.376982997526383.mm, -14.461918204214044.mm)
+  circle = ge.add_circle([1465.8074891639064.mm,-72.90163556411053.mm,1756.6419848508333.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49723,8 +49751,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.887943866135629.mm, -21.639927907802658.mm, -9.812430090784801.mm)
-  circle = ge.add_circle([1482.0955337892026.mm,-83.73708196763883.mm,1719.4248071727177.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.19525396082895.mm, -21.44397312349608.mm, -9.903571386361364.mm)
+  circle = ge.add_circle([1482.1808369879514.mm,-83.27861856163692.mm,1742.1800666466193.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49737,8 +49765,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.04515225631053.mm, -20.83220130062095.mm, -5.699671919088587.mm)
-  circle = ge.add_circle([1486.9834776553382.mm,-105.37700987544149.mm,1709.612377081933.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.663012561207779.mm, -20.904355384541404.mm, -5.850082248978424.mm)
+  circle = ge.add_circle([1487.3760909487803.mm,-104.722591685133.mm,1732.276495260258.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49751,8 +49779,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.165773333888183.mm, -8.728308486511821.mm, -4.577923421695459.mm)
-  circle = ge.add_circle([1475.9383253990277.mm,-126.20921117606244.mm,1703.9127051628443.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.926057152821613.mm, -9.073748606288973.mm, -4.672309622075545.mm)
+  circle = ge.add_circle([1476.7130783875725.mm,-125.6269470696744.mm,1726.4264130112795.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49765,8 +49793,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.930563533923987.mm, 7.5498391690757956.mm, -7.107219638194692.mm)
-  circle = ge.add_circle([1453.7725520651395.mm,-134.93751966257426.mm,1699.3347817411488.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.006199961473385.mm, 7.128204011547922.mm, -7.05912487981891.mm)
+  circle = ge.add_circle([1454.787021234751.mm,-134.70069567596337.mm,1721.754103389204.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49779,8 +49807,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-10.477919930264989.mm, 18.42420536185068.mm, -11.799326679909655.mm)
-  circle = ge.add_circle([1431.8419885312155.mm,-127.38768049349846.mm,1692.2275621029542.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.856565991543903.mm, 18.225088168717193.mm, -11.614495656602003.mm)
+  circle = ge.add_circle([1432.7808212732775.mm,-127.57249166441545.mm,1714.694978509385.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49793,8 +49821,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(5.453440115823014.mm, 17.496330243416097.mm, -15.89341619339234.mm)
-  circle = ge.add_circle([1421.3640686009505.mm,-108.96347513164778.mm,1680.4282354230445.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.001498022568057.mm, 17.72641014537723.mm, -15.67401589037081.mm)
+  circle = ge.add_circle([1421.9242552817336.mm,-109.34740349569826.mm,1703.080482852783.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49807,8 +49835,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.48952958034465.mm, 5.3121740641793735.mm, -16.98053239185174.mm)
-  circle = ge.add_circle([1426.8175087167735.mm,-91.46714488823169.mm,1664.5348192296522.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.29271593715839.mm, 5.923843399849332.mm, -16.863299202962253.mm)
+  circle = ge.add_circle([1426.9257533043017.mm,-91.62099335032103.mm,1687.4064669624122.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49821,8 +49849,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.13673089789404.mm, -10.95912497346545.mm, -14.421017825550507.mm)
-  circle = ge.add_circle([1443.3070382971182.mm,-86.15497082405231.mm,1647.5542868378004.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.412929510503773.mm, -10.279369296753416.mm, -14.48674169672654.mm)
+  circle = ge.add_circle([1443.21846924146.mm,-85.6971499504717.mm,1670.54316775945.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49835,8 +49863,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.602630254572659.mm, -21.743560281180137.mm, -9.720886812338904.mm)
-  circle = ge.add_circle([1459.4437691950122.mm,-97.11409579751776.mm,1633.13326901225.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.2918266232945825.mm, -21.40607663249162.mm, -9.93437604665587.mm)
+  circle = ge.add_circle([1459.6313987519638.mm,-95.97651924722511.mm,1656.0564260627234.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49849,8 +49877,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.326125795203325.mm, -20.695587200932792.mm, -5.645688997788056.mm)
-  circle = ge.add_circle([1464.046399449585.mm,-118.8576560786979.mm,1623.412382199911.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.565933630547306.mm, -20.948341508781724.mm, -5.868850636181378.mm)
+  circle = ge.add_circle([1464.9232253752584.mm,-117.38259587971673.mm,1646.1220500160675.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49863,8 +49891,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.2770824147442.mm, -8.431831433687648.mm, -4.593264322951427.mm)
-  circle = ge.add_circle([1452.7202736543816.mm,-139.5532432796307.mm,1617.766693202123.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.885252774678065.mm, -9.173890154330365.mm, -4.668064231371545.mm)
+  circle = ge.add_circle([1454.3572917447111.mm,-138.33093738849846.mm,1640.2531993798862.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49877,8 +49905,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.806714069824466.mm, 7.831732546622135.mm, -7.182857800000875.mm)
-  circle = ge.add_circle([1430.4431912396374.mm,-147.98507471331834.mm,1613.1734288791715.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.045536345165146.mm, 7.030479164948332.mm, -7.034348811987911.mm)
+  circle = ge.add_circle([1432.472038970033.mm,-147.50482754282882.mm,1635.5851351485146.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49891,8 +49919,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-10.191784749771614.mm, 18.525649447145852.mm, -11.890756727631242.mm)
-  circle = ge.add_circle([1408.636477169813.mm,-140.1533421666962.mm,1605.9905710791706.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.953035547940999.mm, 18.18693863620618.mm, -11.583680268891158.mm)
+  circle = ge.add_circle([1410.426502624868.mm,-140.4743483778805.mm,1628.5507863365267.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49905,8 +49933,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(5.733499525599427.mm, 17.35763549730781.mm, -15.946840831728423.mm)
-  circle = ge.add_circle([1398.4446924200413.mm,-121.62769271955035.mm,1594.0998143515394.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.904319695224103.mm, 17.77014933472509.mm, -15.655184898048674.mm)
+  circle = ge.add_circle([1399.473467076927.mm,-122.28740974167431.mm,1616.9671060676355.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49919,8 +49947,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.59872670616255.mm, 5.014948255656421.mm, -16.96451664820256.mm)
-  circle = ge.add_circle([1404.1781919456407.mm,-104.27005722224254.mm,1578.152973519811.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.251667796037054.mm, 6.023888550187962.mm, -16.867466728161617.mm)
+  circle = ge.add_circle([1404.377786772151.mm,-104.51726040694922.mm,1601.3119211695869.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49933,8 +49961,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.01081432383444.mm, -11.2399946493219.mm, -14.344985338118704.mm)
-  circle = ge.add_circle([1420.7769186518033.mm,-99.25510896658612.mm,1561.1884568716084.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.4520203402692.mm, -10.181533928291742.mm, -14.51147018168399.mm)
+  circle = ge.add_circle([1420.629454568188.mm,-98.49337185676126.mm,1584.4444544414253.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49947,8 +49975,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.31568909342468.mm, -21.84281055185005.mm, -9.629574976332606.mm)
-  circle = ge.add_circle([1436.7877329756377.mm,-110.49510361590802.mm,1546.8434715334897.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.38819245767354.mm, -21.367674302055462.mm, -9.965201965029564.mm)
+  circle = ge.add_circle([1437.0814749084573.mm,-108.674905785053.mm,1569.9329842597413.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49961,8 +49989,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.60525581858792.mm, -20.554819364315364.mm, -5.592825552922022.mm)
-  circle = ge.add_circle([1441.1034220690624.mm,-132.33791416775807.mm,1537.213896557157.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.468656526994437.mm, -20.991833483966246.mm, -5.887744113388408.mm)
+  circle = ge.add_circle([1442.4696673661308.mm,-130.04258008710846.mm,1559.9677822947117.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49975,8 +50003,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.38416163660486.mm, -8.133873061944655.mm, -4.609954036476665.mm)
-  circle = ge.add_circle([1429.4981662504745.mm,-152.89273353207344.mm,1531.621071004235.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.84396113266871.mm, -9.273838268186807.mm, -4.6639745982849945.mm)
+  circle = ge.add_circle([1432.0010108391364.mm,-151.0344135710747.mm,1554.0800381813233.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -49989,8 +50017,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.678737245577622.mm, 8.111563219370822.mm, -7.259280470906788.mm)
-  circle = ge.add_circle([1407.1140046138696.mm,-161.0266065940181.mm,1527.0111169677584.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.084381371412064.mm, 6.932533899294725.mm, -7.009668067793655.mm)
+  circle = ge.add_circle([1410.1570497064677.mm,-160.30825183926152.mm,1549.4160635830383.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50003,8 +50031,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.904053240154099.mm, 18.62270049616356.mm, -11.981945377371176.mm)
-  circle = ge.add_circle([1385.435267368292.mm,-152.91504337464727.mm,1519.7518364968516.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-11.049297045014555.mm, 18.148283753040573.mm, -11.552844016675635.mm)
+  circle = ge.add_circle([1388.0726683350556.mm,-153.3757179399668.mm,1542.4063955152446.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50017,8 +50045,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.011684955948567.mm, 17.21480223903177.mm, -15.999140203191473.mm)
-  circle = ge.add_circle([1375.531214128138.mm,-134.2923428784837.mm,1507.7698911194805.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.806944436568074.mm, 17.813393818053754.mm, -15.63622905659031.mm)
+  circle = ge.add_circle([1377.023371290041.mm,-135.22743418692622.mm,1530.853551498569.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50031,8 +50059,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.703682190528752.mm, 4.716273553081294.mm, -16.94715387403562.mm)
-  circle = ge.add_circle([1381.5428990840865.mm,-117.07754063945194.mm,1491.770750916289.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.210132916783323.mm, 6.123738989402284.mm, -16.871478443022852.mm)
+  circle = ge.add_circle([1381.8303157266091.mm,-117.41404036887246.mm,1515.2173224419787.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50045,8 +50073,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.880784221412796.mm, -11.518771074148674.mm, -14.268176647147584.mm)
-  circle = ge.add_circle([1398.2465812746152.mm,-112.36126708637065.mm,1474.8235970422534.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.490619314975447.mm, -10.083479390818155.mm, -14.536103027530544.mm)
+  circle = ge.add_circle([1398.0404486433924.mm,-111.29030137947018.mm,1498.3458439989558.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50059,8 +50087,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(4.027182910578858.mm, -21.937657091999625.mm, -9.538514480699178.mm)
-  circle = ge.add_circle([1414.127365496028.mm,-123.88003816051932.mm,1460.5554203951058.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.484349002820409.mm, -21.328767112968478.mm, -9.99604835419973.mm)
+  circle = ge.add_circle([1414.5310679583679.mm,-121.37378077028833.mm,1483.8097409714253.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50073,8 +50101,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-11.882481500717631.mm, -20.409928465752188.mm, -5.541093104063748.mm)
-  circle = ge.add_circle([1418.1545484066069.mm,-145.81769525251894.mm,1451.0169059144066.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.371183734968099.mm, -21.034830199326763.mm, -5.906762198067327.mm)
+  circle = ge.add_circle([1420.0154169611883.mm,-142.7025478832568.mm,1473.8136926172256.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50087,8 +50115,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.48698766563757.mm, -7.834498299950155.mm, -4.627988925383988.mm)
-  circle = ge.add_circle([1406.2720669058892.mm,-166.22762371827113.mm,1445.4758128103429.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.802183281366524.mm, -9.373590395222635.mm, -4.660040827264083.mm)
+  circle = ge.add_circle([1409.6442332262202.mm,-163.73737808258358.mm,1467.9069304191582.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50101,8 +50129,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.546660948853287.mm, 8.38927020889551.mm, -7.336470997504421.mm)
-  circle = ge.add_circle([1383.7850792402517.mm,-174.0621220182213.mm,1440.8478238849589.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.122734048127086.mm, 6.834370716070822.mm, -6.98508327757304.mm)
+  circle = ge.add_circle([1387.8420499448537.mm,-173.1109684778062.mm,1463.2468895918942.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50115,8 +50143,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.614788101524482.mm, 18.71533736032785.mm, -12.072872758040148.mm)
-  circle = ge.add_circle([1362.2384182913984.mm,-165.67285180932578.mm,1433.5113528874544.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-11.145348024283294.mm, 18.10912450645108.mm, -11.521987687501905.mm)
+  circle = ge.add_circle([1365.7193158967266.mm,-166.2765977617354.mm,1456.2618063143211.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50129,8 +50157,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.28793578696127.mm, 17.06786159365069.mm, -16.050302911127574.mm)
-  circle = ge.add_circle([1352.623630189874.mm,-146.95751444899793.mm,1421.4384801294143.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.709374733526374.mm, 17.856142490915857.mm, -15.617148850119975.mm)
+  circle = ge.add_circle([1354.5739678724433.mm,-148.1674732552843.mm,1444.7398186268192.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50143,8 +50171,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.804373162397496.mm, 4.416215041218436.mm, -16.928447852905492.mm)
-  circle = ge.add_circle([1358.9115659768352.mm,-129.88965285534724.mm,1405.3881772182867.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.168112360180658.mm, 6.223392167351136.mm, -16.87533424508706.mm)
+  circle = ge.add_circle([1359.2833426059697.mm,-130.31133076436845.mm,1429.1226697766992.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50157,8 +50185,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.746668925732365.mm, -11.79539349925247.mm, -14.190608490163186.mm)
-  circle = ge.add_circle([1375.7159391392327.mm,-125.4734378141288.mm,1388.4597293653812.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.52872544882098.mm, -9.985208188607203.mm, -14.560639605153256.mm)
+  circle = ge.add_circle([1375.4514549661503.mm,-124.08793859701731.mm,1412.2473355316122.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50171,8 +50199,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(3.737174574957862.mm, -22.028079233441417.mm, -9.447725168602119.mm)
-  circle = ge.add_circle([1391.462608064965.mm,-137.26883131338127.mm,1374.269120875218.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.580293802934193.mm, -21.289356058904616.mm, -10.02691442636251.mm)
+  circle = ge.add_circle([1391.9801804149713.mm,-134.07314678562452.mm,1397.686695926459.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50185,8 +50213,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-12.157742430824555.mm, -20.260946078690495.mm, -5.490502924327757.mm)
-  circle = ge.add_circle([1395.199782639923.mm,-159.2969105468227.mm,1364.821395706616.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.273517743884895.mm, -21.077330556744215.mm, -5.925904404502944.mm)
+  circle = ge.add_circle([1397.5604742179055.mm,-155.36250284452913.mm,1387.6597815000964.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50199,8 +50227,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.585538094828053.mm, -7.53377238501983.mm, -4.6473650596567495.mm)
-  circle = ge.add_circle([1383.0420402090983.mm,-179.55785662551318.mm,1359.3308927822882.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.759920287761588.mm, -9.473143987807731.mm, -4.656263018775462.mm)
+  circle = ge.add_circle([1387.2869564740206.mm,-176.43983340127335.mm,1381.7338770955935.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50213,8 +50241,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.41051396064495.mm, 8.664792999545284.mm, -7.414412559062157.mm)
-  circle = ge.add_circle([1360.4565021142703.mm,-187.091629010533.mm,1354.6835277226314.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.160593395798287.mm, 6.735992122325769.mm, -6.960595069212104.mm)
+  circle = ge.add_circle([1365.527036186259.mm,-185.91297738908108.mm,1377.077614076818.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50227,8 +50255,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.324052368192497.mm, 18.80353985296594.mm, -12.163519055481174.mm)
-  circle = ge.add_circle([1339.0459881536253.mm,-178.42683601098773.mm,1347.2691151635693.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-11.2411860326431.mm, 18.069461896549342.mm, -11.491112069428027.mm)
+  circle = ge.add_circle([1343.3664427904607.mm,-179.1769852667553.mm,1370.117019007606.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50241,8 +50269,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.562191820301905.mm, 16.916845581276448.mm, -16.10031780657596.mm)
-  circle = ge.add_circle([1329.7219357854328.mm,-159.6232961580218.mm,1335.105596108088.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.611613077991024.mm, 17.898394261527358.mm, -15.597944765939701.mm)
+  circle = ge.add_circle([1332.1252567578176.mm,-161.10752337020597.mm,1358.6259069381779.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50255,8 +50283,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.900777680009696.mm, 4.11483810638066.mm, -16.908402661076252.mm)
-  circle = ge.add_circle([1336.2841276057347.mm,-142.70645057674534.mm,1319.0052783015121.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.125607199418027.mm, 6.322845538931432.mm, -16.879034035879158.mm)
+  circle = ge.add_circle([1336.7368698358086.mm,-143.2091291086786.mm,1343.0279621722382.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50269,8 +50297,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.608497662108675.mm, -12.06980164532203.mm, -14.112297770188206.mm)
-  circle = ge.add_circle([1353.1849052857444.mm,-138.59161247036468.mm,1302.0968756404359.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.56633776858962.mm, -9.88672283146687.mm, -14.585079287897088.mm)
+  circle = ge.add_circle([1352.8624770352267.mm,-136.88628356974718.mm,1326.148928136359.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50283,8 +50311,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(3.4457272828217356.mm, -22.114057272117464.mm, -9.357226824109603.mm)
-  circle = ge.add_circle([1368.793402947853.mm,-150.6614141156867.mm,1287.9845778702477.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.676024407622435.mm, -21.249442146407034.mm, -10.057799393209734.mm)
+  circle = ge.add_circle([1369.4288148038163.mm,-146.77300640121405.mm,1311.563848848462.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50297,8 +50325,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-12.43097862628315.mm, -20.107904668161297.mm, -5.441066037915334.mm)
-  circle = ge.add_circle([1372.2391302306748.mm,-172.77547138780417.mm,1278.627351046138.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.175661048096345.mm, -21.119333470775842.mm, -5.945170243811617.mm)
+  circle = ge.add_circle([1375.1048392114387.mm,-168.02244854762108.mm,1301.5060494552522.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50311,8 +50339,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.679791448867718.mm, -7.23176084890153.mm, -4.668078217005814.mm)
-  circle = ge.add_circle([1359.8081516043917.mm,-192.88337605596547.mm,1273.1862850082227.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.717173231233346.mm, -9.572496503382382.mm, -4.652641269302649.mm)
+  circle = ge.add_circle([1364.9291781633424.mm,-189.14178201839692.mm,1295.5608792114406.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50325,8 +50353,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.27032594899856.mm, 8.938071551632532.mm, -7.493088171187765.mm)
-  circle = ge.add_circle([1337.128360155524.mm,-200.115136904867.mm,1268.518206791217.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.197958447512747.mm, 6.63740063061033.mm, -6.936204068130564.mm)
+  circle = ge.add_circle([1343.212004932109.mm,-198.7142785217793.mm,1290.908237942138.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50339,8 +50367,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-9.031909394925606.mm, 18.887288753707054.mm, -12.2538645167906.mm)
-  circle = ge.add_circle([1315.8580342065254.mm,-191.17706535323447.mm,1261.0251186200292.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-11.33680862242909.mm, 18.029296936302813.mm, -11.460217951004779.mm)
+  circle = ge.add_circle([1321.0140464845963.mm,-192.07687789116898.mm,1283.9720338740074.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50353,8 +50381,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(6.834393292323057.mm, 16.761787110091234.mm, -16.149173990695544.mm)
-  circle = ge.add_circle([1306.8261248115998.mm,-172.2897765995274.mm,1248.7712541032386.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.513661966756217.mm, 17.94014805079445.mm, -15.578617294513606.mm)
+  circle = ge.add_circle([1309.6772378621672.mm,-174.04758095486616.mm,1272.5118159230026.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50367,8 +50395,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.992874735676196.mm, 3.812208422181044.mm, -16.887022666633584.mm)
-  circle = ge.add_circle([1313.6605181039229.mm,-155.52798948943618.mm,1232.622080112543.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.082618520060578.mm, 6.4220965641432315.mm, -16.882577720908102.mm)
+  circle = ge.add_circle([1314.1908998289234.mm,-156.10743290407171.mm,1256.933198628489.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50381,8 +50409,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.466300539701024.mm, -12.341935715563608.mm, -14.033261552057866.mm)
-  circle = ge.add_circle([1330.653392839599.mm,-151.71578106725514.mm,1215.7350574459094.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.60345531367716.mm, -9.788025834674443.mm, -14.60942145158242.mm)
+  circle = ge.add_circle([1330.273518348984.mm,-149.68533633992848.mm,1240.0506209075809.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50395,8 +50423,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(3.1529045439970105.mm, -22.1955724723922.mm, -9.26703916788756.mm)
-  circle = ge.add_circle([1346.1196933793.mm,-164.05771678281874.mm,1201.7017958938516.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.771538371963743.mm, -21.209026394861326.mm, -10.088702465951883.mm)
+  circle = ge.add_circle([1346.8769736626612.mm,-159.47336217460293.mm,1225.4411994559985.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50409,8 +50437,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-12.702130545682166.mm, -19.950837583705464.mm, -5.39279321771005.mm)
-  circle = ge.add_circle([1349.272597923297.mm,-186.25328925521094.mm,1192.434756725964.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-10.077616146824312.mm, -21.160837868684098.mm, -5.964559223951028.mm)
+  circle = ge.add_circle([1352.648512034625.mm,-180.68238856946425.mm,1215.3524969900466.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50423,8 +50451,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.76972718883212.mm, -6.928529503495241.mm, -4.690123883787692.mm)
-  circle = ge.add_circle([1336.570467377615.mm,-206.2041268389164.mm,1187.041963508254.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.673943203525596.mm, -9.671645404522138.mm, -4.64917567134421.mm)
+  circle = ge.add_circle([1342.5708958878006.mm,-201.84322643814835.mm,1209.3879377660955.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50437,8 +50465,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.126127462545583.mm, 9.209046314515518.mm, -7.572480689531403.mm)
-  circle = ge.add_circle([1313.8007401887828.mm,-213.13265634241165.mm,1182.3518396244663.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.23482824898133.mm, 6.538598758912713.mm, -6.911910897264079.mm)
+  circle = ge.add_circle([1320.896952684275.mm,-211.5148718426705.mm,1204.7387620947513.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50451,8 +50479,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-8.738422843147646.mm, 18.966565812671746.mm, -12.343889454619102.mm)
-  circle = ge.add_circle([1292.6746127262372.mm,-203.92361002789613.mm,1174.7793589349349.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-11.432213351477003.mm, 17.98863065150877.mm, -11.429306121256559.mm)
+  circle = ge.add_circle([1298.6621244352937.mm,-204.97627308375777.mm,1197.8268511974873.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50465,8 +50493,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(7.10448088709245.mm, 16.602719969177087.mm, -16.196860817144625.mm)
-  circle = ge.add_circle([1283.9361898830896.mm,-184.95704421522439.mm,1162.4354694803158.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.415523901454662.mm, 17.981402792341868.mm, -15.559166929457888.mm)
+  circle = ge.add_circle([1287.2299110838167.mm,-186.987642432249.mm,1186.3975450762307.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50479,8 +50507,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(17.080644260355257.mm, 3.508391935220999.mm, -16.864312528532082.mm)
-  circle = ge.add_circle([1291.040670770182.mm,-168.3543242460473.mm,1146.2386086631711.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.039147420022573.mm, 6.521142708154002.mm, -16.885965209669166.mm)
+  circle = ge.add_circle([1291.6454349852713.mm,-169.00623963990714.mm,1170.8383781467728.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50493,8 +50521,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.320108544950472.mm, -12.611736408732071.mm, -13.953517058703255.mm)
-  circle = ge.add_circle([1308.1213150305373.mm,-164.8459323108263.mm,1129.374296134639.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.64007713611636.mm, -9.689119718912622.mm, -14.63366547451983.mm)
+  circle = ge.add_circle([1307.684582405294.mm,-162.48509693175313.mm,1153.9524129371036.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50507,8 +50535,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2.85877016803488.mm, -22.272607071134843.mm, -9.177181852895046.mm)
-  circle = ge.add_circle([1323.4414235754878.mm,-177.45766871955837.mm,1115.4207790759358.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.866833256568043.mm, -21.16810983647008.mm, -10.119622855336956.mm)
+  circle = ge.add_circle([1324.3246595414103.mm,-172.17421665066576.mm,1139.3187474625838.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50521,8 +50549,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-12.971139101797917.mm, -19.78977905210604.mm, -5.3456949829337645.mm)
-  circle = ge.add_circle([1326.3001937435226.mm,-199.7302757906932.mm,1106.2435972230408.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.979385544096658.mm, -21.201842690462456.mm, -5.984070849734508.mm)
+  circle = ge.add_circle([1330.1914927979783.mm,-193.34232648713584.mm,1129.1991246072469.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50535,8 +50563,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.855325716655216.mm, -6.624144426511975.mm, -4.713497255990205.mm)
-  circle = ge.add_circle([1313.3290546417247.mm,-219.52005484279925.mm,1100.897902240107.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.630231308715793.mm, -9.770588159003125.mm, -4.6458663134089875.mm)
+  circle = ge.add_circle([1320.2121072538816.mm,-214.5441691775983.mm,1123.2150537575124.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50549,8 +50577,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.97794992384911.mm, 9.477658239575618.mm, -7.65257281352001.mm)
-  circle = ge.add_circle([1290.4737289250695.mm,-226.14419926931123.mm,1096.1844049841168.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.27120185856461.mm, 6.439589030593709.mm, -6.887716177051743.mm)
+  circle = ge.add_circle([1298.5818759451658.mm,-224.31475733660142.mm,1118.5691874441034.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50563,8 +50591,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-8.443656667063124.mm, 19.041353754447215.mm, -12.433574251464506.mm)
-  circle = ge.add_circle([1269.4957790012204.mm,-216.6665410297356.mm,1088.5318321705968.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-11.527397783188007.mm, 17.94746408076861.mm, -11.398377369659329.mm)
+  circle = ge.add_circle([1276.3106740866012.mm,-217.8751683060077.mm,1111.6814712670516.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50577,8 +50605,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(7.372395749315729.mm, 16.43967882115294.mm, -16.243367894397124.mm)
-  circle = ge.add_circle([1261.0521223341573.mm,-197.6251872752884.mm,1076.0982579191323.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.317201388494368.mm, 18.022157432539245.mm, -15.539594167526502.mm)
+  circle = ge.add_circle([1264.7832763034132.mm,-199.9277042252391.mm,1100.2830938973923.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50591,8 +50619,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(17.16406712802518.mm, 3.2034548507211014.mm, -16.8402771955798.mm)
-  circle = ge.add_circle([1268.424518083473.mm,-181.18550845413546.mm,1059.8548900247351.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(15.995195009538293.mm, 6.6199814413643026.mm, -16.889196415647348.mm)
+  circle = ge.add_circle([1269.1004776919076.mm,-181.90554679269985.mm,1084.7434997298658.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50605,8 +50633,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.169953534828892.mm, -12.879144932052299.mm, -13.873081667396036.mm)
-  circle = ge.add_circle([1285.5885852114982.mm,-177.98205360341436.mm,1043.0146128291553.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.676202300600607.mm, -9.590007010204943.mm, -14.657810737526688.mm)
+  circle = ge.add_circle([1285.095672701446.mm,-175.28556535133555.mm,1067.8543033142184.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50619,8 +50647,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2.563388250309117.mm, -22.345144281592383.mm, -9.087674460109383.mm)
-  circle = ge.add_circle([1300.758538746327.mm,-190.86119853546666.mm,1029.1415311617593.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(5.961906627641611.mm, -21.12669351622563.mm, -10.150559771669577.mm)
+  circle = ge.add_circle([1301.7718750020465.mm,-184.8755723615405.mm,1053.1964925766918.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50633,8 +50661,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-13.237945674472485.mm, -19.624764169928937.mm, -5.299781596850721.mm)
-  circle = ge.add_circle([1303.3219269966362.mm,-213.20634281705904.mm,1020.0538567016499.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.880971748684487.mm, -21.242346888864432.mm, -6.003704622842406.mm)
+  circle = ge.add_circle([1307.733781629688.mm,-206.00226587776612.mm,1043.0459328050222.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50647,8 +50675,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-22.93656837940125.mm, -6.318671947074648.mm, -4.738193240277724.mm)
-  circle = ge.add_circle([1290.0839813221637.mm,-232.83110698698798.mm,1014.7540751047992.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.586038663189356.mm, -9.869322239865994.mm, -4.642713280018597.mm)
+  circle = ge.add_circle([1297.8528098810036.mm,-227.24461276663055.mm,1037.0422281821798.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50661,8 +50689,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.825825622553793.mm, 9.743848793084396.mm, -7.733347090129087.mm)
-  circle = ge.add_circle([1267.1474129427625.mm,-239.14977893406262.mm,1010.0158818645215.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.307078347293555.mm, 6.340373974323086.mm, -6.863620525416081.mm)
+  circle = ge.add_circle([1276.2667712178143.mm,-237.11393500649655.mm,1032.3995149021612.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50675,8 +50703,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-8.147675099722164.mm, 19.111636281853123.mm, -12.52289936394368.mm)
-  circle = ge.add_circle([1246.3215873202087.mm,-229.40593014097823.mm,1002.2825347743924.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-11.622359486589176.mm, 17.905798275459915.mm, -11.367432486120947.mm)
+  circle = ge.add_circle([1253.9596928705207.mm,-230.77356103217346.mm,1025.535894376745.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50689,8 +50717,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(7.638079497163062.mm, 16.27269919462117.mm, -16.288685088008606.mm)
-  circle = ge.add_circle([1238.1739122204865.mm,-210.2942938591251.mm,989.7596354104487.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.218696938993844.mm, 18.06241093052958.mm, -15.519899508601611.mm)
+  circle = ge.add_circle([1242.3373333839315.mm,-212.86776275671355.mm,1014.1684618906241.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50703,8 +50731,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(17.243125159851843.mm, 2.89746361809307.mm, -16.814921905362098.mm)
-  circle = ge.add_circle([1245.8119917176496.mm,-194.02159466450394.mm,973.4709503224401.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(15.950762411135429.mm, 6.718610239471559.mm, -16.89227125631885.mm)
+  circle = ge.add_circle([1246.5560303229254.mm,-194.80535182618397.mm,998.6485623820225.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50717,8 +50745,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.015868229896569.mm, -13.144103014032112.mm, -13.791972905963462.mm)
-  circle = ge.add_circle([1263.0551168775014.mm,-191.12413104641087.mm,956.656028417078.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.711829884506642.mm, -9.490690239850892.mm, -14.681856623942167.mm)
+  circle = ge.add_circle([1262.5067927340608.mm,-188.0867415867124.mm,981.7562911257037.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50731,8 +50759,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(2.266823158046691.mm, -22.413168297044564.mm, -8.998536494253699.mm)
-  circle = ge.add_circle([1278.070985107398.mm,-204.26823406044298.mm,942.8640555111145.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(6.0567560570480055.mm, -21.084778491885032.mm, -10.181512424833159.mm)
+  circle = ge.add_circle([1279.2186226185675.mm,-197.5774318265633.mm,967.0744345017615.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50745,8 +50773,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-13.502492123384627.mm, -19.45582889587729.mm, -5.255063064533033.mm)
-  circle = ge.add_circle([1280.3378082654447.mm,-226.68140235748754.mm,933.8655190168608.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.782377274037572.mm, -21.28234942942828.mm, -6.023460041836188.mm)
+  circle = ge.add_circle([1285.2753786756155.mm,-218.66221031844833.mm,956.8929220769284.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50759,8 +50787,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-23.01343747332976.mm, -6.012178631263652.mm, -4.764206455102112.mm)
-  circle = ge.add_circle([1266.83531614206.mm,-246.13723125336483.mm,928.6104559523278.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.54136639560852.mm, -9.967845125481233.mm, -4.639716651698791.mm)
+  circle = ge.add_circle([1275.4930014015779.mm,-239.9445597478766.mm,950.8694620350922.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50773,8 +50801,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.669787708352032.mm, 10.007559968960038.mm, -7.814785917684617.mm)
-  circle = ge.add_circle([1243.8218786687303.mm,-252.14940988462848.mm,923.8462494972257.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.342456798897956.mm, 6.240956124014588.mm, -6.8396245577513355.mm)
+  circle = ge.add_circle([1253.9516350059694.mm,-249.91240487335784.mm,946.2297453833934.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50787,8 +50815,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-7.850542639022706.mm, 19.177398079491383.mm, -12.611845327054198.mm)
-  circle = ge.add_circle([1223.1520909603782.mm,-242.14184991566844.mm,916.0314635795411.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-11.717096036395105.mm, 17.863634299711066.mm, -11.336472260961727.mm)
+  circle = ge.add_circle([1231.6091782070714.mm,-243.67144874934326.mm,939.390120825642.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50801,8 +50829,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(7.901474234990701.mm, 16.101817476425225.mm, -16.332802522824636.mm)
-  circle = ge.add_circle([1215.3015483213555.mm,-222.96445183617706.mm,903.4196182524869.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.120013068717753.mm, 18.10216225825431.mm, -15.500083455675963.mm)
+  circle = ge.add_circle([1219.8920821706763.mm,-225.8078144496322.mm,928.0536485646803.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50815,8 +50843,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(17.317801128152723.mm, 2.5904849164599.mm, -16.788252183097597.mm)
-  circle = ge.add_circle([1223.2030225563462.mm,-206.86263435975184.mm,887.0868157296622.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(15.905850759605073.mm, 6.81702658353467.mm, -16.89518965315392.mm)
+  circle = ge.add_circle([1224.012095239394.mm,-207.70565219137788.mm,912.5535651090044.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50829,8 +50857,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(14.85788620716994.mm, -13.406552917158479.mm, -13.71020844896725.mm)
-  circle = ge.add_circle([1240.520823684499.mm,-204.27214944329194.mm,870.2985635465647.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.746958977920485.mm, -9.3911719443619.mm, -14.705802519643612.mm)
+  circle = ge.add_circle([1239.9179459989991.mm,-200.8886256078432.mm,895.6583754558504.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50843,8 +50871,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.9691395163033576.mm, -22.476664294251577.mm, -8.909787379549698.mm)
-  circle = ge.add_circle([1255.378709891669.mm,-217.67870236045042.mm,856.5883550975974.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(6.15137912236969.mm, -21.042365833941716.mm, -10.212480024309684.mm)
+  circle = ge.add_circle([1256.6649049769196.mm,-210.2797975522051.mm,880.9525729362068.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50857,8 +50885,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-13.764720800721761.mm, -19.28301004295247.mm, -5.2115491306796.mm)
-  circle = ge.add_circle([1257.3478494079723.mm,-240.155366654702.mm,847.6785677180477.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-9.683604638220459.mm, -21.32184929050473.mm, -6.043336602169916.mm)
+  circle = ge.add_circle([1262.8162840992893.mm,-231.32216338614683.mm,870.7400929118971.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50871,8 +50899,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-23.085916247752266.mm, -5.704731267612146.mm, -4.791531231875069.mm)
-  circle = ge.add_circle([1243.5831286072505.mm,-259.43837669765446.mm,842.4670185873681.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-21.496215646885275.mm, -10.066154299612691.mm, -4.636876504982638.mm)
+  circle = ge.add_circle([1253.1326794610688.mm,-252.64401267665156.mm,864.6967563097272.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50885,8 +50913,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.509870183758267.mm, 10.268734301405289.mm, -7.896871549699085.mm)
-  circle = ge.add_circle([1220.4972123594982.mm,-265.1431079652666.mm,837.675487355493.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-22.37733630982507.mm, 6.141338018760791.mm, -6.815728886905276.mm)
+  circle = ge.add_circle([1231.6364638141836.mm,-262.71016697626425.mm,860.0598798047446.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50899,8 +50927,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-7.5523240336560775.mm, 19.23862481708639.mm, -12.70039275841441.mm)
-  circle = ge.add_circle([1199.98734217574.mm,-254.87437366386132.mm,829.778615805794.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(-11.811605013072722.mm, 17.820973230373966.mm, -11.305497484893635.mm)
+  circle = ge.add_circle([1209.2591275043585.mm,-256.56882895750346.mm,853.2441509178393.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50913,8 +50941,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.162522565957715.mm, 15.927070903720391.mm, -16.375710585132197.mm)
-  circle = ge.add_circle([1192.435018142084.mm,-235.63574884677493.mm,817.0782230473795.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(4.021152298013703.mm, 18.141410400479373.mm, -15.480146514843796.mm)
+  circle = ge.add_circle([1197.4475224912858.mm,-238.7478557271295.mm,841.9386534329457.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50927,8 +50955,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(17.388078760146072.mm, 2.282585640125916.mm, -16.760273840434934.mm)
-  circle = ge.add_circle([1200.5975407080416.mm,-219.70867794305454.mm,800.7025124622473.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(15.860461201973294.mm, 6.915227960039402.mm, -16.897951531617082.mm)
+  circle = ge.add_circle([1201.4686747892995.mm,-220.60644532665012.mm,826.4585069181019.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50941,8 +50969,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(14.69604189280949.mm, -13.666437450481851.mm, -13.627806113854149.mm)
-  circle = ge.add_circle([1217.9856194681877.mm,-217.42609230292862.mm,783.9422386218124.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(16.781588683658583.mm, -9.291454665396373.mm, -14.729647813062797.mm)
+  circle = ge.add_circle([1217.3291359912728.mm,-213.69121736661072.mm,809.5605553864848.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50955,8 +50983,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.6704021938789992.mm, -22.535618436680352.mm, -8.821446455483056.mm)
-  circle = ge.add_circle([1232.6816613609972.mm,-231.09252975341047.mm,770.3144325079583.mm], vec, 5.mm, 6)
+  vec = Geom::Vector3d.new(6.245773406971011.mm, -20.99945662559759.mm, -10.243461779198242.mm)
+  circle = ge.add_circle([1234.1107246749314.mm,-222.9826720320071.mm,794.830907573422.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50969,8 +50997,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-26.674063554876284.mm, 5.828148190090815.mm, 6.207013947524729.mm)
-  circle = ge.add_circle([1234.3520635548762.mm,-253.62814819009083.mm,761.4929860524752.mm], vec, 5.mm, 8)
+  vec = Geom::Vector3d.new(-9.584656363846989.mm, -21.360845463283113.mm, -6.063333796204688.mm)
+  circle = ge.add_circle([1240.3564980819024.mm,-243.98212865760468.mm,784.5874457942238.mm], vec, 5.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -50983,8 +51011,36 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-33.677999999999884.mm, -19.19999999999999.mm, -126.69999999999993.mm)
-  circle = ge.add_circle([1207.6779999999999.mm,-247.8.mm,767.6999999999999.mm], vec, 5.mm, 10)
+  vec = Geom::Vector3d.new(-21.450587570153175.mm, -10.164247251483118.mm, -4.634192912406206.mm)
+  circle = ge.add_circle([1230.7718417180554.mm,-265.3429741208878.mm,778.5241119980191.mm], vec, 5.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-1.6432541479023257.mm, 27.707221372370896.mm, -3.689119085613015.mm)
+  circle = ge.add_circle([1209.3212541479022.mm,-275.5072213723709.mm,773.8899190856129.mm], vec, 5.mm, 8)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cct E cooler cord (panel GFCI -> cooler, flexible)"] || model.materials.add("Cct E cooler cord (panel GFCI -> cooler, flexible)")
+  mat.color = Sketchup::Color.new(232, 136, 74)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct E cooler cord (panel GFCI -> cooler, flexible)
+  grp = ents.add_group
+  grp.name = "Cct E cooler cord (panel GFCI -> cooler, flexible)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-33.677999999999884.mm, -19.19999999999999.mm, -129.20079999999984.mm)
+  circle = ge.add_circle([1207.6779999999999.mm,-247.8.mm,770.2007999999998.mm], vec, 5.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

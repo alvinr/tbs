@@ -42,6 +42,11 @@ TAGS = ["Context", "Solar Array", "Power Core", "Battery", "External Panel",
 
 WALL = ov.WALL_T
 
+# WR duplex cooler-outlet vertical position on the panel face (fraction of
+# PWR_PANEL_H). Single-sourced: the outlet body, its in-use cover, and the two
+# cooler-cord connection points all key off this so they move together.
+_OUTLET_VF = 0.4292     # raised 25mm from 0.325 (0.325 + 25/240)
+
 # ── Circuit colors (one per branch A–G) ──────────────────────────────────────
 CCT = {
     "A": ("#C0392B", "exhaust fan"),
@@ -472,9 +477,9 @@ def external_panel(include_estop=True, include_disconnect=True):
                          pz(0.878) - 28, 72, 12, 57, color="#D6E6F5", alpha=0.5))
     # Cooler AC feed — Leviton W5320 WR duplex under a 5981-UCL bubble in-use cover
     p.append(ov.ruby_box("WR duplex outlet (Cct E cooler)", px(0.767) - 23, face_y - 22,
-                         pz(0.325) - 30, 46, 22, 60, color="#FFF0CC"))
+                         pz(_OUTLET_VF) - 30, 46, 22, 60, color="#FFF0CC"))
     p.append(ov.ruby_box("WR duplex in-use cover", px(0.767) - 29, face_y - 36,
-                         pz(0.325) - 36, 58, 14, 72, color="#D6E6F5", alpha=0.5))
+                         pz(_OUTLET_VF) - 36, 58, 14, 72, color="#D6E6F5", alpha=0.5))
     # E-stop on the exterior face.
     if include_estop:
         p.append(external_estop())
@@ -492,7 +497,7 @@ def external_panel(include_estop=True, include_disconnect=True):
     p.append(ov.ruby_box("Evap Cooler (Hessaire MC18M, external)", cx, cyd, 0,
                          cw, cd, ch, color=ov.C_EVAP))
     gfci_x = PWR_PANEL_X + 0.767 * PWR_PANEL_W
-    gfci_z = PWR_PANEL_Z + 0.325 * PWR_PANEL_H
+    gfci_z = PWR_PANEL_Z + _OUTLET_VF * PWR_PANEL_H
     inx = cx + cw - 80                    # cooler-top inlet
     # SOFT flexible cord — a curly coil draping DIAGONALLY from the GFCI down to the cooler
     # inlet (matches the overview's evap_cooler()); angles clear of the cooler body, with the
@@ -510,7 +515,7 @@ def inverter():
     p = [ov.ruby_box("Cct E Inverter (12->120V AC)", INVERTER_X, 0, INVERTER_Z,
                      INVERTER_W, INVERTER_D, INVERTER_H, color="#404848")]
     gfci_x = PWR_PANEL_X + 0.767 * PWR_PANEL_W
-    gfci_z = PWR_PANEL_Z + 0.325 * PWR_PANEL_H
+    gfci_z = PWR_PANEL_Z + _OUTLET_VF * PWR_PANEL_H
     p.append(ov.ruby_pipe_run("Cct E AC line (inverter -> panel GFCI)",
                               _dedup([(INVERTER_X + INVERTER_W / 2, 30, INVERTER_Z + INVERTER_H),
                                       (INVERTER_X + INVERTER_W / 2, 30, gfci_z),

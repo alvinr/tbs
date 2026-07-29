@@ -1712,7 +1712,7 @@ def draw_sheet6():
     # AC outlet position (Circuit E — evap cooler, 120V) — repurposed DT_* anchors
     DT_R     = 10             # connector body radius (mm)
     DT_X     = 230            # center X from panel left edge
-    DT_Y     = 65             # center Y — aligns with PV1 (65mm)
+    DT_Y     = 90             # center Y — raised 25mm (clears the NEMA inlet above)
     DT_DEPTH = 30             # body protrusion behind plate (mm)
     C_DT     = "#E8884A"      # orange — matches pump/cooler circuit color
 
@@ -1907,8 +1907,26 @@ def draw_sheet6():
                   color=lead_col, lw=1.6, ls=lead_ls, zorder=5)
 
     q = cut_h_draw / 4
-    mc4_cy   = cut_bot + q * 1        # MC4 group (bottom) -> MPPT (uncovered bulkhead)
-    face_conn(mc4_cy, 9 * mm_v, "#C0E8C0", C_MC4, C_MC4)
+    # MC4 group (bottom): all 3 PV pairs penetrate the face, each an uncovered
+    # bulkhead; their conductors converge on the interior PV busbar, which then
+    # makes the single combined feed to the MPPT (3-in -> busbar -> 1-out).
+    mc4_cy   = cut_bot + q * 1
+    busbar_x = wall_int + 30          # PV busbar node, just inside the interior
+    mc4_dz   = 11 * mm_v              # vertical spacing of the 3 pair stubs
+    for k in (-1, 0, 1):
+        scy = mc4_cy + k * mc4_dz
+        draw_rect(ax_b, face_x0 - conn_out * 0.7, scy - 3 * mm_v, conn_out * 0.7, 6 * mm_v,
+                  fc="#C0E8C0", color=C_MC4, lw=0.9, zorder=5)
+        draw_rect(ax_b, face_x1, scy - 2.5 * mm_v, conn_in, 5 * mm_v,
+                  fc="#C0E8C0", color=C_MC4, lw=0.7, zorder=4.5)
+        ax_b.plot([face_x1 + conn_in, busbar_x], [scy, mc4_cy],
+                  color=C_MC4, lw=1.3, zorder=5)      # converge on the busbar
+    ax_b.add_patch(mpatches.Circle((busbar_x, mc4_cy), 4 * mm_v,
+                   fc=C_MC4, ec=C_OUT, lw=0.8, zorder=6))
+    ax_b.text(busbar_x, mc4_cy - mc4_dz - 4 * mm_v, "PV busbar", color=C_MC4,
+              fontsize=5.5, ha="center", va="top", **FONT, zorder=7)
+    ax_b.plot([busbar_x, wall_int + int_pad - 42], [mc4_cy, mc4_cy],
+              color=C_MC4, lw=1.8, zorder=5)           # single combined feed -> MPPT
     inlet_cy = cut_bot + q * 2        # shore inlet -> charger (weatherproof cover)
     face_conn(inlet_cy, 11 * mm_v, C_NEMA, C_AC, C_AC, cover=True)
     outlet_cy = cut_bot + q * 3       # cooler AC outlet <- inverter (CCT E, in-use cover)

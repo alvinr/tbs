@@ -266,7 +266,7 @@ or Black-waste (pH drift / discolored).
 | Filter inter-stage | Sch 40 | 1" | 33 | PVC Sch 40 | Matches Big Blue 1" NPT ports |
 | Filter outlet → DV-01 | Sch 40 | 1" | 33 | PVC Sch 40 | Gravity flow, lower restriction |
 | IBC fill/drain (internal) | Sch 40 | 1" | 33 | PVC Sch 40 | IBC valve to corridor |
-| IBC fill/drain (external bulkhead) | Sch 40 | 2" | — | Steel/brass | Bulkhead unions with camlock |
+| IBC fill/drain (external bulkhead) | Sch 40 | 2" | — | PP (EPDM gaskets) | Bulkhead unions with camlock |
 | Spray bar flex hose | — | 1/2" | — | Reinforced braided PVC | ~4m coiled, BV-05 to beam center feed |
 
 All pump-driven internal runs use 1/2" pipe, matching the Shurflo 2088 pump

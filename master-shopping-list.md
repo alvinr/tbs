@@ -138,7 +138,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Anderson Powerpole 30A connectors, 50 pairs (unassembled)](https://powerwerx.com/anderson-powerpole-connectors-30amp-unassembled) | 1 kit | Powerwerx | electrical | $54 |
 | Anderson Powerpole connectors 30A | 5 pair | Powerwerx | water | $10 |
 | [Battery main disconnect — Blue Sea 6006 m-Series (300A)](https://offgridstores.com/products/blue-sea-6006-m-series-mini-battery-switch-single-circuit-on-off-red) (6006) | 1 ea | Off Grid Stores | electrical | $36 |
-| Battery terminal covers (pair), insulating boots | 1 pair | Waytek Wire | electrical | $10 |
+| [Battery terminal covers (pair), insulating boots](https://www.waytekwire.com/product/23501-straight-in-battery) (23501) | 1 pair | Waytek Wire | electrical | $10 |
 | [Blue Sea 5026 fuse block, 12-circuit ST-blade](https://offgridstores.com/products/blue-sea-5026-st-blade-fuse-block-w-cover-12-circuit-w-negative-bus) (5026) | 1 ea | Off Grid Stores | electrical | $59 |
 | [Brady M210 wire label printer kit](https://www.digikey.com/en/products/detail/brady-corporation/M210-KIT/16643735) (M210-KIT) | 1 ea | Amazon | electrical | $194 |
 | [Cable grommets / glands — steel-shell penetrations](https://www.amazon.com/YUFANNET-Assortment-Grommets-Automotive-Electrical/dp/B09K5GNFHF) (B09K5GNFHF) | 1 lot | Amazon | electrical | $28 |
@@ -153,14 +153,14 @@ indicative low–high estimates — get quotes before ordering.
 | IP65 enclosure ~200×220×140mm (fuse block + busbars, on the plywood) | 1 ea | Polycase | electrical | $60 |
 | [Master pump switch (Circuit C) — IP67 sealed rocker/disconnect 12V 16A](https://www.amazon.com/dp/B0GF2ZBD1W) (B0GF2ZBD1W) | 1 ea | Amazon | electrical | $8 |
 | [MC4 bulkhead passthrough pairs, IP67 panel-mount](https://powerwerx.com/mc4-bulkhead-passthrough-solar-input) (MC4-Bulkhead) | 3 pair | Powerwerx | electrical | $9 |
-| MPPT charge-line fuse — 60A ANL/MIDI + holder | 1 ea | Blue Sea | electrical | $15 |
+| [MPPT charge-line fuse — 60A ANL + holder](https://www.bluesea.com/products/5005) (5005) | 1 ea | Blue Sea | electrical | $15 |
 | [NEMA 5-15R weatherproof inlet (flush power panel)](https://www.amazon.com/dp/B0CLDC8X5J) (B0CLDC8X5J) | 1 ea | Amazon | electrical | $10 |
 | [Pull-cord ceiling switch, 12V 6A SPST](https://americandoorsupply.com/products/ceiling-pull-switch-spst-nema-4-w-rotg-pivoting-cam?variant=45465874595971) | 2 ea | americandoorsupply | electrical | $244 |
-| Pump distribution block — 12V DC + / − bus, 6-way | 1 ea | Blue Sea | electrical | $15 |
+| [Pump distribution block — 12V DC common busbar, 10-gang](https://www.bluesea.com/products/2300) (2300) | 1 ea | Blue Sea | electrical | $15 |
 | PV cable 10 AWG + MC4 connectors | 1 lot | Signature Solar | electrical | $30 |
 | [Remote battery switch — Blue Sea ML-RBS 500A magnetic-latch (E-stop trip)](https://www.invertersupply.com/index.php?main_page=product_info&products_id=5288) (7700) | 1 ea | Inverter Supply | electrical | $264 |
 | Sealed wet-zone connectors — Deutsch DT / adhesive heat-shrink | 1 lot | Waytek Wire | electrical | $25 |
-| Shore-charger output fuse — 20A inline | 1 ea | Waytek Wire | electrical | $5 |
+| [Shore-charger output fuse — 20A inline (sealed holder + fuse)](https://www.waytekwire.com/product/sealed-ato-atc-fuse-holder-assembly-46047) (46047) | 1 ea | Waytek Wire | electrical | $5 |
 | Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs) | 1 lot | Waytek Wire | electrical | $30 |
 | Wiring kit — 12/14/16/18 AWG tinned, 50ft/color | 1 kit | Waytek Wire | electrical | $80 |
 | **electrical-distribution subtotal** | | | | **$1,643** |

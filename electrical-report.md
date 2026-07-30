@@ -42,7 +42,7 @@ The whole 12V DC system as a traditional symbol-based electrical schematic — e
 | D | Safelight — interior + vestibule | 15W | Loading phase only (~45 min) |
 | E | Evaporative cooler — Hessaire MC18M (120V AC) via 12V→120V inverter | <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus | Continuous during operation |
 | F | Film plane actuators (optional) | 100W peak | Intermittent |
-| G | White LED panels (general lighting) | 60W | Non-operational periods only |
+| G | White LED panels (general lighting) | ~18W | Non-operational periods only |
 | **Total peak (all on)** | | **492W** | Not all simultaneous |
 
 > **Circuit E is the only AC load.** The cooler is a commodity 120V AC swamp cooler driven by a dedicated 12V→120V pure-sine inverter; its <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac --> W AC draw is **<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W on the 12 V battery bus** (÷0.88 inverter efficiency). See [§7.6 AC Isolation & Safety](#ac-safety) for the grounding/GFCI design.
@@ -181,25 +181,25 @@ The solar PV inputs, shore power inlet, and the evaporative cooler's **120V AC o
 TBS-001 requires two mutually exclusive lighting modes:
 
 - **Safelight (Circuit D):** Three red LED strips ceiling-mounted running north–south (across the container width), plus a strip on the inner drum face. Each strip runs from the pinhole wall and is shortened to stay clear of the optical cone. Used during loading and development when photosensitive material is present. 15W, always available.
-- **White light (Circuit G):** General-purpose white/natural LED panels for setup, maintenance, cleaning, and any non-operational work. 60W total. Must be switched off before any photosensitive material is exposed.
+- **White light (Circuit G):** General-purpose white/natural LED panels for setup, maintenance, cleaning, and any non-operational work. ~18W total. Must be switched off before any photosensitive material is exposed.
 
 The two circuits are independently switched — they are **not** interlocked, so the operator is responsible for ensuring Circuit G is off during operational phases. The pull-cord switches are positioned side by side for easy identification.
 
 ### 6.2 White LED Panel Specification
 | Parameter | Specification |
 |-----------|--------------|
-| Type | 12V DC LED flat panel, 4000K neutral white |
+| Type | 12V DC LED task panel, 4000K neutral white (Super Bright LEDs VTL-NW1515) |
 | Quantity | 3 panels |
-| Power per panel | 20W |
-| Total power | 60W |
-| Luminous output | ~1,800 lumens per panel (5,400 lm total) |
-| Size | ~300 × 600mm |
+| Power per panel | ~6W |
+| Total power | ~18W |
+| Luminous output | 412 lumens per panel (1,236 lm total) |
+| Size | 6 × 6 in (~150 × 150mm), flush-mount |
 | Mounting | Ceiling-mounted, centered across container width |
-| Positions | X ≈ 1,000mm, X ≈ 2,900mm, X ≈ 4,424mm (3rd panel rotated 90° at the EP) |
+| Positions | X ≈ 1,000mm, X ≈ 2,900mm, X ≈ 4,424mm (3rd panel at the EP) |
 | Circuit | G (10A fuse, 16 AWG) |
-| Approximate cost | ~$25 each, ~$75 total |
+| Approximate cost | ~$50 each, ~$150 total |
 
-Three panels at ~1,800 lumens each provide 5,400 lumens total across the ~14 m² floor area — approximately 385 lux, comparable to a well-lit workshop. The panels are wired in parallel from Circuit G via the ceiling cable trunking.
+Three panels at 412 lumens each provide ~1,236 lumens total across the ~14 m² floor area — approximately **88 lux**: adequate for orientation and movement, but well below a bright-workshop level (~385 lux). These panels are **12V-native** (no inverter, unlike the larger AC-fed flat panels), which is why they were chosen; if brighter general lighting is wanted, add more units (each ~$50, ~6W). The panels are wired in parallel from Circuit G via the ceiling cable trunking.
 
 ### 6.3 Pull-Cord Switches
 Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of the container, accessible from the near walkway. Each switch controls one lighting circuit.
@@ -418,12 +418,12 @@ All US/SoCal sources. Prices approximate as of 2026.
 | Shade canopy | 80% shade cloth, 20 × 10ft | Amazon / Farm supply | ~$80 |
 | Canopy frame | 1.5" EMT conduit + fittings | Home Depot | ~$120 |
 | Ventilation fans × 2 | 150×150×50mm 12V DC axial panel fan, ~150–200 CFM (dimension-audit correction; not the AC Infinity S6 inline) | Amazon | ~$50 |
-| 12V LED flat panel, 300×600mm, 4000K | 20W, neutral white, ceiling-mount | Amazon / superbrightleds.com | ~$75 (×3) |
+| [12V LED task panel, 6×6in, 4000K (VTL-NW1515)](https://www.superbrightleds.com/vehicle-lights/interior-and-utility-led-vehicle-lights/vehicle-led-dome-lights/square-led-panel-light-vehicle-and-trailer-12v-led-task-light-6in-x-6in-412-lumens-flush-mount+color-natural~4000k) | 412 lm, ~6W, flush-mount, true 12V (no inverter) | superbrightleds.com | ~$150 (×3) |
 | Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting circuits D & G | Amazon / Lowe's | ~$16 (×2) |
-| **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$3,056<!-- END costing:elec-system-total -->** |
+| **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$3,131<!-- END costing:elec-system-total -->** |
 | **Shade canopy total** | | | **~<!-- BEGIN costing:elec-canopy-total -->$286<!-- END costing:elec-canopy-total -->** |
 | **Cooling (cooler + inverter + DC protection + AC outlet + cord)** | | | **~<!-- BEGIN costing:elec-cooling-total -->$262<!-- END costing:elec-cooling-total -->** |
-| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$3,604<!-- END costing:elec-grand-total -->** |
+| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$3,679<!-- END costing:elec-grand-total -->** |
 
 *Electrical system total is the **standard 1-pack build** and matches the consolidated [Master Shopping List §6](master-shopping-list.md) (Solar & battery $1,335 + Distribution & wiring $989 = $2,324, the authoritative electrical BOM). The optional 2nd battery pack adds +$375 (its own MRBF fuse). It includes ~$410 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (interior **+** exterior emergency cut-offs + battery contactor, disconnect switch, terminal-mount fuse, **PV array disconnect, MPPT charge-line + shore-charger fuses**, sealed connectors, bonding, grommets), plus ~$25 of Circuit-C pump-control hardware (1 master pump switch + distribution block).*
 

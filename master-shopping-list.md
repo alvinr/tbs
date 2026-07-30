@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,173 | $6,711 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,758 | $8,025 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,402 | $7,720 |
 | 6. Electrical — power, circuits, wiring | $3,009 | $3,064 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$28,617** | **~$36,933** |
+| **TOTAL (base build + 50-print run)** | **~$28,261** | **~$36,628** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -306,12 +306,12 @@ indicative low–high estimates — get quotes before ordering.
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | 1 ea | US Plastic Corp | water | $44 |
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | 2 ea | US Plastic Corp | water | $89 |
 | [Banjo V100FP ball valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30653) (30653) | 6 ea | US Plastic Corp | water | $297 |
-| [Bulkhead fitting 2" NPT (304 SS)](https://www.mcmaster.com/4464K115) (4464K115) | 3 ea | McMaster-Carr | water | $410 |
+| Bulkhead fitting 2" NPT (polypropylene) | 3 ea | US Plastic Corp | water | $54–$105 |
 | [pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | 1 ea | US Plastic Corp | water | $19 |
 | [pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | 1 ea | US Plastic Corp | water | $19 |
 | [S60×6 female buttress → 2" MNPT IBC tote adapter](https://www.amazon.com/Granatan-Adapter-Buttress-Fittings-Connector/dp/B095SCHBC6) (B095SCHBC6) | 8 ea | Amazon | water | $80 |
 | [½" PVC Sch-40 pipe (tap relocation)](https://www.homedepot.com/p/319692959) (30-05010HD) | 1 stick | Home Depot | shelf | $5 |
-| **plumbing-fittings subtotal** | | | | **$1,722** |
+| **plumbing-fittings subtotal** | | | | **$1,366–$1,417** |
 
 ### seals-gaskets
 
@@ -430,8 +430,8 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 48 | aluminum, bearings-motion, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $3,833–$3,917 |
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,185–$3,567 |
+| McMaster-Carr | 47 | aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $3,423–$3,507 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,877–$2,451 |
 | Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,004–$2,070 |
@@ -439,8 +439,8 @@ indicative low–high estimates — get quotes before ordering.
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
 | Online Metals | 5 | aluminum, stainless-sheet, steel-structural | $982–$1,402 |
+| US Plastic Corp | 16 | plastics-sheet, plumbing-fittings | $1,227–$1,278 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
-| US Plastic Corp | 15 | plastics-sheet, plumbing-fittings | $1,173 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | American Grating | 1 | plastics-sheet | $830–$1,050 |
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |

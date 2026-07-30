@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $6,173 | $6,711 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,756 | $8,029 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,758 | $8,025 |
 | 6. Electrical — power, circuits, wiring | $3,009 | $3,064 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$28,615** | **~$36,937** |
+| **TOTAL (base build + 50-print run)** | **~$28,617** | **~$36,933** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -205,7 +205,7 @@ indicative low–high estimates — get quotes before ordering.
 | [M6×1.0 × 20 hex bolt, Grade 8.8 zinc](https://www.mcmaster.com/91280A330/) (91280A330) | 20 ea | McMaster-Carr | electrical, spray | $4 |
 | [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — right-rail end fixing (ICP-14)](https://www.mcmaster.com/91280A534/) (91280A534) | 8 ea | McMaster-Carr | film | $3 |
 | [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — shelf cleat + stay mount](https://www.mcmaster.com/91280A534/) (91280A534) | 12 ea | McMaster-Carr | shelf | $4 |
-| [M12×40 hex bolt, Grade 8.8](https://www.fmwfasteners.com/products/m12-1-75-x-40-hex-cap-screw-8-8-din-933-zinc-plated-fully-threaded) (1634027) | 8 ea | FMW Fasteners | ibc-frame | $6–$12 |
+| [M12×40 hex bolt, Grade 8.8](https://www.mcmaster.com/91280A720/) (91280A720) | 8 ea | McMaster-Carr | ibc-frame | $7 |
 | [M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A728/) (91280A728) | 103 ea | McMaster-Carr | film, ibc-frame, walkway | $164 |
 | [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | 24 ea | McMaster-Carr | walkway | $42 |
 | [M6 flat washer, SS](https://www.mcmaster.com/91455a120/) (91455A120) | 8 ea | McMaster-Carr | electrical | $0 |
@@ -253,7 +253,7 @@ indicative low–high estimates — get quotes before ordering.
 | Nylon zip ties, 200mm | 6 ea | Amazon | spray | $1 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,619–$2,035** |
+| **fasteners-hardware subtotal** | | | | **$1,621–$2,031** |
 
 ### plastics-sheet
 
@@ -430,7 +430,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
-| McMaster-Carr | 46 | aluminum, bearings-motion, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $3,825–$3,909 |
+| McMaster-Carr | 47 | aluminum, bearings-motion, fasteners-hardware, plumbing-fittings, seals-gaskets, steel-structural | $3,832–$3,916 |
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,185–$3,567 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,877–$2,451 |
@@ -485,7 +485,6 @@ indicative low–high estimates — get quotes before ordering.
 | Wurth Baer Supply | 1 | fasteners-hardware | $24 |
 | Local machine shop | 1 | aluminum | $12–$18 |
 | misterworker | 1 | plumbing-fittings | $14 |
-| FMW Fasteners | 1 | fasteners-hardware | $6–$12 |
 | Bridge Fasteners | 1 | fasteners-hardware | $7–$11 |
 | Steel offcut | 1 | steel-structural | $5 |
 | Lowe's (Hillman) | 1 | fasteners-hardware | $2–$3 |

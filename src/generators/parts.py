@@ -465,8 +465,9 @@ PARTS: list[Part] = [
     Part("solar-mount-frame", "Solar panel adjustable tilt mount set (per panel)", "electrical-power",
          "electrical", 3, "ea", 35.99, 35.99, "Amazon", "Renogy", part_no="RNG-MTS-TMB-G1-US",
          url="https://www.amazon.com/Renogy-Adjustable-Solar-Panel-Brackets/dp/B07CSKFWK7", spec="One adjustable tilt-bracket set per 200W panel (4 fixed + 2 tilt L-brackets, rated to 220W) — 3 sets for the 3-panel array."),
-    Part("pv-cable-10awg", "PV cable 10 AWG + MC4 connectors", "electrical-distribution",
-         "electrical", 1, "lot", 30, 30, "Signature Solar"),
+    Part("pv-cable-10awg", "PV cable 10 AWG + MC4 connectors (11 ft extension pair)", "electrical-distribution",
+         "electrical", 1, "lot", 30, 30, "Signature Solar", part_no="1534034", url="https://signaturesolar.com/11ft-10awg-pv-wire-extension-black-red/",
+         spec="Signature Solar 1534034 — 11 ft 10 AWG PV wire extension (black + red), male/female MC4 both ends, 30A, outdoor/waterproof (Pacific Coast Wire). Array → MPPT. $30 firm (2026-07-30)."),
     Part("pv-array-disconnect", "PV array disconnect — Blue Sea 6006 DC battery switch (NEC 690.13)",
          "electrical-power", "electrical", 1, "ea", 33.60, 33.60, "Waytek Wire", part_no="6006",
          url="https://www.waytekwire.com/product/blue-sea-systems-6006-m-series-battery-switch",
@@ -552,8 +553,8 @@ PARTS: list[Part] = [
               'inverter, main + PV disconnects); the DC-distribution terminals (fuse block + busbars) '
               'sit in a small IP65 enclosure bolted to it. Add DIN rail + standoffs for the DIN gear. '
               '(Not fire-rated — acceptable for a small 12V DC system; seal/paint before mounting.)'),
-    Part("ip65-enclosure", "IP65 enclosure ~200×220×140mm (fuse block + busbars, on the plywood)", "electrical-distribution",
-         "electrical", 1, "ea", 60, 60, "Polycase", "Amazon",
+    Part("ip65-enclosure", "IP65 enclosure 213×213×133mm (fuse block + busbars, on the plywood)", "electrical-distribution",
+         "electrical", 1, "ea", 46.93, 46.93, "Polycase", "Amazon", part_no="ZH-080804", url="https://www.polycase.com/zh-080804",
          spec='Weatherproof IP65 box bolted to the plywood backboard, sealing the DC-distribution '
               'terminals (Blue Sea 5026 fuse block + the +/- busbars + charge-line fuse) against '
               'splash/dust. Its back panel is the plywood; the disconnect knob and cable glands pass '
@@ -605,10 +606,11 @@ PARTS: list[Part] = [
     Part("wire-label-kit", "Brady M210 wire label printer kit", "electrical-distribution",
          "electrical", 1, "ea", 194, 194, "Amazon", "DigiKey", part_no="M210-KIT",
          url="https://www.digikey.com/en/products/detail/brady-corporation/M210-KIT/16643735"),
-    Part("led-flat-panel", "12V LED flat panel 300×600mm, 20W 4000K", "electrical-distribution",
-         "electrical", 3, "ea", 25, 25, "Super Bright LEDs"),
+    Part("led-flat-panel", "12V LED flat panel 1×2ft (~300×600mm), 4000K", "electrical-distribution",
+         "electrical", 3, "ea", 25, 25, "Super Bright LEDs", part_no="LP-NW6030-40-12V", url="https://www.superbrightleds.com/catalog/product/view/id/133638/",
+         spec="Super Bright LEDs LP-NW6030-40-12V — 12V DC (9–18V) Even-Glow panel, 1ft×2ft, 4000K, 3,000 lm. ⚠ RESEARCH FLAG (2026-07-30): the BARE 12V panel is ~$90 ea (not the $25 est held here) and ~40W, not the 20W spec'd — Super Bright LEDs has no ~20W panel at this size. DECISION PENDING: confirm this 40W/~$90 panel (×3 ≈ $270, +$195 vs current) OR pick a smaller/cheaper light. Do NOT buy the -HVK kit (bundles an AC→12V supply, unwanted on a 12V/solar feed). Price HELD at $25 pending Alvin's call."),
     Part("pullcord-switch", "Pull-cord ceiling switch, 12V 6A SPST", "electrical-distribution",
-         "electrical", 2, "ea", 121.99, 121.99, "americandoorsupply", url="https://americandoorsupply.com/products/ceiling-pull-switch-spst-nema-4-w-rotg-pivoting-cam?variant=45465874595971"),
+         "electrical", 2, "ea", 121.99, 121.99, "americandoorsupply", part_no="CPM-1", url="https://americandoorsupply.com/products/ceiling-pull-switch-spst-nema-4-w-rotg-pivoting-cam"),
     Part("ground-stake", 'Copper-bonded ground rod, 8ft × ⅝" + acorn clamp', "electrical-distribution",
          "electrical", 1, "lot", 26.56, 26.56, "Home Depot", part_no="615880UPC",
          url="https://www.homedepot.com/p/ERICO-5-8-in-x-8-ft-Copper-Ground-Rod-615880UPC/202195738", spec="ERICO 615880UPC 5/8\"×8ft copper-bonded rod ($22.78) + bronze acorn ground-rod clamp GOEC5/8LDB ($3.78)."),

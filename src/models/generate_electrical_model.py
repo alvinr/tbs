@@ -59,20 +59,16 @@ CCT = {
 }
 
 # ── Load fixtures — geometry MATCHES the overview's lighting_wiring() (the plan) ──
-_LED_W, _LED_D = 600, 300
-_LED_YD = ov.C_WID / 2 - _LED_D / 2
-_RLED_X0 = EQPANEL_X - 150 - _LED_D            # IBC-end LED panel — ROTATED 90°
-_RLED_Y0 = ov.C_WID / 2 - _LED_W / 2
-# LED panel footprints (x0, y0, w_x, w_yd): two flat + the rotated IBC-end one.
-LED_PANELS = [(1000, _LED_YD, _LED_W, _LED_D),
-              (2900, _LED_YD, _LED_W, _LED_D),
-              (_RLED_X0, _RLED_Y0, _LED_D, _LED_W)]
+# White LED (Cct G): 3 COB strips — 2 over the tray parallel to the drum-side reds
+# (X≈520/2270), + 1 rotated 90° running the IBC/plumbing corridor length. (x0,y0,w_x,w_yd)
+LED_PANELS = [(600, 100, 40, ov.C_WID - 200),
+              (2350, 100, 40, ov.C_WID - 200),
+              (ov.IBC_COL_X, EQPANEL_YD - 20, ov.C_LEN - ov.IBC_COL_X - 43, 40)]
 SAFE_XS = [500, 2250, 4150]
-# Circuit-drop endpoints (x, yd, z) — conduit lands per the overview (panel-centre X,
-# near-Yd edge); the rotated panel keeps its own Yd so the drop lands on it.
-LED_ENDS = [(1000 + _LED_W / 2, _LED_YD, ov.C_HGT - 40),
-            (2900 + _LED_W / 2, _LED_YD, ov.C_HGT - 40),
-            (_RLED_X0 + _LED_D / 2, _RLED_Y0, ov.C_HGT - 40)]
+# Circuit-drop endpoints (x, yd, z) — conduit lands per the overview.
+LED_ENDS = [(620, 100, ov.C_HGT - 40),
+            (2370, 100, ov.C_HGT - 40),
+            (ov.IBC_COL_X + 60, EQPANEL_YD, ov.C_HGT - 40)]
 SAFE_ENDS = [(sx + 20, 100, ov.C_HGT - 25) for sx in SAFE_XS]
 
 # Fan A on the sealed end wall; Fan B terminates at a fixed WALL BOX (the fan itself is
@@ -231,7 +227,7 @@ def context():
     p.append(ov.ruby_box("Pump zone ghost (Cct C)", EQPANEL_X - 140, EQPANEL_YD, pz_bot,
                          150, EQPANEL_YD_SPAN, PUMP_H_HI - pz_bot,
                          color=CCT["C"][0], alpha=0.14))
-    for x0, y0, wx, wy in LED_PANELS:                   # white LED (rotated IBC-end)
+    for x0, y0, wx, wy in LED_PANELS:                   # white LED strips (2 tray + 1 corridor)
         p.append(ov.ruby_box("White LED ghost (Cct G)", x0, y0, ov.C_HGT - 40,
                              wx, wy, 30, color=CCT["G"][0], alpha=0.16))
     for sx in SAFE_XS:                                  # safelight strips (Cct D)

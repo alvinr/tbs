@@ -1621,12 +1621,13 @@ def light_seal():
 # ── Lighting & wiring (trunking, LEDs, safelights, switches, conduit) ─────────
 
 def lighting_wiring():
-    """Ceiling cable trunking + white LED panels (Cct G) + red safelight strips
+    """Ceiling cable trunking + white LED strips (Cct G) + red safelight strips
     (Cct D) + pull-cord switches + conduit drops.
 
     Trunking runs the pinhole-wall ceiling line (Yd≈0, outside the optical
-    cone); LED panels are centered across the width; safelights span the width
-    in the gaps; pull switches hang from the pinhole wall near the EP.
+    cone); white strips run parallel to the two cargo-door-side safelights +
+    over the plumbing panel; safelights span the width; pull switches hang from
+    the pinhole wall near the EP.
     """
     parts = []
     cz = C_HGT                                 # ceiling
@@ -1635,21 +1636,17 @@ def lighting_wiring():
     parts.append(ruby_box("Cable Trunking (40x25 PVC)",
                           0, 0, cz - 25, C_LEN, 40, 25, color=C_TRUNK))
 
-    # White LED panels (Cct G) — 3× 600×300, ceiling-surface, centered in Yd.
-    # Ghosted (translucent) — they read as light sources, not solid blocks.
-    led_w, led_d = 600, 300
-    led_yd = C_WID / 2 - led_d / 2
-    for lx in (1000, 2900):
-        parts.append(ruby_box("White LED Panel (Cct G)",
-                              lx, led_yd, cz - 40, led_w, led_d, 40,
+    # White LED strips (Cct G) — 3× 12V COB strips (in 981 channels): 2 run PARALLEL to
+    # the two DRUM/cargo-door-side red strips (X≈520/2270, offset +80mm) over the tray;
+    # the 3rd is rotated 90° to run the IBC/plumbing CORRIDOR length (X) and light the
+    # plumbing panel. Ghosted (translucent) — they read as light sources.
+    for wx in (600, 2350):     # parallel to the drum-side reds (X=520, 2270)
+        parts.append(ruby_box("White LED Strip (Cct G)",
+                              wx, 100, cz - 25, 40, C_WID - 200, 18,
                               color=C_LED_W, alpha=0.4))
-    # Right-hand panel rotated 90° (300 X × 600 Yd) and shifted clear of the
-    # equipment-panel conduits: its IBC-end edge sits 150mm left of the panel
-    # face (X=EQPANEL_X), so its feed conduit no longer crosses Circuit C.
-    rled_x0 = EQPANEL_X - 150 - led_d      # 4424 — span X 4424–4724
-    rled_y0 = C_WID / 2 - led_w / 2        # 881  — span Yd 881–1481, centered
-    parts.append(ruby_box("White LED Panel (Cct G)",
-                          rled_x0, rled_y0, cz - 40, led_d, led_w, 40,
+    # 3rd: rotated 90°, runs X along the IBC corridor over the plumbing panel (Yd≈1046)
+    parts.append(ruby_box("White LED Strip (Cct G, IBC corridor)",
+                          IBC_COL_X, EQPANEL_YD - 20, cz - 25, C_LEN - IBC_COL_X - 43, 40, 18,
                           color=C_LED_W, alpha=0.4))
 
     # Red safelight strips (Cct D) — 3× N–S across the width, in the panel gaps.
@@ -1691,16 +1688,13 @@ def lighting_wiring():
 
     # Conduit runs along the ceiling from the trunking out to each fixture.
     cr, czc = 7, cz - 38
-    for lx in (1000, 2900):    # → white LED panels (Cct G)
-        # (rev13: the +150 middle-conduit shift is retired — the chem shelf is now a
-        #  WALL-HINGED fold-down with no ceiling hanger rods to clear.)
-        parts.append(ruby_cylinder("Conduit to LED Panel (Cct G)",
-                                   lx + led_w / 2, 40, czc, cr, led_yd - 40,
+    for wx in (600, 2350):    # → parallel white LED strips (Cct G)
+        parts.append(ruby_cylinder("Conduit to White Strip (Cct G)",
+                                   wx + 20, 40, czc, cr, 60,
                                    color=C_TRUNK, axis="y"))
-    # → rotated right-hand LED panel: conduit to its near Yd edge (no longer
-    #   running alongside the equipment-panel / Circuit C conduits)
-    parts.append(ruby_cylinder("Conduit to LED Panel (Cct G)",
-                               rled_x0 + led_d / 2, 40, czc, cr, rled_y0 - 40,
+    # → IBC-corridor strip: conduit from the wall trunking out to its Yd position
+    parts.append(ruby_cylinder("Conduit to White Strip (Cct G)",
+                               IBC_COL_X + 60, 40, czc, cr, EQPANEL_YD - 40,
                                color=C_TRUNK, axis="y"))
     for sx in (500, 2250, 4150):     # → red safelight strips (Cct D)
         parts.append(ruby_cylinder("Conduit to Safelight (Cct D)",

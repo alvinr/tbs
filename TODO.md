@@ -60,8 +60,7 @@ bucketed by WHEN it can be acted on:_
 - [x] **spray-nozzle pattern — RESOLVED 2026-07-28 (Option b, 90° down-jets).** Alvin chose 90° down-jets (DIG
   110B) over flat-fan/180° — directs the wash onto the print, not sideways/up. Pitch tightened `SPRAY_BAR_NOZZLE_PITCH`
   150→100mm (26→39 jets) for edge-to-edge coverage of the 90° footprint. Cascaded: constant, 2D spray-bar diagram,
-  report §3.2/§3.9, part (4× 10-packs). **Residual: re-send + save the 3 .skp that draw the bar — spraybar,
-  overview, construction (.rb regenerated; ALVIN re-sends + uploads).**
+  report §3.2/§3.9, part (4× 10-packs). All 3 .skp (spraybar, overview, construction) re-sent + saved + uploaded — DONE 2026-07-28.
 - [x] **External power panel — GEOMETRY cascade — DONE 2026-07-28 (report §5.4 prose + parts + component sourcing + 2D + 3D).**
   Design FINAL (Alvin): a **fabricated flanged wall-penetration box** (`power-panel-box`) — the 4 weatherproof interfaces
   (3× MC4 bulkheads Powerwerx, shore inlet, cooler outlet W5320-T0W + 5981-UCL, 22mm E-stop) surface-mount + seal to its
@@ -90,6 +89,8 @@ bucketed by WHEN it can be acted on:_
 - [ ] **Fab estimates.** All `*-fabrication` lines (`tray-fabrication`, `ll-fabrication`, `ibcf-fabrication`, `sp-door-fab`) + `tray-ss-sheet`, the film-plane fab (skate carriage, 316 cross-slides, cam clamp), and the `sp-pivot-post` collar — quote to shops once the drawing set ships. ≈±$1,500.
 - [ ] **IBC flex-connection `s60-reducer` interface (bench).** The sourced reducer (Charlotte `PVC021071300HD`, 2"×1" Sch-40) is **spigot×slip (solvent-weld)**, but the tote adapter (Granatan S60→2") outputs **2" MALE NPT** — a spigot×slip bushing is glue-only, so it needs a **2" MPT×socket transition** to mate (or swap to a **2"FNPT×1" reducer**). Verify/resolve the tote-adapter interface at the bench. (Alvin 2026-07-29.)
 - [ ] **IBC flex-connection clamp size (bench).** `ibc-flex-clamp` is an Apollo **#12** (½"–1¼", `IDL0410PK`). The flex hose is cut from the 1"-ID / **1¼"-OD** tray-suction coil, so over a barb the OD approaches/*exceeds* the #12's 1¼" max — **verify the #12 closes and seals; step up to #16 if it bottoms out.** (Alvin 2026-07-29.)
+
+**304→316 SS audit + cost-cut — DONE 2026-07-29.** Cyanotype wash has no chloride, so 316's pitting resistance was unused across the splash zone. Downgraded: `fp-cross-slide` 316→304; `bulkhead-2in` 304 SS→**PP** (US Plastic 32200 $21.14); `fp-u-channel` depth rails 304→**6061 Al** (Grainger 795M51 8 ft, $328 vs $2,173 — biggest single line); `bolt-m6-tray` KEPT 316 (Alvin). Spray-beam Al downgrade REVERTED (3× sag over 3.86m needed an up-sized section for a ~$25 save). Weight model gap fixed (fixed depth rails were omitted → +18.4 kg). All 2D/3D/reports cascaded; film-plane-mechanism.skp re-sent (rails now aluminum). Grand total **→$26,476/$31,053/$37,682**.
 
 **Recently firmed (this drive):** light-lock plastics → US Plastics HDPE; drum caps 3/16″ (`LT_CAP_T`); electrical 13 parts + 2 E-stops + battery → Renogy Core; walkway grating supplier → American Grating primary; tray shims → HDPE plate; **corridor ply both parts 23/32″ RTD $29.30** (ply-18 + ply-25, standard-not-marine rule); `cooler-inverter`, `panel-corner-plates`, `ibc-tote-1000l`, `sp-pivot-post` pipe. Design: walkway deck continuity + bump extended a 2nd rib to IBC (5 widened brackets) + muslin notches (5 models); walkway sheets merged (5) + new Sheet 9 near-wall bump-out; water/film-plane Sketchfab name/desc fix.
 

@@ -127,10 +127,18 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [10mm split corrugated wire loom, drop runs](https://www.amazon.com/Split-Wire-Loom-Tubing-Polyethylene/dp/B017L3GWIW) (B017L3GWIW) | 10 m | Amazon | electrical | $25 |
+| [12 AWG tinned hook-up wire, black — 100ft (Circuit F)](https://www.waytekwire.com/product/wrt12-0-hook-up-wire-tinned-copper) (WRT12-0) | 1 spool | Waytek Wire | electrical | $13 |
+| [12 AWG tinned hook-up wire, red — 100ft (Circuit F)](https://www.waytekwire.com/product/wrt12-2-hook-up-wire-tinned-copper) (WRT12-2) | 1 spool | Waytek Wire | electrical | $13 |
 | 12V LED flat panel 300×600mm, 20W 4000K | 3 ea | Super Bright LEDs | electrical | $75 |
 | 14 AWG duplex marine wire | 1 roll | Waytek Wire | water | $22 |
+| [14 AWG tinned hook-up wire, black — 100ft (Circuit C feed / AC)](https://www.waytekwire.com/product/wrt14-0-hook-up-wire-tinned-copper) (WRT14-0) | 1 spool | Waytek Wire | electrical | $14 |
+| [14 AWG tinned hook-up wire, red — 100ft (Circuit C feed / AC)](https://www.waytekwire.com/product/wrt14-2-hook-up-wire-tinned-copper) (WRT14-2) | 1 spool | Waytek Wire | electrical | $14 |
 | 15A blade fuse | 1 ea | Waytek Wire | water | $5 |
 | 16 AWG silicone coiled cable | 1 ea | Waytek Wire | ventilation | $15 |
+| [16 AWG tinned hook-up wire, black — 100ft (Circuits A/B/G + branches)](https://www.waytekwire.com/product/wrt16-0-hook-up-wire-tinned-copper) (WRT16-0) | 1 spool | Waytek Wire | electrical | $16 |
+| [16 AWG tinned hook-up wire, red — 100ft (Circuits A/B/G + branches)](https://www.waytekwire.com/product/wrt16-2-hook-up-wire-tinned-copper) (WRT16-2) | 1 spool | Waytek Wire | electrical | $16 |
+| [18 AWG tinned hook-up wire, black — 100ft (Circuit D + E-stop)](https://www.waytekwire.com/product/wqt18-0-hook-up-wire-tinned-copper) (WQT18-0) | 1 spool | Waytek Wire | electrical | $12 |
+| [18 AWG tinned hook-up wire, red — 100ft (Circuit D + E-stop)](https://www.waytekwire.com/product/wqt18-2-hook-up-wire-tinned-copper) (WQT18-2) | 1 spool | Waytek Wire | electrical | $12 |
 | [2/0 AWG battery cable, 3ft (battery–fuse–busbar)](https://www.amazon.com/dp/B0B3HD7CWP) (B0B3HD7CWP) | 1 lot | Amazon | electrical | $26 |
 | [200A main fuse (Blue Sea 5187) + single MRBF holder (5191)](https://defender.com/en_us/blue-sea-systems-single-mrbf-terminal-fuse-block-5191) (5187+5191) | 1 ea | Blue Sea | electrical | $46 |
 | 4 AWG ground wire, green/yellow, 3m | 1 lot | Waytek Wire | electrical | $15 |
@@ -146,8 +154,8 @@ indicative low–high estimates — get quotes before ordering.
 | Cooler external power cable | 1 ea | Waytek Wire | ventilation | $20 |
 | [Copper-bonded ground rod, 8ft × ⅝" + acorn clamp](https://www.homedepot.com/p/ERICO-5-8-in-x-8-ft-Copper-Ground-Rod-615880UPC/202195738) (615880UPC) | 1 lot | Home Depot | electrical | $27 |
 | Deutsch DT 2-pin connectors | 2 set | Waytek Wire | ventilation | $8 |
-| Deutsch DT 2-pin connectors, IP67 (exterior penetrations) | 10 set | Waytek Wire | electrical | $30 |
-| Equipotential bonding kit — 6 AWG + ring lugs | 1 ea | Waytek Wire | electrical | $20 |
+| [Deutsch DT 2-pin connectors, IP67 (exterior penetrations)](https://www.waytekwire.com/product/amphenol-sine-systems-at2ps-ckit-2-pin) (AT2PS-CKIT) | 10 set | Waytek Wire | electrical | $30 |
+| Equipotential bonding kit — 6 AWG jumper + ring lugs | 1 ea | Waytek Wire | electrical | $20 |
 | [External emergency cut-off — red mushroom switch](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
 | [Interior emergency cut-off — red mushroom switch (paralleled to exterior)](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
 | IP65 enclosure ~200×220×140mm (fuse block + busbars, on the plywood) | 1 ea | Polycase | electrical | $60 |
@@ -161,8 +169,6 @@ indicative low–high estimates — get quotes before ordering.
 | [Remote battery switch — Blue Sea ML-RBS 500A magnetic-latch (E-stop trip)](https://www.invertersupply.com/index.php?main_page=product_info&products_id=5288) (7700) | 1 ea | Inverter Supply | electrical | $264 |
 | Sealed wet-zone connectors — Deutsch DT / adhesive heat-shrink | 1 lot | Waytek Wire | electrical | $25 |
 | [Shore-charger output fuse — 20A inline (sealed holder + fuse)](https://www.waytekwire.com/product/sealed-ato-atc-fuse-holder-assembly-46047) (46047) | 1 ea | Waytek Wire | electrical | $5 |
-| Tinned marine wire 14/16 AWG, ~25ft (wet-zone runs) | 1 lot | Waytek Wire | electrical | $30 |
-| Wiring kit — 12/14/16/18 AWG tinned, 50ft/color | 1 kit | Waytek Wire | electrical | $80 |
 | **electrical-distribution subtotal** | | | | **$1,643** |
 
 ### electrical-power
@@ -450,7 +456,7 @@ indicative low–high estimates — get quotes before ordering.
 | Inverter Supply | 2 | electrical-distribution, electrical-power | $396 |
 | Curbell Plastics | 1 | plastics-sheet | $380 |
 | Grainger | 2 | aluminum | $377 |
-| Waytek Wire | 14 | electrical-distribution, electrical-power | $319 |
+| Waytek Wire | 20 | electrical-distribution, electrical-power | $319 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | Powerwerx | 4 | electrical-distribution, electrical-power | $267 |
 | igus | 1 | bearings-motion | $261 |

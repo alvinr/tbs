@@ -6,7 +6,7 @@
 >
 > **What this document is.** The optical-distortion derivation for the moveable four-corner film plane: the physics of tilted-/swung-plane projection (§5), the movement envelope (§3), and the per-configuration effects (§4). The plane is a **fixed-size rigid rectangle** (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm) that tilts and swings as a true **rigid-body rotation** — envelope **tilt ±40° / swing ±28°** (single-axis). The optics depend only on that rigid-rotation geometry.
 >
-> **Mechanism, hardware, and BOM are governed by [`film-plane-mechanism-report.md`](film-plane-mechanism-report.md)** — the current **304 U-channel + acetal skate + 316 flat-bar cross-slide + Ruland U-joint** corner design — and the muslin clamp by [`film-clamp-mechanism-report.md`](film-clamp-mechanism-report.md). This analysis covers only the optics; for any hardware, quantity, or price, use those reports.
+> **Mechanism, hardware, and BOM are governed by [`film-plane-mechanism-report.md`](film-plane-mechanism-report.md)** — the current **6061 Al U-channel + acetal skate + 304 flat-bar cross-slide + Ruland U-joint** corner design — and the muslin clamp by [`film-clamp-mechanism-report.md`](film-clamp-mechanism-report.md). This analysis covers only the optics; for any hardware, quantity, or price, use those reports.
 
 ## 1. Purpose
 

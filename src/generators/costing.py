@@ -276,7 +276,7 @@ OPTICS = [
 # plate. Source: project-cost-breakdown.md §4.1–4.3 / film-plane-mechanism-report.md.
 FILM = [
     # 4.1 Structural & rails (304 U-channel + acetal skate + 316 cross-slides + Ruland U-joint)
-    LineItem("304 U-channel depth rails 3×1½\" (1262T21, ×4 wall-to-wall)", 2172, 2172, 2172, "$362/6ft ×6 — 8ft lengths for continuous rails, firm at order"),
+    LineItem("6061 Al U-channel depth rails 3×1½\" (×4 wall-to-wall)", 569, 674, 779, "SS audit 2026-07-29: 304 @ McMaster $362/6ft×6 = $2,172 → 6061-T6 Al same 76×38 section, ~$95-130/6ft (−~$1,500 + ~34 kg). 6061-T6 yield > annealed 304; ~1mm sag optically irrelevant at f/1088, flatness via ACM. Est — confirm Al channel SKU at order"),
     LineItem("Ruland USKC12-6-6-SS U-joints (×4) + nitrile boots (×4)", 1226, 1226, 1226, "$276 ea joint (interim; cheaper alt in research) + $30.59 boot (UBOOT12/19-NI-KIT, verified)"),
     LineItem("McMaster 4040N12 304 shaft supports (×4) + 3/8\" 304 stub rod (89535K87, 3ft)", 245, 245, 245, "$58 ea support + $13.25 rod — firm"),
     LineItem("Acetal skates (×4) — Ø32/Ø20 acetal rollers + 304 axle pins + fab carriage plates", 182, 230, 282, "2026-07-22: decomposed; axle = spray 304 pins (B0816MQ5T6) $20 (was $176 316 rod)"),
@@ -1020,7 +1020,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 951,  "total": 1250, "per_print": 25},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "standard": {"chem": 1414, "total": 1710, "per_print": 34},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "rich":     {"chem": 2802, "total": 3100, "per_print": 62},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
-    "grand_total": (28311, 32913, 39568),  # 2026-07-29: +$16 1" PVC recount 2→4 sticks. 2026-07-28: +$37 water (transition-adapter +$8, sump pickup +$45, spray Option 1 −$8). Earlier: external power panel penetration box; MC4 bulkheads, cooler outlet, PV disconnect, spray 90° jets.
+    "grand_total": (26708, 31415, 38175),  # 2026-07-29: +$16 1" PVC recount 2→4 sticks. 2026-07-28: +$37 water (transition-adapter +$8, sump pickup +$45, spray Option 1 −$8). Earlier: external power panel penetration box; MC4 bulkheads, cooler outlet, PV disconnect, spray 90° jets.
     "walkway": (1979, 2395, 2825),  # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
     "water": (6402, 7061, 7720),  # 2026-07-29: 1" PVC recount 2→4 sticks (+$16, IBC internal fill/drain). 2026-07-28: transition-adapter takeoff +$8; sump pickup firmed +$45; spray Option 1 single center feed −$8. Earlier: 90° down-jets 26→39; carbon Aquaboon; SV taps 36903; nitrile; tray shims $295.96.
     "container": (2300, 3300, 4300),
@@ -1030,7 +1030,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "shelf": (223, 229, 235),          # 2026-07-27: piano hinge firm Würth LSN8-32-600 weld-on $23.56 (was $22.68–35.72). Earlier: Swaner UV-White work surface $73.28.
     "interior": (526, 605, 693),      # 2026-07-27: door pull handle firm McMaster 3570N12 $39.10 (was $5–9 lot, +$34/+$30). Earlier: BEHR Jet Black paint firm.
     "optics": (100, 155, 215),         # 2026-07-23: pinhole → Lenox SS-3/8-DISC $40-100 (config, RFQ)
-    "film": (6173, 6440, 6711),  # 2026-07-27: blackout poly → Film-Gard 10ft 4-mil $40.12 (was 6-mil $66–70, −$26/−$30); Gorilla tape firm $9.94 ×6; saddle M8 thumbscrews ×12 McMaster $11.80. (2026-07-22: clamp → off-the-shelf nylon spring clamps + HDPE filler.)
+    "film": (4570, 4942, 5318),  # 2026-07-27: blackout poly → Film-Gard 10ft 4-mil $40.12 (was 6-mil $66–70, −$26/−$30); Gorilla tape firm $9.94 ×6; saddle M8 thumbscrews ×12 McMaster $11.80. (2026-07-22: clamp → off-the-shelf nylon spring clamps + HDPE filler.)
     "ventilation": (787, 787, 787),   # 2026-07-27: canopy 1" EMT firm ($206 — conduit $21.86×6, couplings $1.45×8, flange 4-pack $16.29, Halex 94510 elbows $11.85×4); evap cooler MC18MT $109; duct collar+clamp $16.23.
     "power": (3009, 3037, 3064),   # 2026-07-28: external power panel FINAL — fabricated flanged wall-penetration box + flashing (weatherproof components exposed on the face, wired from inside), disconnect relocated to the EP. McMaster IP enclosure + wall gland retired (−$229/−$182). §5a authoritative subtotal
 }

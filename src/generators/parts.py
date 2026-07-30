@@ -626,9 +626,9 @@ PARTS: list[Part] = [
     # FILM minus the clamp lines (= 3,102). The muslin clamps are the separate 'clamp' system below. ═══
     # — Structural & Rails (304 U-channel + acetal skate + 316 cross-slide + Ruland U-joint corner mechanism) —
     # Replaced the superseded Option-A leadscrew drive (HGR20/Acme/handwheel/rod-end) 2026-07-19.
-    Part("fp-u-channel", '304 U-channel depth rail 3×1½" (76×38mm)', "steel-structural",
-         "film", 6, "ea", 362.12, 362.12, "McMaster-Carr", part_no="1262T41", url="https://www.mcmaster.com/1262T41-1262T21/",
-         spec="4 depth rails, one per corner, running wall-to-wall (~2,362mm, Yd0→C_WID) along the optical axis — an acetal skate rides inside each to set that corner's depth/focus. $362.12/6ft firm. NOTE: a 2,362mm rail exceeds a 6ft (1,829mm) length, and the skate can't cross a splice — so buy 8ft lengths (4 rails) or confirm the continuous-length SKU/price at order. Qty 6× 6ft here is the conservative $-estimate."),
+    Part("fp-u-channel", '6061-T6 Al U-channel depth rail 3×1½" (76×38mm)', "aluminum",
+         "film", 6, "ea", 95, 130, "Metal Supermarkets", "McMaster-Carr",
+         spec="4 depth rails, one per corner, running wall-to-wall (~2,362mm, Yd0→C_WID) along the optical axis — an acetal skate rides inside each to set that corner's depth/focus. 6061-T6 aluminum, SAME 76×38 section (SS audit 2026-07-29 — was 304 @ McMaster $362/6ft = $2,173, the single biggest SS line). Structural check: 6061-T6 yield (~276 MPa) EXCEEDS annealed 304 (~215 MPa) so strength is fine; the ~3× lower E gives ~1mm sag vs ~0.4mm over the 2.36m span — optically irrelevant at f/1088, and flatness is carried by the ACM backing (same logic as the Al frame). Also ~34 kg lighter across the 4 rails. NOTE: a 2,362mm rail exceeds a 6ft length + the skate can't cross a splice → buy 8ft lengths (4 rails); qty 6× 6ft is the conservative $-estimate. Est $95–130/6ft — confirm the Al 3×1½ U-channel SKU at order (McMaster/metal-supermarket)."),
     Part("fp-ujoint", "Ruland USKC12-6-6-SS U-joint (keyway+clamp, 303 SS)", "bearings-motion",
          "film", 4, "ea", 276, 276, "Ruland", part_no="USKC12-6-6-SS", url="https://www.ruland.com/uskc12-6-6-ss.html",
          spec='One per corner — supplies the tilt+swing angular DOF (45°/axis); 3/8" bores, 303 stainless (wet zone), twist-locked. $276 ea firm — INTERIM part; a cheaper joint is under research (see TODO). The U-joint alone is $276×4 = $1,104.'),

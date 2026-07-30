@@ -12,7 +12,7 @@ The floor plan below shows the film plane rail positions in the context of the c
 ![TBS-001 Container Floor Plan — All Systems](assets/container-floorplan.png)
 
 <!-- brochure:skip -->
-**Interactive 3D model** — the fixed-size rigid film plane on its four slide-and-clamp corner carriages, shown against a ghost of the perimeter walkway and the IBC frame. Drag to orbit, scroll to zoom; the **Movement** and **whole-plane** scenes let you click a corner — or the whole frame — to cycle it through a tilt or swing, and the per-corner detail scenes show each 304 U-channel depth rail, acetal skate, Z/X cross-slide, and the single U-joint.
+**Interactive 3D model** — the fixed-size rigid film plane on its four slide-and-clamp corner carriages, shown against a ghost of the perimeter walkway and the IBC frame. Drag to orbit, scroll to zoom; the **Movement** and **whole-plane** scenes let you click a corner — or the whole frame — to cycle it through a tilt or swing, and the per-corner detail scenes show each 6061 Al U-channel depth rail, acetal skate, Z/X cross-slide, and the single U-joint.
 
 <div class="sketchfab-embed-wrapper">
   <div style="position:relative;width:100%;padding-bottom:56.25%;">
@@ -72,7 +72,7 @@ Each corner of the film plane frame rides on its own carriage assembly (driven i
 
 ![Sheet 7 — Four-Corner Frame Front Elevation](assets/film-plane-sheet7.png)
 
-- **4 depth rails** — 3×1½" (76×38mm) **304 stainless U-channel** (McMaster 1262T21), one at each corner, running wall-to-wall along the <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm optical axis. An acetal skate rides inside each; sliding it sets that corner's **depth** (focus / back-focus). The **right** rails (X=4,649mm) are permanently flanged to their wall seats; the **left** rails (X=150mm) are transport drop-ins that lift out.
+- **4 depth rails** — 3×1½" (76×38mm) **6061-T6 aluminum U-channel** (SS audit 2026-07-29 — downgraded from 304 SS: 6061-T6 yield exceeds annealed 304 so strength holds, the ~1mm sag over 2.36m is optically irrelevant at f/1088 with flatness carried by the ACM, and it saves ~$1.5k + ~34 kg), one at each corner, running wall-to-wall along the <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm optical axis. An acetal skate rides inside each; sliding it sets that corner's **depth** (focus / back-focus). The **right** rails (X=4,649mm) are permanently flanged to their wall seats; the **left** rails (X=150mm) are transport drop-ins that lift out.
 - **4 acetal skates** — a 4-wheel skate per corner: **Ø32 acetal load rollers** gravity-seated on the channel's bottom flange plus **Ø20 keeper rollers** captive under the top flange, all on **Ø10 316 axles**, carrying the corner's carriage plate.
 - **12 cam clamps** — three per corner. Each corner is slid by hand into position, then a **cam-lever rail brake** locks the skate to the U-channel — there are no leadscrews. The lock holds for the exposure and for transport.
 - **8 corner cross-slides** — a **Z (tilt)** slide plus an **X (swing)** slide at each corner, each a **316 stainless flat bar (¼"×1½")** captured on **UHMW self-lube pads** with an adjustable brass-tip **gib**. The Z slide (~250mm) and X slide (~260mm) absorb the in-plane arc travel that a **rigid** rotation forces on each corner (≈245mm in Z at max tilt, ≈263mm in X at max swing), so the film plane stays a **fixed-size flat rectangle** instead of stretching; the gib drag holds the gravity-loaded vertical axis while the clamp is set.
@@ -165,7 +165,7 @@ All items ship within the United States. Local Southern California pickup noted 
 <!-- BEGIN parts:film -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [304 U-channel depth rail 3×1½" (76×38mm)](https://www.mcmaster.com/1262T41-1262T21/) (1262T41) | 4 depth rails, one per corner, running wall-to-wall (~2,362mm, Yd0→C_WID) along the optical axis — an acetal skate rides inside each to set that corner's depth/focus. $362.12/6ft firm. NOTE: a 2,362mm rail exceeds a 6ft (1,829mm) length, and the skate can't cross a splice — so buy 8ft lengths (4 rails) or confirm the continuous-length SKU/price at order. Qty 6× 6ft here is the conservative $-estimate. | 6 ea | McMaster-Carr | $2,173 |
+| 6061-T6 Al U-channel depth rail 3×1½" (76×38mm) | 4 depth rails, one per corner, running wall-to-wall (~2,362mm, Yd0→C_WID) along the optical axis — an acetal skate rides inside each to set that corner's depth/focus. 6061-T6 aluminum, SAME 76×38 section (SS audit 2026-07-29 — was 304 @ McMaster $362/6ft = $2,173, the single biggest SS line). Structural check: 6061-T6 yield (~276 MPa) EXCEEDS annealed 304 (~215 MPa) so strength is fine; the ~3× lower E gives ~1mm sag vs ~0.4mm over the 2.36m span — optically irrelevant at f/1088, and flatness is carried by the ACM backing (same logic as the Al frame). Also ~34 kg lighter across the 4 rails. NOTE: a 2,362mm rail exceeds a 6ft length + the skate can't cross a splice → buy 8ft lengths (4 rails); qty 6× 6ft is the conservative $-estimate. Est $95–130/6ft — confirm the Al 3×1½ U-channel SKU at order (McMaster/metal-supermarket). | 6 ea | Metal Supermarkets / McMaster-Carr | $570–$780 |
 | [Ruland USKC12-6-6-SS U-joint (keyway+clamp, 303 SS)](https://www.ruland.com/uskc12-6-6-ss.html) (USKC12-6-6-SS) | One per corner — supplies the tilt+swing angular DOF (45°/axis); 3/8" bores, 303 stainless (wet zone), twist-locked. $276 ea firm — INTERIM part; a cheaper joint is under research (see TODO). The U-joint alone is $276×4 = $1,104. | 4 ea | Ruland | $1,104 |
 | [Ruland UBOOT12/19-NI-KIT nitrile boot](https://www.ruland.com/uboot12-19-ni-kit.html) (UBOOT12/19-NI-KIT) | Nitrile boot over each U-joint — keeps cyanotype splash out of the joint. | 4 ea | Ruland | $122 |
 | [McMaster 4040N12 304 shaft support](https://www.mcmaster.com/4040N12/) (4040N12) | Two-piece 304 clamp securing the U-joint INPUT stub to the X (swing) slide, one per corner. $58 ea firm. | 4 ea | McMaster-Carr | $232 |
@@ -191,7 +191,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | [M8×25mm knurled thumbscrew DIN 464](https://www.mcmaster.com/92581A540/) (92581A540) | ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare | 12 ea | McMaster-Carr / Maedler | $142 |
 | [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — right-rail end fixing (ICP-14)](https://www.mcmaster.com/91280A534/) (91280A534) | ICP-14: right depth-rail end flange → wall seat hold-down (does NOT cross the wall). Grip = 3/16" (4.76mm) 1262T21 channel base + 10mm seat ≈ 15mm → M8×25 (short → fully threaded). Pitch M8×1.25 coarse (matches the M8 plain nut). $18.51/pack of 50. ⚠ VALIDATE: 91280A534 is zinc — the film plane wets during development; a 316-SS M8×25 resists corrosion better. | 8 ea | McMaster-Carr | $3 |
 | [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | Plain hex nut — M8 right-rail fixing. Pitch M8×1.25 coarse — confirmed vs 90591A161 PDF 2026-07-29 (matches the bolt). $7.53/pack of 100. | 8 ea | McMaster-Carr | $1 |
-| **Film total** | | | | **$6,028–$6,468** |
+| **Film total** | | | | **$4,425–$5,075** |
 <!-- END parts:film -->
 
 *The corner-mechanism hardware (U-channel depth rails, acetal skates, Z/X cross-slides, and the
@@ -216,14 +216,14 @@ Each of the **8 rail ends** anchors to the container — **6 of them** with a st
 
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
 
-**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$6,173<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
+**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$4,570<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
 *Excludes fasteners and fabrication labor.*
 
 ### Local SoCal Metal Sourcing
 
-- **Metal Supermarkets** — Anaheim (714-630-8463), Van Nuys (818-988-1301), San Diego (619-280-7600). Cut-to-length 304 U-channel, 316 flat bar, and aluminum angle on-site, no minimum order.
+- **Metal Supermarkets** — Anaheim (714-630-8463), Van Nuys (818-988-1301), San Diego (619-280-7600). Cut-to-length 6061 Al U-channel, 304 flat bar, and aluminum angle on-site, no minimum order.
 - **Grimco** — City of Industry, CA. Sign-industry ACM panel supplier, large sheet stock.
-- **McMaster-Carr** — U-channel (1262T21), 304 shaft supports, acetal rollers, 316 axle rod, and cam clamps; ships nationally.
+- **McMaster-Carr** — aluminum U-channel, 304 shaft supports, acetal rollers, 304 axle rod, and cam clamps; ships nationally.
 - **Ruland** — universal joints (USKC12-6-6-SS) and nitrile boot kits; ships nationally.
 - **Grainger** — branches throughout LA, Orange County, San Diego. Same-day local pickup.
 
@@ -248,7 +248,7 @@ See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) f
 
 ## 9. Source References
 
-1. [McMaster-Carr 304 Stainless U-Channel](https://www.mcmaster.com/stainless-steel-u-channels) — 3×1½" (76×38mm) 304 stainless U-channel (1262T21), the depth rail the acetal skate runs in.
+1. [McMaster-Carr Aluminum U-Channel](https://www.mcmaster.com/aluminum-u-channels) — 3×1½" (76×38mm) 6061-T6 Al U-channel, the depth rail the acetal skate runs in (SS audit 2026-07-29: was 304 SS).
 2. [Ruland USKC12-6-6-SS Universal Joint](https://www.ruland.com/us12-6-6-ss.html) — single universal joint, 3/8" bores, 303 stainless, 45° per axis — the per-corner tilt+swing joint (nitrile boot UBOOT12/19-NI-KIT).
 3. [Tilt-Swing Front Board Report](tilt-swing-board-report.md) — Front board mechanism for combined distortion analysis.
 4. [Equipment Layout Report](equipment-layout-report.md) — Rail positions and shadow-free zone verification.

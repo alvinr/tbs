@@ -5,7 +5,7 @@
 generate_film_plane_mechanism.py
 Moveable film plane mechanism — engineering drawings (8 sheets)
 OPTION A — RIGID PLANE: a fixed-size rigid rectangle whose ANGLE changes. The 4 corners ride
-SLIDE-AND-CLAMP corners (acetal skates on 304 U-channel + UHMW-pad cross-slides) moved by hand in COORDINATED PAIRS —
+SLIDE-AND-CLAMP corners (acetal skates on 6061 Al U-channel + UHMW-pad cross-slides) moved by hand in COORDINATED PAIRS —
 single-axis tilt (top vs bottom) or swing (left vs right); limited combined; NO compound twist
 (a rigid plane cannot warp). A pinhole has infinite depth of field, so this is scene control,
 not focus: push each corner into position, then lock the cam clamp. Each corner connects through
@@ -392,7 +392,7 @@ def sheet1():
     ax.text(L/2, W+580, "SHEET 1 — PLAN VIEW  (TOP DOWN, LOOKING AT CONTAINER FLOOR)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
     ax.text(L/2, W+470,
-            "4 CORNER SLIDE-AND-CLAMP CARRIAGES (acetal skates on 304 U-channel + UHMW-pad cross-slides, RIGID PLANE, COORDINATED PAIRS)  ·  TILT = CEILING vs FLOOR  ·  SWING = LEFT vs RIGHT",
+            "4 CORNER SLIDE-AND-CLAMP CARRIAGES (acetal skates on 6061 Al U-channel + UHMW-pad cross-slides, RIGID PLANE, COORDINATED PAIRS)  ·  TILT = CEILING vs FLOOR  ·  SWING = LEFT vs RIGHT",
             color=DIM, fontsize=7, ha="center", **FONT)
     ax.text(L/2, W+370,
             "IN THIS VIEW: SWING IS VISIBLE AS DIAGONAL  ·  TILT IS HIDDEN (HEIGHT AXIS = INTO PAGE)",
@@ -469,11 +469,11 @@ def sheet2():
     RAIL_H = 28
     ax.add_patch(Rectangle((0, 0), C_WID, RAIL_H,
                            fc=RAIL, ec=WHITE, lw=0.8, zorder=5, alpha=0.9))
-    ax.text(W/2, RAIL_H/2, "FLOOR DEPTH RAIL  3×1.5 304 U-channel + acetal skate  ×2  (BL  +  BR — roll, cam-clamp, moved as a pair)",
+    ax.text(W/2, RAIL_H/2, "FLOOR DEPTH RAIL  3×1.5 6061 Al U-channel + acetal skate  ×2  (BL  +  BR — roll, cam-clamp, moved as a pair)",
             color=BG, fontsize=5.5, ha="center", va="center", **FONT, zorder=6)
     ax.add_patch(Rectangle((0, H-RAIL_H), C_WID, RAIL_H,
                            fc=RAIL, ec=WHITE, lw=0.8, zorder=5, alpha=0.9))
-    ax.text(W/2, H-RAIL_H/2, "CEILING DEPTH RAIL  3×1.5 304 U-channel + acetal skate  ×2  (TL  +  TR — roll, cam-clamp, moved as a pair)",
+    ax.text(W/2, H-RAIL_H/2, "CEILING DEPTH RAIL  3×1.5 6061 Al U-channel + acetal skate  ×2  (TL  +  TR — roll, cam-clamp, moved as a pair)",
             color=BG, fontsize=5.5, ha="center", va="center", **FONT, zorder=6)
 
     # ── RAIL END FLANGES / WALL SEATS — side elevation (Yd on X-axis, Z on Y-axis) ──
@@ -741,7 +741,7 @@ def view_a(ax):
     ax.text(228, 228, "Z-slide TILT travel ~250mm (way runs up behind the rail)", fontsize=5.2, color=C_TILT, ha="left", va="center", rotation=90, **FONT)
 
     # ── leaders ──
-    leader(ax, 60, 270, 232, 300, "DEPTH RAIL (Y) — 3×1.5 304 U-channel, web-vertical, runs in Yd; the traverse (~2.4 m floor rail)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 60, 270, 232, 300, "DEPTH RAIL (Y) — 3×1.5 6061 Al U-channel, web-vertical, runs in Yd; the traverse (~2.4 m floor rail)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 190, 253, 232, 262, "4-wheel acetal skate — Ø32 LOAD rollers on the bottom flange\n+ Ø20 KEEPER rollers under the top flange (captive)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 210, 210, 232, 210, "wide carriage plate (red) + cam clamp — hangs from the skate axles", ha="left", fs=5.8, color=C_CAR, font=FONT, bbox=LBL_BG)
     leader(ax, 170, 200, 232, 186, "Z (TILT) slide — 316 flat bar + UHMW + gib (green, up the plate centre)", ha="left", fs=5.8, color=C_TILT, font=FONT, bbox=LBL_BG)
@@ -852,7 +852,7 @@ def section_aa(ax):
 
 
 def section_top(ax):
-    """SECTION B-B — cut across the TOP (guide) rail. The 3×1.5 304 U-channel is laid FLAT (inverted-U):
+    """SECTION B-B — cut across the TOP (guide) rail. The 3×1.5 6061 Al U-channel is laid FLAT (inverted-U):
     web = closed TOP, flanges hang DOWN, so the channel OPENS DOWNWARD. The guide drum's axle therefore stays
     WITHIN the throat; the carriage is a YOKE that reaches UP through the opening (past the lips) — its arms
     bear the flanges (lateral X) + hook the lips (anti-drop) and grab the axle ends, so nothing pierces a
@@ -980,7 +980,7 @@ def sheet3():
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 3 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
-                subtitle="Corner carriage detail — acetal skate on 3×1.5 304 U-channel + cross-slides + U-joint + stub clamp",
+                subtitle="Corner carriage detail — acetal skate on 3×1.5 6061 Al U-channel + cross-slides + U-joint + stub clamp",
                 scale_note="Proportional (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
                 height=0.75)
@@ -1116,7 +1116,7 @@ def transport_elev(ax):
 
 
 def right_flanged(ax):
-    """RIGHT depth rail — flanged WALL-TO-WALL (permanent), side elevation (Yd × Z). Continuous 304 U-channel
+    """RIGHT depth rail — flanged WALL-TO-WALL (permanent), side elevation (Yd × Z). Continuous 6061 Al U-channel
     with an end flange through-bolted to each wall; the outboard end plate is trimmed 35 mm for IBC clearance
     and shares the IBC combined corner plate. No transport split (the panel folds away from this side)."""
     ax.set_xlim(-260, 2620); ax.set_ylim(-70, 150); ax.axis("off")
@@ -1313,7 +1313,7 @@ def sheet5():
         "U-joint  1× Ruland USKC12-6-6-SS (303 SS, KEYWAY+CLAMP hubs, 45° max, self-lube bronze)   ·   boot  1× Ruland UBOOT12/19-NI-KIT (nitrile, fitted dry)",
         "Shaft support  2× McMaster 4040N12 (304 SS)   ·   stub  2× 3/8\" 304 SS KEYED (McMaster 89535K873 + keyway machined for the U-joint)",
         "SKATE  Ø32 acetal rollers ×4 (2 load + 2 keeper) on Ø10 316 axles + carriage plate + inboard lip   ·   Z/X cross-slides  316 flat bar ¼\"×1.5\" + UHMW pads + adjustable gib   ·   cam clamp ×3",
-        "DEPTH RAIL  3×1.5 (76×38) 304 U-channel (McMaster 1262T21), wall-to-wall   ·   RIGHT flanged   ·   LEFT transport drop-in (stub + removable + welded bridge + locating pin + bottom support bridge + pinhole gusset)",
+        "DEPTH RAIL  3×1.5 (76×38) 6061 Al U-channel, wall-to-wall   ·   RIGHT flanged   ·   LEFT transport drop-in (stub + removable + welded bridge + locating pin + bottom support bridge + pinhole gusset)",
         "Full bill of materials: master-shopping-list.md — §4 Film Plane Mechanism",
     ]
     hw_top, hw_lh = 0.205, 0.026
@@ -1471,7 +1471,7 @@ def sheet6():
 # SHEET 7 — SYSTEM ELEVATION (to scale): Four-corner frame front elevation
 #
 # View: looking at the film plane from the pinhole side (interior elevation).
-# Shows ceiling/floor depth-rail pairs (3×1.5 304 U-channel), four corner acetal-skate
+# Shows ceiling/floor depth-rail pairs (3×1.5 6061 Al U-channel), four corner acetal-skate
 # carriages with cam clamps, film plane frame with a single U-joint at each corner.
 # The long depth rail runs into the page (optical axis); shown end-on here.
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1517,7 +1517,7 @@ def sheet7():
     ax.add_patch(Rectangle((0, 0), FW, FH, fc=GRID, ec="none", zorder=2))
 
     # ── Rail positions (X coords in this elevation = RAIL_X_L, RAIL_X_R) ─────
-    # 3×1.5" 304 U-channel seen END-ON (it runs into the page along the optical axis):
+    # 3×1.5" 6061 Al U-channel seen END-ON (it runs into the page along the optical axis):
     # its cross-section is 76mm (3") wide × 38mm (1.5") tall — drawn to scale.
     rail_len = 76     # rail cross-section width (3")
     rail_h = 38       # rail cross-section height (1.5")
@@ -1653,7 +1653,7 @@ def sheet7():
     # Depth-rail leader (from the TL trolley, end-on) — placed well below the U-joint label
     leader(ax, RAIL_X_L, tl_cy,
            RAIL_X_L + 470, tl_cy - 470,
-           "DEPTH RAIL — 3×1.5 304 U-channel\nwall-to-wall (runs into page)\nacetal skate + cam clamp",
+           "DEPTH RAIL — 3×1.5 6061 Al U-channel\nwall-to-wall (runs into page)\nacetal skate + cam clamp",
            color=RAIL, ha="left", fs=6.5, font=FONT)
 
     # Carriage leader (from TR carriage)
@@ -1705,7 +1705,7 @@ def sheet7():
             "SHEET 7 — SYSTEM ELEVATION, TO SCALE  (FRONT — LOOKING FROM PINHOLE SIDE)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
     ax.text(FW / 2, FH + 290,
-            "4 CORNER ACETAL SKATES (4-wheel on 304 U-channel, COORDINATED PAIRS)  ·  CAM CLAMP + SINGLE U-JOINT + X-Z UHMW-PAD CROSS-SLIDES AT EACH CORNER",
+            "4 CORNER ACETAL SKATES (4-wheel on 6061 Al U-channel, COORDINATED PAIRS)  ·  CAM CLAMP + SINGLE U-JOINT + X-Z UHMW-PAD CROSS-SLIDES AT EACH CORNER",
             color=DIM, fontsize=7, ha="center", **FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
@@ -1923,7 +1923,7 @@ def sheet9():
         "it never bolts to the slide directly. The U-joint gives tilt + swing angular freedom (twist-locked); "
         "the X slide (~260mm) + the Z slide beneath it (~250mm, Sheet 8) take the in-plane arc travel.",
         "LOAD PATH, film → rail:  ACM board → 6061 angle frame → 304 SS corner plate → U-joint → "
-        "X (swing) slide → Z (tilt) slide → carriage plate → 4-wheel acetal skate → 304 U-channel rail.",
+        "X (swing) slide → Z (tilt) slide → carriage plate → 4-wheel acetal skate → 6061 Al U-channel rail.",
     ], 1, 97, spacing=6.0, fs=7, title_fs=7.6, color=DIM, title_color=ANNO, font=FONT, width=140)
     # title block
     ax_tb = fig.add_axes([0.02, 0.0, 0.96, 0.055]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")

@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $4,328 | $4,866 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,412 | $7,679 |
-| 6. Electrical — power, circuits, wiring | $3,022 | $3,077 |
+| 6. Electrical — power, circuits, wiring | $3,017 | $3,072 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,979 | $2,825 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,901** | **~$34,217** |
+| **TOTAL (base build + 50-print run)** | **~$25,896** | **~$34,212** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -146,7 +146,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Anderson Powerpole 30A connectors, 50 pairs (unassembled)](https://powerwerx.com/anderson-powerpole-connectors-30amp-unassembled) | 1 kit | Powerwerx | electrical | $54 |
 | Anderson Powerpole connectors 30A | 5 pair | Powerwerx | water | $10 |
 | [Battery main disconnect — Blue Sea 6006 m-Series (300A)](https://offgridstores.com/products/blue-sea-6006-m-series-mini-battery-switch-single-circuit-on-off-red) (6006) | 1 ea | Off Grid Stores | electrical | $36 |
-| [Battery terminal covers (pair), insulating boots](https://www.waytekwire.com/product/23501-straight-in-battery) (23501) | 1 pair | Waytek Wire | electrical | $10 |
+| [Battery terminal covers (pair), insulating boots](https://www.waytekwire.com/product/23501-straight-in-battery) (23501) | 1 pair | Waytek Wire | electrical | $3 |
 | [Blue Sea 5026 fuse block, 12-circuit ST-blade](https://offgridstores.com/products/blue-sea-5026-st-blade-fuse-block-w-cover-12-circuit-w-negative-bus) (5026) | 1 ea | Off Grid Stores | electrical | $59 |
 | [Brady M210 wire label printer kit](https://www.digikey.com/en/products/detail/brady-corporation/M210-KIT/16643735) (M210-KIT) | 1 ea | Amazon | electrical | $194 |
 | [Cable grommets / glands — steel-shell penetrations](https://www.amazon.com/YUFANNET-Assortment-Grommets-Automotive-Electrical/dp/B09K5GNFHF) (B09K5GNFHF) | 1 lot | Amazon | electrical | $28 |
@@ -168,8 +168,8 @@ indicative low–high estimates — get quotes before ordering.
 | PV cable 10 AWG + MC4 connectors | 1 lot | Signature Solar | electrical | $30 |
 | [Remote battery switch — Blue Sea ML-RBS 500A magnetic-latch (E-stop trip)](https://www.invertersupply.com/index.php?main_page=product_info&products_id=5288) (7700) | 1 ea | Inverter Supply | electrical | $264 |
 | Sealed wet-zone connectors — Deutsch DT / adhesive heat-shrink | 1 lot | Waytek Wire | electrical | $25 |
-| [Shore-charger output fuse — 20A inline (sealed holder + fuse)](https://www.waytekwire.com/product/sealed-ato-atc-fuse-holder-assembly-46047) (46047) | 1 ea | Waytek Wire | electrical | $5 |
-| **electrical-distribution subtotal** | | | | **$1,643** |
+| [Shore-charger output fuse — 20A inline (sealed holder + fuse)](https://www.waytekwire.com/product/sealed-ato-atc-fuse-holder-assembly-46047) (46047) | 1 ea | Waytek Wire | electrical | $7 |
+| **electrical-distribution subtotal** | | | | **$1,638** |
 
 ### electrical-power
 
@@ -456,7 +456,7 @@ indicative low–high estimates — get quotes before ordering.
 | Inverter Supply | 2 | electrical-distribution, electrical-power | $396 |
 | Curbell Plastics | 1 | plastics-sheet | $380 |
 | Grainger | 2 | aluminum | $377 |
-| Waytek Wire | 20 | electrical-distribution, electrical-power | $319 |
+| Waytek Wire | 20 | electrical-distribution, electrical-power | $314 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | Powerwerx | 4 | electrical-distribution, electrical-power | $267 |
 | igus | 1 | bearings-motion | $261 |

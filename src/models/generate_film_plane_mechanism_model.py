@@ -51,7 +51,7 @@ CH = ov.C_HGT                        # interior height
 X_L, X_R = ov.FP_X_L, ov.FP_X_R - 25   # right edge trimmed 25mm (+ a 35mm end-plate trim) to clear the IBC frame → FP_W 4499→4474
 FP_Y = ov.FP_Y                       # film depth from the pinhole wall (Y)
 PH_X, PH_Z = ov.PH_X, ov.C_HGT // 2  # pinhole X (film-width centre) and Z (mid-height)
-# ── 304 U-CHANNEL rails, BOTH 3"×1.5" (McMaster 1262T21, $352/6ft, 0.188" wall) — the deflection is
+# ── 6061 Al U-CHANNEL rails, BOTH 3"×1.5" (McMaster 1262T21, $352/6ft, 0.188" wall) — the deflection is
 # ~25× overkill even at 3×1.5, so the 4×2 is unnecessary weight/cost. Wheels ride the OPEN channel;
 # the CLOSED web-back is the splice face (one section does the H-bar's two-U job). ──
 # BOTTOM = web-VERTICAL: deep dim resists bending; the walkway pins the film bottom so depth is FREE.
@@ -94,30 +94,30 @@ LEFT_CUT_YD = 2090                   # cut Yd = the panel-swing envelope edge on
 
 
 def channel_v(name, cx, zc, y0, ylen, tag, cin, alpha=None):
-    """BOTTOM rail — 304 U-channel stood WEB-VERTICAL (4×2). Web is the OUTBOARD back (splice face);
+    """BOTTOM rail — 6061 Al U-channel stood WEB-VERTICAL (4×2). Web is the OUTBOARD back (splice face);
     the two flanges project INBOARD, forming the wheel channel that opens toward the film. Deep web
     (CD_BOT) resists bending. zc = web-centre Z."""
     P = []
     outx = cx - cin * CW_BOT / 2                    # outboard face
     web_x = min(outx, outx + cin * HB_T)
     fl_x = min(outx, outx + cin * CW_BOT)
-    P.append(ov.ruby_box(f"{name} web {tag}", web_x, y0, zc - CD_BOT / 2, HB_T, ylen, CD_BOT, color=C_STEEL, alpha=alpha))
+    P.append(ov.ruby_box(f"{name} web {tag}", web_x, y0, zc - CD_BOT / 2, HB_T, ylen, CD_BOT, color=ov.C_ALUM, alpha=alpha))
     for fz in (zc + CD_BOT / 2 - HB_T, zc - CD_BOT / 2):
-        P.append(ov.ruby_box(f"{name} flange {tag} {int(fz)}", fl_x, y0, fz, CW_BOT, ylen, HB_T, color=C_STEEL, alpha=alpha))
+        P.append(ov.ruby_box(f"{name} flange {tag} {int(fz)}", fl_x, y0, fz, CW_BOT, ylen, HB_T, color=ov.C_ALUM, alpha=alpha))
     # inboard LIP on the bottom flange — lateral keeper: stops the load roller walking off in X on swing
     in_edge = cx + cin * CW_BOT / 2
-    P.append(ov.ruby_box(f"{name} bottom-flange lip {tag}", min(in_edge, in_edge - cin * 5), y0, zc - CD_BOT / 2 + HB_T, 5, ylen, 9, color=C_STEEL, alpha=alpha))
+    P.append(ov.ruby_box(f"{name} bottom-flange lip {tag}", min(in_edge, in_edge - cin * 5), y0, zc - CD_BOT / 2 + HB_T, 5, ylen, 9, color=ov.C_ALUM, alpha=alpha))
     return P
 
 
 def channel_flat(name, cx, zc, y0, ylen, tag, alpha=None):
-    """TOP guide rail — 304 U-channel laid FLAT (inverted-U, 3×1.5). Web is the closed TOP (splice face);
+    """TOP guide rail — 6061 Al U-channel laid FLAT (inverted-U, 3×1.5). Web is the closed TOP (splice face);
     two flanges hang DOWN forming a down-opening channel; the guide wheels run under the web. Short in Z
     (CW_TOP) → minimum ceiling cost. zc = section-centre Z."""
     P = []
-    P.append(ov.ruby_box(f"{name} web {tag}", cx - CD_TOP / 2, y0, zc + CW_TOP / 2 - HB_T, CD_TOP, ylen, HB_T, color=C_STEEL, alpha=alpha))
+    P.append(ov.ruby_box(f"{name} web {tag}", cx - CD_TOP / 2, y0, zc + CW_TOP / 2 - HB_T, CD_TOP, ylen, HB_T, color=ov.C_ALUM, alpha=alpha))
     for fx in (cx - CD_TOP / 2, cx + CD_TOP / 2 - HB_T):
-        P.append(ov.ruby_box(f"{name} flange {tag} {int(fx)}", fx, y0, zc - CW_TOP / 2, HB_T, ylen, CW_TOP, color=C_STEEL, alpha=alpha))
+        P.append(ov.ruby_box(f"{name} flange {tag} {int(fx)}", fx, y0, zc - CW_TOP / 2, HB_T, ylen, CW_TOP, color=ov.C_ALUM, alpha=alpha))
     return P
 
 
@@ -159,7 +159,7 @@ def emit_slide(label, spec, ox=0, oy=0, oz=0):
 
 
 def corner(tag, cx, fz, zc, cin, side):
-    """One corner on a 304 U-channel depth rail. BOTTOM = web-vertical 4×2 (weight); TOP = flat 3×1.5 (guide).
+    """One corner on a 6061 Al U-channel depth rail. BOTTOM = web-vertical 4×2 (weight); TOP = flat 3×1.5 (guide).
       cx = corner X   fz = film-corner Z   zc = rail web-centre Z   cin = +1 (left) / -1 (right)
       side = 'L' drop-in (stub + welded bridge + removable + support + pinhole gusset) / 'R' flanged."""
     P = []

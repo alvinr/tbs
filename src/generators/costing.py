@@ -222,7 +222,7 @@ PANEL = [
     LineItem("50×50×3mm RHS mild steel — frame perimeter + members (4× 6m)", 120, 140, 160, "Metal Supermarkets"),
     LineItem("1/8\" HDPE — panel skins both faces (4× 4×8 ft)", 493, 493, 493, "US Plastics 46684 1/8\" black HDPE @ $123.34/sheet"),
     LineItem("¾\" PT pine plywood — Fan B mount band + cooler base (full 4×8 sheet)", 70, 70, 70, "2026-07-27: full 4×8 sheet $69.68 (Home Depot 231428) — also yields the cooler stowage base (plywood-base-12 retired)"),
-    LineItem("3mm aluminum plate — corner-zone core plates (×2)", 586, 586, 586, "2026-07-23: firm 5052-H32 .125×48×96 @ $293.16/sheet ×2 (M&K Metal SoCal)"),
+    LineItem("1\"×1\"×1/8\" 6061 Al angle — corner-zone stiffener grid (~8 m)", 31, 44, 55, "2026-07-29: SS/weight audit dropped the redundant solid 3mm 5052 Al core ($586) for a light 1×1×1/8 6061 angle rib grid (−~22 kg, −~$540). Est $4-7/m — confirm SKU at order"),
     LineItem("20mm EPDM gasket — perimeter + housing-surround + cut seals (~21 m)", 24, 38, 52, "OKAYASU 3/4\"×1/8\"×65ft EPDM ×2 rolls (~$52/21m)"),
     LineItem("Aluminum U-channel — gasket + HDPE-skin retention (~40 m)", 120, 160, 200, "Online Metals"),
     LineItem("Southco C2-33 cam compression latch (×4)", 76, 90, 104, "Southco / McMaster"),
@@ -1020,13 +1020,13 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 951,  "total": 1250, "per_print": 25},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "standard": {"chem": 1414, "total": 1710, "per_print": 34},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "rich":     {"chem": 2802, "total": 3100, "per_print": 62},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
-    "grand_total": (26476, 31053, 37682),  # 2026-07-29: +$16 1" PVC recount 2→4 sticks. 2026-07-28: +$37 water (transition-adapter +$8, sump pickup +$45, spray Option 1 −$8). Earlier: external power panel penetration box; MC4 bulkheads, cooler outlet, PV disconnect, spray 90° jets.
+    "grand_total": (25921, 30511, 37151),  # 2026-07-29: +$16 1" PVC recount 2→4 sticks. 2026-07-28: +$37 water (transition-adapter +$8, sump pickup +$45, spray Option 1 −$8). Earlier: external power panel penetration box; MC4 bulkheads, cooler outlet, PV disconnect, spray 90° jets.
     "walkway": (1979, 2395, 2825),  # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
     "water": (6412, 7045, 7679),  # 2026-07-29: 1" PVC recount 2→4 sticks (+$16, IBC internal fill/drain). 2026-07-28: transition-adapter takeoff +$8; sump pickup firmed +$45; spray Option 1 single center feed −$8. Earlier: 90° down-jets 26→39; carbon Aquaboon; SV taps 36903; nitrile; tray shims $295.96.
     "container": (2300, 3300, 4300),
     "lightlock": (2046, 2280, 2516),   # 2026-07-27: light-trap seam silicone firm — Maxisil black 10.5oz $19.91 (+$14/+$10). 2026-07-22: Ø900 housing (46685 3/16" HDPE ×3 = $555) + Ø864 drum firmed to 1/8" black HDPE ×3 = $370.  §6 = hinged-panel §8.2 (housing + drum) line items
     "swingpivot": (1180, 1395, 1610),   # 2026-07-22: journal bushings → igus iglide J JFM-9095-100 $130.53/ea (from GGB DU $211.25) −$162/pair.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame)   # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
-    "panel": (1816, 1919, 2022),       # 2026-07-27: Fan B ply → full ¾" PT 4×8 sheet $69.68 (+$40/+$20, also yields cooler base — plywood-base-12 retired). 2026-07-23: corner core plates 5052-H32 $293.16/sheet ×2.  §6c = hinged-panel §8.1     
+    "panel": (1261, 1377, 1491),       # 2026-07-27: Fan B ply → full ¾" PT 4×8 sheet $69.68 (+$40/+$20, also yields cooler base — plywood-base-12 retired). 2026-07-23: corner core plates 5052-H32 $293.16/sheet ×2.  §6c = hinged-panel §8.1     
     "shelf": (223, 229, 235),          # 2026-07-27: piano hinge firm Würth LSN8-32-600 weld-on $23.56 (was $22.68–35.72). Earlier: Swaner UV-White work surface $73.28.
     "interior": (526, 605, 693),      # 2026-07-27: door pull handle firm McMaster 3570N12 $39.10 (was $5–9 lot, +$34/+$30). Earlier: BEHR Jet Black paint firm.
     "optics": (100, 155, 215),         # 2026-07-23: pinhole → Lenox SS-3/8-DISC $40-100 (config, RFQ)

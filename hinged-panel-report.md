@@ -49,9 +49,9 @@ while keeping the corners flush with the container walls.
 
 | Zone | Width (mm) | Thickness (mm) | Construction |
 |------|--------------|-----------|---------------|-------------|
-| Near corner | 653 | 40 | 1/8" HDPE skin + 3mm Al core + 1/8" HDPE skin (40mm framed); **18mm-ply Fan-B mount band** bottom→1,125mm |
+| Near corner | 653 | 40 | 1/8" HDPE skin + 1"×1"×⅛" 6061 Al stiffener grid + 1/8" HDPE skin (40mm framed); **18mm-ply Fan-B mount band** bottom→1,125mm |
 | Center | 1,056 | 120 | 1/8" HDPE skin + 84mm RHS frame + 1/8" HDPE skin |
-| Far corner | 653 | 40 | 1/8" HDPE skin + 3mm Al core + 1/8" HDPE skin (40mm framed) |
+| Far corner | 653 | 40 | 1/8" HDPE skin + 1"×1"×⅛" 6061 Al stiffener grid + 1/8" HDPE skin (40mm framed) |
 
 The 80mm step between corner and center zones to locate the
 light-trap housing; the corner zones are
@@ -66,7 +66,7 @@ flush-faced panels that seal against the fixed door frame.
 | Skin (each face) | **1/8" HDPE plastic sheet** (rev11; same material as the drum/housing), set in U-channels — black-pigmented, light-tight, moisture/chemical-proof. **Exception:** an 18mm exterior-grade plywood band on the Fan B corner (bottom up to 1,125mm) for rigid fan/duct mounting + screw retention |
 | Interior finish | Black-pigmented sheet (HDPE) + flat-black touch-in — optically dead at visible wavelengths |
 | Frame perimeter | Welded corners, mitered joints |
-| Panel weight (full panel: skins + Ø900 housing + B2 bay, excl. drum) | ~161 kg (first-principles: 119 kg framed skins + 22 kg housing + 21 kg B2 bay). The 1/8"-HDPE-skin swap cut ~82 kg vs the 18mm-ply build. See §2.4–2.5 for the movable breakdown + trade study |
+| Panel weight (full panel: skins + Ø900 housing + B2 bay, excl. drum) | ~139 kg (first-principles: 96 kg framed skins + 22 kg housing + 21 kg B2 bay). The 1/8"-HDPE-skin swap cut ~82 kg vs the 18mm-ply build; the SS/weight audit then dropped the solid 3mm Al corner core for a light Al stiffener grid (−~22 kg). See §2.4–2.5 for the movable breakdown + trade study |
 
 ### 2.3 Perimeter Seals
 
@@ -99,10 +99,10 @@ is slightly lower than the whole-panel figure carried in the
 |-------|-----------|-------------|---:|
 | **A · Skins + frame** | Fan B mount band | 18mm ply, 0.47m × 0.99m, 2 faces | 10.2 |
 | | HDPE corner skins | 1/8" HDPE (near above band + far) | 12.3 |
-| | Corner Al core plates | 3mm 5052 | 20.3 |
+| | Corner Al stiffener grid | 1×1×1/8 6061 angle | 2.8 |
 | | Center RHS frame | 50×50×3 steel SHS, 11.1m | 49.2 |
 | | HDPE center skins | 1/8" HDPE, Ø900 aperture deducted | 11.4 |
-| | **A subtotal** | | **103.4** |
+| | **A subtotal** | | **85.9** |
 | **B · Housing** | HDPE shell + steel flange/hub | Ø900×3/16", two 80° openings | 21.8 |
 | **C · Drum** | HDPE C-shell (1/8") + caps (3/16") + Ø75 shafts + 2× SKF 6215 + stiffeners + grab rail | Ø864 | 35.9 |
 | **D · Bay** | B2 punch-out bay walls | 1/8" HDPE, 4-wall tube 0.89m deep | 20.8 |
@@ -110,10 +110,10 @@ is slightly lower than the whole-panel figure carried in the
 | **F · Seals** | Vertical perimeter + housing EPDM + top/bottom strip brush + drum wipers | 20mm foam + strip/felt brush | 2.7 |
 | **G · Latches** | Cam latches (4) | ~0.5 kg each | 2.0 |
 | **H · Pivot (rotating)** | Thrust/journal bearings + collar/hub | carries leaf at pivot | 13.0 |
-| | **MOVABLE TOTAL (carried-rotating)** | | **≈216** |
+| | **MOVABLE TOTAL (carried-rotating)** | | **≈198** |
 | | *+ transport-only locks (stays + 4 saddles)* | engaged only when swung | +10 |
 
-**By material:** steel 103 kg (48%), HDPE 79 kg (37%), aluminum 20 kg (9%),
+**By material:** steel 103 kg (52%), HDPE 79 kg (40%), aluminum 3 kg (1.4%),
 plywood 10 kg (5%, Fan B band only), EPDM/other 3 kg. (All light-lock plastic —
 skins, drum, bay, housing — is now one weld-compatible HDPE.)
 
@@ -133,9 +133,11 @@ and floats in its channel to absorb its higher thermal expansion. A tighter stif
 channel grid (~400–450mm centers) keeps the floppier 1/8" sheet flat at the EPDM seal
 line. **One exception:** the Fan B corner keeps an **18mm plywood band** (bottom up to
 1,125mm) for rigid fan/duct mounting + screw retention. Net: **~82 kg off** the panel
-(243 → 161 kg). The HDPE skin + U-channel costs more than the ply build it replaces
-(§8.1), buying the weight cut plus a moisture/chemical-proof, light-tight, weld-sealed
-envelope (same material and weld process as the drum/housing).
+from the skin swap (243 → 161 kg); the **SS/weight audit** then dropped the redundant
+solid 3mm Al corner core for a light 1"×1"×⅛" Al stiffener grid (−~22 kg more), so the
+panel now sits at **~139 kg**. The HDPE skin + U-channel costs more than the ply build it
+replaces (§8.1), buying the weight cut plus a moisture/chemical-proof, light-tight,
+weld-sealed envelope (same material and weld process as the drum/housing).
 
 ---
 
@@ -271,7 +273,7 @@ interior equipment.
 
 A grab/pull handle is **through-bolted to the panel's structural frame on the interior
 face** — the **left jamb of the drum aperture**, at waist height — so a single operator
-can grip it and swing the heavy (~161 kg movable) panel open from **inside** the container,
+can grip it and swing the heavy (~139 kg movable) panel open from **inside** the container,
 both for the emergency-egress swing (§4.2) and to initiate the transport rotation (§5). It
 bolts to the steel frame, not the HDPE skin.
 
@@ -425,14 +427,14 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame perimeter + internal members | 4 ea | Metal Supermarkets | $120–$160 |
 | [1/8" black HDPE sheet (48×96)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | Panel skins, both faces (~12 m², 4× 4×8 ft sheets) — rev11, replaces 18mm ply. 1/8" HDPE is nearest stock to the 4mm PANEL_SKIN_T nominal (weld-compatible with the HDPE housing/drum); the U-channel grid (~400–450mm centers) keeps the skin flat, so the 0.8mm is immaterial. US Plastics 46684 $123.34/sheet. | 4 sheet | US Plastics / TAP Plastics | $493 |
 | [Pressure-treated pine plywood (Fan B mount band + cooler base)](https://www.homedepot.com/p/206343229) (231428) | ¾" CC pressure-treated pine, full 4'×8' sheet. Fan B mount band (610×1220mm, one corner bottom→1,125mm) AND the cooler stowage base plate (600×350) are both cut from this one sheet (plywood-base-12 retired 2026-07-27). PT is defensible at the vented cargo-door end; plenty of leftover from one sheet. | 1 4'×8' ¾" sheet | Home Depot | $70 |
-| [3mm aluminum plate 5052-H32 (48×96)](https://www.mkmetal.net/5052-h32sht.125x48x96) (52SH125408) | Corner-zone core plates — 3mm (.125") 5052-H32, 48×96" sheet, one 653mm-wide plate per sheet → 2 sheets. Firm $293.16/sheet (M&K Metal SoCal). | 2 ea | M&K Metal / Industrial Metal Supply | $586 |
+| 1"×1"×1/8" 6061-T6 Al angle — corner-zone stiffener grid (per meter) | Corner-zone anti-oil-can rib grid (replaces the former solid 3mm 5052 Al core — SS/weight audit 2026-07-29, which found the plate redundant: light-tightness is the two black HDPE skins, latch/fan load is the RHS frame + ply band, so the plate only stiffened). Per corner: 1 vertical + 2 horizontal 1"×1"×1/8" (25×25×3.2mm) 6061-T6 angle ribs, ~325×750mm bays, holding both 1/8" HDPE skins flat within the 40mm framed cavity. The leaf is VERTICAL, so skin self-weight is in-plane; the grid only resists out-of-plane oil-can (works with the U-channel skin retainers at ~400-450mm centers, report §2.5). ~7.1m total (both corners) → 8m allows kerf. ~2.9 kg vs the plate's ~25 kg. Est $4-7/m — commodity extrusion; confirm SKU/price at order. | 8 m | Online Metals / Metal Supermarkets | $32–$56 |
 | [20mm EPDM gasket (per meter, closed-cell)](https://www.amazon.com/dp/B089GJQ96Z) (B089GJQ96Z) | Perimeter seal (~10 m) + housing-surround ring (~6 m) + 2× vertical cut seals at Yd180/2287 (~5 m) | 21 m | Amazon (OKAYASU) | $24–$52 |
 | Aluminum U-channel, 1/8-panel (per meter) | Gasket retainer + 1/8" HDPE-skin retention (perimeter + housing-surround + stiffener grid). SECTION: aluminum '1/8-panel' U-channel — inner slot ~3.2mm (captures the 3.18mm/PANEL_SKIN_T HDPE skin), ~10–12mm legs, ~1.5mm wall. TOTAL LENGTH: 40m (pick a stock 1/8-panel profile; only the 3.18mm slot is fixed by the skin). | 40 m | Online Metals | $120–$200 |
 | Southco C2-33 cam compression latch | Interior-mounted corner latches (compress the perimeter + cut + lip seals) | 4 ea | Southco / McMaster-Carr | $76–$104 |
 | [1/8" black HDPE sheet (48×96, ×2)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | B2 punch-out bay — 4-wall light-tight tube (~890mm deep) around the housing (rev11); 4 walls, 2 per 4×8 sheet. 1/8" HDPE nearest stock to 4mm (weld-compatible with the HDPE housing/drum); EPDM lip cut from the panel-epdm perimeter roll (not billed here). US Plastics 46684 $123.34/sheet. | 2 sheet | US Plastics / TAP Plastics | $247 |
 | Flat black paint (RAL 9005) | Bay/weld touch-in (HDPE skins are pre-pigmented black) | 1 qt | Local fab | $10–$20 |
 | [304 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black](https://www.strongarhardware.com/pro-line-series-ladder-pull-handle-back-to-back-matte-black-powder-coated-finish-316-exterior-grade-stainless-steel-alloy/) | Interior pull handle — through-bolted to the frame (§4.3). 304 chosen over 316 (~$186); interior / non-wet location. | 1 ea | StrongAr Hardware | $70–$90 |
-| **Panel total** | | | | **$1,816–$2,022** |
+| **Panel total** | | | | **$1,261–$1,491** |
 <!-- END parts:panel -->
 
 
@@ -488,11 +490,11 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,816<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$2,022<!-- END costing:hp-panel-high --> |
+| Panel structure (incl. B2 bay + pull handle) | <!-- BEGIN costing:hp-panel-low -->$1,261<!-- END costing:hp-panel-low --> | <!-- BEGIN costing:hp-panel-high -->$1,491<!-- END costing:hp-panel-high --> |
 | Housing + drum (plastic skin) | <!-- BEGIN costing:hp-housing-low -->$2,046<!-- END costing:hp-housing-low --> | <!-- BEGIN costing:hp-housing-high -->$2,516<!-- END costing:hp-housing-high --> |
 | Swing pivot hardware | <!-- BEGIN costing:hp-swing-low -->$761<!-- END costing:hp-swing-low --> | <!-- BEGIN costing:hp-swing-high -->$1,011<!-- END costing:hp-swing-high --> |
 | Fixed door frame | <!-- BEGIN costing:hp-doorframe-low -->$419<!-- END costing:hp-doorframe-low --> | <!-- BEGIN costing:hp-doorframe-high -->$599<!-- END costing:hp-doorframe-high --> |
-| **Total** | **<!-- BEGIN costing:hp-total-low -->$5,042<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$6,148<!-- END costing:hp-total-high -->** |
+| **Total** | **<!-- BEGIN costing:hp-total-low -->$4,487<!-- END costing:hp-total-low -->** | **<!-- BEGIN costing:hp-total-high -->$5,617<!-- END costing:hp-total-high -->** |
 
 ---
 

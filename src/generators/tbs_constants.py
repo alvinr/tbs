@@ -205,7 +205,7 @@ def cone_right(y):
 # Center zone (Yd=653–1709): full RHS frame housing the Ø900 light-trap housing.
 # rev (2026-07-22): skin firmed to 1/8" (3.18mm) black HDPE — US Plastics 46684
 # (nearest imperial stock; all light-lock plastic now one weld-compatible material).
-PANEL_CORNER_T    = 40    # corner zone ENVELOPE thickness (mm) — HDPE skin + 3mm Al core + HDPE skin on a 40mm frame
+PANEL_CORNER_T    = 40    # corner zone ENVELOPE thickness (mm) — HDPE skin + 1"×1"×1/8" 6061 Al stiffener grid + HDPE skin on a 40mm frame (was a solid 3mm Al core; SS/weight audit 2026-07-29)
 PANEL_CENTER_T    = 120   # center zone ENVELOPE thickness (mm) — HDPE skin + 84mm RHS frame + HDPE skin
 PANEL_STEP        = PANEL_CENTER_T - PANEL_CORNER_T  # = 80mm step depth
 PANEL_SKIN_T      = 3.18  # panel skin thickness (mm) — 1/8" black HDPE (US Plastics 46684; rev11 was 18mm ply, nom 1/8″ HDPE), U-channel set

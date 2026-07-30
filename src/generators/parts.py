@@ -787,9 +787,9 @@ PARTS: list[Part] = [
          spec='¾" CC pressure-treated pine, full 4\'×8\' sheet. Fan B mount band (610×1220mm, one corner bottom→1,125mm) '
               'AND the cooler stowage base plate (600×350) are both cut from this one sheet (plywood-base-12 retired 2026-07-27). '
               'PT is defensible at the vented cargo-door end; plenty of leftover from one sheet.'),
-    Part("panel-corner-plates", "3mm aluminum plate 5052-H32 (48×96)", "aluminum",
-         "panel", 2, "ea", 293.16, 293.16, "M&K Metal", "Industrial Metal Supply", part_no="52SH125408",
-         url="https://www.mkmetal.net/5052-h32sht.125x48x96", spec="Corner-zone core plates — 3mm (.125\") 5052-H32, 48×96\" sheet, one 653mm-wide plate per sheet → 2 sheets. Firm $293.16/sheet (M&K Metal SoCal)."),
+    Part("panel-corner-stiffener", '1"×1"×1/8" 6061-T6 Al angle — corner-zone stiffener grid (per meter)', "aluminum",
+         "panel", 8, "m", 4, 7, "Online Metals", "Metal Supermarkets",
+         spec="Corner-zone anti-oil-can rib grid (replaces the former solid 3mm 5052 Al core — SS/weight audit 2026-07-29, which found the plate redundant: light-tightness is the two black HDPE skins, latch/fan load is the RHS frame + ply band, so the plate only stiffened). Per corner: 1 vertical + 2 horizontal 1\"×1\"×1/8\" (25×25×3.2mm) 6061-T6 angle ribs, ~325×750mm bays, holding both 1/8\" HDPE skins flat within the 40mm framed cavity. The leaf is VERTICAL, so skin self-weight is in-plane; the grid only resists out-of-plane oil-can (works with the U-channel skin retainers at ~400-450mm centers, report §2.5). ~7.1m total (both corners) → 8m allows kerf. ~2.9 kg vs the plate's ~25 kg. Est $4-7/m — commodity extrusion; confirm SKU/price at order."),
     Part("panel-epdm-gasket", "20mm EPDM gasket (per meter, closed-cell)", "seals-gaskets",
          "panel", 21, "m", 1.13, 2.46, "Amazon (OKAYASU)", spec="Perimeter seal (~10 m) + housing-surround ring (~6 m) + 2× vertical cut seals at Yd180/2287 (~5 m)", part_no="B089GJQ96Z", url="https://www.amazon.com/dp/B089GJQ96Z"),
     Part("panel-u-channel", "Aluminum U-channel, 1/8-panel (per meter)", "aluminum",

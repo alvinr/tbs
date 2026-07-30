@@ -38,7 +38,7 @@ BG      = "#FFFFFF"   # white background
 C_OUT   = "#1A1A1A"   # outlines
 C_CL    = "#2060A0"   # center lines (blue, dashed)
 C_DIM   = "#404040"   # dimensions / annotation text
-C_ALUM  = "#C8D8E8"   # aluminum (3mm corner core plate)
+C_ALUM  = "#C8D8E8"   # aluminum (corner stiffener rib)
 C_STEEL = "#B0B0B8"   # steel section fill
 C_GASKT = "#5A3020"   # EPDM gasket fill
 C_WOOD    = "#C9A36B"  # plywood — Fan B mount band (rev11 material legend)
@@ -467,17 +467,18 @@ def sheet2():
             fontweight="bold", zorder=15)
 
     # ── CORNER ZONES (40mm envelope, Yd=0→653 and Yd=1709→2362) ──────────────
-    # rev11: 1/8″ HDPE skin + framed HOLLOW core (3mm Al stiffener mid) + 1/8″ HDPE skin.
-    # The 40mm envelope is unchanged (frame depth); only the skins changed material.
+    # rev11: 1/8″ HDPE skin + framed HOLLOW core (Al stiffener rib grid) + 1/8″ HDPE skin.
+    # The 40mm envelope is unchanged (frame depth). SS/weight audit 2026-07-29: the former
+    # solid 3mm Al core is replaced by a 1"×1"×1/8" 6061 Al angle rib grid (redundant plate
+    # dropped) — one VERTICAL rib per corner shows in this horizontal cut as an angle section.
     CORN_SKIN  = PANEL_SKIN_T                     # 1/8″ HDPE skin each face
-    CORN_PLATE = 3                               # 3mm Al core stiffener
+    RIB        = 25                              # 1"×1"×1/8" Al stiffener rib (angle leg)
     CORN_Y_OUT = Y1_W                            # 40 — outer face (= wall inner face)
     CORN_Y_IN  = Y1_W + CORNER_T                  # 80 — inner face (40mm envelope)
-    al_mid = CORN_Y_OUT + CORNER_T / 2 - CORN_PLATE / 2
 
     # This section is cut at H=1000mm — BELOW the Fan B ply-band top (1125mm), so the
     # NEAR corner (Yd 0→653, the fan side) is cut through the 18mm PLYWOOD band, while
-    # the FAR corner is the 1/8″ HDPE skin. Both keep the 40mm envelope + 3mm Al core.
+    # the FAR corner is the 1/8″ HDPE skin. Both keep the 40mm envelope + Al stiffener rib.
     for x0, x1, skin_c, skin_t in [(0, STEP_YD_L, C_WOOD, 18),
                                     (STEP_YD_R, PW, C_PLASTIC, CORN_SKIN)]:
         w = x1 - x0
@@ -489,8 +490,9 @@ def sheet2():
                                 fc=skin_c, ec=C_OUT, lw=0.8, zorder=3.1))
         ax.add_patch(Rectangle((x0, CORN_Y_IN - skin_t), w, skin_t,
                                 fc=skin_c, ec=C_OUT, lw=0.8, zorder=3.1))
-        # 3mm Al core stiffener (mid)
-        ax.add_patch(Rectangle((x0, al_mid), w, CORN_PLATE,
+        # Al stiffener rib (vertical, one per corner) — angle section at the corner mid-width
+        xr = (x0 + x1) / 2 - RIB / 2
+        ax.add_patch(Rectangle((xr, CORN_Y_OUT + skin_t), RIB, RIB,
                                 fc=C_ALUM, ec=C_OUT, lw=0.6, hatch="xx", zorder=3.2))
 
     # ── Step transition lines ─────────────────────────────────────────────────
@@ -718,7 +720,7 @@ def sheet2():
     draw_legend(ax, [
         (C_PLASTIC, "1/8″ HDPE skin + B2 bay"),
         (C_WOOD, "18mm ply — Fan B mount band"),
-        (C_ALUM, "3mm Al corner core"),
+        (C_ALUM, "Al corner stiffener rib"),
         (C_STEEL, "steel RHS frame / wall"),
         (C_GASKT, "20mm EPDM seal"),
     ], X_LO + 20, (Y_LO + Y_HI) / 2 + 160, title="MATERIALS", fs=6, col_w=420)

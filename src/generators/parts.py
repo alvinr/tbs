@@ -433,7 +433,7 @@ PARTS: list[Part] = [
     Part("spray-arm-adapter", "Arm-to-stud adapter, turned 6061-T6 AL (anodized)", "aluminum",
          "spray", 1, "ea", 12, 18, "Local machine shop", spec="Reducer coupling: M12×1.75 tapped bore (onto the ball-joint stud, locked with an M12 jam nut) → Ø21 male spigot the slit arm tube slips over. ~40mm long; anodized to match the AL tube (galvanic). Turned one-off / est."),
     Part("spray-arm-jamnut", "M12×1.75 jam nut, SS", "fasteners-hardware",
-         "spray", 1, "ea", 0.7, 0.9, "Amazon", spec="Locks the arm adapter on the ball-joint M12 stud (M12×1.75 coarse).", part_no="B007IA07PS", url="https://www.amazon.com/M12-1-75-Plain-Finish-Stainless-Steel/dp/B007IA07PS"),
+         "spray", 1, "ea", 8.38 / 10, 8.38 / 10, "McMaster-Carr", spec="Locks the arm adapter on the ball-joint M12 stud. McMaster 90381A102: 18-8 SS thin-profile hex nut, M12×1.75 coarse — confirmed vs the 90381A102 PDF 2026-07-29 (matches the stud + arm-adapter bore). $8.38/pack of 10.", part_no="90381A102", url="https://www.mcmaster.com/90381A102/"),
     Part("spray-arm-collar", "Clamp-style shaft collar, 25mm/1\" bore, SS", "fasteners-hardware",
          "spray", 1, "ea", 28, 33, "Ruland", spec="Over the slit arm-tube bottom; its integral clamp screw squeezes the Ø25×2 tube onto the adapter's Ø21 spigot — rotational adjust + lift-off for transport. Replaces the loose M6 pinch bolt. Confirm SKU/bore/price at order.", part_no="CL-16-ST", url="https://www.ruland.com/cl-16-st.html"),
     Part("spray-zip-ties", "Nylon zip ties, 200mm", "fasteners-hardware",

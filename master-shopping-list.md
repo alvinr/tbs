@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $4,328 | $4,866 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,412 | $7,679 |
-| 6. Electrical — power, circuits, wiring | $3,026 | $3,086 |
+| 6. Electrical — power, circuits, wiring | $3,101 | $3,161 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,979 | $2,825 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,905** | **~$34,226** |
+| **TOTAL (base build + 50-print run)** | **~$25,980** | **~$34,301** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -129,7 +129,7 @@ indicative low–high estimates — get quotes before ordering.
 | [10mm split corrugated wire loom, drop runs](https://www.amazon.com/Split-Wire-Loom-Tubing-Polyethylene/dp/B017L3GWIW) (B017L3GWIW) | 10 m | Amazon | electrical | $25 |
 | [12 AWG tinned hook-up wire, black — 100ft (Circuit F)](https://www.waytekwire.com/product/wrt12-0-hook-up-wire-tinned-copper) (WRT12-0) | 1 spool | Waytek Wire | electrical | $13 |
 | [12 AWG tinned hook-up wire, red — 100ft (Circuit F)](https://www.waytekwire.com/product/wrt12-2-hook-up-wire-tinned-copper) (WRT12-2) | 1 spool | Waytek Wire | electrical | $13 |
-| [12V LED flat panel 1×2ft (~300×600mm), 4000K](https://www.superbrightleds.com/catalog/product/view/id/133638/) (LP-NW6030-40-12V) | 3 ea | Super Bright LEDs | electrical | $75 |
+| [12V LED task panel 6×6in, 4000K (412 lm, flush-mount)](https://www.superbrightleds.com/vehicle-lights/interior-and-utility-led-vehicle-lights/vehicle-led-dome-lights/square-led-panel-light-vehicle-and-trailer-12v-led-task-light-6in-x-6in-412-lumens-flush-mount+color-natural~4000k) (VTL-NW1515) | 3 ea | Super Bright LEDs | electrical | $150 |
 | 14 AWG duplex marine wire | 1 roll | Waytek Wire | water | $22 |
 | [14 AWG tinned hook-up wire, black — 100ft (Circuit C feed / AC)](https://www.waytekwire.com/product/wrt14-0-hook-up-wire-tinned-copper) (WRT14-0) | 1 spool | Waytek Wire | electrical | $14 |
 | [14 AWG tinned hook-up wire, red — 100ft (Circuit C feed / AC)](https://www.waytekwire.com/product/wrt14-2-hook-up-wire-tinned-copper) (WRT14-2) | 1 spool | Waytek Wire | electrical | $14 |
@@ -169,7 +169,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Remote battery switch — Blue Sea ML-RBS 500A magnetic-latch (E-stop trip)](https://www.invertersupply.com/index.php?main_page=product_info&products_id=5288) (7700) | 1 ea | Inverter Supply | electrical | $264 |
 | Sealed wet-zone connectors — Deutsch DT / adhesive heat-shrink | 1 lot | Waytek Wire | electrical | $25 |
 | [Shore-charger output fuse — 20A inline (sealed holder + fuse)](https://www.waytekwire.com/product/sealed-ato-atc-fuse-holder-assembly-46047) (46047) | 1 ea | Waytek Wire | electrical | $7 |
-| **electrical-distribution subtotal** | | | | **$1,647–$1,652** |
+| **electrical-distribution subtotal** | | | | **$1,722–$1,727** |
 
 ### electrical-power
 
@@ -465,6 +465,7 @@ indicative low–high estimates — get quotes before ordering.
 | Amazon (bundle) | 1 | seals-gaskets | $157–$178 |
 | Harbor Freight | 1 | fasteners-hardware | $115–$173 |
 | Inverter Service Center | 1 | electrical-power | $152 |
+| Super Bright LEDs | 1 | electrical-distribution | $150 |
 | Fasteners Plus | 2 | fasteners-hardware | $106–$136 |
 | McNichols | 2 | fasteners-hardware, plastics-sheet | $80–$115 |
 | Southco | 1 | fasteners-hardware | $76–$104 |
@@ -473,7 +474,6 @@ indicative low–high estimates — get quotes before ordering.
 | Hardware store | 3 | adhesives-finishes, seals-gaskets | $57–$92 |
 | StrongAr Hardware | 1 | fasteners-hardware | $70–$90 |
 | Fresh Water Systems | 2 | fasteners-hardware, water-equipment | $82 |
-| Super Bright LEDs | 1 | electrical-distribution | $75 |
 | Frost King + Canal Rubber | 1 | seals-gaskets | $40–$75 |
 | TAP Plastics | 1 | plastics-sheet | $30–$70 |
 | Blue Sea | 2 | electrical-distribution | $61 |

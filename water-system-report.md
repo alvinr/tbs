@@ -98,7 +98,7 @@ leaves saturated to dry), **evaporation** from the open spray-wash tray, and **u
 (tray-surface film, the sump dead-volume below the P-04 pickup, hose/manifold hold-up). This loss is *why
 two <!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L collection totes balance the supply* — they are sized for the recovered fraction, not full
 throughput. (The [weight report](weight-distribution-report.md) carries the same ~<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l -->L recovered figure
-for its exhausted-state transport mass — 4,590 kg, ~540 kg below the loaded state.)
+for its exhausted-state transport mass — 4,546 kg, ~540 kg below the loaded state.)
 
 #### Extending capacity beyond 14 prints
 

@@ -165,7 +165,7 @@ All items ship within the United States. Local Southern California pickup noted 
 <!-- BEGIN parts:film -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| 6061-T6 Al U-channel depth rail 3×1½" (76×38mm) | 4 depth rails, one per corner, running wall-to-wall (~2,362mm, Yd0→C_WID) along the optical axis — an acetal skate rides inside each to set that corner's depth/focus. 6061-T6 aluminum, SAME 76×38 section (SS audit 2026-07-29 — was 304 @ McMaster $362/6ft = $2,173, the single biggest SS line). Structural check: 6061-T6 yield (~276 MPa) EXCEEDS annealed 304 (~215 MPa) so strength is fine; the ~3× lower E gives ~1mm sag vs ~0.4mm over the 2.36m span — optically irrelevant at f/1088, and flatness is carried by the ACM backing (same logic as the Al frame). Also ~34 kg lighter across the 4 rails. SOURCING: each rail must be ONE continuous piece ≥2,362mm (the skate can't cross a splice). McMaster 1630T31 (6061 Al, correct 3×1½ profile) comes only in 5ft (1,524mm) — TOO SHORT — so order 4× ≥2.4m continuous CUT lengths from Metal Supermarkets (cut-to-length from 20ft stock, no length limit). Qty 6× (6ft-equivalent) here is the conservative $-estimate; the real buy is 4× ~2.4m. Est $95–130 per rail — confirm the cut price at order (Alvin 2026-07-29: 1630T31 profile confirmed, 5ft length insufficient). | 6 ea | Metal Supermarkets / McMaster-Carr | $570–$780 |
+| [6061-T6 Al U-channel depth rail 3×1½"×0.2" (76×38mm), 8 ft](https://www.grainger.com/product/795M51) (795M51) | 4 depth rails, one per corner, running wall-to-wall (~2,362mm, Yd0→C_WID) along the optical axis — an acetal skate rides inside each to set that corner's depth/focus. 6061-T6 aluminum, SAME 76×38 section (SS audit 2026-07-29 — was 304 @ McMaster $362/6ft = $2,173, the single biggest SS line). Structural check: 6061-T6 yield (~276 MPa) EXCEEDS annealed 304 (~215 MPa) so strength is fine; the ~3× lower E gives ~1mm sag vs ~0.4mm over the 2.36m span — optically irrelevant at f/1088, and flatness is carried by the ACM backing (same logic as the Al frame). Also ~34 kg lighter across the 4 rails. SOURCING: each rail must be ONE continuous piece ≥2,362mm (the skate can't cross a splice). Grainger 795M51 (6061 Al U-channel, 3×1½×0.2" wall) is stocked in 8 ft (2,438mm) lengths — one uncut stick spans the 2,362mm rail with margin, so 4 sticks = 4 rails, no splice. $81.99/8ft firm (Alvin 2026-07-29). | 4 ea | Grainger | $328 |
 | [Ruland USKC12-6-6-SS U-joint (keyway+clamp, 303 SS)](https://www.ruland.com/uskc12-6-6-ss.html) (USKC12-6-6-SS) | One per corner — supplies the tilt+swing angular DOF (45°/axis); 3/8" bores, 303 stainless (wet zone), twist-locked. $276 ea firm — INTERIM part; a cheaper joint is under research (see TODO). The U-joint alone is $276×4 = $1,104. | 4 ea | Ruland | $1,104 |
 | [Ruland UBOOT12/19-NI-KIT nitrile boot](https://www.ruland.com/uboot12-19-ni-kit.html) (UBOOT12/19-NI-KIT) | Nitrile boot over each U-joint — keeps cyanotype splash out of the joint. | 4 ea | Ruland | $122 |
 | [McMaster 4040N12 304 shaft support](https://www.mcmaster.com/4040N12/) (4040N12) | Two-piece 304 clamp securing the U-joint INPUT stub to the X (swing) slide, one per corner. $58 ea firm. | 4 ea | McMaster-Carr | $232 |
@@ -191,7 +191,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | [M8×25mm knurled thumbscrew DIN 464](https://www.mcmaster.com/92581A540/) (92581A540) | ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare | 12 ea | McMaster-Carr / Maedler | $142 |
 | [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — right-rail end fixing (ICP-14)](https://www.mcmaster.com/91280A534/) (91280A534) | ICP-14: right depth-rail end flange → wall seat hold-down (does NOT cross the wall). Grip = 3/16" (4.76mm) 1262T21 channel base + 10mm seat ≈ 15mm → M8×25 (short → fully threaded). Pitch M8×1.25 coarse (matches the M8 plain nut). $18.51/pack of 50. ⚠ VALIDATE: 91280A534 is zinc — the film plane wets during development; a 316-SS M8×25 resists corrosion better. | 8 ea | McMaster-Carr | $3 |
 | [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | Plain hex nut — M8 right-rail fixing. Pitch M8×1.25 coarse — confirmed vs 90591A161 PDF 2026-07-29 (matches the bolt). $7.53/pack of 100. | 8 ea | McMaster-Carr | $1 |
-| **Film total** | | | | **$4,425–$5,075** |
+| **Film total** | | | | **$4,183–$4,623** |
 <!-- END parts:film -->
 
 *The corner-mechanism hardware (U-channel depth rails, acetal skates, Z/X cross-slides, and the
@@ -216,12 +216,12 @@ Each of the **8 rail ends** anchors to the container — **6 of them** with a st
 
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
 
-**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$4,570<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
+**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$4,328<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
 *Excludes fasteners and fabrication labor.*
 
 ### Local SoCal Metal Sourcing
 
-- **Metal Supermarkets** — Anaheim (714-630-8463), Van Nuys (818-988-1301), San Diego (619-280-7600). Cut-to-length 6061 Al U-channel, 304 flat bar, and aluminum angle on-site, no minimum order.
+- **Metal Supermarkets** — Anaheim (714-630-8463), Van Nuys (818-988-1301), San Diego (619-280-7600). Cut-to-length 304 flat bar and aluminum angle on-site, no minimum order. (The U-channel depth rails now ship as Grainger 795M51 8 ft sticks — one uncut per rail, no cutting needed.)
 - **Grimco** — City of Industry, CA. Sign-industry ACM panel supplier, large sheet stock.
 - **McMaster-Carr** — aluminum U-channel, 304 shaft supports, acetal rollers, 304 axle rod, and cam clamps; ships nationally.
 - **Ruland** — universal joints (USKC12-6-6-SS) and nitrile boot kits; ships nationally.

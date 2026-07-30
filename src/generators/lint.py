@@ -167,8 +167,11 @@ def warn_parts_identity() -> tuple[bool, list[str]]:
     mismatch, no_url = [], []
     for p in parts.PARTS:
         pn, url = (p.part_no or "").strip(), (p.url or "").strip()
-        if pn and _MM_SKU.match(pn) and "McMaster" not in (p.supplier or ""):
-            mismatch.append(f"{p.key}: McMaster-format SKU {pn} but supplier is {p.supplier!r}")
+        if pn and _MM_SKU.match(pn) and "McMaster" not in (p.supplier or "") and not url:
+            # Only a risk when the URL is auto-guessed: the worklist would fabricate
+            # mcmaster.com/<sku> for a non-McMaster row. An explicit URL disambiguates —
+            # Grainger (e.g. 795M51) legitimately shares McMaster's alphanumeric SKU format.
+            mismatch.append(f"{p.key}: McMaster-format SKU {pn}, non-McMaster supplier {p.supplier!r}, and no explicit URL")
         if pn and not url:
             no_url.append(f"{p.key}: has SKU {pn} but no url (auto-guessed, unverified)")
     msgs = mismatch + no_url

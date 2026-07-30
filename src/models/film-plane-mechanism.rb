@@ -45,7 +45,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(76.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -56,7 +56,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -67,7 +67,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -78,7 +78,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(9.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -89,7 +89,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(76.mm)
   mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 0.3
   grp.material = mat
 
@@ -100,7 +100,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 0.3
   grp.material = mat
 
@@ -111,7 +111,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 0.3
   grp.material = mat
 
@@ -122,7 +122,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(9.mm)
   mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 0.3
   grp.material = mat
 
@@ -145,7 +145,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(17.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -376,7 +376,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -387,7 +387,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([176.mm,2261.mm,149.mm], [199.mm,2261.mm,149.mm], [199.mm,2279.mm,149.mm], [176.mm,2279.mm,149.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -400,7 +400,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -411,7 +411,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([136.mm,2254.mm,165.mm], [170.mm,2254.mm,165.mm], [170.mm,2270.mm,165.mm], [136.mm,2270.mm,165.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -424,7 +424,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -436,7 +436,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(76.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -447,7 +447,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -458,7 +458,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -469,7 +469,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(9.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -677,7 +677,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -688,7 +688,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4575.mm,2261.mm,149.mm], [4598.mm,2261.mm,149.mm], [4598.mm,2279.mm,149.mm], [4575.mm,2279.mm,149.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -701,7 +701,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -712,7 +712,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4604.mm,2254.mm,165.mm], [4638.mm,2254.mm,165.mm], [4638.mm,2270.mm,165.mm], [4604.mm,2270.mm,165.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -725,7 +725,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -737,7 +737,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -748,7 +748,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -759,7 +759,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -770,7 +770,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 0.3
   grp.material = mat
 
@@ -781,7 +781,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 0.3
   grp.material = mat
 
@@ -792,7 +792,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 0.3
   grp.material = mat
 
@@ -815,7 +815,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(17.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1027,7 +1027,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1038,7 +1038,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([176.mm,2261.mm,2279.mm], [199.mm,2261.mm,2279.mm], [199.mm,2279.mm,2279.mm], [176.mm,2279.mm,2279.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1051,7 +1051,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1062,7 +1062,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([136.mm,2254.mm,2245.mm], [170.mm,2254.mm,2245.mm], [170.mm,2270.mm,2245.mm], [136.mm,2270.mm,2245.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1075,7 +1075,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1087,7 +1087,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1098,7 +1098,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1109,7 +1109,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -1309,7 +1309,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1320,7 +1320,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4575.mm,2261.mm,2279.mm], [4598.mm,2261.mm,2279.mm], [4598.mm,2279.mm,2279.mm], [4575.mm,2279.mm,2279.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1333,7 +1333,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1344,7 +1344,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4604.mm,2254.mm,2245.mm], [4638.mm,2254.mm,2245.mm], [4638.mm,2270.mm,2245.mm], [4604.mm,2270.mm,2245.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1357,7 +1357,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1571,7 +1571,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([638.mm,0.mm,0.mm], [758.mm,0.mm,0.mm], [758.mm,8.mm,0.mm], [638.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1621,7 +1621,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([694.mm,8.mm,105.mm], [702.mm,8.mm,105.mm], [702.mm,300.mm,105.mm], [694.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1632,7 +1632,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([694.mm,8.mm,0.mm], [694.mm,8.mm,105.mm], [694.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1643,7 +1643,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([1095.mm,0.mm,0.mm], [1215.mm,0.mm,0.mm], [1215.mm,10.mm,0.mm], [1095.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1706,7 +1706,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([1150.mm,10.mm,103.mm], [1160.mm,10.mm,103.mm], [1160.mm,500.mm,103.mm], [1150.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1717,7 +1717,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([1150.mm,10.mm,0.mm], [1150.mm,10.mm,103.mm], [1150.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1728,7 +1728,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([1552.mm,0.mm,0.mm], [1672.mm,0.mm,0.mm], [1672.mm,10.mm,0.mm], [1552.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1791,7 +1791,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([1607.mm,10.mm,103.mm], [1617.mm,10.mm,103.mm], [1617.mm,500.mm,103.mm], [1607.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1802,7 +1802,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([1607.mm,10.mm,0.mm], [1607.mm,10.mm,103.mm], [1607.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1813,7 +1813,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2009.mm,0.mm,0.mm], [2129.mm,0.mm,0.mm], [2129.mm,10.mm,0.mm], [2009.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1876,7 +1876,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2064.mm,10.mm,103.mm], [2074.mm,10.mm,103.mm], [2074.mm,500.mm,103.mm], [2064.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1887,7 +1887,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([2064.mm,10.mm,0.mm], [2064.mm,10.mm,103.mm], [2064.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1898,7 +1898,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2466.mm,0.mm,0.mm], [2586.mm,0.mm,0.mm], [2586.mm,10.mm,0.mm], [2466.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1961,7 +1961,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2521.mm,10.mm,103.mm], [2531.mm,10.mm,103.mm], [2531.mm,500.mm,103.mm], [2521.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1972,7 +1972,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([2521.mm,10.mm,0.mm], [2521.mm,10.mm,103.mm], [2521.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -1983,7 +1983,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2923.mm,0.mm,0.mm], [3043.mm,0.mm,0.mm], [3043.mm,10.mm,0.mm], [2923.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2046,7 +2046,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2978.mm,10.mm,103.mm], [2988.mm,10.mm,103.mm], [2988.mm,500.mm,103.mm], [2978.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2057,7 +2057,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([2978.mm,10.mm,0.mm], [2978.mm,10.mm,103.mm], [2978.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2068,7 +2068,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([3380.mm,0.mm,0.mm], [3500.mm,0.mm,0.mm], [3500.mm,8.mm,0.mm], [3380.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2118,7 +2118,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([3436.mm,8.mm,105.mm], [3444.mm,8.mm,105.mm], [3444.mm,300.mm,105.mm], [3436.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2129,7 +2129,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([3436.mm,8.mm,0.mm], [3436.mm,8.mm,105.mm], [3436.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2140,7 +2140,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([3837.mm,0.mm,0.mm], [3957.mm,0.mm,0.mm], [3957.mm,8.mm,0.mm], [3837.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2190,7 +2190,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([3893.mm,8.mm,105.mm], [3901.mm,8.mm,105.mm], [3901.mm,300.mm,105.mm], [3893.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2201,7 +2201,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([3893.mm,8.mm,0.mm], [3893.mm,8.mm,105.mm], [3893.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2212,7 +2212,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([638.mm,2354.mm,0.mm], [758.mm,2354.mm,0.mm], [758.mm,2362.mm,0.mm], [638.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2262,7 +2262,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([694.mm,2062.mm,105.mm], [702.mm,2062.mm,105.mm], [702.mm,2354.mm,105.mm], [694.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2273,7 +2273,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([694.mm,2354.mm,0.mm], [694.mm,2354.mm,105.mm], [694.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2284,7 +2284,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([1095.mm,2354.mm,0.mm], [1215.mm,2354.mm,0.mm], [1215.mm,2362.mm,0.mm], [1095.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2334,7 +2334,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([1151.mm,2062.mm,105.mm], [1159.mm,2062.mm,105.mm], [1159.mm,2354.mm,105.mm], [1151.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2345,7 +2345,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([1151.mm,2354.mm,0.mm], [1151.mm,2354.mm,105.mm], [1151.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2356,7 +2356,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([1552.mm,2354.mm,0.mm], [1672.mm,2354.mm,0.mm], [1672.mm,2362.mm,0.mm], [1552.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2406,7 +2406,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([1608.mm,2062.mm,105.mm], [1616.mm,2062.mm,105.mm], [1616.mm,2354.mm,105.mm], [1608.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2417,7 +2417,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([1608.mm,2354.mm,0.mm], [1608.mm,2354.mm,105.mm], [1608.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2428,7 +2428,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2009.mm,2354.mm,0.mm], [2129.mm,2354.mm,0.mm], [2129.mm,2362.mm,0.mm], [2009.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2478,7 +2478,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2065.mm,2062.mm,105.mm], [2073.mm,2062.mm,105.mm], [2073.mm,2354.mm,105.mm], [2065.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2489,7 +2489,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([2065.mm,2354.mm,0.mm], [2065.mm,2354.mm,105.mm], [2065.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2500,7 +2500,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2466.mm,2354.mm,0.mm], [2586.mm,2354.mm,0.mm], [2586.mm,2362.mm,0.mm], [2466.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2550,7 +2550,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2522.mm,2062.mm,105.mm], [2530.mm,2062.mm,105.mm], [2530.mm,2354.mm,105.mm], [2522.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2561,7 +2561,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([2522.mm,2354.mm,0.mm], [2522.mm,2354.mm,105.mm], [2522.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2572,7 +2572,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2923.mm,2354.mm,0.mm], [3043.mm,2354.mm,0.mm], [3043.mm,2362.mm,0.mm], [2923.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2622,7 +2622,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([2979.mm,2062.mm,105.mm], [2987.mm,2062.mm,105.mm], [2987.mm,2354.mm,105.mm], [2979.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2633,7 +2633,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([2979.mm,2354.mm,0.mm], [2979.mm,2354.mm,105.mm], [2979.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2644,7 +2644,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([3380.mm,2354.mm,0.mm], [3500.mm,2354.mm,0.mm], [3500.mm,2362.mm,0.mm], [3380.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2694,7 +2694,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([3436.mm,2062.mm,105.mm], [3444.mm,2062.mm,105.mm], [3444.mm,2354.mm,105.mm], [3436.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2705,7 +2705,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([3436.mm,2354.mm,0.mm], [3436.mm,2354.mm,105.mm], [3436.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2716,7 +2716,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([3837.mm,2354.mm,0.mm], [3957.mm,2354.mm,0.mm], [3957.mm,2362.mm,0.mm], [3837.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2766,7 +2766,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([3893.mm,2062.mm,105.mm], [3901.mm,2062.mm,105.mm], [3901.mm,2354.mm,105.mm], [3893.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2777,7 +2777,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   ge = grp.entities
   f = ge.add_face([3893.mm,2354.mm,0.mm], [3893.mm,2354.mm,105.mm], [3893.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2788,7 +2788,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([38.mm,220.mm,0.mm], [166.mm,220.mm,0.mm], [166.mm,280.mm,0.mm], [38.mm,280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2799,7 +2799,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([115.mm,220.mm,0.mm], [165.mm,220.mm,0.mm], [165.mm,280.mm,0.mm], [115.mm,280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2810,7 +2810,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([165.mm,230.mm,75.mm], [470.mm,230.mm,75.mm], [470.mm,270.mm,75.mm], [165.mm,270.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2821,7 +2821,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([38.mm,770.mm,0.mm], [166.mm,770.mm,0.mm], [166.mm,830.mm,0.mm], [38.mm,830.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2832,7 +2832,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([115.mm,770.mm,0.mm], [165.mm,770.mm,0.mm], [165.mm,830.mm,0.mm], [115.mm,830.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2843,7 +2843,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([165.mm,770.mm,75.mm], [770.mm,770.mm,75.mm], [770.mm,830.mm,75.mm], [165.mm,830.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2854,7 +2854,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([38.mm,1150.mm,0.mm], [166.mm,1150.mm,0.mm], [166.mm,1210.mm,0.mm], [38.mm,1210.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2865,7 +2865,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([115.mm,1150.mm,0.mm], [165.mm,1150.mm,0.mm], [165.mm,1210.mm,0.mm], [115.mm,1210.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2876,7 +2876,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([165.mm,1150.mm,75.mm], [770.mm,1150.mm,75.mm], [770.mm,1210.mm,75.mm], [165.mm,1210.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2887,7 +2887,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([38.mm,1530.mm,0.mm], [166.mm,1530.mm,0.mm], [166.mm,1590.mm,0.mm], [38.mm,1590.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2898,7 +2898,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([115.mm,1530.mm,0.mm], [165.mm,1530.mm,0.mm], [165.mm,1590.mm,0.mm], [115.mm,1590.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2909,7 +2909,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([165.mm,1530.mm,75.mm], [770.mm,1530.mm,75.mm], [770.mm,1590.mm,75.mm], [165.mm,1590.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2920,7 +2920,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([38.mm,2080.mm,0.mm], [166.mm,2080.mm,0.mm], [166.mm,2140.mm,0.mm], [38.mm,2140.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2931,7 +2931,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([115.mm,2080.mm,0.mm], [165.mm,2080.mm,0.mm], [165.mm,2140.mm,0.mm], [115.mm,2140.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2942,7 +2942,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([165.mm,2090.mm,75.mm], [470.mm,2090.mm,75.mm], [470.mm,2130.mm,75.mm], [165.mm,2130.mm,75.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2953,7 +2953,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4574.mm,0.mm,58.mm], [4724.mm,0.mm,58.mm], [4724.mm,10.mm,58.mm], [4574.mm,10.mm,58.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(177.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2964,7 +2964,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4574.mm,-50.mm,58.mm], [4724.mm,-50.mm,58.mm], [4724.mm,-40.mm,58.mm], [4574.mm,-40.mm,58.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(177.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2975,7 +2975,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4574.mm,0.mm,58.mm], [4724.mm,0.mm,58.mm], [4724.mm,55.mm,58.mm], [4574.mm,55.mm,58.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2986,7 +2986,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4619.mm,0.mm,148.mm], [4679.mm,0.mm,148.mm], [4679.mm,55.mm,148.mm], [4619.mm,55.mm,148.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -2999,7 +2999,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3012,7 +3012,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3025,7 +3025,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3038,7 +3038,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3049,7 +3049,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4574.mm,2352.mm,58.mm], [4724.mm,2352.mm,58.mm], [4724.mm,2362.mm,58.mm], [4574.mm,2362.mm,58.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(177.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3060,7 +3060,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4574.mm,2402.mm,58.mm], [4724.mm,2402.mm,58.mm], [4724.mm,2412.mm,58.mm], [4574.mm,2412.mm,58.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(177.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3071,7 +3071,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4574.mm,2307.mm,58.mm], [4724.mm,2307.mm,58.mm], [4724.mm,2362.mm,58.mm], [4574.mm,2362.mm,58.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3082,7 +3082,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4619.mm,2307.mm,148.mm], [4679.mm,2307.mm,148.mm], [4679.mm,2362.mm,148.mm], [4619.mm,2362.mm,148.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3095,7 +3095,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3108,7 +3108,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3121,7 +3121,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3134,7 +3134,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3145,7 +3145,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4654.mm,1046.mm,0.mm], [4704.mm,1046.mm,0.mm], [4704.mm,1096.mm,0.mm], [4654.mm,1096.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2296.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3156,7 +3156,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4654.mm,1266.mm,0.mm], [4704.mm,1266.mm,0.mm], [4704.mm,1316.mm,0.mm], [4654.mm,1316.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2296.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3167,7 +3167,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([5104.mm,1046.mm,0.mm], [5154.mm,1046.mm,0.mm], [5154.mm,1096.mm,0.mm], [5104.mm,1096.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2296.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3178,7 +3178,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([5104.mm,1266.mm,0.mm], [5154.mm,1266.mm,0.mm], [5154.mm,1316.mm,0.mm], [5104.mm,1316.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2296.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3189,7 +3189,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4654.mm,1096.mm,0.mm], [4704.mm,1096.mm,0.mm], [4704.mm,1266.mm,0.mm], [4654.mm,1266.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3200,7 +3200,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([5104.mm,1096.mm,0.mm], [5154.mm,1096.mm,0.mm], [5154.mm,1266.mm,0.mm], [5104.mm,1266.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3211,7 +3211,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4704.mm,1046.mm,0.mm], [5104.mm,1046.mm,0.mm], [5104.mm,1096.mm,0.mm], [4704.mm,1096.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3222,7 +3222,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4704.mm,1266.mm,0.mm], [5104.mm,1266.mm,0.mm], [5104.mm,1316.mm,0.mm], [4704.mm,1316.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3233,7 +3233,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4654.mm,1096.mm,2246.mm], [4704.mm,1096.mm,2246.mm], [4704.mm,1266.mm,2246.mm], [4654.mm,1266.mm,2246.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3244,7 +3244,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([5104.mm,1096.mm,2246.mm], [5154.mm,1096.mm,2246.mm], [5154.mm,1266.mm,2246.mm], [5104.mm,1266.mm,2246.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3255,7 +3255,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4704.mm,1046.mm,2246.mm], [5104.mm,1046.mm,2246.mm], [5104.mm,1096.mm,2246.mm], [4704.mm,1096.mm,2246.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3266,7 +3266,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4704.mm,1266.mm,2246.mm], [5104.mm,1266.mm,2246.mm], [5104.mm,1316.mm,2246.mm], [4704.mm,1316.mm,2246.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3277,7 +3277,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4604.mm,996.mm,0.mm], [4754.mm,996.mm,0.mm], [4754.mm,1146.mm,0.mm], [4604.mm,1146.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3340,7 +3340,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4604.mm,1216.mm,0.mm], [4754.mm,1216.mm,0.mm], [4754.mm,1366.mm,0.mm], [4604.mm,1366.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3403,7 +3403,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([5054.mm,996.mm,0.mm], [5204.mm,996.mm,0.mm], [5204.mm,1146.mm,0.mm], [5054.mm,1146.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3466,7 +3466,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([5054.mm,1216.mm,0.mm], [5204.mm,1216.mm,0.mm], [5204.mm,1366.mm,0.mm], [5054.mm,1366.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3529,7 +3529,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([5122.mm,1096.mm,90.mm], [5152.mm,1096.mm,90.mm], [5152.mm,1136.mm,90.mm], [5122.mm,1136.mm,90.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3540,7 +3540,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([5122.mm,1096.mm,1118.mm], [5152.mm,1096.mm,1118.mm], [5152.mm,1136.mm,1118.mm], [5122.mm,1136.mm,1118.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3551,7 +3551,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([5122.mm,1096.mm,2146.mm], [5152.mm,1096.mm,2146.mm], [5152.mm,1136.mm,2146.mm], [5122.mm,1136.mm,2146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3562,7 +3562,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([5122.mm,1226.mm,90.mm], [5152.mm,1226.mm,90.mm], [5152.mm,1266.mm,90.mm], [5122.mm,1266.mm,90.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3573,7 +3573,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([5122.mm,1226.mm,1118.mm], [5152.mm,1226.mm,1118.mm], [5152.mm,1266.mm,1118.mm], [5122.mm,1266.mm,1118.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3584,7 +3584,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([5122.mm,1226.mm,2146.mm], [5152.mm,1226.mm,2146.mm], [5152.mm,1266.mm,2146.mm], [5122.mm,1266.mm,2146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3595,7 +3595,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4654.mm,0.mm,560.mm], [4674.mm,0.mm,560.mm], [4674.mm,1096.mm,560.mm], [4654.mm,1096.mm,560.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3606,7 +3606,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4654.mm,0.mm,1760.mm], [4674.mm,0.mm,1760.mm], [4674.mm,1096.mm,1760.mm], [4654.mm,1096.mm,1760.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3617,7 +3617,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4654.mm,1266.mm,560.mm], [4674.mm,1266.mm,560.mm], [4674.mm,2362.mm,560.mm], [4654.mm,2362.mm,560.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3628,7 +3628,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4654.mm,1266.mm,1760.mm], [4674.mm,1266.mm,1760.mm], [4674.mm,2362.mm,1760.mm], [4654.mm,2362.mm,1760.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3641,7 +3641,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3654,7 +3654,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3667,7 +3667,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3680,7 +3680,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3693,7 +3693,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3706,7 +3706,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3719,7 +3719,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3732,7 +3732,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3743,7 +3743,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4646.mm,0.mm,530.mm], [4712.mm,0.mm,530.mm], [4712.mm,4.mm,530.mm], [4646.mm,4.mm,530.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(120.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3754,7 +3754,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4650.mm,0.mm,556.mm], [4708.mm,0.mm,556.mm], [4708.mm,70.mm,556.mm], [4650.mm,70.mm,556.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(4.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3765,7 +3765,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4629.mm,-48.mm,517.5.mm], [4729.mm,-48.mm,517.5.mm], [4729.mm,-40.mm,517.5.mm], [4629.mm,-40.mm,517.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(135.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3828,7 +3828,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4646.mm,0.mm,1730.mm], [4712.mm,0.mm,1730.mm], [4712.mm,4.mm,1730.mm], [4646.mm,4.mm,1730.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(120.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3839,7 +3839,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4650.mm,0.mm,1756.mm], [4708.mm,0.mm,1756.mm], [4708.mm,70.mm,1756.mm], [4650.mm,70.mm,1756.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(4.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3850,7 +3850,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4629.mm,-48.mm,1717.5.mm], [4729.mm,-48.mm,1717.5.mm], [4729.mm,-40.mm,1717.5.mm], [4629.mm,-40.mm,1717.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(135.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3913,7 +3913,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4646.mm,2358.mm,530.mm], [4712.mm,2358.mm,530.mm], [4712.mm,2362.mm,530.mm], [4646.mm,2362.mm,530.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(120.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3924,7 +3924,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4650.mm,2292.mm,556.mm], [4708.mm,2292.mm,556.mm], [4708.mm,2362.mm,556.mm], [4650.mm,2362.mm,556.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(4.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3935,7 +3935,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4629.mm,2402.mm,517.5.mm], [4729.mm,2402.mm,517.5.mm], [4729.mm,2410.mm,517.5.mm], [4629.mm,2410.mm,517.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(135.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -3998,7 +3998,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4646.mm,2358.mm,1730.mm], [4712.mm,2358.mm,1730.mm], [4712.mm,2362.mm,1730.mm], [4646.mm,2362.mm,1730.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(120.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -4009,7 +4009,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4650.mm,2292.mm,1756.mm], [4708.mm,2292.mm,1756.mm], [4708.mm,2362.mm,1756.mm], [4650.mm,2362.mm,1756.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(4.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -4020,7 +4020,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4629.mm,2402.mm,1717.5.mm], [4729.mm,2402.mm,1717.5.mm], [4729.mm,2410.mm,1717.5.mm], [4629.mm,2410.mm,1717.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(135.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -4091,7 +4091,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(76.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4102,7 +4102,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4113,7 +4113,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4124,7 +4124,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(9.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4142,7 +4142,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4153,7 +4153,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4164,7 +4164,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4182,7 +4182,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(76.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4193,7 +4193,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4204,7 +4204,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4215,7 +4215,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(9.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4233,7 +4233,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4244,7 +4244,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4255,7 +4255,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4284,7 +4284,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(76.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4295,7 +4295,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4306,7 +4306,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4317,7 +4317,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(9.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4328,7 +4328,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(76.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4339,7 +4339,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4350,7 +4350,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4361,7 +4361,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(9.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4372,7 +4372,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4383,7 +4383,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4394,7 +4394,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4405,7 +4405,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4416,7 +4416,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4427,7 +4427,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face.reverse! if face.normal.z < 0
   face.pushpull(38.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4446,7 +4446,7 @@ ents = mvpan_BL.entities
   face = grp.entities.add_face([-14.mm,-16.mm,7.mm], [20.mm,-16.mm,7.mm], [20.mm,0.mm,7.mm], [-14.mm,0.mm,7.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -4514,7 +4514,7 @@ ents = mvpan_BL.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -4551,7 +4551,7 @@ ents = mvfl_BL.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -4562,7 +4562,7 @@ ents = mvfl_BL.entities
   face = grp.entities.add_face([176.mm,2261.mm,149.mm], [199.mm,2261.mm,149.mm], [199.mm,2279.mm,149.mm], [176.mm,2279.mm,149.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -4575,7 +4575,7 @@ ents = mvfl_BL.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -4678,7 +4678,7 @@ ents = mvpan_TL.entities
   face = grp.entities.add_face([-14.mm,-16.mm,-43.mm], [20.mm,-16.mm,-43.mm], [20.mm,0.mm,-43.mm], [-14.mm,0.mm,-43.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -4746,7 +4746,7 @@ ents = mvpan_TL.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -4783,7 +4783,7 @@ ents = mvfl_TL.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -4794,7 +4794,7 @@ ents = mvfl_TL.entities
   face = grp.entities.add_face([176.mm,2261.mm,2279.mm], [199.mm,2261.mm,2279.mm], [199.mm,2279.mm,2279.mm], [176.mm,2279.mm,2279.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -4807,7 +4807,7 @@ ents = mvfl_TL.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -4954,7 +4954,7 @@ ents = mvpan_BR.entities
   face = grp.entities.add_face([-20.mm,-16.mm,7.mm], [14.mm,-16.mm,7.mm], [14.mm,0.mm,7.mm], [-20.mm,0.mm,7.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5022,7 +5022,7 @@ ents = mvpan_BR.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5059,7 +5059,7 @@ ents = mvfl_BR.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5070,7 +5070,7 @@ ents = mvfl_BR.entities
   face = grp.entities.add_face([2151.mm,2261.mm,149.mm], [2174.mm,2261.mm,149.mm], [2174.mm,2279.mm,149.mm], [2151.mm,2279.mm,149.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5083,7 +5083,7 @@ ents = mvfl_BR.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5186,7 +5186,7 @@ ents = mvpan_TR.entities
   face = grp.entities.add_face([-20.mm,-16.mm,-43.mm], [14.mm,-16.mm,-43.mm], [14.mm,0.mm,-43.mm], [-20.mm,0.mm,-43.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5254,7 +5254,7 @@ ents = mvpan_TR.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5291,7 +5291,7 @@ ents = mvfl_TR.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5302,7 +5302,7 @@ ents = mvfl_TR.entities
   face = grp.entities.add_face([2151.mm,2261.mm,2279.mm], [2174.mm,2261.mm,2279.mm], [2174.mm,2279.mm,2279.mm], [2151.mm,2279.mm,2279.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5315,7 +5315,7 @@ ents = mvfl_TR.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5576,7 +5576,7 @@ ents = frmTilt.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5587,7 +5587,7 @@ ents = frmTilt.entities
   face = grp.entities.add_face([-2211.mm,-1.mm,-1076.mm], [-2188.mm,-1.mm,-1076.mm], [-2188.mm,17.mm,-1076.mm], [-2211.mm,17.mm,-1076.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5600,7 +5600,7 @@ ents = frmTilt.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5613,7 +5613,7 @@ ents = frmTilt.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5624,7 +5624,7 @@ ents = frmTilt.entities
   face = grp.entities.add_face([-2251.mm,-8.mm,-1060.mm], [-2217.mm,-8.mm,-1060.mm], [-2217.mm,8.mm,-1060.mm], [-2251.mm,8.mm,-1060.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5648,7 +5648,7 @@ ents = frmTilt.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5659,7 +5659,7 @@ ents = frmTilt.entities
   face = grp.entities.add_face([2188.mm,-1.mm,-1076.mm], [2211.mm,-1.mm,-1076.mm], [2211.mm,17.mm,-1076.mm], [2188.mm,17.mm,-1076.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5672,7 +5672,7 @@ ents = frmTilt.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5685,7 +5685,7 @@ ents = frmTilt.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5696,7 +5696,7 @@ ents = frmTilt.entities
   face = grp.entities.add_face([2217.mm,-8.mm,-1060.mm], [2251.mm,-8.mm,-1060.mm], [2251.mm,8.mm,-1060.mm], [2217.mm,8.mm,-1060.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5720,7 +5720,7 @@ ents = frmTilt.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5731,7 +5731,7 @@ ents = frmTilt.entities
   face = grp.entities.add_face([-2211.mm,-1.mm,1054.mm], [-2188.mm,-1.mm,1054.mm], [-2188.mm,17.mm,1054.mm], [-2211.mm,17.mm,1054.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5744,7 +5744,7 @@ ents = frmTilt.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5757,7 +5757,7 @@ ents = frmTilt.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5768,7 +5768,7 @@ ents = frmTilt.entities
   face = grp.entities.add_face([-2251.mm,-8.mm,1020.mm], [-2217.mm,-8.mm,1020.mm], [-2217.mm,8.mm,1020.mm], [-2251.mm,8.mm,1020.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5792,7 +5792,7 @@ ents = frmTilt.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5803,7 +5803,7 @@ ents = frmTilt.entities
   face = grp.entities.add_face([2188.mm,-1.mm,1054.mm], [2211.mm,-1.mm,1054.mm], [2211.mm,17.mm,1054.mm], [2188.mm,17.mm,1054.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5816,7 +5816,7 @@ ents = frmTilt.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5829,7 +5829,7 @@ ents = frmTilt.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -5840,7 +5840,7 @@ ents = frmTilt.entities
   face = grp.entities.add_face([2217.mm,-8.mm,1020.mm], [2251.mm,-8.mm,1020.mm], [2251.mm,8.mm,1020.mm], [2217.mm,8.mm,1020.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6338,7 +6338,7 @@ ents = frmSwing.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6349,7 +6349,7 @@ ents = frmSwing.entities
   face = grp.entities.add_face([-2211.mm,-1.mm,-1076.mm], [-2188.mm,-1.mm,-1076.mm], [-2188.mm,17.mm,-1076.mm], [-2211.mm,17.mm,-1076.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6362,7 +6362,7 @@ ents = frmSwing.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6375,7 +6375,7 @@ ents = frmSwing.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6386,7 +6386,7 @@ ents = frmSwing.entities
   face = grp.entities.add_face([-2251.mm,-8.mm,-1060.mm], [-2217.mm,-8.mm,-1060.mm], [-2217.mm,8.mm,-1060.mm], [-2251.mm,8.mm,-1060.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6410,7 +6410,7 @@ ents = frmSwing.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6421,7 +6421,7 @@ ents = frmSwing.entities
   face = grp.entities.add_face([2188.mm,-1.mm,-1076.mm], [2211.mm,-1.mm,-1076.mm], [2211.mm,17.mm,-1076.mm], [2188.mm,17.mm,-1076.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6434,7 +6434,7 @@ ents = frmSwing.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6447,7 +6447,7 @@ ents = frmSwing.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6458,7 +6458,7 @@ ents = frmSwing.entities
   face = grp.entities.add_face([2217.mm,-8.mm,-1060.mm], [2251.mm,-8.mm,-1060.mm], [2251.mm,8.mm,-1060.mm], [2217.mm,8.mm,-1060.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6482,7 +6482,7 @@ ents = frmSwing.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6493,7 +6493,7 @@ ents = frmSwing.entities
   face = grp.entities.add_face([-2211.mm,-1.mm,1054.mm], [-2188.mm,-1.mm,1054.mm], [-2188.mm,17.mm,1054.mm], [-2211.mm,17.mm,1054.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6506,7 +6506,7 @@ ents = frmSwing.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6519,7 +6519,7 @@ ents = frmSwing.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6530,7 +6530,7 @@ ents = frmSwing.entities
   face = grp.entities.add_face([-2251.mm,-8.mm,1020.mm], [-2217.mm,-8.mm,1020.mm], [-2217.mm,8.mm,1020.mm], [-2251.mm,8.mm,1020.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6554,7 +6554,7 @@ ents = frmSwing.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6565,7 +6565,7 @@ ents = frmSwing.entities
   face = grp.entities.add_face([2188.mm,-1.mm,1054.mm], [2211.mm,-1.mm,1054.mm], [2211.mm,17.mm,1054.mm], [2188.mm,17.mm,1054.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6578,7 +6578,7 @@ ents = frmSwing.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6591,7 +6591,7 @@ ents = frmSwing.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -6602,7 +6602,7 @@ ents = frmSwing.entities
   face = grp.entities.add_face([2217.mm,-8.mm,1020.mm], [2251.mm,-8.mm,1020.mm], [2251.mm,8.mm,1020.mm], [2217.mm,8.mm,1020.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
-  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat

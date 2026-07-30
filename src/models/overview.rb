@@ -27109,35 +27109,35 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # White LED Panel (Cct G)
+  # White LED Strip (Cct G)
   grp = ents.add_group
-  grp.name = "White LED Panel (Cct G)"
-  face = grp.entities.add_face([1000.mm,1031.mm,2348.mm], [1600.mm,1031.mm,2348.mm], [1600.mm,1331.mm,2348.mm], [1000.mm,1331.mm,2348.mm])
+  grp.name = "White LED Strip (Cct G)"
+  face = grp.entities.add_face([600.mm,100.mm,2363.mm], [640.mm,100.mm,2363.mm], [640.mm,2262.mm,2363.mm], [600.mm,2262.mm,2363.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["White LED Panel (Cct G)"] || model.materials.add("White LED Panel (Cct G)")
+  face.pushpull(18.mm)
+  mat = model.materials["White LED Strip (Cct G)"] || model.materials.add("White LED Strip (Cct G)")
   mat.color = Sketchup::Color.new(255, 255, 224)
   mat.alpha = 0.4
   grp.material = mat
 
-  # White LED Panel (Cct G)
+  # White LED Strip (Cct G)
   grp = ents.add_group
-  grp.name = "White LED Panel (Cct G)"
-  face = grp.entities.add_face([2900.mm,1031.mm,2348.mm], [3500.mm,1031.mm,2348.mm], [3500.mm,1331.mm,2348.mm], [2900.mm,1331.mm,2348.mm])
+  grp.name = "White LED Strip (Cct G)"
+  face = grp.entities.add_face([2350.mm,100.mm,2363.mm], [2390.mm,100.mm,2363.mm], [2390.mm,2262.mm,2363.mm], [2350.mm,2262.mm,2363.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["White LED Panel (Cct G)"] || model.materials.add("White LED Panel (Cct G)")
+  face.pushpull(18.mm)
+  mat = model.materials["White LED Strip (Cct G)"] || model.materials.add("White LED Strip (Cct G)")
   mat.color = Sketchup::Color.new(255, 255, 224)
   mat.alpha = 0.4
   grp.material = mat
 
-  # White LED Panel (Cct G)
+  # White LED Strip (Cct G, IBC corridor)
   grp = ents.add_group
-  grp.name = "White LED Panel (Cct G)"
-  face = grp.entities.add_face([4424.mm,881.mm,2348.mm], [4724.mm,881.mm,2348.mm], [4724.mm,1481.mm,2348.mm], [4424.mm,1481.mm,2348.mm])
+  grp.name = "White LED Strip (Cct G, IBC corridor)"
+  face = grp.entities.add_face([4674.mm,1026.mm,2363.mm], [5850.mm,1026.mm,2363.mm], [5850.mm,1066.mm,2363.mm], [4674.mm,1066.mm,2363.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["White LED Panel (Cct G)"] || model.materials.add("White LED Panel (Cct G)")
+  face.pushpull(18.mm)
+  mat = model.materials["White LED Strip (Cct G)"] || model.materials.add("White LED Strip (Cct G)")
   mat.color = Sketchup::Color.new(255, 255, 224)
   mat.alpha = 0.4
   grp.material = mat
@@ -28742,40 +28742,40 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Conduit to LED Panel (Cct G)
+  # Conduit to White Strip (Cct G)
   grp = ents.add_group
-  grp.name = "Conduit to LED Panel (Cct G)"
+  grp.name = "Conduit to White Strip (Cct G)"
   ge = grp.entities
-  circle = ge.add_circle([1300.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([620.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(991.mm)
+  cface.pushpull(60.mm)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
   mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Conduit to LED Panel (Cct G)
+  # Conduit to White Strip (Cct G)
   grp = ents.add_group
-  grp.name = "Conduit to LED Panel (Cct G)"
+  grp.name = "Conduit to White Strip (Cct G)"
   ge = grp.entities
-  circle = ge.add_circle([3200.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([2370.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(991.mm)
+  cface.pushpull(60.mm)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
   mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Conduit to LED Panel (Cct G)
+  # Conduit to White Strip (Cct G)
   grp = ents.add_group
-  grp.name = "Conduit to LED Panel (Cct G)"
+  grp.name = "Conduit to White Strip (Cct G)"
   ge = grp.entities
-  circle = ge.add_circle([4574.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([4734.mm,40.mm,2350.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(841.mm)
+  cface.pushpull(1006.mm)
   mat = model.materials["Cable Trunking (40x25 PVC)"] || model.materials.add("Cable Trunking (40x25 PVC)")
   mat.color = Sketchup::Color.new(154, 160, 166)
   mat.alpha = 1.0

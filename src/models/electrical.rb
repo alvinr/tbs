@@ -98,7 +98,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # White LED ghost (Cct G)
   grp = ents.add_group
   grp.name = "White LED ghost (Cct G)"
-  face = grp.entities.add_face([1000.mm,1031.mm,2348.mm], [1600.mm,1031.mm,2348.mm], [1600.mm,1331.mm,2348.mm], [1000.mm,1331.mm,2348.mm])
+  face = grp.entities.add_face([600.mm,100.mm,2348.mm], [640.mm,100.mm,2348.mm], [640.mm,2262.mm,2348.mm], [600.mm,2262.mm,2348.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["White LED ghost (Cct G)"] || model.materials.add("White LED ghost (Cct G)")
@@ -109,7 +109,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # White LED ghost (Cct G)
   grp = ents.add_group
   grp.name = "White LED ghost (Cct G)"
-  face = grp.entities.add_face([2900.mm,1031.mm,2348.mm], [3500.mm,1031.mm,2348.mm], [3500.mm,1331.mm,2348.mm], [2900.mm,1331.mm,2348.mm])
+  face = grp.entities.add_face([2350.mm,100.mm,2348.mm], [2390.mm,100.mm,2348.mm], [2390.mm,2262.mm,2348.mm], [2350.mm,2262.mm,2348.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["White LED ghost (Cct G)"] || model.materials.add("White LED ghost (Cct G)")
@@ -120,7 +120,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # White LED ghost (Cct G)
   grp = ents.add_group
   grp.name = "White LED ghost (Cct G)"
-  face = grp.entities.add_face([4424.mm,881.mm,2348.mm], [4724.mm,881.mm,2348.mm], [4724.mm,1481.mm,2348.mm], [4424.mm,1481.mm,2348.mm])
+  face = grp.entities.add_face([4674.mm,1026.mm,2348.mm], [5850.mm,1026.mm,2348.mm], [5850.mm,1066.mm,2348.mm], [4674.mm,1066.mm,2348.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["White LED ghost (Cct G)"] || model.materials.add("White LED ghost (Cct G)")
@@ -9662,8 +9662,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Circuit G ceiling spine (white LED)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(3274.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([1300.mm,20.mm,2375.mm], vec, 6.mm, 16)
+  vec = Geom::Vector3d.new(4114.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([620.mm,20.mm,2375.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9672,12 +9672,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G drop X1300 (white LED)
+  # Circuit G drop X620 (white LED)
   grp = ents.add_group
-  grp.name = "Circuit G drop X1300 (white LED)"
+  grp.name = "Circuit G drop X620 (white LED)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 999.mm, 0.mm)
-  circle = ge.add_circle([1300.mm,20.mm,2375.mm], vec, 6.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 68.mm, 0.mm)
+  circle = ge.add_circle([620.mm,20.mm,2375.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9686,12 +9686,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G drop X1300 (white LED) elbow
+  # Circuit G drop X620 (white LED) elbow
   grp = ents.add_group
-  grp.name = "Circuit G drop X1300 (white LED) elbow"
+  grp.name = "Circuit G drop X620 (white LED) elbow"
   ge = grp.entities
-  arc = ge.add_arc([1300.mm,1019.mm,2363.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([1300.mm,1019.mm,2375.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
+  arc = ge.add_arc([620.mm,88.mm,2363.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 12.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([620.mm,88.mm,2375.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -9700,12 +9700,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G drop X1300 (white LED)
+  # Circuit G drop X620 (white LED)
   grp = ents.add_group
-  grp.name = "Circuit G drop X1300 (white LED)"
+  grp.name = "Circuit G drop X620 (white LED)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -15.mm)
-  circle = ge.add_circle([1300.mm,1031.mm,2363.mm], vec, 6.mm, 16)
+  circle = ge.add_circle([620.mm,100.mm,2363.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9714,12 +9714,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G drop X3200 (white LED)
+  # Circuit G drop X2370 (white LED)
   grp = ents.add_group
-  grp.name = "Circuit G drop X3200 (white LED)"
+  grp.name = "Circuit G drop X2370 (white LED)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 999.mm, 0.mm)
-  circle = ge.add_circle([3200.mm,20.mm,2375.mm], vec, 6.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 68.mm, 0.mm)
+  circle = ge.add_circle([2370.mm,20.mm,2375.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9728,12 +9728,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G drop X3200 (white LED) elbow
+  # Circuit G drop X2370 (white LED) elbow
   grp = ents.add_group
-  grp.name = "Circuit G drop X3200 (white LED) elbow"
+  grp.name = "Circuit G drop X2370 (white LED) elbow"
   ge = grp.entities
-  arc = ge.add_arc([3200.mm,1019.mm,2363.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([3200.mm,1019.mm,2375.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
+  arc = ge.add_arc([2370.mm,88.mm,2363.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 12.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2370.mm,88.mm,2375.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -9742,12 +9742,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G drop X3200 (white LED)
+  # Circuit G drop X2370 (white LED)
   grp = ents.add_group
-  grp.name = "Circuit G drop X3200 (white LED)"
+  grp.name = "Circuit G drop X2370 (white LED)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -15.mm)
-  circle = ge.add_circle([3200.mm,1031.mm,2363.mm], vec, 6.mm, 16)
+  circle = ge.add_circle([2370.mm,100.mm,2363.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9756,12 +9756,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G drop X4574 (white LED)
+  # Circuit G drop X4734 (white LED)
   grp = ents.add_group
-  grp.name = "Circuit G drop X4574 (white LED)"
+  grp.name = "Circuit G drop X4734 (white LED)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 849.mm, 0.mm)
-  circle = ge.add_circle([4574.mm,20.mm,2375.mm], vec, 6.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 1014.mm, 0.mm)
+  circle = ge.add_circle([4734.mm,20.mm,2375.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9770,12 +9770,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G drop X4574 (white LED) elbow
+  # Circuit G drop X4734 (white LED) elbow
   grp = ents.add_group
-  grp.name = "Circuit G drop X4574 (white LED) elbow"
+  grp.name = "Circuit G drop X4734 (white LED) elbow"
   ge = grp.entities
-  arc = ge.add_arc([4574.mm,869.mm,2363.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([4574.mm,869.mm,2375.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
+  arc = ge.add_arc([4734.mm,1034.mm,2363.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 12.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([4734.mm,1034.mm,2375.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -9784,12 +9784,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Circuit G drop X4574 (white LED)
+  # Circuit G drop X4734 (white LED)
   grp = ents.add_group
-  grp.name = "Circuit G drop X4574 (white LED)"
+  grp.name = "Circuit G drop X4734 (white LED)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -15.mm)
-  circle = ge.add_circle([4574.mm,881.mm,2363.mm], vec, 6.mm, 16)
+  circle = ge.add_circle([4734.mm,1046.mm,2363.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

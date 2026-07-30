@@ -24,7 +24,7 @@ PUMP_W          = 90    # Circuit C — Shurflo 2088: 7.5A × 12V = 90W (one pum
 SAFELIGHT_W     = 15    # Circuit D — red LED strips
 COOLER_W        = EVAP_COOLER_W_BUS   # Circuit E — Hessaire MC18M 85W AC ÷ 0.88 inverter = 97W on the 12V bus
 ACTUATOR_W      = 100   # Circuit F — film plane actuators (optional, peak)
-WHITE_LIGHT_W   = 42    # Circuit G — 12V COB LED strip (HitLights 4000K), ~10ft lit @ 4.2 W/ft ≈ 42W / 3.5A
+WHITE_LIGHT_W   = 89    # Circuit G — 12V COB LED strip (HitLights 4000K), 3× ~2.16m runs @ 4.2 W/ft ≈ 89W / 7.4A
 
 # ── Battery bank ──────────────────────────────────────────────────────────────
 

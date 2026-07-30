@@ -56,8 +56,12 @@ def _rows():
         2 * (w_near * band) * 0.018 * RHO_PLY)
     add("A Sandwich", "HDPE corner skins (1/8\")", f"near above band + far, 2 faces",
         2 * (w_near * (H - band) + w_far * H) * ts * RHO_HDPE)
-    add("A Sandwich", "Corner Al core plates", f"3mm 5052, {w_near+w_far:.3f}m × {H:.2f}m",
-        (w_near + w_far) * H * 0.003 * RHO_ALUM)
+    # Corner-zone stiffener grid (weight audit 2026-07-29): 1"×1"×1/8" 6061 Al angle rib
+    # grid (per corner 1 vertical + 2 horizontal) replaces the former solid 3mm Al core.
+    angle_kg_per_m = (25.4 * 3.175 + (25.4 - 3.175) * 3.175) * 1e-6 * RHO_ALUM
+    rib_len = (H + 2 * w_near) + (H + 2 * w_far)
+    add("A Sandwich", "Corner Al stiffener grid", f"1×1×1/8 6061 angle, {rib_len:.2f}m",
+        rib_len * angle_kg_per_m)
     frame_len = 2 * (w_ctr + H) + 4 * w_ctr
     add("A Sandwich", "Center RHS frame", f"50×50×3 SHS, {frame_len:.1f}m total",
         frame_len * RHS_KG_PER_M)
@@ -118,7 +122,7 @@ def _rows():
 def _material_of(item):
     s = item.lower()
     if "ply" in s: return "Plywood"               # fan ply band only
-    if "al core" in s or "aluminum" in s: return "Aluminum"
+    if "al core" in s or "aluminum" in s or "al stiffener" in s: return "Aluminum"
     if "hdpe" in s or "bay" in s: return "HDPE"   # all light-lock plastic is HDPE (skins, drum, bay)
     if "epdm" in s or "wiper" in s: return "EPDM/other"
     return "Steel"

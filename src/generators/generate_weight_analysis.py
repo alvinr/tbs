@@ -123,8 +123,8 @@ def swing_bbox(x0, x1, y0, y1, deg=SWING_LOCK_DEG):
 
 def _panel_weight():
     """Hinged panel: stepped framed construction (rev 11 skins).
-    Corner zones (2×): 1/8" HDPE skin + 3mm ALUMINUM core + 1/8" HDPE skin (40mm
-    framed envelope). The Fan B corner keeps an 18mm PLYWOOD band (panel bottom
+    Corner zones (2×): 1/8" HDPE skin + 1"×1"×1/8" 6061 Al stiffener rib grid + 1/8"
+    HDPE skin (40mm framed envelope). The Fan B corner keeps an 18mm PLYWOOD band (panel bottom
     up to PANEL_FAN_BAND_Z) for rigid fan/duct mounting; the rest is HDPE.
     Center zone: 50×50mm steel RHS frame + 1/8" HDPE skins, PANEL_CENTER_W wide.
     First-principles only — no scaling pin (the fixed Ø900 housing is added
@@ -140,8 +140,13 @@ def _panel_weight():
     fan_band_area = corner_w_near * (PANEL_FAN_BAND_Z - PANEL_FLOOR_GAP)
     corner_band_kg = 2 * fan_band_area * 18e-9 * RHO_PLY           # 2× 18mm ply faces
     corner_skin_kg = 2 * (corner_area - fan_band_area) * ts * RHO_HDPE  # 2× 1/8" HDPE faces
-    alum_vol_corner = corner_area * 3e-9            # 3mm Al core (unchanged)
-    corner_plate_kg = alum_vol_corner * RHO_ALUM
+    # Corner-zone stiffener grid (SS/weight audit 2026-07-29): the former solid 3mm Al
+    # core is replaced by a light 1"×1"×1/8" 6061-T6 angle rib grid (per corner: 1 vertical
+    # + 2 horizontal ribs) that holds the HDPE skins flat. The leaf is vertical, so skin
+    # self-weight is in-plane; the grid only resists out-of-plane oil-can. ~0.41 kg/m.
+    angle_kg_per_m = (25.4 * 3.175 + (25.4 - 3.175) * 3.175) * 1e-6 * RHO_ALUM
+    rib_len = 2 * ((panel_h - PANEL_FLOOR_GAP) / 1000.0 + 2 * (corner_w_near / 1000.0))
+    corner_plate_kg = rib_len * angle_kg_per_m
     corner_ply_kg = corner_band_kg + corner_skin_kg  # (mixed ply band + HDPE skin)
     # Center zone: steel RHS frame perimeter + cross members.
     # 50×50×3 SHS section area = 50² − 44² = 564 mm² → 4.43 kg/m (EN 10219

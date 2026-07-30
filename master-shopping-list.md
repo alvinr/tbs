@@ -19,13 +19,13 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,979 | $2,825 |
-| 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,816 | $2,022 |
+| 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,261 | $1,491 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $223 | $235 |
 | 8. Cooling & ventilation | $787 | $937 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$26,426** | **~$34,742** |
+| **TOTAL (base build + 50-print run)** | **~$25,871** | **~$34,211** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -67,7 +67,7 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| [3mm aluminum plate 5052-H32 (48×96)](https://www.mkmetal.net/5052-h32sht.125x48x96) (52SH125408) | 2 ea | M&K Metal | panel | $586 |
+| 1"×1"×1/8" 6061-T6 Al angle — corner-zone stiffener grid (per meter) | 8 m | Online Metals | panel | $32–$56 |
 | 6061-T6 AL plate 3/16" (5mm) | 1 ea | Online Metals | spray | $16–$28 |
 | [6061-T6 AL round tube 25mm OD × 2mm wall, 8 ft](https://www.mcmaster.com/9056K36-9056K122/) (9056K36) | 1 ea | McMaster-Carr | spray | $64 |
 | [6061-T6 Al U-channel depth rail 3×1½"×0.2" (76×38mm), 8 ft](https://www.grainger.com/product/795M51) (795M51) | 4 ea | Grainger | film | $328 |
@@ -76,7 +76,7 @@ indicative low–high estimates — get quotes before ordering.
 | Arm-to-stud adapter, turned 6061-T6 AL (anodized) | 1 ea | Local machine shop | spray | $12–$18 |
 | Disc retaining ring (Al 6061-T6, M52×0.75) | 1 ea | Local fab | optics | $15–$25 |
 | Telescoping aluminum pool pole, 4–8 ft | 1 ea | Amazon | spray | $15 |
-| **aluminum subtotal** | | | | **$1,782–$1,890** |
+| **aluminum subtotal** | | | | **$1,227–$1,359** |
 
 ### bearings-motion
 
@@ -436,8 +436,8 @@ indicative low–high estimates — get quotes before ordering.
 | Amazon | 32 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,004–$2,070 |
 | Home Depot | 49 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,627–$1,748 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
+| Online Metals | 6 | aluminum, stainless-sheet, steel-structural | $1,014–$1,458 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
-| Online Metals | 5 | aluminum, stainless-sheet, steel-structural | $982–$1,402 |
 | McMaster-Carr | 46 | aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,250–$1,334 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
 | US Plastic Corp | 16 | plastics-sheet, plumbing-fittings | $1,236 |
@@ -447,7 +447,6 @@ indicative low–high estimates — get quotes before ordering.
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
 | SoCal reconditioner | 1 | water-equipment | $600 |
-| M&K Metal | 1 | aluminum | $586 |
 | Inverter Supply | 2 | electrical-distribution, electrical-power | $396 |
 | Curbell Plastics | 1 | plastics-sheet | $380 |
 | Grainger | 1 | aluminum | $328 |

@@ -132,7 +132,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([131.mm,2030.mm,308.mm], [169.mm,2030.mm,308.mm], [169.mm,2180.mm,308.mm], [131.mm,2180.mm,308.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -156,7 +156,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([131.mm,2058.mm,220.mm], [169.mm,2058.mm,220.mm], [169.mm,2122.mm,220.mm], [131.mm,2122.mm,220.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -167,7 +167,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([95.mm,2350.mm,227.mm], [205.mm,2350.mm,227.mm], [205.mm,2362.mm,227.mm], [95.mm,2362.mm,227.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(86.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -178,7 +178,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([94.mm,0.mm,202.mm], [206.mm,0.mm,202.mm], [206.mm,45.mm,202.mm], [94.mm,45.mm,202.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(131.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -189,7 +189,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([119.mm,205.mm,232.mm], [131.mm,205.mm,232.mm], [131.mm,315.mm,232.mm], [119.mm,315.mm,232.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(76.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -215,7 +215,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(49.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -241,7 +241,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(49.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -267,7 +267,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(49.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -293,7 +293,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(49.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -317,7 +317,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -330,7 +330,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -403,13 +403,13 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Ruland USKC12-6-6-SS, keyway+clamp) BL
+  # U-joint (Belden UJ-SS750x375, setscrew) BL
   grp = ents.add_group
-  grp.name = "U-joint (Ruland USKC12-6-6-SS, keyway+clamp) BL"
+  grp.name = "U-joint (Belden UJ-SS750x375, setscrew) BL"
   face = grp.entities.add_face([138.mm,2258.mm,146.mm], [162.mm,2258.mm,146.mm], [162.mm,2282.mm,146.mm], [138.mm,2282.mm,146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -525,7 +525,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4569.mm,0.mm,227.mm], [4644.mm,0.mm,227.mm], [4644.mm,12.mm,227.mm], [4569.mm,12.mm,227.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(86.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -536,7 +536,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4569.mm,2350.mm,227.mm], [4644.mm,2350.mm,227.mm], [4644.mm,2362.mm,227.mm], [4569.mm,2362.mm,227.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(86.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -562,7 +562,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(49.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -588,7 +588,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(37.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -614,7 +614,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(49.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -640,7 +640,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(37.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -664,7 +664,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -677,7 +677,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -750,13 +750,13 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Ruland USKC12-6-6-SS, keyway+clamp) BR
+  # U-joint (Belden UJ-SS750x375, setscrew) BR
   grp = ents.add_group
-  grp.name = "U-joint (Ruland USKC12-6-6-SS, keyway+clamp) BR"
+  grp.name = "U-joint (Belden UJ-SS750x375, setscrew) BR"
   face = grp.entities.add_face([4612.mm,2258.mm,146.mm], [4636.mm,2258.mm,146.mm], [4636.mm,2282.mm,146.mm], [4612.mm,2282.mm,146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -894,7 +894,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([112.mm,2030.mm,2338.mm], [188.mm,2030.mm,2338.mm], [188.mm,2180.mm,2338.mm], [112.mm,2180.mm,2338.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -918,7 +918,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([95.mm,2350.mm,2295.mm], [205.mm,2350.mm,2295.mm], [205.mm,2362.mm,2295.mm], [95.mm,2362.mm,2295.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -929,7 +929,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([94.mm,0.mm,2270.mm], [206.mm,0.mm,2270.mm], [206.mm,45.mm,2270.mm], [94.mm,45.mm,2270.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(93.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -940,7 +940,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([112.mm,205.mm,2338.mm], [188.mm,205.mm,2338.mm], [188.mm,315.mm,2338.mm], [112.mm,315.mm,2338.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -966,7 +966,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(54.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -992,7 +992,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(54.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1060,7 +1060,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(40.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1073,7 +1073,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(40.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1168,13 +1168,13 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Ruland USKC12-6-6-SS, keyway+clamp) TL
+  # U-joint (Belden UJ-SS750x375, setscrew) TL
   grp = ents.add_group
-  grp.name = "U-joint (Ruland USKC12-6-6-SS, keyway+clamp) TL"
+  grp.name = "U-joint (Belden UJ-SS750x375, setscrew) TL"
   face = grp.entities.add_face([138.mm,2258.mm,2276.mm], [162.mm,2258.mm,2276.mm], [162.mm,2282.mm,2276.mm], [138.mm,2282.mm,2276.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1279,7 +1279,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4569.mm,0.mm,2295.mm], [4644.mm,0.mm,2295.mm], [4644.mm,12.mm,2295.mm], [4569.mm,12.mm,2295.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1290,7 +1290,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   face = grp.entities.add_face([4569.mm,2350.mm,2295.mm], [4644.mm,2350.mm,2295.mm], [4644.mm,2362.mm,2295.mm], [4569.mm,2362.mm,2295.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1316,7 +1316,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(54.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1342,7 +1342,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(54.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1410,7 +1410,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(40.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1423,7 +1423,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(40.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -1518,13 +1518,13 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Ruland USKC12-6-6-SS, keyway+clamp) TR
+  # U-joint (Belden UJ-SS750x375, setscrew) TR
   grp = ents.add_group
-  grp.name = "U-joint (Ruland USKC12-6-6-SS, keyway+clamp) TR"
+  grp.name = "U-joint (Belden UJ-SS750x375, setscrew) TR"
   face = grp.entities.add_face([4612.mm,2258.mm,2276.mm], [4636.mm,2258.mm,2276.mm], [4636.mm,2282.mm,2276.mm], [4612.mm,2282.mm,2276.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -4760,13 +4760,13 @@ ents = mvfl_BL.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Ruland USKC12-6-6-SS) (Movement BL)
+  # U-joint (Belden UJ-SS750x375) (Movement BL)
   grp = ents.add_group
-  grp.name = "U-joint (Ruland USKC12-6-6-SS) (Movement BL)"
+  grp.name = "U-joint (Belden UJ-SS750x375) (Movement BL)"
   face = grp.entities.add_face([138.mm,2258.mm,146.mm], [162.mm,2258.mm,146.mm], [162.mm,2282.mm,146.mm], [138.mm,2282.mm,146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -4992,13 +4992,13 @@ ents = mvfl_TL.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Ruland USKC12-6-6-SS) (Movement TL)
+  # U-joint (Belden UJ-SS750x375) (Movement TL)
   grp = ents.add_group
-  grp.name = "U-joint (Ruland USKC12-6-6-SS) (Movement TL)"
+  grp.name = "U-joint (Belden UJ-SS750x375) (Movement TL)"
   face = grp.entities.add_face([138.mm,2258.mm,2276.mm], [162.mm,2258.mm,2276.mm], [162.mm,2282.mm,2276.mm], [138.mm,2282.mm,2276.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -5268,13 +5268,13 @@ ents = mvfl_BR.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Ruland USKC12-6-6-SS) (Movement BR)
+  # U-joint (Belden UJ-SS750x375) (Movement BR)
   grp = ents.add_group
-  grp.name = "U-joint (Ruland USKC12-6-6-SS) (Movement BR)"
+  grp.name = "U-joint (Belden UJ-SS750x375) (Movement BR)"
   face = grp.entities.add_face([2188.mm,2258.mm,146.mm], [2212.mm,2258.mm,146.mm], [2212.mm,2282.mm,146.mm], [2188.mm,2282.mm,146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -5500,13 +5500,13 @@ ents = mvfl_TR.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Ruland USKC12-6-6-SS) (Movement TR)
+  # U-joint (Belden UJ-SS750x375) (Movement TR)
   grp = ents.add_group
-  grp.name = "U-joint (Ruland USKC12-6-6-SS) (Movement TR)"
+  grp.name = "U-joint (Belden UJ-SS750x375) (Movement TR)"
   face = grp.entities.add_face([2188.mm,2258.mm,2276.mm], [2212.mm,2258.mm,2276.mm], [2212.mm,2282.mm,2276.mm], [2188.mm,2282.mm,2276.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -5785,13 +5785,13 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Ruland USKC12-6-6-SS) (183,160)
+  # U-joint (Belden UJ-SS750x375) (183,160)
   grp = ents.add_group
-  grp.name = "U-joint (Ruland USKC12-6-6-SS) (183,160)"
+  grp.name = "U-joint (Belden UJ-SS750x375) (183,160)"
   face = grp.entities.add_face([-2249.mm,-4.mm,-1079.mm], [-2225.mm,-4.mm,-1079.mm], [-2225.mm,20.mm,-1079.mm], [-2249.mm,20.mm,-1079.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -5857,13 +5857,13 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Ruland USKC12-6-6-SS) (4591,160)
+  # U-joint (Belden UJ-SS750x375) (4591,160)
   grp = ents.add_group
-  grp.name = "U-joint (Ruland USKC12-6-6-SS) (4591,160)"
+  grp.name = "U-joint (Belden UJ-SS750x375) (4591,160)"
   face = grp.entities.add_face([2225.mm,-4.mm,-1079.mm], [2249.mm,-4.mm,-1079.mm], [2249.mm,20.mm,-1079.mm], [2225.mm,20.mm,-1079.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -5929,13 +5929,13 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Ruland USKC12-6-6-SS) (183,2290)
+  # U-joint (Belden UJ-SS750x375) (183,2290)
   grp = ents.add_group
-  grp.name = "U-joint (Ruland USKC12-6-6-SS) (183,2290)"
+  grp.name = "U-joint (Belden UJ-SS750x375) (183,2290)"
   face = grp.entities.add_face([-2249.mm,-4.mm,1051.mm], [-2225.mm,-4.mm,1051.mm], [-2225.mm,20.mm,1051.mm], [-2249.mm,20.mm,1051.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -6001,13 +6001,13 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Ruland USKC12-6-6-SS) (4591,2290)
+  # U-joint (Belden UJ-SS750x375) (4591,2290)
   grp = ents.add_group
-  grp.name = "U-joint (Ruland USKC12-6-6-SS) (4591,2290)"
+  grp.name = "U-joint (Belden UJ-SS750x375) (4591,2290)"
   face = grp.entities.add_face([2225.mm,-4.mm,1051.mm], [2249.mm,-4.mm,1051.mm], [2249.mm,20.mm,1051.mm], [2225.mm,20.mm,1051.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -6547,13 +6547,13 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Ruland USKC12-6-6-SS) (183,160)
+  # U-joint (Belden UJ-SS750x375) (183,160)
   grp = ents.add_group
-  grp.name = "U-joint (Ruland USKC12-6-6-SS) (183,160)"
+  grp.name = "U-joint (Belden UJ-SS750x375) (183,160)"
   face = grp.entities.add_face([-2249.mm,-4.mm,-1079.mm], [-2225.mm,-4.mm,-1079.mm], [-2225.mm,20.mm,-1079.mm], [-2249.mm,20.mm,-1079.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -6619,13 +6619,13 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Ruland USKC12-6-6-SS) (4591,160)
+  # U-joint (Belden UJ-SS750x375) (4591,160)
   grp = ents.add_group
-  grp.name = "U-joint (Ruland USKC12-6-6-SS) (4591,160)"
+  grp.name = "U-joint (Belden UJ-SS750x375) (4591,160)"
   face = grp.entities.add_face([2225.mm,-4.mm,-1079.mm], [2249.mm,-4.mm,-1079.mm], [2249.mm,20.mm,-1079.mm], [2225.mm,20.mm,-1079.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -6691,13 +6691,13 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Ruland USKC12-6-6-SS) (183,2290)
+  # U-joint (Belden UJ-SS750x375) (183,2290)
   grp = ents.add_group
-  grp.name = "U-joint (Ruland USKC12-6-6-SS) (183,2290)"
+  grp.name = "U-joint (Belden UJ-SS750x375) (183,2290)"
   face = grp.entities.add_face([-2249.mm,-4.mm,1051.mm], [-2225.mm,-4.mm,1051.mm], [-2225.mm,20.mm,1051.mm], [-2249.mm,20.mm,1051.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -6763,13 +6763,13 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Ruland USKC12-6-6-SS) (4591,2290)
+  # U-joint (Belden UJ-SS750x375) (4591,2290)
   grp = ents.add_group
-  grp.name = "U-joint (Ruland USKC12-6-6-SS) (4591,2290)"
+  grp.name = "U-joint (Belden UJ-SS750x375) (4591,2290)"
   face = grp.entities.add_face([2225.mm,-4.mm,1051.mm], [2249.mm,-4.mm,1051.mm], [2249.mm,20.mm,1051.mm], [2225.mm,20.mm,1051.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
-  mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat

@@ -27145,7 +27145,7 @@ end
   # Safelight Strip (Cct D)
   grp = ents.add_group
   grp.name = "Safelight Strip (Cct D)"
-  face = grp.entities.add_face([500.mm,100.mm,2363.mm], [540.mm,100.mm,2363.mm], [540.mm,2262.mm,2363.mm], [500.mm,2262.mm,2363.mm])
+  face = grp.entities.add_face([500.mm,100.mm,2363.mm], [540.mm,100.mm,2363.mm], [540.mm,1767.mm,2363.mm], [500.mm,1767.mm,2363.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Safelight Strip (Cct D)"] || model.materials.add("Safelight Strip (Cct D)")
@@ -27156,7 +27156,7 @@ end
   # Safelight Strip (Cct D)
   grp = ents.add_group
   grp.name = "Safelight Strip (Cct D)"
-  face = grp.entities.add_face([2250.mm,100.mm,2363.mm], [2290.mm,100.mm,2363.mm], [2290.mm,2262.mm,2363.mm], [2250.mm,2262.mm,2363.mm])
+  face = grp.entities.add_face([2250.mm,100.mm,2363.mm], [2290.mm,100.mm,2363.mm], [2290.mm,1767.mm,2363.mm], [2250.mm,1767.mm,2363.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Safelight Strip (Cct D)"] || model.materials.add("Safelight Strip (Cct D)")
@@ -27167,7 +27167,7 @@ end
   # Safelight Strip (Cct D)
   grp = ents.add_group
   grp.name = "Safelight Strip (Cct D)"
-  face = grp.entities.add_face([4150.mm,100.mm,2363.mm], [4190.mm,100.mm,2363.mm], [4190.mm,2262.mm,2363.mm], [4150.mm,2262.mm,2363.mm])
+  face = grp.entities.add_face([4150.mm,100.mm,2363.mm], [4190.mm,100.mm,2363.mm], [4190.mm,1767.mm,2363.mm], [4150.mm,1767.mm,2363.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Safelight Strip (Cct D)"] || model.materials.add("Safelight Strip (Cct D)")

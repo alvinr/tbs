@@ -9,7 +9,7 @@ SLIDE-AND-CLAMP corners (acetal skates on 6061 Al U-channel + UHMW-pad cross-sli
 single-axis tilt (top vs bottom) or swing (left vs right); limited combined; NO compound twist
 (a rigid plane cannot warp). A pinhole has infinite depth of field, so this is scene control,
 not focus: push each corner into position, then lock the cam clamp. Each corner connects through
-a single Ruland USKC12-6-6-SS U-joint (2 axes, twist-locked) — no leadscrews, no handwheels.
+a single Belden UJ-SS750x375 U-joint (2 axes) — no leadscrews, no handwheels.
 
 Sheet 1 — Plan view (top-down): 4-corner rail layout, example configs
 Sheet 2 — Elevations: side elevation (tilt) + plan cross-section (swing)
@@ -684,7 +684,7 @@ def sheet2():
 # ═══════════════════════════════════════════════════════════════════════════════
 # Consolidated from the retired generate_corner_detail.py. Color-coded corner views:
 #   A   — corner assembly elevation (lower/floor corner; Yd × Z)
-#   B   — U-joint detail (Ruland USKC12-6-6-SS, enlarged)
+#   B   — U-joint detail (Belden UJ-SS750x375, enlarged)
 #   A-A — captive-carriage section (U-profile polymer liner)
 #   C   — swing slide face-on
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -749,7 +749,7 @@ def view_a(ax):
     leader(ax, 210, 210, 232, 210, "wide carriage plate (red) + cam clamp — hangs from the skate axles", ha="left", fs=5.8, color=C_CAR, font=FONT, bbox=LBL_BG)
     leader(ax, 170, 200, 232, 186, "Z (TILT) slide — 316 flat bar + UHMW + gib (green, up the plate centre)", ha="left", fs=5.8, color=C_TILT, font=FONT, bbox=LBL_BG)
     leader(ax, 176, 162, 232, 160, "X (SWING) slide — 316 flat bar, INTO PAGE (end-on)", ha="left", fs=5.8, color=C_SWING, font=FONT, bbox=LBL_BG)
-    leader(ax, 182, 158, 232, 138, "single U-joint (Ruland USKC12-6-6-SS) + 304 SS corner plate → frame angle", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 182, 158, 232, 138, "single U-joint (Belden UJ-SS750x375) + 304 SS corner plate → frame angle", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 181, 300, 232, 118, "2x2 6061 Al frame angle + ACM/muslin — rises UP (the rigid plane)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
 
     ax.text(-60, 558, "A — CORNER ASSEMBLY ELEVATION  (BOTTOM / weight corner; Yd × Z — film hangs below the rail, matches the 3D)",
@@ -757,7 +757,7 @@ def view_a(ax):
 
 
 def view_b(ax):
-    """U-joint detail (enlarged ~2:1). Ruland USKC12-6-6-SS; through-axis horizontal."""
+    """U-joint detail (enlarged ~2:1). Belden UJ-SS750x375; through-axis horizontal."""
     ax.set_xlim(0, 200); ax.set_ylim(-10, 150); ax.set_aspect("equal"); ax.axis("off")
     cy = 70
     # through-axis centre line
@@ -798,7 +798,7 @@ def view_b(ax):
     leader(ax, 23, cy - 9, 20, cy - 30, "to carrier / cross-slide", ha="left", fs=6, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 141, cy + 9, 120, cy - 30, "to film-frame corner", ha="left", fs=6, color=OUT, font=FONT, bbox=LBL_BG)
 
-    ax.text(0, 146, "B — U-JOINT DETAIL  (Ruland USKC12-6-6-SS, enlarged)",
+    ax.text(0, 146, "B — U-JOINT DETAIL  (Belden UJ-SS750x375, enlarged)",
             fontsize=8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
 
@@ -999,7 +999,7 @@ def sheet3():
         "bottom flange react the pinch, so it never unloads the skate). TOP (Section B-B): the flat channel opens "
         "down, so the clamp mounts on the OUTSIDE of the carriage — a UHMW pad grips the flange's OUTER face while "
         "the yoke arm on the inner face is the anvil, pinching the flange (taking up its 4mm clearance) to lock depth.",
-        "4. The U-joint (Ruland USKC12-6-6-SS, 303 SS, self-lube, grease-free, nitrile-booted) gives "
+        "4. The U-joint (Belden UJ-SS750x375, 303/416 SS pin-and-block, booted) gives "
         "tilt + swing and locks twist so the flat plane stays square. The plane's WEIGHT is carried by "
         "the BOTTOM rail (web-vertical, load rollers gravity-seated on the bottom flange); the TOP rail "
         "is a GUIDE only (flat inverted-U, minimum ceiling cost).",
@@ -1349,8 +1349,8 @@ def sheet5():
     # BOM detail lives in master-shopping-list.md §4 — sheet carries a per-corner summary
     hw_lines = [
         "CORNER HARDWARE (per corner ×4 — acetal skate + cross-slides + single U-joint):",
-        "U-joint  1× Ruland USKC12-6-6-SS (303 SS, KEYWAY+CLAMP hubs, 45° max, self-lube bronze)   ·   boot  1× Ruland UBOOT12/19-NI-KIT (nitrile, fitted dry)",
-        "Shaft support  2× McMaster 4040N12 (304 SS)   ·   stub  2× 3/8\" 304 SS KEYED (McMaster 89535K873 + keyway machined for the U-joint)",
+        "U-joint  1× Belden UJ-SS750x375 (303 SS, KEYWAY+CLAMP hubs, 45° max, self-lube bronze)   ·   boot  1× Ruland UBOOT12/19-NI-KIT (nitrile, fitted dry)",
+        "Shaft support  2× McMaster 4040N12 (304 SS)   ·   stub  2× 3/8\" 304 SS plain rod (McMaster; optional flat for the U-joint setscrew)",
         "SKATE  Ø32 acetal rollers ×4 (2 load + 2 keeper) on Ø10 316 axles + carriage plate + inboard lip   ·   Z/X cross-slides  316 flat bar ¼\"×1.5\" + UHMW pads + adjustable gib   ·   cam clamp ×3",
         "DEPTH RAIL  3×1.5 (76×38) 6061 Al U-channel, wall-to-wall   ·   RIGHT flanged   ·   LEFT transport drop-in (stub + removable + welded bridge + locating pin + bottom support bridge + pinhole gusset)",
         "Full bill of materials: master-shopping-list.md — §4 Film Plane Mechanism",
@@ -1649,7 +1649,7 @@ def sheet7():
            color=STRUCT, ha="left", fs=6, font=FONT)
 
     # ── Single U-joint at each corner of the frame ────────────────────────────
-    # Ruland USKC12-6-6-SS: light-blue body, two crossed pins (tilt + swing, twist-locked).
+    # Belden UJ-SS750x375: light-blue body, two crossed pins (tilt + swing).
     joint_r = 9.5     # Ø19 U-joint (to scale — small at this system scale; detail on Sheets 8-9)
     joint_positions = [
         (fp_left, fp_top),    # TL
@@ -1686,7 +1686,7 @@ def sheet7():
     tl_cy = FH - rail_h - carr_h
     leader(ax, fp_left + joint_r, fp_top - joint_r,
            fp_left + 470, fp_top - 150,
-           "SINGLE U-JOINT — Ruland USKC12-6-6-SS\n(2 axes, twist-locked, 45°)",
+           "SINGLE U-JOINT — Belden UJ-SS750x375\n(2 axes, setscrew hubs, 45°)",
            color=MECH, ha="left", fs=6.5, font=FONT)
 
     # Depth-rail leader (from the TL trolley, end-on) — placed well below the U-joint label
@@ -1859,7 +1859,7 @@ def _corner_elevation(ax):
     draw_dim_v(ax, 162, 0, AL, "2\" (50.8)", fs=5.4, font=FONT)                          # angle leg size (on the now-right leg)
     # labels
     leader(ax, 75, 120, 175, 150, "304 SS corner plate 6×8 — U-joint mount\n(this face toward us now)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 40, 40, -40, 92, "U-joint Ø19 end-on (yoke toward us)\nRuland USKC12-6-6-SS", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 40, 40, -40, 92, "U-joint Ø19 end-on (yoke toward us)\nBelden UJ-SS750x375", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 90, 40, 150, 15, "X (swing) slide — frontmost this view", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
     leader(ax, 25.4, 134, -30, 175, "M6 ×2 per leg (angle → plate, J5)\nheads on the plate back", ha="left", fs=5.2, color=C_PIN, font=FONT, bbox=LBL_BG)
     leader(ax, 200, 25.4, 210, -34, "2x2 6061 Al angle L (FRAME)\n— behind the plate now (ACM behind it)", ha="left", fs=5.4, color=C_FRAME, font=FONT, bbox=LBL_BG)
@@ -1908,7 +1908,7 @@ def _corner_section(ax):
     # countersunk cap screw, 304 SS corner plate → output stub — secures the shaft that carries the U-joint (axial, on CL)
     ax.fill([172, 172, 168.5, 168.5], [-3.4, 3.4, 1.2, -1.2], color=C_PIN, zorder=12)               # countersunk head in the plate (frame-side face)
     ax.add_patch(plt.Rectangle((148, -1.2), 20.5, 2.4, fc=C_PIN, ec=OUT, lw=0.3, zorder=12))         # shank axial into the output stub
-    # USKC clamp hubs — a clamp screw locks each hub onto its KEYED shaft (shown on the U-joint, radial)
+    # setscrew hubs — a setscrew locks each hub onto the shaft (shown on the U-joint, radial)
     for hx in (84, 128):                          # input hub (→ X-carriage stub) · output hub (→ corner-plate stub)
         ax.add_patch(plt.Rectangle((hx - 0.9, 2.5), 1.8, 7.0, fc=C_PIN, ec=OUT, lw=0.3, zorder=13))   # clamp-screw shank into the hub
         ax.add_patch(plt.Rectangle((hx - 2.2, 9.5), 4.4, 2.4, fc=C_PIN, ec=OUT, lw=0.4, zorder=13))    # cap-screw head at the hub OD
@@ -1930,8 +1930,8 @@ def _corner_section(ax):
     leader(ax, 26, -18, 6, -74, "X carriage — 316 on UHMW;\ncam-clamp locks swing", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
     leader(ax, 60, -6, 40, -78, "J3  X-carriage stub Ø9.5 (3/8\") → U-joint bore", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 53, 11.75, 12, 58, "4040N12 304 shaft support — two-piece clamp\nsecures the input stub to the X-slide (purple)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 84, 11.9, 56, 86, "U-joint (tilt + swing, twist-locked) — Ruland USKC12-6-6-SS\nclamp screw per hub locks it on its keyed shaft", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 169, -40, 170, -74, "304 SS corner plate — J4 U-joint stub KEYED + CLAMPED", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 84, 11.9, 56, 86, "U-joint (tilt + swing) — Belden UJ-SS750x375\nsetscrew per hub locks it on the 3/8in stub", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 169, -40, 170, -74, "304 SS corner plate — J4 U-joint stub (setscrew hub)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 167, 24, 150, 66, "J5 COUNTERSUNK from the plate side → frame (M6 ×2/leg)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
     leader(ax, 174, 10, 202, 38, "ACM secured FROM the frame INTO the ACM\n(countersunk in the frame back; front face clean)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
     leader(ax, 170, -1.2, 128, -46, "countersunk cap screw:\ncorner plate → output stub (secures the shaft)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
@@ -1957,9 +1957,9 @@ def sheet9():
         "clamps to the angle's perp leg — Sheet 6). At each corner the angle bolts to a 304 SS CORNER PLATE "
         "(steel, not the expendable aluminum: the U-joint funnels the whole corner load into a few bolts — "
         "too concentrated for 6061 — and stainless matches the 303 SS U-joint in the wet zone).",
-        "The corner plate carries a single U-JOINT (Ruland USKC12-6-6-SS). The U-joint's other yoke bolts to "
+        "The corner plate carries a single U-JOINT (Belden UJ-SS750x375). The U-joint's other yoke bolts to "
         "the X (SWING) slide carriage. So the corner is CARRIED BY the purple X-slide THROUGH the U-joint — "
-        "it never bolts to the slide directly. The U-joint gives tilt + swing angular freedom (twist-locked); "
+        "it never bolts to the slide directly. The U-joint gives tilt + swing angular freedom (setscrew hubs); "
         "the X slide (~260mm) + the Z slide beneath it (~250mm, Sheet 8) take the in-plane arc travel.",
         "LOAD PATH, film → rail:  ACM board → 6061 angle frame → 304 SS corner plate → U-joint → "
         "X (swing) slide → Z (tilt) slide → carriage plate → 4-wheel acetal skate → 6061 Al U-channel rail.",
@@ -2001,8 +2001,8 @@ def sheet8():
         "FIVE JOINTS make the chain (rail→frame, top-down — the full stack is on Sheet 3, View A):",
         "  J1  Z-way seats on the carriage-plate face  M8 ×4 SS (the green Z-slide runs up the plate centre)",
         "  J2  X-way → Z-carriage ................... M8 ×4 SS",
-        "  J3  X-carriage stub Ø9.5 (3/8\") → U-joint bore .. KEY + CLAMP HUB (Ruland USKC12-6-6-SS, keyway-clamp)",
-        "  J4  U-joint 2nd bore → 3/8\" stub → 304 SS corner plate .. KEY + CLAMP HUB (both stubs keyed)",
+        "  J3  X-carriage stub Ø9.5 (3/8\") → U-joint bore .. KEY + CLAMP HUB (Belden UJ-SS750x375, setscrew)",
+        "  J4  U-joint 2nd bore → 3/8\" stub → 304 SS corner plate .. SETSCREW HUB (both stubs)",
         "  J5  2x2 6061 Al frame angle → 304 SS corner plate .. M6 ×2 per leg, vertical (tapped into the angle)",
         "The U-joint's two bores are its ONLY rotating link; everything else is a rigid bolted/clamped "
         "stack. Set the pose by hand (push each slide), then throw the cam clamps — no leadscrews "

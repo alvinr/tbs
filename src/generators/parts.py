@@ -636,9 +636,10 @@ PARTS: list[Part] = [
     Part("ground-stake", 'Copper-bonded ground rod, 8ft × ⅝" + acorn clamp', "electrical-distribution",
          "electrical", 1, "lot", 26.56, 26.56, "Home Depot", part_no="615880UPC",
          url="https://www.homedepot.com/p/ERICO-5-8-in-x-8-ft-Copper-Ground-Rod-615880UPC/202195738", spec="ERICO 615880UPC 5/8\"×8ft copper-bonded rod ($22.78) + bronze acorn ground-rod clamp GOEC5/8LDB ($3.78)."),
-    Part("ground-wire-4awg", "4 AWG ground wire, green/yellow, 3m", "electrical-distribution",
-         "electrical", 1, "lot", 15, 15, "Waytek Wire",
-         spec="~3m 4 AWG green/yellow earth conductor (main panel → 8ft ground stake, §7.6) + ring-lug terminal — Waytek 37357 (4 Ga, 5/16\" stud). Short cut length (green flag if only black stocked); no 100ft spool. Price $15 est — confirm at order."),
+    Part("ground-wire-4awg", "4 AWG ground wire, green/yellow, 20ft", "electrical-distribution",
+         "electrical", 1, "lot", 52, 52, "AutomationDirect", part_no="MTW4GYL-1",
+         url="https://www.automationdirect.com/adc/shopping/catalog/bulk_wire_-a-_cable/single_conductor_wire_-a-_cable/mtw4gyl-1",
+         spec="20ft AutomationDirect MTW4GYL-1 (4 AWG MTW, green/yellow) — the main panel -> 8ft ground stake earth conductor (§7.6, ~3m used, rest spare) + ring-lug terminal. $52 firm (Alvin 2026-07-31, 20ft min buy)."),
 
     # ═══ container (§1) — mirrors costing.CONTAINER → exact $2,300–$4,300 ═══
     Part("container-20ft", "20 ft ISO container — CW (cargo-worthy) grade", "container",

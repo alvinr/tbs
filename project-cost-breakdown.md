@@ -97,7 +97,7 @@ Converting the container interior from cargo hold to pinhole camera. Includes li
 
 ### 2.3 Image-plane flat backing — costed with the Film Plane Mechanism
 
-The rigid ACM backing is **bonded to the moveable film-plane frame**, so it is costed with the film-plane mechanism (`dibond-acm-film`: 4× black 4mm 4'×8' ACM ≈ $380 — see [Film Plane Mechanism](film-plane-mechanism-report.md)). It was previously double-listed here as a fixed-wall backing; that entry is **retired** (the design uses the moveable back, not a wall-mounted panel).
+The rigid ACM backing is **bonded to the moveable film-plane frame**, so it is costed with the film-plane mechanism (`dibond-acm-film`: 4× black 4mm 4'×8' ACM ≈ $380 — see [Film Plane Mechanism](film-plane-mechanism-report.md)). The design uses the moveable back, not a wall-mounted panel.
 
 ### 2.4 Ventilation
 

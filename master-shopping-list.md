@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $4,361 | $4,815 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,418 | $7,685 |
-| 6. Electrical — power, circuits, wiring | $3,293 | $3,378 |
+| 6. Electrical — power, circuits, wiring | $3,327 | $3,407 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,979 | $2,825 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$26,172** | **~$34,434** |
+| **TOTAL (base build + 50-print run)** | **~$26,206** | **~$34,463** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -50,7 +50,7 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [2" black Gorilla Tape](https://www.homedepot.com/p/316372144) (106718) | 6 roll | Home Depot | film | $60 |
-| Dielectric grease, marine-grade (terminal protection) | 1 ea | Amazon | electrical | $10 |
+| [Dielectric grease, marine-grade (terminal protection)](https://www.amazon.com/dp/B0D6R543V2) (B0D6R543V2) | 1 ea | Amazon | electrical | $9 |
 | Door perimeter weatherstrip + threshold | 1 lot | Home Depot | interior | $10–$22 |
 | Flat black epoxy spray paint | 1 can | Hardware store | shelf | $12 |
 | Flat black paint (RAL 9005) | 1 qt | Local fab | panel | $10–$20 |
@@ -61,7 +61,7 @@ indicative low–high estimates — get quotes before ordering.
 | Primer + paint | 1 lot | Hardware store | ibc-frame | $30–$50 |
 | [Silicone bead sealant (black, UV-stable)](https://www.homedepot.com/p/331895623) (RDX1001bl) | 1 ea | Home Depot | lightlock | $20 |
 | Thread seal tape (PTFE) | 4 roll | Home Depot | water | $8 |
-| **adhesives-finishes subtotal** | | | | **$376–$468** |
+| **adhesives-finishes subtotal** | | | | **$375–$467** |
 
 ### aluminum
 
@@ -142,7 +142,7 @@ indicative low–high estimates — get quotes before ordering.
 | [200A main fuse (Blue Sea 5187) + single MRBF holder (5191)](https://defender.com/en_us/blue-sea-systems-single-mrbf-terminal-fuse-block-5191) (5187+5191) | 1 ea | Blue Sea | electrical | $46 |
 | 4 AWG ground wire, green/yellow, 3m | 1 lot | Waytek Wire | electrical | $15 |
 | [40×25mm PVC cable trunking, 5m](https://www.amazon.com/GenSDH-Raceway-Speaker-Concealer-Coffee-Width/dp/B0DK6GMHGL) (B0DK6GMHGL) | 4 ea | Amazon | electrical | $74 |
-| [Anderson Powerpole 30A connectors, 50 pairs (unassembled)](https://powerwerx.com/anderson-powerpole-connectors-30amp-unassembled) | 1 kit | Powerwerx | electrical | $54 |
+| [Anderson Powerpole 30A connectors, 50 pairs (unassembled)](https://powerwerx.com/1327bk-anderson-powerpole-housing-red) (1327) | 1 kit | Powerwerx | electrical | $55 |
 | Anderson Powerpole connectors 30A | 5 pair | Powerwerx | water | $10 |
 | [Battery main disconnect — Blue Sea 6006 m-Series (300A)](https://offgridstores.com/products/blue-sea-6006-m-series-mini-battery-switch-single-circuit-on-off-red) (6006) | 1 ea | Off Grid Stores | electrical | $36 |
 | [Battery terminal covers (pair), insulating boots](https://www.waytekwire.com/product/23501-straight-in-battery) (23501) | 1 pair | Waytek Wire | electrical | $3 |
@@ -160,10 +160,10 @@ indicative low–high estimates — get quotes before ordering.
 | [Interior emergency cut-off — red mushroom switch (paralleled to exterior)](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
 | [IP65 enclosure 213×213×133mm (fuse block + busbars, on the plywood)](https://www.polycase.com/zh-080804) (ZH-080804) | 1 ea | Polycase | electrical | $47 |
 | [LED Profiles 981 slimline channel + diffuser, 8 ft (×6)](https://ledprofiles.com/collections/all-led-channels/products/slimline-ultra-low-profile-led-channel-981-series) (981ASL) | 6 8ft length | LED Profiles | electrical | $162 |
-| LED strip connectors + 12V PWM dimmers (Circuits G + D) | 1 lot | Amazon | electrical | $15–$30 |
+| [LED strip connectors + 12V PWM dimmers (Circuits G + D)](https://www.superbrightleds.com/solderless-clamp-on-led-strip-light-to-pigtail-adaptor-8mm-single-color-strips-22-awg) (solderless-clamp-8mm) | 1 lot | Super Bright LEDs | electrical | $15–$30 |
 | [Master pump switch (Circuit C) — IP67 sealed rocker/disconnect 12V 16A](https://www.amazon.com/dp/B0GF2ZBD1W) (B0GF2ZBD1W) | 1 ea | Amazon | electrical | $8 |
 | [MC4 bulkhead passthrough pairs, IP67 panel-mount](https://powerwerx.com/mc4-bulkhead-passthrough-solar-input) (MC4-Bulkhead) | 3 pair | Powerwerx | electrical | $9 |
-| [MPPT charge-line fuse — 60A ANL + holder](https://www.amazon.com/dp/B000THT1SG) (5005) | 1 ea | Amazon | electrical | $37–$42 |
+| [MPPT charge-line fuse — 60A ANL + holder](https://powerwerx.com/blue-sea-5005-anl-fuse-block-cover) (5005-BSS) | 1 ea | Powerwerx | electrical | $71 |
 | [NEMA 5-15R weatherproof inlet (flush power panel)](https://www.amazon.com/dp/B0CLDC8X5J) (B0CLDC8X5J) | 1 ea | Amazon | electrical | $10 |
 | [Pull-cord ceiling switch, 12V 6A SPST](https://americandoorsupply.com/products/ceiling-pull-switch-spst-nema-4-w-rotg-pivoting-cam) (CPM-1) | 2 ea | americandoorsupply | electrical | $244 |
 | [Pump distribution block — 12V DC common busbar, 10-gang](https://www.bluesea.com/products/2300) (2300) | 1 ea | Blue Sea | electrical | $15 |
@@ -172,7 +172,7 @@ indicative low–high estimates — get quotes before ordering.
 | [SBL COB 12V red LED safelight strip, 5m reel (Circuit D)](https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc) (STN-B-BRED-O12A-08F5M-12V) | 1 reel | Super Bright LEDs | electrical | $90 |
 | Sealed wet-zone connectors — Deutsch DT / adhesive heat-shrink | 1 lot | Waytek Wire | electrical | $25 |
 | [Shore-charger output fuse — 20A inline (sealed holder + fuse)](https://www.waytekwire.com/product/sealed-ato-atc-fuse-holder-assembly-46047) (46047) | 1 ea | Waytek Wire | electrical | $7 |
-| **electrical-distribution subtotal** | | | | **$1,925–$1,955** |
+| **electrical-distribution subtotal** | | | | **$1,960–$1,985** |
 
 ### electrical-power
 
@@ -442,7 +442,7 @@ indicative low–high estimates — get quotes before ordering.
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,185–$3,567 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,877–$2,451 |
-| Amazon | 36 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,090–$2,176 |
+| Amazon | 34 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,037–$2,103 |
 | Home Depot | 50 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,640–$1,761 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
@@ -459,9 +459,9 @@ indicative low–high estimates — get quotes before ordering.
 | Inverter Supply | 2 | electrical-distribution, electrical-power | $396 |
 | Curbell Plastics | 1 | plastics-sheet | $380 |
 | Grainger | 2 | aluminum | $377 |
+| Powerwerx | 5 | electrical-distribution, electrical-power | $339 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | Waytek Wire | 19 | electrical-distribution, electrical-power | $299 |
-| Powerwerx | 4 | electrical-distribution, electrical-power | $267 |
 | igus | 1 | bearings-motion | $261 |
 | americandoorsupply | 1 | electrical-distribution | $244 |
 | Bearings Direct | 2 | bearings-motion | $201 |
@@ -470,12 +470,12 @@ indicative low–high estimates — get quotes before ordering.
 | LED Profiles | 1 | electrical-distribution | $162 |
 | Inverter Service Center | 1 | electrical-power | $152 |
 | Fasteners Plus | 2 | fasteners-hardware | $106–$136 |
+| Super Bright LEDs | 2 | electrical-distribution | $105–$120 |
 | McNichols | 2 | fasteners-hardware, plastics-sheet | $80–$115 |
 | Southco | 1 | fasteners-hardware | $76–$104 |
 | Lenox Laser | 1 | stainless-sheet | $40–$100 |
 | Hardware store | 3 | adhesives-finishes, seals-gaskets | $57–$92 |
 | StrongAr Hardware | 1 | fasteners-hardware | $70–$90 |
-| Super Bright LEDs | 1 | electrical-distribution | $90 |
 | HitLights | 1 | electrical-distribution | $75–$85 |
 | Fresh Water Systems | 2 | fasteners-hardware, water-equipment | $82 |
 | Frost King + Canal Rubber | 1 | seals-gaskets | $40–$75 |

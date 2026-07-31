@@ -45,6 +45,8 @@ C_STEEL = "#B0B0B8"; C_CROSS = "#8A8A92"; C_PANEL = "#1F3B66"; C_CAR = "#C04010"
 C_FRAME = "#8FB0C8"   # film-plane 2x2 6061 Al angle perimeter frame (the ACM backing is captured in it)
 C_TILT = "#2E8B57"   # vertical (Z) slide — TILT accommodation (green)
 C_SWING = "#7B5EA7"  # horizontal (X) slide — SWING accommodation (purple)
+C_CLAMP = "#3A3A40"  # cam rail-brake (fp-cam-clamp, McMaster 5128A63)
+C_POLY = "#D8D4C8"   # UHMW pad (cam-brake pinch face)
 
 # real container/film layout (mm) — sourced from tbs_constants via ov (no hardcoded copies)
 CH = ov.C_HGT                        # interior height
@@ -212,12 +214,14 @@ def corner(tag, cx, fz, zc, cin, side):
     # CARRIAGE PLATE, never the beam. ──
     rz = botf + HB_T + 16 if is_bot else zc + CW_TOP / 2 - HB_T - 16   # wheel-centre Z
     inb = cx + cin * (chan_w / 2 + 14)                   # carriage line — inboard of the channel opening (film side)
-    # BOTTOM = Ø32x16 load rollers (weight). TOP = a WIDE Ø32 guide DRUM that nearly spans the flat-channel
-    # throat, so BOTH flanges locate it laterally (tight X) — the flat rail's answer to the bottom rail's lip.
+    # BOTTOM = Ø32 load rollers, WIDE face (weight) — nearly span the running surface, ~4mm off web + lip.
+    # TOP = a Ø32 guide wheel (40mm face) that spins between the yoke arms; the arms run ~4mm clear of the
+    # flanges (loose lateral guide) — the flat rail is a depth/lateral guide, not a tight fit.
     if is_bot:
-        rlabel, r_x0, r_len = "Acetal wheel Ø32 (weight)", cx - 8, 16
+        # WIDE face — nearly spans the 28mm running surface (web-inner→lip-inner), ~4mm clearance each side
+        rlabel, r_x0, r_len = "Acetal wheel Ø32 (wide face, weight)", cx - 10, 20
     else:
-        rlabel, r_x0, r_len = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side)", cx - 26, 52
+        rlabel, r_x0, r_len = "Acetal guide wheel Ø32 (40mm face, spins between the yoke arms)", cx - 20, 40
     kx, kz = cx - 6, zc + CD_BOT / 2 - HB_T - 10   # bottom keeper (anti-lift, under the top flange); Ø20 on a stub axle
     for ry in (ty + 8, ty + 48):
         P.append(ov.ruby_cylinder(f"{rlabel} {tag} {int(ry)}", r_x0, ry, rz, 16, r_len, color=C_CAR, axis="x"))
@@ -231,17 +235,17 @@ def corner(tag, cx, fz, zc, cin, side):
         else:
             # TOP: the channel opens DOWN, so the axle stays WITHIN the throat (Ø10, spanning the drum);
             # the yoke below grabs its ends — it never crosses a flange.
-            P.append(ov.ruby_cylinder(f"Guide axle Ø10 (in throat) {tag} {int(ry)}", cx - 33, ry, rz, 5, 66, color=C_CROSS, axis="x"))
+            P.append(ov.ruby_cylinder(f"Guide axle Ø10 (in throat) {tag} {int(ry)}", cx - 27, ry, rz, 5, 54, color=C_CROSS, axis="x"))
     if not is_bot:
         # TOP YOKE — the carriage extends UP through the channel OPENING (past the lips): two arms grab the
-        # guide-axle ends (free space between the narrow wheel and each arm) + bear the flanges (lateral X)
-        # + hook the lips (anti-drop). A cross-piece JOINS the two arms into ONE part below the opening;
-        # a rail then runs inboard to the carriage plate. The axle never pierces a flange.
+        # guide-axle ends (free space between the narrow wheel and each arm) + run ~4mm CLEAR of the flanges
+        # (loose lateral guide) + hook the lips (anti-drop). A cross-piece JOINS the two arms into ONE part
+        # below the opening; a rail then runs inboard to the carriage plate. The axle never pierces a flange.
         yb = zc - CW_TOP / 2                                   # channel opening (flange-lip Z)
-        for ax_x in (cx - 33, cx + 33):
+        for ax_x in (cx - 27, cx + 27):                        # flanges are at cx±33 → arms ~4mm clear
             P.append(ov.ruby_box(f"Yoke arm + lip hook (thru opening) {tag} {int(ax_x)}", ax_x - 2, ty - 34, yb - 14, 4, 68, rz - (yb - 14), color=C_CAR))
-        P.append(ov.ruby_box(f"Yoke cross-piece (joins the two arms) {tag}", cx - 35, ty - 34, yb - 22, 70, 68, 8, color=C_CAR))
-        P.append(ov.ruby_box(f"Yoke rail (→ inboard carriage) {tag}", min(cx + 33, inb), ty - 34, yb - 20, abs(inb - (cx + 33)) + 6, 68, 6, color=C_CAR))
+        P.append(ov.ruby_box(f"Yoke cross-piece (joins the two arms) {tag}", cx - 29, ty - 34, yb - 22, 58, 68, 8, color=C_CAR))
+        P.append(ov.ruby_box(f"Yoke rail (→ inboard carriage) {tag}", min(cx + 27, inb), ty - 34, yb - 20, abs(inb - (cx + 27)) + 6, 68, 6, color=C_CAR))
     # carriage plate on the axle ends + axle-retainer bolts DOWN THROUGH THE PLATE (saddle-clamp, not the beam).
     # Spans the film-corner / load-roller (/ keeper on the bottom) so every axle lands on it. kz is the
     # BOTTOM keeper only — exclude it at the top. TOP corners: cap the plate top 25mm below the ceiling.
@@ -252,6 +256,20 @@ def corner(tag, cx, fz, zc, cin, side):
     for ry in (ty + 8, ty + 48):
         blen = min(44, plate_top - (rz - 22))                 # keep the retainer bolt within the (capped) plate
         P.append(ov.ruby_cylinder(f"Axle retainer bolt (thru plate) {tag} {int(ry)}", inb, ry, rz - 22, 2.5, blen, color=C_CROSS, axis="z"))
+
+    # ── CAM RAIL-BRAKE (fp-cam-clamp, McMaster 5128A63) — bottom (weight) corners only. Base on the carriage-
+    # plate top; the hold-down arm reaches OUTBOARD over the channel TOP FLANGE and a UHMW pad presses DOWN on
+    # it. Self-reacting: the Ø32 load rollers on the BOTTOM flange react the pinch, so it never unloads the
+    # skate. Thrown to lock depth for the shot + transport. One representative shown (BOM: 3 per corner). ──
+    if is_bot:
+        tfz = zc + CD_BOT / 2                                  # top-flange top surface
+        basex = inb - cin * 3                                  # base near the plate's outboard edge
+        padx = cx + cin * 8                                    # pad over the (inboard part of the) top flange
+        cby = ty + 33
+        P.append(ov.ruby_box(f"Cam-brake base (5128A63) {tag}", basex - 5, cby, plate_top, 10, 22, 8, color=C_CLAMP))
+        P.append(ov.ruby_box(f"Cam-brake hold-down arm {tag}", min(basex, padx), cby + 7, tfz + 4, abs(basex - padx), 8, 4, color=C_CLAMP))
+        P.append(ov.ruby_box(f"Cam-brake UHMW pad {tag}", padx - 6, cby + 6, tfz, 12, 10, 4, color=C_POLY))
+        P.append(ov.ruby_cylinder(f"Cam-brake lever {tag}", basex, cby + 11, plate_top + 8, 2, 20, color=C_CLAMP, axis="z"))
 
     # ── mechanism, inboard: Z slide (tilt) → X slide (swing) → U-joint → the FILM-PLANE CORNER ──
     # The cross-slides sit on the BACKING side of the film plane (Yd > FP_Y) so the frame SITS ON them — the

@@ -194,14 +194,14 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal wheel Ø32 (weight) BL 2270
+  # Acetal wheel Ø32 (wide face, weight) BL 2270
   grp = ents.add_group
-  grp.name = "Acetal wheel Ø32 (weight) BL 2270"
+  grp.name = "Acetal wheel Ø32 (wide face, weight) BL 2270"
   ge = grp.entities
-  circle = ge.add_circle([142.mm,2270.mm,253.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([140.mm,2270.mm,253.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
+  cface.pushpull(20.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -211,10 +211,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Wheel axle Ø10 BL 2270"
   ge = grp.entities
-  circle = ge.add_circle([142.mm,2270.mm,253.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([140.mm,2270.mm,253.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(47.mm)
+  cface.pushpull(49.mm)
   mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -246,14 +246,14 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal wheel Ø32 (weight) BL 2310
+  # Acetal wheel Ø32 (wide face, weight) BL 2310
   grp = ents.add_group
-  grp.name = "Acetal wheel Ø32 (weight) BL 2310"
+  grp.name = "Acetal wheel Ø32 (wide face, weight) BL 2310"
   ge = grp.entities
-  circle = ge.add_circle([142.mm,2310.mm,253.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([140.mm,2310.mm,253.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
+  cface.pushpull(20.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -263,10 +263,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Wheel axle Ø10 BL 2310"
   ge = grp.entities
-  circle = ge.add_circle([142.mm,2310.mm,253.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([140.mm,2310.mm,253.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(47.mm)
+  cface.pushpull(49.mm)
   mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -332,6 +332,52 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface.pushpull(44.mm)
   mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake base (5128A63) BL
+  grp = ents.add_group
+  grp.name = "Cam-brake base (5128A63) BL"
+  face = grp.entities.add_face([175.mm,2295.mm,311.mm], [185.mm,2295.mm,311.mm], [185.mm,2317.mm,311.mm], [175.mm,2317.mm,311.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake hold-down arm BL
+  grp = ents.add_group
+  grp.name = "Cam-brake hold-down arm BL"
+  face = grp.entities.add_face([158.mm,2302.mm,312.mm], [180.mm,2302.mm,312.mm], [180.mm,2310.mm,312.mm], [158.mm,2310.mm,312.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake UHMW pad BL
+  grp = ents.add_group
+  grp.name = "Cam-brake UHMW pad BL"
+  face = grp.entities.add_face([152.mm,2301.mm,308.mm], [164.mm,2301.mm,308.mm], [164.mm,2311.mm,308.mm], [152.mm,2311.mm,308.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake UHMW pad BL"] || model.materials.add("Cam-brake UHMW pad BL")
+  mat.color = Sketchup::Color.new(216, 212, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake lever BL
+  grp = ents.add_group
+  grp.name = "Cam-brake lever BL"
+  ge = grp.entities
+  circle = ge.add_circle([180.mm,2306.mm,319.mm], [0,0,1], 2.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -495,14 +541,14 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal wheel Ø32 (weight) BR 2270
+  # Acetal wheel Ø32 (wide face, weight) BR 2270
   grp = ents.add_group
-  grp.name = "Acetal wheel Ø32 (weight) BR 2270"
+  grp.name = "Acetal wheel Ø32 (wide face, weight) BR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4616.mm,2270.mm,253.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4614.mm,2270.mm,253.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
+  cface.pushpull(20.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -515,7 +561,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4585.mm,2270.mm,253.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(47.mm)
+  cface.pushpull(49.mm)
   mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -547,14 +593,14 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal wheel Ø32 (weight) BR 2310
+  # Acetal wheel Ø32 (wide face, weight) BR 2310
   grp = ents.add_group
-  grp.name = "Acetal wheel Ø32 (weight) BR 2310"
+  grp.name = "Acetal wheel Ø32 (wide face, weight) BR 2310"
   ge = grp.entities
-  circle = ge.add_circle([4616.mm,2310.mm,253.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4614.mm,2310.mm,253.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
+  cface.pushpull(20.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -567,7 +613,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   circle = ge.add_circle([4585.mm,2310.mm,253.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(47.mm)
+  cface.pushpull(49.mm)
   mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -633,6 +679,52 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface.pushpull(44.mm)
   mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake base (5128A63) BR
+  grp = ents.add_group
+  grp.name = "Cam-brake base (5128A63) BR"
+  face = grp.entities.add_face([4589.mm,2295.mm,311.mm], [4599.mm,2295.mm,311.mm], [4599.mm,2317.mm,311.mm], [4589.mm,2317.mm,311.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake hold-down arm BR
+  grp = ents.add_group
+  grp.name = "Cam-brake hold-down arm BR"
+  face = grp.entities.add_face([4594.mm,2302.mm,312.mm], [4616.mm,2302.mm,312.mm], [4616.mm,2310.mm,312.mm], [4594.mm,2310.mm,312.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake UHMW pad BR
+  grp = ents.add_group
+  grp.name = "Cam-brake UHMW pad BR"
+  face = grp.entities.add_face([4610.mm,2301.mm,308.mm], [4622.mm,2301.mm,308.mm], [4622.mm,2311.mm,308.mm], [4610.mm,2311.mm,308.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake UHMW pad BL"] || model.materials.add("Cam-brake UHMW pad BL")
+  mat.color = Sketchup::Color.new(216, 212, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake lever BR
+  grp = ents.add_group
+  grp.name = "Cam-brake lever BR"
+  ge = grp.entities
+  circle = ge.add_circle([4594.mm,2306.mm,319.mm], [0,0,1], 2.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -853,14 +945,14 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TL 2270
+  # Acetal guide wheel Ø32 (40mm face, spins between the yoke arms) TL 2270
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TL 2270"
+  grp.name = "Acetal guide wheel Ø32 (40mm face, spins between the yoke arms) TL 2270"
   ge = grp.entities
-  circle = ge.add_circle([124.mm,2270.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([130.mm,2270.mm,2317.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
+  cface.pushpull(40.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -870,23 +962,23 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Guide axle Ø10 (in throat) TL 2270"
   ge = grp.entities
-  circle = ge.add_circle([117.mm,2270.mm,2317.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([123.mm,2270.mm,2317.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(66.mm)
+  cface.pushpull(54.mm)
   mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TL 2310
+  # Acetal guide wheel Ø32 (40mm face, spins between the yoke arms) TL 2310
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TL 2310"
+  grp.name = "Acetal guide wheel Ø32 (40mm face, spins between the yoke arms) TL 2310"
   ge = grp.entities
-  circle = ge.add_circle([124.mm,2310.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([130.mm,2310.mm,2317.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
+  cface.pushpull(40.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -896,19 +988,19 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Guide axle Ø10 (in throat) TL 2310"
   ge = grp.entities
-  circle = ge.add_circle([117.mm,2310.mm,2317.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([123.mm,2310.mm,2317.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(66.mm)
+  cface.pushpull(54.mm)
   mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm + lip hook (thru opening) TL 117
+  # Yoke arm + lip hook (thru opening) TL 123
   grp = ents.add_group
-  grp.name = "Yoke arm + lip hook (thru opening) TL 117"
-  face = grp.entities.add_face([115.mm,2228.mm,2286.mm], [119.mm,2228.mm,2286.mm], [119.mm,2296.mm,2286.mm], [115.mm,2296.mm,2286.mm])
+  grp.name = "Yoke arm + lip hook (thru opening) TL 123"
+  face = grp.entities.add_face([121.mm,2228.mm,2286.mm], [125.mm,2228.mm,2286.mm], [125.mm,2296.mm,2286.mm], [121.mm,2296.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
@@ -916,10 +1008,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm + lip hook (thru opening) TL 183
+  # Yoke arm + lip hook (thru opening) TL 177
   grp = ents.add_group
-  grp.name = "Yoke arm + lip hook (thru opening) TL 183"
-  face = grp.entities.add_face([181.mm,2228.mm,2286.mm], [185.mm,2228.mm,2286.mm], [185.mm,2296.mm,2286.mm], [181.mm,2296.mm,2286.mm])
+  grp.name = "Yoke arm + lip hook (thru opening) TL 177"
+  face = grp.entities.add_face([175.mm,2228.mm,2286.mm], [179.mm,2228.mm,2286.mm], [179.mm,2296.mm,2286.mm], [175.mm,2296.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
@@ -930,7 +1022,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Yoke cross-piece (joins the two arms) TL
   grp = ents.add_group
   grp.name = "Yoke cross-piece (joins the two arms) TL"
-  face = grp.entities.add_face([115.mm,2228.mm,2278.mm], [185.mm,2228.mm,2278.mm], [185.mm,2296.mm,2278.mm], [115.mm,2296.mm,2278.mm])
+  face = grp.entities.add_face([121.mm,2228.mm,2278.mm], [179.mm,2228.mm,2278.mm], [179.mm,2296.mm,2278.mm], [121.mm,2296.mm,2278.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
@@ -941,7 +1033,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Yoke rail (→ inboard carriage) TL
   grp = ents.add_group
   grp.name = "Yoke rail (→ inboard carriage) TL"
-  face = grp.entities.add_face([183.mm,2228.mm,2280.mm], [208.mm,2228.mm,2280.mm], [208.mm,2296.mm,2280.mm], [183.mm,2296.mm,2280.mm])
+  face = grp.entities.add_face([177.mm,2228.mm,2280.mm], [208.mm,2228.mm,2280.mm], [208.mm,2296.mm,2280.mm], [177.mm,2296.mm,2280.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
@@ -1135,14 +1227,14 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TR 2270
+  # Acetal guide wheel Ø32 (40mm face, spins between the yoke arms) TR 2270
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TR 2270"
+  grp.name = "Acetal guide wheel Ø32 (40mm face, spins between the yoke arms) TR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4598.mm,2270.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4604.mm,2270.mm,2317.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
+  cface.pushpull(40.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -1152,23 +1244,23 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Guide axle Ø10 (in throat) TR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4591.mm,2270.mm,2317.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([4597.mm,2270.mm,2317.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(66.mm)
+  cface.pushpull(54.mm)
   mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TR 2310
+  # Acetal guide wheel Ø32 (40mm face, spins between the yoke arms) TR 2310
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (10mm narrower than the yoke; ~5mm clearance each side) TR 2310"
+  grp.name = "Acetal guide wheel Ø32 (40mm face, spins between the yoke arms) TR 2310"
   ge = grp.entities
-  circle = ge.add_circle([4598.mm,2310.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4604.mm,2310.mm,2317.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
+  cface.pushpull(40.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -1178,19 +1270,19 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Guide axle Ø10 (in throat) TR 2310"
   ge = grp.entities
-  circle = ge.add_circle([4591.mm,2310.mm,2317.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([4597.mm,2310.mm,2317.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(66.mm)
+  cface.pushpull(54.mm)
   mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm + lip hook (thru opening) TR 4591
+  # Yoke arm + lip hook (thru opening) TR 4597
   grp = ents.add_group
-  grp.name = "Yoke arm + lip hook (thru opening) TR 4591"
-  face = grp.entities.add_face([4589.mm,2228.mm,2286.mm], [4593.mm,2228.mm,2286.mm], [4593.mm,2296.mm,2286.mm], [4589.mm,2296.mm,2286.mm])
+  grp.name = "Yoke arm + lip hook (thru opening) TR 4597"
+  face = grp.entities.add_face([4595.mm,2228.mm,2286.mm], [4599.mm,2228.mm,2286.mm], [4599.mm,2296.mm,2286.mm], [4595.mm,2296.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
@@ -1198,10 +1290,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm + lip hook (thru opening) TR 4657
+  # Yoke arm + lip hook (thru opening) TR 4651
   grp = ents.add_group
-  grp.name = "Yoke arm + lip hook (thru opening) TR 4657"
-  face = grp.entities.add_face([4655.mm,2228.mm,2286.mm], [4659.mm,2228.mm,2286.mm], [4659.mm,2296.mm,2286.mm], [4655.mm,2296.mm,2286.mm])
+  grp.name = "Yoke arm + lip hook (thru opening) TR 4651"
+  face = grp.entities.add_face([4649.mm,2228.mm,2286.mm], [4653.mm,2228.mm,2286.mm], [4653.mm,2296.mm,2286.mm], [4649.mm,2296.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
@@ -1212,7 +1304,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Yoke cross-piece (joins the two arms) TR
   grp = ents.add_group
   grp.name = "Yoke cross-piece (joins the two arms) TR"
-  face = grp.entities.add_face([4589.mm,2228.mm,2278.mm], [4659.mm,2228.mm,2278.mm], [4659.mm,2296.mm,2278.mm], [4589.mm,2296.mm,2278.mm])
+  face = grp.entities.add_face([4595.mm,2228.mm,2278.mm], [4653.mm,2228.mm,2278.mm], [4653.mm,2296.mm,2278.mm], [4595.mm,2296.mm,2278.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
@@ -1223,7 +1315,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Yoke rail (→ inboard carriage) TR
   grp = ents.add_group
   grp.name = "Yoke rail (→ inboard carriage) TR"
-  face = grp.entities.add_face([4572.mm,2228.mm,2280.mm], [4663.mm,2228.mm,2280.mm], [4663.mm,2296.mm,2280.mm], [4572.mm,2296.mm,2280.mm])
+  face = grp.entities.add_face([4572.mm,2228.mm,2280.mm], [4657.mm,2228.mm,2280.mm], [4657.mm,2296.mm,2280.mm], [4572.mm,2296.mm,2280.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")

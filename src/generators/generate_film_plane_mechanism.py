@@ -848,12 +848,12 @@ def section_aa(ax):
     for _mbx in (51, 61):
         ax.plot([_mbx, _mbx], [72, 81], color=C_PIN, lw=0.7, zorder=10)  # 2× M5 mount bolts into the plate
     _rect(ax, 24, 79, 30, 4, C_CLAMP, z=9)                             # clamp ARM (reaches over the flange)
-    draw_circle(ax, 52, 81, 2.4, color=C_PIN, fill=True, fc=C_PIN, lw=0.6, zorder=11)  # cam pivot
-    ax.plot([52, 66], [81, 91], color=C_CLAMP, lw=2.4, zorder=10)      # cam LEVER handle (thrown = locked)
+    draw_circle(ax, 30, 82, 2.4, color=C_PIN, fill=True, fc=C_PIN, lw=0.6, zorder=11)  # cam pivot — over the pad
+    ax.plot([30, 36], [82, 94], color=C_CLAMP, lw=2.4, zorder=10)      # cam LEVER handle (over the rubber; thrown = locked)
     _rect(ax, 24, 75, 13, 4, C_POLY, z=10)                             # UHMW pad — bites DOWN on the top flange
     ax.annotate("", xy=(30, 75), xytext=(30, 83), arrowprops=dict(arrowstyle="->", color=C_CAR, lw=1.3, zorder=11))
     draw_dim_h(ax, 30, 52, 87, "~22mm reach", offset=5, fs=5.0, color=DIM, font=FONT)  # mount → pad (5128A63)
-    leader(ax, 56, 91, 44, 101, "cam brake (5128A63)", ha="left", fs=4.9, color=C_CLAMP, font=FONT, bbox=LBL_BG)
+    leader(ax, 34, 93, 44, 101, "cam brake (5128A63)", ha="left", fs=4.9, color=C_CLAMP, font=FONT, bbox=LBL_BG)
     # seating + lift arrows
     ax.annotate("", xy=(17, 42), xytext=(17, 52), arrowprops=dict(arrowstyle="->", color=OUT, lw=1.4))
     ax.text(6, 47, "WEIGHT", fontsize=5.4, ha="right", va="center", color=OUT, **FONT)
@@ -899,15 +899,19 @@ def section_top(ax):
         _rect(ax, ax_x, -14, 6, 36, C_CAR, z=8)                                      # yoke arm (through opening, ~4mm off a flange)
     _rect(ax, 9, -22, 58, 8, C_CAR, z=8)                                             # cross-piece JOINS the two arms
     _rect(ax, 53, -8, 14, 4, C_CAR, z=9)                                             # inboard lip-hook (anti-drop)
-    # SIDE-PINCH CAM RAIL-BRAKE (fp-cam-clamp, McMaster 5128A63) on the right yoke arm — a cam drives a UHMW
-    # pad OUTBOARD against the far flange's inner face; the reaction wedges the LEFT arm on the left flange, so
-    # the yoke locks laterally + brakes depth (takes up the 4mm running clearance). Thrown for shot + transport.
-    _rect(ax, 62, 3, 5, 14, C_CLAMP, z=10)                                           # cam body on the right arm
-    _rect(ax, 67, 9, 3, 8, C_POLY, z=11)                                             # UHMW pad — driven against the flange
-    draw_circle(ax, 64, 10, 1.8, color=C_PIN, fill=True, fc=C_PIN, lw=0.5, zorder=12)  # cam pivot
-    ax.plot([64, 58], [10, -5], color=C_CLAMP, lw=2.2, zorder=11)                     # cam lever (thrown = locked)
-    ax.annotate("", xy=(71, 13), xytext=(67, 13), arrowprops=dict(arrowstyle="->", color=C_CAR, lw=1.2, zorder=12))  # pad → flange
-    leader(ax, 69, 14, 78, 30, "side-pinch brake (5128A63):\npad drives yoke onto the\nfar flange — locks depth", ha="left", fs=4.7, color=C_CLAMP, font=FONT, bbox=LBL_BG)
+    # OUTSIDE CLAMP RAIL-BRAKE (fp-cam-clamp, McMaster 5128A63) — mounted on the OUTSIDE of the carriage (a
+    # bracket off the yoke wraps below the flange and rises OUTSIDE it), the cam drives a UHMW pad against the
+    # flange's OUTER face; the yoke arm on the flange's INNER face is the anvil, so the flange is pinched from
+    # outside (takes up its 4mm clearance) → depth locked. Lever is outboard = reachable. Thrown for shot + transport.
+    _rect(ax, 63, -22, 22, 4, C_CAR, z=7)                                            # bracket — wraps out below the flange
+    _rect(ax, 80, -22, 4, 42, C_CAR, z=7)                                            # bracket riser — OUTSIDE the flange
+    _rect(ax, 80, 6, 7, 13, C_CLAMP, z=9)                                            # clamp body (outboard)
+    _rect(ax, 76, 9, 3, 8, C_POLY, z=10)                                             # UHMW pad — bites the flange OUTER face
+    draw_circle(ax, 83, 12, 1.8, color=C_PIN, fill=True, fc=C_PIN, lw=0.5, zorder=11)  # cam pivot
+    ax.plot([83, 92], [12, 24], color=C_CLAMP, lw=2.2, zorder=10)                     # cam lever (outboard = reachable)
+    ax.annotate("", xy=(76, 13), xytext=(80, 13), arrowprops=dict(arrowstyle="->", color=C_CAR, lw=1.2, zorder=11))  # pad → flange (inward)
+    ax.annotate("", xy=(71, 13), xytext=(67, 13), arrowprops=dict(arrowstyle="->", color=C_CAR, lw=0.8, zorder=6))    # arm = inner anvil
+    leader(ax, 84, 14, 88, 30, "outside clamp (5128A63):\npad on the flange OUTER\nface; arm inside = anvil", ha="left", fs=4.7, color=C_CLAMP, font=FONT, bbox=LBL_BG)
     # carriage + stack hang from the joined yoke
     _rect(ax, 40, -46, 12, 24, C_CAR, z=6)                                           # carriage plate (below the yoke)
     _rect(ax, 40, -60, 12, 14, C_TILT, z=5)                                          # cross-slide (green) hangs below
@@ -991,8 +995,8 @@ def sheet3():
         "throw the cam rail-brake (McMaster 5128A63, one per corner) to lock depth for the shot + transport. "
         "BOTTOM (Section A-A): its UHMW pad pinches DOWN on the TOP FLANGE (~22mm reach; the load rollers on the "
         "bottom flange react the pinch, so it never unloads the skate). TOP (Section B-B): the flat channel opens "
-        "down, so it SIDE-PINCHES instead — the pad drives the yoke across onto the far flange (taking up the 4mm "
-        "running clearance), wedging + braking depth.",
+        "down, so the clamp mounts on the OUTSIDE of the carriage — a UHMW pad grips the flange's OUTER face while "
+        "the yoke arm on the inner face is the anvil, pinching the flange (taking up its 4mm clearance) to lock depth.",
         "4. The U-joint (Ruland USKC12-6-6-SS, 303 SS, self-lube, grease-free, nitrile-booted) gives "
         "tilt + swing and locks twist so the flat plane stays square. The plane's WEIGHT is carried by "
         "the BOTTOM rail (web-vertical, load rollers gravity-seated on the bottom flange); the TOP rail "

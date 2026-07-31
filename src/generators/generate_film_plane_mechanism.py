@@ -891,15 +891,23 @@ def section_top(ax):
     # ghost the axle where it is HIDDEN behind the wheel — shows the shaft passing THROUGH the wheel
     ax.add_patch(plt.Rectangle((18, 12), 40, 10, fc="none", ec=OUT, lw=0.6, ls=(0, (3, 2)), zorder=9))
     ax.plot([38, 38], [12, 22], color="#6A6A72", lw=0.5, zorder=8)
-    # ~4mm running-clearance marks between each yoke arm and the channel flange it reaches past
-    for gx0, gx1 in ((5, 9), (67, 71)):
-        ax.annotate("", xy=(gx1, 6), xytext=(gx0, 6), arrowprops=dict(arrowstyle="<->", color=DIM, lw=0.5))
+    # ~4mm running-clearance mark, yoke arm ↔ flange (left side; the right gap carries the side-pinch brake)
+    ax.annotate("", xy=(9, 6), xytext=(5, 6), arrowprops=dict(arrowstyle="<->", color=DIM, lw=0.5))
     # YOKE — a JOINED U-bracket up through the OPENING: two arms clear the flanges by ~4mm (running guide, lateral X)
     # + hook the lips (anti-drop), JOINED by a cross-piece below the opening (one part).
     for ax_x in (9, 61):
         _rect(ax, ax_x, -14, 6, 36, C_CAR, z=8)                                      # yoke arm (through opening, ~4mm off a flange)
     _rect(ax, 9, -22, 58, 8, C_CAR, z=8)                                             # cross-piece JOINS the two arms
     _rect(ax, 53, -8, 14, 4, C_CAR, z=9)                                             # inboard lip-hook (anti-drop)
+    # SIDE-PINCH CAM RAIL-BRAKE (fp-cam-clamp, McMaster 5128A63) on the right yoke arm — a cam drives a UHMW
+    # pad OUTBOARD against the far flange's inner face; the reaction wedges the LEFT arm on the left flange, so
+    # the yoke locks laterally + brakes depth (takes up the 4mm running clearance). Thrown for shot + transport.
+    _rect(ax, 62, 3, 5, 14, C_CLAMP, z=10)                                           # cam body on the right arm
+    _rect(ax, 67, 9, 3, 8, C_POLY, z=11)                                             # UHMW pad — driven against the flange
+    draw_circle(ax, 64, 10, 1.8, color=C_PIN, fill=True, fc=C_PIN, lw=0.5, zorder=12)  # cam pivot
+    ax.plot([64, 58], [10, -5], color=C_CLAMP, lw=2.2, zorder=11)                     # cam lever (thrown = locked)
+    ax.annotate("", xy=(71, 13), xytext=(67, 13), arrowprops=dict(arrowstyle="->", color=C_CAR, lw=1.2, zorder=12))  # pad → flange
+    leader(ax, 69, 14, 78, 30, "side-pinch brake (5128A63):\npad drives yoke onto the\nfar flange — locks depth", ha="left", fs=4.7, color=C_CLAMP, font=FONT, bbox=LBL_BG)
     # carriage + stack hang from the joined yoke
     _rect(ax, 40, -46, 12, 24, C_CAR, z=6)                                           # carriage plate (below the yoke)
     _rect(ax, 40, -60, 12, 14, C_TILT, z=5)                                          # cross-slide (green) hangs below
@@ -980,9 +988,11 @@ def sheet3():
         "~250mm) + HORIZONTAL (X, purple, ~260mm) cross-slides (316 flat bar + UHMW pad + gib) absorb the "
         "tilt/swing foreshortening.",
         "3. Roll the skate / push each cross-slide into position; the gib drag holds the vertical, then "
-        "throw the cam clamp (rail brake, Section A-A) — McMaster 5128A63 low-profile hold-down toggle clamp "
-        "on the carriage plate whose UHMW pad pinches DOWN on the TOP FLANGE (~22mm reach, ~3mm throw; the load rollers on the bottom flange "
-        "react the pinch, so it never unloads the skate) — to lock for the shot and for transport.",
+        "throw the cam rail-brake (McMaster 5128A63, one per corner) to lock depth for the shot + transport. "
+        "BOTTOM (Section A-A): its UHMW pad pinches DOWN on the TOP FLANGE (~22mm reach; the load rollers on the "
+        "bottom flange react the pinch, so it never unloads the skate). TOP (Section B-B): the flat channel opens "
+        "down, so it SIDE-PINCHES instead — the pad drives the yoke across onto the far flange (taking up the 4mm "
+        "running clearance), wedging + braking depth.",
         "4. The U-joint (Ruland USKC12-6-6-SS, 303 SS, self-lube, grease-free, nitrile-booted) gives "
         "tilt + swing and locks twist so the flat plane stays square. The plane's WEIGHT is carried by "
         "the BOTTOM rail (web-vertical, load rollers gravity-seated on the bottom flange); the TOP rail "

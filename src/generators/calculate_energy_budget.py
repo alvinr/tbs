@@ -21,7 +21,7 @@ from tbs_constants import EVAP_COOLER_W_BUS  # noqa: E402
 FAN_EXHAUST_W   = 60    # Circuit A — 6" exhaust fan, far end wall high (AC Infinity S6)
 FAN_INTAKE_W    = 60    # Circuit B — 6" intake fan, cargo door panel low (AC Infinity S6)
 PUMP_W          = 90    # Circuit C — Shurflo 2088: 7.5A × 12V = 90W (one pump at a time)
-SAFELIGHT_W     = 15    # Circuit D — red LED strips
+SAFELIGHT_W     = 40    # Circuit D — 12V red COB safelight strip (SBL, 1× 5m reel @ 2.4 W/ft ≈ 40W / 3.3A)
 COOLER_W        = EVAP_COOLER_W_BUS   # Circuit E — Hessaire MC18M 85W AC ÷ 0.88 inverter = 97W on the 12V bus
 ACTUATOR_W      = 100   # Circuit F — film plane actuators (optional, peak)
 WHITE_LIGHT_W   = 76    # Circuit G — 12V COB LED strip (HitLights 4000K): 2× 2.16m tray + 1× 1.18m corridor ≈ 5.5m @ 4.2 W/ft ≈ 76W / 6.3A

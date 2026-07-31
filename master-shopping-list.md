@@ -133,7 +133,7 @@ indicative low–high estimates — get quotes before ordering.
 | [14 AWG tinned hook-up wire, black — 100ft (Circuit C feed / AC)](https://www.waytekwire.com/product/wrt14-0-hook-up-wire-tinned-copper) (WRT14-0) | 1 spool | Waytek Wire | electrical | $14 |
 | [14 AWG tinned hook-up wire, red — 100ft (Circuit C feed / AC)](https://www.waytekwire.com/product/wrt14-2-hook-up-wire-tinned-copper) (WRT14-2) | 1 spool | Waytek Wire | electrical | $14 |
 | 15A blade fuse | 1 ea | Waytek Wire | water | $5 |
-| [16 AWG coiled (retractile) cable, 2-cond](https://www.grainger.com/category/electrical/power-strips-extension-cords-cord-reels/power-cords?searchQuery=16+awg%2C+2-conductor+coiled+cable) | 1 ea | Grainger | ventilation | $18 |
+| [16 AWG coiled (retractile) cable, 2-cond](https://www.grainger.com/product/Coiled-Power-Cord-10-ft-Lg-3AY41) (3AY41) | 1 ea | Grainger | ventilation | $18 |
 | [16 AWG tinned hook-up wire, black — 100ft (Circuits A/B/G + branches)](https://www.waytekwire.com/product/wrt16-0-hook-up-wire-tinned-copper) (WRT16-0) | 1 spool | Waytek Wire | electrical | $16 |
 | [16 AWG tinned hook-up wire, red — 100ft (Circuits A/B/G + branches)](https://www.waytekwire.com/product/wrt16-2-hook-up-wire-tinned-copper) (WRT16-2) | 1 spool | Waytek Wire | electrical | $16 |
 | [18 AWG tinned hook-up wire, black — 100ft (Circuit D + E-stop)](https://www.waytekwire.com/product/wqt18-0-hook-up-wire-tinned-copper) (WQT18-0) | 1 spool | Waytek Wire | electrical | $12 |

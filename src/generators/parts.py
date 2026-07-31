@@ -7,10 +7,10 @@ The single source of every purchasable item: quantity, type, supplier, unit-cost
 verified physical SIZE (folds in component-dimension-audit), and the cyanotype chemistry tiers.
 
 From this ONE source, GENERATED views:
-  • master-shopping-list.md     — by TYPE, qty summed across systems, grouped by SUPPLIER (procurement).
-  • each report's §Parts-List    — by SYSTEM (emit_system).
+  • master-shopping-list.md — by TYPE, qty summed across systems, grouped by SUPPLIER (procurement).
+  • each report's §Parts-List — by SYSTEM (emit_system).
   • component-dimension-audit.md — real-vs-modeled size reconciliation (emit_dimension_audit).
-  • chemistry-shopping-list.md   — cyanotype-only shopping (emit_chemistry).
+  • chemistry-shopping-list.md — cyanotype-only shopping (emit_chemistry).
 costing.py's section totals reconcile to system_total() (lint-gated via costing.py --check-registry).
 
 parts.py is the PROCUREMENT SOURCE OF RECORD (firm low/high item costs); costing.py is the scenario
@@ -23,10 +23,10 @@ layer (mid + budgeting bands) on top. Every system here must sum to its costing 
 # a few carry a SKU whose format doesn't match the named supplier (a McMaster number under a Grainger
 # row). Those can't be priced or ordered as-is. The `parts identity` lint advisory surfaces them.
 # Workflow for the JS-/account-gated suppliers the web pass can't read (McMaster/Roton/Grainger/…):
-#   1. python3 src/generators/build_parts_worklist.py   → (re)generates parts-worklist.csv (merges fills)
-#   2. fill the new_* columns from your logged-in supplier session (SKU, URL, fit dims, price)
-#   3. python3 src/generators/apply_parts_csv.py parts-worklist.csv   → writes them back here, scoped
-#   4. python3 src/generators/parts.py --inject + costing.py --inject + lint.py   → cascade + prove
+# 1. python3 src/generators/build_parts_worklist.py → (re)generates parts-worklist.csv (merges fills)
+# 2. fill the new_* columns from your logged-in supplier session (SKU, URL, fit dims, price)
+# 3. python3 src/generators/apply_parts_csv.py parts-worklist.csv → writes them back here, scoped
+# 4. python3 src/generators/parts.py --inject + costing.py --inject + lint.py → cascade + prove
 # A band edit cascades automatically (master/report/cost blocks regenerate; costing reconciliation
 # gate proves consistency). Update the master header's "Basis:" line when the refresh completes.
 # ─────────────────────────────────────────────────────────────────────────────────────────────
@@ -37,8 +37,8 @@ import os
 import re
 from dataclasses import dataclass
 
-import costing  # reconciliation guardrail (EXPECTED) + the cost cascade it still owns
-from tbs_constants import CLAMP_N_TOTAL, CLAMP_FILLER_D  # muslin clamp count (3 edges) + L-channel filler depth
+import costing # reconciliation guardrail (EXPECTED) + the cost cascade it still owns
+from tbs_constants import CLAMP_N_TOTAL, CLAMP_FILLER_D # muslin clamp count (3 edges) + L-channel filler depth
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -46,29 +46,29 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 # ── The part record ──────────────────────────────────────────────────────────
 @dataclass(frozen=True)
 class Part:
-    key: str            # stable identity — the SAME physical part shares one key across systems,
-    desc: str           #   so the by-type view sums its qty (e.g. 'm12x90-ss-bolt').
-    type: str           # taxonomy category (see TYPES)
-    system: str         # owning report section ('ventilation', 'water', 'electrical', …)
-    qty: float          # quantity in this system
-    unit: str           # 'ea' | 'm' | 'sheet' | 'roll' | 'lot' | 'job' | 'kg' | …
-    low: float          # UNIT cost band (line cost = qty × unit band)
+    key: str # stable identity — the SAME physical part shares one key across systems,
+    desc: str # so the by-type view sums its qty (e.g. 'm12x90-ss-bolt').
+    type: str # taxonomy category (see TYPES)
+    system: str # owning report section ('ventilation', 'water', 'electrical', …)
+    qty: float # quantity in this system
+    unit: str # 'ea' | 'm' | 'sheet' | 'roll' | 'lot' | 'job' | 'kg' | …
+    low: float # UNIT cost band (line cost = qty × unit band)
     high: float
-    supplier: str = ""        # primary supplier
-    supplier_alt: str = ""    # fallback supplier
+    supplier: str = "" # primary supplier
+    supplier_alt: str = "" # fallback supplier
     url: str = ""
     part_no: str = ""
     spec: str = ""
     note: str = ""
     # sizing — folded-in component-dimension-audit (optional; sized/clash-relevant components only)
-    dims: str = ""            # verified physical envelope from the datasheet, e.g. '330×172×214'
-    datasheet: str = ""       # datasheet / catalog source
-    modeled_const: str = ""   # tbs_constants name(s) holding the modeled size (real-vs-modeled check)
-    audit_status: str = ""    # ✅ FIXED | ⚠ OPEN | confirm
+    dims: str = "" # verified physical envelope from the datasheet, e.g. '330×172×214'
+    datasheet: str = "" # datasheet / catalog source
+    modeled_const: str = "" # tbs_constants name(s) holding the modeled size (real-vs-modeled check)
+    audit_status: str = "" # ✅ FIXED | ⚠ OPEN | confirm
     # chemistry — folded-in cyanotype shopping (optional)
-    tier: str = ""            # '' | 'lean' | 'standard' | 'rich'
+    tier: str = "" # '' | 'lean' | 'standard' | 'rich'
     # plumbing-panel split (water system only) — keyword-only so existing positional calls are unaffected
-    panel: str = ""           # '' | 'Corridor' | 'Pinhole Wall' — drives the per-panel sub-lists in plumbing-report.md
+    panel: str = "" # '' | 'Corridor' | 'Pinhole Wall' — drives the per-panel sub-lists in plumbing-report.md
 
 
 def line(p: Part) -> tuple[float, float]:
@@ -105,7 +105,7 @@ PARTS: list[Part] = [
          spec="Victron Phoenix 12/375 120V VE.Direct GFCI (12V→120V, 375VA/300W) — GFCI in the faceplate outlet satisfies the wet-cooler requirement (no separate GFCI needed). Firm $132.60."),
     Part("shade-cloth-80", "Shade cloth — 70% (10×20 ft)", "fabric-textile",
          "ventilation", 1, "ea", 30.50, 30.50, "Amazon", "Farm supply", part_no="B075J93DTJ", url="https://www.amazon.com/dp/B075J93DTJ",
-         spec="Perfect Sunblock 10×20 ft 70% shade cloth with grommets (B075J93DTJ), $30.50 firm (Alvin 2026-07-30). 80% grade is uncommon; 70% chosen (any 70–90% works for the cooler/canopy shade)."),
+         spec="Perfect Sunblock 10×20 ft 70% shade cloth with grommets (B075J93DTJ), $30.50 firm (2026-07-30). 80% grade is uncommon; 70% chosen (any 70–90% works for the cooler/canopy shade)."),
     # Shade-canopy frame (20×10 ft), itemized 2026-07-27 from the $120 "Canopy frame" lot:
     Part("canopy-emt-conduit", '1.5" EMT conduit, 10 ft', "steel-structural",
          "ventilation", 6, "stick", 21.86, 21.86, "Home Depot", part_no="550210000", url="https://www.homedepot.com/p/304229415", spec='Shade-canopy frame legs + top rails. 1" EMT, 6× 10-ft sticks (downsized from 1.5" 2026-07-27 — adequate for a shade-cloth canopy).'),
@@ -114,7 +114,7 @@ PARTS: list[Part] = [
     Part("canopy-emt-base", "EMT canopy base plates + ground stakes (×4)", "steel-structural",
          "ventilation", 1, "4-pack", 16.29, 16.29, "Home Depot", part_no="PDB-F-1-4", url="https://www.homedepot.com/p/317889187", spec="PIPE DECOR 1\" black-iron floor flange 4-pack — one per leg base (×4). Add ground stakes/guys if free-standing."),
     Part("canopy-emt-elbows", "EMT canopy corner pull elbows (×4)", "steel-structural",
-         "ventilation", 4, "ea", 11.85, 11.85, "Home Depot", part_no="94510", url="https://www.homedepot.com/p/203776547", spec="Halex 1\" EMT rigid pull elbow at the 4 top-frame corners (Alvin chose bought elbows over field-bending)."),
+         "ventilation", 4, "ea", 11.85, 11.85, "Home Depot", part_no="94510", url="https://www.homedepot.com/p/203776547", spec="Halex 1\" EMT rigid pull elbow at the 4 top-frame corners (chose bought elbows over field-bending)."),
     Part("baffle-metal-fan", "Baffle duct sheet metal (fans)", "steel-structural",
          "ventilation", 1, "lot", 30, 30, "Local sheet metal", "Home Depot", spec="22 ga galvanized, 2 × 300mm stubs"),
     Part("baffle-metal-cooler", "Baffle duct sheet metal (cooler)", "steel-structural",
@@ -132,13 +132,13 @@ PARTS: list[Part] = [
          spec="Amphenol AT2PS-CKIT 2-pin connector kit (DT-compatible), IP67 — Fan B flex connector (×2 sets). Same part as deutsch-dt-2pin-elec. $4/set est — confirm at order."),
     Part("coiled-cable-16awg", "16 AWG coiled (retractile) cable, 2-cond", "electrical-distribution",
          "ventilation", 1, "ea", 25.99, 25.99, "Amazon", "Grainger", part_no="B0GYFNXM9Z", url="https://www.amazon.com/dp/B0GYFNXM9Z",
-         spec="MECCANIXITY retractable coiled cable, 16 AWG 2-conductor, 10 ft extended (B0GYFNXM9Z), $25.99 firm (Alvin 2026-07-30). Fan B flex on the swinging hinged panel — takes the ~56° transport swing. Proper 2-conductor. Deutsch DT 2-pin ends."),
+         spec="MECCANIXITY retractable coiled cable, 16 AWG 2-conductor, 10 ft extended (B0GYFNXM9Z), $25.99 firm (2026-07-30). Fan B flex on the swinging hinged panel — takes the ~56° transport swing. Proper 2-conductor. Deutsch DT 2-pin ends."),
     Part("cooler-power-cable", "Cooler external power cable", "electrical-distribution",
          "ventilation", 1, "ea", 20, 20, "Waytek Wire", "Amazon", spec="1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end"),
     Part("ratchet-strap-25", "Ratchet straps, 25mm", "fasteners-hardware",
          "ventilation", 1, "4-pack", 9.97, 9.97, "Home Depot", part_no="FH0829", url="https://www.homedepot.com/p/312994495", spec='Cooler stowage. Husky 12 ft × 1" ratchet tie-downs, S-hook, 4-pack — design uses 2, 2 spare'),
     # plywood-base-12 RETIRED 2026-07-27 — the cooler stowage base plate (600×350) is now cut from the
-    # full panel-fanb-ply 4×8 sheet (Alvin: "use panel-fanb-ply instead"); a separate ½" panel line was
+    # full panel-fanb-ply 4×8 sheet (use panel-fanb-ply instead); a separate ½" panel line was
     # redundant given the leftover from that sheet. See panel-fanb-ply.
 
     # ═══ water family (split per owning report; reconciled to costing.WATER lines — water-system §8
@@ -152,7 +152,7 @@ PARTS: list[Part] = [
          dims="1219×1016×1168", modeled_const="IBC_W/IBC_D/IBC_H_1000", audit_status="✅ FIXED (v2)"),
     Part("bulkhead-2in", 'Bulkhead fitting 2" NPT (polypropylene)', "plumbing-fittings",
          "water", 3, "ea", 21.14, 21.14, "US Plastic Corp", part_no="32200", url="https://www.usplastic.com/catalog/item.aspx?itemid=32200",
-         spec="X1/X3/X4 external fill/drain ports — 2\" PP bulkhead tank fitting with EPDM gaskets, clamped through a drilled hole in the container end wall over a flat backing doubler (NOT welded; the corrugation is bridged by the doubler). PP matches the FRPP camlocks it mates. US Plastic 32200 (alt listing itemid 65995), $21.14 firm (Alvin 2026-07-29) — SS (McMaster 4464K115 $136.70) was over-spec for a plain water port. UV: end wall largely shaded; use brass if long direct-sun exposure.",
+         spec="X1/X3/X4 external fill/drain ports — 2\" PP bulkhead tank fitting with EPDM gaskets, clamped through a drilled hole in the container end wall over a flat backing doubler (NOT welded; the corrugation is bridged by the doubler). PP matches the FRPP camlocks it mates. US Plastic 32200 (alt listing itemid 65995), $21.14 firm (2026-07-29) — SS (McMaster 4464K115 $136.70) was over-spec for a plain water port. UV: end wall largely shaded; use brass if long direct-sun exposure.",
          note="Price verified 2026-07-12 (McMaster 4464K115, $136.70 ea)."),
     # — pumps (315–345) —
     Part("shurflo-2088", "Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 filter loop / P-03 waste evac / P-04 tray drain / P-05 Brown drain)", "water-equipment",
@@ -193,16 +193,16 @@ PARTS: list[Part] = [
     # — filter (286–485): 3 separate 4.5×20 housings on a slotted-angle skid frame (§3.1/§7.2) —
     Part("bigblue-housing", 'Big Blue filter housing 4.5"×20" (separate)', "water-equipment",
          "water", 3, "ea", 83.30, 83.30, "Amazon", part_no="B0137680E6", url="https://www.amazon.com/dp/B0137680E6", dims="Ø184×594",
-         spec='Ø184×594mm/housing (4.5×20), 1" NPT ports, accepts standard 20"×4.5" cartridges (Alvin-verified 2026-07-27) — three SEPARATE Pentair Pentek 150234 high-flow PP housings on the mounting brackets',
+         spec='Ø184×594mm/housing (4.5×20), 1" NPT ports, accepts standard 20"×4.5" cartridges (verified 2026-07-27) — three SEPARATE Pentair Pentek 150234 high-flow PP housings on the mounting brackets',
          datasheet="Pentek 4.5×20 BB", modeled_const="BB_OD/BB_H",
          audit_status="3-separate design of record (2026-07): combo → 3 separate housings + frame per plumbing-report §3.1/§7.2. Prices indicative — firm at the Aug-2026 re-price.", panel="Pinhole Wall"),
     Part("filter-skid-frame", "Big Blue housing mounting brackets (×3)", "water-equipment",
-         "water", 3, "ea", 10.50, 10.50, "Fresh Water Systems", part_no="150061", url="https://www.freshwatersystems.com/products/mounting-bracket-white-single-housing-for-10-20-big-blue-housings", spec="Pentair 150061 zinc-plated single-housing mounting bracket, one per 4.5×20 Big Blue (×3), lag-screwed to the 18mm ply backing. Purpose-built — replaces the welded slotted-angle frame (Alvin 2026-07-27).", panel="Pinhole Wall"),
+         "water", 3, "ea", 10.50, 10.50, "Fresh Water Systems", part_no="150061", url="https://www.freshwatersystems.com/products/mounting-bracket-white-single-housing-for-10-20-big-blue-housings", spec="Pentair 150061 zinc-plated single-housing mounting bracket, one per 4.5×20 Big Blue (×3), lag-screwed to the 18mm ply backing. Purpose-built — replaces the welded slotted-angle frame (2026-07-27).", panel="Pinhole Wall"),
     # filter-ubracket RETIRED 2026-07-22 — Big Blue housings have mounting-hole ears; lag-screw straight to the ply backing
     Part("filter-lag-screws", "SS lag/wood screws — filter housings to ply backing", "fasteners-hardware",
          "water", 2, "5-pack", 7.09, 7.09, "Home Depot", part_no="812670", url="https://www.homedepot.com/p/302007729", spec="2 per housing × 3 = 6 needed — Everbilt 5/16\"×1½\" SS hex lag screws through the housing's mounting-hole ears into the 18mm plywood backing (no custom bracket). Sold in 5-packs → 2 packs (10, 4 spare).", panel="Pinhole Wall"),
     Part("filter-hdpe-spacer", "Plywood offcut spacer blocks 25mm (filter skid)", "water-equipment",
-         "water", 1, "lot", 0, 0, "offcuts", spec="25mm standoff blocks between the housing's mounting ears and the ply backing — sump-bowl hang clearance (the housing lag-screws through them into the ply). Cut from PLYWOOD OFFCUTS (Alvin 2026-07-25 — no need for HDPE; dry standoff, not a wet-immersion part).", panel="Pinhole Wall"),
+         "water", 1, "lot", 0, 0, "offcuts", spec="25mm standoff blocks between the housing's mounting ears and the ply backing — sump-bowl hang clearance (the housing lag-screws through them into the ply). Cut from PLYWOOD OFFCUTS (2026-07-25 — no need for HDPE; dry standoff, not a wet-immersion part).", panel="Pinhole Wall"),
     # filter-jumper RETIRED 2026-07-27 — the F-01→F-02→F-03 inter-housing jumpers are now itemized as
     # 1" PVC stock (pvc-1in) + 1" slip elbows (elbow-el100) + slip×NPT adapters (pvc-transition-adapters);
     # keeping the bundled "lot" line double-counted the pipe/elbows/adapters.
@@ -228,15 +228,15 @@ PARTS: list[Part] = [
     Part("sample-tap-sv01", 'pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee', "plumbing-fittings",
          "water", 1, "ea", 19.26, 19.26, "US Plastic Corp", part_no="36903", url="https://www.usplastic.com/catalog/item.aspx?itemid=36903", spec='Filtered-water sample draw before 3W-DV-01; 1/2" PP sample valve (US Plastic 36903) + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line', panel="Pinhole Wall"),
     Part("sample-tap-sv02", 'pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee', "plumbing-fittings",
-         "water", 1, "ea", 19.26, 19.26, "US Plastic Corp", part_no="36903", url="https://www.usplastic.com/catalog/item.aspx?itemid=36903", spec="pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build/SKU as SV-01 (US Plastic 36903 $19.26 — Alvin priced SV-01; applied to SV-02 as the identical build)", panel="Corridor"),
+         "water", 1, "ea", 19.26, 19.26, "US Plastic Corp", part_no="36903", url="https://www.usplastic.com/catalog/item.aspx?itemid=36903", spec="pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build/SKU as SV-01 (US Plastic 36903 $19.26 — priced under SV-01; applied to SV-02 as the identical build)", panel="Corridor"),
     Part("camlock-2in", '2" polypropylene camlock pairs (M+F)', "plumbing-fittings",
          "water", 4, "pair", 22.93, 22.93, "US Plastic Corp", spec="External bulkhead connections (X1/X3/X4 + spare). 2026-07-27: pair = US Plastic 30754 female coupler $16.23 + 30619 male adapter $6.70 = $22.93 (Banjo FRPP, EPDM)", part_no="30754", url="https://www.usplastic.com/catalog/item.aspx?itemid=30754"),
     Part("elbow-half", '1/2" PVC Sch-40 slip 90° elbow', "plumbing-fittings",
-         "water", 14, "ea", 0.74, 0.74, "Home Depot", part_no="PVC023000600HD", url="https://www.homedepot.com/p/203812033", spec="All pump-driven run bends. Charlotte PVC Sch-40 90° S×S — CONFIRMED slip / solvent-cement (Alvin 2026-07-28), NOT threaded."),
+         "water", 14, "ea", 0.74, 0.74, "Home Depot", part_no="PVC023000600HD", url="https://www.homedepot.com/p/203812033", spec="All pump-driven run bends. Charlotte PVC Sch-40 90° S×S — CONFIRMED slip / solvent-cement (2026-07-28), NOT threaded."),
     Part("elbow-el100", '1" PVC Sch-40 slip 90° elbow', "plumbing-fittings",
          "water", 4, "ea", 1.52, 1.52, "Home Depot", part_no="PVC023001000HD", url="https://www.homedepot.com/p/203812125", spec='1" PVC slip run bends (joint convention §5.1): IBC bends, filter outlet to DV-01. 2026-07-27 fork b — was threaded Banjo FRPP $4.59. Charlotte PVC023001000HD 90° S×S.'),
     Part("tee-half", '1/2" PVC Sch-40 slip tee', "plumbing-fittings",
-         "water", 6, "ea", 0.81, 0.81, "Home Depot", part_no="PVC024000600HD", url="https://www.homedepot.com/p/203812195", spec="Blue suction/discharge tees, branches. Charlotte PVC Sch-40 S×S×S — CONFIRMED slip / solvent-cement (Alvin 2026-07-28), NOT threaded."),
+         "water", 6, "ea", 0.81, 0.81, "Home Depot", part_no="PVC024000600HD", url="https://www.homedepot.com/p/203812195", spec="Blue suction/discharge tees, branches. Charlotte PVC Sch-40 S×S×S — CONFIRMED slip / solvent-cement (2026-07-28), NOT threaded."),
     Part("tee-100", '1" PVC Sch-40 slip tee', "plumbing-fittings",
          "water", 3, "ea", 2.13, 2.13, "Home Depot", part_no="PVC024001000HD", url="https://www.homedepot.com/p/203812199", spec='1" PVC slip run tees (joint convention §5.1): 3× IBC drain. 2026-07-27: X1 fill split dropped — X1 is a 4-way cross (cross-100), not a tee. Charlotte PVC024001000HD S×S×S.'),
     # Joint convention §5.1 (fork c): one slip×MNPT male adapter where the glued PVC run lands on each
@@ -247,8 +247,8 @@ PARTS: list[Part] = [
     Part("pvc-adapter-1in", '1" PVC slip×MNPT male adapter', "plumbing-fittings",
          "water", 26, "ea", 1.16, 1.16, "Home Depot", part_no="PVC021091000HD", url="https://www.homedepot.com/p/203811640", spec='1" landings (26 — P&ID takeoff 2026-07-28): 6× V100 valves (V1/V3/V4, VB1–3, run side) + 8× s60-adapter IBC-valve landings (each lands on its own 1" glued-run segment) + 3W-DV-01 (3 ports) + CV-1 (2 ports) + 5× filter housing ports (F-01 OUT, F-02 IN/OUT, F-03 IN/OUT; F-01 IN = bushing-reducer) + 2× Blue equalization bulkheads. Charlotte PVC021091000HD.'),
     Part("cross-100", '1" PVC 4-way cross fitting', "plumbing-fittings",
-         "water", 1, "ea", 5.99, 5.99, "Amazon", part_no="B0CGGV74MB", url="https://www.amazon.com/dp/B0CGGV74MB", spec="X1 fresh-fill 4-way (Alvin-confirmed 2026-07-27): X1 inlet + IBC-1 + IBC-2 + DV-01 blue-recycle riser all join here on the corridor spine, then distribute to both Blue totes. 1\" PVC cross — slip glue joint, gravity/low-pressure fill. Design of record: the 3D model + corridor panel-layout + plumbing-report all build this cross."),
-    # Joint convention §5.1 — Option C hybrid (Alvin 2026-07-27): permanent slip couplings on the run,
+         "water", 1, "ea", 5.99, 5.99, "Amazon", part_no="B0CGGV74MB", url="https://www.amazon.com/dp/B0CGGV74MB", spec="X1 fresh-fill 4-way (confirmed 2026-07-27): X1 inlet + IBC-1 + IBC-2 + DV-01 blue-recycle riser all join here on the corridor spine, then distribute to both Blue totes. 1\" PVC cross — slip glue joint, gravity/low-pressure fill. Design of record: the 3D model + corridor panel-layout + plumbing-report all build this cross."),
+    # Joint convention §5.1 — Option C hybrid (2026-07-27): permanent slip couplings on the run,
     # true unions only where a whole sub-assembly pulls as a unit (per-component service is already
     # covered by the threaded ports on pumps/filters/valves).
     Part("coupling-half", '1/2" PVC Sch-40 slip coupling', "plumbing-fittings",
@@ -257,24 +257,24 @@ PARTS: list[Part] = [
          "water", 2, "ea", 4.96, 4.96, "Home Depot", part_no="PVCU12F", url="https://www.homedepot.com/p/317901071", spec="True hand-unscrew unions at the 2 points where a whole sub-assembly must come out as a unit (pump manifold + filter-bank inlet). Apollo ½\" PVC FIP×FIP (threaded) union — lands on the slip run via a slip×MNPT adapter each side (4 total across the 2 unions, in the pvc-adapter-half allowance)."),
     Part("bushing-reducer", '1/2"×1" NPT bushing reducer', "plumbing-fittings",
          "water", 1, "ea", 2.86, 2.86, "Home Depot", part_no="PVC021121800HD", url="https://www.homedepot.com/p/204836713", spec="P-02 riser → F1 filter inlet — THREADED (lands on the filter = hard component, per the joint convention). Charlotte PVC Sch40 1×½ reducer bushing"),
-    # IBC tote → 1" PVC run: FLEXIBLE-JUMPER connection (Alvin 2026-07-29). A semi-rigid plumbing
+    # IBC tote → 1" PVC run: FLEXIBLE-JUMPER connection (2026-07-29). A semi-rigid plumbing
     # panel flexing against fixed totes would fatigue a solvent-welded PVC joint, so a short 1" flex
     # hose de-couples each tote outlet from the rigid run. Chain per tote (×8):
-    #   S60x6 valve → s60-adapter (→2"MNPT) → s60-reducer (→1"FNPT) → ibc-flex-barb-m → flex hose
-    #   (cut from the tray-suction-hose coil) → ibc-flex-barb-f → pvc-adapter-1in (1"MNPT) → glued 1" PVC.
+    # S60x6 valve → s60-adapter (→2"MNPT) → s60-reducer (→1"FNPT) → ibc-flex-barb-m → flex hose
+    # (cut from the tray-suction-hose coil) → ibc-flex-barb-f → pvc-adapter-1in (1"MNPT) → glued 1" PVC.
     # Camlock idea dropped — quick-release not a driver (totes are fixed in place once installed).
     Part("s60-adapter", 'S60×6 female buttress → 2" MNPT IBC tote adapter', "plumbing-fittings",
-         "water", 8, "ea", 9.99, 9.99, "Amazon", part_no="B095SCHBC6", url="https://www.amazon.com/Granatan-Adapter-Buttress-Fittings-Connector/dp/B095SCHBC6", spec='IBC DN50 tote outlet (male S60×6) → 2" male NPT, polypropylene (Granatan). No US single-piece S60→1" NPT exists (the 1" ones are BSP or garden-hose thread), so reduce 2"→1" via s60-reducer. $9.99 firm (Alvin 2026-07-29).'),
+         "water", 8, "ea", 9.99, 9.99, "Amazon", part_no="B095SCHBC6", url="https://www.amazon.com/Granatan-Adapter-Buttress-Fittings-Connector/dp/B095SCHBC6", spec='IBC DN50 tote outlet (male S60×6) → 2" male NPT, polypropylene (Granatan). No US single-piece S60→1" NPT exists (the 1" ones are BSP or garden-hose thread), so reduce 2"→1" via s60-reducer. $9.99 firm (2026-07-29).'),
     Part("s60-reducer", '2"→1" PVC Sch-80 reducing coupling (FNPT×FNPT)', "plumbing-fittings",
-         "water", 8, "ea", 3.21, 3.21, "Home Depot", part_no="PVC021071300HD", url="https://www.homedepot.com/p/203811533", spec='Charlotte 2"×1" PVC Sch-40 reducer bushing, SPIGOT×SLIP (solvent-weld), $3.21 (Alvin 2026-07-29). INTERFACE FLAG: the s60-adapter output is 2" MALE NPT and a spigot×slip bushing is glue-only, so it needs a 2" MPT×socket transition to mate (or swap to a 2"FNPT×1" reducer). Verify the tote-adapter interface at the bench.'),
+         "water", 8, "ea", 3.21, 3.21, "Home Depot", part_no="PVC021071300HD", url="https://www.homedepot.com/p/203811533", spec='Charlotte 2"×1" PVC Sch-40 reducer bushing, SPIGOT×SLIP (solvent-weld), $3.21 (2026-07-29). INTERFACE FLAG: the s60-adapter output is 2" MALE NPT and a spigot×slip bushing is glue-only, so it needs a 2" MPT×socket transition to mate (or swap to a 2"FNPT×1" reducer). Verify the tote-adapter interface at the bench.'),
     Part("ibc-flex-barb-m", '1" MNPT × 1" hose barb (Banjo HB100)', "plumbing-fittings",
-         "water", 8, "ea", 1.79, 1.79, "US Plastic Corp", part_no="31527", url="https://www.usplastic.com/catalog/item.aspx?itemid=135135", spec='Tote-side barb — 1" MNPT threads onto the reduced tote-adapter port; flex hose slips onto the barb. Banjo HB100 glass-reinforced PP, 300 psi. $1.79 firm (Alvin 2026-07-29).'),
+         "water", 8, "ea", 1.79, 1.79, "US Plastic Corp", part_no="31527", url="https://www.usplastic.com/catalog/item.aspx?itemid=135135", spec='Tote-side barb — 1" MNPT threads onto the reduced tote-adapter port; flex hose slips onto the barb. Banjo HB100 glass-reinforced PP, 300 psi. $1.79 firm (2026-07-29).'),
     Part("ibc-flex-barb-f", '1" FNPT × 1" hose barb (Banjo)', "plumbing-fittings",
-         "water", 8, "ea", 3.00, 3.00, "US Plastic Corp", part_no="31544", url="https://www.usplastic.com/catalog/item.aspx?itemid=135154", spec='Run-side barb — flex hose slips on; its 1" FNPT receives the pvc-adapter-1in (1" MNPT) that glues to the run. Banjo glass-reinforced PP. $3.00 firm (Alvin 2026-07-29).'),
+         "water", 8, "ea", 3.00, 3.00, "US Plastic Corp", part_no="31544", url="https://www.usplastic.com/catalog/item.aspx?itemid=135154", spec='Run-side barb — flex hose slips on; its 1" FNPT receives the pvc-adapter-1in (1" MNPT) that glues to the run. Banjo glass-reinforced PP. $3.00 firm (2026-07-29).'),
     Part("ibc-flex-clamp", '#20 stainless hose clamp (10-pack)', "fasteners-hardware",
-         "water", 2, "10-pack", 18.52, 18.52, "Home Depot", part_no="IDL0410PK", url="https://www.homedepot.com/p/330548109", spec='2 clamps per flex jumper × 8 = 16 (2× 10-packs, 4 spare). Apollo 300-series SS #12 (½in–1¼in), external. $18.52/10-pack (Alvin 2026-07-29). SIZE FLAG: verify the #12 (max 1¼in) closes over the 1¼in-OD tray-suction hose + barb — a #16 may be needed if it bottoms out.'),
+         "water", 2, "10-pack", 18.52, 18.52, "Home Depot", part_no="IDL0410PK", url="https://www.homedepot.com/p/330548109", spec='2 clamps per flex jumper × 8 = 16 (2× 10-packs, 4 spare). Apollo 300-series SS #12 (½in–1¼in), external. $18.52/10-pack (2026-07-29). SIZE FLAG: verify the #12 (max 1¼in) closes over the 1¼in-OD tray-suction hose + barb — a #16 may be needed if it bottoms out.'),
     Part("blue-equalization-tie", '1" bulkhead tank-body fittings (Blue equalization cross-tie)', "plumbing-fittings",
-         "water", 2, "ea", 12.62, 12.62, "US Plastic Corp", spec='Low tank-body penetration in each Blue tote (IBC-1 + IBC-2) for the 1" equalization cross-tie that self-balances the two Blue levels (run made from the 1" PVC stock). Confirmed firm $12.62 (Alvin 2026-07-28); SKU 32194 (alternate listing itemid 65992).', part_no="32194", url="https://www.usplastic.com/catalog/item.aspx?itemid=32194"),
+         "water", 2, "ea", 12.62, 12.62, "US Plastic Corp", spec='Low tank-body penetration in each Blue tote (IBC-1 + IBC-2) for the 1" equalization cross-tie that self-balances the two Blue levels (run made from the 1" PVC stock). Confirmed firm $12.62 (2026-07-28); SKU 32194 (alternate listing itemid 65992).', part_no="32194", url="https://www.usplastic.com/catalog/item.aspx?itemid=32194"),
     Part("check-valve-1in", '1" NPT spring check valve (CV1 — X1 gravity fill)', "plumbing-fittings",
          "water", 1, "ea", 23.66, 23.66, "US Plastic Corp", spec='PVC body, EPDM seal, 1" FNPT × FNPT. Only CV-1 (X1 fill) remains — the Shurflo 2088 pumps have integral check valves, so CV-2/CV-3/CV-4 are redundant and dropped', part_no="31415", url="https://www.usplastic.com/catalog/item.aspx?itemid=31415"),
     Part("ribbon-support-beam", "Steel flat bar 25×3mm — ribbon support cross-brace", "steel-structural",
@@ -289,9 +289,9 @@ PARTS: list[Part] = [
          url="https://www.homedepot.com/p/319692959",
          spec="All pump-driven runs (~80 ft = 8× 10-ft sticks), PVC Sch-40 solvent-weld (IPEX potable-pressure). Matches pump port size."),
     Part("pvc-1in", '1" PVC Sch-40 pressure pipe', "plumbing-fittings",
-         "water", 4, "stick", 8.65, 8.65, "Home Depot", part_no="22405", url="https://www.homedepot.com/p/319692953", spec="IPEX 1\"×10 ft white PVC Sch-40 POTABLE PRESSURE water pipe (model 22405); ~40 ft = 4× 10-ft sticks; filter inter-stage/outlet + IBC internal fill/drain manifold + X1 fill + equalization tie. Pressure-rated (Alvin 2026-07-28). Re-count DONE 2026-07-29 (Alvin): 2→4 sticks — the IBC-zone 1\" internal fill/drain (§5 pipe table, ~39 ft total) was omitted from the old 20 ft estimate."),
+         "water", 4, "stick", 8.65, 8.65, "Home Depot", part_no="22405", url="https://www.homedepot.com/p/319692953", spec="IPEX 1\"×10 ft white PVC Sch-40 POTABLE PRESSURE water pipe (model 22405); ~40 ft = 4× 10-ft sticks; filter inter-stage/outlet + IBC internal fill/drain manifold + X1 fill + equalization tie. Pressure-rated (2026-07-28). Re-count DONE 2026-07-29: 2→4 sticks — the IBC-zone 1\" internal fill/drain (§5 pipe table, ~39 ft total) was omitted from the old 20 ft estimate."),
     Part("pvc-three-quarter", '3/4" PVC Sch-40 pipe', "plumbing-fittings",
-         "water", 2, "stick", 5.76, 5.76, "Home Depot", part_no="PVC-04007-0600", url="https://www.homedepot.com/p/100348472", spec="Spray bar run, PVC Sch-40 pressure pipe (plain end), 2× 10-ft sticks. $5.76/stick (Alvin sent $576 — read as a decimal typo; ¾\" pressure pipe sits between the ½\" $4.81 and 1\" $8.65). Re-count vs actual run length."),
+         "water", 2, "stick", 5.76, 5.76, "Home Depot", part_no="PVC-04007-0600", url="https://www.homedepot.com/p/100348472", spec="Spray bar run, PVC Sch-40 pressure pipe (plain end), 2× 10-ft sticks. $5.76/stick (sent $576 — read as a decimal typo; ¾\" pressure pipe sits between the ½\" $4.81 and 1\" $8.65). Re-count vs actual run length."),
     Part("braided-hose", '1/2" ID reinforced braided PVC hose', "plumbing-fittings",
          "water", 2, "length", 5.94, 5.94, "US Plastic Corp", spec="Pump inlet flexible connection, 6 ft per pump", part_no="60703", url="https://www.usplastic.com/catalog/item.aspx?itemid=60703"),
     # — electrical, wiring only (35) —
@@ -368,7 +368,7 @@ PARTS: list[Part] = [
     Part("tray-foot-valve", '1" brass foot valve with SS filter', "plumbing-fittings",
          "tray", 1, "ea", 14.23, 14.23, "misterworker", part_no="95953", url="https://www.misterworker.com/en-us/meclube/f1-brass-foot-valve-with-stainless-steel-filter/95953.html", spec="Sump pickup foot valve — Meclube F1 brass body + SS filter screen (misterworker 95953). $14.23 firm 2026-07-28."),
     Part("tray-suction-hose", '1" reinforced PVC suction hose, 25 ft', "plumbing-fittings",
-         "tray", 1, "25ft coil", 65.65, 65.65, "Home Depot", part_no="6213100025", url="https://www.homedepot.com/p/310837595", spec="Sump pickup tube → P-04. HYDROMAXX 1\" clear flexible PVC suction/discharge hose, white reinforced helix; 25 ft coil — ~6 ft for the sump pickup + ~12 ft for the 8 IBC flex jumpers (18\" each, Alvin 2026-07-29 flexible-connection design) = ~18 ft used, ~7 ft spare. $65.65 firm 2026-07-28 (Home Depot stocks the 25 ft length)."),
+         "tray", 1, "25ft coil", 65.65, 65.65, "Home Depot", part_no="6213100025", url="https://www.homedepot.com/p/310837595", spec="Sump pickup tube → P-04. HYDROMAXX 1\" clear flexible PVC suction/discharge hose, white reinforced helix; 25 ft coil — ~6 ft for the sump pickup + ~12 ft for the 8 IBC flex jumpers (18\" each, 2026-07-29 flexible-connection design) = ~18 ft used, ~7 ft spare. $65.65 firm 2026-07-28 (Home Depot stocks the 25 ft length)."),
     Part("tray-silicone-gasket", "Silicone gasket strip", "seals-gaskets",
          "tray", 1, "ea", 17, 25, "CountryMax (Aqueon)", spec="Silicone sealant bed in the center-seam lap joint (between the overlapped panels) + a top bead — the seam seal", part_no="015952", url="https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/"),
     Part("bolt-m6-tray", "M6×1.0 × 16 hex bolt, 316 SS — tray center-seam lap joint", "fasteners-hardware",
@@ -379,8 +379,8 @@ PARTS: list[Part] = [
     # 6-mil black poly roll as ldpe-sheeting (Film-Gard 8 ft × 100 ft, ~10 liners/roll); a
     # separate $8 line double-counted the material. See ldpe-sheeting.
     # — spray (processing-tray-and-spray-bar §6.2) — itemized, sums to costing spray (287–375;
-    #   the $1/$3 report-subtotal rounding is absorbed into the AL-plate estimate so the block total
-    #   matches the canonical figure) —
+    # the $1/$3 report-subtotal rounding is absorbed into the AL-plate estimate so the block total
+    # matches the canonical figure) —
     Part("spray-al-shs", '304 SS RHS 40×25×3mm, 8 ft *', "steel-structural",
          "spray", 2, "ea", 48, 72, "Online Metals",
          spec="40×25×3mm rectangular tube, laid flat (low profile); 2 sticks butt-welded to span",
@@ -391,15 +391,15 @@ PARTS: list[Part] = [
     Part("spray-ldpe-pipe", '3/4" LDPE irrigation poly pipe, 100 ft', "plumbing-fittings",
          "spray", 1, "100ft roll", 31.24, 31.24, "DripDepot", part_no="3552", url="https://www.dripdepot.com/polyethylene-tubing-size-three-quarter-inch-0-820-inch-inside-diameter-by-0-940-inch-od-length-100-feet", spec="Side-mounted spray manifold, clipped to the beam's inboard face. DripDepot 3552 ¾\" poly tubing (0.820\" ID × 0.940\" OD ≈ 20.8×23.9mm); 100 ft roll, ~15 ft used on the ~3.86m beam (balance spare). $31.24 firm 2026-07-28."),
     Part("spray-nozzles", "90° spray jets, barbed", "plumbing-fittings",
-         "spray", 4, "10-pack", 3.47, 3.47, "Home Depot", part_no="110B", url="https://www.homedepot.com/p/302581648", spec="DIG 110B 90° spray jets, 10-pack ×4 = 40 (39 used, 1 spare); side-tapped into the poly manifold, spray straight down. 90° down chosen (Alvin 2026-07-28) over flat-fan/180° so the wash lands on the print, not sideways/up; pitch tightened 150→100mm (26→39 jets) for edge-to-edge coverage — see processing-tray §3.9."),
-    # spray-manifold + spray-feed-tube + spray-barbed-feed RETIRED 2026-07-28 (Alvin — Option 1,
+         "spray", 4, "10-pack", 3.47, 3.47, "Home Depot", part_no="110B", url="https://www.homedepot.com/p/302581648", spec="DIG 110B 90° spray jets, 10-pack ×4 = 40 (39 used, 1 spare); side-tapped into the poly manifold, spray straight down. 90° down chosen (2026-07-28) over flat-fan/180° so the wash lands on the print, not sideways/up; pitch tightened 150→100mm (26→39 jets) for edge-to-edge coverage — see processing-tray §3.9."),
+    # spray-manifold + spray-feed-tube + spray-barbed-feed RETIRED 2026-07-28 (— Option 1,
     # single center feed). The ¾" side manifold (ID ~20mm) is hugely over-bored for 3.5 GPM feeding
     # 39 small jets — pressure is uniform end-to-end (~0.1 PSI drop over 3.86m) from a single center
     # feed, so the distribution manifold, the 7 ¼" feed tubes, and their barbed-tee taps aren't needed.
     # The ½" flex hose now feeds the manifold center through one inlet tee (spray-brass-barb).
     Part("spray-retainer-clips", 'SS/nylon retainer clips for 3/4" LDPE', "fasteners-hardware",
          "spray", 1, "10-pack", 4.20, 4.20, "DripDepot", url="https://www.dripdepot.com/figure-8-tubing-end-clamp-size-three-quarter-inch",
-         spec='Figure-8 fold-back end closures for 3/4" poly drip tubing — DripDepot 10-pack, $4.20 firm (Alvin 2026-07-30).'),
+         spec='Figure-8 fold-back end closures for 3/4" poly drip tubing — DripDepot 10-pack, $4.20 firm (2026-07-30).'),
     Part("spray-skate-wheel", "Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore)", "bearings-motion",
          "spray", 1, "1 ft rod", 10.97, 10.97, "McMaster-Carr", part_no="8576K23",
          url="https://www.mcmaster.com/8576K23/",
@@ -413,7 +413,7 @@ PARTS: list[Part] = [
          spec="Standard pool skimmer handle — POOLPURE telescopic aluminum, 4–8 ft (B0FHPSPD4T, exact). ~$15–20 est — confirm."),
     Part("spray-braided-hose", '1/2" reinforced braided PVC hose, ~15 ft', "plumbing-fittings",
          "spray", 1, "10ft roll", 12.99, 12.99, "Home Depot", part_no="T12006003", url="https://www.homedepot.com/p/304185193",
-         spec='BV-02 → beam feed (~4 m coiled). UDP 1/2"ID×3/4"OD clear braided vinyl (T12006003), $12.99/10ft firm (Alvin 2026-07-30). 10 ft ≈ 3 m — a 4 m coiled run may need a 2nd roll.'),
+         spec='BV-02 → beam feed (~4 m coiled). UDP 1/2"ID×3/4"OD clear braided vinyl (T12006003), $12.99/10ft firm (2026-07-30). 10 ft ≈ 3 m — a 4 m coiled run may need a 2nd roll.'),
     Part("spray-axle-pin", "10mm × 60mm 304 SS axle pin (4-pack)", "fasteners-hardware",
          "spray", 1, "pack", 5, 5, "Amazon", part_no="B0816MQ5T6",
          url="https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6", spec="Wheel axle pins — uxcell 10×60mm 304 SS clevis pins, 4-pack (B0816MQ5T6, exact: 14mm head, 3.2mm cotter hole)."),
@@ -430,14 +430,14 @@ PARTS: list[Part] = [
          spec="Ball-joint flange to beam top wall. #10×1 SS self-drill, 25-pk ~$11–16 (per-unit est)."),
     Part("spray-ball-joint", "M12 rod-end bearing (uxcell SA12TK, 4-pack)", "bearings-motion",
          "spray", 1, "4-pack", 19.59, 19.59, "Amazon", part_no="B0C7N16RQ9", url="https://www.amazon.com/uxcell-SA12TK-Bearing-M12x1-75-Self-Lubricating/dp/B0C7N16RQ9",
-         spec="Multi-axis spray-arm articulation — uxcell SA12TK male rod-end bearing, M12×1.75 self-lubricating (B0C7N16RQ9), $19.59/4-pack firm (Alvin 2026-07-30). Rod-end bearing (upgrade from the go-kart tie-rod candidate); 4-pack = 1 used + spares."),
+         spec="Multi-axis spray-arm articulation — uxcell SA12TK male rod-end bearing, M12×1.75 self-lubricating (B0C7N16RQ9), $19.59/4-pack firm (2026-07-30). Rod-end bearing (upgrade from the go-kart tie-rod candidate); 4-pack = 1 used + spares."),
     Part("spray-beam-clamp", "SS beam clamp plates (4, cut from 1× 2 ft 304 flat bar)", "fasteners-hardware",
          "spray", 1, "2 ft bar", 35.33, 35.33, "McMaster-Carr", part_no="8992K512",
          url="https://www.mcmaster.com/8992K512/",
          spec="2 top + 2 bottom beam-clamp plates (1/4\"/6.35mm 304, beam-to-carriage sandwich, countersunk underside bolts), cut from one 2 ft flat bar (8992K512); + 4× 25mm 6061 AL spacers (from offcut). 1/4\" chosen for stiffness (bolts grip the beam, not bend the plates). Stack-up: plates thicken OUTWARD (wheel/carriage/beam fixed) — bottom plate Z22.6–29 (2.6mm clear of the Z20 roll surface), top plate Z54–60.4."),
     Part("spray-arm-tube", "6061-T6 AL round tube 25mm OD × 2mm wall, 8 ft", "aluminum",
          "spray", 1, "ea", 64.03, 64.03, "McMaster-Carr", part_no="9056K36", url="https://www.mcmaster.com/9056K36-9056K122/",
-         spec="Arm tube — slit ~30mm at the bottom for the clamp-collar pinch onto the adapter's Ø21 spigot. McMaster 9056K36 $64.03 (firm 2026-07-25), 8 ft stock (only the ~500mm arm is used; balance is spare) — the old 500mm cut line was too short to order.", note="Alvin 2026-07-25: specified the 8ft stock length (min order) — the 500mm cut was too short a line item."),
+         spec="Arm tube — slit ~30mm at the bottom for the clamp-collar pinch onto the adapter's Ø21 spigot. McMaster 9056K36 $64.03 (firm 2026-07-25), 8 ft stock (only the ~500mm arm is used; balance is spare) — the old 500mm cut line was too short to order.", note="2026-07-25: specified the 8ft stock length (min order) — the 500mm cut was too short a line item."),
     Part("spray-arm-adapter", "Arm-to-stud adapter, turned 6061-T6 AL (anodized)", "aluminum",
          "spray", 1, "ea", 12, 18, "Local machine shop", spec="Reducer coupling: M12×1.75 tapped bore (onto the ball-joint stud, locked with an M12 jam nut) → Ø21 male spigot the slit arm tube slips over. ~40mm long; anodized to match the AL tube (galvanic). Turned one-off / est."),
     Part("spray-arm-jamnut", "M12×1.75 jam nut, SS", "fasteners-hardware",
@@ -484,7 +484,7 @@ PARTS: list[Part] = [
     # IP-rated McMaster enclosure (ep-ext-enclosure) with its own sealed lid + gasket, superseding the
     # flush aluminum face plate + neoprene gasket. See ep-ext-enclosure.
     # power-panel-plate/gasket/frame + the McMaster ep-ext-enclosure + power-panel-wall-gland all RETIRED
-    # 2026-07-28 — final design (Alvin) is a FABRICATED flanged penetration box (below): the 4 weatherproof
+    # 2026-07-28 — final design is a FABRICATED flanged penetration box (below): the 4 weatherproof
     # exterior interfaces (MC4/inlet/outlet/E-stop) surface-mount + seal to its front face and are exposed
     # (all IP65-67), the box opens to the container interior for wiring, and its flange seals to the ribbed
     # wall with flashing + silicone. No IP enclosure needed (components are already weatherproof); the
@@ -520,26 +520,26 @@ PARTS: list[Part] = [
     Part("estop-external", "External emergency cut-off — red mushroom switch", "electrical-distribution",
          "electrical", 1, "ea", 12.74, 12.74, "Harfington", part_no="a19061100ux1510", url="https://www.harfington.com/products/p-1071142",
          spec="uxcell a19061100ux1510 red mushroom E-stop switch, $12.74 (Harfington, firm 2026-07-25). Switch element ONLY — mounted in the weatherproof control-station box below (estop-external-enclosure).",
-         note="Alvin 2026-07-25: 'just the switch' — houses in the estop-external-enclosure control station box."),
+         note="2026-07-25: 'just the switch' — houses in the estop-external-enclosure control station box."),
     # estop-external-enclosure RETIRED 2026-07-28 — the exterior E-stop is now a 22mm button mounted directly
     # on the ep-ext-enclosure door, so its own separate control-station box is redundant.
     Part("estop-internal", "Interior emergency cut-off — red mushroom switch (paralleled to exterior)",
          "electrical-distribution", "electrical", 1, "ea", 12.74, 12.74, "Harfington", part_no="a19061100ux1510", url="https://www.harfington.com/products/p-1071142",
          spec="uxcell a19061100ux1510 red mushroom E-stop switch, $12.74 (Harfington, firm 2026-07-25). Switch only — interior panel-mounted.",
-         note="Alvin 2026-07-25: 'just the switch'."),
+         note="2026-07-25: 'just the switch'."),
     Part("mppt-charge-fuse", "MPPT charge-line fuse — 60A ANL + holder", "electrical-distribution",
          "electrical", 1, "ea", 43.38, 43.38, "Powerwerx", "Amazon", part_no="5005-BSS", url="https://powerwerx.com/blue-sea-5005-anl-fuse-block-cover",
-         spec="Blue Sea 5005 ANL fuse block + cover ($36.39, Powerwerx 5005-BSS) + BOJACK ANL-60 fuse 3-pack ($6.99, Amazon B08JPH6Q5H — 1 used, 2 spare). Protects the MPPT->battery 6 AWG charge lead close to the battery (§7.3). $43.38 firm (Alvin 2026-07-31)."),
+         spec="Blue Sea 5005 ANL fuse block + cover ($36.39, Powerwerx 5005-BSS) + BOJACK ANL-60 fuse 3-pack ($6.99, Amazon B08JPH6Q5H — 1 used, 2 spare). Protects the MPPT->battery 6 AWG charge lead close to the battery (§7.3). $43.38 firm (2026-07-31)."),
     Part("shore-output-fuse", "Shore-charger output fuse — 20A inline (sealed holder + fuse)", "electrical-distribution",
          "electrical", 1, "ea", 7.30, 7.30, "Waytek Wire", part_no="46047", url="https://www.waytekwire.com/product/sealed-ato-atc-fuse-holder-assembly-46047",
-         spec="Waytek 46047 sealed (waterproof) in-line ATO/ATC fuse-holder assembly ($7.13) + Waytek 47020 20A ATOF blade fuse (Littelfuse 0287020, $0.17). $7.30 firm (Alvin 2026-07-30). On the shore-charger output lead."),
+         spec="Waytek 46047 sealed (waterproof) in-line ATO/ATC fuse-holder assembly ($7.13) + Waytek 47020 20A ATOF blade fuse (Littelfuse 0287020, $0.17). $7.30 firm (2026-07-30). On the shore-charger output lead."),
     Part("battery-terminal-covers", "Battery terminal covers (pair), insulating boots", "electrical-distribution",
          "electrical", 1, "pair", 2.88, 2.88, "Waytek Wire", part_no="23501", url="https://www.waytekwire.com/product/23501-straight-in-battery",
-         spec="Waytek 23501 (VTE 415N6V02) red + 23500 (VTE 415N6V14) black straight-in battery boots, 6-4 Ga — insulate the +/− post terminals. $1.44 ea × 2 = $2.88 firm (Alvin 2026-07-30). Black mate: waytekwire.com/product/23500-straight-in-battery-boot."),
+         spec="Waytek 23501 (VTE 415N6V02) red + 23500 (VTE 415N6V14) black straight-in battery boots, 6-4 Ga — insulate the +/− post terminals. $1.44 ea × 2 = $2.88 firm (2026-07-30). Black mate: waytekwire.com/product/23500-straight-in-battery-boot."),
     Part("wet-zone-connectors", "Sealed wet-zone connectors — 6× Deutsch DT 2-pin pairs (pump circuits)",
          "electrical-distribution", "electrical", 1, "lot", 27.42, 27.42, "buyDeutsch", part_no="DT06-2S",
          url="https://www.buydeutsch.com/collections/dt-series/products/dt06-2s",
-         spec="6 sealed DT 2-pin pairs — one per Shurflo 2088 pump (P-01..P-05, Circuit C) + 1 spare, so each pump unplugs in the wet zone. Per pair: DT04-2P receptacle ($1.21) + W2P ($0.18) + DT06-2S plug ($1.39) + W2S ($0.21) + 2x 0460-202-16141 pins ($0.25) + 2x 0462-201-16141 sockets ($0.54) = $4.57; x6 = $27.42 firm (Alvin 2026-07-31, individual buyDeutsch items — DSC-KT1 assortment/tool kit $198 is overkill). Separate from deutsch-dt-2pin-elec (exterior) + deutsch-dt-2pin (Fan B)."),
+         spec="6 sealed DT 2-pin pairs — one per Shurflo 2088 pump (P-01..P-05, Circuit C) + 1 spare, so each pump unplugs in the wet zone. Per pair: DT04-2P receptacle ($1.21) + W2P ($0.18) + DT06-2S plug ($1.39) + W2S ($0.21) + 2x 0460-202-16141 pins ($0.25) + 2x 0462-201-16141 sockets ($0.54) = $4.57; x6 = $27.42 firm (2026-07-31, individual buyDeutsch items — DSC-KT1 assortment/tool kit $198 is overkill). Separate from deutsch-dt-2pin-elec (exterior) + deutsch-dt-2pin (Fan B)."),
     Part("pump-switches", "Master pump switch (Circuit C) — IP67 sealed rocker/disconnect 12V 16A", "electrical-distribution",
          "electrical", 1, "ea", 7.99, 7.99, "Amazon", "Waytek Wire", spec="One manual cutoff for the whole pump circuit, mounted on the EP (per-pump switches removed; each Shurflo runs on its internal pressure switch)", part_no="B0GF2ZBD1W", url="https://www.amazon.com/dp/B0GF2ZBD1W"),
     Part("pump-dist-block", "Pump distribution block — 12V DC common busbar, 10-gang", "electrical-distribution",
@@ -548,9 +548,9 @@ PARTS: list[Part] = [
     Part("dielectric-grease", "Dielectric grease, marine-grade (terminal protection)", "adhesives-finishes",
          "electrical", 1, "ea", 8.99, 8.99, "Amazon", part_no="B0D6R543V2",
          url="https://www.amazon.com/dp/B0D6R543V2",
-         spec="BTAS marine-grade dielectric grease — connector/terminal corrosion protection. $8.99 firm (Alvin 2026-07-31)."),
+         spec="BTAS marine-grade dielectric grease — connector/terminal corrosion protection. $8.99 firm (2026-07-31)."),
     # tinned-marine-wire RETIRED 2026-07-30 → folded into the per-gauge wire-<ga>awg-<color> spools
-    #   (all tinned hook-up per Alvin; its $30 is absorbed into the $110 re-distributed wire budget).
+    # (all tinned hook-up; its $30 is absorbed into the $110 re-distributed wire budget).
     Part("cable-grommets", "Cable grommets / glands — steel-shell penetrations", "electrical-distribution",
          "electrical", 1, "lot", 27.86, 27.86, "Amazon", part_no="B09K5GNFHF",
          url="https://www.amazon.com/YUFANNET-Assortment-Grommets-Automotive-Electrical/dp/B09K5GNFHF",
@@ -558,7 +558,7 @@ PARTS: list[Part] = [
     Part("bonding-kit", "Equipotential bonding kit — 6 AWG jumper + ring lugs", "electrical-distribution",
          "electrical", 1, "ea", 95.79, 95.79, "Grainger", part_no="21WJ56",
          url="https://www.grainger.com/product/PANDUIT-Grounding-Jumper-Wire-Kit-21WJ56",
-         spec="Panduit grounding jumper kit — 6 AWG, 60in, 45deg bent ring lugs (factory irreversible-compression terminals). Equipotential bond: container body -> battery-neg busbar (§7.6). $95.79 firm (Alvin 2026-07-31)."),
+         spec="Panduit grounding jumper kit — 6 AWG, 60in, 45deg bent ring lugs (factory irreversible-compression terminals). Equipotential bond: container body -> battery-neg busbar (§7.6). $95.79 firm (2026-07-31)."),
     Part("ep-backing-panel", "EP plywood backing panel (18mm, ~700×2000mm)", "timber-ply",
          "electrical", 1, "4'×8' sheet", 68.98, 68.98, "Home Depot", part_no="454559", url="https://www.homedepot.com/p/203414066",
          spec='18mm SANDEPLY Sande hardwood plywood, full 4\'×8\' sheet, cut to the ~700×2000mm backboard (fits with margin — 1220×2440mm stock) — '
@@ -573,9 +573,9 @@ PARTS: list[Part] = [
               'splash/dust. Its back panel is the plywood; the disconnect knob and cable glands pass '
               'through the face.'),
     # — Circuit wiring: tinned hook-up primary, per-gauge red+black 100ft spools (§7.3 conductor
-    #   schedule). 2026-07-30: retired the wiring-kit + tinned-marine-wire catch-alls → per-gauge
-    #   SKUs, ALL tinned hook-up (Alvin's call — Waytek has no marine <14AWG anyway). The $110
-    #   catch-all budget is re-distributed by run length (cost-neutral); confirm each spool price at order.
+    # schedule). 2026-07-30: retired the wiring-kit + tinned-marine-wire catch-alls → per-gauge
+    # SKUs, ALL tinned hook-up (Waytek has no marine <14AWG anyway). The $110
+    # catch-all budget is re-distributed by run length (cost-neutral); confirm each spool price at order.
     Part("wire-12awg-red", "12 AWG tinned hook-up wire, red — 100ft (Circuit F)", "electrical-distribution",
          "electrical", 1, "spool", 13, 13, "Waytek Wire", part_no="WRT12-2", url="https://www.waytekwire.com/product/wrt12-2-hook-up-wire-tinned-copper",
          spec="Circuit F film-plane actuators (~6m). Tinned copper UL-1015. WRT12-2 (red, pattern-inferred); confirm SKU/price at order."),
@@ -604,7 +604,7 @@ PARTS: list[Part] = [
          "electrical", 1, "lot", 25.99, 25.99, "Amazon", part_no="B0B3HD7CWP", url="https://www.amazon.com/dp/B0B3HD7CWP"),
     Part("anderson-powerpole", "Anderson Powerpole 30A connectors, 50 pairs (unassembled)", "electrical-distribution",
          "electrical", 1, "kit", 55, 55, "Powerwerx", part_no="1327", url="https://powerwerx.com/1327bk-anderson-powerpole-housing-red",
-         spec="Anderson Powerpole 30A — 50 red+black housing pairs = 100x Powerwerx 1327 housings @ $0.55 = $55. 30A contacts (1332) are the mating part (small separate buy — confirm). $0.55/housing firm (Alvin 2026-07-31)."),
+         spec="Anderson Powerpole 30A — 50 red+black housing pairs = 100x Powerwerx 1327 housings @ $0.55 = $55. 30A contacts (1332) are the mating part (small separate buy — confirm). $0.55/housing firm (2026-07-31)."),
     Part("deutsch-dt-2pin-elec", "Deutsch DT 2-pin connectors, IP67 (exterior penetrations)", "electrical-distribution",
          "electrical", 10, "set", 3, 3, "Waytek Wire", part_no="AT2PS-CKIT", url="https://www.waytekwire.com/product/amphenol-sine-systems-at2ps-ckit-2-pin",
          spec="Amphenol AT2PS-CKIT 2-pin connector kit (DT-compatible: plug + receptacle + wedgelocks + contacts), IP67 — one per exterior penetration. Price $3/set est — confirm at order."),
@@ -622,18 +622,18 @@ PARTS: list[Part] = [
     Part("led-strip", "HitLights 12V COB LED strip 4000K, 16.4ft reel (Circuit G, ×2)", "electrical-distribution",
          "electrical", 2, "reel", 37.28, 42.28, "HitLights", part_no="L2712V-40D3-1630-U",
          url="https://hitlights.com/products/premium-12v-cob-led-strip-light-single-color-ul-listed-16-4ft-ip-20-white-pcb",
-         spec="12V DC COB LED strip, 4000K neutral, 16.4ft reel — 426 lm/ft, 4.2 W/ft, CRI 90+, dimmable, cuttable. Circuit G white work lighting = 3 ceiling runs: 2× ~2,162mm over the tray parallel to the X=520/2270 drum-side red safelights + 1× ~1,176mm running the IBC/plumbing corridor length (~5.5m total → ~7,670 lm ≈ ~548 lux, ~76W/6.3A). 2 reels cover the runs (~18 ft). Circuit G fed in 14 AWG for the ~6.3A load. PRIMARY: L2712V-40D3-1630-U premium UL-listed white PCB $42.28; cheaper alt L0512V-403-1630-U-BLK standard black PCB $37.28 (both 4000K, confirmed Alvin 2026-07-30). Mounts in led-channel; COB = even, hot-spot-free; dimmable."),
+         spec="12V DC COB LED strip, 4000K neutral, 16.4ft reel — 426 lm/ft, 4.2 W/ft, CRI 90+, dimmable, cuttable. Circuit G white work lighting = 3 ceiling runs: 2× ~2,162mm over the tray parallel to the X=520/2270 drum-side red safelights + 1× ~1,176mm running the IBC/plumbing corridor length (~5.5m total → ~7,670 lm ≈ ~548 lux, ~76W/6.3A). 2 reels cover the runs (~18 ft). Circuit G fed in 14 AWG for the ~6.3A load. PRIMARY: L2712V-40D3-1630-U premium UL-listed white PCB $42.28; cheaper alt L0512V-403-1630-U-BLK standard black PCB $37.28 (both 4000K, confirmed 2026-07-30). Mounts in led-channel; COB = even, hot-spot-free; dimmable."),
     Part("led-channel", "LED Profiles 981 slimline channel + diffuser, 8 ft (×6)", "electrical-distribution",
          "electrical", 6, "8ft length", 27.00, 27.00, "LED Profiles", part_no="981ASL", url="https://ledprofiles.com/collections/all-led-channels/products/slimline-ultra-low-profile-led-channel-981-series",
          spec="Alberko/LED Profiles 981ASL Ultra-Low-Profile aluminum LED channel (6063-T5 clear-anodized, 14.9×6.86mm) with snap-in FROSTED diffuser (D34) — houses BOTH the Circuit-G white strips AND the Circuit-D red COB safelights (8mm strips fit the ≤12.70mm slot; the diffuser disperses the COB for an even wash). 6× 8 ft (2.44m) sticks, one per run: 3 white (2 tray ~2.16m + 1 corridor ~1.18m) + 3 red safelight (~1.67m each). $27.00 ea ($25.65 @5+). End caps + mounting clips are accessories — confirm bundled or add (~$10)."),
     Part("led-connectors", "LED strip connectors + 12V PWM dimmers (Circuits G + D)", "electrical-distribution",
          "electrical", 1, "lot", 31.90, 31.90, "Super Bright LEDs", part_no="LDK-8A",
          url="https://www.superbrightleds.com/ldk-8a-12-24-volt-dc-single-color-led-dimmer",
-         spec="~8x solderless clamp-on strip->pigtail connectors (8mm single-color 22AWG, $1.49 ea = $11.92) + 2x LDK-8A 12/24V PWM dimmers ($9.99 ea = $19.98) — Circuit-G white + Circuit-D red, both dimmable. $31.90 firm (Alvin 2026-07-31)."),
+         spec="~8x solderless clamp-on strip->pigtail connectors (8mm single-color 22AWG, $1.49 ea = $11.92) + 2x LDK-8A 12/24V PWM dimmers ($9.99 ea = $19.98) — Circuit-G white + Circuit-D red, both dimmable. $31.90 firm (2026-07-31)."),
     Part("safelight-strip", "SBL COB 12V red LED safelight strip, 5m reel (Circuit D)", "electrical-distribution",
          "electrical", 1, "reel", 89.99, 89.99, "Super Bright LEDs", part_no="STN-B-BRED-O12A-08F5M-12V",
          url="https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc",
-         spec="Super Bright LEDs Even-Glow COB 12V red (620nm), 5m reel — 2.4 W/ft (7.87 W/m), 40W/reel, 3.3A, 8mm wide, cuttable every 25mm, PWM-dimmable, IP20 (dry — ceiling, away from splash), UL-2108 (cut sheet COB2-IP20-Color-5m). Circuit-D safelight: 3 ceiling runs (X=520/2270/4170) cut from ONE reel → ~1,667mm each (5m total, ~40W). Red is cyanotype-safe (UV/blue only). In 981 channels + frosted diffuser (disperses the COB, matching the white). Circuit D stays 5A/18AWG — 40W=3.3A splits across 3 branches, no wire bump. $89.99 firm (Alvin 2026-07-30). NOTE: the 3D models still show the reds at their nominal ~2.16m coverage; they're cut to ~1.67m to fit the one reel."),
+         spec="Super Bright LEDs Even-Glow COB 12V red (620nm), 5m reel — 2.4 W/ft (7.87 W/m), 40W/reel, 3.3A, 8mm wide, cuttable every 25mm, PWM-dimmable, IP20 (dry — ceiling, away from splash), UL-2108 (cut sheet COB2-IP20-Color-5m). Circuit-D safelight: 3 ceiling runs (X=520/2270/4170) cut from ONE reel → ~1,667mm each (5m total, ~40W). Red is cyanotype-safe (UV/blue only). In 981 channels + frosted diffuser (disperses the COB, matching the white). Circuit D stays 5A/18AWG — 40W=3.3A splits across 3 branches, no wire bump. $89.99 firm (2026-07-30). NOTE: the 3D models still show the reds at their nominal ~2.16m coverage; they're cut to ~1.67m to fit the one reel."),
     Part("pullcord-switch", "Pull-cord ceiling switch, 12V 6A SPST", "electrical-distribution",
          "electrical", 2, "ea", 121.99, 121.99, "americandoorsupply", part_no="CPM-1", url="https://americandoorsupply.com/products/ceiling-pull-switch-spst-nema-4-w-rotg-pivoting-cam"),
     Part("ground-stake", 'Copper-bonded ground rod, 8ft × ⅝" + acorn clamp', "electrical-distribution",
@@ -642,7 +642,7 @@ PARTS: list[Part] = [
     Part("ground-wire-4awg", "4 AWG ground wire, green/yellow, 20ft", "electrical-distribution",
          "electrical", 1, "lot", 52, 52, "AutomationDirect", part_no="MTW4GYL-1",
          url="https://www.automationdirect.com/adc/shopping/catalog/bulk_wire_-a-_cable/single_conductor_wire_-a-_cable/mtw4gyl-1",
-         spec="20ft AutomationDirect MTW4GYL-1 (4 AWG MTW, green/yellow) — the main panel -> 8ft ground stake earth conductor (§7.6, ~3m used, rest spare) + ring-lug terminal. $52 firm (Alvin 2026-07-31, 20ft min buy)."),
+         spec="20ft AutomationDirect MTW4GYL-1 (4 AWG MTW, green/yellow) — the main panel -> 8ft ground stake earth conductor (§7.6, ~3m used, rest spare) + ring-lug terminal. $52 firm (2026-07-31, 20ft min buy)."),
 
     # ═══ container (§1) — mirrors costing.CONTAINER → exact $2,300–$4,300 ═══
     Part("container-20ft", "20 ft ISO container — CW (cargo-worthy) grade", "container",
@@ -690,15 +690,15 @@ PARTS: list[Part] = [
     # Replaced the superseded Option-A leadscrew drive (HGR20/Acme/handwheel/rod-end) 2026-07-19.
     Part("fp-u-channel", '6061-T6 Al U-channel depth rail 3×1½"×0.2" (76×38mm), 8 ft', "aluminum",
          "film", 4, "ea", 81.99, 81.99, "Grainger", part_no="795M51", url="https://www.grainger.com/product/795M51",
-         spec="4 depth rails, one per corner, running wall-to-wall (~2,362mm, Yd0→C_WID) along the optical axis — an acetal skate rides inside each to set that corner's depth/focus. 6061-T6 aluminum, SAME 76×38 section. Structural check: 6061-T6 yield (~276 MPa) EXCEEDS annealed 304 (~215 MPa) so strength is fine; the ~3× lower E gives ~1mm sag vs ~0.4mm over the 2.36m span — optically irrelevant at f/1088, and flatness is carried by the ACM backing (same logic as the Al frame). Also ~34 kg lighter across the 4 rails. SOURCING: each rail must be ONE continuous piece ≥2,362mm (the skate can't cross a splice). Grainger 795M51 (6061 Al U-channel, 3×1½×0.2\" wall) is stocked in 8 ft (2,438mm) lengths — one uncut stick spans the 2,362mm rail with margin, so 4 sticks = 4 rails, no splice. $81.99/8ft firm (Alvin 2026-07-29)."),
+         spec="4 depth rails, one per corner, running wall-to-wall (~2,362mm, Yd0→C_WID) along the optical axis — an acetal skate rides inside each to set that corner's depth/focus. 6061-T6 aluminum, SAME 76×38 section. Structural check: 6061-T6 yield (~276 MPa) EXCEEDS annealed 304 (~215 MPa) so strength is fine; the ~3× lower E gives ~1mm sag vs ~0.4mm over the 2.36m span — optically irrelevant at f/1088, and flatness is carried by the ACM backing (same logic as the Al frame). Also ~34 kg lighter across the 4 rails. SOURCING: each rail must be ONE continuous piece ≥2,362mm (the skate can't cross a splice). Grainger 795M51 (6061 Al U-channel, 3×1½×0.2\" wall) is stocked in 8 ft (2,438mm) lengths — one uncut stick spans the 2,362mm rail with margin, so 4 sticks = 4 rails, no splice. $81.99/8ft firm (2026-07-29)."),
     Part("fp-ujoint", "Belden UJ-SS750x375 U-joint (3/8\" bore, 45deg, 303/416 SS)", "bearings-motion",
          "film", 4, "ea", 112.68, 112.68, "MROSupply", "Grainger", part_no="UJ-SS750x375",
          url="https://www.mrosupply.com/shaft-couplings-and-collars/2561134_uj-ss750x375_belden/",
-         spec='One per corner — supplies the tilt+swing angular DOF; 3/8" (0.375") bore, 0.75" OD, 45deg max angle, 303/416 stainless pin-and-block friction bearing; backlash is optically irrelevant at f/1088. Backup: Grainger 806V18 ($198). $112.68 ea firm (Alvin 2026-07-31); $112.68x4 = $450.72. Setscrew bore (fine at near-zero torque; -K keyway variant available); sealed by the fp-ujoint-boot (Belden 806VF1).'),
+         spec='One per corner — supplies the tilt+swing angular DOF; 3/8" (0.375") bore, 0.75" OD, 45deg max angle, 303/416 stainless pin-and-block friction bearing; backlash is optically irrelevant at f/1088. Backup: Grainger 806V18 ($198). $112.68 ea firm (2026-07-31); $112.68x4 = $450.72. Setscrew bore (fine at near-zero torque; -K keyway variant available); sealed by the fp-ujoint-boot (Belden 806VF1).'),
     Part("fp-ujoint-boot", "Belden 806VF1 nitrile boot kit (750 coupling)", "seals-gaskets",
          "film", 4, "ea", 40.25, 40.25, "Grainger", part_no="806VF1",
          url="https://www.grainger.com/product/BELDEN-Nitrile-Boot-Kit-750-Coupling-806VF1",
-         spec="Belden nitrile boot kit for the UJ-SS750x375 (0.75in / 750 coupling) — fitted dry over each U-joint, keeps the ferricyanide/citric wash out. $40.25 ea firm (Alvin 2026-07-31). Silicone alt 806VG2 $62.08 (its temperature edge is unneeded here)."),
+         spec="Belden nitrile boot kit for the UJ-SS750x375 (0.75in / 750 coupling) — fitted dry over each U-joint, keeps the ferricyanide/citric wash out. $40.25 ea firm (2026-07-31). Silicone alt 806VG2 $62.08 (its temperature edge is unneeded here)."),
     Part("fp-shaft-support", "McMaster 4040N12 304 shaft support", "bearings-motion",
          "film", 4, "ea", 58, 58, "McMaster-Carr", part_no="4040N12", url="https://www.mcmaster.com/4040N12/",
          spec="Two-piece 304 clamp securing the U-joint INPUT stub to the X (swing) slide, one per corner. $58 ea firm."),
@@ -726,7 +726,7 @@ PARTS: list[Part] = [
          spec="One 2-axis cross-slide stack per corner — 304 flat-bar Z (tilt) + X (swing) slides on UHMW pads with an adjustable gib. FLAT-BAR STOCK: 304 SS ¼\"×1½\" (6.35×38.1mm); 8 pieces (4× ~250mm Z-tilt + 4× ~260mm X-swing) ≈ 2.05m cut length → order ~2.4m (one 8ft length) to allow kerf + mounting overlap. 304 (not 316) — the cyanotype wash has no chloride, so 316's pitting resistance is unused; 304 is adequate in the splash zone. UHMW pad $23–93/sheet + brass-tip gib separate. Firm at order (est.)."),
     Part("fp-cam-clamp", "McMaster 5128A63 low-profile hold-down toggle clamp (rail brake)", "fasteners-hardware",
          "film", 12, "ea", 12.93, 12.93, "McMaster-Carr", part_no="5128A63", url="https://www.mcmaster.com/5128A63/",
-         spec="Cam rail-brake — 3 per corner × 4. Low-profile hold-down toggle clamp: base ~19×22mm (2× M4×0.7, ~15.7mm hole spacing), ~7.6mm profile closed, ~69mm handle, hold-down reach ~22mm, adjustable spindle. Mounts on the carriage plate (small mount tab/bracket to seat the base + aim the spindle); the UHMW-padded spindle pinches DOWN on the U-channel TOP FLANGE to lock the skate at depth for the shot + transport (self-reacting — load rollers react on the bottom flange, Section A-A / Sheet 3). $12.93 ea firm (Alvin 2026-07-30). Handle needs swing clearance vs the rail/ACM — verify at the bench."),
+         spec="Cam rail-brake — 3 per corner × 4. Low-profile hold-down toggle clamp: base ~19×22mm (2× M4×0.7, ~15.7mm hole spacing), ~7.6mm profile closed, ~69mm handle, hold-down reach ~22mm, adjustable spindle. Mounts on the carriage plate (small mount tab/bracket to seat the base + aim the spindle); the UHMW-padded spindle pinches DOWN on the U-channel TOP FLANGE to lock the skate at depth for the shot + transport (self-reacting — load rollers react on the bottom flange, Section A-A / Sheet 3). $12.93 ea firm (2026-07-30). Handle needs swing clearance vs the rail/ACM — verify at the bench."),
     Part("corner-l-plate", "Corner plate 304 SS (U-joint mount)", "steel-structural",
          "film", 4, "ea", 38, 52, "Metal Supermarkets", "Online Metals",
          spec='¼" 304 SS plate, ~6"×8" L-bracket — the frame-corner ↔ U-joint mount. Carries the concentrated U-joint corner load in STEEL, not aluminum; stainless for the cyanotype splash zone + galvanic match to the 303 SS U-joint. NOT expendable (the perimeter angle stays expendable 6061).'),
@@ -735,7 +735,7 @@ PARTS: list[Part] = [
          "film", 3, "16 ft length", 208.41, 208.41, "Metal Supermarkets", "Online Metals",
          url="https://www.mcmaster.com/8982K509-8982K479/",
          spec="6061-T6 angle (NOT 2024/7075 — corrosion + weldability). PLAIN mill finish (NOT anodized) — the film-plane PERIMETER FRAME, EXPENDABLE (inspect-annually / replace-on-pitting; bare 6061 pits sooner than anodized in the splash zone, so a shorter interval — anodizing is an option for longer life). WELD-FREE cut plan from 3× 16 ft (192\") lengths: 2 lengths → the two horizontal edges (4,499mm each, one per length, 378mm offcut); 1 length → both vertical edges (2,094mm ×2 from one 16 ft). No mid-span splices — only the 4 corner joints are welded/bolted. Metal Supermarkets 192\" @ $208.41 (cheaper per length than 8 ft @ $116.31 AND drops the welds). One frame — re-order to replace. McMaster 8982K509 (url) = catalog reference.",
-         note="Expendable plain-6061 per Alvin; add 16ft lengths if pre-buying spares."),
+         note="Expendable plain-6061; add 16ft lengths if pre-buying spares."),
     Part("dibond-acm-film", "Dibond ACM panel 3mm (black), 4×8 sheet", "plastics-sheet",
          "film", 4, "sheet", 95, 95, "Curbell Plastics", "Central Coast Plastics", part_no="w01-05317",
          url="https://www.curbellplastics.com/product/w01-05317/",
@@ -767,8 +767,8 @@ PARTS: list[Part] = [
     Part("washer-m12-split", "M12 split lock washer, zinc", "fasteners-hardware",
          "film", 28, "ea", 11.97 / 100, 11.97 / 100, "McMaster-Carr", part_no="91202A246", url="https://www.mcmaster.com/91202A246/", spec="Split lock washer under each nut — M12×65 wall-sandwich bolts (plain nut + split = locked). $11.97/pack of 100."),
     # M12 nyloc nut — verified ALTERNATIVE locking (Option B), NOT USED (chose plain nut + split washer):
-    #   McMaster 94645A230, $10.08/pack of 10 = $1.008 ea. Swap in (and drop the split washers) if
-    #   adopting nyloc locking for the M12 through-bolts; ~+$70 over the 110 bolts. https://www.mcmaster.com/94645A230/
+    # McMaster 94645A230, $10.08/pack of 10 = $1.008 ea. Swap in (and drop the split washers) if
+    # adopting nyloc locking for the M12 through-bolts; ~+$70 over the 110 bolts. https://www.mcmaster.com/94645A230/
     Part("saddle-m8-thumb", "M8×25mm knurled thumbscrew DIN 464", "fasteners-hardware",
          "film", 12, "ea", 11.8, 11.8, "McMaster-Carr", "Maedler", spec="ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare", part_no="92581A540", url="https://www.mcmaster.com/92581A540/"),
     Part("bolt-m8-fixing", "M8×1.25 × 25 hex bolt, Grade 8.8 zinc — right-rail end fixing (ICP-14)", "fasteners-hardware",
@@ -853,7 +853,7 @@ PARTS: list[Part] = [
               'PT is defensible at the vented cargo-door end; plenty of leftover from one sheet.'),
     Part("panel-corner-stiffener", '1"×1"×1/8" Al angle, 8 ft — corner-zone stiffener grid', "aluminum",
          "panel", 4, "ea", 12.20, 12.20, "Grainger", part_no="2EYP1", url="https://www.grainger.com/product/2EYP1",
-         spec="Corner-zone anti-oil-can rib grid — light-tightness is carried by the two black HDPE skins and the latch/fan load by the RHS frame + ply band, so the corner only needs stiffening against oil-can. Per corner: 1 vertical (2,258mm) + 2 horizontal (653mm) 1\"×1\"×1/8\" (25×25×3.2mm) Al angle ribs, ~325×750mm bays, holding both 1/8\" HDPE skins flat within the 40mm framed cavity. The leaf is VERTICAL, so skin self-weight is in-plane; the grid only resists out-of-plane oil-can (works with the U-channel skin retainers at ~400-450mm centers, report §2.5). ~7.1m installed → 4× 8 ft (2,438mm) sticks for clean piece-fit (2 sticks → the 2 verticals, 2 → the 4 horizontals + spare). ~2.9 kg installed. Grainger 2EYP1 $12.20/8ft firm (Alvin 2026-07-29)."),
+         spec="Corner-zone anti-oil-can rib grid — light-tightness is carried by the two black HDPE skins and the latch/fan load by the RHS frame + ply band, so the corner only needs stiffening against oil-can. Per corner: 1 vertical (2,258mm) + 2 horizontal (653mm) 1\"×1\"×1/8\" (25×25×3.2mm) Al angle ribs, ~325×750mm bays, holding both 1/8\" HDPE skins flat within the 40mm framed cavity. The leaf is VERTICAL, so skin self-weight is in-plane; the grid only resists out-of-plane oil-can (works with the U-channel skin retainers at ~400-450mm centers, report §2.5). ~7.1m installed → 4× 8 ft (2,438mm) sticks for clean piece-fit (2 sticks → the 2 verticals, 2 → the 4 horizontals + spare). ~2.9 kg installed. Grainger 2EYP1 $12.20/8ft firm (2026-07-29)."),
     Part("panel-epdm-gasket", "20mm EPDM gasket (per meter, closed-cell)", "seals-gaskets",
          "panel", 21, "m", 1.13, 2.46, "Amazon (OKAYASU)", spec="Perimeter seal (~10 m) + housing-surround ring (~6 m) + 2× vertical cut seals at Yd180/2287 (~5 m)", part_no="B089GJQ96Z", url="https://www.amazon.com/dp/B089GJQ96Z"),
     Part("panel-u-channel", "Aluminum U-channel, 1/8-panel (per meter)", "aluminum",
@@ -1082,7 +1082,7 @@ def _money(v: float) -> str:
     return f"${round(v):,}"
 
 
-import facts as _facts  # live fact-marker expansion inside generated spec cells
+import facts as _facts # live fact-marker expansion inside generated spec cells
 
 _FACT_TOKEN = re.compile(r"\{\{fact:([a-z0-9_]+)\}\}")
 
@@ -1106,7 +1106,7 @@ def emit_system(sys: str) -> str:
     """A report's §Parts-List (by-system view). Registry insertion order (faithful to the report);
     renders spec + URL-linked item + qty + supplier(+alt) + cost band + a system-total row."""
     rows = ["| Item | Spec | Qty | Supplier | Est. cost |", "|------|------|-----|----------|-----------|"]
-    for p in by_system(sys):                                    # insertion order, not type-sorted
+    for p in by_system(sys): # insertion order, not type-sorted
         lo, hi = line(p)
         cost = _money(lo) if round(lo) == round(hi) else f"{_money(lo)}–{_money(hi)}"
         sup = canon_supplier(p.supplier) + (f" / {canon_supplier(p.supplier_alt)}" if p.supplier_alt else "")
@@ -1119,7 +1119,7 @@ def emit_system(sys: str) -> str:
 
 def emit_panel(panel: str) -> str:
     """plumbing-report.md per-panel §Parts-List — the water-system equipment tagged to this plumbing
-    panel (Corridor / Pinhole Wall).  Panel-mounted equipment only; the full water BOM (pipe, totes,
+    panel (Corridor / Pinhole Wall). Panel-mounted equipment only; the full water BOM (pipe, totes,
     external ports, consumables) lives in water-system-report.md's §Parts-List."""
     items = [p for p in by_system("water") if p.panel == panel]
     rows = ["| Item | Spec | Qty | Supplier | Est. cost |", "|------|------|-----|----------|-----------|"]
@@ -1140,7 +1140,7 @@ def emit_master() -> str:
     the published tables are also click-sortable by any column)."""
     bt = by_type()
     out = ["## Procurement BOM — by material type\n"]
-    for t in sorted(bt):                                        # type sections A–Z
+    for t in sorted(bt): # type sections A–Z
         items = bt[t]
         out.append(f"### {t}\n")
         out.append("| Item | Qty | Supplier | Systems | Est. cost |")
@@ -1164,7 +1164,7 @@ def emit_master() -> str:
             return (cls, int(mm.group(1)) if mm else 999, k)
         order = (sorted(agg.values(), key=_fsort) if t == "fasteners-hardware"
                  else sorted(agg.values(), key=lambda x: x["p"].desc.lower()))
-        for a in order:                                                     # rows A–Z by item name (fasteners: by class/size)
+        for a in order: # rows A–Z by item name (fasteners: by class/size)
             cost = _money(a["lo"]) if round(a["lo"]) == round(a["hi"]) else f"{_money(a['lo'])}–{_money(a['hi'])}"
             out.append(f"| {_item_cell(a['p'])} | {a['qty']:g} {a['unit']} | {a['sup']} | "
                        f"{', '.join(sorted(a['sys']))} | {cost} |")
@@ -1272,7 +1272,7 @@ def inject(write: bool = True) -> list:
 def check_blocks() -> list:
     """Linter helper: list of placed parts: blocks that are stale (a missing marker is not an error —
     blocks are wired incrementally, so a doc without its marker yet is simply skipped)."""
-    return [f"{rel}  parts:{key} -> {st}" for rel, key, st in inject(write=False)
+    return [f"{rel} parts:{key} -> {st}" for rel, key, st in inject(write=False)
             if st not in ("ok", "missing")]
 
 
@@ -1291,7 +1291,7 @@ def reconcile_key(sys: str) -> str:
 _WATER_SPLIT = {"ibc-frame": "IBC stacking frame", "tray": "Processing tray", "spray": "Spray bar"}
 # costing.FILM bundles the muslin clamps (which physically live in film-clamp-mechanism-report); the
 # registry splits them into a 'clamp' system, leaving 'film' = FILM minus these two lines.
-_CLAMP_LINES = ("Muslin clamp",)   # matches both "Muslin clamps …" (clamps) + "Muslin clamp filler …" (HDPE)
+_CLAMP_LINES = ("Muslin clamp",) # matches both "Muslin clamps …" (clamps) + "Muslin clamp filler …" (HDPE)
 
 
 def _split_sum(lst, prefixes, keep: bool):
@@ -1304,17 +1304,17 @@ def reconcile_target(sys: str):
     if sys in _WATER_SPLIT:
         li = next(l for l in costing.WATER if l.label.startswith(_WATER_SPLIT[sys]))
         return (li.low, li.high)
-    if sys == "water":                                          # WATER minus the three split-out lines
+    if sys == "water": # WATER minus the three split-out lines
         return _split_sum(costing.WATER, _WATER_SPLIT.values(), keep=False)
-    if sys == "clamp":                                          # the two clamp lines of FILM
+    if sys == "clamp": # the two clamp lines of FILM
         return _split_sum(costing.FILM, _CLAMP_LINES, keep=True)
-    if sys == "film":                                           # FILM minus the clamp lines
+    if sys == "film": # FILM minus the clamp lines
         return _split_sum(costing.FILM, _CLAMP_LINES, keep=False)
-    if sys == "door":                                           # the "Fixed door frame" lines of SWINGPIVOT
+    if sys == "door": # the "Fixed door frame" lines of SWINGPIVOT
         return _split_sum(costing.SWINGPIVOT, ("Fixed door frame",), keep=True)
-    if sys == "swing":                                          # SWINGPIVOT minus the door lines
+    if sys == "swing": # SWINGPIVOT minus the door lines
         return _split_sum(costing.SWINGPIVOT, ("Fixed door frame",), keep=False)
-    if sys == "chemistry":                                      # build = the DEFAULT tier total (+ muslin)
+    if sys == "chemistry": # build = the DEFAULT tier total (+ muslin)
         tot = costing.EXPECTED[costing.DEFAULT_TIER]["total"]
         return (tot, tot)
     exp = costing.EXPECTED[reconcile_key(sys)]
@@ -1361,19 +1361,19 @@ if __name__ == "__main__":
     args = ap.parse_args()
     if args.inject:
         for rel, key, st in inject(write=True):
-            print(f"  [{st:>7}] {rel}  parts:{key}")
+            print(f" [{st:>7}] {rel} parts:{key}")
         raise SystemExit(0)
     if args.check_blocks:
         probs = check_blocks()
-        print("\n".join(f"  STALE: {p}" for p in probs) if probs else "✓ all parts: doc blocks current")
+        print("\n".join(f" STALE: {p}" for p in probs) if probs else "✓ all parts: doc blocks current")
         raise SystemExit(1 if probs else 0)
     if args.check or not (args.system or args.master):
         errs = self_check()
         if errs:
             print("✗ parts registry reconciliation FAILED:")
-            [print("   -", e) for e in errs]
+            [print(" -", e) for e in errs]
             raise SystemExit(1)
-        print(f"✓ parts registry reconciles with costing  ({len(systems())} system(s): {', '.join(systems())})")
+        print(f"✓ parts registry reconciles with costing ({len(systems())} system(s): {', '.join(systems())})")
     if args.system:
         print(emit_system(args.system))
     if args.master:

@@ -15,8 +15,8 @@ re-checks the published tables against `costing.py` so the user never has to rea
 STATUS: Phase 1 vertical slice — the Printmaking / cyanotype block (the most-drifted section).
 The same data->derive->emit->check pattern extends section-by-section to the whole build.
 
-USAGE:  python3 src/generators/costing.py            # print the tables + run the self-check
-        python3 src/generators/costing.py --check    # check only (exit 1 on mismatch)
+USAGE: python3 src/generators/costing.py # print the tables + run the self-check
+        python3 src/generators/costing.py --check # check only (exit 1 on mismatch)
 """
 from __future__ import annotations
 
@@ -26,16 +26,16 @@ import sys
 from dataclasses import dataclass
 
 # ── Run basis ────────────────────────────────────────────────────────────────
-PRINTS = 50            # edition size every per-run figure is based on
-PER_PRINT_CONSUMABLES = 3   # §7.3 all-in basis: water/citric/pH per print BEYOND §7.1 chem+substrate
+PRINTS = 50 # edition size every per-run figure is based on
+PER_PRINT_CONSUMABLES = 3 # §7.3 all-in basis: water/citric/pH per print BEYOND §7.1 chem+substrate
 
 # ── Unit prices (USD) — each carries its source for traceability ─────────────
-PRICE_AMFE_PER_KG  = 64.20     # Artcraft Chemicals — ferric ammonium oxalate (AmFe), $29.12/1 lb (firm 2026-07-26) ÷ 0.4536 kg/lb (bulk alt-process source; was $218.16/kg at the retail 1-lb photo pack — a ~3.4× overcharge)
-PRICE_FERRI_PER_KG = 51.01     # Artcraft Chemicals — potassium ferricyanide, $104.12/4.5 lb (firm 2026-07-26) = $51.01/kg (was $60.80/kg Bostick — consolidated cyanotype chemistry to one supplier, Artcraft)
-DICHROMATE_RUN     = 25.00     # ammonium dichromate — trace contrast agent (0.1–0.4% w/v), per-run allowance. Artcraft Chemicals $33.66/0.5 lb (firm 2026-07-26; small pack ≈ $148/kg but trace use) — ~one 0.5-lb pack per run.
-MUSLIN_ROLL_PRICE  = 100.00    # Fabric Direct — 60" x 150-yd unbleached muslin roll
-MUSLIN_ROLLS       = 3         # ~388 yd / 150 -> 3 rolls (still 3 rolls after the FP_H 2138->2094 area drop)
-MUSLIN_YARDS       = 388       # 2026-07-17: 50 prints × 101 sqft × 1.15 waste = 5,808 sqft ÷ 5 ft = ~1,162 linear ft = 388 yd (was 399 at 104 sqft)
+PRICE_AMFE_PER_KG = 64.20 # Artcraft Chemicals — ferric ammonium oxalate (AmFe), $29.12/1 lb (firm 2026-07-26) ÷ 0.4536 kg/lb (bulk alt-process source; was $218.16/kg at the retail 1-lb photo pack — a ~3.4× overcharge)
+PRICE_FERRI_PER_KG = 51.01 # Artcraft Chemicals — potassium ferricyanide, $104.12/4.5 lb (firm 2026-07-26) = $51.01/kg (was $60.80/kg Bostick — consolidated cyanotype chemistry to one supplier, Artcraft)
+DICHROMATE_RUN = 25.00 # ammonium dichromate — trace contrast agent (0.1–0.4% w/v), per-run allowance. Artcraft Chemicals $33.66/0.5 lb (firm 2026-07-26; small pack ≈ $148/kg but trace use) — ~one 0.5-lb pack per run.
+MUSLIN_ROLL_PRICE = 100.00 # Fabric Direct — 60" x 150-yd unbleached muslin roll
+MUSLIN_ROLLS = 3 # ~388 yd / 150 -> 3 rolls (still 3 rolls after the FP_H 2138->2094 area drop)
+MUSLIN_YARDS = 388 # 2026-07-17: 50 prints × 101 sqft × 1.15 waste = 5,808 sqft ÷ 5 ft = ~1,162 linear ft = 388 yd (was 399 at 104 sqft)
 
 
 # ── Ware New Cyanotype concentration tiers (per 50-print run) ────────────────
@@ -49,17 +49,17 @@ class Tier:
     ferri_kg: float
 
 
-TIERS = [                             # AmFe/ferri kg for a 50-print run — sized to the active plane
-    Tier("lean",     "Lean ⅓-Ware",     11.4,  3.8),   # 2026-07-17: ×0.97944 (FP_H 2138→2094, plane 9.62→9.42 m²)
-    Tier("standard", "Standard ½-Ware",  17.1,  5.7),   # 120 ml/m²/coat × 2 × 9.42 m² @ 15 g/100 ml → ~340 g/print
-    Tier("rich",     "Rich full-Ware",   34.2, 11.4),
+TIERS = [ # AmFe/ferri kg for a 50-print run — sized to the active plane
+    Tier("lean", "Lean ⅓-Ware", 11.4, 3.8), # 2026-07-17: ×0.97944 (FP_H 2138→2094, plane 9.62→9.42 m²)
+    Tier("standard", "Standard ½-Ware", 17.1, 5.7), # 120 ml/m²/coat × 2 × 9.42 m² @ 15 g/100 ml → ~340 g/print
+    Tier("rich", "Rich full-Ware", 34.2, 11.4),
 ]
 DEFAULT_TIER = "standard"
 
 
 # ── Derived figures (computed once, never transcribed) ───────────────────────
 def muslin_cost() -> float:
-    return MUSLIN_ROLLS * MUSLIN_ROLL_PRICE          # -> 300
+    return MUSLIN_ROLLS * MUSLIN_ROLL_PRICE # -> 300
 
 
 def tier_costs(t: Tier) -> dict:
@@ -171,7 +171,7 @@ WATER = [
     LineItem("Under-walkway pipe-ribbon supports (4× welded cross-braces + 16 pipe clips)", 51, 59, 67, "2026-07-27: cross-brace bar firm — McMaster 6775T37 25×3mm×3ft $17.57 ×2 (4 braces cut from 2 bars)"),
     LineItem("Filter skid (3× Big Blue 4.5×20 separate housings on mounting brackets + cartridges)", 541, 541, 541, "2026-07-22: U-bracket retired → lag screws to ply backing. 2026-07-25: housing standoff spacers → plywood offcuts. 2026-07-27: filter lag screws firm Everbilt 5-pack $7.09 ×2. 2026-07-27: skid frame → 3× Pentair 150061 zinc single-housing brackets $10.50 (was the $116.76 McMaster angle — purpose-built, −$85). 2026-07-29: line firmed (all parts now firm — housings, cartridges, Pentair brackets, lag screws, offcut standoffs)"),
     LineItem("Valves and fittings (6× BV ball valves, X1 4-way cross, CV1, SV-01 + SV-02 taps, Blue equalization tie, PVC slip tees/elbows/couplings/transition adapters, 2× service unions)", 920, 920, 920, "2026-07-27: Banjo valves/tees/elbows/3-ways sourced firm at US Plastic. 1\" PVC slip tees (PVC024001000HD $2.13) + elbows (PVC023001000HD $1.52) + slip×NPT transition adapters (PVC021090600HD $0.79/PVC021091000HD $1.16) firm at Home Depot; filter-jumper bundle retired into itemized pipe/elbows/adapters. 2026-07-28: transition-adapter P&ID takeoff — ½\" 18→22, 1\" 22→26 (+$8). 2026-07-29: the S60×6 IBC-tote adapters moved to their own 'IBC tote flexible connections' line (below); line firmed"),
-    LineItem("IBC tote flexible connections (8× S60→2\"MNPT tote adapter + 2→1\" reducer + 1\" hose barbs M+F + SS clamps; hose off the tray-suction coil)", 181, 181, 181, "2026-07-29: flexible-jumper design (Alvin) — a short 1\" flex hose de-couples each fixed tote from the semi-rigid panel (else the solvent-weld joint fatigues). Firm (Alvin): Granatan S60→2\"MNPT $9.99 + Charlotte 2→1 reducer $3.21 + Banjo barbs (31527 $1.79 / 31544 $3.00) + Apollo SS clamps $18.52/10pk — ×8, hose cut from the tray-suction-hose 25ft coil"),
+    LineItem("IBC tote flexible connections (8× S60→2\"MNPT tote adapter + 2→1\" reducer + 1\" hose barbs M+F + SS clamps; hose off the tray-suction coil)", 181, 181, 181, "2026-07-29: flexible-jumper design — a short 1\" flex hose de-couples each fixed tote from the semi-rigid panel (else the solvent-weld joint fatigues). Firm: Granatan S60→2\"MNPT $9.99 + Charlotte 2→1 reducer $3.21 + Banjo barbs (31527 $1.79 / 31544 $3.00) + Apollo SS clamps $18.52/10pk — ×8, hose cut from the tray-suction-hose 25ft coil"),
     LineItem("Pipe (PVC Sch-40 — spray bar + 1\"/½\" runs, firm at Home Depot)", 84, 84, 84, "2026-07-27: all three sizes firm — ½\" IPEX 30-05010HD $4.81×8 + ¾\" PVC-04007-0600 $5.76×2. 2026-07-29: 1\" recount 2→4 sticks (IPEX 22405 $8.65×4 = $34.60) — the IBC-zone 1\" internal fill/drain manifold (§5 pipe table, ~39 ft) was omitted from the old 20 ft est; +$17"),
     LineItem("Processing tray (304 SS panels + fabrication, shim strips, sump pickup, liner, hardware)", 1583, 1928, 2271, "2026-07-23: slope shims firmed to the 1-1/4\" HDPE plate route ($210–300, from the $40–75 flat-bar est). 2026-07-27: tray liner folded into ldpe-sheeting roll (−$8) + Loctite PL Premium 2-pack $11.94 (−$3). 2026-07-28: sump pickup firmed +$45 — foot valve → Meclube 95953 brass/SS $14.23 (−$6) + suction hose → HYDROMAXX 1\"×25ft $65.65 (+$51, stocked coil vs 6ft est)"),
     LineItem("Spray bar assembly (40×25 SS RHS beam, side LDPE manifold, 40 jets, single center feed, 4 Ø32 wheels, ball joint, arm + turned adapter + jam nut + clamp collar, hose)", 383, 419, 455, "2026-07-22: arm jam nut/collar/self-tap/beam-clamp re-priced to real SKUs. 2026-07-25: arm tube → McMaster 9056K36 8ft stock $64.03 (was a $6 500mm cut, too short to order) +$58. 2026-07-28: Option 1 single center feed −$8 — ¾\" LDPE over-bored for the flow, so the distribution manifold + 7 feed tubes + barbed-tee taps retired (DripDepot ¾\" roll 3552 $31.24, ¼\" tube/manifold/tees dropped)"),
@@ -281,7 +281,7 @@ FILM = [
     LineItem("McMaster 4040N12 304 shaft supports (×4) + 3/8\" 304 stub rod (89535K87, 3ft)", 245, 245, 245, "$58 ea support + $13.25 rod — firm"),
     LineItem("Acetal skates (×4) — Ø32/Ø20 acetal rollers + 304 axle pins + fab carriage plates", 182, 230, 282, "2026-07-22: decomposed; axle = spray 304 pins (B0816MQ5T6) $20 (was $176 316 rod)"),
     LineItem("316 flat-bar Z/X cross-slides (×4) + UHMW pads + gibs", 180, 280, 380, "2-axis stack per corner; est."),
-    LineItem("McMaster 5128A63 hold-down toggle clamps (×12, rail brake)", 155, 155, 155, "3 per corner; 5128A63 low-profile hold-down toggle clamp $12.93 ea firm (Alvin 2026-07-30)"),
+    LineItem("McMaster 5128A63 hold-down toggle clamps (×12, rail brake)", 155, 155, 155, "3 per corner; 5128A63 low-profile hold-down toggle clamp $12.93 ea firm (2026-07-30)"),
     LineItem("Corner plates, ¼\" 304 SS 6×8 (×4)", 152, 180, 208, "U-joint mount — steel, not aluminum"),
     # 4.2 Film plane frame & backing
     point("Aluminum angle 2×2×3/16 (6061-T6 plain, expendable) 16 ft (×3) — weld-free frame", 625, "Metal Supermarkets 192\" @ $208.41; 2 horizontals + 1 for both verticals; 1 frame"),
@@ -306,14 +306,14 @@ VENTILATION = [
     LineItem("Canopy frame (1\" EMT — 6× conduit $21.86 + 8× couplings $1.45 + 4× floor flanges + 4× pull elbows $11.85)", 206, 206, 206, "2026-07-27: firm at 1\" EMT — conduit 550210000, couplings 12210, PIPE DECOR flange 4-pack PDB-F-1-4, Halex 94510 elbows (was $339 at 1.5\")"),
     point("Baffle duct sheet metal (fans)", 30),
     point("Baffle duct sheet metal (cooler, Ø200)", 20),
-    point("200mm insulated flex duct", 63),      # 2026-07-27: Rubber-Cal 8"×25ft coil $62.68
-    point("200mm 90° duct elbow", 15),            # 2026-07-27: Master Flow 90E8 $14.69
-    point("Duct collar + hose clamp", 16),        # 2026-07-27: Master Flow DSCF8 collar $8.98 + McMaster 4866N35 clamp $7.25
-    point("Weatherproof duct cap", 12),           # 2026-07-27: Master Flow 8DC $11.98
+    point("200mm insulated flex duct", 63), # 2026-07-27: Rubber-Cal 8"×25ft coil $62.68
+    point("200mm 90° duct elbow", 15), # 2026-07-27: Master Flow 90E8 $14.69
+    point("Duct collar + hose clamp", 16), # 2026-07-27: Master Flow DSCF8 collar $8.98 + McMaster 4866N35 clamp $7.25
+    point("Weatherproof duct cap", 12), # 2026-07-27: Master Flow 8DC $11.98
     point("Deutsch DT 2-pin connectors (Fan B flex ×2)", 8),
     point("16 AWG coiled cable (Fan B flex)", 26),
     point("Cooler external power cable", 20),
-    point("Ratchet straps ×2 (cooler stowage)", 10),   # 2026-07-27: Husky FH0829 4-pack $9.97 (2 used, 2 spare)
+    point("Ratchet straps ×2 (cooler stowage)", 10), # 2026-07-27: Husky FH0829 4-pack $9.97 (2 used, 2 spare)
     # Plywood base plate (cooler stowage) RETIRED 2026-07-27 — cut from the panel-fanb-ply 4×8 sheet
 ]
 
@@ -327,8 +327,8 @@ POWER = [
 ]
 
 
-FRONT_BOARD_MID  = 1470   # tilt-swing front board §12.4 LOW total — source: tilt-swing-board-report.md
-FRONT_BOARD_HIGH = 2440   # §12.4 HIGH total (CNC + anodise + custom bellows upper band)
+FRONT_BOARD_MID = 1470 # tilt-swing front board §12.4 LOW total — source: tilt-swing-board-report.md
+FRONT_BOARD_HIGH = 2440 # §12.4 HIGH total (CNC + anodise + custom bellows upper band)
 
 
 def _sec(sid: str) -> Section:
@@ -408,8 +408,8 @@ def funding_level1_total() -> int:
 
 # Funding-proposal Level 2/3 ranges (deployment + documentation — funding-doc-specific, not in the
 # 13 build sections). The combined first-year band is computed from them + Level 1.
-FUNDING_L2 = (1025, 2750)   # transport ($1,000–2,400) + permits ($0–300) + water resupply ($25–50), one deployment
-FUNDING_L3 = (2000, 5000)   # videography ($1,000–2,500) + photography ($500–1,000) + publication ($500–1,500)
+FUNDING_L2 = (1025, 2750) # transport ($1,000–2,400) + permits ($0–300) + water resupply ($25–50), one deployment
+FUNDING_L3 = (2000, 5000) # videography ($1,000–2,500) + photography ($500–1,000) + publication ($500–1,500)
 
 
 def funding_combined() -> tuple[int, int]:
@@ -421,7 +421,7 @@ def funding_combined() -> tuple[int, int]:
 # Mid for B) so they can't drift; the grade/transport/permit/lens choices that AREN'T a section
 # midpoint are explicit editorial picks. Totals are computed. (Generating this corrected a couple of
 # hand-maintained drifts: scenario-B light trap 1,800 -> the §6 Mid 1,802, and the derived C figures.)
-SCEN_A = {"container": 1800, "transport": 400, "permits": 50}          # WWT grade, local deployment
+SCEN_A = {"container": 1800, "transport": 400, "permits": 50} # WWT grade, local deployment
 SCEN_B = {"container": 3150, "lens": 800, "transport": 900, "permits": 300}
 SCEN_C = {"cdl": 4500, "trailer": 35000, "truck_lo": 50000, "truck_hi": 80000}
 
@@ -484,7 +484,7 @@ def emit_scenario_b() -> str:
 
 
 def emit_scenario_c() -> str:
-    b_less = sum(v for _, v in _scenario_b_rows()) - SCEN_B["transport"]   # B build, owned transport
+    b_less = sum(v for _, v in _scenario_b_rows()) - SCEN_B["transport"] # B build, owned transport
     base = b_less + SCEN_C["cdl"] + SCEN_C["trailer"]
     rows = [
         (f"Scenario B build (less the ${SCEN_B['transport']:,} commercial transport, replaced here by owned transport)", f"${b_less:,}"),
@@ -511,9 +511,9 @@ _WS = "water-system-report.md"
 _ELEC = "electrical-report.md"
 _VENT = "ventilation-report.md"
 _FPM = "film-plane-mechanism-report.md"
-_FC  = "film-clamp-mechanism-report.md"
+_FC = "film-clamp-mechanism-report.md"
 _TSB = "tilt-swing-board-report.md"
-_HP  = "hinged-panel-report.md"
+_HP = "hinged-panel-report.md"
 _LTS = "light-trap-selection.md"
 
 
@@ -533,32 +533,32 @@ def _pct(mid: int, cap: int) -> str:
 # roll-up + percentage are computed sums of the levers below; the remaining bands are single-
 # sourced here as declared estimates (they were hand-typed in the report). This ends the
 # duplication and lets the roll-up cascade.
-#   Bucket B (partially resolved 2026-07-05): solar is now a computed subtraction (drop 1×
-#   solar-panel-200w), and modeling against the BOM showed two "levers" were phantom — film is BANKED
-#   (manual is the standard build) and the battery is ALREADY 1×100Ah — so both were dropped from the
-#   roll-up (see the SAVINGS_LEVERS note below). STILL OPEN: a costed chem-compatible poly-tray
-#   alternative for lever #3 (leave as a band until specced), and — not a §4 lever — a galvanized-steel
-#   walkway-grating alt vs the §5 GRP premium.
+# Bucket B (partially resolved 2026-07-05): solar is now a computed subtraction (drop 1×
+# solar-panel-200w), and modeling against the BOM showed two "levers" were phantom — film is BANKED
+# (manual is the standard build) and the battery is ALREADY 1×100Ah — so both were dropped from the
+# roll-up (see the SAVINGS_LEVERS note below). STILL OPEN: a costed chem-compatible poly-tray
+# alternative for lever #3 (leave as a band until specced), and — not a §4 lever — a galvanized-steel
+# walkway-grating alt vs the §5 GRP premium.
 def _lever_container() -> int:
-    return SCEN_B["container"] - SCEN_A["container"]     # CW − WWT grade delta (computed)
+    return SCEN_B["container"] - SCEN_A["container"] # CW − WWT grade delta (computed)
 
 
 # (id, low, high, in_rollup) — only levers that are STILL AVAILABLE feed the §4 roll-up.
 # Bucket B (2026-07-05): modeling each alternative against the as-built BOM showed two levers are NOT
 # available savings, so they were dropped from the roll-up (they were double-counting):
-#   • film   — ACTIONED: manual IS the standard build, so the $827 electric-kit cost is already BANKED,
-#              not a saving you can still take.
-#   • battery — the costed standard is already 1×100Ah ($350); there is no 200→100Ah drop to make. A
-#              2nd pack is a +$375 optional UPGRADE (parts.py lifepo4-100ah note), i.e. an ADD, not a save.
+# • film — ACTIONED: manual IS the standard build, so the $827 electric-kit cost is already BANKED,
+# not a saving you can still take.
+# • battery — the costed standard is already 1×100Ah ($350); there is no 200→100Ah drop to make. A
+# 2nd pack is a +$375 optional UPGRADE (parts.py lifepo4-100ah note), i.e. an ADD, not a save.
 # The available levers: container (computed CW−WWT), solar (computed = drop 1× solar-panel-200w), and
 # tray (still a declared band — a chem-compatible poly-tray alternative isn't costed yet).
 SAVINGS_LEVERS = [
     ("container", _lever_container(), _lever_container(), True),
-    ("film",      827,  827,  False),     # #2 ACTIONED — $827 electric kit is BANKED into the manual standard, not available
-    ("tray",      600,  1000, False),     # #3 DECIDED 2026-07-05: KEEP 304 SS (poly needs a support frame over the 4.5m span + poly-weld fab; SS is self-supporting + durable) — declined, out of the roll-up
-    ("battery",   375,  375,  False),     # #4 standard is 1×100Ah; the 2nd pack is a +$375 UPGRADE, not a saving
-    ("solar",     133,  133,  True),      # #5 computed: drop 1× solar-panel-200w ($133 low=high, parts.py)
-    ("valves",    100,  200,  False),     # #6 estimate — no specced alternative
+    ("film", 827, 827, False), # #2 ACTIONED — $827 electric kit is BANKED into the manual standard, not available
+    ("tray", 600, 1000, False), # #3 DECIDED 2026-07-05: KEEP 304 SS (poly needs a support frame over the 4.5m span + poly-weld fab; SS is self-supporting + durable) — declined, out of the roll-up
+    ("battery", 375, 375, False), # #4 standard is 1×100Ah; the 2nd pack is a +$375 UPGRADE, not a saving
+    ("solar", 133, 133, True), # #5 computed: drop 1× solar-panel-200w ($133 low=high, parts.py)
+    ("valves", 100, 200, False), # #6 estimate — no specced alternative
 ]
 
 
@@ -569,7 +569,7 @@ def _lever(name: str) -> tuple:
 def _savings_rollup() -> tuple:
     lo = sum(lo for _, lo, _, inc in SAVINGS_LEVERS if inc)
     hi = sum(hi for _, _, hi, inc in SAVINGS_LEVERS if inc)
-    return (round(lo / 50) * 50, round(hi / 50) * 50)   # ~rounded to $50 (levers are estimates)
+    return (round(lo / 50) * 50, round(hi / 50) * 50) # ~rounded to $50 (levers are estimates)
 
 
 def _savings_pct() -> tuple:
@@ -592,18 +592,18 @@ def emit_ca_buckets() -> str:
 
 # (system label, section id, note) — the §3 ranking, sorted by Mid descending in the emitter.
 _CA_SYSTEMS = [
-    ("Processing water system", "5",  "Tray (304 SS) + IBC frame dominate"),
-    ("Film-plane mechanism",    "4",  "Carriages, Option-A cross-slides, muslin spring clips, wall-seat saddles"),
-    ("Container + delivery",    "1",  "Grade-dependent (CW vs WWT)"),
-    ("Power & electrical",      "5a", "Battery + solar + distribution + protection"),
-    ("Perimeter walkway",       "6a", "GRP grating + steel cantilevers"),
-    ("Light lock",              "6",  "Plastic-skin custom fabrication"),
-    ("Swing pivot",             "6b", "Pivot post + bearings + cage + fixed RHS door frame"),
-    ("Hinged panel structure",  "6c", "Stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay"),
-    ("Chemistry prep shelf",    "6d", "Fold-down phenolic board + frame + hinge/stays + tap extension"),
-    ("Interior conversion",     "2",  "Insulation, sealing, safelight"),
-    ("Ventilation & cooling",   "5b", "Fans + cooler + inverter + baffle-duct fab + canopy"),
-    ("Optics — pinhole",        "3",  "Trivial (it is a pinhole)"),
+    ("Processing water system", "5", "Tray (304 SS) + IBC frame dominate"),
+    ("Film-plane mechanism", "4", "Carriages, Option-A cross-slides, muslin spring clips, wall-seat saddles"),
+    ("Container + delivery", "1", "Grade-dependent (CW vs WWT)"),
+    ("Power & electrical", "5a", "Battery + solar + distribution + protection"),
+    ("Perimeter walkway", "6a", "GRP grating + steel cantilevers"),
+    ("Light lock", "6", "Plastic-skin custom fabrication"),
+    ("Swing pivot", "6b", "Pivot post + bearings + cage + fixed RHS door frame"),
+    ("Hinged panel structure", "6c", "Stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay"),
+    ("Chemistry prep shelf", "6d", "Fold-down phenolic board + frame + hinge/stays + tap extension"),
+    ("Interior conversion", "2", "Insulation, sealing, safelight"),
+    ("Ventilation & cooling", "5b", "Fans + cooler + inverter + baffle-duct fab + canopy"),
+    ("Optics — pinhole", "3", "Trivial (it is a pinhole)"),
 ]
 
 
@@ -649,22 +649,22 @@ def _printmaking_section() -> Section:
 # the linter gate fails if the doc block ever diverges. (Computed totals where a line-item list
 # owns the section; direct values for the estimate/BOM sections 4/5a/8/9.)
 SECTIONS = [
-    Section("1",  "Container purchase & delivery", *total(CONTAINER)),
-    Section("2",  "Interior conversion", *total(INTERIOR)),
-    Section("3",  "Optics — pinhole plate", *total(OPTICS)),
-    Section("4",  "Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)", *total(FILM)),
-    Section("5",  "Processing water system (incl. tray, spray bar, IBC stacking frame)", *total(WATER)),
-    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 3431, 3464, 3496),  # KEEP IN SYNC WITH EXPECTED["power"] / total(POWER) — grand_total() sums this Section, not the POWER line items
+    Section("1", "Container purchase & delivery", *total(CONTAINER)),
+    Section("2", "Interior conversion", *total(INTERIOR)),
+    Section("3", "Optics — pinhole plate", *total(OPTICS)),
+    Section("4", "Film plane mechanism (4-corner U-channel + acetal skate + U-joint, incl. wall-seat saddles)", *total(FILM)),
+    Section("5", "Processing water system (incl. tray, spray bar, IBC stacking frame)", *total(WATER)),
+    Section("5a", "Power & electrical system (solar · 1× LiFePO4 · MPPT · distribution · lighting · protection · master pump switch)", 3431, 3464, 3496), # KEEP IN SYNC WITH EXPECTED["power"] / total(POWER) — grand_total() sums this Section, not the POWER line items
     Section("5b", "Ventilation & cooling system (2 fans · evap cooler **+ 12V→120V inverter** · light-safe baffle-duct fab · shade canopy)",
             total(VENTILATION)[0], total(VENTILATION)[0] + 60, total(VENTILATION)[0] + 150),
-    Section("6",  "Housed revolving-door light lock (plastic-skin custom fabrication)", *total(LIGHTLOCK)),
+    Section("6", "Housed revolving-door light lock (plastic-skin custom fabrication)", *total(LIGHTLOCK)),
     Section("6a", "Perimeter walkway (4 sections + drum-exit punch-out)", *total(WALKWAY)),
     Section("6b", "Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles)", *total(SWINGPIVOT)),
     Section("6c", "Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle)", *total(PANEL)),
     Section("6d", "Chemistry prep shelf (fold-down phenolic board + steel frame + hinge/stays + TAP-01 trunk extension)", *total(SHELF)),
     _printmaking_section(),
-    Section("8",  "Transportation (per deployment)", 300, 750, 2000),
-    Section("9",  "Licenses & permits", 220, 790, 1620),
+    Section("8", "Transportation (per deployment)", 300, 750, 2000),
+    Section("9", "Licenses & permits", 220, 790, 1620),
 ]
 
 # Master-shopping-list-only sections (not in the cost-breakdown's 13). Low/Mid/High estimates.
@@ -691,7 +691,7 @@ _SECTION_SYSTEMS = {
 
 def check_registry() -> list[str]:
     """Linter helper: every registry-backed section's (low, high) == sum of its registry systems."""
-    import parts                                                 # late import — parts imports costing
+    import parts # late import — parts imports costing
     errs = []
     for sid, syss in _SECTION_SYSTEMS.items():
         sec = _sec(sid)
@@ -713,11 +713,11 @@ def emit_scenario_table() -> str:
 
 # ── Block injector — make the doc cost tables true OUTPUTS of costing.py ──────
 # Each doc wraps a table in `<!-- BEGIN costing:KEY -->` / `<!-- END costing:KEY -->`. Two styles:
-#   WHOLE  — the table is regenerated entirely from a generator fn (scenario, §7.1).
-#   DETAIL — NUMBERS-ONLY: rewrite just the value cells (cols 1..len(fields)) from the line items,
-#            preserving the doc's labels / Notes / format. Handles Low/Mid/High and Low/High
-#            tables, with or without a Notes column. inject() regenerates; the linter gate
-#            (check_blocks) blocks a commit if any block ever diverges from costing.py.
+# WHOLE — the table is regenerated entirely from a generator fn (scenario, §7.1).
+# DETAIL — NUMBERS-ONLY: rewrite just the value cells (cols 1..len(fields)) from the line items,
+# preserving the doc's labels / Notes / format. Handles Low/Mid/High and Low/High
+# tables, with or without a Notes column. inject() regenerates; the linter gate
+# (check_blocks) blocks a commit if any block ever diverges from costing.py.
 _REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 _F = "project-cost-breakdown.md"
 
@@ -762,95 +762,95 @@ def _inline_blocks() -> dict:
     lo, _mid, hi = grand_total()
     cl, ch = funding_combined()
     return {
-        "fund-l1-total":       (_FUND, lambda: f"${funding_level1_total():,}"),
-        "fund-scenario-span":  (_FUND, lambda: f"${round(lo, -3):,}–${round(hi, -3):,}"),
-        "fund-perprint":       (_FUND, lambda: f"${_r(by_key('standard')['per_print'], 1):,}"),
+        "fund-l1-total": (_FUND, lambda: f"${funding_level1_total():,}"),
+        "fund-scenario-span": (_FUND, lambda: f"${round(lo, -3):,}–${round(hi, -3):,}"),
+        "fund-perprint": (_FUND, lambda: f"${_r(by_key('standard')['per_print'], 1):,}"),
         "fund-perprint-range": (_FUND, lambda: f"${_r(by_key('lean')['per_print'], 1)}–{_r(by_key('rich')['per_print'], 1)}"),
-        "fund-50run":          (_FUND, lambda: f"${_r(by_key('standard')['section_total'], 10):,}"),
-        "fund-combined":       (_FUND, lambda: f"${cl:,}–{ch:,}"),
+        "fund-50run": (_FUND, lambda: f"${_r(by_key('standard')['section_total'], 10):,}"),
+        "fund-combined": (_FUND, lambda: f"${cl:,}–{ch:,}"),
         # project-summary.md (the home page) spec table — was a stale $38 / $1,900 pair.
-        "summary-perprint":    ("project-summary.md", lambda: f"${_r(by_key('standard')['per_print'], 1):,}"),
-        "summary-50run":       ("project-summary.md", lambda: f"${_r(by_key('standard')['section_total'], 10):,}"),
+        "summary-perprint": ("project-summary.md", lambda: f"${_r(by_key('standard')['per_print'], 1):,}"),
+        "summary-50run": ("project-summary.md", lambda: f"${_r(by_key('standard')['section_total'], 10):,}"),
         # project-cost-breakdown §7.3 process comparison — Cyanotype ALL-IN row (§7.1 per-print +
         # PER_PRINT_CONSUMABLES), so it stays tied to §7.1 instead of drifting.
-        "s73-pp-std":          ([_F, "photosensitive-plane-options.md"], lambda: f"${_pp('standard')}"),
-        "s73-pp-range":        ([_F, "photosensitive-plane-options.md"], lambda: f"${_pp('lean')}–{_pp('rich')}"),
-        "s73-50run-std":       (_F, lambda: f"${_pp('standard') * PRINTS:,}"),
-        "s73-50run-range":     (_F, lambda: f"${_pp('lean') * PRINTS:,}–{_pp('rich') * PRINTS:,}"),
+        "s73-pp-std": ([_F, "photosensitive-plane-options.md"], lambda: f"${_pp('standard')}"),
+        "s73-pp-range": ([_F, "photosensitive-plane-options.md"], lambda: f"${_pp('lean')}–{_pp('rich')}"),
+        "s73-50run-std": (_F, lambda: f"${_pp('standard') * PRINTS:,}"),
+        "s73-50run-range": (_F, lambda: f"${_pp('lean') * PRINTS:,}–{_pp('rich') * PRINTS:,}"),
         # cost-analysis-report.md prose figures.
-        "ca-mid-total":        (_CA, lambda: f"${grand_total()[1]:,}"),
-        "ca-capital":          (_CA, lambda: f"${capital_mid():,}"),
-        "ca-consumable":       (_CA, lambda: f"${_sec('7').mid:,}"),
-        "ca-water-pct":        (_CA, lambda: f"{round(_sec('5').mid / capital_mid() * 100)}"),
+        "ca-mid-total": (_CA, lambda: f"${grand_total()[1]:,}"),
+        "ca-capital": (_CA, lambda: f"${capital_mid():,}"),
+        "ca-consumable": (_CA, lambda: f"${_sec('7').mid:,}"),
+        "ca-water-pct": (_CA, lambda: f"{round(_sec('5').mid / capital_mid() * 100)}"),
         # operating-manual.md §0.2/§0.3 chemistry tier masses (from the TIERS).
-        "om-amfe-g-lean":      (_OM, lambda: f"{_amfe_g('lean')}"),
-        "om-amfe-g-standard":  ([_OM, "master-shopping-list.md"], lambda: f"{_amfe_g('standard')}"),
-        "om-amfe-g-rich":      (_OM, lambda: f"{_amfe_g('rich')}"),
-        "om-amfe-kg-lean":     (_OM, lambda: _kg_fmt(_tier('lean').amfe_kg)),
+        "om-amfe-g-lean": (_OM, lambda: f"{_amfe_g('lean')}"),
+        "om-amfe-g-standard": ([_OM, "master-shopping-list.md"], lambda: f"{_amfe_g('standard')}"),
+        "om-amfe-g-rich": (_OM, lambda: f"{_amfe_g('rich')}"),
+        "om-amfe-kg-lean": (_OM, lambda: _kg_fmt(_tier('lean').amfe_kg)),
         "om-amfe-kg-standard": ([_OM, "master-shopping-list.md"], lambda: _kg_fmt(_tier('standard').amfe_kg)),
-        "om-amfe-kg-rich":     (_OM, lambda: _kg_fmt(_tier('rich').amfe_kg)),
-        "om-ferri-g-lean":     (_OM, lambda: f"{_ferri_g('lean')}"),
+        "om-amfe-kg-rich": (_OM, lambda: _kg_fmt(_tier('rich').amfe_kg)),
+        "om-ferri-g-lean": (_OM, lambda: f"{_ferri_g('lean')}"),
         "om-ferri-g-standard": (_OM, lambda: f"{_ferri_g('standard')}"),
-        "om-ferri-g-rich":     (_OM, lambda: f"{_ferri_g('rich')}"),
+        "om-ferri-g-rich": (_OM, lambda: f"{_ferri_g('rich')}"),
         # equipment-layout-report.md §5 IBC stacking frame price band (from the WATER line item).
-        "eq-ibc-frame-cost":   (_EL, lambda: f"${_ibc_frame().low:,}–${_ibc_frame().high:,}"),
+        "eq-ibc-frame-cost": (_EL, lambda: f"${_ibc_frame().low:,}–${_ibc_frame().high:,}"),
         # ibc-stacking-report.md §9 frame cost (low/high split for the two-column BOM tables).
-        "ibc-frame-low":       (_IBC, lambda: f"${_ibc_frame().low:,}"),
-        "ibc-frame-high":      (_IBC, lambda: f"${_ibc_frame().high:,}"),
+        "ibc-frame-low": (_IBC, lambda: f"${_ibc_frame().low:,}"),
+        "ibc-frame-high": (_IBC, lambda: f"${_ibc_frame().high:,}"),
         # processing-tray-and-spray-bar.md §6 BOM subtotals (from the WATER line items).
         # Shared across the dedicated report + the two docs that summarize/point to it.
-        "tray-low":            ([_PT, _WS, _CA], lambda: f"${_pt_line('Processing tray').low:,}"),
-        "tray-high":           ([_PT, _WS, _CA], lambda: f"${_pt_line('Processing tray').high:,}"),
+        "tray-low": ([_PT, _WS, _CA], lambda: f"${_pt_line('Processing tray').low:,}"),
+        "tray-high": ([_PT, _WS, _CA], lambda: f"${_pt_line('Processing tray').high:,}"),
         # cost-analysis-report.md §4 savings levers (bucket A — see SAVINGS_LEVERS) + §6 light lock
-        "ca-lever-container":  (_CA, lambda: f"${_lever('container')[0]:,}"),
-        "ca-lever-film":       (_CA, lambda: f"${_lever('film')[0]:,}"),
-        "ca-lever-tray-low":   (_CA, lambda: f"${_lever('tray')[0]:,}"),
-        "ca-lever-tray-high":  (_CA, lambda: f"${_lever('tray')[1]:,}"),
-        "ca-lever-battery":    (_CA, lambda: f"${_lever('battery')[0]:,}"),
-        "ca-lever-solar":      (_CA, lambda: f"${_lever('solar')[0]:,}"),
+        "ca-lever-container": (_CA, lambda: f"${_lever('container')[0]:,}"),
+        "ca-lever-film": (_CA, lambda: f"${_lever('film')[0]:,}"),
+        "ca-lever-tray-low": (_CA, lambda: f"${_lever('tray')[0]:,}"),
+        "ca-lever-tray-high": (_CA, lambda: f"${_lever('tray')[1]:,}"),
+        "ca-lever-battery": (_CA, lambda: f"${_lever('battery')[0]:,}"),
+        "ca-lever-solar": (_CA, lambda: f"${_lever('solar')[0]:,}"),
         "ca-lever-valves-low": (_CA, lambda: f"${_lever('valves')[0]:,}"),
         "ca-lever-valves-high":(_CA, lambda: f"${_lever('valves')[1]:,}"),
         # roll-up is flat now (container + solar, both fixed values) — low==high, so a single emitter
-        "ca-savings-low":      (_CA, lambda: f"${_savings_rollup()[0]:,}"),
-        "ca-savings-pct-low":  (_CA, lambda: f"{_savings_pct()[0]}"),
-        "ca-lightlock-mid":    (_CA, lambda: f"${total(LIGHTLOCK)[1]:,}"),
-        "spray-low":           ([_PT, _WS], lambda: f"${_pt_line('Spray bar').low:,}"),
-        "spray-high":          ([_PT, _WS], lambda: f"${_pt_line('Spray bar').high:,}"),
-        "tray-spray-total-low":  (_PT, lambda: f"${_pt_line('Processing tray').low + _pt_line('Spray bar').low:,}"),
+        "ca-savings-low": (_CA, lambda: f"${_savings_rollup()[0]:,}"),
+        "ca-savings-pct-low": (_CA, lambda: f"{_savings_pct()[0]}"),
+        "ca-lightlock-mid": (_CA, lambda: f"${total(LIGHTLOCK)[1]:,}"),
+        "spray-low": ([_PT, _WS], lambda: f"${_pt_line('Spray bar').low:,}"),
+        "spray-high": ([_PT, _WS], lambda: f"${_pt_line('Spray bar').high:,}"),
+        "tray-spray-total-low": (_PT, lambda: f"${_pt_line('Processing tray').low + _pt_line('Spray bar').low:,}"),
         "tray-spray-total-high": (_PT, lambda: f"${_pt_line('Processing tray').high + _pt_line('Spray bar').high:,}"),
         # electrical-report.md §8 system totals (1-pack standard build).
-        "elec-system-total":   (_ELEC, lambda: f"${_sec('5a').mid:,}"),
-        "elec-canopy-total":   (_ELEC, lambda: f"${_elec_canopy():,}"),
-        "elec-cooling-total":  (_ELEC, lambda: f"${_elec_cooling():,}"),
-        "elec-grand-total":    (_ELEC, lambda: f"${_elec_grand():,}"),
+        "elec-system-total": (_ELEC, lambda: f"${_sec('5a').mid:,}"),
+        "elec-canopy-total": (_ELEC, lambda: f"${_elec_canopy():,}"),
+        "elec-cooling-total": (_ELEC, lambda: f"${_elec_cooling():,}"),
+        "elec-grand-total": (_ELEC, lambda: f"${_elec_grand():,}"),
         # ventilation-report.md §3/§4 strategy costs (the §9 parts-list total now lives in the
         # generated parts:ventilation block) — all from §5b VENTILATION.
-        "vent-fans":           (_VENT, lambda: f"${_vent_line('150×150×50mm axial fans').mid:,}"),
-        "vent-shade":          (_VENT, lambda: f"${_vent_line('Shade canopy').mid + _vent_line('Canopy frame').mid:,}"),
+        "vent-fans": (_VENT, lambda: f"${_vent_line('150×150×50mm axial fans').mid:,}"),
+        "vent-shade": (_VENT, lambda: f"${_vent_line('Shade canopy').mid + _vent_line('Canopy frame').mid:,}"),
         "vent-cooler-inverter": (_VENT, lambda: f"${_vent_line('Evaporative cooler').mid + _vent_line('Cooler inverter').mid:,}"),
         # film-plane-mechanism-report.md §7 materials total — the §4 FILM BOM low (base estimate;
         # the old hand-set ~$3,100 sat below this BOM).
-        "film-total":          (_FPM, lambda: f"${total(FILM)[0]:,}"),
+        "film-total": (_FPM, lambda: f"${total(FILM)[0]:,}"),
         # film-clamp-mechanism-report.md §4 — clamp-system band (generic spring clip → quality).
-        "clamp-system-low":    (_FC, lambda: f"${_clamp_system('low'):,}"),
-        "clamp-system-high":   (_FC, lambda: f"${_clamp_system('high'):,}"),
+        "clamp-system-low": (_FC, lambda: f"${_clamp_system('low'):,}"),
+        "clamp-system-high": (_FC, lambda: f"${_clamp_system('high'):,}"),
         # tilt-swing-board-report.md §12.4 — the board's own BOM low (= FRONT_BOARD_MID, which the
         # rest of the model reads); the §12.4 note's film-plane comparison uses film-total above.
-        "front-board-total":   (_TSB, lambda: f"${FRONT_BOARD_MID:,}"),
+        "front-board-total": (_TSB, lambda: f"${FRONT_BOARD_MID:,}"),
         "front-board-total-high": (_TSB, lambda: f"${FRONT_BOARD_HIGH:,}"),
         # hinged-panel-report.md §8.1–8.5 — the panel's four assemblies (§6c / §6 / §6b-split) + total.
-        "hp-panel-low":        (_HP, lambda: f"${total(PANEL)[0]:,}"),
-        "hp-panel-high":       (_HP, lambda: f"${total(PANEL)[2]:,}"),
+        "hp-panel-low": (_HP, lambda: f"${total(PANEL)[0]:,}"),
+        "hp-panel-high": (_HP, lambda: f"${total(PANEL)[2]:,}"),
         # LIGHTLOCK total (= §6) — owned by hinged-panel §8.2; also single-sources the custom-fab
         # cost restated in light-trap-selection.md §3.3/§4.5/§6 (a key may live in several docs).
-        "hp-housing-low":      ((_HP, _LTS), lambda: f"${total(LIGHTLOCK)[0]:,}"),
-        "hp-housing-high":     ((_HP, _LTS), lambda: f"${total(LIGHTLOCK)[2]:,}"),
-        "hp-swing-low":        (_HP, lambda: f"${_swing_only('low'):,}"),
-        "hp-swing-high":       (_HP, lambda: f"${_swing_only('high'):,}"),
-        "hp-doorframe-low":    (_HP, lambda: f"${_door_only('low'):,}"),
-        "hp-doorframe-high":   (_HP, lambda: f"${_door_only('high'):,}"),
-        "hp-total-low":        (_HP, lambda: f"${_panel_grand('low'):,}"),
-        "hp-total-high":       (_HP, lambda: f"${_panel_grand('high'):,}"),
+        "hp-housing-low": ((_HP, _LTS), lambda: f"${total(LIGHTLOCK)[0]:,}"),
+        "hp-housing-high": ((_HP, _LTS), lambda: f"${total(LIGHTLOCK)[2]:,}"),
+        "hp-swing-low": (_HP, lambda: f"${_swing_only('low'):,}"),
+        "hp-swing-high": (_HP, lambda: f"${_swing_only('high'):,}"),
+        "hp-doorframe-low": (_HP, lambda: f"${_door_only('low'):,}"),
+        "hp-doorframe-high": (_HP, lambda: f"${_door_only('high'):,}"),
+        "hp-total-low": (_HP, lambda: f"${_panel_grand('low'):,}"),
+        "hp-total-high": (_HP, lambda: f"${_panel_grand('high'):,}"),
     }
 
 
@@ -898,7 +898,7 @@ def _film_line(prefix: str) -> LineItem:
     return next(li for li in FILM if li.label.startswith(prefix))
 
 
-def _clamp_system(which: str) -> int:    # which = 'low' | 'high'
+def _clamp_system(which: str) -> int: # which = 'low' | 'high'
     return getattr(_film_line("Muslin clamps"), which) + _film_line("Muslin clamp filler").mid
 
 
@@ -912,20 +912,20 @@ def _door_only(which: str) -> int:
     return sum(getattr(li, which) for li in SWINGPIVOT if li.label.startswith("Fixed door frame"))
 
 
-def _panel_grand(which: str) -> int:     # §8.5 total = §6 + §6b + §6c
+def _panel_grand(which: str) -> int: # §8.5 total = §6 + §6b + §6c
     return getattr(_sec("6"), which) + getattr(_sec("6b"), which) + getattr(_sec("6c"), which)
 
 
-def _elec_canopy() -> int:    # shade cloth + frame
+def _elec_canopy() -> int: # shade cloth + frame
     return _vent_line("Shade canopy").mid + _vent_line("Canopy frame").mid
 
 
-def _elec_cooling() -> int:   # cooler + inverter(+DC/outlet) + external power cable
+def _elec_cooling() -> int: # cooler + inverter(+DC/outlet) + external power cable
     return (_vent_line("Evaporative cooler").mid + _vent_line("Cooler inverter").mid
             + _vent_line("Cooler external power").mid)
 
 
-def _elec_grand() -> int:     # electrical system + canopy + cooling
+def _elec_grand() -> int: # electrical system + canopy + cooling
     return _sec("5a").mid + _elec_canopy() + _elec_cooling()
 
 
@@ -942,16 +942,16 @@ def _render_detail(content: str, items: list, fields: tuple) -> str:
     out, di = [], 0
     for ln in content.split("\n"):
         cells = ln.split("|")
-        if len(cells) < 4:                                          # not a value-bearing row
+        if len(cells) < 4: # not a value-bearing row
             out.append(ln)
             continue
         inner = [c.strip() for c in cells[1:-1]]
-        if all(c == "" or set(c) <= set("-:") for c in inner):      # separator
+        if all(c == "" or set(c) <= set("-:") for c in inner): # separator
             out.append(ln)
             continue
         is_total = "total" in inner[0].lower()
         if not is_total and not re.match(r"^\s*\**~?\$?[\d,]+\**\s*$", cells[2]):
-            out.append(ln)                                          # header / non-numeric row
+            out.append(ln) # header / non-numeric row
             continue
         for k, f in enumerate(fields):
             ci = 2 + k
@@ -970,7 +970,7 @@ def _apply(rel: str, key: str, regen, write: bool) -> tuple:
     matches = list(pat.finditer(text))
     if not matches:
         return (rel, key, "missing")
-    if all(m.group(2) == regen(m.group(2)) for m in matches):   # every occurrence current
+    if all(m.group(2) == regen(m.group(2)) for m in matches): # every occurrence current
         return (rel, key, "ok")
     if write:
         open(path, "w", encoding="utf-8").write(
@@ -987,7 +987,7 @@ def _apply_inline(rel: str, key: str, fn, write: bool) -> tuple:
     if not matches:
         return (rel, key, "missing")
     new = fn()
-    if all(m.group(2) == new for m in matches):                 # every occurrence current
+    if all(m.group(2) == new for m in matches): # every occurrence current
         return (rel, key, "ok")
     if write:
         open(path, "w", encoding="utf-8").write(
@@ -1004,35 +1004,35 @@ def inject(write: bool = True) -> list:
     for key, (rel, items, fields) in _detail_blocks().items():
         out.append(_apply(rel, key, lambda cur, it=items, fl=fields: _render_detail(cur, it, fl), write))
     for key, (rel, fn) in _inline_blocks().items():
-        for r in ((rel,) if isinstance(rel, str) else rel):     # a key may live in several docs
+        for r in ((rel,) if isinstance(rel, str) else rel): # a key may live in several docs
             out.append(_apply_inline(r, key, fn, write))
     return out
 
 
 def check_blocks() -> list:
     """Linter helper: list of problems (a doc block that is stale or missing its markers)."""
-    return [f"{rel}  costing:{key} -> {st}" for rel, key, st in inject(write=False) if st != "ok"]
+    return [f"{rel} costing:{key} -> {st}" for rel, key, st in inject(write=False) if st != "ok"]
 
 
 # ── Self-check (regression guard — the canonical numbers, asserted) ──────────
-EXPECTED = {                       # the figures the docs are reconciled to (this session)
+EXPECTED = { # the figures the docs are reconciled to (this session)
     "muslin": 300,
-    "lean":     {"chem": 951,  "total": 1250, "per_print": 25},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
-    "standard": {"chem": 1414, "total": 1710, "per_print": 34},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
-    "rich":     {"chem": 2802, "total": 3100, "per_print": 62},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
-    "grand_total": (25745, 30286, 36877),  # 2026-07-31: electrical section CLOSED — all parts sourced (bonding-kit Panduit $95.79, wet-zone DT pairs $27.42, ground-wire MTW $52, mppt ANL60 $6.99, led-connectors, dielectric-grease, powerpole). 2026-07-29: +$16 1" PVC recount 2→4 sticks. 2026-07-28: +$37 water (transition-adapter +$8, sump pickup +$45, spray Option 1 −$8). Earlier: external power panel penetration box; MC4 bulkheads, cooler outlet, PV disconnect, spray 90° jets.
-    "walkway": (1979, 2395, 2825),  # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
-    "water": (6418, 7051, 7685),  # 2026-07-29: 1" PVC recount 2→4 sticks (+$16, IBC internal fill/drain). 2026-07-28: transition-adapter takeoff +$8; sump pickup firmed +$45; spray Option 1 single center feed −$8. Earlier: 90° down-jets 26→39; carbon Aquaboon; SV taps 36903; nitrile; tray shims $295.96.
+    "lean": {"chem": 951, "total": 1250, "per_print": 25}, # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
+    "standard": {"chem": 1414, "total": 1710, "per_print": 34}, # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
+    "rich": {"chem": 2802, "total": 3100, "per_print": 62}, # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
+    "grand_total": (25745, 30286, 36877), # 2026-07-31: electrical section CLOSED — all parts sourced (bonding-kit Panduit $95.79, wet-zone DT pairs $27.42, ground-wire MTW $52, mppt ANL60 $6.99, led-connectors, dielectric-grease, powerpole). 2026-07-29: +$16 1" PVC recount 2→4 sticks. 2026-07-28: +$37 water (transition-adapter +$8, sump pickup +$45, spray Option 1 −$8). Earlier: external power panel penetration box; MC4 bulkheads, cooler outlet, PV disconnect, spray 90° jets.
+    "walkway": (1979, 2395, 2825), # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
+    "water": (6418, 7051, 7685), # 2026-07-29: 1" PVC recount 2→4 sticks (+$16, IBC internal fill/drain). 2026-07-28: transition-adapter takeoff +$8; sump pickup firmed +$45; spray Option 1 single center feed −$8. Earlier: 90° down-jets 26→39; carbon Aquaboon; SV taps 36903; nitrile; tray shims $295.96.
     "container": (2300, 3300, 4300),
-    "lightlock": (2046, 2280, 2516),   # 2026-07-27: light-trap seam silicone firm — Maxisil black 10.5oz $19.91 (+$14/+$10). 2026-07-22: Ø900 housing (46685 3/16" HDPE ×3 = $555) + Ø864 drum firmed to 1/8" black HDPE ×3 = $370.  §6 = hinged-panel §8.2 (housing + drum) line items
-    "swingpivot": (1180, 1395, 1610),   # 2026-07-22: journal bushings → igus iglide J JFM-9095-100 $130.53/ea (from GGB DU $211.25) −$162/pair.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame)   # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder.  §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
-    "panel": (1278, 1382, 1484),       # 2026-07-27: Fan B ply → full ¾" PT 4×8 sheet $69.68 (+$40/+$20, also yields cooler base — plywood-base-12 retired). 2026-07-23: corner core plates 5052-H32 $293.16/sheet ×2.  §6c = hinged-panel §8.1     
-    "shelf": (223, 229, 235),          # 2026-07-27: piano hinge firm Würth LSN8-32-600 weld-on $23.56 (was $22.68–35.72). Earlier: Swaner UV-White work surface $73.28.
-    "interior": (526, 605, 693),      # 2026-07-27: door pull handle firm McMaster 3570N12 $39.10 (was $5–9 lot, +$34/+$30). Earlier: BEHR Jet Black paint firm.
-    "optics": (100, 155, 215),         # 2026-07-23: pinhole → Lenox SS-3/8-DISC $40-100 (config, RFQ)
-    "film": (3746, 3972, 4200),  # 2026-07-31: Ruland->Belden U-joint -$653  # 2026-07-27: blackout poly → Film-Gard 10ft 4-mil $40.12 (was 6-mil $66–70, −$26/−$30); Gorilla tape firm $9.94 ×6; saddle M8 thumbscrews ×12 McMaster $11.80. (2026-07-22: clamp → off-the-shelf nylon spring clamps + HDPE filler.)
-    "ventilation": (748, 748, 748),   # 2026-07-27: canopy 1" EMT firm ($206 — conduit $21.86×6, couplings $1.45×8, flange 4-pack $16.29, Halex 94510 elbows $11.85×4); evap cooler MC18MT $109; duct collar+clamp $16.23.
-    "power": (3431, 3464, 3496),   # 2026-07-31: mppt-charge-fuse itemized (Powerwerx 5005 block + ANL60), dielectric-grease $8.99, powerpole housings $0.55. 2026-07-28: external power panel FINAL — fabricated flanged wall-penetration box + flashing (weatherproof components exposed on the face, wired from inside), disconnect relocated to the EP. McMaster IP enclosure + wall gland retired (−$229/−$182). §5a authoritative subtotal
+    "lightlock": (2046, 2280, 2516), # 2026-07-27: light-trap seam silicone firm — Maxisil black 10.5oz $19.91 (+$14/+$10). 2026-07-22: Ø900 housing (46685 3/16" HDPE ×3 = $555) + Ø864 drum firmed to 1/8" black HDPE ×3 = $370. §6 = hinged-panel §8.2 (housing + drum) line items
+    "swingpivot": (1180, 1395, 1610), # 2026-07-22: journal bushings → igus iglide J JFM-9095-100 $130.53/ea (from GGB DU $211.25) −$162/pair. §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) # 2026-07-22: MB9060DU DU journal bushings firmed $211.25/ea (made-to-order, ~3-mo lead) — +$363/pair over the placeholder. §6b = hinged-panel §8.3 (swing pivot) + §8.4 (door frame) line items
+    "panel": (1278, 1382, 1484), # 2026-07-27: Fan B ply → full ¾" PT 4×8 sheet $69.68 (+$40/+$20, also yields cooler base — plywood-base-12 retired). 2026-07-23: corner core plates 5052-H32 $293.16/sheet ×2. §6c = hinged-panel §8.1 
+    "shelf": (223, 229, 235), # 2026-07-27: piano hinge firm Würth LSN8-32-600 weld-on $23.56 (was $22.68–35.72). Earlier: Swaner UV-White work surface $73.28.
+    "interior": (526, 605, 693), # 2026-07-27: door pull handle firm McMaster 3570N12 $39.10 (was $5–9 lot, +$34/+$30). Earlier: BEHR Jet Black paint firm.
+    "optics": (100, 155, 215), # 2026-07-23: pinhole → Lenox SS-3/8-DISC $40-100 (config, RFQ)
+    "film": (3746, 3972, 4200), # 2026-07-31: Ruland->Belden U-joint -$653 # 2026-07-27: blackout poly → Film-Gard 10ft 4-mil $40.12 (was 6-mil $66–70, −$26/−$30); Gorilla tape firm $9.94 ×6; saddle M8 thumbscrews ×12 McMaster $11.80. (2026-07-22: clamp → off-the-shelf nylon spring clamps + HDPE filler.)
+    "ventilation": (748, 748, 748), # 2026-07-27: canopy 1" EMT firm ($206 — conduit $21.86×6, couplings $1.45×8, flange 4-pack $16.29, Halex 94510 elbows $11.85×4); evap cooler MC18MT $109; duct collar+clamp $16.23.
+    "power": (3431, 3464, 3496), # 2026-07-31: mppt-charge-fuse itemized (Powerwerx 5005 block + ANL60), dielectric-grease $8.99, powerpole housings $0.55. 2026-07-28: external power panel FINAL — fabricated flanged wall-penetration box + flashing (weatherproof components exposed on the face, wired from inside), disconnect relocated to the EP. McMaster IP enclosure + wall gland retired (−$229/−$182). §5a authoritative subtotal
 }
 
 
@@ -1072,14 +1072,14 @@ def check() -> list[str]:
 def main(argv: list[str]) -> int:
     if "--inject" in argv:
         for rel, key, st in inject(write=True):
-            print(f"  [{st:>7}] {rel}  costing:{key}")
+            print(f" [{st:>7}] {rel} costing:{key}")
         return 0
     if "--check-blocks" in argv:
         probs = check_blocks()
         if probs:
             print("✗ doc blocks out of sync with costing.py (run: costing.py --inject):")
             for p in probs:
-                print("   -", p)
+                print(" -", p)
             return 1
         print("✓ all costing blocks match the docs")
         return 0
@@ -1088,7 +1088,7 @@ def main(argv: list[str]) -> int:
         if probs:
             print("✗ section totals diverge from the parts registry (the source of record):")
             for p in probs:
-                print("   -", p)
+                print(" -", p)
             return 1
         print("✓ every registry-backed section reconciles with parts.system_total")
         return 0
@@ -1097,7 +1097,7 @@ def main(argv: list[str]) -> int:
         if errs:
             print("✗ costing self-check FAILED:")
             for e in errs:
-                print("   -", e)
+                print(" -", e)
             return 1
         print("✓ costing self-check passed")
         return 0

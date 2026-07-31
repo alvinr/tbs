@@ -115,6 +115,14 @@ living report describes the **current** design only.
 - A `# (eliminated in rev N)` comment in a generator that still *describes* the
   removed geometry is the same smell — delete the description, keep at most a
   one-line "this zone is now X."
+- **Never add a Chronology / Change-log / "design record" / "how we got here"
+  section to a report body**, and don't narrate a switch (`Ruland → Belden (−$653)`,
+  `was 304 SS`, dated entries). The reader wants to know what the design **is**, not
+  its evolution. A report *is* the definitive record of the current design — that is
+  exactly why it must not carry history. The paper trail lives in `RELEASE.md` and the
+  `tbs_constants.py` rev-history, never the report. (This applies to the injected
+  Parts-List too: a part `spec=` that flows into a report must describe the current
+  part, not "replaced the old one at half the cost.")
 
 **Archaeology is more than an Old column.** The 2026-06-23 pass stripped all of the
 following from report bodies — each is the same smell, and each was a recurring hand-edit:

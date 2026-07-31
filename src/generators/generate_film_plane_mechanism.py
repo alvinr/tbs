@@ -1349,7 +1349,7 @@ def sheet5():
     # BOM detail lives in master-shopping-list.md §4 — sheet carries a per-corner summary
     hw_lines = [
         "CORNER HARDWARE (per corner ×4 — acetal skate + cross-slides + single U-joint):",
-        "U-joint  1× Belden UJ-SS750x375 (303 SS, KEYWAY+CLAMP hubs, 45° max, self-lube bronze)   ·   boot  1× Ruland UBOOT12/19-NI-KIT (nitrile, fitted dry)",
+        "U-joint  1× Belden UJ-SS750x375 (303/416 SS, setscrew hubs, 45° max, pin-and-block)   ·   boot  1× Belden 806VF1 (nitrile, fitted dry)",
         "Shaft support  2× McMaster 4040N12 (304 SS)   ·   stub  2× 3/8\" 304 SS plain rod (McMaster; optional flat for the U-joint setscrew)",
         "SKATE  Ø32 acetal rollers ×4 (2 load + 2 keeper) on Ø10 316 axles + carriage plate + inboard lip   ·   Z/X cross-slides  316 flat bar ¼\"×1.5\" + UHMW pads + adjustable gib   ·   cam clamp ×3",
         "DEPTH RAIL  3×1.5 (76×38) 6061 Al U-channel, wall-to-wall   ·   RIGHT flanged   ·   LEFT transport drop-in (stub + removable + welded bridge + locating pin + bottom support bridge + pinhole gusset)",

@@ -372,7 +372,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cam-brake lever BL"
   ge = grp.entities
-  circle = ge.add_circle([180.mm,2306.mm,319.mm], [0,0,1], 2.mm, 24)
+  circle = ge.add_circle([158.mm,2306.mm,312.mm], [0,0,1], 2.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.mm)
@@ -719,7 +719,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cam-brake lever BR"
   ge = grp.entities
-  circle = ge.add_circle([4594.mm,2306.mm,319.mm], [0,0,1], 2.mm, 24)
+  circle = ge.add_circle([4616.mm,2306.mm,312.mm], [0,0,1], 2.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(20.mm)
@@ -1078,6 +1078,74 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
+  # Brake mount block (base, under-flange) TL
+  grp = ents.add_group
+  grp.name = "Brake mount block (base, under-flange) TL"
+  face = grp.entities.add_face([101.mm,2288.mm,2278.mm], [121.mm,2288.mm,2278.mm], [121.mm,2300.mm,2278.mm], [101.mm,2300.mm,2278.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brake mount block (outboard, carriage-height) TL
+  grp = ents.add_group
+  grp.name = "Brake mount block (outboard, carriage-height) TL"
+  face = grp.entities.add_face([101.mm,2288.mm,2278.mm], [107.mm,2288.mm,2278.mm], [107.mm,2300.mm,2278.mm], [101.mm,2300.mm,2278.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(39.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake body (5128A63) TL
+  grp = ents.add_group
+  grp.name = "Cam-brake body (5128A63) TL"
+  face = grp.entities.add_face([100.mm,2289.mm,2317.mm], [107.mm,2289.mm,2317.mm], [107.mm,2299.mm,2317.mm], [100.mm,2299.mm,2317.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake hold-down bar TL
+  grp = ents.add_group
+  grp.name = "Cam-brake hold-down bar TL"
+  face = grp.entities.add_face([104.mm,2290.mm,2322.mm], [112.mm,2290.mm,2322.mm], [112.mm,2298.mm,2322.mm], [104.mm,2298.mm,2322.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake UHMW pad (side) TL
+  grp = ents.add_group
+  grp.name = "Cam-brake UHMW pad (side) TL"
+  face = grp.entities.add_face([110.mm,2291.mm,2316.mm], [112.mm,2291.mm,2316.mm], [112.mm,2297.mm,2316.mm], [110.mm,2297.mm,2316.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Cam-brake UHMW pad BL"] || model.materials.add("Cam-brake UHMW pad BL")
+  mat.color = Sketchup::Color.new(216, 212, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake lever TL
+  grp = ents.add_group
+  grp.name = "Cam-brake lever TL"
+  ge = grp.entities
+  circle = ge.add_circle([102.mm,2294.mm,2326.mm], [0,0,1], 2.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(14.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Vertical Z slide rail (TILT, green) TL
   grp = ents.add_group
   grp.name = "Vertical Z slide rail (TILT, green) TL"
@@ -1357,6 +1425,74 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface.pushpull(40.mm)
   mat = model.materials["U-joint (Ruland USKC12-6-6-SS) (Movement BL)"] || model.materials.add("U-joint (Ruland USKC12-6-6-SS) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brake mount block (base, under-flange) TR
+  grp = ents.add_group
+  grp.name = "Brake mount block (base, under-flange) TR"
+  face = grp.entities.add_face([4653.mm,2288.mm,2278.mm], [4673.mm,2288.mm,2278.mm], [4673.mm,2300.mm,2278.mm], [4653.mm,2300.mm,2278.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Brake mount block (outboard, carriage-height) TR
+  grp = ents.add_group
+  grp.name = "Brake mount block (outboard, carriage-height) TR"
+  face = grp.entities.add_face([4667.mm,2288.mm,2278.mm], [4673.mm,2288.mm,2278.mm], [4673.mm,2300.mm,2278.mm], [4667.mm,2300.mm,2278.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(39.mm)
+  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake body (5128A63) TR
+  grp = ents.add_group
+  grp.name = "Cam-brake body (5128A63) TR"
+  face = grp.entities.add_face([4667.mm,2289.mm,2317.mm], [4674.mm,2289.mm,2317.mm], [4674.mm,2299.mm,2317.mm], [4667.mm,2299.mm,2317.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake hold-down bar TR
+  grp = ents.add_group
+  grp.name = "Cam-brake hold-down bar TR"
+  face = grp.entities.add_face([4662.mm,2290.mm,2322.mm], [4670.mm,2290.mm,2322.mm], [4670.mm,2298.mm,2322.mm], [4662.mm,2298.mm,2322.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake UHMW pad (side) TR
+  grp = ents.add_group
+  grp.name = "Cam-brake UHMW pad (side) TR"
+  face = grp.entities.add_face([4662.mm,2291.mm,2316.mm], [4664.mm,2291.mm,2316.mm], [4664.mm,2297.mm,2316.mm], [4662.mm,2297.mm,2316.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(6.mm)
+  mat = model.materials["Cam-brake UHMW pad BL"] || model.materials.add("Cam-brake UHMW pad BL")
+  mat.color = Sketchup::Color.new(216, 212, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake lever TR
+  grp = ents.add_group
+  grp.name = "Cam-brake lever TR"
+  ge = grp.entities
+  circle = ge.add_circle([4672.mm,2294.mm,2326.mm], [0,0,1], 2.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(14.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
   mat.alpha = 1.0
   grp.material = mat
 

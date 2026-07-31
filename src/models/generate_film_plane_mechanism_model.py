@@ -269,7 +269,28 @@ def corner(tag, cx, fz, zc, cin, side):
         P.append(ov.ruby_box(f"Cam-brake base (5128A63) {tag}", basex - 5, cby, plate_top, 10, 22, 8, color=C_CLAMP))
         P.append(ov.ruby_box(f"Cam-brake hold-down arm {tag}", min(basex, padx), cby + 7, tfz + 4, abs(basex - padx), 8, 4, color=C_CLAMP))
         P.append(ov.ruby_box(f"Cam-brake UHMW pad {tag}", padx - 6, cby + 6, tfz, 12, 10, 4, color=C_POLY))
-        P.append(ov.ruby_cylinder(f"Cam-brake lever {tag}", basex, cby + 11, plate_top + 8, 2, 20, color=C_CLAMP, axis="z"))
+        P.append(ov.ruby_cylinder(f"Cam-brake lever {tag}", padx, cby + 11, tfz + 4, 2, 20, color=C_CLAMP, axis="z"))  # lever OVER the pad
+
+    # ── TOP-rail OUTSIDE-CLAMP cam brake (fp-cam-clamp, 5128A63) — the flat channel opens DOWN, so the clamp
+    # mounts on the OUTSIDE of the carriage (OUTBOARD, toward the container wall — clear of the film): a bracket
+    # off the yoke wraps below the outboard flange and rises OUTSIDE it; the cam drives a UHMW pad against the
+    # flange's OUTER face while the outboard yoke arm on the inner face is the anvil — the flange is pinched
+    # from outside (takes up its 4mm clearance) → depth locked. Lever is outboard = reachable. (BOM: 3/corner.) ──
+    if not is_bot:
+        d = -cin                                              # OUTBOARD (toward the container wall) — clamp in the clear
+        cby = ty + 26
+        # ONE SOLID mount block bolted to the carriage — spans the carriage height (cross-piece → yoke-arm top),
+        # notched to clear the flange (millable from solid, no bent angle). The clamp bolts to it; the cam
+        # drives a UHMW pad against the flange's OUTER face (the channel's SIDE); the outboard yoke arm on the
+        # inner face is the anvil → flange pinched, depth locked. Lever outboard = reachable.
+        P.append(ov.ruby_box(f"Brake mount block (base, under-flange) {tag}", cx + min(d * 29, d * 49), cby, zc - 41, 20, 12, 22, color=C_CAR))
+        P.append(ov.ruby_box(f"Brake mount block (outboard, carriage-height) {tag}", cx + min(d * 43, d * 49), cby, zc - 41, 6, 12, 39, color=C_CAR))
+        # clamp bolts to the block's OUTSIDE (wall-side) edge; its hold-down bar reaches inboard over the top to
+        # a UHMW pad on the flange's OUTER face (the SIDE); the outboard yoke arm inside is the anvil.
+        P.append(ov.ruby_box(f"Cam-brake body (5128A63) {tag}", cx + min(d * 43, d * 50), cby + 1, zc - 2, 7, 10, 9, color=C_CLAMP))
+        P.append(ov.ruby_box(f"Cam-brake hold-down bar {tag}", cx + min(d * 38, d * 46), cby + 2, zc + 3, 8, 8, 4, color=C_CLAMP))
+        P.append(ov.ruby_box(f"Cam-brake UHMW pad (side) {tag}", cx + min(d * 38, d * 40), cby + 3, zc - 3, 2, 6, 6, color=C_POLY))  # top flush under the hold-down bar
+        P.append(ov.ruby_cylinder(f"Cam-brake lever {tag}", cx + d * 48, cby + 6, zc + 7, 2, 14, color=C_CLAMP, axis="z"))
 
     # ── mechanism, inboard: Z slide (tilt) → X slide (swing) → U-joint → the FILM-PLANE CORNER ──
     # The cross-slides sit on the BACKING side of the film plane (Yd > FP_Y) so the frame SITS ON them — the

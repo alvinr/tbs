@@ -899,19 +899,21 @@ def section_top(ax):
         _rect(ax, ax_x, -14, 6, 36, C_CAR, z=8)                                      # yoke arm (through opening, ~4mm off a flange)
     _rect(ax, 9, -22, 58, 8, C_CAR, z=8)                                             # cross-piece JOINS the two arms
     _rect(ax, 53, -8, 14, 4, C_CAR, z=9)                                             # inboard lip-hook (anti-drop)
-    # OUTSIDE CLAMP RAIL-BRAKE (fp-cam-clamp, McMaster 5128A63) — mounted on the OUTSIDE of the carriage (a
-    # bracket off the yoke wraps below the flange and rises OUTSIDE it), the cam drives a UHMW pad against the
-    # flange's OUTER face; the yoke arm on the flange's INNER face is the anvil, so the flange is pinched from
-    # outside (takes up its 4mm clearance) → depth locked. Lever is outboard = reachable. Thrown for shot + transport.
-    _rect(ax, 63, -22, 22, 4, C_CAR, z=7)                                            # bracket — wraps out below the flange
-    _rect(ax, 80, -22, 4, 42, C_CAR, z=7)                                            # bracket riser — OUTSIDE the flange
-    _rect(ax, 80, 6, 7, 13, C_CLAMP, z=9)                                            # clamp body (outboard)
-    _rect(ax, 76, 9, 3, 8, C_POLY, z=10)                                             # UHMW pad — bites the flange OUTER face
-    draw_circle(ax, 83, 12, 1.8, color=C_PIN, fill=True, fc=C_PIN, lw=0.5, zorder=11)  # cam pivot
-    ax.plot([83, 92], [12, 24], color=C_CLAMP, lw=2.2, zorder=10)                     # cam lever (outboard = reachable)
-    ax.annotate("", xy=(76, 13), xytext=(80, 13), arrowprops=dict(arrowstyle="->", color=C_CAR, lw=1.2, zorder=11))  # pad → flange (inward)
-    ax.annotate("", xy=(71, 13), xytext=(67, 13), arrowprops=dict(arrowstyle="->", color=C_CAR, lw=0.8, zorder=6))    # arm = inner anvil
-    leader(ax, 84, 14, 88, 30, "outside clamp (5128A63):\npad on the flange OUTER\nface; arm inside = anvil", ha="left", fs=4.7, color=C_CLAMP, font=FONT, bbox=LBL_BG)
+    # OUTSIDE CLAMP RAIL-BRAKE (fp-cam-clamp, McMaster 5128A63) — a SOLID mount block (millable, notched to clear
+    # the flange) bolts to the carriage and rises to the CARRIAGE HEIGHT on the OUTSIDE of the flange. The clamp
+    # bolts to the block's OUTSIDE edge; its hold-down bar reaches inboard over the top to a UHMW pad on the
+    # flange's OUTER face (the SIDE); the outboard yoke arm on the inner face is the anvil → the flange is pinched
+    # from outside (takes up its 4mm clearance) → depth locked. Lever outboard = reachable. Thrown for shot + transport.
+    _rect(ax, 63, -22, 22, 22, C_CAR, z=7)                                           # block base — under the flange, to the carriage
+    _rect(ax, 80, -22, 5, 44, C_CAR, z=7)                                            # block riser — OUTSIDE the flange, carriage height
+    _rect(ax, 80, 22, 7, 9, C_CLAMP, z=9)                                            # clamp body on the block's OUTSIDE edge
+    _rect(ax, 76, 26, 8, 4, C_CLAMP, z=9)                                            # hold-down bar — reaches over the top to the flange
+    _rect(ax, 76, 20, 3, 6, C_POLY, z=10)                                            # UHMW pad — under the bar, on the flange OUTER face
+    draw_circle(ax, 83, 27, 1.6, color=C_PIN, fill=True, fc=C_PIN, lw=0.5, zorder=11)  # cam pivot
+    ax.plot([83, 91], [27, 38], color=C_CLAMP, lw=2.2, zorder=10)                     # cam lever (outboard = reachable)
+    ax.annotate("", xy=(76, 23), xytext=(79, 23), arrowprops=dict(arrowstyle="->", color=C_CAR, lw=1.1, zorder=11))  # pad → flange (inward)
+    ax.annotate("", xy=(71, 23), xytext=(67, 23), arrowprops=dict(arrowstyle="->", color=C_CAR, lw=0.8, zorder=6))    # arm = inner anvil
+    leader(ax, 85, 25, 89, 17, "outside clamp\n(5128A63):\npad on flange SIDE", ha="left", fs=4.6, color=C_CLAMP, font=FONT, bbox=LBL_BG)
     # carriage + stack hang from the joined yoke
     _rect(ax, 40, -46, 12, 24, C_CAR, z=6)                                           # carriage plate (below the yoke)
     _rect(ax, 40, -60, 12, 14, C_TILT, z=5)                                          # cross-slide (green) hangs below

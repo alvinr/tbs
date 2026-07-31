@@ -13,7 +13,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
-| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $4,302 | $4,840 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $4,361 | $4,815 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,418 | $7,685 |
 | 6. Electrical — power, circuits, wiring | $3,293 | $3,378 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$26,113** | **~$34,459** |
+| **TOTAL (base build + 50-print run)** | **~$26,172** | **~$34,434** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -234,7 +234,7 @@ indicative low–high estimates — get quotes before ordering.
 | Personnel-door hinges (heavy-duty, ×3) | 3 ea | Home Depot | interior | $15–$24 |
 | Weatherproof door latch/lock set | 1 ea | Home Depot | interior | $20–$45 |
 | [SS lag/wood screws — filter housings to ply backing](https://www.homedepot.com/p/302007729) (812670) | 2 5-pack | Home Depot | water | $14 |
-| Cam-lever rail brake (skate lock) | 12 ea | McMaster-Carr | film | $96–$180 |
+| [McMaster 5128A63 low-profile hold-down toggle clamp (rail brake)](https://www.mcmaster.com/5128A63/) (5128A63) | 12 ea | McMaster-Carr | film | $155 |
 | [10mm × 60mm 304 SS axle pins (4-pack) — skate axles](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) (B0816MQ5T6) | 4 pack | Amazon | film | $20 |
 | [#20 stainless hose clamp (10-pack)](https://www.homedepot.com/p/330548109) (IDL0410PK) | 2 10-pack | Home Depot | water | $37 |
 | [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | 8 ea | McMaster-Carr | ibc-frame | $40 |
@@ -263,7 +263,7 @@ indicative low–high estimates — get quotes before ordering.
 | Nylon zip ties, 200mm | 6 ea | Amazon | spray | $1 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,621–$2,031** |
+| **fasteners-hardware subtotal** | | | | **$1,680–$2,006** |
 
 ### plastics-sheet
 
@@ -447,7 +447,7 @@ indicative low–high estimates — get quotes before ordering.
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
 | Online Metals | 5 | aluminum, stainless-sheet, steel-structural | $982–$1,402 |
-| McMaster-Carr | 46 | aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,250–$1,334 |
+| McMaster-Carr | 46 | aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,309 |
 | Ruland | 3 | bearings-motion, fasteners-hardware, seals-gaskets | $1,254–$1,259 |
 | US Plastic Corp | 16 | plastics-sheet, plumbing-fittings | $1,236 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |

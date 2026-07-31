@@ -180,7 +180,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | [Aluminum angle 2"×2"×3/16" (6061-T6, plain) — 16 ft lengths](https://www.mcmaster.com/8982K509-8982K479/) | 6061-T6 angle (NOT 2024/7075 — corrosion + weldability). PLAIN mill finish (NOT anodized) — the film-plane PERIMETER FRAME, EXPENDABLE (inspect-annually / replace-on-pitting; bare 6061 pits sooner than anodized in the splash zone, so a shorter interval — anodizing is an option for longer life). WELD-FREE cut plan from 3× 16 ft (192") lengths: 2 lengths → the two horizontal edges (4,499mm each, one per length, 378mm offcut); 1 length → both vertical edges (2,094mm ×2 from one 16 ft). No mid-span splices — only the 4 corner joints are welded/bolted. Metal Supermarkets 192" @ $208.41 (cheaper per length than 8 ft @ $116.31 AND drops the welds). One frame — re-order to replace. McMaster 8982K509 (url) = catalog reference. | 3 16 ft length | Metal Supermarkets / Online Metals | $625 |
 | [Dibond ACM panel 4mm (black), 4×8 sheet](https://www.curbellplastics.com/product-category/material/aluminum-composite-material-acm/dibond-panels/) | 4× 48×96" black 4mm ACM sheets as full-height VERTICAL STRIPS (Option A) — 3 vertical butt seams, splice-battened behind; no horizontal seam (2094mm plane height fits one 2438mm sheet). Covers the <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->×<!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm rigid backing (4499 ÷ 1219 = 4 strips). $95/sheet firm; qty corrected 6→4. | 4 sheet | Curbell Plastics / Central Coast Plastics | $380 |
 | [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8694K88/) (8694K88) | 25 ft rolls — 2 (50 ft) cover the ~43 ft film-plane perimeter primary seal | 2 roll | McMaster-Carr / Grainger | $45 |
-| Rosco Duvetyne | 60" wide, 10 yd | 1 ea | B&H Photo / Rosco direct | $95 |
+| [Impact 9oz Duvetyne 57" × 10yd (B&H)](https://www.bhphotovideo.com/c/product/1775270-REG/impact_dr9_10_9_oz_duvetyne_10.html) (1775270) | Impact DR9-10 (B&H #1775270) 9oz black light-absorbing duvetyne, 57"×10yd, $69 (research 2026-07-30). B&H does not stock Rosco brand; the Impact house brand is equivalent. 57" vs the 60" spec — fine (cut/hung). 16oz = DR16-10 if heavier wanted. | 1 ea | B&H Photo | $69 |
 | [4-mil black poly sheeting](https://www.homedepot.com/p/332820356) (51982) | Film-Gard 10 ft × 100 ft × 4-mil black poly (film-plane blackout). 4-mil is fully opaque for a light-seal (opacity is the black pigment, not the gauge) — 6-mil was over-spec for a non-structural curtain. | 1 roll | Home Depot | $40 |
 | [2" black Gorilla Tape](https://www.homedepot.com/p/316372144) (106718) | Gorilla 30 yd × 1.88" black tape | 6 roll | Home Depot / Amazon | $60 |
 | Mild steel plate 8mm (laser/plasma cut + welded) | ICP-11: back-plate + exterior plate + seat + gusset per saddle; ~21 kg over 6 saddles | 6 ea | Metal Supermarkets / Online Metals | $318 |
@@ -191,7 +191,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | [M8×25mm knurled thumbscrew DIN 464](https://www.mcmaster.com/92581A540/) (92581A540) | ICP-13: left-rail drop-in hold-down; 2/saddle ×4 left + 4 spare | 12 ea | McMaster-Carr / Maedler | $142 |
 | [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — right-rail end fixing (ICP-14)](https://www.mcmaster.com/91280A534/) (91280A534) | ICP-14: right depth-rail end flange → wall seat hold-down (does NOT cross the wall). Grip = 3/16" (4.76mm) 1262T21 channel base + 10mm seat ≈ 15mm → M8×25 (short → fully threaded). Pitch M8×1.25 coarse (matches the M8 plain nut). $18.51/pack of 50. ⚠ VALIDATE: 91280A534 is zinc — the film plane wets during development; a 316-SS M8×25 resists corrosion better. | 8 ea | McMaster-Carr | $3 |
 | [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | Plain hex nut — M8 right-rail fixing. Pitch M8×1.25 coarse — confirmed vs 90591A161 PDF 2026-07-29 (matches the bolt). $7.53/pack of 100. | 8 ea | McMaster-Carr | $1 |
-| **Film total** | | | | **$4,183–$4,623** |
+| **Film total** | | | | **$4,157–$4,597** |
 <!-- END parts:film -->
 
 *The corner-mechanism hardware (U-channel depth rails, acetal skates, Z/X cross-slides, and the
@@ -216,7 +216,7 @@ Each of the **8 rail ends** anchors to the container — **6 of them** with a st
 
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
 
-**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$4,328<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
+**Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$4,302<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)
 *Excludes fasteners and fabrication labor.*
 
 ### Local SoCal Metal Sourcing

@@ -286,7 +286,7 @@ FILM = [
     # 4.2 Film plane frame & backing
     point("Aluminum angle 2×2×3/16 (6061-T6 plain, expendable) 16 ft (×3) — weld-free frame", 625, "Metal Supermarkets 192\" @ $208.41; 2 horizontals + 1 for both verticals; 1 frame"),
     LineItem("Dibond ACM 4mm 4×8 black sheets (×4, Option A strips) — single rigid plane", 380, 380, 380, "Curbell 4mm black $95/sheet firm; 4 full-height vertical strips, 3 vertical seams"),
-    LineItem("Light-seal set — EPDM tape (×2) + Rosco Duvetyne + 4-mil poly + Gorilla tape (×6)", 240, 240, 240, "2026-07-27: Gorilla 30yd black tape firm $9.94 ×6; blackout poly → Film-Gard 10ft×100ft 4-mil $40.12 (opaque enough for a light-seal, was 6-mil $66–70)"),
+    LineItem("Light-seal set — EPDM tape (×2) + Impact duvetyne (57\" 9oz, B&H $69) + 4-mil poly + Gorilla tape (×6)", 214, 214, 214, "2026-07-27: Gorilla 30yd black tape firm $9.94 ×6; blackout poly → Film-Gard 10ft×100ft 4-mil $40.12 (opaque enough for a light-seal, was 6-mil $66–70)"),
     LineItem("Muslin clamps — nylon spring clamp ×58 (Pittsburgh 69289)", 115, 144, 173, "2026-07-25 re-price: Harbor Freight 69289 now $1.99–2.99 ea (was $3–4); inert fiberglass + swivel pads, top + 2 side edges (bottom = walkway clearance)"),
     LineItem("Muslin clamp filler — HDPE L-channel strip", 30, 50, 70, "inert HDPE packer, ~8.7 m, firm at fab — lets the clamp bite a solid full-depth edge"),
     # 4.3 Wall-seat saddles (rev 11, ICP-11–14) — estimates, confirm at procurement
@@ -302,7 +302,7 @@ VENTILATION = [
     point("150×150×50mm axial fans ×2 (12V DC)", 50),
     LineItem("Evaporative cooler (Hessaire MC18MT)", 109, 109, 109, "2026-07-27: firm $109 Home Depot MC18MT Ice Blue (was $185–230 est)"),
     LineItem("Cooler inverter (Victron Phoenix 12/375 GFCI, PIN123750510)", 133, 133, 133, "2026-07-23: firm $132.60 Inverter Supply"),
-    point("Shade canopy — 80% shade cloth (20×10 ft)", 80),
+    point("Shade canopy — 70% shade cloth (10×20 ft, B075J93DTJ)", 40),
     LineItem("Canopy frame (1\" EMT — 6× conduit $21.86 + 8× couplings $1.45 + 4× floor flanges + 4× pull elbows $11.85)", 206, 206, 206, "2026-07-27: firm at 1\" EMT — conduit 550210000, couplings 12210, PIPE DECOR flange 4-pack PDB-F-1-4, Halex 94510 elbows (was $339 at 1.5\")"),
     point("Baffle duct sheet metal (fans)", 30),
     point("Baffle duct sheet metal (cooler, Ø200)", 20),
@@ -1020,7 +1020,7 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "lean":     {"chem": 951,  "total": 1250, "per_print": 25},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "standard": {"chem": 1414, "total": 1710, "per_print": 34},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "rich":     {"chem": 2802, "total": 3100, "per_print": 62},  # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
-    "grand_total": (26222, 30815, 37458),  # 2026-07-29: +$16 1" PVC recount 2→4 sticks. 2026-07-28: +$37 water (transition-adapter +$8, sump pickup +$45, spray Option 1 −$8). Earlier: external power panel penetration box; MC4 bulkheads, cooler outlet, PV disconnect, spray 90° jets.
+    "grand_total": (26156, 30749, 37392),  # 2026-07-29: +$16 1" PVC recount 2→4 sticks. 2026-07-28: +$37 water (transition-adapter +$8, sump pickup +$45, spray Option 1 −$8). Earlier: external power panel penetration box; MC4 bulkheads, cooler outlet, PV disconnect, spray 90° jets.
     "walkway": (1979, 2395, 2825),  # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
     "water": (6412, 7045, 7679),  # 2026-07-29: 1" PVC recount 2→4 sticks (+$16, IBC internal fill/drain). 2026-07-28: transition-adapter takeoff +$8; sump pickup firmed +$45; spray Option 1 single center feed −$8. Earlier: 90° down-jets 26→39; carbon Aquaboon; SV taps 36903; nitrile; tray shims $295.96.
     "container": (2300, 3300, 4300),
@@ -1030,8 +1030,8 @@ EXPECTED = {                       # the figures the docs are reconciled to (thi
     "shelf": (223, 229, 235),          # 2026-07-27: piano hinge firm Würth LSN8-32-600 weld-on $23.56 (was $22.68–35.72). Earlier: Swaner UV-White work surface $73.28.
     "interior": (526, 605, 693),      # 2026-07-27: door pull handle firm McMaster 3570N12 $39.10 (was $5–9 lot, +$34/+$30). Earlier: BEHR Jet Black paint firm.
     "optics": (100, 155, 215),         # 2026-07-23: pinhole → Lenox SS-3/8-DISC $40-100 (config, RFQ)
-    "film": (4328, 4596, 4866),  # 2026-07-27: blackout poly → Film-Gard 10ft 4-mil $40.12 (was 6-mil $66–70, −$26/−$30); Gorilla tape firm $9.94 ×6; saddle M8 thumbscrews ×12 McMaster $11.80. (2026-07-22: clamp → off-the-shelf nylon spring clamps + HDPE filler.)
-    "ventilation": (787, 787, 787),   # 2026-07-27: canopy 1" EMT firm ($206 — conduit $21.86×6, couplings $1.45×8, flange 4-pack $16.29, Halex 94510 elbows $11.85×4); evap cooler MC18MT $109; duct collar+clamp $16.23.
+    "film": (4302, 4570, 4840),  # 2026-07-27: blackout poly → Film-Gard 10ft 4-mil $40.12 (was 6-mil $66–70, −$26/−$30); Gorilla tape firm $9.94 ×6; saddle M8 thumbscrews ×12 McMaster $11.80. (2026-07-22: clamp → off-the-shelf nylon spring clamps + HDPE filler.)
+    "ventilation": (747, 747, 747),   # 2026-07-27: canopy 1" EMT firm ($206 — conduit $21.86×6, couplings $1.45×8, flange 4-pack $16.29, Halex 94510 elbows $11.85×4); evap cooler MC18MT $109; duct collar+clamp $16.23.
     "power": (3293, 3336, 3378),   # 2026-07-28: external power panel FINAL — fabricated flanged wall-penetration box + flashing (weatherproof components exposed on the face, wired from inside), disconnect relocated to the EP. McMaster IP enclosure + wall gland retired (−$229/−$182). §5a authoritative subtotal
 }
 

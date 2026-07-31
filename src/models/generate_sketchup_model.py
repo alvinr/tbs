@@ -1649,10 +1649,11 @@ def lighting_wiring():
                           IBC_COL_X, EQPANEL_YD - 20, cz - 25, C_LEN - IBC_COL_X - 43, 40, 18,
                           color=C_LED_W, alpha=0.4))
 
-    # Red safelight strips (Cct D) — 3× N–S across the width, in the panel gaps.
+    # Red safelight strips (Cct D) — 3× N–S runs cut from ONE 5m COB reel → ~1,667mm
+    # each (in 981 channels). (Was full-width C_WID-200; trimmed to fit the single reel.)
     for sx in (500, 2250, 4150):
         parts.append(ruby_box("Safelight Strip (Cct D)",
-                              sx, 100, cz - 25, 40, C_WID - 200, 18,
+                              sx, 100, cz - 25, 40, 1667, 18,
                               color=C_SAFE, alpha=0.4))
 
     # Pull-cord switches (D, G) — CEILING-mounted, in the ~80mm clear band ahead

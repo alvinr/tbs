@@ -131,7 +131,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Safelight ghost (Cct D)
   grp = ents.add_group
   grp.name = "Safelight ghost (Cct D)"
-  face = grp.entities.add_face([500.mm,100.mm,2363.mm], [540.mm,100.mm,2363.mm], [540.mm,2262.mm,2363.mm], [500.mm,2262.mm,2363.mm])
+  face = grp.entities.add_face([500.mm,100.mm,2363.mm], [540.mm,100.mm,2363.mm], [540.mm,1767.mm,2363.mm], [500.mm,1767.mm,2363.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Safelight ghost (Cct D)"] || model.materials.add("Safelight ghost (Cct D)")
@@ -142,7 +142,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Safelight ghost (Cct D)
   grp = ents.add_group
   grp.name = "Safelight ghost (Cct D)"
-  face = grp.entities.add_face([2250.mm,100.mm,2363.mm], [2290.mm,100.mm,2363.mm], [2290.mm,2262.mm,2363.mm], [2250.mm,2262.mm,2363.mm])
+  face = grp.entities.add_face([2250.mm,100.mm,2363.mm], [2290.mm,100.mm,2363.mm], [2290.mm,1767.mm,2363.mm], [2250.mm,1767.mm,2363.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Safelight ghost (Cct D)"] || model.materials.add("Safelight ghost (Cct D)")
@@ -153,7 +153,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Safelight ghost (Cct D)
   grp = ents.add_group
   grp.name = "Safelight ghost (Cct D)"
-  face = grp.entities.add_face([4150.mm,100.mm,2363.mm], [4190.mm,100.mm,2363.mm], [4190.mm,2262.mm,2363.mm], [4150.mm,2262.mm,2363.mm])
+  face = grp.entities.add_face([4150.mm,100.mm,2363.mm], [4190.mm,100.mm,2363.mm], [4190.mm,1767.mm,2363.mm], [4150.mm,1767.mm,2363.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(16.mm)
   mat = model.materials["Safelight ghost (Cct D)"] || model.materials.add("Safelight ghost (Cct D)")

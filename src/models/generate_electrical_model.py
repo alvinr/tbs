@@ -230,9 +230,9 @@ def context():
     for x0, y0, wx, wy in LED_PANELS:                   # white LED strips (2 tray + 1 corridor)
         p.append(ov.ruby_box("White LED ghost (Cct G)", x0, y0, ov.C_HGT - 40,
                              wx, wy, 30, color=CCT["G"][0], alpha=0.16))
-    for sx in SAFE_XS:                                  # safelight strips (Cct D)
+    for sx in SAFE_XS:                                  # safelight strips (Cct D) — cut to ~1,667mm (one 5m reel)
         p.append(ov.ruby_box("Safelight ghost (Cct D)", sx, 100, ov.C_HGT - 25,
-                             40, ov.C_WID - 200, 16, color=CCT["D"][0], alpha=0.16))
+                             40, 1667, 16, color=CCT["D"][0], alpha=0.16))
     return '\n'.join(p)
 
 

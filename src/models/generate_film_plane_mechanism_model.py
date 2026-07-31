@@ -473,18 +473,18 @@ def movement(corner="BL", two_way=False):
     if is_bot:
         static_ruby = "\n".join(channel_v(f"U-channel rail (Movement {corner})", cx, zc, rail_y0, rail_len, f"Move{corner}", cin))
         for ry in (ty + 8, ty + 48):
-            carr.append(ov.ruby_cylinder(f"Acetal skate wheel Ø32 (Movement {corner}) {int(ry)}", cx - 8, ry, rz, 16, 16, color=C_CAR, axis="x"))
+            carr.append(ov.ruby_cylinder(f"Acetal skate wheel Ø32 (Movement {corner}) {int(ry)}", cx - 10, ry, rz, 16, 20, color=C_CAR, axis="x"))
         carr.append(ov.ruby_box(f"Carriage plate (Movement {corner})", cpx0c, ty + 1, fz - 6, 14, 86, (rz + 46) - (fz - 6), color=C_CAR))
     else:
         yb = zc - CW_TOP / 2                            # channel opening (flange-lip Z)
         zlo, zhi = min(fz, rz), max(fz, rz)
         static_ruby = "\n".join(channel_flat(f"U-channel rail (Movement {corner})", cx, zc, rail_y0, rail_len, f"Move{corner}"))
         for ry in (ty + 8, ty + 48):
-            carr.append(ov.ruby_cylinder(f"Acetal guide wheel Ø32 (Movement {corner}) {int(ry)}", cx - 26, ry, rz, 16, 52, color=C_CAR, axis="x"))
-        for ax_x in (cx - 33, cx + 33):                # yoke arms reach DOWN through the opening to the carriage
+            carr.append(ov.ruby_cylinder(f"Acetal guide wheel Ø32 (Movement {corner}) {int(ry)}", cx - 20, ry, rz, 16, 40, color=C_CAR, axis="x"))
+        for ax_x in (cx - 27, cx + 27):                # yoke arms reach DOWN through the opening (~4mm off the flanges)
             carr.append(ov.ruby_box(f"Yoke arm (Movement {corner}) {int(ax_x)}", ax_x - 2, ty - 34, yb - 14, 4, 68, rz - (yb - 14), color=C_CAR))
-        carr.append(ov.ruby_box(f"Yoke cross-piece (Movement {corner})", cx - 35, ty - 34, yb - 22, 70, 68, 8, color=C_CAR))
-        carr.append(ov.ruby_box(f"Yoke rail → carriage (Movement {corner})", min(cx + 33, inb), ty - 34, yb - 20, abs(inb - (cx + 33)) + 6, 68, 6, color=C_CAR))
+        carr.append(ov.ruby_box(f"Yoke cross-piece (Movement {corner})", cx - 29, ty - 34, yb - 22, 58, 68, 8, color=C_CAR))
+        carr.append(ov.ruby_box(f"Yoke rail → carriage (Movement {corner})", min(cx + 27, inb), ty - 34, yb - 20, abs(inb - (cx + 27)) + 6, 68, 6, color=C_CAR))
         carr.append(ov.ruby_box(f"Carriage plate (Movement {corner})", cpx0c, ty + 1, zlo - 6, 14, 86, (zhi + 18) - (zlo - 6), color=C_CAR))
     # the ACTIVE cross-slide way (fixed to the carriage); the stack floats a SMALL foreshortening along it
     carr.append(deploy_rail)

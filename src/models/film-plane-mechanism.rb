@@ -4816,10 +4816,10 @@ ents = mvo_BL.entities
   grp = ents.add_group
   grp.name = "Acetal skate wheel Ø32 (Movement BL) 2270"
   ge = grp.entities
-  circle = ge.add_circle([142.mm,2270.mm,253.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([140.mm,2270.mm,253.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
+  cface.pushpull(20.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -4829,10 +4829,10 @@ ents = mvo_BL.entities
   grp = ents.add_group
   grp.name = "Acetal skate wheel Ø32 (Movement BL) 2310"
   ge = grp.entities
-  circle = ge.add_circle([142.mm,2310.mm,253.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([140.mm,2310.mm,253.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
+  cface.pushpull(20.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -5048,10 +5048,10 @@ ents = mvo_TL.entities
   grp = ents.add_group
   grp.name = "Acetal guide wheel Ø32 (Movement TL) 2270"
   ge = grp.entities
-  circle = ge.add_circle([124.mm,2270.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([130.mm,2270.mm,2317.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
+  cface.pushpull(40.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -5061,19 +5061,19 @@ ents = mvo_TL.entities
   grp = ents.add_group
   grp.name = "Acetal guide wheel Ø32 (Movement TL) 2310"
   ge = grp.entities
-  circle = ge.add_circle([124.mm,2310.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([130.mm,2310.mm,2317.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
+  cface.pushpull(40.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm (Movement TL) 117
+  # Yoke arm (Movement TL) 123
   grp = ents.add_group
-  grp.name = "Yoke arm (Movement TL) 117"
-  face = grp.entities.add_face([115.mm,2228.mm,2286.mm], [119.mm,2228.mm,2286.mm], [119.mm,2296.mm,2286.mm], [115.mm,2296.mm,2286.mm])
+  grp.name = "Yoke arm (Movement TL) 123"
+  face = grp.entities.add_face([121.mm,2228.mm,2286.mm], [125.mm,2228.mm,2286.mm], [125.mm,2296.mm,2286.mm], [121.mm,2296.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
@@ -5081,10 +5081,10 @@ ents = mvo_TL.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm (Movement TL) 183
+  # Yoke arm (Movement TL) 177
   grp = ents.add_group
-  grp.name = "Yoke arm (Movement TL) 183"
-  face = grp.entities.add_face([181.mm,2228.mm,2286.mm], [185.mm,2228.mm,2286.mm], [185.mm,2296.mm,2286.mm], [181.mm,2296.mm,2286.mm])
+  grp.name = "Yoke arm (Movement TL) 177"
+  face = grp.entities.add_face([175.mm,2228.mm,2286.mm], [179.mm,2228.mm,2286.mm], [179.mm,2296.mm,2286.mm], [175.mm,2296.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
@@ -5095,7 +5095,7 @@ ents = mvo_TL.entities
   # Yoke cross-piece (Movement TL)
   grp = ents.add_group
   grp.name = "Yoke cross-piece (Movement TL)"
-  face = grp.entities.add_face([115.mm,2228.mm,2278.mm], [185.mm,2228.mm,2278.mm], [185.mm,2296.mm,2278.mm], [115.mm,2296.mm,2278.mm])
+  face = grp.entities.add_face([121.mm,2228.mm,2278.mm], [179.mm,2228.mm,2278.mm], [179.mm,2296.mm,2278.mm], [121.mm,2296.mm,2278.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
@@ -5106,7 +5106,7 @@ ents = mvo_TL.entities
   # Yoke rail → carriage (Movement TL)
   grp = ents.add_group
   grp.name = "Yoke rail → carriage (Movement TL)"
-  face = grp.entities.add_face([183.mm,2228.mm,2280.mm], [208.mm,2228.mm,2280.mm], [208.mm,2296.mm,2280.mm], [183.mm,2296.mm,2280.mm])
+  face = grp.entities.add_face([177.mm,2228.mm,2280.mm], [208.mm,2228.mm,2280.mm], [208.mm,2296.mm,2280.mm], [177.mm,2296.mm,2280.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
@@ -5324,10 +5324,10 @@ ents = mvo_BR.entities
   grp = ents.add_group
   grp.name = "Acetal skate wheel Ø32 (Movement BR) 2270"
   ge = grp.entities
-  circle = ge.add_circle([2192.mm,2270.mm,253.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([2190.mm,2270.mm,253.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
+  cface.pushpull(20.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -5337,10 +5337,10 @@ ents = mvo_BR.entities
   grp = ents.add_group
   grp.name = "Acetal skate wheel Ø32 (Movement BR) 2310"
   ge = grp.entities
-  circle = ge.add_circle([2192.mm,2310.mm,253.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([2190.mm,2310.mm,253.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(16.mm)
+  cface.pushpull(20.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -5556,10 +5556,10 @@ ents = mvo_TR.entities
   grp = ents.add_group
   grp.name = "Acetal guide wheel Ø32 (Movement TR) 2270"
   ge = grp.entities
-  circle = ge.add_circle([2174.mm,2270.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([2180.mm,2270.mm,2317.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
+  cface.pushpull(40.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -5569,19 +5569,19 @@ ents = mvo_TR.entities
   grp = ents.add_group
   grp.name = "Acetal guide wheel Ø32 (Movement TR) 2310"
   ge = grp.entities
-  circle = ge.add_circle([2174.mm,2310.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([2180.mm,2310.mm,2317.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
+  cface.pushpull(40.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm (Movement TR) 2167
+  # Yoke arm (Movement TR) 2173
   grp = ents.add_group
-  grp.name = "Yoke arm (Movement TR) 2167"
-  face = grp.entities.add_face([2165.mm,2228.mm,2286.mm], [2169.mm,2228.mm,2286.mm], [2169.mm,2296.mm,2286.mm], [2165.mm,2296.mm,2286.mm])
+  grp.name = "Yoke arm (Movement TR) 2173"
+  face = grp.entities.add_face([2171.mm,2228.mm,2286.mm], [2175.mm,2228.mm,2286.mm], [2175.mm,2296.mm,2286.mm], [2171.mm,2296.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
@@ -5589,10 +5589,10 @@ ents = mvo_TR.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm (Movement TR) 2233
+  # Yoke arm (Movement TR) 2227
   grp = ents.add_group
-  grp.name = "Yoke arm (Movement TR) 2233"
-  face = grp.entities.add_face([2231.mm,2228.mm,2286.mm], [2235.mm,2228.mm,2286.mm], [2235.mm,2296.mm,2286.mm], [2231.mm,2296.mm,2286.mm])
+  grp.name = "Yoke arm (Movement TR) 2227"
+  face = grp.entities.add_face([2225.mm,2228.mm,2286.mm], [2229.mm,2228.mm,2286.mm], [2229.mm,2296.mm,2286.mm], [2225.mm,2296.mm,2286.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(31.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
@@ -5603,7 +5603,7 @@ ents = mvo_TR.entities
   # Yoke cross-piece (Movement TR)
   grp = ents.add_group
   grp.name = "Yoke cross-piece (Movement TR)"
-  face = grp.entities.add_face([2165.mm,2228.mm,2278.mm], [2235.mm,2228.mm,2278.mm], [2235.mm,2296.mm,2278.mm], [2165.mm,2296.mm,2278.mm])
+  face = grp.entities.add_face([2171.mm,2228.mm,2278.mm], [2229.mm,2228.mm,2278.mm], [2229.mm,2296.mm,2278.mm], [2171.mm,2296.mm,2278.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(8.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
@@ -5614,7 +5614,7 @@ ents = mvo_TR.entities
   # Yoke rail → carriage (Movement TR)
   grp = ents.add_group
   grp.name = "Yoke rail → carriage (Movement TR)"
-  face = grp.entities.add_face([2148.mm,2228.mm,2280.mm], [2239.mm,2228.mm,2280.mm], [2239.mm,2296.mm,2280.mm], [2148.mm,2296.mm,2280.mm])
+  face = grp.entities.add_face([2148.mm,2228.mm,2280.mm], [2233.mm,2228.mm,2280.mm], [2233.mm,2296.mm,2280.mm], [2148.mm,2296.mm,2280.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(6.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")

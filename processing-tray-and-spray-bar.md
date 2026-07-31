@@ -194,7 +194,7 @@ edges of the left and right walkways.
 | Cross-sectional area | 354mm² |
 | Linear mass (beam only) | 2.83 kg/m |
 | Beam mass (<!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm) | 10.9 kg |
-| Bending stiffness (EI) | 6.30×10⁹ N·mm² (≈ the former 40×40 alu beam's 7.04×10⁹ — SS modulus offsets the shallower depth) |
+| Bending stiffness (EI) | 6.30×10⁹ N·mm² |
 | Pre-camber | ~15mm up at mid-span (offsets the self-weight sag, L/257, so the beam runs flat under load) |
 
 **Sourcing:** Standard 8 ft (2,438mm) lengths are widely stocked at Home Depot, Online
@@ -398,9 +398,8 @@ manifold, not the beam.
 | Dry (beam + manifold) | 29.66 | 13.6 | L/284 |
 | Wet (beam + manifold + water) | 32.43 | 14.9 | L/259 |
 
-The 40×25 SS section has almost the same **bending stiffness** as the former 40×40 alu
-beam (EI ≈ 6.30 vs 7.04×10⁹ N·mm²), but SS's higher density roughly **doubles the
-self-weight**, so the raw wet deflection is ~15mm (L/259) rather than the former ~7mm.
+The 40×25 SS section has a bending stiffness of EI ≈ 6.30×10⁹ N·mm²; its raw wet
+deflection is ~15mm (L/259).
 This is a beam-flatness matter only — it does not affect the **carriage-to-grate
 clearance** (deflection is zero at the supports, where the ~30mm clearance is measured),
 and the sagged midspan beam bottom still clears the thin wash film.
@@ -425,7 +424,7 @@ clearance at the supports and the camber applied, the beam runs level under load
 | **Wet total (operating)** | **~14.4 kg** |
 
 Per wheel load (wet): 14.4 / 4 = 3.6 kg — well within any small nylon wheel's rating.
-The +6.3 kg beam-mass increase (vs the former alu beam) is carried into the walkway/CG
+The beam mass (~14.4 kg wet) is carried into the walkway/CG
 budget in [Weight Distribution](weight-distribution-report.md).
 
 ### 3.8 Beam Splice Joint
@@ -549,7 +548,7 @@ tray drainage plan and sump cross-section).
 | Fabrication (cut, brake, weld, press sump) | Two panels + a ~40mm center-seam lap (shingle-oriented downhill) + sump well | 1 lot | Local sheet metal | $450–$850 |
 | [HDPE sheet, laminated to 1-1/4" (slope shims)](https://www.usplastic.com/catalog/item.aspx?itemid=31840) (46039+42591) | 5 tapered slope shims (2"×86.6" = 50×2,200mm, 20→30mm taper). US Plastic max sheet = 1", so LAMINATE two 24×48 sheets to 1-1/4" then taper-cut (Option B: 1 mid-length butt splice/strip — fine for a floor-bonded compression shim). Combo = 3/4" (US Plastic 46039 $177.58) + 1/2" (42591 $118.38) = $295.96; the 3/4"+1/2" split keeps the taper cut inside the 3/4" top layer so the glue line stays buried (the 1"+1/4" combo, same price, would cut through the seam). Taper-cut bundles with the tray fab. | 1 lot | US Plastic Corp | $296 |
 | [Loctite PL Premium construction adhesive](https://www.homedepot.com/p/319654545) (1390595) | Shim-to-floor bond. Loctite PL Premium 10 oz, sold as a 2-pack ($11.94 → $5.97/tube) | 2 tube | Home Depot | $12 |
-| [1" brass foot valve with SS filter](https://www.misterworker.com/en-us/meclube/f1-brass-foot-valve-with-stainless-steel-filter/95953.html) (95953) | Sump pickup foot valve — Meclube F1 brass body + SS filter screen (misterworker 95953). $14.23 firm 2026-07-28 (was a $20 est SS unit). | 1 ea | misterworker | $14 |
+| [1" brass foot valve with SS filter](https://www.misterworker.com/en-us/meclube/f1-brass-foot-valve-with-stainless-steel-filter/95953.html) (95953) | Sump pickup foot valve — Meclube F1 brass body + SS filter screen (misterworker 95953). $14.23 firm 2026-07-28. | 1 ea | misterworker | $14 |
 | [1" reinforced PVC suction hose, 25 ft](https://www.homedepot.com/p/310837595) (6213100025) | Sump pickup tube → P-04. HYDROMAXX 1" clear flexible PVC suction/discharge hose, white reinforced helix; 25 ft coil — ~6 ft for the sump pickup + ~12 ft for the 8 IBC flex jumpers (18" each, Alvin 2026-07-29 flexible-connection design) = ~18 ft used, ~7 ft spare. $65.65 firm 2026-07-28 (Home Depot stocks the 25 ft length). | 1 25ft coil | Home Depot | $66 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | Silicone sealant bed in the center-seam lap joint (between the overlapped panels) + a top bead — the seam seal | 1 ea | CountryMax (Aqueon) | $17–$25 |
 | [M6×1.0 × 16 hex bolt, 316 SS — tray center-seam lap joint](https://www.mcmaster.com/93635A210/) (93635A210) | Tray center-seam LAP-joint bolts (316 SS, wet zone) + M6 serrated flange nuts underneath. Through both overlapped 1.5mm panels + silicone bed. Grip ≈ 4mm → M6×16. Pitch M6×1.0 coarse. $15.86/pack of 25. | 12 ea | McMaster-Carr | $8 |
@@ -568,7 +567,7 @@ tray drainage plan and sump cross-section).
 | [90° spray jets, barbed](https://www.homedepot.com/p/302581648) (110B) | DIG 110B 90° spray jets, 10-pack ×4 = 40 (39 used, 1 spare); side-tapped into the poly manifold, spray straight down. 90° down chosen (Alvin 2026-07-28) over flat-fan/180° so the wash lands on the print, not sideways/up; pitch tightened 150→100mm (26→39 jets) for edge-to-edge coverage — see processing-tray §3.9. | 4 10-pack | Home Depot | $14 |
 | [SS/nylon retainer clips for 3/4" LDPE](https://www.dripdepot.com/figure-8-tubing-end-clamp-size-three-quarter-inch) | Figure-8 fold-back end closures for 3/4" poly drip tubing — DripDepot 10-pack, $4.20 firm (Alvin 2026-07-30). | 1 10-pack | DripDepot | $4 |
 | [Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore)](https://www.mcmaster.com/8576K23/) (8576K23) | Solid acetal (Delrin), flat tread. Cut from 1-1/4" (31.75mm) Delrin rod into 4 × 20mm slugs; drill Ø10.5 running-clearance bore — the acetal plain bore IS the bearing (self-lubricating on the Ø10 304 SS axle; no ball bearing — the ferricyanide/citric wash rules steel bearings out). One 1 ft (305mm) rod yields all 4 (parting/facing waste). Light-duty ~2.6 kg/wheel wet; 2 per carriage, low-profile for grate clearance. OD Ø31.75 = Ø32 nominal (−0.25mm). | 1 1 ft rod | McMaster-Carr | $11 |
-| [1/2" PVC barbed tee (flex hose → manifold center feed)](https://www.dripdepot.com/barb-tubing-tee-size-half-inch) (1084) | DripDepot 1084 ½" PVC barbed tee (Alvin 2026-07-28: PVC, NOT brass as previously specced), $0.57 ea × 5-pack = $2.85; the SINGLE center-feed inlet — ½" flex hose → manifold center (Option 1: single feed replaced the 7-tube distribution fan). 1 used. Firm 2026-07-28. | 1 5-pack | DripDepot | $3 |
+| [1/2" PVC barbed tee (flex hose → manifold center feed)](https://www.dripdepot.com/barb-tubing-tee-size-half-inch) (1084) | DripDepot 1084 ½" PVC barbed tee (PVC), $0.57 ea × 5-pack = $2.85; the SINGLE center-feed inlet — ½" flex hose → manifold center. 1 used. Firm 2026-07-28. | 1 5-pack | DripDepot | $3 |
 | [Telescoping aluminum pool pole, 4–8 ft](https://www.amazon.com/dp/B0FHPSPD4T) (B0FHPSPD4T) | Standard pool skimmer handle — POOLPURE telescopic aluminum, 4–8 ft (B0FHPSPD4T, exact). ~$15–20 est — confirm. | 1 ea | Amazon | $15 |
 | [1/2" reinforced braided PVC hose, ~15 ft](https://www.homedepot.com/p/304185193) (T12006003) | BV-02 → beam feed (~4 m coiled). UDP 1/2"ID×3/4"OD clear braided vinyl (T12006003), $12.99/10ft firm (Alvin 2026-07-30). 10 ft ≈ 3 m — a 4 m coiled run may need a 2nd roll. | 1 10ft roll | Home Depot | $13 |
 | [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) (B0816MQ5T6) | Wheel axle pins — uxcell 10×60mm 304 SS clevis pins, 4-pack (B0816MQ5T6, exact: 14mm head, 3.2mm cotter hole). | 1 pack | Amazon | $5 |

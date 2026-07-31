@@ -197,7 +197,7 @@ The two circuits are independently switched — they are **not** interlocked, so
 | Circuit | G (10A fuse, 14 AWG) — 6.3A draw |
 | Approximate cost | ~$84 (2 reels) + ~$81 (3× 8 ft channel) + ~$15 connectors/dimmer |
 
-The three runs total ~5.5m of strip at 426 lm/ft → ~7,670 lumens across the ~14 m² floor area — approximately **548 lux**, a solid workshop level for setup, maintenance, and cleaning. A **12V COB strip in an aluminum channel + diffuser** gives an even, hot-spot-free ceiling wash (no discrete-fixture glare), runs cool, and is dimmable. At ~6.3A the Circuit-G feed is run in **14 AWG** (up from 16) for margin and low voltage drop; the load still sits well inside the 10A fuse. True 12V-native (no inverter). Wired from Circuit G via the ceiling cable trunking.
+The three runs total ~5.5m of strip at 426 lm/ft → ~7,670 lumens across the ~14 m² floor area — approximately **548 lux**, a solid workshop level for setup, maintenance, and cleaning. A **12V COB strip in an aluminum channel + diffuser** gives an even, hot-spot-free ceiling wash (no discrete-fixture glare), runs cool, and is dimmable. At ~6.3A the Circuit-G feed is run in **14 AWG** for margin and low voltage drop; the load still sits well inside the 10A fuse. True 12V-native (no inverter). Wired from Circuit G via the ceiling cable trunking.
 
 ### 6.3 Pull-Cord Switches
 Two ceiling-mounted pull-cord switches are installed on the pinhole wall side of the container, accessible from the near walkway. Each switch controls one lighting circuit.

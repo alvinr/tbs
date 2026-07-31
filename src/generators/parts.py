@@ -556,8 +556,9 @@ PARTS: list[Part] = [
          url="https://www.amazon.com/YUFANNET-Assortment-Grommets-Automotive-Electrical/dp/B09K5GNFHF",
          spec="200-pc rubber grommet assortment (8 sizes, B09K5GNFHF $8.88) to protect wires through drilled steel + a strain-relief NPT cable-gland kit (B08R84YJ7X, nylon IP68, $18.98) for sealed wall/enclosure entries. $27.86 both kits."),
     Part("bonding-kit", "Equipotential bonding kit — 6 AWG jumper + ring lugs", "electrical-distribution",
-         "electrical", 1, "ea", 20, 20, "Waytek Wire",
-         spec="Short (~1m) 6 AWG equipotential bond (container body → battery-neg busbar) + ring-lug terminals — Waytek 37312 (6 Ga, 1/4\" stud). Kept as a short-jumper bundle (a 100ft SGR6 spool is wasteful for ~1m; cut from a short length or offcut, green heat-shrink flag). Price $20 est — confirm at order."),
+         "electrical", 1, "ea", 95.79, 95.79, "Grainger", part_no="21WJ56",
+         url="https://www.grainger.com/product/PANDUIT-Grounding-Jumper-Wire-Kit-21WJ56",
+         spec="Panduit grounding jumper kit — 6 AWG, 60in, 45deg bent ring lugs (factory irreversible-compression terminals). Equipotential bond: container body -> battery-neg busbar (§7.6). $95.79 firm (Alvin 2026-07-31)."),
     Part("ep-backing-panel", "EP plywood backing panel (18mm, ~700×2000mm)", "timber-ply",
          "electrical", 1, "4'×8' sheet", 68.98, 68.98, "Home Depot", part_no="454559", url="https://www.homedepot.com/p/203414066",
          spec='18mm SANDEPLY Sande hardwood plywood, full 4\'×8\' sheet, cut to the ~700×2000mm backboard (fits with margin — 1220×2440mm stock) — '

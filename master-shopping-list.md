@@ -15,7 +15,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $4,361 | $4,815 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,418 | $7,685 |
-| 6. Electrical — power, circuits, wiring | $3,353 | $3,418 |
+| 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,979 | $2,825 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$26,232** | **~$34,474** |
+| **TOTAL (base build + 50-print run)** | **~$26,310** | **~$34,552** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -154,7 +154,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Copper-bonded ground rod, 8ft × ⅝" + acorn clamp](https://www.homedepot.com/p/ERICO-5-8-in-x-8-ft-Copper-Ground-Rod-615880UPC/202195738) (615880UPC) | 1 lot | Home Depot | electrical | $27 |
 | [Deutsch DT 2-pin connectors (Amphenol AT2PS-CKIT)](https://www.waytekwire.com/product/amphenol-sine-systems-at2ps-ckit-2-pin) (AT2PS-CKIT) | 2 set | Waytek Wire | ventilation | $8 |
 | [Deutsch DT 2-pin connectors, IP67 (exterior penetrations)](https://www.waytekwire.com/product/amphenol-sine-systems-at2ps-ckit-2-pin) (AT2PS-CKIT) | 10 set | Waytek Wire | electrical | $30 |
-| Equipotential bonding kit — 6 AWG jumper + ring lugs | 1 ea | Waytek Wire | electrical | $20 |
+| [Equipotential bonding kit — 6 AWG jumper + ring lugs](https://www.grainger.com/product/PANDUIT-Grounding-Jumper-Wire-Kit-21WJ56) (21WJ56) | 1 ea | Grainger | electrical | $96 |
 | [External emergency cut-off — red mushroom switch](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
 | [HitLights 12V COB LED strip 4000K, 16.4ft reel (Circuit G, ×2)](https://hitlights.com/products/premium-12v-cob-led-strip-light-single-color-ul-listed-16-4ft-ip-20-white-pcb) (L2712V-40D3-1630-U) | 2 reel | HitLights | electrical | $75–$85 |
 | [Interior emergency cut-off — red mushroom switch (paralleled to exterior)](https://www.harfington.com/products/p-1071142) (a19061100ux1510) | 1 ea | Harfington | electrical | $13 |
@@ -172,7 +172,7 @@ indicative low–high estimates — get quotes before ordering.
 | [SBL COB 12V red LED safelight strip, 5m reel (Circuit D)](https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc) (STN-B-BRED-O12A-08F5M-12V) | 1 reel | Super Bright LEDs | electrical | $90 |
 | [Sealed wet-zone connectors — 6× Deutsch DT 2-pin pairs (pump circuits)](https://www.buydeutsch.com/collections/dt-series/products/dt06-2s) (DT06-2S) | 1 lot | buyDeutsch | electrical | $27 |
 | [Shore-charger output fuse — 20A inline (sealed holder + fuse)](https://www.waytekwire.com/product/sealed-ato-atc-fuse-holder-assembly-46047) (46047) | 1 ea | Waytek Wire | electrical | $7 |
-| **electrical-distribution subtotal** | | | | **$1,988–$1,998** |
+| **electrical-distribution subtotal** | | | | **$2,064–$2,074** |
 
 ### electrical-power
 
@@ -456,14 +456,14 @@ indicative low–high estimates — get quotes before ordering.
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
 | SoCal reconditioner | 1 | water-equipment | $600 |
+| Grainger | 3 | aluminum, electrical-distribution | $473 |
 | Inverter Supply | 2 | electrical-distribution, electrical-power | $396 |
 | Curbell Plastics | 1 | plastics-sheet | $380 |
-| Grainger | 2 | aluminum | $377 |
 | Powerwerx | 5 | electrical-distribution, electrical-power | $311 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | igus | 1 | bearings-motion | $261 |
-| Waytek Wire | 17 | electrical-distribution, electrical-power | $259 |
 | americandoorsupply | 1 | electrical-distribution | $244 |
+| Waytek Wire | 16 | electrical-distribution, electrical-power | $239 |
 | Bearings Direct | 2 | bearings-motion | $201 |
 | Amazon (bundle) | 1 | seals-gaskets | $157–$178 |
 | Harbor Freight | 1 | fasteners-hardware | $115–$173 |

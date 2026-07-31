@@ -825,7 +825,7 @@ def section_aa(ax):
     #    FACE: nearly spans the flat running surface (web → lip = 34mm), ~4mm clearance to web + lip so it
     #    can't wander in X yet still rolls free. ──
     _rect(ax, 9, 5, 26, 32, C_ACET, z=7)                                            # Ø32 LOAD roller (rim, cut) — wide face
-    _rect(ax, 6, 16, 44, 10, C_STEEL, z=8)                                          # Ø10 axle/shaft — runs THROUGH the wheel, cantilevered to the carriage
+    _rect(ax, 9, 16, 41, 10, C_STEEL, z=8)                                          # Ø10 axle/shaft — cantilevered from the carriage THROUGH the wheel; free end flush with the wheel face (~4mm off the web)
     draw_circle(ax, 22, 21, 3.2, color=OUT, fill=True, fc="#9AA0A8", lw=0.5, zorder=9)  # hub at the wheel centre (shaft goes through)
     for gx0, gx1 in ((5, 9), (35, 39)):                                             # ~4mm running clearance, web + lip
         ax.annotate("", xy=(gx1, 10), xytext=(gx0, 10), arrowprops=dict(arrowstyle="<->", color=DIM, lw=0.5))

@@ -104,7 +104,7 @@ Getting it right was hard until we grounded it; here is the reasoning, in order.
   (set the angle, clamp, expose), bearing wear and lubrication are non-issues; the corrosion-safe choice is
   the material, not a grease film. **303/416 stainless** suits the splash/rinse exposure here; step to a
   more resistant joint only if it is soaked rather than rinsed. (Research doc §6.)
-- **A nitrile boot seals each joint** ([Ruland UBOOT12/19-NI-KIT](https://www.ruland.com/uboot12-19-ni-kit.html),
+- **A nitrile boot seals each joint** ([Belden 806VF1 nitrile boot kit](https://www.grainger.com/product/BELDEN-Nitrile-Boot-Kit-750-Coupling-806VF1),
   single bellows, Ø0.745" fit, zip-tied into a groove on each yoke) — it keeps the ferricyanide/citric wash
   and debris out of the bronze bearings. Nitrile resists water/alcohol well. We fit it **DRY** (a contaminant
   barrier only), **not** grease-packed, consistent with the grease-free bearing. The **DryLin slides**
@@ -133,7 +133,7 @@ Per corner (×4):
   film-frame corner (off-the-shelf clamp, not a precision-reamed gimbal)
 - **2 × stub shaft** — 3/8" (9.5 mm) 304 SS rod, ~60 mm each: one end into the U-joint hub (set-screw
   locked), the other clamped in the shaft support
-- **1 × protective boot** — [Ruland UBOOT12/19-NI-KIT](https://www.ruland.com/uboot12-19-ni-kit.html):
+- **1 × protective boot** — [Belden 806VF1 nitrile boot kit](https://www.grainger.com/product/BELDEN-Nitrile-Boot-Kit-750-Coupling-806VF1):
   nitrile single bellows, zip-tied to each yoke; fitted **dry** to seal the bronze bearings from the wash
 - **Depth (Y): friction slide (~2.2 m) + cam clamp** — produces tilt + swing (+ focus); push, then lock
 - **Vertical (Z): friction slide + cam clamp** — absorbs the **tilt** foreshortening; holds when released, then locks

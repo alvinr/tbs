@@ -13,7 +13,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
-| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $3,708 | $4,162 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $3,746 | $4,200 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,418 | $7,685 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,657** | **~$33,899** |
+| **TOTAL (base build + 50-print run)** | **~$25,695** | **~$33,937** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -328,14 +328,14 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [20mm EPDM gasket (per meter, closed-cell)](https://www.amazon.com/dp/B089GJQ96Z) (B089GJQ96Z) | 21 m | Amazon (OKAYASU) | panel | $24–$52 |
+| [Belden 806VF1 nitrile boot kit (750 coupling)](https://www.grainger.com/product/BELDEN-Nitrile-Boot-Kit-750-Coupling-806VF1) (806VF1) | 4 ea | Grainger | film | $161 |
 | [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8694K88/) (8694K88) | 2 roll | McMaster-Carr | film | $45 |
 | [Felt/brush wiper strip + 12mm closed-cell neoprene](https://www.doitbest.com/product/146005/) (BP17A) | 1 lot | Frost King + Canal Rubber | lightlock | $40–$75 |
 | Light-sealing materials (interior conversion) | 1 lot | Amazon (bundle) | interior | $157–$178 |
 | Ribbed-wall flashing + silicone (power-panel box seal) | 1 lot | Hardware store | electrical | $15–$30 |
-| [Ruland UBOOT12/19-NI-KIT nitrile boot](https://www.ruland.com/uboot12-19-ni-kit.html) (UBOOT12/19-NI-KIT) | 4 ea | Ruland | film | $122 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | 1 ea | CountryMax (Aqueon) | tray | $17–$25 |
 | [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | 1 lot | McMaster-Carr | door | $129 |
-| **seals-gaskets subtotal** | | | | **$549–$656** |
+| **seals-gaskets subtotal** | | | | **$587–$694** |
 
 ### stainless-sheet
 
@@ -454,8 +454,8 @@ indicative low–high estimates — get quotes before ordering.
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
+| Grainger | 4 | aluminum, electrical-distribution, seals-gaskets | $634 |
 | SoCal reconditioner | 1 | water-equipment | $600 |
-| Grainger | 3 | aluminum, electrical-distribution | $473 |
 | MROSupply | 1 | bearings-motion | $451 |
 | Inverter Supply | 2 | electrical-distribution, electrical-power | $396 |
 | Curbell Plastics | 1 | plastics-sheet | $380 |
@@ -468,7 +468,6 @@ indicative low–high estimates — get quotes before ordering.
 | Amazon (bundle) | 1 | seals-gaskets | $157–$178 |
 | Harbor Freight | 1 | fasteners-hardware | $115–$173 |
 | LED Profiles | 1 | electrical-distribution | $162 |
-| Ruland | 2 | fasteners-hardware, seals-gaskets | $150–$155 |
 | Inverter Service Center | 1 | electrical-power | $152 |
 | Fasteners Plus | 2 | fasteners-hardware | $106–$136 |
 | Super Bright LEDs | 2 | electrical-distribution | $122 |
@@ -491,6 +490,7 @@ indicative low–high estimates — get quotes before ordering.
 | Polycase | 1 | electrical-distribution | $47 |
 | Marine Fiberglass Direct | 1 | fasteners-hardware | $25–$45 |
 | DripDepot | 3 | fasteners-hardware, plumbing-fittings | $38 |
+| Ruland | 1 | fasteners-hardware | $28–$33 |
 | Signature Solar | 1 | electrical-distribution | $30 |
 | buyDeutsch | 1 | electrical-distribution | $27 |
 | Harfington | 2 | electrical-distribution | $25 |
@@ -582,7 +582,7 @@ above — this directory adds where-to-buy detail and omits alternative/optional
 | **[Metal Supermarkets](https://www.metalsupermarkets.com)** | Steel, aluminum, cut-to-length | Anaheim · Van Nuys · San Diego |
 | **[Grimco](https://www.grimco.com)** | Dibond ACM panels (sign industry) | City of Industry CA |
 | **Automation Overstock** | Linear guides, carriages, surplus motion components | Gardena CA (walk-in) |
-| **[Ruland](https://www.ruland.com)** | USKC12-6-6-SS universal joints + nitrile boots | Ships nationally |
+| **[Ruland](https://www.ruland.com)** | CL-16-ST clamp-style shaft collar (spray arm) | Ships nationally |
 | **[Renogy](https://www.renogy.com)** | Solar panels, LiFePO4 battery, tilt mount | Online |
 | **[altE Store](https://www.altestore.com)** | Victron MPPT, Victron chargers, off-grid power | Online |
 | **[Powerwerx](https://powerwerx.com)** | Anderson Powerpole connectors and tools | Online |

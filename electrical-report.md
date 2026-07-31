@@ -420,9 +420,9 @@ All US/SoCal sources. Prices approximate as of 2026.
 | [Red 12V COB LED strip, 5m reel (STN-B-BRED-O12A-08F5M-12V)](https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc) | Circuit-D safelight — 40W/reel cut into 3 ceiling runs + drum (~40W/3.3A), COB 620nm, dimmable, cyanotype-safe, IP20 | Super Bright LEDs | ~$90 |
 | Pull-cord ceiling switch, 12V 6A SPST | Inline switch for lighting circuits D & G | Amazon / Lowe's | ~$16 (×2) |
 | **Electrical system total** | | | **~<!-- BEGIN costing:elec-system-total -->$3,336<!-- END costing:elec-system-total -->** |
-| **Shade canopy total** | | | **~<!-- BEGIN costing:elec-canopy-total -->$246<!-- END costing:elec-canopy-total -->** |
+| **Shade canopy total** | | | **~<!-- BEGIN costing:elec-canopy-total -->$236<!-- END costing:elec-canopy-total -->** |
 | **Cooling (cooler + inverter + DC protection + AC outlet + cord)** | | | **~<!-- BEGIN costing:elec-cooling-total -->$262<!-- END costing:elec-cooling-total -->** |
-| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$3,844<!-- END costing:elec-grand-total -->** |
+| **Systems grand total** | | | **~<!-- BEGIN costing:elec-grand-total -->$3,834<!-- END costing:elec-grand-total -->** |
 
 *Electrical system total is the **standard 1-pack build** and matches the consolidated [Master Shopping List §6](master-shopping-list.md) (Solar & battery $1,335 + Distribution & wiring $989 = $2,324, the authoritative electrical BOM). The optional 2nd battery pack adds +$375 (its own MRBF fuse). It includes ~$410 of circuit-protection / wet-zone-sealing hardware added per the [Electrical Safety Report](electrical-safety-report.md) §5 (interior **+** exterior emergency cut-offs + battery contactor, disconnect switch, terminal-mount fuse, **PV array disconnect, MPPT charge-line + shore-charger fuses**, sealed connectors, bonding, grommets), plus ~$25 of Circuit-C pump-control hardware (1 master pump switch + distribution block).*
 

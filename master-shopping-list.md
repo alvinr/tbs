@@ -14,18 +14,18 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $4,302 | $4,840 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,412 | $7,679 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,418 | $7,685 |
 | 6. Electrical — power, circuits, wiring | $3,293 | $3,378 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
 | 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $1,979 | $2,825 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,278 | $1,484 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $223 | $235 |
-| 8. Cooling & ventilation | $747 | $897 |
+| 8. Cooling & ventilation | $740 | $890 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$26,106** | **~$34,452** |
+| **TOTAL (base build + 50-print run)** | **~$26,105** | **~$34,451** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -86,12 +86,12 @@ indicative low–high estimates — get quotes before ordering.
 | [3/4" OD acetal keeper rollers — Delrin rod (cut ×8)](https://www.mcmaster.com/8497K276-8497K273/) (8497K276) | 1 4 ft rod | McMaster-Carr | film | $15 |
 | [Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore)](https://www.mcmaster.com/8576K23/) (8576K23) | 1 1 ft rod | McMaster-Carr | spray | $11 |
 | [iglide J flange bushing, Ø90 bore (JFM-9095-100)](https://www.igus.com/iglide-ibh/flange-bearings/product-details/iglide-j-m?artnr=JFM-9095-100) (JFM-9095-100) | 2 ea | igus | swing | $261 |
+| [M12 rod-end bearing (uxcell SA12TK, 4-pack)](https://www.amazon.com/uxcell-SA12TK-Bearing-M12x1-75-Self-Lubricating/dp/B0C7N16RQ9) (B0C7N16RQ9) | 1 4-pack | Amazon | spray | $20 |
 | [McMaster 4040N12 304 shaft support](https://www.mcmaster.com/4040N12/) (4040N12) | 4 ea | McMaster-Carr | film | $232 |
 | [Ruland USKC12-6-6-SS U-joint (keyway+clamp, 303 SS)](https://www.ruland.com/uskc12-6-6-ss.html) (USKC12-6-6-SS) | 4 ea | Ruland | film | $1,104 |
 | [SKF 6215-2RS1 sealed bearing](https://bearingsdirect.com/6215-2rs-ball-bearing-75x130x25-sealed-6215-2nse/) (6215-2RS) | 2 ea | Bearings Direct | lightlock | $121 |
 | [Thrust ball bearing, 51118 (Ø90 bore, single-direction)](https://bearingsdirect.com/51118-thrust-ball-bearing-90x120x22-grooved-ubc-usbc/) (51118) | 1 ea | Bearings Direct | swing | $80 |
-| [Ø20mm ball joint, zinc socket, M12 stud](https://www.amazon.com/dp/B076XM3VXC) (B076XM3VXC) | 1 ea | Amazon | spray | $12 |
-| **bearings-motion subtotal** | | | | **$1,847** |
+| **bearings-motion subtotal** | | | | **$1,854** |
 
 ### chemistry-reagents
 
@@ -133,7 +133,7 @@ indicative low–high estimates — get quotes before ordering.
 | [14 AWG tinned hook-up wire, black — 100ft (Circuit C feed / AC)](https://www.waytekwire.com/product/wrt14-0-hook-up-wire-tinned-copper) (WRT14-0) | 1 spool | Waytek Wire | electrical | $14 |
 | [14 AWG tinned hook-up wire, red — 100ft (Circuit C feed / AC)](https://www.waytekwire.com/product/wrt14-2-hook-up-wire-tinned-copper) (WRT14-2) | 1 spool | Waytek Wire | electrical | $14 |
 | 15A blade fuse | 1 ea | Waytek Wire | water | $5 |
-| [16 AWG coiled (retractile) cable, 2-cond](https://www.amazon.com/dp/B00BSORUSW) (B00BSORUSW) | 1 ea | Amazon | ventilation | $15 |
+| [16 AWG coiled (retractile) cable, 2-cond](https://www.grainger.com/category/electrical/power-strips-extension-cords-cord-reels/power-cords?searchQuery=16+awg%2C+2-conductor+coiled+cable) | 1 ea | Grainger | ventilation | $18 |
 | [16 AWG tinned hook-up wire, black — 100ft (Circuits A/B/G + branches)](https://www.waytekwire.com/product/wrt16-0-hook-up-wire-tinned-copper) (WRT16-0) | 1 spool | Waytek Wire | electrical | $16 |
 | [16 AWG tinned hook-up wire, red — 100ft (Circuits A/B/G + branches)](https://www.waytekwire.com/product/wrt16-2-hook-up-wire-tinned-copper) (WRT16-2) | 1 spool | Waytek Wire | electrical | $16 |
 | [18 AWG tinned hook-up wire, black — 100ft (Circuit D + E-stop)](https://www.waytekwire.com/product/wqt18-0-hook-up-wire-tinned-copper) (WQT18-0) | 1 spool | Waytek Wire | electrical | $12 |
@@ -172,7 +172,7 @@ indicative low–high estimates — get quotes before ordering.
 | [SBL COB 12V red LED safelight strip, 5m reel (Circuit D)](https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc) (STN-B-BRED-O12A-08F5M-12V) | 1 reel | Super Bright LEDs | electrical | $90 |
 | Sealed wet-zone connectors — Deutsch DT / adhesive heat-shrink | 1 lot | Waytek Wire | electrical | $25 |
 | [Shore-charger output fuse — 20A inline (sealed holder + fuse)](https://www.waytekwire.com/product/sealed-ato-atc-fuse-holder-assembly-46047) (46047) | 1 ea | Waytek Wire | electrical | $7 |
-| **electrical-distribution subtotal** | | | | **$1,914–$1,944** |
+| **electrical-distribution subtotal** | | | | **$1,917–$1,947** |
 
 ### electrical-power
 
@@ -192,8 +192,8 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [Impact 9oz Duvetyne 57" × 10yd (B&H)](https://www.bhphotovideo.com/c/product/1775270-REG/impact_dr9_10_9_oz_duvetyne_10.html) (1775270) | 1 ea | B&H Photo | film | $69 |
-| [Shade cloth — 70% (10×20 ft)](https://www.amazon.com/dp/B075J93DTJ) (B075J93DTJ) | 1 ea | Amazon | ventilation | $40 |
-| **fabric-textile subtotal** | | | | **$109** |
+| [Shade cloth — 70% (10×20 ft)](https://www.amazon.com/dp/B075J93DTJ) (B075J93DTJ) | 1 ea | Amazon | ventilation | $30 |
+| **fabric-textile subtotal** | | | | **$100** |
 
 ### fabrication-labor
 
@@ -257,13 +257,13 @@ indicative low–high estimates — get quotes before ordering.
 | [M12×1.75 jam nut, SS](https://www.mcmaster.com/90381A102/) (90381A102) | 1 ea | McMaster-Carr | spray | $1 |
 | [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) (B0816MQ5T6) | 1 pack | Amazon | spray | $5 |
 | [SS beam clamp plates (4, cut from 1× 2 ft 304 flat bar)](https://www.mcmaster.com/8992K512/) (8992K512) | 1 2 ft bar | McMaster-Carr | spray | $35 |
-| [SS/nylon retainer clips for 3/4" LDPE](https://www.amazon.com/dp/B0CY5R6VTL) (B0CY5R6VTL) | 2 ea | Amazon | spray | $4 |
+| [SS/nylon retainer clips for 3/4" LDPE](https://www.dripdepot.com/figure-8-tubing-end-clamp-size-three-quarter-inch) | 1 10-pack | DripDepot | spray | $4 |
 | [Axle saddle clamps ×8 (304 SS flat-bar stock)](https://www.mcmaster.com/8992K794/) (8992K794) | 1 2 ft bar | McMaster-Carr | spray | $10 |
 | [Self-tapping SS screws (8-pack)](https://www.lowes.com/pd/Hillman-25-Count-10-x-1-in-Stainless-Steel-Self-Drilling-Interior-Exterior-Sheet-Metal-Screws/3691866) (3691866) | 4 ea | Lowe's (Hillman) | spray | $2–$3 |
 | Nylon zip ties, 200mm | 6 ea | Amazon | spray | $1 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,621–$2,030** |
+| **fasteners-hardware subtotal** | | | | **$1,621–$2,031** |
 
 ### plastics-sheet
 
@@ -303,7 +303,7 @@ indicative low–high estimates — get quotes before ordering.
 | [1/2" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812195) (PVC024000600HD) | 6 ea | Home Depot | water | $5 |
 | [1/2" PVC slip×MNPT male adapter](https://www.homedepot.com/p/203811636) (PVC021090600HD) | 22 ea | Home Depot | water | $17 |
 | [1/2" PVC union (serviceable break)](https://www.homedepot.com/p/317901071) (PVCU12F) | 2 ea | Home Depot | water | $10 |
-| [1/2" reinforced braided PVC hose, ~15 ft](https://www.homedepot.com/p/304185193) (T12006003) | 1 ea | Home Depot | spray | $15 |
+| [1/2" reinforced braided PVC hose, ~15 ft](https://www.homedepot.com/p/304185193) (T12006003) | 1 10ft roll | Home Depot | spray | $13 |
 | [1/2"×1" NPT bushing reducer](https://www.homedepot.com/p/204836713) (PVC021121800HD) | 1 ea | Home Depot | water | $3 |
 | [2" polypropylene camlock pairs (M+F)](https://www.usplastic.com/catalog/item.aspx?itemid=30754) (30754) | 4 pair | US Plastic Corp | water | $92 |
 | [2"→1" PVC Sch-80 reducing coupling (FNPT×FNPT)](https://www.homedepot.com/p/203811533) (PVC021071300HD) | 8 ea | Home Depot | water | $26 |
@@ -321,7 +321,7 @@ indicative low–high estimates — get quotes before ordering.
 | [pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | 1 ea | US Plastic Corp | water | $19 |
 | [S60×6 female buttress → 2" MNPT IBC tote adapter](https://www.amazon.com/Granatan-Adapter-Buttress-Fittings-Connector/dp/B095SCHBC6) (B095SCHBC6) | 8 ea | Amazon | water | $80 |
 | [½" PVC Sch-40 pipe (tap relocation)](https://www.homedepot.com/p/319692959) (30-05010HD) | 1 stick | Home Depot | shelf | $5 |
-| **plumbing-fittings subtotal** | | | | **$1,375** |
+| **plumbing-fittings subtotal** | | | | **$1,373** |
 
 ### seals-gaskets
 
@@ -442,8 +442,8 @@ indicative low–high estimates — get quotes before ordering.
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,185–$3,567 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,877–$2,451 |
-| Amazon | 37 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,085–$2,171 |
-| Home Depot | 50 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,642–$1,763 |
+| Amazon | 35 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,064–$2,150 |
+| Home Depot | 50 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,640–$1,761 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
 | Online Metals | 5 | aluminum, stainless-sheet, steel-structural | $982–$1,402 |
@@ -457,8 +457,8 @@ indicative low–high estimates — get quotes before ordering.
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
 | SoCal reconditioner | 1 | water-equipment | $600 |
 | Inverter Supply | 2 | electrical-distribution, electrical-power | $396 |
+| Grainger | 3 | aluminum, electrical-distribution | $395 |
 | Curbell Plastics | 1 | plastics-sheet | $380 |
-| Grainger | 2 | aluminum | $377 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | Waytek Wire | 19 | electrical-distribution, electrical-power | $299 |
 | Powerwerx | 4 | electrical-distribution, electrical-power | $267 |
@@ -488,7 +488,7 @@ indicative low–high estimates — get quotes before ordering.
 | Steel service center | 1 | steel-structural | $30–$50 |
 | Polycase | 1 | electrical-distribution | $47 |
 | Marine Fiberglass Direct | 1 | fasteners-hardware | $25–$45 |
-| DripDepot | 2 | plumbing-fittings | $34 |
+| DripDepot | 3 | fasteners-hardware, plumbing-fittings | $38 |
 | Signature Solar | 1 | electrical-distribution | $30 |
 | Harfington | 2 | electrical-distribution | $25 |
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |

@@ -714,7 +714,10 @@ def view_a(ax):
     _rect(ax, 161, 156, 18, 76, C_TILT, z=6); _hatch316(ax, 161, 156, 18, 76)        # Z (tilt) slide — centred, IN FRONT
     _rect(ax, 161, 156, 2.5, 76, C_POLY, z=7); _rect(ax, 176.5, 156, 2.5, 76, C_POLY, z=7)
     ax.plot([170, 170], [232, 210], color=C_PIN, lw=1.4, zorder=8)                   # axle-retainer bolt down through the plate
-    _rect(ax, 200, 200, 14, 16, C_CLAMP, z=7)                                        # cam clamp on the carriage
+    # cam rail-brake (detailed + dimensioned in Section A-A): base on the plate + lever + pad up onto the top flange
+    _rect(ax, 196, 282, 16, 14, C_CLAMP, z=7)                                        # clamp base on the plate
+    ax.plot([204, 216], [296, 314], color=C_CLAMP, lw=2.0, zorder=8)                 # cam lever (thrown = locked)
+    _rect(ax, 197, 299, 13, 5, C_POLY, z=8)                                          # UHMW pad on the top flange (Z≈303)
     # 4-wheel skate — GHOSTED (dotted), hidden behind the plate: 2 LOAD rollers + 2 KEEPER rollers + the axle
     for wx in (150, 190):
         ax.add_patch(plt.Circle((wx, 253), 16, fc="none", ec=OUT, lw=0.7, ls=(0, (3, 2)), zorder=10))  # load roller Ø32
@@ -833,6 +836,20 @@ def section_aa(ax):
     # ── the stack inboard: green Z slide begins on the plate ──
     _rect(ax, 64, 10, 12, 46, C_TILT, z=5)
     ax.annotate("", xy=(108, 33), xytext=(76, 33), arrowprops=dict(arrowstyle="->", color=DIM, lw=1.0))
+    # ── CAM RAIL-BRAKE (fp-cam-clamp) — bolted to the carriage-plate top; the arm reaches ~30mm
+    #    OUTBOARD over the channel and a UHMW pad presses DOWN on the TOP FLANGE. Top-flange PINCH:
+    #    the pad brakes on the flange while the Ø32 load rollers on the bottom flange react the
+    #    pinch (self-reacting — never unloads the skate). Thrown to lock depth for the shot + transport. ──
+    _rect(ax, 48, 72, 16, 9, C_CLAMP, z=9)                              # clamp BASE on the plate top
+    for _mbx in (51, 61):
+        ax.plot([_mbx, _mbx], [72, 81], color=C_PIN, lw=0.7, zorder=10)  # 2× M5 mount bolts into the plate
+    _rect(ax, 18, 79, 36, 4, C_CLAMP, z=9)                             # clamp ARM (reaches over the flange)
+    draw_circle(ax, 52, 81, 2.4, color=C_PIN, fill=True, fc=C_PIN, lw=0.6, zorder=11)  # cam pivot
+    ax.plot([52, 66], [81, 91], color=C_CLAMP, lw=2.4, zorder=10)      # cam LEVER handle (thrown = locked)
+    _rect(ax, 19, 75, 13, 4, C_POLY, z=10)                             # UHMW pad — bites DOWN on the top flange
+    ax.annotate("", xy=(25, 75), xytext=(25, 83), arrowprops=dict(arrowstyle="->", color=C_CAR, lw=1.3, zorder=11))
+    draw_dim_h(ax, 25, 52, 87, "~30mm reach", offset=5, fs=5.0, color=DIM, font=FONT)  # mount → pad
+    leader(ax, 56, 84, 20, 90, "cam rail-brake (fp-cam-clamp)", ha="left", fs=4.9, color=C_CLAMP, font=FONT, bbox=LBL_BG)
     # seating + lift arrows
     ax.annotate("", xy=(17, 42), xytext=(17, 52), arrowprops=dict(arrowstyle="->", color=OUT, lw=1.4))
     ax.text(6, 47, "WEIGHT", fontsize=5.4, ha="right", va="center", color=OUT, **FONT)
@@ -958,8 +975,10 @@ def sheet3():
         "U-channel (McMaster 1262T21; top-bottom depth = tilt, left-right = swing); VERTICAL (Z, green, "
         "~250mm) + HORIZONTAL (X, purple, ~260mm) cross-slides (316 flat bar + UHMW pad + gib) absorb the "
         "tilt/swing foreshortening.",
-        "3. Roll the skate / push each cross-slide into position; the gib drag holds the vertical, "
-        "then throw the cam clamp (rail brake) to lock for the shot and for transport.",
+        "3. Roll the skate / push each cross-slide into position; the gib drag holds the vertical, then "
+        "throw the cam clamp (rail brake, Section A-A) — a hand cam-lever on the carriage plate whose UHMW "
+        "pad pinches DOWN on the TOP FLANGE (~30mm reach, ~3mm throw; the load rollers on the bottom flange "
+        "react the pinch, so it never unloads the skate) — to lock for the shot and for transport.",
         "4. The U-joint (Ruland USKC12-6-6-SS, 303 SS, self-lube, grease-free, nitrile-booted) gives "
         "tilt + swing and locks twist so the flat plane stays square. The plane's WEIGHT is carried by "
         "the BOTTOM rail (web-vertical, load rollers gravity-seated on the bottom flange); the TOP rail "

@@ -27,7 +27,7 @@ Without any mitigation, the container is unusable in summer daytime. The system 
 
 | Method | Interior ΔT | Cost | Power | Required? |
 |--------|------------|------|-------|-----------|
-| 80% shade cloth canopy over container | −15 to −20°C | ~<!-- BEGIN costing:vent-shade -->$246<!-- END costing:vent-shade --> | None | **Yes — always** |
+| 80% shade cloth canopy over container | −15 to −20°C | ~<!-- BEGIN costing:vent-shade -->$236<!-- END costing:vent-shade --> | None | **Yes — always** |
 | Scheduling (shoot before 09:00 / after 18:00 in summer) | −10 to −15°C effective | $0 | None | Recommended |
 | Evaporative cooler (swamp cooler) — 120V AC via 12V inverter | −10 to −15°C additional | ~<!-- BEGIN costing:vent-cooler-inverter -->$242<!-- END costing:vent-cooler-inverter --> (cooler + inverter) | <!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus -->W on 12V bus | **Yes — in temperatures above 30°C ambient** |
 
@@ -194,7 +194,7 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | [150×150×50mm axial fans (12V DC)](https://www.amazon.com/dp/B091BTFBD9) (B091BTFBD9) | 12V DC, ~150–200 CFM each — DA15050B12H (B091BTFBD9), 150×150×50mm, 12V 1.80A, dual-ball. ⚠ NOT the GDSTIME/Wathai '15050' Amazon fans (those are 110/120V AC) — this is the 12V DC part. Price est — confirm. | 2 ea | Amazon | $50 |
 | [Evaporative cooler](https://www.homedepot.com/p/321429692) (MC18MT) | Hessaire MC18M, 120V AC, <!-- BEGIN fact:cooler_cfm_rated -->1,300<!-- END fact:cooler_cfm_rated --> CFM (run low), <!-- BEGIN fact:evap_cooler_w_ac -->85<!-- END fact:evap_cooler_w_ac -->W | 1 ea | Home Depot | $109 |
 | [Cooler inverter — Victron Phoenix 12/375 GFCI](https://www.invertersupply.com/index.php?main_page=product_info&products_id=200695) (PIN123750510) | Victron Phoenix 12/375 120V VE.Direct GFCI (12V→120V, 375VA/300W) — GFCI in the faceplate outlet satisfies the wet-cooler requirement (no separate GFCI needed). Firm $132.60. | 1 ea | Inverter Supply / PKYS | $133 |
-| [Shade cloth — 70% (10×20 ft)](https://www.amazon.com/dp/B075J93DTJ) (B075J93DTJ) | 10×20 ft shade cloth with grommets. 80% grade is uncommon on Amazon → 70% (B075J93DTJ) or 90% (B07S7Z24FL) dominate; picked 70% (price corrected $80→$40, the old est was high). Any 70–90% works for the cooler/canopy shade. | 1 ea | Amazon / Farm supply | $40 |
+| [Shade cloth — 70% (10×20 ft)](https://www.amazon.com/dp/B075J93DTJ) (B075J93DTJ) | Perfect Sunblock 10×20 ft 70% shade cloth with grommets (B075J93DTJ), $30.50 firm (Alvin 2026-07-30). 80% grade is uncommon; 70% chosen (any 70–90% works for the cooler/canopy shade). | 1 ea | Amazon / Farm supply | $30 |
 | [1.5" EMT conduit, 10 ft](https://www.homedepot.com/p/304229415) (550210000) | Shade-canopy frame legs + top rails. 1" EMT, 6× 10-ft sticks (downsized from 1.5" 2026-07-27 — adequate for a shade-cloth canopy). | 6 stick | Home Depot | $131 |
 | [EMT canopy fittings (couplings, corner ells, connectors)](https://www.homedepot.com/p/100135091) (12210) | 1" EMT set-screw couplings joining the straight frame runs (×8). Corner turns handled by the 1" pull elbows (canopy-emt-elbows). | 8 ea | Home Depot | $12 |
 | [EMT canopy base plates + ground stakes (×4)](https://www.homedepot.com/p/317889187) (PDB-F-1-4) | PIPE DECOR 1" black-iron floor flange 4-pack — one per leg base (×4). Add ground stakes/guys if free-standing. | 1 4-pack | Home Depot | $16 |
@@ -206,10 +206,10 @@ All circuits originate from the Blue Sea 5026 fuse block in the main electrical 
 | [Duct collar + hose clamp](https://www.homedepot.com/p/100211540) (DSCF8) | Master Flow 8" starting collar/take-off (DSCF8 $8.98, Home Depot) + worm-drive band clamp (McMaster 4866N35 $7.25) = $16.23/set to secure the flex duct. | 1 set | Home Depot | $16 |
 | [Weatherproof duct cap](https://www.homedepot.com/p/100396923) (8DC) | Master Flow 8" round removable duct cap | 1 ea | Home Depot | $12 |
 | [Deutsch DT 2-pin connectors (Amphenol AT2PS-CKIT)](https://www.waytekwire.com/product/amphenol-sine-systems-at2ps-ckit-2-pin) (AT2PS-CKIT) | Amphenol AT2PS-CKIT 2-pin connector kit (DT-compatible), IP67 — Fan B flex connector (×2 sets). Same part as deutsch-dt-2pin-elec. $4/set est — confirm at order. | 2 set | Waytek Wire | $8 |
-| [16 AWG coiled (retractile) cable, 2-cond](https://www.amazon.com/dp/B00BSORUSW) (B00BSORUSW) | 1m, 2-conductor retractile — Fan B flex. Unique Dynamics 16AWG 2-cond coiled cord (B00BSORUSW), stretches ~4ft. Jacket is PVC (silicone-coiled 16AWG is rare/custom) — PVC is fine for this dry interior flex. Waytek has no matching coiled cable. Price est. | 1 ea | Amazon / Waytek Wire | $15 |
+| [16 AWG coiled (retractile) cable, 2-cond](https://www.grainger.com/category/electrical/power-strips-extension-cords-cord-reels/power-cords?searchQuery=16+awg%2C+2-conductor+coiled+cable) | 1m, 2-conductor coiled/retractile — Fan B flex. Grainger $17.83 (Alvin 2026-07-30) — confirm the exact Grainger SKU (a search URL was given). Amazon alt: Unique Dynamics B00BSORUSW (PVC). Silicone jacket rare; PVC fine for this dry interior flex. | 1 ea | Grainger / Amazon | $18 |
 | Cooler external power cable | 1.5m, 14 AWG 2-cond, Deutsch DT 2-pin plugs each end | 1 ea | Waytek Wire / Amazon | $20 |
 | [Ratchet straps, 25mm](https://www.homedepot.com/p/312994495) (FH0829) | Cooler stowage. Husky 12 ft × 1" ratchet tie-downs, S-hook, 4-pack — design uses 2, 2 spare | 1 4-pack | Home Depot | $10 |
-| **Ventilation total** | | | | **$747** |
+| **Ventilation total** | | | | **$740** |
 <!-- END parts:ventilation -->
 
 ---

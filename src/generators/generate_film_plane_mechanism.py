@@ -821,10 +821,14 @@ def section_aa(ax):
     _uchan_hatch(ax, 5, 0, 38, 5)          # BOTTOM flange (running surface)
     _uchan_hatch(ax, 39, 5, 4, 9)          # inboard LIP on the bottom flange (lateral keeper, X)
     _uchan_hatch(ax, 5, 71, 38, 5)         # top flange
-    # ── Ø32 acetal LOAD roller, gravity-seated on the bottom flange (edge-on: axis = X, in-plane) ──
-    _rect(ax, 9, 5, 16, 32, C_ACET, z=7)                                            # Ø32 LOAD roller (rim, cut)
+    # ── Ø32 acetal LOAD roller, gravity-seated on the bottom flange (edge-on: axis = X, in-plane). WIDE
+    #    FACE: nearly spans the flat running surface (web → lip = 34mm), ~4mm clearance to web + lip so it
+    #    can't wander in X yet still rolls free. ──
+    _rect(ax, 9, 5, 26, 32, C_ACET, z=7)                                            # Ø32 LOAD roller (rim, cut) — wide face
     _rect(ax, 6, 16, 44, 10, C_STEEL, z=8)                                          # Ø10 axle/shaft — runs THROUGH the wheel, cantilevered to the carriage
-    draw_circle(ax, 17, 21, 3.2, color=OUT, fill=True, fc="#9AA0A8", lw=0.5, zorder=9)  # hub at the wheel centre (shaft goes through)
+    draw_circle(ax, 22, 21, 3.2, color=OUT, fill=True, fc="#9AA0A8", lw=0.5, zorder=9)  # hub at the wheel centre (shaft goes through)
+    for gx0, gx1 in ((5, 9), (35, 39)):                                             # ~4mm running clearance, web + lip
+        ax.annotate("", xy=(gx1, 10), xytext=(gx0, 10), arrowprops=dict(arrowstyle="<->", color=DIM, lw=0.5))
     # ── KEEPER roller, just under the top flange (anti-lift), on its own stub axle ──
     _rect(ax, 11, 55, 13, 15, C_ACET, z=7)                                          # keeper roller (rim, cut)
     _rect(ax, 8, 58, 42, 8, C_STEEL, z=8)                                           # keeper stub axle — THROUGH the wheel to the carriage
@@ -858,7 +862,7 @@ def section_aa(ax):
     draw_dim_h(ax, 5, 43, -10, "38mm flange", offset=7, fs=5.4, color=DIM, above=False, font=FONT)
     # leaders
     leader(ax, 2, 38, -25, 28, "WEB (outboard,\nsplice face)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 17, 9, -8, -12, "Ø32 LOAD roller\n(gravity-seated)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 11, 6, -26, -1, "Ø32 LOAD roller —\nwide face, ~4mm\nto web + lip", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 17, 68, -26, 84, "KEEPER roller — runs under\nthe top flange = anti-lift\n(shock / reversal)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 41, 12, 52, -2, "LIP on the bottom flange —\nstops X walk-off on swing", ha="left", fs=5.0, color=C_TILT, font=FONT, bbox=LBL_BG)
     leader(ax, 57, 2, 84, -12, "retainer bolt DOWN through the plate\n(saddle clamp — not through the rail)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
@@ -872,39 +876,39 @@ def section_top(ax):
     """SECTION B-B — cut across the TOP (guide) rail. The 3×1.5 6061 Al U-channel is laid FLAT (inverted-U):
     web = closed TOP, flanges hang DOWN, so the channel OPENS DOWNWARD. The guide drum's axle therefore stays
     WITHIN the throat; the carriage is a YOKE that reaches UP through the opening (past the lips) — its arms
-    bear the flanges (lateral X) + hook the lips (anti-drop) and grab the axle ends, so nothing pierces a
-    flange. Top rail carries NO weight (a depth/lateral guide); short in Z = minimum ceiling cost."""
+    run ~4mm clear of the flanges (loose lateral guide) + hook the lips (anti-drop) and grab the axle ends, so
+    nothing pierces a flange. Top rail carries NO weight (a depth/lateral guide); short in Z = minimum ceiling cost."""
     ax.set_xlim(-26, 122); ax.set_ylim(-66, 66); ax.set_aspect("equal"); ax.axis("off")
     # inverted-U: web on top (closed), flanges hang down — opening faces DOWN
     _uchan_hatch(ax, 0, 33, 76, 5)          # web = closed top / splice face (76 wide)
     for fx in (0, 71):
         _uchan_hatch(ax, fx, 0, 5, 38)      # flanges hang down (38)
-    # WIDE Ø32 acetal guide WHEEL in the throat (Z guide, up against the web) — face width = 10mm NARROWER than the
-    # yoke span (arms at x10/x66 → 56 span → 46 face), leaving ~5mm running clearance to each yoke arm.
-    _rect(ax, 15, 1, 46, 32, C_ACET, z=7)
+    # WIDE Ø32 acetal guide WHEEL in the throat (Z guide, up against the web) — 40mm face, spins between the
+    # yoke arms (arms at x9-15 / x61-67 → 46 inner span → 40 face → ~3mm clearance to each arm).
+    _rect(ax, 18, 1, 40, 32, C_ACET, z=7)
     # AXLE — a HORIZONTAL shaft along the wheel's length (X); it runs out to the yoke arms and stays in the throat
-    _rect(ax, 10, 12, 56, 10, C_STEEL, z=6)
+    _rect(ax, 12, 12, 52, 10, C_STEEL, z=6)
     # ghost the axle where it is HIDDEN behind the wheel — shows the shaft passing THROUGH the wheel
-    ax.add_patch(plt.Rectangle((15, 12), 46, 10, fc="none", ec=OUT, lw=0.6, ls=(0, (3, 2)), zorder=9))
+    ax.add_patch(plt.Rectangle((18, 12), 40, 10, fc="none", ec=OUT, lw=0.6, ls=(0, (3, 2)), zorder=9))
     ax.plot([38, 38], [12, 22], color="#6A6A72", lw=0.5, zorder=8)
-    # ~5mm running-clearance marks between the wide wheel and each yoke arm
-    for gx0, gx1 in ((10, 15), (61, 66)):
+    # ~4mm running-clearance marks between each yoke arm and the channel flange it reaches past
+    for gx0, gx1 in ((5, 9), (67, 71)):
         ax.annotate("", xy=(gx1, 6), xytext=(gx0, 6), arrowprops=dict(arrowstyle="<->", color=DIM, lw=0.5))
-    # YOKE — a JOINED U-bracket up through the OPENING: two arms grab the axle ends + bear the flanges (lateral X)
+    # YOKE — a JOINED U-bracket up through the OPENING: two arms clear the flanges by ~4mm (running guide, lateral X)
     # + hook the lips (anti-drop), JOINED by a cross-piece below the opening (one part).
-    for ax_x in (4, 66):
-        _rect(ax, ax_x, -14, 6, 36, C_CAR, z=8)                                      # yoke arm (through opening, against a flange)
-    _rect(ax, 4, -22, 68, 8, C_CAR, z=8)                                             # cross-piece JOINS the two arms
-    _rect(ax, 58, -8, 14, 4, C_CAR, z=9)                                             # inboard lip-hook (anti-drop)
+    for ax_x in (9, 61):
+        _rect(ax, ax_x, -14, 6, 36, C_CAR, z=8)                                      # yoke arm (through opening, ~4mm off a flange)
+    _rect(ax, 9, -22, 58, 8, C_CAR, z=8)                                             # cross-piece JOINS the two arms
+    _rect(ax, 53, -8, 14, 4, C_CAR, z=9)                                             # inboard lip-hook (anti-drop)
     # carriage + stack hang from the joined yoke
     _rect(ax, 40, -46, 12, 24, C_CAR, z=6)                                           # carriage plate (below the yoke)
     _rect(ax, 40, -60, 12, 14, C_TILT, z=5)                                          # cross-slide (green) hangs below
     ax.add_patch(plt.Rectangle((16, -64), 56, 5, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))  # film top edge ghost (hangs)
     ax.annotate("", xy=(38, 33), xytext=(38, 25), arrowprops=dict(arrowstyle="->", color=OUT, lw=1.0))  # guide reaction UP
     draw_dim_v(ax, -14, 0, 38, "38mm\n(short:\nceiling)", offset=7, fs=5.2, color=DIM, font=FONT)
-    leader(ax, 38, 30, 52, 44, "Ø32 guide WHEEL — 10mm narrower than the yoke (~5mm clearance each side)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 38, 30, 50, 48, "Ø32 guide wheel (40mm face) — spins between the yoke arms;\nthe arms clear the channel flanges by ~4mm each side", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 18, 17, -24, 2, "AXLE — a horizontal shaft along the wheel;\nheld by the yoke arms (never crosses a flange)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 4, -18, -24, -38, "YOKE — a JOINED U up through the OPENING;\narms bear the flanges + hook the lips (anti-drop)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 10, -18, -24, -38, "YOKE — a JOINED U up through the OPENING;\narms run ~4mm clear of the flanges + hook the lips (anti-drop)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 46, -50, 74, -50, "carriage + cross-slide\nstack hang BELOW", ha="left", fs=5.0, color=DIM, font=FONT, bbox=LBL_BG)
     ax.text(-26, 65, "SECTION B-B — TOP (guide) carriage",
             fontsize=6.8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
@@ -986,8 +990,8 @@ def sheet3():
         "5. WHEEL CAPTURE: BOTTOM rail (opens inboard) — load rollers on the bottom flange, axle out the "
         "OPENING to the carriage; + a KEEPER under the top flange (anti-lift) + a LIP on the inboard flange "
         "edge (stops X walk-off). TOP rail (opens down) — a wide guide wheel (10mm narrower than the yoke); the "
-        "carriage is a JOINED YOKE that reaches UP through the opening: arms bear the flanges (lateral X) + "
-        "hook the lips (anti-drop) and grab the horizontal axle WITHIN the throat (nothing pierces a flange). "
+        "carriage is a JOINED YOKE that reaches UP through the opening: arms run ~4mm clear of the flanges "
+        "(loose lateral guide) + hook the lips (anti-drop) and grab the horizontal axle WITHIN the throat (nothing pierces a flange). "
         "(LEFT rails = a transport drop-in — see Sheet 4.)",
         "6. OVERTURNING COUPLE: the film-corner load is ~50mm INBOARD of the rail (via the stack) — a moment "
         "about the rollers. The load↓ / keeper↑ pair, spaced by the channel depth, reacts it — so the keepers "

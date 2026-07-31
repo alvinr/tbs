@@ -686,14 +686,15 @@ PARTS: list[Part] = [
 
     # ═══ film (film-plane-mechanism-report §7) — itemized; structural+frame+saddles, sums to costing
     # FILM minus the clamp lines (= 3,102). The muslin clamps are the separate 'clamp' system below. ═══
-    # — Structural & Rails (304 U-channel + acetal skate + 316 cross-slide + Ruland U-joint corner mechanism) —
+    # — Structural & Rails (304 U-channel + acetal skate + 316 cross-slide + Belden U-joint corner mechanism) —
     # Replaced the superseded Option-A leadscrew drive (HGR20/Acme/handwheel/rod-end) 2026-07-19.
     Part("fp-u-channel", '6061-T6 Al U-channel depth rail 3×1½"×0.2" (76×38mm), 8 ft', "aluminum",
          "film", 4, "ea", 81.99, 81.99, "Grainger", part_no="795M51", url="https://www.grainger.com/product/795M51",
          spec="4 depth rails, one per corner, running wall-to-wall (~2,362mm, Yd0→C_WID) along the optical axis — an acetal skate rides inside each to set that corner's depth/focus. 6061-T6 aluminum, SAME 76×38 section (SS audit 2026-07-29 — was 304 @ McMaster $362/6ft = $2,173, the single biggest SS line). Structural check: 6061-T6 yield (~276 MPa) EXCEEDS annealed 304 (~215 MPa) so strength is fine; the ~3× lower E gives ~1mm sag vs ~0.4mm over the 2.36m span — optically irrelevant at f/1088, and flatness is carried by the ACM backing (same logic as the Al frame). Also ~34 kg lighter across the 4 rails. SOURCING: each rail must be ONE continuous piece ≥2,362mm (the skate can't cross a splice). Grainger 795M51 (6061 Al U-channel, 3×1½×0.2\" wall) is stocked in 8 ft (2,438mm) lengths — one uncut stick spans the 2,362mm rail with margin, so 4 sticks = 4 rails, no splice. $81.99/8ft firm (Alvin 2026-07-29)."),
-    Part("fp-ujoint", "Ruland USKC12-6-6-SS U-joint (keyway+clamp, 303 SS)", "bearings-motion",
-         "film", 4, "ea", 276, 276, "Ruland", part_no="USKC12-6-6-SS", url="https://www.ruland.com/uskc12-6-6-ss.html",
-         spec='One per corner — supplies the tilt+swing angular DOF (45°/axis); 3/8" bores, 303 stainless (wet zone), twist-locked. $276 ea firm — INTERIM part; a cheaper joint is under research (see TODO). The U-joint alone is $276×4 = $1,104.'),
+    Part("fp-ujoint", "Belden UJ-SS750x375 U-joint (3/8\" bore, 45deg, 303/416 SS)", "bearings-motion",
+         "film", 4, "ea", 112.68, 112.68, "MROSupply", "Grainger", part_no="UJ-SS750x375",
+         url="https://www.mrosupply.com/shaft-couplings-and-collars/2561134_uj-ss750x375_belden/",
+         spec='One per corner — supplies the tilt+swing angular DOF; 3/8" (0.375") bore, 0.75" OD, 45deg max angle, 303/416 stainless pin-and-block friction bearing. Replaced the Belden UJ-SS750x375 ($276) at ~half the cost — same bore/angle/material class; backlash is optically irrelevant at f/1088. Backup: Grainger 806V18 ($198). $112.68 ea firm (Alvin 2026-07-31); $112.68x4 = $450.72. NOTE: setscrew bore (fine at near-zero torque; -K keyway variant available); re-check the fp-ujoint-boot fit for this joint (Belden offers washdown boots).'),
     Part("fp-ujoint-boot", "Ruland UBOOT12/19-NI-KIT nitrile boot", "seals-gaskets",
          "film", 4, "ea", 30.59, 30.59, "Ruland", part_no="UBOOT12/19-NI-KIT",
          url="https://www.ruland.com/uboot12-19-ni-kit.html",
@@ -703,7 +704,7 @@ PARTS: list[Part] = [
          spec="Two-piece 304 clamp securing the U-joint INPUT stub to the X (swing) slide, one per corner. $58 ea firm."),
     Part("fp-stub-shaft", '3/8" 304/304L SS rod — U-joint stub shafts (1× 3 ft)', "steel-structural",
          "film", 1, "lot", 13, 13, "McMaster-Carr", part_no="89535K87", url="https://www.mcmaster.com/89535K87/",
-         spec='Input + output stub shafts into the U-joint (2/corner ×4 = 8 short stubs, ~60–80mm each ≈ 560–640mm + kerf). ONE 3 ft (914mm) length ($13.25 firm) yields all 8 with margin. Plain 304 rod — the USKC clamp grips it (keyway optional).'),
+         spec='Input + output stub shafts into the U-joint (2/corner ×4 = 8 short stubs, ~60–80mm each ≈ 560–640mm + kerf). ONE 3 ft (914mm) length ($13.25 firm) yields all 8 with margin. Plain 304 rod — the Belden setscrew hub grips it (a flat is optional).'),
     # fp-skate DECOMPOSED 2026-07-22 → off-the-shelf rollers/axles + fab carriage plate (mirrors the spray skate)
     Part("fp-skate-roller", "1-1/4\" OD acetal load rollers — Delrin rod (cut ×8)", "bearings-motion",
          "film", 1, "1 ft rod", 10.97, 10.97, "McMaster-Carr", part_no="8576K23",

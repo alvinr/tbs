@@ -744,7 +744,7 @@ def view_a(ax):
     ax.text(228, 228, "Z-slide TILT travel ~250mm (way runs up behind the rail)", fontsize=5.2, color=C_TILT, ha="left", va="center", rotation=90, **FONT)
 
     # ── leaders ──
-    leader(ax, 60, 270, 232, 300, "DEPTH RAIL (Y) — 3×1.5 6061 Al U-channel, web-vertical, runs in Yd; the traverse (~2.4 m floor rail)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 60, 270, 232, 300, "DEPTH RAIL (Y) — 3×1.5 6061 Al U-channel, web-vertical,\nruns in Yd; the traverse (~2.4 m floor rail)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 190, 253, 232, 262, "4-wheel acetal skate — Ø32 LOAD rollers on the bottom flange\n+ Ø20 KEEPER rollers under the top flange (captive)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 210, 210, 232, 210, "wide carriage plate (red) + cam clamp — hangs from the skate axles", ha="left", fs=5.8, color=C_CAR, font=FONT, bbox=LBL_BG)
     leader(ax, 170, 200, 232, 186, "Z (TILT) slide — 316 flat bar + UHMW + gib (green, up the plate centre)", ha="left", fs=5.8, color=C_TILT, font=FONT, bbox=LBL_BG)
@@ -815,7 +815,7 @@ def section_aa(ax):
     anti-lift capture for transport shock / load reversal — and a shallow LIP on the bottom flange's inboard
     edge stops the roller walking off in X when the plane swings. Ø10 axles cantilever INBOARD to the
     carriage plate only (never cross the web); the retainer bolt passes DOWN through the plate (saddle clamp)."""
-    ax.set_xlim(-26, 118); ax.set_ylim(-16, 92); ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(-26, 118); ax.set_ylim(-16, 108); ax.set_aspect("equal"); ax.axis("off")
     # ── U-channel, web-vertical (outboard web at left; flanges project inboard/right) ──
     _uchan_hatch(ax, 0, 0, 5, 76)          # web = outboard back / splice face (76 tall)
     _uchan_hatch(ax, 5, 0, 38, 5)          # BOTTOM flange (running surface)
@@ -849,7 +849,7 @@ def section_aa(ax):
     _rect(ax, 24, 75, 13, 4, C_POLY, z=10)                             # UHMW pad — bites DOWN on the top flange
     ax.annotate("", xy=(30, 75), xytext=(30, 83), arrowprops=dict(arrowstyle="->", color=C_CAR, lw=1.3, zorder=11))
     draw_dim_h(ax, 30, 52, 87, "~22mm reach", offset=5, fs=5.0, color=DIM, font=FONT)  # mount → pad (5128A63)
-    leader(ax, 56, 84, 24, 88, "cam brake (5128A63)", ha="left", fs=4.9, color=C_CLAMP, font=FONT, bbox=LBL_BG)
+    leader(ax, 56, 91, 44, 101, "cam brake (5128A63)", ha="left", fs=4.9, color=C_CLAMP, font=FONT, bbox=LBL_BG)
     # seating + lift arrows
     ax.annotate("", xy=(17, 42), xytext=(17, 52), arrowprops=dict(arrowstyle="->", color=OUT, lw=1.4))
     ax.text(6, 47, "WEIGHT", fontsize=5.4, ha="right", va="center", color=OUT, **FONT)
@@ -859,13 +859,13 @@ def section_aa(ax):
     # leaders
     leader(ax, 2, 38, -25, 28, "WEB (outboard,\nsplice face)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 17, 9, -8, -12, "Ø32 LOAD roller\n(gravity-seated)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 17, 68, 30, 84, "KEEPER roller — runs under the top\nflange = anti-lift (shock / reversal)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 17, 68, -26, 84, "KEEPER roller — runs under\nthe top flange = anti-lift\n(shock / reversal)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 41, 12, 52, -2, "LIP on the bottom flange —\nstops X walk-off on swing", ha="left", fs=5.0, color=C_TILT, font=FONT, bbox=LBL_BG)
     leader(ax, 57, 2, 84, -12, "retainer bolt DOWN through the plate\n(saddle clamp — not through the rail)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 104, 33, 96, 50, "→ cross-slide stack (Z/X)\n→ U-joint → film corner", ha="left", fs=5.0, color=DIM, font=FONT, bbox=LBL_BG)
-    ax.text(-26, 92, "SECTION A-A — BOTTOM (weight) carriage",
+    ax.text(-26, 107, "SECTION A-A — BOTTOM (weight) carriage",
             fontsize=6.8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
-    ax.text(-26, 85, "web-vertical channel", fontsize=5.4, color=DIM, ha="left", va="top", **FONT)
+    ax.text(-26, 100, "web-vertical channel", fontsize=5.4, color=DIM, ha="left", va="top", **FONT)
 
 
 def section_top(ax):
@@ -874,7 +874,7 @@ def section_top(ax):
     WITHIN the throat; the carriage is a YOKE that reaches UP through the opening (past the lips) — its arms
     bear the flanges (lateral X) + hook the lips (anti-drop) and grab the axle ends, so nothing pierces a
     flange. Top rail carries NO weight (a depth/lateral guide); short in Z = minimum ceiling cost."""
-    ax.set_xlim(-26, 122); ax.set_ylim(-66, 50); ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(-26, 122); ax.set_ylim(-66, 66); ax.set_aspect("equal"); ax.axis("off")
     # inverted-U: web on top (closed), flanges hang down — opening faces DOWN
     _uchan_hatch(ax, 0, 33, 76, 5)          # web = closed top / splice face (76 wide)
     for fx in (0, 71):
@@ -906,9 +906,9 @@ def section_top(ax):
     leader(ax, 18, 17, -24, 2, "AXLE — a horizontal shaft along the wheel;\nheld by the yoke arms (never crosses a flange)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 4, -18, -24, -38, "YOKE — a JOINED U up through the OPENING;\narms bear the flanges + hook the lips (anti-drop)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 46, -50, 74, -50, "carriage + cross-slide\nstack hang BELOW", ha="left", fs=5.0, color=DIM, font=FONT, bbox=LBL_BG)
-    ax.text(-26, 50, "SECTION B-B — TOP (guide) carriage",
+    ax.text(-26, 65, "SECTION B-B — TOP (guide) carriage",
             fontsize=6.8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
-    ax.text(-26, 43, "wide wheel + horizontal axle; a JOINED yoke reaches up through the opening — nothing pierces a flange",
+    ax.text(-26, 58, "wide wheel + horizontal axle; a JOINED yoke reaches up through the opening — nothing pierces a flange",
             fontsize=5.0, color=DIM, ha="left", va="top", **FONT)
 
 
@@ -954,8 +954,8 @@ def sheet3():
     ax_a = fig.add_axes([0.03, 0.42, 0.45, 0.55]); ax_a.set_facecolor(BG)
     ax_b = fig.add_axes([0.52, 0.68, 0.24, 0.29]); ax_b.set_facecolor(BG)
     ax_stub = fig.add_axes([0.78, 0.68, 0.21, 0.28]); ax_stub.set_facecolor(BG)
-    ax_sec = fig.add_axes([0.52, 0.45, 0.23, 0.21]); ax_sec.set_facecolor(BG)
-    ax_sec2 = fig.add_axes([0.75, 0.45, 0.22, 0.21]); ax_sec2.set_facecolor(BG)
+    ax_sec = fig.add_axes([0.52, 0.42, 0.24, 0.24]); ax_sec.set_facecolor(BG)
+    ax_sec2 = fig.add_axes([0.76, 0.42, 0.23, 0.24]); ax_sec2.set_facecolor(BG)
     ax_c = fig.add_axes([0.03, 0.10, 0.45, 0.28]); ax_c.set_facecolor(BG)
     view_a(ax_a)
     view_b(ax_b)
@@ -965,7 +965,7 @@ def sheet3():
     view_c(ax_c)
 
     # notes block
-    ax_n = fig.add_axes([0.52, 0.085, 0.45, 0.35]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100)
+    ax_n = fig.add_axes([0.52, 0.075, 0.45, 0.325]); ax_n.set_xlim(0, 100); ax_n.set_ylim(0, 100)
     ax_n.axis("off")
     draw_notes(ax_n, [
         "CORNER MECHANISM — ONE OF FOUR:",
@@ -993,7 +993,7 @@ def sheet3():
         "about the rollers. The load↓ / keeper↑ pair, spaced by the channel depth, reacts it — so the keepers "
         "carry this static couple too. Tightest link: the 316 cross-slide bar in weak-axis bending; keep the "
         "stack compact.",
-    ], 2, 99, 3.6, fs=5.4, title_fs=6.6, color=DIM, width=52, wrap=88, font=FONT)
+    ], 2, 99, 3.6, fs=5.4, title_fs=6.6, color=DIM, width=68, wrap=115, font=FONT)
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")

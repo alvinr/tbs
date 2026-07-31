@@ -30,7 +30,7 @@ Modeled dimensions are the `tbs_constants.py` value(s) the generators draw. mm.
 | 2 | LiFePO4 battery, 100Ah 12V (Renogy Core Series) | 260×169×211 — Renogy 12V 100Ah Core Series | `BA_W/BA_D/BA_H` | ✅ FIXED |
 | 3 | Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 filter loop / P-03 waste evac / P-04 tray drain / P-05 Brown drain) | 216×127×114 — Shurflo 2088-554-144 | `PUMP_D×PUMP_YD_SPAN×Z` | ✅ FIXED (minor) — protrusion PUMP_D 100→114 |
 | 4 | Big Blue filter housing 4.5"×20" (separate) | Ø184×594 — Pentek 4.5×20 BB | `BB_OD/BB_H` | 3-separate design of record (2026-07): combo → 3 separate housings + frame per plumbing-report §3.1/§7.2. Prices indicative — firm at the Aug-2026 re-price. |
-| 5 | 150×150×50mm axial fans | 150×150×50 | `FAN_DIAM/FAN_BODY_D` | ✅ FIXED |
+| 5 | 150×150×50mm axial fans (12V DC) | 150×150×50 | `FAN_DIAM/FAN_BODY_D` | ✅ FIXED |
 | 6 | Evaporative cooler | 508×254×711 — Hessaire MC18M | `EVAP_W/EVAP_D/EVAP_H` | ✅ RESOLVED |
 | 7 | SeaFlo accumulator (0.75 L) | 200×127×125 — SeaFlo SFAT-075-125-01 | `Ø127×200 cyl` | ✅ FIXED — cylinder 150→200 |
 | 8 | 304 SS RHS 40×25×3mm, 8 ft * | 40×25×3 | `(model uses 40×25×3)` |  |

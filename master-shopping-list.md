@@ -170,9 +170,9 @@ indicative low–high estimates — get quotes before ordering.
 | [PV cable 10 AWG + MC4 connectors (11 ft extension pair)](https://signaturesolar.com/11ft-10awg-pv-wire-extension-black-red/) (1534034) | 1 lot | Signature Solar | electrical | $30 |
 | [Remote battery switch — Blue Sea ML-RBS 500A magnetic-latch (E-stop trip)](https://www.invertersupply.com/index.php?main_page=product_info&products_id=5288) (7700) | 1 ea | Inverter Supply | electrical | $264 |
 | [SBL COB 12V red LED safelight strip, 5m reel (Circuit D)](https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc) (STN-B-BRED-O12A-08F5M-12V) | 1 reel | Super Bright LEDs | electrical | $90 |
-| Sealed wet-zone connectors — Deutsch DT / adhesive heat-shrink | 1 lot | Waytek Wire | electrical | $25 |
+| [Sealed wet-zone connectors — 6× Deutsch DT 2-pin pairs (pump circuits)](https://www.buydeutsch.com/collections/dt-series/products/dt06-2s) (DT06-2S) | 1 lot | buyDeutsch | electrical | $27 |
 | [Shore-charger output fuse — 20A inline (sealed holder + fuse)](https://www.waytekwire.com/product/sealed-ato-atc-fuse-holder-assembly-46047) (46047) | 1 ea | Waytek Wire | electrical | $7 |
-| **electrical-distribution subtotal** | | | | **$1,986–$1,996** |
+| **electrical-distribution subtotal** | | | | **$1,988–$1,998** |
 
 ### electrical-power
 
@@ -461,8 +461,8 @@ indicative low–high estimates — get quotes before ordering.
 | Grainger | 2 | aluminum | $377 |
 | Powerwerx | 5 | electrical-distribution, electrical-power | $311 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
-| Waytek Wire | 18 | electrical-distribution, electrical-power | $284 |
 | igus | 1 | bearings-motion | $261 |
+| Waytek Wire | 17 | electrical-distribution, electrical-power | $259 |
 | americandoorsupply | 1 | electrical-distribution | $244 |
 | Bearings Direct | 2 | bearings-motion | $201 |
 | Amazon (bundle) | 1 | seals-gaskets | $157–$178 |
@@ -491,6 +491,7 @@ indicative low–high estimates — get quotes before ordering.
 | Marine Fiberglass Direct | 1 | fasteners-hardware | $25–$45 |
 | DripDepot | 3 | fasteners-hardware, plumbing-fittings | $38 |
 | Signature Solar | 1 | electrical-distribution | $30 |
+| buyDeutsch | 1 | electrical-distribution | $27 |
 | Harfington | 2 | electrical-distribution | $25 |
 | CountryMax (Aqueon) | 1 | seals-gaskets | $17–$25 |
 | Wurth Baer Supply | 1 | fasteners-hardware | $24 |

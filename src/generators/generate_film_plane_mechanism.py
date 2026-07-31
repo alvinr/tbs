@@ -843,13 +843,13 @@ def section_aa(ax):
     _rect(ax, 48, 72, 16, 9, C_CLAMP, z=9)                              # clamp BASE on the plate top
     for _mbx in (51, 61):
         ax.plot([_mbx, _mbx], [72, 81], color=C_PIN, lw=0.7, zorder=10)  # 2× M5 mount bolts into the plate
-    _rect(ax, 18, 79, 36, 4, C_CLAMP, z=9)                             # clamp ARM (reaches over the flange)
+    _rect(ax, 24, 79, 30, 4, C_CLAMP, z=9)                             # clamp ARM (reaches over the flange)
     draw_circle(ax, 52, 81, 2.4, color=C_PIN, fill=True, fc=C_PIN, lw=0.6, zorder=11)  # cam pivot
     ax.plot([52, 66], [81, 91], color=C_CLAMP, lw=2.4, zorder=10)      # cam LEVER handle (thrown = locked)
-    _rect(ax, 19, 75, 13, 4, C_POLY, z=10)                             # UHMW pad — bites DOWN on the top flange
-    ax.annotate("", xy=(25, 75), xytext=(25, 83), arrowprops=dict(arrowstyle="->", color=C_CAR, lw=1.3, zorder=11))
-    draw_dim_h(ax, 25, 52, 87, "~30mm reach", offset=5, fs=5.0, color=DIM, font=FONT)  # mount → pad
-    leader(ax, 56, 84, 20, 90, "cam rail-brake (fp-cam-clamp)", ha="left", fs=4.9, color=C_CLAMP, font=FONT, bbox=LBL_BG)
+    _rect(ax, 24, 75, 13, 4, C_POLY, z=10)                             # UHMW pad — bites DOWN on the top flange
+    ax.annotate("", xy=(30, 75), xytext=(30, 83), arrowprops=dict(arrowstyle="->", color=C_CAR, lw=1.3, zorder=11))
+    draw_dim_h(ax, 30, 52, 87, "~22mm reach", offset=5, fs=5.0, color=DIM, font=FONT)  # mount → pad (5128A63)
+    leader(ax, 56, 84, 24, 88, "cam brake (5128A63)", ha="left", fs=4.9, color=C_CLAMP, font=FONT, bbox=LBL_BG)
     # seating + lift arrows
     ax.annotate("", xy=(17, 42), xytext=(17, 52), arrowprops=dict(arrowstyle="->", color=OUT, lw=1.4))
     ax.text(6, 47, "WEIGHT", fontsize=5.4, ha="right", va="center", color=OUT, **FONT)
@@ -976,8 +976,8 @@ def sheet3():
         "~250mm) + HORIZONTAL (X, purple, ~260mm) cross-slides (316 flat bar + UHMW pad + gib) absorb the "
         "tilt/swing foreshortening.",
         "3. Roll the skate / push each cross-slide into position; the gib drag holds the vertical, then "
-        "throw the cam clamp (rail brake, Section A-A) — a hand cam-lever on the carriage plate whose UHMW "
-        "pad pinches DOWN on the TOP FLANGE (~30mm reach, ~3mm throw; the load rollers on the bottom flange "
+        "throw the cam clamp (rail brake, Section A-A) — McMaster 5128A63 low-profile hold-down toggle clamp "
+        "on the carriage plate whose UHMW pad pinches DOWN on the TOP FLANGE (~22mm reach, ~3mm throw; the load rollers on the bottom flange "
         "react the pinch, so it never unloads the skate) — to lock for the shot and for transport.",
         "4. The U-joint (Ruland USKC12-6-6-SS, 303 SS, self-lube, grease-free, nitrile-booted) gives "
         "tilt + swing and locks twist so the flat plane stays square. The plane's WEIGHT is carried by "

@@ -1633,9 +1633,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"
-  face = grp.entities.add_face([183.mm,2212.mm,2285.mm], [4591.mm,2212.mm,2285.mm], [4591.mm,2262.mm,2285.mm], [183.mm,2262.mm,2285.mm])
+  face = grp.entities.add_face([183.mm,2212.mm,2287.mm], [4591.mm,2212.mm,2287.mm], [4591.mm,2262.mm,2287.mm], [183.mm,2262.mm,2287.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(5.mm)
+  face.pushpull(3.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -1644,7 +1644,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Film frame 2x2 6061 Al angle — top (in-plane leg / ACM seat)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 Al angle — top (in-plane leg / ACM seat)"
-  face = grp.entities.add_face([183.mm,2257.mm,2240.mm], [4591.mm,2257.mm,2240.mm], [4591.mm,2262.mm,2240.mm], [183.mm,2262.mm,2240.mm])
+  face = grp.entities.add_face([183.mm,2259.mm,2240.mm], [4591.mm,2259.mm,2240.mm], [4591.mm,2262.mm,2240.mm], [183.mm,2262.mm,2240.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -1657,7 +1657,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Film frame 2x2 6061 Al angle — bottom (upstand / muslin spring clip)"
   face = grp.entities.add_face([183.mm,2212.mm,160.mm], [4591.mm,2212.mm,160.mm], [4591.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(5.mm)
+  face.pushpull(3.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -1666,7 +1666,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Film frame 2x2 6061 Al angle — bottom (in-plane leg / ACM seat)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 Al angle — bottom (in-plane leg / ACM seat)"
-  face = grp.entities.add_face([183.mm,2257.mm,160.mm], [4591.mm,2257.mm,160.mm], [4591.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
+  face = grp.entities.add_face([183.mm,2259.mm,160.mm], [4591.mm,2259.mm,160.mm], [4591.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -1677,7 +1677,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Film frame 2x2 6061 Al angle — left (upstand / muslin spring clip)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 Al angle — left (upstand / muslin spring clip)"
-  face = grp.entities.add_face([183.mm,2212.mm,160.mm], [188.mm,2212.mm,160.mm], [188.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
+  face = grp.entities.add_face([183.mm,2212.mm,160.mm], [186.mm,2212.mm,160.mm], [186.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2130.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -1688,7 +1688,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Film frame 2x2 6061 Al angle — left (in-plane leg / ACM seat)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 Al angle — left (in-plane leg / ACM seat)"
-  face = grp.entities.add_face([183.mm,2257.mm,160.mm], [233.mm,2257.mm,160.mm], [233.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
+  face = grp.entities.add_face([183.mm,2259.mm,160.mm], [233.mm,2259.mm,160.mm], [233.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2130.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -1699,7 +1699,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Film frame 2x2 6061 Al angle — right (upstand / muslin spring clip)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 Al angle — right (upstand / muslin spring clip)"
-  face = grp.entities.add_face([4586.mm,2212.mm,160.mm], [4591.mm,2212.mm,160.mm], [4591.mm,2262.mm,160.mm], [4586.mm,2262.mm,160.mm])
+  face = grp.entities.add_face([4588.mm,2212.mm,160.mm], [4591.mm,2212.mm,160.mm], [4591.mm,2262.mm,160.mm], [4588.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2130.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -1710,7 +1710,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Film frame 2x2 6061 Al angle — right (in-plane leg / ACM seat)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 Al angle — right (in-plane leg / ACM seat)"
-  face = grp.entities.add_face([4541.mm,2257.mm,160.mm], [4591.mm,2257.mm,160.mm], [4591.mm,2262.mm,160.mm], [4541.mm,2262.mm,160.mm])
+  face = grp.entities.add_face([4541.mm,2259.mm,160.mm], [4591.mm,2259.mm,160.mm], [4591.mm,2262.mm,160.mm], [4541.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2130.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -4695,7 +4695,7 @@ ents = mvpan_BL.entities
   grp.name = "Film frame 2x2 6061 — bottom upstand (Movement BL)"
   face = grp.entities.add_face([33.mm,-58.mm,2.mm], [753.mm,-58.mm,2.mm], [753.mm,-8.mm,2.mm], [33.mm,-8.mm,2.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(5.mm)
+  face.pushpull(3.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -4704,7 +4704,7 @@ ents = mvpan_BL.entities
   # Film frame 2x2 6061 — bottom in-plane leg (Movement BL)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 — bottom in-plane leg (Movement BL)"
-  face = grp.entities.add_face([33.mm,-13.mm,2.mm], [753.mm,-13.mm,2.mm], [753.mm,-8.mm,2.mm], [33.mm,-8.mm,2.mm])
+  face = grp.entities.add_face([33.mm,-11.mm,2.mm], [753.mm,-11.mm,2.mm], [753.mm,-8.mm,2.mm], [33.mm,-8.mm,2.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -4715,7 +4715,7 @@ ents = mvpan_BL.entities
   # Film frame 2x2 6061 — left upstand (Movement BL)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 — left upstand (Movement BL)"
-  face = grp.entities.add_face([33.mm,-58.mm,2.mm], [38.mm,-58.mm,2.mm], [38.mm,-8.mm,2.mm], [33.mm,-8.mm,2.mm])
+  face = grp.entities.add_face([33.mm,-58.mm,2.mm], [36.mm,-58.mm,2.mm], [36.mm,-8.mm,2.mm], [33.mm,-8.mm,2.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(720.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -4726,7 +4726,7 @@ ents = mvpan_BL.entities
   # Film frame 2x2 6061 — left in-plane leg (Movement BL)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 — left in-plane leg (Movement BL)"
-  face = grp.entities.add_face([33.mm,-13.mm,2.mm], [83.mm,-13.mm,2.mm], [83.mm,-8.mm,2.mm], [33.mm,-8.mm,2.mm])
+  face = grp.entities.add_face([33.mm,-11.mm,2.mm], [83.mm,-11.mm,2.mm], [83.mm,-8.mm,2.mm], [33.mm,-8.mm,2.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(720.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -4925,9 +4925,9 @@ ents = mvpan_TL.entities
   # Film frame 2x2 6061 — top upstand (Movement TL)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 — top upstand (Movement TL)"
-  face = grp.entities.add_face([33.mm,-58.mm,-3.mm], [753.mm,-58.mm,-3.mm], [753.mm,-8.mm,-3.mm], [33.mm,-8.mm,-3.mm])
+  face = grp.entities.add_face([33.mm,-58.mm,-1.mm], [753.mm,-58.mm,-1.mm], [753.mm,-8.mm,-1.mm], [33.mm,-8.mm,-1.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(5.mm)
+  face.pushpull(3.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -4936,7 +4936,7 @@ ents = mvpan_TL.entities
   # Film frame 2x2 6061 — top in-plane leg (Movement TL)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 — top in-plane leg (Movement TL)"
-  face = grp.entities.add_face([33.mm,-13.mm,-48.mm], [753.mm,-13.mm,-48.mm], [753.mm,-8.mm,-48.mm], [33.mm,-8.mm,-48.mm])
+  face = grp.entities.add_face([33.mm,-11.mm,-48.mm], [753.mm,-11.mm,-48.mm], [753.mm,-8.mm,-48.mm], [33.mm,-8.mm,-48.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -4947,7 +4947,7 @@ ents = mvpan_TL.entities
   # Film frame 2x2 6061 — left upstand (Movement TL)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 — left upstand (Movement TL)"
-  face = grp.entities.add_face([33.mm,-58.mm,-718.mm], [38.mm,-58.mm,-718.mm], [38.mm,-8.mm,-718.mm], [33.mm,-8.mm,-718.mm])
+  face = grp.entities.add_face([33.mm,-58.mm,-718.mm], [36.mm,-58.mm,-718.mm], [36.mm,-8.mm,-718.mm], [33.mm,-8.mm,-718.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(720.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -4958,7 +4958,7 @@ ents = mvpan_TL.entities
   # Film frame 2x2 6061 — left in-plane leg (Movement TL)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 — left in-plane leg (Movement TL)"
-  face = grp.entities.add_face([33.mm,-13.mm,-718.mm], [83.mm,-13.mm,-718.mm], [83.mm,-8.mm,-718.mm], [33.mm,-8.mm,-718.mm])
+  face = grp.entities.add_face([33.mm,-11.mm,-718.mm], [83.mm,-11.mm,-718.mm], [83.mm,-8.mm,-718.mm], [33.mm,-8.mm,-718.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(720.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -5203,7 +5203,7 @@ ents = mvpan_BR.entities
   grp.name = "Film frame 2x2 6061 — bottom upstand (Movement BR)"
   face = grp.entities.add_face([-753.mm,-58.mm,2.mm], [-33.mm,-58.mm,2.mm], [-33.mm,-8.mm,2.mm], [-753.mm,-8.mm,2.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(5.mm)
+  face.pushpull(3.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -5212,7 +5212,7 @@ ents = mvpan_BR.entities
   # Film frame 2x2 6061 — bottom in-plane leg (Movement BR)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 — bottom in-plane leg (Movement BR)"
-  face = grp.entities.add_face([-753.mm,-13.mm,2.mm], [-33.mm,-13.mm,2.mm], [-33.mm,-8.mm,2.mm], [-753.mm,-8.mm,2.mm])
+  face = grp.entities.add_face([-753.mm,-11.mm,2.mm], [-33.mm,-11.mm,2.mm], [-33.mm,-8.mm,2.mm], [-753.mm,-8.mm,2.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -5223,7 +5223,7 @@ ents = mvpan_BR.entities
   # Film frame 2x2 6061 — right upstand (Movement BR)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 — right upstand (Movement BR)"
-  face = grp.entities.add_face([-38.mm,-58.mm,2.mm], [-33.mm,-58.mm,2.mm], [-33.mm,-8.mm,2.mm], [-38.mm,-8.mm,2.mm])
+  face = grp.entities.add_face([-36.mm,-58.mm,2.mm], [-33.mm,-58.mm,2.mm], [-33.mm,-8.mm,2.mm], [-36.mm,-8.mm,2.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(720.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -5234,7 +5234,7 @@ ents = mvpan_BR.entities
   # Film frame 2x2 6061 — right in-plane leg (Movement BR)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 — right in-plane leg (Movement BR)"
-  face = grp.entities.add_face([-83.mm,-13.mm,2.mm], [-33.mm,-13.mm,2.mm], [-33.mm,-8.mm,2.mm], [-83.mm,-8.mm,2.mm])
+  face = grp.entities.add_face([-83.mm,-11.mm,2.mm], [-33.mm,-11.mm,2.mm], [-33.mm,-8.mm,2.mm], [-83.mm,-8.mm,2.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(720.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -5433,9 +5433,9 @@ ents = mvpan_TR.entities
   # Film frame 2x2 6061 — top upstand (Movement TR)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 — top upstand (Movement TR)"
-  face = grp.entities.add_face([-753.mm,-58.mm,-3.mm], [-33.mm,-58.mm,-3.mm], [-33.mm,-8.mm,-3.mm], [-753.mm,-8.mm,-3.mm])
+  face = grp.entities.add_face([-753.mm,-58.mm,-1.mm], [-33.mm,-58.mm,-1.mm], [-33.mm,-8.mm,-1.mm], [-753.mm,-8.mm,-1.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(5.mm)
+  face.pushpull(3.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -5444,7 +5444,7 @@ ents = mvpan_TR.entities
   # Film frame 2x2 6061 — top in-plane leg (Movement TR)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 — top in-plane leg (Movement TR)"
-  face = grp.entities.add_face([-753.mm,-13.mm,-48.mm], [-33.mm,-13.mm,-48.mm], [-33.mm,-8.mm,-48.mm], [-753.mm,-8.mm,-48.mm])
+  face = grp.entities.add_face([-753.mm,-11.mm,-48.mm], [-33.mm,-11.mm,-48.mm], [-33.mm,-8.mm,-48.mm], [-753.mm,-8.mm,-48.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -5455,7 +5455,7 @@ ents = mvpan_TR.entities
   # Film frame 2x2 6061 — right upstand (Movement TR)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 — right upstand (Movement TR)"
-  face = grp.entities.add_face([-38.mm,-58.mm,-718.mm], [-33.mm,-58.mm,-718.mm], [-33.mm,-8.mm,-718.mm], [-38.mm,-8.mm,-718.mm])
+  face = grp.entities.add_face([-36.mm,-58.mm,-718.mm], [-33.mm,-58.mm,-718.mm], [-33.mm,-8.mm,-718.mm], [-36.mm,-8.mm,-718.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(720.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -5466,7 +5466,7 @@ ents = mvpan_TR.entities
   # Film frame 2x2 6061 — right in-plane leg (Movement TR)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 — right in-plane leg (Movement TR)"
-  face = grp.entities.add_face([-83.mm,-13.mm,-718.mm], [-33.mm,-13.mm,-718.mm], [-33.mm,-8.mm,-718.mm], [-83.mm,-8.mm,-718.mm])
+  face = grp.entities.add_face([-83.mm,-11.mm,-718.mm], [-33.mm,-11.mm,-718.mm], [-33.mm,-8.mm,-718.mm], [-83.mm,-8.mm,-718.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(720.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -5700,9 +5700,9 @@ ents = frmTilt.entities
   # Film frame — top upstand
   grp = ents.add_group
   grp.name = "Film frame — top upstand"
-  face = grp.entities.add_face([-2204.mm,-50.mm,1060.mm], [2204.mm,-50.mm,1060.mm], [2204.mm,0.mm,1060.mm], [-2204.mm,0.mm,1060.mm])
+  face = grp.entities.add_face([-2204.mm,-50.mm,1062.mm], [2204.mm,-50.mm,1062.mm], [2204.mm,0.mm,1062.mm], [-2204.mm,0.mm,1062.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(5.mm)
+  face.pushpull(3.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -5711,7 +5711,7 @@ ents = frmTilt.entities
   # Film frame — top in-plane
   grp = ents.add_group
   grp.name = "Film frame — top in-plane"
-  face = grp.entities.add_face([-2204.mm,-5.mm,1015.mm], [2204.mm,-5.mm,1015.mm], [2204.mm,0.mm,1015.mm], [-2204.mm,0.mm,1015.mm])
+  face = grp.entities.add_face([-2204.mm,-3.mm,1015.mm], [2204.mm,-3.mm,1015.mm], [2204.mm,0.mm,1015.mm], [-2204.mm,0.mm,1015.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -5724,7 +5724,7 @@ ents = frmTilt.entities
   grp.name = "Film frame — bottom upstand"
   face = grp.entities.add_face([-2204.mm,-50.mm,-1065.mm], [2204.mm,-50.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(5.mm)
+  face.pushpull(3.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -5733,7 +5733,7 @@ ents = frmTilt.entities
   # Film frame — bottom in-plane
   grp = ents.add_group
   grp.name = "Film frame — bottom in-plane"
-  face = grp.entities.add_face([-2204.mm,-5.mm,-1065.mm], [2204.mm,-5.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([-2204.mm,-3.mm,-1065.mm], [2204.mm,-3.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -5744,7 +5744,7 @@ ents = frmTilt.entities
   # Film frame — left upstand
   grp = ents.add_group
   grp.name = "Film frame — left upstand"
-  face = grp.entities.add_face([-2204.mm,-50.mm,-1065.mm], [-2199.mm,-50.mm,-1065.mm], [-2199.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([-2204.mm,-50.mm,-1065.mm], [-2201.mm,-50.mm,-1065.mm], [-2201.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2130.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -5755,7 +5755,7 @@ ents = frmTilt.entities
   # Film frame — left in-plane
   grp = ents.add_group
   grp.name = "Film frame — left in-plane"
-  face = grp.entities.add_face([-2204.mm,-5.mm,-1065.mm], [-2154.mm,-5.mm,-1065.mm], [-2154.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([-2204.mm,-3.mm,-1065.mm], [-2154.mm,-3.mm,-1065.mm], [-2154.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2130.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -5766,7 +5766,7 @@ ents = frmTilt.entities
   # Film frame — right upstand
   grp = ents.add_group
   grp.name = "Film frame — right upstand"
-  face = grp.entities.add_face([2199.mm,-50.mm,-1065.mm], [2204.mm,-50.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [2199.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([2201.mm,-50.mm,-1065.mm], [2204.mm,-50.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [2201.mm,0.mm,-1065.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2130.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -5777,7 +5777,7 @@ ents = frmTilt.entities
   # Film frame — right in-plane
   grp = ents.add_group
   grp.name = "Film frame — right in-plane"
-  face = grp.entities.add_face([2154.mm,-5.mm,-1065.mm], [2204.mm,-5.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [2154.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([2154.mm,-3.mm,-1065.mm], [2204.mm,-3.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [2154.mm,0.mm,-1065.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2130.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -6462,9 +6462,9 @@ ents = frmSwing.entities
   # Film frame — top upstand
   grp = ents.add_group
   grp.name = "Film frame — top upstand"
-  face = grp.entities.add_face([-2204.mm,-50.mm,1060.mm], [2204.mm,-50.mm,1060.mm], [2204.mm,0.mm,1060.mm], [-2204.mm,0.mm,1060.mm])
+  face = grp.entities.add_face([-2204.mm,-50.mm,1062.mm], [2204.mm,-50.mm,1062.mm], [2204.mm,0.mm,1062.mm], [-2204.mm,0.mm,1062.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(5.mm)
+  face.pushpull(3.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -6473,7 +6473,7 @@ ents = frmSwing.entities
   # Film frame — top in-plane
   grp = ents.add_group
   grp.name = "Film frame — top in-plane"
-  face = grp.entities.add_face([-2204.mm,-5.mm,1015.mm], [2204.mm,-5.mm,1015.mm], [2204.mm,0.mm,1015.mm], [-2204.mm,0.mm,1015.mm])
+  face = grp.entities.add_face([-2204.mm,-3.mm,1015.mm], [2204.mm,-3.mm,1015.mm], [2204.mm,0.mm,1015.mm], [-2204.mm,0.mm,1015.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -6486,7 +6486,7 @@ ents = frmSwing.entities
   grp.name = "Film frame — bottom upstand"
   face = grp.entities.add_face([-2204.mm,-50.mm,-1065.mm], [2204.mm,-50.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(5.mm)
+  face.pushpull(3.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -6495,7 +6495,7 @@ ents = frmSwing.entities
   # Film frame — bottom in-plane
   grp = ents.add_group
   grp.name = "Film frame — bottom in-plane"
-  face = grp.entities.add_face([-2204.mm,-5.mm,-1065.mm], [2204.mm,-5.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([-2204.mm,-3.mm,-1065.mm], [2204.mm,-3.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -6506,7 +6506,7 @@ ents = frmSwing.entities
   # Film frame — left upstand
   grp = ents.add_group
   grp.name = "Film frame — left upstand"
-  face = grp.entities.add_face([-2204.mm,-50.mm,-1065.mm], [-2199.mm,-50.mm,-1065.mm], [-2199.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([-2204.mm,-50.mm,-1065.mm], [-2201.mm,-50.mm,-1065.mm], [-2201.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2130.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -6517,7 +6517,7 @@ ents = frmSwing.entities
   # Film frame — left in-plane
   grp = ents.add_group
   grp.name = "Film frame — left in-plane"
-  face = grp.entities.add_face([-2204.mm,-5.mm,-1065.mm], [-2154.mm,-5.mm,-1065.mm], [-2154.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([-2204.mm,-3.mm,-1065.mm], [-2154.mm,-3.mm,-1065.mm], [-2154.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2130.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -6528,7 +6528,7 @@ ents = frmSwing.entities
   # Film frame — right upstand
   grp = ents.add_group
   grp.name = "Film frame — right upstand"
-  face = grp.entities.add_face([2199.mm,-50.mm,-1065.mm], [2204.mm,-50.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [2199.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([2201.mm,-50.mm,-1065.mm], [2204.mm,-50.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [2201.mm,0.mm,-1065.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2130.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -6539,7 +6539,7 @@ ents = frmSwing.entities
   # Film frame — right in-plane
   grp = ents.add_group
   grp.name = "Film frame — right in-plane"
-  face = grp.entities.add_face([2154.mm,-5.mm,-1065.mm], [2204.mm,-5.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [2154.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([2154.mm,-3.mm,-1065.mm], [2204.mm,-3.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [2154.mm,0.mm,-1065.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2130.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")

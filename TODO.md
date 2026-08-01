@@ -89,7 +89,8 @@ $1,979–2,825 · lightlock $2,046–2,516 · tray $1,583–2,271.
   welded-PP tray is cyanotype-safe (SS was chosen for rigidity/finish, not chemistry) and plastic fab is
   already proven in the light-lock (`ll-fabrication` $1,150 HDPE). Follow-up: spec welded-PP tray, re-price
   sheet + fab, cascade. Watch: sag/flatness over 4.5 m → support ribs.
-- [ ] **Ruland U-joints → Belden UJ-SS750x375 — ~$652 saving (RESEARCHED 2026-07-31, ready to adopt).**
+- [x] **Ruland U-joints → Belden UJ-SS750x375 — ADOPTED 2026-07-31 (~$653 saving).** `fp-ujoint` re-spec'd to Belden UJ-SS750x375 @ $112.68 (×4, backup Grainger 806V18) + `fp-ujoint-boot` → Belden 806VF1 nitrile boot $40.25; keyway/twist-lock → setscrew; cascaded across parts/costing/2D Sheet 3/3D model. Original research note ↓.
+- [ ] ~~Ruland U-joints → Belden UJ-SS750x375 — ~$652 saving (RESEARCHED 2026-07-31, ready to adopt).~~
   `fp-ujoint` = $1,104 (4× Ruland USKC12-6-6-SS @ $276, 3/8" bore, 303 SS, 45°/axis). **Direct drop-in
   alternative found: Belden UJ-SS750x375** ([MROSupply $112.68](https://www.mrosupply.com/shaft-couplings-and-collars/2561134_uj-ss750x375_belden/)) —
   **3/8" (0.375") bore, 0.75" OD, 45° max angle, 303/416 stainless, pin-and-block friction bearing** (same

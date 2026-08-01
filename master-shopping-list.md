@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $3,649 | $4,103 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,493 | $7,732 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,945 | $8,136 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,673** | **~$33,887** |
+| **TOTAL (base build + 50-print run)** | **~$26,125** | **~$34,291** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -353,7 +353,7 @@ indicative low–high estimates — get quotes before ordering.
 | 25×25×3 mm steel SHS | 1 lot | Online Metals | shelf | $30 |
 | [3/8" 304/304L SS rod — U-joint stub shafts (1× 3 ft)](https://www.mcmaster.com/89535K87/) (89535K87) | 1 lot | McMaster-Carr | film | $13 |
 | 304 flat-bar Z (tilt) + X (swing) cross-slides + UHMW pad + gib | 4 set | Metal Supermarkets | film | $180–$380 |
-| 304 SS RHS 40×25×3mm, 8 ft * | 2 ea | Online Metals | spray | $96–$144 |
+| [304 SS RHS 40×25×3mm, 8 ft *](https://www.metalsupermarkets.com/product/stainless-steel-rectangular-tube-304/) (ss-rect-tube-304-1.5x1x0.125x8ft) | 2 ea | Metal Supermarkets | spray | $548 |
 | 4mm folded plate | 4 ea | Local fab | ibc-frame | $30–$50 |
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | 4 ea | Metal Supermarkets | ibc-frame | $120–$180 |
 | 50 × 50 × 3mm RHS mild steel (6 m lengths) | 3 ea | Metal Supermarkets | door | $90–$120 |
@@ -386,7 +386,7 @@ indicative low–high estimates — get quotes before ordering.
 | Wall cleat (left corners) | 2 ea | Local fab | walkway | $20–$35 |
 | Wall mounting cleat + anchors | 1 lot | Local fab | shelf | $18 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$2,950–$4,444** |
+| **steel-structural subtotal** | | | | **$3,402–$4,848** |
 
 ### substrate-fabric
 
@@ -440,14 +440,14 @@ indicative low–high estimates — get quotes before ordering.
 |----------|-----------|-------|-----------|
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,185–$3,567 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
-| Metal Supermarkets | 13 | aluminum, steel-structural | $1,905–$2,479 |
+| Metal Supermarkets | 14 | aluminum, steel-structural | $2,453–$3,027 |
 | Amazon | 35 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,067–$2,117 |
 | Home Depot | 50 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,640–$1,761 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
-| Online Metals | 4 | aluminum, stainless-sheet, steel-structural | $966–$1,374 |
 | McMaster-Carr | 46 | aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,309 |
 | US Plastic Corp | 16 | plastics-sheet, plumbing-fittings | $1,236 |
+| Online Metals | 3 | aluminum, stainless-sheet, steel-structural | $870–$1,230 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | American Grating | 1 | plastics-sheet | $830–$1,050 |
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |

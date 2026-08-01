@@ -381,8 +381,9 @@ PARTS: list[Part] = [
     # the $1/$3 report-subtotal rounding is absorbed into the AL-plate estimate so the block total
     # matches the canonical figure) —
     Part("spray-al-shs", '304 SS RHS 40×25×3mm, 8 ft *', "steel-structural",
-         "spray", 2, "ea", 48, 72, "Online Metals",
-         spec="40×25×3mm rectangular tube, laid flat (low profile); 2 sticks butt-welded to span",
+         "spray", 2, "ea", 273.97, 273.97, "Metal Supermarkets", part_no="ss-rect-tube-304-1.5x1x0.125x8ft",
+         url="https://www.metalsupermarkets.com/product/stainless-steel-rectangular-tube-304/",
+         spec="40×25×3mm rectangular tube (stocked inch equiv 1.5×1×0.125in), laid flat (low profile); 2 sticks butt-welded to span. Metal Supermarkets $273.97/8ft stick firm (2026-08-01, cut-to-size retail) — ~3-4× an Online Metals stick (~$70-90) for the same 304 tube; Online Metals is the cheaper fallback (~$150 vs $548 for the pair).",
          note="* pre-camber ~15mm up at mid-span so it deflects flat under self-weight (SS beam ~2.8 kg/m; raw sag L/257)",
          dims="40×25×3", modeled_const="(model uses 40×25×3)"),
     Part("spray-al-plate", '6061-T6 AL plate 3/16" (5mm)', "aluminum",

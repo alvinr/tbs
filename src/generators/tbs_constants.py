@@ -873,7 +873,7 @@ SPRAY_BAR_SPAN       = PROC_OPEN_X_R - PROC_OPEN_X_L  # beam span between walkwa
 SPRAY_BAR_BEAM_W     = 40          # beam WIDTH in X (mm) — 40×25×3mm 304-SS RHS, laid flat
 SPRAY_BAR_BEAM_H     = 25          # beam HEIGHT in Z (mm) — shallower than the old 40×40; SS offsets stiffness
 SPRAY_BAR_BEAM       = SPRAY_BAR_BEAM_W   # legacy alias (was the square 40) → now the width; 3D/other sheets update in the cascade
-SPRAY_BAR_BEAM_T     = 3           # wall thickness (mm)
+SPRAY_BAR_BEAM_T     = 1.575       # wall thickness (mm) — 0.062in; single 16ft Metals Depot stick (no butt weld); sag stays ~15mm (self-weight-dominated beam)
 SPRAY_BAR_BORE       = SPRAY_BAR_BEAM_W - 2 * SPRAY_BAR_BEAM_T  # = 34mm internal bore (poly no longer housed here)
 SPRAY_BAR_POLY_OD    = 25          # 3/4" LDPE irrigation poly pipe OD (mm) — SIDE-mounted on the beam's inboard face
 SPRAY_BAR_POLY_ID    = 19          # poly pipe ID (mm)

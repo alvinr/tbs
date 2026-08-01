@@ -581,8 +581,8 @@ tray drainage plan and sump cross-section).
 | Arm-to-stud adapter, turned 6061-T6 AL (anodized) | Reducer coupling: M12×1.75 tapped bore (onto the ball-joint stud, locked with an M12 jam nut) → Ø21 male spigot the slit arm tube slips over. ~40mm long; anodized to match the AL tube (galvanic). Turned one-off / est. | 1 ea | Local machine shop | $12–$18 |
 | [M12×1.75 jam nut, SS](https://www.mcmaster.com/90381A102/) (90381A102) | Locks the arm adapter on the ball-joint M12 stud. McMaster 90381A102: 18-8 SS thin-profile hex nut, M12×1.75 coarse — confirmed vs the 90381A102 PDF 2026-07-29 (matches the stud + arm-adapter bore). $8.38/pack of 10. | 1 ea | McMaster-Carr | $1 |
 | [Clamp-style shaft collar, 25mm/1" bore, SS](https://www.ruland.com/cl-16-st.html) (CL-16-ST) | Over the slit arm-tube bottom; its integral clamp screw squeezes the Ø25×2 tube onto the adapter's Ø21 spigot — rotational adjust + lift-off for transport. Replaces the loose M6 pinch bolt. Confirm SKU/bore/price at order. | 1 ea | Ruland | $28–$33 |
-| [Nylon zip ties, 8in (200mm)](https://www.harborfreight.com/8-inch-black-cable-ties-pack-of-100-34635.html) (34635) | Hose to arm tube — 8in UV-resistant black nylon, 100-pack (6 used + spares). ~$3.99 est (2026-08-01; HF site blocked the automated price read — confirm at purchase). | 1 100-pack | Harbor Freight | $4 |
-| **Spray total** | | | | **$554–$566** |
+| [Nylon zip ties, 8in (200mm)](https://www.harborfreight.com/8-inch-black-cable-ties-pack-of-100-34635.html) (34635) | Hose to arm tube — 8in UV-resistant black nylon, 100-pack (6 used + spares). Harbor Freight $2.68 firm (2026-08-01). | 1 100-pack | Harbor Freight | $3 |
+| **Spray total** | | | | **$552–$564** |
 <!-- END parts:spray -->
 
 ### 6.3 Combined Total
@@ -590,8 +590,8 @@ tray drainage plan and sump cross-section).
 | Subsystem | Cost Range |
 |-----------|-----------|
 | Processing tray | <!-- BEGIN costing:tray-low -->$1,583<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,271<!-- END costing:tray-high --> |
-| Spray bar assembly | <!-- BEGIN costing:spray-low -->$553<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$565<!-- END costing:spray-high --> |
-| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$2,136<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,836<!-- END costing:tray-spray-total-high -->** |
+| Spray bar assembly | <!-- BEGIN costing:spray-low -->$551<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$563<!-- END costing:spray-high --> |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$2,134<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,834<!-- END costing:tray-spray-total-high -->** |
 
 ---
 

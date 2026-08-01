@@ -392,9 +392,9 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | [Apera Instruments AI311 PH60 pH meter](https://www.amazon.com/dp/B01ENFOIQE) (B01ENFOIQE) | Waterproof, 0–16 range, ±0.01 accuracy | 1 ea | Amazon | $80 |
 | [pH calibration solution set](https://www.amazon.com/dp/B09DCP4HNH) (B09DCP4HNH) | BOJACK pH 4.00 + 6.86 + 9.18 buffer powder sachets — meter recalibration | 1 set | Amazon | $8 |
 | [Citric acid, food grade, 6 lb](https://www.amazon.com/dp/B0F1CKRT7G) (B0F1CKRT7G) | pH adjustment (acidifier), 6 lb/bag | 2 bag | Amazon | $60 |
-| [Chemical-resistant labels (GHS)](https://www.amazon.com/dp/B01H0PGLRI) (B01H0PGLRI) | GHS blank write-on secondary-container labels, 3.5×2.25in, 100/roll adhesive — hand-mark chemical + hazard for the 4 IBC totes (blank write-on covers any reagent). Amazon $45 firm (2026-08-01); 100/roll = plenty of spares. | 1 roll | Amazon | $45 |
+| [Chemical-resistant labels (GHS)](https://www.amazon.com/dp/B0BWFW5481) (B0BWFW5481) | GHS pre-printed pictogram secondary-container labels, perforated — for the 4 IBC totes (pictograms pre-printed; hand-write the reagent name). Amazon B0BWFW5481 $23.99 firm (2026-08-01). | 1 pack | Amazon | $24 |
 | [Nitrile gloves, box of 100](https://www.amazon.com/dp/B0CMZ5VXMS) (B0CMZ5VXMS) | TitanFlex nitrile, textured, box of 100 (size M/L). | 2 box | Amazon | $30 |
-| **Water total** | | | | **$3,361–$3,386** |
+| **Water total** | | | | **$3,340–$3,365** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

@@ -180,48 +180,11 @@ The pinhole plate is interchangeable. A lens plate can be swapped in for portrai
 
 View-camera-style moveable film plane — a **fixed-size rigid** plane whose four corners each ride an acetal skate inside a 304 U-channel depth rail, coupled to a 2-axis 316 cross-slide through a single Belden universal joint — with four independently set corners (TL, TR, BL, BR), enabling tilt (±40°), swing (±28°), and limited compound movements.
 
-### 4.1 Structural & rails
+The full itemized parts list — specs, SKUs, ICP numbers, per-item quantities — is the [Film Plane Mechanism report Parts List](film-plane-mechanism-report.md), held in the parts registry so it can't drift. The cost roll-up is the [Section total](#section-total) below.
 
-| Item | Spec | Qty | Unit | Total |
-|------|------|-----|------|-------|
-| 6061-T6 Al U-channel depth rail 3×1½"×0.2" (76×38mm) | Grainger 795M51, 4 rails wall-to-wall (~2,362mm), 8 ft | 4 | $81.99 | $328 |
-| Belden UJ-SS750x375 U-joint (3/8" bore, 45°, 303/416 SS) | pin-and-block friction, setscrew hub | 4 | $112.68 | $451 |
-| Belden 806VF1 nitrile boot | over each U-joint | 4 | $40.25 | $161 |
-| McMaster 4040N12 304 shaft support | clamps U-joint input stub to X-slide | 4 | $58† | $232 |
-| 3/8" 304/304L SS rod — U-joint stubs | McMaster 89535K87, 1× 3ft yields 8 stubs | 1 | $13† | $13 |
-| Acetal skate — Ø32 load + Ø19 keeper rollers (Delrin), Ø10 304 axle pins, fab carriage plate | 1 per corner (est.) | 4 | $55–90 | $220–360 |
-| 316 flat-bar Z/X cross-slides + UHMW pad + gib | 2-axis stack per corner (est.) | 4 | $45–95 | $180–380 |
-| McMaster 5128A63 hold-down toggle clamp — rail brake (skate lock) | 3 per corner, UHMW spindle pinches the U-channel top flange | 12 | $12.93 | $155 |
-| Corner plate ¼" 304 SS (~6"×8" L-bracket) | U-joint mount — steel, not aluminum | 4 | $38–52† | $152–208 |
+**Wall-seat saddles** — each of the 8 rail ends anchors to the container: **6 with a standalone wall-seat saddle** (back-plate + seat + gusset, through-bolted with a 4-bolt pattern to an exterior wall plate — the container shell carries the rigidity); the **2 bottom-right (BR) ends share a combined corner plate with the right walkway** (costed in §6a / the walkway BoM, not here). The **right** rails are permanently bolted; the **left** rails drop into their saddles on knurled thumb screws so they lift out for the drum swing.
 
-### 4.2 Film plane frame & backing
-
-| Item | Spec | Qty | Unit | Total |
-|------|------|-----|------|-------|
-| Aluminum angle 2"×2"×1/8" (6061 plain, expendable) | 16 ft lengths | 3 | $176.06 | $528 |
-| Dibond ACM panel 3mm (black) | 4'×8' sheets, 4 full-height Option A strips | 4 | $95† | $380 |
-| Black EPDM foam tape | 1"×½", 50 ft rolls | 2 | $22.37 | $45 |
-| Impact 9oz Duvetyne (light seal) | 57" wide × 10 yd (B&H) | 1 | $69 | $69 |
-| 4-mil black poly sheeting | 10'×100' roll | 1 | $40† | $40 |
-| 2" black Gorilla Tape | 35 yd rolls | 6 | $9.94 | $60 |
-| Muslin clamp — Pittsburgh 69289 nylon spring clamp 3½" | clips over the HDPE-filled L-frame edge; top + 2 side edges | 58 | $1.99–2.99 | $115–173 |
-| Muslin clamp filler — HDPE L-channel strip | fills the angle L channel (~8.7 m) so the clamp bites a solid full-depth sandwich | — | — | $30–70 |
-
-### 4.3 Wall-seat saddles
-
-Each of the 8 rail ends anchors to the container — **6 with a standalone wall-seat saddle** (back-plate + seat + gusset), **through-bolted with a 4-bolt pattern to an exterior wall plate** — the container shell carries the rigidity. The **2 bottom-right (BR) ends share a combined corner plate with the right walkway** (costed in §6a / the walkway BoM, not here). The **right** rails are permanently bolted; the **left** rails drop into their saddles on knurled thumb screws so they lift out for the drum swing.
-
-| Item | ICP # | Spec | Qty | Unit | Total |
-|------|-------|------|-----|------|-------|
-| 8mm steel plate — back-plate + exterior plate + seat + gusset, laser/plasma cut + welded | ICP-11 | 6 standalone saddles (BR pair share the walkway corner plate, costed in §6a) | 6 saddles | ~$53 est. | ~$318 |
-| M12×65mm through-bolt + nut + washers, zinc | ICP-12 | 4 per saddle × 6 + 4 spare | 28 | ~$2.50 est. | ~$70 |
-| M8×25mm knurled thumbscrew DIN 464 SS | ICP-13 | left-rail drop-in fixings | 12 | ~$3 est. | ~$36 |
-| M8×25 hex rail-fixing bolt + nut, SS | ICP-14 | right-rail permanent fixing | 8 | ~$2 est. | ~$16 |
-| **Wall-seat saddle subtotal** | | | | | **~$440** |
-
-*All costs are estimates — confirm at procurement (Metal Supermarkets, McMaster-Carr, Amazon).*
-
-### 4.4 Optional electric actuation
+### Optional electric actuation
 
 *Not included in any standard build — Scenarios A–C are all **manual** (each corner is hand-slid along its U-channel and cam-clamped). This is a documented upgrade only (the [Cost Analysis](cost-analysis-report.md) drops it from the recommended build to save ~$827): it motorizes the four corners with PA-14 actuators for entry-free repositioning. See the [Film Plane Mechanism Report §electric actuation](film-plane-mechanism-report.md).*
 
@@ -255,7 +218,7 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 | **Section total — film plane mechanism (U-channel + U-joint, incl. saddles)** | **$3,649** | **$3,875** | **$4,103** |
 <!-- END costing:film -->
 
-*Electric actuation (optional add-on, not in any standard build): +$827 — see §4.4.*
+*Electric actuation (optional add-on, not in any standard build): +$827 — see Optional electric actuation above.*
 
 *Includes $145–243 for the muslin clamp system (58 Pittsburgh 69289 nylon spring clamps + HDPE filler). Range reflects generic vs quality.*
 

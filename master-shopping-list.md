@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $3,649 | $4,103 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,552 | $7,743 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,577 | $7,768 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,732** | **~$33,898** |
+| **TOTAL (base build + 50-print run)** | **~$25,757** | **~$33,923** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -413,11 +413,11 @@ indicative low–high estimates — get quotes before ordering.
 | [4-mil black poly sheeting](https://www.homedepot.com/p/332820356) (51982) | 1 roll | Home Depot | film | $40 |
 | [6-mil black LDPE sheeting](https://www.homedepot.com/p/332821399) (59803) | 1 roll | Home Depot | water | $55 |
 | [Apera Instruments AI311 PH60 pH meter](https://www.amazon.com/dp/B01ENFOIQE) (B01ENFOIQE) | 1 ea | Amazon | water | $80 |
-| [Chemical-resistant labels (GHS)](https://www.amazon.com/dp/B01H0PGLRI) (B01H0PGLRI) | 1 roll | Amazon | water | $20 |
+| [Chemical-resistant labels (GHS)](https://www.amazon.com/dp/B01H0PGLRI) (B01H0PGLRI) | 1 roll | Amazon | water | $45 |
 | [Citric acid, food grade, 6 lb](https://www.amazon.com/dp/B0F1CKRT7G) (B0F1CKRT7G) | 2 bag | Amazon | water | $60 |
 | [Nitrile gloves, box of 100](https://www.amazon.com/dp/B0CMZ5VXMS) (B0CMZ5VXMS) | 2 box | Amazon | water | $30 |
 | [pH calibration solution set](https://www.amazon.com/dp/B09DCP4HNH) (B09DCP4HNH) | 1 set | Amazon | water | $8 |
-| **tools-safety subtotal** | | | | **$293** |
+| **tools-safety subtotal** | | | | **$318** |
 
 ### water-equipment
 
@@ -441,7 +441,7 @@ indicative low–high estimates — get quotes before ordering.
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,185–$3,567 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 13 | aluminum, steel-structural | $1,905–$2,479 |
-| Amazon | 34 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,066–$2,116 |
+| Amazon | 34 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,091–$2,141 |
 | Home Depot | 50 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,640–$1,761 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |

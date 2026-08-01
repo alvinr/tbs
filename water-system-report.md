@@ -387,15 +387,15 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | [3/4" PVC Sch-40 pipe](https://www.homedepot.com/p/100348472) (PVC-04007-0600) | Spray bar run, PVC Sch-40 pressure pipe (plain end), 2× 10-ft sticks. $5.76/stick (sent $576 — read as a decimal typo; ¾" pressure pipe sits between the ½" $4.81 and 1" $8.65). Re-count vs actual run length. | 2 stick | Home Depot | $12 |
 | [1/2" ID reinforced braided PVC hose](https://www.usplastic.com/catalog/item.aspx?itemid=60703) (60703) | Pump inlet flexible connection, 6 ft per pump | 2 length | US Plastic Corp | $12 |
 | 14 AWG duplex marine wire | Tinned copper, 25 ft | 1 roll | Waytek Wire | $22 |
-| Anderson Powerpole connectors 30A | Pump connections — one pair per pump (P-01..P-05) | 5 pair | Powerwerx | $10 |
-| 15A blade fuse | Pump Circuit C (single feed, all pumps) | 1 ea | Waytek Wire | $5 |
+| [Anderson Powerpole connectors 30A](https://powerwerx.com/anderson-powerpole-connectors-30amp-unassembled) | Pump connections — one pair per pump (P-01..P-05). Sold in 10-pair packs at $12.99 (unassembled 30A); one pack covers the 5 pairs + spares. | 5 pair | Powerwerx | $6 |
+| [15A blade fuse](https://www.amazon.com/dp/B07WP5FWJJ) (B07WP5FWJJ) | 15A ATC/ATO blade fuse, 100-pack — pump Circuit C single feed (all pumps) + spares. | 1 pack | Amazon | $8 |
 | [6-mil black LDPE sheeting](https://www.homedepot.com/p/332821399) (59803) | Film-Gard 8 ft × 100 ft × 6-mil black poly (800 sq ft). Water splash/light-proof sheeting + the tray liners are cut from this same roll (tray-liner line retired 2026-07-27 — same material, ~10 liners/roll). Re-count area if the water use alone exceeds 800 sq ft. | 1 roll | Home Depot | $55 |
 | [Apera Instruments AI311 PH60 pH meter](https://www.amazon.com/dp/B01ENFOIQE) (B01ENFOIQE) | Waterproof, 0–16 range, ±0.01 accuracy | 1 ea | Amazon | $80 |
 | pH calibration solution set | pH 4 + pH 7 buffer sachets | 1 set | Amazon | $10 |
-| Citric acid, food grade, 5 lb | pH adjustment (acidifier) | 2 bag | Amazon | $28 |
+| [Citric acid, food grade, 6 lb](https://www.amazon.com/dp/B0F1CKRT7G) (B0F1CKRT7G) | pH adjustment (acidifier), 6 lb/bag | 2 bag | Amazon | $60 |
 | Chemical-resistant labels (GHS) | For IBC totes | 1 pack | Amazon | $20 |
 | [Nitrile gloves, box of 100](https://www.amazon.com/dp/B0CMZ5VXMS) (B0CMZ5VXMS) | TitanFlex nitrile, textured, box of 100 (size M/L). | 2 box | Amazon | $30 |
-| **Water total** | | | | **$3,370–$3,411** |
+| **Water total** | | | | **$3,401–$3,442** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

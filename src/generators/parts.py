@@ -397,9 +397,9 @@ PARTS: list[Part] = [
     # 39 small jets — pressure is uniform end-to-end (~0.1 PSI drop over 3.86m) from a single center
     # feed, so the distribution manifold, the 7 ¼" feed tubes, and their barbed-tee taps aren't needed.
     # The ½" flex hose now feeds the manifold center through one inlet tee (spray-brass-barb).
-    Part("spray-retainer-clips", 'SS/nylon retainer clips for 3/4" LDPE', "fasteners-hardware",
+    Part("spray-retainer-clips", 'Figure-8 end clamps, 3/4in poly', "fasteners-hardware",
          "spray", 1, "10-pack", 4.20, 4.20, "DripDepot", url="https://www.dripdepot.com/figure-8-tubing-end-clamp-size-three-quarter-inch",
-         spec='Figure-8 fold-back end closures for 3/4" poly drip tubing — DripDepot 10-pack, $4.20 firm (2026-07-30).'),
+         spec='Figure-8 fold-back end closures that crimp the 3/4" poly manifold ends shut — DripDepot 10-pack, $4.20 firm (2026-07-30).'),
     Part("spray-skate-wheel", "Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore)", "bearings-motion",
          "spray", 1, "1 ft rod", 10.97, 10.97, "McMaster-Carr", part_no="8576K23",
          url="https://www.mcmaster.com/8576K23/",
@@ -444,8 +444,8 @@ PARTS: list[Part] = [
          "spray", 1, "ea", 8.38 / 10, 8.38 / 10, "McMaster-Carr", spec="Locks the arm adapter on the ball-joint M12 stud. McMaster 90381A102: 18-8 SS thin-profile hex nut, M12×1.75 coarse — confirmed vs the 90381A102 PDF 2026-07-29 (matches the stud + arm-adapter bore). $8.38/pack of 10.", part_no="90381A102", url="https://www.mcmaster.com/90381A102/"),
     Part("spray-arm-collar", "Clamp-style shaft collar, 25mm/1\" bore, SS", "fasteners-hardware",
          "spray", 1, "ea", 28, 33, "Ruland", spec="Over the slit arm-tube bottom; its integral clamp screw squeezes the Ø25×2 tube onto the adapter's Ø21 spigot — rotational adjust + lift-off for transport. Replaces the loose M6 pinch bolt. Confirm SKU/bore/price at order.", part_no="CL-16-ST", url="https://www.ruland.com/cl-16-st.html"),
-    Part("spray-zip-ties", "Nylon zip ties, 200mm", "fasteners-hardware",
-         "spray", 6, "ea", 1 / 6, 1 / 6, "Amazon", spec="Hose to arm tube"),
+    Part("spray-zip-ties", "Nylon zip ties, 8in (200mm)", "fasteners-hardware",
+         "spray", 1, "100-pack", 3.99, 3.99, "Harbor Freight", part_no="34635", url="https://www.harborfreight.com/8-inch-black-cable-ties-pack-of-100-34635.html", spec="Hose to arm tube — 8in UV-resistant black nylon, 100-pack (6 used + spares). ~$3.99 est (2026-08-01; HF site blocked the automated price read — confirm at purchase)."),
 
     # ═══ electrical (§6) — fully itemized from master §6; point estimates summing to ~$2,345
     # (reconciles to EXPECTED['power'] $2,350 within tolerance). Demonstrates the procurement-real

@@ -285,7 +285,7 @@ FILM = [
     LineItem("Corner plates, ¼\" 304 SS 6×8 (×4)", 152, 180, 208, "U-joint mount — steel, not aluminum"),
     # 4.2 Film plane frame & backing
     point("Aluminum angle 2×2×1/8 (6061-T6 plain, expendable) 16 ft (×3) — weld-free frame", 528, "Metal Supermarkets 192\" @ $176.06; 2 horizontals + 1 for both verticals; 1 frame"),
-    LineItem("Dibond ACM 4mm 4×8 black sheets (×4, Option A strips) — single rigid plane", 380, 380, 380, "Curbell 4mm black $95/sheet firm; 4 full-height vertical strips, 3 vertical seams"),
+    LineItem("Dibond ACM 3mm 4×8 black sheets (×4, Option A strips) — single rigid plane", 380, 380, 380, "Curbell 3mm black $95/sheet firm; 4 full-height vertical strips, 3 vertical seams"),
     LineItem("Light-seal set — EPDM tape (×2) + Impact duvetyne (57\" 9oz, B&H $69) + 4-mil poly + Gorilla tape (×6)", 214, 214, 214, "2026-07-27: Gorilla 30yd black tape firm $9.94 ×6; blackout poly → Film-Gard 10ft×100ft 4-mil $40.12 (opaque enough for a light-seal, was 6-mil $66–70)"),
     LineItem("Muslin clamps — nylon spring clamp ×58 (Pittsburgh 69289)", 115, 144, 173, "2026-07-25 re-price: Harbor Freight 69289 now $1.99–2.99 ea (was $3–4); inert fiberglass + swivel pads, top + 2 side edges (bottom = walkway clearance)"),
     LineItem("Muslin clamp filler — HDPE L-channel strip", 30, 50, 70, "inert HDPE packer, ~8.7 m, firm at fab — lets the clamp bite a solid full-depth edge"),

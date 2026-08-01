@@ -189,9 +189,9 @@ View-camera-style moveable film plane — a **fixed-size rigid** plane whose fou
 | Belden 806VF1 nitrile boot | over each U-joint | 4 | $40.25 | $161 |
 | McMaster 4040N12 304 shaft support | clamps U-joint input stub to X-slide | 4 | $58† | $232 |
 | 3/8" 304/304L SS rod — U-joint stubs | McMaster 89535K87, 1× 3ft yields 8 stubs | 1 | $13† | $13 |
-| Acetal 4-wheel skate — Ø32 rollers, Ø10 316 axles, carriage plate | 1 per corner (est.) | 4 | $55–90 | $220–360 |
+| Acetal skate — Ø32 load + Ø19 keeper rollers (Delrin), Ø10 304 axle pins, fab carriage plate | 1 per corner (est.) | 4 | $55–90 | $220–360 |
 | 316 flat-bar Z/X cross-slides + UHMW pad + gib | 2-axis stack per corner (est.) | 4 | $45–95 | $180–380 |
-| Cam-lever rail brake (skate lock) | 3 per corner (est.) | 12 | $8–15 | $96–180 |
+| McMaster 5128A63 hold-down toggle clamp — rail brake (skate lock) | 3 per corner, UHMW spindle pinches the U-channel top flange | 12 | $12.93 | $155 |
 | Corner plate ¼" 304 SS (~6"×8" L-bracket) | U-joint mount — steel, not aluminum | 4 | $38–52† | $152–208 |
 
 ### 4.2 Film plane frame & backing
@@ -199,29 +199,27 @@ View-camera-style moveable film plane — a **fixed-size rigid** plane whose fou
 | Item | Spec | Qty | Unit | Total |
 |------|------|-----|------|-------|
 | Aluminum angle 2"×2"×1/8" (6061 plain, expendable) | 16 ft lengths | 3 | $176.06 | $528 |
-| Dibond ACM panel 4mm | 4'×8' sheets | 6 | $85† | $510 |
-| Black EPDM foam tape | 1"×½", 50 ft rolls | 3 | $28† | $84 |
-| Rosco Duvetyne (light seal) | 60" wide, 10 yd | 1 | $95† | $95 |
-| Dibond ACM backing — single rigid panel (no folding hinge) | included above | — | — | — |
-| 6-mil black poly sheeting | 10'×100' roll | 1 | $65† | $65 |
-| 2" black Gorilla Tape | 35 yd rolls | 6 | $12† | $72 |
-| Muslin spring clips | Bracket + spring jaw, neoprene pad | 88 | $3-8† | $264-704 |
-| M5×16 SS bolts + Nylock nuts | Clamp mounting (2 per clamp) | 184+184 | — | $55 |
-| Neoprene strip 60A | Jaw pads, 35mm×6mm, 10m roll | 1 | $15† | $15 |
+| Dibond ACM panel 3mm (black) | 4'×8' sheets, 4 full-height Option A strips | 4 | $95† | $380 |
+| Black EPDM foam tape | 1"×½", 50 ft rolls | 2 | $22.37 | $45 |
+| Impact 9oz Duvetyne (light seal) | 57" wide × 10 yd (B&H) | 1 | $69 | $69 |
+| 4-mil black poly sheeting | 10'×100' roll | 1 | $40† | $40 |
+| 2" black Gorilla Tape | 35 yd rolls | 6 | $9.94 | $60 |
+| Muslin clamp — Pittsburgh 69289 nylon spring clamp 3½" | clips over the HDPE-filled L-frame edge; top + 2 side edges | 58 | $1.99–2.99 | $115–173 |
+| Muslin clamp filler — HDPE L-channel strip | fills the angle L channel (~8.7 m) so the clamp bites a solid full-depth sandwich | — | — | $30–70 |
 
-### 4.3 Wall-seat saddles (rev 11 — replaces the brace cage)
+### 4.3 Wall-seat saddles
 
-The demountable brace cage is retired. Each of the 8 rail ends instead anchors to the container — **6 with a standalone wall-seat saddle** (back-plate + seat + gusset), **through-bolted with a 4-bolt pattern to an exterior wall plate** — the container shell carries the rigidity. The **2 bottom-right (BR) ends share a combined corner plate with the right walkway** (rev 12 — costed in §6a / the walkway BoM, not here). The **right** rails are permanently bolted; the **left** rails drop into their saddles on knurled thumb screws so they lift out for the drum swing.
+Each of the 8 rail ends anchors to the container — **6 with a standalone wall-seat saddle** (back-plate + seat + gusset), **through-bolted with a 4-bolt pattern to an exterior wall plate** — the container shell carries the rigidity. The **2 bottom-right (BR) ends share a combined corner plate with the right walkway** (costed in §6a / the walkway BoM, not here). The **right** rails are permanently bolted; the **left** rails drop into their saddles on knurled thumb screws so they lift out for the drum swing.
 
 | Item | ICP # | Spec | Qty | Unit | Total |
 |------|-------|------|-----|------|-------|
-| 8mm steel plate — back-plate + exterior plate + seat + gusset, laser/plasma cut + welded | ICP-11 | 8 saddles (~28 kg total) | 8 saddles | ~$53 est. | ~$425 |
-| M12×90mm through-bolt + nut + washers, SS | ICP-12 | 4 per saddle × 8 = 32 + 4 spare | 36 | ~$2.50 est. | ~$90 |
-| M8×25mm knurled thumbscrew DIN 464 SS | ICP-13 | left-rail drop-in: 2 × 4 saddles = 8 + 4 spare | 12 | ~$3 est. | ~$36 |
-| M8 rail fixing bolt + nut, SS | ICP-14 | right-rail fixing: 2 × 4 saddles = 8 + spare | 12 | ~$2 est. | ~$24 |
-| **Wall-seat saddle subtotal** | | | | | **~$575** |
+| 8mm steel plate — back-plate + exterior plate + seat + gusset, laser/plasma cut + welded | ICP-11 | 6 standalone saddles (BR pair share the walkway corner plate, costed in §6a) | 6 saddles | ~$53 est. | ~$318 |
+| M12×65mm through-bolt + nut + washers, zinc | ICP-12 | 4 per saddle × 6 + 4 spare | 28 | ~$2.50 est. | ~$70 |
+| M8×25mm knurled thumbscrew DIN 464 SS | ICP-13 | left-rail drop-in fixings | 12 | ~$3 est. | ~$36 |
+| M8×25 hex rail-fixing bolt + nut, SS | ICP-14 | right-rail permanent fixing | 8 | ~$2 est. | ~$16 |
+| **Wall-seat saddle subtotal** | | | | | **~$440** |
 
-*Roughly cost-neutral with the retired brace cage (~$575). All costs are estimates — confirm at procurement (Metal Supermarkets, McMaster-Carr, Amazon).*
+*All costs are estimates — confirm at procurement (Metal Supermarkets, McMaster-Carr, Amazon).*
 
 ### 4.4 Optional electric actuation
 
@@ -240,26 +238,26 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 <!-- BEGIN costing:film -->
 | Item | Low | Mid | High |
 |------|-----|-----|------|
-| 304 U-channel depth rails 3×1½" (1262T21, ×4 wall-to-wall) | $327 | $328 | $327 |
-| Belden UJ-SS750x375 U-joints (×4) + nitrile boots (×4) | $611 | $611 | $611 |
-| McMaster 4040N12 304 shaft supports (×4) + 3/8" 304 stub rod (89535K87) | $245 | $245 | $245 |
-| Acetal 4-wheel skates (×4) — Ø32 rollers, Ø10 316 axles, carriage plates | $182 | $230 | $282 |
+| 6061 Al U-channel depth rails 3×1½" (×4 wall-to-wall) | $327 | $328 | $327 |
+| Belden UJ-SS750x375 U-joints (×4) + boots (×4) | $611 | $611 | $611 |
+| McMaster 4040N12 304 shaft supports (×4) + 3/8" 304 stub rod (89535K87, 3ft) | $245 | $245 | $245 |
+| Acetal skates (×4) — Ø32/Ø20 acetal rollers + 304 axle pins + fab carriage plates | $182 | $230 | $282 |
 | 316 flat-bar Z/X cross-slides (×4) + UHMW pads + gibs | $180 | $280 | $380 |
-| Cam-lever rail brakes (×12, skate lock) | $155 | $155 | $155 |
+| McMaster 5128A63 hold-down toggle clamps (×12, rail brake) | $155 | $155 | $155 |
 | Corner plates, ¼" 304 SS 6×8 (×4) | $152 | $180 | $208 |
-| Aluminum angle 2×2×1/8 (6061 plain, expendable) 16 ft (×3) | $528 | $528 | $528 |
-| Dibond ACM 4mm 4×8 sheets (×6) — single rigid plane | $380 | $380 | $380 |
-| Light-seal set — EPDM tape (×3) + Rosco Duvetyne + 6-mil poly + Gorilla tape (×6) | $214 | $214 | $214 |
-| Spring clips, muslin (×88) | $115 | $144 | $173 |
-| Clamp mounting — M5×16 SS csk screws (×176) + Nylocks (×176) + neoprene pad strip | $30 | $50 | $70 |
+| Aluminum angle 2×2×1/8 (6061-T6 plain, expendable) 16 ft (×3) — weld-free frame | $528 | $528 | $528 |
+| Dibond ACM 3mm 4×8 black sheets (×4, Option A strips) — single rigid plane | $380 | $380 | $380 |
+| Light-seal set — EPDM tape (×2) + Impact duvetyne (57" 9oz, B&H $69) + 4-mil poly + Gorilla tape (×6) | $214 | $214 | $214 |
+| Muslin clamps — nylon spring clamp ×58 (Pittsburgh 69289) | $115 | $144 | $173 |
+| Muslin clamp filler — HDPE L-channel strip | $30 | $50 | $70 |
 | Wall-seat saddles ×6 — 8mm steel plate, cut + welded (ICP-11) | $318 | $318 | $318 |
-| Saddle fasteners — M12 through-bolts (×28) + M8 thumbscrews (×12) + M8 hex bolts (×8) | $212 | $212 | $212 |
+| Saddle fasteners — M12×65 through-bolts (×28) + M8 thumbscrews (×12) + M8×25 hex bolts (×8) | $212 | $212 | $212 |
 | **Section total — film plane mechanism (U-channel + U-joint, incl. saddles)** | **$3,649** | **$3,875** | **$4,103** |
 <!-- END costing:film -->
 
 *Electric actuation (optional add-on, not in any standard build): +$827 — see §4.4.*
 
-*Includes $344–794 for muslin clamp system (88 spring clips). Range reflects generic vs quality.*
+*Includes $145–243 for the muslin clamp system (58 Pittsburgh 69289 nylon spring clamps + HDPE filler). Range reflects generic vs quality.*
 
 ---
 

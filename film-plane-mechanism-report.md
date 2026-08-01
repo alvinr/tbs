@@ -122,7 +122,7 @@ Because the plane is a **fixed-size rigid rectangle**, its physical dimensions n
 A tilted or swung plane opens gaps at its edges where the frame no longer sits flush against the wall. Two measures close them, both on the maintenance schedule (§8):
 
 - **Primary seal** — a 1"×½" black EPDM foam strip bonded to all four frame edges, compressing to seal at the low angles.
-- **Secondary seal** — Rosco Duvetyne blackout curtains hung from the frame perimeter and weighted, draping to seal at the larger tilt/swing angles where the foam no longer reaches.
+- **Secondary seal** — Impact 9oz Duvetyne blackout curtains hung from the frame perimeter and weighted, draping to seal at the larger tilt/swing angles where the foam no longer reaches.
 
 The EPDM foam tape and Duvetyne curtains are itemized in the §7 parts list.
 

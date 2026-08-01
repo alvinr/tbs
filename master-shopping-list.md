@@ -594,7 +594,7 @@ above — this directory adds where-to-buy detail and omits alternative/optional
 | **[TAP Plastics](https://www.tapplastics.com)** | UV-HDPE / PP / acrylic sheet + plastic fabrication | Multiple SoCal stores |
 | **[Curbell Plastics](https://www.curbellplastics.com)** | PP / engineering plastic sheet | Online / SoCal |
 | **[AutomationDirect](https://www.automationdirect.com)** | DC load-break isolators, E-stop push-buttons | Online |
-| **[B&H Photo](https://www.bhphotovideo.com)** | Rosco Duvetyne, photographic supplies | Online / NYC |
+| **[B&H Photo](https://www.bhphotovideo.com)** | Impact Duvetyne, photographic supplies | Online / NYC |
 | **[Amazon](https://www.amazon.com)** | Pumps, filters, valves, fittings, electrical, consumables | Online |
 | **[McMaster-Carr](https://www.mcmaster.com)** | Fasteners, bearings, seals, neoprene, cable trunking | Online / Ships from LA |
 | **[Online Metals](https://www.onlinemetals.com)** | SS sheet, aluminum sheet/angle, steel, Dibond ACM | Online |

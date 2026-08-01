@@ -312,7 +312,7 @@ PARTS: list[Part] = [
     Part("citric-acid", "Citric acid, food grade, 6 lb", "tools-safety",
          "water", 2, "bag", 29.98, 29.98, "Amazon", part_no="B0F1CKRT7G", url="https://www.amazon.com/dp/B0F1CKRT7G", spec="pH adjustment (acidifier), 6 lb/bag"),
     Part("ghs-labels", "Chemical-resistant labels (GHS)", "tools-safety",
-         "water", 1, "roll", 45, 45, "Amazon", part_no="B01H0PGLRI", url="https://www.amazon.com/dp/B01H0PGLRI", spec="GHS blank write-on secondary-container labels, 3.5×2.25in, 100/roll adhesive — hand-mark chemical + hazard for the 4 IBC totes (blank write-on covers any reagent). Amazon $45 firm (2026-08-01); 100/roll = plenty of spares."),
+         "water", 1, "pack", 23.99, 23.99, "Amazon", part_no="B0BWFW5481", url="https://www.amazon.com/dp/B0BWFW5481", spec="GHS pre-printed pictogram secondary-container labels, perforated — for the 4 IBC totes (pictograms pre-printed; hand-write the reagent name). Amazon B0BWFW5481 $23.99 firm (2026-08-01)."),
     Part("nitrile-gloves", "Nitrile gloves, box of 100", "tools-safety",
          "water", 2, "box", 14.99, 14.99, "Amazon", part_no="B0CMZ5VXMS", url="https://www.amazon.com/dp/B0CMZ5VXMS", spec="TitanFlex nitrile, textured, box of 100 (size M/L)."),
     # — ibc-frame (ibc-stacking-report §9.1) — itemized, sums to costing frame (955–1,455) —

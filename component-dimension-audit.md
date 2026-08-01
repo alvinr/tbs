@@ -33,7 +33,7 @@ Modeled dimensions are the `tbs_constants.py` value(s) the generators draw. mm.
 | 5 | 150×150×50mm axial fans (12V DC) | 150×150×50 | `FAN_DIAM/FAN_BODY_D` | ✅ FIXED |
 | 6 | Evaporative cooler | 508×254×711 — Hessaire MC18M | `EVAP_W/EVAP_D/EVAP_H` | ✅ RESOLVED |
 | 7 | SeaFlo accumulator (0.75 L) | 200×127×125 — SeaFlo SFAT-075-125-01 | `Ø127×200 cyl` | ✅ FIXED — cylinder 150→200 |
-| 8 | 304 SS RHS 40×25×3mm, 8 ft * | 40×25×3 | `(model uses 40×25×3)` |  |
+| 8 | 304 SS RHS 40×25×1.6mm, single 16 ft * | 40×25×1.6 | `(model uses 40×25 envelope)` |  |
 <!-- END parts:dimension-audit -->
 
 **Excluded from the model but listed for BoM completeness:** Solar panel (Renogy 200 W

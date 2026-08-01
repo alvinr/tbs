@@ -380,12 +380,12 @@ PARTS: list[Part] = [
     # — spray (processing-tray-and-spray-bar §6.2) — itemized, sums to costing spray (287–375;
     # the $1/$3 report-subtotal rounding is absorbed into the AL-plate estimate so the block total
     # matches the canonical figure) —
-    Part("spray-al-shs", '304 SS RHS 40×25×3mm, 8 ft *', "steel-structural",
-         "spray", 2, "ea", 273.97, 273.97, "Metal Supermarkets", part_no="ss-rect-tube-304-1.5x1x0.125x8ft",
-         url="https://www.metalsupermarkets.com/product/stainless-steel-rectangular-tube-304/",
-         spec="40×25×3mm rectangular tube (stocked inch equiv 1.5×1×0.125in), laid flat (low profile); 2 sticks butt-welded to span. 304 SS rect tube is a genuinely costly section: Metal Supermarkets $273.97/8ft stick (2026-08-01), Online Metals $229.80/stick for the same 1.5×1×0.125 — only ~$44/stick apart. Online Metals is the marginally cheaper fallback (~$460 vs $548 for the pair).",
-         note="* pre-camber ~15mm up at mid-span so it deflects flat under self-weight (SS beam ~2.8 kg/m; raw sag L/257)",
-         dims="40×25×3", modeled_const="(model uses 40×25×3)"),
+    Part("spray-al-shs", '304 SS RHS 40×25×1.6mm, single 16 ft *', "steel-structural",
+         "spray", 1, "ea", 153.80, 153.80, "Metals Depot", part_no="R151162",
+         url="https://www.metalsdepot.com/stainless-steel-products/304-stainless-steel-rectangle-tube",
+         spec="40×25×1.6mm rectangular tube (stocked inch equiv 1.5×1×0.062in), laid flat (low profile). SINGLE 16 ft (4,877mm) length spans the 3,859mm beam with margin — NO butt weld (the old 2× 8ft splice sat at mid-span where the moment peaks; deleting it removes the weakest point). 0.062in wall adopted after the sag check: the beam is self-weight-dominated, so the thinner (lighter) tube deflects ~15mm same as the 3mm wall — the pre-camber absorbs it. Metals Depot $153.80 firm (2026-08-01), vs $352.60 for the same 16ft in 0.125in wall.",
+         note="* pre-camber ~15mm up at mid-span so it deflects flat under self-weight (SS beam ~1.5 kg/m; raw sag ~L/257)",
+         dims="40×25×1.6", modeled_const="(model uses 40×25 envelope)"),
     Part("spray-al-plate", '6061-T6 AL plate 3/16" (5mm)', "aluminum",
          "spray", 1, "ea", 124.88, 124.88, "Metal Supermarkets", part_no="6061-sheet-12x20x0.1875", url="https://www.metalsupermarkets.com/product/aluminum-sheet-6061/", dims="12×20×3/16in", spec="Carriage plates + spacer blocks cut from one 12×20×3/16in sheet. Metal Supermarkets $124.88 firm (2026-08-01, cut-to-size retail); an online 6061 sheet supplier is likely cheaper — worth comparing at purchase (not yet quoted)."),
     Part("spray-ldpe-pipe", '3/4" LDPE irrigation poly pipe, 100 ft', "plumbing-fittings",

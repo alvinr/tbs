@@ -168,8 +168,7 @@ PARTS: list[Part] = [
          spec='0.75 L, 125 PSI, 1/2" MNPT', part_no="SFAT-075-125-01",
          dims="200×127×125", datasheet="SeaFlo SFAT-075-125-01", modeled_const="Ø127×200 cyl",
          audit_status="✅ FIXED — cylinder 150→200", panel="Corridor"),
-    Part("shurflo-bracket", "Shurflo pump mounting bracket", "fasteners-hardware",
-         "water", 5, "ea", 10, 10, "Fresh Water Systems", spec="Stainless, 2088 series — one per pump (P-01..P-05)"),
+    # shurflo-bracket RETIRED 2026-07-31 — the mounting bracket ships with the Shurflo 2088-554-144 pump (Alvin confirmed); −$50.
     # — corridor plumbing-panel structure (3D-derived marine ply; previously uncosted) —
     Part("corridor-panel-ply-18", "Corridor plumbing-panel ply (23/32\" exterior)", "timber-ply",
          "water", 1, "sheet", 29.30, 29.30, "Home Depot", part_no="303564747",
@@ -280,7 +279,7 @@ PARTS: list[Part] = [
     Part("ribbon-support-beam", "Steel flat bar 25×3mm — ribbon support cross-brace", "steel-structural",
          "water", 2, "3ft bar", 17.57, 17.57, "McMaster-Carr", part_no="6775T37", url="https://www.mcmaster.com/6775T37-6775T373/", dims="25×3mm × 3 ft", spec="Low-carbon steel flat bar 25×3mm × 3 ft. Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (four corridor↔pinhole lines); 4 braces ~300mm each = cut from 2× 3-ft bars (2 spare pieces).", panel="Corridor"),
     Part("ribbon-pipe-clip", "Cushioned pipe clip", "fasteners-hardware",
-         "water", 16, "ea", 1, 2, "Amazon", spec="Secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports)", panel="Corridor"),
+         "water", 16, "ea", 0.50, 0.50, "Amazon", part_no="B01HPE188Q", url="https://www.amazon.com/dp/B01HPE188Q", spec="Cushioned clamp for ½\" pipe (0.84\"/21mm OD); secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports). Sold in 20-packs at $9.99 ($0.50/ea); one pack covers the 16 + spares.", panel="Corridor"),
     Part("ptfe-tape", "Thread seal tape (PTFE)", "adhesives-finishes",
          "water", 4, "roll", 2, 2, "Home Depot", spec='1/2" wide, 260" roll'),
     # — pipe (80–114) —
@@ -296,7 +295,7 @@ PARTS: list[Part] = [
          "water", 2, "length", 5.94, 5.94, "US Plastic Corp", spec="Pump inlet flexible connection, 6 ft per pump", part_no="60703", url="https://www.usplastic.com/catalog/item.aspx?itemid=60703"),
     # — electrical, wiring only (35) —
     Part("water-wire-14awg", "14 AWG duplex marine wire", "electrical-distribution",
-         "water", 1, "roll", 22, 22, "Waytek Wire", spec="Tinned copper, 25 ft"),
+         "water", 25, "ft", 0.68, 0.68, "Waytek Wire", part_no="MCB14-2", url="https://www.waytekwire.com/product/multi-conductor-marine-cable-mcb14-2", spec="Tinned-copper 2-conductor marine cable, cut to 25 ft (pump feed run)"),
     Part("water-powerpole", "Anderson Powerpole connectors 30A", "electrical-distribution",
          "water", 5, "pair", 1.30, 1.30, "Powerwerx", url="https://powerwerx.com/anderson-powerpole-connectors-30amp-unassembled", spec="Pump connections — one pair per pump (P-01..P-05). Sold in 10-pair packs at $12.99 (unassembled 30A); one pack covers the 5 pairs + spares."),
     Part("water-blade-fuses", "15A blade fuse", "electrical-distribution",
@@ -309,7 +308,7 @@ PARTS: list[Part] = [
          url="https://www.amazon.com/dp/B01ENFOIQE",
          spec="Waterproof, 0–16 range, ±0.01 accuracy"),
     Part("ph-calibration", "pH calibration solution set", "tools-safety",
-         "water", 1, "set", 10, 10, "Amazon", spec="pH 4 + pH 7 buffer sachets"),
+         "water", 1, "set", 7.99, 7.99, "Amazon", part_no="B09DCP4HNH", url="https://www.amazon.com/dp/B09DCP4HNH", spec="BOJACK pH 4.00 + 6.86 + 9.18 buffer powder sachets — meter recalibration"),
     Part("citric-acid", "Citric acid, food grade, 6 lb", "tools-safety",
          "water", 2, "bag", 29.98, 29.98, "Amazon", part_no="B0F1CKRT7G", url="https://www.amazon.com/dp/B0F1CKRT7G", spec="pH adjustment (acidifier), 6 lb/bag"),
     Part("ghs-labels", "Chemical-resistant labels (GHS)", "tools-safety",

@@ -413,7 +413,7 @@ indicative low–high estimates — get quotes before ordering.
 | [4-mil black poly sheeting](https://www.homedepot.com/p/332820356) (51982) | 1 roll | Home Depot | film | $40 |
 | [6-mil black LDPE sheeting](https://www.homedepot.com/p/332821399) (59803) | 1 roll | Home Depot | water | $55 |
 | [Apera Instruments AI311 PH60 pH meter](https://www.amazon.com/dp/B01ENFOIQE) (B01ENFOIQE) | 1 ea | Amazon | water | $80 |
-| Chemical-resistant labels (GHS) | 1 pack | Amazon | water | $20 |
+| [Chemical-resistant labels (GHS)](https://www.amazon.com/dp/B01H0PGLRI) (B01H0PGLRI) | 1 roll | Amazon | water | $20 |
 | [Citric acid, food grade, 6 lb](https://www.amazon.com/dp/B0F1CKRT7G) (B0F1CKRT7G) | 2 bag | Amazon | water | $60 |
 | [Nitrile gloves, box of 100](https://www.amazon.com/dp/B0CMZ5VXMS) (B0CMZ5VXMS) | 2 box | Amazon | water | $30 |
 | [pH calibration solution set](https://www.amazon.com/dp/B09DCP4HNH) (B09DCP4HNH) | 1 set | Amazon | water | $8 |

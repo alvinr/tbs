@@ -562,7 +562,7 @@ tray drainage plan and sump cross-section).
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | 304 SS RHS 40×25×3mm, 8 ft * | 40×25×3mm rectangular tube, laid flat (low profile); 2 sticks butt-welded to span | 2 ea | Online Metals | $96–$144 |
-| 6061-T6 AL plate 3/16" (5mm) | Carriage plates + spacer blocks (~300 × 500mm sheet) | 1 ea | Online Metals | $16–$28 |
+| [6061-T6 AL plate 3/16" (5mm)](https://www.metalsupermarkets.com/product/aluminum-sheet-6061/) (6061-sheet-12x20x0.1875) | Carriage plates + spacer blocks cut from one 12×20×3/16in sheet. Metal Supermarkets $124.88 firm (2026-08-01, cut-to-size retail) — ~4× an Online Metals sheet (~$30-40), the cheaper fallback if bought online. | 1 ea | Metal Supermarkets | $125 |
 | [3/4" LDPE irrigation poly pipe, 100 ft](https://www.dripdepot.com/polyethylene-tubing-size-three-quarter-inch-0-820-inch-inside-diameter-by-0-940-inch-od-length-100-feet) (3552) | Side-mounted spray manifold, clipped to the beam's inboard face. DripDepot 3552 ¾" poly tubing (0.820" ID × 0.940" OD ≈ 20.8×23.9mm); 100 ft roll, ~15 ft used on the ~3.86m beam (balance spare). $31.24 firm 2026-07-28. | 1 100ft roll | DripDepot | $31 |
 | [90° spray jets, barbed](https://www.homedepot.com/p/302581648) (110B) | DIG 110B 90° spray jets, 10-pack ×4 = 40 (39 used, 1 spare); side-tapped into the poly manifold, spray straight down. 90° down chosen (2026-07-28) over flat-fan/180° so the wash lands on the print, not sideways/up; pitch tightened 150→100mm (26→39 jets) for edge-to-edge coverage — see processing-tray §3.9. | 4 10-pack | Home Depot | $14 |
 | [SS/nylon retainer clips for 3/4" LDPE](https://www.dripdepot.com/figure-8-tubing-end-clamp-size-three-quarter-inch) | Figure-8 fold-back end closures for 3/4" poly drip tubing — DripDepot 10-pack, $4.20 firm (2026-07-30). | 1 10-pack | DripDepot | $4 |
@@ -582,7 +582,7 @@ tray drainage plan and sump cross-section).
 | [M12×1.75 jam nut, SS](https://www.mcmaster.com/90381A102/) (90381A102) | Locks the arm adapter on the ball-joint M12 stud. McMaster 90381A102: 18-8 SS thin-profile hex nut, M12×1.75 coarse — confirmed vs the 90381A102 PDF 2026-07-29 (matches the stud + arm-adapter bore). $8.38/pack of 10. | 1 ea | McMaster-Carr | $1 |
 | [Clamp-style shaft collar, 25mm/1" bore, SS](https://www.ruland.com/cl-16-st.html) (CL-16-ST) | Over the slit arm-tube bottom; its integral clamp screw squeezes the Ø25×2 tube onto the adapter's Ø21 spigot — rotational adjust + lift-off for transport. Replaces the loose M6 pinch bolt. Confirm SKU/bore/price at order. | 1 ea | Ruland | $28–$33 |
 | Nylon zip ties, 200mm | Hose to arm tube | 6 ea | Amazon | $1 |
-| **Spray total** | | | | **$384–$456** |
+| **Spray total** | | | | **$493–$553** |
 <!-- END parts:spray -->
 
 ### 6.3 Combined Total
@@ -590,8 +590,8 @@ tray drainage plan and sump cross-section).
 | Subsystem | Cost Range |
 |-----------|-----------|
 | Processing tray | <!-- BEGIN costing:tray-low -->$1,583<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,271<!-- END costing:tray-high --> |
-| Spray bar assembly | <!-- BEGIN costing:spray-low -->$383<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$455<!-- END costing:spray-high --> |
-| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$1,966<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,726<!-- END costing:tray-spray-total-high -->** |
+| Spray bar assembly | <!-- BEGIN costing:spray-low -->$492<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$552<!-- END costing:spray-high --> |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$2,075<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,823<!-- END costing:tray-spray-total-high -->** |
 
 ---
 

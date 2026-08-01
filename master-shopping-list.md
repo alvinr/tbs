@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $3,649 | $4,103 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,449 | $7,716 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,384 | $7,635 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,629** | **~$33,871** |
+| **TOTAL (base build + 50-print run)** | **~$25,564** | **~$33,790** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -129,7 +129,7 @@ indicative low–high estimates — get quotes before ordering.
 | [10mm split corrugated wire loom, drop runs](https://www.amazon.com/Split-Wire-Loom-Tubing-Polyethylene/dp/B017L3GWIW) (B017L3GWIW) | 10 m | Amazon | electrical | $25 |
 | [12 AWG tinned hook-up wire, black — 100ft (Circuit F)](https://www.waytekwire.com/product/wrt12-0-hook-up-wire-tinned-copper) (WRT12-0) | 1 spool | Waytek Wire | electrical | $13 |
 | [12 AWG tinned hook-up wire, red — 100ft (Circuit F)](https://www.waytekwire.com/product/wrt12-2-hook-up-wire-tinned-copper) (WRT12-2) | 1 spool | Waytek Wire | electrical | $13 |
-| 14 AWG duplex marine wire | 1 roll | Waytek Wire | water | $22 |
+| [14 AWG duplex marine wire](https://www.waytekwire.com/product/multi-conductor-marine-cable-mcb14-2) (MCB14-2) | 25 ft | Waytek Wire | water | $17 |
 | [14 AWG tinned hook-up wire, black — 100ft (Circuit C feed / AC)](https://www.waytekwire.com/product/wrt14-0-hook-up-wire-tinned-copper) (WRT14-0) | 1 spool | Waytek Wire | electrical | $14 |
 | [14 AWG tinned hook-up wire, red — 100ft (Circuit C feed / AC)](https://www.waytekwire.com/product/wrt14-2-hook-up-wire-tinned-copper) (WRT14-2) | 1 spool | Waytek Wire | electrical | $14 |
 | [15A blade fuse](https://www.amazon.com/dp/B07WP5FWJJ) (B07WP5FWJJ) | 1 pack | Amazon | water | $8 |
@@ -172,7 +172,7 @@ indicative low–high estimates — get quotes before ordering.
 | [SBL COB 12V red LED safelight strip, 5m reel (Circuit D)](https://www.superbrightleds.com/led-strips-and-bars/5m-rgb-single-color-cob-led-strip-light-cob-series-led-tape-light-ip20-24v-red-green-blue+color-red+volts-12~vdc) (STN-B-BRED-O12A-08F5M-12V) | 1 reel | Super Bright LEDs | electrical | $90 |
 | [Sealed wet-zone connectors — 6× Deutsch DT 2-pin pairs (pump circuits)](https://www.buydeutsch.com/collections/dt-series/products/dt06-2s) (DT06-2S) | 1 lot | buyDeutsch | electrical | $27 |
 | [Shore-charger output fuse — 20A inline (sealed holder + fuse)](https://www.waytekwire.com/product/sealed-ato-atc-fuse-holder-assembly-46047) (46047) | 1 ea | Waytek Wire | electrical | $7 |
-| **electrical-distribution subtotal** | | | | **$2,064–$2,074** |
+| **electrical-distribution subtotal** | | | | **$2,059–$2,069** |
 
 ### electrical-power
 
@@ -247,11 +247,10 @@ indicative low–high estimates — get quotes before ordering.
 | [304 SS D-grab pull handle (~300mm) + 2× M8 SS bolts + backing plate, matte-black](https://www.strongarhardware.com/pro-line-series-ladder-pull-handle-back-to-back-matte-black-powder-coated-finish-316-exterior-grade-stainless-steel-alloy/) | 1 ea | StrongAr Hardware | panel | $70–$90 |
 | Southco C2-33 cam compression latch | 4 ea | Southco | panel | $76–$104 |
 | [Ratchet straps, 25mm](https://www.homedepot.com/p/312994495) (FH0829) | 1 4-pack | Home Depot | ventilation | $10 |
-| Cushioned pipe clip | 16 ea | Amazon | water | $16–$32 |
+| [Cushioned pipe clip](https://www.amazon.com/dp/B01HPE188Q) (B01HPE188Q) | 16 ea | Amazon | water | $8 |
 | Folding shelf stays/brackets | 2 ea | Amazon | shelf | $24 |
 | [Continuous (piano) hinge, 600 mm](https://wurthbaersupply.com/product/711558/1-1-4-WELD-ON-PIANO-HINGE-23-5-8-L-LSN8-32-600) (LSN8-32-600) | 1 ea | Wurth Baer Supply | shelf | $24 |
 | Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
-| Shurflo pump mounting bracket | 5 ea | Fresh Water Systems | water | $50 |
 | [Top + bottom wall stays + 4-bolt anchor plates](https://www.fastenersplus.com/products/5-8-x-6-jaw-eye-galvanized-turnbuckle) (JETBGV58X6) | 2 set | Fasteners Plus | swing | $90–$120 |
 | [Clamp-style shaft collar, 25mm/1" bore, SS](https://www.ruland.com/cl-16-st.html) (CL-16-ST) | 1 ea | Ruland | spray | $28–$33 |
 | [M12×1.75 jam nut, SS](https://www.mcmaster.com/90381A102/) (90381A102) | 1 ea | McMaster-Carr | spray | $1 |
@@ -263,7 +262,7 @@ indicative low–high estimates — get quotes before ordering.
 | Nylon zip ties, 200mm | 6 ea | Amazon | spray | $1 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,680–$2,006** |
+| **fasteners-hardware subtotal** | | | | **$1,622–$1,932** |
 
 ### plastics-sheet
 
@@ -417,8 +416,8 @@ indicative low–high estimates — get quotes before ordering.
 | Chemical-resistant labels (GHS) | 1 pack | Amazon | water | $20 |
 | [Citric acid, food grade, 6 lb](https://www.amazon.com/dp/B0F1CKRT7G) (B0F1CKRT7G) | 2 bag | Amazon | water | $60 |
 | [Nitrile gloves, box of 100](https://www.amazon.com/dp/B0CMZ5VXMS) (B0CMZ5VXMS) | 2 box | Amazon | water | $30 |
-| pH calibration solution set | 1 set | Amazon | water | $10 |
-| **tools-safety subtotal** | | | | **$295** |
+| [pH calibration solution set](https://www.amazon.com/dp/B09DCP4HNH) (B09DCP4HNH) | 1 set | Amazon | water | $8 |
+| **tools-safety subtotal** | | | | **$293** |
 
 ### water-equipment
 
@@ -442,7 +441,7 @@ indicative low–high estimates — get quotes before ordering.
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,185–$3,567 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 12 | aluminum, steel-structural | $1,780–$2,354 |
-| Amazon | 35 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,077–$2,143 |
+| Amazon | 35 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,067–$2,117 |
 | Home Depot | 50 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,640–$1,761 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
@@ -463,7 +462,7 @@ indicative low–high estimates — get quotes before ordering.
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | igus | 1 | bearings-motion | $261 |
 | americandoorsupply | 1 | electrical-distribution | $244 |
-| Waytek Wire | 15 | electrical-distribution, electrical-power | $234 |
+| Waytek Wire | 15 | electrical-distribution, electrical-power | $229 |
 | Bearings Direct | 2 | bearings-motion | $201 |
 | Amazon (bundle) | 1 | seals-gaskets | $157–$178 |
 | Harbor Freight | 1 | fasteners-hardware | $115–$173 |
@@ -477,7 +476,6 @@ indicative low–high estimates — get quotes before ordering.
 | Hardware store | 3 | adhesives-finishes, seals-gaskets | $57–$92 |
 | StrongAr Hardware | 1 | fasteners-hardware | $70–$90 |
 | HitLights | 1 | electrical-distribution | $75–$85 |
-| Fresh Water Systems | 2 | fasteners-hardware, water-equipment | $82 |
 | Frost King + Canal Rubber | 1 | seals-gaskets | $40–$75 |
 | TAP Plastics | 1 | plastics-sheet | $30–$70 |
 | B&H Photo | 1 | fabric-textile | $69 |
@@ -491,6 +489,7 @@ indicative low–high estimates — get quotes before ordering.
 | Marine Fiberglass Direct | 1 | fasteners-hardware | $25–$45 |
 | DripDepot | 3 | fasteners-hardware, plumbing-fittings | $38 |
 | Ruland | 1 | fasteners-hardware | $28–$33 |
+| Fresh Water Systems | 1 | water-equipment | $32 |
 | Signature Solar | 1 | electrical-distribution | $30 |
 | buyDeutsch | 1 | electrical-distribution | $27 |
 | Harfington | 2 | electrical-distribution | $25 |

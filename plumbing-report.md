@@ -480,8 +480,8 @@ hardware are sourced there and in the IBC stacking frame line.
 | [3-way diverter valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=22365) (22365) | L/T-port PVC-compatible; 3W-DV-02 (tray drain) | 1 ea | US Plastic Corp | $24 |
 | [pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build/SKU as SV-01 (US Plastic 36903 $19.26 — priced under SV-01; applied to SV-02 as the identical build) | 1 ea | US Plastic Corp | $19 |
 | [Steel flat bar 25×3mm — ribbon support cross-brace](https://www.mcmaster.com/6775T37-6775T373/) (6775T37) | Low-carbon steel flat bar 25×3mm × 3 ft. Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (four corridor↔pinhole lines); 4 braces ~300mm each = cut from 2× 3-ft bars (2 spare pieces). | 2 3ft bar | McMaster-Carr | $35 |
-| Cushioned pipe clip | Secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports) | 16 ea | Amazon | $16–$32 |
-| **Corridor Plumbing Panel total** | | | | **$847–$888** |
+| [Cushioned pipe clip](https://www.amazon.com/dp/B01HPE188Q) (B01HPE188Q) | Cushioned clamp for ½" pipe (0.84"/21mm OD); secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports). Sold in 20-packs at $9.99 ($0.50/ea); one pack covers the 16 + spares. | 16 ea | Amazon | $8 |
+| **Corridor Plumbing Panel total** | | | | **$839–$864** |
 <!-- END parts:corridor-plumbing-panel -->
 
 ### 9.2 Pinhole Wall Plumbing Panel

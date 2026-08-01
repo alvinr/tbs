@@ -409,7 +409,7 @@ reports — [Processing Tray & Spray Bar](processing-tray-and-spray-bar.md) and
 |----------|-------------|--------------|
 | Water equipment — §8 BOM (IBC storage, pumps + accumulator, 3-stage filter train, valves & fittings, pipe, wiring, consumables) | $2,073 | $3,123 |
 | Processing tray (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.1) | <!-- BEGIN costing:tray-low -->$1,583<!-- END costing:tray-low --> | <!-- BEGIN costing:tray-high -->$2,271<!-- END costing:tray-high --> |
-| Spray bar assembly (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.2) | <!-- BEGIN costing:spray-low -->$553<!-- END costing:spray-low --> | <!-- BEGIN costing:spray-high -->$565<!-- END costing:spray-high --> |
+| Spray bar assembly (see [Processing Tray report](processing-tray-and-spray-bar.md) §6.2) | <!-- BEGIN costing:spray-low -->$551<!-- END costing:spray-low --> | <!-- BEGIN costing:spray-high -->$563<!-- END costing:spray-high --> |
 | **TOTAL** | **$3,660** | **$5,513** |
 
 *The Water-equipment row is the generated §8 `parts:water` BOM total (single source of record for the water subsystem — storage/pumps/filters/valves/pipe/consumables); the tray and spray-bar rows are `costing.py` blocks. The TOTAL is a hand sum of the three and should itself become a generated block (Phase-1 backlog).*

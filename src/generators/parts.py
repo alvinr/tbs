@@ -445,7 +445,7 @@ PARTS: list[Part] = [
     Part("spray-arm-collar", "Clamp-style shaft collar, 25mm/1\" bore, SS", "fasteners-hardware",
          "spray", 1, "ea", 28, 33, "Ruland", spec="Over the slit arm-tube bottom; its integral clamp screw squeezes the Ø25×2 tube onto the adapter's Ø21 spigot — rotational adjust + lift-off for transport. Replaces the loose M6 pinch bolt. Confirm SKU/bore/price at order.", part_no="CL-16-ST", url="https://www.ruland.com/cl-16-st.html"),
     Part("spray-zip-ties", "Nylon zip ties, 8in (200mm)", "fasteners-hardware",
-         "spray", 1, "100-pack", 3.99, 3.99, "Harbor Freight", part_no="34635", url="https://www.harborfreight.com/8-inch-black-cable-ties-pack-of-100-34635.html", spec="Hose to arm tube — 8in UV-resistant black nylon, 100-pack (6 used + spares). ~$3.99 est (2026-08-01; HF site blocked the automated price read — confirm at purchase)."),
+         "spray", 1, "100-pack", 2.68, 2.68, "Harbor Freight", part_no="34635", url="https://www.harborfreight.com/8-inch-black-cable-ties-pack-of-100-34635.html", spec="Hose to arm tube — 8in UV-resistant black nylon, 100-pack (6 used + spares). Harbor Freight $2.68 firm (2026-08-01)."),
 
     # ═══ electrical (§6) — fully itemized from master §6; point estimates summing to ~$2,345
     # (reconciles to EXPECTED['power'] $2,350 within tolerance). Demonstrates the procurement-real

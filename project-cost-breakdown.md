@@ -348,9 +348,9 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 
 ### 7.1 Chemistry and substrate (50 prints)
 
-> **⚠ Chemistry is now a RANGE — pending [Sensitizer Trials](sensitizer-trials.md).** Corrected to the
-> **Mike Ware New Cyanotype** formula: ammonium iron(III) oxalate (**AmFe** — not the old ferric ammonium
-> citrate), **3:1 AmFe:ferricyanide ratio**, and **two wet-on-wet coats** over the 9.42 m² active plane.
+> **⚠ Chemistry is a RANGE — pending [Sensitizer Trials](sensitizer-trials.md).** The
+> **Mike Ware New Cyanotype** formula: ammonium iron(III) oxalate (**AmFe**),
+> **3:1 AmFe:ferricyanide ratio**, and **two wet-on-wet coats** over the 9.42 m² active plane.
 > Per-print AmFe is **260–780 g** by concentration tier (Lean ⅓-Ware / Standard ½-Ware / Rich full-Ware —
 > operating-manual §0.2), so the chemistry cost spans a wide band until a tier is trialled. **Standard
 > (½-Ware) is the working default.**

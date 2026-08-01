@@ -92,8 +92,8 @@ Converting the container interior from cargo hold to pinhole camera. Includes li
 |------|-----|------|-------|-------|
 | Flat black latex paint (zero sheen) | 3 gal | $25 | $75 | Two long walls, two short walls, ceiling (~755 sq ft) |
 | Primer (if bare steel) | 1 gal | $30 | $30 | One coat on new welds/repairs |
-| Rollers, brushes, trays | 1 kit | $25 | $25 | |
-| **Paint subtotal** | | | **$130** | |
+| Rollers, brushes, trays | 1 kit | $20 | $20 | |
+| **Paint subtotal** | | | **$125** | |
 
 ### 2.3 Image-plane flat backing — costed with the Film Plane Mechanism
 
@@ -111,9 +111,11 @@ The rigid ACM backing is **bonded to the moveable film-plane frame**, so it is c
 
 | Item | Qty | Unit | Total | Notes |
 |------|-----|------|-------|-------|
-| Fresh door gasket set | 1 | $45 | $45 | OEM-style rubber seal for container doors |
-| Red LED safelight (battery) | 1 | $25 | $25 | Loading operations |
-| **Door subtotal** | | | **$70** | |
+| Personnel-door hinges (heavy-duty) | 3 | $6 | $18 | Access-door hang |
+| Weatherproof door latch/lock set | 1 | $30 | $30 | Secure closure |
+| Door perimeter weatherstrip + threshold | 1 | $16 | $16 | Light + weather seal |
+| Door pull handle + mounting hardware | 1 | $39 | $39 | Firm quote |
+| **Door subtotal** | | | **$103** | |
 
 ### 2.6 Miscellaneous conversion hardware
 
@@ -365,7 +367,7 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 
 *Note: development requires only plain cold water — no darkroom chemistry. The §5 water system provides all wash water.*
 
-*Muslin reconciled (2026-06-18): the earlier $1,100 / $900 / $43-per-print figures all over-counted the fabric ~3×. The [shopping list](chemistry-shopping-list.md) derived 5,980 sq ft ÷ 60″(5 ft) wide = "1,340 linear **yards**," but 5,980 ÷ 5 = 1,196 linear **feet** ≈ **399 yd** — feet were labelled yards. Three 60″ strips cover the <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> mm width (×<!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm --> mm tall = ~21 ft/print); 50 prints + 15% waste = ~400 yd = **3 × 150-yd rolls ≈ $300 (~$6/print)**. §7.1 and §7.2 now agree on this figure.*
+*Muslin sizing: three 60″ strips cover the <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> mm width (× <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm --> mm tall = ~21 ft/print); 50 prints + 15% waste = ~400 yd = **3 × 150-yd rolls ≈ $300 (~$6/print)**.*
 
 ### 7.2 Per-print cost (cyanotype — Standard ½-Ware tier; range locked by trial)
 
@@ -378,7 +380,7 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 | Water & consumables (6-mil liner, gloves) | ~$3 |
 | **Total per print (Standard)** | **~$36** |
 
-*Across tiers, chemistry moves the per-print total to ~**$27 (Lean) – ~$63 (Rich)**; the [Sensitizer Trials](sensitizer-trials.md) lock the tier. Muslin is now ~$6/print (see §7.1 reconciliation), so the §7.1 totals = this per-print × 50 (± the $3/print consumables that §7.1 excludes).*
+*Across tiers, chemistry moves the per-print total to ~**$27 (Lean) – ~$63 (Rich)**; the [Sensitizer Trials](sensitizer-trials.md) lock the tier. Muslin is ~$6/print (see §7.1), so the §7.1 totals = this per-print × 50 (± the $3/print consumables that §7.1 excludes).*
 
 ### 7.3 Alternative process cost comparison
 
@@ -393,7 +395,7 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 
 *Silver nitrate is the cost driver for Van Dyke, salt print, and Liquid Light. Cyanotype and gum bichromate are the only processes under $5,000 for a 50-print run.*
 
-*‡ Cyanotype chemistry is a **range** pending [Sensitizer Trials](sensitizer-trials.md) — the corrected Ware-3:1 / two-coat figures swing the per-print AmFe (and the 50-print chemistry cost) by up to ~4.6×. Muslin (~$300 / ~$6 per print) is now reconciled and fixed (§7.1). The Standard (½-Ware) tier is the working default.*
+*‡ Cyanotype chemistry is a **range** pending [Sensitizer Trials](sensitizer-trials.md) — the corrected Ware-3:1 / two-coat figures swing the per-print AmFe (and the 50-print chemistry cost) by up to ~4.6×. Muslin is ~$300 / ~$6 per print (§7.1). The Standard (½-Ware) tier is the working default.*
 
 ---
 

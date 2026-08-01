@@ -326,7 +326,7 @@ def corners():
 
 def film_plane():
     # The film plane is NOT a bare sheet butted to the corner brackets. It is a rigid ACM BACKING captured in a
-    # 2x2 6061 Al angle PERIMETER FRAME (anodized 6061-T6, 2"×2"×3/16" — an EXPENDABLE part; anodized Al in the
+    # 2x2 6061 Al angle PERIMETER FRAME (plain 6061-T6, 2"×2"×1/8" — an EXPENDABLE part; plain Al in the
     # splash-not-immersed cyanotype zone, replaced on pitting, chosen over 304 SS for weight + cost):
     # the ACM seats against the frame's in-plane leg; the muslin is clamped onto the ACM by spring clips on the upstand (Sheet 6); and
     # the frame's four CORNERS bolt onto the frame
@@ -334,7 +334,7 @@ def film_plane():
     # ACM → angle frame → 304 SS corner plate → U-joint, never a butt joint. The corner plate is STEEL
     # (not the expendable 6061 angle): the U-joint funnels the corner load into a few bolts, too concentrated
     # for aluminum — 304 SS for strength + a galvanic/wet-zone match to the 303 SS U-joint.
-    AL, AT = 50, 5                                # 2x2 angle leg / wall
+    AL, AT = 50, 3                                # 2x2 angle leg / wall
     yperp = FP_Y - AL                             # perp leg projects toward the pinhole (muslin side)
     yin = FP_Y - AT                               # in-plane leg lies against the ACM front face
     P = [
@@ -428,7 +428,7 @@ def movement(corner="BL", two_way=False):
     channel + load rollers; top = flat guide channel + guide drum & yoke. Panel/tilt mirror by corner.
     Returns (static, carriage, float, panel, pivot, dy_fwd, deploy, tilt, anchor)."""
     ty = FP_Y
-    AL, AT = 50, 5                                     # 2x2 angle leg / wall (match film_plane())
+    AL, AT = 50, 3                                     # 2x2 angle leg / wall (match film_plane())
     yperp, yin = FP_Y - AL, FP_Y - AT                  # perp leg (muslin side) / in-plane leg (ACM seat)
     plen = 720
     dy_fwd = 320
@@ -617,7 +617,7 @@ def plane_frame(px, pz, yc):
     """The ROTATING body of the whole plane — 6061 frame + near-invisible clickable fill + per-corner U-joint,
     stubs, 4040N12 shaft support, 304 corner plate. Relative to the centre pivot (px, yc, pz) so a DC rotates
     it (tilt = rotx / swing = rotz). The CARRIAGES are NOT here — they stay on the rails (see plane_carriage)."""
-    AL, AT = 50, 5
+    AL, AT = 50, 3
     yperp, yin = yc - AL, yc - AT
     W = FP_W_CORNER
     ty = yc

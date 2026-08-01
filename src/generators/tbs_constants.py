@@ -93,7 +93,7 @@ FP_Y_MIN = 100    # minimum carriage depth (mm)     [unchanged]
 # ── Muslin clamp system ──────────────────────────────────────────────────────
 # Off-the-shelf inert NYLON spring clamps (Pittsburgh 69289 — fiberglass body + swivel
 # pads, no corrosion in the cyanotype splash zone) at 150mm centers grip the muslin
-# against the 2"x2"x3/16" aluminum angle perimeter frame. An inert HDPE FILLER STRIP fills
+# against the 2"x2"x1/8" aluminum angle perimeter frame. An inert HDPE FILLER STRIP fills
 # the open L channel so the clamp bites a solid full-depth sandwich: the clamp jaw must
 # clear the 2" leg + ACM + muslin (~55mm), so a ≥3" clamp is used. The bottom
 # (walkway-facing) edge is left UNCLAMPED — no clearance between the raised walkway deck
@@ -101,8 +101,8 @@ FP_Y_MIN = 100    # minimum carriage depth (mm)     [unchanged]
 # top + two side edges. Replaced the custom through-bolted bracket + torsion-spring + neoprene
 # jaw (2026-07-22). See film-clamp-mechanism-report.md.
 FP_ANGLE_LEG  = 50.8   # angle leg size (mm) — 2" = 50.8mm
-FP_ANGLE_T    = 4.8    # angle thickness (mm) — 3/16" = 4.76mm ≈ 4.8mm
-DIBOND_T      = 4      # ACM (Dibond) backing sheet thickness (mm)
+FP_ANGLE_T    = 3.175  # angle thickness (mm) — 1/8" = 3.175mm
+DIBOND_T      = 3      # ACM (Dibond) backing sheet thickness (mm) — 3mm black Curbell w01-05317
 MUSLIN_T      = 0.5    # muslin fabric thickness (mm, approx)
 CLAMP_SPACING = 150    # clamp center-to-center spacing (mm)
 CLAMP_FILLER_D = FP_ANGLE_LEG - DIBOND_T - MUSLIN_T - FP_ANGLE_T   # inert HDPE filler depth into the L channel (mm) = 41.5

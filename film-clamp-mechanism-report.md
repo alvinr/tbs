@@ -6,7 +6,7 @@
 
 The photosensitive muslin must be held taut against the [film plane frame](film-plane-mechanism-report.md) throughout exposures lasting 30–45 minutes, at any tilt angle up to ±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° and any swing angle up to ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->°. Loading and unloading happens under mixed safelight conditions, so the clamp mechanism must provide clear tactile feedback without visual confirmation.
 
-This report describes the **muslin clamp system** that secures the muslin to the **2"×2"×3/16" aluminum L-angle** perimeter frame (the film-plane frame — [Film Plane Mechanism §4](film-plane-mechanism-report.md)). Rather than a custom mechanism, it uses **off-the-shelf inert nylon spring clamps** clipped over the frame edge, with an **inert HDPE filler strip** packing the open L channel so each clamp bites a solid full-depth edge. The angle's two 2-inch (≈51mm) legs are the *flat leg* (bonded behind the ACM backing board) and the *upstand* (standing proud toward the pinhole).
+This report describes the **muslin clamp system** that secures the muslin to the **2"×2"×1/8" aluminum L-angle** perimeter frame (the film-plane frame — [Film Plane Mechanism §4](film-plane-mechanism-report.md)). Rather than a custom mechanism, it uses **off-the-shelf inert nylon spring clamps** clipped over the frame edge, with an **inert HDPE filler strip** packing the open L channel so each clamp bites a solid full-depth edge. The angle's two 2-inch (≈51mm) legs are the *flat leg* (bonded behind the ACM backing board) and the *upstand* (standing proud toward the pinhole).
 
 ---
 
@@ -38,7 +38,7 @@ The muslin lies over the ACM backing board (the pinhole face) and its edge wraps
 
 ### 3.2 HDPE Filler Strip
 
-An inert **HDPE strip, 41.5mm deep** (= frame leg 50.8 − ACM 4 − muslin 0.5 − angle 4.8), runs continuously in the L channel along the three clamped edges (~8.7 m). It brings the open channel up to a solid full-depth edge so the clamp's swivel pads bear on solid material rather than air. HDPE is inert (chemistry-safe, the same family as the tray liner), rigid enough to back the clamp, and cut to suit — firm at fabrication.
+An inert **HDPE strip, 44.1mm deep** (= frame leg 50.8 − ACM 3 − muslin 0.5 − angle 3.2), runs continuously in the L channel along the three clamped edges (~8.7 m). It brings the open channel up to a solid full-depth edge so the clamp's swivel pads bear on solid material rather than air. HDPE is inert (chemistry-safe, the same family as the tray liner), rigid enough to back the clamp, and cut to suit — firm at fabrication.
 
 ---
 
@@ -50,7 +50,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | [Nylon spring clamp, 3½″ (Pittsburgh 69289)](https://www.harborfreight.com/3-12-in-nylon-spring-clamp-69289.html) (69289) | Inert fiberglass/nylon spring clamp with swivel pads — no corrosion in the cyanotype splash zone (replaces the custom steel-bracket clip). Clips over the filler-filled L-frame edge to grip the muslin; the jaw must clear ~55mm (2" leg + ACM + muslin), so a ≥3" clamp. Top + 2 side edges only (bottom = walkway/swing clearance). Confirm the open-jaw ≥2" at purchase; 2½" 69290 is the smaller-body fallback. | 58 ea | Harbor Freight / Amazon | $115–$173 |
-| HDPE filler strip (L-channel packer) | Inert HDPE strip, 41.5mm deep (= frame leg − ACM − muslin − angle), filling the aluminum-angle L channel along the 3 clamped edges (~8.7 m) so the nylon clamp bites a solid full-depth sandwich. Cut to suit; chemistry-safe (same family as the tray liner). Firm at fab. | 1 lot | TAP Plastics / McMaster-Carr | $30–$70 |
+| HDPE filler strip (L-channel packer) | Inert HDPE strip, 44.125mm deep (= frame leg − ACM − muslin − angle), filling the aluminum-angle L channel along the 3 clamped edges (~8.7 m) so the nylon clamp bites a solid full-depth sandwich. Cut to suit; chemistry-safe (same family as the tray liner). Firm at fab. | 1 lot | TAP Plastics / McMaster-Carr | $30–$70 |
 | **Clamp total** | | | | **$145–$243** |
 <!-- END parts:clamp -->
 

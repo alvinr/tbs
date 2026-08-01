@@ -284,7 +284,7 @@ FILM = [
     LineItem("McMaster 5128A63 hold-down toggle clamps (×12, rail brake)", 155, 155, 155, "3 per corner; 5128A63 low-profile hold-down toggle clamp $12.93 ea firm (2026-07-30)"),
     LineItem("Corner plates, ¼\" 304 SS 6×8 (×4)", 152, 180, 208, "U-joint mount — steel, not aluminum"),
     # 4.2 Film plane frame & backing
-    point("Aluminum angle 2×2×3/16 (6061-T6 plain, expendable) 16 ft (×3) — weld-free frame", 625, "Metal Supermarkets 192\" @ $208.41; 2 horizontals + 1 for both verticals; 1 frame"),
+    point("Aluminum angle 2×2×1/8 (6061-T6 plain, expendable) 16 ft (×3) — weld-free frame", 528, "Metal Supermarkets 192\" @ $176.06; 2 horizontals + 1 for both verticals; 1 frame"),
     LineItem("Dibond ACM 4mm 4×8 black sheets (×4, Option A strips) — single rigid plane", 380, 380, 380, "Curbell 4mm black $95/sheet firm; 4 full-height vertical strips, 3 vertical seams"),
     LineItem("Light-seal set — EPDM tape (×2) + Impact duvetyne (57\" 9oz, B&H $69) + 4-mil poly + Gorilla tape (×6)", 214, 214, 214, "2026-07-27: Gorilla 30yd black tape firm $9.94 ×6; blackout poly → Film-Gard 10ft×100ft 4-mil $40.12 (opaque enough for a light-seal, was 6-mil $66–70)"),
     LineItem("Muslin clamps — nylon spring clamp ×58 (Pittsburgh 69289)", 115, 144, 173, "2026-07-25 re-price: Harbor Freight 69289 now $1.99–2.99 ea (was $3–4); inert fiberglass + swivel pads, top + 2 side edges (bottom = walkway clearance)"),
@@ -1020,7 +1020,7 @@ EXPECTED = { # the figures the docs are reconciled to (this session)
     "lean": {"chem": 951, "total": 1250, "per_print": 25}, # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "standard": {"chem": 1414, "total": 1710, "per_print": 34}, # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
     "rich": {"chem": 2802, "total": 3100, "per_print": 62}, # 2026-07-26: Artcraft bulk — AmFe $64.20/kg + ferricyanide $51.01/kg
-    "grand_total": (25745, 30286, 36877), # 2026-07-31: electrical section CLOSED — all parts sourced (bonding-kit Panduit $95.79, wet-zone DT pairs $27.42, ground-wire MTW $52, mppt ANL60 $6.99, led-connectors, dielectric-grease, powerpole). 2026-07-29: +$16 1" PVC recount 2→4 sticks. 2026-07-28: +$37 water (transition-adapter +$8, sump pickup +$45, spray Option 1 −$8). Earlier: external power panel penetration box; MC4 bulkheads, cooler outlet, PV disconnect, spray 90° jets.
+    "grand_total": (25648, 30189, 36780), # 2026-07-31: electrical section CLOSED — all parts sourced (bonding-kit Panduit $95.79, wet-zone DT pairs $27.42, ground-wire MTW $52, mppt ANL60 $6.99, led-connectors, dielectric-grease, powerpole). 2026-07-29: +$16 1" PVC recount 2→4 sticks. 2026-07-28: +$37 water (transition-adapter +$8, sump pickup +$45, spray Option 1 −$8). Earlier: external power panel penetration box; MC4 bulkheads, cooler outlet, PV disconnect, spray 90° jets.
     "walkway": (1979, 2395, 2825), # 2026-07-23b: bump extended 2nd rib toward IBC — 1 near bracket std->widened (+$12/$22)
     "water": (6418, 7051, 7685), # 2026-07-29: 1" PVC recount 2→4 sticks (+$16, IBC internal fill/drain). 2026-07-28: transition-adapter takeoff +$8; sump pickup firmed +$45; spray Option 1 single center feed −$8. Earlier: 90° down-jets 26→39; carbon Aquaboon; SV taps 36903; nitrile; tray shims $295.96.
     "container": (2300, 3300, 4300),
@@ -1030,7 +1030,7 @@ EXPECTED = { # the figures the docs are reconciled to (this session)
     "shelf": (223, 229, 235), # 2026-07-27: piano hinge firm Würth LSN8-32-600 weld-on $23.56 (was $22.68–35.72). Earlier: Swaner UV-White work surface $73.28.
     "interior": (526, 605, 693), # 2026-07-27: door pull handle firm McMaster 3570N12 $39.10 (was $5–9 lot, +$34/+$30). Earlier: BEHR Jet Black paint firm.
     "optics": (100, 155, 215), # 2026-07-23: pinhole → Lenox SS-3/8-DISC $40-100 (config, RFQ)
-    "film": (3746, 3972, 4200), # 2026-07-31: Ruland->Belden U-joint -$653 # 2026-07-27: blackout poly → Film-Gard 10ft 4-mil $40.12 (was 6-mil $66–70, −$26/−$30); Gorilla tape firm $9.94 ×6; saddle M8 thumbscrews ×12 McMaster $11.80. (2026-07-22: clamp → off-the-shelf nylon spring clamps + HDPE filler.)
+    "film": (3649, 3875, 4103), # 2026-07-31: Ruland->Belden U-joint -$653 # 2026-07-27: blackout poly → Film-Gard 10ft 4-mil $40.12 (was 6-mil $66–70, −$26/−$30); Gorilla tape firm $9.94 ×6; saddle M8 thumbscrews ×12 McMaster $11.80. (2026-07-22: clamp → off-the-shelf nylon spring clamps + HDPE filler.)
     "ventilation": (748, 748, 748), # 2026-07-27: canopy 1" EMT firm ($206 — conduit $21.86×6, couplings $1.45×8, flange 4-pack $16.29, Halex 94510 elbows $11.85×4); evap cooler MC18MT $109; duct collar+clamp $16.23.
     "power": (3431, 3464, 3496), # 2026-07-31: mppt-charge-fuse itemized (Powerwerx 5005 block + ANL60), dielectric-grease $8.99, powerpole housings $0.55. 2026-07-28: external power panel FINAL — fabricated flanged wall-penetration box + flashing (weatherproof components exposed on the face, wired from inside), disconnect relocated to the EP. McMaster IP enclosure + wall gland retired (−$229/−$182). §5a authoritative subtotal
 }

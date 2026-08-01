@@ -282,9 +282,9 @@ def _shelf_weight():
 
 
 def _film_plane_carriage_weight():
-    """Film plane MOVING mass: Dibond ACM backing + anodized 6061 Al angle frame (EXPENDABLE)
+    """Film plane MOVING mass: Dibond ACM backing + plain 6061 Al angle frame (EXPENDABLE)
     + muslin spring clips + carriages — everything that travels with the plane through tilt/swing."""
-    # Perimeter frame: 2"×2"×3/16" anodized 6061 Al angle (50.8×50.8×4.8mm) — kept aluminum as an expendable
+    # Perimeter frame: 2"×2"×1/8" plain 6061 Al angle (50.8×50.8×3.175mm) — kept aluminum as an expendable
     # part (weight + cost) rather than 304 SS; a 304 SS swap (~2.9× the mass) was evaluated and rejected.
     perimeter = 2 * (FP_W + FP_H) / 1000  # m
     angle_area = (2 * FP_ANGLE_LEG * FP_ANGLE_T - FP_ANGLE_T**2) * 1e-6  # m²

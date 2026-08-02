@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $3,733 | $4,131 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,554 | $7,745 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,560 | $7,751 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,818** | **~$33,928** |
+| **TOTAL (base build + 50-print run)** | **~$25,824** | **~$33,934** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -215,7 +215,7 @@ indicative low–high estimates — get quotes before ordering.
 | [M6×1.0 × 20 hex bolt, Grade 8.8 zinc](https://www.mcmaster.com/91280A330/) (91280A330) | 20 ea | McMaster-Carr | electrical, spray | $4 |
 | [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — right-rail end fixing (ICP-14)](https://www.mcmaster.com/91280A534/) (91280A534) | 8 ea | McMaster-Carr | film | $3 |
 | [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — shelf cleat + stay mount](https://www.mcmaster.com/91280A534/) (91280A534) | 12 ea | McMaster-Carr | shelf | $4 |
-| [M12×40 hex bolt, Grade 8.8](https://www.mcmaster.com/91280A206/) (91280A206) | 8 ea | McMaster-Carr | ibc-frame | $5 |
+| [M12×40 hex bolt, Grade 8.8](https://www.mcmaster.com/92314A744/) (92314A744) | 8 ea | McMaster-Carr | ibc-frame | $12 |
 | [M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A728/) (91280A728) | 103 ea | McMaster-Carr | film, ibc-frame, walkway | $164 |
 | [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | 24 ea | McMaster-Carr | walkway | $42 |
 | [M6 flat washer, SS](https://www.mcmaster.com/91455a120/) (91455A120) | 8 ea | McMaster-Carr | electrical | $0 |
@@ -262,7 +262,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Nylon zip ties, 8in (200mm)](https://www.harborfreight.com/8-inch-black-cable-ties-pack-of-100-34635.html) (34635) | 1 100-pack | Harbor Freight | spray | $3 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,622–$1,932** |
+| **fasteners-hardware subtotal** | | | | **$1,628–$1,938** |
 
 ### plastics-sheet
 
@@ -446,7 +446,7 @@ indicative low–high estimates — get quotes before ordering.
 | Home Depot | 50 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,640–$1,761 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
-| McMaster-Carr | 46 | aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,307 |
+| McMaster-Carr | 46 | aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,314 |
 | US Plastic Corp | 16 | plastics-sheet, plumbing-fittings | $1,236 |
 | Online Metals | 3 | aluminum, stainless-sheet, steel-structural | $870–$1,230 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |

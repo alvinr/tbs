@@ -290,7 +290,7 @@ FILM = [
     LineItem("Muslin clamps — nylon spring clamp ×58 (Pittsburgh 69289)", 115, 144, 173, "2026-07-25 re-price: Harbor Freight 69289 now $1.99–2.99 ea (was $3–4); inert fiberglass + swivel pads, top + 2 side edges (bottom = walkway clearance)"),
     LineItem("Muslin clamp filler — HDPE L-channel strip", 30, 50, 70, "inert HDPE packer, ~8.7 m, firm at fab — lets the clamp bite a solid full-depth edge"),
     # 4.3 Wall-seat saddles (rev 11, ICP-11–14) — estimates, confirm at procurement
-    point("Wall-seat saddles ×6 — 8mm steel plate, cut + welded (ICP-11)", 318, "rev12: 2 BR ends moved to the walkway combined corner plates; ~$53/saddle"),
+    point("Wall-seat saddles ×6 — 8mm + 10mm A36 plate, cut (weld by owner) (ICP-11)", 318, "rev12: 2 BR ends moved to the walkway combined corner plates. 2026-08-01: split into 8mm ($216) + 10mm ($102) plate lines to quote separately; both need a local fab quote (not online)"),
     point("Saddle fasteners — M12×65 through-bolts (×28) + M8 thumbscrews (×12) + M8×25 hex bolts (×8)", 212, "ICP-12/13/14; M12×65 91280A728 + plain nut 90591A181 + 4 flat 91166A290 + split 91202A246 per bolt; M8×25 fixing 91280A534 $0.37. 2026-07-27: M8 thumbscrews ×12 sourced McMaster 92581A540 $11.80 ea (was $3 est, +$106)"),
 ]
 

@@ -13,7 +13,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
-| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $3,649 | $4,103 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $3,733 | $4,131 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,556 | $7,747 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,736** | **~$33,902** |
+| **TOTAL (base build + 50-print run)** | **~$25,820** | **~$33,930** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -365,7 +365,7 @@ indicative low–high estimates — get quotes before ordering.
 | Cantilever bracket — widened (near) | 5 ea | Local fab | walkway | $200–$350 |
 | Combined corner plate (right corners) | 2 ea | Local fab | walkway | $50–$80 |
 | Corner gusset plate, 3 mm | 4 ea | Steel offcut | shelf | $5 |
-| Corner plate 304 SS (U-joint mount) | 4 ea | Metal Supermarkets | film | $152–$208 |
+| Corner plate 304 SS (U-joint mount) | 4 ea | Metal Supermarkets | film | $236 |
 | Drop-in rail saddles + tapered dowels | 4 ea | Local fab | swing | $80–$130 |
 | Drum support cage, 40 × 40 × 3mm SHS | 1 lot | Local fab | swing | $70–$120 |
 | [EMT canopy base plates + ground stakes (×4)](https://www.homedepot.com/p/317889187) (PDB-F-1-4) | 1 4-pack | Home Depot | ventilation | $16 |
@@ -386,7 +386,7 @@ indicative low–high estimates — get quotes before ordering.
 | Wall cleat (left corners) | 2 ea | Local fab | walkway | $20–$35 |
 | Wall mounting cleat + anchors | 1 lot | Local fab | shelf | $18 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$3,007–$4,453** |
+| **steel-structural subtotal** | | | | **$3,091–$4,481** |
 
 ### substrate-fabric
 
@@ -440,7 +440,7 @@ indicative low–high estimates — get quotes before ordering.
 |----------|-----------|-------|-----------|
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,185–$3,567 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
-| Metal Supermarkets | 13 | aluminum, steel-structural | $1,905–$2,479 |
+| Metal Supermarkets | 13 | aluminum, steel-structural | $1,989–$2,507 |
 | Amazon | 34 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,070–$2,120 |
 | Home Depot | 50 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,640–$1,761 |
 | US Plastics | 4 | plastics-sheet | $1,665 |

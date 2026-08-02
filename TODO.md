@@ -17,6 +17,7 @@ _Everything sourceable today is sourced (parts-identity SKU/URL lint at zero). W
 bucketed by WHEN it can be acted on:_
 
 **Open DESIGN items:**
+- [ ] **Spray-beam lift-out gap.** Add vertical clearance so the spray beam can be **lifted clear of the tray** — (a) for maintenance/cleaning, and (b) to **slide the film (muslin) under it** during loading. Currently the beam rides its edge rails low over the tray. Need: a lift-out detail (removable beam, or the carriage lifts up its rails) + the gap to clear the tray rim (50mm) and the film-plane bottom edge on the way out. Check against the spray carriage/wheels, the tray rim, the walkway/beam geometry, and the film-plane travel; cascade to `SPRAY_BAR_*` constants + the 2D/3D spray-bar + tray.
 - [x] **Right walkway muslin-notch — beam clash — RESOLVED 2026-07-23.** The inner cantilever-rectangle long beam under the notch (X4329) is **cranked outboard 100mm** (full notch depth) over Yd1812–2162 with angled ramps, vacating the notch footprint so the rigid muslin rod drops straight at the tray edge — beam stays ONE continuous uncut member. `_rwk_inner_beam_cranked` (overview/walkway/water), Sheet 3 + report §4.1 updated. Left notch was already clear (between floor-leg brackets).
 
 ### Bucket 1 — ACTIONABLE NOW

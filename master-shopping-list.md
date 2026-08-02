@@ -248,9 +248,9 @@ indicative low–high estimates — get quotes before ordering.
 | Southco C2-33 cam compression latch | 4 ea | Southco | panel | $76–$104 |
 | [Ratchet straps, 25mm](https://www.homedepot.com/p/312994495) (FH0829) | 1 4-pack | Home Depot | ventilation | $10 |
 | [Cushioned pipe clip](https://www.amazon.com/dp/B01HPE188Q) (B01HPE188Q) | 16 ea | Amazon | water | $8 |
-| Folding shelf stays/brackets | 2 ea | Amazon | shelf | $24 |
+| Folding shelf stays/brackets, zinc | 2 ea | Amazon | shelf | $24 |
 | [Continuous (piano) hinge, 600 mm](https://wurthbaersupply.com/product/711558/1-1-4-WELD-ON-PIANO-HINGE-23-5-8-L-LSN8-32-600) (LSN8-32-600) | 1 ea | Wurth Baer Supply | shelf | $24 |
-| Transport latch (over-center/barrel) | 1 ea | Amazon | shelf | $8 |
+| Transport latch (over-center/barrel), zinc | 1 ea | Amazon | shelf | $8 |
 | [Top + bottom wall stays + 4-bolt anchor plates](https://www.fastenersplus.com/products/5-8-x-6-jaw-eye-galvanized-turnbuckle) (JETBGV58X6) | 2 set | Fasteners Plus | swing | $90–$120 |
 | [Clamp-style shaft collar, 25mm/1" bore, SS](https://www.ruland.com/cl-16-st.html) (CL-16-ST) | 1 ea | Ruland | spray | $28–$33 |
 | [M12×1.75 jam nut, SS](https://www.mcmaster.com/90381A102/) (90381A102) | 1 ea | McMaster-Carr | spray | $1 |

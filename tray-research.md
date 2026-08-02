@@ -68,8 +68,9 @@ the tray is a drain pan, not a showpiece:
   grit directional grain); 2B is the standard bright cold-rolled finish and is
   functionally identical for a drain pan. Dropping to 2B saves an estimated
   **~$110–300** on the sheet with no loss of rigidity or corrosion resistance —
-  **firm at a 2B-vs-#4 quote** ([Metal Supermarkets](https://www.metalsupermarkets.com/product/stainless-steel-sheet-304/),
-  [Coremark](https://www.coremarkmetals.com/304-2b-stainless-steel-sheet)). **Recommended.**
+  firm at a 2B-vs-#4 quote ([Metal Supermarkets](https://www.metalsupermarkets.com/product/stainless-steel-sheet-304/),
+  [Coremark](https://www.coremarkmetals.com/304-2b-stainless-steel-sheet)). **Adopted 2026-08-02** —
+  `tray-ss-sheet` re-spec'd to 2B mill finish (sheet $720–1,000 → $610–850 est; firm at quote).
 - **Gauge — keep 16-ga.** 18-ga (.048") is ~20% less material but noticeably
   softer; since the *rigid surface* was the deciding requirement, the thinner gauge
   is rejected.

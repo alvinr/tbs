@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $3,733 | $4,131 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,560 | $7,751 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,450 | $7,601 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,824** | **~$33,934** |
+| **TOTAL (base build + 50-print run)** | **~$25,714** | **~$33,784** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -340,9 +340,9 @@ indicative low–high estimates — get quotes before ordering.
 
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
-| 304 SS sheet, 16-gauge (1.5mm), #4 brushed | 2 ea | Online Metals | tray | $720–$1,000 |
+| 304 SS sheet, 16-gauge (1.5mm), 2B mill finish | 2 ea | Online Metals | tray | $610–$850 |
 | [Custom laser-drilled pinhole — SS-302/304 shim, 3×3](https://lenoxlaser.com/shop/optical-apertures/standard-apertures/standard-aperture/) (SS-3/8-DISC) | 1 ea | Lenox Laser | optics | $40–$100 |
-| **stainless-sheet subtotal** | | | | **$760–$1,100** |
+| **stainless-sheet subtotal** | | | | **$650–$950** |
 
 ### steel-structural
 
@@ -448,8 +448,8 @@ indicative low–high estimates — get quotes before ordering.
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
 | McMaster-Carr | 46 | aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,314 |
 | US Plastic Corp | 16 | plastics-sheet, plumbing-fittings | $1,236 |
-| Online Metals | 3 | aluminum, stainless-sheet, steel-structural | $870–$1,230 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
+| Online Metals | 3 | aluminum, stainless-sheet, steel-structural | $760–$1,080 |
 | American Grating | 1 | plastics-sheet | $830–$1,050 |
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |

@@ -354,8 +354,8 @@ PARTS: list[Part] = [
     Part("ibcf-paint", "Primer + paint", "adhesives-finishes",
          "ibc-frame", 1, "lot", 30, 50, "Hardware store", spec="Anti-corrosion coating"),
     # — tray (processing-tray-and-spray-bar §6.1) — itemized, sums to costing tray (1,300–2,015) —
-    Part("tray-ss-sheet", "304 SS sheet, 16-gauge (1.5mm), #4 brushed", "stainless-sheet",
-         "tray", 2, "ea", 360, 500, "Online Metals", spec="2,229 × 2,200mm panels"),
+    Part("tray-ss-sheet", "304 SS sheet, 16-gauge (1.5mm), 2B mill finish", "stainless-sheet",
+         "tray", 2, "ea", 305, 425, "Online Metals", spec="2,229 × 2,200mm panels. 2B mill finish (dropped from #4 brushed 2026-08-02 — the brush is a cosmetic upcharge, unneeded for a drain pan; ~15% est saving vs #4, keeps 16-ga rigidity + 304). Firm at a 2B quote. See tray-research.md."),
     Part("tray-fabrication", "Fabrication (cut, brake, weld, press sump)", "fabrication-labor",
          "tray", 1, "lot", 450, 850, "local sheet metal", spec="Two panels + a ~40mm center-seam lap (shingle-oriented downhill) + sump well"),
     Part("tray-hdpe-shim", "HDPE sheet, laminated to 1-1/4\" (slope shims)", "plastics-sheet",

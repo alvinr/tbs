@@ -37,7 +37,7 @@ full print width. Together they form the print washing subsystem of the
 
 | Parameter | Value | Rationale |
 |-----------|-------|-----------|
-| Material | 16-gauge (1.5mm) 304 stainless steel, #4 brushed finish | Chemically inert to ferricyanide wash water; resists pitting from citric acid pH adjustment |
+| Material | 16-gauge (1.5mm) 304 stainless steel, 2B mill finish | Chemically inert to ferricyanide wash water; resists pitting from citric acid pH adjustment. 2B (not #4 brushed) — the brush is a cosmetic upcharge unneeded for a drain pan ([tray research](tray-research.md)) |
 | Overall footprint | 4,459 × 2,200mm (2 panels, field-bolted) | Fits inside film plane rails (X=<!-- BEGIN fact:film_plane_left_x_mm -->150<!-- END fact:film_plane_left_x_mm -->–<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm -->) with 20mm clearance per side |
 | Panel size (each) | 2,229 × 2,200mm | Two equal panels, joined at the midpoint by a ~40mm shingle-oriented lap (silicone-sealed, 12× M6×16). Each panel fits through the cargo door opening (2,340 × 2,280mm) |
 | Rim height | 50mm (all four sides) | Contains 6mm flood depth with margin; constrained to ≤75mm by film plane carriage clearance |
@@ -544,7 +544,7 @@ tray drainage plan and sump cross-section).
 <!-- BEGIN parts:tray -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| 304 SS sheet, 16-gauge (1.5mm), #4 brushed | 2,229 × 2,200mm panels | 2 ea | Online Metals | $720–$1,000 |
+| 304 SS sheet, 16-gauge (1.5mm), 2B mill finish | 2,229 × 2,200mm panels. 2B mill finish (dropped from #4 brushed 2026-08-02 — the brush is a cosmetic upcharge, unneeded for a drain pan; ~15% est saving vs #4, keeps 16-ga rigidity + 304). Firm at a 2B quote. See tray-research.md. | 2 ea | Online Metals | $610–$850 |
 | Fabrication (cut, brake, weld, press sump) | Two panels + a ~40mm center-seam lap (shingle-oriented downhill) + sump well | 1 lot | Local sheet metal | $450–$850 |
 | [HDPE sheet, laminated to 1-1/4" (slope shims)](https://www.usplastic.com/catalog/item.aspx?itemid=31840) (46039+42591) | 5 tapered slope shims (2"×86.6" = 50×2,200mm, 20→30mm taper). US Plastic max sheet = 1", so LAMINATE two 24×48 sheets to 1-1/4" then taper-cut (Option B: 1 mid-length butt splice/strip — fine for a floor-bonded compression shim). Combo = 3/4" (US Plastic 46039 $177.58) + 1/2" (42591 $118.38) = $295.96; the 3/4"+1/2" split keeps the taper cut inside the 3/4" top layer so the glue line stays buried (the 1"+1/4" combo, same price, would cut through the seam). Taper-cut bundles with the tray fab. | 1 lot | US Plastic Corp | $296 |
 | [Loctite PL Premium construction adhesive](https://www.homedepot.com/p/319654545) (1390595) | Shim-to-floor bond. Loctite PL Premium 10 oz, sold as a 2-pack ($11.94 → $5.97/tube) | 2 tube | Home Depot | $12 |
@@ -553,7 +553,7 @@ tray drainage plan and sump cross-section).
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | Silicone sealant bed in the center-seam lap joint (between the overlapped panels) + a top bead — the seam seal | 1 ea | CountryMax (Aqueon) | $17–$25 |
 | [M6×1.0 × 16 hex bolt, 316 SS — tray center-seam lap joint](https://www.mcmaster.com/93635A210/) (93635A210) | Tray center-seam LAP-joint bolts (316 SS, wet zone) + M6 serrated flange nuts underneath. Through both overlapped 1.5mm panels + silicone bed. Grip ≈ 4mm → M6×16. Pitch M6×1.0 coarse. $15.86/pack of 25. | 12 ea | McMaster-Carr | $8 |
 | [M6×1.0 flange nut, serrated SS](https://www.mcmaster.com/96194A101/) (96194A101) | Serrated flange nut — tray panel bolts. Pitch M6×1.0 coarse — confirmed vs 96194A101 PDF 2026-07-29 (matches the mating bolt). $4.71/pack of 100. | 12 ea | McMaster-Carr | $1 |
-| **Tray total** | | | | **$1,583–$2,271** |
+| **Tray total** | | | | **$1,473–$2,121** |
 <!-- END parts:tray -->
 
 ### 6.2 Spray Bar Assembly
@@ -589,9 +589,9 @@ tray drainage plan and sump cross-section).
 
 | Subsystem | Cost Range |
 |-----------|-----------|
-| Processing tray | <!-- BEGIN costing:tray-low -->$1,583<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,271<!-- END costing:tray-high --> |
+| Processing tray | <!-- BEGIN costing:tray-low -->$1,473<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,121<!-- END costing:tray-high --> |
 | Spray bar assembly | <!-- BEGIN costing:spray-low -->$551<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$563<!-- END costing:spray-high --> |
-| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$2,134<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,834<!-- END costing:tray-spray-total-high -->** |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$2,024<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,684<!-- END costing:tray-spray-total-high -->** |
 
 ---
 

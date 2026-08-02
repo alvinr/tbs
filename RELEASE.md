@@ -24,25 +24,28 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+_Nothing yet — add a bullet per notable change here as work lands._
+
+## [0.5] — 2026-08-02
+
+- **Part/SKU reconciliation.** Major rework and reconcilaition of all the parts that need to be ordered to construction the poject. This required some rework of systems to accomodate what could be ordered vs. what is theoretically possible. All priced and firmed up in the registry to get a more concrete costing. Until we have a full set of blueprints, the fabrication estimates will need to wait, so this is still an unknown in the overall costing.
+
+- **Fastener BOM decomposed into bolts / washers / nuts for ordering.** Split the 11 bundled
+  "bolt + nut + washer" kit lines into separate component parts, using **shared keys** so nuts and
+  washers total **by size + type across the whole build** (M12 flat washers **220**, M12 plain nuts
+  **110**, M5×16 CSK screws **184**, …) while bolts stay itemized **by size × length**. The master
+  BOM's fastener section now reads as a purchasing block.
+
+- **Muslin clip re-design**. Removed the bespoke clamp design and replaced it with off the shelf spring loaded quick-grips.
+
 - **Right-walkway muslin-rod / beam clash resolved by cranking the inner cantilever beam.** The muslin's
-  rigid bottom rod must drop straight down at the tray edge through the muslin-drop notch (Yd1912–2062),
+  rigid bottom rod must drop straight down at the tray edge through the muslin-drop notch,
   but the inner long beam of the cantilever rectangle sits directly under it. Rather than cut the beam at
   mid-span of its ~1.1m end bay, the inner beam is **cranked outboard 100mm** (the full notch depth) over
-  the notch with ~100mm angled ramps each side — vacating the notch footprint so the rod passes clear
-  while the beam stays **one continuous, uncut member** (full bending/tension continuity). No support lost
-  (the notch already voids the grate there); left notch needs no change (no beam beneath it). New
-  `_rwk_inner_beam_cranked` builder (overview/walkway/water); Sheet 3 (Detail A) shows the crank + rod
+  the notch with ~100mm angled ramps each side. Sheet 3 (Detail A) shows the crank + rod
   slot; report §4.1 + docstring updated. No new parts.
 
-- **Walkway drawing set reorganized: merged the two left-walkway support sheets, added a pinhole-side
-  bump-out detail.** The drum-exit punch-out support (former Sheet 9, Detail E) was a zoomed re-draw of
-  the middle of Sheet 5 — folded into **Sheet 5 (Detail C — left walkway floor-leg support + drum-exit
-  punch-out)**. The freed Sheet 9 is now **Detail F — Near-Walkway Bump-Out (pinhole wall)**: a plan of
-  the 500mm-deep standing band over X1,055–3,083, its 5 widened wall-cantilever brackets, the 100mm end
-  overhangs, the EP/battery wall footprint, and the spray-bar pole slit — the pinhole-side counterpart to
-  the left punch-out. Report + gallery captions updated.
-
-- **Walkway decks reworked to continuous cut pieces — bump-out & punch-out now integral, not
+- **Walkway decks reworked to continuous cut pieces** — bump-out & punch-out now integral, not
   butt-jointed add-ons.** The near-walkway EP/battery bump-out and the left lift-out's drum-exit
   punch-out were each modeled as a *separate* box butt-jointed onto the deck — which reads as
   "needs its own support." Both are now **one continuous L-cut** (new shared `near_fixed_deck_grate`
@@ -51,21 +54,8 @@ file** — a release must not ship without a changelog entry:
   corner joins and the **one unavoidable near/far sheet seam** (molded GRP tops out at 3′×10′, and
   the near run is ~3.9m) remain as joints — the seam is placed away from the bump shoulders. The
   bump-out itself is carried by the deeper 500mm-arm wall-cantilever brackets at 457mm rib centers.
-  Rippled through all 5 models (overview / walkway / lighttrap / film-plane / water) + the plan-view
-  construction notes + the GRP cut-plan (now drawn as integral-L polygons). No cost/area change.
 
-- **Walkway grating supplier → American Grating (primary), McNichols held as secondary.** The molded
-  1″ vinyl-ester GRP is now priced to American Grating's public list (~$830 for 2× 3′×10′ @ $415),
-  banded to **$830–$1,050** to cover freight + edge cut pending a firm cut quote; McNichols' revised
-  8-sheet quote ($1,700.51) stays on the line as the firm secondary ceiling. Walkway section
-  **−$870 low** → grand total **$27,219 / $32,217 / $39,093**.
-
-- **Corridor pump-mount shirt ply firmed to 23/32″ (was ~1″ estimate).** Both corridor panel ply parts
-  now share one SKU — Home Depot RTD 23/32″ SYP sheathing at **$29.30** (#303564747). The 1″ spec was
-  nominal; 5× Shurflo 2088 pumps (~6.5 kg) need no more than 3/4″. May nest with the backing board in
-  one sheet at cut. Standard exterior grade per the plywood rule (was mis-spec'd marine ~$212).
-
-- **Light-lock plastics firmed to US Plastics stock — one weld-compatible HDPE, real pricing.**
+- **Light-lock plastics firmed — one weld-compatible HDPE.**
   Priced all four light-lock/panel plastic parts to actual [US Plastics](https://www.usplastic.com/)
   sheet: the Ø900 housing to **3/16″ HDPE** ([46685](https://www.usplastic.com/catalog/item.aspx?itemid=136962&catid=705),
   3 sheets = $555) and the drum, panel skins, and B2 bay to **1/8″ HDPE**
@@ -76,37 +66,18 @@ file** — a release must not ship without a changelog entry:
   the swinging-panel assembly **~12 kg** (panel 171→161, drum 38→36; structure 584→572, dry 3,238→3,226).
   The drum's 2 **end caps stay 3/16″** (`LT_CAP_T`, thicker than the 1/8″ shell) — they carry the stub
   shafts into the SKF 6215 bearings, so the hub load path keeps its stiffness; cut from the housing offcut.
-  The solid-sheet pricing also corrected badly-low estimates (+~$920–1,210 across the four): grand total
-  → **$26,522 / $31,991 / $39,331**. Housing kept at 3/16″ for the drum-gap stiffness margin.
-  *Pending: overview.skp + lighttrap.skp re-send/re-save.*
 
 - **Wall through-bolts finalized: partial-thread, right-sized to the container-wall grip.** A grip
   analysis against the ISO container spec (side-wall corrugation ~25–30mm, not the ~38mm the prose
-  assumed) showed the M12×80/×90 through-bolts were oversized. Re-sized every wall bolt: film saddle
-  90→**M12×65**, walkway cantilever 80→**M12×65**, right-walkway →**M12×70** — all now **partial
-  thread** ([91280A728](https://www.mcmaster.com/91280A728/) $1.595, [91280A732](https://www.mcmaster.com/91280A732/)
-  $1.736, Grade 8.8 zinc), ~50% cheaper than fully-threaded. Designed for the **30mm worst-case grip**
+  assumed) showed the M12×80/×90 through-bolts were oversized. Re-sized every wall bolt. Designed for the **30mm worst-case grip**
   with a flat-washer shim allowance (2→4 M12 washers/bolt) so the bolt spec is robust across 25–30mm
   corrugation with **no container measurement needed** — pad to suit. Added `CONTAINER_CORRUGATION_DEPTH`
-  constant. Cascade: film −$3, walkway +$53/−$25 (fab line reconciled to the parts registry). The IBC
-  M12×40 grip/count conflict and the A36 bracket-plate material are logged in TODO.
-
-- **Fastener BOM decomposed into bolts / washers / nuts for ordering.** Split the 11 bundled
-  "bolt + nut + washer" kit lines into separate component parts, using **shared keys** so nuts and
-  washers total **by size + type across the whole build** (M12 flat washers **220**, M12 plain nuts
-  **110**, M5×16 CSK screws **184**, …) while bolts stay itemized **by size × length**. The master
-  BOM's fastener section now reads as a purchasing block (bolts → washers → nuts → other hardware, by
-  thread size). Decomposition is **cost-neutral** — each system's total is unchanged, so reconciliation
-  stays green; the bolt line absorbs each kit's cost and nuts/washers carry nominal placeholders until
-  the re-pricing pass pins real per-component SKUs/prices.
+  constant.
 
 - **Film-plane seal parts sourced; parts-identity lint fully clear.** Swapped the EPDM foam tape to
   [McMaster 8694K88](https://www.mcmaster.com/8694K88/) (1"×½", 25 ft rolls) and right-sized the qty
   to **2 rolls (50 ft)** against the ~43 ft film-plane perimeter — the old 3×50 ft = 150 ft was ~3.5×
-  over (provisional; logged in TODO for the EPDM-seal revisit). Verified the Ruland U-joint boot
-  ([UBOOT12/19-NI-KIT](https://www.ruland.com/uboot12-19-ni-kit.html), $30.59 ea). With these, **every
-  registry part now carries a verified SKU + URL** — the `parts identity` advisory (7 URL-missing at
-  the start of this pass) is at zero. Net film cost −$5/−$33 (EPDM −$39, boot +$34/+$6).
+  over (provisional).
 
 - **IBC transport lashing → weld-on tie-down rings.** Sourced the restraint lashing points to
   [McMaster 3028T31](https://www.mcmaster.com/3028t31/) — a 1½" ID × ½" thick, 6,600 lb WLL,
@@ -114,32 +85,7 @@ file** — a release must not ship without a changelog entry:
   with a single integrated weld-on part (fillet-welded straight to the front retaining bars, no
   plate, no retainer). The 6,600 lb ring far exceeds the 25mm-strap-limited 1,100 kg assembly WLL,
   so the full spec holds with no downrating. Report §4.1 + Sheet 1 label + BOM + the IBC frame cost
-  band updated (−$15/−$30); registry `ibcf-dring` now carries a real SKU + URL.
-
-- **Muslin clip jaw pad — new Sheet 6 attachment detail + material sourced.** Added Panel D to
-  the film-plane clamp sheet, dimensioning how the 60A neoprene pad mounts (PSA-bonded flat to the
-  jaw plate) and its footprint — the detail the old sheet never showed, so the pad quantity couldn't
-  be derived. Sourced the pad to [McMaster 4568N57](https://www.mcmaster.com/4568N57/) (1″ × ¼″ 60A
-  strip); the 1″ width narrowed the jaw (`CLAMP_JAW_W` 35 → 25.4mm) and pinned the bite depth (new
-  `CLAMP_JAW_D` = 20mm), from which the strip count derives (88 pads × 20mm = 1,760mm → 3 strips, $78,
-  was a $15 roll). Also applied verified prices/URLs for the M5 clip fasteners (91292A126 bolt $0.16,
-  93625A200 nut $0.09). Clamp mounting +$49 → film total $6,063 → $6,112; grand total cascaded.
-
-- **Master shopping list now carries the supplier SKU on every line** — the by-type procurement BOM
-  (`parts.py emit_master`) rendered plain item names, while the per-report §Parts-Lists already
-  hyperlinked the name and appended the registry part number. The master now uses the same
-  `_item_cell` convention, so each line is order-ready (name → supplier URL, `(SKU)` appended) and
-  new part numbers auto-populate from the registry on `parts.py --inject`.
-
-- **Lint: the table-arithmetic warning now checks range-format totals** — `warn_arithmetic` only
-  parsed scalar money cells (`$25`, `~$25`, `**$25**`), so any cost table whose column used a
-  low–high range (`$25–$45`) was silently skipped and its `**Total**` could drift unchecked. The
-  gate now parses ranges and reconciles a total's low and high bounds independently, and it skips
-  "scenario" totals whose label carries a parenthetical qualifier (`Total all-in (mid-range)`) so
-  comparison tables aren't false-flagged. On its first run it caught two drifted totals in
-  `funding-proposal.md` — Level 2 (`$1,350–2,800` → `$1,025–2,750`) and Level 3
-  (`$2,000–4,000` → `$2,000–5,000`) had diverged from their own line items; the `costing.py`
-  `FUNDING_L2/L3` constants and the derived first-year `fund-combined` band were corrected to match.
+  band updated (−$15/−$30).
 
 - **Fix: 4 gallery diagrams were broken images on the site** — the film-plane corner-joint study
   diagrams (`film-joint-options`, `film-joint-study-gimbal`, `film-joint-study-ujoint`,

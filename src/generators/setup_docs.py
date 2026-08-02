@@ -43,6 +43,7 @@ MD_FILES = [
     ("funding-proposal.md",              (".",           "Proposal")),
     ("project-cost-breakdown.md",        (".",           "Cost Breakdown")),
     ("cost-analysis-report.md",          (".",           "Cost Analysis")),
+    ("tray-research.md",                 (".",           "Tray Material Research")),
     ("container-report.md",              (".",           "Container")),
     ("pinhole-optics-report.md",         (".",           "Optics Report")),
     ("pinhole-option-b-optics.md",       (".",           "Container Optics")),
@@ -214,6 +215,8 @@ DIAG_IMAGE_FILES = [
     "walkway-sections-sheet4.png",
     "walkway-sections-sheet5.png",
     "walkway-sections-sheet6.png",
+    "tray-redesign-sheet1.png",
+    "tray-redesign-sheet2.png",
     "spray-bar-sheet1.png",
     "spray-bar-sheet2.png",
     "spray-bar-sheet3.png",
@@ -431,6 +434,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Container Selection & Construction](container-report.md) | Container options, US transport compliance, interior conversion, light-sealing |
 | [Cost Breakdown](project-cost-breakdown.md) | Full itemized build cost — three scenarios, all sources cited |
 | [Cost Analysis](cost-analysis-report.md) | Where the cost sits by system, capital vs consumable, and the ranked savings levers |
+| [Tray Material Research](tray-research.md) | Why the processing tray stays 304 SS — welded-PP and liner options evaluated, cost + construction, and the 2B-finish trim |
 | [Chem Shopping List](chemistry-shopping-list.md) | 50-print quantities with supplier URLs and confirmed prices |
 | [Sensitizer Trials](sensitizer-trials.md) | OPEN cyanotype coating-solution trials — coverage, concentration, dichromate; impacts the chemistry order/print count |
 | [Transportation](container-transport-options.md) | Commercial hire vs. self-haul analysis |

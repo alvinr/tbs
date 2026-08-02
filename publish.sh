@@ -69,6 +69,7 @@ MD_FILES=(
     "film-clamp-mechanism-report.md"
     "project-cost-breakdown.md"
     "cost-analysis-report.md"
+    "tray-research.md"
     "pinhole-report.md"
     "tilt-swing-board-report.md"
     "tilt-swing-board-analysis.md"
@@ -339,6 +340,8 @@ DIAG_FILES=(
     "spray-bar-sheet6.png"
     "spray-bar-sheet7.png"
     "spray-bar-sheet8.png"
+    "tray-redesign-sheet1.png"
+    "tray-redesign-sheet2.png"
 )
 
 for f in "${DIAG_FILES[@]}"; do

@@ -131,8 +131,8 @@ def sheet1():
 
     ax_tb = fig.add_axes([0.04, 0.005, 0.92, 0.05])
     title_block(ax_tb, f"SHEET 1 OF {TOTAL_SHEETS}",
-                drawing_title="PROCESSING TRAY REDESIGN — WELDED-PP CONSTRUCTION (PROPOSAL)",
-                subtitle="304 SS basin -> welded polypropylene; branch tray-redesign", doc_id="TBS-PROP-TRAY")
+                drawing_title="PROCESSING TRAY — WELDED-PP OPTION (EVALUATED, NOT ADOPTED)",
+                subtitle="research record — the SS basin was retained (see tray-research.md)", doc_id="TBS-RES-TRAY")
     ax_tb.set_axis_off()
     out = os.path.join(DIAGRAMS_DIR, "tray-redesign-sheet1.png")
     fig.savefig(out, dpi=DIAGRAM_DPI); plt.close(fig)
@@ -181,8 +181,8 @@ def sheet2():
 
     ax_tb = fig.add_axes([0.04, 0.005, 0.92, 0.05])
     title_block(ax_tb, f"SHEET 2 OF {TOTAL_SHEETS}",
-                drawing_title="PROCESSING TRAY REDESIGN — SHEET LAYOUT / SEAM (PROPOSAL)",
-                subtitle="seamless PP butt-weld layout vs SS 2-panel lap seam", doc_id="TBS-PROP-TRAY")
+                drawing_title="PROCESSING TRAY — PP SHEET LAYOUT / SEAM (EVALUATED OPTION)",
+                subtitle="research record — welded-PP layout vs the retained SS lap seam", doc_id="TBS-RES-TRAY")
     ax_tb.set_axis_off()
     out = os.path.join(DIAGRAMS_DIR, "tray-redesign-sheet2.png")
     fig.savefig(out, dpi=DIAGRAM_DPI); plt.close(fig)

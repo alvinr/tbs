@@ -290,7 +290,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | Zinc-plated steel weld-on tie-down rings — 1½" (38mm) inside × ½" thick, 6,600 lb WLL; fillet-welded to the front retaining bars (4 per tier × 2 tiers). Integrated weld base — no separate mount plate. Ring (6,600 lb) exceeds the 2"-strap-limited 3,333 lb (~1,512 kg) assembly WLL. | 8 ea | McMaster-Carr | $40 |
 | [2" (50mm) ratchet strap, 3,333 lb WLL](https://www.homedepot.com/p/331257450) (82827) | Transport securing, over each stack. Keeper 82827 heavy-duty 2"×27ft, 3,333 lb (~1,512 kg) WLL / 10,000 lb break — width corrected 25mm→50mm (a 1" strap can't hold the 1,100 kg the restraint needs). | 4 ea | Home Depot | $68 |
 | [Self-drilling structural screw, #14×3¼″ winged, 410 SS](https://www.fastenersplus.com/products/14-x-3-1-4-self-drilling-flat-head-screw-with-wings-410-stainless-steel-pkg-100) (F14C325FDC) | 4 deep-box flange feet × 4 each. Self-drills the 6mm foot plate + 28mm plywood and taps the ~4mm steel crossmember — LAND EACH FOOT OVER A CROSSMEMBER (~450mm centers). Wings ream the plate/ply clearance then snap off at the steel. 410 SS (martensitic — self-drills steel; 316 can't). The IBC dead load bears in compression on the floor; the screws resist sliding/uplift only. Through-bolt 316 + backing nut instead where a crossmember underside is reachable. $1.02/ea (100-pk). | 16 ea | Fasteners Plus / ASMC | $16 |
-| [M12×40 hex bolt, Grade 8.8](https://www.mcmaster.com/91280A720/) (91280A720) | Front-bar → upright angle cleats (2 each × 4 bars = 8). Short grip (bar + cleat + upright flange) → M12×40 fully threaded is correct. McMaster 91280A720: M12×1.75×40, Class 8.8 zinc, fully threaded — pitch + length confirmed vs the 91280A720 PDF 2026-07-29 (matches nut-m12-plain). $21.91/pack of 25 (8 used). (Wall-hanger through-bolts are the M12×65 below.) | 8 ea | McMaster-Carr | $7 |
+| [M12×40 hex bolt, Grade 8.8](https://www.mcmaster.com/91280A206/) (91280A206) | Front-bar → upright angle cleats (2 each × 4 bars = 8). Short grip (bar + cleat + upright flange) → M12×40 fully threaded is correct. McMaster 91280A206: M12×1.75×40, Class 8.8 zinc, fully threaded (matches nut-m12-plain). $6.66/pack of 10 firm (2026-08-01; 8 used). (Wall-hanger through-bolts are the M12×65 below.) | 8 ea | McMaster-Carr | $5 |
 | [M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A728/) (91280A728) | IBC wall-hanger through-bolts (4 each × 4 hangers = 16) — through the corrugated side wall to the exterior 100×135×8 backing plate (hex heads outside). Grip = 8mm plate + ~30mm corrugation + 4mm hanger flange ≈ 42–54mm → M12×65 partial-thread (the fully-threaded M12×40 could not span it). $15.95/pack of 10 → 2 packs for 16. Pad with 1–2 M12 flat washers if the actual corrugation is <30mm. | 16 ea | McMaster-Carr | $26 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | Plain hex nut (inside the container) — M12×65 wall-hanger through-bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29. | 16 ea | McMaster-Carr | $4 |
 | [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | Flat washers, M12×65 wall-hanger bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). $9.71/pack of 100. | 64 ea | McMaster-Carr | $6 |
@@ -298,7 +298,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | Steel backing plate 100×135×8mm | Exterior wall backing plates (one per hanger) — flat 100×135×8mm steel on the OUTSIDE of the container side wall (hex heads outside), 4× M12 holes; spreads the totes' transport thrust into the thin corrugated wall so the through-bolts can't pull through. | 4 ea | Metal Supermarkets | $24–$40 |
 | Welding / fabrication (frame assembly) | ~14–20 hrs labor (deep 4-leg box — the ring/back-upright welds sit at the upper end of the range) | 1 lot | Local fab | $688–$1,018 |
 | Primer + paint | Anti-corrosion coating | 1 lot | Hardware store | $30–$50 |
-| **Ibc-Frame total** | | | | **$1,081–$1,547** |
+| **Ibc-Frame total** | | | | **$1,079–$1,545** |
 <!-- END parts:ibc-frame -->
 
 ### 9.2 IBC Totes
@@ -318,7 +318,7 @@ the stacking structure and the totes it restrains.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,081<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,547<!-- END costing:ibc-frame-high --> |
+| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,079<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,545<!-- END costing:ibc-frame-high --> |
 | IBC totes (4×) | $300 | $900 |
 | **Total** | **$1,280** | **$2,405** |
 

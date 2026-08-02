@@ -87,11 +87,12 @@ Ranked by saving potential, analogous to the SS→ALU depth-rail switch (`fp-u-c
 needs a dedicated follow-up to model + cascade before committing. Cost by system for context: chemistry
 $5,466 · film $4,216–4,572 · container $2,300–4,300 · electrical $3,431–3,496 · water $3,370 · walkway
 $1,979–2,825 · lightlock $2,046–2,516 · tray $1,583–2,271.
-- [ ] **Tray: 304 SS → welded polypropylene — ~$1,000–1,400 (biggest clean switch).** Tray system
-  $1,583–2,271 = `tray-ss-sheet` (2× 304 SS 16-ga, $720–1,000) + `tray-fabrication` ($450–850). A 4.5 m
-  welded-PP tray is cyanotype-safe (SS was chosen for rigidity/finish, not chemistry) and plastic fab is
-  already proven in the light-lock (`ll-fabrication` $1,150 HDPE). Follow-up: spec welded-PP tray, re-price
-  sheet + fab, cascade. Watch: sag/flatness over 4.5 m → support ribs.
+- [x] **Tray: 304 SS retained — DECIDED 2026-08-02 (the "SS→PP ~$1,000–1,400" was a myth).** Full evaluation in
+  [tray-research.md](tray-research.md) (published, Research section): PP sheet ($258/sheet) isn't cheaper than SS
+  and needs a sub-floor — PP saves only ~$550–920 and only if self-welded; the one big saving (a liner on a
+  sub-structure, ~$1,150–1,850) fails the **rigid-surface** requirement (Alvin: needed to handle the large print).
+  So SS stays, decided on fab/procurement/skill + leak-risk. **Adopted the retained-material lever: `tray-ss-sheet`
+  #4 brushed → 2B mill finish (−$110/−$150 est, drain pan needs no brush; keep 16-ga + 304).** Grand → $25,764/30,216/36,724.
 - [x] **Ruland U-joints → Belden UJ-SS750x375 — ADOPTED 2026-07-31 (~$653 saving).** `fp-ujoint` re-spec'd to Belden UJ-SS750x375 @ $112.68 (×4, backup Grainger 806V18) + `fp-ujoint-boot` → Belden 806VF1 nitrile boot $40.25; keyway/twist-lock → setscrew; cascaded across parts/costing/2D Sheet 3/3D model. Original research note ↓.
 - [ ] ~~Ruland U-joints → Belden UJ-SS750x375 — ~$652 saving (RESEARCHED 2026-07-31, ready to adopt).~~
   `fp-ujoint` = $1,104 (4× Ruland USKC12-6-6-SS @ $276, 3/8" bore, 303 SS, 45°/axis). **Direct drop-in

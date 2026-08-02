@@ -317,7 +317,7 @@ PARTS: list[Part] = [
          "water", 2, "box", 14.99, 14.99, "Amazon", part_no="B0CMZ5VXMS", url="https://www.amazon.com/dp/B0CMZ5VXMS", spec="TitanFlex nitrile, textured, box of 100 (size M/L)."),
     # — ibc-frame (ibc-stacking-report §9.1) — itemized, sums to costing frame (955–1,455) —
     Part("ibcf-rhs", "50 × 50 × 3mm RHS mild steel (6 m lengths)", "steel-structural",
-         "ibc-frame", 4, "ea", 30, 45, "Metal Supermarkets", spec="Deep 4-leg box uprights (front + back pair) + top/bottom rings + front retaining bars + panel-mount rail (~19.5 m)"),
+         "ibc-frame", 4, "ea", 30, 45, "Metal Supermarkets", spec="Deep 4-leg box uprights (front + back pair) + top/bottom rings + front retaining bars + panel-mount rail (~19.5 m). MATERIAL = 2×2×⅛in A500 square tube (US equiv, confirmed 2026-08-01). SOURCING: full 6m/20-24ft sticks minimize splices but ship only by freight — online cut-to-size shops cap at 96in (UPS max: AllMetals/InchOfMetal 96in, Speedy $7.27/ft cut-retail ≤90in). So the ~$120-180 (4×$30-45) est is realistic BULK full-length pricing (~$1.50-2.50/ft); firm it from a local steel-yard / MetalsDepot 24ft freight quote — NOT an online cut-to-size lookup (which overprices bulk ~3×)."),
     Part("ibcf-feet", "12mm steel plate, 150 × 150 cut", "steel-structural",
          "ibc-frame", 4, "ea", 5, 10, "Metal Supermarkets", spec="Deep-box upright floor flange feet (one per leg; front feet reach under the tray)"),
     Part("ibcf-hangers", "4mm folded plate", "steel-structural",

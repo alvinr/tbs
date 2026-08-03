@@ -102,8 +102,15 @@ FP_Y_MIN = 100    # minimum carriage depth (mm)     [unchanged]
 # jaw (2026-07-22). See film-clamp-mechanism-report.md.
 FP_ANGLE_LEG  = 50.8   # angle leg size (mm) — 2" = 50.8mm
 FP_ANGLE_T    = 3.175  # angle thickness (mm) — 1/8" = 3.175mm
-DIBOND_T      = 3      # ACM (Dibond) backing sheet thickness (mm) — 3mm black Curbell w01-05317
+DIBOND_T      = 3      # ACM (Dibond) backing sheet thickness (mm) — 3mm black ACM (Central Coast / TAP)
 MUSLIN_T      = 0.5    # muslin fabric thickness (mm, approx)
+# Pre-cut muslin sheet = image plane + a hem allowance on EVERY edge (clamping margin; the hem
+# drapes up the tray rim when the muslin is laid flat for washing). Single-sourced from FP_W/FP_H so a
+# film-size change re-derives it everywhere it's quoted (op-manual 0.4.7). NOT tray-derived: the image
+# plane (FP_W 4499) is itself wider than the tray floor (4459), so the sheet is sized to the IMAGE.
+MUSLIN_HEM    = 100                     # hem / clamp allowance added to EACH edge (mm)
+MUSLIN_CUT_W  = FP_W + 2 * MUSLIN_HEM   # = 4699mm — pre-cut muslin width  (image 4499 + 2×100)
+MUSLIN_CUT_H  = FP_H + 2 * MUSLIN_HEM   # = 2294mm — pre-cut muslin height (image 2094 + 2×100)
 CLAMP_SPACING = 150    # clamp center-to-center spacing (mm)
 CLAMP_FILLER_D = FP_ANGLE_LEG - DIBOND_T - MUSLIN_T - FP_ANGLE_T   # inert HDPE filler depth into the L channel (mm) = 41.5
 CLAMP_N_HORIZ = FP_W // CLAMP_SPACING + 1   # clamps per horizontal edge

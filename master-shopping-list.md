@@ -272,7 +272,7 @@ indicative low–high estimates — get quotes before ordering.
 | [1/8" black HDPE sheet (48×96, ×2)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | 2 sheet | US Plastics | panel | $247 |
 | [1/8" black HDPE sheet — 48×96 (×3)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | 3 sheet | US Plastics | lightlock | $370 |
 | [3/16" UV-stab HDPE sheet, black — 48×96 (×3)](https://www.usplastic.com/catalog/item.aspx?itemid=136962&catid=705) (46685) | 3 sheet | US Plastics | lightlock | $555 |
-| [Dibond ACM panel 3mm (black), 4×8 sheet](https://www.curbellplastics.com/product/w01-05317/) (w01-05317) | 4 sheet | Curbell Plastics | film | $380 |
+| Dibond ACM panel 3mm (black), 4×8 sheet | 4 sheet | Central Coast Plastics | film | $380 |
 | Drum-exit punch-out grating | 1 lot | McNichols | walkway | $50–$65 |
 | HDPE filler strip (L-channel packer) | 1 lot | TAP Plastics | clamp | $30–$70 |
 | [HDPE sheet, laminated to 1-1/4" (slope shims)](https://www.usplastic.com/catalog/item.aspx?itemid=31840) (46039+42591) | 1 lot | US Plastic Corp | tray | $296 |
@@ -458,7 +458,7 @@ indicative low–high estimates — get quotes before ordering.
 | SoCal reconditioner | 1 | water-equipment | $600 |
 | MROSupply | 1 | bearings-motion | $451 |
 | Inverter Supply | 2 | electrical-distribution, electrical-power | $396 |
-| Curbell Plastics | 1 | plastics-sheet | $380 |
+| Central Coast Plastics | 1 | plastics-sheet | $380 |
 | Powerwerx | 5 | electrical-distribution, electrical-power | $308 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | igus | 1 | bearings-motion | $261 |

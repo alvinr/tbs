@@ -142,24 +142,6 @@ film_plane_height_mm:
   owner: film-plane-mechanism-report.md
   display: comma
 
-# Pre-cut muslin sheet = image plane + 100mm hem/edge. INJECTION-ONLY (no aliases): the width 4699 is
-# distinctive but only restated in op-manual 0.4.7, filled via placeholder there.
-muslin_cut_w_mm:
-  constant: MUSLIN_CUT_W
-  unit: mm
-  owner: operating-manual.md
-  display: comma
-muslin_cut_h_mm:
-  constant: MUSLIN_CUT_H
-  unit: mm
-  owner: operating-manual.md
-  display: comma
-muslin_hem_mm:
-  constant: MUSLIN_HEM
-  unit: mm
-  owner: operating-manual.md
-  display: plain
-
 # Container interior — INJECTION-ONLY (no aliases): 2388 also = film-plane/container height, 5893
 # appears in comparison contexts, and 2362 (width) ALSO equals the focal length (the optical axis runs
 # across the container's short dimension), so they're filled only where a placeholder marks the meaning.

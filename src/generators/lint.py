@@ -287,10 +287,53 @@ def _git(args: list[str]) -> str:
     return subprocess.run(["git", *args], capture_output=True, text=True, cwd=ROOT).stdout
 
 
+_IMPORT_RE = re.compile(r"^\s*(?:from\s+([A-Za-z_]\w*)\s+import|import\s+([A-Za-z_]\w*))", re.M)
+
+
+def _src_py_files() -> list[str]:
+    files = []
+    for base in ("src/generators", "src/models"):
+        d = os.path.join(ROOT, base)
+        for fn in os.listdir(d) if os.path.isdir(d) else []:
+            if fn.endswith(".py"):
+                files.append(os.path.join(base, fn))
+    return files
+
+
+def _transitive_importers(seed: set[str]) -> set[str]:
+    """Grow a consumer set by the module-import graph: any src/ script that imports a module already
+    in the set is ALSO a consumer (it reuses that module's builders → inherits its constant deps).
+    Fixes the transitive miss that let water.skp — which reads tray/drain constants only via
+    `import generate_sketchup_model as ov` — fall out of the cascade."""
+    files = _src_py_files()
+    mod2path = {os.path.splitext(os.path.basename(f))[0]: f for f in files}
+    imports = {}  # path -> set of in-tree module basenames it imports
+    for f in files:
+        try:
+            txt = open(os.path.join(ROOT, f), encoding="utf-8").read()
+        except OSError:
+            continue
+        imports[f] = {mod for m in _IMPORT_RE.finditer(txt)
+                      for mod in (m.group(1), m.group(2)) if mod in mod2path}
+    result = set(seed)
+    changed = True
+    while changed:
+        changed = False
+        for f, mods in imports.items():
+            if f in result:
+                continue
+            if any(mod2path.get(mod) in result for mod in mods):
+                result.add(f)
+                changed = True
+    return result
+
+
 def _grep_consumers(name: str) -> list[str]:
     out = subprocess.run(["grep", "-rlw", name, "src"], capture_output=True, text=True, cwd=ROOT).stdout
-    return sorted(f for f in out.split()
-                  if f.endswith(".py") and "tbs_constants" not in f and "__pycache__" not in f)
+    direct = {f for f in out.split()
+              if f.endswith(".py") and "tbs_constants" not in f and "__pycache__" not in f}
+    return sorted(f for f in _transitive_importers(direct)
+                  if "tbs_constants" not in f and "__pycache__" not in f)
 
 
 def _deps():

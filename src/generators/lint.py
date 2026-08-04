@@ -452,6 +452,67 @@ def _regen_diff(scr: str, pngs: list[str]) -> list[str]:
     return stale
 
 
+# ── GATE: a plumbing-routing change must ship a refreshed interference report ──
+# check_interference.py detects pipe-vs-solid clashes AND pipe-on-pipe CROSSINGS, but it needs the
+# LIVE SketchUp model, so it can't run in this dependency-free hook. Instead the gate enforces the
+# ARTIFACT: whenever a 3D routing generator is staged, its audit output (interference-report.txt)
+# must be refreshed against the live model and staged too — so a reroute can't land without the
+# crossing/clash audit having been run and its result committed for review (the report has no
+# timestamp, so its diff shows exactly which interferences a commit adds or resolves).
+_ROUTING_MARKERS = ("ruby_pipe_run(", "ruby_flex_run(", "ribbon_run(", "spipe(")   # CALL syntax, not a mention
+_INTERFERENCE_REPORT = "interference-report.txt"
+
+
+def _index_text(path: str) -> str | None:
+    """Content of `path` as it will be COMMITTED (the staged/index blob), or None if not tracked."""
+    r = subprocess.run(["git", "show", f":{path}"], capture_output=True, text=True, cwd=ROOT)
+    return r.stdout if r.returncode == 0 else None
+
+
+def _routing_sources_sha_index() -> str:
+    """Recompute check_interference.routing_sources_sha from the INDEX (what's being committed), so
+    the gate compares the report against the exact routing sources the commit will contain."""
+    import hashlib
+    parts = []
+    for p in sorted(_git(["ls-files", "src/models/*.py"]).split()):
+        if os.path.basename(p) == "check_interference.py":
+            continue                      # the audit tool defines the markers as literals — not a generator
+        t = _index_text(p)
+        if t and any(mk in t for mk in _ROUTING_MARKERS):
+            parts.append(p + "\0" + t)
+    return hashlib.sha256("\0".join(parts).encode()).hexdigest()[:12]
+
+
+def _is_routing_gen(f: str) -> bool:
+    if not (f.startswith("src/models/") and f.endswith(".py")) or os.path.basename(f) == "check_interference.py":
+        return False
+    t = _index_text(f) or ""
+    return any(mk in t for mk in _ROUTING_MARKERS)
+
+
+def gate_interference_report() -> tuple[bool, list[str]]:
+    staged = set(_git(["diff", "--cached", "--name-only"]).split())
+    routed = [f for f in sorted(staged) if _is_routing_gen(f)]
+    if not routed:
+        return True, ["no plumbing-routing generator staged"]
+    expected = _routing_sources_sha_index()
+    rep = _index_text(_INTERFERENCE_REPORT)
+    if rep is None:
+        return False, [f"staged a routing change ({', '.join(routed)}) but {_INTERFERENCE_REPORT} is not committed.",
+                       "Audit the LIVE model and stage the report:",
+                       "    python3 src/models/check_interference.py --write && git add interference-report.txt"]
+    m = re.search(r"routing-sources-sha:\s*([0-9a-f]+)", rep)
+    have = m.group(1) if m else "(none)"
+    if have != expected:
+        return False, [
+            f"{_INTERFERENCE_REPORT} is STALE — its routing-sources-sha {have} != {expected} (the routing "
+            f"source changed since the last audit).  Staged routing change: {', '.join(routed)}.",
+            "Re-run the pipe-clash/crossing audit against the LIVE model and stage it:",
+            "    python3 src/models/check_interference.py --write && git add interference-report.txt",
+        ]
+    return True, [f"interference report current with routing sources (sha {expected})"]
+
+
 # ── WARNING: hardwired literal that should be a tbs_constants reference ──────
 # The "should have been a constant" drift class (Phase 4): a generator/model carries a numeric
 # literal that equals a tbs_constants value instead of importing it — so when the constant changes,
@@ -837,6 +898,7 @@ GATES = [
     ("dependency-map registry (generated == doc)", gate_depmap_blocks),
     ("parts doc-blocks (generated == doc)", gate_parts_blocks),
     ("section totals reconcile with parts registry (source of record)", gate_registry_reconcile),
+    ("plumbing routing change ships a refreshed interference report", gate_interference_report),
 ]
 WARNINGS = [
     ("facts-registry agreement", warn_facts),

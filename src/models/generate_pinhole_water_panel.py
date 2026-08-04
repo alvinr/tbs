@@ -192,6 +192,8 @@ def kit(part="all"):
         p.append(ov.ruby_cylinder(f"Filter {nm} sump", fx, fcy, f_bot, fr, BB_H - cap_h, color=ov.C_FILTER))
         p.append(ov.ruby_cylinder(f"Filter {nm} cap", fx, fcy, f_bot + BB_H - cap_h, fr + 3, cap_h, color=cdk))
         for tag, sd in (("in", -1), ("out", +1)):
+            if nm == "F3" and tag == "out":
+                continue        # F3 OUT stub drawn separately below — it TURNS the collection elbow
             p.append(ov.ruby_pipe_run(f"Filter {nm} {tag} port",
                 [(fx + sd * (fr - 6), fcy, cap_z), (fx + sd * (fr + 30), fcy, cap_z)], rp, color=cdk))
         p.append(ov.ruby_cylinder(f"Filter {nm} PR button", fx, fcy, f_bot + BB_H, 6, 9, color=ov.C_STEEL))
@@ -246,10 +248,18 @@ def kit(part="all"):
     #    (combo unit; the ports face each other in the gap, so no around-the-body routing)
     for a, b in (("F1", "F2"), ("F2", "F3")):
         pipe(f"{a} out -> {b} in", [f_out(a), f_in(b)], ov.C_IBC_BROWN)
-    # 4. F3 outlet → SV-01: a 90° "collection" elbow brings it back to the WALL/backing, then
-    #    the drop runs DOWN the wall (yW, clamped to the ply for support) to waist → SV-01.
+    # 4. F3 outlet → SV-01: the BLACK OUT-port extension turns the 90° "collection" elbow itself
+    #    (elbow rendered INSIDE the black fitting, at the extension's end), then the filter-colored
+    #    line picks up at the handoff and drops DOWN the wall (yW) to waist → SV-01.
+    #    Why draw the elbow in the black run: ruby_pipe_run insets its fillet along the INCOMING leg,
+    #    so an elbow at f_out always eats ~one radius back into whatever precedes it — keeping that
+    #    leg the same black fitting means nothing colored is intruded and the elbow sits at the
+    #    black extension's end (endpoints get no fitting, so f_out must be an interior vertex).
+    f3_hand = (f_out("F3")[0], fcy - 40, tie)          # handoff just past the black elbow's -Y exit tangent
+    p.append(ov.ruby_pipe_run("Filter F3 out port",
+             [(FX["F3"] + (fr - 6), fcy, tie), f_out("F3"), f3_hand], rp, color=cdk))
     pipe("F3 -> SV-01 (wall-mounted drop)",
-         [f_out("F3"), (f_out("F3")[0], yW, tie), (svx, yW, tie), (svx, yW, waist), (svx, sv_y, waist)], ov.C_FILTER)
+         [f3_hand, (f_out("F3")[0], yW, tie), (svx, yW, tie), (svx, yW, waist), (svx, sv_y, waist)], ov.C_FILTER)
     # after SV-01 the run returns to the plywood (yW) BEFORE routing on to DV-01 — keeps the
     # narrow walkway clear (only SV-01's sample spout projects forward to yL)
     # 4b. SV-01 -> DV-01: ONE filtered line follows the shared surface-perimeter route across the

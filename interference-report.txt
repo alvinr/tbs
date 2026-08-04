@@ -1,0 +1,23 @@
+routing-sources-sha: bc4325aea1c1
+model=water  pipes=353 solids=346  interferences=15
+  PIPE  IBC-3 (Brown) tap -> P-02 inlet            (Wet-end kit (raked))
+    x  FRAME      RWk upright clamp Yd1046 Y1096          near (4689,1110,65)
+  PIPE  IBC-3 (Brown) tap -> P-02 inlet elbow      (Wet-end kit (raked))
+    x  FRAME      RWk upright clamp Yd1046 Y1096          near (4646,1110,70)
+  PIPE  IBC-3 (Brown) tap -> P-02 inlet elbow      (Wet-end kit (raked))
+    x  CANTILEVER RWk end beam Yd0                        near (4556,61,99)
+  PIPE  Tray sump -> P-04 suction                  (Corridor plumbing)
+    x  CANTILEVER RWk Long beam X4329 upper               near (3452,155,104)
+  PIPE  Tray sump -> P-04 suction                  (Corridor plumbing)
+    x  CANTILEVER Walkway Near bracket 5 (widened) arm    near (3452,155,104)
+  PIPE  Tray sump -> P-04 suction                  (Corridor plumbing)
+    x  CANTILEVER Walkway Near bracket 6 (widened) arm    near (3452,155,104)
+  PIPE  Tray sump -> P-04 suction                  (Corridor plumbing)
+    x  CANTILEVER Walkway Near bracket 7 arm              near (3452,155,104)
+  PIPE  Tray sump -> P-04 suction                  (Corridor plumbing)
+    x  CANTILEVER Walkway Near bracket 8 arm              near (3452,155,104)
+  PIPE  Cct C feed (EP master sw -> corridor dist  (Circuit-C power + cabling (both panels))
+    x  FRAME      Frame rail (Yd)                         near (5146,1181,1838)
+pipe-on-pipe crossings=1
+  PIPE  P-03 -> X4 end-wall port                    
+    x  PIPE  P-04 -> SV-02 -> DV-02                        cross (4985,1300,1902)  centreline 23mm < 24mm

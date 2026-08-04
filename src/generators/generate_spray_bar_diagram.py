@@ -24,7 +24,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import Rectangle, Circle, Wedge, Polygon
 
-from tbs_constants import C_OUT, C_CL, C_DIM, C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_FAR_YD, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_TRAY_FLOOR_Z_LOW, SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_W, SPRAY_BAR_BEAM_H, SPRAY_BAR_BEAM_T, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEELS_PER_SIDE, SPRAY_BAR_WHEEL_SP, SPRAY_BAR_TRAY_FLOOR, SPRAY_BAR_AXLE_RISE, SPRAY_BAR_BRACKET_DROP, SPRAY_BAR_BEAM_BOT_RISE, SPRAY_BAR_BEAM_TOP_RISE, SPRAY_BAR_POLY_OD, SPRAY_BAR_POLY_ID, SPRAY_BAR_TRAVEL, SPRAY_BAR_N_NOZZLES, BV02_X, BV02_Z, SPRAY_BAR_SLIT_W, DIAGRAMS_DIR
+from tbs_constants import C_OUT, C_CL, C_DIM, C_LEN, C_WID, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_LEFT_X, WALKWAY_RIGHT_X, WALKWAY_FAR_YD, PROC_OPEN_X_L, PROC_OPEN_X_R, PROC_TRAY_FLOOR_Z_LOW, SPRAY_BAR_BEAM, SPRAY_BAR_BEAM_W, SPRAY_BAR_BEAM_H, SPRAY_BAR_BEAM_T, SPRAY_BAR_WHEEL_DIA, SPRAY_BAR_WHEEL_W, SPRAY_BAR_WHEELS_PER_SIDE, SPRAY_BAR_WHEEL_SP, SPRAY_BAR_TRAY_FLOOR, SPRAY_BAR_AXLE_RISE, SPRAY_BAR_BRACKET_DROP, SPRAY_BAR_BEAM_BOT_RISE, SPRAY_BAR_BEAM_TOP_RISE, SPRAY_BAR_POLY_OD, SPRAY_BAR_POLY_ID, SPRAY_BAR_TRAVEL, SPRAY_BAR_N_NOZZLES, SPRAY_BEAM_SPAN, BV02_X, BV02_Z, SPRAY_BAR_SLIT_W, DIAGRAMS_DIR
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
 from tbs_constants import DIAGRAM_DPI
@@ -46,7 +46,7 @@ FONT     = dict(family="monospace")
 # White backing for labels sitting on hatched/patterned surfaces (keeps them legible).
 LBL_BG   = dict(facecolor="white", edgecolor="none", alpha=0.85, pad=1.0)
 
-# ── Gantry carriage geometry (rev10 — low-profile: Ø32 wheels, 40×25 SS RHS) ──
+# ── Gantry carriage geometry (rev11 — Ø32 wheels, 1½in-square SS beam) ──
 # The carriage rides the RAISED, dual-axis-sloped tray floor.  The detail/section
 # sheets are cut at the near/low rim, so the LOCAL floor top sits at the low-corner
 # height (PROC_TRAY_FLOOR_Z_LOW = 20mm on the shims); the wheel/axle/beam Z's are
@@ -62,12 +62,13 @@ WHEEL_AXLE_Z = FLOOR_LOCAL + SPRAY_BAR_AXLE_RISE       # 36 — axle CL
 BRACKET_DROP = SPRAY_BAR_BRACKET_DROP                  # 7
 BEAM_Z_BOT = FLOOR_LOCAL + SPRAY_BAR_BEAM_BOT_RISE     # 29 — beam bottom
 BEAM_Z_TOP = FLOOR_LOCAL + SPRAY_BAR_BEAM_TOP_RISE     # 54 — beam top
-BEAM_W = SPRAY_BAR_BEAM_W                # 40 — beam width (X)
-BEAM_H = SPRAY_BAR_BEAM_H                # 25 — beam height (Z), laid flat
-BEAM_T = SPRAY_BAR_BEAM_T                # 3
-BEAM_BORE_W = BEAM_W - 2 * BEAM_T        # 34 — bore width
-BEAM_BORE_H = BEAM_H - 2 * BEAM_T        # 19 — bore height
+BEAM_W = SPRAY_BAR_BEAM_W                # 38.1 — beam footprint (Yd)
+BEAM_H = SPRAY_BAR_BEAM_H                # 38.1 — beam height (Z) — 1½in square
+BEAM_T = SPRAY_BAR_BEAM_T                # 1.575 (0.062in)
+BEAM_BORE_W = BEAM_W - 2 * BEAM_T        # bore width
+BEAM_BORE_H = BEAM_H - 2 * BEAM_T        # bore height
 BEAM_BORE = BEAM_BORE_W                  # legacy alias
+BEAM_SECT_LABEL = f"{BEAM_W:.0f}×{BEAM_H:.0f}×{BEAM_T:.1f}mm 304-SS square"  # computed — no stale literal
 
 # 3/4" LDPE irrigation poly pipe — SIDE-mounted on the beam's inboard face (no longer housed inside)
 POLY_OD = SPRAY_BAR_POLY_OD              # 25
@@ -75,7 +76,7 @@ POLY_ID = SPRAY_BAR_POLY_ID              # 19
 POLY_WALL = (POLY_OD - POLY_ID) / 2
 C_POLY = "#2A2A2A"
 C_SS   = "#B8BCC4"                        # 304 stainless RHS fill (cooler than the old alu blue)
-N_NOZZLES = SPRAY_BAR_N_NOZZLES   # 90° down-jets (=39 today; tbs_constants computes from tray opening / 100mm pitch)
+N_NOZZLES = SPRAY_BAR_N_NOZZLES   # 90° down-jets (=44; tbs_constants computes from full beam span / 100mm pitch)
 NOZZLE_BODY_W = 10
 NOZZLE_BODY_H = 6
 C_NOZZLE = "#3B7A3B"
@@ -93,7 +94,7 @@ GRATE_Z_TOP = WALKWAY_H
 # Fold-back end closure
 FOLD_EXTEND = 40
 
-BEAM_SPAN = PROC_OPEN_X_R - PROC_OPEN_X_L
+BEAM_SPAN = SPRAY_BEAM_SPAN
 WALL_T = 3
 
 # Shared layout constants
@@ -212,12 +213,12 @@ def draw_sheet1():
             color=C_POLY, lw=1.0, ls=(0, (5, 3)), alpha=0.8, zorder=9.3)
 
     ax.text((beam_x_l + pole_x) / 2, BEAM_Z_TOP + 8,
-            f"40×25×3mm 304-SS RHS — {beam_length}mm LONG — SIDE 3/4\" LDPE MANIFOLD + {N_NOZZLES} NOZZLES",
+            f"{BEAM_SECT_LABEL} — {beam_length}mm LONG — SIDE 3/4\" LDPE MANIFOLD + {N_NOZZLES} NOZZLES",
             ha="center", va="bottom", fontsize=5.5, color=C_FRAME,
             fontweight="bold", **FONT, zorder=15)
 
     # Spray nozzles (irrigation 90° down-jet, 100mm pitch)
-    spray_x_l = PROC_OPEN_X_L
+    spray_x_l = beam_x_l   # nozzles span the FULL beam width
     for i in range(N_NOZZLES):
         frac = (i + 0.5) / N_NOZZLES
         nz_x = spray_x_l + 50 + (beam_vis_r - spray_x_l - 100) * frac
@@ -398,7 +399,7 @@ def draw_sheet1():
     # ── Notes ────────────────────────────────────────────────────────────
     notes = [
         "GANTRY ELEVATION — SECTION THROUGH NEAR WALKWAY:",
-        f"1. 40×25×3mm 304-SS RHS beam spans {BEAM_SPAN}mm. 3/4\" LDPE poly SIDE-mounted.",
+        f"1. {BEAM_SECT_LABEL} beam spans {BEAM_SPAN}mm. 3/4\" LDPE poly SIDE-mounted.",
         f"2. {SLIT_WIDTH}mm slit in walkway at beam center X for pole passage.",
         "3. BV-05 on pinhole wall at pinhole centerline, waist height → flex hose",
         "   → single center feed into the side poly manifold.",
@@ -673,7 +674,7 @@ def draw_sheet2():
            "SS SADDLE CLAMP\n(AXLE RETENTION)",
            fs=6, color=C_BOLT, ha="right", font=FONT, zorder=15)
 
-    # ── Beam cross-section: 40×25 304-SS RHS with SIDE-mounted poly manifold ──
+    # ── Beam cross-section: 1½in-square 304-SS with SIDE-mounted poly manifold ──
     ax2.add_patch(Rectangle((c_beam_l, BEAM_Z_BOT), BEAM_W, BEAM_H,
                   fc=C_SS, ec=C_FRAME, lw=2.5, zorder=8))
     ax2.add_patch(Rectangle((CARRIAGE_YD_CENTER - BEAM_BORE_W / 2, BEAM_Z_BOT + BEAM_T),
@@ -695,7 +696,7 @@ def draw_sheet2():
            fs=5.5, color=C_POLY, font=FONT, zorder=15)
 
     ax2.text(CARRIAGE_YD_CENTER, BEAM_Z_TOP + 4,
-             "40×25×3mm 304-SS RHS\n(laid flat — low profile)", ha="center", va="bottom",
+             BEAM_SECT_LABEL, ha="center", va="bottom",
              fontsize=6, color=C_FRAME, fontweight="bold", **FONT, zorder=15, bbox=LBL_BG)
 
     # ── Beam clamp: a bottom plate under the beam + a top plate over it, drawn
@@ -1315,7 +1316,7 @@ def draw_sheet4():
     # ── Labels ───────────────────────────────────────────────────────────
     leader(ax_a, beam_end_x + 8, BOFF + bore_half + BEAM_T / 2,
            beam_end_x + 25, d_yt - 6,
-           "40×25×3 304-SS RHS\n(HOLLOW — POLY OUTSIDE)",
+           BEAM_SECT_LABEL + "\n(HOLLOW — POLY OUTSIDE)",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     leader(ax_a, d_xr - 10, poly_od_h - 2,
@@ -1476,7 +1477,7 @@ def draw_sheet5():
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     leader(ax_w, 95, BEAM_W / 2 + POLY_OD, 115, BEAM_W / 2 + POLY_OD + 18,
-           "40×25×3mm 304-SS RHS\n+ SIDE 3/4\" LDPE MANIFOLD",
+           BEAM_SECT_LABEL + "\n+ SIDE 3/4\" LDPE MANIFOLD",
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     # ── Dimensions ───────────────────────────────────────────────────────
@@ -1674,7 +1675,7 @@ def draw_sheet6():
     # Beam
     leader(ax_d, 100, -BEAM_W / 2,
            120, -BEAM_W / 2 - 18,
-           "40×25×3mm 304-SS RHS",
+           BEAM_SECT_LABEL,
            fs=5, color=C_FRAME, font=FONT, zorder=20)
 
     # ── Dimensions ───────────────────────────────────────────────────────
@@ -1854,7 +1855,7 @@ def draw_sheet7():
     # Labels
     leader(ax_cf, 0, beam_bot_z + BEAMH - 2,
            d_xl + 16, beam_bot_z + BEAMH / 2 - 3,
-           "40×25×3mm\n304-SS RHS",
+           BEAM_SECT_LABEL,
            fs=5, color=C_FRAME, font=FONT, zorder=20)
     leader(ax_cf, d_xr - 10, poly_top - poly_wall / 2,
            d_xr - 2, poly_ctr + 5,
@@ -1970,7 +1971,7 @@ def draw_sheet7():
     # Labels
     leader(ax_nz, 0, beam_bot_z + BEAMH - 2,
            n_xl + 20, beam_bot_z + BEAMH / 2 + 3,
-           "40×25×3mm\n304-SS RHS",
+           BEAM_SECT_LABEL,
            fs=5, color=C_FRAME, font=FONT, zorder=20)
     leader(ax_nz, n_xr - 10, poly_top - poly_wall / 2,
            n_xr - 2, poly_ctr + 2,

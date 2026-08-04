@@ -33,7 +33,7 @@ Modeled dimensions are the `tbs_constants.py` value(s) the generators draw. mm.
 | 5 | 150×150×50mm axial fans (12V DC) | 150×150×50 | `FAN_DIAM/FAN_BODY_D` | ✅ FIXED |
 | 6 | Evaporative cooler | 508×254×711 — Hessaire MC18M | `EVAP_W/EVAP_D/EVAP_H` | ✅ RESOLVED |
 | 7 | SeaFlo accumulator (0.75 L) | 200×127×125 — SeaFlo SFAT-075-125-01 | `Ø127×200 cyl` | ✅ FIXED — cylinder 150→200 |
-| 8 | 304 SS RHS 40×25×1.6mm, single 16 ft * | 40×25×1.6 | `(model uses 40×25 envelope)` |  |
+| 8 | 304 SS square tube 1½×1½×0.062in, single 17ft4in * | 38×38×1.6 | `SPRAY_BAR_BEAM_W/SPRAY_BAR_BEAM_H` |  |
 <!-- END parts:dimension-audit -->
 
 **Excluded from the model but listed for BoM completeness:** Solar panel (Renogy 200 W
@@ -113,7 +113,7 @@ listed for completeness; confirm the drawn size equals the catalog dimension:
 | **Battery** | Core pack, **stacked** | 1× 260×169×211 (+ opt. 2nd stacked) | `BA_D`169/`BA_H_HI`371/`BA_W`260/`BA_X`1829 | dims updated | ✅ done (line-of-sight passes) |
 | **Pump** | resize | 216×127×114 | `PUMP_D` 100→114 (W/L already matched) | dims added | ✅ done |
 | **Accumulator** | minor | 200×127×125 | cyl 150→200 | dims added | ✅ done |
-| **Spray beam** | metric | 40×25×3 (304 SS RHS) | none | alu SHS 40×40 → SS RHS 40×25 (carriage shrink, 2026-07-01) | ✅ done |
+| **Spray beam** | resize to a sourceable imperial square (metric 40×25 not stock) | 38.1×38.1 (1½×1½×0.062in) | `SPRAY_BAR_BEAM_W/H` 40/25→38.1; span→4,399 (full width) | Metals Depot 17ft4in $183 (was 40×25 $153.80); nozzles 4→5×10-pk (44) | ✅ done |
 | **Evap cooler** | 120 V AC cooler + 12V→120V inverter (no good 12 V DC ground unit exists) | 508×254×711 (Hessaire MC18M) | `EVAP_*` 600×350×800→508×254×711; `INVERTER_*` added | Circuit E re-based 80→<!-- BEGIN fact:evap_cooler_w_bus -->97<!-- END fact:evap_cooler_w_bus --> W; AC isolation/GFCI/bonding [Electrical §7.6](electrical-report.md#ac-safety) | ✅ done |
 
 **3D re-sends — done.** The earlier audit batch (filter Ø + ACC + battery) was sent and

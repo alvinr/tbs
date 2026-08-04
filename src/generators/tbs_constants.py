@@ -631,28 +631,28 @@ PROC_TRAY_YD_NEAR = 80           # tray near edge Yd (mm) — clearance from pin
 PROC_TRAY_YD_FAR  = PROC_TRAY_YD_NEAR + PROC_TRAY_D  # = 2280mm
 PROC_TRAY_RIM  = 50              # rim height (mm)
 PROC_TRAY_PITCH = 10             # fall over tray depth for drainage (mm), 1:200
-# DUAL-AXIS drainage slope: the tray floor is a rigid formed pan tilted so water walks
-# diagonally to the single corner sump.  A single-axis (Yd-only) fall would just pond the
-# wash along the whole near-pinhole rim, so BOTH axes must fall toward the low corner:
-#   Primary slope:  Yd direction, falling toward the NEAR rim (Yd=PROC_TRAY_YD_NEAR).
-#   Secondary slope: X direction, falling toward the IBC/right side (the sump, X≈4550).
-# The pan sits on tapered HDPE shim strips bonded to the container floor; the LOW corner is
-# RAISED to Z=PROC_TRAY_SUMP_Z so the sump well bottom rests ON the container floor (Z0) —
-# the floor is never at Z0.  See PROC_TRAY_FLOOR_Z_LOW / tray_floor_z() below (single source).
+# Yd-ONLY drainage slope (rev 2026-08-03): the rigid pan falls 1:200 in Yd only (far rim → near
+# rim) and is LEVEL across X.  Level-across-X keeps the full-width spray beam (which rides the
+# floor) level so it clears the level walkway support arms — a dual-axis (to-a-corner) fall tilted
+# the beam's left end ~24mm into them.  Lateral drainage is not lost: a near-rim GUTTER collects the
+# Yd fall and falls 1:200 INWARD to a single center pickup (self-draining, gravity toward the
+# operator on the sweep — see the gutter block by PROC_TRAY_GUTTER_*).  The pan sits on tapered HDPE
+# shim strips; the near rim is RAISED to Z=PROC_TRAY_SUMP_Z so the pickup well bottom rests on the
+# container floor (Z0).  See PROC_TRAY_FLOOR_Z_LOW / tray_floor_z() below (single source).
 PROC_TRAY_SHIM_H   = 10         # shim strip max height at far rim (mm) = PITCH
 PROC_TRAY_SHIM_W   = 50         # shim strip width (mm) — HDPE flat bar
 PROC_TRAY_SHIM_N   = 5          # number of shim strips across tray depth
-# Low point: sump well pressed into tray floor at near rim, IBC end.
-# P-04 suction pickup tube sits in sump — no penetration of tray or container floor.
-PROC_TRAY_DRAIN_X  = 4550       # sump X (mm) — IBC corner [rev7: was PH_X = 2399]
-PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at near rim (low point of Yd slope)
+# Low LINE: the near-rim gutter (full width) collects the Yd-only fall and drains inward to a
+# single CENTER pickup well at X=PROC_TRAY_DRAIN_X.  The P-04 suction pops out of the walkway
+# above the pickup, then runs UNDER the walkway to the IBC end to rejoin the ribbon lanes.
+PROC_TRAY_DRAIN_X  = PH_X       # = 2399mm — center pickup (relocated from the IBC corner X4550)
+PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at the near rim (low edge of the Yd fall)
 
 BV02_X             = PH_X         # BV-02 X on pinhole wall — at pinhole centerline, arm's reach from operator during wash pass
 BV02_YD            = 0           # BV-02 on pinhole wall (Yd=0) — reserved (spec; not yet drawn)
 BV02_Z             = 950         # BV-02 height on pinhole wall (mm AFF) — waist height from the raised walkway deck [+50 raise; was 900]
-PROC_TRAY_SUMP_W   = 2 * (PROC_TRAY_X_R - PROC_TRAY_DRAIN_X)   # 158 — WIDENED (was 150): the well now spans from the
-#   drain center OUT to the tray's low-drainage corner (X_R=4629) and back, so it reaches the true low point AND
-#   hosts the relocated sump pickup (brown P-04 suction moved to ribbon lane 2, X≈4504) with the strainer inside.
+PROC_TRAY_SUMP_W   = 180        # center pickup well width in X (mm) — a local well at the gutter low point
+#   (X=PROC_TRAY_DRAIN_X); hosts the brown P-04 suction strainer, well bottom on the container floor (Z0).
 PROC_TRAY_SUMP_D   = 100        # sump well depth in Yd (mm)
 PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)
 
@@ -665,20 +665,38 @@ PROC_TRAY_FLOOR_Z_LOW = PROC_TRAY_SUMP_Z          # = 20mm — floor top at the 
 PROC_TRAY_SLOPE       = 1.0 / 200                  # fall per mm of plan run, EACH axis (1:200)
 
 def tray_floor_z(x, yd):
-    """Top-of-floor Z (mm) at plan position (x, yd) for the dual-axis 1:200 drainage slope.
-    Low corner = (PROC_TRAY_X_R, PROC_TRAY_YD_NEAR) ≈ the corner sump (Z=PROC_TRAY_FLOOR_Z_LOW);
-    the floor rises toward (PROC_TRAY_X_L, PROC_TRAY_YD_FAR).  The pan is rigid, so the rim top
-    tilts with it: use tray_rim_top_z(x, yd)."""
-    dx  = PROC_TRAY_X_R - x               # 0 at the right/low edge, +W toward the left
+    """Top-of-floor Z (mm) at plan position (x, yd) for the Yd-only 1:200 drainage slope.
+    The surface is LEVEL across X and falls from the far rim (high) to the NEAR rim (low,
+    Z=PROC_TRAY_FLOOR_Z_LOW).  Level-across-X keeps the rigid spray beam (which rides the
+    floor) level so it clears the level walkway arms.  Lateral drainage is handled OFF the
+    surface by the near-rim gutter, which falls 1:200 inward to a single center pickup — see
+    the gutter block below and tray_gutter_floor_z().  The pan is rigid, so the rim top tilts
+    with it: use tray_rim_top_z(x, yd)."""
     dyd = yd - PROC_TRAY_YD_NEAR          # 0 at the near/low rim, +D toward the far rim
-    return PROC_TRAY_FLOOR_Z_LOW + (dx + dyd) * PROC_TRAY_SLOPE
+    return PROC_TRAY_FLOOR_Z_LOW + dyd * PROC_TRAY_SLOPE
 
 def tray_rim_top_z(x, yd):
     """Top-of-rim Z (mm) — the rigid pan's 50mm wall rides on the sloped floor."""
     return tray_floor_z(x, yd) + PROC_TRAY_RIM
 
 # Convenience extremes (for labels / quick clearance checks):
-PROC_TRAY_FLOOR_Z_HIGH = PROC_TRAY_FLOOR_Z_LOW + (PROC_TRAY_W + PROC_TRAY_D) * PROC_TRAY_SLOPE  # far-left corner ≈ 53.3mm
+PROC_TRAY_FLOOR_Z_HIGH = PROC_TRAY_FLOOR_Z_LOW + PROC_TRAY_D * PROC_TRAY_SLOPE  # far rim ≈ 31mm (Yd-only fall)
+
+# ── Near-rim collection gutter — self-draining to a SINGLE center pickup ──────────
+# The Yd-only surface sheets to the near rim; a gutter recessed into the near rim collects it
+# and falls 1:200 INWARD (from both ends) to one center pickup at X=PROC_TRAY_DRAIN_X.  Fits the
+# same 20mm sump budget (floor Z=PROC_TRAY_FLOOR_Z_LOW → container floor Z0).  Gravity runs
+# toward the operator on the spray sweep.  See generate_tray_slope_diagram.py.
+PROC_TRAY_GUTTER_W        = 100     # gutter width in Yd (mm) — recessed band along the near rim
+PROC_TRAY_GUTTER_SLOPE    = 1.0 / 200                                       # inward fall (each side → center)
+PROC_TRAY_GUTTER_Z_CENTER = 2       # gutter floor Z at the center pickup (mm) — well drops to Z0 below
+_GUTTER_HALF_W            = (PROC_TRAY_X_R - PROC_TRAY_X_L) / 2             # 2229.5mm end→center run
+PROC_TRAY_GUTTER_Z_END    = PROC_TRAY_GUTTER_Z_CENTER + _GUTTER_HALF_W * PROC_TRAY_GUTTER_SLOPE  # ≈ 13.1mm (≈7mm deep)
+
+def tray_gutter_floor_z(x):
+    """Gutter floor Z (mm) along the near rim — falls 1:200 inward from each end to the center pickup."""
+    cx = PROC_TRAY_DRAIN_X
+    return PROC_TRAY_GUTTER_Z_CENTER + abs(x - cx) * PROC_TRAY_GUTTER_SLOPE
 
 # ── Water throughput — prints per resupply (COMPUTED, never transcribed) ──────
 # "~13 prints per resupply" (and the ~32 gal/print, ~121 L/print, ~4.4 days figures derived from it)
@@ -837,7 +855,9 @@ WALKWAY_MAX_OVERHANG  = 100             # max grate cantilever past an end brack
 _NX0 = WALKWAY_LEFT_X + WALKWAY_W                       # near walkway start = 470
 _CANT0 = _NX0 + CONTAINER_RIB_SPACING // 2             # first cantilever station ≈ 698
 _SLIT_CX = (_NX0 + WALKWAY_RIGHT_X) // 2                # spray bar slit center X ≈ 2399
-SPRAY_BEAM_SPAN = WALKWAY_RIGHT_X - _NX0                # = 3859mm — spray-bar beam span (left↔right walkway inner edges)
+SPRAY_BEAM_X_L  = PROC_TRAY_X_L + 30                    # = 200mm — beam left end (30mm off the tray rim)
+SPRAY_BEAM_X_R  = PROC_TRAY_X_R - 30                    # = 4599mm — beam right end
+SPRAY_BEAM_SPAN = SPRAY_BEAM_X_R - SPRAY_BEAM_X_L       # = 4399mm — spray beam runs the FULL tray width; nozzles span it end-to-end (90° down-jets clear the overhead grate)
 WALKWAY_NEAR_WIDE_X_L = _CANT0 + CONTAINER_RIB_SPACING - WALKWAY_MAX_OVERHANG      # 1055 = cantilever 1155 − 100
 WALKWAY_NEAR_WIDE_X_R = _CANT0 + 5 * CONTAINER_RIB_SPACING + WALKWAY_MAX_OVERHANG  # 3083 = cantilever 2983 + 100 (rev 2026-07-23b: +2nd rib toward the IBC)
 WALKWAY_WIDE_BRACKET_T = 10             # widened bracket plate thickness (mm) — heavier than std 8mm
@@ -862,22 +882,20 @@ PROC_OPEN_YD_F = WALKWAY_FAR_YD               # = 2062mm
 PROC_OPEN_AREA = (PROC_OPEN_X_R - PROC_OPEN_X_L) * (PROC_OPEN_YD_F - PROC_OPEN_YD_N) / 1e6
                                                # = 6.80 m² open processing area
 
-# ── Spray bar — gantry design: LOW-PROFILE wheel carriages (rev 10) ─────────
-# Beam spans the open processing area between the walkway inner edges; wheel
-# carriages roll on the tray floor beneath the walkway grating.  rev10 SHRINKS
-# the carriage to recover head-room under the LEVEL grate now that the tray floor
-# is raised + dual-axis-sloped (up to ~Z53 at the far-left corner — see
-# tray_floor_z()): the old Ø50-wheel / 40×40 assembly topped out ~6mm under the
-# far-left grate.  Two levers: (1) Ø50→Ø32 nylon wheels (−9mm); (2) a shallower
-# 40×25 304-SS RHS beam (SS stiffness offsets the depth so mid-span sag stays
-# ≈ the old 7mm) with the poly manifold moved to the beam's inboard SIDE and the
-# flat-fan nozzles side-mounted (spray down-and-in) — so the beam profile drops
-# 40→25mm (−15mm) with no vertical cost for the nozzles.  Net ≈ −24mm.
-SPRAY_BAR_SPAN       = PROC_OPEN_X_R - PROC_OPEN_X_L  # beam span between walkway inner edges (mm)
-SPRAY_BAR_BEAM_W     = 40          # beam WIDTH in X (mm) — 40×25×3mm 304-SS RHS, laid flat
-SPRAY_BAR_BEAM_H     = 25          # beam HEIGHT in Z (mm) — shallower than the old 40×40; SS offsets stiffness
-SPRAY_BAR_BEAM       = SPRAY_BAR_BEAM_W   # legacy alias (was the square 40) → now the width; 3D/other sheets update in the cascade
-SPRAY_BAR_BEAM_T     = 1.575       # wall thickness (mm) — 0.062in; single 16ft Metals Depot stick (no butt weld); sag stays ~15mm (self-weight-dominated beam)
+# ── Spray bar — gantry design: full-width 1½in-square beam (rev 11) ─────────
+# The beam runs the FULL tray width (SPRAY_BEAM_X_L..X_R, 4,399mm) so its 90°
+# down-jet nozzles cover the print edge-to-edge; wheel carriages roll on the tray
+# floor beneath the walkway grating.  Section is 1½×1½×0.062in 304-SS SQUARE tube
+# — the depth needed so the full-width span sags only ~11mm (L/395, flattened by
+# ~12mm pre-camber), where the old 40×25 sagged 25mm.  The poly manifold is
+# side-mounted on the beam's inboard face with the barbed 90° down-jets tapping it.
+# Ø32 nylon wheels keep the carriage low.  Beam-top-vs-walkway-arm clearance is
+# resolved by the Yd-only tray slope (see spray-tray-redesign-plan.md / Commit B).
+SPRAY_BAR_SPAN       = SPRAY_BEAM_SPAN  # nozzle span = full beam width (4,399mm); 90° down-jets fire down onto the print, so the overhead grate is no obstruction
+SPRAY_BAR_BEAM_W     = 38.1        # beam footprint in Yd (mm) — 1½×1½×0.062in 304-SS SQUARE tube
+SPRAY_BAR_BEAM_H     = 38.1        # beam HEIGHT in Z (mm) — 1½in square; deep enough that the full-width 4,399mm span sags only ~11mm (L/395), flattened by ~12mm pre-camber
+SPRAY_BAR_BEAM       = SPRAY_BAR_BEAM_W   # legacy alias → the square section (38.1)
+SPRAY_BAR_BEAM_T     = 1.575       # wall thickness (mm) — 0.062in; single 17ft4in Metals Depot stick (no butt weld); wall barely affects sag (self-weight-dominated)
 SPRAY_BAR_BORE       = SPRAY_BAR_BEAM_W - 2 * SPRAY_BAR_BEAM_T  # = 34mm internal bore (poly no longer housed here)
 SPRAY_BAR_POLY_OD    = 25          # 3/4" LDPE irrigation poly pipe OD (mm) — SIDE-mounted on the beam's inboard face
 SPRAY_BAR_POLY_ID    = 19          # poly pipe ID (mm)
@@ -904,7 +922,7 @@ SPRAY_BAR_Z_TOP      = PROC_TRAY_FLOOR_Z_LOW + SPRAY_BAR_BEAM_TOP_RISE  # = 54mm
 SPRAY_BAR_TRAVEL     = PROC_TRAY_D  # = 2200mm (Yd travel, near rim to far rim)
 SPRAY_BAR_HOLE_DIA   = 8           # nozzle barb bore (mm) — side-tap into the poly manifold (was a beam-wall through-hole)
 SPRAY_BAR_NOZZLE_PITCH = 100       # nozzle center-to-center pitch along the beam (mm) — 90° down-jets: a 90° cone at the ~50mm nozzle height gives a ~100mm footprint, so 100mm pitch = edge-to-edge along-beam coverage (was 150 for 180° flat-fans)
-SPRAY_BAR_N_NOZZLES  = (PROC_OPEN_X_R - PROC_OPEN_X_L) // SPRAY_BAR_NOZZLE_PITCH + 1  # = 39 @ 100mm
+SPRAY_BAR_N_NOZZLES  = int(SPRAY_BEAM_SPAN // SPRAY_BAR_NOZZLE_PITCH) + 1  # = 44 @ 100mm (full beam width)
 SPRAY_BAR_HOLE_SP    = SPRAY_BAR_NOZZLE_PITCH  # legacy hole-pitch ref (mm)
 SPRAY_BAR_HOSE_L     = 4000        # flexible hose length BV-02 to bar (mm) — reserved (spec; shopping-list ref)
 SPRAY_BAR_FEED_Z     = SPRAY_BAR_Z_BOT + SPRAY_BAR_BEAM_H // 2  # = 41mm — feed end cap center @ low corner

@@ -8,8 +8,11 @@ through cantilever, through pump, pipe-on-pipe).  This queries the BUILT model, 
 group's world AABB, classifies them, and reports:
   1. PIPE-vs-SOLID — any pipe box that overlaps a solid it does not connect to.  Permitted
      penetrations (Rule 5 exceptions) are skipped: IBC tanks and ply panels.
-  2. PIPE-on-PIPE — any two pipe RUNS that overlap without being the same run or meeting at a
-     shared junction fitting (tee/cross/diverter).
+  2. PIPE-on-PIPE CROSSINGS — any two pipe RUNS whose CENTERLINES pass within (r_a + r_b) of each
+     other (the pipes physically share space), excluding the same run, runs joined end-to-end, and
+     runs meeting at a shared junction fitting (tee/cross/diverter/valve).  Uses true segment-to-
+     segment distance, not AABB overlap, so parallel neighbours and Z-staggered over/unders (a clear
+     gap) do NOT flag — only pipes actually crossing through each other.
 
     python3 src/models/check_interference.py          # report both
 
@@ -108,6 +111,77 @@ def near(a, b, margin):
     return True
 
 
+# ── centerline geometry (precise pipe-on-pipe crossing detection) ────────────
+# AABB overlap can't tell a real crossing from two parallel neighbours or an end-to-end join, so the
+# pipe-on-pipe pass reduces each pipe leaf to its CENTERLINE and measures the true distance between
+# lines.  Every straight pipe segment is axis-aligned, so its AABB is tight and the centerline exact.
+def _sub(a, b): return (a[0] - b[0], a[1] - b[1], a[2] - b[2])
+def _add(a, b): return (a[0] + b[0], a[1] + b[1], a[2] + b[2])
+def _scl(a, s): return (a[0] * s, a[1] * s, a[2] * s)
+def _dot(a, b): return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]
+def _len(a):    return _dot(a, a) ** 0.5
+def _clip(x, lo, hi): return lo if x < lo else hi if x > hi else x
+
+
+def rep_of(g):
+    """Reduce a pipe leaf's AABB to a centerline primitive: a dominant-axis box → an axis-aligned
+    segment ('seg', A, B, radius); a near-cubic box (elbow/fitting body) → a sphere ('pt', c, radius)."""
+    mn, mx = g["mn"], g["mx"]
+    dims = [mx[i] - mn[i] for i in range(3)]
+    mid = [(mn[i] + mx[i]) / 2 for i in range(3)]
+    order = sorted(range(3), key=lambda i: dims[i])          # ascending extent
+    la = order[2]
+    if dims[la] > 2 * dims[order[1]] + 1:                    # one axis clearly dominates → straight
+        A = list(mid); B = list(mid); A[la] = mn[la]; B[la] = mx[la]
+        r = (dims[order[0]] / 2) or (dims[order[1]] / 2)
+        return ("seg", tuple(A), tuple(B), max(r, 3.0))
+    return ("pt", tuple(mid), max(dims) / 2)
+
+
+def _seg_seg(p1, q1, p2, q2):
+    """Closest distance + points between two 3D segments (Ericson, Real-Time Collision Detection)."""
+    d1 = _sub(q1, p1); d2 = _sub(q2, p2); r = _sub(p1, p2)
+    a = _dot(d1, d1); e = _dot(d2, d2); f = _dot(d2, r)
+    if a <= 1e-9 and e <= 1e-9:
+        s = t = 0.0
+    elif a <= 1e-9:
+        s = 0.0; t = _clip(f / e, 0, 1)
+    else:
+        c = _dot(d1, r)
+        if e <= 1e-9:
+            t = 0.0; s = _clip(-c / a, 0, 1)
+        else:
+            b = _dot(d1, d2); denom = a * e - b * b
+            s = _clip((b * f - c * e) / denom, 0, 1) if denom > 1e-12 else 0.0
+            t = (b * s + f) / e
+            if t < 0:   t = 0.0; s = _clip(-c / a, 0, 1)
+            elif t > 1: t = 1.0; s = _clip((b - c) / a, 0, 1)
+    c1 = _add(p1, _scl(d1, s)); c2 = _add(p2, _scl(d2, t))
+    return _len(_sub(c1, c2)), c1, c2
+
+
+def _seg_pt(p1, q1, p):
+    d = _sub(q1, p1); a = _dot(d, d)
+    s = 0.0 if a <= 1e-9 else _clip(_dot(_sub(p, p1), d) / a, 0, 1)
+    c1 = _add(p1, _scl(d, s))
+    return _len(_sub(c1, p)), c1, p
+
+
+def closest(r1, r2):
+    """Min distance + the two closest points between two centerline primitives (seg/pt)."""
+    if r1[0] == "seg" and r2[0] == "seg":
+        return _seg_seg(r1[1], r1[2], r2[1], r2[2])
+    if r1[0] == "seg":
+        return _seg_pt(r1[1], r1[2], r2[1])
+    if r2[0] == "seg":
+        d, c2, c1 = _seg_pt(r2[1], r2[2], r1[1]); return d, c1, c2
+    return _len(_sub(r1[1], r2[1])), r1[1], r2[1]
+
+
+def _radius(rep): return rep[3] if rep[0] == "seg" else rep[2]
+def _ends(rep):   return [rep[1], rep[2]] if rep[0] == "seg" else [rep[1]]
+
+
 # A pipe RUN (from ruby_pipe_run) is always named "A -> B"; fittings/valves never are.  JUNCTIONS are
 # the points where pipes legitimately MEET — tees, crosses, diverters, and in-line valves (a run can
 # end at a sample/ball valve where the next run begins).  Two runs overlapping at a shared junction are
@@ -124,9 +198,18 @@ def is_junction(name):
 
 
 def run_base(name):
-    """Collapse a run's segment/elbow leaves to one identity: ruby_pipe_run names straights
-    '<run>' and elbows '<run> elbow', so strip the elbow suffix."""
-    return name[:-6] if name.endswith(" elbow") else name
+    """Collapse the leaves of ONE logical line (source→dest) to a single identity.  ruby_pipe_run
+    names straights '<run>' and elbows '<run> elbow'; a connection is often modeled in parts that
+    are co-located BY DESIGN ('<run> entry', '<run> flex jumper') — strip all such descriptor
+    suffixes so those parts aren't reported as crossing each other."""
+    n = name
+    changed = True
+    while changed:
+        changed = False
+        for suf in (" elbow", " flex jumper", " jumper", " entry"):
+            if n.endswith(suf):
+                n = n[:-len(suf)]; changed = True
+    return n
 
 
 def is_run(name):
@@ -186,43 +269,54 @@ def main():
         print(f"  PIPE  {pipe['n']:42.42s} ({pipe['p']})")
         print(f"    x  {sol['cat'].upper():10s} {sol['n']:38.38s}  near ({c[0]},{c[1]},{c[2]})")
 
-    # ── pipe-on-pipe ─────────────────────────────────────────────────────────
-    # Two pipe RUNS that overlap collide UNLESS they're the same run (adjacent segments share an
-    # elbow) or they meet at a shared junction fitting (tee/cross/diverter — a legitimate
-    # connection).  This is the case the pipe-vs-solid pass can't see.
-    runs = [p for p in pipes if is_run(p["n"])]
+    # ── pipe-on-pipe CROSSINGS (precise centerline test) ─────────────────────
+    # Two pipe RUNS COLLIDE when their centerlines pass within (r_a + r_b) — the pipes physically
+    # share space — UNLESS: same run (adjacent segments), they meet at a shared junction fitting
+    # (tee/cross/diverter/valve), or the near point is a JOIN (both leaves touch there at an endpoint =
+    # an end-to-end connection, e.g. a run and its own flex jumper).  A properly Z-STAGGERED crossing
+    # (a clear over/under gap) does NOT share space and is NOT flagged — only pipes actually crossing
+    # THROUGH each other are.  This replaces the old whole-box AABB overlap (flagged parallel
+    # neighbours + joins, missed thin crossings).
+    leaves = [p for p in pipes if is_run(p["n"])]
+    for L in leaves:
+        L["rep"] = rep_of(L)
     junctions = [g for g in data if is_junction(g["n"])]
     JTOL = 20.0   # mm — a run end "abuts" a junction if within this of its fitting body
-    # Two runs are CONNECTED if they both abut a common junction (tee/cross/diverter/valve); they
-    # then share plumbing (e.g. a short out-and-back to a sample valve) and any overlap is legit.
     abut = defaultdict(set)
-    for r in runs:
-        rb = run_base(r["n"])
+    for L in leaves:
+        rb = run_base(L["n"])
         for ji, J in enumerate(junctions):
-            if near(r, J, JTOL):
+            if near(L, J, JTOL):
                 abut[rb].add(ji)
-    pp = []
-    for i in range(len(runs)):
-        for j in range(i + 1, len(runs)):
-            a, b = runs[i], runs[j]
-            ra, rb = run_base(a["n"]), run_base(b["n"])
-            if ra == rb or not overlap(a, b, TOL):
+    JOINTOL = 25.0        # a near point this close to an endpoint of BOTH leaves = an end-to-end join
+    worst = {}            # run-base pair -> (gap, midpoint, dist, clearance); keep the deepest overlap
+    for i in range(len(leaves)):
+        A = leaves[i]; ra = run_base(A["n"]); repA = A["rep"]; rA = _radius(repA)
+        for j in range(i + 1, len(leaves)):
+            B = leaves[j]; rb = run_base(B["n"])
+            if ra == rb or (abut[ra] & abut[rb]):
                 continue
-            if abut[ra] & abut[rb]:        # connected at a shared junction → not colliding
+            repB = B["rep"]; rB = _radius(repB)
+            d, cA, cB = closest(repA, repB)
+            clear = rA + rB
+            if d >= clear - 0.5:                       # not sharing space (incl. staggered crossings)
                 continue
-            pp.append((a, b))
+            nearA = min(_len(_sub(cA, e)) for e in _ends(repA))
+            nearB = min(_len(_sub(cB, e)) for e in _ends(repB))
+            if nearA <= JOINTOL and nearB <= JOINTOL:  # end-to-end JOIN, not a crossing
+                continue
+            key = tuple(sorted((ra, rb)))
+            gap = d - clear                            # negative = interpenetration depth
+            if key not in worst or gap < worst[key][0]:
+                mid = tuple(round((cA[k] + cB[k]) / 2) for k in range(3))
+                worst[key] = (gap, mid, round(d), round(clear))
 
-    print(f"pipe-on-pipe={len(pp)}")
-    seen2 = set()
-    for a, b in pp:
-        k = tuple(sorted((run_base(a["n"]), run_base(b["n"]))))
-        if k in seen2:
-            continue
-        seen2.add(k)
-        c = [round((max(a["mn"][i], b["mn"][i]) + min(a["mx"][i], b["mx"][i])) / 2) for i in range(3)]
-        print(f"  PIPE  {run_base(a['n']):42.42s} ({a['p']})")
-        print(f"    x  PIPE       {run_base(b['n']):38.38s}  near ({c[0]},{c[1]},{c[2]})")
-    return 1 if (hits or pp) else 0
+    print(f"pipe-on-pipe crossings={len(worst)}")
+    for key in sorted(worst, key=lambda k: worst[k][0]):
+        gap, mid, d, clear = worst[key]
+        print(f"  PIPE  {key[0]:44.44s}")
+        print(f"    x  PIPE  {key[1]:44.44s}  cross ({mid[0]},{mid[1]},{mid[2]})  centreline {d}mm < {clear}mm")
+    return 1 if (hits or worst) else 0
 
 
 if __name__ == "__main__":

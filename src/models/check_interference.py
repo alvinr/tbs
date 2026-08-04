@@ -271,7 +271,8 @@ def main():
     # dead space UNDER the right-walkway grate (over the tray's outer margin, below the grate), by
     # design — they loop UP over the cantilevers (never through them).  Excluded from the tray box
     # only (still fully checked against every real solid: cantilevers, beams, frame, equipment).
-    RIBBON_LINES = ("-> p-02 inlet", "single filtered line", "corridor -> ribbon", "p-04 suction")
+    RIBBON_LINES = ("-> p-02 inlet", "single filtered line", "corridor -> ribbon", "p-04 suction",
+                    "dv-02 waste -> ibc-4", "p-02 -> acc-02")
 
     TOL = 3.0   # mm — ignore mere touching
     hits = []

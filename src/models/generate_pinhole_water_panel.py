@@ -156,7 +156,7 @@ diverter = cp.diverter
 DV01_CX, DV01_CY, DV01_CZ = 4800, cp.CTR_Y + 60, 235   # +100mm toward the sealed (high-X) end so the port turns run square
 
 
-def kit(part="all"):
+def kit(part="all", p02_on_corridor=False):
     """Pinhole-wall FILTER sub-loop (Stage B, agreed labels).  Chain:
     IBC-3 (Brown buffer) → P-02 → F1 → F2 → F3 → SV-01 (sample) → DV-01 → Blue/Grey IBC.
     Mounted HIGH so the walkway stays clear; PUMP on the side FURTHEST from the IBCs
@@ -203,7 +203,8 @@ def kit(part="all"):
     p2cx  = ov.PWP_P02_X                                          # body center: OUT tip 40mm before F1
     p2cy  = fcy                                                    # same Yd lane as the filters
     p2cz0 = cap_z - (cp.PVB_H - 18)                               # OUT/IN port height at the cap level
-    p += cp.pump_unit("Pump P-02 (Brown)", p2cx, p2cy, p2cz0, axis="x", color=ov.C_PUMP)
+    if not p02_on_corridor:                                      # P-02 relocated to the corridor column (water.skp)
+        p += cp.pump_unit("Pump P-02 (Brown)", p2cx, p2cy, p2cz0, axis="x", color=ov.C_PUMP)
     p2_out = cp.pump_out(p2cx, p2cy, p2cz0, "x")                  # OUT port — exits +X (→ F1)
     p2_in  = cp.pump_in(p2cx, p2cy, p2cz0, "x")                   # IN port — exits −X (suction)
 
@@ -234,16 +235,17 @@ def kit(part="all"):
                  + cp.ribbon_run(0, (4720, ov.RWK_RIBBON_NOTCH_YDS[0], 65), (2960, 55, 25), up_yd=cp.RIBBON_YD_DOWN))  # rise to flush, cross the NOTCHED beam (lane-0 Yd); crest at the SHARED line-1 Yd (uniform crests, Alvin 2026-07-24)
     brown_rise_wps = [(2960, 55, p2_in[2]), (2960, p2cy, p2_in[2]), p2_in]         # rise to P-02 IN
     brown_full_pipe = ov.ruby_pipe_run("IBC-3 (Brown) tap -> P-02 inlet", brown_pre + brown_rise_wps, rp, color=ov.C_IBC_BROWN)
-    p.append(brown_full_pipe)
+    if not p02_on_corridor:                                      # this wall suction is replaced by a corridor IBC-3→P-02 run
+        p.append(brown_full_pipe)
     brown_ribbon_pipe = ov.ruby_pipe_run("IBC-3 (Brown) tap -> ribbon (under-grate, to P-02)", brown_pre, rp, color=ov.C_IBC_BROWN)
     brown_rise_pipe = ov.ruby_pipe_run("Brown ribbon -> P-02 inlet (rise)", [brown_pre[-1]] + brown_rise_wps, rp, color=ov.C_IBC_BROWN)
     # ^ OFF the tee's −X end; descent OFFSET from the blue trunk (Yd1170 not 1150); −Yd at z25 OVER the
     #   corridor foot-plate, then step DOWN to z10 (2 elbows) to pass UNDER the blue trunk; strip z10 to P-02.
     #   At x2960 the riser is nudged back to Yd43 (off the strip's Yd56) so it clears the Yd69 supply trunk
     #   it would otherwise rise straight through (grey lane Yd24–45 is x≥4269, so x2960 is clear at Yd43).
-    p.append(cp.ball_valve("BV-03 (P-02 suction)", 2960, 43, waist, "z"))   # at SV-01 reach height
-    # 2. P-02 OUT (+X) → F1 inlet — straight, in line (same axis as the filter chain)
-    pipe("P-02 -> F1", [p2_out, f_in("F1")], ov.C_IBC_BROWN)
+    if not p02_on_corridor:
+        p.append(cp.ball_valve("BV-03 (P-02 suction)", 2960, 43, waist, "z"))   # at SV-01 reach height (moves to the corridor with P-02)
+    # 2. (Phase 2) F1 is now fed by DV-02's recycle branch (see skid_plumbing); P-02 OUT → ACC-02 instead.
     # 3. filter-skid jumpers F1→F2→F3 — straight pipe between the adjacent in-line ports
     #    (combo unit; the ports face each other in the gap, so no around-the-body routing)
     for a, b in (("F1", "F2"), ("F2", "F3")):
@@ -273,26 +275,21 @@ def kit(part="all"):
     # other three lines).  On the corridor side it comes back DOWN just past the cantilever (like the
     # sump), runs under the grate to DV-01's Yd, then rises into DV-01's IN port.
     pipe("SV-01 -> DV-01 (single filtered line)",
-         [(svx, sv_y, waist), (svx, yW, waist), (svx, yW, 50), (svx, 60, 50)]         # SV-01 → wall → DROP low → +Yd
-         + cp.ribbon_run(3, (DCX - 100, DCY, 65), (svx, 60, 50), up_yd=cp.RIBBON_YD_DOWN)[::-1][1:]  # flush across the notched beam; crest rises at the SHARED line-1 Yd (RIBBON_YD_DOWN) so all 4 ribbon crests are uniform (Alvin 2026-07-24)
+         [(svx, sv_y, waist), (svx, yW, waist), (svx, yW, 20), (svx, 60, 20)]         # SV-01 → wall → drop to Z20 (BELOW the blue trunk floor Z38) → +Yd (Yd60 clears the end beam)
+         + cp.ribbon_run(3, (DCX - 100, DCY, 65), (svx, 60, 20), up_yd=cp.RIBBON_YD_DOWN)[::-1][1:]  # flush across the notched beam; crest rises at the SHARED line-1 Yd (RIBBON_YD_DOWN) so all 4 ribbon crests are uniform (Alvin 2026-07-24)
          + [(DCX - 100, DCY, DCZ),                                                      # rise −X of the port to the IN-port height
             (DCX - tipd, DCY, DCZ)],                                                    # +X 90° turn horizontally into DV-01's −X IN port
          ov.C_FILTER)
-    # 5. DV-01 BLUE RECYCLE (run+, +X) → rise to the X1 fill CROSS at the corridor top — feeds both Blue
-    #    totes alongside the X1 fresh fill (no direct tote entry, no CV-2; P-02 has an integral check).
-    xUp = cp.BACK_X + 135                          # 5239 — the 90° elbow 135mm past the rear panel (110 + a 25mm
-    #   nudge toward the sealed end to separate the rise from the grey X4-waste riser at x5200); ON the spine
-    ryd = cp.X1_TEE_Y                              # riser Yd = the X1 cross Yd (on the spine face), so the recycle
-    #   rises STRAIGHT into the cross's −X port — ONE elbow at the top, no jog (fewer connections, see skill)
-    # STRAIGHT +X off the recycle port, THROUGH the rear panel to the spine riser (no −Yd jog along the
-    # corridor floor) — this clears the corridor-floor lane so the brown BV-02 suction can thread through.
-    recycle_pipe = ov.ruby_pipe_run("DV-01 blue recycle -> X1 cross",
-         [(DCX + tipd, DCY, DCZ),                                    # off the +X port (Yd1241, z235)
-          (xUp, DCY, DCZ),                                           # STRAIGHT +X through the rear panel to the spine riser
-          (xUp, ryd, DCZ),                                           # short −Yd onto the spine riser lane (behind the panel)
-          (xUp, ryd, cp.X1_TEE_Z),                                   # RISE up the spine (between the grey pipes)
-          (cp.X1_TEE_X, ryd, cp.X1_TEE_Z)], rp, color=ov.C_BLUE)     # +X straight into the cross −X port
-    p.append(recycle_pipe)
+    # 5. DV-01 RECYCLE (run+, +X) → IBC-3 BUFFER tote — the recycle loop's buffer; P-02 pulls from IBC-3.
+    #    (Was routed to the Blue X1 fill cross; Blue is now FILL-ONLY fresh water, so the filtered recycle
+    #    stays isolated in IBC-3 — the contamination fix.)  CV-3 anti-siphon check on the approach.
+    r_ex = 4760                                          # entry X on the Brown-tote near face, just −X of DV-01 (clear of the tap 4880 + pump column 4934)
+    r_ez = ov.IBC_H_1000 - 38                            # 1130 — Brown top-entry level (= the old DV-02→IBC-3 entry)
+    cp._side_entry(p, "DV-01 recycle -> IBC-3 (buffer)",
+        [(DCX + tipd, DCY, DCZ),                         # off DV-01's +X recycle port (z235)
+         (DCX + tipd, DCY, r_ez),                        # RISE straight up to the Brown top-entry level
+         (r_ex, DCY, r_ez)],                             # −X along the corridor to the entry lane
+        r_ex, cp.YD_NEAR, r_ez, -1, ov.C_BLUE, drop=-50, check=False)   # −Yd into the Brown tote; no CV-3 — P-04 has an integral check + top entry can't siphon (matches the old DV-02→IBC-3 entry)
     # 6. DV-01 WASTE (branch, z+) → the shared IBC-4 merge tee's z− branch (DV-02's waste also lands here,
     #    on the tee run, so the two legs make ONE tote entry).
     mx, my, mz = cp.MERGE4
@@ -325,6 +322,7 @@ def tap01_supply():
     Yd12-against-the-wall path ran straight through the bracket plates/bolts.  BV-04/BV-05 off-panel."""
     yd, fz = ov.PROC_TRAY_YD_NEAR - 11, ov.SPRAY_BAR_FEED_Z   # 69 — butt the tray near rim (Yd80), under the triangle
     pr, tr = ov.PUMP_PIPE_OD / 2, ov.TAP_PIPE_OD / 2
+    bvx = ov.BV02_X - 150   # BV-05 riser nudged 150mm −X (toward the EP) to clear the relocated tray-sump suction at PH_X
     p = []
     # UNDER-WALKWAY RIBBON (lane 1): the corridor blue trunk (dropped clear of the FP rail at X4670, Yd~1132,
     # z60) rises to FLUSH in the tray-edge slot, crosses the notched outer beam, runs −Yd along the ribbon to
@@ -335,8 +333,8 @@ def tap01_supply():
     p.append(ov.ruby_cylinder("Blue Supply Trunk (1/2in HDPE)",   # trunk ends at the ribbon lane (clear of the saddle gusset)
         ov.TAP_X, yd, fz, pr, cp.RIBBON_LANE_X[1] - ov.TAP_X, color=ov.C_BLUE, axis="x"))
     # BV-05 spray-bar isolation (riser + valve at the pinhole centerline)
-    p.append(ov.ruby_cylinder("BV-05 Riser", ov.BV02_X, yd, fz, pr, ov.BV02_Z - fz, color=ov.C_BLUE, axis="z"))
-    p.append(cp.ball_valve("BV-05 (spray-bar isolation)", ov.BV02_X, yd, ov.BV02_Z, "z"))
+    p.append(ov.ruby_cylinder("BV-05 Riser", bvx, yd, fz, pr, ov.BV02_Z - fz, color=ov.C_BLUE, axis="z"))
+    p.append(cp.ball_valve("BV-05 (spray-bar isolation)", bvx, yd, ov.BV02_Z, "z"))
     # Spray-bar supply — FLEXIBLE COILED hose from BV-05 to the spray-bar feed (pole-top supply end).
     # The bar rolls along the tray, so the hose hangs as a looped service coil (drawn with the same
     # coiled-cord helper as the power cords) that takes up slack as the operator walks the bar.
@@ -345,14 +343,14 @@ def tap01_supply():
     # pole-top supply. The bar rolls, so the hose hangs as a looped service coil (same coiled-cord helper
     # as the power cords) that takes up slack as the operator walks the bar. Both service loops kept.
     p.append(ov.ruby_pipe_run("BV-05 top elbow (spray-bar supply, 90°)",
-                              [(ov.BV02_X, yd, ov.BV02_Z + 40),      # BV-05 top port
-                               (ov.BV02_X, yd, ov.BV02_Z + 110),     # straight up out of the valve
-                               (ov.BV02_X, 160, ov.BV02_Z + 110)],   # 90° turn toward the spray bar
+                              [(bvx, yd, ov.BV02_Z + 40),      # BV-05 top port
+                               (bvx, yd, ov.BV02_Z + 110),     # straight up out of the valve
+                               (bvx, 160, ov.BV02_Z + 110)],   # 90° turn toward the spray bar
                               7, color=ov.C_BLUE))
     p.append(ov.ruby_coil_cord("Spray-bar supply hose (elbow -> spray bar, coiled)",
-                               [(ov.BV02_X, 160, ov.BV02_Z + 110),   # off the elbow
-                                (ov.BV02_X, 400, 250),               # first leg: drop down to the droop
-                                (ov.BV02_X, 640, 1300)],             # second leg: up to the raised pole-top supply
+                               [(bvx, 160, ov.BV02_Z + 110),   # off the BV-05 elbow (X2249)
+                                (bvx + 40, 400, 250),          # service-coil droop (loop for slack) — PARKED: coil↔BV-05 attach still to fix
+                                (2420, 633, 1303)],            # onto the spray-bar feed-hose top / flex connector (pole-top supply)
                                r=7, color=ov.C_BLUE))
     # TAP-01 chem branch (3/4in) up over the shelf + BV-04 isolation (overview path)
     p.append(ov.ruby_pipe_run("TAP-01 Branch (3/4in)",
@@ -366,7 +364,7 @@ def backing():
     """18mm marine-ply backing for the whole wall sub-loop — secured to the container wall;
     the pump, filters and valves mount on it and the pipes clamp to it for support (so the
     sub-loop installs as one panel, mirroring the corridor rear panel)."""
-    return ov.ruby_box("Wall backing (18mm ply)", 2780, 0, 920, 1720, ov.EQPANEL_T, 1440, color=ov.C_PLY)
+    return ov.ruby_box("Wall backing (18mm ply)", 2780, 0, 920, 1795, ov.EQPANEL_T, 1440, color=ov.C_PLY)  # +75mm at the +X edge so the grey waste clamps to the ply before it bends into the ribbon
 
 
 def person():
@@ -392,22 +390,26 @@ def right_walkway():
 # ── "Labeled" scene callouts (point-anchored on the kit; instance-anchored on pinhole/elec) ──
 _FILT_FCY = ov.BB_OD / 2 + 12              # 104 — filter / P-02 body center Yd (sump back near the wall)
 _FILT_CZ  = ov.C_HGT - 48 - ov.BB_H / 2    # 2170 — Big-Blue filter body center Z
+# Phase-2 skid row (P-04 · SV-02 · DV-02, under the filters) — single-sourced for skid_row/plumbing/labels
+SROW_YD, SROW_Z0 = 104, 1150   # Yd104 = the filter/P-02 wall lane (surface-mounted on the ply, like the other kit)
 LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TIP = component CENTER
     # ── pinhole-wall FILTER sub-loop (leaders point +Yd, out toward the operator) ──
-    (3058, _FILT_FCY, 2229, "P-02\n(filter feed)", 0, 520, 250),    # P-02 body center (cz0 2139 + PVB_H/2)
+    (ov.PWP_P02_X, ov.PWP_FILTER_YD, SROW_Z0 + 100, "ACC-02\n(recycle spray)", 0, 470, -180),   # on the skid (P-02's vacated spot)
     (3300, _FILT_FCY, _FILT_CZ, "F1 (50um)",   0, 560, 215),
     (3638, _FILT_FCY, _FILT_CZ, "F2 (KDF-55)", 0, 560, 215),
     (3976, _FILT_FCY, _FILT_CZ, "F3 (GAC)",    0, 560, 215),
     (4250, 110, 1000, "SV-01\n(sample)", 0, 430, 520),   # SV-01 now 75mm off the wall (yW+75)
     (DV01_CX, DV01_CY, DV01_CZ, "DV-01\n(3-way)",  -700, 0, 650),   # relocated to the corridor mouth (see kit())
-    # ── corridor plumbing panel: single-column pumps + ACC + Stage-A (leaders point −X, out the mouth) ──
+    # ── Phase-2 skid row under the filters (P-04 · SV-02 · DV-02, relocated from the corridor) — leaders +Yd ──
+    (ov.PWP_FILTER_X1, SROW_YD, SROW_Z0 + cp.PVB_H / 2, "P-04\n(tray drain)", 0, 470, -180),
+    (ov.PWP_FILTER_X2, SROW_YD, SROW_Z0 + 162, "SV-02\n(sample)", 0, 470, -120),
+    (ov.PWP_FILTER_X3, SROW_YD, SROW_Z0 + 162, "DV-02 (3-way)", 0, 470, -180),
+    # ── corridor plumbing panel: single-column pumps + ACCs (leaders point −X, out the mouth) ──
     (cp.PXC, cp.CTR_Y, cp.PSTACK["P-01"] + cp.PVB_H / 2, "P-01 (Blue supply)", -700, 0, -150),
-    (cp.PXC, cp.CTR_Y, cp.PSTACK["P-04"] + cp.PVB_H / 2, "P-04 (Tray drain)",  -800, 0, -150),
+    (cp.PXC, cp.CTR_Y, cp.PSTACK["P-04"] + cp.PVB_H / 2, "P-02 (recycle pump)", -800, 0, -150),   # relocated into P-04's vacated slot
     (cp.PXC, cp.CTR_Y, cp.PSTACK["P-05"] + cp.PVB_H / 2, "P-05 (Brown drain)", -900, 0,  150),
     (cp.PXC, cp.CTR_Y, cp.PSTACK["P-03"] + cp.PVB_H / 2, "P-03 (Waste drain)", -1000, 0, 150),
     (cp.PXC, cp.CTR_Y, cp.ACC_Z0 + 87, "ACC-01\n(accumulator)", -700, 0, 250),   # + acc_h/2 (body 174)
-    (cp.PXC - 95, cp.POY + 50, cp.SV_Z, "SV-02\n(sample)", -600, 0, 120),   # teed off to the −X aisle (low, P-04↔P-05)
-    (cp.DV02X, cp.CTR_Y, cp.DV_Z, "DV-02 (3-way)", -700, 0, 200),
     # ── ball valves (in-panel pump-suction isolation; BV-01/02 on the BACK-of-panel risers) ──
     (cp.FRONT_X + 106, cp.YD_NEAR + 67, 1000, "BV-01", -600, 0, 250),   # now on the front walkway-side riser
     (5070, cp.BV02_YD, cp._piz("P-05") - 85, "BV-02", 350, 0, 250),   # on the shirt-edge riser, P-05 suction (nudged up 25mm)
@@ -425,7 +427,7 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TI
 LABEL_CONTEXT_POINTS = [
     (ov.TAP_X, 112, ov.TAP_Z, "TAP-01\n(chem tap)", 0, 450, 300),
     (ov.TAP_X, 12, 1010, "BV-04", -450, 0, 250),
-    (ov.BV02_X, 12, ov.BV02_Z, "BV-05\n(spray bar)", 0, 450, 250),
+    (ov.BV02_X - 150, 12, ov.BV02_Z, "BV-05\n(spray bar)", 0, 450, 250),   # nudged −150 (toward EP) to clear the sump suction
 ]
 LABEL_INSTANCES = [
     ("Pinhole Assembly", "PINHOLE\n(optical ref)", 0, 700, 350),
@@ -531,6 +533,119 @@ def panel_power(include_switch=True, part="all"):
     return "\n".join(p)
 
 
+# ── Phase 2: relocated tray-sump processing ROW, mounted on the FILTER SKID under the filters ──
+# P-04 (sump pump) · SV-02 (sample tap) · 3W-DV-02 diverter, in a row under F1 / F2 / F3.
+# Facing the pinhole wall, right→left = P-04 (low X, beside F1) → SV-02 → DV-02 (high X).
+# The sump pickup feeds P-04 directly here.  SROW_YD/SROW_Z0 single-sourced above (near LABEL_POINTS).
+def skid_row():
+    """The relocated tray-sump processing row on the filter skid (P-04 · SV-02 · 3W-DV-02).
+    Bodies only for now — plumbing (sump→P-04→SV-02→DV-02→F1 / waste) follows in Increment 2."""
+    p = []
+    p += cp.pump_unit("Pump P-04 (Tray drain)", ov.PWP_FILTER_X1, SROW_YD, SROW_Z0, axis="x", face=+1)
+    p.append(cp.sample_valve("SV-02 sample valve", ov.PWP_FILTER_X2, SROW_YD, SROW_Z0 + 132, h=60))   # IN-LINE: row line runs THROUGH the body (center Z1312 = P-04 OUT), red handwheel free above, spout below
+    p.append(cp.diverter("3W-DV-02", ov.PWP_FILTER_X3, SROW_YD, SROW_Z0 + 162,
+                         run="x", branch="z+", handle="y+", color=ov.C_VALVE))   # IN −X (P-04) · waste +X (corridor) · feed z+ (F1); center Z1312 = P-04 OUT (straight run)
+    # ACC-02 (recycled-spray accumulator) — on the filter skid, in P-02's vacated spot (X=PWP_P02_X); Ø127 × 200 (= ACC-01)
+    p.append(ov.ruby_cylinder("ACC-02 Accumulator", ov.PWP_P02_X, ov.PWP_FILTER_YD, SROW_Z0, cp.ACC_R, 174, color=ov.C_ACC))
+    p.append(ov.ruby_cylinder("ACC-02 head", ov.PWP_P02_X, ov.PWP_FILTER_YD, SROW_Z0 + 174, cp.ACC_R + 2, 26, color="#222228", axis="z"))
+    # ACC-02 IN port (bottom, −Z) — the P-02 recycle-spray discharge rises into it; OUT (−X) feeds BV-05 (step 2)
+    p.append(ov.ruby_cylinder("ACC-02 in port", ov.PWP_P02_X, ov.PWP_FILTER_YD, SROW_Z0 - 30, cp.RP, 30, color="#222228", axis="z"))
+    return "\n".join(p)
+
+
+def skid_plumbing():
+    """Phase 2 — relocated tray-sump plumbing on the filter skid.  (Legs added incrementally.)"""
+    p = []
+    rp = ov.PUMP_PIPE_OD / 2
+    cdk = "#222228"
+    lz = SROW_Z0 + 162                                   # 1312 — row line AT P-04's OUT-port height (straight run, no dog-leg)
+    # ── Leg 1: tray sump pickup → P-04 IN  (DIRECT — deletes the long corridor ribbon) ──
+    sfz = ov.PROC_TRAY_FLOOR_Z_LOW - ov.PROC_TRAY_SUMP_Z + 3
+    sfoot = (ov.PROC_TRAY_DRAIN_X, ov.PROC_TRAY_DRAIN_YD, sfz)          # (2399, 80, 3) — strainer in the well
+    p04_in = cp.pump_in(ov.PWP_FILTER_X1, SROW_YD, SROW_Z0, "x", face=+1)   # (3220,130,1312)
+    p.append(ov.ruby_pipe_run("Tray sump -> P-04 suction",
+        [sfoot, (ov.PROC_TRAY_DRAIN_X, SROW_YD, 3),                      # +Yd along the floor to the P-04 lane, UNDER the blue supply trunk (Z41)
+         (ov.PROC_TRAY_DRAIN_X, SROW_YD, 90),                           # up at Yd104 — now clear of the blue trunk (Yd69)
+         (p04_in[0] - 20, SROW_YD, 90),                                 # +X UNDER THE WALKWAY (low) to below P-04
+         (p04_in[0] - 20, SROW_YD, p04_in[2]),                          # VERTICAL up to P-04's IN-port height
+         p04_in], rp, color=ov.C_IBC_BROWN))                           # +X into P-04's −X IN port
+    p.append(ov.ruby_cylinder("Tray sump strainer foot", *sfoot, 14, 36, color=cdk, axis="z"))
+    # ── Leg 2: P-04 OUT → (SV-02 tap) → DV-02 IN, along the row at lz ──
+    p04_out = cp.pump_out(ov.PWP_FILTER_X1, SROW_YD, SROW_Z0, "x", face=+1)   # (3380,130,1312)
+    dv_in = (ov.PWP_FILTER_X3 - (cp.DVB / 2 + cp.DVL), SROW_YD, lz)     # DV-02 −X run port (3943,130,1250)
+    # the line runs THROUGH SV-02's in-line body at X2 (so no separate tap tee — the sample spout hangs below)
+    p.append(ov.ruby_pipe_run("P-04 -> SV-02 -> DV-02",
+        [p04_out, (dv_in[0], SROW_YD, lz)], rp, color=ov.C_IBC_BROWN))   # STRAIGHT: lz = P-04 OUT Z (no dog-leg)
+    # ── Leg 3a: DV-02 feed (z+ branch) → F1 IN — the RECYCLE leg into the filter train ──
+    fr = ov.BB_OD / 2
+    f1_in = (ov.PWP_FILTER_X1 - (fr + 30), ov.PWP_FILTER_YD, ov.PWP_FILTER_TOP_Z - 39)   # (3178,104,2301) — matches f_in("F1")
+    dv_feed = (ov.PWP_FILTER_X3, SROW_YD, lz + (cp.DVB / 2 + cp.DVL))               # DV-02 z+ branch port (3976,104,1283)
+    edge_x = 2830        # near the panel's low-X (pinhole) edge
+    p.append(ov.ruby_pipe_run("DV-02 feed -> F1 (recycle)",
+        [dv_feed,
+         (ov.PWP_FILTER_X3, ov.PWP_FILTER_YD, 1450),      # up just clear of the skid-row tops (~1360)
+         (edge_x, ov.PWP_FILTER_YD, 1450),                # −X ALONG THE PANEL SURFACE (Yd104) to the pinhole edge
+         (edge_x, ov.PWP_FILTER_YD, f1_in[2]),            # VERTICAL UP at the edge to F1-IN height
+         f1_in], rp, color=ov.C_IBC_BROWN))               # +X into F1's −X IN port
+    # ── Leg 3b: DV-02 waste (+X port) → IBC-4 (corridor), UNDER THE WALKWAY via the ribbon ──
+    # Mirrors the (now-freed) tray-sump ribbon path: out to the near-rim lane FIRST (clear of the tray
+    # basin), drop, +X under the walkway to lane 2, up-and-over the cantilever, down into the corridor,
+    # then rise onto the IBC-4 merge tee.
+    RZ, OVZ = cp.RIBBON_Z, cp.RIBBON_OVER_Z
+    wlx   = cp.RIBBON_LANE_X[2]                           # lane 2 — freed now the sump goes direct to P-04
+    gapyd = ov.RWK_RIBBON_NOTCH_YDS[2]                    # 1194 — lane-2 outer-beam notch Yd (single-sourced)
+    CLIPY = 35                                            # clip plane — flush to the ply (= the F3→SV-01 filtered-line Yd), so the grey clamps to the panel
+    hx    = ov.PWP_SV01_X                                 # 4250 — F3→SV-01 filtered line X (the crossing to hump over)
+    dv_waste = (ov.PWP_FILTER_X3 + (cp.DVB / 2 + cp.DVL), SROW_YD, lz)   # DV-02 +X waste port (4054,104,1312)
+    riseX = cp.MERGE4[0] - 115                            # 5289 — seat-approach X (= old DV-02→IBC-4 drop lane, −x of the tee)
+    p.append(ov.ruby_pipe_run("DV-02 waste -> IBC-4",
+        [dv_waste,
+         (dv_waste[0] + 36, SROW_YD, lz),                 # +X lead-out off the +X waste port
+         (dv_waste[0] + 36, CLIPY, lz),                   # −Yd onto the clip plane (flat on the ply — clamped)
+         (hx - 25, CLIPY, lz),                            # +X ALONG THE PLY SURFACE to the F3→SV-01 crossing
+         (hx - 25, CLIPY + 35, lz),                       # HUMP over the F3→SV-01 line — elbow 1 (+Yd, proud of the panel)
+         (hx + 25, CLIPY + 35, lz),                       # elbow 2 (over the blue)
+         (hx + 25, CLIPY, lz),                            # elbow 3 (−Yd back onto the ply)
+         (wlx, CLIPY, lz),                                # elbow 4 → +X along the ply to lane 2 (clamped to the extended ply, up to the bend)
+         (wlx, 65, lz),                                   # +Yd clear of the RWk end beam (Yd0) before dropping
+         (wlx, 65, RZ),                                   # DROP between the walkway beams into the ribbon (past the end beam, in front of the tray box)
+         (wlx, cp.RIBBON_YD_UP, RZ),                      # +Yd along the lane (under the grate) to before the cantilever
+         (wlx, cp.RIBBON_YD_UP, OVZ),                     # UP over the cantilever (Rule 5)
+         (wlx, cp.RIBBON_YD_DOWN, OVZ),                   # +Yd past the cantilever
+         (wlx, cp.RIBBON_YD_DOWN, RZ),                    # DOWN through the grate into the corridor
+         (wlx, gapyd, RZ),                                # +Yd to the notch Yd (flush under the grate)
+         (cp.RIBBON_SLOT_X, gapyd, RZ),                   # +X through the outer-beam notch to the drop slot
+         (cp.RIBBON_SLOT_X, gapyd, 65),                   # DOWN the slot to the corridor entry Z
+         (riseX, gapyd, 65),                              # +X to the merge-approach lane
+         (riseX, cp.MERGE4[1], 65),                       # jog to the merge Yd at floor
+         (riseX, cp.MERGE4[1], cp.MERGE4[2]),             # RISE to the merge Z (1230)
+         cp.MERGE4], rp, color=ov.C_IBC_WASTE))           # +X onto the tee's −x run port
+    # ── Leg 4: P-02 discharge (corridor) → ACC-02 (skid) — the recycle-spray feed, UNDER THE WALKWAY ──
+    # Reverse of the waste leg: off P-02's +Yd OUT, drop into the corridor, ribbon lane 0 back under the
+    # walkway to the near rim, then −X along the near rim to the skid and up into ACC-02's bottom IN.
+    p2o = cp.pump_out(cp.PXC, cp.CTR_Y, cp.PSTACK["P-04"], "y", 1)      # P-02 OUT (+Yd) (4984,1261,1102)
+    L0  = cp.RIBBON_LANE_X[0]                                           # lane 0 (free)
+    g0  = ov.RWK_RIBBON_NOTCH_YDS[0]                                    # lane-0 outer-beam notch Yd
+    acc2_in = (ov.PWP_P02_X, ov.PWP_FILTER_YD, SROW_Z0 - 30)            # ACC-02 bottom IN (3058,104,1120)
+    exitX = 4900                                                        # −X of the ACC-01/P-01 column (bodies X≥4921) so the drop clears them
+    cpt = (4630, g0, 65)                                                # ribbon entry −X of the near upright (X4646); ribbon_run does the +X to the slot + the notch
+    npt = (L0, 65, RZ)                                                  # near-rim junction (Yd65, clear of the end beam)
+    lead  = [p2o, (exitX, p2o[1], p2o[2]),                              # −X OUT of the pump column (+Yd side, above P-01/ACC-01)
+             (exitX, p2o[1], 65),                                       # DROP to the corridor entry Z, clear of the column
+             (exitX, cp.CTR_Y, 65),                                     # −Yd to mid-gap Yd1181 (clear of BOTH uprights: 1046-1096 & 1258-1266)
+             (cpt[0], cp.CTR_Y, 65),                                    # −X across the uprights' X-span at mid-gap Yd
+             cpt]                                                       # −Yd to the notch Yd (1110) on the −X side of the near upright
+    cross = cp.ribbon_run(0, cpt, npt)                                  # cpt → over the cantilever → npt
+    tail  = [npt, (L0, 65, 65),                                         # drop below the walkway-beam soffit (Z80)
+             (acc2_in[0], 65, 65),                                      # −X UNDER the walkway beams to the ACC-02 X (at Yd65)
+             (acc2_in[0], 65, 200),                                     # UP at Yd65, clear of the sump Leg-1 lane (Yd104 / Z90)
+             (acc2_in[0], ov.PWP_FILTER_YD, 200),                       # +Yd onto the ACC-02 wall lane, ABOVE Leg 1
+             acc2_in]                                                   # UP the panel into ACC-02's bottom IN
+    p.append(ov.ruby_pipe_run("P-02 -> ACC-02 (recycle spray)",
+        lead[:-1] + cross + tail[1:], rp, color=ov.C_IBC_BROWN))
+    return "\n".join(p)
+
+
 def build():
     # Limited-depth view of the FULL pinhole wall: the wet-end kit + the OTHER wall-mounted
     # equipment (own layer/scene) + a shallow context slice (wall + floor/ceiling out to
@@ -548,14 +663,16 @@ def build():
                          ("Pinhole Assembly", "Pinhole", ov.pinhole_assembly),
                          ("Wall backing (ply)", "Backing", backing),
                          ("TAP-01 + spray-bar supply", "Supply", tap01_supply),
-                         ("Wet-end kit (raked)", "Kit", kit),
+                         ("Wet-end kit (raked)", "Kit", lambda: kit(p02_on_corridor=True)),
+                         ("Skid row (P-04 · SV-02 · DV-02)", "Kit", skid_row),
+                         ("Skid plumbing", "Kit", skid_plumbing),
                          ("Person (scale)", "Scale", person),
                          ("Other pinhole-wall equipment", "Pinhole Equipment", other_equipment),
                          ("Corridor frame (deep box)", "Corridor Frame", cp.frame),
                          ("Corridor rear panel", "Corridor Panel", cp.rear_panel),
-                         ("Corridor equipment", "Corridor Equipment", cp.equipment),
-                         ("Corridor plumbing", "Corridor Plumbing", cp.plumbing),
-                         ("Corridor drains + X-ports", "Corridor Drains", cp.drains_ports),
+                         ("Corridor equipment", "Corridor Equipment", lambda: cp.equipment(sump_on_skid=True)),
+                         ("Corridor plumbing", "Corridor Plumbing", lambda: cp.plumbing(sump_on_skid=True)),
+                         ("Corridor drains + X-ports", "Corridor Drains", lambda: cp.drains_ports(sump_on_skid=True)),
                          ("Circuit-C power + cabling (both panels)", "Power", lambda: panel_power(include_switch=False)),
                          ("Ribbon support cross-beams", "Ribbon Supports", cp.ribbon_supports),
                          # SOLID (non-ghost) copies of the two plywood panels, on their own tags — shown

@@ -543,13 +543,19 @@ DV02X   = SHIRT_X - DVB / 2                  # 5028.5 — 3W-DV-02 box BACK moun
 #   face, so the shirt SUPPORTS DV-02; its feed + both run legs nudge +X to follow (toward the sealed end)
 
 
-def equipment():
-    """The four processing pumps (P-01 Blue, P-04 tray-drain, P-05 Brown-drain, P-03 Waste-drain),
-    ACC-01, SV-02 sample tap and 3W-DV-02 — all on the corridor plumbing panel.  (P-02 + the
-    filters live on the pinhole wall.)  Pumps are UPRIGHT (filter-style), ports out the top."""
+def equipment(sump_on_skid=False):
+    """The corridor pump panel: P-01 Blue, [P-04 tray-drain], P-05 Brown-drain, P-03 Waste-drain,
+    ACC-01, [SV-02 + 3W-DV-02].  (P-02 + the filters live on the pinhole wall.)  Pumps UPRIGHT.
+
+    sump_on_skid=True (Phase 2 — water.skp): the tray-sump processing (P-04, SV-02, 3W-DV-02) is
+    RELOCATED onto the filter skid, so they are OMITTED here and ACC-02 (the recycled-spray
+    accumulator) drops into P-04's vacated column slot instead."""
     p = []
-    for label, key in (("Pump P-01 (Blue supply)", "P-01"), ("Pump P-04 (Tray drain)", "P-04"),
-                       ("Pump P-05 (Brown drain)", "P-05"), ("Pump P-03 (Waste drain)", "P-03")):
+    pumps = [("Pump P-01 (Blue supply)", "P-01"),
+             ("Pump P-05 (Brown drain)", "P-05"), ("Pump P-03 (Waste drain)", "P-03")]
+    if not sump_on_skid:
+        pumps.insert(1, ("Pump P-04 (Tray drain)", "P-04"))
+    for label, key in pumps:
         p += pump_unit(label, PXC, CTR_Y, PSTACK[key], axis="y")
     # ACC-01 — SeaFlo SFAT-075-125-01 (0.75 L): Ø127 × 200mm overall (per component-dimension-audit).
     # Drawn like the filters/pumps: a vertical body with IN/OUT on OPPOSITE sides (IN +Yd from
@@ -560,20 +566,25 @@ def equipment():
     for tag, sd in (("in", +1), ("out", -1)):
         y0 = (CTR_Y + ACC_R) if sd > 0 else (CTR_Y - ACC_R - 30)
         p.append(ov.ruby_cylinder(f"ACC-01 {tag} port", PXC, y0, ACC_PZ, RP, 30, color=CDK, axis="y"))
-    # SV-02 sample tap — TEED off the P-04 DISCHARGE RISER low down (the +Yd lane POY+50, between
-    # P-04 and P-05 at ~1100mm) out to the −X aisle so the valve body/handwheel are reachable and
-    # the spout drops straight for cup access, clear of the pump bodies.
-    sv_x = PXC - 95
-    sv_y = POY + 50                        # the discharge riser's Yd lane (1311) at this height
-    p.append(tee("SV-02 tap tee", PXC, sv_y, SV_Z + 25, run="z", branch="x-"))
-    p.append(ov.ruby_pipe_run("SV-02 tap", [(PXC, sv_y, SV_Z + 25), (sv_x + 25, sv_y, SV_Z + 25)], RP, color=ov.C_VALVE))
-    p.append(sample_valve("SV-02 sample valve", sv_x, sv_y, SV_Z, h=60))
-    # 3W-DV-02 — Stage-A diverter above the stack (input underside; run to Brown −Yd / Waste +Yd)
-    p.append(diverter("3W-DV-02", DV02X, CTR_Y, DV_Z, run="y", branch="z-", handle="x-", color=ov.C_VALVE))
+    if sump_on_skid:
+        # P-02 (recycled-spray pump) RELOCATED from the pinhole wall to the corridor column, in P-04's
+        # vacated slot — IBC-3 buffer (corridor) → P-02 → ACC-02 (on the filter skid).  Upright like the
+        # rest of the column: IN −Yd (from the IBC-3 tap), OUT +Yd (to the ACC-02 cross-panel run).
+        p += pump_unit("Pump P-02 (Brown recycle)", PXC, CTR_Y, PSTACK["P-04"], axis="y")
+    else:
+        # SV-02 sample tap — TEED off the P-04 DISCHARGE RISER low down (the +Yd lane POY+50, between
+        # P-04 and P-05 at ~1100mm) out to the −X aisle for reach; spout drops for cup access.
+        sv_x = PXC - 95
+        sv_y = POY + 50                        # the discharge riser's Yd lane (1311) at this height
+        p.append(tee("SV-02 tap tee", PXC, sv_y, SV_Z + 25, run="z", branch="x-"))
+        p.append(ov.ruby_pipe_run("SV-02 tap", [(PXC, sv_y, SV_Z + 25), (sv_x + 25, sv_y, SV_Z + 25)], RP, color=ov.C_VALVE))
+        p.append(sample_valve("SV-02 sample valve", sv_x, sv_y, SV_Z, h=60))
+        # 3W-DV-02 — Stage-A diverter above the stack (input underside; run to Brown −Yd / Waste +Yd)
+        p.append(diverter("3W-DV-02", DV02X, CTR_Y, DV_Z, run="y", branch="z-", handle="x-", color=ov.C_VALVE))
     return "\n".join(p)
 
 
-def plumbing(part="all"):
+def plumbing(part="all", sump_on_skid=False):
     """Stage-A tray-drain chain (P-04 → SV-02 → 3W-DV-02 → IBC-3 Brown / IBC-4 Waste) + the Blue
     supply (Blue #1 → P-01 → ACC-01 → trunk).  Routing rules: every segment is single-axis (no
     diagonals); each pump port leaves with a perpendicular −X stub; each run gets its OWN X depth
@@ -586,7 +597,11 @@ def plumbing(part="all"):
     p = []
     sump = []
     def pipe(nm, wp, col): p.append(ov.ruby_pipe_run(nm, wp, RP, color=col))
-    def spipe(nm, wp, col): sump.append(ov.ruby_pipe_run(nm, wp, RP, color=col))
+    # gpipe / spipe: GUARDED builders — no-op when the tray-sump chain is relocated to the skid.
+    def gpipe(nm, wp, col):
+        if not sump_on_skid: p.append(ov.ruby_pipe_run(nm, wp, RP, color=col))
+    def spipe(nm, wp, col):
+        if not sump_on_skid: sump.append(ov.ruby_pipe_run(nm, wp, RP, color=col))
     def pin(k):  return (PXC, PIY, _piz(k))              # IN  tip (−Yd manifold side)
     def pout(k): return (PXC, POY, _piz(k))             # OUT tip (+Yd manifold side)
     tip = DVB / 2 + DVL                                  # 78 — diverter port-stub tip
@@ -641,12 +656,13 @@ def plumbing(part="all"):
           (xrise, ybr, z04),                            # −Yd at the IN-port height to the port-approach lane
           (PXC, ybr, z04), pin("P-04")],                # +X straight into the −Yd-facing IN port
          ov.C_IBC_BROWN)
-    sump.append(ov.ruby_cylinder("Tray sump strainer foot", *sump_foot, 14, 36, color=CDK, axis="z"))
+    if not sump_on_skid:
+        sump.append(ov.ruby_cylinder("Tray sump strainer foot", *sump_foot, 14, 36, color=CDK, axis="z"))
     # P-04 DISCHARGE → up the BACK of the panel (clear of the OUT-port stack), back to the front
     # ABOVE the pumps where it's clear → SV-02 (in-line) → DV-02 underside branch.
     # P-04 OUT leaves convention-style: a short +Yd stub straight OUT of the +Yd-facing OUT port to a
     # front riser, up ABOVE the pumps (clear), then back in to SV-02 (in-line) and DV-02.
-    pipe("P-04 -> SV-02 -> DV-02",
+    gpipe("P-04 -> SV-02 -> DV-02",
          [pout("P-04"), (PXC, POY + 50, z04), (PXC, POY + 50, 2035), (PXC, CTR_Y, 2035),
           (DV02X, CTR_Y, 2035), (DV02X, CTR_Y, DV_Z - tip)],   # jog at z2035 (+75mm, CLEARS the P-03 head
           # top z1950 by ~75mm), -X to the nudged DV-02, then up into it
@@ -660,19 +676,20 @@ def plumbing(part="all"):
     # −Yd along the gap to the entry lane (Yd1073, clears the P-04 head Yd1128 AND −Yd of the shirt edge 1096
     # so the −X exit needs no shirt notch) → −X out to the tote entry.
     cz = 5090   # chase centre X (shirt back 5076.5 ↔ panel front 5104)
-    _side_entry(p, "DV-02 -> IBC-3 (Brown)",   # no CV-3 — P-04 has an integral check valve (check=False)
-                [(DV02X, dvm, DV_Z), (DV02X, dvm - 60, DV_Z),   # leave the −Yd run port collinear (clean elbow), then
-                 (cz, dvm - 60, DV_Z), (cz, CTR_Y, DV_Z),       # +X to the panel, then +Yd INTO the gap (toward the film-plane wall)
-                 (cz, CTR_Y, bz), (cz, dvm - 30, bz),           # DROP the gap on the clear lane, then −Yd to the entry lane (clears the head + the BV-02→P-05 inlet at Yd1078)
-                 (DV02X, dvm - 30, bz)],                        # −X out to the entry approach point
-                DV02X, YD_NEAR, bz, -1, ov.C_IBC_BROWN, check=False, drop=-50)   # short 50mm dip tube inside the tote
+    if not sump_on_skid:   # DV-02→IBC-3 recycle — OBSOLETE in the new topology (DV-02 now feeds the filters)
+        _side_entry(p, "DV-02 -> IBC-3 (Brown)",   # no CV-3 — P-04 has an integral check valve (check=False)
+                    [(DV02X, dvm, DV_Z), (DV02X, dvm - 60, DV_Z),   # leave the −Yd run port collinear (clean elbow), then
+                     (cz, dvm - 60, DV_Z), (cz, CTR_Y, DV_Z),       # +X to the panel, then +Yd INTO the gap (toward the film-plane wall)
+                     (cz, CTR_Y, bz), (cz, dvm - 30, bz),           # DROP the gap on the clear lane, then −Yd to the entry lane (clears the head + the BV-02→P-05 inlet at Yd1078)
+                     (DV02X, dvm - 30, bz)],                        # −X out to the entry approach point
+                    DV02X, YD_NEAR, bz, -1, ov.C_IBC_BROWN, check=False, drop=-50)   # short 50mm dip tube inside the tote
     # DV-02 → IBC-4 merge — waste port → drop below the bracket → behind the panel (own lane) → down
     # → +X past the risers to the merge tee (jog to the merge Yd at x=MERGE, clear of the back verticals).
     # leave the +Yd port, turn toward the SEALED END and run 400mm along the top (Yd1229 clears the far
     # upright at 1266 now that the short-port diverter pulled dvp in to 1214), THEN drop and into the merge.
     dvwx = MERGE4[0] - 115                                # drop −x of the tee (top run 75mm shorter) so the
     #   horizontal approach seats on the −x run port as a clear run, not a stub right at the drop
-    pipe("DV-02 -> IBC-4 merge",
+    gpipe("DV-02 -> IBC-4 merge",
          [(DV02X, dvp, DV_Z), (DV02X, dvp + 31, DV_Z), (DV02X, dvp + 31, DV_Z - 45),   # +Yd stub EXTENDED (+40) so the panel
           #   penetration + the +X run clear the spine root (Yd1206-1224) at the panel-spine join, then drop below the rear-panel
           (dvwx, dvp + 31, DV_Z - 45), (dvwx, MERGE4[1], DV_Z - 45),                    # +X, then −Yd to the spine lane
@@ -710,7 +727,7 @@ def plumbing(part="all"):
     # ACC OUT (−Yd) → trunk out the mouth to the spray bar.
     # The ACC-IN elbow goes OUT HORIZONTALLY (+Yd into the aisle, clear of the P-01 head below) before
     # dropping to the P-01 OUT blue riser — NOT straight down over the pump.
-    inby = CTR_Y + ACC_R + 75                              # 1320 — IN riser well +Yd of the P-01 head (Yd1234)
+    inby = CTR_Y + ACC_R + 55                              # 1300 — IN riser pulled tight to the pump column but kept +Yd of the ACC-IN port (Yd1274.5) so the lead-out (39mm) + drop-in (25mm) both form clean swept elbows; still clears the Blue #2 IBC near face (Yd1316, ~6mm gap — was an overlap at +75)
     pipe("P-01 -> ACC-01 (in)",
          [pout("P-01"), (PXC, inby, _piz("P-01")), (PXC, inby, ACC_PZ), acc_in()], ov.C_BLUE)
     # ACC-01 OUT → supply trunk → out to the gap past the tray right edge (GAPX), dropped to z60 ready
@@ -738,7 +755,7 @@ def end_wall():
                        color=ov.C_SHELL, alpha=0.12)
 
 
-def drains_ports():
+def drains_ports(sump_on_skid=False):
     """The X1/X3/X4 end-wall bulkhead ports + their lines: X1 fresh-fill (single check → tee →
     BOTH Blue totes) and the X3/X4 drains (tote-bottom pickups → panel pumps P-05/P-03 → ports).
     The pumps themselves are on the panel (equipment())."""
@@ -775,8 +792,17 @@ def drains_ports():
         [(tx3, yin3, tz3 - 100), (tx3, yin3, tz3), (tx3, ty3 - 36, tz3)], RP, color=ov.C_IBC_BROWN))  # dip tube EXTENDED to tz3-100 (bottom stays z208) — into the tee's −Yd branch end
     p.append(ov.ruby_cylinder("IBC-3 (Brown) tap flange", tx3, YD_NEAR - 8, tz3, 36, 16, color=ov.C_STEEL, axis="y"))
     p.append(tee("IBC-3 (Brown) tap T", tx3, ty3, tz3, run="x", branch="y-"))   # dip on −Yd; P-02 −X / P-05 +X
-    # (no check valve at the bottom tap — the schematic's CV-3 is at the IBC-3 buffer return TOP;
-    #  the shared bottom tap is just the tee feeding P-02/P-05 through BV-03/BV-02)
+    # (no check valve at the bottom tap — the shared bottom tap is just the tee feeding P-02/P-05
+    #  through BV-03/BV-02; the pumps have integral checks)
+    if sump_on_skid:
+        # IBC-3 (Brown) tap → P-02 (recycle pump) suction: off the tap's −X port → riser → +X into
+        # P-02's −Yd IN port.  P-02 sits in the P-04 column slot; its IN Yd == the tap Yd (both
+        # CTR_Y−(PVB_R+30)), so the run is co-planar in Yd — riser then a straight +X into the port.
+        p2i = pump_in(PXC, CTR_Y, PSTACK["P-04"], "y", 1)
+        pipe("IBC-3 tap -> P-02 suction",
+             [(tx3 - 19, ty3, tz3),            # off the tap's −X run port (low, z308)
+              (tx3 - 19, ty3, p2i[2]),         # UP the riser to the IN-port height
+              p2i], ov.C_IBC_BROWN)            # +X into P-02's −Yd IN-port tip
     # P-05 (Brown drain) suction: shared tap T → +X run end → rise to P-05 IN (−Yd manifold)
     p5i = (PXC, PIY, _piz("P-05")); p5o = (PXC, POY, _piz("P-05"))
     z05 = _piz("P-05")

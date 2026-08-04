@@ -27,7 +27,7 @@ prevents chemical contamination of walkway structures and avoids disrupting the
 tray's watertight seal.
 
 <!-- brochure:skip -->
-**Interactive 3D model** — the four removable grated sections, the wall-cantilevered near/far brackets (with exterior reinforcing plates + M12 through-bolts), the right walkway on its cantilever rectangle (closed 40×40 SHS frame on 2 center arms off the IBC frame, with combined corner plates shared with the bottom film rail), the removable left lift-out grate on 5 floor-leg cantilever brackets (posts on bare floor outside the tray, arms cantilevering over it), and the processing tray, inside a ghost of the container. Drag to orbit, scroll to zoom.
+**Interactive 3D model** — the four removable grated sections, the wall-cantilevered near/far brackets (with exterior reinforcing plates + M12 through-bolts), the right walkway on its cantilever rectangle (closed 2×⅞in (50.8×22mm) frame on 2 center arms off the IBC frame, with combined corner plates shared with the bottom film rail), the removable left lift-out grate on 5 floor-leg cantilever brackets (posts on bare floor outside the tray, arms cantilevering over it), and the processing tray, inside a ghost of the container. Drag to orbit, scroll to zoom.
 
 <div class="sketchfab-embed-wrapper">
   <div style="position:relative;width:100%;padding-bottom:56.25%;">
@@ -181,7 +181,11 @@ brackets because the IBC stack occupies the floor below.
 
 ### 4.1 The Cantilever Rectangle
 
-A closed rectangular frame of **40×40×3mm SHS** sits directly under the deck:
+A closed rectangular frame of **2×⅞in (50.8×22mm) steel tube** sits directly under the deck. The
+section was **shaved from 40×40 to 2×⅞in** (soffit raised Z80→Z93) so the full-width 1½in spray beam,
+which rides the Yd-sloped tray floor, clears it by **≥15mm** at every travel position. The shallower
+section is less stiff (~5.5mm vs ~1.5mm midspan under the design footfall), so a **mid-span support
+(added arm/post) is planned** to restore stiffness — flagged in TODO. The frame:
 
 - **Two long beams** run the full container width, with the 300mm grating spans between them.
 - **Two short end beams** (≈300mm) close the near and far ends, joining the long
@@ -200,13 +204,14 @@ such treatment — it falls between floor-leg brackets, with no beam beneath it.
 
 ### 4.2 Center Cantilever Arms
 
-Two **40×40×3mm SHS arms** cantilever inward off the **IBC corridor uprights**
+Two **2×⅞in arms** cantilever inward off the **IBC corridor uprights**
 and pick the rectangle up at
 mid-span. Each arm is **half-lapped (cross-halved)** where the long beams cross
 it, so the beams seat down into the arm and the two members share a flush top
 face. The arms carry the central span that the corner supports alone would leave
-to sag; the rectangle bounces well under the design footfall (≈0.35 kN·m peak
-moment at the arm root — see the [cantilever study](right-walkway-cantilever-study.md)).
+to sag. With the section shaved to 2×⅞in for spray-beam clearance, an **added
+mid-span support** keeps the deflection in check (the ~0.35 kN·m peak moment at
+the arm root still passes with margin — see the [cantilever study](right-walkway-cantilever-study.md)).
 
 ### 4.3 Corner Supports
 
@@ -252,13 +257,13 @@ edge. The +50mm deck raise lifts these arms clear of the floor-level spray bar.
 
 | Component | Specification | Position |
 |-----------|--------------|----------|
-| Floor-leg cantilever bracket (×5) | 50×50×3mm steel SHS post (~115mm, floor to grate bottom) + 40×40×3mm SHS arm (40mm deep) + 128×60×8mm foot plate | 5 brackets (outside the tray) |
+| Floor-leg cantilever bracket (×5) | 50×50×3mm steel SHS post (~115mm, floor to grate bottom) + 2×⅞in (50.8×22mm) arm (22mm deep) + 128×60×8mm foot plate | 5 brackets (outside the tray) |
 | Floor screws | 4× #14×2″ 410 SS self-drilling structural screws per foot plate (20 total) | Bite the plywood-over-steel container floor — wedge/concrete anchors don't hold there |
 | Standard arm reach | Arm reaches the grate inner edge | 2 brackets |
 | Extended arm reach | Arm extends under the drum-exit punch-out | 3 brackets |
 
 The grate rests on the cantilever arms and lifts straight out — no fasteners, no
-kerb. The operator load travels grating → 40×40×3 cantilever arm → 50×50×3 post →
+kerb. The operator load travels grating → 2×⅞in cantilever arm → 50×50×3 post →
 foot plate → floor anchor, with **zero tray contact**: the posts stand on bare
 floor outside the tray and the arms cantilever over it. The arm bottom clears the floor-level spray bar
 by 15mm and the tray rim
@@ -267,7 +272,7 @@ stand entirely outside the panel's transport-swing footprint, the grate simply
 lifts out before the panel swings; the floor-bolted posts stay put.
 
 **Load path / hand-check.** The longest cantilever is the punch-out arm. With a ~1kN footfall at the arm tip, the
-40×40×3 SHS arm and 50×50×3 SHS post carry the moment with margin and the foot
+2×⅞in arm and 50×50×3 SHS post carry the moment with margin and the foot
 plate's 4× M10 anchors react the overturning. This is a hand-check, not a signed
 analysis; the brackets bolt to the floor permanently and only the grate lifts out
 for transport. This floor-leg cantilever supersedes the earlier full-width
@@ -314,7 +319,7 @@ contact.
 |-----------|--------------|
 | Post | 50×50×3mm steel SHS, ~115mm tall (floor to grate bottom), on bare floor at X=140mm |
 | Foot plate | 128×60×8mm steel plate, with **4× #14×2″ 410 SS self-drilling screws** into the plywood-over-steel container floor |
-| Arm | 40×40×3mm steel SHS, reaching X=470mm (2 brackets) or extended to X=770mm (3 brackets, under the punch-out) |
+| Arm | 2×⅞in (50.8×22mm) steel, reaching X=470mm (2 brackets) or extended to X=770mm (3 brackets, under the punch-out) |
 | Overturning reaction | reacted by the foot-plate anchors; ~1kN footfall at the arm tip is the worst case |
 
 The grate simply rests on the cantilever arms — located laterally by butting the
@@ -460,14 +465,14 @@ bounces noticeably less than the rod-hung version it replaces.
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×65 cantilever bolts (plain nut + split = locked). | 59 ea | McMaster-Carr | $7 |
 | Reinforcing plate (exterior) | 6mm steel: 100×180mm std (×13) + 120×220mm widened (×5) | 18 ea | Local fab | $75–$130 |
 | Transition bearing plate | 40×500×5mm flat bar, welded to bracket arm top at width transitions | 2 ea | Local fab | $5–$10 |
-| Right walkway cantilever frame | 40×40×3mm SHS — 2 long beams (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + 2 end beams (300mm) + 2 center arms (325mm), ~8 m | 1 lot | Metal Supermarkets | $28–$40 |
+| Right walkway cantilever frame | 2×⅞in (50.8×22mm) steel tube — 2 long beams (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + 2 end beams (300mm) + 2 center arms (325mm), ~8 m (shaved from 40×40 for the ≥15mm spray-beam clearance; a mid-span support may be added for stiffness — see TODO) | 1 lot | Metal Supermarkets | $28–$40 |
 | Wall cleat (left corners) | 8mm steel: back-plate + exterior plate + shelf, through-bolted to the wall | 2 ea | Local fab | $20–$35 |
 | Combined corner plate (right corners) | 10mm steel, 150mm wide — carries the walkway right beam AND the bottom film rail | 2 ea | Local fab | $50–$80 |
 | [M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A732/) (91280A732) | Right-walkway wall cleats + combined corner plates + 2 center-arm U-clamps, sized for the deepest 30mm-corrugation grip (~54mm), partial thread. $17.36/pack of 10. Pad with 1–2 M12 flat washers if the actual container corrugation is <30mm. | 24 ea | McMaster-Carr | $42 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | Plain hex nut — M12×70 right-walkway bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29. | 24 ea | McMaster-Carr | $6 |
 | [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | Flat washers, M12×70 right-walkway bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). | 96 ea | McMaster-Carr | $9 |
 | [M12 split lock washer, zinc](https://www.mcmaster.com/91202A246/) (91202A246) | Split lock washer under each nut — M12×70 right-walkway bolts (plain nut + split = locked). | 24 ea | McMaster-Carr | $3 |
-| Floor-leg cantilever bracket (left walkway, ×5) | 50×50×3mm SHS post (~115mm) + 40×40×3mm SHS arm (2 reach X470, 3 extended to X770) + 128×60×8mm foot plate | 5 ea | Local fab | $55–$95 |
+| Floor-leg cantilever bracket (left walkway, ×5) | 50×50×3mm SHS post (~115mm) + 2×⅞in (50.8×22mm) arm (2 reach X470, 3 extended to X770) + 128×60×8mm foot plate | 5 ea | Local fab | $55–$95 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 4 per foot plate (20 total). Self-drills the 6mm plate + 28mm plywood (structural bite in the ply — wedge/concrete anchors don't hold in a ply-over-steel container floor). Hex washer head bears on the plate. 410 SS. Simpson SDWS 316 (pre-drilled plate holes) if max corrosion is wanted. | 20 ea | Bridge Fasteners / ASMC | $7–$11 |
 | Grating clips | Removable spring clips, stainless | 30 ea | McNichols / McMaster-Carr | $30–$50 |
 | **Walkway total** | | | | **$1,979–$2,825** |

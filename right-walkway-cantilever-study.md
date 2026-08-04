@@ -30,7 +30,7 @@ Plus a **45mm gap (X4629–4674)** between the tray's right edge and the IBC fra
 
 The IBC stacking frame only has uprights at the **corridor (Yd 1046 / 1266, at X4654)** — there is **nothing at the perimeter (Yd0 / 2362)** to bolt to. So the support is split:
 
-- **2 inner cantilever arms** — off the **IBC corridor uprights** (X4654, deep-box front upright). A U-clamp grips each upright with 2× M12; the arm (40×40 SHS) reaches ~325mm back to the deck's left edge (X4329).
+- **2 inner cantilever arms** — off the **IBC corridor uprights** (X4654, deep-box front upright). A U-clamp grips each upright with 2× M12; the arm (2×⅞in, 50.8×22mm) reaches ~325mm back to the deck's left edge (X4329).
 - **2 outer wall-mounted ledgers** — on the **near (Yd0) and far (Yd2362) container walls**, each **through-bolted** (interior + exterior plate, 2 bolts) at 2 X stations along the deck width. These carry the deck's ends, where the frame can't reach.
 - **2 longitudinal bearers** (Yd-running, at X4329 + X4629) ride the arms + ledgers; the grate spans the ≤1,046mm between supports.
 - All members sit at **Z70–115** — ~10mm above the spray-bar top at the (low-side) cantilever stations, below the film frame (Z150). **No ceiling rods. Nothing into the tray. Nothing in the optical band above the deck.**

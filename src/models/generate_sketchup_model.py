@@ -587,13 +587,13 @@ def processing_tray():
 RWK_X_L = WALKWAY_RIGHT_X                              # 4329 — deck left edge
 RWK_X_R = WALKWAY_RIGHT_X + WALKWAY_RIGHT_W            # 4629 — deck right edge
 RWK_GRATE_Z = WALKWAY_H - WALKWAY_GRATE_T              # 115 — grate bottom
-RWK_ARM_BOT, RWK_ARM_TOP = LEFT_WK_CANT_ARM_Z0, RWK_GRATE_Z   # arm underside Z75 (matches the LEFT walkway arm; single-sourced)
-RWK_AH = RWK_ARM_TOP - RWK_ARM_BOT                     # 45
-RWK_ARM_W = 40
+RWK_ARM_BOT, RWK_ARM_TOP = LEFT_WK_CANT_ARM_Z0, RWK_GRATE_Z   # arm underside Z93 (matches the LEFT arm; single-sourced) — ≥15mm over the full-width 1½ spray beam
+RWK_AH = RWK_ARM_TOP - RWK_ARM_BOT                     # 22 (2×⅞in section, ⅞in deep)
+RWK_ARM_W = 50.8                                       # 2in — arm width in Yd (2×⅞in section)
 RWK_HL = 95                                           # half-lap line
-RWK_BEARER_W = 40
-RWK_BEARER_XS = (RWK_X_L, RWK_X_R - RWK_BEARER_W)      # 4329, 4589 — long-beam left edges
-RWK_BEARER_Z0 = RWK_ARM_TOP - 35                       # 80 — beam bottom
+RWK_BEARER_W = 50.8                                    # 2in — long-beam width in X (2×⅞in section)
+RWK_BEARER_XS = (RWK_X_L, RWK_X_R - RWK_BEARER_W)      # long-beam left edges
+RWK_BEARER_Z0 = RWK_ARM_TOP - 22                       # 93 — long-beam soffit (2×⅞in, ⅞in deep) — shaved for the ≥15mm beam clearance; needs a mid-span support (added arm) for stiffness — see TODO walkway-support flex
 RWK_X_UP = IBC_COL_X - 20                              # 4654 — deep-box FRONT upright (= cp.FRONT_X); reconciled from the stale +60/4734 portal (flag 4)
 RWK_UP_YDS = (CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR - IBC_FRAME_RHS)   # 1046, 1266
 # Outer long beam (X4589) OPEN-TOP NOTCHES — one per under-walkway ribbon lane where the FLUSH pipe crosses

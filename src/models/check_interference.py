@@ -48,8 +48,35 @@ walk = lambda { |ents, t, parent|
   }
 }
 walk.call(m.entities, Geom::Transformation.new, "root")
-out.to_json
+({title: m.title.to_s, g: out}).to_json
 '''
+
+# Canonical audit artifact — the lint gate requires this refreshed whenever a plumbing routing
+# generator is committed.  It records which live model was audited and carries a routing-sources-sha
+# (a hash of every src/models routing generator's content); the gate re-computes that sha from the
+# to-be-committed sources and blocks unless the report's sha matches — so a reroute can't land
+# without the crossing/clash audit having been re-run against the live model.
+_ROOT_DIR   = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+REPORT_PATH = os.path.join(_ROOT_DIR, "interference-report.txt")
+# CALL-syntax markers (a mention in a comment must NOT count) — keep in sync with lint.py.
+ROUTING_MARKERS = ("ruby_pipe_run(", "ruby_flex_run(", "ribbon_run(", "spipe(")
+
+
+def routing_sources_sha(root):
+    """sha of every src/models/*.py that CALLS a pipe-routing helper — identifies the routing
+    source set the report attests to.  lint.py's gate recomputes this identically from the index."""
+    import glob, hashlib
+    parts = []
+    for p in sorted(glob.glob(os.path.join(root, "src", "models", "*.py"))):
+        if os.path.basename(p) == "check_interference.py":
+            continue                      # the audit tool defines the markers as literals — not a generator
+        try:
+            t = open(p, encoding="utf-8").read()
+        except OSError:
+            continue
+        if any(mk in t for mk in ROUTING_MARKERS):
+            parts.append(os.path.relpath(p, root).replace(os.sep, "/") + "\0" + t)
+    return hashlib.sha256("\0".join(parts).encode()).hexdigest()[:12]
 
 # ── classification ─────────────────────────────────────────────────────────
 PUMP_KEYS = ["P-01", "P-02", "P-03", "P-04", "P-05"]
@@ -222,7 +249,9 @@ def is_run(name):
 
 
 def main():
-    data = json.loads(send_ruby(RUBY))
+    payload = json.loads(send_ruby(RUBY))
+    title = payload.get("title", "?")
+    data = payload["g"]
     pipes, solids = [], []
     for g in data:
         cat, key = classify(g["n"])
@@ -258,7 +287,7 @@ def main():
             if overlap(pipe, sol, TOL):
                 hits.append((pipe, sol))
 
-    print(f"pipes={len(pipes)} solids={len(solids)}  interferences={len(hits)}")
+    print(f"model={title}  pipes={len(pipes)} solids={len(solids)}  interferences={len(hits)}")
     seen = set()
     for pipe, sol in hits:
         k = (pipe["n"], sol["n"])
@@ -320,4 +349,15 @@ def main():
 
 
 if __name__ == "__main__":
+    if "--write" in sys.argv:
+        import io, contextlib
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            rc = main()
+        sys.stdout.write(buf.getvalue())
+        header = f"routing-sources-sha: {routing_sources_sha(_ROOT_DIR)}\n"
+        with open(REPORT_PATH, "w") as fh:
+            fh.write(header + buf.getvalue())
+        print(f"\n(written to {os.path.relpath(REPORT_PATH)})")
+        sys.exit(rc)
     sys.exit(main())

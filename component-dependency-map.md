@@ -364,7 +364,7 @@ plates, 4× drop-in rail saddles + tapered dowels (for the removable left film r
 | Tray far edge Yd | <!-- BEGIN cdm:PROC_TRAY_YD_FAR -->2,280<!-- END cdm:PROC_TRAY_YD_FAR -->mm | `PROC_TRAY_YD_FAR` |
 | Rim height | <!-- BEGIN cdm:PROC_TRAY_RIM -->50<!-- END cdm:PROC_TRAY_RIM -->mm | `PROC_TRAY_RIM` |
 | Dual-axis pitch | 1:200 (<!-- BEGIN cdm:PROC_TRAY_PITCH -->10<!-- END cdm:PROC_TRAY_PITCH -->mm fall) | `PROC_TRAY_PITCH` |
-| Sump X | <!-- BEGIN cdm:PROC_TRAY_DRAIN_X -->4,550<!-- END cdm:PROC_TRAY_DRAIN_X -->mm | `PROC_TRAY_DRAIN_X` |
+| Sump X | <!-- BEGIN cdm:PROC_TRAY_DRAIN_X -->2,399<!-- END cdm:PROC_TRAY_DRAIN_X -->mm | `PROC_TRAY_DRAIN_X` |
 | Sump Yd | <!-- BEGIN cdm:PROC_TRAY_DRAIN_YD -->80<!-- END cdm:PROC_TRAY_DRAIN_YD -->mm | `PROC_TRAY_DRAIN_YD` |
 | Sump dimensions | 150 x 100 x 20mm | `PROC_TRAY_SUMP_W/D/Z` |
 

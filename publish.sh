@@ -342,6 +342,10 @@ DIAG_FILES=(
     "spray-bar-sheet8.png"
     "tray-redesign-sheet1.png"
     "tray-redesign-sheet2.png"
+    "tray-slope-sheet1.png"
+    "tray-slope-sheet2.png"
+    "tray-slope-sheet3.png"
+    "tray-slope-sheet4.png"
 )
 
 for f in "${DIAG_FILES[@]}"; do

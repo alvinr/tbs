@@ -17,7 +17,7 @@ The earlier design went ceiling-hung because there was thought to be no room for
 | Element | Z | Note |
 |---|---|---|
 | Tray rim | 50 | |
-| **Spray-bar gantry (top)** | **~54–85** | Ø32 wheels + 40×25 SS beam, rides the raised/sloped floor — *low* |
+| **Spray-bar gantry (top)** | **~67–78** | Ø32 wheels + 1½in-square SS beam, rides the Yd-sloped floor — *low* |
 | **Clear band under the grate** | **~30mm (worst, far-left)** | see [Walkway Routing Sections §H-H](walkway-routing-sections.md) |
 | Walkway grate | 115–130 | |
 | Film-frame bottom rail | 150 | deck clears it by 20mm |

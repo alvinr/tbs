@@ -8104,7 +8104,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Tray Shim Base (partial)"
   face = grp.entities.add_face([170.mm,80.mm,0.mm], [1600.mm,80.mm,0.mm], [1600.mm,2280.mm,0.mm], [170.mm,2280.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(42.22.mm)
+  face.pushpull(23.5.mm)
   mat = model.materials["Tray Shim Base (partial)"] || model.materials.add("Tray Shim Base (partial)")
   mat.color = Sketchup::Color.new(216, 208, 188)
   mat.alpha = 0.6
@@ -8113,7 +8113,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Processing Tray Floor (partial)
   grp = ents.add_group
   grp.name = "Processing Tray Floor (partial)"
-  face = grp.entities.add_face([170.mm,80.mm,42.22.mm], [1600.mm,80.mm,42.22.mm], [1600.mm,2280.mm,42.22.mm], [170.mm,2280.mm,42.22.mm])
+  face = grp.entities.add_face([170.mm,80.mm,23.5.mm], [1600.mm,80.mm,23.5.mm], [1600.mm,2280.mm,23.5.mm], [170.mm,2280.mm,23.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
@@ -8124,7 +8124,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Rim Near (partial)
   grp = ents.add_group
   grp.name = "Tray Rim Near (partial)"
-  face = grp.entities.add_face([170.mm,80.mm,44.22.mm], [1600.mm,80.mm,44.22.mm], [1600.mm,82.mm,44.22.mm], [170.mm,82.mm,44.22.mm])
+  face = grp.entities.add_face([170.mm,80.mm,25.5.mm], [1600.mm,80.mm,25.5.mm], [1600.mm,82.mm,25.5.mm], [170.mm,82.mm,25.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
@@ -8135,7 +8135,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Rim Far (partial)
   grp = ents.add_group
   grp.name = "Tray Rim Far (partial)"
-  face = grp.entities.add_face([170.mm,2278.mm,44.22.mm], [1600.mm,2278.mm,44.22.mm], [1600.mm,2280.mm,44.22.mm], [170.mm,2280.mm,44.22.mm])
+  face = grp.entities.add_face([170.mm,2278.mm,25.5.mm], [1600.mm,2278.mm,25.5.mm], [1600.mm,2280.mm,25.5.mm], [170.mm,2280.mm,25.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
@@ -8146,7 +8146,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Rim Left (cargo end)
   grp = ents.add_group
   grp.name = "Tray Rim Left (cargo end)"
-  face = grp.entities.add_face([170.mm,80.mm,44.22.mm], [172.mm,80.mm,44.22.mm], [172.mm,2280.mm,44.22.mm], [170.mm,2280.mm,44.22.mm])
+  face = grp.entities.add_face([170.mm,80.mm,25.5.mm], [172.mm,80.mm,25.5.mm], [172.mm,2280.mm,25.5.mm], [170.mm,2280.mm,25.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
@@ -8157,7 +8157,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Chemistry Bath (partial)
   grp = ents.add_group
   grp.name = "Chemistry Bath (partial)"
-  face = grp.entities.add_face([172.mm,82.mm,44.22.mm], [1598.mm,82.mm,44.22.mm], [1598.mm,2278.mm,44.22.mm], [172.mm,2278.mm,44.22.mm])
+  face = grp.entities.add_face([172.mm,82.mm,25.5.mm], [1598.mm,82.mm,25.5.mm], [1598.mm,2278.mm,25.5.mm], [172.mm,2278.mm,25.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Chemistry Bath (partial)"] || model.materials.add("Chemistry Bath (partial)")

@@ -309,7 +309,7 @@ CT_RWK_CLEAT_X, CT_RWK_PLATE_X, CT_RWK_ARM_X = 6000, 7000, 8000
 def _rwk_arm_type_parts(x0):
     """ONE right-walkway CENTER CANTILEVER ARM for the catalog: an IBC-upright stub + the
     40x40 SHS arm cantilevering off it (toward -X) + the upright clamp + an M12 bolt."""
-    armb, armt, aw = ov.RWK_ARM_BOT, ov.RWK_ARM_TOP, ov.RWK_ARM_W   # 70, 115, 40
+    armb, armt, aw = ov.RWK_ARM_BOT, ov.RWK_ARM_TOP, ov.RWK_ARM_W   # 75, 115, 40 (arm underside now matches the left)
     s = ov.IBC_FRAME_RHS                                            # 50 upright RHS
     reach = ov.RWK_X_UP - ov.RWK_X_L   # 325 (was hardcoded 405, stale from the retired 4734 portal)
     return [

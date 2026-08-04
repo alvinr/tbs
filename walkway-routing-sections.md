@@ -101,7 +101,7 @@ since the fall is ~1:200). **G‑G** is a longitudinal cut at the sump column: t
 304‑SS pan sits on a **tapered HDPE shim ramp** with its low corner raised so the 20 mm
 sump‑well bottom rests on the container floor, rising at the far rim. **H‑H** is an X–Z
 cut at the far rim (the high corner of the dual slope) showing the level walkway grates over the
-sloped pan and the shrunk spray‑carriage (Ø32 wheels + 40×25 SS beam) with **~30 mm clearance**
+sloped pan and the shrunk spray‑carriage (Ø32 wheels + 1½in-square SS beam) with **~30 mm clearance**
 under the left grate.
 
 ## Interference & clearance findings

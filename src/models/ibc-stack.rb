@@ -7159,7 +7159,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Blue trunk: corridor -> ribbon -> outside-rim strip"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -42.5.mm)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -35.5.mm)
   circle = ge.add_circle([4530.mm,69.mm,83.5.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -7173,7 +7173,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Blue Supply Trunk (1/2in HDPE)"
   ge = grp.entities
-  circle = ge.add_circle([1130.mm,69.mm,41.mm], [1,0,0], 10.5.mm, 24)
+  circle = ge.add_circle([1130.mm,69.mm,48.mm], [1,0,0], 10.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(3400.mm)
@@ -7186,10 +7186,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "BV-05 Riser"
   ge = grp.entities
-  circle = ge.add_circle([2399.mm,69.mm,41.mm], [0,0,1], 10.5.mm, 24)
+  circle = ge.add_circle([2399.mm,69.mm,48.mm], [0,0,1], 10.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(909.mm)
+  cface.pushpull(902.mm)
   mat = model.materials["DV-01 blue recycle -> X1 cross"] || model.materials.add("DV-01 blue recycle -> X1 cross")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
@@ -8734,8 +8734,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "TAP-01 Branch (3/4in)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, 1234.mm)
-  circle = ge.add_circle([1130.mm,69.mm,41.mm], vec, 12.5.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 1227.mm)
+  circle = ge.add_circle([1130.mm,69.mm,48.mm], vec, 12.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -8847,9 +8847,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # RWk center cantilever Yd1046 lower
   grp = ents.add_group
   grp.name = "RWk center cantilever Yd1046 lower"
-  face = grp.entities.add_face([4329.mm,1046.mm,70.mm], [4654.mm,1046.mm,70.mm], [4654.mm,1086.mm,70.mm], [4329.mm,1086.mm,70.mm])
+  face = grp.entities.add_face([4329.mm,1046.mm,75.mm], [4654.mm,1046.mm,75.mm], [4654.mm,1086.mm,75.mm], [4329.mm,1086.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(25.mm)
+  face.pushpull(20.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -8880,9 +8880,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # RWk upright clamp Yd1046 Y1038
   grp = ents.add_group
   grp.name = "RWk upright clamp Yd1046 Y1038"
-  face = grp.entities.add_face([4650.mm,1038.mm,45.mm], [4708.mm,1038.mm,45.mm], [4708.mm,1046.mm,45.mm], [4650.mm,1046.mm,45.mm])
+  face = grp.entities.add_face([4650.mm,1038.mm,50.mm], [4708.mm,1038.mm,50.mm], [4708.mm,1046.mm,50.mm], [4650.mm,1046.mm,50.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(100.mm)
+  face.pushpull(95.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -8891,19 +8891,19 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # RWk upright clamp Yd1046 Y1086
   grp = ents.add_group
   grp.name = "RWk upright clamp Yd1046 Y1086"
-  face = grp.entities.add_face([4650.mm,1086.mm,45.mm], [4708.mm,1086.mm,45.mm], [4708.mm,1094.mm,45.mm], [4650.mm,1094.mm,45.mm])
+  face = grp.entities.add_face([4650.mm,1086.mm,50.mm], [4708.mm,1086.mm,50.mm], [4708.mm,1094.mm,50.mm], [4650.mm,1094.mm,50.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(100.mm)
+  face.pushpull(95.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # RWk upright bolt M12 Yd1046 Z76
+  # RWk upright bolt M12 Yd1046 Z81
   grp = ents.add_group
-  grp.name = "RWk upright bolt M12 Yd1046 Z76"
+  grp.name = "RWk upright bolt M12 Yd1046 Z81"
   ge = grp.entities
-  circle = ge.add_circle([4679.mm,1034.mm,76.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4679.mm,1034.mm,81.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(64.mm)
@@ -8928,9 +8928,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # RWk center cantilever Yd1266 lower
   grp = ents.add_group
   grp.name = "RWk center cantilever Yd1266 lower"
-  face = grp.entities.add_face([4329.mm,1266.mm,70.mm], [4654.mm,1266.mm,70.mm], [4654.mm,1306.mm,70.mm], [4329.mm,1306.mm,70.mm])
+  face = grp.entities.add_face([4329.mm,1266.mm,75.mm], [4654.mm,1266.mm,75.mm], [4654.mm,1306.mm,75.mm], [4329.mm,1306.mm,75.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(25.mm)
+  face.pushpull(20.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -8961,9 +8961,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # RWk upright clamp Yd1266 Y1258
   grp = ents.add_group
   grp.name = "RWk upright clamp Yd1266 Y1258"
-  face = grp.entities.add_face([4650.mm,1258.mm,45.mm], [4708.mm,1258.mm,45.mm], [4708.mm,1266.mm,45.mm], [4650.mm,1266.mm,45.mm])
+  face = grp.entities.add_face([4650.mm,1258.mm,50.mm], [4708.mm,1258.mm,50.mm], [4708.mm,1266.mm,50.mm], [4650.mm,1266.mm,50.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(100.mm)
+  face.pushpull(95.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -8972,19 +8972,19 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # RWk upright clamp Yd1266 Y1306
   grp = ents.add_group
   grp.name = "RWk upright clamp Yd1266 Y1306"
-  face = grp.entities.add_face([4650.mm,1306.mm,45.mm], [4708.mm,1306.mm,45.mm], [4708.mm,1314.mm,45.mm], [4650.mm,1314.mm,45.mm])
+  face = grp.entities.add_face([4650.mm,1306.mm,50.mm], [4708.mm,1306.mm,50.mm], [4708.mm,1314.mm,50.mm], [4650.mm,1314.mm,50.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(100.mm)
+  face.pushpull(95.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # RWk upright bolt M12 Yd1266 Z76
+  # RWk upright bolt M12 Yd1266 Z81
   grp = ents.add_group
-  grp.name = "RWk upright bolt M12 Yd1266 Z76"
+  grp.name = "RWk upright bolt M12 Yd1266 Z81"
   ge = grp.entities
-  circle = ge.add_circle([4679.mm,1254.mm,76.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4679.mm,1254.mm,81.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(64.mm)

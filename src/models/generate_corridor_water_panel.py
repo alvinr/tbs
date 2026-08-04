@@ -604,7 +604,7 @@ def plumbing(part="all"):
     # sump, +X to the tray–IBC gap, then +Yd along the IBC −X face into the corridor, across (below the
     # pump bodies) and up into P-04.  The surface run sits ABOVE the FP bottom rail (z190), so it stands
     # ~75mm proud of the deck and the operator steps over it.
-    sumpX, sumpY = ov.PROC_TRAY_DRAIN_X, ov.PROC_TRAY_DRAIN_YD + 75          # 4550,155 — sump-well center (the tray drain)
+    sumpX, sumpY = ov.PROC_TRAY_DRAIN_X, ov.PROC_TRAY_DRAIN_YD + 75          # 2399,155 — center pickup (relocated from the IBC corner; = PROC_TRAY_DRAIN_X)
     sump_foot_z  = ov.PROC_TRAY_FLOOR_Z_LOW - ov.PROC_TRAY_SUMP_Z + 3        # 3 — pickup foot near the sump-well bottom (Z0),
     #   so the suction actually evacuates the 20mm-deep well (was Z20 = the floor lip, above the well)
     z04   = _piz("P-04")
@@ -615,18 +615,19 @@ def plumbing(part="all"):
     gapyd = ov.RWK_RIBBON_NOTCH_YDS[2]  # 1194 — the lane-2 outer-beam notch Yd (single-sourced so the pipe crosses
     #   exactly where the beam is slotted); threads the GAP between the DV-01 grey-waste (Yd1147) and blue-recycle
     #   (Yd1241) floor lanes — clear of the P-05 brown feed (Yd1101, z258).
-    # Sump pickup: the foot sits DOWN IN the (widened) sump well at the ribbon-lane X (slx) with the strainer
-    # on it; the pipe rises STRAIGHT up out of the sump to FLUSH height and elbows 90° straight into the ribbon
-    # lane — NO over-deck loop.  (The old +Yd hop over the deck was avoidable: the ribbon lane runs flush at
-    # RIBBON_Z the full length, nothing sits at slx/Z104.5 in the sump corner, and the spray-bar carriage crown
-    # (Z66) clears below — verified against the model.)  It then runs FLUSH, up-and-over the first cantilever
-    # (Rule 5), crosses the notched outer beam, drops in the tray-edge slot, and rejoins the ORIGINAL P-04
-    # rise/port approach.  Bonus: removes an avoidable crest from a SUCTION line (no air-trap at the corner).
-    slx = RIBBON_LANE_X[2]                              # lane-2 X (was lane-1; swapped with the blue TAP-01 trunk)
-    sump_foot = (slx, sumpY, sump_foot_z)               # pipe intake == strainer point: SINGLE SOURCE so the strainer stays welded to the pipe's foot
+    # Sump pickup (rev 2026-08-03 — CENTER pickup): the foot sits DOWN IN the near-rim gutter's center
+    # pickup well at X=sumpX (=PROC_TRAY_DRAIN_X, X2399), with the strainer on it.  The pipe rises STRAIGHT
+    # up out of the well, then runs +X UNDER the walkway (flush at RIBBON_Z=104.5 — above the spray-beam top
+    # ~Z78 and just under the near-walkway arm soffit Z107) to the IBC-end ribbon lane (slx), where it rejoins
+    # the ORIGINAL ribbon path: up-and-over the first cantilever (Rule 5), across the notched outer beam, down
+    # the tray-edge slot, and into the P-04 rise/port approach.  (The old routing put the pickup at the CORNER
+    # ribbon lane — stale from the pre-relocation dual-axis sump.)
+    slx = RIBBON_LANE_X[2]                              # lane-2 X (the IBC-end ribbon lane the suction joins)
+    sump_foot = (sumpX, sumpY, sump_foot_z)             # pipe intake == strainer point at the CENTER pickup (X=PROC_TRAY_DRAIN_X); SINGLE SOURCE so the strainer stays welded to the pipe's foot
     spipe("Tray sump -> P-04 suction",
-         [sump_foot,                                   # pickup foot DOWN IN the (widened) sump well, at the ribbon-lane X — STRAIGHT down, no jog
-          (slx, sumpY, RIBBON_Z),                      # straight UP out of the sump to FLUSH height (no over-deck crest)
+         [sump_foot,                                   # pickup foot DOWN IN the center pickup well — STRAIGHT down, no jog
+          (sumpX, sumpY, RIBBON_Z),                    # straight UP out of the center well to flush/under-grate height
+          (slx, sumpY, RIBBON_Z),                      # UNDER the walkway: +X along the near rim to the IBC-end ribbon lane (clears the spray beam below, the arm soffit above)
           (slx, RIBBON_YD_UP, RIBBON_Z),               # flat 90° elbow, +Yd along the ribbon lane to just before the first cantilever
           (slx, RIBBON_YD_UP, RIBBON_OVER_Z),           # UP through the grate, OVER the cantilever (Rule 5)
           (slx, RIBBON_YD_DOWN, RIBBON_OVER_Z),         # +Yd over the cantilever, past it

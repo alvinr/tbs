@@ -835,9 +835,9 @@ LEFT_WK_CANT_POST_W   = 60    # bracket width in Yd (mm)
 LEFT_WK_CANT_FOOT     = (128, 60, 8)  # foot plate L(X)×W(Yd)×T (mm) — spans X≈38..166 (outboard of tray rim)
 LEFT_WK_CANT_FOOT_X0  = 38    # foot plate left edge X (mm) — all < 170 (bare floor)
 LEFT_WK_CANT_FOOT_BOLT_N = 4  # M10 floor anchors per foot (sealed penetrations)
-LEFT_WK_CANT_ARM_Z0   = 75    # arm underside Z (mm) — 21mm above spray-bar top (Z54); top = grate bottom (115) => 40mm deep
-LEFT_WK_CANT_ARM_W    = 40    # standard arm width in Yd (mm)
-LEFT_WK_CANT_ARM_W_WIDE = 60  # widened (punch-out) arm width in Yd (mm)
+LEFT_WK_CANT_ARM_Z0   = 93    # arm underside Z (mm) — ≥15mm above the full-width 1½ spray-bar top (Z78 at the far-left); top = grate bottom (115) => 22mm deep (2×⅞in). Also single-sources the RIGHT frame arm (RWK_ARM_BOT).
+LEFT_WK_CANT_ARM_W    = 50.8  # standard arm width in Yd (mm) — 2in of the 2×⅞in section (⅞in is the Z-depth)
+LEFT_WK_CANT_ARM_W_WIDE = 50.8  # widened (punch-out) arm — same 2×⅞in section
 LEFT_WK_CANT_STD_REACH  = WALKWAY_LEFT_X + WALKWAY_W            # = 470 — standard arm tip (grate inner edge)
 LEFT_WK_CANT_WIDE_REACH = WALKWAY_LEFT_X + WALKWAY_LEFT_WIDE_W  # = 770 — widened arm tip (punch-out inner edge)
 # Right walkway (IBC end): ceiling-hung, same 300mm width as near/far

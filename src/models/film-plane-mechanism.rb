@@ -3035,9 +3035,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 1 arm (to X470)
   grp = ents.add_group
   grp.name = "Left cantilever 1 arm (to X470)"
-  face = grp.entities.add_face([165.mm,230.mm,75.mm], [470.mm,230.mm,75.mm], [470.mm,270.mm,75.mm], [165.mm,270.mm,75.mm])
+  face = grp.entities.add_face([165.mm,224.6.mm,93.mm], [470.mm,224.6.mm,93.mm], [470.mm,275.4.mm,93.mm], [165.mm,275.4.mm,93.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
+  face.pushpull(22.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3068,9 +3068,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 2 arm (to X770)
   grp = ents.add_group
   grp.name = "Left cantilever 2 arm (to X770)"
-  face = grp.entities.add_face([165.mm,770.mm,75.mm], [770.mm,770.mm,75.mm], [770.mm,830.mm,75.mm], [165.mm,830.mm,75.mm])
+  face = grp.entities.add_face([165.mm,774.6.mm,93.mm], [770.mm,774.6.mm,93.mm], [770.mm,825.4.mm,93.mm], [165.mm,825.4.mm,93.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
+  face.pushpull(22.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3101,9 +3101,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 3 arm (to X770)
   grp = ents.add_group
   grp.name = "Left cantilever 3 arm (to X770)"
-  face = grp.entities.add_face([165.mm,1150.mm,75.mm], [770.mm,1150.mm,75.mm], [770.mm,1210.mm,75.mm], [165.mm,1210.mm,75.mm])
+  face = grp.entities.add_face([165.mm,1154.6.mm,93.mm], [770.mm,1154.6.mm,93.mm], [770.mm,1205.3999999999999.mm,93.mm], [165.mm,1205.3999999999999.mm,93.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
+  face.pushpull(22.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3134,9 +3134,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 4 arm (to X770)
   grp = ents.add_group
   grp.name = "Left cantilever 4 arm (to X770)"
-  face = grp.entities.add_face([165.mm,1530.mm,75.mm], [770.mm,1530.mm,75.mm], [770.mm,1590.mm,75.mm], [165.mm,1590.mm,75.mm])
+  face = grp.entities.add_face([165.mm,1534.6.mm,93.mm], [770.mm,1534.6.mm,93.mm], [770.mm,1585.3999999999999.mm,93.mm], [165.mm,1585.3999999999999.mm,93.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
+  face.pushpull(22.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3167,9 +3167,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 5 arm (to X470)
   grp = ents.add_group
   grp.name = "Left cantilever 5 arm (to X470)"
-  face = grp.entities.add_face([165.mm,2090.mm,75.mm], [470.mm,2090.mm,75.mm], [470.mm,2130.mm,75.mm], [165.mm,2130.mm,75.mm])
+  face = grp.entities.add_face([165.mm,2084.6.mm,93.mm], [470.mm,2084.6.mm,93.mm], [470.mm,2135.4.mm,93.mm], [165.mm,2135.4.mm,93.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
+  face.pushpull(22.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3178,9 +3178,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined corner plate (near)
   grp = ents.add_group
   grp.name = "FP combined corner plate (near)"
-  face = grp.entities.add_face([4574.mm,0.mm,63.mm], [4724.mm,0.mm,63.mm], [4724.mm,10.mm,63.mm], [4574.mm,10.mm,63.mm])
+  face = grp.entities.add_face([4574.mm,0.mm,81.mm], [4724.mm,0.mm,81.mm], [4724.mm,10.mm,81.mm], [4574.mm,10.mm,81.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(172.mm)
+  face.pushpull(154.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3189,9 +3189,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined corner ext plate (near)
   grp = ents.add_group
   grp.name = "FP combined corner ext plate (near)"
-  face = grp.entities.add_face([4574.mm,-50.mm,63.mm], [4724.mm,-50.mm,63.mm], [4724.mm,-40.mm,63.mm], [4574.mm,-40.mm,63.mm])
+  face = grp.entities.add_face([4574.mm,-50.mm,81.mm], [4724.mm,-50.mm,81.mm], [4724.mm,-40.mm,81.mm], [4574.mm,-40.mm,81.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(172.mm)
+  face.pushpull(154.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3200,7 +3200,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined right-beam seat (near)
   grp = ents.add_group
   grp.name = "FP combined right-beam seat (near)"
-  face = grp.entities.add_face([4574.mm,0.mm,63.mm], [4724.mm,0.mm,63.mm], [4724.mm,55.mm,63.mm], [4574.mm,55.mm,63.mm])
+  face = grp.entities.add_face([4574.mm,0.mm,81.mm], [4724.mm,0.mm,81.mm], [4724.mm,55.mm,81.mm], [4574.mm,55.mm,81.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3219,11 +3219,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (near) X4599 Z89
+  # FP combined bolt M12 (near) X4599 Z107
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4599 Z89"
+  grp.name = "FP combined bolt M12 (near) X4599 Z107"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,-50.mm,89.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,-50.mm,107.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3245,11 +3245,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (near) X4699 Z89
+  # FP combined bolt M12 (near) X4699 Z107
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4699 Z89"
+  grp.name = "FP combined bolt M12 (near) X4699 Z107"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,-50.mm,89.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,-50.mm,107.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3274,9 +3274,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined corner plate (far)
   grp = ents.add_group
   grp.name = "FP combined corner plate (far)"
-  face = grp.entities.add_face([4574.mm,2352.mm,63.mm], [4724.mm,2352.mm,63.mm], [4724.mm,2362.mm,63.mm], [4574.mm,2362.mm,63.mm])
+  face = grp.entities.add_face([4574.mm,2352.mm,81.mm], [4724.mm,2352.mm,81.mm], [4724.mm,2362.mm,81.mm], [4574.mm,2362.mm,81.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(172.mm)
+  face.pushpull(154.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3285,9 +3285,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined corner ext plate (far)
   grp = ents.add_group
   grp.name = "FP combined corner ext plate (far)"
-  face = grp.entities.add_face([4574.mm,2402.mm,63.mm], [4724.mm,2402.mm,63.mm], [4724.mm,2412.mm,63.mm], [4574.mm,2412.mm,63.mm])
+  face = grp.entities.add_face([4574.mm,2402.mm,81.mm], [4724.mm,2402.mm,81.mm], [4724.mm,2412.mm,81.mm], [4574.mm,2412.mm,81.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(172.mm)
+  face.pushpull(154.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3296,7 +3296,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined right-beam seat (far)
   grp = ents.add_group
   grp.name = "FP combined right-beam seat (far)"
-  face = grp.entities.add_face([4574.mm,2307.mm,63.mm], [4724.mm,2307.mm,63.mm], [4724.mm,2362.mm,63.mm], [4574.mm,2362.mm,63.mm])
+  face = grp.entities.add_face([4574.mm,2307.mm,81.mm], [4724.mm,2307.mm,81.mm], [4724.mm,2362.mm,81.mm], [4574.mm,2362.mm,81.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3315,11 +3315,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (far) X4599 Z89
+  # FP combined bolt M12 (far) X4599 Z107
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4599 Z89"
+  grp.name = "FP combined bolt M12 (far) X4599 Z107"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,2352.mm,89.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,2352.mm,107.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3341,11 +3341,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (far) X4699 Z89
+  # FP combined bolt M12 (far) X4699 Z107
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4699 Z89"
+  grp.name = "FP combined bolt M12 (far) X4699 Z107"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,2352.mm,89.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,2352.mm,107.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)

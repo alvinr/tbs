@@ -35,7 +35,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 import generate_sketchup_model as ov   # helpers + conventions (Overview)
-from tbs_constants import EP_X, EP_W, EP_H_LO, EP_H_HI, EP_COL_W, BA_STACK_Z2, BA_STACK_TOP, EP_POST_Z, EP_RISE_X_M, PV_DISC_X, PV_DISC_Z, EP_DISC_Z, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, PWR_PANEL_BOX_D, PWR_PANEL_SHROUD_T, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PWP_P02_X, PWP_P02_Z0, PWP_P02_H
+from tbs_constants import EP_X, EP_W, EP_H_LO, EP_H_HI, EP_COL_W, BA_STACK_Z2, BA_STACK_TOP, EP_POST_Z, EP_RISE_X_M, PV_DISC_X, PV_DISC_Z, EP_DISC_Z, BA_W, BA_H_LO, BA_H_HI, BA_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, PWR_PANEL_D, PWR_PANEL_CUTOUT_W, PWR_PANEL_CUTOUT_H, PWR_PANEL_BOX_D, PWR_PANEL_SHROUD_T, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, ENCL_SHELL_D, MPPT_W, MPPT_D, MPPT_H, FUSEBLK_W, FUSEBLK_D, BUSBAR_L, BUSBAR_W, BUSBAR_H, DISCONNECT_D, DISCONNECT_H, CONTACTOR_W, CONTACTOR_D, CONTACTOR_H, MRBF_D, MRBF_H, EQPANEL_X, EQPANEL_YD, EQPANEL_YD_SPAN, PUMP_H_HI, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, FAN_BODY_D, DUCT_DEPTH, DUCT_HEIGHT, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, PWP_FILTER_X1, PWP_PANEL_X0, PWP_SROW_Z0
 
 TAGS = ["Context", "Solar Array", "Power Core", "Battery", "External Panel",
         "Inverter", "Circuit Runs", "Labels"]
@@ -527,12 +527,13 @@ def _pump_circuit():
     on the equipment panel → a 16 AWG branch DIRECTLY to each Shurflo pump. No per-pump switches
     — each pump runs on its internal demand/pressure switch.
     Pump reference positions match panel-layout.png: the four corridor pumps in a SINGLE vertical
-    column (AFF base Z, bottom->top P-01/P-04/P-05/P-03) fed from the corridor distribution block;
-    P-02 (Brown recycle) lives on the Pinhole-Wall panel and taps the switched feed THERE (§7.3)."""
+    column (AFF base Z, bottom->top P-01/P-02/P-05/P-03) fed from the corridor distribution block;
+    P-04 (tray drain) lives on the Pinhole-Wall filter skid and taps the switched feed THERE (§7.3)."""
     col = CCT["C"][0]
     pcol = EQPANEL_YD + 63                              # single corridor pump column (panel-layout)
-    # FOUR corridor pumps fed from the corridor distribution block. P-02 is separate (below the loop).
-    pumps = [("P-01", pcol, 615), ("P-04", pcol, 940),
+    # FOUR corridor pumps fed from the corridor distribution block. P-04 is separate (on the filter
+    # skid, below the loop) — P-02 took P-04's vacated slot 940 (Phase-2 tray-drain-feeds-filters).
+    pumps = [("P-01", pcol, 615), ("P-02", pcol, 940),
              ("P-05", pcol, 1340), ("P-03", pcol, 1740)]
     cy = EQPANEL_YD + EQPANEL_YD_SPAN / 2              # wireway Yd centre
     way_top = PUMP_H_HI                                 # feed enters the top
@@ -556,17 +557,18 @@ def _pump_circuit():
         # branch taps the wireway at THIS pump's level → straight to the pump (no per-pump switch)
         br = _dedup([(EQPANEL_X, cy, z + 60), (EQPANEL_X, yd, z + 60)])
         p.append(ov.ruby_pipe_run(f"Cct C branch {nm}", br, 6, color=col))
-    # P-02 (Brown recycle) is on the PINHOLE-WALL panel (X~3058, high with the 3-stage filter skid) —
-    # NOT the corridor distribution block (which is at EQPANEL_X~4874). It taps the switched Circuit-C
-    # feed where the ceiling trunk passes over it (electrical-report §7.3); the feed runs the ceiling
-    # from the EP master switch to the corridor block, so it IS overhead here. X/Z match the
-    # pinhole-water-panel model + pinhole-wall-elevation.
-    p02x, p02_yd, p02z0, p02z1 = PWP_P02_X, 100, PWP_P02_Z0, PWP_P02_Z0 + PWP_P02_H
-    p.append(ov.ruby_box("P-02 (Brown recycle - Pinhole-Wall filter pump)",
-                         p02x - 25, p02_yd - 30, p02z0, 50, 60, p02z1 - p02z0, color="#6B4423"))
-    p.append(ov.ruby_pipe_run("Cct C branch P-02 (taps ceiling feed - Pinhole-Wall panel)",
-                              _dedup([(p02x, TRUNK_YD, TRUNK_Z), (p02x, p02_yd, TRUNK_Z),
-                                      (p02x, p02_yd, p02z1)]), 6, color=col))
+    # P-04 (tray drain) is on the PINHOLE-WALL filter SKID (X~3330, low under the 3-stage filter bank)
+    # — NOT the corridor distribution block (at EQPANEL_X~4874). It taps the switched Circuit-C feed
+    # where the ceiling trunk passes over it (electrical-report §7.3): the branch drops down the
+    # pinhole-side plywood edge (clear of the filters), runs across below the sumps, and turns into the
+    # pump. X/Z match the pinhole-water-panel model (panel_power) + pinhole-wall-elevation.
+    p04x, p04_yd, p04z = PWP_FILTER_X1 + 30, 100, PWP_SROW_Z0 + 60
+    edge_x = PWP_PANEL_X0 + 20
+    # No per-pump body box here (the corridor pumps aren't boxed individually either — just the Pump-
+    # zone ghost + their branches); the branch simply routes to P-04's skid position.
+    p.append(ov.ruby_pipe_run("Cct C branch P-04 (taps ceiling feed - filter skid)",
+                              _dedup([(edge_x, TRUNK_YD, TRUNK_Z), (edge_x, TRUNK_YD, p04z),
+                                      (p04x, TRUNK_YD, p04z), (p04x, p04_yd, p04z)]), 6, color=col))
     return '\n'.join(p)
 
 

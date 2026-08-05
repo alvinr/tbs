@@ -1,7 +1,3 @@
-routing-sources-sha: fe6b9aea380b
-model=construction  pipes=848 solids=627  interferences=8
-  PIPE  Fan A feed (Fan A tap -> pinhole-wall trun ([built] Step 1.4 — Fan A (exhaust) + its Cct-A electrical run to the EP drop)
-    x  FILTER     Cct C branch P-04 (filter skid)         near (3839,20,2358)
-  PIPE  Cable Trunking (40x25 PVC)                 ([built] Step 4.4 — Lights)
-    x  FILTER     Cct C branch P-04 (filter skid)         near (2946,20,2376)
+routing-sources-sha: 279e206e3c12
+model=electrical  pipes=77 solids=5  interferences=0
 pipe-on-pipe crossings=0

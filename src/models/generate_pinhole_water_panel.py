@@ -380,9 +380,10 @@ def tap01_supply():
 
 
 def backing():
-    """18mm marine-ply backing for the whole wall sub-loop — secured to the container wall;
-    the pump, filters and valves mount on it and the pipes clamp to it for support (so the
-    sub-loop installs as one panel, mirroring the corridor rear panel)."""
+    """18mm exterior-grade ply (BC/ACX) backing for the whole wall sub-loop — secured to the
+    container wall; the pump, filters and valves mount on it and the pipes clamp to it for support
+    (so the sub-loop installs as one panel, mirroring the corridor rear panel).  Dry mounting
+    backboard — exterior grade, NOT marine (no water-immersion load)."""
     return ov.ruby_box("Wall backing (18mm ply)", 2780, 0, 920, 1795, ov.EQPANEL_T, 1440, color=ov.C_PLY)  # +75mm at the +X edge so the grey waste clamps to the ply before it bends into the ribbon
 
 
@@ -437,6 +438,7 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TI
     (cp.PXC, cp.CTR_Y, cp.PSTACK["P-05"] + cp.PVB_H / 2, "P-05 (Brown drain)", -900, 0,  150),
     (cp.PXC, cp.CTR_Y, cp.PSTACK["P-03"] + cp.PVB_H / 2, "P-03 (Waste drain)", -1000, 0, 150),
     (cp.PXC, cp.CTR_Y, cp.ACC_Z0 + 87, "ACC-01\n(accumulator)", -700, 0, 250),   # + acc_h/2 (body 174)
+    (cp.BACK_X + cp.EQT + 24, cp.CTR_Y, (cp.PSTACK["P-01"] + cp.PSTACK["P-03"]) / 2 + 90, "12V DIST BLOCK\n(Cct C)", 300, 0, 400),   # rear-of-panel Circuit-C distribution block (behind the pump column; feed lands here, bus fans out to the pumps)
     # ── ball valves (in-panel pump-suction isolation; BV-01/02 on the BACK-of-panel risers) ──
     (cp.FRONT_X + 106, cp.YD_NEAR + 67, 1000, "BV-01", -600, 0, 250),   # now on the front walkway-side riser
     (cp.PXC - 86, cp.BV02_YD, cp._piz("P-05") - 85, "BV-02", 350, 0, 250),   # ON the BV-02 valve body (P-05 suction), not the shirt riser
@@ -510,7 +512,8 @@ def panel_power(include_switch=True, part="all"):
     BKX = cp.BACK_X + cp.EQT + 24                    # ~5146 — dist block + bus on the REVERSE of the panel (clear)
     by  = cp.CTR_Y                                    # 1181 — corridor center (tote-free, between back uprights)
     fr = ov.BB_OD / 2
-    p2x = (3300 - (fr + 30)) - (cp.PVB_R + 30) - 40  # P-02 body-center X on the pinhole wall
+    pwr_edge_x = ov.PWP_PANEL_X0 + 20                # pinhole-side plywood edge — P-04's Cct-C drops here, clear of the filters (X3161+); then runs across to the pump
+    p04_body_x = ov.PWP_FILTER_X1 + 30               # P-04 body-center X on the filter skid (tray-drain pump relocated here from the corridor)
     epx = 1979                                       # EP fuse-block C X (electrical.skp)
     swx = epx + 200                                  # 2179 — master switch 200mm toward the IBC end (clear of the EP kit)
     z_lo = cp.PSTACK['P-01'] + 90                     # 705  — lowest pump tap
@@ -530,7 +533,7 @@ def panel_power(include_switch=True, part="all"):
     # ── feed: EP master switch → Yd20 ceiling trunk (per electrical.skp, clear of the center
     #    LEDs) → down to the corridor 12V DISTRIBUTION BLOCK.  Split at index 2 = (fx,TY,TZ), the
     #    pinhole-wall ceiling trunk above the EP: corridor side (Phase 1) vs EP drop (Phase 4). ──
-    feed = [(fx, fy, fz), (fx, fy, TZ), (fx, TY, TZ), (p2x, TY, TZ), (BKX, TY, TZ),
+    feed = [(fx, fy, fz), (fx, fy, TZ), (fx, TY, TZ), (pwr_edge_x, TY, TZ), (BKX, TY, TZ),
             (BKX, by, TZ), (BKX, by, zc + 48)]
     if part == "all":
         p.append(ov.ruby_pipe_run("Cct C feed (EP master sw -> corridor dist block)", feed, cr, color=PWR))
@@ -539,14 +542,18 @@ def panel_power(include_switch=True, part="all"):
             p.append(ov.ruby_pipe_run("Cct C feed (EP master sw -> pinhole-wall ceiling)", feed[:3], cr, color=PWR))
         if do_corr:
             p.append(ov.ruby_pipe_run("Cct C feed (pinhole-wall ceiling -> corridor dist block)", feed[2:], cr, color=PWR))
-    # ── P-02 taps the trunk directly off the master-switch feed → Pinhole-Wall panel ──
-    cap_h = 78
-    cap_z = ((ov.C_HGT - 48) - ov.BB_H) + ov.BB_H - cap_h / 2
-    p2ty = (fr + 12) + cp.PVB_R + 8
-    p2z = (cap_z - (cp.PVB_H - 18)) + cp.PVB_H / 2
+    # ── P-04 (tray-drain pump, relocated to the filter skid) taps the trunk off the master-switch
+    #    feed → drops down the pinhole wall (Yd20, behind the skid) → into P-04's body from the wall
+    #    side.  (P-02 is now a corridor-column pump — wired off the corridor bus below.) ──
+    p4z  = SROW_Z0 + cp.PVB_R                         # P-04 body-center Z on the skid
+    p4ty = SROW_YD - 14                               # just behind the surface-mounted P-04 body (wall side; clears the Yd104 skid plumbing in front)
     if do_corr:
-        p.append(ov.ruby_pipe_run("Cct C branch P-02 (Pinhole-Wall panel)",
-                 [(p2x, TY, TZ), (p2x, p2ty, TZ), (p2x, p2ty, p2z)], cr, color=PWR))
+        # Route AROUND the filters: -X to the pinhole-side plywood edge, DROP the edge at the Yd20 wall
+        # lane (clear of F-1/F-2/F-3 at X3161+), run +X below the filter sumps to under P-04, then tap
+        # +Yd into P-04's body.  Never passes through a filter or the Yd104 skid-plumbing plane.
+        p.append(ov.ruby_pipe_run("Cct C branch P-04 (filter skid)",
+                 [(pwr_edge_x, TY, TZ), (pwr_edge_x, TY, p4z),
+                  (p04_body_x, TY, p4z), (p04_body_x, p4ty, p4z)], cr, color=PWR))
         # ── 12V DISTRIBUTION BLOCK on the REVERSE of the corridor panel + bus + back-taps to pumps ──
         p.append(ov.ruby_box("12V distribution block (Cct C, rear)", BKX - 24, by - 30, zc - 45, 48, 60, 90, color="#3A3A42"))
         # power bus down the back, with SMOOTH elbows turning into the TOP (P-03) and BOTTOM (P-01)
@@ -554,9 +561,10 @@ def panel_power(include_switch=True, part="all"):
         xin = cp.PXC + cp.PVB_R - 10                      # 5024 — tap tip, 10mm into each pump back
         p.append(ov.ruby_pipe_run("Cct C bus + P-03/P-01 elbow taps (rear)",
                  [(xin, by, z_hi), (BKX, by, z_hi), (BKX, by, z_lo), (xin, by, z_lo)], cr, color=PWR))
-        for key in ("P-04", "P-05"):
+        # corridor branch taps: P-05 + the pump now in P-04's vacated slot (P-02, Phase 2)
+        for label, key in (("P-02", "P-04"), ("P-05", "P-05")):
             z = cp.PSTACK[key] + 90
-            p.append(ov.ruby_pipe_run(f"Cct C branch {key}", [(BKX, by, z), (xin, by, z)], cr, color=PWR))
+            p.append(ov.ruby_pipe_run(f"Cct C branch {label}", [(BKX, by, z), (xin, by, z)], cr, color=PWR))
     return "\n".join(p)
 
 

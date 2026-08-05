@@ -8,19 +8,19 @@ The water system has two physically separate plumbing panels:
 
 CORRIDOR PLUMBING PANEL (panel-layout.png) — 18mm plywood spanning the 270mm
 IBC plumbing corridor (Yd=1046–1316), perpendicular to the sealed end wall.
-Carries the four transfer pumps and the tray-drain diverter:
-  Left column:  P-01 (Blue supply) + P-04 (Tray drain) + ACC-01.
-  Right column: P-03 (Waste evac) + P-05 (Brown drain) + DV-02 (tray-sump
-                diverter) + SV-02 (pH sample tap on the P-04 discharge).
-  Ball valves: BV-01 (P-01 suction), BV-02 (P-05 suction), BV-06 (P-03 suction).
+Carries the transfer pumps + the Blue-supply accumulator:
+  Pump column (bottom→top): ACC-01 + P-01 (Blue supply) + P-02 (Brown recycle) +
+  P-05 (Brown drain) + P-03 (Waste evac).
+  Ball valves: BV-01 (P-01 suction), BV-02 (P-05 suction), BV-03 (P-02 suction),
+  BV-06 (P-03 suction).  P-02 discharges to ACC-02 on the pinhole-wall skid.
 
-PINHOLE WALL PLUMBING PANEL (pinhole-panel.png) — the Brown recycle / filter
-train mounted on the pinhole wall:
-  P-02 (Brown recycle) + 3-stage Big Blue filter stack (F-01 5µm → F-02 KDF-55 →
-  F-03 GAC) + DV-01 (filtered-water diverter) + SV-01 (pH sample tap) +
-  BV-03 (P-02 suction).
-  Flow: IBC-3 Brown → BV-03 → P-02 → F-01 → F-02 → F-03 → SV-01 → DV-01 →
-        (Blue recycle / Waste).
+PINHOLE WALL PLUMBING PANEL (pinhole-panel.png) — the filter train + the
+tray-drain skid, mounted on the pinhole wall:
+  Tray-drain skid row P-04 (tray-sump pump) · SV-02 (pH sample) · 3W-DV-02, UNDER
+  the 3-stage Big Blue filter stack (F-01 5µm → F-02 KDF-55 → F-03 GAC) + SV-01
+  (pH sample, raised) + DV-01 (filtered diverter) + ACC-02 (recycle-spray damper).
+  Flow: tray sump → P-04 → SV-02 → DV-02 → F-01 → F-02 → F-03 → SV-01 → DV-01 →
+        (recycle / Waste).
 
 Plus TWO corridor spine side-sections — opposite faces of the drain-riser
 spine, looking along Yd:
@@ -99,7 +99,7 @@ CORR_PORT_OUT = 215   # OUT / discharge port panel-Yd (3D Yd1261)
 
 # Pump body bases (panel-Z = 3D AFF − 200):
 P01_Z = 415                           # P-01 Blue supply
-P04_Z = 740                           # P-04 Tray drain
+P04_Z = 740                           # P-02 Brown recycle (took the tray-drain pump's vacated corridor slot)
 P05_Z = 1140                          # P-05 Brown drain
 P03_Z = 1540                          # P-03 Waste drain
 
@@ -276,7 +276,7 @@ def draw_ball_valve(x, z, label, color):
 #  CORRIDOR PLUMBING PANEL — FRONT ELEVATION
 #  Looking at panel from open end (viewer facing +X toward sealed wall).
 #  LEFT = near wall (Yd=1046), RIGHT = far wall (Yd=1316).
-#  P-01/P-04 + ACC-01 (left), P-03/P-05 + DV-02 + SV-02 (right).
+#  Single upright pump column: ACC-01 + P-01 + P-02 + P-05 + P-03.
 # ═══════════════════════════════════════════════════════════════════════════
 def draw_corridor_panel():
     fig = _new_panel_fig()
@@ -303,7 +303,7 @@ def draw_corridor_panel():
     _draw_pump(PUMP_COL_C, CORR_PORT_IN, CORR_PORT_OUT,
                P01_Z, "P-01", "BLUE\nSUPPLY", C_BLUE, C_BLUE_EC)
     _draw_pump(PUMP_COL_C, CORR_PORT_IN, CORR_PORT_OUT,
-               P04_Z, "P-04", "TRAY\nDRAIN", C_BLACK_SYS, C_BLACK_EC)
+               P04_Z, "P-02", "BROWN\nRECYCLE", C_BROWN, C_BROWN_EC)
     _draw_pump(PUMP_COL_C, CORR_PORT_IN, CORR_PORT_OUT,
                P05_Z, "P-05", "BROWN\nDRAIN", C_BROWN, C_BROWN_EC)
     _draw_pump(PUMP_COL_C, CORR_PORT_IN, CORR_PORT_OUT,
@@ -381,67 +381,35 @@ def draw_corridor_panel():
             "TO SPRAY BAR\n/ TAP-01", ha="right", va="center",
             fontsize=5.5, color=C_BLUE, zorder=10, **FONT)
 
-    # ── TRAY DRAIN (P-04) ────────────────────────────────────────────
-    # P-04 suction: tray sump (LEFT) → P-04 inlet (LEFT port)
+    # ── BROWN RECYCLE (P-02) ─────────────────────────────────────────
+    # P-02 suction: IBC-3 Brown buffer (LEFT) → BV-03 → P-02 inlet (LEFT port)
     _P04_SUCT_Z = P04_PORT_Z + SUCT_RISE
     draw_pipe_path(ax,
         [EXIT_L, CORR_PORT_IN, CORR_PORT_IN],
         [_P04_SUCT_Z, _P04_SUCT_Z, P04_PORT_Z],
-        PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK)
+        PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BROWN)
+    draw_ball_valve(CORR_PORT_IN, _P04_SUCT_Z, "BV\n03", C_BROWN)
     ax.annotate("", xy=(sx(EXIT_L + _AW), sz(_P04_SUCT_Z)),
                 xytext=(sx(EXIT_L), sz(_P04_SUCT_Z)),
-                arrowprops=dict(**_arrow_kw, color=C_BLACK_SYS), zorder=11)
-    ax.text(sx(EXIT_L - 5), sz(_P04_SUCT_Z),
-            "FROM\nTRAY\nSUMP", ha="right", va="center",
-            fontsize=5.5, color=C_BLACK_SYS, zorder=10, **FONT)
-
-    # P-04 discharge: outlet (RIGHT port) → up the far-right riser lane
-    # (DISCH_RISER, clear of the OUT ports) → SV-02 pH tap → DV-02 (high).
-    DV02_YD = DISCH_RISER
-    DV02_Z  = 1945                        # 3D z2145 − 200
-    SV02_Z  = 950                         # 3D z1150 − 200 (low on the riser)
-    draw_pipe_path(ax,
-        [CORR_PORT_OUT, DISCH_RISER, DISCH_RISER],
-        [P04_PORT_Z, P04_PORT_Z, DV02_Z],
-        PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_BLACK + 0.5)
-    # SV-02 pH sample tap — small ball valve on the riser + downturned spout
-    draw_ball_valve(DISCH_RISER, SV02_Z, "SV\n02", C_BLACK_EC)
-    ax.annotate("", xy=(sx(DISCH_RISER + BV_R + 28), sz(SV02_Z)),
-                xytext=(sx(DISCH_RISER + BV_R), sz(SV02_Z)),
-                arrowprops=dict(**_arrow_kw, color=C_BLACK_SYS), zorder=11)
-    leader(ax, sx(DISCH_RISER + BV_R), sz(SV02_Z),
-           sx(EXIT_R - 10), sz(SV02_Z - 60),
-           "SV-02 — pH sample tap\n(P-04 discharge, before DV-02)",
-           fs=6, color=C_BLACK_EC, ha="left", va="center", font=FONT)
-
-    # DV-02 (3-way diverter — tray sump → IBC-3 Brown / IBC-4 Waste), high up.
-    _DV_IBC4_Z = DV02_Z - 70
-    valve_3way(ax, sx(DV02_YD), sz(DV02_Z), BV_R, C_BLACK_EC,
-               ports=("left", "right", "down"))
-    ax.text(sx(DV02_YD + BV_R) + 4, sz(DV02_Z), "DV-02", ha="left", va="center",
-            fontsize=5, color=C_BLACK_EC, fontweight="bold", zorder=14, **FONT)
-    # DV-02 Brown output → IBC-3: exits LEFT (brown)
-    draw_pipe_path(ax,
-        [EXIT_L, DV02_YD - BV_R],
-        [DV02_Z, DV02_Z],
-        PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_DISCH)
-    ax.annotate("", xy=(sx(EXIT_L), sz(DV02_Z)),
-                xytext=(sx(EXIT_L + _AW), sz(DV02_Z)),
                 arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
-    ax.text(sx(EXIT_L - 5), sz(DV02_Z),
-            "TO\nIBC-3", ha="right", va="center",
+    ax.text(sx(EXIT_L - 5), sz(_P04_SUCT_Z),
+            "FROM\nIBC-3\n(BROWN)", ha="right", va="center",
             fontsize=5.5, color=C_BROWN, zorder=10, **FONT)
-    # DV-02 Waste output → IBC-4: exits BOTTOM then RIGHT (grey/black)
+
+    # P-02 discharge: outlet (RIGHT port) → up the far-right riser lane (DISCH_RISER,
+    # clear of the OUT ports) → exits to ACC-02 (the recycle-spray damper on the
+    # pinhole-wall skid) → BV-05 → the spray bar.
+    _P02_DISCH_Z = 1650                   # discharge-riser exit height (above P-05, below the symbol-key box)
     draw_pipe_path(ax,
-        [DV02_YD, DV02_YD, EXIT_R],
-        [DV02_Z - BV_R, _DV_IBC4_Z, _DV_IBC4_Z],
-        PIPE_OD, PIPE_WALL, fc=C_BLACK_SYS, zorder=Z_DISCH)
-    ax.annotate("", xy=(sx(EXIT_R), sz(_DV_IBC4_Z)),
-                xytext=(sx(EXIT_R - _AW), sz(_DV_IBC4_Z)),
-                arrowprops=dict(**_arrow_kw, color=C_BLACK_SYS), zorder=11)
-    ax.text(sx(EXIT_R + 5), sz(_DV_IBC4_Z),
-            "TO\nIBC-4", ha="left", va="center",
-            fontsize=5.5, color=C_BLACK_SYS, zorder=10, **FONT)
+        [CORR_PORT_OUT, DISCH_RISER, DISCH_RISER, EXIT_R],
+        [P04_PORT_Z, P04_PORT_Z, _P02_DISCH_Z, _P02_DISCH_Z],
+        PIPE_OD, PIPE_WALL, fc=C_BROWN, zorder=Z_BLACK + 0.5)
+    ax.annotate("", xy=(sx(EXIT_R), sz(_P02_DISCH_Z)),
+                xytext=(sx(EXIT_R - _AW), sz(_P02_DISCH_Z)),
+                arrowprops=dict(**_arrow_kw, color=C_BROWN), zorder=11)
+    ax.text(sx(EXIT_R + 5), sz(_P02_DISCH_Z),
+            "TO ACC-02\n(skid) →\nBV-05 spray", ha="left", va="center",
+            fontsize=5.5, color=C_BROWN, zorder=10, **FONT)
 
     # ── BROWN DRAIN (P-05) ───────────────────────────────────────────
     # P-05 suction: IBC-3 Brown (LEFT) → BV-02 → P-05 inlet (LEFT port)
@@ -460,7 +428,7 @@ def draw_corridor_panel():
             "FROM\nIBC-3\n(BROWN)", ha="right", va="center",
             fontsize=5.5, color=C_BROWN, zorder=10, **FONT)
     # P-05 discharge: outlet (RIGHT port) → exit RIGHT to X3 port (behind panel).
-    # It CROSSES the P-04 discharge riser (DISCH_RISER) — they do NOT join, so the
+    # It CROSSES the P-02 discharge riser (DISCH_RISER) — they do NOT join, so the
     # discharge is gap-broken at the crossing (skill_plumbing_drawing § crossings).
     _xg = PIPE_OD / 2 + 3
     draw_pipe_path(ax, [CORR_PORT_OUT, DISCH_RISER - _xg], [P05_PORT_Z, P05_PORT_Z],
@@ -548,16 +516,18 @@ def draw_corridor_panel():
         f"2. Panel face at X={PANEL_WALL_X}, equipment protrudes toward open end (-X direction).",
         f"3. Panel height: Z={PANEL_Z_AFF}-{PANEL_Z_AFF + PANEL_H}mm AFF ({PANEL_H}mm).",
         "4. SINGLE vertical pump column (bottom→top): ACC-01, P-01 (Blue supply),",
-        "    P-04 (Tray drain), P-05 (Brown drain), P-03 (Waste drain).",
+        "    P-02 (Brown recycle), P-05 (Brown drain), P-03 (Waste drain).",
         "5. ACC-01: 0.75L bladder accumulator on the Blue supply, dead-leg below P-01.",
         "6. Suctions enter on the LEFT through their isolation valve; discharges exit RIGHT.",
-        "7. BV-01 (P-01 suction), BV-02 (P-05 suction), BV-06 (P-03 suction) — manual ball valves.",
-        "8. SV-02: pH sample tap on the P-04 tray-drain discharge riser, before DV-02.",
-        "9. DV-02: 3-way tray-sump diverter (high) — to IBC-3 (Brown) or IBC-4 (Waste).",
-        f"10. Max protrusion: {max_depth}mm. Brown filter train is on the PINHOLE WALL panel.",
+        "7. BV-01 (P-01 suction), BV-02 (P-05 suction), BV-03 (P-02 suction),",
+        "    BV-06 (P-03 suction) — manual ball valves.",
+        "8. P-02 pulls IBC-3 (Brown buffer) and discharges to ACC-02 (recycle-spray damper",
+        "    on the pinhole-wall skid) → BV-05 → spray bar.",
+        "9. The tray-drain skid (P-04 · SV-02 · DV-02) is on the PINHOLE WALL panel, not here.",
+        f"10. Max protrusion: {max_depth}mm. The filter train + tray-drain skid are on the PINHOLE WALL panel.",
         "11. PIPE: 1/2\" PVC Sch-40 pump runs (solvent-weld) + threaded transitions at components; braided flex hose",
         "     at each pump port. Pumps + ACC cam-clamp to a 25mm ply shirt; 4-bolt brackets.",
-        "12. Pump-base Z (AFF): ACC-01 355 · P-01 615 · P-04 940 · P-05 1340 · P-03 1740.",
+        "12. Pump-base Z (AFF): ACC-01 355 · P-01 615 · P-02 940 · P-05 1340 · P-03 1740.",
     ]
     draw_notes(ax, notes, 575, 375, spacing=14,
                fs=6, width=450, color=C_DIM, title_color=C_NEW, font=FONT)

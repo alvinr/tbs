@@ -13,6 +13,8 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ## 🛠 Tooling / infra
 
+- [ ] **Reconcile the `project-cost-breakdown.md` §5 water-system breakdown table to `costing.py`.** The hand-maintained row list has drifted from the costing model — the injected **TOTAL ($6,579/$7,730) ≠ the row sum ($6,322/$7,473)**, a ~$257 gap (the "table arithmetic" advisory lint warning). Known stale rows: **Filter skid $43** (costing = $541), the **Processing tray ($84) vs Spray bar ($1,473–2,121)** values look swapped, and the **pinhole-wall backing ply ($59, added 2026-08-05)** has no row. Walk every row against the costing §5 LineItems, fix values, add the missing ply row, so the column sums to the injected TOTAL. (Advisory — pre-existing; surfaced during the P-04 wiring cascade.)
+
 - [ ] **SketchUp generator memory balloons over repeated `--send`.** Over a working session the SketchUp process's memory grows with each model regen / `--send`; suspected **Ruby allocations not being freed** — the generated `.rb` build scripts create many intermediate locals/arrays (waypoint lists, per-part geometry strings, accumulator arrays) that stay referenced for the whole build. Investigate: after each part/group is rendered into the model, **release the Ruby locals** (nil them / scope them into blocks so they GC) and/or `GC.start` between components; audit the emitted `.rb` preamble + build loop for globals or accumulators that outlive their use. Goal: **flat memory across many `--send` cycles.** (Alvin 2026-08-05.)
 
 ## ⚡ Parts firm-up tracker (active) — 3 buckets by when they're actionable

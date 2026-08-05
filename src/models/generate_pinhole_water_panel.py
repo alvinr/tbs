@@ -260,8 +260,13 @@ def kit(part="all", p02_on_corridor=False):
     f3_hand = (f_out("F3")[0], fcy - 40, tie)          # handoff just past the black elbow's -Y exit tangent
     p.append(ov.ruby_pipe_run("Filter F3 out port",
              [(FX["F3"] + (fr - 6), fcy, tie), f_out("F3"), f3_hand], rp, color=cdk))
+    # F3 -> SV-01: drop down the wall, then dog-leg IN through SV-01's −X face — the filtered line runs
+    # HORIZONTALLY through the valve body (in-line, matching SV-02), box over the through-segment.
     pipe("F3 -> SV-01 (wall-mounted drop)",
-         [f3_hand, (f_out("F3")[0], yW, tie), (svx, yW, tie), (svx, yW, waist), (svx, sv_y, waist)], ov.C_FILTER)
+         [f3_hand, (f_out("F3")[0], yW, tie), (svx - 60, yW, tie),          # −Yd to the wall, +X to just −X of SV-01
+          (svx - 60, yW, waist + 10),                                       # DOWN the wall to the SV-01 in-line height
+          (svx - 60, sv_y, waist + 10),                                     # +Yd forward to the valve lane
+          (svx + 25, sv_y, waist + 10)], ov.C_FILTER)                       # +X THROUGH the body (in-line) to the +X face
     # after SV-01 the run returns to the plywood (yW) BEFORE routing on to DV-01 — keeps the
     # narrow walkway clear (only SV-01's sample spout projects forward to yL)
     # 4b. SV-01 -> DV-01: ONE filtered line follows the shared surface-perimeter route across the
@@ -275,8 +280,12 @@ def kit(part="all", p02_on_corridor=False):
     # other three lines).  On the corridor side it comes back DOWN just past the cantilever (like the
     # sump), runs under the grate to DV-01's Yd, then rises into DV-01's IN port.
     pipe("SV-01 -> DV-01 (single filtered line)",
-         [(svx, sv_y, waist), (svx, yW, waist), (svx, yW, 20), (svx, 60, 20)]         # SV-01 → wall → drop to Z20 (BELOW the blue trunk floor Z38) → +Yd (Yd60 clears the end beam)
-         + cp.ribbon_run(3, (DCX - 100, DCY, 65), (svx, 60, 20), up_yd=cp.RIBBON_YD_DOWN)[::-1][1:]  # flush across the notched beam; crest rises at the SHARED line-1 Yd (RIBBON_YD_DOWN) so all 4 ribbon crests are uniform (Alvin 2026-07-24)
+         [(svx + 25, sv_y, waist + 10),                                               # leave SV-01's +X face (in-line)
+          (svx + 50, sv_y, waist + 10),                                               # +X out (dog-leg)
+          (svx + 50, yW, waist + 10),                                                 # −Yd to the wall
+          (svx + 50, yW, 20),                                                         # DOWN the wall to below the blue trunk floor (Z38)
+          (svx + 50, 60, 20)]                                                         # +Yd (Yd60 clears the end beam)
+         + cp.ribbon_run(3, (DCX - 100, DCY, 65), (svx + 50, 60, 20), up_yd=cp.RIBBON_YD_DOWN)[::-1][1:]  # flush across the notched beam; crest rises at the SHARED line-1 Yd (RIBBON_YD_DOWN) so all 4 ribbon crests are uniform (Alvin 2026-07-24)
          + [(DCX - 100, DCY, DCZ),                                                      # rise −X of the port to the IN-port height
             (DCX - tipd, DCY, DCZ)],                                                    # +X 90° turn horizontally into DV-01's −X IN port
          ov.C_FILTER)
@@ -607,10 +616,10 @@ def skid_plumbing():
         [dv_waste,
          (dv_waste[0] + 36, SROW_YD, lz),                 # +X lead-out off the +X waste port
          (dv_waste[0] + 36, CLIPY, lz),                   # −Yd onto the clip plane (flat on the ply — clamped)
-         (hx - 25, CLIPY, lz),                            # +X ALONG THE PLY SURFACE to the F3→SV-01 crossing
-         (hx - 25, CLIPY + 35, lz),                       # HUMP over the F3→SV-01 line — elbow 1 (+Yd, proud of the panel)
-         (hx + 25, CLIPY + 35, lz),                       # elbow 2 (over the blue)
-         (hx + 25, CLIPY, lz),                            # elbow 3 (−Yd back onto the ply)
+         (hx - 100, CLIPY, lz),                            # +X ALONG THE PLY SURFACE to the F3→SV-01 crossing (widened to span the in-line SV-01 dog-legs at svx±60)
+         (hx - 100, CLIPY + 35, lz),                       # HUMP over the F3→SV-01 verticals — elbow 1 (+Yd, proud of the panel)
+         (hx + 85, CLIPY + 35, lz),                       # elbow 2 (over the filtered line)
+         (hx + 85, CLIPY, lz),                            # elbow 3 (−Yd back onto the ply)
          (wlx, CLIPY, lz),                                # elbow 4 → +X along the ply to lane 2 (clamped to the extended ply, up to the bend)
          (wlx, 65, lz),                                   # +Yd clear of the RWk end beam (Yd0) before dropping
          (wlx, 65, RZ),                                   # DROP between the walkway beams into the ribbon (past the end beam, in front of the tray box)

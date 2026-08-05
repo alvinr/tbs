@@ -85,12 +85,18 @@ PUMP_KEYS = ["P-01", "P-02", "P-03", "P-04", "P-05"]
 def classify(name):
     n = name.lower()
     # SOLID obstacles a pipe must NOT pass through
-    if "pump " in n:
+    # The ceiling CABLE TRUNKING (a 40x25 PVC bundling channel) holds every circuit — cables running in
+    # it are bundled, not colliding.  Skip it as an obstacle (its name matches the "trunk" pipe keyword).
+    if "cable trunking" in n:
+        return ("skip", None)
+    # A Cct-* POWER cable often NAMES its destination ("... -> pump wireway") — it is a cable, not the
+    # pump solid it feeds; let it keep its normal (pipe/skip) classification below, never "pump".
+    if "pump " in n and not n.startswith("cct "):
         key = next((k for k in PUMP_KEYS if k.lower() in n), None)
         return ("pump", key)
     if "accumulator" in n or n.startswith("acc-01"):
         return ("acc", "ACC-01")
-    if "filter" in n and "->" not in name:
+    if "filter" in n and "->" not in name and not n.startswith("cct "):   # a Cct-* cable may name "filter skid" — it's a cable, not the filter
         import re
         m = re.search(r"\bf(\d)\b", n)           # key = "F1"/"F2"/"F3" so a pipe naming that
         return ("filter", f"F{m.group(1)}" if m else None)   # filter (it connects to) is excluded
@@ -280,6 +286,10 @@ def main():
         for sol in solids:
             # a pipe is allowed to meet the component it connects to (name references its key)
             if sol["key"] and sol["key"].lower() in pipe["n"].lower():
+                continue
+            # Cct-* POWER cables terminate INTO the pumps / master switch they feed (all "pump"-category
+            # solids, incl. "Pump zone ghost" + "Master pump switch") — a connection, not a collision.
+            if pipe["n"].lower().startswith("cct ") and sol["cat"] == "pump":
                 continue
             # the sanctioned under-walkway ribbon may cross the tray footprint AND push up/down through
             # the grate (the loop-over penetrations) — but NOT any real structural solid

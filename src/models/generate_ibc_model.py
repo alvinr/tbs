@@ -126,12 +126,14 @@ def generate_ruby():
         ov.component("Corridor Frame (deep box)", "IBC Frame", cp.frame()),
         ov.component("IBC Tote Restraint", "IBC Frame", cp.tote_restraint()),
         ov.component("Corridor Rear Panel", "Plumbing & Panel", cp.rear_panel()),
-        ov.component("Corridor Equipment", "Plumbing & Panel", cp.equipment()),
-        ov.component("Pinhole-Wall Kit", "Plumbing & Panel", pw.kit()),
+        ov.component("Corridor Equipment", "Plumbing & Panel", cp.equipment(sump_on_skid=True)),
+        ov.component("Pinhole-Wall Kit", "Plumbing & Panel", pw.kit(p02_on_corridor=True)),
+        ov.component("Skid row (P-04 · SV-02 · DV-02)", "Plumbing & Panel", pw.skid_row()),
+        ov.component("Skid plumbing", "Plumbing & Panel", pw.skid_plumbing()),
         # NB: "Pinhole-Wall Equipment" (ov.electrical() — EP + external power panel + batteries)
         #     removed from this model — electrical is not of interest in the IBC/plumbing view.
-        ov.component("Corridor Plumbing", "Plumbing & Panel", cp.plumbing()),
-        ov.component("Corridor Drains + X-ports", "Plumbing & Panel", cp.drains_ports()),
+        ov.component("Corridor Plumbing", "Plumbing & Panel", cp.plumbing(sump_on_skid=True)),
+        ov.component("Corridor Drains + X-ports", "Plumbing & Panel", cp.drains_ports(sump_on_skid=True)),
         ov.component("TAP-01 + Spray Supply", "Plumbing & Panel", pw.tap01_supply()),
         # NB: "Ribbon Support Cross-beams" (cp.ribbon_supports() — the 4 welded under-grate
         #     cross-beams) removed — not of interest in this model.

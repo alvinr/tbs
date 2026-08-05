@@ -405,7 +405,7 @@ SROW_YD, SROW_Z0 = 104, 1150   # Yd104 = the filter/P-02 wall lane (surface-moun
 # ── Panel reorg (2026-08-04): declutter the skid so the lane-1 brown rises up the wall and runs the panel
 #    bottom to ACC-02 (like lanes 3 & 4).  Component X/Z decoupled from the shared filter/pump constants. ──
 PANEL_X0, PANEL_X1, PANEL_Z0 = 2780, 4575, 920   # 18mm-ply extents (matches the wall-backing box)
-ACC2_X  = (PANEL_X0 + PANEL_X1) // 2              # 3677 — ACC-02 relocated to panel center
+ACC2_X  = (PANEL_X0 + PANEL_X1) // 2 + 180        # 3857 — panel center + 180mm toward the IBC totes (clears SV-02)
 ACC2_Z0 = PANEL_Z0                               # ACC-02 base sits on the panel bottom (Z920)
 SV01_X  = ov.PWP_SV01_X                            # 4250 — SV-01: 300mm left toward F-3, then 300mm back toward the IBC totes
 SV01_ZB = ov.PWP_WAIST_Z - 25 + 600              # 1575 — sample-valve base, raised 600mm up toward F-3

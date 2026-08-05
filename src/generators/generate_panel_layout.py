@@ -40,7 +40,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
 from tbs_constants import C_OUT, C_DIM, C_STEEL, DIAGRAMS_DIR, PUMP_PIPE_OD, PUMP_PIPE_WALL, EQPANEL_X, EQPANEL_H, DIAGRAM_DPI
-from tbs_constants import BB_OD, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_BOT_Z, PWP_FILTER_HEAD_Z, PWP_SV01_X
+from tbs_constants import BB_OD, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_BOT_Z, PWP_FILTER_HEAD_Z, PWP_SV01_X, PWP_SV01_Z, PWP_SROW_Z0, PWP_SV02_Z, PWP_DV02_Z, PWP_ACC2_X, PWP_ACC2_Z0, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, draw_pipe_path as _tbs_pipe_path, valve_ball, valve_3way, valve_check
 from tbs_title_block import title_block
 
@@ -734,11 +734,11 @@ def draw_pinhole_panel():
             fontweight="bold")
 
     # ── Backing board (18mm marine ply) — X 2780–4500, Z 920–2360 ──────────
-    BD_XL, BD_XR = 2780, 4500
-    BD_ZB, BD_ZT = 920, 2360
+    BD_XL, BD_XR = PWP_PANEL_X0, PWP_PANEL_X1
+    BD_ZB, BD_ZT = PWP_PANEL_Z0, 2360
     pw_rect(BD_XL, BD_ZB, BD_XR - BD_XL, BD_ZT - BD_ZB,
             C_PLY, C_PLY_EC, lw=2.0, zorder=3, alpha=0.5)
-    pw_text(4360, 1960,
+    pw_text(4470, 2255,
             f"{BD_XR - BD_XL} × {BD_ZT - BD_ZB}mm\n18mm MARINE PLY\n(pinhole wall)",
             ha="center", va="center", fontsize=6.5, color=C_PLY_EC, zorder=4)
 
@@ -765,64 +765,65 @@ def draw_pinhole_panel():
         pw_text(fcx, (SUMP_ZB + SUMP_ZT) / 2 - 25, fdesc, ha="center",
                 va="center", fontsize=5, color="white", zorder=8)
 
-    # ── P-02 (Brown recycle pump) — leftmost, upright pump symbol ──────────
-    P2_XL, P2_XR = 3008, 3108
-    P2_CX = (P2_XL + P2_XR) / 2
-    P2_ZB, P2_ZT = SUMP_ZB, HEAD_ZT    # body spans the filter tier height
-    pw_rect(P2_XL, P2_ZB, P2_XR - P2_XL, P2_ZT - P2_ZB,
-            C_PUMP_BODY, C_PUMP_EC, lw=1.2, zorder=6)
-    pw_rect(P2_XL - 4, HEAD_ZB, (P2_XR - P2_XL) + 8, HEAD_ZT - HEAD_ZB,
-            "#4A4038", C_PUMP_EC, lw=0.8, zorder=7)   # motor head/cap
-    pw_text(P2_CX, (P2_ZB + P2_ZT) / 2 + 35, "P-02", ha="center", va="center",
-            fontsize=8, color=C_BROWN, fontweight="bold", zorder=8)
-    pw_text(P2_CX, (P2_ZB + P2_ZT) / 2 - 15, "BROWN\nRECYCLE", ha="center",
-            va="center", fontsize=5, color=C_BROWN_EC, zorder=8)
+    # ── Tray-drain skid row (P-04 · SV-02 · DV-02) — UNDER the filters, on the row line ──
+    ROW_Z = PWP_DV02_Z                  # row line (= P-04 OUT / DV-02 center, Z1312)
+    P4_XL, P4_XR = PWP_FILTER_X1 - 50, PWP_FILTER_X1 + 50
+    pw_rect(P4_XL, PWP_SROW_Z0, P4_XR - P4_XL, 180, C_PUMP_BODY, C_PUMP_EC, lw=1.2, zorder=6)
+    pw_rect(P4_XL - 4, PWP_SROW_Z0 + 154, (P4_XR - P4_XL) + 8, 26, "#4A4038", C_PUMP_EC, lw=0.8, zorder=7)  # motor cap
+    pw_text(PWP_FILTER_X1, PWP_SROW_Z0 + 112, "P-04", ha="center", va="center", fontsize=8, color=C_PUMP_EC, fontweight="bold", zorder=8)
+    pw_text(PWP_FILTER_X1, PWP_SROW_Z0 + 60, "TRAY\nDRAIN", ha="center", va="center", fontsize=5, color=C_PUMP_EC, zorder=8)
+    pw_valve(PWP_FILTER_X2, PWP_SV02_Z, "SV\n02", C_BROWN, half=18)          # SV-02 sample, under F-02
+    valve_3way(ax_p, pwx(PWP_FILTER_X3), pwz(PWP_DV02_Z), 22, "#B8860B", ports=("left", "up", "right"))  # DV-02, under F-03
+    pw_text(PWP_FILTER_X3, PWP_DV02_Z - 54, "DV-02\n3-WAY", ha="center", va="top", fontsize=6, color="#8A6D08", fontweight="bold", zorder=14)
+    # ── ACC-02 (recycle-spray damper) — center-bottom cylinder, fed from P-02 in the corridor ──
+    pw_rect(PWP_ACC2_X - 63, PWP_ACC2_Z0, 126, 200, C_ACC, C_BLUE_EC, lw=1.2, zorder=6, alpha=0.85)
+    pw_text(PWP_ACC2_X, PWP_ACC2_Z0 + 120, "ACC-02", ha="center", va="center", fontsize=7, color=C_BLUE_EC, fontweight="bold", zorder=8)
+    pw_text(PWP_ACC2_X, PWP_ACC2_Z0 + 66, "RECYCLE\nSPRAY", ha="center", va="center", fontsize=5, color=C_BLUE_EC, zorder=8)
+    leader(ax_p, pwx(PWP_ACC2_X) - 24, pwz(PWP_ACC2_Z0 + 200), pwx(PWP_ACC2_X) - 150, pwz(1560),
+           "ACC-02 pulsation damper\n(P-02 in corridor → ACC-02\n→ BV-05 spray selector)",
+           fs=6, color=C_BLUE_EC, ha="left", va="center", font=FONT)
 
     # ════════════════════════════════════════════════════════════════
-    #  FLOW — series along the head line at Z≈HEAD_Z (P-02 right → F-01 → F-02 →
-    #  F-03 → SV-01 → DV-01 left, in this mirrored inside-the-container elevation)
+    #  FLOW — tray sump → P-04 → SV-02 → DV-02 (row line); DV-02 recycle branch UP the
+    #  edge into F-01; F-01 → F-02 → F-03 along the head line; F-03 → SV-01 → DV-01 (left).
     # ════════════════════════════════════════════════════════════════
-    EXIT_L = 2740                       # IBC-3 / BV-03 inlet margin (draws to the RIGHT, mirrored)
     F1_CX, F2_CX, F3_CX = PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3
     F1_XL, F1_XR = PWP_FILTER_X1 - BB_OD // 2, PWP_FILTER_X1 + BB_OD // 2
     F3_XR = PWP_FILTER_X3 + BB_OD // 2
 
-    # IBC-3 Brown suction: the brown line drops from P-02's IN port straight DOWN
-    # to BV-03 (suction isolation, low at Z≈1000 in the 3D), then continues to the
-    # floor toward the IBC-3 (Brown) tote.  Flow is UPWARD (tote → BV-03 → P-02).
-    BV03_X = 2978                       # P-02 IN lane (3D X2960–2978)
-    BV03_Z = 1000                       # 3D BV-03 center Z≈1000
-    SUCT_TURN_Z = 850                   # just BELOW the ply board bottom (BD_ZB=920)
-    SRC_X = BV03_X + 240                # toward the corridor / IBC-3 tote (+X draws left)
-    pw_pipe([P2_XL, BV03_X, BV03_X, SRC_X],
-            [HEAD_Z, HEAD_Z, SUCT_TURN_Z, SUCT_TURN_Z], C_BROWN, zorder=Z_BROWN)
-    pw_valve(BV03_X, BV03_Z, "BV\n03", C_BROWN, half=18)
-    # 90° elbow where the brown suction drops below the ply panel; the blue flow
-    # arrow points from the source (IBC-3 Brown tote, out in the corridor) up to BV-03.
+    # tray-sump suction: brown drops from P-04 IN below the ply toward the tray sump
+    SUCT_TURN_Z = 850
+    SRC_X = PWP_FILTER_X1 - 250
+    pw_pipe([PWP_FILTER_X1, PWP_FILTER_X1, SRC_X],
+            [PWP_SROW_Z0, SUCT_TURN_Z, SUCT_TURN_Z], C_BROWN, zorder=Z_BROWN)
     pw_arrow(SRC_X, SUCT_TURN_Z, SRC_X - 42, SUCT_TURN_Z, C_BLUE)
-    pw_text(SRC_X + 10, SUCT_TURN_Z, "FROM IBC-3 (BROWN)\ntote — corridor", ha="left",
-            va="center", fontsize=6, color=C_BROWN, zorder=10)
-
-    # P-02 OUT → F-01 IN, then F-01 → F-02 → F-03 (straight jumpers, head line)
-    pw_pipe([P2_XR, F1_XL], [HEAD_Z, HEAD_Z], C_BROWN, zorder=Z_BROWN)
+    pw_text(SRC_X - 52, SUCT_TURN_Z, "FROM\nTRAY SUMP", ha="left", va="center", fontsize=6, color=C_BROWN, zorder=10)
+    # P-04 OUT → SV-02 → DV-02 along the row line (SV-02 taps in-line)
+    pw_pipe([PWP_FILTER_X1 + 50, PWP_FILTER_X3 - 22], [ROW_Z, ROW_Z], C_BROWN, zorder=Z_BROWN)
+    pw_arrow(PWP_FILTER_X2 + 80, ROW_Z, PWP_FILTER_X2 + 20, ROW_Z, C_BROWN)
+    # DV-02 recycle branch (up port) → up the panel edge → F-01 IN at the head line
+    EDGE_X = 2830
+    pw_pipe([PWP_FILTER_X3, PWP_FILTER_X3, EDGE_X, EDGE_X, F1_XL],
+            [ROW_Z + 22, 1600, 1600, HEAD_Z, HEAD_Z], C_BROWN, zorder=Z_BROWN)
+    # F-01 → F-02 → F-03 (straight jumpers, head line)
     pw_pipe([PWP_FILTER_X1 + BB_OD // 2, PWP_FILTER_X2 - BB_OD // 2], [HEAD_Z, HEAD_Z], C_BROWN, zorder=Z_BROWN)   # F1→F2
     pw_pipe([PWP_FILTER_X2 + BB_OD // 2, PWP_FILTER_X3 - BB_OD // 2], [HEAD_Z, HEAD_Z], C_BROWN, zorder=Z_BROWN)   # F2→F3
 
-    # F-03 OUT → drops down at X≈4090 → SV-01 (pH sample tap, bottom-right)
+    # F-03 OUT → drops down to SV-01 (RAISED beside F-03) — pH sample tap
     SV01_X = PWP_SV01_X
-    SV01_Z = 1071                       # valve center (3D body z975 + ~96)
+    SV01_Z = PWP_SV01_Z                 # raised beside F-03 (Z1610)
     F3_OUT_X = 4090
     pw_pipe([F3_XR, F3_OUT_X, F3_OUT_X, SV01_X, SV01_X],
             [HEAD_Z, HEAD_Z, SV01_Z, SV01_Z, SV01_Z],
             C_FILTER, zorder=Z_BROWN)
     pw_valve(SV01_X, SV01_Z, "SV\n01", C_BROWN, half=20)
-    # SV-01 downturned sample spout dropping to ~Z885
+    # SV-01 downturned sample spout
     pw_pipe([SV01_X, SV01_X, SV01_X - 45, SV01_X - 45],
-            [SV01_Z - 20, 960, 960, 905], C_BROWN, zorder=Z_BROWN)
-    pw_arrow(SV01_X - 45, 925, SV01_X - 45, 890, C_BROWN)
-    leader(ax_p, pwx(SV01_X), pwz(SV01_Z) + 22, pwx(4150), pwz(1380),
+            [SV01_Z - 20, SV01_Z - 130, SV01_Z - 130, SV01_Z - 175], C_BROWN, zorder=Z_BROWN)
+    pw_arrow(SV01_X - 45, SV01_Z - 150, SV01_X - 45, SV01_Z - 185, C_BROWN)
+    leader(ax_p, pwx(SV01_X), pwz(SV01_Z) + 22, pwx(4370), pwz(1980),
            "SV-01 — pH sample tap\n(filtered line, before DV-01;\n"
-           "draw sample, meter, then set DV-01)",
+           "raised beside F-03)",
            fs=6, color=C_BROWN, ha="left", va="bottom", font=FONT)
 
     # SV-01 → 3W-DV-01: the filtered line leaves the board's LEFT edge (mirrored
@@ -832,7 +833,7 @@ def draw_pinhole_panel():
     pw_arrow(DV01_EDGE_X - 30, SV01_Z, DV01_EDGE_X, SV01_Z, C_FILTER)
     leader(ax_p, pwx(DV01_EDGE_X), pwz(SV01_Z), pwx(DV01_EDGE_X) - 8, pwz(SV01_Z) - 150,
            "3W-DV-01 (corridor mouth):\npH-gated split →\n"
-           "Blue recycle (IBC-2) / Waste (IBC-4)",
+           "recycle (IBC-3) / Waste (IBC-4)",
            fs=6, color=C_BROWN_EC, ha="right", va="top", font=FONT)
 
     # ── DIMENSIONS ──────────────────────────────────────────────────
@@ -849,8 +850,8 @@ def draw_pinhole_panel():
               fontsize=5.5, color=C_FILTER, zorder=10, **FONT)
 
     # ── LEADERS ─────────────────────────────────────────────────────
-    leader(ax_p, pwx(P2_CX), pwz(P2_ZB), pwx(2880), pwz(1700),
-           "P-02 Shurflo 2088\n12V · 3.5 GPM · 45 PSI\n(Brown recycle, upright)",
+    leader(ax_p, pwx(PWP_FILTER_X1) - 40, pwz(PWP_SROW_Z0 + 90), pwx(3060), pwz(1030),
+           "P-04 Shurflo 2088\n12V · 3.5 GPM · 45 PSI\n(tray-drain pump)",
            fs=6, color=C_PUMP_EC, ha="left", va="center", font=FONT)
     leader(ax_p, pwx(F2_CX), pwz(SUMP_ZB + 40), pwx(3500), pwz(1640),
            "Big Blue 4.5\"×20\" housing\n(Ø184 sump to Z1746, head Z2262–2340;\n"
@@ -859,24 +860,26 @@ def draw_pinhole_panel():
 
     # ── NOTES ───────────────────────────────────────────────────────
     notes = [
-        "PINHOLE WALL PLUMBING PANEL — BROWN WASH-RECYCLE FILTER TRAIN:",
+        "PINHOLE WALL FILTER SKID — TRAY-DRAIN RECYCLE + FILTER TRAIN:",
         "1. Wide 18mm marine-ply backing board on the pinhole wall (Yd≈0),",
-        "    X=2780–4500, Z=920–2360mm AFF.",
-        "2. P-02 (Brown recycle pump) pulls IBC-3 Brown through the 3-stage",
-        "   filter bank.",
+        "    X=2780–4575, Z=920–2360mm AFF.",
+        "2. Tray-drain skid row UNDER the filters: P-04 (tray-sump pump) →",
+        "   SV-02 (pH sample) → 3W-DV-02, on the row line Z≈1312.",
         "3. HORIZONTAL filter bank high on the wall: F-01 (5µm sediment) →",
         "    F-02 (KDF-55) → F-03 (carbon/GAC); Big Blue 4.5\"×20\" housings.",
-        "4. BV-03: P-02 suction isolation (manual ball valve).",
-        "5. SV-01: pH sample tap on the filtered line, before DV-01 (cup spout,",
-        "   near bottom-right).",
+        "4. DV-02 recycle branch feeds F-01; waste branch → IBC-4 (corridor).",
+        "5. SV-01: pH sample tap on the filtered line, RAISED beside F-03",
+        "   (Z≈1610), before DV-01.",
         "6. 3W-DV-01 is PHYSICALLY at the corridor mouth (off this wall) — the filtered",
-        "    line leaves the board's bottom-right and splits there: pH-gated to Blue",
-        "    recycle (IBC-2) or Waste (IBC-4).",
-        "7. Flow: IBC-3 → BV-03 → P-02 → F-01 → F-02 → F-03 → SV-01 → 3W-DV-01.",
-        "8. Filters at 338mm centres (X3300/3638/3976); heads Z≈2300, sump bottoms",
-        "    Z≈1746 AFF (4.5×20). BV-03 at Z≈1000; SV-01 at Z≈1010.",
-        "9. PIPE: 1\" PVC Sch-40 (P-02 + filter loop), threaded at filter ports; housings",
-        "    on their integral brackets through-bolted to the ply board.",
+        "    line leaves the board's edge and splits there: pH-gated to recycle",
+        "    (IBC-3) or Waste (IBC-4).",
+        "7. ACC-02 (recycle-spray damper, center-bottom) is fed from P-02 in the",
+        "   corridor and feeds BV-05 → the spray bar.",
+        "8. Flow: sump → P-04 → SV-02 → DV-02 → F-01 → F-02 → F-03 → SV-01 → DV-01.",
+        "9. Filters at 338mm centres (X3300/3638/3976); heads Z≈2300, sump bottoms",
+        "    Z≈1746 AFF (4.5×20).",
+        "10. PIPE: 1\" PVC Sch-40 (filter loop) / ½\" (recycle-spray); housings on their",
+        "    integral brackets through-bolted to the ply board.",
     ]
     draw_notes(ax_p, notes, pwx(2600), pwz(1560), spacing=32,
                fs=6.5, width=720, color=C_DIM, title_color=C_NEW, font=FONT)

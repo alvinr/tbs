@@ -664,24 +664,23 @@ def skid_plumbing():
     # −X to ACC-02 — crossing the inner beam OVER the top at Z948, near-rim (same as the 3&4 valve-height hops).
     tail  = [npt,
              (L0, 65, acc2_in[2]),                                     # RISE up at the lane (grate slot) to the panel-bottom run height (Z948)
-             (L0, ov.PWP_FILTER_YD, acc2_in[2]),                       # +Yd onto ACC-02's wall lane (Yd104)
-             acc2_in]                                                  # −X along the panel bottom (over the inner beam) into ACC-02's +X IN port
+             (L0, CLIPY, acc2_in[2]),                                  # −Yd onto the ply clip plane — CLAMPED to the panel face
+             (acc2_in[0] + 55, CLIPY, acc2_in[2]),                     # −X along the panel bottom, HUGGING the ply, to just +X of ACC-02 IN
+             (acc2_in[0] + 55, ov.PWP_FILTER_YD, acc2_in[2]),          # +Yd out to the IN-port lane (Yd104)
+             acc2_in]                                                  # −X into ACC-02's +X IN port
     p.append(ov.ruby_pipe_run("P-02 -> ACC-02 (recycle spray)",
         lead[:-1] + cross + tail[1:], rp, color=ov.C_IBC_BROWN))
     # ── Leg 5: ACC-02 OUT (−X) → 3W-BV-05 recycled port — closes the recycle-spray loop ──
     acc2_out = (ACC2_X - cp.ACC_R - 30, ov.PWP_FILTER_YD, ACC2_Z0 + 28)   # ACC-02 −X OUT tip (3583.5,104,948)
     b5rx = (ov.BV02_X - 150) + (cp.DVB / 2 + cp.DVL)                             # BV-05 +X recycled port tip X (2282)
-    p04sx = ov.PWP_FILTER_X1 - 100                          # ~3200 — X of the vertical sump→P-04 suction riser
     zb = acc2_out[2]                                        # 948 — panel-bottom run height (= ACC-02 OUT)
     p.append(ov.ruby_pipe_run("ACC-02 -> BV-05 (recycled spray)",
         [acc2_out,                                          # off ACC-02's −X OUT port (collinear −X)
-         (p04sx + 55, ov.PWP_FILTER_YD, zb),                # −X along the panel bottom toward the P-04 suction riser
-         (p04sx + 55, 55, zb),                              # −Yd HUMP around the vertical suction riser (toward the wall)
-         (p04sx - 55, 55, zb),                              # −X past the riser (Yd55 clears the Yd104 riser)
-         (p04sx - 55, ov.PWP_FILTER_YD, zb),                # +Yd back onto the wall lane
-         (b5rx + 40, ov.PWP_FILTER_YD, zb),                 # −X along the panel bottom to just +X of BV-05
-         (b5rx + 40, ov.PWP_FILTER_YD, 700),                # DROP to the BV-05 recycled-port height
-         (b5rx + 40, 69, 700),                              # −Yd to the wall lane (Yd69)
+         (acc2_out[0] - 55, ov.PWP_FILTER_YD, zb),          # −X lead-out off the OUT port
+         (acc2_out[0] - 55, CLIPY, zb),                     # −Yd onto the ply clip plane — CLAMPED to the panel face
+         (b5rx + 40, CLIPY, zb),                            # −X along the panel bottom, HUGGING the ply, to BV-05 (Yd35 clears the Yd104 P-04 suction riser — no hump)
+         (b5rx + 40, CLIPY, 700),                           # DROP to the BV-05 recycled-port height
+         (b5rx + 40, 69, 700),                              # +Yd to the BV-05 lane (Yd69)
          (b5rx, 69, 700)], rp, color=ov.C_IBC_BROWN))       # −X into the +X recycled port
     return "\n".join(p)
 

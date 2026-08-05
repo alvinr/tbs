@@ -237,7 +237,7 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 |----------|------|-------|
 | Water storage (4× IBC totes, 3× bulkhead fittings, X1 fill tee) | $664 | $664 |
 | IBC stacking frame (50×50×3mm RHS restraint deep 4-leg box + 4 floor feet + 50×20 front retaining bars + wall joist hangers through-bolted to exterior backing plates + fabrication, per [Stacking §9.1](ibc-stacking-report.md)) | $1,085 | $1,551 |
-| Pumps and accumulator (P-01, P-02, P-04 manifold + P-03, P-05 IBC corridor) | $572 | $572 |
+| Pumps and accumulator (P-01/P-02/P-03/P-05 IBC corridor + P-04 tray-drain on the filter skid) | $572 | $572 |
 | Corridor plumbing panel structure (23/32" exterior ply backing board + drain-riser spine, 25mm pump-mount shirt, mount brackets + fasteners) | $84 | $109 |
 | Under-walkway pipe-ribbon supports (4× welded cross-braces + 16 pipe clips) | $58 | $58 |
 | Filter skid (3× Big Blue housings + cartridges) | $43 | $43 |

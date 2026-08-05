@@ -137,6 +137,7 @@ OVERVIEW_POINT_LABELS = [
     # gantry Yd=1180, beam top Z=60. Leader is 30% shorter than the prior version.
     (2400, 1180,   60, "SPRAY BAR",                   315, -1890,  910),
     ( 175, 2287, 1700, "PIVOT POST Ø89\n(panel swing axis)", 500, -200, 600),  # the swing pivot
+    (5146, 1181, 1268, "12V DIST BLOCK\n(Cct C)", 300, 0, 450),  # rear-of-corridor-panel Circuit-C distribution block (behind the pump column; center = BACK_X+EQT+24, CTR_Y, pump-column mid Z)
 ]
 
 

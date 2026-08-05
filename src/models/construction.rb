@@ -4140,12 +4140,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cct C branch P-02 (Pinhole-Wall panel)
+  # Cct C branch P-04 (filter skid)
   grp = ents.add_group
-  grp.name = "Cct C branch P-02 (Pinhole-Wall panel)"
+  grp.name = "Cct C branch P-04 (filter skid)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 128.mm, 0.mm)
-  circle = ge.add_circle([3058.mm,20.mm,2375.mm], vec, 7.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1161.mm)
+  circle = ge.add_circle([2800.mm,20.mm,2375.mm], vec, 7.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -4154,12 +4154,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cct C branch P-02 (Pinhole-Wall panel) elbow
+  # Cct C branch P-04 (filter skid) elbow
   grp = ents.add_group
-  grp.name = "Cct C branch P-02 (Pinhole-Wall panel) elbow"
+  grp.name = "Cct C branch P-04 (filter skid) elbow"
   ge = grp.entities
-  arc = ge.add_arc([3058.mm,148.mm,2361.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([3058.mm,148.mm,2375.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
+  arc = ge.add_arc([2814.mm,20.mm,1214.mm], [-1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2800.mm,20.mm,1214.mm], [0.000000,0.000000,-1.000000], 7.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -4168,12 +4168,40 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cct C branch P-02 (Pinhole-Wall panel)
+  # Cct C branch P-04 (filter skid)
   grp = ents.add_group
-  grp.name = "Cct C branch P-02 (Pinhole-Wall panel)"
+  grp.name = "Cct C branch P-04 (filter skid)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -132.mm)
-  circle = ge.add_circle([3058.mm,162.mm,2361.mm], vec, 7.mm, 16)
+  vec = Geom::Vector3d.new(502.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2814.mm,20.mm,1200.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-04 (filter skid) elbow
+  grp = ents.add_group
+  grp.name = "Cct C branch P-04 (filter skid) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([3316.mm,34.mm,1200.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 14.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([3316.mm,20.mm,1200.mm], [1.000000,0.000000,0.000000], 7.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-04 (filter skid)
+  grp = ents.add_group
+  grp.name = "Cct C branch P-04 (filter skid)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 56.mm, 0.mm)
+  circle = ge.add_circle([3330.mm,34.mm,1200.mm], vec, 7.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -4263,9 +4291,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cct C branch P-04
+  # Cct C branch P-02
   grp = ents.add_group
-  grp.name = "Cct C branch P-04"
+  grp.name = "Cct C branch P-02"
   ge = grp.entities
   vec = Geom::Vector3d.new(-122.mm, 0.mm, 0.mm)
   circle = ge.add_circle([5146.mm,1181.mm,1030.mm], vec, 7.mm, 16)
@@ -34229,12 +34257,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cct C branch P-02 (Pinhole-Wall panel)
+  # Cct C branch P-04 (filter skid)
   grp = ents.add_group
-  grp.name = "Cct C branch P-02 (Pinhole-Wall panel)"
+  grp.name = "Cct C branch P-04 (filter skid)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 128.mm, 0.mm)
-  circle = ge.add_circle([3058.mm,20.mm,2375.mm], vec, 7.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1161.mm)
+  circle = ge.add_circle([2800.mm,20.mm,2375.mm], vec, 7.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -34243,12 +34271,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cct C branch P-02 (Pinhole-Wall panel) elbow
+  # Cct C branch P-04 (filter skid) elbow
   grp = ents.add_group
-  grp.name = "Cct C branch P-02 (Pinhole-Wall panel) elbow"
+  grp.name = "Cct C branch P-04 (filter skid) elbow"
   ge = grp.entities
-  arc = ge.add_arc([3058.mm,148.mm,2361.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([3058.mm,148.mm,2375.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
+  arc = ge.add_arc([2814.mm,20.mm,1214.mm], [-1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 14.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2800.mm,20.mm,1214.mm], [0.000000,0.000000,-1.000000], 7.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -34257,12 +34285,40 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cct C branch P-02 (Pinhole-Wall panel)
+  # Cct C branch P-04 (filter skid)
   grp = ents.add_group
-  grp.name = "Cct C branch P-02 (Pinhole-Wall panel)"
+  grp.name = "Cct C branch P-04 (filter skid)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -132.mm)
-  circle = ge.add_circle([3058.mm,162.mm,2361.mm], vec, 7.mm, 16)
+  vec = Geom::Vector3d.new(502.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2814.mm,20.mm,1200.mm], vec, 7.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Cct C feed (pinhole-wall ceiling -> corridor dist block)"] || model.materials.add("Cct C feed (pinhole-wall ceiling -> corridor dist block)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-04 (filter skid) elbow
+  grp = ents.add_group
+  grp.name = "Cct C branch P-04 (filter skid) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([3316.mm,34.mm,1200.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 14.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([3316.mm,20.mm,1200.mm], [1.000000,0.000000,0.000000], 7.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Cct C feed (pinhole-wall ceiling -> corridor dist block)"] || model.materials.add("Cct C feed (pinhole-wall ceiling -> corridor dist block)")
+  mat.color = Sketchup::Color.new(142, 68, 173)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-04 (filter skid)
+  grp = ents.add_group
+  grp.name = "Cct C branch P-04 (filter skid)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 56.mm, 0.mm)
+  circle = ge.add_circle([3330.mm,34.mm,1200.mm], vec, 7.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -34352,9 +34408,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cct C branch P-04
+  # Cct C branch P-02
   grp = ents.add_group
-  grp.name = "Cct C branch P-04"
+  grp.name = "Cct C branch P-02"
   ge = grp.entities
   vec = Geom::Vector3d.new(-122.mm, 0.mm, 0.mm)
   circle = ge.add_circle([5146.mm,1181.mm,1030.mm], vec, 7.mm, 16)

@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 316 cross-slide + U-joint, incl. wall-seat saddles) | $3,733 | $4,131 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,483 | $7,634 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,521 | $7,672 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$25,747** | **~$33,817** |
+| **TOTAL (base build + 50-print run)** | **~$25,785** | **~$33,855** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -300,7 +300,7 @@ indicative low–high estimates — get quotes before ordering.
 | [1/2" PVC Sch-40 slip 90° elbow](https://www.homedepot.com/p/203812033) (PVC023000600HD) | 14 ea | Home Depot | water | $10 |
 | [1/2" PVC Sch-40 slip coupling](https://www.homedepot.com/p/203811331) (PVC021000600HD) | 4 ea | Home Depot | water | $3 |
 | [1/2" PVC Sch-40 slip tee](https://www.homedepot.com/p/203812195) (PVC024000600HD) | 6 ea | Home Depot | water | $5 |
-| [1/2" PVC slip×MNPT male adapter](https://www.homedepot.com/p/203811636) (PVC021090600HD) | 22 ea | Home Depot | water | $17 |
+| [1/2" PVC slip×MNPT male adapter](https://www.homedepot.com/p/203811636) (PVC021090600HD) | 24 ea | Home Depot | water | $19 |
 | [1/2" PVC union (serviceable break)](https://www.homedepot.com/p/317901071) (PVCU12F) | 2 ea | Home Depot | water | $10 |
 | [1/2" reinforced braided PVC hose, ~15 ft](https://www.homedepot.com/p/304185193) (T12006003) | 1 10ft roll | Home Depot | spray | $13 |
 | [1/2"×1" NPT bushing reducer](https://www.homedepot.com/p/204836713) (PVC021121800HD) | 1 ea | Home Depot | water | $3 |
@@ -320,7 +320,7 @@ indicative low–high estimates — get quotes before ordering.
 | [pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | 1 ea | US Plastic Corp | water | $19 |
 | [S60×6 female buttress → 2" MNPT IBC tote adapter](https://www.amazon.com/Granatan-Adapter-Buttress-Fittings-Connector/dp/B095SCHBC6) (B095SCHBC6) | 8 ea | Amazon | water | $80 |
 | [½" PVC Sch-40 pipe (tap relocation)](https://www.homedepot.com/p/319692959) (30-05010HD) | 1 stick | Home Depot | shelf | $5 |
-| **plumbing-fittings subtotal** | | | | **$1,377** |
+| **plumbing-fittings subtotal** | | | | **$1,378** |
 
 ### seals-gaskets
 
@@ -431,9 +431,9 @@ indicative low–high estimates — get quotes before ordering.
 | [KDF-55 heavy-metal cartridge 4.5"×20"](https://www.amazon.com/dp/B0DY1ZK47Z) (B0DY1ZK47Z) | 1 ea | Amazon | water | $80 |
 | [MPP 5-micron sediment cartridge 4.5"×20"](https://www.amazon.com/dp/B0CJCVZ1L5) (B0CJCVZ1L5) | 2 ea | Amazon | water | $62 |
 | Plywood offcut spacer blocks 25mm (filter skid) | 1 lot | offcuts | water | $0 |
-| [SeaFlo accumulator (0.75 L)](https://www.amazon.com/dp/B01MUYL8F8) (SFAT-075-125-01) | 1 ea | Amazon | water | $36 |
+| [SeaFlo accumulator (0.75 L)](https://www.amazon.com/dp/B01MUYL8F8) (SFAT-075-125-01) | 2 ea | Amazon | water | $72 |
 | [Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 filter loop / P-03 waste evac / P-04 tray drain / P-05 Brown drain)](https://www.amazon.com/dp/B00C1M6B1C) (B00C1M6B1C) | 5 ea | Amazon | water | $500 |
-| **water-equipment subtotal** | | | | **$1,639** |
+| **water-equipment subtotal** | | | | **$1,675** |
 
 ## Supplier consolidation (largest orders first)
 
@@ -442,8 +442,8 @@ indicative low–high estimates — get quotes before ordering.
 | Local fab | 20 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,185–$3,567 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 14 | aluminum, steel-structural | $1,989–$2,507 |
-| Amazon | 34 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,070–$2,120 |
-| Home Depot | 50 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,643–$1,764 |
+| Amazon | 34 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,106–$2,156 |
+| Home Depot | 50 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,645–$1,766 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
 | McMaster-Carr | 46 | aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,314 |

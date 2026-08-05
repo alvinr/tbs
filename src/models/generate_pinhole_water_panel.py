@@ -408,8 +408,8 @@ PANEL_X0, PANEL_X1, PANEL_Z0 = 2780, 4575, 920   # 18mm-ply extents (matches the
 ACC2_X  = (PANEL_X0 + PANEL_X1) // 2 + 180        # 3857 — panel center + 180mm toward the IBC totes (clears SV-02)
 ACC2_Z0 = PANEL_Z0                               # ACC-02 base sits on the panel bottom (Z920)
 SV01_X  = ov.PWP_SV01_X                            # 4250 — SV-01: 300mm left toward F-3, then 300mm back toward the IBC totes
-SV01_ZB = ov.PWP_WAIST_Z - 25 + 600              # 1575 — sample-valve base, raised 600mm up toward F-3
-SV01_CZ = SV01_ZB + 35                            # 1610 — valve center = filtered-line in-line height
+SV01_CZ = ov.PWP_SV01_Z                            # 1610 — valve center = filtered-line in-line height (single-sourced)
+SV01_ZB = SV01_CZ - 35                            # 1575 — sample-valve base (valve center − h/2)
 LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TIP = component CENTER
     # ── pinhole-wall FILTER sub-loop (leaders point +Yd, out toward the operator) ──
     (ACC2_X, ov.PWP_FILTER_YD, ACC2_Z0 + 87, "ACC-02\n(recycle spray)", 0, 470, 330),   # relocated to panel center-bottom

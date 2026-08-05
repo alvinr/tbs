@@ -540,7 +540,8 @@ PWP_P02_X         = PWP_FILTER_X1 - (BB_OD // 2 + 30) - 120  # = 3058 — P-02 c
 PWP_P02_H         = 180                          # P-02 body height (matches cp.PVB_H)
 PWP_P02_Z0        = PWP_FILTER_CAP_Z - (PWP_P02_H - 18)      # = 2139 — P-02 body bottom (port at cap level)
 PWP_SV01_X        = 4250                         # SV-01 pH sample tap X
-PWP_WAIST_Z       = 1000                         # SV-01 / DV-01 reach height (waist)
+PWP_WAIST_Z       = 1000                         # DV-01 reach height (waist); was also SV-01 before the skid reorg
+PWP_SV01_Z        = 1610                          # SV-01 valve-center Z — raised beside F-3 in the 2026-08-04 skid reorg (was PWP_WAIST_Z)
 
 # Pump manifold pipe (1/2" PVC Sch-40)
 PUMP_PIPE_OD   = 21      # 1/2" nominal HDPE OD (mm)

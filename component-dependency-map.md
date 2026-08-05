@@ -248,7 +248,7 @@ C — water pumps P-01–P-04 (P-03 in IBC corridor); D — safelight vestibule;
 
 *Components: 1" PVC header + isolation valves, 4× 12V pumps on plumbing panel (P-01 Blue spray bar supply,
 P-02 Brown recycle via filter, P-03 waste evacuation, P-04 tray sump pickup),
-1-gal pressure accumulator ACC-01, DN50 butterfly valves V1–V4 (S60×6 thread) at IBC outlets,
+two 0.75 L pressure accumulators — ACC-01 (corridor, damps the main filter loop) and ACC-02 (on the filter skid, damps the recycle-spray pump P-02), DN50 butterfly valves V1–V4 (S60×6 thread) at IBC outlets,
 manifold ball valves VB1/VB2/VB3, check valves CV1/CV3/CV4 on bulkhead lines X1/X3/X4, X1 fill tee (splits to IBC-1 & IBC-2), Circuit C.
 Mounted on 18mm marine ply plumbing panel (near IBC column face), in the IBC plumbing corridor.*
 

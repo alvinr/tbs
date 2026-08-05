@@ -163,10 +163,11 @@ PARTS: list[Part] = [
          dims="216×127×114", datasheet="Shurflo 2088-554-144", modeled_const="PUMP_D×PUMP_YD_SPAN×Z",
          audit_status="✅ FIXED (minor) — protrusion PUMP_D 100→114", panel="Corridor"),
     Part("seaflo-accumulator", "SeaFlo accumulator (0.75 L)", "water-equipment",
-         "water", 1, "ea", 35.99, 35.99, "Amazon",
+         "water", 2, "ea", 35.99, 35.99, "Amazon",
          url="https://www.amazon.com/dp/B01MUYL8F8",
          spec='0.75 L, 125 PSI, 1/2" MNPT', part_no="SFAT-075-125-01",
          dims="200×127×125", datasheet="SeaFlo SFAT-075-125-01", modeled_const="Ø127×200 cyl",
+         note="Two: ACC-01 damps the main filter loop (corridor); ACC-02 damps the recycle-spray pump P-02 on the filter skid.",
          audit_status="✅ FIXED — cylinder 150→200", panel="Corridor"),
     # shurflo-bracket RETIRED 2026-07-31 — the mounting bracket ships with the Shurflo 2088-554-144 pump (Alvin confirmed); −$50.
     # — corridor plumbing-panel structure (3D-derived marine ply; previously uncosted) —
@@ -242,7 +243,7 @@ PARTS: list[Part] = [
     # threaded component. Sized to the run at each landing — ½" and 1" only (the ¾" spray run ends in
     # barbed irrigation fittings, not threaded PVC). Counts are a P&ID takeoff (2026-07-28), firm with the fab.
     Part("pvc-adapter-half", '1/2" PVC slip×MNPT male adapter', "plumbing-fittings",
-         "water", 22, "ea", 0.79, 0.79, "Home Depot", part_no="PVC021090600HD", url="https://www.homedepot.com/p/203811636", spec='½" landings (22 — P&ID takeoff 2026-07-28): 6× BV ball valves (BV-01–06, run side) + 5× pump discharges (P-01–05, hose→run) + 3W-DV-02 (3 ports) + SV-01/SV-02 taps (2) + accumulator ACC-01 (1, slip×FPT) + 2× ½" unions (4, slip×MNPT each side) + bushing-reducer ½" run side (1). Charlotte PVC021090600HD.'),
+         "water", 24, "ea", 0.79, 0.79, "Home Depot", part_no="PVC021090600HD", url="https://www.homedepot.com/p/203811636", spec='½" landings (24 — P&ID takeoff 2026-07-28, +ACC-02 2026-08-04): 6× BV ball valves (BV-01–06, run side) + 5× pump discharges (P-01–05, hose→run) + 3W-DV-02 (3 ports) + SV-01/SV-02 taps (2) + accumulator ACC-01 (1, slip×FPT) + accumulator ACC-02 (2 — inline IN+OUT on the recycle-spray line) + 2× ½" unions (4, slip×MNPT each side) + bushing-reducer ½" run side (1). Charlotte PVC021090600HD.'),
     Part("pvc-adapter-1in", '1" PVC slip×MNPT male adapter', "plumbing-fittings",
          "water", 26, "ea", 1.16, 1.16, "Home Depot", part_no="PVC021091000HD", url="https://www.homedepot.com/p/203811640", spec='1" landings (26 — P&ID takeoff 2026-07-28): 6× V100 valves (V1/V3/V4, VB1–3, run side) + 8× s60-adapter IBC-valve landings (each lands on its own 1" glued-run segment) + 3W-DV-01 (3 ports) + CV-1 (2 ports) + 5× filter housing ports (F-01 OUT, F-02 IN/OUT, F-03 IN/OUT; F-01 IN = bushing-reducer) + 2× Blue equalization bulkheads. Charlotte PVC021091000HD.'),
     Part("cross-100", '1" PVC 4-way cross fitting', "plumbing-fittings",

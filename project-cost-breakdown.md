@@ -239,15 +239,16 @@ Self-contained three-circuit water system for remote/off-grid cyanotype processi
 | IBC stacking frame (50×50×3mm RHS restraint deep 4-leg box + 4 floor feet + 50×20 front retaining bars + wall joist hangers through-bolted to exterior backing plates + fabrication, per [Stacking §9.1](ibc-stacking-report.md)) | $1,085 | $1,551 |
 | Pumps and accumulator (P-01/P-02/P-03/P-05 IBC corridor + P-04 tray-drain on the filter skid) | $572 | $572 |
 | Corridor plumbing panel structure (23/32" exterior ply backing board + drain-riser spine, 25mm pump-mount shirt, mount brackets + fasteners) | $84 | $109 |
-| Under-walkway pipe-ribbon supports (4× welded cross-braces + 16 pipe clips) | $58 | $58 |
-| Filter skid (3× Big Blue housings + cartridges) | $43 | $43 |
-| Valves and fittings (BV/V100/3-way valves, X1 cross, CV-1, SV taps, equalization tie, PVC slip fittings + transition adapters, unions) | $541 | $541 |
-| IBC tote flexible connections (8× S60→2" tote adapter + 2→1 reducer + 1" hose barbs + SS clamps) | $922 | $922 |
-| Pipe (PVC Sch-40 — spray bar + 1"/½" runs) | $181 | $181 |
-| Processing tray (304 SS, fabricated, 2 panels) | $84 | $84 |
-| Spray bar assembly (gantry: beam, LDPE pipe, 44 nozzles, single center feed, 4 wheels, ball joint, arm, hose) | $1,473 | $2,121 |
-| Electrical (wiring only — fuse block in Electrical Report) | $584 | $596 |
-| Processing consumables (6-mil poly, pH meter, citric acid) | $31 | $31 |
+| Pinhole-wall filter-skid backing ply (23/32" exterior, pieced from 2 sheets) | $58 | $58 |
+| Under-walkway pipe-ribbon supports (4× welded cross-braces + 16 pipe clips) | $43 | $43 |
+| Filter skid (3× Big Blue housings + cartridges) | $541 | $541 |
+| Valves and fittings (BV/V100/3-way valves, X1 cross, CV-1, SV taps, equalization tie, PVC slip fittings + transition adapters, unions) | $922 | $922 |
+| IBC tote flexible connections (8× S60→2" tote adapter + 2→1 reducer + 1" hose barbs + SS clamps) | $181 | $181 |
+| Pipe (PVC Sch-40 — spray bar + 1"/½" runs) | $84 | $84 |
+| Processing tray (304 SS, fabricated, 2 panels) | $1,473 | $2,121 |
+| Spray bar assembly (gantry: beam, LDPE pipe, 44 nozzles, single center feed, 4 wheels, ball joint, arm, hose) | $584 | $596 |
+| Electrical (wiring only — fuse block in Electrical Report) | $31 | $31 |
+| Processing consumables (6-mil poly, pH meter, citric acid) | $257 | $257 |
 | **Water system total** | **$6,579** | **$7,730** |
 <!-- END costing:water -->
 

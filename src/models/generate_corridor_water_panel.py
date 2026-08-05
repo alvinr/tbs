@@ -801,8 +801,11 @@ def drains_ports(sump_on_skid=False):
         p2i = pump_in(PXC, CTR_Y, PSTACK["P-04"], "y", 1)
         pipe("IBC-3 tap -> P-02 suction",
              [(tx3 - 19, ty3, tz3),            # off the tap's −X run port (low, z308)
-              (tx3 - 19, ty3, p2i[2]),         # UP the riser to the IN-port height
-              p2i], ov.C_IBC_BROWN)            # +X into P-02's −Yd IN-port tip
+              (tx3 - 55, ty3, tz3),            # −X nudge (X4825) clear of BV-01 (X4857-4894, the P-01 suction valve on the blue line)
+              (tx3 - 55, PIY - 40, tz3),       # −Yd onto the port-approach lane (Yd1061, −Yd of the IN port)
+              (tx3 - 55, PIY - 40, p2i[2]),    # UP the riser at the approach Yd
+              (PXC, PIY - 40, p2i[2]),         # +X to the pump column
+              p2i], ov.C_IBC_BROWN)            # +Yd INTO P-02's −Yd IN port (swept elbow at the +X→+Yd vertex)
     # P-05 (Brown drain) suction: shared tap T → +X run end → rise to P-05 IN (−Yd manifold)
     p5i = (PXC, PIY, _piz("P-05")); p5o = (PXC, POY, _piz("P-05"))
     z05 = _piz("P-05")

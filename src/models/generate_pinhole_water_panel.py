@@ -345,19 +345,18 @@ def tap01_supply():
     # BV-05 3W SELECTOR (fresh ↔ recycled → spray bar) — relocated FORWARD (Yd) + UP (Z) onto a bracket off
     # the pinhole wall, close to the spray-bar pole-top feed (2420,633,1303) so the delivery coil is short.
     #   run = fresh (−Yd, up from the trunk) ↔ spray (+Yd, to the coil); branch = recycled IN (+X, from ACC-02).
-    b5x, b5y, b5z = bvx, 350, 1150                     # X kept clear of the sump (2249); forward + up near the pole-top feed
+    b5x, b5y, b5z = bvx, yd, 700                       # ON the pinhole wall (Yd69); DROPPED so it + its routing clear the pinhole assembly (Z1024-1364, aperture Z1194)
     dvt = cp.DVB / 2 + cp.DVL                          # diverter port-tip reach
-    p.append(cp.diverter("3W-BV-05 (spray selector)", b5x, b5y, b5z, run="y", branch="x+", handle="z+", color=ov.C_VALVE))
-    # Fresh supply: tap the trunk at the wall, rise, then +Yd into the −Yd fresh port
+    p.append(cp.diverter("3W-BV-05 (spray selector)", b5x, b5y, b5z, run="z", branch="x+", handle="y+", color=ov.C_VALVE))
+    # Fresh supply: tap the trunk, rise straight into the −Z fresh port
     p.append(ov.ruby_pipe_run("BV-05 fresh supply (trunk -> selector)",
-        [(b5x, yd, fz),                                # tap the blue trunk (Yd69, Z41)
-         (b5x, yd, b5z),                               # UP the wall to selector height
-         (b5x, b5y - dvt, b5z)], pr, color=ov.C_BLUE))  # +Yd into the −Yd fresh port
-    # Spray delivery: +Yd spray port → short coiled hose to the spray-bar pole-top feed (slack for the roll)
+        [(b5x, b5y, fz),                              # tap the blue trunk (Yd69, Z41)
+         (b5x, b5y, b5z - dvt)], pr, color=ov.C_BLUE))  # UP into the −Z fresh port
+    # Spray delivery: +Z spray port → coiled hose UP + FORWARD (+Yd) to the pole-top, going out around the pinhole
     p.append(ov.ruby_coil_cord("Spray-bar supply hose (selector -> spray bar, coiled)",
-        [(b5x, b5y + dvt, b5z),                        # off the +Yd spray port
-         (2350, 500, 1240),                            # service-coil slack loop
-         (2420, 633, 1303)], r=7, color=ov.C_BLUE))    # onto the pole-top feed
+        [(b5x, b5y, b5z + dvt),                        # off the +Z spray port
+         (2410, 600, 800),                             # FORWARD-low to the spray-bar pole (below the pinhole Z1024, out at Yd600) BEFORE rising
+         (2420, 633, 1303)], r=7, color=ov.C_BLUE))    # UP alongside the pole to the pole-top feed (forward of the pinhole)
     # TAP-01 chem branch (3/4in) up over the shelf + BV-04 isolation (overview path)
     p.append(ov.ruby_pipe_run("TAP-01 Branch (3/4in)",
         [(ov.TAP_X, yd, fz), (ov.TAP_X, yd, ov.SHELF_STOW_TOP_Z),
@@ -433,7 +432,7 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TI
 LABEL_CONTEXT_POINTS = [
     (ov.TAP_X, 112, ov.TAP_Z, "TAP-01\n(chem tap)", 0, 450, 300),
     (ov.TAP_X, 12, 1010, "BV-04", -450, 0, 250),
-    (ov.BV02_X - 150, 350, 1150, "3W-BV-05\n(spray selector)", 0, 350, 200),   # ON the relocated selector (forward+up, near the pole-top feed)
+    (ov.BV02_X - 150, ov.PROC_TRAY_YD_NEAR - 11, 700, "3W-BV-05\n(spray selector)", 0, 380, 250),   # ON the wall-mounted selector (dropped clear of the pinhole)
 ]
 LABEL_INSTANCES = [
     ("Pinhole Assembly", "PINHOLE\n(optical ref)", 0, 700, 350),
@@ -660,11 +659,12 @@ def skid_plumbing():
     acc2_out = (ov.PWP_P02_X - cp.ACC_R - 30, ov.PWP_FILTER_YD, SROW_Z0 + 28)   # ACC-02 −X OUT tip (2964.5,104,1178)
     b5rx = (ov.BV02_X - 150) + (cp.DVB / 2 + cp.DVL)                             # BV-05 +X recycled port tip X (2282)
     p.append(ov.ruby_pipe_run("ACC-02 -> BV-05 (recycled spray)",
-        [acc2_out,                                          # off ACC-02's −X OUT port (collinear)
-         (b5rx + 40, ov.PWP_FILTER_YD, acc2_out[2]),        # −X along the panel to just +X of the BV-05 port
-         (b5rx + 40, 350, acc2_out[2]),                     # +Yd to the BV-05 selector lane (Yd350)
-         (b5rx + 40, 350, 1150),                            # down to the port height
-         (b5rx, 350, 1150)], rp, color=ov.C_IBC_BROWN))     # −X into the +X recycled port
+        [acc2_out,                                          # off ACC-02's −X OUT port (collinear −X)
+         (acc2_out[0] - 64, ov.PWP_FILTER_YD, acc2_out[2]),  # −X lead-out (X2900, +X of the pinhole assembly X2569)
+         (acc2_out[0] - 64, ov.PWP_FILTER_YD, 700),         # DROP to Z700 BEFORE the pinhole X (below the assembly Z1024)
+         (b5rx + 40, ov.PWP_FILTER_YD, 700),                # −X at Z700 (below the pinhole) to just +X of the BV-05 port
+         (b5rx + 40, 69, 700),                              # −Yd to the wall lane (Yd69)
+         (b5rx, 69, 700)], rp, color=ov.C_IBC_BROWN))       # −X into the +X recycled port
     return "\n".join(p)
 
 

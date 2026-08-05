@@ -170,7 +170,7 @@ PARTS: list[Part] = [
          note="Two: ACC-01 damps the main filter loop (corridor); ACC-02 damps the recycle-spray pump P-02 on the filter skid.",
          audit_status="✅ FIXED — cylinder 150→200", panel="Corridor"),
     # shurflo-bracket RETIRED 2026-07-31 — the mounting bracket ships with the Shurflo 2088-554-144 pump (Alvin confirmed); −$50.
-    # — corridor plumbing-panel structure (3D-derived marine ply; previously uncosted) —
+    # — corridor plumbing-panel structure (3D-derived exterior ply; previously uncosted) —
     Part("corridor-panel-ply-18", "Corridor plumbing-panel ply (23/32\" exterior)", "timber-ply",
          "water", 1, "sheet", 29.30, 29.30, "Home Depot", part_no="303564747",
          url="https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747",
@@ -181,6 +181,11 @@ PARTS: list[Part] = [
          url="https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747",
          spec='4×8 ft 23/32\" (18mm) RTD Southern Yellow Pine exterior sheathing — pump-mount shirt (~610×1650 cut) behind P-01..P-05 + 6× spacer blocks. Same SKU as ply-18; 5× Shurflo 2088 (~6.5 kg total) need no more than 3/4\". STANDARD exterior per project rule. Firm $29.30 (Home Depot 2026-07-23). May nest with ply-18 in one sheet at cut — carried separate for margin. Double-layer locally if extra pump-rail stiffness wanted.',
          panel="Corridor"),
+    Part("pinhole-panel-ply-18", "Pinhole-wall filter-skid backing ply (23/32\" exterior)", "timber-ply",
+         "water", 2, "sheet", 29.30, 29.30, "Home Depot", part_no="303564747",
+         url="https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747",
+         spec='4×8 ft 23/32\" (18mm) RTD Southern Yellow Pine exterior sheathing — pinhole-wall backing panel (~1795×1440) that the 3× Big Blue filters + the P-04/SV-02/DV-02 skid row + ACC-02 lag-screw to. PIECED from 2 sheets (butt-jointed): the 1795×1440 face exceeds a single 4×8 sheet 1219mm width. Same SKU as the corridor panels; STANDARD exterior per project rule (dry mounting backboard, NOT marine). Firm $29.30 (Home Depot 2026-07-23). Seal cut edges.',
+         panel="Pinhole Wall"),
     # Corridor plumbing-panel mount, itemized 2026-07-27 from the $25–50 hardware lot:
     Part("corridor-panel-brackets", "6× steel angle brackets (corridor panel → IBC uprights)", "fasteners-hardware",
          "water", 6, "ea", 2.5, 6.5, "Home Depot",

@@ -1,7 +1,7 @@
-routing-sources-sha: ada046a28969
-model=water  pipes=374 solids=347  interferences=2
+routing-sources-sha: d42bd748ac2e
+model=water  pipes=374 solids=352  interferences=2
+  PIPE  Cct C feed (EP master sw -> corridor dist  (Circuit-C power + cabling (both panels))
+    x  FILTER     Cct C branch P-04 (filter skid)         near (3549,20,2375)
   PIPE  Cct C feed (EP master sw -> corridor dist  (Circuit-C power + cabling (both panels))
     x  FRAME      Frame rail (Yd)                         near (5146,1181,1838)
-  PIPE  Cct C branch P-04                          (Circuit-C power + cabling (both panels))
-    x  PUMP       Pump P-02 (Brown recycle) body          near (5085,1181,1030)
 pipe-on-pipe crossings=0

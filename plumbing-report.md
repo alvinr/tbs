@@ -22,7 +22,7 @@
 
 The water-handling equipment mounts on **two plumbing panels**:
 
-- The **Corridor Plumbing Panel** — an 18mm marine plywood board mounted vertically at the
+- The **Corridor Plumbing Panel** — an 18mm exterior-grade plywood board mounted vertically at the
   front (cargo-door-facing) mouth of the IBC plumbing corridor on the front-portal frame
   (<!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm corridor width × 2,060mm tall). It carries the transfer pumps
   (P-01 Blue supply, P-02 Brown recycle, P-03 waste, P-05 Brown drain), the pressure
@@ -50,14 +50,14 @@ three functions:
 
 | Parameter | Value |
 |-----------|-------|
-| Material | 18mm marine plywood (BS 1088 or equivalent) |
+| Material | 18mm exterior-grade plywood (BC/ACX) — dry mounting board, not marine |
 | Face dimensions | 270mm wide (Yd) × 2,060mm tall (Z) |
 | Orientation | Vertical, perpendicular to sealed end wall |
 | Bottom edge | Just above the walkway deck (clear of the spill line) |
 | Top edge | Just below the container ceiling |
 | Corridor width | 270mm (between near and far IBC columns) |
 | Mounting | L-brackets to the front-portal frame uprights, 4 points |
-| Finish | Sealed with marine varnish or epoxy; white face for visibility |
+| Finish | Sealed cut edges (exterior grade); white face for visibility |
 
 The table above is the **Corridor Plumbing Panel**. The **Pinhole Wall Filter Skid** is the
 wet-end board mounted on the pinhole wall carrying the 3-stage filter train, the tray-drain skid
@@ -498,6 +498,7 @@ hardware are sourced there and in the IBC stacking frame line.
 <!-- BEGIN parts:pinhole-wall-plumbing-panel -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
+| [Pinhole-wall filter-skid backing ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — pinhole-wall backing panel (~1795×1440) that the 3× Big Blue filters + the P-04/SV-02/DV-02 skid row + ACC-02 lag-screw to. PIECED from 2 sheets (butt-jointed): the 1795×1440 face exceeds a single 4×8 sheet 1219mm width. Same SKU as the corridor panels; STANDARD exterior per project rule (dry mounting backboard, NOT marine). Firm $29.30 (Home Depot 2026-07-23). Seal cut edges. | 2 sheet | Home Depot | $59 |
 | [Big Blue filter housing 4.5"×20" (separate)](https://www.amazon.com/dp/B0137680E6) (B0137680E6) | Ø184×594mm/housing (4.5×20), 1" NPT ports, accepts standard 20"×4.5" cartridges (verified 2026-07-27) — three SEPARATE Pentair Pentek 150234 high-flow PP housings on the mounting brackets | 3 ea | Amazon | $250 |
 | [Big Blue housing mounting brackets (×3)](https://www.freshwatersystems.com/products/mounting-bracket-white-single-housing-for-10-20-big-blue-housings) (150061) | Pentair 150061 zinc-plated single-housing mounting bracket, one per 4.5×20 Big Blue (×3), lag-screwed to the 18mm ply backing. Purpose-built — replaces the welded slotted-angle frame (2026-07-27). | 3 ea | Fresh Water Systems | $32 |
 | [SS lag/wood screws — filter housings to ply backing](https://www.homedepot.com/p/302007729) (812670) | 2 per housing × 3 = 6 needed — Everbilt 5/16"×1½" SS hex lag screws through the housing's mounting-hole ears into the 18mm plywood backing (no custom bracket). Sold in 5-packs → 2 packs (10, 4 spare). | 2 5-pack | Home Depot | $14 |
@@ -508,7 +509,7 @@ hardware are sourced there and in the IBC stacking frame line.
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | PP full-port quarter-turn; pump-suction isolation BV-03 (P-02) | 1 ea | US Plastic Corp / Amazon | $44 |
 | [3-way diverter valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=31268) (31268) | L/T-port; 3W-DV-01 (filter output) | 1 ea | US Plastic Corp | $61 |
 | [pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | Filtered-water sample draw before 3W-DV-01; 1/2" PP sample valve (US Plastic 36903) + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line | 1 ea | US Plastic Corp | $19 |
-| **Pinhole Wall Plumbing Panel total** | | | | **$642** |
+| **Pinhole Wall Plumbing Panel total** | | | | **$700** |
 <!-- END parts:pinhole-wall-plumbing-panel -->
 
 ---

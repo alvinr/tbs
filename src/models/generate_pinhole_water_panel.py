@@ -342,26 +342,22 @@ def tap01_supply():
         cp.ribbon_run(1, (cp.BLUE_TRUNK_HANDOFF_X, cp.GAP_CORR_Y, 60), (cp.RIBBON_LANE_X[1], yd, fz), up_yd=cp.RIBBON_YD_DOWN), pr, color=ov.C_BLUE))  # crest rises at the SHARED line-1 Yd (RIBBON_YD_DOWN) so all 4 ribbon crests are uniform (Alvin 2026-07-24)
     p.append(ov.ruby_cylinder("Blue Supply Trunk (1/2in HDPE)",   # trunk ends at the ribbon lane (clear of the saddle gusset)
         ov.TAP_X, yd, fz, pr, cp.RIBBON_LANE_X[1] - ov.TAP_X, color=ov.C_BLUE, axis="x"))
-    # BV-05 spray-bar isolation (riser + valve at the pinhole centerline)
-    p.append(ov.ruby_cylinder("BV-05 Riser", bvx, yd, fz, pr, ov.BV02_Z - fz, color=ov.C_BLUE, axis="z"))
-    p.append(cp.ball_valve("BV-05 (spray-bar isolation)", bvx, yd, ov.BV02_Z, "z"))
-    # Spray-bar supply — FLEXIBLE COILED hose from BV-05 to the spray-bar feed (pole-top supply end).
-    # The bar rolls along the tray, so the hose hangs as a looped service coil (drawn with the same
-    # coiled-cord helper as the power cords) that takes up slack as the operator walks the bar.
-    # Spray-bar supply — a rigid 90° ELBOW on BV-05's TOP port (straight up out of the valve, then a
-    # right-angle turn toward the spray bar), and a FLEXIBLE COILED hose from the elbow to the spray-bar
-    # pole-top supply. The bar rolls, so the hose hangs as a looped service coil (same coiled-cord helper
-    # as the power cords) that takes up slack as the operator walks the bar. Both service loops kept.
-    p.append(ov.ruby_pipe_run("BV-05 top elbow (spray-bar supply, 90°)",
-                              [(bvx, yd, ov.BV02_Z + 40),      # BV-05 top port
-                               (bvx, yd, ov.BV02_Z + 110),     # straight up out of the valve
-                               (bvx, 160, ov.BV02_Z + 110)],   # 90° turn toward the spray bar
-                              7, color=ov.C_BLUE))
-    p.append(ov.ruby_coil_cord("Spray-bar supply hose (elbow -> spray bar, coiled)",
-                               [(bvx, 160, ov.BV02_Z + 110),   # off the BV-05 elbow (X2249)
-                                (bvx + 40, 400, 250),          # service-coil droop (loop for slack) — PARKED: coil↔BV-05 attach still to fix
-                                (2420, 633, 1303)],            # onto the spray-bar feed-hose top / flex connector (pole-top supply)
-                               r=7, color=ov.C_BLUE))
+    # BV-05 3W SELECTOR (fresh ↔ recycled → spray bar) — relocated FORWARD (Yd) + UP (Z) onto a bracket off
+    # the pinhole wall, close to the spray-bar pole-top feed (2420,633,1303) so the delivery coil is short.
+    #   run = fresh (−Yd, up from the trunk) ↔ spray (+Yd, to the coil); branch = recycled IN (+X, from ACC-02).
+    b5x, b5y, b5z = bvx, 350, 1150                     # X kept clear of the sump (2249); forward + up near the pole-top feed
+    dvt = cp.DVB / 2 + cp.DVL                          # diverter port-tip reach
+    p.append(cp.diverter("3W-BV-05 (spray selector)", b5x, b5y, b5z, run="y", branch="x+", handle="z+", color=ov.C_VALVE))
+    # Fresh supply: tap the trunk at the wall, rise, then +Yd into the −Yd fresh port
+    p.append(ov.ruby_pipe_run("BV-05 fresh supply (trunk -> selector)",
+        [(b5x, yd, fz),                                # tap the blue trunk (Yd69, Z41)
+         (b5x, yd, b5z),                               # UP the wall to selector height
+         (b5x, b5y - dvt, b5z)], pr, color=ov.C_BLUE))  # +Yd into the −Yd fresh port
+    # Spray delivery: +Yd spray port → short coiled hose to the spray-bar pole-top feed (slack for the roll)
+    p.append(ov.ruby_coil_cord("Spray-bar supply hose (selector -> spray bar, coiled)",
+        [(b5x, b5y + dvt, b5z),                        # off the +Yd spray port
+         (2350, 500, 1240),                            # service-coil slack loop
+         (2420, 633, 1303)], r=7, color=ov.C_BLUE))    # onto the pole-top feed
     # TAP-01 chem branch (3/4in) up over the shelf + BV-04 isolation (overview path)
     p.append(ov.ruby_pipe_run("TAP-01 Branch (3/4in)",
         [(ov.TAP_X, yd, fz), (ov.TAP_X, yd, ov.SHELF_STOW_TOP_Z),
@@ -422,8 +418,8 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TI
     (cp.PXC, cp.CTR_Y, cp.ACC_Z0 + 87, "ACC-01\n(accumulator)", -700, 0, 250),   # + acc_h/2 (body 174)
     # ── ball valves (in-panel pump-suction isolation; BV-01/02 on the BACK-of-panel risers) ──
     (cp.FRONT_X + 106, cp.YD_NEAR + 67, 1000, "BV-01", -600, 0, 250),   # now on the front walkway-side riser
-    (5070, cp.BV02_YD, cp._piz("P-05") - 85, "BV-02", 350, 0, 250),   # on the shirt-edge riser, P-05 suction (nudged up 25mm)
-    (2960, 43, 1000, "BV-03", 0, 520, 200),                            # P-02 suction valve center
+    (cp.PXC - 86, cp.BV02_YD, cp._piz("P-05") - 85, "BV-02", 350, 0, 250),   # ON the BV-02 valve body (P-05 suction), not the shirt riser
+    (cp.BROWN_TAP[0] - 55, cp.PIY - 40, 950, "BV-03", -600, 0, 250),   # ON the corridor P-02 suction riser (relocated with P-02)
     (cp.PXC, cp.PIY, cp._piz("P-03") - 41, "BV-06", -1000, 0, 150),    # inline below the P-03 IN port
     # ── per-tank anti-siphon check valves ──
     (ov.C_LEN - 200, cp.X1_TEE_Y, cp.X1_TEE_Z, "CV-1\n(X1 fill)", -600, 300, 0),   # only CV-1 — pumps' integral checks cover the returns
@@ -437,7 +433,7 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TI
 LABEL_CONTEXT_POINTS = [
     (ov.TAP_X, 112, ov.TAP_Z, "TAP-01\n(chem tap)", 0, 450, 300),
     (ov.TAP_X, 12, 1010, "BV-04", -450, 0, 250),
-    (ov.BV02_X - 150, 12, ov.BV02_Z, "BV-05\n(spray bar)", 0, 450, 250),   # nudged −150 (toward EP) to clear the sump suction
+    (ov.BV02_X - 150, 350, 1150, "3W-BV-05\n(spray selector)", 0, 350, 200),   # ON the relocated selector (forward+up, near the pole-top feed)
 ]
 LABEL_INSTANCES = [
     ("Pinhole Assembly", "PINHOLE\n(optical ref)", 0, 700, 350),
@@ -660,6 +656,15 @@ def skid_plumbing():
              acc2_in]                                                  # −X into the +X IN port (swept elbow at the vertex)
     p.append(ov.ruby_pipe_run("P-02 -> ACC-02 (recycle spray)",
         lead[:-1] + cross + tail[1:], rp, color=ov.C_IBC_BROWN))
+    # ── Leg 5: ACC-02 OUT (−X) → 3W-BV-05 recycled port — closes the recycle-spray loop ──
+    acc2_out = (ov.PWP_P02_X - cp.ACC_R - 30, ov.PWP_FILTER_YD, SROW_Z0 + 28)   # ACC-02 −X OUT tip (2964.5,104,1178)
+    b5rx = (ov.BV02_X - 150) + (cp.DVB / 2 + cp.DVL)                             # BV-05 +X recycled port tip X (2282)
+    p.append(ov.ruby_pipe_run("ACC-02 -> BV-05 (recycled spray)",
+        [acc2_out,                                          # off ACC-02's −X OUT port (collinear)
+         (b5rx + 40, ov.PWP_FILTER_YD, acc2_out[2]),        # −X along the panel to just +X of the BV-05 port
+         (b5rx + 40, 350, acc2_out[2]),                     # +Yd to the BV-05 selector lane (Yd350)
+         (b5rx + 40, 350, 1150),                            # down to the port height
+         (b5rx, 350, 1150)], rp, color=ov.C_IBC_BROWN))     # −X into the +X recycled port
     return "\n".join(p)
 
 

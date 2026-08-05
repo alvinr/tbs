@@ -155,7 +155,7 @@ PARTS: list[Part] = [
          spec="X1/X3/X4 external fill/drain ports — 2\" PP bulkhead tank fitting with EPDM gaskets, clamped through a drilled hole in the container end wall over a flat backing doubler (NOT welded; the corrugation is bridged by the doubler). PP matches the FRPP camlocks it mates. US Plastic 32200 (alt listing itemid 65995), $21.14 firm (2026-07-29) — SS (McMaster 4464K115 $136.70) was over-spec for a plain water port. UV: end wall largely shaded; use brass if long direct-sun exposure.",
          note="Price verified 2026-07-12 (McMaster 4464K115, $136.70 ea)."),
     # — pumps (315–345) —
-    Part("shurflo-2088", "Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 filter loop / P-03 waste evac / P-04 tray drain / P-05 Brown drain)", "water-equipment",
+    Part("shurflo-2088", "Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 Brown recycle-spray / P-03 waste evac / P-04 tray drain / P-05 Brown drain)", "water-equipment",
          "water", 5, "ea", 100, 100, "Amazon", "Fresh Water Systems",
          part_no="B00C1M6B1C",
          url="https://www.amazon.com/dp/B00C1M6B1C",

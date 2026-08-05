@@ -157,11 +157,12 @@ DV01_CX, DV01_CY, DV01_CZ = 4800, cp.CTR_Y + 60, 235   # +100mm toward the seale
 
 
 def kit(part="all", p02_on_corridor=False):
-    """Pinhole-wall FILTER sub-loop (Stage B, agreed labels).  Chain:
-    IBC-3 (Brown buffer) → P-02 → F1 → F2 → F3 → SV-01 (sample) → DV-01 → Blue/Grey IBC.
-    Mounted HIGH so the walkway stays clear; PUMP on the side FURTHEST from the IBCs
-    (low X); FILTERS shifted toward the IBCs (high X); SV-01 + DV-01 dropped to WAIST for
-    easy reach.  Plumbing orthogonal, perpendicular port stubs, routed around the bodies.
+    """Pinhole-wall FILTER SKID (Phase-2 topology).  The tray drain feeds the filters:
+    tray sump → P-04 → SV-02 (sample) → DV-02 → F1 → F2 → F3 → SV-01 (sample) → DV-01 →
+    IBC-3 recycle / IBC-4 waste.  Separately, P-02 (corridor) recirculates the clean IBC-3
+    buffer to the spray bar: IBC-3 → P-02 → ACC-02 → BV-05 → spray.
+    Filters mounted HIGH so the walkway stays clear; the tray-drain skid row (P-04·SV-02·DV-02)
+    sits under them; SV-01 raised beside F-3; ACC-02 center-bottom.  Plumbing orthogonal.
 
     Construction-model splits (default "all" = the full skid, byte-identical):
       • "recycle"       — ONLY the blue DV-01→X1 recycle line (corridor run to the IBC panel; Phase 1)

@@ -634,6 +634,10 @@ def skid_plumbing():
          (wlx, gapyd, RZ),                                # +Yd to the notch Yd (flush under the grate)
          (cp.RIBBON_SLOT_X, gapyd, RZ),                   # +X through the outer-beam notch to the drop slot
          (cp.RIBBON_SLOT_X, gapyd, 65),                   # DOWN the slot to the corridor entry Z
+         (4850, gapyd, 65),                               # +X to just before the brown P-02→ACC-02 jog
+         (4850, gapyd, 110),                              # HUMP UP over the brown (Z55-76) — grey hops the brown at the corridor entry
+         (4930, gapyd, 110),                              # +X over the brown
+         (4930, gapyd, 65),                               # back DOWN to the corridor floor
          (riseX, gapyd, 65),                              # +X to the merge-approach lane
          (riseX, cp.MERGE4[1], 65),                       # jog to the merge Yd at floor
          (riseX, cp.MERGE4[1], cp.MERGE4[2]),             # RISE to the merge Z (1230)

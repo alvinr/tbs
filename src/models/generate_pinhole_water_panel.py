@@ -210,9 +210,10 @@ def kit(part="all", p02_on_corridor=False):
 
     # ── SV-01 sample tap stays on the plywood at the wall (sample cup access at waist).  3W-DV-01 is
     #    RELOCATED into the rear corridor so the filtered line runs as ONE pipe and only splits there ──
-    svx = ov.PWP_SV01_X
+    svx = SV01_X               # relocated: centered under DV-02 (X3976)
+    svz = SV01_CZ              # raised: valve center = filtered-line in-line height (Z1145)
     sv_y = yW + 75             # SV-01 projects only 75mm forward of the wall (cup access; was yL=230)
-    p.append(cp.sample_valve("SV-01 sample valve", svx, sv_y, waist - 25, h=70))
+    p.append(cp.sample_valve("SV-01 sample valve", svx, sv_y, SV01_ZB, h=70))
     tipd = cp.DVB / 2 + cp.DVL                  # 33 — diverter port-stub tip reach
     DCX, DCY, DCZ = DV01_CX, DV01_CY, DV01_CZ   # DV-01 at the CORRIDOR-ENTRY TURN (just inside the mouth,
     #   reachable from the right walkway), shifted +60mm AWAY from the pinhole wall (+Yd) — the practical
@@ -264,9 +265,9 @@ def kit(part="all", p02_on_corridor=False):
     # HORIZONTALLY through the valve body (in-line, matching SV-02), box over the through-segment.
     pipe("F3 -> SV-01 (wall-mounted drop)",
          [f3_hand, (f_out("F3")[0], yW, tie), (svx - 60, yW, tie),          # −Yd to the wall, +X to just −X of SV-01
-          (svx - 60, yW, waist + 10),                                       # DOWN the wall to the SV-01 in-line height
-          (svx - 60, sv_y, waist + 10),                                     # +Yd forward to the valve lane
-          (svx + 25, sv_y, waist + 10)], ov.C_FILTER)                       # +X THROUGH the body (in-line) to the +X face
+          (svx - 60, yW, svz),                                       # DOWN the wall to the SV-01 in-line height
+          (svx - 60, sv_y, svz),                                     # +Yd forward to the valve lane
+          (svx + 25, sv_y, svz)], ov.C_FILTER)                       # +X THROUGH the body (in-line) to the +X face
     # after SV-01 the run returns to the plywood (yW) BEFORE routing on to DV-01 — keeps the
     # narrow walkway clear (only SV-01's sample spout projects forward to yL)
     # 4b. SV-01 -> DV-01: ONE filtered line follows the shared surface-perimeter route across the
@@ -279,19 +280,18 @@ def kit(part="all", p02_on_corridor=False):
     # Drop SV-01 straight down the wall to a LOW strip level and run under the walkway beams (like the
     # other three lines).  On the corridor side it comes back DOWN just past the cantilever (like the
     # sump), runs under the grate to DV-01's Yd, then rises into DV-01's IN port.
-    # SV-01 -> DV-01: routed UP the skid panel + OVER the walkway (NOT under) — DV-01 is at the corridor
-    # mouth, so no under-walkway ribbon is needed; this frees ribbon lane 3.  Runs at SV-01 height (Z1010,
-    # above the grate Z140, below the IBC pallet Z1168), over to just −X of the corridor uprights, then
-    # +Yd and down BETWEEN them into DV-01.
+    # At the pinhole-wall end the filtered line mirrors the grey (DV-02→IBC-4): from SV-01 it hops +X at
+    # Z1010 OVER the inner beam to its own lane X, then DROPS straight down into the ribbon lane — turning
+    # north (90° at the bottom) with NO under-walkway crossing.  Ribbon + DV-01 corridor end are unchanged.
+    blane = cp.RIBBON_LANE_X[3]
     pipe("SV-01 -> DV-01 (single filtered line)",
-         [(svx + 25, sv_y, waist + 10),        # leave SV-01's +X face (in-line)
-          (svx + 50, sv_y, waist + 10),        # +X out (dog-leg)
-          (svx + 50, yW, waist + 10),          # −Yd onto the clip plane (clamped to the ply)
-          (4620, yW, waist + 10),              # +X along the panel + OVER the walkway grate to −X of the corridor uprights (X4646)
-          (4620, DCY, waist + 10),             # +Yd across the walkway to DV-01's Yd (clear −X of the uprights)
-          (DCX - 100, DCY, waist + 10),        # +X into the upright gap (Yd1241) toward DV-01
-          (DCX - 100, DCY, DCZ),               # DROP between the uprights to DV-01 height
-          (DCX - tipd, DCY, DCZ)],             # +X into DV-01's −X IN port
+         [(svx + 25, sv_y, svz),                                               # leave SV-01's +X face (in-line)
+          (svx + 50, sv_y, svz),                                               # +X out (dog-leg)
+          (blane, sv_y, svz),                                                  # +X at Z1010 OVER the inner beam to the lane X (over the walkway, not under)
+          (blane, 60, svz)]                                                     # −Yd to the ribbon near-rim Yd (still Z1010) — top of the drop
+         + cp.ribbon_run(3, (DCX - 100, DCY, 65), (blane, 60, svz), up_yd=cp.RIBBON_YD_DOWN)[::-1][1:]  # DROP into the lane + under-walkway ribbon (lane 3)
+         + [(DCX - 100, DCY, DCZ),                                                      # rise −X of the port to the IN-port height
+            (DCX - tipd, DCY, DCZ)],                                                    # +X 90° turn horizontally into DV-01's −X IN port
          ov.C_FILTER)
     # 5. DV-01 RECYCLE (run+, +X) → IBC-3 BUFFER tote — the recycle loop's buffer; P-02 pulls from IBC-3.
     #    (Was routed to the Blue X1 fill cross; Blue is now FILL-ONLY fresh water, so the filtered recycle
@@ -402,13 +402,21 @@ _FILT_FCY = ov.BB_OD / 2 + 12              # 104 — filter / P-02 body center Y
 _FILT_CZ  = ov.C_HGT - 48 - ov.BB_H / 2    # 2170 — Big-Blue filter body center Z
 # Phase-2 skid row (P-04 · SV-02 · DV-02, under the filters) — single-sourced for skid_row/plumbing/labels
 SROW_YD, SROW_Z0 = 104, 1150   # Yd104 = the filter/P-02 wall lane (surface-mounted on the ply, like the other kit)
+# ── Panel reorg (2026-08-04): declutter the skid so the lane-1 brown rises up the wall and runs the panel
+#    bottom to ACC-02 (like lanes 3 & 4).  Component X/Z decoupled from the shared filter/pump constants. ──
+PANEL_X0, PANEL_X1, PANEL_Z0 = 2780, 4575, 920   # 18mm-ply extents (matches the wall-backing box)
+ACC2_X  = (PANEL_X0 + PANEL_X1) // 2              # 3677 — ACC-02 relocated to panel center
+ACC2_Z0 = PANEL_Z0                               # ACC-02 base sits on the panel bottom (Z920)
+SV01_X  = ov.PWP_SV01_X                            # 4250 — SV-01: 300mm left toward F-3, then 300mm back toward the IBC totes
+SV01_ZB = ov.PWP_WAIST_Z - 25 + 600              # 1575 — sample-valve base, raised 600mm up toward F-3
+SV01_CZ = SV01_ZB + 35                            # 1610 — valve center = filtered-line in-line height
 LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TIP = component CENTER
     # ── pinhole-wall FILTER sub-loop (leaders point +Yd, out toward the operator) ──
-    (ov.PWP_P02_X, ov.PWP_FILTER_YD, SROW_Z0 + 100, "ACC-02\n(recycle spray)", 0, 470, -180),   # on the skid (P-02's vacated spot)
+    (ACC2_X, ov.PWP_FILTER_YD, ACC2_Z0 + 87, "ACC-02\n(recycle spray)", 0, 470, 330),   # relocated to panel center-bottom
     (3300, _FILT_FCY, _FILT_CZ, "F1 (50um)",   0, 560, 215),
     (3638, _FILT_FCY, _FILT_CZ, "F2 (KDF-55)", 0, 560, 215),
     (3976, _FILT_FCY, _FILT_CZ, "F3 (GAC)",    0, 560, 215),
-    (4250, 110, 1000, "SV-01\n(sample)", 0, 430, 520),   # SV-01 now 75mm off the wall (yW+75)
+    (SV01_X, 110, SV01_CZ, "SV-01\n(sample)", -430, 430, 250),   # relocated under DV-02, raised
     (DV01_CX, DV01_CY, DV01_CZ, "DV-01\n(3-way)",  -700, 0, 650),   # relocated to the corridor mouth (see kit())
     # ── Phase-2 skid row under the filters (P-04 · SV-02 · DV-02, relocated from the corridor) — leaders +Yd ──
     (ov.PWP_FILTER_X1, SROW_YD, SROW_Z0 + cp.PVB_H / 2, "P-04\n(tray drain)", 0, 470, -180),
@@ -556,13 +564,13 @@ def skid_row():
     p.append(cp.diverter("3W-DV-02", ov.PWP_FILTER_X3, SROW_YD, SROW_Z0 + 162,
                          run="x", branch="z+", handle="y+", color=ov.C_VALVE))   # IN −X (P-04) · waste +X (corridor) · feed z+ (F1); center Z1312 = P-04 OUT (straight run)
     # ACC-02 (recycled-spray accumulator) — on the filter skid, in P-02's vacated spot (X=PWP_P02_X); Ø127 × 200 (= ACC-01)
-    p.append(ov.ruby_cylinder("ACC-02 Accumulator", ov.PWP_P02_X, ov.PWP_FILTER_YD, SROW_Z0, cp.ACC_R, 174, color=ov.C_ACC))
-    p.append(ov.ruby_cylinder("ACC-02 head", ov.PWP_P02_X, ov.PWP_FILTER_YD, SROW_Z0 + 174, cp.ACC_R + 2, 26, color="#222228", axis="z"))
+    p.append(ov.ruby_cylinder("ACC-02 Accumulator", ACC2_X, ov.PWP_FILTER_YD, ACC2_Z0, cp.ACC_R, 174, color=ov.C_ACC))
+    p.append(ov.ruby_cylinder("ACC-02 head", ACC2_X, ov.PWP_FILTER_YD, ACC2_Z0 + 174, cp.ACC_R + 2, 26, color="#222228", axis="z"))
     # ACC-02 IN/OUT ports — ACC-01 style (horizontal, opposite sides at the body BOTTOM); on ±X here since
     # the −Yd side faces the wall.  IN +X (from the P-02 discharge), OUT −X (to BV-05 / the spray bar).
-    acc2z = SROW_Z0 + 28                                 # port Z at the body bottom (= ACC-01's ACC_PZ offset)
+    acc2z = ACC2_Z0 + 28                                 # port Z at the body bottom (= ACC-01's ACC_PZ offset)
     for tag, sd in (("in", +1), ("out", -1)):
-        x0 = (ov.PWP_P02_X + cp.ACC_R) if sd > 0 else (ov.PWP_P02_X - cp.ACC_R - 30)
+        x0 = (ACC2_X + cp.ACC_R) if sd > 0 else (ACC2_X - cp.ACC_R - 30)
         p.append(ov.ruby_cylinder(f"ACC-02 {tag} port", x0, ov.PWP_FILTER_YD, acc2z, cp.RP, 30, color="#222228", axis="x"))
     return "\n".join(p)
 
@@ -614,10 +622,10 @@ def skid_plumbing():
     p.append(ov.ruby_pipe_run("DV-02 waste -> IBC-4",
         [dv_waste,
          (dv_waste[0] + 36, SROW_YD, lz),                 # +X lead-out off the +X waste port
-         (dv_waste[0] + 36, SROW_YD, 950),                # DROP to under-SV-01 level (Z950 — below SV-01 Z975 and the F3→SV-01 line Z1010): the hump is no longer needed
-         (dv_waste[0] + 36, CLIPY, 950),                  # −Yd onto the clip plane (clamped to the ply)
-         (wlx, CLIPY, 950),                               # +X along the ply UNDER SV-01 to lane 2 (F3→SV-01 is above Z1010; the spout is at Yd104 — Yd35 clears both)
-         (wlx, 65, 950),                                  # +Yd clear of the RWk end beam (Yd0) before dropping
+         (dv_waste[0] + 36, SROW_YD, 1050),               # DROP to the raised panel-bottom grey lane (Z1050 — 100mm above the brown bottom run Z948)
+         (dv_waste[0] + 36, CLIPY, 1050),                 # −Yd onto the clip plane (clamped to the ply)
+         (wlx, CLIPY, 1050),                              # +X along the ply to lane 2 (clear of the relocated SV-01 at X3976)
+         (wlx, 65, 1050),                                 # +Yd clear of the RWk end beam (Yd0) before dropping
          (wlx, 65, RZ),                                   # DROP between the walkway beams into the ribbon (past the end beam, in front of the tray box)
          (wlx, cp.RIBBON_YD_UP, RZ),                      # +Yd along the lane (under the grate) to before the cantilever
          (wlx, cp.RIBBON_YD_UP, OVZ),                     # UP over the cantilever (Rule 5)
@@ -636,7 +644,7 @@ def skid_plumbing():
     p2o = cp.pump_out(cp.PXC, cp.CTR_Y, cp.PSTACK["P-04"], "y", 1)      # P-02 OUT (+Yd) (4984,1261,1102)
     L0  = cp.RIBBON_LANE_X[0]                                           # lane 0 (free)
     g0  = ov.RWK_RIBBON_NOTCH_YDS[0]                                    # lane-0 outer-beam notch Yd
-    acc2_in = (ov.PWP_P02_X + cp.ACC_R + 30, ov.PWP_FILTER_YD, SROW_Z0 + 28)   # ACC-02 +X IN-port tip (3151.5,104,1178)
+    acc2_in = (ACC2_X + cp.ACC_R + 30, ov.PWP_FILTER_YD, ACC2_Z0 + 28)   # ACC-02 +X IN-port tip (3770.5,104,948)
     exitX = 4900                                                        # −X of the ACC-01/P-01 column (bodies X≥4921) so the drop clears them
     cpt = (4630, g0, 65)                                                # ribbon entry −X of the near upright (X4646); ribbon_run does the +X to the slot + the notch
     npt = (L0, 65, RZ)                                                  # near-rim junction (Yd65, clear of the end beam)
@@ -647,23 +655,27 @@ def skid_plumbing():
              (cpt[0], cp.CTR_Y, 65),                                    # −X across the uprights' X-span at mid-gap Yd
              cpt]                                                       # −Yd to the notch Yd (1110) on the −X side of the near upright
     cross = cp.ribbon_run(0, cpt, npt)                                  # cpt → over the cantilever → npt
-    rX = ov.PWP_P02_X + cp.ACC_R + 54                                   # 3175.5 — riser +X of the IN tip, −X of the sump Leg-1 riser (X3200)
-    tail  = [npt, (L0, 65, 65),                                         # drop below the walkway-beam soffit (Z80)
-             (rX, 65, 65),                                             # −X UNDER the walkway beams to the riser X (at Yd65)
-             (rX, 65, 110),                                            # UP at Yd65 above the sump Leg-1 horizontal (Z90)
-             (rX, ov.PWP_FILTER_YD, 110),                              # +Yd onto the ACC-02 wall lane (above Leg 1)
-             (rX, ov.PWP_FILTER_YD, acc2_in[2]),                       # UP to the IN-port height
-             acc2_in]                                                  # −X into the +X IN port (swept elbow at the vertex)
+    # Like lanes 3 & 4 (NOT under the walkway): rise up the wall at the lane, then run the panel bottom (Z948)
+    # −X to ACC-02 — crossing the inner beam OVER the top at Z948, near-rim (same as the 3&4 valve-height hops).
+    tail  = [npt,
+             (L0, 65, acc2_in[2]),                                     # RISE up at the lane (grate slot) to the panel-bottom run height (Z948)
+             (L0, ov.PWP_FILTER_YD, acc2_in[2]),                       # +Yd onto ACC-02's wall lane (Yd104)
+             acc2_in]                                                  # −X along the panel bottom (over the inner beam) into ACC-02's +X IN port
     p.append(ov.ruby_pipe_run("P-02 -> ACC-02 (recycle spray)",
         lead[:-1] + cross + tail[1:], rp, color=ov.C_IBC_BROWN))
     # ── Leg 5: ACC-02 OUT (−X) → 3W-BV-05 recycled port — closes the recycle-spray loop ──
-    acc2_out = (ov.PWP_P02_X - cp.ACC_R - 30, ov.PWP_FILTER_YD, SROW_Z0 + 28)   # ACC-02 −X OUT tip (2964.5,104,1178)
+    acc2_out = (ACC2_X - cp.ACC_R - 30, ov.PWP_FILTER_YD, ACC2_Z0 + 28)   # ACC-02 −X OUT tip (3583.5,104,948)
     b5rx = (ov.BV02_X - 150) + (cp.DVB / 2 + cp.DVL)                             # BV-05 +X recycled port tip X (2282)
+    p04sx = ov.PWP_FILTER_X1 - 100                          # ~3200 — X of the vertical sump→P-04 suction riser
+    zb = acc2_out[2]                                        # 948 — panel-bottom run height (= ACC-02 OUT)
     p.append(ov.ruby_pipe_run("ACC-02 -> BV-05 (recycled spray)",
         [acc2_out,                                          # off ACC-02's −X OUT port (collinear −X)
-         (acc2_out[0] - 64, ov.PWP_FILTER_YD, acc2_out[2]),  # −X lead-out (X2900, +X of the pinhole assembly X2569)
-         (acc2_out[0] - 64, ov.PWP_FILTER_YD, 700),         # DROP to Z700 BEFORE the pinhole X (below the assembly Z1024)
-         (b5rx + 40, ov.PWP_FILTER_YD, 700),                # −X at Z700 (below the pinhole) to just +X of the BV-05 port
+         (p04sx + 55, ov.PWP_FILTER_YD, zb),                # −X along the panel bottom toward the P-04 suction riser
+         (p04sx + 55, 55, zb),                              # −Yd HUMP around the vertical suction riser (toward the wall)
+         (p04sx - 55, 55, zb),                              # −X past the riser (Yd55 clears the Yd104 riser)
+         (p04sx - 55, ov.PWP_FILTER_YD, zb),                # +Yd back onto the wall lane
+         (b5rx + 40, ov.PWP_FILTER_YD, zb),                 # −X along the panel bottom to just +X of BV-05
+         (b5rx + 40, ov.PWP_FILTER_YD, 700),                # DROP to the BV-05 recycled-port height
          (b5rx + 40, 69, 700),                              # −Yd to the wall lane (Yd69)
          (b5rx, 69, 700)], rp, color=ov.C_IBC_BROWN))       # −X into the +X recycled port
     return "\n".join(p)

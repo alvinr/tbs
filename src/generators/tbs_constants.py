@@ -542,6 +542,15 @@ PWP_P02_Z0        = PWP_FILTER_CAP_Z - (PWP_P02_H - 18)      # = 2139 — P-02 b
 PWP_SV01_X        = 4250                         # SV-01 pH sample tap X
 PWP_WAIST_Z       = 1000                         # DV-01 reach height (waist); was also SV-01 before the skid reorg
 PWP_SV01_Z        = 1610                          # SV-01 valve-center Z — raised beside F-3 in the 2026-08-04 skid reorg (was PWP_WAIST_Z)
+# ── Filter-skid panel layout (2026-08-04 reorg) — single-sourced so the 2D panel diagrams match water.skp ──
+PWP_PANEL_X0      = 2780                          # ply left edge (low X)
+PWP_PANEL_X1      = 4575                          # ply right edge (high X, walkway side)
+PWP_PANEL_Z0      = 920                           # ply bottom edge (Z AFF)
+PWP_SROW_Z0       = 1150                          # skid-row base Z (P-04·SV-02·DV-02 under the filters)
+PWP_SV02_Z        = PWP_SROW_Z0 + 132             # 1282 — SV-02 valve-center Z (in-line on the P-04→DV-02 row)
+PWP_DV02_Z        = PWP_SROW_Z0 + 162             # 1312 — DV-02 valve-center Z (= P-04 OUT / row line)
+PWP_ACC2_X        = (PWP_PANEL_X0 + PWP_PANEL_X1) // 2 + 180   # 3857 — ACC-02 (recycle-spray damper) center X
+PWP_ACC2_Z0       = PWP_PANEL_Z0                  # 920 — ACC-02 base sits on the panel bottom
 
 # Pump manifold pipe (1/2" PVC Sch-40)
 PUMP_PIPE_OD   = 21      # 1/2" nominal HDPE OD (mm)

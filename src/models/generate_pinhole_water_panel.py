@@ -401,12 +401,12 @@ def right_walkway():
 _FILT_FCY = ov.BB_OD / 2 + 12              # 104 — filter / P-02 body center Yd (sump back near the wall)
 _FILT_CZ  = ov.C_HGT - 48 - ov.BB_H / 2    # 2170 — Big-Blue filter body center Z
 # Phase-2 skid row (P-04 · SV-02 · DV-02, under the filters) — single-sourced for skid_row/plumbing/labels
-SROW_YD, SROW_Z0 = 104, 1150   # Yd104 = the filter/P-02 wall lane (surface-mounted on the ply, like the other kit)
+SROW_YD, SROW_Z0 = 104, ov.PWP_SROW_Z0   # Yd104 = the filter/P-02 wall lane (surface-mounted on the ply, like the other kit)
 # ── Panel reorg (2026-08-04): declutter the skid so the lane-1 brown rises up the wall and runs the panel
 #    bottom to ACC-02 (like lanes 3 & 4).  Component X/Z decoupled from the shared filter/pump constants. ──
-PANEL_X0, PANEL_X1, PANEL_Z0 = 2780, 4575, 920   # 18mm-ply extents (matches the wall-backing box)
-ACC2_X  = (PANEL_X0 + PANEL_X1) // 2 + 180        # 3857 — panel center + 180mm toward the IBC totes (clears SV-02)
-ACC2_Z0 = PANEL_Z0                               # ACC-02 base sits on the panel bottom (Z920)
+PANEL_X0, PANEL_X1, PANEL_Z0 = ov.PWP_PANEL_X0, ov.PWP_PANEL_X1, ov.PWP_PANEL_Z0   # 18mm-ply extents (single-sourced)
+ACC2_X  = ov.PWP_ACC2_X                          # 3857 — panel center + 180 toward the IBCs (clears SV-02)
+ACC2_Z0 = ov.PWP_ACC2_Z0                         # ACC-02 base on the panel bottom (Z920)
 SV01_X  = ov.PWP_SV01_X                            # 4250 — SV-01: 300mm left toward F-3, then 300mm back toward the IBC totes
 SV01_CZ = ov.PWP_SV01_Z                            # 1610 — valve center = filtered-line in-line height (single-sourced)
 SV01_ZB = SV01_CZ - 35                            # 1575 — sample-valve base (valve center − h/2)

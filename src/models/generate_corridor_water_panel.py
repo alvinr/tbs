@@ -806,6 +806,7 @@ def drains_ports(sump_on_skid=False):
               (tx3 - 55, PIY - 40, p2i[2]),    # UP the riser at the approach Yd
               (PXC, PIY - 40, p2i[2]),         # +X to the pump column
               p2i], ov.C_IBC_BROWN)            # +Yd INTO P-02's −Yd IN port (swept elbow at the +X→+Yd vertex)
+        p.append(ball_valve("BV-03 (P-02 suction)", tx3 - 55, PIY - 40, 950, "z"))   # isolation on the P-02 suction riser (relocated to the corridor with P-02)
     # P-05 (Brown drain) suction: shared tap T → +X run end → rise to P-05 IN (−Yd manifold)
     p5i = (PXC, PIY, _piz("P-05")); p5o = (PXC, POY, _piz("P-05"))
     z05 = _piz("P-05")

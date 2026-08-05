@@ -149,17 +149,13 @@ IBC-2 (900L) ──┘                                                      │
 ```
 Processing tray sump (P-04 suction pickup)
         │
-   P-04 (tray drain transfer pump — suction from sump, lifts ~900mm to IBC-3 side-entry)
+   P-04 (tray drain transfer pump — suction from sump, lifts ~900mm)
         │
      SV-02 SAMPLE TAP (meter incoming used-water pH → set DV-02 routing)
         │
    3W-DV-02 ──────────────────────────────────────────→ (to IBC-4 waste if heavily loaded)
         │
-        ↓
-   IBC-3 (600L buffer fill, side-entry near top — no top-cap access, 52mm headroom)
-        │
-       P-02
-        │
+        ↓  (recycle: the tray drain feeds the filter train)
        F-1 (5-micron MPP sediment)
         │
        F-2 (KDF-55 heavy-metal)
@@ -168,14 +164,18 @@ Processing tray sump (P-04 suction pickup)
         │
      SV-01 SAMPLE TAP (draw sample → manual meter check before returning)
         │
-   3W-DV-01 ──→ pH 6–7, visually acceptable: RETURN TO IBC-2 (Blue)
+   3W-DV-01 ──→ pH 6–7, visually acceptable: RETURN TO IBC-3 (Brown buffer)
         │
         └──→ pH drift / discolored: FORWARD TO IBC-4 (waste)
+
+   IBC-3 (600L Brown buffer, side-entry near top — 52mm headroom)
+        │
+       P-02  ──→  ACC-02 (pulsation damper)  ──→  BV-05  ──→  spray bar   (recycle spray)
 ```
 
 **Filter train sizing:**
 
-The filter train is **three separate 4.5"×20" Big Blue housings** (Ø184 × 594mm each; Express Water / Geekpure / iSpring), mounted as a horizontal bank high on the pinhole wall — heads pinned near the ceiling, sumps hanging below. Each has 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer matches P-02's 1/2" output to F-1, and F-1 → F-2 → F-3 connect by short 1" PVC jumpers with 90° elbows outside the bodies (full mechanical detail in [Plumbing Report](plumbing-report.md) §3.1).
+The filter train is **three separate 4.5"×20" Big Blue housings** (Ø184 × 594mm each; Express Water / Geekpure / iSpring), mounted as a horizontal bank high on the pinhole wall — heads pinned near the ceiling, sumps hanging below. Each has 1" NPT inlet/outlet; a single 1/2"→1" bushing reducer matches the 3W-DV-02 recycle branch's 1/2" output to F-1, and F-1 → F-2 → F-3 connect by short 1" PVC jumpers with 90° elbows outside the bodies (full mechanical detail in [Plumbing Report](plumbing-report.md) §3.1).
 
 | Stage | Cartridge (4.5"×20") | Removes |
 |-------|---------------------|---------|
@@ -185,7 +185,7 @@ The filter train is **three separate 4.5"×20" Big Blue housings** (Ø184 × 594
 
 The 4.5"×20" cartridges carry ~2× the media of a 10", so service intervals run correspondingly longer; the per-stage replacement intervals live in [Plumbing Report](plumbing-report.md) §3.1. A single 3-stage combo unit (4.5"×20" cartridges, 1" NPT) is an equivalent alternative that eliminates the inter-housing jumpers — any unit accepting standard 4.5"×20" cartridges with 1" NPT ports will work.
 
-**pH management:** Two pH sample taps are fitted. **SV-02** (½" valve + spout on the P-04 tray-drain discharge, before 3W-DV-02) lets the operator meter the incoming used water and choose the DV-02 routing — buffer to IBC-3 or divert straight to IBC-4 waste. **SV-01** confirms the cleaned water before it returns: draw the post-filter sample at the **SV-01 sample tap** (½" valve + spout before 3W-DV-01) and meter it. If filtered water reads pH <6, do nothing — slightly acidic is preferred. If pH >7.5, add citric acid solution (10g citric acid in 1 liter water) via the dosing port in the IBC-3 outlet, stir, retest. Do not return water with pH >8 to the Blue system.
+**pH management:** Two pH sample taps are fitted. **SV-02** (½" valve + spout on the P-04 tray-drain discharge, before 3W-DV-02) lets the operator meter the incoming used water and choose the DV-02 routing — recycle into the filter train or divert straight to IBC-4 waste. **SV-01** confirms the cleaned water before it returns: draw the post-filter sample at the **SV-01 sample tap** (½" valve + spout before 3W-DV-01) and meter it. If filtered water reads pH <6, do nothing — slightly acidic is preferred. If pH >7.5, add citric acid solution (10g citric acid in 1 liter water) via the dosing port in the IBC-3 outlet, stir, retest. Do not recycle water with pH >8 to the IBC-3 buffer.
 
 ### 4.3 Black System — Waste Containment
 
@@ -212,7 +212,7 @@ The processing tray and spray bar gantry are fully specified in the [Processing 
 
 **Processing tray:** A permanently installed 4459 × 2,200mm stainless steel tray sits on the optical zone floor between the film plane rails. A 1:200 Yd-only slope sheets wash water to a near-rim gutter that falls 1:200 inward to a center pickup well (X=2,399). P-04 draws from the center pickup — the suction pops out of the walkway above it and runs under the walkway to the IBC end — no penetration of the tray floor or container floor.
 
-**Drain path:** P-04 suction pickup → 1" flexible hose over near rim → P-04 pump on the Corridor Plumbing Panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste).
+**Drain path:** P-04 suction pickup → 1" flexible hose over near rim → P-04 pump on the Pinhole Wall filter skid → SV-02 sample → 3W-DV-02 diverter → the 3-stage filter train (recycle) or IBC-4 (Waste).
 
 **External drain-out risers:** The Brown (IBC-3) and Waste (IBC-4) totes are pumped out to the sealed end-wall ports — X3 via P-05, X4 via P-03. The two vertical drain risers run down the IBC corridor gap and are clamped at ~400mm centers to an 18mm marine-ply backing spine that tees perpendicular off the Corridor Plumbing Panel. Its top is capped with a horizontal ply shelf that the Blue fill trunk rests on — so both the drain risers and the fill trunk are supported at the T rather than free-hanging.
 
@@ -316,7 +316,7 @@ IBCs are arranged in a **2x2 stack** in the right end zone, right-justified to t
 
 All equipment clears the optical cone at every depth — shadow-free proof in [Equipment Layout Report](equipment-layout-report.md).
 
-**Hose routing:** The corridor pumps (P-01, P-04, P-05, P-03) mount on the **Corridor Plumbing Panel** at the front of the IBC stack, reaching into the 270mm plumbing corridor between the two IBC columns — so the pump↔tote suction and return lines are **short**, running entirely within the corridor to the IBCs' corridor-facing DN50 valves. P-02 (Brown filter feed) and the 3-stage filter stack sit on the **Pinhole Wall Plumbing Panel** on the pinhole wall face. The longest run is the **Blue supply to the spray bar**: P-01 → ACC-01 → rigid 1/2" PVC along the pinhole wall to the tray center → BV-05 → ~4m coiled flexible hose → the rolling beam in the optical zone. The **tray drain** returns the other way — P-04's sump pickup → 1" flexible hose over the near rim → P-04 on the panel → 3W-DV-02 diverter → IBC-3 (Brown) or IBC-4 (Waste). **Waste evacuation** pumps P-05 (X3 / Brown) and P-03 (X4 / Waste) sit directly on the corridor drain risers, minimizing pipe to the external end-wall ports. The four lines that connect the corridor equipment to the Pinhole Wall panel run together as a flat **ribbon** in the dead space under the right-walkway grate — see [Plumbing Report](plumbing-report.md) §8.1 and [Walkway Pipe Routing](walkway-routing-sections.md).
+**Hose routing:** The corridor pumps (P-01, P-02, P-05, P-03) mount on the **Corridor Plumbing Panel** at the front of the IBC stack, reaching into the 270mm plumbing corridor between the two IBC columns — so the pump↔tote suction and return lines are **short**, running entirely within the corridor to the IBCs' corridor-facing DN50 valves. P-04 (tray drain) and the 3-stage filter stack + the tray-drain skid row sit on the **Pinhole Wall filter skid** on the pinhole wall face. The longest run is the **Blue supply to the spray bar**: P-01 → ACC-01 → rigid 1/2" PVC along the pinhole wall to the tray center → BV-05 → ~4m coiled flexible hose → the rolling beam in the optical zone. The **tray drain** goes the other way — P-04's sump pickup → 1" flexible hose over the near rim → P-04 on the skid → SV-02 → 3W-DV-02 diverter → the 3-stage filter train (recycle) or IBC-4 (Waste); the recycle-spray pump **P-02** then returns the clean IBC-3 buffer to the spray bar (→ ACC-02 → BV-05). **Waste evacuation** pumps P-05 (X3 / Brown) and P-03 (X4 / Waste) sit directly on the corridor drain risers, minimizing pipe to the external end-wall ports. The four lines that connect the corridor equipment to the Pinhole Wall skid run together as a flat **ribbon** in the dead space under the right-walkway grate — see [Plumbing Report](plumbing-report.md) §8.1 and [Walkway Pipe Routing](walkway-routing-sections.md).
 
 **External fill/drain ports:** Three 2" NPT bulkhead fittings with camlock fittings on the exterior are mounted on the container end wall centerline, stacked vertically:
 
@@ -339,7 +339,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 |------|------|-----|----------|-----------|
 | [IBC tote (1,000 L caged)](https://www.repackify.com/buy-ibc-totes/california) | Reconditioned food-grade (prior-food-contents) 275-gal/1000L caged composite tote, DN50 butterfly valve (S60×6 thread); side-entry fittings near top. ~$150/ea local SoCal (Container Exchanger food-grade lots have a ~12-tote min; buy 4 local). Firm ~$150. | 4 ea | SoCal reconditioner / Repackify | $600 |
 | [Bulkhead fitting 2" NPT (polypropylene)](https://www.usplastic.com/catalog/item.aspx?itemid=32200) (32200) | X1/X3/X4 external fill/drain ports — 2" PP bulkhead tank fitting with EPDM gaskets, clamped through a drilled hole in the container end wall over a flat backing doubler (NOT welded; the corrugation is bridged by the doubler). PP matches the FRPP camlocks it mates. US Plastic 32200 (alt listing itemid 65995), $21.14 firm (2026-07-29) — SS (McMaster 4464K115 $136.70) was over-spec for a plain water port. UV: end wall largely shaded; use brass if long direct-sun exposure. | 3 ea | US Plastic Corp | $63 |
-| [Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 filter loop / P-03 waste evac / P-04 tray drain / P-05 Brown drain)](https://www.amazon.com/dp/B00C1M6B1C) (B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports; 5 identical pumps, one per water-system duty (P-01..P-05). 2026-07-27: consolidated from 5 lines; firm $100 ea (Amazon B00C1M6B1C) | 5 ea | Amazon / Fresh Water Systems | $500 |
+| [Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 Brown recycle-spray / P-03 waste evac / P-04 tray drain / P-05 Brown drain)](https://www.amazon.com/dp/B00C1M6B1C) (B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports; 5 identical pumps, one per water-system duty (P-01..P-05). 2026-07-27: consolidated from 5 lines; firm $100 ea (Amazon B00C1M6B1C) | 5 ea | Amazon / Fresh Water Systems | $500 |
 | [SeaFlo accumulator (0.75 L)](https://www.amazon.com/dp/B01MUYL8F8) (SFAT-075-125-01) | 0.75 L, 125 PSI, 1/2" MNPT | 2 ea | Amazon | $72 |
 | [Corridor plumbing-panel ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — rear backing board + drain-riser spine + spacer offcuts. STANDARD exterior per project rule. Firm $29.30 (Home Depot 2026-07-23). Seal cut edges. | 1 sheet | Home Depot | $29 |
 | [Pump-mount shirt ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — pump-mount shirt (~610×1650 cut) behind P-01..P-05 + 6× spacer blocks. Same SKU as ply-18; 5× Shurflo 2088 (~6.5 kg total) need no more than 3/4". STANDARD exterior per project rule. Firm $29.30 (Home Depot 2026-07-23). May nest with ply-18 in one sheet at cut — carried separate for margin. Double-layer locally if extra pump-rail stiffness wanted. | 1 sheet | Home Depot | $29 |

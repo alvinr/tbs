@@ -3,10 +3,11 @@
 # Plumbing Report
 
 > **Two plumbing panels.** The water-handling equipment is split across two panels: the
-> **Corridor Plumbing Panel** (pumps P-01/P-03/P-04/P-05, accumulator ACC-01, diverter DV-02,
-> sample tap SV-02, pump-suction isolation valves — mounted in the IBC plumbing corridor) and the
-> **Pinhole Wall Plumbing Panel** (the wet-end filter loop: pump P-02, the 3-stage Big Blue filter,
-> diverter DV-01, sample tap SV-01 — mounted on the pinhole wall). This report covers both.
+> **Corridor Plumbing Panel** (pumps P-01/P-02/P-03/P-05, accumulator ACC-01, pump-suction
+> isolation valves — mounted in the IBC plumbing corridor) and the **Pinhole Wall Filter Skid**
+> (the filter train + the tray-drain skid: tray-drain pump P-04, sample taps SV-01/SV-02,
+> diverters DV-01/DV-02, the 3-stage Big Blue filter, and the recycle-spray damper ACC-02 —
+> mounted on the pinhole wall). This report covers both.
 
 <!-- brochure:skip -->
 ## Interactive 3D model
@@ -23,12 +24,13 @@ The water-handling equipment mounts on **two plumbing panels**:
 
 - The **Corridor Plumbing Panel** — an 18mm marine plywood board mounted vertically at the
   front (cargo-door-facing) mouth of the IBC plumbing corridor on the front-portal frame
-  (<!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm corridor width × 2,060mm tall). It carries the waste/recycle pumps
-  (P-01, P-03, P-04, P-05), the pressure accumulator (ACC-01), the Stage-A diverter (DV-02),
-  the pH sample tap (SV-02), and the pump-suction isolation valves.
-- The **Pinhole Wall Plumbing Panel** — the wet-end filter loop mounted on the pinhole wall:
-  pump P-02, the 3-stage Big Blue filter (F1/F2/F3), the filter-output diverter (DV-01), and the
-  pH sample tap (SV-01).
+  (<!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm corridor width × 2,060mm tall). It carries the transfer pumps
+  (P-01 Blue supply, P-02 Brown recycle, P-03 waste, P-05 Brown drain), the pressure
+  accumulator (ACC-01), and the pump-suction isolation valves.
+- The **Pinhole Wall Filter Skid** — the filter train + the tray-drain skid mounted on the
+  pinhole wall: the tray-drain pump P-04, the skid-row sample tap (SV-02) and diverter (DV-02),
+  the 3-stage Big Blue filter (F1/F2/F3), the filter-output sample tap (SV-01) and diverter (DV-01),
+  and the recycle-spray damper (ACC-02).
 
 Each panel concentrates its part of the system in one accessible location. The panels serve
 three functions:
@@ -57,30 +59,34 @@ three functions:
 | Mounting | L-brackets to the front-portal frame uprights, 4 points |
 | Finish | Sealed with marine varnish or epoxy; white face for visibility |
 
-The table above is the **Corridor Plumbing Panel**. The **Pinhole Wall Plumbing Panel** is the
-wet-end board mounted on the pinhole wall carrying the 3-stage filter skid, its feed pump
-P-02, the filter-output diverter DV-01, and the SV-01 sample tap — see [Water System Report](water-system-report.md)
+The table above is the **Corridor Plumbing Panel**. The **Pinhole Wall Filter Skid** is the
+wet-end board mounted on the pinhole wall carrying the 3-stage filter train, the tray-drain skid
+row (P-04·SV-02·DV-02), the filter-output diverter DV-01 + the SV-01 sample tap, and the
+recycle-spray damper ACC-02 — see [Water System Report](water-system-report.md)
 §3 for its location and the spray-bar/chemistry-tap supply it feeds.
 
 ---
 
 ## 3. Equipment Layout
 
-The **Pinhole Wall Plumbing Panel** carries the
-3-stage filter skid and its feed pump P-02 (§3.1); the **Corridor Plumbing Panel** carries the
-four corridor pumps (P-01/P-03/P-04/P-05) and the accumulator (§3.2–§3.3). Each panel has its
+The **Pinhole Wall Filter Skid** carries the
+3-stage filter train + the tray-drain skid row P-04·SV-02·DV-02 (§3.1); the **Corridor Plumbing
+Panel** carries the four corridor pumps (P-01/P-02/P-03/P-05) and the accumulator (§3.2–§3.3). Each panel has its
 own front-elevation drawing; the corridor backside (drain-riser spine + Circuit-C power) is a
 third sheet.
 
-### 3.1 Pinhole Wall Plumbing Panel — Filter Skid + P-02
+### 3.1 Pinhole Wall Filter Skid — Filter Train + Tray-Drain Row
 
 Three 4.5"×20" Big Blue filter housings in a **horizontal bank mounted high on
 the pinhole wall** — the heads (with the 1" NPT ports) pinned just below the
 ceiling, the sump bowls hanging below — so the walkway stays clear and the
-operator reaches up to service them. Flow path: P-02 output → F-01 (5μm sediment)
-→ F-02 (KDF-55) → F-03 (carbon) → SV-01 sample tap → 3W-DV-01.
+operator reaches up to service them. The **tray drain** feeds the filters: tray sump
+→ P-04 → SV-02 sample tap → 3W-DV-02 → F-01 (5μm sediment) → F-02 (KDF-55) →
+F-03 (carbon) → SV-01 sample tap → 3W-DV-01. The tray-drain skid row (P-04·SV-02·DV-02)
+sits directly under the filters; ACC-02 (the recycle-spray damper for P-02) is at the
+panel's center-bottom.
 
-**Pinhole Wall Plumbing Panel — Front elevation: P-02, 3-stage filter bank, SV-01 sample tap, and DV-01 diverter**
+**Pinhole Wall Filter Skid — Front elevation: tray-drain skid row (P-04·SV-02·DV-02), 3-stage filter bank, SV-01 + DV-01, and ACC-02**
 ![TBS-001 — Pinhole Wall Plumbing Panel Layout](assets/pinhole-panel.png)
 
 | Stage | Media | Housing |
@@ -114,18 +120,18 @@ sumps, half the interval).
 **Alternative:** A single 3-stage combo unit (e.g. Purcooflow WHF2045B302 or
 iSpring WGB32B) with 4.5"×20" cartridges eliminates the inter-housing plumbing
 and the separate frame — one integrated bracket, 1" NPT inlet/outlet, a single
-1/2"→1" bushing at the P-02 feed. See
+1/2"→1" bushing at the DV-02 recycle feed. See
 [Water System Report](water-system-report.md) §3.2 for sizing rationale.
 
 ### 3.2 Corridor Plumbing Panel — Pump Zone
 
-**Four** Shurflo 2088 pumps mount on the Corridor panel (P-02 lives on the Pinhole Wall
-panel with the filter loop, §3.1). The accumulator ACC-01 sits at the column foot (§3.3).
+**Four** Shurflo 2088 pumps mount on the Corridor panel (P-04, the tray-drain pump, lives on
+the Pinhole Wall filter skid, §3.1). The accumulator ACC-01 sits at the column foot (§3.3).
 
 | Pump | Circuit | Function |
 |------|---------|----------|
 | P-01 | Blue | Clean water supply to spray bar (via ACC-01) |
-| P-04 | Brown/Black | Tray drain transfer (sump → IBC-3 or IBC-4) |
+| P-02 | Brown | Recycle spray — pulls the clean IBC-3 buffer → ACC-02 → BV-05 → spray bar |
 | P-03 | Black | Waste evacuation (IBC-4 residual → external drain X4) |
 | P-05 | Brown | Brown drain-out (IBC-3 → external drain X3) |
 
@@ -133,7 +139,7 @@ All pumps are identical Shurflo 2088-554-144 units: 12VDC, 3.5 GPM, 45 PSI,
 self-priming diaphragm. Vertical mount, ports at the head, 127mm body width ×
 216mm body height × ~114mm protrusion. Each mounts on a stainless 4-bolt bracket
 through the plywood. They sit in a single vertical column in the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm corridor;
-P-01 and P-04 draw from the near IBC column, P-03 and P-05 from the far column.
+P-01 and P-02 draw from the near IBC column, P-03 and P-05 from the far column.
 
 #### Pump electrical — Circuit C (one at a time)
 
@@ -159,16 +165,17 @@ The distribution block sits **above the spill line**, IP-rated and sealed, with 
 loops, per the wet-zone rules in [Electrical Report §7.5](electrical-report.md); the
 master switch is on the EP, clear of the wet zone.
 
-**Corridor Plumbing Panel — Front elevation: four pumps, ACC-01, DV-02 diverter, SV-02 sample tap, and full pipe routing**
+**Corridor Plumbing Panel — Front elevation: the four transfer pumps (P-01/P-02/P-03/P-05), ACC-01, and full pipe routing**
 ![TBS-001 — Corridor Plumbing Panel Layout](assets/panel-layout.png)
 
 **Spine side-sections (corridor side section) — two sheets, opposite
 faces of the drain-riser spine** (18mm ply teed off the panel). Pumps mount on
 the front face; the drain runs hang on the spine in the corridor gap clear of
 both tote columns; the Circuit-C pump-power distribution feeds all five pumps.
-P-02 lives on the Pinhole Wall panel and shares Circuit C. The two views share
+P-04 lives on the Pinhole Wall filter skid and shares Circuit C. The two views share
 all structure + fittings as landmarks; each face's own pipe runs appear on its
-own sheet.
+own sheet. *(Spine views A/B still show the pre‑Phase‑2 corridor tray‑drain routing —
+pending the topology update; see §8.1.)*
 
 **Spine View A — intake face:** suctions (BV-01 Blue, tray sump, IBC-3),
 the DV-01 blue-recycle riser climbing the spine into the X1 fill cross, the
@@ -204,13 +211,13 @@ pump, providing steady flow to the spray bar.
 |-------|------|-------|----------|
 | BV-01 | 1/2" | Corridor | P-01 (Blue supply) suction isolation |
 | BV-02 | 1/2" | Corridor | P-05 (Brown drain) suction isolation |
-| BV-03 | 1/2" | Pinhole Wall | P-02 (filter loop) suction isolation |
+| BV-03 | 1/2" | Corridor | P-02 (Brown recycle) suction isolation |
 | BV-04 | 1/2" | supply | TAP-01 chemistry-tap isolation |
 | BV-05 | 1/2" | supply | Spray-bar feed isolation |
 | BV-06 | 1/2" | Corridor | P-03 (waste evacuation) suction isolation |
 
-BV-01/BV-02/BV-06 are the Corridor panel pump-suction isolation valves; BV-03 the
-Pinhole Wall panel's. **BV-05** is the primary operator-controlled valve — on the
+BV-01/BV-02/BV-03/BV-06 are the Corridor panel pump-suction isolation valves. **BV-05**
+is the primary operator-controlled valve — on the
 spray-bar feed, opened during wash passes; **BV-04** isolates the TAP-01 chemistry
 tap. All six are 1/2" Banjo V050FP quarter-turn ball valves.
 
@@ -218,14 +225,15 @@ tap. All six are 1/2" Banjo V050FP quarter-turn ball valves.
 
 | Valve | Size | Position | Function |
 |-------|------|----------|----------|
-| 3W-DV-01 | 1" FNPT | After filter skid + SV-01 sample tap | Routes filtered Brown water to Blue (IBC-2) or Black (IBC-4) based on the SV-01 pH reading |
-| 3W-DV-02 | 1/2" FNPT | P-04 discharge | Routes tray drain water to Brown (IBC-3) or Black (IBC-4) based on operator judgment |
+| 3W-DV-01 | 1" FNPT | After the filter train + SV-01 sample tap | Routes filtered water to recycle (IBC-3 Brown buffer) or Black (IBC-4 waste) based on the SV-01 pH reading |
+| 3W-DV-02 | 1/2" FNPT | Skid row, after SV-02 | Routes the tray-drain water into the filters (F-01, recycle) or straight to Black (IBC-4 waste) based on operator judgment |
 
-**3W-DV-02** is the operator judgment valve: set to Brown (default) for normal
-rinse water, switch to Black for heavy contamination events.
+**3W-DV-02** is the operator judgment valve: set to recycle (default) — into the
+filters for cleaning — for normal rinse water, switch to Black for heavy
+contamination events.
 
 **3W-DV-01** is the pH-gated valve: draw a sample at **SV-01** (below) and meter it — if filtered water reads pH 6–7, route to
-Blue (IBC-2) for recycling; if pH >7.5 or discolored, route to Black (IBC-4).
+recycle (IBC-3 Brown buffer, which P-02 later sprays back); if pH >7.5 or discolored, route to Black (IBC-4).
 
 ### 4.3 Check Valves
 
@@ -241,7 +249,7 @@ X1 fresh-fill. Installed in the IBC zone, not on a panel.
 | Valve | Size | Panel | Function |
 |-------|------|-------|----------|
 | SV-01 | 1/2" | Pinhole Wall | Filtered-Brown line (F-03 outlet → 3W-DV-01) — pH sample before the Blue/Black diversion |
-| SV-02 | 1/2" | Corridor | P-04 tray-drain discharge (→ 3W-DV-02) — pH sample before the Brown/Black diversion |
+| SV-02 | 1/2" | Pinhole Wall (skid row) | P-04 tray-drain discharge (→ 3W-DV-02) — pH sample before the recycle/waste diversion |
 
 The filter output has no usable sampling point without SV-01 — a capped tee
 cannot be drawn from. **SV-01** is a 1/2" PP quarter-turn ball valve (same Banjo
@@ -250,8 +258,8 @@ downturned hose-barb spout. It sits on the panel face **above the spill line**,
 spout pointing toward the operator so a cup fits beneath it from the right
 walkway.
 
-**Use:** run P-02 to pressurize the filtered line, crack SV-01 to catch ~50 ml in
-a cup, close it, read pH on the meter, then set 3W-DV-01 to Blue-return (pH 6–7)
+**Use:** run P-04 to pressurize the filtered line, crack SV-01 to catch ~50 ml in
+a cup, close it, read pH on the meter, then set 3W-DV-01 to recycle-return (pH 6–7)
 or Black-waste (pH drift / discolored).
 
 ---
@@ -261,7 +269,7 @@ or Black-waste (pH drift / discolored).
 | Run | Schedule | Nominal Size | OD (mm) | Material | Notes |
 |-----|----------|-------------|---------|----------|-------|
 | Pump suction/discharge | Sch 40 | 1/2" | 21 | PVC Sch 40 | Matches Shurflo 2088 port thread |
-| DV-02 outputs | Sch 40 | 1/2" | 21 | PVC Sch 40 | To IBC-3 or IBC-4 |
+| DV-02 outputs | Sch 40 | 1/2" | 21 | PVC Sch 40 | To F-01 (recycle) or IBC-4 (waste) |
 | DV-01 outputs | Sch 40 | 1/2" | 21 | PVC Sch 40 | To Blue IBC-2 or Black IBC-4 |
 | Filter inter-stage | Sch 40 | 1" | 33 | PVC Sch 40 | Matches Big Blue 1" NPT ports |
 | Filter outlet → DV-01 | Sch 40 | 1" | 33 | PVC Sch 40 | Gravity flow, lower restriction |
@@ -338,15 +346,16 @@ to the spray bar center feed bulkhead.
 ### 6.2 Brown System — Used Water Recycling
 
 ```
-Tray sump → P-04 → 3W-DV-02 → IBC-3
-IBC-3 → P-02 → 1/2"→1" reducer → F-01 → F-02 → F-03 → SV-01 sample tap → 3W-DV-01
-  → IBC-2 (if pH 6–7) or IBC-4 (if pH drift)
+Tray sump → P-04 → SV-02 sample → 3W-DV-02 → 1/2"→1" reducer → F-01 → F-02 → F-03
+  → SV-01 sample tap → 3W-DV-01 → IBC-3 recycle (if pH 6–7) or IBC-4 waste (if pH drift)
+IBC-3 → P-02 → ACC-02 → BV-05 → spray bar   (recycle spray)
 ```
 
-P-04 lifts drain water from the processing tray sump (~900mm head) to IBC-3.
-P-02 recirculates IBC-3 water through the 3-stage filter train. After filtering,
-the operator draws a sample at SV-01, checks pH, and sets 3W-DV-01 to route either back to Blue (IBC-2)
-or to Waste (IBC-4).
+P-04 lifts drain water from the processing tray sump (~900mm head) and, via 3W-DV-02,
+sends it into the 3-stage filter train. After filtering, the operator draws a sample at
+SV-01, checks pH, and sets 3W-DV-01 to route either to recycle (IBC-3 Brown buffer) or to
+Waste (IBC-4). **P-02** then recirculates the clean IBC-3 buffer to the spray bar (via
+ACC-02 and BV-05) — the recycle-spray loop.
 
 ### 6.3 Black System — Waste Containment
 
@@ -429,9 +438,9 @@ Pipes enter and exit the panel zone at the left and right panel edges:
 
 ### 8.1 Corridor ↔ pinhole-wall ribbon (under the right walkway)
 
-The four lines that connect the corridor equipment to the pinhole-wall panel —
-IBC-3 (Brown) → P-02, the filtered return (SV-01 → DV-01), the tray-sump pickup
-→ P-04, and the Blue supply trunk → TAP-01/spray bar — run together as a flat
+The four lines that connect the corridor equipment to the pinhole-wall skid —
+P-02 → ACC-02 (recycle spray), the DV-02 waste → IBC-4, the filtered return
+(SV-01 → DV-01), and the Blue supply trunk → TAP-01/spray bar — run together as a flat
 **ribbon** in the otherwise-dead space **under the right-walkway grate**, in the
 clear channel between the two walkway long beams (hugged to the outer/IBC edge,
 clear of the print zone). The lanes ride **flush against the grate underside** so
@@ -470,7 +479,7 @@ hardware are sourced there and in the IBC stacking frame line.
 <!-- BEGIN parts:corridor-plumbing-panel -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 filter loop / P-03 waste evac / P-04 tray drain / P-05 Brown drain)](https://www.amazon.com/dp/B00C1M6B1C) (B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports; 5 identical pumps, one per water-system duty (P-01..P-05). 2026-07-27: consolidated from 5 lines; firm $100 ea (Amazon B00C1M6B1C) | 5 ea | Amazon / Fresh Water Systems | $500 |
+| [Shurflo 2088-554-144 pump (×5 — P-01 Blue supply / P-02 Brown recycle-spray / P-03 waste evac / P-04 tray drain / P-05 Brown drain)](https://www.amazon.com/dp/B00C1M6B1C) (B00C1M6B1C) | 12VDC, 3.5 GPM, 45 PSI, 1/2" NPSM ports; 5 identical pumps, one per water-system duty (P-01..P-05). 2026-07-27: consolidated from 5 lines; firm $100 ea (Amazon B00C1M6B1C) | 5 ea | Amazon / Fresh Water Systems | $500 |
 | [SeaFlo accumulator (0.75 L)](https://www.amazon.com/dp/B01MUYL8F8) (SFAT-075-125-01) | 0.75 L, 125 PSI, 1/2" MNPT | 2 ea | Amazon | $72 |
 | [Corridor plumbing-panel ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — rear backing board + drain-riser spine + spacer offcuts. STANDARD exterior per project rule. Firm $29.30 (Home Depot 2026-07-23). Seal cut edges. | 1 sheet | Home Depot | $29 |
 | [Pump-mount shirt ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — pump-mount shirt (~610×1650 cut) behind P-01..P-05 + 6× spacer blocks. Same SKU as ply-18; 5× Shurflo 2088 (~6.5 kg total) need no more than 3/4". STANDARD exterior per project rule. Firm $29.30 (Home Depot 2026-07-23). May nest with ply-18 in one sheet at cut — carried separate for margin. Double-layer locally if extra pump-rail stiffness wanted. | 1 sheet | Home Depot | $29 |
@@ -509,7 +518,7 @@ hardware are sourced there and in the IBC stacking frame line.
 | Interval | Task |
 |----------|------|
 | Before each session | Verify all valve positions per valve matrix (see [Water System Report](water-system-report.md) §4) |
-| Before each session | Run P-02 for 2 minutes to verify filter flow; draw a sample at SV-01 and check pH of filtered output |
+| Before each session | Run P-04 for 2 minutes to verify filter flow; draw a sample at SV-01 and check pH of filtered output |
 | Before each session | Confirm P-04 suction pickup tube seated in sump well (visual check) |
 | After each session | Run P-04 to evacuate residual tray water to Brown or Black as appropriate |
 | Monthly | Inspect all pipe joints for leaks; tighten compression fittings if needed |

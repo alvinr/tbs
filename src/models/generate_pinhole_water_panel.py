@@ -299,12 +299,14 @@ def kit(part="all", p02_on_corridor=False):
     #    stays isolated in IBC-3 — the contamination fix.)  CV-3 anti-siphon check on the approach.
     r_ex = 4760                                          # entry X on the Brown-tote near face, just −X of DV-01 (clear of the tap 4880 + pump column 4934)
     r_ez = ov.IBC_H_1000 - 38                            # 1130 — Brown top-entry level (= the old DV-02→IBC-3 entry)
+    _rec0 = len(p)                                        # capture the recycle-leg elements _side_entry is about to append (part='recycle')
     cp._side_entry(p, "DV-01 recycle -> IBC-3 (buffer)",
         [(DCX + tipd, DCY, DCZ),                         # off DV-01's +X recycle port (z235)
          (DCX + tipd + 40, DCY, DCZ),                    # +X OUT of the port (collinear with the +X stub) — swept elbow at the next vertex
          (DCX + tipd + 40, DCY, r_ez),                   # RISE to the Brown top-entry level
          (r_ex, DCY, r_ez)],                             # −X along the corridor to the entry lane
         r_ex, cp.YD_NEAR, r_ez, -1, ov.C_BLUE, drop=-50, check=False)   # −Yd into the Brown tote; no CV-3 — P-04 has an integral check + top entry can't siphon (matches the old DV-02→IBC-3 entry)
+    recycle_elems = list(p[_rec0:])                      # the DV-01 recycle→IBC-3 pieces, captured by identity (material names leak across pipes — don't match by substring)
     # 6. DV-01 WASTE (branch, z+) → the shared IBC-4 merge tee's z− branch (DV-02's waste also lands here,
     #    on the tee run, so the two legs make ONE tote entry).
     mx, my, mz = cp.MERGE4
@@ -316,17 +318,23 @@ def kit(part="all", p02_on_corridor=False):
           (mx, my, DCZ),                                              # −Yd to the merge column at the far end
           (mx, my, mz)], rp, color=ov.C_IBC_WASTE)                    # rise into the merge tee's z− branch
     p.append(waste_pipe)
+    if part == "all":
+        return "\n".join(p)
+    # Part slices for the construction build-sequence, matched by ELEMENT IDENTITY (a pipe's material
+    # name is shared/leaked across every same-color pipe, so substring matching over-selects — see
+    # recycle_elems capture above).  recycle+waste+brown_ribbon+skid == all in BOTH P-02 modes:
+    #   • P-02 on wall  (Phase-1): brown_full is in `p`; split into brown_ribbon (→3.2) + brown_rise (→skid).
+    #   • P-02 on corridor (Phase-2): no wall suction — brown_ribbon is empty, recycle+waste+skid == all.
     if part == "recycle":
-        return recycle_pipe
+        return "\n".join(recycle_elems)
     if part == "waste":
         return waste_pipe
     if part == "brown_ribbon":
-        return brown_ribbon_pipe
+        return "" if p02_on_corridor else brown_ribbon_pipe
     if part == "skid":
-        # skid geometry only: drop the Phase-1 lines (recycle, waste) + the brown RIBBON (→3.2),
-        # and swap in the short brown RISE to P-02.
-        drop = {recycle_pipe, waste_pipe, brown_full_pipe}
-        return "\n".join([x for x in p if x not in drop] + [brown_rise_pipe])
+        drop = set(recycle_elems) | {waste_pipe} | (set() if p02_on_corridor else {brown_full_pipe})
+        keep = [x for x in p if x not in drop]
+        return "\n".join(keep + ([] if p02_on_corridor else [brown_rise_pipe]))
     return "\n".join(p)
 
 
@@ -576,8 +584,11 @@ def skid_row():
     return "\n".join(p)
 
 
-def skid_plumbing():
-    """Phase 2 — relocated tray-sump plumbing on the filter skid.  (Legs added incrementally.)"""
+def skid_plumbing(part="all"):
+    """Phase 2 — relocated tray-sump plumbing on the filter skid.  Legs are tagged by the
+    construction-model phase they install in — 'skid' (3.5: row + recycle-feed + spray) or
+    'ribbon' (3.2/1.3: sump suction + waste + P-02 feed, the under-walkway/corridor runs).
+    part='all' (default) returns every leg in build order (byte-identical to the water.skp build)."""
     p = []
     rp = ov.PUMP_PIPE_OD / 2
     cdk = "#222228"
@@ -682,7 +693,15 @@ def skid_plumbing():
          (b5rx + 40, CLIPY, 700),                           # DROP to the BV-05 recycled-port height
          (b5rx + 40, 69, 700),                              # +Yd to the BV-05 lane (Yd69)
          (b5rx, 69, 700)], rp, color=ov.C_IBC_BROWN))       # −X into the +X recycled port
-    return "\n".join(p)
+    if part == "all":
+        return "\n".join(p)
+    # Partition legs by the construction-model phase they install in, matched on each pipe's own
+    # embedded name (no re-ordering — keeps the 'all' path byte-identical to water.skp).
+    #   'skid'   (3.5): the on-panel skid-side legs — P-04->SV-02->DV-02, DV-02 recycle-feed->F1, ACC-02->BV-05
+    #   'ribbon' (3.2): the under-walkway / corridor legs — tray-sump suction (+strainer), DV-02 waste, P-02->ACC-02
+    SKID_LEGS = ("P-04 -> SV-02", "DV-02 feed -> F1", "ACC-02 -> BV-05")
+    def _is_skid(s): return any(k in s for k in SKID_LEGS)
+    return "\n".join(s for s in p if (part == "skid") == _is_skid(s))
 
 
 def build():

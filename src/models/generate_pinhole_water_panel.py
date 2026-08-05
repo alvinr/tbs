@@ -355,8 +355,9 @@ def tap01_supply():
     # Spray delivery: +Z spray port → coiled hose UP + FORWARD (+Yd) to the pole-top, going out around the pinhole
     p.append(ov.ruby_coil_cord("Spray-bar supply hose (selector -> spray bar, coiled)",
         [(b5x, b5y, b5z + dvt),                        # off the +Z spray port
-         (2410, 600, 800),                             # FORWARD-low to the spray-bar pole (below the pinhole Z1024, out at Yd600) BEFORE rising
-         (2420, 633, 1303)], r=7, color=ov.C_BLUE))    # UP alongside the pole to the pole-top feed (forward of the pinhole)
+         (2380, 480, 720),                             # FORWARD-low to the pole area (below the pinhole Z1024)
+         (2410, 660, 440),                             # LONG service loop — droop down for slack (below the pole, forward of the pinhole)
+         (2420, 633, 1303)], r=7, color=ov.C_BLUE))    # UP alongside the pole to the pole-top feed
     # TAP-01 chem branch (3/4in) up over the shelf + BV-04 isolation (overview path)
     p.append(ov.ruby_pipe_run("TAP-01 Branch (3/4in)",
         [(ov.TAP_X, yd, fz), (ov.TAP_X, yd, ov.SHELF_STOW_TOP_Z),

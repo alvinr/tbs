@@ -1,7 +1,7 @@
-routing-sources-sha: d42bd748ac2e
-model=water  pipes=374 solids=352  interferences=2
-  PIPE  Cct C feed (EP master sw -> corridor dist  (Circuit-C power + cabling (both panels))
-    x  FILTER     Cct C branch P-04 (filter skid)         near (3549,20,2375)
-  PIPE  Cct C feed (EP master sw -> corridor dist  (Circuit-C power + cabling (both panels))
-    x  FRAME      Frame rail (Yd)                         near (5146,1181,1838)
+routing-sources-sha: fe6b9aea380b
+model=construction  pipes=848 solids=627  interferences=8
+  PIPE  Fan A feed (Fan A tap -> pinhole-wall trun ([built] Step 1.4 — Fan A (exhaust) + its Cct-A electrical run to the EP drop)
+    x  FILTER     Cct C branch P-04 (filter skid)         near (3839,20,2358)
+  PIPE  Cable Trunking (40x25 PVC)                 ([built] Step 4.4 — Lights)
+    x  FILTER     Cct C branch P-04 (filter skid)         near (2946,20,2376)
 pipe-on-pipe crossings=0

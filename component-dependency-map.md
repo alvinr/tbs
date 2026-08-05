@@ -291,7 +291,7 @@ for the few generators not yet repointed (overview Blue-trunk shelf, walkway/wei
 
 *Components: 1× 1,000L caged composite IBC (Y-stacked behind Blue stack, right end zone),
 DN50 butterfly valve (S60×6) + S60×6-to-1" NPT adapter at drain outlet,
-integrated 3-stage Big Blue filter unit (50μm → 5μm → GAC carbon, wall-mounted, no separate skid frame), Shurflo P-02,
+3-stage Big Blue filter bank (5μm sediment → KDF-55 → carbon, wall-mounted on the filter skid), Shurflo P-04 (tray drain),
 3-way diverter valves 3W-DV-01 and 3W-DV-02, SV-01 pH sample tap.
 Filled via side-entry near the top from the P-04 tray-sump pickup pump (no top-cap access — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm headroom).*
 

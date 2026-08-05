@@ -214,7 +214,7 @@ Electrical services and the Blue supply pipe route along the pinhole wall face;
 the Corridor Plumbing Panel (pumps) sits in the IBC corridor (right end zone). No
 conduit, pipe, or cable runs through the optical zone.
 
-**Plumbing:** The corridor pumps (P-01 Blue supply, P-04 tray-sump transfer, plus
+**Plumbing:** The corridor pumps (P-01 Blue supply, P-02 Brown recycle, plus
 the P-05/P-03 waste-drain pumps) mount on the **Corridor Plumbing Panel** in the
 270mm IBC plumbing corridor (right end zone), at the tote stack — so the pump↔tote
 runs are short. The Blue supply pipe runs from P-01 along the pinhole wall to the

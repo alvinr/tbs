@@ -279,15 +279,19 @@ def kit(part="all", p02_on_corridor=False):
     # Drop SV-01 straight down the wall to a LOW strip level and run under the walkway beams (like the
     # other three lines).  On the corridor side it comes back DOWN just past the cantilever (like the
     # sump), runs under the grate to DV-01's Yd, then rises into DV-01's IN port.
+    # SV-01 -> DV-01: routed UP the skid panel + OVER the walkway (NOT under) — DV-01 is at the corridor
+    # mouth, so no under-walkway ribbon is needed; this frees ribbon lane 3.  Runs at SV-01 height (Z1010,
+    # above the grate Z140, below the IBC pallet Z1168), over to just −X of the corridor uprights, then
+    # +Yd and down BETWEEN them into DV-01.
     pipe("SV-01 -> DV-01 (single filtered line)",
-         [(svx + 25, sv_y, waist + 10),                                               # leave SV-01's +X face (in-line)
-          (svx + 50, sv_y, waist + 10),                                               # +X out (dog-leg)
-          (svx + 50, yW, waist + 10),                                                 # −Yd to the wall
-          (svx + 50, yW, 20),                                                         # DOWN the wall to below the blue trunk floor (Z38)
-          (svx + 50, 60, 20)]                                                         # +Yd (Yd60 clears the end beam)
-         + cp.ribbon_run(3, (DCX - 100, DCY, 65), (svx + 50, 60, 20), up_yd=cp.RIBBON_YD_DOWN)[::-1][1:]  # flush across the notched beam; crest rises at the SHARED line-1 Yd (RIBBON_YD_DOWN) so all 4 ribbon crests are uniform (Alvin 2026-07-24)
-         + [(DCX - 100, DCY, DCZ),                                                      # rise −X of the port to the IN-port height
-            (DCX - tipd, DCY, DCZ)],                                                    # +X 90° turn horizontally into DV-01's −X IN port
+         [(svx + 25, sv_y, waist + 10),        # leave SV-01's +X face (in-line)
+          (svx + 50, sv_y, waist + 10),        # +X out (dog-leg)
+          (svx + 50, yW, waist + 10),          # −Yd onto the clip plane (clamped to the ply)
+          (4620, yW, waist + 10),              # +X along the panel + OVER the walkway grate to −X of the corridor uprights (X4646)
+          (4620, DCY, waist + 10),             # +Yd across the walkway to DV-01's Yd (clear −X of the uprights)
+          (DCX - 100, DCY, waist + 10),        # +X into the upright gap (Yd1241) toward DV-01
+          (DCX - 100, DCY, DCZ),               # DROP between the uprights to DV-01 height
+          (DCX - tipd, DCY, DCZ)],             # +X into DV-01's −X IN port
          ov.C_FILTER)
     # 5. DV-01 RECYCLE (run+, +X) → IBC-3 BUFFER tote — the recycle loop's buffer; P-02 pulls from IBC-3.
     #    (Was routed to the Blue X1 fill cross; Blue is now FILL-ONLY fresh water, so the filtered recycle
@@ -605,19 +609,15 @@ def skid_plumbing():
     wlx   = cp.RIBBON_LANE_X[2]                           # lane 2 — freed now the sump goes direct to P-04
     gapyd = ov.RWK_RIBBON_NOTCH_YDS[2]                    # 1194 — lane-2 outer-beam notch Yd (single-sourced)
     CLIPY = 35                                            # clip plane — flush to the ply (= the F3→SV-01 filtered-line Yd), so the grey clamps to the panel
-    hx    = ov.PWP_SV01_X                                 # 4250 — F3→SV-01 filtered line X (the crossing to hump over)
     dv_waste = (ov.PWP_FILTER_X3 + (cp.DVB / 2 + cp.DVL), SROW_YD, lz)   # DV-02 +X waste port (4054,104,1312)
     riseX = cp.MERGE4[0] - 115                            # 5289 — seat-approach X (= old DV-02→IBC-4 drop lane, −x of the tee)
     p.append(ov.ruby_pipe_run("DV-02 waste -> IBC-4",
         [dv_waste,
          (dv_waste[0] + 36, SROW_YD, lz),                 # +X lead-out off the +X waste port
-         (dv_waste[0] + 36, CLIPY, lz),                   # −Yd onto the clip plane (flat on the ply — clamped)
-         (hx - 100, CLIPY, lz),                            # +X ALONG THE PLY SURFACE to the F3→SV-01 crossing (widened to span the in-line SV-01 dog-legs at svx±60)
-         (hx - 100, CLIPY + 35, lz),                       # HUMP over the F3→SV-01 verticals — elbow 1 (+Yd, proud of the panel)
-         (hx + 85, CLIPY + 35, lz),                       # elbow 2 (over the filtered line)
-         (hx + 85, CLIPY, lz),                            # elbow 3 (−Yd back onto the ply)
-         (wlx, CLIPY, lz),                                # elbow 4 → +X along the ply to lane 2 (clamped to the extended ply, up to the bend)
-         (wlx, 65, lz),                                   # +Yd clear of the RWk end beam (Yd0) before dropping
+         (dv_waste[0] + 36, SROW_YD, 950),                # DROP to under-SV-01 level (Z950 — below SV-01 Z975 and the F3→SV-01 line Z1010): the hump is no longer needed
+         (dv_waste[0] + 36, CLIPY, 950),                  # −Yd onto the clip plane (clamped to the ply)
+         (wlx, CLIPY, 950),                               # +X along the ply UNDER SV-01 to lane 2 (F3→SV-01 is above Z1010; the spout is at Yd104 — Yd35 clears both)
+         (wlx, 65, 950),                                  # +Yd clear of the RWk end beam (Yd0) before dropping
          (wlx, 65, RZ),                                   # DROP between the walkway beams into the ribbon (past the end beam, in front of the tray box)
          (wlx, cp.RIBBON_YD_UP, RZ),                      # +Yd along the lane (under the grate) to before the cantilever
          (wlx, cp.RIBBON_YD_UP, OVZ),                     # UP over the cantilever (Rule 5)

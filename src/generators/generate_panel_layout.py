@@ -1057,9 +1057,9 @@ def spine_view(side):
              color="#7A6A40", zorder=10, **FB)
 
     # ── Pump + ACC stack on the shirt front (single column, projected along Yd) ──
-    # 3D bases (Z AFF): ACC 355, P-01 615, P-04 940, P-05 1340, P-03 1740.
+    # 3D bases (Z AFF): ACC 355, P-01 615, P-02 940, P-05 1340, P-03 1740.
     for zb, h, lbl, hot in [(355, 200, "ACC-01", True), (615, 180, "P-01", False),
-                            (940, 180, "P-04", True), (1340, 180, "P-05", True),
+                            (940, 180, "P-02", True), (1340, 180, "P-05", True),
                             (1740, 180, "P-03", False)]:
         _rect(PUMP_FRONT_X, zb, PUMP_BACK_X - PUMP_FRONT_X, h,
               "#E6D9F0" if hot else "#EAEAEA", ec=C_OUT, lw=0.9, z0=5)
@@ -1067,7 +1067,7 @@ def spine_view(side):
                  ha="center", va="center", color="#202020", fontweight="bold", zorder=15,
                  bbox=dict(boxstyle="round,pad=0.12", fc="white", ec="none", alpha=0.85), **FB)
     leader(axb, PUMP_FRONT_X, 1830, 4570, 1980,
-           "PUMP COLUMN + ACC-01\n(P-01/P-04/P-05/P-03 + ACC-01,\nsame stack as the front elevation)",
+           "PUMP COLUMN + ACC-01\n(P-01/P-02/P-05/P-03 + ACC-01,\nsame stack as the front elevation)",
            color="#777", fs=5.3, ha=_ha("left"), va="center", arrow_style="-|>", font=FB)
 
     # ── Drain-riser spine (18mm ply fin, teed off the rear panel into the corridor) ──

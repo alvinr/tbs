@@ -1,3 +1,5 @@
 routing-sources-sha: b06cdb93e0b1
-model=construction  pipes=844 solids=617  interferences=0
-pipe-on-pipe crossings=0
+model=ibc-stack  pipes=356 solids=131  interferences=0
+pipe-on-pipe crossings=1
+  PIPE  DV-02 waste -> IBC-4                        
+    x  PIPE  P-02 -> ACC-02 (recycle spray)                cross (4844,1188,68)  centreline 14mm < 27mm

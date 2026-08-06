@@ -127,6 +127,7 @@ def generate_ruby():
         ov.component("IBC Tote Restraint", "IBC Frame", cp.tote_restraint()),
         ov.component("Corridor Rear Panel", "Plumbing & Panel", cp.rear_panel()),
         ov.component("Corridor Equipment", "Plumbing & Panel", cp.equipment(sump_on_skid=True)),
+        ov.component("Wall backing (ply)", "Plumbing & Panel", pw.backing()),
         ov.component("Pinhole-Wall Kit", "Plumbing & Panel", pw.kit(p02_on_corridor=True)),
         ov.component("Skid row (P-04 · SV-02 · DV-02)", "Plumbing & Panel", pw.skid_row()),
         ov.component("Skid plumbing", "Plumbing & Panel", pw.skid_plumbing()),

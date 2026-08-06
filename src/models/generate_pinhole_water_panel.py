@@ -450,13 +450,13 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TI
     (ov.C_LEN - 30, cp.X1_TEE_Y, cp.X1_TEE_Z, "X1\n(fresh fill)", -550, 250, 0),
     (ov.C_LEN - 30, cp.COL_L, 1700, "X3\n(brown drain out)", -550, 0, 250),
     (ov.C_LEN - 30, cp.COL_R, 1620, "X4\n(waste drain out)", -550, 0, -250),
+    (ov.BV02_X - 150, ov.PROC_TRAY_YD_NEAR - 11, 700, "3W-BV-05\n(spray selector)", 0, 380, 250),   # ON the wall-mounted spray-bar supply selector — main Labels tag (was context-only)
 ]
 # Off-panel / context labels — shown ONLY in the full "Labeled" scene (Labels Context tag), kept
 # OUT of the "Plumbing (labeled)" scene so their leaders don't clutter the plumbing view.
 LABEL_CONTEXT_POINTS = [
     (ov.TAP_X, 112, ov.TAP_Z, "TAP-01\n(chem tap)", 0, 450, 300),
     (ov.TAP_X, 12, 1010, "BV-04", -450, 0, 250),
-    (ov.BV02_X - 150, ov.PROC_TRAY_YD_NEAR - 11, 700, "3W-BV-05\n(spray selector)", 0, 380, 250),   # ON the wall-mounted selector (dropped clear of the pinhole)
 ]
 LABEL_INSTANCES = [
     ("Pinhole Assembly", "PINHOLE\n(optical ref)", 0, 700, 350),
@@ -603,13 +603,12 @@ def skid_plumbing(part="all"):
     lz = SROW_Z0 + 162                                   # 1312 — row line AT P-04's OUT-port height (straight run, no dog-leg)
     # ── Leg 1: tray sump pickup → P-04 IN  (DIRECT — deletes the long corridor ribbon) ──
     sfz = ov.PROC_TRAY_FLOOR_Z_LOW - ov.PROC_TRAY_SUMP_Z + 3
-    sfoot = (ov.PROC_TRAY_DRAIN_X, ov.PROC_TRAY_DRAIN_YD, sfz)          # (2399, 80, 3) — strainer in the well
     p04_in = cp.pump_in(ov.PWP_FILTER_X1, SROW_YD, SROW_Z0, "x", face=+1)   # (3220,130,1312)
+    sfoot = (ov.PROC_TRAY_DRAIN_X, SROW_YD, sfz)                         # (2399, 104, 3) — strainer in the well, DIRECTLY under the riser (Yd104 also clears the blue trunk at Yd69)
     p.append(ov.ruby_pipe_run("Tray sump -> P-04 suction",
-        [sfoot, (ov.PROC_TRAY_DRAIN_X, SROW_YD, 3),                      # +Yd along the floor to the P-04 lane, UNDER the blue supply trunk (Z41)
-         (ov.PROC_TRAY_DRAIN_X, SROW_YD, 90),                           # up at Yd104 — now clear of the blue trunk (Yd69)
-         (p04_in[0] - 20, SROW_YD, 90),                                 # +X UNDER THE WALKWAY (low) to below P-04
-         (p04_in[0] - 20, SROW_YD, p04_in[2]),                          # VERTICAL up to P-04's IN-port height
+        [sfoot,                                                          # strainer foot at the sump bottom
+         (ov.PROC_TRAY_DRAIN_X, SROW_YD, p04_in[2]),                     # VERTICAL RISER straight UP out of the strainer, through the walkway grate, to P-04's IN height
+         (p04_in[0] - 20, SROW_YD, p04_in[2]),                          # +X ABOVE the walkway to beside P-04
          p04_in], rp, color=ov.C_IBC_BROWN))                           # +X into P-04's −X IN port
     p.append(ov.ruby_cylinder("Tray sump strainer foot", *sfoot, 14, 36, color=cdk, axis="z"))
     # ── Leg 2: P-04 OUT → (SV-02 tap) → DV-02 IN, along the row at lz ──

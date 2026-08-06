@@ -24,6 +24,18 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Muslin re-cut to fit the washable tray; spray-beam lift-out resolved operationally.** The muslin
+  is now cut to the **washable tray area** — **4,359 × 2,000 mm** (`MUSLIN_CUT_W/H`), narrower AND
+  shorter than the film-plane ACM+frame (4,499 × 2,094) so it lies flat clear of the side rims and the
+  near-rim sump well; the tray, not the optics, is the size constraint (captured print ~94 of the
+  101 sq ft plane; muslin yardage 388→360 yd, still 3 rolls, no cost change). **No lift mechanism:** the
+  beam parks at the pinhole-wall end, the muslin is fed through the far drop-slot and pulled to it, then
+  the beam rolls back over the laid muslin to wash; deep maintenance extracts the beam through the
+  removable right-walkway grate (processing-tray report §4 + op-manual). Sump pickup nudged 13 mm
+  (`PROC_TRAY_DRAIN_X` 2,399→2,386) so the riser lands in a clear walkway-bracket bay. New
+  `MUSLIN_CUT_*`/`MUSLIN_AREA_SQFT` constants + muslin-cut facts. *(5 model `.skp` — water/overview/
+  construction/ibc-stack/spraybar — pending re-send for the 13 mm sump shift.)*
+
 - **Spray-bar + processing-tray redesign — full-width beam, center-draining tray.** The spray beam
   went to a **full-width 1½×1½×0.062″ square tube with 44 nozzles** (from the short 40×25 section);
   the tray floor was re-sloped to a **Yd-only 1:200 fall** (far rim high → near rim low, level across X)

@@ -104,10 +104,12 @@ FP_ANGLE_LEG  = 50.8   # angle leg size (mm) — 2" = 50.8mm
 FP_ANGLE_T    = 3.175  # angle thickness (mm) — 1/8" = 3.175mm
 DIBOND_T      = 3      # ACM (Dibond) backing sheet thickness (mm) — 3mm black ACM (Central Coast / TAP)
 MUSLIN_T      = 0.5    # muslin fabric thickness (mm, approx)
-# Pre-cut muslin = the IMAGE PLANE exactly (FP_W × FP_H), NO hem — its width is pinned to the
-# film-plane frame so the side/top spring clamps grip the raw selvage at the frame edge. When laid in
-# the tray for washing it drapes ~20mm/side over the 50mm rim (film plane 4499 > tray floor 4459) —
-# soft fabric over the rim, not a fit problem. Quoted in op-manual 0.4.7 via the film_plane_* facts.
+# Pre-cut muslin is CUT TO FIT THE PROCESSING TRAY (it is washed flat in the tray), so it is NARROWER
+# than the film-plane ACM+frame: MUSLIN_CUT_W/H (defined with the tray, below).  It mounts on the ACM
+# INSIDE the frame (~70mm/side proud of the muslin edge) and is clamped INBOARD on the ACM face
+# (field detail) — NOT captured in the frame's L-channel.  Muslin < tray < film-plane (ACM+frame).
+# Loading: the beam parks at the near/pinhole-wall end, the muslin is fed through the far drop-slot and
+# pulled across to the beam, then the beam rolls back over the laid muslin to wash (see the tray report).
 CLAMP_SPACING = 150    # clamp center-to-center spacing (mm)
 CLAMP_FILLER_D = FP_ANGLE_LEG - DIBOND_T - MUSLIN_T - FP_ANGLE_T   # inert HDPE filler depth into the L channel (mm) = 41.5
 CLAMP_N_HORIZ = FP_W // CLAMP_SPACING + 1   # clamps per horizontal edge
@@ -655,7 +657,8 @@ PROC_TRAY_SHIM_N   = 5          # number of shim strips across tray depth
 # Low LINE: the near-rim gutter (full width) collects the Yd-only fall and drains inward to a
 # single CENTER pickup well at X=PROC_TRAY_DRAIN_X.  The P-04 suction pops out of the walkway
 # above the pickup, then runs UNDER the walkway to the IBC end to rejoin the ribbon lanes.
-PROC_TRAY_DRAIN_X  = PH_X       # = 2399mm — center pickup (relocated from the IBC corner X4550)
+PROC_TRAY_DRAIN_X  = 2386       # near the center line (PH_X=2399), nudged -13 so the riser lands in a
+#                                 clear walkway grate bay, clearing the X2526 cantilever bracket by 50mm
 PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at the near rim (low edge of the Yd fall)
 
 BV02_X             = PH_X         # BV-02 X on pinhole wall — at pinhole centerline, arm's reach from operator during wash pass
@@ -665,6 +668,18 @@ PROC_TRAY_SUMP_W   = 180        # center pickup well width in X (mm) — a local
 #   (X=PROC_TRAY_DRAIN_X); hosts the brown P-04 suction strainer, well bottom on the container floor (Z0).
 PROC_TRAY_SUMP_D   = 100        # sump well depth in Yd (mm)
 PROC_TRAY_SUMP_Z   = 20         # sump well depth below tray floor (mm)
+
+# ── Muslin cut to fit the WASHABLE tray area (it is washed flat in the tray) ─────────
+# The muslin is cut NARROWER and SHORTER than the film-plane ACM+frame (see the film-plane §muslin
+# note) so it lies flat in the tray clear of the rims AND the near-rim sump well.  Width follows the
+# tray minus a wash clearance each side; height spans from just past the sump well (near) to the far
+# rim.  Muslin < washable tray area < tray < film plane (ACM+frame).
+MUSLIN_TRAY_CLEAR = 50                                                       # wash clearance, each edge (mm)
+MUSLIN_CUT_W   = PROC_TRAY_W - 2 * MUSLIN_TRAY_CLEAR                         # = 4359mm
+MUSLIN_YD_NEAR = PROC_TRAY_DRAIN_YD + PROC_TRAY_SUMP_D + MUSLIN_TRAY_CLEAR   # = 230mm — clears the sump well (Yd80..180)
+MUSLIN_YD_FAR  = PROC_TRAY_YD_FAR - MUSLIN_TRAY_CLEAR                        # = 2230mm
+MUSLIN_CUT_H   = MUSLIN_YD_FAR - MUSLIN_YD_NEAR                             # = 2000mm (washable depth, clear of the sump)
+MUSLIN_AREA_SQFT = round(MUSLIN_CUT_W * MUSLIN_CUT_H / 1e6 * 10.7639)       # = 94 sq ft (captured print; < the 101 sqft film plane)
 
 # ── Tray floor surface — SINGLE SOURCE for the raised, dual-axis-sloped basin ────────
 # The basin floor is NOT flat at Z0.  Its low corner is RAISED to Z=PROC_TRAY_SUMP_Z so the

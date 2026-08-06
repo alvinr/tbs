@@ -213,13 +213,20 @@ pump, providing steady flow to the spray bar.
 | BV-02 | 1/2" | Corridor | P-05 (Brown drain) suction isolation |
 | BV-03 | 1/2" | Corridor | P-02 (Brown recycle) suction isolation |
 | BV-04 | 1/2" | supply | TAP-01 chemistry-tap isolation |
-| BV-05 | 1/2" | supply | Spray-bar feed isolation |
+| BV-05 | 1/2" | supply | **Spray SELECTOR — 3-way L-port (Blue / Brown / closed)** |
 | BV-06 | 1/2" | Corridor | P-03 (waste evacuation) suction isolation |
 
-BV-01/BV-02/BV-03/BV-06 are the Corridor panel pump-suction isolation valves. **BV-05**
-is the primary operator-controlled valve — on the
-spray-bar feed, opened during wash passes; **BV-04** isolates the TAP-01 chemistry
-tap. All six are 1/2" Banjo V050FP quarter-turn ball valves.
+BV-01/BV-02/BV-03/BV-06 are the Corridor panel pump-suction isolation valves; **BV-04**
+isolates the TAP-01 chemistry tap. These five are 1/2" Banjo V050FP quarter-turn **2-way**
+ball valves.
+
+**BV-05 is different — a 1/2" 3-way L-PORT ball valve, the spray SELECTOR.** Both the Blue
+(fresh) and Brown (recycle) supply lines converge on it, and the operator turns it to send
+**Blue → spray**, **Brown → spray**, or **closed** (off) during a wash pass. It **must be an
+L-port**, not a T-port: a T-port has no off position (it always connects at least two ports).
+Confirm the chosen valve's port chart lists a true **OFF detent** — some L-ports use the 4th
+quarter-turn to cross-connect the two inlets (Blue↔Brown) instead of shutting off, which must
+be avoided (fresh↔recycle cross-connection).
 
 ### 4.2 Diverter Valves (3-Way)
 

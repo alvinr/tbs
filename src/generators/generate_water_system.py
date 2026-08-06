@@ -597,7 +597,7 @@ def draw_sheet2():
     ax2.text(tray_mid_x + 0.8, TRAY_Y0 + TRAY_DY / 2,
              "PANEL B\n1992 × 2200mm", ha="center", fontsize=6, color="#388E3C")
 
-    # Tray sump at IBC corner (P-04 suction pickup to 3W-DV-02)
+    # Tray sump at the center pickup (P-04 suction → 3W-DV-02)
     drain_x = PROC_TRAY_DRAIN_X * SX
     drain_y = PROC_TRAY_DRAIN_YD * SY
     fd = plt.Circle((drain_x, drain_y), 0.18, fc="white", ec="#388E3C", lw=1.8, zorder=4)
@@ -700,24 +700,20 @@ def draw_sheet3():
                   (PROC_TRAY_D - 2*PROC_TRAY_RIM),
                   fc="#C8E6C9", ec="none", zorder=1, alpha=0.5))
 
-    # Label corners with elevation annotations (high/low)
-    # Low point: IBC corner (near rim, right side) — drain at X=4550, Yd=80
-    # High point: far-left corner (opposite diagonal)
+    # Yd-only slope: FAR rim HIGH → NEAR rim LOW; the surface is LEVEL across X. The near-rim gutter
+    # then falls 1:200 in X inward to the single CENTER pickup well at X=PROC_TRAY_DRAIN_X (2399).
     drain_local_x_s3 = PROC_TRAY_DRAIN_X - PROC_TRAY_X_L
-    ax3.text((drain_local_x_s3), (-380), "LOW CORNER\n(DRAIN — IBC SIDE)",
+    ax3.text((drain_local_x_s3), (-380), "CENTER PICKUP\n(SUMP WELL — LOW POINT)",
              ha="center", fontsize=7.5, fontweight="bold", color="#D32F2F")
-    ax3.text((-50), (PROC_TRAY_D + 120),
-             "HIGH CORNER\n(FAR-LEFT)",
-             ha="left", fontsize=7.5, fontweight="bold", color="#1565C0")
-
-    ax3.text((-50), (PROC_TRAY_D / 2), "HIGH\nEDGE",
-             ha="right", va="center", fontsize=6.5, color="#1565C0", fontweight="bold")
-    ax3.text((PROC_TRAY_W + 50), (-70), "LOW EDGE",
-             ha="left", va="center", fontsize=6.5, color="#D32F2F", fontweight="bold")
+    ax3.text((PROC_TRAY_W / 2), (PROC_TRAY_D + 120),
+             "FAR RIM (HIGH)",
+             ha="center", fontsize=7.5, fontweight="bold", color="#1565C0")
+    ax3.text((PROC_TRAY_W * 0.22), (-70), "NEAR-RIM GUTTER (LOW)",
+             ha="center", va="center", fontsize=6.5, color="#D32F2F", fontweight="bold")
 
     # ── Slope arrows (flow direction) ───────────────────────────────────────────
-    # Water flows toward drain at IBC corner (right side, near edge)
-    # Draw a grid of arrows showing combined flow direction
+    # Yd-only fall: the main surface sheets straight toward the NEAR rim (−Yd), level across X; in the
+    # near-rim gutter band the flow turns and runs in X to the single CENTER pickup well.
 
     ARROW_COLOR = "#1976D2"
     ARROW_ALPHA = 0.7
@@ -729,15 +725,19 @@ def draw_sheet3():
     # Grid of flow arrows across the tray interior
     n_cols = 9
     n_rows = 5
+    GUTTER_BAND = PROC_TRAY_D * 0.16     # near-rim gutter zone: below this Yd the flow turns to X
     for i in range(n_cols):
         for j in range(n_rows):
             # Position in tray-local mm
             ax_mm = PROC_TRAY_W * (i + 0.5) / n_cols
             ay_mm = PROC_TRAY_D * (j + 0.5) / n_rows
 
-            # Flow direction: toward drain at IBC corner
-            dx_mm = (drain_local_x - ax_mm)
-            dy_mm = (drain_local_yd - ay_mm)
+            # Yd-only slope: main floor sheets toward the near rim (−Yd); the near-rim gutter then
+            # carries it in X to the center pickup.
+            if ay_mm > GUTTER_BAND:
+                dx_mm, dy_mm = 0.0, -1.0                     # straight down the fall to the near rim
+            else:
+                dx_mm, dy_mm = (drain_local_x - ax_mm), 0.0  # along the gutter to the center pickup
 
             # Normalize and scale to fixed arrow length
             mag = math.sqrt(dx_mm**2 + dy_mm**2)
@@ -779,25 +779,23 @@ def draw_sheet3():
            fs=7, color="#D32F2F", ha="left")
 
     # ── Slope annotations ────────────────────────────────────────────────────────
-    # Slope: 1:200 in both X and Yd toward drain corner (IBC side)
-    x_fall = PROC_TRAY_W / 200  # full-width fall (left to right)
-    yd_fall = PROC_TRAY_D / 200  # full-depth fall (far to near)
+    # Yd-only fall 1:200 (far → near rim), LEVEL across X; the near-rim gutter falls 1:200 in X to the
+    # single center pickup.
+    yd_fall = PROC_TRAY_D / 200            # far-to-near fall over the tray depth
+    gutter_fall = (PROC_TRAY_W / 2) / 200  # near-rim gutter fall from an X-edge in to the center pickup
 
-    # X-slope annotation (center of tray)
-    ann_x = (PROC_TRAY_W * 0.5)
-    ann_y = (PROC_TRAY_D * 0.5)
-    ax3.text(ann_x, ann_y,
-             f"X-SLOPE: 1:200 → IBC CORNER\n({x_fall:.1f}mm fall over {PROC_TRAY_W:.0f}mm)",
+    # Main-surface Yd-slope annotation
+    ax3.text((PROC_TRAY_W * 0.5), (PROC_TRAY_D * 0.55),
+             f"Yd-SLOPE 1:200 (far → near rim)\n({yd_fall:.0f}mm fall over {PROC_TRAY_D}mm) — LEVEL across X",
              ha="center", va="center", fontsize=7, color="#0D47A1",
              bbox=dict(fc="white", ec="#0D47A1", lw=0.8, pad=3, alpha=0.9),
              zorder=8)
 
-    # Yd-axis slope annotation (upper area)
-    ann_y2 = (PROC_TRAY_D * 0.78)
-    ax3.text((PROC_TRAY_W * 0.5), ann_y2,
-             f"Yd-SLOPE: 1:200\n({yd_fall:.1f}mm fall over {PROC_TRAY_D}mm)",
-             ha="center", va="center", fontsize=7, color="#0D47A1",
-             bbox=dict(fc="white", ec="#0D47A1", lw=0.8, pad=3, alpha=0.9),
+    # Near-rim gutter X-slope annotation
+    ax3.text((PROC_TRAY_W * 0.5), (PROC_TRAY_D * 0.10),
+             f"NEAR-RIM GUTTER 1:200 → center pickup\n(~{gutter_fall:.0f}mm fall over {PROC_TRAY_W/2:.0f}mm each side)",
+             ha="center", va="center", fontsize=6.5, color="#0D47A1",
+             bbox=dict(fc="white", ec="#0D47A1", lw=0.8, pad=2, alpha=0.9),
              zorder=8)
 
     # ── Dimensions ───────────────────────────────────────────────────────────────
@@ -849,54 +847,24 @@ def draw_sheet3():
              "FAR\nWALKWAY\n(300mm)",
              ha="left", va="center", fontsize=6, color=WK_COLOR)
 
-    # ── Pipe run from drain (rev12 routing) ──────────────────────────────────────
-    # 1" suction hose exits the sump, drops in the grate gap in FRONT of the tray
-    # (Yd~50, clear of the rev12 right-walkway long beam), runs RIGHT to the tray–IBC
-    # gap, then turns NORTH up the gap to the equipment panel (corridor, Yd≈1046).
-    corner_local_x = PROC_TRAY_W + 15   # just past tray right edge (into the tray–IBC gap)
-    pipe_rim_yd = drain_local_yd - 30    # ~Yd50 — in front of the tray near rim (the twist depth)
-    pipe_rim_dy = (pipe_rim_yd)
+    # ── Suction pickup (current design) ──────────────────────────────────────────
+    # The 1" suction pops UP through the walkway grate directly above the center pickup (a VERTICAL
+    # riser at X=PROC_TRAY_DRAIN_X), then runs above the walkway to P-04 on the pinhole-wall filter
+    # skid.  In this top-down plan the riser is a point at the pickup (out of the page); the above-
+    # walkway run to P-04 is off this view.  A ⊙ riser marker sits on the drain symbol.
+    ax3.plot(drain_dx, drain_dy, marker="o", ms=6, mfc=C_BROWN, mec="white", mew=1.2, zorder=8)
 
-    # Short drop from sump to rim exterior
-    ax3.plot([drain_dx, drain_dx], [drain_dy - DRAIN_R, pipe_rim_dy],
-             color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=5)
-
-    # Right along rim exterior to tray corner
-    corner_dx = (corner_local_x)
-    ax3.plot([drain_dx, corner_dx], [pipe_rim_dy, pipe_rim_dy],
-             color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=5)
-
-    # North from tray corner to corridor level
-    panel_local_yd = CORRIDOR_YD_NEAR - PROC_TRAY_YD_NEAR   # 966mm
-    panel_local_x = EQPANEL_X - PROC_TRAY_X_L               # 4830mm
-    panel_dy = (panel_local_yd)
-    panel_dx = (panel_local_x)
-    ax3.plot([corner_dx, corner_dx], [pipe_rim_dy, panel_dy],
-             color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=5)
-
-    # Right into equipment panel
-    ax3.plot([corner_dx, panel_dx], [panel_dy, panel_dy],
-             color=C_BROWN, lw=2.5, solid_capstyle="round", zorder=5)
-
-    # Equipment panel symbol (small rectangle at pipe terminus)
-    ax3.add_patch(plt.Rectangle(((panel_local_x), (panel_local_yd - 85)),
-                  (50), (170),
-                  fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=6))
-
-    leader(ax3, (panel_local_x + 50), (panel_local_yd),
-           (panel_local_x + 25), (panel_local_yd + 205),
-           "CORRIDOR PLUMBING PANEL\n(P-04 — tray drain)", fs=6.5, color=C_PUMP)
-
-    ax3.text(((drain_local_x + corner_local_x) / 2), (pipe_rim_yd - 120),
-             "P-04 SUCTION HOSE ALONG RIM EXTERIOR",
-             ha="center", fontsize=6.5, color=C_BROWN, style="italic", zorder=8)
+    leader(ax3, (drain_local_x), (drain_local_yd + DRAIN_R),
+           (drain_local_x + 250), (drain_local_yd + 780),
+           "P-04 SUCTION — VERTICAL RISER\n(pops UP through the walkway →\nP-04 on the pinhole-wall filter skid)",
+           fs=6.5, color=C_BROWN, ha="left")
 
     # ── Notes ────────────────────────────────────────────────────────────────────
     notes = [
         "NOTES:",
-        f"1. Dual-axis pitch 1:200 — water converges on sump at X={PROC_TRAY_DRAIN_X}, Yd={PROC_TRAY_DRAIN_YD}.",
-        f"2. Maximum fall: {PROC_TRAY_PITCH}mm (Yd axis) + {x_fall:.1f}mm (X axis from far corner to sump).",
-        f"3. Sump well ({PROC_TRAY_SUMP_W}x{PROC_TRAY_SUMP_D}x{PROC_TRAY_SUMP_Z}mm) pressed into tray floor — P-04 suction pickup lifts to IBC-3 side-entry near top.",
+        f"1. Yd-only pitch 1:200 (far → near rim, LEVEL across X); the near-rim gutter falls 1:200 in X to the center pickup at X={PROC_TRAY_DRAIN_X}, Yd={PROC_TRAY_DRAIN_YD}.",
+        f"2. Maximum fall: {PROC_TRAY_PITCH}mm (Yd axis, far → near rim) + ~{gutter_fall:.0f}mm (near-rim gutter, X edge → center pickup).",
+        f"3. Sump well ({PROC_TRAY_SUMP_W}x{PROC_TRAY_SUMP_D}x{PROC_TRAY_SUMP_Z}mm) at the gutter low point — the P-04 suction pops UP through the walkway to P-04 on the filter skid.",
         f"4. Tray: 304 SS, {PROC_TRAY_RIM}mm rim, on tapered HDPE shim strips. No tray floor penetration.",
         f"5. Wall-cantilevered walkway — no legs or structure on tray floor near sump.",
     ]
@@ -1370,7 +1338,7 @@ def draw_sheet4():
     # ═════════════════════════════════════════════════════════════════════════════
     SC_C = 1.0
 
-    SUMP_X = PROC_TRAY_DRAIN_X   # 4550mm
+    SUMP_X = PROC_TRAY_DRAIN_X   # 2399mm — center pickup (relocated from the old IBC-corner X4550)
     TRAY_X_R = PROC_TRAY_X_R     # 4629mm
     IBC_X = IBC_COL_X             # 4674mm
     EP_X = EQPANEL_X              # 4874mm — equipment panel face X (v2 corridor mouth)

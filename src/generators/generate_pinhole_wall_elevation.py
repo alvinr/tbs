@@ -428,9 +428,14 @@ ax.text(sx(PROC_TRAY_DRAIN_X), sz(50), "SUMP PICKUP\n(up through walkway → P-0
 # ── ACC-02 IN — fed from P-02 in the corridor (off-panel, +X) ──
 _bpipe([4575, PWP_ACC2_X + 63], [PWP_ACC2_Z0 + 120, PWP_ACC2_Z0 + 120])
 ax.text(sx(4585), sz(PWP_ACC2_Z0 + 120), "from P-02\n(corridor)", ha="left", va="center", fontsize=3.2, color=C_BROWN, zorder=10, **FONT)
-# ── ACC-02 OUT — → BV-05 spray selector (off-panel, low-X) ──
-_bpipe([PWP_ACC2_X - 63, 2780], [PWP_ACC2_Z0 + 60, PWP_ACC2_Z0 + 60])
-ax.text(sx(2770), sz(PWP_ACC2_Z0 + 60), "→ BV-05\n(spray)", ha="right", va="center", fontsize=3.2, color=C_BROWN, zorder=10, **FONT)
+# ── ACC-02 OUT — recycled spray → 3W-BV-05 spray selector → spray bar ──
+_bv5x, _bv5z = BV02_X - 150, BV02_Z
+_bpipe([PWP_ACC2_X - 63, _bv5x, _bv5x], [PWP_ACC2_Z0 + 60, PWP_ACC2_Z0 + 60, _bv5z + 20])
+# 3W-BV-05 selector symbol (fresh Blue ↔ recycled Brown → spray bar)
+ax.add_patch(mpatches.Rectangle((sx(_bv5x) - 8, sz(_bv5z) - 8), 16, 16, facecolor=C_VALVE, edgecolor=C_OUT, lw=0.8, zorder=12))
+ax.text(sx(_bv5x), sz(_bv5z + 60), "3W-BV-05\n(spray selector)", ha="center", va="bottom", fontsize=3.2, color=C_BROWN, zorder=10, **FONT)
+# BV-05 → down to the spray-bar supply line (where the Blue supply feeds in)
+_bpipe([_bv5x, _bv5x], [_bv5z - 20, SPRAY_BAR_FEED_Z])
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 4a. PLUMBING — Blue supply to spray bar (rev 7: simplified)

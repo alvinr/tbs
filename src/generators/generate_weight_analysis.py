@@ -507,7 +507,7 @@ def build_components():
                   PUMP_X, PUMP_X + PUMP_W,
                   CORRIDOR_YD_NEAR, CORRIDOR_YD_NEAR + PUMP_D,
                   PUMP_H_LO, PUMP_H_HI, color=C_PUMP,
-                  calc_note="4× Shurflo 2088 pumps (P-01/P-03/P-04/P-05) + ACC-01 on the Corridor panel"),
+                  calc_note="4× Shurflo 2088 pumps (P-01/P-02/P-03/P-05) + ACC-01 on the Corridor panel"),
         Component("Plumbing — Pinhole Wall panel", "equipment", 8.0,
                   3300, 4016,                    # wet-end filter kit X span (F1–F3 + housing)
                   12, 196,                       # near the pinhole wall (low Yd)

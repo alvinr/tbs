@@ -223,7 +223,7 @@ PARTS: list[Part] = [
     Part("valve-v050fp-wall", 'Banjo V050FP ball valve 1/2" FNPT', "plumbing-fittings",
          "water", 1, "ea", 44.27, 44.27, "US Plastic Corp", "Amazon", spec="PP full-port quarter-turn; pump-suction isolation BV-03 (P-02)", panel="Pinhole Wall", part_no="30651", url="https://www.usplastic.com/catalog/item.aspx?itemid=30651"),
     Part("valve-v050fp-supply", 'Banjo V050FP ball valve 1/2" FNPT', "plumbing-fittings",
-         "water", 2, "ea", 44.27, 44.27, "US Plastic Corp", "Amazon", spec="PP full-port; supply isolation BV-04 (TAP-01 chem tap), BV-05 (spray-bar feed)", part_no="30651", url="https://www.usplastic.com/catalog/item.aspx?itemid=30651"),
+         "water", 2, "ea", 44.27, 44.27, "US Plastic Corp", "Amazon", spec="PP full-port; supply isolation BV-04 (TAP-01 chem tap) + BV-05 placeholder. NOTE: BV-05 (spray-bar feed) must be RE-SOURCED as a 3-way L-PORT spray SELECTOR (Blue/Brown/CLOSED, NOT T-port) with a verified OFF detent — see plumbing-report §5 + TODO; priced here as a 2-way placeholder pending the firmed L-port SKU.", part_no="30651", url="https://www.usplastic.com/catalog/item.aspx?itemid=30651"),
     Part("valve-v100fp", 'Banjo V100FP ball valve 1" FNPT', "plumbing-fittings",
          "water", 6, "ea", 49.45, 49.45, "US Plastic Corp", "Amazon", spec="PP full-port; V1/V3/V4, VB1–VB3 (IBC fill/drain)", part_no="30653", url="https://www.usplastic.com/catalog/item.aspx?itemid=30653"),
     Part("valve-3way-half", '3-way diverter valve 1/2" FNPT', "plumbing-fittings",

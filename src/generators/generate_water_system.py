@@ -1244,23 +1244,23 @@ def draw_sheet4():
               ha="left", va="bottom", fontsize=5.5, color=C_FRAME,
               fontweight="bold", zorder=6)
 
-    # ── Suction riser: from pickup tube top, straight UP toward P-04 ─────────────
-    # P-04 sits on the pinhole-wall filter skid at X≈3300 (INTO the page in this
-    # section at X=2399) and Z≈1150–1312 — far above this view's Z range (0–638).
-    # The suction rises vertically out of the sump (no fold-back), then runs +X
-    # above the walkway to P-04.  Shown here as a vertical riser truncated at top.
+    # ── Suction riser: up ~150mm above the walkway, then 90° +X (INTO the page) ──
+    # P-04 sits on the pinhole-wall filter skid at X≈3300 (INTO the page in this section
+    # at X=2399).  The suction rises only ~150mm above the walkway deck, then DOG-LEGS +X
+    # (into the page) along the deck and rises to P-04 AT the skid — no tall wall riser.
     RISER_YD_B = tube_yd_b            # stays directly over the pickup
-    RISER_Z_TOP = 600                 # truncated top within view (rises to Z≈1312)
+    RISER_Z_TOP = WK_DECK_H + 150     # 250 — ~150mm above the walkway deck, then turns into the page
     draw_pipe_path(ax4b, [RISER_YD_B, RISER_YD_B],
                    [tube_z_top_b - HOSE_OD, RISER_Z_TOP],
                    HOSE_OD, HOSE_WALL,
                    fc=C_BROWN, ec="#5A3020", zorder=4)
 
-    # Break mark (zigzag) at the truncated riser top
-    brk_w_r = 26
-    ax4b.plot([(RISER_YD_B - brk_w_r/2), (RISER_YD_B), (RISER_YD_B + brk_w_r/2)],
-              [(RISER_Z_TOP - 8), (RISER_Z_TOP + 8), (RISER_Z_TOP - 8)],
-              color=C_BROWN, lw=1.2, zorder=5, clip_on=True)
+    # into-the-page (⊗) turn marker at the riser top — the pipe turns +X, leaving the section plane
+    _rr = HOSE_OD / 1.5 / SC_B
+    ax4b.add_patch(plt.Circle((RISER_YD_B, RISER_Z_TOP), _rr, fc="white", ec=C_BROWN, lw=1.3, zorder=6))
+    _d = _rr * 0.7
+    ax4b.plot([RISER_YD_B - _d, RISER_YD_B + _d], [RISER_Z_TOP - _d, RISER_Z_TOP + _d], color=C_BROWN, lw=1.0, zorder=7)
+    ax4b.plot([RISER_YD_B - _d, RISER_YD_B + _d], [RISER_Z_TOP + _d, RISER_Z_TOP - _d], color=C_BROWN, lw=1.0, zorder=7)
 
     # ── Near walkway (Yd=0-300) — pickup pops UP through the grate ───────────────
     ax4b.add_patch(plt.Rectangle(((0), (WK_DECK_H - WK_GRATE_T)),
@@ -1268,12 +1268,12 @@ def draw_sheet4():
                   fc="#E0D6C8", ec="#8D6E63", lw=1.0, hatch="///", zorder=3,
                   alpha=0.7))
 
-    # Destination leader — up + into page to P-04 on the filter skid
+    # Destination leader — the dog-leg into the page to P-04 at the skid
     leader(ax4b, (RISER_YD_B), (RISER_Z_TOP),
-           (RISER_YD_B + 250), (RISER_Z_TOP - 42),
-           "RISER UP THROUGH THE WALKWAY,\n"
-           "then +X (INTO PAGE) to P-04 on the\n"
-           "PINHOLE-WALL FILTER SKID (X=3300):\n"
+           (RISER_YD_B + 250), (RISER_Z_TOP + 150),
+           "RISER ~150mm ABOVE THE WALKWAY,\n"
+           "then 90° +X (INTO PAGE) along the deck,\n"
+           "rising to P-04 at the FILTER SKID (X=3300):\n"
            "P-04 → SV-02 → 3W-DV-02 → filter train",
            fs=6, color=C_PUMP, ha="left")
 

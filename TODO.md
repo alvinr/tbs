@@ -92,6 +92,7 @@ bucketed by WHEN it can be acted on:_
   - **Steel-yard bulk quotes:** `ibcf-rhs`/`ibcf-feet`/`ibcf-wall-backing` (2×2×⅛ A500 + A36 plate), `shelf-steel-shs` (1×1×⅛ A500 6 m). Estimates are realistic bulk figures.
   - **At-purchase confirms:** `shelf-folding-stays` + `shelf-transport-latch` (zinc chosen, estimates hold).
 - [ ] **Master-BOM SKU backfill.** Branded rows that don't yet carry a registry `part_no` — Alvin's supplier paste-check; each SKU auto-appears in the master on the next `--inject`.
+- [ ] **BV-05 → 3-way L-port spray selector (re-source + split the part).** BV-05 is the spray SELECTOR: both Blue (fresh) and Brown (recycle) converge on it and it sends Blue→spray / Brown→spray / **closed** (see plumbing-report §5). It must be a **3-way L-PORT** ball valve (NOT T-port — a T-port has no off position) with a **verified OFF detent** (some L-ports cross-connect the two inlets at the 4th quarter-turn instead of shutting off — avoid). Chemistry-wetted → PVC or PP body. **Currently a placeholder:** it's grouped into the qty-2 `valve-v050fp-supply` 2-way Banjo line. Firm a real 1/2" 3-way L-port SKU + price, then split it into its own `parts.py` line (drop the qty-2 to 1 for BV-04) and reconcile `costing.py` (the $1 registry-rounding needs the real price to settle cleanly). (Alvin 2026-08-06.)
 
 ### Cost-reduction opportunities (grounding — analysis 2026-07-31)
 Ranked by saving potential, analogous to the SS→ALU depth-rail switch (`fp-u-channel` $2,173→$328). Each

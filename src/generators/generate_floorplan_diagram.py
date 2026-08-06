@@ -161,7 +161,7 @@ def floor_plan():
     for hx in np.arange(FP_X_L + 100, FP_X_R, 200):
         ax.plot([hx, hx + 60], [FP_Y, FP_Y], color=C_FILM, lw=1.5, zorder=5, alpha=0.5)
     ax.text(PH_X, FP_Y + 30,
-            f"MUSLIN IMAGE PLANE  ({FP_W}×{FP_H}mm)  Y={FP_Y}mm",
+            f"IMAGE PLANE / FILM FABRIC  ({FP_W}×{FP_H}mm frame; muslin cut {MUSLIN_CUT_W}×{MUSLIN_CUT_H})  Y={FP_Y}mm",
             color=C_FILM, fontsize=7, ha="center", va="bottom", **FONT, backgroundcolor=BG)
 
     # ── Pinhole ───────────────────────────────────────────────────────────────

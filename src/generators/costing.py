@@ -34,8 +34,8 @@ PRICE_AMFE_PER_KG = 64.20 # Artcraft Chemicals — ferric ammonium oxalate (AmFe
 PRICE_FERRI_PER_KG = 51.01 # Artcraft Chemicals — potassium ferricyanide, $104.12/4.5 lb (firm 2026-07-26) = $51.01/kg (was $60.80/kg Bostick — consolidated cyanotype chemistry to one supplier, Artcraft)
 DICHROMATE_RUN = 25.00 # ammonium dichromate — trace contrast agent (0.1–0.4% w/v), per-run allowance. Artcraft Chemicals $33.66/0.5 lb (firm 2026-07-26; small pack ≈ $148/kg but trace use) — ~one 0.5-lb pack per run.
 MUSLIN_ROLL_PRICE = 100.00 # Fabric Direct — 60" x 150-yd unbleached muslin roll
-MUSLIN_ROLLS = 3 # ~388 yd / 150 -> 3 rolls (still 3 rolls after the FP_H 2138->2094 area drop)
-MUSLIN_YARDS = 388 # 2026-07-17: 50 prints × 101 sqft × 1.15 waste = 5,808 sqft ÷ 5 ft = ~1,162 linear ft = 388 yd (was 399 at 104 sqft)
+MUSLIN_ROLLS = 3 # ~360 yd / 150 -> 3 rolls (still 3 rolls after the muslin re-cut to fit the tray, 94 sqft)
+MUSLIN_YARDS = 360 # 2026-08-06: 50 prints × 94 sqft (muslin cut 4,359×2,000, MUSLIN_AREA_SQFT) × 1.15 waste = 5,405 sqft ÷ 5 ft = ~1,081 linear ft = 360 yd (was 388 at 101 sqft = full image plane)
 
 
 # ── Ware New Cyanotype concentration tiers (per 50-print run) ────────────────

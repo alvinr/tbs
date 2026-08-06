@@ -362,7 +362,7 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 | Ferric ammonium oxalate (AmFe) | 11.4 kg / ~$730 | **17.1 kg / ~$1,100** | 34.2 kg / ~$2,200 | Artcraft Chemicals (~$64/kg) |
 | Potassium ferricyanide (3:1 ratio) | 3.8 kg / ~$194 | **5.7 kg / ~$291** | 11.4 kg / ~$582 | Artcraft Chemicals ($51/kg) |
 | Ammonium dichromate (contrast, 0.1–0.4%) | ~$25 | **~$25** | ~$25 | Artcraft Chemicals |
-| Unbleached cotton muslin, 60″ — 3 × 150-yd rolls (~388 yd) | ~$300 | **~$300** | ~$300 | Fabric Direct (~$100/roll) |
+| Unbleached cotton muslin, 60″ — 3 × 150-yd rolls (~360 yd) | ~$300 | **~$300** | ~$300 | Fabric Direct (~$100/roll) |
 | **Cyanotype total — 50 prints** | **~$1,250** | **~$1,710** | **~$3,100** | |
 <!-- END costing:chemistry-7-1 -->
 

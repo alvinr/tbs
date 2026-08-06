@@ -3798,7 +3798,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Sump
   grp = ents.add_group
   grp.name = "Tray Sump"
-  face = grp.entities.add_face([2309.mm,80.mm,0.mm], [2489.mm,80.mm,0.mm], [2489.mm,180.mm,0.mm], [2309.mm,180.mm,0.mm])
+  face = grp.entities.add_face([2296.mm,80.mm,0.mm], [2476.mm,80.mm,0.mm], [2476.mm,180.mm,0.mm], [2296.mm,180.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(20.mm)
   mat = model.materials["Tray Floor"] || model.materials.add("Tray Floor")

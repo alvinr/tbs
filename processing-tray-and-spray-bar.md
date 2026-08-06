@@ -524,6 +524,22 @@ stud to the telescoping pole. Because the M12 stud is too small to pinch inside 
 
 The step-by-step spray bar setup, wash pass procedure, Brown water recycling passes, and storage are documented in the [Operating Manual — Phase 4: Development](operating-manual.md#42-development-in-water).
 
+### 4.1 Muslin Fit — Cut to the Washable Tray Area
+
+The muslin is cut to fit the **washable area of the tray**, not the full image plane: <!-- BEGIN fact:muslin_cut_width_mm -->4,359<!-- END fact:muslin_cut_width_mm --> × <!-- BEGIN fact:muslin_cut_height_mm -->2,000<!-- END fact:muslin_cut_height_mm -->mm — **narrower and shorter** than the film-plane ACM+frame (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm). It is inset 50mm from each side rim and from the far rim, and its near edge clears the near-rim **sump well** (Yd 80–180). It therefore lies dead flat with no edge draping a rim or sagging into the sump, and mounts inside the frame (~70mm/side of bare ACM), clamped **inboard on the ACM face** (a field detail). The tray — not the optics — is the size constraint here.
+
+### 4.2 Loading the Muslin — Park-and-Roll (no beam lift)
+
+Loading needs **no lift mechanism**. The beam parks out of the way and the muslin is laid up to it:
+
+1. Roll the spray-bar gantry to the **near (pinhole-wall) end** of its Yd travel and park it there.
+2. Feed the exposed muslin down through the **far muslin-drop slot** (image-plane side) and pull it across the tray toward the parked beam until it lies flat over the washable area.
+3. The beam is now free to **roll back over the laid muslin** to wash — its wheels run on the bare tray floor at the X-edges (outboard of the muslin), and the beam body clears the thin fabric (the 9mm beam-to-floor gap, §3.4).
+
+### 4.3 Beam Removal for Maintenance
+
+For deep cleaning or nozzle service, **lift out the right walkway grate** and extract the beam through that opening. No in-tray lift-out or quick-release is built into the gantry — the removable walkway grate *is* the access path.
+
 ---
 
 ## 5. Engineering Drawings

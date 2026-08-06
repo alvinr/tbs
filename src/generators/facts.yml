@@ -142,6 +142,21 @@ film_plane_height_mm:
   owner: film-plane-mechanism-report.md
   display: comma
 
+# Muslin cut size — INJECTION-ONLY. The muslin is cut to fit the WASHABLE tray area (narrower AND
+# shorter than the film-plane frame), so it differs from film_plane_width/height. No aliases (the
+# values can appear in other contexts); filled only where a placeholder marks the muslin cut.
+muslin_cut_width_mm:
+  constant: MUSLIN_CUT_W
+  unit: mm
+  owner: operating-manual.md
+  display: comma
+
+muslin_cut_height_mm:
+  constant: MUSLIN_CUT_H
+  unit: mm
+  owner: operating-manual.md
+  display: comma
+
 # Container interior — INJECTION-ONLY (no aliases): 2388 also = film-plane/container height, 5893
 # appears in comparison contexts, and 2362 (width) ALSO equals the focal length (the optical axis runs
 # across the container's short dimension), so they're filled only where a placeholder marks the meaning.

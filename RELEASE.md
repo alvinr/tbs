@@ -24,6 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Sump→P-04 suction re-routed off the pinhole wall.** The tray-drain suction ran as a tall riser
+  straight up the pinhole wall (a clash); it now rises only ~150 mm above the walkway deck, turns 90°
+  toward the skid, runs above the walkway, then a second 90° turn up into P-04 at the skid. Cascaded
+  through `skid_plumbing()` into **water/overview/construction/ibc-stack** (all reuse it); interference
+  audit clean (0 pipe crossings, the re-route added none). *(BV-05 spray selector confirmed a single
+  L-port 3-way — Blue-open / Brown-open / closed.)*
+
 - **Muslin re-cut to fit the washable tray; spray-beam lift-out resolved operationally.** The muslin
   is now cut to the **washable tray area** — **4,359 × 2,000 mm** (`MUSLIN_CUT_W/H`), narrower AND
   shorter than the film-plane ACM+frame (4,499 × 2,094) so it lies flat clear of the side rims and the

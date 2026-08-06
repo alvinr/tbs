@@ -761,13 +761,13 @@ def draw_pinhole_panel():
     F1_XL, F1_XR = PWP_FILTER_X1 - BB_OD // 2, PWP_FILTER_X1 + BB_OD // 2
     F3_XR = PWP_FILTER_X3 + BB_OD // 2
 
-    # tray-sump suction: enters P-04's −X (LEFT) IN port — SIDE entry per convention (not up through the
-    # base); rises from the sump line off the panel's low-X edge, turns in to the port height.
+    # tray-sump suction: enters P-04's TOP port — the Shurflo 2088 ports are on top (per convention),
+    # so the suction rises from the sump line and comes DOWN into the pump's top face.
     SUCT_TURN_Z = 850
     SRC_X = PWP_FILTER_X1 - 250
-    P4_IN_Z = PWP_SROW_Z0 + 90                 # IN-port height on P-04's −X face (body center)
-    pw_pipe([SRC_X, SRC_X, P4_XL],
-            [SUCT_TURN_Z, P4_IN_Z, P4_IN_Z], C_BROWN, zorder=Z_BROWN)
+    P4_TOP_Z = PWP_SROW_Z0 + 180               # top of P-04's body (port face)
+    pw_pipe([SRC_X, SRC_X, PWP_FILTER_X1, PWP_FILTER_X1],
+            [SUCT_TURN_Z, P4_TOP_Z + 45, P4_TOP_Z + 45, P4_TOP_Z], C_BROWN, zorder=Z_BROWN)
     pw_arrow(SRC_X, SUCT_TURN_Z, SRC_X, SUCT_TURN_Z - 42, C_BLUE)
     pw_text(SRC_X, SUCT_TURN_Z - 58, "FROM\nTRAY SUMP", ha="center", va="top", fontsize=6, color=C_BROWN, zorder=10)
     # P-04 OUT → SV-02 → DV-02 along the row line (SV-02 taps in-line)

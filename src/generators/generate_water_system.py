@@ -23,7 +23,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
 from matplotlib.gridspec import GridSpec
-from tbs_constants import C_LEN, C_HGT, IBC_COL_X, IBC_W, IBC_D, ZONE_L_END, ZONE_R_START, FP_X_L, FP_X_R, BLUE_IBC_Y, IBC_FAR_Y, PUMP_X, PUMP_W, PUMP_H_LO, PUMP_D, EQPANEL_X, EQPANEL_W, EQPANEL_T, CORRIDOR_YD_NEAR, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_RIM, PROC_TRAY_PITCH, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D, PROC_TRAY_SUMP_Z, PROC_TRAY_SHIM_H, PROC_TRAY_SHIM_W, WALKWAY_W, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP, DIAGRAMS_DIR
+from tbs_constants import C_LEN, C_HGT, IBC_COL_X, IBC_W, IBC_D, ZONE_L_END, ZONE_R_START, FP_X_L, FP_X_R, BLUE_IBC_Y, IBC_FAR_Y, PUMP_X, PUMP_W, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_W, PROC_TRAY_D, PROC_TRAY_YD_NEAR, PROC_TRAY_RIM, PROC_TRAY_PITCH, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_D, PROC_TRAY_SUMP_Z, PROC_TRAY_SHIM_H, PROC_TRAY_SHIM_W, WALKWAY_W, WALKWAY_NEAR_YD, WALKWAY_FAR_YD, C_BLUE_IBC, C_BROWN_IBC, C_WASTE_IBC, C_PUMP, DIAGRAMS_DIR
 import os
 from tbs_title_block import title_block
 from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_notes,
@@ -569,7 +569,7 @@ def draw_sheet2():
     # the clear tray white space to the left so the text doesn't bury the IBC geometry.
     leader(ax2, EP_X_DU, EP_Y_DU + EP_D_DU / 2,
            EP_X_DU - 1.5, EP_Y_DU + EP_D_DU / 2 - 0.62,
-           "CORRIDOR PLUMBING PANEL\nP-01/P-03/P-04/P-05 · ACC-01\nDV-02 · SV-02 · BV-01/02/06",
+           "CORRIDOR PLUMBING PANEL\nP-01/P-02/P-03/P-05 · ACC-01\nBV-01/02/06",
            fs=6, color="#E65100", ha="center")
 
     # Processing tray (304 SS, two panels, 50mm rim)
@@ -879,8 +879,8 @@ def draw_sheet3():
 # SHEET 4 — PROCESSING TRAY DRAIN CROSS-SECTION ELEVATION
 # Two panels:
 #   LEFT  — Zoomed detail of sump well + pickup tube + shim strips (~1:2)
-#   RIGHT — Full cross-section showing suction line from sump to P-04
-#           pump to 3W-DV-02 diverter to IBC-3 (~1:15)
+#   RIGHT — Full cross-section: sump pickup riser up through the walkway to P-04
+#           on the pinhole-wall filter skid -> SV-02 -> 3W-DV-02 -> filter train (~1:15)
 # Horizontal = Yd, Vertical = Z (height above floor).
 # ═══════════════════════════════════════════════════════════════════════════════
 
@@ -905,7 +905,7 @@ def draw_sheet4():
     ax4_tb.axis("off")
     title_block(ax4_tb, f"SHEET 4 OF {TOTAL_SHEETS}",
                 drawing_title="PROCESSING TRAY DRAIN — SUMP PICKUP CROSS-SECTION",
-                subtitle=f"Section A-A at X={PROC_TRAY_DRAIN_X}mm (through sump) + plan view of rim hose routing",
+                subtitle=f"Section A-A at X={PROC_TRAY_DRAIN_X}mm (through sump) + plan view: sump pickup -> P-04 on the filter skid",
                 scale_note="AXES IN mm — MULTIPLE PANELS",
                 doc_id="TBS-001 · Water System",
                 height=0.75)
@@ -1070,26 +1070,18 @@ def draw_sheet4():
                  [(tube_z_bot), (tube_z_bot + foot_valve_h)],
                  color="#999999", lw=0.4, zorder=8)
 
-    # ── Suction hose from tube top, along tray rim exterior ──────────────────────
+    # ── Suction riser from tube top — straight UP through the walkway ─────────────
     HOSE_OD = 33.0   # 1" reinforced suction hose OD (mm)
     HOSE_WALL = 4.0  # hose wall thickness (mm)
-    RIM_EXT_YD = tray_yd_near - HOSE_OD / 2 - 5  # ~60mm — hose CL on exterior of rim
-    HOSE_RIM_Z = TRAY_BASE_Z + rim_h / 2 - 25    # ~20mm — lowered to clear cantilever brackets
 
-    # Hose path: short vertical overlap with tube top (creates 90° elbow) →
-    # horizontal above walkway → 90° elbow → down along rim exterior
-    ELBOW_OVERLAP = HOSE_OD  # vertical approach length for visible elbow fitting
-    hose_pts_y = [tube_yd, tube_yd, RIM_EXT_YD, RIM_EXT_YD]
-    hose_pts_z = [tube_z_top - ELBOW_OVERLAP, tube_z_top, tube_z_top, HOSE_RIM_Z]
-    draw_pipe_path(ax4a, hose_pts_y, hose_pts_z, HOSE_OD, HOSE_WALL,
+    # The suction stays directly over the pickup and rises vertically (no fold-over
+    # the rim).  Above the walkway grate it turns +X (into the page) to P-04 on the
+    # pinhole-wall filter skid.
+    RISER_Z_TOP_A = tube_z_top + 78   # short riser above the grate within this view
+    draw_pipe_path(ax4a, [tube_yd, tube_yd],
+                   [tube_z_top - HOSE_OD, RISER_Z_TOP_A],
+                   HOSE_OD, HOSE_WALL,
                    fc=C_BROWN, ec="#5A3020", zorder=8)
-
-    # Pipe end-on at rim exterior (hose turns to run along X — into the page)
-    pipe_r_a = HOSE_OD / 2 / SC_A
-    pipe_wall_a = HOSE_WALL / SC_A
-    draw_pipe_end(ax4a, (RIM_EXT_YD), (HOSE_RIM_Z),
-                  pipe_r_a, pipe_wall_a,
-                  fc=C_BROWN, ec=C_FRAME, bore_fc="white", zorder=9)
 
     # ── Water surface in tray (away from sump) ───────────────────────────────────
     FLOOD_DEPTH = 6
@@ -1157,9 +1149,9 @@ def draw_sheet4():
            (tube_yd + 90), (140),
            "1\" HDPE\nPICKUP TUBE", fs=7, color=C_FRAME)
 
-    leader(ax4a, (RIM_EXT_YD + 5), (HOSE_RIM_Z),
-           (RIM_EXT_YD - 40), (HOSE_RIM_Z - 50),
-           "1\" REINFORCED SUCTION\nHOSE ALONG RIM TO P-04\n(INTO PAGE — SEE PLAN)", fs=6, color=C_BROWN)
+    leader(ax4a, (tube_yd), (RISER_Z_TOP_A - 12),
+           (tube_yd + 95), (RISER_Z_TOP_A + 8),
+           "1\" REINFORCED SUCTION\nRISES UP THROUGH WALKWAY,\nthen +X TO P-04 (INTO PAGE)", fs=6, color=C_BROWN)
 
     leader(ax4a, (sump_yd_start + PROC_TRAY_SUMP_D/4), (TRAY_BASE_Z / 2),
            (150), (-30),
@@ -1200,7 +1192,7 @@ def draw_sheet4():
     ax4b.set_ylim((-66), (638))
 
     # Panel B title
-    ax4b.text((550), (650), "SECTION A-A — SUMP TO CORRIDOR PLUMBING PANEL (AXES IN mm)",
+    ax4b.text((550), (650), "SECTION A-A — SUMP PICKUP → P-04 (FILTER SKID) (AXES IN mm)",
               ha="center", va="top", fontsize=10, fontweight="bold",
               color="#1A237E", zorder=10)
 
@@ -1252,67 +1244,37 @@ def draw_sheet4():
               ha="left", va="bottom", fontsize=5.5, color=C_FRAME,
               fontweight="bold", zorder=6)
 
-    # ── Suction hose from pickup, along tray rim exterior to equipment panel ─────
-    P04_Z = PUMP_H_LO + 80  # P-04 on equipment panel
-    PANEL_YD = 1046           # equipment panel Yd position
-    RIM_EXT_YD_B = tray_yd_near - HOSE_OD / 2 - 5  # ~60mm — hose CL on rim exterior
-    HOSE_RIM_Z_B = TRAY_BASE_Z + rim_h / 2 - 25    # ~20mm — lowered to clear cantilever brackets
-
-    # Hose path: short vertical overlap with tube top (creates 90° elbow) →
-    # horizontal above walkway → 90° elbow → down along rim exterior
-    ELBOW_OVERLAP_B = HOSE_OD
-    hose_b_y = [tube_yd_b, tube_yd_b, RIM_EXT_YD_B, RIM_EXT_YD_B]
-    hose_b_z = [tube_z_top_b - ELBOW_OVERLAP_B, tube_z_top_b, tube_z_top_b, HOSE_RIM_Z_B]
-    draw_pipe_path(ax4b, hose_b_y, hose_b_z, HOSE_OD, HOSE_WALL,
+    # ── Suction riser: from pickup tube top, straight UP toward P-04 ─────────────
+    # P-04 sits on the pinhole-wall filter skid at X≈3300 (INTO the page in this
+    # section at X=2399) and Z≈1150–1312 — far above this view's Z range (0–638).
+    # The suction rises vertically out of the sump (no fold-back), then runs +X
+    # above the walkway to P-04.  Shown here as a vertical riser truncated at top.
+    RISER_YD_B = tube_yd_b            # stays directly over the pickup
+    RISER_Z_TOP = 600                 # truncated top within view (rises to Z≈1312)
+    draw_pipe_path(ax4b, [RISER_YD_B, RISER_YD_B],
+                   [tube_z_top_b - HOSE_OD, RISER_Z_TOP],
+                   HOSE_OD, HOSE_WALL,
                    fc=C_BROWN, ec="#5A3020", zorder=4)
 
-    # Pipe end-on at rim exterior (hose runs along X — into the page toward IBC corner)
-    pipe_r_b = HOSE_OD / 2 / SC_B
-    pipe_wall_b = HOSE_WALL / SC_B
-    draw_pipe_end(ax4b, (RIM_EXT_YD_B), (HOSE_RIM_Z_B),
-                  pipe_r_b, pipe_wall_b,
-                  fc=C_BROWN, ec=C_FRAME, bore_fc="white", zorder=6)
+    # Break mark (zigzag) at the truncated riser top
+    brk_w_r = 26
+    ax4b.plot([(RISER_YD_B - brk_w_r/2), (RISER_YD_B), (RISER_YD_B + brk_w_r/2)],
+              [(RISER_Z_TOP - 8), (RISER_Z_TOP + 8), (RISER_Z_TOP - 8)],
+              color=C_BROWN, lw=1.2, zorder=5, clip_on=True)
 
-    # Dashed routing indicator from rim to equipment panel (truncated to view range)
-    ROUTE_Z_TOP = 500
-    ax4b.plot([(RIM_EXT_YD_B), (PANEL_YD)],
-              [(HOSE_RIM_Z_B), (ROUTE_Z_TOP)],
-              color=C_BROWN, lw=1.0, ls=":", zorder=3, alpha=0.6)
-    ax4b.text(((RIM_EXT_YD_B + PANEL_YD) / 2), ((HOSE_RIM_Z_B + ROUTE_Z_TOP) / 2 + 30),
-              "HOSE ALONG RIM →\nCROSSES AT IBC CORNER\n(SEE PLAN VIEW)",
-              ha="center", va="bottom", fontsize=5.5, color=C_BROWN,
-              style="italic", zorder=4)
-
-    # ── Near walkway (Yd=0-300) ──────────────────────────────────────────────────
+    # ── Near walkway (Yd=0-300) — pickup pops UP through the grate ───────────────
     ax4b.add_patch(plt.Rectangle(((0), (WK_DECK_H - WK_GRATE_T)),
                   WALKWAY_W / SC_B, WK_GRATE_T / SC_B,
                   fc="#E0D6C8", ec="#8D6E63", lw=1.0, hatch="///", zorder=3,
                   alpha=0.7))
 
-    # ── Equipment panel destination (schematic, within view range) ───────────────
-    # The equipment panel is at Yd=1046, Z=1370–2270 — far above this view's
-    # Z range (0–620).  Show a compact representation at the top of the view
-    # with the plywood strip truncated and a destination leader.
-    EP_Z_TOP = 580   # truncated top within view
-    ax4b.add_patch(plt.Rectangle(((PANEL_YD - 9), (0)),
-                  18 / SC_B, EP_Z_TOP / SC_B,
-                  fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=3))
-
-    # Break marks (zigzag) at truncation
-    brk_z = EP_Z_TOP
-    brk_w = 30
-    for side in [-1, 1]:
-        bx = PANEL_YD + side * 9
-        ax4b.plot([(bx - brk_w/2), (bx), (bx + brk_w/2)],
-                  [(brk_z - 8), (brk_z + 8), (brk_z - 8)],
-                  color="#A09060", lw=1.2, zorder=4, clip_on=True)
-
-    # Destination leader
-    leader(ax4b, (PANEL_YD), (EP_Z_TOP),
-           (PANEL_YD + 80), (EP_Z_TOP + 30),
-           "CORRIDOR PLUMBING PANEL (Yd=1046)\n"
-           "P-04 Shurflo 2088 (Z=1400)\n"
-           "3W-DV-02 diverter → IBC-3 / IBC-4",
+    # Destination leader — up + into page to P-04 on the filter skid
+    leader(ax4b, (RISER_YD_B), (RISER_Z_TOP),
+           (RISER_YD_B + 250), (RISER_Z_TOP - 42),
+           "RISER UP THROUGH THE WALKWAY,\n"
+           "then +X (INTO PAGE) to P-04 on the\n"
+           "PINHOLE-WALL FILTER SKID (X=3300):\n"
+           "P-04 → SV-02 → 3W-DV-02 → filter train",
            fs=6, color=C_PUMP, ha="left")
 
     # ── Dimensions ───────────────────────────────────────────────────────────────
@@ -1330,33 +1292,30 @@ def draw_sheet4():
            "WALKWAY", fs=6.5, color="#8D6E63")
 
     # ═════════════════════════════════════════════════════════════════════════════
-    # PANEL C — PLAN VIEW: HOSE ROUTING ALONG TRAY RIM (~1:8)
+    # PANEL C — PLAN VIEW: SUMP PICKUP → P-04 (FILTER SKID) (~1:8)
     # Looking down (standard plan orientation matching floorplan/IBC sheets):
     #   Horizontal = X (left=cargo door, right=sealed end)
     #   Vertical   = Yd (bottom=near wall/pinhole, top=far wall)
-    # Sump at bottom-right, pipe travels north to equipment panel.
+    # Sump pickup at left; suction runs +X above the walkway to P-04 on the skid.
     # ═════════════════════════════════════════════════════════════════════════════
     SC_C = 1.0
 
-    SUMP_X = PROC_TRAY_DRAIN_X   # 2399mm — center pickup (relocated from the old IBC-corner X4550)
+    SUMP_X = PROC_TRAY_DRAIN_X   # 2399mm — center pickup
+    P04_SKID_X = 3300            # P-04 on the pinhole-wall filter skid (= PWP_FILTER_X1)
+    SKID_YD = 104                # skid lane Yd (near the pinhole wall)
     TRAY_X_R = PROC_TRAY_X_R     # 4629mm
-    IBC_X = IBC_COL_X             # 4674mm
-    EP_X = EQPANEL_X              # 4874mm — equipment panel face X (v2 corridor mouth)
-    EP_W = EQPANEL_W              # 148mm — total X footprint (panel + protrusion)
 
-    X_VIEW_L = 4350
-    X_VIEW_R = EP_X + EQPANEL_T + 80   # ~5098mm
+    X_VIEW_L = SUMP_X - 260
+    X_VIEW_R = P04_SKID_X + 340
     YD_VIEW_BOT = -30
-    YD_VIEW_TOP = 1130
-
-
+    YD_VIEW_TOP = 400
 
     ax4c.set_xlim((X_VIEW_L - 4), (X_VIEW_R + 4))
     ax4c.set_ylim((YD_VIEW_BOT - 4), (YD_VIEW_TOP + 4))
 
     # Panel C title
     ax4c.text(((X_VIEW_L + X_VIEW_R) / 2), (YD_VIEW_TOP + 15),
-              "PLAN VIEW — HOSE ROUTING ALONG TRAY RIM (AXES IN mm)",
+              "PLAN VIEW — SUMP PICKUP → P-04 (FILTER SKID) (AXES IN mm)",
               ha="center", va="bottom", fontsize=9, fontweight="bold",
               color="#1A237E", zorder=10)
 
@@ -1371,18 +1330,13 @@ def draw_sheet4():
                   (TRAY_X_R - tray_x_l_vis) / SC_C,
                   (400 - tray_yd_near) / SC_C,
                   fc="#E8F0F8", ec="#C8D8E8", lw=1.0, zorder=2, alpha=0.4))
-    ax4c.text(((tray_x_l_vis + TRAY_X_R) / 2), (200),
+    ax4c.text((SUMP_X - 30), (330),
               "PROCESSING TRAY", ha="center", va="center",
               fontsize=6, color="#6A8CAF", style="italic", alpha=0.7, zorder=3)
 
     # Near rim line (Yd=80, runs along X — horizontal)
-    ax4c.plot([(tray_x_l_vis), (TRAY_X_R)],
+    ax4c.plot([(tray_x_l_vis), (X_VIEW_R)],
              [(tray_yd_near), (tray_yd_near)],
-             color="#C8D8E8", lw=2.0, zorder=4)
-
-    # Right rim line (X=4629, runs along Yd — vertical)
-    ax4c.plot([(TRAY_X_R), (TRAY_X_R)],
-             [(tray_yd_near), (400)],
              color="#C8D8E8", lw=2.0, zorder=4)
 
     # ── Sump (small rectangle inside tray at near rim) ─────────────────────────
@@ -1394,66 +1348,40 @@ def draw_sheet4():
               "SUMP", ha="center", va="center", fontsize=5.5,
               fontweight="bold", color="#0D47A1", zorder=6)
 
-    # ── Pickup tube end-on (vertical tube seen from above) ─────────────────────
-    tube_r_c = TUBE_OD / 2 / SC_C
-    tube_wall_c = TUBE_WALL / SC_C
-    draw_pipe_end(ax4c, (SUMP_X), (tube_yd),
-                  tube_r_c, tube_wall_c,
-                  fc="#D0D0D0", ec=C_FRAME, bore_fc="white", zorder=7)
+    # ── Pickup riser end-on (vertical suction seen from above, at the sump) ─────
+    draw_pipe_end(ax4c, (SUMP_X), (SKID_YD),
+                  HOSE_OD / 2 / SC_C, HOSE_WALL / SC_C,
+                  fc=C_BROWN, ec=C_FRAME, bore_fc="white", zorder=8)
 
-    # ── Equipment panel (spans corridor at X=EQPANEL_X, perpendicular to sealed end) ──
-    ax4c.add_patch(plt.Rectangle(
-        ((EP_X), (CORRIDOR_YD_NEAR - 9)),
-        EQPANEL_T / SC_C, 270 / SC_C,
-        fc="#D4C8A0", ec="#A09060", lw=1.5, zorder=3))
-    ax4c.text((EP_X + EQPANEL_T / 2), (CORRIDOR_YD_NEAR - 65),
-              f"CORRIDOR PLUMBING PANEL (X={int(EQPANEL_X)})",
-              ha="center", va="bottom", fontsize=5.5, color=C_PUMP,
-              style="italic", zorder=4)
-
-    # P-04 on equipment panel — pump protrudes from panel face toward lower X
-    P04_PLAN_X = EP_X - PUMP_D / 2
+    # ── P-04 on the pinhole-wall filter skid ────────────────────────────────────
     ax4c.add_patch(plt.Circle(
-        ((P04_PLAN_X), (CORRIDOR_YD_NEAR)),
-        20 / SC_C,
+        ((P04_SKID_X), (SKID_YD)),
+        44 / SC_C,
         fc="#E8884A", ec=C_FRAME, lw=1.2, zorder=6))
-    ax4c.text((P04_PLAN_X), (CORRIDOR_YD_NEAR + 35),
-              "P-04", ha="center", va="center", fontsize=5.5,
+    ax4c.text((P04_SKID_X), (SKID_YD + 82),
+              "P-04\n(filter skid)", ha="center", va="center", fontsize=5.5,
               fontweight="bold", color="#E8884A", zorder=7)
 
-    # ── Hose routing along tray rim exterior ───────────────────────────────────
-    RIM_EXT_YD_C = tray_yd_near - HOSE_OD / 2 - 5  # ~60mm
-    CORNER_X = TRAY_X_R + 15   # just past tray right edge
+    # ── Suction: sump riser → runs ABOVE the walkway (+X) to P-04 ────────────────
     draw_pipe_path(ax4c,
-                   [SUMP_X, SUMP_X, CORNER_X, CORNER_X, P04_PLAN_X],
-                   [tube_yd, RIM_EXT_YD_C, RIM_EXT_YD_C, CORRIDOR_YD_NEAR, CORRIDOR_YD_NEAR],
+                   [SUMP_X, P04_SKID_X - 44],
+                   [SKID_YD, SKID_YD],
                    HOSE_OD, HOSE_WALL,
                    fc=C_BROWN, ec="#5A3020", zorder=6)
 
-    # P-clip marks along rim run (small ticks — horizontal marks along vertical pipe)
-    for clip_x in range(SUMP_X, CORNER_X, 60):
-        ax4c.plot([(clip_x), (clip_x)],
-                 [(RIM_EXT_YD_C - 8), (RIM_EXT_YD_C + 8)],
-                 color="#666666", lw=0.6, zorder=5)
-
     # ── Labels ──────────────────────────────────────────────────────────────────
-    leader(ax4c, (SUMP_X - 50), (RIM_EXT_YD_C),
-           (X_VIEW_L + 50), (RIM_EXT_YD_C - 120),
-           "1\" SUCTION HOSE\nALONG RIM EXTERIOR\n(P-CLIPPED TO RIM)", fs=6, color=C_BROWN)
+    leader(ax4c, (SUMP_X), (SKID_YD - 22),
+           (SUMP_X - 30), (-58),
+           "VERTICAL RISER\n(pops UP through walkway)", fs=6, color=C_BROWN)
 
-    leader(ax4c, (CORNER_X), ((RIM_EXT_YD_C + CORRIDOR_YD_NEAR) / 2),
-           (CORNER_X + 60), (500),
-           "CROSSES TO\nCORRIDOR PLUMBING PANEL\nAT TRAY CORNER", fs=6, color=C_BROWN)
+    ax4c.text(((SUMP_X + P04_SKID_X) / 2), (SKID_YD + 26),
+              "1\" SUCTION — ABOVE THE WALKWAY", ha="center", va="bottom",
+              fontsize=6, color=C_BROWN, style="italic", zorder=7)
 
-    # ── Dimensions ──────────────────────────────────────────────────────────────
-    # Rim-to-panel Yd distance (vertical dim)
-    draw_dim_v(ax4c, (X_VIEW_L - 5), (RIM_EXT_YD_C), (CORRIDOR_YD_NEAR),
-               f"{CORRIDOR_YD_NEAR - RIM_EXT_YD_C:.0f}mm", offset=6.4, fs=6)
-
-    # Hose run along rim (X distance — horizontal dim)
-    draw_dim_h(ax4c, (SUMP_X), (CORNER_X),
-               (RIM_EXT_YD_C - 50),
-               f"{CORNER_X - SUMP_X}mm", offset=4, fs=6)
+    # ── Dimension: sump → P-04 (X distance) ─────────────────────────────────────
+    draw_dim_h(ax4c, (SUMP_X), (P04_SKID_X),
+               (SKID_YD - 62),
+               f"{P04_SKID_X - SUMP_X}mm", offset=4, fs=6)
 
     # ── Notes axes (full-width strip above title block) ─────────────────────────
     ax4_notes = fig4.add_axes([0.04, 0.06, 0.92, 0.10])
@@ -1467,8 +1395,8 @@ def draw_sheet4():
         "2. Tray floor raised to Z=20mm (sump depth).",
         "3. Shims taper 20-30mm (base + slope).",
         "4. Pickup tube lifts out for cleaning (no tools).",
-        "5. P-04: Shurflo 2088, 12V DC, self-priming, on the Corridor Plumbing Panel.",
-        "6. Hose runs along tray rim exterior, P-clipped to rim.",
+        "5. P-04: Shurflo 2088, 12V DC, self-priming, on the pinhole-wall filter skid.",
+        "6. Suction rises vertically through the walkway, then runs above it to P-04.",
         "7. Tray slope exaggerated for clarity in elevation panels.",
     ]
     draw_notes(ax4_notes, notes4, 38, 9.25, spacing=1.1,
@@ -1477,12 +1405,12 @@ def draw_sheet4():
 
     flow_notes = [
         "FLOW PATH:",
-        "1. Water drains by gravity to sump well (Yd=80mm)",
-        "2. P-04 suction pickup draws from sump via foot valve",
-        "3. 1\" hose along rim exterior to tray corner, then to equip panel",
-        "4. P-04 discharge to 3W-DV-02 three-way diverter",
-        "5. Default: lifts to IBC-3 side-entry (Brown, ~900mm head)",
-        "6. Alt: divert to IBC-4 (Waste) when selected",
+        "1. Water drains by gravity to the center sump well (Yd=80mm)",
+        "2. Pickup + foot valve; suction rises through the walkway",
+        "3. Runs +X above the walkway to P-04 on the filter skid",
+        "4. P-04 -> SV-02 sample tap -> 3W-DV-02 diverter",
+        "5. Recycle -> F1/F2/F3 filter train -> SV-01 -> 3W-DV-01",
+        "6. DV-01: IBC-3 (recycle) / IBC-4 (waste) when selected",
     ]
     draw_notes(ax4_notes, flow_notes, 70, 9.25, spacing=1.1,
                fs=7, width=26, color=C_TEXT, title_color=C_TEXT,

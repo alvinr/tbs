@@ -419,6 +419,18 @@ _a2x0, _a2x1 = sx(PWP_ACC2_X - 63), sx(PWP_ACC2_X + 63)
 ax.add_patch(mpatches.Rectangle((_a2x0, sz(PWP_ACC2_Z0)), _a2x1 - _a2x0, sz(PWP_ACC2_Z0 + 200) - sz(PWP_ACC2_Z0),
              facecolor=C_ACC, edgecolor=C_FILT_EC, lw=0.9, zorder=8))
 ax.text(sx(PWP_ACC2_X), sz(PWP_ACC2_Z0 - 12), "ACC-02\nRECYCLE-SPRAY DAMPER", ha="center", va="top", fontsize=3.2, color="#3A5A7A", zorder=10, **FONT)
+# ── sump-pickup suction: tray sump (below) pops UP through the walkway → P-04's −X IN port ──
+_p4in_z = PWP_SROW_Z0 + 90
+_bpipe([PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_X, PWP_FILTER_X1 - 50], [90, _p4in_z, _p4in_z])
+ax.annotate("", xy=(sx(PROC_TRAY_DRAIN_X), sz(360)), xytext=(sx(PROC_TRAY_DRAIN_X), sz(250)),
+            arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=0.7), zorder=11)
+ax.text(sx(PROC_TRAY_DRAIN_X), sz(50), "SUMP PICKUP\n(up through walkway → P-04)", ha="center", va="top", fontsize=3.2, color=C_BROWN, zorder=10, **FONT)
+# ── ACC-02 IN — fed from P-02 in the corridor (off-panel, +X) ──
+_bpipe([4575, PWP_ACC2_X + 63], [PWP_ACC2_Z0 + 120, PWP_ACC2_Z0 + 120])
+ax.text(sx(4585), sz(PWP_ACC2_Z0 + 120), "from P-02\n(corridor)", ha="left", va="center", fontsize=3.2, color=C_BROWN, zorder=10, **FONT)
+# ── ACC-02 OUT — → BV-05 spray selector (off-panel, low-X) ──
+_bpipe([PWP_ACC2_X - 63, 2780], [PWP_ACC2_Z0 + 60, PWP_ACC2_Z0 + 60])
+ax.text(sx(2770), sz(PWP_ACC2_Z0 + 60), "→ BV-05\n(spray)", ha="right", va="center", fontsize=3.2, color=C_BROWN, zorder=10, **FONT)
 
 # ═══════════════════════════════════════════════════════════════════════════
 # 4a. PLUMBING — Blue supply to spray bar (rev 7: simplified)

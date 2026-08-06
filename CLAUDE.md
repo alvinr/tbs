@@ -270,7 +270,9 @@ Standing permission to commit and redeploy on every request in this project.
 
 ## Releases
 
-`RELEASE.md` is the curated changelog. **As notable changes land, add a bullet under its `[Unreleased]` section** — that running list is what each release summarizes from. Cutting a release is **gated** on it: `bash release.sh <version>` promotes `[Unreleased]` → a dated `## [X.Y]` section, commits, tags, and runs `gh release create` — and **refuses to run if `[Unreleased]` is empty**. Keep `[Unreleased]` current; a release must never ship without a changelog entry.
+`RELEASE.md` is the curated changelog. **As notable changes land, add a bullet under its `[Unreleased]` section — in the SAME work, not "later."** That running list is what each release summarizes from. Cutting a release is **gated** on it: `bash release.sh <version>` promotes `[Unreleased]` → a dated `## [X.Y]` section, commits, tags, and runs `gh release create` — and **refuses to run if `[Unreleased]` is empty**. Keep `[Unreleased]` current; a release must never ship without a changelog entry.
+
+- **HARD RULE — the `[Unreleased]` obligation carries across sessions; a fresh session does NOT reset it.** Landing notable work without updating `[Unreleased]` is incomplete work, even if the changes are committed. At the **start of any session that will change the project, and again whenever a batch of work lands,** check `[Unreleased]` against the commits since the last `## [X.Y]` section (`git log <last-tag>..HEAD`) and backfill anything missing. Don't let the list drift empty while commits pile up — that's how a release ends up with nothing to summarize.
 
 ## Tracking
 

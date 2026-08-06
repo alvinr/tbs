@@ -24,7 +24,56 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-_Nothing yet — add a bullet per notable change here as work lands._
+- **Spray-bar + processing-tray redesign — full-width beam, center-draining tray.** The spray beam
+  went to a **full-width 1½×1½×0.062″ square tube with 44 nozzles** (from the short 40×25 section);
+  the tray floor was re-sloped to a **Yd-only 1:200 fall** (far rim high → near rim low, level across X)
+  feeding a **near-rim gutter that itself falls 1:200 in X to a single center sump well at X=2399**
+  (replacing the old IBC-corner drain). The sump pickup **pops up through the walkway on a vertical
+  riser**. Cascaded through the constants, every 2D sheet, and re-sent every affected 3D model
+  (overview / spraybar / walkway / construction / ibc-stack / water).
+
+- **Walkway support shaved to 2×⅞″ for spray-beam clearance.** The right-walkway long-beam and the
+  left floor-leg arms dropped 40×40 → **2×⅞″** (soffit Z80/75 → Z93) so the full-width beam clears by
+  ≥15 mm. (Follow-up mid-span stiffening is tracked in `TODO.md`.)
+
+- **Phase-2 water topology — the tray drain now feeds the filter train.** Re-plumbed so tray-drain
+  water is **filtered before returning to the totes**: **P-04 (tray-drain) relocated from the corridor
+  to the pinhole-wall filter skid** (P-04 → SV-02 → 3W-DV-02 → F1/F2/F3 → SV-01 → 3W-DV-01 → IBC-3
+  recycle / IBC-4 waste), and **P-02 (recycled-spray) took P-04's corridor slot** (P-02 → ACC-02 →
+  3W-BV-05 spray selector). Blue supply isolated; the recycle loop closed. The Sheet-1 P&ID schematic
+  was redrawn to match, and water.skp rebuilt (skid-panel reorg, ribbons routed onto the ply,
+  3W-BV-05 dropped clear of the aperture).
+
+- **2D drawing set rebuilt to the skid design.** `pinhole-wall-elevation`, `pinhole-panel`, and
+  `corridor-panel` sheets were rebuilt to the current wet-end (filter skid + corridor split), and
+  **water-system Sheets 3 & 4** rewritten to the center-drain design (Yd-only slope plan; sump-riser
+  cross-section → P-04 on the filter skid). Suction enters P-04's top per convention; ACC-02 → BV-05
+  spray connection drawn; filter-skid flow uses the pipe-drawing convention.
+
+- **P-04↔P-02 wiring + roster swap cascaded everywhere.** The pump swap was carried through
+  `electrical.skp` (Circuit-C wiring parity), the electrical report + 2D diagram + layout prose, and a
+  closure sweep of every corridor-roster reference (weight analysis, ibc-stacking legend, cost
+  breakdown, component-dependency-map, water-system equipment table) so no doc still lists P-04 on the
+  corridor.
+
+- **BOM / cost reconciliation.** Added **ACC-02** and the **pinhole-wall filter-skid backing ply**
+  (exterior grade, not marine) to the registry; reconciled the `project-cost-breakdown.md` §5
+  water-system table to `costing.WATER` (fixed a positional-fill row-shift that broke the table
+  arithmetic). Single-sourced the skid constants, SV-01's raised height, and the muslin cut size.
+
+- **Tooling / process hardening.**
+  - **Cascade tracking now follows the module-import graph** — a model that reuses another module's
+    builders (e.g. `water.skp` via `import generate_sketchup_model`) inherits its constant deps, so
+    the `--cascade` re-run list catches builder-reuse models the old grep scan missed.
+  - **Pipe-crossing audit enforced by a lint gate** — `check_interference.py` detects crossings by
+    centerline distance (no more join false-positives) and a commit gate blocks a reroute unless the
+    interference report is refreshed.
+  - **Water model normalized** — `--save` now writes a committed, deterministic `water.rb`, so
+    `lint --verify-all` byte-verifies it like the other nine models instead of nagging "re-send
+    manually" every run.
+
+- **Materials.** Black ACM (dibond) re-sourced to Central Coast Plastics after Curbell couldn't
+  supply (price TBC). Muslin set to the image plane exactly (no hem).
 
 ## [0.5] — 2026-08-02
 

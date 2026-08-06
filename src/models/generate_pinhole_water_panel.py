@@ -607,11 +607,13 @@ def skid_plumbing(part="all"):
     sfz = ov.PROC_TRAY_FLOOR_Z_LOW - ov.PROC_TRAY_SUMP_Z + 3
     p04_in = cp.pump_in(ov.PWP_FILTER_X1, SROW_YD, SROW_Z0, "x", face=+1)   # (3220,130,1312)
     sfoot = (ov.PROC_TRAY_DRAIN_X, SROW_YD, sfz)                         # (2399, 104, 3) — strainer in the well, DIRECTLY under the riser (Yd104 also clears the blue trunk at Yd69)
+    riser_top_z = ov.WALKWAY_H + 150                                    # 290 — 150mm above the walkway deck (grate top = WALKWAY_H)
     p.append(ov.ruby_pipe_run("Tray sump -> P-04 suction",
         [sfoot,                                                          # strainer foot at the sump bottom
-         (ov.PROC_TRAY_DRAIN_X, SROW_YD, p04_in[2]),                     # VERTICAL RISER straight UP out of the strainer, through the walkway grate, to P-04's IN height
-         (p04_in[0] - 20, SROW_YD, p04_in[2]),                          # +X ABOVE the walkway to beside P-04
-         p04_in], rp, color=ov.C_IBC_BROWN))                           # +X into P-04's −X IN port
+         (ov.PROC_TRAY_DRAIN_X, SROW_YD, riser_top_z),                   # RISER up through the walkway grate to 150mm above the deck (no tall wall riser)
+         (p04_in[0] - 40, SROW_YD, riser_top_z),                        # 90° TURN toward the panel: +X above the walkway to below P-04
+         (p04_in[0] - 40, SROW_YD, p04_in[2]),                          # 90° TURN up: rise to P-04's IN height at the skid
+         p04_in], rp, color=ov.C_IBC_BROWN))                           # short lead into P-04's IN port
     p.append(ov.ruby_cylinder("Tray sump strainer foot", *sfoot, 14, 36, color=cdk, axis="z"))
     # ── Leg 2: P-04 OUT → (SV-02 tap) → DV-02 IN, along the row at lz ──
     p04_out = cp.pump_out(ov.PWP_FILTER_X1, SROW_YD, SROW_Z0, "x", face=+1)   # (3380,130,1312)

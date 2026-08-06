@@ -637,7 +637,7 @@ notes = [
     f"7. Battery bank: 2×100Ah LiFePO4 stacked, {BA_D}mm deep. Right edge (X={BA_X + BA_W}) clears the pinhole cone"
     f" left boundary (X=2319 at Yd=0) by {2319 - (BA_X + BA_W)}mm.",
     f"8. EP gear mounted high (Z={EP_H_LO}–{EP_H_HI}) to clear the {WALKWAY_NEAR_WIDE_W}mm widened walkway below.",
-    "9. Processing tray sump relocated to X=4550 (IBC corner), slope to corner.",
+    f"9. Processing tray sump at the center pickup (X={PROC_TRAY_DRAIN_X}), floor sloped to the center drain.",
 ]
 draw_notes(ax, notes, C_LEN - 70, -210, spacing=45,
            fs=7, width=3640, color=C_DIM, title_color=C_DIM, font=FONT)

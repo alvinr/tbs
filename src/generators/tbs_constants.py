@@ -536,9 +536,9 @@ PWP_FILTER_BOT_Z  = PWP_FILTER_TOP_Z - BB_H     # = 1746 — filter sump bottom
 PWP_FILTER_HEAD_Z = PWP_FILTER_TOP_Z - 78       # = 2262 — head/sump split (cap height 78)
 PWP_FILTER_CAP_Z  = PWP_FILTER_TOP_Z - 39       # = 2301 — in-line port centerline (cap_h/2)
 PWP_FILTER_YD     = BB_OD // 2 + 12             # = 104 — filter center Yd (sump back near the wall)
-PWP_P02_X         = PWP_FILTER_X1 - (BB_OD // 2 + 30) - 120  # = 3058 — P-02 center (OUT tip 40mm before F-01 IN)
+PWP_P02_X         = PWP_FILTER_X1 - (BB_OD // 2 + 30) - 120  # = 3058 — P-02's old wall center; NOW the ACC-02 anchor (P-02 relocated to the corridor 2026-08-05)
 PWP_P02_H         = 180                          # P-02 body height (matches cp.PVB_H)
-PWP_P02_Z0        = PWP_FILTER_CAP_Z - (PWP_P02_H - 18)      # = 2139 — P-02 body bottom (port at cap level)
+PWP_P02_Z0        = PWP_FILTER_CAP_Z - (PWP_P02_H - 18)      # reserved — = 2139, P-02's old wall body bottom (P-02 relocated to the corridor 2026-08-05; kept as the vacated-spot reference)
 PWP_SV01_X        = 4250                         # SV-01 pH sample tap X
 PWP_WAIST_Z       = 1000                         # DV-01 reach height (waist); was also SV-01 before the skid reorg
 PWP_SV01_Z        = 1610                          # SV-01 valve-center Z — raised beside F-3 in the 2026-08-04 skid reorg (was PWP_WAIST_Z)

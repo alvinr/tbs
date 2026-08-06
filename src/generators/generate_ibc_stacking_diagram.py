@@ -1208,7 +1208,7 @@ def sheet4():
                             fc=C_PUMP, ec=C_OUT, lw=0.5, alpha=0.25,
                             ls="--", zorder=15))
     ax.text(leg_x + (70), y_ep,
-            "CORRIDOR PLUMBING PANEL — P-01/P-03/P-04/P-05 pumps + ACC-01 (18mm marine ply)",
+            "CORRIDOR PLUMBING PANEL — P-01/P-02/P-03/P-05 pumps + ACC-01 (18mm exterior ply)",
             ha="left", va="center", fontsize=5.5, color="#A09060",
             **FONT, zorder=15)
 

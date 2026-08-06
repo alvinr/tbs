@@ -1,5 +1,3 @@
-routing-sources-sha: 2a7214c48625
-model=water  pipes=373 solids=347  interferences=1
-  PIPE  Cct C feed (EP master sw -> corridor dist  (Circuit-C power + cabling (both panels))
-    x  FRAME      Frame rail (Yd)                         near (5146,1181,1838)
+routing-sources-sha: b06cdb93e0b1
+model=construction  pipes=844 solids=617  interferences=0
 pipe-on-pipe crossings=0

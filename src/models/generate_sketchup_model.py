@@ -2223,6 +2223,7 @@ def generate_ruby():
         component("IBC Tote Restraint", "IBC Rack", cp.tote_restraint()),
         component("Corridor Rear Panel", "Plumbing Panel", cp.rear_panel()),
         component("Corridor Equipment", "Plumbing Panel", cp.equipment(sump_on_skid=True)),
+        component("Wall backing (ply)", "Plumbing Panel", pw.backing()),
         component("Pinhole-Wall Kit", "Plumbing Panel", pw.kit(p02_on_corridor=True)),
         component("Skid row (P-04 · SV-02 · DV-02)", "Plumbing Panel", pw.skid_row()),
         component("Skid plumbing", "Plumbing Panel", pw.skid_plumbing()),

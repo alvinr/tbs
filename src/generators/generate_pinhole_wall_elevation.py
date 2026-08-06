@@ -421,7 +421,10 @@ ax.add_patch(mpatches.Rectangle((_a2x0, sz(PWP_ACC2_Z0)), _a2x1 - _a2x0, sz(PWP_
 ax.text(sx(PWP_ACC2_X), sz(PWP_ACC2_Z0 - 12), "ACC-02\nRECYCLE-SPRAY DAMPER", ha="center", va="top", fontsize=3.2, color="#3A5A7A", zorder=10, **FONT)
 # ── sump-pickup suction: tray sump (below) pops UP through the walkway → P-04's −X IN port ──
 _p4in_z = PWP_SROW_Z0 + 90
-_bpipe([PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_X, PWP_FILTER_X1 - 50], [90, _p4in_z, _p4in_z])
+_riser_z = WALKWAY_H + 150                       # 290 — riser only ~150mm above the walkway deck (no tall wall riser)
+_rise_x  = PWP_FILTER_X1 - 120                    # ≈3180 — rise to P-04 height AT the skid, not against the wall
+_bpipe([PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_X, _rise_x, _rise_x, PWP_FILTER_X1 - 50],
+       [90, _riser_z, _riser_z, _p4in_z, _p4in_z])
 ax.annotate("", xy=(sx(PROC_TRAY_DRAIN_X), sz(360)), xytext=(sx(PROC_TRAY_DRAIN_X), sz(250)),
             arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=0.7), zorder=11)
 ax.text(sx(PROC_TRAY_DRAIN_X), sz(50), "SUMP PICKUP\n(up through walkway → P-04)", ha="center", va="top", fontsize=3.2, color=C_BROWN, zorder=10, **FONT)

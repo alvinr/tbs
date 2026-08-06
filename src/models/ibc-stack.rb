@@ -9277,14 +9277,17 @@ model.layers.to_a.each { |l|
   model.layers.remove(l, true) rescue nil
 }
 
-# ── Scenes ── one consistent iso camera, shared by every scene.
+# ── Scenes ── opening camera looks at the FILTER SKID PANEL (pinhole wall) from INSIDE the container.
 # Frame on geometry only — hide the Labels tag so Text bounds don't skew extents.
 model.layers.each { |l| l.visible = (l.name != "Labels") }
 bb = model.bounds
 ctr = bb.center
-dir = Geom::Vector3d.new(0.72, -0.7, 0.5); dir.normalize!
-eye = ctr.offset(dir, bb.diagonal * 1.5)
-model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
+# SAME angle as the filter-skid-panel view — from INSIDE the container, looking −Yd at the pinhole
+# wall, slightly from the left and above — but zoomed out to frame the whole model.
+dir = Geom::Vector3d.new(-0.2, 0.92, 0.34); dir.normalize!
+eye = ctr.offset(dir, bb.diagonal * 1.4)
+cam = Sketchup::Camera.new(eye, ctr, Z_AXIS); cam.fov = 40
+model.active_view.camera = cam
 model.active_view.zoom_extents
 
 [["Overview", ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel", "Walkway Cantilever"]], ["IBC Tanks", ["IBC Tanks"]], ["IBC Frame", ["IBC Frame", "Walkway Cantilever"]], ["Plumbing & Panel", ["Plumbing & Panel"]], ["Labeled", ["Context", "IBC Tanks", "IBC Frame", "Plumbing & Panel", "Walkway Cantilever", "Labels"]]].each { |name, tags|

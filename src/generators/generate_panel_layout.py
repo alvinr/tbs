@@ -857,7 +857,7 @@ def draw_pinhole_panel():
                fs=6.5, width=720, color=C_DIM, title_color=C_NEW, font=FONT)
 
     # ── SYMBOL KEY (clear left margin strip, X4500–5060) ────────────
-    draw_symbol_key(ax_p, 20, pwz(1900), r=13, row=70, fs=6.5, w=395)
+    draw_symbol_key(ax_p, 5, pwz(2200), r=13, row=70, fs=6.5, w=375)
 
     # ── TITLE BLOCK ─────────────────────────────────────────────────
     title_block(ax_p, "PINHOLE WALL PANEL",

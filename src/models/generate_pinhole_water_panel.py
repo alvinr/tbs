@@ -9,7 +9,9 @@ the deepest items (Big Blue filters) ride HIGH, the shallow items (pumps, ACC) s
 LOW, keeping the torso band clear.  Includes the (widened) near-walkway deck and a
 1750mm person for scale.  No plumbing yet — geometry feasibility only.
 
-    python3 src/models/generate_pinhole_water_panel.py --send   # build in the live SketchUp doc
+    python3 src/models/generate_pinhole_water_panel.py --send          # build in the live SketchUp doc
+    python3 src/models/generate_pinhole_water_panel.py --save          # write src/models/water.rb (offline, verifiable)
+    python3 src/models/generate_pinhole_water_panel.py --send --save   # build + save models/water.skp
 """
 import sys, os, argparse
 _HERE = os.path.dirname(os.path.abspath(__file__))
@@ -796,16 +798,24 @@ model.commit_operation
 
 SKP_PATH = os.path.abspath(os.path.join(_ROOT, "models", "water.skp"))
 
+RB_PATH = os.path.join(_HERE, "water.rb")
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--send", action="store_true", help="build into the ACTIVE SketchUp doc (open a blank doc first!)")
-    ap.add_argument("--save", action="store_true", help="after building, save the active doc as models/water.skp")
+    ap.add_argument("--save", action="store_true",
+                    help="write src/models/water.rb (deterministic, byte-verifiable by lint --verify-all); "
+                         "with --send, also save the live doc as models/water.skp")
     a = ap.parse_args()
     ruby = build()
+    if a.save:
+        with open(RB_PATH, "w") as f:
+            f.write(ruby)
+        print(f"  {RB_PATH} saved ({len(ruby)} bytes)")
     if a.send:
         from sketchup_client import send_ruby
         print(send_ruby(ruby))
         if a.save:
             print(send_ruby(f'Sketchup.active_model.save({SKP_PATH!r}) ? "saved {SKP_PATH}" : "FAIL"'))
-    else:
+    if not a.send and not a.save:
         print(ruby[:400])

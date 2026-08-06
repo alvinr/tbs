@@ -51,6 +51,6 @@ models:
   electrical: {script: src/models/generate_electrical_model.py, outputs: [models/electrical.skp, src/models/electrical.rb]}
   mini-tbs: {script: src/models/generate_mini_tbs_model.py, outputs: [models/mini-tbs.skp, src/models/mini-tbs.rb]}
   # water = the combined wet-end + IBC plumbing corridor (both plumbing panels). generate_pinhole_water_panel.py
-  # imports generate_corridor_water_panel.py; built via --send, saved via --save (no .rb). corridor-panel.skp
-  # is a scratch standalone corridor view (gitignored) — water.skp is the embedded deliverable.
-  water: {script: src/models/generate_pinhole_water_panel.py, outputs: [models/water.skp]}
+  # imports generate_corridor_water_panel.py; --save writes water.rb (byte-verifiable) + saves water.skp via --send.
+  # corridor-panel.skp is a scratch standalone corridor view (gitignored) — water.skp is the embedded deliverable.
+  water: {script: src/models/generate_pinhole_water_panel.py, outputs: [models/water.skp, src/models/water.rb]}

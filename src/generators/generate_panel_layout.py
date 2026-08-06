@@ -761,13 +761,15 @@ def draw_pinhole_panel():
     F1_XL, F1_XR = PWP_FILTER_X1 - BB_OD // 2, PWP_FILTER_X1 + BB_OD // 2
     F3_XR = PWP_FILTER_X3 + BB_OD // 2
 
-    # tray-sump suction: brown drops from P-04 IN below the ply toward the tray sump
+    # tray-sump suction: enters P-04's −X (LEFT) IN port — SIDE entry per convention (not up through the
+    # base); rises from the sump line off the panel's low-X edge, turns in to the port height.
     SUCT_TURN_Z = 850
     SRC_X = PWP_FILTER_X1 - 250
-    pw_pipe([PWP_FILTER_X1, PWP_FILTER_X1, SRC_X],
-            [PWP_SROW_Z0, SUCT_TURN_Z, SUCT_TURN_Z], C_BROWN, zorder=Z_BROWN)
-    pw_arrow(SRC_X, SUCT_TURN_Z, SRC_X - 42, SUCT_TURN_Z, C_BLUE)
-    pw_text(SRC_X - 52, SUCT_TURN_Z, "FROM\nTRAY SUMP", ha="left", va="center", fontsize=6, color=C_BROWN, zorder=10)
+    P4_IN_Z = PWP_SROW_Z0 + 90                 # IN-port height on P-04's −X face (body center)
+    pw_pipe([SRC_X, SRC_X, P4_XL],
+            [SUCT_TURN_Z, P4_IN_Z, P4_IN_Z], C_BROWN, zorder=Z_BROWN)
+    pw_arrow(SRC_X, SUCT_TURN_Z, SRC_X, SUCT_TURN_Z - 42, C_BLUE)
+    pw_text(SRC_X, SUCT_TURN_Z - 58, "FROM\nTRAY SUMP", ha="center", va="top", fontsize=6, color=C_BROWN, zorder=10)
     # P-04 OUT → SV-02 → DV-02 along the row line (SV-02 taps in-line)
     pw_pipe([PWP_FILTER_X1 + 50, PWP_FILTER_X3 - 22], [ROW_Z, ROW_Z], C_BROWN, zorder=Z_BROWN)
     pw_arrow(PWP_FILTER_X2 + 80, ROW_Z, PWP_FILTER_X2 + 20, ROW_Z, C_BROWN)

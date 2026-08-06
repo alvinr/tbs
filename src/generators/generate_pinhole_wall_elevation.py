@@ -392,24 +392,27 @@ _dvx0, _dvx1 = sx(PWP_FILTER_X3 - 23), sx(PWP_FILTER_X3 + 23)
 ax.add_patch(mpatches.Rectangle((_dvx0, sz(PWP_DV02_Z - 23)), _dvx1 - _dvx0, sz(PWP_DV02_Z + 23) - sz(PWP_DV02_Z - 23),
              facecolor=C_VALVE, edgecolor=C_OUT, lw=0.8, zorder=9))
 ax.text(sx(PWP_FILTER_X3), sz(PWP_DV02_Z - 48), "DV-02\n3-WAY", ha="center", va="top", fontsize=3.4, color="#8A7A2A", zorder=10, **FONT)
-# brown row flow P-04 -> SV-02 -> DV-02, then DV-02 recycle branch UP into F-01 in-port
-ax.annotate("", xy=(sx(PWP_FILTER_X3 - 23), sz(PWP_DV02_Z)), xytext=(sx(PWP_FILTER_X1 + 50), sz(PWP_DV02_Z)),
-            arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=0.7), zorder=9)
-ax.annotate("", xy=(sx(PWP_FILTER_X1), sz(_bb_bot)), xytext=(sx(PWP_FILTER_X3 - 23), sz(PWP_DV02_Z + 20)),
-            arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=0.6,
-                            connectionstyle="angle,angleA=0,angleB=-90"), zorder=8)
-# brown flow along the filter caps (F-01 -> F-02 -> F-03)
+# ── Filter-skid flow drawn as PIPES (draw_pipe_path convention, matching the blue supply) + arrows ──
+def _bpipe(xs, zs):
+    draw_pipe_path(ax, xs, zs, OD_H, WALL_H, fc=C_BROWN, ec="#5A3A20", bore_fc="white", zorder=6)
+# P-04 OUT → SV-02 → DV-02 along the row line
+_bpipe([PWP_FILTER_X1 + 50, PWP_FILTER_X3], [PWP_DV02_Z, PWP_DV02_Z])
+ax.annotate("", xy=(sx(PWP_FILTER_X2 + 15), sz(PWP_DV02_Z)), xytext=(sx(PWP_FILTER_X2 + 90), sz(PWP_DV02_Z)),
+            arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=0.7), zorder=11)
+# DV-02 recycle branch → up the panel edge → F-01 IN (matches the 3D DV-02 z+ → edge → F1)
+_edge = 2830
+_bpipe([PWP_FILTER_X3, PWP_FILTER_X3, _edge, _edge, PWP_FILTER_X1 - _bb_r],
+       [PWP_DV02_Z + 22, 1600, 1600, PWP_FILTER_CAP_Z, PWP_FILTER_CAP_Z])
+# F-01 → F-02 → F-03 along the caps
 for _x0, _x1 in [(PWP_FILTER_X1 + _bb_r, PWP_FILTER_X2 - _bb_r), (PWP_FILTER_X2 + _bb_r, PWP_FILTER_X3 - _bb_r)]:
-    ax.annotate("", xy=(sx(_x1), sz(PWP_FILTER_CAP_Z)), xytext=(sx(_x0), sz(PWP_FILTER_CAP_Z)),
-                arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=0.7), zorder=9)
-# SV-01 pH sample tap — RAISED beside F-03 — then DV-01 exit to the corridor
-ax.add_patch(plt.Circle((sx(PWP_SV01_X), sz(PWP_SV01_Z)), 5, facecolor="#C0392B", edgecolor=C_OUT, lw=0.7, zorder=9))
-ax.annotate("", xy=(sx(PWP_SV01_X), sz(PWP_SV01_Z)), xytext=(sx(PWP_FILTER_X3 + _bb_r), sz(PWP_FILTER_CAP_Z)),
-            arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=0.7,
-                            connectionstyle="angle,angleA=-90,angleB=0"), zorder=9)
+    _bpipe([_x0, _x1], [PWP_FILTER_CAP_Z, PWP_FILTER_CAP_Z])
+# F-03 OUT → SV-01 (raised beside F-03) → drop → DV-01 exit to the corridor
+_bpipe([PWP_FILTER_X3 + _bb_r, PWP_SV01_X, PWP_SV01_X], [PWP_FILTER_CAP_Z, PWP_FILTER_CAP_Z, PWP_SV01_Z])
+ax.add_patch(plt.Circle((sx(PWP_SV01_X), sz(PWP_SV01_Z)), 5, facecolor="#C0392B", edgecolor=C_OUT, lw=0.7, zorder=11))
 ax.text(sx(PWP_SV01_X + 14), sz(PWP_SV01_Z), "SV-01\npH SAMPLE", ha="left", va="center", fontsize=3.4, color="#C0392B", zorder=10, **FONT)
-ax.annotate("", xy=(sx(4575), sz(PWP_SV01_Z - 70)), xytext=(sx(PWP_SV01_X), sz(PWP_SV01_Z - 70)),
-            arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=0.7), zorder=9)
+_bpipe([PWP_SV01_X, PWP_SV01_X, 4575], [PWP_SV01_Z, PWP_SV01_Z - 70, PWP_SV01_Z - 70])
+ax.annotate("", xy=(sx(4520), sz(PWP_SV01_Z - 70)), xytext=(sx(4440), sz(PWP_SV01_Z - 70)),
+            arrowprops=dict(arrowstyle="-|>", color=C_BROWN, lw=0.7), zorder=11)
 ax.text(sx(4585), sz(PWP_SV01_Z - 70), "-> DV-01\n(corridor)", ha="left", va="center", fontsize=3.4, color=C_BROWN, zorder=10, **FONT)
 # ACC-02 recycle-spray damper — center-bottom cylinder (fed from P-02 in the corridor)
 _a2x0, _a2x1 = sx(PWP_ACC2_X - 63), sx(PWP_ACC2_X + 63)

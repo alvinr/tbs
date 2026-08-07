@@ -404,6 +404,16 @@ def draw_sheet1():
     flex_conn(ax1, WRX, 7.15, color=C_BLACK)                             # waste INFLOW flex — on the riser, OUTSIDE the wall
     flex_conn(ax1, W_X + W_W / 2 + 0.18, 7.80, color=C_BLACK, horiz=True)   # waste OUTLET flex — OUTSIDE the right wall
 
+    # ── #29 — braided flex connector on BOTH ports of every pump (suction + discharge) ──
+    #    Vibration isolation: a braided ½" jumper de-couples each pump from the rigid PVC run so the
+    #    solvent-weld joints can't fatigue-crack. P-04's suction coil = the existing 1" tray-drain hose.
+    _pf = dict(n=3, amp=0.042, length=0.16)
+    flex_conn(ax1, 2.4, 6.40, color=C_BLUE, **_pf);  flex_conn(ax1, 2.4, 5.95, color=C_BLUE, **_pf)   # P-01 suction / discharge
+    flex_conn(ax1, 6.4, 6.05, color=C_BROWN, **_pf); flex_conn(ax1, 6.4, 5.45, color=C_BROWN, **_pf)   # P-02 suction / discharge
+    flex_conn(ax1, BD_X, 7.95, color=C_BROWN, **_pf); flex_conn(ax1, BD_X, 8.75, color=C_BROWN, **_pf)  # P-05 suction / discharge
+    flex_conn(ax1, WD_X, 8.28, color=C_BLACK, **_pf); flex_conn(ax1, WD_X, 8.98, color=C_BLACK, **_pf)  # P-03 suction / discharge
+    flex_conn(ax1, 15.6, 3.88, color=C_BROWN, **_pf); flex_conn(ax1, 15.6, 3.30, color=C_BROWN, **_pf)  # P-04 suction (1" tray hose) / discharge
+
     # ═══ PROCESSING AREA ═══════════════════════════════════════════════════════════
     ax1.add_patch(plt.Rectangle((13.7, 3.5), 3.8, 5.5, fc="#C8E6C9", ec="#388E3C", lw=1.5, zorder=2))
     ax1.text(15.6, 8.8, "PROCESSING TRAY (304 SS)", ha="center", fontsize=7.5, fontweight="bold", color="#2E7D32")

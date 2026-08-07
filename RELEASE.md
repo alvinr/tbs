@@ -33,6 +33,12 @@ file** — a release must not ship without a changelog entry:
   (net water cost this pair: **−$96**). Modeled in all four 3D models (water/overview/construction/
   ibc-stack); plumbing report §4.1 rewritten. The **overview** opening camera was also turned 180° to
   look into the container from the far wall.
+  Follow-up: **fixed a BV-02/BV-05 numbering collision.** The pinhole-wall spray constants
+  (`BV02_X/YD/Z`) actually positioned the spray selector, so they and every spray-context label
+  were renamed **BV-02 → BV-05** (constant, wall-elevation, spray-bar diagram, hose BOM, operating
+  manual wash procedure + valve matrix now carry BV-05a/BV-05b). The real **BV-02** now names only
+  the corridor P-05 (Brown drain) suction isolation valve. Value-preserving rename — no `.skp`
+  re-send.
 
 - **Sump→P-04 suction re-routed off the pinhole wall.** The tray-drain suction ran as a tall riser
   straight up the pinhole wall (a clash); it now rises only ~150 mm above the walkway deck, turns 90°

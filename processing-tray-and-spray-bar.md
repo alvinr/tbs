@@ -492,7 +492,7 @@ the print surface.
 
 ![Sheet 7 — Detail B: Manifold Feed & Nozzle Connections](assets/spray-bar-sheet7.png)
 
-**Supply path:** P-01 → ACC-01 → rigid 1/2" PVC pipe along pinhole wall → BV-02 →
+**Supply path:** P-01 → ACC-01 → rigid 1/2" PVC pipe along pinhole wall → BV-05a (Blue/Brown selector) → BV-05b (spray on/off) →
 coiled flexible hose → manifold → 7 irrigation tubes → poly pipe bore → 26× spray nozzles.
 
 ### 3.11 Walkway Slit
@@ -548,7 +548,7 @@ Seven detail sheets cover the spray bar assembly and processing tray:
 
 | Sheet | Title | Content |
 |-------|-------|---------|
-| 1 | Gantry Elevation | X-Z section from film plane (4× vert exag) — beam, BV-02, pole, walkway slit, operator silhouette |
+| 1 | Gantry Elevation | X-Z section from film plane (4× vert exag) — beam, BV-05, pole, walkway slit, operator silhouette |
 | 2 | Cross Section — Beam Assembly | Yd-Z composite at 1:1 — wheels, carriage plate, beam clamp plates, saddle clamps, ball joint, arm, hose |
 | 3 | Plan View | Container floor plan — walkways, slit positions, beam travel range |
 | 4 | Detail A — Beam End | Longitudinal section at 2:1 — LDPE fold-back end closure with retainer clip |
@@ -608,7 +608,7 @@ tray drainage plan and sump cross-section).
 | [Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore)](https://www.mcmaster.com/8576K23/) (8576K23) | Solid acetal (Delrin), flat tread. Cut from 1-1/4" (31.75mm) Delrin rod into 4 × 20mm slugs; drill Ø10.5 running-clearance bore — the acetal plain bore IS the bearing (self-lubricating on the Ø10 304 SS axle; no ball bearing — the ferricyanide/citric wash rules steel bearings out). One 1 ft (305mm) rod yields all 4 (parting/facing waste). Light-duty ~2.6 kg/wheel wet; 2 per carriage, low-profile for grate clearance. OD Ø31.75 = Ø32 nominal (−0.25mm). | 1 1 ft rod | McMaster-Carr | $11 |
 | [1/2" PVC barbed tee (flex hose → manifold center feed)](https://www.dripdepot.com/barb-tubing-tee-size-half-inch) (1084) | DripDepot 1084 ½" PVC barbed tee (PVC), $0.57 ea × 5-pack = $2.85; the SINGLE center-feed inlet — ½" flex hose → manifold center. 1 used. Firm 2026-07-28. | 1 5-pack | DripDepot | $3 |
 | [Telescoping aluminum pool pole, 4–8 ft](https://www.amazon.com/dp/B0FHPSPD4T) (B0FHPSPD4T) | Standard pool skimmer handle — POOLPURE telescopic aluminum, 4–8 ft (B0FHPSPD4T, exact). ~$15–20 est — confirm. | 1 ea | Amazon | $15 |
-| [1/2" reinforced braided PVC hose, ~15 ft](https://www.homedepot.com/p/304185193) (T12006003) | BV-02 → beam feed (~4 m coiled). UDP 1/2"ID×3/4"OD clear braided vinyl (T12006003), $12.99/10ft firm (2026-07-30). 10 ft ≈ 3 m — a 4 m coiled run may need a 2nd roll. | 1 10ft roll | Home Depot | $13 |
+| [1/2" reinforced braided PVC hose, ~15 ft](https://www.homedepot.com/p/304185193) (T12006003) | BV-05b → beam feed (~4 m coiled). UDP 1/2"ID×3/4"OD clear braided vinyl (T12006003), $12.99/10ft firm (2026-07-30). 10 ft ≈ 3 m — a 4 m coiled run may need a 2nd roll. | 1 10ft roll | Home Depot | $13 |
 | [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) (B0816MQ5T6) | Wheel axle pins — uxcell 10×60mm 304 SS clevis pins, 4-pack (B0816MQ5T6, exact: 14mm head, 3.2mm cotter hole). | 1 pack | Amazon | $5 |
 | [Axle saddle clamps ×8 (304 SS flat-bar stock)](https://www.mcmaster.com/8992K794/) (8992K794) | Axle retention — formed from 1/8" (3.18mm) × 3/4" (19mm) 304 SS flat bar, wrapped over the Ø10 axle (1mm cradle clearance) with two ~12mm feet bolted up through the carriage plate (2× Ø5.5 M5). ~48mm developed per saddle; all 8 cut from one 2 ft (610mm) length of flat bar. A stamped conduit saddle clamp is only ~0.5mm — too thin for a rolling-carriage axle retainer. Alt: 304 SS + EPDM Adel loop clamp ~3/8–7/16" ID. | 1 2 ft bar | McMaster-Carr | $10 |
 | [M6×1.0 × 20 hex bolt, Grade 8.8 zinc](https://www.mcmaster.com/91280A330/) (91280A330) | Carriage plate, beam clamp, saddle fasteners (M6×1.0). $17.86/pack of 100. ⚠ VALIDATE: 91280A330 is zinc-plated but the spray sits in the WET cyanotype zone — a 316-SS M6×20 resists corrosion better. | 16 ea | McMaster-Carr | $3 |

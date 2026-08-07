@@ -347,7 +347,7 @@ def tap01_supply():
     Yd12-against-the-wall path ran straight through the bracket plates/bolts.  BV-04/BV-05 off-panel."""
     yd, fz = ov.PROC_TRAY_YD_NEAR - 11, ov.SPRAY_BAR_FEED_Z   # 69 — butt the tray near rim (Yd80), under the triangle
     pr, tr = ov.PUMP_PIPE_OD / 2, ov.TAP_PIPE_OD / 2
-    bvx = ov.BV02_X - 150   # BV-05 riser nudged 150mm −X (toward the EP) to clear the relocated tray-sump suction at PH_X
+    bvx = ov.BV05_X - 150   # BV-05 riser nudged 150mm −X (toward the EP) to clear the relocated tray-sump suction at PH_X
     p = []
     # UNDER-WALKWAY RIBBON (lane 1): the corridor blue trunk (dropped clear of the FP rail at X4670, Yd~1132,
     # z60) rises to FLUSH in the tray-edge slot, crosses the notched outer beam, runs −Yd along the ribbon to
@@ -457,8 +457,8 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TI
     (ov.C_LEN - 30, cp.X1_TEE_Y, cp.X1_TEE_Z, "X1\n(fresh fill)", -550, 250, 0),
     (ov.C_LEN - 30, cp.COL_L, 1700, "X3\n(brown drain out)", -550, 0, 250),
     (ov.C_LEN - 30, cp.COL_R, 1620, "X4\n(waste drain out)", -550, 0, -250),
-    (ov.BV02_X - 150, ov.PROC_TRAY_YD_NEAR - 11, 700, "3W-BV-05a\n(Blue/Brown selector)", 0, 380, 250),   # the wall-mounted spray-bar source selector
-    (ov.BV02_X - 150, ov.PROC_TRAY_YD_NEAR - 11, 900, "BV-05b\n(spray on/off)", 0, 300, 200),   # the 2-way on/off, WALL-mounted above the selector
+    (ov.BV05_X - 150, ov.PROC_TRAY_YD_NEAR - 11, 700, "3W-BV-05a\n(Blue/Brown selector)", 0, 380, 250),   # the wall-mounted spray-bar source selector
+    (ov.BV05_X - 150, ov.PROC_TRAY_YD_NEAR - 11, 900, "BV-05b\n(spray on/off)", 0, 300, 200),   # the 2-way on/off, WALL-mounted above the selector
 ]
 # Off-panel / context labels — shown ONLY in the full "Labeled" scene (Labels Context tag), kept
 # OUT of the "Plumbing (labeled)" scene so their leaders don't clutter the plumbing view.
@@ -700,7 +700,7 @@ def skid_plumbing(part="all"):
         lead[:-1] + cross + tail[1:], rp, color=ov.C_IBC_BROWN))
     # ── Leg 5: ACC-02 OUT (−X) → 3W-BV-05 recycled port — closes the recycle-spray loop ──
     acc2_out = (ACC2_X - cp.ACC_R - 30, ov.PWP_FILTER_YD, ACC2_Z0 + 28)   # ACC-02 −X OUT tip (3583.5,104,948)
-    b5rx = (ov.BV02_X - 150) + (cp.DVB / 2 + cp.DVL)                             # BV-05 +X recycled port tip X (2282)
+    b5rx = (ov.BV05_X - 150) + (cp.DVB / 2 + cp.DVL)                             # BV-05 +X recycled port tip X (2282)
     zb = acc2_out[2]                                        # 948 — panel-bottom run height (= ACC-02 OUT)
     p.append(ov.ruby_pipe_run("ACC-02 -> BV-05 (recycled spray)",
         [acc2_out,                                          # off ACC-02's −X OUT port (collinear −X)

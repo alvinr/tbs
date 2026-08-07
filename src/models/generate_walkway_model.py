@@ -16,7 +16,7 @@ up, so the structure reads clearly apart from the decks that sit on top:
     outside wall face + 3× M12 through-bolts (hex heads outside), visible through
     the ghosted container.
   • **Right Cantilever** — the IBC-end right walkway support: a cantilever
-    rectangle (2 long + 2 end 40×40×3 SHS beams) on center arms off the IBC
+    rectangle (2 long + 2 end 2×1×0.120 steel beams) on center arms off the IBC
     uprights + wall cleats + combined corner plates (rev12 — replaced the old
     ceiling-hung bearer/rod hangers). Single-sourced via ov.right_walkway_cantilever().
   • **Processing Tray** — the SS basin the walkway surrounds (reuses the overview
@@ -331,7 +331,7 @@ def _floor_cant_type_parts(x0, reach, suffix, target_x):
     return [
         ruby_box(f"Type FloorCant {suffix} foot plate", x0 - foot_l / 2, 0, 0,
                  foot_l, foot_w, foot_t, color=C_STEEL),
-        ruby_box(f"Type FloorCant {suffix} post (50x50x3 SHS)", x0 - LC_POST / 2, 0, 0,
+        ruby_box(f"Type FloorCant {suffix} post (2x2x0.120 SHS)", x0 - LC_POST / 2, 0, 0,
                  LC_POST, LC_PW, az1, color=C_STEEL),
         ruby_box(f"Type FloorCant {suffix} arm (to X{target_x})", x0 + LC_POST / 2, 0, az0,
                  reach, LC_ARM_W, az1 - az0, color=C_STEEL),
@@ -424,7 +424,7 @@ def left_floor_cantilevers():
         aw = LC_ARM_WW if wide else LC_ARM_W    # 60 / 40
         parts.append(ruby_box(f"Left cantilever {i} foot plate", LC_FX0, y - foot_w / 2, 0,
                               foot_l, foot_w, foot_t, color=C_STEEL))
-        parts.append(ruby_box(f"Left cantilever {i} post (50x50x3 SHS)",
+        parts.append(ruby_box(f"Left cantilever {i} post (2x2x0.120 SHS)",
                               LC_LEGX - LC_POST / 2, y - LC_PW / 2, 0,
                               LC_POST, LC_PW, az1, color=C_STEEL))
         parts.append(ruby_box(f"Left cantilever {i} arm (to X{int(reach)})", arm_x0,

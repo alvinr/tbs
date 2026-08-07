@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Ball-valve sourcing + BV-05 spray selector re-designed as two 1/2″ valves.** The five 1/2″ 2-way
+  isolation valves (BV-01/02/03/04/06) re-sourced Banjo V050FP → **Grainger 803HZ1 at $24.14** (from
+  US Plastic $44.27, **−$120**). No 1/2″ 3-way L-port is stocked (only 3/4″ Banjo V075BL $72.88 +
+  reducers), so **BV-05 became two 1/2″ valves**: **BV-05a** (3-way Blue/Brown selector, reuse the
+  #22365 divert valve) + **BV-05b** (2-way spray on/off, **wall-mounted** above the selector, off the
+  moving spray-bar pole) — all 1/2″, no reducers, no L-port OFF-detent risk, ~$37 under the L-port
+  (net water cost this pair: **−$96**). Modeled in all four 3D models (water/overview/construction/
+  ibc-stack); plumbing report §4.1 rewritten. The **overview** opening camera was also turned 180° to
+  look into the container from the far wall.
+
 - **Sump→P-04 suction re-routed off the pinhole wall.** The tray-drain suction ran as a tall riser
   straight up the pinhole wall (a clash); it now rises only ~150 mm above the walkway deck, turns 90°
   toward the skid, runs above the walkway, then a second 90° turn up into P-04 at the skid. Cascaded

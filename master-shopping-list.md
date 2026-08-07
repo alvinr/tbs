@@ -372,7 +372,7 @@ indicative low–high estimates — get quotes before ordering.
 | Corner gusset plate, 3 mm | 4 ea | Steel offcut | shelf | $5 |
 | Corner plate 304 SS (U-joint mount) | 4 ea | Metal Supermarkets | film | $236 |
 | Drop-in rail saddles + tapered dowels | 4 ea | Local fab | swing | $80–$130 |
-| Drum support cage, 40 × 40 × 3mm SHS | 1 lot | Local fab | swing | $70–$120 |
+| Drum support cage, 1.5×1.5×0.120in steel SHS | 1 lot | Local fab | swing | $70–$120 |
 | [EMT canopy base plates + ground stakes (×4)](https://www.homedepot.com/p/317889187) (PDB-F-1-4) | 1 4-pack | Home Depot | ventilation | $16 |
 | [EMT canopy corner pull elbows (×4)](https://www.homedepot.com/p/203776547) (94510) | 4 ea | Home Depot | ventilation | $47 |
 | [EMT canopy fittings (couplings, corner ells, connectors)](https://www.homedepot.com/p/100135091) (12210) | 8 ea | Home Depot | ventilation | $12 |

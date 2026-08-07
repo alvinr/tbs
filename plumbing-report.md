@@ -96,11 +96,11 @@ panel's center-bottom.
 | F-03 (carbon) | CTO coconut-shell activated carbon | 4.5"×20" Big Blue |
 
 Each housing has 1" NPT inlet and outlet on the head; the heads sit on a common
-line and the sumps hang below on a shared 25×25×3mm slotted-angle backing frame.
+line and the sumps hang below, each housing carried on its own Pentair 150061 bracket.
 Inter-housing piping connects F-01 OUT → F-02 IN and F-02 OUT → F-03 IN using
 1" PVC pipe (threaded at the filter ports) with 90° elbows routed outside the housing
-bodies. Each housing lag-screws through its own mounting-hole ears (on 25mm plywood-offcut standoff blocks) into
-the 18mm ply backing, giving sump-bowl clearance — no custom bracket (see the
+bodies. Each housing machine-screws through its own mounting-hole ears (on 25mm plywood-offcut standoff blocks) into
+back-face pronged tee-nuts in the 18mm ply backing, giving sump-bowl clearance — no custom bracket (see the
 **DETAIL — HOUSING MOUNT (section)** inset on the panel elevation above).
 
 **Head clearance:** the 20" sumps hang ~250mm lower than a 10" housing would —
@@ -396,20 +396,22 @@ The plywood panel is secured to the IBC restraint front-portal frame uprights
 The frame provides rigid lateral restraint — the panel does not contact the
 container walls directly.
 
-### 7.2 Filter Skid Frame
+### 7.2 Filter Skid Mounting
 
-The filter skid uses a separate 25×25×3mm slotted steel angle frame bolted to the
-plywood panel. The frame provides:
+The filter skid uses no separate frame: each housing is carried on its own **Pentair 150061
+zinc single-housing bracket** machine-screwed to the 18mm plywood backing (this replaced the
+earlier welded slotted-angle frame — purpose-built, −$85). The mount provides:
 
-- Adjustable housing height via slotted holes in the uprights
 - Rigid support for the ~5kg weight of each filled filter housing
-- Backing board (18mm plywood) within the frame for the housing lag-screws
+- 18mm plywood backing board with **back-face pronged tee-nuts** for the housing machine-screws
+  (a re-torqueable joint, serviceable without stripping the ply)
 
 Each filter housing mounts through its own **mounting-hole ears** — Big Blue
-heads are pre-drilled for wall mounting — with **SS lag/wood screws straight into
-the 18mm plywood backing** (no custom bracket). 25mm plywood-offcut standoff blocks behind
+heads are pre-drilled for wall mounting — with **5/16"-18 zinc machine screws into
+back-face pronged tee-nuts in the 18mm plywood backing** (no custom bracket; #30 —
+a re-torqueable machine-screw joint, not wood/lag screws). 25mm plywood-offcut standoff blocks behind
 each ear space the housing off the ply so the sump bowl hangs free and clears for
-cartridge changes. Two lag screws per housing.
+cartridge changes. Two machine screws per housing.
 
 ### 7.3 Pump Mounting
 
@@ -514,18 +516,19 @@ hardware are sourced there and in the IBC stacking frame line.
 <!-- BEGIN parts:pinhole-wall-plumbing-panel -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [Pinhole-wall filter-skid backing ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — pinhole-wall backing panel (~1795×1440) that the 3× Big Blue filters + the P-04/SV-02/DV-02 skid row + ACC-02 lag-screw to. PIECED from 2 sheets (butt-jointed): the 1795×1440 face exceeds a single 4×8 sheet 1219mm width. Same SKU as the corridor panels; STANDARD exterior per project rule (dry mounting backboard, NOT marine). Firm $29.30 (Home Depot 2026-07-23). Seal cut edges. | 2 sheet | Home Depot | $59 |
+| [Pinhole-wall filter-skid backing ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — pinhole-wall backing panel (~1795×1440) that the 3× Big Blue filters + the P-04/SV-02/DV-02 skid row + ACC-02 machine-screw to (via back-face pronged tee-nuts — tnut-quarter/tnut-fivesixteen, #30). PIECED from 2 sheets (butt-jointed): the 1795×1440 face exceeds a single 4×8 sheet 1219mm width. Same SKU as the corridor panels; STANDARD exterior per project rule (dry mounting backboard, NOT marine). Firm $29.30 (Home Depot 2026-07-23). Seal cut edges. | 2 sheet | Home Depot | $59 |
 | [Big Blue filter housing 4.5"×20" (separate)](https://www.amazon.com/dp/B0137680E6) (B0137680E6) | Ø184×594mm/housing (4.5×20), 1" NPT ports, accepts standard 20"×4.5" cartridges (verified 2026-07-27) — three SEPARATE Pentair Pentek 150234 high-flow PP housings on the mounting brackets | 3 ea | Amazon | $250 |
-| [Big Blue housing mounting brackets (×3)](https://www.freshwatersystems.com/products/mounting-bracket-white-single-housing-for-10-20-big-blue-housings) (150061) | Pentair 150061 zinc-plated single-housing mounting bracket, one per 4.5×20 Big Blue (×3), lag-screwed to the 18mm ply backing. Purpose-built — replaces the welded slotted-angle frame (2026-07-27). | 3 ea | Fresh Water Systems | $32 |
-| [SS lag/wood screws — filter housings to ply backing](https://www.homedepot.com/p/302007729) (812670) | 2 per housing × 3 = 6 needed — Everbilt 5/16"×1½" SS hex lag screws through the housing's mounting-hole ears into the 18mm plywood backing (no custom bracket). Sold in 5-packs → 2 packs (10, 4 spare). | 2 5-pack | Home Depot | $14 |
-| Plywood offcut spacer blocks 25mm (filter skid) | 25mm standoff blocks between the housing's mounting ears and the ply backing — sump-bowl hang clearance (the housing lag-screws through them into the ply). Cut from PLYWOOD OFFCUTS (2026-07-25 — no need for HDPE; dry standoff, not a wet-immersion part). | 1 lot | offcuts | $0 |
+| [Big Blue housing mounting brackets (×3)](https://www.freshwatersystems.com/products/mounting-bracket-white-single-housing-for-10-20-big-blue-housings) (150061) | Pentair 150061 zinc-plated single-housing mounting bracket, one per 4.5×20 Big Blue (×3), machine-screwed to the 18mm ply backing via back-face pronged tee-nuts (#30, re-torqueable). Purpose-built — replaces the welded slotted-angle frame (2026-07-27). | 3 ea | Fresh Water Systems | $32 |
+| Zinc machine screws — filter housings to ply tee-nuts | 2 per housing × 3 = 6 needed — 5/16"-18 × 2½" ZINC-plated steel hex bolts through the 150061 bracket ear + 25mm standoff + 18mm ply into a back-face pronged tee-nut (tnut-fivesixteen). Machine-screw joint replaces the 5/16 lag screws (#30, 2026-08-07) — re-torqueable, serviceable. ZINC not SS (dry backboard mount behind the housings — not immersion; Alvin 2026-08-07). 5-packs → 2 (10, 4 spare). ⚠ price EST — confirm zinc HD SKU + price. | 2 5-pack | Home Depot | $5–$7 |
+| [5/16"-18 pronged tee-nut (filter housings)](https://www.homedepot.com/p/Everbilt-5-16-in-18-Zinc-Plated-Tee-Nut-4-Pack-825091/317478996) (825091) | Everbilt 5/16"-18 zinc 4-prong tee-nut, 3/8" (9.5mm) barrel — seats from the BACK of the 18mm ply (no front punch-through). 6 needed (2 per Big Blue housing × 3) + 2 spare → 2× 4-pack. Mates filter-machine-screws. Firm $1.57/4-pack (Home Depot 2026-08-07). Bulk alt: McMaster 50-pack $7.47. | 2 4-pack | Home Depot / McMaster-Carr | $3 |
+| Plywood offcut spacer blocks 25mm (filter skid) | 25mm standoff blocks between the housing's mounting ears and the ply backing — sump-bowl hang clearance (the housing machine-screws through them into the back-face tee-nuts). Cut from PLYWOOD OFFCUTS (2026-07-25 — no need for HDPE; dry standoff, not a wet-immersion part). | 1 lot | offcuts | $0 |
 | [MPP 5-micron sediment cartridge 4.5"×20"](https://www.amazon.com/dp/B0CJCVZ1L5) (B0CJCVZ1L5) | Pentek DGD-5005-20 dual-gradient-density 5-micron sediment cartridge (F-1 stage); ~50-print interval. $61.66/2-pack = $30.83 ea. | 2 ea | Amazon | $62 |
 | [KDF-55 heavy-metal cartridge 4.5"×20"](https://www.amazon.com/dp/B0DY1ZK47Z) (B0DY1ZK47Z) | KDF-55 media for dissolved iron/metal removal (F-2 stage); ~60-print interval. Aquaboon 20×4.5 KDF whole-house cartridge (proper KDF media — supersedes the earlier VEVOR chlorine-only cartridge). | 1 ea | Amazon | $80 |
 | [CTO carbon block cartridge 4.5"×20"](https://www.amazon.com/dp/B07ZHPB6MB) (B07ZHPB6MB) | Coconut shell activated carbon block (F-3 stage); ~40-print interval. Aquaboon CTO, $79.79/2-pack = $39.90 ea (same brand as the KDF/sediment cartridges). | 2 ea | Amazon | $80 |
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.grainger.com/product/803HZ1) (803HZ1) | PP full-port quarter-turn 2-way; pump-suction isolation BV-03 (P-02). Grainger firm $24.14 (checked 2026-08-07; was US Plastic $44.27). | 1 ea | Grainger | $24 |
 | [3-way diverter valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=31268) (31268) | L/T-port; 3W-DV-01 (filter output) | 1 ea | US Plastic Corp | $61 |
 | [pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | Filtered-water sample draw before 3W-DV-01; 1/2" PP sample valve (US Plastic 36903) + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line | 1 ea | US Plastic Corp | $19 |
-| **Pinhole Wall Plumbing Panel total** | | | | **$680** |
+| **Pinhole Wall Plumbing Panel total** | | | | **$674–$676** |
 <!-- END parts:pinhole-wall-plumbing-panel -->
 
 ---
@@ -540,7 +543,7 @@ hardware are sourced there and in the IBC stacking frame line.
 | After each session | Run P-04 to evacuate residual tray water to Brown or Black as appropriate |
 | Monthly | Inspect all pipe joints for leaks; tighten compression fittings if needed |
 | Monthly | Check pump mounting bracket bolts for tightness |
-| Monthly | Inspect filter housing clamp bands and mounting lag screws |
+| Monthly | Inspect filter housing clamp bands and mounting machine screws (tee-nut joints) |
 | Every ~40 prints | Replace F-03 (CTO carbon block) cartridge |
 | Every ~50 prints | Replace F-01 (5μm sediment) cartridge |
 | Every ~60 prints | Replace F-02 (KDF-55) cartridge |

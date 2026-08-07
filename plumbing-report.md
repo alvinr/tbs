@@ -338,8 +338,10 @@ service the deciding factors are **buildability and cost**, not the toughness wh
 
 **The trade accepted:** HDPE's edge is toughness — impact, vibration, and freeze resistance
 for a transported system. Both risks are mitigated operationally: the system is **drained for
-transport** (no freeze-crack, less vibration mass) and every **pump connection uses flexible
-braided hose** (absorbs vibration that would fatigue rigid joints); rigid runs are clipped at
+transport** (no freeze-crack, less vibration mass) and every pump is de-coupled from the rigid
+run on **both ports** — a **braided ½" flex jumper on the suction *and* discharge of all five
+pumps** (P-04's suction is the 1" tray-drain hose), barb-coupled and SS-clamped, so pump vibration
+can't fatigue-crack a solvent-weld joint; rigid runs are clipped at
 close intervals. Keep runs off the sunniest wall face — PVC softens near 60 °C, though it
 retains > 200 PSI hot, far above service. (If a future deployment must travel wet or in freezing
 conditions, PEX is the tougher DIY alternative.)
@@ -519,7 +521,7 @@ hardware are sourced there and in the IBC stacking frame line.
 | [Pinhole-wall filter-skid backing ply (23/32" exterior)](https://www.homedepot.com/p/23-32-in-x-4-ft-x-8-ft-RTD-Southern-Yellow-Pine-Wood-Sheathing-Plywood-129323/303564747) (303564747) | 4×8 ft 23/32" (18mm) RTD Southern Yellow Pine exterior sheathing — pinhole-wall backing panel (~1795×1440) that the 3× Big Blue filters + the P-04/SV-02/DV-02 skid row + ACC-02 machine-screw to (via back-face pronged tee-nuts — tnut-quarter/tnut-fivesixteen, #30). PIECED from 2 sheets (butt-jointed): the 1795×1440 face exceeds a single 4×8 sheet 1219mm width. Same SKU as the corridor panels; STANDARD exterior per project rule (dry mounting backboard, NOT marine). Firm $29.30 (Home Depot 2026-07-23). Seal cut edges. | 2 sheet | Home Depot | $59 |
 | [Big Blue filter housing 4.5"×20" (separate)](https://www.amazon.com/dp/B0137680E6) (B0137680E6) | Ø184×594mm/housing (4.5×20), 1" NPT ports, accepts standard 20"×4.5" cartridges (verified 2026-07-27) — three SEPARATE Pentair Pentek 150234 high-flow PP housings on the mounting brackets | 3 ea | Amazon | $250 |
 | [Big Blue housing mounting brackets (×3)](https://www.freshwatersystems.com/products/mounting-bracket-white-single-housing-for-10-20-big-blue-housings) (150061) | Pentair 150061 zinc-plated single-housing mounting bracket, one per 4.5×20 Big Blue (×3), machine-screwed to the 18mm ply backing via back-face pronged tee-nuts (#30, re-torqueable). Purpose-built — replaces the welded slotted-angle frame (2026-07-27). | 3 ea | Fresh Water Systems | $32 |
-| Zinc machine screws — filter housings to ply tee-nuts | 2 per housing × 3 = 6 needed — 5/16"-18 × 2½" ZINC-plated steel hex bolts through the 150061 bracket ear + 25mm standoff + 18mm ply into a back-face pronged tee-nut (tnut-fivesixteen). Machine-screw joint replaces the 5/16 lag screws (#30, 2026-08-07) — re-torqueable, serviceable. ZINC not SS (dry backboard mount behind the housings — not immersion; Alvin 2026-08-07). 5-packs → 2 (10, 4 spare). ⚠ price EST — confirm zinc HD SKU + price. | 2 5-pack | Home Depot | $5–$7 |
+| [Zinc machine screws — filter housings to ply tee-nuts](https://www.homedepot.com/p/Everbilt-5-16-in-18-x-2-1-2-in-Phillips-Slotted-Round-Head-Machine-Screw-831121/317478933) (831121) | 2 per housing × 3 = 6 needed (+2 spare) — Everbilt 5/16"-18 × 2½" ZINC round-head machine screw through the 150061 bracket ear + 25mm standoff + 18mm ply into a back-face pronged tee-nut (tnut-fivesixteen). Machine-screw joint replaces the 5/16 lag screws (#30) — re-torqueable, serviceable. ZINC not SS (dry backboard mount behind the housings — not immersion; Alvin). Sold individually (screw + nut; nut unused). Firm $1.57 ea (Home Depot 2026-08-07). | 8 ea | Home Depot | $13 |
 | [5/16"-18 pronged tee-nut (filter housings)](https://www.homedepot.com/p/Everbilt-5-16-in-18-Zinc-Plated-Tee-Nut-4-Pack-825091/317478996) (825091) | Everbilt 5/16"-18 zinc 4-prong tee-nut, 3/8" (9.5mm) barrel — seats from the BACK of the 18mm ply (no front punch-through). 6 needed (2 per Big Blue housing × 3) + 2 spare → 2× 4-pack. Mates filter-machine-screws. Firm $1.57/4-pack (Home Depot 2026-08-07). Bulk alt: McMaster 50-pack $7.47. | 2 4-pack | Home Depot / McMaster-Carr | $3 |
 | Plywood offcut spacer blocks 25mm (filter skid) | 25mm standoff blocks between the housing's mounting ears and the ply backing — sump-bowl hang clearance (the housing machine-screws through them into the back-face tee-nuts). Cut from PLYWOOD OFFCUTS (2026-07-25 — no need for HDPE; dry standoff, not a wet-immersion part). | 1 lot | offcuts | $0 |
 | [MPP 5-micron sediment cartridge 4.5"×20"](https://www.amazon.com/dp/B0CJCVZ1L5) (B0CJCVZ1L5) | Pentek DGD-5005-20 dual-gradient-density 5-micron sediment cartridge (F-1 stage); ~50-print interval. $61.66/2-pack = $30.83 ea. | 2 ea | Amazon | $62 |
@@ -528,7 +530,7 @@ hardware are sourced there and in the IBC stacking frame line.
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.grainger.com/product/803HZ1) (803HZ1) | PP full-port quarter-turn 2-way; pump-suction isolation BV-03 (P-02). Grainger firm $24.14 (checked 2026-08-07; was US Plastic $44.27). | 1 ea | Grainger | $24 |
 | [3-way diverter valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=31268) (31268) | L/T-port; 3W-DV-01 (filter output) | 1 ea | US Plastic Corp | $61 |
 | [pH sample tap (SV-01) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | Filtered-water sample draw before 3W-DV-01; 1/2" PP sample valve (US Plastic 36903) + downturned 1/2" hose barb on a 1"×1/2" reducing branch tee, panel face above spill line | 1 ea | US Plastic Corp | $19 |
-| **Pinhole Wall Plumbing Panel total** | | | | **$674–$676** |
+| **Pinhole Wall Plumbing Panel total** | | | | **$682** |
 <!-- END parts:pinhole-wall-plumbing-panel -->
 
 ---

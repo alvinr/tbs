@@ -415,7 +415,7 @@ steel bearing bar, since FRP isn't screwed through). Clips are spaced at every o
 (~914mm centers).
 
 **Right walkway** uses the same stainless hold-down clips, but they clamp to
-the horizontal leg of the 25×25×5mm L-angle bearers rather than the bracket
+the horizontal leg of the 1×1×3/16in (25.4×25.4×4.8mm) steel L-angle bearers rather than the bracket
 arms.
 
 **Left walkway** uses gravity retention only. The grate rests on the 5 floor-leg

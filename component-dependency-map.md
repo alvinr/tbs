@@ -389,7 +389,7 @@ Permanently installed — no removal for transport mode conversion.*
 | Bracket plate thickness | <!-- BEGIN cdm:WALKWAY_BRACKET_T -->8<!-- END cdm:WALKWAY_BRACKET_T -->mm | `WALKWAY_BRACKET_T` |
 | Bracket spacing | <!-- BEGIN cdm:WALKWAY_BRACKET_SPACING -->457<!-- END cdm:WALKWAY_BRACKET_SPACING -->mm | `WALKWAY_BRACKET_SPACING` |
 | Container rib spacing | <!-- BEGIN cdm:CONTAINER_RIB_SPACING -->457<!-- END cdm:CONTAINER_RIB_SPACING -->mm | `CONTAINER_RIB_SPACING` |
-| Angle iron mounting rail | 50×50×5mm | `WALKWAY_ANGLE_IRON` |
+| Right-walkway L-angle grate bearer | 1×1×3/16in steel angle | prose — [walkway-report §4.4](walkway-report.md); no constant (#26) |
 | Near walkway Yd | <!-- BEGIN cdm:WALKWAY_NEAR_YD -->0<!-- END cdm:WALKWAY_NEAR_YD -->mm | `WALKWAY_NEAR_YD` |
 | Far walkway Yd | <!-- BEGIN cdm:WALKWAY_FAR_YD -->2,062<!-- END cdm:WALKWAY_FAR_YD -->mm | `WALKWAY_FAR_YD` |
 | Left walkway X | <!-- BEGIN cdm:WALKWAY_LEFT_X -->170<!-- END cdm:WALKWAY_LEFT_X -->mm | `WALKWAY_LEFT_X` |

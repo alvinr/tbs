@@ -52,7 +52,7 @@ C_PLY   = "#D4C8A0"
 FONT    = {"fontfamily": "monospace"}
 
 # ── Frame constants (from equipment-layout-report.md §5) ──────────────────────
-FRAME_RHS      = 50     # 50×50×3mm RHS
+FRAME_RHS      = 50.8   # 2×2×0.120in steel SHS (#26)
 FRAME_T        = 3      # wall thickness
 FRAME_FOOTPRINT_W = C_WID  # frame footprint width (across Yd, wall-to-wall via brackets)
 FRAME_FOOTPRINT_D = 1284  # frame footprint depth (along X, 65mm overhang cargo-door side, flush to end wall)

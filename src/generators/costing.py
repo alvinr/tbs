@@ -209,11 +209,11 @@ SWINGPIVOT = [
     LineItem("Ø89×8 CHS pivot post + machined hub / thrust collar", 180, 240, 300, "carries ~3.6 kN·m swing cantilever; Metal Supermarkets / local fab"),
     LineItem("Thrust ball bearing, 51118 (Ø90 bore, single-direction)", 80, 80, 80, "Bearings Direct $80.03 firm; SF>50 on the 3.24 kN axial"),
     LineItem("iglide J flange bushings, Ø90 bore (×2)", 261, 261, 261, "igus JFM-9095-100 $130.53 ea, ships in days (replaced the $211/ea 3-mo-lead GGB DU)"),
-    LineItem("Drum support cage, 40×40×3mm SHS", 70, 95, 120, "Local fab"),
+    LineItem("Drum support cage, 1.5×1.5×0.120in steel SHS", 70, 95, 120, "Local fab"),
     LineItem("Top + bottom wall stays + 4-bolt anchor plates", 90, 105, 120, "5/8\" turnbuckle (JETBGV58X6) + eye rods + fab plates"),
     LineItem("Drop-in rail saddles + tapered dowels (×4, removable left film rails)", 80, 105, 130, "Local fab / McMaster"),
     # §8.4 fixed door frame
-    LineItem("Fixed door frame — 50×50×3 RHS members (×3)", 90, 105, 120, "Metal Supermarkets"),
+    LineItem("Fixed door frame — 2×2×0.120in steel members (×3)", 90, 105, 120, "Metal Supermarkets"),
     LineItem("Fixed door frame — top/bottom strip-brush light seals (2× 74405T12 brush + 2× 8813T53 holder)", 129, 129, 129, "McMaster $28.88+$35.37/8ft ×2 = $128.50 firm; seal paths #3–#4 — panel sweeps through the bristles"),
     LineItem("Fixed door frame — welding/fabrication + wall attachment", 200, 275, 350, "Local fab"),
 ]
@@ -222,7 +222,7 @@ SWINGPIVOT = [
 # MISSING from the model — the stepped panel itself (frame, skins, EPDM, latches, B2 bay, handle) had
 # no home, so the grand total undercounted the hinged panel by its full cost.
 PANEL = [
-    LineItem("50×50×3mm RHS mild steel — frame perimeter + members (4× 6m)", 120, 140, 160, "Metal Supermarkets"),
+    LineItem("2×2×0.120in steel — frame perimeter + members (4× 6m)", 120, 140, 160, "Metal Supermarkets"),
     LineItem("1/8\" HDPE — panel skins both faces (4× 4×8 ft)", 493, 493, 493, "US Plastics 46684 1/8\" black HDPE @ $123.34/sheet"),
     LineItem("¾\" PT pine plywood — Fan B mount band + cooler base (full 4×8 sheet)", 70, 70, 70, "2026-07-27: full 4×8 sheet $69.68 (Home Depot 231428) — also yields the cooler stowage base (plywood-base-12 retired)"),
     LineItem("1\"×1\"×1/8\" Al angle — corner-zone stiffener grid (4× 8 ft)", 48, 49, 48, "2026-07-29: SS/weight audit dropped the redundant solid 3mm 5052 Al core ($586) for a light 1×1×1/8 Al angle rib grid (−~22 kg). Firm: Grainger 2EYP1 $12.20/8ft ×4 = $48.80"),

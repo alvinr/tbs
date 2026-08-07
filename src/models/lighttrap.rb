@@ -102,9 +102,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Door Frame threshold
   grp = ents.add_group
   grp.name = "Door Frame threshold"
-  face = grp.entities.add_face([-50.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([-50.8.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.8.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
@@ -113,9 +113,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Door Frame top
   grp = ents.add_group
   grp.name = "Door Frame top"
-  face = grp.entities.add_face([-50.mm,0.mm,2338.mm], [0.mm,0.mm,2338.mm], [0.mm,2362.mm,2338.mm], [-50.mm,2362.mm,2338.mm])
+  face = grp.entities.add_face([-50.8.mm,0.mm,2337.2.mm], [0.mm,0.mm,2337.2.mm], [0.mm,2362.mm,2337.2.mm], [-50.8.mm,2362.mm,2337.2.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
@@ -124,7 +124,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Door Frame left stile
   grp = ents.add_group
   grp.name = "Door Frame left stile"
-  face = grp.entities.add_face([-50.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,50.mm,0.mm], [-50.mm,50.mm,0.mm])
+  face = grp.entities.add_face([-50.8.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,50.8.mm,0.mm], [-50.8.mm,50.8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
   mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
@@ -135,7 +135,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Door Frame right stile
   grp = ents.add_group
   grp.name = "Door Frame right stile"
-  face = grp.entities.add_face([-50.mm,2312.mm,0.mm], [0.mm,2312.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([-50.8.mm,2311.2.mm,0.mm], [0.mm,2311.2.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.8.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
   mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")

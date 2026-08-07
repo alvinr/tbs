@@ -1437,7 +1437,7 @@ def light_trap_drum():
 
 
 def light_trap_frame():
-    """Cargo-door RHS frame (50×50×3 RHS) + the top & bottom seal lips.
+    """Cargo-door RHS frame (2×2×0.120in steel SHS) + the top & bottom seal lips.
 
     Reused from the Light-Trap model (same pattern as light_trap_drum) so the
     overview stays in sync. The bottom seal lip closes the 80mm floor gap and the

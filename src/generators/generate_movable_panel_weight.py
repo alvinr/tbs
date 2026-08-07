@@ -32,8 +32,8 @@ RHO_PLY   = 600       # marine plywood
 RHO_HDPE  = 950       # HDPE — ALL light-lock plastic (housing 3/16", drum/skins/bay 1/8"; 2026-07-22)
 RHO_EPDM  = 140       # closed-cell EPDM/neoprene compression foam (typ.)
 
-# 50×50×3 SHS section: 50² − 44² = 564 mm² → 4.43 kg/m (first-principles; EN table 4.35)
-RHS_KG_PER_M = (50**2 - 44**2) * 1e-6 * RHO_STEEL
+# 2×2×0.120in steel SHS (#26: was 50×50×3 nominal): 50.8² − 44.7² = 582 mm² → 4.57 kg/m
+RHS_KG_PER_M = (50.8**2 - 44.7**2) * 1e-6 * RHO_STEEL
 
 H = k.C_HGT / 1000.0          # panel height 2.388 m (matches whole-camera model)
 
@@ -63,7 +63,7 @@ def _rows():
     add("A Sandwich", "Corner Al stiffener grid", f"1×1×1/8 6061 angle, {rib_len:.2f}m",
         rib_len * angle_kg_per_m)
     frame_len = 2 * (w_ctr + H) + 4 * w_ctr
-    add("A Sandwich", "Center RHS frame", f"50×50×3 SHS, {frame_len:.1f}m total",
+    add("A Sandwich", "Center RHS frame", f"2×2×0.120in SHS, {frame_len:.1f}m total",
         frame_len * RHS_KG_PER_M)
     add("A Sandwich", "HDPE center skins (1/8\")", "2×1/8\" HDPE, Ø900 aperture deducted",
         2 * (w_ctr * H - aperture) * ts * RHO_HDPE)

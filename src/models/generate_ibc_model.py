@@ -213,15 +213,18 @@ model.layers.to_a.each {{ |l|
 # ── Scenes ── opening camera looks at the FILTER SKID PANEL (pinhole wall) from INSIDE the container.
 # Frame on geometry only — hide the Labels tag so Text bounds don't skew extents.
 model.layers.each {{ |l| l.visible = (l.name != "Labels") }}
-bb = model.bounds
-ctr = bb.center
-# SAME angle as the filter-skid-panel view — from INSIDE the container, looking −Yd at the pinhole
-# wall, slightly from the left and above — but zoomed out to frame the whole model.
-dir = Geom::Vector3d.new(-0.2, 0.92, 0.34); dir.normalize!
-eye = ctr.offset(dir, bb.diagonal * 1.4)
-cam = Sketchup::Camera.new(eye, ctr, Z_AXIS); cam.fov = 40
+# Frame the CONTAINER/IBC mass DIRECTLY — not model.bounds + zoom_extents. The TAP-01/spray-supply
+# run + the skid plumbing reach far toward the pinhole wall, so the full extent is much wider than the
+# dense mass; zoom_extents then centers that wide extent and pushes the container off to the side.
+# Aiming at the Container-ghost bounds with a fixed fit keeps the container centered (the thin supply
+# run just extends into the margin).
+cont = model.entities.grep(Sketchup::ComponentInstance).find {{ |i| i.name == "Container (ghost)" }}
+fb = cont ? cont.bounds : model.bounds
+ctr = fb.center
+dir = Geom::Vector3d.new(0.5, 0.72, 0.45); dir.normalize!   # corner iso, eye on the IBC (+X) side
+eye = ctr.offset(dir, fb.diagonal * 1.45)
+cam = Sketchup::Camera.new(eye, ctr, Z_AXIS); cam.fov = 38
 model.active_view.camera = cam
-model.active_view.zoom_extents
 
 {scenes_ruby}.each {{ |name, tags|
   model.layers.each {{ |l| l.visible = (l == default_layer || l.name == "Context" || tags.include?(l.name)) }}

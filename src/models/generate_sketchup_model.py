@@ -2339,7 +2339,7 @@ model.layers.to_a.each {{ |l|
 model.layers.each {{ |l| l.visible = true }}
 bb = model.bounds
 ctr = bb.center
-dir = Geom::Vector3d.new(0.72, -0.7, 0.5); dir.normalize!
+dir = Geom::Vector3d.new(-0.72, 0.7, 0.5); dir.normalize!   # turned 180° about vertical — eye on the FAR-WALL side, looking INTO the container
 eye = ctr.offset(dir, bb.diagonal * 1.5)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents

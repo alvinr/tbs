@@ -45,6 +45,8 @@ file** — a release must not ship without a changelog entry:
   **18× SS clamps** (Everbilt 671255E), **+$55** water. Plumbing-report §5.2 made explicit. **3D done:**
   a corrugated flex jumper on both ports of the 4 corridor pumps (P-01/P-05/P-03/P-02) + P-04's discharge
   on the skid = 9 jumpers, reusing the `_flex_jumper` builder (capped so it can't overshoot the turn).
+  All flex connectors (pump + IBC-tote) now render **bright yellow** (`C_FLEX #FFD500`) so a jumper
+  stands out from the same-color pipe it splices.
   _Still to do: the corridor/pinhole panel-layout 2D elevations; the `.skp` re-send (batched with #26)._
 
 - **Captive tee-nuts for every removable ply-mount joint (#30).** Every machine-screw interface into

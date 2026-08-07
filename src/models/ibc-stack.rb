@@ -2545,8 +2545,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2559,8 +2559,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2573,8 +2573,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2587,8 +2587,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2601,8 +2601,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2615,8 +2615,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2629,8 +2629,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2643,8 +2643,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2657,8 +2657,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2671,8 +2671,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2685,8 +2685,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2699,8 +2699,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2870,8 +2870,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2884,8 +2884,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2898,8 +2898,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2912,8 +2912,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2926,8 +2926,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2940,8 +2940,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2954,8 +2954,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -2968,8 +2968,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4599,8 +4599,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4613,8 +4613,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4627,8 +4627,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4641,8 +4641,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4655,8 +4655,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4669,8 +4669,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4683,8 +4683,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4697,8 +4697,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4711,8 +4711,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4725,8 +4725,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4739,8 +4739,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4753,8 +4753,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4767,8 +4767,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4781,8 +4781,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4795,8 +4795,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4809,8 +4809,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4823,8 +4823,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4837,8 +4837,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4851,8 +4851,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4865,8 +4865,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4879,8 +4879,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4893,8 +4893,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4907,8 +4907,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4921,8 +4921,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4935,8 +4935,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4949,8 +4949,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4963,8 +4963,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4977,8 +4977,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -4991,8 +4991,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5005,8 +5005,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5019,8 +5019,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5033,8 +5033,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5047,8 +5047,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5061,8 +5061,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5075,8 +5075,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5089,8 +5089,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5103,8 +5103,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5117,8 +5117,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5131,8 +5131,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5145,8 +5145,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5159,8 +5159,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5173,8 +5173,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5187,8 +5187,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5201,8 +5201,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5215,8 +5215,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5229,8 +5229,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5243,8 +5243,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5257,8 +5257,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5271,8 +5271,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5285,8 +5285,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5299,8 +5299,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5313,8 +5313,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5327,8 +5327,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5341,8 +5341,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5355,8 +5355,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5369,8 +5369,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5383,8 +5383,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5397,8 +5397,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5411,8 +5411,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5425,8 +5425,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5439,8 +5439,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5453,8 +5453,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5467,8 +5467,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5481,8 +5481,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
-  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5643,8 +5643,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5657,8 +5657,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5671,8 +5671,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5685,8 +5685,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5699,8 +5699,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5713,8 +5713,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5727,8 +5727,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5741,8 +5741,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5755,8 +5755,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5769,8 +5769,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5783,8 +5783,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -5797,8 +5797,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6034,8 +6034,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6048,8 +6048,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6062,8 +6062,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6076,8 +6076,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6090,8 +6090,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6104,8 +6104,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6118,8 +6118,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6132,8 +6132,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6559,8 +6559,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6573,8 +6573,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6587,8 +6587,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6601,8 +6601,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6615,8 +6615,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6629,8 +6629,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6643,8 +6643,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6657,8 +6657,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6671,8 +6671,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6685,8 +6685,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6699,8 +6699,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6713,8 +6713,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6782,8 +6782,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6796,8 +6796,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6810,8 +6810,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6824,8 +6824,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6838,8 +6838,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6852,8 +6852,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6866,8 +6866,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6880,8 +6880,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6894,8 +6894,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6908,8 +6908,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6922,8 +6922,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -6936,8 +6936,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) entry"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) entry")
-  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7938,8 +7938,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7952,8 +7952,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7966,8 +7966,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7980,8 +7980,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -7994,8 +7994,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8008,8 +8008,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8022,8 +8022,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8036,8 +8036,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8050,8 +8050,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8064,8 +8064,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8078,8 +8078,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -8092,8 +8092,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["DV-01 -> IBC-4 merge"] || model.materials.add("DV-01 -> IBC-4 merge")
-  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat = model.materials["DV-01 recycle -> IBC-3 (buffer) flex jumper"] || model.materials.add("DV-01 recycle -> IBC-3 (buffer) flex jumper")
+  mat.color = Sketchup::Color.new(255, 213, 0)
   mat.alpha = 1.0
   grp.material = mat
 

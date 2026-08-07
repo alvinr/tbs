@@ -34,6 +34,7 @@ Outputs: diagrams/panel-layout.png, diagrams/pinhole-panel.png,
 """
 
 import os
+import math
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -552,6 +553,16 @@ def draw_corridor_panel():
 
 
 # ── Shared pump symbol ─────────────────────────────────────────────────────
+def _flex_coil(yd, z, n=3, amp=6, length=30):
+    """#29 — bright-gold flex-connector coil at a pump port (the 2D analogue of the 3D C_FLEX
+    yellow jumper): a short sine coil rising off the port, marking the braided vibration jumper
+    that de-couples the pump from the rigid run. Gold (not the fluid color) so it stands out."""
+    pts = 40
+    xs = [sx(yd + amp * math.sin(2 * math.pi * n * (i / (pts - 1)))) for i in range(pts)]
+    zs = [sz(z + (i / (pts - 1)) * length) for i in range(pts)]
+    ax.plot(xs, zs, color="#E0A800", lw=1.8, zorder=9, solid_capstyle="round")
+
+
 def _draw_pump(col_yd, port_in_yd, port_out_yd, pz, pname, pdesc, pfc, pec):
     rect(col_yd - PUMP_W / 2 - 10, pz - 8,
          PUMP_W + 20, 8,
@@ -561,6 +572,7 @@ def _draw_pump(col_yd, port_in_yd, port_out_yd, pz, pname, pdesc, pfc, pec):
     for port_yd in [port_out_yd, port_in_yd]:
         circ(port_yd, pz + PUMP_H - 25, 10,
              C_PIPE_FILL, C_PIPE_EC, lw=0.5, zorder=7)
+        _flex_coil(port_yd, pz + PUMP_H - 13)   # #29 braided flex jumper on both ports
     ax.text(sx(col_yd), sz(pz + PUMP_H / 2 + 15),
             pname, ha="center", va="center",
             fontsize=8, color=pfc, fontweight="bold", zorder=8, **FONT)
@@ -773,6 +785,11 @@ def draw_pinhole_panel():
     # P-04 OUT → SV-02 → DV-02 along the row line (SV-02 taps in-line)
     pw_pipe([PWP_FILTER_X1 + 50, PWP_FILTER_X3 - 22], [ROW_Z, ROW_Z], C_BROWN, zorder=Z_BROWN)
     pw_arrow(PWP_FILTER_X2 + 80, ROW_Z, PWP_FILTER_X2 + 20, ROW_Z, C_BROWN)
+    # #29 — P-04 DISCHARGE braided flex jumper (gold coil, +X off the port; suction = the 1" tray hose)
+    _fcp = 36
+    ax_p.plot([pwx(PWP_FILTER_X1 + 55 + (i / (_fcp - 1)) * 95) for i in range(_fcp)],
+              [pwz(ROW_Z + 7 * math.sin(2 * math.pi * 3 * (i / (_fcp - 1)))) for i in range(_fcp)],
+              color="#E0A800", lw=1.8, zorder=10, solid_capstyle="round")
     # DV-02 recycle branch (up port) → up the panel edge → F-01 IN at the head line
     EDGE_X = 2830
     pw_pipe([PWP_FILTER_X3, PWP_FILTER_X3, EDGE_X, EDGE_X, F1_XL],

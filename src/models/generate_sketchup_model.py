@@ -75,6 +75,7 @@ C_DUCT = "#8090A0"      # vent ducting
 C_FAN = "#606060"       # ventilation fans
 C_BLUE = "#2979B8"      # Blue circuit supply pipe
 C_VALVE = "#B8B840"     # valves / taps (brass)
+C_FLEX = "#FFD500"      # flexible braided/corrugated connectors — BRIGHT yellow so a jumper stands out from the same-color pipe it splices (vs the olive C_VALVE)
 C_SHELL = "#EFEDE4"     # container shell — off-white (shows systems clearly)
 C_TRAY = "#9FB8C8"      # processing tray — 304 SS basin
 C_BATH = "#2E6FA0"      # processing chemistry (translucent bath)

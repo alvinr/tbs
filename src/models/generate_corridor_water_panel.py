@@ -459,7 +459,9 @@ def _flex_jumper(p, nm, flange_pt, approach_pt, col, start=10.0, maxlen=90.0):
     seg = min(maxlen, L - start - 6)
     p0 = tuple(flange_pt[i] + u[i] * start for i in range(3))
     p1 = tuple(flange_pt[i] + u[i] * (start + seg) for i in range(3))
-    p.append(ov.ruby_flex_run(nm + " flex jumper", [p0, p1], RP, color=col, elbow_r=6))
+    # Flex connectors draw in BRIGHT yellow (ov.C_FLEX), NOT the pipe's fluid color, so a jumper
+    # stands out from the same-color pipe it splices. `col` is kept for call-site intent but ignored.
+    p.append(ov.ruby_flex_run(nm + " flex jumper", [p0, p1], RP, color=ov.C_FLEX, elbow_r=6))
 
 
 def _side_entry(p, nm, approach, x, yface, z, into, col, drop=-150, check=True):

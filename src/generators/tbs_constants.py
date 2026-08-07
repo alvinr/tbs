@@ -288,8 +288,8 @@ BAY_BACK_X  = 0                        # bay meets the panel side-zone door plan
 BAY_WALL_T  = 3.18                     # bay box wall thickness (mm) — 1/8" HDPE, US Plastics 46684 (2026-07-22; was 6mm nom); 4-wall corner-welded box + EPDM lip gives the rigidity, not the skin gauge
 
 # ── Film-plane demountable brace cage (rev: rigidity + drum + walkway) ────────
-BRACE_RHS   = 50                     # brace member section 50×50×3mm RHS (mm)
-BRACE_T     = 3                      # RHS wall thickness (mm)
+BRACE_RHS   = 50.8                   # brace member section 2×2×0.120in steel SHS (50.8mm; #26 — 50mm nominal isn't stock, 2in is)
+BRACE_T     = 3                      # RHS wall thickness (mm) ≈ 0.120in
 BRACE_Z_BOT = RAIL_OFF_BOT           # 150mm — bottom cross-beam Z (raised +50 to clear the Z130 walkway)
 BRACE_Z_TOP = C_HGT - RAIL_OFF_TOP   # 2244mm — top cross-beam Z (dropped 44mm with the film-plane top rail)
 # End portals sit at the rail travel limits (already defined): FP_Y_MIN, FP_Y.
@@ -608,8 +608,8 @@ WASTE_IBC_Y = IBC_FAR_Y   # Waste is directly below Blue #2 (same Y column)
 # at the two corridor uprights AND at the container side walls via welded seat
 # brackets (no longer cantilevered). Floor flange feet anchor the uprights down.
 # These mirror src/models/generate_sketchup_model.py → ibc_rack().
-IBC_FRAME_RHS      = 50    # 50×50×3mm RHS section size (mm)
-IBC_FRAME_T        = 3     # RHS wall thickness (mm) — reserved (spec; not yet drawn)
+IBC_FRAME_RHS      = 50.8  # 2×2×0.120in steel SHS (50.8mm; #26 — 50mm nominal isn't stock, 2in is)
+IBC_FRAME_T        = 3     # RHS wall thickness (mm) ≈ 0.120in — reserved (spec; not yet drawn)
 # Floor feet — one under each of the 4 corridor uprights
 IBC_FOOT_PLATE     = 150   # square floor flange plate side (mm)
 IBC_FOOT_PLATE_T   = 12    # flange plate thickness (mm)
@@ -781,7 +781,7 @@ LOST_L                = PRINTS_PER_RESUPPLY * LOSS_PER_PRINT_L         # = 434 L
 #       X=470 — clear of the door-end panel swing sweep.
 #       Only the left walkway (X=170–470) needs removal for transport.
 #       Supported at ends by near/far walkway bracket arms at butt joints.
-#       Processing tray side (X=470): removable bearer beam (50×50×3mm Al RHS)
+#       Processing tray side (X=470): removable bearer beam (2×2×0.125in 6061 Al SHS; #26 — was 50×50×3, 2in stock. Metal Supermarkets $31.99/ft; uncosted removable spare)
 #       runs along Yd, bolted to near/far bracket vertical legs, spanning
 #       1762mm.  Beam top flush at Z=75mm (grate bottom).
 #       Cargo door side (X=170): 3 floor-standing support legs at X≈140 on
@@ -854,15 +854,15 @@ WALKWAY_LEFT_WIDE_YD_R = 1560   # punch-out Yd end
 # contact; grate + brackets lift out for transport. Validated in the cantilever-study exploration (retired 2026-06-07).
 LEFT_WK_CANT_LEG_X    = WALKWAY_LEFT_X - 30           # = 140 — leg centreline (bare floor, outside tray X=170)
 LEFT_WK_CANT_LEG_YDS  = (250, 800, 1180, 1560, 2110)  # 5 brackets; 3 land on the punch-out (800/1180/1560)
-LEFT_WK_CANT_POST     = 50    # post section (mm) — 50×50×3 steel SHS
-LEFT_WK_CANT_POST_T   = 3     # post wall thickness (mm)
+LEFT_WK_CANT_POST     = 50.8  # post section (mm) — 2×2×0.120in steel SHS (#26 — 50mm nominal isn't stock, 2in is)
+LEFT_WK_CANT_POST_T   = 3     # post wall thickness (mm) ≈ 0.120in
 LEFT_WK_CANT_POST_W   = 60    # bracket width in Yd (mm)
 LEFT_WK_CANT_FOOT     = (128, 60, 8)  # foot plate L(X)×W(Yd)×T (mm) — spans X≈38..166 (outboard of tray rim)
 LEFT_WK_CANT_FOOT_X0  = 38    # foot plate left edge X (mm) — all < 170 (bare floor)
 LEFT_WK_CANT_FOOT_BOLT_N = 4  # M10 floor anchors per foot (sealed penetrations)
-LEFT_WK_CANT_ARM_Z0   = 93    # arm underside Z (mm) — ≥15mm above the full-width 1½ spray-bar top (Z78 at the far-left); top = grate bottom (115) => 22mm deep (2×⅞in). Also single-sources the RIGHT frame arm (RWK_ARM_BOT).
-LEFT_WK_CANT_ARM_W    = 50.8  # standard arm width in Yd (mm) — 2in of the 2×⅞in section (⅞in is the Z-depth)
-LEFT_WK_CANT_ARM_W_WIDE = 50.8  # widened (punch-out) arm — same 2×⅞in section
+LEFT_WK_CANT_ARM_Z0   = 89.6  # arm underside Z (mm) — 11.6mm above the full-width 1½ spray-bar top (Z78 at the far-left); top = grate bottom (115) => 25.4mm deep (2×1in × 0.120 steel). #26: 2×⅞ is non-stock — MetalsDepot/Metal Supermarkets carry only 2×1; Option B keeps the deck at 140, so the extra 3.4mm depth costs 3.4mm spray clearance (15→11.6mm). Deeper section ⇒ stronger arm (SF≈2.5 vs 2.1). Also single-sources the RIGHT frame arm (RWK_ARM_BOT).
+LEFT_WK_CANT_ARM_W    = 50.8  # standard arm width in Yd (mm) — 2in of the 2×1in section (1in is the Z-depth)
+LEFT_WK_CANT_ARM_W_WIDE = 50.8  # widened (punch-out) arm — same 2×1in section
 LEFT_WK_CANT_STD_REACH  = WALKWAY_LEFT_X + WALKWAY_W            # = 470 — standard arm tip (grate inner edge)
 LEFT_WK_CANT_WIDE_REACH = WALKWAY_LEFT_X + WALKWAY_LEFT_WIDE_W  # = 770 — widened arm tip (punch-out inner edge)
 # Right walkway (IBC end): ceiling-hung, same 300mm width as near/far

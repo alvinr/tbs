@@ -334,7 +334,7 @@ PARTS: list[Part] = [
     Part("nitrile-gloves", "Nitrile gloves, box of 100", "tools-safety",
          "water", 2, "box", 14.99, 14.99, "Amazon", part_no="B0CMZ5VXMS", url="https://www.amazon.com/dp/B0CMZ5VXMS", spec="TitanFlex nitrile, textured, box of 100 (size M/L)."),
     # — ibc-frame (ibc-stacking-report §9.1) — itemized, sums to costing frame (955–1,455) —
-    Part("ibcf-rhs", "50 × 50 × 3mm RHS mild steel (6 m lengths)", "steel-structural",
+    Part("ibcf-rhs", "2×2×0.120in steel SHS (6 m bulk lengths)", "steel-structural",
          "ibc-frame", 4, "ea", 30, 45, "Metal Supermarkets", spec="Deep 4-leg box uprights (front + back pair) + top/bottom rings + front retaining bars + panel-mount rail (~19.5 m). MATERIAL = 2×2×⅛in A500 square tube (US equiv, confirmed 2026-08-01). SOURCING: full 6m/20-24ft sticks minimize splices but ship only by freight — online cut-to-size shops cap at 96in (UPS max: AllMetals/InchOfMetal 96in, Speedy $7.27/ft cut-retail ≤90in). So the ~$120-180 (4×$30-45) est is realistic BULK full-length pricing (~$1.50-2.50/ft); firm it from a local steel-yard / MetalsDepot 24ft freight quote — NOT an online cut-to-size lookup (which overprices bulk ~3×)."),
     Part("ibcf-feet", "12mm steel plate, 150 × 150 cut", "steel-structural",
          "ibc-frame", 4, "ea", 5, 10, "Metal Supermarkets", spec="Deep-box upright floor flange feet (one per leg; front feet reach under the tray)"),
@@ -854,7 +854,7 @@ PARTS: list[Part] = [
     Part("sp-rail-saddles", "Drop-in rail saddles + tapered dowels", "steel-structural",
          "swing", 4, "ea", 20, 32.5, "local fab", "McMaster-Carr", spec="For the 2 removable left film rails (TL + BL); dowels set the film datum"),
     # ═══ door (hinged-panel §8.4) — fixed door frame; sums to the SWINGPIVOT door lines ($335–$550) ═══
-    Part("sp-door-frame-rhs", "50 × 50 × 3mm RHS mild steel (6 m lengths)", "steel-structural",
+    Part("sp-door-frame-rhs", "2×2×0.120in steel SHS (6 m bulk lengths)", "steel-structural",
          "door", 3, "ea", 30, 40, "Metal Supermarkets", spec="Frame members"),
     Part("sp-door-seal-lips", "Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)", "seals-gaskets",
          "door", 1, "lot", 129, 129, "McMaster-Carr", part_no="74405T12", url="https://www.mcmaster.com/74405T12-74405T126/", spec="Top + bottom door-frame light seals (paths #3–#4) — 2× McMaster 74405T12 nylon Tight-Seal Strip Brush (8 ft, 1\" overall height, $28.88 ea) in 2× McMaster 8813T53 aluminum holder channel (8 ft, $35.37 ea) = $128.50 firm; covers full panel width top + bottom (~2× C_WID ≈ 4.7 m ≈ 15.5 ft, from 4× 8 ft lengths). The swinging panel edge SWEEPS THROUGH the bristles, so a brush (not a compression EPDM, which would drag under the sideways sweep) — same principle as the drum-opening brush seals.", note="Changed 2026-07-18 from 3mm steel seal lips + panel-edge EPDM compression to a strip brush: the top/bottom seal is swept through by the swinging panel, so a brush is the correct type. Brush 74405T12 ($28.88/8ft), holder 8813T53 ($35.37/8ft) — prices verified 2026-07-18."),
@@ -862,7 +862,7 @@ PARTS: list[Part] = [
          "door", 1, "lot", 200, 350, "local fab", spec="Frame assembly + wall attachment"),
 
     # ═══ panel (hinged-panel §8.1) — panel structure; sums to costing.PANEL ($1,124–$1,691) ═══
-    Part("panel-rhs-frame", "50 × 50 × 3mm RHS mild steel (6 m lengths)", "steel-structural",
+    Part("panel-rhs-frame", "2×2×0.120in steel SHS (6 m bulk lengths)", "steel-structural",
          "panel", 4, "ea", 30, 40, "Metal Supermarkets", spec="Frame perimeter + internal members"),
     Part("panel-pp-skins", "1/8\" black HDPE sheet (48×96)", "plastics-sheet",
          "panel", 4, "sheet", 123.34, 123.34, "US Plastics", "TAP Plastics", part_no="46684",
@@ -952,8 +952,8 @@ PARTS: list[Part] = [
     Part("walkway-transition-plates", "Transition bearing plate", "steel-structural",
          "walkway", 2, "ea", 2.5, 5, "Local fab", spec="40×500×5mm flat bar, welded to bracket arm top at width transitions"),
     Part("walkway-cantilever-frame", "Right walkway cantilever frame", "steel-structural",
-         "walkway", 1, "lot", 28, 40, "Metal Supermarkets",
-         spec="2×⅞in (50.8×22mm) steel tube — 2 long beams ({{fact:container_width_mm}}mm) + 2 end beams (300mm) + 2 center arms (325mm), ~8 m (shaved from 40×40 for the ≥15mm spray-beam clearance; a mid-span support may be added for stiffness — see TODO)"),
+         "walkway", 1, "lot", 125, 153, "MetalsDepot", "Metal Supermarkets",
+         spec="2×1×0.120in steel tube — 2 long beams ({{fact:container_width_mm}}mm) + 2 end beams (300mm) + 2 center arms (325mm) that pick the rectangle up at mid-span, ~6 m (19.6 ft). #26: 2×⅞ is non-stock — MetalsDepot/Metal Supermarkets carry only 2×1, which is deeper ⇒ stronger arms (SF≈2.5); Option B keeps the deck, so spray-beam clearance is 11.6mm. Firm: MetalsDepot 2×1×0.120 $76.20/12ft stick ($6.35/ft) — 2 sticks (24 ft) cover it with spare; retail cut-to-size runs ~3× ($16.72/ft, Metal Supermarkets) so bulk-stick it. 2026-08-07."),
     Part("walkway-right-cleats", "Wall cleat (left corners)", "steel-structural",
          "walkway", 2, "ea", 10, 17.5, "Local fab", spec="8mm steel: back-plate + exterior plate + shelf, through-bolted to the wall"),
     Part("walkway-corner-plates", "Combined corner plate (right corners)", "steel-structural",
@@ -970,8 +970,8 @@ PARTS: list[Part] = [
     Part("washer-m12-split", "M12 split lock washer, zinc", "fasteners-hardware",
          "walkway", 24, "ea", 11.97 / 100, 11.97 / 100, "McMaster-Carr", part_no="91202A246", url="https://www.mcmaster.com/91202A246/", spec="Split lock washer under each nut — M12×70 right-walkway bolts (plain nut + split = locked)."),
     Part("walkway-floor-legs", "Floor-leg cantilever bracket (left walkway, ×5)", "steel-structural",
-         "walkway", 5, "ea", 11, 19, "Local fab",
-         spec="50×50×3mm SHS post (~115mm) + 2×⅞in (50.8×22mm) arm (2 reach X470, 3 extended to X770) + 128×60×8mm foot plate"),
+         "walkway", 5, "ea", 13, 21, "MetalsDepot", "Local fab",
+         spec="2×2×0.120in SHS post (~115mm) + 2×1×0.120in arm (2 reach X470, 3 extended to X770) + 128×60×8mm foot plate. #26: arm 2×⅞→2×1 (2×⅞ non-stock); post 50→50.8 (2in). Material firm (MetalsDepot 2×1 $6.35/ft + 2×2 $22.99/ft ret); cut/weld fab deferred to a shop quote."),
     Part("walkway-floor-anchors", "Self-drilling structural screw, #14×2″ HWH, 410 SS", "fasteners-hardware",
          "walkway", 20, "ea", 0.35, 0.55, "Bridge Fasteners", "ASMC",
          url="https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread",

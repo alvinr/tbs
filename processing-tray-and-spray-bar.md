@@ -534,7 +534,7 @@ Loading needs **no lift mechanism**. The beam parks out of the way and the musli
 
 1. Roll the spray-bar gantry to the **near (pinhole-wall) end** of its Yd travel and park it there.
 2. Feed the exposed muslin down through the **far muslin-drop slot** (image-plane side) and pull it across the tray toward the parked beam until it lies flat over the washable area.
-3. The beam is now free to **roll back over the laid muslin** to wash — its wheels run on the bare tray floor at the X-edges (outboard of the muslin), and the beam body clears the thin fabric (the 9mm beam-to-floor gap, §3.4).
+3. The beam is now free to **roll back over the laid muslin** to wash — its wheels run on the bare tray floor at the X-edges (centers X≈200/4,599, ~10–20mm outboard of the muslin's X≈220/4,579 edges), and the beam body clears the thin fabric: the **9mm beam-to-floor gap** (§3.4 — wheel radius 16 − bracket drop 7, held constant across the traverse) less the 0.5mm muslin = **~8.5mm clearance**. Verified from the geometry constants, so **no lift-out mechanism is required**.
 
 ### 4.3 Beam Removal for Maintenance
 

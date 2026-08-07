@@ -32,8 +32,8 @@ file** — a release must not ship without a changelog entry:
   $1.57/4-pk) + **5/16-18** (Everbilt 825091, $1.57/4-pk) zinc pronged tee-nuts, ~8–9.5mm barrels that
   seat from the back of 18mm ply. Machine screws downgraded SS→**zinc** (dry backboard mounts). The
   filter joint converts lag→machine-screw; plumbing-report §3.1/§7.2 rewritten (the retired
-  slotted-angle frame text removed). Net **+$15/+$18/+$20** water; grand total → $25,812/$30,267/$36,777.
-  Zinc machine-screw prices are EST pending firm HD SKUs.
+  slotted-angle frame text removed). Zinc machine screws firm too (¼-20 Everbilt 826771, 5/16-18
+  831121, both $1.57). Net **+$32** water; grand total → $25,829/$30,281/$36,789.
 
 - **Ball-valve sourcing + BV-05 spray selector re-designed as two 1/2″ valves.** The five 1/2″ 2-way
   isolation valves (BV-01/02/03/04/06) re-sourced Banjo V050FP → **Grainger 803HZ1 at $24.14** (from

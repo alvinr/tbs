@@ -436,7 +436,7 @@ _bv5x, _bv5z = BV05_X - 150, BV05_Z
 _bpipe([PWP_ACC2_X - 63, _bv5x, _bv5x], [PWP_ACC2_Z0 + 60, PWP_ACC2_Z0 + 60, _bv5z + 20])
 # 3W-BV-05a selector symbol (fresh Blue ↔ recycled Brown → spray bar)
 ax.add_patch(mpatches.Rectangle((sx(_bv5x) - 8, sz(_bv5z) - 8), 16, 16, facecolor=C_VALVE, edgecolor=C_OUT, lw=0.8, zorder=12))
-ax.text(sx(_bv5x), sz(_bv5z + 60), "3W-BV-05a\n(spray selector)", ha="center", va="bottom", fontsize=3.2, color=C_BROWN, zorder=10, **FONT)
+ax.text(sx(_bv5x), sz(_bv5z + 95), "3W-BV-05a\n(spray selector)", ha="center", va="bottom", fontsize=3.2, color=C_BROWN, zorder=10, **FONT)
 # BV-05 → down to the spray-bar supply line (where the Blue supply feeds in)
 _bpipe([_bv5x, _bv5x], [_bv5z - 20, SPRAY_BAR_FEED_Z])
 
@@ -495,8 +495,8 @@ ax.text(_bvx, _bvz - BV05_R - 8, "BV-05b",
         color=C_BLUE, zorder=13, **FONT)
 
 leader(ax, sx(BV05_X), sz(BV05_Z + BV05_R + 5),
-       sx(BV05_X - 10), sz(BV05_Z + 80),
-       f"BV-05b @ Z={BV05_Z}mm\n(1/2\" BALL VALVE)\nSPRAY ON/OFF\nWAIST HEIGHT",
+       sx(BV05_X + 190), sz(BV05_Z + 78),
+       "BV-05b — SPRAY ON/OFF",
        fs=4, color=C_BLUE, font=FONT, zorder=15)
 
 # Flex hose stub from BV-05b (drops down to spray bar — off-wall)
@@ -647,7 +647,7 @@ for ix_mm, ilabel in items:
 notes = [
     "NOTES",
     f"1. Blue supply pipe: ½\" PVC Sch-40 (OD=21mm) at Z={SUPPLY_Z} (below walkway grating),"
-    " from IBC zone to spray bar. BV-05b riser at pinhole centerline to Z=900 (waist height)."
+    f" from IBC zone to spray bar. BV-05b riser at pinhole centerline to Z={BV05_Z} (waist height)."
     " Chemistry tap branch (¾\") rises to shelf.",
     f"2. Evap cooler relocated EXTERNAL — only Ø{EVAP_DUCT_D}mm duct penetration remains at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}.",
     "3. Pinhole wall carries the FILTER SKID: tray-drain P-04 + SV-02 + DV-02 (skid row under the filters),"

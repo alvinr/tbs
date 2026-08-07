@@ -213,28 +213,29 @@ pump, providing steady flow to the spray bar.
 | BV-02 | 1/2" | Corridor | P-05 (Brown drain) suction isolation |
 | BV-03 | 1/2" | Corridor | P-02 (Brown recycle) suction isolation |
 | BV-04 | 1/2" | supply | TAP-01 chemistry-tap isolation |
-| BV-05 | **3/4″** | supply | **Spray SELECTOR — 3-way L-port (Blue / Brown / closed)** — needs 3× 3/4″→1/2″ reducers |
+| BV-05a | 1/2" | supply | Spray Blue/Brown **SELECTOR** — 1/2″ 3-way divert (same valve as DV-01/02) |
+| BV-05b | 1/2" | spray bar | Spray-bar **ON/OFF** — 1/2″ 2-way ball valve |
 | BV-06 | 1/2" | Corridor | P-03 (waste evacuation) suction isolation |
 
 BV-01/BV-02/BV-03/BV-06 are the Corridor panel pump-suction isolation valves; **BV-04**
 isolates the TAP-01 chemistry tap. These five are 1/2" Banjo V050FP quarter-turn **2-way**
 ball valves.
 
-**BV-05 is different — a 1/2" 3-way L-PORT ball valve, the spray SELECTOR.** Both the Blue
-(fresh) and Brown (recycle) supply lines converge on it, and the operator turns it to send
-**Blue → spray**, **Brown → spray**, or **closed** (off) during a wash pass. It **must be an
-L-port**, not a T-port: a T-port has no off position (it always connects at least two ports).
-Confirm the chosen valve's port chart lists a true **OFF detent** — some L-ports use the 4th
-quarter-turn to cross-connect the two inlets (Blue↔Brown) instead of shutting off, which must
-be avoided (fresh↔recycle cross-connection).
+**BV-05 is the spray SELECTOR — split into two 1/2″ valves** rather than one 3-way L-port. Both the
+Blue (fresh) and Brown (recycle) lines converge here, and the operator needs three states: Blue →
+spray, Brown → spray, and off. A single 3-way that both selects *and* shuts off is only available
+as an **L-port in 3/4″** (Banjo V075BL, $72.88 — needing reducers to the 1/2″ lines and a verified
+OFF detent, since some L-ports cross-connect the two inlets at the 4th quarter-turn instead). So the
+design uses **two plain 1/2″ valves** instead:
 
-**Sourcing (2026-08-07):** the smallest 3-way L-port found is **3/4″** — **Banjo V075BL**
-([Grainger 3DTF3](https://www.grainger.com/product/BANJO-Manual-Three-Way-Ball-Valve-3DTF3)); no
-1/2″ 3-way L-port is stocked. Since the Blue, Brown, and spray lines are all 1/2″, BV-05 lands on
-**3× 3/4″→1/2″ reducer bushings** (Blue in, Brown in, spray out). Confirm the V075BL's port chart
-gives a true Blue / Brown / **OFF** selection (Banjo's 3-way is offered in both L-port and T-port —
-this must be the **L-port**), and firm its price. *(The five 1/2″ 2-way isolation valves re-sourced
-to Grainger 803HZ1 at $24.14, down from $44.27.)*
+- **BV-05a — Blue/Brown selector:** a 1/2″ 3-way divert valve (the same US Plastic #22365 used for
+  the diverters), plumbed **2 inlets → 1 outlet**, set at the panel to pick Blue or Brown.
+- **BV-05b — spray on/off:** a 1/2″ 2-way ball valve at the **spray-bar feed**, where the operator
+  controls flow during the wash pass.
+
+This keeps everything **1/2″ (no reducers)**, avoids the L-port OFF-detent risk, runs **~$37 cheaper**
+than the 3/4″ L-port, and puts the on/off where the operator's hand is. *(The five 1/2″ 2-way
+isolation valves also re-sourced to Grainger 803HZ1 at $24.14, down from $44.27.)*
 
 ### 4.2 Diverter Valves (3-Way)
 
@@ -501,11 +502,11 @@ hardware are sourced there and in the IBC stacking frame line.
 | 6× steel angle brackets (corridor panel → IBC uprights) | L-brackets fixing the corridor plumbing panel to the IBC-frame front-portal uprights. Price est. | 6 ea | Home Depot | $15–$39 |
 | Corridor panel mount fasteners (shirt-to-panel screws + lag bolts) | Shirt-to-panel screws + lag bolts landing the brackets into the panel/uprights. Price est. | 1 lot | Home Depot | $10–$11 |
 | [Banjo V050FP ball valve 1/2" FNPT](https://www.grainger.com/product/803HZ1) (803HZ1) | PP full-port quarter-turn 2-way; pump-suction isolation BV-01 (P-01), BV-02 (P-05), BV-06 (P-03). Grainger firm $24.14 (checked 2026-08-07; was US Plastic $44.27). | 3 ea | Grainger | $72 |
-| [3-way diverter valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=22365) (22365) | L/T-port PVC-compatible; 3W-DV-02 (tray drain) | 1 ea | US Plastic Corp | $24 |
+| [3-way diverter valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=22365) (22365) | L/T-port PVC-compatible; 3W-DV-02 (tray drain) + BV-05a (spray Blue/Brown SELECTOR — 2 inlets Blue+Brown → 1 outlet to BV-05b on/off). Same valve as the diverters. | 2 ea | US Plastic Corp | $48 |
 | [pH sample tap (SV-02) — 1/2" PP ball valve + barb spout + branch tee](https://www.usplastic.com/catalog/item.aspx?itemid=36903) (36903) | pH sample on the P-04 tray-drain discharge, before 3W-DV-02; same build/SKU as SV-01 (US Plastic 36903 $19.26 — priced under SV-01; applied to SV-02 as the identical build) | 1 ea | US Plastic Corp | $19 |
 | [Steel flat bar 25×3mm — ribbon support cross-brace](https://www.mcmaster.com/6775T37-6775T373/) (6775T37) | Low-carbon steel flat bar 25×3mm × 3 ft. Welded between the two right-walkway long bearers at 4 stations to carry the under-walkway pipe ribbon (four corridor↔pinhole lines); 4 braces ~300mm each = cut from 2× 3-ft bars (2 spare pieces). | 2 3ft bar | McMaster-Carr | $35 |
 | [Cushioned pipe clip](https://www.amazon.com/dp/B01HPE188Q) (B01HPE188Q) | Cushioned clamp for ½" pipe (0.84"/21mm OD); secures the four under-walkway ribbon lines to the support cross-braces (4 lines × 4 supports). Sold in 20-packs at $9.99 ($0.50/ea); one pack covers the 16 + spares. | 16 ea | Amazon | $8 |
-| **Corridor Plumbing Panel total** | | | | **$814–$839** |
+| **Corridor Plumbing Panel total** | | | | **$838–$863** |
 <!-- END parts:corridor-plumbing-panel -->
 
 ### 9.2 Pinhole Wall Plumbing Panel

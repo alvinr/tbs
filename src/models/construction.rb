@@ -18259,9 +18259,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # 3W-BV-05 (spray selector) body
+  # 3W-BV-05a (Blue/Brown selector) body
   grp = ents.add_group
-  grp.name = "3W-BV-05 (spray selector) body"
+  grp.name = "3W-BV-05a (Blue/Brown selector) body"
   face = grp.entities.add_face([2226.mm,46.mm,677.mm], [2272.mm,46.mm,677.mm], [2272.mm,92.mm,677.mm], [2226.mm,92.mm,677.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(46.mm)
@@ -18270,9 +18270,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # 3W-BV-05 (spray selector) run +
+  # 3W-BV-05a (Blue/Brown selector) run +
   grp = ents.add_group
-  grp.name = "3W-BV-05 (spray selector) run +"
+  grp.name = "3W-BV-05a (Blue/Brown selector) run +"
   ge = grp.entities
   circle = ge.add_circle([2249.mm,69.mm,723.mm], [0,0,1], 13.mm, 24)
   cface = ge.add_face(circle)
@@ -18283,9 +18283,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # 3W-BV-05 (spray selector) run -
+  # 3W-BV-05a (Blue/Brown selector) run -
   grp = ents.add_group
-  grp.name = "3W-BV-05 (spray selector) run -"
+  grp.name = "3W-BV-05a (Blue/Brown selector) run -"
   ge = grp.entities
   circle = ge.add_circle([2249.mm,69.mm,667.mm], [0,0,1], 13.mm, 24)
   cface = ge.add_face(circle)
@@ -18296,9 +18296,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # 3W-BV-05 (spray selector) branch
+  # 3W-BV-05a (Blue/Brown selector) branch
   grp = ents.add_group
-  grp.name = "3W-BV-05 (spray selector) branch"
+  grp.name = "3W-BV-05a (Blue/Brown selector) branch"
   ge = grp.entities
   circle = ge.add_circle([2272.mm,69.mm,700.mm], [1,0,0], 13.mm, 24)
   cface = ge.add_face(circle)
@@ -18309,9 +18309,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # 3W-BV-05 (spray selector) handle stem
+  # 3W-BV-05a (Blue/Brown selector) handle stem
   grp = ents.add_group
-  grp.name = "3W-BV-05 (spray selector) handle stem"
+  grp.name = "3W-BV-05a (Blue/Brown selector) handle stem"
   ge = grp.entities
   circle = ge.add_circle([2249.mm,92.mm,700.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
@@ -18322,9 +18322,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # 3W-BV-05 (spray selector) handle lever
+  # 3W-BV-05a (Blue/Brown selector) handle lever
   grp = ents.add_group
-  grp.name = "3W-BV-05 (spray selector) handle lever"
+  grp.name = "3W-BV-05a (Blue/Brown selector) handle lever"
   face = grp.entities.add_face([2241.mm,133.mm,668.mm], [2257.mm,133.mm,668.mm], [2257.mm,147.mm,668.mm], [2241.mm,147.mm,668.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(64.mm)
@@ -18347,12 +18347,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # BV-05a -> BV-05b (up the pinhole wall)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "BV-05a -> BV-05b (up the pinhole wall)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(13.099999999999909.mm, 41.099999999999994.mm, -1.2999999999999545.mm)
-  circle = ge.add_circle([2249.mm,69.mm,733.mm], vec, 7.mm, 10)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 267.mm)
+  circle = ge.add_circle([2249.mm,69.mm,733.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18361,12 +18361,49 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # BV-05b (spray on/off)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "BV-05b (spray on/off)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(30.994778088595467.mm, 5.710808891153519.mm, -28.100404037968133.mm)
-  circle = ge.add_circle([2262.1.mm,110.1.mm,731.7.mm], vec, 7.mm, 6)
+  circle = ge.add_circle([2249.mm,69.mm,878.mm], [0,0,1], 18.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # BV-05b (spray on/off) handle stem
+  grp = ents.add_group
+  grp.name = "BV-05b (spray on/off) handle stem"
+  ge = grp.entities
+  circle = ge.add_circle([2249.mm,87.5.mm,900.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # BV-05b (spray on/off) handle
+  grp = ents.add_group
+  grp.name = "BV-05b (spray on/off) handle"
+  face = grp.entities.add_face([2242.mm,115.5.mm,876.mm], [2256.mm,115.5.mm,876.mm], [2256.mm,124.5.mm,876.mm], [2242.mm,124.5.mm,876.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(48.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(13.099999999999909.mm, 41.099999999999994.mm, -28.mm)
+  circle = ge.add_circle([2249.mm,69.mm,1000.mm], vec, 7.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18375,12 +18412,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.615204002314385.mm, 22.987856633323375.mm, -12.02663725929824.mm)
-  circle = ge.add_circle([2293.0947780885954.mm,115.81080889115351.mm,703.5995959620319.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(25.742872561447257.mm, -10.172043052222222.mm, -31.951075290076687.mm)
+  circle = ge.add_circle([2262.1.mm,110.1.mm,972.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18389,12 +18426,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.52927301618729.mm, 23.681503268653614.mm, 10.769187840958239.mm)
-  circle = ge.add_circle([2271.479574086281.mm,138.7986655244769.mm,691.5729587027337.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-24.437929631876614.mm, 15.218089673404663.mm, -18.15943435112206.mm)
+  circle = ge.add_circle([2287.842872561447.mm,99.92795694777777.mm,940.0489247099233.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18403,12 +18440,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.146142164319372.mm, 19.292521678056943.mm, 27.024473060918353.mm)
-  circle = ge.add_circle([2249.9503010700937.mm,162.4801687931305.mm,702.3421465436919.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-20.444709939103177.mm, 27.183844916814778.mm, 1.2728413088594834.mm)
+  circle = ge.add_circle([2263.4049429295706.mm,115.14604662118244.mm,921.8894903588013.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18417,12 +18454,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.584291689368001.mm, 12.374418878521567.mm, 27.28190261661041.mm)
-  circle = ge.add_circle([2243.8041589057743.mm,181.77269047118745.mm,729.3666196046103.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-1.9862222058245607.mm, 30.557670393798645.mm, 14.861070466359138.mm)
+  circle = ge.add_circle([2242.9602329904674.mm,142.3298915379972.mm,923.1623316676607.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18431,12 +18468,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(31.01927437008453.mm, 6.952143181680469.mm, 11.391704137548686.mm)
-  circle = ge.add_circle([2259.3884505951423.mm,194.147109349709.mm,756.6485222212207.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(20.02837134763695.mm, 23.345599428250125.mm, 14.57446542586979.mm)
+  circle = ge.add_circle([2240.974010784643.mm,172.88756193179586.mm,938.0234021340199.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18445,12 +18482,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(31.178741649094263.mm, 6.180371533454974.mm, -11.401213852486649.mm)
-  circle = ge.add_circle([2290.407724965227.mm,201.09925253138948.mm,768.0402263587694.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(32.588212206790104.mm, 9.81004252987725.mm, 0.5824128091476268.mm)
+  circle = ge.add_circle([2261.0023821322798.mm,196.23316136004598.mm,952.5978675598897.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18459,12 +18496,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.96991555329987.mm, 10.508120244024838.mm, -27.835944506702276.mm)
-  circle = ge.add_circle([2321.586466614321.mm,207.27962406484446.mm,756.6390125062827.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(28.27030107863675.mm, -2.049342470167659.mm, -18.845635736589884.mm)
+  circle = ge.add_circle([2293.59059433907.mm,206.04320388992323.mm,953.1802803690373.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18473,12 +18510,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.758717462268578.mm, 17.417507551507356.mm, -28.35077078856193.mm)
-  circle = ge.add_circle([2337.556382167621.mm,217.7877443088693.mm,728.8030679995804.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(9.626569282287164.mm, -5.22353312821528.mm, -32.22749725723065.mm)
+  circle = ge.add_circle([2321.8608954177066.mm,203.99386141975558.mm,934.3346446324474.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18487,12 +18524,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.365450949425394.mm, 22.888655812636358.mm, -12.646167057293837.mm)
-  circle = ge.add_circle([2331.7976647053524.mm,235.20525186037665.mm,700.4522972110185.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-12.324339753964068.mm, 2.163450934367688.mm, -31.654349521613653.mm)
+  circle = ge.add_circle([2331.487464699994.mm,198.7703282915403.mm,902.1071473752168.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18501,12 +18538,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.77029615699803.mm, 23.738454051118936.mm, 10.140937083038125.mm)
-  circle = ge.add_circle([2310.432213755927.mm,258.093907673013.mm,687.8061301537247.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-24.609205741421192.mm, 15.745823710509569.mm, -17.464928926480184.mm)
+  circle = ge.add_circle([2319.1631249460297.mm,200.93377922590798.mm,870.4527978536031.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18515,12 +18552,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.737714371280163.mm, 19.47249013051794.mm, 26.75301728012289.mm)
-  circle = ge.add_circle([2288.661917598929.mm,281.83236172413194.mm,697.9470672367628.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-19.967542455610328.mm, 27.496258688261946.mm, 1.9546663102964885.mm)
+  circle = ge.add_circle([2294.5539192046085.mm,216.67960293641755.mm,852.9878689271229.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18529,12 +18566,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(14.986346793020402.mm, 12.572699456717203.mm, 27.525174633288543.mm)
-  circle = ge.add_circle([2281.924203227649.mm,301.3048518546499.mm,724.7000845168857.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-1.1426221780275228.mm, 30.47012404383031.mm, 15.127249229946301.mm)
+  circle = ge.add_circle([2274.586376748998.mm,244.1758616246795.mm,854.9425352374194.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18543,12 +18580,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(30.76284078820754.mm, 7.053376356912736.mm, 12.008168429438115.mm)
-  circle = ge.add_circle([2296.9105500206692.mm,313.8775513113671.mm,752.2252591501742.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(20.73982734698302.mm, 22.909833779159158.mm, 14.267683476362436.mm)
+  circle = ge.add_circle([2273.4437545709707.mm,274.6459856685098.mm,870.0697844673657.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18557,12 +18594,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(31.413012295168755.mm, 6.125659901400809.mm, -10.77021586313765.mm)
-  circle = ge.add_circle([2327.673390808877.mm,320.9309276682798.mm,764.2334275796123.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(32.74704612869027.mm, 9.283599706710277.mm, -0.11601846425492113.mm)
+  circle = ge.add_circle([2294.1835819179537.mm,297.55581944766897.mm,884.3374679437281.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18571,12 +18608,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.558591897410224.mm, 10.32929500139312.mm, -27.557527094640363.mm)
-  circle = ge.add_circle([2359.0864031040455.mm,327.05658756968063.mm,753.4632117164747.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(27.782640388940763.mm, -2.355329169784227.mm, -19.522936036206147.mm)
+  circle = ge.add_circle([2326.930628046644.mm,306.83941915437924.mm,884.2214494794732.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18585,12 +18622,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.15812698551008.mm, 17.21860912372449.mm, -28.58691704728517.mm)
-  circle = ge.add_circle([2375.6449950014558.mm,337.38588257107375.mm,725.9056846218343.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(8.780626625998138.mm, -5.128222316210213.mm, -32.48337491522966.mm)
+  circle = ge.add_circle([2354.7132684355847.mm,304.484089984595.mm,864.6985134432671.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18599,12 +18636,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.102369541069493.mm, 22.785403192942.mm, -13.259487226504461.mm)
-  circle = ge.add_circle([2370.4868680159457.mm,354.60449169479824.mm,697.3187675745492.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-13.028603285780264.mm, 2.6037295562041436.mm, -31.337578125518007.mm)
+  circle = ge.add_circle([2363.493895061583.mm,299.3558676683848.mm,832.2151385280374.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18613,12 +18650,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.997784432226126.mm, 23.790919555486653.mm, 9.507272332288949.mm)
-  circle = ge.add_circle([2349.384498474876.mm,377.38989488774024.mm,684.0592803480447.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-24.75556292444071.mm, 16.27086080232459.mm, -16.762723734478755.mm)
+  circle = ge.add_circle([2350.4652917758026.mm,301.95959722458895.mm,800.8775604025194.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18627,12 +18664,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-7.3234197797132765.mm, 19.650149358061583.mm, 26.467673742862075.mm)
-  circle = ge.add_circle([2327.38671404265.mm,401.1808144432269.mm,693.5665526803336.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-19.46949464082536.mm, 27.795751754582625.mm, 2.627294574563166.mm)
+  circle = ge.add_circle([2325.709728851362.mm,318.23045802691354.mm,784.1148366680407.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18641,12 +18678,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(14.38318732806465.mm, 12.772190368931774.mm, 27.754165018753497.mm)
-  circle = ge.add_circle([2320.063294262937.mm,420.8309638012885.mm,720.0342264231957.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-0.2945209116460319.mm, 30.367069502805123.mm, 15.37277012114123.mm)
+  circle = ge.add_circle([2306.2402342105365.mm,346.02620978149616.mm,786.7421312426038.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18655,12 +18692,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(30.493145103667757.mm, 7.158635253449802.mm, 12.618266260360997.mm)
-  circle = ge.add_circle([2334.4464815910014.mm,433.60315417022025.mm,747.7883914419492.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(21.43674521241337.mm, 22.465137958642515.mm, 13.94099154114474.mm)
+  circle = ge.add_circle([2305.9457132988905.mm,376.3932792843013.mm,802.114901363745.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18669,12 +18706,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.9603733053309043.mm, -1.861789423670075.mm, -39.106657702310144.mm)
-  circle = ge.add_circle([2364.939626694669.mm,440.76178942367005.mm,760.4066577023102.mm], vec, 7.mm, 8)
+  vec = Geom::Vector3d.new(32.880894735666516.mm, 8.760082557871385.mm, -0.82184482375078.mm)
+  circle = ge.add_circle([2327.382458511304.mm,398.8584172429438.mm,816.0558929048898.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18683,12 +18720,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(13.099999999999909.mm, 41.10000000000002.mm, -1.3000000000000682.mm)
-  circle = ge.add_circle([2366.9.mm,438.9.mm,721.3000000000001.mm], vec, 7.mm, 10)
+  vec = Geom::Vector3d.new(27.27431378969777.mm, -2.648263453907873.mm, -20.190745947905157.mm)
+  circle = ge.add_circle([2360.2633532469704.mm,407.6184998008152.mm,815.234048081139.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -18697,9 +18734,79 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(7.93055123748627.mm, -5.0174464636789935.mm, -32.71848563131789.mm)
+  circle = ge.add_circle([2387.537667036668.mm,404.9702363469073.mm,795.0433021332339.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-13.718023883875048.mm, 3.0527458404600907.mm, -31.001036716665226.mm)
+  circle = ge.add_circle([2395.4682182741544.mm,399.9527898832283.mm,762.324816501916.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-24.876873839208656.mm, 16.79274412719667.mm, -16.053429746307756.mm)
+  circle = ge.add_circle([2381.7501943902794.mm,403.0055357236884.mm,731.3237797852507.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(10.026679448929372.mm, 19.101720149114897.mm, 32.72964996105702.mm)
+  circle = ge.add_circle([2356.8733205510707.mm,419.7982798508851.mm,715.270350038943.mm], vec, 7.mm, 8)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(13.099999999999909.mm, 41.10000000000002.mm, -28.mm)
+  circle = ge.add_circle([2366.9.mm,438.9.mm,748.mm], vec, 7.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(3.mm, 18.mm, -28.mm)
   circle = ge.add_circle([2380.mm,480.mm,720.mm], vec, 7.mm, 10)
@@ -18711,9 +18818,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(24.97000885059242.mm, -18.972170521903422.mm, -28.294146488071874.mm)
   circle = ge.add_circle([2383.mm,498.mm,692.mm], vec, 7.mm, 6)
@@ -18725,9 +18832,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-27.45985123689161.mm, 3.504902623379337.mm, -19.46208447547781.mm)
   circle = ge.add_circle([2407.9700088505924.mm,479.0278294780966.mm,663.7058535119281.mm], vec, 7.mm, 6)
@@ -18739,9 +18846,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-24.355668455928026.mm, 22.438592715439142.mm, -6.95783554690729.mm)
   circle = ge.add_circle([2380.510157613701.mm,482.5327321014759.mm,644.2437690364503.mm], vec, 7.mm, 6)
@@ -18753,9 +18860,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-6.197613036183611.mm, 33.21188285064022.mm, 1.9133569064084668.mm)
   circle = ge.add_circle([2356.154489157773.mm,504.97132481691506.mm,637.285933489543.mm], vec, 7.mm, 6)
@@ -18767,9 +18874,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(16.405999792017155.mm, 29.530791918116165.mm, 1.9687569670934408.mm)
   circle = ge.add_circle([2349.956876121589.mm,538.1832076675553.mm,639.1992903959515.mm], vec, 7.mm, 6)
@@ -18781,9 +18888,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(30.249667309207325.mm, 13.54589012491897.mm, -6.824001237405923.mm)
   circle = ge.add_circle([2366.3628759136063.mm,567.7139995856714.mm,641.1680473630449.mm], vec, 7.mm, 6)
@@ -18795,9 +18902,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(27.245629809221555.mm, -5.404109036339378.mm, -19.328004716070495.mm)
   circle = ge.add_circle([2396.6125432228137.mm,581.2598897105904.mm,634.344046125639.mm], vec, 7.mm, 6)
@@ -18809,9 +18916,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(9.14890874269986.mm, -16.24822026079073.mm, -28.23815347463085.mm)
   circle = ge.add_circle([2423.858173032035.mm,575.855780674251.mm,615.0160414095685.mm], vec, 7.mm, 6)
@@ -18823,9 +18930,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-13.468013470236201.mm, -12.651087278041018.mm, -28.348952508534808.mm)
   circle = ge.add_circle([2433.007081774735.mm,559.6075604134603.mm,586.7778879349377.mm], vec, 7.mm, 6)
@@ -18837,9 +18944,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-27.391858489569586.mm, 3.2857696926852213.mm, -19.595670707996646.mm)
   circle = ge.add_circle([2419.539068304499.mm,546.9564731354193.mm,558.4289354264029.mm], vec, 7.mm, 6)
@@ -18851,9 +18958,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-24.488025237776583.mm, 22.25170594754036.mm, -7.092158124326147.mm)
   circle = ge.add_circle([2392.1472098149293.mm,550.2422428281045.mm,538.8332647184062.mm], vec, 7.mm, 6)
@@ -18865,9 +18972,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-6.452993750807764.mm, 33.16642539871111.mm, 1.8567720393160698.mm)
   circle = ge.add_circle([2367.6591845771527.mm,572.4939487756449.mm,531.7411065940801.mm], vec, 7.mm, 6)
@@ -18879,9 +18986,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(16.17679389205341.mm, 29.65332097501073.mm, 2.0229678715294312.mm)
   circle = ge.add_circle([2361.206190826345.mm,605.660374174356.mm,533.5978786333961.mm], vec, 7.mm, 6)
@@ -18893,9 +19000,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(30.180543097919326.mm, 13.76482165642392.mm, -6.690665704076537.mm)
   circle = ge.add_circle([2377.3829847183983.mm,635.3136951493667.mm,535.6208465049256.mm], vec, 7.mm, 6)
@@ -18907,9 +19014,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(27.376971094590772.mm, -5.216679403592934.mm, -19.193441957301047.mm)
   circle = ge.add_circle([2407.5635278163177.mm,649.0785168057906.mm,528.930180800849.mm], vec, 7.mm, 6)
@@ -18921,9 +19028,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(9.403983202583731.mm, -16.201792832959995.mm, -28.180977864609247.mm)
   circle = ge.add_circle([2434.9404989109084.mm,643.8618374021977.mm,509.736738843548.mm], vec, 7.mm, 6)
@@ -18935,9 +19042,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-13.238225662855712.mm, -12.772785928160488.mm, -28.4025672328209.mm)
   circle = ge.add_circle([2444.344482113492.mm,627.6600445692377.mm,481.55576097893874.mm], vec, 7.mm, 6)
@@ -18949,9 +19056,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-24.106256450636465.mm, 27.11274135892279.mm, 14.846806253882164.mm)
   circle = ge.add_circle([2431.1062564506365.mm,614.8872586410772.mm,453.15319374611784.mm], vec, 7.mm, 8)
@@ -18963,9 +19070,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(3.mm, 18.mm, -28.mm)
   circle = ge.add_circle([2407.mm,642.mm,468.mm], vec, 7.mm, 10)
@@ -18977,9 +19084,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(1.mm, -2.7000000000000455.mm, 86.29999999999995.mm)
   circle = ge.add_circle([2410.mm,660.mm,440.mm], vec, 7.mm, 10)
@@ -18991,9 +19098,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-27.46521617674125.mm, 27.273596242938652.mm, 16.879914870282846.mm)
   circle = ge.add_circle([2411.mm,657.3.mm,526.3.mm], vec, 7.mm, 6)
@@ -19005,9 +19112,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.368024200198306.mm, -28.072821024295422.mm, 14.961809208659588.mm)
   circle = ge.add_circle([2383.5347838232587.mm,684.5735962429386.mm,543.1799148702828.mm], vec, 7.mm, 6)
@@ -19019,9 +19126,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.453940774087641.mm, -28.179134091467745.mm, 14.694033887041428.mm)
   circle = ge.add_circle([2372.1667596230604.mm,656.5007752186432.mm,558.1417240789424.mm], vec, 7.mm, 6)
@@ -19033,9 +19140,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(27.712832147146855.mm, -12.164272368487104.mm, 15.006678560030878.mm)
   circle = ge.add_circle([2383.620700397148.mm,628.3216411271754.mm,572.8357579659838.mm], vec, 7.mm, 6)
@@ -19047,9 +19154,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(27.942083184783314.mm, 10.647281081138885.mm, 15.717709188957429.mm)
   circle = ge.add_circle([2411.333532544295.mm,616.1573687586883.mm,587.8424365260147.mm], vec, 7.mm, 6)
@@ -19061,9 +19168,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(12.008214906365993.mm, 26.97374165803899.mm, 16.41313574557421.mm)
   circle = ge.add_circle([2439.2756157290783.mm,626.8046498398272.mm,603.5601457149721.mm], vec, 7.mm, 6)
@@ -19075,9 +19182,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-10.81144719705344.mm, 27.309201177075693.mm, 16.6880535069281.mm)
   circle = ge.add_circle([2451.2838306354442.mm,653.7783914978662.mm,619.9732814605463.mm], vec, 7.mm, 6)
@@ -19089,9 +19196,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-27.230397348596398.mm, 11.45834189789855.mm, 16.382394527759516.mm)
   circle = ge.add_circle([2440.472383438391.mm,681.0875926749419.mm,636.6613349674744.mm], vec, 7.mm, 6)
@@ -19103,9 +19210,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-27.688876291088036.mm, -11.349841796190958.mm, 15.674125500742775.mm)
   circle = ge.add_circle([2413.2419860897944.mm,692.5459345728405.mm,653.043729495234.mm], vec, 7.mm, 6)
@@ -19117,9 +19224,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.919939532080662.mm, -27.83552731017585.mm, 14.975628540757043.mm)
   circle = ge.add_circle([2385.5531097987064.mm,681.1960927766495.mm,668.7178549959767.mm], vec, 7.mm, 6)
@@ -19131,9 +19238,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(10.895117061978453.mm, -28.40009943123266.mm, 14.693596080491602.mm)
   circle = ge.add_circle([2373.6331702666257.mm,653.3605654664736.mm,683.6934835367338.mm], vec, 7.mm, 6)
@@ -19145,9 +19252,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(27.472469223098415.mm, -12.714842041046722.mm, 14.992238523045103.mm)
   circle = ge.add_circle([2384.528287328604.mm,624.960466035241.mm,698.3870796172254.mm], vec, 7.mm, 6)
@@ -19159,9 +19266,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(28.160129807215526.mm, 10.087670417252298.mm, 15.697674479630336.mm)
   circle = ge.add_circle([2412.0007565517026.mm,612.2456239941943.mm,713.3793181402705.mm], vec, 7.mm, 6)
@@ -19173,9 +19280,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(12.557715746340818.mm, 26.730917365423238.mm, 16.39917136052179.mm)
   circle = ge.add_circle([2440.160886358918.mm,622.3332944114466.mm,729.0769926199008.mm], vec, 7.mm, 6)
@@ -19187,9 +19294,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-10.25043316458823.mm, 27.52454511984365.mm, 16.688290060960526.mm)
   circle = ge.add_circle([2452.718602105259.mm,649.0642117768698.mm,745.4761639804226.mm], vec, 7.mm, 6)
@@ -19201,9 +19308,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-26.98451458268164.mm, 12.006472353628851.mm, 16.396694289805282.mm)
   circle = ge.add_circle([2442.4681689406707.mm,676.5887568967134.mm,762.1644540413831.mm], vec, 7.mm, 6)
@@ -19215,9 +19322,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-27.90128741941544.mm, -10.788067960886679.mm, 15.694162586300763.mm)
   circle = ge.add_circle([2415.483654357989.mm,688.5952292503423.mm,778.5611483311884.mm], vec, 7.mm, 6)
@@ -19229,9 +19336,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-12.46697043227232.mm, -27.58719694146737.mm, 14.989736569676097.mm)
   circle = ge.add_circle([2387.5823669385736.mm,677.8071612894556.mm,794.2553109174892.mm], vec, 7.mm, 6)
@@ -19243,9 +19350,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(10.33196931878183.mm, -28.609800247529847.mm, 14.693560802845923.mm)
   circle = ge.add_circle([2375.1153965063013.mm,650.2199643479883.mm,809.2450474871653.mm], vec, 7.mm, 6)
@@ -19257,9 +19364,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(27.221091426338262.mm, -13.260477970351758.mm, 14.978080478869515.mm)
   circle = ge.add_circle([2385.447365825083.mm,621.6101641004584.mm,823.9386082900112.mm], vec, 7.mm, 6)
@@ -19271,9 +19378,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(28.366884007902627.mm, 9.523790096823518.mm, 15.677637039701608.mm)
   circle = ge.add_circle([2412.6684572514214.mm,608.3496861301066.mm,838.9166887688807.mm], vec, 7.mm, 6)
@@ -19285,9 +19392,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(13.102221508105231.mm, 26.477105978620784.mm, 16.38492111131984.mm)
   circle = ge.add_circle([2441.035341259324.mm,617.8734762269302.mm,854.5943258085823.mm], vec, 7.mm, 6)
@@ -19299,9 +19406,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-9.685208535589481.mm, 27.728581649620992.mm, 16.68812405865924.mm)
   circle = ge.add_circle([2454.1375627674292.mm,644.350582205551.mm,870.9792469199022.mm], vec, 7.mm, 6)
@@ -19313,9 +19420,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-26.727667120577735.mm, 12.549558698625333.mm, 16.410709187480734.mm)
   circle = ge.add_circle([2444.4523542318398.mm,672.0791638551719.mm,887.6673709785614.mm], vec, 7.mm, 6)
@@ -19327,9 +19434,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-28.10236382974381.mm, -10.222138054183347.mm, 15.71419835870438.mm)
   circle = ge.add_circle([2417.724687111262.mm,684.6287225537973.mm,904.0780801660421.mm], vec, 7.mm, 6)
@@ -19341,9 +19448,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-13.008896111767172.mm, -27.32793014763672.mm, 15.004127601226742.mm)
   circle = ge.add_circle([2389.622323281518.mm,674.4065844996139.mm,919.7922785247465.mm], vec, 7.mm, 6)
@@ -19355,9 +19462,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(9.764724838479651.mm, -28.808151902298164.mm, 14.693928068343553.mm)
   circle = ge.add_circle([2376.613427169751.mm,647.0786543519772.mm,934.7964061259732.mm], vec, 7.mm, 6)
@@ -19369,9 +19476,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(26.958800216315012.mm, -13.800959930424483.mm, 14.964210141880244.mm)
   circle = ge.add_circle([2386.3781520082307.mm,618.270502449679.mm,949.4903341943168.mm], vec, 7.mm, 6)
@@ -19383,9 +19490,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(28.562262338076835.mm, 8.955867709510926.mm, 15.6576049565507.mm)
   circle = ge.add_circle([2413.3369522245457.mm,604.4695425192546.mm,964.454544336197.mm], vec, 7.mm, 6)
@@ -19397,9 +19504,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(13.641512421831976.mm, 26.212409939310646.mm, 16.3703907495601.mm)
   circle = ge.add_circle([2441.8992145626225.mm,613.4254102287655.mm,980.1121492927477.mm], vec, 7.mm, 6)
@@ -19411,9 +19518,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-9.116001442296238.mm, 27.921228414528514.mm, 16.687555567025015.mm)
   circle = ge.add_circle([2455.5407269844545.mm,639.6378201680761.mm,996.4825400423078.mm], vec, 7.mm, 6)
@@ -19425,9 +19532,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-26.4599586293657.mm, 13.087381735956797.mm, 16.42443356418505.mm)
   circle = ge.add_circle([2446.4247255421583.mm,667.5590485826046.mm,1013.1700956093329.mm], vec, 7.mm, 6)
@@ -19439,9 +19546,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-28.292024364937333.mm, -9.652280492980253.mm, 15.734224731246968.mm)
   circle = ge.add_circle([2419.9647669127926.mm,680.6464303185614.mm,1029.594529173518.mm], vec, 7.mm, 6)
@@ -19453,9 +19560,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-13.545497842092573.mm, -27.05783157223857.mm, 15.018795826996211.mm)
   circle = ge.add_circle([2391.6727425478553.mm,670.9941498255812.mm,1045.3287539047649.mm], vec, 7.mm, 6)
@@ -19467,9 +19574,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(9.19361256854836.mm, -28.995074338149834.mm, 14.694697728750725.mm)
   circle = ge.add_circle([2378.1272447057627.mm,643.9363182533426.mm,1060.347549731761.mm], vec, 7.mm, 6)
@@ -19481,9 +19588,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(26.68570145727972.mm, -14.336069775498231.mm, 14.950633110331182.mm)
   circle = ge.add_circle([2387.320857274311.mm,614.9412439151928.mm,1075.0422474605118.mm], vec, 7.mm, 6)
@@ -19495,9 +19602,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(28.746185940422947.mm, 8.384132476406307.mm, 15.637586315395538.mm)
   circle = ge.add_circle([2414.0065587315908.mm,600.6051741396946.mm,1089.992880570843.mm], vec, 7.mm, 6)
@@ -19509,9 +19616,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.175370822477362.mm, 25.936936082363673.mm, 16.355586139891102.mm)
   circle = ge.add_circle([2442.7527446720137.mm,608.9893066161009.mm,1105.6304668862385.mm], vec, 7.mm, 6)
@@ -19523,9 +19630,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-8.54304162432436.mm, 28.102407659747996.mm, 16.686584815508468.mm)
   circle = ge.add_circle([2456.928115494491.mm,634.9262426984645.mm,1121.9860530261296.mm], vec, 7.mm, 6)
@@ -19537,9 +19644,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-26.18149715978143.mm, 13.619724393033493.mm, 16.437861880576065.mm)
   circle = ge.add_circle([2448.3850738701667.mm,663.0286503582125.mm,1138.672637841638.mm], vec, 7.mm, 6)
@@ -19551,9 +19658,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-28.470192475461772.mm, -9.078725279430614.mm, 15.754233621016283.mm)
   circle = ge.add_circle([2422.2035767103853.mm,676.648374751246.mm,1155.1104997222142.mm], vec, 7.mm, 6)
@@ -19565,9 +19672,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.076559043594898.mm, -26.777010230679707.mm, 15.033735326691612.mm)
   circle = ge.add_circle([2393.7333842349235.mm,667.5696494718154.mm,1170.8647333432305.mm], vec, 7.mm, 6)
@@ -19579,9 +19686,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(8.618863017559761.mm, -29.1704921106832.mm, 14.695869473422135.mm)
   circle = ge.add_circle([2379.6568251913286.mm,640.7926392411357.mm,1185.898468669922.mm], vec, 7.mm, 6)
@@ -19593,9 +19700,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(26.401905375551905.mm, -14.865591528064101.mm, 14.937354864094914.mm)
   circle = ge.add_circle([2388.2756882088884.mm,611.6221471304525.mm,1200.5943381433442.mm], vec, 7.mm, 6)
@@ -19607,9 +19714,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.322406415559726.mm, 38.94344439761153.mm, 1.1683069925607015.mm)
   circle = ge.add_circle([2414.6775935844403.mm,596.7565556023884.mm,1215.5316930074391.mm], vec, 7.mm, 8)
@@ -19621,9 +19728,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(1.mm, -2.699999999999932.mm, 86.30000000000018.mm)
   circle = ge.add_circle([2419.mm,635.6999999999999.mm,1216.6999999999998.mm], vec, 7.mm, 10)
@@ -48366,9 +48473,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # 3W-BV-05 (spray selector) body
+  # 3W-BV-05a (Blue/Brown selector) body
   grp = ents.add_group
-  grp.name = "3W-BV-05 (spray selector) body"
+  grp.name = "3W-BV-05a (Blue/Brown selector) body"
   face = grp.entities.add_face([2226.mm,46.mm,677.mm], [2272.mm,46.mm,677.mm], [2272.mm,92.mm,677.mm], [2226.mm,92.mm,677.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(46.mm)
@@ -48377,9 +48484,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # 3W-BV-05 (spray selector) run +
+  # 3W-BV-05a (Blue/Brown selector) run +
   grp = ents.add_group
-  grp.name = "3W-BV-05 (spray selector) run +"
+  grp.name = "3W-BV-05a (Blue/Brown selector) run +"
   ge = grp.entities
   circle = ge.add_circle([2249.mm,69.mm,723.mm], [0,0,1], 13.mm, 24)
   cface = ge.add_face(circle)
@@ -48390,9 +48497,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # 3W-BV-05 (spray selector) run -
+  # 3W-BV-05a (Blue/Brown selector) run -
   grp = ents.add_group
-  grp.name = "3W-BV-05 (spray selector) run -"
+  grp.name = "3W-BV-05a (Blue/Brown selector) run -"
   ge = grp.entities
   circle = ge.add_circle([2249.mm,69.mm,667.mm], [0,0,1], 13.mm, 24)
   cface = ge.add_face(circle)
@@ -48403,9 +48510,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # 3W-BV-05 (spray selector) branch
+  # 3W-BV-05a (Blue/Brown selector) branch
   grp = ents.add_group
-  grp.name = "3W-BV-05 (spray selector) branch"
+  grp.name = "3W-BV-05a (Blue/Brown selector) branch"
   ge = grp.entities
   circle = ge.add_circle([2272.mm,69.mm,700.mm], [1,0,0], 13.mm, 24)
   cface = ge.add_face(circle)
@@ -48416,9 +48523,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # 3W-BV-05 (spray selector) handle stem
+  # 3W-BV-05a (Blue/Brown selector) handle stem
   grp = ents.add_group
-  grp.name = "3W-BV-05 (spray selector) handle stem"
+  grp.name = "3W-BV-05a (Blue/Brown selector) handle stem"
   ge = grp.entities
   circle = ge.add_circle([2249.mm,92.mm,700.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
@@ -48429,9 +48536,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # 3W-BV-05 (spray selector) handle lever
+  # 3W-BV-05a (Blue/Brown selector) handle lever
   grp = ents.add_group
-  grp.name = "3W-BV-05 (spray selector) handle lever"
+  grp.name = "3W-BV-05a (Blue/Brown selector) handle lever"
   face = grp.entities.add_face([2241.mm,133.mm,668.mm], [2257.mm,133.mm,668.mm], [2257.mm,147.mm,668.mm], [2241.mm,147.mm,668.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(64.mm)
@@ -48454,12 +48561,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # BV-05a -> BV-05b (up the pinhole wall)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "BV-05a -> BV-05b (up the pinhole wall)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(13.099999999999909.mm, 41.099999999999994.mm, -1.2999999999999545.mm)
-  circle = ge.add_circle([2249.mm,69.mm,733.mm], vec, 7.mm, 10)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, 267.mm)
+  circle = ge.add_circle([2249.mm,69.mm,733.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48468,12 +48575,49 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # BV-05b (spray on/off)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "BV-05b (spray on/off)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(30.994778088595467.mm, 5.710808891153519.mm, -28.100404037968133.mm)
-  circle = ge.add_circle([2262.1.mm,110.1.mm,731.7.mm], vec, 7.mm, 6)
+  circle = ge.add_circle([2249.mm,69.mm,878.mm], [0,0,1], 18.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["BV-01 (P-01 suction)"] || model.materials.add("BV-01 (P-01 suction)")
+  mat.color = Sketchup::Color.new(128, 128, 138)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # BV-05b (spray on/off) handle stem
+  grp = ents.add_group
+  grp.name = "BV-05b (spray on/off) handle stem"
+  ge = grp.entities
+  circle = ge.add_circle([2249.mm,87.5.mm,900.mm], [0,1,0], 6.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(28.mm)
+  mat = model.materials["BV-01 (P-01 suction) handle stem"] || model.materials.add("BV-01 (P-01 suction) handle stem")
+  mat.color = Sketchup::Color.new(192, 32, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # BV-05b (spray on/off) handle
+  grp = ents.add_group
+  grp.name = "BV-05b (spray on/off) handle"
+  face = grp.entities.add_face([2242.mm,115.5.mm,876.mm], [2256.mm,115.5.mm,876.mm], [2256.mm,124.5.mm,876.mm], [2242.mm,124.5.mm,876.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(48.mm)
+  mat = model.materials["BV-01 (P-01 suction) handle stem"] || model.materials.add("BV-01 (P-01 suction) handle stem")
+  mat.color = Sketchup::Color.new(192, 32, 42)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(13.099999999999909.mm, 41.099999999999994.mm, -28.mm)
+  circle = ge.add_circle([2249.mm,69.mm,1000.mm], vec, 7.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48482,12 +48626,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.615204002314385.mm, 22.987856633323375.mm, -12.02663725929824.mm)
-  circle = ge.add_circle([2293.0947780885954.mm,115.81080889115351.mm,703.5995959620319.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(25.742872561447257.mm, -10.172043052222222.mm, -31.951075290076687.mm)
+  circle = ge.add_circle([2262.1.mm,110.1.mm,972.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48496,12 +48640,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.52927301618729.mm, 23.681503268653614.mm, 10.769187840958239.mm)
-  circle = ge.add_circle([2271.479574086281.mm,138.7986655244769.mm,691.5729587027337.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-24.437929631876614.mm, 15.218089673404663.mm, -18.15943435112206.mm)
+  circle = ge.add_circle([2287.842872561447.mm,99.92795694777777.mm,940.0489247099233.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48510,12 +48654,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.146142164319372.mm, 19.292521678056943.mm, 27.024473060918353.mm)
-  circle = ge.add_circle([2249.9503010700937.mm,162.4801687931305.mm,702.3421465436919.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-20.444709939103177.mm, 27.183844916814778.mm, 1.2728413088594834.mm)
+  circle = ge.add_circle([2263.4049429295706.mm,115.14604662118244.mm,921.8894903588013.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48524,12 +48668,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.584291689368001.mm, 12.374418878521567.mm, 27.28190261661041.mm)
-  circle = ge.add_circle([2243.8041589057743.mm,181.77269047118745.mm,729.3666196046103.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-1.9862222058245607.mm, 30.557670393798645.mm, 14.861070466359138.mm)
+  circle = ge.add_circle([2242.9602329904674.mm,142.3298915379972.mm,923.1623316676607.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48538,12 +48682,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(31.01927437008453.mm, 6.952143181680469.mm, 11.391704137548686.mm)
-  circle = ge.add_circle([2259.3884505951423.mm,194.147109349709.mm,756.6485222212207.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(20.02837134763695.mm, 23.345599428250125.mm, 14.57446542586979.mm)
+  circle = ge.add_circle([2240.974010784643.mm,172.88756193179586.mm,938.0234021340199.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48552,12 +48696,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(31.178741649094263.mm, 6.180371533454974.mm, -11.401213852486649.mm)
-  circle = ge.add_circle([2290.407724965227.mm,201.09925253138948.mm,768.0402263587694.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(32.588212206790104.mm, 9.81004252987725.mm, 0.5824128091476268.mm)
+  circle = ge.add_circle([2261.0023821322798.mm,196.23316136004598.mm,952.5978675598897.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48566,12 +48710,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(15.96991555329987.mm, 10.508120244024838.mm, -27.835944506702276.mm)
-  circle = ge.add_circle([2321.586466614321.mm,207.27962406484446.mm,756.6390125062827.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(28.27030107863675.mm, -2.049342470167659.mm, -18.845635736589884.mm)
+  circle = ge.add_circle([2293.59059433907.mm,206.04320388992323.mm,953.1802803690373.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48580,12 +48724,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.758717462268578.mm, 17.417507551507356.mm, -28.35077078856193.mm)
-  circle = ge.add_circle([2337.556382167621.mm,217.7877443088693.mm,728.8030679995804.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(9.626569282287164.mm, -5.22353312821528.mm, -32.22749725723065.mm)
+  circle = ge.add_circle([2321.8608954177066.mm,203.99386141975558.mm,934.3346446324474.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48594,12 +48738,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.365450949425394.mm, 22.888655812636358.mm, -12.646167057293837.mm)
-  circle = ge.add_circle([2331.7976647053524.mm,235.20525186037665.mm,700.4522972110185.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-12.324339753964068.mm, 2.163450934367688.mm, -31.654349521613653.mm)
+  circle = ge.add_circle([2331.487464699994.mm,198.7703282915403.mm,902.1071473752168.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48608,12 +48752,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.77029615699803.mm, 23.738454051118936.mm, 10.140937083038125.mm)
-  circle = ge.add_circle([2310.432213755927.mm,258.093907673013.mm,687.8061301537247.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-24.609205741421192.mm, 15.745823710509569.mm, -17.464928926480184.mm)
+  circle = ge.add_circle([2319.1631249460297.mm,200.93377922590798.mm,870.4527978536031.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48622,12 +48766,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-6.737714371280163.mm, 19.47249013051794.mm, 26.75301728012289.mm)
-  circle = ge.add_circle([2288.661917598929.mm,281.83236172413194.mm,697.9470672367628.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-19.967542455610328.mm, 27.496258688261946.mm, 1.9546663102964885.mm)
+  circle = ge.add_circle([2294.5539192046085.mm,216.67960293641755.mm,852.9878689271229.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48636,12 +48780,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(14.986346793020402.mm, 12.572699456717203.mm, 27.525174633288543.mm)
-  circle = ge.add_circle([2281.924203227649.mm,301.3048518546499.mm,724.7000845168857.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-1.1426221780275228.mm, 30.47012404383031.mm, 15.127249229946301.mm)
+  circle = ge.add_circle([2274.586376748998.mm,244.1758616246795.mm,854.9425352374194.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48650,12 +48794,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(30.76284078820754.mm, 7.053376356912736.mm, 12.008168429438115.mm)
-  circle = ge.add_circle([2296.9105500206692.mm,313.8775513113671.mm,752.2252591501742.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(20.73982734698302.mm, 22.909833779159158.mm, 14.267683476362436.mm)
+  circle = ge.add_circle([2273.4437545709707.mm,274.6459856685098.mm,870.0697844673657.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48664,12 +48808,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(31.413012295168755.mm, 6.125659901400809.mm, -10.77021586313765.mm)
-  circle = ge.add_circle([2327.673390808877.mm,320.9309276682798.mm,764.2334275796123.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(32.74704612869027.mm, 9.283599706710277.mm, -0.11601846425492113.mm)
+  circle = ge.add_circle([2294.1835819179537.mm,297.55581944766897.mm,884.3374679437281.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48678,12 +48822,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(16.558591897410224.mm, 10.32929500139312.mm, -27.557527094640363.mm)
-  circle = ge.add_circle([2359.0864031040455.mm,327.05658756968063.mm,753.4632117164747.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(27.782640388940763.mm, -2.355329169784227.mm, -19.522936036206147.mm)
+  circle = ge.add_circle([2326.930628046644.mm,306.83941915437924.mm,884.2214494794732.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48692,12 +48836,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-5.15812698551008.mm, 17.21860912372449.mm, -28.58691704728517.mm)
-  circle = ge.add_circle([2375.6449950014558.mm,337.38588257107375.mm,725.9056846218343.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(8.780626625998138.mm, -5.128222316210213.mm, -32.48337491522966.mm)
+  circle = ge.add_circle([2354.7132684355847.mm,304.484089984595.mm,864.6985134432671.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48706,12 +48850,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.102369541069493.mm, 22.785403192942.mm, -13.259487226504461.mm)
-  circle = ge.add_circle([2370.4868680159457.mm,354.60449169479824.mm,697.3187675745492.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-13.028603285780264.mm, 2.6037295562041436.mm, -31.337578125518007.mm)
+  circle = ge.add_circle([2363.493895061583.mm,299.3558676683848.mm,832.2151385280374.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48720,12 +48864,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-21.997784432226126.mm, 23.790919555486653.mm, 9.507272332288949.mm)
-  circle = ge.add_circle([2349.384498474876.mm,377.38989488774024.mm,684.0592803480447.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-24.75556292444071.mm, 16.27086080232459.mm, -16.762723734478755.mm)
+  circle = ge.add_circle([2350.4652917758026.mm,301.95959722458895.mm,800.8775604025194.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48734,12 +48878,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-7.3234197797132765.mm, 19.650149358061583.mm, 26.467673742862075.mm)
-  circle = ge.add_circle([2327.38671404265.mm,401.1808144432269.mm,693.5665526803336.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-19.46949464082536.mm, 27.795751754582625.mm, 2.627294574563166.mm)
+  circle = ge.add_circle([2325.709728851362.mm,318.23045802691354.mm,784.1148366680407.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48748,12 +48892,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(14.38318732806465.mm, 12.772190368931774.mm, 27.754165018753497.mm)
-  circle = ge.add_circle([2320.063294262937.mm,420.8309638012885.mm,720.0342264231957.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-0.2945209116460319.mm, 30.367069502805123.mm, 15.37277012114123.mm)
+  circle = ge.add_circle([2306.2402342105365.mm,346.02620978149616.mm,786.7421312426038.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48762,12 +48906,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(30.493145103667757.mm, 7.158635253449802.mm, 12.618266260360997.mm)
-  circle = ge.add_circle([2334.4464815910014.mm,433.60315417022025.mm,747.7883914419492.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(21.43674521241337.mm, 22.465137958642515.mm, 13.94099154114474.mm)
+  circle = ge.add_circle([2305.9457132988905.mm,376.3932792843013.mm,802.114901363745.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48776,12 +48920,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(1.9603733053309043.mm, -1.861789423670075.mm, -39.106657702310144.mm)
-  circle = ge.add_circle([2364.939626694669.mm,440.76178942367005.mm,760.4066577023102.mm], vec, 7.mm, 8)
+  vec = Geom::Vector3d.new(32.880894735666516.mm, 8.760082557871385.mm, -0.82184482375078.mm)
+  circle = ge.add_circle([2327.382458511304.mm,398.8584172429438.mm,816.0558929048898.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48790,12 +48934,12 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(13.099999999999909.mm, 41.10000000000002.mm, -1.3000000000000682.mm)
-  circle = ge.add_circle([2366.9.mm,438.9.mm,721.3000000000001.mm], vec, 7.mm, 10)
+  vec = Geom::Vector3d.new(27.27431378969777.mm, -2.648263453907873.mm, -20.190745947905157.mm)
+  circle = ge.add_circle([2360.2633532469704.mm,407.6184998008152.mm,815.234048081139.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -48804,9 +48948,79 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(7.93055123748627.mm, -5.0174464636789935.mm, -32.71848563131789.mm)
+  circle = ge.add_circle([2387.537667036668.mm,404.9702363469073.mm,795.0433021332339.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-13.718023883875048.mm, 3.0527458404600907.mm, -31.001036716665226.mm)
+  circle = ge.add_circle([2395.4682182741544.mm,399.9527898832283.mm,762.324816501916.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-24.876873839208656.mm, 16.79274412719667.mm, -16.053429746307756.mm)
+  circle = ge.add_circle([2381.7501943902794.mm,403.0055357236884.mm,731.3237797852507.mm], vec, 7.mm, 6)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(10.026679448929372.mm, 19.101720149114897.mm, 32.72964996105702.mm)
+  circle = ge.add_circle([2356.8733205510707.mm,419.7982798508851.mm,715.270350038943.mm], vec, 7.mm, 8)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(13.099999999999909.mm, 41.10000000000002.mm, -28.mm)
+  circle = ge.add_circle([2366.9.mm,438.9.mm,748.mm], vec, 7.mm, 10)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
+  grp = ents.add_group
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(3.mm, 18.mm, -28.mm)
   circle = ge.add_circle([2380.mm,480.mm,720.mm], vec, 7.mm, 10)
@@ -48818,9 +49032,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(24.97000885059242.mm, -18.972170521903422.mm, -28.294146488071874.mm)
   circle = ge.add_circle([2383.mm,498.mm,692.mm], vec, 7.mm, 6)
@@ -48832,9 +49046,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-27.45985123689161.mm, 3.504902623379337.mm, -19.46208447547781.mm)
   circle = ge.add_circle([2407.9700088505924.mm,479.0278294780966.mm,663.7058535119281.mm], vec, 7.mm, 6)
@@ -48846,9 +49060,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-24.355668455928026.mm, 22.438592715439142.mm, -6.95783554690729.mm)
   circle = ge.add_circle([2380.510157613701.mm,482.5327321014759.mm,644.2437690364503.mm], vec, 7.mm, 6)
@@ -48860,9 +49074,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-6.197613036183611.mm, 33.21188285064022.mm, 1.9133569064084668.mm)
   circle = ge.add_circle([2356.154489157773.mm,504.97132481691506.mm,637.285933489543.mm], vec, 7.mm, 6)
@@ -48874,9 +49088,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(16.405999792017155.mm, 29.530791918116165.mm, 1.9687569670934408.mm)
   circle = ge.add_circle([2349.956876121589.mm,538.1832076675553.mm,639.1992903959515.mm], vec, 7.mm, 6)
@@ -48888,9 +49102,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(30.249667309207325.mm, 13.54589012491897.mm, -6.824001237405923.mm)
   circle = ge.add_circle([2366.3628759136063.mm,567.7139995856714.mm,641.1680473630449.mm], vec, 7.mm, 6)
@@ -48902,9 +49116,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(27.245629809221555.mm, -5.404109036339378.mm, -19.328004716070495.mm)
   circle = ge.add_circle([2396.6125432228137.mm,581.2598897105904.mm,634.344046125639.mm], vec, 7.mm, 6)
@@ -48916,9 +49130,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(9.14890874269986.mm, -16.24822026079073.mm, -28.23815347463085.mm)
   circle = ge.add_circle([2423.858173032035.mm,575.855780674251.mm,615.0160414095685.mm], vec, 7.mm, 6)
@@ -48930,9 +49144,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-13.468013470236201.mm, -12.651087278041018.mm, -28.348952508534808.mm)
   circle = ge.add_circle([2433.007081774735.mm,559.6075604134603.mm,586.7778879349377.mm], vec, 7.mm, 6)
@@ -48944,9 +49158,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-27.391858489569586.mm, 3.2857696926852213.mm, -19.595670707996646.mm)
   circle = ge.add_circle([2419.539068304499.mm,546.9564731354193.mm,558.4289354264029.mm], vec, 7.mm, 6)
@@ -48958,9 +49172,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-24.488025237776583.mm, 22.25170594754036.mm, -7.092158124326147.mm)
   circle = ge.add_circle([2392.1472098149293.mm,550.2422428281045.mm,538.8332647184062.mm], vec, 7.mm, 6)
@@ -48972,9 +49186,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-6.452993750807764.mm, 33.16642539871111.mm, 1.8567720393160698.mm)
   circle = ge.add_circle([2367.6591845771527.mm,572.4939487756449.mm,531.7411065940801.mm], vec, 7.mm, 6)
@@ -48986,9 +49200,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(16.17679389205341.mm, 29.65332097501073.mm, 2.0229678715294312.mm)
   circle = ge.add_circle([2361.206190826345.mm,605.660374174356.mm,533.5978786333961.mm], vec, 7.mm, 6)
@@ -49000,9 +49214,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(30.180543097919326.mm, 13.76482165642392.mm, -6.690665704076537.mm)
   circle = ge.add_circle([2377.3829847183983.mm,635.3136951493667.mm,535.6208465049256.mm], vec, 7.mm, 6)
@@ -49014,9 +49228,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(27.376971094590772.mm, -5.216679403592934.mm, -19.193441957301047.mm)
   circle = ge.add_circle([2407.5635278163177.mm,649.0785168057906.mm,528.930180800849.mm], vec, 7.mm, 6)
@@ -49028,9 +49242,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(9.403983202583731.mm, -16.201792832959995.mm, -28.180977864609247.mm)
   circle = ge.add_circle([2434.9404989109084.mm,643.8618374021977.mm,509.736738843548.mm], vec, 7.mm, 6)
@@ -49042,9 +49256,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-13.238225662855712.mm, -12.772785928160488.mm, -28.4025672328209.mm)
   circle = ge.add_circle([2444.344482113492.mm,627.6600445692377.mm,481.55576097893874.mm], vec, 7.mm, 6)
@@ -49056,9 +49270,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-24.106256450636465.mm, 27.11274135892279.mm, 14.846806253882164.mm)
   circle = ge.add_circle([2431.1062564506365.mm,614.8872586410772.mm,453.15319374611784.mm], vec, 7.mm, 8)
@@ -49070,9 +49284,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(3.mm, 18.mm, -28.mm)
   circle = ge.add_circle([2407.mm,642.mm,468.mm], vec, 7.mm, 10)
@@ -49084,9 +49298,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(1.mm, -2.7000000000000455.mm, 86.29999999999995.mm)
   circle = ge.add_circle([2410.mm,660.mm,440.mm], vec, 7.mm, 10)
@@ -49098,9 +49312,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-27.46521617674125.mm, 27.273596242938652.mm, 16.879914870282846.mm)
   circle = ge.add_circle([2411.mm,657.3.mm,526.3.mm], vec, 7.mm, 6)
@@ -49112,9 +49326,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.368024200198306.mm, -28.072821024295422.mm, 14.961809208659588.mm)
   circle = ge.add_circle([2383.5347838232587.mm,684.5735962429386.mm,543.1799148702828.mm], vec, 7.mm, 6)
@@ -49126,9 +49340,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.453940774087641.mm, -28.179134091467745.mm, 14.694033887041428.mm)
   circle = ge.add_circle([2372.1667596230604.mm,656.5007752186432.mm,558.1417240789424.mm], vec, 7.mm, 6)
@@ -49140,9 +49354,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(27.712832147146855.mm, -12.164272368487104.mm, 15.006678560030878.mm)
   circle = ge.add_circle([2383.620700397148.mm,628.3216411271754.mm,572.8357579659838.mm], vec, 7.mm, 6)
@@ -49154,9 +49368,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(27.942083184783314.mm, 10.647281081138885.mm, 15.717709188957429.mm)
   circle = ge.add_circle([2411.333532544295.mm,616.1573687586883.mm,587.8424365260147.mm], vec, 7.mm, 6)
@@ -49168,9 +49382,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(12.008214906365993.mm, 26.97374165803899.mm, 16.41313574557421.mm)
   circle = ge.add_circle([2439.2756157290783.mm,626.8046498398272.mm,603.5601457149721.mm], vec, 7.mm, 6)
@@ -49182,9 +49396,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-10.81144719705344.mm, 27.309201177075693.mm, 16.6880535069281.mm)
   circle = ge.add_circle([2451.2838306354442.mm,653.7783914978662.mm,619.9732814605463.mm], vec, 7.mm, 6)
@@ -49196,9 +49410,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-27.230397348596398.mm, 11.45834189789855.mm, 16.382394527759516.mm)
   circle = ge.add_circle([2440.472383438391.mm,681.0875926749419.mm,636.6613349674744.mm], vec, 7.mm, 6)
@@ -49210,9 +49424,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-27.688876291088036.mm, -11.349841796190958.mm, 15.674125500742775.mm)
   circle = ge.add_circle([2413.2419860897944.mm,692.5459345728405.mm,653.043729495234.mm], vec, 7.mm, 6)
@@ -49224,9 +49438,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.919939532080662.mm, -27.83552731017585.mm, 14.975628540757043.mm)
   circle = ge.add_circle([2385.5531097987064.mm,681.1960927766495.mm,668.7178549959767.mm], vec, 7.mm, 6)
@@ -49238,9 +49452,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(10.895117061978453.mm, -28.40009943123266.mm, 14.693596080491602.mm)
   circle = ge.add_circle([2373.6331702666257.mm,653.3605654664736.mm,683.6934835367338.mm], vec, 7.mm, 6)
@@ -49252,9 +49466,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(27.472469223098415.mm, -12.714842041046722.mm, 14.992238523045103.mm)
   circle = ge.add_circle([2384.528287328604.mm,624.960466035241.mm,698.3870796172254.mm], vec, 7.mm, 6)
@@ -49266,9 +49480,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(28.160129807215526.mm, 10.087670417252298.mm, 15.697674479630336.mm)
   circle = ge.add_circle([2412.0007565517026.mm,612.2456239941943.mm,713.3793181402705.mm], vec, 7.mm, 6)
@@ -49280,9 +49494,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(12.557715746340818.mm, 26.730917365423238.mm, 16.39917136052179.mm)
   circle = ge.add_circle([2440.160886358918.mm,622.3332944114466.mm,729.0769926199008.mm], vec, 7.mm, 6)
@@ -49294,9 +49508,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-10.25043316458823.mm, 27.52454511984365.mm, 16.688290060960526.mm)
   circle = ge.add_circle([2452.718602105259.mm,649.0642117768698.mm,745.4761639804226.mm], vec, 7.mm, 6)
@@ -49308,9 +49522,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-26.98451458268164.mm, 12.006472353628851.mm, 16.396694289805282.mm)
   circle = ge.add_circle([2442.4681689406707.mm,676.5887568967134.mm,762.1644540413831.mm], vec, 7.mm, 6)
@@ -49322,9 +49536,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-27.90128741941544.mm, -10.788067960886679.mm, 15.694162586300763.mm)
   circle = ge.add_circle([2415.483654357989.mm,688.5952292503423.mm,778.5611483311884.mm], vec, 7.mm, 6)
@@ -49336,9 +49550,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-12.46697043227232.mm, -27.58719694146737.mm, 14.989736569676097.mm)
   circle = ge.add_circle([2387.5823669385736.mm,677.8071612894556.mm,794.2553109174892.mm], vec, 7.mm, 6)
@@ -49350,9 +49564,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(10.33196931878183.mm, -28.609800247529847.mm, 14.693560802845923.mm)
   circle = ge.add_circle([2375.1153965063013.mm,650.2199643479883.mm,809.2450474871653.mm], vec, 7.mm, 6)
@@ -49364,9 +49578,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(27.221091426338262.mm, -13.260477970351758.mm, 14.978080478869515.mm)
   circle = ge.add_circle([2385.447365825083.mm,621.6101641004584.mm,823.9386082900112.mm], vec, 7.mm, 6)
@@ -49378,9 +49592,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(28.366884007902627.mm, 9.523790096823518.mm, 15.677637039701608.mm)
   circle = ge.add_circle([2412.6684572514214.mm,608.3496861301066.mm,838.9166887688807.mm], vec, 7.mm, 6)
@@ -49392,9 +49606,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(13.102221508105231.mm, 26.477105978620784.mm, 16.38492111131984.mm)
   circle = ge.add_circle([2441.035341259324.mm,617.8734762269302.mm,854.5943258085823.mm], vec, 7.mm, 6)
@@ -49406,9 +49620,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-9.685208535589481.mm, 27.728581649620992.mm, 16.68812405865924.mm)
   circle = ge.add_circle([2454.1375627674292.mm,644.350582205551.mm,870.9792469199022.mm], vec, 7.mm, 6)
@@ -49420,9 +49634,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-26.727667120577735.mm, 12.549558698625333.mm, 16.410709187480734.mm)
   circle = ge.add_circle([2444.4523542318398.mm,672.0791638551719.mm,887.6673709785614.mm], vec, 7.mm, 6)
@@ -49434,9 +49648,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-28.10236382974381.mm, -10.222138054183347.mm, 15.71419835870438.mm)
   circle = ge.add_circle([2417.724687111262.mm,684.6287225537973.mm,904.0780801660421.mm], vec, 7.mm, 6)
@@ -49448,9 +49662,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-13.008896111767172.mm, -27.32793014763672.mm, 15.004127601226742.mm)
   circle = ge.add_circle([2389.622323281518.mm,674.4065844996139.mm,919.7922785247465.mm], vec, 7.mm, 6)
@@ -49462,9 +49676,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(9.764724838479651.mm, -28.808151902298164.mm, 14.693928068343553.mm)
   circle = ge.add_circle([2376.613427169751.mm,647.0786543519772.mm,934.7964061259732.mm], vec, 7.mm, 6)
@@ -49476,9 +49690,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(26.958800216315012.mm, -13.800959930424483.mm, 14.964210141880244.mm)
   circle = ge.add_circle([2386.3781520082307.mm,618.270502449679.mm,949.4903341943168.mm], vec, 7.mm, 6)
@@ -49490,9 +49704,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(28.562262338076835.mm, 8.955867709510926.mm, 15.6576049565507.mm)
   circle = ge.add_circle([2413.3369522245457.mm,604.4695425192546.mm,964.454544336197.mm], vec, 7.mm, 6)
@@ -49504,9 +49718,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(13.641512421831976.mm, 26.212409939310646.mm, 16.3703907495601.mm)
   circle = ge.add_circle([2441.8992145626225.mm,613.4254102287655.mm,980.1121492927477.mm], vec, 7.mm, 6)
@@ -49518,9 +49732,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-9.116001442296238.mm, 27.921228414528514.mm, 16.687555567025015.mm)
   circle = ge.add_circle([2455.5407269844545.mm,639.6378201680761.mm,996.4825400423078.mm], vec, 7.mm, 6)
@@ -49532,9 +49746,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-26.4599586293657.mm, 13.087381735956797.mm, 16.42443356418505.mm)
   circle = ge.add_circle([2446.4247255421583.mm,667.5590485826046.mm,1013.1700956093329.mm], vec, 7.mm, 6)
@@ -49546,9 +49760,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-28.292024364937333.mm, -9.652280492980253.mm, 15.734224731246968.mm)
   circle = ge.add_circle([2419.9647669127926.mm,680.6464303185614.mm,1029.594529173518.mm], vec, 7.mm, 6)
@@ -49560,9 +49774,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-13.545497842092573.mm, -27.05783157223857.mm, 15.018795826996211.mm)
   circle = ge.add_circle([2391.6727425478553.mm,670.9941498255812.mm,1045.3287539047649.mm], vec, 7.mm, 6)
@@ -49574,9 +49788,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(9.19361256854836.mm, -28.995074338149834.mm, 14.694697728750725.mm)
   circle = ge.add_circle([2378.1272447057627.mm,643.9363182533426.mm,1060.347549731761.mm], vec, 7.mm, 6)
@@ -49588,9 +49802,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(26.68570145727972.mm, -14.336069775498231.mm, 14.950633110331182.mm)
   circle = ge.add_circle([2387.320857274311.mm,614.9412439151928.mm,1075.0422474605118.mm], vec, 7.mm, 6)
@@ -49602,9 +49816,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(28.746185940422947.mm, 8.384132476406307.mm, 15.637586315395538.mm)
   circle = ge.add_circle([2414.0065587315908.mm,600.6051741396946.mm,1089.992880570843.mm], vec, 7.mm, 6)
@@ -49616,9 +49830,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.175370822477362.mm, 25.936936082363673.mm, 16.355586139891102.mm)
   circle = ge.add_circle([2442.7527446720137.mm,608.9893066161009.mm,1105.6304668862385.mm], vec, 7.mm, 6)
@@ -49630,9 +49844,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-8.54304162432436.mm, 28.102407659747996.mm, 16.686584815508468.mm)
   circle = ge.add_circle([2456.928115494491.mm,634.9262426984645.mm,1121.9860530261296.mm], vec, 7.mm, 6)
@@ -49644,9 +49858,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-26.18149715978143.mm, 13.619724393033493.mm, 16.437861880576065.mm)
   circle = ge.add_circle([2448.3850738701667.mm,663.0286503582125.mm,1138.672637841638.mm], vec, 7.mm, 6)
@@ -49658,9 +49872,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-28.470192475461772.mm, -9.078725279430614.mm, 15.754233621016283.mm)
   circle = ge.add_circle([2422.2035767103853.mm,676.648374751246.mm,1155.1104997222142.mm], vec, 7.mm, 6)
@@ -49672,9 +49886,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.076559043594898.mm, -26.777010230679707.mm, 15.033735326691612.mm)
   circle = ge.add_circle([2393.7333842349235.mm,667.5696494718154.mm,1170.8647333432305.mm], vec, 7.mm, 6)
@@ -49686,9 +49900,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(8.618863017559761.mm, -29.1704921106832.mm, 14.695869473422135.mm)
   circle = ge.add_circle([2379.6568251913286.mm,640.7926392411357.mm,1185.898468669922.mm], vec, 7.mm, 6)
@@ -49700,9 +49914,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(26.401905375551905.mm, -14.865591528064101.mm, 14.937354864094914.mm)
   circle = ge.add_circle([2388.2756882088884.mm,611.6221471304525.mm,1200.5943381433442.mm], vec, 7.mm, 6)
@@ -49714,9 +49928,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.322406415559726.mm, 38.94344439761153.mm, 1.1683069925607015.mm)
   circle = ge.add_circle([2414.6775935844403.mm,596.7565556023884.mm,1215.5316930074391.mm], vec, 7.mm, 8)
@@ -49728,9 +49942,9 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Spray-bar supply hose (selector -> spray bar, coiled)
+  # Spray-bar supply hose (BV-05b -> spray bar, coiled)
   grp = ents.add_group
-  grp.name = "Spray-bar supply hose (selector -> spray bar, coiled)"
+  grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
   vec = Geom::Vector3d.new(1.mm, -2.699999999999932.mm, 86.30000000000018.mm)
   circle = ge.add_circle([2419.mm,635.6999999999999.mm,1216.6999999999998.mm], vec, 7.mm, 10)

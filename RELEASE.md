@@ -24,6 +24,19 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Structural sections re-specced to stock imperial tube (#26) + mid-span support confirmed (#27).**
+  The walkway/floor-leg/IBC/brace members were carried in metric-nominal sizes that aren't sold in the
+  US. Re-specced to confirmed stock: the shaved right-walkway long beams, the 2 mid-span center arms,
+  and the 5 floor-leg arms → **2×1×0.120in steel** (2×⅞ is non-stock — MetalsDepot/Metal Supermarkets
+  carry only 2×1; $6.35/ft bulk); the IBC frame, film-plane brace, floor-leg posts, and swing/hinged-panel
+  frames → **2×2×0.120in** (50→50.8); the tray bearer → **2×2×0.125in 6061 Al**. 2×1 is *deeper* than
+  2×⅞, so the arms get **stronger** (SF≈2.5 vs 2.1) — Option B keeps the deck height, trading 3.4mm of
+  spray-beam clearance (15→11.6mm). **#27:** the mid-span support was already modeled + costed (2 center
+  arms off the IBC uprights) — cleaned up the stale "*planned*" language to present tense and re-ran the
+  deflection/strength check against the real section. Real 2×1 pricing corrected the RWK frame (+$107/+$123
+  walkway; the old $28–40 was a guess for a non-stock section); grand total → $25,991/$30,446/$36,967.
+  8 diagrams + 6 model `.rb` regenerated (`.skp` re-send pending).
+
 - **Braided flex on both ports of every pump (#29).** Extended vibration isolation from inlet-only
   to **both the suction and discharge** of all five pumps — a braided ½" jumper de-couples each pump
   from the rigid PVC run so vibration can't fatigue-crack a solvent-weld joint (P-04's suction is the

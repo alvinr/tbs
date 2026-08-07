@@ -422,7 +422,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 <!-- BEGIN parts:panel -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame perimeter + internal members | 4 ea | Metal Supermarkets | $120–$160 |
+| 2×2×0.120in steel SHS (6 m bulk lengths) | Frame perimeter + internal members | 4 ea | Metal Supermarkets | $120–$160 |
 | [1/8" black HDPE sheet (48×96)](https://www.usplastic.com/catalog/item.aspx?itemid=136961&catid=705) (46684) | Panel skins, both faces (~12 m², 4× 4×8 ft sheets) — rev11, replaces 18mm ply. 1/8" HDPE is nearest stock to the 4mm PANEL_SKIN_T nominal (weld-compatible with the HDPE housing/drum); the U-channel grid (~400–450mm centers) keeps the skin flat, so the 0.8mm is immaterial. US Plastics 46684 $123.34/sheet. | 4 sheet | US Plastics / TAP Plastics | $493 |
 | [Pressure-treated pine plywood (Fan B mount band + cooler base)](https://www.homedepot.com/p/206343229) (231428) | ¾" CC pressure-treated pine, full 4'×8' sheet. Fan B mount band (610×1220mm, one corner bottom→1,125mm) AND the cooler stowage base plate (600×350) are both cut from this one sheet (plywood-base-12 retired 2026-07-27). PT is defensible at the vented cargo-door end; plenty of leftover from one sheet. | 1 4'×8' ¾" sheet | Home Depot | $70 |
 | [1"×1"×1/8" Al angle, 8 ft — corner-zone stiffener grid](https://www.grainger.com/product/2EYP1) (2EYP1) | Corner-zone anti-oil-can rib grid — light-tightness is carried by the two black HDPE skins and the latch/fan load by the RHS frame + ply band, so the corner only needs stiffening against oil-can. Per corner: 1 vertical (2,258mm) + 2 horizontal (653mm) 1"×1"×1/8" (25×25×3.2mm) Al angle ribs, ~325×750mm bays, holding both 1/8" HDPE skins flat within the 40mm framed cavity. The leaf is VERTICAL, so skin self-weight is in-plane; the grid only resists out-of-plane oil-can (works with the U-channel skin retainers at ~400-450mm centers, report §2.5). ~7.1m installed → 4× 8 ft (2,438mm) sticks for clean piece-fit (2 sticks → the 2 verticals, 2 → the 4 horizontals + spare). ~2.9 kg installed. Grainger 2EYP1 $12.20/8ft firm (2026-07-29). | 4 ea | Grainger | $49 |
@@ -477,7 +477,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 <!-- BEGIN parts:door -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| 50 × 50 × 3mm RHS mild steel (6 m lengths) | Frame members | 3 ea | Metal Supermarkets | $90–$120 |
+| 2×2×0.120in steel SHS (6 m bulk lengths) | Frame members | 3 ea | Metal Supermarkets | $90–$120 |
 | [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | Top + bottom door-frame light seals (paths #3–#4) — 2× McMaster 74405T12 nylon Tight-Seal Strip Brush (8 ft, 1" overall height, $28.88 ea) in 2× McMaster 8813T53 aluminum holder channel (8 ft, $35.37 ea) = $128.50 firm; covers full panel width top + bottom (~2× C_WID ≈ 4.7 m ≈ 15.5 ft, from 4× 8 ft lengths). The swinging panel edge SWEEPS THROUGH the bristles, so a brush (not a compression EPDM, which would drag under the sideways sweep) — same principle as the drum-opening brush seals. | 1 lot | McMaster-Carr | $129 |
 | Welding / fabrication | Frame assembly + wall attachment | 1 lot | Local fab | $200–$350 |
 | **Door total** | | | | **$419–$599** |

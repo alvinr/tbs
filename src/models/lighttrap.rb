@@ -8037,9 +8037,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # ═══ Fixed far strip ═══
   defn = model.definitions.add("Fixed far strip")
   ents = defn.entities
-  # Fixed far panel strip (Yd2287-2362)
+  # Fixed far panel strip (Yd2287.0-2362)
   grp = ents.add_group
-  grp.name = "Fixed far panel strip (Yd2287-2362)"
+  grp.name = "Fixed far panel strip (Yd2287.0-2362)"
   face = grp.entities.add_face([0.mm,2287.mm,130.mm], [40.mm,2287.mm,130.mm], [40.mm,2362.mm,130.mm], [0.mm,2362.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
@@ -8204,9 +8204,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP Brace Beam Lower (near wall)
   grp = ents.add_group
   grp.name = "FP Brace Beam Lower (near wall)"
-  face = grp.entities.add_face([150.mm,100.mm,100.mm], [2000.mm,100.mm,100.mm], [2000.mm,150.mm,100.mm], [150.mm,150.mm,100.mm])
+  face = grp.entities.add_face([150.mm,100.mm,100.mm], [2000.mm,100.mm,100.mm], [2000.mm,150.8.mm,100.mm], [150.mm,150.8.mm,100.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -8215,9 +8215,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP Brace Beam Upper (near wall)
   grp = ents.add_group
   grp.name = "FP Brace Beam Upper (near wall)"
-  face = grp.entities.add_face([150.mm,100.mm,2204.mm], [2000.mm,100.mm,2204.mm], [2000.mm,150.mm,2204.mm], [150.mm,150.mm,2204.mm])
+  face = grp.entities.add_face([150.mm,100.mm,2204.mm], [2000.mm,100.mm,2204.mm], [2000.mm,150.8.mm,2204.mm], [150.mm,150.8.mm,2204.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -8226,7 +8226,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP Brace Post L (near wall)
   grp = ents.add_group
   grp.name = "FP Brace Post L (near wall)"
-  face = grp.entities.add_face([150.mm,100.mm,100.mm], [200.mm,100.mm,100.mm], [200.mm,150.mm,100.mm], [150.mm,150.mm,100.mm])
+  face = grp.entities.add_face([150.mm,100.mm,100.mm], [200.8.mm,100.mm,100.mm], [200.8.mm,150.8.mm,100.mm], [150.mm,150.8.mm,100.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2104.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -8237,9 +8237,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP Brace Beam Lower (far wall)
   grp = ents.add_group
   grp.name = "FP Brace Beam Lower (far wall)"
-  face = grp.entities.add_face([150.mm,2262.mm,100.mm], [2000.mm,2262.mm,100.mm], [2000.mm,2312.mm,100.mm], [150.mm,2312.mm,100.mm])
+  face = grp.entities.add_face([150.mm,2262.mm,100.mm], [2000.mm,2262.mm,100.mm], [2000.mm,2312.8.mm,100.mm], [150.mm,2312.8.mm,100.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -8248,9 +8248,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP Brace Beam Upper (far wall)
   grp = ents.add_group
   grp.name = "FP Brace Beam Upper (far wall)"
-  face = grp.entities.add_face([150.mm,2262.mm,2204.mm], [2000.mm,2262.mm,2204.mm], [2000.mm,2312.mm,2204.mm], [150.mm,2312.mm,2204.mm])
+  face = grp.entities.add_face([150.mm,2262.mm,2204.mm], [2000.mm,2262.mm,2204.mm], [2000.mm,2312.8.mm,2204.mm], [150.mm,2312.8.mm,2204.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -8259,7 +8259,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP Brace Post L (far wall)
   grp = ents.add_group
   grp.name = "FP Brace Post L (far wall)"
-  face = grp.entities.add_face([150.mm,2262.mm,100.mm], [200.mm,2262.mm,100.mm], [200.mm,2312.mm,100.mm], [150.mm,2312.mm,100.mm])
+  face = grp.entities.add_face([150.mm,2262.mm,100.mm], [200.8.mm,2262.mm,100.mm], [200.8.mm,2312.8.mm,100.mm], [150.mm,2312.8.mm,100.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2104.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -9870,7 +9870,7 @@ ents = sr_defn.entities
   grp.material = mat
 
 ents = defn.entities
-sr_tr = Geom::Transformation.rotation([175.mm, 2287.mm, 0], Z_AXIS, (-56).degrees)
+sr_tr = Geom::Transformation.rotation([175.0.mm, 2287.0.mm, 0], Z_AXIS, (-56).degrees)
 sr_inst = ents.add_instance(sr_defn, sr_tr)
 sr_inst.name = "Transport Stay Rods"
 sr_inst.layer = model.layers["Lock anchor"]
@@ -10438,10 +10438,10 @@ lfr_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swin
 # Shift the moving def by -pivot so the def origin sits at the pivot — then the instance's
 # RotZ swings the assembly about the pivot (same origin-at-rotation-point pattern the
 # cargo-door leaves use).
-shift = Geom::Transformation.translation([(-175).mm, (-2287).mm, 0])
+shift = Geom::Transformation.translation([(-175.0).mm, (-2287.0).mm, 0])
 defn.entities.transform_entities(shift, defn.entities.to_a)
 
-inst = entities.add_instance(defn, Geom::Transformation.translation([175.mm, 2287.mm, 0]))
+inst = entities.add_instance(defn, Geom::Transformation.translation([175.0.mm, 2287.0.mm, 0]))
 inst.name = "Panel Swing"
 inst.layer = model.layers["Panel Swing"]
 da = "dynamic_attributes"

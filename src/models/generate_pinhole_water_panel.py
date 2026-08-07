@@ -585,6 +585,10 @@ def skid_row():
     Bodies only for now — plumbing (sump→P-04→SV-02→DV-02→F1 / waste) follows in Increment 2."""
     p = []
     p += cp.pump_unit("Pump P-04 (Tray drain)", ov.PWP_FILTER_X1, SROW_YD, SROW_Z0, axis="x", face=+1)
+    # #29 — P-04 DISCHARGE braided ½" flex jumper (+X toward SV-02); its SUCTION is the 1" tray-drain
+    #   hose (already a flexible connection), so only the discharge port needs a jumper here.
+    _p4o = cp.pump_out(ov.PWP_FILTER_X1, SROW_YD, SROW_Z0, axis="x", face=+1)
+    cp._flex_jumper(p, "P-04 discharge jumper", _p4o, (_p4o[0] + 40, _p4o[1], _p4o[2]), ov.C_IBC_BROWN, start=2, maxlen=24)
     p.append(cp.sample_valve("SV-02 sample valve", ov.PWP_FILTER_X2, SROW_YD, SROW_Z0 + 132, h=60))   # IN-LINE: row line runs THROUGH the body (center Z1312 = P-04 OUT), red handwheel free above, spout below
     p.append(cp.diverter("3W-DV-02", ov.PWP_FILTER_X3, SROW_YD, SROW_Z0 + 162,
                          run="x", branch="z+", handle="y+", color=ov.C_VALVE))   # IN −X (P-04) · waste +X (corridor) · feed z+ (F1); center Z1312 = P-04 OUT (straight run)

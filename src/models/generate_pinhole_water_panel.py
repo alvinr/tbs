@@ -362,16 +362,21 @@ def tap01_supply():
     #   run = fresh (−Yd, up from the trunk) ↔ spray (+Yd, to the coil); branch = recycled IN (+X, from ACC-02).
     b5x, b5y, b5z = bvx, yd, 700                       # ON the pinhole wall (Yd69); DROPPED so it + its routing clear the pinhole assembly (Z1024-1364, aperture Z1194)
     dvt = cp.DVB / 2 + cp.DVL                          # diverter port-tip reach
-    p.append(cp.diverter("3W-BV-05 (spray selector)", b5x, b5y, b5z, run="z", branch="x+", handle="y+", color=ov.C_VALVE))
+    p.append(cp.diverter("3W-BV-05a (Blue/Brown selector)", b5x, b5y, b5z, run="z", branch="x+", handle="y+", color=ov.C_VALVE))
     # Fresh supply: tap the trunk, rise straight into the −Z fresh port
     p.append(ov.ruby_pipe_run("BV-05 fresh supply (trunk -> selector)",
         [(b5x, b5y, fz),                              # tap the blue trunk (Yd69, Z41)
          (b5x, b5y, b5z - dvt)], pr, color=ov.C_BLUE))  # UP into the −Z fresh port
-    # Spray delivery: +Z spray port → coiled hose UP + FORWARD (+Yd) to the pole-top, going out around the pinhole
-    p.append(ov.ruby_coil_cord("Spray-bar supply hose (selector -> spray bar, coiled)",
-        [(b5x, b5y, b5z + dvt),                        # off the +Z spray port
+    # Spray delivery: BV-05a +Z selected port → BV-05b (2-way ON/OFF, WALL-MOUNTED just above the
+    # selector — a fixed mount, not on the moving spray-bar pole) → coiled hose forward to the beam.
+    p.append(ov.ruby_pipe_run("BV-05a -> BV-05b (up the pinhole wall)",
+        [(b5x, b5y, b5z + dvt),                        # off the BV-05a +Z selected port
+         (b5x, b5y, 1000)], pr, color=ov.C_BLUE))      # UP the pinhole wall to BV-05b (stays below the pinhole Z1024)
+    p.append(cp.ball_valve("BV-05b (spray on/off)", b5x, b5y, 900, "z", hdir="+y"))   # 2-way ON/OFF — WALL-mounted, reach height
+    p.append(ov.ruby_coil_cord("Spray-bar supply hose (BV-05b -> spray bar, coiled)",
+        [(b5x, b5y, 1000),                             # off the top of BV-05b
          (2380, 480, 720),                             # FORWARD-low to the pole area (below the pinhole Z1024)
-         (2410, 660, 440),                             # LONG service loop — droop down for slack (below the pole, forward of the pinhole)
+         (2410, 660, 440),                             # LONG service loop — droop down for slack (forward of the pinhole)
          (2420, 633, 1303)], r=7, color=ov.C_BLUE))    # UP alongside the pole to the pole-top feed
     # TAP-01 chem branch (3/4in) up over the shelf + BV-04 isolation (overview path)
     p.append(ov.ruby_pipe_run("TAP-01 Branch (3/4in)",
@@ -452,7 +457,8 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TI
     (ov.C_LEN - 30, cp.X1_TEE_Y, cp.X1_TEE_Z, "X1\n(fresh fill)", -550, 250, 0),
     (ov.C_LEN - 30, cp.COL_L, 1700, "X3\n(brown drain out)", -550, 0, 250),
     (ov.C_LEN - 30, cp.COL_R, 1620, "X4\n(waste drain out)", -550, 0, -250),
-    (ov.BV02_X - 150, ov.PROC_TRAY_YD_NEAR - 11, 700, "3W-BV-05\n(spray selector)", 0, 380, 250),   # ON the wall-mounted spray-bar supply selector — main Labels tag (was context-only)
+    (ov.BV02_X - 150, ov.PROC_TRAY_YD_NEAR - 11, 700, "3W-BV-05a\n(Blue/Brown selector)", 0, 380, 250),   # the wall-mounted spray-bar source selector
+    (ov.BV02_X - 150, ov.PROC_TRAY_YD_NEAR - 11, 900, "BV-05b\n(spray on/off)", 0, 300, 200),   # the 2-way on/off, WALL-mounted above the selector
 ]
 # Off-panel / context labels — shown ONLY in the full "Labeled" scene (Labels Context tag), kept
 # OUT of the "Plumbing (labeled)" scene so their leaders don't clutter the plumbing view.

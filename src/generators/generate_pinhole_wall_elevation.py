@@ -17,7 +17,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 
-from tbs_constants import C_LEN, C_HGT, PH_X, PH_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, EVAP_STOW_X, EVAP_W, EVAP_D, EVAP_H, EVAP_STOW_Z, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, BA_STACK_TOP, BA_D, PUMP_PIPE_OD, PUMP_PIPE_WALL, TAP_X, TAP_Z, SHELF_X_L, SHELF_X_R, SHELF_H, SHELF_T, SHELF_STOW_TOP_Z, SHELF_YD_NEAR, SHELF_DEPTH, PULL_CORD_BOTTOM_Z, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_W, WALKWAY_BRACKET_T, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, CONTAINER_RIB_SPACING, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_Z, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, SPRAY_BAR_FEED_Z, BV02_X, BV02_Z, C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_EVAP, C_ELEC, C_BATT, C_PINHOLE_EQ, ZONE_R_START, BB_OD, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_BOT_Z, PWP_FILTER_HEAD_Z, PWP_FILTER_CAP_Z, PWP_SV01_X, PWP_SV01_Z, PWP_SROW_Z0, PWP_SV02_Z, PWP_DV02_Z, PWP_ACC2_X, PWP_ACC2_Z0, DIAGRAMS_DIR
+from tbs_constants import C_LEN, C_HGT, PH_X, PH_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, EVAP_STOW_X, EVAP_W, EVAP_D, EVAP_H, EVAP_STOW_Z, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, EP_X, EP_W, EP_H_LO, EP_H_HI, BA_X, BA_W, BA_H_LO, BA_H_HI, BA_STACK_TOP, BA_D, PUMP_PIPE_OD, PUMP_PIPE_WALL, TAP_X, TAP_Z, SHELF_X_L, SHELF_X_R, SHELF_H, SHELF_T, SHELF_STOW_TOP_Z, SHELF_YD_NEAR, SHELF_DEPTH, PULL_CORD_BOTTOM_Z, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_W, WALKWAY_BRACKET_T, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, CONTAINER_RIB_SPACING, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_DRAIN_X, PROC_TRAY_SUMP_W, PROC_TRAY_SUMP_Z, PROC_TRAY_RIM, PROC_TRAY_YD_NEAR, SPRAY_BAR_FEED_Z, BV05_X, BV05_Z, C_OUT, C_CL, C_DIM, C_ALUM, C_STEEL, C_EVAP, C_ELEC, C_BATT, C_PINHOLE_EQ, ZONE_R_START, BB_OD, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_BOT_Z, PWP_FILTER_HEAD_Z, PWP_FILTER_CAP_Z, PWP_SV01_X, PWP_SV01_Z, PWP_SROW_Z0, PWP_SV02_Z, PWP_DV02_Z, PWP_ACC2_X, PWP_ACC2_Z0, DIAGRAMS_DIR
 from tbs_drawing import (draw_dim_h, draw_dim_v, leader, draw_cl, draw_notes,
                          draw_pipe_path as _tbs_pipe_path)
 from tbs_title_block import title_block
@@ -432,11 +432,11 @@ ax.text(sx(PROC_TRAY_DRAIN_X), sz(50), "SUMP PICKUP\n(up through walkway → P-0
 _bpipe([4575, PWP_ACC2_X + 63], [PWP_ACC2_Z0 + 120, PWP_ACC2_Z0 + 120])
 ax.text(sx(4585), sz(PWP_ACC2_Z0 + 120), "from P-02\n(corridor)", ha="left", va="center", fontsize=3.2, color=C_BROWN, zorder=10, **FONT)
 # ── ACC-02 OUT — recycled spray → 3W-BV-05 spray selector → spray bar ──
-_bv5x, _bv5z = BV02_X - 150, BV02_Z
+_bv5x, _bv5z = BV05_X - 150, BV05_Z
 _bpipe([PWP_ACC2_X - 63, _bv5x, _bv5x], [PWP_ACC2_Z0 + 60, PWP_ACC2_Z0 + 60, _bv5z + 20])
-# 3W-BV-05 selector symbol (fresh Blue ↔ recycled Brown → spray bar)
+# 3W-BV-05a selector symbol (fresh Blue ↔ recycled Brown → spray bar)
 ax.add_patch(mpatches.Rectangle((sx(_bv5x) - 8, sz(_bv5z) - 8), 16, 16, facecolor=C_VALVE, edgecolor=C_OUT, lw=0.8, zorder=12))
-ax.text(sx(_bv5x), sz(_bv5z + 60), "3W-BV-05\n(spray selector)", ha="center", va="bottom", fontsize=3.2, color=C_BROWN, zorder=10, **FONT)
+ax.text(sx(_bv5x), sz(_bv5z + 60), "3W-BV-05a\n(spray selector)", ha="center", va="bottom", fontsize=3.2, color=C_BROWN, zorder=10, **FONT)
 # BV-05 → down to the spray-bar supply line (where the Blue supply feeds in)
 _bpipe([_bv5x, _bv5x], [_bv5z - 20, SPRAY_BAR_FEED_Z])
 
@@ -466,22 +466,22 @@ ax.text(sx(_supply_mid_x + 500), sz(SUPPLY_Z + 5),
         f"BLUE SUPPLY → SPRAY BAR (Z={SUPPLY_Z}, BELOW GRATING)", ha="center", va="top",
         fontsize=4, color=C_BLUE, zorder=10, **FONT)
 
-# ── BV-02 — spray bar isolation valve (riser from supply to Z=900) ───────
+# ── BV-05b — spray on/off valve (riser from supply to Z=900) ─────────────
 
 
-BV02_R = 25              # valve body radius for symbol
+BV05_R = 25              # valve body radius for symbol
 
-# Riser from supply pipe up to BV-02
+# Riser from supply pipe up to BV-05b
 draw_pipe_path(ax,
-    [BV02_X, BV02_X],
-    [SUPPLY_Z, BV02_Z],
+    [BV05_X, BV05_X],
+    [SUPPLY_Z, BV05_Z],
     OD_H, WALL_H, fc=C_BLUE, ec=C_BLUE_EC, bore_fc="white", zorder=8)
 
-# BV-02 ball-valve symbol (bowtie inside white circle)
-_bvx, _bvz = sx(BV02_X), sz(BV02_Z)
-ax.add_patch(plt.Circle((_bvx, _bvz), BV02_R,
+# BV-05b ball-valve symbol (bowtie inside white circle)
+_bvx, _bvz = sx(BV05_X), sz(BV05_Z)
+ax.add_patch(plt.Circle((_bvx, _bvz), BV05_R,
              fc="white", ec=C_BLUE_EC, lw=1.5, zorder=12))
-_bs = BV02_R * 0.62      # bowtie triangle half-size
+_bs = BV05_R * 0.62      # bowtie triangle half-size
 ax.add_patch(plt.Polygon([(_bvx - _bs, _bvz - _bs),
                           (_bvx - _bs, _bvz + _bs),
                           (_bvx, _bvz)],
@@ -490,22 +490,22 @@ ax.add_patch(plt.Polygon([(_bvx + _bs, _bvz - _bs),
                           (_bvx + _bs, _bvz + _bs),
                           (_bvx, _bvz)],
                          fc=C_BLUE, ec=C_BLUE, zorder=13))
-ax.text(_bvx, _bvz - BV02_R - 8, "BV-02",
+ax.text(_bvx, _bvz - BV05_R - 8, "BV-05b",
         ha="center", va="top", fontsize=4, fontweight="bold",
         color=C_BLUE, zorder=13, **FONT)
 
-leader(ax, sx(BV02_X), sz(BV02_Z + BV02_R + 5),
-       sx(BV02_X - 10), sz(BV02_Z + 80),
-       f"BV-02 @ Z={BV02_Z}mm\n(1/2\" BALL VALVE)\nSPRAY BAR ISOLATION\nWAIST HEIGHT",
+leader(ax, sx(BV05_X), sz(BV05_Z + BV05_R + 5),
+       sx(BV05_X - 10), sz(BV05_Z + 80),
+       f"BV-05b @ Z={BV05_Z}mm\n(1/2\" BALL VALVE)\nSPRAY ON/OFF\nWAIST HEIGHT",
        fs=4, color=C_BLUE, font=FONT, zorder=15)
 
-# Flex hose stub from BV-02 (drops down to spray bar — off-wall)
-ax.annotate("", xy=(sx(BV02_X - 100), sz(BV02_Z - 50)),
-            xytext=(sx(BV02_X), sz(BV02_Z - BV02_R)),
+# Flex hose stub from BV-05b (drops down to spray bar — off-wall)
+ax.annotate("", xy=(sx(BV05_X - 100), sz(BV05_Z - 50)),
+            xytext=(sx(BV05_X), sz(BV05_Z - BV05_R)),
             arrowprops=dict(arrowstyle="-|>", color=C_BLUE, lw=0.8,
                             connectionstyle="arc3,rad=0.3"),
             zorder=10)
-ax.text(sx(BV02_X - 80), sz(BV02_Z - 80),
+ax.text(sx(BV05_X - 80), sz(BV05_Z - 80),
         "FLEX HOSE\nTO SPRAY BAR\n(OFF WALL)",
         ha="center", va="top", fontsize=4.0, color=C_BLUE,
         style="italic", zorder=10, **FONT)
@@ -647,7 +647,7 @@ for ix_mm, ilabel in items:
 notes = [
     "NOTES",
     f"1. Blue supply pipe: ½\" PVC Sch-40 (OD=21mm) at Z={SUPPLY_Z} (below walkway grating),"
-    " from IBC zone to spray bar. BV-02 riser at pinhole centerline to Z=900 (waist height)."
+    " from IBC zone to spray bar. BV-05b riser at pinhole centerline to Z=900 (waist height)."
     " Chemistry tap branch (¾\") rises to shelf.",
     f"2. Evap cooler relocated EXTERNAL — only Ø{EVAP_DUCT_D}mm duct penetration remains at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}.",
     "3. Pinhole wall carries the FILTER SKID: tray-drain P-04 + SV-02 + DV-02 (skid row under the filters),"

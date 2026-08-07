@@ -419,7 +419,7 @@ PARTS: list[Part] = [
          spec="Standard pool skimmer handle — POOLPURE telescopic aluminum, 4–8 ft (B0FHPSPD4T, exact). ~$15–20 est — confirm."),
     Part("spray-braided-hose", '1/2" reinforced braided PVC hose, ~15 ft', "plumbing-fittings",
          "spray", 1, "10ft roll", 12.99, 12.99, "Home Depot", part_no="T12006003", url="https://www.homedepot.com/p/304185193",
-         spec='BV-02 → beam feed (~4 m coiled). UDP 1/2"ID×3/4"OD clear braided vinyl (T12006003), $12.99/10ft firm (2026-07-30). 10 ft ≈ 3 m — a 4 m coiled run may need a 2nd roll.'),
+         spec='BV-05b → beam feed (~4 m coiled). UDP 1/2"ID×3/4"OD clear braided vinyl (T12006003), $12.99/10ft firm (2026-07-30). 10 ft ≈ 3 m — a 4 m coiled run may need a 2nd roll.'),
     Part("spray-axle-pin", "10mm × 60mm 304 SS axle pin (4-pack)", "fasteners-hardware",
          "spray", 1, "pack", 5, 5, "Amazon", part_no="B0816MQ5T6",
          url="https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6", spec="Wheel axle pins — uxcell 10×60mm 304 SS clevis pins, 4-pack (B0816MQ5T6, exact: 14mm head, 3.2mm cotter hole)."),

@@ -661,9 +661,9 @@ PROC_TRAY_DRAIN_X  = 2386       # near the center line (PH_X=2399), nudged -13 s
 #                                 clear walkway grate bay, clearing the X2526 cantilever bracket by 50mm
 PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at the near rim (low edge of the Yd fall)
 
-BV02_X             = PH_X         # BV-02 X on pinhole wall — at pinhole centerline, arm's reach from operator during wash pass
-BV02_YD            = 0           # BV-02 on pinhole wall (Yd=0) — reserved (spec; not yet drawn)
-BV02_Z             = 950         # BV-02 height on pinhole wall (mm AFF) — waist height from the raised walkway deck [+50 raise; was 900]
+BV05_X             = PH_X         # BV-05 spray selector X on pinhole wall — at pinhole centerline, arm's reach from operator during wash pass
+BV05_YD            = 0           # BV-05 spray selector on pinhole wall (Yd=0) — reserved (spec; not yet drawn)
+BV05_Z             = 950         # BV-05 spray selector height on pinhole wall (mm AFF) — waist height from the raised walkway deck [+50 raise; was 900]
 PROC_TRAY_SUMP_W   = 180        # center pickup well width in X (mm) — a local well at the gutter low point
 #   (X=PROC_TRAY_DRAIN_X); hosts the brown P-04 suction strainer, well bottom on the container floor (Z0).
 PROC_TRAY_SUMP_D   = 100        # sump well depth in Yd (mm)
@@ -949,7 +949,7 @@ SPRAY_BAR_HOLE_DIA   = 8           # nozzle barb bore (mm) — side-tap into the
 SPRAY_BAR_NOZZLE_PITCH = 100       # nozzle center-to-center pitch along the beam (mm) — 90° down-jets: a 90° cone at the ~50mm nozzle height gives a ~100mm footprint, so 100mm pitch = edge-to-edge along-beam coverage (was 150 for 180° flat-fans)
 SPRAY_BAR_N_NOZZLES  = int(SPRAY_BEAM_SPAN // SPRAY_BAR_NOZZLE_PITCH) + 1  # = 44 @ 100mm (full beam width)
 SPRAY_BAR_HOLE_SP    = SPRAY_BAR_NOZZLE_PITCH  # legacy hole-pitch ref (mm)
-SPRAY_BAR_HOSE_L     = 4000        # flexible hose length BV-02 to bar (mm) — reserved (spec; shopping-list ref)
+SPRAY_BAR_HOSE_L     = 4000        # flexible hose length BV-05b to bar (mm) — reserved (spec; shopping-list ref)
 SPRAY_BAR_FEED_Z     = SPRAY_BAR_Z_BOT + SPRAY_BAR_BEAM_H // 2  # = 41mm — feed end cap center @ low corner
 SPRAY_BAR_SLIT_W     = 30          # walkway slit width for pole passage (mm)
 

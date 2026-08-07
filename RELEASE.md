@@ -42,8 +42,10 @@ file** — a release must not ship without a changelog entry:
   from the rigid PVC run so vibration can't fatigue-crack a solvent-weld joint (P-04's suction is the
   1" tray-drain hose → 9 new ½" jumpers). Shown on the water-system P&ID (a flex coil on both ports
   of P-01…P-05); BOM adds the 3rd braided length + **18× ½" barb couplings** (Rain Bird BC50-20) +
-  **18× SS clamps** (Everbilt 671255E), **+$55** water. Plumbing-report §5.2 made explicit. _Still to
-  do: the corridor/pinhole panel-layout elevations + the 3D jumpers at each pump port (4 models)._
+  **18× SS clamps** (Everbilt 671255E), **+$55** water. Plumbing-report §5.2 made explicit. **3D done:**
+  a corrugated flex jumper on both ports of the 4 corridor pumps (P-01/P-05/P-03/P-02) + P-04's discharge
+  on the skid = 9 jumpers, reusing the `_flex_jumper` builder (capped so it can't overshoot the turn).
+  _Still to do: the corridor/pinhole panel-layout 2D elevations; the `.skp` re-send (batched with #26)._
 
 - **Captive tee-nuts for every removable ply-mount joint (#30).** Every machine-screw interface into
   the 18mm exterior ply — 3× Big Blue filter housings, the P-04/SV-02/DV-02 skid row, ACC-01/02, the

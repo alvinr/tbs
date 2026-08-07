@@ -604,6 +604,17 @@ def plumbing(part="all", sump_on_skid=False):
         if not sump_on_skid: sump.append(ov.ruby_pipe_run(nm, wp, RP, color=col))
     def pin(k):  return (PXC, PIY, _piz(k))              # IN  tip (−Yd manifold side)
     def pout(k): return (PXC, POY, _piz(k))             # OUT tip (+Yd manifold side)
+    # ── #29 — braided ½" flex jumper on BOTH ports of every corridor pump (vibration isolation, 2026-08-07).
+    #    A short corrugated jumper de-couples each pump from the rigid PVC run so vibration can't fatigue a
+    #    solvent-weld joint. IN leaves −Yd, OUT leaves +Yd (manifold convention); _flex_jumper caps it inside
+    #    the first segment so it can't overshoot the turn. P-04's suction (1" tray hose) + its discharge
+    #    jumper live on the skid (pinhole panel), so only the 4 corridor pumps are jumpered here.
+    _p4lbl = "P-02" if sump_on_skid else "P-04"
+    for _pk, _sk, _jc in (("P-01", "P-01", ov.C_BLUE), ("P-05", "P-05", ov.C_IBC_BROWN),
+                          ("P-03", "P-03", ov.C_IBC_WASTE), (_p4lbl, "P-04", ov.C_IBC_BROWN)):
+        _jz = _piz(_sk)
+        _flex_jumper(p, f"{_pk} suction jumper",   (PXC, PIY, _jz), (PXC, PIY - 38, _jz), _jc, start=2, maxlen=24)
+        _flex_jumper(p, f"{_pk} discharge jumper", (PXC, POY, _jz), (PXC, POY + 38, _jz), _jc, start=2, maxlen=24)
     tip = DVB / 2 + DVL                                  # 78 — diverter port-stub tip
     dvm, dvp = CTR_Y - tip, CTR_Y + tip                  # 1103 / 1259 — DV-02 run−/run+ Yd
     xe  = ov.IBC_COL_X + 300                             # 4974 — tote side-entry X

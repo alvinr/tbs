@@ -857,6 +857,902 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
+  # P-01 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1099.mm,777.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1096.mm,777.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1093.mm,777.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1090.mm,777.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1087.mm,777.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1084.mm,777.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1081.mm,777.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1078.mm,777.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1263.mm,777.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1266.mm,777.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1269.mm,777.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1272.mm,777.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1275.mm,777.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1278.mm,777.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1281.mm,777.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1284.mm,777.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1099.mm,1502.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1096.mm,1502.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1093.mm,1502.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1090.mm,1502.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1087.mm,1502.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1084.mm,1502.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1081.mm,1502.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1078.mm,1502.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1263.mm,1502.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1266.mm,1502.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1269.mm,1502.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1272.mm,1502.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1275.mm,1502.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1278.mm,1502.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1281.mm,1502.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1284.mm,1502.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1099.mm,1902.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1096.mm,1902.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1093.mm,1902.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1090.mm,1902.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1087.mm,1902.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1084.mm,1902.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1081.mm,1902.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1078.mm,1902.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1263.mm,1902.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1266.mm,1902.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1269.mm,1902.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1272.mm,1902.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1275.mm,1902.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1278.mm,1902.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1281.mm,1902.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1284.mm,1902.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1099.mm,1102.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1096.mm,1102.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1093.mm,1102.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1090.mm,1102.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1087.mm,1102.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1084.mm,1102.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1081.mm,1102.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1078.mm,1102.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1263.mm,1102.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1266.mm,1102.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1269.mm,1102.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1272.mm,1102.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1275.mm,1102.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1278.mm,1102.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1281.mm,1102.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1284.mm,1102.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # IBC-4 waste merge tee run
   grp = ents.add_group
   grp.name = "IBC-4 waste merge tee run"
@@ -931,7 +1827,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -945,7 +1841,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -959,7 +1855,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -973,7 +1869,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -987,7 +1883,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1014,7 +1910,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1028,7 +1924,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1042,7 +1938,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1056,7 +1952,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1070,7 +1966,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1084,7 +1980,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1098,7 +1994,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1112,7 +2008,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1126,7 +2022,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1140,7 +2036,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1154,7 +2050,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1168,7 +2064,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1182,7 +2078,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1196,7 +2092,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1210,7 +2106,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1224,7 +2120,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1238,7 +2134,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1252,7 +2148,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1266,7 +2162,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1280,7 +2176,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1294,7 +2190,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1308,7 +2204,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1322,7 +2218,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1336,7 +2232,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1350,7 +2246,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1364,7 +2260,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1378,7 +2274,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1405,7 +2301,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1419,7 +2315,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1433,7 +2329,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1447,7 +2343,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1461,7 +2357,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1475,7 +2371,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1489,7 +2385,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1503,7 +2399,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1554,7 +2450,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1568,7 +2464,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1582,7 +2478,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1596,7 +2492,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1610,7 +2506,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1624,7 +2520,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1638,7 +2534,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1652,7 +2548,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1666,7 +2562,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1680,7 +2576,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1694,7 +2590,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1708,7 +2604,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1722,7 +2618,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1736,7 +2632,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1776,7 +2672,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1868,7 +2764,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1882,7 +2778,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1896,7 +2792,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1923,7 +2819,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1937,7 +2833,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1951,7 +2847,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1965,7 +2861,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1979,7 +2875,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -1993,7 +2889,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2007,7 +2903,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2021,7 +2917,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2035,7 +2931,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2049,7 +2945,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2063,7 +2959,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2077,7 +2973,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2091,7 +2987,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2105,7 +3001,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2119,7 +3015,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2146,7 +3042,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2160,7 +3056,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2174,7 +3070,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2188,7 +3084,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2202,7 +3098,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2216,7 +3112,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2230,7 +3126,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2244,7 +3140,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2258,7 +3154,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2272,7 +3168,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2286,7 +3182,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2300,7 +3196,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2314,7 +3210,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2354,7 +3250,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2368,7 +3264,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2382,7 +3278,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2474,7 +3370,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2488,7 +3384,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2502,7 +3398,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2516,7 +3412,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2530,7 +3426,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2544,7 +3440,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2558,7 +3454,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2572,7 +3468,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2586,7 +3482,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2637,7 +3533,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2651,7 +3547,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2665,7 +3561,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2679,7 +3575,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2693,7 +3589,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2707,7 +3603,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2721,7 +3617,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2735,7 +3631,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2749,7 +3645,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2763,7 +3659,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2777,7 +3673,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2791,7 +3687,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2805,7 +3701,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2869,7 +3765,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2883,7 +3779,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2897,7 +3793,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2911,7 +3807,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2925,7 +3821,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2939,7 +3835,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2953,7 +3849,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2967,7 +3863,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2981,7 +3877,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -2995,7 +3891,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3009,7 +3905,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3023,7 +3919,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3037,7 +3933,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3051,7 +3947,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3065,7 +3961,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3079,7 +3975,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3093,7 +3989,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3107,7 +4003,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3121,7 +4017,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3135,7 +4031,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3149,7 +4045,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3163,7 +4059,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3177,7 +4073,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3191,7 +4087,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3205,7 +4101,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3219,7 +4115,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3233,7 +4129,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3247,7 +4143,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3261,7 +4157,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3275,7 +4171,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3302,7 +4198,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3316,7 +4212,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3330,7 +4226,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3344,7 +4240,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3358,7 +4254,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3372,7 +4268,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3386,7 +4282,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3400,7 +4296,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3414,7 +4310,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3428,7 +4324,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3442,7 +4338,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3456,7 +4352,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3520,7 +4416,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3534,7 +4430,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3548,7 +4444,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3562,7 +4458,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3576,7 +4472,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3590,7 +4486,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3604,7 +4500,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3618,7 +4514,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3632,7 +4528,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3646,7 +4542,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3660,7 +4556,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3674,7 +4570,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3688,7 +4584,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3702,7 +4598,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3716,7 +4612,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3730,7 +4626,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3744,7 +4640,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3758,7 +4654,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3772,7 +4668,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3786,7 +4682,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3813,7 +4709,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3827,7 +4723,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3841,7 +4737,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3855,7 +4751,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3869,7 +4765,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3883,7 +4779,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3897,7 +4793,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3911,7 +4807,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3925,7 +4821,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3939,7 +4835,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3953,7 +4849,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3967,7 +4863,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3981,7 +4877,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -3995,7 +4891,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4009,7 +4905,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4023,7 +4919,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4037,7 +4933,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4051,7 +4947,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4065,7 +4961,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4079,7 +4975,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4093,7 +4989,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4107,7 +5003,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4121,7 +5017,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4135,7 +5031,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4149,7 +5045,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4163,7 +5059,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4177,7 +5073,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4191,7 +5087,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4205,7 +5101,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4230,7 +5126,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4244,7 +5140,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4258,7 +5154,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4272,7 +5168,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4286,7 +5182,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4300,7 +5196,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4314,7 +5210,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4598,7 +5494,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4612,7 +5508,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4626,7 +5522,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4640,7 +5536,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -4654,7 +5550,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15454,7 +16350,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15468,7 +16364,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15482,7 +16378,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15496,7 +16392,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15510,7 +16406,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15524,7 +16420,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15538,7 +16434,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15565,7 +16461,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15579,7 +16475,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15593,7 +16489,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15607,7 +16503,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15621,7 +16517,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15635,7 +16531,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15649,7 +16545,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15663,7 +16559,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15677,7 +16573,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15691,7 +16587,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15705,7 +16601,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15719,7 +16615,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15733,7 +16629,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15747,7 +16643,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15761,7 +16657,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15775,7 +16671,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15789,7 +16685,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15803,7 +16699,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15817,7 +16713,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15831,7 +16727,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15845,7 +16741,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15859,7 +16755,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15873,7 +16769,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15887,7 +16783,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15901,7 +16797,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15915,7 +16811,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15929,7 +16825,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15943,7 +16839,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15957,7 +16853,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15971,7 +16867,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15985,7 +16881,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -15999,7 +16895,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16013,7 +16909,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16027,7 +16923,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16041,7 +16937,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16055,7 +16951,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16069,7 +16965,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16083,7 +16979,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16097,7 +16993,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16111,7 +17007,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16125,7 +17021,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16139,7 +17035,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16153,7 +17049,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16167,7 +17063,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16181,7 +17077,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16195,7 +17091,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16209,7 +17105,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16223,7 +17119,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16237,7 +17133,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16251,7 +17147,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16265,7 +17161,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16279,7 +17175,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16293,7 +17189,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16307,7 +17203,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16321,7 +17217,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16335,7 +17231,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16349,7 +17245,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16363,7 +17259,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16377,7 +17273,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16391,7 +17287,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16405,7 +17301,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16419,7 +17315,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16433,7 +17329,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16447,7 +17343,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16461,7 +17357,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16475,7 +17371,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16489,7 +17385,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16503,7 +17399,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16517,7 +17413,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16531,7 +17427,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16545,7 +17441,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16559,7 +17455,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16573,7 +17469,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16587,7 +17483,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16601,7 +17497,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16685,7 +17581,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16699,7 +17595,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16752,7 +17648,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16766,7 +17662,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16819,7 +17715,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16970,7 +17866,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16984,7 +17880,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -16998,7 +17894,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17012,7 +17908,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17026,7 +17922,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17040,7 +17936,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17054,7 +17950,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17068,7 +17964,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17082,7 +17978,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17096,7 +17992,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17110,7 +18006,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17124,7 +18020,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17138,7 +18034,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17152,7 +18048,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17166,7 +18062,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17180,7 +18076,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17194,7 +18090,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17208,7 +18104,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17222,7 +18118,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17236,7 +18132,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17250,7 +18146,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17264,7 +18160,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17278,7 +18174,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17292,7 +18188,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17306,7 +18202,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17320,7 +18216,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17334,7 +18230,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17348,7 +18244,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17362,7 +18258,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17376,7 +18272,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17390,7 +18286,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17404,7 +18300,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17418,7 +18314,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17432,7 +18328,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17446,7 +18342,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17460,7 +18356,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17474,7 +18370,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17488,7 +18384,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17502,7 +18398,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17557,6 +18453,118 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 0.15
+  grp.material = mat
+
+  # P-04 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-04 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3382.mm,104.mm,1312.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-04 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-04 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3385.mm,104.mm,1312.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-04 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-04 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3388.mm,104.mm,1312.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-04 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-04 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3391.mm,104.mm,1312.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-04 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-04 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3394.mm,104.mm,1312.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-04 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-04 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3397.mm,104.mm,1312.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-04 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-04 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3400.mm,104.mm,1312.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-04 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-04 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3403.mm,104.mm,1312.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 1.0
   grp.material = mat
 
   # SV-02 sample valve
@@ -17744,7 +18752,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17758,7 +18766,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17772,7 +18780,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17786,7 +18794,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17800,7 +18808,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17814,7 +18822,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17828,7 +18836,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17842,7 +18850,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17856,7 +18864,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17870,7 +18878,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17884,7 +18892,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17898,7 +18906,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17912,7 +18920,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17926,7 +18934,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17940,7 +18948,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17954,7 +18962,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17968,7 +18976,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17982,7 +18990,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -17996,7 +19004,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18017,7 +19025,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18031,7 +19039,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18045,7 +19053,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18059,7 +19067,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18073,7 +19081,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18087,7 +19095,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18101,7 +19109,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18115,7 +19123,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18129,7 +19137,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18143,7 +19151,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18157,7 +19165,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18171,7 +19179,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18185,7 +19193,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18199,7 +19207,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18213,7 +19221,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18227,7 +19235,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18241,7 +19249,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18342,7 +19350,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18356,7 +19364,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18407,7 +19415,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18421,7 +19429,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18435,7 +19443,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18449,7 +19457,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18463,7 +19471,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18477,7 +19485,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18491,7 +19499,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18505,7 +19513,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18519,7 +19527,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18533,7 +19541,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18547,7 +19555,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18561,7 +19569,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18575,7 +19583,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18589,7 +19597,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18603,7 +19611,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18617,7 +19625,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18631,7 +19639,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18645,7 +19653,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18659,7 +19667,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18673,7 +19681,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18687,7 +19695,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18701,7 +19709,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18715,7 +19723,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18729,7 +19737,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18743,7 +19751,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18757,7 +19765,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18771,7 +19779,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18785,7 +19793,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18799,7 +19807,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18813,7 +19821,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18827,7 +19835,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18841,7 +19849,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18855,7 +19863,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18869,7 +19877,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18883,7 +19891,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18897,7 +19905,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18911,7 +19919,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18925,7 +19933,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18939,7 +19947,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18953,7 +19961,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18967,7 +19975,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18981,7 +19989,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -18995,7 +20003,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19009,7 +20017,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19023,7 +20031,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19037,7 +20045,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19051,7 +20059,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19065,7 +20073,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19079,7 +20087,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19093,7 +20101,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19107,7 +20115,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19121,7 +20129,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19135,7 +20143,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19149,7 +20157,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19163,7 +20171,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19177,7 +20185,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19191,7 +20199,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19205,7 +20213,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19219,7 +20227,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19233,7 +20241,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19247,7 +20255,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19261,7 +20269,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19275,7 +20283,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19289,7 +20297,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19303,7 +20311,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19317,7 +20325,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19331,7 +20339,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19345,7 +20353,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19359,7 +20367,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19373,7 +20381,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19387,7 +20395,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19401,7 +20409,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19415,7 +20423,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19429,7 +20437,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19443,7 +20451,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19457,7 +20465,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19471,7 +20479,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19485,7 +20493,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19499,7 +20507,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19513,7 +20521,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19527,7 +20535,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19541,7 +20549,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19555,7 +20563,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19569,7 +20577,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19583,7 +20591,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19597,7 +20605,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19611,7 +20619,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19625,7 +20633,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19639,7 +20647,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19653,7 +20661,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19667,7 +20675,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19681,7 +20689,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19695,7 +20703,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19709,7 +20717,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19723,7 +20731,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19737,7 +20745,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19751,7 +20759,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19765,7 +20773,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19779,7 +20787,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19793,7 +20801,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -19807,7 +20815,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21346,7 +22354,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21360,7 +22368,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21374,7 +22382,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21388,7 +22396,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21402,7 +22410,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21416,7 +22424,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21430,7 +22438,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21444,7 +22452,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21458,7 +22466,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21472,7 +22480,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21486,7 +22494,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21500,7 +22508,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21514,7 +22522,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21528,7 +22536,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21542,7 +22550,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21556,7 +22564,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21570,7 +22578,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21584,7 +22592,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21598,7 +22606,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21612,7 +22620,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21626,7 +22634,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21640,7 +22648,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21654,7 +22662,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21668,7 +22676,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21682,7 +22690,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21696,7 +22704,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21710,7 +22718,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21724,7 +22732,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21738,7 +22746,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21752,7 +22760,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21766,7 +22774,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21780,7 +22788,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21794,7 +22802,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21808,7 +22816,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21822,7 +22830,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21836,7 +22844,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21850,7 +22858,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21864,7 +22872,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21878,7 +22886,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21892,7 +22900,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21906,7 +22914,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21920,7 +22928,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21934,7 +22942,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21948,7 +22956,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21962,7 +22970,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21976,7 +22984,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -21990,7 +22998,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22004,7 +23012,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22018,7 +23026,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22032,7 +23040,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22046,7 +23054,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22060,7 +23068,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22074,7 +23082,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22088,7 +23096,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22102,7 +23110,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22116,7 +23124,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22130,7 +23138,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22144,7 +23152,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22158,7 +23166,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22172,7 +23180,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22186,7 +23194,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22200,7 +23208,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22214,7 +23222,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22228,7 +23236,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22242,7 +23250,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22256,7 +23264,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22270,7 +23278,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22284,7 +23292,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22298,7 +23306,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22312,7 +23320,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22326,7 +23334,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22340,7 +23348,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22354,7 +23362,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22368,7 +23376,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22382,7 +23390,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22396,7 +23404,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22410,7 +23418,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22424,7 +23432,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22438,7 +23446,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22452,7 +23460,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22466,7 +23474,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22480,7 +23488,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22494,7 +23502,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22508,7 +23516,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22522,7 +23530,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22536,7 +23544,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22550,7 +23558,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22564,7 +23572,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22578,7 +23586,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22592,7 +23600,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22606,7 +23614,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22620,7 +23628,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22634,7 +23642,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22648,7 +23656,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22662,7 +23670,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22676,7 +23684,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22690,7 +23698,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22704,7 +23712,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22718,7 +23726,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22972,7 +23980,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -22986,7 +23994,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23000,7 +24008,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23014,7 +24022,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23028,7 +24036,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23079,7 +24087,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23093,7 +24101,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23107,7 +24115,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23121,7 +24129,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23135,7 +24143,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23149,7 +24157,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23163,7 +24171,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23177,7 +24185,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23191,7 +24199,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23205,7 +24213,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23219,7 +24227,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23233,7 +24241,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23247,7 +24255,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23261,7 +24269,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23275,7 +24283,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23289,7 +24297,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23303,7 +24311,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23317,7 +24325,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23331,7 +24339,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23345,7 +24353,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23359,7 +24367,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23373,7 +24381,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23387,7 +24395,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23401,7 +24409,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23459,7 +24467,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23473,7 +24481,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23487,7 +24495,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23501,7 +24509,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23515,7 +24523,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23529,7 +24537,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23543,7 +24551,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23557,7 +24565,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23571,7 +24579,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23585,7 +24593,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23654,7 +24662,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23668,7 +24676,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -23682,7 +24690,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25719,7 +26727,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25744,7 +26752,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25758,7 +26766,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25772,7 +26780,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25786,7 +26794,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25800,7 +26808,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25814,7 +26822,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25828,7 +26836,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25842,7 +26850,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25856,7 +26864,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25870,7 +26878,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25884,7 +26892,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25898,7 +26906,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25912,7 +26920,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25926,7 +26934,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25940,7 +26948,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25954,7 +26962,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25968,7 +26976,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25982,7 +26990,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -25996,7 +27004,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -26010,7 +27018,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -26024,7 +27032,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -26038,7 +27046,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -26052,7 +27060,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -26066,7 +27074,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -26080,7 +27088,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -26094,7 +27102,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -26108,7 +27116,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -26122,7 +27130,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -26136,7 +27144,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -26150,7 +27158,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -26164,7 +27172,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -26235,7 +27243,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -26260,7 +27268,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -28946,7 +29954,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -28960,7 +29968,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -28987,7 +29995,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29014,7 +30022,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29028,7 +30036,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29042,7 +30050,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29056,7 +30064,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29070,7 +30078,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29084,7 +30092,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29098,7 +30106,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29112,7 +30120,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29126,7 +30134,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29140,7 +30148,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29154,7 +30162,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29168,7 +30176,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29182,7 +30190,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29196,7 +30204,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29210,7 +30218,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29224,7 +30232,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29238,7 +30246,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29252,7 +30260,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29266,7 +30274,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29280,7 +30288,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29294,7 +30302,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29308,7 +30316,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29322,7 +30330,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29336,7 +30344,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29350,7 +30358,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29364,7 +30372,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29378,7 +30386,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29392,7 +30400,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29406,7 +30414,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29420,7 +30428,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29434,7 +30442,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29448,7 +30456,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29462,7 +30470,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29476,7 +30484,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29490,7 +30498,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29504,7 +30512,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29518,7 +30526,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29532,7 +30540,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29546,7 +30554,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29560,7 +30568,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29574,7 +30582,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29588,7 +30596,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29602,7 +30610,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29616,7 +30624,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29630,7 +30638,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29644,7 +30652,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29658,7 +30666,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29672,7 +30680,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29686,7 +30694,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29700,7 +30708,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29714,7 +30722,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29728,7 +30736,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29742,7 +30750,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29756,7 +30764,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29770,7 +30778,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29784,7 +30792,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29798,7 +30806,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29812,7 +30820,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29826,7 +30834,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29840,7 +30848,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29854,7 +30862,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29868,7 +30876,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29882,7 +30890,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29896,7 +30904,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29910,7 +30918,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29924,7 +30932,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29938,7 +30946,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29952,7 +30960,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29966,7 +30974,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29980,7 +30988,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -29994,7 +31002,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -30008,7 +31016,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -30022,7 +31030,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -30036,7 +31044,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -30050,7 +31058,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -30064,7 +31072,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -30078,7 +31086,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -30092,7 +31100,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -30106,7 +31114,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -30120,7 +31128,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -30134,7 +31142,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -30148,7 +31156,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -30162,7 +31170,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -30176,7 +31184,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -30190,7 +31198,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -30204,7 +31212,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -30218,7 +31226,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -30232,7 +31240,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -30246,7 +31254,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["ghost IBC-4 (Waste) entry"] || model.materials.add("ghost IBC-4 (Waste) entry")
+  mat = model.materials["ghost P-01 suction jumper flex jumper"] || model.materials.add("ghost P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 1.0
   grp.material = mat
@@ -31053,6 +32061,902 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
+  # P-01 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1099.mm,777.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1096.mm,777.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1093.mm,777.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1090.mm,777.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1087.mm,777.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1084.mm,777.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1081.mm,777.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1078.mm,777.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1263.mm,777.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1266.mm,777.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1269.mm,777.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1272.mm,777.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1275.mm,777.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1278.mm,777.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1281.mm,777.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-01 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-01 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1284.mm,777.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1099.mm,1502.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1096.mm,1502.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1093.mm,1502.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1090.mm,1502.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1087.mm,1502.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1084.mm,1502.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1081.mm,1502.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1078.mm,1502.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1263.mm,1502.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1266.mm,1502.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1269.mm,1502.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1272.mm,1502.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1275.mm,1502.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1278.mm,1502.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1281.mm,1502.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-05 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-05 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1284.mm,1502.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1099.mm,1902.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1096.mm,1902.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1093.mm,1902.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1090.mm,1902.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1087.mm,1902.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1084.mm,1902.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1081.mm,1902.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1078.mm,1902.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1263.mm,1902.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1266.mm,1902.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1269.mm,1902.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1272.mm,1902.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1275.mm,1902.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1278.mm,1902.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1281.mm,1902.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-03 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-03 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1284.mm,1902.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(119, 119, 119)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1099.mm,1102.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1096.mm,1102.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1093.mm,1102.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1090.mm,1102.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1087.mm,1102.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1084.mm,1102.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1081.mm,1102.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 suction jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 suction jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1078.mm,1102.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1263.mm,1102.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1266.mm,1102.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1269.mm,1102.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1272.mm,1102.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1275.mm,1102.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1278.mm,1102.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1281.mm,1102.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-02 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-02 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 3.mm, 0.mm)
+  circle = ge.add_circle([4984.mm,1284.mm,1102.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # IBC-4 waste merge tee run
   grp = ents.add_group
   grp.name = "IBC-4 waste merge tee run"
@@ -31127,7 +33031,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -31141,7 +33045,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -31155,7 +33059,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -31169,7 +33073,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -31183,7 +33087,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -31210,7 +33114,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -31224,7 +33128,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -31238,7 +33142,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -31252,7 +33156,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -31266,7 +33170,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -31280,7 +33184,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -31294,7 +33198,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -31308,7 +33212,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -31322,7 +33226,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -31336,7 +33240,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -31350,7 +33254,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -31364,7 +33268,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -31378,7 +33282,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31392,7 +33296,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31406,7 +33310,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31420,7 +33324,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31434,7 +33338,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31448,7 +33352,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31462,7 +33366,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31476,7 +33380,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31490,7 +33394,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31504,7 +33408,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31518,7 +33422,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31532,7 +33436,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31546,7 +33450,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31560,7 +33464,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31574,7 +33478,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31601,7 +33505,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31615,7 +33519,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31629,7 +33533,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31643,7 +33547,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31657,7 +33561,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31671,7 +33575,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31685,7 +33589,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31699,7 +33603,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31750,7 +33654,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31764,7 +33668,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31778,7 +33682,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31792,7 +33696,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31806,7 +33710,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31820,7 +33724,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31834,7 +33738,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31848,7 +33752,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31862,7 +33766,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31876,7 +33780,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31890,7 +33794,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31904,7 +33808,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31918,7 +33822,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31932,7 +33836,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -31972,7 +33876,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32064,7 +33968,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32078,7 +33982,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32092,7 +33996,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32119,7 +34023,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32133,7 +34037,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32147,7 +34051,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32161,7 +34065,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32175,7 +34079,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32189,7 +34093,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32203,7 +34107,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32217,7 +34121,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32231,7 +34135,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32245,7 +34149,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32259,7 +34163,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32273,7 +34177,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32287,7 +34191,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32301,7 +34205,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32315,7 +34219,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32342,7 +34246,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32356,7 +34260,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32370,7 +34274,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32384,7 +34288,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32398,7 +34302,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32412,7 +34316,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32426,7 +34330,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32440,7 +34344,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32454,7 +34358,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32468,7 +34372,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32482,7 +34386,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32496,7 +34400,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32510,7 +34414,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -32550,7 +34454,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32564,7 +34468,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32578,7 +34482,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32670,7 +34574,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32684,7 +34588,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32698,7 +34602,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32712,7 +34616,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32726,7 +34630,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32740,7 +34644,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32754,7 +34658,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32768,7 +34672,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32782,7 +34686,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32833,7 +34737,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32847,7 +34751,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32861,7 +34765,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32875,7 +34779,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32889,7 +34793,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32903,7 +34807,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32917,7 +34821,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32931,7 +34835,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32945,7 +34849,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32959,7 +34863,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32973,7 +34877,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -32987,7 +34891,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -33001,7 +34905,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -33065,7 +34969,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -33079,7 +34983,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -33093,7 +34997,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -33107,7 +35011,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -33121,7 +35025,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -33135,7 +35039,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -33149,7 +35053,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -33163,7 +35067,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -33177,7 +35081,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -33191,7 +35095,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -33205,7 +35109,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -33219,7 +35123,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -33233,7 +35137,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -33247,7 +35151,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33261,7 +35165,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33275,7 +35179,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33289,7 +35193,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33303,7 +35207,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33317,7 +35221,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33331,7 +35235,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33345,7 +35249,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33359,7 +35263,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33373,7 +35277,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33387,7 +35291,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33401,7 +35305,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33415,7 +35319,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33429,7 +35333,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33443,7 +35347,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33457,7 +35361,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33471,7 +35375,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33498,7 +35402,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33512,7 +35416,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33526,7 +35430,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33540,7 +35444,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33554,7 +35458,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33568,7 +35472,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33582,7 +35486,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33596,7 +35500,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33610,7 +35514,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33624,7 +35528,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33638,7 +35542,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33652,7 +35556,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33716,7 +35620,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33730,7 +35634,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33744,7 +35648,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33758,7 +35662,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33772,7 +35676,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33786,7 +35690,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33800,7 +35704,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33814,7 +35718,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33828,7 +35732,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33842,7 +35746,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33856,7 +35760,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -33870,7 +35774,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -33884,7 +35788,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -33898,7 +35802,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -33912,7 +35816,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -33926,7 +35830,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -33940,7 +35844,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -33954,7 +35858,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -33968,7 +35872,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -33982,7 +35886,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -34009,7 +35913,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -34023,7 +35927,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -34037,7 +35941,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -34051,7 +35955,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -34065,7 +35969,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -34079,7 +35983,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -34093,7 +35997,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -34107,7 +36011,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -34121,7 +36025,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -34135,7 +36039,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -34149,7 +36053,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -34163,7 +36067,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -34177,7 +36081,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -34191,7 +36095,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -34205,7 +36109,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -34219,7 +36123,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -34233,7 +36137,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -34247,7 +36151,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -34261,7 +36165,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -45667,7 +47571,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -45681,7 +47585,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -45695,7 +47599,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -45709,7 +47613,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -45723,7 +47627,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -45737,7 +47641,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -45751,7 +47655,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -45778,7 +47682,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -45792,7 +47696,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -45806,7 +47710,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -45820,7 +47724,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -45834,7 +47738,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -45848,7 +47752,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -45862,7 +47766,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -45876,7 +47780,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -45890,7 +47794,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -45904,7 +47808,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -45918,7 +47822,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -45932,7 +47836,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -45946,7 +47850,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -45960,7 +47864,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -45974,7 +47878,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -45988,7 +47892,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46002,7 +47906,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46016,7 +47920,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46030,7 +47934,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46044,7 +47948,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46058,7 +47962,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46072,7 +47976,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46086,7 +47990,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46100,7 +48004,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46114,7 +48018,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46128,7 +48032,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46142,7 +48046,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46156,7 +48060,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46170,7 +48074,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46184,7 +48088,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46198,7 +48102,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46212,7 +48116,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46226,7 +48130,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46240,7 +48144,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46254,7 +48158,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46268,7 +48172,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46282,7 +48186,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46296,7 +48200,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46310,7 +48214,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46324,7 +48228,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -46338,7 +48242,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46352,7 +48256,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46366,7 +48270,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46380,7 +48284,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46394,7 +48298,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46408,7 +48312,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46422,7 +48326,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46436,7 +48340,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46450,7 +48354,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46464,7 +48368,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46478,7 +48382,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46492,7 +48396,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46506,7 +48410,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46520,7 +48424,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46534,7 +48438,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46548,7 +48452,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46562,7 +48466,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46576,7 +48480,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46590,7 +48494,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46604,7 +48508,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46618,7 +48522,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46632,7 +48536,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46646,7 +48550,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46660,7 +48564,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46674,7 +48578,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46688,7 +48592,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46702,7 +48606,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46716,7 +48620,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46730,7 +48634,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46744,7 +48648,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46758,7 +48662,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46772,7 +48676,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46786,7 +48690,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46800,7 +48704,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -46814,7 +48718,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -47183,7 +49087,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -47197,7 +49101,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -47772,6 +49676,118 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
+  # P-04 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-04 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3382.mm,104.mm,1312.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-04 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-04 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3385.mm,104.mm,1312.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-04 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-04 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3388.mm,104.mm,1312.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-04 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-04 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3391.mm,104.mm,1312.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-04 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-04 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3394.mm,104.mm,1312.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-04 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-04 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3397.mm,104.mm,1312.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-04 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-04 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3400.mm,104.mm,1312.mm], vec, 10.5.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # P-04 discharge jumper flex jumper
+  grp = ents.add_group
+  grp.name = "P-04 discharge jumper flex jumper"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(3.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3403.mm,104.mm,1312.mm], vec, 8.4.mm, 14)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # SV-02 sample valve
   grp = ents.add_group
   grp.name = "SV-02 sample valve"
@@ -47957,7 +49973,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -47971,7 +49987,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -47985,7 +50001,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -47999,7 +50015,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -48013,7 +50029,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -48027,7 +50043,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -48041,7 +50057,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -48055,7 +50071,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -48069,7 +50085,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -48083,7 +50099,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -48097,7 +50113,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -48111,7 +50127,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -48125,7 +50141,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -48139,7 +50155,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -48153,7 +50169,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -48167,7 +50183,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -48181,7 +50197,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -48195,7 +50211,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -48209,7 +50225,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["IBC-3 (Brown) bottom tap (shared P-02/P-05)"] || model.materials.add("IBC-3 (Brown) bottom tap (shared P-02/P-05)")
+  mat = model.materials["P-05 suction jumper flex jumper"] || model.materials.add("P-05 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(107, 74, 46)
   mat.alpha = 1.0
   grp.material = mat
@@ -48231,7 +50247,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48245,7 +50261,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48259,7 +50275,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48273,7 +50289,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48287,7 +50303,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48301,7 +50317,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48315,7 +50331,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48329,7 +50345,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48343,7 +50359,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48357,7 +50373,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48371,7 +50387,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48385,7 +50401,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48399,7 +50415,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48413,7 +50429,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48427,7 +50443,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48441,7 +50457,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48455,7 +50471,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48468,7 +50484,7 @@ ents = child.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(3400.mm)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48556,7 +50572,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48570,7 +50586,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48621,7 +50637,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48635,7 +50651,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48649,7 +50665,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48663,7 +50679,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48677,7 +50693,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48691,7 +50707,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48705,7 +50721,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48719,7 +50735,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48733,7 +50749,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48747,7 +50763,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48761,7 +50777,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48775,7 +50791,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48789,7 +50805,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48803,7 +50819,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48817,7 +50833,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48831,7 +50847,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48845,7 +50861,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48859,7 +50875,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48873,7 +50889,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48887,7 +50903,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48901,7 +50917,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48915,7 +50931,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48929,7 +50945,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48943,7 +50959,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48957,7 +50973,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48971,7 +50987,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48985,7 +51001,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -48999,7 +51015,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49013,7 +51029,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49027,7 +51043,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49041,7 +51057,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49055,7 +51071,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49069,7 +51085,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49083,7 +51099,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49097,7 +51113,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49111,7 +51127,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49125,7 +51141,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49139,7 +51155,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49153,7 +51169,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49167,7 +51183,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49181,7 +51197,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49195,7 +51211,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49209,7 +51225,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49223,7 +51239,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49237,7 +51253,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49251,7 +51267,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49265,7 +51281,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49279,7 +51295,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49293,7 +51309,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49307,7 +51323,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49321,7 +51337,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49335,7 +51351,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49349,7 +51365,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49363,7 +51379,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49377,7 +51393,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49391,7 +51407,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49405,7 +51421,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49419,7 +51435,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49433,7 +51449,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49447,7 +51463,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49461,7 +51477,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49475,7 +51491,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49489,7 +51505,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49503,7 +51519,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49517,7 +51533,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49531,7 +51547,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49545,7 +51561,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49559,7 +51575,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49573,7 +51589,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49587,7 +51603,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49601,7 +51617,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49615,7 +51631,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49629,7 +51645,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49643,7 +51659,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49657,7 +51673,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49671,7 +51687,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49685,7 +51701,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49699,7 +51715,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49713,7 +51729,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49727,7 +51743,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49741,7 +51757,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49755,7 +51771,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49769,7 +51785,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49783,7 +51799,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49797,7 +51813,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49811,7 +51827,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49825,7 +51841,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49839,7 +51855,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49853,7 +51869,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49867,7 +51883,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49881,7 +51897,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49895,7 +51911,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49909,7 +51925,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49923,7 +51939,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49937,7 +51953,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49951,7 +51967,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49965,7 +51981,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49979,7 +51995,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -49993,7 +52009,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -50007,7 +52023,7 @@ ents = child.entities
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -50021,7 +52037,7 @@ ents = child.entities
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -51322,7 +53338,7 @@ ents = child.entities
   face = grp.entities.add_face([470.mm,8.mm,115.mm], [4329.mm,8.mm,115.mm], [4329.mm,300.mm,115.mm], [3083.mm,300.mm,115.mm], [3083.mm,500.mm,115.mm], [1055.mm,500.mm,115.mm], [1055.mm,300.mm,115.mm], [470.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -51333,7 +53349,7 @@ ents = child.entities
   face = grp.entities.add_face([470.mm,2062.mm,115.mm], [4329.mm,2062.mm,115.mm], [4329.mm,2354.mm,115.mm], [470.mm,2354.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -51344,7 +53360,7 @@ ents = child.entities
   face = grp.entities.add_face([4329.mm,0.mm,115.mm], [4629.mm,0.mm,115.mm], [4629.mm,2362.mm,115.mm], [4329.mm,2362.mm,115.mm], [4329.mm,2062.mm,115.mm], [4429.mm,2062.mm,115.mm], [4429.mm,1912.mm,115.mm], [4329.mm,1912.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -53087,7 +55103,7 @@ ents = child.entities
   face = grp.entities.add_face([1896.0714285714287.mm,40.mm,1218.mm], [1909.0714285714287.mm,40.mm,1218.mm], [1909.0714285714287.mm,49.mm,1218.mm], [1896.0714285714287.mm,49.mm,1218.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(42.mm)
-  mat = model.materials["Blue #1 -> P-01 suction entry"] || model.materials.add("Blue #1 -> P-01 suction entry")
+  mat = model.materials["P-01 suction jumper flex jumper"] || model.materials.add("P-01 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(41, 121, 184)
   mat.alpha = 1.0
   grp.material = mat
@@ -56795,7 +58811,7 @@ ents = child.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat
@@ -56808,7 +58824,7 @@ ents = child.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2120.mm)
-  mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
+  mat = model.materials["P-03 suction jumper flex jumper"] || model.materials.add("P-03 suction jumper flex jumper")
   mat.color = Sketchup::Color.new(119, 119, 119)
   mat.alpha = 1.0
   grp.material = mat

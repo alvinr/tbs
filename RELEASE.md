@@ -24,6 +24,17 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Captive tee-nuts for every removable ply-mount joint (#30).** Every machine-screw interface into
+  the 18mm exterior ply — 3× Big Blue filter housings, the P-04/SV-02/DV-02 skid row, ACC-01/02, the
+  5× Shurflo pump-mount shirt, valve brackets, the EP panel, the chem shelf, and the Fan-B band — now
+  lands on a **back-face 4-prong tee-nut** with a machine screw instead of a wood/lag screw: a
+  re-torqueable, serviceable joint that can't strip the ply. Firm hardware: **¼-20** (Everbilt 825001,
+  $1.57/4-pk) + **5/16-18** (Everbilt 825091, $1.57/4-pk) zinc pronged tee-nuts, ~8–9.5mm barrels that
+  seat from the back of 18mm ply. Machine screws downgraded SS→**zinc** (dry backboard mounts). The
+  filter joint converts lag→machine-screw; plumbing-report §3.1/§7.2 rewritten (the retired
+  slotted-angle frame text removed). Net **+$15/+$18/+$20** water; grand total → $25,812/$30,267/$36,777.
+  Zinc machine-screw prices are EST pending firm HD SKUs.
+
 - **Ball-valve sourcing + BV-05 spray selector re-designed as two 1/2″ valves.** The five 1/2″ 2-way
   isolation valves (BV-01/02/03/04/06) re-sourced Banjo V050FP → **Grainger 803HZ1 at $24.14** (from
   US Plastic $44.27, **−$120**). No 1/2″ 3-way L-port is stocked (only 3/4″ Banjo V075BL $72.88 +

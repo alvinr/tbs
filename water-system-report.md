@@ -353,9 +353,9 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | [MPP 5-micron sediment cartridge 4.5"×20"](https://www.amazon.com/dp/B0CJCVZ1L5) (B0CJCVZ1L5) | Pentek DGD-5005-20 dual-gradient-density 5-micron sediment cartridge (F-1 stage); ~50-print interval. $61.66/2-pack = $30.83 ea. | 2 ea | Amazon | $62 |
 | [KDF-55 heavy-metal cartridge 4.5"×20"](https://www.amazon.com/dp/B0DY1ZK47Z) (B0DY1ZK47Z) | KDF-55 media for dissolved iron/metal removal (F-2 stage); ~60-print interval. Aquaboon 20×4.5 KDF whole-house cartridge (proper KDF media — supersedes the earlier VEVOR chlorine-only cartridge). | 1 ea | Amazon | $80 |
 | [CTO carbon block cartridge 4.5"×20"](https://www.amazon.com/dp/B07ZHPB6MB) (B07ZHPB6MB) | Coconut shell activated carbon block (F-3 stage); ~40-print interval. Aquaboon CTO, $79.79/2-pack = $39.90 ea (same brand as the KDF/sediment cartridges). | 2 ea | Amazon | $80 |
-| [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | PP full-port quarter-turn; pump-suction isolation BV-01 (P-01), BV-02 (P-05), BV-06 (P-03) | 3 ea | US Plastic Corp / Amazon | $133 |
-| [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | PP full-port quarter-turn; pump-suction isolation BV-03 (P-02) | 1 ea | US Plastic Corp / Amazon | $44 |
-| [Banjo V050FP ball valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30651) (30651) | PP full-port; supply isolation BV-04 (TAP-01 chem tap) + BV-05 placeholder. NOTE: BV-05 (spray-bar feed) must be RE-SOURCED as a 3-way L-PORT spray SELECTOR (Blue/Brown/CLOSED, NOT T-port) with a verified OFF detent — see plumbing-report §5 + TODO; priced here as a 2-way placeholder pending the firmed L-port SKU. | 2 ea | US Plastic Corp / Amazon | $89 |
+| [Banjo V050FP ball valve 1/2" FNPT](https://www.grainger.com/product/803HZ1) (803HZ1) | PP full-port quarter-turn 2-way; pump-suction isolation BV-01 (P-01), BV-02 (P-05), BV-06 (P-03). Grainger firm $24.14 (checked 2026-08-07; was US Plastic $44.27). | 3 ea | Grainger | $72 |
+| [Banjo V050FP ball valve 1/2" FNPT](https://www.grainger.com/product/803HZ1) (803HZ1) | PP full-port quarter-turn 2-way; pump-suction isolation BV-03 (P-02). Grainger firm $24.14 (checked 2026-08-07; was US Plastic $44.27). | 1 ea | Grainger | $24 |
+| [Banjo V050FP ball valve 1/2" FNPT](https://www.grainger.com/product/803HZ1) (803HZ1) | PP full-port 2-way; supply isolation BV-04 (TAP-01 chem tap) + BV-05 PLACEHOLDER. Grainger firm $24.14 (checked 2026-08-07). NOTE: BV-05 (spray selector) is being re-sourced as a 3-way L-PORT — Banjo V075BL (Grainger 3DTF3) is 3/4" (no 1/2" 3-way found), so it needs 3× 3/4->1/2" reducers; price TBC. Priced here as a 2-way placeholder pending BV-05's firm price — see plumbing-report §5 + TODO. | 2 ea | Grainger | $48 |
 | [Banjo V100FP ball valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=30653) (30653) | PP full-port; V1/V3/V4, VB1–VB3 (IBC fill/drain) | 6 ea | US Plastic Corp / Amazon | $297 |
 | [3-way diverter valve 1/2" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=22365) (22365) | L/T-port PVC-compatible; 3W-DV-02 (tray drain) | 1 ea | US Plastic Corp | $24 |
 | [3-way diverter valve 1" FNPT](https://www.usplastic.com/catalog/item.aspx?itemid=31268) (31268) | L/T-port; 3W-DV-01 (filter output) | 1 ea | US Plastic Corp | $61 |
@@ -395,7 +395,7 @@ This allows remote filling (from water bowser or tanker) and draining (IBC-3/IBC
 | [Citric acid, food grade, 6 lb](https://www.amazon.com/dp/B0F1CKRT7G) (B0F1CKRT7G) | pH adjustment (acidifier), 6 lb/bag | 2 bag | Amazon | $60 |
 | [Chemical-resistant labels (GHS)](https://www.amazon.com/dp/B0BWFW5481) (B0BWFW5481) | GHS pre-printed pictogram secondary-container labels, perforated — for the 4 IBC totes (pictograms pre-printed; hand-write the reagent name). Amazon B0BWFW5481 $23.99 firm (2026-08-01). | 1 pack | Amazon | $24 |
 | [Nitrile gloves, box of 100](https://www.amazon.com/dp/B0CMZ5VXMS) (B0CMZ5VXMS) | TitanFlex nitrile, textured, box of 100 (size M/L). | 2 box | Amazon | $30 |
-| **Water total** | | | | **$3,436–$3,461** |
+| **Water total** | | | | **$3,316–$3,341** |
 <!-- END parts:water -->
 
 *The processing tray (§6.1), spray bar (§6.2), and IBC stacking frame are itemized in their own

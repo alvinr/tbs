@@ -100,7 +100,7 @@ is slightly lower than the whole-panel figure carried in the
 | **A · Skins + frame** | Fan B mount band | 18mm ply, 0.47m × 0.99m, 2 faces | 10.2 |
 | | HDPE corner skins | 1/8" HDPE (near above band + far) | 12.3 |
 | | Corner Al stiffener grid | 1×1×1/8 6061 angle | 2.8 |
-| | Center RHS frame | 50×50×3 steel SHS, 11.1m | 49.2 |
+| | Center RHS frame | 2×2×0.120in steel SHS, 11.1m | 49.2 |
 | | HDPE center skins | 1/8" HDPE, Ø900 aperture deducted | 11.4 |
 | | **A subtotal** | | **85.9** |
 | **B · Housing** | HDPE shell + steel flange/hub | Ø900×3/16", two 80° openings | 21.8 |
@@ -321,7 +321,7 @@ near-deck section lift out** before the swing; all are re-seated to datum afterw
 | State | Method |
 |-------|--------|
 | Operational (0°) | 4 × interior cam latches (§4) compress the EPDM **vertical** perimeter + cut seals against the door frame; the top + bottom **strip-brush** seals are passive (always engaged, no compression) |
-| Transport (swung <!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->°) | Top + bottom **wall stays** — hook welded to the **swinging panel's left perimeter 50×50×3 RHS stile** (the steel frame member at the swing cut) ↔ eye on the near wall, tensioned by turnbuckle, forming a couple. Engaged after the swing, released before swing-back. |
+| Transport (swung <!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->°) | Top + bottom **wall stays** — hook welded to the **swinging panel's left perimeter 2×2×0.120in steel SHS stile** (the steel frame member at the swing cut) ↔ eye on the near wall, tensioned by turnbuckle, forming a couple. Engaged after the swing, released before swing-back. |
 
 > **Stay hooks land on steel, not the skin.** The transport-stay couple carries real tension, so both hooks weld to the **left perimeter RHS stile** of the swinging frame — *not* the 1/8" HDPE plastic skin (rev11). They were relocated from the mid-corner (Yd≈350), which the plastic-skin swap left unbacked above the plywood band; the perimeter stile is the farthest point from the pivot (best lever arm) and a continuous welded steel load path into the frame.
 
@@ -465,7 +465,7 @@ seals) for the swinging panel, and the structural anchor for the wall-stay eyes.
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | Upgrades the reused film far-left upright; carries the ~3.6 kN·m swing cantilever — SF 3.7 in S355. PIPE sourced: 3" NPS Sch 80 (Ø88.9 OD × 7.6mm wall), 36" ≈ $135 (Speedy Metals). The machined hub / thrust collar + 2 journal bands (Ra ~0.4 µm, iglide runs on soft shafts) are FAB → pending blueprints. Band held est pending the fab quote. | 1 ea | Metal Supermarkets / Speedy Metals | $180–$300 |
 | [Thrust ball bearing, 51118 (Ø90 bore, single-direction)](https://bearingsdirect.com/51118-thrust-ball-bearing-90x120x22-grooved-ubc-usbc/) (51118) | Carries the ~330 kg (3.24 kN) vertical load at the post base; thrust-only (radial + moment taken by the iglide sleeves). 51118 = 90 × 120 × 22mm, static Cₒ ≈190 kN → SF >50; single-direction (gravity-down). Ø90 bore matches the Ø89 post — the machined thrust collar bears on the shaft washer. Commodity part: generic ~$25–40, branded FAG/SKF ~$50–85 (do NOT buy at Motion/Applied industrial list ~$430). Chrome steel: grease + wipe annually (humid darkroom); stainless S51118 available ~$100+ if preferred. | 1 ea | Bearings Direct / Amazon / VXB | $80 |
 | [iglide J flange bushing, Ø90 bore (JFM-9095-100)](https://www.igus.com/iglide-ibh/flange-bearings/product-details/iglide-j-m?artnr=JFM-9095-100) (JFM-9095-100) | Top + bottom radial location of the post. igus iglide J self-lubricating polymer, Ø90 ID × Ø95 OD × Ø103 flange × 100 mm long. The FLANGE gives axial location against the hub face; the OD is a light press into the hub bore. Axial load is on the 51118 thrust bearing. Maintenance-free, no oil; inert plastic — chemical-resistant (iglide J passed the igus chemical filter; iglide X isn't offered at Ø90). Service pressure ≈1.3 N/mm² vs ≈35 N/mm² allowable (>25× margin); runs on the unhardened S355 post. $130.53/ea, ships in days — replaces the made-to-order GGB DU (3-mo lead). | 2 ea | igus | $261 |
-| Drum support cage, 40 × 40 × 3mm SHS | Steel frame carrying the Ø900 housing + drum on the swinging leaf | 1 lot | Local fab | $70–$120 |
+| Drum support cage, 1.5×1.5×0.120in steel SHS | Steel frame carrying the Ø900 housing + drum on the swinging leaf. #26: 40×40×3 nominal → 1.5×1.5×0.120in stock (the closest US size; material is inside the local-fab lot, so no separate per-ft line). | 1 lot | Local fab | $70–$120 |
 | [Top + bottom wall stays + 4-bolt anchor plates](https://www.fastenersplus.com/products/5-8-x-6-jaw-eye-galvanized-turnbuckle) (JETBGV58X6) | Transport lock — M16 turnbuckle + eye/hook rods + inside/outside wall plates | 2 set | Fasteners Plus | $90–$120 |
 | Drop-in rail saddles + tapered dowels | For the 2 removable left film rails (TL + BL); dowels set the film datum | 4 ea | Local fab / McMaster-Carr | $80–$130 |
 | **Swing total** | | | | **$761–$1,011** |

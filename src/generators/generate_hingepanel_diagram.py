@@ -50,7 +50,7 @@ FONT    = {"fontfamily": "monospace"}
 # ── Panel dimensions (mm) ─────────────────────────────────────────────────────
 PW = 2362   # panel width  (= container interior short-axis width)
 PH = 2388   # panel height (= container interior height)
-PT = 120    # panel overall thickness (50×50 RHS frame + 18mm ply each face)
+PT = 120    # panel overall thickness (2×2×0.120in steel frame + 18mm ply each face)
 
 # Light-trap housing (rev8: housed revolving door — see tbs_constants)
 DRUM_D  = LT_HOUSING_D  # = 900mm fixed housing outer diameter
@@ -517,7 +517,7 @@ def sheet2():
                     bbox=dict(fc="#EEF2F8", ec="none", pad=1.5), zorder=15)
     lbl_x_l = D_XL - 50
     for ly, lbl, off in [
-        (Y0_FR - FRAME_T / 2, f"50×50mm RHS STEEL FRAME ({FRAME_T}mm)", 1.5 * LBL_OFF),
+        (Y0_FR - FRAME_T / 2, f"2×2×0.120in STEEL FRAME ({FRAME_T}mm)", 1.5 * LBL_OFF),
         (Y0_PL2 - PLY_T / 2,  f"INNER PLY — FLAT BLACK ({PLY_T}mm)",    2 * LBL_OFF),
     ]:
         ax.annotate(lbl, xy=(lbl_x_l, ly),
@@ -1549,7 +1549,7 @@ def sheet4():
 def sheet6():
     """Sheet 6 — interior pull-handle mounting detail. Horizontal section through the
     panel's left drum-aperture jamb: the matte-black 316 SS D-grab handle through-bolted
-    to the 50×50×3 RHS frame stud (NOT the HDPE skin), reacting into an interior backing
+    to the 2×2×0.120in steel frame stud (NOT the HDPE skin), reacting into an interior backing
     plate. The two M8 bolts pass THROUGH both walls of the RHS, well inside its width."""
     fig, ax = plt.subplots(figsize=(11, 8.0))
     fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
@@ -1567,10 +1567,10 @@ def sheet6():
     ax.text(115, 84, "INTERIOR →", ha="center", fontsize=7.5, color=C_DIM, **FONT)
     ax.text(-58, 88, "← EXTERIOR\n(door plane)", ha="center", fontsize=7.5, color=C_DIM, **FONT)
 
-    # 50×50×3 RHS frame member (3mm walls)
+    # 2×2×0.120in steel frame member (3mm walls)
     ax.add_patch(Rectangle((0, -25), 50, 50, fc=C_STEEL, ec=C_OUT, lw=1.8, zorder=3))
     ax.add_patch(Rectangle((3, -22), 44, 44, fc=BG, ec=C_OUT, lw=1.0, zorder=4))
-    leader(ax, (24, -25), (50, -50), "50×50×3 RHS frame jamb\n(beside drum aperture)", col=C_OUT)
+    leader(ax, (24, -25), (50, -50), "2×2×0.120in steel frame jamb\n(beside drum aperture)", col=C_OUT)
     # 1/8″ HDPE interior skin on the +X face
     ax.add_patch(Rectangle((50, -25), 4, 50, fc=C_PLASTIC, ec=C_OUT, lw=0.8, zorder=4))
     leader(ax, (52, 24), (72, 72), "1/8″ HDPE\ninterior skin", col=C_OUT)

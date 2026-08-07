@@ -280,7 +280,7 @@ Personnel access during operation is via a **Ø900 fixed housing + single-openin
 | **Housing + drum total** | **$2,046** | **$2,280** | **$2,516** | |
 <!-- END costing:lightlock -->
 
-*Note: the hinged panel that the housing mounts into (50×50mm RHS frame, 1/8" HDPE plastic skins (18mm-ply Fan-B mount band), EPDM perimeter gasket) is part of the interior conversion covered in Section 2. Still below the $2,500–$4,500 commercial darkroom-door range, and weatherproof + transport-rated.*
+*Note: the hinged panel that the housing mounts into (2×2×0.120in steel frame, 1/8" HDPE plastic skins (18mm-ply Fan-B mount band), EPDM perimeter gasket) is part of the interior conversion covered in Section 2. Still below the $2,500–$4,500 commercial darkroom-door range, and weatherproof + transport-rated.*
 
 ---
 
@@ -332,7 +332,7 @@ The panel + drum SWING ~56° about a vertical Ø89×8mm CHS pivot post, carrying
 | Ø89×8 CHS pivot post + machined hub / thrust collar | $180 | $240 | $300 | carries ~3.6 kN·m swing cantilever; Metal Supermarkets / local fab |
 | Turntable thrust bearing, 12″ (Ø305) 1000 lb | $80 | $80 | $80 | VXB |
 | Flanged sleeve (journal) bearings, Ø90 bore (×2) | $261 | $261 | $261 | McMaster SAE 841 |
-| Drum support cage, 40×40×3mm SHS | $70 | $95 | $120 | Local fab |
+| Drum support cage, 1.5×1.5×0.120in steel SHS | $70 | $95 | $120 | Local fab |
 | Top + bottom wall stays + 4-bolt anchor plates | $90 | $105 | $120 | turnbuckles + rods + plates |
 | Drop-in rail saddles + tapered dowels (×4, removable left film rails) | $80 | $105 | $130 | Local fab / McMaster |
 | Fixed door frame — 2×2×0.120in members (×3) | $90 | $105 | $120 | Metal Supermarkets |
@@ -581,7 +581,7 @@ The following costs are not covered by existing research documents and should be
 | Item | Status | Action |
 |------|--------|--------|
 | Wall-seat saddle plate steel (ICP-11) | Estimated ~$3–5/kg | Confirm at Metal Supermarkets SoCal (walk-in) or Online Metals for 8mm mild-steel plate; ~28 kg needed (8 saddles, laser/plasma cut) |
-| Saddle clamps for 50mm RHS (ICP-12) | Estimated ~$10 ea. | Confirm at McMaster-Carr (steel tube clamps category) — verify fit for 50×50mm square section |
+| Saddle clamps for 2in (50.8mm) steel tube (ICP-12) | Estimated ~$10 ea. | Confirm at McMaster-Carr (steel tube clamps category) — verify fit for 2×2in (50.8mm) square section |
 | M8 thumbscrews DIN 464 SS (ICP-13) | Estimated ~$2–5 ea. | Amazon multi-packs typical; Maedler NA PN 65499225 confirmed at ~$15–17 ea. (May 2026) |
 | Ball-lock pins Ø10mm SS (ICP-14) | Estimated ~$6–10 ea. | Confirm at McMaster-Carr ball lock pins category; verify 50mm usable length fits joint |
 | Lenox Laser pinhole fabrication price | Estimated | Request quote at lenoxlaser.com — specify 2.17mm ±0.025mm in SS-302 shim, 75mm × 75mm |

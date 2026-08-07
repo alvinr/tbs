@@ -148,10 +148,10 @@ def _panel_weight():
     rib_len = 2 * ((panel_h - PANEL_FLOOR_GAP) / 1000.0 + 2 * (corner_w_near / 1000.0))
     corner_plate_kg = rib_len * angle_kg_per_m
     corner_ply_kg = corner_band_kg + corner_skin_kg  # (mixed ply band + HDPE skin)
-    # Center zone: steel RHS frame perimeter + cross members.
-    # 50×50×3 SHS section area = 50² − 44² = 564 mm² → 4.43 kg/m (EN 10219
+    # Center zone: 2×2×0.120in steel frame perimeter + cross members.
+    # 2×2×0.120in steel section = 50.8² − 44.7² = 582 mm² → 4.57 kg/m (#26; EN 10219
     # table 4.35; first-principles used here). [was an approx 456 mm²/3.58 kg/m]
-    rhs_kg_per_m = (50**2 - 44**2) * 1e-6 * RHO_STEEL
+    rhs_kg_per_m = (50.8**2 - 44.7**2) * 1e-6 * RHO_STEEL
     cw = PANEL_CENTER_W / 1000.0                   # = 1.056 m
     center_frame_length = 2 * (cw + 2.388) + 4 * cw
     frame_kg = center_frame_length * rhs_kg_per_m
@@ -243,7 +243,7 @@ def _walkway_left_weight():
     # 5 steel floor-leg cantilever brackets.
     n_brk = len(LEFT_WK_CANT_LEG_YDS)
     P, PT = LEFT_WK_CANT_POST, LEFT_WK_CANT_POST_T
-    post_area = (4 * P * PT - 4 * PT * PT) * 1e-6          # 50×50×3 SHS section, m²
+    post_area = (4 * P * PT - 4 * PT * PT) * 1e-6          # 2×2×0.120in steel section, m²
     post_h = (WALKWAY_H - WALKWAY_GRATE_T) / 1000.0        # 0.115 m — floor to grate bottom
     post_kg = n_brk * post_area * post_h * RHO_STEEL
     fl, fw, ft = LEFT_WK_CANT_FOOT                          # 128×60×8 plate
@@ -331,7 +331,7 @@ def _ibc_stacking_frame_weight():
     ~52mm headroom), so the frame only RESTRAINS. It is a deep 4-leg box at the
     corridor mouth:
       • 4 full-height uprights — a FRONT pair (X4654) + a BACK pair 450mm behind
-        (X5104), ~2.30m, 50×50×3 RHS
+        (X5104), ~2.30m, 2×2×0.120in steel
       • top + bottom rings (butt-jointed Yd-rails + X-rails tying the 4 legs)
       • 4 floor flange feet, 150×150×12mm + 16 M12 anchors (front feet under the tray)
       • 6 rear-panel mount brackets on the back uprights
@@ -340,7 +340,7 @@ def _ibc_stacking_frame_weight():
         through-bolted to 4 exterior backing plates (100×135×8mm) + 16 M12 bolts
     Total ≈ 90 kg (was ~178 kg for the retired 8-upright load-bearing rack).
     """
-    rhs   = 4.25                                   # 50×50×3 RHS, kg/m
+    rhs   = 4.4                                    # 2×2×0.120in steel, kg/m (#26)
     barhs = 3.07                                   # 50×20×3 RHS front bars, kg/m
     up_h  = (IBC_H_STK_1000 - 40) / 1000.0         # 2.296 m full-height upright
     # cp.frame(): the deep 4-leg box
@@ -554,7 +554,7 @@ def build_components():
                   IBC_COL_X - 20, IBC_COL_X - 20 + 450,   # 4654–5104: deep-box front↔back (cp.frame)
                   BLUE_IBC_Y + IBC_D, IBC_FAR_Y,          # 1046–1316: the plumbing-corridor box
                   0, IBC_H_STK_1000 - 40, color=C_STEEL,
-                  calc_note="50×50×3mm RHS restraint deep 4-leg box: 4 uprights "
+                  calc_note="2×2×0.120in steel restraint deep 4-leg box: 4 uprights "
                             "(front + back pair) + top/bottom rings + 4 feet + front "
                             "bars + wall hangers + exterior backing plates"),
 

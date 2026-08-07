@@ -1949,9 +1949,9 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 1 post (50x50x3 SHS)
+  # Left cantilever 1 post (2x2x0.120 SHS)
   grp = ents.add_group
-  grp.name = "Left cantilever 1 post (50x50x3 SHS)"
+  grp.name = "Left cantilever 1 post (2x2x0.120 SHS)"
   face = grp.entities.add_face([114.6.mm,220.mm,0.mm], [165.39999999999998.mm,220.mm,0.mm], [165.39999999999998.mm,280.mm,0.mm], [114.6.mm,280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
@@ -1982,9 +1982,9 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 2 post (50x50x3 SHS)
+  # Left cantilever 2 post (2x2x0.120 SHS)
   grp = ents.add_group
-  grp.name = "Left cantilever 2 post (50x50x3 SHS)"
+  grp.name = "Left cantilever 2 post (2x2x0.120 SHS)"
   face = grp.entities.add_face([114.6.mm,770.mm,0.mm], [165.39999999999998.mm,770.mm,0.mm], [165.39999999999998.mm,830.mm,0.mm], [114.6.mm,830.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
@@ -2015,9 +2015,9 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 3 post (50x50x3 SHS)
+  # Left cantilever 3 post (2x2x0.120 SHS)
   grp = ents.add_group
-  grp.name = "Left cantilever 3 post (50x50x3 SHS)"
+  grp.name = "Left cantilever 3 post (2x2x0.120 SHS)"
   face = grp.entities.add_face([114.6.mm,1150.mm,0.mm], [165.39999999999998.mm,1150.mm,0.mm], [165.39999999999998.mm,1210.mm,0.mm], [114.6.mm,1210.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
@@ -2048,9 +2048,9 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 4 post (50x50x3 SHS)
+  # Left cantilever 4 post (2x2x0.120 SHS)
   grp = ents.add_group
-  grp.name = "Left cantilever 4 post (50x50x3 SHS)"
+  grp.name = "Left cantilever 4 post (2x2x0.120 SHS)"
   face = grp.entities.add_face([114.6.mm,1530.mm,0.mm], [165.39999999999998.mm,1530.mm,0.mm], [165.39999999999998.mm,1590.mm,0.mm], [114.6.mm,1590.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
@@ -2081,9 +2081,9 @@ end
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 5 post (50x50x3 SHS)
+  # Left cantilever 5 post (2x2x0.120 SHS)
   grp = ents.add_group
-  grp.name = "Left cantilever 5 post (50x50x3 SHS)"
+  grp.name = "Left cantilever 5 post (2x2x0.120 SHS)"
   face = grp.entities.add_face([114.6.mm,2080.mm,0.mm], [165.39999999999998.mm,2080.mm,0.mm], [165.39999999999998.mm,2140.mm,0.mm], [114.6.mm,2140.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
@@ -20632,9 +20632,9 @@ end
   # Door Frame threshold
   grp = ents.add_group
   grp.name = "Door Frame threshold"
-  face = grp.entities.add_face([-50.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([-50.8.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.8.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
@@ -20643,9 +20643,9 @@ end
   # Door Frame top
   grp = ents.add_group
   grp.name = "Door Frame top"
-  face = grp.entities.add_face([-50.mm,0.mm,2338.mm], [0.mm,0.mm,2338.mm], [0.mm,2362.mm,2338.mm], [-50.mm,2362.mm,2338.mm])
+  face = grp.entities.add_face([-50.8.mm,0.mm,2337.2.mm], [0.mm,0.mm,2337.2.mm], [0.mm,2362.mm,2337.2.mm], [-50.8.mm,2362.mm,2337.2.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
@@ -20654,7 +20654,7 @@ end
   # Door Frame left stile
   grp = ents.add_group
   grp.name = "Door Frame left stile"
-  face = grp.entities.add_face([-50.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,50.mm,0.mm], [-50.mm,50.mm,0.mm])
+  face = grp.entities.add_face([-50.8.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,50.8.mm,0.mm], [-50.8.mm,50.8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")
@@ -20665,7 +20665,7 @@ end
   # Door Frame right stile
   grp = ents.add_group
   grp.name = "Door Frame right stile"
-  face = grp.entities.add_face([-50.mm,2312.mm,0.mm], [0.mm,2312.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([-50.8.mm,2311.2.mm,0.mm], [0.mm,2311.2.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.8.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
   mat = model.materials["E-stop trip line (contactor coil -> interior E-stop)"] || model.materials.add("E-stop trip line (contactor coil -> interior E-stop)")

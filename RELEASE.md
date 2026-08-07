@@ -24,6 +24,12 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Spray-beam removal cycle (#28) closed as no-lift / park-and-roll.** Decided against a lift-out
+  mechanism: the muslin loads by parking the gantry at the near end and rolling the beam back over
+  the laid fabric (report §4.2), and beam service is via the right-walkway grate (§4.3). Verified the
+  **9mm beam-to-floor gap** from the constants (Ø32 wheel radius 16 − 7mm bracket drop, constant across
+  the traverse) → **~8.5mm over the 0.5mm muslin**, wheels running outboard on bare floor.
+
 - **Structural sections re-specced to stock imperial tube (#26) + mid-span support confirmed (#27).**
   The walkway/floor-leg/IBC/brace members were carried in metric-nominal sizes that aren't sold in the
   US. Re-specced to confirmed stock: the shaved right-walkway long beams, the 2 mid-span center arms,

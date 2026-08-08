@@ -302,13 +302,15 @@ def kit(part="all", p02_on_corridor=False):
     r_ex = 4760                                          # entry X on the Brown-tote near face, just −X of DV-01 (clear of the tap 4880 + pump column 4934)
     r_ez = ov.IBC_H_1000 - 38                            # 1130 — Brown top-entry level (= the old DV-02→IBC-3 entry)
     _rec0 = len(p)                                        # capture the recycle-leg elements _side_entry is about to append (part='recycle')
+    entry_z = r_ez - 50                                  # 1080 — IBC-3 tote entry 50mm below the top-entry level (clear of the top edge ~1148)
+    entry_face = cp.YD_NEAR - 8                           # 1038 — pass face −8 so _side_entry's (yface−into·8) seats the 16mm flange BASE on the cage edge (Yd1046)
     cp._side_entry(p, "DV-01 recycle -> IBC-3 (buffer)",
         [(DCX + tipd, DCY, DCZ),                         # off DV-01's +X recycle port (z235)
          (DCX + tipd + 40, DCY, DCZ),                    # +X OUT of the port — 90° #1 into DV-01
          (DCX + tipd + 40, cp.SB_RISER_YD_FAR, DCZ),     # +Yd onto the FAR support-board riser plane (#29) — 90° #2 into DV-01
-         (DCX + tipd + 40, cp.SB_RISER_YD_FAR, r_ez),    # RISE up the board face to the Brown top-entry level
-         (r_ex, cp.SB_RISER_YD_FAR, r_ez)],              # −X along the top to the entry lane
-        r_ex, cp.YD_NEAR, r_ez, -1, ov.C_BLUE, drop=-50, check=False)   # −Yd into the Brown tote; no CV-3 — P-04 has an integral check + top entry can't siphon (matches the old DV-02→IBC-3 entry)
+         (DCX + tipd + 40, cp.SB_RISER_YD_FAR, entry_z), # RISE up the board face straight to the ENTRY level (lowered — no drop jog)
+         (r_ex, cp.SB_RISER_YD_FAR, entry_z)],           # −X along the far board; _side_entry then runs −Yd STRAIGHT into the flange (at X4760, −X of the pumps → clear)
+        r_ex, entry_face, entry_z, -1, ov.C_BLUE, drop=-50, check=False)   # −Yd into the Brown tote; flange seats on the cage edge (Yd1046) at Z1080
     recycle_elems = list(p[_rec0:])                      # the DV-01 recycle→IBC-3 pieces, captured by identity (material names leak across pipes — don't match by substring)
     # 6. DV-01 WASTE (branch, z+) → the shared IBC-4 merge tee's z− branch (DV-02's waste also lands here,
     #    on the tee run, so the two legs make ONE tote entry).
@@ -450,9 +452,9 @@ LABEL_POINTS = [  # (x, y, z, text, leader dx,dy,dz) — (x,y,z) is the arrow TI
     (cp.BACK_X + cp.EQT + 24, cp.CTR_Y, (cp.PSTACK["P-01"] + cp.PSTACK["P-03"]) / 2 + 90, "12V DIST BLOCK\n(Cct C)", 300, 0, 400),   # rear-of-panel Circuit-C distribution block (behind the pump column; feed lands here, bus fans out to the pumps)
     # ── ball valves (in-panel pump-suction isolation; BV-01/02 on the BACK-of-panel risers) ──
     (cp.FRONT_X + 106, cp.YD_NEAR + 67, 1000, "BV-01", -600, 0, 250),   # now on the front walkway-side riser
-    (cp.PXC - 86, cp.BV02_YD, cp._piz("P-05") - 85, "BV-02", 350, 0, 250),   # ON the BV-02 valve body (P-05 suction), not the shirt riser
-    (cp.BROWN_TAP[0] - 55, cp.PIY - 40, 950, "BV-03", -600, 0, 250),   # ON the corridor P-02 suction riser (relocated with P-02)
-    (cp.PXC, cp.PIY, cp._piz("P-03") - 41, "BV-06", -1000, 0, 150),    # inline below the P-03 IN port
+    (cp.BV_FWD_X, cp.BV02_YD, cp._piz("P-05") - 85, "BV-02", -350, 0, 200),   # tip = BV-02 valve center (walkway-edge loop); text on the −X operator side
+    (cp.BROWN_TAP[0] - 55, cp.SB_RISER_YD_NEAR, 950, "BV-03", -600, 0, 250),   # ON the corridor P-02 suction riser (on the near support board)
+    (cp.BV_FWD_X, cp.BV02_YD, cp._piz("P-03") - 110, "BV-06", -350, 0, 150),    # tip = BV-06 valve center (walkway-edge loop); text on the −X operator side
     # ── per-tank anti-siphon check valves ──
     (ov.C_LEN - 200, cp.X1_TEE_Y, cp.X1_TEE_Z, "CV-1\n(X1 fill)", -600, 300, 0),   # only CV-1 — pumps' integral checks cover the returns
     # ── end-wall bulkhead ports (tip at the port-body center, 30mm in from the wall) ──

@@ -420,6 +420,7 @@ _FILT_FCY = ov.BB_OD / 2 + 12              # 104 — filter / P-02 body center Y
 _FILT_CZ  = ov.C_HGT - 48 - ov.BB_H / 2    # 2170 — Big-Blue filter body center Z
 # Phase-2 skid row (P-04 · SV-02 · DV-02, under the filters) — single-sourced for skid_row/plumbing/labels
 SROW_YD, SROW_Z0 = 104, ov.PWP_SROW_Z0   # Yd104 = the filter/P-02 wall lane (surface-mounted on the ply, like the other kit)
+SKID_CLIP_YD = 35                          # #29: skid-panel riser plane — vertical runs sit flush on the ply (face Yd18) and P-clip to it (= the F3→SV-01 wall-lane Yd)
 # ── Panel reorg (2026-08-04): declutter the skid so the lane-1 brown rises up the wall and runs the panel
 #    bottom to ACC-02 (like lanes 3 & 4).  Component X/Z decoupled from the shared filter/pump constants. ──
 PANEL_X0, PANEL_X1, PANEL_Z0 = ov.PWP_PANEL_X0, ov.PWP_PANEL_X1, ov.PWP_PANEL_Z0   # 18mm-ply extents (single-sourced)
@@ -623,7 +624,9 @@ def skid_plumbing(part="all"):
         [sfoot,                                                          # strainer foot at the sump bottom
          (ov.PROC_TRAY_DRAIN_X, SROW_YD, riser_top_z),                   # RISER up through the walkway grate to 150mm above the deck (no tall wall riser)
          (p04_in[0] - 40, SROW_YD, riser_top_z),                        # 90° TURN toward the panel: +X above the walkway to below P-04
-         (p04_in[0] - 40, SROW_YD, p04_in[2]),                          # 90° TURN up: rise to P-04's IN height at the skid
+         (p04_in[0] - 40, SKID_CLIP_YD, riser_top_z),                   # −Yd onto the skid clip plane (#29: flush on the panel)
+         (p04_in[0] - 40, SKID_CLIP_YD, p04_in[2]),                     # rise on the panel face to P-04's IN height
+         (p04_in[0] - 40, SROW_YD, p04_in[2]),                          # +Yd back to the P-04 IN lane
          p04_in], rp, color=ov.C_IBC_BROWN))                           # short lead into P-04's IN port
     p.append(ov.ruby_cylinder("Tray sump strainer foot", *sfoot, 14, 36, color=cdk, axis="z"))
     # ── Leg 2: P-04 OUT → (SV-02 tap) → DV-02 IN, along the row at lz ──
@@ -640,8 +643,10 @@ def skid_plumbing(part="all"):
     p.append(ov.ruby_pipe_run("DV-02 feed -> F1 (recycle)",
         [dv_feed,
          (ov.PWP_FILTER_X3, ov.PWP_FILTER_YD, 1450),      # up just clear of the skid-row tops (~1360)
-         (edge_x, ov.PWP_FILTER_YD, 1450),                # −X ALONG THE PANEL SURFACE (Yd104) to the pinhole edge
-         (edge_x, ov.PWP_FILTER_YD, f1_in[2]),            # VERTICAL UP at the edge to F1-IN height
+         (edge_x, ov.PWP_FILTER_YD, 1450),                # −X to the pinhole edge (Yd104)
+         (edge_x, SKID_CLIP_YD, 1450),                    # −Yd onto the skid clip plane (#29: flush on the panel)
+         (edge_x, SKID_CLIP_YD, f1_in[2]),                # VERTICAL UP on the panel face to F1-IN height
+         (edge_x, ov.PWP_FILTER_YD, f1_in[2]),            # +Yd back to the filter lane
          f1_in], rp, color=ov.C_IBC_BROWN))               # +X into F1's −X IN port
     # ── Leg 3b: DV-02 waste (+X port) → IBC-4 (corridor), UNDER THE WALKWAY via the ribbon ──
     # Mirrors the (now-freed) tray-sump ribbon path: out to the near-rim lane FIRST (clear of the tray
@@ -716,6 +721,14 @@ def skid_plumbing(part="all"):
          (b5rx + 40, CLIPY, 700),                           # DROP to the BV-05 recycled-port height
          (b5rx + 40, 69, 700),                              # +Yd to the BV-05 lane (Yd69)
          (b5rx, 69, 700)], rp, color=ov.C_IBC_BROWN))       # −X into the +X recycled port
+    # ── #29: skid-panel riser P-clips — hold the nudged vertical runs flush to the ply (face Yd18) ──
+    skid_face = 18
+    for rx, cz_lo, cz_hi in ((edge_x, 1520, 2120),               # DV-02 feed → F1 riser (X2830)
+                             (p04_in[0] - 40, 600, 1080),        # tray sump → P-04 riser (X3180)
+                             (ov.PWP_SV01_X - 60, 1780, 2160)):  # F3 → SV-01 wall drop (X4190)
+        for cz in (cz_lo, cz_hi):
+            p.append(ov.ruby_box("Skid riser P-clip", rx - 14, skid_face, cz - 8,
+                                 28, (SKID_CLIP_YD + rp + 2) - skid_face, 16, color=cp.C_CLIP))
     if part == "all":
         return "\n".join(p)
     # Partition legs by the construction-model phase they install in, matched on each pipe's own

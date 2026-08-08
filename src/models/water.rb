@@ -13512,6 +13512,72 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
+  # Skid pipe P-clip
+  grp = ents.add_group
+  grp.name = "Skid pipe P-clip"
+  face = grp.entities.add_face([3706.mm,18.mm,940.mm], [3734.mm,18.mm,940.mm], [3734.mm,47.5.mm,940.mm], [3706.mm,47.5.mm,940.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Skid riser P-clip"] || model.materials.add("Skid riser P-clip")
+  mat.color = Sketchup::Color.new(85, 87, 94)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Skid pipe P-clip
+  grp = ents.add_group
+  grp.name = "Skid pipe P-clip"
+  face = grp.entities.add_face([3956.mm,18.mm,940.mm], [3984.mm,18.mm,940.mm], [3984.mm,47.5.mm,940.mm], [3956.mm,47.5.mm,940.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Skid riser P-clip"] || model.materials.add("Skid riser P-clip")
+  mat.color = Sketchup::Color.new(85, 87, 94)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Skid pipe P-clip
+  grp = ents.add_group
+  grp.name = "Skid pipe P-clip"
+  face = grp.entities.add_face([4216.mm,18.mm,1602.mm], [4244.mm,18.mm,1602.mm], [4244.mm,122.5.mm,1602.mm], [4216.mm,122.5.mm,1602.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Skid riser P-clip"] || model.materials.add("Skid riser P-clip")
+  mat.color = Sketchup::Color.new(85, 87, 94)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Skid pipe P-clip
+  grp = ents.add_group
+  grp.name = "Skid pipe P-clip"
+  face = grp.entities.add_face([4356.mm,18.mm,1602.mm], [4384.mm,18.mm,1602.mm], [4384.mm,122.5.mm,1602.mm], [4356.mm,122.5.mm,1602.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Skid riser P-clip"] || model.materials.add("Skid riser P-clip")
+  mat.color = Sketchup::Color.new(85, 87, 94)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Skid pipe P-clip
+  grp = ents.add_group
+  grp.name = "Skid pipe P-clip"
+  face = grp.entities.add_face([3546.mm,18.mm,1304.mm], [3574.mm,18.mm,1304.mm], [3574.mm,116.5.mm,1304.mm], [3546.mm,116.5.mm,1304.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Skid riser P-clip"] || model.materials.add("Skid riser P-clip")
+  mat.color = Sketchup::Color.new(85, 87, 94)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Skid pipe P-clip
+  grp = ents.add_group
+  grp.name = "Skid pipe P-clip"
+  face = grp.entities.add_face([3806.mm,18.mm,1304.mm], [3834.mm,18.mm,1304.mm], [3834.mm,116.5.mm,1304.mm], [3806.mm,116.5.mm,1304.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Skid riser P-clip"] || model.materials.add("Skid riser P-clip")
+  mat.color = Sketchup::Color.new(85, 87, 94)
+  mat.alpha = 1.0
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Skid plumbing"
   inst.layer = model.layers["Kit"]

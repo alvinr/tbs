@@ -544,6 +544,54 @@ SHIRT_X = PXC + ACC_R + 4                   # 5051.5 — pump-mount shirt front 
 DV02X   = SHIRT_X - DVB / 2                  # 5028.5 — 3W-DV-02 box BACK mounts FLUSH on the (raised) shirt front
 #   face, so the shirt SUPPORTS DV-02; its feed + both run legs nudge +X to follow (toward the sealed end)
 
+# ── #29 pump-flex run supports — two 18mm ply boards on the corridor SIDE walls ──────────────
+# Each board fills the WINDOW between the front and rear side-posts (X FRONT_X+S..BACK_X), recessed
+# FLUSH with the posts' wall-side face (rear-panel method), carried on 4 welded steel L-brackets
+# (one leg welded to each post inner face, landing leg behind the ply → ply bolts to it).  The
+# pump risers on that wall P-clip to the board.  FAR (film-plane side): DV-01 recycle + P-02
+# discharge + P-01→ACC-01.  NEAR: P-02 suction (BV-03 mid) + P-05 inlet.
+SB_X0, SB_X1 = FRONT_X + S, BACK_X           # board X span (front post inner +X face → back post inner −X face)
+SB_FAR_Z  = (400, 820)                        # far board Z extent (~420, brackets the 2 clamp rows)
+SB_NEAR_Z = (480, 900)                        # near board Z extent (~420)
+# Riser planes — the pipe back sits ~2.5mm off each board's corridor face (RP + gap), i.e. flush on it.
+SB_RISER_YD_FAR  = YD_FAR - EQT - RP - 2.5    # 1285 — far risers (DV-01 re-routed here; P-02 disch/P-01 nudged)
+SB_RISER_YD_NEAR = YD_NEAR + EQT + RP + 2.5   # 1077 — near risers (P-02 suction nudged here; P-05 already ~here)
+SB_FAR_RISERS_X  = (4873, 4900, 4984)         # DV-01 recycle · P-02 discharge · P-01→ACC-01
+SB_NEAR_RISERS_X = (4825, 5070)               # P-02 suction · P-05 inlet
+SB_FAR_CLAMP_Z   = (480, 740)                 # 2 clamp rows (far)
+SB_NEAR_CLAMP_Z  = (560, 820)                 # 2 clamp rows (near)
+C_CLIP = "#55575e"                            # cushioned P-clip strap
+
+def support_boards():
+    """The two side-wall ply run-support boards + welded L-brackets + riser P-clips (#29)."""
+    p = []
+    bw = SB_X1 - SB_X0
+    LT, LL, LH = 6, 45, 50                     # bracket leg thickness / landing-leg length / bracket height
+    for side, wall_yd, ddir, (z0, z1), ryd, risers_x, clamp_z in (
+            ("far",  YD_FAR,  -1, SB_FAR_Z,  SB_RISER_YD_FAR,  SB_FAR_RISERS_X,  SB_FAR_CLAMP_Z),
+            ("near", YD_NEAR, +1, SB_NEAR_Z, SB_RISER_YD_NEAR, SB_NEAR_RISERS_X, SB_NEAR_CLAMP_Z)):
+        by = wall_yd - EQT if ddir < 0 else wall_yd        # ply origin Yd (flush with the wall-side post face)
+        back_yd = wall_yd                                   # ply back face = the post wall-side face
+        face_yd = wall_yd - EQT if ddir < 0 else wall_yd + EQT   # ply CORRIDOR face (clips attach here)
+        p.append(ov.ruby_box(f"Pump-run support board ({side}, 18mm ply)",
+                             SB_X0, by, z0, bw, EQT, z1 - z0, color=ov.C_PLY))
+        for px, xdir in ((SB_X0, +1), (SB_X1, -1)):        # front / back post inner face
+            for bz in (z0 + 35, z1 - 35):
+                lx = px if xdir > 0 else px - LT           # welded leg — flat on the post inner face
+                p.append(ov.ruby_box(f"Support L-bracket weld leg ({side})",
+                                     lx, by, bz - LH / 2, LT, EQT, LH, color=ov.C_STEEL))
+                ly = back_yd if ddir < 0 else back_yd - LT  # landing leg — behind the ply back face
+                lxx = px if xdir > 0 else px - LL
+                p.append(ov.ruby_box(f"Support L-bracket landing leg ({side})",
+                                     lxx, ly, bz - LH / 2, LL, LT, LH, color=ov.C_STEEL))
+        # riser P-clips — one per riser at each clamp row, bridging the riser back to the board face
+        for rx in risers_x:
+            for cz in clamp_z:
+                y_lo = min(face_yd, ryd - RP - 2); y_hi = max(face_yd, ryd + RP + 2)
+                p.append(ov.ruby_box(f"Riser P-clip ({side})", rx - 14, y_lo, cz - 8,
+                                     28, y_hi - y_lo, 16, color=C_CLIP))
+    return "\n".join(p)
+
 
 def equipment(sump_on_skid=False):
     """The corridor pump panel: P-01 Blue, [P-04 tray-drain], P-05 Brown-drain, P-03 Waste-drain,
@@ -583,6 +631,7 @@ def equipment(sump_on_skid=False):
         p.append(sample_valve("SV-02 sample valve", sv_x, sv_y, SV_Z, h=60))
         # 3W-DV-02 — Stage-A diverter above the stack (input underside; run to Brown −Yd / Waste +Yd)
         p.append(diverter("3W-DV-02", DV02X, CTR_Y, DV_Z, run="y", branch="z-", handle="x-", color=ov.C_VALVE))
+    p.append(support_boards())                   # #29 — two side-wall ply run-support boards + L-brackets
     return "\n".join(p)
 
 
@@ -740,7 +789,7 @@ def plumbing(part="all", sump_on_skid=False):
     # ACC OUT (−Yd) → trunk out the mouth to the spray bar.
     # The ACC-IN elbow goes OUT HORIZONTALLY (+Yd into the aisle, clear of the P-01 head below) before
     # dropping to the P-01 OUT blue riser — NOT straight down over the pump.
-    inby = CTR_Y + ACC_R + 55                              # 1300 — IN riser pulled tight to the pump column but kept +Yd of the ACC-IN port (Yd1274.5) so the lead-out (39mm) + drop-in (25mm) both form clean swept elbows; still clears the Blue #2 IBC near face (Yd1316, ~6mm gap — was an overlap at +75)
+    inby = SB_RISER_YD_FAR                                 # 1285 — #29: IN riser sits on the FAR support board (flush), still +Yd of the ACC-IN port (1274.5) for a clean drop-in and clear of the Blue #2 IBC near face (1316)
     pipe("P-01 -> ACC-01 (in)",
          [pout("P-01"), (PXC, inby, _piz("P-01")), (PXC, inby, ACC_PZ), acc_in()], ov.C_BLUE)
     # ACC-01 OUT → supply trunk → out to the gap past the tray right edge (GAPX), dropped to z60 ready
@@ -815,11 +864,11 @@ def drains_ports(sump_on_skid=False):
         pipe("IBC-3 tap -> P-02 suction",
              [(tx3 - 19, ty3, tz3),            # off the tap's −X run port (low, z308)
               (tx3 - 55, ty3, tz3),            # −X nudge (X4825) clear of BV-01 (X4857-4894, the P-01 suction valve on the blue line)
-              (tx3 - 55, PIY - 40, tz3),       # −Yd onto the port-approach lane (Yd1061, −Yd of the IN port)
-              (tx3 - 55, PIY - 40, p2i[2]),    # UP the riser at the approach Yd
-              (PXC, PIY - 40, p2i[2]),         # +X to the pump column
+              (tx3 - 55, SB_RISER_YD_NEAR, tz3),    # −Yd onto the NEAR support-board riser plane (Yd1077, flush on the board)
+              (tx3 - 55, SB_RISER_YD_NEAR, p2i[2]), # UP the riser on the board
+              (PXC, SB_RISER_YD_NEAR, p2i[2]),      # +X to the pump column
               p2i], ov.C_IBC_BROWN)            # +Yd INTO P-02's −Yd IN port (swept elbow at the +X→+Yd vertex)
-        p.append(ball_valve("BV-03 (P-02 suction)", tx3 - 55, PIY - 40, 950, "z"))   # isolation on the P-02 suction riser (relocated to the corridor with P-02)
+        p.append(ball_valve("BV-03 (P-02 suction)", tx3 - 55, SB_RISER_YD_NEAR, 950, "z"))   # isolation on the P-02 suction riser (on the near support board)
     # P-05 (Brown drain) suction: shared tap T → +X run end → rise to P-05 IN (−Yd manifold)
     p5i = (PXC, PIY, _piz("P-05")); p5o = (PXC, POY, _piz("P-05"))
     z05 = _piz("P-05")

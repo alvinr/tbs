@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Pump-run support boards in the IBC plumbing corridor (#29 follow-up).** The cantilevered pump
+  risers on the two corridor side walls now land on **two 18mm ply boards**, each recessed **flush**
+  in the window between the front & rear side-posts (399mm wide) on **welded steel L-brackets** (one
+  leg welded to each post inner face, the ply bolted to the landing leg — the rear-panel method), with
+  the risers held by **cushioned P-clips**. The five risers were pulled **flush onto the boards**: the
+  **DV-01 recycle line re-routed** off IBC-3, across and **down the far board**, then two 90° turns into
+  DV-01 (was standing 75mm proud); P-02 discharge / P-01→ACC-01 / P-02 suction nudged to the board plane;
+  P-05 inlet already there. 3D done in **water** (`.skp` saved + uploaded); cascade to
+  overview/ibc-stack/construction + parts/cost + reports + 2D panel-layout pending.
+
 - **Spray-beam removal cycle (#28) closed as no-lift / park-and-roll.** Decided against a lift-out
   mechanism: the muslin loads by parking the gantry at the near end and rolling the beam back over
   the laid fabric (report §4.2), and beam service is via the right-walkway grate (§4.3). Verified the

@@ -304,9 +304,10 @@ def kit(part="all", p02_on_corridor=False):
     _rec0 = len(p)                                        # capture the recycle-leg elements _side_entry is about to append (part='recycle')
     cp._side_entry(p, "DV-01 recycle -> IBC-3 (buffer)",
         [(DCX + tipd, DCY, DCZ),                         # off DV-01's +X recycle port (z235)
-         (DCX + tipd + 40, DCY, DCZ),                    # +X OUT of the port (collinear with the +X stub) — swept elbow at the next vertex
-         (DCX + tipd + 40, DCY, r_ez),                   # RISE to the Brown top-entry level
-         (r_ex, DCY, r_ez)],                             # −X along the corridor to the entry lane
+         (DCX + tipd + 40, DCY, DCZ),                    # +X OUT of the port — 90° #1 into DV-01
+         (DCX + tipd + 40, cp.SB_RISER_YD_FAR, DCZ),     # +Yd onto the FAR support-board riser plane (#29) — 90° #2 into DV-01
+         (DCX + tipd + 40, cp.SB_RISER_YD_FAR, r_ez),    # RISE up the board face to the Brown top-entry level
+         (r_ex, cp.SB_RISER_YD_FAR, r_ez)],              # −X along the top to the entry lane
         r_ex, cp.YD_NEAR, r_ez, -1, ov.C_BLUE, drop=-50, check=False)   # −Yd into the Brown tote; no CV-3 — P-04 has an integral check + top entry can't siphon (matches the old DV-02→IBC-3 entry)
     recycle_elems = list(p[_rec0:])                      # the DV-01 recycle→IBC-3 pieces, captured by identity (material names leak across pipes — don't match by substring)
     # 6. DV-01 WASTE (branch, z+) → the shared IBC-4 merge tee's z− branch (DV-02's waste also lands here,
@@ -685,9 +686,10 @@ def skid_plumbing(part="all"):
     exitX = 4900                                                        # −X of the ACC-01/P-01 column (bodies X≥4921) so the drop clears them
     cpt = (4630, g0, 65)                                                # ribbon entry −X of the near upright (X4646); ribbon_run does the +X to the slot + the notch
     npt = (L0, 65, RZ)                                                  # near-rim junction (Yd65, clear of the end beam)
-    lead  = [p2o, (p2o[0], p2o[1] + 30, p2o[2]),                        # +Yd OUT of the +Yd OUT port (stub-collinear) — swept elbow at the next vertex
-             (exitX, p2o[1] + 30, p2o[2]),                              # −X OUT of the pump column (+Yd side, above P-01/ACC-01)
-             (exitX, p2o[1] + 30, 65),                                  # DROP to the corridor entry Z, clear of the column
+    rpy = cp.SB_RISER_YD_FAR                                            # 1285 — #29: P-02 discharge riser sits on the FAR support board (flush)
+    lead  = [p2o, (p2o[0], rpy, p2o[2]),                                # +Yd OUT of the +Yd OUT port onto the board riser plane
+             (exitX, rpy, p2o[2]),                                      # −X OUT of the pump column (+Yd side, above P-01/ACC-01)
+             (exitX, rpy, 65),                                          # DROP to the corridor entry Z, clear of the column
              (exitX, cp.CTR_Y, 65),                                     # −Yd to mid-gap Yd1181 (clear of BOTH uprights: 1046-1096 & 1258-1266)
              (cpt[0], cp.CTR_Y, 65),                                    # −X across the uprights' X-span at mid-gap Yd
              cpt]                                                       # −Yd to the notch Yd (1110) on the −X side of the near upright

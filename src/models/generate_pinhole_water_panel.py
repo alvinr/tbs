@@ -719,7 +719,11 @@ def skid_plumbing(part="all"):
         [acc2_out,                                          # off ACC-02's −X OUT port (collinear −X)
          (acc2_out[0] - 55, ov.PWP_FILTER_YD, zb),          # −X lead-out off the OUT port
          (acc2_out[0] - 55, CLIPY, zb),                     # −Yd onto the ply clip plane — CLAMPED to the panel face
-         (b5rx + 40, CLIPY, zb),                            # −X along the panel bottom, HUGGING the ply, to BV-05 (Yd35 clears the Yd104 P-04 suction riser — no hump)
+         (3210, CLIPY, zb),                                 # −X toward BV-05, to just +X of the P-04 suction riser (X3180)
+         (3210, CLIPY + 40, zb),                            # +Yd HUMP out over the P-04 suction riser (now nudged to Yd35, #29) — passes in front
+         (3150, CLIPY + 40, zb),                            # −X across, clear of the riser
+         (3150, CLIPY, zb),                                 # −Yd back onto the ply clip plane
+         (b5rx + 40, CLIPY, zb),                            # −X along the panel bottom, HUGGING the ply, to BV-05
          (b5rx + 40, CLIPY, 700),                           # DROP to the BV-05 recycled-port height
          (b5rx + 40, 69, 700),                              # +Yd to the BV-05 lane (Yd69)
          (b5rx, 69, 700)], rp, color=ov.C_IBC_BROWN))       # −X into the +X recycled port

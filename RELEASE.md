@@ -41,8 +41,10 @@ file** — a release must not ship without a changelog entry:
   **walkway edge (X4770)** for reach, labels moved to the valve centers on the operator side;
   spine far-side X-port lines (P-05→X3, P-03→X4) clamped; the DV-01→IBC-3 tote entry dropped to
   Z1080 with the flange seated on the cage edge and the run simplified (straight in, no drop-jog).
-  3D done in **water** (`.skp` saved + uploaded); cascade to overview/ibc-stack/construction +
-  parts/cost + reports + 2D panel-layout pending.
+  3D done in **water** (`.skp` saved + uploaded). **BOM/cost:** 3 ply side boards (cut from the
+  corridor 4×8 offcut — no added ply), 12 welded L-brackets, 39 cushioned 3/4" P-clips →
+  **+$33/$46/$61 water** (grand total $26,024/$30,492/$37,028). Cascade to
+  overview/ibc-stack/construction re-send + reports narrative + 2D panel-layout + interference pending.
 
 - **Spray-beam removal cycle (#28) closed as no-lift / park-and-roll.** Decided against a lift-out
   mechanism: the muslin loads by parking the gantry at the near end and rolling the beam back over

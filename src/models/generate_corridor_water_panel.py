@@ -259,6 +259,17 @@ def rear_panel():
     #   (z=TOP_Z−S=2246) to also back the X1 fill cross, Blue equalization tie, and the high fill/recycle runs.
     # (The X3 brown-pipe support shelf was removed — the P-05→X3 discharge now runs behind the panel on
     #  the Yd1245 lane, no longer crossing the rear corridor above the merge, so it needs no shelf.)
+    # Spine riser P-clips (#29) — same cushioned-strap method as the side-board clips: hold the three
+    # back-of-panel WASTE risers flush to the spine's −Yd face (Yd1206).
+    spine_face = 1206
+    for rx, ryd, zb, zt in ((5200, 1196, 279, 1679),      # X4 waste (P-03) pickup
+                            (5289, 1195, 65, 1209),        # DV-02 waste → IBC-4
+                            (5404, 1195, 242, 1230)):      # DV-01 → IBC-4 merge
+        for frac in (0.30, 0.70):
+            cz = max(300, min(int(zb + (zt - zb) * frac), int(TOP_Z - S - 20)))
+            y_lo = min(spine_face, ryd - RP - 2); y_hi = max(spine_face, ryd + RP + 2)
+            p.append(ov.ruby_box("Spine riser P-clip", rx - 14, y_lo, cz - 8,
+                                 28, y_hi - y_lo, 16, color=C_CLIP))
     return "\n".join(p)
 
 

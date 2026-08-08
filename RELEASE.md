@@ -35,8 +35,14 @@ file** — a release must not ship without a changelog entry:
   (the 3 grey waste risers — X4 waste / DV-02 / DV-01→merge) and the **filter-skid panel** (the
   3 vertical runs — DV-02→F1 + tray-sump→P-04 nudged to the Yd35 clip plane, F3→SV-01 already there —
   plus the horizontal runs: brown ± ACC-02 flush, and standoff clamps on the blue ± SV-01 and the
-  brown DV-02 row). 3D done in **water** (`.skp` saved + uploaded); cascade to
-  overview/ibc-stack/construction + parts/cost + reports + 2D panel-layout pending.
+  brown DV-02 row). **Operability + review pass:** BV-03 handle rotated to −X (cargo door); a second
+  **upper near board (Z1260–1950)** backs BV-02/BV-06 + the brown P-05 (Z1300) and grey P-03 (Z1902)
+  horizontals; BV-02/BV-06 handles rotated +Yd into the corridor and their loops pulled to the
+  **walkway edge (X4770)** for reach, labels moved to the valve centers on the operator side;
+  spine far-side X-port lines (P-05→X3, P-03→X4) clamped; the DV-01→IBC-3 tote entry dropped to
+  Z1080 with the flange seated on the cage edge and the run simplified (straight in, no drop-jog).
+  3D done in **water** (`.skp` saved + uploaded); cascade to overview/ibc-stack/construction +
+  parts/cost + reports + 2D panel-layout pending.
 
 - **Spray-beam removal cycle (#28) closed as no-lift / park-and-roll.** Decided against a lift-out
   mechanism: the muslin loads by parking the gantry at the near end and rolling the beam back over

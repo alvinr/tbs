@@ -729,6 +729,13 @@ def skid_plumbing(part="all"):
         for cz in (cz_lo, cz_hi):
             p.append(ov.ruby_box("Skid riser P-clip", rx - 14, skid_face, cz - 8,
                                  28, (SKID_CLIP_YD + rp + 2) - skid_face, 16, color=cp.C_CLIP))
+    # horizontal-run clamps flagged in review — brown ± ACC-02 (on the panel-bottom lane), blue ±
+    # SV-01, and the brown row line → DV-02.  Same clip, bridging each run back to the ply face.
+    for rx, ryd, cz in ((3720, 35, 948),  (3970, 35, 948),     # brown ± ACC-02 (panel-bottom lane, flush)
+                        (4230, 110, 1610), (4370, 110, 1610),  # blue ± SV-01 (forward valve lane — standoff)
+                        (3560, 104, 1312), (3820, 104, 1312)): # brown row line → DV-02 (kit-row lane — standoff)
+        p.append(ov.ruby_box("Skid pipe P-clip", rx - 14, skid_face, cz - 8,
+                             28, (ryd + rp + 2) - skid_face, 16, color=cp.C_CLIP))
     if part == "all":
         return "\n".join(p)
     # Partition legs by the construction-model phase they install in, matched on each pipe's own

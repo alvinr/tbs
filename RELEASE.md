@@ -33,9 +33,10 @@ file** — a release must not ship without a changelog entry:
   DV-01 (was standing 75mm proud); P-02 discharge / P-01→ACC-01 / P-02 suction nudged to the board plane;
   P-05 inlet already there. The **same P-clip method was extended** to the **drain-riser spine**
   (the 3 grey waste risers — X4 waste / DV-02 / DV-01→merge) and the **filter-skid panel** (the
-  3 vertical runs — DV-02→F1 + tray-sump→P-04 nudged to the Yd35 clip plane, F3→SV-01 already there).
-  3D done in **water** (`.skp` saved + uploaded); cascade to overview/ibc-stack/construction +
-  parts/cost + reports + 2D panel-layout pending.
+  3 vertical runs — DV-02→F1 + tray-sump→P-04 nudged to the Yd35 clip plane, F3→SV-01 already there —
+  plus the horizontal runs: brown ± ACC-02 flush, and standoff clamps on the blue ± SV-01 and the
+  brown DV-02 row). 3D done in **water** (`.skp` saved + uploaded); cascade to
+  overview/ibc-stack/construction + parts/cost + reports + 2D panel-layout pending.
 
 - **Spray-beam removal cycle (#28) closed as no-lift / park-and-roll.** Decided against a lift-out
   mechanism: the muslin loads by parking the gantry at the near end and rolling the beam back over

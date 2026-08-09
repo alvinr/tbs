@@ -43,8 +43,10 @@ file** — a release must not ship without a changelog entry:
   Z1080 with the flange seated on the cage edge and the run simplified (straight in, no drop-jog).
   3D done in **water** (`.skp` saved + uploaded). **BOM/cost:** 3 ply side boards (cut from the
   corridor 4×8 offcut — no added ply), 12 welded L-brackets, 39 cushioned 3/4" P-clips →
-  **+$33/$46/$61 water** (grand total $26,024/$30,492/$37,028). Cascade to
-  overview/ibc-stack/construction re-send + reports narrative + 2D panel-layout + interference pending.
+  **+$33/$46/$61 water** (grand total $26,024/$30,492/$37,028). **Cascade complete:**
+  overview/ibc-stack/construction re-sent + uploaded; interference re-audit clean (0 crossings,
+  after a hump on ACC-02→BV-05 to clear the nudged tray-sump riser); plumbing-report §5.3
+  support-scheme narrative; panel-layout 2D shows the side boards edge-on on their L-brackets.
 
 - **Spray-beam removal cycle (#28) closed as no-lift / park-and-roll.** Decided against a lift-out
   mechanism: the muslin loads by parking the gantry at the near end and rolling the beam back over

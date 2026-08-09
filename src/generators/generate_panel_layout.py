@@ -298,6 +298,18 @@ def draw_corridor_panel():
             ha="center", va="top",
             fontsize=5.5, color=C_PLY_EC, zorder=4, **FONT)
 
+    # ── #29 pump-run SIDE SUPPORT BOARDS — edge-on at the near/far corridor walls (this
+    #    front-elevation plane cuts through them); each is an 18mm ply board recessed flush on
+    #    welded steel L-brackets, the risers P-clipped to it. NEAR wall = local Yd 0 (lower board
+    #    Z480-900 + upper board Z1260-1950, backing BV-02/BV-06); FAR wall = local Yd PANEL_W (Z400-820).
+    SB_T = 18
+    for xb, z0b, z1b in ((0, 480, 900), (0, 1260, 1950), (PANEL_W - SB_T, 400, 820)):
+        rect(xb, z0b, SB_T, z1b - z0b, C_PLY, C_PLY_EC, lw=1.0, zorder=6, alpha=0.9)
+    ax.text(sx(SB_T + 6), sz(1600), "NEAR SIDE\nSUPPORT BOARDS\n(edge-on, on\nwelded L-brackets)",
+            ha="left", va="center", fontsize=3.6, color=C_PLY_EC, zorder=9, **FONT)
+    ax.text(sx(PANEL_W - SB_T - 6), sz(610), "FAR SIDE\nSUPPORT BOARD\n(edge-on)",
+            ha="right", va="center", fontsize=3.6, color=C_PLY_EC, zorder=9, **FONT)
+
     # ── PUMPS — SINGLE VERTICAL COLUMN ────────────────────────────────────
     #   Bottom→top: ACC-01 (below P-01), P-01, P-04, P-05, P-03.  All centered
     #   on PUMP_COL_C; IN/suction LEFT (CORR_PORT_IN), OUT/discharge RIGHT.

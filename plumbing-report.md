@@ -346,6 +346,30 @@ close intervals. Keep runs off the sunniest wall face — PVC softens near 60 °
 retains > 200 PSI hot, far above service. (If a future deployment must travel wet or in freezing
 conditions, PEX is the tougher DIY alternative.)
 
+### 5.3 Pump-run supports
+
+The corridor pump risers and the back-of-panel drain runs cantilever off the pump ports and
+tote taps, so each is backed and clamped rather than left hanging on its solvent-weld joints.
+The method mirrors the rear panel: **18mm exterior-ply boards recessed flush** into the window
+between the IBC-frame front and rear side-posts, carried on **welded steel L-brackets** (one leg
+welded to each post inner face, the ply bolted to the landing leg), with the runs held to the
+board face by **cushioned P-clips**.
+
+- **Corridor side walls** — one board per wall. The far (film-plane) side backs the DV-01
+  recycle, P-02 discharge, and P-01→ACC-01 risers; the near side carries the P-02 suction riser
+  (with BV-03) on a lower board and BV-02 / BV-06 (P-05 / P-03 suction) on an upper board. Each
+  riser is pulled flush onto its board plane, and the DV-01 recycle line is re-routed off IBC-3
+  and down the far board before turning into DV-01.
+- **Drain-riser spine** — the three grey/brown waste risers clamp to the spine's near face; the
+  P-05→X3 and P-03→X4 lines running along the spine's far face toward the end wall clamp to it too.
+- **Filter skid** — the vertical skid runs (DV-02→F1, tray-sump→P-04, F3→SV-01) are pulled onto
+  the backing panel and clamped, with the ACC-02 / SV-01 / DV-02-row horizontals held to the panel.
+
+The near-board ball valves (BV-02 / BV-06) turn their handles into the open corridor and sit on
+forward loops at the walkway edge, so they clear the panel and stay reachable. Hardware: 3 side
+boards (cut from the corridor ply sheet — no added ply), 12 welded L-brackets, and 39 cushioned
+3/4" P-clips (§Parts).
+
 ---
 
 ## 6. Flow Paths

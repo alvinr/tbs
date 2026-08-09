@@ -12273,8 +12273,120 @@ end
   grp = ents.add_group
   grp.name = "ACC-02 -> BV-05 (recycled spray)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1344.5.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(-457.9000000000001.mm, 0.mm, 0.mm)
   circle = ge.add_circle([3687.5.mm,35.mm,948.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # ACC-02 -> BV-05 (recycled spray) elbow
+  grp = ents.add_group
+  grp.name = "ACC-02 -> BV-05 (recycled spray) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([3229.6.mm,54.60000000000001.mm,948.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,-1.000000], 19.600000000000005.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([3229.6.mm,35.mm,948.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # ACC-02 -> BV-05 (recycled spray)
+  grp = ents.add_group
+  grp.name = "ACC-02 -> BV-05 (recycled spray)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 10.404000000000003.mm, 0.mm)
+  circle = ge.add_circle([3210.mm,54.6.mm,948.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # ACC-02 -> BV-05 (recycled spray) elbow
+  grp = ents.add_group
+  grp.name = "ACC-02 -> BV-05 (recycled spray) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([3200.004.mm,65.004.mm,948.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 9.996.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([3210.mm,65.004.mm,948.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # ACC-02 -> BV-05 (recycled spray)
+  grp = ents.add_group
+  grp.name = "ACC-02 -> BV-05 (recycled spray)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-30.403999999999996.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3200.004.mm,75.mm,948.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # ACC-02 -> BV-05 (recycled spray) elbow
+  grp = ents.add_group
+  grp.name = "ACC-02 -> BV-05 (recycled spray) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([3169.6.mm,55.39999999999999.mm,948.mm], [0.000000,1.000000,0.000000], [0.000000,0.000000,1.000000], 19.600000000000005.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([3169.6.mm,75.mm,948.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # ACC-02 -> BV-05 (recycled spray)
+  grp = ents.add_group
+  grp.name = "ACC-02 -> BV-05 (recycled spray)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, -10.404000000000003.mm, 0.mm)
+  circle = ge.add_circle([3150.mm,55.4.mm,948.mm], vec, 10.5.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # ACC-02 -> BV-05 (recycled spray) elbow
+  grp = ents.add_group
+  grp.name = "ACC-02 -> BV-05 (recycled spray) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([3140.004.mm,44.995999999999995.mm,948.mm], [1.000000,0.000000,0.000000], [-0.000000,-0.000000,-1.000000], 9.996.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([3150.mm,44.995999999999995.mm,948.mm], [0.000000,-1.000000,0.000000], 10.5.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["IBC-3 (Brown) tap -> P-02 inlet"] || model.materials.add("IBC-3 (Brown) tap -> P-02 inlet")
+  mat.color = Sketchup::Color.new(107, 74, 46)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # ACC-02 -> BV-05 (recycled spray)
+  grp = ents.add_group
+  grp.name = "ACC-02 -> BV-05 (recycled spray)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(-797.0039999999999.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([3140.004.mm,35.mm,948.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

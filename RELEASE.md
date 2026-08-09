@@ -25,7 +25,8 @@ file** — a release must not ship without a changelog entry:
 ## [Unreleased]
 
 - **Pump-run support boards in the IBC plumbing corridor (#29 follow-up).** The cantilevered pump
-  risers on the two corridor side walls now land on **two 18mm ply boards**, each recessed **flush**
+  risers on the two corridor side walls now land on **three 18mm ply boards** (far wall + lower and
+  upper near-wall boards), each recessed **flush**
   in the window between the front & rear side-posts (399mm wide) on **welded steel L-brackets** (one
   leg welded to each post inner face, the ply bolted to the landing leg — the rear-panel method), with
   the risers held by **cushioned P-clips**. The five risers were pulled **flush onto the boards**: the

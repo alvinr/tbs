@@ -64,7 +64,7 @@ CD_BOT, CW_BOT = 76, 38              # bottom 3×1.5 web-vertical: web depth (Z)
 CD_TOP, CW_TOP = 76, 38              # top 3×1.5 laid flat: web width (X) × flange height (Z)
 HB_T = 5                             # web/flange wall = 0.188" (4.78mm)
 SPLICE_YD = 260                      # removable = 6ft (1830) + 260mm; the length-splice sits at the PINHOLE end
-                                     # (Yd~260, shortest-throw = least-travelled) → least chance the trolley rolls it
+                                     # (Yd~260, shortest-throw = least-travelled) → least chance the skate rolls it
 
 # ── FILM-PLANE WIDTH INSET — the ghost panel edges land on the CARRIAGE line (inb), NOT the rail line.
 # At the rail line (X_L/X_R) the full-height panel skewers the bottom weight beam (which straddles cx by
@@ -96,7 +96,7 @@ LEFT_CUT_YD = 2090                   # cut Yd = the panel-swing envelope edge on
 
 
 def channel_v(name, cx, zc, y0, ylen, tag, cin, alpha=None):
-    """BOTTOM rail — 6061 Al U-channel stood WEB-VERTICAL (4×2). Web is the OUTBOARD back (splice face);
+    """BOTTOM rail — 6061 Al U-channel stood WEB-VERTICAL. Web is the OUTBOARD back (splice face);
     the two flanges project INBOARD, forming the wheel channel that opens toward the film. Deep web
     (CD_BOT) resists bending. zc = web-centre Z."""
     P = []
@@ -161,7 +161,7 @@ def emit_slide(label, spec, ox=0, oy=0, oz=0):
 
 
 def corner(tag, cx, fz, zc, cin, side):
-    """One corner on a 6061 Al U-channel depth rail. BOTTOM = web-vertical 4×2 (weight); TOP = flat 3×1.5 (guide).
+    """One corner on a 6061 Al U-channel depth rail. BOTTOM = web-vertical (weight); TOP = flat 3×1.5 (guide).
       cx = corner X   fz = film-corner Z   zc = rail web-centre Z   cin = +1 (left) / -1 (right)
       side = 'L' drop-in (stub + welded bridge + removable + support + pinhole gusset) / 'R' flanged."""
     P = []
@@ -313,8 +313,8 @@ def corner(tag, cx, fz, zc, cin, side):
 
 def corners():
     P = [
-        corner("BL", X_L, PZ0, PZ_HB_BOT, +1, "L"),   # bottom-left  — 4×2 web-vertical (weight), drop-in
-        corner("BR", X_R, PZ0, PZ_HB_BOT, -1, "R"),   # bottom-right — 4×2 web-vertical (weight), flanged (IBC plate)
+        corner("BL", X_L, PZ0, PZ_HB_BOT, +1, "L"),   # bottom-left  — web-vertical (weight), drop-in
+        corner("BR", X_R, PZ0, PZ_HB_BOT, -1, "R"),   # bottom-right — web-vertical (weight), flanged (IBC plate)
         corner("TL", X_L, PZ1, PZ_HB_TOP, +1, "L"),   # top-left     — 3×1.5 flat guide, drop-in
         corner("TR", X_R, PZ1, PZ_HB_TOP, -1, "R"),   # top-right    — 3×1.5 flat guide, flanged
     ]

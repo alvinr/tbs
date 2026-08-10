@@ -83,7 +83,7 @@ C_WID  = 2362   # interior width = focal length = optical depth Y (mm)
 C_HGT  = 2388   # interior height Z (mm)
 
 # ── Film plane ────────────────────────────────────────────────────────────────
-FP_H     = 2094   # film plane height (mm)          [film-plane-redesign: 2388→2138 — active height with the low-profile V-trolley corner (BUILD 140→110); 2138→2094 — top edge lowered 44mm for +25mm ceiling clearance (top rail dropped via RAIL_OFF_TOP); ~C_HGT − RAIL_OFF_TOP(144) − RAIL_OFF_BOT(walkway)]
+FP_H     = 2094   # film plane height (mm)          [film-plane-redesign: 2388→2138 — active height with the low-profile acetal-skate corner (BUILD 140→110); 2138→2094 — top edge lowered 44mm for +25mm ceiling clearance (top rail dropped via RAIL_OFF_TOP); ~C_HGT − RAIL_OFF_TOP(144) − RAIL_OFF_BOT(walkway)]
 FP_X_L   = 150    # film plane left edge X (mm)     [rev6: was 625; panel inner face 120mm + 30mm]
 FP_X_R   = 4649   # film plane right edge X (mm)    [was 4019 → wider right zone]
 FP_W     = FP_X_R - FP_X_L   # = 4499mm          [rev6: was 4024]
@@ -155,11 +155,42 @@ RAIL_OFF_BOT = 160    # floor (BOTTOM) offset (mm) = WALKWAY_H 140 + 20mm so the
 MAX_TILT_DEG  = 40.0   # design max single-axis tilt (cross-slide-Z limited)
 MAX_SWING_DEG = 28.0   # design max single-axis swing (≈ rail-depth limit 28.7°)
 
-# Cross-slide strokes that absorb the rigid-rotation arc travel at the corners
-# (Option A spec; not yet drawn in the FPM sheets / 3D model):
-XSLIDE_Z_TRAVEL = round((FP_H / 2) * (1 - math.cos(math.radians(MAX_TILT_DEG))))   # ≈ 245mm (tilt, FP_H 2094) — reserved
-XSLIDE_X_TRAVEL = round((FP_W / 2) * (1 - math.cos(math.radians(MAX_SWING_DEG))))  # ≈ 263mm (swing) — reserved
-XSLIDE_STROKE   = 300   # specified linear cross-slide travel (mm) — covers both, with margin — reserved
+# Cross-slide strokes that absorb the rigid-rotation arc travel at the corners (Option A).
+# The Z-slide travel SETS the max tilt (see MAX_TILT_DEG) — dimensioned in FPM sheets 3/8/9.
+XSLIDE_Z_TRAVEL = round((FP_H / 2) * (1 - math.cos(math.radians(MAX_TILT_DEG))))   # ≈ 245mm (tilt foreshortening at MAX_TILT, FP_H 2094)
+XSLIDE_X_TRAVEL = round((FP_W / 2) * (1 - math.cos(math.radians(MAX_SWING_DEG))))  # ≈ 263mm (swing foreshortening at MAX_SWING)
+XSLIDE_STROKE   = 300   # specified linear cross-slide travel per axis (mm) — covers both Z/X foreshortening with margin
+
+# ── Film-plane CORNER mechanism — bolt-level firm dims (dimensioned in FPM sheets 3/4/8/9/10) ──
+# Every value here is firm from the procurement BOM (parts.py film system) or a cited datasheet, so
+# the corner blueprint is parametric and cannot drift.  Hole PCDs / edge distances / the L-plate bend
+# are DESIGNED in Phase 2 and added below once drawn.
+# Cross-slide flat bar — 304 SS 1/4"x1-1/2" (parts.py fp-cross-slide):
+XSLIDE_BAR_W = 38.1    # cross-slide flat-bar width (mm) = 1-1/2"
+XSLIDE_BAR_T = 6.35    # cross-slide flat-bar thickness (mm) = 1/4"
+# Belden UJ-SS750x375 U-joint (datasheet: MROSupply 2561134 / Belden catalog):
+UJOINT_BORE   = 9.53   # bore (mm) = 0.380" (3/8")
+UJOINT_OD     = 19.05  # yoke OD (mm) = 0.75" nominal (0.745" actual)
+UJOINT_LEN    = 68.3   # overall length (mm) = 2.690"
+UJOINT_YOKE_L = 34.2   # single-yoke length (mm) = 1.345"
+UJOINT_HUB_L  = 24.1   # hub depth (mm) = 0.950"
+UJOINT_ANGLE  = 45     # max operating angle per side (deg)
+UJOINT_STUB_OD = 9.53  # 3/8" 304 stub-shaft OD (mm) — matches bore (parts.py fp-stub-shaft)
+# Acetal skate rollers on Ø10 304 axles (parts.py fp-skate-*):
+SKATE_ROLLER_OD = 31.75  # load roller OD (mm) = 1-1/4" Delrin (rides the U-channel bottom flange)
+SKATE_KEEPER_OD = 19.05  # keeper roller OD (mm) = 3/4" Delrin (captive under the top flange)
+SKATE_ROLLER_W  = 20     # roller width (mm, cut)
+SKATE_AXLE_OD   = 10     # axle-pin OD (mm) — 10x60mm 304 clevis pin
+SKATE_AXLE_LEN  = 60     # axle-pin length (mm)
+# Cam rail-brake — McMaster 5128A63 (3 per corner):
+CAM_CLAMP_BASE_W  = 22   # clamp base long dim (mm)
+CAM_CLAMP_BASE_D  = 19   # clamp base short dim (mm)
+CAM_CLAMP_HOLE_SP = 15.7 # 2x M4x0.7 base-hole spacing (mm)
+CAM_CLAMP_N       = 3    # cam clamps per corner
+# Corner (L) plate — 1/4" 304 SS, 6"x8" blank bent to an L (parts.py corner-l-plate):
+CORNER_PLATE_W = 203.2   # plate blank long side (mm) = 8"
+CORNER_PLATE_H = 152.4   # plate blank short side (mm) = 6"
+CORNER_PLATE_T = 6.35    # plate thickness (mm) = 1/4"
 
 # ── Tilt-swing front board (spherical-pivot adapter on the pinhole frame) ─────
 # The board pivots up to FRONT_BOARD_MAX_DEG in tilt AND swing, set by the screw-shoulder
@@ -182,7 +213,7 @@ BOARD_TILT_REF_DEG   = 5     # round reference tilt for the image-shift unit-rat
 IMAGE_SHIFT_PER_5DEG = round(C_WID * math.tan(math.radians(BOARD_TILT_REF_DEG)))   # = 207mm (focal × tan 5°)
 FRONT_BOARD_MAX_SHIFT_MM = round(C_WID * math.tan(math.radians(FRONT_BOARD_MAX_DEG)))   # = 219mm — image shift at the ±5.3° hard stop
 IMAGE_AREA_SQFT      = round(FP_W * FP_H / 1e6 * 10.7639)                          # = 101 sq ft (active film plane)
-XSLIDE_N        = 8     # 2 cross-slides (X + Z) per corner × 4 corners — reserved
+XSLIDE_N        = 8     # 2 cross-slides (X + Z) per corner × 4 corners
 
 # ── Equipment zones ───────────────────────────────────────────────────────────
 ZONE_L_END   = FP_X_L    # left zone right boundary X  (= 150mm)  [rev6: was 625]

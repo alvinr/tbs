@@ -570,7 +570,7 @@ def sheet2():
 
     ax.text(W/2, H+255, "VIEW A — SIDE ELEVATION  (TILT)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
-    ax.text(W/2, H+215, "Section through centerline  ·  vertical bridge = Z cross-slide (316 flat bar + UHMW pads; gib preload holds gravity, absorbs tilt foreshorten)  ·  slide-and-clamp, moved in coordinated pairs (rigid plane)",
+    ax.text(W/2, H+215, "Section through centerline  ·  vertical bridge = Z cross-slide (304 flat bar + UHMW pads; gib preload holds gravity, absorbs tilt foreshorten)  ·  slide-and-clamp, moved in coordinated pairs (rigid plane)",
             color=DIM, fontsize=6.5, ha="center", **FONT)
 
     # ── RIGHT PANEL: PLAN CROSS-SECTION — SWING ───────────────────────────────
@@ -658,7 +658,7 @@ def sheet2():
 
     ax.text(L/2, W+455, "VIEW B — CEILING CROSS-SECTION  (SWING)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)
-    ax.text(L/2, W+375, "Section at ceiling height  ·  horizontal bridge = X cross-slide (316 flat bar + UHMW pads; floats then cam-clamps, absorbs swing foreshorten)  ·  left/right slide-and-clamp as pairs (rigid single-axis swing)",
+    ax.text(L/2, W+375, "Section at ceiling height  ·  horizontal bridge = X cross-slide (304 flat bar + UHMW pads; floats then cam-clamps, absorbs swing foreshorten)  ·  left/right slide-and-clamp as pairs (rigid single-axis swing)",
             color=DIM, fontsize=6.5, ha="center", **FONT)
 
     # Combined title
@@ -711,7 +711,7 @@ def view_a(ax):
     # ── WIDE carriage plate (red) — the MOVING part, drawn FULLY and IN FRONT: it extends UP over the skate, so
     #    the 4 wheels sit BEHIND it and are shown ghosted (dotted). The Z-slide (green) runs up its centre. ──
     _rect(ax, 130, 134, 80, 171, C_CAR, z=5)                                         # carriage plate Z134-305 (covers the wheels)
-    _rect(ax, 161, 156, 18, 76, C_TILT, z=6); _hatch316(ax, 161, 156, 18, 76)        # Z (tilt) slide — centred, IN FRONT
+    _rect(ax, 161, 156, 18, 76, C_TILT, z=6); _hatch_xs(ax, 161, 156, 18, 76)        # Z (tilt) slide — centred, IN FRONT
     _rect(ax, 161, 156, 2.5, 76, C_POLY, z=7); _rect(ax, 176.5, 156, 2.5, 76, C_POLY, z=7)
     ax.plot([170, 170], [232, 210], color=C_PIN, lw=1.4, zorder=8)                   # axle-retainer bolt down through the plate
     # cam rail-brake (detailed + dimensioned in Section A-A): base on the plate + lever + pad up onto the top flange
@@ -747,8 +747,8 @@ def view_a(ax):
     leader(ax, 60, 270, 232, 300, "DEPTH RAIL (Y) — 3×1.5 6061 Al U-channel, web-vertical,\nruns in Yd; the traverse (~2.4 m floor rail)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 190, 253, 232, 262, "4-wheel acetal skate — Ø32 LOAD rollers on the bottom flange\n+ Ø20 KEEPER rollers under the top flange (captive)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 210, 210, 232, 210, "wide carriage plate (red) + cam clamp — hangs from the skate axles", ha="left", fs=5.8, color=C_CAR, font=FONT, bbox=LBL_BG)
-    leader(ax, 170, 200, 232, 186, "Z (TILT) slide — 316 flat bar + UHMW + gib (green, up the plate centre)", ha="left", fs=5.8, color=C_TILT, font=FONT, bbox=LBL_BG)
-    leader(ax, 176, 162, 232, 160, "X (SWING) slide — 316 flat bar, INTO PAGE (end-on)", ha="left", fs=5.8, color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(ax, 170, 200, 232, 186, "Z (TILT) slide — 304 flat bar + UHMW + gib (green, up the plate centre)", ha="left", fs=5.8, color=C_TILT, font=FONT, bbox=LBL_BG)
+    leader(ax, 176, 162, 232, 160, "X (SWING) slide — 304 flat bar, INTO PAGE (end-on)", ha="left", fs=5.8, color=C_SWING, font=FONT, bbox=LBL_BG)
     leader(ax, 182, 158, 232, 138, "single U-joint (Belden UJ-SS750x375) + 304 SS corner plate → frame angle", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 181, 300, 232, 118, "2x2 6061 Al frame angle + ACM/muslin — rises UP (the rigid plane)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
 
@@ -931,16 +931,16 @@ def section_top(ax):
 
 
 def view_c(ax):
-    """C — CROSS-SLIDE SECTION (Z tilt / X swing): a 316 flat bar captured by a 316 carriage on
+    """C — CROSS-SLIDE SECTION (Z tilt / X swing): a 304 flat bar captured by a 304 carriage on
     UHMW pads; an adjustable brass-tip gib sets the drag that HOLDS the gravity-loaded vertical (Z)
     axis, yet still hand-slides. The X (swing) cross-slide is the same part, gravity-neutral."""
     C_WAY = "#8E949C"
     ax.set_xlim(-40, 150); ax.set_ylim(-24, 64); ax.set_aspect("equal"); ax.axis("off")
-    # 316 carriage — inverted-U wrapping the bar (hatched = cut solid) + bottom plate
+    # 304 carriage — inverted-U wrapping the bar (hatched = cut solid) + bottom plate
     for (x, y, w, h) in [(10, 27, 52, 7), (10, 2, 52, 4), (10, 6, 4, 21), (58, 6, 4, 21)]:
         _rect(ax, x, y, w, h, C_STEEL, z=5)
         hatch_rect(ax, x, y, w, h, color="#8A93A0", hatch="///", lw=0.0)
-    # 316 flat-bar way (the Z-tilt / X-swing accommodation bar), captured in the middle
+    # 304 flat-bar way (the Z-tilt / X-swing accommodation bar), captured in the middle
     _rect(ax, 14, 16, 44, 8, C_WAY, z=6)
     hatch_rect(ax, 14, 16, 44, 8, color="#6E747C", hatch="\\\\\\", lw=0.0)
     # UHMW pads on both faces
@@ -952,15 +952,15 @@ def view_c(ax):
     _rect(ax, 33, 3.5, 6, 5.5, C_PIN, z=8)
     for yy in (4.6, 5.9, 7.2):
         ax.plot([31.7, 40.3], [yy, yy], color=OUT, lw=0.4, zorder=9)
-    leader(ax, 44, 20, 68, 48, "316 flat-bar WAY (Z tilt / X swing)",
+    leader(ax, 44, 20, 68, 48, "304 flat-bar WAY (Z tilt / X swing)",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 30, 25.5, 68, 36, "UHMW pad — self-lube, DRY (both faces)",
            ha="left", fs=5.8, color="#8A6A2A", font=FONT, bbox=LBL_BG)
-    leader(ax, 12, 32, 68, 24, "316 carriage — the MOVING part",
+    leader(ax, 12, 32, 68, 24, "304 carriage — the MOVING part",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 36, 5, 42, -16, "adjustable GIB + brass-tip screw — sets the drag that HOLDS\nthe gravity-loaded Z axis, yet still hand-slides (re-tune after break-in)",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-40, 64, "C — CROSS-SLIDE SECTION  (Z tilt / X swing): UHMW pad on 316 flat bar; the gib holds the vertical axis",
+    ax.text(-40, 64, "C — CROSS-SLIDE SECTION  (Z tilt / X swing): UHMW pad on 304 flat bar; the gib holds the vertical axis",
             fontsize=7.0, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
 
@@ -990,8 +990,8 @@ def sheet3():
         "1. A pinhole has infinite depth of field, so the plane is positioned for scene control "
         "(tilt / swing / rise), not focus — hence slide-and-clamp, not leadscrews.",
         "2. Three axes per corner: DEPTH (Y) is the traverse — a 4-wheel acetal skate in a 3x1.5 304 "
-        "U-channel (McMaster 1262T21; top-bottom depth = tilt, left-right = swing); VERTICAL (Z, green, "
-        "~250mm) + HORIZONTAL (X, purple, ~260mm) cross-slides (316 flat bar + UHMW pad + gib) absorb the "
+        "U-channel (Grainger 795M51; top-bottom depth = tilt, left-right = swing); VERTICAL (Z, green, "
+        "~250mm) + HORIZONTAL (X, purple, ~260mm) cross-slides (304 flat bar + UHMW pad + gib) absorb the "
         "tilt/swing foreshortening.",
         "3. Roll the skate / push each cross-slide into position; the gib drag holds the vertical, then "
         "throw the cam rail-brake (McMaster 5128A63, one per corner) to lock depth for the shot + transport. "
@@ -1011,7 +1011,7 @@ def sheet3():
         "(LEFT rails = a transport drop-in — see Sheet 4.)",
         "6. OVERTURNING COUPLE: the film-corner load is ~50mm INBOARD of the rail (via the stack) — a moment "
         "about the rollers. The load↓ / keeper↑ pair, spaced by the channel depth, reacts it — so the keepers "
-        "carry this static couple too. Tightest link: the 316 cross-slide bar in weak-axis bending; keep the "
+        "carry this static couple too. Tightest link: the 304 cross-slide bar in weak-axis bending; keep the "
         "stack compact.",
     ], 2, 99, 3.6, fs=5.4, title_fs=6.6, color=DIM, width=68, wrap=115, font=FONT)
 
@@ -1351,7 +1351,7 @@ def sheet5():
         "CORNER HARDWARE (per corner ×4 — acetal skate + cross-slides + single U-joint):",
         "U-joint  1× Belden UJ-SS750x375 (303/416 SS, setscrew hubs, 45° max, pin-and-block)   ·   boot  1× Belden 806VF1 (nitrile, fitted dry)",
         "Shaft support  2× McMaster 4040N12 (304 SS)   ·   stub  2× 3/8\" 304 SS plain rod (McMaster; optional flat for the U-joint setscrew)",
-        "SKATE  Ø32 acetal rollers ×4 (2 load + 2 keeper) on Ø10 316 axles + carriage plate + inboard lip   ·   Z/X cross-slides  316 flat bar ¼\"×1.5\" + UHMW pads + adjustable gib   ·   cam clamp ×3",
+        "SKATE  Ø32 acetal rollers ×4 (2 load + 2 keeper) on Ø10 304 axles + carriage plate + inboard lip   ·   Z/X cross-slides  304 flat bar ¼\"×1.5\" + UHMW pads + adjustable gib   ·   cam clamp ×3",
         "DEPTH RAIL  3×1.5 (76×38) 6061 Al U-channel, wall-to-wall   ·   RIGHT flanged   ·   LEFT transport drop-in (stub + removable + welded bridge + locating pin + bottom support bridge + pinhole gusset)",
         "Full bill of materials: master-shopping-list.md — §4 Film Plane Mechanism",
     ]
@@ -1765,7 +1765,7 @@ def _joint(ax, x, y, r=3.4):
     draw_circle(ax, x, y, r, color=OUT, fill=True, fc=C_PIN, lw=0.8, zorder=12)
 
 
-def _hatch316(ax, x, y, w, h, z=6):
+def _hatch_xs(ax, x, y, w, h, z=6):
     hatch_rect(ax, x, y, w, h, color="#6E747C", hatch="\\\\\\", lw=0.0)
 
 
@@ -1776,10 +1776,10 @@ def attach_plan(ax):
     cyy = 0
     # carriage plate + Z slide edge-on (into the page here)
     _rect(ax, 40, cyy - 20, 40, 40, C_CAR, z=4)
-    _rect(ax, 52, cyy - 12, 18, 24, C_TILT, z=5); _hatch316(ax, 52, cyy - 12, 18, 24)
+    _rect(ax, 52, cyy - 12, 18, 24, C_TILT, z=5); _hatch_xs(ax, 52, cyy - 12, 18, 24)
     ax.text(60, cyy - 26, "Z slide\n(edge-on)", fontsize=5.0, color=C_TILT, ha="center", va="top", **FONT)
-    # X (SWING) way — a long 316 flat bar along X + carriage that traverses it
-    _rect(ax, 90, cyy - 8, 300, 16, C_SWING, z=5); _hatch316(ax, 90, cyy - 8, 300, 16)
+    # X (SWING) way — a long 304 flat bar along X + carriage that traverses it
+    _rect(ax, 90, cyy - 8, 300, 16, C_SWING, z=5); _hatch_xs(ax, 90, cyy - 8, 300, 16)
     _rect(ax, 300, cyy - 12, 46, 24, C_SWING, z=6)                # X carriage (near one end = swung)
     ax.annotate("", xy=(96, cyy + 26), xytext=(384, cyy + 26), arrowprops=dict(arrowstyle="<->", color=C_SWING, lw=1.0))
     ax.text(240, cyy + 30, "X travel ~260mm = SWING accommodation", fontsize=6, color=C_SWING, ha="center", va="bottom", **FONT)
@@ -1794,7 +1794,7 @@ def attach_plan(ax):
     _rect(ax, 432, cyy - 26, 8, 52, C_FRAME, z=7)                 # frame angle (runs along X)
     ax.add_patch(plt.Rectangle((440, cyy - 26), 6, 52, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))
     _joint(ax, 354, cyy); _joint(ax, 403, cyy); _joint(ax, 421, cyy - 16)
-    leader(ax, 320, cyy - 12, 250, -50, "X carriage — 316 on UHMW; cam-clamp locks swing", ha="left", fs=5.6, color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(ax, 320, cyy - 12, 250, -50, "X carriage — 304 on UHMW; cam-clamp locks swing", ha="left", fs=5.6, color=C_SWING, font=FONT, bbox=LBL_BG)
     leader(ax, 379, cyy + 18, 300, 58, "U-joint SWING pin (true here)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 421, cyy - 16, 405, -52, "frame angle + ACM\n(runs along X)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
     ax.text(-20, 88, "B — PLAN  (Yd × X; looking down Z) — the SWING slide + U-joint swing pin", fontsize=8, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
@@ -1808,10 +1808,10 @@ def attach_tilt(ax):
     cx = 30
     # carriage plate (top, hangs from the skate) + X (swing) slide edge-on (into page)
     _rect(ax, cx - 24, 296, 48, 24, C_CAR, z=4)
-    _rect(ax, cx - 10, 300, 20, 16, C_SWING, z=5); _hatch316(ax, cx - 10, 300, 20, 16)
+    _rect(ax, cx - 10, 300, 20, 16, C_SWING, z=5); _hatch_xs(ax, cx - 10, 300, 20, 16)
     ax.text(cx, 324, "carriage plate + X slide (edge-on)", fontsize=5.2, color=DIM, ha="center", va="bottom", **FONT)
-    # Z (TILT) way — a long 316 flat bar running in Z (vertical) + carriage traversing it (lower = nominal)
-    _rect(ax, cx - 8, 44, 16, 256, C_TILT, z=5); _hatch316(ax, cx - 8, 44, 16, 256)
+    # Z (TILT) way — a long 304 flat bar running in Z (vertical) + carriage traversing it (lower = nominal)
+    _rect(ax, cx - 8, 44, 16, 256, C_TILT, z=5); _hatch_xs(ax, cx - 8, 44, 16, 256)
     _rect(ax, cx - 15, 44, 30, 50, C_TILT, z=6)
     _rect(ax, cx - 11, 48, 4, 42, C_POLY, z=7); _rect(ax, cx + 7, 48, 4, 42, C_POLY, z=7)   # UHMW pads
     _rect(ax, cx - 15, 66, 8, 10, C_PIN, z=7)                                               # gib
@@ -1827,7 +1827,7 @@ def attach_tilt(ax):
     _rect(ax, cx - 12, -32, 34, 6, C_FRAME, z=7)                                            # frame angle
     ax.add_patch(plt.Rectangle((cx - 12, -40), 34, 8, fc=C_PANEL, ec="none", alpha=0.16, zorder=2))
     _joint(ax, cx, 37); _joint(ax, cx, -8)
-    leader(ax, cx - 15, 68, -94, 128, "Z carriage — 316 on UHMW + gib; cam-clamp locks tilt", ha="left", fs=5.6, color=C_TILT, font=FONT, bbox=LBL_BG)
+    leader(ax, cx - 15, 68, -94, 128, "Z carriage — 304 on UHMW + gib; cam-clamp locks tilt", ha="left", fs=5.6, color=C_TILT, font=FONT, bbox=LBL_BG)
     leader(ax, cx - 24, 13, -94, 44, "U-joint TILT pin (true here)", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, cx + 20, -30, 44, -38, "frame angle + ACM", ha="left", fs=5.6, color=OUT, font=FONT, bbox=LBL_BG)
     ax.text(-96, 330, "A — SECTION  (Yd × Z; looking along X) — the TILT slide + U-joint tilt pin", fontsize=7.6, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
@@ -1849,7 +1849,7 @@ def _corner_elevation(ax):
     ax.add_patch(plt.Rectangle((0, 0), AL, 214, fc=C_FRAME, ec=OUT, lw=1.0, ls=(0, (4, 2)),
                                alpha=0.30, zorder=4))                                    # 6061 angle L — left leg
     ax.add_patch(plt.Rectangle((-2, -2), 152, 152, fc=C_STEEL, ec=OUT, lw=1.2, zorder=5))  # 304 SS corner plate — NOW the visible face
-    _hatch316(ax, -2, -2, 152, 152)
+    _hatch_xs(ax, -2, -2, 152, 152)
     ax.add_patch(plt.Rectangle((-58, 21), 168, 38, fc=C_SWING, ec=OUT, lw=1.0, zorder=6))   # X (swing) slide — frontmost now, solid
     ax.add_patch(plt.Circle((40, 40), 9.5, fc=C_UJ, ec=OUT, lw=1.1, zorder=7))              # U-joint Ø19 end-on — yoke toward us
     draw_circle(ax, 40, 40, 2.6, color=OUT, fill=False, lw=0.9, zorder=8)                   # swing pin (end-on)
@@ -1876,8 +1876,8 @@ def _corner_section(ax):
     AL, AW = 50.8, 4.8
     ax.set_xlim(-52, 252); ax.set_ylim(-96, 108); ax.set_aspect("equal"); ax.axis("off")
     ax.invert_xaxis(); ax.invert_yaxis()   # turn the whole section 180° (pinhole to the left, per Alvin)
-    # X (swing) slide — 316 flat bar ¼(6) way + carriage, along X (vertical), BROKEN
-    ax.add_patch(plt.Rectangle((18, -70), 6, 140, fc=C_SWING, ec=OUT, lw=1.0, zorder=5)); _hatch316(ax, 18, -70, 6, 140)
+    # X (swing) slide — 304 flat bar ¼(6) way + carriage, along X (vertical), BROKEN
+    ax.add_patch(plt.Rectangle((18, -70), 6, 140, fc=C_SWING, ec=OUT, lw=1.0, zorder=5)); _hatch_xs(ax, 18, -70, 6, 140)
     for yb in (70, -70):
         s = 1 if yb > 0 else -1
         ax.plot([13, 18, 24, 29], [yb, yb + 4 * s, yb - 4 * s, yb], color=OUT, lw=0.8, zorder=6)
@@ -1891,7 +1891,7 @@ def _corner_section(ax):
     draw_circle(ax, 106, 0, 2.6, color=OUT, fill=False, lw=0.9, zorder=9)                  # swing pin (end-on)
     ax.add_patch(plt.Rectangle((140, -4.75), 26, 9.5, fc=C_STEEL, ec=OUT, lw=1.0, zorder=6))
     # 304 SS corner plate — ¼"(6) thick, 6×8 (part shown)
-    ax.add_patch(plt.Rectangle((166, -70), 6, 140, fc=C_STEEL, ec=OUT, lw=1.0, zorder=6)); _hatch316(ax, 166, -70, 6, 140)
+    ax.add_patch(plt.Rectangle((166, -70), 6, 140, fc=C_STEEL, ec=OUT, lw=1.0, zorder=6)); _hatch_xs(ax, 166, -70, 6, 140)
     # 6061 angle L (2", 3/16" wall): in-plane leg + perp leg; ACM (4mm) + muslin NEST inside
     ax.add_patch(plt.Rectangle((172, -56), AW, 112, fc=C_FRAME, ec=OUT, lw=1.2, zorder=7))        # in-plane leg
     ax.add_patch(plt.Rectangle((172, -56), AW + AL, AW, fc=C_FRAME, ec=OUT, lw=1.2, zorder=7))    # perp leg → pinhole
@@ -1915,7 +1915,7 @@ def _corner_section(ax):
     # 4040N12 304 shaft support — a two-piece clamp on the input stub, bolted to the X-carriage,
     # so the stub (and the whole corner load through it) is positively secured to the purple X-slide
     for (yb, yh) in [(4.75, 7.0), (-11.75, 7.0)]:                 # upper & lower halves — bore = the Ø9.5 stub between them
-        ax.add_patch(plt.Rectangle((47, yb), 13, yh, fc=C_STEEL, ec=OUT, lw=1.0, zorder=8)); _hatch316(ax, 47, yb, 13, yh)
+        ax.add_patch(plt.Rectangle((47, yb), 13, yh, fc=C_STEEL, ec=OUT, lw=1.0, zorder=8)); _hatch_xs(ax, 47, yb, 13, yh)
     ax.add_patch(plt.Rectangle((52.4, 11.75), 2.2, 4.5, fc=C_PIN, ec=OUT, lw=0.3, zorder=13))          # clamp screw — pulls the halves onto the stub
     for by in (-8.5, 8.5):                                        # 2 bolts fix the support to the carriage (purple slide)
         ax.add_patch(plt.Rectangle((40, by - 0.9), 9.6, 1.8, fc=C_PIN, ec=OUT, lw=0.3, zorder=13))
@@ -1927,7 +1927,7 @@ def _corner_section(ax):
     ax.annotate("", xy=(244, 0), xytext=(220, 0), arrowprops=dict(arrowstyle="-|>", color=DIM, lw=1.4))
     ax.text(232, 5, "TO PINHOLE", ha="center", va="bottom", fontsize=6, color=DIM, **FONT)
     # labels
-    leader(ax, 26, -18, 6, -74, "X carriage — 316 on UHMW;\ncam-clamp locks swing", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(ax, 26, -18, 6, -74, "X carriage — 304 on UHMW;\ncam-clamp locks swing", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
     leader(ax, 60, -6, 40, -78, "J3  X-carriage stub Ø9.5 (3/8\") → U-joint bore", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 53, 11.75, 12, 58, "4040N12 304 shaft support — two-piece clamp\nsecures the input stub to the X-slide (purple)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 84, 11.9, 56, 86, "U-joint (tilt + swing) — Belden UJ-SS750x375\nsetscrew per hub locks it on the 3/8in stub", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
@@ -1996,7 +1996,7 @@ def sheet8():
         "skate and the ACM rises back up; the TOP corner is the mirror (film below its guide rail).",
         "THE TWO SLIDES do different jobs: the Z (tilt, green) slide takes the vertical arc-travel a "
         "rigid tilt forces on the corner (~250mm); the X (swing, purple) slide takes the horizontal "
-        "arc-travel of a swing (~260mm). Both are 316 flat bar on UHMW pads with a gib; the gib drag "
+        "arc-travel of a swing (~260mm). Both are 304 flat bar on UHMW pads with a gib; the gib drag "
         "holds the gravity-loaded Z axis, and a cam clamp locks each for the shot.",
         "FIVE JOINTS make the chain (rail→frame, top-down — the full stack is on Sheet 3, View A):",
         "  J1  Z-way seats on the carriage-plate face  M8 ×4 SS (the green Z-slide runs up the plate centre)",

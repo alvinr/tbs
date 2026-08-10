@@ -62,7 +62,10 @@ file** — a release must not ship without a changelog entry:
   across 12 re-sends, zero globals/constants/closures, `purge_unused` clean); root cause is SketchUp's
   **C++ allocator retaining freed pages** (not reclaimed by GC/purge/File>New — only a restart clears
   it). No code fix; mitigation is workflow (restart during heavy send sessions). Written up in
-  `sketchup-memory-investigation.md` (repo-internal, not a TBS artifact).
+  `sketchup-memory-investigation.md` (repo-internal, not a TBS artifact). Follow-up hardening:
+  added `materials.purge_unused` to the two water builders that lacked it (now standard across
+  all 11 generators, self-cleaning orphan materials each rebuild); `layers.purge_unused`
+  deliberately not added (the existing `keep_tags` prune is stricter and scene-safe).
 
 - **Spray-beam removal cycle (#28) closed as no-lift / park-and-roll.** Decided against a lift-out
   mechanism: the muslin loads by parking the gantry at the near end and rolling the beam back over

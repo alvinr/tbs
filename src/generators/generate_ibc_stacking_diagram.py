@@ -52,7 +52,7 @@ C_PLY   = "#D4C8A0"
 FONT    = {"fontfamily": "monospace"}
 
 # ── Frame constants (from equipment-layout-report.md §5) ──────────────────────
-FRAME_RHS      = 50     # 50×50×3mm RHS
+FRAME_RHS      = 50.8   # 2×2×0.120in steel SHS (#26)
 FRAME_T        = 3      # wall thickness
 FRAME_FOOTPRINT_W = C_WID  # frame footprint width (across Yd, wall-to-wall via brackets)
 FRAME_FOOTPRINT_D = 1284  # frame footprint depth (along X, 65mm overhang cargo-door side, flush to end wall)
@@ -1208,7 +1208,7 @@ def sheet4():
                             fc=C_PUMP, ec=C_OUT, lw=0.5, alpha=0.25,
                             ls="--", zorder=15))
     ax.text(leg_x + (70), y_ep,
-            "CORRIDOR PLUMBING PANEL — P-01/P-03/P-04/P-05 pumps + ACC-01 (18mm marine ply)",
+            "CORRIDOR PLUMBING PANEL — P-01/P-02/P-03/P-05 pumps + ACC-01 (18mm exterior ply)",
             ha="left", va="center", fontsize=5.5, color="#A09060",
             **FONT, zorder=15)
 

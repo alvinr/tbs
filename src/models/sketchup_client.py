@@ -81,7 +81,10 @@ def send_ruby(code, host=HOST, port=PORT, timeout=30.0):
             try:
                 response = json.loads(buf.decode("utf-8"))
                 break
-            except json.JSONDecodeError:
+            except (json.JSONDecodeError, UnicodeDecodeError):
+                # JSONDecodeError: partial message; UnicodeDecodeError: a multi-byte
+                # UTF-8 char (°/−/× in a group name) split across a recv() boundary.
+                # Keep accumulating chunks until the full message decodes.
                 continue
         else:
             response = None

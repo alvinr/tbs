@@ -38,7 +38,7 @@ import argparse
 import contextlib
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
-from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_W, FP_H, FP_Y, FP_Y_MIN, RAIL_X_L, RAIL_X_R, RAIL_OFF, RAIL_OFF_TOP, RAIL_OFF_BOT, FP_ANGLE_LEG, BRACE_RHS, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, PUMP_H_HI, EQPANEL_X, EQPANEL_T, EQPANEL_Z_HI, EQPANEL_YD, EQPANEL_YD_SPAN, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, IBC_FRAME_RHS, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_CAP_T, LT_OPENING_DEG, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, WALKWAY_MUSLIN_NOTCH_R_X1, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, PULL_CORD_BOTTOM_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV02_X, BV02_Z, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z
+from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, LEFT_WK_CANT_ARM_Z0, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_W, FP_H, FP_Y, FP_Y_MIN, RAIL_X_L, RAIL_X_R, RAIL_OFF, RAIL_OFF_TOP, RAIL_OFF_BOT, FP_ANGLE_LEG, BRACE_RHS, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, PUMP_H_HI, EQPANEL_X, EQPANEL_T, EQPANEL_Z_HI, EQPANEL_YD, EQPANEL_YD_SPAN, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, IBC_FRAME_RHS, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_CAP_T, LT_OPENING_DEG, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, WALKWAY_MUSLIN_NOTCH_R_X1, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, PULL_CORD_BOTTOM_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0
 
 # Material colors used only by the 3D model (not in tbs_constants).
 C_STEEL = "#B0B0B8"     # steel sections (rails, mount plate, brackets, rack)
@@ -75,6 +75,7 @@ C_DUCT = "#8090A0"      # vent ducting
 C_FAN = "#606060"       # ventilation fans
 C_BLUE = "#2979B8"      # Blue circuit supply pipe
 C_VALVE = "#B8B840"     # valves / taps (brass)
+C_FLEX = "#FFD500"      # flexible braided/corrugated connectors — BRIGHT yellow so a jumper stands out from the same-color pipe it splices (vs the olive C_VALVE)
 C_SHELL = "#EFEDE4"     # container shell — off-white (shows systems clearly)
 C_TRAY = "#9FB8C8"      # processing tray — 304 SS basin
 C_BATH = "#2E6FA0"      # processing chemistry (translucent bath)
@@ -137,6 +138,7 @@ OVERVIEW_POINT_LABELS = [
     # gantry Yd=1180, beam top Z=60. Leader is 30% shorter than the prior version.
     (2400, 1180,   60, "SPRAY BAR",                   315, -1890,  910),
     ( 175, 2287, 1700, "PIVOT POST Ø89\n(panel swing axis)", 500, -200, 600),  # the swing pivot
+    (5146, 1181, 1268, "12V DIST BLOCK\n(Cct C)", 300, 0, 450),  # rear-of-corridor-panel Circuit-C distribution block (behind the pump column; center = BACK_X+EQT+24, CTR_Y, pump-column mid Z)
 ]
 
 
@@ -587,13 +589,13 @@ def processing_tray():
 RWK_X_L = WALKWAY_RIGHT_X                              # 4329 — deck left edge
 RWK_X_R = WALKWAY_RIGHT_X + WALKWAY_RIGHT_W            # 4629 — deck right edge
 RWK_GRATE_Z = WALKWAY_H - WALKWAY_GRATE_T              # 115 — grate bottom
-RWK_ARM_BOT, RWK_ARM_TOP = 70, RWK_GRATE_Z            # arm/beam Z70..115 (above spray bar 60, below film frame 150)
-RWK_AH = RWK_ARM_TOP - RWK_ARM_BOT                     # 45
-RWK_ARM_W = 40
+RWK_ARM_BOT, RWK_ARM_TOP = LEFT_WK_CANT_ARM_Z0, RWK_GRATE_Z   # arm underside Z89.6 (matches the LEFT arm; single-sourced) — 11.6mm over the full-width 1½ spray beam
+RWK_AH = RWK_ARM_TOP - RWK_ARM_BOT                     # 25.4 (2×1in section, 1in deep — #26)
+RWK_ARM_W = 50.8                                       # 2in — arm width in Yd (2×1in section)
 RWK_HL = 95                                           # half-lap line
-RWK_BEARER_W = 40
-RWK_BEARER_XS = (RWK_X_L, RWK_X_R - RWK_BEARER_W)      # 4329, 4589 — long-beam left edges
-RWK_BEARER_Z0 = RWK_ARM_TOP - 35                       # 80 — beam bottom
+RWK_BEARER_W = 50.8                                    # 2in — long-beam width in X (2×1in section)
+RWK_BEARER_XS = (RWK_X_L, RWK_X_R - RWK_BEARER_W)      # long-beam left edges
+RWK_BEARER_Z0 = RWK_ARM_TOP - RWK_AH                   # 89.6 — long-beam soffit (2×1in, 1in deep — #26: 2×⅞ non-stock). Deck kept at 140 (Option B), so 11.6mm spray-beam clearance. Stiffness held by the 2 mid-span center arms (built below).
 RWK_X_UP = IBC_COL_X - 20                              # 4654 — deep-box FRONT upright (= cp.FRONT_X); reconciled from the stale +60/4734 portal (flag 4)
 RWK_UP_YDS = (CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR - IBC_FRAME_RHS)   # 1046, 1266
 # Outer long beam (X4589) OPEN-TOP NOTCHES — one per under-walkway ribbon lane where the FLUSH pipe crosses
@@ -1435,7 +1437,7 @@ def light_trap_drum():
 
 
 def light_trap_frame():
-    """Cargo-door RHS frame (50×50×3 RHS) + the top & bottom seal lips.
+    """Cargo-door RHS frame (2×2×0.120in steel SHS) + the top & bottom seal lips.
 
     Reused from the Light-Trap model (same pattern as light_trap_drum) so the
     overview stays in sync. The bottom seal lip closes the 80mm floor gap and the
@@ -1966,7 +1968,7 @@ def fan_duct(tag, wall_x, ext, yc, zc):
         return out
 
 
-# ── Spray-bar plumbing (Blue supply + BV-02 + TAP-01) ────────────────────────
+# ── Spray-bar plumbing (Blue supply + BV-05 + TAP-01) ────────────────────────
 
 
 # ── Water / waste plumbing network ───────────────────────────────────────────
@@ -2221,8 +2223,11 @@ def generate_ruby():
         component("Corridor Frame (deep box)", "IBC Rack", cp.frame()),
         component("IBC Tote Restraint", "IBC Rack", cp.tote_restraint()),
         component("Corridor Rear Panel", "Plumbing Panel", cp.rear_panel()),
-        component("Corridor Equipment", "Plumbing Panel", cp.equipment()),
-        component("Pinhole-Wall Kit", "Plumbing Panel", pw.kit()),
+        component("Corridor Equipment", "Plumbing Panel", cp.equipment(sump_on_skid=True)),
+        component("Wall backing (ply)", "Plumbing Panel", pw.backing()),
+        component("Pinhole-Wall Kit", "Plumbing Panel", pw.kit(p02_on_corridor=True)),
+        component("Skid row (P-04 · SV-02 · DV-02)", "Plumbing Panel", pw.skid_row()),
+        component("Skid plumbing", "Plumbing Panel", pw.skid_plumbing()),
         component("IBC Stack", "IBC Stack", ibc_stack()),
         component("Light-Trap Drum", "Light Trap", light_trap_drum()),
         component("Light-Trap Bay", "Light Trap", light_trap_bay()),
@@ -2236,10 +2241,10 @@ def generate_ruby():
         component("Lighting & Wiring", "Lighting", lighting_wiring()),
         component("Fan Wiring", "Fan Wiring", fan_wiring()),
         component("Evap Cooler & Duct", "Evap Cooler", evap_cooler()),
-        component("Corridor Drains + X-ports", "Water Hookups", cp.drains_ports()),
+        component("Corridor Drains + X-ports", "Water Hookups", cp.drains_ports(sump_on_skid=True)),
         component("Fans A & B", "Fans", fans()),
         component("TAP-01 + Spray Supply", "Spray Bar", pw.tap01_supply()),
-        component("Corridor Plumbing", "Water Plumbing", cp.plumbing()),
+        component("Corridor Plumbing", "Water Plumbing", cp.plumbing(sump_on_skid=True)),
         component("Ribbon Support Cross-beams", "Water Plumbing", cp.ribbon_supports()),
     ]
     body = '\n'.join(comps)
@@ -2335,7 +2340,7 @@ model.layers.to_a.each {{ |l|
 model.layers.each {{ |l| l.visible = true }}
 bb = model.bounds
 ctr = bb.center
-dir = Geom::Vector3d.new(0.72, -0.7, 0.5); dir.normalize!
+dir = Geom::Vector3d.new(-0.72, 0.7, 0.5); dir.normalize!   # turned 180° about vertical — eye on the FAR-WALL side, looking INTO the container
 eye = ctr.offset(dir, bb.diagonal * 1.5)
 model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
 model.active_view.zoom_extents

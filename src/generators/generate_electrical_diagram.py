@@ -306,8 +306,8 @@ def draw_sheet1():
          "Sealed end wall (X=5893mm)  |  below X1, in corridor  |  Yd=1181mm", C_ALUM),
         ("B", "VENTILATION FAN\nINTAKE  (6\")",   "5A",  "16 AWG", "60W",
          "Cargo door panel (X=0)  |  low position  |  Yd=365mm", C_ALUM),
-        ("C", "WATER PUMPS\n(corridor + P-02)",       "15A", "14 AWG", "100W",
-         "Corridor panel (Yd=1046–1316) + P-02 (pinhole wall)", C_PUMP_TINT),
+        ("C", "WATER PUMPS\n(corridor + P-04)",       "15A", "14 AWG", "100W",
+         "Corridor panel (Yd=1046–1316) + P-04 (filter skid)", C_PUMP_TINT),
         ("D", "SAFELIGHT\ninterior + vestibule",  "5A",  "18 AWG", "15W",
          "3× red LED strips (ceiling, N–S)  |  pull-cord switch", "#FFEEDD"),
         ("E", "EVAP COOLER\n(120V AC via inverter)",  "40A", "10 AWG", f"{EVAP_COOLER_W_BUS}W",
@@ -666,7 +666,7 @@ def draw_sheet2():
             ha="center", va="center", fontsize=6.5, fontweight="bold",
             color=C_OUT, zorder=8)
 
-    # CORRIDOR PUMPS (Yd=1046) — P-01/03/04/05 + ACC (P-02 + the filters are on the pinhole wall)
+    # CORRIDOR PUMPS (Yd=1046) — P-01/02/03/05 + ACC (P-04 + the filters are on the pinhole wall)
     equip(EQPANEL_X - BB_OD, CORRIDOR_YD_NEAR, EQPANEL_W, CORRIDOR_W,
           "C", C_PUMP, "Corridor pumps")
 
@@ -841,7 +841,7 @@ def draw_sheet2():
     # Pump — Cct C (on plumbing panel in IBC corridor)
     leader(ax, PUMP_CX, OY + wt + (CORRIDOR_YD_NEAR + CORRIDOR_W/2) * S_yd,
            PUMP_CX + 275, OY + cwid * 0.50,
-           "Water pumps (C)\n12V DC  100W\ncorridor + P-02 (wall)",
+           "Water pumps (C)\n12V DC  100W\ncorridor + P-04 (skid)",
            fs=6.5, color=C_PUMP)
     # Safelight — Cct D (label middle strip)
     sl_ldr_x = ix(SL_POSITIONS[1] + SL_STRIP_W / 2)
@@ -916,7 +916,7 @@ def draw_sheet2():
         ("B",     C_ALUM,    "INTAKE FAN — Cct B",
          "6\" inline DC  |  5A / 16 AWG / 60W  |  Cargo door panel (X=0), low  |  Yd=365mm"),
         ("C",     C_PUMP,    "PLUMBING PANEL — Cct C",
-         f"Water pumps P-01/03/04/05 (corridor) + P-02 (pinhole wall)  |  12V DC  |  15A / 14 AWG / 100W"),
+         f"Water pumps P-01/02/03/05 (corridor) + P-04 (filter skid)  |  12V DC  |  15A / 14 AWG / 100W"),
         ("D",     "#FFD700", "SAFELIGHT — Cct D",
          f"3× red LED strips  |  5A / 18 AWG / 15W  |  Ceiling N–S at X≈{', '.join(str(x) for x in SL_POSITIONS)}"),
         ("E",     C_EVAP,    "EVAP COOLER — Cct E",
@@ -993,6 +993,7 @@ def draw_sheet3():
         CORRIDOR_YD_NEAR, CORRIDOR_W,
         PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H,
         PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_RIM,
+        PWP_FILTER_X1, PWP_SROW_Z0,
         WALKWAY_W, WALKWAY_H, WALKWAY_LEFT_X,
         DIAGRAMS_DIR,  C_LT_DRUM, PULL_CORD_BOTTOM_Z,
     )
@@ -1127,6 +1128,11 @@ def draw_sheet3():
         ax.plot([cx, cx], [tk_y, ey + eh],
                 color=C_PIPE, lw=2.0, solid_capstyle="round", zorder=4)
         return ex, ey, ew, eh
+
+    # ── P-04 (tray-drain pump) on the pinhole-wall FILTER SKID — its own Cct-C drop from the trunk ──
+    # P-04 relocated to the skid (Phase-2), so it is a pinhole-wall load like the others and gets a drop.
+    wall_equip(PWP_FILTER_X1 - 50, PWP_SROW_Z0, PWP_SROW_Z0 + 180, 100,
+               "P-04", "tray drain\n(Cct C · filter skid)", C_PUMP_TINT)
 
     # ── External power panel (penetration box in wall) ────────────────────────
     # Centered vertically at ~EP mounting height
@@ -1349,7 +1355,7 @@ def draw_sheet3():
         (C_PIPE,    "CABLE TRUNKING",    "40×25mm PVC  |  Ceiling corner rail  |  Full length"),
         (C_ELEC,    "ELECTRICAL PANEL",  f"EP  |  X={EP_X}–{EP_X+EP_W}  |  Z={EP_H_LO}–{EP_H_HI}mm"),
         (C_BATT,    "BATTERY BANK",      f"BAT  |  X={BA_X}–{BA_X+BA_W}  |  Z={BA_H_LO}–{BA_STACK_TOP}mm (2 stacked)"),
-        ("#F5C8A0", "WATER PUMPS",   f"Cct C  |  P-01/03/04/05 corridor (Yd={CORRIDOR_YD_NEAR}–{CORRIDOR_YD_NEAR + CORRIDOR_W}) + P-02 (pinhole wall)"),
+        ("#F5C8A0", "WATER PUMPS",   f"Cct C  |  P-01/02/03/05 corridor (Yd={CORRIDOR_YD_NEAR}–{CORRIDOR_YD_NEAR + CORRIDOR_W}) + P-04 (filter skid)"),
         (C_EVAP,    "DUCT PENETRATION",  f"Cct E  |  Ø{EVAP_DUCT_D}mm at X={EVAP_DUCT_X}, Z={EVAP_DUCT_Z}mm  |  Evap cooler external"),
         (C_ALUM,    "EXT POWER PANEL",   f"Penetration box  |  X={PWR_PANEL_X}–{PWR_PANEL_X+PWR_PANEL_W}  |  3×MC4 + NEMA"),
         ("#FFFFF0", "LED PANELS (G)",    "3×20W  4000K  |  Ceiling-mount  |  X≈1000, 2900, 4800"),
@@ -1369,8 +1375,8 @@ def draw_sheet3():
     # ── Drawing notes ─────────────────────────────────────────────────────────
     notes = [
         "DRAWING NOTES:",
-        "1. Elevation looking toward pinhole wall (Yd=0) from inside the container. EP and battery wall-mounted; corridor pumps (P-01/03/04/05+ACC)",
-        "in the IBC corridor (Yd=1046), P-02 + the 3-stage filters on the pinhole wall; evap cooler external via duct.",
+        "1. Elevation looking toward pinhole wall (Yd=0) from inside the container. EP and battery wall-mounted; corridor pumps (P-01/02/03/05+ACC)",
+        "in the IBC corridor (Yd=1046), P-04 + the 3-stage filters on the pinhole wall; evap cooler external via duct.",
         "2. Cable trunking runs horizontally at the ceiling corner rail (Z\u22482363mm). Drop conduits (10mm corrugated, shown dashed) descend to each device.",
         "3. Pull-cord switches at ceiling height, cords hang to ~1500mm above walkway deck (~900mm AFF). D=safelight (red), G=white light.",
         "4. LED panels are ceiling-mounted, centered across container width. Connected to Circuit G via trunking. Non-operational only.",
@@ -1399,12 +1405,12 @@ def draw_sheet4():
     """SHEET 4 — Corridor Plumbing-Panel Pump Power (Circuit C), scale elevation.
 
     Engineering elevation of the corridor plumbing panel (matches panel-layout.png):
-    the single vertical pump column (ACC-01 + P-01/P-04/P-05/P-03) drawn to scale,
+    the single vertical pump column (ACC-01 + P-01/P-02/P-05/P-03) drawn to scale,
     powered from a 12V distribution block that is fed from the MASTER pump switch on
     the EP (electrical panel) via the ceiling trunk → curved-elbow branches to each
     pump. No per-pump switches — each Shurflo runs on its internal pressure switch;
-    the EP master switch is the single manual cutoff. P-02 (Brown recycle) is on
-    the pinhole-wall panel, shown as an off-panel branch. Routing follows pipe
+    the EP master switch is the single manual cutoff. P-04 (Tray drain) is on
+    the pinhole-wall filter skid, shown as an off-panel branch. Routing follows pipe
     conventions (parallel-wall conduit + curved elbow fittings, never hard corners).
     """
     from tbs_constants import DIAGRAMS_DIR
@@ -1432,7 +1438,7 @@ def draw_sheet4():
             fontsize=6.6, fontweight="bold", zorder=8)
 
     # ── Pumps (single vertical column, real Z) + electrical terminals ──
-    pumps = [("P-01", pl.P01_Z, "Blue supply"), ("P-04", pl.P04_Z, "Tray drain"),
+    pumps = [("P-01", pl.P01_Z, "Blue supply"), ("P-02", pl.P04_Z, "Brown recycle"),
              ("P-05", pl.P05_Z, "Brown drain"), ("P-03", pl.P03_Z, "Waste drain")]
     term = {}
     for nm, zb, sub in pumps:
@@ -1458,15 +1464,15 @@ def draw_sheet4():
 
     # ── Curved-elbow branch conduits: block → each pump terminal. Own lane each, longest
     #    drop = outermost, so runs never cross (each stops at its pump). ──
-    lanes = {"P-01": 16, "P-04": 26, "P-05": 36, "P-03": 46}
+    lanes = {"P-01": 16, "P-02": 26, "P-05": 36, "P-03": 46}
     for nm, zb, sub in pumps:
         ln = lanes[nm]
         tx, tz = term[nm]
         draw_pipe_path(ax, [ln, ln, tx], [1866, tz, tz], 12, 1.8, fc=CC, ec=CDK, zorder=4)
 
-    # ── P-02 branch leaving the panel toward the pinhole-wall panel (short tag; detail at right) ──
+    # ── P-04 branch leaving the panel toward the pinhole-wall filter skid (short tag; detail at right) ──
     draw_pipe_path(ax, [12, -60], [1907, 1907], 12, 1.8, fc=CC, ec=CDK, zorder=4)
-    ax.text(-70, 1907, "→ P-02", ha="right", va="center", fontsize=6.4, color=CDK, fontweight="bold")
+    ax.text(-70, 1907, "→ P-04", ha="right", va="center", fontsize=6.4, color=CDK, fontweight="bold")
 
     # ── Right-side callouts ──
     ax.text(PW + 90, 1500,
@@ -1474,7 +1480,7 @@ def draw_sheet4():
             "whole circuit) is on the EP — see\nSheet 5. No per-pump switches; each\nShurflo 2088 runs on its internal\n"
             "pressure switch when its valves open.\n\n"
             "16 AWG branches — curved elbow\nfittings (pipe convention), one per\npump.\n\n"
-            "P-02 (Brown recycle) is fed by a\nCircuit-C branch off this block, on\nthe Pinhole-Wall panel.\n\n"
+            "P-04 (Tray drain) is fed by a\nCircuit-C branch off this block, on\nthe pinhole-wall filter skid.\n\n"
             "ACC-01 is a passive accumulator —\nunpowered.",
             fontsize=6.2, ha="left", va="top", color="#333")
 
@@ -1488,8 +1494,8 @@ def draw_sheet4():
         "CIRCUIT C — PUMP POWER:",
         "The 14 AWG / 15A Circuit-C feed is switched at the MASTER pump switch on the EP (Sheet 5),",
         "runs the ceiling trunk to this panel's 12V distribution block, then a 16 AWG branch to each",
-        "pump. The four corridor pumps stack in a single column (bottom→top: ACC-01, P-01, P-04, P-05,",
-        "P-03); P-02 (Brown recycle) taps the switched feed on the Pinhole-Wall panel. No per-pump",
+        "pump. The four corridor pumps stack in a single column (bottom→top: ACC-01, P-01, P-02, P-05,",
+        "P-03); P-04 (Tray drain) taps the switched feed on the pinhole-wall filter skid. No per-pump",
         "switches — the EP master switch is the single cutoff and each Shurflo 2088 runs on its internal",
         "pressure switch. 15A fuse covers a single pump (7.5A) with margin. Conduit branches use curved",
         "elbow fittings (pipe convention). Wet zone: sealed, above the spill line.",

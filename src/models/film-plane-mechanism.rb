@@ -3021,10 +3021,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 1 post (50x50x3 SHS)
+  # Left cantilever 1 post (2x2x0.120 SHS)
   grp = ents.add_group
-  grp.name = "Left cantilever 1 post (50x50x3 SHS)"
-  face = grp.entities.add_face([115.mm,220.mm,0.mm], [165.mm,220.mm,0.mm], [165.mm,280.mm,0.mm], [115.mm,280.mm,0.mm])
+  grp.name = "Left cantilever 1 post (2x2x0.120 SHS)"
+  face = grp.entities.add_face([114.6.mm,220.mm,0.mm], [165.39999999999998.mm,220.mm,0.mm], [165.39999999999998.mm,280.mm,0.mm], [114.6.mm,280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3035,9 +3035,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 1 arm (to X470)
   grp = ents.add_group
   grp.name = "Left cantilever 1 arm (to X470)"
-  face = grp.entities.add_face([165.mm,230.mm,75.mm], [470.mm,230.mm,75.mm], [470.mm,270.mm,75.mm], [165.mm,270.mm,75.mm])
+  face = grp.entities.add_face([165.4.mm,224.6.mm,89.6.mm], [470.mm,224.6.mm,89.6.mm], [470.mm,275.4.mm,89.6.mm], [165.4.mm,275.4.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
+  face.pushpull(25.400000000000006.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3054,10 +3054,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 2 post (50x50x3 SHS)
+  # Left cantilever 2 post (2x2x0.120 SHS)
   grp = ents.add_group
-  grp.name = "Left cantilever 2 post (50x50x3 SHS)"
-  face = grp.entities.add_face([115.mm,770.mm,0.mm], [165.mm,770.mm,0.mm], [165.mm,830.mm,0.mm], [115.mm,830.mm,0.mm])
+  grp.name = "Left cantilever 2 post (2x2x0.120 SHS)"
+  face = grp.entities.add_face([114.6.mm,770.mm,0.mm], [165.39999999999998.mm,770.mm,0.mm], [165.39999999999998.mm,830.mm,0.mm], [114.6.mm,830.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3068,9 +3068,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 2 arm (to X770)
   grp = ents.add_group
   grp.name = "Left cantilever 2 arm (to X770)"
-  face = grp.entities.add_face([165.mm,770.mm,75.mm], [770.mm,770.mm,75.mm], [770.mm,830.mm,75.mm], [165.mm,830.mm,75.mm])
+  face = grp.entities.add_face([165.4.mm,774.6.mm,89.6.mm], [770.mm,774.6.mm,89.6.mm], [770.mm,825.4.mm,89.6.mm], [165.4.mm,825.4.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
+  face.pushpull(25.400000000000006.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3087,10 +3087,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 3 post (50x50x3 SHS)
+  # Left cantilever 3 post (2x2x0.120 SHS)
   grp = ents.add_group
-  grp.name = "Left cantilever 3 post (50x50x3 SHS)"
-  face = grp.entities.add_face([115.mm,1150.mm,0.mm], [165.mm,1150.mm,0.mm], [165.mm,1210.mm,0.mm], [115.mm,1210.mm,0.mm])
+  grp.name = "Left cantilever 3 post (2x2x0.120 SHS)"
+  face = grp.entities.add_face([114.6.mm,1150.mm,0.mm], [165.39999999999998.mm,1150.mm,0.mm], [165.39999999999998.mm,1210.mm,0.mm], [114.6.mm,1210.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3101,9 +3101,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 3 arm (to X770)
   grp = ents.add_group
   grp.name = "Left cantilever 3 arm (to X770)"
-  face = grp.entities.add_face([165.mm,1150.mm,75.mm], [770.mm,1150.mm,75.mm], [770.mm,1210.mm,75.mm], [165.mm,1210.mm,75.mm])
+  face = grp.entities.add_face([165.4.mm,1154.6.mm,89.6.mm], [770.mm,1154.6.mm,89.6.mm], [770.mm,1205.3999999999999.mm,89.6.mm], [165.4.mm,1205.3999999999999.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
+  face.pushpull(25.400000000000006.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3120,10 +3120,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 4 post (50x50x3 SHS)
+  # Left cantilever 4 post (2x2x0.120 SHS)
   grp = ents.add_group
-  grp.name = "Left cantilever 4 post (50x50x3 SHS)"
-  face = grp.entities.add_face([115.mm,1530.mm,0.mm], [165.mm,1530.mm,0.mm], [165.mm,1590.mm,0.mm], [115.mm,1590.mm,0.mm])
+  grp.name = "Left cantilever 4 post (2x2x0.120 SHS)"
+  face = grp.entities.add_face([114.6.mm,1530.mm,0.mm], [165.39999999999998.mm,1530.mm,0.mm], [165.39999999999998.mm,1590.mm,0.mm], [114.6.mm,1590.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3134,9 +3134,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 4 arm (to X770)
   grp = ents.add_group
   grp.name = "Left cantilever 4 arm (to X770)"
-  face = grp.entities.add_face([165.mm,1530.mm,75.mm], [770.mm,1530.mm,75.mm], [770.mm,1590.mm,75.mm], [165.mm,1590.mm,75.mm])
+  face = grp.entities.add_face([165.4.mm,1534.6.mm,89.6.mm], [770.mm,1534.6.mm,89.6.mm], [770.mm,1585.3999999999999.mm,89.6.mm], [165.4.mm,1585.3999999999999.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
+  face.pushpull(25.400000000000006.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3153,10 +3153,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 5 post (50x50x3 SHS)
+  # Left cantilever 5 post (2x2x0.120 SHS)
   grp = ents.add_group
-  grp.name = "Left cantilever 5 post (50x50x3 SHS)"
-  face = grp.entities.add_face([115.mm,2080.mm,0.mm], [165.mm,2080.mm,0.mm], [165.mm,2140.mm,0.mm], [115.mm,2140.mm,0.mm])
+  grp.name = "Left cantilever 5 post (2x2x0.120 SHS)"
+  face = grp.entities.add_face([114.6.mm,2080.mm,0.mm], [165.39999999999998.mm,2080.mm,0.mm], [165.39999999999998.mm,2140.mm,0.mm], [114.6.mm,2140.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3167,9 +3167,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 5 arm (to X470)
   grp = ents.add_group
   grp.name = "Left cantilever 5 arm (to X470)"
-  face = grp.entities.add_face([165.mm,2090.mm,75.mm], [470.mm,2090.mm,75.mm], [470.mm,2130.mm,75.mm], [165.mm,2130.mm,75.mm])
+  face = grp.entities.add_face([165.4.mm,2084.6.mm,89.6.mm], [470.mm,2084.6.mm,89.6.mm], [470.mm,2135.4.mm,89.6.mm], [165.4.mm,2135.4.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
+  face.pushpull(25.400000000000006.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3178,9 +3178,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined corner plate (near)
   grp = ents.add_group
   grp.name = "FP combined corner plate (near)"
-  face = grp.entities.add_face([4574.mm,0.mm,58.mm], [4724.mm,0.mm,58.mm], [4724.mm,10.mm,58.mm], [4574.mm,10.mm,58.mm])
+  face = grp.entities.add_face([4574.mm,0.mm,77.6.mm], [4724.mm,0.mm,77.6.mm], [4724.mm,10.mm,77.6.mm], [4574.mm,10.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(177.mm)
+  face.pushpull(157.4.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3189,9 +3189,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined corner ext plate (near)
   grp = ents.add_group
   grp.name = "FP combined corner ext plate (near)"
-  face = grp.entities.add_face([4574.mm,-50.mm,58.mm], [4724.mm,-50.mm,58.mm], [4724.mm,-40.mm,58.mm], [4574.mm,-40.mm,58.mm])
+  face = grp.entities.add_face([4574.mm,-50.mm,77.6.mm], [4724.mm,-50.mm,77.6.mm], [4724.mm,-40.mm,77.6.mm], [4574.mm,-40.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(177.mm)
+  face.pushpull(157.4.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3200,7 +3200,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined right-beam seat (near)
   grp = ents.add_group
   grp.name = "FP combined right-beam seat (near)"
-  face = grp.entities.add_face([4574.mm,0.mm,58.mm], [4724.mm,0.mm,58.mm], [4724.mm,55.mm,58.mm], [4574.mm,55.mm,58.mm])
+  face = grp.entities.add_face([4574.mm,0.mm,77.6.mm], [4724.mm,0.mm,77.6.mm], [4724.mm,55.mm,77.6.mm], [4574.mm,55.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3219,11 +3219,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (near) X4599 Z84
+  # FP combined bolt M12 (near) X4599 Z103
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4599 Z84"
+  grp.name = "FP combined bolt M12 (near) X4599 Z103"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,-50.mm,84.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,-50.mm,103.6.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3245,11 +3245,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (near) X4699 Z84
+  # FP combined bolt M12 (near) X4699 Z103
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4699 Z84"
+  grp.name = "FP combined bolt M12 (near) X4699 Z103"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,-50.mm,84.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,-50.mm,103.6.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3274,9 +3274,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined corner plate (far)
   grp = ents.add_group
   grp.name = "FP combined corner plate (far)"
-  face = grp.entities.add_face([4574.mm,2352.mm,58.mm], [4724.mm,2352.mm,58.mm], [4724.mm,2362.mm,58.mm], [4574.mm,2362.mm,58.mm])
+  face = grp.entities.add_face([4574.mm,2352.mm,77.6.mm], [4724.mm,2352.mm,77.6.mm], [4724.mm,2362.mm,77.6.mm], [4574.mm,2362.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(177.mm)
+  face.pushpull(157.4.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3285,9 +3285,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined corner ext plate (far)
   grp = ents.add_group
   grp.name = "FP combined corner ext plate (far)"
-  face = grp.entities.add_face([4574.mm,2402.mm,58.mm], [4724.mm,2402.mm,58.mm], [4724.mm,2412.mm,58.mm], [4574.mm,2412.mm,58.mm])
+  face = grp.entities.add_face([4574.mm,2402.mm,77.6.mm], [4724.mm,2402.mm,77.6.mm], [4724.mm,2412.mm,77.6.mm], [4574.mm,2412.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(177.mm)
+  face.pushpull(157.4.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3296,7 +3296,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined right-beam seat (far)
   grp = ents.add_group
   grp.name = "FP combined right-beam seat (far)"
-  face = grp.entities.add_face([4574.mm,2307.mm,58.mm], [4724.mm,2307.mm,58.mm], [4724.mm,2362.mm,58.mm], [4574.mm,2362.mm,58.mm])
+  face = grp.entities.add_face([4574.mm,2307.mm,77.6.mm], [4724.mm,2307.mm,77.6.mm], [4724.mm,2362.mm,77.6.mm], [4574.mm,2362.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3315,11 +3315,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (far) X4599 Z84
+  # FP combined bolt M12 (far) X4599 Z103
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4599 Z84"
+  grp.name = "FP combined bolt M12 (far) X4599 Z103"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,2352.mm,84.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,2352.mm,103.6.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3341,11 +3341,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (far) X4699 Z84
+  # FP combined bolt M12 (far) X4699 Z103
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4699 Z84"
+  grp.name = "FP combined bolt M12 (far) X4699 Z103"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,2352.mm,84.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,2352.mm,103.6.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3370,7 +3370,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Frame upright
   grp = ents.add_group
   grp.name = "Frame upright"
-  face = grp.entities.add_face([4654.mm,1046.mm,0.mm], [4704.mm,1046.mm,0.mm], [4704.mm,1096.mm,0.mm], [4654.mm,1096.mm,0.mm])
+  face = grp.entities.add_face([4654.mm,1046.mm,0.mm], [4704.8.mm,1046.mm,0.mm], [4704.8.mm,1096.8.mm,0.mm], [4654.mm,1096.8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2296.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3381,7 +3381,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Frame upright
   grp = ents.add_group
   grp.name = "Frame upright"
-  face = grp.entities.add_face([4654.mm,1266.mm,0.mm], [4704.mm,1266.mm,0.mm], [4704.mm,1316.mm,0.mm], [4654.mm,1316.mm,0.mm])
+  face = grp.entities.add_face([4654.mm,1265.2.mm,0.mm], [4704.8.mm,1265.2.mm,0.mm], [4704.8.mm,1316.mm,0.mm], [4654.mm,1316.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2296.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3392,7 +3392,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Frame upright
   grp = ents.add_group
   grp.name = "Frame upright"
-  face = grp.entities.add_face([5104.mm,1046.mm,0.mm], [5154.mm,1046.mm,0.mm], [5154.mm,1096.mm,0.mm], [5104.mm,1096.mm,0.mm])
+  face = grp.entities.add_face([5104.mm,1046.mm,0.mm], [5154.8.mm,1046.mm,0.mm], [5154.8.mm,1096.8.mm,0.mm], [5104.mm,1096.8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2296.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3403,7 +3403,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Frame upright
   grp = ents.add_group
   grp.name = "Frame upright"
-  face = grp.entities.add_face([5104.mm,1266.mm,0.mm], [5154.mm,1266.mm,0.mm], [5154.mm,1316.mm,0.mm], [5104.mm,1316.mm,0.mm])
+  face = grp.entities.add_face([5104.mm,1265.2.mm,0.mm], [5154.8.mm,1265.2.mm,0.mm], [5154.8.mm,1316.mm,0.mm], [5104.mm,1316.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2296.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3414,9 +3414,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Frame rail (Yd)
   grp = ents.add_group
   grp.name = "Frame rail (Yd)"
-  face = grp.entities.add_face([4654.mm,1096.mm,0.mm], [4704.mm,1096.mm,0.mm], [4704.mm,1266.mm,0.mm], [4654.mm,1266.mm,0.mm])
+  face = grp.entities.add_face([4654.mm,1096.8.mm,0.mm], [4704.8.mm,1096.8.mm,0.mm], [4704.8.mm,1265.2.mm,0.mm], [4654.mm,1265.2.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3425,9 +3425,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Frame rail (Yd)
   grp = ents.add_group
   grp.name = "Frame rail (Yd)"
-  face = grp.entities.add_face([5104.mm,1096.mm,0.mm], [5154.mm,1096.mm,0.mm], [5154.mm,1266.mm,0.mm], [5104.mm,1266.mm,0.mm])
+  face = grp.entities.add_face([5104.mm,1096.8.mm,0.mm], [5154.8.mm,1096.8.mm,0.mm], [5154.8.mm,1265.2.mm,0.mm], [5104.mm,1265.2.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3436,9 +3436,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Frame rail (X)
   grp = ents.add_group
   grp.name = "Frame rail (X)"
-  face = grp.entities.add_face([4704.mm,1046.mm,0.mm], [5104.mm,1046.mm,0.mm], [5104.mm,1096.mm,0.mm], [4704.mm,1096.mm,0.mm])
+  face = grp.entities.add_face([4704.8.mm,1046.mm,0.mm], [5104.mm,1046.mm,0.mm], [5104.mm,1096.8.mm,0.mm], [4704.8.mm,1096.8.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3447,9 +3447,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Frame rail (X)
   grp = ents.add_group
   grp.name = "Frame rail (X)"
-  face = grp.entities.add_face([4704.mm,1266.mm,0.mm], [5104.mm,1266.mm,0.mm], [5104.mm,1316.mm,0.mm], [4704.mm,1316.mm,0.mm])
+  face = grp.entities.add_face([4704.8.mm,1265.2.mm,0.mm], [5104.mm,1265.2.mm,0.mm], [5104.mm,1316.mm,0.mm], [4704.8.mm,1316.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3458,9 +3458,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Frame rail (Yd)
   grp = ents.add_group
   grp.name = "Frame rail (Yd)"
-  face = grp.entities.add_face([4654.mm,1096.mm,2246.mm], [4704.mm,1096.mm,2246.mm], [4704.mm,1266.mm,2246.mm], [4654.mm,1266.mm,2246.mm])
+  face = grp.entities.add_face([4654.mm,1096.8.mm,2245.2.mm], [4704.8.mm,1096.8.mm,2245.2.mm], [4704.8.mm,1265.2.mm,2245.2.mm], [4654.mm,1265.2.mm,2245.2.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3469,9 +3469,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Frame rail (Yd)
   grp = ents.add_group
   grp.name = "Frame rail (Yd)"
-  face = grp.entities.add_face([5104.mm,1096.mm,2246.mm], [5154.mm,1096.mm,2246.mm], [5154.mm,1266.mm,2246.mm], [5104.mm,1266.mm,2246.mm])
+  face = grp.entities.add_face([5104.mm,1096.8.mm,2245.2.mm], [5154.8.mm,1096.8.mm,2245.2.mm], [5154.8.mm,1265.2.mm,2245.2.mm], [5104.mm,1265.2.mm,2245.2.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3480,9 +3480,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Frame rail (X)
   grp = ents.add_group
   grp.name = "Frame rail (X)"
-  face = grp.entities.add_face([4704.mm,1046.mm,2246.mm], [5104.mm,1046.mm,2246.mm], [5104.mm,1096.mm,2246.mm], [4704.mm,1096.mm,2246.mm])
+  face = grp.entities.add_face([4704.8.mm,1046.mm,2245.2.mm], [5104.mm,1046.mm,2245.2.mm], [5104.mm,1096.8.mm,2245.2.mm], [4704.8.mm,1096.8.mm,2245.2.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3491,9 +3491,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Frame rail (X)
   grp = ents.add_group
   grp.name = "Frame rail (X)"
-  face = grp.entities.add_face([4704.mm,1266.mm,2246.mm], [5104.mm,1266.mm,2246.mm], [5104.mm,1316.mm,2246.mm], [4704.mm,1316.mm,2246.mm])
+  face = grp.entities.add_face([4704.8.mm,1265.2.mm,2245.2.mm], [5104.mm,1265.2.mm,2245.2.mm], [5104.mm,1316.mm,2245.2.mm], [4704.8.mm,1316.mm,2245.2.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3502,7 +3502,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Foot plate
   grp = ents.add_group
   grp.name = "Foot plate"
-  face = grp.entities.add_face([4604.mm,996.mm,0.mm], [4754.mm,996.mm,0.mm], [4754.mm,1146.mm,0.mm], [4604.mm,1146.mm,0.mm])
+  face = grp.entities.add_face([4604.4.mm,996.4000000000001.mm,0.mm], [4754.4.mm,996.4000000000001.mm,0.mm], [4754.4.mm,1146.4.mm,0.mm], [4604.4.mm,1146.4.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3514,7 +3514,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Foot anchor M12"
   ge = grp.entities
-  circle = ge.add_circle([4629.mm,1021.mm,0.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([4629.4.mm,1021.4000000000001.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
@@ -3527,7 +3527,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Foot anchor M12"
   ge = grp.entities
-  circle = ge.add_circle([4629.mm,1121.mm,0.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([4629.4.mm,1121.4.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
@@ -3540,7 +3540,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Foot anchor M12"
   ge = grp.entities
-  circle = ge.add_circle([4729.mm,1021.mm,0.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([4729.4.mm,1021.4000000000001.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
@@ -3553,7 +3553,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Foot anchor M12"
   ge = grp.entities
-  circle = ge.add_circle([4729.mm,1121.mm,0.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([4729.4.mm,1121.4.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
@@ -3565,7 +3565,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Foot plate
   grp = ents.add_group
   grp.name = "Foot plate"
-  face = grp.entities.add_face([4604.mm,1216.mm,0.mm], [4754.mm,1216.mm,0.mm], [4754.mm,1366.mm,0.mm], [4604.mm,1366.mm,0.mm])
+  face = grp.entities.add_face([4604.4.mm,1215.6000000000001.mm,0.mm], [4754.4.mm,1215.6000000000001.mm,0.mm], [4754.4.mm,1365.6000000000001.mm,0.mm], [4604.4.mm,1365.6000000000001.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3577,7 +3577,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Foot anchor M12"
   ge = grp.entities
-  circle = ge.add_circle([4629.mm,1241.mm,0.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([4629.4.mm,1240.6000000000001.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
@@ -3590,7 +3590,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Foot anchor M12"
   ge = grp.entities
-  circle = ge.add_circle([4629.mm,1341.mm,0.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([4629.4.mm,1340.6000000000001.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
@@ -3603,7 +3603,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Foot anchor M12"
   ge = grp.entities
-  circle = ge.add_circle([4729.mm,1241.mm,0.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([4729.4.mm,1240.6000000000001.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
@@ -3616,7 +3616,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Foot anchor M12"
   ge = grp.entities
-  circle = ge.add_circle([4729.mm,1341.mm,0.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([4729.4.mm,1340.6000000000001.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
@@ -3628,7 +3628,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Foot plate
   grp = ents.add_group
   grp.name = "Foot plate"
-  face = grp.entities.add_face([5054.mm,996.mm,0.mm], [5204.mm,996.mm,0.mm], [5204.mm,1146.mm,0.mm], [5054.mm,1146.mm,0.mm])
+  face = grp.entities.add_face([5054.4.mm,996.4000000000001.mm,0.mm], [5204.4.mm,996.4000000000001.mm,0.mm], [5204.4.mm,1146.4.mm,0.mm], [5054.4.mm,1146.4.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3640,7 +3640,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Foot anchor M12"
   ge = grp.entities
-  circle = ge.add_circle([5079.mm,1021.mm,0.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5079.4.mm,1021.4000000000001.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
@@ -3653,7 +3653,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Foot anchor M12"
   ge = grp.entities
-  circle = ge.add_circle([5079.mm,1121.mm,0.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5079.4.mm,1121.4.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
@@ -3666,7 +3666,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Foot anchor M12"
   ge = grp.entities
-  circle = ge.add_circle([5179.mm,1021.mm,0.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5179.4.mm,1021.4000000000001.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
@@ -3679,7 +3679,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Foot anchor M12"
   ge = grp.entities
-  circle = ge.add_circle([5179.mm,1121.mm,0.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5179.4.mm,1121.4.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
@@ -3691,7 +3691,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Foot plate
   grp = ents.add_group
   grp.name = "Foot plate"
-  face = grp.entities.add_face([5054.mm,1216.mm,0.mm], [5204.mm,1216.mm,0.mm], [5204.mm,1366.mm,0.mm], [5054.mm,1366.mm,0.mm])
+  face = grp.entities.add_face([5054.4.mm,1215.6000000000001.mm,0.mm], [5204.4.mm,1215.6000000000001.mm,0.mm], [5204.4.mm,1365.6000000000001.mm,0.mm], [5054.4.mm,1365.6000000000001.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3703,7 +3703,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Foot anchor M12"
   ge = grp.entities
-  circle = ge.add_circle([5079.mm,1241.mm,0.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5079.4.mm,1240.6000000000001.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
@@ -3716,7 +3716,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Foot anchor M12"
   ge = grp.entities
-  circle = ge.add_circle([5079.mm,1341.mm,0.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5079.4.mm,1340.6000000000001.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
@@ -3729,7 +3729,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Foot anchor M12"
   ge = grp.entities
-  circle = ge.add_circle([5179.mm,1241.mm,0.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5179.4.mm,1240.6000000000001.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
@@ -3742,7 +3742,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Foot anchor M12"
   ge = grp.entities
-  circle = ge.add_circle([5179.mm,1341.mm,0.mm], [0,0,1], 7.mm, 24)
+  circle = ge.add_circle([5179.4.mm,1340.6000000000001.mm,0.mm], [0,0,1], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(16.mm)
@@ -3754,7 +3754,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Rear-panel bracket
   grp = ents.add_group
   grp.name = "Rear-panel bracket"
-  face = grp.entities.add_face([5122.mm,1096.mm,90.mm], [5152.mm,1096.mm,90.mm], [5152.mm,1136.mm,90.mm], [5122.mm,1136.mm,90.mm])
+  face = grp.entities.add_face([5122.mm,1096.8.mm,90.mm], [5152.mm,1096.8.mm,90.mm], [5152.mm,1136.8.mm,90.mm], [5122.mm,1136.8.mm,90.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3765,7 +3765,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Rear-panel bracket
   grp = ents.add_group
   grp.name = "Rear-panel bracket"
-  face = grp.entities.add_face([5122.mm,1096.mm,1118.mm], [5152.mm,1096.mm,1118.mm], [5152.mm,1136.mm,1118.mm], [5122.mm,1136.mm,1118.mm])
+  face = grp.entities.add_face([5122.mm,1096.8.mm,1118.mm], [5152.mm,1096.8.mm,1118.mm], [5152.mm,1136.8.mm,1118.mm], [5122.mm,1136.8.mm,1118.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3776,7 +3776,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Rear-panel bracket
   grp = ents.add_group
   grp.name = "Rear-panel bracket"
-  face = grp.entities.add_face([5122.mm,1096.mm,2146.mm], [5152.mm,1096.mm,2146.mm], [5152.mm,1136.mm,2146.mm], [5122.mm,1136.mm,2146.mm])
+  face = grp.entities.add_face([5122.mm,1096.8.mm,2146.mm], [5152.mm,1096.8.mm,2146.mm], [5152.mm,1136.8.mm,2146.mm], [5122.mm,1136.8.mm,2146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3787,7 +3787,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Rear-panel bracket
   grp = ents.add_group
   grp.name = "Rear-panel bracket"
-  face = grp.entities.add_face([5122.mm,1226.mm,90.mm], [5152.mm,1226.mm,90.mm], [5152.mm,1266.mm,90.mm], [5122.mm,1266.mm,90.mm])
+  face = grp.entities.add_face([5122.mm,1225.2.mm,90.mm], [5152.mm,1225.2.mm,90.mm], [5152.mm,1265.2.mm,90.mm], [5122.mm,1265.2.mm,90.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3798,7 +3798,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Rear-panel bracket
   grp = ents.add_group
   grp.name = "Rear-panel bracket"
-  face = grp.entities.add_face([5122.mm,1226.mm,1118.mm], [5152.mm,1226.mm,1118.mm], [5152.mm,1266.mm,1118.mm], [5122.mm,1266.mm,1118.mm])
+  face = grp.entities.add_face([5122.mm,1225.2.mm,1118.mm], [5152.mm,1225.2.mm,1118.mm], [5152.mm,1265.2.mm,1118.mm], [5122.mm,1265.2.mm,1118.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3809,7 +3809,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Rear-panel bracket
   grp = ents.add_group
   grp.name = "Rear-panel bracket"
-  face = grp.entities.add_face([5122.mm,1226.mm,2146.mm], [5152.mm,1226.mm,2146.mm], [5152.mm,1266.mm,2146.mm], [5122.mm,1266.mm,2146.mm])
+  face = grp.entities.add_face([5122.mm,1225.2.mm,2146.mm], [5152.mm,1225.2.mm,2146.mm], [5152.mm,1265.2.mm,2146.mm], [5122.mm,1265.2.mm,2146.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(60.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3820,9 +3820,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Front Retaining Bar
   grp = ents.add_group
   grp.name = "Front Retaining Bar"
-  face = grp.entities.add_face([4654.mm,0.mm,560.mm], [4674.mm,0.mm,560.mm], [4674.mm,1096.mm,560.mm], [4654.mm,1096.mm,560.mm])
+  face = grp.entities.add_face([4654.mm,0.mm,560.mm], [4674.mm,0.mm,560.mm], [4674.mm,1096.8.mm,560.mm], [4654.mm,1096.8.mm,560.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3831,9 +3831,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Front Retaining Bar
   grp = ents.add_group
   grp.name = "Front Retaining Bar"
-  face = grp.entities.add_face([4654.mm,0.mm,1760.mm], [4674.mm,0.mm,1760.mm], [4674.mm,1096.mm,1760.mm], [4654.mm,1096.mm,1760.mm])
+  face = grp.entities.add_face([4654.mm,0.mm,1760.mm], [4674.mm,0.mm,1760.mm], [4674.mm,1096.8.mm,1760.mm], [4654.mm,1096.8.mm,1760.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3842,9 +3842,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Front Retaining Bar
   grp = ents.add_group
   grp.name = "Front Retaining Bar"
-  face = grp.entities.add_face([4654.mm,1266.mm,560.mm], [4674.mm,1266.mm,560.mm], [4674.mm,2362.mm,560.mm], [4654.mm,2362.mm,560.mm])
+  face = grp.entities.add_face([4654.mm,1265.2.mm,560.mm], [4674.mm,1265.2.mm,560.mm], [4674.mm,2362.mm,560.mm], [4654.mm,2362.mm,560.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3853,9 +3853,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Front Retaining Bar
   grp = ents.add_group
   grp.name = "Front Retaining Bar"
-  face = grp.entities.add_face([4654.mm,1266.mm,1760.mm], [4674.mm,1266.mm,1760.mm], [4674.mm,2362.mm,1760.mm], [4654.mm,2362.mm,1760.mm])
+  face = grp.entities.add_face([4654.mm,1265.2.mm,1760.mm], [4674.mm,1265.2.mm,1760.mm], [4674.mm,2362.mm,1760.mm], [4654.mm,2362.mm,1760.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3865,7 +3865,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "D-Ring Holder"
   ge = grp.entities
-  circle = ge.add_circle([4648.mm,520.mm,585.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4648.mm,520.mm,585.4.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
@@ -3878,7 +3878,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "D-Ring Holder"
   ge = grp.entities
-  circle = ge.add_circle([4648.mm,520.mm,1785.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4648.mm,520.mm,1785.4.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
@@ -3891,7 +3891,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "D-Ring Holder"
   ge = grp.entities
-  circle = ge.add_circle([4648.mm,940.mm,585.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4648.mm,940.mm,585.4.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
@@ -3904,7 +3904,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "D-Ring Holder"
   ge = grp.entities
-  circle = ge.add_circle([4648.mm,940.mm,1785.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4648.mm,940.mm,1785.4.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
@@ -3917,7 +3917,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "D-Ring Holder"
   ge = grp.entities
-  circle = ge.add_circle([4648.mm,1422.mm,585.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4648.mm,1422.mm,585.4.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
@@ -3930,7 +3930,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "D-Ring Holder"
   ge = grp.entities
-  circle = ge.add_circle([4648.mm,1422.mm,1785.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4648.mm,1422.mm,1785.4.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
@@ -3943,7 +3943,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "D-Ring Holder"
   ge = grp.entities
-  circle = ge.add_circle([4648.mm,1842.mm,585.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4648.mm,1842.mm,585.4.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
@@ -3956,7 +3956,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "D-Ring Holder"
   ge = grp.entities
-  circle = ge.add_circle([4648.mm,1842.mm,1785.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4648.mm,1842.mm,1785.4.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
@@ -3968,9 +3968,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Wall Hanger Plate
   grp = ents.add_group
   grp.name = "Wall Hanger Plate"
-  face = grp.entities.add_face([4646.mm,0.mm,530.mm], [4712.mm,0.mm,530.mm], [4712.mm,4.mm,530.mm], [4646.mm,4.mm,530.mm])
+  face = grp.entities.add_face([4646.mm,0.mm,530.mm], [4712.8.mm,0.mm,530.mm], [4712.8.mm,4.mm,530.mm], [4646.mm,4.mm,530.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(120.mm)
+  face.pushpull(120.8.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3979,7 +3979,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Wall Hanger Seat
   grp = ents.add_group
   grp.name = "Wall Hanger Seat"
-  face = grp.entities.add_face([4650.mm,0.mm,556.mm], [4708.mm,0.mm,556.mm], [4708.mm,70.mm,556.mm], [4650.mm,70.mm,556.mm])
+  face = grp.entities.add_face([4650.mm,0.mm,556.mm], [4708.8.mm,0.mm,556.mm], [4708.8.mm,70.mm,556.mm], [4650.mm,70.mm,556.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(4.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -3990,7 +3990,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # IBC Wall Backing Plate (ext)
   grp = ents.add_group
   grp.name = "IBC Wall Backing Plate (ext)"
-  face = grp.entities.add_face([4629.mm,-48.mm,517.5.mm], [4729.mm,-48.mm,517.5.mm], [4729.mm,-40.mm,517.5.mm], [4629.mm,-40.mm,517.5.mm])
+  face = grp.entities.add_face([4629.4.mm,-48.mm,517.9.mm], [4729.4.mm,-48.mm,517.9.mm], [4729.4.mm,-40.mm,517.9.mm], [4629.4.mm,-40.mm,517.9.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(135.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -4002,7 +4002,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "IBC Wall Through-Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4647.mm,-48.mm,539.5.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([4647.4.mm,-48.mm,539.9.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
@@ -4015,7 +4015,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "IBC Wall Through-Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4647.mm,-48.mm,630.5.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([4647.4.mm,-48.mm,630.9.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
@@ -4028,7 +4028,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "IBC Wall Through-Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4711.mm,-48.mm,539.5.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([4711.4.mm,-48.mm,539.9.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
@@ -4041,7 +4041,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "IBC Wall Through-Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4711.mm,-48.mm,630.5.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([4711.4.mm,-48.mm,630.9.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
@@ -4053,9 +4053,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Wall Hanger Plate
   grp = ents.add_group
   grp.name = "Wall Hanger Plate"
-  face = grp.entities.add_face([4646.mm,0.mm,1730.mm], [4712.mm,0.mm,1730.mm], [4712.mm,4.mm,1730.mm], [4646.mm,4.mm,1730.mm])
+  face = grp.entities.add_face([4646.mm,0.mm,1730.mm], [4712.8.mm,0.mm,1730.mm], [4712.8.mm,4.mm,1730.mm], [4646.mm,4.mm,1730.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(120.mm)
+  face.pushpull(120.8.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -4064,7 +4064,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Wall Hanger Seat
   grp = ents.add_group
   grp.name = "Wall Hanger Seat"
-  face = grp.entities.add_face([4650.mm,0.mm,1756.mm], [4708.mm,0.mm,1756.mm], [4708.mm,70.mm,1756.mm], [4650.mm,70.mm,1756.mm])
+  face = grp.entities.add_face([4650.mm,0.mm,1756.mm], [4708.8.mm,0.mm,1756.mm], [4708.8.mm,70.mm,1756.mm], [4650.mm,70.mm,1756.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(4.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -4075,7 +4075,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # IBC Wall Backing Plate (ext)
   grp = ents.add_group
   grp.name = "IBC Wall Backing Plate (ext)"
-  face = grp.entities.add_face([4629.mm,-48.mm,1717.5.mm], [4729.mm,-48.mm,1717.5.mm], [4729.mm,-40.mm,1717.5.mm], [4629.mm,-40.mm,1717.5.mm])
+  face = grp.entities.add_face([4629.4.mm,-48.mm,1717.9.mm], [4729.4.mm,-48.mm,1717.9.mm], [4729.4.mm,-40.mm,1717.9.mm], [4629.4.mm,-40.mm,1717.9.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(135.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -4087,7 +4087,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "IBC Wall Through-Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4647.mm,-48.mm,1739.5.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([4647.4.mm,-48.mm,1739.9.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
@@ -4100,7 +4100,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "IBC Wall Through-Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4647.mm,-48.mm,1830.5.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([4647.4.mm,-48.mm,1830.9.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
@@ -4113,7 +4113,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "IBC Wall Through-Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4711.mm,-48.mm,1739.5.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([4711.4.mm,-48.mm,1739.9.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
@@ -4126,7 +4126,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "IBC Wall Through-Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4711.mm,-48.mm,1830.5.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([4711.4.mm,-48.mm,1830.9.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
@@ -4138,9 +4138,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Wall Hanger Plate
   grp = ents.add_group
   grp.name = "Wall Hanger Plate"
-  face = grp.entities.add_face([4646.mm,2358.mm,530.mm], [4712.mm,2358.mm,530.mm], [4712.mm,2362.mm,530.mm], [4646.mm,2362.mm,530.mm])
+  face = grp.entities.add_face([4646.mm,2358.mm,530.mm], [4712.8.mm,2358.mm,530.mm], [4712.8.mm,2362.mm,530.mm], [4646.mm,2362.mm,530.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(120.mm)
+  face.pushpull(120.8.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -4149,7 +4149,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Wall Hanger Seat
   grp = ents.add_group
   grp.name = "Wall Hanger Seat"
-  face = grp.entities.add_face([4650.mm,2292.mm,556.mm], [4708.mm,2292.mm,556.mm], [4708.mm,2362.mm,556.mm], [4650.mm,2362.mm,556.mm])
+  face = grp.entities.add_face([4650.mm,2292.mm,556.mm], [4708.8.mm,2292.mm,556.mm], [4708.8.mm,2362.mm,556.mm], [4650.mm,2362.mm,556.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(4.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -4160,7 +4160,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # IBC Wall Backing Plate (ext)
   grp = ents.add_group
   grp.name = "IBC Wall Backing Plate (ext)"
-  face = grp.entities.add_face([4629.mm,2402.mm,517.5.mm], [4729.mm,2402.mm,517.5.mm], [4729.mm,2410.mm,517.5.mm], [4629.mm,2410.mm,517.5.mm])
+  face = grp.entities.add_face([4629.4.mm,2402.mm,517.9.mm], [4729.4.mm,2402.mm,517.9.mm], [4729.4.mm,2410.mm,517.9.mm], [4629.4.mm,2410.mm,517.9.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(135.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -4172,7 +4172,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "IBC Wall Through-Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4647.mm,2352.mm,539.5.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([4647.4.mm,2352.mm,539.9.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
@@ -4185,7 +4185,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "IBC Wall Through-Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4647.mm,2352.mm,630.5.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([4647.4.mm,2352.mm,630.9.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
@@ -4198,7 +4198,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "IBC Wall Through-Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4711.mm,2352.mm,539.5.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([4711.4.mm,2352.mm,539.9.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
@@ -4211,7 +4211,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "IBC Wall Through-Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4711.mm,2352.mm,630.5.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([4711.4.mm,2352.mm,630.9.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
@@ -4223,9 +4223,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Wall Hanger Plate
   grp = ents.add_group
   grp.name = "Wall Hanger Plate"
-  face = grp.entities.add_face([4646.mm,2358.mm,1730.mm], [4712.mm,2358.mm,1730.mm], [4712.mm,2362.mm,1730.mm], [4646.mm,2362.mm,1730.mm])
+  face = grp.entities.add_face([4646.mm,2358.mm,1730.mm], [4712.8.mm,2358.mm,1730.mm], [4712.8.mm,2362.mm,1730.mm], [4646.mm,2362.mm,1730.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(120.mm)
+  face.pushpull(120.8.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -4234,7 +4234,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Wall Hanger Seat
   grp = ents.add_group
   grp.name = "Wall Hanger Seat"
-  face = grp.entities.add_face([4650.mm,2292.mm,1756.mm], [4708.mm,2292.mm,1756.mm], [4708.mm,2362.mm,1756.mm], [4650.mm,2362.mm,1756.mm])
+  face = grp.entities.add_face([4650.mm,2292.mm,1756.mm], [4708.8.mm,2292.mm,1756.mm], [4708.8.mm,2362.mm,1756.mm], [4650.mm,2362.mm,1756.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(4.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -4245,7 +4245,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # IBC Wall Backing Plate (ext)
   grp = ents.add_group
   grp.name = "IBC Wall Backing Plate (ext)"
-  face = grp.entities.add_face([4629.mm,2402.mm,1717.5.mm], [4729.mm,2402.mm,1717.5.mm], [4729.mm,2410.mm,1717.5.mm], [4629.mm,2410.mm,1717.5.mm])
+  face = grp.entities.add_face([4629.4.mm,2402.mm,1717.9.mm], [4729.4.mm,2402.mm,1717.9.mm], [4729.4.mm,2410.mm,1717.9.mm], [4629.4.mm,2410.mm,1717.9.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(135.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -4257,7 +4257,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "IBC Wall Through-Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4647.mm,2352.mm,1739.5.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([4647.4.mm,2352.mm,1739.9.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
@@ -4270,7 +4270,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "IBC Wall Through-Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4647.mm,2352.mm,1830.5.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([4647.4.mm,2352.mm,1830.9.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
@@ -4283,7 +4283,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "IBC Wall Through-Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4711.mm,2352.mm,1739.5.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([4711.4.mm,2352.mm,1739.9.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)
@@ -4296,7 +4296,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "IBC Wall Through-Bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([4711.mm,2352.mm,1830.5.mm], [0,1,0], 7.mm, 24)
+  circle = ge.add_circle([4711.4.mm,2352.mm,1830.9.mm], [0,1,0], 7.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(58.mm)

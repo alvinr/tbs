@@ -79,15 +79,15 @@ plumbing, the film-plane support, and the walkway.
 
 | # | Step | Depends on | Status |
 |---|------|-----------|:------:|
-| 3.1 | Install **cantilevers on the far + right walls** | Phase 2 | ☐ |
-| 3.2 | Lay the **under-grate ribbons** — sump line + brown filter-suction ribbon + pipe support beams — *span the space, so after the right beams, before the grate*; Note: Before the pipes can be glued, the walkwak has to be test fitted to locate the holes for the pipe bump through. | 3.1 | ☐ |
-| 3.3 | Install **cantilevers on the near wall** | 3.1 | ☐ |
-| 3.4 | **Extend plumbing** to the pinhole-wall panel | 3.3 | ☐ |
-| 3.5 | Install the **pinhole filter skid** (skid + the short brown rise to P-02; connects to the recycle/waste lines from 1.3 and the brown ribbon from 3.2) | 3.4 | ☐ |
-| 3.6 | Install the **processing tray** | 3.1 | ☐ |
-| 3.7 | Install the **film-plane beams** + **combined corner plates** (FP ↔ right-walkway) | 3.1 | ☐ |
-| 3.8 | Install the **left cantilevers** | 3.3 | ☐ |
-| 3.9 | Install the **walkway** (grating on all cantilevers) | 3.2, 3.3, 3.7, 3.8 | ☐ |
+| 3.1 | Install the **pinhole-wall ply backing** (mounts the filter skid; shown as a semi-transparent, plywood-colored backdrop for the plumbing build — ghosts like all prior geometry from Phase 4 on) | Phase 2 | ☐ |
+| 3.2 | Install **cantilevers on the far + right walls** | Phase 2 | ☐ |
+| 3.3 | Install **cantilevers on the near wall** | 3.2 | ☐ |
+| 3.4 | Lay the **under-grate ribbons** (sump line + skid ribbon legs — tray-sump→P-04 suction, DV-02 waste, P-02→ACC-02 — + pipe support beams) **and install the pinhole filter skid** (F-1..F-3 + P-04/SV-02/DV-02 + ACC-02 + skid-side plumbing; mounts to the 3.1 backing; connects to the recycle→IBC-3 + waste returns from 1.3) — *span the space, so after the beams and both cantilever sets, before the grate*; Note: Before the pipes can be glued, the walkway has to be test-fitted to locate the holes for the pipe bump-through. | 3.1, 3.2, 3.3 | ☐ |
+| 3.5 | **Extend plumbing** to the pinhole-wall panel | 3.4 | ☐ |
+| 3.6 | Install the **processing tray** | 3.2 | ☐ |
+| 3.7 | Install the **film-plane beams** + **combined corner plates** (FP ↔ right-walkway) | 3.2 | ☐ |
+| 3.8 | Install the **left cantilevers** | 3.4 | ☐ |
+| 3.9 | Install the **walkway** (grating on all cantilevers) | 3.3, 3.4, 3.7, 3.8 | ☐ |
 
 **Exit gate:** walkway decked, tray sealed, perimeter proof-loaded.
 

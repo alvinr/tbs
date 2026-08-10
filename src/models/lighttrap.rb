@@ -102,9 +102,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Door Frame threshold
   grp = ents.add_group
   grp.name = "Door Frame threshold"
-  face = grp.entities.add_face([-50.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([-50.8.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.8.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
@@ -113,9 +113,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Door Frame top
   grp = ents.add_group
   grp.name = "Door Frame top"
-  face = grp.entities.add_face([-50.mm,0.mm,2338.mm], [0.mm,0.mm,2338.mm], [0.mm,2362.mm,2338.mm], [-50.mm,2362.mm,2338.mm])
+  face = grp.entities.add_face([-50.8.mm,0.mm,2337.2.mm], [0.mm,0.mm,2337.2.mm], [0.mm,2362.mm,2337.2.mm], [-50.8.mm,2362.mm,2337.2.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
   mat.color = Sketchup::Color.new(88, 96, 112)
   mat.alpha = 1.0
@@ -124,7 +124,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Door Frame left stile
   grp = ents.add_group
   grp.name = "Door Frame left stile"
-  face = grp.entities.add_face([-50.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,50.mm,0.mm], [-50.mm,50.mm,0.mm])
+  face = grp.entities.add_face([-50.8.mm,0.mm,0.mm], [0.mm,0.mm,0.mm], [0.mm,50.8.mm,0.mm], [-50.8.mm,50.8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
   mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
@@ -135,7 +135,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Door Frame right stile
   grp = ents.add_group
   grp.name = "Door Frame right stile"
-  face = grp.entities.add_face([-50.mm,2312.mm,0.mm], [0.mm,2312.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([-50.8.mm,2311.2.mm,0.mm], [0.mm,2311.2.mm,0.mm], [0.mm,2362.mm,0.mm], [-50.8.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2388.mm)
   mat = model.materials["Door Frame threshold"] || model.materials.add("Door Frame threshold")
@@ -8037,9 +8037,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # ═══ Fixed far strip ═══
   defn = model.definitions.add("Fixed far strip")
   ents = defn.entities
-  # Fixed far panel strip (Yd2287-2362)
+  # Fixed far panel strip (Yd2287.0-2362)
   grp = ents.add_group
-  grp.name = "Fixed far panel strip (Yd2287-2362)"
+  grp.name = "Fixed far panel strip (Yd2287.0-2362)"
   face = grp.entities.add_face([0.mm,2287.mm,130.mm], [40.mm,2287.mm,130.mm], [40.mm,2362.mm,130.mm], [0.mm,2362.mm,130.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2170.mm)
@@ -8104,7 +8104,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Tray Shim Base (partial)"
   face = grp.entities.add_face([170.mm,80.mm,0.mm], [1600.mm,80.mm,0.mm], [1600.mm,2280.mm,0.mm], [170.mm,2280.mm,0.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(42.22.mm)
+  face.pushpull(23.5.mm)
   mat = model.materials["Tray Shim Base (partial)"] || model.materials.add("Tray Shim Base (partial)")
   mat.color = Sketchup::Color.new(216, 208, 188)
   mat.alpha = 0.6
@@ -8113,7 +8113,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Processing Tray Floor (partial)
   grp = ents.add_group
   grp.name = "Processing Tray Floor (partial)"
-  face = grp.entities.add_face([170.mm,80.mm,42.22.mm], [1600.mm,80.mm,42.22.mm], [1600.mm,2280.mm,42.22.mm], [170.mm,2280.mm,42.22.mm])
+  face = grp.entities.add_face([170.mm,80.mm,23.5.mm], [1600.mm,80.mm,23.5.mm], [1600.mm,2280.mm,23.5.mm], [170.mm,2280.mm,23.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
@@ -8124,7 +8124,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Rim Near (partial)
   grp = ents.add_group
   grp.name = "Tray Rim Near (partial)"
-  face = grp.entities.add_face([170.mm,80.mm,44.22.mm], [1600.mm,80.mm,44.22.mm], [1600.mm,82.mm,44.22.mm], [170.mm,82.mm,44.22.mm])
+  face = grp.entities.add_face([170.mm,80.mm,25.5.mm], [1600.mm,80.mm,25.5.mm], [1600.mm,82.mm,25.5.mm], [170.mm,82.mm,25.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
@@ -8135,7 +8135,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Rim Far (partial)
   grp = ents.add_group
   grp.name = "Tray Rim Far (partial)"
-  face = grp.entities.add_face([170.mm,2278.mm,44.22.mm], [1600.mm,2278.mm,44.22.mm], [1600.mm,2280.mm,44.22.mm], [170.mm,2280.mm,44.22.mm])
+  face = grp.entities.add_face([170.mm,2278.mm,25.5.mm], [1600.mm,2278.mm,25.5.mm], [1600.mm,2280.mm,25.5.mm], [170.mm,2280.mm,25.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
@@ -8146,7 +8146,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Rim Left (cargo end)
   grp = ents.add_group
   grp.name = "Tray Rim Left (cargo end)"
-  face = grp.entities.add_face([170.mm,80.mm,44.22.mm], [172.mm,80.mm,44.22.mm], [172.mm,2280.mm,44.22.mm], [170.mm,2280.mm,44.22.mm])
+  face = grp.entities.add_face([170.mm,80.mm,25.5.mm], [172.mm,80.mm,25.5.mm], [172.mm,2280.mm,25.5.mm], [170.mm,2280.mm,25.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
@@ -8157,7 +8157,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Chemistry Bath (partial)
   grp = ents.add_group
   grp.name = "Chemistry Bath (partial)"
-  face = grp.entities.add_face([172.mm,82.mm,44.22.mm], [1598.mm,82.mm,44.22.mm], [1598.mm,2278.mm,44.22.mm], [172.mm,2278.mm,44.22.mm])
+  face = grp.entities.add_face([172.mm,82.mm,25.5.mm], [1598.mm,82.mm,25.5.mm], [1598.mm,2278.mm,25.5.mm], [172.mm,2278.mm,25.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Chemistry Bath (partial)"] || model.materials.add("Chemistry Bath (partial)")
@@ -8204,9 +8204,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP Brace Beam Lower (near wall)
   grp = ents.add_group
   grp.name = "FP Brace Beam Lower (near wall)"
-  face = grp.entities.add_face([150.mm,100.mm,100.mm], [2000.mm,100.mm,100.mm], [2000.mm,150.mm,100.mm], [150.mm,150.mm,100.mm])
+  face = grp.entities.add_face([150.mm,100.mm,100.mm], [2000.mm,100.mm,100.mm], [2000.mm,150.8.mm,100.mm], [150.mm,150.8.mm,100.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -8215,9 +8215,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP Brace Beam Upper (near wall)
   grp = ents.add_group
   grp.name = "FP Brace Beam Upper (near wall)"
-  face = grp.entities.add_face([150.mm,100.mm,2204.mm], [2000.mm,100.mm,2204.mm], [2000.mm,150.mm,2204.mm], [150.mm,150.mm,2204.mm])
+  face = grp.entities.add_face([150.mm,100.mm,2204.mm], [2000.mm,100.mm,2204.mm], [2000.mm,150.8.mm,2204.mm], [150.mm,150.8.mm,2204.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -8226,7 +8226,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP Brace Post L (near wall)
   grp = ents.add_group
   grp.name = "FP Brace Post L (near wall)"
-  face = grp.entities.add_face([150.mm,100.mm,100.mm], [200.mm,100.mm,100.mm], [200.mm,150.mm,100.mm], [150.mm,150.mm,100.mm])
+  face = grp.entities.add_face([150.mm,100.mm,100.mm], [200.8.mm,100.mm,100.mm], [200.8.mm,150.8.mm,100.mm], [150.mm,150.8.mm,100.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2104.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -8237,9 +8237,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP Brace Beam Lower (far wall)
   grp = ents.add_group
   grp.name = "FP Brace Beam Lower (far wall)"
-  face = grp.entities.add_face([150.mm,2262.mm,100.mm], [2000.mm,2262.mm,100.mm], [2000.mm,2312.mm,100.mm], [150.mm,2312.mm,100.mm])
+  face = grp.entities.add_face([150.mm,2262.mm,100.mm], [2000.mm,2262.mm,100.mm], [2000.mm,2312.8.mm,100.mm], [150.mm,2312.8.mm,100.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -8248,9 +8248,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP Brace Beam Upper (far wall)
   grp = ents.add_group
   grp.name = "FP Brace Beam Upper (far wall)"
-  face = grp.entities.add_face([150.mm,2262.mm,2204.mm], [2000.mm,2262.mm,2204.mm], [2000.mm,2312.mm,2204.mm], [150.mm,2312.mm,2204.mm])
+  face = grp.entities.add_face([150.mm,2262.mm,2204.mm], [2000.mm,2262.mm,2204.mm], [2000.mm,2312.8.mm,2204.mm], [150.mm,2312.8.mm,2204.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
+  face.pushpull(50.8.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -8259,7 +8259,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP Brace Post L (far wall)
   grp = ents.add_group
   grp.name = "FP Brace Post L (far wall)"
-  face = grp.entities.add_face([150.mm,2262.mm,100.mm], [200.mm,2262.mm,100.mm], [200.mm,2312.mm,100.mm], [150.mm,2312.mm,100.mm])
+  face = grp.entities.add_face([150.mm,2262.mm,100.mm], [200.8.mm,2262.mm,100.mm], [200.8.mm,2312.8.mm,100.mm], [150.mm,2312.8.mm,100.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2104.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
@@ -9870,7 +9870,7 @@ ents = sr_defn.entities
   grp.material = mat
 
 ents = defn.entities
-sr_tr = Geom::Transformation.rotation([175.mm, 2287.mm, 0], Z_AXIS, (-56).degrees)
+sr_tr = Geom::Transformation.rotation([175.0.mm, 2287.0.mm, 0], Z_AXIS, (-56).degrees)
 sr_inst = ents.add_instance(sr_defn, sr_tr)
 sr_inst.name = "Transport Stay Rods"
 sr_inst.layer = model.layers["Lock anchor"]
@@ -10438,10 +10438,10 @@ lfr_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swin
 # Shift the moving def by -pivot so the def origin sits at the pivot — then the instance's
 # RotZ swings the assembly about the pivot (same origin-at-rotation-point pattern the
 # cargo-door leaves use).
-shift = Geom::Transformation.translation([(-175).mm, (-2287).mm, 0])
+shift = Geom::Transformation.translation([(-175.0).mm, (-2287.0).mm, 0])
 defn.entities.transform_entities(shift, defn.entities.to_a)
 
-inst = entities.add_instance(defn, Geom::Transformation.translation([175.mm, 2287.mm, 0]))
+inst = entities.add_instance(defn, Geom::Transformation.translation([175.0.mm, 2287.0.mm, 0]))
 inst.name = "Panel Swing"
 inst.layer = model.layers["Panel Swing"]
 da = "dynamic_attributes"

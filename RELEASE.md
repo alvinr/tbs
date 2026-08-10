@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Pump-run support-detail fabrication sheet (#29 follow-up).** New `generate_support_detail.py`
+  → `support-detail-sheet1/2.png`. Sheet 1 = face-on board elevations (far / near / near-upper —
+  18mm ply, 4 L-brackets each, risers + P-clip rows, fully dimensioned); Sheet 2 = the L-bracket
+  flush-mount plan section (post inner face → 6mm weld leg → 45mm landing leg → ply seated flush +
+  M6→tee-nut bolt), a P-clip cross-section, and a fabrication schedule (3 boards / 12 brackets /
+  39 clips). Geometry imported from the `cp` model constants so it can't drift. Embedded in
+  plumbing-report §5.3; registered in the gallery, publish, setup_docs, and dependencies.yml.
+
 - **Construction sequence — far support board staged one click later.** In the Phase 1
   click-to-build, the far-wall pump-run support board (DV-01/P-02/P-01 risers) now reveals on
   **click 4 (with Fan A)** instead of click 3 — click 3 drops in only the near-wall boards. Added

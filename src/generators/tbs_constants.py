@@ -170,6 +170,10 @@ XSLIDE_BAR_W = 38.1    # cross-slide flat-bar width (mm) = 1-1/2"
 XSLIDE_BAR_T = 6.35    # cross-slide flat-bar thickness (mm) = 1/4"
 XSLIDE_Z_BAR_LEN = 345 # Z (tilt) slide bar cut length (mm) = XSLIDE_Z_TRAVEL 245 + ~carriage/margin — sized to hold MAX_TILT (corner blueprint 2026-08-10)
 XSLIDE_X_BAR_LEN = 365 # X (swing) slide bar cut length (mm) = XSLIDE_X_TRAVEL 263 + ~carriage/margin — sized to hold MAX_SWING
+XSLIDE_UHMW_T = 3.2    # UHMW self-lube pad thickness (mm, 1/8") between carriage and bar bearing faces
+XSLIDE_GIB_W  = 12     # adjustable gib width (mm) — brass-tipped taper strip on one bar edge
+XSLIDE_GIB_T  = 6.35   # gib thickness (mm) = 1/4"
+XSLIDE_CARR_WALL = 8   # cross-slide carriage wall thickness (mm) around the bar
 # Belden UJ-SS750x375 U-joint (datasheet: MROSupply 2561134 / Belden catalog):
 UJOINT_BORE   = 9.53   # bore (mm) = 0.380" (3/8")
 UJOINT_OD     = 19.05  # yoke OD (mm) = 0.75" nominal (0.745" actual)

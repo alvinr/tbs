@@ -28,6 +28,8 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle, Arc
 
 from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH_X_C, MAX_TILT_DEG, MAX_SWING_DEG, DIAGRAMS_DIR, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_N_TOTAL, BRACE_Z_BOT, BRACE_Z_TOP, C_WID, WALL_T, IBC_WBKT_PLATE_W, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, DRUM_CY, DRUM_R, DRUM_CX, DRUM_D
+from tbs_constants import (XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_TRAVEL, XSLIDE_X_TRAVEL,
+                          XSLIDE_Z_BAR_LEN, XSLIDE_X_BAR_LEN, XSLIDE_UHMW_T, XSLIDE_GIB_W)
 from tbs_title_block import title_block
 from tbs_drawing import (leader, draw_notes, draw_dim_h, draw_dim_v,
                          draw_rect, draw_circle, hatch_rect, reset_label_registry)
@@ -1782,7 +1784,8 @@ def attach_plan(ax):
     _rect(ax, 90, cyy - 8, 300, 16, C_SWING, z=5); _hatch_xs(ax, 90, cyy - 8, 300, 16)
     _rect(ax, 300, cyy - 12, 46, 24, C_SWING, z=6)                # X carriage (near one end = swung)
     ax.annotate("", xy=(96, cyy + 26), xytext=(384, cyy + 26), arrowprops=dict(arrowstyle="<->", color=C_SWING, lw=1.0))
-    ax.text(240, cyy + 30, "X travel ~260mm = SWING accommodation", fontsize=6, color=C_SWING, ha="center", va="bottom", **FONT)
+    ax.text(240, cyy + 30, f"X travel {XSLIDE_X_TRAVEL}mm = SWING (bar {XSLIDE_X_BAR_LEN}mm)", fontsize=6, color=C_SWING, ha="center", va="bottom", **FONT)
+    leader(ax, 160, cyy - 8, 120, -44, f"304 flat bar ¼×1½ = {XSLIDE_BAR_W:.1f}×{XSLIDE_BAR_T:.2f}mm\n(UHMW pad {XSLIDE_UHMW_T}mm + brass-tip gib {XSLIDE_GIB_W}mm)", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
     # stub → U-joint (swing pin seen true here) → frame
     _rect(ax, 346, cyy - 6, 16, 12, C_STEEL, z=6)
     _rect(ax, 362, cyy - 18, 34, 36, C_UJ, z=6)
@@ -1816,7 +1819,8 @@ def attach_tilt(ax):
     _rect(ax, cx - 11, 48, 4, 42, C_POLY, z=7); _rect(ax, cx + 7, 48, 4, 42, C_POLY, z=7)   # UHMW pads
     _rect(ax, cx - 15, 66, 8, 10, C_PIN, z=7)                                               # gib
     ax.annotate("", xy=(cx + 34, 300), xytext=(cx + 34, 44), arrowprops=dict(arrowstyle="<->", color=C_TILT, lw=1.0))
-    ax.text(cx + 38, 172, "Z travel ~250mm = TILT accommodation", fontsize=6, color=C_TILT, ha="left", va="center", rotation=90, **FONT)
+    ax.text(cx + 38, 172, f"Z travel {XSLIDE_Z_TRAVEL}mm = TILT (bar {XSLIDE_Z_BAR_LEN}mm)", fontsize=6, color=C_TILT, ha="left", va="center", rotation=90, **FONT)
+    leader(ax, cx + 8, 120, 78, 150, f"304 flat bar ¼×1½\n{XSLIDE_BAR_W:.1f}×{XSLIDE_BAR_T:.2f}mm + UHMW {XSLIDE_UHMW_T}mm + gib", ha="left", fs=5.2, color=C_TILT, font=FONT, bbox=LBL_BG)
     # stub → U-joint (TILT pin seen true) → 304 SS corner plate → frame angle (below)
     _rect(ax, cx - 6, 30, 12, 16, C_STEEL, z=6)                                             # stub
     _rect(ax, cx - 18, -4, 36, 34, C_UJ, z=6)                                               # U-joint

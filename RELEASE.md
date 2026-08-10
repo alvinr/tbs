@@ -52,7 +52,17 @@ file** — a release must not ship without a changelog entry:
 - **Diagram polish.** Film-plane **Sheet 6** clamp notes single-spaced + word-wrapped to fit the box
   (was double-spaced with note 5 overflowing); **Sheet 4** notes box shrunk to fit the text (was ~2×
   too wide); **pinhole-wall-elevation** now draws a proper **crossover** (semicircle jump) where the
-  ACC-02→BV-05 recycle run crosses the P-04 sump-pickup riser — it was reading as a joint.
+  ACC-02→BV-05 recycle run crosses the P-04 sump-pickup riser — it was reading as a joint. Round 2:
+  **Sheet 9** note block reduced to ~50% page width + line-wrapped to fit; **water-system Sheet 3**
+  notes box widened 5%.
+
+- **SketchUp `--send` memory-bloat investigation (tooling, not published).** Ran a full investigation
+  into the SketchUp process ballooning over repeated `--send` (TODO tooling item). Falsified the
+  "Ruby allocations not freed" hypothesis empirically (isolated `TOPLEVEL_BINDING.dup`, flat Ruby heap
+  across 12 re-sends, zero globals/constants/closures, `purge_unused` clean); root cause is SketchUp's
+  **C++ allocator retaining freed pages** (not reclaimed by GC/purge/File>New — only a restart clears
+  it). No code fix; mitigation is workflow (restart during heavy send sessions). Written up in
+  `sketchup-memory-investigation.md` (repo-internal, not a TBS artifact).
 
 - **Spray-beam removal cycle (#28) closed as no-lift / park-and-roll.** Decided against a lift-out
   mechanism: the muslin loads by parking the gantry at the near end and rolling the beam back over

@@ -1207,7 +1207,7 @@ def sheet4():
         f"{SPLICE_YD}) — the shortest-throw, least-travelled zone, least likely for the skate to roll over it.",
         "5. The length-SPLICE fishplate sits on the OUTBOARD WEB-BACK (far side, ghosted), clear of the rollers; "
         "the cut BRIDGE sits on top (gravity-held) with a short bottom support bridge under. U-joint stub→carrier clamp (4040N12) + U-joint body: Sheet 3.",
-    ], 2, 99, 4.1, fs=6.2, title_fs=6.8, color=DIM, width=79, wrap=132, font=FONT)
+    ], 2, 99, 4.1, fs=6.2, title_fs=6.8, color=DIM, width=48, wrap=132, font=FONT)
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
@@ -1462,8 +1462,8 @@ def sheet6():
         f"5. TOP edge + 2 SIDE edges clamped ({CLAMP_N_HORIZ} + 2×{CLAMP_N_VERT}). The BOTTOM (walkway-facing) edge is UNCLAMPED — no clearance to the raised walkway deck (also keeps the swing/tilt envelope clear); the muslin is secured on the other three edges.",
         "6. Replaces the custom through-bolted bracket + torsion-spring + neoprene jaw (2026-07-22): no fabrication, hand clip on/off, chemistry-safe.",
     ]
-    draw_notes(ax_b, notes, 2, 96, spacing=(9), fs=7, title_fs=7.5,
-               color=DIM, title_color=ANNO, font=FONT, width=(90))
+    draw_notes(ax_b, notes, 2, 96, spacing=4.6, fs=7, title_fs=7.5,
+               color=DIM, title_color=ANNO, font=FONT, width=90, wrap=148)
 
     # ── PANEL C: edge layout — 3 clamped edges (bottom omitted) ──
     ax_c = fig.add_axes([0.05, 0.06, 0.90, 0.30])

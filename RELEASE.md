@@ -49,6 +49,11 @@ file** — a release must not ship without a changelog entry:
   after a hump on ACC-02→BV-05 to clear the nudged tray-sump riser); plumbing-report §5.3
   support-scheme narrative; panel-layout 2D shows the side boards edge-on on their L-brackets.
 
+- **Diagram polish.** Film-plane **Sheet 6** clamp notes single-spaced + word-wrapped to fit the box
+  (was double-spaced with note 5 overflowing); **Sheet 4** notes box shrunk to fit the text (was ~2×
+  too wide); **pinhole-wall-elevation** now draws a proper **crossover** (semicircle jump) where the
+  ACC-02→BV-05 recycle run crosses the P-04 sump-pickup riser — it was reading as a joint.
+
 - **Spray-beam removal cycle (#28) closed as no-lift / park-and-roll.** Decided against a lift-out
   mechanism: the muslin loads by parking the gantry at the near end and rolling the beam back over
   the laid fabric (report §4.2), and beam service is via the right-walkway grate (§4.3). Verified the

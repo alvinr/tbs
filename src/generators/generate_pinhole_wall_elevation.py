@@ -432,8 +432,13 @@ ax.text(sx(PROC_TRAY_DRAIN_X), sz(50), "SUMP PICKUP\n(up through walkway → P-0
 _bpipe([4575, PWP_ACC2_X + 63], [PWP_ACC2_Z0 + 120, PWP_ACC2_Z0 + 120])
 ax.text(sx(4585), sz(PWP_ACC2_Z0 + 120), "from P-02\n(corridor)", ha="left", va="center", fontsize=3.2, color=C_BROWN, zorder=10, **FONT)
 # ── ACC-02 OUT — recycled spray → 3W-BV-05 spray selector → spray bar ──
+# The −X run crosses the P-04 sump-pickup riser (X=_rise_x, Z290-1240) at Z=ACC2+60; draw a
+# semicircle JUMP over it (crossover convention) so the two brown runs read as crossing, not joining.
 _bv5x, _bv5z = BV05_X - 150, BV05_Z
-_bpipe([PWP_ACC2_X - 63, _bv5x, _bv5x], [PWP_ACC2_Z0 + 60, PWP_ACC2_Z0 + 60, _bv5z + 20])
+_zc = PWP_ACC2_Z0 + 60                             # 980 — the ACC-02 OUT run height
+_R = 20; _hd = _R * 0.707                          # hop radius / 45° offset
+_bpipe([PWP_ACC2_X - 63, _rise_x + _R, _rise_x + _hd, _rise_x, _rise_x - _hd, _rise_x - _R, _bv5x, _bv5x],
+       [_zc,             _zc,          _zc + _hd,     _zc + _R, _zc + _hd,     _zc,          _zc,   _bv5z + 20])
 # 3W-BV-05a selector symbol (fresh Blue ↔ recycled Brown → spray bar)
 ax.add_patch(mpatches.Rectangle((sx(_bv5x) - 8, sz(_bv5z) - 8), 16, 16, facecolor=C_VALVE, edgecolor=C_OUT, lw=0.8, zorder=12))
 ax.text(sx(_bv5x), sz(_bv5z + 95), "3W-BV-05a\n(spray selector)", ha="center", va="bottom", fontsize=3.2, color=C_BROWN, zorder=10, **FONT)

@@ -212,8 +212,15 @@ send1..5                  2837→3089  +39..+54  767    0      0     0   ~49k
   refactor.
 - Keep the single `start_operation`/`commit_operation` (already done) — avoids multiplying
   undo entries per send.
-- Optional cheap insurance (probe shows 0 orphans today, so low value): also
-  `materials.purge_unused` + `layers.purge_unused` at rebuild start.
+- **`materials.purge_unused` — DONE (2026-08-10).** Already standard in 9/11 generators at the
+  end-of-build cleanup; added to the two that lacked it (`generate_corridor_water_panel.py`,
+  `generate_pinhole_water_panel.py`) so every rebuild self-cleans orphan materials. No-op on
+  clean models (0 orphans today) → `water.skp` byte-unchanged, no re-send needed.
+- **`layers.purge_unused` — deliberately NOT added.** The 9 generators already do explicit
+  `keep_tags`-based tag pruning (e.g. `generate_ibc_model.py`), which is *stricter and safer*:
+  `purge_unused` would drop an allow-listed tag that happens to be empty (breaking scene
+  visibility) and would *miss* a non-empty stale tag the explicit prune catches. It would
+  override author intent, so it is not "insurance" here.
 - If a future regression implicates DC observers in `construction/lighttrap/mini-tbs`, add an
   explicit `remove_observer` on erase.
 

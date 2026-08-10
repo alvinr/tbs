@@ -984,6 +984,7 @@ entities = model.active_entities
 to_erase = entities.to_a.select {{ |e| e.is_a?(Sketchup::Group) || e.is_a?(Sketchup::ComponentInstance) || e.is_a?(Sketchup::Text) }}
 entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
+model.materials.purge_unused
 model.pages.to_a.each {{ |pg| model.pages.erase(pg) }}
 opts = model.options["UnitsOptions"]; opts["LengthUnit"]=2; opts["LengthFormat"]=0
 {tags_ruby}{body}

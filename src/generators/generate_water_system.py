@@ -879,7 +879,7 @@ def draw_sheet3():
         f"5. Wall-cantilevered walkway — no legs or structure on tray floor near sump.",
     ]
     draw_notes(ax3, notes, (-410), (-890), spacing=(70), fs=7,
-               width=(3600), color=C_TEXT, title_color=C_TEXT,
+               width=(3780), color=C_TEXT, title_color=C_TEXT,
                font={"fontfamily": "monospace"})
 
     _save(fig3, "water-system-sheet3")

@@ -1463,7 +1463,7 @@ def sheet6():
         "6. Replaces the custom through-bolted bracket + torsion-spring + neoprene jaw (2026-07-22): no fabrication, hand clip on/off, chemistry-safe.",
     ]
     draw_notes(ax_b, notes, 2, 96, spacing=4.6, fs=7, title_fs=7.5,
-               color=DIM, title_color=ANNO, font=FONT, width=90, wrap=148)
+               color=DIM, title_color=ANNO, font=FONT, width=90, wrap=135)
 
     # ── PANEL C: edge layout — 3 clamped edges (bottom omitted) ──
     ax_c = fig.add_axes([0.05, 0.06, 0.90, 0.30])
@@ -1963,7 +1963,7 @@ def sheet9():
         "the X slide (~260mm) + the Z slide beneath it (~250mm, Sheet 8) take the in-plane arc travel.",
         "LOAD PATH, film → rail:  ACM board → 6061 angle frame → 304 SS corner plate → U-joint → "
         "X (swing) slide → Z (tilt) slide → carriage plate → 4-wheel acetal skate → 6061 Al U-channel rail.",
-    ], 1, 97, spacing=6.0, fs=7, title_fs=7.6, color=DIM, title_color=ANNO, font=FONT, width=140)
+    ], 1, 97, spacing=4.5, fs=7, title_fs=7.6, color=DIM, title_color=ANNO, font=FONT, width=46, wrap=110)
     # title block
     ax_tb = fig.add_axes([0.02, 0.0, 0.96, 0.055]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 9 OF 9",

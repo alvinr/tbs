@@ -276,20 +276,20 @@ def draw_pclip(ax):
     ax.plot([band_end_x, footx - 3], [bz1 + 2, bz1 + 2], color=C_CLIP, lw=3.0, zorder=5)   # foot strap along the board
     ax.add_patch(Rectangle((footx - 9, bz1 - 1), 18, 4, facecolor=C_CLIP, edgecolor=C_OUT, lw=0.6, zorder=6))  # flat foot on the board
 
-    # fastener: M6 FLAT-HEAD machine screw (in the foot) → captive pronged TEE-NUT (board underside)
-    ax.add_patch(Rectangle((footx - 2.5, bz0 + 4), 5, EQT - 1, facecolor=C_CUSH, edgecolor="none", zorder=7))                 # shank
+    # fastener: #10 WOOD SCREW into the ply — the P-clip only restrains the pipe (near-zero
+    # load), so unlike the weight-bearing L-bracket it needs no captive tee-nut
+    tipz = bz0 + 3
     ax.add_patch(Polygon([(footx - 6, bz1 + 3), (footx + 6, bz1 + 3), (footx + 2.5, bz1 - 1), (footx - 2.5, bz1 - 1)],
-                         closed=True, facecolor=C_CUSH, edgecolor=C_OUT, lw=0.6, zorder=9))                                   # flat countersunk head
-    ax.add_patch(Rectangle((footx - 3, bz0), 6, 11, facecolor=C_STEEL_D, edgecolor=C_OUT, lw=0.6, zorder=7))                  # tee-nut barrel into ply
-    ax.add_patch(Rectangle((footx - 9, bz0 - 2.6), 18, 2.6, facecolor=C_STEEL_D, edgecolor=C_OUT, lw=0.7, zorder=9))          # tee-nut flange (underside)
-    for pxp in (footx - 7.5, footx + 7.5):
-        ax.add_patch(Polygon([(pxp - 1.6, bz0), (pxp + 1.6, bz0), (pxp, bz0 + 4.5)], closed=True, facecolor=C_STEEL_D, edgecolor="none", zorder=8))  # prongs
+                         closed=True, facecolor=C_CUSH, edgecolor=C_OUT, lw=0.6, zorder=9))                                   # countersunk head in the foot
+    ax.add_patch(Polygon([(footx - 2.6, bz1 - 1), (footx + 2.6, bz1 - 1), (footx + 1.5, tipz + 3), (footx, tipz), (footx - 1.5, tipz + 3)],
+                         closed=True, facecolor=C_CUSH, edgecolor=C_OUT, lw=0.5, zorder=7))                                   # tapered threaded shank → point (bites into ply, does NOT pass through)
+    for tz in (bz1 - 4, bz1 - 9, bz1 - 14):
+        ax.plot([footx - 2.4, footx + 2.4], [tz + 1.3, tz - 1.3], color="white", lw=0.7, zorder=8)                            # thread ticks
 
     leader(ax, pcx, pcz, pcx + 30, pcz + 26, "Ø21 riser", fs=6.2, color=C_BROWN, ha="left", va="center", font=FONT, bbox=LBL_BG)
     leader(ax, pcx + RP + 2, pcz - 4, pcx + 34, pcz - 2, "EPDM cushion", fs=6.2, color=C_CUSH, ha="left", va="center", font=FONT, bbox=LBL_BG)
     leader(ax, pcx - rb, pcz + 4, pcx - 8, pcz + 30, '3/4" P-clip', fs=6.2, color=C_CLIP, ha="left", va="center", font=FONT, bbox=LBL_BG)
-    leader(ax, footx, bz1 + 3, footx - 30, bz1 + 26, "M6 flat-head screw\n(countersunk)", fs=6.0, color=C_CUSH, ha="right", va="center", font=FONT, bbox=LBL_BG)
-    leader(ax, footx + 9, bz0 - 2.5, footx + 36, bz0 - 20, "pronged tee-nut\n(captive in ply)", fs=6.0, color=C_STEEL_D, ha="left", va="center", font=FONT, bbox=LBL_BG)
+    leader(ax, footx + 2, bz0 + 8, footx - 28, bz0 - 4, "#10 wood screw\n(pipe restraint only —\nno tee-nut needed)", fs=6.0, color=C_CUSH, ha="right", va="center", font=FONT, bbox=LBL_BG)
     ax.text(34, 40, "P-CLIP DETAIL — MOUNTED AT RIGHT ANGLES TO THE BOARD", ha="center", va="bottom", fontsize=8, fontweight="bold", color=C_OUT, **FONT)
 
 
@@ -316,13 +316,14 @@ def draw_sheet2():
         ("Support board", "3", "18mm exterior BC/ACX ply, 399mm × (420 / 420 / 690)mm"),
         ("L-bracket", "12", "6mm steel angle, 45mm landing leg × 50mm tall (4 per board)"),
         ("P-clip (cushioned)", "39", '3/4" cushioned pipe clip, EPDM-lined'),
-        ("Machine screw + tee-nut", "—", "M6 into back-face 4-prong tee-nut (per clip + bracket)"),
+        ("Board mount screw", "—", "M6 flat-head machine screw + captive pronged tee-nut (weight-bearing board→bracket)"),
+        ("P-clip screw", "39", '#10 x 1" wood screw, one per clip (pipe restraint only — no tee-nut)'),
     ]
-    y = 0.92
+    y = 0.94
     ax_t.text(0.0, 1.0, "FABRICATION SCHEDULE", fontsize=8.6, fontweight="bold", color=C_OUT, **FONT)
     cols = (0.0, 0.34, 0.44)
     for i, (a, b, c) in enumerate(rows):
-        yy = y - i * 0.155
+        yy = y - i * 0.135
         fw = "bold" if i == 0 else "normal"
         ax_t.text(cols[0], yy, a, fontsize=7.2, fontweight=fw, color=C_OUT, va="top", **FONT)
         ax_t.text(cols[1], yy, b, fontsize=7.2, fontweight=fw, color=C_OUT, va="top", **FONT)
@@ -334,7 +335,7 @@ def draw_sheet2():
     draw_notes(ax_nt, [
         "NOTES:",
         "1. L-brackets fillet-welded to the post inner faces (rear-panel method); ply back face seats flush with the post wall-side face.",
-        "2. Ply is machine-screwed (not lag/wood-screwed) into back-face tee-nuts so a run can be unbolted for service.",
+        "2. The weight-bearing board->L-bracket mounts use M6 machine screws into captive tee-nuts (re-torqueable); the P-clips carry only pipe restraint, so they take a simple #10 wood screw.",
         "3. P-clip cushion (EPDM) isolates the Ø21 riser and takes the pump vibration off the ply.",
         "4. All steel hot-dip galvanized or painted; the splash zone is chloride-free (no 316 needed).",
     ], 0.0, 1.0, 0.10, fs=6.9, title_fs=7.4, width=1.0, wrap=64, font=FONT)

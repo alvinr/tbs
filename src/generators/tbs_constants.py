@@ -197,6 +197,9 @@ CAM_CLAMP_N       = 3    # cam clamps per corner
 CORNER_PLATE_W = 203.2   # plate blank long side (mm) = 8"
 CORNER_PLATE_H = 152.4   # plate blank short side (mm) = 6"
 CORNER_PLATE_T = 6.35    # plate thickness (mm) = 1/4"
+CORNER_PLATE_HOLE_EDGE = 25.4  # J5 bolt edge distance from the plate edge (mm, 1") — >2xM6 dia
+CORNER_PLATE_HOLE_SP   = 38     # J5 bolt pair spacing along each leg (mm)
+CORNER_PLATE_BEND_R    = 6.35   # L-plate press-brake inside bend radius (mm) = 1T
 
 # ── Tilt-swing front board (spherical-pivot adapter on the pinhole frame) ─────
 # The board pivots up to FRONT_BOARD_MAX_DEG in tilt AND swing, set by the screw-shoulder

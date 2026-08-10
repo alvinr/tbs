@@ -29,7 +29,9 @@ from matplotlib.patches import Rectangle, Circle, Arc
 
 from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH_X_C, MAX_TILT_DEG, MAX_SWING_DEG, DIAGRAMS_DIR, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_N_TOTAL, BRACE_Z_BOT, BRACE_Z_TOP, C_WID, WALL_T, IBC_WBKT_PLATE_W, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, DRUM_CY, DRUM_R, DRUM_CX, DRUM_D
 from tbs_constants import (XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_TRAVEL, XSLIDE_X_TRAVEL,
-                          XSLIDE_Z_BAR_LEN, XSLIDE_X_BAR_LEN, XSLIDE_UHMW_T, XSLIDE_GIB_W)
+                          XSLIDE_Z_BAR_LEN, XSLIDE_X_BAR_LEN, XSLIDE_UHMW_T, XSLIDE_GIB_W,
+                          UJOINT_BORE, UJOINT_OD, UJOINT_LEN, UJOINT_ANGLE, CORNER_PLATE_W, CORNER_PLATE_H,
+                          CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP, CORNER_PLATE_BEND_R)
 from tbs_title_block import title_block
 from tbs_drawing import (leader, draw_notes, draw_dim_h, draw_dim_v,
                          draw_rect, draw_circle, hatch_rect, reset_label_registry)
@@ -1857,15 +1859,19 @@ def _corner_elevation(ax):
     ax.add_patch(plt.Rectangle((-58, 21), 168, 38, fc=C_SWING, ec=OUT, lw=1.0, zorder=6))   # X (swing) slide — frontmost now, solid
     ax.add_patch(plt.Circle((40, 40), 9.5, fc=C_UJ, ec=OUT, lw=1.1, zorder=7))              # U-joint Ø19 end-on — yoke toward us
     draw_circle(ax, 40, 40, 2.6, color=OUT, fill=False, lw=0.9, zorder=8)                   # swing pin (end-on)
-    # M6 bolt HEADS on the plate back face, angle → 304 SS corner plate (J5, 2 per leg) — end-on, now toward us
-    for (bx, bz) in [(96, 25.4), (134, 25.4), (25.4, 96), (25.4, 134)]:
+    # M6 bolt HEADS on the plate back face, angle → 304 SS corner plate (J5, 2 per leg) — end-on, now toward us.
+    # Pattern driven from constants: edge distance CORNER_PLATE_HOLE_EDGE, pair spacing CORNER_PLATE_HOLE_SP.
+    E, SP, P0 = CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP, 96
+    for (bx, bz) in [(P0, E), (P0 + SP, E), (E, P0), (E, P0 + SP)]:
         draw_circle(ax, bx, bz, 3.0, color=OUT, fill=True, fc=C_PIN, lw=0.9, zorder=9)
+    draw_dim_h(ax, P0, P0 + SP, E - 17, f"{SP:.0f}", fs=5.0, above=False, font=FONT)      # J5 pair spacing
+    draw_dim_v(ax, P0 - 30, 0, E, f"{E:.0f}", fs=5.0, font=FONT)                          # J5 edge distance from the bottom edge
     draw_dim_v(ax, 162, 0, AL, "2\" (50.8)", fs=5.4, font=FONT)                          # angle leg size (on the now-right leg)
     # labels
-    leader(ax, 75, 120, 175, 150, "304 SS corner plate 6×8 — U-joint mount\n(this face toward us now)", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 75, 120, 175, 150, f"304 SS corner plate — 6×8 blank ({CORNER_PLATE_H:.0f}×{CORNER_PLATE_W:.0f}), ¼\"\npress-brake 90° L (R{CORNER_PLATE_BEND_R:.1f}, 1T); U-joint mount", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 40, 40, -40, 92, "U-joint Ø19 end-on (yoke toward us)\nBelden UJ-SS750x375", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 90, 40, 150, 15, "X (swing) slide — frontmost this view", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
-    leader(ax, 25.4, 134, -30, 175, "M6 ×2 per leg (angle → plate, J5)\nheads on the plate back", ha="left", fs=5.2, color=C_PIN, font=FONT, bbox=LBL_BG)
+    leader(ax, E, P0 + SP, -30, 175, f"M6 ×2 per leg (J5) — edge {E:.0f} (1\"), pair {SP:.0f}\nheads on the plate back", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
     leader(ax, 200, 25.4, 210, -34, "2x2 6061 Al angle L (FRAME)\n— behind the plate now (ACM behind it)", ha="left", fs=5.4, color=C_FRAME, font=FONT, bbox=LBL_BG)
     ax.text(-70, 256, "A — FROM THE X-SLIDE / RAIL SIDE  (X × Z)",
             fontsize=7.0, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
@@ -1924,17 +1930,17 @@ def _corner_section(ax):
     for by in (-8.5, 8.5):                                        # 2 bolts fix the support to the carriage (purple slide)
         ax.add_patch(plt.Rectangle((40, by - 0.9), 9.6, 1.8, fc=C_PIN, ec=OUT, lw=0.3, zorder=13))
     # dimensions
-    draw_dim_h(ax, 72, 140, 30, "68", fs=5.2, font=FONT)                                   # U-joint length
-    draw_dim_v(ax, 150, -9.5, 9.5, "Ø19", fs=5.2, font=FONT)                               # U-joint dia
+    draw_dim_h(ax, 72, 140, 30, f"{UJOINT_LEN:.0f}", fs=5.2, font=FONT)                    # U-joint overall length (UJOINT_LEN)
+    draw_dim_v(ax, 150, -9.5, 9.5, f"Ø{UJOINT_OD:.1f}", fs=5.2, font=FONT)                 # U-joint yoke OD (UJOINT_OD)
     draw_dim_h(ax, 176, 172 + AW + AL, -70, '2" (50.8)', fs=5.2, font=FONT)                # perp leg
     # → TO PINHOLE — horizontal, 90° to the vertical X slide
     ax.annotate("", xy=(244, 0), xytext=(220, 0), arrowprops=dict(arrowstyle="-|>", color=DIM, lw=1.4))
     ax.text(232, 5, "TO PINHOLE", ha="center", va="bottom", fontsize=6, color=DIM, **FONT)
     # labels
     leader(ax, 26, -18, 6, -74, "X carriage — 304 on UHMW;\ncam-clamp locks swing", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
-    leader(ax, 60, -6, 40, -78, "J3  X-carriage stub Ø9.5 (3/8\") → U-joint bore", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 60, -6, 40, -78, f"J3  X-carriage stub Ø{UJOINT_BORE:.2f} (3/8\") → U-joint bore", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 53, 11.75, 12, 58, "4040N12 304 shaft support — two-piece clamp\nsecures the input stub to the X-slide (purple)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 84, 11.9, 56, 86, "U-joint (tilt + swing) — Belden UJ-SS750x375\nsetscrew per hub locks it on the 3/8in stub", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 84, 11.9, 56, 86, f"U-joint (tilt+swing, ±{UJOINT_ANGLE}° max) — Belden UJ-SS750x375\nsetscrew per hub locks it on the 3/8in stub", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 169, -40, 170, -74, "304 SS corner plate — J4 U-joint stub (setscrew hub)", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 167, 24, 150, 66, "J5 COUNTERSUNK from the plate side → frame (M6 ×2/leg)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)
     leader(ax, 174, 10, 202, 38, "ACM secured FROM the frame INTO the ACM\n(countersunk in the frame back; front face clean)", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)

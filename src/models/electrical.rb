@@ -9493,9 +9493,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cct C branch P-04
+  # Cct C branch P-02
   grp = ents.add_group
-  grp.name = "Cct C branch P-04"
+  grp.name = "Cct C branch P-02"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -72.mm, 0.mm)
   circle = ge.add_circle([4874.mm,1181.mm,1000.mm], vec, 6.mm, 16)
@@ -9535,23 +9535,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # P-02 (Brown recycle - Pinhole-Wall filter pump)
+  # Cct C branch P-04 (taps ceiling feed - filter skid)
   grp = ents.add_group
-  grp.name = "P-02 (Brown recycle - Pinhole-Wall filter pump)"
-  face = grp.entities.add_face([3033.mm,70.mm,2139.mm], [3083.mm,70.mm,2139.mm], [3083.mm,130.mm,2139.mm], [3033.mm,130.mm,2139.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(180.mm)
-  mat = model.materials["P-02 (Brown recycle - Pinhole-Wall filter pump)"] || model.materials.add("P-02 (Brown recycle - Pinhole-Wall filter pump)")
-  mat.color = Sketchup::Color.new(107, 68, 35)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cct C branch P-02 (taps ceiling feed - Pinhole-Wall panel)
-  grp = ents.add_group
-  grp.name = "Cct C branch P-02 (taps ceiling feed - Pinhole-Wall panel)"
+  grp.name = "Cct C branch P-04 (taps ceiling feed - filter skid)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 68.mm, 0.mm)
-  circle = ge.add_circle([3058.mm,20.mm,2375.mm], vec, 6.mm, 16)
+  vec = Geom::Vector3d.new(0.mm, 0.mm, -1153.mm)
+  circle = ge.add_circle([2800.mm,20.mm,2375.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9560,12 +9549,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cct C branch P-02 (taps ceiling feed - Pinhole-Wall panel) elbow
+  # Cct C branch P-04 (taps ceiling feed - filter skid) elbow
   grp = ents.add_group
-  grp.name = "Cct C branch P-02 (taps ceiling feed - Pinhole-Wall panel) elbow"
+  grp.name = "Cct C branch P-04 (taps ceiling feed - filter skid) elbow"
   ge = grp.entities
-  arc = ge.add_arc([3058.mm,88.mm,2363.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 12.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([3058.mm,88.mm,2375.mm], [0.000000,1.000000,0.000000], 6.mm, 16)
+  arc = ge.add_arc([2812.mm,20.mm,1222.mm], [-1.000000,0.000000,0.000000], [0.000000,-1.000000,0.000000], 12.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2800.mm,20.mm,1222.mm], [0.000000,0.000000,-1.000000], 6.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -9574,12 +9563,40 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cct C branch P-02 (taps ceiling feed - Pinhole-Wall panel)
+  # Cct C branch P-04 (taps ceiling feed - filter skid)
   grp = ents.add_group
-  grp.name = "Cct C branch P-02 (taps ceiling feed - Pinhole-Wall panel)"
+  grp.name = "Cct C branch P-04 (taps ceiling feed - filter skid)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(0.mm, 0.mm, -44.mm)
-  circle = ge.add_circle([3058.mm,100.mm,2363.mm], vec, 6.mm, 16)
+  vec = Geom::Vector3d.new(506.mm, 0.mm, 0.mm)
+  circle = ge.add_circle([2812.mm,20.mm,1210.mm], vec, 6.mm, 16)
+  pf = ge.add_face(circle)
+  pf.reverse! if pf.normal.dot(vec) < 0
+  pf.pushpull(vec.length)
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-04 (taps ceiling feed - filter skid) elbow
+  grp = ents.add_group
+  grp.name = "Cct C branch P-04 (taps ceiling feed - filter skid) elbow"
+  ge = grp.entities
+  arc = ge.add_arc([3318.mm,32.mm,1210.mm], [0.000000,-1.000000,0.000000], [0.000000,0.000000,1.000000], 12.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([3318.mm,20.mm,1210.mm], [1.000000,0.000000,0.000000], 6.mm, 16)
+  f = ge.add_face(circle)
+  f.followme(arc)
+  arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
+  mat = model.materials["Fuse C (15A — water pumps)"] || model.materials.add("Fuse C (15A — water pumps)")
+  mat.color = Sketchup::Color.new(41, 121, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cct C branch P-04 (taps ceiling feed - filter skid)
+  grp = ents.add_group
+  grp.name = "Cct C branch P-04 (taps ceiling feed - filter skid)"
+  ge = grp.entities
+  vec = Geom::Vector3d.new(0.mm, 68.mm, 0.mm)
+  circle = ge.add_circle([3330.mm,32.mm,1210.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

@@ -58,7 +58,7 @@ spans this zone (nominal far position).
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
 | Processing tray (2 panels, 304 SS) | 170–4,629 | 80–2,280 | 0–50 | 50mm rim; 20mm clearance to film plane rails; sump well at X=2,399, Yd=80 with P-04 suction pickup to 3W-DV-02. On tapered HDPE shim strips. Permanently installed. |
-| Perimeter walkway (4 sections, removable) | 170–4,629 | 0–300 / 2,062–2,362 | 0–140 | 300mm wide, 140mm deck height (115mm support + 25mm grate). Near/far: wall-cantilevered 8mm gusset brackets at 457mm centers. Right: brackets on angle iron welded to end wall. Left: removable lift-out grate on 5 floor-leg cantilever brackets bolted to bare floor outside the tray (arms to X=470, 3 extended to X=770 on the punch-out; the panel occupies this end wall), 25mm grating. Left corners: butt joint (no miter). No tray contact (left brackets bolt to bare floor outside the tray). Floor-leg arm (Z=75–115) clears the 50mm tray rim and the Z60 spray bar by 15mm. |
+| Perimeter walkway (4 sections, removable) | 170–4,629 | 0–300 / 2,062–2,362 | 0–140 | 300mm wide, 140mm deck height (115mm support + 25mm grate). Near/far: wall-cantilevered 8mm gusset brackets at 457mm centers. Right: cantilever rectangle (2×1×0.120in steel frame) off the IBC frame + wall cleats; grate on 1×1×3/16in L-angle bearers. Left: removable lift-out grate on 5 floor-leg cantilever brackets bolted to bare floor outside the tray (arms to X=470, 3 extended to X=770 on the punch-out; the panel occupies this end wall), 25mm grating. Left corners: butt joint (no miter). No tray contact (left brackets bolt to bare floor outside the tray). Floor-leg arm (Z=75–115) clears the 50mm tray rim and the Z60 spray bar by 15mm. |
 
 The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 40° tilt; the lower max angle only increases clearance), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the U-channel depth rails.
 
@@ -117,7 +117,7 @@ only restrains them for transport (front retaining bars + D-ring lashing).
 
 | Item | Specification |
 |------|--------------|
-| Frame material | 50×50×3mm RHS mild steel |
+| Frame material | 2×2×0.120in steel (A500) |
 | Frame type | RESTRAINT-ONLY **deep 4-leg box** — the 1,000L caged totes direct-stack cage-on-cage (no load-bearing deck), so the frame only restrains them |
 | Uprights | 4 full-height corridor uprights (Yd 1046/1266) — a front pair at X≈4654 + a back pair 450mm behind at X≈5104, tied by top + bottom rings — on 150×150×12mm floor flange feet (4× M12 each); define the 270mm plumbing corridor |
 | Front retaining bars | 4× 50×20×3 RHS at the IBC front (Z560 + Z1760), seated in the 25mm gap to the film rail — stop the totes sliding out the front; each bar's wall end drops into a Simpson-style joist hanger (×4) |
@@ -147,7 +147,7 @@ Z=1,341mm (static sideways tip threshold ≈41°, ≈21% of the ISO gross limit)
 
 | Item | Supplier | Notes |
 |------|----------|-------|
-| 50×50×3mm RHS mild steel | Pacific Coast Steel, Santa Fe Springs CA | A500 Grade B; ~$4/linear foot |
+| 2×2×0.120in steel (A500) | Pacific Coast Steel, Santa Fe Springs CA | A500 Grade B; ~$4/linear foot |
 | Weld-on lashing rings (×8) | McMaster-Carr #3028T31 | 6,600 lb/ring; 3,333 lb assembly (2" strap-limited) |
 | M12 bolts (wall-hanger through-bolts ×16 + front-bar cleats ×8) | McMaster-Carr or local hardware | SS A2-70; M12×65 through-bolts (span 8mm plate + corrugation + 4mm hanger) for the exterior plates, M12×40 for the front-bar cleats |
 | Simpson-style wall joist hangers (×4) | Simpson Strong-Tie or local | folded 4mm plate, through-bolted to exterior backing plate |
@@ -173,7 +173,7 @@ door plane; the cargo doors close outboard of the fixed near strip.
 | Operational (0°) | Panel closed at the door plane; the B2 punch-out bay protrudes ~890mm outside | No — the doors stay open during camera operation |
 | Transport (swung 56°) | Panel + drum revolved about the pivot, swept inboard | Yes — true minimum clearance to the closed door is +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm -->mm |
 
-A fixed welded door frame (50×50×3mm RHS) provides the EPDM seal landing. The panel seals
+A fixed welded door frame (2×2×0.120in steel SHS) provides the EPDM seal landing. The panel seals
 against this frame with the Southco C2-33 cam latches and 20mm EPDM gaskets in the closed
 (latched) position; the latches release to free the seals before the swing.
 
@@ -214,7 +214,7 @@ Electrical services and the Blue supply pipe route along the pinhole wall face;
 the Corridor Plumbing Panel (pumps) sits in the IBC corridor (right end zone). No
 conduit, pipe, or cable runs through the optical zone.
 
-**Plumbing:** The corridor pumps (P-01 Blue supply, P-04 tray-sump transfer, plus
+**Plumbing:** The corridor pumps (P-01 Blue supply, P-02 Brown recycle, plus
 the P-05/P-03 waste-drain pumps) mount on the **Corridor Plumbing Panel** in the
 270mm IBC plumbing corridor (right end zone), at the tote stack — so the pump↔tote
 runs are short. The Blue supply pipe runs from P-01 along the pinhole wall to the

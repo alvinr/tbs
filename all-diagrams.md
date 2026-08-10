@@ -250,6 +250,16 @@
 
 ![TBS-001 — Processing Tray Detail C: Center-Seam Shingle-Lap Joint](assets/spray-bar-sheet8.png)
 
+**Tray drainage — Yd surface slope + center-draining near-rim gutter:**
+
+![TBS-001 — Tray drainage plan: Yd fall + gutter to center pickup](assets/tray-slope-sheet1.png)
+
+![TBS-001 — Tray drainage Section A-A: surface fall into the gutter](assets/tray-slope-sheet2.png)
+
+![TBS-001 — Tray drainage Section B-B: gutter to center pickup + beam clearance](assets/tray-slope-sheet3.png)
+
+![TBS-001 — Tray drainage details: near-rim fall-off + gutter inward slope](assets/tray-slope-sheet4.png)
+
 **Tray material research (decision record — evaluated, not adopted):**
 
 ![TBS-001 — Tray research: welded-PP construction cross-section (evaluated)](assets/tray-redesign-sheet1.png)

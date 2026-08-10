@@ -42,16 +42,17 @@ full print width. Together they form the print washing subsystem of the
 | Panel size (each) | 2,229 × 2,200mm | Two equal panels, joined at the midpoint by a ~40mm shingle-oriented lap (silicone-sealed, 12× M6×16). Each panel fits through the cargo door opening (2,340 × 2,280mm) |
 | Rim height | 50mm (all four sides) | Contains 6mm flood depth with margin; constrained to ≤75mm by film plane carriage clearance |
 | Floor-to-rim height | 50mm | Tray sits on tapered HDPE shim strips on the container floor |
-| Fall | 1:200 dual-axis (10mm over 2,200mm Yd + 11mm over 2,229mm X) toward sump | Water converges from both axes toward the sump well |
-| Sump well | 150 × 100mm, 20mm deep, pressed into tray floor at low point | Collects water at lowest point; P-04 suction pickup sits in sump |
+| Fall | 1:200 **Yd-only** (10mm over 2,200mm, far rim → near rim); level across X | Level-across-X keeps the full-width spray beam level so it clears the walkway arms; lateral drainage is off the surface via the near-rim gutter |
+| Near-rim gutter + center pickup | full-width gutter falls 1:200 inward to a 180 × 100mm × 20mm center pickup well (X=2,399) | Self-draining to one pickup; well bottom rests on the container floor (Z0) |
 | Weight (empty) | ~116 kg (2 panels × ~58 kg) | 304 SS, 1.5mm × 4.90 m² per panel × 7.93 kg/m² per mm |
 | Weight (operating, 6mm flood) | ~175 kg | Tray + ~59 kg water (6mm over the 4,459 × 2,200mm tray ≈ 59 L) |
 
 ### 2.2 Slope Support — Tapered HDPE Shim Strips
 
-The tray's 1:200 dual-axis slope is achieved by tapered HDPE shim strips bonded to the
-container floor beneath the tray. No risers, no under-tray plumbing — the tray sits
-directly on the shims to flow the water into the bottom right for pickup by the sump pump.
+The tray's 1:200 **Yd-only** slope (far rim → near rim, level across X) is achieved by tapered
+HDPE shim strips bonded to the container floor beneath the tray. No risers, no under-tray plumbing —
+the tray sits directly on the shims; the surface sheets to the near-rim gutter, which falls inward to
+the single center pickup.
 
 ![Water System — Sheet 3: Drainage Plan](assets/water-system-sheet3.png)
 
@@ -62,24 +63,25 @@ directly on the shims to flow the water into the bottom right for pickup by the 
 | Spacing | ~1,000mm apart across tray width (X direction) |
 | Profile | Tapered: ~20mm at near rim (drain end — raised so the 20mm sump well bottom rests on the container floor) → ~30mm at far rim |
 | Attachment | Construction adhesive (Loctite PL Premium or equivalent) to container floor |
-| Function | Creates the Yd-axis slope; X-axis slope is formed into the tray panels during fabrication (pressed crown) |
+| Function | Creates the Yd-axis slope; the surface is **level across X** (no crown) — lateral drainage is via the near-rim gutter to the center pickup |
 
 ### 2.3 Sump Well and Pickup
 
-Instead of a through-floor drain fitting, the tray has a shallow sump well pressed into
-the floor at the low point. P-04 draws water from the sump via a suction pickup tube —
-no penetration of the tray floor or the container floor.
+Instead of a through-floor drain fitting, the near-rim gutter drains to a shallow pickup well
+pressed into the floor at the **center** low point (X=2,399). P-04 draws from the well via a suction
+pickup that **pops out of the walkway** above it and runs **under the walkway to the IBC end** to
+rejoin the ribbon lanes — no penetration of the tray or container floor.
 
 ![Water System — Sheet 4: Drain Cross-Section](assets/water-system-sheet4.png)
 
 | Parameter | Value |
 |-----------|-------|
 | Sump dimensions | 150mm (X) × 100mm (Yd) × 20mm deep |
-| Sump location | IBC-end corner (near rim, low point) |
+| Pickup location | near-rim gutter low point, **X=2,399 (center)** |
 | Forming | Pressed/stamped into tray panel during fabrication |
 | Pickup tube | 1" PVC dip tube, stainless foot valve with strainer screen |
 | Pickup height | Tube bottom 5mm above sump floor (leaves ~0.75 L residual) |
-| Suction line | 1" flexible reinforced hose, routed over near rim to P-04 |
+| Suction line | 1" flexible reinforced hose — pops out of the walkway above the pickup, runs under the walkway to the IBC end → P-04 |
 | Pump | P-04 (Shurflo 2088, 12V DC, 3.5 GPM, 45 PSI, self-priming) |
 | Discharge | P-04 → 3W-DV-02 diverter → IBC-3 (Brown recycling) or IBC-4 (Waste) |
 
@@ -104,7 +106,7 @@ fold the liner around the sump pickup tube.
 |------------|-----------|--------|
 | Film plane carriage blocks | 90mm above tray rim (140 − 50) | Clear |
 | Film plane rails at X=<!-- BEGIN fact:film_plane_left_x_mm -->150<!-- END fact:film_plane_left_x_mm --> and X=<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm --> | 20mm gap between tray edge and rail | Clear |
-| Spray-bar carriage (rides on the raised/sloped tray floor beneath the walkway grating) | ~30mm at the worst (far-left) carriage — Ø32 wheels + 40×25 SS beam, (see [Walkway Routing Sections](walkway-routing-sections.md) §H-H) | Clear |
+| Spray-bar carriage (rides on the raised/sloped tray floor beneath the walkway grating) | ~30mm at the worst (far-left) carriage — Ø32 wheels + 1½in-square SS beam, (see [Walkway Routing Sections](walkway-routing-sections.md) §H-H) | Clear |
 | IBCs (X=4,674+, right end zone) | Tray ends — 45mm gap | Clear |
 | Pump manifold (Corridor Plumbing Panel) | Suction hose routes over near rim exterior | Clear |
 
@@ -115,11 +117,38 @@ operational and transport modes. The two panels are positioned between the film 
 rails and joined at the center seam by a **~40mm lap** — the uphill panel laps *over* the
 downhill one (shingle-oriented) so water sheets down over the step without damming on the
 sloped floor — bedded in silicone and bolted with 12× M6×16 + serrated flange nuts on the
-underside, with a silicone bead along the top lap edge. The P-04 suction pickup tube sits in the
-sump well permanently. The 50mm rim height is below all transport-mode clearance
+underside, with a silicone bead along the top lap edge. The P-04 suction pickup sits in the
+center pickup well permanently. The 50mm rim height is below all transport-mode clearance
 envelopes, so no removal is required for mode conversion.
 
 ![Processing Tray — Sheet 8: Center-seam shingle-lap joint detail](assets/spray-bar-sheet8.png)
+
+### 2.7 Why This Slope + Drainage Design
+
+The drainage geometry is set by one requirement chain:
+
+1. **The spray nozzles run the full print width.** They are 90° down-jets firing *down* onto the
+   print, and the walkway grate sits *above* the beam — so there is no reason to stop the jets at
+   the open zone. The beam therefore spans the full tray width (X=200–4,599).
+2. **A full-width beam that rides the tray floor must stay level across X.** The beam is rigid and
+   its wheels ride the floor. If the floor slopes across X (a dual-axis fall to one corner), the
+   beam's far end rides up ~24mm into the *level* walkway support arms. So the surface **falls in Yd
+   only** and is **level across X** — the beam stays level and clears the arms.
+3. **Lateral drainage is handled off the surface.** A Yd-only surface would strand water along the
+   near rim, so a **near-rim gutter** collects it and **falls 1:200 inward to a single center
+   pickup** — self-draining (no squeegee), with gravity running toward the operator on the wash
+   sweep. It reuses the same 20mm vertical budget the old corner sump used.
+
+The result is edge-to-edge direct spray, effortless single-pickup drainage, and a walkway whose
+support arms the beam clears — see the sections below.
+
+![Tray drainage — Plan: Yd fall + gutter to center pickup](assets/tray-slope-sheet1.png)
+
+![Tray drainage — Section A-A: surface fall into the gutter](assets/tray-slope-sheet2.png)
+
+![Tray drainage — Section B-B: gutter to center pickup + beam clearance](assets/tray-slope-sheet3.png)
+
+![Tray drainage — Details: near-rim fall-off + gutter inward slope](assets/tray-slope-sheet4.png)
 
 ---
 
@@ -133,7 +162,7 @@ toward the pinhole wall), flooding the print surface progressively.
 
 ![Sheet 1 — Gantry Elevation](assets/spray-bar-sheet1.png)
 
-The beam spans <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm between the inner edges of the left and right walkways, extending under the walkway grating at each end. At each end, a
+The beam spans <!-- BEGIN fact:spray_beam_span_mm -->4,399<!-- END fact:spray_beam_span_mm -->mm between the inner edges of the left and right walkways, extending under the walkway grating at each end. At each end, a
 two-wheel carriage rolls on the processing tray floor beneath the grating. A 3/4" LDPE irrigation poly pipe clipped to the beam's inboard side face serves as the
 spray manifold — the supply hose feeds it at its center through a single barbed inlet tee by
 the ball joint. The 3/4" bore is far larger than the 3.5 GPM flow demands, so pressure holds
@@ -156,9 +185,9 @@ manifold and spray straight down, at 100mm pitch along the beam.
 
 | Component | Specification | Qty | Purpose |
 |-----------|--------------|-----|---------|
-| Beam | 304 SS RHS, 40×25×3mm (laid flat), <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm long (two 8 ft lengths butt-welded); ~15mm pre-camber | 1 | Low-profile structural beam; carries the side manifold |
+| Beam | 304 SS 1½×1½×0.062in square tube, <!-- BEGIN fact:spray_beam_span_mm -->4,399<!-- END fact:spray_beam_span_mm -->mm long (single 17ft4in length, no weld); ~12mm pre-camber | 1 | Full-width structural beam; carries the side manifold |
 | Side spray manifold | 3/4" LDPE irrigation poly pipe (OD 25mm, ID 19mm) | 1 | Water distribution; clipped to the beam's inboard side face |
-| 90° down-jets | DIG 110B barbed saddle-tee inlet, irrigation-type, 90° cone (spray straight down) | 39 | Side-tapped into the manifold, spray straight down (100mm pitch) |
+| 90° down-jets | DIG 110B barbed saddle-tee inlet, irrigation-type, 90° cone (spray straight down) | 44 | Side-tapped into the manifold, spray straight down (100mm pitch) |
 | Center-feed inlet | 1/2" PVC barbed tee (DripDepot 1084), flex hose → manifold center | 1 | Single feed point at the beam center (the over-bored manifold needs no multi-point distribution) |
 | Retainer clips | SS or nylon, for 3/4" LDPE fold-back closure | 2 | Seal both ends of poly pipe (fold-back termination) |
 | [Acetal (Delrin) roller wheels](https://www.mcmaster.com/products/acetal-round-stock/) | Ø32 × 20mm wide, Ø10 plain bore, flat tread | 4 | Low-profile, roll on tray floor beneath walkway grating (2 per carriage, 200mm Yd spacing) |
@@ -179,33 +208,31 @@ manifold and spray straight down, at 100mm pitch along the beam.
 ### 3.3 Beam / Spray Pipe
 
 The structural beam carries a 3/4" LDPE irrigation poly manifold clipped to its inboard side face. A 304 SS
-RHS (40×25×3mm, laid flat) spans <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm between the inner
-edges of the left and right walkways.
+square tube (1½×1½×0.062in) spans <!-- BEGIN fact:spray_beam_span_mm -->4,399<!-- END fact:spray_beam_span_mm -->mm — the full tray width (X=200 to X=4,599).
 
 **Beam properties:**
 
 | Property | Value |
 |----------|-------|
 | Material | 304 stainless steel |
-| Section | 40×25×3mm RHS, laid flat (low profile for grate clearance) |
-| Internal bore | 34×19mm |
-| Span | <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm (X=470 to X=4,329) |
-| Second moment of area (I) | 32,650mm⁴ |
-| Cross-sectional area | 354mm² |
-| Linear mass (beam only) | 2.83 kg/m |
-| Beam mass (<!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm) | 10.9 kg |
-| Bending stiffness (EI) | 6.30×10⁹ N·mm² |
-| Pre-camber | ~15mm up at mid-span (offsets the self-weight sag, L/257, so the beam runs flat under load) |
+| Section | 1½×1½×0.062in (38×38×1.6mm) square tube |
+| Internal bore | ~35×35mm |
+| Span | <!-- BEGIN fact:spray_beam_span_mm -->4,399<!-- END fact:spray_beam_span_mm -->mm (X=200 to X=4,599, the full tray width) |
+| Second moment of area (I) | 51,300mm⁴ |
+| Cross-sectional area | 241mm² |
+| Linear mass (beam only) | 1.93 kg/m |
+| Beam mass (<!-- BEGIN fact:spray_beam_span_mm -->4,399<!-- END fact:spray_beam_span_mm -->mm) | 8.5 kg |
+| Bending stiffness (EI) | 9.9×10⁹ N·mm² |
+| Pre-camber | ~12mm up at mid-span (offsets the wet self-weight sag, L/378, so the beam runs flat under load) |
 
-**Sourcing:** Standard 8 ft (2,438mm) lengths are widely stocked at Home Depot, Online
-Metals, and metals suppliers. Two 8 ft lengths are required; see §3.8 for splice joint.
+**Sourcing:** A **single 17 ft 4 in (5,283mm)** length of 304-SS 1½×1½×0.062in square tube (Metals Depot) spans the full-width 4,399mm beam with margin — **no butt weld, no splice** (the old mid-span splice sat where the moment peaks; deleting it removes the weak point). *(Metric 40×25/40×40 nominals are not stock — see the beam re-source item in TODO.md.)*
 
 **Spray nozzles:**
 
 | Property | Value |
 |----------|-------|
 | Nozzle type | 90° down-jet, barbed inlet (DIG 110B) |
-| Number of nozzles | 39 |
+| Number of nozzles | 44 |
 | Nozzle spacing | 100mm center-to-center |
 | Spray pattern | 90° cone, directed straight down |
 | Manifold OD / ID | 25mm / 19mm (3/4" LDPE) |
@@ -291,7 +318,7 @@ Formed from 5mm 6061-T6 aluminum plate:
 - **Plate wings:** Two flat sections extending from the beam faces out to the
   wheel axle positions. Total plate width spans both wheel positions plus 18mm
   overhang on each side; the outer edge is flush with the beam end.
-- **Center notch:** The wings butt against the 40mm beam faces (no gap), so the
+- **Center notch:** The wings butt against the 38mm beam faces (no gap), so the
   carriage and beam read as one continuous body.
 - **Beam clamp:** A bottom clamp plate (under the beam) and a top clamp
   plate (over the beam) are drawn together by bolts on each side of the
@@ -323,7 +350,7 @@ through it, capturing the plate between the top and bottom clamp plates.
 
 | Step | Operation | Detail |
 |------|-----------|--------|
-| 1 | Mark notch | Scribe the central notch so the wings butt the 40mm beam faces (outer edge flush with beam end) |
+| 1 | Mark notch | Scribe the central notch so the wings butt the 38mm beam faces (outer edge flush with beam end) |
 | 2 | Cut notch | Jigsaw or bandsaw the center notch from one long edge |
 | 3 | Mark axle saddle positions | On each wing, mark two Ø5.5mm clearance holes (M5) per saddle clamp for axle retention |
 | 4 | Mark beam clamp bolt positions | Two Ø5.5mm holes on each side of the beam, aligning with the top/bottom clamp plate bolts |
@@ -378,43 +405,43 @@ the top plate, spacer, carriage plate wing, and bottom plate, with nuts top and 
 
 ### 3.7 Structural Analysis
 
-**Loading (simply supported, uniform distributed load across <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm span):**
+**Loading (simply supported, uniform distributed load across <!-- BEGIN fact:spray_beam_span_mm -->4,399<!-- END fact:spray_beam_span_mm -->mm span):**
 
 | Component | Linear mass (kg/m) | Linear weight (N/m) |
 |-----------|-------------------|---------------------|
-| Beam (304 SS, 40×25×3mm RHS) | 2.83 | 27.76 |
+| Beam (304 SS, 1½×1½×0.062in square) | 1.93 | 18.93 |
 | LDPE side manifold (OD 25mm, ID 19mm, wall 3mm) | 0.193 | 1.89 |
 | Water in manifold (19mm ID bore) | 0.283 | 2.78 |
-| **Total UDL** | **3.306** | **32.43** |
+| **Total UDL** | **2.406** | **23.60** |
 
-Water volume in the manifold: π × 9.5² × 3,859 = 1.09 L (1.09 kg), carried in the LDPE
+Water volume in the manifold: π × 9.5² × 4,399 = 1.25 L (1.25 kg), carried in the LDPE
 manifold, not the beam.
 
-**Deflection — δ = 5wL⁴ / 384EI, E = 193,000 MPa (304 SS), I = 32,650mm⁴:**
+**Deflection — δ = 5wL⁴ / 384EI, E = 193,000 MPa (304 SS), I = 51,300mm⁴:**
 
 | Condition | w (N/m) | δ center (mm) | Span ratio |
 |-----------|---------|---------------|------------|
-| Dry (beam only) | 27.76 | 12.7 | L/304 |
-| Dry (beam + manifold) | 29.66 | 13.6 | L/284 |
-| Wet (beam + manifold + water) | 32.43 | 14.9 | L/259 |
+| Dry (beam only) | 18.93 | 9.3 | L/471 |
+| Dry (beam + manifold) | 20.82 | 10.3 | L/429 |
+| Wet (beam + manifold + water) | 23.60 | 11.6 | L/378 |
 
-The 40×25 SS section has a bending stiffness of EI ≈ 6.30×10⁹ N·mm²; its raw wet
-deflection is ~15mm (L/259).
+The 1½in-square SS section has a bending stiffness of EI ≈ 9.9×10⁹ N·mm²; its raw wet
+deflection is ~12mm (L/378).
 This is a beam-flatness matter only — it does not affect the **carriage-to-grate
 clearance** (deflection is zero at the supports, where the ~30mm clearance is measured),
 and the sagged midspan beam bottom still clears the thin wash film.
 
-**Pre-camber (required):** Fabricate the beam with **~15mm upward pre-camber** at midspan
+**Pre-camber (required):** Fabricate the beam with **~12mm upward pre-camber** at midspan
 so it deflects to flat under full water load. Method: hold the two halves at a shallow
-upward angle in a jig while butt-welding the midspan joint (§3.8). With ~9mm beam-to-floor
+upward angle in the fabrication jig (the tube is a single length — no midspan joint). With ~9mm beam-to-floor
 clearance at the supports and the camber applied, the beam runs level under load.
 
 **Weight summary:**
 
 | Component | Mass (kg) |
 |-----------|-----------|
-| Beam (40×25×3mm 304 SS × <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm) | 10.9 |
-| LDPE manifold (OD 25mm × <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm) | 0.74 |
+| Beam (1½×1½×0.062in 304 SS × <!-- BEGIN fact:spray_beam_span_mm -->4,399<!-- END fact:spray_beam_span_mm -->mm) | 8.5 |
+| LDPE manifold (OD 25mm × <!-- BEGIN fact:spray_beam_span_mm -->4,399<!-- END fact:spray_beam_span_mm -->mm) | 0.74 |
 | Water in manifold | 1.09 |
 | Carriage plates (2×) | 0.35 |
 | Wheel assemblies (4× Ø32 wheel + axle + 8 saddle clamps) | 0.45 |
@@ -423,20 +450,16 @@ clearance at the supports and the camber applied, the beam runs level under load
 | **Dry total** | **~13.3 kg** |
 | **Wet total (operating)** | **~14.4 kg** |
 
-Per wheel load (wet): 14.4 / 4 = 3.6 kg — well within any small nylon wheel's rating.
-The beam mass (~14.4 kg wet) is carried into the walkway/CG
+Per wheel load (wet): 10.6 / 4 = 2.65 kg — well within any small nylon wheel's rating.
+The beam+manifold+water mass (~10.6 kg wet) is carried into the walkway/CG
 budget in [Weight Distribution](weight-distribution-report.md).
 
-### 3.8 Beam Splice Joint
+### 3.8 Beam — Single Length, No Splice
 
-Two 8 ft (2,438mm) SS RHS lengths are **butt-welded** at midspan (304 SS is readily TIG-welded):
-
-- **Joint:** square butt weld, full-penetration, ground flush; the ~15mm camber is set in the welding jig
-- **Finish:** passivate the weld zone (citric or nitric) to restore corrosion resistance in the wash environment
-- **Location:** Midspan (1,930mm from each end), the point of maximum moment — a full-penetration weld develops the full section, so the splice is not the weak point.
-
-**Alternative:** Source a single 16 ft or 20 ft length by special order to eliminate
-the splice (and set the camber over the full length).
+The beam is a **single 17 ft 4 in (5,283mm) length** of 1½×1½×0.062in 304-SS square tube — it
+spans the full 4,399mm width with margin, so there is **no butt weld and no splice**. This deletes
+the former mid-span joint, which sat at the point of maximum bending moment. The **~12mm pre-camber**
+is set over the full length in the fabrication jig.
 
 ### 3.9 Flow Analysis
 
@@ -445,17 +468,17 @@ the splice (and set the camber over the full length).
 | Supply pump | P-01 (Shurflo 2088), 3.5 GPM at 45 PSI |
 | Pipe bore (LDPE) | 19mm ID = 283.5mm² |
 | Feed points (manifold) | 7 (~550mm pitch) — 0.5 GPM per feed tube |
-| Spray nozzles | 39 × 90° down-jets (DIG 110B) |
+| Spray nozzles | 44 × 90° down-jets (DIG 110B) |
 | Flow per nozzle | 0.09 GPM (0.34 L/min) |
 
 Feeding the poly pipe at seven points (~550mm pitch) from the ball-joint manifold — rather
 than a single center feed — keeps the supply pressure uniform along the pipe, so each of
-the 39 nozzles sees nearly the same flow regardless of its distance from the inlet. The
+the 44 nozzles sees nearly the same flow regardless of its distance from the inlet. The
 19mm bore provides adequate flow capacity at 3.5 GPM. Each jet delivers a **90° cone directed
 straight down** — chosen over a flat-fan/180° pattern so the wash lands on the print rather
 than spraying sideways (180°) or up and away (360°), which wastes water and wets the container.
 A 90° cone at the ~50mm nozzle height footprints ~100mm, so the pitch was tightened 150→100mm
-(26→39 nozzles) for edge-to-edge coverage along the <!-- BEGIN fact:spray_beam_span_mm -->3,859<!-- END fact:spray_beam_span_mm -->mm beam span; the traverse sweeps the other axis.
+(now 44 at full beam width) for edge-to-edge coverage along the <!-- BEGIN fact:spray_beam_span_mm -->4,399<!-- END fact:spray_beam_span_mm -->mm beam span; the traverse sweeps the other axis.
 
 ### 3.10 Water Connection
 
@@ -469,7 +492,7 @@ the print surface.
 
 ![Sheet 7 — Detail B: Manifold Feed & Nozzle Connections](assets/spray-bar-sheet7.png)
 
-**Supply path:** P-01 → ACC-01 → rigid 1/2" PVC pipe along pinhole wall → BV-02 →
+**Supply path:** P-01 → ACC-01 → rigid 1/2" PVC pipe along pinhole wall → BV-05a (Blue/Brown selector) → BV-05b (spray on/off) →
 coiled flexible hose → manifold → 7 irrigation tubes → poly pipe bore → 26× spray nozzles.
 
 ### 3.11 Walkway Slit
@@ -501,6 +524,22 @@ stud to the telescoping pole. Because the M12 stud is too small to pinch inside 
 
 The step-by-step spray bar setup, wash pass procedure, Brown water recycling passes, and storage are documented in the [Operating Manual — Phase 4: Development](operating-manual.md#42-development-in-water).
 
+### 4.1 Muslin Fit — Cut to the Washable Tray Area
+
+The muslin is cut to fit the **washable area of the tray**, not the full image plane: <!-- BEGIN fact:muslin_cut_width_mm -->4,359<!-- END fact:muslin_cut_width_mm --> × <!-- BEGIN fact:muslin_cut_height_mm -->2,000<!-- END fact:muslin_cut_height_mm -->mm — **narrower and shorter** than the film-plane ACM+frame (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm). It is inset 50mm from each side rim and from the far rim, and its near edge clears the near-rim **sump well** (Yd 80–180). It therefore lies dead flat with no edge draping a rim or sagging into the sump, and mounts inside the frame (~70mm/side of bare ACM), clamped **inboard on the ACM face** (a field detail). The tray — not the optics — is the size constraint here.
+
+### 4.2 Loading the Muslin — Park-and-Roll (no beam lift)
+
+Loading needs **no lift mechanism**. The beam parks out of the way and the muslin is laid up to it:
+
+1. Roll the spray-bar gantry to the **near (pinhole-wall) end** of its Yd travel and park it there.
+2. Feed the exposed muslin down through the **far muslin-drop slot** (image-plane side) and pull it across the tray toward the parked beam until it lies flat over the washable area.
+3. The beam is now free to **roll back over the laid muslin** to wash — its wheels run on the bare tray floor at the X-edges (centers X≈200/4,599, ~10–20mm outboard of the muslin's X≈220/4,579 edges), and the beam body clears the thin fabric: the **9mm beam-to-floor gap** (§3.4 — wheel radius 16 − bracket drop 7, held constant across the traverse) less the 0.5mm muslin = **~8.5mm clearance**. Verified from the geometry constants, so **no lift-out mechanism is required**.
+
+### 4.3 Beam Removal for Maintenance
+
+For deep cleaning or nozzle service, **lift out the right walkway grate** and extract the beam through that opening. No in-tray lift-out or quick-release is built into the gantry — the removable walkway grate *is* the access path.
+
 ---
 
 ## 5. Engineering Drawings
@@ -509,7 +548,7 @@ Seven detail sheets cover the spray bar assembly and processing tray:
 
 | Sheet | Title | Content |
 |-------|-------|---------|
-| 1 | Gantry Elevation | X-Z section from film plane (4× vert exag) — beam, BV-02, pole, walkway slit, operator silhouette |
+| 1 | Gantry Elevation | X-Z section from film plane (4× vert exag) — beam, BV-05, pole, walkway slit, operator silhouette |
 | 2 | Cross Section — Beam Assembly | Yd-Z composite at 1:1 — wheels, carriage plate, beam clamp plates, saddle clamps, ball joint, arm, hose |
 | 3 | Plan View | Container floor plan — walkways, slit positions, beam travel range |
 | 4 | Detail A — Beam End | Longitudinal section at 2:1 — LDPE fold-back end closure with retainer clip |
@@ -561,15 +600,15 @@ tray drainage plan and sump cross-section).
 <!-- BEGIN parts:spray -->
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
-| [304 SS RHS 40×25×1.6mm, single 16 ft *](https://www.metalsdepot.com/stainless-steel-products/304-stainless-steel-rectangle-tube) (R151162) | 40×25×1.6mm rectangular tube (stocked inch equiv 1.5×1×0.062in), laid flat (low profile). SINGLE 16 ft (4,877mm) length spans the 3,859mm beam with margin — NO butt weld (the old 2× 8ft splice sat at mid-span where the moment peaks; deleting it removes the weakest point). 0.062in wall adopted after the sag check: the beam is self-weight-dominated, so the thinner (lighter) tube deflects ~15mm same as the 3mm wall — the pre-camber absorbs it. Metals Depot $153.80 firm (2026-08-01), vs $352.60 for the same 16ft in 0.125in wall. | 1 ea | Metals Depot | $154 |
+| [304 SS square tube 1½×1½×0.062in, single 17ft4in *](https://www.metalsdepot.com/stainless-steel-products/304-stainless-steel-square-tube) | 1½×1½×0.062in (38×38×1.6mm) 304-SS SQUARE tube. SINGLE 17ft4in (5,283mm) length spans the full-width 4,399mm beam with margin — NO butt weld. The 1½in square depth (up from the old 40×25) holds the full-width span to ~11mm wet sag (L/395), flattened by ~12mm pre-camber; wall barely affects sag (self-weight-dominated). Metals Depot $183 confirmed 2026-08-03. (Metric 40×25/40×40 nominals are NOT stock — see the beam re-source TODO.) | 1 ea | Metals Depot | $183 |
 | [6061-T6 AL plate 3/16" (5mm)](https://www.metalsupermarkets.com/product/aluminum-sheet-6061/) (6061-sheet-12x20x0.1875) | Carriage plates + spacer blocks cut from one 12×20×3/16in sheet. Metal Supermarkets $124.88 firm (2026-08-01, cut-to-size retail); an online 6061 sheet supplier is likely cheaper — worth comparing at purchase (not yet quoted). | 1 ea | Metal Supermarkets | $125 |
 | [3/4" LDPE irrigation poly pipe, 100 ft](https://www.dripdepot.com/polyethylene-tubing-size-three-quarter-inch-0-820-inch-inside-diameter-by-0-940-inch-od-length-100-feet) (3552) | Side-mounted spray manifold, clipped to the beam's inboard face. DripDepot 3552 ¾" poly tubing (0.820" ID × 0.940" OD ≈ 20.8×23.9mm); 100 ft roll, ~15 ft used on the ~3.86m beam (balance spare). $31.24 firm 2026-07-28. | 1 100ft roll | DripDepot | $31 |
-| [90° spray jets, barbed](https://www.homedepot.com/p/302581648) (110B) | DIG 110B 90° spray jets, 10-pack ×4 = 40 (39 used, 1 spare); side-tapped into the poly manifold, spray straight down. 90° down chosen (2026-07-28) over flat-fan/180° so the wash lands on the print, not sideways/up; pitch tightened 150→100mm (26→39 jets) for edge-to-edge coverage — see processing-tray §3.9. | 4 10-pack | Home Depot | $14 |
+| [90° spray jets, barbed](https://www.homedepot.com/p/302581648) (110B) | DIG 110B 90° spray jets, 10-pack ×5 = 50 (44 used, 6 spare); side-tapped into the poly manifold, spray straight down. Nozzles now run the FULL beam width (4,399mm) — 90° down-jets clear the overhead grate, so no reason to stop at the open zone. Pitch 100mm → 44 jets edge-to-edge — see processing-tray §3.9. | 5 10-pack | Home Depot | $17 |
 | [Figure-8 end clamps, 3/4in poly](https://www.dripdepot.com/figure-8-tubing-end-clamp-size-three-quarter-inch) | Figure-8 fold-back end closures that crimp the 3/4" poly manifold ends shut — DripDepot 10-pack, $4.20 firm (2026-07-30). | 1 10-pack | DripDepot | $4 |
 | [Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore)](https://www.mcmaster.com/8576K23/) (8576K23) | Solid acetal (Delrin), flat tread. Cut from 1-1/4" (31.75mm) Delrin rod into 4 × 20mm slugs; drill Ø10.5 running-clearance bore — the acetal plain bore IS the bearing (self-lubricating on the Ø10 304 SS axle; no ball bearing — the ferricyanide/citric wash rules steel bearings out). One 1 ft (305mm) rod yields all 4 (parting/facing waste). Light-duty ~2.6 kg/wheel wet; 2 per carriage, low-profile for grate clearance. OD Ø31.75 = Ø32 nominal (−0.25mm). | 1 1 ft rod | McMaster-Carr | $11 |
 | [1/2" PVC barbed tee (flex hose → manifold center feed)](https://www.dripdepot.com/barb-tubing-tee-size-half-inch) (1084) | DripDepot 1084 ½" PVC barbed tee (PVC), $0.57 ea × 5-pack = $2.85; the SINGLE center-feed inlet — ½" flex hose → manifold center. 1 used. Firm 2026-07-28. | 1 5-pack | DripDepot | $3 |
 | [Telescoping aluminum pool pole, 4–8 ft](https://www.amazon.com/dp/B0FHPSPD4T) (B0FHPSPD4T) | Standard pool skimmer handle — POOLPURE telescopic aluminum, 4–8 ft (B0FHPSPD4T, exact). ~$15–20 est — confirm. | 1 ea | Amazon | $15 |
-| [1/2" reinforced braided PVC hose, ~15 ft](https://www.homedepot.com/p/304185193) (T12006003) | BV-02 → beam feed (~4 m coiled). UDP 1/2"ID×3/4"OD clear braided vinyl (T12006003), $12.99/10ft firm (2026-07-30). 10 ft ≈ 3 m — a 4 m coiled run may need a 2nd roll. | 1 10ft roll | Home Depot | $13 |
+| [1/2" reinforced braided PVC hose, ~15 ft](https://www.homedepot.com/p/304185193) (T12006003) | BV-05b → beam feed (~4 m coiled). UDP 1/2"ID×3/4"OD clear braided vinyl (T12006003), $12.99/10ft firm (2026-07-30). 10 ft ≈ 3 m — a 4 m coiled run may need a 2nd roll. | 1 10ft roll | Home Depot | $13 |
 | [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) (B0816MQ5T6) | Wheel axle pins — uxcell 10×60mm 304 SS clevis pins, 4-pack (B0816MQ5T6, exact: 14mm head, 3.2mm cotter hole). | 1 pack | Amazon | $5 |
 | [Axle saddle clamps ×8 (304 SS flat-bar stock)](https://www.mcmaster.com/8992K794/) (8992K794) | Axle retention — formed from 1/8" (3.18mm) × 3/4" (19mm) 304 SS flat bar, wrapped over the Ø10 axle (1mm cradle clearance) with two ~12mm feet bolted up through the carriage plate (2× Ø5.5 M5). ~48mm developed per saddle; all 8 cut from one 2 ft (610mm) length of flat bar. A stamped conduit saddle clamp is only ~0.5mm — too thin for a rolling-carriage axle retainer. Alt: 304 SS + EPDM Adel loop clamp ~3/8–7/16" ID. | 1 2 ft bar | McMaster-Carr | $10 |
 | [M6×1.0 × 20 hex bolt, Grade 8.8 zinc](https://www.mcmaster.com/91280A330/) (91280A330) | Carriage plate, beam clamp, saddle fasteners (M6×1.0). $17.86/pack of 100. ⚠ VALIDATE: 91280A330 is zinc-plated but the spray sits in the WET cyanotype zone — a 316-SS M6×20 resists corrosion better. | 16 ea | McMaster-Carr | $3 |
@@ -582,7 +621,7 @@ tray drainage plan and sump cross-section).
 | [M12×1.75 jam nut, SS](https://www.mcmaster.com/90381A102/) (90381A102) | Locks the arm adapter on the ball-joint M12 stud. McMaster 90381A102: 18-8 SS thin-profile hex nut, M12×1.75 coarse — confirmed vs the 90381A102 PDF 2026-07-29 (matches the stud + arm-adapter bore). $8.38/pack of 10. | 1 ea | McMaster-Carr | $1 |
 | [Clamp-style shaft collar, 25mm/1" bore, SS](https://www.ruland.com/cl-16-st.html) (CL-16-ST) | Over the slit arm-tube bottom; its integral clamp screw squeezes the Ø25×2 tube onto the adapter's Ø21 spigot — rotational adjust + lift-off for transport. Replaces the loose M6 pinch bolt. Confirm SKU/bore/price at order. | 1 ea | Ruland | $28–$33 |
 | [Nylon zip ties, 8in (200mm)](https://www.harborfreight.com/8-inch-black-cable-ties-pack-of-100-34635.html) (34635) | Hose to arm tube — 8in UV-resistant black nylon, 100-pack (6 used + spares). Harbor Freight $2.68 firm (2026-08-01). | 1 100-pack | Harbor Freight | $3 |
-| **Spray total** | | | | **$552–$564** |
+| **Spray total** | | | | **$585–$597** |
 <!-- END parts:spray -->
 
 ### 6.3 Combined Total
@@ -590,8 +629,8 @@ tray drainage plan and sump cross-section).
 | Subsystem | Cost Range |
 |-----------|-----------|
 | Processing tray | <!-- BEGIN costing:tray-low -->$1,473<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,121<!-- END costing:tray-high --> |
-| Spray bar assembly | <!-- BEGIN costing:spray-low -->$551<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$563<!-- END costing:spray-high --> |
-| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$2,024<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,684<!-- END costing:tray-spray-total-high -->** |
+| Spray bar assembly | <!-- BEGIN costing:spray-low -->$584<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$596<!-- END costing:spray-high --> |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$2,057<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,717<!-- END costing:tray-spray-total-high -->** |
 
 ---
 

@@ -7,7 +7,7 @@ generate_walkway_diagram.py  —  TBS-001 Perimeter Walkway
 Sheet 1 — Plan view of walkway layout:
   Top-down view showing all 4 walkway sections with bracket positions.
   Left walkway shown as removable lift-out (no brackets — panel conflict).
-  Right walkway brackets on angle iron welded to flat end wall.
+  Right walkway = cantilever rectangle (2×1×0.120in steel) off the IBC frame + wall cleats.
   Panel swing sweep (~56° about the pivot) shown as dashed red sector.
 
 Sheet 2 — Cross-section + bolt pattern (near walkway bracket):

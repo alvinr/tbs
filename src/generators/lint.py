@@ -287,10 +287,53 @@ def _git(args: list[str]) -> str:
     return subprocess.run(["git", *args], capture_output=True, text=True, cwd=ROOT).stdout
 
 
+_IMPORT_RE = re.compile(r"^\s*(?:from\s+([A-Za-z_]\w*)\s+import|import\s+([A-Za-z_]\w*))", re.M)
+
+
+def _src_py_files() -> list[str]:
+    files = []
+    for base in ("src/generators", "src/models"):
+        d = os.path.join(ROOT, base)
+        for fn in os.listdir(d) if os.path.isdir(d) else []:
+            if fn.endswith(".py"):
+                files.append(os.path.join(base, fn))
+    return files
+
+
+def _transitive_importers(seed: set[str]) -> set[str]:
+    """Grow a consumer set by the module-import graph: any src/ script that imports a module already
+    in the set is ALSO a consumer (it reuses that module's builders → inherits its constant deps).
+    Fixes the transitive miss that let water.skp — which reads tray/drain constants only via
+    `import generate_sketchup_model as ov` — fall out of the cascade."""
+    files = _src_py_files()
+    mod2path = {os.path.splitext(os.path.basename(f))[0]: f for f in files}
+    imports = {}  # path -> set of in-tree module basenames it imports
+    for f in files:
+        try:
+            txt = open(os.path.join(ROOT, f), encoding="utf-8").read()
+        except OSError:
+            continue
+        imports[f] = {mod for m in _IMPORT_RE.finditer(txt)
+                      for mod in (m.group(1), m.group(2)) if mod in mod2path}
+    result = set(seed)
+    changed = True
+    while changed:
+        changed = False
+        for f, mods in imports.items():
+            if f in result:
+                continue
+            if any(mod2path.get(mod) in result for mod in mods):
+                result.add(f)
+                changed = True
+    return result
+
+
 def _grep_consumers(name: str) -> list[str]:
     out = subprocess.run(["grep", "-rlw", name, "src"], capture_output=True, text=True, cwd=ROOT).stdout
-    return sorted(f for f in out.split()
-                  if f.endswith(".py") and "tbs_constants" not in f and "__pycache__" not in f)
+    direct = {f for f in out.split()
+              if f.endswith(".py") and "tbs_constants" not in f and "__pycache__" not in f}
+    return sorted(f for f in _transitive_importers(direct)
+                  if "tbs_constants" not in f and "__pycache__" not in f)
 
 
 def _deps():
@@ -407,6 +450,67 @@ def _regen_diff(scr: str, pngs: list[str]) -> list[str]:
             if not (os.path.exists(fresh) and os.path.exists(cur) and filecmp.cmp(fresh, cur, shallow=False)):
                 stale.append(o)
     return stale
+
+
+# ── GATE: a plumbing-routing change must ship a refreshed interference report ──
+# check_interference.py detects pipe-vs-solid clashes AND pipe-on-pipe CROSSINGS, but it needs the
+# LIVE SketchUp model, so it can't run in this dependency-free hook. Instead the gate enforces the
+# ARTIFACT: whenever a 3D routing generator is staged, its audit output (interference-report.txt)
+# must be refreshed against the live model and staged too — so a reroute can't land without the
+# crossing/clash audit having been run and its result committed for review (the report has no
+# timestamp, so its diff shows exactly which interferences a commit adds or resolves).
+_ROUTING_MARKERS = ("ruby_pipe_run(", "ruby_flex_run(", "ribbon_run(", "spipe(")   # CALL syntax, not a mention
+_INTERFERENCE_REPORT = "interference-report.txt"
+
+
+def _index_text(path: str) -> str | None:
+    """Content of `path` as it will be COMMITTED (the staged/index blob), or None if not tracked."""
+    r = subprocess.run(["git", "show", f":{path}"], capture_output=True, text=True, cwd=ROOT)
+    return r.stdout if r.returncode == 0 else None
+
+
+def _routing_sources_sha_index() -> str:
+    """Recompute check_interference.routing_sources_sha from the INDEX (what's being committed), so
+    the gate compares the report against the exact routing sources the commit will contain."""
+    import hashlib
+    parts = []
+    for p in sorted(_git(["ls-files", "src/models/*.py"]).split()):
+        if os.path.basename(p) == "check_interference.py":
+            continue                      # the audit tool defines the markers as literals — not a generator
+        t = _index_text(p)
+        if t and any(mk in t for mk in _ROUTING_MARKERS):
+            parts.append(p + "\0" + t)
+    return hashlib.sha256("\0".join(parts).encode()).hexdigest()[:12]
+
+
+def _is_routing_gen(f: str) -> bool:
+    if not (f.startswith("src/models/") and f.endswith(".py")) or os.path.basename(f) == "check_interference.py":
+        return False
+    t = _index_text(f) or ""
+    return any(mk in t for mk in _ROUTING_MARKERS)
+
+
+def gate_interference_report() -> tuple[bool, list[str]]:
+    staged = set(_git(["diff", "--cached", "--name-only"]).split())
+    routed = [f for f in sorted(staged) if _is_routing_gen(f)]
+    if not routed:
+        return True, ["no plumbing-routing generator staged"]
+    expected = _routing_sources_sha_index()
+    rep = _index_text(_INTERFERENCE_REPORT)
+    if rep is None:
+        return False, [f"staged a routing change ({', '.join(routed)}) but {_INTERFERENCE_REPORT} is not committed.",
+                       "Audit the LIVE model and stage the report:",
+                       "    python3 src/models/check_interference.py --write && git add interference-report.txt"]
+    m = re.search(r"routing-sources-sha:\s*([0-9a-f]+)", rep)
+    have = m.group(1) if m else "(none)"
+    if have != expected:
+        return False, [
+            f"{_INTERFERENCE_REPORT} is STALE — its routing-sources-sha {have} != {expected} (the routing "
+            f"source changed since the last audit).  Staged routing change: {', '.join(routed)}.",
+            "Re-run the pipe-clash/crossing audit against the LIVE model and stage it:",
+            "    python3 src/models/check_interference.py --write && git add interference-report.txt",
+        ]
+    return True, [f"interference report current with routing sources (sha {expected})"]
 
 
 # ── WARNING: hardwired literal that should be a tbs_constants reference ──────
@@ -794,6 +898,7 @@ GATES = [
     ("dependency-map registry (generated == doc)", gate_depmap_blocks),
     ("parts doc-blocks (generated == doc)", gate_parts_blocks),
     ("section totals reconcile with parts registry (source of record)", gate_registry_reconcile),
+    ("plumbing routing change ships a refreshed interference report", gate_interference_report),
 ]
 WARNINGS = [
     ("facts-registry agreement", warn_facts),

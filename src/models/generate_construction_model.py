@@ -41,6 +41,18 @@ def _join(*parts):
     return '\n'.join(p if isinstance(p, str) else '\n'.join(p) for p in parts)
 
 
+# The pinhole-wall ply backing, built as a SEMI-TRANSPARENT plywood-colored backdrop: you see the
+# Phase-3 plumbing build THROUGH it, but it keeps its plywood hue (low mute) so it reads as more
+# color / more present than the faint forced-gray prior-phase ghosts.  (Later phases still fully-ghost
+# it via the static copy.)  alpha 0.35 = see-through; ghost is 0.15.
+BACKDROP_MUTE, BACKDROP_ALPHA = 0.30, 0.35
+def _wall_backing_backdrop():
+    if ov._CTX_FORCE:                          # inside a prior-phase forced ghost — let the ghost win (don't un-mute it)
+        return pw.backing()
+    with ov.muted(BACKDROP_MUTE, BACKDROP_ALPHA):
+        return pw.backing()
+
+
 # ── Build steps, in install order ──────────────────────────────────────────────
 # (phase, step_id, tag, label, body-thunk). tag == the step's own layer; the scene for
 # phase N shows every tag whose phase <= N (cumulative). Report §4–§8 step ids in [].
@@ -50,9 +62,9 @@ STEPS = [
         lambda: _join(cp.frame(part="posts"), cp.rear_panel())),
     (1, "1.2", "P1 Near IBCs",     "IBC totes — pinhole wall (near column)",   # [1.2] dropped into the post skeleton
         lambda: ov.ibc_stack(alpha=0.85, cols="near")),
-    (1, "1.3", "P1 IBC Plumbing",  "Corridor plumbing + equipment + drains + filter-recycle + Cct-C corridor wiring",  # [1.3] corridor plumbing (sump+supports→3.2), the blue filter-recycle run to the IBC panel, AND the purple Cct-C corridor pump wiring run to the pinhole wall (EP drop connected in Phase 4)
-        lambda: _join(cp.equipment(), cp.plumbing(part="corridor"), cp.drains_ports(),
-                      pw.kit(part="recycle"), pw.kit(part="waste"),
+    (1, "1.3", "P1 IBC Plumbing",  "Corridor plumbing + equipment + drains + filter recycle/waste returns + Cct-C corridor wiring",  # [1.3] corridor plumbing (sump ribbon + skid ribbon legs→3.2), the DV-01 recycle→IBC-3 buffer + waste→IBC-4 returns, AND the purple Cct-C corridor pump wiring run to the pinhole wall (EP drop connected in Phase 4)
+        lambda: _join(cp.equipment(sump_on_skid=True), cp.plumbing(part="corridor", sump_on_skid=True), cp.drains_ports(sump_on_skid=True),
+                      pw.kit(part="recycle", p02_on_corridor=True), pw.kit(part="waste", p02_on_corridor=True),
                       pw.panel_power(include_switch=False, part="corridor"))),
     (1, "1.4", "P1 Fan A",         "Fan A (exhaust) + its Cct-A electrical run to the EP drop",  # before the far IBCs bury it; Cct-A pre-run down the pinhole wall to the EP drop (EP in Phase 4)
         lambda: _join(ov.fans(which="A"), ov.fan_wiring(which="A", a_to_ep=True))),
@@ -62,24 +74,25 @@ STEPS = [
         lambda: _join(ov.light_trap_frame(), ov.light_seal(), ov.panel_pivot())),
 
     # ── Phase 3 — Framing (Phase 2 = re-measure, no geometry) ──
-    (3, "3.1", "P3 Far+Right Cantilevers", "Cantilevers — far wall + right-end rectangle",   # [3.1]
+    (3, "3.1", "P3 Wall Backing",      "Pinhole-wall ply backing (semi-transparent backdrop for the plumbing build)",   # [3.1] the wall backing goes up first as a semi-transparent, plywood-colored backdrop so the skid/plumbing (3.4) reads through it; Phase 4+ it ghosts like all other prior geometry
+        lambda: _wall_backing_backdrop()),
+    (3, "3.2", "P3 Far+Right Cantilevers", "Cantilevers — far wall + right-end rectangle",   # [3.2]
         lambda: _join(ov.walkway_brackets(which="far"),
                       ov.right_walkway_cantilever(include_combined=True, include_grate=False))),
-    (3, "3.2", "P3 Ribbons",           "Under-grate ribbons (sump + brown suction) + pipe support beams",  # [3.2] the over-walkway plumbing ribbons + supports, once the right beams are up, before the grate
-        lambda: _join(cp.plumbing(part="sump"), pw.kit(part="brown_ribbon"), cp.ribbon_supports())),
-    (3, "3.3", "P3 Near Cantilevers",  "Cantilevers — near wall",           # [3.3]
+    (3, "3.3", "P3 Near Cantilevers",  "Cantilevers — near wall",           # [3.3] near-wall brackets go in before the ribbons/skid so the space is fully framed first
         lambda: ov.walkway_brackets(which="near")),
-    (3, "3.4", "P3 Pinhole Plumbing",  "Extend plumbing to the pinhole-wall panel",  # [3.4]
+    (3, "3.4", "P3 Ribbons + Filter Skid", "Under-grate ribbons (sump + brown suction) + pipe supports + pinhole filter skid (F-1..F-3 + P-04/SV-02/DV-02 + ACC-02) + skid-side plumbing",  # [3.4] the over-walkway plumbing ribbons + supports AND the pinhole-wall filter skid (mounts to the 3.1 backing) — recycle→IBC-3 + waste returns are in 1.3; on-panel legs are P-04→DV-02, DV-02 recycle-feed→F1, ACC-02→BV-05
+        lambda: _join(cp.plumbing(part="sump", sump_on_skid=True), pw.skid_plumbing(part="ribbon"), cp.ribbon_supports(),
+                      pw.kit(part="skid", p02_on_corridor=True), pw.skid_row(), pw.skid_plumbing(part="skid"))),
+    (3, "3.5", "P3 Pinhole Plumbing",  "Extend plumbing to the pinhole-wall panel",  # [3.5]
         lambda: pw.tap01_supply()),
-    (3, "3.5", "P3 Filter Skid",       "Pinhole filter skid (F-1..F-3 + pumps + ACC)",  # [3.5] skid only — the blue DV-01→X1 recycle run was plumbed in Phase 1 (1.3)
-        lambda: pw.kit(part="skid")),
     (3, "3.6", "P3 Processing Tray",   "Processing tray",                   # [3.6] (spray bar in Phase 5)
         lambda: ov.processing_tray()),
     (3, "3.7", "P3 Film-Plane Beams",  "Film-plane beams + combined corner plates",  # [3.7] (+ FP↔walkway corner plates)
         lambda: _join(ov.film_plane_mechanism(part="beams"), ov.fp_combined_corner_plates())),
     (3, "3.8", "P3 Left Cantilevers",  "Left-walkway floor-leg cantilevers",  # [3.8]
         lambda: '\n'.join(wm.left_floor_cantilevers())),
-    (3, "3.9", "P3 Walkway",           "Walkway grating (all sections)",     # [3.9] — grates only; supports are 3.1/3.3/3.8
+    (3, "3.9", "P3 Walkway",           "Walkway grating (all sections)",     # [3.9] — grates only; supports are 3.2/3.3/3.8
         lambda: ov.walkways(include_right=True, include_right_hangers=False, grates_only=True)),
 
     # ── Phase 4 — Electrical ──

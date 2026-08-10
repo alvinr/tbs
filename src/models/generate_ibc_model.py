@@ -126,12 +126,15 @@ def generate_ruby():
         ov.component("Corridor Frame (deep box)", "IBC Frame", cp.frame()),
         ov.component("IBC Tote Restraint", "IBC Frame", cp.tote_restraint()),
         ov.component("Corridor Rear Panel", "Plumbing & Panel", cp.rear_panel()),
-        ov.component("Corridor Equipment", "Plumbing & Panel", cp.equipment()),
-        ov.component("Pinhole-Wall Kit", "Plumbing & Panel", pw.kit()),
+        ov.component("Corridor Equipment", "Plumbing & Panel", cp.equipment(sump_on_skid=True)),
+        ov.component("Wall backing (ply)", "Plumbing & Panel", pw.backing()),
+        ov.component("Pinhole-Wall Kit", "Plumbing & Panel", pw.kit(p02_on_corridor=True)),
+        ov.component("Skid row (P-04 · SV-02 · DV-02)", "Plumbing & Panel", pw.skid_row()),
+        ov.component("Skid plumbing", "Plumbing & Panel", pw.skid_plumbing()),
         # NB: "Pinhole-Wall Equipment" (ov.electrical() — EP + external power panel + batteries)
         #     removed from this model — electrical is not of interest in the IBC/plumbing view.
-        ov.component("Corridor Plumbing", "Plumbing & Panel", cp.plumbing()),
-        ov.component("Corridor Drains + X-ports", "Plumbing & Panel", cp.drains_ports()),
+        ov.component("Corridor Plumbing", "Plumbing & Panel", cp.plumbing(sump_on_skid=True)),
+        ov.component("Corridor Drains + X-ports", "Plumbing & Panel", cp.drains_ports(sump_on_skid=True)),
         ov.component("TAP-01 + Spray Supply", "Plumbing & Panel", pw.tap01_supply()),
         # NB: "Ribbon Support Cross-beams" (cp.ribbon_supports() — the 4 welded under-grate
         #     cross-beams) removed — not of interest in this model.
@@ -207,15 +210,21 @@ model.layers.to_a.each {{ |l|
   model.layers.remove(l, true) rescue nil
 }}
 
-# ── Scenes ── one consistent iso camera, shared by every scene.
+# ── Scenes ── opening camera looks at the FILTER SKID PANEL (pinhole wall) from INSIDE the container.
 # Frame on geometry only — hide the Labels tag so Text bounds don't skew extents.
 model.layers.each {{ |l| l.visible = (l.name != "Labels") }}
-bb = model.bounds
-ctr = bb.center
-dir = Geom::Vector3d.new(0.72, -0.7, 0.5); dir.normalize!
-eye = ctr.offset(dir, bb.diagonal * 1.5)
-model.active_view.camera = Sketchup::Camera.new(eye, ctr, Z_AXIS)
-model.active_view.zoom_extents
+# Frame the CONTAINER/IBC mass DIRECTLY — not model.bounds + zoom_extents. The TAP-01/spray-supply
+# run + the skid plumbing reach far toward the pinhole wall, so the full extent is much wider than the
+# dense mass; zoom_extents then centers that wide extent and pushes the container off to the side.
+# Aiming at the Container-ghost bounds with a fixed fit keeps the container centered (the thin supply
+# run just extends into the margin).
+cont = model.entities.grep(Sketchup::ComponentInstance).find {{ |i| i.name == "Container (ghost)" }}
+fb = cont ? cont.bounds : model.bounds
+ctr = fb.center
+dir = Geom::Vector3d.new(0.5, 0.72, 0.45); dir.normalize!   # corner iso, eye on the IBC (+X) side
+eye = ctr.offset(dir, fb.diagonal * 1.45)
+cam = Sketchup::Camera.new(eye, ctr, Z_AXIS); cam.fov = 38
+model.active_view.camera = cam
 
 {scenes_ruby}.each {{ |name, tags|
   model.layers.each {{ |l| l.visible = (l == default_layer || l.name == "Context" || tags.include?(l.name)) }}

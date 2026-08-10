@@ -4,7 +4,7 @@
 """
 generate_ibc_frame_drawing.py  —  TBS-001 IBC Support Frame Fabrication Drawings
 
-Three-sheet fabrication drawing set for the welded 50×50×3mm RHS mild steel
+Three-sheet fabrication drawing set for the welded 2×2×0.120in steel (A500)
 IBC stacking frame.  Shows frame structure only — no IBCs, plumbing, or
 other container equipment.
 
@@ -57,7 +57,7 @@ C_DETAIL = "#E8E0D8"       # detail inset background
 FONT     = {"fontfamily": "monospace"}
 
 # ── Frame constants ──────────────────────────────────────────────────────────
-FRAME_RHS  = 50            # section size: 50×50×3mm RHS
+FRAME_RHS  = 50.8          # section size: 2×2×0.120in steel SHS (#26)
 FRAME_T    = 3             # RHS wall thickness
 FRAME_FOOTPRINT_W = C_WID  # 2362mm wall-to-wall
 FRAME_FOOTPRINT_D = 450    # depth along X — deep 4-leg box (cp.frame DEPTH: front X4654 → back X5104)
@@ -117,7 +117,7 @@ ARM_X_UP_L  = (IBC_COL_X + 60) - FRAME_X0_GLOBAL   # arm root at the upright (fr
 ARM_X_TIP_L = WALKWAY_RIGHT_X - FRAME_X0_GLOBAL    # arm tip reaches the walkway left beam (≈ -280)
 ARM_Z0      = 70                                   # arm bottom Z
 ARM_Z1      = WALKWAY_H - WALKWAY_GRATE_T           # arm top Z (= grate bottom, 115)
-ARM_W       = 40                                   # 40×40×3 SHS
+ARM_W       = 40                                   # 2×1×0.120in steel
 ARM_YDS     = (CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR - IBC_FRAME_RHS)  # 1046, 1266 (= POST_NEAR/FAR_YD)
 C_ARM       = "#9098A0"                            # walkway-steel (distinct from frame)
 
@@ -490,7 +490,7 @@ def sheet1():
     # ── Member labels (restraint frame — lighter callouts) ──────────────────
     leader(ax, (NEAR_COL_R + FRAME_RHS / 2), (TOP_Z * 0.7),
            (NEAR_COL_R - 70), (TOP_Z * 0.7 + 30),
-           "DEEP-BOX UPRIGHTS\n50×50×3 RHS (front pair ×2;\nmatching back pair 450mm behind)",
+           "DEEP-BOX UPRIGHTS\n2×2×0.120in steel (front pair ×2;\nmatching back pair 450mm behind)",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
@@ -544,7 +544,7 @@ def sheet1():
     # ── Material note ───────────────────────────────────────────────────────
     notes = [
         "MATERIAL & FABRICATION NOTES (RESTRAINT-ONLY FRAME):",
-        f"1. All RHS members: 50×50×3mm mild steel, A500 Grade B. Joints fillet welded (5mm leg), continuous.",
+        f"1. All RHS members: 2×2×0.120in steel, A500 Grade B. Joints fillet welded (5mm leg), continuous.",
         f"2. RESTRAINT, not load-bearing: the 1000L caged totes DIRECT-STACK cage-on-cage (52mm headroom — no deck between tiers).",
         f"   A DEEP 4-LEG BOX (front + back upright pairs, 450mm apart, tied by top + bottom rings) at the IBC front restrains them.",
         f"3. Floor flange feet (×4): 150×150×12mm plate fillet welded to each leg base; 4× M12 anchors into the floor (uplift + lateral restraint). Front feet reach ~25mm under the tray edge.",
@@ -666,7 +666,7 @@ def sheet2():
     # instead of spilling across the upright + X-brace; full text is in note 9.
     leader(ax, (ARM_X_TIP_L + 40), (ARM_Z1),
            (ARM_X_TIP_L - 10), (ARM_Z1 + 90),
-           "RIGHT-WALKWAY\nCANTILEVER ARM\n40×40×3 SHS (×2)\n(see note 9)",
+           "RIGHT-WALKWAY\nCANTILEVER ARM\n2×1×0.120in steel (×2)\n(see note 9)",
            color=C_ARM, fs=5.5, ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Dimensions ──────────────────────────────────────────────────────────
@@ -691,7 +691,7 @@ def sheet2():
     # Short leader into the open upper-tier face just right of the post (rule 67).
     leader(ax, (FX_FRONT + FRAME_RHS), (TOP_Z * 0.62),
            (FX_FRONT + FRAME_RHS + 55), (TOP_Z * 0.62 + 25),
-           "DEEP-BOX UPRIGHTS\n50×50×3 RHS, floor to top\n(front + back pair, ×2 across Yd = 4 legs)",
+           "DEEP-BOX UPRIGHTS\n2×2×0.120in steel, floor to top\n(front + back pair, ×2 across Yd = 4 legs)",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
@@ -714,7 +714,7 @@ def sheet2():
          "   the front feet reach ~25mm under the tray edge.",
          "4. Front retaining bars (Z560 + Z1760) stop the totes sliding out the",
          "   front; wall ends drop into Simpson-style joist hangers.",
-        f"5. RIGHT-WALKWAY CANTILEVER ARMS (rev12): 2× 40×40×3 SHS clamp to the",
+        f"5. RIGHT-WALKWAY CANTILEVER ARMS (rev12): 2× 2×1×0.120in steel clamp to the",
          "   FRONT box uprights and project off the front to carry the walkway.",
     ]
     draw_notes(ax, notes, (X_LO + 20), (Z_HI - 100), spacing=(20),
@@ -812,7 +812,7 @@ def sheet3():
     # stays in the left margin instead of spilling over the frame footprint.
     leader(ax, (ARM_X_TIP_L + 60), (POST_NEAR_YD + ARM_W / 2),
            (ARM_X_TIP_L - 10), (POST_NEAR_YD - 110),
-           "RIGHT-WALKWAY\nCANTILEVER ARMS (×2)\n40×40×3 SHS\n(off-frame, toward −X)",
+           "RIGHT-WALKWAY\nCANTILEVER ARMS (×2)\n2×1×0.120in steel\n(off-frame, toward −X)",
            color=C_ARM, fs=5.5, ha="left", va="top", arrow_style="-|>", font=FONT)
 
     # ── Floor flange feet (projected, under the 4 box legs: front + back) ────
@@ -968,7 +968,7 @@ def sheet3():
         "3. 270mm plumbing corridor (Yd 1046-1316) stays clear between the IBC columns.",
         f"4. IBC ghost outline shows pallet footprint (brown), bottle inset (blue), cage corner",
         f"tubes ({IBC_CAGE_TUBE_D}mm Ø, gray circles). v2 layout: Brown/Waste bottom, Blue top.",
-        "5. RIGHT-WALKWAY CANTILEVER ARMS (rev12): 2× 40×40×3 SHS clamp to the FRONT box",
+        "5. RIGHT-WALKWAY CANTILEVER ARMS (rev12): 2× 2×1×0.120in steel clamp to the FRONT box",
         "uprights (Yd 1046/1266), projecting off the front (−X) to carry the right walkway.",
     ]
     draw_notes(ax, notes, (X_HI * 0.32), (YD_LO + 510), spacing=(20),

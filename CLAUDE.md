@@ -162,7 +162,16 @@ ripple into both.
   `lint.py` (so it can't drift) and the per-constant cascade is **computed** from it —
   run `python3 src/generators/lint.py --cascade <CONSTANT>` to see exactly what a change
   re-runs, and the commit-time *missing-cascade* check enforces it. **Add an entry to
-  `dependencies.yml` whenever a generator or model is added.** `component-dependency-map.md`
+  `dependencies.yml` whenever a generator or model is added.**
+  - **`--cascade` is the AUTHORITATIVE re-run/re-send list — drive from it, never from grep or memory.**
+    It follows the **module-import graph** (fixed 2026-08-03): a model that reuses another module's
+    builders (e.g. `generate_pinhole_water_panel.py` → `water.skp` does `import generate_sketchup_model
+    as ov` and reuses `ov.processing_tray()`) inherits that module's constant deps even though it never
+    names the constant. The old grep-only scan MISSED these — that's how `water.skp` fell out of the
+    tray-drain cascade. After ANY constant change: run `--cascade <CONST>`, regenerate/re-send EVERY
+    script it lists (including build-to-`.skp`-direct models with no `.rb`), and commit nothing until
+    the list is clean. Before publish, also run `lint.py --verify-all` (regenerates every registered
+    output; names any direct-`.skp` model to re-send). `component-dependency-map.md`
   now holds the human design rationale (§1 component→constant registry, §3 diagram matrix,
   §3.1 per-model narrative) — keep that updated when a component's design changes.
 - Today there is one model (`overview.skp`) containing nearly every component, so
@@ -261,7 +270,9 @@ Standing permission to commit and redeploy on every request in this project.
 
 ## Releases
 
-`RELEASE.md` is the curated changelog. **As notable changes land, add a bullet under its `[Unreleased]` section** — that running list is what each release summarizes from. Cutting a release is **gated** on it: `bash release.sh <version>` promotes `[Unreleased]` → a dated `## [X.Y]` section, commits, tags, and runs `gh release create` — and **refuses to run if `[Unreleased]` is empty**. Keep `[Unreleased]` current; a release must never ship without a changelog entry.
+`RELEASE.md` is the curated changelog. **As notable changes land, add a bullet under its `[Unreleased]` section — in the SAME work, not "later."** That running list is what each release summarizes from. Cutting a release is **gated** on it: `bash release.sh <version>` promotes `[Unreleased]` → a dated `## [X.Y]` section, commits, tags, and runs `gh release create` — and **refuses to run if `[Unreleased]` is empty**. Keep `[Unreleased]` current; a release must never ship without a changelog entry.
+
+- **HARD RULE — the `[Unreleased]` obligation carries across sessions; a fresh session does NOT reset it.** Landing notable work without updating `[Unreleased]` is incomplete work, even if the changes are committed. At the **start of any session that will change the project, and again whenever a batch of work lands,** check `[Unreleased]` against the commits since the last `## [X.Y]` section (`git log <last-tag>..HEAD`) and backfill anything missing. Don't let the list drift empty while commits pile up — that's how a release ends up with nothing to summarize.
 
 ## Tracking
 

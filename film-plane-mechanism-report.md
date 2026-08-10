@@ -215,6 +215,8 @@ Each of the **8 rail ends** anchors to the container — **6 of them** with a st
 
 ### Muslin Clamp System
 
+The muslin is cut to the **washable tray area** (<!-- BEGIN fact:muslin_cut_width_mm -->4,359<!-- END fact:muslin_cut_width_mm --> × <!-- BEGIN fact:muslin_cut_height_mm -->2,000<!-- END fact:muslin_cut_height_mm -->mm) — **smaller than this 4,499 × 2,094mm frame** — so its edge sits ~70mm inside the frame's L-channel and is clamped **inboard on the ACM face** rather than captured in the channel (a field detail). The tray, not the frame, sets the muslin size — see [Processing Tray report §4.1](processing-tray-and-spray-bar.md).
+
 See [Muslin Clamp System — Mechanism Design](film-clamp-mechanism-report.md) for the full clamp specification, parts list, and engineering drawing.
 
 **Estimated materials total (incl. wall-seat saddles): ~<!-- BEGIN costing:film-total -->$3,733<!-- END costing:film-total -->** (the 2 bottom-right saddles move to the walkway's combined corner plates)

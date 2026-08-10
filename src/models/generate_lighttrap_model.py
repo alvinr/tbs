@@ -237,13 +237,14 @@ def _brush_bristles(z0, zlen, n=176):
 
 
 def door_frame(include_seal=True):
-    """50×50×3 RHS welded frame lining the cargo-door opening at X≈0. Sits
-    just exterior of the panel (X=-50..0); the EPDM gasket seals against it.
+    """2×2×0.120in steel SHS welded frame lining the cargo-door opening at X≈0. Sits
+    just exterior of the panel (X=-50.8..0); the EPDM gasket seals against it. #26: was
+    50×50×3 nominal — re-specced to 2in stock (the same sp-door-frame-rhs the parts registry carries).
 
     include_seal: append the interface-2 housing-surround EPDM ring (default True
     = operating; byte-identical). The transport model passes False and rebuilds
     that ring on the MOVING housing instead, so the seal retracts with it."""
-    s = 50
+    s = 50.8
     x0 = -s
     # threshold rail runs full width — the suspended drum no longer reaches the
     # floor, so the doorway sill needs no notch.

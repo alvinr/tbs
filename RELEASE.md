@@ -27,8 +27,9 @@ file** — a release must not ship without a changelog entry:
 - **Pump-run support-detail fabrication sheet (#29 follow-up).** New `generate_support_detail.py`
   → `support-detail-sheet1/2.png`. Sheet 1 = face-on board elevations (far / near / near-upper —
   18mm ply, 4 L-brackets each, risers + P-clip rows, fully dimensioned); Sheet 2 = the L-bracket
-  flush-mount plan section (post inner face → 6mm weld leg → 45mm landing leg → ply seated flush +
-  M6→tee-nut bolt), a P-clip cross-section, and a fabrication schedule (3 boards / 12 brackets /
+  flush-mount plan section (post inner face → 6mm weld leg → 45mm landing leg → ply seated flush,
+  fastened with an M6 countersunk flat-head screw into a captive pronged tee-nut), a P-clip
+  cross-section, and a fabrication schedule (3 boards / 12 brackets /
   39 clips). Geometry imported from the `cp` model constants so it can't drift. Embedded in
   plumbing-report §5.3; registered in the gallery, publish, setup_docs, and dependencies.yml.
 

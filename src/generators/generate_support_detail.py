@@ -17,7 +17,7 @@ drawing tracks the 3D model and cannot drift.
 import os
 import sys
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, Circle, Arc
+from matplotlib.patches import Rectangle, Circle, Arc, Polygon
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "models"))
@@ -211,10 +211,21 @@ def draw_flush_section(ax):
     # landing leg (45mm long in X, 6mm thick in Yd) behind the ply back face
     _rect(ax, px1, yd_back - LT, LL, LT, C_STEEL_D, ec=C_OUT, lw=1.2, z=5)
 
-    # through-bolt: ply → landing leg into a back-face tee-nut
+    # fastener (our conventional #30 ply-mount joint): M6 FLAT-HEAD machine screw from the
+    # landing-leg side → captive pronged TEE-NUT in the ply corridor face.  Screw clamps leg→ply.
     bx = px1 + 26
-    ax.plot([bx, bx], [yd_back + EQT, yd_back - LT - 8], color=C_CUSH, lw=2.4, zorder=8)
-    ax.add_patch(Rectangle((bx - 7, yd_back - LT - 14), 14, 8, facecolor=C_CUSH, edgecolor=C_OUT, lw=0.8, zorder=8))
+    # shank through the landing leg + into the ply to the tee-nut barrel
+    ax.add_patch(Rectangle((bx - 2.5, yd_back - LT), 5, EQT + LT - 4, facecolor=C_CUSH, edgecolor="none", zorder=8))
+    # countersunk flat head, flush in the landing-leg back face (widens to the outer face)
+    ax.add_patch(Polygon([(bx - 6, yd_back - LT), (bx + 6, yd_back - LT),
+                          (bx + 2.5, yd_back - LT + 4), (bx - 2.5, yd_back - LT + 4)],
+                         closed=True, facecolor=C_CUSH, edgecolor=C_OUT, lw=0.6, zorder=9))
+    # pronged tee-nut captive in the ply: barrel into the ply + flange on the corridor face + 2 prongs
+    ax.add_patch(Rectangle((bx - 3, yd_face - 11), 6, 11, facecolor=C_STEEL_D, edgecolor=C_OUT, lw=0.6, zorder=7))
+    ax.add_patch(Rectangle((bx - 9, yd_face), 18, 2.6, facecolor=C_STEEL_D, edgecolor=C_OUT, lw=0.7, zorder=9))
+    for pxp in (bx - 7.5, bx + 7.5):
+        ax.add_patch(Polygon([(pxp - 1.6, yd_face), (pxp + 1.6, yd_face), (pxp, yd_face - 4.5)],
+                             closed=True, facecolor=C_STEEL_D, edgecolor="none", zorder=8))
 
     # weld symbol at the post/weld-leg join
     ax.plot([px1, px1], [yd_back, yd_back + EQT], color=C_BLUE, lw=3.0, zorder=9, solid_capstyle="round")
@@ -224,8 +235,10 @@ def draw_flush_section(ax):
            "weld leg 6mm\n(fillet-welded to post face)", fs=6.0, color=C_OUT, ha="left", va="center", font=FONT, bbox=LBL_BG)
     leader(ax, px1 + LL - 4, yd_back - LT + 3, X0 + 120, yd_back - 40,
            f"landing leg {LL}mm\n(ply bolts here)", fs=6.0, color=C_OUT, ha="left", va="top", font=FONT, bbox=LBL_BG)
-    leader(ax, bx, yd_back - LT - 10, px0 - 10, yd_back - 30,
-           "M6 machine screw\n→ back-face tee-nut", fs=6.0, color=C_CUSH, ha="right", va="center", font=FONT, bbox=LBL_BG)
+    leader(ax, bx, yd_back - LT + 1, px0 - 10, yd_back - 34,
+           "M6 flat-head screw\n(countersunk in leg)", fs=6.0, color=C_CUSH, ha="right", va="center", font=FONT, bbox=LBL_BG)
+    leader(ax, bx + 9, yd_face + 1.3, X0 + 132, yd_face + 30,
+           "pronged tee-nut\n(captive in ply)", fs=6.0, color=C_STEEL_D, ha="left", va="center", font=FONT, bbox=LBL_BG)
     leader(ax, X0, yd_back, px0 - 10, yd_post_far + 20,
            "ply back face FLUSH\nwith post wall-side face", fs=6.0, color=C_PLY_E, ha="right", va="center", font=FONT, bbox=LBL_BG)
 

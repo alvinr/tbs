@@ -249,34 +249,48 @@ def draw_flush_section(ax):
 
 
 def draw_pclip(ax):
-    """P-clip cross-section: cushioned clip around the Ø21 riser, bolted to the ply."""
-    ax.set_xlim(-70, 95)
-    ax.set_ylim(-55, 60)
+    """P-clip cross-section, drawn with the clip at RIGHT ANGLES to the board (board shown
+    horizontal for the detail): cushioned clip around the Ø21 riser, screwed straight down to
+    the ply with a flat-head machine screw into a captive pronged tee-nut."""
+    ax.set_xlim(-42, 96)
+    ax.set_ylim(-60, 46)
     ax.set_aspect("equal")
     ax.axis("off")
 
-    # ply slab (edge-on) at left
-    _rect(ax, -60, -45, 22, 100, C_PLY, ec=C_PLY_E, lw=1.4, z=2)
-    ax.text(-49, 48, "ply", ha="center", va="top", fontsize=6.0, color="#5C4A28", zorder=4, **FONT)
+    # board — horizontal slab, face up (the clip mounts perpendicular to it)
+    bx0, bx1, bz0 = -30, 90, -42
+    bz1 = bz0 + EQT
+    _rect(ax, bx0, bz0, bx1 - bx0, EQT, C_PLY, ec=C_PLY_E, lw=1.4, z=2)
+    ax.text(bx1 - 16, bz0 + EQT / 2, "18mm ply", ha="center", va="center", fontsize=6.2, color="#5C4A28", zorder=4, **FONT)
 
-    # riser pipe Ø21 with cushion ring
-    ax.add_patch(Circle((18, 5), RP + 3.5, facecolor=C_CUSH, edgecolor="none", zorder=3))   # cushion
-    ax.add_patch(Circle((18, 5), RP, facecolor=C_BROWN, edgecolor=C_OUT, lw=1.2, zorder=4))  # pipe
+    # riser Ø21 + EPDM cushion, sitting just above the board face
+    pcx, pcz = 44, bz1 + RP + 5
+    ax.add_patch(Circle((pcx, pcz), RP + 4, facecolor=C_CUSH, edgecolor="none", zorder=3))
+    ax.add_patch(Circle((pcx, pcz), RP, facecolor=C_BROWN, edgecolor=C_OUT, lw=1.2, zorder=4))
 
-    # P-clip band wrapping the cushion, foot to the ply
-    ax.add_patch(Arc((18, 5), 2 * (RP + 6), 2 * (RP + 6), angle=0, theta1=-150, theta2=150,
-                     lw=3.0, edgecolor=C_CLIP, zorder=5))
-    ax.plot([-38, 3], [-8, -2], color=C_CLIP, lw=3.0, zorder=5)   # foot to ply
+    # P-clip band wrapping the cushion, one flat foot strap to the LEFT, screwed straight down
+    rb = RP + 6.5
+    ax.add_patch(Arc((pcx, pcz), 2 * rb, 2 * rb, angle=0, theta1=235, theta2=195, lw=3.0, edgecolor=C_CLIP, zorder=5))
+    footx = 10
+    band_end_x = pcx - 9.5                                        # the ~235° band end, sitting on the board face
+    ax.plot([band_end_x, footx - 3], [bz1 + 2, bz1 + 2], color=C_CLIP, lw=3.0, zorder=5)   # foot strap along the board
+    ax.add_patch(Rectangle((footx - 9, bz1 - 1), 18, 4, facecolor=C_CLIP, edgecolor=C_OUT, lw=0.6, zorder=6))  # flat foot on the board
 
-    # fastener into the ply
-    ax.plot([-52, -20], [-8, -8], color=C_CUSH, lw=2.2, zorder=6)
-    ax.add_patch(Rectangle((-62, -12), 6, 8, facecolor=C_CUSH, edgecolor=C_OUT, lw=0.7, zorder=6))
+    # fastener: M6 FLAT-HEAD machine screw (in the foot) → captive pronged TEE-NUT (board underside)
+    ax.add_patch(Rectangle((footx - 2.5, bz0 + 4), 5, EQT - 1, facecolor=C_CUSH, edgecolor="none", zorder=7))                 # shank
+    ax.add_patch(Polygon([(footx - 6, bz1 + 3), (footx + 6, bz1 + 3), (footx + 2.5, bz1 - 1), (footx - 2.5, bz1 - 1)],
+                         closed=True, facecolor=C_CUSH, edgecolor=C_OUT, lw=0.6, zorder=9))                                   # flat countersunk head
+    ax.add_patch(Rectangle((footx - 3, bz0), 6, 11, facecolor=C_STEEL_D, edgecolor=C_OUT, lw=0.6, zorder=7))                  # tee-nut barrel into ply
+    ax.add_patch(Rectangle((footx - 9, bz0 - 2.6), 18, 2.6, facecolor=C_STEEL_D, edgecolor=C_OUT, lw=0.7, zorder=9))          # tee-nut flange (underside)
+    for pxp in (footx - 7.5, footx + 7.5):
+        ax.add_patch(Polygon([(pxp - 1.6, bz0), (pxp + 1.6, bz0), (pxp, bz0 + 4.5)], closed=True, facecolor=C_STEEL_D, edgecolor="none", zorder=8))  # prongs
 
-    leader(ax, 18, 5, 70, 40, "Ø21 riser", fs=6.2, color=C_BROWN, ha="left", va="center", font=FONT, bbox=LBL_BG)
-    leader(ax, 18 + RP + 3, 5, 70, 12, "EPDM cushion", fs=6.2, color=C_CUSH, ha="left", va="center", font=FONT, bbox=LBL_BG)
-    leader(ax, 18, 5 + RP + 6, 70, -18, '3/4" P-clip', fs=6.2, color=C_CLIP, ha="left", va="center", font=FONT, bbox=LBL_BG)
-    leader(ax, -56, -8, -30, -42, "machine screw\n→ tee-nut", fs=6.0, color=C_CUSH, ha="center", va="top", font=FONT, bbox=LBL_BG)
-    ax.text(15, 55, "P-CLIP DETAIL", ha="center", va="bottom", fontsize=8, fontweight="bold", color=C_OUT, **FONT)
+    leader(ax, pcx, pcz, pcx + 30, pcz + 26, "Ø21 riser", fs=6.2, color=C_BROWN, ha="left", va="center", font=FONT, bbox=LBL_BG)
+    leader(ax, pcx + RP + 2, pcz - 4, pcx + 34, pcz - 2, "EPDM cushion", fs=6.2, color=C_CUSH, ha="left", va="center", font=FONT, bbox=LBL_BG)
+    leader(ax, pcx - rb, pcz + 4, pcx - 8, pcz + 30, '3/4" P-clip', fs=6.2, color=C_CLIP, ha="left", va="center", font=FONT, bbox=LBL_BG)
+    leader(ax, footx, bz1 + 3, footx - 30, bz1 + 26, "M6 flat-head screw\n(countersunk)", fs=6.0, color=C_CUSH, ha="right", va="center", font=FONT, bbox=LBL_BG)
+    leader(ax, footx + 9, bz0 - 2.5, footx + 36, bz0 - 20, "pronged tee-nut\n(captive in ply)", fs=6.0, color=C_STEEL_D, ha="left", va="center", font=FONT, bbox=LBL_BG)
+    ax.text(34, 40, "P-CLIP DETAIL — MOUNTED AT RIGHT ANGLES TO THE BOARD", ha="center", va="bottom", fontsize=8, fontweight="bold", color=C_OUT, **FONT)
 
 
 def draw_sheet2():

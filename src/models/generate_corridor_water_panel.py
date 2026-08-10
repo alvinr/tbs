@@ -582,8 +582,11 @@ SB_FAR_CLAMP_Z   = (480, 740)                 # 2 clamp rows (far)
 SB_NEAR_CLAMP_Z  = (560, 820)                 # 2 clamp rows (near)
 C_CLIP = "#55575e"                            # cushioned P-clip strap
 
-def support_boards():
-    """The two side-wall ply run-support boards + welded L-brackets + riser P-clips (#29)."""
+def support_boards(sides=("far", "near", "near-upper")):
+    """The side-wall ply run-support boards + welded L-brackets + riser P-clips (#29).
+
+    `sides` selects which boards to emit (far / near / near-upper) so the construction
+    sequence can stage the FAR board on a later click; defaults to all (overview/water)."""
     p = []
     bw = SB_X1 - SB_X0
     LT, LL, LH = 6, 45, 50                     # bracket leg thickness / landing-leg length / bracket height
@@ -593,6 +596,8 @@ def support_boards():
             # UPPER near board — two X4898 segments: BV-02 (P-05) Z1321-1481 + BV-06 (P-03) Z1721-1881.
             # 2 clip rows land on EACH segment (the 240mm gap between them carries no pipe).
             ("near-upper", YD_NEAR, +1, SB_NEAR_UP_Z, SB_RISER_YD_NEAR, (BV_FWD_X,), (1370, 1440, 1770, 1840))):
+        if side not in sides:
+            continue
         by = wall_yd - EQT if ddir < 0 else wall_yd        # ply origin Yd (flush with the wall-side post face)
         back_yd = wall_yd                                   # ply back face = the post wall-side face
         face_yd = wall_yd - EQT if ddir < 0 else wall_yd + EQT   # ply CORRIDOR face (clips attach here)
@@ -614,13 +619,14 @@ def support_boards():
                 p.append(ov.ruby_box(f"Riser P-clip ({side})", rx - 14, y_lo, cz - 8,
                                      28, y_hi - y_lo, 16, color=C_CLIP))
     # near-upper board also backs two HORIZONTALS: P-05-inlet brown (Z1300) + P-03 grey (Z1902)
-    for hx, hz in ((4960, 1300), (5020, 1300), (4945, 1902)):
-        p.append(ov.ruby_box("Riser P-clip (near-upper)", hx - 14, YD_NEAR + EQT, hz - 12,
-                             28, (SB_RISER_YD_NEAR + RP + 2) - (YD_NEAR + EQT), 24, color=C_CLIP))
+    if "near-upper" in sides:
+        for hx, hz in ((4960, 1300), (5020, 1300), (4945, 1902)):
+            p.append(ov.ruby_box("Riser P-clip (near-upper)", hx - 14, YD_NEAR + EQT, hz - 12,
+                                 28, (SB_RISER_YD_NEAR + RP + 2) - (YD_NEAR + EQT), 24, color=C_CLIP))
     return "\n".join(p)
 
 
-def equipment(sump_on_skid=False):
+def equipment(sump_on_skid=False, boards=("far", "near", "near-upper")):
     """The corridor pump panel: P-01 Blue, [P-04 tray-drain], P-05 Brown-drain, P-03 Waste-drain,
     ACC-01, [SV-02 + 3W-DV-02].  (P-02 + the filters live on the pinhole wall.)  Pumps UPRIGHT.
 
@@ -658,7 +664,7 @@ def equipment(sump_on_skid=False):
         p.append(sample_valve("SV-02 sample valve", sv_x, sv_y, SV_Z, h=60))
         # 3W-DV-02 — Stage-A diverter above the stack (input underside; run to Brown −Yd / Waste +Yd)
         p.append(diverter("3W-DV-02", DV02X, CTR_Y, DV_Z, run="y", branch="z-", handle="x-", color=ov.C_VALVE))
-    p.append(support_boards())                   # #29 — two side-wall ply run-support boards + L-brackets
+    p.append(support_boards(sides=boards))       # #29 — side-wall ply run-support boards + L-brackets
     return "\n".join(p)
 
 

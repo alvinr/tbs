@@ -62,12 +62,12 @@ STEPS = [
         lambda: _join(cp.frame(part="posts"), cp.rear_panel())),
     (1, "1.2", "P1 Near IBCs",     "IBC totes — pinhole wall (near column)",   # [1.2] dropped into the post skeleton
         lambda: ov.ibc_stack(alpha=0.85, cols="near")),
-    (1, "1.3", "P1 IBC Plumbing",  "Corridor plumbing + equipment + drains + filter recycle/waste returns + Cct-C corridor wiring",  # [1.3] corridor plumbing (sump ribbon + skid ribbon legs→3.2), the DV-01 recycle→IBC-3 buffer + waste→IBC-4 returns, AND the purple Cct-C corridor pump wiring run to the pinhole wall (EP drop connected in Phase 4)
-        lambda: _join(cp.equipment(sump_on_skid=True), cp.plumbing(part="corridor", sump_on_skid=True), cp.drains_ports(sump_on_skid=True),
+    (1, "1.3", "P1 IBC Plumbing",  "Corridor plumbing + equipment + NEAR support boards + drains + filter recycle/waste returns + Cct-C corridor wiring",  # [1.3] corridor plumbing (sump ribbon + skid ribbon legs→3.2), the DV-01 recycle→IBC-3 buffer + waste→IBC-4 returns, AND the purple Cct-C corridor pump wiring run to the pinhole wall (EP drop connected in Phase 4).  Only the NEAR-wall support boards land here; the FAR board is staged with Fan A (1.4)
+        lambda: _join(cp.equipment(sump_on_skid=True, boards=("near", "near-upper")), cp.plumbing(part="corridor", sump_on_skid=True), cp.drains_ports(sump_on_skid=True),
                       pw.kit(part="recycle", p02_on_corridor=True), pw.kit(part="waste", p02_on_corridor=True),
                       pw.panel_power(include_switch=False, part="corridor"))),
-    (1, "1.4", "P1 Fan A",         "Fan A (exhaust) + its Cct-A electrical run to the EP drop",  # before the far IBCs bury it; Cct-A pre-run down the pinhole wall to the EP drop (EP in Phase 4)
-        lambda: _join(ov.fans(which="A"), ov.fan_wiring(which="A", a_to_ep=True))),
+    (1, "1.4", "P1 Fan A",         "Fan A (exhaust) + its Cct-A electrical run to the EP drop + far pump-run support board",  # before the far IBCs bury it; Cct-A pre-run down the pinhole wall to the EP drop (EP in Phase 4).  The FAR-wall support board (DV-01/P-02/P-01 risers) reveals here, one click after its risers
+        lambda: _join(ov.fans(which="A"), ov.fan_wiring(which="A", a_to_ep=True), cp.support_boards(sides=("far",)))),
     (1, "1.5", "P1 Far IBCs",      "IBC totes — far column, then frame rails + restraint bars",  # far totes go in, THEN the horizontal rails + retaining bars trap all totes
         lambda: _join(ov.ibc_stack(alpha=0.85, cols="far"), cp.frame(part="rails"), cp.tote_restraint())),
     (1, "1.6", "P1 Hinge Panel",   "Hinge panel (excl. light-trap drum)",      # last

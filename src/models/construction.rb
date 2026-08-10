@@ -704,8 +704,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   inst.name = "[built] Step 1.2 — IBC totes — pinhole wall (near column)"
   inst.layer = model.layers["P1-static"]
 
-  # ═══ [built] Step 1.3 — Corridor plumbing + equipment + drains + filter recycle/waste returns + Cct-C corridor wiring ═══
-  defn = model.definitions.add("[built] Step 1.3 — Corridor plumbing + equipment + drains + filter recycle/waste returns + Cct-C corridor wiring")
+  # ═══ [built] Step 1.3 — Corridor plumbing + equipment + NEAR support boards + drains + filter recycle/waste returns + Cct-C corridor wiring ═══
+  defn = model.definitions.add("[built] Step 1.3 — Corridor plumbing + equipment + NEAR support boards + drains + filter recycle/waste returns + Cct-C corridor wiring")
   ents = defn.entities
   # Pump P-01 (Blue supply) body
   grp = ents.add_group
@@ -962,171 +962,6 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(30.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Pump-run support board (far, 18mm ply)
-  grp = ents.add_group
-  grp.name = "Pump-run support board (far, 18mm ply)"
-  face = grp.entities.add_face([4704.8.mm,1298.mm,400.mm], [5104.mm,1298.mm,400.mm], [5104.mm,1316.mm,400.mm], [4704.8.mm,1316.mm,400.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(420.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Support L-bracket weld leg (far)
-  grp = ents.add_group
-  grp.name = "Support L-bracket weld leg (far)"
-  face = grp.entities.add_face([4704.8.mm,1298.mm,410.mm], [4710.8.mm,1298.mm,410.mm], [4710.8.mm,1316.mm,410.mm], [4704.8.mm,1316.mm,410.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Support L-bracket landing leg (far)
-  grp = ents.add_group
-  grp.name = "Support L-bracket landing leg (far)"
-  face = grp.entities.add_face([4704.8.mm,1316.mm,410.mm], [4749.8.mm,1316.mm,410.mm], [4749.8.mm,1322.mm,410.mm], [4704.8.mm,1322.mm,410.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Support L-bracket weld leg (far)
-  grp = ents.add_group
-  grp.name = "Support L-bracket weld leg (far)"
-  face = grp.entities.add_face([4704.8.mm,1298.mm,760.mm], [4710.8.mm,1298.mm,760.mm], [4710.8.mm,1316.mm,760.mm], [4704.8.mm,1316.mm,760.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Support L-bracket landing leg (far)
-  grp = ents.add_group
-  grp.name = "Support L-bracket landing leg (far)"
-  face = grp.entities.add_face([4704.8.mm,1316.mm,760.mm], [4749.8.mm,1316.mm,760.mm], [4749.8.mm,1322.mm,760.mm], [4704.8.mm,1322.mm,760.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Support L-bracket weld leg (far)
-  grp = ents.add_group
-  grp.name = "Support L-bracket weld leg (far)"
-  face = grp.entities.add_face([5098.mm,1298.mm,410.mm], [5104.mm,1298.mm,410.mm], [5104.mm,1316.mm,410.mm], [5098.mm,1316.mm,410.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Support L-bracket landing leg (far)
-  grp = ents.add_group
-  grp.name = "Support L-bracket landing leg (far)"
-  face = grp.entities.add_face([5059.mm,1316.mm,410.mm], [5104.mm,1316.mm,410.mm], [5104.mm,1322.mm,410.mm], [5059.mm,1322.mm,410.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Support L-bracket weld leg (far)
-  grp = ents.add_group
-  grp.name = "Support L-bracket weld leg (far)"
-  face = grp.entities.add_face([5098.mm,1298.mm,760.mm], [5104.mm,1298.mm,760.mm], [5104.mm,1316.mm,760.mm], [5098.mm,1316.mm,760.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Support L-bracket landing leg (far)
-  grp = ents.add_group
-  grp.name = "Support L-bracket landing leg (far)"
-  face = grp.entities.add_face([5059.mm,1316.mm,760.mm], [5104.mm,1316.mm,760.mm], [5104.mm,1322.mm,760.mm], [5059.mm,1322.mm,760.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Riser P-clip (far)
-  grp = ents.add_group
-  grp.name = "Riser P-clip (far)"
-  face = grp.entities.add_face([4859.mm,1272.5.mm,472.mm], [4887.mm,1272.5.mm,472.mm], [4887.mm,1298.mm,472.mm], [4859.mm,1298.mm,472.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Riser P-clip (far)
-  grp = ents.add_group
-  grp.name = "Riser P-clip (far)"
-  face = grp.entities.add_face([4859.mm,1272.5.mm,732.mm], [4887.mm,1272.5.mm,732.mm], [4887.mm,1298.mm,732.mm], [4859.mm,1298.mm,732.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Riser P-clip (far)
-  grp = ents.add_group
-  grp.name = "Riser P-clip (far)"
-  face = grp.entities.add_face([4886.mm,1272.5.mm,472.mm], [4914.mm,1272.5.mm,472.mm], [4914.mm,1298.mm,472.mm], [4886.mm,1298.mm,472.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Riser P-clip (far)
-  grp = ents.add_group
-  grp.name = "Riser P-clip (far)"
-  face = grp.entities.add_face([4886.mm,1272.5.mm,732.mm], [4914.mm,1272.5.mm,732.mm], [4914.mm,1298.mm,732.mm], [4886.mm,1298.mm,732.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Riser P-clip (far)
-  grp = ents.add_group
-  grp.name = "Riser P-clip (far)"
-  face = grp.entities.add_face([4970.mm,1272.5.mm,472.mm], [4998.mm,1272.5.mm,472.mm], [4998.mm,1298.mm,472.mm], [4970.mm,1298.mm,472.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Riser P-clip (far)
-  grp = ents.add_group
-  grp.name = "Riser P-clip (far)"
-  face = grp.entities.add_face([4970.mm,1272.5.mm,732.mm], [4998.mm,1272.5.mm,732.mm], [4998.mm,1298.mm,732.mm], [4970.mm,1298.mm,732.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 0.15
@@ -5838,11 +5673,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "[built] Step 1.3 — Corridor plumbing + equipment + drains + filter recycle/waste returns + Cct-C corridor wiring"
+  inst.name = "[built] Step 1.3 — Corridor plumbing + equipment + NEAR support boards + drains + filter recycle/waste returns + Cct-C corridor wiring"
   inst.layer = model.layers["P1-static"]
 
-  # ═══ [built] Step 1.4 — Fan A (exhaust) + its Cct-A electrical run to the EP drop ═══
-  defn = model.definitions.add("[built] Step 1.4 — Fan A (exhaust) + its Cct-A electrical run to the EP drop")
+  # ═══ [built] Step 1.4 — Fan A (exhaust) + its Cct-A electrical run to the EP drop + far pump-run support board ═══
+  defn = model.definitions.add("[built] Step 1.4 — Fan A (exhaust) + its Cct-A electrical run to the EP drop + far pump-run support board")
   ents = defn.entities
   # Fan A (exhaust) baffle duct
   grp = ents.add_group
@@ -6177,8 +6012,173 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
+  # Pump-run support board (far, 18mm ply)
+  grp = ents.add_group
+  grp.name = "Pump-run support board (far, 18mm ply)"
+  face = grp.entities.add_face([4704.8.mm,1298.mm,400.mm], [5104.mm,1298.mm,400.mm], [5104.mm,1316.mm,400.mm], [4704.8.mm,1316.mm,400.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(420.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Support L-bracket weld leg (far)
+  grp = ents.add_group
+  grp.name = "Support L-bracket weld leg (far)"
+  face = grp.entities.add_face([4704.8.mm,1298.mm,410.mm], [4710.8.mm,1298.mm,410.mm], [4710.8.mm,1316.mm,410.mm], [4704.8.mm,1316.mm,410.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Support L-bracket landing leg (far)
+  grp = ents.add_group
+  grp.name = "Support L-bracket landing leg (far)"
+  face = grp.entities.add_face([4704.8.mm,1316.mm,410.mm], [4749.8.mm,1316.mm,410.mm], [4749.8.mm,1322.mm,410.mm], [4704.8.mm,1322.mm,410.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Support L-bracket weld leg (far)
+  grp = ents.add_group
+  grp.name = "Support L-bracket weld leg (far)"
+  face = grp.entities.add_face([4704.8.mm,1298.mm,760.mm], [4710.8.mm,1298.mm,760.mm], [4710.8.mm,1316.mm,760.mm], [4704.8.mm,1316.mm,760.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Support L-bracket landing leg (far)
+  grp = ents.add_group
+  grp.name = "Support L-bracket landing leg (far)"
+  face = grp.entities.add_face([4704.8.mm,1316.mm,760.mm], [4749.8.mm,1316.mm,760.mm], [4749.8.mm,1322.mm,760.mm], [4704.8.mm,1322.mm,760.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Support L-bracket weld leg (far)
+  grp = ents.add_group
+  grp.name = "Support L-bracket weld leg (far)"
+  face = grp.entities.add_face([5098.mm,1298.mm,410.mm], [5104.mm,1298.mm,410.mm], [5104.mm,1316.mm,410.mm], [5098.mm,1316.mm,410.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Support L-bracket landing leg (far)
+  grp = ents.add_group
+  grp.name = "Support L-bracket landing leg (far)"
+  face = grp.entities.add_face([5059.mm,1316.mm,410.mm], [5104.mm,1316.mm,410.mm], [5104.mm,1322.mm,410.mm], [5059.mm,1322.mm,410.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Support L-bracket weld leg (far)
+  grp = ents.add_group
+  grp.name = "Support L-bracket weld leg (far)"
+  face = grp.entities.add_face([5098.mm,1298.mm,760.mm], [5104.mm,1298.mm,760.mm], [5104.mm,1316.mm,760.mm], [5098.mm,1316.mm,760.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Support L-bracket landing leg (far)
+  grp = ents.add_group
+  grp.name = "Support L-bracket landing leg (far)"
+  face = grp.entities.add_face([5059.mm,1316.mm,760.mm], [5104.mm,1316.mm,760.mm], [5104.mm,1322.mm,760.mm], [5059.mm,1322.mm,760.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Riser P-clip (far)
+  grp = ents.add_group
+  grp.name = "Riser P-clip (far)"
+  face = grp.entities.add_face([4859.mm,1272.5.mm,472.mm], [4887.mm,1272.5.mm,472.mm], [4887.mm,1298.mm,472.mm], [4859.mm,1298.mm,472.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Riser P-clip (far)
+  grp = ents.add_group
+  grp.name = "Riser P-clip (far)"
+  face = grp.entities.add_face([4859.mm,1272.5.mm,732.mm], [4887.mm,1272.5.mm,732.mm], [4887.mm,1298.mm,732.mm], [4859.mm,1298.mm,732.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Riser P-clip (far)
+  grp = ents.add_group
+  grp.name = "Riser P-clip (far)"
+  face = grp.entities.add_face([4886.mm,1272.5.mm,472.mm], [4914.mm,1272.5.mm,472.mm], [4914.mm,1298.mm,472.mm], [4886.mm,1298.mm,472.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Riser P-clip (far)
+  grp = ents.add_group
+  grp.name = "Riser P-clip (far)"
+  face = grp.entities.add_face([4886.mm,1272.5.mm,732.mm], [4914.mm,1272.5.mm,732.mm], [4914.mm,1298.mm,732.mm], [4886.mm,1298.mm,732.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Riser P-clip (far)
+  grp = ents.add_group
+  grp.name = "Riser P-clip (far)"
+  face = grp.entities.add_face([4970.mm,1272.5.mm,472.mm], [4998.mm,1272.5.mm,472.mm], [4998.mm,1298.mm,472.mm], [4970.mm,1298.mm,472.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Riser P-clip (far)
+  grp = ents.add_group
+  grp.name = "Riser P-clip (far)"
+  face = grp.entities.add_face([4970.mm,1272.5.mm,732.mm], [4998.mm,1272.5.mm,732.mm], [4998.mm,1298.mm,732.mm], [4970.mm,1298.mm,732.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
   inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "[built] Step 1.4 — Fan A (exhaust) + its Cct-A electrical run to the EP drop"
+  inst.name = "[built] Step 1.4 — Fan A (exhaust) + its Cct-A electrical run to the EP drop + far pump-run support board"
   inst.layer = model.layers["P1-static"]
 
   # ═══ [built] Step 1.5 — IBC totes — far column, then frame rails + restraint bars ═══
@@ -33149,171 +33149,6 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Pump-run support board (far, 18mm ply)
-  grp = ents.add_group
-  grp.name = "Pump-run support board (far, 18mm ply)"
-  face = grp.entities.add_face([4704.8.mm,1298.mm,400.mm], [5104.mm,1298.mm,400.mm], [5104.mm,1316.mm,400.mm], [4704.8.mm,1316.mm,400.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(420.mm)
-  mat = model.materials["Rear panel (18mm marine ply)"] || model.materials.add("Rear panel (18mm marine ply)")
-  mat.color = Sketchup::Color.new(156, 123, 77)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Support L-bracket weld leg (far)
-  grp = ents.add_group
-  grp.name = "Support L-bracket weld leg (far)"
-  face = grp.entities.add_face([4704.8.mm,1298.mm,410.mm], [4710.8.mm,1298.mm,410.mm], [4710.8.mm,1316.mm,410.mm], [4704.8.mm,1316.mm,410.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Support L-bracket landing leg (far)
-  grp = ents.add_group
-  grp.name = "Support L-bracket landing leg (far)"
-  face = grp.entities.add_face([4704.8.mm,1316.mm,410.mm], [4749.8.mm,1316.mm,410.mm], [4749.8.mm,1322.mm,410.mm], [4704.8.mm,1322.mm,410.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Support L-bracket weld leg (far)
-  grp = ents.add_group
-  grp.name = "Support L-bracket weld leg (far)"
-  face = grp.entities.add_face([4704.8.mm,1298.mm,760.mm], [4710.8.mm,1298.mm,760.mm], [4710.8.mm,1316.mm,760.mm], [4704.8.mm,1316.mm,760.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Support L-bracket landing leg (far)
-  grp = ents.add_group
-  grp.name = "Support L-bracket landing leg (far)"
-  face = grp.entities.add_face([4704.8.mm,1316.mm,760.mm], [4749.8.mm,1316.mm,760.mm], [4749.8.mm,1322.mm,760.mm], [4704.8.mm,1322.mm,760.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Support L-bracket weld leg (far)
-  grp = ents.add_group
-  grp.name = "Support L-bracket weld leg (far)"
-  face = grp.entities.add_face([5098.mm,1298.mm,410.mm], [5104.mm,1298.mm,410.mm], [5104.mm,1316.mm,410.mm], [5098.mm,1316.mm,410.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Support L-bracket landing leg (far)
-  grp = ents.add_group
-  grp.name = "Support L-bracket landing leg (far)"
-  face = grp.entities.add_face([5059.mm,1316.mm,410.mm], [5104.mm,1316.mm,410.mm], [5104.mm,1322.mm,410.mm], [5059.mm,1322.mm,410.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Support L-bracket weld leg (far)
-  grp = ents.add_group
-  grp.name = "Support L-bracket weld leg (far)"
-  face = grp.entities.add_face([5098.mm,1298.mm,760.mm], [5104.mm,1298.mm,760.mm], [5104.mm,1316.mm,760.mm], [5098.mm,1316.mm,760.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Support L-bracket landing leg (far)
-  grp = ents.add_group
-  grp.name = "Support L-bracket landing leg (far)"
-  face = grp.entities.add_face([5059.mm,1316.mm,760.mm], [5104.mm,1316.mm,760.mm], [5104.mm,1322.mm,760.mm], [5059.mm,1322.mm,760.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Riser P-clip (far)
-  grp = ents.add_group
-  grp.name = "Riser P-clip (far)"
-  face = grp.entities.add_face([4859.mm,1272.5.mm,472.mm], [4887.mm,1272.5.mm,472.mm], [4887.mm,1298.mm,472.mm], [4859.mm,1298.mm,472.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Spine riser P-clip"] || model.materials.add("Spine riser P-clip")
-  mat.color = Sketchup::Color.new(85, 87, 94)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Riser P-clip (far)
-  grp = ents.add_group
-  grp.name = "Riser P-clip (far)"
-  face = grp.entities.add_face([4859.mm,1272.5.mm,732.mm], [4887.mm,1272.5.mm,732.mm], [4887.mm,1298.mm,732.mm], [4859.mm,1298.mm,732.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Spine riser P-clip"] || model.materials.add("Spine riser P-clip")
-  mat.color = Sketchup::Color.new(85, 87, 94)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Riser P-clip (far)
-  grp = ents.add_group
-  grp.name = "Riser P-clip (far)"
-  face = grp.entities.add_face([4886.mm,1272.5.mm,472.mm], [4914.mm,1272.5.mm,472.mm], [4914.mm,1298.mm,472.mm], [4886.mm,1298.mm,472.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Spine riser P-clip"] || model.materials.add("Spine riser P-clip")
-  mat.color = Sketchup::Color.new(85, 87, 94)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Riser P-clip (far)
-  grp = ents.add_group
-  grp.name = "Riser P-clip (far)"
-  face = grp.entities.add_face([4886.mm,1272.5.mm,732.mm], [4914.mm,1272.5.mm,732.mm], [4914.mm,1298.mm,732.mm], [4886.mm,1298.mm,732.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Spine riser P-clip"] || model.materials.add("Spine riser P-clip")
-  mat.color = Sketchup::Color.new(85, 87, 94)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Riser P-clip (far)
-  grp = ents.add_group
-  grp.name = "Riser P-clip (far)"
-  face = grp.entities.add_face([4970.mm,1272.5.mm,472.mm], [4998.mm,1272.5.mm,472.mm], [4998.mm,1298.mm,472.mm], [4970.mm,1298.mm,472.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Spine riser P-clip"] || model.materials.add("Spine riser P-clip")
-  mat.color = Sketchup::Color.new(85, 87, 94)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Riser P-clip (far)
-  grp = ents.add_group
-  grp.name = "Riser P-clip (far)"
-  face = grp.entities.add_face([4970.mm,1272.5.mm,732.mm], [4998.mm,1272.5.mm,732.mm], [4998.mm,1298.mm,732.mm], [4970.mm,1298.mm,732.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(16.mm)
-  mat = model.materials["Spine riser P-clip"] || model.materials.add("Spine riser P-clip")
-  mat.color = Sketchup::Color.new(85, 87, 94)
-  mat.alpha = 1.0
-  grp.material = mat
-
   # Pump-run support board (near, 18mm ply)
   grp = ents.add_group
   grp.name = "Pump-run support board (near, 18mm ply)"
@@ -38020,7 +37855,7 @@ ents = child.entities
   grp.material = mat
 
 ci = p1_defn.entities.add_instance(child, Geom::Transformation.new)
-ci.name = "Step 1.3 — Corridor plumbing + equipment + drains + filter recycle/waste returns + Cct-C corridor wiring"
+ci.name = "Step 1.3 — Corridor plumbing + equipment + NEAR support boards + drains + filter recycle/waste returns + Cct-C corridor wiring"
 ci.layer = model.layers["P1 IBC Plumbing"]
 ci.set_attribute("dynamic_attributes", "_name", "P1Step1_3")
 ci.set_attribute("dynamic_attributes", "hidden", 1.0)
@@ -38360,8 +38195,173 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
+  # Pump-run support board (far, 18mm ply)
+  grp = ents.add_group
+  grp.name = "Pump-run support board (far, 18mm ply)"
+  face = grp.entities.add_face([4704.8.mm,1298.mm,400.mm], [5104.mm,1298.mm,400.mm], [5104.mm,1316.mm,400.mm], [4704.8.mm,1316.mm,400.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(420.mm)
+  mat = model.materials["Rear panel (18mm marine ply)"] || model.materials.add("Rear panel (18mm marine ply)")
+  mat.color = Sketchup::Color.new(156, 123, 77)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Support L-bracket weld leg (far)
+  grp = ents.add_group
+  grp.name = "Support L-bracket weld leg (far)"
+  face = grp.entities.add_face([4704.8.mm,1298.mm,410.mm], [4710.8.mm,1298.mm,410.mm], [4710.8.mm,1316.mm,410.mm], [4704.8.mm,1316.mm,410.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Support L-bracket landing leg (far)
+  grp = ents.add_group
+  grp.name = "Support L-bracket landing leg (far)"
+  face = grp.entities.add_face([4704.8.mm,1316.mm,410.mm], [4749.8.mm,1316.mm,410.mm], [4749.8.mm,1322.mm,410.mm], [4704.8.mm,1322.mm,410.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Support L-bracket weld leg (far)
+  grp = ents.add_group
+  grp.name = "Support L-bracket weld leg (far)"
+  face = grp.entities.add_face([4704.8.mm,1298.mm,760.mm], [4710.8.mm,1298.mm,760.mm], [4710.8.mm,1316.mm,760.mm], [4704.8.mm,1316.mm,760.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Support L-bracket landing leg (far)
+  grp = ents.add_group
+  grp.name = "Support L-bracket landing leg (far)"
+  face = grp.entities.add_face([4704.8.mm,1316.mm,760.mm], [4749.8.mm,1316.mm,760.mm], [4749.8.mm,1322.mm,760.mm], [4704.8.mm,1322.mm,760.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Support L-bracket weld leg (far)
+  grp = ents.add_group
+  grp.name = "Support L-bracket weld leg (far)"
+  face = grp.entities.add_face([5098.mm,1298.mm,410.mm], [5104.mm,1298.mm,410.mm], [5104.mm,1316.mm,410.mm], [5098.mm,1316.mm,410.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Support L-bracket landing leg (far)
+  grp = ents.add_group
+  grp.name = "Support L-bracket landing leg (far)"
+  face = grp.entities.add_face([5059.mm,1316.mm,410.mm], [5104.mm,1316.mm,410.mm], [5104.mm,1322.mm,410.mm], [5059.mm,1322.mm,410.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Support L-bracket weld leg (far)
+  grp = ents.add_group
+  grp.name = "Support L-bracket weld leg (far)"
+  face = grp.entities.add_face([5098.mm,1298.mm,760.mm], [5104.mm,1298.mm,760.mm], [5104.mm,1316.mm,760.mm], [5098.mm,1316.mm,760.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Support L-bracket landing leg (far)
+  grp = ents.add_group
+  grp.name = "Support L-bracket landing leg (far)"
+  face = grp.entities.add_face([5059.mm,1316.mm,760.mm], [5104.mm,1316.mm,760.mm], [5104.mm,1322.mm,760.mm], [5059.mm,1322.mm,760.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Riser P-clip (far)
+  grp = ents.add_group
+  grp.name = "Riser P-clip (far)"
+  face = grp.entities.add_face([4859.mm,1272.5.mm,472.mm], [4887.mm,1272.5.mm,472.mm], [4887.mm,1298.mm,472.mm], [4859.mm,1298.mm,472.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Spine riser P-clip"] || model.materials.add("Spine riser P-clip")
+  mat.color = Sketchup::Color.new(85, 87, 94)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Riser P-clip (far)
+  grp = ents.add_group
+  grp.name = "Riser P-clip (far)"
+  face = grp.entities.add_face([4859.mm,1272.5.mm,732.mm], [4887.mm,1272.5.mm,732.mm], [4887.mm,1298.mm,732.mm], [4859.mm,1298.mm,732.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Spine riser P-clip"] || model.materials.add("Spine riser P-clip")
+  mat.color = Sketchup::Color.new(85, 87, 94)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Riser P-clip (far)
+  grp = ents.add_group
+  grp.name = "Riser P-clip (far)"
+  face = grp.entities.add_face([4886.mm,1272.5.mm,472.mm], [4914.mm,1272.5.mm,472.mm], [4914.mm,1298.mm,472.mm], [4886.mm,1298.mm,472.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Spine riser P-clip"] || model.materials.add("Spine riser P-clip")
+  mat.color = Sketchup::Color.new(85, 87, 94)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Riser P-clip (far)
+  grp = ents.add_group
+  grp.name = "Riser P-clip (far)"
+  face = grp.entities.add_face([4886.mm,1272.5.mm,732.mm], [4914.mm,1272.5.mm,732.mm], [4914.mm,1298.mm,732.mm], [4886.mm,1298.mm,732.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Spine riser P-clip"] || model.materials.add("Spine riser P-clip")
+  mat.color = Sketchup::Color.new(85, 87, 94)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Riser P-clip (far)
+  grp = ents.add_group
+  grp.name = "Riser P-clip (far)"
+  face = grp.entities.add_face([4970.mm,1272.5.mm,472.mm], [4998.mm,1272.5.mm,472.mm], [4998.mm,1298.mm,472.mm], [4970.mm,1298.mm,472.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Spine riser P-clip"] || model.materials.add("Spine riser P-clip")
+  mat.color = Sketchup::Color.new(85, 87, 94)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Riser P-clip (far)
+  grp = ents.add_group
+  grp.name = "Riser P-clip (far)"
+  face = grp.entities.add_face([4970.mm,1272.5.mm,732.mm], [4998.mm,1272.5.mm,732.mm], [4998.mm,1298.mm,732.mm], [4970.mm,1298.mm,732.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(16.mm)
+  mat = model.materials["Spine riser P-clip"] || model.materials.add("Spine riser P-clip")
+  mat.color = Sketchup::Color.new(85, 87, 94)
+  mat.alpha = 1.0
+  grp.material = mat
+
 ci = p1_defn.entities.add_instance(child, Geom::Transformation.new)
-ci.name = "Step 1.4 — Fan A (exhaust) + its Cct-A electrical run to the EP drop"
+ci.name = "Step 1.4 — Fan A (exhaust) + its Cct-A electrical run to the EP drop + far pump-run support board"
 ci.layer = model.layers["P1 Fan A"]
 ci.set_attribute("dynamic_attributes", "_name", "P1Step1_4")
 ci.set_attribute("dynamic_attributes", "hidden", 1.0)

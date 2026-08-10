@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Construction sequence — far support board staged one click later.** In the Phase 1
+  click-to-build, the far-wall pump-run support board (DV-01/P-02/P-01 risers) now reveals on
+  **click 4 (with Fan A)** instead of click 3 — click 3 drops in only the near-wall boards. Added
+  a `sides=` filter to `cp.support_boards()` and a `boards=` param to `cp.equipment()` (both
+  default to all, so overview/water are unchanged); construction step 1.3 draws `boards=("near",
+  "near-upper")` and step 1.4 adds `support_boards(sides=("far",))`. Construction-only re-send;
+  geometry set unchanged (interference 0/0).
+
 - **Pump-run support boards in the IBC plumbing corridor (#29 follow-up).** The cantilevered pump
   risers on the two corridor side walls now land on **three 18mm ply boards** (far wall + lower and
   upper near-wall boards), each recessed **flush**

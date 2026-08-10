@@ -168,6 +168,8 @@ XSLIDE_STROKE   = 300   # specified linear cross-slide travel per axis (mm) — 
 # Cross-slide flat bar — 304 SS 1/4"x1-1/2" (parts.py fp-cross-slide):
 XSLIDE_BAR_W = 38.1    # cross-slide flat-bar width (mm) = 1-1/2"
 XSLIDE_BAR_T = 6.35    # cross-slide flat-bar thickness (mm) = 1/4"
+XSLIDE_Z_BAR_LEN = 345 # Z (tilt) slide bar cut length (mm) = XSLIDE_Z_TRAVEL 245 + ~carriage/margin — sized to hold MAX_TILT (corner blueprint 2026-08-10)
+XSLIDE_X_BAR_LEN = 365 # X (swing) slide bar cut length (mm) = XSLIDE_X_TRAVEL 263 + ~carriage/margin — sized to hold MAX_SWING
 # Belden UJ-SS750x375 U-joint (datasheet: MROSupply 2561134 / Belden catalog):
 UJOINT_BORE   = 9.53   # bore (mm) = 0.380" (3/8")
 UJOINT_OD     = 19.05  # yoke OD (mm) = 0.75" nominal (0.745" actual)

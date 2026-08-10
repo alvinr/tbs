@@ -26,6 +26,7 @@ generators:
   line_of_sight: {script: src/generators/generate_line_of_sight.py, outputs: [diagrams/line-of-sight.png]}
   mini_tbs_diagram: {script: src/generators/generate_mini_tbs_diagram.py, outputs: [diagrams/mini-tbs-sheet1.png]}
   panel_layout: {script: src/generators/generate_panel_layout.py, outputs: [diagrams/panel-layout.png, diagrams/pinhole-panel.png, diagrams/panel-spine-view-a.png, diagrams/panel-spine-view-b.png]}
+  support_detail: {script: src/generators/generate_support_detail.py, outputs: [diagrams/support-detail-sheet1.png, diagrams/support-detail-sheet2.png]}
   pinhole_wall_elevation: {script: src/generators/generate_pinhole_wall_elevation.py, outputs: [diagrams/pinhole-wall-elevation.png]}
   plate_drawing: {script: src/generators/generate_plate_drawing.py, outputs: [diagrams/plate-drawing-sheet1.png, diagrams/plate-drawing-sheet2.png]}
   portrait_viz: {script: src/generators/generate_portrait_viz.py, outputs: [diagrams/portrait-camera-schematic.png, diagrams/portrait-optimal-3m.png, diagrams/portrait-scale-comparison.png]}

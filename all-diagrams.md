@@ -184,6 +184,10 @@
 
 ![TBS-001 — Corridor Plumbing Panel Spine View B (+Yd discharge face)](assets/panel-spine-view-b.png)
 
+![TBS-001 — Pump-Run Support Detail — Sheet 1: Board Elevations (far / near / near-upper)](assets/support-detail-sheet1.png)
+
+![TBS-001 — Pump-Run Support Detail — Sheet 2: L-Bracket Flush-Mount Section + P-Clip + Schedule](assets/support-detail-sheet2.png)
+
 ![TBS-001 — Walkway Routing Section B-B: near-rim strip under the right walkway](assets/walkway-sections-sheet1.png)
 
 ![TBS-001 — Walkway Routing Section C-C: midway, mid-tray](assets/walkway-sections-sheet2.png)

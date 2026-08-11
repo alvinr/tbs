@@ -56,12 +56,15 @@ PH_X, PH_Z = ov.PH_X, ov.C_HGT // 2  # pinhole X (film-width centre) and Z (mid-
 # ── 6061 Al U-CHANNEL rails, BOTH 3"×1.5" (McMaster 1262T21, $352/6ft, 0.188" wall) — the deflection is
 # ~25× overkill even at 3×1.5, so the 4×2 is unnecessary weight/cost. Wheels ride the OPEN channel;
 # the CLOSED web-back is the splice face (one section does the H-bar's two-U job). ──
-# BOTTOM = web-VERTICAL: deep dim resists bending; the walkway pins the film bottom so depth is FREE.
-#          Wheels on the bottom flange (weight, gravity-seated).
-# TOP    = laid FLAT (inverted-U): guide only → minimise the Z footprint → max ceiling / film height.
-#          Guide wheels under the web (depth guidance, no weight).
-CD_BOT, CW_BOT = 76, 38              # bottom 3×1.5 web-vertical: web depth (Z) × flange (X)
-CD_TOP, CW_TOP = 76, 38              # top 3×1.5 laid flat: web width (X) × flange height (Z)
+# BOTH rails WEB-VERTICAL (2026-08-10 reconciliation): the deep web resists bending, and a CAPTURED
+# skate (rollers grip both flanges) holds each corner regardless of load direction.
+# BOTTOM: load rollers gravity-seated on the bottom flange (weight).
+# TOP:    the SAME captured skate — the keeper/capture rollers react the plane's tip-force, not gravity.
+#         (The old flat/inverted-U top let the model draw ~38mm more film height than FP_H=2094 claimed;
+#          web-vertical reconciles the model DOWN to FP_H. Transport swing unaffected — left rail is a
+#          removable drop-in.)
+CD_BOT, CW_BOT = 76, 38              # 3×1.5 web-vertical: web depth (Z) × flange (X) — BOTH rails
+CD_TOP, CW_TOP = CD_BOT, CW_BOT      # top = the SAME web-vertical section as the bottom
 HB_T = 5                             # web/flange wall = 0.188" (4.78mm)
 SPLICE_YD = 260                      # removable = 6ft (1830) + 260mm; the length-splice sits at the PINHOLE end
                                      # (Yd~260, shortest-throw = least-travelled) → least chance the skate rolls it
@@ -75,14 +78,13 @@ FCX_L = X_L + FILM_INSET             # 183 — film LEFT edge, seated in the lef
 FCX_R = X_R - FILM_INSET             # 4591 — film RIGHT edge, seated in the right carrier
 FP_W_CORNER = FCX_R - FCX_L          # 4408 — active image width once the panel sits in the carriers
 
-# ── vertical layout (mm) — bottom pinned by the walkway; top pinned by the ceiling (flat-guide fit) ──
+# ── vertical layout (mm) — bottom pinned by the walkway; top pinned by the ceiling (web-vertical fit) ──
 PZ0 = ov.RAIL_OFF_BOT                # 160 — film BOTTOM edge, ABOVE the Z140 walkway (hard floor, +20mm)
 BUILD_BOT = 110                      # bottom channel centre → film-corner stack (weight-bearing carriage)
-GUIDE_GAP = 10                       # top guide-follower gap (film top just below the flat guide channel)
+GUIDE_GAP = 10                       # top guide-follower gap (film top just below the web-vertical guide channel)
 PZ_HB_BOT = PZ0 + BUILD_BOT          # 270 — bottom channel WEB-centre (bottom flange @220 clears the deck; film hangs below)
-PZ_HB_TOP = ov.C_HGT - CW_TOP // 2 - 50  # top flat-channel centre — lowered so the on-top rail fittings
-                                         # (bridge/splice/pinhole-wall gusset) clear the ceiling by 25mm
-PZ1 = PZ_HB_TOP - CW_TOP // 2 - GUIDE_GAP # film TOP edge — held just under the flat guide channel
+PZ_HB_TOP = ov.C_HGT - CD_TOP // 2 - 50  # 2300 — top rail WEB-centre, web-vertical, 50mm below the ceiling
+PZ1 = PZ_HB_TOP - CD_TOP // 2 - GUIDE_GAP # 2252 — film TOP edge, just under the web-vertical guide channel
 BUILD = BUILD_BOT                    # (label back-compat)
 CZ_F, CZ_C = 15, ov.C_HGT - 15       # (retained only for the faint floor/ceiling context boxes)
 
@@ -112,17 +114,6 @@ def channel_v(name, cx, zc, y0, ylen, tag, cin, alpha=None):
     return P
 
 
-def channel_flat(name, cx, zc, y0, ylen, tag, alpha=None):
-    """TOP guide rail — 6061 Al U-channel laid FLAT (inverted-U, 3×1.5). Web is the closed TOP (splice face);
-    two flanges hang DOWN forming a down-opening channel; the guide wheels run under the web. Short in Z
-    (CW_TOP) → minimum ceiling cost. zc = section-centre Z."""
-    P = []
-    P.append(ov.ruby_box(f"{name} web {tag}", cx - CD_TOP / 2, y0, zc + CW_TOP / 2 - HB_T, CD_TOP, ylen, HB_T, color=ov.C_ALUM, alpha=alpha))
-    for fx in (cx - CD_TOP / 2, cx + CD_TOP / 2 - HB_T):
-        P.append(ov.ruby_box(f"{name} flange {tag} {int(fx)}", fx, y0, zc - CW_TOP / 2, HB_T, ylen, CW_TOP, color=ov.C_ALUM, alpha=alpha))
-    return P
-
-
 def corner_slide_parts(cx, fcx, fz, cin, is_bot, ty):
     """SINGLE source for the drift-prone corner assembly — the green Z / purple X cross-slide ways, the U-joint
     + its input/output stubs + 4040N12 shaft support, the frame-corner bolt, and the 304 corner plate. Returns
@@ -133,7 +124,7 @@ def corner_slide_parts(cx, fcx, fz, cin, is_bot, ty):
       spec = (kind, x, y, z, a, b, c, color, axis)   kind ∈ {box (a×b×c), cyl (Ø a, len b, axis)}."""
     Lz, Lx = 250, 260
     gx0 = (cx + cin * 26 - 5) if is_bot else ((fcx - 20) if cin > 0 else (fcx + 4))  # green outboard of the frame leg
-    gz0 = (fz - 20) if is_bot else (fz - 4 - Lz)        # green Z (bottom up / top down, below the flat rail)
+    gz0 = (fz - 20) if is_bot else (fz - 4 - Lz)        # green Z (bottom up / top down, below the rail)
     px0 = (cx - 20) if cin > 0 else (cx + 20 - Lx)
     pz_purple = (fz - 18) if is_bot else (fz + 4)        # purple clear of the film face
     stub_x0 = (cx + 5) if cin > 0 else (cx - 51)
@@ -161,20 +152,17 @@ def emit_slide(label, spec, ox=0, oy=0, oz=0):
 
 
 def corner(tag, cx, fz, zc, cin, side):
-    """One corner on a 6061 Al U-channel depth rail. BOTTOM = web-vertical (weight); TOP = flat 3×1.5 (guide).
+    """One corner on a 6061 Al U-channel depth rail. BOTH web-vertical: BOTTOM weight, TOP guide (captured skate).
       cx = corner X   fz = film-corner Z   zc = rail web-centre Z   cin = +1 (left) / -1 (right)
       side = 'L' drop-in (stub + welded bridge + removable + support + pinhole gusset) / 'R' flanged."""
     P = []
     ty = FP_Y
     is_bot = fz < ov.C_HGT / 2
-    if is_bot:
-        rail = lambda nm, y0, yl, al=None: channel_v(nm, cx, zc, y0, yl, tag, cin, al)
-        sec_h, chan_w = CD_BOT, CW_BOT
-    else:
-        rail = lambda nm, y0, yl, al=None: channel_flat(nm, cx, zc, y0, yl, tag, al)
-        sec_h, chan_w = CW_TOP, CD_TOP
+    # BOTH corners web-vertical now — same rail + captured skate; only the Z position + stack direction differ.
+    rail = lambda nm, y0, yl, al=None: channel_v(nm, cx, zc, y0, yl, tag, cin, al)
+    sec_h, chan_w = CD_BOT, CW_BOT
     botf = zc - sec_h / 2                                # section bottom Z
-    splice_z = botf - 12 if is_bot else zc + CW_TOP / 2  # splice on the web-back: bottom under / top over
+    splice_z = botf - 12                                 # length splice on the outboard web-back (both)
 
     # ── U-CHANNEL DEPTH RAIL ──
     if side == "R":                                     # RIGHT: continuous, flanged wall-to-wall (IBC combined plate)
@@ -186,16 +174,11 @@ def corner(tag, cx, fz, zc, cin, side):
         P += rail("U-rail REMOVABLE (out for transport)", 0, LEFT_CUT_YD, 0.30)
         # the bridge is WELDED to the REMOVABLE beam and LAPS + BEARS on the stub (weight rides the bridge,
         # not the screw); a retaining SCREW into the STUB just holds it — drops straight in, then lock
-        if is_bot:   # bottom: cut BRIDGE ON TOP (gravity-held) + a locating PIN (flush to rail underside) + a short bottom support bridge
-            P.append(ov.ruby_box(f"Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) {tag}", cx - CW_BOT / 2, LEFT_CUT_YD - 60, zc + CD_BOT / 2, CW_BOT, 150, 12, color=C_CROSS))
-            # locating pin — drops through the bridge + top flange; BOTTOM flush to the TOP OF THE INNER RAIL
-            # (underside of the top flange = zc + CD_BOT/2 - HB_T), head shown on top
-            P.append(ov.ruby_cylinder(f"Locating pin (bridge↔STUB, flush to inner-rail top) {tag}", cx, LEFT_CUT_YD + 45, zc + CD_BOT / 2 - HB_T, 5, HB_T + 12, color=C_STEEL, axis="z"))
-            # short bottom support bridge welded to the STUB, laps under + carries the removable beam (~64mm)
-            P.append(ov.ruby_box(f"Bottom support bridge (STUB → beam underside) {tag}", cx - CW_BOT / 2, LEFT_CUT_YD - 32, botf - 12, CW_BOT, 64, 12, color=C_CROSS))
-        else:        # top: splice plate over the web; locating pin FLUSH with the bridge top (not proud)
-            P.append(ov.ruby_box(f"Welded bridge (welded to REMOVABLE, bears on stub, over web) {tag}", cx - CD_TOP / 2, LEFT_CUT_YD - 60, splice_z, CD_TOP, 150, 12, color=C_CROSS))
-            P.append(ov.ruby_cylinder(f"Locating pin (bridge↔STUB, flush) {tag}", cx, LEFT_CUT_YD + 45, splice_z - HB_T, 5, HB_T + 12, color=C_STEEL, axis="z"))
+        # BRIDGE welded to the REMOVABLE bears ON TOP of the stub (gravity-held) + a locating PIN (flush to the
+        # inner-rail top) + a short bottom support bridge (~64mm) — web-vertical, SAME both corners.
+        P.append(ov.ruby_box(f"Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) {tag}", cx - CW_BOT / 2, LEFT_CUT_YD - 60, zc + CD_BOT / 2, CW_BOT, 150, 12, color=C_CROSS))
+        P.append(ov.ruby_cylinder(f"Locating pin (bridge↔STUB, flush to inner-rail top) {tag}", cx, LEFT_CUT_YD + 45, zc + CD_BOT / 2 - HB_T, 5, HB_T + 12, color=C_STEEL, axis="z"))
+        P.append(ov.ruby_box(f"Bottom support bridge (STUB → beam underside) {tag}", cx - CW_BOT / 2, LEFT_CUT_YD - 32, botf - 12, CW_BOT, 64, 12, color=C_CROSS))
         # No floor post at the cut: the stub (Yd LEFT_CUT_YD→C_WID) is anchored at the pivot post (= film
         # far-left post) + the far wall, and the cut is only ~197mm cantilevered from it — the removable's
         # welded bridge BEARS on the stub, whose pivot-post anchor carries the reaction, so a floor post
@@ -204,52 +187,29 @@ def corner(tag, cx, fz, zc, cin, side):
         P.append(ov.ruby_box(f"Pinhole-wall gusset/seat {tag}", cx - 56, 0, botf - 30, 112, 45, sec_h + 55, color=C_CROSS))
         # length splice (removable = 6ft + 260mm) at the PINHOLE end — shortest-throw, least-travelled;
         # same outboard-web placement so it's clear of the carriage
-        if is_bot:
-            P.append(ov.ruby_box(f"Length splice (pinhole end, outboard web) {tag}", cx - cin * (CW_BOT / 2 + 12), SPLICE_YD - 55, botf, 12, 110, CD_BOT, color=C_CROSS))
-        else:
-            P.append(ov.ruby_box(f"Length splice (pinhole end, over web) {tag}", cx - CD_TOP / 2, SPLICE_YD - 55, splice_z, CD_TOP, 110, 12, color=C_CROSS))
+        P.append(ov.ruby_box(f"Length splice (pinhole end, outboard web) {tag}", cx - cin * (CW_BOT / 2 + 12), SPLICE_YD - 55, botf, 12, 110, CD_BOT, color=C_CROSS))
 
     # ── SKATE (spray-bar carriage pattern): Ø32 acetal wheels IN the channel; the Ø10 axle is
     # cantilevered from the CARRIAGE (inboard) — the axle and its retainer bolts pass through the
     # CARRIAGE PLATE, never the beam. ──
-    rz = botf + HB_T + 16 if is_bot else zc + CW_TOP / 2 - HB_T - 16   # wheel-centre Z
+    rz = botf + HB_T + 16                                 # roller-centre Z — on the bottom flange (both corners)
     inb = cx + cin * (chan_w / 2 + 14)                   # carriage line — inboard of the channel opening (film side)
-    # BOTTOM = Ø32 load rollers, WIDE face (weight) — nearly span the running surface, ~4mm off web + lip.
-    # TOP = a Ø32 guide wheel (40mm face) that spins between the yoke arms; the arms run ~4mm clear of the
-    # flanges (loose lateral guide) — the flat rail is a depth/lateral guide, not a tight fit.
-    if is_bot:
-        # WIDE face — nearly spans the 28mm running surface (web-inner→lip-inner), ~4mm clearance each side
-        rlabel, r_x0, r_len = "Acetal wheel Ø32 (wide face, weight)", cx - 10, 20
-    else:
-        rlabel, r_x0, r_len = "Acetal guide wheel Ø32 (40mm face, spins between the yoke arms)", cx - 20, 40
-    kx, kz = cx - 6, zc + CD_BOT / 2 - HB_T - 10   # bottom keeper (anti-lift, under the top flange); Ø20 on a stub axle
+    # CAPTURED skate (both corners): Ø32 acetal roller (WIDE face) on the bottom flange + a Ø20 KEEPER roller
+    # under the top flange. At the BOTTOM the roller carries gravity; at the TOP the SAME pair reacts the plane's
+    # tip-force in either direction (a captured guide, not gravity-seated). The Ø10 axle is cantilevered from the
+    # inboard CARRIAGE and exits the channel opening — it never crosses a flange.
+    rlabel, r_x0, r_len = "Acetal roller Ø32 (wide face)", cx - 10, 20
+    kx, kz = cx - 6, zc + CD_BOT / 2 - HB_T - 10          # keeper (under the top flange); Ø20 on a stub axle
     for ry in (ty + 8, ty + 48):
         P.append(ov.ruby_cylinder(f"{rlabel} {tag} {int(ry)}", r_x0, ry, rz, 16, r_len, color=C_CAR, axis="x"))
-        if is_bot:
-            # BOTTOM: the channel opens INBOARD, so the Ø10 axle exits the OPENING to the inboard carriage (correct).
-            wax0 = min(r_x0, inb - 6)
-            P.append(ov.ruby_cylinder(f"Wheel axle Ø10 {tag} {int(ry)}", wax0, ry, rz, 5, max(r_x0 + r_len, inb + 6) - wax0, color=C_CROSS, axis="x"))
-            # keeper roller (anti-lift, under the top flange) + its stub axle to the carriage
-            P.append(ov.ruby_cylinder(f"Keeper roller Ø20 (anti-lift) {tag} {int(ry)}", kx, ry, kz, 10, 12, color=C_CAR, axis="x"))
-            P.append(ov.ruby_cylinder(f"Keeper axle Ø8 {tag} {int(ry)}", min(kx, inb), ry, kz, 4, abs(inb - kx) + 10, color=C_CROSS, axis="x"))
-        else:
-            # TOP: the channel opens DOWN, so the axle stays WITHIN the throat (Ø10, spanning the drum);
-            # the yoke below grabs its ends — it never crosses a flange.
-            P.append(ov.ruby_cylinder(f"Guide axle Ø10 (in throat) {tag} {int(ry)}", cx - 27, ry, rz, 5, 54, color=C_CROSS, axis="x"))
-    if not is_bot:
-        # TOP YOKE — the carriage extends UP through the channel OPENING (past the lips): two arms grab the
-        # guide-axle ends (free space between the narrow wheel and each arm) + run ~4mm CLEAR of the flanges
-        # (loose lateral guide) + hook the lips (anti-drop). A cross-piece JOINS the two arms into ONE part
-        # below the opening; a rail then runs inboard to the carriage plate. The axle never pierces a flange.
-        yb = zc - CW_TOP / 2                                   # channel opening (flange-lip Z)
-        for ax_x in (cx - 27, cx + 27):                        # flanges are at cx±33 → arms ~4mm clear
-            P.append(ov.ruby_box(f"Yoke arm + lip hook (thru opening) {tag} {int(ax_x)}", ax_x - 2, ty - 34, yb - 14, 4, 68, rz - (yb - 14), color=C_CAR))
-        P.append(ov.ruby_box(f"Yoke cross-piece (joins the two arms) {tag}", cx - 29, ty - 34, yb - 22, 58, 68, 8, color=C_CAR))
-        P.append(ov.ruby_box(f"Yoke rail (→ inboard carriage) {tag}", min(cx + 27, inb), ty - 34, yb - 20, abs(inb - (cx + 27)) + 6, 68, 6, color=C_CAR))
+        wax0 = min(r_x0, inb - 6)
+        P.append(ov.ruby_cylinder(f"Wheel axle Ø10 {tag} {int(ry)}", wax0, ry, rz, 5, max(r_x0 + r_len, inb + 6) - wax0, color=C_CROSS, axis="x"))
+        P.append(ov.ruby_cylinder(f"Keeper roller Ø20 (anti-lift / anti-tip) {tag} {int(ry)}", kx, ry, kz, 10, 12, color=C_CAR, axis="x"))
+        P.append(ov.ruby_cylinder(f"Keeper axle Ø8 {tag} {int(ry)}", min(kx, inb), ry, kz, 4, abs(inb - kx) + 10, color=C_CROSS, axis="x"))
     # carriage plate on the axle ends + axle-retainer bolts DOWN THROUGH THE PLATE (saddle-clamp, not the beam).
-    # Spans the film-corner / load-roller (/ keeper on the bottom) so every axle lands on it. kz is the
-    # BOTTOM keeper only — exclude it at the top. TOP corners: cap the plate top 25mm below the ceiling.
-    zvals = (fz, rz, kz) if is_bot else (fz, rz)
+    # Spans the film-corner + load roller + keeper so every axle lands on it. TOP corners: cap the plate top
+    # 25mm below the ceiling.
+    zvals = (fz, rz, kz)
     zlo, zhi = min(zvals), max(zvals)
     plate_top = min(zhi + 18, ov.C_HGT - 25)
     P.append(ov.ruby_box(f"Carriage plate (bolted to skate axles) {tag}", inb - 6, ty + 1, zlo - 6, 14, 86, plate_top - (zlo - 6), color=C_CAR))
@@ -257,40 +217,18 @@ def corner(tag, cx, fz, zc, cin, side):
         blen = min(44, plate_top - (rz - 22))                 # keep the retainer bolt within the (capped) plate
         P.append(ov.ruby_cylinder(f"Axle retainer bolt (thru plate) {tag} {int(ry)}", inb, ry, rz - 22, 2.5, blen, color=C_CROSS, axis="z"))
 
-    # ── CAM RAIL-BRAKE (fp-cam-clamp, McMaster 5128A63) — bottom (weight) corners only. Base on the carriage-
-    # plate top; the hold-down arm reaches OUTBOARD over the channel TOP FLANGE and a UHMW pad presses DOWN on
-    # it. Self-reacting: the Ø32 load rollers on the BOTTOM flange react the pinch, so it never unloads the
-    # skate. Thrown to lock depth for the shot + transport. One representative shown (BOM: 3 per corner). ──
-    if is_bot:
-        tfz = zc + CD_BOT / 2                                  # top-flange top surface
-        basex = inb - cin * 3                                  # base near the plate's outboard edge
-        padx = cx + cin * 8                                    # pad over the (inboard part of the) top flange
-        cby = ty + 33
-        P.append(ov.ruby_box(f"Cam-brake base (5128A63) {tag}", basex - 5, cby, plate_top, 10, 22, 8, color=C_CLAMP))
-        P.append(ov.ruby_box(f"Cam-brake hold-down arm {tag}", min(basex, padx), cby + 7, tfz + 4, abs(basex - padx), 8, 4, color=C_CLAMP))
-        P.append(ov.ruby_box(f"Cam-brake UHMW pad {tag}", padx - 6, cby + 6, tfz, 12, 10, 4, color=C_POLY))
-        P.append(ov.ruby_cylinder(f"Cam-brake lever {tag}", padx, cby + 11, tfz + 4, 2, 20, color=C_CLAMP, axis="z"))  # lever OVER the pad
-
-    # ── TOP-rail OUTSIDE-CLAMP cam brake (fp-cam-clamp, 5128A63) — the flat channel opens DOWN, so the clamp
-    # mounts on the OUTSIDE of the carriage (OUTBOARD, toward the container wall — clear of the film): a bracket
-    # off the yoke wraps below the outboard flange and rises OUTSIDE it; the cam drives a UHMW pad against the
-    # flange's OUTER face while the outboard yoke arm on the inner face is the anvil — the flange is pinched
-    # from outside (takes up its 4mm clearance) → depth locked. Lever is outboard = reachable. (BOM: 3/corner.) ──
-    if not is_bot:
-        d = -cin                                              # OUTBOARD (toward the container wall) — clamp in the clear
-        cby = ty + 26
-        # ONE SOLID mount block bolted to the carriage — spans the carriage height (cross-piece → yoke-arm top),
-        # notched to clear the flange (millable from solid, no bent angle). The clamp bolts to it; the cam
-        # drives a UHMW pad against the flange's OUTER face (the channel's SIDE); the outboard yoke arm on the
-        # inner face is the anvil → flange pinched, depth locked. Lever outboard = reachable.
-        P.append(ov.ruby_box(f"Brake mount block (base, under-flange) {tag}", cx + min(d * 29, d * 49), cby, zc - 41, 20, 12, 22, color=C_CAR))
-        P.append(ov.ruby_box(f"Brake mount block (outboard, carriage-height) {tag}", cx + min(d * 43, d * 49), cby, zc - 41, 6, 12, 39, color=C_CAR))
-        # clamp bolts to the block's OUTSIDE (wall-side) edge; its hold-down bar reaches inboard over the top to
-        # a UHMW pad on the flange's OUTER face (the SIDE); the outboard yoke arm inside is the anvil.
-        P.append(ov.ruby_box(f"Cam-brake body (5128A63) {tag}", cx + min(d * 43, d * 50), cby + 1, zc - 2, 7, 10, 9, color=C_CLAMP))
-        P.append(ov.ruby_box(f"Cam-brake hold-down bar {tag}", cx + min(d * 38, d * 46), cby + 2, zc + 3, 8, 8, 4, color=C_CLAMP))
-        P.append(ov.ruby_box(f"Cam-brake UHMW pad (side) {tag}", cx + min(d * 38, d * 40), cby + 3, zc - 3, 2, 6, 6, color=C_POLY))  # top flush under the hold-down bar
-        P.append(ov.ruby_cylinder(f"Cam-brake lever {tag}", cx + d * 48, cby + 6, zc + 7, 2, 14, color=C_CLAMP, axis="z"))
+    # ── CAM RAIL-BRAKE (fp-cam-clamp, McMaster 5128A63) — BOTH corners now (web-vertical). Base on the carriage-
+    # plate top; the hold-down arm reaches OUTBOARD over the channel TOP FLANGE and a UHMW pad presses DOWN on it.
+    # Self-reacting: the Ø32 roller on the BOTTOM flange reacts the pinch, so it never unloads the skate. Thrown
+    # to lock depth for the shot + transport. One representative shown (BOM: 3 per corner). ──
+    tfz = zc + CD_BOT / 2                                  # top-flange top surface
+    basex = inb - cin * 3                                  # base near the plate's outboard edge
+    padx = cx + cin * 8                                    # pad over the (inboard part of the) top flange
+    cby = ty + 33
+    P.append(ov.ruby_box(f"Cam-brake base (5128A63) {tag}", basex - 5, cby, plate_top, 10, 22, 8, color=C_CLAMP))
+    P.append(ov.ruby_box(f"Cam-brake hold-down arm {tag}", min(basex, padx), cby + 7, tfz + 4, abs(basex - padx), 8, 4, color=C_CLAMP))
+    P.append(ov.ruby_box(f"Cam-brake UHMW pad {tag}", padx - 6, cby + 6, tfz, 12, 10, 4, color=C_POLY))
+    P.append(ov.ruby_cylinder(f"Cam-brake lever {tag}", padx, cby + 11, tfz + 4, 2, 20, color=C_CLAMP, axis="z"))  # lever OVER the pad
 
     # ── mechanism, inboard: Z slide (tilt) → X slide (swing) → U-joint → the FILM-PLANE CORNER ──
     # The cross-slides sit on the BACKING side of the film plane (Yd > FP_Y) so the frame SITS ON them — the
@@ -315,8 +253,8 @@ def corners():
     P = [
         corner("BL", X_L, PZ0, PZ_HB_BOT, +1, "L"),   # bottom-left  — web-vertical (weight), drop-in
         corner("BR", X_R, PZ0, PZ_HB_BOT, -1, "R"),   # bottom-right — web-vertical (weight), flanged (IBC plate)
-        corner("TL", X_L, PZ1, PZ_HB_TOP, +1, "L"),   # top-left     — 3×1.5 flat guide, drop-in
-        corner("TR", X_R, PZ1, PZ_HB_TOP, -1, "R"),   # top-right    — 3×1.5 flat guide, flanged
+        corner("TL", X_L, PZ1, PZ_HB_TOP, +1, "L"),   # top-left     — web-vertical guide, drop-in
+        corner("TR", X_R, PZ1, PZ_HB_TOP, -1, "R"),   # top-right    — web-vertical guide, flanged
     ]
     # faint floor + ceiling so the UPPER (ceiling) and LOWER (floor) rails read as mounted structure
     P.append(ov.ruby_box("Floor", X_L - 250, 0, -12, (X_R - X_L) + 500, FP_Y + 250, 12, color=C_STEEL, alpha=0.05))
@@ -425,7 +363,7 @@ def movement(corner="BL", two_way=False):
     PHASE 1 (drive 0->0.5): the carriage rolls FORWARD in Y + the panel TILTS about the U-joint (far edge
     toward the pinhole). PHASE 2 (0.5->1): the U-joint + panel DEPLOY by sliding along the GREEN (Z) slide
     (bottom corners slide UP, top corners slide DOWN). On the Movement tag. Bottom = web-vertical weight
-    channel + load rollers; top = flat guide channel + guide drum & yoke. Panel/tilt mirror by corner.
+    channel + load rollers; top = same captured skate (guide). Panel/tilt mirror by corner.
     Returns (static, carriage, float, panel, pivot, dy_fwd, deploy, tilt, anchor)."""
     ty = FP_Y
     AL, AT = 50, 3                                     # 2x2 angle leg / wall (match film_plane())
@@ -449,9 +387,9 @@ def movement(corner="BL", two_way=False):
     # tilt. U-joint box = (cx-12, ty-4, fz-14, 24³) → centre = (cx, ty+8, fz-2).
     pivot = (cx, ty + 8, fz - 2)
     px, py, pz = pivot
-    chan_w = CW_BOT if is_bot else CD_TOP
+    chan_w = CW_BOT
     inb = cx + cin * (chan_w / 2 + 14)                 # carriage line — inboard of the channel opening
-    rz = (zc - CD_BOT / 2 + HB_T + 16) if is_bot else (zc + CW_TOP / 2 - HB_T - 16)   # wheel-centre Z
+    rz = zc - CD_BOT / 2 + HB_T + 16                    # wheel-centre Z (web-vertical, both corners)
     cpx0c = (inb - 6) if cin > 0 else (inb - 8)        # carriage-plate min-x
     # Per Sheet 3 EACH corner carries BOTH cross-slides (green Z + purple X). The ACTIVE one (green for tilt,
     # purple for swing) is the base WAY the stack floats along; the OTHER rides the stack. Both come from the
@@ -470,22 +408,10 @@ def movement(corner="BL", two_way=False):
         rail_y0 -= dy_fwd + 40
         rail_len += dy_fwd + 40
     carr = []
-    if is_bot:
-        static_ruby = "\n".join(channel_v(f"U-channel rail (Movement {corner})", cx, zc, rail_y0, rail_len, f"Move{corner}", cin))
-        for ry in (ty + 8, ty + 48):
-            carr.append(ov.ruby_cylinder(f"Acetal skate wheel Ø32 (Movement {corner}) {int(ry)}", cx - 10, ry, rz, 16, 20, color=C_CAR, axis="x"))
-        carr.append(ov.ruby_box(f"Carriage plate (Movement {corner})", cpx0c, ty + 1, fz - 6, 14, 86, (rz + 46) - (fz - 6), color=C_CAR))
-    else:
-        yb = zc - CW_TOP / 2                            # channel opening (flange-lip Z)
-        zlo, zhi = min(fz, rz), max(fz, rz)
-        static_ruby = "\n".join(channel_flat(f"U-channel rail (Movement {corner})", cx, zc, rail_y0, rail_len, f"Move{corner}"))
-        for ry in (ty + 8, ty + 48):
-            carr.append(ov.ruby_cylinder(f"Acetal guide wheel Ø32 (Movement {corner}) {int(ry)}", cx - 20, ry, rz, 16, 40, color=C_CAR, axis="x"))
-        for ax_x in (cx - 27, cx + 27):                # yoke arms reach DOWN through the opening (~4mm off the flanges)
-            carr.append(ov.ruby_box(f"Yoke arm (Movement {corner}) {int(ax_x)}", ax_x - 2, ty - 34, yb - 14, 4, 68, rz - (yb - 14), color=C_CAR))
-        carr.append(ov.ruby_box(f"Yoke cross-piece (Movement {corner})", cx - 29, ty - 34, yb - 22, 58, 68, 8, color=C_CAR))
-        carr.append(ov.ruby_box(f"Yoke rail → carriage (Movement {corner})", min(cx + 27, inb), ty - 34, yb - 20, abs(inb - (cx + 27)) + 6, 68, 6, color=C_CAR))
-        carr.append(ov.ruby_box(f"Carriage plate (Movement {corner})", cpx0c, ty + 1, zlo - 6, 14, 86, (zhi + 18) - (zlo - 6), color=C_CAR))
+    static_ruby = "\n".join(channel_v(f"U-channel rail (Movement {corner})", cx, zc, rail_y0, rail_len, f"Move{corner}", cin))
+    for ry in (ty + 8, ty + 48):
+        carr.append(ov.ruby_cylinder(f"Acetal skate wheel Ø32 (Movement {corner}) {int(ry)}", cx - 10, ry, rz, 16, 20, color=C_CAR, axis="x"))
+    carr.append(ov.ruby_box(f"Carriage plate (Movement {corner})", cpx0c, ty + 1, fz - 6, 14, 86, (rz + 46) - (fz - 6), color=C_CAR))
     # the ACTIVE cross-slide way (fixed to the carriage); the stack floats a SMALL foreshortening along it
     carr.append(deploy_rail)
     # FLOAT (the OTHER cross-slide + U-joint + its mounting hardware) — floats FORESHORTEN mm along the way
@@ -594,18 +520,18 @@ MID_Y = ov.C_WID / 2.0   # middle of the container depth — where the whole-pla
 
 def shell():
     """Context for the whole-plane scenes — a faint floor + the FOUR full-depth rails the corners roll on
-    (2 floor web-vertical + 2 ceiling flat). NO container walls or ceiling (open, so the plane + rails read
+    (all 4 web-vertical). NO container walls or ceiling (open, so the plane + rails read
     clearly from any angle)."""
     x0, xw = -300, (X_R - X_L) + 800
     Wd = ov.C_WID
     P = [
         ov.ruby_box("Floor (reference)", x0, 0, -12, xw, Wd, 12, color=C_STEEL, alpha=0.08),
     ]
-    # the FOUR depth rails (run in Y the full container depth): BL/BR = floor web-vertical, TL/TR = ceiling flat
+    # the FOUR depth rails (run in Y the full container depth): ALL web-vertical (BL/BR floor, TL/TR ceiling)
     P += channel_v("Depth rail BL", X_L, PZ_HB_BOT, 0, Wd, "rBL", +1)
     P += channel_v("Depth rail BR", X_R, PZ_HB_BOT, 0, Wd, "rBR", -1)
-    P += channel_flat("Depth rail TL", X_L, PZ_HB_TOP, 0, Wd, "rTL")
-    P += channel_flat("Depth rail TR", X_R, PZ_HB_TOP, 0, Wd, "rTR")
+    P += channel_v("Depth rail TL", X_L, PZ_HB_TOP, 0, Wd, "rTL", +1)
+    P += channel_v("Depth rail TR", X_R, PZ_HB_TOP, 0, Wd, "rTR", -1)
     return "\n".join(P)
 
 
@@ -651,33 +577,22 @@ def plane_frame(px, pz, yc):
 
 
 def plane_carriage(cx, fz, zc, cin, isb, yc):
-    """The RAIL-BOUND body for ONE corner — the skate (bottom: load rollers; top: guide drum + yoke) +
+    """The RAIL-BOUND body for ONE corner — the captured skate (load + keeper rollers, both corners) +
     carriage plate + the TWO cross-slide ways (green Z, purple X). Built at ABSOLUTE coords (placed at
     identity); the DC translates it in Y ONLY (= the roll along the depth rail). It never rotates, so the
     ways stay RAIL-ALIGNED and the frame's U-joint SLIDES along them (the ways keep their positions and the
     frame moves relative to them — same rules as the Movement scene)."""
     ty = yc
-    chan_w = CW_BOT if isb else CD_TOP
+    chan_w = CW_BOT
     inb = cx + cin * (chan_w / 2 + 14)
     fcx = cx + cin * FILM_INSET
-    rz = (zc - CD_BOT / 2 + HB_T + 16) if isb else (zc + CW_TOP / 2 - HB_T - 16)
+    rz = zc - CD_BOT / 2 + HB_T + 16
     cpx0c = (inb - 6) if cin > 0 else (inb - 8)
     t = f"({int(cx)},{int(fz)})"
     P = []
-    if isb:
-        for ry in (ty + 8, ty + 48):
-            P.append(ov.ruby_cylinder(f"Acetal skate wheel Ø32 {t} {int(ry)}", cx - 8, ry, rz, 16, 16, color=C_CAR, axis="x"))
-        P.append(ov.ruby_box(f"Carriage plate {t}", cpx0c, ty + 1, fz - 6, 14, 86, (rz + 46) - (fz - 6), color=C_CAR))
-    else:
-        yb = zc - CW_TOP / 2
-        zlo, zhi = min(fz, rz), max(fz, rz)
-        for ry in (ty + 8, ty + 48):
-            P.append(ov.ruby_cylinder(f"Acetal guide wheel Ø32 {t} {int(ry)}", cx - 26, ry, rz, 16, 52, color=C_CAR, axis="x"))
-        for ax_x in (cx - 33, cx + 33):
-            P.append(ov.ruby_box(f"Yoke arm {t} {int(ax_x)}", ax_x - 2, ty - 34, yb - 14, 4, 68, rz - (yb - 14), color=C_CAR))
-        P.append(ov.ruby_box(f"Yoke cross-piece {t}", cx - 35, ty - 34, yb - 22, 70, 68, 8, color=C_CAR))
-        P.append(ov.ruby_box(f"Yoke rail {t}", min(cx + 33, inb), ty - 34, yb - 20, abs(inb - (cx + 33)) + 6, 68, 6, color=C_CAR))
-        P.append(ov.ruby_box(f"Carriage plate {t}", cpx0c, ty + 1, zlo - 6, 14, 86, (zhi + 18) - (zlo - 6), color=C_CAR))
+    for ry in (ty + 8, ty + 48):
+        P.append(ov.ruby_cylinder(f"Acetal skate wheel Ø32 {t} {int(ry)}", cx - 8, ry, rz, 16, 16, color=C_CAR, axis="x"))
+    P.append(ov.ruby_box(f"Carriage plate {t}", cpx0c, ty + 1, fz - 6, 14, 86, (rz + 46) - (fz - 6), color=C_CAR))
     # the two cross-slide ways, RAIL-ALIGNED (fixed to the carriage) — SHARED (corner_slide_parts); the
     # U-joint (in the frame) rides them, so they keep their positions and the frame moves relative to them.
     sp = corner_slide_parts(cx, fcx, fz, cin, isb, yc)

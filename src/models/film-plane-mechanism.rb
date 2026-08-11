@@ -194,9 +194,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal wheel Ø32 (wide face, weight) BL 2270
+  # Acetal roller Ø32 (wide face) BL 2270
   grp = ents.add_group
-  grp.name = "Acetal wheel Ø32 (wide face, weight) BL 2270"
+  grp.name = "Acetal roller Ø32 (wide face) BL 2270"
   ge = grp.entities
   circle = ge.add_circle([140.mm,2270.mm,253.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
@@ -220,9 +220,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Keeper roller Ø20 (anti-lift) BL 2270
+  # Keeper roller Ø20 (anti-lift / anti-tip) BL 2270
   grp = ents.add_group
-  grp.name = "Keeper roller Ø20 (anti-lift) BL 2270"
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) BL 2270"
   ge = grp.entities
   circle = ge.add_circle([144.mm,2270.mm,293.mm], [1,0,0], 10.mm, 24)
   cface = ge.add_face(circle)
@@ -246,9 +246,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal wheel Ø32 (wide face, weight) BL 2310
+  # Acetal roller Ø32 (wide face) BL 2310
   grp = ents.add_group
-  grp.name = "Acetal wheel Ø32 (wide face, weight) BL 2310"
+  grp.name = "Acetal roller Ø32 (wide face) BL 2310"
   ge = grp.entities
   circle = ge.add_circle([140.mm,2310.mm,253.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
@@ -272,9 +272,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Keeper roller Ø20 (anti-lift) BL 2310
+  # Keeper roller Ø20 (anti-lift / anti-tip) BL 2310
   grp = ents.add_group
-  grp.name = "Keeper roller Ø20 (anti-lift) BL 2310"
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) BL 2310"
   ge = grp.entities
   circle = ge.add_circle([144.mm,2310.mm,293.mm], [1,0,0], 10.mm, 24)
   cface = ge.add_face(circle)
@@ -541,9 +541,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal wheel Ø32 (wide face, weight) BR 2270
+  # Acetal roller Ø32 (wide face) BR 2270
   grp = ents.add_group
-  grp.name = "Acetal wheel Ø32 (wide face, weight) BR 2270"
+  grp.name = "Acetal roller Ø32 (wide face) BR 2270"
   ge = grp.entities
   circle = ge.add_circle([4614.mm,2270.mm,253.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
@@ -567,9 +567,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Keeper roller Ø20 (anti-lift) BR 2270
+  # Keeper roller Ø20 (anti-lift / anti-tip) BR 2270
   grp = ents.add_group
-  grp.name = "Keeper roller Ø20 (anti-lift) BR 2270"
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) BR 2270"
   ge = grp.entities
   circle = ge.add_circle([4618.mm,2270.mm,293.mm], [1,0,0], 10.mm, 24)
   cface = ge.add_face(circle)
@@ -593,9 +593,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal wheel Ø32 (wide face, weight) BR 2310
+  # Acetal roller Ø32 (wide face) BR 2310
   grp = ents.add_group
-  grp.name = "Acetal wheel Ø32 (wide face, weight) BR 2310"
+  grp.name = "Acetal roller Ø32 (wide face) BR 2310"
   ge = grp.entities
   circle = ge.add_circle([4614.mm,2310.mm,253.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
@@ -619,9 +619,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Keeper roller Ø20 (anti-lift) BR 2310
+  # Keeper roller Ø20 (anti-lift / anti-tip) BR 2310
   grp = ents.add_group
-  grp.name = "Keeper roller Ø20 (anti-lift) BR 2310"
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) BR 2310"
   ge = grp.entities
   circle = ge.add_circle([4618.mm,2310.mm,293.mm], [1,0,0], 10.mm, 24)
   cface = ge.add_face(circle)
@@ -825,7 +825,18 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-rail STUB (fixed, parks corner) web TL
   grp = ents.add_group
   grp.name = "U-rail STUB (fixed, parks corner) web TL"
-  face = grp.entities.add_face([112.mm,2090.mm,2333.mm], [188.mm,2090.mm,2333.mm], [188.mm,2362.mm,2333.mm], [112.mm,2362.mm,2333.mm])
+  face = grp.entities.add_face([131.mm,2090.mm,2262.mm], [136.mm,2090.mm,2262.mm], [136.mm,2362.mm,2262.mm], [131.mm,2362.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) flange TL 2333
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) flange TL 2333"
+  face = grp.entities.add_face([131.mm,2090.mm,2333.mm], [169.mm,2090.mm,2333.mm], [169.mm,2362.mm,2333.mm], [131.mm,2362.mm,2333.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -833,23 +844,23 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-rail STUB (fixed, parks corner) flange TL 112
+  # U-rail STUB (fixed, parks corner) flange TL 2262
   grp = ents.add_group
-  grp.name = "U-rail STUB (fixed, parks corner) flange TL 112"
-  face = grp.entities.add_face([112.mm,2090.mm,2300.mm], [117.mm,2090.mm,2300.mm], [117.mm,2362.mm,2300.mm], [112.mm,2362.mm,2300.mm])
+  grp.name = "U-rail STUB (fixed, parks corner) flange TL 2262"
+  face = grp.entities.add_face([131.mm,2090.mm,2262.mm], [169.mm,2090.mm,2262.mm], [169.mm,2362.mm,2262.mm], [131.mm,2362.mm,2262.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(38.mm)
+  face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-rail STUB (fixed, parks corner) flange TL 183
+  # U-rail STUB (fixed, parks corner) bottom-flange lip TL
   grp = ents.add_group
-  grp.name = "U-rail STUB (fixed, parks corner) flange TL 183"
-  face = grp.entities.add_face([183.mm,2090.mm,2300.mm], [188.mm,2090.mm,2300.mm], [188.mm,2362.mm,2300.mm], [183.mm,2362.mm,2300.mm])
+  grp.name = "U-rail STUB (fixed, parks corner) bottom-flange lip TL"
+  face = grp.entities.add_face([164.mm,2090.mm,2267.mm], [169.mm,2090.mm,2267.mm], [169.mm,2362.mm,2267.mm], [164.mm,2362.mm,2267.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(38.mm)
+  face.pushpull(9.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
@@ -858,7 +869,18 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-rail REMOVABLE (out for transport) web TL
   grp = ents.add_group
   grp.name = "U-rail REMOVABLE (out for transport) web TL"
-  face = grp.entities.add_face([112.mm,0.mm,2333.mm], [188.mm,0.mm,2333.mm], [188.mm,2090.mm,2333.mm], [112.mm,2090.mm,2333.mm])
+  face = grp.entities.add_face([131.mm,0.mm,2262.mm], [136.mm,0.mm,2262.mm], [136.mm,2090.mm,2262.mm], [131.mm,2090.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) flange TL 2333
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) flange TL 2333"
+  face = grp.entities.add_face([131.mm,0.mm,2333.mm], [169.mm,0.mm,2333.mm], [169.mm,2090.mm,2333.mm], [131.mm,2090.mm,2333.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
@@ -866,32 +888,32 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.3
   grp.material = mat
 
-  # U-rail REMOVABLE (out for transport) flange TL 112
+  # U-rail REMOVABLE (out for transport) flange TL 2262
   grp = ents.add_group
-  grp.name = "U-rail REMOVABLE (out for transport) flange TL 112"
-  face = grp.entities.add_face([112.mm,0.mm,2300.mm], [117.mm,0.mm,2300.mm], [117.mm,2090.mm,2300.mm], [112.mm,2090.mm,2300.mm])
+  grp.name = "U-rail REMOVABLE (out for transport) flange TL 2262"
+  face = grp.entities.add_face([131.mm,0.mm,2262.mm], [169.mm,0.mm,2262.mm], [169.mm,2090.mm,2262.mm], [131.mm,2090.mm,2262.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(38.mm)
+  face.pushpull(5.mm)
   mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 0.3
   grp.material = mat
 
-  # U-rail REMOVABLE (out for transport) flange TL 183
+  # U-rail REMOVABLE (out for transport) bottom-flange lip TL
   grp = ents.add_group
-  grp.name = "U-rail REMOVABLE (out for transport) flange TL 183"
-  face = grp.entities.add_face([183.mm,0.mm,2300.mm], [188.mm,0.mm,2300.mm], [188.mm,2090.mm,2300.mm], [183.mm,2090.mm,2300.mm])
+  grp.name = "U-rail REMOVABLE (out for transport) bottom-flange lip TL"
+  face = grp.entities.add_face([164.mm,0.mm,2267.mm], [169.mm,0.mm,2267.mm], [169.mm,2090.mm,2267.mm], [164.mm,2090.mm,2267.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(38.mm)
+  face.pushpull(9.mm)
   mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 0.3
   grp.material = mat
 
-  # Welded bridge (welded to REMOVABLE, bears on stub, over web) TL
+  # Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) TL
   grp = ents.add_group
-  grp.name = "Welded bridge (welded to REMOVABLE, bears on stub, over web) TL"
-  face = grp.entities.add_face([112.mm,2030.mm,2338.mm], [188.mm,2030.mm,2338.mm], [188.mm,2180.mm,2338.mm], [112.mm,2180.mm,2338.mm])
+  grp.name = "Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) TL"
+  face = grp.entities.add_face([131.mm,2030.mm,2338.mm], [169.mm,2030.mm,2338.mm], [169.mm,2180.mm,2338.mm], [131.mm,2180.mm,2338.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
@@ -899,9 +921,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Locating pin (bridge↔STUB, flush) TL
+  # Locating pin (bridge↔STUB, flush to inner-rail top) TL
   grp = ents.add_group
-  grp.name = "Locating pin (bridge↔STUB, flush) TL"
+  grp.name = "Locating pin (bridge↔STUB, flush to inner-rail top) TL"
   ge = grp.entities
   circle = ge.add_circle([150.mm,2135.mm,2333.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
@@ -912,12 +934,23 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
+  # Bottom support bridge (STUB → beam underside) TL
+  grp = ents.add_group
+  grp.name = "Bottom support bridge (STUB → beam underside) TL"
+  face = grp.entities.add_face([131.mm,2058.mm,2250.mm], [169.mm,2058.mm,2250.mm], [169.mm,2122.mm,2250.mm], [131.mm,2122.mm,2250.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Rail far flange (pivot post) TL
   grp = ents.add_group
   grp.name = "Rail far flange (pivot post) TL"
-  face = grp.entities.add_face([95.mm,2350.mm,2295.mm], [205.mm,2350.mm,2295.mm], [205.mm,2362.mm,2295.mm], [95.mm,2362.mm,2295.mm])
+  face = grp.entities.add_face([95.mm,2350.mm,2257.mm], [205.mm,2350.mm,2257.mm], [205.mm,2362.mm,2257.mm], [95.mm,2362.mm,2257.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(48.mm)
+  face.pushpull(86.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -926,127 +959,135 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Pinhole-wall gusset/seat TL
   grp = ents.add_group
   grp.name = "Pinhole-wall gusset/seat TL"
-  face = grp.entities.add_face([94.mm,0.mm,2270.mm], [206.mm,0.mm,2270.mm], [206.mm,45.mm,2270.mm], [94.mm,45.mm,2270.mm])
+  face = grp.entities.add_face([94.mm,0.mm,2232.mm], [206.mm,0.mm,2232.mm], [206.mm,45.mm,2232.mm], [94.mm,45.mm,2232.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(93.mm)
+  face.pushpull(131.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Length splice (pinhole end, over web) TL
+  # Length splice (pinhole end, outboard web) TL
   grp = ents.add_group
-  grp.name = "Length splice (pinhole end, over web) TL"
-  face = grp.entities.add_face([112.mm,205.mm,2338.mm], [188.mm,205.mm,2338.mm], [188.mm,315.mm,2338.mm], [112.mm,315.mm,2338.mm])
+  grp.name = "Length splice (pinhole end, outboard web) TL"
+  face = grp.entities.add_face([119.mm,205.mm,2262.mm], [131.mm,205.mm,2262.mm], [131.mm,315.mm,2262.mm], [119.mm,315.mm,2262.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(12.mm)
+  face.pushpull(76.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (40mm face, spins between the yoke arms) TL 2270
+  # Acetal roller Ø32 (wide face) TL 2270
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (40mm face, spins between the yoke arms) TL 2270"
+  grp.name = "Acetal roller Ø32 (wide face) TL 2270"
   ge = grp.entities
-  circle = ge.add_circle([130.mm,2270.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([140.mm,2270.mm,2283.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(40.mm)
+  cface.pushpull(20.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Guide axle Ø10 (in throat) TL 2270
+  # Wheel axle Ø10 TL 2270
   grp = ents.add_group
-  grp.name = "Guide axle Ø10 (in throat) TL 2270"
+  grp.name = "Wheel axle Ø10 TL 2270"
   ge = grp.entities
-  circle = ge.add_circle([123.mm,2270.mm,2317.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([140.mm,2270.mm,2283.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(54.mm)
+  cface.pushpull(49.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (40mm face, spins between the yoke arms) TL 2310
+  # Keeper roller Ø20 (anti-lift / anti-tip) TL 2270
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (40mm face, spins between the yoke arms) TL 2310"
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) TL 2270"
   ge = grp.entities
-  circle = ge.add_circle([130.mm,2310.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([144.mm,2270.mm,2323.mm], [1,0,0], 10.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(40.mm)
+  cface.pushpull(12.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Guide axle Ø10 (in throat) TL 2310
+  # Keeper axle Ø8 TL 2270
   grp = ents.add_group
-  grp.name = "Guide axle Ø10 (in throat) TL 2310"
+  grp.name = "Keeper axle Ø8 TL 2270"
   ge = grp.entities
-  circle = ge.add_circle([123.mm,2310.mm,2317.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([144.mm,2270.mm,2323.mm], [1,0,0], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(54.mm)
+  cface.pushpull(49.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm + lip hook (thru opening) TL 123
+  # Acetal roller Ø32 (wide face) TL 2310
   grp = ents.add_group
-  grp.name = "Yoke arm + lip hook (thru opening) TL 123"
-  face = grp.entities.add_face([121.mm,2228.mm,2286.mm], [125.mm,2228.mm,2286.mm], [125.mm,2296.mm,2286.mm], [121.mm,2296.mm,2286.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
+  grp.name = "Acetal roller Ø32 (wide face) TL 2310"
+  ge = grp.entities
+  circle = ge.add_circle([140.mm,2310.mm,2283.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm + lip hook (thru opening) TL 177
+  # Wheel axle Ø10 TL 2310
   grp = ents.add_group
-  grp.name = "Yoke arm + lip hook (thru opening) TL 177"
-  face = grp.entities.add_face([175.mm,2228.mm,2286.mm], [179.mm,2228.mm,2286.mm], [179.mm,2296.mm,2286.mm], [175.mm,2296.mm,2286.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
+  grp.name = "Wheel axle Ø10 TL 2310"
+  ge = grp.entities
+  circle = ge.add_circle([140.mm,2310.mm,2283.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) TL 2310
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) TL 2310"
+  ge = grp.entities
+  circle = ge.add_circle([144.mm,2310.mm,2323.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke cross-piece (joins the two arms) TL
+  # Keeper axle Ø8 TL 2310
   grp = ents.add_group
-  grp.name = "Yoke cross-piece (joins the two arms) TL"
-  face = grp.entities.add_face([121.mm,2228.mm,2278.mm], [179.mm,2228.mm,2278.mm], [179.mm,2296.mm,2278.mm], [121.mm,2296.mm,2278.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke rail (→ inboard carriage) TL
-  grp = ents.add_group
-  grp.name = "Yoke rail (→ inboard carriage) TL"
-  face = grp.entities.add_face([177.mm,2228.mm,2280.mm], [208.mm,2228.mm,2280.mm], [208.mm,2296.mm,2280.mm], [177.mm,2296.mm,2280.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
+  grp.name = "Keeper axle Ø8 TL 2310"
+  ge = grp.entities
+  circle = ge.add_circle([144.mm,2310.mm,2323.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
+  mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
   # Carriage plate (bolted to skate axles) TL
   grp = ents.add_group
   grp.name = "Carriage plate (bolted to skate axles) TL"
-  face = grp.entities.add_face([196.mm,2263.mm,2284.mm], [210.mm,2263.mm,2284.mm], [210.mm,2349.mm,2284.mm], [196.mm,2349.mm,2284.mm])
+  face = grp.entities.add_face([177.mm,2263.mm,2246.mm], [191.mm,2263.mm,2246.mm], [191.mm,2349.mm,2246.mm], [177.mm,2349.mm,2246.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(51.mm)
+  face.pushpull(95.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -1056,10 +1097,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Axle retainer bolt (thru plate) TL 2270"
   ge = grp.entities
-  circle = ge.add_circle([202.mm,2270.mm,2295.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([183.mm,2270.mm,2261.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(40.mm)
+  cface.pushpull(44.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -1069,52 +1110,30 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Axle retainer bolt (thru plate) TL 2310"
   ge = grp.entities
-  circle = ge.add_circle([202.mm,2310.mm,2295.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([183.mm,2310.mm,2261.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(40.mm)
+  cface.pushpull(44.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Brake mount block (base, under-flange) TL
+  # Cam-brake base (5128A63) TL
   grp = ents.add_group
-  grp.name = "Brake mount block (base, under-flange) TL"
-  face = grp.entities.add_face([101.mm,2288.mm,2278.mm], [121.mm,2288.mm,2278.mm], [121.mm,2300.mm,2278.mm], [101.mm,2300.mm,2278.mm])
+  grp.name = "Cam-brake base (5128A63) TL"
+  face = grp.entities.add_face([175.mm,2295.mm,2341.mm], [185.mm,2295.mm,2341.mm], [185.mm,2317.mm,2341.mm], [175.mm,2317.mm,2341.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(22.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Brake mount block (outboard, carriage-height) TL
-  grp = ents.add_group
-  grp.name = "Brake mount block (outboard, carriage-height) TL"
-  face = grp.entities.add_face([101.mm,2288.mm,2278.mm], [107.mm,2288.mm,2278.mm], [107.mm,2300.mm,2278.mm], [101.mm,2300.mm,2278.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(39.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cam-brake body (5128A63) TL
-  grp = ents.add_group
-  grp.name = "Cam-brake body (5128A63) TL"
-  face = grp.entities.add_face([100.mm,2289.mm,2317.mm], [107.mm,2289.mm,2317.mm], [107.mm,2299.mm,2317.mm], [100.mm,2299.mm,2317.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(9.mm)
+  face.pushpull(8.mm)
   mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
   mat.color = Sketchup::Color.new(58, 58, 64)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cam-brake hold-down bar TL
+  # Cam-brake hold-down arm TL
   grp = ents.add_group
-  grp.name = "Cam-brake hold-down bar TL"
-  face = grp.entities.add_face([104.mm,2290.mm,2322.mm], [112.mm,2290.mm,2322.mm], [112.mm,2298.mm,2322.mm], [104.mm,2298.mm,2322.mm])
+  grp.name = "Cam-brake hold-down arm TL"
+  face = grp.entities.add_face([158.mm,2302.mm,2342.mm], [180.mm,2302.mm,2342.mm], [180.mm,2310.mm,2342.mm], [158.mm,2310.mm,2342.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(4.mm)
   mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
@@ -1122,12 +1141,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cam-brake UHMW pad (side) TL
+  # Cam-brake UHMW pad TL
   grp = ents.add_group
-  grp.name = "Cam-brake UHMW pad (side) TL"
-  face = grp.entities.add_face([110.mm,2291.mm,2316.mm], [112.mm,2291.mm,2316.mm], [112.mm,2297.mm,2316.mm], [110.mm,2297.mm,2316.mm])
+  grp.name = "Cam-brake UHMW pad TL"
+  face = grp.entities.add_face([152.mm,2301.mm,2338.mm], [164.mm,2301.mm,2338.mm], [164.mm,2311.mm,2338.mm], [152.mm,2311.mm,2338.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(4.mm)
   mat = model.materials["Cam-brake UHMW pad BL"] || model.materials.add("Cam-brake UHMW pad BL")
   mat.color = Sketchup::Color.new(216, 212, 200)
   mat.alpha = 1.0
@@ -1137,10 +1156,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cam-brake lever TL"
   ge = grp.entities
-  circle = ge.add_circle([102.mm,2294.mm,2326.mm], [0,0,1], 2.mm, 24)
+  circle = ge.add_circle([158.mm,2306.mm,2342.mm], [0,0,1], 2.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(14.mm)
+  cface.pushpull(20.mm)
   mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
   mat.color = Sketchup::Color.new(58, 58, 64)
   mat.alpha = 1.0
@@ -1149,7 +1168,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Vertical Z slide rail (TILT, green) TL
   grp = ents.add_group
   grp.name = "Vertical Z slide rail (TILT, green) TL"
-  face = grp.entities.add_face([163.mm,2263.mm,2036.mm], [173.mm,2263.mm,2036.mm], [173.mm,2281.mm,2036.mm], [163.mm,2281.mm,2036.mm])
+  face = grp.entities.add_face([163.mm,2263.mm,1998.mm], [173.mm,2263.mm,1998.mm], [173.mm,2281.mm,1998.mm], [163.mm,2281.mm,1998.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -1160,7 +1179,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Horizontal X slide rail (SWING, purple) TL
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING, purple) TL"
-  face = grp.entities.add_face([130.mm,2263.mm,2294.mm], [390.mm,2263.mm,2294.mm], [390.mm,2277.mm,2294.mm], [130.mm,2277.mm,2294.mm])
+  face = grp.entities.add_face([130.mm,2263.mm,2256.mm], [390.mm,2263.mm,2256.mm], [390.mm,2277.mm,2256.mm], [130.mm,2277.mm,2256.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -1171,7 +1190,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-joint (Belden UJ-SS750x375, setscrew) TL
   grp = ents.add_group
   grp.name = "U-joint (Belden UJ-SS750x375, setscrew) TL"
-  face = grp.entities.add_face([138.mm,2258.mm,2276.mm], [162.mm,2258.mm,2276.mm], [162.mm,2282.mm,2276.mm], [138.mm,2282.mm,2276.mm])
+  face = grp.entities.add_face([138.mm,2258.mm,2238.mm], [162.mm,2258.mm,2238.mm], [162.mm,2282.mm,2238.mm], [138.mm,2282.mm,2238.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
@@ -1183,7 +1202,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Input stub 3/8 (X slide → U-joint) TL"
   ge = grp.entities
-  circle = ge.add_circle([155.mm,2270.mm,2290.mm], [1,0,0], 4.75.mm, 24)
+  circle = ge.add_circle([155.mm,2270.mm,2252.mm], [1,0,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
@@ -1195,7 +1214,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # 4040N12 304 shaft support (clamps input stub → X slide) TL
   grp = ents.add_group
   grp.name = "4040N12 304 shaft support (clamps input stub → X slide) TL"
-  face = grp.entities.add_face([176.mm,2261.mm,2279.mm], [199.mm,2261.mm,2279.mm], [199.mm,2279.mm,2279.mm], [176.mm,2279.mm,2279.mm])
+  face = grp.entities.add_face([176.mm,2261.mm,2241.mm], [199.mm,2261.mm,2241.mm], [199.mm,2279.mm,2241.mm], [176.mm,2279.mm,2241.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -1207,7 +1226,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Output stub 3/8 (U-joint → corner plate) TL"
   ge = grp.entities
-  circle = ge.add_circle([150.mm,2248.mm,2290.mm], [0,1,0], 4.75.mm, 24)
+  circle = ge.add_circle([150.mm,2248.mm,2252.mm], [0,1,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -1219,7 +1238,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Corner plate 304 SS (U-joint mount — angle frame → U-joint) TL
   grp = ents.add_group
   grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) TL"
-  face = grp.entities.add_face([136.mm,2254.mm,2245.mm], [170.mm,2254.mm,2245.mm], [170.mm,2270.mm,2245.mm], [136.mm,2270.mm,2245.mm])
+  face = grp.entities.add_face([136.mm,2254.mm,2207.mm], [170.mm,2254.mm,2207.mm], [170.mm,2270.mm,2207.mm], [136.mm,2270.mm,2207.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -1231,7 +1250,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Frame-corner bolt (angle frame → bracket) TL"
   ge = grp.entities
-  circle = ge.add_circle([183.mm,2256.mm,2290.mm], [0,1,0], 3.mm, 24)
+  circle = ge.add_circle([183.mm,2256.mm,2252.mm], [0,1,0], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
@@ -1243,7 +1262,18 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-rail (FLANGED) web TR
   grp = ents.add_group
   grp.name = "U-rail (FLANGED) web TR"
-  face = grp.entities.add_face([4586.mm,0.mm,2333.mm], [4662.mm,0.mm,2333.mm], [4662.mm,2362.mm,2333.mm], [4586.mm,2362.mm,2333.mm])
+  face = grp.entities.add_face([4638.mm,0.mm,2262.mm], [4643.mm,0.mm,2262.mm], [4643.mm,2362.mm,2262.mm], [4638.mm,2362.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail (FLANGED) flange TR 2333
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) flange TR 2333"
+  face = grp.entities.add_face([4605.mm,0.mm,2333.mm], [4643.mm,0.mm,2333.mm], [4643.mm,2362.mm,2333.mm], [4605.mm,2362.mm,2333.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -1251,23 +1281,23 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-rail (FLANGED) flange TR 4586
+  # U-rail (FLANGED) flange TR 2262
   grp = ents.add_group
-  grp.name = "U-rail (FLANGED) flange TR 4586"
-  face = grp.entities.add_face([4586.mm,0.mm,2300.mm], [4591.mm,0.mm,2300.mm], [4591.mm,2362.mm,2300.mm], [4586.mm,2362.mm,2300.mm])
+  grp.name = "U-rail (FLANGED) flange TR 2262"
+  face = grp.entities.add_face([4605.mm,0.mm,2262.mm], [4643.mm,0.mm,2262.mm], [4643.mm,2362.mm,2262.mm], [4605.mm,2362.mm,2262.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(38.mm)
+  face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-rail (FLANGED) flange TR 4657
+  # U-rail (FLANGED) bottom-flange lip TR
   grp = ents.add_group
-  grp.name = "U-rail (FLANGED) flange TR 4657"
-  face = grp.entities.add_face([4657.mm,0.mm,2300.mm], [4662.mm,0.mm,2300.mm], [4662.mm,2362.mm,2300.mm], [4657.mm,2362.mm,2300.mm])
+  grp.name = "U-rail (FLANGED) bottom-flange lip TR"
+  face = grp.entities.add_face([4605.mm,0.mm,2267.mm], [4610.mm,0.mm,2267.mm], [4610.mm,2362.mm,2267.mm], [4605.mm,2362.mm,2267.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(38.mm)
+  face.pushpull(9.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
@@ -1276,9 +1306,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Rail end flange (outboard-trimmed) TR 0
   grp = ents.add_group
   grp.name = "Rail end flange (outboard-trimmed) TR 0"
-  face = grp.entities.add_face([4569.mm,0.mm,2295.mm], [4644.mm,0.mm,2295.mm], [4644.mm,12.mm,2295.mm], [4569.mm,12.mm,2295.mm])
+  face = grp.entities.add_face([4569.mm,0.mm,2257.mm], [4644.mm,0.mm,2257.mm], [4644.mm,12.mm,2257.mm], [4569.mm,12.mm,2257.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(48.mm)
+  face.pushpull(86.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -1287,116 +1317,124 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Rail end flange (outboard-trimmed) TR 2350
   grp = ents.add_group
   grp.name = "Rail end flange (outboard-trimmed) TR 2350"
-  face = grp.entities.add_face([4569.mm,2350.mm,2295.mm], [4644.mm,2350.mm,2295.mm], [4644.mm,2362.mm,2295.mm], [4569.mm,2362.mm,2295.mm])
+  face = grp.entities.add_face([4569.mm,2350.mm,2257.mm], [4644.mm,2350.mm,2257.mm], [4644.mm,2362.mm,2257.mm], [4569.mm,2362.mm,2257.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(48.mm)
+  face.pushpull(86.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (40mm face, spins between the yoke arms) TR 2270
+  # Acetal roller Ø32 (wide face) TR 2270
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (40mm face, spins between the yoke arms) TR 2270"
+  grp.name = "Acetal roller Ø32 (wide face) TR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4604.mm,2270.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4614.mm,2270.mm,2283.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(40.mm)
+  cface.pushpull(20.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Guide axle Ø10 (in throat) TR 2270
+  # Wheel axle Ø10 TR 2270
   grp = ents.add_group
-  grp.name = "Guide axle Ø10 (in throat) TR 2270"
+  grp.name = "Wheel axle Ø10 TR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4597.mm,2270.mm,2317.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([4585.mm,2270.mm,2283.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(54.mm)
+  cface.pushpull(49.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (40mm face, spins between the yoke arms) TR 2310
+  # Keeper roller Ø20 (anti-lift / anti-tip) TR 2270
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (40mm face, spins between the yoke arms) TR 2310"
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) TR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4604.mm,2310.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4618.mm,2270.mm,2323.mm], [1,0,0], 10.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(40.mm)
+  cface.pushpull(12.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Guide axle Ø10 (in throat) TR 2310
+  # Keeper axle Ø8 TR 2270
   grp = ents.add_group
-  grp.name = "Guide axle Ø10 (in throat) TR 2310"
+  grp.name = "Keeper axle Ø8 TR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4597.mm,2310.mm,2317.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([4591.mm,2270.mm,2323.mm], [1,0,0], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(54.mm)
+  cface.pushpull(37.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm + lip hook (thru opening) TR 4597
+  # Acetal roller Ø32 (wide face) TR 2310
   grp = ents.add_group
-  grp.name = "Yoke arm + lip hook (thru opening) TR 4597"
-  face = grp.entities.add_face([4595.mm,2228.mm,2286.mm], [4599.mm,2228.mm,2286.mm], [4599.mm,2296.mm,2286.mm], [4595.mm,2296.mm,2286.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
+  grp.name = "Acetal roller Ø32 (wide face) TR 2310"
+  ge = grp.entities
+  circle = ge.add_circle([4614.mm,2310.mm,2283.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm + lip hook (thru opening) TR 4651
+  # Wheel axle Ø10 TR 2310
   grp = ents.add_group
-  grp.name = "Yoke arm + lip hook (thru opening) TR 4651"
-  face = grp.entities.add_face([4649.mm,2228.mm,2286.mm], [4653.mm,2228.mm,2286.mm], [4653.mm,2296.mm,2286.mm], [4649.mm,2296.mm,2286.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
+  grp.name = "Wheel axle Ø10 TR 2310"
+  ge = grp.entities
+  circle = ge.add_circle([4585.mm,2310.mm,2283.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) TR 2310
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) TR 2310"
+  ge = grp.entities
+  circle = ge.add_circle([4618.mm,2310.mm,2323.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke cross-piece (joins the two arms) TR
+  # Keeper axle Ø8 TR 2310
   grp = ents.add_group
-  grp.name = "Yoke cross-piece (joins the two arms) TR"
-  face = grp.entities.add_face([4595.mm,2228.mm,2278.mm], [4653.mm,2228.mm,2278.mm], [4653.mm,2296.mm,2278.mm], [4595.mm,2296.mm,2278.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke rail (→ inboard carriage) TR
-  grp = ents.add_group
-  grp.name = "Yoke rail (→ inboard carriage) TR"
-  face = grp.entities.add_face([4572.mm,2228.mm,2280.mm], [4657.mm,2228.mm,2280.mm], [4657.mm,2296.mm,2280.mm], [4572.mm,2296.mm,2280.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
+  grp.name = "Keeper axle Ø8 TR 2310"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2310.mm,2323.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(37.mm)
+  mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
+  mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
   # Carriage plate (bolted to skate axles) TR
   grp = ents.add_group
   grp.name = "Carriage plate (bolted to skate axles) TR"
-  face = grp.entities.add_face([4566.mm,2263.mm,2284.mm], [4580.mm,2263.mm,2284.mm], [4580.mm,2349.mm,2284.mm], [4566.mm,2349.mm,2284.mm])
+  face = grp.entities.add_face([4585.mm,2263.mm,2246.mm], [4599.mm,2263.mm,2246.mm], [4599.mm,2349.mm,2246.mm], [4585.mm,2349.mm,2246.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(51.mm)
+  face.pushpull(95.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -1406,10 +1444,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Axle retainer bolt (thru plate) TR 2270"
   ge = grp.entities
-  circle = ge.add_circle([4572.mm,2270.mm,2295.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4591.mm,2270.mm,2261.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(40.mm)
+  cface.pushpull(44.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
@@ -1419,52 +1457,30 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Axle retainer bolt (thru plate) TR 2310"
   ge = grp.entities
-  circle = ge.add_circle([4572.mm,2310.mm,2295.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([4591.mm,2310.mm,2261.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(40.mm)
+  cface.pushpull(44.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Brake mount block (base, under-flange) TR
+  # Cam-brake base (5128A63) TR
   grp = ents.add_group
-  grp.name = "Brake mount block (base, under-flange) TR"
-  face = grp.entities.add_face([4653.mm,2288.mm,2278.mm], [4673.mm,2288.mm,2278.mm], [4673.mm,2300.mm,2278.mm], [4653.mm,2300.mm,2278.mm])
+  grp.name = "Cam-brake base (5128A63) TR"
+  face = grp.entities.add_face([4589.mm,2295.mm,2341.mm], [4599.mm,2295.mm,2341.mm], [4599.mm,2317.mm,2341.mm], [4589.mm,2317.mm,2341.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(22.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Brake mount block (outboard, carriage-height) TR
-  grp = ents.add_group
-  grp.name = "Brake mount block (outboard, carriage-height) TR"
-  face = grp.entities.add_face([4667.mm,2288.mm,2278.mm], [4673.mm,2288.mm,2278.mm], [4673.mm,2300.mm,2278.mm], [4667.mm,2300.mm,2278.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(39.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Cam-brake body (5128A63) TR
-  grp = ents.add_group
-  grp.name = "Cam-brake body (5128A63) TR"
-  face = grp.entities.add_face([4667.mm,2289.mm,2317.mm], [4674.mm,2289.mm,2317.mm], [4674.mm,2299.mm,2317.mm], [4667.mm,2299.mm,2317.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(9.mm)
+  face.pushpull(8.mm)
   mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
   mat.color = Sketchup::Color.new(58, 58, 64)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cam-brake hold-down bar TR
+  # Cam-brake hold-down arm TR
   grp = ents.add_group
-  grp.name = "Cam-brake hold-down bar TR"
-  face = grp.entities.add_face([4662.mm,2290.mm,2322.mm], [4670.mm,2290.mm,2322.mm], [4670.mm,2298.mm,2322.mm], [4662.mm,2298.mm,2322.mm])
+  grp.name = "Cam-brake hold-down arm TR"
+  face = grp.entities.add_face([4594.mm,2302.mm,2342.mm], [4616.mm,2302.mm,2342.mm], [4616.mm,2310.mm,2342.mm], [4594.mm,2310.mm,2342.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(4.mm)
   mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
@@ -1472,12 +1488,12 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Cam-brake UHMW pad (side) TR
+  # Cam-brake UHMW pad TR
   grp = ents.add_group
-  grp.name = "Cam-brake UHMW pad (side) TR"
-  face = grp.entities.add_face([4662.mm,2291.mm,2316.mm], [4664.mm,2291.mm,2316.mm], [4664.mm,2297.mm,2316.mm], [4662.mm,2297.mm,2316.mm])
+  grp.name = "Cam-brake UHMW pad TR"
+  face = grp.entities.add_face([4610.mm,2301.mm,2338.mm], [4622.mm,2301.mm,2338.mm], [4622.mm,2311.mm,2338.mm], [4610.mm,2311.mm,2338.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  face.pushpull(4.mm)
   mat = model.materials["Cam-brake UHMW pad BL"] || model.materials.add("Cam-brake UHMW pad BL")
   mat.color = Sketchup::Color.new(216, 212, 200)
   mat.alpha = 1.0
@@ -1487,10 +1503,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cam-brake lever TR"
   ge = grp.entities
-  circle = ge.add_circle([4672.mm,2294.mm,2326.mm], [0,0,1], 2.mm, 24)
+  circle = ge.add_circle([4616.mm,2306.mm,2342.mm], [0,0,1], 2.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(14.mm)
+  cface.pushpull(20.mm)
   mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
   mat.color = Sketchup::Color.new(58, 58, 64)
   mat.alpha = 1.0
@@ -1499,7 +1515,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Vertical Z slide rail (TILT, green) TR
   grp = ents.add_group
   grp.name = "Vertical Z slide rail (TILT, green) TR"
-  face = grp.entities.add_face([4595.mm,2263.mm,2036.mm], [4605.mm,2263.mm,2036.mm], [4605.mm,2281.mm,2036.mm], [4595.mm,2281.mm,2036.mm])
+  face = grp.entities.add_face([4595.mm,2263.mm,1998.mm], [4605.mm,2263.mm,1998.mm], [4605.mm,2281.mm,1998.mm], [4595.mm,2281.mm,1998.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -1510,7 +1526,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Horizontal X slide rail (SWING, purple) TR
   grp = ents.add_group
   grp.name = "Horizontal X slide rail (SWING, purple) TR"
-  face = grp.entities.add_face([4384.mm,2263.mm,2294.mm], [4644.mm,2263.mm,2294.mm], [4644.mm,2277.mm,2294.mm], [4384.mm,2277.mm,2294.mm])
+  face = grp.entities.add_face([4384.mm,2263.mm,2256.mm], [4644.mm,2263.mm,2256.mm], [4644.mm,2277.mm,2256.mm], [4384.mm,2277.mm,2256.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -1521,7 +1537,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-joint (Belden UJ-SS750x375, setscrew) TR
   grp = ents.add_group
   grp.name = "U-joint (Belden UJ-SS750x375, setscrew) TR"
-  face = grp.entities.add_face([4612.mm,2258.mm,2276.mm], [4636.mm,2258.mm,2276.mm], [4636.mm,2282.mm,2276.mm], [4612.mm,2282.mm,2276.mm])
+  face = grp.entities.add_face([4612.mm,2258.mm,2238.mm], [4636.mm,2258.mm,2238.mm], [4636.mm,2282.mm,2238.mm], [4612.mm,2282.mm,2238.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
@@ -1533,7 +1549,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Input stub 3/8 (X slide → U-joint) TR"
   ge = grp.entities
-  circle = ge.add_circle([4573.mm,2270.mm,2290.mm], [1,0,0], 4.75.mm, 24)
+  circle = ge.add_circle([4573.mm,2270.mm,2252.mm], [1,0,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
@@ -1545,7 +1561,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # 4040N12 304 shaft support (clamps input stub → X slide) TR
   grp = ents.add_group
   grp.name = "4040N12 304 shaft support (clamps input stub → X slide) TR"
-  face = grp.entities.add_face([4575.mm,2261.mm,2279.mm], [4598.mm,2261.mm,2279.mm], [4598.mm,2279.mm,2279.mm], [4575.mm,2279.mm,2279.mm])
+  face = grp.entities.add_face([4575.mm,2261.mm,2241.mm], [4598.mm,2261.mm,2241.mm], [4598.mm,2279.mm,2241.mm], [4575.mm,2279.mm,2241.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -1557,7 +1573,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Output stub 3/8 (U-joint → corner plate) TR"
   ge = grp.entities
-  circle = ge.add_circle([4624.mm,2248.mm,2290.mm], [0,1,0], 4.75.mm, 24)
+  circle = ge.add_circle([4624.mm,2248.mm,2252.mm], [0,1,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -1569,7 +1585,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Corner plate 304 SS (U-joint mount — angle frame → U-joint) TR
   grp = ents.add_group
   grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) TR"
-  face = grp.entities.add_face([4604.mm,2254.mm,2245.mm], [4638.mm,2254.mm,2245.mm], [4638.mm,2270.mm,2245.mm], [4604.mm,2270.mm,2245.mm])
+  face = grp.entities.add_face([4604.mm,2254.mm,2207.mm], [4638.mm,2254.mm,2207.mm], [4638.mm,2270.mm,2207.mm], [4604.mm,2270.mm,2207.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -1581,7 +1597,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Frame-corner bolt (angle frame → bracket) TR"
   ge = grp.entities
-  circle = ge.add_circle([4591.mm,2256.mm,2290.mm], [0,1,0], 3.mm, 24)
+  circle = ge.add_circle([4591.mm,2256.mm,2252.mm], [0,1,0], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
@@ -1624,7 +1640,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Film-plane ACM backing (ghost)"
   face = grp.entities.add_face([183.mm,2262.mm,160.mm], [4591.mm,2262.mm,160.mm], [4591.mm,2266.mm,160.mm], [183.mm,2266.mm,160.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2130.mm)
+  face.pushpull(2092.mm)
   mat = model.materials["Film-plane ACM backing (ghost)"] || model.materials.add("Film-plane ACM backing (ghost)")
   mat.color = Sketchup::Color.new(31, 59, 102)
   mat.alpha = 0.14
@@ -1633,7 +1649,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"
-  face = grp.entities.add_face([183.mm,2212.mm,2287.mm], [4591.mm,2212.mm,2287.mm], [4591.mm,2262.mm,2287.mm], [183.mm,2262.mm,2287.mm])
+  face = grp.entities.add_face([183.mm,2212.mm,2249.mm], [4591.mm,2212.mm,2249.mm], [4591.mm,2262.mm,2249.mm], [183.mm,2262.mm,2249.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -1644,7 +1660,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Film frame 2x2 6061 Al angle — top (in-plane leg / ACM seat)
   grp = ents.add_group
   grp.name = "Film frame 2x2 6061 Al angle — top (in-plane leg / ACM seat)"
-  face = grp.entities.add_face([183.mm,2259.mm,2240.mm], [4591.mm,2259.mm,2240.mm], [4591.mm,2262.mm,2240.mm], [183.mm,2262.mm,2240.mm])
+  face = grp.entities.add_face([183.mm,2259.mm,2202.mm], [4591.mm,2259.mm,2202.mm], [4591.mm,2262.mm,2202.mm], [183.mm,2262.mm,2202.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -1679,7 +1695,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Film frame 2x2 6061 Al angle — left (upstand / muslin spring clip)"
   face = grp.entities.add_face([183.mm,2212.mm,160.mm], [186.mm,2212.mm,160.mm], [186.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2130.mm)
+  face.pushpull(2092.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -1690,7 +1706,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Film frame 2x2 6061 Al angle — left (in-plane leg / ACM seat)"
   face = grp.entities.add_face([183.mm,2259.mm,160.mm], [233.mm,2259.mm,160.mm], [233.mm,2262.mm,160.mm], [183.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2130.mm)
+  face.pushpull(2092.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -1701,7 +1717,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Film frame 2x2 6061 Al angle — right (upstand / muslin spring clip)"
   face = grp.entities.add_face([4588.mm,2212.mm,160.mm], [4591.mm,2212.mm,160.mm], [4591.mm,2262.mm,160.mm], [4588.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2130.mm)
+  face.pushpull(2092.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -1712,7 +1728,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Film frame 2x2 6061 Al angle — right (in-plane leg / ACM seat)"
   face = grp.entities.add_face([4541.mm,2259.mm,160.mm], [4591.mm,2259.mm,160.mm], [4591.mm,2262.mm,160.mm], [4541.mm,2262.mm,160.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2130.mm)
+  face.pushpull(2092.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -1737,8 +1753,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.material = mat
 
   # light cone — pinhole → 4 panel corners
-  ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(183.mm, 2262.mm, 2290.mm))
-  ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(4591.mm, 2262.mm, 2290.mm))
+  ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(183.mm, 2262.mm, 2252.mm))
+  ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(4591.mm, 2262.mm, 2252.mm))
   ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(183.mm, 2262.mm, 160.mm))
   ents.add_edges(Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Point3d.new(4591.mm, 2262.mm, 160.mm))
 
@@ -4366,7 +4382,18 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail (Movement TL) web MoveTL
   grp = ents.add_group
   grp.name = "U-channel rail (Movement TL) web MoveTL"
-  face = grp.entities.add_face([112.mm,1742.mm,2333.mm], [188.mm,1742.mm,2333.mm], [188.mm,3062.mm,2333.mm], [112.mm,3062.mm,2333.mm])
+  face = grp.entities.add_face([131.mm,1742.mm,2262.mm], [136.mm,1742.mm,2262.mm], [136.mm,3062.mm,2262.mm], [131.mm,3062.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail (Movement TL) flange MoveTL 2333
+  grp = ents.add_group
+  grp.name = "U-channel rail (Movement TL) flange MoveTL 2333"
+  face = grp.entities.add_face([131.mm,1742.mm,2333.mm], [169.mm,1742.mm,2333.mm], [169.mm,3062.mm,2333.mm], [131.mm,3062.mm,2333.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4374,23 +4401,23 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-channel rail (Movement TL) flange MoveTL 112
+  # U-channel rail (Movement TL) flange MoveTL 2262
   grp = ents.add_group
-  grp.name = "U-channel rail (Movement TL) flange MoveTL 112"
-  face = grp.entities.add_face([112.mm,1742.mm,2300.mm], [117.mm,1742.mm,2300.mm], [117.mm,3062.mm,2300.mm], [112.mm,3062.mm,2300.mm])
+  grp.name = "U-channel rail (Movement TL) flange MoveTL 2262"
+  face = grp.entities.add_face([131.mm,1742.mm,2262.mm], [169.mm,1742.mm,2262.mm], [169.mm,3062.mm,2262.mm], [131.mm,3062.mm,2262.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(38.mm)
+  face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-channel rail (Movement TL) flange MoveTL 183
+  # U-channel rail (Movement TL) bottom-flange lip MoveTL
   grp = ents.add_group
-  grp.name = "U-channel rail (Movement TL) flange MoveTL 183"
-  face = grp.entities.add_face([183.mm,1742.mm,2300.mm], [188.mm,1742.mm,2300.mm], [188.mm,3062.mm,2300.mm], [183.mm,3062.mm,2300.mm])
+  grp.name = "U-channel rail (Movement TL) bottom-flange lip MoveTL"
+  face = grp.entities.add_face([164.mm,1742.mm,2267.mm], [169.mm,1742.mm,2267.mm], [169.mm,3062.mm,2267.mm], [164.mm,3062.mm,2267.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(38.mm)
+  face.pushpull(9.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
@@ -4457,7 +4484,18 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # U-channel rail (Movement TR) web MoveTR
   grp = ents.add_group
   grp.name = "U-channel rail (Movement TR) web MoveTR"
-  face = grp.entities.add_face([2162.mm,1742.mm,2333.mm], [2238.mm,1742.mm,2333.mm], [2238.mm,3062.mm,2333.mm], [2162.mm,3062.mm,2333.mm])
+  face = grp.entities.add_face([2214.mm,1742.mm,2262.mm], [2219.mm,1742.mm,2262.mm], [2219.mm,3062.mm,2262.mm], [2214.mm,3062.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-channel rail (Movement TR) flange MoveTR 2333
+  grp = ents.add_group
+  grp.name = "U-channel rail (Movement TR) flange MoveTR 2333"
+  face = grp.entities.add_face([2181.mm,1742.mm,2333.mm], [2219.mm,1742.mm,2333.mm], [2219.mm,3062.mm,2333.mm], [2181.mm,3062.mm,2333.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4465,23 +4503,23 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-channel rail (Movement TR) flange MoveTR 2162
+  # U-channel rail (Movement TR) flange MoveTR 2262
   grp = ents.add_group
-  grp.name = "U-channel rail (Movement TR) flange MoveTR 2162"
-  face = grp.entities.add_face([2162.mm,1742.mm,2300.mm], [2167.mm,1742.mm,2300.mm], [2167.mm,3062.mm,2300.mm], [2162.mm,3062.mm,2300.mm])
+  grp.name = "U-channel rail (Movement TR) flange MoveTR 2262"
+  face = grp.entities.add_face([2181.mm,1742.mm,2262.mm], [2219.mm,1742.mm,2262.mm], [2219.mm,3062.mm,2262.mm], [2181.mm,3062.mm,2262.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(38.mm)
+  face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-channel rail (Movement TR) flange MoveTR 2233
+  # U-channel rail (Movement TR) bottom-flange lip MoveTR
   grp = ents.add_group
-  grp.name = "U-channel rail (Movement TR) flange MoveTR 2233"
-  face = grp.entities.add_face([2233.mm,1742.mm,2300.mm], [2238.mm,1742.mm,2300.mm], [2238.mm,3062.mm,2300.mm], [2233.mm,3062.mm,2300.mm])
+  grp.name = "U-channel rail (Movement TR) bottom-flange lip MoveTR"
+  face = grp.entities.add_face([2181.mm,1742.mm,2267.mm], [2186.mm,1742.mm,2267.mm], [2186.mm,3062.mm,2267.mm], [2181.mm,3062.mm,2267.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(38.mm)
+  face.pushpull(9.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
@@ -4596,7 +4634,18 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Depth rail TL web rTL
   grp = ents.add_group
   grp.name = "Depth rail TL web rTL"
-  face = grp.entities.add_face([112.mm,0.mm,2333.mm], [188.mm,0.mm,2333.mm], [188.mm,2362.mm,2333.mm], [112.mm,2362.mm,2333.mm])
+  face = grp.entities.add_face([131.mm,0.mm,2262.mm], [136.mm,0.mm,2262.mm], [136.mm,2362.mm,2262.mm], [131.mm,2362.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Depth rail TL flange rTL 2333
+  grp = ents.add_group
+  grp.name = "Depth rail TL flange rTL 2333"
+  face = grp.entities.add_face([131.mm,0.mm,2333.mm], [169.mm,0.mm,2333.mm], [169.mm,2362.mm,2333.mm], [131.mm,2362.mm,2333.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4604,23 +4653,23 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Depth rail TL flange rTL 112
+  # Depth rail TL flange rTL 2262
   grp = ents.add_group
-  grp.name = "Depth rail TL flange rTL 112"
-  face = grp.entities.add_face([112.mm,0.mm,2300.mm], [117.mm,0.mm,2300.mm], [117.mm,2362.mm,2300.mm], [112.mm,2362.mm,2300.mm])
+  grp.name = "Depth rail TL flange rTL 2262"
+  face = grp.entities.add_face([131.mm,0.mm,2262.mm], [169.mm,0.mm,2262.mm], [169.mm,2362.mm,2262.mm], [131.mm,2362.mm,2262.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(38.mm)
+  face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Depth rail TL flange rTL 183
+  # Depth rail TL bottom-flange lip rTL
   grp = ents.add_group
-  grp.name = "Depth rail TL flange rTL 183"
-  face = grp.entities.add_face([183.mm,0.mm,2300.mm], [188.mm,0.mm,2300.mm], [188.mm,2362.mm,2300.mm], [183.mm,2362.mm,2300.mm])
+  grp.name = "Depth rail TL bottom-flange lip rTL"
+  face = grp.entities.add_face([164.mm,0.mm,2267.mm], [169.mm,0.mm,2267.mm], [169.mm,2362.mm,2267.mm], [164.mm,2362.mm,2267.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(38.mm)
+  face.pushpull(9.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
@@ -4629,7 +4678,18 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Depth rail TR web rTR
   grp = ents.add_group
   grp.name = "Depth rail TR web rTR"
-  face = grp.entities.add_face([4586.mm,0.mm,2333.mm], [4662.mm,0.mm,2333.mm], [4662.mm,2362.mm,2333.mm], [4586.mm,2362.mm,2333.mm])
+  face = grp.entities.add_face([4638.mm,0.mm,2262.mm], [4643.mm,0.mm,2262.mm], [4643.mm,2362.mm,2262.mm], [4638.mm,2362.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Depth rail TR flange rTR 2333
+  grp = ents.add_group
+  grp.name = "Depth rail TR flange rTR 2333"
+  face = grp.entities.add_face([4605.mm,0.mm,2333.mm], [4643.mm,0.mm,2333.mm], [4643.mm,2362.mm,2333.mm], [4605.mm,2362.mm,2333.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
@@ -4637,23 +4697,23 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Depth rail TR flange rTR 4586
+  # Depth rail TR flange rTR 2262
   grp = ents.add_group
-  grp.name = "Depth rail TR flange rTR 4586"
-  face = grp.entities.add_face([4586.mm,0.mm,2300.mm], [4591.mm,0.mm,2300.mm], [4591.mm,2362.mm,2300.mm], [4586.mm,2362.mm,2300.mm])
+  grp.name = "Depth rail TR flange rTR 2262"
+  face = grp.entities.add_face([4605.mm,0.mm,2262.mm], [4643.mm,0.mm,2262.mm], [4643.mm,2362.mm,2262.mm], [4605.mm,2362.mm,2262.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(38.mm)
+  face.pushpull(5.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Depth rail TR flange rTR 4657
+  # Depth rail TR bottom-flange lip rTR
   grp = ents.add_group
-  grp.name = "Depth rail TR flange rTR 4657"
-  face = grp.entities.add_face([4657.mm,0.mm,2300.mm], [4662.mm,0.mm,2300.mm], [4662.mm,2362.mm,2300.mm], [4657.mm,2362.mm,2300.mm])
+  grp.name = "Depth rail TR bottom-flange lip rTR"
+  face = grp.entities.add_face([4605.mm,0.mm,2267.mm], [4610.mm,0.mm,2267.mm], [4610.mm,2362.mm,2267.mm], [4605.mm,2362.mm,2267.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(38.mm)
+  face.pushpull(9.mm)
   mat = model.materials["U-channel rail (Movement BL) web MoveBL"] || model.materials.add("U-channel rail (Movement BL) web MoveBL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
@@ -4984,7 +5044,7 @@ ents = mvfl_TL.entities
   # Horizontal X cross-slide (SWING, purple ~260) (Movement TL)
   grp = ents.add_group
   grp.name = "Horizontal X cross-slide (SWING, purple ~260) (Movement TL)"
-  face = grp.entities.add_face([130.mm,2263.mm,2294.mm], [390.mm,2263.mm,2294.mm], [390.mm,2277.mm,2294.mm], [130.mm,2277.mm,2294.mm])
+  face = grp.entities.add_face([130.mm,2263.mm,2256.mm], [390.mm,2263.mm,2256.mm], [390.mm,2277.mm,2256.mm], [130.mm,2277.mm,2256.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -4995,7 +5055,7 @@ ents = mvfl_TL.entities
   # U-joint (Belden UJ-SS750x375) (Movement TL)
   grp = ents.add_group
   grp.name = "U-joint (Belden UJ-SS750x375) (Movement TL)"
-  face = grp.entities.add_face([138.mm,2258.mm,2276.mm], [162.mm,2258.mm,2276.mm], [162.mm,2282.mm,2276.mm], [138.mm,2282.mm,2276.mm])
+  face = grp.entities.add_face([138.mm,2258.mm,2238.mm], [162.mm,2258.mm,2238.mm], [162.mm,2282.mm,2238.mm], [138.mm,2282.mm,2238.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
@@ -5007,7 +5067,7 @@ ents = mvfl_TL.entities
   grp = ents.add_group
   grp.name = "Input stub 3/8 (X slide → U-joint) (Movement TL)"
   ge = grp.entities
-  circle = ge.add_circle([155.mm,2270.mm,2290.mm], [1,0,0], 4.75.mm, 24)
+  circle = ge.add_circle([155.mm,2270.mm,2252.mm], [1,0,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
@@ -5019,7 +5079,7 @@ ents = mvfl_TL.entities
   # 4040N12 304 shaft support (clamps stub → carrier) (Movement TL)
   grp = ents.add_group
   grp.name = "4040N12 304 shaft support (clamps stub → carrier) (Movement TL)"
-  face = grp.entities.add_face([176.mm,2261.mm,2279.mm], [199.mm,2261.mm,2279.mm], [199.mm,2279.mm,2279.mm], [176.mm,2279.mm,2279.mm])
+  face = grp.entities.add_face([176.mm,2261.mm,2241.mm], [199.mm,2261.mm,2241.mm], [199.mm,2279.mm,2241.mm], [176.mm,2279.mm,2241.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -5031,7 +5091,7 @@ ents = mvfl_TL.entities
   grp = ents.add_group
   grp.name = "Output stub 3/8 (U-joint → corner plate) (Movement TL)"
   ge = grp.entities
-  circle = ge.add_circle([150.mm,2248.mm,2290.mm], [0,1,0], 4.75.mm, 24)
+  circle = ge.add_circle([150.mm,2248.mm,2252.mm], [0,1,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -5040,75 +5100,31 @@ ents = mvfl_TL.entities
   mat.alpha = 1.0
   grp.material = mat
 
-mvpan_TL_inst = mvfl_TL.entities.add_instance(mvpan_TL, Geom::Transformation.translation([150.mm, 2270.mm, 2288.mm]))
+mvpan_TL_inst = mvfl_TL.entities.add_instance(mvpan_TL, Geom::Transformation.translation([150.mm, 2270.mm, 2250.mm]))
 mvpan_TL_inst.name = "Panel tilt TL"; mvpan_TL_inst.layer = model.layers["Movement"]
 mvo_TL = model.definitions.add("Carriage TL")
 ents = mvo_TL.entities
-  # Acetal guide wheel Ø32 (Movement TL) 2270
+  # Acetal skate wheel Ø32 (Movement TL) 2270
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (Movement TL) 2270"
+  grp.name = "Acetal skate wheel Ø32 (Movement TL) 2270"
   ge = grp.entities
-  circle = ge.add_circle([130.mm,2270.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([140.mm,2270.mm,2283.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(40.mm)
+  cface.pushpull(20.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (Movement TL) 2310
+  # Acetal skate wheel Ø32 (Movement TL) 2310
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (Movement TL) 2310"
+  grp.name = "Acetal skate wheel Ø32 (Movement TL) 2310"
   ge = grp.entities
-  circle = ge.add_circle([130.mm,2310.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([140.mm,2310.mm,2283.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(40.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke arm (Movement TL) 123
-  grp = ents.add_group
-  grp.name = "Yoke arm (Movement TL) 123"
-  face = grp.entities.add_face([121.mm,2228.mm,2286.mm], [125.mm,2228.mm,2286.mm], [125.mm,2296.mm,2286.mm], [121.mm,2296.mm,2286.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke arm (Movement TL) 177
-  grp = ents.add_group
-  grp.name = "Yoke arm (Movement TL) 177"
-  face = grp.entities.add_face([175.mm,2228.mm,2286.mm], [179.mm,2228.mm,2286.mm], [179.mm,2296.mm,2286.mm], [175.mm,2296.mm,2286.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke cross-piece (Movement TL)
-  grp = ents.add_group
-  grp.name = "Yoke cross-piece (Movement TL)"
-  face = grp.entities.add_face([121.mm,2228.mm,2278.mm], [179.mm,2228.mm,2278.mm], [179.mm,2296.mm,2278.mm], [121.mm,2296.mm,2278.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke rail → carriage (Movement TL)
-  grp = ents.add_group
-  grp.name = "Yoke rail → carriage (Movement TL)"
-  face = grp.entities.add_face([177.mm,2228.mm,2280.mm], [208.mm,2228.mm,2280.mm], [208.mm,2296.mm,2280.mm], [177.mm,2296.mm,2280.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  cface.pushpull(20.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -5117,9 +5133,9 @@ ents = mvo_TL.entities
   # Carriage plate (Movement TL)
   grp = ents.add_group
   grp.name = "Carriage plate (Movement TL)"
-  face = grp.entities.add_face([196.mm,2263.mm,2284.mm], [210.mm,2263.mm,2284.mm], [210.mm,2349.mm,2284.mm], [196.mm,2349.mm,2284.mm])
+  face = grp.entities.add_face([177.mm,2263.mm,2246.mm], [191.mm,2263.mm,2246.mm], [191.mm,2349.mm,2246.mm], [177.mm,2349.mm,2246.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(51.mm)
+  face.pushpull(83.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -5128,7 +5144,7 @@ ents = mvo_TL.entities
   # Vertical Z cross-slide (TILT, green ~250) (Movement TL)
   grp = ents.add_group
   grp.name = "Vertical Z cross-slide (TILT, green ~250) (Movement TL)"
-  face = grp.entities.add_face([163.mm,2263.mm,2036.mm], [173.mm,2263.mm,2036.mm], [173.mm,2281.mm,2036.mm], [163.mm,2281.mm,2036.mm])
+  face = grp.entities.add_face([163.mm,2263.mm,1998.mm], [173.mm,2263.mm,1998.mm], [173.mm,2281.mm,1998.mm], [163.mm,2281.mm,1998.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -5169,7 +5185,7 @@ mvfl_TL_inst.set_attribute(da, "_z_formula", "ABS(drive) * -50")
 end
 mvpan_TL_inst.set_attribute(da, "_drive_formula", "FloatTL!drive")
 mvpan_TL_inst.set_attribute(da, "_rotx_formula", "drive * -30")
-mvtxt_TL = entities.add_text("CLICK TL: 1st click tilts toward the PINHOLE, 2nd toward the FAR WALL — the green Z slider foreshortens the SAME both ways", Geom::Point3d.new(570.mm, 2762.mm, 1770.mm), Geom::Vector3d.new(300.mm, -400.mm, -300.mm))
+mvtxt_TL = entities.add_text("CLICK TL: 1st click tilts toward the PINHOLE, 2nd toward the FAR WALL — the green Z slider foreshortens the SAME both ways", Geom::Point3d.new(570.mm, 2762.mm, 1732.mm), Geom::Vector3d.new(300.mm, -400.mm, -300.mm))
 mvtxt_TL.layer = model.layers["Movement"] rescue nil
 
 # ═══ Movement — BR corner (Sheet 3 model): ONE click — the depth-rail ROLL drives the swing;
@@ -5492,7 +5508,7 @@ ents = mvfl_TR.entities
   # Vertical Z cross-slide (TILT, green ~250) (Movement TR)
   grp = ents.add_group
   grp.name = "Vertical Z cross-slide (TILT, green ~250) (Movement TR)"
-  face = grp.entities.add_face([2171.mm,2263.mm,2036.mm], [2181.mm,2263.mm,2036.mm], [2181.mm,2281.mm,2036.mm], [2171.mm,2281.mm,2036.mm])
+  face = grp.entities.add_face([2171.mm,2263.mm,1998.mm], [2181.mm,2263.mm,1998.mm], [2181.mm,2281.mm,1998.mm], [2171.mm,2281.mm,1998.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -5503,7 +5519,7 @@ ents = mvfl_TR.entities
   # U-joint (Belden UJ-SS750x375) (Movement TR)
   grp = ents.add_group
   grp.name = "U-joint (Belden UJ-SS750x375) (Movement TR)"
-  face = grp.entities.add_face([2188.mm,2258.mm,2276.mm], [2212.mm,2258.mm,2276.mm], [2212.mm,2282.mm,2276.mm], [2188.mm,2282.mm,2276.mm])
+  face = grp.entities.add_face([2188.mm,2258.mm,2238.mm], [2212.mm,2258.mm,2238.mm], [2212.mm,2282.mm,2238.mm], [2188.mm,2282.mm,2238.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
@@ -5515,7 +5531,7 @@ ents = mvfl_TR.entities
   grp = ents.add_group
   grp.name = "Input stub 3/8 (X slide → U-joint) (Movement TR)"
   ge = grp.entities
-  circle = ge.add_circle([2149.mm,2270.mm,2290.mm], [1,0,0], 4.75.mm, 24)
+  circle = ge.add_circle([2149.mm,2270.mm,2252.mm], [1,0,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
@@ -5527,7 +5543,7 @@ ents = mvfl_TR.entities
   # 4040N12 304 shaft support (clamps stub → carrier) (Movement TR)
   grp = ents.add_group
   grp.name = "4040N12 304 shaft support (clamps stub → carrier) (Movement TR)"
-  face = grp.entities.add_face([2151.mm,2261.mm,2279.mm], [2174.mm,2261.mm,2279.mm], [2174.mm,2279.mm,2279.mm], [2151.mm,2279.mm,2279.mm])
+  face = grp.entities.add_face([2151.mm,2261.mm,2241.mm], [2174.mm,2261.mm,2241.mm], [2174.mm,2279.mm,2241.mm], [2151.mm,2279.mm,2241.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -5539,7 +5555,7 @@ ents = mvfl_TR.entities
   grp = ents.add_group
   grp.name = "Output stub 3/8 (U-joint → corner plate) (Movement TR)"
   ge = grp.entities
-  circle = ge.add_circle([2200.mm,2248.mm,2290.mm], [0,1,0], 4.75.mm, 24)
+  circle = ge.add_circle([2200.mm,2248.mm,2252.mm], [0,1,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -5548,75 +5564,31 @@ ents = mvfl_TR.entities
   mat.alpha = 1.0
   grp.material = mat
 
-mvpan_TR_inst = mvfl_TR.entities.add_instance(mvpan_TR, Geom::Transformation.translation([2200.mm, 2270.mm, 2288.mm]))
+mvpan_TR_inst = mvfl_TR.entities.add_instance(mvpan_TR, Geom::Transformation.translation([2200.mm, 2270.mm, 2250.mm]))
 mvpan_TR_inst.name = "Panel tilt TR"; mvpan_TR_inst.layer = model.layers["Movement"]
 mvo_TR = model.definitions.add("Carriage TR")
 ents = mvo_TR.entities
-  # Acetal guide wheel Ø32 (Movement TR) 2270
+  # Acetal skate wheel Ø32 (Movement TR) 2270
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (Movement TR) 2270"
+  grp.name = "Acetal skate wheel Ø32 (Movement TR) 2270"
   ge = grp.entities
-  circle = ge.add_circle([2180.mm,2270.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([2190.mm,2270.mm,2283.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(40.mm)
+  cface.pushpull(20.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (Movement TR) 2310
+  # Acetal skate wheel Ø32 (Movement TR) 2310
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (Movement TR) 2310"
+  grp.name = "Acetal skate wheel Ø32 (Movement TR) 2310"
   ge = grp.entities
-  circle = ge.add_circle([2180.mm,2310.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([2190.mm,2310.mm,2283.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(40.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke arm (Movement TR) 2173
-  grp = ents.add_group
-  grp.name = "Yoke arm (Movement TR) 2173"
-  face = grp.entities.add_face([2171.mm,2228.mm,2286.mm], [2175.mm,2228.mm,2286.mm], [2175.mm,2296.mm,2286.mm], [2171.mm,2296.mm,2286.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke arm (Movement TR) 2227
-  grp = ents.add_group
-  grp.name = "Yoke arm (Movement TR) 2227"
-  face = grp.entities.add_face([2225.mm,2228.mm,2286.mm], [2229.mm,2228.mm,2286.mm], [2229.mm,2296.mm,2286.mm], [2225.mm,2296.mm,2286.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke cross-piece (Movement TR)
-  grp = ents.add_group
-  grp.name = "Yoke cross-piece (Movement TR)"
-  face = grp.entities.add_face([2171.mm,2228.mm,2278.mm], [2229.mm,2228.mm,2278.mm], [2229.mm,2296.mm,2278.mm], [2171.mm,2296.mm,2278.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke rail → carriage (Movement TR)
-  grp = ents.add_group
-  grp.name = "Yoke rail → carriage (Movement TR)"
-  face = grp.entities.add_face([2148.mm,2228.mm,2280.mm], [2233.mm,2228.mm,2280.mm], [2233.mm,2296.mm,2280.mm], [2148.mm,2296.mm,2280.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
+  cface.pushpull(20.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -5625,9 +5597,9 @@ ents = mvo_TR.entities
   # Carriage plate (Movement TR)
   grp = ents.add_group
   grp.name = "Carriage plate (Movement TR)"
-  face = grp.entities.add_face([2140.mm,2263.mm,2284.mm], [2154.mm,2263.mm,2284.mm], [2154.mm,2349.mm,2284.mm], [2140.mm,2349.mm,2284.mm])
+  face = grp.entities.add_face([2159.mm,2263.mm,2246.mm], [2173.mm,2263.mm,2246.mm], [2173.mm,2349.mm,2246.mm], [2159.mm,2349.mm,2246.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(51.mm)
+  face.pushpull(83.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
@@ -5636,7 +5608,7 @@ ents = mvo_TR.entities
   # Horizontal X cross-slide (SWING, purple ~260) (Movement TR)
   grp = ents.add_group
   grp.name = "Horizontal X cross-slide (SWING, purple ~260) (Movement TR)"
-  face = grp.entities.add_face([1960.mm,2263.mm,2294.mm], [2220.mm,2263.mm,2294.mm], [2220.mm,2277.mm,2294.mm], [1960.mm,2277.mm,2294.mm])
+  face = grp.entities.add_face([1960.mm,2263.mm,2256.mm], [2220.mm,2263.mm,2256.mm], [2220.mm,2277.mm,2256.mm], [1960.mm,2277.mm,2256.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -5677,7 +5649,7 @@ mvfl_TR_inst.set_attribute(da, "_x_formula", "ABS(drive) * -50")
 end
 mvpan_TR_inst.set_attribute(da, "_drive_formula", "FloatTR!drive")
 mvpan_TR_inst.set_attribute(da, "_rotz_formula", "drive * 30")
-mvtxt_TR = entities.add_text("CLICK TR: 1st click swings toward the PINHOLE, 2nd toward the FAR WALL — the purple X slider foreshortens the SAME both ways", Geom::Point3d.new(1780.mm, 2762.mm, 1770.mm), Geom::Vector3d.new(-300.mm, -400.mm, -300.mm))
+mvtxt_TR = entities.add_text("CLICK TR: 1st click swings toward the PINHOLE, 2nd toward the FAR WALL — the purple X slider foreshortens the SAME both ways", Geom::Point3d.new(1780.mm, 2762.mm, 1732.mm), Geom::Vector3d.new(-300.mm, -400.mm, -300.mm))
 mvtxt_TR.layer = model.layers["Movement"] rescue nil
 
 # ═══ Whole plane — Tilt: FRAME rotates rotx about the centre; each CARRIAGE stays on its rail and
@@ -5689,9 +5661,9 @@ ents = frmTilt.entities
   # Film panel (near-invisible, clickable fill) — whole plane
   grp = ents.add_group
   grp.name = "Film panel (near-invisible, clickable fill) — whole plane"
-  face = grp.entities.add_face([-2204.mm,0.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [2204.mm,4.mm,-1065.mm], [-2204.mm,4.mm,-1065.mm])
+  face = grp.entities.add_face([-2204.mm,0.mm,-1046.mm], [2204.mm,0.mm,-1046.mm], [2204.mm,4.mm,-1046.mm], [-2204.mm,4.mm,-1046.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2130.mm)
+  face.pushpull(2092.mm)
   mat = model.materials["Film panel (near-invisible, clickable fill) — whole plane"] || model.materials.add("Film panel (near-invisible, clickable fill) — whole plane")
   mat.color = Sketchup::Color.new(31, 59, 102)
   mat.alpha = 0.04
@@ -5700,7 +5672,7 @@ ents = frmTilt.entities
   # Film frame — top upstand
   grp = ents.add_group
   grp.name = "Film frame — top upstand"
-  face = grp.entities.add_face([-2204.mm,-50.mm,1062.mm], [2204.mm,-50.mm,1062.mm], [2204.mm,0.mm,1062.mm], [-2204.mm,0.mm,1062.mm])
+  face = grp.entities.add_face([-2204.mm,-50.mm,1043.mm], [2204.mm,-50.mm,1043.mm], [2204.mm,0.mm,1043.mm], [-2204.mm,0.mm,1043.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -5711,7 +5683,7 @@ ents = frmTilt.entities
   # Film frame — top in-plane
   grp = ents.add_group
   grp.name = "Film frame — top in-plane"
-  face = grp.entities.add_face([-2204.mm,-3.mm,1015.mm], [2204.mm,-3.mm,1015.mm], [2204.mm,0.mm,1015.mm], [-2204.mm,0.mm,1015.mm])
+  face = grp.entities.add_face([-2204.mm,-3.mm,996.mm], [2204.mm,-3.mm,996.mm], [2204.mm,0.mm,996.mm], [-2204.mm,0.mm,996.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -5722,7 +5694,7 @@ ents = frmTilt.entities
   # Film frame — bottom upstand
   grp = ents.add_group
   grp.name = "Film frame — bottom upstand"
-  face = grp.entities.add_face([-2204.mm,-50.mm,-1065.mm], [2204.mm,-50.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([-2204.mm,-50.mm,-1046.mm], [2204.mm,-50.mm,-1046.mm], [2204.mm,0.mm,-1046.mm], [-2204.mm,0.mm,-1046.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -5733,7 +5705,7 @@ ents = frmTilt.entities
   # Film frame — bottom in-plane
   grp = ents.add_group
   grp.name = "Film frame — bottom in-plane"
-  face = grp.entities.add_face([-2204.mm,-3.mm,-1065.mm], [2204.mm,-3.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([-2204.mm,-3.mm,-1046.mm], [2204.mm,-3.mm,-1046.mm], [2204.mm,0.mm,-1046.mm], [-2204.mm,0.mm,-1046.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -5744,9 +5716,9 @@ ents = frmTilt.entities
   # Film frame — left upstand
   grp = ents.add_group
   grp.name = "Film frame — left upstand"
-  face = grp.entities.add_face([-2204.mm,-50.mm,-1065.mm], [-2201.mm,-50.mm,-1065.mm], [-2201.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([-2204.mm,-50.mm,-1046.mm], [-2201.mm,-50.mm,-1046.mm], [-2201.mm,0.mm,-1046.mm], [-2204.mm,0.mm,-1046.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2130.mm)
+  face.pushpull(2092.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -5755,9 +5727,9 @@ ents = frmTilt.entities
   # Film frame — left in-plane
   grp = ents.add_group
   grp.name = "Film frame — left in-plane"
-  face = grp.entities.add_face([-2204.mm,-3.mm,-1065.mm], [-2154.mm,-3.mm,-1065.mm], [-2154.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([-2204.mm,-3.mm,-1046.mm], [-2154.mm,-3.mm,-1046.mm], [-2154.mm,0.mm,-1046.mm], [-2204.mm,0.mm,-1046.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2130.mm)
+  face.pushpull(2092.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -5766,9 +5738,9 @@ ents = frmTilt.entities
   # Film frame — right upstand
   grp = ents.add_group
   grp.name = "Film frame — right upstand"
-  face = grp.entities.add_face([2201.mm,-50.mm,-1065.mm], [2204.mm,-50.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [2201.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([2201.mm,-50.mm,-1046.mm], [2204.mm,-50.mm,-1046.mm], [2204.mm,0.mm,-1046.mm], [2201.mm,0.mm,-1046.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2130.mm)
+  face.pushpull(2092.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -5777,9 +5749,9 @@ ents = frmTilt.entities
   # Film frame — right in-plane
   grp = ents.add_group
   grp.name = "Film frame — right in-plane"
-  face = grp.entities.add_face([2154.mm,-3.mm,-1065.mm], [2204.mm,-3.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [2154.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([2154.mm,-3.mm,-1046.mm], [2204.mm,-3.mm,-1046.mm], [2204.mm,0.mm,-1046.mm], [2154.mm,0.mm,-1046.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2130.mm)
+  face.pushpull(2092.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -5788,7 +5760,7 @@ ents = frmTilt.entities
   # U-joint (Belden UJ-SS750x375) (183,160)
   grp = ents.add_group
   grp.name = "U-joint (Belden UJ-SS750x375) (183,160)"
-  face = grp.entities.add_face([-2249.mm,-4.mm,-1079.mm], [-2225.mm,-4.mm,-1079.mm], [-2225.mm,20.mm,-1079.mm], [-2249.mm,20.mm,-1079.mm])
+  face = grp.entities.add_face([-2249.mm,-4.mm,-1060.mm], [-2225.mm,-4.mm,-1060.mm], [-2225.mm,20.mm,-1060.mm], [-2249.mm,20.mm,-1060.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
@@ -5800,7 +5772,7 @@ ents = frmTilt.entities
   grp = ents.add_group
   grp.name = "Input stub 3/8 (183,160)"
   ge = grp.entities
-  circle = ge.add_circle([-2232.mm,8.mm,-1065.mm], [1,0,0], 4.75.mm, 24)
+  circle = ge.add_circle([-2232.mm,8.mm,-1046.mm], [1,0,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
@@ -5812,7 +5784,7 @@ ents = frmTilt.entities
   # 4040N12 304 shaft support (183,160)
   grp = ents.add_group
   grp.name = "4040N12 304 shaft support (183,160)"
-  face = grp.entities.add_face([-2211.mm,-1.mm,-1076.mm], [-2188.mm,-1.mm,-1076.mm], [-2188.mm,17.mm,-1076.mm], [-2211.mm,17.mm,-1076.mm])
+  face = grp.entities.add_face([-2211.mm,-1.mm,-1057.mm], [-2188.mm,-1.mm,-1057.mm], [-2188.mm,17.mm,-1057.mm], [-2211.mm,17.mm,-1057.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -5824,7 +5796,7 @@ ents = frmTilt.entities
   grp = ents.add_group
   grp.name = "Output stub 3/8 (183,160)"
   ge = grp.entities
-  circle = ge.add_circle([-2237.mm,-14.mm,-1065.mm], [0,1,0], 4.75.mm, 24)
+  circle = ge.add_circle([-2237.mm,-14.mm,-1046.mm], [0,1,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -5837,7 +5809,7 @@ ents = frmTilt.entities
   grp = ents.add_group
   grp.name = "Frame-corner bolt (183,160)"
   ge = grp.entities
-  circle = ge.add_circle([-2204.mm,-6.mm,-1065.mm], [0,1,0], 3.mm, 24)
+  circle = ge.add_circle([-2204.mm,-6.mm,-1046.mm], [0,1,0], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
@@ -5849,7 +5821,7 @@ ents = frmTilt.entities
   # 304 SS corner plate (183,160)
   grp = ents.add_group
   grp.name = "304 SS corner plate (183,160)"
-  face = grp.entities.add_face([-2251.mm,-8.mm,-1060.mm], [-2217.mm,-8.mm,-1060.mm], [-2217.mm,8.mm,-1060.mm], [-2251.mm,8.mm,-1060.mm])
+  face = grp.entities.add_face([-2251.mm,-8.mm,-1041.mm], [-2217.mm,-8.mm,-1041.mm], [-2217.mm,8.mm,-1041.mm], [-2251.mm,8.mm,-1041.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -5860,7 +5832,7 @@ ents = frmTilt.entities
   # U-joint (Belden UJ-SS750x375) (4591,160)
   grp = ents.add_group
   grp.name = "U-joint (Belden UJ-SS750x375) (4591,160)"
-  face = grp.entities.add_face([2225.mm,-4.mm,-1079.mm], [2249.mm,-4.mm,-1079.mm], [2249.mm,20.mm,-1079.mm], [2225.mm,20.mm,-1079.mm])
+  face = grp.entities.add_face([2225.mm,-4.mm,-1060.mm], [2249.mm,-4.mm,-1060.mm], [2249.mm,20.mm,-1060.mm], [2225.mm,20.mm,-1060.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
@@ -5872,7 +5844,7 @@ ents = frmTilt.entities
   grp = ents.add_group
   grp.name = "Input stub 3/8 (4591,160)"
   ge = grp.entities
-  circle = ge.add_circle([2186.mm,8.mm,-1065.mm], [1,0,0], 4.75.mm, 24)
+  circle = ge.add_circle([2186.mm,8.mm,-1046.mm], [1,0,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
@@ -5884,7 +5856,7 @@ ents = frmTilt.entities
   # 4040N12 304 shaft support (4591,160)
   grp = ents.add_group
   grp.name = "4040N12 304 shaft support (4591,160)"
-  face = grp.entities.add_face([2188.mm,-1.mm,-1076.mm], [2211.mm,-1.mm,-1076.mm], [2211.mm,17.mm,-1076.mm], [2188.mm,17.mm,-1076.mm])
+  face = grp.entities.add_face([2188.mm,-1.mm,-1057.mm], [2211.mm,-1.mm,-1057.mm], [2211.mm,17.mm,-1057.mm], [2188.mm,17.mm,-1057.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -5896,7 +5868,7 @@ ents = frmTilt.entities
   grp = ents.add_group
   grp.name = "Output stub 3/8 (4591,160)"
   ge = grp.entities
-  circle = ge.add_circle([2237.mm,-14.mm,-1065.mm], [0,1,0], 4.75.mm, 24)
+  circle = ge.add_circle([2237.mm,-14.mm,-1046.mm], [0,1,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -5909,7 +5881,7 @@ ents = frmTilt.entities
   grp = ents.add_group
   grp.name = "Frame-corner bolt (4591,160)"
   ge = grp.entities
-  circle = ge.add_circle([2204.mm,-6.mm,-1065.mm], [0,1,0], 3.mm, 24)
+  circle = ge.add_circle([2204.mm,-6.mm,-1046.mm], [0,1,0], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
@@ -5921,7 +5893,7 @@ ents = frmTilt.entities
   # 304 SS corner plate (4591,160)
   grp = ents.add_group
   grp.name = "304 SS corner plate (4591,160)"
-  face = grp.entities.add_face([2217.mm,-8.mm,-1060.mm], [2251.mm,-8.mm,-1060.mm], [2251.mm,8.mm,-1060.mm], [2217.mm,8.mm,-1060.mm])
+  face = grp.entities.add_face([2217.mm,-8.mm,-1041.mm], [2251.mm,-8.mm,-1041.mm], [2251.mm,8.mm,-1041.mm], [2217.mm,8.mm,-1041.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -5929,10 +5901,10 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Belden UJ-SS750x375) (183,2290)
+  # U-joint (Belden UJ-SS750x375) (183,2252)
   grp = ents.add_group
-  grp.name = "U-joint (Belden UJ-SS750x375) (183,2290)"
-  face = grp.entities.add_face([-2249.mm,-4.mm,1051.mm], [-2225.mm,-4.mm,1051.mm], [-2225.mm,20.mm,1051.mm], [-2249.mm,20.mm,1051.mm])
+  grp.name = "U-joint (Belden UJ-SS750x375) (183,2252)"
+  face = grp.entities.add_face([-2249.mm,-4.mm,1032.mm], [-2225.mm,-4.mm,1032.mm], [-2225.mm,20.mm,1032.mm], [-2249.mm,20.mm,1032.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
@@ -5940,11 +5912,11 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Input stub 3/8 (183,2290)
+  # Input stub 3/8 (183,2252)
   grp = ents.add_group
-  grp.name = "Input stub 3/8 (183,2290)"
+  grp.name = "Input stub 3/8 (183,2252)"
   ge = grp.entities
-  circle = ge.add_circle([-2232.mm,8.mm,1065.mm], [1,0,0], 4.75.mm, 24)
+  circle = ge.add_circle([-2232.mm,8.mm,1046.mm], [1,0,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
@@ -5953,10 +5925,10 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # 4040N12 304 shaft support (183,2290)
+  # 4040N12 304 shaft support (183,2252)
   grp = ents.add_group
-  grp.name = "4040N12 304 shaft support (183,2290)"
-  face = grp.entities.add_face([-2211.mm,-1.mm,1054.mm], [-2188.mm,-1.mm,1054.mm], [-2188.mm,17.mm,1054.mm], [-2211.mm,17.mm,1054.mm])
+  grp.name = "4040N12 304 shaft support (183,2252)"
+  face = grp.entities.add_face([-2211.mm,-1.mm,1035.mm], [-2188.mm,-1.mm,1035.mm], [-2188.mm,17.mm,1035.mm], [-2211.mm,17.mm,1035.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -5964,11 +5936,11 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Output stub 3/8 (183,2290)
+  # Output stub 3/8 (183,2252)
   grp = ents.add_group
-  grp.name = "Output stub 3/8 (183,2290)"
+  grp.name = "Output stub 3/8 (183,2252)"
   ge = grp.entities
-  circle = ge.add_circle([-2237.mm,-14.mm,1065.mm], [0,1,0], 4.75.mm, 24)
+  circle = ge.add_circle([-2237.mm,-14.mm,1046.mm], [0,1,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -5977,11 +5949,11 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame-corner bolt (183,2290)
+  # Frame-corner bolt (183,2252)
   grp = ents.add_group
-  grp.name = "Frame-corner bolt (183,2290)"
+  grp.name = "Frame-corner bolt (183,2252)"
   ge = grp.entities
-  circle = ge.add_circle([-2204.mm,-6.mm,1065.mm], [0,1,0], 3.mm, 24)
+  circle = ge.add_circle([-2204.mm,-6.mm,1046.mm], [0,1,0], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
@@ -5990,10 +5962,10 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # 304 SS corner plate (183,2290)
+  # 304 SS corner plate (183,2252)
   grp = ents.add_group
-  grp.name = "304 SS corner plate (183,2290)"
-  face = grp.entities.add_face([-2251.mm,-8.mm,1020.mm], [-2217.mm,-8.mm,1020.mm], [-2217.mm,8.mm,1020.mm], [-2251.mm,8.mm,1020.mm])
+  grp.name = "304 SS corner plate (183,2252)"
+  face = grp.entities.add_face([-2251.mm,-8.mm,1001.mm], [-2217.mm,-8.mm,1001.mm], [-2217.mm,8.mm,1001.mm], [-2251.mm,8.mm,1001.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -6001,10 +5973,10 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Belden UJ-SS750x375) (4591,2290)
+  # U-joint (Belden UJ-SS750x375) (4591,2252)
   grp = ents.add_group
-  grp.name = "U-joint (Belden UJ-SS750x375) (4591,2290)"
-  face = grp.entities.add_face([2225.mm,-4.mm,1051.mm], [2249.mm,-4.mm,1051.mm], [2249.mm,20.mm,1051.mm], [2225.mm,20.mm,1051.mm])
+  grp.name = "U-joint (Belden UJ-SS750x375) (4591,2252)"
+  face = grp.entities.add_face([2225.mm,-4.mm,1032.mm], [2249.mm,-4.mm,1032.mm], [2249.mm,20.mm,1032.mm], [2225.mm,20.mm,1032.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
@@ -6012,11 +5984,11 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Input stub 3/8 (4591,2290)
+  # Input stub 3/8 (4591,2252)
   grp = ents.add_group
-  grp.name = "Input stub 3/8 (4591,2290)"
+  grp.name = "Input stub 3/8 (4591,2252)"
   ge = grp.entities
-  circle = ge.add_circle([2186.mm,8.mm,1065.mm], [1,0,0], 4.75.mm, 24)
+  circle = ge.add_circle([2186.mm,8.mm,1046.mm], [1,0,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
@@ -6025,10 +5997,10 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # 4040N12 304 shaft support (4591,2290)
+  # 4040N12 304 shaft support (4591,2252)
   grp = ents.add_group
-  grp.name = "4040N12 304 shaft support (4591,2290)"
-  face = grp.entities.add_face([2188.mm,-1.mm,1054.mm], [2211.mm,-1.mm,1054.mm], [2211.mm,17.mm,1054.mm], [2188.mm,17.mm,1054.mm])
+  grp.name = "4040N12 304 shaft support (4591,2252)"
+  face = grp.entities.add_face([2188.mm,-1.mm,1035.mm], [2211.mm,-1.mm,1035.mm], [2211.mm,17.mm,1035.mm], [2188.mm,17.mm,1035.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -6036,11 +6008,11 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Output stub 3/8 (4591,2290)
+  # Output stub 3/8 (4591,2252)
   grp = ents.add_group
-  grp.name = "Output stub 3/8 (4591,2290)"
+  grp.name = "Output stub 3/8 (4591,2252)"
   ge = grp.entities
-  circle = ge.add_circle([2237.mm,-14.mm,1065.mm], [0,1,0], 4.75.mm, 24)
+  circle = ge.add_circle([2237.mm,-14.mm,1046.mm], [0,1,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -6049,11 +6021,11 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame-corner bolt (4591,2290)
+  # Frame-corner bolt (4591,2252)
   grp = ents.add_group
-  grp.name = "Frame-corner bolt (4591,2290)"
+  grp.name = "Frame-corner bolt (4591,2252)"
   ge = grp.entities
-  circle = ge.add_circle([2204.mm,-6.mm,1065.mm], [0,1,0], 3.mm, 24)
+  circle = ge.add_circle([2204.mm,-6.mm,1046.mm], [0,1,0], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
@@ -6062,10 +6034,10 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # 304 SS corner plate (4591,2290)
+  # 304 SS corner plate (4591,2252)
   grp = ents.add_group
-  grp.name = "304 SS corner plate (4591,2290)"
-  face = grp.entities.add_face([2217.mm,-8.mm,1020.mm], [2251.mm,-8.mm,1020.mm], [2251.mm,8.mm,1020.mm], [2217.mm,8.mm,1020.mm])
+  grp.name = "304 SS corner plate (4591,2252)"
+  face = grp.entities.add_face([2217.mm,-8.mm,1001.mm], [2251.mm,-8.mm,1001.mm], [2251.mm,8.mm,1001.mm], [2217.mm,8.mm,1001.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -6073,7 +6045,7 @@ ents = frmTilt.entities
   mat.alpha = 1.0
   grp.material = mat
 
-frmTilt_inst = plwTilt.entities.add_instance(frmTilt, Geom::Transformation.translation([2387.mm, 1181.mm, 1225.mm]))
+frmTilt_inst = plwTilt.entities.add_instance(frmTilt, Geom::Transformation.translation([2387.mm, 1181.mm, 1206.mm]))
 frmTilt_inst.name = "Plane frame Tilt"; frmTilt_inst.layer = model.layers["Plane Tilt"]
 [frmTilt, frmTilt_inst].each { |e| e.set_attribute(da, "_name", "PlaneFrameTilt"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "rotx", 0.0) }
 frmTilt_inst.set_attribute(da, "_rotx_formula", "WholePlaneTilt!move * 15")
@@ -6142,7 +6114,7 @@ ents = carTilt0.entities
 carTilt0_inst = plwTilt.entities.add_instance(carTilt0, Geom::Transformation.new)
 carTilt0_inst.name = "Plane carriage Tilt 0"; carTilt0_inst.layer = model.layers["Plane Tilt"]
 [carTilt0, carTilt0_inst].each { |e| e.set_attribute(da, "_name", "PlaneCarTilt0"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "y", 0.0) }
-carTilt0_inst.set_attribute(da, "_y_formula", "WholePlaneTilt!move * 275.64")
+carTilt0_inst.set_attribute(da, "_y_formula", "WholePlaneTilt!move * 270.72")
 
 carTilt1 = model.definitions.add("Plane carriage Tilt 1")
 ents = carTilt1.entities
@@ -6208,95 +6180,51 @@ ents = carTilt1.entities
 carTilt1_inst = plwTilt.entities.add_instance(carTilt1, Geom::Transformation.new)
 carTilt1_inst.name = "Plane carriage Tilt 1"; carTilt1_inst.layer = model.layers["Plane Tilt"]
 [carTilt1, carTilt1_inst].each { |e| e.set_attribute(da, "_name", "PlaneCarTilt1"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "y", 0.0) }
-carTilt1_inst.set_attribute(da, "_y_formula", "WholePlaneTilt!move * 275.64")
+carTilt1_inst.set_attribute(da, "_y_formula", "WholePlaneTilt!move * 270.72")
 
 carTilt2 = model.definitions.add("Plane carriage Tilt 2")
 ents = carTilt2.entities
-  # Acetal guide wheel Ø32 (150,2290) 1189
+  # Acetal skate wheel Ø32 (150,2252) 1189
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (150,2290) 1189"
+  grp.name = "Acetal skate wheel Ø32 (150,2252) 1189"
   ge = grp.entities
-  circle = ge.add_circle([124.mm,1189.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([142.mm,1189.mm,2283.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (150,2290) 1229
+  # Acetal skate wheel Ø32 (150,2252) 1229
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (150,2290) 1229"
+  grp.name = "Acetal skate wheel Ø32 (150,2252) 1229"
   ge = grp.entities
-  circle = ge.add_circle([124.mm,1229.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([142.mm,1229.mm,2283.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm (150,2290) 117
+  # Carriage plate (150,2252)
   grp = ents.add_group
-  grp.name = "Yoke arm (150,2290) 117"
-  face = grp.entities.add_face([115.mm,1147.mm,2286.mm], [119.mm,1147.mm,2286.mm], [119.mm,1215.mm,2286.mm], [115.mm,1215.mm,2286.mm])
+  grp.name = "Carriage plate (150,2252)"
+  face = grp.entities.add_face([177.mm,1182.mm,2246.mm], [191.mm,1182.mm,2246.mm], [191.mm,1268.mm,2246.mm], [177.mm,1268.mm,2246.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
+  face.pushpull(83.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm (150,2290) 183
+  # Vertical Z cross-slide way (green) (150,2252)
   grp = ents.add_group
-  grp.name = "Yoke arm (150,2290) 183"
-  face = grp.entities.add_face([181.mm,1147.mm,2286.mm], [185.mm,1147.mm,2286.mm], [185.mm,1215.mm,2286.mm], [181.mm,1215.mm,2286.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke cross-piece (150,2290)
-  grp = ents.add_group
-  grp.name = "Yoke cross-piece (150,2290)"
-  face = grp.entities.add_face([115.mm,1147.mm,2278.mm], [185.mm,1147.mm,2278.mm], [185.mm,1215.mm,2278.mm], [115.mm,1215.mm,2278.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke rail (150,2290)
-  grp = ents.add_group
-  grp.name = "Yoke rail (150,2290)"
-  face = grp.entities.add_face([183.mm,1147.mm,2280.mm], [208.mm,1147.mm,2280.mm], [208.mm,1215.mm,2280.mm], [183.mm,1215.mm,2280.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Carriage plate (150,2290)
-  grp = ents.add_group
-  grp.name = "Carriage plate (150,2290)"
-  face = grp.entities.add_face([196.mm,1182.mm,2284.mm], [210.mm,1182.mm,2284.mm], [210.mm,1268.mm,2284.mm], [196.mm,1268.mm,2284.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(51.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Vertical Z cross-slide way (green) (150,2290)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide way (green) (150,2290)"
-  face = grp.entities.add_face([163.mm,1182.mm,2036.mm], [173.mm,1182.mm,2036.mm], [173.mm,1200.mm,2036.mm], [163.mm,1200.mm,2036.mm])
+  grp.name = "Vertical Z cross-slide way (green) (150,2252)"
+  face = grp.entities.add_face([163.mm,1182.mm,1998.mm], [173.mm,1182.mm,1998.mm], [173.mm,1200.mm,1998.mm], [163.mm,1200.mm,1998.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -6304,10 +6232,10 @@ ents = carTilt2.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Horizontal X cross-slide way (purple) (150,2290)
+  # Horizontal X cross-slide way (purple) (150,2252)
   grp = ents.add_group
-  grp.name = "Horizontal X cross-slide way (purple) (150,2290)"
-  face = grp.entities.add_face([130.mm,1182.mm,2294.mm], [390.mm,1182.mm,2294.mm], [390.mm,1196.mm,2294.mm], [130.mm,1196.mm,2294.mm])
+  grp.name = "Horizontal X cross-slide way (purple) (150,2252)"
+  face = grp.entities.add_face([130.mm,1182.mm,2256.mm], [390.mm,1182.mm,2256.mm], [390.mm,1196.mm,2256.mm], [130.mm,1196.mm,2256.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -6318,95 +6246,51 @@ ents = carTilt2.entities
 carTilt2_inst = plwTilt.entities.add_instance(carTilt2, Geom::Transformation.new)
 carTilt2_inst.name = "Plane carriage Tilt 2"; carTilt2_inst.layer = model.layers["Plane Tilt"]
 [carTilt2, carTilt2_inst].each { |e| e.set_attribute(da, "_name", "PlaneCarTilt2"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "y", 0.0) }
-carTilt2_inst.set_attribute(da, "_y_formula", "WholePlaneTilt!move * -275.64")
+carTilt2_inst.set_attribute(da, "_y_formula", "WholePlaneTilt!move * -270.72")
 
 carTilt3 = model.definitions.add("Plane carriage Tilt 3")
 ents = carTilt3.entities
-  # Acetal guide wheel Ø32 (4624,2290) 1189
+  # Acetal skate wheel Ø32 (4624,2252) 1189
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (4624,2290) 1189"
+  grp.name = "Acetal skate wheel Ø32 (4624,2252) 1189"
   ge = grp.entities
-  circle = ge.add_circle([4598.mm,1189.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4616.mm,1189.mm,2283.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (4624,2290) 1229
+  # Acetal skate wheel Ø32 (4624,2252) 1229
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (4624,2290) 1229"
+  grp.name = "Acetal skate wheel Ø32 (4624,2252) 1229"
   ge = grp.entities
-  circle = ge.add_circle([4598.mm,1229.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4616.mm,1229.mm,2283.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm (4624,2290) 4591
+  # Carriage plate (4624,2252)
   grp = ents.add_group
-  grp.name = "Yoke arm (4624,2290) 4591"
-  face = grp.entities.add_face([4589.mm,1147.mm,2286.mm], [4593.mm,1147.mm,2286.mm], [4593.mm,1215.mm,2286.mm], [4589.mm,1215.mm,2286.mm])
+  grp.name = "Carriage plate (4624,2252)"
+  face = grp.entities.add_face([4583.mm,1182.mm,2246.mm], [4597.mm,1182.mm,2246.mm], [4597.mm,1268.mm,2246.mm], [4583.mm,1268.mm,2246.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
+  face.pushpull(83.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm (4624,2290) 4657
+  # Vertical Z cross-slide way (green) (4624,2252)
   grp = ents.add_group
-  grp.name = "Yoke arm (4624,2290) 4657"
-  face = grp.entities.add_face([4655.mm,1147.mm,2286.mm], [4659.mm,1147.mm,2286.mm], [4659.mm,1215.mm,2286.mm], [4655.mm,1215.mm,2286.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke cross-piece (4624,2290)
-  grp = ents.add_group
-  grp.name = "Yoke cross-piece (4624,2290)"
-  face = grp.entities.add_face([4589.mm,1147.mm,2278.mm], [4659.mm,1147.mm,2278.mm], [4659.mm,1215.mm,2278.mm], [4589.mm,1215.mm,2278.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke rail (4624,2290)
-  grp = ents.add_group
-  grp.name = "Yoke rail (4624,2290)"
-  face = grp.entities.add_face([4572.mm,1147.mm,2280.mm], [4663.mm,1147.mm,2280.mm], [4663.mm,1215.mm,2280.mm], [4572.mm,1215.mm,2280.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Carriage plate (4624,2290)
-  grp = ents.add_group
-  grp.name = "Carriage plate (4624,2290)"
-  face = grp.entities.add_face([4564.mm,1182.mm,2284.mm], [4578.mm,1182.mm,2284.mm], [4578.mm,1268.mm,2284.mm], [4564.mm,1268.mm,2284.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(51.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Vertical Z cross-slide way (green) (4624,2290)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide way (green) (4624,2290)"
-  face = grp.entities.add_face([4595.mm,1182.mm,2036.mm], [4605.mm,1182.mm,2036.mm], [4605.mm,1200.mm,2036.mm], [4595.mm,1200.mm,2036.mm])
+  grp.name = "Vertical Z cross-slide way (green) (4624,2252)"
+  face = grp.entities.add_face([4595.mm,1182.mm,1998.mm], [4605.mm,1182.mm,1998.mm], [4605.mm,1200.mm,1998.mm], [4595.mm,1200.mm,1998.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -6414,10 +6298,10 @@ ents = carTilt3.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Horizontal X cross-slide way (purple) (4624,2290)
+  # Horizontal X cross-slide way (purple) (4624,2252)
   grp = ents.add_group
-  grp.name = "Horizontal X cross-slide way (purple) (4624,2290)"
-  face = grp.entities.add_face([4384.mm,1182.mm,2294.mm], [4644.mm,1182.mm,2294.mm], [4644.mm,1196.mm,2294.mm], [4384.mm,1196.mm,2294.mm])
+  grp.name = "Horizontal X cross-slide way (purple) (4624,2252)"
+  face = grp.entities.add_face([4384.mm,1182.mm,2256.mm], [4644.mm,1182.mm,2256.mm], [4644.mm,1196.mm,2256.mm], [4384.mm,1196.mm,2256.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -6428,7 +6312,7 @@ ents = carTilt3.entities
 carTilt3_inst = plwTilt.entities.add_instance(carTilt3, Geom::Transformation.new)
 carTilt3_inst.name = "Plane carriage Tilt 3"; carTilt3_inst.layer = model.layers["Plane Tilt"]
 [carTilt3, carTilt3_inst].each { |e| e.set_attribute(da, "_name", "PlaneCarTilt3"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "y", 0.0) }
-carTilt3_inst.set_attribute(da, "_y_formula", "WholePlaneTilt!move * -275.64")
+carTilt3_inst.set_attribute(da, "_y_formula", "WholePlaneTilt!move * -270.72")
 
 plwTilt_inst = entities.add_instance(plwTilt, Geom::Transformation.new)
 plwTilt_inst.name = "Whole plane Tilt"; plwTilt_inst.layer = model.layers["Plane Tilt"]
@@ -6439,7 +6323,7 @@ plwTilt_inst.set_attribute(da, "_move_access", "VIEW")
 plwTilt_inst.set_attribute(da, "_move_label", "Tilt: click — frame rotxs, carriages roll on the rails")
 plwTilt_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1)')
 plwTilt_inst.set_attribute(da, "_onclick_access", "NONE")
-pltxtTilt = entities.add_text("CLICK: Tilt — the frame rotxs; each carriage stays on its rail and rolls in Y", Geom::Point3d.new(2387.mm, 1481.mm, 2440.mm), Geom::Vector3d.new(300.mm, -300.mm, 300.mm))
+pltxtTilt = entities.add_text("CLICK: Tilt — the frame rotxs; each carriage stays on its rail and rolls in Y", Geom::Point3d.new(2387.mm, 1481.mm, 2402.mm), Geom::Vector3d.new(300.mm, -300.mm, 300.mm))
 pltxtTilt.layer = model.layers["Plane Tilt"] rescue nil
 
 # ═══ Whole plane — Swing: FRAME rotates rotz about the centre; each CARRIAGE stays on its rail and
@@ -6451,9 +6335,9 @@ ents = frmSwing.entities
   # Film panel (near-invisible, clickable fill) — whole plane
   grp = ents.add_group
   grp.name = "Film panel (near-invisible, clickable fill) — whole plane"
-  face = grp.entities.add_face([-2204.mm,0.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [2204.mm,4.mm,-1065.mm], [-2204.mm,4.mm,-1065.mm])
+  face = grp.entities.add_face([-2204.mm,0.mm,-1046.mm], [2204.mm,0.mm,-1046.mm], [2204.mm,4.mm,-1046.mm], [-2204.mm,4.mm,-1046.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2130.mm)
+  face.pushpull(2092.mm)
   mat = model.materials["Film panel (near-invisible, clickable fill) — whole plane"] || model.materials.add("Film panel (near-invisible, clickable fill) — whole plane")
   mat.color = Sketchup::Color.new(31, 59, 102)
   mat.alpha = 0.04
@@ -6462,7 +6346,7 @@ ents = frmSwing.entities
   # Film frame — top upstand
   grp = ents.add_group
   grp.name = "Film frame — top upstand"
-  face = grp.entities.add_face([-2204.mm,-50.mm,1062.mm], [2204.mm,-50.mm,1062.mm], [2204.mm,0.mm,1062.mm], [-2204.mm,0.mm,1062.mm])
+  face = grp.entities.add_face([-2204.mm,-50.mm,1043.mm], [2204.mm,-50.mm,1043.mm], [2204.mm,0.mm,1043.mm], [-2204.mm,0.mm,1043.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -6473,7 +6357,7 @@ ents = frmSwing.entities
   # Film frame — top in-plane
   grp = ents.add_group
   grp.name = "Film frame — top in-plane"
-  face = grp.entities.add_face([-2204.mm,-3.mm,1015.mm], [2204.mm,-3.mm,1015.mm], [2204.mm,0.mm,1015.mm], [-2204.mm,0.mm,1015.mm])
+  face = grp.entities.add_face([-2204.mm,-3.mm,996.mm], [2204.mm,-3.mm,996.mm], [2204.mm,0.mm,996.mm], [-2204.mm,0.mm,996.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -6484,7 +6368,7 @@ ents = frmSwing.entities
   # Film frame — bottom upstand
   grp = ents.add_group
   grp.name = "Film frame — bottom upstand"
-  face = grp.entities.add_face([-2204.mm,-50.mm,-1065.mm], [2204.mm,-50.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([-2204.mm,-50.mm,-1046.mm], [2204.mm,-50.mm,-1046.mm], [2204.mm,0.mm,-1046.mm], [-2204.mm,0.mm,-1046.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -6495,7 +6379,7 @@ ents = frmSwing.entities
   # Film frame — bottom in-plane
   grp = ents.add_group
   grp.name = "Film frame — bottom in-plane"
-  face = grp.entities.add_face([-2204.mm,-3.mm,-1065.mm], [2204.mm,-3.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([-2204.mm,-3.mm,-1046.mm], [2204.mm,-3.mm,-1046.mm], [2204.mm,0.mm,-1046.mm], [-2204.mm,0.mm,-1046.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
@@ -6506,9 +6390,9 @@ ents = frmSwing.entities
   # Film frame — left upstand
   grp = ents.add_group
   grp.name = "Film frame — left upstand"
-  face = grp.entities.add_face([-2204.mm,-50.mm,-1065.mm], [-2201.mm,-50.mm,-1065.mm], [-2201.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([-2204.mm,-50.mm,-1046.mm], [-2201.mm,-50.mm,-1046.mm], [-2201.mm,0.mm,-1046.mm], [-2204.mm,0.mm,-1046.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2130.mm)
+  face.pushpull(2092.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -6517,9 +6401,9 @@ ents = frmSwing.entities
   # Film frame — left in-plane
   grp = ents.add_group
   grp.name = "Film frame — left in-plane"
-  face = grp.entities.add_face([-2204.mm,-3.mm,-1065.mm], [-2154.mm,-3.mm,-1065.mm], [-2154.mm,0.mm,-1065.mm], [-2204.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([-2204.mm,-3.mm,-1046.mm], [-2154.mm,-3.mm,-1046.mm], [-2154.mm,0.mm,-1046.mm], [-2204.mm,0.mm,-1046.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2130.mm)
+  face.pushpull(2092.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -6528,9 +6412,9 @@ ents = frmSwing.entities
   # Film frame — right upstand
   grp = ents.add_group
   grp.name = "Film frame — right upstand"
-  face = grp.entities.add_face([2201.mm,-50.mm,-1065.mm], [2204.mm,-50.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [2201.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([2201.mm,-50.mm,-1046.mm], [2204.mm,-50.mm,-1046.mm], [2204.mm,0.mm,-1046.mm], [2201.mm,0.mm,-1046.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2130.mm)
+  face.pushpull(2092.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -6539,9 +6423,9 @@ ents = frmSwing.entities
   # Film frame — right in-plane
   grp = ents.add_group
   grp.name = "Film frame — right in-plane"
-  face = grp.entities.add_face([2154.mm,-3.mm,-1065.mm], [2204.mm,-3.mm,-1065.mm], [2204.mm,0.mm,-1065.mm], [2154.mm,0.mm,-1065.mm])
+  face = grp.entities.add_face([2154.mm,-3.mm,-1046.mm], [2204.mm,-3.mm,-1046.mm], [2204.mm,0.mm,-1046.mm], [2154.mm,0.mm,-1046.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2130.mm)
+  face.pushpull(2092.mm)
   mat = model.materials["Film frame 2x2 6061 — bottom upstand (Movement BL)"] || model.materials.add("Film frame 2x2 6061 — bottom upstand (Movement BL)")
   mat.color = Sketchup::Color.new(143, 176, 200)
   mat.alpha = 1.0
@@ -6550,7 +6434,7 @@ ents = frmSwing.entities
   # U-joint (Belden UJ-SS750x375) (183,160)
   grp = ents.add_group
   grp.name = "U-joint (Belden UJ-SS750x375) (183,160)"
-  face = grp.entities.add_face([-2249.mm,-4.mm,-1079.mm], [-2225.mm,-4.mm,-1079.mm], [-2225.mm,20.mm,-1079.mm], [-2249.mm,20.mm,-1079.mm])
+  face = grp.entities.add_face([-2249.mm,-4.mm,-1060.mm], [-2225.mm,-4.mm,-1060.mm], [-2225.mm,20.mm,-1060.mm], [-2249.mm,20.mm,-1060.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
@@ -6562,7 +6446,7 @@ ents = frmSwing.entities
   grp = ents.add_group
   grp.name = "Input stub 3/8 (183,160)"
   ge = grp.entities
-  circle = ge.add_circle([-2232.mm,8.mm,-1065.mm], [1,0,0], 4.75.mm, 24)
+  circle = ge.add_circle([-2232.mm,8.mm,-1046.mm], [1,0,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
@@ -6574,7 +6458,7 @@ ents = frmSwing.entities
   # 4040N12 304 shaft support (183,160)
   grp = ents.add_group
   grp.name = "4040N12 304 shaft support (183,160)"
-  face = grp.entities.add_face([-2211.mm,-1.mm,-1076.mm], [-2188.mm,-1.mm,-1076.mm], [-2188.mm,17.mm,-1076.mm], [-2211.mm,17.mm,-1076.mm])
+  face = grp.entities.add_face([-2211.mm,-1.mm,-1057.mm], [-2188.mm,-1.mm,-1057.mm], [-2188.mm,17.mm,-1057.mm], [-2211.mm,17.mm,-1057.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -6586,7 +6470,7 @@ ents = frmSwing.entities
   grp = ents.add_group
   grp.name = "Output stub 3/8 (183,160)"
   ge = grp.entities
-  circle = ge.add_circle([-2237.mm,-14.mm,-1065.mm], [0,1,0], 4.75.mm, 24)
+  circle = ge.add_circle([-2237.mm,-14.mm,-1046.mm], [0,1,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -6599,7 +6483,7 @@ ents = frmSwing.entities
   grp = ents.add_group
   grp.name = "Frame-corner bolt (183,160)"
   ge = grp.entities
-  circle = ge.add_circle([-2204.mm,-6.mm,-1065.mm], [0,1,0], 3.mm, 24)
+  circle = ge.add_circle([-2204.mm,-6.mm,-1046.mm], [0,1,0], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
@@ -6611,7 +6495,7 @@ ents = frmSwing.entities
   # 304 SS corner plate (183,160)
   grp = ents.add_group
   grp.name = "304 SS corner plate (183,160)"
-  face = grp.entities.add_face([-2251.mm,-8.mm,-1060.mm], [-2217.mm,-8.mm,-1060.mm], [-2217.mm,8.mm,-1060.mm], [-2251.mm,8.mm,-1060.mm])
+  face = grp.entities.add_face([-2251.mm,-8.mm,-1041.mm], [-2217.mm,-8.mm,-1041.mm], [-2217.mm,8.mm,-1041.mm], [-2251.mm,8.mm,-1041.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -6622,7 +6506,7 @@ ents = frmSwing.entities
   # U-joint (Belden UJ-SS750x375) (4591,160)
   grp = ents.add_group
   grp.name = "U-joint (Belden UJ-SS750x375) (4591,160)"
-  face = grp.entities.add_face([2225.mm,-4.mm,-1079.mm], [2249.mm,-4.mm,-1079.mm], [2249.mm,20.mm,-1079.mm], [2225.mm,20.mm,-1079.mm])
+  face = grp.entities.add_face([2225.mm,-4.mm,-1060.mm], [2249.mm,-4.mm,-1060.mm], [2249.mm,20.mm,-1060.mm], [2225.mm,20.mm,-1060.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
@@ -6634,7 +6518,7 @@ ents = frmSwing.entities
   grp = ents.add_group
   grp.name = "Input stub 3/8 (4591,160)"
   ge = grp.entities
-  circle = ge.add_circle([2186.mm,8.mm,-1065.mm], [1,0,0], 4.75.mm, 24)
+  circle = ge.add_circle([2186.mm,8.mm,-1046.mm], [1,0,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
@@ -6646,7 +6530,7 @@ ents = frmSwing.entities
   # 4040N12 304 shaft support (4591,160)
   grp = ents.add_group
   grp.name = "4040N12 304 shaft support (4591,160)"
-  face = grp.entities.add_face([2188.mm,-1.mm,-1076.mm], [2211.mm,-1.mm,-1076.mm], [2211.mm,17.mm,-1076.mm], [2188.mm,17.mm,-1076.mm])
+  face = grp.entities.add_face([2188.mm,-1.mm,-1057.mm], [2211.mm,-1.mm,-1057.mm], [2211.mm,17.mm,-1057.mm], [2188.mm,17.mm,-1057.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -6658,7 +6542,7 @@ ents = frmSwing.entities
   grp = ents.add_group
   grp.name = "Output stub 3/8 (4591,160)"
   ge = grp.entities
-  circle = ge.add_circle([2237.mm,-14.mm,-1065.mm], [0,1,0], 4.75.mm, 24)
+  circle = ge.add_circle([2237.mm,-14.mm,-1046.mm], [0,1,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -6671,7 +6555,7 @@ ents = frmSwing.entities
   grp = ents.add_group
   grp.name = "Frame-corner bolt (4591,160)"
   ge = grp.entities
-  circle = ge.add_circle([2204.mm,-6.mm,-1065.mm], [0,1,0], 3.mm, 24)
+  circle = ge.add_circle([2204.mm,-6.mm,-1046.mm], [0,1,0], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
@@ -6683,7 +6567,7 @@ ents = frmSwing.entities
   # 304 SS corner plate (4591,160)
   grp = ents.add_group
   grp.name = "304 SS corner plate (4591,160)"
-  face = grp.entities.add_face([2217.mm,-8.mm,-1060.mm], [2251.mm,-8.mm,-1060.mm], [2251.mm,8.mm,-1060.mm], [2217.mm,8.mm,-1060.mm])
+  face = grp.entities.add_face([2217.mm,-8.mm,-1041.mm], [2251.mm,-8.mm,-1041.mm], [2251.mm,8.mm,-1041.mm], [2217.mm,8.mm,-1041.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -6691,10 +6575,10 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Belden UJ-SS750x375) (183,2290)
+  # U-joint (Belden UJ-SS750x375) (183,2252)
   grp = ents.add_group
-  grp.name = "U-joint (Belden UJ-SS750x375) (183,2290)"
-  face = grp.entities.add_face([-2249.mm,-4.mm,1051.mm], [-2225.mm,-4.mm,1051.mm], [-2225.mm,20.mm,1051.mm], [-2249.mm,20.mm,1051.mm])
+  grp.name = "U-joint (Belden UJ-SS750x375) (183,2252)"
+  face = grp.entities.add_face([-2249.mm,-4.mm,1032.mm], [-2225.mm,-4.mm,1032.mm], [-2225.mm,20.mm,1032.mm], [-2249.mm,20.mm,1032.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
@@ -6702,11 +6586,11 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Input stub 3/8 (183,2290)
+  # Input stub 3/8 (183,2252)
   grp = ents.add_group
-  grp.name = "Input stub 3/8 (183,2290)"
+  grp.name = "Input stub 3/8 (183,2252)"
   ge = grp.entities
-  circle = ge.add_circle([-2232.mm,8.mm,1065.mm], [1,0,0], 4.75.mm, 24)
+  circle = ge.add_circle([-2232.mm,8.mm,1046.mm], [1,0,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
@@ -6715,10 +6599,10 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # 4040N12 304 shaft support (183,2290)
+  # 4040N12 304 shaft support (183,2252)
   grp = ents.add_group
-  grp.name = "4040N12 304 shaft support (183,2290)"
-  face = grp.entities.add_face([-2211.mm,-1.mm,1054.mm], [-2188.mm,-1.mm,1054.mm], [-2188.mm,17.mm,1054.mm], [-2211.mm,17.mm,1054.mm])
+  grp.name = "4040N12 304 shaft support (183,2252)"
+  face = grp.entities.add_face([-2211.mm,-1.mm,1035.mm], [-2188.mm,-1.mm,1035.mm], [-2188.mm,17.mm,1035.mm], [-2211.mm,17.mm,1035.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -6726,11 +6610,11 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Output stub 3/8 (183,2290)
+  # Output stub 3/8 (183,2252)
   grp = ents.add_group
-  grp.name = "Output stub 3/8 (183,2290)"
+  grp.name = "Output stub 3/8 (183,2252)"
   ge = grp.entities
-  circle = ge.add_circle([-2237.mm,-14.mm,1065.mm], [0,1,0], 4.75.mm, 24)
+  circle = ge.add_circle([-2237.mm,-14.mm,1046.mm], [0,1,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -6739,11 +6623,11 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame-corner bolt (183,2290)
+  # Frame-corner bolt (183,2252)
   grp = ents.add_group
-  grp.name = "Frame-corner bolt (183,2290)"
+  grp.name = "Frame-corner bolt (183,2252)"
   ge = grp.entities
-  circle = ge.add_circle([-2204.mm,-6.mm,1065.mm], [0,1,0], 3.mm, 24)
+  circle = ge.add_circle([-2204.mm,-6.mm,1046.mm], [0,1,0], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
@@ -6752,10 +6636,10 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # 304 SS corner plate (183,2290)
+  # 304 SS corner plate (183,2252)
   grp = ents.add_group
-  grp.name = "304 SS corner plate (183,2290)"
-  face = grp.entities.add_face([-2251.mm,-8.mm,1020.mm], [-2217.mm,-8.mm,1020.mm], [-2217.mm,8.mm,1020.mm], [-2251.mm,8.mm,1020.mm])
+  grp.name = "304 SS corner plate (183,2252)"
+  face = grp.entities.add_face([-2251.mm,-8.mm,1001.mm], [-2217.mm,-8.mm,1001.mm], [-2217.mm,8.mm,1001.mm], [-2251.mm,8.mm,1001.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -6763,10 +6647,10 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # U-joint (Belden UJ-SS750x375) (4591,2290)
+  # U-joint (Belden UJ-SS750x375) (4591,2252)
   grp = ents.add_group
-  grp.name = "U-joint (Belden UJ-SS750x375) (4591,2290)"
-  face = grp.entities.add_face([2225.mm,-4.mm,1051.mm], [2249.mm,-4.mm,1051.mm], [2249.mm,20.mm,1051.mm], [2225.mm,20.mm,1051.mm])
+  grp.name = "U-joint (Belden UJ-SS750x375) (4591,2252)"
+  face = grp.entities.add_face([2225.mm,-4.mm,1032.mm], [2249.mm,-4.mm,1032.mm], [2249.mm,20.mm,1032.mm], [2225.mm,20.mm,1032.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(24.mm)
   mat = model.materials["U-joint (Belden UJ-SS750x375) (Movement BL)"] || model.materials.add("U-joint (Belden UJ-SS750x375) (Movement BL)")
@@ -6774,11 +6658,11 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Input stub 3/8 (4591,2290)
+  # Input stub 3/8 (4591,2252)
   grp = ents.add_group
-  grp.name = "Input stub 3/8 (4591,2290)"
+  grp.name = "Input stub 3/8 (4591,2252)"
   ge = grp.entities
-  circle = ge.add_circle([2186.mm,8.mm,1065.mm], [1,0,0], 4.75.mm, 24)
+  circle = ge.add_circle([2186.mm,8.mm,1046.mm], [1,0,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(46.mm)
@@ -6787,10 +6671,10 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # 4040N12 304 shaft support (4591,2290)
+  # 4040N12 304 shaft support (4591,2252)
   grp = ents.add_group
-  grp.name = "4040N12 304 shaft support (4591,2290)"
-  face = grp.entities.add_face([2188.mm,-1.mm,1054.mm], [2211.mm,-1.mm,1054.mm], [2211.mm,17.mm,1054.mm], [2188.mm,17.mm,1054.mm])
+  grp.name = "4040N12 304 shaft support (4591,2252)"
+  face = grp.entities.add_face([2188.mm,-1.mm,1035.mm], [2211.mm,-1.mm,1035.mm], [2211.mm,17.mm,1035.mm], [2188.mm,17.mm,1035.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(22.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -6798,11 +6682,11 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Output stub 3/8 (4591,2290)
+  # Output stub 3/8 (4591,2252)
   grp = ents.add_group
-  grp.name = "Output stub 3/8 (4591,2290)"
+  grp.name = "Output stub 3/8 (4591,2252)"
   ge = grp.entities
-  circle = ge.add_circle([2237.mm,-14.mm,1065.mm], [0,1,0], 4.75.mm, 24)
+  circle = ge.add_circle([2237.mm,-14.mm,1046.mm], [0,1,0], 4.75.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -6811,11 +6695,11 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Frame-corner bolt (4591,2290)
+  # Frame-corner bolt (4591,2252)
   grp = ents.add_group
-  grp.name = "Frame-corner bolt (4591,2290)"
+  grp.name = "Frame-corner bolt (4591,2252)"
   ge = grp.entities
-  circle = ge.add_circle([2204.mm,-6.mm,1065.mm], [0,1,0], 3.mm, 24)
+  circle = ge.add_circle([2204.mm,-6.mm,1046.mm], [0,1,0], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(18.mm)
@@ -6824,10 +6708,10 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # 304 SS corner plate (4591,2290)
+  # 304 SS corner plate (4591,2252)
   grp = ents.add_group
-  grp.name = "304 SS corner plate (4591,2290)"
-  face = grp.entities.add_face([2217.mm,-8.mm,1020.mm], [2251.mm,-8.mm,1020.mm], [2251.mm,8.mm,1020.mm], [2217.mm,8.mm,1020.mm])
+  grp.name = "304 SS corner plate (4591,2252)"
+  face = grp.entities.add_face([2217.mm,-8.mm,1001.mm], [2251.mm,-8.mm,1001.mm], [2251.mm,8.mm,1001.mm], [2217.mm,8.mm,1001.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Input stub 3/8 (X slide → U-joint) (Movement BL)"] || model.materials.add("Input stub 3/8 (X slide → U-joint) (Movement BL)")
@@ -6835,7 +6719,7 @@ ents = frmSwing.entities
   mat.alpha = 1.0
   grp.material = mat
 
-frmSwing_inst = plwSwing.entities.add_instance(frmSwing, Geom::Transformation.translation([2387.mm, 1181.mm, 1225.mm]))
+frmSwing_inst = plwSwing.entities.add_instance(frmSwing, Geom::Transformation.translation([2387.mm, 1181.mm, 1206.mm]))
 frmSwing_inst.name = "Plane frame Swing"; frmSwing_inst.layer = model.layers["Plane Swing"]
 [frmSwing, frmSwing_inst].each { |e| e.set_attribute(da, "_name", "PlaneFrameSwing"); e.set_attribute(da, "_lengthunits", "MILLIMETERS"); e.set_attribute(da, "rotz", 0.0) }
 frmSwing_inst.set_attribute(da, "_rotz_formula", "WholePlaneSwing!move * 15")
@@ -6974,91 +6858,47 @@ carSwing1_inst.set_attribute(da, "_y_formula", "WholePlaneSwing!move * 570.44")
 
 carSwing2 = model.definitions.add("Plane carriage Swing 2")
 ents = carSwing2.entities
-  # Acetal guide wheel Ø32 (150,2290) 1189
+  # Acetal skate wheel Ø32 (150,2252) 1189
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (150,2290) 1189"
+  grp.name = "Acetal skate wheel Ø32 (150,2252) 1189"
   ge = grp.entities
-  circle = ge.add_circle([124.mm,1189.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([142.mm,1189.mm,2283.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (150,2290) 1229
+  # Acetal skate wheel Ø32 (150,2252) 1229
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (150,2290) 1229"
+  grp.name = "Acetal skate wheel Ø32 (150,2252) 1229"
   ge = grp.entities
-  circle = ge.add_circle([124.mm,1229.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([142.mm,1229.mm,2283.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm (150,2290) 117
+  # Carriage plate (150,2252)
   grp = ents.add_group
-  grp.name = "Yoke arm (150,2290) 117"
-  face = grp.entities.add_face([115.mm,1147.mm,2286.mm], [119.mm,1147.mm,2286.mm], [119.mm,1215.mm,2286.mm], [115.mm,1215.mm,2286.mm])
+  grp.name = "Carriage plate (150,2252)"
+  face = grp.entities.add_face([177.mm,1182.mm,2246.mm], [191.mm,1182.mm,2246.mm], [191.mm,1268.mm,2246.mm], [177.mm,1268.mm,2246.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
+  face.pushpull(83.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm (150,2290) 183
+  # Vertical Z cross-slide way (green) (150,2252)
   grp = ents.add_group
-  grp.name = "Yoke arm (150,2290) 183"
-  face = grp.entities.add_face([181.mm,1147.mm,2286.mm], [185.mm,1147.mm,2286.mm], [185.mm,1215.mm,2286.mm], [181.mm,1215.mm,2286.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke cross-piece (150,2290)
-  grp = ents.add_group
-  grp.name = "Yoke cross-piece (150,2290)"
-  face = grp.entities.add_face([115.mm,1147.mm,2278.mm], [185.mm,1147.mm,2278.mm], [185.mm,1215.mm,2278.mm], [115.mm,1215.mm,2278.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke rail (150,2290)
-  grp = ents.add_group
-  grp.name = "Yoke rail (150,2290)"
-  face = grp.entities.add_face([183.mm,1147.mm,2280.mm], [208.mm,1147.mm,2280.mm], [208.mm,1215.mm,2280.mm], [183.mm,1215.mm,2280.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Carriage plate (150,2290)
-  grp = ents.add_group
-  grp.name = "Carriage plate (150,2290)"
-  face = grp.entities.add_face([196.mm,1182.mm,2284.mm], [210.mm,1182.mm,2284.mm], [210.mm,1268.mm,2284.mm], [196.mm,1268.mm,2284.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(51.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Vertical Z cross-slide way (green) (150,2290)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide way (green) (150,2290)"
-  face = grp.entities.add_face([163.mm,1182.mm,2036.mm], [173.mm,1182.mm,2036.mm], [173.mm,1200.mm,2036.mm], [163.mm,1200.mm,2036.mm])
+  grp.name = "Vertical Z cross-slide way (green) (150,2252)"
+  face = grp.entities.add_face([163.mm,1182.mm,1998.mm], [173.mm,1182.mm,1998.mm], [173.mm,1200.mm,1998.mm], [163.mm,1200.mm,1998.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -7066,10 +6906,10 @@ ents = carSwing2.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Horizontal X cross-slide way (purple) (150,2290)
+  # Horizontal X cross-slide way (purple) (150,2252)
   grp = ents.add_group
-  grp.name = "Horizontal X cross-slide way (purple) (150,2290)"
-  face = grp.entities.add_face([130.mm,1182.mm,2294.mm], [390.mm,1182.mm,2294.mm], [390.mm,1196.mm,2294.mm], [130.mm,1196.mm,2294.mm])
+  grp.name = "Horizontal X cross-slide way (purple) (150,2252)"
+  face = grp.entities.add_face([130.mm,1182.mm,2256.mm], [390.mm,1182.mm,2256.mm], [390.mm,1196.mm,2256.mm], [130.mm,1196.mm,2256.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -7084,91 +6924,47 @@ carSwing2_inst.set_attribute(da, "_y_formula", "WholePlaneSwing!move * -570.44")
 
 carSwing3 = model.definitions.add("Plane carriage Swing 3")
 ents = carSwing3.entities
-  # Acetal guide wheel Ø32 (4624,2290) 1189
+  # Acetal skate wheel Ø32 (4624,2252) 1189
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (4624,2290) 1189"
+  grp.name = "Acetal skate wheel Ø32 (4624,2252) 1189"
   ge = grp.entities
-  circle = ge.add_circle([4598.mm,1189.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4616.mm,1189.mm,2283.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Acetal guide wheel Ø32 (4624,2290) 1229
+  # Acetal skate wheel Ø32 (4624,2252) 1229
   grp = ents.add_group
-  grp.name = "Acetal guide wheel Ø32 (4624,2290) 1229"
+  grp.name = "Acetal skate wheel Ø32 (4624,2252) 1229"
   ge = grp.entities
-  circle = ge.add_circle([4598.mm,1229.mm,2317.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([4616.mm,1229.mm,2283.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(52.mm)
+  cface.pushpull(16.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm (4624,2290) 4591
+  # Carriage plate (4624,2252)
   grp = ents.add_group
-  grp.name = "Yoke arm (4624,2290) 4591"
-  face = grp.entities.add_face([4589.mm,1147.mm,2286.mm], [4593.mm,1147.mm,2286.mm], [4593.mm,1215.mm,2286.mm], [4589.mm,1215.mm,2286.mm])
+  grp.name = "Carriage plate (4624,2252)"
+  face = grp.entities.add_face([4583.mm,1182.mm,2246.mm], [4597.mm,1182.mm,2246.mm], [4597.mm,1268.mm,2246.mm], [4583.mm,1268.mm,2246.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
+  face.pushpull(83.mm)
   mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
   mat.color = Sketchup::Color.new(192, 64, 16)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Yoke arm (4624,2290) 4657
+  # Vertical Z cross-slide way (green) (4624,2252)
   grp = ents.add_group
-  grp.name = "Yoke arm (4624,2290) 4657"
-  face = grp.entities.add_face([4655.mm,1147.mm,2286.mm], [4659.mm,1147.mm,2286.mm], [4659.mm,1215.mm,2286.mm], [4655.mm,1215.mm,2286.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(31.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke cross-piece (4624,2290)
-  grp = ents.add_group
-  grp.name = "Yoke cross-piece (4624,2290)"
-  face = grp.entities.add_face([4589.mm,1147.mm,2278.mm], [4659.mm,1147.mm,2278.mm], [4659.mm,1215.mm,2278.mm], [4589.mm,1215.mm,2278.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(8.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Yoke rail (4624,2290)
-  grp = ents.add_group
-  grp.name = "Yoke rail (4624,2290)"
-  face = grp.entities.add_face([4572.mm,1147.mm,2280.mm], [4663.mm,1147.mm,2280.mm], [4663.mm,1215.mm,2280.mm], [4572.mm,1215.mm,2280.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(6.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Carriage plate (4624,2290)
-  grp = ents.add_group
-  grp.name = "Carriage plate (4624,2290)"
-  face = grp.entities.add_face([4564.mm,1182.mm,2284.mm], [4578.mm,1182.mm,2284.mm], [4578.mm,1268.mm,2284.mm], [4564.mm,1268.mm,2284.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(51.mm)
-  mat = model.materials["Acetal skate wheel Ø32 (Movement BL) 2270"] || model.materials.add("Acetal skate wheel Ø32 (Movement BL) 2270")
-  mat.color = Sketchup::Color.new(192, 64, 16)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Vertical Z cross-slide way (green) (4624,2290)
-  grp = ents.add_group
-  grp.name = "Vertical Z cross-slide way (green) (4624,2290)"
-  face = grp.entities.add_face([4595.mm,1182.mm,2036.mm], [4605.mm,1182.mm,2036.mm], [4605.mm,1200.mm,2036.mm], [4595.mm,1200.mm,2036.mm])
+  grp.name = "Vertical Z cross-slide way (green) (4624,2252)"
+  face = grp.entities.add_face([4595.mm,1182.mm,1998.mm], [4605.mm,1182.mm,1998.mm], [4605.mm,1200.mm,1998.mm], [4595.mm,1200.mm,1998.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(250.mm)
   mat = model.materials["Vertical Z cross-slide (TILT, green ~250) (Movement BL)"] || model.materials.add("Vertical Z cross-slide (TILT, green ~250) (Movement BL)")
@@ -7176,10 +6972,10 @@ ents = carSwing3.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Horizontal X cross-slide way (purple) (4624,2290)
+  # Horizontal X cross-slide way (purple) (4624,2252)
   grp = ents.add_group
-  grp.name = "Horizontal X cross-slide way (purple) (4624,2290)"
-  face = grp.entities.add_face([4384.mm,1182.mm,2294.mm], [4644.mm,1182.mm,2294.mm], [4644.mm,1196.mm,2294.mm], [4384.mm,1196.mm,2294.mm])
+  grp.name = "Horizontal X cross-slide way (purple) (4624,2252)"
+  face = grp.entities.add_face([4384.mm,1182.mm,2256.mm], [4644.mm,1182.mm,2256.mm], [4644.mm,1196.mm,2256.mm], [4384.mm,1196.mm,2256.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(14.mm)
   mat = model.materials["Horizontal X cross-slide (SWING, purple ~260) (Movement BL)"] || model.materials.add("Horizontal X cross-slide (SWING, purple ~260) (Movement BL)")
@@ -7201,7 +6997,7 @@ plwSwing_inst.set_attribute(da, "_move_access", "VIEW")
 plwSwing_inst.set_attribute(da, "_move_label", "Swing: click — frame rotzs, carriages roll on the rails")
 plwSwing_inst.set_attribute(da, "onclick", 'ANIMATE("move", 0, 1)')
 plwSwing_inst.set_attribute(da, "_onclick_access", "NONE")
-pltxtSwing = entities.add_text("CLICK: Swing — the frame rotzs; each carriage stays on its rail and rolls in Y", Geom::Point3d.new(2387.mm, 1481.mm, 2440.mm), Geom::Vector3d.new(300.mm, -300.mm, 300.mm))
+pltxtSwing = entities.add_text("CLICK: Swing — the frame rotzs; each carriage stays on its rail and rolls in Y", Geom::Point3d.new(2387.mm, 1481.mm, 2402.mm), Geom::Vector3d.new(300.mm, -300.mm, 300.mm))
 pltxtSwing.layer = model.layers["Plane Swing"] rescue nil
 
 
@@ -7210,7 +7006,7 @@ pltxtSwing.layer = model.layers["Plane Swing"] rescue nil
 tt = entities.add_text("PINHOLE (far wall) — the film plane faces it across the throw", Geom::Point3d.new(2399.mm, 0.mm, 1194.mm), Geom::Vector3d.new(60.mm, -50.mm, 30.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
-tt = entities.add_text("Film plane 4408.0 x 2130 (edges seated in the carriers; bottom @Z160 above walkway, weight on the bottom rail; top = light guide only)", Geom::Point3d.new(2400.mm, 2262.mm, 1194.mm), Geom::Vector3d.new(60.mm, 45.mm, 20.mm))
+tt = entities.add_text("Film plane 4408.0 x 2092 (edges seated in the carriers; bottom @Z160 above walkway, weight on the bottom rail; top = light guide only)", Geom::Point3d.new(2400.mm, 2262.mm, 1194.mm), Geom::Vector3d.new(60.mm, 45.mm, 20.mm))
 tt.layer = model.layers["Labels"] rescue nil
 
 tt = entities.add_text("TOP pair vs BOTTOM pair depth = TILT", Geom::Point3d.new(150.mm, 2262.mm, 2388.mm), Geom::Vector3d.new(-60.mm, -40.mm, 30.mm))

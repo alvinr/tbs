@@ -1176,12 +1176,15 @@ def right_flanged(ax):
         _rect(ax, yf, rz0 - 8, 40, (rz1 - rz0) + 16, C_CAR, z=6)
         for bz in (rz0 + 4, rz1 - 4):
             draw_circle(ax, yf + 20, bz, 3, color=OUT, fill=True, fc=C_PIN, lw=0.7, zorder=8)
+    # flange bolt pattern — detail dims (diagram-of-record): 2× M8 vertical, on the flange CL
+    draw_dim_v(ax, -44, rz0 + 4, rz1 - 4, f"{(rz1 - 4) - (rz0 + 4):.0f}", offset=8, fs=5.2, color=DIM, font=FONT)   # bolt vertical spacing
+    draw_dim_h(ax, 0, 40, rz1 + 20, "40", offset=6, fs=5.2, color=DIM, above=True, font=FONT)                       # flange width
     # length SPLICE (GHOST) — the 2362 mm wall-to-wall rail also exceeds 6 ft stock, so it too takes one splice
     sx = 900
     ax.add_patch(plt.Rectangle((sx - 55, rz0), 110, rz1 - rz0, fc="none", ec=OUT, lw=1.0, ls=(0, (5, 3)), zorder=8))
     leader(ax, sx, rz1, sx + 40, 132, "length SPLICE (web-back, GHOST) — rail > 6 ft stock",
            ha="left", fs=5.8, color=DIM, font=FONT, bbox=LBL_BG)
-    leader(ax, 20, rz1, 120, 132, "end flange → wall (through-bolted)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 20, rz1, 120, 132, "end flange → wall — 2× M8×25 through-bolt (ICP-14)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, C_WID - 20, rz0 - 4, C_WID - 260, -44, "outboard end plate trimmed 35mm (IBC clearance);\nshares the IBC combined corner plate",
            ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     ax.text(-260, 146, "RIGHT RAIL — FLANGED WALL-TO-WALL  (permanent; no transport split)",

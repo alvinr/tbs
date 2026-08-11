@@ -99,6 +99,45 @@ every hole located (PCD/edge distance), every fastener called out (size/thread/t
 part's material + finish stated, sections dimensioned, and a datum/tolerance scheme present — all driven
 from `tbs_constants` with **zero** `reserved`/prose-only corner dimensions remaining.
 
+## Guide (top) corner — web-vertical decision + FP_H reconciliation (VERIFIED 2026-08-10)
+
+**Decision (Alvin):** the top (guide) corner uses the **same web-vertical rail + captured skate** as
+the bottom (weight) corner — NOT the flat "inverted-U, wheels-under-web" build the 3D model currently
+has. Rationale: the wheels-under-web build is unsound (gravity drops the hanging carriage away from the
+rollers); a captured skate on a web-vertical rail holds the corner regardless of load direction (it
+reacts the plane's tip-force, not gravity). The transport swing does not constrain this — the left rails
+are transport drop-ins (removed for the ~56° swing; door clearance `SWUNG_DOOR_CLEARANCE_MM`=59mm is
+unaffected).
+
+**The old Sheet 10 was reverted** (commit on this branch): its wheels-under-web section was wrong and it
+added nothing over Sheet 3 but a deltas note.
+
+**FP_H reconciliation — the key result: NO `FP_H` change, NO headline cascade.** The flat top rail was
+letting the 3D model draw the film ~36 mm *taller* than the official constant ever claimed — a latent
+inconsistency. Web-vertical corrects the model *down to* the constant. Verified against the LIVE model
+(`film-plane-mechanism.skp`, read-only eval), all mm:
+
+| | film bottom | film top | FP height | top rail Z |
+|---|---|---|---|---|
+| **Constant** (`FP_H`) | 160 | 2254 | **2094** | — |
+| **Model, flat top (now)** | 160 | **2290** | 2130 (outlier, +36) | 2300–2338 (38 tall, 50 below ceiling) |
+| **Model, web-vertical** | 160 | **2252** | **2092** (≈ FP_H, −2) | 2262–2338 (76 tall, 50 below ceiling) |
+
+Web-vertical film top = `C_HGT(2388) − rail(76) − ceiling_clear(50) − guide_gap(10) = 2252`; FP =
+2252 − 160 = **2092 ≈ FP_H 2094** (2 mm, within rounding). So `FP_H` stays **2094**, `RAIL_OFF_TOP`
+stays **144** — the model was the thing out of sync; web-vertical fixes it. (A separate ~10 mm internal
+slack exists between `RAIL_OFF_TOP`→2244 and `FP_H`→2254; optional future cleanup, independent of this.)
+
+**What the switch takes (no FP_H/optics/image-area/facts/CLAUDE.md churn):**
+1. **3D model** `generate_film_plane_mechanism_model.py` — top rail flat→web-vertical (`CD_TOP/CW_TOP`
+   orientation, `PZ_HB_TOP`, `GUIDE_GAP`, `guide_rail()` builder); the top skate becomes the SAME captured
+   skate as the bottom; film top drops 2290→2252. Regenerate + **re-send** (needs the .skp open) + ALVIN saves.
+2. **Docs/comments** — "top laid FLAT / inverted-U / wheels under web" → "top web-vertical, captured guide
+   skate (rollers grip both flanges; reacts tip-force, not gravity)" in `component-dependency-map.md`,
+   `film-plane-mechanism-report.md`, and the model comments.
+3. **2D** — the guide-corner coverage folds into Sheet 3 as a captured-skate note (not a separate Sheet 10).
+4. **No** `FP_H` change (verified), so no cascade to facts/optics/ACM/muslin/weight/CLAUDE.md.
+
 ## Open items to settle during design
 
 - Exact travel values for the promoted `XSLIDE_*` (verify vs swing/tilt geometry).

@@ -1986,6 +1986,16 @@ def sheet9():
         "LOAD PATH, film → rail:  ACM board → 6061 angle frame → 304 SS corner plate → U-joint → "
         "X (swing) slide → Z (tilt) slide → carriage plate → 4-wheel acetal skate → 6061 Al U-channel rail.",
     ], 1, 97, spacing=4.5, fs=7, title_fs=7.6, color=DIM, title_color=ANNO, font=FONT, width=46, wrap=110)
+    # datum + tolerance scheme (Phase 4) — right half
+    draw_notes(axN, [
+        "DATUM & TOLERANCE SCHEME (applies to all four corners):",
+        "DATUMS:  A = frame-angle mounting face (film-plane reference); B = rail web (depth-slide axis); "
+        "C = optical axis / film face.",
+        "GENERAL:  linear ±0.5mm; machined mating faces ±0.15mm; angular ±0.5°.",
+        "CRITICAL (per feature):  cross-slide ways // B (parallel) within 0.1; U-joint bore TP Ø0.1 to A-B; carriage "
+        "+ corner-plate J5 holes TP Ø0.2; skate roller-to-flange gap 4 ±0.3mm; U-channel web ⊥ A within 0.15.",
+        "FINISH:  machined faces Ra 3.2; UHMW pad + gib bearing faces Ra 1.6.",
+    ], 52, 97, spacing=4.5, fs=6.6, title_fs=7.2, color=DIM, title_color=ANNO, font=FONT, width=46, wrap=62)
     # title block
     ax_tb = fig.add_axes([0.02, 0.0, 0.96, 0.055]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 9 OF 9",

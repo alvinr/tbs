@@ -32,7 +32,7 @@ from tbs_constants import (XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_TRAVEL, XSLIDE_X
                           XSLIDE_Z_BAR_LEN, XSLIDE_X_BAR_LEN, XSLIDE_UHMW_T, XSLIDE_GIB_W,
                           UJOINT_BORE, UJOINT_OD, UJOINT_LEN, UJOINT_ANGLE, CORNER_PLATE_W, CORNER_PLATE_H,
                           CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP, CORNER_PLATE_BEND_R,
-                          SKATE_ROLLER_OD, SKATE_KEEPER_OD, SKATE_AXLE_OD)
+                          SKATE_ROLLER_OD, SKATE_KEEPER_OD, SKATE_AXLE_OD, SKATE_ROLLER_SP)
 from tbs_title_block import title_block
 from tbs_drawing import (leader, draw_notes, draw_dim_h, draw_dim_v,
                          draw_rect, draw_circle, hatch_rect, reset_label_registry)
@@ -723,11 +723,14 @@ def view_a(ax):
     _rect(ax, 196, 282, 16, 14, C_CLAMP, z=7)                                        # clamp base on the plate
     ax.plot([204, 216], [296, 314], color=C_CLAMP, lw=2.0, zorder=8)                 # cam lever (thrown = locked)
     _rect(ax, 197, 299, 13, 5, C_POLY, z=8)                                          # UHMW pad on the top flange (Z≈303)
-    # 4-wheel skate — GHOSTED (dotted), hidden behind the plate: 2 LOAD rollers + 2 KEEPER rollers + the axle
-    for wx in (150, 190):
-        ax.add_patch(plt.Circle((wx, 253), 16, fc="none", ec=OUT, lw=0.7, ls=(0, (3, 2)), zorder=10))  # load roller Ø32
-        ax.add_patch(plt.Circle((wx, 291), 10, fc="none", ec=OUT, lw=0.6, ls=(0, (3, 2)), zorder=10))  # keeper Ø20
-    ax.plot([150, 190], [253, 253], color=OUT, lw=0.6, dashes=(3, 2), zorder=10)     # axle (ghost) through both load rollers
+    # 4-wheel skate — GHOSTED (dotted), hidden behind the plate: 2 LOAD rollers + 2 KEEPER rollers + the axle.
+    # Roller pitch driven from SKATE_ROLLER_SP (to scale, mm).
+    _rc, _sp = 170, SKATE_ROLLER_SP
+    for wx in (_rc - _sp / 2, _rc + _sp / 2):
+        ax.add_patch(plt.Circle((wx, 253), 16, fc="none", ec=OUT, lw=0.7, ls=(0, (3, 2)), zorder=10))  # load roller
+        ax.add_patch(plt.Circle((wx, 291), 10, fc="none", ec=OUT, lw=0.6, ls=(0, (3, 2)), zorder=10))  # keeper
+    ax.plot([_rc - _sp / 2, _rc + _sp / 2], [253, 253], color=OUT, lw=0.6, dashes=(3, 2), zorder=10)   # axle (ghost)
+    draw_dim_h(ax, _rc - _sp / 2, _rc + _sp / 2, 325, f"{SKATE_ROLLER_SP:.0f} roller pitch", offset=7, fs=5.2, color=DIM, above=True, font=FONT)
     # section A-A cut through the bottom carriage
     ax.plot([170, 170], [232, 250], color=OUT, lw=0.6, zorder=11)
     ax.plot([170, 170], [120, 134], color=OUT, lw=0.6, zorder=11)
@@ -750,7 +753,7 @@ def view_a(ax):
 
     # ── leaders ──
     leader(ax, 60, 270, 232, 300, "DEPTH RAIL (Y) — 3×1.5 6061 Al U-channel, web-vertical,\nruns in Yd; the traverse (~2.4 m floor rail)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
-    leader(ax, 190, 253, 232, 262, "4-wheel acetal skate — Ø32 LOAD rollers on the bottom flange\n+ Ø20 KEEPER rollers under the top flange (captive)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 190, 253, 232, 262, f"4-wheel acetal skate — Ø{SKATE_ROLLER_OD:.1f} LOAD rollers on the bottom flange\n+ Ø{SKATE_KEEPER_OD:.1f} KEEPER rollers under the top flange (captive)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 210, 210, 232, 210, "wide carriage plate (red) + cam clamp — hangs from the skate axles", ha="left", fs=5.8, color=C_CAR, font=FONT, bbox=LBL_BG)
     leader(ax, 170, 200, 232, 186, "Z (TILT) slide — 304 flat bar + UHMW + gib (green, up the plate centre)", ha="left", fs=5.8, color=C_TILT, font=FONT, bbox=LBL_BG)
     leader(ax, 176, 162, 232, 160, "X (SWING) slide — 304 flat bar, INTO PAGE (end-on)", ha="left", fs=5.8, color=C_SWING, font=FONT, bbox=LBL_BG)

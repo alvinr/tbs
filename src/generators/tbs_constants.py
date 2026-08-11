@@ -188,6 +188,7 @@ SKATE_KEEPER_OD = 19.05  # keeper roller OD (mm) = 3/4" Delrin (captive under th
 SKATE_ROLLER_W  = 20     # roller width (mm, cut)
 SKATE_AXLE_OD   = 10     # axle-pin OD (mm) — 10x60mm 304 clevis pin
 SKATE_AXLE_LEN  = 60     # axle-pin length (mm)
+SKATE_ROLLER_SP = 40     # load-roller pitch along the rail (Yd) on the carriage plate (mm)
 # Cam rail-brake — McMaster 5128A63 (3 per corner):
 CAM_CLAMP_BASE_W  = 22   # clamp base long dim (mm)
 CAM_CLAMP_BASE_D  = 19   # clamp base short dim (mm)

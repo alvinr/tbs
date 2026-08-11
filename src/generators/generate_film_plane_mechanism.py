@@ -760,6 +760,11 @@ def view_a(ax):
     leader(ax, 182, 158, 232, 138, "single U-joint (Belden UJ-SS750x375) + 304 SS corner plate → frame angle", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 181, 300, 232, 118, "2x2 6061 Al frame angle + ACM/muslin — rises UP (the rigid plane)", ha="left", fs=5.8, color=OUT, font=FONT, bbox=LBL_BG)
 
+    ax.text(-55, 522, "GUIDE (TOP) CORNER — the mirror: the SAME web-vertical rail + captured skate. The\n"
+            "KEEPER (capture) rollers react the plane's tip-force at the top instead of the load\n"
+            "rollers taking gravity here — no separate mechanism; same cross-slides, U-joint, and\n"
+            "plate. Only the load direction differs (all four corners share the part set).",
+            fontsize=5.6, color=OUT, ha="left", va="top", **FONT, bbox=LBL_BG)
     ax.text(-60, 558, "A — CORNER ASSEMBLY ELEVATION  (BOTTOM / weight corner; Yd × Z — film hangs below the rail, matches the 3D)",
             fontsize=7.6, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
 
@@ -2016,11 +2021,12 @@ def sheet8():
         "arc-travel of a swing (~260mm). Both are 304 flat bar on UHMW pads with a gib; the gib drag "
         "holds the gravity-loaded Z axis, and a cam clamp locks each for the shot.",
         "FIVE JOINTS make the chain (rail→frame, top-down — the full stack is on Sheet 3, View A):",
-        "  J1  Z-way seats on the carriage-plate face  M8 ×4 SS (the green Z-slide runs up the plate centre)",
-        "  J2  X-way → Z-carriage ................... M8 ×4 SS",
-        "  J3  X-carriage stub Ø9.5 (3/8\") → U-joint bore .. KEY + CLAMP HUB (Belden UJ-SS750x375, setscrew)",
-        "  J4  U-joint 2nd bore → 3/8\" stub → 304 SS corner plate .. SETSCREW HUB (both stubs)",
-        "  J5  2x2 6061 Al frame angle → 304 SS corner plate .. M6 ×2 per leg, vertical (tapped into the angle)",
+        "  J1  Z-way → carriage-plate face ...... 4x M8x20 A2-70 SS · 24 N·m · flat+split washer · Loctite 243",
+        "  J2  X-way → Z-carriage ............... 4x M8x20 A2-70 SS · 24 N·m · flat+split washer · Loctite 243",
+        f"  J3  X-carriage stub Ø{UJOINT_BORE:.2f} (3/8\") → U-joint bore .. Belden clamp-hub SETSCREW ~2.5 N·m (Nypatch)",
+        "  J4  U-joint 2nd bore → 3/8\" stub → 304 corner plate .. clamp-hub SETSCREW ~2.5 N·m (both stubs)",
+        "  J5  6061 frame angle → 304 corner plate .. 4x M6x16 A2-70 SS (2/leg) · 10 N·m · flat washer · tapped in the angle · Loctite 243",
+        "TORQUES: A2-70 stainless, lightly anti-seized (galling); values per a standard A2-70 fastener table (M6 10 N·m, M8 24 N·m). Setscrews per the Belden datasheet. Medium threadlocker on every screw — the mechanism sees transport vibration.",
         "The U-joint's two bores are its ONLY rotating link; everything else is a rigid bolted/clamped "
         "stack. Set the pose by hand (push each slide), then throw the cam clamps — no leadscrews "
         "(a pinhole's infinite depth of field makes this scene control, not focus).",

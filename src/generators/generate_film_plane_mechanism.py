@@ -416,7 +416,7 @@ def sheet1():
                 color=col, fontsize=6, va="center", **FONT)
 
     # Title block
-    title_block(ax, "SHEET 1 OF 10",
+    title_block(ax, "SHEET 1 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Plan view — 4-corner rail layout",
                 scale_note="Proportional (mm)",
@@ -673,7 +673,7 @@ def sheet2():
     # Title block (full-figure overlay for multi-subplot sheet)
     ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 2 OF 10",
+    title_block(ax_tb, "SHEET 2 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Tilt elevation & Swing cross-section",
                 scale_note="Proportional (mm)",
@@ -1025,7 +1025,7 @@ def sheet3():
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 3 OF 10",
+    title_block(ax_tb, "SHEET 3 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Corner carriage detail — acetal skate on 3×1.5 6061 Al U-channel + cross-slides + U-joint + stub clamp",
                 scale_note="Proportional (mm)",
@@ -1222,7 +1222,7 @@ def sheet4():
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 4 OF 10", drawing_title="MOVEABLE FILM PLANE",
+    title_block(ax_tb, "SHEET 4 OF 9", drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Rail mounting & transport drop-in — left split (stub + removable + web-back bridge) · right flanged wall-to-wall",
                 scale_note="Proportional (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
@@ -1376,7 +1376,7 @@ def sheet5():
                 ha="left", va="top", fontweight=fw, style=st, **FONT)
 
     # Title block
-    title_block(ax, "SHEET 5 OF 10",
+    title_block(ax, "SHEET 5 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Movement specification & BOM",
                 scale_note="Not to scale",
@@ -1505,7 +1505,7 @@ def sheet6():
     # ── Title block ──
     ax_tb = fig.add_axes([0.04, 0.0, 0.92, 0.05])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 6 OF 10",
+    title_block(ax_tb, "SHEET 6 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Muslin clamp detail — nylon spring clamp + HDPE filler at the ALU frame edge",
                 scale_note="SCHEMATIC — SEE INDIVIDUAL PANELS",
@@ -1759,7 +1759,7 @@ def sheet7():
             color=DIM, fontsize=7, ha="center", **FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 7 OF 10",
+    title_block(ax, "SHEET 7 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="System elevation — four-corner frame front elevation (proportional)",
                 scale_note="Proportional (mm)",
@@ -1983,7 +1983,7 @@ def sheet9():
     ], 1, 97, spacing=4.5, fs=7, title_fs=7.6, color=DIM, title_color=ANNO, font=FONT, width=46, wrap=110)
     # title block
     ax_tb = fig.add_axes([0.02, 0.0, 0.96, 0.055]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 9 OF 10",
+    title_block(ax_tb, "SHEET 9 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Frame + ACM ↔ U-joint ↔ X (swing) slide — corner connection detail",
                 scale_note="TO SCALE — SEE PANELS",
@@ -2027,7 +2027,7 @@ def sheet8():
     ], 2, 99, 3.6, fs=6.2, title_fs=7.4, color=DIM, width=78, wrap=128, font=FONT)
     # title block
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 8 OF 10",
+    title_block(ax_tb, "SHEET 8 OF 9",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Frame-corner ↔ cross-slide attachment — how the film frame hangs off the two slides through the U-joint",
                 scale_note="Proportional (mm)",
@@ -2036,72 +2036,6 @@ def sheet8():
     fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet8.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print(f"  → {DIAGRAMS_DIR}/film-plane-sheet8.png")
-
-
-def _guide_corner_section(ax):
-    """SECTION across the TOP (GUIDE) rail — the mirror of the weight corner (Sheet 3, Section A-A).
-    The 3×1.5 304 U-channel is laid FLAT (web horizontal = ceiling-mount face on top; flanges point
-    DOWN, channel opens downward). The skate here is a GUIDE, not a load path: the plane's weight
-    hangs on the BOTTOM (weight) rail; this top skate's rollers run UNDER the web and only hold the
-    top corner at depth (Yd) and react the plane's forward/back tip-torque — no gravity seating."""
-    ax.set_xlim(-34, 150); ax.set_ylim(-40, 100); ax.set_aspect("equal"); ax.axis("off")
-    # flat U-channel: web on top (76 wide in Yd), flanges DOWN (38 deep) — opens downward
-    _uchan_hatch(ax, 0, 71, 76, 5)          # web (horizontal, ceiling-mount face)
-    _uchan_hatch(ax, 0, 33, 5, 38)          # left flange (down)
-    _uchan_hatch(ax, 71, 33, 5, 38)         # right flange (down)
-    draw_dim_h(ax, 0, 76, 86, "76 (3\") web — FLAT", offset=6, fs=5.2, color=DIM, above=True, font=FONT)
-    draw_dim_v(ax, -20, 33, 76, "38\nflange", offset=8, fs=5.2, color=DIM, font=FONT)
-    # skate carriage inside the channel + 2 GUIDE rollers running UNDER the web (matches the 3D model)
-    ax.add_patch(plt.Rectangle((16, 40), 44, 20, fc=C_CAR, ec=OUT, lw=1.0, zorder=6))
-    for rx in (26, 50):
-        ax.add_patch(plt.Circle((rx, 63), 7, fc=C_ACET, ec=OUT, lw=0.8, zorder=7))   # guide roller under the web
-    # stack hangs DOWN — IDENTICAL to the weight corner
-    _rect(ax, 30, 8, 16, 32, C_TILT, z=5)                                              # Z slide begins on the carriage
-    ax.annotate("", xy=(38, 4), xytext=(38, 8), arrowprops=dict(arrowstyle="->", color=DIM, lw=1.0))
-    ax.text(38, -2, "→ cross-slide + U-joint + corner plate\n(IDENTICAL to the weight corner — Sheets 8/9)",
-            fontsize=5.2, color=DIM, ha="center", va="top", **FONT)
-    ax.text(92, 66, "GUIDE only — reacts tip-torque,\nNOT the plane's weight\n(weight is on the bottom rail)",
-            fontsize=5.6, color=OUT, ha="left", va="center", **FONT)
-    leader(ax, 26, 63, -30, 44, f"Ø{SKATE_ROLLER_OD:.0f} guide roller\nunder the web", ha="left", fs=5.0, color=OUT, font=FONT, bbox=LBL_BG)
-    ax.text(-34, 98, "GUIDE (TOP) CORNER — SECTION  (rail laid FLAT; mirror of Sheet 3 Section A-A)",
-            fontsize=7.0, fontweight="bold", color=OUT, ha="left", va="top", **FONT)
-
-
-def sheet10():
-    reset_label_registry()
-    fig = plt.figure(figsize=(15, 11)); fig.patch.set_facecolor(BG)
-    axS = fig.add_axes([0.03, 0.40, 0.44, 0.54]); axS.set_facecolor(BG)
-    _guide_corner_section(axS)
-    axN = fig.add_axes([0.50, 0.10, 0.47, 0.84]); axN.set_xlim(0, 100); axN.set_ylim(0, 100); axN.axis("off")
-    draw_notes(axN, [
-        "GUIDE (TOP) CORNER vs WEIGHT (BOTTOM) CORNER — THE MIRROR:",
-        "1. RAIL orientation: the top rail is laid FLAT (web horizontal, ceiling-mount face up, flanges "
-        "down) — vs the bottom rail stood WEB-VERTICAL. SAME 3×1.5 6061-Al U-channel section, same "
-        "Grainger 795M51 stick, same wall-to-wall run.",
-        "2. SKATE function: GUIDE only. The plane's full weight hangs on the BOTTOM (weight) rail's load "
-        "rollers; the top skate's rollers run UNDER the web and only hold the top corner at depth (Yd) + "
-        "react the plane's forward/back tip-torque. No gravity seating, so no lip / anti-lift keeper is "
-        "needed the way the weight corner has them.",
-        "3. STACK below is IDENTICAL: carriage plate → Z (tilt) + X (swing) 304 cross-slides (¼×1½ + UHMW "
-        "+ gib) → U-joint (Belden UJ-SS750x375) → 304 SS corner plate → 6061 frame angle. Same J1–J5 "
-        "fastener chain (Sheet 8), same dimensioned parts (Sheets 3/8/9).",
-        "4. The film's TOP edge hangs just BELOW its guide rail — the mirror of the bottom corner, whose "
-        "film hangs ~110mm below the weight rail (BUILD_BOT). Both left rails are transport drop-ins; both "
-        "right rails are flanged wall-to-wall (Sheet 4).",
-        "5. Build note: assemble both corners from the SAME part set — only the rail's mounting rotation "
-        "(flat vs web-vertical) and the skate's keeper/lip differ. Cross-slide travel, U-joint, and plate "
-        "hole pattern are common to all four corners.",
-    ], 2, 98, 4.4, fs=6.6, title_fs=7.6, color=DIM, width=96, wrap=104, font=FONT)
-    ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 10 OF 10",
-                drawing_title="MOVEABLE FILM PLANE",
-                subtitle="Guide (top) corner — the mirror of the weight (bottom) corner",
-                scale_note="Proportional (mm)",
-                doc_id="TBS-FM01 · Film Plane Mechanism",
-                height=0.06)
-    fig.savefig(f"{DIAGRAMS_DIR}/film-plane-sheet10.png", dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
-    plt.close(fig)
-    print(f"  → {DIAGRAMS_DIR}/film-plane-sheet10.png")
 
 
 if __name__ == "__main__":
@@ -2115,5 +2049,4 @@ if __name__ == "__main__":
     sheet7()
     sheet8()
     sheet9()
-    sheet10()
     print("Done.")

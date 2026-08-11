@@ -167,15 +167,21 @@ walkway, hinged panel, light lock, electrical, optics, …)._
 
 ### Definitive corner-mechanism engineering drawing (film plane — FIRST / template)
 
-- [ ] Fully-dimensioned multi-view detail of ONE corner: the weight rail + skate, the wide carriage plate,
-  the Z (tilt) + X (swing) 316 flat-bar cross-slides, the Ruland U-joint, the L-bracket, and the 6061 frame
-  angle — with **precise hole positions** (PCD/edge distances), **fastener callouts** (J1–J5: sizes, thread,
-  torque), section views, material/finish notes, and a datum/tolerance scheme. Dimensionally exact.
-- [ ] Drive it from `tbs_constants` (or add the missing constants: cross-slide bar section — currently
-  `XSLIDE_*` are `reserved` — U-joint model dims, hole PCDs) so the drawing can't drift from the 3D. This
-  is also what firms the (still un-quantified) cross-slide bending SF and the per-corner load.
-- [ ] Reconcile the TL/TR (guide) corner: it is the mirror (film below its guide rail) — the drawing set
-  should cover both bottom (weight) and top (guide) corners.
+- [x] **Fully-dimensioned multi-view detail of ONE corner — DONE 2026-08-10 (branch `corner-eng-design`).**
+  Sheets 3/4/8/9 dimensioned to blueprint grade: skate roller ODs + Ø10 axle + 40mm pitch (Sheet 3), rail
+  wall-flange bolt pattern + M8×25 (Sheet 4), cross-slide bar section/travel/gib/UHMW (Sheet 8), U-joint
+  envelope (Ø19.1/68/bore 9.53/±45°) + J5 hole pattern (edge 25.4/pair 38) + L-plate 6×8 bend R6.35 (Sheet 9).
+  **Fastener callouts J1–J5 with torque/class/washer/locker** (M8 24 N·m, M6 10 N·m, setscrews ~2.5 N·m; Sheet 8).
+  **Datum/tolerance scheme** (datums A/B/C + general + per-feature GD&T; Sheet 9). U-joint = Belden (not Ruland),
+  cross-slides = 304 (not 316) — both reconciled.
+- [x] **Drive it from `tbs_constants` — DONE 2026-08-10.** Promoted `XSLIDE_*` reserved→firm; added the corner
+  constants (bar section, U-joint envelope from the Belden datasheet, skate rollers + pitch, cam-clamp, L-plate
+  blank + hole PCDs + bend R). Firmed the load: per-corner static 162 N, cross-slide section SF 4.5 weak / 27
+  strong. Bar grown ~250→345/365mm to hold ±40°/±28° (+$135 film, cascaded).
+- [x] **Reconcile the TL/TR (guide) corner — DONE 2026-08-10.** Both corners = SAME web-vertical rail + captured
+  skate (keeper/capture rollers react tip-force vs gravity). 3D model reworked flat→web-vertical (verified:
+  film 160–2252 = 2092mm ≈ FP_H 2094; no FP_H change — the flat model was over-drawing 38mm); Sheet 3 guide note.
+  (Sheet 10 was tried as a separate guide sheet then reverted — wrong wheels + redundant with Sheet 3.)
 
 ## Weight model — film-plane moving mass undercounts the ACM backing — DONE 2026-07-25
 

@@ -24,6 +24,18 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Film-plane corner mechanism — definitive engineering blueprint (milestone template, branch
+  `corner-eng-design`).** Upgraded one corner from arrangement-schematic to fabricator-ready, driven
+  from `tbs_constants` so it can't drift: sheets 3/4/8/9 dimensioned (skate roller ODs + 40mm pitch;
+  rail wall-flange bolt pattern; cross-slide bar section/travel/gib/UHMW; U-joint envelope Ø19.1/68/bore
+  9.53/±45°, J5 hole pattern, L-plate 6×8 bend); **J1–J5 fastener schedule with torque/class/washer/locker**
+  (M8 24 N·m, M6 10 N·m, setscrews ~2.5 N·m); a **datum + tolerance scheme** (datums A/B/C + GD&T). Firmed
+  the load (162 N/corner, section SF 4.5/27) and, to hold ±40°/±28°, grew the cross-slide bar (+$135 film).
+  Reconciled the drift: cross-slide 316→304, U-joint Ruland→Belden, rail supplier/material, and the top
+  (guide) corner from flat→**web-vertical with the same captured skate** as the bottom — which corrected the
+  3D model (film top 2290→2252) to match the existing `FP_H`=2094 (no FP_H/optics cascade). `film-plane-mechanism.skp`
+  re-sent + re-uploaded. _(Not yet merged to main.)_
+
 - **Pump-run support-detail fabrication sheet (#29 follow-up).** New `generate_support_detail.py`
   → `support-detail-sheet1/2.png`. Sheet 1 = face-on board elevations (far / near / near-upper —
   18mm ply, 4 L-brackets each, risers + P-clip rows, fully dimensioned); Sheet 2 = the L-bracket

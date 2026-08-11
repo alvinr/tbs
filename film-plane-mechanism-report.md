@@ -64,7 +64,7 @@ Because the plane is a **fixed-size rigid rectangle**, its physical height stays
 
 ## 4. Mechanism Design
 
-> **Note:** The drawings (Sheets 1–8) and distortion renders show **axis tilt/swing** — the rigid plane rotates about its center and **foreshortens** (it never grows), illustrated about the mid-rail position (the film back-focuses anywhere along the rail; flat-at-far-wall is the max-focal-length extreme). The interactive 3D model `models/film-plane-mechanism.skp` also reflects this.
+> **Note:** The drawings (Sheets 1–10, incl. Sheet 10 = the guide/top corner) and distortion renders show **axis tilt/swing** — the rigid plane rotates about its center and **foreshortens** (it never grows), illustrated about the mid-rail position (the film back-focuses anywhere along the rail; flat-at-far-wall is the max-focal-length extreme). The interactive 3D model `models/film-plane-mechanism.skp` also reflects this.
 
 ### Four-Corner Frame
 

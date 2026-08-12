@@ -4191,8 +4191,9 @@ outputs and the <em>missing-cascade</em> check names the specific files you stil
    # regenerates overview.rb + re-sends to SketchUp; save the .skp
 5. Visually inspect updated PNGs in diagrams/ AND the SketchUp model
 6. bash publish.sh --build           # verify zero MkDocs warnings
-7. git add tbs_constants.py diagrams/*.png models/*.skp src/models/overview.rb &amp;&amp; git commit -m &quot;...&quot;
-8. bash publish.sh                   # deploy
+7. python3 src/generators/manifest.py --update   # refresh the model source_hash in dependencies.yml
+8. git add tbs_constants.py diagrams/*.png models/*.skp dependencies.yml &amp;&amp; git commit -m &quot;...&quot;   # NOT the .rb (gitignored)
+9. bash publish.sh                   # deploy
 </code></pre></div>
 
 

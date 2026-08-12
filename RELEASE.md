@@ -26,10 +26,11 @@ file** — a release must not ship without a changelog entry:
 
 - **Film-plane Sheet 1: carried the ALU-frame dimension style.** The plan-view span dim is relabeled
   "RAIL SPAN" → **ALU FRAME WIDTH 4389mm** and colored the frame's blue, matching Sheet 7, so it reads
-  as a frame dimension distinct from the gray container envelope (INTERIOR LENGTH / OPTICAL AXIS).
-  Also added an **ALU FRAME HEIGHT 2094mm** reference (marked into-page, since a top-down plan can't
-  show height spatially) so the frame's full W×H reads on Sheet 1. (Sheet 2 left as the swing/motion
-  diagram — it doesn't reference the static frame.)
+  as a frame dimension distinct from the gray container envelope (INTERIOR LENGTH). And **repurposed the
+  right-side vertical dim** — formerly the optical axis / focal length (not of interest on the plan) — to
+  **ALU FRAME HEIGHT 2094mm** (blue, marked "into page — REF", since a top-down plan can't show height
+  spatially), so the frame's full W×H reads on Sheet 1. (Sheet 2 left as the swing/motion diagram — it
+  doesn't reference the static frame.)
 
 - **Film-plane blueprint: Sheet 7 upgraded from system-arrangement to fabricator-grade GA.** Added the
   frame-fabrication content a shop needs: DETAIL A corner joint (45° miter + TIG fillet, per the joint

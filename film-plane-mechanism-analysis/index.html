@@ -2594,7 +2594,7 @@
 <h1 id="moveable-film-plane-optical-distortion-analysis">Moveable Film Plane — Optical Distortion Analysis<a class="headerlink" href="#moveable-film-plane-optical-distortion-analysis" title="Permanent link">&para;</a></h1>
 <blockquote>
 <h2 id="scope-note-this-is-the-optical-distortion-analysis">Scope note — this is the optical-distortion analysis<a class="headerlink" href="#scope-note-this-is-the-optical-distortion-analysis" title="Permanent link">&para;</a></h2>
-<p><strong>What this document is.</strong> The optical-distortion derivation for the moveable four-corner film plane: the physics of tilted-/swung-plane projection (§5), the movement envelope (§3), and the per-configuration effects (§4). The plane is a <strong>fixed-size rigid rectangle</strong> (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm) that tilts and swings as a true <strong>rigid-body rotation</strong> — envelope <strong>tilt ±40° / swing ±28°</strong> (single-axis). The optics depend only on that rigid-rotation geometry.</p>
+<p><strong>What this document is.</strong> The optical-distortion derivation for the moveable four-corner film plane: the physics of tilted-/swung-plane projection (§5), the movement envelope (§3), and the per-configuration effects (§4). The plane is a <strong>fixed-size rigid rectangle</strong> (<!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm) that tilts and swings as a true <strong>rigid-body rotation</strong> — envelope <strong>tilt ±40° / swing ±28°</strong> (single-axis). The optics depend only on that rigid-rotation geometry.</p>
 <p><strong>Mechanism, hardware, and BOM are governed by <a href="../film-plane-mechanism-report/"><code>film-plane-mechanism-report.md</code></a></strong> — the current <strong>6061 Al U-channel + acetal skate + 304 flat-bar cross-slide + Belden U-joint</strong> corner design — and the muslin clamp by <a href="../film-clamp-mechanism-report/"><code>film-clamp-mechanism-report.md</code></a>. This analysis covers only the optics; for any hardware, quantity, or price, use those reports.</p>
 </blockquote>
 <h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
@@ -2706,8 +2706,8 @@
 </tbody>
 </table>
 <p><strong>Maximum tilt angle</strong> (single-axis): <strong>±40°</strong> — set by the corner cross-slide Z travel (~250mm); the depth rails alone would allow a steeper angle.</p>
-<p><strong>Maximum swing angle</strong> (single-axis): <strong>±28°</strong> — set by the rail depth available over the 4,499mm span.</p>
-<p>(Swing angle is smaller than tilt angle because the active film plane is 4,499mm wide — the left rail sits at X=150mm and the right rail at X=4,649mm. The same Y-axis depth difference over a wider span produces a shallower angle.)</p>
+<p><strong>Maximum swing angle</strong> (single-axis): <strong>±28°</strong> — set by the rail depth available over the 4,389mm span.</p>
+<p>(Swing angle is smaller than tilt angle because the active film plane is 4,389mm wide — the left rail sits at X=260mm and the right rail at X=4,649mm. The same Y-axis depth difference over a wider span produces a shallower angle.)</p>
 <p>Because the plane is a <strong>fixed-size rigid rectangle</strong>, its physical height stays <strong>2,094mm at every angle</strong> — it does not grow. The corner <strong>cross-slides</strong> absorb the in-plane arc travel that a rigid rotation forces on each corner, so a single rigid backing panel suffices.</p>
 <hr />
 <h2 id="4-tilt-configurations">4. Tilt Configurations<a class="headerlink" href="#4-tilt-configurations" title="Permanent link">&para;</a></h2>
@@ -2806,7 +2806,7 @@
 </tr>
 </tbody>
 </table>
-<p><em>Depths measured from the pinhole wall about the mid-rail center. Tilt = asin(2·Δd_top-bottom / FP_H) about the plane center (FP_H=2094); swing = asin(2·Δd_left-right / FP_W) (FP_W=4499). Rail positions: left X=150mm, right X=4,649mm.</em></p>
+<p><em>Depths measured from the pinhole wall about the mid-rail center. Tilt = asin(2·Δd_top-bottom / FP_H) about the plane center (FP_H=2094); swing = asin(2·Δd_left-right / FP_W) (FP_W=4389). Rail positions: left X=260mm, right X=4,649mm.</em></p>
 <p>A compound <em>twist</em> (diagonal, non-coplanar) is <strong>not achievable</strong> — a rigid plane cannot form a ruled surface. Combined tilt+swing is available only as a flat rotation within the ±40° / ±28° envelope.</p>
 <hr />
 <h2 id="5-optical-distortion-analysis">5. Optical Distortion Analysis<a class="headerlink" href="#5-optical-distortion-analysis" title="Permanent link">&para;</a></h2>

@@ -104,7 +104,7 @@ RAIL_W   = 60           # rail width in plan view
 # ── LEFT-rail transport drop-in (Sheet 4). These MIRROR generate_film_plane_mechanism_model.py; promote
 # both to tbs_constants at the FP_W/FP_H cascade so 2D + 3D single-source them (see TODO). ──
 from tbs_constants import PIVOT_YD, PIVOT_POST_OD, RAIL_OFF_TOP, RAIL_OFF_BOT, WALKWAY_H
-LEFT_CUT_YD = 2090      # cut Yd on the X150 rail = the panel-swing-envelope edge; stub = C_WID−2090 = 272mm
+LEFT_CUT_YD = 2090      # cut Yd on the left rail (X=RAIL_X_L) = the panel-swing-envelope edge; stub = C_WID−2090 = 272mm
 SPLICE_YD   = 260       # length splice at the PINHOLE end (removable = 6 ft stock + 260mm)
 
 # ── Option A rigid-plane geometry ────────────────────────────────────────────
@@ -362,7 +362,7 @@ def sheet1():
             color=C_DRUM, fontsize=6, ha="center", va="center", **FONT, zorder=5,
             alpha=0.75)
 
-    # The drum is offset clear of the X=150 rail (via the hinge-panel punch-out bay),
+    # The drum is offset clear of the left rail (X=RAIL_X_L) (via the hinge-panel punch-out bay),
     # so the LEFT RAIL is continuous IN FILM MODE — no gap at the drum. (It still lifts
     # out at the transport cut for folding — Sheet 4.)
     leader(ax, RAIL_X_L, DRUM_CY,
@@ -1100,7 +1100,7 @@ def _rail_band(ax, y0, ylen, z0, z1, fc, z=4):
 
 def transport_elev(ax):
     """LEFT depth rail — TRANSPORT DROP-IN, side elevation (Yd × Z; Yd positions dimensioned, Z schematic).
-    For transport the hinge panel folds about the pivot post (Yd PIVOT_YD) and sweeps the X150 rail line, so
+    For transport the hinge panel folds about the pivot post (Yd PIVOT_YD) and sweeps the left-rail line, so
     the LEFT rail is SPLIT: a fixed STUB (parks the corner, anchored at the pivot post + far wall) and a
     REMOVABLE section that lifts out. A welded BRIDGE (on top, welded to the removable) laps the cut; a
     locating PIN + a short bottom support bridge secure it. A length SPLICE at the pinhole end makes 6 ft stock reach; a pinhole-wall GUSSET seats
@@ -1211,7 +1211,7 @@ def sheet4():
         "1. RIGHT rail (BR/TR) is flanged WALL-TO-WALL — an end flange through-bolted to each container wall, "
         "sharing the IBC combined corner plate; it never comes apart. The panel folds away from this side.",
         "2. LEFT rail (BL/TL) is a TRANSPORT DROP-IN: the hinge panel folds about the pivot post (Yd "
-        f"{PIVOT_YD}) and sweeps the X150 rail line, so the near ~{LEFT_CUT_YD}mm of BOTH left rails (top + "
+        f"{PIVOT_YD}) and sweeps the X{RAIL_X_L} rail line, so the near ~{LEFT_CUT_YD}mm of BOTH left rails (top + "
         "bottom) LIFTS OUT. The fixed STUB parks the corner and is anchored at the pivot post + far wall.",
         "3. At the cut: a BRIDGE (fishplate) sits ON TOP and is WELDED to the REMOVABLE beam, lapping onto the "
         "STUB — GRAVITY bears the removable's end on the stub through the bridge (the WEIGHT rides the bridge, "
@@ -1341,7 +1341,7 @@ def sheet5():
         f"FILM MODE: with the LEFT rails in place, each carriage is free over the FULL travel (Yd 100–{FP_Y})",
         "   for tilt / swing / back-focus — no drum interlock.",
         "TRANSPORT: the LEFT rails (top + bottom) LIFT OUT at the cut so the hinge panel folds (see Sheet 4).",
-        f"DRUM: offset out via the hinge-panel punch-out bay (center X={DRUM_CX}mm), clearing the X=150 left rail.",
+        f"DRUM: offset out via the hinge-panel punch-out bay (center X={DRUM_CX}mm), clearing the X={RAIL_X_L} left rail.",
         f"WALKWAY: film-plane bottom RAISED to Z={RAIL_OFF_BOT}mm (RAIL_OFF_BOT) to clear the Z{WALKWAY_H} walkway deck;",
         "   active image = the inter-rail span — the plane travels above the in-place walkway.",
     ]

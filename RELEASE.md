@@ -24,6 +24,11 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Film-plane blueprint: fixed stale `X150` left-rail labels** on the 2D sheets — the corner-edge
+  resolution moved the left rail to X260 (`FP_X_L`) and the geometry auto-followed the constant, but
+  five hardcoded callout/comment strings still read "X150". Now reference `RAIL_X_L` so they can't drift
+  again (rendered labels use `X{RAIL_X_L}`). Groundwork for taking Sheets 1/2/7 to fabricator grade.
+
 - **Model `.rb` retired from git → `dependencies.yml` source_hash manifest; Sketchfab UID
   consolidated.** The 10 generated SketchUp `.rb` were committed only as a diff/staleness proxy for
   the binary `.skp`; they're now gitignored, replaced by a per-model `source_hash` in

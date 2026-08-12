@@ -24,6 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Editorial + FP_X_L=260 doc-consistency sweep.** Wrapped 26 restated values in `<!-- fact:KEY -->`
+  placeholders so they auto-cascade (corridor 270, rib 457, walkway 500, clamp 150, IBC stack 2,336 —
+  the last gaining `display: comma`); fixed the American-spelling gate (`grey`→`gray`); and finished the
+  FP_X_L=260 leftovers in the position/mass tables (left/optical zone 150→260, tray 170→280). The tray
+  narrowed to 4,349mm, so its modeled mass drops 116→114 kg — cascaded through the weight model (dry
+  3,254→3,252, loaded 5,054→5,052 kg) and its 5 diagrams.
+
 - **Film-plane LEFT edge pulled inboard of the pivot hub (`FP_X_L` 150→260).** Resolved a hard
   clash found once the detailed corner was in the light-trap: the backing-side carriage rode the X150
   rail straight into the swing-pivot hub (which can't be relieved — strength — nor passed through).

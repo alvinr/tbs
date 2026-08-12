@@ -85,11 +85,11 @@ file** — a release must not ship without a changelog entry:
   **DV-01 recycle line re-routed** off IBC-3, across and **down the far board**, then two 90° turns into
   DV-01 (was standing 75mm proud); P-02 discharge / P-01→ACC-01 / P-02 suction nudged to the board plane;
   P-05 inlet already there. The **same P-clip method was extended** to the **drain-riser spine**
-  (the 3 grey waste risers — X4 waste / DV-02 / DV-01→merge) and the **filter-skid panel** (the
+  (the 3 gray waste risers — X4 waste / DV-02 / DV-01→merge) and the **filter-skid panel** (the
   3 vertical runs — DV-02→F1 + tray-sump→P-04 nudged to the Yd35 clip plane, F3→SV-01 already there —
   plus the horizontal runs: brown ± ACC-02 flush, and standoff clamps on the blue ± SV-01 and the
   brown DV-02 row). **Operability + review pass:** BV-03 handle rotated to −X (cargo door); a second
-  **upper near board (Z1260–1950)** backs BV-02/BV-06 + the brown P-05 (Z1300) and grey P-03 (Z1902)
+  **upper near board (Z1260–1950)** backs BV-02/BV-06 + the brown P-05 (Z1300) and gray P-03 (Z1902)
   horizontals; BV-02/BV-06 handles rotated +Yd into the corridor and their loops pulled to the
   **walkway edge (X4770)** for reach, labels moved to the valve centers on the operator side;
   spine far-side X-port lines (P-05→X3, P-03→X4) clamped; the DV-01→IBC-3 tote entry dropped to
@@ -340,7 +340,7 @@ file** — a release must not ship without a changelog entry:
   mounting, a pin-load-seal-coat-dry coating sequence done by feel in the sealed box (no
   safelight), a single wash tray, a re-centered pinhole, and — the key fix — print extraction
   through the boxes' **own top flaps** (built flaps-up) instead of a custom-cut wall. Added an
-  interactive **Sketchfab 3D model** (ghosted boxes joined with grey tape; clickable shutter,
+  interactive **Sketchfab 3D model** (ghosted boxes joined with gray tape; clickable shutter,
   film-plane panel, and top flaps) embedded in the doc, generated from a new
   `generate_mini_tbs_model.py` with geometry single-sourced from `mini_tbs_constants.py`.
 
@@ -382,7 +382,7 @@ file** — a release must not ship without a changelog entry:
   the gear, and added the two fan-feed callouts (Cct-A → Fan A at the sealed end; Cct-B → Fan B wall box
   + flex jumper) to the Labeled scene.
 - **Water model cleanup** — the pinhole-wall water model drops the external EP panel + evap cooler, adds
-  the spray bar for context, removes the green PV / grey E-stop EP cables, and reconnects the purple
+  the spray bar for context, removes the green PV / gray E-stop EP cables, and reconnects the purple
   Cct-C pump feed to the panel's own master switch.
 - **Non-destructive Sketchfab metadata** — the in-model metadata stamp is now fill-only-if-blank, so a
   regenerate / re-send never overwrites a model's saved title, description, tags, or stable UID.

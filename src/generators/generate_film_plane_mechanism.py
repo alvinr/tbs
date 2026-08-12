@@ -1480,7 +1480,7 @@ def sheet6():
         "6. Replaces the custom through-bolted bracket + torsion-spring + neoprene jaw (2026-07-22): no fabrication, hand clip on/off, chemistry-safe.",
     ]
     draw_notes(ax_b, notes, 2, 96, spacing=4.6, fs=7, title_fs=7.5,
-               color=DIM, title_color=ANNO, font=FONT, width=90, wrap=135)
+               color=DIM, title_color=ANNO, font=FONT, width=90, wrap=95)
 
     # ── PANEL C: edge layout — 3 clamped edges (bottom omitted) ──
     ax_c = fig.add_axes([0.05, 0.06, 0.90, 0.30])
@@ -2030,7 +2030,7 @@ def sheet9():
         "the X slide (~260mm) + the Z slide beneath it (~250mm, Sheet 8) take the in-plane arc travel.",
         "LOAD PATH, film → rail:  ACM board → 6061 angle frame → 304 SS corner plate → U-joint → "
         "X (swing) slide → Z (tilt) slide → carriage plate → 4-wheel acetal skate → 6061 Al U-channel rail.",
-    ], 1, 97, spacing=4.5, fs=7, title_fs=7.6, color=DIM, title_color=ANNO, font=FONT, width=46, wrap=110)
+    ], 1, 97, spacing=4.5, fs=7, title_fs=7.6, color=DIM, title_color=ANNO, font=FONT, width=42, wrap=100)
     # datum + tolerance scheme (Phase 4) — right half
     draw_notes(axN, [
         "DATUM & TOLERANCE SCHEME (applies to all four corners):",
@@ -2040,7 +2040,7 @@ def sheet9():
         "CRITICAL (per feature):  cross-slide ways // B (parallel) within 0.1; U-joint bore TP Ø0.1 to A-B; carriage "
         "+ corner-plate J5 holes TP Ø0.2; skate roller-to-flange gap 4 ±0.3mm; U-channel web ⊥ A within 0.15.",
         "FINISH:  machined faces Ra 3.2; UHMW pad + gib bearing faces Ra 1.6.",
-    ], 52, 97, spacing=4.5, fs=6.6, title_fs=7.2, color=DIM, title_color=ANNO, font=FONT, width=46, wrap=62)
+    ], 58, 97, spacing=4.5, fs=6.6, title_fs=7.2, color=DIM, title_color=ANNO, font=FONT, width=40, wrap=62)
     # title block
     ax_tb = fig.add_axes([0.02, 0.0, 0.96, 0.055]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 9 OF 9",
@@ -2085,7 +2085,7 @@ def sheet8():
         "The U-joint's two bores are its ONLY rotating link; everything else is a rigid bolted/clamped "
         "stack. Set the pose by hand (push each slide), then throw the cam clamps — no leadscrews "
         "(a pinhole's infinite depth of field makes this scene control, not focus).",
-    ], 2, 99, 3.6, fs=6.2, title_fs=7.4, color=DIM, width=78, wrap=128, font=FONT)
+    ], 2, 99, 3.6, fs=6.2, title_fs=7.4, color=DIM, width=65, wrap=128, font=FONT)
     # title block
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
     title_block(ax_tb, "SHEET 8 OF 9",

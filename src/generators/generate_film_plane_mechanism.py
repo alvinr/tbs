@@ -389,8 +389,8 @@ def sheet1():
                offset=35, color=DIM, right=True, font=FONT)
     draw_dim_h(ax, 0, RAIL_X_L, -350, f"{RAIL_X_L}mm\n(left end zone)",
                color=DIM, fs=6.5, above=False, offset=45, font=FONT)
-    draw_dim_h(ax, RAIL_X_L, RAIL_X_R, -350, f"Rail span  {RAIL_X_R-RAIL_X_L}mm",
-               color=RAIL, fs=6.5, above=False, offset=45, font=FONT)
+    draw_dim_h(ax, RAIL_X_L, RAIL_X_R, -350, f"ALU FRAME WIDTH  {RAIL_X_R-RAIL_X_L}mm",
+               color=C_FLAT, fs=6.5, above=False, offset=45, font=FONT)
     draw_dim_h(ax, RAIL_X_R, L, -350, f"{L-RAIL_X_R}mm\n(right end zone)",
                color=DIM, fs=6.5, above=False, offset=45, font=FONT)
 

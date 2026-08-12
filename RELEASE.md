@@ -24,6 +24,10 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Film-plane Sheet 1: carried the ALU-frame dimension style.** The plan-view span dim is relabeled
+  "RAIL SPAN" → **ALU FRAME WIDTH 4389mm** and colored the frame's blue, matching Sheet 7, so it reads
+  as a frame dimension distinct from the gray container envelope (INTERIOR LENGTH / OPTICAL AXIS).
+
 - **Film-plane blueprint: Sheet 7 upgraded from system-arrangement to fabricator-grade GA.** Added the
   frame-fabrication content a shop needs: DETAIL A corner joint (45° miter + TIG fillet, per the joint
   decision) with the 2"×2"×3/16" 6061-T6 angle callout; the ACM backing strip layout (4 vertical Dibond

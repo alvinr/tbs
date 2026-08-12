@@ -78,8 +78,9 @@ Redesign basis (2026-08-11 — film-plane LEFT edge pulled inboard of the pivot 
   why 244 didn't clear). Chosen over the outboard move (which re-buried the corner in the light-trap
   congestion). Costs ~110mm image width (2.4%): FP_W 4499→4389, active area 101→99 sqft. The plane is now
   asymmetric, so the CENTERED pinhole follows: PH_X 2399→2454 (+55mm). Cascades FP_W, PH_X, IMAGE_AREA_SQFT,
-  RAIL_X_L, every film-plane 2D sheet + the 8 SketchUp models, and the pinhole-wall light-cone. BONUS: the
-  left rail now clears the swing envelope, so the removable-rail lift-out is retirable (follow-up).
+  RAIL_X_L, every film-plane 2D sheet + the 8 SketchUp models, and the pinhole-wall light-cone. NB: the
+  removable-rail lift-out STAYS — the inboard move clears the pivot region, but the panel's long swing arc
+  still sweeps the rail in the near/removable zone (Yd ~1950-2066), so that section must still lift out.
 """
 
 import math

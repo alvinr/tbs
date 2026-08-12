@@ -79,7 +79,7 @@ The container travels by commercial hire truck. No CDL required for the operator
 | [Photosensitive Materials](photosensitive-plane-options.md) | All process options, ISO equivalents, spectral response, per-image costs |
 | [Processing System](water-system-report.md) | Off-grid three-circuit water system design and Bill of Materials |
 | [Film Plane Mechanism](film-plane-mechanism-report.md) | 4-corner independent actuation — design, drawings, shopping list |
-| [Film Clamp Mechanism](film-clamp-mechanism-report.md) | Nylon spring-clamp muslin system — 58 clamps at 150mm spacing, parts list |
+| [Film Clamp Mechanism](film-clamp-mechanism-report.md) | Nylon spring-clamp muslin system — 58 clamps at <!-- BEGIN fact:clamp_spacing_mm -->150<!-- END fact:clamp_spacing_mm -->mm spacing, parts list |
 | [Pinhole Report](pinhole-report.md) | Interchangeable plate system — wall frame, pinhole plate, lens plate |
 | [Tilt-Swing Front Board](tilt-swing-board-report.md) | Spherical-pivot mechanism — design, drawings, combined distortion renders |
 | [Cost Breakdown](project-cost-breakdown.md) | Full itemized build cost — three scenarios, all sources cited |

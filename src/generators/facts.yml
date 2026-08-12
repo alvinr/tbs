@@ -359,6 +359,7 @@ container_rib_spacing_mm:
 ibc_stack_height_mm:
   constant: IBC_H_STK_1000
   unit: mm
+  display: comma
   owner: ibc-stacking-report.md
   aliases:
     - '(\d,?\d{3})\s?mm\s*\(2\s?[×x]\s?1,?168'

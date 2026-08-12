@@ -66,7 +66,7 @@ The processing tray sits below the film plane carriage blocks (minimum Z=140mm a
 
 2×2 IBC stack — right-justified flush to the far end wall. Four IBCs in two
 columns (25mm clearance from zone boundary), separated by a
-270mm plumbing corridor between near and far columns. IBC wall clearance
+<!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm plumbing corridor between near and far columns. IBC wall clearance
 is 30mm on each side.
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
@@ -103,7 +103,7 @@ in a 2×2 arrangement (two columns along Y, two tiers high).
 The 2×2 stack gives a 1,219mm X footprint (= IBC cage width), right-justified to
 the far end wall. The zone itself is only 1,244mm wide, so the
 IBCs fit with 25mm clearance on the zone boundary side. The two columns are
-separated by a 270mm plumbing corridor, with
+separated by a <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm plumbing corridor, with
 30mm wall clearance on each side.
 
 ---
@@ -119,11 +119,11 @@ only restrains them for transport (front retaining bars + D-ring lashing).
 |------|--------------|
 | Frame material | 2×2×0.120in steel (A500) |
 | Frame type | RESTRAINT-ONLY **deep 4-leg box** — the 1,000L caged totes direct-stack cage-on-cage (no load-bearing deck), so the frame only restrains them |
-| Uprights | 4 full-height corridor uprights (Yd 1046/1266) — a front pair at X≈4654 + a back pair 450mm behind at X≈5104, tied by top + bottom rings — on 150×150×12mm floor flange feet (4× M12 each); define the 270mm plumbing corridor |
+| Uprights | 4 full-height corridor uprights (Yd 1046/1266) — a front pair at X≈4654 + a back pair 450mm behind at X≈5104, tied by top + bottom rings — on 150×150×12mm floor flange feet (4× M12 each); define the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm plumbing corridor |
 | Front retaining bars | 4× 50×20×3 RHS at the IBC front (Z560 + Z1760), seated in the 25mm gap to the film rail — stop the totes sliding out the front; each bar's wall end drops into a Simpson-style joist hanger (×4) |
 | Wall attachment | each joist hanger is through-bolted (4× M12) to a 100×135×8mm **exterior** backing plate (×4, hex heads outside) that spreads the load into the thin corrugated side wall |
 | Lashing points | 1½" weld-on rings on the front bars (3,333 lb / ~1,512 kg assembly WLL, 2" strap-limited); ratchet straps pass over each stack and tie down to them |
-| Total stacked height | 2,336mm (2× 1,168mm direct-stack) — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm ceiling clearance |
+| Total stacked height | <!-- BEGIN fact:ibc_stack_height_mm -->2,336<!-- END fact:ibc_stack_height_mm -->mm (2× 1,168mm direct-stack) — <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm ceiling clearance |
 | Panel mount | the deep box carries the (forward) Corridor Plumbing Panel + drain-riser spine on its back uprights, and the right-walkway cantilever arms on its front uprights |
 | Surface finish | Gray oxide primer + flat black powder coat (interior) |
 | Approx. weight | ~90kg (4 uprights + rings + 4 feet + front bars + hangers + exterior wall plates + rear-panel brackets) |

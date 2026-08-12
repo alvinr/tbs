@@ -4,7 +4,7 @@
 
 ## 1. Purpose
 
-Cyanotype prints on muslin substrate (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm) require a controlled flood wash
+Cyanotype prints on muslin substrate (<!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm) require a controlled flood wash
 to remove unexposed sensitizer chemistry after UV exposure. The processing tray provides
 the containment surface and the spray bar delivers even water distribution across the
 full print width. Together they form the print washing subsystem of the
@@ -38,7 +38,7 @@ full print width. Together they form the print washing subsystem of the
 | Parameter | Value | Rationale |
 |-----------|-------|-----------|
 | Material | 16-gauge (1.5mm) 304 stainless steel, 2B mill finish | Chemically inert to ferricyanide wash water; resists pitting from citric acid pH adjustment. 2B (not #4 brushed) — the brush is a cosmetic upcharge unneeded for a drain pan ([tray research](tray-research.md)) |
-| Overall footprint | 4,459 × 2,200mm (2 panels, field-bolted) | Fits inside film plane rails (X=<!-- BEGIN fact:film_plane_left_x_mm -->150<!-- END fact:film_plane_left_x_mm -->–<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm -->) with 20mm clearance per side |
+| Overall footprint | 4,459 × 2,200mm (2 panels, field-bolted) | Fits inside film plane rails (X=<!-- BEGIN fact:film_plane_left_x_mm -->260<!-- END fact:film_plane_left_x_mm -->–<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm -->) with 20mm clearance per side |
 | Panel size (each) | 2,229 × 2,200mm | Two equal panels, joined at the midpoint by a ~40mm shingle-oriented lap (silicone-sealed, 12× M6×16). Each panel fits through the cargo door opening (2,340 × 2,280mm) |
 | Rim height | 50mm (all four sides) | Contains 6mm flood depth with margin; constrained to ≤75mm by film plane carriage clearance |
 | Floor-to-rim height | 50mm | Tray sits on tapered HDPE shim strips on the container floor |
@@ -105,7 +105,7 @@ fold the liner around the sump pickup tube.
 | Constraint | Clearance | Status |
 |------------|-----------|--------|
 | Film plane carriage blocks | 90mm above tray rim (140 − 50) | Clear |
-| Film plane rails at X=<!-- BEGIN fact:film_plane_left_x_mm -->150<!-- END fact:film_plane_left_x_mm --> and X=<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm --> | 20mm gap between tray edge and rail | Clear |
+| Film plane rails at X=<!-- BEGIN fact:film_plane_left_x_mm -->260<!-- END fact:film_plane_left_x_mm --> and X=<!-- BEGIN fact:film_plane_right_x_mm -->4,649<!-- END fact:film_plane_right_x_mm --> | 20mm gap between tray edge and rail | Clear |
 | Spray-bar carriage (rides on the raised/sloped tray floor beneath the walkway grating) | ~30mm at the worst (far-left) carriage — Ø32 wheels + 1½in-square SS beam, (see [Walkway Routing Sections](walkway-routing-sections.md) §H-H) | Clear |
 | IBCs (X=4,674+, right end zone) | Tray ends — 45mm gap | Clear |
 | Pump manifold (Corridor Plumbing Panel) | Suction hose routes over near rim exterior | Clear |
@@ -162,7 +162,7 @@ toward the pinhole wall), flooding the print surface progressively.
 
 ![Sheet 1 — Gantry Elevation](assets/spray-bar-sheet1.png)
 
-The beam spans <!-- BEGIN fact:spray_beam_span_mm -->4,399<!-- END fact:spray_beam_span_mm -->mm between the inner edges of the left and right walkways, extending under the walkway grating at each end. At each end, a
+The beam spans <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm between the inner edges of the left and right walkways, extending under the walkway grating at each end. At each end, a
 two-wheel carriage rolls on the processing tray floor beneath the grating. A 3/4" LDPE irrigation poly pipe clipped to the beam's inboard side face serves as the
 spray manifold — the supply hose feeds it at its center through a single barbed inlet tee by
 the ball joint. The 3/4" bore is far larger than the 3.5 GPM flow demands, so pressure holds
@@ -185,7 +185,7 @@ manifold and spray straight down, at 100mm pitch along the beam.
 
 | Component | Specification | Qty | Purpose |
 |-----------|--------------|-----|---------|
-| Beam | 304 SS 1½×1½×0.062in square tube, <!-- BEGIN fact:spray_beam_span_mm -->4,399<!-- END fact:spray_beam_span_mm -->mm long (single 17ft4in length, no weld); ~12mm pre-camber | 1 | Full-width structural beam; carries the side manifold |
+| Beam | 304 SS 1½×1½×0.062in square tube, <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm long (single 17ft4in length, no weld); ~12mm pre-camber | 1 | Full-width structural beam; carries the side manifold |
 | Side spray manifold | 3/4" LDPE irrigation poly pipe (OD 25mm, ID 19mm) | 1 | Water distribution; clipped to the beam's inboard side face |
 | 90° down-jets | DIG 110B barbed saddle-tee inlet, irrigation-type, 90° cone (spray straight down) | 44 | Side-tapped into the manifold, spray straight down (100mm pitch) |
 | Center-feed inlet | 1/2" PVC barbed tee (DripDepot 1084), flex hose → manifold center | 1 | Single feed point at the beam center (the over-bored manifold needs no multi-point distribution) |
@@ -208,7 +208,7 @@ manifold and spray straight down, at 100mm pitch along the beam.
 ### 3.3 Beam / Spray Pipe
 
 The structural beam carries a 3/4" LDPE irrigation poly manifold clipped to its inboard side face. A 304 SS
-square tube (1½×1½×0.062in) spans <!-- BEGIN fact:spray_beam_span_mm -->4,399<!-- END fact:spray_beam_span_mm -->mm — the full tray width (X=200 to X=4,599).
+square tube (1½×1½×0.062in) spans <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm — the full tray width (X=200 to X=4,599).
 
 **Beam properties:**
 
@@ -217,11 +217,11 @@ square tube (1½×1½×0.062in) spans <!-- BEGIN fact:spray_beam_span_mm -->4,39
 | Material | 304 stainless steel |
 | Section | 1½×1½×0.062in (38×38×1.6mm) square tube |
 | Internal bore | ~35×35mm |
-| Span | <!-- BEGIN fact:spray_beam_span_mm -->4,399<!-- END fact:spray_beam_span_mm -->mm (X=200 to X=4,599, the full tray width) |
+| Span | <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm (X=200 to X=4,599, the full tray width) |
 | Second moment of area (I) | 51,300mm⁴ |
 | Cross-sectional area | 241mm² |
 | Linear mass (beam only) | 1.93 kg/m |
-| Beam mass (<!-- BEGIN fact:spray_beam_span_mm -->4,399<!-- END fact:spray_beam_span_mm -->mm) | 8.5 kg |
+| Beam mass (<!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm) | 8.5 kg |
 | Bending stiffness (EI) | 9.9×10⁹ N·mm² |
 | Pre-camber | ~12mm up at mid-span (offsets the wet self-weight sag, L/378, so the beam runs flat under load) |
 
@@ -405,7 +405,7 @@ the top plate, spacer, carriage plate wing, and bottom plate, with nuts top and 
 
 ### 3.7 Structural Analysis
 
-**Loading (simply supported, uniform distributed load across <!-- BEGIN fact:spray_beam_span_mm -->4,399<!-- END fact:spray_beam_span_mm -->mm span):**
+**Loading (simply supported, uniform distributed load across <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm span):**
 
 | Component | Linear mass (kg/m) | Linear weight (N/m) |
 |-----------|-------------------|---------------------|
@@ -440,8 +440,8 @@ clearance at the supports and the camber applied, the beam runs level under load
 
 | Component | Mass (kg) |
 |-----------|-----------|
-| Beam (1½×1½×0.062in 304 SS × <!-- BEGIN fact:spray_beam_span_mm -->4,399<!-- END fact:spray_beam_span_mm -->mm) | 8.5 |
-| LDPE manifold (OD 25mm × <!-- BEGIN fact:spray_beam_span_mm -->4,399<!-- END fact:spray_beam_span_mm -->mm) | 0.74 |
+| Beam (1½×1½×0.062in 304 SS × <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm) | 8.5 |
+| LDPE manifold (OD 25mm × <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm) | 0.74 |
 | Water in manifold | 1.09 |
 | Carriage plates (2×) | 0.35 |
 | Wheel assemblies (4× Ø32 wheel + axle + 8 saddle clamps) | 0.45 |
@@ -478,12 +478,12 @@ the 44 nozzles sees nearly the same flow regardless of its distance from the inl
 straight down** — chosen over a flat-fan/180° pattern so the wash lands on the print rather
 than spraying sideways (180°) or up and away (360°), which wastes water and wets the container.
 A 90° cone at the ~50mm nozzle height footprints ~100mm, so the pitch was tightened 150→100mm
-(now 44 at full beam width) for edge-to-edge coverage along the <!-- BEGIN fact:spray_beam_span_mm -->4,399<!-- END fact:spray_beam_span_mm -->mm beam span; the traverse sweeps the other axis.
+(now 44 at full beam width) for edge-to-edge coverage along the <!-- BEGIN fact:spray_beam_span_mm -->4,289<!-- END fact:spray_beam_span_mm -->mm beam span; the traverse sweeps the other axis.
 
 ### 3.10 Water Connection
 
 BV-05 (1/2" ball valve, spray-bar feed isolation) is mounted on the pinhole wall (Yd=0) at
-X=<!-- BEGIN fact:pinhole_x_mm -->2,399<!-- END fact:pinhole_x_mm -->mm (pinhole centerline), Z=900mm — waist height from the walkway deck. A
+X=<!-- BEGIN fact:pinhole_x_mm -->2,454<!-- END fact:pinhole_x_mm -->mm (pinhole centerline), Z=900mm — waist height from the walkway deck. A
 1/2" PVC riser runs from the Blue supply trunk up to BV-05. A 4 m length of 1/2"
 reinforced braided PVC hose connects from BV-05 down to the manifold center inlet at the
 ball joint. The hose coils when the bar is near the pinhole wall and extends as the bar is
@@ -526,7 +526,7 @@ The step-by-step spray bar setup, wash pass procedure, Brown water recycling pas
 
 ### 4.1 Muslin Fit — Cut to the Washable Tray Area
 
-The muslin is cut to fit the **washable area of the tray**, not the full image plane: <!-- BEGIN fact:muslin_cut_width_mm -->4,359<!-- END fact:muslin_cut_width_mm --> × <!-- BEGIN fact:muslin_cut_height_mm -->2,000<!-- END fact:muslin_cut_height_mm -->mm — **narrower and shorter** than the film-plane ACM+frame (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm). It is inset 50mm from each side rim and from the far rim, and its near edge clears the near-rim **sump well** (Yd 80–180). It therefore lies dead flat with no edge draping a rim or sagging into the sump, and mounts inside the frame (~70mm/side of bare ACM), clamped **inboard on the ACM face** (a field detail). The tray — not the optics — is the size constraint here.
+The muslin is cut to fit the **washable area of the tray**, not the full image plane: <!-- BEGIN fact:muslin_cut_width_mm -->4,249<!-- END fact:muslin_cut_width_mm --> × <!-- BEGIN fact:muslin_cut_height_mm -->2,000<!-- END fact:muslin_cut_height_mm -->mm — **narrower and shorter** than the film-plane ACM+frame (<!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm). It is inset 50mm from each side rim and from the far rim, and its near edge clears the near-rim **sump well** (Yd 80–180). It therefore lies dead flat with no edge draping a rim or sagging into the sump, and mounts inside the frame (~70mm/side of bare ACM), clamped **inboard on the ACM face** (a field detail). The tray — not the optics — is the size constraint here.
 
 ### 4.2 Loading the Muslin — Park-and-Roll (no beam lift)
 

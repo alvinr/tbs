@@ -89,7 +89,7 @@ for more contrast (trial **T3**: 0.1% / 0.2% / 0.4%).
 - [ ] 0.4.4 — Funnel and stirring rod
 - [ ] 0.4.5 — Digital scale (1g resolution)
 - [ ] 0.4.6 — Digital hygrometer
-- [ ] 0.4.7 — Pre-cut muslin in light-safe bag (unbleached cotton, <!-- BEGIN fact:muslin_cut_width_mm -->4,359<!-- END fact:muslin_cut_width_mm --> × <!-- BEGIN fact:muslin_cut_height_mm -->2,000<!-- END fact:muslin_cut_height_mm -->mm — cut to fit the washable tray area, clear of the rims + near-rim sump; clamped inboard on the ACM, no hem)
+- [ ] 0.4.7 — Pre-cut muslin in light-safe bag (unbleached cotton, <!-- BEGIN fact:muslin_cut_width_mm -->4,249<!-- END fact:muslin_cut_width_mm --> × <!-- BEGIN fact:muslin_cut_height_mm -->2,000<!-- END fact:muslin_cut_height_mm -->mm — cut to fit the washable tray area, clear of the rims + near-rim sump; clamped inboard on the ACM, no hem)
 - [ ] 0.4.8 — Part A bottle (sealed, labeled)
 - [ ] 0.4.9 — Part B bottle (sealed, labeled)
 - [ ] 0.4.10 — Timer (phone or dedicated)

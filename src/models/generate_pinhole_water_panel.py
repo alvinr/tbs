@@ -82,20 +82,16 @@ def walkway_full():
 
 
 def film_plane_beams():
-    """The RIGHT-side (IBC-end) film-plane SUPPORT BEAMS (40x40 rails, full depth in Yd) +
-    their wall-seat SADDLE BRACKETS.  The LEFT-side (cargo-door end) rails are omitted in
-    this view to keep the wet end readable."""
-    rail = 40
-    z_bot = ov.RAIL_OFF_BOT
-    z_top = ov.C_HGT - ov.RAIL_OFF_TOP - rail
-    x_right = ov.RAIL_X_R - rail
-    p = []
-    for zl, rz in (("bot", z_bot), ("top", z_top)):
-        p.append(ov.ruby_box(f"FP support beam R-{zl}", x_right, 0, rz, rail, C_WID, rail,
-                             color=ov.C_STEEL))
-    corners = {"TR": (x_right, z_top), "BR": (x_right, z_bot)}
-    p.append(ov.film_plane_saddles(corners))     # right-end wall-seat saddle brackets only
-    return "\n".join(p)
+    """The RIGHT-side (IBC-end) film-plane corners (BR + TR) — the REAL detailed mechanism reused verbatim
+    from the dedicated model (fpm.corner()): web-vertical 3×1.5 U-channel rails (flanged, end-flanges) +
+    skate/rollers + carriage plate + cam-brake + cross-slides + U-joint + 304 corner plate. ONE source with
+    overview/walkway. The LEFT-side (cargo-door end) corners are omitted in this view to keep the wet end
+    readable. Late import breaks the fpm→ov cycle; fpm.corner() emits ov.ruby_* at the shared coords."""
+    import generate_film_plane_mechanism_model as fpm
+    return "\n".join([
+        fpm.corner("BR", fpm.X_R, fpm.PZ0, fpm.PZ_HB_BOT, -1, "R"),
+        fpm.corner("TR", fpm.X_R, fpm.PZ1, fpm.PZ_HB_TOP, -1, "R"),
+    ])
 
 
 def deck():

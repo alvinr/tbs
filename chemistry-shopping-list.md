@@ -3,7 +3,7 @@
 # Chemistry Shopping List — Cyanotype
 ## Giant Pinhole Camera: Raw Material Procurement (chosen process)
 
-**Image plane per print:** <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~<!-- BEGIN fact:image_area_sqft -->101<!-- END fact:image_area_sqft --> sq ft active film zone; container interior 5893 × 2,388mm)  
+**Image plane per print:** <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft active film zone; container interior 5893 × 2,388mm)  
 **Run size:** 50 prints  
 **Total substrate area:** ~5,800 sq ft  
 **Pricing basis:** April 2026. Prices marked † are confirmed from supplier listings. All others are close estimates from current market data and should be verified before ordering. All prices USD unless noted.
@@ -18,7 +18,7 @@ Cyanotype is the chosen process. For the cost of the alternatives considered (gu
 
 ## Shared Item: Substrate Fabric
 
-All iron/silver processes use unbleached cotton muslin as the substrate. 50 prints at ~<!-- BEGIN fact:image_area_sqft -->101<!-- END fact:image_area_sqft --> sq ft each, plus 15% waste = ~5,980 sq ft total; at 60" (5 ft) wide fabric that is 5,980 ÷ 5 = **~1,196 linear feet ≈ 399 linear yards**.
+All iron/silver processes use unbleached cotton muslin as the substrate. 50 prints at ~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft each, plus 15% waste = ~5,980 sq ft total; at 60" (5 ft) wide fabric that is 5,980 ÷ 5 = **~1,196 linear feet ≈ 399 linear yards**.
 
 | Item | Qty | Supplier | Unit | Units needed | Unit price | Total |
 |---|---|---|---|---|---|---|

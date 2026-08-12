@@ -9,7 +9,7 @@ widens as it approaches the film plane. Any equipment placed inside the cone cas
 a shadow on the film plane, producing an unexposed void in the image.
 
 **Solution:** Reduce the active film plane from the full <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm -->mm container width
-to a <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm span. This creates two **provably shadow-free end
+to a <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm span. This creates two **provably shadow-free end
 zones** — one at each end of the container — where equipment can be placed at any
 depth without entering the optical cone. The right end zone contains a 2×2 IBC stack,  leaving the left zone to contain the light trap drum.
 
@@ -235,23 +235,23 @@ EP; the corridor panel carries only its 12V distribution block.
 
 ## 8. Water Capacity Summary
 
-All four positions are identical 1,000L caged composite IBCs — the <!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L / 900L working fills
+All four positions are identical 1,000L caged composite IBCs — the <!-- BEGIN fact:collection_fill_l -->622<!-- END fact:collection_fill_l -->L / 900L working fills
 are **fill levels, not tote sizes** (a 600L caged tote does not exist). Each tote's fill
 swings between the two ends of a resupply cycle:
 
 | IBC (identical 1,000L tote) | Role | Camera ready | Supply exhausted |
 |----------------------------|------|-------------:|-----------------:|
 | Blue ×2 (stacked) | Clean wash supply | <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L (2× 900L) | 0L |
-| Brown | Recycled wash / fix buffer | 0L | <!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L |
-| Waste (sealed) | Waste collection | 0L | <!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L |
-| **Total in system** | — | **1,800L clean** | **<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l -->L used** |
+| Brown | Recycled wash / fix buffer | 0L | <!-- BEGIN fact:collection_fill_l -->622<!-- END fact:collection_fill_l -->L |
+| Waste (sealed) | Waste collection | 0L | <!-- BEGIN fact:collection_fill_l -->622<!-- END fact:collection_fill_l -->L |
+| **Total in system** | — | **1,800L clean** | **<!-- BEGIN fact:recovered_l -->1,245<!-- END fact:recovered_l -->L used** |
 
 A session starts camera-ready with both Blue totes full (900L each) and the Brown/Waste totes
-empty; the supply is **exhausted when the Blue totes are empty**. The collection totes hold ~<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l -->L
-of the <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply — the rest is open-process loss (~<!-- BEGIN fact:lost_l -->434<!-- END fact:lost_l -->L; wet-print carryout, evaporation,
+empty; the supply is **exhausted when the Blue totes are empty**. The collection totes hold ~<!-- BEGIN fact:recovered_l -->1,245<!-- END fact:recovered_l -->L
+of the <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply — the rest is open-process loss (~<!-- BEGIN fact:lost_l -->465<!-- END fact:lost_l -->L; wet-print carryout, evaporation,
 unrecovered residual) plus a sub-print dreg (~110L).
 
-**Print capacity.** The <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L nominal load supports **~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints per resupply**; filling Blue toward the
+**Print capacity.** The <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L nominal load supports **~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints per resupply**; filling Blue toward the
 tote's physical maximum (~1,900–2,000L) raises this to ~15–16 (transport-validated,
 [Weight Report §4.4](weight-distribution-report.md)), and on-site top-up via the X1 / X3 / X4 bulkhead
 ports extends it further. See [Processing System Report §4](water-system-report.md) for the full water
@@ -313,9 +313,9 @@ The light trap drum sweeps through exterior space during 180° rotation. No inte
 |-----------|-------|
 | Equipment zone concept | X=0–150mm and X=4,649–5,893mm end zones |
 | Pinhole position | X=2,399mm (centered on active FP) |
-| Active film plane width | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm (X=150–4,649mm) |
+| Active film plane width | <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm (X=150–4,649mm) |
 | Rail positions | X=150mm, X=4,649mm |
-| Rail span | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm |
+| Rail span | <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm |
 | Max swing angle | <!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° |
 | Blue IBCs (×2) | Right end zone, X=4,674mm, 2×2 stack top tier |
 | Brown IBC | Right end zone, X=4,674mm, 2×2 stack bottom near |

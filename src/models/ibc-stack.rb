@@ -5335,7 +5335,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "ACC-02 -> BV-05 (recycled spray)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-797.0039999999999.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(-742.0039999999999.mm, 0.mm, 0.mm)
   circle = ge.add_circle([3140.004.mm,35.mm,948.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -5349,8 +5349,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "ACC-02 -> BV-05 (recycled spray) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2343.mm,35.mm,927.mm], [0.000000,0.000000,1.000000], [-0.000000,-1.000000,-0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2343.mm,35.mm,948.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([2398.mm,35.mm,927.mm], [0.000000,0.000000,1.000000], [-0.000000,-1.000000,-0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2398.mm,35.mm,948.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -5364,7 +5364,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "ACC-02 -> BV-05 (recycled spray)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -210.34000000000003.mm)
-  circle = ge.add_circle([2322.mm,35.mm,927.mm], vec, 10.5.mm, 16)
+  circle = ge.add_circle([2377.mm,35.mm,927.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -5377,8 +5377,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "ACC-02 -> BV-05 (recycled spray) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2322.mm,51.660000000000004.mm,716.66.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 16.660000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2322.mm,35.mm,716.66.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([2377.mm,51.660000000000004.mm,716.66.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 16.660000000000004.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2377.mm,35.mm,716.66.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -5392,7 +5392,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "ACC-02 -> BV-05 (recycled spray)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 8.843400000000003.mm, 0.mm)
-  circle = ge.add_circle([2322.mm,51.66.mm,700.mm], vec, 10.5.mm, 16)
+  circle = ge.add_circle([2377.mm,51.66.mm,700.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -5405,8 +5405,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "ACC-02 -> BV-05 (recycled spray) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2313.5034.mm,60.5034.mm,700.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 8.496600000000003.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2322.mm,60.5034.mm,700.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([2368.5034.mm,60.5034.mm,700.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 8.496600000000003.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2377.mm,60.5034.mm,700.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -5420,7 +5420,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "ACC-02 -> BV-05 (recycled spray)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-31.503400000000056.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2313.5034.mm,69.mm,700.mm], vec, 10.5.mm, 16)
+  circle = ge.add_circle([2368.5034.mm,69.mm,700.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9540,7 +9540,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # 3W-BV-05a (Blue/Brown selector) body
   grp = ents.add_group
   grp.name = "3W-BV-05a (Blue/Brown selector) body"
-  face = grp.entities.add_face([2226.mm,46.mm,677.mm], [2272.mm,46.mm,677.mm], [2272.mm,92.mm,677.mm], [2226.mm,92.mm,677.mm])
+  face = grp.entities.add_face([2281.mm,46.mm,677.mm], [2327.mm,46.mm,677.mm], [2327.mm,92.mm,677.mm], [2281.mm,92.mm,677.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(46.mm)
   mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
@@ -9552,7 +9552,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "3W-BV-05a (Blue/Brown selector) run +"
   ge = grp.entities
-  circle = ge.add_circle([2249.mm,69.mm,723.mm], [0,0,1], 13.mm, 24)
+  circle = ge.add_circle([2304.mm,69.mm,723.mm], [0,0,1], 13.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(10.mm)
@@ -9565,7 +9565,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "3W-BV-05a (Blue/Brown selector) run -"
   ge = grp.entities
-  circle = ge.add_circle([2249.mm,69.mm,667.mm], [0,0,1], 13.mm, 24)
+  circle = ge.add_circle([2304.mm,69.mm,667.mm], [0,0,1], 13.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(10.mm)
@@ -9578,7 +9578,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "3W-BV-05a (Blue/Brown selector) branch"
   ge = grp.entities
-  circle = ge.add_circle([2272.mm,69.mm,700.mm], [1,0,0], 13.mm, 24)
+  circle = ge.add_circle([2327.mm,69.mm,700.mm], [1,0,0], 13.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
@@ -9591,7 +9591,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "3W-BV-05a (Blue/Brown selector) handle stem"
   ge = grp.entities
-  circle = ge.add_circle([2249.mm,92.mm,700.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2304.mm,92.mm,700.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(42.mm)
@@ -9603,7 +9603,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # 3W-BV-05a (Blue/Brown selector) handle lever
   grp = ents.add_group
   grp.name = "3W-BV-05a (Blue/Brown selector) handle lever"
-  face = grp.entities.add_face([2241.mm,133.mm,668.mm], [2257.mm,133.mm,668.mm], [2257.mm,147.mm,668.mm], [2241.mm,147.mm,668.mm])
+  face = grp.entities.add_face([2296.mm,133.mm,668.mm], [2312.mm,133.mm,668.mm], [2312.mm,147.mm,668.mm], [2296.mm,147.mm,668.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(64.mm)
   mat = model.materials["SV-01 sample valve handwheel stem"] || model.materials.add("SV-01 sample valve handwheel stem")
@@ -9616,7 +9616,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "BV-05 fresh supply (trunk -> selector)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, 619.mm)
-  circle = ge.add_circle([2249.mm,69.mm,48.mm], vec, 10.5.mm, 16)
+  circle = ge.add_circle([2304.mm,69.mm,48.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9630,7 +9630,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "BV-05a -> BV-05b (up the pinhole wall)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, 267.mm)
-  circle = ge.add_circle([2249.mm,69.mm,733.mm], vec, 10.5.mm, 16)
+  circle = ge.add_circle([2304.mm,69.mm,733.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9643,7 +9643,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "BV-05b (spray on/off)"
   ge = grp.entities
-  circle = ge.add_circle([2249.mm,69.mm,878.mm], [0,0,1], 18.5.mm, 24)
+  circle = ge.add_circle([2304.mm,69.mm,878.mm], [0,0,1], 18.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
@@ -9656,7 +9656,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "BV-05b (spray on/off) handle stem"
   ge = grp.entities
-  circle = ge.add_circle([2249.mm,87.5.mm,900.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2304.mm,87.5.mm,900.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(28.mm)
@@ -9668,7 +9668,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # BV-05b (spray on/off) handle
   grp = ents.add_group
   grp.name = "BV-05b (spray on/off) handle"
-  face = grp.entities.add_face([2242.mm,115.5.mm,876.mm], [2256.mm,115.5.mm,876.mm], [2256.mm,124.5.mm,876.mm], [2242.mm,124.5.mm,876.mm])
+  face = grp.entities.add_face([2297.mm,115.5.mm,876.mm], [2311.mm,115.5.mm,876.mm], [2311.mm,124.5.mm,876.mm], [2297.mm,124.5.mm,876.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["SV-01 sample valve handwheel stem"] || model.materials.add("SV-01 sample valve handwheel stem")
@@ -9680,8 +9680,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(13.099999999999909.mm, 41.099999999999994.mm, -28.mm)
-  circle = ge.add_circle([2249.mm,69.mm,1000.mm], vec, 7.mm, 10)
+  vec = Geom::Vector3d.new(7.599999999999909.mm, 41.099999999999994.mm, -28.mm)
+  circle = ge.add_circle([2304.mm,69.mm,1000.mm], vec, 7.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9694,8 +9694,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(25.742872561447257.mm, -10.172043052222222.mm, -31.951075290076687.mm)
-  circle = ge.add_circle([2262.1.mm,110.1.mm,972.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(27.192906540531567.mm, -7.425532216938137.mm, -31.331545871718617.mm)
+  circle = ge.add_circle([2311.6.mm,110.1.mm,972.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9708,8 +9708,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-24.437929631876614.mm, 15.218089673404663.mm, -18.15943435112206.mm)
-  circle = ge.add_circle([2287.842872561447.mm,99.92795694777777.mm,940.0489247099233.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-25.442291099956492.mm, 11.079875160746909.mm, -18.454947973320373.mm)
+  circle = ge.add_circle([2338.7929065405315.mm,102.67446778306186.mm,940.6684541282814.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9722,8 +9722,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.444709939103177.mm, 27.183844916814778.mm, 1.2728413088594834.mm)
-  circle = ge.add_circle([2263.4049429295706.mm,115.14604662118244.mm,921.8894903588013.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-23.783521102021496.mm, 23.3453001267916.mm, -0.0008187558651115978.mm)
+  circle = ge.add_circle([2313.350615440575.mm,113.75434294380877.mm,922.213506154961.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9736,8 +9736,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1.9862222058245607.mm, 30.557670393798645.mm, 14.861070466359138.mm)
-  circle = ge.add_circle([2242.9602329904674.mm,142.3298915379972.mm,923.1623316676607.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-7.317572066445791.mm, 29.545941392927404.mm, 13.570165840868754.mm)
+  circle = ge.add_circle([2289.5670943385535.mm,137.09964307060037.mm,922.2126873990959.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9750,8 +9750,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(20.02837134763695.mm, 23.345599428250125.mm, 14.57446542586979.mm)
-  circle = ge.add_circle([2240.974010784643.mm,172.88756193179586.mm,938.0234021340199.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(14.62187491716577.mm, 26.166981319180934.mm, 14.56532791388554.mm)
+  circle = ge.add_circle([2282.2495222721077.mm,166.64558446352777.mm,935.7828532399647.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9764,8 +9764,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(32.588212206790104.mm, 9.81004252987725.mm, 0.5824128091476268.mm)
-  circle = ge.add_circle([2261.0023821322798.mm,196.23316136004598.mm,952.5978675598897.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(29.59850044901168.mm, 15.123774779705514.mm, 2.420562387799464.mm)
+  circle = ge.add_circle([2296.8713971892735.mm,192.8125657827087.mm,950.3481811538502.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9778,8 +9778,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(28.27030107863675.mm, -2.049342470167659.mm, -18.845635736589884.mm)
-  circle = ge.add_circle([2293.59059433907.mm,206.04320388992323.mm,953.1802803690373.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(29.122842657768615.mm, 2.676135151998551.mm, -15.979901466207707.mm)
+  circle = ge.add_circle([2326.469897638285.mm,207.93634056241422.mm,952.7687435416497.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9792,8 +9792,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(9.626569282287164.mm, -5.22353312821528.mm, -32.22749725723065.mm)
-  circle = ge.add_circle([2321.8608954177066.mm,203.99386141975558.mm,934.3346446324474.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(13.464526945632315.mm, -4.12002488303051.mm, -30.205807782348074.mm)
+  circle = ge.add_circle([2355.5927402960538.mm,210.61247571441277.mm,936.788842075442.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9806,8 +9806,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-12.324339753964068.mm, 2.163450934367688.mm, -31.654349521613653.mm)
-  circle = ge.add_circle([2331.487464699994.mm,198.7703282915403.mm,902.1071473752168.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-8.5005704811947.mm, -1.4123193946456922.mm, -32.19323795632204.mm)
+  circle = ge.add_circle([2369.057267241686.mm,206.49245083138226.mm,906.5830342930939.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9820,8 +9820,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-24.609205741421192.mm, 15.745823710509569.mm, -17.464928926480184.mm)
-  circle = ge.add_circle([2319.1631249460297.mm,200.93377922590798.mm,870.4527978536031.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-24.321590334789107.mm, 9.264395687589086.mm, -20.815622278017486.mm)
+  circle = ge.add_circle([2360.5566967604914.mm,205.08013143673656.mm,874.3897963367718.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9834,8 +9834,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-19.967542455610328.mm, 27.496258688261946.mm, 1.9546663102964885.mm)
-  circle = ge.add_circle([2294.5539192046085.mm,216.67960293641755.mm,852.9878689271229.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-25.0304279825732.mm, 21.858051731198742.mm, -2.5223330898315908.mm)
+  circle = ge.add_circle([2336.2351064257023.mm,214.34452712432565.mm,853.5741740587544.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9848,8 +9848,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1.1426221780275228.mm, 30.47012404383031.mm, 15.127249229946301.mm)
-  circle = ge.add_circle([2274.586376748998.mm,244.1758616246795.mm,854.9425352374194.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-10.225280617164117.mm, 29.229967023441304.mm, 12.317125427606697.mm)
+  circle = ge.add_circle([2311.204678443129.mm,236.2025788555244.mm,851.0518409689228.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9862,8 +9862,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(20.73982734698302.mm, 22.909833779159158.mm, 14.267683476362436.mm)
-  circle = ge.add_circle([2273.4437545709707.mm,274.6459856685098.mm,870.0697844673657.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(11.70159185010516.mm, 27.20139023885696.mm, 15.291044174207968.mm)
+  circle = ge.add_circle([2300.979397825965.mm,265.4325458789657.mm,863.3689663965295.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9876,8 +9876,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(32.74704612869027.mm, 9.283599706710277.mm, -0.11601846425492113.mm)
-  circle = ge.add_circle([2294.1835819179537.mm,297.55581944766897.mm,884.3374679437281.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(28.32099785185528.mm, 16.922214938526054.mm, 4.71366491598269.mm)
+  circle = ge.add_circle([2312.68098967607.mm,292.63393611782266.mm,878.6600105707374.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9890,8 +9890,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(27.782640388940763.mm, -2.355329169784227.mm, -19.522936036206147.mm)
-  circle = ge.add_circle([2326.930628046644.mm,306.83941915437924.mm,884.2214494794732.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(30.212269609759915.mm, 4.219165346489717.mm, -13.41925197232456.mm)
+  circle = ge.add_circle([2341.0019875279254.mm,309.5561510563487.mm,883.3736754867201.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9904,8 +9904,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.780626625998138.mm, -5.128222316210213.mm, -32.48337491522966.mm)
-  circle = ge.add_circle([2354.7132684355847.mm,304.484089984595.mm,864.6985134432671.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(16.303344565877524.mm, -3.7070673714216014.mm, -28.829108938027275.mm)
+  circle = ge.add_circle([2371.2142571376853.mm,313.7753164028384.mm,869.9544235143956.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9918,8 +9918,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-13.028603285780264.mm, 2.6037295562041436.mm, -31.337578125518007.mm)
-  circle = ge.add_circle([2363.493895061583.mm,299.3558676683848.mm,832.2151385280374.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-5.521538698810218.mm, -2.3635184749961695.mm, -32.78086797976084.mm)
+  circle = ge.add_circle([2387.517601703563.mm,310.0682490314168.mm,841.1253145763683.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9932,8 +9932,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-24.75556292444071.mm, 16.27086080232459.mm, -16.762723734478755.mm)
-  circle = ge.add_circle([2350.4652917758026.mm,301.95959722458895.mm,800.8775604025194.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-22.8910009355086.mm, 7.48822478073248.mm, -23.03448459363426.mm)
+  circle = ge.add_circle([2381.9960630047526.mm,307.70473055642066.mm,808.3444465966074.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9946,8 +9946,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-19.46949464082536.mm, 27.795751754582625.mm, 2.627294574563166.mm)
-  circle = ge.add_circle([2325.709728851362.mm,318.23045802691354.mm,784.1148366680407.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-25.959206907817133.mm, 20.26372693280092.mm, -5.114671270046074.mm)
+  circle = ge.add_circle([2359.105062069244.mm,315.19295533715314.mm,785.3099620029732.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9960,8 +9960,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-0.2945209116460319.mm, 30.367069502805123.mm, 15.37277012114123.mm)
-  circle = ge.add_circle([2306.2402342105365.mm,346.02620978149616.mm,786.7421312426038.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-12.986951909048457.mm, 28.72122726706374.mm, 10.82077164884106.mm)
+  circle = ge.add_circle([2333.145855161427.mm,335.45668226995406.mm,780.1952907329271.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9974,8 +9974,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(21.43674521241337.mm, 22.465137958642515.mm, 13.94099154114474.mm)
-  circle = ge.add_circle([2305.9457132988905.mm,376.3932792843013.mm,802.114901363745.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(8.672474498809606.mm, 28.066613354005426.mm, 15.738879108592073.mm)
+  circle = ge.add_circle([2320.1589032523784.mm,364.1779095370178.mm,791.0160623817682.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -9988,8 +9988,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(32.880894735666516.mm, 8.760082557871385.mm, -0.82184482375078.mm)
-  circle = ge.add_circle([2327.382458511304.mm,398.8584172429438.mm,816.0558929048898.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(26.7414818630059.mm, 18.670951415688307.mm, 6.851834476558338.mm)
+  circle = ge.add_circle([2328.831377751188.mm,392.2445228910232.mm,806.7549414903602.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -10002,8 +10002,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(27.27431378969777.mm, -2.648263453907873.mm, -20.190745947905157.mm)
-  circle = ge.add_circle([2360.2633532469704.mm,407.6184998008152.mm,815.234048081139.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(30.977699581108936.mm, 5.860148386994126.mm, -10.802763731361324.mm)
+  circle = ge.add_circle([2355.572859614194.mm,410.91547430671153.mm,813.6067759669186.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -10016,8 +10016,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(7.93055123748627.mm, -5.0174464636789935.mm, -32.71848563131789.mm)
-  circle = ge.add_circle([2387.537667036668.mm,404.9702363469073.mm,795.0433021332339.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(18.9798384761948.mm, -3.104024806319444.mm, -27.21745168288021.mm)
+  circle = ge.add_circle([2386.550559195303.mm,416.77562269370566.mm,802.8040122355573.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -10030,8 +10030,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-13.718023883875048.mm, 3.0527458404600907.mm, -31.001036716665226.mm)
-  circle = ge.add_circle([2395.4682182741544.mm,399.9527898832283.mm,762.324816501916.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-2.451144575901253.mm, -3.1402495206933736.mm, -33.08760550276236.mm)
+  circle = ge.add_circle([2405.5303976714977.mm,413.6715978873862.mm,775.586560552677.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -10044,8 +10044,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-24.876873839208656.mm, 16.79274412719667.mm, -16.053429746307756.mm)
-  circle = ge.add_circle([2381.7501943902794.mm,403.0055357236884.mm,731.3237797852507.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-21.167151654266036.mm, 5.772008130549523.mm, -25.08574351453001.mm)
+  circle = ge.add_circle([2403.0792530955964.mm,410.53134836669284.mm,742.4989550499147.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -10058,8 +10058,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(10.026679448929372.mm, 19.101720149114897.mm, 32.72964996105702.mm)
-  circle = ge.add_circle([2356.8733205510707.mm,419.7982798508851.mm,715.270350038943.mm], vec, 7.mm, 8)
+  vec = Geom::Vector3d.new(-9.512101441330287.mm, 22.596643502757615.mm, 30.586788464615324.mm)
+  circle = ge.add_circle([2381.9121014413304.mm,416.30335649724236.mm,717.4132115353847.mm], vec, 7.mm, 8)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -10072,8 +10072,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(13.099999999999909.mm, 41.10000000000002.mm, -28.mm)
-  circle = ge.add_circle([2366.9.mm,438.9.mm,748.mm], vec, 7.mm, 10)
+  vec = Geom::Vector3d.new(7.599999999999909.mm, 41.10000000000002.mm, -28.mm)
+  circle = ge.add_circle([2372.4.mm,438.9.mm,748.mm], vec, 7.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)

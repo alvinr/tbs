@@ -24,6 +24,7 @@ Usage:
 import argparse
 import math
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -51,7 +52,12 @@ C_POLY = "#D8D4C8"   # UHMW pad (cam-brake pinch face)
 # real container/film layout (mm) — sourced from tbs_constants via ov (no hardcoded copies)
 CH = ov.C_HGT                        # interior height
 X_L, X_R = ov.FP_X_L, ov.FP_X_R - 25   # right edge trimmed 25mm (+ a 35mm end-plate trim) to clear the IBC frame → FP_W 4499→4474
-FP_Y = ov.FP_Y                       # film depth from the pinhole wall (Y)
+FP_Y = ov.FP_Y                       # film depth from the pinhole wall (Y) — the NOMINAL throw (optics)
+FP_Y_PARK = ov.PIVOT_YD - 50         # 2237 — the film-plane ASSEMBLY is DRAWN parked 50mm forward (pinhole
+                                     # side) of the hinge post (ov.PIVOT_YD=2287) for a clearer read. DISPLAY
+                                     # ONLY: optics/nominal throw stay on FP_Y (2262). Carriage + cross-slides
+                                     # + U-joint + film frame move together (they travel in Y for focus); the
+                                     # depth rails run full-depth (y0..C_WID) and do NOT move.
 PH_X, PH_Z = ov.PH_X, ov.C_HGT // 2  # pinhole X (film-width centre) and Z (mid-height)
 # ── 6061 Al U-CHANNEL rails, BOTH 3"×1.5" (McMaster 1262T21, $352/6ft, 0.188" wall) — the deflection is
 # ~25× overkill even at 3×1.5, so the 4×2 is unnecessary weight/cost. Wheels ride the OPEN channel;
@@ -63,7 +69,7 @@ PH_X, PH_Z = ov.PH_X, ov.C_HGT // 2  # pinhole X (film-width centre) and Z (mid-
 #         (The old flat/inverted-U top let the model draw ~38mm more film height than FP_H=2094 claimed;
 #          web-vertical reconciles the model DOWN to FP_H. Transport swing unaffected — left rail is a
 #          removable drop-in.)
-CD_BOT, CW_BOT = 76, 38              # 3×1.5 web-vertical: web depth (Z) × flange (X) — BOTH rails
+CD_BOT, CW_BOT = ov.FP_RAIL_WEB, ov.FP_RAIL_FLANGE  # 76 × 38 — 3×1.5 web-vertical section (single-sourced from tbs_constants)
 CD_TOP, CW_TOP = CD_BOT, CW_BOT      # top = the SAME web-vertical section as the bottom
 HB_T = 5                             # web/flange wall = 0.188" (4.78mm)
 SPLICE_YD = 260                      # removable = 6ft (1830) + 260mm; the length-splice sits at the PINHOLE end
@@ -80,11 +86,11 @@ FP_W_CORNER = FCX_R - FCX_L          # 4408 — active image width once the pane
 
 # ── vertical layout (mm) — bottom pinned by the walkway; top pinned by the ceiling (web-vertical fit) ──
 PZ0 = ov.RAIL_OFF_BOT                # 160 — film BOTTOM edge, ABOVE the Z140 walkway (hard floor, +20mm)
-BUILD_BOT = 110                      # bottom channel centre → film-corner stack (weight-bearing carriage)
-GUIDE_GAP = 10                       # top guide-follower gap (film top just below the web-vertical guide channel)
-PZ_HB_BOT = PZ0 + BUILD_BOT          # 270 — bottom channel WEB-centre (bottom flange @220 clears the deck; film hangs below)
-PZ_HB_TOP = ov.C_HGT - CD_TOP // 2 - 50  # 2300 — top rail WEB-centre, web-vertical, 50mm below the ceiling
-PZ1 = PZ_HB_TOP - CD_TOP // 2 - GUIDE_GAP # 2252 — film TOP edge, just under the web-vertical guide channel
+BUILD_BOT = ov.FP_RAIL_BUILD_BOT     # 110 — bottom channel centre → film-corner stack (weight-bearing carriage)
+GUIDE_GAP = ov.FP_RAIL_GUIDE_GAP     # 10 — top guide-follower gap (film top just below the web-vertical guide channel)
+PZ_HB_BOT = ov.FP_RAIL_ZC_BOT        # 270 — bottom channel WEB-centre (bottom flange @220 clears the deck; film hangs below)
+PZ_HB_TOP = ov.FP_RAIL_ZC_TOP        # 2300 — top rail WEB-centre, web-vertical, 50mm below the ceiling
+PZ1 = ov.FP_FILM_TOP                 # 2252 — film TOP edge, just under the web-vertical guide channel
 BUILD = BUILD_BOT                    # (label back-compat)
 CZ_F, CZ_C = 15, ov.C_HGT - 15       # (retained only for the faint floor/ceiling context boxes)
 
@@ -151,12 +157,16 @@ def emit_slide(label, spec, ox=0, oy=0, oz=0):
     return ov.ruby_cylinder(label, x + ox, y + oy, z + oz, a, b, color=color, axis=axis)
 
 
-def corner(tag, cx, fz, zc, cin, side):
+def corner(tag, cx, fz, zc, cin, side, keep="all"):
     """One corner on a 6061 Al U-channel depth rail. BOTH web-vertical: BOTTOM weight, TOP guide (captured skate).
       cx = corner X   fz = film-corner Z   zc = rail web-centre Z   cin = +1 (left) / -1 (right)
-      side = 'L' drop-in (stub + welded bridge + removable + support + pinhole gusset) / 'R' flanged."""
+      side = 'L' drop-in (stub + welded bridge + removable + support + pinhole gusset) / 'R' flanged.
+      keep = 'all' (default — every part, byte-identical to before) / 'removable' (only the transport lift-out:
+             the REMOVABLE rail section + its welded bridge) / 'fixed' (everything else). The split lets the
+             lighttrap model put the removable in its Panel-Swing DC child (hides on swing) and the rest in a
+             static component, while overview/walkway/water take the whole corner ('all')."""
     P = []
-    ty = FP_Y
+    ty = FP_Y_PARK                                       # film-plane assembly parked forward (display); rails don't use ty
     is_bot = fz < ov.C_HGT / 2
     # BOTH corners web-vertical now — same rail + captured skate; only the Z position + stack direction differ.
     rail = lambda nm, y0, yl, al=None: channel_v(nm, cx, zc, y0, yl, tag, cin, al)
@@ -237,7 +247,7 @@ def corner(tag, cx, fz, zc, cin, side):
     # stubs + 4040N12 shaft support, 304 corner plate, and the frame-corner bolt are the SHARED assembly
     # (corner_slide_parts) — the single source these + the Movement + whole-plane scenes all draw from.
     fcx = cx + cin * FILM_INSET                          # film-plane corner (frame heel)
-    sp = corner_slide_parts(cx, fcx, fz, cin, is_bot, FP_Y)
+    sp = corner_slide_parts(cx, fcx, fz, cin, is_bot, ty)  # ty = FP_Y_PARK — slides/U-joint park with the carriage
     P.append(emit_slide(f"Vertical Z slide rail (TILT, green) {tag}", sp["green"]))
     P.append(emit_slide(f"Horizontal X slide rail (SWING, purple) {tag}", sp["purple"]))
     P.append(emit_slide(f"U-joint (Belden UJ-SS750x375, setscrew) {tag}", sp["ujoint"]))
@@ -246,6 +256,14 @@ def corner(tag, cx, fz, zc, cin, side):
     P.append(emit_slide(f"Output stub 3/8 (U-joint → corner plate) {tag}", sp["output_stub"]))
     P.append(emit_slide(f"Corner plate 304 SS (U-joint mount — angle frame → U-joint) {tag}", sp["corner_plate"]))
     P.append(emit_slide(f"Frame-corner bolt (angle frame → bracket) {tag}", sp["frame_bolt"]))
+    if keep != "all":
+        # the transport lift-out = the REMOVABLE rail section + its welded bridge (both carry "REMOVABLE"
+        # in the part NAME); everything else (stub, carriage/skate/U-joint, support brackets, gussets,
+        # splices) is FIXED and STAYS in the transport position. Match the grp.name ONLY — matching the
+        # whole ruby drags in any part that references a shared MATERIAL named after a removable part.
+        name_rx = re.compile(r'grp\.name = "([^"]*)"')
+        is_rem = lambda s: any("REMOVABLE" in n for n in name_rx.findall(s))
+        P = [p for p in P if (is_rem(p) if keep == "removable" else not is_rem(p))]
     return "\n".join(P)
 
 
@@ -273,11 +291,11 @@ def film_plane():
     # (not the expendable 6061 angle): the U-joint funnels the corner load into a few bolts, too concentrated
     # for aluminum — 304 SS for strength + a galvanic/wet-zone match to the 303 SS U-joint.
     AL, AT = 50, 3                                # 2x2 angle leg / wall
-    yperp = FP_Y - AL                             # perp leg projects toward the pinhole (muslin side)
-    yin = FP_Y - AT                               # in-plane leg lies against the ACM front face
+    yperp = FP_Y_PARK - AL                        # perp leg projects toward the pinhole (muslin side) — parked
+    yin = FP_Y_PARK - AT                          # in-plane leg lies against the ACM front face — parked
     P = [
         # ACM rigid backing (ghost), seated against the frame in-plane leg
-        ov.ruby_box("Film-plane ACM backing (ghost)", FCX_L, FP_Y, PZ0, FP_W_CORNER, 4, PZ1 - PZ0,
+        ov.ruby_box("Film-plane ACM backing (ghost)", FCX_L, FP_Y_PARK, PZ0, FP_W_CORNER, 4, PZ1 - PZ0,
                     color=C_PANEL, alpha=0.14),
         # 2x2 6061 Al angle perimeter frame — top / bottom (perp leg + in-plane leg = an L)
         ov.ruby_box("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)", FCX_L, yperp, PZ1 - AT, FP_W_CORNER, AL, AT, color=C_FRAME),
@@ -302,7 +320,7 @@ def pinhole():
     corners_xyz = [(FCX_L, PZ1), (FCX_R, PZ1), (FCX_L, PZ0), (FCX_R, PZ0)]
     rays = "\n".join(
         f'  ents.add_edges(Geom::Point3d.new({ov.mm(PH_X)}, {ov.mm(0)}, {ov.mm(PH_Z)}), '
-        f'Geom::Point3d.new({ov.mm(x)}, {ov.mm(FP_Y)}, {ov.mm(z)}))'
+        f'Geom::Point3d.new({ov.mm(x)}, {ov.mm(FP_Y_PARK)}, {ov.mm(z)}))'
         for x, z in corners_xyz)
     P.append("  # light cone — pinhole → 4 panel corners\n" + rays + "\n")
     return "\n".join(P)

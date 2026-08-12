@@ -12,11 +12,11 @@ This report describes the **muslin clamp system** that secures the muslin to the
 
 ## 2. Clamp Layout
 
-**58 nylon spring clamps** at 150mm centers grip the muslin on **three edges** of the <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm film-plane frame — the top and the two sides. The **bottom edge is left unclamped**: there is no clearance between the raised walkway deck and the board's bottom edge for a clamp body, and leaving it open keeps the swing/tilt envelope clear. The muslin is held taut by the three clamped edges.
+**58 nylon spring clamps** at 150mm centers grip the muslin on **three edges** of the <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm film-plane frame — the top and the two sides. The **bottom edge is left unclamped**: there is no clearance between the raised walkway deck and the board's bottom edge for a clamp body, and leaving it open keeps the swing/tilt envelope clear. The muslin is held taut by the three clamped edges.
 
 | Edge | Length | Clamp Count |
 |------|--------|-------------|
-| Top horizontal | <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm -->mm | 30 |
+| Top horizontal | <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm | 30 |
 | Left vertical | <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm | 14 |
 | Right vertical | <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm | 14 |
 | Bottom horizontal | — | 0 (walkway clearance) |

@@ -69,6 +69,17 @@ Redesign basis (2026-07-17 — film-plane top rail lowered):
   top carriage/fittings.  Active image plane 4499×2138→4499×2094; area 104→101 sqft
   (9.62→9.42 m²).  Cascades IMAGE_AREA_SQFT, CLAMP_N_VERT (15→14) → clip count → parts/
   costing, XSLIDE_Z_TRAVEL (250→245), BRACE_Z_TOP (2288→2244), and chem/muslin consumables.
+
+Redesign basis (2026-08-11 — film-plane LEFT edge pulled inboard of the pivot hub):
+  FP_X_L 150→260 — the left film-plane corner (rail + carriage + frame) is relocated INBOARD of the
+  swing-pivot HUB so the backing-side carriage clears it (the hub can't be relieved — strength — and the
+  rail can't pass through it). Sized to the hub's r60 bearing (reaches X235), not just the Ø89 post edge
+  (X219.5). Also PINNED PIVOT_X at 175 (it had derived from RAIL_X_L, so the post chased the rail inboard —
+  why 244 didn't clear). Chosen over the outboard move (which re-buried the corner in the light-trap
+  congestion). Costs ~110mm image width (2.4%): FP_W 4499→4389, active area 101→99 sqft. The plane is now
+  asymmetric, so the CENTERED pinhole follows: PH_X 2399→2454 (+55mm). Cascades FP_W, PH_X, IMAGE_AREA_SQFT,
+  RAIL_X_L, every film-plane 2D sheet + the 8 SketchUp models, and the pinhole-wall light-cone. BONUS: the
+  left rail now clears the swing envelope, so the removable-rail lift-out is retirable (follow-up).
 """
 
 import math
@@ -84,7 +95,7 @@ C_HGT  = 2388   # interior height Z (mm)
 
 # ── Film plane ────────────────────────────────────────────────────────────────
 FP_H     = 2094   # film plane height (mm)          [film-plane-redesign: 2388→2138 — active height with the low-profile acetal-skate corner (BUILD 140→110); 2138→2094 — top edge lowered 44mm for +25mm ceiling clearance (top rail dropped via RAIL_OFF_TOP); ~C_HGT − RAIL_OFF_TOP(144) − RAIL_OFF_BOT(walkway)]
-FP_X_L   = 150    # film plane left edge X (mm)     [rev6: was 625; panel inner face 120mm + 30mm]
+FP_X_L   = 260    # film plane left edge X (mm)     [2026-08-11: 150→260 — left corner pulled inboard clear of the FIXED pivot HUB (r60 bearing reaches X235, not just the Ø89 post); PIVOT_X pinned so the post no longer follows. crops ~110mm image, re-centers PH_X. rev6: was 625]
 FP_X_R   = 4649   # film plane right edge X (mm)    [was 4019 → wider right zone]
 FP_W     = FP_X_R - FP_X_L   # = 4499mm          [rev6: was 4024]
 FP_Y     = 2262   # nominal depth from pinhole wall (mm)  [unchanged]
@@ -140,6 +151,23 @@ RAIL_OFF_TOP = 144    # film-plane TOP rail ceiling offset (mm) — dropped 44mm
 RAIL_OFF_BOT = 160    # floor (BOTTOM) offset (mm) = WALKWAY_H 140 + 20mm so the film-plane bottom
                       # edge clears the raised Z140 walkway by 20mm as it travels in Yd (was 150 for the
                       # Z130 deck). Costs ~60mm of muslin height (~2.5% of the captured image).
+
+# ── Film-plane RAIL Z-layout (web-vertical 3×1.5 6061 Al U-channel) — SINGLE SOURCE ─────────────
+# The corner rework (2026-08, branch corner-eng-design) stood BOTH rails WEB-VERTICAL and OFFSET them
+# ABOVE the film edges: the rigid plane HANGS from the rails — its bottom corner rides a BUILD_BOT
+# weight-carriage stack BELOW the bottom rail; its top corner rides a GUIDE_GAP follower just below the
+# top guide rail. Every 3D model that draws the corner rails (overview / walkway / lighttrap / water /
+# construction, plus the film-plane-mechanism detail) reads these so the rail Z can't drift between
+# them. Supersedes the old FLUSH rail-at-film-edge convention (C_HGT − RAIL_OFF_TOP for the top,
+# a bare RAIL_OFF_BOT for the bottom) in the 3D models.  (2D sheets still use BRACE_Z_* — see TODO.)
+FP_RAIL_WEB       = 76   # U-channel web depth, stood vertical (Z) — 3×1.5 section
+FP_RAIL_FLANGE    = 38   # U-channel flange (X), opens toward the film
+FP_RAIL_BUILD_BOT = 110  # film BOTTOM edge → bottom-rail web-centre (weight-carriage stack)
+FP_RAIL_GUIDE_GAP = 10   # film TOP edge → just under the top guide-rail web (follower gap)
+FP_RAIL_CEIL_CLR  = 50   # top-rail web-top → ceiling clearance
+FP_RAIL_ZC_BOT = RAIL_OFF_BOT + FP_RAIL_BUILD_BOT                     # 270  — bottom rail WEB-centre Z
+FP_RAIL_ZC_TOP = C_HGT - FP_RAIL_WEB // 2 - FP_RAIL_CEIL_CLR          # 2300 — top rail WEB-centre Z
+FP_FILM_TOP    = FP_RAIL_ZC_TOP - FP_RAIL_WEB // 2 - FP_RAIL_GUIDE_GAP # 2252 — film TOP edge Z (bottom = RAIL_OFF_BOT)
 
 # ── Movement ranges (OPTION A: fixed-size rigid plane on floating-corner slides) ──
 # rev7 / Option A (2026-06-06): the film plane is a FIXED-SIZE rigid rectangle that
@@ -345,7 +373,9 @@ DRUM_CY     = C_WID // 2             # 1181mm — light-lock center in Yd (= con
 # ── Rotating-panel swing geometry (derived — reads brace/drum/bay above) ─────
 # The transport-mode policy constants (SWING_LOCK_DEG, PANEL_CUT_YD, PIVOT_POST_*) are up
 # in the hinged-panel block; these are the derived positions.
-PIVOT_X        = RAIL_X_L + BRACE_RHS // 2   # 175 — swing axis X (center of the film far-left upright)
+PIVOT_X        = 175   # swing axis X — FIXED structural location (2026-08-11: decoupled from RAIL_X_L so the
+                       # film rail can be pulled inboard clear of the post/hub WITHOUT the post chasing it;
+                       # was RAIL_X_L + BRACE_RHS//2 = 175 when the rail was still at the film far-left)
 PIVOT_YD       = FP_Y + BRACE_RHS // 2       # 2287 — swing axis Yd
 FAR_STRIP_YD0  = PIVOT_YD                     # 2287 — fixed FAR strip spans PIVOT_YD..C_WID (~75mm);
                                              # ends the swinging panel AT the pivot so nothing swings

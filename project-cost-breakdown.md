@@ -230,7 +230,7 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 
 **Source document:** `water-system-report.md`
 
-Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides ~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> full-size prints (~<!-- BEGIN fact:image_area_sqft -->101<!-- END fact:image_area_sqft --> sq ft each) between water resupply runs, with Brown wash-2 recycling (~8–10 on fresh Blue alone).
+Self-contained three-circuit water system for remote/off-grid cyanotype processing. Provides ~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> full-size prints (~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft each) between water resupply runs, with Brown wash-2 recycling (~8–10 on fresh Blue alone).
 
 <!-- BEGIN costing:water -->
 | Category | Low† | High† |
@@ -371,7 +371,7 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 
 *Note: development requires only plain cold water — no darkroom chemistry. The §5 water system provides all wash water.*
 
-*Muslin sizing: three 60″ strips cover the <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> mm width (× <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm --> mm tall = ~21 ft/print); 50 prints + 15% waste = ~400 yd = **3 × 150-yd rolls ≈ $300 (~$6/print)**.*
+*Muslin sizing: three 60″ strips cover the <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> mm width (× <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm --> mm tall = ~21 ft/print); 50 prints + 15% waste = ~400 yd = **3 × 150-yd rolls ≈ $300 (~$6/print)**.*
 
 ### 7.2 Per-print cost (cyanotype — Standard ½-Ware tier; range locked by trial)
 
@@ -380,7 +380,7 @@ Cyanotype is the chosen process: no silver, no DEA registration, no hazmat shipp
 | Ferric ammonium oxalate (AmFe, Part A) | ~$75 |
 | Potassium ferricyanide (Part B) | ~$3 |
 | Ammonium dichromate (contrast) | ~$0.50 |
-| Muslin substrate (~<!-- BEGIN fact:image_area_sqft -->101<!-- END fact:image_area_sqft --> sq ft = ~9 yd of 60″ + 15% waste) | ~$6 |
+| Muslin substrate (~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft = ~9 yd of 60″ + 15% waste) | ~$6 |
 | Water & consumables (6-mil liner, gloves) | ~$3 |
 | **Total per print (Standard)** | **~$36** |
 
@@ -504,7 +504,7 @@ Permit requirements vary by jurisdiction. Estimates below are based on general k
 | Item | Cost |
 |------|------|
 | Transport (short haul, commercial hire) | $300–$800 |
-| Water resupply (~420 gal / <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue ≈ <!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints) | $25–$50 |
+| Water resupply (~420 gal / <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue ≈ <!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints) | $25–$50 |
 | Location permit | $0–$500 |
 | **Per-deployment overhead** | **~$325–$1,350** |
 

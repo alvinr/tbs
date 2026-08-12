@@ -4,7 +4,7 @@
 ## A Technical Analysis of Image Quality, Depth of Field, and Exposure Impact
 
 **Camera configuration:** Option B (side-to-side), container interior depth f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm
-**Image plane (active):** <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 6′ 10″); container interior <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm --> × 2,388mm
+**Image plane (active):** <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 6′ 10″); container interior <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm --> × 2,388mm
 **Current pinhole:** Ø <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm, f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number -->
 **Baseline exposure (Ware New Cyanotype on muslin, f/1088, full sun — no reciprocity correction):** ~30–45 min
 
@@ -206,7 +206,7 @@ These are the highest-quality option within their coverage area. Process lenses 
 
 **What the image looks like:** A sharp circular disk in the center of the photosensitive surface, approximately 400–500mm in diameter. The remaining ~4,099mm width of the active image plane receives no light. The entire portrait must be composed within this central medallion.
 
-**Coverage as percentage of image plane:** 400mm circle / 4,499mm active width = **8.9% of image width**. The circular image is a small fraction of the ~<!-- BEGIN fact:image_area_sqft -->101<!-- END fact:image_area_sqft --> sq ft active plane. The remainder of the plane is unexposed (black in the final image, or could be utilized by other means).
+**Coverage as percentage of image plane:** 400mm circle / 4,499mm active width = **8.9% of image width**. The circular image is a small fraction of the ~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft active plane. The remainder of the plane is unexposed (black in the final image, or could be utilized by other means).
 
 **Distortion:** Designed for <0.1% distortion across the image circle. Straight lines render straight. Essentially identical to pinhole geometry within the covered area.
 
@@ -257,9 +257,9 @@ Large Fresnel lenses are the only commercially available single elements that co
 | Fresnel Technologies surplus acrylic | Up to 1,200mm × 900mm | Custom | $200–$500 |
 | Glass Fresnel (lighthouse type, antique) | 500–1,000mm dia | 300–1,000mm | $500–$5,000 |
 
-For this camera: a 600 × 600mm Fresnel lens at 1,400mm focal length would cover a 600mm square within the <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm active image plane — still not full coverage, but significantly more than a process lens. Stacking two side by side (600 × 600mm each) in a 1200 × 600mm assembly would cover about **27% of the active image width**.
+For this camera: a 600 × 600mm Fresnel lens at 1,400mm focal length would cover a 600mm square within the <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm active image plane — still not full coverage, but significantly more than a process lens. Stacking two side by side (600 × 600mm each) in a 1200 × 600mm assembly would cover about **27% of the active image width**.
 
-A full-width solution would require a <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm Fresnel element — this does not exist commercially. Custom mylar Fresnel film exists in large formats (used in projection screens) but at extremely low optical quality.
+A full-width solution would require a <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm Fresnel element — this does not exist commercially. Custom mylar Fresnel film exists in large formats (used in projection screens) but at extremely low optical quality.
 
 **Optical qualities of Fresnel lenses:**
 
@@ -305,7 +305,7 @@ For crown glass (n = 1.52), a symmetric biconvex lens with equal radii:
 
 This is the fundamental optical constraint of this camera that no lens choice can fully resolve.
 
-The active image plane is <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm, centered on the pinhole — giving half-width 2,250mm and half-height 1,047mm. The distance from the lens to the center of the image plane is 2,362mm. The distance from the lens to the active image plane corners and edges:
+The active image plane is <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm, centered on the pinhole — giving half-width 2,250mm and half-height 1,047mm. The distance from the lens to the center of the image plane is 2,362mm. The distance from the lens to the active image plane corners and edges:
 
 ```
 d_mid-width = √(2,362² + 2,250²) = 3,262mm   [half-width of active plane]
@@ -418,7 +418,7 @@ Install multiple lenses (e.g., 6 large magnifying glass elements, 200mm diameter
 
 | Quality | Pinhole | Process lens | Telescope APO | Fresnel lens |
 |---|---|---|---|---|
-| Coverage of image plane | ~<!-- BEGIN fact:image_area_sqft -->101<!-- END fact:image_area_sqft --> sq ft (active) | Ø ~400mm circle | Ø ~150–200mm circle | Ø ~600mm circle |
+| Coverage of image plane | ~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft (active) | Ø ~400mm circle | Ø ~150–200mm circle | Ø ~600mm circle |
 | Sharpness (within covered area) | 0.69 lp/mm | 15–25 lp/mm | 20–40 lp/mm | 2–8 lp/mm |
 | Depth of field | Unlimited (all soft) | f/32: 1.2 m span | f/32: 1.2 m span | Shallow (soft) |
 | Exposure time (Ware cyanotype, ISO ~2–4) | ~30–45 min | ~1.5 sec | ~6 sec | ~0.4 sec |
@@ -449,7 +449,7 @@ If a lens is added for portrait work with the goal of maximizing image quality:
 
 | | Pinhole | Lens |
 |---|---|---|
-| Image area | ~<!-- BEGIN fact:image_area_sqft -->101<!-- END fact:image_area_sqft --> sq ft (active) | 0.7–4% of total (within image circle) |
+| Image area | ~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft (active) | 0.7–4% of total (within image circle) |
 | Subject holds still | ~30–45 min | 1.5–10 seconds |
 | Geometric character | Perfect perspective, unlimited DoF | Sharp focus zone, controllable DoF |
 | Background | Soft but rendered | Sharp (at working aperture) or shallow-DoF blur |

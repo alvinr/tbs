@@ -8,7 +8,7 @@
 - **Camera designation:** TBS-001
 - **Parts prefix:** ICP-XX (e.g. ICP-01, ICP-02…)
 - **Container:** 20ft ISO standard shipping container, 2362mm interior focal depth
-- **Image plane:** 4499 × 2094mm active (X=150–4649mm; height mechanism-limited by the corner slides + walkway clearance); container interior 5893 × 2388mm
+- **Image plane:** 4389 × 2094mm active (X=260–4649mm; left edge pulled inboard clear of the pivot hub — 2026-08-11; height mechanism-limited by the corner slides + walkway clearance); container interior 5893 × 2388mm
 - **Pinhole:** Ø2.17mm, SS-302 shim, f/1088 (Rayleigh formula, λ=550nm)
 - **Site:** https://alvinr.github.io/tbs/
 
@@ -201,11 +201,11 @@ ripple into both.
 | Optimal pinhole Ø | 2.17mm | Rayleigh: d = 1.9√(fλ), λ=550nm |
 | f-number | f/1088 | f / d |
 | Container interior | 5893 × 2388mm | Full interior face |
-| Film plane (active) | 4499 × 2094mm | X=150–4649mm (shadow-free zone); height = C_HGT − RAIL_OFF_TOP − RAIL_OFF_BOT (top rail lowered 44mm) |
-| Pinhole X position | 2399mm | Center of active film plane (150 + 4499/2) |
-| Rail left X | 150mm | Left rail / film plane left edge |
+| Film plane (active) | 4389 × 2094mm | X=260–4649mm (left edge inboard of the pivot hub, r60 bearing); height = C_HGT − RAIL_OFF_TOP − RAIL_OFF_BOT (top rail lowered 44mm) |
+| Pinhole X position | 2454mm | Center of active film plane (260 + 4389/2) |
+| Rail left X | 260mm | Left rail / film plane left edge (inboard of the pivot hub; PIVOT_X pinned at 175) |
 | Rail right X | 4649mm | Right rail / film plane right edge |
-| Rail span | 4499mm | RAIL_X_R − RAIL_X_L |
+| Rail span | 4389mm | RAIL_X_R − RAIL_X_L |
 | Board tilt 5° → image shift | 207mm | 2362 × tan(5°) |
 | Film plane max tilt | ±40° | Option A rigid-plane, single-axis (`MAX_TILT_DEG`, cross-slide-Z limit) |
 | Film plane max swing | ±28° | Option A rigid-plane, single-axis (`MAX_SWING_DEG`, rail-depth limit ~28.7°) |

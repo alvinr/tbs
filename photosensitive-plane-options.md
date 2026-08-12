@@ -3,16 +3,16 @@
 # Photosensitive Options
 ## The Big Shoebox Project (TBS-001) — Image Plane Material Selection Guide
 
-**Image plane dimensions (active):** <!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 7′ 0″)
+**Image plane dimensions (active):** <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (~14′ 9″ × 7′ 0″)
 **Container interior:** <!-- BEGIN fact:container_interior_length_mm -->5,893<!-- END fact:container_interior_length_mm --> × 2,388mm (19′ 4″ × 7′ 10″) — end zones occupied by equipment
-**Image plane area:** ~<!-- BEGIN fact:image_area_sqft -->101<!-- END fact:image_area_sqft --> sq ft (9.42 m²)
+**Image plane area:** ~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft (9.42 m²)
 **Camera configuration:** Option B (side-to-side), f = <!-- BEGIN fact:focal_length_mm -->2,362<!-- END fact:focal_length_mm -->mm, f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number -->, pinhole Ø <!-- BEGIN fact:pinhole_diameter_mm -->2.17<!-- END fact:pinhole_diameter_mm -->mm
 
 ---
 
 ## Summary
 
-Eight photosensitive processes were evaluated for a ~101 sq ft (<!-- BEGIN fact:film_plane_width_mm -->4,499<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm) active image plane at f/1088 in full sunlight. The analysis covers per-image cost, chemistry sourcing, mounting method, spectral response to natural light, and ISO equivalent — the last being the single most consequential variable for practical operation of this camera.
+Eight photosensitive processes were evaluated for a ~101 sq ft (<!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm --> × <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm) active image plane at f/1088 in full sunlight. The analysis covers per-image cost, chemistry sourcing, mounting method, spectral response to natural light, and ISO equivalent — the last being the single most consequential variable for practical operation of this camera.
 
 ### The ISO problem
 
@@ -506,7 +506,7 @@ Covering 101 sq ft with photographic film at any standard format produces costs 
 
 Processing adds C-41 or B&W chemistry at additional cost. 8×10 sheet film in continuous rolls is not commercially available. Handling and tiling 314+ sheets of 8×10 in complete darkness is impractical.
 
-Film is included here for completeness and to confirm the user's instinct: **film is categorically the wrong medium for a <!-- BEGIN fact:image_area_sqft -->101<!-- END fact:image_area_sqft --> sq ft image plane**, both on cost and operational grounds.
+Film is included here for completeness and to confirm the user's instinct: **film is categorically the wrong medium for a <!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft image plane**, both on cost and operational grounds.
 
 ---
 

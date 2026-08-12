@@ -17,8 +17,8 @@ depth without entering the optical cone. The right end zone contains a 2×2 IBC 
 
 | Zone | X range | Shadow-free? | Equipment assigned |
 |------|---------|--------------|--------------------|
-| **Left end zone** | 0–150mm | YES at all depths | Light trap drum, hinged panel (stepped) |
-| **Optical zone** | 150–4,649mm | NO | Film plane, rails, processing tray, perimeter walkway |
+| **Left end zone** | 0–260mm | YES at all depths | Light trap drum, hinged panel (stepped) |
+| **Optical zone** | 260–4,649mm | NO | Film plane, rails, processing tray, perimeter walkway |
 | **Right end zone** | 4,649–5,893mm | YES at all depths | IBC tanks (2×2 stack: 2× Blue, 1× Brown, 1× Waste) |
 | **Pinhole wall face** | Y=0 surface | YES (cone collapses to point) | Electrical panel, battery, pump |
 
@@ -311,7 +311,7 @@ The light trap drum sweeps through exterior space during 180° rotation. No inte
 
 | Parameter | Value |
 |-----------|-------|
-| Equipment zone concept | X=0–150mm and X=4,649–5,893mm end zones |
+| Equipment zone concept | X=0–260mm and X=4,649–5,893mm end zones |
 | Pinhole position | X=2,454mm (centered on active FP) |
 | Active film plane width | <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm (X=260–4,649mm) |
 | Rail positions | X=260mm, X=4,649mm |

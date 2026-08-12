@@ -1784,7 +1784,7 @@ def sheet7():
                f"{RAIL_X_L}mm", offset=14, color=DIM, fs=6,
                above=True, font=FONT)
     draw_dim_h(ax, RAIL_X_L, RAIL_X_R, -300,
-               f"RAIL SPAN  {RAIL_X_R - RAIL_X_L}mm", offset=14, color=DIM, fs=6,
+               f"ALU FRAME WIDTH  {RAIL_X_R - RAIL_X_L}mm", offset=14, color=C_FLAT, fs=6,
                above=True, font=FONT)
     draw_dim_h(ax, RAIL_X_R, FW, -300,
                f"{FW - RAIL_X_R}mm", offset=14, color=DIM, fs=6,
@@ -1796,7 +1796,7 @@ def sheet7():
 
     # Frame height (right side)
     draw_dim_v(ax, FW + 250, fp_bot, fp_top,
-               f"FRAME HEIGHT {FP_H}mm", offset=30, color=C_FLAT,
+               f"ALU FRAME HEIGHT {FP_H}mm", offset=30, color=C_FLAT,
                fs=6.5, right=True, font=FONT)
 
     # ── Title text ────────────────────────────────────────────────────────────

@@ -29,7 +29,9 @@ file** — a release must not ship without a changelog entry:
   the last gaining `display: comma`); fixed the American-spelling gate (`grey`→`gray`); and finished the
   FP_X_L=260 leftovers in the position/mass tables (left/optical zone 150→260, tray 170→280). The tray
   narrowed to 4,349mm, so its modeled mass drops 116→114 kg — cascaded through the weight model (dry
-  3,254→3,252, loaded 5,054→5,052 kg) and its 5 diagrams.
+  3,254→3,252, loaded 5,054→5,052 kg) and its 5 diagrams. Also fixed a pre-existing weight-model drift:
+  the film-plane carriage mass in the detail table (57→51 kg, now wrapped in the `wt-comp-film` injector
+  so it can't drift) and its generator note (92→58 clamps, now derived from `CLAMP_N_TOTAL`).
 
 - **Film-plane LEFT edge pulled inboard of the pivot hub (`FP_X_L` 150→260).** Resolved a hard
   clash found once the detailed corner was in the light-trap: the backing-side carriage rode the X150

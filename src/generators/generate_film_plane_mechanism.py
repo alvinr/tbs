@@ -393,6 +393,11 @@ def sheet1():
                color=C_FLAT, fs=6.5, above=False, offset=45, font=FONT)
     draw_dim_h(ax, RAIL_X_R, L, -350, f"{L-RAIL_X_R}mm\n(right end zone)",
                color=DIM, fs=6.5, above=False, offset=45, font=FONT)
+    # ALU frame HEIGHT is perpendicular to a top-down plan (into the page), so it can't be a spatial
+    # dimension here — shown as a reference paired with the width so the frame's full W×H reads on Sheet 1.
+    ax.text((RAIL_X_L + RAIL_X_R) / 2, -560,
+            f"ALU FRAME HEIGHT  {FP_H}mm  (into page — ⊥ to this plan; elevation on Sheet 7)",
+            color=C_FLAT, fontsize=6.5, ha="center", va="center", **FONT)
 
     ax.text(L/2, W+580, "SHEET 1 — PLAN VIEW  (TOP DOWN, LOOKING AT CONTAINER FLOOR)",
             color=WHITE, fontsize=9, ha="center", fontweight="bold", **FONT)

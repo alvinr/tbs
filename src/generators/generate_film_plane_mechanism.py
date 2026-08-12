@@ -706,7 +706,7 @@ def view_a(ax):
     film/ACM rises back up. Section A-A is cut through the bottom carriage."""
     ax.set_xlim(-60, 470); ax.set_ylim(110, 560); ax.set_aspect("equal"); ax.axis("off")
 
-    # depth RAIL at the TOP — 3×1.5 304 U-CHANNEL, web-vertical, runs in Yd (BEHIND the carriage plate)
+    # depth RAIL at the TOP — 3×1.5 6061 Al U-CHANNEL, web-vertical, runs in Yd (BEHIND the carriage plate)
     ax.add_patch(plt.Rectangle((-30, 232), 420, 76, fc=C_STEEL, ec=OUT, lw=1.0, zorder=3))
     ax.plot([-30, 390], [237, 237], color=OUT, lw=0.8, zorder=4)                     # bottom flange (running surface)
     ax.plot([-30, 390], [303, 303], color=OUT, lw=0.8, zorder=4)                     # top flange
@@ -1697,6 +1697,50 @@ def sheet7():
             "SINGLE U-JOINT + X-Z cross-slides each corner",
             color=MECH, fontsize=7, ha="center", va="center", **FONT, zorder=11)
 
+    # ═══ FABRICATION GA (Sheet 7 fab-grade) — ACM backing · muslin clamps · corner joint ═══
+    # ── ACM backing: 4 vertical 3mm black Dibond strips, 3 butt seams, splice-battened ──
+    ACM_STRIP_W = 1219                                    # Dibond sheet width (48")
+    seam_xs = [fp_left + ACM_STRIP_W * i for i in (1, 2, 3)]   # 1479 / 2698 / 3917
+    for sx in seam_xs:
+        ax.plot([sx, sx], [fp_bot + frame_t, fp_top - frame_t],
+                color=STRUCT2, lw=0.9, ls=(0, (5, 3)), zorder=6, alpha=0.85)
+    ax.text(fp_cx, fp_cz + 250,
+            f"BACKING: 4× vertical 3mm black Dibond ACM strips (3× {ACM_STRIP_W} + 1× "
+            f"{FP_W - 3 * ACM_STRIP_W}mm) — butt seams (×3), splice-batten behind",
+            color=STRUCT2, fontsize=5.5, ha="center", va="center", **FONT, zorder=6)
+
+    # ── Muslin clamp stations: CLAMP_N_TOTAL nylon spring clamps @ CLAMP_SPACING (top + 2 sides) ──
+    n_top = int(round((fp_right - fp_left) / CLAMP_SPACING))
+    for i in range(1, n_top):
+        tx = fp_left + i * CLAMP_SPACING
+        ax.plot([tx, tx], [fp_top - frame_t, fp_top - frame_t - 22], color=C_T3, lw=0.7, zorder=9)
+    n_side = int(round((fp_top - fp_bot) / CLAMP_SPACING))
+    for ex, sdir in [(fp_left, 1), (fp_right, -1)]:
+        for i in range(1, n_side):
+            tz = fp_bot + i * CLAMP_SPACING
+            ax.plot([ex + frame_t, ex + frame_t + sdir * 22], [tz, tz], color=C_T3, lw=0.7, zorder=9)
+    ax.text(fp_cx, fp_cz + 340,
+            f"{CLAMP_N_TOTAL}× nylon spring clamp @ {CLAMP_SPACING}mm — top + 2 sides "
+            f"(none on bottom: walkway / swing clearance)",
+            color=C_T3, fontsize=5.5, ha="center", va="center", **FONT, zorder=9)
+
+    # ── DETAIL A — frame corner joint (45° miter + TIG-welded), blow-up from BR corner ──
+    dbx, dbz = fp_right - 1520, fp_bot + 380          # blow-up outer corner (open lower-right interior)
+    dleg, dthk = 560, 130                             # blow-up leg length + angle-leg thickness
+    ax.add_patch(Rectangle((dbx, dbz), dleg, dthk, fc=STRUCT2, ec=C_FLAT, lw=1.5, zorder=10))  # horiz leg
+    ax.add_patch(Rectangle((dbx, dbz), dthk, dleg, fc=STRUCT2, ec=C_FLAT, lw=1.5, zorder=10))  # vert leg
+    ax.plot([dbx, dbx + dthk], [dbz + dthk, dbz], color=WHITE, lw=1.3, ls=(0, (4, 2)), zorder=11)  # 45° miter
+    for t in (0.25, 0.5, 0.75):                       # fillet-weld ticks across the miter
+        mx, mz = dbx + dthk * (1 - t), dbz + dthk * t
+        ax.plot([mx - 14, mx + 14], [mz - 14, mz + 14], color=C_T2, lw=1.1, zorder=12)
+    ax.text(dbx + dthk + 40, dbz + dleg - 30, "DETAIL A — CORNER JOINT (typ. 4)",
+            color=C_FLAT, fontsize=6, ha="left", va="top", fontweight="bold", **FONT, zorder=12)
+    ax.text(dbx + dthk + 40, dbz + dleg - 130,
+            "45° MITER, TIG FILLET BOTH LEGS\n2\"×2\"×3/16\" 6061-T6\n(50.8×50.8×4.76mm)",
+            color=DIM, fontsize=5.5, ha="left", va="top", **FONT, zorder=12)
+    leader(ax, fp_right - frame_t, fp_bot + frame_t, dbx + dleg, dbz + dthk,
+           "", color=C_FLAT, ha="left", fs=5, font=FONT)
+
     # ── Leaders ───────────────────────────────────────────────────────────────
     # U-joint leader (from TL joint) — sits highest
     tl_cy = FH - rail_h - carr_h
@@ -1720,7 +1764,7 @@ def sheet7():
     # Rail leader (from TR ceiling depth rail)
     leader(ax, RAIL_X_R + rail_len / 2, FH - rail_h / 2,
            RAIL_X_R + 450, FH - 150,
-           "3×1.5 304 U-CHANNEL RAIL\n(into page)",
+           "3×1.5 6061 Al U-CHANNEL RAIL\n(into page)",
            color=RAIL, ha="left", fs=6.5, font=FONT)
 
     # Frame leader (from right side midpoint)

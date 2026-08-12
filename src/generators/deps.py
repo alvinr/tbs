@@ -10,9 +10,15 @@ pre-commit linter must stay dependency-free) — it only understands this file's
     generators:
       <name>: {script: <path>, outputs: [<path>, <path>]}
     models:
-      <name>: {script: <path>, outputs: [<path>]}
+      <name>: {script: <path>, outputs: [<path>], uid: <hex>, embed_files: [<path>], source_hash: "sha256:<h>"}
 
-Exposes ENTRIES = {name: {"script": str, "outputs": [str], "kind": "generator"|"model"}}.
+Model entries additionally carry the Sketchfab identity (uid + the docs that embed it)
+and a source_hash — the staleness manifest (sha256 of the model's regenerated, identity-
+stripped .rb) that replaces the committed .rb as the .skp drift tripwire. Generators carry
+only script/outputs.
+
+Exposes ENTRIES = {name: {"script": str, "outputs": [str], "kind": "generator"|"model",
+and for models: "uid": str, "embed_files": [str], "source_hash": str}}.
 lint.py validates it (deps_valid) and the missing-cascade check consumes it.
 """
 import os
@@ -26,21 +32,39 @@ def _flow_list(s: str) -> list:
 
 
 def _flow_entry(rest: str) -> dict:
-    """Parse `{script: <p>, outputs: [<p>, <p>]}` (the value after `name:`)."""
-    body = rest.strip().lstrip("{").rstrip("}")
-    m_out = body.find("outputs:")
-    script = ""
-    outputs: list = []
-    if m_out != -1:
-        head, tail = body[:m_out], body[m_out + len("outputs:"):]
-        outputs = _flow_list(tail)
-    else:
-        head = body
-    for part in head.split(","):
-        part = part.strip().rstrip(",")
-        if part.startswith("script:"):
-            script = part[len("script:"):].strip()
-    return {"script": script, "outputs": outputs}
+    """Parse a flow mapping `{script: <p>, outputs: [<p>, <p>], uid: <hex>,
+    embed_files: [<p>], source_hash: "<h>"}` (the value after `name:`).
+
+    Splits into top-level fields on commas at bracket depth 0 (so a `[a, b]` list
+    value stays intact), then key:value each. `[..]` values become lists; everything
+    else is a scalar (surrounding quotes stripped). `script`/`outputs` always present;
+    `uid`/`embed_files`/`source_hash` are optional (models carry them, generators don't)."""
+    body = rest.strip()
+    if body.startswith("{"):
+        body = body[1:]
+    if body.endswith("}"):
+        body = body[:-1]
+    fields, cur, depth = [], "", 0
+    for ch in body:
+        if ch in "[{":
+            depth += 1
+        elif ch in "]}":
+            depth -= 1
+        if ch == "," and depth == 0:
+            fields.append(cur)
+            cur = ""
+        else:
+            cur += ch
+    if cur.strip():
+        fields.append(cur)
+    out: dict = {"script": "", "outputs": []}
+    for f in fields:
+        if ":" not in f:
+            continue
+        k, _, v = f.partition(":")
+        k, v = k.strip(), v.strip()
+        out[k] = _flow_list(v) if v.startswith("[") else v.strip("\"'")
+    return out
 
 
 def _load(path: str = YAML_PATH) -> dict:

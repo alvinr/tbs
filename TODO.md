@@ -211,7 +211,7 @@ The remaining §7 parts BOM is gated on confirmed prices._
   leadscrew DC); `film-plane-mechanism.skp` = the current corner mechanism (U-channel/skate/U-joint). They
   describe overlapping geometry and have diverged — reconcile so the full model carries the current
   corner design (or define a clear split of responsibility). The report now embeds film-plane-mechanism; both
-  stay in `models/sketchfab.json`. Also: `component-dependency-map.md` §3.1 model table (line ~480)
+  stay registered in `dependencies.yml`. Also: `component-dependency-map.md` §3.1 model table (line ~480)
   still documents only the film-plane row (leadscrew DC) with no film-plane-mechanism row — update once the
   two models are reconciled (deferred: describes 3D internals under Alvin's active review).
 - [x] **§7 parts BOM — DONE 2026-07-19.** Swapped the 11 leadscrew SKUs → the U-channel mechanism (1262T21 U-channel $362/6ft, USKC12-6-6-SS U-joint $276, UBOOT boot, 4040N12 support $58, 89535K87 3ft stub rod $13.25, acetal skate, 316 cross-slides, cam clamps, 304 corner plate); costing §4.1 + EXPECTED + report §7 + master + cost-breakdown reconciled (+$2.9k mid; film $6,063–7,039); prose swept (funding/equipment/summary/dimension-audit). Skate/cross-slide/cam-clamp are fab estimates — firm at order. ~~GATED on Alvin's SKU paste-check.~~ `parts.py` film section still holds the 11

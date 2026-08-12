@@ -819,7 +819,7 @@ def generate_ruby():
         "Personnel access during operation is via a revolving light trap drum built into the panel. "
         "Operators can enter or exit at any time without opening the full panel or admitting daylight "
         "— for example, between coating of the photosensitive material, or while the exposure is being made.",
-        "a4f73191b8bb4d17a6e764585ca695be", "sketchup")
+        ov.model_uid("lighttrap"), "sketchup")
 
     return f'''# SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards

@@ -17,8 +17,9 @@ camera) are RESET to defaults. Nothing auto-runs this; the model UID stays fixed
 between manual pushes — set your viewer settings on the live model and they
 persist until the next push.
 
-Registry — models/sketchfab.json — maps each logical model to its current state:
-    { "overview": { "name": "...", "uid": "...", "embed_files": ["..."] }, ... }
+Registry — dependencies.yml (the `models:` block) — provides each model's `uid` and
+`embed_files`; the upload title comes from the live model's name (generator SF_TITLE).
+On a push the new uid is written back into dependencies.yml (surgical, comments preserved).
 
 Credentials come from the environment or the gitignored .env.private:
     SKETCHFAB_API_TOKEN
@@ -34,7 +35,8 @@ import time
 import urllib.request
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-REGISTRY = os.path.join(ROOT, "models", "sketchfab.json")
+sys.path.insert(0, os.path.join(ROOT, "src", "generators"))
+import deps  # noqa: E402 — dependencies.yml is the single model registry (uid + embed_files)
 API = "https://api.sketchfab.com/v3/models"
 
 
@@ -66,12 +68,11 @@ def main():
     name = (pos[0] if pos else "overview").strip()
     assume_yes = "-y" in sys.argv or "--yes" in sys.argv
 
-    with open(REGISTRY) as f:
-        registry = json.load(f)
-    if name not in registry:
-        sys.exit(f"error: '{name}' not in models/sketchfab.json "
-                 f"(known: {', '.join(registry) or 'none'})")
-    entry = registry[name]
+    models = {n: e for n, e in deps.ENTRIES.items() if e.get("kind") == "model"}
+    if name not in models:
+        sys.exit(f"error: '{name}' not in dependencies.yml models "
+                 f"(known: {', '.join(models) or 'none'})")
+    entry = models[name]
     old_uid = (entry.get("uid") or "").strip()
 
     # Each push consumes a Sketchfab upload and resets viewer settings, so make
@@ -95,11 +96,18 @@ def main():
     if not os.path.exists(dae):
         sys.exit(f"error: export did not produce {dae}")
 
+    # The Sketchfab display name = the live model's name (stamped from the generator's SF_TITLE —
+    # its single home; not duplicated into dependencies.yml). Fall back to the logical name.
+    try:
+        title = send_ruby("Sketchup.active_model.name.to_s").strip().strip('"') or name
+    except SketchupError:
+        title = name
+
     # 2. POST a NEW Sketchfab model.
-    print(f"Uploading new Sketchfab model '{entry['name']}' ...")
+    print(f"Uploading new Sketchfab model '{title}' ...")
     resp = subprocess.run(
         ["curl", "-s", "-X", "POST", "-H", f"Authorization: Token {token}",
-         "-F", f"modelFile=@{dae}", "-F", f"name={entry['name']}",
+         "-F", f"modelFile=@{dae}", "-F", f"name={title}",
          "-F", "isPublished=true", API],
         capture_output=True, text=True).stdout
     try:
@@ -140,12 +148,15 @@ def main():
                     f.write(txt.replace(old_uid, new_uid))
                 print(f"  updated embed: {rel}")
 
-    # 5. Record the new UID in the registry, then delete the old model.
-    entry["uid"] = new_uid
-    with open(REGISTRY, "w") as f:
-        json.dump(registry, f, indent=2)
-        f.write("\n")
-    print(f"  registry updated: {name} -> {new_uid}")
+    # 5. Record the new UID in dependencies.yml, then delete the old model. Surgical replace:
+    #    the old uid appears exactly once (in this model's entry), so a plain swap preserves the
+    #    file's comments/format. (source_hash is identity-stripped, so a uid change never staleness-flags.)
+    dt = open(deps.YAML_PATH, encoding="utf-8").read()
+    if old_uid and old_uid in dt:
+        open(deps.YAML_PATH, "w", encoding="utf-8").write(dt.replace(old_uid, new_uid, 1))
+        print(f"  dependencies.yml updated: {name} uid -> {new_uid}")
+    else:
+        print(f"  WARNING: old uid not found in dependencies.yml — set {name} uid to {new_uid} by hand")
     if old_uid and old_uid != new_uid:
         code = subprocess.run(
             ["curl", "-s", "-o", "/dev/null", "-w", "%{http_code}", "-X", "DELETE",
@@ -154,7 +165,7 @@ def main():
         print(f"  deleted old model {old_uid} (HTTP {code})")
 
     print(f"  live: https://sketchfab.com/models/{new_uid}")
-    print("  -> commit the embed/registry changes and run `bash publish.sh` to publish.")
+    print("  -> commit the embed + dependencies.yml changes and run `bash publish.sh` to publish.")
 
 
 if __name__ == "__main__":

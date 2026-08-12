@@ -34,6 +34,11 @@ models/corridor-panel.skp
 # Python Virtual Environment
 .venv/
 
+# Generated SketchUp Ruby build scripts — the .rb are a build artifact of their .py generator
+# (--save), not a source. The dependencies.yml source_hash (manifest) is their staleness tripwire,
+# so they're no longer committed. (archive/*.rb is a frozen historical copy with no generator — kept.)
+src/models/*.rb
+
 # Python caches
 src/generators/__pycache__/
 src/models/__pycache__/

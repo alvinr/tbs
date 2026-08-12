@@ -131,7 +131,6 @@ SF_TITLE = "TBS-001 Construction Sequence"
 SF_DESC = ("The TBS-001 build order — one scene per install phase (geometry set-out → IBC "
            "plumbing → hard install → electrical → photo system), each phase shown built up "
            "cumulatively, to validate the assembly sequence.")
-SF_ID = "dcc54fb3d02e46c3ab070dd49adc5d1e"   # stable Sketchfab UID — re-uploads REPLACE this model
 SF_TAGS = "sketchup"
 
 
@@ -245,7 +244,7 @@ def generate_ruby():
     scenes_ruby = '[' + ', '.join(
         '["%s", [%s]]' % (n, ', '.join(f'"{t}"' for t in tags)) for n, tags in scenes) + ']'
 
-    sf_meta = ov.sketchfab_meta_ruby(SF_TITLE, SF_DESC, SF_ID, SF_TAGS, force_name=True)
+    sf_meta = ov.sketchfab_meta_ruby(SF_TITLE, SF_DESC, ov.model_uid("construction"), SF_TAGS, force_name=True)
 
     return f'''# SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards

@@ -24,6 +24,28 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Film-plane LEFT edge pulled inboard of the pivot hub (`FP_X_L` 150→260).** Resolved a hard
+  clash found once the detailed corner was in the light-trap: the backing-side carriage rode the X150
+  rail straight into the swing-pivot hub (which can't be relieved — strength — nor passed through).
+  Explored outboard vs inside vs pinhole/optics trades; chose **inside** — relocate the whole left corner
+  (rail + carriage + frame) inboard, past the hub's r60 bearing (reaches X235). Also **pinned `PIVOT_X` at
+  175** (was `RAIL_X_L + BRACE_RHS//2`, so the post had been chasing the rail — the reason the first
+  attempt at 244 didn't clear). Costs ~110mm image width (`FP_W` 4499→4389, active area 101→99 sq ft); the
+  now-asymmetric plane re-centers the pinhole (`PH_X` 2399→2454, +55mm). Cascaded to facts/CLAUDE.md optics
+  table, 11 diagram generators, and 8 SketchUp models. Bonus: the left rail now clears the swing envelope,
+  so the removable-rail lift-out is retirable (follow-up).
+
+- **Detailed corner mechanism reused into every container-scale model + parked film + web-vertical
+  rail cascade.** Both film rails stood web-vertical (new single-sourced `FP_RAIL_*` block: ZC_BOT 270 /
+  ZC_TOP 2300 / section 76×38); the combined BR corner plate grew to back the Z270 rail. `overview`,
+  `walkway`, `water`, `lighttrap` now embed the real fpm corner (rails + skate + carriage + cross-slides
+  + U-joint + 304 corner plate) via `fpm.corner()` reuse — one source, no duplication. Added a `keep=`
+  fixed/removable filter to `fpm.corner()` so lighttrap's Panel-Swing DC keeps only the removable rail
+  section (fixing a shared-material over-match that had hidden the brackets in transport). Film plane
+  parked 50mm forward of the hinge post for legibility (`FP_Y_PARK`, display-only). Walkway film beams
+  split onto a `Film Plane Left` tag (dropped from the Right-Cantilever scene) + scene reorder; lighttrap
+  roof/side-walls removed for orbiting.
+
 - **Film-plane corner mechanism — definitive engineering blueprint (milestone template, branch
   `corner-eng-design`).** Upgraded one corner from arrangement-schematic to fabricator-ready, driven
   from `tbs_constants` so it can't drift: sheets 3/4/8/9 dimensioned (skate roller ODs + 40mm pitch;

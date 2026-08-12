@@ -77,28 +77,27 @@ LC_STD, LC_WIDE, LC_YDS = k.LEFT_WK_CANT_STD_REACH, k.LEFT_WK_CANT_WIDE_REACH, k
 GRATE_Z = WK_H - GRATE_T          # 65 — grate underside / arm top
 
 TAGS = ["Container", "Processing Tray", "Walkways", "Cantilevers",
-        "Cantilever Types", "Right Cantilever", "Film Plane", "IBC Frame", "Left Support", "Labels"]
+        "Cantilever Types", "Right Cantilever", "Film Plane", "Film Plane Left", "IBC Frame", "Left Support", "Labels"]
 
 
-def film_plane_right_beams():
-    """The RIGHT-side film-plane support beams (R-bot + R-top, 40×40 rails, full Yd depth) that
-    the right-walkway cantilever's combined corner plate bolts to.  SOLID and single-sourced from
-    the SAME constants as pw.film_plane_beams()/overview (x = RAIL_X_R − rail = 4609, so the beam
-    ends at 4649 — clear of the corridor frame front at 4654).  The TOP rail (TR) keeps its wall-seat
-    SADDLE BRACKETS (interior back-plate + exterior through-bolted plate, at BOTH the near + far
-    walls); only the BOTTOM rail (BR) corner is the cantilever's COMBINED corner plate (drawn by
-    right_walkway_cantilever), so BR is skipped."""
-    rail = 40
-    x_right = ov.RAIL_X_R - rail                 # 4609 — matches overview/water (was a ghost at 4629)
-    z_top = ov.C_HGT - ov.RAIL_OFF_TOP - rail
-    z_bot = ov.RAIL_OFF_BOT
-    p = []
-    for zl, rz in (("bot", z_bot), ("top", z_top)):
-        p.append(ruby_box(f"FP support beam R-{zl}", x_right, 0, rz, rail, ov.C_WID, rail, color=C_STEEL))
-    # TOP rail (TR) wall-seat saddles (interior + exterior plates, near + far); the BOTTOM rail (BR)
-    # corner is the combined corner plate shared with the right walkway, so skip it.
-    p.append(ov.film_plane_saddles({"TR": (x_right, z_top), "BR": (x_right, z_bot)}, skip={"BR"}))
-    return '\n'.join(p)
+def film_plane_beams(side="both"):
+    """Film-plane corners — the REAL detailed mechanism reused verbatim from the dedicated model
+    (fpm.corner()): web-vertical 3×1.5 U-channel rails (RIGHT = flanged wall-to-wall end-flanges; LEFT =
+    drop-in stub + removable section + welded bridge for the transport swing) + skate/rollers + carriage
+    plate + cam-brake + green-Z/purple-X cross-slides + U-joint + 304 corner plate. ONE source with
+    overview/water (fpm anchors with end-flanges, not the old IBC saddle). The BR corner's COMBINED corner
+    plate is drawn separately (right_walkway_cantilever). `side` = 'right' (BR/TR — what the cantilever
+    bolts to), 'left' (BL/TL — its own tag so the Right-Cantilever scene can drop it), or 'both'. Late
+    import breaks the fpm→ov cycle; fpm.corner() emits ov.ruby_* at the shared absolute coords."""
+    import generate_film_plane_mechanism_model as fpm
+    out = []
+    if side in ("both", "left"):
+        out += [fpm.corner("BL", fpm.X_L, fpm.PZ0, fpm.PZ_HB_BOT, +1, "L"),
+                fpm.corner("TL", fpm.X_L, fpm.PZ1, fpm.PZ_HB_TOP, +1, "L")]
+    if side in ("both", "right"):
+        out += [fpm.corner("BR", fpm.X_R, fpm.PZ0, fpm.PZ_HB_BOT, -1, "R"),
+                fpm.corner("TR", fpm.X_R, fpm.PZ1, fpm.PZ_HB_TOP, -1, "R")]
+    return '\n'.join(out)
 
 
 # ── "Labeled" scene callouts (project rule: every .skp gets a Labeled scene) ──
@@ -381,8 +380,8 @@ def cantilever_type_labels():
         (CT_RWK_CLEAT_X, 0, ov.RWK_ARM_TOP,
          "RIGHT WALKWAY — WALL CLEAT (left corners)\n8mm back-plate + ext plate + shelf,\nthe long beam lands on it; M12 through-bolts",
          -150, -300, 800),
-        (CT_RWK_PLATE_X, 0, k.RAIL_OFF_BOT,
-         "RIGHT WALKWAY — COMBINED CORNER PLATE (right corners)\n10mm, carries the walkway right beam (Z70 seat)\n+ the BR film rail (Z150 seat); 4x M12",
+        (CT_RWK_PLATE_X, 0, k.FP_RAIL_ZC_BOT,
+         "RIGHT WALKWAY — COMBINED CORNER PLATE (right corners)\n10mm, carries the walkway right beam (Z70 seat)\n+ the BR film rail (web-vertical: Z232 seat / Z270 bolt); 4x M12",
          0, -300, 850),
         (CT_RWK_ARM_X, 0, ov.RWK_ARM_TOP,
          "RIGHT WALKWAY — CENTER CANTILEVER ARM\n40x40 SHS off an IBC corridor upright\n(half-lapped at the long beams); M12 clamp",
@@ -459,7 +458,9 @@ def generate_ruby():
         # Film-plane right support beams the cantilever bolts to — real position (X4609-4649),
         # single-sourced with overview/water so it stays consistent (was a ghost at 4629-4669
         # that intersected the corridor frame).
-        component("Film-Plane Right Support Beams", "Film Plane", film_plane_right_beams()),
+        component("Film-Plane Support Beams (right)", "Film Plane", film_plane_beams(side="right")),
+        # LEFT (cargo-door end) corners on their OWN tag so the Right-Cantilever scene can drop them.
+        component("Film-Plane Support Beams (left)", "Film Plane Left", film_plane_beams(side="left")),
         # The real deep-box corridor frame the right walkway cantilevers off (solid, current
         # design — front uprights X4654 → back X5104; the tote-retaining bars are intentionally
         # omitted from this walkway-detail model).
@@ -474,12 +475,13 @@ def generate_ruby():
 
     # Scenes — Container stays on as context; scenes toggle the rest.
     scene_groups = [
-        ("Walkway", ["Walkways", "Right Cantilever", "Film Plane", "IBC Frame", "Processing Tray"]),
+        ("Walkway", ["Walkways", "Right Cantilever", "Film Plane", "Film Plane Left", "IBC Frame", "Processing Tray"]),
         ("Near/Far Cantilevers", ["Cantilevers", "Processing Tray"]),
-        # Right Cantilever — the cantilever-rectangle support + combined corner plate + the
-        # film-plane beams it bolts to + the deep-box frame it mounts off.
-        ("Right Cantilever", ["Right Cantilever", "Film Plane", "IBC Frame", "Processing Tray"]),
         ("Left Support", ["Left Support", "Processing Tray"]),
+        # Right Cantilever — the cantilever-rectangle support + combined corner plate + the deep-box
+        # frame it mounts off. The film-plane beams (top TR + bottom BR) are HIDDEN here to declutter —
+        # the combined corner plate (on the "Right Cantilever" tag) stays as the focus.
+        ("Right Cantilever", ["Right Cantilever", "IBC Frame", "Processing Tray"]),
     ]
     scene_groups_ruby = '[' + ', '.join(
         '["%s", [%s]]' % (n, ', '.join(f'"{t}"' for t in tags))

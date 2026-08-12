@@ -34,6 +34,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   model.layers.add("Cantilever Types") unless model.layers["Cantilever Types"]
   model.layers.add("Right Cantilever") unless model.layers["Right Cantilever"]
   model.layers.add("Film Plane") unless model.layers["Film Plane"]
+  model.layers.add("Film Plane Left") unless model.layers["Film Plane Left"]
   model.layers.add("IBC Frame") unless model.layers["IBC Frame"]
   model.layers.add("Left Support") unless model.layers["Left Support"]
   model.layers.add("Labels") unless model.layers["Labels"]
@@ -96,7 +97,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Shim Base
   grp = ents.add_group
   grp.name = "Tray Shim Base"
-  face = grp.entities.add_face([170.mm,80.mm,0.mm], [4629.mm,80.mm,0.mm], [4629.mm,2280.mm,0.mm], [170.mm,2280.mm,0.mm])
+  face = grp.entities.add_face([280.mm,80.mm,0.mm], [4629.mm,80.mm,0.mm], [4629.mm,2280.mm,0.mm], [280.mm,2280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Tray Shim Base"] || model.materials.add("Tray Shim Base")
@@ -108,7 +109,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Processing Tray Floor A"
   ge = grp.entities
-  f = ge.add_face([170.mm,80.mm,20.mm], [4629.mm,80.mm,20.mm], [4629.mm,2280.mm,31.mm])
+  f = ge.add_face([280.mm,80.mm,20.mm], [4629.mm,80.mm,20.mm], [4629.mm,2280.mm,31.mm])
   f.pushpull(-2.mm)
   mat = model.materials["Processing Tray Floor A"] || model.materials.add("Processing Tray Floor A")
   mat.color = Sketchup::Color.new(159, 184, 200)
@@ -119,7 +120,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Processing Tray Floor B"
   ge = grp.entities
-  f = ge.add_face([170.mm,80.mm,20.mm], [4629.mm,2280.mm,31.mm], [170.mm,2280.mm,31.mm])
+  f = ge.add_face([280.mm,80.mm,20.mm], [4629.mm,2280.mm,31.mm], [280.mm,2280.mm,31.mm])
   f.pushpull(-2.mm)
   mat = model.materials["Processing Tray Floor A"] || model.materials.add("Processing Tray Floor A")
   mat.color = Sketchup::Color.new(159, 184, 200)
@@ -129,7 +130,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Rim Near
   grp = ents.add_group
   grp.name = "Tray Rim Near"
-  face = grp.entities.add_face([170.mm,80.mm,20.mm], [4629.mm,80.mm,20.mm], [4629.mm,82.mm,20.mm], [170.mm,82.mm,20.mm])
+  face = grp.entities.add_face([280.mm,80.mm,20.mm], [4629.mm,80.mm,20.mm], [4629.mm,82.mm,20.mm], [280.mm,82.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Processing Tray Floor A"] || model.materials.add("Processing Tray Floor A")
@@ -140,7 +141,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Rim Far
   grp = ents.add_group
   grp.name = "Tray Rim Far"
-  face = grp.entities.add_face([170.mm,2278.mm,31.mm], [4629.mm,2278.mm,31.mm], [4629.mm,2280.mm,31.mm], [170.mm,2280.mm,31.mm])
+  face = grp.entities.add_face([280.mm,2278.mm,31.mm], [4629.mm,2278.mm,31.mm], [4629.mm,2280.mm,31.mm], [280.mm,2280.mm,31.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Processing Tray Floor A"] || model.materials.add("Processing Tray Floor A")
@@ -151,7 +152,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Rim Left
   grp = ents.add_group
   grp.name = "Tray Rim Left"
-  face = grp.entities.add_face([170.mm,80.mm,25.5.mm], [172.mm,80.mm,25.5.mm], [172.mm,2280.mm,25.5.mm], [170.mm,2280.mm,25.5.mm])
+  face = grp.entities.add_face([280.mm,80.mm,25.5.mm], [282.mm,80.mm,25.5.mm], [282.mm,2280.mm,25.5.mm], [280.mm,2280.mm,25.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Processing Tray Floor A"] || model.materials.add("Processing Tray Floor A")
@@ -173,7 +174,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Chemistry Bath
   grp = ents.add_group
   grp.name = "Chemistry Bath"
-  face = grp.entities.add_face([172.mm,82.mm,25.5.mm], [4627.mm,82.mm,25.5.mm], [4627.mm,2278.mm,25.5.mm], [172.mm,2278.mm,25.5.mm])
+  face = grp.entities.add_face([282.mm,82.mm,25.5.mm], [4627.mm,82.mm,25.5.mm], [4627.mm,2278.mm,25.5.mm], [282.mm,2278.mm,25.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Chemistry Bath"] || model.materials.add("Chemistry Bath")
@@ -191,7 +192,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near (door-end, removable)
   grp = ents.add_group
   grp.name = "Walkway Near (door-end, removable)"
-  face = grp.entities.add_face([470.mm,8.mm,115.mm], [950.mm,8.mm,115.mm], [950.mm,300.mm,115.mm], [470.mm,300.mm,115.mm])
+  face = grp.entities.add_face([580.mm,8.mm,115.mm], [950.mm,8.mm,115.mm], [950.mm,300.mm,115.mm], [580.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (door-end, removable)"] || model.materials.add("Walkway Near (door-end, removable)")
@@ -202,7 +203,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near (fixed, bump integral)
   grp = ents.add_group
   grp.name = "Walkway Near (fixed, bump integral)"
-  face = grp.entities.add_face([950.mm,8.mm,115.mm], [4329.mm,8.mm,115.mm], [4329.mm,300.mm,115.mm], [3083.mm,300.mm,115.mm], [3083.mm,500.mm,115.mm], [1055.mm,500.mm,115.mm], [1055.mm,300.mm,115.mm], [950.mm,300.mm,115.mm])
+  face = grp.entities.add_face([950.mm,8.mm,115.mm], [4329.mm,8.mm,115.mm], [4329.mm,300.mm,115.mm], [3193.mm,300.mm,115.mm], [3193.mm,500.mm,115.mm], [1165.mm,500.mm,115.mm], [1165.mm,300.mm,115.mm], [950.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (fixed, bump integral)"] || model.materials.add("Walkway Near (fixed, bump integral)")
@@ -213,7 +214,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far
   grp = ents.add_group
   grp.name = "Walkway Far"
-  face = grp.entities.add_face([470.mm,2062.mm,115.mm], [4329.mm,2062.mm,115.mm], [4329.mm,2354.mm,115.mm], [470.mm,2354.mm,115.mm])
+  face = grp.entities.add_face([580.mm,2062.mm,115.mm], [4329.mm,2062.mm,115.mm], [4329.mm,2354.mm,115.mm], [580.mm,2354.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (fixed, bump integral)"] || model.materials.add("Walkway Near (fixed, bump integral)")
@@ -224,7 +225,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Left (removable)
   grp = ents.add_group
   grp.name = "Walkway Left (removable)"
-  face = grp.entities.add_face([170.mm,0.mm,115.mm], [170.mm,2362.mm,115.mm], [470.mm,2362.mm,115.mm], [470.mm,2062.mm,115.mm], [370.mm,2062.mm,115.mm], [370.mm,1912.mm,115.mm], [470.mm,1912.mm,115.mm], [470.mm,1560.mm,115.mm], [770.mm,1560.mm,115.mm], [770.mm,800.mm,115.mm], [470.mm,800.mm,115.mm], [470.mm,0.mm,115.mm])
+  face = grp.entities.add_face([280.mm,0.mm,115.mm], [280.mm,2362.mm,115.mm], [580.mm,2362.mm,115.mm], [580.mm,2062.mm,115.mm], [480.mm,2062.mm,115.mm], [480.mm,1912.mm,115.mm], [580.mm,1912.mm,115.mm], [580.mm,1560.mm,115.mm], [880.mm,1560.mm,115.mm], [880.mm,800.mm,115.mm], [580.mm,800.mm,115.mm], [580.mm,0.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (door-end, removable)"] || model.materials.add("Walkway Near (door-end, removable)")
@@ -253,7 +254,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 1 plate
   grp = ents.add_group
   grp.name = "Cantilever Near 1 plate"
-  face = grp.entities.add_face([638.mm,0.mm,0.mm], [758.mm,0.mm,0.mm], [758.mm,8.mm,0.mm], [638.mm,8.mm,0.mm])
+  face = grp.entities.add_face([748.mm,0.mm,0.mm], [868.mm,0.mm,0.mm], [868.mm,8.mm,0.mm], [748.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -264,7 +265,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 1 arm
   grp = ents.add_group
   grp.name = "Cantilever Near 1 arm"
-  face = grp.entities.add_face([694.mm,8.mm,105.mm], [702.mm,8.mm,105.mm], [702.mm,300.mm,105.mm], [694.mm,300.mm,105.mm])
+  face = grp.entities.add_face([804.mm,8.mm,105.mm], [812.mm,8.mm,105.mm], [812.mm,300.mm,105.mm], [804.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -276,7 +277,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 1 gusset"
   ge = grp.entities
-  f = ge.add_face([694.mm,8.mm,0.mm], [694.mm,8.mm,105.mm], [694.mm,70.mm,105.mm])
+  f = ge.add_face([804.mm,8.mm,0.mm], [804.mm,8.mm,105.mm], [804.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -286,7 +287,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 1 ext reinf plate
   grp = ents.add_group
   grp.name = "Cantilever Near 1 ext reinf plate"
-  face = grp.entities.add_face([648.mm,-46.mm,0.mm], [748.mm,-46.mm,0.mm], [748.mm,-40.mm,0.mm], [648.mm,-40.mm,0.mm])
+  face = grp.entities.add_face([758.mm,-46.mm,0.mm], [858.mm,-46.mm,0.mm], [858.mm,-40.mm,0.mm], [758.mm,-40.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(180.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -298,7 +299,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 1 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([698.mm,-46.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([808.mm,-46.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -310,7 +311,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 1 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 1 bolt head"
-  face = grp.entities.add_face([689.mm,-52.mm,111.mm], [707.mm,-52.mm,111.mm], [707.mm,-46.mm,111.mm], [689.mm,-46.mm,111.mm])
+  face = grp.entities.add_face([799.mm,-52.mm,111.mm], [817.mm,-52.mm,111.mm], [817.mm,-46.mm,111.mm], [799.mm,-46.mm,111.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -322,7 +323,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 1 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([666.mm,-46.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([776.mm,-46.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -334,7 +335,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 1 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 1 bolt head"
-  face = grp.entities.add_face([657.mm,-52.mm,33.mm], [675.mm,-52.mm,33.mm], [675.mm,-46.mm,33.mm], [657.mm,-46.mm,33.mm])
+  face = grp.entities.add_face([767.mm,-52.mm,33.mm], [785.mm,-52.mm,33.mm], [785.mm,-46.mm,33.mm], [767.mm,-46.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -346,7 +347,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 1 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([730.mm,-46.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([840.mm,-46.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -358,7 +359,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 1 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 1 bolt head"
-  face = grp.entities.add_face([721.mm,-52.mm,33.mm], [739.mm,-52.mm,33.mm], [739.mm,-46.mm,33.mm], [721.mm,-46.mm,33.mm])
+  face = grp.entities.add_face([831.mm,-52.mm,33.mm], [849.mm,-52.mm,33.mm], [849.mm,-46.mm,33.mm], [831.mm,-46.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -369,7 +370,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 2 (widened) plate
   grp = ents.add_group
   grp.name = "Cantilever Near 2 (widened) plate"
-  face = grp.entities.add_face([1095.mm,0.mm,0.mm], [1215.mm,0.mm,0.mm], [1215.mm,10.mm,0.mm], [1095.mm,10.mm,0.mm])
+  face = grp.entities.add_face([1205.mm,0.mm,0.mm], [1325.mm,0.mm,0.mm], [1325.mm,10.mm,0.mm], [1205.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -380,7 +381,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 2 (widened) arm
   grp = ents.add_group
   grp.name = "Cantilever Near 2 (widened) arm"
-  face = grp.entities.add_face([1150.mm,10.mm,103.mm], [1160.mm,10.mm,103.mm], [1160.mm,500.mm,103.mm], [1150.mm,500.mm,103.mm])
+  face = grp.entities.add_face([1260.mm,10.mm,103.mm], [1270.mm,10.mm,103.mm], [1270.mm,500.mm,103.mm], [1260.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -392,7 +393,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 2 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([1150.mm,10.mm,0.mm], [1150.mm,10.mm,103.mm], [1150.mm,70.mm,103.mm])
+  f = ge.add_face([1260.mm,10.mm,0.mm], [1260.mm,10.mm,103.mm], [1260.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -402,7 +403,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 2 (widened) ext reinf plate
   grp = ents.add_group
   grp.name = "Cantilever Near 2 (widened) ext reinf plate"
-  face = grp.entities.add_face([1095.mm,-46.mm,0.mm], [1215.mm,-46.mm,0.mm], [1215.mm,-40.mm,0.mm], [1095.mm,-40.mm,0.mm])
+  face = grp.entities.add_face([1205.mm,-46.mm,0.mm], [1325.mm,-46.mm,0.mm], [1325.mm,-40.mm,0.mm], [1205.mm,-40.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(220.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -414,7 +415,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 2 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1123.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1233.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -426,7 +427,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 2 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 2 (widened) bolt head"
-  face = grp.entities.add_face([1114.mm,-52.mm,26.mm], [1132.mm,-52.mm,26.mm], [1132.mm,-46.mm,26.mm], [1114.mm,-46.mm,26.mm])
+  face = grp.entities.add_face([1224.mm,-52.mm,26.mm], [1242.mm,-52.mm,26.mm], [1242.mm,-46.mm,26.mm], [1224.mm,-46.mm,26.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -438,7 +439,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 2 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1187.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1297.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -450,7 +451,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 2 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 2 (widened) bolt head"
-  face = grp.entities.add_face([1178.mm,-52.mm,26.mm], [1196.mm,-52.mm,26.mm], [1196.mm,-46.mm,26.mm], [1178.mm,-46.mm,26.mm])
+  face = grp.entities.add_face([1288.mm,-52.mm,26.mm], [1306.mm,-52.mm,26.mm], [1306.mm,-46.mm,26.mm], [1288.mm,-46.mm,26.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -462,7 +463,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 2 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1123.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1233.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -474,7 +475,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 2 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 2 (widened) bolt head"
-  face = grp.entities.add_face([1114.mm,-52.mm,151.mm], [1132.mm,-52.mm,151.mm], [1132.mm,-46.mm,151.mm], [1114.mm,-46.mm,151.mm])
+  face = grp.entities.add_face([1224.mm,-52.mm,151.mm], [1242.mm,-52.mm,151.mm], [1242.mm,-46.mm,151.mm], [1224.mm,-46.mm,151.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -486,7 +487,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 2 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1187.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1297.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -498,7 +499,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 2 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 2 (widened) bolt head"
-  face = grp.entities.add_face([1178.mm,-52.mm,151.mm], [1196.mm,-52.mm,151.mm], [1196.mm,-46.mm,151.mm], [1178.mm,-46.mm,151.mm])
+  face = grp.entities.add_face([1288.mm,-52.mm,151.mm], [1306.mm,-52.mm,151.mm], [1306.mm,-46.mm,151.mm], [1288.mm,-46.mm,151.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -509,7 +510,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 3 (widened) plate
   grp = ents.add_group
   grp.name = "Cantilever Near 3 (widened) plate"
-  face = grp.entities.add_face([1552.mm,0.mm,0.mm], [1672.mm,0.mm,0.mm], [1672.mm,10.mm,0.mm], [1552.mm,10.mm,0.mm])
+  face = grp.entities.add_face([1662.mm,0.mm,0.mm], [1782.mm,0.mm,0.mm], [1782.mm,10.mm,0.mm], [1662.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -520,7 +521,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 3 (widened) arm
   grp = ents.add_group
   grp.name = "Cantilever Near 3 (widened) arm"
-  face = grp.entities.add_face([1607.mm,10.mm,103.mm], [1617.mm,10.mm,103.mm], [1617.mm,500.mm,103.mm], [1607.mm,500.mm,103.mm])
+  face = grp.entities.add_face([1717.mm,10.mm,103.mm], [1727.mm,10.mm,103.mm], [1727.mm,500.mm,103.mm], [1717.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -532,7 +533,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 3 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([1607.mm,10.mm,0.mm], [1607.mm,10.mm,103.mm], [1607.mm,70.mm,103.mm])
+  f = ge.add_face([1717.mm,10.mm,0.mm], [1717.mm,10.mm,103.mm], [1717.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -542,7 +543,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 3 (widened) ext reinf plate
   grp = ents.add_group
   grp.name = "Cantilever Near 3 (widened) ext reinf plate"
-  face = grp.entities.add_face([1552.mm,-46.mm,0.mm], [1672.mm,-46.mm,0.mm], [1672.mm,-40.mm,0.mm], [1552.mm,-40.mm,0.mm])
+  face = grp.entities.add_face([1662.mm,-46.mm,0.mm], [1782.mm,-46.mm,0.mm], [1782.mm,-40.mm,0.mm], [1662.mm,-40.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(220.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -554,7 +555,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 3 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1580.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1690.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -566,7 +567,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 3 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 3 (widened) bolt head"
-  face = grp.entities.add_face([1571.mm,-52.mm,26.mm], [1589.mm,-52.mm,26.mm], [1589.mm,-46.mm,26.mm], [1571.mm,-46.mm,26.mm])
+  face = grp.entities.add_face([1681.mm,-52.mm,26.mm], [1699.mm,-52.mm,26.mm], [1699.mm,-46.mm,26.mm], [1681.mm,-46.mm,26.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -578,7 +579,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 3 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1644.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1754.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -590,7 +591,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 3 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 3 (widened) bolt head"
-  face = grp.entities.add_face([1635.mm,-52.mm,26.mm], [1653.mm,-52.mm,26.mm], [1653.mm,-46.mm,26.mm], [1635.mm,-46.mm,26.mm])
+  face = grp.entities.add_face([1745.mm,-52.mm,26.mm], [1763.mm,-52.mm,26.mm], [1763.mm,-46.mm,26.mm], [1745.mm,-46.mm,26.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -602,7 +603,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 3 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1580.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1690.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -614,7 +615,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 3 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 3 (widened) bolt head"
-  face = grp.entities.add_face([1571.mm,-52.mm,151.mm], [1589.mm,-52.mm,151.mm], [1589.mm,-46.mm,151.mm], [1571.mm,-46.mm,151.mm])
+  face = grp.entities.add_face([1681.mm,-52.mm,151.mm], [1699.mm,-52.mm,151.mm], [1699.mm,-46.mm,151.mm], [1681.mm,-46.mm,151.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -626,7 +627,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 3 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1644.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1754.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -638,7 +639,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 3 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 3 (widened) bolt head"
-  face = grp.entities.add_face([1635.mm,-52.mm,151.mm], [1653.mm,-52.mm,151.mm], [1653.mm,-46.mm,151.mm], [1635.mm,-46.mm,151.mm])
+  face = grp.entities.add_face([1745.mm,-52.mm,151.mm], [1763.mm,-52.mm,151.mm], [1763.mm,-46.mm,151.mm], [1745.mm,-46.mm,151.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -649,7 +650,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 4 (widened) plate
   grp = ents.add_group
   grp.name = "Cantilever Near 4 (widened) plate"
-  face = grp.entities.add_face([2009.mm,0.mm,0.mm], [2129.mm,0.mm,0.mm], [2129.mm,10.mm,0.mm], [2009.mm,10.mm,0.mm])
+  face = grp.entities.add_face([2119.mm,0.mm,0.mm], [2239.mm,0.mm,0.mm], [2239.mm,10.mm,0.mm], [2119.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -660,7 +661,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 4 (widened) arm
   grp = ents.add_group
   grp.name = "Cantilever Near 4 (widened) arm"
-  face = grp.entities.add_face([2064.mm,10.mm,103.mm], [2074.mm,10.mm,103.mm], [2074.mm,500.mm,103.mm], [2064.mm,500.mm,103.mm])
+  face = grp.entities.add_face([2174.mm,10.mm,103.mm], [2184.mm,10.mm,103.mm], [2184.mm,500.mm,103.mm], [2174.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -672,7 +673,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 4 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([2064.mm,10.mm,0.mm], [2064.mm,10.mm,103.mm], [2064.mm,70.mm,103.mm])
+  f = ge.add_face([2174.mm,10.mm,0.mm], [2174.mm,10.mm,103.mm], [2174.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -682,7 +683,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 4 (widened) ext reinf plate
   grp = ents.add_group
   grp.name = "Cantilever Near 4 (widened) ext reinf plate"
-  face = grp.entities.add_face([2009.mm,-46.mm,0.mm], [2129.mm,-46.mm,0.mm], [2129.mm,-40.mm,0.mm], [2009.mm,-40.mm,0.mm])
+  face = grp.entities.add_face([2119.mm,-46.mm,0.mm], [2239.mm,-46.mm,0.mm], [2239.mm,-40.mm,0.mm], [2119.mm,-40.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(220.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -694,7 +695,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 4 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2037.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2147.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -706,7 +707,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 4 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 4 (widened) bolt head"
-  face = grp.entities.add_face([2028.mm,-52.mm,26.mm], [2046.mm,-52.mm,26.mm], [2046.mm,-46.mm,26.mm], [2028.mm,-46.mm,26.mm])
+  face = grp.entities.add_face([2138.mm,-52.mm,26.mm], [2156.mm,-52.mm,26.mm], [2156.mm,-46.mm,26.mm], [2138.mm,-46.mm,26.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -718,7 +719,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 4 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2101.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2211.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -730,7 +731,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 4 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 4 (widened) bolt head"
-  face = grp.entities.add_face([2092.mm,-52.mm,26.mm], [2110.mm,-52.mm,26.mm], [2110.mm,-46.mm,26.mm], [2092.mm,-46.mm,26.mm])
+  face = grp.entities.add_face([2202.mm,-52.mm,26.mm], [2220.mm,-52.mm,26.mm], [2220.mm,-46.mm,26.mm], [2202.mm,-46.mm,26.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -742,7 +743,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 4 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2037.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2147.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -754,7 +755,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 4 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 4 (widened) bolt head"
-  face = grp.entities.add_face([2028.mm,-52.mm,151.mm], [2046.mm,-52.mm,151.mm], [2046.mm,-46.mm,151.mm], [2028.mm,-46.mm,151.mm])
+  face = grp.entities.add_face([2138.mm,-52.mm,151.mm], [2156.mm,-52.mm,151.mm], [2156.mm,-46.mm,151.mm], [2138.mm,-46.mm,151.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -766,7 +767,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 4 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2101.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2211.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -778,7 +779,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 4 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 4 (widened) bolt head"
-  face = grp.entities.add_face([2092.mm,-52.mm,151.mm], [2110.mm,-52.mm,151.mm], [2110.mm,-46.mm,151.mm], [2092.mm,-46.mm,151.mm])
+  face = grp.entities.add_face([2202.mm,-52.mm,151.mm], [2220.mm,-52.mm,151.mm], [2220.mm,-46.mm,151.mm], [2202.mm,-46.mm,151.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -789,7 +790,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 5 (widened) plate
   grp = ents.add_group
   grp.name = "Cantilever Near 5 (widened) plate"
-  face = grp.entities.add_face([2466.mm,0.mm,0.mm], [2586.mm,0.mm,0.mm], [2586.mm,10.mm,0.mm], [2466.mm,10.mm,0.mm])
+  face = grp.entities.add_face([2576.mm,0.mm,0.mm], [2696.mm,0.mm,0.mm], [2696.mm,10.mm,0.mm], [2576.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -800,7 +801,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 5 (widened) arm
   grp = ents.add_group
   grp.name = "Cantilever Near 5 (widened) arm"
-  face = grp.entities.add_face([2521.mm,10.mm,103.mm], [2531.mm,10.mm,103.mm], [2531.mm,500.mm,103.mm], [2521.mm,500.mm,103.mm])
+  face = grp.entities.add_face([2631.mm,10.mm,103.mm], [2641.mm,10.mm,103.mm], [2641.mm,500.mm,103.mm], [2631.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -812,7 +813,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 5 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([2521.mm,10.mm,0.mm], [2521.mm,10.mm,103.mm], [2521.mm,70.mm,103.mm])
+  f = ge.add_face([2631.mm,10.mm,0.mm], [2631.mm,10.mm,103.mm], [2631.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -822,7 +823,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 5 (widened) ext reinf plate
   grp = ents.add_group
   grp.name = "Cantilever Near 5 (widened) ext reinf plate"
-  face = grp.entities.add_face([2466.mm,-46.mm,0.mm], [2586.mm,-46.mm,0.mm], [2586.mm,-40.mm,0.mm], [2466.mm,-40.mm,0.mm])
+  face = grp.entities.add_face([2576.mm,-46.mm,0.mm], [2696.mm,-46.mm,0.mm], [2696.mm,-40.mm,0.mm], [2576.mm,-40.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(220.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -834,7 +835,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 5 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2494.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2604.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -846,7 +847,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 5 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 5 (widened) bolt head"
-  face = grp.entities.add_face([2485.mm,-52.mm,26.mm], [2503.mm,-52.mm,26.mm], [2503.mm,-46.mm,26.mm], [2485.mm,-46.mm,26.mm])
+  face = grp.entities.add_face([2595.mm,-52.mm,26.mm], [2613.mm,-52.mm,26.mm], [2613.mm,-46.mm,26.mm], [2595.mm,-46.mm,26.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -858,7 +859,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 5 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2558.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2668.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -870,7 +871,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 5 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 5 (widened) bolt head"
-  face = grp.entities.add_face([2549.mm,-52.mm,26.mm], [2567.mm,-52.mm,26.mm], [2567.mm,-46.mm,26.mm], [2549.mm,-46.mm,26.mm])
+  face = grp.entities.add_face([2659.mm,-52.mm,26.mm], [2677.mm,-52.mm,26.mm], [2677.mm,-46.mm,26.mm], [2659.mm,-46.mm,26.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -882,7 +883,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 5 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2494.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2604.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -894,7 +895,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 5 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 5 (widened) bolt head"
-  face = grp.entities.add_face([2485.mm,-52.mm,151.mm], [2503.mm,-52.mm,151.mm], [2503.mm,-46.mm,151.mm], [2485.mm,-46.mm,151.mm])
+  face = grp.entities.add_face([2595.mm,-52.mm,151.mm], [2613.mm,-52.mm,151.mm], [2613.mm,-46.mm,151.mm], [2595.mm,-46.mm,151.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -906,7 +907,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 5 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2558.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2668.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -918,7 +919,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 5 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 5 (widened) bolt head"
-  face = grp.entities.add_face([2549.mm,-52.mm,151.mm], [2567.mm,-52.mm,151.mm], [2567.mm,-46.mm,151.mm], [2549.mm,-46.mm,151.mm])
+  face = grp.entities.add_face([2659.mm,-52.mm,151.mm], [2677.mm,-52.mm,151.mm], [2677.mm,-46.mm,151.mm], [2659.mm,-46.mm,151.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -929,7 +930,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 6 (widened) plate
   grp = ents.add_group
   grp.name = "Cantilever Near 6 (widened) plate"
-  face = grp.entities.add_face([2923.mm,0.mm,0.mm], [3043.mm,0.mm,0.mm], [3043.mm,10.mm,0.mm], [2923.mm,10.mm,0.mm])
+  face = grp.entities.add_face([3033.mm,0.mm,0.mm], [3153.mm,0.mm,0.mm], [3153.mm,10.mm,0.mm], [3033.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -940,7 +941,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 6 (widened) arm
   grp = ents.add_group
   grp.name = "Cantilever Near 6 (widened) arm"
-  face = grp.entities.add_face([2978.mm,10.mm,103.mm], [2988.mm,10.mm,103.mm], [2988.mm,500.mm,103.mm], [2978.mm,500.mm,103.mm])
+  face = grp.entities.add_face([3088.mm,10.mm,103.mm], [3098.mm,10.mm,103.mm], [3098.mm,500.mm,103.mm], [3088.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -952,7 +953,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 6 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([2978.mm,10.mm,0.mm], [2978.mm,10.mm,103.mm], [2978.mm,70.mm,103.mm])
+  f = ge.add_face([3088.mm,10.mm,0.mm], [3088.mm,10.mm,103.mm], [3088.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -962,7 +963,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 6 (widened) ext reinf plate
   grp = ents.add_group
   grp.name = "Cantilever Near 6 (widened) ext reinf plate"
-  face = grp.entities.add_face([2923.mm,-46.mm,0.mm], [3043.mm,-46.mm,0.mm], [3043.mm,-40.mm,0.mm], [2923.mm,-40.mm,0.mm])
+  face = grp.entities.add_face([3033.mm,-46.mm,0.mm], [3153.mm,-46.mm,0.mm], [3153.mm,-40.mm,0.mm], [3033.mm,-40.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(220.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -974,7 +975,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 6 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2951.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3061.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -986,7 +987,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 6 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 6 (widened) bolt head"
-  face = grp.entities.add_face([2942.mm,-52.mm,26.mm], [2960.mm,-52.mm,26.mm], [2960.mm,-46.mm,26.mm], [2942.mm,-46.mm,26.mm])
+  face = grp.entities.add_face([3052.mm,-52.mm,26.mm], [3070.mm,-52.mm,26.mm], [3070.mm,-46.mm,26.mm], [3052.mm,-46.mm,26.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -998,7 +999,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 6 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3015.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3125.mm,-46.mm,35.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -1010,7 +1011,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 6 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 6 (widened) bolt head"
-  face = grp.entities.add_face([3006.mm,-52.mm,26.mm], [3024.mm,-52.mm,26.mm], [3024.mm,-46.mm,26.mm], [3006.mm,-46.mm,26.mm])
+  face = grp.entities.add_face([3116.mm,-52.mm,26.mm], [3134.mm,-52.mm,26.mm], [3134.mm,-46.mm,26.mm], [3116.mm,-46.mm,26.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1022,7 +1023,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 6 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2951.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3061.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -1034,7 +1035,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 6 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 6 (widened) bolt head"
-  face = grp.entities.add_face([2942.mm,-52.mm,151.mm], [2960.mm,-52.mm,151.mm], [2960.mm,-46.mm,151.mm], [2942.mm,-46.mm,151.mm])
+  face = grp.entities.add_face([3052.mm,-52.mm,151.mm], [3070.mm,-52.mm,151.mm], [3070.mm,-46.mm,151.mm], [3052.mm,-46.mm,151.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1046,7 +1047,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 6 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3015.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3125.mm,-46.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(56.mm)
@@ -1058,7 +1059,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 6 (widened) bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 6 (widened) bolt head"
-  face = grp.entities.add_face([3006.mm,-52.mm,151.mm], [3024.mm,-52.mm,151.mm], [3024.mm,-46.mm,151.mm], [3006.mm,-46.mm,151.mm])
+  face = grp.entities.add_face([3116.mm,-52.mm,151.mm], [3134.mm,-52.mm,151.mm], [3134.mm,-46.mm,151.mm], [3116.mm,-46.mm,151.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1069,7 +1070,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 7 plate
   grp = ents.add_group
   grp.name = "Cantilever Near 7 plate"
-  face = grp.entities.add_face([3380.mm,0.mm,0.mm], [3500.mm,0.mm,0.mm], [3500.mm,8.mm,0.mm], [3380.mm,8.mm,0.mm])
+  face = grp.entities.add_face([3490.mm,0.mm,0.mm], [3610.mm,0.mm,0.mm], [3610.mm,8.mm,0.mm], [3490.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1080,7 +1081,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 7 arm
   grp = ents.add_group
   grp.name = "Cantilever Near 7 arm"
-  face = grp.entities.add_face([3436.mm,8.mm,105.mm], [3444.mm,8.mm,105.mm], [3444.mm,300.mm,105.mm], [3436.mm,300.mm,105.mm])
+  face = grp.entities.add_face([3546.mm,8.mm,105.mm], [3554.mm,8.mm,105.mm], [3554.mm,300.mm,105.mm], [3546.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1092,7 +1093,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 7 gusset"
   ge = grp.entities
-  f = ge.add_face([3436.mm,8.mm,0.mm], [3436.mm,8.mm,105.mm], [3436.mm,70.mm,105.mm])
+  f = ge.add_face([3546.mm,8.mm,0.mm], [3546.mm,8.mm,105.mm], [3546.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -1102,7 +1103,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 7 ext reinf plate
   grp = ents.add_group
   grp.name = "Cantilever Near 7 ext reinf plate"
-  face = grp.entities.add_face([3390.mm,-46.mm,0.mm], [3490.mm,-46.mm,0.mm], [3490.mm,-40.mm,0.mm], [3390.mm,-40.mm,0.mm])
+  face = grp.entities.add_face([3500.mm,-46.mm,0.mm], [3600.mm,-46.mm,0.mm], [3600.mm,-40.mm,0.mm], [3500.mm,-40.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(180.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1114,7 +1115,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 7 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3440.mm,-46.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3550.mm,-46.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1126,7 +1127,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 7 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 7 bolt head"
-  face = grp.entities.add_face([3431.mm,-52.mm,111.mm], [3449.mm,-52.mm,111.mm], [3449.mm,-46.mm,111.mm], [3431.mm,-46.mm,111.mm])
+  face = grp.entities.add_face([3541.mm,-52.mm,111.mm], [3559.mm,-52.mm,111.mm], [3559.mm,-46.mm,111.mm], [3541.mm,-46.mm,111.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1138,7 +1139,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 7 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3408.mm,-46.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3518.mm,-46.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1150,7 +1151,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 7 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 7 bolt head"
-  face = grp.entities.add_face([3399.mm,-52.mm,33.mm], [3417.mm,-52.mm,33.mm], [3417.mm,-46.mm,33.mm], [3399.mm,-46.mm,33.mm])
+  face = grp.entities.add_face([3509.mm,-52.mm,33.mm], [3527.mm,-52.mm,33.mm], [3527.mm,-46.mm,33.mm], [3509.mm,-46.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1162,7 +1163,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 7 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3472.mm,-46.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3582.mm,-46.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1174,7 +1175,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 7 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 7 bolt head"
-  face = grp.entities.add_face([3463.mm,-52.mm,33.mm], [3481.mm,-52.mm,33.mm], [3481.mm,-46.mm,33.mm], [3463.mm,-46.mm,33.mm])
+  face = grp.entities.add_face([3573.mm,-52.mm,33.mm], [3591.mm,-52.mm,33.mm], [3591.mm,-46.mm,33.mm], [3573.mm,-46.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1185,7 +1186,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 8 plate
   grp = ents.add_group
   grp.name = "Cantilever Near 8 plate"
-  face = grp.entities.add_face([3837.mm,0.mm,0.mm], [3957.mm,0.mm,0.mm], [3957.mm,8.mm,0.mm], [3837.mm,8.mm,0.mm])
+  face = grp.entities.add_face([3947.mm,0.mm,0.mm], [4067.mm,0.mm,0.mm], [4067.mm,8.mm,0.mm], [3947.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1196,7 +1197,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 8 arm
   grp = ents.add_group
   grp.name = "Cantilever Near 8 arm"
-  face = grp.entities.add_face([3893.mm,8.mm,105.mm], [3901.mm,8.mm,105.mm], [3901.mm,300.mm,105.mm], [3893.mm,300.mm,105.mm])
+  face = grp.entities.add_face([4003.mm,8.mm,105.mm], [4011.mm,8.mm,105.mm], [4011.mm,300.mm,105.mm], [4003.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1208,7 +1209,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 8 gusset"
   ge = grp.entities
-  f = ge.add_face([3893.mm,8.mm,0.mm], [3893.mm,8.mm,105.mm], [3893.mm,70.mm,105.mm])
+  f = ge.add_face([4003.mm,8.mm,0.mm], [4003.mm,8.mm,105.mm], [4003.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -1218,7 +1219,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 8 ext reinf plate
   grp = ents.add_group
   grp.name = "Cantilever Near 8 ext reinf plate"
-  face = grp.entities.add_face([3847.mm,-46.mm,0.mm], [3947.mm,-46.mm,0.mm], [3947.mm,-40.mm,0.mm], [3847.mm,-40.mm,0.mm])
+  face = grp.entities.add_face([3957.mm,-46.mm,0.mm], [4057.mm,-46.mm,0.mm], [4057.mm,-40.mm,0.mm], [3957.mm,-40.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(180.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1230,7 +1231,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 8 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3897.mm,-46.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4007.mm,-46.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1242,7 +1243,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 8 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 8 bolt head"
-  face = grp.entities.add_face([3888.mm,-52.mm,111.mm], [3906.mm,-52.mm,111.mm], [3906.mm,-46.mm,111.mm], [3888.mm,-46.mm,111.mm])
+  face = grp.entities.add_face([3998.mm,-52.mm,111.mm], [4016.mm,-52.mm,111.mm], [4016.mm,-46.mm,111.mm], [3998.mm,-46.mm,111.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1254,7 +1255,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 8 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3865.mm,-46.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3975.mm,-46.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1266,7 +1267,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 8 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 8 bolt head"
-  face = grp.entities.add_face([3856.mm,-52.mm,33.mm], [3874.mm,-52.mm,33.mm], [3874.mm,-46.mm,33.mm], [3856.mm,-46.mm,33.mm])
+  face = grp.entities.add_face([3966.mm,-52.mm,33.mm], [3984.mm,-52.mm,33.mm], [3984.mm,-46.mm,33.mm], [3966.mm,-46.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1278,7 +1279,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Near 8 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3929.mm,-46.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4039.mm,-46.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1290,7 +1291,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Near 8 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Near 8 bolt head"
-  face = grp.entities.add_face([3920.mm,-52.mm,33.mm], [3938.mm,-52.mm,33.mm], [3938.mm,-46.mm,33.mm], [3920.mm,-46.mm,33.mm])
+  face = grp.entities.add_face([4030.mm,-52.mm,33.mm], [4048.mm,-52.mm,33.mm], [4048.mm,-46.mm,33.mm], [4030.mm,-46.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1301,7 +1302,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 1 plate
   grp = ents.add_group
   grp.name = "Cantilever Far 1 plate"
-  face = grp.entities.add_face([638.mm,2354.mm,0.mm], [758.mm,2354.mm,0.mm], [758.mm,2362.mm,0.mm], [638.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([748.mm,2354.mm,0.mm], [868.mm,2354.mm,0.mm], [868.mm,2362.mm,0.mm], [748.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1312,7 +1313,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 1 arm
   grp = ents.add_group
   grp.name = "Cantilever Far 1 arm"
-  face = grp.entities.add_face([694.mm,2062.mm,105.mm], [702.mm,2062.mm,105.mm], [702.mm,2354.mm,105.mm], [694.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([804.mm,2062.mm,105.mm], [812.mm,2062.mm,105.mm], [812.mm,2354.mm,105.mm], [804.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1324,7 +1325,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 1 gusset"
   ge = grp.entities
-  f = ge.add_face([694.mm,2354.mm,0.mm], [694.mm,2354.mm,105.mm], [694.mm,2292.mm,105.mm])
+  f = ge.add_face([804.mm,2354.mm,0.mm], [804.mm,2354.mm,105.mm], [804.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -1334,7 +1335,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 1 ext reinf plate
   grp = ents.add_group
   grp.name = "Cantilever Far 1 ext reinf plate"
-  face = grp.entities.add_face([648.mm,2402.mm,0.mm], [748.mm,2402.mm,0.mm], [748.mm,2408.mm,0.mm], [648.mm,2408.mm,0.mm])
+  face = grp.entities.add_face([758.mm,2402.mm,0.mm], [858.mm,2402.mm,0.mm], [858.mm,2408.mm,0.mm], [758.mm,2408.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(180.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1346,7 +1347,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 1 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([698.mm,2354.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([808.mm,2354.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1358,7 +1359,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 1 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 1 bolt head"
-  face = grp.entities.add_face([689.mm,2408.mm,111.mm], [707.mm,2408.mm,111.mm], [707.mm,2414.mm,111.mm], [689.mm,2414.mm,111.mm])
+  face = grp.entities.add_face([799.mm,2408.mm,111.mm], [817.mm,2408.mm,111.mm], [817.mm,2414.mm,111.mm], [799.mm,2414.mm,111.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1370,7 +1371,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 1 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([666.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([776.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1382,7 +1383,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 1 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 1 bolt head"
-  face = grp.entities.add_face([657.mm,2408.mm,33.mm], [675.mm,2408.mm,33.mm], [675.mm,2414.mm,33.mm], [657.mm,2414.mm,33.mm])
+  face = grp.entities.add_face([767.mm,2408.mm,33.mm], [785.mm,2408.mm,33.mm], [785.mm,2414.mm,33.mm], [767.mm,2414.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1394,7 +1395,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 1 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([730.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([840.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1406,7 +1407,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 1 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 1 bolt head"
-  face = grp.entities.add_face([721.mm,2408.mm,33.mm], [739.mm,2408.mm,33.mm], [739.mm,2414.mm,33.mm], [721.mm,2414.mm,33.mm])
+  face = grp.entities.add_face([831.mm,2408.mm,33.mm], [849.mm,2408.mm,33.mm], [849.mm,2414.mm,33.mm], [831.mm,2414.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1417,7 +1418,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 2 plate
   grp = ents.add_group
   grp.name = "Cantilever Far 2 plate"
-  face = grp.entities.add_face([1095.mm,2354.mm,0.mm], [1215.mm,2354.mm,0.mm], [1215.mm,2362.mm,0.mm], [1095.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([1205.mm,2354.mm,0.mm], [1325.mm,2354.mm,0.mm], [1325.mm,2362.mm,0.mm], [1205.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1428,7 +1429,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 2 arm
   grp = ents.add_group
   grp.name = "Cantilever Far 2 arm"
-  face = grp.entities.add_face([1151.mm,2062.mm,105.mm], [1159.mm,2062.mm,105.mm], [1159.mm,2354.mm,105.mm], [1151.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([1261.mm,2062.mm,105.mm], [1269.mm,2062.mm,105.mm], [1269.mm,2354.mm,105.mm], [1261.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1440,7 +1441,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 2 gusset"
   ge = grp.entities
-  f = ge.add_face([1151.mm,2354.mm,0.mm], [1151.mm,2354.mm,105.mm], [1151.mm,2292.mm,105.mm])
+  f = ge.add_face([1261.mm,2354.mm,0.mm], [1261.mm,2354.mm,105.mm], [1261.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -1450,7 +1451,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 2 ext reinf plate
   grp = ents.add_group
   grp.name = "Cantilever Far 2 ext reinf plate"
-  face = grp.entities.add_face([1105.mm,2402.mm,0.mm], [1205.mm,2402.mm,0.mm], [1205.mm,2408.mm,0.mm], [1105.mm,2408.mm,0.mm])
+  face = grp.entities.add_face([1215.mm,2402.mm,0.mm], [1315.mm,2402.mm,0.mm], [1315.mm,2408.mm,0.mm], [1215.mm,2408.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(180.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1462,7 +1463,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 2 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1155.mm,2354.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1265.mm,2354.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1474,7 +1475,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 2 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 2 bolt head"
-  face = grp.entities.add_face([1146.mm,2408.mm,111.mm], [1164.mm,2408.mm,111.mm], [1164.mm,2414.mm,111.mm], [1146.mm,2414.mm,111.mm])
+  face = grp.entities.add_face([1256.mm,2408.mm,111.mm], [1274.mm,2408.mm,111.mm], [1274.mm,2414.mm,111.mm], [1256.mm,2414.mm,111.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1486,7 +1487,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 2 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1123.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1233.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1498,7 +1499,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 2 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 2 bolt head"
-  face = grp.entities.add_face([1114.mm,2408.mm,33.mm], [1132.mm,2408.mm,33.mm], [1132.mm,2414.mm,33.mm], [1114.mm,2414.mm,33.mm])
+  face = grp.entities.add_face([1224.mm,2408.mm,33.mm], [1242.mm,2408.mm,33.mm], [1242.mm,2414.mm,33.mm], [1224.mm,2414.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1510,7 +1511,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 2 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1187.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1297.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1522,7 +1523,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 2 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 2 bolt head"
-  face = grp.entities.add_face([1178.mm,2408.mm,33.mm], [1196.mm,2408.mm,33.mm], [1196.mm,2414.mm,33.mm], [1178.mm,2414.mm,33.mm])
+  face = grp.entities.add_face([1288.mm,2408.mm,33.mm], [1306.mm,2408.mm,33.mm], [1306.mm,2414.mm,33.mm], [1288.mm,2414.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1533,7 +1534,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 3 plate
   grp = ents.add_group
   grp.name = "Cantilever Far 3 plate"
-  face = grp.entities.add_face([1552.mm,2354.mm,0.mm], [1672.mm,2354.mm,0.mm], [1672.mm,2362.mm,0.mm], [1552.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([1662.mm,2354.mm,0.mm], [1782.mm,2354.mm,0.mm], [1782.mm,2362.mm,0.mm], [1662.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1544,7 +1545,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 3 arm
   grp = ents.add_group
   grp.name = "Cantilever Far 3 arm"
-  face = grp.entities.add_face([1608.mm,2062.mm,105.mm], [1616.mm,2062.mm,105.mm], [1616.mm,2354.mm,105.mm], [1608.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([1718.mm,2062.mm,105.mm], [1726.mm,2062.mm,105.mm], [1726.mm,2354.mm,105.mm], [1718.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1556,7 +1557,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 3 gusset"
   ge = grp.entities
-  f = ge.add_face([1608.mm,2354.mm,0.mm], [1608.mm,2354.mm,105.mm], [1608.mm,2292.mm,105.mm])
+  f = ge.add_face([1718.mm,2354.mm,0.mm], [1718.mm,2354.mm,105.mm], [1718.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -1566,7 +1567,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 3 ext reinf plate
   grp = ents.add_group
   grp.name = "Cantilever Far 3 ext reinf plate"
-  face = grp.entities.add_face([1562.mm,2402.mm,0.mm], [1662.mm,2402.mm,0.mm], [1662.mm,2408.mm,0.mm], [1562.mm,2408.mm,0.mm])
+  face = grp.entities.add_face([1672.mm,2402.mm,0.mm], [1772.mm,2402.mm,0.mm], [1772.mm,2408.mm,0.mm], [1672.mm,2408.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(180.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1578,7 +1579,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 3 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1612.mm,2354.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1722.mm,2354.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1590,7 +1591,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 3 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 3 bolt head"
-  face = grp.entities.add_face([1603.mm,2408.mm,111.mm], [1621.mm,2408.mm,111.mm], [1621.mm,2414.mm,111.mm], [1603.mm,2414.mm,111.mm])
+  face = grp.entities.add_face([1713.mm,2408.mm,111.mm], [1731.mm,2408.mm,111.mm], [1731.mm,2414.mm,111.mm], [1713.mm,2414.mm,111.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1602,7 +1603,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 3 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1580.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1690.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1614,7 +1615,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 3 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 3 bolt head"
-  face = grp.entities.add_face([1571.mm,2408.mm,33.mm], [1589.mm,2408.mm,33.mm], [1589.mm,2414.mm,33.mm], [1571.mm,2414.mm,33.mm])
+  face = grp.entities.add_face([1681.mm,2408.mm,33.mm], [1699.mm,2408.mm,33.mm], [1699.mm,2414.mm,33.mm], [1681.mm,2414.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1626,7 +1627,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 3 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1644.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1754.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1638,7 +1639,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 3 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 3 bolt head"
-  face = grp.entities.add_face([1635.mm,2408.mm,33.mm], [1653.mm,2408.mm,33.mm], [1653.mm,2414.mm,33.mm], [1635.mm,2414.mm,33.mm])
+  face = grp.entities.add_face([1745.mm,2408.mm,33.mm], [1763.mm,2408.mm,33.mm], [1763.mm,2414.mm,33.mm], [1745.mm,2414.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1649,7 +1650,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 4 plate
   grp = ents.add_group
   grp.name = "Cantilever Far 4 plate"
-  face = grp.entities.add_face([2009.mm,2354.mm,0.mm], [2129.mm,2354.mm,0.mm], [2129.mm,2362.mm,0.mm], [2009.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([2119.mm,2354.mm,0.mm], [2239.mm,2354.mm,0.mm], [2239.mm,2362.mm,0.mm], [2119.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1660,7 +1661,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 4 arm
   grp = ents.add_group
   grp.name = "Cantilever Far 4 arm"
-  face = grp.entities.add_face([2065.mm,2062.mm,105.mm], [2073.mm,2062.mm,105.mm], [2073.mm,2354.mm,105.mm], [2065.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([2175.mm,2062.mm,105.mm], [2183.mm,2062.mm,105.mm], [2183.mm,2354.mm,105.mm], [2175.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1672,7 +1673,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 4 gusset"
   ge = grp.entities
-  f = ge.add_face([2065.mm,2354.mm,0.mm], [2065.mm,2354.mm,105.mm], [2065.mm,2292.mm,105.mm])
+  f = ge.add_face([2175.mm,2354.mm,0.mm], [2175.mm,2354.mm,105.mm], [2175.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -1682,7 +1683,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 4 ext reinf plate
   grp = ents.add_group
   grp.name = "Cantilever Far 4 ext reinf plate"
-  face = grp.entities.add_face([2019.mm,2402.mm,0.mm], [2119.mm,2402.mm,0.mm], [2119.mm,2408.mm,0.mm], [2019.mm,2408.mm,0.mm])
+  face = grp.entities.add_face([2129.mm,2402.mm,0.mm], [2229.mm,2402.mm,0.mm], [2229.mm,2408.mm,0.mm], [2129.mm,2408.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(180.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1694,7 +1695,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 4 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2069.mm,2354.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2179.mm,2354.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1706,7 +1707,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 4 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 4 bolt head"
-  face = grp.entities.add_face([2060.mm,2408.mm,111.mm], [2078.mm,2408.mm,111.mm], [2078.mm,2414.mm,111.mm], [2060.mm,2414.mm,111.mm])
+  face = grp.entities.add_face([2170.mm,2408.mm,111.mm], [2188.mm,2408.mm,111.mm], [2188.mm,2414.mm,111.mm], [2170.mm,2414.mm,111.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1718,7 +1719,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 4 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2037.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2147.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1730,7 +1731,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 4 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 4 bolt head"
-  face = grp.entities.add_face([2028.mm,2408.mm,33.mm], [2046.mm,2408.mm,33.mm], [2046.mm,2414.mm,33.mm], [2028.mm,2414.mm,33.mm])
+  face = grp.entities.add_face([2138.mm,2408.mm,33.mm], [2156.mm,2408.mm,33.mm], [2156.mm,2414.mm,33.mm], [2138.mm,2414.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1742,7 +1743,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 4 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2101.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2211.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1754,7 +1755,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 4 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 4 bolt head"
-  face = grp.entities.add_face([2092.mm,2408.mm,33.mm], [2110.mm,2408.mm,33.mm], [2110.mm,2414.mm,33.mm], [2092.mm,2414.mm,33.mm])
+  face = grp.entities.add_face([2202.mm,2408.mm,33.mm], [2220.mm,2408.mm,33.mm], [2220.mm,2414.mm,33.mm], [2202.mm,2414.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1765,7 +1766,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 5 plate
   grp = ents.add_group
   grp.name = "Cantilever Far 5 plate"
-  face = grp.entities.add_face([2466.mm,2354.mm,0.mm], [2586.mm,2354.mm,0.mm], [2586.mm,2362.mm,0.mm], [2466.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([2576.mm,2354.mm,0.mm], [2696.mm,2354.mm,0.mm], [2696.mm,2362.mm,0.mm], [2576.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1776,7 +1777,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 5 arm
   grp = ents.add_group
   grp.name = "Cantilever Far 5 arm"
-  face = grp.entities.add_face([2522.mm,2062.mm,105.mm], [2530.mm,2062.mm,105.mm], [2530.mm,2354.mm,105.mm], [2522.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([2632.mm,2062.mm,105.mm], [2640.mm,2062.mm,105.mm], [2640.mm,2354.mm,105.mm], [2632.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1788,7 +1789,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 5 gusset"
   ge = grp.entities
-  f = ge.add_face([2522.mm,2354.mm,0.mm], [2522.mm,2354.mm,105.mm], [2522.mm,2292.mm,105.mm])
+  f = ge.add_face([2632.mm,2354.mm,0.mm], [2632.mm,2354.mm,105.mm], [2632.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -1798,7 +1799,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 5 ext reinf plate
   grp = ents.add_group
   grp.name = "Cantilever Far 5 ext reinf plate"
-  face = grp.entities.add_face([2476.mm,2402.mm,0.mm], [2576.mm,2402.mm,0.mm], [2576.mm,2408.mm,0.mm], [2476.mm,2408.mm,0.mm])
+  face = grp.entities.add_face([2586.mm,2402.mm,0.mm], [2686.mm,2402.mm,0.mm], [2686.mm,2408.mm,0.mm], [2586.mm,2408.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(180.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1810,7 +1811,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 5 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2526.mm,2354.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2636.mm,2354.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1822,7 +1823,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 5 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 5 bolt head"
-  face = grp.entities.add_face([2517.mm,2408.mm,111.mm], [2535.mm,2408.mm,111.mm], [2535.mm,2414.mm,111.mm], [2517.mm,2414.mm,111.mm])
+  face = grp.entities.add_face([2627.mm,2408.mm,111.mm], [2645.mm,2408.mm,111.mm], [2645.mm,2414.mm,111.mm], [2627.mm,2414.mm,111.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1834,7 +1835,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 5 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2494.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2604.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1846,7 +1847,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 5 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 5 bolt head"
-  face = grp.entities.add_face([2485.mm,2408.mm,33.mm], [2503.mm,2408.mm,33.mm], [2503.mm,2414.mm,33.mm], [2485.mm,2414.mm,33.mm])
+  face = grp.entities.add_face([2595.mm,2408.mm,33.mm], [2613.mm,2408.mm,33.mm], [2613.mm,2414.mm,33.mm], [2595.mm,2414.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1858,7 +1859,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 5 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2558.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2668.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1870,7 +1871,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 5 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 5 bolt head"
-  face = grp.entities.add_face([2549.mm,2408.mm,33.mm], [2567.mm,2408.mm,33.mm], [2567.mm,2414.mm,33.mm], [2549.mm,2414.mm,33.mm])
+  face = grp.entities.add_face([2659.mm,2408.mm,33.mm], [2677.mm,2408.mm,33.mm], [2677.mm,2414.mm,33.mm], [2659.mm,2414.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1881,7 +1882,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 6 plate
   grp = ents.add_group
   grp.name = "Cantilever Far 6 plate"
-  face = grp.entities.add_face([2923.mm,2354.mm,0.mm], [3043.mm,2354.mm,0.mm], [3043.mm,2362.mm,0.mm], [2923.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([3033.mm,2354.mm,0.mm], [3153.mm,2354.mm,0.mm], [3153.mm,2362.mm,0.mm], [3033.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1892,7 +1893,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 6 arm
   grp = ents.add_group
   grp.name = "Cantilever Far 6 arm"
-  face = grp.entities.add_face([2979.mm,2062.mm,105.mm], [2987.mm,2062.mm,105.mm], [2987.mm,2354.mm,105.mm], [2979.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([3089.mm,2062.mm,105.mm], [3097.mm,2062.mm,105.mm], [3097.mm,2354.mm,105.mm], [3089.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1904,7 +1905,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 6 gusset"
   ge = grp.entities
-  f = ge.add_face([2979.mm,2354.mm,0.mm], [2979.mm,2354.mm,105.mm], [2979.mm,2292.mm,105.mm])
+  f = ge.add_face([3089.mm,2354.mm,0.mm], [3089.mm,2354.mm,105.mm], [3089.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -1914,7 +1915,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 6 ext reinf plate
   grp = ents.add_group
   grp.name = "Cantilever Far 6 ext reinf plate"
-  face = grp.entities.add_face([2933.mm,2402.mm,0.mm], [3033.mm,2402.mm,0.mm], [3033.mm,2408.mm,0.mm], [2933.mm,2408.mm,0.mm])
+  face = grp.entities.add_face([3043.mm,2402.mm,0.mm], [3143.mm,2402.mm,0.mm], [3143.mm,2408.mm,0.mm], [3043.mm,2408.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(180.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -1926,7 +1927,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 6 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2983.mm,2354.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3093.mm,2354.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1938,7 +1939,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 6 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 6 bolt head"
-  face = grp.entities.add_face([2974.mm,2408.mm,111.mm], [2992.mm,2408.mm,111.mm], [2992.mm,2414.mm,111.mm], [2974.mm,2414.mm,111.mm])
+  face = grp.entities.add_face([3084.mm,2408.mm,111.mm], [3102.mm,2408.mm,111.mm], [3102.mm,2414.mm,111.mm], [3084.mm,2414.mm,111.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1950,7 +1951,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 6 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2951.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3061.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1962,7 +1963,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 6 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 6 bolt head"
-  face = grp.entities.add_face([2942.mm,2408.mm,33.mm], [2960.mm,2408.mm,33.mm], [2960.mm,2414.mm,33.mm], [2942.mm,2414.mm,33.mm])
+  face = grp.entities.add_face([3052.mm,2408.mm,33.mm], [3070.mm,2408.mm,33.mm], [3070.mm,2414.mm,33.mm], [3052.mm,2414.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1974,7 +1975,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 6 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3015.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3125.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -1986,7 +1987,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 6 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 6 bolt head"
-  face = grp.entities.add_face([3006.mm,2408.mm,33.mm], [3024.mm,2408.mm,33.mm], [3024.mm,2414.mm,33.mm], [3006.mm,2414.mm,33.mm])
+  face = grp.entities.add_face([3116.mm,2408.mm,33.mm], [3134.mm,2408.mm,33.mm], [3134.mm,2414.mm,33.mm], [3116.mm,2414.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -1997,7 +1998,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 7 plate
   grp = ents.add_group
   grp.name = "Cantilever Far 7 plate"
-  face = grp.entities.add_face([3380.mm,2354.mm,0.mm], [3500.mm,2354.mm,0.mm], [3500.mm,2362.mm,0.mm], [3380.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([3490.mm,2354.mm,0.mm], [3610.mm,2354.mm,0.mm], [3610.mm,2362.mm,0.mm], [3490.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -2008,7 +2009,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 7 arm
   grp = ents.add_group
   grp.name = "Cantilever Far 7 arm"
-  face = grp.entities.add_face([3436.mm,2062.mm,105.mm], [3444.mm,2062.mm,105.mm], [3444.mm,2354.mm,105.mm], [3436.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([3546.mm,2062.mm,105.mm], [3554.mm,2062.mm,105.mm], [3554.mm,2354.mm,105.mm], [3546.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -2020,7 +2021,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 7 gusset"
   ge = grp.entities
-  f = ge.add_face([3436.mm,2354.mm,0.mm], [3436.mm,2354.mm,105.mm], [3436.mm,2292.mm,105.mm])
+  f = ge.add_face([3546.mm,2354.mm,0.mm], [3546.mm,2354.mm,105.mm], [3546.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -2030,7 +2031,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 7 ext reinf plate
   grp = ents.add_group
   grp.name = "Cantilever Far 7 ext reinf plate"
-  face = grp.entities.add_face([3390.mm,2402.mm,0.mm], [3490.mm,2402.mm,0.mm], [3490.mm,2408.mm,0.mm], [3390.mm,2408.mm,0.mm])
+  face = grp.entities.add_face([3500.mm,2402.mm,0.mm], [3600.mm,2402.mm,0.mm], [3600.mm,2408.mm,0.mm], [3500.mm,2408.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(180.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -2042,7 +2043,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 7 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3440.mm,2354.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3550.mm,2354.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -2054,7 +2055,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 7 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 7 bolt head"
-  face = grp.entities.add_face([3431.mm,2408.mm,111.mm], [3449.mm,2408.mm,111.mm], [3449.mm,2414.mm,111.mm], [3431.mm,2414.mm,111.mm])
+  face = grp.entities.add_face([3541.mm,2408.mm,111.mm], [3559.mm,2408.mm,111.mm], [3559.mm,2414.mm,111.mm], [3541.mm,2414.mm,111.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -2066,7 +2067,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 7 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3408.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3518.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -2078,7 +2079,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 7 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 7 bolt head"
-  face = grp.entities.add_face([3399.mm,2408.mm,33.mm], [3417.mm,2408.mm,33.mm], [3417.mm,2414.mm,33.mm], [3399.mm,2414.mm,33.mm])
+  face = grp.entities.add_face([3509.mm,2408.mm,33.mm], [3527.mm,2408.mm,33.mm], [3527.mm,2414.mm,33.mm], [3509.mm,2414.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -2090,7 +2091,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 7 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3472.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3582.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -2102,7 +2103,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 7 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 7 bolt head"
-  face = grp.entities.add_face([3463.mm,2408.mm,33.mm], [3481.mm,2408.mm,33.mm], [3481.mm,2414.mm,33.mm], [3463.mm,2414.mm,33.mm])
+  face = grp.entities.add_face([3573.mm,2408.mm,33.mm], [3591.mm,2408.mm,33.mm], [3591.mm,2414.mm,33.mm], [3573.mm,2414.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -2113,7 +2114,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 8 plate
   grp = ents.add_group
   grp.name = "Cantilever Far 8 plate"
-  face = grp.entities.add_face([3837.mm,2354.mm,0.mm], [3957.mm,2354.mm,0.mm], [3957.mm,2362.mm,0.mm], [3837.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([3947.mm,2354.mm,0.mm], [4067.mm,2354.mm,0.mm], [4067.mm,2362.mm,0.mm], [3947.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -2124,7 +2125,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 8 arm
   grp = ents.add_group
   grp.name = "Cantilever Far 8 arm"
-  face = grp.entities.add_face([3893.mm,2062.mm,105.mm], [3901.mm,2062.mm,105.mm], [3901.mm,2354.mm,105.mm], [3893.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([4003.mm,2062.mm,105.mm], [4011.mm,2062.mm,105.mm], [4011.mm,2354.mm,105.mm], [4003.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -2136,7 +2137,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 8 gusset"
   ge = grp.entities
-  f = ge.add_face([3893.mm,2354.mm,0.mm], [3893.mm,2354.mm,105.mm], [3893.mm,2292.mm,105.mm])
+  f = ge.add_face([4003.mm,2354.mm,0.mm], [4003.mm,2354.mm,105.mm], [4003.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -2146,7 +2147,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 8 ext reinf plate
   grp = ents.add_group
   grp.name = "Cantilever Far 8 ext reinf plate"
-  face = grp.entities.add_face([3847.mm,2402.mm,0.mm], [3947.mm,2402.mm,0.mm], [3947.mm,2408.mm,0.mm], [3847.mm,2408.mm,0.mm])
+  face = grp.entities.add_face([3957.mm,2402.mm,0.mm], [4057.mm,2402.mm,0.mm], [4057.mm,2408.mm,0.mm], [3957.mm,2408.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(180.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -2158,7 +2159,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 8 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3897.mm,2354.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4007.mm,2354.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -2170,7 +2171,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 8 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 8 bolt head"
-  face = grp.entities.add_face([3888.mm,2408.mm,111.mm], [3906.mm,2408.mm,111.mm], [3906.mm,2414.mm,111.mm], [3888.mm,2414.mm,111.mm])
+  face = grp.entities.add_face([3998.mm,2408.mm,111.mm], [4016.mm,2408.mm,111.mm], [4016.mm,2414.mm,111.mm], [3998.mm,2414.mm,111.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -2182,7 +2183,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 8 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3865.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3975.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -2194,7 +2195,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 8 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 8 bolt head"
-  face = grp.entities.add_face([3856.mm,2408.mm,33.mm], [3874.mm,2408.mm,33.mm], [3874.mm,2414.mm,33.mm], [3856.mm,2414.mm,33.mm])
+  face = grp.entities.add_face([3966.mm,2408.mm,33.mm], [3984.mm,2408.mm,33.mm], [3984.mm,2414.mm,33.mm], [3966.mm,2414.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -2206,7 +2207,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Cantilever Far 8 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3929.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4039.mm,2354.mm,42.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(54.mm)
@@ -2218,7 +2219,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Cantilever Far 8 bolt head
   grp = ents.add_group
   grp.name = "Cantilever Far 8 bolt head"
-  face = grp.entities.add_face([3920.mm,2408.mm,33.mm], [3938.mm,2408.mm,33.mm], [3938.mm,2414.mm,33.mm], [3920.mm,2414.mm,33.mm])
+  face = grp.entities.add_face([4030.mm,2408.mm,33.mm], [4048.mm,2408.mm,33.mm], [4048.mm,2414.mm,33.mm], [4030.mm,2414.mm,33.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 bolt head"] || model.materials.add("Cantilever Near 1 bolt head")
@@ -2255,9 +2256,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Type FloorCant short arm (to X470)
+  # Type FloorCant short arm (to X580)
   grp = ents.add_group
-  grp.name = "Type FloorCant short arm (to X470)"
+  grp.name = "Type FloorCant short arm (to X580)"
   face = grp.entities.add_face([2025.4.mm,0.mm,89.6.mm], [2330.mm,0.mm,89.6.mm], [2330.mm,50.8.mm,89.6.mm], [2025.4.mm,50.8.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.400000000000006.mm)
@@ -2288,9 +2289,9 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Type FloorCant long arm (to X770)
+  # Type FloorCant long arm (to X880)
   grp = ents.add_group
-  grp.name = "Type FloorCant long arm (to X770)"
+  grp.name = "Type FloorCant long arm (to X880)"
   face = grp.entities.add_face([3025.4.mm,0.mm,89.6.mm], [3630.mm,0.mm,89.6.mm], [3630.mm,50.8.mm,89.6.mm], [3025.4.mm,50.8.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.400000000000006.mm)
@@ -2619,7 +2620,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "FP combined corner plate (near)"
   face = grp.entities.add_face([6925.mm,0.mm,77.6.mm], [7075.mm,0.mm,77.6.mm], [7075.mm,10.mm,77.6.mm], [6925.mm,10.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -2630,7 +2631,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "FP combined corner ext plate (near)"
   face = grp.entities.add_face([6925.mm,-50.mm,77.6.mm], [7075.mm,-50.mm,77.6.mm], [7075.mm,-40.mm,77.6.mm], [6925.mm,-40.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -2650,7 +2651,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined BR rail seat (near)
   grp = ents.add_group
   grp.name = "FP combined BR rail seat (near)"
-  face = grp.entities.add_face([6970.mm,0.mm,148.mm], [7030.mm,0.mm,148.mm], [7030.mm,55.mm,148.mm], [6970.mm,55.mm,148.mm])
+  face = grp.entities.add_face([6970.mm,0.mm,220.mm], [7030.mm,0.mm,220.mm], [7030.mm,55.mm,220.mm], [6970.mm,55.mm,220.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -2671,11 +2672,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (near) X6950 Z188
+  # FP combined bolt M12 (near) X6950 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X6950 Z188"
+  grp.name = "FP combined bolt M12 (near) X6950 Z270"
   ge = grp.entities
-  circle = ge.add_circle([6950.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([6950.mm,-50.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -2697,11 +2698,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (near) X7050 Z188
+  # FP combined bolt M12 (near) X7050 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X7050 Z188"
+  grp.name = "FP combined bolt M12 (near) X7050 Z270"
   ge = grp.entities
-  circle = ge.add_circle([7050.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([7050.mm,-50.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3264,7 +3265,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "FP combined corner plate (near)"
   face = grp.entities.add_face([4574.mm,0.mm,77.6.mm], [4724.mm,0.mm,77.6.mm], [4724.mm,10.mm,77.6.mm], [4574.mm,10.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3275,7 +3276,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "FP combined corner ext plate (near)"
   face = grp.entities.add_face([4574.mm,-50.mm,77.6.mm], [4724.mm,-50.mm,77.6.mm], [4724.mm,-40.mm,77.6.mm], [4574.mm,-40.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3295,7 +3296,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined BR rail seat (near)
   grp = ents.add_group
   grp.name = "FP combined BR rail seat (near)"
-  face = grp.entities.add_face([4619.mm,0.mm,148.mm], [4679.mm,0.mm,148.mm], [4679.mm,55.mm,148.mm], [4619.mm,55.mm,148.mm])
+  face = grp.entities.add_face([4619.mm,0.mm,220.mm], [4679.mm,0.mm,220.mm], [4679.mm,55.mm,220.mm], [4619.mm,55.mm,220.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -3316,11 +3317,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (near) X4599 Z188
+  # FP combined bolt M12 (near) X4599 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4599 Z188"
+  grp.name = "FP combined bolt M12 (near) X4599 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,-50.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3342,11 +3343,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (near) X4699 Z188
+  # FP combined bolt M12 (near) X4699 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4699 Z188"
+  grp.name = "FP combined bolt M12 (near) X4699 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,-50.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3419,7 +3420,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "FP combined corner plate (far)"
   face = grp.entities.add_face([4574.mm,2352.mm,77.6.mm], [4724.mm,2352.mm,77.6.mm], [4724.mm,2362.mm,77.6.mm], [4574.mm,2362.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3430,7 +3431,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "FP combined corner ext plate (far)"
   face = grp.entities.add_face([4574.mm,2402.mm,77.6.mm], [4724.mm,2402.mm,77.6.mm], [4724.mm,2412.mm,77.6.mm], [4574.mm,2412.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -3450,7 +3451,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined BR rail seat (far)
   grp = ents.add_group
   grp.name = "FP combined BR rail seat (far)"
-  face = grp.entities.add_face([4619.mm,2307.mm,148.mm], [4679.mm,2307.mm,148.mm], [4679.mm,2362.mm,148.mm], [4619.mm,2362.mm,148.mm])
+  face = grp.entities.add_face([4619.mm,2307.mm,220.mm], [4679.mm,2307.mm,220.mm], [4679.mm,2362.mm,220.mm], [4619.mm,2362.mm,220.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -3471,11 +3472,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (far) X4599 Z188
+  # FP combined bolt M12 (far) X4599 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4599 Z188"
+  grp.name = "FP combined bolt M12 (far) X4599 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,2352.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,2352.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3497,11 +3498,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (far) X4699 Z188
+  # FP combined bolt M12 (far) X4699 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4699 Z188"
+  grp.name = "FP combined bolt M12 (far) X4699 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,2352.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,2352.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -3514,13 +3515,336 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   inst.name = "Right Walkway (cantilever rectangle)"
   inst.layer = model.layers["Right Cantilever"]
 
-  # ═══ Film-Plane Right Support Beams ═══
-  defn = model.definitions.add("Film-Plane Right Support Beams")
+  # ═══ Film-Plane Support Beams (right) ═══
+  defn = model.definitions.add("Film-Plane Support Beams (right)")
   ents = defn.entities
-  # FP support beam R-bot
+  # U-rail (FLANGED) web BR
   grp = ents.add_group
-  grp.name = "FP support beam R-bot"
-  face = grp.entities.add_face([4609.mm,0.mm,160.mm], [4649.mm,0.mm,160.mm], [4649.mm,2362.mm,160.mm], [4609.mm,2362.mm,160.mm])
+  grp.name = "U-rail (FLANGED) web BR"
+  face = grp.entities.add_face([4638.mm,0.mm,232.mm], [4643.mm,0.mm,232.mm], [4643.mm,2362.mm,232.mm], [4638.mm,2362.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["U-rail (FLANGED) web BR"] || model.materials.add("U-rail (FLANGED) web BR")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail (FLANGED) flange BR 303
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) flange BR 303"
+  face = grp.entities.add_face([4605.mm,0.mm,303.mm], [4643.mm,0.mm,303.mm], [4643.mm,2362.mm,303.mm], [4605.mm,2362.mm,303.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail (FLANGED) web BR"] || model.materials.add("U-rail (FLANGED) web BR")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail (FLANGED) flange BR 232
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) flange BR 232"
+  face = grp.entities.add_face([4605.mm,0.mm,232.mm], [4643.mm,0.mm,232.mm], [4643.mm,2362.mm,232.mm], [4605.mm,2362.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail (FLANGED) web BR"] || model.materials.add("U-rail (FLANGED) web BR")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail (FLANGED) bottom-flange lip BR
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) bottom-flange lip BR"
+  face = grp.entities.add_face([4605.mm,0.mm,237.mm], [4610.mm,0.mm,237.mm], [4610.mm,2362.mm,237.mm], [4605.mm,2362.mm,237.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["U-rail (FLANGED) web BR"] || model.materials.add("U-rail (FLANGED) web BR")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail end flange (outboard-trimmed) BR 0
+  grp = ents.add_group
+  grp.name = "Rail end flange (outboard-trimmed) BR 0"
+  face = grp.entities.add_face([4569.mm,0.mm,227.mm], [4644.mm,0.mm,227.mm], [4644.mm,12.mm,227.mm], [4569.mm,12.mm,227.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail end flange (outboard-trimmed) BR 2350
+  grp = ents.add_group
+  grp.name = "Rail end flange (outboard-trimmed) BR 2350"
+  face = grp.entities.add_face([4569.mm,2350.mm,227.mm], [4644.mm,2350.mm,227.mm], [4644.mm,2362.mm,227.mm], [4569.mm,2362.mm,227.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) BR 2245
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) BR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4614.mm,2245.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 BR 2245
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 BR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4585.mm,2245.mm,253.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) BR 2245
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) BR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4618.mm,2245.mm,293.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 BR 2245
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 BR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2245.mm,293.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(37.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) BR 2285
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) BR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4614.mm,2285.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 BR 2285
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 BR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4585.mm,2285.mm,253.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) BR 2285
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) BR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4618.mm,2285.mm,293.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 BR 2285
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 BR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2285.mm,293.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(37.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (bolted to skate axles) BR
+  grp = ents.add_group
+  grp.name = "Carriage plate (bolted to skate axles) BR"
+  face = grp.entities.add_face([4585.mm,2238.mm,154.mm], [4599.mm,2238.mm,154.mm], [4599.mm,2324.mm,154.mm], [4585.mm,2324.mm,154.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(157.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) BR 2245
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) BR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2245.mm,231.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) BR 2285
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) BR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2285.mm,231.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake base (5128A63) BR
+  grp = ents.add_group
+  grp.name = "Cam-brake base (5128A63) BR"
+  face = grp.entities.add_face([4589.mm,2270.mm,311.mm], [4599.mm,2270.mm,311.mm], [4599.mm,2292.mm,311.mm], [4589.mm,2292.mm,311.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Cam-brake base (5128A63) BR"] || model.materials.add("Cam-brake base (5128A63) BR")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake hold-down arm BR
+  grp = ents.add_group
+  grp.name = "Cam-brake hold-down arm BR"
+  face = grp.entities.add_face([4594.mm,2277.mm,312.mm], [4616.mm,2277.mm,312.mm], [4616.mm,2285.mm,312.mm], [4594.mm,2285.mm,312.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake base (5128A63) BR"] || model.materials.add("Cam-brake base (5128A63) BR")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake UHMW pad BR
+  grp = ents.add_group
+  grp.name = "Cam-brake UHMW pad BR"
+  face = grp.entities.add_face([4610.mm,2276.mm,308.mm], [4622.mm,2276.mm,308.mm], [4622.mm,2286.mm,308.mm], [4610.mm,2286.mm,308.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake UHMW pad BR"] || model.materials.add("Cam-brake UHMW pad BR")
+  mat.color = Sketchup::Color.new(216, 212, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake lever BR
+  grp = ents.add_group
+  grp.name = "Cam-brake lever BR"
+  ge = grp.entities
+  circle = ge.add_circle([4616.mm,2281.mm,312.mm], [0,0,1], 2.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Cam-brake base (5128A63) BR"] || model.materials.add("Cam-brake base (5128A63) BR")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z slide rail (TILT, green) BR
+  grp = ents.add_group
+  grp.name = "Vertical Z slide rail (TILT, green) BR"
+  face = grp.entities.add_face([4593.mm,2238.mm,140.mm], [4603.mm,2238.mm,140.mm], [4603.mm,2256.mm,140.mm], [4593.mm,2256.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z slide rail (TILT, green) BR"] || model.materials.add("Vertical Z slide rail (TILT, green) BR")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X slide rail (SWING, purple) BR
+  grp = ents.add_group
+  grp.name = "Horizontal X slide rail (SWING, purple) BR"
+  face = grp.entities.add_face([4384.mm,2238.mm,142.mm], [4644.mm,2238.mm,142.mm], [4644.mm,2252.mm,142.mm], [4384.mm,2252.mm,142.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X slide rail (SWING, purple) BR"] || model.materials.add("Horizontal X slide rail (SWING, purple) BR")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-joint (Belden UJ-SS750x375, setscrew) BR
+  grp = ents.add_group
+  grp.name = "U-joint (Belden UJ-SS750x375, setscrew) BR"
+  face = grp.entities.add_face([4612.mm,2233.mm,146.mm], [4636.mm,2233.mm,146.mm], [4636.mm,2257.mm,146.mm], [4612.mm,2257.mm,146.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Input stub 3/8 (X slide → U-joint) BR
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 (X slide → U-joint) BR"
+  ge = grp.entities
+  circle = ge.add_circle([4573.mm,2245.mm,160.mm], [1,0,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(46.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 4040N12 304 shaft support (clamps input stub → X slide) BR
+  grp = ents.add_group
+  grp.name = "4040N12 304 shaft support (clamps input stub → X slide) BR"
+  face = grp.entities.add_face([4575.mm,2236.mm,149.mm], [4598.mm,2236.mm,149.mm], [4598.mm,2254.mm,149.mm], [4575.mm,2254.mm,149.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Output stub 3/8 (U-joint → corner plate) BR
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 (U-joint → corner plate) BR"
+  ge = grp.entities
+  circle = ge.add_circle([4624.mm,2223.mm,160.mm], [0,1,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Corner plate 304 SS (U-joint mount — angle frame → U-joint) BR
+  grp = ents.add_group
+  grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) BR"
+  face = grp.entities.add_face([4604.mm,2229.mm,165.mm], [4638.mm,2229.mm,165.mm], [4638.mm,2245.mm,165.mm], [4604.mm,2245.mm,165.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -3528,10 +3852,346 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP support beam R-top
+  # Frame-corner bolt (angle frame → bracket) BR
   grp = ents.add_group
-  grp.name = "FP support beam R-top"
-  face = grp.entities.add_face([4609.mm,0.mm,2204.mm], [4649.mm,0.mm,2204.mm], [4649.mm,2362.mm,2204.mm], [4609.mm,2362.mm,2204.mm])
+  grp.name = "Frame-corner bolt (angle frame → bracket) BR"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2231.mm,160.mm], [0,1,0], 3.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail (FLANGED) web TR
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) web TR"
+  face = grp.entities.add_face([4638.mm,0.mm,2262.mm], [4643.mm,0.mm,2262.mm], [4643.mm,2362.mm,2262.mm], [4638.mm,2362.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["U-rail (FLANGED) web BR"] || model.materials.add("U-rail (FLANGED) web BR")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail (FLANGED) flange TR 2333
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) flange TR 2333"
+  face = grp.entities.add_face([4605.mm,0.mm,2333.mm], [4643.mm,0.mm,2333.mm], [4643.mm,2362.mm,2333.mm], [4605.mm,2362.mm,2333.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail (FLANGED) web BR"] || model.materials.add("U-rail (FLANGED) web BR")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail (FLANGED) flange TR 2262
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) flange TR 2262"
+  face = grp.entities.add_face([4605.mm,0.mm,2262.mm], [4643.mm,0.mm,2262.mm], [4643.mm,2362.mm,2262.mm], [4605.mm,2362.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail (FLANGED) web BR"] || model.materials.add("U-rail (FLANGED) web BR")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail (FLANGED) bottom-flange lip TR
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) bottom-flange lip TR"
+  face = grp.entities.add_face([4605.mm,0.mm,2267.mm], [4610.mm,0.mm,2267.mm], [4610.mm,2362.mm,2267.mm], [4605.mm,2362.mm,2267.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["U-rail (FLANGED) web BR"] || model.materials.add("U-rail (FLANGED) web BR")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail end flange (outboard-trimmed) TR 0
+  grp = ents.add_group
+  grp.name = "Rail end flange (outboard-trimmed) TR 0"
+  face = grp.entities.add_face([4569.mm,0.mm,2257.mm], [4644.mm,0.mm,2257.mm], [4644.mm,12.mm,2257.mm], [4569.mm,12.mm,2257.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail end flange (outboard-trimmed) TR 2350
+  grp = ents.add_group
+  grp.name = "Rail end flange (outboard-trimmed) TR 2350"
+  face = grp.entities.add_face([4569.mm,2350.mm,2257.mm], [4644.mm,2350.mm,2257.mm], [4644.mm,2362.mm,2257.mm], [4569.mm,2362.mm,2257.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) TR 2245
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) TR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4614.mm,2245.mm,2283.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 TR 2245
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 TR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4585.mm,2245.mm,2283.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) TR 2245
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) TR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4618.mm,2245.mm,2323.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 TR 2245
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 TR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2245.mm,2323.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(37.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) TR 2285
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) TR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4614.mm,2285.mm,2283.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 TR 2285
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 TR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4585.mm,2285.mm,2283.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) TR 2285
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) TR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4618.mm,2285.mm,2323.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 TR 2285
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 TR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2285.mm,2323.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(37.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (bolted to skate axles) TR
+  grp = ents.add_group
+  grp.name = "Carriage plate (bolted to skate axles) TR"
+  face = grp.entities.add_face([4585.mm,2238.mm,2246.mm], [4599.mm,2238.mm,2246.mm], [4599.mm,2324.mm,2246.mm], [4585.mm,2324.mm,2246.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(95.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) TR 2245
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) TR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2245.mm,2261.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) TR 2285
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) TR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2285.mm,2261.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake base (5128A63) TR
+  grp = ents.add_group
+  grp.name = "Cam-brake base (5128A63) TR"
+  face = grp.entities.add_face([4589.mm,2270.mm,2341.mm], [4599.mm,2270.mm,2341.mm], [4599.mm,2292.mm,2341.mm], [4589.mm,2292.mm,2341.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Cam-brake base (5128A63) BR"] || model.materials.add("Cam-brake base (5128A63) BR")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake hold-down arm TR
+  grp = ents.add_group
+  grp.name = "Cam-brake hold-down arm TR"
+  face = grp.entities.add_face([4594.mm,2277.mm,2342.mm], [4616.mm,2277.mm,2342.mm], [4616.mm,2285.mm,2342.mm], [4594.mm,2285.mm,2342.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake base (5128A63) BR"] || model.materials.add("Cam-brake base (5128A63) BR")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake UHMW pad TR
+  grp = ents.add_group
+  grp.name = "Cam-brake UHMW pad TR"
+  face = grp.entities.add_face([4610.mm,2276.mm,2338.mm], [4622.mm,2276.mm,2338.mm], [4622.mm,2286.mm,2338.mm], [4610.mm,2286.mm,2338.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake UHMW pad BR"] || model.materials.add("Cam-brake UHMW pad BR")
+  mat.color = Sketchup::Color.new(216, 212, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake lever TR
+  grp = ents.add_group
+  grp.name = "Cam-brake lever TR"
+  ge = grp.entities
+  circle = ge.add_circle([4616.mm,2281.mm,2342.mm], [0,0,1], 2.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Cam-brake base (5128A63) BR"] || model.materials.add("Cam-brake base (5128A63) BR")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z slide rail (TILT, green) TR
+  grp = ents.add_group
+  grp.name = "Vertical Z slide rail (TILT, green) TR"
+  face = grp.entities.add_face([4595.mm,2238.mm,1998.mm], [4605.mm,2238.mm,1998.mm], [4605.mm,2256.mm,1998.mm], [4595.mm,2256.mm,1998.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z slide rail (TILT, green) BR"] || model.materials.add("Vertical Z slide rail (TILT, green) BR")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X slide rail (SWING, purple) TR
+  grp = ents.add_group
+  grp.name = "Horizontal X slide rail (SWING, purple) TR"
+  face = grp.entities.add_face([4384.mm,2238.mm,2256.mm], [4644.mm,2238.mm,2256.mm], [4644.mm,2252.mm,2256.mm], [4384.mm,2252.mm,2256.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X slide rail (SWING, purple) BR"] || model.materials.add("Horizontal X slide rail (SWING, purple) BR")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-joint (Belden UJ-SS750x375, setscrew) TR
+  grp = ents.add_group
+  grp.name = "U-joint (Belden UJ-SS750x375, setscrew) TR"
+  face = grp.entities.add_face([4612.mm,2233.mm,2238.mm], [4636.mm,2233.mm,2238.mm], [4636.mm,2257.mm,2238.mm], [4612.mm,2257.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Input stub 3/8 (X slide → U-joint) TR
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 (X slide → U-joint) TR"
+  ge = grp.entities
+  circle = ge.add_circle([4573.mm,2245.mm,2252.mm], [1,0,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(46.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 4040N12 304 shaft support (clamps input stub → X slide) TR
+  grp = ents.add_group
+  grp.name = "4040N12 304 shaft support (clamps input stub → X slide) TR"
+  face = grp.entities.add_face([4575.mm,2236.mm,2241.mm], [4598.mm,2236.mm,2241.mm], [4598.mm,2254.mm,2241.mm], [4575.mm,2254.mm,2241.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Output stub 3/8 (U-joint → corner plate) TR
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 (U-joint → corner plate) TR"
+  ge = grp.entities
+  circle = ge.add_circle([4624.mm,2223.mm,2252.mm], [0,1,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Corner plate 304 SS (U-joint mount — angle frame → U-joint) TR
+  grp = ents.add_group
+  grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) TR"
+  face = grp.entities.add_face([4604.mm,2229.mm,2207.mm], [4638.mm,2229.mm,2207.mm], [4638.mm,2245.mm,2207.mm], [4604.mm,2245.mm,2207.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -3539,253 +4199,903 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Saddle back-plate TR near
+  # Frame-corner bolt (angle frame → bracket) TR
   grp = ents.add_group
-  grp.name = "Saddle back-plate TR near"
-  face = grp.entities.add_face([4534.mm,0.mm,2129.mm], [4684.mm,0.mm,2129.mm], [4684.mm,8.mm,2129.mm], [4534.mm,8.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle OUTSIDE plate TR near
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate TR near"
-  face = grp.entities.add_face([4534.mm,-48.mm,2129.mm], [4684.mm,-48.mm,2129.mm], [4684.mm,-40.mm,2129.mm], [4534.mm,-40.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle seat TR near
-  grp = ents.add_group
-  grp.name = "Saddle seat TR near"
-  face = grp.entities.add_face([4585.mm,0.mm,2194.mm], [4633.mm,0.mm,2194.mm], [4633.mm,110.mm,2194.mm], [4585.mm,110.mm,2194.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle gusset TR near
-  grp = ents.add_group
-  grp.name = "Saddle gusset TR near"
+  grp.name = "Frame-corner bolt (angle frame → bracket) TR"
   ge = grp.entities
-  f = ge.add_face([4609.mm,110.mm,2194.mm], [4609.mm,0.mm,2194.mm], [4609.mm,0.mm,2074.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4559.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4591.mm,2231.mm,2252.mm], [0,1,0], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4559.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4659.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4659.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail fixing bolt TR near
-  grp = ents.add_group
-  grp.name = "Rail fixing bolt TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4609.mm,25.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail fixing bolt TR near
-  grp = ents.add_group
-  grp.name = "Rail fixing bolt TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4609.mm,85.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle back-plate TR far
-  grp = ents.add_group
-  grp.name = "Saddle back-plate TR far"
-  face = grp.entities.add_face([4534.mm,2354.mm,2129.mm], [4684.mm,2354.mm,2129.mm], [4684.mm,2362.mm,2129.mm], [4534.mm,2362.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle OUTSIDE plate TR far
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate TR far"
-  face = grp.entities.add_face([4534.mm,2402.mm,2129.mm], [4684.mm,2402.mm,2129.mm], [4684.mm,2410.mm,2129.mm], [4534.mm,2410.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle seat TR far
-  grp = ents.add_group
-  grp.name = "Saddle seat TR far"
-  face = grp.entities.add_face([4585.mm,2252.mm,2194.mm], [4633.mm,2252.mm,2194.mm], [4633.mm,2362.mm,2194.mm], [4585.mm,2362.mm,2194.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle gusset TR far
-  grp = ents.add_group
-  grp.name = "Saddle gusset TR far"
-  ge = grp.entities
-  f = ge.add_face([4609.mm,2252.mm,2194.mm], [4609.mm,2362.mm,2194.mm], [4609.mm,2362.mm,2074.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4559.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4559.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4659.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4659.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail fixing bolt TR far
-  grp = ents.add_group
-  grp.name = "Rail fixing bolt TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4609.mm,2277.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail fixing bolt TR far
-  grp = ents.add_group
-  grp.name = "Rail fixing bolt TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4609.mm,2337.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
+  cface.pushpull(18.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
   inst = entities.add_instance(defn, Geom::Transformation.new)
-  inst.name = "Film-Plane Right Support Beams"
+  inst.name = "Film-Plane Support Beams (right)"
   inst.layer = model.layers["Film Plane"]
+
+  # ═══ Film-Plane Support Beams (left) ═══
+  defn = model.definitions.add("Film-Plane Support Beams (left)")
+  ents = defn.entities
+  # U-rail STUB (fixed, parks corner) web BL
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) web BL"
+  face = grp.entities.add_face([241.mm,2090.mm,232.mm], [246.mm,2090.mm,232.mm], [246.mm,2362.mm,232.mm], [241.mm,2362.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["U-rail (FLANGED) web BR"] || model.materials.add("U-rail (FLANGED) web BR")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) flange BL 303
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) flange BL 303"
+  face = grp.entities.add_face([241.mm,2090.mm,303.mm], [279.mm,2090.mm,303.mm], [279.mm,2362.mm,303.mm], [241.mm,2362.mm,303.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail (FLANGED) web BR"] || model.materials.add("U-rail (FLANGED) web BR")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) flange BL 232
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) flange BL 232"
+  face = grp.entities.add_face([241.mm,2090.mm,232.mm], [279.mm,2090.mm,232.mm], [279.mm,2362.mm,232.mm], [241.mm,2362.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail (FLANGED) web BR"] || model.materials.add("U-rail (FLANGED) web BR")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) bottom-flange lip BL
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) bottom-flange lip BL"
+  face = grp.entities.add_face([274.mm,2090.mm,237.mm], [279.mm,2090.mm,237.mm], [279.mm,2362.mm,237.mm], [274.mm,2362.mm,237.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["U-rail (FLANGED) web BR"] || model.materials.add("U-rail (FLANGED) web BR")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) web BL
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) web BL"
+  face = grp.entities.add_face([241.mm,0.mm,232.mm], [246.mm,0.mm,232.mm], [246.mm,2090.mm,232.mm], [241.mm,2090.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) flange BL 303
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) flange BL 303"
+  face = grp.entities.add_face([241.mm,0.mm,303.mm], [279.mm,0.mm,303.mm], [279.mm,2090.mm,303.mm], [241.mm,2090.mm,303.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) flange BL 232
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) flange BL 232"
+  face = grp.entities.add_face([241.mm,0.mm,232.mm], [279.mm,0.mm,232.mm], [279.mm,2090.mm,232.mm], [241.mm,2090.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) bottom-flange lip BL
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) bottom-flange lip BL"
+  face = grp.entities.add_face([274.mm,0.mm,237.mm], [279.mm,0.mm,237.mm], [279.mm,2090.mm,237.mm], [274.mm,2090.mm,237.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL
+  grp = ents.add_group
+  grp.name = "Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"
+  face = grp.entities.add_face([241.mm,2030.mm,308.mm], [279.mm,2030.mm,308.mm], [279.mm,2180.mm,308.mm], [241.mm,2180.mm,308.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Locating pin (bridge↔STUB, flush to inner-rail top) BL
+  grp = ents.add_group
+  grp.name = "Locating pin (bridge↔STUB, flush to inner-rail top) BL"
+  ge = grp.entities
+  circle = ge.add_circle([260.mm,2135.mm,303.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(17.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bottom support bridge (STUB → beam underside) BL
+  grp = ents.add_group
+  grp.name = "Bottom support bridge (STUB → beam underside) BL"
+  face = grp.entities.add_face([241.mm,2058.mm,220.mm], [279.mm,2058.mm,220.mm], [279.mm,2122.mm,220.mm], [241.mm,2122.mm,220.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail far flange (pivot post) BL
+  grp = ents.add_group
+  grp.name = "Rail far flange (pivot post) BL"
+  face = grp.entities.add_face([205.mm,2350.mm,227.mm], [315.mm,2350.mm,227.mm], [315.mm,2362.mm,227.mm], [205.mm,2362.mm,227.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pinhole-wall gusset/seat BL
+  grp = ents.add_group
+  grp.name = "Pinhole-wall gusset/seat BL"
+  face = grp.entities.add_face([204.mm,0.mm,202.mm], [316.mm,0.mm,202.mm], [316.mm,45.mm,202.mm], [204.mm,45.mm,202.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(131.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Length splice (pinhole end, outboard web) BL
+  grp = ents.add_group
+  grp.name = "Length splice (pinhole end, outboard web) BL"
+  face = grp.entities.add_face([229.mm,205.mm,232.mm], [241.mm,205.mm,232.mm], [241.mm,315.mm,232.mm], [229.mm,315.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) BL 2245
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2245.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 BL 2245
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2245.mm,253.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) BL 2245
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2245.mm,293.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 BL 2245
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2245.mm,293.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) BL 2285
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2285.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 BL 2285
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2285.mm,253.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) BL 2285
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2285.mm,293.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 BL 2285
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2285.mm,293.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (bolted to skate axles) BL
+  grp = ents.add_group
+  grp.name = "Carriage plate (bolted to skate axles) BL"
+  face = grp.entities.add_face([287.mm,2238.mm,154.mm], [301.mm,2238.mm,154.mm], [301.mm,2324.mm,154.mm], [287.mm,2324.mm,154.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(157.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) BL 2245
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2245.mm,231.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) BL 2285
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2285.mm,231.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake base (5128A63) BL
+  grp = ents.add_group
+  grp.name = "Cam-brake base (5128A63) BL"
+  face = grp.entities.add_face([285.mm,2270.mm,311.mm], [295.mm,2270.mm,311.mm], [295.mm,2292.mm,311.mm], [285.mm,2292.mm,311.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Cam-brake base (5128A63) BR"] || model.materials.add("Cam-brake base (5128A63) BR")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake hold-down arm BL
+  grp = ents.add_group
+  grp.name = "Cam-brake hold-down arm BL"
+  face = grp.entities.add_face([268.mm,2277.mm,312.mm], [290.mm,2277.mm,312.mm], [290.mm,2285.mm,312.mm], [268.mm,2285.mm,312.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake base (5128A63) BR"] || model.materials.add("Cam-brake base (5128A63) BR")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake UHMW pad BL
+  grp = ents.add_group
+  grp.name = "Cam-brake UHMW pad BL"
+  face = grp.entities.add_face([262.mm,2276.mm,308.mm], [274.mm,2276.mm,308.mm], [274.mm,2286.mm,308.mm], [262.mm,2286.mm,308.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake UHMW pad BR"] || model.materials.add("Cam-brake UHMW pad BR")
+  mat.color = Sketchup::Color.new(216, 212, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake lever BL
+  grp = ents.add_group
+  grp.name = "Cam-brake lever BL"
+  ge = grp.entities
+  circle = ge.add_circle([268.mm,2281.mm,312.mm], [0,0,1], 2.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Cam-brake base (5128A63) BR"] || model.materials.add("Cam-brake base (5128A63) BR")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z slide rail (TILT, green) BL
+  grp = ents.add_group
+  grp.name = "Vertical Z slide rail (TILT, green) BL"
+  face = grp.entities.add_face([281.mm,2238.mm,140.mm], [291.mm,2238.mm,140.mm], [291.mm,2256.mm,140.mm], [281.mm,2256.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z slide rail (TILT, green) BR"] || model.materials.add("Vertical Z slide rail (TILT, green) BR")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X slide rail (SWING, purple) BL
+  grp = ents.add_group
+  grp.name = "Horizontal X slide rail (SWING, purple) BL"
+  face = grp.entities.add_face([240.mm,2238.mm,142.mm], [500.mm,2238.mm,142.mm], [500.mm,2252.mm,142.mm], [240.mm,2252.mm,142.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X slide rail (SWING, purple) BR"] || model.materials.add("Horizontal X slide rail (SWING, purple) BR")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-joint (Belden UJ-SS750x375, setscrew) BL
+  grp = ents.add_group
+  grp.name = "U-joint (Belden UJ-SS750x375, setscrew) BL"
+  face = grp.entities.add_face([248.mm,2233.mm,146.mm], [272.mm,2233.mm,146.mm], [272.mm,2257.mm,146.mm], [248.mm,2257.mm,146.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Input stub 3/8 (X slide → U-joint) BL
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 (X slide → U-joint) BL"
+  ge = grp.entities
+  circle = ge.add_circle([265.mm,2245.mm,160.mm], [1,0,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(46.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 4040N12 304 shaft support (clamps input stub → X slide) BL
+  grp = ents.add_group
+  grp.name = "4040N12 304 shaft support (clamps input stub → X slide) BL"
+  face = grp.entities.add_face([286.mm,2236.mm,149.mm], [309.mm,2236.mm,149.mm], [309.mm,2254.mm,149.mm], [286.mm,2254.mm,149.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Output stub 3/8 (U-joint → corner plate) BL
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 (U-joint → corner plate) BL"
+  ge = grp.entities
+  circle = ge.add_circle([260.mm,2223.mm,160.mm], [0,1,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Corner plate 304 SS (U-joint mount — angle frame → U-joint) BL
+  grp = ents.add_group
+  grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) BL"
+  face = grp.entities.add_face([246.mm,2229.mm,165.mm], [280.mm,2229.mm,165.mm], [280.mm,2245.mm,165.mm], [246.mm,2245.mm,165.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame-corner bolt (angle frame → bracket) BL
+  grp = ents.add_group
+  grp.name = "Frame-corner bolt (angle frame → bracket) BL"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2231.mm,160.mm], [0,1,0], 3.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) web TL
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) web TL"
+  face = grp.entities.add_face([241.mm,2090.mm,2262.mm], [246.mm,2090.mm,2262.mm], [246.mm,2362.mm,2262.mm], [241.mm,2362.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["U-rail (FLANGED) web BR"] || model.materials.add("U-rail (FLANGED) web BR")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) flange TL 2333
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) flange TL 2333"
+  face = grp.entities.add_face([241.mm,2090.mm,2333.mm], [279.mm,2090.mm,2333.mm], [279.mm,2362.mm,2333.mm], [241.mm,2362.mm,2333.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail (FLANGED) web BR"] || model.materials.add("U-rail (FLANGED) web BR")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) flange TL 2262
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) flange TL 2262"
+  face = grp.entities.add_face([241.mm,2090.mm,2262.mm], [279.mm,2090.mm,2262.mm], [279.mm,2362.mm,2262.mm], [241.mm,2362.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail (FLANGED) web BR"] || model.materials.add("U-rail (FLANGED) web BR")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) bottom-flange lip TL
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) bottom-flange lip TL"
+  face = grp.entities.add_face([274.mm,2090.mm,2267.mm], [279.mm,2090.mm,2267.mm], [279.mm,2362.mm,2267.mm], [274.mm,2362.mm,2267.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["U-rail (FLANGED) web BR"] || model.materials.add("U-rail (FLANGED) web BR")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) web TL
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) web TL"
+  face = grp.entities.add_face([241.mm,0.mm,2262.mm], [246.mm,0.mm,2262.mm], [246.mm,2090.mm,2262.mm], [241.mm,2090.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) flange TL 2333
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) flange TL 2333"
+  face = grp.entities.add_face([241.mm,0.mm,2333.mm], [279.mm,0.mm,2333.mm], [279.mm,2090.mm,2333.mm], [241.mm,2090.mm,2333.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) flange TL 2262
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) flange TL 2262"
+  face = grp.entities.add_face([241.mm,0.mm,2262.mm], [279.mm,0.mm,2262.mm], [279.mm,2090.mm,2262.mm], [241.mm,2090.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) bottom-flange lip TL
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) bottom-flange lip TL"
+  face = grp.entities.add_face([274.mm,0.mm,2267.mm], [279.mm,0.mm,2267.mm], [279.mm,2090.mm,2267.mm], [274.mm,2090.mm,2267.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) TL
+  grp = ents.add_group
+  grp.name = "Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) TL"
+  face = grp.entities.add_face([241.mm,2030.mm,2338.mm], [279.mm,2030.mm,2338.mm], [279.mm,2180.mm,2338.mm], [241.mm,2180.mm,2338.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Locating pin (bridge↔STUB, flush to inner-rail top) TL
+  grp = ents.add_group
+  grp.name = "Locating pin (bridge↔STUB, flush to inner-rail top) TL"
+  ge = grp.entities
+  circle = ge.add_circle([260.mm,2135.mm,2333.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(17.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bottom support bridge (STUB → beam underside) TL
+  grp = ents.add_group
+  grp.name = "Bottom support bridge (STUB → beam underside) TL"
+  face = grp.entities.add_face([241.mm,2058.mm,2250.mm], [279.mm,2058.mm,2250.mm], [279.mm,2122.mm,2250.mm], [241.mm,2122.mm,2250.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail far flange (pivot post) TL
+  grp = ents.add_group
+  grp.name = "Rail far flange (pivot post) TL"
+  face = grp.entities.add_face([205.mm,2350.mm,2257.mm], [315.mm,2350.mm,2257.mm], [315.mm,2362.mm,2257.mm], [205.mm,2362.mm,2257.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pinhole-wall gusset/seat TL
+  grp = ents.add_group
+  grp.name = "Pinhole-wall gusset/seat TL"
+  face = grp.entities.add_face([204.mm,0.mm,2232.mm], [316.mm,0.mm,2232.mm], [316.mm,45.mm,2232.mm], [204.mm,45.mm,2232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(131.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Length splice (pinhole end, outboard web) TL
+  grp = ents.add_group
+  grp.name = "Length splice (pinhole end, outboard web) TL"
+  face = grp.entities.add_face([229.mm,205.mm,2262.mm], [241.mm,205.mm,2262.mm], [241.mm,315.mm,2262.mm], [229.mm,315.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) TL 2245
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2245.mm,2283.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 TL 2245
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2245.mm,2283.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) TL 2245
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2245.mm,2323.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 TL 2245
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2245.mm,2323.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) TL 2285
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2285.mm,2283.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 TL 2285
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2285.mm,2283.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) TL 2285
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2285.mm,2323.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 TL 2285
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2285.mm,2323.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (bolted to skate axles) TL
+  grp = ents.add_group
+  grp.name = "Carriage plate (bolted to skate axles) TL"
+  face = grp.entities.add_face([287.mm,2238.mm,2246.mm], [301.mm,2238.mm,2246.mm], [301.mm,2324.mm,2246.mm], [287.mm,2324.mm,2246.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(95.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BR 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BR 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) TL 2245
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2245.mm,2261.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) TL 2285
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2285.mm,2261.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake base (5128A63) TL
+  grp = ents.add_group
+  grp.name = "Cam-brake base (5128A63) TL"
+  face = grp.entities.add_face([285.mm,2270.mm,2341.mm], [295.mm,2270.mm,2341.mm], [295.mm,2292.mm,2341.mm], [285.mm,2292.mm,2341.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Cam-brake base (5128A63) BR"] || model.materials.add("Cam-brake base (5128A63) BR")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake hold-down arm TL
+  grp = ents.add_group
+  grp.name = "Cam-brake hold-down arm TL"
+  face = grp.entities.add_face([268.mm,2277.mm,2342.mm], [290.mm,2277.mm,2342.mm], [290.mm,2285.mm,2342.mm], [268.mm,2285.mm,2342.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake base (5128A63) BR"] || model.materials.add("Cam-brake base (5128A63) BR")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake UHMW pad TL
+  grp = ents.add_group
+  grp.name = "Cam-brake UHMW pad TL"
+  face = grp.entities.add_face([262.mm,2276.mm,2338.mm], [274.mm,2276.mm,2338.mm], [274.mm,2286.mm,2338.mm], [262.mm,2286.mm,2338.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake UHMW pad BR"] || model.materials.add("Cam-brake UHMW pad BR")
+  mat.color = Sketchup::Color.new(216, 212, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake lever TL
+  grp = ents.add_group
+  grp.name = "Cam-brake lever TL"
+  ge = grp.entities
+  circle = ge.add_circle([268.mm,2281.mm,2342.mm], [0,0,1], 2.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Cam-brake base (5128A63) BR"] || model.materials.add("Cam-brake base (5128A63) BR")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z slide rail (TILT, green) TL
+  grp = ents.add_group
+  grp.name = "Vertical Z slide rail (TILT, green) TL"
+  face = grp.entities.add_face([273.mm,2238.mm,1998.mm], [283.mm,2238.mm,1998.mm], [283.mm,2256.mm,1998.mm], [273.mm,2256.mm,1998.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z slide rail (TILT, green) BR"] || model.materials.add("Vertical Z slide rail (TILT, green) BR")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X slide rail (SWING, purple) TL
+  grp = ents.add_group
+  grp.name = "Horizontal X slide rail (SWING, purple) TL"
+  face = grp.entities.add_face([240.mm,2238.mm,2256.mm], [500.mm,2238.mm,2256.mm], [500.mm,2252.mm,2256.mm], [240.mm,2252.mm,2256.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X slide rail (SWING, purple) BR"] || model.materials.add("Horizontal X slide rail (SWING, purple) BR")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-joint (Belden UJ-SS750x375, setscrew) TL
+  grp = ents.add_group
+  grp.name = "U-joint (Belden UJ-SS750x375, setscrew) TL"
+  face = grp.entities.add_face([248.mm,2233.mm,2238.mm], [272.mm,2233.mm,2238.mm], [272.mm,2257.mm,2238.mm], [248.mm,2257.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Rail end flange (outboard-trimmed) BR 0"] || model.materials.add("Rail end flange (outboard-trimmed) BR 0")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Input stub 3/8 (X slide → U-joint) TL
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 (X slide → U-joint) TL"
+  ge = grp.entities
+  circle = ge.add_circle([265.mm,2245.mm,2252.mm], [1,0,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(46.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 4040N12 304 shaft support (clamps input stub → X slide) TL
+  grp = ents.add_group
+  grp.name = "4040N12 304 shaft support (clamps input stub → X slide) TL"
+  face = grp.entities.add_face([286.mm,2236.mm,2241.mm], [309.mm,2236.mm,2241.mm], [309.mm,2254.mm,2241.mm], [286.mm,2254.mm,2241.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Output stub 3/8 (U-joint → corner plate) TL
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 (U-joint → corner plate) TL"
+  ge = grp.entities
+  circle = ge.add_circle([260.mm,2223.mm,2252.mm], [0,1,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Corner plate 304 SS (U-joint mount — angle frame → U-joint) TL
+  grp = ents.add_group
+  grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) TL"
+  face = grp.entities.add_face([246.mm,2229.mm,2207.mm], [280.mm,2229.mm,2207.mm], [280.mm,2245.mm,2207.mm], [246.mm,2245.mm,2207.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame-corner bolt (angle frame → bracket) TL
+  grp = ents.add_group
+  grp.name = "Frame-corner bolt (angle frame → bracket) TL"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2231.mm,2252.mm], [0,1,0], 3.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
+  mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  inst = entities.add_instance(defn, Geom::Transformation.new)
+  inst.name = "Film-Plane Support Beams (left)"
+  inst.layer = model.layers["Film Plane Left"]
 
   # ═══ IBC Corridor Frame (deep box) ═══
   defn = model.definitions.add("IBC Corridor Frame (deep box)")
@@ -4261,7 +5571,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 1 post (2x2x0.120 SHS)
   grp = ents.add_group
   grp.name = "Left cantilever 1 post (2x2x0.120 SHS)"
-  face = grp.entities.add_face([114.6.mm,220.mm,0.mm], [165.39999999999998.mm,220.mm,0.mm], [165.39999999999998.mm,280.mm,0.mm], [114.6.mm,280.mm,0.mm])
+  face = grp.entities.add_face([224.6.mm,220.mm,0.mm], [275.4.mm,220.mm,0.mm], [275.4.mm,280.mm,0.mm], [224.6.mm,280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -4269,10 +5579,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 1 arm (to X470)
+  # Left cantilever 1 arm (to X580)
   grp = ents.add_group
-  grp.name = "Left cantilever 1 arm (to X470)"
-  face = grp.entities.add_face([165.4.mm,224.6.mm,89.6.mm], [470.mm,224.6.mm,89.6.mm], [470.mm,275.4.mm,89.6.mm], [165.4.mm,275.4.mm,89.6.mm])
+  grp.name = "Left cantilever 1 arm (to X580)"
+  face = grp.entities.add_face([275.4.mm,224.6.mm,89.6.mm], [580.mm,224.6.mm,89.6.mm], [580.mm,275.4.mm,89.6.mm], [275.4.mm,275.4.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.400000000000006.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -4294,7 +5604,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 2 post (2x2x0.120 SHS)
   grp = ents.add_group
   grp.name = "Left cantilever 2 post (2x2x0.120 SHS)"
-  face = grp.entities.add_face([114.6.mm,770.mm,0.mm], [165.39999999999998.mm,770.mm,0.mm], [165.39999999999998.mm,830.mm,0.mm], [114.6.mm,830.mm,0.mm])
+  face = grp.entities.add_face([224.6.mm,770.mm,0.mm], [275.4.mm,770.mm,0.mm], [275.4.mm,830.mm,0.mm], [224.6.mm,830.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -4302,10 +5612,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 2 arm (to X770)
+  # Left cantilever 2 arm (to X880)
   grp = ents.add_group
-  grp.name = "Left cantilever 2 arm (to X770)"
-  face = grp.entities.add_face([165.4.mm,774.6.mm,89.6.mm], [770.mm,774.6.mm,89.6.mm], [770.mm,825.4.mm,89.6.mm], [165.4.mm,825.4.mm,89.6.mm])
+  grp.name = "Left cantilever 2 arm (to X880)"
+  face = grp.entities.add_face([275.4.mm,774.6.mm,89.6.mm], [880.mm,774.6.mm,89.6.mm], [880.mm,825.4.mm,89.6.mm], [275.4.mm,825.4.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.400000000000006.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -4327,7 +5637,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 3 post (2x2x0.120 SHS)
   grp = ents.add_group
   grp.name = "Left cantilever 3 post (2x2x0.120 SHS)"
-  face = grp.entities.add_face([114.6.mm,1150.mm,0.mm], [165.39999999999998.mm,1150.mm,0.mm], [165.39999999999998.mm,1210.mm,0.mm], [114.6.mm,1210.mm,0.mm])
+  face = grp.entities.add_face([224.6.mm,1150.mm,0.mm], [275.4.mm,1150.mm,0.mm], [275.4.mm,1210.mm,0.mm], [224.6.mm,1210.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -4335,10 +5645,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 3 arm (to X770)
+  # Left cantilever 3 arm (to X880)
   grp = ents.add_group
-  grp.name = "Left cantilever 3 arm (to X770)"
-  face = grp.entities.add_face([165.4.mm,1154.6.mm,89.6.mm], [770.mm,1154.6.mm,89.6.mm], [770.mm,1205.3999999999999.mm,89.6.mm], [165.4.mm,1205.3999999999999.mm,89.6.mm])
+  grp.name = "Left cantilever 3 arm (to X880)"
+  face = grp.entities.add_face([275.4.mm,1154.6.mm,89.6.mm], [880.mm,1154.6.mm,89.6.mm], [880.mm,1205.3999999999999.mm,89.6.mm], [275.4.mm,1205.3999999999999.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.400000000000006.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -4360,7 +5670,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 4 post (2x2x0.120 SHS)
   grp = ents.add_group
   grp.name = "Left cantilever 4 post (2x2x0.120 SHS)"
-  face = grp.entities.add_face([114.6.mm,1530.mm,0.mm], [165.39999999999998.mm,1530.mm,0.mm], [165.39999999999998.mm,1590.mm,0.mm], [114.6.mm,1590.mm,0.mm])
+  face = grp.entities.add_face([224.6.mm,1530.mm,0.mm], [275.4.mm,1530.mm,0.mm], [275.4.mm,1590.mm,0.mm], [224.6.mm,1590.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -4368,10 +5678,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 4 arm (to X770)
+  # Left cantilever 4 arm (to X880)
   grp = ents.add_group
-  grp.name = "Left cantilever 4 arm (to X770)"
-  face = grp.entities.add_face([165.4.mm,1534.6.mm,89.6.mm], [770.mm,1534.6.mm,89.6.mm], [770.mm,1585.3999999999999.mm,89.6.mm], [165.4.mm,1585.3999999999999.mm,89.6.mm])
+  grp.name = "Left cantilever 4 arm (to X880)"
+  face = grp.entities.add_face([275.4.mm,1534.6.mm,89.6.mm], [880.mm,1534.6.mm,89.6.mm], [880.mm,1585.3999999999999.mm,89.6.mm], [275.4.mm,1585.3999999999999.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.400000000000006.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -4393,7 +5703,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 5 post (2x2x0.120 SHS)
   grp = ents.add_group
   grp.name = "Left cantilever 5 post (2x2x0.120 SHS)"
-  face = grp.entities.add_face([114.6.mm,2080.mm,0.mm], [165.39999999999998.mm,2080.mm,0.mm], [165.39999999999998.mm,2140.mm,0.mm], [114.6.mm,2140.mm,0.mm])
+  face = grp.entities.add_face([224.6.mm,2080.mm,0.mm], [275.4.mm,2080.mm,0.mm], [275.4.mm,2140.mm,0.mm], [224.6.mm,2140.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -4401,10 +5711,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 5 arm (to X470)
+  # Left cantilever 5 arm (to X580)
   grp = ents.add_group
-  grp.name = "Left cantilever 5 arm (to X470)"
-  face = grp.entities.add_face([165.4.mm,2084.6.mm,89.6.mm], [470.mm,2084.6.mm,89.6.mm], [470.mm,2135.4.mm,89.6.mm], [165.4.mm,2135.4.mm,89.6.mm])
+  grp.name = "Left cantilever 5 arm (to X580)"
+  face = grp.entities.add_face([275.4.mm,2084.6.mm,89.6.mm], [580.mm,2084.6.mm,89.6.mm], [580.mm,2135.4.mm,89.6.mm], [275.4.mm,2135.4.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.400000000000006.mm)
   mat = model.materials["Cantilever Near 1 plate"] || model.materials.add("Cantilever Near 1 plate")
@@ -4487,10 +5797,10 @@ txt = entities.add_text("RIGHT WALKWAY — WALL CLEAT (left corners)
 8mm back-plate + ext plate + shelf,
 the long beam lands on it; M12 through-bolts", anc, Geom::Vector3d.new(-150.mm, -300.mm, 800.mm))
 txt.layer = model.layers["Cantilever Types"] rescue nil
-anc = Geom::Point3d.new(7000.mm, 0.mm, 160.mm)
+anc = Geom::Point3d.new(7000.mm, 0.mm, 270.mm)
 txt = entities.add_text("RIGHT WALKWAY — COMBINED CORNER PLATE (right corners)
 10mm, carries the walkway right beam (Z70 seat)
-+ the BR film rail (Z150 seat); 4x M12", anc, Geom::Vector3d.new(0.mm, -300.mm, 850.mm))
++ the BR film rail (web-vertical: Z232 seat / Z270 bolt); 4x M12", anc, Geom::Vector3d.new(0.mm, -300.mm, 850.mm))
 txt.layer = model.layers["Cantilever Types"] rescue nil
 anc = Geom::Point3d.new(8000.mm, 0.mm, 115.mm)
 txt = entities.add_text("RIGHT WALKWAY — CENTER CANTILEVER ARM
@@ -4502,7 +5812,7 @@ model.definitions.purge_unused
 model.materials.purge_unused
 
 # ── Remove stale tags from earlier generator versions ──
-keep_tags = ["Container", "Processing Tray", "Walkways", "Cantilevers", "Cantilever Types", "Right Cantilever", "Film Plane", "IBC Frame", "Left Support", "Labels"]
+keep_tags = ["Container", "Processing Tray", "Walkways", "Cantilevers", "Cantilever Types", "Right Cantilever", "Film Plane", "Film Plane Left", "IBC Frame", "Left Support", "Labels"]
 default_layer = model.layers[0]
 model.layers.to_a.each { |l|
   next if l == default_layer || keep_tags.include?(l.name)
@@ -4523,7 +5833,7 @@ model.active_view.zoom(0.72)   # pull back so callouts have margin (and read lar
 
 # Overview — all subsystems, Labels + type-catalog OFF; listed first.
 model.pages.add("Overview")
-[["Walkway", ["Walkways", "Right Cantilever", "Film Plane", "IBC Frame", "Processing Tray"]], ["Near/Far Cantilevers", ["Cantilevers", "Processing Tray"]], ["Right Cantilever", ["Right Cantilever", "Film Plane", "IBC Frame", "Processing Tray"]], ["Left Support", ["Left Support", "Processing Tray"]]].each { |name, tags|
+[["Walkway", ["Walkways", "Right Cantilever", "Film Plane", "Film Plane Left", "IBC Frame", "Processing Tray"]], ["Near/Far Cantilevers", ["Cantilevers", "Processing Tray"]], ["Left Support", ["Left Support", "Processing Tray"]], ["Right Cantilever", ["Right Cantilever", "IBC Frame", "Processing Tray"]]].each { |name, tags|
   model.layers.each { |l| l.visible = (l == default_layer || l.name == "Container" || tags.include?(l.name)) }
   page = model.pages.add(name)
   page.use_camera = true

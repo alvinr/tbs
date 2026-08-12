@@ -59,39 +59,6 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.25
   grp.material = mat
 
-  # Ceiling (context)
-  grp = ents.add_group
-  grp.name = "Ceiling (context)"
-  face = grp.entities.add_face([0.mm,0.mm,2388.mm], [2000.mm,0.mm,2388.mm], [2000.mm,2362.mm,2388.mm], [0.mm,2362.mm,2388.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Ceiling (context)"] || model.materials.add("Ceiling (context)")
-  mat.color = Sketchup::Color.new(239, 237, 228)
-  mat.alpha = 0.1
-  grp.material = mat
-
-  # Side Wall near (context)
-  grp = ents.add_group
-  grp.name = "Side Wall near (context)"
-  face = grp.entities.add_face([0.mm,-40.mm,0.mm], [2000.mm,-40.mm,0.mm], [2000.mm,0.mm,0.mm], [0.mm,0.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2388.mm)
-  mat = model.materials["Side Wall near (context)"] || model.materials.add("Side Wall near (context)")
-  mat.color = Sketchup::Color.new(239, 237, 228)
-  mat.alpha = 0.16
-  grp.material = mat
-
-  # Side Wall far (context)
-  grp = ents.add_group
-  grp.name = "Side Wall far (context)"
-  face = grp.entities.add_face([0.mm,2362.mm,0.mm], [2000.mm,2362.mm,0.mm], [2000.mm,2402.mm,0.mm], [0.mm,2402.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2388.mm)
-  mat = model.materials["Side Wall near (context)"] || model.materials.add("Side Wall near (context)")
-  mat.color = Sketchup::Color.new(239, 237, 228)
-  mat.alpha = 0.16
-  grp.material = mat
-
   inst = entities.add_instance(defn, Geom::Transformation.new)
   inst.name = "Context"
   inst.layer = model.layers["Context"]
@@ -8102,7 +8069,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Shim Base (partial)
   grp = ents.add_group
   grp.name = "Tray Shim Base (partial)"
-  face = grp.entities.add_face([170.mm,80.mm,0.mm], [1600.mm,80.mm,0.mm], [1600.mm,2280.mm,0.mm], [170.mm,2280.mm,0.mm])
+  face = grp.entities.add_face([280.mm,80.mm,0.mm], [1600.mm,80.mm,0.mm], [1600.mm,2280.mm,0.mm], [280.mm,2280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(23.5.mm)
   mat = model.materials["Tray Shim Base (partial)"] || model.materials.add("Tray Shim Base (partial)")
@@ -8113,7 +8080,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Processing Tray Floor (partial)
   grp = ents.add_group
   grp.name = "Processing Tray Floor (partial)"
-  face = grp.entities.add_face([170.mm,80.mm,23.5.mm], [1600.mm,80.mm,23.5.mm], [1600.mm,2280.mm,23.5.mm], [170.mm,2280.mm,23.5.mm])
+  face = grp.entities.add_face([280.mm,80.mm,23.5.mm], [1600.mm,80.mm,23.5.mm], [1600.mm,2280.mm,23.5.mm], [280.mm,2280.mm,23.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.mm)
   mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
@@ -8124,7 +8091,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Rim Near (partial)
   grp = ents.add_group
   grp.name = "Tray Rim Near (partial)"
-  face = grp.entities.add_face([170.mm,80.mm,25.5.mm], [1600.mm,80.mm,25.5.mm], [1600.mm,82.mm,25.5.mm], [170.mm,82.mm,25.5.mm])
+  face = grp.entities.add_face([280.mm,80.mm,25.5.mm], [1600.mm,80.mm,25.5.mm], [1600.mm,82.mm,25.5.mm], [280.mm,82.mm,25.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
@@ -8135,7 +8102,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Rim Far (partial)
   grp = ents.add_group
   grp.name = "Tray Rim Far (partial)"
-  face = grp.entities.add_face([170.mm,2278.mm,25.5.mm], [1600.mm,2278.mm,25.5.mm], [1600.mm,2280.mm,25.5.mm], [170.mm,2280.mm,25.5.mm])
+  face = grp.entities.add_face([280.mm,2278.mm,25.5.mm], [1600.mm,2278.mm,25.5.mm], [1600.mm,2280.mm,25.5.mm], [280.mm,2280.mm,25.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
@@ -8146,7 +8113,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Rim Left (cargo end)
   grp = ents.add_group
   grp.name = "Tray Rim Left (cargo end)"
-  face = grp.entities.add_face([170.mm,80.mm,25.5.mm], [172.mm,80.mm,25.5.mm], [172.mm,2280.mm,25.5.mm], [170.mm,2280.mm,25.5.mm])
+  face = grp.entities.add_face([280.mm,80.mm,25.5.mm], [282.mm,80.mm,25.5.mm], [282.mm,2280.mm,25.5.mm], [280.mm,2280.mm,25.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["Processing Tray Floor (partial)"] || model.materials.add("Processing Tray Floor (partial)")
@@ -8157,7 +8124,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Chemistry Bath (partial)
   grp = ents.add_group
   grp.name = "Chemistry Bath (partial)"
-  face = grp.entities.add_face([172.mm,82.mm,25.5.mm], [1598.mm,82.mm,25.5.mm], [1598.mm,2278.mm,25.5.mm], [172.mm,2278.mm,25.5.mm])
+  face = grp.entities.add_face([282.mm,82.mm,25.5.mm], [1598.mm,82.mm,25.5.mm], [1598.mm,2278.mm,25.5.mm], [282.mm,2278.mm,25.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Chemistry Bath (partial)"] || model.materials.add("Chemistry Bath (partial)")
@@ -8186,7 +8153,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far (partial)
   grp = ents.add_group
   grp.name = "Walkway Far (partial)"
-  face = grp.entities.add_face([470.mm,2062.mm,115.mm], [1600.mm,2062.mm,115.mm], [1600.mm,2362.mm,115.mm], [470.mm,2362.mm,115.mm])
+  face = grp.entities.add_face([580.mm,2062.mm,115.mm], [1600.mm,2062.mm,115.mm], [1600.mm,2362.mm,115.mm], [580.mm,2362.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Near (partial)"] || model.materials.add("Walkway Near (partial)")
@@ -8201,253 +8168,767 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # ═══ Film-Plane Rails (left, removable) ═══
   defn = model.definitions.add("Film-Plane Rails (left, removable)")
   ents = defn.entities
-  # FP Brace Beam Lower (near wall)
+  # U-rail STUB (fixed, parks corner) web BL
   grp = ents.add_group
-  grp.name = "FP Brace Beam Lower (near wall)"
-  face = grp.entities.add_face([150.mm,100.mm,100.mm], [2000.mm,100.mm,100.mm], [2000.mm,150.8.mm,100.mm], [150.mm,150.8.mm,100.mm])
+  grp.name = "U-rail STUB (fixed, parks corner) web BL"
+  face = grp.entities.add_face([241.mm,2090.mm,232.mm], [246.mm,2090.mm,232.mm], [246.mm,2362.mm,232.mm], [241.mm,2362.mm,232.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.8.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  face.pushpull(76.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Brace Beam Upper (near wall)
+  # U-rail STUB (fixed, parks corner) flange BL 303
   grp = ents.add_group
-  grp.name = "FP Brace Beam Upper (near wall)"
-  face = grp.entities.add_face([150.mm,100.mm,2204.mm], [2000.mm,100.mm,2204.mm], [2000.mm,150.8.mm,2204.mm], [150.mm,150.8.mm,2204.mm])
+  grp.name = "U-rail STUB (fixed, parks corner) flange BL 303"
+  face = grp.entities.add_face([241.mm,2090.mm,303.mm], [279.mm,2090.mm,303.mm], [279.mm,2362.mm,303.mm], [241.mm,2362.mm,303.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.8.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Brace Post L (near wall)
+  # U-rail STUB (fixed, parks corner) flange BL 232
   grp = ents.add_group
-  grp.name = "FP Brace Post L (near wall)"
-  face = grp.entities.add_face([150.mm,100.mm,100.mm], [200.8.mm,100.mm,100.mm], [200.8.mm,150.8.mm,100.mm], [150.mm,150.8.mm,100.mm])
+  grp.name = "U-rail STUB (fixed, parks corner) flange BL 232"
+  face = grp.entities.add_face([241.mm,2090.mm,232.mm], [279.mm,2090.mm,232.mm], [279.mm,2362.mm,232.mm], [241.mm,2362.mm,232.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2104.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Brace Beam Lower (far wall)
+  # U-rail STUB (fixed, parks corner) bottom-flange lip BL
   grp = ents.add_group
-  grp.name = "FP Brace Beam Lower (far wall)"
-  face = grp.entities.add_face([150.mm,2262.mm,100.mm], [2000.mm,2262.mm,100.mm], [2000.mm,2312.8.mm,100.mm], [150.mm,2312.8.mm,100.mm])
+  grp.name = "U-rail STUB (fixed, parks corner) bottom-flange lip BL"
+  face = grp.entities.add_face([274.mm,2090.mm,237.mm], [279.mm,2090.mm,237.mm], [279.mm,2362.mm,237.mm], [274.mm,2362.mm,237.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(50.8.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  face.pushpull(9.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Brace Beam Upper (far wall)
+  # Locating pin (bridge↔STUB, flush to inner-rail top) BL
   grp = ents.add_group
-  grp.name = "FP Brace Beam Upper (far wall)"
-  face = grp.entities.add_face([150.mm,2262.mm,2204.mm], [2000.mm,2262.mm,2204.mm], [2000.mm,2312.8.mm,2204.mm], [150.mm,2312.8.mm,2204.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.8.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP Brace Post L (far wall)
-  grp = ents.add_group
-  grp.name = "FP Brace Post L (far wall)"
-  face = grp.entities.add_face([150.mm,2262.mm,100.mm], [200.8.mm,2262.mm,100.mm], [200.8.mm,2312.8.mm,100.mm], [150.mm,2312.8.mm,100.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2104.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail saddle shelf
-  grp = ents.add_group
-  grp.name = "Rail saddle shelf"
-  face = grp.entities.add_face([133.mm,100.mm,86.mm], [207.mm,100.mm,86.mm], [207.mm,180.mm,86.mm], [133.mm,180.mm,86.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail saddle cheek -X
-  grp = ents.add_group
-  grp.name = "Rail saddle cheek -X"
-  face = grp.entities.add_face([133.mm,100.mm,100.mm], [145.mm,100.mm,100.mm], [145.mm,180.mm,100.mm], [133.mm,180.mm,100.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(44.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail saddle cheek +X
-  grp = ents.add_group
-  grp.name = "Rail saddle cheek +X"
-  face = grp.entities.add_face([195.mm,100.mm,100.mm], [207.mm,100.mm,100.mm], [207.mm,180.mm,100.mm], [195.mm,180.mm,100.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(44.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail locating dowel (taper)
-  grp = ents.add_group
-  grp.name = "Rail locating dowel (taper)"
+  grp.name = "Locating pin (bridge↔STUB, flush to inner-rail top) BL"
   ge = grp.entities
-  circle = ge.add_circle([170.mm,140.mm,86.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([260.mm,2135.mm,303.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Rail locating dowel (taper)"] || model.materials.add("Rail locating dowel (taper)")
-  mat.color = Sketchup::Color.new(154, 154, 162)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail saddle shelf
-  grp = ents.add_group
-  grp.name = "Rail saddle shelf"
-  face = grp.entities.add_face([133.mm,100.mm,2190.mm], [207.mm,100.mm,2190.mm], [207.mm,180.mm,2190.mm], [133.mm,180.mm,2190.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
+  cface.pushpull(17.mm)
   mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Rail saddle cheek -X
+  # Bottom support bridge (STUB → beam underside) BL
   grp = ents.add_group
-  grp.name = "Rail saddle cheek -X"
-  face = grp.entities.add_face([133.mm,100.mm,2204.mm], [145.mm,100.mm,2204.mm], [145.mm,180.mm,2204.mm], [133.mm,180.mm,2204.mm])
+  grp.name = "Bottom support bridge (STUB → beam underside) BL"
+  face = grp.entities.add_face([241.mm,2058.mm,220.mm], [279.mm,2058.mm,220.mm], [279.mm,2122.mm,220.mm], [241.mm,2122.mm,220.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(44.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  face.pushpull(12.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Rail saddle cheek +X
+  # Rail far flange (pivot post) BL
   grp = ents.add_group
-  grp.name = "Rail saddle cheek +X"
-  face = grp.entities.add_face([195.mm,100.mm,2204.mm], [207.mm,100.mm,2204.mm], [207.mm,180.mm,2204.mm], [195.mm,180.mm,2204.mm])
+  grp.name = "Rail far flange (pivot post) BL"
+  face = grp.entities.add_face([205.mm,2350.mm,227.mm], [315.mm,2350.mm,227.mm], [315.mm,2362.mm,227.mm], [205.mm,2362.mm,227.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(44.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  face.pushpull(86.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Rail locating dowel (taper)
+  # Pinhole-wall gusset/seat BL
   grp = ents.add_group
-  grp.name = "Rail locating dowel (taper)"
+  grp.name = "Pinhole-wall gusset/seat BL"
+  face = grp.entities.add_face([204.mm,0.mm,202.mm], [316.mm,0.mm,202.mm], [316.mm,45.mm,202.mm], [204.mm,45.mm,202.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(131.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Length splice (pinhole end, outboard web) BL
+  grp = ents.add_group
+  grp.name = "Length splice (pinhole end, outboard web) BL"
+  face = grp.entities.add_face([229.mm,205.mm,232.mm], [241.mm,205.mm,232.mm], [241.mm,315.mm,232.mm], [229.mm,315.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) BL 2245
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) BL 2245"
   ge = grp.entities
-  circle = ge.add_circle([170.mm,140.mm,2190.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([250.mm,2245.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 BL 2245
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2245.mm,253.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) BL 2245
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2245.mm,293.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 BL 2245
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2245.mm,293.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) BL 2285
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2285.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 BL 2285
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2285.mm,253.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) BL 2285
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2285.mm,293.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 BL 2285
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2285.mm,293.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (bolted to skate axles) BL
+  grp = ents.add_group
+  grp.name = "Carriage plate (bolted to skate axles) BL"
+  face = grp.entities.add_face([287.mm,2238.mm,154.mm], [301.mm,2238.mm,154.mm], [301.mm,2324.mm,154.mm], [287.mm,2324.mm,154.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(157.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) BL 2245
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2245.mm,231.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Rail locating dowel (taper)"] || model.materials.add("Rail locating dowel (taper)")
-  mat.color = Sketchup::Color.new(154, 154, 162)
+  cface.pushpull(44.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Rail saddle shelf
+  # Axle retainer bolt (thru plate) BL 2285
   grp = ents.add_group
-  grp.name = "Rail saddle shelf"
-  face = grp.entities.add_face([133.mm,2182.mm,86.mm], [207.mm,2182.mm,86.mm], [207.mm,2262.mm,86.mm], [133.mm,2262.mm,86.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail saddle cheek -X
-  grp = ents.add_group
-  grp.name = "Rail saddle cheek -X"
-  face = grp.entities.add_face([133.mm,2182.mm,100.mm], [145.mm,2182.mm,100.mm], [145.mm,2262.mm,100.mm], [133.mm,2262.mm,100.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(44.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail saddle cheek +X
-  grp = ents.add_group
-  grp.name = "Rail saddle cheek +X"
-  face = grp.entities.add_face([195.mm,2182.mm,100.mm], [207.mm,2182.mm,100.mm], [207.mm,2262.mm,100.mm], [195.mm,2262.mm,100.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(44.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail locating dowel (taper)
-  grp = ents.add_group
-  grp.name = "Rail locating dowel (taper)"
+  grp.name = "Axle retainer bolt (thru plate) BL 2285"
   ge = grp.entities
-  circle = ge.add_circle([170.mm,2222.mm,86.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([293.mm,2285.mm,231.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Rail locating dowel (taper)"] || model.materials.add("Rail locating dowel (taper)")
-  mat.color = Sketchup::Color.new(154, 154, 162)
+  cface.pushpull(44.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Rail saddle shelf
+  # Cam-brake base (5128A63) BL
   grp = ents.add_group
-  grp.name = "Rail saddle shelf"
-  face = grp.entities.add_face([133.mm,2182.mm,2190.mm], [207.mm,2182.mm,2190.mm], [207.mm,2262.mm,2190.mm], [133.mm,2262.mm,2190.mm])
+  grp.name = "Cam-brake base (5128A63) BL"
+  face = grp.entities.add_face([285.mm,2270.mm,311.mm], [295.mm,2270.mm,311.mm], [295.mm,2292.mm,311.mm], [285.mm,2292.mm,311.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  face.pushpull(8.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Rail saddle cheek -X
+  # Cam-brake hold-down arm BL
   grp = ents.add_group
-  grp.name = "Rail saddle cheek -X"
-  face = grp.entities.add_face([133.mm,2182.mm,2204.mm], [145.mm,2182.mm,2204.mm], [145.mm,2262.mm,2204.mm], [133.mm,2262.mm,2204.mm])
+  grp.name = "Cam-brake hold-down arm BL"
+  face = grp.entities.add_face([268.mm,2277.mm,312.mm], [290.mm,2277.mm,312.mm], [290.mm,2285.mm,312.mm], [268.mm,2285.mm,312.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(44.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Rail saddle cheek +X
+  # Cam-brake UHMW pad BL
   grp = ents.add_group
-  grp.name = "Rail saddle cheek +X"
-  face = grp.entities.add_face([195.mm,2182.mm,2204.mm], [207.mm,2182.mm,2204.mm], [207.mm,2262.mm,2204.mm], [195.mm,2262.mm,2204.mm])
+  grp.name = "Cam-brake UHMW pad BL"
+  face = grp.entities.add_face([262.mm,2276.mm,308.mm], [274.mm,2276.mm,308.mm], [274.mm,2286.mm,308.mm], [262.mm,2286.mm,308.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(44.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake UHMW pad BL"] || model.materials.add("Cam-brake UHMW pad BL")
+  mat.color = Sketchup::Color.new(216, 212, 200)
   mat.alpha = 1.0
   grp.material = mat
 
-  # Rail locating dowel (taper)
+  # Cam-brake lever BL
   grp = ents.add_group
-  grp.name = "Rail locating dowel (taper)"
+  grp.name = "Cam-brake lever BL"
   ge = grp.entities
-  circle = ge.add_circle([170.mm,2222.mm,2190.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([268.mm,2281.mm,312.mm], [0,0,1], 2.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
-  cface.pushpull(22.mm)
-  mat = model.materials["Rail locating dowel (taper)"] || model.materials.add("Rail locating dowel (taper)")
-  mat.color = Sketchup::Color.new(154, 154, 162)
+  cface.pushpull(20.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z slide rail (TILT, green) BL
+  grp = ents.add_group
+  grp.name = "Vertical Z slide rail (TILT, green) BL"
+  face = grp.entities.add_face([281.mm,2238.mm,140.mm], [291.mm,2238.mm,140.mm], [291.mm,2256.mm,140.mm], [281.mm,2256.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X slide rail (SWING, purple) BL
+  grp = ents.add_group
+  grp.name = "Horizontal X slide rail (SWING, purple) BL"
+  face = grp.entities.add_face([240.mm,2238.mm,142.mm], [500.mm,2238.mm,142.mm], [500.mm,2252.mm,142.mm], [240.mm,2252.mm,142.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-joint (Belden UJ-SS750x375, setscrew) BL
+  grp = ents.add_group
+  grp.name = "U-joint (Belden UJ-SS750x375, setscrew) BL"
+  face = grp.entities.add_face([248.mm,2233.mm,146.mm], [272.mm,2233.mm,146.mm], [272.mm,2257.mm,146.mm], [248.mm,2257.mm,146.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Input stub 3/8 (X slide → U-joint) BL
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 (X slide → U-joint) BL"
+  ge = grp.entities
+  circle = ge.add_circle([265.mm,2245.mm,160.mm], [1,0,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(46.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 4040N12 304 shaft support (clamps input stub → X slide) BL
+  grp = ents.add_group
+  grp.name = "4040N12 304 shaft support (clamps input stub → X slide) BL"
+  face = grp.entities.add_face([286.mm,2236.mm,149.mm], [309.mm,2236.mm,149.mm], [309.mm,2254.mm,149.mm], [286.mm,2254.mm,149.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Output stub 3/8 (U-joint → corner plate) BL
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 (U-joint → corner plate) BL"
+  ge = grp.entities
+  circle = ge.add_circle([260.mm,2223.mm,160.mm], [0,1,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Corner plate 304 SS (U-joint mount — angle frame → U-joint) BL
+  grp = ents.add_group
+  grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) BL"
+  face = grp.entities.add_face([246.mm,2229.mm,165.mm], [280.mm,2229.mm,165.mm], [280.mm,2245.mm,165.mm], [246.mm,2245.mm,165.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame-corner bolt (angle frame → bracket) BL
+  grp = ents.add_group
+  grp.name = "Frame-corner bolt (angle frame → bracket) BL"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2231.mm,160.mm], [0,1,0], 3.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) web TL
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) web TL"
+  face = grp.entities.add_face([241.mm,2090.mm,2262.mm], [246.mm,2090.mm,2262.mm], [246.mm,2362.mm,2262.mm], [241.mm,2362.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) flange TL 2333
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) flange TL 2333"
+  face = grp.entities.add_face([241.mm,2090.mm,2333.mm], [279.mm,2090.mm,2333.mm], [279.mm,2362.mm,2333.mm], [241.mm,2362.mm,2333.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) flange TL 2262
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) flange TL 2262"
+  face = grp.entities.add_face([241.mm,2090.mm,2262.mm], [279.mm,2090.mm,2262.mm], [279.mm,2362.mm,2262.mm], [241.mm,2362.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) bottom-flange lip TL
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) bottom-flange lip TL"
+  face = grp.entities.add_face([274.mm,2090.mm,2267.mm], [279.mm,2090.mm,2267.mm], [279.mm,2362.mm,2267.mm], [274.mm,2362.mm,2267.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Locating pin (bridge↔STUB, flush to inner-rail top) TL
+  grp = ents.add_group
+  grp.name = "Locating pin (bridge↔STUB, flush to inner-rail top) TL"
+  ge = grp.entities
+  circle = ge.add_circle([260.mm,2135.mm,2333.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(17.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bottom support bridge (STUB → beam underside) TL
+  grp = ents.add_group
+  grp.name = "Bottom support bridge (STUB → beam underside) TL"
+  face = grp.entities.add_face([241.mm,2058.mm,2250.mm], [279.mm,2058.mm,2250.mm], [279.mm,2122.mm,2250.mm], [241.mm,2122.mm,2250.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail far flange (pivot post) TL
+  grp = ents.add_group
+  grp.name = "Rail far flange (pivot post) TL"
+  face = grp.entities.add_face([205.mm,2350.mm,2257.mm], [315.mm,2350.mm,2257.mm], [315.mm,2362.mm,2257.mm], [205.mm,2362.mm,2257.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pinhole-wall gusset/seat TL
+  grp = ents.add_group
+  grp.name = "Pinhole-wall gusset/seat TL"
+  face = grp.entities.add_face([204.mm,0.mm,2232.mm], [316.mm,0.mm,2232.mm], [316.mm,45.mm,2232.mm], [204.mm,45.mm,2232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(131.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Length splice (pinhole end, outboard web) TL
+  grp = ents.add_group
+  grp.name = "Length splice (pinhole end, outboard web) TL"
+  face = grp.entities.add_face([229.mm,205.mm,2262.mm], [241.mm,205.mm,2262.mm], [241.mm,315.mm,2262.mm], [229.mm,315.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) TL 2245
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2245.mm,2283.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 TL 2245
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2245.mm,2283.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) TL 2245
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2245.mm,2323.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 TL 2245
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2245.mm,2323.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) TL 2285
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2285.mm,2283.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 TL 2285
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2285.mm,2283.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) TL 2285
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2285.mm,2323.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 TL 2285
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2285.mm,2323.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (bolted to skate axles) TL
+  grp = ents.add_group
+  grp.name = "Carriage plate (bolted to skate axles) TL"
+  face = grp.entities.add_face([287.mm,2238.mm,2246.mm], [301.mm,2238.mm,2246.mm], [301.mm,2324.mm,2246.mm], [287.mm,2324.mm,2246.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(95.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) TL 2245
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2245.mm,2261.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) TL 2285
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2285.mm,2261.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake base (5128A63) TL
+  grp = ents.add_group
+  grp.name = "Cam-brake base (5128A63) TL"
+  face = grp.entities.add_face([285.mm,2270.mm,2341.mm], [295.mm,2270.mm,2341.mm], [295.mm,2292.mm,2341.mm], [285.mm,2292.mm,2341.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake hold-down arm TL
+  grp = ents.add_group
+  grp.name = "Cam-brake hold-down arm TL"
+  face = grp.entities.add_face([268.mm,2277.mm,2342.mm], [290.mm,2277.mm,2342.mm], [290.mm,2285.mm,2342.mm], [268.mm,2285.mm,2342.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake UHMW pad TL
+  grp = ents.add_group
+  grp.name = "Cam-brake UHMW pad TL"
+  face = grp.entities.add_face([262.mm,2276.mm,2338.mm], [274.mm,2276.mm,2338.mm], [274.mm,2286.mm,2338.mm], [262.mm,2286.mm,2338.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake UHMW pad BL"] || model.materials.add("Cam-brake UHMW pad BL")
+  mat.color = Sketchup::Color.new(216, 212, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake lever TL
+  grp = ents.add_group
+  grp.name = "Cam-brake lever TL"
+  ge = grp.entities
+  circle = ge.add_circle([268.mm,2281.mm,2342.mm], [0,0,1], 2.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z slide rail (TILT, green) TL
+  grp = ents.add_group
+  grp.name = "Vertical Z slide rail (TILT, green) TL"
+  face = grp.entities.add_face([273.mm,2238.mm,1998.mm], [283.mm,2238.mm,1998.mm], [283.mm,2256.mm,1998.mm], [273.mm,2256.mm,1998.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X slide rail (SWING, purple) TL
+  grp = ents.add_group
+  grp.name = "Horizontal X slide rail (SWING, purple) TL"
+  face = grp.entities.add_face([240.mm,2238.mm,2256.mm], [500.mm,2238.mm,2256.mm], [500.mm,2252.mm,2256.mm], [240.mm,2252.mm,2256.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-joint (Belden UJ-SS750x375, setscrew) TL
+  grp = ents.add_group
+  grp.name = "U-joint (Belden UJ-SS750x375, setscrew) TL"
+  face = grp.entities.add_face([248.mm,2233.mm,2238.mm], [272.mm,2233.mm,2238.mm], [272.mm,2257.mm,2238.mm], [248.mm,2257.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Input stub 3/8 (X slide → U-joint) TL
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 (X slide → U-joint) TL"
+  ge = grp.entities
+  circle = ge.add_circle([265.mm,2245.mm,2252.mm], [1,0,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(46.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 4040N12 304 shaft support (clamps input stub → X slide) TL
+  grp = ents.add_group
+  grp.name = "4040N12 304 shaft support (clamps input stub → X slide) TL"
+  face = grp.entities.add_face([286.mm,2236.mm,2241.mm], [309.mm,2236.mm,2241.mm], [309.mm,2254.mm,2241.mm], [286.mm,2254.mm,2241.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Output stub 3/8 (U-joint → corner plate) TL
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 (U-joint → corner plate) TL"
+  ge = grp.entities
+  circle = ge.add_circle([260.mm,2223.mm,2252.mm], [0,1,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Corner plate 304 SS (U-joint mount — angle frame → U-joint) TL
+  grp = ents.add_group
+  grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) TL"
+  face = grp.entities.add_face([246.mm,2229.mm,2207.mm], [280.mm,2229.mm,2207.mm], [280.mm,2245.mm,2207.mm], [246.mm,2245.mm,2207.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(40.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Frame-corner bolt (angle frame → bracket) TL
+  grp = ents.add_group
+  grp.name = "Frame-corner bolt (angle frame → bracket) TL"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2231.mm,2252.mm], [0,1,0], 3.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
+  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
+  mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -9033,7 +9514,7 @@ ents = defn.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(4.76.mm)
-  mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -9046,7 +9527,7 @@ ents = defn.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(4.76.mm)
-  mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -9425,7 +9906,7 @@ ents = defn.entities
   face = grp.entities.add_face([272.5.mm,350.mm,619.5.mm], [278.5.mm,350.mm,619.5.mm], [278.5.mm,380.mm,619.5.mm], [272.5.mm,380.mm,619.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(46.5.mm)
-  mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -9436,7 +9917,7 @@ ents = defn.entities
   face = grp.entities.add_face([272.5.mm,350.mm,534.mm], [278.5.mm,350.mm,534.mm], [278.5.mm,380.mm,534.mm], [272.5.mm,380.mm,534.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(46.5.mm)
-  mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -9447,7 +9928,7 @@ ents = defn.entities
   face = grp.entities.add_face([272.5.mm,299.mm,585.mm], [278.5.mm,299.mm,585.mm], [278.5.mm,345.5.mm,585.mm], [272.5.mm,345.5.mm,585.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
-  mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -9458,7 +9939,7 @@ ents = defn.entities
   face = grp.entities.add_face([272.5.mm,384.5.mm,585.mm], [278.5.mm,384.5.mm,585.mm], [278.5.mm,431.mm,585.mm], [272.5.mm,431.mm,585.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
-  mat = model.materials["LT Drum top cap"] || model.materials.add("LT Drum top cap")
+  mat = model.materials["U-rail STUB (fixed, parks corner) web BL"] || model.materials.add("U-rail STUB (fixed, parks corner) web BL")
   mat.color = Sketchup::Color.new(200, 216, 232)
   mat.alpha = 1.0
   grp.material = mat
@@ -9712,7 +10193,7 @@ ents = lw_defn.entities
   # Left walkway (removable)
   grp = ents.add_group
   grp.name = "Left walkway (removable)"
-  face = grp.entities.add_face([170.mm,0.mm,115.mm], [170.mm,2362.mm,115.mm], [470.mm,2362.mm,115.mm], [470.mm,2062.mm,115.mm], [370.mm,2062.mm,115.mm], [370.mm,1912.mm,115.mm], [470.mm,1912.mm,115.mm], [470.mm,1560.mm,115.mm], [770.mm,1560.mm,115.mm], [770.mm,800.mm,115.mm], [470.mm,800.mm,115.mm], [470.mm,0.mm,115.mm])
+  face = grp.entities.add_face([280.mm,0.mm,115.mm], [280.mm,2362.mm,115.mm], [580.mm,2362.mm,115.mm], [580.mm,2062.mm,115.mm], [480.mm,2062.mm,115.mm], [480.mm,1912.mm,115.mm], [580.mm,1912.mm,115.mm], [580.mm,1560.mm,115.mm], [880.mm,1560.mm,115.mm], [880.mm,800.mm,115.mm], [580.mm,800.mm,115.mm], [580.mm,0.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Left walkway (removable)"] || model.materials.add("Left walkway (removable)")
@@ -9723,7 +10204,7 @@ ents = lw_defn.entities
   # Walkway Near (door-end, removable)
   grp = ents.add_group
   grp.name = "Walkway Near (door-end, removable)"
-  face = grp.entities.add_face([470.mm,0.mm,115.mm], [950.mm,0.mm,115.mm], [950.mm,300.mm,115.mm], [470.mm,300.mm,115.mm])
+  face = grp.entities.add_face([580.mm,0.mm,115.mm], [950.mm,0.mm,115.mm], [950.mm,300.mm,115.mm], [580.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Left walkway (removable)"] || model.materials.add("Left walkway (removable)")
@@ -9766,7 +10247,7 @@ ents = sr_defn.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(406.91679805254313.mm)
-  mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -9792,7 +10273,7 @@ ents = sr_defn.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(377.3427531753305.mm)
-  mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -9827,7 +10308,7 @@ ents = sr_defn.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(406.91679805254313.mm)
-  mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -9853,7 +10334,7 @@ ents = sr_defn.entities
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(377.3427531753305.mm)
-  mat = model.materials["Stay rod (eye side)"] || model.materials.add("Stay rod (eye side)")
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
   mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
@@ -9870,7 +10351,7 @@ ents = sr_defn.entities
   grp.material = mat
 
 ents = defn.entities
-sr_tr = Geom::Transformation.rotation([175.0.mm, 2287.0.mm, 0], Z_AXIS, (-56).degrees)
+sr_tr = Geom::Transformation.rotation([175.mm, 2287.0.mm, 0], Z_AXIS, (-56).degrees)
 sr_inst = ents.add_instance(sr_defn, sr_tr)
 sr_inst.name = "Transport Stay Rods"
 sr_inst.layer = model.layers["Lock anchor"]
@@ -10361,69 +10842,113 @@ fbc_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swin
 #    with the surround through the animation, so it never sweeps into it. ──
 lfr_defn = model.definitions.add("Lift-out Film Rail")
 ents = lfr_defn.entities
-  # FP Rail BL (lower left)
+  # U-rail REMOVABLE (out for transport) web BL
   grp = ents.add_group
-  grp.name = "FP Rail BL (lower left)"
-  face = grp.entities.add_face([150.mm,100.mm,100.mm], [190.mm,100.mm,100.mm], [190.mm,2262.mm,100.mm], [150.mm,2262.mm,100.mm])
+  grp.name = "U-rail REMOVABLE (out for transport) web BL"
+  face = grp.entities.add_face([241.mm,0.mm,232.mm], [246.mm,0.mm,232.mm], [246.mm,2090.mm,232.mm], [241.mm,2090.mm,232.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
+  face.pushpull(76.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) flange BL 303
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) flange BL 303"
+  face = grp.entities.add_face([241.mm,0.mm,303.mm], [279.mm,0.mm,303.mm], [279.mm,2090.mm,303.mm], [241.mm,2090.mm,303.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) flange BL 232
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) flange BL 232"
+  face = grp.entities.add_face([241.mm,0.mm,232.mm], [279.mm,0.mm,232.mm], [279.mm,2090.mm,232.mm], [241.mm,2090.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) bottom-flange lip BL
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) bottom-flange lip BL"
+  face = grp.entities.add_face([274.mm,0.mm,237.mm], [279.mm,0.mm,237.mm], [279.mm,2090.mm,237.mm], [274.mm,2090.mm,237.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL
+  grp = ents.add_group
+  grp.name = "Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"
+  face = grp.entities.add_face([241.mm,2030.mm,308.mm], [279.mm,2030.mm,308.mm], [279.mm,2180.mm,308.mm], [241.mm,2180.mm,308.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Rail TL (upper left)
+  # U-rail REMOVABLE (out for transport) web TL
   grp = ents.add_group
-  grp.name = "FP Rail TL (upper left)"
-  face = grp.entities.add_face([150.mm,100.mm,2204.mm], [190.mm,100.mm,2204.mm], [190.mm,2262.mm,2204.mm], [150.mm,2262.mm,2204.mm])
+  grp.name = "U-rail REMOVABLE (out for transport) web TL"
+  face = grp.entities.add_face([241.mm,0.mm,2262.mm], [246.mm,0.mm,2262.mm], [246.mm,2090.mm,2262.mm], [241.mm,2090.mm,2262.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(40.mm)
-  mat = model.materials["Pivot post (Ø89 CHS)"] || model.materials.add("Pivot post (Ø89 CHS)")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
+  face.pushpull(76.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
   grp.material = mat
 
-  # Rail clamp bar (removable)
+  # U-rail REMOVABLE (out for transport) flange TL 2333
   grp = ents.add_group
-  grp.name = "Rail clamp bar (removable)"
-  face = grp.entities.add_face([133.mm,122.mm,140.mm], [207.mm,122.mm,140.mm], [207.mm,158.mm,140.mm], [133.mm,158.mm,140.mm])
+  grp.name = "U-rail REMOVABLE (out for transport) flange TL 2333"
+  face = grp.entities.add_face([241.mm,0.mm,2333.mm], [279.mm,0.mm,2333.mm], [279.mm,2090.mm,2333.mm], [241.mm,2090.mm,2333.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Drum threshold sill (flush, chamfered step-over)"] || model.materials.add("Drum threshold sill (flush, chamfered step-over)")
-  mat.color = Sketchup::Color.new(122, 122, 130)
-  mat.alpha = 1.0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
   grp.material = mat
 
-  # Rail clamp bar (removable)
+  # U-rail REMOVABLE (out for transport) flange TL 2262
   grp = ents.add_group
-  grp.name = "Rail clamp bar (removable)"
-  face = grp.entities.add_face([133.mm,122.mm,2244.mm], [207.mm,122.mm,2244.mm], [207.mm,158.mm,2244.mm], [133.mm,158.mm,2244.mm])
+  grp.name = "U-rail REMOVABLE (out for transport) flange TL 2262"
+  face = grp.entities.add_face([241.mm,0.mm,2262.mm], [279.mm,0.mm,2262.mm], [279.mm,2090.mm,2262.mm], [241.mm,2090.mm,2262.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Drum threshold sill (flush, chamfered step-over)"] || model.materials.add("Drum threshold sill (flush, chamfered step-over)")
-  mat.color = Sketchup::Color.new(122, 122, 130)
-  mat.alpha = 1.0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
   grp.material = mat
 
-  # Rail clamp bar (removable)
+  # U-rail REMOVABLE (out for transport) bottom-flange lip TL
   grp = ents.add_group
-  grp.name = "Rail clamp bar (removable)"
-  face = grp.entities.add_face([133.mm,2204.mm,140.mm], [207.mm,2204.mm,140.mm], [207.mm,2240.mm,140.mm], [133.mm,2240.mm,140.mm])
+  grp.name = "U-rail REMOVABLE (out for transport) bottom-flange lip TL"
+  face = grp.entities.add_face([274.mm,0.mm,2267.mm], [279.mm,0.mm,2267.mm], [279.mm,2090.mm,2267.mm], [274.mm,2090.mm,2267.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Drum threshold sill (flush, chamfered step-over)"] || model.materials.add("Drum threshold sill (flush, chamfered step-over)")
-  mat.color = Sketchup::Color.new(122, 122, 130)
-  mat.alpha = 1.0
+  face.pushpull(9.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
   grp.material = mat
 
-  # Rail clamp bar (removable)
+  # Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) TL
   grp = ents.add_group
-  grp.name = "Rail clamp bar (removable)"
-  face = grp.entities.add_face([133.mm,2204.mm,2244.mm], [207.mm,2204.mm,2244.mm], [207.mm,2240.mm,2244.mm], [133.mm,2240.mm,2244.mm])
+  grp.name = "Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) TL"
+  face = grp.entities.add_face([241.mm,2030.mm,2338.mm], [279.mm,2030.mm,2338.mm], [279.mm,2180.mm,2338.mm], [241.mm,2180.mm,2338.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(14.mm)
-  mat = model.materials["Drum threshold sill (flush, chamfered step-over)"] || model.materials.add("Drum threshold sill (flush, chamfered step-over)")
-  mat.color = Sketchup::Color.new(122, 122, 130)
+  face.pushpull(12.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -10438,10 +10963,10 @@ lfr_inst.set_attribute("dynamic_attributes", "_hidden_formula", "PanelSwing!swin
 # Shift the moving def by -pivot so the def origin sits at the pivot — then the instance's
 # RotZ swings the assembly about the pivot (same origin-at-rotation-point pattern the
 # cargo-door leaves use).
-shift = Geom::Transformation.translation([(-175.0).mm, (-2287.0).mm, 0])
+shift = Geom::Transformation.translation([(-175).mm, (-2287.0).mm, 0])
 defn.entities.transform_entities(shift, defn.entities.to_a)
 
-inst = entities.add_instance(defn, Geom::Transformation.translation([175.0.mm, 2287.0.mm, 0]))
+inst = entities.add_instance(defn, Geom::Transformation.translation([175.mm, 2287.0.mm, 0]))
 inst.name = "Panel Swing"
 inst.layer = model.layers["Panel Swing"]
 da = "dynamic_attributes"

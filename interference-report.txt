@@ -1,3 +1,3 @@
-routing-sources-sha: a0131cbf3472
-model=construction  pipes=998 solids=617  interferences=0
+routing-sources-sha: 9fae7563e979
+model=construction  pipes=998 solids=525  interferences=0
 pipe-on-pipe crossings=0

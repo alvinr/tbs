@@ -14987,7 +14987,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far bracket 1 plate
   grp = ents.add_group
   grp.name = "Walkway Far bracket 1 plate"
-  face = grp.entities.add_face([638.mm,2354.mm,0.mm], [758.mm,2354.mm,0.mm], [758.mm,2362.mm,0.mm], [638.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([748.mm,2354.mm,0.mm], [868.mm,2354.mm,0.mm], [868.mm,2362.mm,0.mm], [748.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -14999,7 +14999,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 1 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([698.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([808.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15012,7 +15012,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 1 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([663.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([773.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15025,7 +15025,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 1 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([733.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([843.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15037,7 +15037,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far bracket 1 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 1 arm"
-  face = grp.entities.add_face([694.mm,2062.mm,105.mm], [702.mm,2062.mm,105.mm], [702.mm,2354.mm,105.mm], [694.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([804.mm,2062.mm,105.mm], [812.mm,2062.mm,105.mm], [812.mm,2354.mm,105.mm], [804.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -15049,7 +15049,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 1 gusset"
   ge = grp.entities
-  f = ge.add_face([694.mm,2354.mm,0.mm], [694.mm,2354.mm,105.mm], [694.mm,2292.mm,105.mm])
+  f = ge.add_face([804.mm,2354.mm,0.mm], [804.mm,2354.mm,105.mm], [804.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
@@ -15059,7 +15059,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far bracket 2 plate
   grp = ents.add_group
   grp.name = "Walkway Far bracket 2 plate"
-  face = grp.entities.add_face([1095.mm,2354.mm,0.mm], [1215.mm,2354.mm,0.mm], [1215.mm,2362.mm,0.mm], [1095.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([1205.mm,2354.mm,0.mm], [1325.mm,2354.mm,0.mm], [1325.mm,2362.mm,0.mm], [1205.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -15071,7 +15071,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 2 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1155.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1265.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15084,7 +15084,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 2 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1120.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1230.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15097,7 +15097,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 2 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1190.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1300.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15109,7 +15109,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far bracket 2 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 2 arm"
-  face = grp.entities.add_face([1151.mm,2062.mm,105.mm], [1159.mm,2062.mm,105.mm], [1159.mm,2354.mm,105.mm], [1151.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([1261.mm,2062.mm,105.mm], [1269.mm,2062.mm,105.mm], [1269.mm,2354.mm,105.mm], [1261.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -15121,7 +15121,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 2 gusset"
   ge = grp.entities
-  f = ge.add_face([1151.mm,2354.mm,0.mm], [1151.mm,2354.mm,105.mm], [1151.mm,2292.mm,105.mm])
+  f = ge.add_face([1261.mm,2354.mm,0.mm], [1261.mm,2354.mm,105.mm], [1261.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
@@ -15131,7 +15131,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far bracket 3 plate
   grp = ents.add_group
   grp.name = "Walkway Far bracket 3 plate"
-  face = grp.entities.add_face([1552.mm,2354.mm,0.mm], [1672.mm,2354.mm,0.mm], [1672.mm,2362.mm,0.mm], [1552.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([1662.mm,2354.mm,0.mm], [1782.mm,2354.mm,0.mm], [1782.mm,2362.mm,0.mm], [1662.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -15143,7 +15143,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 3 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1612.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1722.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15156,7 +15156,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 3 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1577.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1687.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15169,7 +15169,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 3 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1647.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1757.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15181,7 +15181,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far bracket 3 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 3 arm"
-  face = grp.entities.add_face([1608.mm,2062.mm,105.mm], [1616.mm,2062.mm,105.mm], [1616.mm,2354.mm,105.mm], [1608.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([1718.mm,2062.mm,105.mm], [1726.mm,2062.mm,105.mm], [1726.mm,2354.mm,105.mm], [1718.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -15193,7 +15193,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 3 gusset"
   ge = grp.entities
-  f = ge.add_face([1608.mm,2354.mm,0.mm], [1608.mm,2354.mm,105.mm], [1608.mm,2292.mm,105.mm])
+  f = ge.add_face([1718.mm,2354.mm,0.mm], [1718.mm,2354.mm,105.mm], [1718.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
@@ -15203,7 +15203,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far bracket 4 plate
   grp = ents.add_group
   grp.name = "Walkway Far bracket 4 plate"
-  face = grp.entities.add_face([2009.mm,2354.mm,0.mm], [2129.mm,2354.mm,0.mm], [2129.mm,2362.mm,0.mm], [2009.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([2119.mm,2354.mm,0.mm], [2239.mm,2354.mm,0.mm], [2239.mm,2362.mm,0.mm], [2119.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -15215,7 +15215,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 4 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2069.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2179.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15228,7 +15228,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 4 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2034.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2144.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15241,7 +15241,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 4 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2104.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2214.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15253,7 +15253,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far bracket 4 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 4 arm"
-  face = grp.entities.add_face([2065.mm,2062.mm,105.mm], [2073.mm,2062.mm,105.mm], [2073.mm,2354.mm,105.mm], [2065.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([2175.mm,2062.mm,105.mm], [2183.mm,2062.mm,105.mm], [2183.mm,2354.mm,105.mm], [2175.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -15265,7 +15265,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 4 gusset"
   ge = grp.entities
-  f = ge.add_face([2065.mm,2354.mm,0.mm], [2065.mm,2354.mm,105.mm], [2065.mm,2292.mm,105.mm])
+  f = ge.add_face([2175.mm,2354.mm,0.mm], [2175.mm,2354.mm,105.mm], [2175.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
@@ -15275,7 +15275,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far bracket 5 plate
   grp = ents.add_group
   grp.name = "Walkway Far bracket 5 plate"
-  face = grp.entities.add_face([2466.mm,2354.mm,0.mm], [2586.mm,2354.mm,0.mm], [2586.mm,2362.mm,0.mm], [2466.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([2576.mm,2354.mm,0.mm], [2696.mm,2354.mm,0.mm], [2696.mm,2362.mm,0.mm], [2576.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -15287,7 +15287,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 5 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2526.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2636.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15300,7 +15300,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 5 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2491.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2601.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15313,7 +15313,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 5 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2561.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2671.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15325,7 +15325,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far bracket 5 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 5 arm"
-  face = grp.entities.add_face([2522.mm,2062.mm,105.mm], [2530.mm,2062.mm,105.mm], [2530.mm,2354.mm,105.mm], [2522.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([2632.mm,2062.mm,105.mm], [2640.mm,2062.mm,105.mm], [2640.mm,2354.mm,105.mm], [2632.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -15337,7 +15337,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 5 gusset"
   ge = grp.entities
-  f = ge.add_face([2522.mm,2354.mm,0.mm], [2522.mm,2354.mm,105.mm], [2522.mm,2292.mm,105.mm])
+  f = ge.add_face([2632.mm,2354.mm,0.mm], [2632.mm,2354.mm,105.mm], [2632.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
@@ -15347,7 +15347,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far bracket 6 plate
   grp = ents.add_group
   grp.name = "Walkway Far bracket 6 plate"
-  face = grp.entities.add_face([2923.mm,2354.mm,0.mm], [3043.mm,2354.mm,0.mm], [3043.mm,2362.mm,0.mm], [2923.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([3033.mm,2354.mm,0.mm], [3153.mm,2354.mm,0.mm], [3153.mm,2362.mm,0.mm], [3033.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -15359,7 +15359,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 6 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2983.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3093.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15372,7 +15372,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 6 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2948.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3058.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15385,7 +15385,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 6 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3018.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3128.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15397,7 +15397,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far bracket 6 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 6 arm"
-  face = grp.entities.add_face([2979.mm,2062.mm,105.mm], [2987.mm,2062.mm,105.mm], [2987.mm,2354.mm,105.mm], [2979.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([3089.mm,2062.mm,105.mm], [3097.mm,2062.mm,105.mm], [3097.mm,2354.mm,105.mm], [3089.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -15409,7 +15409,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 6 gusset"
   ge = grp.entities
-  f = ge.add_face([2979.mm,2354.mm,0.mm], [2979.mm,2354.mm,105.mm], [2979.mm,2292.mm,105.mm])
+  f = ge.add_face([3089.mm,2354.mm,0.mm], [3089.mm,2354.mm,105.mm], [3089.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
@@ -15419,7 +15419,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far bracket 7 plate
   grp = ents.add_group
   grp.name = "Walkway Far bracket 7 plate"
-  face = grp.entities.add_face([3380.mm,2354.mm,0.mm], [3500.mm,2354.mm,0.mm], [3500.mm,2362.mm,0.mm], [3380.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([3490.mm,2354.mm,0.mm], [3610.mm,2354.mm,0.mm], [3610.mm,2362.mm,0.mm], [3490.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -15431,7 +15431,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 7 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3440.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3550.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15444,7 +15444,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 7 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3405.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3515.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15457,7 +15457,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 7 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3475.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3585.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15469,7 +15469,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far bracket 7 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 7 arm"
-  face = grp.entities.add_face([3436.mm,2062.mm,105.mm], [3444.mm,2062.mm,105.mm], [3444.mm,2354.mm,105.mm], [3436.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([3546.mm,2062.mm,105.mm], [3554.mm,2062.mm,105.mm], [3554.mm,2354.mm,105.mm], [3546.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -15481,7 +15481,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 7 gusset"
   ge = grp.entities
-  f = ge.add_face([3436.mm,2354.mm,0.mm], [3436.mm,2354.mm,105.mm], [3436.mm,2292.mm,105.mm])
+  f = ge.add_face([3546.mm,2354.mm,0.mm], [3546.mm,2354.mm,105.mm], [3546.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
@@ -15491,7 +15491,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far bracket 8 plate
   grp = ents.add_group
   grp.name = "Walkway Far bracket 8 plate"
-  face = grp.entities.add_face([3837.mm,2354.mm,0.mm], [3957.mm,2354.mm,0.mm], [3957.mm,2362.mm,0.mm], [3837.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([3947.mm,2354.mm,0.mm], [4067.mm,2354.mm,0.mm], [4067.mm,2362.mm,0.mm], [3947.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -15503,7 +15503,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 8 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3897.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4007.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15516,7 +15516,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 8 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3862.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3972.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15529,7 +15529,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 8 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3932.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4042.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -15541,7 +15541,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far bracket 8 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 8 arm"
-  face = grp.entities.add_face([3893.mm,2062.mm,105.mm], [3901.mm,2062.mm,105.mm], [3901.mm,2354.mm,105.mm], [3893.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([4003.mm,2062.mm,105.mm], [4011.mm,2062.mm,105.mm], [4011.mm,2354.mm,105.mm], [4003.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -15553,7 +15553,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Far bracket 8 gusset"
   ge = grp.entities
-  f = ge.add_face([3893.mm,2354.mm,0.mm], [3893.mm,2354.mm,105.mm], [3893.mm,2292.mm,105.mm])
+  f = ge.add_face([4003.mm,2354.mm,0.mm], [4003.mm,2354.mm,105.mm], [4003.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
@@ -16061,7 +16061,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "FP combined corner plate (near)"
   face = grp.entities.add_face([4574.mm,0.mm,77.6.mm], [4724.mm,0.mm,77.6.mm], [4724.mm,10.mm,77.6.mm], [4574.mm,10.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 0.15
@@ -16072,7 +16072,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "FP combined corner ext plate (near)"
   face = grp.entities.add_face([4574.mm,-50.mm,77.6.mm], [4724.mm,-50.mm,77.6.mm], [4724.mm,-40.mm,77.6.mm], [4574.mm,-40.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 0.15
@@ -16092,7 +16092,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined BR rail seat (near)
   grp = ents.add_group
   grp.name = "FP combined BR rail seat (near)"
-  face = grp.entities.add_face([4619.mm,0.mm,148.mm], [4679.mm,0.mm,148.mm], [4679.mm,55.mm,148.mm], [4619.mm,55.mm,148.mm])
+  face = grp.entities.add_face([4619.mm,0.mm,220.mm], [4679.mm,0.mm,220.mm], [4679.mm,55.mm,220.mm], [4619.mm,55.mm,220.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -16113,11 +16113,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # FP combined bolt M12 (near) X4599 Z188
+  # FP combined bolt M12 (near) X4599 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4599 Z188"
+  grp.name = "FP combined bolt M12 (near) X4599 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,-50.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -16139,11 +16139,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # FP combined bolt M12 (near) X4699 Z188
+  # FP combined bolt M12 (near) X4699 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4699 Z188"
+  grp.name = "FP combined bolt M12 (near) X4699 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,-50.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -16216,7 +16216,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "FP combined corner plate (far)"
   face = grp.entities.add_face([4574.mm,2352.mm,77.6.mm], [4724.mm,2352.mm,77.6.mm], [4724.mm,2362.mm,77.6.mm], [4574.mm,2362.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 0.15
@@ -16227,7 +16227,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "FP combined corner ext plate (far)"
   face = grp.entities.add_face([4574.mm,2402.mm,77.6.mm], [4724.mm,2402.mm,77.6.mm], [4724.mm,2412.mm,77.6.mm], [4574.mm,2412.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 0.15
@@ -16247,7 +16247,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined BR rail seat (far)
   grp = ents.add_group
   grp.name = "FP combined BR rail seat (far)"
-  face = grp.entities.add_face([4619.mm,2307.mm,148.mm], [4679.mm,2307.mm,148.mm], [4679.mm,2362.mm,148.mm], [4619.mm,2362.mm,148.mm])
+  face = grp.entities.add_face([4619.mm,2307.mm,220.mm], [4679.mm,2307.mm,220.mm], [4679.mm,2362.mm,220.mm], [4619.mm,2362.mm,220.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -16268,11 +16268,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # FP combined bolt M12 (far) X4599 Z188
+  # FP combined bolt M12 (far) X4599 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4599 Z188"
+  grp.name = "FP combined bolt M12 (far) X4599 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,2352.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,2352.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -16294,11 +16294,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # FP combined bolt M12 (far) X4699 Z188
+  # FP combined bolt M12 (far) X4699 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4699 Z188"
+  grp.name = "FP combined bolt M12 (far) X4699 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,2352.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,2352.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -16317,7 +16317,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near bracket 1 plate
   grp = ents.add_group
   grp.name = "Walkway Near bracket 1 plate"
-  face = grp.entities.add_face([638.mm,0.mm,0.mm], [758.mm,0.mm,0.mm], [758.mm,8.mm,0.mm], [638.mm,8.mm,0.mm])
+  face = grp.entities.add_face([748.mm,0.mm,0.mm], [868.mm,0.mm,0.mm], [868.mm,8.mm,0.mm], [748.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -16329,7 +16329,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 1 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([698.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([808.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -16342,7 +16342,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 1 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([663.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([773.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -16355,7 +16355,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 1 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([733.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([843.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -16367,7 +16367,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near bracket 1 arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 1 arm"
-  face = grp.entities.add_face([694.mm,8.mm,105.mm], [702.mm,8.mm,105.mm], [702.mm,300.mm,105.mm], [694.mm,300.mm,105.mm])
+  face = grp.entities.add_face([804.mm,8.mm,105.mm], [812.mm,8.mm,105.mm], [812.mm,300.mm,105.mm], [804.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -16379,7 +16379,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 1 gusset"
   ge = grp.entities
-  f = ge.add_face([694.mm,8.mm,0.mm], [694.mm,8.mm,105.mm], [694.mm,70.mm,105.mm])
+  f = ge.add_face([804.mm,8.mm,0.mm], [804.mm,8.mm,105.mm], [804.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
@@ -16389,7 +16389,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near bracket 2 (widened) plate
   grp = ents.add_group
   grp.name = "Walkway Near bracket 2 (widened) plate"
-  face = grp.entities.add_face([1095.mm,0.mm,0.mm], [1215.mm,0.mm,0.mm], [1215.mm,10.mm,0.mm], [1095.mm,10.mm,0.mm])
+  face = grp.entities.add_face([1205.mm,0.mm,0.mm], [1325.mm,0.mm,0.mm], [1325.mm,10.mm,0.mm], [1205.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -16401,7 +16401,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 2 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1120.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1230.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16414,7 +16414,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 2 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1190.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1300.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16427,7 +16427,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 2 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1120.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1230.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16440,7 +16440,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 2 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1190.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1300.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16452,7 +16452,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near bracket 2 (widened) arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 2 (widened) arm"
-  face = grp.entities.add_face([1150.mm,10.mm,103.mm], [1160.mm,10.mm,103.mm], [1160.mm,500.mm,103.mm], [1150.mm,500.mm,103.mm])
+  face = grp.entities.add_face([1260.mm,10.mm,103.mm], [1270.mm,10.mm,103.mm], [1270.mm,500.mm,103.mm], [1260.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -16464,7 +16464,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 2 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([1150.mm,10.mm,0.mm], [1150.mm,10.mm,103.mm], [1150.mm,70.mm,103.mm])
+  f = ge.add_face([1260.mm,10.mm,0.mm], [1260.mm,10.mm,103.mm], [1260.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
@@ -16474,7 +16474,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near bracket 3 (widened) plate
   grp = ents.add_group
   grp.name = "Walkway Near bracket 3 (widened) plate"
-  face = grp.entities.add_face([1552.mm,0.mm,0.mm], [1672.mm,0.mm,0.mm], [1672.mm,10.mm,0.mm], [1552.mm,10.mm,0.mm])
+  face = grp.entities.add_face([1662.mm,0.mm,0.mm], [1782.mm,0.mm,0.mm], [1782.mm,10.mm,0.mm], [1662.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -16486,7 +16486,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 3 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1577.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1687.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16499,7 +16499,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 3 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1647.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1757.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16512,7 +16512,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 3 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1577.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1687.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16525,7 +16525,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 3 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1647.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1757.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16537,7 +16537,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near bracket 3 (widened) arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 3 (widened) arm"
-  face = grp.entities.add_face([1607.mm,10.mm,103.mm], [1617.mm,10.mm,103.mm], [1617.mm,500.mm,103.mm], [1607.mm,500.mm,103.mm])
+  face = grp.entities.add_face([1717.mm,10.mm,103.mm], [1727.mm,10.mm,103.mm], [1727.mm,500.mm,103.mm], [1717.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -16549,7 +16549,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 3 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([1607.mm,10.mm,0.mm], [1607.mm,10.mm,103.mm], [1607.mm,70.mm,103.mm])
+  f = ge.add_face([1717.mm,10.mm,0.mm], [1717.mm,10.mm,103.mm], [1717.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
@@ -16559,7 +16559,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near bracket 4 (widened) plate
   grp = ents.add_group
   grp.name = "Walkway Near bracket 4 (widened) plate"
-  face = grp.entities.add_face([2009.mm,0.mm,0.mm], [2129.mm,0.mm,0.mm], [2129.mm,10.mm,0.mm], [2009.mm,10.mm,0.mm])
+  face = grp.entities.add_face([2119.mm,0.mm,0.mm], [2239.mm,0.mm,0.mm], [2239.mm,10.mm,0.mm], [2119.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -16571,7 +16571,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 4 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2034.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2144.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16584,7 +16584,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 4 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2104.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2214.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16597,7 +16597,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 4 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2034.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2144.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16610,7 +16610,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 4 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2104.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2214.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16622,7 +16622,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near bracket 4 (widened) arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 4 (widened) arm"
-  face = grp.entities.add_face([2064.mm,10.mm,103.mm], [2074.mm,10.mm,103.mm], [2074.mm,500.mm,103.mm], [2064.mm,500.mm,103.mm])
+  face = grp.entities.add_face([2174.mm,10.mm,103.mm], [2184.mm,10.mm,103.mm], [2184.mm,500.mm,103.mm], [2174.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -16634,7 +16634,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 4 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([2064.mm,10.mm,0.mm], [2064.mm,10.mm,103.mm], [2064.mm,70.mm,103.mm])
+  f = ge.add_face([2174.mm,10.mm,0.mm], [2174.mm,10.mm,103.mm], [2174.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
@@ -16644,7 +16644,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near bracket 5 (widened) plate
   grp = ents.add_group
   grp.name = "Walkway Near bracket 5 (widened) plate"
-  face = grp.entities.add_face([2466.mm,0.mm,0.mm], [2586.mm,0.mm,0.mm], [2586.mm,10.mm,0.mm], [2466.mm,10.mm,0.mm])
+  face = grp.entities.add_face([2576.mm,0.mm,0.mm], [2696.mm,0.mm,0.mm], [2696.mm,10.mm,0.mm], [2576.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -16656,7 +16656,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 5 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2491.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2601.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16669,7 +16669,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 5 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2561.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2671.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16682,7 +16682,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 5 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2491.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2601.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16695,7 +16695,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 5 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2561.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2671.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16707,7 +16707,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near bracket 5 (widened) arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 5 (widened) arm"
-  face = grp.entities.add_face([2521.mm,10.mm,103.mm], [2531.mm,10.mm,103.mm], [2531.mm,500.mm,103.mm], [2521.mm,500.mm,103.mm])
+  face = grp.entities.add_face([2631.mm,10.mm,103.mm], [2641.mm,10.mm,103.mm], [2641.mm,500.mm,103.mm], [2631.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -16719,7 +16719,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 5 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([2521.mm,10.mm,0.mm], [2521.mm,10.mm,103.mm], [2521.mm,70.mm,103.mm])
+  f = ge.add_face([2631.mm,10.mm,0.mm], [2631.mm,10.mm,103.mm], [2631.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
@@ -16729,7 +16729,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near bracket 6 (widened) plate
   grp = ents.add_group
   grp.name = "Walkway Near bracket 6 (widened) plate"
-  face = grp.entities.add_face([2923.mm,0.mm,0.mm], [3043.mm,0.mm,0.mm], [3043.mm,10.mm,0.mm], [2923.mm,10.mm,0.mm])
+  face = grp.entities.add_face([3033.mm,0.mm,0.mm], [3153.mm,0.mm,0.mm], [3153.mm,10.mm,0.mm], [3033.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -16741,7 +16741,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 6 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2948.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3058.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16754,7 +16754,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 6 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3018.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3128.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16767,7 +16767,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 6 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2948.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3058.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16780,7 +16780,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 6 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3018.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3128.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -16792,7 +16792,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near bracket 6 (widened) arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 6 (widened) arm"
-  face = grp.entities.add_face([2978.mm,10.mm,103.mm], [2988.mm,10.mm,103.mm], [2988.mm,500.mm,103.mm], [2978.mm,500.mm,103.mm])
+  face = grp.entities.add_face([3088.mm,10.mm,103.mm], [3098.mm,10.mm,103.mm], [3098.mm,500.mm,103.mm], [3088.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -16804,7 +16804,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 6 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([2978.mm,10.mm,0.mm], [2978.mm,10.mm,103.mm], [2978.mm,70.mm,103.mm])
+  f = ge.add_face([3088.mm,10.mm,0.mm], [3088.mm,10.mm,103.mm], [3088.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
@@ -16814,7 +16814,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near bracket 7 plate
   grp = ents.add_group
   grp.name = "Walkway Near bracket 7 plate"
-  face = grp.entities.add_face([3380.mm,0.mm,0.mm], [3500.mm,0.mm,0.mm], [3500.mm,8.mm,0.mm], [3380.mm,8.mm,0.mm])
+  face = grp.entities.add_face([3490.mm,0.mm,0.mm], [3610.mm,0.mm,0.mm], [3610.mm,8.mm,0.mm], [3490.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -16826,7 +16826,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 7 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3440.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3550.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -16839,7 +16839,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 7 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3405.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3515.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -16852,7 +16852,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 7 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3475.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3585.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -16864,7 +16864,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near bracket 7 arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 7 arm"
-  face = grp.entities.add_face([3436.mm,8.mm,105.mm], [3444.mm,8.mm,105.mm], [3444.mm,300.mm,105.mm], [3436.mm,300.mm,105.mm])
+  face = grp.entities.add_face([3546.mm,8.mm,105.mm], [3554.mm,8.mm,105.mm], [3554.mm,300.mm,105.mm], [3546.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -16876,7 +16876,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 7 gusset"
   ge = grp.entities
-  f = ge.add_face([3436.mm,8.mm,0.mm], [3436.mm,8.mm,105.mm], [3436.mm,70.mm,105.mm])
+  f = ge.add_face([3546.mm,8.mm,0.mm], [3546.mm,8.mm,105.mm], [3546.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
@@ -16886,7 +16886,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near bracket 8 plate
   grp = ents.add_group
   grp.name = "Walkway Near bracket 8 plate"
-  face = grp.entities.add_face([3837.mm,0.mm,0.mm], [3957.mm,0.mm,0.mm], [3957.mm,8.mm,0.mm], [3837.mm,8.mm,0.mm])
+  face = grp.entities.add_face([3947.mm,0.mm,0.mm], [4067.mm,0.mm,0.mm], [4067.mm,8.mm,0.mm], [3947.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -16898,7 +16898,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 8 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3897.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4007.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -16911,7 +16911,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 8 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3862.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3972.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -16924,7 +16924,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 8 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3932.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4042.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -16936,7 +16936,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near bracket 8 arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 8 arm"
-  face = grp.entities.add_face([3893.mm,8.mm,105.mm], [3901.mm,8.mm,105.mm], [3901.mm,300.mm,105.mm], [3893.mm,300.mm,105.mm])
+  face = grp.entities.add_face([4003.mm,8.mm,105.mm], [4011.mm,8.mm,105.mm], [4011.mm,300.mm,105.mm], [4003.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -16948,7 +16948,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Walkway Near bracket 8 gusset"
   ge = grp.entities
-  f = ge.add_face([3893.mm,8.mm,0.mm], [3893.mm,8.mm,105.mm], [3893.mm,70.mm,105.mm])
+  f = ge.add_face([4003.mm,8.mm,0.mm], [4003.mm,8.mm,105.mm], [4003.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
@@ -19893,7 +19893,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "ACC-02 -> BV-05 (recycled spray)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-797.0039999999999.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(-742.0039999999999.mm, 0.mm, 0.mm)
   circle = ge.add_circle([3140.004.mm,35.mm,948.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -19907,8 +19907,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "ACC-02 -> BV-05 (recycled spray) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2343.mm,35.mm,927.mm], [0.000000,0.000000,1.000000], [-0.000000,-1.000000,-0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2343.mm,35.mm,948.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([2398.mm,35.mm,927.mm], [0.000000,0.000000,1.000000], [-0.000000,-1.000000,-0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2398.mm,35.mm,948.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -19922,7 +19922,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "ACC-02 -> BV-05 (recycled spray)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -210.34000000000003.mm)
-  circle = ge.add_circle([2322.mm,35.mm,927.mm], vec, 10.5.mm, 16)
+  circle = ge.add_circle([2377.mm,35.mm,927.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -19935,8 +19935,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "ACC-02 -> BV-05 (recycled spray) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2322.mm,51.660000000000004.mm,716.66.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 16.660000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2322.mm,35.mm,716.66.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([2377.mm,51.660000000000004.mm,716.66.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 16.660000000000004.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2377.mm,35.mm,716.66.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -19950,7 +19950,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "ACC-02 -> BV-05 (recycled spray)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 8.843400000000003.mm, 0.mm)
-  circle = ge.add_circle([2322.mm,51.66.mm,700.mm], vec, 10.5.mm, 16)
+  circle = ge.add_circle([2377.mm,51.66.mm,700.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -19963,8 +19963,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "ACC-02 -> BV-05 (recycled spray) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2313.5034.mm,60.5034.mm,700.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 8.496600000000003.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2322.mm,60.5034.mm,700.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([2368.5034.mm,60.5034.mm,700.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 8.496600000000003.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2377.mm,60.5034.mm,700.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -19978,7 +19978,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "ACC-02 -> BV-05 (recycled spray)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-31.503400000000056.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2313.5034.mm,69.mm,700.mm], vec, 10.5.mm, 16)
+  circle = ge.add_circle([2368.5034.mm,69.mm,700.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20248,7 +20248,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # 3W-BV-05a (Blue/Brown selector) body
   grp = ents.add_group
   grp.name = "3W-BV-05a (Blue/Brown selector) body"
-  face = grp.entities.add_face([2226.mm,46.mm,677.mm], [2272.mm,46.mm,677.mm], [2272.mm,92.mm,677.mm], [2226.mm,92.mm,677.mm])
+  face = grp.entities.add_face([2281.mm,46.mm,677.mm], [2327.mm,46.mm,677.mm], [2327.mm,92.mm,677.mm], [2281.mm,92.mm,677.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(46.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -20260,7 +20260,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "3W-BV-05a (Blue/Brown selector) run +"
   ge = grp.entities
-  circle = ge.add_circle([2249.mm,69.mm,723.mm], [0,0,1], 13.mm, 24)
+  circle = ge.add_circle([2304.mm,69.mm,723.mm], [0,0,1], 13.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(10.mm)
@@ -20273,7 +20273,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "3W-BV-05a (Blue/Brown selector) run -"
   ge = grp.entities
-  circle = ge.add_circle([2249.mm,69.mm,667.mm], [0,0,1], 13.mm, 24)
+  circle = ge.add_circle([2304.mm,69.mm,667.mm], [0,0,1], 13.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(10.mm)
@@ -20286,7 +20286,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "3W-BV-05a (Blue/Brown selector) branch"
   ge = grp.entities
-  circle = ge.add_circle([2272.mm,69.mm,700.mm], [1,0,0], 13.mm, 24)
+  circle = ge.add_circle([2327.mm,69.mm,700.mm], [1,0,0], 13.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
@@ -20299,7 +20299,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "3W-BV-05a (Blue/Brown selector) handle stem"
   ge = grp.entities
-  circle = ge.add_circle([2249.mm,92.mm,700.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2304.mm,92.mm,700.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(42.mm)
@@ -20311,7 +20311,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # 3W-BV-05a (Blue/Brown selector) handle lever
   grp = ents.add_group
   grp.name = "3W-BV-05a (Blue/Brown selector) handle lever"
-  face = grp.entities.add_face([2241.mm,133.mm,668.mm], [2257.mm,133.mm,668.mm], [2257.mm,147.mm,668.mm], [2241.mm,147.mm,668.mm])
+  face = grp.entities.add_face([2296.mm,133.mm,668.mm], [2312.mm,133.mm,668.mm], [2312.mm,147.mm,668.mm], [2296.mm,147.mm,668.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(64.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -20324,7 +20324,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "BV-05 fresh supply (trunk -> selector)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, 619.mm)
-  circle = ge.add_circle([2249.mm,69.mm,48.mm], vec, 10.5.mm, 16)
+  circle = ge.add_circle([2304.mm,69.mm,48.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20338,7 +20338,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "BV-05a -> BV-05b (up the pinhole wall)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, 267.mm)
-  circle = ge.add_circle([2249.mm,69.mm,733.mm], vec, 10.5.mm, 16)
+  circle = ge.add_circle([2304.mm,69.mm,733.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20351,7 +20351,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "BV-05b (spray on/off)"
   ge = grp.entities
-  circle = ge.add_circle([2249.mm,69.mm,878.mm], [0,0,1], 18.5.mm, 24)
+  circle = ge.add_circle([2304.mm,69.mm,878.mm], [0,0,1], 18.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
@@ -20364,7 +20364,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "BV-05b (spray on/off) handle stem"
   ge = grp.entities
-  circle = ge.add_circle([2249.mm,87.5.mm,900.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2304.mm,87.5.mm,900.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(28.mm)
@@ -20376,7 +20376,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # BV-05b (spray on/off) handle
   grp = ents.add_group
   grp.name = "BV-05b (spray on/off) handle"
-  face = grp.entities.add_face([2242.mm,115.5.mm,876.mm], [2256.mm,115.5.mm,876.mm], [2256.mm,124.5.mm,876.mm], [2242.mm,124.5.mm,876.mm])
+  face = grp.entities.add_face([2297.mm,115.5.mm,876.mm], [2311.mm,115.5.mm,876.mm], [2311.mm,124.5.mm,876.mm], [2297.mm,124.5.mm,876.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -20388,8 +20388,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(13.099999999999909.mm, 41.099999999999994.mm, -28.mm)
-  circle = ge.add_circle([2249.mm,69.mm,1000.mm], vec, 7.mm, 10)
+  vec = Geom::Vector3d.new(7.599999999999909.mm, 41.099999999999994.mm, -28.mm)
+  circle = ge.add_circle([2304.mm,69.mm,1000.mm], vec, 7.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20402,8 +20402,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(25.742872561447257.mm, -10.172043052222222.mm, -31.951075290076687.mm)
-  circle = ge.add_circle([2262.1.mm,110.1.mm,972.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(27.192906540531567.mm, -7.425532216938137.mm, -31.331545871718617.mm)
+  circle = ge.add_circle([2311.6.mm,110.1.mm,972.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20416,8 +20416,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-24.437929631876614.mm, 15.218089673404663.mm, -18.15943435112206.mm)
-  circle = ge.add_circle([2287.842872561447.mm,99.92795694777777.mm,940.0489247099233.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-25.442291099956492.mm, 11.079875160746909.mm, -18.454947973320373.mm)
+  circle = ge.add_circle([2338.7929065405315.mm,102.67446778306186.mm,940.6684541282814.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20430,8 +20430,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.444709939103177.mm, 27.183844916814778.mm, 1.2728413088594834.mm)
-  circle = ge.add_circle([2263.4049429295706.mm,115.14604662118244.mm,921.8894903588013.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-23.783521102021496.mm, 23.3453001267916.mm, -0.0008187558651115978.mm)
+  circle = ge.add_circle([2313.350615440575.mm,113.75434294380877.mm,922.213506154961.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20444,8 +20444,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1.9862222058245607.mm, 30.557670393798645.mm, 14.861070466359138.mm)
-  circle = ge.add_circle([2242.9602329904674.mm,142.3298915379972.mm,923.1623316676607.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-7.317572066445791.mm, 29.545941392927404.mm, 13.570165840868754.mm)
+  circle = ge.add_circle([2289.5670943385535.mm,137.09964307060037.mm,922.2126873990959.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20458,8 +20458,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(20.02837134763695.mm, 23.345599428250125.mm, 14.57446542586979.mm)
-  circle = ge.add_circle([2240.974010784643.mm,172.88756193179586.mm,938.0234021340199.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(14.62187491716577.mm, 26.166981319180934.mm, 14.56532791388554.mm)
+  circle = ge.add_circle([2282.2495222721077.mm,166.64558446352777.mm,935.7828532399647.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20472,8 +20472,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(32.588212206790104.mm, 9.81004252987725.mm, 0.5824128091476268.mm)
-  circle = ge.add_circle([2261.0023821322798.mm,196.23316136004598.mm,952.5978675598897.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(29.59850044901168.mm, 15.123774779705514.mm, 2.420562387799464.mm)
+  circle = ge.add_circle([2296.8713971892735.mm,192.8125657827087.mm,950.3481811538502.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20486,8 +20486,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(28.27030107863675.mm, -2.049342470167659.mm, -18.845635736589884.mm)
-  circle = ge.add_circle([2293.59059433907.mm,206.04320388992323.mm,953.1802803690373.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(29.122842657768615.mm, 2.676135151998551.mm, -15.979901466207707.mm)
+  circle = ge.add_circle([2326.469897638285.mm,207.93634056241422.mm,952.7687435416497.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20500,8 +20500,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(9.626569282287164.mm, -5.22353312821528.mm, -32.22749725723065.mm)
-  circle = ge.add_circle([2321.8608954177066.mm,203.99386141975558.mm,934.3346446324474.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(13.464526945632315.mm, -4.12002488303051.mm, -30.205807782348074.mm)
+  circle = ge.add_circle([2355.5927402960538.mm,210.61247571441277.mm,936.788842075442.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20514,8 +20514,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-12.324339753964068.mm, 2.163450934367688.mm, -31.654349521613653.mm)
-  circle = ge.add_circle([2331.487464699994.mm,198.7703282915403.mm,902.1071473752168.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-8.5005704811947.mm, -1.4123193946456922.mm, -32.19323795632204.mm)
+  circle = ge.add_circle([2369.057267241686.mm,206.49245083138226.mm,906.5830342930939.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20528,8 +20528,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-24.609205741421192.mm, 15.745823710509569.mm, -17.464928926480184.mm)
-  circle = ge.add_circle([2319.1631249460297.mm,200.93377922590798.mm,870.4527978536031.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-24.321590334789107.mm, 9.264395687589086.mm, -20.815622278017486.mm)
+  circle = ge.add_circle([2360.5566967604914.mm,205.08013143673656.mm,874.3897963367718.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20542,8 +20542,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-19.967542455610328.mm, 27.496258688261946.mm, 1.9546663102964885.mm)
-  circle = ge.add_circle([2294.5539192046085.mm,216.67960293641755.mm,852.9878689271229.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-25.0304279825732.mm, 21.858051731198742.mm, -2.5223330898315908.mm)
+  circle = ge.add_circle([2336.2351064257023.mm,214.34452712432565.mm,853.5741740587544.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20556,8 +20556,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1.1426221780275228.mm, 30.47012404383031.mm, 15.127249229946301.mm)
-  circle = ge.add_circle([2274.586376748998.mm,244.1758616246795.mm,854.9425352374194.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-10.225280617164117.mm, 29.229967023441304.mm, 12.317125427606697.mm)
+  circle = ge.add_circle([2311.204678443129.mm,236.2025788555244.mm,851.0518409689228.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20570,8 +20570,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(20.73982734698302.mm, 22.909833779159158.mm, 14.267683476362436.mm)
-  circle = ge.add_circle([2273.4437545709707.mm,274.6459856685098.mm,870.0697844673657.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(11.70159185010516.mm, 27.20139023885696.mm, 15.291044174207968.mm)
+  circle = ge.add_circle([2300.979397825965.mm,265.4325458789657.mm,863.3689663965295.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20584,8 +20584,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(32.74704612869027.mm, 9.283599706710277.mm, -0.11601846425492113.mm)
-  circle = ge.add_circle([2294.1835819179537.mm,297.55581944766897.mm,884.3374679437281.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(28.32099785185528.mm, 16.922214938526054.mm, 4.71366491598269.mm)
+  circle = ge.add_circle([2312.68098967607.mm,292.63393611782266.mm,878.6600105707374.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20598,8 +20598,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(27.782640388940763.mm, -2.355329169784227.mm, -19.522936036206147.mm)
-  circle = ge.add_circle([2326.930628046644.mm,306.83941915437924.mm,884.2214494794732.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(30.212269609759915.mm, 4.219165346489717.mm, -13.41925197232456.mm)
+  circle = ge.add_circle([2341.0019875279254.mm,309.5561510563487.mm,883.3736754867201.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20612,8 +20612,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.780626625998138.mm, -5.128222316210213.mm, -32.48337491522966.mm)
-  circle = ge.add_circle([2354.7132684355847.mm,304.484089984595.mm,864.6985134432671.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(16.303344565877524.mm, -3.7070673714216014.mm, -28.829108938027275.mm)
+  circle = ge.add_circle([2371.2142571376853.mm,313.7753164028384.mm,869.9544235143956.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20626,8 +20626,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-13.028603285780264.mm, 2.6037295562041436.mm, -31.337578125518007.mm)
-  circle = ge.add_circle([2363.493895061583.mm,299.3558676683848.mm,832.2151385280374.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-5.521538698810218.mm, -2.3635184749961695.mm, -32.78086797976084.mm)
+  circle = ge.add_circle([2387.517601703563.mm,310.0682490314168.mm,841.1253145763683.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20640,8 +20640,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-24.75556292444071.mm, 16.27086080232459.mm, -16.762723734478755.mm)
-  circle = ge.add_circle([2350.4652917758026.mm,301.95959722458895.mm,800.8775604025194.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-22.8910009355086.mm, 7.48822478073248.mm, -23.03448459363426.mm)
+  circle = ge.add_circle([2381.9960630047526.mm,307.70473055642066.mm,808.3444465966074.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20654,8 +20654,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-19.46949464082536.mm, 27.795751754582625.mm, 2.627294574563166.mm)
-  circle = ge.add_circle([2325.709728851362.mm,318.23045802691354.mm,784.1148366680407.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-25.959206907817133.mm, 20.26372693280092.mm, -5.114671270046074.mm)
+  circle = ge.add_circle([2359.105062069244.mm,315.19295533715314.mm,785.3099620029732.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20668,8 +20668,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-0.2945209116460319.mm, 30.367069502805123.mm, 15.37277012114123.mm)
-  circle = ge.add_circle([2306.2402342105365.mm,346.02620978149616.mm,786.7421312426038.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-12.986951909048457.mm, 28.72122726706374.mm, 10.82077164884106.mm)
+  circle = ge.add_circle([2333.145855161427.mm,335.45668226995406.mm,780.1952907329271.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20682,8 +20682,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(21.43674521241337.mm, 22.465137958642515.mm, 13.94099154114474.mm)
-  circle = ge.add_circle([2305.9457132988905.mm,376.3932792843013.mm,802.114901363745.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(8.672474498809606.mm, 28.066613354005426.mm, 15.738879108592073.mm)
+  circle = ge.add_circle([2320.1589032523784.mm,364.1779095370178.mm,791.0160623817682.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20696,8 +20696,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(32.880894735666516.mm, 8.760082557871385.mm, -0.82184482375078.mm)
-  circle = ge.add_circle([2327.382458511304.mm,398.8584172429438.mm,816.0558929048898.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(26.7414818630059.mm, 18.670951415688307.mm, 6.851834476558338.mm)
+  circle = ge.add_circle([2328.831377751188.mm,392.2445228910232.mm,806.7549414903602.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20710,8 +20710,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(27.27431378969777.mm, -2.648263453907873.mm, -20.190745947905157.mm)
-  circle = ge.add_circle([2360.2633532469704.mm,407.6184998008152.mm,815.234048081139.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(30.977699581108936.mm, 5.860148386994126.mm, -10.802763731361324.mm)
+  circle = ge.add_circle([2355.572859614194.mm,410.91547430671153.mm,813.6067759669186.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20724,8 +20724,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(7.93055123748627.mm, -5.0174464636789935.mm, -32.71848563131789.mm)
-  circle = ge.add_circle([2387.537667036668.mm,404.9702363469073.mm,795.0433021332339.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(18.9798384761948.mm, -3.104024806319444.mm, -27.21745168288021.mm)
+  circle = ge.add_circle([2386.550559195303.mm,416.77562269370566.mm,802.8040122355573.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20738,8 +20738,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-13.718023883875048.mm, 3.0527458404600907.mm, -31.001036716665226.mm)
-  circle = ge.add_circle([2395.4682182741544.mm,399.9527898832283.mm,762.324816501916.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-2.451144575901253.mm, -3.1402495206933736.mm, -33.08760550276236.mm)
+  circle = ge.add_circle([2405.5303976714977.mm,413.6715978873862.mm,775.586560552677.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20752,8 +20752,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-24.876873839208656.mm, 16.79274412719667.mm, -16.053429746307756.mm)
-  circle = ge.add_circle([2381.7501943902794.mm,403.0055357236884.mm,731.3237797852507.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-21.167151654266036.mm, 5.772008130549523.mm, -25.08574351453001.mm)
+  circle = ge.add_circle([2403.0792530955964.mm,410.53134836669284.mm,742.4989550499147.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20766,8 +20766,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(10.026679448929372.mm, 19.101720149114897.mm, 32.72964996105702.mm)
-  circle = ge.add_circle([2356.8733205510707.mm,419.7982798508851.mm,715.270350038943.mm], vec, 7.mm, 8)
+  vec = Geom::Vector3d.new(-9.512101441330287.mm, 22.596643502757615.mm, 30.586788464615324.mm)
+  circle = ge.add_circle([2381.9121014413304.mm,416.30335649724236.mm,717.4132115353847.mm], vec, 7.mm, 8)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -20780,8 +20780,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(13.099999999999909.mm, 41.10000000000002.mm, -28.mm)
-  circle = ge.add_circle([2366.9.mm,438.9.mm,748.mm], vec, 7.mm, 10)
+  vec = Geom::Vector3d.new(7.599999999999909.mm, 41.10000000000002.mm, -28.mm)
+  circle = ge.add_circle([2372.4.mm,438.9.mm,748.mm], vec, 7.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -21845,7 +21845,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Shim Base
   grp = ents.add_group
   grp.name = "Tray Shim Base"
-  face = grp.entities.add_face([170.mm,80.mm,0.mm], [4629.mm,80.mm,0.mm], [4629.mm,2280.mm,0.mm], [170.mm,2280.mm,0.mm])
+  face = grp.entities.add_face([280.mm,80.mm,0.mm], [4629.mm,80.mm,0.mm], [4629.mm,2280.mm,0.mm], [280.mm,2280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -21857,7 +21857,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Processing Tray Floor A"
   ge = grp.entities
-  f = ge.add_face([170.mm,80.mm,20.mm], [4629.mm,80.mm,20.mm], [4629.mm,2280.mm,31.mm])
+  f = ge.add_face([280.mm,80.mm,20.mm], [4629.mm,80.mm,20.mm], [4629.mm,2280.mm,31.mm])
   f.pushpull(-2.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
@@ -21868,7 +21868,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Processing Tray Floor B"
   ge = grp.entities
-  f = ge.add_face([170.mm,80.mm,20.mm], [4629.mm,2280.mm,31.mm], [170.mm,2280.mm,31.mm])
+  f = ge.add_face([280.mm,80.mm,20.mm], [4629.mm,2280.mm,31.mm], [280.mm,2280.mm,31.mm])
   f.pushpull(-2.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
@@ -21878,7 +21878,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Rim Near
   grp = ents.add_group
   grp.name = "Tray Rim Near"
-  face = grp.entities.add_face([170.mm,80.mm,20.mm], [4629.mm,80.mm,20.mm], [4629.mm,82.mm,20.mm], [170.mm,82.mm,20.mm])
+  face = grp.entities.add_face([280.mm,80.mm,20.mm], [4629.mm,80.mm,20.mm], [4629.mm,82.mm,20.mm], [280.mm,82.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -21889,7 +21889,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Rim Far
   grp = ents.add_group
   grp.name = "Tray Rim Far"
-  face = grp.entities.add_face([170.mm,2278.mm,31.mm], [4629.mm,2278.mm,31.mm], [4629.mm,2280.mm,31.mm], [170.mm,2280.mm,31.mm])
+  face = grp.entities.add_face([280.mm,2278.mm,31.mm], [4629.mm,2278.mm,31.mm], [4629.mm,2280.mm,31.mm], [280.mm,2280.mm,31.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -21900,7 +21900,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Tray Rim Left
   grp = ents.add_group
   grp.name = "Tray Rim Left"
-  face = grp.entities.add_face([170.mm,80.mm,25.5.mm], [172.mm,80.mm,25.5.mm], [172.mm,2280.mm,25.5.mm], [170.mm,2280.mm,25.5.mm])
+  face = grp.entities.add_face([280.mm,80.mm,25.5.mm], [282.mm,80.mm,25.5.mm], [282.mm,2280.mm,25.5.mm], [280.mm,2280.mm,25.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -21922,7 +21922,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Chemistry Bath
   grp = ents.add_group
   grp.name = "Chemistry Bath"
-  face = grp.entities.add_face([172.mm,82.mm,25.5.mm], [4627.mm,82.mm,25.5.mm], [4627.mm,2278.mm,25.5.mm], [172.mm,2278.mm,25.5.mm])
+  face = grp.entities.add_face([282.mm,82.mm,25.5.mm], [4627.mm,82.mm,25.5.mm], [4627.mm,2278.mm,25.5.mm], [282.mm,2278.mm,25.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -21937,10 +21937,423 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # ═══ [built] Step 3.7 — Film-plane beams + combined corner plates ═══
   defn = model.definitions.add("[built] Step 3.7 — Film-plane beams + combined corner plates")
   ents = defn.entities
-  # FP Rail BR
+  # U-rail STUB (fixed, parks corner) web BL
   grp = ents.add_group
-  grp.name = "FP Rail BR"
-  face = grp.entities.add_face([4609.mm,0.mm,160.mm], [4649.mm,0.mm,160.mm], [4649.mm,2362.mm,160.mm], [4609.mm,2362.mm,160.mm])
+  grp.name = "U-rail STUB (fixed, parks corner) web BL"
+  face = grp.entities.add_face([241.mm,2090.mm,232.mm], [246.mm,2090.mm,232.mm], [246.mm,2362.mm,232.mm], [241.mm,2362.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) flange BL 303
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) flange BL 303"
+  face = grp.entities.add_face([241.mm,2090.mm,303.mm], [279.mm,2090.mm,303.mm], [279.mm,2362.mm,303.mm], [241.mm,2362.mm,303.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) flange BL 232
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) flange BL 232"
+  face = grp.entities.add_face([241.mm,2090.mm,232.mm], [279.mm,2090.mm,232.mm], [279.mm,2362.mm,232.mm], [241.mm,2362.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) bottom-flange lip BL
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) bottom-flange lip BL"
+  face = grp.entities.add_face([274.mm,2090.mm,237.mm], [279.mm,2090.mm,237.mm], [279.mm,2362.mm,237.mm], [274.mm,2362.mm,237.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) web BL
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) web BL"
+  face = grp.entities.add_face([241.mm,0.mm,232.mm], [246.mm,0.mm,232.mm], [246.mm,2090.mm,232.mm], [241.mm,2090.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) flange BL 303
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) flange BL 303"
+  face = grp.entities.add_face([241.mm,0.mm,303.mm], [279.mm,0.mm,303.mm], [279.mm,2090.mm,303.mm], [241.mm,2090.mm,303.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) flange BL 232
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) flange BL 232"
+  face = grp.entities.add_face([241.mm,0.mm,232.mm], [279.mm,0.mm,232.mm], [279.mm,2090.mm,232.mm], [241.mm,2090.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) bottom-flange lip BL
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) bottom-flange lip BL"
+  face = grp.entities.add_face([274.mm,0.mm,237.mm], [279.mm,0.mm,237.mm], [279.mm,2090.mm,237.mm], [274.mm,2090.mm,237.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL
+  grp = ents.add_group
+  grp.name = "Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"
+  face = grp.entities.add_face([241.mm,2030.mm,308.mm], [279.mm,2030.mm,308.mm], [279.mm,2180.mm,308.mm], [241.mm,2180.mm,308.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Locating pin (bridge↔STUB, flush to inner-rail top) BL
+  grp = ents.add_group
+  grp.name = "Locating pin (bridge↔STUB, flush to inner-rail top) BL"
+  ge = grp.entities
+  circle = ge.add_circle([260.mm,2135.mm,303.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(17.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Bottom support bridge (STUB → beam underside) BL
+  grp = ents.add_group
+  grp.name = "Bottom support bridge (STUB → beam underside) BL"
+  face = grp.entities.add_face([241.mm,2058.mm,220.mm], [279.mm,2058.mm,220.mm], [279.mm,2122.mm,220.mm], [241.mm,2122.mm,220.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Rail far flange (pivot post) BL
+  grp = ents.add_group
+  grp.name = "Rail far flange (pivot post) BL"
+  face = grp.entities.add_face([205.mm,2350.mm,227.mm], [315.mm,2350.mm,227.mm], [315.mm,2362.mm,227.mm], [205.mm,2362.mm,227.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Pinhole-wall gusset/seat BL
+  grp = ents.add_group
+  grp.name = "Pinhole-wall gusset/seat BL"
+  face = grp.entities.add_face([204.mm,0.mm,202.mm], [316.mm,0.mm,202.mm], [316.mm,45.mm,202.mm], [204.mm,45.mm,202.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(131.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Length splice (pinhole end, outboard web) BL
+  grp = ents.add_group
+  grp.name = "Length splice (pinhole end, outboard web) BL"
+  face = grp.entities.add_face([229.mm,205.mm,232.mm], [241.mm,205.mm,232.mm], [241.mm,315.mm,232.mm], [229.mm,315.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) BL 2245
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2245.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Wheel axle Ø10 BL 2245
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2245.mm,253.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) BL 2245
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2245.mm,293.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Keeper axle Ø8 BL 2245
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2245.mm,293.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) BL 2285
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2285.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Wheel axle Ø10 BL 2285
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2285.mm,253.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) BL 2285
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2285.mm,293.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Keeper axle Ø8 BL 2285
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2285.mm,293.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Carriage plate (bolted to skate axles) BL
+  grp = ents.add_group
+  grp.name = "Carriage plate (bolted to skate axles) BL"
+  face = grp.entities.add_face([287.mm,2238.mm,154.mm], [301.mm,2238.mm,154.mm], [301.mm,2324.mm,154.mm], [287.mm,2324.mm,154.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(157.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) BL 2245
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2245.mm,231.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) BL 2285
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2285.mm,231.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Cam-brake base (5128A63) BL
+  grp = ents.add_group
+  grp.name = "Cam-brake base (5128A63) BL"
+  face = grp.entities.add_face([285.mm,2270.mm,311.mm], [295.mm,2270.mm,311.mm], [295.mm,2292.mm,311.mm], [285.mm,2292.mm,311.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Cam-brake hold-down arm BL
+  grp = ents.add_group
+  grp.name = "Cam-brake hold-down arm BL"
+  face = grp.entities.add_face([268.mm,2277.mm,312.mm], [290.mm,2277.mm,312.mm], [290.mm,2285.mm,312.mm], [268.mm,2285.mm,312.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Cam-brake UHMW pad BL
+  grp = ents.add_group
+  grp.name = "Cam-brake UHMW pad BL"
+  face = grp.entities.add_face([262.mm,2276.mm,308.mm], [274.mm,2276.mm,308.mm], [274.mm,2286.mm,308.mm], [262.mm,2286.mm,308.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Cam-brake lever BL
+  grp = ents.add_group
+  grp.name = "Cam-brake lever BL"
+  ge = grp.entities
+  circle = ge.add_circle([268.mm,2281.mm,312.mm], [0,0,1], 2.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Vertical Z slide rail (TILT, green) BL
+  grp = ents.add_group
+  grp.name = "Vertical Z slide rail (TILT, green) BL"
+  face = grp.entities.add_face([281.mm,2238.mm,140.mm], [291.mm,2238.mm,140.mm], [291.mm,2256.mm,140.mm], [281.mm,2256.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Horizontal X slide rail (SWING, purple) BL
+  grp = ents.add_group
+  grp.name = "Horizontal X slide rail (SWING, purple) BL"
+  face = grp.entities.add_face([240.mm,2238.mm,142.mm], [500.mm,2238.mm,142.mm], [500.mm,2252.mm,142.mm], [240.mm,2252.mm,142.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-joint (Belden UJ-SS750x375, setscrew) BL
+  grp = ents.add_group
+  grp.name = "U-joint (Belden UJ-SS750x375, setscrew) BL"
+  face = grp.entities.add_face([248.mm,2233.mm,146.mm], [272.mm,2233.mm,146.mm], [272.mm,2257.mm,146.mm], [248.mm,2257.mm,146.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Input stub 3/8 (X slide → U-joint) BL
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 (X slide → U-joint) BL"
+  ge = grp.entities
+  circle = ge.add_circle([265.mm,2245.mm,160.mm], [1,0,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(46.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # 4040N12 304 shaft support (clamps input stub → X slide) BL
+  grp = ents.add_group
+  grp.name = "4040N12 304 shaft support (clamps input stub → X slide) BL"
+  face = grp.entities.add_face([286.mm,2236.mm,149.mm], [309.mm,2236.mm,149.mm], [309.mm,2254.mm,149.mm], [286.mm,2254.mm,149.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Output stub 3/8 (U-joint → corner plate) BL
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 (U-joint → corner plate) BL"
+  ge = grp.entities
+  circle = ge.add_circle([260.mm,2223.mm,160.mm], [0,1,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Corner plate 304 SS (U-joint mount — angle frame → U-joint) BL
+  grp = ents.add_group
+  grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) BL"
+  face = grp.entities.add_face([246.mm,2229.mm,165.mm], [280.mm,2229.mm,165.mm], [280.mm,2245.mm,165.mm], [246.mm,2245.mm,165.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -21948,10 +22361,346 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # FP Rail TR
+  # Frame-corner bolt (angle frame → bracket) BL
   grp = ents.add_group
-  grp.name = "FP Rail TR"
-  face = grp.entities.add_face([4609.mm,0.mm,2204.mm], [4649.mm,0.mm,2204.mm], [4649.mm,2362.mm,2204.mm], [4609.mm,2362.mm,2204.mm])
+  grp.name = "Frame-corner bolt (angle frame → bracket) BL"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2231.mm,160.mm], [0,1,0], 3.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail (FLANGED) web BR
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) web BR"
+  face = grp.entities.add_face([4638.mm,0.mm,232.mm], [4643.mm,0.mm,232.mm], [4643.mm,2362.mm,232.mm], [4638.mm,2362.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail (FLANGED) flange BR 303
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) flange BR 303"
+  face = grp.entities.add_face([4605.mm,0.mm,303.mm], [4643.mm,0.mm,303.mm], [4643.mm,2362.mm,303.mm], [4605.mm,2362.mm,303.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail (FLANGED) flange BR 232
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) flange BR 232"
+  face = grp.entities.add_face([4605.mm,0.mm,232.mm], [4643.mm,0.mm,232.mm], [4643.mm,2362.mm,232.mm], [4605.mm,2362.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail (FLANGED) bottom-flange lip BR
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) bottom-flange lip BR"
+  face = grp.entities.add_face([4605.mm,0.mm,237.mm], [4610.mm,0.mm,237.mm], [4610.mm,2362.mm,237.mm], [4605.mm,2362.mm,237.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Rail end flange (outboard-trimmed) BR 0
+  grp = ents.add_group
+  grp.name = "Rail end flange (outboard-trimmed) BR 0"
+  face = grp.entities.add_face([4569.mm,0.mm,227.mm], [4644.mm,0.mm,227.mm], [4644.mm,12.mm,227.mm], [4569.mm,12.mm,227.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Rail end flange (outboard-trimmed) BR 2350
+  grp = ents.add_group
+  grp.name = "Rail end flange (outboard-trimmed) BR 2350"
+  face = grp.entities.add_face([4569.mm,2350.mm,227.mm], [4644.mm,2350.mm,227.mm], [4644.mm,2362.mm,227.mm], [4569.mm,2362.mm,227.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) BR 2245
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) BR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4614.mm,2245.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Wheel axle Ø10 BR 2245
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 BR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4585.mm,2245.mm,253.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) BR 2245
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) BR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4618.mm,2245.mm,293.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Keeper axle Ø8 BR 2245
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 BR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2245.mm,293.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(37.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) BR 2285
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) BR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4614.mm,2285.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Wheel axle Ø10 BR 2285
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 BR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4585.mm,2285.mm,253.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) BR 2285
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) BR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4618.mm,2285.mm,293.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Keeper axle Ø8 BR 2285
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 BR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2285.mm,293.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(37.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Carriage plate (bolted to skate axles) BR
+  grp = ents.add_group
+  grp.name = "Carriage plate (bolted to skate axles) BR"
+  face = grp.entities.add_face([4585.mm,2238.mm,154.mm], [4599.mm,2238.mm,154.mm], [4599.mm,2324.mm,154.mm], [4585.mm,2324.mm,154.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(157.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) BR 2245
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) BR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2245.mm,231.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) BR 2285
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) BR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2285.mm,231.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Cam-brake base (5128A63) BR
+  grp = ents.add_group
+  grp.name = "Cam-brake base (5128A63) BR"
+  face = grp.entities.add_face([4589.mm,2270.mm,311.mm], [4599.mm,2270.mm,311.mm], [4599.mm,2292.mm,311.mm], [4589.mm,2292.mm,311.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Cam-brake hold-down arm BR
+  grp = ents.add_group
+  grp.name = "Cam-brake hold-down arm BR"
+  face = grp.entities.add_face([4594.mm,2277.mm,312.mm], [4616.mm,2277.mm,312.mm], [4616.mm,2285.mm,312.mm], [4594.mm,2285.mm,312.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Cam-brake UHMW pad BR
+  grp = ents.add_group
+  grp.name = "Cam-brake UHMW pad BR"
+  face = grp.entities.add_face([4610.mm,2276.mm,308.mm], [4622.mm,2276.mm,308.mm], [4622.mm,2286.mm,308.mm], [4610.mm,2286.mm,308.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Cam-brake lever BR
+  grp = ents.add_group
+  grp.name = "Cam-brake lever BR"
+  ge = grp.entities
+  circle = ge.add_circle([4616.mm,2281.mm,312.mm], [0,0,1], 2.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Vertical Z slide rail (TILT, green) BR
+  grp = ents.add_group
+  grp.name = "Vertical Z slide rail (TILT, green) BR"
+  face = grp.entities.add_face([4593.mm,2238.mm,140.mm], [4603.mm,2238.mm,140.mm], [4603.mm,2256.mm,140.mm], [4593.mm,2256.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Horizontal X slide rail (SWING, purple) BR
+  grp = ents.add_group
+  grp.name = "Horizontal X slide rail (SWING, purple) BR"
+  face = grp.entities.add_face([4384.mm,2238.mm,142.mm], [4644.mm,2238.mm,142.mm], [4644.mm,2252.mm,142.mm], [4384.mm,2252.mm,142.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-joint (Belden UJ-SS750x375, setscrew) BR
+  grp = ents.add_group
+  grp.name = "U-joint (Belden UJ-SS750x375, setscrew) BR"
+  face = grp.entities.add_face([4612.mm,2233.mm,146.mm], [4636.mm,2233.mm,146.mm], [4636.mm,2257.mm,146.mm], [4612.mm,2257.mm,146.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Input stub 3/8 (X slide → U-joint) BR
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 (X slide → U-joint) BR"
+  ge = grp.entities
+  circle = ge.add_circle([4573.mm,2245.mm,160.mm], [1,0,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(46.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # 4040N12 304 shaft support (clamps input stub → X slide) BR
+  grp = ents.add_group
+  grp.name = "4040N12 304 shaft support (clamps input stub → X slide) BR"
+  face = grp.entities.add_face([4575.mm,2236.mm,149.mm], [4598.mm,2236.mm,149.mm], [4598.mm,2254.mm,149.mm], [4575.mm,2254.mm,149.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Output stub 3/8 (U-joint → corner plate) BR
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 (U-joint → corner plate) BR"
+  ge = grp.entities
+  circle = ge.add_circle([4624.mm,2223.mm,160.mm], [0,1,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Corner plate 304 SS (U-joint mount — angle frame → U-joint) BR
+  grp = ents.add_group
+  grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) BR"
+  face = grp.entities.add_face([4604.mm,2229.mm,165.mm], [4638.mm,2229.mm,165.mm], [4638.mm,2245.mm,165.mm], [4604.mm,2245.mm,165.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -21959,10 +22708,436 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # FP Rail BL
+  # Frame-corner bolt (angle frame → bracket) BR
   grp = ents.add_group
-  grp.name = "FP Rail BL"
-  face = grp.entities.add_face([150.mm,0.mm,160.mm], [190.mm,0.mm,160.mm], [190.mm,2362.mm,160.mm], [150.mm,2362.mm,160.mm])
+  grp.name = "Frame-corner bolt (angle frame → bracket) BR"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2231.mm,160.mm], [0,1,0], 3.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) web TL
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) web TL"
+  face = grp.entities.add_face([241.mm,2090.mm,2262.mm], [246.mm,2090.mm,2262.mm], [246.mm,2362.mm,2262.mm], [241.mm,2362.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) flange TL 2333
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) flange TL 2333"
+  face = grp.entities.add_face([241.mm,2090.mm,2333.mm], [279.mm,2090.mm,2333.mm], [279.mm,2362.mm,2333.mm], [241.mm,2362.mm,2333.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) flange TL 2262
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) flange TL 2262"
+  face = grp.entities.add_face([241.mm,2090.mm,2262.mm], [279.mm,2090.mm,2262.mm], [279.mm,2362.mm,2262.mm], [241.mm,2362.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) bottom-flange lip TL
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) bottom-flange lip TL"
+  face = grp.entities.add_face([274.mm,2090.mm,2267.mm], [279.mm,2090.mm,2267.mm], [279.mm,2362.mm,2267.mm], [274.mm,2362.mm,2267.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) web TL
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) web TL"
+  face = grp.entities.add_face([241.mm,0.mm,2262.mm], [246.mm,0.mm,2262.mm], [246.mm,2090.mm,2262.mm], [241.mm,2090.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) flange TL 2333
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) flange TL 2333"
+  face = grp.entities.add_face([241.mm,0.mm,2333.mm], [279.mm,0.mm,2333.mm], [279.mm,2090.mm,2333.mm], [241.mm,2090.mm,2333.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) flange TL 2262
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) flange TL 2262"
+  face = grp.entities.add_face([241.mm,0.mm,2262.mm], [279.mm,0.mm,2262.mm], [279.mm,2090.mm,2262.mm], [241.mm,2090.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) bottom-flange lip TL
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) bottom-flange lip TL"
+  face = grp.entities.add_face([274.mm,0.mm,2267.mm], [279.mm,0.mm,2267.mm], [279.mm,2090.mm,2267.mm], [274.mm,2090.mm,2267.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) TL
+  grp = ents.add_group
+  grp.name = "Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) TL"
+  face = grp.entities.add_face([241.mm,2030.mm,2338.mm], [279.mm,2030.mm,2338.mm], [279.mm,2180.mm,2338.mm], [241.mm,2180.mm,2338.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Locating pin (bridge↔STUB, flush to inner-rail top) TL
+  grp = ents.add_group
+  grp.name = "Locating pin (bridge↔STUB, flush to inner-rail top) TL"
+  ge = grp.entities
+  circle = ge.add_circle([260.mm,2135.mm,2333.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(17.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Bottom support bridge (STUB → beam underside) TL
+  grp = ents.add_group
+  grp.name = "Bottom support bridge (STUB → beam underside) TL"
+  face = grp.entities.add_face([241.mm,2058.mm,2250.mm], [279.mm,2058.mm,2250.mm], [279.mm,2122.mm,2250.mm], [241.mm,2122.mm,2250.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Rail far flange (pivot post) TL
+  grp = ents.add_group
+  grp.name = "Rail far flange (pivot post) TL"
+  face = grp.entities.add_face([205.mm,2350.mm,2257.mm], [315.mm,2350.mm,2257.mm], [315.mm,2362.mm,2257.mm], [205.mm,2362.mm,2257.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Pinhole-wall gusset/seat TL
+  grp = ents.add_group
+  grp.name = "Pinhole-wall gusset/seat TL"
+  face = grp.entities.add_face([204.mm,0.mm,2232.mm], [316.mm,0.mm,2232.mm], [316.mm,45.mm,2232.mm], [204.mm,45.mm,2232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(131.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Length splice (pinhole end, outboard web) TL
+  grp = ents.add_group
+  grp.name = "Length splice (pinhole end, outboard web) TL"
+  face = grp.entities.add_face([229.mm,205.mm,2262.mm], [241.mm,205.mm,2262.mm], [241.mm,315.mm,2262.mm], [229.mm,315.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) TL 2245
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2245.mm,2283.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Wheel axle Ø10 TL 2245
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2245.mm,2283.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) TL 2245
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2245.mm,2323.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Keeper axle Ø8 TL 2245
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2245.mm,2323.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) TL 2285
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2285.mm,2283.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Wheel axle Ø10 TL 2285
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2285.mm,2283.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) TL 2285
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2285.mm,2323.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Keeper axle Ø8 TL 2285
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2285.mm,2323.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Carriage plate (bolted to skate axles) TL
+  grp = ents.add_group
+  grp.name = "Carriage plate (bolted to skate axles) TL"
+  face = grp.entities.add_face([287.mm,2238.mm,2246.mm], [301.mm,2238.mm,2246.mm], [301.mm,2324.mm,2246.mm], [287.mm,2324.mm,2246.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(95.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) TL 2245
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2245.mm,2261.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) TL 2285
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2285.mm,2261.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Cam-brake base (5128A63) TL
+  grp = ents.add_group
+  grp.name = "Cam-brake base (5128A63) TL"
+  face = grp.entities.add_face([285.mm,2270.mm,2341.mm], [295.mm,2270.mm,2341.mm], [295.mm,2292.mm,2341.mm], [285.mm,2292.mm,2341.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Cam-brake hold-down arm TL
+  grp = ents.add_group
+  grp.name = "Cam-brake hold-down arm TL"
+  face = grp.entities.add_face([268.mm,2277.mm,2342.mm], [290.mm,2277.mm,2342.mm], [290.mm,2285.mm,2342.mm], [268.mm,2285.mm,2342.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Cam-brake UHMW pad TL
+  grp = ents.add_group
+  grp.name = "Cam-brake UHMW pad TL"
+  face = grp.entities.add_face([262.mm,2276.mm,2338.mm], [274.mm,2276.mm,2338.mm], [274.mm,2286.mm,2338.mm], [262.mm,2286.mm,2338.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Cam-brake lever TL
+  grp = ents.add_group
+  grp.name = "Cam-brake lever TL"
+  ge = grp.entities
+  circle = ge.add_circle([268.mm,2281.mm,2342.mm], [0,0,1], 2.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Vertical Z slide rail (TILT, green) TL
+  grp = ents.add_group
+  grp.name = "Vertical Z slide rail (TILT, green) TL"
+  face = grp.entities.add_face([273.mm,2238.mm,1998.mm], [283.mm,2238.mm,1998.mm], [283.mm,2256.mm,1998.mm], [273.mm,2256.mm,1998.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Horizontal X slide rail (SWING, purple) TL
+  grp = ents.add_group
+  grp.name = "Horizontal X slide rail (SWING, purple) TL"
+  face = grp.entities.add_face([240.mm,2238.mm,2256.mm], [500.mm,2238.mm,2256.mm], [500.mm,2252.mm,2256.mm], [240.mm,2252.mm,2256.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-joint (Belden UJ-SS750x375, setscrew) TL
+  grp = ents.add_group
+  grp.name = "U-joint (Belden UJ-SS750x375, setscrew) TL"
+  face = grp.entities.add_face([248.mm,2233.mm,2238.mm], [272.mm,2233.mm,2238.mm], [272.mm,2257.mm,2238.mm], [248.mm,2257.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Input stub 3/8 (X slide → U-joint) TL
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 (X slide → U-joint) TL"
+  ge = grp.entities
+  circle = ge.add_circle([265.mm,2245.mm,2252.mm], [1,0,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(46.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # 4040N12 304 shaft support (clamps input stub → X slide) TL
+  grp = ents.add_group
+  grp.name = "4040N12 304 shaft support (clamps input stub → X slide) TL"
+  face = grp.entities.add_face([286.mm,2236.mm,2241.mm], [309.mm,2236.mm,2241.mm], [309.mm,2254.mm,2241.mm], [286.mm,2254.mm,2241.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Output stub 3/8 (U-joint → corner plate) TL
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 (U-joint → corner plate) TL"
+  ge = grp.entities
+  circle = ge.add_circle([260.mm,2223.mm,2252.mm], [0,1,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Corner plate 304 SS (U-joint mount — angle frame → U-joint) TL
+  grp = ents.add_group
+  grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) TL"
+  face = grp.entities.add_face([246.mm,2229.mm,2207.mm], [280.mm,2229.mm,2207.mm], [280.mm,2245.mm,2207.mm], [246.mm,2245.mm,2207.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -21970,10 +23145,346 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # FP Rail TL
+  # Frame-corner bolt (angle frame → bracket) TL
   grp = ents.add_group
-  grp.name = "FP Rail TL"
-  face = grp.entities.add_face([150.mm,0.mm,2204.mm], [190.mm,0.mm,2204.mm], [190.mm,2362.mm,2204.mm], [150.mm,2362.mm,2204.mm])
+  grp.name = "Frame-corner bolt (angle frame → bracket) TL"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2231.mm,2252.mm], [0,1,0], 3.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail (FLANGED) web TR
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) web TR"
+  face = grp.entities.add_face([4638.mm,0.mm,2262.mm], [4643.mm,0.mm,2262.mm], [4643.mm,2362.mm,2262.mm], [4638.mm,2362.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail (FLANGED) flange TR 2333
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) flange TR 2333"
+  face = grp.entities.add_face([4605.mm,0.mm,2333.mm], [4643.mm,0.mm,2333.mm], [4643.mm,2362.mm,2333.mm], [4605.mm,2362.mm,2333.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail (FLANGED) flange TR 2262
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) flange TR 2262"
+  face = grp.entities.add_face([4605.mm,0.mm,2262.mm], [4643.mm,0.mm,2262.mm], [4643.mm,2362.mm,2262.mm], [4605.mm,2362.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-rail (FLANGED) bottom-flange lip TR
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) bottom-flange lip TR"
+  face = grp.entities.add_face([4605.mm,0.mm,2267.mm], [4610.mm,0.mm,2267.mm], [4610.mm,2362.mm,2267.mm], [4605.mm,2362.mm,2267.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Rail end flange (outboard-trimmed) TR 0
+  grp = ents.add_group
+  grp.name = "Rail end flange (outboard-trimmed) TR 0"
+  face = grp.entities.add_face([4569.mm,0.mm,2257.mm], [4644.mm,0.mm,2257.mm], [4644.mm,12.mm,2257.mm], [4569.mm,12.mm,2257.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Rail end flange (outboard-trimmed) TR 2350
+  grp = ents.add_group
+  grp.name = "Rail end flange (outboard-trimmed) TR 2350"
+  face = grp.entities.add_face([4569.mm,2350.mm,2257.mm], [4644.mm,2350.mm,2257.mm], [4644.mm,2362.mm,2257.mm], [4569.mm,2362.mm,2257.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) TR 2245
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) TR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4614.mm,2245.mm,2283.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Wheel axle Ø10 TR 2245
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 TR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4585.mm,2245.mm,2283.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) TR 2245
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) TR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4618.mm,2245.mm,2323.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Keeper axle Ø8 TR 2245
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 TR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2245.mm,2323.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(37.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) TR 2285
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) TR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4614.mm,2285.mm,2283.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Wheel axle Ø10 TR 2285
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 TR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4585.mm,2285.mm,2283.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) TR 2285
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) TR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4618.mm,2285.mm,2323.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Keeper axle Ø8 TR 2285
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 TR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2285.mm,2323.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(37.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Carriage plate (bolted to skate axles) TR
+  grp = ents.add_group
+  grp.name = "Carriage plate (bolted to skate axles) TR"
+  face = grp.entities.add_face([4585.mm,2238.mm,2246.mm], [4599.mm,2238.mm,2246.mm], [4599.mm,2324.mm,2246.mm], [4585.mm,2324.mm,2246.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(95.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) TR 2245
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) TR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2245.mm,2261.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) TR 2285
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) TR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2285.mm,2261.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Cam-brake base (5128A63) TR
+  grp = ents.add_group
+  grp.name = "Cam-brake base (5128A63) TR"
+  face = grp.entities.add_face([4589.mm,2270.mm,2341.mm], [4599.mm,2270.mm,2341.mm], [4599.mm,2292.mm,2341.mm], [4589.mm,2292.mm,2341.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Cam-brake hold-down arm TR
+  grp = ents.add_group
+  grp.name = "Cam-brake hold-down arm TR"
+  face = grp.entities.add_face([4594.mm,2277.mm,2342.mm], [4616.mm,2277.mm,2342.mm], [4616.mm,2285.mm,2342.mm], [4594.mm,2285.mm,2342.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Cam-brake UHMW pad TR
+  grp = ents.add_group
+  grp.name = "Cam-brake UHMW pad TR"
+  face = grp.entities.add_face([4610.mm,2276.mm,2338.mm], [4622.mm,2276.mm,2338.mm], [4622.mm,2286.mm,2338.mm], [4610.mm,2286.mm,2338.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Cam-brake lever TR
+  grp = ents.add_group
+  grp.name = "Cam-brake lever TR"
+  ge = grp.entities
+  circle = ge.add_circle([4616.mm,2281.mm,2342.mm], [0,0,1], 2.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Vertical Z slide rail (TILT, green) TR
+  grp = ents.add_group
+  grp.name = "Vertical Z slide rail (TILT, green) TR"
+  face = grp.entities.add_face([4595.mm,2238.mm,1998.mm], [4605.mm,2238.mm,1998.mm], [4605.mm,2256.mm,1998.mm], [4595.mm,2256.mm,1998.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Horizontal X slide rail (SWING, purple) TR
+  grp = ents.add_group
+  grp.name = "Horizontal X slide rail (SWING, purple) TR"
+  face = grp.entities.add_face([4384.mm,2238.mm,2256.mm], [4644.mm,2238.mm,2256.mm], [4644.mm,2252.mm,2256.mm], [4384.mm,2252.mm,2256.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # U-joint (Belden UJ-SS750x375, setscrew) TR
+  grp = ents.add_group
+  grp.name = "U-joint (Belden UJ-SS750x375, setscrew) TR"
+  face = grp.entities.add_face([4612.mm,2233.mm,2238.mm], [4636.mm,2233.mm,2238.mm], [4636.mm,2257.mm,2238.mm], [4612.mm,2257.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Input stub 3/8 (X slide → U-joint) TR
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 (X slide → U-joint) TR"
+  ge = grp.entities
+  circle = ge.add_circle([4573.mm,2245.mm,2252.mm], [1,0,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(46.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # 4040N12 304 shaft support (clamps input stub → X slide) TR
+  grp = ents.add_group
+  grp.name = "4040N12 304 shaft support (clamps input stub → X slide) TR"
+  face = grp.entities.add_face([4575.mm,2236.mm,2241.mm], [4598.mm,2236.mm,2241.mm], [4598.mm,2254.mm,2241.mm], [4575.mm,2254.mm,2241.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Output stub 3/8 (U-joint → corner plate) TR
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 (U-joint → corner plate) TR"
+  ge = grp.entities
+  circle = ge.add_circle([4624.mm,2223.mm,2252.mm], [0,1,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Corner plate 304 SS (U-joint mount — angle frame → U-joint) TR
+  grp = ents.add_group
+  grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) TR"
+  face = grp.entities.add_face([4604.mm,2229.mm,2207.mm], [4638.mm,2229.mm,2207.mm], [4638.mm,2245.mm,2207.mm], [4604.mm,2245.mm,2207.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -21981,733 +23492,14 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # Saddle back-plate TL near
+  # Frame-corner bolt (angle frame → bracket) TR
   grp = ents.add_group
-  grp.name = "Saddle back-plate TL near"
-  face = grp.entities.add_face([75.mm,0.mm,2129.mm], [225.mm,0.mm,2129.mm], [225.mm,8.mm,2129.mm], [75.mm,8.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle OUTSIDE plate TL near
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate TL near"
-  face = grp.entities.add_face([75.mm,-48.mm,2129.mm], [225.mm,-48.mm,2129.mm], [225.mm,-40.mm,2129.mm], [75.mm,-40.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle seat TL near
-  grp = ents.add_group
-  grp.name = "Saddle seat TL near"
-  face = grp.entities.add_face([126.mm,0.mm,2194.mm], [174.mm,0.mm,2194.mm], [174.mm,110.mm,2194.mm], [126.mm,110.mm,2194.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle gusset TL near
-  grp = ents.add_group
-  grp.name = "Saddle gusset TL near"
+  grp.name = "Frame-corner bolt (angle frame → bracket) TR"
   ge = grp.entities
-  f = ge.add_face([150.mm,110.mm,2194.mm], [150.mm,0.mm,2194.mm], [150.mm,0.mm,2074.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL near"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4591.mm,2231.mm,2252.mm], [0,1,0], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL near"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL near"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL near"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Thumb screw TL near
-  grp = ents.add_group
-  grp.name = "Thumb screw TL near"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,25.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Thumb screw TL near
-  grp = ents.add_group
-  grp.name = "Thumb screw TL near"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,85.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle back-plate TL far
-  grp = ents.add_group
-  grp.name = "Saddle back-plate TL far"
-  face = grp.entities.add_face([75.mm,2354.mm,2129.mm], [225.mm,2354.mm,2129.mm], [225.mm,2362.mm,2129.mm], [75.mm,2362.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle OUTSIDE plate TL far
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate TL far"
-  face = grp.entities.add_face([75.mm,2402.mm,2129.mm], [225.mm,2402.mm,2129.mm], [225.mm,2410.mm,2129.mm], [75.mm,2410.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle seat TL far
-  grp = ents.add_group
-  grp.name = "Saddle seat TL far"
-  face = grp.entities.add_face([126.mm,2252.mm,2194.mm], [174.mm,2252.mm,2194.mm], [174.mm,2362.mm,2194.mm], [126.mm,2362.mm,2194.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle gusset TL far
-  grp = ents.add_group
-  grp.name = "Saddle gusset TL far"
-  ge = grp.entities
-  f = ge.add_face([150.mm,2252.mm,2194.mm], [150.mm,2362.mm,2194.mm], [150.mm,2362.mm,2074.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL far"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL far"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL far"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL far"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Thumb screw TL far
-  grp = ents.add_group
-  grp.name = "Thumb screw TL far"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,2277.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Thumb screw TL far
-  grp = ents.add_group
-  grp.name = "Thumb screw TL far"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,2337.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle back-plate TR near
-  grp = ents.add_group
-  grp.name = "Saddle back-plate TR near"
-  face = grp.entities.add_face([4534.mm,0.mm,2129.mm], [4684.mm,0.mm,2129.mm], [4684.mm,8.mm,2129.mm], [4534.mm,8.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle OUTSIDE plate TR near
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate TR near"
-  face = grp.entities.add_face([4534.mm,-48.mm,2129.mm], [4684.mm,-48.mm,2129.mm], [4684.mm,-40.mm,2129.mm], [4534.mm,-40.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle seat TR near
-  grp = ents.add_group
-  grp.name = "Saddle seat TR near"
-  face = grp.entities.add_face([4585.mm,0.mm,2194.mm], [4633.mm,0.mm,2194.mm], [4633.mm,110.mm,2194.mm], [4585.mm,110.mm,2194.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle gusset TR near
-  grp = ents.add_group
-  grp.name = "Saddle gusset TR near"
-  ge = grp.entities
-  f = ge.add_face([4609.mm,110.mm,2194.mm], [4609.mm,0.mm,2194.mm], [4609.mm,0.mm,2074.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4559.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4559.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4659.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4659.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Rail fixing bolt TR near
-  grp = ents.add_group
-  grp.name = "Rail fixing bolt TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4609.mm,25.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Rail fixing bolt TR near
-  grp = ents.add_group
-  grp.name = "Rail fixing bolt TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4609.mm,85.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle back-plate TR far
-  grp = ents.add_group
-  grp.name = "Saddle back-plate TR far"
-  face = grp.entities.add_face([4534.mm,2354.mm,2129.mm], [4684.mm,2354.mm,2129.mm], [4684.mm,2362.mm,2129.mm], [4534.mm,2362.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle OUTSIDE plate TR far
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate TR far"
-  face = grp.entities.add_face([4534.mm,2402.mm,2129.mm], [4684.mm,2402.mm,2129.mm], [4684.mm,2410.mm,2129.mm], [4534.mm,2410.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle seat TR far
-  grp = ents.add_group
-  grp.name = "Saddle seat TR far"
-  face = grp.entities.add_face([4585.mm,2252.mm,2194.mm], [4633.mm,2252.mm,2194.mm], [4633.mm,2362.mm,2194.mm], [4585.mm,2362.mm,2194.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle gusset TR far
-  grp = ents.add_group
-  grp.name = "Saddle gusset TR far"
-  ge = grp.entities
-  f = ge.add_face([4609.mm,2252.mm,2194.mm], [4609.mm,2362.mm,2194.mm], [4609.mm,2362.mm,2074.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4559.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4559.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4659.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4659.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Rail fixing bolt TR far
-  grp = ents.add_group
-  grp.name = "Rail fixing bolt TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4609.mm,2277.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Rail fixing bolt TR far
-  grp = ents.add_group
-  grp.name = "Rail fixing bolt TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4609.mm,2337.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle back-plate BL near
-  grp = ents.add_group
-  grp.name = "Saddle back-plate BL near"
-  face = grp.entities.add_face([75.mm,0.mm,85.mm], [225.mm,0.mm,85.mm], [225.mm,8.mm,85.mm], [75.mm,8.mm,85.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle OUTSIDE plate BL near
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate BL near"
-  face = grp.entities.add_face([75.mm,-48.mm,85.mm], [225.mm,-48.mm,85.mm], [225.mm,-40.mm,85.mm], [75.mm,-40.mm,85.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle seat BL near
-  grp = ents.add_group
-  grp.name = "Saddle seat BL near"
-  face = grp.entities.add_face([126.mm,0.mm,150.mm], [174.mm,0.mm,150.mm], [174.mm,110.mm,150.mm], [126.mm,110.mm,150.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle gusset BL near
-  grp = ents.add_group
-  grp.name = "Saddle gusset BL near"
-  ge = grp.entities
-  f = ge.add_face([150.mm,110.mm,150.mm], [150.mm,0.mm,150.mm], [150.mm,0.mm,30.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL near"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,-48.mm,110.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL near"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,-48.mm,210.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL near"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,-48.mm,110.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL near"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,-48.mm,210.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Thumb screw BL near
-  grp = ents.add_group
-  grp.name = "Thumb screw BL near"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,25.mm,160.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Thumb screw BL near
-  grp = ents.add_group
-  grp.name = "Thumb screw BL near"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,85.mm,160.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle back-plate BL far
-  grp = ents.add_group
-  grp.name = "Saddle back-plate BL far"
-  face = grp.entities.add_face([75.mm,2354.mm,85.mm], [225.mm,2354.mm,85.mm], [225.mm,2362.mm,85.mm], [75.mm,2362.mm,85.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle OUTSIDE plate BL far
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate BL far"
-  face = grp.entities.add_face([75.mm,2402.mm,85.mm], [225.mm,2402.mm,85.mm], [225.mm,2410.mm,85.mm], [75.mm,2410.mm,85.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle seat BL far
-  grp = ents.add_group
-  grp.name = "Saddle seat BL far"
-  face = grp.entities.add_face([126.mm,2252.mm,150.mm], [174.mm,2252.mm,150.mm], [174.mm,2362.mm,150.mm], [126.mm,2362.mm,150.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle gusset BL far
-  grp = ents.add_group
-  grp.name = "Saddle gusset BL far"
-  ge = grp.entities
-  f = ge.add_face([150.mm,2252.mm,150.mm], [150.mm,2362.mm,150.mm], [150.mm,2362.mm,30.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL far"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,2354.mm,110.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL far"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,2354.mm,210.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL far"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,2354.mm,110.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL far"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,2354.mm,210.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Thumb screw BL far
-  grp = ents.add_group
-  grp.name = "Thumb screw BL far"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,2277.mm,160.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Thumb screw BL far
-  grp = ents.add_group
-  grp.name = "Thumb screw BL far"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,2337.mm,160.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
+  cface.pushpull(18.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 0.15
@@ -22718,7 +23510,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "FP combined corner plate (near)"
   face = grp.entities.add_face([4574.mm,0.mm,77.6.mm], [4724.mm,0.mm,77.6.mm], [4724.mm,10.mm,77.6.mm], [4574.mm,10.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 0.15
@@ -22729,7 +23521,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "FP combined corner ext plate (near)"
   face = grp.entities.add_face([4574.mm,-50.mm,77.6.mm], [4724.mm,-50.mm,77.6.mm], [4724.mm,-40.mm,77.6.mm], [4574.mm,-40.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 0.15
@@ -22749,7 +23541,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined BR rail seat (near)
   grp = ents.add_group
   grp.name = "FP combined BR rail seat (near)"
-  face = grp.entities.add_face([4619.mm,0.mm,148.mm], [4679.mm,0.mm,148.mm], [4679.mm,55.mm,148.mm], [4619.mm,55.mm,148.mm])
+  face = grp.entities.add_face([4619.mm,0.mm,220.mm], [4679.mm,0.mm,220.mm], [4679.mm,55.mm,220.mm], [4619.mm,55.mm,220.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -22770,11 +23562,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # FP combined bolt M12 (near) X4599 Z188
+  # FP combined bolt M12 (near) X4599 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4599 Z188"
+  grp.name = "FP combined bolt M12 (near) X4599 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,-50.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -22796,11 +23588,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # FP combined bolt M12 (near) X4699 Z188
+  # FP combined bolt M12 (near) X4699 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4699 Z188"
+  grp.name = "FP combined bolt M12 (near) X4699 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,-50.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -22814,7 +23606,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "FP combined corner plate (far)"
   face = grp.entities.add_face([4574.mm,2352.mm,77.6.mm], [4724.mm,2352.mm,77.6.mm], [4724.mm,2362.mm,77.6.mm], [4574.mm,2362.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 0.15
@@ -22825,7 +23617,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "FP combined corner ext plate (far)"
   face = grp.entities.add_face([4574.mm,2402.mm,77.6.mm], [4724.mm,2402.mm,77.6.mm], [4724.mm,2412.mm,77.6.mm], [4574.mm,2412.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 0.15
@@ -22845,7 +23637,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # FP combined BR rail seat (far)
   grp = ents.add_group
   grp.name = "FP combined BR rail seat (far)"
-  face = grp.entities.add_face([4619.mm,2307.mm,148.mm], [4679.mm,2307.mm,148.mm], [4679.mm,2362.mm,148.mm], [4619.mm,2362.mm,148.mm])
+  face = grp.entities.add_face([4619.mm,2307.mm,220.mm], [4679.mm,2307.mm,220.mm], [4679.mm,2362.mm,220.mm], [4619.mm,2362.mm,220.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -22866,11 +23658,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # FP combined bolt M12 (far) X4599 Z188
+  # FP combined bolt M12 (far) X4599 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4599 Z188"
+  grp.name = "FP combined bolt M12 (far) X4599 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,2352.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,2352.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -22892,11 +23684,11 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # FP combined bolt M12 (far) X4699 Z188
+  # FP combined bolt M12 (far) X4699 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4699 Z188"
+  grp.name = "FP combined bolt M12 (far) X4699 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,2352.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,2352.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -22926,7 +23718,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 1 post (2x2x0.120 SHS)
   grp = ents.add_group
   grp.name = "Left cantilever 1 post (2x2x0.120 SHS)"
-  face = grp.entities.add_face([114.6.mm,220.mm,0.mm], [165.39999999999998.mm,220.mm,0.mm], [165.39999999999998.mm,280.mm,0.mm], [114.6.mm,280.mm,0.mm])
+  face = grp.entities.add_face([224.6.mm,220.mm,0.mm], [275.4.mm,220.mm,0.mm], [275.4.mm,280.mm,0.mm], [224.6.mm,280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -22934,10 +23726,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # Left cantilever 1 arm (to X470)
+  # Left cantilever 1 arm (to X580)
   grp = ents.add_group
-  grp.name = "Left cantilever 1 arm (to X470)"
-  face = grp.entities.add_face([165.4.mm,224.6.mm,89.6.mm], [470.mm,224.6.mm,89.6.mm], [470.mm,275.4.mm,89.6.mm], [165.4.mm,275.4.mm,89.6.mm])
+  grp.name = "Left cantilever 1 arm (to X580)"
+  face = grp.entities.add_face([275.4.mm,224.6.mm,89.6.mm], [580.mm,224.6.mm,89.6.mm], [580.mm,275.4.mm,89.6.mm], [275.4.mm,275.4.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.400000000000006.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -22959,7 +23751,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 2 post (2x2x0.120 SHS)
   grp = ents.add_group
   grp.name = "Left cantilever 2 post (2x2x0.120 SHS)"
-  face = grp.entities.add_face([114.6.mm,770.mm,0.mm], [165.39999999999998.mm,770.mm,0.mm], [165.39999999999998.mm,830.mm,0.mm], [114.6.mm,830.mm,0.mm])
+  face = grp.entities.add_face([224.6.mm,770.mm,0.mm], [275.4.mm,770.mm,0.mm], [275.4.mm,830.mm,0.mm], [224.6.mm,830.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -22967,10 +23759,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # Left cantilever 2 arm (to X770)
+  # Left cantilever 2 arm (to X880)
   grp = ents.add_group
-  grp.name = "Left cantilever 2 arm (to X770)"
-  face = grp.entities.add_face([165.4.mm,774.6.mm,89.6.mm], [770.mm,774.6.mm,89.6.mm], [770.mm,825.4.mm,89.6.mm], [165.4.mm,825.4.mm,89.6.mm])
+  grp.name = "Left cantilever 2 arm (to X880)"
+  face = grp.entities.add_face([275.4.mm,774.6.mm,89.6.mm], [880.mm,774.6.mm,89.6.mm], [880.mm,825.4.mm,89.6.mm], [275.4.mm,825.4.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.400000000000006.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -22992,7 +23784,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 3 post (2x2x0.120 SHS)
   grp = ents.add_group
   grp.name = "Left cantilever 3 post (2x2x0.120 SHS)"
-  face = grp.entities.add_face([114.6.mm,1150.mm,0.mm], [165.39999999999998.mm,1150.mm,0.mm], [165.39999999999998.mm,1210.mm,0.mm], [114.6.mm,1210.mm,0.mm])
+  face = grp.entities.add_face([224.6.mm,1150.mm,0.mm], [275.4.mm,1150.mm,0.mm], [275.4.mm,1210.mm,0.mm], [224.6.mm,1210.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -23000,10 +23792,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # Left cantilever 3 arm (to X770)
+  # Left cantilever 3 arm (to X880)
   grp = ents.add_group
-  grp.name = "Left cantilever 3 arm (to X770)"
-  face = grp.entities.add_face([165.4.mm,1154.6.mm,89.6.mm], [770.mm,1154.6.mm,89.6.mm], [770.mm,1205.3999999999999.mm,89.6.mm], [165.4.mm,1205.3999999999999.mm,89.6.mm])
+  grp.name = "Left cantilever 3 arm (to X880)"
+  face = grp.entities.add_face([275.4.mm,1154.6.mm,89.6.mm], [880.mm,1154.6.mm,89.6.mm], [880.mm,1205.3999999999999.mm,89.6.mm], [275.4.mm,1205.3999999999999.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.400000000000006.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -23025,7 +23817,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 4 post (2x2x0.120 SHS)
   grp = ents.add_group
   grp.name = "Left cantilever 4 post (2x2x0.120 SHS)"
-  face = grp.entities.add_face([114.6.mm,1530.mm,0.mm], [165.39999999999998.mm,1530.mm,0.mm], [165.39999999999998.mm,1590.mm,0.mm], [114.6.mm,1590.mm,0.mm])
+  face = grp.entities.add_face([224.6.mm,1530.mm,0.mm], [275.4.mm,1530.mm,0.mm], [275.4.mm,1590.mm,0.mm], [224.6.mm,1590.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -23033,10 +23825,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # Left cantilever 4 arm (to X770)
+  # Left cantilever 4 arm (to X880)
   grp = ents.add_group
-  grp.name = "Left cantilever 4 arm (to X770)"
-  face = grp.entities.add_face([165.4.mm,1534.6.mm,89.6.mm], [770.mm,1534.6.mm,89.6.mm], [770.mm,1585.3999999999999.mm,89.6.mm], [165.4.mm,1585.3999999999999.mm,89.6.mm])
+  grp.name = "Left cantilever 4 arm (to X880)"
+  face = grp.entities.add_face([275.4.mm,1534.6.mm,89.6.mm], [880.mm,1534.6.mm,89.6.mm], [880.mm,1585.3999999999999.mm,89.6.mm], [275.4.mm,1585.3999999999999.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.400000000000006.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -23058,7 +23850,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Left cantilever 5 post (2x2x0.120 SHS)
   grp = ents.add_group
   grp.name = "Left cantilever 5 post (2x2x0.120 SHS)"
-  face = grp.entities.add_face([114.6.mm,2080.mm,0.mm], [165.39999999999998.mm,2080.mm,0.mm], [165.39999999999998.mm,2140.mm,0.mm], [114.6.mm,2140.mm,0.mm])
+  face = grp.entities.add_face([224.6.mm,2080.mm,0.mm], [275.4.mm,2080.mm,0.mm], [275.4.mm,2140.mm,0.mm], [224.6.mm,2140.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -23066,10 +23858,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   mat.alpha = 0.15
   grp.material = mat
 
-  # Left cantilever 5 arm (to X470)
+  # Left cantilever 5 arm (to X580)
   grp = ents.add_group
-  grp.name = "Left cantilever 5 arm (to X470)"
-  face = grp.entities.add_face([165.4.mm,2084.6.mm,89.6.mm], [470.mm,2084.6.mm,89.6.mm], [470.mm,2135.4.mm,89.6.mm], [165.4.mm,2135.4.mm,89.6.mm])
+  grp.name = "Left cantilever 5 arm (to X580)"
+  face = grp.entities.add_face([275.4.mm,2084.6.mm,89.6.mm], [580.mm,2084.6.mm,89.6.mm], [580.mm,2135.4.mm,89.6.mm], [275.4.mm,2135.4.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.400000000000006.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -23087,7 +23879,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Near (fixed, bump integral)
   grp = ents.add_group
   grp.name = "Walkway Near (fixed, bump integral)"
-  face = grp.entities.add_face([470.mm,8.mm,115.mm], [4329.mm,8.mm,115.mm], [4329.mm,300.mm,115.mm], [3083.mm,300.mm,115.mm], [3083.mm,500.mm,115.mm], [1055.mm,500.mm,115.mm], [1055.mm,300.mm,115.mm], [470.mm,300.mm,115.mm])
+  face = grp.entities.add_face([580.mm,8.mm,115.mm], [4329.mm,8.mm,115.mm], [4329.mm,300.mm,115.mm], [3193.mm,300.mm,115.mm], [3193.mm,500.mm,115.mm], [1165.mm,500.mm,115.mm], [1165.mm,300.mm,115.mm], [580.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -23098,7 +23890,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Far
   grp = ents.add_group
   grp.name = "Walkway Far"
-  face = grp.entities.add_face([470.mm,2062.mm,115.mm], [4329.mm,2062.mm,115.mm], [4329.mm,2354.mm,115.mm], [470.mm,2354.mm,115.mm])
+  face = grp.entities.add_face([580.mm,2062.mm,115.mm], [4329.mm,2062.mm,115.mm], [4329.mm,2354.mm,115.mm], [580.mm,2354.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -23120,7 +23912,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Walkway Left (REMOVABLE — transport)
   grp = ents.add_group
   grp.name = "Walkway Left (REMOVABLE — transport)"
-  face = grp.entities.add_face([170.mm,0.mm,115.mm], [170.mm,2362.mm,115.mm], [470.mm,2362.mm,115.mm], [470.mm,2062.mm,115.mm], [370.mm,2062.mm,115.mm], [370.mm,1912.mm,115.mm], [470.mm,1912.mm,115.mm], [470.mm,1560.mm,115.mm], [770.mm,1560.mm,115.mm], [770.mm,800.mm,115.mm], [470.mm,800.mm,115.mm], [470.mm,0.mm,115.mm])
+  face = grp.entities.add_face([280.mm,0.mm,115.mm], [280.mm,2362.mm,115.mm], [580.mm,2362.mm,115.mm], [580.mm,2062.mm,115.mm], [480.mm,2062.mm,115.mm], [480.mm,1912.mm,115.mm], [580.mm,1912.mm,115.mm], [580.mm,1560.mm,115.mm], [880.mm,1560.mm,115.mm], [880.mm,800.mm,115.mm], [580.mm,800.mm,115.mm], [580.mm,0.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -28272,7 +29064,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Pinhole Mount Plate
   grp = ents.add_group
   grp.name = "Pinhole Mount Plate"
-  face = grp.entities.add_face([2349.mm,0.mm,1144.mm], [2449.mm,0.mm,1144.mm], [2449.mm,3.mm,1144.mm], [2349.mm,3.mm,1144.mm])
+  face = grp.entities.add_face([2404.mm,0.mm,1144.mm], [2504.mm,0.mm,1144.mm], [2504.mm,3.mm,1144.mm], [2404.mm,3.mm,1144.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(100.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -28283,7 +29075,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Pinhole Aperture (Ø2.17)
   grp = ents.add_group
   grp.name = "Pinhole Aperture (Ø2.17)"
-  face = grp.entities.add_face([2397.915.mm,3.mm,1192.915.mm], [2400.085.mm,3.mm,1192.915.mm], [2400.085.mm,4.mm,1192.915.mm], [2397.915.mm,4.mm,1192.915.mm])
+  face = grp.entities.add_face([2452.915.mm,3.mm,1192.915.mm], [2455.085.mm,3.mm,1192.915.mm], [2455.085.mm,4.mm,1192.915.mm], [2452.915.mm,4.mm,1192.915.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.17.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -28294,7 +29086,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # TS Base Plate (wall mount)
   grp = ents.add_group
   grp.name = "TS Base Plate (wall mount)"
-  face = grp.entities.add_face([2229.mm,-52.mm,1024.mm], [2569.mm,-52.mm,1024.mm], [2569.mm,-40.mm,1024.mm], [2229.mm,-40.mm,1024.mm])
+  face = grp.entities.add_face([2284.mm,-52.mm,1024.mm], [2624.mm,-52.mm,1024.mm], [2624.mm,-40.mm,1024.mm], [2284.mm,-40.mm,1024.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(340.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -28305,7 +29097,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Pinhole Tilt-Swing Board
   grp = ents.add_group
   grp.name = "Pinhole Tilt-Swing Board"
-  face = grp.entities.add_face([2259.mm,-80.mm,1054.mm], [2539.mm,-80.mm,1054.mm], [2539.mm,-64.mm,1054.mm], [2259.mm,-64.mm,1054.mm])
+  face = grp.entities.add_face([2314.mm,-80.mm,1054.mm], [2594.mm,-80.mm,1054.mm], [2594.mm,-64.mm,1054.mm], [2314.mm,-64.mm,1054.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(280.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -28316,7 +29108,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # TS Tilt Knob
   grp = ents.add_group
   grp.name = "TS Tilt Knob"
-  face = grp.entities.add_face([2384.mm,-100.mm,1029.mm], [2414.mm,-100.mm,1029.mm], [2414.mm,-75.mm,1029.mm], [2384.mm,-75.mm,1029.mm])
+  face = grp.entities.add_face([2439.mm,-100.mm,1029.mm], [2469.mm,-100.mm,1029.mm], [2469.mm,-75.mm,1029.mm], [2439.mm,-75.mm,1029.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -28327,7 +29119,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # TS Swing Knob
   grp = ents.add_group
   grp.name = "TS Swing Knob"
-  face = grp.entities.add_face([2539.mm,-100.mm,1179.mm], [2564.mm,-100.mm,1179.mm], [2564.mm,-75.mm,1179.mm], [2539.mm,-75.mm,1179.mm])
+  face = grp.entities.add_face([2594.mm,-100.mm,1179.mm], [2619.mm,-100.mm,1179.mm], [2619.mm,-75.mm,1179.mm], [2594.mm,-75.mm,1179.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -28342,56 +29134,111 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # ═══ [built] Step 5.2 — Film plane + carriages (screen + frame) ═══
   defn = model.definitions.add("[built] Step 5.2 — Film plane + carriages (screen + frame)")
   ents = defn.entities
+  # Film-plane ACM backing (ghost)
+  grp = ents.add_group
+  grp.name = "Film-plane ACM backing (ghost)"
+  face = grp.entities.add_face([293.mm,2237.mm,160.mm], [4591.mm,2237.mm,160.mm], [4591.mm,2241.mm,160.mm], [293.mm,2241.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2092.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"
+  face = grp.entities.add_face([293.mm,2187.mm,2249.mm], [4591.mm,2187.mm,2249.mm], [4591.mm,2237.mm,2249.mm], [293.mm,2237.mm,2249.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Film frame 2x2 6061 Al angle — top (in-plane leg / ACM seat)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 Al angle — top (in-plane leg / ACM seat)"
+  face = grp.entities.add_face([293.mm,2234.mm,2202.mm], [4591.mm,2234.mm,2202.mm], [4591.mm,2237.mm,2202.mm], [293.mm,2237.mm,2202.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Film frame 2x2 6061 Al angle — bottom (upstand / muslin spring clip)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 Al angle — bottom (upstand / muslin spring clip)"
+  face = grp.entities.add_face([293.mm,2187.mm,160.mm], [4591.mm,2187.mm,160.mm], [4591.mm,2237.mm,160.mm], [293.mm,2237.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Film frame 2x2 6061 Al angle — bottom (in-plane leg / ACM seat)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 Al angle — bottom (in-plane leg / ACM seat)"
+  face = grp.entities.add_face([293.mm,2234.mm,160.mm], [4591.mm,2234.mm,160.mm], [4591.mm,2237.mm,160.mm], [293.mm,2237.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Film frame 2x2 6061 Al angle — left (upstand / muslin spring clip)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 Al angle — left (upstand / muslin spring clip)"
+  face = grp.entities.add_face([293.mm,2187.mm,160.mm], [296.mm,2187.mm,160.mm], [296.mm,2237.mm,160.mm], [293.mm,2237.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2092.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Film frame 2x2 6061 Al angle — left (in-plane leg / ACM seat)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 Al angle — left (in-plane leg / ACM seat)"
+  face = grp.entities.add_face([293.mm,2234.mm,160.mm], [343.mm,2234.mm,160.mm], [343.mm,2237.mm,160.mm], [293.mm,2237.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2092.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Film frame 2x2 6061 Al angle — right (upstand / muslin spring clip)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 Al angle — right (upstand / muslin spring clip)"
+  face = grp.entities.add_face([4588.mm,2187.mm,160.mm], [4591.mm,2187.mm,160.mm], [4591.mm,2237.mm,160.mm], [4588.mm,2237.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2092.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
+  # Film frame 2x2 6061 Al angle — right (in-plane leg / ACM seat)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 Al angle — right (in-plane leg / ACM seat)"
+  face = grp.entities.add_face([4541.mm,2234.mm,160.mm], [4591.mm,2234.mm,160.mm], [4591.mm,2237.mm,160.mm], [4541.mm,2237.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2092.mm)
+  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
+  mat.color = Sketchup::Color.new(140, 146, 155)
+  mat.alpha = 0.15
+  grp.material = mat
+
   # Film Plane Screen (muslin)
   grp = ents.add_group
   grp.name = "Film Plane Screen (muslin)"
-  face = grp.entities.add_face([150.mm,2262.mm,0.mm], [4649.mm,2262.mm,0.mm], [4649.mm,2282.mm,0.mm], [150.mm,2282.mm,0.mm])
+  face = grp.entities.add_face([293.mm,2237.mm,160.mm], [4591.mm,2237.mm,160.mm], [4591.mm,2243.mm,160.mm], [293.mm,2243.mm,160.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2094.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # FP Frame Bottom
-  grp = ents.add_group
-  grp.name = "FP Frame Bottom"
-  face = grp.entities.add_face([150.mm,2211.2.mm,0.mm], [4649.mm,2211.2.mm,0.mm], [4649.mm,2262.mm,0.mm], [150.mm,2262.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.8.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # FP Frame Top
-  grp = ents.add_group
-  grp.name = "FP Frame Top"
-  face = grp.entities.add_face([150.mm,2211.2.mm,2043.2.mm], [4649.mm,2211.2.mm,2043.2.mm], [4649.mm,2262.mm,2043.2.mm], [150.mm,2262.mm,2043.2.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.8.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # FP Frame Left
-  grp = ents.add_group
-  grp.name = "FP Frame Left"
-  face = grp.entities.add_face([150.mm,2211.2.mm,0.mm], [200.8.mm,2211.2.mm,0.mm], [200.8.mm,2262.mm,0.mm], [150.mm,2262.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2094.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # FP Frame Right
-  grp = ents.add_group
-  grp.name = "FP Frame Right"
-  face = grp.entities.add_face([4598.2.mm,2211.2.mm,0.mm], [4649.mm,2211.2.mm,0.mm], [4649.mm,2262.mm,0.mm], [4598.2.mm,2262.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2094.mm)
+  face.pushpull(2092.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 0.15
@@ -28607,7 +29454,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Spray Beam 40x25x3 304-SS RHS
   grp = ents.add_group
   grp.name = "Spray Beam 40x25x3 304-SS RHS"
-  face = grp.entities.add_face([200.mm,1160.95.mm,29.mm], [4599.mm,1160.95.mm,29.mm], [4599.mm,1199.05.mm,29.mm], [200.mm,1199.05.mm,29.mm])
+  face = grp.entities.add_face([310.mm,1160.95.mm,29.mm], [4599.mm,1160.95.mm,29.mm], [4599.mm,1199.05.mm,29.mm], [310.mm,1199.05.mm,29.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.1.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -28618,7 +29465,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Beam End Cap (feed)
   grp = ents.add_group
   grp.name = "Beam End Cap (feed)"
-  face = grp.entities.add_face([196.mm,1160.95.mm,29.mm], [200.mm,1160.95.mm,29.mm], [200.mm,1199.05.mm,29.mm], [196.mm,1199.05.mm,29.mm])
+  face = grp.entities.add_face([306.mm,1160.95.mm,29.mm], [310.mm,1160.95.mm,29.mm], [310.mm,1199.05.mm,29.mm], [306.mm,1199.05.mm,29.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.1.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -28641,10 +29488,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Side Poly Manifold (3/4 LDPE)"
   ge = grp.entities
-  circle = ge.add_circle([200.mm,1211.55.mm,48.05.mm], [1,0,0], 12.5.mm, 24)
+  circle = ge.add_circle([310.mm,1211.55.mm,48.05.mm], [1,0,0], 12.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(4399.mm)
+  cface.pushpull(4289.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 0.15
@@ -28654,10 +29501,10 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Water in Manifold"
   ge = grp.entities
-  circle = ge.add_circle([200.mm,1211.55.mm,48.05.mm], [1,0,0], 9.5.mm, 24)
+  circle = ge.add_circle([310.mm,1211.55.mm,48.05.mm], [1,0,0], 9.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(4399.mm)
+  cface.pushpull(4289.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
   mat.color = Sketchup::Color.new(140, 146, 155)
   mat.alpha = 0.15
@@ -28667,7 +29514,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([249.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([354.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -28680,7 +29527,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([249.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([354.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -28693,7 +29540,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([349.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([454.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -28706,7 +29553,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([349.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([454.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -28719,7 +29566,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([449.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([554.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -28732,7 +29579,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([449.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([554.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -28745,7 +29592,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([549.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([654.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -28758,7 +29605,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([549.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([654.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -28771,7 +29618,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([649.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([754.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -28784,7 +29631,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([649.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([754.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -28797,7 +29644,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([749.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([854.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -28810,7 +29657,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([749.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([854.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -28823,7 +29670,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([849.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([954.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -28836,7 +29683,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([849.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([954.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -28849,7 +29696,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([949.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1054.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -28862,7 +29709,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([949.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1054.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -28875,7 +29722,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1049.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1154.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -28888,7 +29735,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1049.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1154.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -28901,7 +29748,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1149.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1254.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -28914,7 +29761,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1149.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1254.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -28927,7 +29774,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1249.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1354.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -28940,7 +29787,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1249.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1354.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -28953,7 +29800,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1349.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1454.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -28966,7 +29813,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1349.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1454.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -28979,7 +29826,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1449.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1554.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -28992,7 +29839,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1449.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1554.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29005,7 +29852,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1549.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1654.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29018,7 +29865,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1549.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1654.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29031,7 +29878,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1649.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1754.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29044,7 +29891,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1649.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1754.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29057,7 +29904,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1749.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1854.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29070,7 +29917,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1749.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1854.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29083,7 +29930,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1849.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1954.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29096,7 +29943,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1849.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1954.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29109,7 +29956,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1949.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2054.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29122,7 +29969,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1949.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2054.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29135,7 +29982,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2049.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2154.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29148,7 +29995,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2049.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2154.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29161,7 +30008,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2149.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2254.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29174,7 +30021,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2149.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2254.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29187,7 +30034,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2249.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2354.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29200,7 +30047,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2249.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2354.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29213,7 +30060,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2349.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2454.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29226,7 +30073,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2349.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2454.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29239,7 +30086,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2449.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2554.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29252,7 +30099,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2449.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2554.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29265,7 +30112,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2549.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2654.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29278,7 +30125,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2549.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2654.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29291,7 +30138,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2649.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2754.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29304,7 +30151,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2649.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2754.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29317,7 +30164,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2749.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2854.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29330,7 +30177,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2749.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2854.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29343,7 +30190,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2849.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2954.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29356,7 +30203,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2849.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2954.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29369,7 +30216,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2949.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3054.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29382,7 +30229,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2949.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3054.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29395,7 +30242,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3049.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3154.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29408,7 +30255,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3049.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3154.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29421,7 +30268,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3149.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3254.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29434,7 +30281,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3149.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3254.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29447,7 +30294,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3249.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3354.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29460,7 +30307,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3249.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3354.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29473,7 +30320,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3349.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3454.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29486,7 +30333,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3349.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3454.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29499,7 +30346,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3449.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3554.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29512,7 +30359,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3449.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3554.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29525,7 +30372,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3549.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3654.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29538,7 +30385,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3549.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3654.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29551,7 +30398,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3649.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3754.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29564,7 +30411,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3649.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3754.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29577,7 +30424,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3749.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3854.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29590,7 +30437,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3749.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3854.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29603,7 +30450,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3849.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3954.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29616,7 +30463,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3849.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3954.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29629,7 +30476,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3949.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([4054.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29642,7 +30489,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3949.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([4054.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29655,7 +30502,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([4049.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([4154.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29668,7 +30515,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([4049.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([4154.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29681,7 +30528,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([4149.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([4254.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29694,7 +30541,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([4149.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([4254.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29707,7 +30554,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([4249.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([4354.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29720,7 +30567,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([4249.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([4354.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29733,7 +30580,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([4349.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([4454.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29746,7 +30593,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([4349.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([4454.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29759,7 +30606,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([4449.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([4554.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29772,33 +30619,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([4449.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(6.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Nozzle Body
-  grp = ents.add_group
-  grp.name = "Nozzle Body"
-  ge = grp.entities
-  circle = ge.add_circle([4549.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(12.mm)
-  mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
-  mat.color = Sketchup::Color.new(140, 146, 155)
-  mat.alpha = 0.15
-  grp.material = mat
-
-  # Nozzle Tip
-  grp = ents.add_group
-  grp.name = "Nozzle Tip"
-  ge = grp.entities
-  circle = ge.add_circle([4549.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([4554.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -29810,7 +30631,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Carriage Plate L L
   grp = ents.add_group
   grp.name = "Carriage Plate L L"
-  face = grp.entities.add_face([200.mm,1062.mm,38.mm], [238.1.mm,1062.mm,38.mm], [238.1.mm,1160.95.mm,38.mm], [200.mm,1160.95.mm,38.mm])
+  face = grp.entities.add_face([310.mm,1062.mm,38.mm], [348.1.mm,1062.mm,38.mm], [348.1.mm,1160.95.mm,38.mm], [310.mm,1160.95.mm,38.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -29821,7 +30642,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Carriage Plate R L
   grp = ents.add_group
   grp.name = "Carriage Plate R L"
-  face = grp.entities.add_face([200.mm,1199.05.mm,38.mm], [238.1.mm,1199.05.mm,38.mm], [238.1.mm,1298.mm,38.mm], [200.mm,1298.mm,38.mm])
+  face = grp.entities.add_face([310.mm,1199.05.mm,38.mm], [348.1.mm,1199.05.mm,38.mm], [348.1.mm,1298.mm,38.mm], [310.mm,1298.mm,38.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -29833,7 +30654,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Wheel L"
   ge = grp.entities
-  circle = ge.add_circle([209.05.mm,1080.mm,36.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([319.05.mm,1080.mm,36.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(20.mm)
@@ -29846,7 +30667,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Axle Pin 10mm L"
   ge = grp.entities
-  circle = ge.add_circle([186.05.mm,1080.mm,36.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([296.05.mm,1080.mm,36.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
@@ -29859,7 +30680,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Axle Saddle L"
   ge = grp.entities
-  face = ge.add_face([[188.05.mm,1070.82.mm,36.mm], [188.05.mm,1070.9.mm,34.8.mm], [188.05.mm,1071.13.mm,33.62.mm], [188.05.mm,1071.52.mm,32.49.mm], [188.05.mm,1072.05.mm,31.41.mm], [188.05.mm,1072.72.mm,30.41.mm], [188.05.mm,1073.51.mm,29.51.mm], [188.05.mm,1074.41.mm,28.72.mm], [188.05.mm,1075.41.mm,28.05.mm], [188.05.mm,1076.49.mm,27.52.mm], [188.05.mm,1077.62.mm,27.13.mm], [188.05.mm,1078.8.mm,26.9.mm], [188.05.mm,1080.mm,26.82.mm], [188.05.mm,1081.2.mm,26.9.mm], [188.05.mm,1082.38.mm,27.13.mm], [188.05.mm,1083.51.mm,27.52.mm], [188.05.mm,1084.59.mm,28.05.mm], [188.05.mm,1085.59.mm,28.72.mm], [188.05.mm,1086.49.mm,29.51.mm], [188.05.mm,1087.28.mm,30.41.mm], [188.05.mm,1087.95.mm,31.41.mm], [188.05.mm,1088.48.mm,32.49.mm], [188.05.mm,1088.87.mm,33.62.mm], [188.05.mm,1089.1.mm,34.8.mm], [188.05.mm,1089.18.mm,36.mm], [188.05.mm,1086.mm,36.mm], [188.05.mm,1085.95.mm,35.22.mm], [188.05.mm,1085.8.mm,34.45.mm], [188.05.mm,1085.54.mm,33.7.mm], [188.05.mm,1085.2.mm,33.mm], [188.05.mm,1084.76.mm,32.35.mm], [188.05.mm,1084.24.mm,31.76.mm], [188.05.mm,1083.65.mm,31.24.mm], [188.05.mm,1083.mm,30.8.mm], [188.05.mm,1082.3.mm,30.46.mm], [188.05.mm,1081.55.mm,30.2.mm], [188.05.mm,1080.78.mm,30.05.mm], [188.05.mm,1080.mm,30.mm], [188.05.mm,1079.22.mm,30.05.mm], [188.05.mm,1078.45.mm,30.2.mm], [188.05.mm,1077.7.mm,30.46.mm], [188.05.mm,1077.mm,30.8.mm], [188.05.mm,1076.35.mm,31.24.mm], [188.05.mm,1075.76.mm,31.76.mm], [188.05.mm,1075.24.mm,32.35.mm], [188.05.mm,1074.8.mm,33.mm], [188.05.mm,1074.46.mm,33.7.mm], [188.05.mm,1074.2.mm,34.45.mm], [188.05.mm,1074.05.mm,35.22.mm], [188.05.mm,1074.mm,36.mm]])
+  face = ge.add_face([[298.05.mm,1070.82.mm,36.mm], [298.05.mm,1070.9.mm,34.8.mm], [298.05.mm,1071.13.mm,33.62.mm], [298.05.mm,1071.52.mm,32.49.mm], [298.05.mm,1072.05.mm,31.41.mm], [298.05.mm,1072.72.mm,30.41.mm], [298.05.mm,1073.51.mm,29.51.mm], [298.05.mm,1074.41.mm,28.72.mm], [298.05.mm,1075.41.mm,28.05.mm], [298.05.mm,1076.49.mm,27.52.mm], [298.05.mm,1077.62.mm,27.13.mm], [298.05.mm,1078.8.mm,26.9.mm], [298.05.mm,1080.mm,26.82.mm], [298.05.mm,1081.2.mm,26.9.mm], [298.05.mm,1082.38.mm,27.13.mm], [298.05.mm,1083.51.mm,27.52.mm], [298.05.mm,1084.59.mm,28.05.mm], [298.05.mm,1085.59.mm,28.72.mm], [298.05.mm,1086.49.mm,29.51.mm], [298.05.mm,1087.28.mm,30.41.mm], [298.05.mm,1087.95.mm,31.41.mm], [298.05.mm,1088.48.mm,32.49.mm], [298.05.mm,1088.87.mm,33.62.mm], [298.05.mm,1089.1.mm,34.8.mm], [298.05.mm,1089.18.mm,36.mm], [298.05.mm,1086.mm,36.mm], [298.05.mm,1085.95.mm,35.22.mm], [298.05.mm,1085.8.mm,34.45.mm], [298.05.mm,1085.54.mm,33.7.mm], [298.05.mm,1085.2.mm,33.mm], [298.05.mm,1084.76.mm,32.35.mm], [298.05.mm,1084.24.mm,31.76.mm], [298.05.mm,1083.65.mm,31.24.mm], [298.05.mm,1083.mm,30.8.mm], [298.05.mm,1082.3.mm,30.46.mm], [298.05.mm,1081.55.mm,30.2.mm], [298.05.mm,1080.78.mm,30.05.mm], [298.05.mm,1080.mm,30.mm], [298.05.mm,1079.22.mm,30.05.mm], [298.05.mm,1078.45.mm,30.2.mm], [298.05.mm,1077.7.mm,30.46.mm], [298.05.mm,1077.mm,30.8.mm], [298.05.mm,1076.35.mm,31.24.mm], [298.05.mm,1075.76.mm,31.76.mm], [298.05.mm,1075.24.mm,32.35.mm], [298.05.mm,1074.8.mm,33.mm], [298.05.mm,1074.46.mm,33.7.mm], [298.05.mm,1074.2.mm,34.45.mm], [298.05.mm,1074.05.mm,35.22.mm], [298.05.mm,1074.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(19.mm)
   mat = model.materials["ghost Axle Saddle L"] || model.materials.add("ghost Axle Saddle L")
@@ -29870,7 +30691,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([188.05.mm,1062.mm,34.82.mm], [207.05.mm,1062.mm,34.82.mm], [207.05.mm,1074.mm,34.82.mm], [188.05.mm,1074.mm,34.82.mm])
+  face = grp.entities.add_face([298.05.mm,1062.mm,34.82.mm], [317.05.mm,1062.mm,34.82.mm], [317.05.mm,1074.mm,34.82.mm], [298.05.mm,1074.mm,34.82.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.18.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -29882,7 +30703,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([197.55.mm,1068.mm,34.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([307.55.mm,1068.mm,34.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29894,7 +30715,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([188.05.mm,1086.mm,34.82.mm], [207.05.mm,1086.mm,34.82.mm], [207.05.mm,1098.mm,34.82.mm], [188.05.mm,1098.mm,34.82.mm])
+  face = grp.entities.add_face([298.05.mm,1086.mm,34.82.mm], [317.05.mm,1086.mm,34.82.mm], [317.05.mm,1098.mm,34.82.mm], [298.05.mm,1098.mm,34.82.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.18.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -29906,7 +30727,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([197.55.mm,1092.mm,34.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([307.55.mm,1092.mm,34.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29919,7 +30740,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Axle Saddle L"
   ge = grp.entities
-  face = ge.add_face([[231.05.mm,1070.82.mm,36.mm], [231.05.mm,1070.9.mm,34.8.mm], [231.05.mm,1071.13.mm,33.62.mm], [231.05.mm,1071.52.mm,32.49.mm], [231.05.mm,1072.05.mm,31.41.mm], [231.05.mm,1072.72.mm,30.41.mm], [231.05.mm,1073.51.mm,29.51.mm], [231.05.mm,1074.41.mm,28.72.mm], [231.05.mm,1075.41.mm,28.05.mm], [231.05.mm,1076.49.mm,27.52.mm], [231.05.mm,1077.62.mm,27.13.mm], [231.05.mm,1078.8.mm,26.9.mm], [231.05.mm,1080.mm,26.82.mm], [231.05.mm,1081.2.mm,26.9.mm], [231.05.mm,1082.38.mm,27.13.mm], [231.05.mm,1083.51.mm,27.52.mm], [231.05.mm,1084.59.mm,28.05.mm], [231.05.mm,1085.59.mm,28.72.mm], [231.05.mm,1086.49.mm,29.51.mm], [231.05.mm,1087.28.mm,30.41.mm], [231.05.mm,1087.95.mm,31.41.mm], [231.05.mm,1088.48.mm,32.49.mm], [231.05.mm,1088.87.mm,33.62.mm], [231.05.mm,1089.1.mm,34.8.mm], [231.05.mm,1089.18.mm,36.mm], [231.05.mm,1086.mm,36.mm], [231.05.mm,1085.95.mm,35.22.mm], [231.05.mm,1085.8.mm,34.45.mm], [231.05.mm,1085.54.mm,33.7.mm], [231.05.mm,1085.2.mm,33.mm], [231.05.mm,1084.76.mm,32.35.mm], [231.05.mm,1084.24.mm,31.76.mm], [231.05.mm,1083.65.mm,31.24.mm], [231.05.mm,1083.mm,30.8.mm], [231.05.mm,1082.3.mm,30.46.mm], [231.05.mm,1081.55.mm,30.2.mm], [231.05.mm,1080.78.mm,30.05.mm], [231.05.mm,1080.mm,30.mm], [231.05.mm,1079.22.mm,30.05.mm], [231.05.mm,1078.45.mm,30.2.mm], [231.05.mm,1077.7.mm,30.46.mm], [231.05.mm,1077.mm,30.8.mm], [231.05.mm,1076.35.mm,31.24.mm], [231.05.mm,1075.76.mm,31.76.mm], [231.05.mm,1075.24.mm,32.35.mm], [231.05.mm,1074.8.mm,33.mm], [231.05.mm,1074.46.mm,33.7.mm], [231.05.mm,1074.2.mm,34.45.mm], [231.05.mm,1074.05.mm,35.22.mm], [231.05.mm,1074.mm,36.mm]])
+  face = ge.add_face([[341.05.mm,1070.82.mm,36.mm], [341.05.mm,1070.9.mm,34.8.mm], [341.05.mm,1071.13.mm,33.62.mm], [341.05.mm,1071.52.mm,32.49.mm], [341.05.mm,1072.05.mm,31.41.mm], [341.05.mm,1072.72.mm,30.41.mm], [341.05.mm,1073.51.mm,29.51.mm], [341.05.mm,1074.41.mm,28.72.mm], [341.05.mm,1075.41.mm,28.05.mm], [341.05.mm,1076.49.mm,27.52.mm], [341.05.mm,1077.62.mm,27.13.mm], [341.05.mm,1078.8.mm,26.9.mm], [341.05.mm,1080.mm,26.82.mm], [341.05.mm,1081.2.mm,26.9.mm], [341.05.mm,1082.38.mm,27.13.mm], [341.05.mm,1083.51.mm,27.52.mm], [341.05.mm,1084.59.mm,28.05.mm], [341.05.mm,1085.59.mm,28.72.mm], [341.05.mm,1086.49.mm,29.51.mm], [341.05.mm,1087.28.mm,30.41.mm], [341.05.mm,1087.95.mm,31.41.mm], [341.05.mm,1088.48.mm,32.49.mm], [341.05.mm,1088.87.mm,33.62.mm], [341.05.mm,1089.1.mm,34.8.mm], [341.05.mm,1089.18.mm,36.mm], [341.05.mm,1086.mm,36.mm], [341.05.mm,1085.95.mm,35.22.mm], [341.05.mm,1085.8.mm,34.45.mm], [341.05.mm,1085.54.mm,33.7.mm], [341.05.mm,1085.2.mm,33.mm], [341.05.mm,1084.76.mm,32.35.mm], [341.05.mm,1084.24.mm,31.76.mm], [341.05.mm,1083.65.mm,31.24.mm], [341.05.mm,1083.mm,30.8.mm], [341.05.mm,1082.3.mm,30.46.mm], [341.05.mm,1081.55.mm,30.2.mm], [341.05.mm,1080.78.mm,30.05.mm], [341.05.mm,1080.mm,30.mm], [341.05.mm,1079.22.mm,30.05.mm], [341.05.mm,1078.45.mm,30.2.mm], [341.05.mm,1077.7.mm,30.46.mm], [341.05.mm,1077.mm,30.8.mm], [341.05.mm,1076.35.mm,31.24.mm], [341.05.mm,1075.76.mm,31.76.mm], [341.05.mm,1075.24.mm,32.35.mm], [341.05.mm,1074.8.mm,33.mm], [341.05.mm,1074.46.mm,33.7.mm], [341.05.mm,1074.2.mm,34.45.mm], [341.05.mm,1074.05.mm,35.22.mm], [341.05.mm,1074.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(19.mm)
   mat = model.materials["ghost Axle Saddle L"] || model.materials.add("ghost Axle Saddle L")
@@ -29930,7 +30751,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([231.05.mm,1062.mm,34.82.mm], [250.05.mm,1062.mm,34.82.mm], [250.05.mm,1074.mm,34.82.mm], [231.05.mm,1074.mm,34.82.mm])
+  face = grp.entities.add_face([341.05.mm,1062.mm,34.82.mm], [360.05.mm,1062.mm,34.82.mm], [360.05.mm,1074.mm,34.82.mm], [341.05.mm,1074.mm,34.82.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.18.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -29942,7 +30763,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([240.55.mm,1068.mm,34.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([350.55.mm,1068.mm,34.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29954,7 +30775,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([231.05.mm,1086.mm,34.82.mm], [250.05.mm,1086.mm,34.82.mm], [250.05.mm,1098.mm,34.82.mm], [231.05.mm,1098.mm,34.82.mm])
+  face = grp.entities.add_face([341.05.mm,1086.mm,34.82.mm], [360.05.mm,1086.mm,34.82.mm], [360.05.mm,1098.mm,34.82.mm], [341.05.mm,1098.mm,34.82.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.18.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -29966,7 +30787,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([240.55.mm,1092.mm,34.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([350.55.mm,1092.mm,34.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -29979,7 +30800,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Wheel L"
   ge = grp.entities
-  circle = ge.add_circle([209.05.mm,1280.mm,36.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([319.05.mm,1280.mm,36.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(20.mm)
@@ -29992,7 +30813,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Axle Pin 10mm L"
   ge = grp.entities
-  circle = ge.add_circle([186.05.mm,1280.mm,36.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([296.05.mm,1280.mm,36.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
@@ -30005,7 +30826,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Axle Saddle L"
   ge = grp.entities
-  face = ge.add_face([[188.05.mm,1270.82.mm,36.mm], [188.05.mm,1270.9.mm,34.8.mm], [188.05.mm,1271.13.mm,33.62.mm], [188.05.mm,1271.52.mm,32.49.mm], [188.05.mm,1272.05.mm,31.41.mm], [188.05.mm,1272.72.mm,30.41.mm], [188.05.mm,1273.51.mm,29.51.mm], [188.05.mm,1274.41.mm,28.72.mm], [188.05.mm,1275.41.mm,28.05.mm], [188.05.mm,1276.49.mm,27.52.mm], [188.05.mm,1277.62.mm,27.13.mm], [188.05.mm,1278.8.mm,26.9.mm], [188.05.mm,1280.mm,26.82.mm], [188.05.mm,1281.2.mm,26.9.mm], [188.05.mm,1282.38.mm,27.13.mm], [188.05.mm,1283.51.mm,27.52.mm], [188.05.mm,1284.59.mm,28.05.mm], [188.05.mm,1285.59.mm,28.72.mm], [188.05.mm,1286.49.mm,29.51.mm], [188.05.mm,1287.28.mm,30.41.mm], [188.05.mm,1287.95.mm,31.41.mm], [188.05.mm,1288.48.mm,32.49.mm], [188.05.mm,1288.87.mm,33.62.mm], [188.05.mm,1289.1.mm,34.8.mm], [188.05.mm,1289.18.mm,36.mm], [188.05.mm,1286.mm,36.mm], [188.05.mm,1285.95.mm,35.22.mm], [188.05.mm,1285.8.mm,34.45.mm], [188.05.mm,1285.54.mm,33.7.mm], [188.05.mm,1285.2.mm,33.mm], [188.05.mm,1284.76.mm,32.35.mm], [188.05.mm,1284.24.mm,31.76.mm], [188.05.mm,1283.65.mm,31.24.mm], [188.05.mm,1283.mm,30.8.mm], [188.05.mm,1282.3.mm,30.46.mm], [188.05.mm,1281.55.mm,30.2.mm], [188.05.mm,1280.78.mm,30.05.mm], [188.05.mm,1280.mm,30.mm], [188.05.mm,1279.22.mm,30.05.mm], [188.05.mm,1278.45.mm,30.2.mm], [188.05.mm,1277.7.mm,30.46.mm], [188.05.mm,1277.mm,30.8.mm], [188.05.mm,1276.35.mm,31.24.mm], [188.05.mm,1275.76.mm,31.76.mm], [188.05.mm,1275.24.mm,32.35.mm], [188.05.mm,1274.8.mm,33.mm], [188.05.mm,1274.46.mm,33.7.mm], [188.05.mm,1274.2.mm,34.45.mm], [188.05.mm,1274.05.mm,35.22.mm], [188.05.mm,1274.mm,36.mm]])
+  face = ge.add_face([[298.05.mm,1270.82.mm,36.mm], [298.05.mm,1270.9.mm,34.8.mm], [298.05.mm,1271.13.mm,33.62.mm], [298.05.mm,1271.52.mm,32.49.mm], [298.05.mm,1272.05.mm,31.41.mm], [298.05.mm,1272.72.mm,30.41.mm], [298.05.mm,1273.51.mm,29.51.mm], [298.05.mm,1274.41.mm,28.72.mm], [298.05.mm,1275.41.mm,28.05.mm], [298.05.mm,1276.49.mm,27.52.mm], [298.05.mm,1277.62.mm,27.13.mm], [298.05.mm,1278.8.mm,26.9.mm], [298.05.mm,1280.mm,26.82.mm], [298.05.mm,1281.2.mm,26.9.mm], [298.05.mm,1282.38.mm,27.13.mm], [298.05.mm,1283.51.mm,27.52.mm], [298.05.mm,1284.59.mm,28.05.mm], [298.05.mm,1285.59.mm,28.72.mm], [298.05.mm,1286.49.mm,29.51.mm], [298.05.mm,1287.28.mm,30.41.mm], [298.05.mm,1287.95.mm,31.41.mm], [298.05.mm,1288.48.mm,32.49.mm], [298.05.mm,1288.87.mm,33.62.mm], [298.05.mm,1289.1.mm,34.8.mm], [298.05.mm,1289.18.mm,36.mm], [298.05.mm,1286.mm,36.mm], [298.05.mm,1285.95.mm,35.22.mm], [298.05.mm,1285.8.mm,34.45.mm], [298.05.mm,1285.54.mm,33.7.mm], [298.05.mm,1285.2.mm,33.mm], [298.05.mm,1284.76.mm,32.35.mm], [298.05.mm,1284.24.mm,31.76.mm], [298.05.mm,1283.65.mm,31.24.mm], [298.05.mm,1283.mm,30.8.mm], [298.05.mm,1282.3.mm,30.46.mm], [298.05.mm,1281.55.mm,30.2.mm], [298.05.mm,1280.78.mm,30.05.mm], [298.05.mm,1280.mm,30.mm], [298.05.mm,1279.22.mm,30.05.mm], [298.05.mm,1278.45.mm,30.2.mm], [298.05.mm,1277.7.mm,30.46.mm], [298.05.mm,1277.mm,30.8.mm], [298.05.mm,1276.35.mm,31.24.mm], [298.05.mm,1275.76.mm,31.76.mm], [298.05.mm,1275.24.mm,32.35.mm], [298.05.mm,1274.8.mm,33.mm], [298.05.mm,1274.46.mm,33.7.mm], [298.05.mm,1274.2.mm,34.45.mm], [298.05.mm,1274.05.mm,35.22.mm], [298.05.mm,1274.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(19.mm)
   mat = model.materials["ghost Axle Saddle L"] || model.materials.add("ghost Axle Saddle L")
@@ -30016,7 +30837,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([188.05.mm,1262.mm,34.82.mm], [207.05.mm,1262.mm,34.82.mm], [207.05.mm,1274.mm,34.82.mm], [188.05.mm,1274.mm,34.82.mm])
+  face = grp.entities.add_face([298.05.mm,1262.mm,34.82.mm], [317.05.mm,1262.mm,34.82.mm], [317.05.mm,1274.mm,34.82.mm], [298.05.mm,1274.mm,34.82.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.18.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -30028,7 +30849,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([197.55.mm,1268.mm,34.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([307.55.mm,1268.mm,34.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -30040,7 +30861,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([188.05.mm,1286.mm,34.82.mm], [207.05.mm,1286.mm,34.82.mm], [207.05.mm,1298.mm,34.82.mm], [188.05.mm,1298.mm,34.82.mm])
+  face = grp.entities.add_face([298.05.mm,1286.mm,34.82.mm], [317.05.mm,1286.mm,34.82.mm], [317.05.mm,1298.mm,34.82.mm], [298.05.mm,1298.mm,34.82.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.18.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -30052,7 +30873,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([197.55.mm,1292.mm,34.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([307.55.mm,1292.mm,34.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -30065,7 +30886,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Axle Saddle L"
   ge = grp.entities
-  face = ge.add_face([[231.05.mm,1270.82.mm,36.mm], [231.05.mm,1270.9.mm,34.8.mm], [231.05.mm,1271.13.mm,33.62.mm], [231.05.mm,1271.52.mm,32.49.mm], [231.05.mm,1272.05.mm,31.41.mm], [231.05.mm,1272.72.mm,30.41.mm], [231.05.mm,1273.51.mm,29.51.mm], [231.05.mm,1274.41.mm,28.72.mm], [231.05.mm,1275.41.mm,28.05.mm], [231.05.mm,1276.49.mm,27.52.mm], [231.05.mm,1277.62.mm,27.13.mm], [231.05.mm,1278.8.mm,26.9.mm], [231.05.mm,1280.mm,26.82.mm], [231.05.mm,1281.2.mm,26.9.mm], [231.05.mm,1282.38.mm,27.13.mm], [231.05.mm,1283.51.mm,27.52.mm], [231.05.mm,1284.59.mm,28.05.mm], [231.05.mm,1285.59.mm,28.72.mm], [231.05.mm,1286.49.mm,29.51.mm], [231.05.mm,1287.28.mm,30.41.mm], [231.05.mm,1287.95.mm,31.41.mm], [231.05.mm,1288.48.mm,32.49.mm], [231.05.mm,1288.87.mm,33.62.mm], [231.05.mm,1289.1.mm,34.8.mm], [231.05.mm,1289.18.mm,36.mm], [231.05.mm,1286.mm,36.mm], [231.05.mm,1285.95.mm,35.22.mm], [231.05.mm,1285.8.mm,34.45.mm], [231.05.mm,1285.54.mm,33.7.mm], [231.05.mm,1285.2.mm,33.mm], [231.05.mm,1284.76.mm,32.35.mm], [231.05.mm,1284.24.mm,31.76.mm], [231.05.mm,1283.65.mm,31.24.mm], [231.05.mm,1283.mm,30.8.mm], [231.05.mm,1282.3.mm,30.46.mm], [231.05.mm,1281.55.mm,30.2.mm], [231.05.mm,1280.78.mm,30.05.mm], [231.05.mm,1280.mm,30.mm], [231.05.mm,1279.22.mm,30.05.mm], [231.05.mm,1278.45.mm,30.2.mm], [231.05.mm,1277.7.mm,30.46.mm], [231.05.mm,1277.mm,30.8.mm], [231.05.mm,1276.35.mm,31.24.mm], [231.05.mm,1275.76.mm,31.76.mm], [231.05.mm,1275.24.mm,32.35.mm], [231.05.mm,1274.8.mm,33.mm], [231.05.mm,1274.46.mm,33.7.mm], [231.05.mm,1274.2.mm,34.45.mm], [231.05.mm,1274.05.mm,35.22.mm], [231.05.mm,1274.mm,36.mm]])
+  face = ge.add_face([[341.05.mm,1270.82.mm,36.mm], [341.05.mm,1270.9.mm,34.8.mm], [341.05.mm,1271.13.mm,33.62.mm], [341.05.mm,1271.52.mm,32.49.mm], [341.05.mm,1272.05.mm,31.41.mm], [341.05.mm,1272.72.mm,30.41.mm], [341.05.mm,1273.51.mm,29.51.mm], [341.05.mm,1274.41.mm,28.72.mm], [341.05.mm,1275.41.mm,28.05.mm], [341.05.mm,1276.49.mm,27.52.mm], [341.05.mm,1277.62.mm,27.13.mm], [341.05.mm,1278.8.mm,26.9.mm], [341.05.mm,1280.mm,26.82.mm], [341.05.mm,1281.2.mm,26.9.mm], [341.05.mm,1282.38.mm,27.13.mm], [341.05.mm,1283.51.mm,27.52.mm], [341.05.mm,1284.59.mm,28.05.mm], [341.05.mm,1285.59.mm,28.72.mm], [341.05.mm,1286.49.mm,29.51.mm], [341.05.mm,1287.28.mm,30.41.mm], [341.05.mm,1287.95.mm,31.41.mm], [341.05.mm,1288.48.mm,32.49.mm], [341.05.mm,1288.87.mm,33.62.mm], [341.05.mm,1289.1.mm,34.8.mm], [341.05.mm,1289.18.mm,36.mm], [341.05.mm,1286.mm,36.mm], [341.05.mm,1285.95.mm,35.22.mm], [341.05.mm,1285.8.mm,34.45.mm], [341.05.mm,1285.54.mm,33.7.mm], [341.05.mm,1285.2.mm,33.mm], [341.05.mm,1284.76.mm,32.35.mm], [341.05.mm,1284.24.mm,31.76.mm], [341.05.mm,1283.65.mm,31.24.mm], [341.05.mm,1283.mm,30.8.mm], [341.05.mm,1282.3.mm,30.46.mm], [341.05.mm,1281.55.mm,30.2.mm], [341.05.mm,1280.78.mm,30.05.mm], [341.05.mm,1280.mm,30.mm], [341.05.mm,1279.22.mm,30.05.mm], [341.05.mm,1278.45.mm,30.2.mm], [341.05.mm,1277.7.mm,30.46.mm], [341.05.mm,1277.mm,30.8.mm], [341.05.mm,1276.35.mm,31.24.mm], [341.05.mm,1275.76.mm,31.76.mm], [341.05.mm,1275.24.mm,32.35.mm], [341.05.mm,1274.8.mm,33.mm], [341.05.mm,1274.46.mm,33.7.mm], [341.05.mm,1274.2.mm,34.45.mm], [341.05.mm,1274.05.mm,35.22.mm], [341.05.mm,1274.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(19.mm)
   mat = model.materials["ghost Axle Saddle L"] || model.materials.add("ghost Axle Saddle L")
@@ -30076,7 +30897,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([231.05.mm,1262.mm,34.82.mm], [250.05.mm,1262.mm,34.82.mm], [250.05.mm,1274.mm,34.82.mm], [231.05.mm,1274.mm,34.82.mm])
+  face = grp.entities.add_face([341.05.mm,1262.mm,34.82.mm], [360.05.mm,1262.mm,34.82.mm], [360.05.mm,1274.mm,34.82.mm], [341.05.mm,1274.mm,34.82.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.18.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -30088,7 +30909,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([240.55.mm,1268.mm,34.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([350.55.mm,1268.mm,34.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -30100,7 +30921,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([231.05.mm,1286.mm,34.82.mm], [250.05.mm,1286.mm,34.82.mm], [250.05.mm,1298.mm,34.82.mm], [231.05.mm,1298.mm,34.82.mm])
+  face = grp.entities.add_face([341.05.mm,1286.mm,34.82.mm], [360.05.mm,1286.mm,34.82.mm], [360.05.mm,1298.mm,34.82.mm], [341.05.mm,1298.mm,34.82.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.18.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -30112,7 +30933,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([240.55.mm,1292.mm,34.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([350.55.mm,1292.mm,34.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -30124,7 +30945,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Bottom Clamp L
   grp = ents.add_group
   grp.name = "Bottom Clamp L"
-  face = grp.entities.add_face([200.mm,1148.mm,26.mm], [238.1.mm,1148.mm,26.mm], [238.1.mm,1212.mm,26.mm], [200.mm,1212.mm,26.mm])
+  face = grp.entities.add_face([310.mm,1148.mm,26.mm], [348.1.mm,1148.mm,26.mm], [348.1.mm,1212.mm,26.mm], [310.mm,1212.mm,26.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -30135,7 +30956,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Top Clamp L
   grp = ents.add_group
   grp.name = "Top Clamp L"
-  face = grp.entities.add_face([200.mm,1148.mm,67.1.mm], [238.1.mm,1148.mm,67.1.mm], [238.1.mm,1212.mm,67.1.mm], [200.mm,1212.mm,67.1.mm])
+  face = grp.entities.add_face([310.mm,1148.mm,67.1.mm], [348.1.mm,1148.mm,67.1.mm], [348.1.mm,1212.mm,67.1.mm], [310.mm,1212.mm,67.1.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -30146,7 +30967,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Clamp Spacer L
   grp = ents.add_group
   grp.name = "Clamp Spacer L"
-  face = grp.entities.add_face([204.mm,1152.95.mm,29.mm], [234.1.mm,1152.95.mm,29.mm], [234.1.mm,1160.95.mm,29.mm], [204.mm,1160.95.mm,29.mm])
+  face = grp.entities.add_face([314.mm,1152.95.mm,29.mm], [344.1.mm,1152.95.mm,29.mm], [344.1.mm,1160.95.mm,29.mm], [314.mm,1160.95.mm,29.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.099999999999994.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -30158,7 +30979,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([209.mm,1156.95.mm,26.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([319.mm,1156.95.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(48.099999999999994.mm)
@@ -30171,19 +30992,19 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Clamp Bolt CSK Head L"
   ge = grp.entities
-  ge.add_face([213.5.mm,1156.95.mm,26.mm], [212.89711431702997.mm,1159.2.mm,26.mm], [211.1650635094611.mm,1158.2.mm,29.mm], [211.5.mm,1156.95.mm,29.mm])
-  ge.add_face([212.89711431702997.mm,1159.2.mm,26.mm], [211.25.mm,1160.84711431703.mm,26.mm], [210.25.mm,1159.1150635094612.mm,29.mm], [211.1650635094611.mm,1158.2.mm,29.mm])
-  ge.add_face([211.25.mm,1160.84711431703.mm,26.mm], [209.mm,1161.45.mm,26.mm], [209.mm,1159.45.mm,29.mm], [210.25.mm,1159.1150635094612.mm,29.mm])
-  ge.add_face([209.mm,1161.45.mm,26.mm], [206.75.mm,1160.84711431703.mm,26.mm], [207.75.mm,1159.1150635094612.mm,29.mm], [209.mm,1159.45.mm,29.mm])
-  ge.add_face([206.75.mm,1160.84711431703.mm,26.mm], [205.10288568297003.mm,1159.2.mm,26.mm], [206.8349364905389.mm,1158.2.mm,29.mm], [207.75.mm,1159.1150635094612.mm,29.mm])
-  ge.add_face([205.10288568297003.mm,1159.2.mm,26.mm], [204.5.mm,1156.95.mm,26.mm], [206.5.mm,1156.95.mm,29.mm], [206.8349364905389.mm,1158.2.mm,29.mm])
-  ge.add_face([204.5.mm,1156.95.mm,26.mm], [205.10288568297003.mm,1154.7.mm,26.mm], [206.8349364905389.mm,1155.7.mm,29.mm], [206.5.mm,1156.95.mm,29.mm])
-  ge.add_face([205.10288568297003.mm,1154.7.mm,26.mm], [206.75.mm,1153.05288568297.mm,26.mm], [207.75.mm,1154.784936490539.mm,29.mm], [206.8349364905389.mm,1155.7.mm,29.mm])
-  ge.add_face([206.75.mm,1153.05288568297.mm,26.mm], [209.mm,1152.45.mm,26.mm], [209.mm,1154.45.mm,29.mm], [207.75.mm,1154.784936490539.mm,29.mm])
-  ge.add_face([209.mm,1152.45.mm,26.mm], [211.25.mm,1153.05288568297.mm,26.mm], [210.25.mm,1154.784936490539.mm,29.mm], [209.mm,1154.45.mm,29.mm])
-  ge.add_face([211.25.mm,1153.05288568297.mm,26.mm], [212.89711431702997.mm,1154.7.mm,26.mm], [211.1650635094611.mm,1155.7.mm,29.mm], [210.25.mm,1154.784936490539.mm,29.mm])
-  ge.add_face([212.89711431702997.mm,1154.7.mm,26.mm], [213.5.mm,1156.95.mm,26.mm], [211.5.mm,1156.95.mm,29.mm], [211.1650635094611.mm,1155.7.mm,29.mm])
-  ge.add_face([213.5.mm,1156.95.mm,26.mm], [212.89711431702997.mm,1159.2.mm,26.mm], [211.25.mm,1160.84711431703.mm,26.mm], [209.mm,1161.45.mm,26.mm], [206.75.mm,1160.84711431703.mm,26.mm], [205.10288568297003.mm,1159.2.mm,26.mm], [204.5.mm,1156.95.mm,26.mm], [205.10288568297003.mm,1154.7.mm,26.mm], [206.75.mm,1153.05288568297.mm,26.mm], [209.mm,1152.45.mm,26.mm], [211.25.mm,1153.05288568297.mm,26.mm], [212.89711431702997.mm,1154.7.mm,26.mm])
+  ge.add_face([323.5.mm,1156.95.mm,26.mm], [322.89711431702995.mm,1159.2.mm,26.mm], [321.1650635094611.mm,1158.2.mm,29.mm], [321.5.mm,1156.95.mm,29.mm])
+  ge.add_face([322.89711431702995.mm,1159.2.mm,26.mm], [321.25.mm,1160.84711431703.mm,26.mm], [320.25.mm,1159.1150635094612.mm,29.mm], [321.1650635094611.mm,1158.2.mm,29.mm])
+  ge.add_face([321.25.mm,1160.84711431703.mm,26.mm], [319.mm,1161.45.mm,26.mm], [319.mm,1159.45.mm,29.mm], [320.25.mm,1159.1150635094612.mm,29.mm])
+  ge.add_face([319.mm,1161.45.mm,26.mm], [316.75.mm,1160.84711431703.mm,26.mm], [317.75.mm,1159.1150635094612.mm,29.mm], [319.mm,1159.45.mm,29.mm])
+  ge.add_face([316.75.mm,1160.84711431703.mm,26.mm], [315.10288568297005.mm,1159.2.mm,26.mm], [316.8349364905389.mm,1158.2.mm,29.mm], [317.75.mm,1159.1150635094612.mm,29.mm])
+  ge.add_face([315.10288568297005.mm,1159.2.mm,26.mm], [314.5.mm,1156.95.mm,26.mm], [316.5.mm,1156.95.mm,29.mm], [316.8349364905389.mm,1158.2.mm,29.mm])
+  ge.add_face([314.5.mm,1156.95.mm,26.mm], [315.10288568297.mm,1154.7.mm,26.mm], [316.8349364905389.mm,1155.7.mm,29.mm], [316.5.mm,1156.95.mm,29.mm])
+  ge.add_face([315.10288568297.mm,1154.7.mm,26.mm], [316.75.mm,1153.05288568297.mm,26.mm], [317.75.mm,1154.784936490539.mm,29.mm], [316.8349364905389.mm,1155.7.mm,29.mm])
+  ge.add_face([316.75.mm,1153.05288568297.mm,26.mm], [319.mm,1152.45.mm,26.mm], [319.mm,1154.45.mm,29.mm], [317.75.mm,1154.784936490539.mm,29.mm])
+  ge.add_face([319.mm,1152.45.mm,26.mm], [321.25.mm,1153.05288568297.mm,26.mm], [320.25.mm,1154.784936490539.mm,29.mm], [319.mm,1154.45.mm,29.mm])
+  ge.add_face([321.25.mm,1153.05288568297.mm,26.mm], [322.89711431702995.mm,1154.7.mm,26.mm], [321.1650635094611.mm,1155.7.mm,29.mm], [320.25.mm,1154.784936490539.mm,29.mm])
+  ge.add_face([322.89711431702995.mm,1154.7.mm,26.mm], [323.5.mm,1156.95.mm,26.mm], [321.5.mm,1156.95.mm,29.mm], [321.1650635094611.mm,1155.7.mm,29.mm])
+  ge.add_face([323.5.mm,1156.95.mm,26.mm], [322.89711431702995.mm,1159.2.mm,26.mm], [321.25.mm,1160.84711431703.mm,26.mm], [319.mm,1161.45.mm,26.mm], [316.75.mm,1160.84711431703.mm,26.mm], [315.10288568297005.mm,1159.2.mm,26.mm], [314.5.mm,1156.95.mm,26.mm], [315.10288568297.mm,1154.7.mm,26.mm], [316.75.mm,1153.05288568297.mm,26.mm], [319.mm,1152.45.mm,26.mm], [321.25.mm,1153.05288568297.mm,26.mm], [322.89711431702995.mm,1154.7.mm,26.mm])
   mat = model.materials["Clamp Bolt CSK Head L"] || model.materials.add("Clamp Bolt CSK Head L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
@@ -30192,7 +31013,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([229.1.mm,1156.95.mm,26.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([339.1.mm,1156.95.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(48.099999999999994.mm)
@@ -30205,19 +31026,19 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Clamp Bolt CSK Head L"
   ge = grp.entities
-  ge.add_face([233.6.mm,1156.95.mm,26.mm], [232.99711431702997.mm,1159.2.mm,26.mm], [231.2650635094611.mm,1158.2.mm,29.mm], [231.6.mm,1156.95.mm,29.mm])
-  ge.add_face([232.99711431702997.mm,1159.2.mm,26.mm], [231.35.mm,1160.84711431703.mm,26.mm], [230.35.mm,1159.1150635094612.mm,29.mm], [231.2650635094611.mm,1158.2.mm,29.mm])
-  ge.add_face([231.35.mm,1160.84711431703.mm,26.mm], [229.1.mm,1161.45.mm,26.mm], [229.1.mm,1159.45.mm,29.mm], [230.35.mm,1159.1150635094612.mm,29.mm])
-  ge.add_face([229.1.mm,1161.45.mm,26.mm], [226.85.mm,1160.84711431703.mm,26.mm], [227.85.mm,1159.1150635094612.mm,29.mm], [229.1.mm,1159.45.mm,29.mm])
-  ge.add_face([226.85.mm,1160.84711431703.mm,26.mm], [225.20288568297002.mm,1159.2.mm,26.mm], [226.9349364905389.mm,1158.2.mm,29.mm], [227.85.mm,1159.1150635094612.mm,29.mm])
-  ge.add_face([225.20288568297002.mm,1159.2.mm,26.mm], [224.6.mm,1156.95.mm,26.mm], [226.6.mm,1156.95.mm,29.mm], [226.9349364905389.mm,1158.2.mm,29.mm])
-  ge.add_face([224.6.mm,1156.95.mm,26.mm], [225.20288568297002.mm,1154.7.mm,26.mm], [226.9349364905389.mm,1155.7.mm,29.mm], [226.6.mm,1156.95.mm,29.mm])
-  ge.add_face([225.20288568297002.mm,1154.7.mm,26.mm], [226.85.mm,1153.05288568297.mm,26.mm], [227.85.mm,1154.784936490539.mm,29.mm], [226.9349364905389.mm,1155.7.mm,29.mm])
-  ge.add_face([226.85.mm,1153.05288568297.mm,26.mm], [229.1.mm,1152.45.mm,26.mm], [229.1.mm,1154.45.mm,29.mm], [227.85.mm,1154.784936490539.mm,29.mm])
-  ge.add_face([229.1.mm,1152.45.mm,26.mm], [231.35.mm,1153.05288568297.mm,26.mm], [230.35.mm,1154.784936490539.mm,29.mm], [229.1.mm,1154.45.mm,29.mm])
-  ge.add_face([231.35.mm,1153.05288568297.mm,26.mm], [232.99711431702997.mm,1154.7.mm,26.mm], [231.2650635094611.mm,1155.7.mm,29.mm], [230.35.mm,1154.784936490539.mm,29.mm])
-  ge.add_face([232.99711431702997.mm,1154.7.mm,26.mm], [233.6.mm,1156.95.mm,26.mm], [231.6.mm,1156.95.mm,29.mm], [231.2650635094611.mm,1155.7.mm,29.mm])
-  ge.add_face([233.6.mm,1156.95.mm,26.mm], [232.99711431702997.mm,1159.2.mm,26.mm], [231.35.mm,1160.84711431703.mm,26.mm], [229.1.mm,1161.45.mm,26.mm], [226.85.mm,1160.84711431703.mm,26.mm], [225.20288568297002.mm,1159.2.mm,26.mm], [224.6.mm,1156.95.mm,26.mm], [225.20288568297002.mm,1154.7.mm,26.mm], [226.85.mm,1153.05288568297.mm,26.mm], [229.1.mm,1152.45.mm,26.mm], [231.35.mm,1153.05288568297.mm,26.mm], [232.99711431702997.mm,1154.7.mm,26.mm])
+  ge.add_face([343.6.mm,1156.95.mm,26.mm], [342.99711431702997.mm,1159.2.mm,26.mm], [341.26506350946113.mm,1158.2.mm,29.mm], [341.6.mm,1156.95.mm,29.mm])
+  ge.add_face([342.99711431702997.mm,1159.2.mm,26.mm], [341.35.mm,1160.84711431703.mm,26.mm], [340.35.mm,1159.1150635094612.mm,29.mm], [341.26506350946113.mm,1158.2.mm,29.mm])
+  ge.add_face([341.35.mm,1160.84711431703.mm,26.mm], [339.1.mm,1161.45.mm,26.mm], [339.1.mm,1159.45.mm,29.mm], [340.35.mm,1159.1150635094612.mm,29.mm])
+  ge.add_face([339.1.mm,1161.45.mm,26.mm], [336.85.mm,1160.84711431703.mm,26.mm], [337.85.mm,1159.1150635094612.mm,29.mm], [339.1.mm,1159.45.mm,29.mm])
+  ge.add_face([336.85.mm,1160.84711431703.mm,26.mm], [335.2028856829701.mm,1159.2.mm,26.mm], [336.9349364905389.mm,1158.2.mm,29.mm], [337.85.mm,1159.1150635094612.mm,29.mm])
+  ge.add_face([335.2028856829701.mm,1159.2.mm,26.mm], [334.6.mm,1156.95.mm,26.mm], [336.6.mm,1156.95.mm,29.mm], [336.9349364905389.mm,1158.2.mm,29.mm])
+  ge.add_face([334.6.mm,1156.95.mm,26.mm], [335.20288568297.mm,1154.7.mm,26.mm], [336.9349364905389.mm,1155.7.mm,29.mm], [336.6.mm,1156.95.mm,29.mm])
+  ge.add_face([335.20288568297.mm,1154.7.mm,26.mm], [336.85.mm,1153.05288568297.mm,26.mm], [337.85.mm,1154.784936490539.mm,29.mm], [336.9349364905389.mm,1155.7.mm,29.mm])
+  ge.add_face([336.85.mm,1153.05288568297.mm,26.mm], [339.1.mm,1152.45.mm,26.mm], [339.1.mm,1154.45.mm,29.mm], [337.85.mm,1154.784936490539.mm,29.mm])
+  ge.add_face([339.1.mm,1152.45.mm,26.mm], [341.35.mm,1153.05288568297.mm,26.mm], [340.35.mm,1154.784936490539.mm,29.mm], [339.1.mm,1154.45.mm,29.mm])
+  ge.add_face([341.35.mm,1153.05288568297.mm,26.mm], [342.99711431702997.mm,1154.7.mm,26.mm], [341.26506350946113.mm,1155.7.mm,29.mm], [340.35.mm,1154.784936490539.mm,29.mm])
+  ge.add_face([342.99711431702997.mm,1154.7.mm,26.mm], [343.6.mm,1156.95.mm,26.mm], [341.6.mm,1156.95.mm,29.mm], [341.26506350946113.mm,1155.7.mm,29.mm])
+  ge.add_face([343.6.mm,1156.95.mm,26.mm], [342.99711431702997.mm,1159.2.mm,26.mm], [341.35.mm,1160.84711431703.mm,26.mm], [339.1.mm,1161.45.mm,26.mm], [336.85.mm,1160.84711431703.mm,26.mm], [335.2028856829701.mm,1159.2.mm,26.mm], [334.6.mm,1156.95.mm,26.mm], [335.20288568297.mm,1154.7.mm,26.mm], [336.85.mm,1153.05288568297.mm,26.mm], [339.1.mm,1152.45.mm,26.mm], [341.35.mm,1153.05288568297.mm,26.mm], [342.99711431702997.mm,1154.7.mm,26.mm])
   mat = model.materials["Clamp Bolt CSK Head L"] || model.materials.add("Clamp Bolt CSK Head L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
@@ -30225,7 +31046,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Clamp Spacer L
   grp = ents.add_group
   grp.name = "Clamp Spacer L"
-  face = grp.entities.add_face([204.mm,1199.05.mm,29.mm], [234.1.mm,1199.05.mm,29.mm], [234.1.mm,1207.05.mm,29.mm], [204.mm,1207.05.mm,29.mm])
+  face = grp.entities.add_face([314.mm,1199.05.mm,29.mm], [344.1.mm,1199.05.mm,29.mm], [344.1.mm,1207.05.mm,29.mm], [314.mm,1207.05.mm,29.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.099999999999994.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -30237,7 +31058,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([209.mm,1203.05.mm,26.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([319.mm,1203.05.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(48.099999999999994.mm)
@@ -30250,19 +31071,19 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Clamp Bolt CSK Head L"
   ge = grp.entities
-  ge.add_face([213.5.mm,1203.05.mm,26.mm], [212.89711431702997.mm,1205.3.mm,26.mm], [211.1650635094611.mm,1204.3.mm,29.mm], [211.5.mm,1203.05.mm,29.mm])
-  ge.add_face([212.89711431702997.mm,1205.3.mm,26.mm], [211.25.mm,1206.94711431703.mm,26.mm], [210.25.mm,1205.215063509461.mm,29.mm], [211.1650635094611.mm,1204.3.mm,29.mm])
-  ge.add_face([211.25.mm,1206.94711431703.mm,26.mm], [209.mm,1207.55.mm,26.mm], [209.mm,1205.55.mm,29.mm], [210.25.mm,1205.215063509461.mm,29.mm])
-  ge.add_face([209.mm,1207.55.mm,26.mm], [206.75.mm,1206.94711431703.mm,26.mm], [207.75.mm,1205.215063509461.mm,29.mm], [209.mm,1205.55.mm,29.mm])
-  ge.add_face([206.75.mm,1206.94711431703.mm,26.mm], [205.10288568297003.mm,1205.3.mm,26.mm], [206.8349364905389.mm,1204.3.mm,29.mm], [207.75.mm,1205.215063509461.mm,29.mm])
-  ge.add_face([205.10288568297003.mm,1205.3.mm,26.mm], [204.5.mm,1203.05.mm,26.mm], [206.5.mm,1203.05.mm,29.mm], [206.8349364905389.mm,1204.3.mm,29.mm])
-  ge.add_face([204.5.mm,1203.05.mm,26.mm], [205.10288568297003.mm,1200.8.mm,26.mm], [206.8349364905389.mm,1201.8.mm,29.mm], [206.5.mm,1203.05.mm,29.mm])
-  ge.add_face([205.10288568297003.mm,1200.8.mm,26.mm], [206.75.mm,1199.15288568297.mm,26.mm], [207.75.mm,1200.8849364905388.mm,29.mm], [206.8349364905389.mm,1201.8.mm,29.mm])
-  ge.add_face([206.75.mm,1199.15288568297.mm,26.mm], [209.mm,1198.55.mm,26.mm], [209.mm,1200.55.mm,29.mm], [207.75.mm,1200.8849364905388.mm,29.mm])
-  ge.add_face([209.mm,1198.55.mm,26.mm], [211.25.mm,1199.15288568297.mm,26.mm], [210.25.mm,1200.8849364905388.mm,29.mm], [209.mm,1200.55.mm,29.mm])
-  ge.add_face([211.25.mm,1199.15288568297.mm,26.mm], [212.89711431702997.mm,1200.8.mm,26.mm], [211.1650635094611.mm,1201.8.mm,29.mm], [210.25.mm,1200.8849364905388.mm,29.mm])
-  ge.add_face([212.89711431702997.mm,1200.8.mm,26.mm], [213.5.mm,1203.05.mm,26.mm], [211.5.mm,1203.05.mm,29.mm], [211.1650635094611.mm,1201.8.mm,29.mm])
-  ge.add_face([213.5.mm,1203.05.mm,26.mm], [212.89711431702997.mm,1205.3.mm,26.mm], [211.25.mm,1206.94711431703.mm,26.mm], [209.mm,1207.55.mm,26.mm], [206.75.mm,1206.94711431703.mm,26.mm], [205.10288568297003.mm,1205.3.mm,26.mm], [204.5.mm,1203.05.mm,26.mm], [205.10288568297003.mm,1200.8.mm,26.mm], [206.75.mm,1199.15288568297.mm,26.mm], [209.mm,1198.55.mm,26.mm], [211.25.mm,1199.15288568297.mm,26.mm], [212.89711431702997.mm,1200.8.mm,26.mm])
+  ge.add_face([323.5.mm,1203.05.mm,26.mm], [322.89711431702995.mm,1205.3.mm,26.mm], [321.1650635094611.mm,1204.3.mm,29.mm], [321.5.mm,1203.05.mm,29.mm])
+  ge.add_face([322.89711431702995.mm,1205.3.mm,26.mm], [321.25.mm,1206.94711431703.mm,26.mm], [320.25.mm,1205.215063509461.mm,29.mm], [321.1650635094611.mm,1204.3.mm,29.mm])
+  ge.add_face([321.25.mm,1206.94711431703.mm,26.mm], [319.mm,1207.55.mm,26.mm], [319.mm,1205.55.mm,29.mm], [320.25.mm,1205.215063509461.mm,29.mm])
+  ge.add_face([319.mm,1207.55.mm,26.mm], [316.75.mm,1206.94711431703.mm,26.mm], [317.75.mm,1205.215063509461.mm,29.mm], [319.mm,1205.55.mm,29.mm])
+  ge.add_face([316.75.mm,1206.94711431703.mm,26.mm], [315.10288568297005.mm,1205.3.mm,26.mm], [316.8349364905389.mm,1204.3.mm,29.mm], [317.75.mm,1205.215063509461.mm,29.mm])
+  ge.add_face([315.10288568297005.mm,1205.3.mm,26.mm], [314.5.mm,1203.05.mm,26.mm], [316.5.mm,1203.05.mm,29.mm], [316.8349364905389.mm,1204.3.mm,29.mm])
+  ge.add_face([314.5.mm,1203.05.mm,26.mm], [315.10288568297.mm,1200.8.mm,26.mm], [316.8349364905389.mm,1201.8.mm,29.mm], [316.5.mm,1203.05.mm,29.mm])
+  ge.add_face([315.10288568297.mm,1200.8.mm,26.mm], [316.75.mm,1199.15288568297.mm,26.mm], [317.75.mm,1200.8849364905388.mm,29.mm], [316.8349364905389.mm,1201.8.mm,29.mm])
+  ge.add_face([316.75.mm,1199.15288568297.mm,26.mm], [319.mm,1198.55.mm,26.mm], [319.mm,1200.55.mm,29.mm], [317.75.mm,1200.8849364905388.mm,29.mm])
+  ge.add_face([319.mm,1198.55.mm,26.mm], [321.25.mm,1199.15288568297.mm,26.mm], [320.25.mm,1200.8849364905388.mm,29.mm], [319.mm,1200.55.mm,29.mm])
+  ge.add_face([321.25.mm,1199.15288568297.mm,26.mm], [322.89711431702995.mm,1200.8.mm,26.mm], [321.1650635094611.mm,1201.8.mm,29.mm], [320.25.mm,1200.8849364905388.mm,29.mm])
+  ge.add_face([322.89711431702995.mm,1200.8.mm,26.mm], [323.5.mm,1203.05.mm,26.mm], [321.5.mm,1203.05.mm,29.mm], [321.1650635094611.mm,1201.8.mm,29.mm])
+  ge.add_face([323.5.mm,1203.05.mm,26.mm], [322.89711431702995.mm,1205.3.mm,26.mm], [321.25.mm,1206.94711431703.mm,26.mm], [319.mm,1207.55.mm,26.mm], [316.75.mm,1206.94711431703.mm,26.mm], [315.10288568297005.mm,1205.3.mm,26.mm], [314.5.mm,1203.05.mm,26.mm], [315.10288568297.mm,1200.8.mm,26.mm], [316.75.mm,1199.15288568297.mm,26.mm], [319.mm,1198.55.mm,26.mm], [321.25.mm,1199.15288568297.mm,26.mm], [322.89711431702995.mm,1200.8.mm,26.mm])
   mat = model.materials["Clamp Bolt CSK Head L"] || model.materials.add("Clamp Bolt CSK Head L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
@@ -30271,7 +31092,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([229.1.mm,1203.05.mm,26.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([339.1.mm,1203.05.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(48.099999999999994.mm)
@@ -30284,19 +31105,19 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Clamp Bolt CSK Head L"
   ge = grp.entities
-  ge.add_face([233.6.mm,1203.05.mm,26.mm], [232.99711431702997.mm,1205.3.mm,26.mm], [231.2650635094611.mm,1204.3.mm,29.mm], [231.6.mm,1203.05.mm,29.mm])
-  ge.add_face([232.99711431702997.mm,1205.3.mm,26.mm], [231.35.mm,1206.94711431703.mm,26.mm], [230.35.mm,1205.215063509461.mm,29.mm], [231.2650635094611.mm,1204.3.mm,29.mm])
-  ge.add_face([231.35.mm,1206.94711431703.mm,26.mm], [229.1.mm,1207.55.mm,26.mm], [229.1.mm,1205.55.mm,29.mm], [230.35.mm,1205.215063509461.mm,29.mm])
-  ge.add_face([229.1.mm,1207.55.mm,26.mm], [226.85.mm,1206.94711431703.mm,26.mm], [227.85.mm,1205.215063509461.mm,29.mm], [229.1.mm,1205.55.mm,29.mm])
-  ge.add_face([226.85.mm,1206.94711431703.mm,26.mm], [225.20288568297002.mm,1205.3.mm,26.mm], [226.9349364905389.mm,1204.3.mm,29.mm], [227.85.mm,1205.215063509461.mm,29.mm])
-  ge.add_face([225.20288568297002.mm,1205.3.mm,26.mm], [224.6.mm,1203.05.mm,26.mm], [226.6.mm,1203.05.mm,29.mm], [226.9349364905389.mm,1204.3.mm,29.mm])
-  ge.add_face([224.6.mm,1203.05.mm,26.mm], [225.20288568297002.mm,1200.8.mm,26.mm], [226.9349364905389.mm,1201.8.mm,29.mm], [226.6.mm,1203.05.mm,29.mm])
-  ge.add_face([225.20288568297002.mm,1200.8.mm,26.mm], [226.85.mm,1199.15288568297.mm,26.mm], [227.85.mm,1200.8849364905388.mm,29.mm], [226.9349364905389.mm,1201.8.mm,29.mm])
-  ge.add_face([226.85.mm,1199.15288568297.mm,26.mm], [229.1.mm,1198.55.mm,26.mm], [229.1.mm,1200.55.mm,29.mm], [227.85.mm,1200.8849364905388.mm,29.mm])
-  ge.add_face([229.1.mm,1198.55.mm,26.mm], [231.35.mm,1199.15288568297.mm,26.mm], [230.35.mm,1200.8849364905388.mm,29.mm], [229.1.mm,1200.55.mm,29.mm])
-  ge.add_face([231.35.mm,1199.15288568297.mm,26.mm], [232.99711431702997.mm,1200.8.mm,26.mm], [231.2650635094611.mm,1201.8.mm,29.mm], [230.35.mm,1200.8849364905388.mm,29.mm])
-  ge.add_face([232.99711431702997.mm,1200.8.mm,26.mm], [233.6.mm,1203.05.mm,26.mm], [231.6.mm,1203.05.mm,29.mm], [231.2650635094611.mm,1201.8.mm,29.mm])
-  ge.add_face([233.6.mm,1203.05.mm,26.mm], [232.99711431702997.mm,1205.3.mm,26.mm], [231.35.mm,1206.94711431703.mm,26.mm], [229.1.mm,1207.55.mm,26.mm], [226.85.mm,1206.94711431703.mm,26.mm], [225.20288568297002.mm,1205.3.mm,26.mm], [224.6.mm,1203.05.mm,26.mm], [225.20288568297002.mm,1200.8.mm,26.mm], [226.85.mm,1199.15288568297.mm,26.mm], [229.1.mm,1198.55.mm,26.mm], [231.35.mm,1199.15288568297.mm,26.mm], [232.99711431702997.mm,1200.8.mm,26.mm])
+  ge.add_face([343.6.mm,1203.05.mm,26.mm], [342.99711431702997.mm,1205.3.mm,26.mm], [341.26506350946113.mm,1204.3.mm,29.mm], [341.6.mm,1203.05.mm,29.mm])
+  ge.add_face([342.99711431702997.mm,1205.3.mm,26.mm], [341.35.mm,1206.94711431703.mm,26.mm], [340.35.mm,1205.215063509461.mm,29.mm], [341.26506350946113.mm,1204.3.mm,29.mm])
+  ge.add_face([341.35.mm,1206.94711431703.mm,26.mm], [339.1.mm,1207.55.mm,26.mm], [339.1.mm,1205.55.mm,29.mm], [340.35.mm,1205.215063509461.mm,29.mm])
+  ge.add_face([339.1.mm,1207.55.mm,26.mm], [336.85.mm,1206.94711431703.mm,26.mm], [337.85.mm,1205.215063509461.mm,29.mm], [339.1.mm,1205.55.mm,29.mm])
+  ge.add_face([336.85.mm,1206.94711431703.mm,26.mm], [335.2028856829701.mm,1205.3.mm,26.mm], [336.9349364905389.mm,1204.3.mm,29.mm], [337.85.mm,1205.215063509461.mm,29.mm])
+  ge.add_face([335.2028856829701.mm,1205.3.mm,26.mm], [334.6.mm,1203.05.mm,26.mm], [336.6.mm,1203.05.mm,29.mm], [336.9349364905389.mm,1204.3.mm,29.mm])
+  ge.add_face([334.6.mm,1203.05.mm,26.mm], [335.20288568297.mm,1200.8.mm,26.mm], [336.9349364905389.mm,1201.8.mm,29.mm], [336.6.mm,1203.05.mm,29.mm])
+  ge.add_face([335.20288568297.mm,1200.8.mm,26.mm], [336.85.mm,1199.15288568297.mm,26.mm], [337.85.mm,1200.8849364905388.mm,29.mm], [336.9349364905389.mm,1201.8.mm,29.mm])
+  ge.add_face([336.85.mm,1199.15288568297.mm,26.mm], [339.1.mm,1198.55.mm,26.mm], [339.1.mm,1200.55.mm,29.mm], [337.85.mm,1200.8849364905388.mm,29.mm])
+  ge.add_face([339.1.mm,1198.55.mm,26.mm], [341.35.mm,1199.15288568297.mm,26.mm], [340.35.mm,1200.8849364905388.mm,29.mm], [339.1.mm,1200.55.mm,29.mm])
+  ge.add_face([341.35.mm,1199.15288568297.mm,26.mm], [342.99711431702997.mm,1200.8.mm,26.mm], [341.26506350946113.mm,1201.8.mm,29.mm], [340.35.mm,1200.8849364905388.mm,29.mm])
+  ge.add_face([342.99711431702997.mm,1200.8.mm,26.mm], [343.6.mm,1203.05.mm,26.mm], [341.6.mm,1203.05.mm,29.mm], [341.26506350946113.mm,1201.8.mm,29.mm])
+  ge.add_face([343.6.mm,1203.05.mm,26.mm], [342.99711431702997.mm,1205.3.mm,26.mm], [341.35.mm,1206.94711431703.mm,26.mm], [339.1.mm,1207.55.mm,26.mm], [336.85.mm,1206.94711431703.mm,26.mm], [335.2028856829701.mm,1205.3.mm,26.mm], [334.6.mm,1203.05.mm,26.mm], [335.20288568297.mm,1200.8.mm,26.mm], [336.85.mm,1199.15288568297.mm,26.mm], [339.1.mm,1198.55.mm,26.mm], [341.35.mm,1199.15288568297.mm,26.mm], [342.99711431702997.mm,1200.8.mm,26.mm])
   mat = model.materials["Clamp Bolt CSK Head L"] || model.materials.add("Clamp Bolt CSK Head L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
@@ -30798,7 +31619,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   # Pole Mount Flange
   grp = ents.add_group
   grp.name = "Pole Mount Flange"
-  face = grp.entities.add_face([2377.5.mm,1158.mm,67.1.mm], [2421.5.mm,1158.mm,67.1.mm], [2421.5.mm,1202.mm,67.1.mm], [2377.5.mm,1202.mm,67.1.mm])
+  face = grp.entities.add_face([2432.5.mm,1158.mm,67.1.mm], [2476.5.mm,1158.mm,67.1.mm], [2476.5.mm,1202.mm,67.1.mm], [2432.5.mm,1202.mm,67.1.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["ghost Frame upright"] || model.materials.add("ghost Frame upright")
@@ -30810,7 +31631,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Flange Self-Tapping Screw"
   ge = grp.entities
-  circle = ge.add_circle([2383.5.mm,1164.mm,63.099999999999994.mm], [0,0,1], 1.8.mm, 24)
+  circle = ge.add_circle([2438.5.mm,1164.mm,63.099999999999994.mm], [0,0,1], 1.8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(9.mm)
@@ -30823,7 +31644,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Flange Screw Head"
   ge = grp.entities
-  circle = ge.add_circle([2383.5.mm,1164.mm,72.1.mm], [0,0,1], 3.mm, 24)
+  circle = ge.add_circle([2438.5.mm,1164.mm,72.1.mm], [0,0,1], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2.5.mm)
@@ -30836,7 +31657,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Flange Self-Tapping Screw"
   ge = grp.entities
-  circle = ge.add_circle([2383.5.mm,1196.mm,63.099999999999994.mm], [0,0,1], 1.8.mm, 24)
+  circle = ge.add_circle([2438.5.mm,1196.mm,63.099999999999994.mm], [0,0,1], 1.8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(9.mm)
@@ -30849,7 +31670,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Flange Screw Head"
   ge = grp.entities
-  circle = ge.add_circle([2383.5.mm,1196.mm,72.1.mm], [0,0,1], 3.mm, 24)
+  circle = ge.add_circle([2438.5.mm,1196.mm,72.1.mm], [0,0,1], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2.5.mm)
@@ -30862,7 +31683,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Flange Self-Tapping Screw"
   ge = grp.entities
-  circle = ge.add_circle([2415.5.mm,1164.mm,63.099999999999994.mm], [0,0,1], 1.8.mm, 24)
+  circle = ge.add_circle([2470.5.mm,1164.mm,63.099999999999994.mm], [0,0,1], 1.8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(9.mm)
@@ -30875,7 +31696,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Flange Screw Head"
   ge = grp.entities
-  circle = ge.add_circle([2415.5.mm,1164.mm,72.1.mm], [0,0,1], 3.mm, 24)
+  circle = ge.add_circle([2470.5.mm,1164.mm,72.1.mm], [0,0,1], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2.5.mm)
@@ -30888,7 +31709,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Flange Self-Tapping Screw"
   ge = grp.entities
-  circle = ge.add_circle([2415.5.mm,1196.mm,63.099999999999994.mm], [0,0,1], 1.8.mm, 24)
+  circle = ge.add_circle([2470.5.mm,1196.mm,63.099999999999994.mm], [0,0,1], 1.8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(9.mm)
@@ -30901,7 +31722,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Flange Screw Head"
   ge = grp.entities
-  circle = ge.add_circle([2415.5.mm,1196.mm,72.1.mm], [0,0,1], 3.mm, 24)
+  circle = ge.add_circle([2470.5.mm,1196.mm,72.1.mm], [0,0,1], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2.5.mm)
@@ -30914,7 +31735,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Ball-Joint Socket (20mm)"
   ge = grp.entities
-  circle = ge.add_circle([2399.5.mm,1180.mm,72.1.mm], [0,0,1], 18.mm, 24)
+  circle = ge.add_circle([2454.5.mm,1180.mm,72.1.mm], [0,0,1], 18.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(28.mm)
@@ -30928,7 +31749,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Ball-Joint Stud (M12)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -28.mm, 24.mm)
-  circle = ge.add_circle([2399.5.mm,1180.mm,88.1.mm], vec, 6.mm, 16)
+  circle = ge.add_circle([2454.5.mm,1180.mm,88.1.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -30942,7 +31763,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Arm Tube (25 OD Al)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -246.mm, 585.9499999999999.mm)
-  circle = ge.add_circle([2399.5.mm,1156.mm,108.1.mm], vec, 12.5.mm, 16)
+  circle = ge.add_circle([2454.5.mm,1156.mm,108.1.mm], vec, 12.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -30955,7 +31776,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Pinch Bolt"
   ge = grp.entities
-  circle = ge.add_circle([2381.5.mm,1154.mm,114.1.mm], [1,0,0], 3.mm, 24)
+  circle = ge.add_circle([2436.5.mm,1154.mm,114.1.mm], [1,0,0], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(36.mm)
@@ -30969,7 +31790,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Telescoping Pole"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -270.mm, 605.95.mm)
-  circle = ge.add_circle([2399.5.mm,910.mm,694.05.mm], vec, 11.mm, 16)
+  circle = ge.add_circle([2454.5.mm,910.mm,694.05.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -30982,7 +31803,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Pole Handle"
   ge = grp.entities
-  circle = ge.add_circle([2309.5.mm,640.mm,1300.mm], [1,0,0], 9.mm, 24)
+  circle = ge.add_circle([2364.5.mm,640.mm,1300.mm], [1,0,0], 9.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(180.mm)
@@ -30996,7 +31817,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Hose (upper)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 270.mm, -605.95.mm)
-  circle = ge.add_circle([2419.5.mm,640.mm,1300.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([2474.5.mm,640.mm,1300.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31010,7 +31831,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Hose (lower)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 246.mm, -585.9499999999999.mm)
-  circle = ge.add_circle([2419.5.mm,910.mm,694.05.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([2474.5.mm,910.mm,694.05.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31024,7 +31845,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 5.061111111111131.mm, 0.mm)
-  circle = ge.add_circle([2419.5.mm,1156.mm,108.1.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1156.mm,108.1.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31038,7 +31859,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 5.061111111111131.mm, 0.mm)
-  circle = ge.add_circle([2419.5.mm,1161.0611111111111.mm,108.1.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1161.0611111111111.mm,108.1.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31052,7 +31873,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 5.061111111111131.mm, 0.mm)
-  circle = ge.add_circle([2419.5.mm,1166.1222222222223.mm,108.1.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1166.1222222222223.mm,108.1.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31066,7 +31887,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 5.061111111111131.mm, 0.mm)
-  circle = ge.add_circle([2419.5.mm,1171.1833333333334.mm,108.1.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1171.1833333333334.mm,108.1.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31080,7 +31901,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 5.061111111110904.mm, 0.mm)
-  circle = ge.add_circle([2419.5.mm,1176.2444444444445.mm,108.1.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1176.2444444444445.mm,108.1.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31094,7 +31915,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 5.061111111111131.mm, 0.mm)
-  circle = ge.add_circle([2419.5.mm,1181.3055555555554.mm,108.1.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1181.3055555555554.mm,108.1.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31108,7 +31929,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 5.061111111111131.mm, 0.mm)
-  circle = ge.add_circle([2419.5.mm,1186.3666666666666.mm,108.1.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1186.3666666666666.mm,108.1.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31122,7 +31943,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 5.061111111111131.mm, 0.mm)
-  circle = ge.add_circle([2419.5.mm,1191.4277777777777.mm,108.1.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1191.4277777777777.mm,108.1.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31136,7 +31957,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 5.061111111111131.mm, 0.mm)
-  circle = ge.add_circle([2419.5.mm,1196.4888888888888.mm,108.1.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1196.4888888888888.mm,108.1.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31149,8 +31970,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector elbow"
   ge = grp.entities
-  arc = ge.add_arc([2419.5.mm,1201.55.mm,98.1.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 10.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2419.5.mm,1201.55.mm,108.1.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
+  arc = ge.add_arc([2474.5.mm,1201.55.mm,98.1.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 10.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2474.5.mm,1201.55.mm,108.1.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -31164,7 +31985,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -2.78125.mm)
-  circle = ge.add_circle([2419.5.mm,1211.55.mm,98.1.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1211.55.mm,98.1.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31178,7 +31999,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -2.78125.mm)
-  circle = ge.add_circle([2419.5.mm,1211.55.mm,95.31875.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1211.55.mm,95.31875.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31192,7 +32013,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -2.78125.mm)
-  circle = ge.add_circle([2419.5.mm,1211.55.mm,92.5375.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1211.55.mm,92.5375.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31206,7 +32027,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -2.78125.mm)
-  circle = ge.add_circle([2419.5.mm,1211.55.mm,89.75625.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1211.55.mm,89.75625.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31220,7 +32041,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -2.78125.mm)
-  circle = ge.add_circle([2419.5.mm,1211.55.mm,86.975.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1211.55.mm,86.975.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31234,7 +32055,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -2.78125.mm)
-  circle = ge.add_circle([2419.5.mm,1211.55.mm,84.19375.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1211.55.mm,84.19375.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31248,7 +32069,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -2.78125.mm)
-  circle = ge.add_circle([2419.5.mm,1211.55.mm,81.4125.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1211.55.mm,81.4125.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31262,7 +32083,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -2.78125.mm)
-  circle = ge.add_circle([2419.5.mm,1211.55.mm,78.63125.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1211.55.mm,78.63125.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31275,8 +32096,8 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Feed Flex Connector elbow"
   ge = grp.entities
-  arc = ge.add_arc([2409.7.mm,1211.55.mm,75.85.mm], [1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 9.800000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2419.5.mm,1211.55.mm,75.85.mm], [0.000000,0.000000,-1.000000], 7.mm, 16)
+  arc = ge.add_arc([2464.7.mm,1211.55.mm,75.85.mm], [1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 9.800000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2474.5.mm,1211.55.mm,75.85.mm], [0.000000,0.000000,-1.000000], 7.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -31290,7 +32111,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2409.7.mm,1211.55.mm,66.05.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2464.7.mm,1211.55.mm,66.05.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31304,7 +32125,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2408.4249999999997.mm,1211.55.mm,66.05.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2463.4249999999997.mm,1211.55.mm,66.05.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31318,7 +32139,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(-1.2749999999996362.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2407.1499999999996.mm,1211.55.mm,66.05.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2462.1499999999996.mm,1211.55.mm,66.05.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31332,7 +32153,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2405.875.mm,1211.55.mm,66.05.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2460.875.mm,1211.55.mm,66.05.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31346,7 +32167,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2404.6.mm,1211.55.mm,66.05.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2459.6.mm,1211.55.mm,66.05.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31360,7 +32181,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(-1.2749999999996362.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2403.325.mm,1211.55.mm,66.05.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2458.325.mm,1211.55.mm,66.05.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31374,7 +32195,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2402.05.mm,1211.55.mm,66.05.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2457.05.mm,1211.55.mm,66.05.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31388,7 +32209,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.775.mm,1211.55.mm,66.05.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2455.775.mm,1211.55.mm,66.05.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31402,7 +32223,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, -8.858819886353672.mm, -3.9473246461184317.mm)
-  circle = ge.add_circle([2430.5.mm,685.mm,1199.0083333333332.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2485.5.mm,685.mm,1199.0083333333332.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31416,7 +32237,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, -5.475051789980057.mm, -2.4395807959315334.mm)
-  circle = ge.add_circle([2426.107390870624.mm,676.1411801136463.mm,1195.0610086872148.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,676.1411801136463.mm,1195.0610086872148.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31430,7 +32251,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2414.607390870624.mm,670.6661283236663.mm,1192.6214278912832.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,670.6661283236663.mm,1192.6214278912832.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31444,7 +32265,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, 5.475051789980057.mm, 2.4395807959315334.mm)
-  circle = ge.add_circle([2400.392609129376.mm,670.6661283236663.mm,1192.6214278912832.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,670.6661283236663.mm,1192.6214278912832.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31458,7 +32279,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, 8.858819886353672.mm, 3.9473246461184317.mm)
-  circle = ge.add_circle([2388.892609129376.mm,676.1411801136463.mm,1195.0610086872148.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,676.1411801136463.mm,1195.0610086872148.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31472,7 +32293,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, 8.858819886353672.mm, 3.9473246461184317.mm)
-  circle = ge.add_circle([2384.5.mm,685.mm,1199.0083333333332.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2439.5.mm,685.mm,1199.0083333333332.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31486,7 +32307,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, 5.475051789980057.mm, 2.4395807959315334.mm)
-  circle = ge.add_circle([2388.892609129376.mm,693.8588198863537.mm,1202.9556579794516.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,693.8588198863537.mm,1202.9556579794516.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31500,7 +32321,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.392609129376.mm,699.3338716763337.mm,1205.3952387753832.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,699.3338716763337.mm,1205.3952387753832.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31514,7 +32335,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, -5.475051789980057.mm, -2.4395807959315334.mm)
-  circle = ge.add_circle([2414.607390870624.mm,699.3338716763337.mm,1205.3952387753832.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,699.3338716763337.mm,1205.3952387753832.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31528,7 +32349,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, -8.858819886353672.mm, -3.9473246461184317.mm)
-  circle = ge.add_circle([2426.107390870624.mm,693.8588198863537.mm,1202.9556579794516.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,693.8588198863537.mm,1202.9556579794516.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31542,7 +32363,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, -8.858819886353672.mm, -3.9473246461185454.mm)
-  circle = ge.add_circle([2430.5.mm,775.mm,997.025.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2485.5.mm,775.mm,997.025.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31556,7 +32377,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, -5.475051789980057.mm, -2.439580795931306.mm)
-  circle = ge.add_circle([2426.107390870624.mm,766.1411801136463.mm,993.0776753538814.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,766.1411801136463.mm,993.0776753538814.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31570,7 +32391,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2414.607390870624.mm,760.6661283236663.mm,990.6380945579501.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,760.6661283236663.mm,990.6380945579501.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31584,7 +32405,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, 5.475051789980057.mm, 2.439580795931306.mm)
-  circle = ge.add_circle([2400.392609129376.mm,760.6661283236663.mm,990.6380945579501.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,760.6661283236663.mm,990.6380945579501.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31598,7 +32419,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, 8.858819886353672.mm, 3.9473246461185454.mm)
-  circle = ge.add_circle([2388.892609129376.mm,766.1411801136463.mm,993.0776753538814.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,766.1411801136463.mm,993.0776753538814.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31612,7 +32433,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, 8.858819886353672.mm, 3.9473246461185454.mm)
-  circle = ge.add_circle([2384.5.mm,775.mm,997.025.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2439.5.mm,775.mm,997.025.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31626,7 +32447,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, 5.475051789980057.mm, 2.439580795931306.mm)
-  circle = ge.add_circle([2388.892609129376.mm,783.8588198863537.mm,1000.9723246461185.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,783.8588198863537.mm,1000.9723246461185.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31640,7 +32461,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.392609129376.mm,789.3338716763337.mm,1003.4119054420498.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,789.3338716763337.mm,1003.4119054420498.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31654,7 +32475,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, -5.475051789980057.mm, -2.439580795931306.mm)
-  circle = ge.add_circle([2414.607390870624.mm,789.3338716763337.mm,1003.4119054420498.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,789.3338716763337.mm,1003.4119054420498.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31668,7 +32489,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, -8.858819886353672.mm, -3.9473246461185454.mm)
-  circle = ge.add_circle([2426.107390870624.mm,783.8588198863537.mm,1000.9723246461185.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,783.8588198863537.mm,1000.9723246461185.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31682,7 +32503,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, -8.858819886353672.mm, -3.9473246461185454.mm)
-  circle = ge.add_circle([2430.5.mm,865.mm,795.0416666666666.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2485.5.mm,865.mm,795.0416666666666.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31696,7 +32517,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, -5.475051789980057.mm, -2.439580795931306.mm)
-  circle = ge.add_circle([2426.107390870624.mm,856.1411801136463.mm,791.0943420205481.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,856.1411801136463.mm,791.0943420205481.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31710,7 +32531,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2414.607390870624.mm,850.6661283236663.mm,788.6547612246168.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,850.6661283236663.mm,788.6547612246168.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31724,7 +32545,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, 5.475051789980057.mm, 2.439580795931306.mm)
-  circle = ge.add_circle([2400.392609129376.mm,850.6661283236663.mm,788.6547612246168.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,850.6661283236663.mm,788.6547612246168.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31738,7 +32559,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, 8.858819886353672.mm, 3.9473246461185454.mm)
-  circle = ge.add_circle([2388.892609129376.mm,856.1411801136463.mm,791.0943420205481.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,856.1411801136463.mm,791.0943420205481.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31752,7 +32573,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, 8.858819886353672.mm, 3.9473246461185454.mm)
-  circle = ge.add_circle([2384.5.mm,865.mm,795.0416666666666.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2439.5.mm,865.mm,795.0416666666666.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31766,7 +32587,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, 5.475051789980057.mm, 2.439580795931306.mm)
-  circle = ge.add_circle([2388.892609129376.mm,873.8588198863537.mm,798.9889913127852.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,873.8588198863537.mm,798.9889913127852.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31780,7 +32601,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.392609129376.mm,879.3338716763337.mm,801.4285721087165.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,879.3338716763337.mm,801.4285721087165.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31794,7 +32615,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, -5.475051789980057.mm, -2.439580795931306.mm)
-  circle = ge.add_circle([2414.607390870624.mm,879.3338716763337.mm,801.4285721087165.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,879.3338716763337.mm,801.4285721087165.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31808,7 +32629,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, -8.858819886353672.mm, -3.9473246461185454.mm)
-  circle = ge.add_circle([2426.107390870624.mm,873.8588198863537.mm,798.9889913127852.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,873.8588198863537.mm,798.9889913127852.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31822,7 +32643,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, -8.942342814431072.mm, -3.7542731160509675.mm)
-  circle = ge.add_circle([2430.5.mm,951.mm,596.3916666666667.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2485.5.mm,951.mm,596.3916666666667.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31836,7 +32657,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, -5.526671798371808.mm, -2.3202683887694775.mm)
-  circle = ge.add_circle([2426.107390870624.mm,942.0576571855689.mm,592.6373935506157.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,942.0576571855689.mm,592.6373935506157.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31850,7 +32671,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2414.607390870624.mm,936.5309853871971.mm,590.3171251618462.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,936.5309853871971.mm,590.3171251618462.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31864,7 +32685,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, 5.526671798371808.mm, 2.3202683887694775.mm)
-  circle = ge.add_circle([2400.392609129376.mm,936.5309853871971.mm,590.3171251618462.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,936.5309853871971.mm,590.3171251618462.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31878,7 +32699,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, 8.942342814431072.mm, 3.7542731160509675.mm)
-  circle = ge.add_circle([2388.892609129376.mm,942.0576571855689.mm,592.6373935506157.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,942.0576571855689.mm,592.6373935506157.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31892,7 +32713,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, 8.942342814431072.mm, 3.7542731160509675.mm)
-  circle = ge.add_circle([2384.5.mm,951.mm,596.3916666666667.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2439.5.mm,951.mm,596.3916666666667.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31906,7 +32727,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, 5.526671798371808.mm, 2.3202683887694775.mm)
-  circle = ge.add_circle([2388.892609129376.mm,959.9423428144311.mm,600.1459397827176.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,959.9423428144311.mm,600.1459397827176.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31920,7 +32741,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.392609129376.mm,965.4690146128029.mm,602.4662081714871.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,965.4690146128029.mm,602.4662081714871.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31934,7 +32755,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, -5.526671798371808.mm, -2.3202683887694775.mm)
-  circle = ge.add_circle([2414.607390870624.mm,965.4690146128029.mm,602.4662081714871.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,965.4690146128029.mm,602.4662081714871.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31948,7 +32769,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, -8.942342814431072.mm, -3.7542731160509675.mm)
-  circle = ge.add_circle([2426.107390870624.mm,959.9423428144311.mm,600.1459397827176.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,959.9423428144311.mm,600.1459397827176.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31962,7 +32783,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, -8.942342814431186.mm, -3.7542731160509675.mm)
-  circle = ge.add_circle([2430.5.mm,1033.mm,401.075.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2485.5.mm,1033.mm,401.075.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31976,7 +32797,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, -5.526671798371694.mm, -2.3202683887694207.mm)
-  circle = ge.add_circle([2426.107390870624.mm,1024.0576571855688.mm,397.320726883949.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,1024.0576571855688.mm,397.320726883949.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -31990,7 +32811,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2414.607390870624.mm,1018.5309853871971.mm,395.0004584951796.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,1018.5309853871971.mm,395.0004584951796.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -32004,7 +32825,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, 5.526671798371694.mm, 2.3202683887694207.mm)
-  circle = ge.add_circle([2400.392609129376.mm,1018.5309853871971.mm,395.0004584951796.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,1018.5309853871971.mm,395.0004584951796.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -32018,7 +32839,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, 8.942342814431186.mm, 3.7542731160509675.mm)
-  circle = ge.add_circle([2388.892609129376.mm,1024.0576571855688.mm,397.320726883949.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,1024.0576571855688.mm,397.320726883949.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -32032,7 +32853,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, 8.942342814431186.mm, 3.7542731160509675.mm)
-  circle = ge.add_circle([2384.5.mm,1033.mm,401.075.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2439.5.mm,1033.mm,401.075.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -32046,7 +32867,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, 5.526671798371808.mm, 2.3202683887694207.mm)
-  circle = ge.add_circle([2388.892609129376.mm,1041.9423428144312.mm,404.82927311605096.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,1041.9423428144312.mm,404.82927311605096.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -32060,7 +32881,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.392609129376.mm,1047.469014612803.mm,407.1495415048204.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,1047.469014612803.mm,407.1495415048204.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -32074,7 +32895,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, -5.526671798371808.mm, -2.3202683887694207.mm)
-  circle = ge.add_circle([2414.607390870624.mm,1047.469014612803.mm,407.1495415048204.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,1047.469014612803.mm,407.1495415048204.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -32088,7 +32909,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, -8.942342814431186.mm, -3.7542731160509675.mm)
-  circle = ge.add_circle([2426.107390870624.mm,1041.9423428144312.mm,404.82927311605096.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,1041.9423428144312.mm,404.82927311605096.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -32102,7 +32923,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, -8.942342814431186.mm, -3.754273116050939.mm)
-  circle = ge.add_circle([2430.5.mm,1115.mm,205.75833333333333.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2485.5.mm,1115.mm,205.75833333333333.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -32116,7 +32937,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, -5.526671798371808.mm, -2.3202683887694775.mm)
-  circle = ge.add_circle([2426.107390870624.mm,1106.0576571855688.mm,202.0040602172824.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,1106.0576571855688.mm,202.0040602172824.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -32130,7 +32951,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2414.607390870624.mm,1100.530985387197.mm,199.6837918285129.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,1100.530985387197.mm,199.6837918285129.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -32144,7 +32965,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, 5.526671798371808.mm, 2.3202683887694775.mm)
-  circle = ge.add_circle([2400.392609129376.mm,1100.530985387197.mm,199.6837918285129.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,1100.530985387197.mm,199.6837918285129.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -32158,7 +32979,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, 8.942342814431186.mm, 3.754273116050939.mm)
-  circle = ge.add_circle([2388.892609129376.mm,1106.0576571855688.mm,202.0040602172824.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,1106.0576571855688.mm,202.0040602172824.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -32172,7 +32993,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, 8.942342814431186.mm, 3.754273116050939.mm)
-  circle = ge.add_circle([2384.5.mm,1115.mm,205.75833333333333.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2439.5.mm,1115.mm,205.75833333333333.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -32186,7 +33007,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, 5.526671798371808.mm, 2.3202683887694775.mm)
-  circle = ge.add_circle([2388.892609129376.mm,1123.9423428144312.mm,209.51260644938426.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,1123.9423428144312.mm,209.51260644938426.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -32200,7 +33021,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.392609129376.mm,1129.469014612803.mm,211.83287483815374.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,1129.469014612803.mm,211.83287483815374.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -32214,7 +33035,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, -5.526671798371808.mm, -2.3202683887694775.mm)
-  circle = ge.add_circle([2414.607390870624.mm,1129.469014612803.mm,211.83287483815374.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,1129.469014612803.mm,211.83287483815374.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -32228,7 +33049,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, -8.942342814431186.mm, -3.754273116050939.mm)
-  circle = ge.add_circle([2426.107390870624.mm,1123.9423428144312.mm,209.51260644938426.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,1123.9423428144312.mm,209.51260644938426.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -32241,7 +33062,7 @@ model.set_attribute("sketchfab", "model_tags", "sketchup") if model.get_attribut
   grp = ents.add_group
   grp.name = "Center Feed Barb Tee"
   ge = grp.entities
-  circle = ge.add_circle([2399.5.mm,1211.55.mm,46.05.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([2454.5.mm,1211.55.mm,46.05.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(18.mm)
@@ -47184,7 +48005,7 @@ ents = child.entities
   # Walkway Far bracket 1 plate
   grp = ents.add_group
   grp.name = "Walkway Far bracket 1 plate"
-  face = grp.entities.add_face([638.mm,2354.mm,0.mm], [758.mm,2354.mm,0.mm], [758.mm,2362.mm,0.mm], [638.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([748.mm,2354.mm,0.mm], [868.mm,2354.mm,0.mm], [868.mm,2362.mm,0.mm], [748.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -47196,7 +48017,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 1 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([698.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([808.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47209,7 +48030,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 1 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([663.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([773.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47222,7 +48043,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 1 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([733.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([843.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47234,7 +48055,7 @@ ents = child.entities
   # Walkway Far bracket 1 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 1 arm"
-  face = grp.entities.add_face([694.mm,2062.mm,105.mm], [702.mm,2062.mm,105.mm], [702.mm,2354.mm,105.mm], [694.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([804.mm,2062.mm,105.mm], [812.mm,2062.mm,105.mm], [812.mm,2354.mm,105.mm], [804.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -47246,7 +48067,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 1 gusset"
   ge = grp.entities
-  f = ge.add_face([694.mm,2354.mm,0.mm], [694.mm,2354.mm,105.mm], [694.mm,2292.mm,105.mm])
+  f = ge.add_face([804.mm,2354.mm,0.mm], [804.mm,2354.mm,105.mm], [804.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -47256,7 +48077,7 @@ ents = child.entities
   # Walkway Far bracket 2 plate
   grp = ents.add_group
   grp.name = "Walkway Far bracket 2 plate"
-  face = grp.entities.add_face([1095.mm,2354.mm,0.mm], [1215.mm,2354.mm,0.mm], [1215.mm,2362.mm,0.mm], [1095.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([1205.mm,2354.mm,0.mm], [1325.mm,2354.mm,0.mm], [1325.mm,2362.mm,0.mm], [1205.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -47268,7 +48089,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 2 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1155.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1265.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47281,7 +48102,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 2 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1120.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1230.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47294,7 +48115,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 2 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1190.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1300.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47306,7 +48127,7 @@ ents = child.entities
   # Walkway Far bracket 2 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 2 arm"
-  face = grp.entities.add_face([1151.mm,2062.mm,105.mm], [1159.mm,2062.mm,105.mm], [1159.mm,2354.mm,105.mm], [1151.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([1261.mm,2062.mm,105.mm], [1269.mm,2062.mm,105.mm], [1269.mm,2354.mm,105.mm], [1261.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -47318,7 +48139,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 2 gusset"
   ge = grp.entities
-  f = ge.add_face([1151.mm,2354.mm,0.mm], [1151.mm,2354.mm,105.mm], [1151.mm,2292.mm,105.mm])
+  f = ge.add_face([1261.mm,2354.mm,0.mm], [1261.mm,2354.mm,105.mm], [1261.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -47328,7 +48149,7 @@ ents = child.entities
   # Walkway Far bracket 3 plate
   grp = ents.add_group
   grp.name = "Walkway Far bracket 3 plate"
-  face = grp.entities.add_face([1552.mm,2354.mm,0.mm], [1672.mm,2354.mm,0.mm], [1672.mm,2362.mm,0.mm], [1552.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([1662.mm,2354.mm,0.mm], [1782.mm,2354.mm,0.mm], [1782.mm,2362.mm,0.mm], [1662.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -47340,7 +48161,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 3 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1612.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1722.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47353,7 +48174,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 3 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1577.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1687.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47366,7 +48187,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 3 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1647.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1757.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47378,7 +48199,7 @@ ents = child.entities
   # Walkway Far bracket 3 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 3 arm"
-  face = grp.entities.add_face([1608.mm,2062.mm,105.mm], [1616.mm,2062.mm,105.mm], [1616.mm,2354.mm,105.mm], [1608.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([1718.mm,2062.mm,105.mm], [1726.mm,2062.mm,105.mm], [1726.mm,2354.mm,105.mm], [1718.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -47390,7 +48211,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 3 gusset"
   ge = grp.entities
-  f = ge.add_face([1608.mm,2354.mm,0.mm], [1608.mm,2354.mm,105.mm], [1608.mm,2292.mm,105.mm])
+  f = ge.add_face([1718.mm,2354.mm,0.mm], [1718.mm,2354.mm,105.mm], [1718.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -47400,7 +48221,7 @@ ents = child.entities
   # Walkway Far bracket 4 plate
   grp = ents.add_group
   grp.name = "Walkway Far bracket 4 plate"
-  face = grp.entities.add_face([2009.mm,2354.mm,0.mm], [2129.mm,2354.mm,0.mm], [2129.mm,2362.mm,0.mm], [2009.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([2119.mm,2354.mm,0.mm], [2239.mm,2354.mm,0.mm], [2239.mm,2362.mm,0.mm], [2119.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -47412,7 +48233,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 4 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2069.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2179.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47425,7 +48246,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 4 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2034.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2144.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47438,7 +48259,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 4 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2104.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2214.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47450,7 +48271,7 @@ ents = child.entities
   # Walkway Far bracket 4 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 4 arm"
-  face = grp.entities.add_face([2065.mm,2062.mm,105.mm], [2073.mm,2062.mm,105.mm], [2073.mm,2354.mm,105.mm], [2065.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([2175.mm,2062.mm,105.mm], [2183.mm,2062.mm,105.mm], [2183.mm,2354.mm,105.mm], [2175.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -47462,7 +48283,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 4 gusset"
   ge = grp.entities
-  f = ge.add_face([2065.mm,2354.mm,0.mm], [2065.mm,2354.mm,105.mm], [2065.mm,2292.mm,105.mm])
+  f = ge.add_face([2175.mm,2354.mm,0.mm], [2175.mm,2354.mm,105.mm], [2175.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -47472,7 +48293,7 @@ ents = child.entities
   # Walkway Far bracket 5 plate
   grp = ents.add_group
   grp.name = "Walkway Far bracket 5 plate"
-  face = grp.entities.add_face([2466.mm,2354.mm,0.mm], [2586.mm,2354.mm,0.mm], [2586.mm,2362.mm,0.mm], [2466.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([2576.mm,2354.mm,0.mm], [2696.mm,2354.mm,0.mm], [2696.mm,2362.mm,0.mm], [2576.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -47484,7 +48305,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 5 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2526.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2636.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47497,7 +48318,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 5 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2491.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2601.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47510,7 +48331,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 5 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2561.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2671.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47522,7 +48343,7 @@ ents = child.entities
   # Walkway Far bracket 5 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 5 arm"
-  face = grp.entities.add_face([2522.mm,2062.mm,105.mm], [2530.mm,2062.mm,105.mm], [2530.mm,2354.mm,105.mm], [2522.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([2632.mm,2062.mm,105.mm], [2640.mm,2062.mm,105.mm], [2640.mm,2354.mm,105.mm], [2632.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -47534,7 +48355,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 5 gusset"
   ge = grp.entities
-  f = ge.add_face([2522.mm,2354.mm,0.mm], [2522.mm,2354.mm,105.mm], [2522.mm,2292.mm,105.mm])
+  f = ge.add_face([2632.mm,2354.mm,0.mm], [2632.mm,2354.mm,105.mm], [2632.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -47544,7 +48365,7 @@ ents = child.entities
   # Walkway Far bracket 6 plate
   grp = ents.add_group
   grp.name = "Walkway Far bracket 6 plate"
-  face = grp.entities.add_face([2923.mm,2354.mm,0.mm], [3043.mm,2354.mm,0.mm], [3043.mm,2362.mm,0.mm], [2923.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([3033.mm,2354.mm,0.mm], [3153.mm,2354.mm,0.mm], [3153.mm,2362.mm,0.mm], [3033.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -47556,7 +48377,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 6 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2983.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3093.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47569,7 +48390,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 6 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2948.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3058.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47582,7 +48403,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 6 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3018.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3128.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47594,7 +48415,7 @@ ents = child.entities
   # Walkway Far bracket 6 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 6 arm"
-  face = grp.entities.add_face([2979.mm,2062.mm,105.mm], [2987.mm,2062.mm,105.mm], [2987.mm,2354.mm,105.mm], [2979.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([3089.mm,2062.mm,105.mm], [3097.mm,2062.mm,105.mm], [3097.mm,2354.mm,105.mm], [3089.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -47606,7 +48427,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 6 gusset"
   ge = grp.entities
-  f = ge.add_face([2979.mm,2354.mm,0.mm], [2979.mm,2354.mm,105.mm], [2979.mm,2292.mm,105.mm])
+  f = ge.add_face([3089.mm,2354.mm,0.mm], [3089.mm,2354.mm,105.mm], [3089.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -47616,7 +48437,7 @@ ents = child.entities
   # Walkway Far bracket 7 plate
   grp = ents.add_group
   grp.name = "Walkway Far bracket 7 plate"
-  face = grp.entities.add_face([3380.mm,2354.mm,0.mm], [3500.mm,2354.mm,0.mm], [3500.mm,2362.mm,0.mm], [3380.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([3490.mm,2354.mm,0.mm], [3610.mm,2354.mm,0.mm], [3610.mm,2362.mm,0.mm], [3490.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -47628,7 +48449,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 7 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3440.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3550.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47641,7 +48462,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 7 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3405.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3515.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47654,7 +48475,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 7 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3475.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3585.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47666,7 +48487,7 @@ ents = child.entities
   # Walkway Far bracket 7 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 7 arm"
-  face = grp.entities.add_face([3436.mm,2062.mm,105.mm], [3444.mm,2062.mm,105.mm], [3444.mm,2354.mm,105.mm], [3436.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([3546.mm,2062.mm,105.mm], [3554.mm,2062.mm,105.mm], [3554.mm,2354.mm,105.mm], [3546.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -47678,7 +48499,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 7 gusset"
   ge = grp.entities
-  f = ge.add_face([3436.mm,2354.mm,0.mm], [3436.mm,2354.mm,105.mm], [3436.mm,2292.mm,105.mm])
+  f = ge.add_face([3546.mm,2354.mm,0.mm], [3546.mm,2354.mm,105.mm], [3546.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -47688,7 +48509,7 @@ ents = child.entities
   # Walkway Far bracket 8 plate
   grp = ents.add_group
   grp.name = "Walkway Far bracket 8 plate"
-  face = grp.entities.add_face([3837.mm,2354.mm,0.mm], [3957.mm,2354.mm,0.mm], [3957.mm,2362.mm,0.mm], [3837.mm,2362.mm,0.mm])
+  face = grp.entities.add_face([3947.mm,2354.mm,0.mm], [4067.mm,2354.mm,0.mm], [4067.mm,2362.mm,0.mm], [3947.mm,2362.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -47700,7 +48521,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 8 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3897.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4007.mm,2348.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47713,7 +48534,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 8 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3862.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3972.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47726,7 +48547,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 8 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3932.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4042.mm,2348.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -47738,7 +48559,7 @@ ents = child.entities
   # Walkway Far bracket 8 arm
   grp = ents.add_group
   grp.name = "Walkway Far bracket 8 arm"
-  face = grp.entities.add_face([3893.mm,2062.mm,105.mm], [3901.mm,2062.mm,105.mm], [3901.mm,2354.mm,105.mm], [3893.mm,2354.mm,105.mm])
+  face = grp.entities.add_face([4003.mm,2062.mm,105.mm], [4011.mm,2062.mm,105.mm], [4011.mm,2354.mm,105.mm], [4003.mm,2354.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -47750,7 +48571,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Far bracket 8 gusset"
   ge = grp.entities
-  f = ge.add_face([3893.mm,2354.mm,0.mm], [3893.mm,2354.mm,105.mm], [3893.mm,2292.mm,105.mm])
+  f = ge.add_face([4003.mm,2354.mm,0.mm], [4003.mm,2354.mm,105.mm], [4003.mm,2292.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -48258,7 +49079,7 @@ ents = child.entities
   grp.name = "FP combined corner plate (near)"
   face = grp.entities.add_face([4574.mm,0.mm,77.6.mm], [4724.mm,0.mm,77.6.mm], [4724.mm,10.mm,77.6.mm], [4574.mm,10.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -48269,7 +49090,7 @@ ents = child.entities
   grp.name = "FP combined corner ext plate (near)"
   face = grp.entities.add_face([4574.mm,-50.mm,77.6.mm], [4724.mm,-50.mm,77.6.mm], [4724.mm,-40.mm,77.6.mm], [4574.mm,-40.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -48289,7 +49110,7 @@ ents = child.entities
   # FP combined BR rail seat (near)
   grp = ents.add_group
   grp.name = "FP combined BR rail seat (near)"
-  face = grp.entities.add_face([4619.mm,0.mm,148.mm], [4679.mm,0.mm,148.mm], [4679.mm,55.mm,148.mm], [4619.mm,55.mm,148.mm])
+  face = grp.entities.add_face([4619.mm,0.mm,220.mm], [4679.mm,0.mm,220.mm], [4679.mm,55.mm,220.mm], [4619.mm,55.mm,220.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -48310,11 +49131,11 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (near) X4599 Z188
+  # FP combined bolt M12 (near) X4599 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4599 Z188"
+  grp.name = "FP combined bolt M12 (near) X4599 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,-50.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -48336,11 +49157,11 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (near) X4699 Z188
+  # FP combined bolt M12 (near) X4699 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4699 Z188"
+  grp.name = "FP combined bolt M12 (near) X4699 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,-50.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -48413,7 +49234,7 @@ ents = child.entities
   grp.name = "FP combined corner plate (far)"
   face = grp.entities.add_face([4574.mm,2352.mm,77.6.mm], [4724.mm,2352.mm,77.6.mm], [4724.mm,2362.mm,77.6.mm], [4574.mm,2362.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -48424,7 +49245,7 @@ ents = child.entities
   grp.name = "FP combined corner ext plate (far)"
   face = grp.entities.add_face([4574.mm,2402.mm,77.6.mm], [4724.mm,2402.mm,77.6.mm], [4724.mm,2412.mm,77.6.mm], [4574.mm,2412.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -48444,7 +49265,7 @@ ents = child.entities
   # FP combined BR rail seat (far)
   grp = ents.add_group
   grp.name = "FP combined BR rail seat (far)"
-  face = grp.entities.add_face([4619.mm,2307.mm,148.mm], [4679.mm,2307.mm,148.mm], [4679.mm,2362.mm,148.mm], [4619.mm,2362.mm,148.mm])
+  face = grp.entities.add_face([4619.mm,2307.mm,220.mm], [4679.mm,2307.mm,220.mm], [4679.mm,2362.mm,220.mm], [4619.mm,2362.mm,220.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -48465,11 +49286,11 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (far) X4599 Z188
+  # FP combined bolt M12 (far) X4599 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4599 Z188"
+  grp.name = "FP combined bolt M12 (far) X4599 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,2352.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,2352.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -48491,11 +49312,11 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (far) X4699 Z188
+  # FP combined bolt M12 (far) X4699 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4699 Z188"
+  grp.name = "FP combined bolt M12 (far) X4699 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,2352.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,2352.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -48515,7 +49336,7 @@ ents = child.entities
   # Walkway Near bracket 1 plate
   grp = ents.add_group
   grp.name = "Walkway Near bracket 1 plate"
-  face = grp.entities.add_face([638.mm,0.mm,0.mm], [758.mm,0.mm,0.mm], [758.mm,8.mm,0.mm], [638.mm,8.mm,0.mm])
+  face = grp.entities.add_face([748.mm,0.mm,0.mm], [868.mm,0.mm,0.mm], [868.mm,8.mm,0.mm], [748.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -48527,7 +49348,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 1 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([698.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([808.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -48540,7 +49361,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 1 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([663.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([773.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -48553,7 +49374,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 1 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([733.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([843.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -48565,7 +49386,7 @@ ents = child.entities
   # Walkway Near bracket 1 arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 1 arm"
-  face = grp.entities.add_face([694.mm,8.mm,105.mm], [702.mm,8.mm,105.mm], [702.mm,300.mm,105.mm], [694.mm,300.mm,105.mm])
+  face = grp.entities.add_face([804.mm,8.mm,105.mm], [812.mm,8.mm,105.mm], [812.mm,300.mm,105.mm], [804.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -48577,7 +49398,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 1 gusset"
   ge = grp.entities
-  f = ge.add_face([694.mm,8.mm,0.mm], [694.mm,8.mm,105.mm], [694.mm,70.mm,105.mm])
+  f = ge.add_face([804.mm,8.mm,0.mm], [804.mm,8.mm,105.mm], [804.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -48587,7 +49408,7 @@ ents = child.entities
   # Walkway Near bracket 2 (widened) plate
   grp = ents.add_group
   grp.name = "Walkway Near bracket 2 (widened) plate"
-  face = grp.entities.add_face([1095.mm,0.mm,0.mm], [1215.mm,0.mm,0.mm], [1215.mm,10.mm,0.mm], [1095.mm,10.mm,0.mm])
+  face = grp.entities.add_face([1205.mm,0.mm,0.mm], [1325.mm,0.mm,0.mm], [1325.mm,10.mm,0.mm], [1205.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -48599,7 +49420,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 2 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1120.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1230.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48612,7 +49433,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 2 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1190.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1300.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48625,7 +49446,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 2 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1120.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1230.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48638,7 +49459,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 2 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1190.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1300.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48650,7 +49471,7 @@ ents = child.entities
   # Walkway Near bracket 2 (widened) arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 2 (widened) arm"
-  face = grp.entities.add_face([1150.mm,10.mm,103.mm], [1160.mm,10.mm,103.mm], [1160.mm,500.mm,103.mm], [1150.mm,500.mm,103.mm])
+  face = grp.entities.add_face([1260.mm,10.mm,103.mm], [1270.mm,10.mm,103.mm], [1270.mm,500.mm,103.mm], [1260.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -48662,7 +49483,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 2 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([1150.mm,10.mm,0.mm], [1150.mm,10.mm,103.mm], [1150.mm,70.mm,103.mm])
+  f = ge.add_face([1260.mm,10.mm,0.mm], [1260.mm,10.mm,103.mm], [1260.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -48672,7 +49493,7 @@ ents = child.entities
   # Walkway Near bracket 3 (widened) plate
   grp = ents.add_group
   grp.name = "Walkway Near bracket 3 (widened) plate"
-  face = grp.entities.add_face([1552.mm,0.mm,0.mm], [1672.mm,0.mm,0.mm], [1672.mm,10.mm,0.mm], [1552.mm,10.mm,0.mm])
+  face = grp.entities.add_face([1662.mm,0.mm,0.mm], [1782.mm,0.mm,0.mm], [1782.mm,10.mm,0.mm], [1662.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -48684,7 +49505,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 3 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1577.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1687.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48697,7 +49518,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 3 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1647.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1757.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48710,7 +49531,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 3 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1577.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1687.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48723,7 +49544,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 3 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([1647.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([1757.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48735,7 +49556,7 @@ ents = child.entities
   # Walkway Near bracket 3 (widened) arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 3 (widened) arm"
-  face = grp.entities.add_face([1607.mm,10.mm,103.mm], [1617.mm,10.mm,103.mm], [1617.mm,500.mm,103.mm], [1607.mm,500.mm,103.mm])
+  face = grp.entities.add_face([1717.mm,10.mm,103.mm], [1727.mm,10.mm,103.mm], [1727.mm,500.mm,103.mm], [1717.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -48747,7 +49568,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 3 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([1607.mm,10.mm,0.mm], [1607.mm,10.mm,103.mm], [1607.mm,70.mm,103.mm])
+  f = ge.add_face([1717.mm,10.mm,0.mm], [1717.mm,10.mm,103.mm], [1717.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -48757,7 +49578,7 @@ ents = child.entities
   # Walkway Near bracket 4 (widened) plate
   grp = ents.add_group
   grp.name = "Walkway Near bracket 4 (widened) plate"
-  face = grp.entities.add_face([2009.mm,0.mm,0.mm], [2129.mm,0.mm,0.mm], [2129.mm,10.mm,0.mm], [2009.mm,10.mm,0.mm])
+  face = grp.entities.add_face([2119.mm,0.mm,0.mm], [2239.mm,0.mm,0.mm], [2239.mm,10.mm,0.mm], [2119.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -48769,7 +49590,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 4 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2034.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2144.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48782,7 +49603,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 4 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2104.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2214.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48795,7 +49616,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 4 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2034.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2144.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48808,7 +49629,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 4 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2104.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2214.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48820,7 +49641,7 @@ ents = child.entities
   # Walkway Near bracket 4 (widened) arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 4 (widened) arm"
-  face = grp.entities.add_face([2064.mm,10.mm,103.mm], [2074.mm,10.mm,103.mm], [2074.mm,500.mm,103.mm], [2064.mm,500.mm,103.mm])
+  face = grp.entities.add_face([2174.mm,10.mm,103.mm], [2184.mm,10.mm,103.mm], [2184.mm,500.mm,103.mm], [2174.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -48832,7 +49653,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 4 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([2064.mm,10.mm,0.mm], [2064.mm,10.mm,103.mm], [2064.mm,70.mm,103.mm])
+  f = ge.add_face([2174.mm,10.mm,0.mm], [2174.mm,10.mm,103.mm], [2174.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -48842,7 +49663,7 @@ ents = child.entities
   # Walkway Near bracket 5 (widened) plate
   grp = ents.add_group
   grp.name = "Walkway Near bracket 5 (widened) plate"
-  face = grp.entities.add_face([2466.mm,0.mm,0.mm], [2586.mm,0.mm,0.mm], [2586.mm,10.mm,0.mm], [2466.mm,10.mm,0.mm])
+  face = grp.entities.add_face([2576.mm,0.mm,0.mm], [2696.mm,0.mm,0.mm], [2696.mm,10.mm,0.mm], [2576.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -48854,7 +49675,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 5 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2491.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2601.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48867,7 +49688,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 5 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2561.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2671.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48880,7 +49701,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 5 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2491.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2601.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48893,7 +49714,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 5 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2561.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2671.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48905,7 +49726,7 @@ ents = child.entities
   # Walkway Near bracket 5 (widened) arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 5 (widened) arm"
-  face = grp.entities.add_face([2521.mm,10.mm,103.mm], [2531.mm,10.mm,103.mm], [2531.mm,500.mm,103.mm], [2521.mm,500.mm,103.mm])
+  face = grp.entities.add_face([2631.mm,10.mm,103.mm], [2641.mm,10.mm,103.mm], [2641.mm,500.mm,103.mm], [2631.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -48917,7 +49738,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 5 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([2521.mm,10.mm,0.mm], [2521.mm,10.mm,103.mm], [2521.mm,70.mm,103.mm])
+  f = ge.add_face([2631.mm,10.mm,0.mm], [2631.mm,10.mm,103.mm], [2631.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -48927,7 +49748,7 @@ ents = child.entities
   # Walkway Near bracket 6 (widened) plate
   grp = ents.add_group
   grp.name = "Walkway Near bracket 6 (widened) plate"
-  face = grp.entities.add_face([2923.mm,0.mm,0.mm], [3043.mm,0.mm,0.mm], [3043.mm,10.mm,0.mm], [2923.mm,10.mm,0.mm])
+  face = grp.entities.add_face([3033.mm,0.mm,0.mm], [3153.mm,0.mm,0.mm], [3153.mm,10.mm,0.mm], [3033.mm,10.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(200.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -48939,7 +49760,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 6 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2948.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3058.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48952,7 +49773,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 6 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3018.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3128.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48965,7 +49786,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 6 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([2948.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3058.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48978,7 +49799,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 6 (widened) bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3018.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3128.mm,-6.mm,160.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(22.mm)
@@ -48990,7 +49811,7 @@ ents = child.entities
   # Walkway Near bracket 6 (widened) arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 6 (widened) arm"
-  face = grp.entities.add_face([2978.mm,10.mm,103.mm], [2988.mm,10.mm,103.mm], [2988.mm,500.mm,103.mm], [2978.mm,500.mm,103.mm])
+  face = grp.entities.add_face([3088.mm,10.mm,103.mm], [3098.mm,10.mm,103.mm], [3098.mm,500.mm,103.mm], [3088.mm,500.mm,103.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -49002,7 +49823,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 6 (widened) gusset"
   ge = grp.entities
-  f = ge.add_face([2978.mm,10.mm,0.mm], [2978.mm,10.mm,103.mm], [2978.mm,70.mm,103.mm])
+  f = ge.add_face([3088.mm,10.mm,0.mm], [3088.mm,10.mm,103.mm], [3088.mm,70.mm,103.mm])
   f.pushpull(-10.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -49012,7 +49833,7 @@ ents = child.entities
   # Walkway Near bracket 7 plate
   grp = ents.add_group
   grp.name = "Walkway Near bracket 7 plate"
-  face = grp.entities.add_face([3380.mm,0.mm,0.mm], [3500.mm,0.mm,0.mm], [3500.mm,8.mm,0.mm], [3380.mm,8.mm,0.mm])
+  face = grp.entities.add_face([3490.mm,0.mm,0.mm], [3610.mm,0.mm,0.mm], [3610.mm,8.mm,0.mm], [3490.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -49024,7 +49845,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 7 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3440.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3550.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -49037,7 +49858,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 7 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3405.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3515.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -49050,7 +49871,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 7 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3475.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3585.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -49062,7 +49883,7 @@ ents = child.entities
   # Walkway Near bracket 7 arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 7 arm"
-  face = grp.entities.add_face([3436.mm,8.mm,105.mm], [3444.mm,8.mm,105.mm], [3444.mm,300.mm,105.mm], [3436.mm,300.mm,105.mm])
+  face = grp.entities.add_face([3546.mm,8.mm,105.mm], [3554.mm,8.mm,105.mm], [3554.mm,300.mm,105.mm], [3546.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -49074,7 +49895,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 7 gusset"
   ge = grp.entities
-  f = ge.add_face([3436.mm,8.mm,0.mm], [3436.mm,8.mm,105.mm], [3436.mm,70.mm,105.mm])
+  f = ge.add_face([3546.mm,8.mm,0.mm], [3546.mm,8.mm,105.mm], [3546.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -49084,7 +49905,7 @@ ents = child.entities
   # Walkway Near bracket 8 plate
   grp = ents.add_group
   grp.name = "Walkway Near bracket 8 plate"
-  face = grp.entities.add_face([3837.mm,0.mm,0.mm], [3957.mm,0.mm,0.mm], [3957.mm,8.mm,0.mm], [3837.mm,8.mm,0.mm])
+  face = grp.entities.add_face([3947.mm,0.mm,0.mm], [4067.mm,0.mm,0.mm], [4067.mm,8.mm,0.mm], [3947.mm,8.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(150.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -49096,7 +49917,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 8 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3897.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4007.mm,-6.mm,120.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -49109,7 +49930,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 8 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3862.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([3972.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -49122,7 +49943,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 8 bolt M12"
   ge = grp.entities
-  circle = ge.add_circle([3932.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4042.mm,-6.mm,40.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(20.mm)
@@ -49134,7 +49955,7 @@ ents = child.entities
   # Walkway Near bracket 8 arm
   grp = ents.add_group
   grp.name = "Walkway Near bracket 8 arm"
-  face = grp.entities.add_face([3893.mm,8.mm,105.mm], [3901.mm,8.mm,105.mm], [3901.mm,300.mm,105.mm], [3893.mm,300.mm,105.mm])
+  face = grp.entities.add_face([4003.mm,8.mm,105.mm], [4011.mm,8.mm,105.mm], [4011.mm,300.mm,105.mm], [4003.mm,300.mm,105.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(10.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -49146,7 +49967,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Walkway Near bracket 8 gusset"
   ge = grp.entities
-  f = ge.add_face([3893.mm,8.mm,0.mm], [3893.mm,8.mm,105.mm], [3893.mm,70.mm,105.mm])
+  f = ge.add_face([4003.mm,8.mm,0.mm], [4003.mm,8.mm,105.mm], [4003.mm,70.mm,105.mm])
   f.pushpull(-8.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
@@ -52092,7 +52913,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "ACC-02 -> BV-05 (recycled spray)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-797.0039999999999.mm, 0.mm, 0.mm)
+  vec = Geom::Vector3d.new(-742.0039999999999.mm, 0.mm, 0.mm)
   circle = ge.add_circle([3140.004.mm,35.mm,948.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
@@ -52106,8 +52927,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "ACC-02 -> BV-05 (recycled spray) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2343.mm,35.mm,927.mm], [0.000000,0.000000,1.000000], [-0.000000,-1.000000,-0.000000], 21.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2343.mm,35.mm,948.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([2398.mm,35.mm,927.mm], [0.000000,0.000000,1.000000], [-0.000000,-1.000000,-0.000000], 21.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2398.mm,35.mm,948.mm], [-1.000000,0.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -52121,7 +52942,7 @@ ents = child.entities
   grp.name = "ACC-02 -> BV-05 (recycled spray)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -210.34000000000003.mm)
-  circle = ge.add_circle([2322.mm,35.mm,927.mm], vec, 10.5.mm, 16)
+  circle = ge.add_circle([2377.mm,35.mm,927.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52134,8 +52955,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "ACC-02 -> BV-05 (recycled spray) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2322.mm,51.660000000000004.mm,716.66.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 16.660000000000004.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2322.mm,35.mm,716.66.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
+  arc = ge.add_arc([2377.mm,51.660000000000004.mm,716.66.mm], [0.000000,-1.000000,0.000000], [1.000000,-0.000000,0.000000], 16.660000000000004.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2377.mm,35.mm,716.66.mm], [0.000000,0.000000,-1.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -52149,7 +52970,7 @@ ents = child.entities
   grp.name = "ACC-02 -> BV-05 (recycled spray)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 8.843400000000003.mm, 0.mm)
-  circle = ge.add_circle([2322.mm,51.66.mm,700.mm], vec, 10.5.mm, 16)
+  circle = ge.add_circle([2377.mm,51.66.mm,700.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52162,8 +52983,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "ACC-02 -> BV-05 (recycled spray) elbow"
   ge = grp.entities
-  arc = ge.add_arc([2313.5034.mm,60.5034.mm,700.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 8.496600000000003.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2322.mm,60.5034.mm,700.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
+  arc = ge.add_arc([2368.5034.mm,60.5034.mm,700.mm], [1.000000,0.000000,0.000000], [0.000000,-0.000000,1.000000], 8.496600000000003.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2377.mm,60.5034.mm,700.mm], [0.000000,1.000000,0.000000], 10.5.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -52177,7 +52998,7 @@ ents = child.entities
   grp.name = "ACC-02 -> BV-05 (recycled spray)"
   ge = grp.entities
   vec = Geom::Vector3d.new(-31.503400000000056.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2313.5034.mm,69.mm,700.mm], vec, 10.5.mm, 16)
+  circle = ge.add_circle([2368.5034.mm,69.mm,700.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52448,7 +53269,7 @@ ents = child.entities
   # 3W-BV-05a (Blue/Brown selector) body
   grp = ents.add_group
   grp.name = "3W-BV-05a (Blue/Brown selector) body"
-  face = grp.entities.add_face([2226.mm,46.mm,677.mm], [2272.mm,46.mm,677.mm], [2272.mm,92.mm,677.mm], [2226.mm,92.mm,677.mm])
+  face = grp.entities.add_face([2281.mm,46.mm,677.mm], [2327.mm,46.mm,677.mm], [2327.mm,92.mm,677.mm], [2281.mm,92.mm,677.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(46.mm)
   mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
@@ -52460,7 +53281,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "3W-BV-05a (Blue/Brown selector) run +"
   ge = grp.entities
-  circle = ge.add_circle([2249.mm,69.mm,723.mm], [0,0,1], 13.mm, 24)
+  circle = ge.add_circle([2304.mm,69.mm,723.mm], [0,0,1], 13.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(10.mm)
@@ -52473,7 +53294,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "3W-BV-05a (Blue/Brown selector) run -"
   ge = grp.entities
-  circle = ge.add_circle([2249.mm,69.mm,667.mm], [0,0,1], 13.mm, 24)
+  circle = ge.add_circle([2304.mm,69.mm,667.mm], [0,0,1], 13.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(10.mm)
@@ -52486,7 +53307,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "3W-BV-05a (Blue/Brown selector) branch"
   ge = grp.entities
-  circle = ge.add_circle([2272.mm,69.mm,700.mm], [1,0,0], 13.mm, 24)
+  circle = ge.add_circle([2327.mm,69.mm,700.mm], [1,0,0], 13.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(10.mm)
@@ -52499,7 +53320,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "3W-BV-05a (Blue/Brown selector) handle stem"
   ge = grp.entities
-  circle = ge.add_circle([2249.mm,92.mm,700.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2304.mm,92.mm,700.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(42.mm)
@@ -52511,7 +53332,7 @@ ents = child.entities
   # 3W-BV-05a (Blue/Brown selector) handle lever
   grp = ents.add_group
   grp.name = "3W-BV-05a (Blue/Brown selector) handle lever"
-  face = grp.entities.add_face([2241.mm,133.mm,668.mm], [2257.mm,133.mm,668.mm], [2257.mm,147.mm,668.mm], [2241.mm,147.mm,668.mm])
+  face = grp.entities.add_face([2296.mm,133.mm,668.mm], [2312.mm,133.mm,668.mm], [2312.mm,147.mm,668.mm], [2296.mm,147.mm,668.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(64.mm)
   mat = model.materials["BV-01 (P-01 suction) handle stem"] || model.materials.add("BV-01 (P-01 suction) handle stem")
@@ -52524,7 +53345,7 @@ ents = child.entities
   grp.name = "BV-05 fresh supply (trunk -> selector)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, 619.mm)
-  circle = ge.add_circle([2249.mm,69.mm,48.mm], vec, 10.5.mm, 16)
+  circle = ge.add_circle([2304.mm,69.mm,48.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52538,7 +53359,7 @@ ents = child.entities
   grp.name = "BV-05a -> BV-05b (up the pinhole wall)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, 267.mm)
-  circle = ge.add_circle([2249.mm,69.mm,733.mm], vec, 10.5.mm, 16)
+  circle = ge.add_circle([2304.mm,69.mm,733.mm], vec, 10.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52551,7 +53372,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "BV-05b (spray on/off)"
   ge = grp.entities
-  circle = ge.add_circle([2249.mm,69.mm,878.mm], [0,0,1], 18.5.mm, 24)
+  circle = ge.add_circle([2304.mm,69.mm,878.mm], [0,0,1], 18.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(44.mm)
@@ -52564,7 +53385,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "BV-05b (spray on/off) handle stem"
   ge = grp.entities
-  circle = ge.add_circle([2249.mm,87.5.mm,900.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([2304.mm,87.5.mm,900.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(28.mm)
@@ -52576,7 +53397,7 @@ ents = child.entities
   # BV-05b (spray on/off) handle
   grp = ents.add_group
   grp.name = "BV-05b (spray on/off) handle"
-  face = grp.entities.add_face([2242.mm,115.5.mm,876.mm], [2256.mm,115.5.mm,876.mm], [2256.mm,124.5.mm,876.mm], [2242.mm,124.5.mm,876.mm])
+  face = grp.entities.add_face([2297.mm,115.5.mm,876.mm], [2311.mm,115.5.mm,876.mm], [2311.mm,124.5.mm,876.mm], [2297.mm,124.5.mm,876.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(48.mm)
   mat = model.materials["BV-01 (P-01 suction) handle stem"] || model.materials.add("BV-01 (P-01 suction) handle stem")
@@ -52588,8 +53409,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(13.099999999999909.mm, 41.099999999999994.mm, -28.mm)
-  circle = ge.add_circle([2249.mm,69.mm,1000.mm], vec, 7.mm, 10)
+  vec = Geom::Vector3d.new(7.599999999999909.mm, 41.099999999999994.mm, -28.mm)
+  circle = ge.add_circle([2304.mm,69.mm,1000.mm], vec, 7.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52602,8 +53423,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(25.742872561447257.mm, -10.172043052222222.mm, -31.951075290076687.mm)
-  circle = ge.add_circle([2262.1.mm,110.1.mm,972.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(27.192906540531567.mm, -7.425532216938137.mm, -31.331545871718617.mm)
+  circle = ge.add_circle([2311.6.mm,110.1.mm,972.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52616,8 +53437,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-24.437929631876614.mm, 15.218089673404663.mm, -18.15943435112206.mm)
-  circle = ge.add_circle([2287.842872561447.mm,99.92795694777777.mm,940.0489247099233.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-25.442291099956492.mm, 11.079875160746909.mm, -18.454947973320373.mm)
+  circle = ge.add_circle([2338.7929065405315.mm,102.67446778306186.mm,940.6684541282814.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52630,8 +53451,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-20.444709939103177.mm, 27.183844916814778.mm, 1.2728413088594834.mm)
-  circle = ge.add_circle([2263.4049429295706.mm,115.14604662118244.mm,921.8894903588013.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-23.783521102021496.mm, 23.3453001267916.mm, -0.0008187558651115978.mm)
+  circle = ge.add_circle([2313.350615440575.mm,113.75434294380877.mm,922.213506154961.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52644,8 +53465,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1.9862222058245607.mm, 30.557670393798645.mm, 14.861070466359138.mm)
-  circle = ge.add_circle([2242.9602329904674.mm,142.3298915379972.mm,923.1623316676607.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-7.317572066445791.mm, 29.545941392927404.mm, 13.570165840868754.mm)
+  circle = ge.add_circle([2289.5670943385535.mm,137.09964307060037.mm,922.2126873990959.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52658,8 +53479,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(20.02837134763695.mm, 23.345599428250125.mm, 14.57446542586979.mm)
-  circle = ge.add_circle([2240.974010784643.mm,172.88756193179586.mm,938.0234021340199.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(14.62187491716577.mm, 26.166981319180934.mm, 14.56532791388554.mm)
+  circle = ge.add_circle([2282.2495222721077.mm,166.64558446352777.mm,935.7828532399647.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52672,8 +53493,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(32.588212206790104.mm, 9.81004252987725.mm, 0.5824128091476268.mm)
-  circle = ge.add_circle([2261.0023821322798.mm,196.23316136004598.mm,952.5978675598897.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(29.59850044901168.mm, 15.123774779705514.mm, 2.420562387799464.mm)
+  circle = ge.add_circle([2296.8713971892735.mm,192.8125657827087.mm,950.3481811538502.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52686,8 +53507,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(28.27030107863675.mm, -2.049342470167659.mm, -18.845635736589884.mm)
-  circle = ge.add_circle([2293.59059433907.mm,206.04320388992323.mm,953.1802803690373.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(29.122842657768615.mm, 2.676135151998551.mm, -15.979901466207707.mm)
+  circle = ge.add_circle([2326.469897638285.mm,207.93634056241422.mm,952.7687435416497.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52700,8 +53521,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(9.626569282287164.mm, -5.22353312821528.mm, -32.22749725723065.mm)
-  circle = ge.add_circle([2321.8608954177066.mm,203.99386141975558.mm,934.3346446324474.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(13.464526945632315.mm, -4.12002488303051.mm, -30.205807782348074.mm)
+  circle = ge.add_circle([2355.5927402960538.mm,210.61247571441277.mm,936.788842075442.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52714,8 +53535,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-12.324339753964068.mm, 2.163450934367688.mm, -31.654349521613653.mm)
-  circle = ge.add_circle([2331.487464699994.mm,198.7703282915403.mm,902.1071473752168.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-8.5005704811947.mm, -1.4123193946456922.mm, -32.19323795632204.mm)
+  circle = ge.add_circle([2369.057267241686.mm,206.49245083138226.mm,906.5830342930939.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52728,8 +53549,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-24.609205741421192.mm, 15.745823710509569.mm, -17.464928926480184.mm)
-  circle = ge.add_circle([2319.1631249460297.mm,200.93377922590798.mm,870.4527978536031.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-24.321590334789107.mm, 9.264395687589086.mm, -20.815622278017486.mm)
+  circle = ge.add_circle([2360.5566967604914.mm,205.08013143673656.mm,874.3897963367718.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52742,8 +53563,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-19.967542455610328.mm, 27.496258688261946.mm, 1.9546663102964885.mm)
-  circle = ge.add_circle([2294.5539192046085.mm,216.67960293641755.mm,852.9878689271229.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-25.0304279825732.mm, 21.858051731198742.mm, -2.5223330898315908.mm)
+  circle = ge.add_circle([2336.2351064257023.mm,214.34452712432565.mm,853.5741740587544.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52756,8 +53577,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-1.1426221780275228.mm, 30.47012404383031.mm, 15.127249229946301.mm)
-  circle = ge.add_circle([2274.586376748998.mm,244.1758616246795.mm,854.9425352374194.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-10.225280617164117.mm, 29.229967023441304.mm, 12.317125427606697.mm)
+  circle = ge.add_circle([2311.204678443129.mm,236.2025788555244.mm,851.0518409689228.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52770,8 +53591,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(20.73982734698302.mm, 22.909833779159158.mm, 14.267683476362436.mm)
-  circle = ge.add_circle([2273.4437545709707.mm,274.6459856685098.mm,870.0697844673657.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(11.70159185010516.mm, 27.20139023885696.mm, 15.291044174207968.mm)
+  circle = ge.add_circle([2300.979397825965.mm,265.4325458789657.mm,863.3689663965295.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52784,8 +53605,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(32.74704612869027.mm, 9.283599706710277.mm, -0.11601846425492113.mm)
-  circle = ge.add_circle([2294.1835819179537.mm,297.55581944766897.mm,884.3374679437281.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(28.32099785185528.mm, 16.922214938526054.mm, 4.71366491598269.mm)
+  circle = ge.add_circle([2312.68098967607.mm,292.63393611782266.mm,878.6600105707374.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52798,8 +53619,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(27.782640388940763.mm, -2.355329169784227.mm, -19.522936036206147.mm)
-  circle = ge.add_circle([2326.930628046644.mm,306.83941915437924.mm,884.2214494794732.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(30.212269609759915.mm, 4.219165346489717.mm, -13.41925197232456.mm)
+  circle = ge.add_circle([2341.0019875279254.mm,309.5561510563487.mm,883.3736754867201.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52812,8 +53633,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(8.780626625998138.mm, -5.128222316210213.mm, -32.48337491522966.mm)
-  circle = ge.add_circle([2354.7132684355847.mm,304.484089984595.mm,864.6985134432671.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(16.303344565877524.mm, -3.7070673714216014.mm, -28.829108938027275.mm)
+  circle = ge.add_circle([2371.2142571376853.mm,313.7753164028384.mm,869.9544235143956.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52826,8 +53647,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-13.028603285780264.mm, 2.6037295562041436.mm, -31.337578125518007.mm)
-  circle = ge.add_circle([2363.493895061583.mm,299.3558676683848.mm,832.2151385280374.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-5.521538698810218.mm, -2.3635184749961695.mm, -32.78086797976084.mm)
+  circle = ge.add_circle([2387.517601703563.mm,310.0682490314168.mm,841.1253145763683.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52840,8 +53661,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-24.75556292444071.mm, 16.27086080232459.mm, -16.762723734478755.mm)
-  circle = ge.add_circle([2350.4652917758026.mm,301.95959722458895.mm,800.8775604025194.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-22.8910009355086.mm, 7.48822478073248.mm, -23.03448459363426.mm)
+  circle = ge.add_circle([2381.9960630047526.mm,307.70473055642066.mm,808.3444465966074.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52854,8 +53675,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-19.46949464082536.mm, 27.795751754582625.mm, 2.627294574563166.mm)
-  circle = ge.add_circle([2325.709728851362.mm,318.23045802691354.mm,784.1148366680407.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-25.959206907817133.mm, 20.26372693280092.mm, -5.114671270046074.mm)
+  circle = ge.add_circle([2359.105062069244.mm,315.19295533715314.mm,785.3099620029732.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52868,8 +53689,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-0.2945209116460319.mm, 30.367069502805123.mm, 15.37277012114123.mm)
-  circle = ge.add_circle([2306.2402342105365.mm,346.02620978149616.mm,786.7421312426038.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-12.986951909048457.mm, 28.72122726706374.mm, 10.82077164884106.mm)
+  circle = ge.add_circle([2333.145855161427.mm,335.45668226995406.mm,780.1952907329271.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52882,8 +53703,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(21.43674521241337.mm, 22.465137958642515.mm, 13.94099154114474.mm)
-  circle = ge.add_circle([2305.9457132988905.mm,376.3932792843013.mm,802.114901363745.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(8.672474498809606.mm, 28.066613354005426.mm, 15.738879108592073.mm)
+  circle = ge.add_circle([2320.1589032523784.mm,364.1779095370178.mm,791.0160623817682.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52896,8 +53717,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(32.880894735666516.mm, 8.760082557871385.mm, -0.82184482375078.mm)
-  circle = ge.add_circle([2327.382458511304.mm,398.8584172429438.mm,816.0558929048898.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(26.7414818630059.mm, 18.670951415688307.mm, 6.851834476558338.mm)
+  circle = ge.add_circle([2328.831377751188.mm,392.2445228910232.mm,806.7549414903602.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52910,8 +53731,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(27.27431378969777.mm, -2.648263453907873.mm, -20.190745947905157.mm)
-  circle = ge.add_circle([2360.2633532469704.mm,407.6184998008152.mm,815.234048081139.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(30.977699581108936.mm, 5.860148386994126.mm, -10.802763731361324.mm)
+  circle = ge.add_circle([2355.572859614194.mm,410.91547430671153.mm,813.6067759669186.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52924,8 +53745,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(7.93055123748627.mm, -5.0174464636789935.mm, -32.71848563131789.mm)
-  circle = ge.add_circle([2387.537667036668.mm,404.9702363469073.mm,795.0433021332339.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(18.9798384761948.mm, -3.104024806319444.mm, -27.21745168288021.mm)
+  circle = ge.add_circle([2386.550559195303.mm,416.77562269370566.mm,802.8040122355573.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52938,8 +53759,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-13.718023883875048.mm, 3.0527458404600907.mm, -31.001036716665226.mm)
-  circle = ge.add_circle([2395.4682182741544.mm,399.9527898832283.mm,762.324816501916.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-2.451144575901253.mm, -3.1402495206933736.mm, -33.08760550276236.mm)
+  circle = ge.add_circle([2405.5303976714977.mm,413.6715978873862.mm,775.586560552677.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52952,8 +53773,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(-24.876873839208656.mm, 16.79274412719667.mm, -16.053429746307756.mm)
-  circle = ge.add_circle([2381.7501943902794.mm,403.0055357236884.mm,731.3237797852507.mm], vec, 7.mm, 6)
+  vec = Geom::Vector3d.new(-21.167151654266036.mm, 5.772008130549523.mm, -25.08574351453001.mm)
+  circle = ge.add_circle([2403.0792530955964.mm,410.53134836669284.mm,742.4989550499147.mm], vec, 7.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52966,8 +53787,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(10.026679448929372.mm, 19.101720149114897.mm, 32.72964996105702.mm)
-  circle = ge.add_circle([2356.8733205510707.mm,419.7982798508851.mm,715.270350038943.mm], vec, 7.mm, 8)
+  vec = Geom::Vector3d.new(-9.512101441330287.mm, 22.596643502757615.mm, 30.586788464615324.mm)
+  circle = ge.add_circle([2381.9121014413304.mm,416.30335649724236.mm,717.4132115353847.mm], vec, 7.mm, 8)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -52980,8 +53801,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Spray-bar supply hose (BV-05b -> spray bar, coiled)"
   ge = grp.entities
-  vec = Geom::Vector3d.new(13.099999999999909.mm, 41.10000000000002.mm, -28.mm)
-  circle = ge.add_circle([2366.9.mm,438.9.mm,748.mm], vec, 7.mm, 10)
+  vec = Geom::Vector3d.new(7.599999999999909.mm, 41.10000000000002.mm, -28.mm)
+  circle = ge.add_circle([2372.4.mm,438.9.mm,748.mm], vec, 7.mm, 10)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -54046,7 +54867,7 @@ ents = child.entities
   # Tray Shim Base
   grp = ents.add_group
   grp.name = "Tray Shim Base"
-  face = grp.entities.add_face([170.mm,80.mm,0.mm], [4629.mm,80.mm,0.mm], [4629.mm,2280.mm,0.mm], [170.mm,2280.mm,0.mm])
+  face = grp.entities.add_face([280.mm,80.mm,0.mm], [4629.mm,80.mm,0.mm], [4629.mm,2280.mm,0.mm], [280.mm,2280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(18.mm)
   mat = model.materials["Tray Shim Base"] || model.materials.add("Tray Shim Base")
@@ -54058,7 +54879,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Processing Tray Floor A"
   ge = grp.entities
-  f = ge.add_face([170.mm,80.mm,20.mm], [4629.mm,80.mm,20.mm], [4629.mm,2280.mm,31.mm])
+  f = ge.add_face([280.mm,80.mm,20.mm], [4629.mm,80.mm,20.mm], [4629.mm,2280.mm,31.mm])
   f.pushpull(-2.mm)
   mat = model.materials["Processing Tray Floor A"] || model.materials.add("Processing Tray Floor A")
   mat.color = Sketchup::Color.new(159, 184, 200)
@@ -54069,7 +54890,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Processing Tray Floor B"
   ge = grp.entities
-  f = ge.add_face([170.mm,80.mm,20.mm], [4629.mm,2280.mm,31.mm], [170.mm,2280.mm,31.mm])
+  f = ge.add_face([280.mm,80.mm,20.mm], [4629.mm,2280.mm,31.mm], [280.mm,2280.mm,31.mm])
   f.pushpull(-2.mm)
   mat = model.materials["Processing Tray Floor A"] || model.materials.add("Processing Tray Floor A")
   mat.color = Sketchup::Color.new(159, 184, 200)
@@ -54079,7 +54900,7 @@ ents = child.entities
   # Tray Rim Near
   grp = ents.add_group
   grp.name = "Tray Rim Near"
-  face = grp.entities.add_face([170.mm,80.mm,20.mm], [4629.mm,80.mm,20.mm], [4629.mm,82.mm,20.mm], [170.mm,82.mm,20.mm])
+  face = grp.entities.add_face([280.mm,80.mm,20.mm], [4629.mm,80.mm,20.mm], [4629.mm,82.mm,20.mm], [280.mm,82.mm,20.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Processing Tray Floor A"] || model.materials.add("Processing Tray Floor A")
@@ -54090,7 +54911,7 @@ ents = child.entities
   # Tray Rim Far
   grp = ents.add_group
   grp.name = "Tray Rim Far"
-  face = grp.entities.add_face([170.mm,2278.mm,31.mm], [4629.mm,2278.mm,31.mm], [4629.mm,2280.mm,31.mm], [170.mm,2280.mm,31.mm])
+  face = grp.entities.add_face([280.mm,2278.mm,31.mm], [4629.mm,2278.mm,31.mm], [4629.mm,2280.mm,31.mm], [280.mm,2280.mm,31.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Processing Tray Floor A"] || model.materials.add("Processing Tray Floor A")
@@ -54101,7 +54922,7 @@ ents = child.entities
   # Tray Rim Left
   grp = ents.add_group
   grp.name = "Tray Rim Left"
-  face = grp.entities.add_face([170.mm,80.mm,25.5.mm], [172.mm,80.mm,25.5.mm], [172.mm,2280.mm,25.5.mm], [170.mm,2280.mm,25.5.mm])
+  face = grp.entities.add_face([280.mm,80.mm,25.5.mm], [282.mm,80.mm,25.5.mm], [282.mm,2280.mm,25.5.mm], [280.mm,2280.mm,25.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(50.mm)
   mat = model.materials["Processing Tray Floor A"] || model.materials.add("Processing Tray Floor A")
@@ -54123,7 +54944,7 @@ ents = child.entities
   # Chemistry Bath
   grp = ents.add_group
   grp.name = "Chemistry Bath"
-  face = grp.entities.add_face([172.mm,82.mm,25.5.mm], [4627.mm,82.mm,25.5.mm], [4627.mm,2278.mm,25.5.mm], [172.mm,2278.mm,25.5.mm])
+  face = grp.entities.add_face([282.mm,82.mm,25.5.mm], [4627.mm,82.mm,25.5.mm], [4627.mm,2278.mm,25.5.mm], [282.mm,2278.mm,25.5.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Chemistry Bath"] || model.materials.add("Chemistry Bath")
@@ -54139,10 +54960,423 @@ ci.set_attribute("dynamic_attributes", "hidden", 1.0)
 ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase3Build!step<6")
 child = model.definitions.add("P3Step3_7")
 ents = child.entities
-  # FP Rail BR
+  # U-rail STUB (fixed, parks corner) web BL
   grp = ents.add_group
-  grp.name = "FP Rail BR"
-  face = grp.entities.add_face([4609.mm,0.mm,160.mm], [4649.mm,0.mm,160.mm], [4649.mm,2362.mm,160.mm], [4609.mm,2362.mm,160.mm])
+  grp.name = "U-rail STUB (fixed, parks corner) web BL"
+  face = grp.entities.add_face([241.mm,2090.mm,232.mm], [246.mm,2090.mm,232.mm], [246.mm,2362.mm,232.mm], [241.mm,2362.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) flange BL 303
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) flange BL 303"
+  face = grp.entities.add_face([241.mm,2090.mm,303.mm], [279.mm,2090.mm,303.mm], [279.mm,2362.mm,303.mm], [241.mm,2362.mm,303.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) flange BL 232
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) flange BL 232"
+  face = grp.entities.add_face([241.mm,2090.mm,232.mm], [279.mm,2090.mm,232.mm], [279.mm,2362.mm,232.mm], [241.mm,2362.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) bottom-flange lip BL
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) bottom-flange lip BL"
+  face = grp.entities.add_face([274.mm,2090.mm,237.mm], [279.mm,2090.mm,237.mm], [279.mm,2362.mm,237.mm], [274.mm,2362.mm,237.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) web BL
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) web BL"
+  face = grp.entities.add_face([241.mm,0.mm,232.mm], [246.mm,0.mm,232.mm], [246.mm,2090.mm,232.mm], [241.mm,2090.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) flange BL 303
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) flange BL 303"
+  face = grp.entities.add_face([241.mm,0.mm,303.mm], [279.mm,0.mm,303.mm], [279.mm,2090.mm,303.mm], [241.mm,2090.mm,303.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) flange BL 232
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) flange BL 232"
+  face = grp.entities.add_face([241.mm,0.mm,232.mm], [279.mm,0.mm,232.mm], [279.mm,2090.mm,232.mm], [241.mm,2090.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) bottom-flange lip BL
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) bottom-flange lip BL"
+  face = grp.entities.add_face([274.mm,0.mm,237.mm], [279.mm,0.mm,237.mm], [279.mm,2090.mm,237.mm], [274.mm,2090.mm,237.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL
+  grp = ents.add_group
+  grp.name = "Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"
+  face = grp.entities.add_face([241.mm,2030.mm,308.mm], [279.mm,2030.mm,308.mm], [279.mm,2180.mm,308.mm], [241.mm,2180.mm,308.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Locating pin (bridge↔STUB, flush to inner-rail top) BL
+  grp = ents.add_group
+  grp.name = "Locating pin (bridge↔STUB, flush to inner-rail top) BL"
+  ge = grp.entities
+  circle = ge.add_circle([260.mm,2135.mm,303.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(17.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bottom support bridge (STUB → beam underside) BL
+  grp = ents.add_group
+  grp.name = "Bottom support bridge (STUB → beam underside) BL"
+  face = grp.entities.add_face([241.mm,2058.mm,220.mm], [279.mm,2058.mm,220.mm], [279.mm,2122.mm,220.mm], [241.mm,2122.mm,220.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail far flange (pivot post) BL
+  grp = ents.add_group
+  grp.name = "Rail far flange (pivot post) BL"
+  face = grp.entities.add_face([205.mm,2350.mm,227.mm], [315.mm,2350.mm,227.mm], [315.mm,2362.mm,227.mm], [205.mm,2362.mm,227.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pinhole-wall gusset/seat BL
+  grp = ents.add_group
+  grp.name = "Pinhole-wall gusset/seat BL"
+  face = grp.entities.add_face([204.mm,0.mm,202.mm], [316.mm,0.mm,202.mm], [316.mm,45.mm,202.mm], [204.mm,45.mm,202.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(131.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Length splice (pinhole end, outboard web) BL
+  grp = ents.add_group
+  grp.name = "Length splice (pinhole end, outboard web) BL"
+  face = grp.entities.add_face([229.mm,205.mm,232.mm], [241.mm,205.mm,232.mm], [241.mm,315.mm,232.mm], [229.mm,315.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) BL 2245
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2245.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 BL 2245
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2245.mm,253.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) BL 2245
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2245.mm,293.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 BL 2245
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2245.mm,293.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) BL 2285
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2285.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 BL 2285
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2285.mm,253.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) BL 2285
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2285.mm,293.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 BL 2285
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2285.mm,293.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (bolted to skate axles) BL
+  grp = ents.add_group
+  grp.name = "Carriage plate (bolted to skate axles) BL"
+  face = grp.entities.add_face([287.mm,2238.mm,154.mm], [301.mm,2238.mm,154.mm], [301.mm,2324.mm,154.mm], [287.mm,2324.mm,154.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(157.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) BL 2245
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) BL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2245.mm,231.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) BL 2285
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) BL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2285.mm,231.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake base (5128A63) BL
+  grp = ents.add_group
+  grp.name = "Cam-brake base (5128A63) BL"
+  face = grp.entities.add_face([285.mm,2270.mm,311.mm], [295.mm,2270.mm,311.mm], [295.mm,2292.mm,311.mm], [285.mm,2292.mm,311.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake hold-down arm BL
+  grp = ents.add_group
+  grp.name = "Cam-brake hold-down arm BL"
+  face = grp.entities.add_face([268.mm,2277.mm,312.mm], [290.mm,2277.mm,312.mm], [290.mm,2285.mm,312.mm], [268.mm,2285.mm,312.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake UHMW pad BL
+  grp = ents.add_group
+  grp.name = "Cam-brake UHMW pad BL"
+  face = grp.entities.add_face([262.mm,2276.mm,308.mm], [274.mm,2276.mm,308.mm], [274.mm,2286.mm,308.mm], [262.mm,2286.mm,308.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake UHMW pad BL"] || model.materials.add("Cam-brake UHMW pad BL")
+  mat.color = Sketchup::Color.new(216, 212, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake lever BL
+  grp = ents.add_group
+  grp.name = "Cam-brake lever BL"
+  ge = grp.entities
+  circle = ge.add_circle([268.mm,2281.mm,312.mm], [0,0,1], 2.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z slide rail (TILT, green) BL
+  grp = ents.add_group
+  grp.name = "Vertical Z slide rail (TILT, green) BL"
+  face = grp.entities.add_face([281.mm,2238.mm,140.mm], [291.mm,2238.mm,140.mm], [291.mm,2256.mm,140.mm], [281.mm,2256.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X slide rail (SWING, purple) BL
+  grp = ents.add_group
+  grp.name = "Horizontal X slide rail (SWING, purple) BL"
+  face = grp.entities.add_face([240.mm,2238.mm,142.mm], [500.mm,2238.mm,142.mm], [500.mm,2252.mm,142.mm], [240.mm,2252.mm,142.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-joint (Belden UJ-SS750x375, setscrew) BL
+  grp = ents.add_group
+  grp.name = "U-joint (Belden UJ-SS750x375, setscrew) BL"
+  face = grp.entities.add_face([248.mm,2233.mm,146.mm], [272.mm,2233.mm,146.mm], [272.mm,2257.mm,146.mm], [248.mm,2257.mm,146.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Input stub 3/8 (X slide → U-joint) BL
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 (X slide → U-joint) BL"
+  ge = grp.entities
+  circle = ge.add_circle([265.mm,2245.mm,160.mm], [1,0,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(46.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 4040N12 304 shaft support (clamps input stub → X slide) BL
+  grp = ents.add_group
+  grp.name = "4040N12 304 shaft support (clamps input stub → X slide) BL"
+  face = grp.entities.add_face([286.mm,2236.mm,149.mm], [309.mm,2236.mm,149.mm], [309.mm,2254.mm,149.mm], [286.mm,2254.mm,149.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Output stub 3/8 (U-joint → corner plate) BL
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 (U-joint → corner plate) BL"
+  ge = grp.entities
+  circle = ge.add_circle([260.mm,2223.mm,160.mm], [0,1,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Corner plate 304 SS (U-joint mount — angle frame → U-joint) BL
+  grp = ents.add_group
+  grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) BL"
+  face = grp.entities.add_face([246.mm,2229.mm,165.mm], [280.mm,2229.mm,165.mm], [280.mm,2245.mm,165.mm], [246.mm,2245.mm,165.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -54150,10 +55384,346 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Rail TR
+  # Frame-corner bolt (angle frame → bracket) BL
   grp = ents.add_group
-  grp.name = "FP Rail TR"
-  face = grp.entities.add_face([4609.mm,0.mm,2204.mm], [4649.mm,0.mm,2204.mm], [4649.mm,2362.mm,2204.mm], [4609.mm,2362.mm,2204.mm])
+  grp.name = "Frame-corner bolt (angle frame → bracket) BL"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2231.mm,160.mm], [0,1,0], 3.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail (FLANGED) web BR
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) web BR"
+  face = grp.entities.add_face([4638.mm,0.mm,232.mm], [4643.mm,0.mm,232.mm], [4643.mm,2362.mm,232.mm], [4638.mm,2362.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail (FLANGED) flange BR 303
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) flange BR 303"
+  face = grp.entities.add_face([4605.mm,0.mm,303.mm], [4643.mm,0.mm,303.mm], [4643.mm,2362.mm,303.mm], [4605.mm,2362.mm,303.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail (FLANGED) flange BR 232
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) flange BR 232"
+  face = grp.entities.add_face([4605.mm,0.mm,232.mm], [4643.mm,0.mm,232.mm], [4643.mm,2362.mm,232.mm], [4605.mm,2362.mm,232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail (FLANGED) bottom-flange lip BR
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) bottom-flange lip BR"
+  face = grp.entities.add_face([4605.mm,0.mm,237.mm], [4610.mm,0.mm,237.mm], [4610.mm,2362.mm,237.mm], [4605.mm,2362.mm,237.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail end flange (outboard-trimmed) BR 0
+  grp = ents.add_group
+  grp.name = "Rail end flange (outboard-trimmed) BR 0"
+  face = grp.entities.add_face([4569.mm,0.mm,227.mm], [4644.mm,0.mm,227.mm], [4644.mm,12.mm,227.mm], [4569.mm,12.mm,227.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail end flange (outboard-trimmed) BR 2350
+  grp = ents.add_group
+  grp.name = "Rail end flange (outboard-trimmed) BR 2350"
+  face = grp.entities.add_face([4569.mm,2350.mm,227.mm], [4644.mm,2350.mm,227.mm], [4644.mm,2362.mm,227.mm], [4569.mm,2362.mm,227.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) BR 2245
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) BR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4614.mm,2245.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 BR 2245
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 BR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4585.mm,2245.mm,253.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) BR 2245
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) BR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4618.mm,2245.mm,293.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 BR 2245
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 BR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2245.mm,293.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(37.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) BR 2285
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) BR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4614.mm,2285.mm,253.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 BR 2285
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 BR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4585.mm,2285.mm,253.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) BR 2285
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) BR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4618.mm,2285.mm,293.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 BR 2285
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 BR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2285.mm,293.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(37.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (bolted to skate axles) BR
+  grp = ents.add_group
+  grp.name = "Carriage plate (bolted to skate axles) BR"
+  face = grp.entities.add_face([4585.mm,2238.mm,154.mm], [4599.mm,2238.mm,154.mm], [4599.mm,2324.mm,154.mm], [4585.mm,2324.mm,154.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(157.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) BR 2245
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) BR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2245.mm,231.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) BR 2285
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) BR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2285.mm,231.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake base (5128A63) BR
+  grp = ents.add_group
+  grp.name = "Cam-brake base (5128A63) BR"
+  face = grp.entities.add_face([4589.mm,2270.mm,311.mm], [4599.mm,2270.mm,311.mm], [4599.mm,2292.mm,311.mm], [4589.mm,2292.mm,311.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake hold-down arm BR
+  grp = ents.add_group
+  grp.name = "Cam-brake hold-down arm BR"
+  face = grp.entities.add_face([4594.mm,2277.mm,312.mm], [4616.mm,2277.mm,312.mm], [4616.mm,2285.mm,312.mm], [4594.mm,2285.mm,312.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake UHMW pad BR
+  grp = ents.add_group
+  grp.name = "Cam-brake UHMW pad BR"
+  face = grp.entities.add_face([4610.mm,2276.mm,308.mm], [4622.mm,2276.mm,308.mm], [4622.mm,2286.mm,308.mm], [4610.mm,2286.mm,308.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake UHMW pad BL"] || model.materials.add("Cam-brake UHMW pad BL")
+  mat.color = Sketchup::Color.new(216, 212, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake lever BR
+  grp = ents.add_group
+  grp.name = "Cam-brake lever BR"
+  ge = grp.entities
+  circle = ge.add_circle([4616.mm,2281.mm,312.mm], [0,0,1], 2.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z slide rail (TILT, green) BR
+  grp = ents.add_group
+  grp.name = "Vertical Z slide rail (TILT, green) BR"
+  face = grp.entities.add_face([4593.mm,2238.mm,140.mm], [4603.mm,2238.mm,140.mm], [4603.mm,2256.mm,140.mm], [4593.mm,2256.mm,140.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X slide rail (SWING, purple) BR
+  grp = ents.add_group
+  grp.name = "Horizontal X slide rail (SWING, purple) BR"
+  face = grp.entities.add_face([4384.mm,2238.mm,142.mm], [4644.mm,2238.mm,142.mm], [4644.mm,2252.mm,142.mm], [4384.mm,2252.mm,142.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-joint (Belden UJ-SS750x375, setscrew) BR
+  grp = ents.add_group
+  grp.name = "U-joint (Belden UJ-SS750x375, setscrew) BR"
+  face = grp.entities.add_face([4612.mm,2233.mm,146.mm], [4636.mm,2233.mm,146.mm], [4636.mm,2257.mm,146.mm], [4612.mm,2257.mm,146.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Input stub 3/8 (X slide → U-joint) BR
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 (X slide → U-joint) BR"
+  ge = grp.entities
+  circle = ge.add_circle([4573.mm,2245.mm,160.mm], [1,0,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(46.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 4040N12 304 shaft support (clamps input stub → X slide) BR
+  grp = ents.add_group
+  grp.name = "4040N12 304 shaft support (clamps input stub → X slide) BR"
+  face = grp.entities.add_face([4575.mm,2236.mm,149.mm], [4598.mm,2236.mm,149.mm], [4598.mm,2254.mm,149.mm], [4575.mm,2254.mm,149.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Output stub 3/8 (U-joint → corner plate) BR
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 (U-joint → corner plate) BR"
+  ge = grp.entities
+  circle = ge.add_circle([4624.mm,2223.mm,160.mm], [0,1,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Corner plate 304 SS (U-joint mount — angle frame → U-joint) BR
+  grp = ents.add_group
+  grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) BR"
+  face = grp.entities.add_face([4604.mm,2229.mm,165.mm], [4638.mm,2229.mm,165.mm], [4638.mm,2245.mm,165.mm], [4604.mm,2245.mm,165.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -54161,10 +55731,436 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Rail BL
+  # Frame-corner bolt (angle frame → bracket) BR
   grp = ents.add_group
-  grp.name = "FP Rail BL"
-  face = grp.entities.add_face([150.mm,0.mm,160.mm], [190.mm,0.mm,160.mm], [190.mm,2362.mm,160.mm], [150.mm,2362.mm,160.mm])
+  grp.name = "Frame-corner bolt (angle frame → bracket) BR"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2231.mm,160.mm], [0,1,0], 3.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) web TL
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) web TL"
+  face = grp.entities.add_face([241.mm,2090.mm,2262.mm], [246.mm,2090.mm,2262.mm], [246.mm,2362.mm,2262.mm], [241.mm,2362.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) flange TL 2333
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) flange TL 2333"
+  face = grp.entities.add_face([241.mm,2090.mm,2333.mm], [279.mm,2090.mm,2333.mm], [279.mm,2362.mm,2333.mm], [241.mm,2362.mm,2333.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) flange TL 2262
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) flange TL 2262"
+  face = grp.entities.add_face([241.mm,2090.mm,2262.mm], [279.mm,2090.mm,2262.mm], [279.mm,2362.mm,2262.mm], [241.mm,2362.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail STUB (fixed, parks corner) bottom-flange lip TL
+  grp = ents.add_group
+  grp.name = "U-rail STUB (fixed, parks corner) bottom-flange lip TL"
+  face = grp.entities.add_face([274.mm,2090.mm,2267.mm], [279.mm,2090.mm,2267.mm], [279.mm,2362.mm,2267.mm], [274.mm,2362.mm,2267.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) web TL
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) web TL"
+  face = grp.entities.add_face([241.mm,0.mm,2262.mm], [246.mm,0.mm,2262.mm], [246.mm,2090.mm,2262.mm], [241.mm,2090.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) flange TL 2333
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) flange TL 2333"
+  face = grp.entities.add_face([241.mm,0.mm,2333.mm], [279.mm,0.mm,2333.mm], [279.mm,2090.mm,2333.mm], [241.mm,2090.mm,2333.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) flange TL 2262
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) flange TL 2262"
+  face = grp.entities.add_face([241.mm,0.mm,2262.mm], [279.mm,0.mm,2262.mm], [279.mm,2090.mm,2262.mm], [241.mm,2090.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # U-rail REMOVABLE (out for transport) bottom-flange lip TL
+  grp = ents.add_group
+  grp.name = "U-rail REMOVABLE (out for transport) bottom-flange lip TL"
+  face = grp.entities.add_face([274.mm,0.mm,2267.mm], [279.mm,0.mm,2267.mm], [279.mm,2090.mm,2267.mm], [274.mm,2090.mm,2267.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["U-rail REMOVABLE (out for transport) web BL"] || model.materials.add("U-rail REMOVABLE (out for transport) web BL")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 0.3
+  grp.material = mat
+
+  # Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) TL
+  grp = ents.add_group
+  grp.name = "Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) TL"
+  face = grp.entities.add_face([241.mm,2030.mm,2338.mm], [279.mm,2030.mm,2338.mm], [279.mm,2180.mm,2338.mm], [241.mm,2180.mm,2338.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Locating pin (bridge↔STUB, flush to inner-rail top) TL
+  grp = ents.add_group
+  grp.name = "Locating pin (bridge↔STUB, flush to inner-rail top) TL"
+  ge = grp.entities
+  circle = ge.add_circle([260.mm,2135.mm,2333.mm], [0,0,1], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(17.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Bottom support bridge (STUB → beam underside) TL
+  grp = ents.add_group
+  grp.name = "Bottom support bridge (STUB → beam underside) TL"
+  face = grp.entities.add_face([241.mm,2058.mm,2250.mm], [279.mm,2058.mm,2250.mm], [279.mm,2122.mm,2250.mm], [241.mm,2122.mm,2250.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(12.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail far flange (pivot post) TL
+  grp = ents.add_group
+  grp.name = "Rail far flange (pivot post) TL"
+  face = grp.entities.add_face([205.mm,2350.mm,2257.mm], [315.mm,2350.mm,2257.mm], [315.mm,2362.mm,2257.mm], [205.mm,2362.mm,2257.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Pinhole-wall gusset/seat TL
+  grp = ents.add_group
+  grp.name = "Pinhole-wall gusset/seat TL"
+  face = grp.entities.add_face([204.mm,0.mm,2232.mm], [316.mm,0.mm,2232.mm], [316.mm,45.mm,2232.mm], [204.mm,45.mm,2232.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(131.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Length splice (pinhole end, outboard web) TL
+  grp = ents.add_group
+  grp.name = "Length splice (pinhole end, outboard web) TL"
+  face = grp.entities.add_face([229.mm,205.mm,2262.mm], [241.mm,205.mm,2262.mm], [241.mm,315.mm,2262.mm], [229.mm,315.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) TL 2245
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2245.mm,2283.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 TL 2245
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2245.mm,2283.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) TL 2245
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2245.mm,2323.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 TL 2245
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2245.mm,2323.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) TL 2285
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2285.mm,2283.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 TL 2285
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([250.mm,2285.mm,2283.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) TL 2285
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2285.mm,2323.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 TL 2285
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([254.mm,2285.mm,2323.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (bolted to skate axles) TL
+  grp = ents.add_group
+  grp.name = "Carriage plate (bolted to skate axles) TL"
+  face = grp.entities.add_face([287.mm,2238.mm,2246.mm], [301.mm,2238.mm,2246.mm], [301.mm,2324.mm,2246.mm], [287.mm,2324.mm,2246.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(95.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) TL 2245
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) TL 2245"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2245.mm,2261.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) TL 2285
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) TL 2285"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2285.mm,2261.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake base (5128A63) TL
+  grp = ents.add_group
+  grp.name = "Cam-brake base (5128A63) TL"
+  face = grp.entities.add_face([285.mm,2270.mm,2341.mm], [295.mm,2270.mm,2341.mm], [295.mm,2292.mm,2341.mm], [285.mm,2292.mm,2341.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake hold-down arm TL
+  grp = ents.add_group
+  grp.name = "Cam-brake hold-down arm TL"
+  face = grp.entities.add_face([268.mm,2277.mm,2342.mm], [290.mm,2277.mm,2342.mm], [290.mm,2285.mm,2342.mm], [268.mm,2285.mm,2342.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake UHMW pad TL
+  grp = ents.add_group
+  grp.name = "Cam-brake UHMW pad TL"
+  face = grp.entities.add_face([262.mm,2276.mm,2338.mm], [274.mm,2276.mm,2338.mm], [274.mm,2286.mm,2338.mm], [262.mm,2286.mm,2338.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake UHMW pad BL"] || model.materials.add("Cam-brake UHMW pad BL")
+  mat.color = Sketchup::Color.new(216, 212, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake lever TL
+  grp = ents.add_group
+  grp.name = "Cam-brake lever TL"
+  ge = grp.entities
+  circle = ge.add_circle([268.mm,2281.mm,2342.mm], [0,0,1], 2.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z slide rail (TILT, green) TL
+  grp = ents.add_group
+  grp.name = "Vertical Z slide rail (TILT, green) TL"
+  face = grp.entities.add_face([273.mm,2238.mm,1998.mm], [283.mm,2238.mm,1998.mm], [283.mm,2256.mm,1998.mm], [273.mm,2256.mm,1998.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X slide rail (SWING, purple) TL
+  grp = ents.add_group
+  grp.name = "Horizontal X slide rail (SWING, purple) TL"
+  face = grp.entities.add_face([240.mm,2238.mm,2256.mm], [500.mm,2238.mm,2256.mm], [500.mm,2252.mm,2256.mm], [240.mm,2252.mm,2256.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-joint (Belden UJ-SS750x375, setscrew) TL
+  grp = ents.add_group
+  grp.name = "U-joint (Belden UJ-SS750x375, setscrew) TL"
+  face = grp.entities.add_face([248.mm,2233.mm,2238.mm], [272.mm,2233.mm,2238.mm], [272.mm,2257.mm,2238.mm], [248.mm,2257.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Input stub 3/8 (X slide → U-joint) TL
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 (X slide → U-joint) TL"
+  ge = grp.entities
+  circle = ge.add_circle([265.mm,2245.mm,2252.mm], [1,0,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(46.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 4040N12 304 shaft support (clamps input stub → X slide) TL
+  grp = ents.add_group
+  grp.name = "4040N12 304 shaft support (clamps input stub → X slide) TL"
+  face = grp.entities.add_face([286.mm,2236.mm,2241.mm], [309.mm,2236.mm,2241.mm], [309.mm,2254.mm,2241.mm], [286.mm,2254.mm,2241.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Output stub 3/8 (U-joint → corner plate) TL
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 (U-joint → corner plate) TL"
+  ge = grp.entities
+  circle = ge.add_circle([260.mm,2223.mm,2252.mm], [0,1,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Corner plate 304 SS (U-joint mount — angle frame → U-joint) TL
+  grp = ents.add_group
+  grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) TL"
+  face = grp.entities.add_face([246.mm,2229.mm,2207.mm], [280.mm,2229.mm,2207.mm], [280.mm,2245.mm,2207.mm], [246.mm,2245.mm,2207.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -54172,10 +56168,346 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP Rail TL
+  # Frame-corner bolt (angle frame → bracket) TL
   grp = ents.add_group
-  grp.name = "FP Rail TL"
-  face = grp.entities.add_face([150.mm,0.mm,2204.mm], [190.mm,0.mm,2204.mm], [190.mm,2362.mm,2204.mm], [150.mm,2362.mm,2204.mm])
+  grp.name = "Frame-corner bolt (angle frame → bracket) TL"
+  ge = grp.entities
+  circle = ge.add_circle([293.mm,2231.mm,2252.mm], [0,1,0], 3.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(18.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail (FLANGED) web TR
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) web TR"
+  face = grp.entities.add_face([4638.mm,0.mm,2262.mm], [4643.mm,0.mm,2262.mm], [4643.mm,2362.mm,2262.mm], [4638.mm,2362.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(76.mm)
+  mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail (FLANGED) flange TR 2333
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) flange TR 2333"
+  face = grp.entities.add_face([4605.mm,0.mm,2333.mm], [4643.mm,0.mm,2333.mm], [4643.mm,2362.mm,2333.mm], [4605.mm,2362.mm,2333.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail (FLANGED) flange TR 2262
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) flange TR 2262"
+  face = grp.entities.add_face([4605.mm,0.mm,2262.mm], [4643.mm,0.mm,2262.mm], [4643.mm,2362.mm,2262.mm], [4605.mm,2362.mm,2262.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(5.mm)
+  mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-rail (FLANGED) bottom-flange lip TR
+  grp = ents.add_group
+  grp.name = "U-rail (FLANGED) bottom-flange lip TR"
+  face = grp.entities.add_face([4605.mm,0.mm,2267.mm], [4610.mm,0.mm,2267.mm], [4610.mm,2362.mm,2267.mm], [4605.mm,2362.mm,2267.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(9.mm)
+  mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
+  mat.color = Sketchup::Color.new(200, 216, 232)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail end flange (outboard-trimmed) TR 0
+  grp = ents.add_group
+  grp.name = "Rail end flange (outboard-trimmed) TR 0"
+  face = grp.entities.add_face([4569.mm,0.mm,2257.mm], [4644.mm,0.mm,2257.mm], [4644.mm,12.mm,2257.mm], [4569.mm,12.mm,2257.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Rail end flange (outboard-trimmed) TR 2350
+  grp = ents.add_group
+  grp.name = "Rail end flange (outboard-trimmed) TR 2350"
+  face = grp.entities.add_face([4569.mm,2350.mm,2257.mm], [4644.mm,2350.mm,2257.mm], [4644.mm,2362.mm,2257.mm], [4569.mm,2362.mm,2257.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(86.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) TR 2245
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) TR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4614.mm,2245.mm,2283.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 TR 2245
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 TR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4585.mm,2245.mm,2283.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) TR 2245
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) TR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4618.mm,2245.mm,2323.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 TR 2245
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 TR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2245.mm,2323.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(37.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Acetal roller Ø32 (wide face) TR 2285
+  grp = ents.add_group
+  grp.name = "Acetal roller Ø32 (wide face) TR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4614.mm,2285.mm,2283.mm], [1,0,0], 16.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Wheel axle Ø10 TR 2285
+  grp = ents.add_group
+  grp.name = "Wheel axle Ø10 TR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4585.mm,2285.mm,2283.mm], [1,0,0], 5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(49.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper roller Ø20 (anti-lift / anti-tip) TR 2285
+  grp = ents.add_group
+  grp.name = "Keeper roller Ø20 (anti-lift / anti-tip) TR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4618.mm,2285.mm,2323.mm], [1,0,0], 10.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(12.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Keeper axle Ø8 TR 2285
+  grp = ents.add_group
+  grp.name = "Keeper axle Ø8 TR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2285.mm,2323.mm], [1,0,0], 4.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(37.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Carriage plate (bolted to skate axles) TR
+  grp = ents.add_group
+  grp.name = "Carriage plate (bolted to skate axles) TR"
+  face = grp.entities.add_face([4585.mm,2238.mm,2246.mm], [4599.mm,2238.mm,2246.mm], [4599.mm,2324.mm,2246.mm], [4585.mm,2324.mm,2246.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(95.mm)
+  mat = model.materials["Acetal roller Ø32 (wide face) BL 2245"] || model.materials.add("Acetal roller Ø32 (wide face) BL 2245")
+  mat.color = Sketchup::Color.new(192, 64, 16)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) TR 2245
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) TR 2245"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2245.mm,2261.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Axle retainer bolt (thru plate) TR 2285
+  grp = ents.add_group
+  grp.name = "Axle retainer bolt (thru plate) TR 2285"
+  ge = grp.entities
+  circle = ge.add_circle([4591.mm,2285.mm,2261.mm], [0,0,1], 2.5.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(44.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake base (5128A63) TR
+  grp = ents.add_group
+  grp.name = "Cam-brake base (5128A63) TR"
+  face = grp.entities.add_face([4589.mm,2270.mm,2341.mm], [4599.mm,2270.mm,2341.mm], [4599.mm,2292.mm,2341.mm], [4589.mm,2292.mm,2341.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(8.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake hold-down arm TR
+  grp = ents.add_group
+  grp.name = "Cam-brake hold-down arm TR"
+  face = grp.entities.add_face([4594.mm,2277.mm,2342.mm], [4616.mm,2277.mm,2342.mm], [4616.mm,2285.mm,2342.mm], [4594.mm,2285.mm,2342.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake UHMW pad TR
+  grp = ents.add_group
+  grp.name = "Cam-brake UHMW pad TR"
+  face = grp.entities.add_face([4610.mm,2276.mm,2338.mm], [4622.mm,2276.mm,2338.mm], [4622.mm,2286.mm,2338.mm], [4610.mm,2286.mm,2338.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(4.mm)
+  mat = model.materials["Cam-brake UHMW pad BL"] || model.materials.add("Cam-brake UHMW pad BL")
+  mat.color = Sketchup::Color.new(216, 212, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Cam-brake lever TR
+  grp = ents.add_group
+  grp.name = "Cam-brake lever TR"
+  ge = grp.entities
+  circle = ge.add_circle([4616.mm,2281.mm,2342.mm], [0,0,1], 2.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.z < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Cam-brake base (5128A63) BL"] || model.materials.add("Cam-brake base (5128A63) BL")
+  mat.color = Sketchup::Color.new(58, 58, 64)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Vertical Z slide rail (TILT, green) TR
+  grp = ents.add_group
+  grp.name = "Vertical Z slide rail (TILT, green) TR"
+  face = grp.entities.add_face([4595.mm,2238.mm,1998.mm], [4605.mm,2238.mm,1998.mm], [4605.mm,2256.mm,1998.mm], [4595.mm,2256.mm,1998.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(250.mm)
+  mat = model.materials["Vertical Z slide rail (TILT, green) BL"] || model.materials.add("Vertical Z slide rail (TILT, green) BL")
+  mat.color = Sketchup::Color.new(46, 139, 87)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Horizontal X slide rail (SWING, purple) TR
+  grp = ents.add_group
+  grp.name = "Horizontal X slide rail (SWING, purple) TR"
+  face = grp.entities.add_face([4384.mm,2238.mm,2256.mm], [4644.mm,2238.mm,2256.mm], [4644.mm,2252.mm,2256.mm], [4384.mm,2252.mm,2256.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(14.mm)
+  mat = model.materials["Horizontal X slide rail (SWING, purple) BL"] || model.materials.add("Horizontal X slide rail (SWING, purple) BL")
+  mat.color = Sketchup::Color.new(123, 94, 167)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # U-joint (Belden UJ-SS750x375, setscrew) TR
+  grp = ents.add_group
+  grp.name = "U-joint (Belden UJ-SS750x375, setscrew) TR"
+  face = grp.entities.add_face([4612.mm,2233.mm,2238.mm], [4636.mm,2233.mm,2238.mm], [4636.mm,2257.mm,2238.mm], [4612.mm,2257.mm,2238.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(24.mm)
+  mat = model.materials["Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL"] || model.materials.add("Welded bridge (welded to REMOVABLE, bears on stub, ON TOP) BL")
+  mat.color = Sketchup::Color.new(138, 138, 146)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Input stub 3/8 (X slide → U-joint) TR
+  grp = ents.add_group
+  grp.name = "Input stub 3/8 (X slide → U-joint) TR"
+  ge = grp.entities
+  circle = ge.add_circle([4573.mm,2245.mm,2252.mm], [1,0,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.x < 0
+  cface.pushpull(46.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # 4040N12 304 shaft support (clamps input stub → X slide) TR
+  grp = ents.add_group
+  grp.name = "4040N12 304 shaft support (clamps input stub → X slide) TR"
+  face = grp.entities.add_face([4575.mm,2236.mm,2241.mm], [4598.mm,2236.mm,2241.mm], [4598.mm,2254.mm,2241.mm], [4575.mm,2254.mm,2241.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(22.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Output stub 3/8 (U-joint → corner plate) TR
+  grp = ents.add_group
+  grp.name = "Output stub 3/8 (U-joint → corner plate) TR"
+  ge = grp.entities
+  circle = ge.add_circle([4624.mm,2223.mm,2252.mm], [0,1,0], 4.75.mm, 24)
+  cface = ge.add_face(circle)
+  cface.reverse! if cface.normal.y < 0
+  cface.pushpull(20.mm)
+  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
+  mat.color = Sketchup::Color.new(176, 176, 184)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Corner plate 304 SS (U-joint mount — angle frame → U-joint) TR
+  grp = ents.add_group
+  grp.name = "Corner plate 304 SS (U-joint mount — angle frame → U-joint) TR"
+  face = grp.entities.add_face([4604.mm,2229.mm,2207.mm], [4638.mm,2229.mm,2207.mm], [4638.mm,2245.mm,2207.mm], [4604.mm,2245.mm,2207.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(40.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -54183,735 +56515,16 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Saddle back-plate TL near
+  # Frame-corner bolt (angle frame → bracket) TR
   grp = ents.add_group
-  grp.name = "Saddle back-plate TL near"
-  face = grp.entities.add_face([75.mm,0.mm,2129.mm], [225.mm,0.mm,2129.mm], [225.mm,8.mm,2129.mm], [75.mm,8.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle OUTSIDE plate TL near
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate TL near"
-  face = grp.entities.add_face([75.mm,-48.mm,2129.mm], [225.mm,-48.mm,2129.mm], [225.mm,-40.mm,2129.mm], [75.mm,-40.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle seat TL near
-  grp = ents.add_group
-  grp.name = "Saddle seat TL near"
-  face = grp.entities.add_face([126.mm,0.mm,2194.mm], [174.mm,0.mm,2194.mm], [174.mm,110.mm,2194.mm], [126.mm,110.mm,2194.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle gusset TL near
-  grp = ents.add_group
-  grp.name = "Saddle gusset TL near"
+  grp.name = "Frame-corner bolt (angle frame → bracket) TR"
   ge = grp.entities
-  f = ge.add_face([150.mm,110.mm,2194.mm], [150.mm,0.mm,2194.mm], [150.mm,0.mm,2074.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL near"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4591.mm,2231.mm,2252.mm], [0,1,0], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
+  cface.pushpull(18.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL near"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL near"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL near"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Thumb screw TL near
-  grp = ents.add_group
-  grp.name = "Thumb screw TL near"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,25.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Thumb screw TL near
-  grp = ents.add_group
-  grp.name = "Thumb screw TL near"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,85.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle back-plate TL far
-  grp = ents.add_group
-  grp.name = "Saddle back-plate TL far"
-  face = grp.entities.add_face([75.mm,2354.mm,2129.mm], [225.mm,2354.mm,2129.mm], [225.mm,2362.mm,2129.mm], [75.mm,2362.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle OUTSIDE plate TL far
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate TL far"
-  face = grp.entities.add_face([75.mm,2402.mm,2129.mm], [225.mm,2402.mm,2129.mm], [225.mm,2410.mm,2129.mm], [75.mm,2410.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle seat TL far
-  grp = ents.add_group
-  grp.name = "Saddle seat TL far"
-  face = grp.entities.add_face([126.mm,2252.mm,2194.mm], [174.mm,2252.mm,2194.mm], [174.mm,2362.mm,2194.mm], [126.mm,2362.mm,2194.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle gusset TL far
-  grp = ents.add_group
-  grp.name = "Saddle gusset TL far"
-  ge = grp.entities
-  f = ge.add_face([150.mm,2252.mm,2194.mm], [150.mm,2362.mm,2194.mm], [150.mm,2362.mm,2074.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL far"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL far"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL far"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TL far"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Thumb screw TL far
-  grp = ents.add_group
-  grp.name = "Thumb screw TL far"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,2277.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Thumb screw TL far
-  grp = ents.add_group
-  grp.name = "Thumb screw TL far"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,2337.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle back-plate TR near
-  grp = ents.add_group
-  grp.name = "Saddle back-plate TR near"
-  face = grp.entities.add_face([4534.mm,0.mm,2129.mm], [4684.mm,0.mm,2129.mm], [4684.mm,8.mm,2129.mm], [4534.mm,8.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle OUTSIDE plate TR near
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate TR near"
-  face = grp.entities.add_face([4534.mm,-48.mm,2129.mm], [4684.mm,-48.mm,2129.mm], [4684.mm,-40.mm,2129.mm], [4534.mm,-40.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle seat TR near
-  grp = ents.add_group
-  grp.name = "Saddle seat TR near"
-  face = grp.entities.add_face([4585.mm,0.mm,2194.mm], [4633.mm,0.mm,2194.mm], [4633.mm,110.mm,2194.mm], [4585.mm,110.mm,2194.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle gusset TR near
-  grp = ents.add_group
-  grp.name = "Saddle gusset TR near"
-  ge = grp.entities
-  f = ge.add_face([4609.mm,110.mm,2194.mm], [4609.mm,0.mm,2194.mm], [4609.mm,0.mm,2074.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4559.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4559.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4659.mm,-48.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4659.mm,-48.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail fixing bolt TR near
-  grp = ents.add_group
-  grp.name = "Rail fixing bolt TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4609.mm,25.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail fixing bolt TR near
-  grp = ents.add_group
-  grp.name = "Rail fixing bolt TR near"
-  ge = grp.entities
-  circle = ge.add_circle([4609.mm,85.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle back-plate TR far
-  grp = ents.add_group
-  grp.name = "Saddle back-plate TR far"
-  face = grp.entities.add_face([4534.mm,2354.mm,2129.mm], [4684.mm,2354.mm,2129.mm], [4684.mm,2362.mm,2129.mm], [4534.mm,2362.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle OUTSIDE plate TR far
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate TR far"
-  face = grp.entities.add_face([4534.mm,2402.mm,2129.mm], [4684.mm,2402.mm,2129.mm], [4684.mm,2410.mm,2129.mm], [4534.mm,2410.mm,2129.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle seat TR far
-  grp = ents.add_group
-  grp.name = "Saddle seat TR far"
-  face = grp.entities.add_face([4585.mm,2252.mm,2194.mm], [4633.mm,2252.mm,2194.mm], [4633.mm,2362.mm,2194.mm], [4585.mm,2362.mm,2194.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle gusset TR far
-  grp = ents.add_group
-  grp.name = "Saddle gusset TR far"
-  ge = grp.entities
-  f = ge.add_face([4609.mm,2252.mm,2194.mm], [4609.mm,2362.mm,2194.mm], [4609.mm,2362.mm,2074.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4559.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4559.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4659.mm,2354.mm,2154.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 TR far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4659.mm,2354.mm,2254.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail fixing bolt TR far
-  grp = ents.add_group
-  grp.name = "Rail fixing bolt TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4609.mm,2277.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Rail fixing bolt TR far
-  grp = ents.add_group
-  grp.name = "Rail fixing bolt TR far"
-  ge = grp.entities
-  circle = ge.add_circle([4609.mm,2337.mm,2204.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle back-plate BL near
-  grp = ents.add_group
-  grp.name = "Saddle back-plate BL near"
-  face = grp.entities.add_face([75.mm,0.mm,85.mm], [225.mm,0.mm,85.mm], [225.mm,8.mm,85.mm], [75.mm,8.mm,85.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle OUTSIDE plate BL near
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate BL near"
-  face = grp.entities.add_face([75.mm,-48.mm,85.mm], [225.mm,-48.mm,85.mm], [225.mm,-40.mm,85.mm], [75.mm,-40.mm,85.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle seat BL near
-  grp = ents.add_group
-  grp.name = "Saddle seat BL near"
-  face = grp.entities.add_face([126.mm,0.mm,150.mm], [174.mm,0.mm,150.mm], [174.mm,110.mm,150.mm], [126.mm,110.mm,150.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle gusset BL near
-  grp = ents.add_group
-  grp.name = "Saddle gusset BL near"
-  ge = grp.entities
-  f = ge.add_face([150.mm,110.mm,150.mm], [150.mm,0.mm,150.mm], [150.mm,0.mm,30.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL near"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,-48.mm,110.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL near"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,-48.mm,210.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL near"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,-48.mm,110.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL near
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL near"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,-48.mm,210.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Thumb screw BL near
-  grp = ents.add_group
-  grp.name = "Thumb screw BL near"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,25.mm,160.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Thumb screw BL near
-  grp = ents.add_group
-  grp.name = "Thumb screw BL near"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,85.mm,160.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle back-plate BL far
-  grp = ents.add_group
-  grp.name = "Saddle back-plate BL far"
-  face = grp.entities.add_face([75.mm,2354.mm,85.mm], [225.mm,2354.mm,85.mm], [225.mm,2362.mm,85.mm], [75.mm,2362.mm,85.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle OUTSIDE plate BL far
-  grp = ents.add_group
-  grp.name = "Saddle OUTSIDE plate BL far"
-  face = grp.entities.add_face([75.mm,2402.mm,85.mm], [225.mm,2402.mm,85.mm], [225.mm,2410.mm,85.mm], [75.mm,2410.mm,85.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(150.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle seat BL far
-  grp = ents.add_group
-  grp.name = "Saddle seat BL far"
-  face = grp.entities.add_face([126.mm,2252.mm,150.mm], [174.mm,2252.mm,150.mm], [174.mm,2362.mm,150.mm], [126.mm,2362.mm,150.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(10.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle gusset BL far
-  grp = ents.add_group
-  grp.name = "Saddle gusset BL far"
-  ge = grp.entities
-  f = ge.add_face([150.mm,2252.mm,150.mm], [150.mm,2362.mm,150.mm], [150.mm,2362.mm,30.mm])
-  f.pushpull(8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL far"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,2354.mm,110.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL far"
-  ge = grp.entities
-  circle = ge.add_circle([100.mm,2354.mm,210.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL far"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,2354.mm,110.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Saddle wall bolt M12 BL far
-  grp = ents.add_group
-  grp.name = "Saddle wall bolt M12 BL far"
-  ge = grp.entities
-  circle = ge.add_circle([200.mm,2354.mm,210.mm], [0,1,0], 6.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.y < 0
-  cface.pushpull(56.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Thumb screw BL far
-  grp = ents.add_group
-  grp.name = "Thumb screw BL far"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,2277.mm,160.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Thumb screw BL far
-  grp = ents.add_group
-  grp.name = "Thumb screw BL far"
-  ge = grp.entities
-  circle = ge.add_circle([150.mm,2337.mm,160.mm], [0,0,1], 5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(36.mm)
-  mat = model.materials["SV-01 sample valve"] || model.materials.add("SV-01 sample valve")
-  mat.color = Sketchup::Color.new(184, 184, 64)
   mat.alpha = 1.0
   grp.material = mat
 
@@ -54920,7 +56533,7 @@ ents = child.entities
   grp.name = "FP combined corner plate (near)"
   face = grp.entities.add_face([4574.mm,0.mm,77.6.mm], [4724.mm,0.mm,77.6.mm], [4724.mm,10.mm,77.6.mm], [4574.mm,10.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -54931,7 +56544,7 @@ ents = child.entities
   grp.name = "FP combined corner ext plate (near)"
   face = grp.entities.add_face([4574.mm,-50.mm,77.6.mm], [4724.mm,-50.mm,77.6.mm], [4724.mm,-40.mm,77.6.mm], [4574.mm,-40.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -54951,7 +56564,7 @@ ents = child.entities
   # FP combined BR rail seat (near)
   grp = ents.add_group
   grp.name = "FP combined BR rail seat (near)"
-  face = grp.entities.add_face([4619.mm,0.mm,148.mm], [4679.mm,0.mm,148.mm], [4679.mm,55.mm,148.mm], [4619.mm,55.mm,148.mm])
+  face = grp.entities.add_face([4619.mm,0.mm,220.mm], [4679.mm,0.mm,220.mm], [4679.mm,55.mm,220.mm], [4619.mm,55.mm,220.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -54972,11 +56585,11 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (near) X4599 Z188
+  # FP combined bolt M12 (near) X4599 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4599 Z188"
+  grp.name = "FP combined bolt M12 (near) X4599 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,-50.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -54998,11 +56611,11 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (near) X4699 Z188
+  # FP combined bolt M12 (near) X4699 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (near) X4699 Z188"
+  grp.name = "FP combined bolt M12 (near) X4699 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,-50.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,-50.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -55016,7 +56629,7 @@ ents = child.entities
   grp.name = "FP combined corner plate (far)"
   face = grp.entities.add_face([4574.mm,2352.mm,77.6.mm], [4724.mm,2352.mm,77.6.mm], [4724.mm,2362.mm,77.6.mm], [4574.mm,2362.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -55027,7 +56640,7 @@ ents = child.entities
   grp.name = "FP combined corner ext plate (far)"
   face = grp.entities.add_face([4574.mm,2402.mm,77.6.mm], [4724.mm,2402.mm,77.6.mm], [4724.mm,2412.mm,77.6.mm], [4574.mm,2412.mm,77.6.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(157.4.mm)
+  face.pushpull(235.4.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
   mat.color = Sketchup::Color.new(176, 176, 184)
   mat.alpha = 1.0
@@ -55047,7 +56660,7 @@ ents = child.entities
   # FP combined BR rail seat (far)
   grp = ents.add_group
   grp.name = "FP combined BR rail seat (far)"
-  face = grp.entities.add_face([4619.mm,2307.mm,148.mm], [4679.mm,2307.mm,148.mm], [4679.mm,2362.mm,148.mm], [4619.mm,2362.mm,148.mm])
+  face = grp.entities.add_face([4619.mm,2307.mm,220.mm], [4679.mm,2307.mm,220.mm], [4679.mm,2362.mm,220.mm], [4619.mm,2362.mm,220.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(12.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -55068,11 +56681,11 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (far) X4599 Z188
+  # FP combined bolt M12 (far) X4599 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4599 Z188"
+  grp.name = "FP combined bolt M12 (far) X4599 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4599.mm,2352.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4599.mm,2352.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -55094,11 +56707,11 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # FP combined bolt M12 (far) X4699 Z188
+  # FP combined bolt M12 (far) X4699 Z270
   grp = ents.add_group
-  grp.name = "FP combined bolt M12 (far) X4699 Z188"
+  grp.name = "FP combined bolt M12 (far) X4699 Z270"
   ge = grp.entities
-  circle = ge.add_circle([4699.mm,2352.mm,188.mm], [0,1,0], 6.mm, 24)
+  circle = ge.add_circle([4699.mm,2352.mm,270.mm], [0,1,0], 6.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.y < 0
   cface.pushpull(60.mm)
@@ -55129,7 +56742,7 @@ ents = child.entities
   # Left cantilever 1 post (2x2x0.120 SHS)
   grp = ents.add_group
   grp.name = "Left cantilever 1 post (2x2x0.120 SHS)"
-  face = grp.entities.add_face([114.6.mm,220.mm,0.mm], [165.39999999999998.mm,220.mm,0.mm], [165.39999999999998.mm,280.mm,0.mm], [114.6.mm,280.mm,0.mm])
+  face = grp.entities.add_face([224.6.mm,220.mm,0.mm], [275.4.mm,220.mm,0.mm], [275.4.mm,280.mm,0.mm], [224.6.mm,280.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -55137,10 +56750,10 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 1 arm (to X470)
+  # Left cantilever 1 arm (to X580)
   grp = ents.add_group
-  grp.name = "Left cantilever 1 arm (to X470)"
-  face = grp.entities.add_face([165.4.mm,224.6.mm,89.6.mm], [470.mm,224.6.mm,89.6.mm], [470.mm,275.4.mm,89.6.mm], [165.4.mm,275.4.mm,89.6.mm])
+  grp.name = "Left cantilever 1 arm (to X580)"
+  face = grp.entities.add_face([275.4.mm,224.6.mm,89.6.mm], [580.mm,224.6.mm,89.6.mm], [580.mm,275.4.mm,89.6.mm], [275.4.mm,275.4.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.400000000000006.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -55162,7 +56775,7 @@ ents = child.entities
   # Left cantilever 2 post (2x2x0.120 SHS)
   grp = ents.add_group
   grp.name = "Left cantilever 2 post (2x2x0.120 SHS)"
-  face = grp.entities.add_face([114.6.mm,770.mm,0.mm], [165.39999999999998.mm,770.mm,0.mm], [165.39999999999998.mm,830.mm,0.mm], [114.6.mm,830.mm,0.mm])
+  face = grp.entities.add_face([224.6.mm,770.mm,0.mm], [275.4.mm,770.mm,0.mm], [275.4.mm,830.mm,0.mm], [224.6.mm,830.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -55170,10 +56783,10 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 2 arm (to X770)
+  # Left cantilever 2 arm (to X880)
   grp = ents.add_group
-  grp.name = "Left cantilever 2 arm (to X770)"
-  face = grp.entities.add_face([165.4.mm,774.6.mm,89.6.mm], [770.mm,774.6.mm,89.6.mm], [770.mm,825.4.mm,89.6.mm], [165.4.mm,825.4.mm,89.6.mm])
+  grp.name = "Left cantilever 2 arm (to X880)"
+  face = grp.entities.add_face([275.4.mm,774.6.mm,89.6.mm], [880.mm,774.6.mm,89.6.mm], [880.mm,825.4.mm,89.6.mm], [275.4.mm,825.4.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.400000000000006.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -55195,7 +56808,7 @@ ents = child.entities
   # Left cantilever 3 post (2x2x0.120 SHS)
   grp = ents.add_group
   grp.name = "Left cantilever 3 post (2x2x0.120 SHS)"
-  face = grp.entities.add_face([114.6.mm,1150.mm,0.mm], [165.39999999999998.mm,1150.mm,0.mm], [165.39999999999998.mm,1210.mm,0.mm], [114.6.mm,1210.mm,0.mm])
+  face = grp.entities.add_face([224.6.mm,1150.mm,0.mm], [275.4.mm,1150.mm,0.mm], [275.4.mm,1210.mm,0.mm], [224.6.mm,1210.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -55203,10 +56816,10 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 3 arm (to X770)
+  # Left cantilever 3 arm (to X880)
   grp = ents.add_group
-  grp.name = "Left cantilever 3 arm (to X770)"
-  face = grp.entities.add_face([165.4.mm,1154.6.mm,89.6.mm], [770.mm,1154.6.mm,89.6.mm], [770.mm,1205.3999999999999.mm,89.6.mm], [165.4.mm,1205.3999999999999.mm,89.6.mm])
+  grp.name = "Left cantilever 3 arm (to X880)"
+  face = grp.entities.add_face([275.4.mm,1154.6.mm,89.6.mm], [880.mm,1154.6.mm,89.6.mm], [880.mm,1205.3999999999999.mm,89.6.mm], [275.4.mm,1205.3999999999999.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.400000000000006.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -55228,7 +56841,7 @@ ents = child.entities
   # Left cantilever 4 post (2x2x0.120 SHS)
   grp = ents.add_group
   grp.name = "Left cantilever 4 post (2x2x0.120 SHS)"
-  face = grp.entities.add_face([114.6.mm,1530.mm,0.mm], [165.39999999999998.mm,1530.mm,0.mm], [165.39999999999998.mm,1590.mm,0.mm], [114.6.mm,1590.mm,0.mm])
+  face = grp.entities.add_face([224.6.mm,1530.mm,0.mm], [275.4.mm,1530.mm,0.mm], [275.4.mm,1590.mm,0.mm], [224.6.mm,1590.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -55236,10 +56849,10 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 4 arm (to X770)
+  # Left cantilever 4 arm (to X880)
   grp = ents.add_group
-  grp.name = "Left cantilever 4 arm (to X770)"
-  face = grp.entities.add_face([165.4.mm,1534.6.mm,89.6.mm], [770.mm,1534.6.mm,89.6.mm], [770.mm,1585.3999999999999.mm,89.6.mm], [165.4.mm,1585.3999999999999.mm,89.6.mm])
+  grp.name = "Left cantilever 4 arm (to X880)"
+  face = grp.entities.add_face([275.4.mm,1534.6.mm,89.6.mm], [880.mm,1534.6.mm,89.6.mm], [880.mm,1585.3999999999999.mm,89.6.mm], [275.4.mm,1585.3999999999999.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.400000000000006.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -55261,7 +56874,7 @@ ents = child.entities
   # Left cantilever 5 post (2x2x0.120 SHS)
   grp = ents.add_group
   grp.name = "Left cantilever 5 post (2x2x0.120 SHS)"
-  face = grp.entities.add_face([114.6.mm,2080.mm,0.mm], [165.39999999999998.mm,2080.mm,0.mm], [165.39999999999998.mm,2140.mm,0.mm], [114.6.mm,2140.mm,0.mm])
+  face = grp.entities.add_face([224.6.mm,2080.mm,0.mm], [275.4.mm,2080.mm,0.mm], [275.4.mm,2140.mm,0.mm], [224.6.mm,2140.mm,0.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(115.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -55269,10 +56882,10 @@ ents = child.entities
   mat.alpha = 1.0
   grp.material = mat
 
-  # Left cantilever 5 arm (to X470)
+  # Left cantilever 5 arm (to X580)
   grp = ents.add_group
-  grp.name = "Left cantilever 5 arm (to X470)"
-  face = grp.entities.add_face([165.4.mm,2084.6.mm,89.6.mm], [470.mm,2084.6.mm,89.6.mm], [470.mm,2135.4.mm,89.6.mm], [165.4.mm,2135.4.mm,89.6.mm])
+  grp.name = "Left cantilever 5 arm (to X580)"
+  face = grp.entities.add_face([275.4.mm,2084.6.mm,89.6.mm], [580.mm,2084.6.mm,89.6.mm], [580.mm,2135.4.mm,89.6.mm], [275.4.mm,2135.4.mm,89.6.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.400000000000006.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -55291,7 +56904,7 @@ ents = child.entities
   # Walkway Near (fixed, bump integral)
   grp = ents.add_group
   grp.name = "Walkway Near (fixed, bump integral)"
-  face = grp.entities.add_face([470.mm,8.mm,115.mm], [4329.mm,8.mm,115.mm], [4329.mm,300.mm,115.mm], [3083.mm,300.mm,115.mm], [3083.mm,500.mm,115.mm], [1055.mm,500.mm,115.mm], [1055.mm,300.mm,115.mm], [470.mm,300.mm,115.mm])
+  face = grp.entities.add_face([580.mm,8.mm,115.mm], [4329.mm,8.mm,115.mm], [4329.mm,300.mm,115.mm], [3193.mm,300.mm,115.mm], [3193.mm,500.mm,115.mm], [1165.mm,500.mm,115.mm], [1165.mm,300.mm,115.mm], [580.mm,300.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
@@ -55302,7 +56915,7 @@ ents = child.entities
   # Walkway Far
   grp = ents.add_group
   grp.name = "Walkway Far"
-  face = grp.entities.add_face([470.mm,2062.mm,115.mm], [4329.mm,2062.mm,115.mm], [4329.mm,2354.mm,115.mm], [470.mm,2354.mm,115.mm])
+  face = grp.entities.add_face([580.mm,2062.mm,115.mm], [4329.mm,2062.mm,115.mm], [4329.mm,2354.mm,115.mm], [580.mm,2354.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["IBC-4 (Waste) entry"] || model.materials.add("IBC-4 (Waste) entry")
@@ -55324,7 +56937,7 @@ ents = child.entities
   # Walkway Left (REMOVABLE — transport)
   grp = ents.add_group
   grp.name = "Walkway Left (REMOVABLE — transport)"
-  face = grp.entities.add_face([170.mm,0.mm,115.mm], [170.mm,2362.mm,115.mm], [470.mm,2362.mm,115.mm], [470.mm,2062.mm,115.mm], [370.mm,2062.mm,115.mm], [370.mm,1912.mm,115.mm], [470.mm,1912.mm,115.mm], [470.mm,1560.mm,115.mm], [770.mm,1560.mm,115.mm], [770.mm,800.mm,115.mm], [470.mm,800.mm,115.mm], [470.mm,0.mm,115.mm])
+  face = grp.entities.add_face([280.mm,0.mm,115.mm], [280.mm,2362.mm,115.mm], [580.mm,2362.mm,115.mm], [580.mm,2062.mm,115.mm], [480.mm,2062.mm,115.mm], [480.mm,1912.mm,115.mm], [580.mm,1912.mm,115.mm], [580.mm,1560.mm,115.mm], [880.mm,1560.mm,115.mm], [880.mm,800.mm,115.mm], [580.mm,800.mm,115.mm], [580.mm,0.mm,115.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(25.mm)
   mat = model.materials["Walkway Left (REMOVABLE — transport)"] || model.materials.add("Walkway Left (REMOVABLE — transport)")
@@ -60502,7 +62115,7 @@ ents = child.entities
   # Pinhole Mount Plate
   grp = ents.add_group
   grp.name = "Pinhole Mount Plate"
-  face = grp.entities.add_face([2349.mm,0.mm,1144.mm], [2449.mm,0.mm,1144.mm], [2449.mm,3.mm,1144.mm], [2349.mm,3.mm,1144.mm])
+  face = grp.entities.add_face([2404.mm,0.mm,1144.mm], [2504.mm,0.mm,1144.mm], [2504.mm,3.mm,1144.mm], [2404.mm,3.mm,1144.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(100.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -60513,7 +62126,7 @@ ents = child.entities
   # Pinhole Aperture (Ø2.17)
   grp = ents.add_group
   grp.name = "Pinhole Aperture (Ø2.17)"
-  face = grp.entities.add_face([2397.915.mm,3.mm,1192.915.mm], [2400.085.mm,3.mm,1192.915.mm], [2400.085.mm,4.mm,1192.915.mm], [2397.915.mm,4.mm,1192.915.mm])
+  face = grp.entities.add_face([2452.915.mm,3.mm,1192.915.mm], [2455.085.mm,3.mm,1192.915.mm], [2455.085.mm,4.mm,1192.915.mm], [2452.915.mm,4.mm,1192.915.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(2.17.mm)
   mat = model.materials["Pinhole Aperture (Ø2.17)"] || model.materials.add("Pinhole Aperture (Ø2.17)")
@@ -60524,7 +62137,7 @@ ents = child.entities
   # TS Base Plate (wall mount)
   grp = ents.add_group
   grp.name = "TS Base Plate (wall mount)"
-  face = grp.entities.add_face([2229.mm,-52.mm,1024.mm], [2569.mm,-52.mm,1024.mm], [2569.mm,-40.mm,1024.mm], [2229.mm,-40.mm,1024.mm])
+  face = grp.entities.add_face([2284.mm,-52.mm,1024.mm], [2624.mm,-52.mm,1024.mm], [2624.mm,-40.mm,1024.mm], [2284.mm,-40.mm,1024.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(340.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -60535,7 +62148,7 @@ ents = child.entities
   # Pinhole Tilt-Swing Board
   grp = ents.add_group
   grp.name = "Pinhole Tilt-Swing Board"
-  face = grp.entities.add_face([2259.mm,-80.mm,1054.mm], [2539.mm,-80.mm,1054.mm], [2539.mm,-64.mm,1054.mm], [2259.mm,-64.mm,1054.mm])
+  face = grp.entities.add_face([2314.mm,-80.mm,1054.mm], [2594.mm,-80.mm,1054.mm], [2594.mm,-64.mm,1054.mm], [2314.mm,-64.mm,1054.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(280.mm)
   mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
@@ -60546,7 +62159,7 @@ ents = child.entities
   # TS Tilt Knob
   grp = ents.add_group
   grp.name = "TS Tilt Knob"
-  face = grp.entities.add_face([2384.mm,-100.mm,1029.mm], [2414.mm,-100.mm,1029.mm], [2414.mm,-75.mm,1029.mm], [2384.mm,-75.mm,1029.mm])
+  face = grp.entities.add_face([2439.mm,-100.mm,1029.mm], [2469.mm,-100.mm,1029.mm], [2469.mm,-75.mm,1029.mm], [2439.mm,-75.mm,1029.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -60557,7 +62170,7 @@ ents = child.entities
   # TS Swing Knob
   grp = ents.add_group
   grp.name = "TS Swing Knob"
-  face = grp.entities.add_face([2539.mm,-100.mm,1179.mm], [2564.mm,-100.mm,1179.mm], [2564.mm,-75.mm,1179.mm], [2539.mm,-75.mm,1179.mm])
+  face = grp.entities.add_face([2594.mm,-100.mm,1179.mm], [2619.mm,-100.mm,1179.mm], [2619.mm,-75.mm,1179.mm], [2594.mm,-75.mm,1179.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(30.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -60573,59 +62186,114 @@ ci.set_attribute("dynamic_attributes", "hidden", 1.0)
 ci.set_attribute("dynamic_attributes", "_hidden_formula", "Phase5Build!step<1")
 child = model.definitions.add("P5Step5_2")
 ents = child.entities
+  # Film-plane ACM backing (ghost)
+  grp = ents.add_group
+  grp.name = "Film-plane ACM backing (ghost)"
+  face = grp.entities.add_face([293.mm,2237.mm,160.mm], [4591.mm,2237.mm,160.mm], [4591.mm,2241.mm,160.mm], [293.mm,2241.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2092.mm)
+  mat = model.materials["Film-plane ACM backing (ghost)"] || model.materials.add("Film-plane ACM backing (ghost)")
+  mat.color = Sketchup::Color.new(31, 59, 102)
+  mat.alpha = 0.14
+  grp.material = mat
+
+  # Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"
+  face = grp.entities.add_face([293.mm,2187.mm,2249.mm], [4591.mm,2187.mm,2249.mm], [4591.mm,2237.mm,2249.mm], [293.mm,2237.mm,2249.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 Al angle — top (in-plane leg / ACM seat)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 Al angle — top (in-plane leg / ACM seat)"
+  face = grp.entities.add_face([293.mm,2234.mm,2202.mm], [4591.mm,2234.mm,2202.mm], [4591.mm,2237.mm,2202.mm], [293.mm,2237.mm,2202.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 Al angle — bottom (upstand / muslin spring clip)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 Al angle — bottom (upstand / muslin spring clip)"
+  face = grp.entities.add_face([293.mm,2187.mm,160.mm], [4591.mm,2187.mm,160.mm], [4591.mm,2237.mm,160.mm], [293.mm,2237.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(3.mm)
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 Al angle — bottom (in-plane leg / ACM seat)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 Al angle — bottom (in-plane leg / ACM seat)"
+  face = grp.entities.add_face([293.mm,2234.mm,160.mm], [4591.mm,2234.mm,160.mm], [4591.mm,2237.mm,160.mm], [293.mm,2237.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(50.mm)
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 Al angle — left (upstand / muslin spring clip)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 Al angle — left (upstand / muslin spring clip)"
+  face = grp.entities.add_face([293.mm,2187.mm,160.mm], [296.mm,2187.mm,160.mm], [296.mm,2237.mm,160.mm], [293.mm,2237.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2092.mm)
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 Al angle — left (in-plane leg / ACM seat)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 Al angle — left (in-plane leg / ACM seat)"
+  face = grp.entities.add_face([293.mm,2234.mm,160.mm], [343.mm,2234.mm,160.mm], [343.mm,2237.mm,160.mm], [293.mm,2237.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2092.mm)
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 Al angle — right (upstand / muslin spring clip)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 Al angle — right (upstand / muslin spring clip)"
+  face = grp.entities.add_face([4588.mm,2187.mm,160.mm], [4591.mm,2187.mm,160.mm], [4591.mm,2237.mm,160.mm], [4588.mm,2237.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2092.mm)
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
+  # Film frame 2x2 6061 Al angle — right (in-plane leg / ACM seat)
+  grp = ents.add_group
+  grp.name = "Film frame 2x2 6061 Al angle — right (in-plane leg / ACM seat)"
+  face = grp.entities.add_face([4541.mm,2234.mm,160.mm], [4591.mm,2234.mm,160.mm], [4591.mm,2237.mm,160.mm], [4541.mm,2237.mm,160.mm])
+  face.reverse! if face.normal.z < 0
+  face.pushpull(2092.mm)
+  mat = model.materials["Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)"] || model.materials.add("Film frame 2x2 6061 Al angle — top (upstand / muslin spring clip)")
+  mat.color = Sketchup::Color.new(143, 176, 200)
+  mat.alpha = 1.0
+  grp.material = mat
+
   # Film Plane Screen (muslin)
   grp = ents.add_group
   grp.name = "Film Plane Screen (muslin)"
-  face = grp.entities.add_face([150.mm,2262.mm,0.mm], [4649.mm,2262.mm,0.mm], [4649.mm,2282.mm,0.mm], [150.mm,2282.mm,0.mm])
+  face = grp.entities.add_face([293.mm,2237.mm,160.mm], [4591.mm,2237.mm,160.mm], [4591.mm,2243.mm,160.mm], [293.mm,2243.mm,160.mm])
   face.reverse! if face.normal.z < 0
-  face.pushpull(2094.mm)
+  face.pushpull(2092.mm)
   mat = model.materials["Film Plane Screen (muslin)"] || model.materials.add("Film Plane Screen (muslin)")
   mat.color = Sketchup::Color.new(32, 96, 160)
-  mat.alpha = 0.3
-  grp.material = mat
-
-  # FP Frame Bottom
-  grp = ents.add_group
-  grp.name = "FP Frame Bottom"
-  face = grp.entities.add_face([150.mm,2211.2.mm,0.mm], [4649.mm,2211.2.mm,0.mm], [4649.mm,2262.mm,0.mm], [150.mm,2262.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP Frame Top
-  grp = ents.add_group
-  grp.name = "FP Frame Top"
-  face = grp.entities.add_face([150.mm,2211.2.mm,2043.2.mm], [4649.mm,2211.2.mm,2043.2.mm], [4649.mm,2262.mm,2043.2.mm], [150.mm,2262.mm,2043.2.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(50.8.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP Frame Left
-  grp = ents.add_group
-  grp.name = "FP Frame Left"
-  face = grp.entities.add_face([150.mm,2211.2.mm,0.mm], [200.8.mm,2211.2.mm,0.mm], [200.8.mm,2262.mm,0.mm], [150.mm,2262.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2094.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # FP Frame Right
-  grp = ents.add_group
-  grp.name = "FP Frame Right"
-  face = grp.entities.add_face([4598.2.mm,2211.2.mm,0.mm], [4649.mm,2211.2.mm,0.mm], [4649.mm,2262.mm,0.mm], [4598.2.mm,2262.mm,0.mm])
-  face.reverse! if face.normal.z < 0
-  face.pushpull(2094.mm)
-  mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
-  mat.color = Sketchup::Color.new(176, 176, 184)
-  mat.alpha = 1.0
+  mat.alpha = 0.25
   grp.material = mat
 
 ci = p5_defn.entities.add_instance(child, Geom::Transformation.new)
@@ -60840,7 +62508,7 @@ ents = child.entities
   # Spray Beam 40x25x3 304-SS RHS
   grp = ents.add_group
   grp.name = "Spray Beam 40x25x3 304-SS RHS"
-  face = grp.entities.add_face([200.mm,1160.95.mm,29.mm], [4599.mm,1160.95.mm,29.mm], [4599.mm,1199.05.mm,29.mm], [200.mm,1199.05.mm,29.mm])
+  face = grp.entities.add_face([310.mm,1160.95.mm,29.mm], [4599.mm,1160.95.mm,29.mm], [4599.mm,1199.05.mm,29.mm], [310.mm,1199.05.mm,29.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.1.mm)
   mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
@@ -60851,7 +62519,7 @@ ents = child.entities
   # Beam End Cap (feed)
   grp = ents.add_group
   grp.name = "Beam End Cap (feed)"
-  face = grp.entities.add_face([196.mm,1160.95.mm,29.mm], [200.mm,1160.95.mm,29.mm], [200.mm,1199.05.mm,29.mm], [196.mm,1199.05.mm,29.mm])
+  face = grp.entities.add_face([306.mm,1160.95.mm,29.mm], [310.mm,1160.95.mm,29.mm], [310.mm,1199.05.mm,29.mm], [306.mm,1199.05.mm,29.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.1.mm)
   mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
@@ -60874,10 +62542,10 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Side Poly Manifold (3/4 LDPE)"
   ge = grp.entities
-  circle = ge.add_circle([200.mm,1211.55.mm,48.05.mm], [1,0,0], 12.5.mm, 24)
+  circle = ge.add_circle([310.mm,1211.55.mm,48.05.mm], [1,0,0], 12.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(4399.mm)
+  cface.pushpull(4289.mm)
   mat = model.materials["Fuse Block base (Blue Sea 5026)"] || model.materials.add("Fuse Block base (Blue Sea 5026)")
   mat.color = Sketchup::Color.new(42, 42, 42)
   mat.alpha = 1.0
@@ -60887,10 +62555,10 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Water in Manifold"
   ge = grp.entities
-  circle = ge.add_circle([200.mm,1211.55.mm,48.05.mm], [1,0,0], 9.5.mm, 24)
+  circle = ge.add_circle([310.mm,1211.55.mm,48.05.mm], [1,0,0], 9.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
-  cface.pushpull(4399.mm)
+  cface.pushpull(4289.mm)
   mat = model.materials["Water in Manifold"] || model.materials.add("Water in Manifold")
   mat.color = Sketchup::Color.new(32, 96, 192)
   mat.alpha = 0.55
@@ -60900,7 +62568,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([249.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([354.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -60913,7 +62581,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([249.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([354.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -60926,7 +62594,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([349.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([454.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -60939,7 +62607,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([349.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([454.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -60952,7 +62620,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([449.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([554.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -60965,7 +62633,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([449.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([554.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -60978,7 +62646,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([549.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([654.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -60991,7 +62659,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([549.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([654.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61004,7 +62672,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([649.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([754.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61017,7 +62685,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([649.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([754.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61030,7 +62698,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([749.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([854.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61043,7 +62711,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([749.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([854.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61056,7 +62724,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([849.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([954.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61069,7 +62737,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([849.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([954.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61082,7 +62750,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([949.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1054.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61095,7 +62763,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([949.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1054.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61108,7 +62776,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1049.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1154.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61121,7 +62789,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1049.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1154.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61134,7 +62802,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1149.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1254.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61147,7 +62815,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1149.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1254.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61160,7 +62828,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1249.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1354.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61173,7 +62841,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1249.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1354.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61186,7 +62854,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1349.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1454.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61199,7 +62867,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1349.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1454.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61212,7 +62880,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1449.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1554.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61225,7 +62893,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1449.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1554.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61238,7 +62906,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1549.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1654.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61251,7 +62919,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1549.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1654.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61264,7 +62932,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1649.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1754.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61277,7 +62945,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1649.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1754.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61290,7 +62958,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1749.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1854.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61303,7 +62971,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1749.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1854.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61316,7 +62984,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1849.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([1954.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61329,7 +62997,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1849.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([1954.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61342,7 +63010,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([1949.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2054.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61355,7 +63023,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([1949.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2054.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61368,7 +63036,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2049.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2154.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61381,7 +63049,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2049.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2154.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61394,7 +63062,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2149.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2254.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61407,7 +63075,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2149.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2254.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61420,7 +63088,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2249.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2354.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61433,7 +63101,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2249.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2354.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61446,7 +63114,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2349.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2454.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61459,7 +63127,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2349.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2454.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61472,7 +63140,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2449.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2554.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61485,7 +63153,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2449.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2554.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61498,7 +63166,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2549.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2654.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61511,7 +63179,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2549.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2654.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61524,7 +63192,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2649.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2754.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61537,7 +63205,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2649.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2754.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61550,7 +63218,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2749.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2854.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61563,7 +63231,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2749.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2854.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61576,7 +63244,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2849.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([2954.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61589,7 +63257,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2849.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([2954.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61602,7 +63270,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([2949.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3054.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61615,7 +63283,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([2949.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3054.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61628,7 +63296,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3049.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3154.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61641,7 +63309,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3049.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3154.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61654,7 +63322,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3149.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3254.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61667,7 +63335,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3149.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3254.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61680,7 +63348,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3249.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3354.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61693,7 +63361,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3249.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3354.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61706,7 +63374,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3349.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3454.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61719,7 +63387,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3349.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3454.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61732,7 +63400,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3449.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3554.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61745,7 +63413,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3449.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3554.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61758,7 +63426,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3549.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3654.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61771,7 +63439,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3549.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3654.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61784,7 +63452,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3649.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3754.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61797,7 +63465,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3649.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3754.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61810,7 +63478,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3749.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3854.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61823,7 +63491,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3749.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3854.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61836,7 +63504,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3849.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([3954.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61849,7 +63517,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3849.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([3954.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61862,7 +63530,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([3949.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([4054.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61875,7 +63543,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([3949.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([4054.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61888,7 +63556,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([4049.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([4154.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61901,7 +63569,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([4049.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([4154.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61914,7 +63582,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([4149.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([4254.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61927,7 +63595,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([4149.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([4254.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61940,7 +63608,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([4249.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([4354.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61953,7 +63621,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([4249.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([4354.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61966,7 +63634,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([4349.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([4454.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -61979,7 +63647,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([4349.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([4454.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -61992,7 +63660,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Body"
   ge = grp.entities
-  circle = ge.add_circle([4449.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
+  circle = ge.add_circle([4554.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -62005,33 +63673,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Nozzle Tip"
   ge = grp.entities
-  circle = ge.add_circle([4449.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(6.mm)
-  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
-  mat.color = Sketchup::Color.new(59, 122, 59)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Nozzle Body
-  grp = ents.add_group
-  grp.name = "Nozzle Body"
-  ge = grp.entities
-  circle = ge.add_circle([4549.5.mm,1211.55.mm,36.05.mm], [0,0,1], 4.mm, 24)
-  cface = ge.add_face(circle)
-  cface.reverse! if cface.normal.z < 0
-  cface.pushpull(12.mm)
-  mat = model.materials["Nozzle Body"] || model.materials.add("Nozzle Body")
-  mat.color = Sketchup::Color.new(59, 122, 59)
-  mat.alpha = 1.0
-  grp.material = mat
-
-  # Nozzle Tip
-  grp = ents.add_group
-  grp.name = "Nozzle Tip"
-  ge = grp.entities
-  circle = ge.add_circle([4549.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
+  circle = ge.add_circle([4554.5.mm,1211.55.mm,30.049999999999997.mm], [0,0,1], 6.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(6.mm)
@@ -62043,7 +63685,7 @@ ents = child.entities
   # Carriage Plate L L
   grp = ents.add_group
   grp.name = "Carriage Plate L L"
-  face = grp.entities.add_face([200.mm,1062.mm,38.mm], [238.1.mm,1062.mm,38.mm], [238.1.mm,1160.95.mm,38.mm], [200.mm,1160.95.mm,38.mm])
+  face = grp.entities.add_face([310.mm,1062.mm,38.mm], [348.1.mm,1062.mm,38.mm], [348.1.mm,1160.95.mm,38.mm], [310.mm,1160.95.mm,38.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
@@ -62054,7 +63696,7 @@ ents = child.entities
   # Carriage Plate R L
   grp = ents.add_group
   grp.name = "Carriage Plate R L"
-  face = grp.entities.add_face([200.mm,1199.05.mm,38.mm], [238.1.mm,1199.05.mm,38.mm], [238.1.mm,1298.mm,38.mm], [200.mm,1298.mm,38.mm])
+  face = grp.entities.add_face([310.mm,1199.05.mm,38.mm], [348.1.mm,1199.05.mm,38.mm], [348.1.mm,1298.mm,38.mm], [310.mm,1298.mm,38.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
@@ -62066,7 +63708,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Wheel L"
   ge = grp.entities
-  circle = ge.add_circle([209.05.mm,1080.mm,36.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([319.05.mm,1080.mm,36.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(20.mm)
@@ -62079,7 +63721,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Axle Pin 10mm L"
   ge = grp.entities
-  circle = ge.add_circle([186.05.mm,1080.mm,36.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([296.05.mm,1080.mm,36.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
@@ -62092,7 +63734,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Axle Saddle L"
   ge = grp.entities
-  face = ge.add_face([[188.05.mm,1070.82.mm,36.mm], [188.05.mm,1070.9.mm,34.8.mm], [188.05.mm,1071.13.mm,33.62.mm], [188.05.mm,1071.52.mm,32.49.mm], [188.05.mm,1072.05.mm,31.41.mm], [188.05.mm,1072.72.mm,30.41.mm], [188.05.mm,1073.51.mm,29.51.mm], [188.05.mm,1074.41.mm,28.72.mm], [188.05.mm,1075.41.mm,28.05.mm], [188.05.mm,1076.49.mm,27.52.mm], [188.05.mm,1077.62.mm,27.13.mm], [188.05.mm,1078.8.mm,26.9.mm], [188.05.mm,1080.mm,26.82.mm], [188.05.mm,1081.2.mm,26.9.mm], [188.05.mm,1082.38.mm,27.13.mm], [188.05.mm,1083.51.mm,27.52.mm], [188.05.mm,1084.59.mm,28.05.mm], [188.05.mm,1085.59.mm,28.72.mm], [188.05.mm,1086.49.mm,29.51.mm], [188.05.mm,1087.28.mm,30.41.mm], [188.05.mm,1087.95.mm,31.41.mm], [188.05.mm,1088.48.mm,32.49.mm], [188.05.mm,1088.87.mm,33.62.mm], [188.05.mm,1089.1.mm,34.8.mm], [188.05.mm,1089.18.mm,36.mm], [188.05.mm,1086.mm,36.mm], [188.05.mm,1085.95.mm,35.22.mm], [188.05.mm,1085.8.mm,34.45.mm], [188.05.mm,1085.54.mm,33.7.mm], [188.05.mm,1085.2.mm,33.mm], [188.05.mm,1084.76.mm,32.35.mm], [188.05.mm,1084.24.mm,31.76.mm], [188.05.mm,1083.65.mm,31.24.mm], [188.05.mm,1083.mm,30.8.mm], [188.05.mm,1082.3.mm,30.46.mm], [188.05.mm,1081.55.mm,30.2.mm], [188.05.mm,1080.78.mm,30.05.mm], [188.05.mm,1080.mm,30.mm], [188.05.mm,1079.22.mm,30.05.mm], [188.05.mm,1078.45.mm,30.2.mm], [188.05.mm,1077.7.mm,30.46.mm], [188.05.mm,1077.mm,30.8.mm], [188.05.mm,1076.35.mm,31.24.mm], [188.05.mm,1075.76.mm,31.76.mm], [188.05.mm,1075.24.mm,32.35.mm], [188.05.mm,1074.8.mm,33.mm], [188.05.mm,1074.46.mm,33.7.mm], [188.05.mm,1074.2.mm,34.45.mm], [188.05.mm,1074.05.mm,35.22.mm], [188.05.mm,1074.mm,36.mm]])
+  face = ge.add_face([[298.05.mm,1070.82.mm,36.mm], [298.05.mm,1070.9.mm,34.8.mm], [298.05.mm,1071.13.mm,33.62.mm], [298.05.mm,1071.52.mm,32.49.mm], [298.05.mm,1072.05.mm,31.41.mm], [298.05.mm,1072.72.mm,30.41.mm], [298.05.mm,1073.51.mm,29.51.mm], [298.05.mm,1074.41.mm,28.72.mm], [298.05.mm,1075.41.mm,28.05.mm], [298.05.mm,1076.49.mm,27.52.mm], [298.05.mm,1077.62.mm,27.13.mm], [298.05.mm,1078.8.mm,26.9.mm], [298.05.mm,1080.mm,26.82.mm], [298.05.mm,1081.2.mm,26.9.mm], [298.05.mm,1082.38.mm,27.13.mm], [298.05.mm,1083.51.mm,27.52.mm], [298.05.mm,1084.59.mm,28.05.mm], [298.05.mm,1085.59.mm,28.72.mm], [298.05.mm,1086.49.mm,29.51.mm], [298.05.mm,1087.28.mm,30.41.mm], [298.05.mm,1087.95.mm,31.41.mm], [298.05.mm,1088.48.mm,32.49.mm], [298.05.mm,1088.87.mm,33.62.mm], [298.05.mm,1089.1.mm,34.8.mm], [298.05.mm,1089.18.mm,36.mm], [298.05.mm,1086.mm,36.mm], [298.05.mm,1085.95.mm,35.22.mm], [298.05.mm,1085.8.mm,34.45.mm], [298.05.mm,1085.54.mm,33.7.mm], [298.05.mm,1085.2.mm,33.mm], [298.05.mm,1084.76.mm,32.35.mm], [298.05.mm,1084.24.mm,31.76.mm], [298.05.mm,1083.65.mm,31.24.mm], [298.05.mm,1083.mm,30.8.mm], [298.05.mm,1082.3.mm,30.46.mm], [298.05.mm,1081.55.mm,30.2.mm], [298.05.mm,1080.78.mm,30.05.mm], [298.05.mm,1080.mm,30.mm], [298.05.mm,1079.22.mm,30.05.mm], [298.05.mm,1078.45.mm,30.2.mm], [298.05.mm,1077.7.mm,30.46.mm], [298.05.mm,1077.mm,30.8.mm], [298.05.mm,1076.35.mm,31.24.mm], [298.05.mm,1075.76.mm,31.76.mm], [298.05.mm,1075.24.mm,32.35.mm], [298.05.mm,1074.8.mm,33.mm], [298.05.mm,1074.46.mm,33.7.mm], [298.05.mm,1074.2.mm,34.45.mm], [298.05.mm,1074.05.mm,35.22.mm], [298.05.mm,1074.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(19.mm)
   mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
@@ -62103,7 +63745,7 @@ ents = child.entities
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([188.05.mm,1062.mm,34.82.mm], [207.05.mm,1062.mm,34.82.mm], [207.05.mm,1074.mm,34.82.mm], [188.05.mm,1074.mm,34.82.mm])
+  face = grp.entities.add_face([298.05.mm,1062.mm,34.82.mm], [317.05.mm,1062.mm,34.82.mm], [317.05.mm,1074.mm,34.82.mm], [298.05.mm,1074.mm,34.82.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.18.mm)
   mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
@@ -62115,7 +63757,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([197.55.mm,1068.mm,34.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([307.55.mm,1068.mm,34.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -62127,7 +63769,7 @@ ents = child.entities
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([188.05.mm,1086.mm,34.82.mm], [207.05.mm,1086.mm,34.82.mm], [207.05.mm,1098.mm,34.82.mm], [188.05.mm,1098.mm,34.82.mm])
+  face = grp.entities.add_face([298.05.mm,1086.mm,34.82.mm], [317.05.mm,1086.mm,34.82.mm], [317.05.mm,1098.mm,34.82.mm], [298.05.mm,1098.mm,34.82.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.18.mm)
   mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
@@ -62139,7 +63781,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([197.55.mm,1092.mm,34.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([307.55.mm,1092.mm,34.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -62152,7 +63794,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Axle Saddle L"
   ge = grp.entities
-  face = ge.add_face([[231.05.mm,1070.82.mm,36.mm], [231.05.mm,1070.9.mm,34.8.mm], [231.05.mm,1071.13.mm,33.62.mm], [231.05.mm,1071.52.mm,32.49.mm], [231.05.mm,1072.05.mm,31.41.mm], [231.05.mm,1072.72.mm,30.41.mm], [231.05.mm,1073.51.mm,29.51.mm], [231.05.mm,1074.41.mm,28.72.mm], [231.05.mm,1075.41.mm,28.05.mm], [231.05.mm,1076.49.mm,27.52.mm], [231.05.mm,1077.62.mm,27.13.mm], [231.05.mm,1078.8.mm,26.9.mm], [231.05.mm,1080.mm,26.82.mm], [231.05.mm,1081.2.mm,26.9.mm], [231.05.mm,1082.38.mm,27.13.mm], [231.05.mm,1083.51.mm,27.52.mm], [231.05.mm,1084.59.mm,28.05.mm], [231.05.mm,1085.59.mm,28.72.mm], [231.05.mm,1086.49.mm,29.51.mm], [231.05.mm,1087.28.mm,30.41.mm], [231.05.mm,1087.95.mm,31.41.mm], [231.05.mm,1088.48.mm,32.49.mm], [231.05.mm,1088.87.mm,33.62.mm], [231.05.mm,1089.1.mm,34.8.mm], [231.05.mm,1089.18.mm,36.mm], [231.05.mm,1086.mm,36.mm], [231.05.mm,1085.95.mm,35.22.mm], [231.05.mm,1085.8.mm,34.45.mm], [231.05.mm,1085.54.mm,33.7.mm], [231.05.mm,1085.2.mm,33.mm], [231.05.mm,1084.76.mm,32.35.mm], [231.05.mm,1084.24.mm,31.76.mm], [231.05.mm,1083.65.mm,31.24.mm], [231.05.mm,1083.mm,30.8.mm], [231.05.mm,1082.3.mm,30.46.mm], [231.05.mm,1081.55.mm,30.2.mm], [231.05.mm,1080.78.mm,30.05.mm], [231.05.mm,1080.mm,30.mm], [231.05.mm,1079.22.mm,30.05.mm], [231.05.mm,1078.45.mm,30.2.mm], [231.05.mm,1077.7.mm,30.46.mm], [231.05.mm,1077.mm,30.8.mm], [231.05.mm,1076.35.mm,31.24.mm], [231.05.mm,1075.76.mm,31.76.mm], [231.05.mm,1075.24.mm,32.35.mm], [231.05.mm,1074.8.mm,33.mm], [231.05.mm,1074.46.mm,33.7.mm], [231.05.mm,1074.2.mm,34.45.mm], [231.05.mm,1074.05.mm,35.22.mm], [231.05.mm,1074.mm,36.mm]])
+  face = ge.add_face([[341.05.mm,1070.82.mm,36.mm], [341.05.mm,1070.9.mm,34.8.mm], [341.05.mm,1071.13.mm,33.62.mm], [341.05.mm,1071.52.mm,32.49.mm], [341.05.mm,1072.05.mm,31.41.mm], [341.05.mm,1072.72.mm,30.41.mm], [341.05.mm,1073.51.mm,29.51.mm], [341.05.mm,1074.41.mm,28.72.mm], [341.05.mm,1075.41.mm,28.05.mm], [341.05.mm,1076.49.mm,27.52.mm], [341.05.mm,1077.62.mm,27.13.mm], [341.05.mm,1078.8.mm,26.9.mm], [341.05.mm,1080.mm,26.82.mm], [341.05.mm,1081.2.mm,26.9.mm], [341.05.mm,1082.38.mm,27.13.mm], [341.05.mm,1083.51.mm,27.52.mm], [341.05.mm,1084.59.mm,28.05.mm], [341.05.mm,1085.59.mm,28.72.mm], [341.05.mm,1086.49.mm,29.51.mm], [341.05.mm,1087.28.mm,30.41.mm], [341.05.mm,1087.95.mm,31.41.mm], [341.05.mm,1088.48.mm,32.49.mm], [341.05.mm,1088.87.mm,33.62.mm], [341.05.mm,1089.1.mm,34.8.mm], [341.05.mm,1089.18.mm,36.mm], [341.05.mm,1086.mm,36.mm], [341.05.mm,1085.95.mm,35.22.mm], [341.05.mm,1085.8.mm,34.45.mm], [341.05.mm,1085.54.mm,33.7.mm], [341.05.mm,1085.2.mm,33.mm], [341.05.mm,1084.76.mm,32.35.mm], [341.05.mm,1084.24.mm,31.76.mm], [341.05.mm,1083.65.mm,31.24.mm], [341.05.mm,1083.mm,30.8.mm], [341.05.mm,1082.3.mm,30.46.mm], [341.05.mm,1081.55.mm,30.2.mm], [341.05.mm,1080.78.mm,30.05.mm], [341.05.mm,1080.mm,30.mm], [341.05.mm,1079.22.mm,30.05.mm], [341.05.mm,1078.45.mm,30.2.mm], [341.05.mm,1077.7.mm,30.46.mm], [341.05.mm,1077.mm,30.8.mm], [341.05.mm,1076.35.mm,31.24.mm], [341.05.mm,1075.76.mm,31.76.mm], [341.05.mm,1075.24.mm,32.35.mm], [341.05.mm,1074.8.mm,33.mm], [341.05.mm,1074.46.mm,33.7.mm], [341.05.mm,1074.2.mm,34.45.mm], [341.05.mm,1074.05.mm,35.22.mm], [341.05.mm,1074.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(19.mm)
   mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
@@ -62163,7 +63805,7 @@ ents = child.entities
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([231.05.mm,1062.mm,34.82.mm], [250.05.mm,1062.mm,34.82.mm], [250.05.mm,1074.mm,34.82.mm], [231.05.mm,1074.mm,34.82.mm])
+  face = grp.entities.add_face([341.05.mm,1062.mm,34.82.mm], [360.05.mm,1062.mm,34.82.mm], [360.05.mm,1074.mm,34.82.mm], [341.05.mm,1074.mm,34.82.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.18.mm)
   mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
@@ -62175,7 +63817,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([240.55.mm,1068.mm,34.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([350.55.mm,1068.mm,34.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -62187,7 +63829,7 @@ ents = child.entities
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([231.05.mm,1086.mm,34.82.mm], [250.05.mm,1086.mm,34.82.mm], [250.05.mm,1098.mm,34.82.mm], [231.05.mm,1098.mm,34.82.mm])
+  face = grp.entities.add_face([341.05.mm,1086.mm,34.82.mm], [360.05.mm,1086.mm,34.82.mm], [360.05.mm,1098.mm,34.82.mm], [341.05.mm,1098.mm,34.82.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.18.mm)
   mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
@@ -62199,7 +63841,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([240.55.mm,1092.mm,34.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([350.55.mm,1092.mm,34.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -62212,7 +63854,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Wheel L"
   ge = grp.entities
-  circle = ge.add_circle([209.05.mm,1280.mm,36.mm], [1,0,0], 16.mm, 24)
+  circle = ge.add_circle([319.05.mm,1280.mm,36.mm], [1,0,0], 16.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(20.mm)
@@ -62225,7 +63867,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Axle Pin 10mm L"
   ge = grp.entities
-  circle = ge.add_circle([186.05.mm,1280.mm,36.mm], [1,0,0], 5.mm, 24)
+  circle = ge.add_circle([296.05.mm,1280.mm,36.mm], [1,0,0], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(66.mm)
@@ -62238,7 +63880,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Axle Saddle L"
   ge = grp.entities
-  face = ge.add_face([[188.05.mm,1270.82.mm,36.mm], [188.05.mm,1270.9.mm,34.8.mm], [188.05.mm,1271.13.mm,33.62.mm], [188.05.mm,1271.52.mm,32.49.mm], [188.05.mm,1272.05.mm,31.41.mm], [188.05.mm,1272.72.mm,30.41.mm], [188.05.mm,1273.51.mm,29.51.mm], [188.05.mm,1274.41.mm,28.72.mm], [188.05.mm,1275.41.mm,28.05.mm], [188.05.mm,1276.49.mm,27.52.mm], [188.05.mm,1277.62.mm,27.13.mm], [188.05.mm,1278.8.mm,26.9.mm], [188.05.mm,1280.mm,26.82.mm], [188.05.mm,1281.2.mm,26.9.mm], [188.05.mm,1282.38.mm,27.13.mm], [188.05.mm,1283.51.mm,27.52.mm], [188.05.mm,1284.59.mm,28.05.mm], [188.05.mm,1285.59.mm,28.72.mm], [188.05.mm,1286.49.mm,29.51.mm], [188.05.mm,1287.28.mm,30.41.mm], [188.05.mm,1287.95.mm,31.41.mm], [188.05.mm,1288.48.mm,32.49.mm], [188.05.mm,1288.87.mm,33.62.mm], [188.05.mm,1289.1.mm,34.8.mm], [188.05.mm,1289.18.mm,36.mm], [188.05.mm,1286.mm,36.mm], [188.05.mm,1285.95.mm,35.22.mm], [188.05.mm,1285.8.mm,34.45.mm], [188.05.mm,1285.54.mm,33.7.mm], [188.05.mm,1285.2.mm,33.mm], [188.05.mm,1284.76.mm,32.35.mm], [188.05.mm,1284.24.mm,31.76.mm], [188.05.mm,1283.65.mm,31.24.mm], [188.05.mm,1283.mm,30.8.mm], [188.05.mm,1282.3.mm,30.46.mm], [188.05.mm,1281.55.mm,30.2.mm], [188.05.mm,1280.78.mm,30.05.mm], [188.05.mm,1280.mm,30.mm], [188.05.mm,1279.22.mm,30.05.mm], [188.05.mm,1278.45.mm,30.2.mm], [188.05.mm,1277.7.mm,30.46.mm], [188.05.mm,1277.mm,30.8.mm], [188.05.mm,1276.35.mm,31.24.mm], [188.05.mm,1275.76.mm,31.76.mm], [188.05.mm,1275.24.mm,32.35.mm], [188.05.mm,1274.8.mm,33.mm], [188.05.mm,1274.46.mm,33.7.mm], [188.05.mm,1274.2.mm,34.45.mm], [188.05.mm,1274.05.mm,35.22.mm], [188.05.mm,1274.mm,36.mm]])
+  face = ge.add_face([[298.05.mm,1270.82.mm,36.mm], [298.05.mm,1270.9.mm,34.8.mm], [298.05.mm,1271.13.mm,33.62.mm], [298.05.mm,1271.52.mm,32.49.mm], [298.05.mm,1272.05.mm,31.41.mm], [298.05.mm,1272.72.mm,30.41.mm], [298.05.mm,1273.51.mm,29.51.mm], [298.05.mm,1274.41.mm,28.72.mm], [298.05.mm,1275.41.mm,28.05.mm], [298.05.mm,1276.49.mm,27.52.mm], [298.05.mm,1277.62.mm,27.13.mm], [298.05.mm,1278.8.mm,26.9.mm], [298.05.mm,1280.mm,26.82.mm], [298.05.mm,1281.2.mm,26.9.mm], [298.05.mm,1282.38.mm,27.13.mm], [298.05.mm,1283.51.mm,27.52.mm], [298.05.mm,1284.59.mm,28.05.mm], [298.05.mm,1285.59.mm,28.72.mm], [298.05.mm,1286.49.mm,29.51.mm], [298.05.mm,1287.28.mm,30.41.mm], [298.05.mm,1287.95.mm,31.41.mm], [298.05.mm,1288.48.mm,32.49.mm], [298.05.mm,1288.87.mm,33.62.mm], [298.05.mm,1289.1.mm,34.8.mm], [298.05.mm,1289.18.mm,36.mm], [298.05.mm,1286.mm,36.mm], [298.05.mm,1285.95.mm,35.22.mm], [298.05.mm,1285.8.mm,34.45.mm], [298.05.mm,1285.54.mm,33.7.mm], [298.05.mm,1285.2.mm,33.mm], [298.05.mm,1284.76.mm,32.35.mm], [298.05.mm,1284.24.mm,31.76.mm], [298.05.mm,1283.65.mm,31.24.mm], [298.05.mm,1283.mm,30.8.mm], [298.05.mm,1282.3.mm,30.46.mm], [298.05.mm,1281.55.mm,30.2.mm], [298.05.mm,1280.78.mm,30.05.mm], [298.05.mm,1280.mm,30.mm], [298.05.mm,1279.22.mm,30.05.mm], [298.05.mm,1278.45.mm,30.2.mm], [298.05.mm,1277.7.mm,30.46.mm], [298.05.mm,1277.mm,30.8.mm], [298.05.mm,1276.35.mm,31.24.mm], [298.05.mm,1275.76.mm,31.76.mm], [298.05.mm,1275.24.mm,32.35.mm], [298.05.mm,1274.8.mm,33.mm], [298.05.mm,1274.46.mm,33.7.mm], [298.05.mm,1274.2.mm,34.45.mm], [298.05.mm,1274.05.mm,35.22.mm], [298.05.mm,1274.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(19.mm)
   mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
@@ -62249,7 +63891,7 @@ ents = child.entities
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([188.05.mm,1262.mm,34.82.mm], [207.05.mm,1262.mm,34.82.mm], [207.05.mm,1274.mm,34.82.mm], [188.05.mm,1274.mm,34.82.mm])
+  face = grp.entities.add_face([298.05.mm,1262.mm,34.82.mm], [317.05.mm,1262.mm,34.82.mm], [317.05.mm,1274.mm,34.82.mm], [298.05.mm,1274.mm,34.82.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.18.mm)
   mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
@@ -62261,7 +63903,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([197.55.mm,1268.mm,34.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([307.55.mm,1268.mm,34.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -62273,7 +63915,7 @@ ents = child.entities
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([188.05.mm,1286.mm,34.82.mm], [207.05.mm,1286.mm,34.82.mm], [207.05.mm,1298.mm,34.82.mm], [188.05.mm,1298.mm,34.82.mm])
+  face = grp.entities.add_face([298.05.mm,1286.mm,34.82.mm], [317.05.mm,1286.mm,34.82.mm], [317.05.mm,1298.mm,34.82.mm], [298.05.mm,1298.mm,34.82.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.18.mm)
   mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
@@ -62285,7 +63927,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([197.55.mm,1292.mm,34.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([307.55.mm,1292.mm,34.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -62298,7 +63940,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Axle Saddle L"
   ge = grp.entities
-  face = ge.add_face([[231.05.mm,1270.82.mm,36.mm], [231.05.mm,1270.9.mm,34.8.mm], [231.05.mm,1271.13.mm,33.62.mm], [231.05.mm,1271.52.mm,32.49.mm], [231.05.mm,1272.05.mm,31.41.mm], [231.05.mm,1272.72.mm,30.41.mm], [231.05.mm,1273.51.mm,29.51.mm], [231.05.mm,1274.41.mm,28.72.mm], [231.05.mm,1275.41.mm,28.05.mm], [231.05.mm,1276.49.mm,27.52.mm], [231.05.mm,1277.62.mm,27.13.mm], [231.05.mm,1278.8.mm,26.9.mm], [231.05.mm,1280.mm,26.82.mm], [231.05.mm,1281.2.mm,26.9.mm], [231.05.mm,1282.38.mm,27.13.mm], [231.05.mm,1283.51.mm,27.52.mm], [231.05.mm,1284.59.mm,28.05.mm], [231.05.mm,1285.59.mm,28.72.mm], [231.05.mm,1286.49.mm,29.51.mm], [231.05.mm,1287.28.mm,30.41.mm], [231.05.mm,1287.95.mm,31.41.mm], [231.05.mm,1288.48.mm,32.49.mm], [231.05.mm,1288.87.mm,33.62.mm], [231.05.mm,1289.1.mm,34.8.mm], [231.05.mm,1289.18.mm,36.mm], [231.05.mm,1286.mm,36.mm], [231.05.mm,1285.95.mm,35.22.mm], [231.05.mm,1285.8.mm,34.45.mm], [231.05.mm,1285.54.mm,33.7.mm], [231.05.mm,1285.2.mm,33.mm], [231.05.mm,1284.76.mm,32.35.mm], [231.05.mm,1284.24.mm,31.76.mm], [231.05.mm,1283.65.mm,31.24.mm], [231.05.mm,1283.mm,30.8.mm], [231.05.mm,1282.3.mm,30.46.mm], [231.05.mm,1281.55.mm,30.2.mm], [231.05.mm,1280.78.mm,30.05.mm], [231.05.mm,1280.mm,30.mm], [231.05.mm,1279.22.mm,30.05.mm], [231.05.mm,1278.45.mm,30.2.mm], [231.05.mm,1277.7.mm,30.46.mm], [231.05.mm,1277.mm,30.8.mm], [231.05.mm,1276.35.mm,31.24.mm], [231.05.mm,1275.76.mm,31.76.mm], [231.05.mm,1275.24.mm,32.35.mm], [231.05.mm,1274.8.mm,33.mm], [231.05.mm,1274.46.mm,33.7.mm], [231.05.mm,1274.2.mm,34.45.mm], [231.05.mm,1274.05.mm,35.22.mm], [231.05.mm,1274.mm,36.mm]])
+  face = ge.add_face([[341.05.mm,1270.82.mm,36.mm], [341.05.mm,1270.9.mm,34.8.mm], [341.05.mm,1271.13.mm,33.62.mm], [341.05.mm,1271.52.mm,32.49.mm], [341.05.mm,1272.05.mm,31.41.mm], [341.05.mm,1272.72.mm,30.41.mm], [341.05.mm,1273.51.mm,29.51.mm], [341.05.mm,1274.41.mm,28.72.mm], [341.05.mm,1275.41.mm,28.05.mm], [341.05.mm,1276.49.mm,27.52.mm], [341.05.mm,1277.62.mm,27.13.mm], [341.05.mm,1278.8.mm,26.9.mm], [341.05.mm,1280.mm,26.82.mm], [341.05.mm,1281.2.mm,26.9.mm], [341.05.mm,1282.38.mm,27.13.mm], [341.05.mm,1283.51.mm,27.52.mm], [341.05.mm,1284.59.mm,28.05.mm], [341.05.mm,1285.59.mm,28.72.mm], [341.05.mm,1286.49.mm,29.51.mm], [341.05.mm,1287.28.mm,30.41.mm], [341.05.mm,1287.95.mm,31.41.mm], [341.05.mm,1288.48.mm,32.49.mm], [341.05.mm,1288.87.mm,33.62.mm], [341.05.mm,1289.1.mm,34.8.mm], [341.05.mm,1289.18.mm,36.mm], [341.05.mm,1286.mm,36.mm], [341.05.mm,1285.95.mm,35.22.mm], [341.05.mm,1285.8.mm,34.45.mm], [341.05.mm,1285.54.mm,33.7.mm], [341.05.mm,1285.2.mm,33.mm], [341.05.mm,1284.76.mm,32.35.mm], [341.05.mm,1284.24.mm,31.76.mm], [341.05.mm,1283.65.mm,31.24.mm], [341.05.mm,1283.mm,30.8.mm], [341.05.mm,1282.3.mm,30.46.mm], [341.05.mm,1281.55.mm,30.2.mm], [341.05.mm,1280.78.mm,30.05.mm], [341.05.mm,1280.mm,30.mm], [341.05.mm,1279.22.mm,30.05.mm], [341.05.mm,1278.45.mm,30.2.mm], [341.05.mm,1277.7.mm,30.46.mm], [341.05.mm,1277.mm,30.8.mm], [341.05.mm,1276.35.mm,31.24.mm], [341.05.mm,1275.76.mm,31.76.mm], [341.05.mm,1275.24.mm,32.35.mm], [341.05.mm,1274.8.mm,33.mm], [341.05.mm,1274.46.mm,33.7.mm], [341.05.mm,1274.2.mm,34.45.mm], [341.05.mm,1274.05.mm,35.22.mm], [341.05.mm,1274.mm,36.mm]])
   face.reverse! if face.normal.x < 0
   face.pushpull(19.mm)
   mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
@@ -62309,7 +63951,7 @@ ents = child.entities
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([231.05.mm,1262.mm,34.82.mm], [250.05.mm,1262.mm,34.82.mm], [250.05.mm,1274.mm,34.82.mm], [231.05.mm,1274.mm,34.82.mm])
+  face = grp.entities.add_face([341.05.mm,1262.mm,34.82.mm], [360.05.mm,1262.mm,34.82.mm], [360.05.mm,1274.mm,34.82.mm], [341.05.mm,1274.mm,34.82.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.18.mm)
   mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
@@ -62321,7 +63963,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([240.55.mm,1268.mm,34.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([350.55.mm,1268.mm,34.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -62333,7 +63975,7 @@ ents = child.entities
   # Axle Saddle Foot L
   grp = ents.add_group
   grp.name = "Axle Saddle Foot L"
-  face = grp.entities.add_face([231.05.mm,1286.mm,34.82.mm], [250.05.mm,1286.mm,34.82.mm], [250.05.mm,1298.mm,34.82.mm], [231.05.mm,1298.mm,34.82.mm])
+  face = grp.entities.add_face([341.05.mm,1286.mm,34.82.mm], [360.05.mm,1286.mm,34.82.mm], [360.05.mm,1298.mm,34.82.mm], [341.05.mm,1298.mm,34.82.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.18.mm)
   mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
@@ -62345,7 +63987,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Axle Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([240.55.mm,1292.mm,34.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([350.55.mm,1292.mm,34.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(12.mm)
@@ -62357,7 +63999,7 @@ ents = child.entities
   # Bottom Clamp L
   grp = ents.add_group
   grp.name = "Bottom Clamp L"
-  face = grp.entities.add_face([200.mm,1148.mm,26.mm], [238.1.mm,1148.mm,26.mm], [238.1.mm,1212.mm,26.mm], [200.mm,1212.mm,26.mm])
+  face = grp.entities.add_face([310.mm,1148.mm,26.mm], [348.1.mm,1148.mm,26.mm], [348.1.mm,1212.mm,26.mm], [310.mm,1212.mm,26.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
@@ -62368,7 +64010,7 @@ ents = child.entities
   # Top Clamp L
   grp = ents.add_group
   grp.name = "Top Clamp L"
-  face = grp.entities.add_face([200.mm,1148.mm,67.1.mm], [238.1.mm,1148.mm,67.1.mm], [238.1.mm,1212.mm,67.1.mm], [200.mm,1212.mm,67.1.mm])
+  face = grp.entities.add_face([310.mm,1148.mm,67.1.mm], [348.1.mm,1148.mm,67.1.mm], [348.1.mm,1212.mm,67.1.mm], [310.mm,1212.mm,67.1.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(3.mm)
   mat = model.materials["Spray Beam 40x25x3 304-SS RHS"] || model.materials.add("Spray Beam 40x25x3 304-SS RHS")
@@ -62379,7 +64021,7 @@ ents = child.entities
   # Clamp Spacer L
   grp = ents.add_group
   grp.name = "Clamp Spacer L"
-  face = grp.entities.add_face([204.mm,1152.95.mm,29.mm], [234.1.mm,1152.95.mm,29.mm], [234.1.mm,1160.95.mm,29.mm], [204.mm,1160.95.mm,29.mm])
+  face = grp.entities.add_face([314.mm,1152.95.mm,29.mm], [344.1.mm,1152.95.mm,29.mm], [344.1.mm,1160.95.mm,29.mm], [314.mm,1160.95.mm,29.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.099999999999994.mm)
   mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
@@ -62391,7 +64033,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([209.mm,1156.95.mm,26.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([319.mm,1156.95.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(48.099999999999994.mm)
@@ -62404,19 +64046,19 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Clamp Bolt CSK Head L"
   ge = grp.entities
-  ge.add_face([213.5.mm,1156.95.mm,26.mm], [212.89711431702997.mm,1159.2.mm,26.mm], [211.1650635094611.mm,1158.2.mm,29.mm], [211.5.mm,1156.95.mm,29.mm])
-  ge.add_face([212.89711431702997.mm,1159.2.mm,26.mm], [211.25.mm,1160.84711431703.mm,26.mm], [210.25.mm,1159.1150635094612.mm,29.mm], [211.1650635094611.mm,1158.2.mm,29.mm])
-  ge.add_face([211.25.mm,1160.84711431703.mm,26.mm], [209.mm,1161.45.mm,26.mm], [209.mm,1159.45.mm,29.mm], [210.25.mm,1159.1150635094612.mm,29.mm])
-  ge.add_face([209.mm,1161.45.mm,26.mm], [206.75.mm,1160.84711431703.mm,26.mm], [207.75.mm,1159.1150635094612.mm,29.mm], [209.mm,1159.45.mm,29.mm])
-  ge.add_face([206.75.mm,1160.84711431703.mm,26.mm], [205.10288568297003.mm,1159.2.mm,26.mm], [206.8349364905389.mm,1158.2.mm,29.mm], [207.75.mm,1159.1150635094612.mm,29.mm])
-  ge.add_face([205.10288568297003.mm,1159.2.mm,26.mm], [204.5.mm,1156.95.mm,26.mm], [206.5.mm,1156.95.mm,29.mm], [206.8349364905389.mm,1158.2.mm,29.mm])
-  ge.add_face([204.5.mm,1156.95.mm,26.mm], [205.10288568297003.mm,1154.7.mm,26.mm], [206.8349364905389.mm,1155.7.mm,29.mm], [206.5.mm,1156.95.mm,29.mm])
-  ge.add_face([205.10288568297003.mm,1154.7.mm,26.mm], [206.75.mm,1153.05288568297.mm,26.mm], [207.75.mm,1154.784936490539.mm,29.mm], [206.8349364905389.mm,1155.7.mm,29.mm])
-  ge.add_face([206.75.mm,1153.05288568297.mm,26.mm], [209.mm,1152.45.mm,26.mm], [209.mm,1154.45.mm,29.mm], [207.75.mm,1154.784936490539.mm,29.mm])
-  ge.add_face([209.mm,1152.45.mm,26.mm], [211.25.mm,1153.05288568297.mm,26.mm], [210.25.mm,1154.784936490539.mm,29.mm], [209.mm,1154.45.mm,29.mm])
-  ge.add_face([211.25.mm,1153.05288568297.mm,26.mm], [212.89711431702997.mm,1154.7.mm,26.mm], [211.1650635094611.mm,1155.7.mm,29.mm], [210.25.mm,1154.784936490539.mm,29.mm])
-  ge.add_face([212.89711431702997.mm,1154.7.mm,26.mm], [213.5.mm,1156.95.mm,26.mm], [211.5.mm,1156.95.mm,29.mm], [211.1650635094611.mm,1155.7.mm,29.mm])
-  ge.add_face([213.5.mm,1156.95.mm,26.mm], [212.89711431702997.mm,1159.2.mm,26.mm], [211.25.mm,1160.84711431703.mm,26.mm], [209.mm,1161.45.mm,26.mm], [206.75.mm,1160.84711431703.mm,26.mm], [205.10288568297003.mm,1159.2.mm,26.mm], [204.5.mm,1156.95.mm,26.mm], [205.10288568297003.mm,1154.7.mm,26.mm], [206.75.mm,1153.05288568297.mm,26.mm], [209.mm,1152.45.mm,26.mm], [211.25.mm,1153.05288568297.mm,26.mm], [212.89711431702997.mm,1154.7.mm,26.mm])
+  ge.add_face([323.5.mm,1156.95.mm,26.mm], [322.89711431702995.mm,1159.2.mm,26.mm], [321.1650635094611.mm,1158.2.mm,29.mm], [321.5.mm,1156.95.mm,29.mm])
+  ge.add_face([322.89711431702995.mm,1159.2.mm,26.mm], [321.25.mm,1160.84711431703.mm,26.mm], [320.25.mm,1159.1150635094612.mm,29.mm], [321.1650635094611.mm,1158.2.mm,29.mm])
+  ge.add_face([321.25.mm,1160.84711431703.mm,26.mm], [319.mm,1161.45.mm,26.mm], [319.mm,1159.45.mm,29.mm], [320.25.mm,1159.1150635094612.mm,29.mm])
+  ge.add_face([319.mm,1161.45.mm,26.mm], [316.75.mm,1160.84711431703.mm,26.mm], [317.75.mm,1159.1150635094612.mm,29.mm], [319.mm,1159.45.mm,29.mm])
+  ge.add_face([316.75.mm,1160.84711431703.mm,26.mm], [315.10288568297005.mm,1159.2.mm,26.mm], [316.8349364905389.mm,1158.2.mm,29.mm], [317.75.mm,1159.1150635094612.mm,29.mm])
+  ge.add_face([315.10288568297005.mm,1159.2.mm,26.mm], [314.5.mm,1156.95.mm,26.mm], [316.5.mm,1156.95.mm,29.mm], [316.8349364905389.mm,1158.2.mm,29.mm])
+  ge.add_face([314.5.mm,1156.95.mm,26.mm], [315.10288568297.mm,1154.7.mm,26.mm], [316.8349364905389.mm,1155.7.mm,29.mm], [316.5.mm,1156.95.mm,29.mm])
+  ge.add_face([315.10288568297.mm,1154.7.mm,26.mm], [316.75.mm,1153.05288568297.mm,26.mm], [317.75.mm,1154.784936490539.mm,29.mm], [316.8349364905389.mm,1155.7.mm,29.mm])
+  ge.add_face([316.75.mm,1153.05288568297.mm,26.mm], [319.mm,1152.45.mm,26.mm], [319.mm,1154.45.mm,29.mm], [317.75.mm,1154.784936490539.mm,29.mm])
+  ge.add_face([319.mm,1152.45.mm,26.mm], [321.25.mm,1153.05288568297.mm,26.mm], [320.25.mm,1154.784936490539.mm,29.mm], [319.mm,1154.45.mm,29.mm])
+  ge.add_face([321.25.mm,1153.05288568297.mm,26.mm], [322.89711431702995.mm,1154.7.mm,26.mm], [321.1650635094611.mm,1155.7.mm,29.mm], [320.25.mm,1154.784936490539.mm,29.mm])
+  ge.add_face([322.89711431702995.mm,1154.7.mm,26.mm], [323.5.mm,1156.95.mm,26.mm], [321.5.mm,1156.95.mm,29.mm], [321.1650635094611.mm,1155.7.mm,29.mm])
+  ge.add_face([323.5.mm,1156.95.mm,26.mm], [322.89711431702995.mm,1159.2.mm,26.mm], [321.25.mm,1160.84711431703.mm,26.mm], [319.mm,1161.45.mm,26.mm], [316.75.mm,1160.84711431703.mm,26.mm], [315.10288568297005.mm,1159.2.mm,26.mm], [314.5.mm,1156.95.mm,26.mm], [315.10288568297.mm,1154.7.mm,26.mm], [316.75.mm,1153.05288568297.mm,26.mm], [319.mm,1152.45.mm,26.mm], [321.25.mm,1153.05288568297.mm,26.mm], [322.89711431702995.mm,1154.7.mm,26.mm])
   mat = model.materials["Clamp Bolt CSK Head L"] || model.materials.add("Clamp Bolt CSK Head L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
@@ -62425,7 +64067,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([229.1.mm,1156.95.mm,26.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([339.1.mm,1156.95.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(48.099999999999994.mm)
@@ -62438,19 +64080,19 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Clamp Bolt CSK Head L"
   ge = grp.entities
-  ge.add_face([233.6.mm,1156.95.mm,26.mm], [232.99711431702997.mm,1159.2.mm,26.mm], [231.2650635094611.mm,1158.2.mm,29.mm], [231.6.mm,1156.95.mm,29.mm])
-  ge.add_face([232.99711431702997.mm,1159.2.mm,26.mm], [231.35.mm,1160.84711431703.mm,26.mm], [230.35.mm,1159.1150635094612.mm,29.mm], [231.2650635094611.mm,1158.2.mm,29.mm])
-  ge.add_face([231.35.mm,1160.84711431703.mm,26.mm], [229.1.mm,1161.45.mm,26.mm], [229.1.mm,1159.45.mm,29.mm], [230.35.mm,1159.1150635094612.mm,29.mm])
-  ge.add_face([229.1.mm,1161.45.mm,26.mm], [226.85.mm,1160.84711431703.mm,26.mm], [227.85.mm,1159.1150635094612.mm,29.mm], [229.1.mm,1159.45.mm,29.mm])
-  ge.add_face([226.85.mm,1160.84711431703.mm,26.mm], [225.20288568297002.mm,1159.2.mm,26.mm], [226.9349364905389.mm,1158.2.mm,29.mm], [227.85.mm,1159.1150635094612.mm,29.mm])
-  ge.add_face([225.20288568297002.mm,1159.2.mm,26.mm], [224.6.mm,1156.95.mm,26.mm], [226.6.mm,1156.95.mm,29.mm], [226.9349364905389.mm,1158.2.mm,29.mm])
-  ge.add_face([224.6.mm,1156.95.mm,26.mm], [225.20288568297002.mm,1154.7.mm,26.mm], [226.9349364905389.mm,1155.7.mm,29.mm], [226.6.mm,1156.95.mm,29.mm])
-  ge.add_face([225.20288568297002.mm,1154.7.mm,26.mm], [226.85.mm,1153.05288568297.mm,26.mm], [227.85.mm,1154.784936490539.mm,29.mm], [226.9349364905389.mm,1155.7.mm,29.mm])
-  ge.add_face([226.85.mm,1153.05288568297.mm,26.mm], [229.1.mm,1152.45.mm,26.mm], [229.1.mm,1154.45.mm,29.mm], [227.85.mm,1154.784936490539.mm,29.mm])
-  ge.add_face([229.1.mm,1152.45.mm,26.mm], [231.35.mm,1153.05288568297.mm,26.mm], [230.35.mm,1154.784936490539.mm,29.mm], [229.1.mm,1154.45.mm,29.mm])
-  ge.add_face([231.35.mm,1153.05288568297.mm,26.mm], [232.99711431702997.mm,1154.7.mm,26.mm], [231.2650635094611.mm,1155.7.mm,29.mm], [230.35.mm,1154.784936490539.mm,29.mm])
-  ge.add_face([232.99711431702997.mm,1154.7.mm,26.mm], [233.6.mm,1156.95.mm,26.mm], [231.6.mm,1156.95.mm,29.mm], [231.2650635094611.mm,1155.7.mm,29.mm])
-  ge.add_face([233.6.mm,1156.95.mm,26.mm], [232.99711431702997.mm,1159.2.mm,26.mm], [231.35.mm,1160.84711431703.mm,26.mm], [229.1.mm,1161.45.mm,26.mm], [226.85.mm,1160.84711431703.mm,26.mm], [225.20288568297002.mm,1159.2.mm,26.mm], [224.6.mm,1156.95.mm,26.mm], [225.20288568297002.mm,1154.7.mm,26.mm], [226.85.mm,1153.05288568297.mm,26.mm], [229.1.mm,1152.45.mm,26.mm], [231.35.mm,1153.05288568297.mm,26.mm], [232.99711431702997.mm,1154.7.mm,26.mm])
+  ge.add_face([343.6.mm,1156.95.mm,26.mm], [342.99711431702997.mm,1159.2.mm,26.mm], [341.26506350946113.mm,1158.2.mm,29.mm], [341.6.mm,1156.95.mm,29.mm])
+  ge.add_face([342.99711431702997.mm,1159.2.mm,26.mm], [341.35.mm,1160.84711431703.mm,26.mm], [340.35.mm,1159.1150635094612.mm,29.mm], [341.26506350946113.mm,1158.2.mm,29.mm])
+  ge.add_face([341.35.mm,1160.84711431703.mm,26.mm], [339.1.mm,1161.45.mm,26.mm], [339.1.mm,1159.45.mm,29.mm], [340.35.mm,1159.1150635094612.mm,29.mm])
+  ge.add_face([339.1.mm,1161.45.mm,26.mm], [336.85.mm,1160.84711431703.mm,26.mm], [337.85.mm,1159.1150635094612.mm,29.mm], [339.1.mm,1159.45.mm,29.mm])
+  ge.add_face([336.85.mm,1160.84711431703.mm,26.mm], [335.2028856829701.mm,1159.2.mm,26.mm], [336.9349364905389.mm,1158.2.mm,29.mm], [337.85.mm,1159.1150635094612.mm,29.mm])
+  ge.add_face([335.2028856829701.mm,1159.2.mm,26.mm], [334.6.mm,1156.95.mm,26.mm], [336.6.mm,1156.95.mm,29.mm], [336.9349364905389.mm,1158.2.mm,29.mm])
+  ge.add_face([334.6.mm,1156.95.mm,26.mm], [335.20288568297.mm,1154.7.mm,26.mm], [336.9349364905389.mm,1155.7.mm,29.mm], [336.6.mm,1156.95.mm,29.mm])
+  ge.add_face([335.20288568297.mm,1154.7.mm,26.mm], [336.85.mm,1153.05288568297.mm,26.mm], [337.85.mm,1154.784936490539.mm,29.mm], [336.9349364905389.mm,1155.7.mm,29.mm])
+  ge.add_face([336.85.mm,1153.05288568297.mm,26.mm], [339.1.mm,1152.45.mm,26.mm], [339.1.mm,1154.45.mm,29.mm], [337.85.mm,1154.784936490539.mm,29.mm])
+  ge.add_face([339.1.mm,1152.45.mm,26.mm], [341.35.mm,1153.05288568297.mm,26.mm], [340.35.mm,1154.784936490539.mm,29.mm], [339.1.mm,1154.45.mm,29.mm])
+  ge.add_face([341.35.mm,1153.05288568297.mm,26.mm], [342.99711431702997.mm,1154.7.mm,26.mm], [341.26506350946113.mm,1155.7.mm,29.mm], [340.35.mm,1154.784936490539.mm,29.mm])
+  ge.add_face([342.99711431702997.mm,1154.7.mm,26.mm], [343.6.mm,1156.95.mm,26.mm], [341.6.mm,1156.95.mm,29.mm], [341.26506350946113.mm,1155.7.mm,29.mm])
+  ge.add_face([343.6.mm,1156.95.mm,26.mm], [342.99711431702997.mm,1159.2.mm,26.mm], [341.35.mm,1160.84711431703.mm,26.mm], [339.1.mm,1161.45.mm,26.mm], [336.85.mm,1160.84711431703.mm,26.mm], [335.2028856829701.mm,1159.2.mm,26.mm], [334.6.mm,1156.95.mm,26.mm], [335.20288568297.mm,1154.7.mm,26.mm], [336.85.mm,1153.05288568297.mm,26.mm], [339.1.mm,1152.45.mm,26.mm], [341.35.mm,1153.05288568297.mm,26.mm], [342.99711431702997.mm,1154.7.mm,26.mm])
   mat = model.materials["Clamp Bolt CSK Head L"] || model.materials.add("Clamp Bolt CSK Head L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
@@ -62458,7 +64100,7 @@ ents = child.entities
   # Clamp Spacer L
   grp = ents.add_group
   grp.name = "Clamp Spacer L"
-  face = grp.entities.add_face([204.mm,1199.05.mm,29.mm], [234.1.mm,1199.05.mm,29.mm], [234.1.mm,1207.05.mm,29.mm], [204.mm,1207.05.mm,29.mm])
+  face = grp.entities.add_face([314.mm,1199.05.mm,29.mm], [344.1.mm,1199.05.mm,29.mm], [344.1.mm,1207.05.mm,29.mm], [314.mm,1207.05.mm,29.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(38.099999999999994.mm)
   mat = model.materials["Fan A (exhaust) fan blade up"] || model.materials.add("Fan A (exhaust) fan blade up")
@@ -62470,7 +64112,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([209.mm,1203.05.mm,26.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([319.mm,1203.05.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(48.099999999999994.mm)
@@ -62483,19 +64125,19 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Clamp Bolt CSK Head L"
   ge = grp.entities
-  ge.add_face([213.5.mm,1203.05.mm,26.mm], [212.89711431702997.mm,1205.3.mm,26.mm], [211.1650635094611.mm,1204.3.mm,29.mm], [211.5.mm,1203.05.mm,29.mm])
-  ge.add_face([212.89711431702997.mm,1205.3.mm,26.mm], [211.25.mm,1206.94711431703.mm,26.mm], [210.25.mm,1205.215063509461.mm,29.mm], [211.1650635094611.mm,1204.3.mm,29.mm])
-  ge.add_face([211.25.mm,1206.94711431703.mm,26.mm], [209.mm,1207.55.mm,26.mm], [209.mm,1205.55.mm,29.mm], [210.25.mm,1205.215063509461.mm,29.mm])
-  ge.add_face([209.mm,1207.55.mm,26.mm], [206.75.mm,1206.94711431703.mm,26.mm], [207.75.mm,1205.215063509461.mm,29.mm], [209.mm,1205.55.mm,29.mm])
-  ge.add_face([206.75.mm,1206.94711431703.mm,26.mm], [205.10288568297003.mm,1205.3.mm,26.mm], [206.8349364905389.mm,1204.3.mm,29.mm], [207.75.mm,1205.215063509461.mm,29.mm])
-  ge.add_face([205.10288568297003.mm,1205.3.mm,26.mm], [204.5.mm,1203.05.mm,26.mm], [206.5.mm,1203.05.mm,29.mm], [206.8349364905389.mm,1204.3.mm,29.mm])
-  ge.add_face([204.5.mm,1203.05.mm,26.mm], [205.10288568297003.mm,1200.8.mm,26.mm], [206.8349364905389.mm,1201.8.mm,29.mm], [206.5.mm,1203.05.mm,29.mm])
-  ge.add_face([205.10288568297003.mm,1200.8.mm,26.mm], [206.75.mm,1199.15288568297.mm,26.mm], [207.75.mm,1200.8849364905388.mm,29.mm], [206.8349364905389.mm,1201.8.mm,29.mm])
-  ge.add_face([206.75.mm,1199.15288568297.mm,26.mm], [209.mm,1198.55.mm,26.mm], [209.mm,1200.55.mm,29.mm], [207.75.mm,1200.8849364905388.mm,29.mm])
-  ge.add_face([209.mm,1198.55.mm,26.mm], [211.25.mm,1199.15288568297.mm,26.mm], [210.25.mm,1200.8849364905388.mm,29.mm], [209.mm,1200.55.mm,29.mm])
-  ge.add_face([211.25.mm,1199.15288568297.mm,26.mm], [212.89711431702997.mm,1200.8.mm,26.mm], [211.1650635094611.mm,1201.8.mm,29.mm], [210.25.mm,1200.8849364905388.mm,29.mm])
-  ge.add_face([212.89711431702997.mm,1200.8.mm,26.mm], [213.5.mm,1203.05.mm,26.mm], [211.5.mm,1203.05.mm,29.mm], [211.1650635094611.mm,1201.8.mm,29.mm])
-  ge.add_face([213.5.mm,1203.05.mm,26.mm], [212.89711431702997.mm,1205.3.mm,26.mm], [211.25.mm,1206.94711431703.mm,26.mm], [209.mm,1207.55.mm,26.mm], [206.75.mm,1206.94711431703.mm,26.mm], [205.10288568297003.mm,1205.3.mm,26.mm], [204.5.mm,1203.05.mm,26.mm], [205.10288568297003.mm,1200.8.mm,26.mm], [206.75.mm,1199.15288568297.mm,26.mm], [209.mm,1198.55.mm,26.mm], [211.25.mm,1199.15288568297.mm,26.mm], [212.89711431702997.mm,1200.8.mm,26.mm])
+  ge.add_face([323.5.mm,1203.05.mm,26.mm], [322.89711431702995.mm,1205.3.mm,26.mm], [321.1650635094611.mm,1204.3.mm,29.mm], [321.5.mm,1203.05.mm,29.mm])
+  ge.add_face([322.89711431702995.mm,1205.3.mm,26.mm], [321.25.mm,1206.94711431703.mm,26.mm], [320.25.mm,1205.215063509461.mm,29.mm], [321.1650635094611.mm,1204.3.mm,29.mm])
+  ge.add_face([321.25.mm,1206.94711431703.mm,26.mm], [319.mm,1207.55.mm,26.mm], [319.mm,1205.55.mm,29.mm], [320.25.mm,1205.215063509461.mm,29.mm])
+  ge.add_face([319.mm,1207.55.mm,26.mm], [316.75.mm,1206.94711431703.mm,26.mm], [317.75.mm,1205.215063509461.mm,29.mm], [319.mm,1205.55.mm,29.mm])
+  ge.add_face([316.75.mm,1206.94711431703.mm,26.mm], [315.10288568297005.mm,1205.3.mm,26.mm], [316.8349364905389.mm,1204.3.mm,29.mm], [317.75.mm,1205.215063509461.mm,29.mm])
+  ge.add_face([315.10288568297005.mm,1205.3.mm,26.mm], [314.5.mm,1203.05.mm,26.mm], [316.5.mm,1203.05.mm,29.mm], [316.8349364905389.mm,1204.3.mm,29.mm])
+  ge.add_face([314.5.mm,1203.05.mm,26.mm], [315.10288568297.mm,1200.8.mm,26.mm], [316.8349364905389.mm,1201.8.mm,29.mm], [316.5.mm,1203.05.mm,29.mm])
+  ge.add_face([315.10288568297.mm,1200.8.mm,26.mm], [316.75.mm,1199.15288568297.mm,26.mm], [317.75.mm,1200.8849364905388.mm,29.mm], [316.8349364905389.mm,1201.8.mm,29.mm])
+  ge.add_face([316.75.mm,1199.15288568297.mm,26.mm], [319.mm,1198.55.mm,26.mm], [319.mm,1200.55.mm,29.mm], [317.75.mm,1200.8849364905388.mm,29.mm])
+  ge.add_face([319.mm,1198.55.mm,26.mm], [321.25.mm,1199.15288568297.mm,26.mm], [320.25.mm,1200.8849364905388.mm,29.mm], [319.mm,1200.55.mm,29.mm])
+  ge.add_face([321.25.mm,1199.15288568297.mm,26.mm], [322.89711431702995.mm,1200.8.mm,26.mm], [321.1650635094611.mm,1201.8.mm,29.mm], [320.25.mm,1200.8849364905388.mm,29.mm])
+  ge.add_face([322.89711431702995.mm,1200.8.mm,26.mm], [323.5.mm,1203.05.mm,26.mm], [321.5.mm,1203.05.mm,29.mm], [321.1650635094611.mm,1201.8.mm,29.mm])
+  ge.add_face([323.5.mm,1203.05.mm,26.mm], [322.89711431702995.mm,1205.3.mm,26.mm], [321.25.mm,1206.94711431703.mm,26.mm], [319.mm,1207.55.mm,26.mm], [316.75.mm,1206.94711431703.mm,26.mm], [315.10288568297005.mm,1205.3.mm,26.mm], [314.5.mm,1203.05.mm,26.mm], [315.10288568297.mm,1200.8.mm,26.mm], [316.75.mm,1199.15288568297.mm,26.mm], [319.mm,1198.55.mm,26.mm], [321.25.mm,1199.15288568297.mm,26.mm], [322.89711431702995.mm,1200.8.mm,26.mm])
   mat = model.materials["Clamp Bolt CSK Head L"] || model.materials.add("Clamp Bolt CSK Head L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
@@ -62504,7 +64146,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Clamp Bolt L"
   ge = grp.entities
-  circle = ge.add_circle([229.1.mm,1203.05.mm,26.mm], [0,0,1], 2.5.mm, 24)
+  circle = ge.add_circle([339.1.mm,1203.05.mm,26.mm], [0,0,1], 2.5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(48.099999999999994.mm)
@@ -62517,19 +64159,19 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Clamp Bolt CSK Head L"
   ge = grp.entities
-  ge.add_face([233.6.mm,1203.05.mm,26.mm], [232.99711431702997.mm,1205.3.mm,26.mm], [231.2650635094611.mm,1204.3.mm,29.mm], [231.6.mm,1203.05.mm,29.mm])
-  ge.add_face([232.99711431702997.mm,1205.3.mm,26.mm], [231.35.mm,1206.94711431703.mm,26.mm], [230.35.mm,1205.215063509461.mm,29.mm], [231.2650635094611.mm,1204.3.mm,29.mm])
-  ge.add_face([231.35.mm,1206.94711431703.mm,26.mm], [229.1.mm,1207.55.mm,26.mm], [229.1.mm,1205.55.mm,29.mm], [230.35.mm,1205.215063509461.mm,29.mm])
-  ge.add_face([229.1.mm,1207.55.mm,26.mm], [226.85.mm,1206.94711431703.mm,26.mm], [227.85.mm,1205.215063509461.mm,29.mm], [229.1.mm,1205.55.mm,29.mm])
-  ge.add_face([226.85.mm,1206.94711431703.mm,26.mm], [225.20288568297002.mm,1205.3.mm,26.mm], [226.9349364905389.mm,1204.3.mm,29.mm], [227.85.mm,1205.215063509461.mm,29.mm])
-  ge.add_face([225.20288568297002.mm,1205.3.mm,26.mm], [224.6.mm,1203.05.mm,26.mm], [226.6.mm,1203.05.mm,29.mm], [226.9349364905389.mm,1204.3.mm,29.mm])
-  ge.add_face([224.6.mm,1203.05.mm,26.mm], [225.20288568297002.mm,1200.8.mm,26.mm], [226.9349364905389.mm,1201.8.mm,29.mm], [226.6.mm,1203.05.mm,29.mm])
-  ge.add_face([225.20288568297002.mm,1200.8.mm,26.mm], [226.85.mm,1199.15288568297.mm,26.mm], [227.85.mm,1200.8849364905388.mm,29.mm], [226.9349364905389.mm,1201.8.mm,29.mm])
-  ge.add_face([226.85.mm,1199.15288568297.mm,26.mm], [229.1.mm,1198.55.mm,26.mm], [229.1.mm,1200.55.mm,29.mm], [227.85.mm,1200.8849364905388.mm,29.mm])
-  ge.add_face([229.1.mm,1198.55.mm,26.mm], [231.35.mm,1199.15288568297.mm,26.mm], [230.35.mm,1200.8849364905388.mm,29.mm], [229.1.mm,1200.55.mm,29.mm])
-  ge.add_face([231.35.mm,1199.15288568297.mm,26.mm], [232.99711431702997.mm,1200.8.mm,26.mm], [231.2650635094611.mm,1201.8.mm,29.mm], [230.35.mm,1200.8849364905388.mm,29.mm])
-  ge.add_face([232.99711431702997.mm,1200.8.mm,26.mm], [233.6.mm,1203.05.mm,26.mm], [231.6.mm,1203.05.mm,29.mm], [231.2650635094611.mm,1201.8.mm,29.mm])
-  ge.add_face([233.6.mm,1203.05.mm,26.mm], [232.99711431702997.mm,1205.3.mm,26.mm], [231.35.mm,1206.94711431703.mm,26.mm], [229.1.mm,1207.55.mm,26.mm], [226.85.mm,1206.94711431703.mm,26.mm], [225.20288568297002.mm,1205.3.mm,26.mm], [224.6.mm,1203.05.mm,26.mm], [225.20288568297002.mm,1200.8.mm,26.mm], [226.85.mm,1199.15288568297.mm,26.mm], [229.1.mm,1198.55.mm,26.mm], [231.35.mm,1199.15288568297.mm,26.mm], [232.99711431702997.mm,1200.8.mm,26.mm])
+  ge.add_face([343.6.mm,1203.05.mm,26.mm], [342.99711431702997.mm,1205.3.mm,26.mm], [341.26506350946113.mm,1204.3.mm,29.mm], [341.6.mm,1203.05.mm,29.mm])
+  ge.add_face([342.99711431702997.mm,1205.3.mm,26.mm], [341.35.mm,1206.94711431703.mm,26.mm], [340.35.mm,1205.215063509461.mm,29.mm], [341.26506350946113.mm,1204.3.mm,29.mm])
+  ge.add_face([341.35.mm,1206.94711431703.mm,26.mm], [339.1.mm,1207.55.mm,26.mm], [339.1.mm,1205.55.mm,29.mm], [340.35.mm,1205.215063509461.mm,29.mm])
+  ge.add_face([339.1.mm,1207.55.mm,26.mm], [336.85.mm,1206.94711431703.mm,26.mm], [337.85.mm,1205.215063509461.mm,29.mm], [339.1.mm,1205.55.mm,29.mm])
+  ge.add_face([336.85.mm,1206.94711431703.mm,26.mm], [335.2028856829701.mm,1205.3.mm,26.mm], [336.9349364905389.mm,1204.3.mm,29.mm], [337.85.mm,1205.215063509461.mm,29.mm])
+  ge.add_face([335.2028856829701.mm,1205.3.mm,26.mm], [334.6.mm,1203.05.mm,26.mm], [336.6.mm,1203.05.mm,29.mm], [336.9349364905389.mm,1204.3.mm,29.mm])
+  ge.add_face([334.6.mm,1203.05.mm,26.mm], [335.20288568297.mm,1200.8.mm,26.mm], [336.9349364905389.mm,1201.8.mm,29.mm], [336.6.mm,1203.05.mm,29.mm])
+  ge.add_face([335.20288568297.mm,1200.8.mm,26.mm], [336.85.mm,1199.15288568297.mm,26.mm], [337.85.mm,1200.8849364905388.mm,29.mm], [336.9349364905389.mm,1201.8.mm,29.mm])
+  ge.add_face([336.85.mm,1199.15288568297.mm,26.mm], [339.1.mm,1198.55.mm,26.mm], [339.1.mm,1200.55.mm,29.mm], [337.85.mm,1200.8849364905388.mm,29.mm])
+  ge.add_face([339.1.mm,1198.55.mm,26.mm], [341.35.mm,1199.15288568297.mm,26.mm], [340.35.mm,1200.8849364905388.mm,29.mm], [339.1.mm,1200.55.mm,29.mm])
+  ge.add_face([341.35.mm,1199.15288568297.mm,26.mm], [342.99711431702997.mm,1200.8.mm,26.mm], [341.26506350946113.mm,1201.8.mm,29.mm], [340.35.mm,1200.8849364905388.mm,29.mm])
+  ge.add_face([342.99711431702997.mm,1200.8.mm,26.mm], [343.6.mm,1203.05.mm,26.mm], [341.6.mm,1203.05.mm,29.mm], [341.26506350946113.mm,1201.8.mm,29.mm])
+  ge.add_face([343.6.mm,1203.05.mm,26.mm], [342.99711431702997.mm,1205.3.mm,26.mm], [341.35.mm,1206.94711431703.mm,26.mm], [339.1.mm,1207.55.mm,26.mm], [336.85.mm,1206.94711431703.mm,26.mm], [335.2028856829701.mm,1205.3.mm,26.mm], [334.6.mm,1203.05.mm,26.mm], [335.20288568297.mm,1200.8.mm,26.mm], [336.85.mm,1199.15288568297.mm,26.mm], [339.1.mm,1198.55.mm,26.mm], [341.35.mm,1199.15288568297.mm,26.mm], [342.99711431702997.mm,1200.8.mm,26.mm])
   mat = model.materials["Clamp Bolt CSK Head L"] || model.materials.add("Clamp Bolt CSK Head L")
   mat.color = Sketchup::Color.new(128, 128, 138)
   grp.material = mat
@@ -63031,7 +64673,7 @@ ents = child.entities
   # Pole Mount Flange
   grp = ents.add_group
   grp.name = "Pole Mount Flange"
-  face = grp.entities.add_face([2377.5.mm,1158.mm,67.1.mm], [2421.5.mm,1158.mm,67.1.mm], [2421.5.mm,1202.mm,67.1.mm], [2377.5.mm,1202.mm,67.1.mm])
+  face = grp.entities.add_face([2432.5.mm,1158.mm,67.1.mm], [2476.5.mm,1158.mm,67.1.mm], [2476.5.mm,1202.mm,67.1.mm], [2432.5.mm,1202.mm,67.1.mm])
   face.reverse! if face.normal.z < 0
   face.pushpull(5.mm)
   mat = model.materials["Frame upright"] || model.materials.add("Frame upright")
@@ -63043,7 +64685,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Flange Self-Tapping Screw"
   ge = grp.entities
-  circle = ge.add_circle([2383.5.mm,1164.mm,63.099999999999994.mm], [0,0,1], 1.8.mm, 24)
+  circle = ge.add_circle([2438.5.mm,1164.mm,63.099999999999994.mm], [0,0,1], 1.8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(9.mm)
@@ -63056,7 +64698,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Flange Screw Head"
   ge = grp.entities
-  circle = ge.add_circle([2383.5.mm,1164.mm,72.1.mm], [0,0,1], 3.mm, 24)
+  circle = ge.add_circle([2438.5.mm,1164.mm,72.1.mm], [0,0,1], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2.5.mm)
@@ -63069,7 +64711,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Flange Self-Tapping Screw"
   ge = grp.entities
-  circle = ge.add_circle([2383.5.mm,1196.mm,63.099999999999994.mm], [0,0,1], 1.8.mm, 24)
+  circle = ge.add_circle([2438.5.mm,1196.mm,63.099999999999994.mm], [0,0,1], 1.8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(9.mm)
@@ -63082,7 +64724,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Flange Screw Head"
   ge = grp.entities
-  circle = ge.add_circle([2383.5.mm,1196.mm,72.1.mm], [0,0,1], 3.mm, 24)
+  circle = ge.add_circle([2438.5.mm,1196.mm,72.1.mm], [0,0,1], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2.5.mm)
@@ -63095,7 +64737,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Flange Self-Tapping Screw"
   ge = grp.entities
-  circle = ge.add_circle([2415.5.mm,1164.mm,63.099999999999994.mm], [0,0,1], 1.8.mm, 24)
+  circle = ge.add_circle([2470.5.mm,1164.mm,63.099999999999994.mm], [0,0,1], 1.8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(9.mm)
@@ -63108,7 +64750,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Flange Screw Head"
   ge = grp.entities
-  circle = ge.add_circle([2415.5.mm,1164.mm,72.1.mm], [0,0,1], 3.mm, 24)
+  circle = ge.add_circle([2470.5.mm,1164.mm,72.1.mm], [0,0,1], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2.5.mm)
@@ -63121,7 +64763,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Flange Self-Tapping Screw"
   ge = grp.entities
-  circle = ge.add_circle([2415.5.mm,1196.mm,63.099999999999994.mm], [0,0,1], 1.8.mm, 24)
+  circle = ge.add_circle([2470.5.mm,1196.mm,63.099999999999994.mm], [0,0,1], 1.8.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(9.mm)
@@ -63134,7 +64776,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Flange Screw Head"
   ge = grp.entities
-  circle = ge.add_circle([2415.5.mm,1196.mm,72.1.mm], [0,0,1], 3.mm, 24)
+  circle = ge.add_circle([2470.5.mm,1196.mm,72.1.mm], [0,0,1], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(2.5.mm)
@@ -63147,7 +64789,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Ball-Joint Socket (20mm)"
   ge = grp.entities
-  circle = ge.add_circle([2399.5.mm,1180.mm,72.1.mm], [0,0,1], 18.mm, 24)
+  circle = ge.add_circle([2454.5.mm,1180.mm,72.1.mm], [0,0,1], 18.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(28.mm)
@@ -63161,7 +64803,7 @@ ents = child.entities
   grp.name = "Ball-Joint Stud (M12)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -28.mm, 24.mm)
-  circle = ge.add_circle([2399.5.mm,1180.mm,88.1.mm], vec, 6.mm, 16)
+  circle = ge.add_circle([2454.5.mm,1180.mm,88.1.mm], vec, 6.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63175,7 +64817,7 @@ ents = child.entities
   grp.name = "Arm Tube (25 OD Al)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -246.mm, 585.9499999999999.mm)
-  circle = ge.add_circle([2399.5.mm,1156.mm,108.1.mm], vec, 12.5.mm, 16)
+  circle = ge.add_circle([2454.5.mm,1156.mm,108.1.mm], vec, 12.5.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63188,7 +64830,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Pinch Bolt"
   ge = grp.entities
-  circle = ge.add_circle([2381.5.mm,1154.mm,114.1.mm], [1,0,0], 3.mm, 24)
+  circle = ge.add_circle([2436.5.mm,1154.mm,114.1.mm], [1,0,0], 3.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(36.mm)
@@ -63202,7 +64844,7 @@ ents = child.entities
   grp.name = "Telescoping Pole"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, -270.mm, 605.95.mm)
-  circle = ge.add_circle([2399.5.mm,910.mm,694.05.mm], vec, 11.mm, 16)
+  circle = ge.add_circle([2454.5.mm,910.mm,694.05.mm], vec, 11.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63215,7 +64857,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Pole Handle"
   ge = grp.entities
-  circle = ge.add_circle([2309.5.mm,640.mm,1300.mm], [1,0,0], 9.mm, 24)
+  circle = ge.add_circle([2364.5.mm,640.mm,1300.mm], [1,0,0], 9.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.x < 0
   cface.pushpull(180.mm)
@@ -63229,7 +64871,7 @@ ents = child.entities
   grp.name = "Feed Hose (upper)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 270.mm, -605.95.mm)
-  circle = ge.add_circle([2419.5.mm,640.mm,1300.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([2474.5.mm,640.mm,1300.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63243,7 +64885,7 @@ ents = child.entities
   grp.name = "Feed Hose (lower)"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 246.mm, -585.9499999999999.mm)
-  circle = ge.add_circle([2419.5.mm,910.mm,694.05.mm], vec, 8.mm, 16)
+  circle = ge.add_circle([2474.5.mm,910.mm,694.05.mm], vec, 8.mm, 16)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63257,7 +64899,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 5.061111111111131.mm, 0.mm)
-  circle = ge.add_circle([2419.5.mm,1156.mm,108.1.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1156.mm,108.1.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63271,7 +64913,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 5.061111111111131.mm, 0.mm)
-  circle = ge.add_circle([2419.5.mm,1161.0611111111111.mm,108.1.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1161.0611111111111.mm,108.1.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63285,7 +64927,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 5.061111111111131.mm, 0.mm)
-  circle = ge.add_circle([2419.5.mm,1166.1222222222223.mm,108.1.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1166.1222222222223.mm,108.1.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63299,7 +64941,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 5.061111111111131.mm, 0.mm)
-  circle = ge.add_circle([2419.5.mm,1171.1833333333334.mm,108.1.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1171.1833333333334.mm,108.1.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63313,7 +64955,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 5.061111111110904.mm, 0.mm)
-  circle = ge.add_circle([2419.5.mm,1176.2444444444445.mm,108.1.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1176.2444444444445.mm,108.1.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63327,7 +64969,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 5.061111111111131.mm, 0.mm)
-  circle = ge.add_circle([2419.5.mm,1181.3055555555554.mm,108.1.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1181.3055555555554.mm,108.1.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63341,7 +64983,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 5.061111111111131.mm, 0.mm)
-  circle = ge.add_circle([2419.5.mm,1186.3666666666666.mm,108.1.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1186.3666666666666.mm,108.1.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63355,7 +64997,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 5.061111111111131.mm, 0.mm)
-  circle = ge.add_circle([2419.5.mm,1191.4277777777777.mm,108.1.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1191.4277777777777.mm,108.1.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63369,7 +65011,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 5.061111111111131.mm, 0.mm)
-  circle = ge.add_circle([2419.5.mm,1196.4888888888888.mm,108.1.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1196.4888888888888.mm,108.1.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63382,8 +65024,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector elbow"
   ge = grp.entities
-  arc = ge.add_arc([2419.5.mm,1201.55.mm,98.1.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 10.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2419.5.mm,1201.55.mm,108.1.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
+  arc = ge.add_arc([2474.5.mm,1201.55.mm,98.1.mm], [0.000000,0.000000,1.000000], [-1.000000,0.000000,0.000000], 10.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2474.5.mm,1201.55.mm,108.1.mm], [0.000000,1.000000,0.000000], 7.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -63397,7 +65039,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -2.78125.mm)
-  circle = ge.add_circle([2419.5.mm,1211.55.mm,98.1.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1211.55.mm,98.1.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63411,7 +65053,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -2.78125.mm)
-  circle = ge.add_circle([2419.5.mm,1211.55.mm,95.31875.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1211.55.mm,95.31875.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63425,7 +65067,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -2.78125.mm)
-  circle = ge.add_circle([2419.5.mm,1211.55.mm,92.5375.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1211.55.mm,92.5375.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63439,7 +65081,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -2.78125.mm)
-  circle = ge.add_circle([2419.5.mm,1211.55.mm,89.75625.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1211.55.mm,89.75625.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63453,7 +65095,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -2.78125.mm)
-  circle = ge.add_circle([2419.5.mm,1211.55.mm,86.975.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1211.55.mm,86.975.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63467,7 +65109,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -2.78125.mm)
-  circle = ge.add_circle([2419.5.mm,1211.55.mm,84.19375.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1211.55.mm,84.19375.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63481,7 +65123,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -2.78125.mm)
-  circle = ge.add_circle([2419.5.mm,1211.55.mm,81.4125.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1211.55.mm,81.4125.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63495,7 +65137,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(0.mm, 0.mm, -2.78125.mm)
-  circle = ge.add_circle([2419.5.mm,1211.55.mm,78.63125.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2474.5.mm,1211.55.mm,78.63125.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63508,8 +65150,8 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Feed Flex Connector elbow"
   ge = grp.entities
-  arc = ge.add_arc([2409.7.mm,1211.55.mm,75.85.mm], [1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 9.800000000000002.mm, 0.0, 1.570796, 8)
-  circle = ge.add_circle([2419.5.mm,1211.55.mm,75.85.mm], [0.000000,0.000000,-1.000000], 7.mm, 16)
+  arc = ge.add_arc([2464.7.mm,1211.55.mm,75.85.mm], [1.000000,0.000000,0.000000], [0.000000,1.000000,0.000000], 9.800000000000002.mm, 0.0, 1.570796, 8)
+  circle = ge.add_circle([2474.5.mm,1211.55.mm,75.85.mm], [0.000000,0.000000,-1.000000], 7.mm, 16)
   f = ge.add_face(circle)
   f.followme(arc)
   arc.each { |e| e.erase! if e && e.valid? && e.faces.empty? }
@@ -63523,7 +65165,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2409.7.mm,1211.55.mm,66.05.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2464.7.mm,1211.55.mm,66.05.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63537,7 +65179,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2408.4249999999997.mm,1211.55.mm,66.05.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2463.4249999999997.mm,1211.55.mm,66.05.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63551,7 +65193,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(-1.2749999999996362.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2407.1499999999996.mm,1211.55.mm,66.05.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2462.1499999999996.mm,1211.55.mm,66.05.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63565,7 +65207,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2405.875.mm,1211.55.mm,66.05.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2460.875.mm,1211.55.mm,66.05.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63579,7 +65221,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2404.6.mm,1211.55.mm,66.05.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2459.6.mm,1211.55.mm,66.05.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63593,7 +65235,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(-1.2749999999996362.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2403.325.mm,1211.55.mm,66.05.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2458.325.mm,1211.55.mm,66.05.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63607,7 +65249,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2402.05.mm,1211.55.mm,66.05.mm], vec, 7.mm, 14)
+  circle = ge.add_circle([2457.05.mm,1211.55.mm,66.05.mm], vec, 7.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63621,7 +65263,7 @@ ents = child.entities
   grp.name = "Feed Flex Connector"
   ge = grp.entities
   vec = Geom::Vector3d.new(-1.275000000000091.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.775.mm,1211.55.mm,66.05.mm], vec, 5.6000000000000005.mm, 14)
+  circle = ge.add_circle([2455.775.mm,1211.55.mm,66.05.mm], vec, 5.6000000000000005.mm, 14)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63635,7 +65277,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, -8.858819886353672.mm, -3.9473246461184317.mm)
-  circle = ge.add_circle([2430.5.mm,685.mm,1199.0083333333332.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2485.5.mm,685.mm,1199.0083333333332.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63649,7 +65291,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, -5.475051789980057.mm, -2.4395807959315334.mm)
-  circle = ge.add_circle([2426.107390870624.mm,676.1411801136463.mm,1195.0610086872148.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,676.1411801136463.mm,1195.0610086872148.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63663,7 +65305,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2414.607390870624.mm,670.6661283236663.mm,1192.6214278912832.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,670.6661283236663.mm,1192.6214278912832.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63677,7 +65319,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, 5.475051789980057.mm, 2.4395807959315334.mm)
-  circle = ge.add_circle([2400.392609129376.mm,670.6661283236663.mm,1192.6214278912832.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,670.6661283236663.mm,1192.6214278912832.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63691,7 +65333,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, 8.858819886353672.mm, 3.9473246461184317.mm)
-  circle = ge.add_circle([2388.892609129376.mm,676.1411801136463.mm,1195.0610086872148.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,676.1411801136463.mm,1195.0610086872148.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63705,7 +65347,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, 8.858819886353672.mm, 3.9473246461184317.mm)
-  circle = ge.add_circle([2384.5.mm,685.mm,1199.0083333333332.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2439.5.mm,685.mm,1199.0083333333332.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63719,7 +65361,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, 5.475051789980057.mm, 2.4395807959315334.mm)
-  circle = ge.add_circle([2388.892609129376.mm,693.8588198863537.mm,1202.9556579794516.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,693.8588198863537.mm,1202.9556579794516.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63733,7 +65375,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.392609129376.mm,699.3338716763337.mm,1205.3952387753832.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,699.3338716763337.mm,1205.3952387753832.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63747,7 +65389,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, -5.475051789980057.mm, -2.4395807959315334.mm)
-  circle = ge.add_circle([2414.607390870624.mm,699.3338716763337.mm,1205.3952387753832.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,699.3338716763337.mm,1205.3952387753832.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63761,7 +65403,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, -8.858819886353672.mm, -3.9473246461184317.mm)
-  circle = ge.add_circle([2426.107390870624.mm,693.8588198863537.mm,1202.9556579794516.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,693.8588198863537.mm,1202.9556579794516.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63775,7 +65417,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, -8.858819886353672.mm, -3.9473246461185454.mm)
-  circle = ge.add_circle([2430.5.mm,775.mm,997.025.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2485.5.mm,775.mm,997.025.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63789,7 +65431,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, -5.475051789980057.mm, -2.439580795931306.mm)
-  circle = ge.add_circle([2426.107390870624.mm,766.1411801136463.mm,993.0776753538814.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,766.1411801136463.mm,993.0776753538814.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63803,7 +65445,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2414.607390870624.mm,760.6661283236663.mm,990.6380945579501.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,760.6661283236663.mm,990.6380945579501.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63817,7 +65459,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, 5.475051789980057.mm, 2.439580795931306.mm)
-  circle = ge.add_circle([2400.392609129376.mm,760.6661283236663.mm,990.6380945579501.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,760.6661283236663.mm,990.6380945579501.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63831,7 +65473,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, 8.858819886353672.mm, 3.9473246461185454.mm)
-  circle = ge.add_circle([2388.892609129376.mm,766.1411801136463.mm,993.0776753538814.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,766.1411801136463.mm,993.0776753538814.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63845,7 +65487,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, 8.858819886353672.mm, 3.9473246461185454.mm)
-  circle = ge.add_circle([2384.5.mm,775.mm,997.025.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2439.5.mm,775.mm,997.025.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63859,7 +65501,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, 5.475051789980057.mm, 2.439580795931306.mm)
-  circle = ge.add_circle([2388.892609129376.mm,783.8588198863537.mm,1000.9723246461185.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,783.8588198863537.mm,1000.9723246461185.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63873,7 +65515,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.392609129376.mm,789.3338716763337.mm,1003.4119054420498.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,789.3338716763337.mm,1003.4119054420498.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63887,7 +65529,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, -5.475051789980057.mm, -2.439580795931306.mm)
-  circle = ge.add_circle([2414.607390870624.mm,789.3338716763337.mm,1003.4119054420498.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,789.3338716763337.mm,1003.4119054420498.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63901,7 +65543,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, -8.858819886353672.mm, -3.9473246461185454.mm)
-  circle = ge.add_circle([2426.107390870624.mm,783.8588198863537.mm,1000.9723246461185.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,783.8588198863537.mm,1000.9723246461185.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63915,7 +65557,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, -8.858819886353672.mm, -3.9473246461185454.mm)
-  circle = ge.add_circle([2430.5.mm,865.mm,795.0416666666666.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2485.5.mm,865.mm,795.0416666666666.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63929,7 +65571,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, -5.475051789980057.mm, -2.439580795931306.mm)
-  circle = ge.add_circle([2426.107390870624.mm,856.1411801136463.mm,791.0943420205481.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,856.1411801136463.mm,791.0943420205481.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63943,7 +65585,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2414.607390870624.mm,850.6661283236663.mm,788.6547612246168.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,850.6661283236663.mm,788.6547612246168.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63957,7 +65599,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, 5.475051789980057.mm, 2.439580795931306.mm)
-  circle = ge.add_circle([2400.392609129376.mm,850.6661283236663.mm,788.6547612246168.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,850.6661283236663.mm,788.6547612246168.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63971,7 +65613,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, 8.858819886353672.mm, 3.9473246461185454.mm)
-  circle = ge.add_circle([2388.892609129376.mm,856.1411801136463.mm,791.0943420205481.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,856.1411801136463.mm,791.0943420205481.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63985,7 +65627,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, 8.858819886353672.mm, 3.9473246461185454.mm)
-  circle = ge.add_circle([2384.5.mm,865.mm,795.0416666666666.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2439.5.mm,865.mm,795.0416666666666.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -63999,7 +65641,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, 5.475051789980057.mm, 2.439580795931306.mm)
-  circle = ge.add_circle([2388.892609129376.mm,873.8588198863537.mm,798.9889913127852.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,873.8588198863537.mm,798.9889913127852.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64013,7 +65655,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.392609129376.mm,879.3338716763337.mm,801.4285721087165.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,879.3338716763337.mm,801.4285721087165.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64027,7 +65669,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, -5.475051789980057.mm, -2.439580795931306.mm)
-  circle = ge.add_circle([2414.607390870624.mm,879.3338716763337.mm,801.4285721087165.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,879.3338716763337.mm,801.4285721087165.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64041,7 +65683,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, -8.858819886353672.mm, -3.9473246461185454.mm)
-  circle = ge.add_circle([2426.107390870624.mm,873.8588198863537.mm,798.9889913127852.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,873.8588198863537.mm,798.9889913127852.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64055,7 +65697,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, -8.942342814431072.mm, -3.7542731160509675.mm)
-  circle = ge.add_circle([2430.5.mm,951.mm,596.3916666666667.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2485.5.mm,951.mm,596.3916666666667.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64069,7 +65711,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, -5.526671798371808.mm, -2.3202683887694775.mm)
-  circle = ge.add_circle([2426.107390870624.mm,942.0576571855689.mm,592.6373935506157.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,942.0576571855689.mm,592.6373935506157.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64083,7 +65725,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2414.607390870624.mm,936.5309853871971.mm,590.3171251618462.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,936.5309853871971.mm,590.3171251618462.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64097,7 +65739,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, 5.526671798371808.mm, 2.3202683887694775.mm)
-  circle = ge.add_circle([2400.392609129376.mm,936.5309853871971.mm,590.3171251618462.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,936.5309853871971.mm,590.3171251618462.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64111,7 +65753,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, 8.942342814431072.mm, 3.7542731160509675.mm)
-  circle = ge.add_circle([2388.892609129376.mm,942.0576571855689.mm,592.6373935506157.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,942.0576571855689.mm,592.6373935506157.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64125,7 +65767,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, 8.942342814431072.mm, 3.7542731160509675.mm)
-  circle = ge.add_circle([2384.5.mm,951.mm,596.3916666666667.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2439.5.mm,951.mm,596.3916666666667.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64139,7 +65781,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, 5.526671798371808.mm, 2.3202683887694775.mm)
-  circle = ge.add_circle([2388.892609129376.mm,959.9423428144311.mm,600.1459397827176.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,959.9423428144311.mm,600.1459397827176.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64153,7 +65795,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.392609129376.mm,965.4690146128029.mm,602.4662081714871.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,965.4690146128029.mm,602.4662081714871.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64167,7 +65809,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, -5.526671798371808.mm, -2.3202683887694775.mm)
-  circle = ge.add_circle([2414.607390870624.mm,965.4690146128029.mm,602.4662081714871.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,965.4690146128029.mm,602.4662081714871.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64181,7 +65823,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, -8.942342814431072.mm, -3.7542731160509675.mm)
-  circle = ge.add_circle([2426.107390870624.mm,959.9423428144311.mm,600.1459397827176.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,959.9423428144311.mm,600.1459397827176.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64195,7 +65837,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, -8.942342814431186.mm, -3.7542731160509675.mm)
-  circle = ge.add_circle([2430.5.mm,1033.mm,401.075.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2485.5.mm,1033.mm,401.075.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64209,7 +65851,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, -5.526671798371694.mm, -2.3202683887694207.mm)
-  circle = ge.add_circle([2426.107390870624.mm,1024.0576571855688.mm,397.320726883949.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,1024.0576571855688.mm,397.320726883949.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64223,7 +65865,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2414.607390870624.mm,1018.5309853871971.mm,395.0004584951796.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,1018.5309853871971.mm,395.0004584951796.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64237,7 +65879,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, 5.526671798371694.mm, 2.3202683887694207.mm)
-  circle = ge.add_circle([2400.392609129376.mm,1018.5309853871971.mm,395.0004584951796.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,1018.5309853871971.mm,395.0004584951796.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64251,7 +65893,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, 8.942342814431186.mm, 3.7542731160509675.mm)
-  circle = ge.add_circle([2388.892609129376.mm,1024.0576571855688.mm,397.320726883949.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,1024.0576571855688.mm,397.320726883949.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64265,7 +65907,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, 8.942342814431186.mm, 3.7542731160509675.mm)
-  circle = ge.add_circle([2384.5.mm,1033.mm,401.075.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2439.5.mm,1033.mm,401.075.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64279,7 +65921,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, 5.526671798371808.mm, 2.3202683887694207.mm)
-  circle = ge.add_circle([2388.892609129376.mm,1041.9423428144312.mm,404.82927311605096.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,1041.9423428144312.mm,404.82927311605096.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64293,7 +65935,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.392609129376.mm,1047.469014612803.mm,407.1495415048204.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,1047.469014612803.mm,407.1495415048204.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64307,7 +65949,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, -5.526671798371808.mm, -2.3202683887694207.mm)
-  circle = ge.add_circle([2414.607390870624.mm,1047.469014612803.mm,407.1495415048204.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,1047.469014612803.mm,407.1495415048204.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64321,7 +65963,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, -8.942342814431186.mm, -3.7542731160509675.mm)
-  circle = ge.add_circle([2426.107390870624.mm,1041.9423428144312.mm,404.82927311605096.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,1041.9423428144312.mm,404.82927311605096.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64335,7 +65977,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, -8.942342814431186.mm, -3.754273116050939.mm)
-  circle = ge.add_circle([2430.5.mm,1115.mm,205.75833333333333.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2485.5.mm,1115.mm,205.75833333333333.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64349,7 +65991,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, -5.526671798371808.mm, -2.3202683887694775.mm)
-  circle = ge.add_circle([2426.107390870624.mm,1106.0576571855688.mm,202.0040602172824.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,1106.0576571855688.mm,202.0040602172824.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64363,7 +66005,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2414.607390870624.mm,1100.530985387197.mm,199.6837918285129.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,1100.530985387197.mm,199.6837918285129.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64377,7 +66019,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-11.5.mm, 5.526671798371808.mm, 2.3202683887694775.mm)
-  circle = ge.add_circle([2400.392609129376.mm,1100.530985387197.mm,199.6837918285129.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,1100.530985387197.mm,199.6837918285129.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64391,7 +66033,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(-4.392609129376069.mm, 8.942342814431186.mm, 3.754273116050939.mm)
-  circle = ge.add_circle([2388.892609129376.mm,1106.0576571855688.mm,202.0040602172824.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,1106.0576571855688.mm,202.0040602172824.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64405,7 +66047,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, 8.942342814431186.mm, 3.754273116050939.mm)
-  circle = ge.add_circle([2384.5.mm,1115.mm,205.75833333333333.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2439.5.mm,1115.mm,205.75833333333333.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64419,7 +66061,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, 5.526671798371808.mm, 2.3202683887694775.mm)
-  circle = ge.add_circle([2388.892609129376.mm,1123.9423428144312.mm,209.51260644938426.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2443.892609129376.mm,1123.9423428144312.mm,209.51260644938426.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64433,7 +66075,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(14.214781741247862.mm, 0.mm, 0.mm)
-  circle = ge.add_circle([2400.392609129376.mm,1129.469014612803.mm,211.83287483815374.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2455.392609129376.mm,1129.469014612803.mm,211.83287483815374.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64447,7 +66089,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(11.5.mm, -5.526671798371808.mm, -2.3202683887694775.mm)
-  circle = ge.add_circle([2414.607390870624.mm,1129.469014612803.mm,211.83287483815374.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2469.607390870624.mm,1129.469014612803.mm,211.83287483815374.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64461,7 +66103,7 @@ ents = child.entities
   grp.name = "Zip Tie"
   ge = grp.entities
   vec = Geom::Vector3d.new(4.392609129376069.mm, -8.942342814431186.mm, -3.754273116050939.mm)
-  circle = ge.add_circle([2426.107390870624.mm,1123.9423428144312.mm,209.51260644938426.mm], vec, 1.2.mm, 6)
+  circle = ge.add_circle([2481.107390870624.mm,1123.9423428144312.mm,209.51260644938426.mm], vec, 1.2.mm, 6)
   pf = ge.add_face(circle)
   pf.reverse! if pf.normal.dot(vec) < 0
   pf.pushpull(vec.length)
@@ -64474,7 +66116,7 @@ ents = child.entities
   grp = ents.add_group
   grp.name = "Center Feed Barb Tee"
   ge = grp.entities
-  circle = ge.add_circle([2399.5.mm,1211.55.mm,46.05.mm], [0,0,1], 5.mm, 24)
+  circle = ge.add_circle([2454.5.mm,1211.55.mm,46.05.mm], [0,0,1], 5.mm, 24)
   cface = ge.add_face(circle)
   cface.reverse! if cface.normal.z < 0
   cface.pushpull(18.mm)

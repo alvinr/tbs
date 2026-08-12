@@ -38,7 +38,7 @@ import argparse
 import contextlib
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "generators"))
-from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, LEFT_WK_CANT_ARM_Z0, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_W, FP_H, FP_Y, FP_Y_MIN, RAIL_X_L, RAIL_X_R, RAIL_OFF, RAIL_OFF_TOP, RAIL_OFF_BOT, FP_ANGLE_LEG, BRACE_RHS, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, PUMP_H_HI, EQPANEL_X, EQPANEL_T, EQPANEL_Z_HI, EQPANEL_YD, EQPANEL_YD_SPAN, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, IBC_FRAME_RHS, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_CAP_T, LT_OPENING_DEG, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, WALKWAY_MUSLIN_NOTCH_R_X1, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, PULL_CORD_BOTTOM_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0
+from tbs_constants import C_LEN, C_WID, C_HGT, WALL_T, PROC_TRAY_X_L, PROC_TRAY_X_R, PROC_TRAY_YD_NEAR, PROC_TRAY_YD_FAR, PROC_TRAY_RIM, PROC_TRAY_FLOOR_Z_LOW, tray_floor_z, WALKWAY_W, WALKWAY_H, WALKWAY_GRATE_T, WALKWAY_FAR_YD, WALKWAY_RIGHT_X, WALKWAY_RIGHT_W, WALKWAY_LEFT_X, LEFT_WK_CANT_ARM_Z0, WALKWAY_BRACKET_T, WALKWAY_BRACKET_H, CONTAINER_RIB_SPACING, WALKWAY_WIDE_BRACKET_T, WALKWAY_WIDE_BRACKET_H, WALKWAY_NEAR_WIDE_W, WALKWAY_NEAR_WIDE_X_L, WALKWAY_NEAR_WIDE_X_R, WALKWAY_LEFT_WIDE_W, WALKWAY_LEFT_WIDE_YD_L, WALKWAY_LEFT_WIDE_YD_R, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, PH_X, PH_H, PH_D, FP_X_L, FP_X_R, FP_H, FP_Y, RAIL_X_L, RAIL_X_R, RAIL_OFF_BOT, FP_RAIL_WEB, FP_RAIL_FLANGE, FP_RAIL_BUILD_BOT, FP_RAIL_GUIDE_GAP, FP_RAIL_ZC_BOT, FP_RAIL_ZC_TOP, FP_FILM_TOP, BAY_FRONT_X, BAY_BACK_X, BAY_WALL_T, PANEL_CENTER_T, PANEL_CORNER_T, PANEL_FLOOR_GAP, PANEL_FAN_BAND_Z, PANEL_CORNER_YD_L, PANEL_CORNER_YD_R, PIVOT_X, PIVOT_YD, SWING_LOCK_DEG, PANEL_CUT_YD, FAR_STRIP_YD0, PIVOT_POST_OD, DRUM_CAGE_X0, DRUM_CAGE_X1, DRUM_CAGE_YD_L, DRUM_CAGE_YD_R, WALKWAY_NEAR_LIFTOUT_X_R, BB_OD, BB_H, PUMP_H_HI, EQPANEL_X, EQPANEL_T, EQPANEL_Z_HI, EQPANEL_YD, EQPANEL_YD_SPAN, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_PALLET_H, IBC_BOTTLE_INSET, BLUE_IBC_Y, BROWN_IBC_Y, IBC_FAR_Y, WASTE_IBC_Y, IBC_FRAME_RHS, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_PCD, IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, DRUM_CX, DRUM_CY, DRUM_R, DRUM_H_LT, LT_HOUSING_R, LT_HOUSING_T, LT_DRUM_OR, LT_DRUM_T, LT_CAP_T, LT_OPENING_DEG, WALKWAY_MUSLIN_NOTCH_DY, WALKWAY_MUSLIN_NOTCH_YD0, WALKWAY_MUSLIN_NOTCH_L_X0, WALKWAY_MUSLIN_NOTCH_R_X0, WALKWAY_MUSLIN_NOTCH_R_X1, EP_X, EP_W, EP_H_LO, EP_H_HI, ENCL_SHELL_D, PWR_PANEL_X, PWR_PANEL_W, PWR_PANEL_H, PWR_PANEL_Z, SOLAR_PANEL_L, SOLAR_PANEL_W, SOLAR_PANEL_T, SOLAR_N, SOLAR_TILT_DEG, SOLAR_GAP, SOLAR_ARRAY_X, SOLAR_ARRAY_YD, SOLAR_ARRAY_Z, SHELF_X_L, SHELF_X_R, SHELF_W, SHELF_H, SHELF_T, SHELF_DEPTH, SHELF_YD_NEAR, SHELF_YD_FAR, SHELF_STOW_TOP_Z, PULL_CORD_BOTTOM_Z, EVAP_W, EVAP_D, EVAP_H, EVAP_DUCT_X, EVAP_DUCT_Z, EVAP_DUCT_D, INVERTER_X, INVERTER_Z, INVERTER_W, INVERTER_H, INVERTER_D, FAN_DIAM, FAN_BODY_D, FAN_A_YD, FAN_A_H, FAN_B_YD, FAN_B_H, DUCT_DEPTH, DUCT_HEIGHT, BV05_X, TAP_X, TAP_Z, TAP_PIPE_OD, PUMP_PIPE_OD, SPRAY_BAR_FEED_Z, PROC_TRAY_DRAIN_X, PROC_TRAY_DRAIN_YD, PROC_TRAY_SUMP_Z, PWP_FILTER_X1, PWP_FILTER_X2, PWP_FILTER_X3, PWP_FILTER_TOP_Z, PWP_FILTER_YD, PWP_P02_X, PWP_SV01_X, PWP_WAIST_Z, PWP_SV01_Z, PWP_PANEL_X0, PWP_PANEL_X1, PWP_PANEL_Z0, PWP_SROW_Z0, PWP_ACC2_X, PWP_ACC2_Z0
 
 # Material colors used only by the 3D model (not in tbs_constants).
 C_STEEL = "#B0B0B8"     # steel sections (rails, mount plate, brackets, rack)
@@ -709,26 +709,30 @@ def _rwk_wall_cleat(tag, x, wall_yd, din):
 
 def fp_combined_corner_plate(wall_yd, din, cx=None):
     """ONE plate at the near/far-RIGHT corner securing BOTH the bottom film rail (BR) and the
-    walkway's right beam — through-bolted to the wall (interior + exterior plate). Spans Z58..225:
-    the right beam lands on it at Z70-115, the BR rail seats on it at Z150. 150mm wide.
-    `cx` overrides the X station (used to isolate it for the walkway bracket-type catalog)."""
-    pw, rz = IBC_WBKT_PLATE_W, RAIL_OFF_BOT                 # 150, 150
+    walkway's right beam — through-bolted to the wall (interior + exterior plate). Spans Z58..313:
+    the right beam lands on it at Z70-115; the BR rail is the web-vertical U-channel (web-centre
+    FP_RAIL_ZC_BOT=270, box 232-308) — its bottom seats at Z232 and a wall bolt passes through it at
+    the web centre (Z270). 150mm wide. `cx` overrides the X station (walkway bracket-type catalog)."""
+    pw = IBC_WBKT_PLATE_W                                   # 150 plate
+    rail_c = FP_RAIL_ZC_BOT                                 # 270 — BR rail web-centre (single-sourced)
+    rail_bot = rail_c - FP_RAIL_WEB / 2                     # 232 — rail box bottom (seat sits just under it)
+    rail_top = rail_c + FP_RAIL_WEB / 2                     # 308 — rail box top (plate backs the end flange)
     if cx is None:
         cx = RAIL_X_R                                      # 4649 (real BR corner)
     tag = "near" if wall_yd == 0 else "far"
     piy = wall_yd if din > 0 else wall_yd - 10
     poy = -WALL_T - 10 if din > 0 else C_WID + WALL_T
     sy = wall_yd if din > 0 else wall_yd - 55
-    z0, z1 = RWK_ARM_BOT - 12, rz + 75
+    z0, z1 = RWK_ARM_BOT - 12, rail_top + 5                 # walkway right-beam seat up to backing the rail end flange
     out = [
         ruby_box(f"FP combined corner plate ({tag})", cx - pw / 2, piy, z0, pw, 10, z1 - z0, color=C_STEEL),
         ruby_box(f"FP combined corner ext plate ({tag})", cx - pw / 2, poy, z0, pw, 10, z1 - z0, color=C_STEEL),
         ruby_box(f"FP combined right-beam seat ({tag})", cx - pw / 2, sy, RWK_ARM_BOT - 12, pw, 55, 12, color=C_STEEL),
-        ruby_box(f"FP combined BR rail seat ({tag})", cx - 30, sy, rz - 12, 60, 55, 12, color=C_STEEL),
+        ruby_box(f"FP combined BR rail seat ({tag})", cx - 30, sy, rail_bot - 12, 60, 55, 12, color=C_STEEL),
     ]
     blo, bhi = min(piy, poy), max(piy, poy) + 10
     for bx in (cx - 50, cx + 50):
-        for bz in (RWK_ARM_BOT + 14, rz + 28):
+        for bz in (RWK_ARM_BOT + 14, rail_c):              # walkway-beam bolt (low) + rail-height bolt (web centre)
             out.append(ruby_cylinder(f"FP combined bolt M12 ({tag}) X{int(bx)} Z{int(bz)}", bx, blo, bz, 6, bhi - blo, color=C_STEEL, axis="y"))
     return out
 
@@ -1323,59 +1327,38 @@ def film_plane_saddles(corners, skip=()):
 
 
 def film_plane_mechanism(part="all"):
-    """Four corner rails + 8 wall-seat saddles + framed muslin screen.
-    `part`: "all" (default), "beams" (the 4 corner rails + wall-seat saddles — the structural
-    support installed in the hard-install phase), or "plane" (the muslin screen + 2" angle frame
-    — the film plane installed in the photo-system phase).
+    """The film-plane corner mechanism — the REAL detailed assembly, reused verbatim from the dedicated
+    model (generate_film_plane_mechanism_model.corner()/film_plane()) so overview shows the SAME
+    web-vertical rails + skate/rollers/carriage-plate + cam-brake + green-Z/purple-X cross-slides +
+    U-joint + 304 corner-plate + 2×2 angle film frame as film-plane-mechanism.skp — one source, no
+    duplication (2026-08-11; superseded the coarse rail-box + runner-block stand-in).
+    `part`: "all" (default), "beams" (the 4 corner rails + carriages — the structural support installed
+    in the hard-install phase) or "plane" (the ACM/angle film frame + muslin — installed in the
+    photo-system phase). The BR combined corner plate is drawn separately (fp_combined_corner_plates).
 
-    Rails run in +Y (depth), now full-width saddle-to-saddle, at the four corners.
-    rev11: the demountable brace cage is RETIRED — each rail end anchors to the
-    container with an IBC-style wall-seat saddle (the shell carries the rigidity);
-    right rails bolted, left rails thumb-screw drop-in for the drum swing. The
-    muslin screen sits at the nominal depth FP_Y with a 2" angle frame.
+    fpm anchors each rail end with its own end-flange/gusset (not the old IBC wall-seat saddle). Late
+    import breaks the fpm→ov cycle (fpm imports ov); fpm.corner() emits ov.ruby_* at the shared coords.
     """
+    import generate_film_plane_mechanism_model as fpm
     parts = []
-    rail = 40                       # 40×40mm rail tube
-    z_bot = RAIL_OFF_BOT            # 150mm off the floor (raised +50 to clear the Z130 walkway)
-    z_top = C_HGT - RAIL_OFF_TOP - rail # 144mm off the ceiling (film-plane top rail dropped 44mm)
-    x_left = RAIL_X_L               # 150
-    x_right = RAIL_X_R - rail       # 4609
-    # All four corner rails CONTINUOUS, now spanning the full width SADDLE-TO-SADDLE
-    # (Yd 0 → C_WID) so each end lands on its wall-seat saddle with no gap (rev11).
     if part in ("all", "beams"):
-        for rz, nm in [(z_bot, "BR"), (z_top, "TR"), (z_bot, "BL"), (z_top, "TL")]:
-            x = x_right if nm.endswith("R") else x_left
-            parts.append(ruby_box(f"FP Rail {nm}",
-                                  x, 0, rz, rail, C_WID, rail, color=C_STEEL))
-
-        # rev11: the demountable brace cage is RETIRED — each of the 8 rail ends is
-        # anchored to the container with an IBC-style wall-seat saddle instead (the
-        # container shell carries the rigidity). Right rails bolted, left thumb-screw.
-        corners = {"TL": (x_left, z_top), "TR": (x_right, z_top),
-                   "BL": (x_left, z_bot), "BR": (x_right, z_bot)}
-        # rev12: BR corner is the COMBINED plate (built by the right walkway, fp_combined_corner_plate),
-        # so skip it here to avoid a duplicate saddle.
-        parts.append(film_plane_saddles(corners, skip={"BR"}))
+        # the 4 DETAILED corners — web-vertical U-channel rails (end-flanges R / drop-in stub+bridge L)
+        # + skate/rollers + carriage plate + cam-brake + green-Z/purple-X cross-slides + U-joint + 304
+        # corner plate. Reused verbatim from the dedicated model (same absolute coords + args as
+        # fpm.corners()); fpm.corner() emits ov.ruby_* so the parts land in this component directly.
+        parts.append(fpm.corner("BL", fpm.X_L, fpm.PZ0, fpm.PZ_HB_BOT, +1, "L"))
+        parts.append(fpm.corner("BR", fpm.X_R, fpm.PZ0, fpm.PZ_HB_BOT, -1, "R"))
+        parts.append(fpm.corner("TL", fpm.X_L, fpm.PZ1, fpm.PZ_HB_TOP, +1, "L"))
+        parts.append(fpm.corner("TR", fpm.X_R, fpm.PZ1, fpm.PZ_HB_TOP, -1, "R"))
 
     if part in ("all", "plane"):
-        # Muslin screen — translucent panel at the nominal film-plane depth.
-        board_t = 20
+        # the film plane itself — ACM rigid backing + 2×2 6061 angle perimeter frame (fpm.film_plane()),
+        # plus a translucent muslin panel for legibility at overview scale (the ACM ghost alone is faint).
+        parts.append(fpm.film_plane())
         parts.append(ruby_box("Film Plane Screen (muslin)",
-                              FP_X_L, FP_Y, 0,
-                              FP_W, board_t, FP_H,
-                              color=C_FILM, alpha=0.3))
-
-        # 2" steel angle frame around the screen, on the pinhole-facing side.
-        leg = FP_ANGLE_LEG  # 50.8mm
-        fy = FP_Y - leg
-        parts.append(ruby_box("FP Frame Bottom",
-                              FP_X_L, fy, 0, FP_W, leg, leg, color=C_STEEL))
-        parts.append(ruby_box("FP Frame Top",
-                              FP_X_L, fy, FP_H - leg, FP_W, leg, leg, color=C_STEEL))
-        parts.append(ruby_box("FP Frame Left",
-                              FP_X_L, fy, 0, leg, leg, FP_H, color=C_STEEL))
-        parts.append(ruby_box("FP Frame Right",
-                              FP_X_R - leg, fy, 0, leg, leg, FP_H, color=C_STEEL))
+                              fpm.FCX_L, fpm.FP_Y_PARK, fpm.PZ0,
+                              fpm.FP_W_CORNER, 6, fpm.PZ1 - fpm.PZ0,
+                              color=C_FILM, alpha=0.25))
 
     return '\n'.join(parts)
 

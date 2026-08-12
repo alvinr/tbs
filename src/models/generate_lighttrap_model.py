@@ -181,15 +181,11 @@ def context(left_walkway=True, x_far=None):
     # stub must NOT extend past the door plane or it reads as a misalignment.
     x0 = 0
     xlen = (x_far - x0) if x_far is not None else 2000
+    # Roof (ceiling) + both side walls REMOVED (2026-08-11) — they boxed in the corner mechanism and
+    # made orbiting awkward. Keep only the floor as a ground reference; the corner clash detail reads open.
     parts = [
         ruby_box("Floor (context)", x0, 0, -WALL_T, xlen, C_WID, WALL_T,
                  color=C_SHELL, alpha=0.25),
-        ruby_box("Ceiling (context)", x0, 0, C_HGT, xlen, C_WID, WALL_T,
-                 color=C_SHELL, alpha=0.10),
-        ruby_box("Side Wall near (context)", x0, -WALL_T, 0, xlen, WALL_T, C_HGT,
-                 color=C_SHELL, alpha=0.16),
-        ruby_box("Side Wall far (context)", x0, C_WID, 0, xlen, WALL_T, C_HGT,
-                 color=C_SHELL, alpha=0.16),
     ]
     # The left walkway + drum-exit punch-out (the amber lift-out decks) are now built by
     # liftout_walkways() as a CHILD of the Panel Swing DC so they HIDE when the panel
@@ -714,52 +710,31 @@ def liftout_walkways():
 
 
 def film_plane_left():
-    """LEFT (cargo-door) end of the film-plane rail mechanism — the STATIC parts that STAY:
-    the brace-cage beams (upper+lower, run to the container/walkway far extent) + the
-    near-wall corner post + the drop-in U-saddle CRADLES (shelf/cheeks/dowel). The removable
-    left RAIL PAIR (TL+BL) + its clamp bars are the LIFT-OUT — built by liftout_film_rail()
-    as a Panel-Swing DC child that HIDES when swung, so the swinging drum surround can
-    transition the X=150 rail plane in transport. (The FAR post is the Ø89 pivot; the
-    original 50×50 far post is struck post-build.)"""
-    s = ov.BRACE_RHS                            # 50
-    xL = ov.RAIL_X_L                            # 150
-    z_bot = ov.RAIL_OFF                         # 100
-    z_top = ov.C_HGT - ov.RAIL_OFF_TOP - 40     # 2204 — film-plane top rail seat (dropped 44mm via RAIL_OFF_TOP)
-    yN, yF = ov.FP_Y_MIN, ov.FP_Y               # 100, 2262
-    blen = WALL_FAR - xL                         # beams run X150..WALL_FAR (match container/walkway)
-    C = ov.C_STEEL
-    parts = []
-    for py, pn in [(yN, "near wall"), (yF, "far wall")]:
-        parts.append(ruby_box(f"FP Brace Beam Lower ({pn})", xL, py, z_bot, blen, s, s, color=C))
-        parts.append(ruby_box(f"FP Brace Beam Upper ({pn})", xL, py, z_top, blen, s, s, color=C))
-        parts.append(ruby_box(f"FP Brace Post L ({pn})", xL, py, z_bot, s, s, z_top - z_bot, color=C))
-    for ys in (yN, yF - 80):                     # drop-in saddle CRADLES just inside each rail end
-        parts.append(_rail_saddle(ys, z_bot))
-        parts.append(_rail_saddle(ys, z_top))
-    return '\n'.join(parts)
+    """LEFT (cargo-door) end of the film-plane corner mechanism — the STATIC parts that STAY, reused
+    verbatim from the dedicated model (fpm.corner(..., keep='fixed')): the fixed parking STUB + the
+    detailed skate/rollers + carriage plate + cam-brake + green-Z/purple-X cross-slides + U-joint + 304
+    corner plate + pinhole-wall gusset + length splice. The REMOVABLE rail section + its welded bridge
+    are the LIFT-OUT — built by liftout_film_rail() (keep='removable') as a Panel-Swing DC child that
+    HIDES when swung, so the swinging drum surround can transition the X=150 rail plane in transport.
+    One source with overview (fpm.corner emits ov.ruby_* at the shared coords; late import breaks the cycle)."""
+    import generate_film_plane_mechanism_model as fpm
+    return '\n'.join([
+        fpm.corner("BL", fpm.X_L, fpm.PZ0, fpm.PZ_HB_BOT, +1, "L", keep="fixed"),
+        fpm.corner("TL", fpm.X_L, fpm.PZ1, fpm.PZ_HB_TOP, +1, "L", keep="fixed"),
+    ])
 
 
 def liftout_film_rail():
-    """The REMOVABLE left film-plane rail — the LIFT-OUT beam. The rail PAIR (TL+BL,
-    X=RAIL_X_L) + their clamp bars lift straight up out of the drop-in U-saddles for
-    transport. Built at WORLD coords; placed as a CHILD of the Panel Swing DC so it HIDES
-    when the panel swings open (removed for the transport swing) — the same child-DC +
-    hidden-formula pattern as the lift-out walkways. As a swing child it also rides rigidly
-    with the drum surround through the animation, so it never sweeps into it."""
-    rail = 40
-    xL = ov.RAIL_X_L                            # 150
-    z_bot = ov.RAIL_OFF                         # 100
-    z_top = ov.C_HGT - ov.RAIL_OFF_TOP - rail   # 2204
-    yN, yF = ov.FP_Y_MIN, ov.FP_Y               # 100, 2262
-    C = ov.C_STEEL
-    parts = [
-        ruby_box("FP Rail BL (lower left)", xL, yN, z_bot, rail, yF - yN, rail, color=C),
-        ruby_box("FP Rail TL (upper left)", xL, yN, z_top, rail, yF - yN, rail, color=C),
-    ]
-    for ys in (yN, yF - 80):                     # the removable clamp bars come out with the rail
-        parts.append(_rail_clamp_bar(ys, z_bot))
-        parts.append(_rail_clamp_bar(ys, z_top))
-    return '\n'.join(parts)
+    """The REMOVABLE left film-plane rail — the LIFT-OUT: the detailed removable U-channel rail section +
+    its welded bridge, reused from the dedicated model (fpm.corner(..., keep='removable')) so it matches
+    film-plane-mechanism.skp. Placed as a CHILD of the Panel Swing DC so it HIDES when the panel swings
+    open (removed for the transport swing) — the same child-DC + hidden-formula pattern as the lift-out
+    walkways. As a swing child it also rides rigidly with the drum surround through the animation."""
+    import generate_film_plane_mechanism_model as fpm
+    return '\n'.join([
+        fpm.corner("BL", fpm.X_L, fpm.PZ0, fpm.PZ_HB_BOT, +1, "L", keep="removable"),
+        fpm.corner("TL", fpm.X_L, fpm.PZ1, fpm.PZ_HB_TOP, +1, "L", keep="removable"),
+    ])
 
 
 def bay():

@@ -7,7 +7,7 @@
 
 The camera operates in remote locations with no municipal water or drainage. This document specifies a self-contained three-circuit water system that:
 
-- Stores sufficient clean water for 9–14 full-size prints between resupply runs on fresh Blue alone (**~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints** once Brown wash-2 recycling is counted — see §below)
+- Stores sufficient clean water for 9–14 full-size prints between resupply runs on fresh Blue alone (**~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints** once Brown wash-2 recycling is counted — see §below)
 - Recycles used wash water through a three-stage filter train, extending usable supply by approximately 40%
 - Contains all waste water in a closed, transportable IBC for proper off-site disposal
 - Runs entirely on 12V DC, compatible with a solar/battery off-grid power system
@@ -85,28 +85,28 @@ Volume per flood = 106 sq ft × (6mm / 304.8) = 106 × 0.0197 ft = 2.09 cu ft
 | Scenario | Blue consumed per print | Prints from <!-- BEGIN fact:blue_supply_gal -->476<!-- END fact:blue_supply_gal --> gal Blue | Brown recycled |
 |----------|------------------------|--------------------------|---------------|
 | No recycling | 48 gal (3 × 16) | ~10 prints | 0 |
-| With recycling (wash 2 from Brown) | 32 gal (2 × 16) | **~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints** | ~224 gal reused |
+| With recycling (wash 2 from Brown) | 32 gal (2 × 16) | **~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints** | ~224 gal reused |
 | Brown recycle limit (3 passes) | — | — | 166 gal max before going to Black |
 
-**~<!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints per resupply run** — <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply (2× 900L) with Brown recycling for wash 2.
+**~<!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints per resupply run** — <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply (2× 900L) with Brown recycling for wash 2.
 
 **Water balance — recovered vs. consumed.** Of the <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L Blue supply, a 14-print run processes ~1,690L
-(leaving ~110L of dregs, under one print): ~<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l -->L is recovered into the collection totes (Brown + Waste,
-~<!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L each at their working fill) and ~<!-- BEGIN fact:lost_l -->434<!-- END fact:lost_l -->L (~31L per print, ~17% of the ~182L gross washed per print) is
+(leaving ~110L of dregs, under one print): ~<!-- BEGIN fact:recovered_l -->1,245<!-- END fact:recovered_l -->L is recovered into the collection totes (Brown + Waste,
+~<!-- BEGIN fact:collection_fill_l -->622<!-- END fact:collection_fill_l -->L each at their working fill) and ~<!-- BEGIN fact:lost_l -->465<!-- END fact:lost_l -->L (~31L per print, ~17% of the ~182L gross washed per print) is
 open-process loss — water **carried out in the wet prints** (each full-plane muslin sheet, ~9.42 m²,
 leaves saturated to dry), **evaporation** from the open spray-wash tray, and **unrecovered residual**
 (tray-surface film, the sump dead-volume below the P-04 pickup, hose/manifold hold-up). This loss is *why
-two <!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L collection totes balance the supply* — they are sized for the recovered fraction, not full
-throughput. (The [weight report](weight-distribution-report.md) carries the same ~<!-- BEGIN fact:recovered_l -->1,260<!-- END fact:recovered_l -->L recovered figure
+two <!-- BEGIN fact:collection_fill_l -->622<!-- END fact:collection_fill_l -->L collection totes balance the supply* — they are sized for the recovered fraction, not full
+throughput. (The [weight report](weight-distribution-report.md) carries the same ~<!-- BEGIN fact:recovered_l -->1,245<!-- END fact:recovered_l -->L recovered figure
 for its exhausted-state transport mass — 4,546 kg, ~540 kg below the loaded state.)
 
 #### Extending capacity beyond 14 prints
 
-**Maximizing the initial load.** The standard 900L-per-tote fill (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L → <!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply --> prints) leaves a little
+**Maximizing the initial load.** The standard 900L-per-tote fill (<!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l -->L → <!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply --> prints) leaves a little
 residue in each 1,000L tote; topping toward the ~950–1,000L tote limit (~1,900–2,000L) buys ~1–2 more prints
 (~15–16), transport-validated to a worst-case static tip of 41.0° (see
 [weight report §4.4](weight-distribution-report.md)). To actually realize those extra prints the
-collection totes must also rise proportionally — they are sized at ~<!-- BEGIN fact:collection_fill_l -->630<!-- END fact:collection_fill_l -->L each for the 14-print recovery —
+collection totes must also rise proportionally — they are sized at ~<!-- BEGIN fact:collection_fill_l -->622<!-- END fact:collection_fill_l -->L each for the 14-print recovery —
 so the hard ceiling on a single hauled load is the **per-tote 1,000L volume**, capping it at ~16 prints.
 
 **On-site top-up — extended deployment.** A deployment can run past the ~16-print single-load ceiling
@@ -118,7 +118,7 @@ disposal access) rather than tote volume. This is a distinct operating mode from
 for transport the totes return to their validated fill states (Blue drained, Waste within its
 return-haul limit). See the [Operating Manual](operating-manual.md) for the top-up procedure.
 
-**Cooling-water overhead (hot-weather deployments):** the evaporative cooler draws clean water from the *same* Blue circuit (at TAP-01 on the pinhole wall), so it is not free of the processing budget. Its reservoir holds ~4.8 gal (~18 L) and evaporates ~3 L/hour while running ([Ventilation Report §5](ventilation-report.md)), so a deployment consumes roughly **one tankful (~18 L)** — about **15% of one print's net Blue draw**, or **~1% of the full <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L supply**. This is sub-one-print of overhead: it does not move the <!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply -->-print count for a 1–2 print outing, but a resupply spent entirely on hot, multi-print sessions should be planned as **~13 effective prints** to leave the cooler its margin. The <!-- BEGIN fact:prints_per_resupply -->14<!-- END fact:prints_per_resupply -->-print figure above counts processing water only.
+**Cooling-water overhead (hot-weather deployments):** the evaporative cooler draws clean water from the *same* Blue circuit (at TAP-01 on the pinhole wall), so it is not free of the processing budget. Its reservoir holds ~4.8 gal (~18 L) and evaporates ~3 L/hour while running ([Ventilation Report §5](ventilation-report.md)), so a deployment consumes roughly **one tankful (~18 L)** — about **15% of one print's net Blue draw**, or **~1% of the full <!-- BEGIN fact:blue_supply_l -->1,800<!-- END fact:blue_supply_l --> L supply**. This is sub-one-print of overhead: it does not move the <!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply -->-print count for a 1–2 print outing, but a resupply spent entirely on hot, multi-print sessions should be planned as **~13 effective prints** to leave the cooler its margin. The <!-- BEGIN fact:prints_per_resupply -->15<!-- END fact:prints_per_resupply -->-print figure above counts processing water only.
 
 ---
 

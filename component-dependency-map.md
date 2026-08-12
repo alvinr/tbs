@@ -46,7 +46,7 @@ bamboo floor, corner castings, corner posts, structural corrugation ribs.*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Pinhole X position (long axis) | <!-- BEGIN cdm:PH_X -->2,399<!-- END cdm:PH_X -->mm | `PH_X` |
+| Pinhole X position (long axis) | <!-- BEGIN cdm:PH_X -->2,454<!-- END cdm:PH_X -->mm | `PH_X` |
 | Pinhole center height | <!-- BEGIN cdm:PH_H -->1,194<!-- END cdm:PH_H -->mm | `PH_H` |
 | Pinhole diameter | Ø<!-- BEGIN cdm:PH_D -->2.17<!-- END cdm:PH_D -->mm | `PH_D` |
 | f-number | f/<!-- BEGIN fact:f_number -->1088<!-- END fact:f_number --> | `PH_FNO` |
@@ -69,15 +69,15 @@ dimensions are single-sourced in the table above (`generate_plate_drawing.py` re
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Film plane left edge X | <!-- BEGIN cdm:FP_X_L -->150<!-- END cdm:FP_X_L -->mm | `FP_X_L` |
+| Film plane left edge X | <!-- BEGIN cdm:FP_X_L -->260<!-- END cdm:FP_X_L -->mm | `FP_X_L` |
 | Film plane right edge X | <!-- BEGIN cdm:FP_X_R -->4,649<!-- END cdm:FP_X_R -->mm | `FP_X_R` |
-| Film plane width | <!-- BEGIN cdm:FP_W -->4,499<!-- END cdm:FP_W -->mm | `FP_W` |
+| Film plane width | <!-- BEGIN cdm:FP_W -->4,389<!-- END cdm:FP_W -->mm | `FP_W` |
 | Film plane height | <!-- BEGIN cdm:FP_H -->2,094<!-- END cdm:FP_H -->mm | `FP_H` |
 | Nominal depth from pinhole wall | <!-- BEGIN cdm:FP_Y -->2,262<!-- END cdm:FP_Y -->mm | `FP_Y` |
 | Minimum carriage depth | <!-- BEGIN cdm:FP_Y_MIN -->100<!-- END cdm:FP_Y_MIN -->mm | `FP_Y_MIN` |
-| Left rail X | <!-- BEGIN cdm:RAIL_X_L -->150<!-- END cdm:RAIL_X_L -->mm | `RAIL_X_L` |
+| Left rail X | <!-- BEGIN cdm:RAIL_X_L -->260<!-- END cdm:RAIL_X_L -->mm | `RAIL_X_L` |
 | Right rail X | <!-- BEGIN cdm:RAIL_X_R -->4,649<!-- END cdm:RAIL_X_R -->mm | `RAIL_X_R` |
-| Rail span | <!-- BEGIN cdm:RAIL_SPAN -->4,499<!-- END cdm:RAIL_SPAN -->mm | `RAIL_SPAN` |
+| Rail span | <!-- BEGIN cdm:RAIL_SPAN -->4,389<!-- END cdm:RAIL_SPAN -->mm | `RAIL_SPAN` |
 | Rail length (Y travel) | <!-- BEGIN cdm:RAIL_LEN -->2,200<!-- END cdm:RAIL_LEN -->mm | `RAIL_LEN` |
 | Max tilt (single-axis, Option A) | ±<!-- BEGIN cdm:MAX_TILT_DEG -->40<!-- END cdm:MAX_TILT_DEG -->° | `MAX_TILT_DEG` |
 | Max swing (single-axis, Option A) | ±<!-- BEGIN cdm:MAX_SWING_DEG -->28<!-- END cdm:MAX_SWING_DEG -->° | `MAX_SWING_DEG` |
@@ -104,7 +104,7 @@ stretch or twist; single-axis tilt/swing envelope (tilt ±40° / swing ±28°).*
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Pinhole X (board centers here) | <!-- BEGIN cdm:PH_X -->2,399<!-- END cdm:PH_X -->mm | `PH_X` |
+| Pinhole X (board centers here) | <!-- BEGIN cdm:PH_X -->2,454<!-- END cdm:PH_X -->mm | `PH_X` |
 | Max tilt/swing | ±<!-- BEGIN cdm:FRONT_BOARD_MAX_DEG -->5.3<!-- END cdm:FRONT_BOARD_MAX_DEG -->° | `FRONT_BOARD_MAX_DEG` (computed from arm + travel) |
 | Resolution | <!-- BEGIN fact:front_board_click_deg -->0.012<!-- END fact:front_board_click_deg -->°/click | `FRONT_BOARD_CLICK_DEG` (computed from screw + detents) |
 
@@ -320,7 +320,7 @@ P-03 waste evacuation pump (mounted in IBC plumbing corridor on X4 drain run). F
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Left end zone boundary (right edge) | X = <!-- BEGIN cdm:ZONE_L_END -->150<!-- END cdm:ZONE_L_END -->mm | `ZONE_L_END` |
+| Left end zone boundary (right edge) | X = <!-- BEGIN cdm:ZONE_L_END -->260<!-- END cdm:ZONE_L_END -->mm | `ZONE_L_END` |
 | Right end zone boundary (left edge) | X = <!-- BEGIN cdm:ZONE_R_START -->4,649<!-- END cdm:ZONE_R_START -->mm | `ZONE_R_START` |
 | Optical cone left at depth Y | `PH_X − (PH_X − FP_X_L) × Y / FP_Y` | `cone_left(y)` |
 | Optical cone right at depth Y | `PH_X + (FP_X_R − PH_X) × Y / FP_Y` | `cone_right(y)` |
@@ -356,9 +356,9 @@ plates, 4× drop-in rail saddles + tapered dowels (for the removable left film r
 
 | Parameter | Value | Constant |
 |-----------|-------|----------|
-| Tray left edge X | <!-- BEGIN cdm:PROC_TRAY_X_L -->170<!-- END cdm:PROC_TRAY_X_L -->mm | `PROC_TRAY_X_L` |
+| Tray left edge X | <!-- BEGIN cdm:PROC_TRAY_X_L -->280<!-- END cdm:PROC_TRAY_X_L -->mm | `PROC_TRAY_X_L` |
 | Tray right edge X | <!-- BEGIN cdm:PROC_TRAY_X_R -->4,629<!-- END cdm:PROC_TRAY_X_R -->mm | `PROC_TRAY_X_R` |
-| Tray width | <!-- BEGIN cdm:PROC_TRAY_W -->4,459<!-- END cdm:PROC_TRAY_W -->mm | `PROC_TRAY_W` |
+| Tray width | <!-- BEGIN cdm:PROC_TRAY_W -->4,349<!-- END cdm:PROC_TRAY_W -->mm | `PROC_TRAY_W` |
 | Tray depth | <!-- BEGIN cdm:PROC_TRAY_D -->2,200<!-- END cdm:PROC_TRAY_D -->mm | `PROC_TRAY_D` |
 | Tray near edge Yd | <!-- BEGIN cdm:PROC_TRAY_YD_NEAR -->80<!-- END cdm:PROC_TRAY_YD_NEAR -->mm | `PROC_TRAY_YD_NEAR` |
 | Tray far edge Yd | <!-- BEGIN cdm:PROC_TRAY_YD_FAR -->2,280<!-- END cdm:PROC_TRAY_YD_FAR -->mm | `PROC_TRAY_YD_FAR` |
@@ -392,7 +392,7 @@ Permanently installed — no removal for transport mode conversion.*
 | Right-walkway L-angle grate bearer | 1×1×3/16in steel angle | prose — [walkway-report §4.4](walkway-report.md); no constant (#26) |
 | Near walkway Yd | <!-- BEGIN cdm:WALKWAY_NEAR_YD -->0<!-- END cdm:WALKWAY_NEAR_YD -->mm | `WALKWAY_NEAR_YD` |
 | Far walkway Yd | <!-- BEGIN cdm:WALKWAY_FAR_YD -->2,062<!-- END cdm:WALKWAY_FAR_YD -->mm | `WALKWAY_FAR_YD` |
-| Left walkway X | <!-- BEGIN cdm:WALKWAY_LEFT_X -->170<!-- END cdm:WALKWAY_LEFT_X -->mm | `WALKWAY_LEFT_X` |
+| Left walkway X | <!-- BEGIN cdm:WALKWAY_LEFT_X -->280<!-- END cdm:WALKWAY_LEFT_X -->mm | `WALKWAY_LEFT_X` |
 | Left walkway unsupported span | <!-- BEGIN cdm:WALKWAY_LEFT_SPAN -->1,762<!-- END cdm:WALKWAY_LEFT_SPAN -->mm | `WALKWAY_LEFT_SPAN` |
 | Right walkway X | <!-- BEGIN cdm:WALKWAY_RIGHT_X -->4,329<!-- END cdm:WALKWAY_RIGHT_X -->mm | `WALKWAY_RIGHT_X` |
 

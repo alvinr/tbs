@@ -24,7 +24,7 @@ drain pan**, not a soaking basin:
 
 - **Contain** all wash water — no penetration of the container floor.
 - **Drain** to a corner sump for pump-out + recycling.
-- Provide a **rigid surface** that simplifies handling the large (4,499 × 2,094 mm) print.
+- Provide a **rigid surface** that simplifies handling the large (4,389 × 2,094 mm) print.
 - **Permanently installed**; a leak is a serious failure (water loose in the container).
 
 Prints are washed on the film plane by the spray bar; they are not soaked in the

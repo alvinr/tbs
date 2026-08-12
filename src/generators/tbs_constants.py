@@ -729,7 +729,10 @@ PROC_TRAY_SHIM_N   = 5          # number of shim strips across tray depth
 # Low LINE: the near-rim gutter (full width) collects the Yd-only fall and drains inward to a
 # single CENTER pickup well at X=PROC_TRAY_DRAIN_X.  The P-04 suction pops out of the walkway
 # above the pickup, then runs UNDER the walkway to the IBC end to rejoin the ribbon lanes.
-PROC_TRAY_DRAIN_X  = 2386       # near the center line (PH_X=2399), nudged -13 so the riser lands in a
+PROC_TRAY_DRAIN_X  = 2386       # FIXED (2026-08-12: kept at 2386 when FP_X_L→260 moved PH_X to 2454 + the
+                               # tray center to ~2454 — deliberately NOT re-centered; the 1:200 slope is
+                               # fine with the well ~68mm left of center, and re-centering would re-cascade
+                               # the tray/water models for no functional gain). Riser lands in a
 #                                 clear walkway grate bay, clearing the X2526 cantilever bracket by 50mm
 PROC_TRAY_DRAIN_YD = PROC_TRAY_YD_NEAR  # = 80mm — at the near rim (low edge of the Yd fall)
 
@@ -851,7 +854,7 @@ LOST_L                = PRINTS_PER_RESUPPLY * LOSS_PER_PRINT_L         # = 434 L
 #       the pivot for transport.  Left walkway must be removed before the swing.
 #       Left corners use butt joints (no miter) so near/far walkways start at
 #       X=470 — clear of the door-end panel swing sweep.
-#       Only the left walkway (X=170–470) needs removal for transport.
+#       Only the left walkway (X=280–470) needs removal for transport.
 #       Supported at ends by near/far walkway bracket arms at butt joints.
 #       Processing tray side (X=470): removable bearer beam (2×2×0.125in 6061 Al SHS; #26 — was 50×50×3, 2in stock. Metal Supermarkets $31.99/ft; uncosted removable spare)
 #       runs along Yd, bolted to near/far bracket vertical legs, spanning

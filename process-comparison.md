@@ -155,7 +155,7 @@ Cyanotype (Mike Ware's New Cyanotype) is the process TBS-001 uses; its full proc
 
 **Notes on paper rolls:**
 - Ilford MGRC 50"×98' confirmed listed at B&H Photo (product #ILMG50981P). Price is not shown publicly — call B&H at 800-606-6969 or log in for current pricing.
-- 50" width × 98' length yields 4 strips of 50" × 84" per print (4 × 1,270mm = 5,080mm covers the 4,499mm active width with 581mm spare; each strip height = 2,094mm = 82.4"). 14 strips per roll ÷ 4 strips per print = **3 prints per roll** (2 strips spare).
+- 50" width × 98' length yields 4 strips of 50" × 84" per print (4 × 1,270mm = 5,080mm covers the 4,389mm active width with 691mm spare; each strip height = 2,094mm = 82.4"). 14 strips per roll ÷ 4 strips per print = **3 prints per roll** (2 strips spare).
 - Paper must be cut and handled in **sfaelight conditions**.
 
 ---

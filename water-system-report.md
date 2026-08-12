@@ -66,10 +66,10 @@ It will **not**:
 
 ### Per-print water requirement
 
-Processing a ~106 sq ft print in the processing tray (4459 × 2,200mm), flooded to 6mm (¼ inch) depth:
+Processing a ~103 sq ft print in the processing tray (4349 × 2,200mm), flooded to 6mm (¼ inch) depth:
 
 ```
-Volume per flood = 106 sq ft × (6mm / 304.8) = 106 × 0.0197 ft = 2.09 cu ft
+Volume per flood = 103 sq ft × (6mm / 304.8) = 103 × 0.0197 ft = 2.03 cu ft
                  = 2.09 × 7.48 = 15.6 gallons ≈ 16 gallons per wash cycle
 ```
 
@@ -210,7 +210,7 @@ FROM 3W-DV-02 (heavily contaminated drain water — operator judgment)
 
 The processing tray and spray bar gantry are fully specified in the [Processing Tray & Spray Bar Report](processing-tray-and-spray-bar.md). Their role in the water system is summarized here.
 
-**Processing tray:** A permanently installed 4459 × 2,200mm stainless steel tray sits on the optical zone floor between the film plane rails. A 1:200 Yd-only slope sheets wash water to a near-rim gutter that falls 1:200 inward to a center pickup well (X=2,399). P-04 draws from the center pickup — the suction pops out of the walkway above it and runs under the walkway to the IBC end — no penetration of the tray floor or container floor.
+**Processing tray:** A permanently installed 4349 × 2,200mm stainless steel tray sits on the optical zone floor between the film plane rails. A 1:200 Yd-only slope sheets wash water to a near-rim gutter that falls 1:200 inward to a center pickup well (X=2,386). P-04 draws from the center pickup — the suction pops out of the walkway above it and runs under the walkway to the IBC end — no penetration of the tray floor or container floor.
 
 **Drain path:** P-04 suction pickup → 1" flexible hose over near rim → P-04 pump on the Pinhole Wall filter skid → SV-02 sample → 3W-DV-02 diverter → the 3-stage filter train (recycle) or IBC-4 (Waste).
 

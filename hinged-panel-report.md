@@ -302,7 +302,7 @@ Two narrow strips stay fixed at the door plane and do **not** swing: the near st
 and the far strip. The cargo doors close outboard of the
 fixed near strip.
 
-To let the swinging cage cross the X=150mm film-plane rail line, the **two left film rails
+To let the swinging cage cross the X=260mm film-plane rail line, the **two left film rails
 (top-left + bottom-left) lift out of their drop-in saddles** and the **left walkway + door-end
 near-deck section lift out** before the swing; all are re-seated to datum afterward.
 
@@ -351,9 +351,9 @@ on the swing.
 The rotation transport + swing clearance vs the film-plane left mechanism is shown in
 **Sheet 4** (above): the panel + drum swing ~<!-- BEGIN fact:panel_swing_deg -->56<!-- END fact:panel_swing_deg -->° about the pivot, pulling the bay inboard of
 the door plane (true min X +<!-- BEGIN fact:swung_door_clearance_mm -->59<!-- END fact:swung_door_clearance_mm --> mm); the two left film rails are struck (removable) so the
-swinging cage transitions the X=150 rail plane, then re-seat to the film datum.
+swinging cage transitions the X=260 rail plane, then re-seat to the film datum.
 
-The swing carries the drum cage through **X=150**, where the film-plane mechanism's
+The swing carries the drum cage through **X=260**, where the film-plane mechanism's
 left edge sits, so the **two left film rails (TL + BL) must be struck before the swing**
 and re-seated after (the tapered dowels return the film datum). The muslin screen must
 be struck regardless — the fragile screen cannot travel mounted. The swing **clears the

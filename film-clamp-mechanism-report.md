@@ -50,7 +50,7 @@ All items ship within the United States. Local Southern California pickup noted 
 | Item | Spec | Qty | Supplier | Est. cost |
 |------|------|-----|----------|-----------|
 | [Nylon spring clamp, 3½″ (Pittsburgh 69289)](https://www.harborfreight.com/3-12-in-nylon-spring-clamp-69289.html) (69289) | Inert fiberglass/nylon spring clamp with swivel pads — no corrosion in the cyanotype splash zone (replaces the custom steel-bracket clip). Clips over the filler-filled L-frame edge to grip the muslin; the jaw must clear ~55mm (2" leg + ACM + muslin), so a ≥3" clamp. Top + 2 side edges only (bottom = walkway/swing clearance). Confirm the open-jaw ≥2" at purchase; 2½" 69290 is the smaller-body fallback. | 58 ea | Harbor Freight / Amazon | $115–$173 |
-| HDPE filler strip (L-channel packer) | Inert HDPE strip, 44.125mm deep (= frame leg − ACM − muslin − angle), filling the aluminum-angle L channel along the 3 clamped edges (~8.7 m) so the nylon clamp bites a solid full-depth sandwich. Cut to suit; chemistry-safe (same family as the tray liner). Firm at fab. | 1 lot | TAP Plastics / McMaster-Carr | $30–$70 |
+| HDPE filler strip (L-channel packer) | Inert HDPE strip, 44.125mm deep (= frame leg − ACM − muslin − angle), filling the aluminum-angle L channel along the 3 clamped edges (~8.6 m) so the nylon clamp bites a solid full-depth sandwich. Cut to suit; chemistry-safe (same family as the tray liner). Firm at fab. | 1 lot | TAP Plastics / McMaster-Carr | $30–$70 |
 | **Clamp total** | | | | **$145–$243** |
 <!-- END parts:clamp -->
 

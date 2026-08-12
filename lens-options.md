@@ -140,7 +140,7 @@ With a pinhole, depth of field is effectively unlimited — the blur circle grow
 
 The following uses:
 - f_L = 1,400mm (focused at 3.44 m)
-- Circle of confusion c = 3mm (appropriate for a 4,499mm wide active image viewed from 5–7 m)
+- Circle of confusion c = 3mm (appropriate for a 4,389mm wide active image viewed from 5–7 m)
 - Hyperfocal distance H = f_L² / (N × c)
 
 | Aperture | Hyperfocal dist. | Near limit | Far limit | DoF span | Portrait suitability |
@@ -177,7 +177,7 @@ The following uses:
 
 These are diffraction limits — the ceiling for any perfect lens. Real lenses fall below this due to aberrations. At f/8 a real-world large-format process lens might achieve 15–25 lp/mm (still 22–36× better than the pinhole's diffraction limit, and far more versus its ~2.17mm geometric blur). Even a mediocre singlet at f/8 would give 5–10 lp/mm, 7–14× better.
 
-### 4.2 What the Improvement Looks Like on a 4,499mm Wide Active Image
+### 4.2 What the Improvement Looks Like on a 4,389mm Wide Active Image
 
 The pinhole's geometric blur disk is ~2.17mm on the image plane — larger than the diffraction limit in §4.1, so it sets the practical resolution. At 3.4 m subject distance (M = 0.69), this corresponds to resolving features ~3.1mm in the subject — roughly the resolution needed to clearly see eyebrows, lips, and hair texture.
 
@@ -206,7 +206,7 @@ These are the highest-quality option within their coverage area. Process lenses 
 
 **What the image looks like:** A sharp circular disk in the center of the photosensitive surface, approximately 400–500mm in diameter. The remaining ~4,099mm width of the active image plane receives no light. The entire portrait must be composed within this central medallion.
 
-**Coverage as percentage of image plane:** 400mm circle / 4,499mm active width = **8.9% of image width**. The circular image is a small fraction of the ~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft active plane. The remainder of the plane is unexposed (black in the final image, or could be utilized by other means).
+**Coverage as percentage of image plane:** 400mm circle / 4,389mm active width = **8.9% of image width**. The circular image is a small fraction of the ~<!-- BEGIN fact:image_area_sqft -->99<!-- END fact:image_area_sqft --> sq ft active plane. The remainder of the plane is unexposed (black in the final image, or could be utilized by other means).
 
 **Distortion:** Designed for <0.1% distortion across the image circle. Straight lines render straight. Essentially identical to pinhole geometry within the covered area.
 
@@ -232,7 +232,7 @@ Telescope refractor objectives are commercially produced as high-quality achroma
 | Takahashi FSQ-130ED | 1,000mm | 130mm | f/7.7 | ~180mm | ~$4,500 |
 | Custom telescope doublet (150mm f/10) | 1,500mm | 150mm | f/10 | ~200–250mm | ~$500–$2,000 (used) |
 
-A 150mm aperture f/10 refractor objective at 1,500mm focal length focuses at 5.0 m from the camera wall — ideal for portraits. It covers approximately 200–250mm image circle — still a small central medallion (200/4,499 = **4.4% of active image width**) but of extremely high quality.
+A 150mm aperture f/10 refractor objective at 1,500mm focal length focuses at 5.0 m from the camera wall — ideal for portraits. It covers approximately 200–250mm image circle — still a small central medallion (200/4,389 = **4.4% of active image width**) but of extremely high quality.
 
 These can be sourced as surplus telescope objectives from astronomy retailers (OPT Telescopes, High Point Scientific, Agena Astro) at prices that are far below commercial photographic process lenses of similar quality.
 
@@ -290,7 +290,7 @@ For crown glass (n = 1.52), a symmetric biconvex lens with equal radii:
 - Aperture required: at f/16, d = 1,400/16 = 87.5mm. At f/8: 175mm.
 - Physical diameter: 200–300mm is practical for fabrication; covers ~250–400mm image circle
 
-**To cover the full 4,499mm active image plane** as a single element, the lens would need to be at least 700mm in diameter — a single glass element of 0.7 meter diameter, 1.4 m focal length. This is within the realm of custom optics for scientific instruments but the cost is extreme ($30,000–$200,000+). Acrylic is cheaper to fabricate at large size but optically inferior.
+**To cover the full 4,389mm active image plane** as a single element, the lens would need to be at least 700mm in diameter — a single glass element of 0.7 meter diameter, 1.4 m focal length. This is within the realm of custom optics for scientific instruments but the cost is extreme ($30,000–$200,000+). Acrylic is cheaper to fabricate at large size but optically inferior.
 
 **Realistic custom singlet:** A 200–300mm diameter, 1,400mm focal length crown glass singlet is fabricatable by companies such as Optical Surfaces Ltd (UK), II-VI Optical Systems, or local optical fabrication shops. Cost: approximately **$2,000–$8,000** depending on surface quality specification. This covers a ~300–500mm circle.
 
@@ -335,7 +335,7 @@ Both the pinhole and any lens suffer the same physical law: illumination falls a
 | Mid-width edge | 43.6° | 0.273 | 27% | 1.9 stops |
 | Corner | 47.1° | 0.215 | 22% | 2.2 stops |
 
-The corners of the active image plane receive 22% of the light falling on the center — approximately **2.2 stops less exposure**. This is present with the pinhole and with any lens; it is a property of the field angle, not the optical system. Because the active image plane (4,499mm wide) is substantially narrower than the full container interior (5,893mm), the field angle is less extreme than a full-container analysis would suggest — the corner penalty improves from ~3 stops (full container) to ~2.2 stops (active plane). The effect on the final image: a natural vignette, darkening from center to corners. At 30–45 minutes or at 2 seconds, the corner of the image is always about 2 stops darker than the center.
+The corners of the active image plane receive 22% of the light falling on the center — approximately **2.2 stops less exposure**. This is present with the pinhole and with any lens; it is a property of the field angle, not the optical system. Because the active image plane (4,389mm wide) is substantially narrower than the full container interior (5,893mm), the field angle is less extreme than a full-container analysis would suggest — the corner penalty improves from ~3 stops (full container) to ~2.2 stops (active plane). The effect on the final image: a natural vignette, darkening from center to corners. At 30–45 minutes or at 2 seconds, the corner of the image is always about 2 stops darker than the center.
 
 On silver gelatin paper, 2.2 stops of underexposure in the corners means the corner areas may not reach adequate density in a correctly-exposed center. Exposure must account for this — either the center will be slightly overexposed to ensure the corners have sufficient density, or the corners are accepted as darker (which, for a portrait centered in the frame, may be desirable — a natural vignette framing the subject).
 

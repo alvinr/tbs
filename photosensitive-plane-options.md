@@ -346,9 +346,9 @@ Ilford Multigrade V RC Deluxe is the industry-standard enlarging paper and the m
 
 ### Coverage Calculation
 
-Active image plane: 4,499mm wide × 2,094mm tall.
+Active image plane: 4,389mm wide × 2,094mm tall.
 Paper roll width: 1,270mm (50").
-Number of strips needed: ⌈4,499 / 1,270⌉ = **4 strips** (covers 5,080mm — 581mm spare).
+Number of strips needed: ⌈4,389 / 1,270⌉ = **4 strips** (covers 5,080mm — 691mm spare).
 Each strip height: 2,094mm (~6.87 ft), cut from the 30.5 m roll.
 Strips from one roll: ⌊30,500 / 2,094⌋ = **14 strips per roll** → **3 complete images per roll** (with ~1,184mm of roll remaining).
 

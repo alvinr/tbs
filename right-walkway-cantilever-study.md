@@ -6,7 +6,7 @@
 
 ## 1. Why
 
-The right walkway was originally **ceiling-hung** — five M10 rod-pairs from the deck up to the roof. The film-plane rework (wall-seat saddles, rails now running the full width) exposed a conflict: **those vertical rods sit in the film plane's X-footprint (X4329–4629 ⊂ X150–4649) and in the volume the tilting plane sweeps** — the plane's right corner reaches Yd1760 at <!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing and Yd1575 at <!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, colliding with the hangers at Yd1828/1371 — plus the rods sit in the optical band (shadow risk). See [Film Plane Report](film-plane-mechanism-report.md) and the corner analysis.
+The right walkway was originally **ceiling-hung** — five M10 rod-pairs from the deck up to the roof. The film-plane rework (wall-seat saddles, rails now running the full width) exposed a conflict: **those vertical rods sit in the film plane's X-footprint (X4329–4629 ⊂ X260–4649) and in the volume the tilting plane sweeps** — the plane's right corner reaches Yd1760 at <!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing and Yd1575 at <!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, colliding with the hangers at Yd1828/1371 — plus the rods sit in the optical band (shadow risk). See [Film Plane Report](film-plane-mechanism-report.md) and the corner analysis.
 
 **Key insight:** the **deck itself was never the problem** — it sits at Z130, tucked *under* the film-frame bottom (Z150). Only the **vertical rods** intrude. Remove the rods and the film-plane conflict disappears, **with no reduction in film size and the same swing range on both sides**.
 
@@ -53,7 +53,7 @@ The IBC frame already carries the 2×2 IBC stack and is anchored to floor + wall
 
 ## 5. What it resolves / what stays separate
 
-**Resolved:** the film-plane ↔ walkway conflict (no rods in the sweep or optical band); film plane keeps **full width (X150–4649)** and the **same tilt/swing range on both sides**; ceiling de-cluttered on the right.
+**Resolved:** the film-plane ↔ walkway conflict (no rods in the sweep or optical band); film plane keeps **full width (X260–4649)** and the **same tilt/swing range on both sides**; ceiling de-cluttered on the right.
 
 **Resolved as follow-ups (rev12):** the **chem prep shelf** was moved left of the tap (X3129–3729 / Yd300–600) to clear the film-plane swing envelope, and the **sump pickup + tray-drain plumbing** return riser was rerouted into the grate gap with a Yd twist to clear the new right-walkway beam.
 

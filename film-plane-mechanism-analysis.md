@@ -23,7 +23,7 @@ The Giant Pinhole Camera uses a 20ft ISO shipping container as its light-tight b
 | Interior height | 2,388mm (7 ft 10 in) | Container height; the active film plane is 2,094mm (mechanism-limited by the corner slides + walkway clearance) |
 | Pinhole position | Center of one 20ft long-side wall | |
 | Nominal film plane | Opposite 20ft long-side wall | flush to wall |
-| Structural ribs | Every 457mm (18 in) along length | Rail mounting points |
+| Structural ribs | Every <!-- BEGIN fact:container_rib_spacing_mm -->457<!-- END fact:container_rib_spacing_mm -->mm (18 in) along length | Rail mounting points |
 
 ---
 

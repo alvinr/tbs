@@ -221,7 +221,7 @@ Cyanotype coating is sensitive to humidity. Check with a digital hygrometer:
 
 ### 2.4 Mounting the Muslin
 - [ ] 2.4.1 — Retrieve the pre-cut muslin. Confirm the HDPE filler strip is seated in the frame's L channel along the three clamped edges (it stays installed).
-- [ ] 2.4.2 — Start at the **top edge**. Open each nylon spring clamp by hand and hook it over the frame edge so its swivel pads bite the muslin against the filled sandwich; the spring holds it closed with tactile feedback. Work along the top at 150mm centers (30 clamps) — hanging from the top lets the fabric fall straight.
+- [ ] 2.4.2 — Start at the **top edge**. Open each nylon spring clamp by hand and hook it over the frame edge so its swivel pads bite the muslin against the filled sandwich; the spring holds it closed with tactile feedback. Work along the top at <!-- BEGIN fact:clamp_spacing_mm -->150<!-- END fact:clamp_spacing_mm -->mm centers (30 clamps) — hanging from the top lets the fabric fall straight.
 - [ ] 2.4.3 — Work down the **left and right edges** (14 clamps each), pulling the fabric taut outward from center. Total: **58 clamps** on the top + two sides.
 - [ ] 2.4.4 — The **bottom edge is left unclamped** (no clamp clearance to the raised walkway; keeps the swing/tilt envelope clear). Tension the fabric downward and secure the bottom flat against the plane by the trained method, so it cannot flap when the plane tilts or swings.
 - [ ] 2.4.5 — Final check: no wrinkles or sags when viewed with the safelight from 2 meters. Any slack will print as a soft zone.

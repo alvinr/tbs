@@ -28,7 +28,7 @@ on the ¾" branch gives shut-off control from the prep position.
 
 ## 2. Location and Spatial Constraints
 
-The shelf is in the **widened near walkway** (500 mm deep), hinged on the
+The shelf is in the **widened near walkway** (<!-- BEGIN fact:walkway_near_wide_w_mm -->500<!-- END fact:walkway_near_wide_w_mm --> mm deep), hinged on the
 pinhole wall **left of the battery bank**. Deployed, it
 projects 300 mm into the walkway. The operator stands on the widened walkway and works
 facing the wall. When folded up, the full walkway is clear.
@@ -59,7 +59,7 @@ film-plane position.
 | Deployed footprint | Hinged on the pinhole wall, projects 300 mm |
 | Stowed (transport) | Vertical against the wall, ~25 mm proud |
 | Work surface height | 945 mm above the 130 mm walkway deck |
-| Walkway (widened) | 500 mm deep — ~200 mm pass when deployed, full clear when stowed |
+| Walkway (widened) | <!-- BEGIN fact:walkway_near_wide_w_mm -->500<!-- END fact:walkway_near_wide_w_mm --> mm deep — ~200 mm pass when deployed, full clear when stowed |
 | Evap cooler (stow) | Slides under the deployed shelf |
 | Optical cone | ~321 mm clear |
 

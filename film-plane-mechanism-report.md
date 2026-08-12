@@ -33,7 +33,7 @@ The floor plan below shows the film plane rail positions in the context of the c
 | Interior height | <!-- BEGIN fact:film_plane_height_mm -->2,094<!-- END fact:film_plane_height_mm -->mm (6 ft 10 in) | Film plane height |
 | Pinhole position | Center of one 20ft long-side wall | |
 | Nominal film plane | Opposite 20ft long-side wall | flush to wall |
-| Structural ribs | Every 457mm (18 in) along length | Rail mounting points |
+| Structural ribs | Every <!-- BEGIN fact:container_rib_spacing_mm -->457<!-- END fact:container_rib_spacing_mm -->mm (18 in) along length | Rail mounting points |
 
 ---
 

@@ -426,7 +426,7 @@ TBS-001 supplements the original cargo doors with a purpose-built stepped hinged
 
 For operations involving darkroom chemistry inside the container:
 
-- **Fan A (exhaust):** 6" vent penetration on the sealed end wall, in the 270mm plumbing corridor directly below the X1 fill port — the only full-height clear channel past the 1,000L direct-stack (totes reach 2,336mm). Interior face covered with a 300mm deep light-trap baffle duct (L-shaped offset baffles, black sheet metal).
+- **Fan A (exhaust):** 6" vent penetration on the sealed end wall, in the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm plumbing corridor directly below the X1 fill port — the only full-height clear channel past the 1,000L direct-stack (totes reach <!-- BEGIN fact:ibc_stack_height_mm -->2,336<!-- END fact:ibc_stack_height_mm -->mm). Interior face covered with a 300mm deep light-trap baffle duct (L-shaped offset baffles, black sheet metal).
 - **Fan B (intake):** 6" fan mounted low on the hinged panel (near corner zone by the pinhole wall, so its conduit runs along the pinhole wall without crossing the suspension rails). Baffle duct protrudes from the panel exterior face — draws fresh air from the open doorway during operation. Wiring via flexible coiled cable from fixed door frame to panel (see [Electrical Report](electrical-report.md) §8.3).
 - During exposure: fans off
 - During processing/loading: fans on for ventilation

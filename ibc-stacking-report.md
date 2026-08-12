@@ -7,7 +7,7 @@
 TBS-001's three-circuit water system requires four 1,000 L caged composite totes arranged in a
 2×2 stack in the right end zone of the container. Two Blue supply
 totes (IBC-1 and IBC-2) sit on top; one Brown recycle tote (IBC-3) and one Waste tote
-(IBC-4) sit on the bottom. A welded mild steel **restraint-only** frame restrains all four direct-stacked totes for transport, and maintains a 270mm plumbing corridor
+(IBC-4) sit on the bottom. A welded mild steel **restraint-only** frame restrains all four direct-stacked totes for transport, and maintains a <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm plumbing corridor
 between the near and far columns for internal pipe routing, valves, and the equipment
 panel.
 
@@ -69,7 +69,7 @@ panel.
 | Column X range | 4,674–5,893mm (right-justified to sealed end wall) |
 | Plumbing corridor | Yd=1,046–1,316mm (270mm gap between columns) |
 | Single IBC height | 1,168mm |
-| Stacked height (2 totes, direct-stack cage-on-cage) | 2,336mm (2 × 1,168mm — no deck/mat between tiers) |
+| Stacked height (2 totes, direct-stack cage-on-cage) | <!-- BEGIN fact:ibc_stack_height_mm -->2,336<!-- END fact:ibc_stack_height_mm -->mm (2 × 1,168mm — no deck/mat between tiers) |
 | Ceiling clearance | <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm (2388 − 2,336mm) — tight but transport-validated (see [weight report](weight-distribution-report.md)) |
 
 ---
@@ -216,7 +216,7 @@ in [§7](#7-internal-plumbing).)
 
 ## 7. Internal Plumbing
 
-All internal supply and return lines route through the 270mm plumbing corridor
+All internal supply and return lines route through the <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm -->mm plumbing corridor
 between the near and far IBC columns, reaching each tote's corridor-facing DN50
 butterfly valve (S60×6 thread). The pipe specification, the per-circuit routing
 (X1 Blue gravity-fill teed to both top totes, X3 Brown and X4 Waste pumped drains,

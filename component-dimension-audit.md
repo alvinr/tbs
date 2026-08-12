@@ -56,7 +56,7 @@ discrepancy and the fix that was applied.*
 ### 3. Pump — Shurflo 2088-554-144 ✅ RESOLVED (§4)
 - **Real:** 8.5"L × 5"W × 4.5"H = **216 × 127 × 114 mm**. [Fresh Water Systems](https://www.freshwatersystems.com/products/shurflo-2088-554-144-delivery-pump-3-5-gpm-45-psi-12vdc-no-cord) · [datasheet PDF](https://www.pumpagents.com/pdf/ShurfloPumps/2088-554-144.pdf)
 - **Modeled:** `PUMP_D`=100 (pump zone width). 4–5 pumps tile the Corridor Plumbing Panel.
-- **Problem:** a real 2088 is **216 mm long × 127 mm wide** — the panel pump columns are drawn ~half-size. With 5 of them plus the accumulator + 3× 594 mm filters, the **panel layout must be re-checked for fit** (panel face is 270 mm corridor × 2,060 mm tall).
+- **Problem:** a real 2088 is **216 mm long × 127 mm wide** — the panel pump columns are drawn ~half-size. With 5 of them plus the accumulator + 3× 594 mm filters, the **panel layout must be re-checked for fit** (panel face is <!-- BEGIN fact:corridor_width_mm -->270<!-- END fact:corridor_width_mm --> mm corridor × 2,060 mm tall).
 - **Action:** set the modeled pump footprint to ~216×127×114, re-lay-out the panel (`generate_panel_layout.py` + 3D `equipment_panel()`), re-check corridor depth.
 
 ### 4. Filter housing — Big Blue 4.5" × 20" ✅ RESOLVED (§4)

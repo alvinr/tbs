@@ -105,7 +105,7 @@ the grating on both sides of the slit, eliminating unsupported overhang.
 
 **Sheet 9 — Detail F: Near-Walkway Bump-Out (pinhole wall, plan).** The 500mm-deep standing
 band over X1,055–3,083, its 5 widened wall-cantilever brackets on the ribs, the 100mm deck
-overhang past each end bracket, and the spray-bar pole slit at the pinhole (X2,399) — the
+overhang past each end bracket, and the spray-bar pole slit at the pinhole (X2,454) — the
 pinhole-side counterpart to the left drum-exit punch-out (Sheet 5).
 
 ![TBS-001 Walkway — Sheet 9: Near-Walkway Bump-Out (Pinhole Wall)](assets/walkway-sheet9.png)

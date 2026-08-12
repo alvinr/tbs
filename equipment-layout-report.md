@@ -48,7 +48,7 @@ Overall floorplan can be seen below. Its essentially split into three areas, lef
 | Battery bank (1× 100Ah LiFePO4 Core, 260×169×211mm; stacked provision for 2nd) | 1,829–2,089 | 160–371 | Skinny EP column, vertically stacked (side busbar); clears the optical cone |
 | Solar charge controller | Within panel | — | Mounted inside enclosure |
 | Cable trunking | Along wall face, H=1,800mm | — | Full length |
-| Blue supply pipe → spray bar | along wall to X=2,399 | — | Rigid 1/2" PVC Sch-40 from the corridor pump panel to the spray-bar feed; pumps themselves are on the plumbing panel in the IBC corridor (§2.4 / [Plumbing Report](plumbing-report.md)) |
+| Blue supply pipe → spray bar | along wall to X=2,454 | — | Rigid 1/2" PVC Sch-40 from the corridor pump panel to the spray-bar feed; pumps themselves are on the plumbing panel in the IBC corridor (§2.4 / [Plumbing Report](plumbing-report.md)) |
 
 ### 2.3 Optical Zone
 
@@ -57,8 +57,8 @@ spans this zone (nominal far position).
 
 | Item | X (mm) | Yd (mm) | H (mm) | Notes |
 |------|--------|---------|--------|-------|
-| Processing tray (2 panels, 304 SS) | 170–4,629 | 80–2,280 | 0–50 | 50mm rim; 20mm clearance to film plane rails; sump well at X=2,399, Yd=80 with P-04 suction pickup to 3W-DV-02. On tapered HDPE shim strips. Permanently installed. |
-| Perimeter walkway (4 sections, removable) | 170–4,629 | 0–300 / 2,062–2,362 | 0–140 | 300mm wide, 140mm deck height (115mm support + 25mm grate). Near/far: wall-cantilevered 8mm gusset brackets at 457mm centers. Right: cantilever rectangle (2×1×0.120in steel frame) off the IBC frame + wall cleats; grate on 1×1×3/16in L-angle bearers. Left: removable lift-out grate on 5 floor-leg cantilever brackets bolted to bare floor outside the tray (arms to X=470, 3 extended to X=770 on the punch-out; the panel occupies this end wall), 25mm grating. Left corners: butt joint (no miter). No tray contact (left brackets bolt to bare floor outside the tray). Floor-leg arm (Z=75–115) clears the 50mm tray rim and the Z60 spray bar by 15mm. |
+| Processing tray (2 panels, 304 SS) | 280–4,629 | 80–2,280 | 0–50 | 50mm rim; 20mm clearance to film plane rails; sump well at X=2,386, Yd=80 with P-04 suction pickup to 3W-DV-02. On tapered HDPE shim strips. Permanently installed. |
+| Perimeter walkway (4 sections, removable) | 280–4,629 | 0–300 / 2,062–2,362 | 0–140 | 300mm wide, 140mm deck height (115mm support + 25mm grate). Near/far: wall-cantilevered 8mm gusset brackets at 457mm centers. Right: cantilever rectangle (2×1×0.120in steel frame) off the IBC frame + wall cleats; grate on 1×1×3/16in L-angle bearers. Left: removable lift-out grate on 5 floor-leg cantilever brackets bolted to bare floor outside the tray (arms to X=470, 3 extended to X=770 on the punch-out; the panel occupies this end wall), 25mm grating. Left corners: butt joint (no miter). No tray contact (left brackets bolt to bare floor outside the tray). Floor-leg arm (Z=75–115) clears the 50mm tray rim and the Z60 spray bar by 15mm. |
 
 The processing tray sits below the film plane carriage blocks (minimum Z=140mm at maximum 40° tilt; the lower max angle only increases clearance), providing 90mm clearance above the tray rim. The tray does not contact or interfere with the U-channel depth rails.
 
@@ -312,9 +312,9 @@ The light trap drum sweeps through exterior space during 180° rotation. No inte
 | Parameter | Value |
 |-----------|-------|
 | Equipment zone concept | X=0–150mm and X=4,649–5,893mm end zones |
-| Pinhole position | X=2,399mm (centered on active FP) |
-| Active film plane width | <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm (X=150–4,649mm) |
-| Rail positions | X=150mm, X=4,649mm |
+| Pinhole position | X=2,454mm (centered on active FP) |
+| Active film plane width | <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm (X=260–4,649mm) |
+| Rail positions | X=260mm, X=4,649mm |
 | Rail span | <!-- BEGIN fact:film_plane_width_mm -->4,389<!-- END fact:film_plane_width_mm -->mm |
 | Max swing angle | <!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° |
 | Blue IBCs (×2) | Right end zone, X=4,674mm, 2×2 stack top tier |

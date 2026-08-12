@@ -46,8 +46,8 @@ restriction is imposed.
 sits left of the cone's left boundary at the shelf's deepest point (Yd=300):
 
     cone_left(300) = PH_X + (FP_X_L − PH_X) × 300 / FP_Y
-                   = 2,399 + (150 − 2,399) × 300 / 2,262
-                   = 2,399 − 298 = 2,101 mm
+                   = 2,454 + (260 − 2,454) × 300 / 2,262
+                   = 2,454 − 291 = 2,163 mm
 
 → the shelf right edge is ~**321 mm** outside (left of) the cone. No vignetting at any
 film-plane position.

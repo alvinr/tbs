@@ -28,7 +28,7 @@ fabricator-ready** drawing — the **template** for rolling the same standard ac
 | Z + X cross-slide | **304** flat-bar ¼"×1½" (6.35×38.1) on UHMW pad + brass-tip gib | — |
 | U-joint | **Belden UJ-SS750x375** (3/8" bore, 0.75" OD, 45°), Belden 806VF1 boot; input stub in McMaster **4040N12** 304 shaft support; 3/8" 304 stub | 303/416 SS |
 | Corner plate | ¼" **304 SS** 6×8" blank, press-brake **L-bracket** | 304 |
-| Frame angle | 2×2×⅛" **6061-Al** angle, welded rigid rectangle 4,499×2,094 | mill |
+| Frame angle | 2×2×⅛" **6061-Al** angle, welded rigid rectangle 4,389×2,094 | mill |
 
 _(The TODO's "Ruland US12-6-6-SS" is stale — the U-joint was changed to Belden. "Wheels/trolley on
 316 pipe" is a superseded concept — the built design is the U-channel + acetal skate.)_

@@ -44,9 +44,9 @@ The four-corner mechanism supports all view-camera movements. Corners are labele
 
 **Maximum tilt angle** (single-axis): **±40°** — set by the corner cross-slide Z travel (~250mm); the depth rails alone would allow a steeper angle.
 
-**Maximum swing angle** (single-axis): **±28°** — set by the rail depth available over the 4,499mm span.
+**Maximum swing angle** (single-axis): **±28°** — set by the rail depth available over the 4,389mm span.
 
-(Swing angle is smaller than tilt angle because the active film plane is 4,499mm wide — the left rail sits at X=150mm and the right rail at X=4,649mm. The same Y-axis depth difference over a wider span produces a shallower angle.)
+(Swing angle is smaller than tilt angle because the active film plane is 4,389mm wide — the left rail sits at X=260mm and the right rail at X=4,649mm. The same Y-axis depth difference over a wider span produces a shallower angle.)
 
 Because the plane is a **fixed-size rigid rectangle**, its physical height stays **2,094mm at every angle** — it does not grow. The corner **cross-slides** absorb the in-plane arc travel that a rigid rotation forces on each corner, so a single rigid backing panel suffices.
 
@@ -66,7 +66,7 @@ The plane is always flat, so every achievable pose is a single tilt **or** swing
 | C5 | Strong swing | 412 | 1950 | 412 | 1950 | 0° | 20.0° | 2,094mm |
 | C6 | Max swing | 125 | 2237 | 125 | 2237 | 0° | 28.0° | 2,094mm |
 
-*Depths measured from the pinhole wall about the mid-rail center. Tilt = asin(2·Δd_top-bottom / FP_H) about the plane center (FP_H=2094); swing = asin(2·Δd_left-right / FP_W) (FP_W=4499). Rail positions: left X=150mm, right X=4,649mm.*
+*Depths measured from the pinhole wall about the mid-rail center. Tilt = asin(2·Δd_top-bottom / FP_H) about the plane center (FP_H=2094); swing = asin(2·Δd_left-right / FP_W) (FP_W=4389). Rail positions: left X=260mm, right X=4,649mm.*
 
 A compound *twist* (diagonal, non-coplanar) is **not achievable** — a rigid plane cannot form a ruled surface. Combined tilt+swing is available only as a flat rotation within the ±40° / ±28° envelope.
 

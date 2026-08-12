@@ -71,7 +71,7 @@ water 1,000 kg/m³.
 | Solar controller | 2 | 1,700–1,800 | 0–100 | MPPT charge controller |
 | Plumbing — Corridor panel | 5 | 4,760–4,874 | 1,046–1,160 | 4× Shurflo 2088 (P-01/P-03/P-04/P-05) + ACC-01 |
 | Plumbing — Pinhole Wall panel | 8 | 3,300–4,016 | 12–196 | P-02 + 3-stage Big Blue filter (dry); on the pinhole wall — est. |
-| Film plane carriage | 57 | 260–4,649 | 2,212–2,312 | **3mm Dibond ACM backing sheet ≈36 kg (3.80 kg/m² × the FP_W×FP_H face — moves with the plane)** + plain 6061 Al angle frame (50.8×50.8×3.175mm; EXPENDABLE — kept aluminum for weight + cost, replace on pitting) + 58 nylon muslin clamps + 4 acetal skate carriages |
+| Film plane carriage | <!-- BEGIN weight:wt-comp-film -->51<!-- END weight:wt-comp-film --> | 260–4,649 | 2,212–2,312 | **3mm Dibond ACM backing sheet ≈36 kg (3.80 kg/m² × the FP_W×FP_H face — moves with the plane)** + plain 6061 Al angle frame (50.8×50.8×3.175mm; EXPENDABLE — kept aluminum for weight + cost, replace on pitting) + 58 nylon muslin clamps + 4 acetal skate carriages |
 | Tilt-swing board | 30 | 2,089–2,709 | 0–100 | 620×620×45mm Al plate + spherical pivot + screws |
 | Fans (A+B) | 4 | End walls | Near corners | 2× 150mm axial panel fans |
 | Baffle ducts | 6 | Distributed | Distributed | 2× galvanized steel baffle ducts |

@@ -491,7 +491,7 @@ def build_components():
                   _film_plane_carriage_weight(),
                   FP_X_L, FP_X_R, FP_Y - 50, FP_Y + 50,
                   100, C_HGT - 100, color=C_ALUM,
-                  calc_note="Al angle frame + 92 clamps + 4 carriages"),
+                  calc_note=f"Al angle frame + {CLAMP_N_TOTAL} clamps + 4 carriages"),
         Component("Film depth rails", "structure",
                   18.4,
                   FP_X_L, FP_X_R, 0, C_WID,

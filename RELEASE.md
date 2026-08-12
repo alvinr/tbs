@@ -24,6 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Film-plane blueprint: Sheet 7 upgraded from system-arrangement to fabricator-grade GA.** Added the
+  frame-fabrication content a shop needs: DETAIL A corner joint (45° miter + TIG fillet, per the joint
+  decision) with the 2"×2"×3/16" 6061-T6 angle callout; the ACM backing strip layout (4 vertical Dibond
+  strips, 3× 1219 + 1× 732 mm, 3 butt seams, splice-battened); and the 58× nylon-spring-clamp stations
+  @ 150 mm (top + 2 sides). Also fixed a rail-material drift — the rail was labeled both "304" and
+  "6061-Al"; it is 6061-Al 76×38 U-channel throughout now. (Sheets 1 & 2 to follow.)
+
 - **Film-plane blueprint: fixed stale `X150` left-rail labels** on the 2D sheets — the corner-edge
   resolution moved the left rail to X260 (`FP_X_L`) and the geometry auto-followed the constant, but
   five hardcoded callout/comment strings still read "X150". Now reference `RAIL_X_L` so they can't drift

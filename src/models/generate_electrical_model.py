@@ -640,7 +640,7 @@ def generate_ruby():
         "has a detailed breakdown of construction, schematic and other diagrams to show how each "
         "system it built, installed, used and maintained. The 3d model below provides a simply way "
         "to view the whole system.",
-        "6930c96be025469fb8ef702393d7c35f", "sketchup")
+        ov.model_uid("electrical"), "sketchup")
 
     return f'''# SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards

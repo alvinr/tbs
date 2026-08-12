@@ -163,7 +163,7 @@ def generate_ruby():
     sf_meta = ov.sketchfab_meta_ruby(
         "TBS-001 IBC Model",
         "Details of the IBC stack, frame and plumbing panel.",
-        "8d091c60e93848f38e26c9c89a08cbc8", "sketchup")   # correct IBC UID (the .skp had the overview's e624e210 by mistake)
+        ov.model_uid("ibc-stack"), "sketchup")
 
     return f'''# SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards

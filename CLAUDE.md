@@ -155,8 +155,12 @@ ripple into both.
 - **When a change touches `tbs_constants.py` (or otherwise alters a system
   component's geometry), re-run every SketchUp model that contains the affected
   component** — regenerate, re-send, and re-save it:
-  `python3 src/models/generate_sketchup_model.py --save --send` (then commit the
-  updated `*.skp` + `*.rb` alongside the diagram/constant change).
+  `python3 src/models/generate_sketchup_model.py --save --send`, then run
+  `python3 src/generators/manifest.py --update` and commit the updated `*.skp`
+  **+ `dependencies.yml`** alongside the diagram/constant change. **The `.rb` are
+  NOT committed** — they're gitignored build artifacts; their `dependencies.yml`
+  `source_hash` (the manifest) is the drift tripwire instead (see *Model registry
+  & staleness manifest* below).
 - **`dependencies.yml` is the machine source of truth** for the `script → output-file`
   graph (which generator/model writes which PNG / `.skp` / `.rb`). It is validated by
   `lint.py` (so it can't drift) and the per-constant cascade is **computed** from it —
@@ -174,6 +178,15 @@ ripple into both.
     output; names any direct-`.skp` model to re-send). `component-dependency-map.md`
   now holds the human design rationale (§1 component→constant registry, §3 diagram matrix,
   §3.1 per-model narrative) — keep that updated when a component's design changes.
+- **Model registry & staleness manifest (`dependencies.yml`).** Each `models:` entry is the
+  SINGLE home for that model's `uid` (stable Sketchfab UID — generators read it via
+  `ov.model_uid("<name>")`, never hardcode it; `push_sketchfab.py` reads/rewrites it), its
+  `embed_files`, and its `source_hash`. The `source_hash` is `sha256` of the model's regenerated,
+  **identity-stripped, float-normalized** `.rb` (`src/generators/manifest.py`) — it REPLACED the
+  committed `.rb` as the `.skp` drift tripwire. So: `.rb` are gitignored (not committed);
+  `manifest.py --check` (and `lint.py --verify-all`) recompute + compare, flagging a `.skp` that is
+  stale vs source; `manifest.py --update` refreshes the hashes after a legitimate re-send. A uid/title
+  change never false-flags (identity is stripped from the hash). `models/sketchfab.json` is retired.
 - Today there is one model (`overview.skp`) containing nearly every component, so
   in practice any `tbs_constants.py` change ⇒ re-run `overview`.
 - **Audit for drift** after a geometry/design change (or when asked "does this

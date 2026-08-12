@@ -491,7 +491,7 @@ def generate_ruby():
         "TBS-001 Walkway Model",
         "The perimeter walkway provides dry-foot operator access around all four sides of the "
         "processing tray without wading through chemical solution.",
-        "96b3d0e5fc8b4fc18c528f64bda028bc", "sketchup")
+        ov.model_uid("walkway"), "sketchup")
 
     return f'''# SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards

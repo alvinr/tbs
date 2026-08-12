@@ -438,6 +438,18 @@ def sketchfab_meta_ruby(title, description, model_id, tags="tbs sketchup", force
             f'model.set_attribute("sketchfab", "model_tags", {tg}) if model.get_attribute("sketchfab", "model_tags").to_s.strip.empty?\n')
 
 
+def model_uid(name):
+    """The stable Sketchfab UID for logical model `name`, read from dependencies.yml —
+    the single home for every model's uid. Generators pass `model_uid("<name>")` to
+    sketchfab_meta_ruby instead of hardcoding the UID (which used to drift between the
+    generator and models/sketchfab.json). Names match the `models:` keys in dependencies.yml."""
+    import deps
+    uid = deps.ENTRIES.get(name, {}).get("uid", "")
+    if not uid:
+        raise SystemExit(f"model_uid: no uid for model '{name}' in dependencies.yml")
+    return uid
+
+
 def ruby_cone_wire(name, apex, base, tag):
     """Generate Ruby for a wireframe pyramid (edges only) in `ents`.
 
@@ -2259,7 +2271,7 @@ def generate_ruby():
         "cyanotype prints measuring approximately 15 feet wide by 8 feet tall. It is transportable, "
         "deployable in remote locations, and self-sufficient for water and processing. It is not an "
         "installation that resembles a camera. It is a camera.",
-        "e624e210bf3d4de08b1a7b7261a66c45", "sketchup")
+        model_uid("overview"), "sketchup")
 
     return f'''# SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards

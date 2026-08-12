@@ -24,6 +24,18 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Model `.rb` retired from git → `dependencies.yml` source_hash manifest; Sketchfab UID
+  consolidated.** The 10 generated SketchUp `.rb` were committed only as a diff/staleness proxy for
+  the binary `.skp`; they're now gitignored, replaced by a per-model `source_hash` in
+  `dependencies.yml` — `sha256` of the regenerated, identity-stripped, float-normalized `.rb`
+  (`src/generators/manifest.py`; `lint.py --verify-all` recomputes + compares, `manifest.py --update`
+  refreshes). Same drift tripwire, no expanded Ruby in the repo, and immune to the float-noise that
+  spuriously flagged the old byte-diff. Also folded the model registry into `dependencies.yml`: each
+  model now carries its `uid` + `embed_files` there as the single home (generators read the uid via
+  `ov.model_uid()` instead of hardcoding it; `push_sketchfab.py` reads/rewrites it), resolving the
+  UID drift (it lived in both the generators and the 6-of-10 `models/sketchfab.json`, which is now
+  retired). New `lint.py` gate: models must declare a valid uid/embed_files/source_hash.
+
 - **Editorial + FP_X_L=260 doc-consistency sweep.** Wrapped 26 restated values in `<!-- fact:KEY -->`
   placeholders so they auto-cascade (corridor 270, rib 457, walkway 500, clamp 150, IBC stack 2,336 —
   the last gaining `display: comma`); fixed the American-spelling gate (`grey`→`gray`); and finished the

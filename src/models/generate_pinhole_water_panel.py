@@ -23,7 +23,6 @@ import generate_corridor_water_panel as cp        # the new corridor plumbing pa
 # ── Sketchfab upload metadata (stamped onto the model on every --send) ────────
 #    Read from the live water.skp 2026-07-03 (the model's own current title/description).
 SF_TITLE = "TBS-001 Water Model"
-SF_ID    = "1dae932430924e9b993e153a16f485fc"   # stable Sketchfab UID — re-uploads REPLACE this model
 SF_TAGS  = "sketchup"
 SF_DESC  = (
     "The camera operates in remote locations with no municipal water or drainage. "
@@ -804,7 +803,7 @@ model.definitions.purge_unused
 model.materials.purge_unused
 model.pages.to_a.each {{ |pg| model.pages.erase(pg) }}
 opts = model.options["UnitsOptions"]; opts["LengthUnit"]=2; opts["LengthFormat"]=0
-{ov.sketchfab_meta_ruby(SF_TITLE, SF_DESC, SF_ID, SF_TAGS, force_name=True)}
+{ov.sketchfab_meta_ruby(SF_TITLE, SF_DESC, ov.model_uid("water"), SF_TAGS, force_name=True)}
 {tags_ruby}{body}
 # remove the FAR walkway deck AND its cantilever brackets (not wanted in this view)
 model.definitions.each {{ |d| d.entities.grep(Sketchup::Group).each {{ |g| g.erase! if g.valid? && g.name =~ /^Walkway Far/ }} }}

@@ -345,7 +345,7 @@ def generate_ruby():
         "TBS-002",
         "A classroom-ready design for teaching pinhole photography — its process and its craft "
         "— to students from elementary school through college.",
-        "4dc2aa302f884cb192da7c57725d4bf2", "sketchup")
+        ov.model_uid("mini-tbs"), "sketchup")
 
     return f'''# SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards

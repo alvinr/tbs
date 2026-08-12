@@ -353,7 +353,9 @@ def warn_deps_valid() -> tuple[bool, list[str]]:
             continue
         txt = open(scr, encoding="utf-8").read()
         for out in e["outputs"]:
-            if not os.path.exists(os.path.join(ROOT, out)):
+            # .rb outputs are generated build artifacts (gitignored; the source_hash below is their
+            # stand-in) — don't assert they exist on disk. .skp/.png are tracked deliverables.
+            if not out.endswith(".rb") and not os.path.exists(os.path.join(ROOT, out)):
                 issues.append(f"{name}: declared output {out} is missing on disk")
             base = os.path.basename(out)
             # The script must reference each output's basename it writes (png stem / .rb). The .skp
@@ -372,6 +374,20 @@ def warn_deps_valid() -> tuple[bool, list[str]]:
                     written |= set(re.findall(r"([A-Za-z0-9_.\-]+\.(?:png|svg))", line))
             for w in sorted(written - declared):
                 issues.append(f"{name}: writes {w} but it is NOT declared in dependencies.yml")
+        # Models carry the Sketchfab identity + staleness manifest — structural check only (cheap; the
+        # source_hash is RECOMPUTED by --verify-all, not here). uid = single home (generators read it).
+        if e["kind"] == "model":
+            if not re.fullmatch(r"[0-9a-f]{32}", (e.get("uid") or "")):
+                issues.append(f"{name}: missing/invalid uid in dependencies.yml (expected 32 hex)")
+            embeds = e.get("embed_files") or []
+            if not embeds:
+                issues.append(f"{name}: no embed_files declared in dependencies.yml")
+            for ef in embeds:
+                if not os.path.exists(os.path.join(ROOT, ef)):
+                    issues.append(f"{name}: embed_file {ef} does not exist")
+            sh = e.get("source_hash") or ""
+            if not (sh.startswith("sha256:") and len(sh) > 20 and not sh.endswith("PENDING")):
+                issues.append(f"{name}: source_hash missing/PENDING (run manifest.py --update)")
     return (not issues), (issues or ["dependencies.yml agrees with the filesystem + scripts"])
 
 
@@ -991,25 +1007,28 @@ def _verify_all_report(diagrams: bool) -> int:
     freshly regenerated — review + commit it + re-send the .skp. Run on a CLEAN tree (pre-merge / publish)."""
     deps = _deps()
     print("Full-sweep output verification (staging-independent) — regenerating every registered output:\n")
-    dirty = [f for f in _git(["status", "--porcelain", "--", "src/models"]).splitlines()
-             if f.strip().endswith(".rb")]
-    if dirty:
-        print("  ⚠ src/models has uncommitted .rb edits before the sweep — commit/stash first for a clean signal.\n")
 
-    # ── models: regenerate each --save IN PLACE, then git-diff the .rb (deterministic → real signal) ──
-    model_scripts = sorted({e["script"] for e in deps.ENTRIES.values()
-                            if any(o.endswith(".rb") for o in e["outputs"])})
-    print(f"  Models ({len(model_scripts)}):")
-    fails = []
-    for scr in model_scripts:
-        r = subprocess.run([sys.executable, os.path.join(ROOT, scr), "--save"], capture_output=True, cwd=ROOT)
-        print(f"    {'ok ' if r.returncode == 0 else 'ERR'} {os.path.basename(scr)}")
-        if r.returncode != 0:
-            fails.append(scr)
-    stale_rb = sorted(f for f in _git(["diff", "--name-only", "--", "src/models"]).split() if f.endswith(".rb"))
-    skp_only = sorted(os.path.basename(e["script"]) for e in deps.ENTRIES.values()
-                      if any(o.endswith(".skp") for o in e["outputs"])
-                      and not any(o.endswith(".rb") for o in e["outputs"]))   # e.g. water.skp — no .rb to compare
+    # ── models: regenerate each .rb (--save, offline) and hash-compare its canonical form (identity
+    #    stripped, floats normalized) vs the dependencies.yml source_hash — the manifest that REPLACED
+    #    the committed .rb as the .skp drift tripwire. A mismatch = the saved .skp is stale vs source →
+    #    regenerate + re-send + `manifest.py --update`. (.rb are gitignored; nothing to git-diff.) ──
+    sys.path.insert(0, HERE)
+    import manifest  # noqa: E402
+    names = manifest.model_names()
+    print(f"  Models ({len(names)}):")
+    fails, stale_hash = [], []
+    for n in names:
+        try:
+            got = manifest.compute(n)
+        except SystemExit as ex:
+            print(f"    ERR   {n}: {ex}")
+            fails.append(n)
+            continue
+        stored = deps.ENTRIES[n].get("source_hash", "")
+        bad = (got != stored)
+        print(f"    {'STALE' if bad else 'ok   '} {n}")
+        if bad:
+            stale_hash.append((n, stored, got))
 
     # ── diagrams (opt-in): regenerate each generator to a temp DIAGRAMS_DIR, byte-compare PNGs ──
     stale_png = []
@@ -1024,20 +1043,19 @@ def _verify_all_report(diagrams: bool) -> int:
 
     print()
     if fails:
-        print(f"  ✗ {len(fails)} model(s) FAILED to regenerate: {', '.join(os.path.basename(f) for f in fails)}")
-    if stale_rb:
-        print(f"  ✗ {len(stale_rb)} STALE model .rb (regenerated in place — review + commit + re-send the .skp):")
-        for f in stale_rb:
-            print(f"      {f}")
-    if skp_only:
-        print(f"  · {len(skp_only)} model(s) build the .skp directly (no .rb) — can't byte-verify, re-send manually: {', '.join(skp_only)}")
+        print(f"  ✗ {len(fails)} model(s) FAILED to regenerate: {', '.join(fails)}")
+    if stale_hash:
+        print(f"  ✗ {len(stale_hash)} STALE model(s) — source_hash != dependencies.yml "
+              f"(re-send the .skp, then `manifest.py --update`):")
+        for n, stored, got in stale_hash:
+            print(f"      {n}: stored {stored[:22]}… computed {got[:22]}…")
     if diagrams and stale_png:
         print(f"  ⚠ {len(stale_png)} diagram(s) differ (triage: real geometry change vs env/render drift):")
         for f in sorted(set(stale_png)):
             print(f"      {f}")
-    if not (fails or stale_rb or stale_png):
+    if not (fails or stale_hash or stale_png):
         print("  ✓ all registered outputs are up to date" + (" (models + diagrams)" if diagrams else " (models)"))
-    return 1 if (fails or stale_rb) else 0   # models block; diagram drift is advisory
+    return 1 if (fails or stale_hash) else 0   # models block; diagram drift is advisory
 
 
 def main() -> int:

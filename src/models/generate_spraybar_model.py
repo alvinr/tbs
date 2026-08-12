@@ -443,7 +443,7 @@ def generate_ruby():
         "TBS-001 Spraybar Model",
         "The processing tray provides the containment surface and the spray bar delivers even "
         "water distribution across the full print width.",
-        "18fb381fbf48459cac25dcaa23958387", "sketchup")
+        ov.model_uid("spraybar"), "sketchup")
 
     return f'''# SPDX-License-Identifier: AGPL-3.0-only
 # © 2026 Alvin Richards

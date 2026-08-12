@@ -36,7 +36,6 @@ TAGS = ["Corners", "Film Plane", "Pinhole", "Context", "Movement", "Shell", "Pla
 # Sketchfab identity — stamped on every --send (force_name) so the model never re-uploads blank.
 # Values are the ones already carried in the live .skp's `sketchfab` attribute dict (stable UID).
 SF_TITLE = "TBS-001 Articulated Film Plane Model"
-SF_ID    = "572b4aaa2d394de1b8852160d7cdcfc3"   # stable Sketchfab UID — re-uploads REPLACE this model
 SF_TAGS  = "sketchup"
 SF_DESC  = ("The configuration the photosensitive film plane is flush against one of the 20ft "
             "long-side walls of the container. This has a view-camera-style moveable film plane — "
@@ -732,7 +731,7 @@ entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.pages.to_a.each {{ |p| model.pages.erase(p) }}
 
-{ov.sketchfab_meta_ruby(SF_TITLE, SF_DESC, SF_ID, SF_TAGS)}
+{ov.sketchfab_meta_ruby(SF_TITLE, SF_DESC, ov.model_uid("film-plane-mechanism"), SF_TAGS)}
 {tags_ruby}
 
 {body}

@@ -32,8 +32,9 @@ file** — a release must not ship without a changelog entry:
   175** (was `RAIL_X_L + BRACE_RHS//2`, so the post had been chasing the rail — the reason the first
   attempt at 244 didn't clear). Costs ~110mm image width (`FP_W` 4499→4389, active area 101→99 sq ft); the
   now-asymmetric plane re-centers the pinhole (`PH_X` 2399→2454, +55mm). Cascaded to facts/CLAUDE.md optics
-  table, 11 diagram generators, and 8 SketchUp models. Bonus: the left rail now clears the swing envelope,
-  so the removable-rail lift-out is retirable (follow-up).
+  table, 11 diagram generators, and 8 SketchUp models. NB: the removable-rail lift-out STAYS — the inboard
+  move clears the pivot region but the panel's long swing arc still crosses the rail in the near/removable
+  zone (Yd ~1950–2066), so that section must still lift out for transport.
 
 - **Detailed corner mechanism reused into every container-scale model + parked film + web-vertical
   rail cascade.** Both film rails stood web-vertical (new single-sourced `FP_RAIL_*` block: ZC_BOT 270 /

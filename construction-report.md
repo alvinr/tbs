@@ -50,7 +50,7 @@ components, steel is cut, etc.
 |---|------|-----------|:------:|
 | 1.1 | Install the **IBC frame posts** (upright skeleton + feet) + **plumbing-panel backing** | — | ☐ |
 | 1.2 | Install 2× IBC totes on the **pinhole wall** (near column) — dropped into the post skeleton | 1.1 | ☐ |
-| 1.3 | Install the **panel equipment** (pumps/filters/valves) + **plumb the IBC corridor** (corridor lines only — *sump + supports → 3.2*) + run the filter skid's **blue recycle** and **grey waste** corridor lines to the IBC panel + run the **purple Cct-C corridor pump wiring** to the pinhole wall (*EP drop connected in 4.3*) | 1.2 | ☐ |
+| 1.3 | Install the **panel equipment** (pumps/filters/valves) + **plumb the IBC corridor** (corridor lines only — *sump + supports → 3.2*) + run the filter skid's **blue recycle** and **gray waste** corridor lines to the IBC panel + run the **purple Cct-C corridor pump wiring** to the pinhole wall (*EP drop connected in 4.3*) | 1.2 | ☐ |
 | 1.4 | Install **Fan A** (exhaust) + run its **Cct-A cable** along the pinhole-wall trunk and **down to the EP drop** (EP itself lands in Phase 4) — *before the far IBCs bury it* | 1.2 | ☐ |
 | 1.5 | Install 2× IBC totes on the **far wall** (far column), then fit the **frame rails + retaining bars** to trap all totes | 1.4 | ☐ |
 | 1.6 | Install the **hinge panel** (light-trap door — *excluding* the light-trap drum) | 1.2 | ☐ |

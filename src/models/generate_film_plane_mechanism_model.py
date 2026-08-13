@@ -10,7 +10,7 @@ Shows the WHOLE film plane with all FOUR corners + the pinhole, so tilt and swin
         DEPTH slide (Y)      — the drive: a top↔bottom depth diff = TILT, a left↔right diff = SWING
         VERTICAL slide (Z)   — absorbs the TILT foreshortening
         HORIZONTAL slide (X) — absorbs the SWING foreshortening
-        U-JOINT (Belden UJ-SS750x375) — tilt + swing, twist locked
+        U-JOINT (Belden SSNBUJ750x3/8KB) — tilt + swing, twist locked
     A light cone from the pinhole to the four corners shows the plane faces the pinhole.
 
 No screws/handwheels — a pinhole's infinite DoF makes this scene control, not focus: push each
@@ -249,7 +249,7 @@ def corner(tag, cx, fz, zc, cin, side, keep="all"):
     sp = corner_slide_parts(cx, fcx, fz, cin, is_bot, ty)  # ty = FP_Y_PARK — slides/U-joint park with the carriage
     P.append(emit_slide(f"Vertical Z slide rail (TILT, green) {tag}", sp["green"]))
     P.append(emit_slide(f"Horizontal X slide rail (SWING, purple) {tag}", sp["purple"]))
-    P.append(emit_slide(f"U-joint (Belden UJ-SS750x375, setscrew) {tag}", sp["ujoint"]))
+    P.append(emit_slide(f"U-joint (Belden SSNBUJ750x3/8KB, setscrew) {tag}", sp["ujoint"]))
     P.append(emit_slide(f"Input stub 3/8 (X slide → U-joint) {tag}", sp["input_stub"]))
     P.append(emit_slide(f"4040N12 304 shaft support (clamps input stub → X slide) {tag}", sp["shaft_support"]))
     P.append(emit_slide(f"Output stub 3/8 (U-joint → corner plate) {tag}", sp["output_stub"]))
@@ -434,7 +434,7 @@ def movement(corner="BL", two_way=False):
     # FLOAT (the OTHER cross-slide + U-joint + its mounting hardware) — floats FORESHORTEN mm along the way
     floatp = [
         perp_slide,
-        emit_slide(f"U-joint (Belden UJ-SS750x375) (Movement {corner})", sp["ujoint"]),
+        emit_slide(f"U-joint (Belden SSNBUJ750x3/8KB) (Movement {corner})", sp["ujoint"]),
         emit_slide(f"Input stub 3/8 (X slide → U-joint) (Movement {corner})", sp["input_stub"]),
         emit_slide(f"4040N12 304 shaft support (clamps stub → carrier) (Movement {corner})", sp["shaft_support"]),
         emit_slide(f"Output stub 3/8 (U-joint → corner plate) (Movement {corner})", sp["output_stub"]),
@@ -586,7 +586,7 @@ def plane_frame(px, pz, yc):
         t = f"({int(fcx)},{int(fz)})"
         # U-joint + stubs + shaft support + frame bolt + corner plate — SHARED (corner_slide_parts), offset -centre
         sp = corner_slide_parts(cx, fcx, fz, cin, isb, yc)
-        for key, lbl in (("ujoint", "U-joint (Belden UJ-SS750x375)"), ("input_stub", "Input stub 3/8"),
+        for key, lbl in (("ujoint", "U-joint (Belden SSNBUJ750x3/8KB)"), ("input_stub", "Input stub 3/8"),
                          ("shaft_support", "4040N12 304 shaft support"), ("output_stub", "Output stub 3/8"),
                          ("frame_bolt", "Frame-corner bolt"), ("corner_plate", "304 SS corner plate")):
             P.append(emit_slide(f"{lbl} {t}", sp[key], -px, -yc, -pz))

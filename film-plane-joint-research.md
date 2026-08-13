@@ -164,8 +164,8 @@ The redesign kept the **four-corner architecture** — it is what gives rise, sh
 not just tilt and swing — but removed the over-constraint the way the theory sanctions: by **adding a real
 freedom at each corner**, not by dropping to three locating points.
 
-- **A 2-axis universal joint at every corner** — an off-the-shelf [Belden UJ-SS750x375](https://www.mrosupply.com/shaft-couplings-and-collars/2561134_uj-ss750x375_belden/)
-  (303/416 SS pin-and-block, published to 45°) supplies tilt + swing and locks twist: the wide-angle,
+- **A 2-axis universal joint at every corner** — an off-the-shelf [Belden SSNBUJ750x3/8KB](https://www.grainger.com/product/BELDEN-Universal-Joint-Stainless-41D816)
+  (stainless needle bearing, published to 45°) supplies tilt + swing and locks twist: the wide-angle,
   torsion-rigid joint §3–§4 demanded, not a plain spherical bearing or rod-end.
 - **A floating horizontal (X) cross-slide at every corner** — the gravity-neutral "added freedom" (§2)
   that lets four corners carry a rigid plane without racking; the vertical (Z) slide absorbs the tilt

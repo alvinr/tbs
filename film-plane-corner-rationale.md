@@ -87,7 +87,7 @@ Getting it right was hard until we grounded it; here is the reasoning, in order.
 - We first assumed a Cardan cross binds too early (~±37°) and would need a **custom offset-pin gimbal**
   (two perpendicular pins on a block, offset so their bores clear, each in double shear). **Grounded
   catalog research corrected that:** relieved-yoke **single stainless universal joints are published to
-  45°** ([Belden UJ-SS750x375](https://www.mrosupply.com/shaft-couplings-and-collars/2561134_uj-ss750x375_belden/) — 303/416 SS, pin-and-block plain
+  45°** ([Belden SSNBUJ750x3/8KB](https://www.grainger.com/product/BELDEN-Universal-Joint-Stainless-41D816) — stainless, needle-bearing
   (friction) bearing, grease-free), which covers our ±40° tilt / ±28° swing at trivial load.
   Because this is *static articulation*, not continuous high-speed rotation, the joint is usable to its
   full angle. **So the 2-axis, twist-locked joint is an off-the-shelf single U-joint — no custom gimbal
@@ -95,18 +95,18 @@ Getting it right was hard until we grounded it; here is the reasoning, in order.
   (low lash), shorter than a fabricated gimbal (recovering film-plane height), in stock, and ~$113/corner.
   (Research doc §3–4.)
 
-## 5. Why a plain pin-and-block joint (not needle/ball)
+## 5. Why a plain needle bearing joint (not needle/ball)
 
 - The corner runs inside the **ferricyanide / citric-acid wash** environment. **Rolling and needle
   bearings corrode and seize** there, and greased joints wash out.
-- So we pick a **stainless pin-and-block plain (friction) bearing** — pins riding in blocks, no rollers.
+- So we pick a **stainless needle bearing plain (friction) bearing** — pins riding in blocks, no rollers.
   It runs **dry/grease-free**, and because the corner is a **static, near-zero-cycle positioning joint**
   (set the angle, clamp, expose), bearing wear and lubrication are non-issues; the corrosion-safe choice is
-  the material, not a grease film. **303/416 stainless** suits the splash/rinse exposure here; step to a
+  the material, not a grease film. **stainless stainless** suits the splash/rinse exposure here; step to a
   more resistant joint only if it is soaked rather than rinsed. (Research doc §6.)
-- **A nitrile boot seals each joint** ([Belden 806VF1 nitrile boot kit](https://www.grainger.com/product/BELDEN-Nitrile-Boot-Kit-750-Coupling-806VF1),
-  single bellows, Ø0.745" fit, zip-tied into a groove on each yoke) — it keeps the ferricyanide/citric wash
-  and debris out of the bronze bearings. Nitrile resists water/alcohol well. We fit it **DRY** (a contaminant
+- **The joint is factory-booted** (the SSNBUJ750x3/8KB ships with an integral bellows over its needle bearings,
+  OD 1-9/32"/32.54mm × OL 1-1/4"/31.75mm — no separate boot part) — it keeps the ferricyanide/citric wash
+  and debris out of the needle bearings. Nitrile resists water/alcohol well. We fit it **DRY** (a contaminant
   barrier only), **not** grease-packed, consistent with the grease-free bearing. The **DryLin slides**
   likewise need no seals — dry-running polymer is unaffected by the wash.
 
@@ -125,16 +125,16 @@ Getting it right was hard until we grounded it; here is the reasoning, in order.
 
 Per corner (×4):
 
-- **1 × single universal joint** — [Belden UJ-SS750x375](https://www.mrosupply.com/shaft-couplings-and-collars/2561134_uj-ss750x375_belden/): 303/416
-  stainless **pin-and-block plain (friction) bearing**, **45° max articulation**, 3/8" bore,
+- **1 × single universal joint** — [Belden SSNBUJ750x3/8KB](https://www.grainger.com/product/BELDEN-Universal-Joint-Stainless-41D816): stainless
+  stainless **needle bearing plain (friction) bearing**, **45° max articulation**, 3/8" bore,
   68 mm long, grease-free — the off-the-shelf 2-axis torsion-locked pivot (~$113, in stock)
 - **2 × base-mount shaft support** — [McMaster 4040N12](https://www.mcmaster.com/4040N12/), 304 SS,
   clamps a 3/8" stub (removable cap + two 6-32 screws): one to the floating X slide, one to the
   film-frame corner (off-the-shelf clamp, not a precision-reamed gimbal)
 - **2 × stub shaft** — 3/8" (9.5 mm) 304 SS rod, ~60 mm each: one end into the U-joint hub (set-screw
   locked), the other clamped in the shaft support
-- **1 × protective boot** — [Belden 806VF1 nitrile boot kit](https://www.grainger.com/product/BELDEN-Nitrile-Boot-Kit-750-Coupling-806VF1):
-  nitrile single bellows, zip-tied to each yoke; fitted **dry** to seal the bronze bearings from the wash
+- **Integral boot** — the SSNBUJ750x3/8KB is factory-booted (bellows over the needle bearings; no separate part):
+  integral bellows sealing the needle bearings from the wash
 - **Depth (Y): friction slide (~2.2 m) + cam clamp** — produces tilt + swing (+ focus); push, then lock
 - **Vertical (Z): friction slide + cam clamp** — absorbs the **tilt** foreshortening; holds when released, then locks
 - **Horizontal (X): float/friction slide + cam clamp** — absorbs the **swing** foreshortening; floats free during setup, then locks
@@ -148,10 +148,10 @@ train** — cheaper, simpler, factory-aligned, and in stock. Drawn in `diagrams/
 1. **Articulate on determinate freedoms; float the redundant horizontal DOF** — the X slide absorbs the
    horizontal arc travel, so four corners aren't over-constrained on that axis; the gravity-loaded vertical
    is held by a friction slide + clamp, not a screw.
-2. **2-axis, torsion-locked joint** — an off-the-shelf single stainless U-joint (Belden UJ-SS750x375, 45°)
+2. **2-axis, torsion-locked joint** — an off-the-shelf single stainless U-joint (Belden SSNBUJ750x3/8KB, 45°)
    gives tilt + swing, enforces "no twist," clears our ±40°/±28° at trivial load, and needs no custom fab.
-3. **Plain pin-and-block joint, grease-free** — stainless pins-in-blocks, no needle/ball rollers to
-   corrode or wash out; a static low-cycle joint so it needs no lubrication; 303/416 SS suits splash/rinse.
+3. **Plain needle bearing joint, grease-free** — stainless pins-in-blocks, no needle/ball rollers to
+   corrode or wash out; a static low-cycle joint so it needs no lubrication; stainless suits splash/rinse.
 4. **Position free, then clamp at the natural pose** — set every corner while the slides are free, then
    lock the cam clamps where the rigid plane already sits, so four clamps never force it (no
    over-constraint, no drive coordination to get wrong). A pinhole's infinite DoF is what lets us do this

@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Film-plane U-joint selected: Belden SSNBUJ750x3/8KB (Grainger 41D816).** Reviewed the plain
+  UJ-SS750x375 datasheet (dims confirmed) but it has no retention, so switched to the **needle-bearing,
+  keyed (3/32×3/64 key) + set-screw, factory-booted** stainless variant (45° confirmed, $252.13 ea). BOM:
+  new `fp-ujoint` + `fp-ujoint-key`, dropped the separate `fp-ujoint-boot` (integral boot); costing +~$403
+  → grand-total mid $30,627→**$31,032**. Cascaded the part number + "needle-bearing / keyed / factory-booted"
+  across the constants (`UJOINT_BOOT_OD` 32.54), Sheets 3/8/9 (J3/J4 → keyed stub + key), the film-plane
+  report, blueprint spec, and cost breakdown. **The 3D model (`film-plane-mechanism`) label re-send is
+  pending** (code updated, needs a `--send` + save).
+
 - **Film-plane corner — Belden U-joint reviewed + carriage-plate hole pattern firmed.** Reviewed the
   Belden UJ-SS750x375 datasheet (`eng-specs/`): OD 19.05 / length 68.3 / 45° all confirmed. Finding: the
   plain part has **no keyway/set-screw** — moving to the **set-screw bore variant** (part # pending) so

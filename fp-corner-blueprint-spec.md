@@ -26,7 +26,7 @@ fabricator-ready** drawing — the **template** for rolling the same standard ac
 | Carriage | 4-wheel **acetal skate** — Ø32 load + Ø20 keeper rollers on Ø10 **304** axles + fab carriage plate | — |
 | Cam clamp | 3/corner McMaster **5128A63** low-profile hold-down toggle | zinc |
 | Z + X cross-slide | **304** flat-bar ¼"×1½" (6.35×38.1) on UHMW pad + brass-tip gib | — |
-| U-joint | **Belden UJ-SS750x375** (3/8" bore, 0.75" OD, 45°), Belden 806VF1 boot; input stub in McMaster **4040N12** 304 shaft support; 3/8" 304 stub | 303/416 SS |
+| U-joint | **Belden SSNBUJ750x3/8KB** (Grainger 41D816; 3/8" keyway bore + set screw, 0.75" OD, 45°, needle-bearing, factory-booted); input stub in McMaster **4040N12** 304 shaft support; keyed 3/8" 304 stub | stainless |
 | Corner plate | ¼" **304 SS** 6×8" blank, press-brake **L-bracket** | 304 |
 | Frame angle | 2×2×⅛" **6061-Al** angle, welded rigid rectangle 4,389×2,094 | mill |
 
@@ -144,6 +144,6 @@ slack exists between `RAIL_OFF_TOP`→2244 and `FP_H`→2254; optional future cl
 ## Open items to settle during design
 
 - ~~Exact travel values for the promoted `XSLIDE_*`~~ **DONE 2026-08-13** — verified vs geometry (Sheet 10): Z 245 / X 257 mm.
-- Belden UJ-SS750x375 — **REVIEWED 2026-08-13** (datasheet `eng-specs/UJ-SS750x375__ZE41.pdf`): OD 19.05 / length 68.3 / yoke 34.2 / hub 24.1 / 45° all confirmed. Two findings: (1) the plain part has **no keyway/set-screw** — ordering the **set-screw bore variant** so both bores clamp the 3/8″ stub (J3/J4); part # TBD (Alvin selecting). (2) Booted envelope captured (`UJOINT_BOOT_OD` 33.34 / `UJOINT_BOOT_LEN` 31.75 — bulges the center to Ø33.34, length unchanged). ~~booted length + bolt/key~~ resolved bar the set-screw part #.
+- ~~Belden U-joint booted length + bolt/key detail~~ **DONE 2026-08-13.** Reviewed the plain `UJ-SS750x375` datasheet (`eng-specs/UJ-SS750x375__ZE41.pdf`) — OD 19.05 / length 68.3 / yoke 34.2 / hub 24.1 / 45° confirmed — but it has no keyway/set-screw, so **selected the retained variant: Belden SSNBUJ750x3/8KB (Grainger 41D816, $252.13 ea)** — 3/8″ **keyway bore (3/32×3/64 key) + set screw**, needle-bearing, stainless, 45° max, and **factory-booted** (integral bellows `UJOINT_BOOT_OD` 32.54 / `UJOINT_BOOT_LEN` 31.75 — no separate boot). Cascaded to constants / parts (fp-ujoint + fp-ujoint-key, boot line dropped) / costing (+~$403) / Sheets 3·8·9 / report. (3D model label re-send pending.)
 - ~~Carriage-plate hole pattern~~ **DONE 2026-08-13** — plate firmed at **80×181×6mm 6061-T6** (`CARRIAGE_PLATE_*`, grown +10 for keeper edge distance); pattern **4× Ø10 stub-axle (40×38) + 4× M8 J1 + 2× M4 cam**, all ≥2×Ø from edges; drawn on Sheet 3 View A + firmed in `parts.py` fp-carriage-plate. (L-plate/corner-plate pattern already in `CORNER_PLATE_HOLE_*`.)
 - ~~Per-corner load + cross-slide bending SF~~ **DONE 2026-08-13** (Sheet 10): 124 N/corner; bars mounted **DEEP** → SF ≈ 10 (flat 1.7, not used).

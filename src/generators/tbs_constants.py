@@ -203,20 +203,20 @@ XSLIDE_UHMW_T = 3.2    # UHMW self-lube pad thickness (mm, 1/8") between carriag
 XSLIDE_GIB_W  = 12     # adjustable gib width (mm) — brass-tipped taper strip on one bar edge
 XSLIDE_GIB_T  = 6.35   # gib thickness (mm) = 1/4"
 XSLIDE_CARR_WALL = 8   # cross-slide carriage wall thickness (mm) around the bar
-# Belden UJ-SS750x375 U-joint (datasheet: MROSupply 2561134 / Belden catalog):
-UJOINT_BORE   = 9.53   # bore (mm) = 0.380" (3/8")
+# Belden SSNBUJ750x3/8KB needle-bearing U-joint (Grainger 41D816; datasheet eng-specs/grainger-41d816.pdf):
+UJOINT_BORE   = 9.53   # bore (mm) = 0.375" (3/8") keyway bore
 UJOINT_OD     = 19.05  # yoke OD (mm) = 0.75" nominal (0.745" actual)
 UJOINT_LEN    = 68.3   # overall length (mm) = 2.690"
 UJOINT_YOKE_L = 34.2   # single-yoke length (mm) = 1.345"
 UJOINT_HUB_L  = 24.1   # hub depth (mm) = 0.950"
 UJOINT_ANGLE  = 45     # max operating angle per side (deg)
 UJOINT_STUB_OD = 9.53  # 3/8" 304 stub-shaft OD (mm) — matches bore (parts.py fp-stub-shaft)
-# RETENTION: the plain UJ-SS750x375 datasheet (eng-specs/) has NO keyway/set-screw — order the
-# SET-SCREW BORE variant so both bores clamp the 3/8" stub (J3/J4). Part # TBD (Alvin selecting).
-# Boot: no downloadable sheet — vendor spec OL 1.25", OD 1-5/16"; seats in the joint's retention
-# grooves and bulges the CENTER to this OD (the yoke OD stays UJOINT_OD; length stays UJOINT_LEN).
-UJOINT_BOOT_OD  = 33.34  # booted center OD (mm) = 1-5/16"
-UJOINT_BOOT_LEN = 31.75  # boot overall length (mm) = 1.25"
+# RETENTION (J3/J4): 3/8" KEYWAY bore (3/32×3/64 key) + set screw — the stub is keyed (anti-rotation)
+# and the joint's set screw locks it axially. Needle-bearing, stainless, 45° confirmed (Alvin 2026-08-13).
+# Boot: FACTORY-INTEGRAL (no separate part) — bulges the joint CENTER to UJOINT_BOOT_OD; the yoke OD
+# stays UJOINT_OD and the overall length stays UJOINT_LEN.
+UJOINT_BOOT_OD  = 32.54  # integral-boot center OD (mm) = 1-9/32"
+UJOINT_BOOT_LEN = 31.75  # integral-boot bellows length (mm) = 1-1/4"
 # Acetal skate rollers on Ø10 304 axles (parts.py fp-skate-*):
 SKATE_ROLLER_OD = 31.75  # load roller OD (mm) = 1-1/4" Delrin (rides the U-channel bottom flange)
 SKATE_KEEPER_OD = 19.05  # keeper roller OD (mm) = 3/4" Delrin (captive under the top flange)

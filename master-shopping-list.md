@@ -13,7 +13,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 1. Container & delivery | $2,300 | $4,300 |
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
-| 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $3,869 | $4,267 |
+| 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,272 | $4,674 |
 | 5. Print washing — water system (incl. IBC stacking frame) | $6,603 | $7,782 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$26,110** | **~$34,224** |
+| **TOTAL (base build + 50-print run)** | **~$26,513** | **~$34,631** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -85,13 +85,13 @@ indicative low–high estimates — get quotes before ordering.
 | [1-1/4" OD acetal load rollers — Delrin rod (cut ×8)](https://www.mcmaster.com/8576K23-8576K232/) (8576K23) | 1 1 ft rod | McMaster-Carr | film | $11 |
 | [3/4" OD acetal keeper rollers — Delrin rod (cut ×8)](https://www.mcmaster.com/8497K276-8497K273/) (8497K276) | 1 4 ft rod | McMaster-Carr | film | $15 |
 | [Acetal roller wheels ×4 (Delrin rod stock, Ø32×20, Ø10 bore)](https://www.mcmaster.com/8576K23/) (8576K23) | 1 1 ft rod | McMaster-Carr | spray | $11 |
-| [Belden UJ-SS750x375 U-joint (3/8" bore, 45deg, 303/416 SS)](https://www.mrosupply.com/shaft-couplings-and-collars/2561134_uj-ss750x375_belden/) (UJ-SS750x375) | 4 ea | MROSupply | film | $451 |
+| [Belden SSNBUJ750x3/8KB needle-bearing U-joint (3/8" keyway bore, 45deg, SS, booted)](https://www.grainger.com/product/BELDEN-Universal-Joint-Stainless-41D816) (41D816) | 4 ea | Grainger | film | $1,009 |
 | [iglide J flange bushing, Ø90 bore (JFM-9095-100)](https://www.igus.com/iglide-ibh/flange-bearings/product-details/iglide-j-m?artnr=JFM-9095-100) (JFM-9095-100) | 2 ea | igus | swing | $261 |
 | [M12 rod-end bearing (uxcell SA12TK, 4-pack)](https://www.amazon.com/uxcell-SA12TK-Bearing-M12x1-75-Self-Lubricating/dp/B0C7N16RQ9) (B0C7N16RQ9) | 1 4-pack | Amazon | spray | $20 |
 | [McMaster 4040N12 304 shaft support](https://www.mcmaster.com/4040N12/) (4040N12) | 4 ea | McMaster-Carr | film | $232 |
 | [SKF 6215-2RS1 sealed bearing](https://bearingsdirect.com/6215-2rs-ball-bearing-75x130x25-sealed-6215-2nse/) (6215-2RS) | 2 ea | Bearings Direct | lightlock | $121 |
 | [Thrust ball bearing, 51118 (Ø90 bore, single-direction)](https://bearingsdirect.com/51118-thrust-ball-bearing-90x120x22-grooved-ubc-usbc/) (51118) | 1 ea | Bearings Direct | swing | $80 |
-| **bearings-motion subtotal** | | | | **$1,201** |
+| **bearings-motion subtotal** | | | | **$1,759** |
 
 ### chemistry-reagents
 
@@ -236,6 +236,7 @@ indicative low–high estimates — get quotes before ordering.
 | [Zinc machine screws — filter housings to ply tee-nuts](https://www.homedepot.com/p/Everbilt-5-16-in-18-x-2-1-2-in-Phillips-Slotted-Round-Head-Machine-Screw-831121/317478933) (831121) | 8 ea | Home Depot | water | $13 |
 | [McMaster 5128A63 low-profile hold-down toggle clamp (rail brake)](https://www.mcmaster.com/5128A63/) (5128A63) | 12 ea | McMaster-Carr | film | $155 |
 | [10mm × 60mm 304 SS axle pins (4-pack) — skate axles](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) (B0816MQ5T6) | 4 pack | Amazon | film | $20 |
+| 3/32" sq × 3/64 SS machine keys (×8) — U-joint keyway | 1 lot | McMaster-Carr | film | $6–$10 |
 | [#20 stainless hose clamp (10-pack)](https://www.homedepot.com/p/330548109) (IDL0410PK) | 2 10-pack | Home Depot | water | $37 |
 | [Weld-on lashing ring, 1½" ID](https://www.mcmaster.com/3028t31/) (3028T31) | 8 ea | McMaster-Carr | ibc-frame | $40 |
 | [Self-drilling structural screw, #14×3¼″ winged, 410 SS](https://www.fastenersplus.com/products/14-x-3-1-4-self-drilling-flat-head-screw-with-wings-410-stainless-steel-pkg-100) (F14C325FDC) | 16 ea | Fasteners Plus | ibc-frame | $16 |
@@ -268,7 +269,7 @@ indicative low–high estimates — get quotes before ordering.
 | [1/4"-20 pronged tee-nut (ply-mount interfaces)](https://www.homedepot.com/p/Everbilt-1-4-in-20-Zinc-Plated-Tee-Nut-4-Pack-825001/317478995) (825001) | 10 4-pack | Home Depot | water | $16 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,731–$2,068** |
+| **fasteners-hardware subtotal** | | | | **$1,737–$2,078** |
 
 ### plastics-sheet
 
@@ -334,14 +335,13 @@ indicative low–high estimates — get quotes before ordering.
 | Item | Qty | Supplier | Systems | Est. cost |
 |------|-----|----------|---------|-----------|
 | [20mm EPDM gasket (per meter, closed-cell)](https://www.amazon.com/dp/B089GJQ96Z) (B089GJQ96Z) | 21 m | Amazon (OKAYASU) | panel | $24–$52 |
-| [Belden 806VF1 nitrile boot kit (750 coupling)](https://www.grainger.com/product/BELDEN-Nitrile-Boot-Kit-750-Coupling-806VF1) (806VF1) | 4 ea | Grainger | film | $161 |
 | [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8694K88/) (8694K88) | 2 roll | McMaster-Carr | film | $45 |
 | [Felt/brush wiper strip + 12mm closed-cell neoprene](https://www.doitbest.com/product/146005/) (BP17A) | 1 lot | Frost King + Canal Rubber | lightlock | $40–$75 |
 | Light-sealing materials (interior conversion) | 1 lot | Amazon (bundle) | interior | $157–$178 |
 | Ribbed-wall flashing + silicone (power-panel box seal) | 1 lot | Hardware store | electrical | $15–$30 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | 1 ea | CountryMax (Aqueon) | tray | $17–$25 |
 | [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | 1 lot | McMaster-Carr | door | $129 |
-| **seals-gaskets subtotal** | | | | **$587–$694** |
+| **seals-gaskets subtotal** | | | | **$426–$533** |
 
 ### stainless-sheet
 
@@ -453,8 +453,9 @@ indicative low–high estimates — get quotes before ordering.
 | Amazon | 34 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,106–$2,156 |
 | Home Depot | 57 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,806–$1,943 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
+| Grainger | 7 | aluminum, bearings-motion, electrical-distribution, plumbing-fittings | $1,626 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |
-| McMaster-Carr | 46 | aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,314 |
+| McMaster-Carr | 47 | aluminum, bearings-motion, fasteners-hardware, seals-gaskets, steel-structural | $1,320–$1,324 |
 | Local plastic fab | 1 | fabrication-labor | $800–$1,150 |
 | Online Metals | 3 | aluminum, stainless-sheet, steel-structural | $760–$1,080 |
 | American Grating | 1 | plastics-sheet | $830–$1,050 |
@@ -462,9 +463,7 @@ indicative low–high estimates — get quotes before ordering.
 | Off Grid Stores | 4 | electrical-distribution, electrical-power | $912 |
 | Local sheet metal | 3 | fabrication-labor, steel-structural | $500–$900 |
 | Commercial tilt-bed hire | 1 | fabrication-labor | $300–$800 |
-| Grainger | 7 | aluminum, electrical-distribution, plumbing-fittings, seals-gaskets | $778 |
 | SoCal reconditioner | 1 | water-equipment | $600 |
-| MROSupply | 1 | bearings-motion | $451 |
 | Inverter Supply | 2 | electrical-distribution, electrical-power | $396 |
 | Central Coast Plastics | 1 | plastics-sheet | $380 |
 | Powerwerx | 5 | electrical-distribution, electrical-power | $308 |

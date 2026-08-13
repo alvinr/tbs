@@ -211,6 +211,12 @@ UJOINT_YOKE_L = 34.2   # single-yoke length (mm) = 1.345"
 UJOINT_HUB_L  = 24.1   # hub depth (mm) = 0.950"
 UJOINT_ANGLE  = 45     # max operating angle per side (deg)
 UJOINT_STUB_OD = 9.53  # 3/8" 304 stub-shaft OD (mm) — matches bore (parts.py fp-stub-shaft)
+# RETENTION: the plain UJ-SS750x375 datasheet (eng-specs/) has NO keyway/set-screw — order the
+# SET-SCREW BORE variant so both bores clamp the 3/8" stub (J3/J4). Part # TBD (Alvin selecting).
+# Boot: no downloadable sheet — vendor spec OL 1.25", OD 1-5/16"; seats in the joint's retention
+# grooves and bulges the CENTER to this OD (the yoke OD stays UJOINT_OD; length stays UJOINT_LEN).
+UJOINT_BOOT_OD  = 33.34  # booted center OD (mm) = 1-5/16"
+UJOINT_BOOT_LEN = 31.75  # boot overall length (mm) = 1.25"
 # Acetal skate rollers on Ø10 304 axles (parts.py fp-skate-*):
 SKATE_ROLLER_OD = 31.75  # load roller OD (mm) = 1-1/4" Delrin (rides the U-channel bottom flange)
 SKATE_KEEPER_OD = 19.05  # keeper roller OD (mm) = 3/4" Delrin (captive under the top flange)
@@ -223,6 +229,15 @@ CAM_CLAMP_BASE_W  = 22   # clamp base long dim (mm)
 CAM_CLAMP_BASE_D  = 19   # clamp base short dim (mm)
 CAM_CLAMP_HOLE_SP = 15.7 # 2x M4x0.7 base-hole spacing (mm)
 CAM_CLAMP_N       = 3    # cam clamps per corner
+# Skate carriage plate — 6mm 6061-T6; the MOVING part the 4-wheel skate + Z-slide + cam clamp mount to
+# (Sheet 3 View A). H grown 171→181 so the top keeper-axle row clears its ≥2×Ø10 edge distance.
+CARRIAGE_PLATE_W  = 80   # plate width along Yd (mm)
+CARRIAGE_PLATE_H  = 181  # plate height along Z (mm) — grown +10 for keeper-axle edge distance
+CARRIAGE_PLATE_T  = 6    # plate thickness (mm) — 6061-T6
+CARRIAGE_AXLE_ROW_SP = 38  # Z gap between the load-axle row and the keeper-axle row (mm)
+# 4 SHORT STUB axles (Ø SKATE_AXLE_OD) at ±SKATE_ROLLER_SP/2 (Yd) × 2 rows (load / keeper).
+CARRIAGE_J1_SP_YD = 28   # J1 4×M8 Z-slide-mount hole pattern width (Yd, mm)
+CARRIAGE_J1_SP_Z  = 44   # J1 4×M8 Z-slide-mount hole pattern height (Z, mm)
 # Corner (L) plate — 1/4" 304 SS, 6"x8" blank bent to an L (parts.py corner-l-plate):
 CORNER_PLATE_W = 203.2   # plate blank long side (mm) = 8"
 CORNER_PLATE_H = 152.4   # plate blank short side (mm) = 6"

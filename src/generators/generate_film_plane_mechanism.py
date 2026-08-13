@@ -32,7 +32,9 @@ from tbs_constants import (XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_TRAVEL, XSLIDE_X
                           XSLIDE_Z_BAR_LEN, XSLIDE_X_BAR_LEN, XSLIDE_UHMW_T, XSLIDE_GIB_W,
                           UJOINT_BORE, UJOINT_OD, UJOINT_LEN, UJOINT_ANGLE, CORNER_PLATE_W, CORNER_PLATE_H,
                           CORNER_PLATE_T, CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP, CORNER_PLATE_BEND_R,
-                          SKATE_ROLLER_OD, SKATE_KEEPER_OD, SKATE_AXLE_OD, SKATE_ROLLER_SP)
+                          SKATE_ROLLER_OD, SKATE_KEEPER_OD, SKATE_AXLE_OD, SKATE_ROLLER_SP,
+                          CARRIAGE_PLATE_W, CARRIAGE_PLATE_H, CARRIAGE_PLATE_T, CARRIAGE_AXLE_ROW_SP,
+                          CARRIAGE_J1_SP_YD, CARRIAGE_J1_SP_Z)
 from tbs_title_block import title_block
 from tbs_drawing import (leader, draw_notes, draw_dim_h, draw_dim_v,
                          draw_rect, draw_circle, hatch_rect, reset_label_registry)
@@ -716,7 +718,22 @@ def view_a(ax):
         ax.plot([p[0] for p in zz],[p[1] for p in zz], color=OUT, lw=0.7, zorder=4)
     # ── WIDE carriage plate (red) — the MOVING part, drawn FULLY and IN FRONT: it extends UP over the skate, so
     #    the 4 wheels sit BEHIND it and are shown ghosted (dotted). The Z-slide (green) runs up its centre. ──
-    _rect(ax, 130, 134, 80, 171, C_CAR, z=5)                                         # carriage plate Z134-305 (covers the wheels)
+    _rect(ax, 130, 134, CARRIAGE_PLATE_W, CARRIAGE_PLATE_H, C_CAR, z=5)              # carriage plate 80×181×6mm 6061-T6 (top grown +10 for keeper-axle edge dist)
+    # ── carriage-plate HOLE PATTERN (located, ≥2×Ø edge distance) ─────────────────
+    _ax_yd = (170 - SKATE_ROLLER_SP / 2, 170 + SKATE_ROLLER_SP / 2)                  # ±SKATE_ROLLER_SP/2
+    _ax_z = (253, 253 + CARRIAGE_AXLE_ROW_SP)                                        # load row / keeper row
+    for _hz in _ax_z:
+        for _hx in _ax_yd:
+            ax.add_patch(plt.Circle((_hx, _hz), SKATE_AXLE_OD / 2, fc=BG, ec=C_PIN, lw=1.0, zorder=6))
+            ax.plot([_hx - 8, _hx + 8], [_hz, _hz], color=C_PIN, lw=0.4, zorder=6)
+            ax.plot([_hx, _hx], [_hz - 8, _hz + 8], color=C_PIN, lw=0.4, zorder=6)
+    draw_dim_v(ax, 122, 253, 253 + CARRIAGE_AXLE_ROW_SP, f"{CARRIAGE_AXLE_ROW_SP:.0f}", offset=6, fs=4.8, color=C_PIN, font=FONT)
+    leader(ax, 190, 291, 300, 360,
+           f"CARRIAGE PLATE {CARRIAGE_PLATE_W:.0f}×{CARRIAGE_PLATE_H:.0f}×{CARRIAGE_PLATE_T:.0f}mm 6061-T6\n"
+           f"· 4× Ø{SKATE_AXLE_OD:.0f} STUB-AXLE holes, {SKATE_ROLLER_SP:.0f}(Yd)×{CARRIAGE_AXLE_ROW_SP:.0f}(Z) pattern\n"
+           f"· J1: 4× M8 to Z-slide ({CARRIAGE_J1_SP_YD:.0f}×{CARRIAGE_J1_SP_Z:.0f}) · 2× M4 cam base\n"
+           f"· all holes ≥2×Ø from edges (keeper row 24mm to top)",
+           ha="left", fs=5.4, color=C_CAR, font=FONT, bbox=LBL_BG)
     _rect(ax, 161, 156, 18, 76, C_TILT, z=6); _hatch_xs(ax, 161, 156, 18, 76)        # Z (tilt) slide — centred, IN FRONT
     _rect(ax, 161, 156, 2.5, 76, C_POLY, z=7); _rect(ax, 176.5, 156, 2.5, 76, C_POLY, z=7)
     ax.plot([170, 170], [232, 210], color=C_PIN, lw=1.4, zorder=8)                   # axle-retainer bolt down through the plate

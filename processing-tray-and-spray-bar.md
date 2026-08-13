@@ -611,7 +611,7 @@ tray drainage plan and sump cross-section).
 | [1/2" reinforced braided PVC hose, ~15 ft](https://www.homedepot.com/p/304185193) (T12006003) | BV-05b → beam feed (~4 m coiled). UDP 1/2"ID×3/4"OD clear braided vinyl (T12006003), $12.99/10ft firm (2026-07-30). 10 ft ≈ 3 m — a 4 m coiled run may need a 2nd roll. | 1 10ft roll | Home Depot | $13 |
 | [10mm × 60mm 304 SS axle pin (4-pack)](https://www.amazon.com/uxcell-Single-Hole-Clevis-Pins/dp/B0816MQ5T6) (B0816MQ5T6) | Wheel axle pins — uxcell 10×60mm 304 SS clevis pins, 4-pack (B0816MQ5T6, exact: 14mm head, 3.2mm cotter hole). | 1 pack | Amazon | $5 |
 | [Axle saddle clamps ×8 (304 SS flat-bar stock)](https://www.mcmaster.com/8992K794/) (8992K794) | Axle retention — formed from 1/8" (3.18mm) × 3/4" (19mm) 304 SS flat bar, wrapped over the Ø10 axle (1mm cradle clearance) with two ~12mm feet bolted up through the carriage plate (2× Ø5.5 M5). ~48mm developed per saddle; all 8 cut from one 2 ft (610mm) length of flat bar. A stamped conduit saddle clamp is only ~0.5mm — too thin for a rolling-carriage axle retainer. Alt: 304 SS + EPDM Adel loop clamp ~3/8–7/16" ID. | 1 2 ft bar | McMaster-Carr | $10 |
-| [M6×1.0 × 20 hex bolt, 304 SS (A2-70)](https://www.mcmaster.com/) | Carriage plate, beam clamp, saddle fasteners (M6×1.0). GRADE 2026-08-13: 304 SS A2-70 — the spray sits in the WET cyanotype zone, so upgraded from zinc; 304 is corrosion-adequate (the wash has no chloride → 316 unneeded). Modest clamp load, so A2-70 (700 MPa) is fine. SKU TODO: re-source the retired 91280A330 (zinc) to a 304 A2 M6×1.0×20 ~2× the retired zinc price; priced at the zinc placeholder here, re-price + re-SKU at order. | 16 ea | McMaster-Carr | $3 |
+| [M6×1.0 × 20 hex bolt, 304 SS (A2-70)](https://www.mcmaster.com/91287A137/) (91287A137) | Carriage plate, beam clamp, saddle fasteners (M6×1.0). 304 SS A2-70 — upgraded from zinc 2026-08-13 (the spray is in the WET cyanotype zone; 304 is corrosion-adequate — the wash has no chloride → 316 unneeded; A2-70 700 MPa ample for the clamp load). McMaster 91287A137 $17.77/pack of 50 firm (Alvin 2026-08-13). | 16 ea | McMaster-Carr | $6 |
 | [M6×1.0 hex nut, nyloc SS](https://www.mcmaster.com/90576A115/) (90576A115) | Nyloc nut — M6×20 spray fasteners. Pitch M6×1.0 coarse — confirmed vs 90576A115 PDF 2026-07-29 (matches the M6×1.0 bolt). $4.77/pack of 100. | 16 ea | McMaster-Carr | $1 |
 | [Self-tapping SS screws (8-pack)](https://www.lowes.com/pd/Hillman-25-Count-10-x-1-in-Stainless-Steel-Self-Drilling-Interior-Exterior-Sheet-Metal-Screws/3691866) (3691866) | Ball-joint flange to beam top wall. #10×1 SS self-drill, 25-pk ~$11–16 (per-unit est). | 4 ea | Lowe's (Hillman) | $2–$3 |
 | [M12 rod-end bearing (uxcell SA12TK, 4-pack)](https://www.amazon.com/uxcell-SA12TK-Bearing-M12x1-75-Self-Lubricating/dp/B0C7N16RQ9) (B0C7N16RQ9) | Multi-axis spray-arm articulation — uxcell SA12TK male rod-end bearing, M12×1.75 self-lubricating (B0C7N16RQ9), $19.59/4-pack firm (2026-07-30). Rod-end bearing (upgrade from the go-kart tie-rod candidate); 4-pack = 1 used + spares. | 1 4-pack | Amazon | $20 |
@@ -621,7 +621,7 @@ tray drainage plan and sump cross-section).
 | [M12×1.75 jam nut, SS](https://www.mcmaster.com/90381A102/) (90381A102) | Locks the arm adapter on the ball-joint M12 stud. McMaster 90381A102: 18-8 SS thin-profile hex nut, M12×1.75 coarse — confirmed vs the 90381A102 PDF 2026-07-29 (matches the stud + arm-adapter bore). $8.38/pack of 10. | 1 ea | McMaster-Carr | $1 |
 | [Clamp-style shaft collar, 25mm/1" bore, SS](https://www.ruland.com/cl-16-st.html) (CL-16-ST) | Over the slit arm-tube bottom; its integral clamp screw squeezes the Ø25×2 tube onto the adapter's Ø21 spigot — rotational adjust + lift-off for transport. Replaces the loose M6 pinch bolt. Confirm SKU/bore/price at order. | 1 ea | Ruland | $28–$33 |
 | [Nylon zip ties, 8in (200mm)](https://www.harborfreight.com/8-inch-black-cable-ties-pack-of-100-34635.html) (34635) | Hose to arm tube — 8in UV-resistant black nylon, 100-pack (6 used + spares). Harbor Freight $2.68 firm (2026-08-01). | 1 100-pack | Harbor Freight | $3 |
-| **Spray total** | | | | **$585–$597** |
+| **Spray total** | | | | **$588–$600** |
 <!-- END parts:spray -->
 
 ### 6.3 Combined Total
@@ -629,8 +629,8 @@ tray drainage plan and sump cross-section).
 | Subsystem | Cost Range |
 |-----------|-----------|
 | Processing tray | <!-- BEGIN costing:tray-low -->$1,473<!-- END costing:tray-low -->–<!-- BEGIN costing:tray-high -->$2,121<!-- END costing:tray-high --> |
-| Spray bar assembly | <!-- BEGIN costing:spray-low -->$584<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$596<!-- END costing:spray-high --> |
-| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$2,057<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,717<!-- END costing:tray-spray-total-high -->** |
+| Spray bar assembly | <!-- BEGIN costing:spray-low -->$587<!-- END costing:spray-low -->–<!-- BEGIN costing:spray-high -->$599<!-- END costing:spray-high --> |
+| **Total** | **<!-- BEGIN costing:tray-spray-total-low -->$2,060<!-- END costing:tray-spray-total-low -->–<!-- BEGIN costing:tray-spray-total-high -->$2,720<!-- END costing:tray-spray-total-high -->** |
 
 ---
 

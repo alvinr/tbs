@@ -1025,8 +1025,8 @@ def sheet3():
         "(LEFT rails = a transport drop-in — see Sheet 4.)",
         "6. OVERTURNING COUPLE: the film-corner load is ~50mm INBOARD of the rail (via the stack) — a moment "
         "about the rollers. The load↓ / keeper↑ pair, spaced by the channel depth, reacts it — so the keepers "
-        "carry this static couple too. Tightest link: the 304 cross-slide bar in weak-axis bending; keep the "
-        "stack compact.",
+        "carry this static couple too. Tightest link: the 304 cross-slide bar in bending — MOUNT DEEP "
+        "(the 38.1mm dimension ⟂ to the load, SF≈10; NOT flat/1.7 — Sheet 10 load case); keep the stack compact.",
     ], 2, 99, 3.6, fs=5.4, title_fs=6.6, color=DIM, width=68, wrap=115, font=FONT)
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06])
@@ -1844,7 +1844,7 @@ def attach_plan(ax):
     _rect(ax, 300, cyy - 12, 46, 24, C_SWING, z=6)                # X carriage (near one end = swung)
     ax.annotate("", xy=(96, cyy + 26), xytext=(384, cyy + 26), arrowprops=dict(arrowstyle="<->", color=C_SWING, lw=1.0))
     ax.text(240, cyy + 30, f"X travel {XSLIDE_X_TRAVEL}mm = SWING (bar {XSLIDE_X_BAR_LEN}mm)", fontsize=6, color=C_SWING, ha="center", va="bottom", **FONT)
-    leader(ax, 160, cyy - 8, 120, -44, f"304 flat bar ¼×1½ = {XSLIDE_BAR_W:.1f}×{XSLIDE_BAR_T:.2f}mm\n(UHMW pad {XSLIDE_UHMW_T}mm + brass-tip gib {XSLIDE_GIB_W}mm)", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
+    leader(ax, 160, cyy - 8, 120, -44, f"304 flat bar ¼×1½ = {XSLIDE_BAR_W:.1f}×{XSLIDE_BAR_T:.2f}mm — MOUNT DEEP (38.1 ⟂ load)\n(UHMW pad {XSLIDE_UHMW_T}mm + brass-tip gib {XSLIDE_GIB_W}mm)", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
     # stub → U-joint (swing pin seen true here) → frame
     _rect(ax, 346, cyy - 6, 16, 12, C_STEEL, z=6)
     _rect(ax, 362, cyy - 18, 34, 36, C_UJ, z=6)
@@ -1879,7 +1879,7 @@ def attach_tilt(ax):
     _rect(ax, cx - 15, 66, 8, 10, C_PIN, z=7)                                               # gib
     ax.annotate("", xy=(cx + 34, 300), xytext=(cx + 34, 44), arrowprops=dict(arrowstyle="<->", color=C_TILT, lw=1.0))
     ax.text(cx + 38, 172, f"Z travel {XSLIDE_Z_TRAVEL}mm = TILT (bar {XSLIDE_Z_BAR_LEN}mm)", fontsize=6, color=C_TILT, ha="left", va="center", rotation=90, **FONT)
-    leader(ax, cx + 8, 120, 78, 150, f"304 flat bar ¼×1½\n{XSLIDE_BAR_W:.1f}×{XSLIDE_BAR_T:.2f}mm + UHMW {XSLIDE_UHMW_T}mm + gib", ha="left", fs=5.2, color=C_TILT, font=FONT, bbox=LBL_BG)
+    leader(ax, cx + 8, 120, 78, 150, f"304 flat bar ¼×1½ — MOUNT DEEP (38.1 ⟂ load)\n{XSLIDE_BAR_W:.1f}×{XSLIDE_BAR_T:.2f}mm + UHMW {XSLIDE_UHMW_T}mm + gib", ha="left", fs=5.2, color=C_TILT, font=FONT, bbox=LBL_BG)
     # stub → U-joint (TILT pin seen true) → 304 SS corner plate → frame angle (below)
     _rect(ax, cx - 6, 30, 12, 16, C_STEEL, z=6)                                             # stub
     _rect(ax, cx - 18, -4, 36, 34, C_UJ, z=6)                                               # U-joint

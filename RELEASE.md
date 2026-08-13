@@ -30,7 +30,8 @@ file** — a release must not ship without a changelog entry:
   124N) → X-slide bending safety factor — bar orientation is decisive, **DEEP** (38.1mm in the load
   direction) SF≈10, **FLAT** a marginal 1.7 (fails at ×2). **DECISION (Alvin): bars mounted DEEP.**
   Promoted the review sheet to **film-plane Sheet 10** (set renumbered 9→10); the decision is annotated on
-  the sheet and recorded in the blueprint spec §Phase 1c (`XSLIDE_*` `reserved→firm`) + the parts spec.
+  the sheet and recorded in the blueprint spec §Phase 1c (`XSLIDE_*` `reserved→firm`), the parts spec, and
+  the fabrication sheets (Sheet 3 note + Sheet 8 cross-slide "MOUNT DEEP" callouts).
 
 - **Film-plane material-drift sweep + wired `CORNER_PLATE_T`.** The corner blueprint changed the depth
   rail 304 SS → 6061-Al and the cross-slides 316 → 304 SS, but stale labels survived in living docs —

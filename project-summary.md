@@ -49,7 +49,7 @@ Two independent movement systems work in series, stacking their effects non-line
 The pinhole itself pivots on a spherical plain bearing, steering the image cone across the film plane. Every 5° of tilt shifts the projected image <!-- BEGIN fact:image_shift_per_5deg -->207<!-- END fact:image_shift_per_5deg -->mm. Used for compositional placement — not correction, not distortion, but deliberate image steering.
 
 **Film plane — 4-corner independent actuation (±<!-- BEGIN fact:film_plane_max_tilt -->40<!-- END fact:film_plane_max_tilt -->° tilt, ±<!-- BEGIN fact:film_plane_max_swing -->28<!-- END fact:film_plane_max_swing -->° swing)**
-Four corners of the image plane are set independently — each an acetal skate hand-slid in a 304 U-channel depth rail and cam-clamped — enabling view-camera-style geometric control at pinhole focal lengths. Scheimpflug-equivalent movements, compound twisted-plane projections, convergence manipulation — the full vocabulary of large-format photography, applied to a pinhole.
+Four corners of the image plane are set independently — each an acetal skate hand-slid in a 6061 Al U-channel depth rail and cam-clamped — enabling view-camera-style geometric control at pinhole focal lengths. Scheimpflug-equivalent movements, compound twisted-plane projections, convergence manipulation — the full vocabulary of large-format photography, applied to a pinhole.
 
 **Combined:** the two systems interact non-linearly. Their compound optical projections — modeled and documented in the [distortion renders](tilt-swing-board-report.md) — produce images that no other camera type can make.
 

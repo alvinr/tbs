@@ -31,7 +31,7 @@ from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH
 from tbs_constants import (XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_TRAVEL, XSLIDE_X_TRAVEL,
                           XSLIDE_Z_BAR_LEN, XSLIDE_X_BAR_LEN, XSLIDE_UHMW_T, XSLIDE_GIB_W,
                           UJOINT_BORE, UJOINT_OD, UJOINT_LEN, UJOINT_ANGLE, CORNER_PLATE_W, CORNER_PLATE_H,
-                          CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP, CORNER_PLATE_BEND_R,
+                          CORNER_PLATE_T, CORNER_PLATE_HOLE_EDGE, CORNER_PLATE_HOLE_SP, CORNER_PLATE_BEND_R,
                           SKATE_ROLLER_OD, SKATE_KEEPER_OD, SKATE_AXLE_OD, SKATE_ROLLER_SP)
 from tbs_title_block import title_block
 from tbs_drawing import (leader, draw_notes, draw_dim_h, draw_dim_v,
@@ -1925,7 +1925,7 @@ def _corner_elevation(ax):
     draw_dim_v(ax, P0 - 30, 0, E, f"{E:.0f}", fs=5.0, font=FONT)                          # J5 edge distance from the bottom edge
     draw_dim_v(ax, 162, 0, AL, "2\" (50.8)", fs=5.4, font=FONT)                          # angle leg size (on the now-right leg)
     # labels
-    leader(ax, 75, 120, 175, 150, f"304 SS corner plate — 6×8 blank ({CORNER_PLATE_H:.0f}×{CORNER_PLATE_W:.0f}), ¼\"\npress-brake 90° L (R{CORNER_PLATE_BEND_R:.1f}, 1T); U-joint mount", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
+    leader(ax, 75, 120, 175, 150, f"304 SS corner plate — 6×8×¼\" blank ({CORNER_PLATE_H:.0f}×{CORNER_PLATE_W:.0f}×{CORNER_PLATE_T:g})\npress-brake 90° L (R{CORNER_PLATE_BEND_R:.1f}, 1T); U-joint mount", ha="left", fs=5.2, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 40, 40, -40, 92, "U-joint Ø19 end-on (yoke toward us)\nBelden UJ-SS750x375", ha="left", fs=5.4, color=OUT, font=FONT, bbox=LBL_BG)
     leader(ax, 90, 40, 150, 15, "X (swing) slide — frontmost this view", ha="left", fs=5.2, color=C_SWING, font=FONT, bbox=LBL_BG)
     leader(ax, E, P0 + SP, -30, 175, f"M6 ×2 per leg (J5) — edge {E:.0f} (1\"), pair {SP:.0f}\nheads on the plate back", ha="left", fs=5.0, color=C_PIN, font=FONT, bbox=LBL_BG)

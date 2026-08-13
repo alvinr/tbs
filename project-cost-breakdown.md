@@ -180,7 +180,7 @@ The pinhole plate is interchangeable. A lens plate can be swapped in for portrai
 
 **Source document:** `film-plane-mechanism-report.md`
 
-View-camera-style moveable film plane — a **fixed-size rigid** plane whose four corners each ride an acetal skate inside a 304 U-channel depth rail, coupled to a 2-axis 316 cross-slide through a single Belden universal joint — with four independently set corners (TL, TR, BL, BR), enabling tilt (±40°), swing (±28°), and limited compound movements.
+View-camera-style moveable film plane — a **fixed-size rigid** plane whose four corners each ride an acetal skate inside a 6061 Al U-channel depth rail, coupled to a 2-axis 304 cross-slide through a single Belden universal joint — with four independently set corners (TL, TR, BL, BR), enabling tilt (±40°), swing (±28°), and limited compound movements.
 
 The full itemized parts list — specs, SKUs, ICP numbers, per-item quantities — is the [Film Plane Mechanism report Parts List](film-plane-mechanism-report.md), held in the parts registry so it can't drift. The cost roll-up is the [Section total](#section-total) below.
 
@@ -207,7 +207,7 @@ Line items (Option A, manual handwheel actuation) — **generated from `costing.
 | Belden UJ-SS750x375 U-joints (×4) + boots (×4) | $611 | $611 | $611 |
 | McMaster 4040N12 304 shaft supports (×4) + 3/8" 304 stub rod (89535K87, 3ft) | $245 | $245 | $245 |
 | Acetal skates (×4) — Ø32/Ø20 acetal rollers + 304 axle pins + fab carriage plates | $182 | $230 | $282 |
-| 316 flat-bar Z/X cross-slides (×4) + UHMW pads + gibs | $316 | $415 | $516 |
+| 304 flat-bar Z/X cross-slides (×4) + UHMW pads + gibs | $316 | $415 | $516 |
 | McMaster 5128A63 hold-down toggle clamps (×12, rail brake) | $155 | $155 | $155 |
 | Corner plates, ¼" 304 SS 6×8 (×4) | $236 | $236 | $236 |
 | Aluminum angle 2×2×1/8 (6061-T6 plain, expendable) 16 ft (×3) — weld-free frame | $528 | $528 | $528 |

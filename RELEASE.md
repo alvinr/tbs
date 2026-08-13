@@ -24,12 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-- **Film-plane corner — Phase-1c load case computed (for review).** New `fp_corner_load.py` (driven from
-  `tbs_constants`, renders `fp-corner-load-case.png`). **C2** verifies the cross-slide travel: Z (tilt ±40°)
+- **Film-plane corner — Phase-1c load case computed + decided → Sheet 10.** New `fp_corner_load.py` (driven from
+  `tbs_constants`, renders `film-plane-sheet10.png`). **C2** verifies the cross-slide travel: Z (tilt ±40°)
   = 245mm and X (swing ±28°) = 257mm exactly match `XSLIDE_Z/X_TRAVEL`. **C1** the per-corner load (W/4 =
-  124N) → X-slide bending safety factor — key finding: bar orientation is decisive, **DEEP** (38.1mm in the
-  load direction) SF≈10, but **FLAT** it's a marginal 1.7 (fails at ×2), so the bars must be locked deep.
-  Pending Alvin's review + sign-off.
+  124N) → X-slide bending safety factor — bar orientation is decisive, **DEEP** (38.1mm in the load
+  direction) SF≈10, **FLAT** a marginal 1.7 (fails at ×2). **DECISION (Alvin): bars mounted DEEP.**
+  Promoted the review sheet to **film-plane Sheet 10** (set renumbered 9→10); the decision is annotated on
+  the sheet and recorded in the blueprint spec §Phase 1c (`XSLIDE_*` `reserved→firm`) + the parts spec.
 
 - **Film-plane material-drift sweep + wired `CORNER_PLATE_T`.** The corner blueprint changed the depth
   rail 304 SS → 6061-Al and the cross-slides 316 → 304 SS, but stale labels survived in living docs —

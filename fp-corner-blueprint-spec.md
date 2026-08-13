@@ -41,16 +41,19 @@ _(The TODO's "Ruland US12-6-6-SS" is stale — the U-joint was changed to Belden
 - Rail **scheme**: adopt the 3D model's **two-orientation** build as the design of record (bottom web-vertical weight / top flat guide); fix the report/parts "uniform, one skate rides inside each" wording; drop stale "4×2" / "V-trolley" / "trolley" comments in constants + model.
 
 **1b. Promote/add constants to `tbs_constants.py`** (so the drawing is parametric, can't drift):
-- Promote `XSLIDE_Z_TRAVEL` / `XSLIDE_X_TRAVEL` / `XSLIDE_STROKE` / `XSLIDE_N` from **`reserved` → firm** (verify the travel numbers against the swing/tilt geometry first).
+- Promote `XSLIDE_Z_TRAVEL` / `XSLIDE_X_TRAVEL` / `XSLIDE_STROKE` / `XSLIDE_N` from **`reserved` → firm**. **FIRM (2026-08-13):** travel verified vs geometry on Sheet 10 — Z = (FP_H/2)(1−cos 40°) = 245 mm, X = (FP_W/2)(1−cos 28°) = 257 mm (exact match).
 - **New:** `XSLIDE_BAR_W=38.1`, `XSLIDE_BAR_T=6.35` (cross-slide bar section); `XSLIDE_UHMW_T`, `XSLIDE_GIB_*`.
 - **New:** `UJOINT_BORE=9.53`, `UJOINT_OD=19.05`, `UJOINT_ANGLE=45`, `UJOINT_LEN` (from the Belden datasheet).
 - **New:** `SKATE_ROLLER_OD=32`, `SKATE_KEEPER_OD=20`, `SKATE_AXLE_OD=10`, skate roller spacing / carriage-plate W×H×T.
 - **New:** `CORNER_PLATE_W=203.2`, `CORNER_PLATE_H=152.4`, `CORNER_PLATE_T=6.35`, bend line + leg lengths.
 - **New:** hole **PCDs / edge distances** — see Phase 2 (designed, then captured as constants).
 
-**1c. Firm the load** — compute the **per-corner load** from the reconciled moving mass (carriage 66 kg
-incl. ACM, from the weight model) and the **cross-slide bending SF** for the ¼"×1½" 304 bar. This is the
-number the milestone says this drawing "firms."
+**1c. Firm the load — DONE (2026-08-13; `fp_corner_load.py` → Sheet 10).** Per-corner load = W/4 = **124 N**
+(moving mass ~51 kg, weight model). Governing case = the horizontal X (swing) slide in bending at full
+257 mm extension (the Z slide takes gravity axially, so it doesn't bend). **DECISION (Alvin): the
+cross-slide bars are mounted DEEP** — the 38.1 mm dimension in the load direction — giving σ ≈ 21 MPa,
+**SF ≈ 10**, δ ≈ 0.1 mm. Flat mounting is marginal (SF ≈ 1.7, fails under a 2× dynamic/asymmetry factor)
+and is NOT used. See Sheet 10 (`film-plane-sheet10.png`).
 
 ## Phase 2 — Dimensioned drawing upgrades
 
@@ -140,7 +143,7 @@ slack exists between `RAIL_OFF_TOP`→2244 and `FP_H`→2254; optional future cl
 
 ## Open items to settle during design
 
-- Exact travel values for the promoted `XSLIDE_*` (verify vs swing/tilt geometry).
+- ~~Exact travel values for the promoted `XSLIDE_*`~~ **DONE 2026-08-13** — verified vs geometry (Sheet 10): Z 245 / X 257 mm.
 - Belden UJ-SS750x375 booted length + bolt/key detail (datasheet).
 - Carriage-plate + L-plate hole patterns (design to edge-distance rules).
-- Per-corner load + cross-slide bending SF (compute in Phase 1c).
+- ~~Per-corner load + cross-slide bending SF~~ **DONE 2026-08-13** (Sheet 10): 124 N/corner; bars mounted **DEEP** → SF ≈ 10 (flat 1.7, not used).

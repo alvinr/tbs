@@ -76,7 +76,7 @@ def render_png(path=None):
     C_OUT, C_CL, C_DIM, C_ALU = "#1A1A1A", "#2060A0", "#404040", "#C8D8E8"
     C_OK, C_BAD, C_LD = "#1E7A34", "#B22222", "#B8860B"
     FT = dict(family="DejaVu Sans Mono")
-    path = path or os.path.join(getattr(c, "DIAGRAMS_DIR", "diagrams"), "fp-corner-load-case.png")
+    path = path or os.path.join(getattr(c, "DIAGRAMS_DIR", "diagrams"), "film-plane-sheet10.png")
 
     m = moving_mass_kg(); W = m * G; P = W / 4.0
     zr, xr = travel_required()
@@ -146,8 +146,8 @@ def render_png(path=None):
         axB.annotate("", xy=(x0 + w / 2, y0 - 26), xytext=(x0 + w / 2, y0 + h + 26),
                      arrowprops=dict(arrowstyle="->", color=col, lw=1.4))
         axB.text(x0 + w / 2, y0 - 46, tag, color=col, fontsize=8.5, ha="center", va="top", **FT)
-    section(20, -430, c.XSLIDE_BAR_T * 2.2, c.XSLIDE_BAR_W * 2.2, "DEEP (38.1 ⟂ load)\ngravity", True)
-    section(190, -430, c.XSLIDE_BAR_W * 2.2, c.XSLIDE_BAR_T * 2.2, "FLAT (bar lies down)", False)
+    section(20, -430, c.XSLIDE_BAR_T * 2.2, c.XSLIDE_BAR_W * 2.2, "✔ DEEP — SELECTED\n(38.1 ⟂ load)", True)
+    section(190, -430, c.XSLIDE_BAR_W * 2.2, c.XSLIDE_BAR_T * 2.2, "✗ FLAT — not used", False)
 
     tbl = [("orientation", "σ (MPa)", "SF", "δ (mm)", "SF ×2 dyn"),
            ("DEEP  (strong)", f"{sig_s:.0f}", f"{SY_304/sig_s:.1f}", f"{d_s:.2f}", f"{SY_304/(2*sig_s):.1f}"),
@@ -159,17 +159,19 @@ def render_png(path=None):
             cc = C_OUT if r == 0 else (C_OK if "DEEP" in row[0] else C_BAD)
             axB.text(col_x[col_i], ty + r * dy, cell, color=cc,
                      fontsize=8.5, ha="left", fontweight="bold" if r == 0 else "normal", **FT)
-    axB.text(col_x[0], ty + 3.5 * dy, "→ mount DEEP: SF≈10, δ≈0.1 mm.  FLAT is marginal (SF 1.7)\n"
-             "   and fails at ×2 — lock bars deep (38.1 mm vertical).",
-             color=C_OUT, fontsize=8.6, ha="left", va="top", **FT)
+    axB.text(col_x[0], ty + 3.5 * dy, "✔ DECISION (Alvin 2026-08-13): bars mounted DEEP — 38.1 mm ⟂ load.\n"
+             "   SF ≈ 10, δ ≈ 0.1 mm.  FLAT (SF 1.7, fails ×2) is NOT used.",
+             color=C_OK, fontsize=8.8, ha="left", va="top", fontweight="bold", **FT)
     axB.set_xlim(-70, 980); axB.set_ylim(-560, 180)
     axB.set_title(f"C1 — per-corner load {P:.0f} N → X-slide bending (worst case)",
                   fontsize=10, color=C_OUT, **FT)
 
-    fig.suptitle("FILM-PLANE CORNER — LOAD CASE (blueprint Phase 1c)  ·  travel verification + cross-slide bending SF",
+    fig.suptitle("SHEET 10 — FILM-PLANE CORNER LOAD CASE (Phase 1c)  ·  cross-slide travel + bending SF",
                  fontsize=12.5, fontweight="bold", color=C_OUT, y=0.955, **FT)
-    fig.text(0.5, 0.915, f"moving mass {m:.1f} kg (weight model)  ·  304 SS ¼\"×1½\" bar  ·  driven from tbs_constants  —  "
-             "for review (Phase 1c)", fontsize=9, color=C_DIM, ha="center", **FT)
+    fig.text(0.5, 0.915, f"moving mass {m:.1f} kg (weight model)  ·  304 SS ¼\"×1½\" bar  ·  driven from tbs_constants  ·  "
+             "DECISION: bars mounted DEEP (strong axis)", fontsize=9, color=C_DIM, ha="center", **FT)
+    fig.text(0.5, 0.02, "SHEET 10 OF 10  ·  MOVEABLE FILM PLANE  ·  TBS-FM01  ·  © 2026 Alvin Richards",
+             fontsize=8.5, color=C_DIM, ha="center", **FT)
     fig.savefig(path, dpi=150, facecolor="white", bbox_inches="tight")
     plt.close(fig)
     print(f"  → {path}")

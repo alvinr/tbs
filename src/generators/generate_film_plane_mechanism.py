@@ -417,7 +417,7 @@ def sheet1():
                 color=col, fontsize=6, va="center", **FONT)
 
     # Title block
-    title_block(ax, "SHEET 1 OF 9",
+    title_block(ax, "SHEET 1 OF 10",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Plan view — 4-corner rail layout",
                 scale_note="Proportional (mm)",
@@ -674,7 +674,7 @@ def sheet2():
     # Title block (full-figure overlay for multi-subplot sheet)
     ax_tb = fig.add_axes([0, 0, 1, 1], facecolor="none")
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 2 OF 9",
+    title_block(ax_tb, "SHEET 2 OF 10",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Tilt elevation & Swing cross-section",
                 scale_note="Proportional (mm)",
@@ -1031,7 +1031,7 @@ def sheet3():
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 3 OF 9",
+    title_block(ax_tb, "SHEET 3 OF 10",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Corner carriage detail — acetal skate on 3×1.5 6061 Al U-channel + cross-slides + U-joint + stub clamp",
                 scale_note="Proportional (mm)",
@@ -1228,7 +1228,7 @@ def sheet4():
 
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.052]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1)
     ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 4 OF 9", drawing_title="MOVEABLE FILM PLANE",
+    title_block(ax_tb, "SHEET 4 OF 10", drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Rail mounting & transport drop-in — left split (stub + removable + web-back bridge) · right flanged wall-to-wall",
                 scale_note="Proportional (mm)",
                 doc_id="TBS-FM01 · Film Plane Mechanism",
@@ -1382,7 +1382,7 @@ def sheet5():
                 ha="left", va="top", fontweight=fw, style=st, **FONT)
 
     # Title block
-    title_block(ax, "SHEET 5 OF 9",
+    title_block(ax, "SHEET 5 OF 10",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Movement specification & BOM",
                 scale_note="Not to scale",
@@ -1511,7 +1511,7 @@ def sheet6():
     # ── Title block ──
     ax_tb = fig.add_axes([0.04, 0.0, 0.92, 0.05])
     ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 6 OF 9",
+    title_block(ax_tb, "SHEET 6 OF 10",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Muslin clamp detail — nylon spring clamp + HDPE filler at the ALU frame edge",
                 scale_note="SCHEMATIC — SEE INDIVIDUAL PANELS",
@@ -1809,7 +1809,7 @@ def sheet7():
             color=DIM, fontsize=7, ha="center", **FONT)
 
     # ── Title block ───────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 7 OF 9",
+    title_block(ax, "SHEET 7 OF 10",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="System elevation — four-corner frame front elevation (proportional)",
                 scale_note="Proportional (mm)",
@@ -2043,7 +2043,7 @@ def sheet9():
     ], 58, 97, spacing=4.5, fs=6.6, title_fs=7.2, color=DIM, title_color=ANNO, font=FONT, width=40, wrap=62)
     # title block
     ax_tb = fig.add_axes([0.02, 0.0, 0.96, 0.055]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 9 OF 9",
+    title_block(ax_tb, "SHEET 9 OF 10",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Frame + ACM ↔ U-joint ↔ X (swing) slide — corner connection detail",
                 scale_note="TO SCALE — SEE PANELS",
@@ -2088,7 +2088,7 @@ def sheet8():
     ], 2, 99, 3.6, fs=6.2, title_fs=7.4, color=DIM, width=65, wrap=128, font=FONT)
     # title block
     ax_tb = fig.add_axes([0.03, 0.008, 0.94, 0.06]); ax_tb.set_xlim(0, 1); ax_tb.set_ylim(0, 1); ax_tb.axis("off")
-    title_block(ax_tb, "SHEET 8 OF 9",
+    title_block(ax_tb, "SHEET 8 OF 10",
                 drawing_title="MOVEABLE FILM PLANE",
                 subtitle="Frame-corner ↔ cross-slide attachment — how the film frame hangs off the two slides through the U-joint",
                 scale_note="Proportional (mm)",

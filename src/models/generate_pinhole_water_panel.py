@@ -11,7 +11,7 @@ LOW, keeping the torso band clear.  Includes the (widened) near-walkway deck and
 
     python3 src/models/generate_pinhole_water_panel.py --send          # build in the live SketchUp doc
     python3 src/models/generate_pinhole_water_panel.py --save          # write src/models/water.rb (offline, verifiable)
-    python3 src/models/generate_pinhole_water_panel.py --send --save   # build + save models/water.skp
+    python3 src/models/generate_pinhole_water_panel.py --send --save   # build the live doc + write water.rb (ALVIN saves the .skp)
 """
 import sys, os, argparse
 _HERE = os.path.dirname(os.path.abspath(__file__))
@@ -832,16 +832,14 @@ model.commit_operation
 '''
 
 
-SKP_PATH = os.path.abspath(os.path.join(_ROOT, "models", "water.skp"))
-
 RB_PATH = os.path.join(_HERE, "water.rb")
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--send", action="store_true", help="build into the ACTIVE SketchUp doc (open a blank doc first!)")
     ap.add_argument("--save", action="store_true",
-                    help="write src/models/water.rb (deterministic, byte-verifiable by lint --verify-all); "
-                         "with --send, also save the live doc as models/water.skp")
+                    help="write src/models/water.rb (deterministic, byte-verifiable by lint --verify-all). "
+                         "Does NOT save the .skp — ALVIN saves the live doc after --send (single-writer protocol).")
     a = ap.parse_args()
     ruby = build()
     if a.save:
@@ -851,7 +849,9 @@ if __name__ == "__main__":
     if a.send:
         from sketchup_client import send_ruby
         print(send_ruby(ruby))
-        if a.save:
-            print(send_ruby(f'Sketchup.active_model.save({SKP_PATH!r}) ? "saved {SKP_PATH}" : "FAIL"'))
+        # NEVER Sketchup.active_model.save() the .skp via MCP — single-writer protocol. `--send` only
+        # rebuilds the live doc; ALVIN saves the .skp (File>Save) + re-uploads to Sketchfab. A direct
+        # save here overwrote water.skp under ALVIN's open doc (2026-08-13, "file on disk changed"
+        # conflict) — every other model leaves saving to ALVIN, and so must this one. Do not re-add it.
     if not a.send and not a.save:
         print(ruby[:400])

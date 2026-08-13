@@ -431,8 +431,10 @@ _Alvin 2026-07-20: `film-plane.skp` (the older full-plane "Option A" model) is s
   **zinc fasteners in wet zones** — so upgraded `bolt-m6x20` (×2: spray + panel) and `bolt-m8-fixing` → **304
   A2-70** (resolved their ⚠ VALIDATE flags). **M12 structural through-bolts KEPT Grade 8.8 zinc** (strength
   800 MPa + heads sit outside the container, inspectable; going stainless w/o a strength loss = A4-80/316,
-  not worth it — Alvin). 410 self-drillers + the 51118 chrome-steel bearing kept (functional). **Sub-TODO:**
-  re-source the 304 A2 SKUs + firm prices for the upgraded M6/M8 (currently held at the retired zinc price).
+  not worth it — Alvin). 410 self-drillers + the 51118 chrome-steel bearing kept (functional). **Sub-TODO
+  DONE 2026-08-13:** 304 A2 SKUs sourced + firm-priced — M6×20 McMaster **91287A137** $17.77/50, M8×25
+  McMaster **91310A535** $13.91/50 (`checked_date` stamped); the ±$1–3 registry shift reconciled into the
+  FILM (−1) + spray (+3) costing aggregates; all gates green.
 - [x] **Cost-analysis Bucket B — DONE (2026-07-05).** Solar lever computed (drop 1× `solar-panel-200w`);
   two **phantom levers** removed (film banked into the manual standard; battery already 1×100Ah). The
   two remaining alternatives were **decided by Alvin, not modeled**: **keep 304 SS tray** (poly needs a

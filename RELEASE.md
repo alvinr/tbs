@@ -24,6 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Stainless-grade reconciliation (304 vs 316) — system-wide policy.** The cyanotype wash has no
+  chloride, so 316's pitting resistance is unused → **304 (A2) is the default** for all wet structural
+  stainless; 316 is metallurgically unneeded (kept only on the tray seam bolt by choice). Codified as a
+  policy block in the `parts.py` registry header. The actual corrosion gap was zinc fasteners in wet zones,
+  so upgraded `bolt-m6x20` (×2) + `bolt-m8-fixing` → 304 A2-70; the M12 structural through-bolts keep
+  Grade 8.8 zinc (strength + exterior inspectable heads). 410 self-drillers + chrome-steel bearing kept.
+
 - **Film-plane U-joint selected: Belden SSNBUJ750x3/8KB (Grainger 41D816).** Reviewed the plain
   UJ-SS750x375 datasheet (dims confirmed) but it has no retention, so switched to the **needle-bearing,
   keyed (3/32×3/64 key) + set-screw, factory-booted** stainless variant (45° confirmed, $252.13 ea). BOM:

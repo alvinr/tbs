@@ -24,6 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Film-plane material-drift sweep + wired `CORNER_PLATE_T`.** The corner blueprint changed the depth
+  rail 304 SS → 6061-Al and the cross-slides 316 → 304 SS, but stale labels survived in living docs —
+  swept "304 U-channel"→6061-Al and "316 cross-slide"→304 in `funding-proposal`, `project-cost-breakdown`
+  (prose + BOM row), `project-summary`, and a `parts.py` comment (source of truth was already 304/6061-Al).
+  Also wired the previously-dangling `CORNER_PLATE_T` (¼") constant into the Sheet-9 corner-plate label
+  (was a hardcoded `¼"`). Logged the still-open Phase-1c load/bending-SF + XSLIDE-travel review in TODO.
+
 - **Film-plane Sheet 1: carried the ALU-frame dimension style.** The plan-view span dim is relabeled
   "RAIL SPAN" → **ALU FRAME WIDTH 4389mm** and colored the frame's blue, matching Sheet 7, so it reads
   as a frame dimension distinct from the gray container envelope (INTERIOR LENGTH). And **repurposed the

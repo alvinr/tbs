@@ -713,7 +713,7 @@ PARTS: list[Part] = [
 
     # ═══ film (film-plane-mechanism-report §7) — itemized; structural+frame+saddles, sums to costing
     # FILM minus the clamp lines (= 3,102). The muslin clamps are the separate 'clamp' system below. ═══
-    # — Structural & Rails (304 U-channel + acetal skate + 316 cross-slide + Belden U-joint corner mechanism) —
+    # — Structural & Rails (6061 Al U-channel + acetal skate + 304 cross-slide + Belden U-joint corner mechanism) —
     # Replaced the superseded Option-A leadscrew drive (HGR20/Acme/handwheel/rod-end) 2026-07-19.
     Part("fp-u-channel", '6061-T6 Al U-channel depth rail 3×1½"×0.2" (76×38mm), 8 ft', "aluminum",
          "film", 4, "ea", 81.99, 81.99, "Grainger", part_no="795M51", url="https://www.grainger.com/product/795M51",

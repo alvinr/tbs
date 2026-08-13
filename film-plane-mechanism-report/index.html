@@ -1216,6 +1216,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#cross-slide-load-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Slide Load Case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#positioning" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2851,6 +2862,13 @@ The floor plan below shows the film plane rail positions in the context of the c
 <p>The film plane is a <strong>fixed-size rigid rectangle</strong>; tilt and swing are a true <strong>rigid-body rotation</strong> of that rectangle. A rigid rotation moves each corner along an arc — partly along its depth rail (handled by the acetal skate) and partly <em>across</em> it (in X and Z). The <strong>2-axis cross-slide</strong> absorbs that across-rail travel, and the <strong>single universal joint</strong> (Belden UJ-SS750x375, 45° per axis) takes up the angular change so nothing binds. This pairing is what lets a rigid plane tilt and swing <strong>without stretching</strong>, and keeps the plane a single flat rectangle at every angle.</p>
 <p>Each corner connects to that mechanism through a <strong>304 stainless corner plate</strong>: the 6061 angle frame bolts to the plate, the plate carries the U-joint, and the U-joint's other yoke mounts on the <strong>X (swing) slide</strong> — so the corner is <em>carried by</em> the slide <strong>through</strong> the U-joint, never bolted to it directly. The plate is steel (not the expendable aluminum) because the U-joint funnels the whole corner load into a few bolts, and stainless for a galvanic/wet-zone match to the 303 SS U-joint. Sheet 9 details this connection square-on and in section.</p>
 <p><img alt="Sheet 9 — Frame + ACM ↔ U-joint ↔ X-slide connection detail" src="../assets/film-plane-sheet9.png" /></p>
+<h3 id="cross-slide-load-case">Cross-Slide Load Case<a class="headerlink" href="#cross-slide-load-case" title="Permanent link">&para;</a></h3>
+<p>The cross-slide travel and load were firmed against the rotation geometry and the moving mass (Sheet 10):</p>
+<ul>
+<li><strong>Travel</strong> — the Z (tilt) and X (swing) strokes = (half-dimension) × (1 − cos angle), rotating about the plane center: Z = (FP_H/2)(1 − cos 40°) = <strong>245 mm</strong> and X = (FP_W/2)(1 − cos 28°) = <strong>257 mm</strong>, matching <code>XSLIDE_Z_TRAVEL</code> / <code>XSLIDE_X_TRAVEL</code> exactly.</li>
+<li><strong>Load</strong> — the ~51 kg moving plane puts ~W/4 = <strong>124 N</strong> on each corner. The governing case is the horizontal X (swing) slide in bending at full extension (the Z slide takes gravity axially). <strong>The cross-slide bars are mounted deep</strong> — the 38.1 mm dimension in the load direction — giving σ ≈ 21 MPa, <strong>safety factor ≈ 10</strong>, deflection ≈ 0.1 mm. Mounted flat the bar is marginal (SF ≈ 1.7, failing under a 2× dynamic/asymmetry factor), so <strong>deep mounting is specified</strong>.</li>
+</ul>
+<p><img alt="Sheet 10 — Corner load case: cross-slide travel + bending safety factor" src="../assets/film-plane-sheet10.png" /></p>
 <h3 id="positioning">Positioning<a class="headerlink" href="#positioning" title="Permanent link">&para;</a></h3>
 <p>Each corner is set by hand: roll the acetal skate along its U-channel to the target depth, slide the Z and X cross-slides to take up the rotation arc, then throw the <strong>cam clamp</strong> to lock the skate to the rail. The gib drag holds the vertical (Z) axis while the clamp is set, and the U-joint's twist-lock holds the angle.</p>
 <p><strong>Named movement modes:</strong>
@@ -3053,7 +3071,7 @@ The floor plan below shows the film plane rail positions in the context of the c
 </tr>
 <tr>
 <td>304 flat-bar Z (tilt) + X (swing) cross-slides + UHMW pad + gib</td>
-<td>One 2-axis cross-slide stack per corner — 304 flat-bar Z (tilt) + X (swing) slides on UHMW pads with an adjustable gib. FLAT-BAR STOCK: 304 SS ¼"×1½" (6.35×38.1mm); 8 pieces (4× ~345mm Z-tilt + 4× ~365mm X-swing) ≈ 2.84m cut length → order 2× 8ft lengths (bars grown from the ~250mm est to hold ±40°/±28°: the cross-slide stroke needs travel + carriage — corner blueprint 2026-08-10). 304 (not 316) — the cyanotype wash has no chloride, so 316's pitting resistance is unused; 304 is adequate in the splash zone. FLAT BAR FIRM: Metal Supermarkets ¼×1½×8ft 304 $134.73 (2026-08-01); 2× 8ft = $269.46 = ~$67/set of bar. UHMW pad + brass-tip gib + cut/assemble fab still est — the $316–516 range brackets bar + those adds; get a fab quote to firm the balance.</td>
+<td>One 2-axis cross-slide stack per corner — 304 flat-bar Z (tilt) + X (swing) slides on UHMW pads with an adjustable gib. MOUNT DEEP: the 38.1mm bar dimension runs in the gravity/load direction, NOT flat (Sheet 10 load case — deep SF≈10 vs flat 1.7; flat fails a 2× factor). FLAT-BAR STOCK: 304 SS ¼"×1½" (6.35×38.1mm); 8 pieces (4× ~345mm Z-tilt + 4× ~365mm X-swing) ≈ 2.84m cut length → order 2× 8ft lengths (bars grown from the ~250mm est to hold ±40°/±28°: the cross-slide stroke needs travel + carriage — corner blueprint 2026-08-10). 304 (not 316) — the cyanotype wash has no chloride, so 316's pitting resistance is unused; 304 is adequate in the splash zone. FLAT BAR FIRM: Metal Supermarkets ¼×1½×8ft 304 $134.73 (2026-08-01); 2× 8ft = $269.46 = ~$67/set of bar. UHMW pad + brass-tip gib + cut/assemble fab still est — the $316–516 range brackets bar + those adds; get a fab quote to firm the balance.</td>
 <td>4 set</td>
 <td>Metal Supermarkets / McMaster-Carr</td>
 <td>$316–$516</td>

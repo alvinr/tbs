@@ -144,6 +144,6 @@ slack exists between `RAIL_OFF_TOP`→2244 and `FP_H`→2254; optional future cl
 ## Open items to settle during design
 
 - ~~Exact travel values for the promoted `XSLIDE_*`~~ **DONE 2026-08-13** — verified vs geometry (Sheet 10): Z 245 / X 257 mm.
-- Belden UJ-SS750x375 booted length + bolt/key detail (datasheet).
-- Carriage-plate + L-plate hole patterns (design to edge-distance rules).
+- Belden UJ-SS750x375 — **REVIEWED 2026-08-13** (datasheet `eng-specs/UJ-SS750x375__ZE41.pdf`): OD 19.05 / length 68.3 / yoke 34.2 / hub 24.1 / 45° all confirmed. Two findings: (1) the plain part has **no keyway/set-screw** — ordering the **set-screw bore variant** so both bores clamp the 3/8″ stub (J3/J4); part # TBD (Alvin selecting). (2) Booted envelope captured (`UJOINT_BOOT_OD` 33.34 / `UJOINT_BOOT_LEN` 31.75 — bulges the center to Ø33.34, length unchanged). ~~booted length + bolt/key~~ resolved bar the set-screw part #.
+- ~~Carriage-plate hole pattern~~ **DONE 2026-08-13** — plate firmed at **80×181×6mm 6061-T6** (`CARRIAGE_PLATE_*`, grown +10 for keeper edge distance); pattern **4× Ø10 stub-axle (40×38) + 4× M8 J1 + 2× M4 cam**, all ≥2×Ø from edges; drawn on Sheet 3 View A + firmed in `parts.py` fp-carriage-plate. (L-plate/corner-plate pattern already in `CORNER_PLATE_HOLE_*`.)
 - ~~Per-corner load + cross-slide bending SF~~ **DONE 2026-08-13** (Sheet 10): 124 N/corner; bars mounted **DEEP** → SF ≈ 10 (flat 1.7, not used).

@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Film-plane corner — Belden U-joint reviewed + carriage-plate hole pattern firmed.** Reviewed the
+  Belden UJ-SS750x375 datasheet (`eng-specs/`): OD 19.05 / length 68.3 / 45° all confirmed. Finding: the
+  plain part has **no keyway/set-screw** — moving to the **set-screw bore variant** (part # pending) so
+  both bores clamp the 3/8″ stub (J3/J4). Captured the **boot envelope** (`UJOINT_BOOT_OD` 33.34 /
+  `UJOINT_BOOT_LEN` 31.75, from the vendor OL 1.25″ / OD 1-5/16″). And firmed the **carriage plate** at
+  **80×181×6 mm 6061-T6** (`CARRIAGE_PLATE_*`, grown +10 for keeper-axle edge distance) with its hole
+  pattern — 4× Ø10 stub-axle (40×38) + 4× M8 (J1) + 2× M4 (cam), all ≥2×Ø from edges — drawn on Sheet 3
+  View A and firmed in the `fp-carriage-plate` BOM spec.
+
 - **Film-plane corner — Phase-1c load case computed + decided → Sheet 10.** New `fp_corner_load.py` (driven from
   `tbs_constants`, renders `film-plane-sheet10.png`). **C2** verifies the cross-slide travel: Z (tilt ±40°)
   = 245mm and X (swing ±28°) = 257mm exactly match `XSLIDE_Z/X_TRAVEL`. **C1** the per-corner load (W/4 =

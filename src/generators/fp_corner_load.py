@@ -68,7 +68,7 @@ def render_png(path=None):
         import matplotlib
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
-        from matplotlib.patches import Rectangle, Arc, FancyArrow
+        from matplotlib.patches import Rectangle, Arc
     except ImportError:
         print("  (matplotlib unavailable — skipped PNG)")
         return None

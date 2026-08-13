@@ -24,69 +24,45 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+_Nothing yet — add a bullet per notable change here as work lands._
+
+## [0.6] — 2026-08-13
+
+- **Film-plane LEFT edge pulled inboard of the pivot hub (`FP_X_L` 150→260).** Resolved a hard
+  clash found once the detailed corner was in the light-trap: the backing-side carriage rode straight into
+  the swing-pivot hub. Resolved by bringing the film plane inside the swing-pivot.
+  Costs ~110mm image width (`FP_W` 4499→4389, active area 101→99 sq ft); the
+  now-asymmetric plane re-centers the pinhole (`PH_X` 2399→2454, +55mm). Cascaded to facts/CLAUDE.md optics
+  table, 11 diagram generators, and 8 SketchUp models. NB: the removable-rail lift-out STAYS — the inboard
+  move clears the pivot region but the panel's long swing arc still crosses the rail in the near/removable
+  zone (Yd ~1950–2066), so that section must still lift out for transport.
+
+- **Film-plane corner mechanism — definitive engineering blueprint (milestone template, branch
+  `corner-eng-design`).** Upgraded one corner from arrangement-schematic to fabricator-ready, driven
+  from `tbs_constants` so it can't drift: sheets 3/4/8/9 dimensioned (skate roller ODs + 40mm pitch;
+  rail wall-flange bolt pattern; cross-slide bar section/travel/gib/UHMW; U-joint envelope Ø19.1/68/bore
+  9.53/±45°, J5 hole pattern, L-plate 6×8 bend); **J1–J5 fastener schedule with torque/class/washer/locker**
+  (M8 24 N·m, M6 10 N·m, setscrews ~2.5 N·m); a **datum + tolerance scheme** (datums A/B/C + GD&T). Firmed
+  the load (162 N/corner, section SF 4.5/27) and, to hold ±40°/±28°, grew the cross-slide bar (+$135 film).
+
 - **Stainless-grade reconciliation (304 vs 316) — system-wide policy.** The cyanotype wash has no
   chloride, so 316's pitting resistance is unused → **304 (A2) is the default** for all wet structural
   stainless; 316 is metallurgically unneeded (kept only on the tray seam bolt by choice). Codified as a
   policy block in the `parts.py` registry header. The actual corrosion gap was zinc fasteners in wet zones,
   so upgraded `bolt-m6x20` (×2) + `bolt-m8-fixing` → 304 A2-70; the M12 structural through-bolts keep
   Grade 8.8 zinc (strength + exterior inspectable heads). 410 self-drillers + chrome-steel bearing kept.
-  Firm 304 A2 SKUs sourced and priced: M6×20 McMaster **91287A137** $17.77/50, M8×25 McMaster
-  **91310A535** $13.91/50 (`checked_date` stamped); the ±$1–3 registry shift was reconciled into the
-  FILM (−1) and spray (+3) costing aggregates.
-
-- **Film-plane U-joint selected: Belden SSNBUJ750x3/8KB (Grainger 41D816).** Reviewed the plain
-  UJ-SS750x375 datasheet (dims confirmed) but it has no retention, so switched to the **needle-bearing,
-  keyed (3/32×3/64 key) + set-screw, factory-booted** stainless variant (45° confirmed, $252.13 ea). BOM:
-  new `fp-ujoint` + `fp-ujoint-key`, dropped the separate `fp-ujoint-boot` (integral boot); costing +~$403
-  → grand-total mid $30,627→**$31,032**. Cascaded the part number + "needle-bearing / keyed / factory-booted"
-  across the constants (`UJOINT_BOOT_OD` 32.54), Sheets 3/8/9 (J3/J4 → keyed stub + key), the film-plane
-  report, blueprint spec, and cost breakdown. **The 3D model (`film-plane-mechanism`) label re-send is
-  pending** (code updated, needs a `--send` + save).
-
-- **Film-plane corner — Belden U-joint reviewed + carriage-plate hole pattern firmed.** Reviewed the
-  Belden UJ-SS750x375 datasheet (`eng-specs/`): OD 19.05 / length 68.3 / 45° all confirmed. Finding: the
-  plain part has **no keyway/set-screw** — moving to the **set-screw bore variant** (part # pending) so
-  both bores clamp the 3/8″ stub (J3/J4). Captured the **boot envelope** (`UJOINT_BOOT_OD` 33.34 /
-  `UJOINT_BOOT_LEN` 31.75, from the vendor OL 1.25″ / OD 1-5/16″). And firmed the **carriage plate** at
-  **80×181×6 mm 6061-T6** (`CARRIAGE_PLATE_*`, grown +10 for keeper-axle edge distance) with its hole
-  pattern — 4× Ø10 stub-axle (40×38) + 4× M8 (J1) + 2× M4 (cam), all ≥2×Ø from edges — drawn on Sheet 3
-  View A and firmed in the `fp-carriage-plate` BOM spec.
 
 - **Film-plane corner — Phase-1c load case computed + decided → Sheet 10.** New `fp_corner_load.py` (driven from
   `tbs_constants`, renders `film-plane-sheet10.png`). **C2** verifies the cross-slide travel: Z (tilt ±40°)
   = 245mm and X (swing ±28°) = 257mm exactly match `XSLIDE_Z/X_TRAVEL`. **C1** the per-corner load (W/4 =
   124N) → X-slide bending safety factor — bar orientation is decisive, **DEEP** (38.1mm in the load
-  direction) SF≈10, **FLAT** a marginal 1.7 (fails at ×2). **DECISION (Alvin): bars mounted DEEP.**
-  Promoted the review sheet to **film-plane Sheet 10** (set renumbered 9→10); the decision is annotated on
-  the sheet and recorded in the blueprint spec §Phase 1c (`XSLIDE_*` `reserved→firm`), the parts spec, and
-  the fabrication sheets (Sheet 3 note + Sheet 8 cross-slide "MOUNT DEEP" callouts).
-
-- **Film-plane material-drift sweep + wired `CORNER_PLATE_T`.** The corner blueprint changed the depth
-  rail 304 SS → 6061-Al and the cross-slides 316 → 304 SS, but stale labels survived in living docs —
-  swept "304 U-channel"→6061-Al and "316 cross-slide"→304 in `funding-proposal`, `project-cost-breakdown`
-  (prose + BOM row), `project-summary`, and a `parts.py` comment (source of truth was already 304/6061-Al).
-  Also wired the previously-dangling `CORNER_PLATE_T` (¼") constant into the Sheet-9 corner-plate label
-  (was a hardcoded `¼"`). Logged the still-open Phase-1c load/bending-SF + XSLIDE-travel review in TODO.
-
-- **Film-plane Sheet 1: carried the ALU-frame dimension style.** The plan-view span dim is relabeled
-  "RAIL SPAN" → **ALU FRAME WIDTH 4389mm** and colored the frame's blue, matching Sheet 7, so it reads
-  as a frame dimension distinct from the gray container envelope (INTERIOR LENGTH). And **repurposed the
-  right-side vertical dim** — formerly the optical axis / focal length (not of interest on the plan) — to
-  **ALU FRAME HEIGHT 2094mm** (blue, marked "into page — REF", since a top-down plan can't show height
-  spatially), so the frame's full W×H reads on Sheet 1. (Sheet 2 left as the swing/motion diagram — it
-  doesn't reference the static frame.)
+  direction) SF≈10, **FLAT** a marginal 1.7 (fails at ×2). **DEEP** was chosen on this basis.
 
 - **Film-plane blueprint: Sheet 7 upgraded from system-arrangement to fabricator-grade GA.** Added the
   frame-fabrication content a shop needs: DETAIL A corner joint (45° miter + TIG fillet, per the joint
   decision) with the 2"×2"×3/16" 6061-T6 angle callout; the ACM backing strip layout (4 vertical Dibond
   strips, 3× 1219 + 1× 732 mm, 3 butt seams, splice-battened); and the 58× nylon-spring-clamp stations
-  @ 150 mm (top + 2 sides). Also fixed a rail-material drift — the rail was labeled both "304" and
-  "6061-Al"; it is 6061-Al 76×38 U-channel throughout now. (Sheets 1 & 2 to follow.)
-
-- **Film-plane blueprint: fixed stale `X150` left-rail labels** on the 2D sheets — the corner-edge
-  resolution moved the left rail to X260 (`FP_X_L`) and the geometry auto-followed the constant, but
-  five hardcoded callout/comment strings still read "X150". Now reference `RAIL_X_L` so they can't drift
-  again (rendered labels use `X{RAIL_X_L}`). Groundwork for taking Sheets 1/2/7 to fabricator grade.
+  @ 150 mm (top + 2 sides).
 
 - **Model `.rb` retired from git → `dependencies.yml` source_hash manifest; Sketchfab UID
   consolidated.** The 10 generated SketchUp `.rb` were committed only as a diff/staleness proxy for
@@ -100,50 +76,6 @@ file** — a release must not ship without a changelog entry:
   UID drift (it lived in both the generators and the 6-of-10 `models/sketchfab.json`, which is now
   retired). New `lint.py` gate: models must declare a valid uid/embed_files/source_hash.
 
-- **Editorial + FP_X_L=260 doc-consistency sweep.** Wrapped 26 restated values in `<!-- fact:KEY -->`
-  placeholders so they auto-cascade (corridor 270, rib 457, walkway 500, clamp 150, IBC stack 2,336 —
-  the last gaining `display: comma`); fixed the American-spelling gate (`grey`→`gray`); and finished the
-  FP_X_L=260 leftovers in the position/mass tables (left/optical zone 150→260, tray 170→280). The tray
-  narrowed to 4,349mm, so its modeled mass drops 116→114 kg — cascaded through the weight model (dry
-  3,254→3,252, loaded 5,054→5,052 kg) and its 5 diagrams. Also fixed a pre-existing weight-model drift:
-  the film-plane carriage mass in the detail table (57→51 kg, now wrapped in the `wt-comp-film` injector
-  so it can't drift) and its generator note (92→58 clamps, now derived from `CLAMP_N_TOTAL`).
-
-- **Film-plane LEFT edge pulled inboard of the pivot hub (`FP_X_L` 150→260).** Resolved a hard
-  clash found once the detailed corner was in the light-trap: the backing-side carriage rode the X150
-  rail straight into the swing-pivot hub (which can't be relieved — strength — nor passed through).
-  Explored outboard vs inside vs pinhole/optics trades; chose **inside** — relocate the whole left corner
-  (rail + carriage + frame) inboard, past the hub's r60 bearing (reaches X235). Also **pinned `PIVOT_X` at
-  175** (was `RAIL_X_L + BRACE_RHS//2`, so the post had been chasing the rail — the reason the first
-  attempt at 244 didn't clear). Costs ~110mm image width (`FP_W` 4499→4389, active area 101→99 sq ft); the
-  now-asymmetric plane re-centers the pinhole (`PH_X` 2399→2454, +55mm). Cascaded to facts/CLAUDE.md optics
-  table, 11 diagram generators, and 8 SketchUp models. NB: the removable-rail lift-out STAYS — the inboard
-  move clears the pivot region but the panel's long swing arc still crosses the rail in the near/removable
-  zone (Yd ~1950–2066), so that section must still lift out for transport.
-
-- **Detailed corner mechanism reused into every container-scale model + parked film + web-vertical
-  rail cascade.** Both film rails stood web-vertical (new single-sourced `FP_RAIL_*` block: ZC_BOT 270 /
-  ZC_TOP 2300 / section 76×38); the combined BR corner plate grew to back the Z270 rail. `overview`,
-  `walkway`, `water`, `lighttrap` now embed the real fpm corner (rails + skate + carriage + cross-slides
-  + U-joint + 304 corner plate) via `fpm.corner()` reuse — one source, no duplication. Added a `keep=`
-  fixed/removable filter to `fpm.corner()` so lighttrap's Panel-Swing DC keeps only the removable rail
-  section (fixing a shared-material over-match that had hidden the brackets in transport). Film plane
-  parked 50mm forward of the hinge post for legibility (`FP_Y_PARK`, display-only). Walkway film beams
-  split onto a `Film Plane Left` tag (dropped from the Right-Cantilever scene) + scene reorder; lighttrap
-  roof/side-walls removed for orbiting.
-
-- **Film-plane corner mechanism — definitive engineering blueprint (milestone template, branch
-  `corner-eng-design`).** Upgraded one corner from arrangement-schematic to fabricator-ready, driven
-  from `tbs_constants` so it can't drift: sheets 3/4/8/9 dimensioned (skate roller ODs + 40mm pitch;
-  rail wall-flange bolt pattern; cross-slide bar section/travel/gib/UHMW; U-joint envelope Ø19.1/68/bore
-  9.53/±45°, J5 hole pattern, L-plate 6×8 bend); **J1–J5 fastener schedule with torque/class/washer/locker**
-  (M8 24 N·m, M6 10 N·m, setscrews ~2.5 N·m); a **datum + tolerance scheme** (datums A/B/C + GD&T). Firmed
-  the load (162 N/corner, section SF 4.5/27) and, to hold ±40°/±28°, grew the cross-slide bar (+$135 film).
-  Reconciled the drift: cross-slide 316→304, U-joint Ruland→Belden, rail supplier/material, and the top
-  (guide) corner from flat→**web-vertical with the same captured skate** as the bottom — which corrected the
-  3D model (film top 2290→2252) to match the existing `FP_H`=2094 (no FP_H/optics cascade). `film-plane-mechanism.skp`
-  re-sent + re-uploaded. _(Not yet merged to main.)_
-
 - **Pump-run support-detail fabrication sheet (#29 follow-up).** New `generate_support_detail.py`
   → `support-detail-sheet1/2.png`. Sheet 1 = face-on board elevations (far / near / near-upper —
   18mm ply, 4 L-brackets each, risers + P-clip rows, fully dimensioned); Sheet 2 = the L-bracket
@@ -153,25 +85,14 @@ file** — a release must not ship without a changelog entry:
   39 clips). Geometry imported from the `cp` model constants so it can't drift. Embedded in
   plumbing-report §5.3; registered in the gallery, publish, setup_docs, and dependencies.yml.
 
-- **Construction sequence — far support board staged one click later.** In the Phase 1
-  click-to-build, the far-wall pump-run support board (DV-01/P-02/P-01 risers) now reveals on
-  **click 4 (with Fan A)** instead of click 3 — click 3 drops in only the near-wall boards. Added
-  a `sides=` filter to `cp.support_boards()` and a `boards=` param to `cp.equipment()` (both
-  default to all, so overview/water are unchanged); construction step 1.3 draws `boards=("near",
-  "near-upper")` and step 1.4 adds `support_boards(sides=("far",))`. Construction-only re-send;
-  geometry set unchanged (interference 0/0).
-
 - **Pump-run support boards in the IBC plumbing corridor (#29 follow-up).** The cantilevered pump
   risers on the two corridor side walls now land on **three 18mm ply boards** (far wall + lower and
   upper near-wall boards), each recessed **flush**
   in the window between the front & rear side-posts (399mm wide) on **welded steel L-brackets** (one
   leg welded to each post inner face, the ply bolted to the landing leg — the rear-panel method), with
-  the risers held by **cushioned P-clips**. The five risers were pulled **flush onto the boards**: the
-  **DV-01 recycle line re-routed** off IBC-3, across and **down the far board**, then two 90° turns into
-  DV-01 (was standing 75mm proud); P-02 discharge / P-01→ACC-01 / P-02 suction nudged to the board plane;
-  P-05 inlet already there. The **same P-clip method was extended** to the **drain-riser spine**
+  the risers held by **cushioned P-clips**. The **same P-clip method was extended** to the **drain-riser spine**
   (the 3 gray waste risers — X4 waste / DV-02 / DV-01→merge) and the **filter-skid panel** (the
-  3 vertical runs — DV-02→F1 + tray-sump→P-04 nudged to the Yd35 clip plane, F3→SV-01 already there —
+  3 vertical runs — DV-02→F1 + tray-sump→P-04, F3→SV-01 already there —
   plus the horizontal runs: brown ± ACC-02 flush, and standoff clamps on the blue ± SV-01 and the
   brown DV-02 row). **Operability + review pass:** BV-03 handle rotated to −X (cargo door); a second
   **upper near board (Z1260–1950)** backs BV-02/BV-06 + the brown P-05 (Z1300) and gray P-03 (Z1902)
@@ -179,19 +100,9 @@ file** — a release must not ship without a changelog entry:
   **walkway edge (X4770)** for reach, labels moved to the valve centers on the operator side;
   spine far-side X-port lines (P-05→X3, P-03→X4) clamped; the DV-01→IBC-3 tote entry dropped to
   Z1080 with the flange seated on the cage edge and the run simplified (straight in, no drop-jog).
-  3D done in **water** (`.skp` saved + uploaded). **BOM/cost:** 3 ply side boards (cut from the
+  **BOM/cost:** 3 ply side boards (cut from the
   corridor 4×8 offcut — no added ply), 12 welded L-brackets, 39 cushioned 3/4" P-clips →
-  **+$33/$46/$61 water** (grand total $26,024/$30,492/$37,028). **Cascade complete:**
-  overview/ibc-stack/construction re-sent + uploaded; interference re-audit clean (0 crossings,
-  after a hump on ACC-02→BV-05 to clear the nudged tray-sump riser); plumbing-report §5.3
-  support-scheme narrative; panel-layout 2D shows the side boards edge-on on their L-brackets.
-
-- **Diagram polish.** Film-plane **Sheet 6** clamp notes single-spaced + word-wrapped to fit the box
-  (was double-spaced with note 5 overflowing); **Sheet 4** notes box shrunk to fit the text (was ~2×
-  too wide); **pinhole-wall-elevation** now draws a proper **crossover** (semicircle jump) where the
-  ACC-02→BV-05 recycle run crosses the P-04 sump-pickup riser — it was reading as a joint. Round 2:
-  **Sheet 9** note block reduced to ~50% page width + line-wrapped to fit; **water-system Sheet 3**
-  notes box widened 5%.
+  **+$33/$46/$61 water** (grand total $26,024/$30,492/$37,028).
 
 - **SketchUp `--send` memory-bloat investigation (tooling, not published).** Ran a full investigation
   into the SketchUp process ballooning over repeated `--send` (TODO tooling item). Falsified the
@@ -217,9 +128,7 @@ file** — a release must not ship without a changelog entry:
   carry only 2×1; $6.35/ft bulk); the IBC frame, film-plane brace, floor-leg posts, and swing/hinged-panel
   frames → **2×2×0.120in** (50→50.8); the tray bearer → **2×2×0.125in 6061 Al**. 2×1 is *deeper* than
   2×⅞, so the arms get **stronger** (SF≈2.5 vs 2.1) — Option B keeps the deck height, trading 3.4mm of
-  spray-beam clearance (15→11.6mm). **#27:** the mid-span support was already modeled + costed (2 center
-  arms off the IBC uprights) — cleaned up the stale "*planned*" language to present tense and re-ran the
-  deflection/strength check against the real section. Real 2×1 pricing corrected the RWK frame (+$107/+$123
+  spray-beam clearance (15→11.6mm). Real 2×1 pricing corrected the RWK frame (+$107/+$123
   walkway; the old $28–40 was a guess for a non-stock section); grand total → $25,991/$30,446/$36,967.
   8 diagrams + 6 model `.rb` regenerated (`.skp` re-send pending).
 
@@ -228,24 +137,7 @@ file** — a release must not ship without a changelog entry:
   from the rigid PVC run so vibration can't fatigue-crack a solvent-weld joint (P-04's suction is the
   1" tray-drain hose → 9 new ½" jumpers). Shown on the water-system P&ID (a flex coil on both ports
   of P-01…P-05); BOM adds the 3rd braided length + **18× ½" barb couplings** (Rain Bird BC50-20) +
-  **18× SS clamps** (Everbilt 671255E), **+$55** water. Plumbing-report §5.2 made explicit. **3D done:**
-  a corrugated flex jumper on both ports of the 4 corridor pumps (P-01/P-05/P-03/P-02) + P-04's discharge
-  on the skid = 9 jumpers, reusing the `_flex_jumper` builder (capped so it can't overshoot the turn).
-  All flex connectors (pump + IBC-tote) now render **bright yellow** (`C_FLEX #FFD500`) so a jumper
-  stands out from the same-color pipe it splices. The **panel-layout 2D elevations** now show a gold
-  flex coil at every pump port too (corridor column P-01/P-02/P-05/P-03 both ports + the P-04 skid
-  discharge). All 7 affected models re-sent + saved. #29 complete.
-
-- **Captive tee-nuts for every removable ply-mount joint (#30).** Every machine-screw interface into
-  the 18mm exterior ply — 3× Big Blue filter housings, the P-04/SV-02/DV-02 skid row, ACC-01/02, the
-  5× Shurflo pump-mount shirt, valve brackets, the EP panel, the chem shelf, and the Fan-B band — now
-  lands on a **back-face 4-prong tee-nut** with a machine screw instead of a wood/lag screw: a
-  re-torqueable, serviceable joint that can't strip the ply. Firm hardware: **¼-20** (Everbilt 825001,
-  $1.57/4-pk) + **5/16-18** (Everbilt 825091, $1.57/4-pk) zinc pronged tee-nuts, ~8–9.5mm barrels that
-  seat from the back of 18mm ply. Machine screws downgraded SS→**zinc** (dry backboard mounts). The
-  filter joint converts lag→machine-screw; plumbing-report §3.1/§7.2 rewritten (the retired
-  slotted-angle frame text removed). Zinc machine screws firm too (¼-20 Everbilt 826771, 5/16-18
-  831121, both $1.57). Net **+$32** water; grand total → $25,829/$30,281/$36,789.
+  **18× SS clamps** (Everbilt 671255E), **+$55** water. Plumbing-report §5.2 made explicit.
 
 - **Ball-valve sourcing + BV-05 spray selector re-designed as two 1/2″ valves.** The five 1/2″ 2-way
   isolation valves (BV-01/02/03/04/06) re-sourced Banjo V050FP → **Grainger 803HZ1 at $24.14** (from
@@ -256,34 +148,16 @@ file** — a release must not ship without a changelog entry:
   (net water cost this pair: **−$96**). Modeled in all four 3D models (water/overview/construction/
   ibc-stack); plumbing report §4.1 rewritten. The **overview** opening camera was also turned 180° to
   look into the container from the far wall.
-  Follow-up: **fixed a BV-02/BV-05 numbering collision.** The pinhole-wall spray constants
-  (`BV02_X/YD/Z`) actually positioned the spray selector, so they and every spray-context label
-  were renamed **BV-02 → BV-05** (constant, wall-elevation, spray-bar diagram, hose BOM, operating
-  manual wash procedure + valve matrix now carry BV-05a/BV-05b). The real **BV-02** now names only
-  the corridor P-05 (Brown drain) suction isolation valve. Value-preserving rename — no `.skp`
-  re-send.
 
 - **Sump→P-04 suction re-routed off the pinhole wall.** The tray-drain suction ran as a tall riser
   straight up the pinhole wall (a clash); it now rises only ~150 mm above the walkway deck, turns 90°
-  toward the skid, runs above the walkway, then a second 90° turn up into P-04 at the skid. Cascaded
-  through `skid_plumbing()` into **water/overview/construction/ibc-stack** (all reuse it), and the 2D
-  **pinhole-wall-elevation + water Sheet 4** cross-section were redrawn to match; interference audit
-  clean (0 pipe crossings, the re-route added none). The **ibc-stack opening camera** was retargeted to
-  the filter-skid panel viewed from inside the container. **BV-05** documented as a 3-way **L-PORT**
-  spray selector (Blue-open / Brown-open / closed; a placeholder in the BOM — real L-port SKU to source,
-  see TODO).
+  toward the skid, runs above the walkway, then a second 90° turn up into P-04 at the skid.
 
 - **Muslin re-cut to fit the washable tray; spray-beam lift-out resolved operationally.** The muslin
   is now cut to the **washable tray area** — **4,359 × 2,000 mm** (`MUSLIN_CUT_W/H`), narrower AND
   shorter than the film-plane ACM+frame (4,499 × 2,094) so it lies flat clear of the side rims and the
   near-rim sump well; the tray, not the optics, is the size constraint (captured print ~94 of the
-  101 sq ft plane; muslin yardage 388→360 yd, still 3 rolls, no cost change). **No lift mechanism:** the
-  beam parks at the pinhole-wall end, the muslin is fed through the far drop-slot and pulled to it, then
-  the beam rolls back over the laid muslin to wash; deep maintenance extracts the beam through the
-  removable right-walkway grate (processing-tray report §4 + op-manual). Sump pickup nudged 13 mm
-  (`PROC_TRAY_DRAIN_X` 2,399→2,386) so the riser lands in a clear walkway-bracket bay. New
-  `MUSLIN_CUT_*`/`MUSLIN_AREA_SQFT` constants + muslin-cut facts. *(5 model `.skp` — water/overview/
-  construction/ibc-stack/spraybar — pending re-send for the 13 mm sump shift.)*
+  101 sq ft plane; muslin yardage 388→360 yd, still 3 rolls, no cost change).
 
 - **Spray-bar + processing-tray redesign — full-width beam, center-draining tray.** The spray beam
   went to a **full-width 1½×1½×0.062″ square tube with 44 nozzles** (from the short 40×25 section);
@@ -304,18 +178,6 @@ file** — a release must not ship without a changelog entry:
   3W-BV-05 spray selector). Blue supply isolated; the recycle loop closed. The Sheet-1 P&ID schematic
   was redrawn to match, and water.skp rebuilt (skid-panel reorg, ribbons routed onto the ply,
   3W-BV-05 dropped clear of the aperture).
-
-- **2D drawing set rebuilt to the skid design.** `pinhole-wall-elevation`, `pinhole-panel`, and
-  `corridor-panel` sheets were rebuilt to the current wet-end (filter skid + corridor split), and
-  **water-system Sheets 3 & 4** rewritten to the center-drain design (Yd-only slope plan; sump-riser
-  cross-section → P-04 on the filter skid). Suction enters P-04's top per convention; ACC-02 → BV-05
-  spray connection drawn; filter-skid flow uses the pipe-drawing convention.
-
-- **P-04↔P-02 wiring + roster swap cascaded everywhere.** The pump swap was carried through
-  `electrical.skp` (Circuit-C wiring parity), the electrical report + 2D diagram + layout prose, and a
-  closure sweep of every corridor-roster reference (weight analysis, ibc-stacking legend, cost
-  breakdown, component-dependency-map, water-system equipment table) so no doc still lists P-04 on the
-  corridor.
 
 - **BOM / cost reconciliation.** Added **ACC-02** and the **pinhole-wall filter-skid backing ply**
   (exterior grade, not marine) to the registry; reconciled the `project-cost-breakdown.md` §5

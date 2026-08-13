@@ -16,7 +16,7 @@ generators:
   film_plane_distortion: {script: src/generators/generate_film_plane_distortion.py, outputs: [diagrams/film-plane-distortion-summary.png]}
   film_plane_mechanism: {script: src/generators/generate_film_plane_mechanism.py, outputs: [diagrams/film-plane-sheet1.png, diagrams/film-plane-sheet2.png, diagrams/film-plane-sheet3.png, diagrams/film-plane-sheet4.png, diagrams/film-plane-sheet5.png, diagrams/film-plane-sheet6.png, diagrams/film-plane-sheet7.png, diagrams/film-plane-sheet8.png, diagrams/film-plane-sheet9.png]}
   floorplan_diagram: {script: src/generators/generate_floorplan_diagram.py, outputs: [diagrams/container-floorplan-sheet2.png, diagrams/container-floorplan.png]}
-  fp_corner_load: {script: src/generators/fp_corner_load.py, outputs: [diagrams/fp-corner-load-case.png]}
+  fp_corner_load: {script: src/generators/fp_corner_load.py, outputs: [diagrams/film-plane-sheet10.png]}
   grp_cutplan: {script: src/generators/generate_grp_cutplan.py, outputs: [diagrams/grp-cutplan.png]}
   hingepanel_diagram: {script: src/generators/generate_hingepanel_diagram.py, outputs: [diagrams/hingepanel-sheet1.png, diagrams/hingepanel-sheet2.png, diagrams/hingepanel-sheet3.png, diagrams/hingepanel-sheet4.png, diagrams/hingepanel-sheet5.png, diagrams/hingepanel-sheet6.png]}
   ibc_frame_drawing: {script: src/generators/generate_ibc_frame_drawing.py, outputs: [diagrams/ibc-frame-sheet1.png, diagrams/ibc-frame-sheet2.png, diagrams/ibc-frame-sheet3.png]}

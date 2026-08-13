@@ -70,7 +70,7 @@
 
 ![TBS-001 Film Plane Mechanism — Sheet 9: Frame + ACM ↔ U-joint ↔ X-Slide Connection Detail](assets/film-plane-sheet9.png)
 
-![TBS-001 Film Plane Corner — Load Case (Phase 1c): cross-slide travel verification + bending safety factor](assets/fp-corner-load-case.png)
+![TBS-001 Film Plane Mechanism — Sheet 10: Corner Load Case (cross-slide travel + bending SF)](assets/film-plane-sheet10.png)
 
 ### Corner Joint — Design Study
 

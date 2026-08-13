@@ -424,13 +424,15 @@ _Alvin 2026-07-20: `film-plane.skp` (the older full-plane "Option A" model) is s
   build renders the "Version v0.3" footer from the new path.
 
 ## Cost / data modeling
-- [ ] **Reconcile 304 vs 316 stainless steel usage — whole-system function + cost — OPEN.** Audit every SS
-  part in `parts.py` (rails, U-channel, corner plates, U-joints, flat-bar cross-slides, shaft supports,
-  stub rod, tray, fasteners, shim, etc.) for its grade (304 vs 316), decide the grade each part actually
-  needs (corrosion exposure — cyanotype/wet-process wash vs dry structure — vs cost), and reconcile so the
-  choice is consistent and justified system-wide. 316 carries a marine/chemical-immunity premium; use it
-  only where the wet chemistry warrants it, 304 elsewhere. Update `parts.py` grades + costs and the reports
-  in the same pass.
+- [x] **Reconcile 304 vs 316 stainless — DONE 2026-08-13.** Codified a **stainless-grade policy** in the
+  `parts.py` registry header: the cyanotype wash has **no chloride**, so 316's pitting resistance is unused →
+  **304 (A2) is the default** for all wet/splash structural stainless; **316 is metallurgically unneeded**
+  anywhere (kept only on `bolt-m6-tray` by Alvin's belt-and-suspenders choice). The real gap was the reverse —
+  **zinc fasteners in wet zones** — so upgraded `bolt-m6x20` (×2: spray + panel) and `bolt-m8-fixing` → **304
+  A2-70** (resolved their ⚠ VALIDATE flags). **M12 structural through-bolts KEPT Grade 8.8 zinc** (strength
+  800 MPa + heads sit outside the container, inspectable; going stainless w/o a strength loss = A4-80/316,
+  not worth it — Alvin). 410 self-drillers + the 51118 chrome-steel bearing kept (functional). **Sub-TODO:**
+  re-source the 304 A2 SKUs + firm prices for the upgraded M6/M8 (currently held at the retired zinc price).
 - [x] **Cost-analysis Bucket B — DONE (2026-07-05).** Solar lever computed (drop 1× `solar-panel-200w`);
   two **phantom levers** removed (film banked into the manual standard; battery already 1×100Ah). The
   two remaining alternatives were **decided by Alvin, not modeled**: **keep 304 SS tray** (poly needs a

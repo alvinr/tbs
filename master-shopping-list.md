@@ -212,8 +212,8 @@ indicative low–high estimates — get quotes before ordering.
 |------|-----|----------|---------|-----------|
 | [M5×16 countersunk screw, A2-70 SS](https://www.mcmaster.com/91420A326/) (91420A326) | 8 ea | McMaster-Carr | shelf | $1 |
 | [M6×1.0 × 16 hex bolt, 316 SS — tray center-seam lap joint](https://www.mcmaster.com/93635A210/) (93635A210) | 12 ea | McMaster-Carr | tray | $8 |
-| [M6×1.0 × 20 hex bolt, Grade 8.8 zinc](https://www.mcmaster.com/91280A330/) (91280A330) | 20 ea | McMaster-Carr | electrical, spray | $4 |
-| [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — right-rail end fixing (ICP-14)](https://www.mcmaster.com/91280A534/) (91280A534) | 8 ea | McMaster-Carr | film | $3 |
+| [M6×1.0 × 20 hex bolt, 304 SS (A2-70)](https://www.mcmaster.com/) | 20 ea | McMaster-Carr | electrical, spray | $4 |
+| [M8×1.25 × 25 hex bolt, 304 SS (A2-70) — right-rail end fixing (ICP-14)](https://www.mcmaster.com/) | 8 ea | McMaster-Carr | film | $3 |
 | [M8×1.25 × 25 hex bolt, Grade 8.8 zinc — shelf cleat + stay mount](https://www.mcmaster.com/91280A534/) (91280A534) | 12 ea | McMaster-Carr | shelf | $4 |
 | [M12×40 hex bolt, 18-8 SS](https://www.mcmaster.com/92314A744/) (92314A744) | 8 ea | McMaster-Carr | ibc-frame | $12 |
 | [M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A728/) (91280A728) | 103 ea | McMaster-Carr | film, ibc-frame, walkway | $164 |

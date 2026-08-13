@@ -30,6 +30,9 @@ file** — a release must not ship without a changelog entry:
   policy block in the `parts.py` registry header. The actual corrosion gap was zinc fasteners in wet zones,
   so upgraded `bolt-m6x20` (×2) + `bolt-m8-fixing` → 304 A2-70; the M12 structural through-bolts keep
   Grade 8.8 zinc (strength + exterior inspectable heads). 410 self-drillers + chrome-steel bearing kept.
+  Firm 304 A2 SKUs sourced and priced: M6×20 McMaster **91287A137** $17.77/50, M8×25 McMaster
+  **91310A535** $13.91/50 (`checked_date` stamped); the ±$1–3 registry shift was reconciled into the
+  FILM (−1) and spray (+3) costing aggregates.
 
 - **Film-plane U-joint selected: Belden SSNBUJ750x3/8KB (Grainger 41D816).** Reviewed the plain
   UJ-SS750x375 datasheet (dims confirmed) but it has no retention, so switched to the **needle-bearing,

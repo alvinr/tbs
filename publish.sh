@@ -233,6 +233,7 @@ DIAG_FILES=(
     "film-plane-sheet7.png"
     "film-plane-sheet8.png"
     "film-plane-sheet9.png"
+    "fp-corner-load-case.png"
     "film-joint-options.png"
     "film-joint-study-gimbal.png"
     "film-joint-study-ujoint.png"

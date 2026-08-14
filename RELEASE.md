@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **IBC frame blueprint Phase D detail insets → new Sheet 4 (Fabrication Details).** `ibc-frame-sheet4`
+  draws the five connections a shop builds from — **A** wall joist hanger (per-bar 2-bolt, 50 mm bolt
+  clearance, 60×205×8 backing plate), **B** bar→upright cleat, **C** weld-on lashing ring, **D** rear-panel
+  bracket, **E** pump-support L-bracket — each with its weld (W) + fastener (J) callout and a notes cell.
+  Registered in the gallery / publish.sh / setup_docs and embedded in report §3.5 + §8 (frame set now 4
+  sheets). Completes the IBC-corridor metal blueprint (A–E) — validated design + fastener/weld/tolerance
+  schedules + cut list + detail sheet.
+
 - **IBC frame blueprint scope EXTENDED to the whole IBC-corridor metal construction.** The deep-box frame
   is one welded structure serving three roles, so the review now also covers the plumbing-corridor metal
   that shares it. Added **service + walkway load cases** (`ibc_frame_load.py`): the plumbing panel + pumps

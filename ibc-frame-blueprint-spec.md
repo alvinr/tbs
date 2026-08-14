@@ -108,7 +108,7 @@ text), authoritative voice, each capacity/coefficient cited.
 - [x] **Member cut list** — drawn on `ibc-frame-sheet1` (4 uprights @2296, ring rails, 8 bars @1046, 4 feet, 8 backing plates @60×205, 8 hangers, 8 cleats), lengths computed from the frame constants.
 - [x] **Datum + tolerance callout block** on sheet1 (from §3.6); weld-schedule (§3.5 W1–W5 leg sizes) folded into the fab notes.
 - [x] Stale-value cleanup: sheet labels/notes 100×80→60×205, ~119→~123 kg, bar Z560/1760→Z500/950+1500/1950.
-- [ ] **Remaining (Phase D refinement):** dedicated detail INSETS — wall-hanger fold pattern, exterior backing-plate hole pattern, bar→upright cleat, lashing-ring weld position (the foot-plate inset already exists); an optional rendered load-case sheet. Verify each vs `ibc-stack.skp`.
+- [x] **Detail INSETS — DONE 2026-08-14:** new **Sheet 4 (Fabrication Details)** with DETAIL A wall joist hanger (per-bar 2-bolt, 50mm clearance, backing plate), B bar→upright cleat, C weld-on lashing ring, D rear-panel bracket, E pump-support L-bracket — each with its weld (W) + fastener (J) callout + a notes cell. Registered (gallery/publish/setup_docs), embedded in report §3.5 + §8. (The foot-plate inset already lived on sheet 1.) Optional rendered load-case sheet still deferred.
 
 ## Phase E — Cascade + close (as changes land)
 

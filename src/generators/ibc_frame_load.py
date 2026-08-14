@@ -202,15 +202,16 @@ def service_loads():
     m_conn = p_arm * ARM_REACH_M
     z_upr = z_rhs(IBC_FRAME_RHS, IBC_FRAME_RHS, IBC_FRAME_T)   # 50.8x50.8x3 upright
     m_cap_upr = z_upr * FY_A500B / 1e3
-    # arm->upright connection: moment carried as a couple over the 2x1 arm depth (25.4mm) by a 5mm fillet
-    # weld (or an equivalent 2-bolt clamp); representative check = top-fibre weld force vs a 50.8mm run.
-    f_couple = m_conn / 0.0254
-    weld_cap = 0.707 * 5 * 50.8 * 0.6 * FU_WELD
+    # arm->upright connection = a BOLTED CLAMP (2 clamp plates + 2x M12 through-bolts wrapping the upright,
+    # per ibc_cantilever_arms). The moment is carried as a couple over the ~37mm clamp bolt spacing.
+    clamp_sp = 0.037
+    f_couple = m_conn / clamp_sp
+    bolt_cap = bolt_shear_cap(FUB_88, 1)   # per M12 8.8 through-bolt
     lines.append(f"  walkway arm tip {p_arm:.0f} N (22kg dead + 1kN person) x {ARM_REACH_M*1000:.0f}mm"
                  f" = {m_conn:.0f} N.m at the upright")
     lines.append(f"  front upright bending (50.8 RHS): cap {m_cap_upr:.0f} N.m  SF {m_cap_upr/m_conn:.1f}")
-    lines.append(f"  arm->upright connection (5mm fillet / 2-bolt clamp): couple {f_couple:.0f} N,"
-                 f" weld cap {weld_cap:.0f} N  SF {weld_cap/f_couple:.1f}")
+    lines.append(f"  arm->upright CLAMP (2x M12 through-bolts): couple {f_couple:.0f} N/bolt,"
+                 f" cap {bolt_cap:.0f} N  SF {bolt_cap/f_couple:.1f}")
     lines.append("  Both non-governing vs the EN 12195-1 transport case (bar SF 1.59). Arm DETAILING = walkway blueprint.")
     return "\n".join(lines)
 

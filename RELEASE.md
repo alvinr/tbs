@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **IBC frame Sheet 4 — DETAIL F: walkway arm → front-upright connection.** Added the sixth detail inset:
+  how each right-walkway cantilever arm attaches to a front corridor upright. Corrected from an assumed
+  weld to the ACTUAL design (per `ibc_cantilever_arms`) — a **bolted clamp**: 2 clamp plates wrap the
+  upright + 2× M12 through-bolts at two Z levels (no weld). Reclassified the connection across the whole
+  blueprint: `ibc_frame_load.py` now checks it as a 2-bolt clamp (couple over the ~37 mm bolt spacing,
+  **SF 3.8**, up from the SF 3.3 weld estimate); report §3.4 (clamp, not weld), §3.5 (new fastener **J6**;
+  **W9 removed** from the weld schedule), and §8 (Sheet 4 now A–F). Clamp hardware is procured with the
+  walkway-arm assembly (walkway blueprint), not double-counted in this frame's BOM.
+
 - **IBC detail sheets consolidated + corrected per review.** Fabrication details now live on a single sheet
   (`ibc-frame-sheet4`), reworked per feedback: DETAIL A hanger as a SECTION (bolts through the backing
   plate + wall + pocket — not the bar; vertical pair 50 mm clear; standard bolt-in-section symbols),
@@ -34,9 +43,10 @@ file** — a release must not ship without a changelog entry:
   the operational ratchet-buckle close-up.
 
 - **IBC frame blueprint Phase D detail insets → new Sheet 4 (Fabrication Details).** `ibc-frame-sheet4`
-  draws the five connections a shop builds from — **A** wall joist hanger (per-bar 2-bolt, 50 mm bolt
+  draws the connections a shop builds from — **A** wall joist hanger (per-bar 2-bolt, 50 mm bolt
   clearance, 60×205×8 backing plate), **B** bar→upright cleat, **C** weld-on lashing ring, **D** rear-panel
-  bracket, **E** pump-support L-bracket — each with its weld (W) + fastener (J) callout and a notes cell.
+  bracket, **E** pump-support L-bracket, **F** walkway arm→upright clamp — each with its weld (W) + fastener
+  (J) callout and a notes cell.
   Registered in the gallery / publish.sh / setup_docs and embedded in report §3.5 + §8 (frame set now 4
   sheets). Completes the IBC-corridor metal blueprint (A–E) — validated design + fastener/weld/tolerance
   schedules + cut list + detail sheet.
@@ -45,10 +55,10 @@ file** — a release must not ship without a changelog entry:
   is one welded structure serving three roles, so the review now also covers the plumbing-corridor metal
   that shares it. Added **service + walkway load cases** (`ibc_frame_load.py`): the plumbing panel + pumps
   (~33 N/bracket, trivial) and the right-walkway cantilever (each arm ~1.2 kN at 325 mm = a 395 N·m moment
-  into the front upright → upright bending **SF 6.9**, arm→upright connection **SF 3.3**) — both
-  non-governing vs the EN 12195-1 transport case. Extended report §3.4 (service cases), §3.5 (J4 panel-
-  bracket bolts, J5 pump-support-board fixings; welds W6 panel-bracket, W7 L-bracket, W8 ribbon-beam, W9
-  arm-connection), §3.6 (panel-mount + L-bracket landing tolerances), and the sheet-1 cut list (+6 rear-
+  into the front upright → upright bending **SF 6.9**, arm→upright bolted-clamp connection **SF 3.8**) —
+  both non-governing vs the EN 12195-1 transport case. Extended report §3.4 (service cases), §3.5 (J4 panel-
+  bracket bolts, J5 pump-support-board fixings, J6 arm clamp; welds W6 panel-bracket, W7 L-bracket, W8
+  ribbon-beam), §3.6 (panel-mount + L-bracket landing tolerances), and the sheet-1 cut list (+6 rear-
   panel brackets, +12 pump-support L-brackets, +4 ribbon cross-beams). Walkway-arm CONNECTION checked here;
   the arm's own detailing stays with the walkway blueprint (Alvin's boundary).
 

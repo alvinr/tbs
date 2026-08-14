@@ -361,6 +361,9 @@ def _cut_list(ax, x, y):
         f"  8   wall backing plate    8mm A36        60×205",
         f"  8   wall joist hanger     4mm folded     per detail",
         f"  8   bar→upright cleat     6mm angle      per detail",
+        f"  6   rear-panel bracket    6mm angle      per detail",
+        f" 12   pump-support L-brkt   1×1×⅛ angle    per detail",
+        f"  4   ribbon cross-beam     25×3 flat bar  ~300",
     ]
     draw_notes(ax, rows, x, y, spacing=(24), fs=6.2, font=FONT, width=(1500))
 
@@ -580,7 +583,7 @@ def sheet1():
 
     # ── Material note ───────────────────────────────────────────────────────
     notes = [
-        "MATERIAL & FABRICATION NOTES (RESTRAINT-ONLY FRAME):",
+        "MATERIAL & FABRICATION NOTES (IBC-CORRIDOR METAL FRAME):",
         f"1. All RHS members: 2×2×0.120in steel, A500 Grade B. Fillet welds per §3.5 schedule (W1 upright↔ring 5mm, W2 foot↔upright 6mm, W3 cleat 4mm, W4 lashing ring 6mm), continuous / all-around.",
         f"2. RESTRAINT, not load-bearing: the 1000L caged totes DIRECT-STACK cage-on-cage (52mm headroom — no deck between tiers).",
         f"   A DEEP 4-LEG BOX (front + back upright pairs, 450mm apart, tied by top + bottom rings) at the IBC front restrains them.",

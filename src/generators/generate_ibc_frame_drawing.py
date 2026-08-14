@@ -1094,13 +1094,17 @@ def sheet4():
     hatch_rect(ax, wy - 6, ay0 + 45, 12, 290, color="#B8B8B8", hatch="///")            # wall in section
     ax.add_patch(Rectangle((wy - 22, zc - 100), 8, 200, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=6))   # 60x205x8 backing plate
     ax.add_patch(Rectangle((wy + 10, zc - 100), 4, 200, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=6))    # 4mm pocket back-plate
-    ax.add_patch(Rectangle((wy + 14, zc - 28), 60, 6, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))         # U-pocket seat
-    _rhs_rect(ax, wy + 16, zc - 22, 40, 44, fc=C_FRAME, alpha=0.85, zo=7)                            # bar (drops in)
-    ax.text(wy + 92, zc, "BAR (drops\ninto pocket)", fontsize=6, va="center", **FONT, zorder=8)
+    ax.add_patch(Rectangle((wy + 14, zc - 28), 150, 6, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))        # U-pocket seat (bar rests on it)
+    _rhs_rect(ax, wy + 16, zc - 22, 150, 44, fc=C_FRAME, alpha=0.85, zo=7)                           # bar — extends RIGHT into the container
+    _break(ax, wy + 166, zc - 22, zc + 22)                                                          # bar continues (jagged)
+    ax.text(wy + 92, zc + 33, "BAR → into container", fontsize=6, ha="center", **FONT, zorder=8)
+    _weld_tick(ax, wy + 26, zc - 22, side='up', size=6)                                             # bar↔seat weld
+    _weld_tick(ax, wy + 16, zc - 8, side='right', size=6)                                           # bar↔pocket-back weld
+    leader(ax, wy + 22, zc - 22, wy + 60, zc + 118, "bar FILLET-WELDED to the\nseat + pocket back after\ndrop-in (secures it)", fs=6, font=FONT, ha="left")
     for dz in (75, -75):
         _bolt(ax, wy - 22, zc + dz, 36, d=11, nut=True)                                             # thru plates+wall, NOT the bar
     draw_dim_v(ax, wy - 58, zc - 75, zc + 75, "150")
-    leader(ax, wy + 56, zc - 22, wy + 120, zc - 78, "50mm CLEAR\nbolt↔seat\n(wrench room)", fs=6, font=FONT, ha="left")
+    leader(ax, wy - 6, zc - 45, wy + 100, zc - 78, "50mm CLEAR\nbolt↔seat", fs=6, font=FONT, ha="left")
     leader(ax, wy - 18, zc + 75, wy - 96, zc + 118, "2× M12×65 8.8 (J3)\n~90 N·m thru backing\nplate+wall+pocket\n(NOT the bar)", fs=6, font=FONT, ha="left")
     leader(ax, wy - 22, zc - 100, wy - 34, zc - 128, "60×205×8 A36\n(hex heads out)", fs=6, font=FONT, ha="right")
     ax.text(wy - 42, ay0 + 32, "OUTSIDE", fontsize=6, ha="center", **FONT)
@@ -1110,17 +1114,18 @@ def sheet4():
     bx0, by0 = 470, 470
     _dcell(ax, bx0, by0, 420, 380, "DETAIL B — BAR→UPRIGHT CLEAT  (section, J2/W3 ×8)")
     ux = bx0 + 70; uz = by0 + 55
-    _rhs_rect(ax, ux, uz, 70, 250, fc=C_FRAME, alpha=0.8, zo=5)                                      # upright (section)
-    ax.text(ux + 35, uz + 215, "UPRIGHT", fontsize=6, ha="center", **FONT, zorder=8)
-    _rhs_rect(ax, ux + 70, uz + 95, 210, 50, fc=C_FRAME, alpha=0.8, zo=5)                            # bar butting
-    ax.text(ux + 180, uz + 120, "BAR 50×20", fontsize=6, ha="center", va="center", **FONT, zorder=8)
-    ax.add_patch(Rectangle((ux + 70, uz + 70), 12, 130, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))       # cleat angle leg
-    _weld_tick(ax, ux + 70, uz + 175, side='left', size=7)                                          # cleat↔upright (W3)
-    _bolt(ax, ux + 120, uz + 90, 60, d=11, vert=True, nut=False)                                    # 2 VERTICAL bolts
-    _bolt(ax, ux + 120, uz + 148, 60, d=11, vert=True, nut=False)
-    draw_dim_v(ax, ux + 300, uz + 110, uz + 168, "60")
-    leader(ax, ux + 76, uz + 70, ux + 35, uz + 25, "angle cleat FILLET\nWELDED to upright\n(W3 4mm)", fs=6, font=FONT, ha="left")
-    leader(ax, ux + 131, uz + 120, ux + 205, uz + 30, "2× M12×40 A2 VERTICAL\nJ2 ~50 N·m +anti-seize", fs=6, font=FONT, ha="left")
+    _rhs_rect(ax, ux, uz, 70, 250, fc=C_FRAME, alpha=0.8, zo=5)                                      # corridor upright (section)
+    ax.text(ux + 35, uz + 55, "CORRIDOR\nUPRIGHT", fontsize=6, ha="center", va="center", **FONT, zorder=8)
+    ax.add_patch(Rectangle((ux + 70, uz + 88), 10, 110, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))       # cleat vertical leg (welded to upright)
+    ax.add_patch(Rectangle((ux + 70, uz + 88), 170, 10, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))       # cleat HORIZONTAL leg (bar sits on it)
+    _weld_tick(ax, ux + 70, uz + 150, side='left', size=7)                                          # cleat↔upright (W3)
+    _rhs_rect(ax, ux + 84, uz + 98, 200, 50, fc=C_FRAME, alpha=0.8, zo=5)                            # bar sits ON the cleat leg
+    ax.text(ux + 195, uz + 123, "BAR 50×20", fontsize=6, ha="center", va="center", **FONT, zorder=8)
+    for bx in (ux + 130, ux + 210):                                                                 # 2 DISTINCT vertical bolts thru bar + cleat leg
+        _bolt(ax, bx, uz + 84, 72, d=11, vert=True, nut=True)
+    draw_dim_h(ax, ux + 130, ux + 210, uz + 180, "bolt pitch")
+    leader(ax, ux + 74, uz + 150, ux + 30, uz + 210, "angle cleat FILLET WELDED\nto the upright (W3 4mm)", fs=6, font=FONT, ha="left")
+    leader(ax, ux + 210, uz + 148, ux + 250, uz + 40, "2× M12×40 A2 (J2) bolt the bar\nDOWN to the cleat — corridor\nend, NOT the wall", fs=6, font=FONT, ha="left")
 
     # ── DETAIL C — FRONT-BAR LASH RINGS (2 rings on weld plates + distances + break) ──
     lx0, ly0 = 940, 470
@@ -1130,16 +1135,19 @@ def sheet4():
     ax.text(lx0 + 95, bz + 30, "FRONT BAR 50×20", fontsize=6, va="center", **FONT, zorder=8)
     _break(ax, lx0 + 336, bz - 6, bz + 66)                                                          # bar continues (jagged)
     for rx in (lx0 + 120, lx0 + 250):
-        ax.add_patch(Rectangle((rx - 22, bz + 60), 44, 10, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))   # weld base plate
-        ax.add_patch(Circle((rx, bz + 102), 24, fc="none", ec=C_OUT, lw=2.2, zorder=7))              # ring
-        _weld_tick(ax, rx - 20, bz + 63, side='down', size=6); _weld_tick(ax, rx + 20, bz + 63, side='down', size=6)
-    draw_dim_h(ax, lx0 + 120, lx0 + 250, bz + 155, "ring pitch")
+        ax.add_patch(Rectangle((rx - 22, bz + 58), 44, 12, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))   # integral weld base plate
+        ax.add_patch(Rectangle((rx - 7, bz + 66), 14, 10, fc=C_STEEL, ec=C_OUT, lw=1, zorder=7))     # ring→base neck (ONE piece)
+        ax.add_patch(Circle((rx, bz + 92), 24, fc="none", ec=C_OUT, lw=2.4, zorder=8))               # ring — integral with its base
+        _weld_tick(ax, rx - 20, bz + 60, side='down', size=6); _weld_tick(ax, rx + 20, bz + 60, side='down', size=6)  # base↔bar (W4)
+    draw_dim_h(ax, lx0 + 120, lx0 + 250, bz + 150, "ring pitch")
     draw_dim_h(ax, lx0 + 250, lx0 + 336, bz - 32, "→ bar end")
-    leader(ax, lx0 + 120, bz + 60, lx0 + 40, bz - 48, "1½\" ring on a 6mm weld\nPLATE — FILLET 6mm\nall-around (W4)", fs=6, font=FONT, ha="left")
+    leader(ax, lx0 + 120, bz + 58, lx0 + 40, bz - 48, "weld-on ring: ring + base\nare ONE piece; base FILLET\n6mm to the bar (W4)", fs=6, font=FONT, ha="left")
 
     # ── DETAIL D — REAR-PANEL BRACKET (captive nut = rectangle + CSK screw) ──
     dx0, dy0 = 20, 60
     _dcell(ax, dx0, dy0, 420, 380, "DETAIL D — REAR-PANEL BRACKET  (J4/W6 ×6)")
+    ax.text(dx0 + 12, dy0 + 338, "USED: 6 brackets on the BACK uprights — carry the corridor plumbing (pump) panel",
+            fontsize=5.6, **FONT, zorder=6)
     px, py = dx0 + 70, dy0 + 120
     _rhs_rect(ax, px, py, 70, 200, fc=C_FRAME, alpha=0.8, zo=5)                                      # back upright
     ax.text(px + 35, py + 100, "BACK\nUPRIGHT", fontsize=6, ha="center", va="center", **FONT, zorder=8)

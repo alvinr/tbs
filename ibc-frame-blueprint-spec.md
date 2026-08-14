@@ -84,11 +84,11 @@ sheet. Elements to check, each with an EN 12195-1 design force → capacity → 
 Deliverable: a computed validation table into `ibc-stacking-report.md` §3.4 (replacing the qualitative
 text), authoritative voice, each capacity/coefficient cited.
 
-## Phase B — Fastener + weld schedule
+## Phase B — Fastener + weld schedule — DONE 2026-08-14
 
-- [ ] **Fastener schedule J1…Jn** — each joint: bolt size / grade / **torque** / washer / thread-locker (foot anchors, cleat bolts, wall-hanger through-bolts, backing-plate). Torque from the computed preload + the grade.
-- [ ] **Weld schedule W1…Wn** — each welded joint: **fillet leg size + weld symbol + all-around/stitch** (uprights↔rings, feet↔uprights, bars↔cleats, ring→bar, hanger folds), sized from Phase A weld-throat demand.
-- [ ] Add both as tables/detail callouts (report + a fastening/weld detail sheet in Phase D).
+- [x] **Fastener schedule J1–J3** (report §3.5): J1 floor foot-plate → #14×3¼″ 410 SS self-driller ×16 (driven to seat); J2 bar→upright cleat → M12×40 A2-70 ×16 (~50 N·m + anti-seize, nyloc); J3 wall-hanger through-bolt → M12×65 Gr.8.8 ×16 (~90 N·m, plain nut + split-lock). Torques cited (Fastenal/Bossard/ITW-Buildex). **Caught a Phase-A miss:** the cleat bolts (M12×40) were still qty 8 — doubled to **16** with the 8 bars (+$12 ibc-frame).
+- [x] **Weld schedule W1–W5** (report §3.5, sized in `ibc_frame_load.py`): W4 lashing-ring→bar 6 mm fillet (SF 9.1 vs strap WLL) + W3 cleat→upright 4 mm (SF 37) are load-checked; W1 upright↔ring 5 mm, W2 foot↔upright 6 mm, W5 hanger-seat↔pocket 4 mm are AWS D1.1 minimum practical fillets (frame load << capacity). Hangers are folded (not welded); backing plates loose (bolted).
+- [x] Added as tables in `ibc-stacking-report.md` §3.5. (A dedicated fastening/weld detail SHEET is deferred to Phase D.)
 
 ## Phases C–E — deferred (second pass)
 

@@ -152,6 +152,33 @@ def _fmt(r):
     return "\n".join(lines)
 
 
+# ── Weld schedule (Phase B) ──────────────────────────────────────────────────
+# Fillet-weld shear capacity = throat (0.707·leg) × length × 0.6·Fu_electrode. The frame welds carry
+# tiny restraint loads, so they are set by the AWS D1.1 minimum practical fillet for the material
+# (≥3mm for ≤6mm plate); only the LASHING-RING weld sees a real load (the strap WLL).
+FU_WELD = 480.0   # E70xx electrode ultimate (MPa)
+
+
+def fillet_cap(leg_mm, length_mm):
+    return 0.707 * leg_mm * length_mm * 0.6 * FU_WELD   # N
+
+
+def weld_schedule():
+    lines = ["\n########## WELD SCHEDULE (Phase B) ##########",
+             f"  {'weld':<40}{'leg':>6}{'demand':>10}{'cap':>10}{'SF':>7}"]
+    # W4 — lashing ring -> front bar: carries one strap's WLL; ~110mm fillet around the ring base.
+    ring_dem = STRAP_WLL_N
+    ring_cap = fillet_cap(6, 110)
+    lines.append(f"  {'W4 lashing ring->bar (6mm, all-around)':<40}{'6mm':>6}{ring_dem:>9.0f}{ring_cap:>9.0f}{ring_cap/ring_dem:>7.1f}")
+    # W3 — bar-end cleat -> upright: per-bar reaction BC/4 (loaded, bare); ~80mm fillet.
+    cleat_dem = blocking_force_mu(M_LOADED, CX_FWD, FS_FWD, MU) / (2.0 * IBC_FRONT_BAR_N_PER_TIER)
+    cleat_cap = fillet_cap(4, 80)
+    lines.append(f"  {'W3 cleat->upright (4mm)':<40}{'4mm':>6}{cleat_dem:>9.0f}{cleat_cap:>9.0f}{cleat_cap/cleat_dem:>7.1f}")
+    lines.append("  W1 upright<->ring (5mm all-around), W2 foot-plate<->upright (6mm all-around),")
+    lines.append("  W5 hanger seat<->pocket (4mm) — minimum practical fillets; restraint load << capacity.")
+    return "\n".join(lines)
+
+
 def main():
     print("IBC STACKING-FRAME TRANSPORT RESTRAINT — EN 12195-1:2010")
     print(f"  corrugation={CONTAINER_CORRUGATION_DEPTH}mm  "
@@ -171,6 +198,8 @@ def main():
     print("\n########## WHY DOUBLED — single 50x20x3 bar fails the loaded case ##########")
     print(_fmt(compute(M_LOADED,  "LOADED — as-was 1 bar/tote, no mat (SUPERSEDED)",
                        n_bars_per_tote=1)))
+
+    print(weld_schedule())
 
 
 if __name__ == "__main__":

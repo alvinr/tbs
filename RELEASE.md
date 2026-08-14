@@ -24,6 +24,19 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **IBC equipment panel top dropped to open the Fan A air path.** The corridor equipment panel (18mm
+  rear ply + 25mm pump-mount shirt) was capped at Z2191/2256, blocking airflow through the panel to the
+  sealed-end Fan A exhaust. Dropped **both plies to Z1900** — the underside of the Fan A baffle window
+  (Z1900–2100) — so the corridor is open across the fan. New driftproof `PANEL_TOP_Z = FAN_A_H −
+  DUCT_HEIGHT/2` (was a stale `DV_Z + DVB` tie to a DV-02 that Phase-2 relocated to the pinhole-wall
+  skid). The **top pair of welded frame bolt-tabs** ("Rear-panel bracket") dropped 2176→1780 to sit
+  under the new panel top. Also corrected the rear-panel ply label marine→exterior (dry backing, per the
+  plywood rule). In the water model the corridor panel is now drawn **solid in every scene** (un-muted +
+  the redundant "solid" LOD duplicate dropped, its orphan tag purged) so the shirt/backing read as a
+  solid backdrop rather than the faint 0.18-alpha ghost. Re-sent the 6 models that draw the shared
+  corridor frame/panel (overview, water, walkway, construction, film-plane-mechanism, ibc-stack). No
+  BOM/cost change (same sheets, cut shorter).
+
 _Nothing yet — add a bullet per notable change here as work lands._
 
 ## [0.6] — 2026-08-13

@@ -124,7 +124,9 @@ MUTE_DESAT, MUTE_ALPHA = 0.65, 0.18
 # Context systems shown as a quiet faded backdrop (NOT the key plumbing/kit/supply) — desaturated
 # in place keeping a faint tint.  Everything that is enclosure/structure rather than a water
 # component is muted, so in EVERY scene only the plumbing reads boldly (easier to validate).
-MUTE_TAGS = ["Pinhole Equipment", "Processing Tray", "IBC Frame", "Corridor Frame", "Corridor Panel",
+# NB: "Corridor Panel" is NOT muted — the equipment panel (shirt + backing) is drawn SOLID in every
+# scene (a solid backdrop behind the pumps reads better than the faint ghost; Alvin 2026-08-14).
+MUTE_TAGS = ["Pinhole Equipment", "Processing Tray", "IBC Frame", "Corridor Frame",
              "Walkway", "Film Plane", "Pinhole", "Backing"]
 
 
@@ -777,10 +779,10 @@ def build():
                          ("Corridor drains + X-ports", "Corridor Drains", lambda: cp.drains_ports(sump_on_skid=True)),
                          ("Circuit-C power + cabling (both panels)", "Power", lambda: panel_power(include_switch=False)),
                          ("Ribbon support cross-beams", "Ribbon Supports", cp.ribbon_supports),
-                         # SOLID (non-ghost) copies of the two plywood panels, on their own tags — shown
-                         # only in the "Plumbing (labeled)" scene so the panels read full-color there while
-                         # the overview scenes keep the muted "Corridor Panel"/"Backing" versions.
-                         ("Corridor panel (solid)", "Corridor Panel Solid", cp.rear_panel),
+                         # SOLID (non-ghost) copy of the wall backing, on its own tag — shown only in the
+                         # "Plumbing (labeled)" scene so it reads full-color there while the overview scenes
+                         # keep the muted "Backing" version. (The corridor panel is now solid in EVERY scene,
+                         # so its former solid duplicate was dropped — see MUTE_TAGS.)
                          ("Wall backing (solid)", "Backing Solid", backing)]:
         if tag in MUTE_TAGS:
             with ov.muted(MUTE_DESAT, MUTE_ALPHA):
@@ -801,6 +803,7 @@ to_erase = entities.to_a.select {{ |e| e.is_a?(Sketchup::Group) || e.is_a?(Sketc
 entities.erase_entities(to_erase) unless to_erase.empty?
 model.definitions.purge_unused
 model.materials.purge_unused
+model.layers.purge_unused   # drop orphan tags (e.g. the retired "Corridor Panel Solid") so they don't linger
 model.pages.to_a.each {{ |pg| model.pages.erase(pg) }}
 opts = model.options["UnitsOptions"]; opts["LengthUnit"]=2; opts["LengthFormat"]=0
 {ov.sketchfab_meta_ruby(SF_TITLE, SF_DESC, ov.model_uid("water"), SF_TAGS, force_name=True)}
@@ -822,8 +825,8 @@ def scene(model, name, on)
   pg
 end
 scene(model, "Overview", ["Context","Walkway","Film Plane","Processing Tray","Spray Bar","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains","Power"])
-scene(model, "Plumbing", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","Power"])
-scene(model, "Plumbing (labeled)", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","Power","Labels","Corridor Panel Solid","Backing Solid"])
+scene(model, "Plumbing", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","Power","Corridor Panel"])
+scene(model, "Plumbing (labeled)", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","Power","Labels","Corridor Panel","Backing Solid"])
 scene(model, "Plumbing + IBC", ["Kit","Supply","Corridor Equipment","Corridor Plumbing","Corridor Drains","Power","IBC","IBC Frame","Corridor Frame","Corridor Panel","Walkway"])
 scene(model, "Labeled", ["Context","Walkway","Film Plane","Processing Tray","Spray Bar","IBC","IBC Frame","Pinhole","Backing","Supply","Kit","Scale","Pinhole Equipment","Corridor Frame","Corridor Panel","Corridor Equipment","Corridor Plumbing","Corridor Drains","Power","Labels","Labels Context"])
 model.layers.each {{ |l| l.visible = true }}

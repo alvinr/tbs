@@ -20,6 +20,10 @@ import generate_sketchup_model as ov
 # ── deep-box frame geometry (from the fork; one source) ──
 S       = ov.IBC_FRAME_RHS               # 50×50 RHS
 TOP_Z   = 2 * ov.IBC_H_1000 - 40         # 2296 — frame reaches near the stack top
+# Equipment-panel top — DROPPED to the underside of the Fan A exhaust baffle so the corridor is
+# open across the fan window (Z1900-2100), letting air pass THROUGH the panel to Fan A.  Tied to
+# the fan so it can't drift (was DV_Z+DVB=2191, a stale Phase-1 tie to the now-relocated DV-02).
+PANEL_TOP_Z = ov.FAN_A_H - ov.DUCT_HEIGHT // 2   # 1900 — fan-baffle underside
 YD_NEAR, YD_FAR = 1046, 1316             # plumbing-corridor edges
 FRONT_X = ov.IBC_COL_X - 20              # 4654 — front uprights on the wall-bar line
 DEPTH   = 450                            # deep box (≈⅓ tote depth)
@@ -179,7 +183,8 @@ def frame(part="all"):
         # REAR-panel mount brackets only (on the back uprights, set back behind the inside face)
         bw, bproj = 60, 40
         for py, pdir in ((YD_NEAR + S, +1), (YD_FAR - S, -1)):
-            for bz in (120, TOP_Z / 2, TOP_Z - 120):
+            # top pair dropped from TOP_Z-120 (2176) to sit under the new lowered panel top
+            for bz in (120, TOP_Z / 2, PANEL_TOP_Z - 120):
                 p.append(ov.ruby_box("Rear-panel bracket", BACK_X + EQT, (py if pdir > 0 else py - bproj), bz - bw / 2,
                                      30, bproj, bw, color=ov.C_STEEL))
     return "\n".join(p)
@@ -231,14 +236,14 @@ def rear_panel():
     posts' −X inside face) PLUS the 25mm ply 'shirt' the pumps/ACC clamp to — a backing hard
     behind the bodies (deepest = the ACC), tied back to the rear-frame ring across the chase.
     The pumps' integral cam-clamps grip onto it; only short port→riser connectors penetrate it."""
-    pz0, ph = S, (TOP_Z - S) - S
+    pz0, ph = S, PANEL_TOP_Z - S                 # top dropped to PANEL_TOP_Z (1900) for the Fan A air window
     yw = (YD_FAR - S) - (YD_NEAR + S)
-    p = [ov.ruby_box("Rear panel (18mm marine ply)", BACK_X, YD_NEAR + S, pz0,
+    p = [ov.ruby_box("Rear panel (18mm exterior ply)", BACK_X, YD_NEAR + S, pz0,
                      EQT, yw, ph, color=ov.C_PLY)]
     # 25mm ply pump-mount shirt: front face hard behind the ACC body (the deepest, back ≈ PXC+ACC_R),
     # spanning the pump-column height; sits in the ~56mm chase between the bodies and the rear frame.
     p.append(ov.ruby_box("Pump-mount ply shirt (25mm)", SHIRT_X, YD_NEAR + S, 325,   # SHIRT_X: module constant
-                         25, yw, DV_Z + DVB - 325, color=ov.C_PLY))   # top z≈2191 BACKS/supports DV-02 (z2145);
+                         25, yw, PANEL_TOP_Z - 325, color=ov.C_PLY))   # top dropped 2191->1900 for the Fan A window (DV-02 is on the skid, Phase 2);
     #   bottom SHORTENED to 325 (was 275) to clear the brown P-05 inlet elbow now RAISED to z298-318; still backs the pumps
     # Spacer/cleat blocks tying the shirt BACK to the rear panel (and thus the frame) across the
     # ~27mm chase — placed at the two Yd edges in the clear Z windows BETWEEN the horizontal X3/X4
@@ -549,8 +554,10 @@ BL_P04OUT, BL_DVBR, BL_DVWST = 1195, 1225, 1250                  # OUT/top back-
 SV_Z   = 1150                              # SV-02 sample tap — low on the P-04 discharge riser, in the gap
                                            # BETWEEN P-04 (top 1120) and P-05 (base 1340), ~1100mm for reach
 DV_Z   = 2145                              # 3W-DV-02 center Z — dropped 75mm (room above P-03, top z1950) to
-#   shorten the IBC-3 vertical drop; still well under the frame top rail (z2246) and above P-03
-# DV02X is derived from SHIRT_X below (DV-02 now mounts on the raised shirt) — both defined after ACC_R.
+#   shorten the IBC-3 vertical drop; still well under the frame top rail (z2246) and above P-03.
+#   PHASE-1 ONLY: in Phase 2 (sump_on_skid, the live water.skp) DV-02 lives on the pinhole-wall skid,
+#   NOT here — and the shirt top is now PANEL_TOP_Z=1900, below DV_Z, so it no longer backs a corridor DV-02.
+# DV02X is derived from SHIRT_X below (Phase-1 corridor DV-02 front-face X) — both defined after ACC_R.
 # ACC-01 — SeaFlo bladder accumulator: a single BOTTOM port, plumbed as a vertical DEAD-LEG teed
 # onto the Blue supply line (like the pumps/filters tee in, but the tank's only port is underneath).
 ACC_Z0, ACC_R = 355, 63.5                   # ACC-01 base Z (raised +75mm; column FOOT, below P-01 — swapped); Ø127 body

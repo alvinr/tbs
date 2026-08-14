@@ -24,6 +24,17 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **IBC frame blueprint scope EXTENDED to the whole IBC-corridor metal construction.** The deep-box frame
+  is one welded structure serving three roles, so the review now also covers the plumbing-corridor metal
+  that shares it. Added **service + walkway load cases** (`ibc_frame_load.py`): the plumbing panel + pumps
+  (~33 N/bracket, trivial) and the right-walkway cantilever (each arm ~1.2 kN at 325 mm = a 395 N·m moment
+  into the front upright → upright bending **SF 6.9**, arm→upright connection **SF 3.3**) — both
+  non-governing vs the EN 12195-1 transport case. Extended report §3.4 (service cases), §3.5 (J4 panel-
+  bracket bolts, J5 pump-support-board fixings; welds W6 panel-bracket, W7 L-bracket, W8 ribbon-beam, W9
+  arm-connection), §3.6 (panel-mount + L-bracket landing tolerances), and the sheet-1 cut list (+6 rear-
+  panel brackets, +12 pump-support L-brackets, +4 ribbon cross-beams). Walkway-arm CONNECTION checked here;
+  the arm's own detailing stays with the walkway blueprint (Alvin's boundary).
+
 - **IBC frame blueprint Phase C + D-core: datum/tolerance scheme + fab-sheet detailing.** Report §3.6
   adds the datum scheme (A = 4-foot plane, B = front-upright faces, C = corridor CL) + functional
   tolerances (foot coplanarity ±1.5, upright plumb ±2/2296, diagonal square ±3, hole PCDs, corridor width

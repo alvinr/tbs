@@ -22,7 +22,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-from tbs_constants import (IBC_FRAME_RHS, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T,  # noqa: E402
+from tbs_constants import (IBC_FRAME_RHS, IBC_FRAME_T, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T,  # noqa: E402
                            CONTAINER_CORRUGATION_DEPTH,
                            IBC_FRONT_BAR_D, IBC_FRONT_BAR_W, IBC_FRONT_BAR_T,
                            IBC_FRONT_BAR_N_PER_TIER)
@@ -179,6 +179,42 @@ def weld_schedule():
     return "\n".join(lines)
 
 
+# ── Service + walkway load cases (scope extension: full corridor metal) ───────
+# The same deep-box frame also carries the plumbing panel + pumps (rear-panel brackets, back uprights)
+# and the right-walkway cantilever arms (front uprights). These are STATIC/SERVICE loads, checked here
+# to confirm they are non-governing vs the transport restraint case. (Arm CONNECTION only — the arm's
+# own bending is the walkway blueprint's scope.)
+M_PANEL_KG   = 20.0    # plumbing panel ply + shirt + 5 pumps/ACC + fittings (est) on 6 rear-panel brackets
+N_PANEL_BRK  = 6
+M_WK_ARM_KG  = 22.0    # right-walkway dead per arm (44 kg / 2 center arms)
+P_PERSON_N   = 1000.0  # one-person point live load (worst case on one arm)
+ARM_REACH_M  = (4654 - 4329) / 1000.0   # 0.325 — upright (RWK_X_UP) -> deck left edge (RWK_X_L)
+
+
+def service_loads():
+    lines = ["\n########## SERVICE + WALKWAY LOAD CASES (full corridor frame) ##########"]
+    # Plumbing panel + pumps, hung on 6 rear-panel brackets
+    panel_per = M_PANEL_KG * G / N_PANEL_BRK
+    lines.append(f"  plumbing panel + pumps ~{M_PANEL_KG:.0f} kg / {N_PANEL_BRK} rear-panel brackets"
+                 f" = {panel_per:.0f} N/bracket (static — trivial, SF >> 10)")
+    # Walkway cantilever arm: dead + person, moment into the FRONT upright at the connection
+    p_arm = M_WK_ARM_KG * G + P_PERSON_N
+    m_conn = p_arm * ARM_REACH_M
+    z_upr = z_rhs(IBC_FRAME_RHS, IBC_FRAME_RHS, IBC_FRAME_T)   # 50.8x50.8x3 upright
+    m_cap_upr = z_upr * FY_A500B / 1e3
+    # arm->upright connection: moment carried as a couple over the 2x1 arm depth (25.4mm) by a 5mm fillet
+    # weld (or an equivalent 2-bolt clamp); representative check = top-fibre weld force vs a 50.8mm run.
+    f_couple = m_conn / 0.0254
+    weld_cap = 0.707 * 5 * 50.8 * 0.6 * FU_WELD
+    lines.append(f"  walkway arm tip {p_arm:.0f} N (22kg dead + 1kN person) x {ARM_REACH_M*1000:.0f}mm"
+                 f" = {m_conn:.0f} N.m at the upright")
+    lines.append(f"  front upright bending (50.8 RHS): cap {m_cap_upr:.0f} N.m  SF {m_cap_upr/m_conn:.1f}")
+    lines.append(f"  arm->upright connection (5mm fillet / 2-bolt clamp): couple {f_couple:.0f} N,"
+                 f" weld cap {weld_cap:.0f} N  SF {weld_cap/f_couple:.1f}")
+    lines.append("  Both non-governing vs the EN 12195-1 transport case (bar SF 1.59). Arm DETAILING = walkway blueprint.")
+    return "\n".join(lines)
+
+
 def main():
     print("IBC STACKING-FRAME TRANSPORT RESTRAINT — EN 12195-1:2010")
     print(f"  corrugation={CONTAINER_CORRUGATION_DEPTH}mm  "
@@ -199,6 +235,7 @@ def main():
     print(_fmt(compute(M_LOADED,  "LOADED — as-was 1 bar/tote, no mat (SUPERSEDED)",
                        n_bars_per_tote=1)))
 
+    print(service_loads())
     print(weld_schedule())
 
 

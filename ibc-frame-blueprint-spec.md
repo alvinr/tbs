@@ -4,8 +4,12 @@
 
 # IBC Stacking Frame — Definitive Blueprint Spec
 
-**Status:** **Phase A DONE (2026-08-14)** — restraint redesigned + validated to EN 12195-1; cascade shipped.
-Phase B (fastener + weld schedule) next. C–E deferred.
+**Status:** **Phases A, B, C, D-core DONE (2026-08-14)** — restraint validated + redesigned (A), fastener +
+weld schedule (B), datum/tolerance scheme (C), cut list + sheet callouts (D-core). **Scope extended to the
+whole IBC-corridor metal construction:** service + walkway load cases computed (frame non-governing; arm
+connection SF 3.3), corridor-panel brackets / pump-support L-brackets / ribbon cross-beams / arm connection
+folded into §3.4–3.6 + the cut list. Remaining: Phase-D detail insets (hanger fold, backing plate, cleat,
+lashing ring, panel/L-bracket details).
 
 ## Phase A outcome (R5 — approved 2026-08-14)
 
@@ -26,9 +30,13 @@ load case). Follows [`fp-corner-blueprint-spec.md`](fp-corner-blueprint-spec.md)
 ## Locked decisions (2026-08-14)
 
 1. **Structural-transport basis = EN 12195-1:2010** (European load-securing standard for road transport).
-2. **Scope = the structural restraint frame + tote restraint + wall-anchoring only.** The **IBC plumbing
-   (equipment) frame + panel is a SEPARATE blueprint** (done later). The purchased totes and the water
-   plumbing are interfaces, not in scope.
+2. **Scope EXTENDED 2026-08-14 → the whole IBC plumbing-corridor METAL construction.** The deep-box frame
+   is one welded structure serving three roles, so the blueprint now covers: the restraint frame + tote
+   restraint + wall-anchoring (Phase A–D) **PLUS** the plumbing-corridor metal that shares it — the
+   rear-panel/corridor-panel brackets (×6), the pump-support L-brackets (×12), the ribbon cross-beams, and
+   the **walkway cantilever-arm CONNECTION into the front uprights** (arm's own detailing stays with the
+   walkway blueprint — Alvin's boundary). The purchased totes, the ply panels, and the water plumbing/pumps
+   are interfaces, not in scope.
 3. **Do Phase A (structural validation) + Phase B (fastener/weld schedule) first.** Phases C (datums/
    tolerances) and D (fab-detail sheets) + E (cascade) follow as a second pass.
 

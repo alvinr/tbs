@@ -205,7 +205,7 @@ PARTS: list[Part] = [
     # Corridor plumbing-panel mount, itemized 2026-07-27 from the $25–50 hardware lot:
     Part("corridor-panel-brackets", "6× steel angle brackets (corridor panel → IBC uprights)", "fasteners-hardware",
          "water", 6, "ea", 2.5, 6.5, "Home Depot",
-         spec="L-brackets fixing the corridor plumbing panel to the IBC-frame front-portal uprights. Price est.",
+         spec="L-brackets fixing the corridor plumbing panel to the IBC-frame back uprights — weld W6 (5mm fillet all-around), fastener J4 (M8 into captive tee-nut), per ibc-stacking-report §3.5. Price est. (fab quote).",
          panel="Corridor"),
     Part("corridor-panel-fasteners", "Corridor panel mount fasteners (shirt-to-panel screws + lag bolts)", "fasteners-hardware",
          "water", 1, "lot", 10, 11, "Home Depot",
@@ -214,7 +214,7 @@ PARTS: list[Part] = [
     # — #29 pump-run supports: 2 side ply boards (cut from corridor-panel-ply-18) + welded L-brackets + cushioned P-clips —
     Part("pump-support-brackets", "12× welded steel L-brackets (pump-run side boards) + 4 skid standoff clamps", "fasteners-hardware",
          "water", 1, "lot", 12, 24, "Metal Supermarkets", supplier_alt="Home Depot",
-         spec="12× steel L-brackets welded to the IBC side-post inner faces (2 per post × 3 side boards: far, near-lower, near-upper) — the boards bolt to the landing legs (rear-panel method); + 4 short standoff brackets carrying the forward SV-01/DV-02 skid lines. Cut from 1×1×1/8 steel angle offcuts; MATERIAL est. — FAB (cut/weld) deferred to blueprint (material-now rule). Price est.",
+         spec="12× steel L-brackets welded to the IBC side-post inner faces (2 per post × 3 side boards: far, near-lower, near-upper) — the boards bolt to the landing legs (rear-panel method); + 4 short standoff brackets carrying the forward SV-01/DV-02 skid lines. Cut from 1×1×1/8 steel angle offcuts — weld W7 (4mm fillet, 2 legs), boards fastened J5 (¼-20 into captive tee-nut), per ibc-stacking-report §3.5. MATERIAL est.; FAB (cut/weld) = shop quote (material-now rule).",
          panel="Corridor"),
     Part("pipe-support-clips", "39× cushioned pipe P-clips (3/4\" pipe)", "fasteners-hardware",
          "water", 39, "ea", 0.55, 0.95, "Home Depot", supplier_alt="McMaster-Carr",

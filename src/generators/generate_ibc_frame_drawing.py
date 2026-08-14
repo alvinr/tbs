@@ -43,7 +43,7 @@ from matplotlib.patches import Rectangle, Circle
 
 from tbs_constants import C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, BLUE_IBC_Y, IBC_FAR_Y, IBC_PALLET_H, IBC_CAGE_TUBE_D, IBC_CAGE_RAIL_W, IBC_CAGE_INSET, IBC_BOTTLE_INSET, IBC_VALVE_Z, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_D, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N, IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, IBC_WBKT_GUSSET_H, IBC_WBKT_BOLT_D, IBC_WBKT_BOLT_N, PANEL_FRAME_TOP_Z, WALKWAY_RIGHT_X, WALKWAY_H, WALKWAY_GRATE_T, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, DIAGRAMS_DIR
 from tbs_title_block import title_block
-from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes
+from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, hatch_rect
 from tbs_constants import DIAGRAM_DPI
 
 # ── Palette ──────────────────────────────────────────────────────────────────
@@ -54,6 +54,7 @@ C_DIM    = "#404040"       # dimensions
 C_STEEL  = "#B0B0B8"       # steel section fill
 C_FRAME  = "#606068"       # frame RHS steel (darker)
 C_WELD   = "#C04040"       # weld symbols
+C_BOLT   = "#3A3A42"       # bolt heads / nuts (dark)
 C_DETAIL = "#E8E0D8"       # detail inset background
 FONT     = {"fontfamily": "monospace"}
 
@@ -174,6 +175,45 @@ def _weld_tick(ax, x, y, *, side='right', size=8, zo=10):
                 lw=1.5, zorder=zo)
         ax.plot([(x), (x - s)], [(y), (y - s)], color=C_WELD,
                 lw=1.5, zorder=zo)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Standard fastener-in-section symbols (bolt / countersunk+captive-nut / break line)
+# ═══════════════════════════════════════════════════════════════════════════════
+C_SHANK = "#D8D8DC"
+
+
+def _bolt(ax, x, y, L, *, d=13, vert=False, nut=True, zo=9):
+    """A bolt in SECTION (standard convention): hex head + shank + nut. Runs +L from (x,y) in +x
+    (or +y if vert); head at the start, nut at the far end."""
+    hh, hl = d * 1.7, d * 0.7          # head/nut across-flats + length
+    if not vert:
+        ax.add_patch(Rectangle((x - hl, y - hh/2), hl, hh, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=zo))
+        ax.add_patch(Rectangle((x, y - d/2), L, d, fc=C_SHANK, ec=C_OUT, lw=0.8, zorder=zo))
+        if nut:
+            ax.add_patch(Rectangle((x + L, y - hh/2), hl, hh, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=zo))
+    else:
+        ax.add_patch(Rectangle((x - hh/2, y - hl), hh, hl, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=zo))
+        ax.add_patch(Rectangle((x - d/2, y), d, L, fc=C_SHANK, ec=C_OUT, lw=0.8, zorder=zo))
+        if nut:
+            ax.add_patch(Rectangle((x - hh/2, y + L), hh, hl, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=zo))
+
+
+def _csk_captive(ax, x, y, *, wood_th=40, d=11, zo=9):
+    """A countersunk machine screw driven from a WOOD face (at x, going +x through wood_th) into a
+    captive tee-nut drawn as a RECTANGLE flush on the back face — per the ply-mount convention."""
+    ax.fill([x, x, x + d, x + d], [y - d, y + d, y + d*0.35, y - d*0.35], color=C_BOLT, zorder=zo+1)   # CSK head sunk in the wood
+    ax.add_patch(Rectangle((x, y - d*0.3), wood_th, d*0.6, fc=C_SHANK, ec=C_OUT, lw=0.7, zorder=zo))    # shank through wood
+    ax.add_patch(Rectangle((x + wood_th, y - d), 9, 2*d, fc=C_BOLT, ec=C_OUT, lw=0.9, zorder=zo+1))     # captive tee-nut RECTANGLE on the back
+
+
+def _break(ax, x, y0, y1, *, amp=8, zo=11):
+    """A jagged (zig-zag) break line across a member — diagrammatic 'member continues'."""
+    import numpy as _np
+    ys = _np.linspace(y0, y1, 9)
+    xs = [x + (amp if i % 2 else -amp) for i in range(len(ys))]
+    xs[0] = xs[-1] = x
+    ax.plot(xs, ys, color=C_OUT, lw=1.1, zorder=zo)
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1042,108 +1082,112 @@ def _dcell(ax, x0, y0, w, h, title):
 
 
 def sheet4():
-    """Sheet 4 — fabrication detail insets."""
+    """Sheet 4 — fabrication detail insets (corrected cross-sections)."""
     fig, ax = plt.subplots(figsize=(16.5, 10.5))
     ax.set_xlim(-20, 1360); ax.set_ylim(-40, 900); ax.set_aspect("equal"); ax.axis("off")
     ax.text(670, 875, "FABRICATION DETAILS", fontsize=13, fontweight="bold", ha="center", **FONT)
 
-    # ── DETAIL A — wall joist hanger + backing plate (elevation on the wall face) ──
+    # ── DETAIL A — WALL JOIST HANGER (Z–Yd section: bolts thru the PLATES, bar between) ──
     ax0, ay0 = 20, 470
-    _dcell(ax, ax0, ay0, 420, 380, "DETAIL A — WALL JOIST HANGER  (per bar, ×8)")
-    cx, cz0 = ax0 + 150, ay0 + 60          # plate bottom-left in cell
-    sc = 1.4                                 # mm→pt for this detail
-    pw, ph = 60 * sc, 205 * sc              # backing plate 60×205
-    _rhs_rect(ax, cx, cz0, pw, ph, fc=C_STEEL, alpha=0.5, zo=4)      # exterior backing plate
-    # the bar (seated, mid-height) + seat
-    bw, bh = 20 * sc, 50 * sc
-    bz = cz0 + (205 - 61 - 50) * sc          # bar bottom = seat top; seat at 50mm above bottom bolt
-    _rhs_rect(ax, cx + pw/2 - bw/2, bz, bw, bh, fc=C_FRAME, alpha=0.85, zo=6)
-    ax.add_patch(Rectangle((cx + pw/2 - bw/2 - 8, bz - 6*sc), bw + 16, 4*sc, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))  # seat ledge
-    # 2 vertical M12 bolts (50mm clear of the bar/seat)
-    for dz in (12*sc, 193*sc):
-        ax.add_patch(Circle((cx + pw/2, cz0 + dz), 6*sc, fc="none", ec=C_OUT, lw=1.4, zorder=7))
-        ax.add_patch(Circle((cx + pw/2, cz0 + dz), 2.5, fc=C_OUT, zorder=7))
-    _weld_tick(ax, cx + pw/2 - bw/2 - 8, bz - 4*sc, side='left', size=7)
-    draw_dim_v(ax, cx - 22, cz0, cz0 + ph, "205")
-    leader(ax, cx + pw/2, bz - 6*sc, cx + pw + 60, bz - 40, "50mm CLEAR\nbolt→seat\n(tightening)", fs=6, font=FONT, ha="left")
-    leader(ax, cx + pw/2, cz0 + 12*sc, cx - 60, cz0 + 40, "2× M12×65 8.8\nJ3 ~90 N·m\nthru wall→plate", fs=6, font=FONT, ha="right")
-    leader(ax, cx + pw, cz0 + ph - 20, cx + pw + 60, cz0 + ph - 10, "60×205×8\nA36 backing\nplate (hex out)", fs=6, font=FONT, ha="left")
+    _dcell(ax, ax0, ay0, 420, 380, "DETAIL A — WALL JOIST HANGER  (section, per bar ×8)")
+    wy = ax0 + 210; zc = ay0 + 190
+    hatch_rect(ax, wy - 6, ay0 + 45, 12, 290, color="#B8B8B8", hatch="///")            # wall in section
+    ax.add_patch(Rectangle((wy - 22, zc - 100), 8, 200, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=6))   # 60x205x8 backing plate
+    ax.add_patch(Rectangle((wy + 10, zc - 100), 4, 200, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=6))    # 4mm pocket back-plate
+    ax.add_patch(Rectangle((wy + 14, zc - 28), 60, 6, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))         # U-pocket seat
+    _rhs_rect(ax, wy + 16, zc - 22, 40, 44, fc=C_FRAME, alpha=0.85, zo=7)                            # bar (drops in)
+    ax.text(wy + 92, zc, "BAR (drops\ninto pocket)", fontsize=6, va="center", **FONT, zorder=8)
+    for dz in (75, -75):
+        _bolt(ax, wy - 22, zc + dz, 36, d=11, nut=True)                                             # thru plates+wall, NOT the bar
+    draw_dim_v(ax, wy - 58, zc - 75, zc + 75, "150")
+    leader(ax, wy + 56, zc - 22, wy + 120, zc - 78, "50mm CLEAR\nbolt↔seat\n(wrench room)", fs=6, font=FONT, ha="left")
+    leader(ax, wy - 18, zc + 75, wy - 96, zc + 118, "2× M12×65 8.8 (J3)\n~90 N·m thru backing\nplate+wall+pocket\n(NOT the bar)", fs=6, font=FONT, ha="left")
+    leader(ax, wy - 22, zc - 100, wy - 34, zc - 128, "60×205×8 A36\n(hex heads out)", fs=6, font=FONT, ha="right")
+    ax.text(wy - 42, ay0 + 32, "OUTSIDE", fontsize=6, ha="center", **FONT)
+    ax.text(wy + 58, ay0 + 32, "INSIDE", fontsize=6, ha="center", **FONT)
 
-    # ── DETAIL B — bar → upright cleat (plan) ──
+    # ── DETAIL B — BAR→UPRIGHT CLEAT (section, VERTICAL bolts + spacing) ──
     bx0, by0 = 470, 470
-    _dcell(ax, bx0, by0, 420, 380, "DETAIL B — BAR→UPRIGHT CLEAT  (J2/W3, ×8)")
-    ux, uy = bx0 + 60, by0 + 120
-    _rhs_rect(ax, ux, uy, 90, 90, fc=C_FRAME, alpha=0.8, zo=5)        # upright (plan, 50×50 scaled)
-    ax.text(ux + 45, uy + 45, "UPRIGHT", fontsize=6, ha="center", va="center", **FONT, zorder=7)
-    _rhs_rect(ax, ux + 90, uy + 30, 200, 36, fc=C_FRAME, alpha=0.8, zo=5)  # bar butting (plan)
-    ax.text(ux + 190, uy + 48, "BAR 50×20", fontsize=6, ha="center", va="center", **FONT, zorder=7)
-    ax.add_patch(Rectangle((ux + 78, uy + 20), 14, 56, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))  # cleat angle
-    _weld_tick(ax, ux + 78, uy + 48, side='left', size=7)            # cleat↔upright weld W3
-    for dx in (140, 200):
-        ax.add_patch(Circle((ux + dx, uy + 48), 8, fc="none", ec=C_OUT, lw=1.3, zorder=7))
-        ax.add_patch(Circle((ux + dx, uy + 48), 2.5, fc=C_OUT, zorder=7))
-    leader(ax, ux + 85, uy + 20, ux + 40, uy - 20, "angle cleat FILLET\nWELDED to upright\n(W3 4mm)", fs=6, font=FONT, ha="left")
-    leader(ax, ux + 170, uy + 48, ux + 200, uy - 20, "2× M12×40 A2\nJ2 ~50 N·m\n+ anti-seize, nyloc", fs=6, font=FONT, ha="left")
+    _dcell(ax, bx0, by0, 420, 380, "DETAIL B — BAR→UPRIGHT CLEAT  (section, J2/W3 ×8)")
+    ux = bx0 + 70; uz = by0 + 55
+    _rhs_rect(ax, ux, uz, 70, 250, fc=C_FRAME, alpha=0.8, zo=5)                                      # upright (section)
+    ax.text(ux + 35, uz + 215, "UPRIGHT", fontsize=6, ha="center", **FONT, zorder=8)
+    _rhs_rect(ax, ux + 70, uz + 95, 210, 50, fc=C_FRAME, alpha=0.8, zo=5)                            # bar butting
+    ax.text(ux + 180, uz + 120, "BAR 50×20", fontsize=6, ha="center", va="center", **FONT, zorder=8)
+    ax.add_patch(Rectangle((ux + 70, uz + 70), 12, 130, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))       # cleat angle leg
+    _weld_tick(ax, ux + 70, uz + 175, side='left', size=7)                                          # cleat↔upright (W3)
+    _bolt(ax, ux + 120, uz + 90, 60, d=11, vert=True, nut=False)                                    # 2 VERTICAL bolts
+    _bolt(ax, ux + 120, uz + 148, 60, d=11, vert=True, nut=False)
+    draw_dim_v(ax, ux + 300, uz + 110, uz + 168, "60")
+    leader(ax, ux + 76, uz + 70, ux + 35, uz + 25, "angle cleat FILLET\nWELDED to upright\n(W3 4mm)", fs=6, font=FONT, ha="left")
+    leader(ax, ux + 131, uz + 120, ux + 205, uz + 30, "2× M12×40 A2 VERTICAL\nJ2 ~50 N·m +anti-seize", fs=6, font=FONT, ha="left")
 
-    # ── DETAIL C — weld-on lashing ring ──
+    # ── DETAIL C — FRONT-BAR LASH RINGS (2 rings on weld plates + distances + break) ──
     lx0, ly0 = 940, 470
-    _dcell(ax, lx0, ly0, 400, 380, "DETAIL C — WELD-ON LASHING RING  (W4, ×8)")
-    rbx, rbz = lx0 + 90, ly0 + 120
-    _rhs_rect(ax, rbx, rbz, 220, 70, fc=C_FRAME, alpha=0.8, zo=5)     # front bar (side)
-    ax.text(rbx + 110, rbz + 35, "FRONT BAR 50×20", fontsize=6, ha="center", va="center", **FONT, zorder=7)
-    ax.add_patch(Rectangle((rbx + 90, rbz + 70), 40, 12, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))  # ring base
-    ax.add_patch(Circle((rbx + 110, rbz + 120), 26, fc="none", ec=C_OUT, lw=2.2, zorder=7))       # ring
-    _weld_tick(ax, rbx + 92, rbz + 74, side='down', size=7)
-    _weld_tick(ax, rbx + 128, rbz + 74, side='down', size=7)
-    leader(ax, rbx + 110, rbz + 78, rbx + 200, rbz + 140, "1½\" weld-on ring\n6,600 lb WLL\nFILLET 6mm all-around\n(W4)", fs=6, font=FONT, ha="left")
+    _dcell(ax, lx0, ly0, 400, 380, "DETAIL C — WELD-ON LASH RINGS  (2/tier, W4)")
+    bz = ly0 + 110
+    _rhs_rect(ax, lx0 + 30, bz, 310, 60, fc=C_FRAME, alpha=0.8, zo=5)                                # front bar (elevation)
+    ax.text(lx0 + 95, bz + 30, "FRONT BAR 50×20", fontsize=6, va="center", **FONT, zorder=8)
+    _break(ax, lx0 + 336, bz - 6, bz + 66)                                                          # bar continues (jagged)
+    for rx in (lx0 + 120, lx0 + 250):
+        ax.add_patch(Rectangle((rx - 22, bz + 60), 44, 10, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))   # weld base plate
+        ax.add_patch(Circle((rx, bz + 102), 24, fc="none", ec=C_OUT, lw=2.2, zorder=7))              # ring
+        _weld_tick(ax, rx - 20, bz + 63, side='down', size=6); _weld_tick(ax, rx + 20, bz + 63, side='down', size=6)
+    draw_dim_h(ax, lx0 + 120, lx0 + 250, bz + 155, "ring pitch")
+    draw_dim_h(ax, lx0 + 250, lx0 + 336, bz - 32, "→ bar end")
+    leader(ax, lx0 + 120, bz + 60, lx0 + 40, bz - 48, "1½\" ring on a 6mm weld\nPLATE — FILLET 6mm\nall-around (W4)", fs=6, font=FONT, ha="left")
 
-    # ── DETAIL D — rear-panel bracket (plumbing panel mount) ──
+    # ── DETAIL D — REAR-PANEL BRACKET (captive nut = rectangle + CSK screw) ──
     dx0, dy0 = 20, 60
-    _dcell(ax, dx0, dy0, 420, 380, "DETAIL D — REAR-PANEL BRACKET  (J4/W6, ×6)")
-    px, py = dx0 + 70, dy0 + 130
-    _rhs_rect(ax, px, py, 80, 200, fc=C_FRAME, alpha=0.8, zo=5)       # back upright (elev)
-    ax.text(px + 40, py + 100, "BACK\nUPRIGHT", fontsize=6, ha="center", va="center", **FONT, zorder=7)
-    ax.add_patch(Rectangle((px + 80, py + 90), 90, 14, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))     # bracket leg
-    ax.add_patch(Rectangle((px + 156, py + 90), 14, 60, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))    # bracket up-leg
-    _weld_tick(ax, px + 80, py + 97, side='right', size=7)            # bracket↔upright W6
-    ax.add_patch(Rectangle((px + 170, py + 60), 18, 130, fc=C_PALLET, ec=C_OUT, lw=1, alpha=0.6, zorder=5))  # panel ply
-    ax.add_patch(Circle((px + 163, py + 120), 6, fc="none", ec=C_OUT, lw=1.3, zorder=7))          # M8 bolt
-    leader(ax, px + 120, py + 90, px + 60, py + 30, "6mm angle bracket\nFILLET WELDED\n(W6 5mm)", fs=6, font=FONT, ha="left")
-    leader(ax, px + 179, py + 120, px + 210, py + 60, "M8 into captive\ntee-nut in ply (J4)", fs=6, font=FONT, ha="left")
+    _dcell(ax, dx0, dy0, 420, 380, "DETAIL D — REAR-PANEL BRACKET  (J4/W6 ×6)")
+    px, py = dx0 + 70, dy0 + 120
+    _rhs_rect(ax, px, py, 70, 200, fc=C_FRAME, alpha=0.8, zo=5)                                      # back upright
+    ax.text(px + 35, py + 100, "BACK\nUPRIGHT", fontsize=6, ha="center", va="center", **FONT, zorder=8)
+    ax.add_patch(Rectangle((px + 70, py + 120), 80, 12, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))       # bracket leg
+    _weld_tick(ax, px + 70, py + 126, side='right', size=7)                                          # bracket↔upright (W6)
+    ax.add_patch(Rectangle((px + 150, py + 60), 20, 140, fc=C_PALLET, ec=C_OUT, lw=1, alpha=0.6, zorder=5))  # panel ply
+    _csk_captive(ax, px + 150, py + 126, wood_th=20, d=9)                                            # CSK from ply → captive nut rect
+    leader(ax, px + 110, py + 120, px + 55, py + 40, "angle bracket\nFILLET WELDED (W6 5mm)", fs=6, font=FONT, ha="left")
+    leader(ax, px + 179, py + 126, px + 215, py + 55, "CSK screw from ply face\n→ captive tee-nut\n(RECTANGLE on back, J4)", fs=6, font=FONT, ha="left")
 
-    # ── DETAIL E — pump-support L-bracket ──
+    # ── DETAIL E — PUMP-SUPPORT L-BRACKET (captive nut = rectangle + CSK, vertical) ──
     ex0, ey0 = 470, 60
-    _dcell(ax, ex0, ey0, 420, 380, "DETAIL E — PUMP-SUPPORT L-BRACKET  (J5/W7, ×12)")
-    qx, qy = ex0 + 70, ey0 + 130
-    _rhs_rect(ax, qx, qy, 60, 200, fc=C_FRAME, alpha=0.8, zo=5)       # side post (elev)
-    ax.text(qx + 30, qy + 100, "SIDE\nPOST", fontsize=6, ha="center", va="center", **FONT, zorder=7)
-    ax.add_patch(Rectangle((qx + 60, qy + 100), 100, 12, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))   # L landing leg
-    ax.add_patch(Rectangle((qx + 60, qy + 100), 12, 60, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))     # L weld leg
-    _weld_tick(ax, qx + 60, qy + 130, side='left', size=7)           # L↔post W7
-    ax.add_patch(Rectangle((qx + 60, qy + 78), 130, 22, fc=C_PALLET, ec=C_OUT, lw=1, alpha=0.6, zorder=5))  # ply board
-    ax.add_patch(Circle((qx + 110, qy + 106), 6, fc="none", ec=C_OUT, lw=1.3, zorder=7))          # 1/4-20 bolt
-    leader(ax, qx + 66, qy + 130, qx + 30, qy + 30, "1×1×⅛ angle\nFILLET WELDED to\npost (W7 4mm)", fs=6, font=FONT, ha="left")
-    leader(ax, qx + 110, qy + 88, qx + 150, qy + 30, "board on captive\n¼-20 tee-nut (J5)", fs=6, font=FONT, ha="left")
+    _dcell(ax, ex0, ey0, 420, 380, "DETAIL E — PUMP-SUPPORT L-BRACKET  (J5/W7 ×12)")
+    qx, qy = ex0 + 60, ey0 + 120
+    _rhs_rect(ax, qx, qy, 55, 200, fc=C_FRAME, alpha=0.8, zo=5)                                      # side post
+    ax.text(qx + 27, qy + 100, "SIDE\nPOST", fontsize=6, ha="center", va="center", **FONT, zorder=8)
+    ax.add_patch(Rectangle((qx + 55, qy + 60), 12, 90, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))         # L weld leg
+    ax.add_patch(Rectangle((qx + 55, qy + 60), 120, 12, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))         # L landing leg
+    _weld_tick(ax, qx + 61, qy + 110, side='left', size=7)                                           # L↔post (W7)
+    ax.add_patch(Rectangle((qx + 70, qy + 72), 120, 20, fc=C_PALLET, ec=C_OUT, lw=1, alpha=0.6, zorder=5))  # ply board (on the landing leg)
+    # captive tee-nut RECTANGLE on the board TOP + a CSK screw driven UP from below the landing leg
+    ax.add_patch(Rectangle((qx + 120, qy + 88), 18, 8, fc=C_BOLT, ec=C_OUT, lw=0.9, zorder=8))        # tee-nut rectangle (board back/top)
+    ax.add_patch(Rectangle((qx + 125, qy + 60), 8, 32, fc=C_SHANK, ec=C_OUT, lw=0.7, zorder=8))       # screw shank up through the leg+board
+    ax.fill([qx + 123, qx + 135, qx + 132, qx + 126], [qy + 60, qy + 60, qy + 66, qy + 66], color=C_BOLT, zorder=9)  # CSK head under the leg
+    leader(ax, qx + 61, qy + 110, qx + 28, qy + 40, "1×1×⅛ angle FILLET\nWELDED to post (W7 4mm)", fs=6, font=FONT, ha="left")
+    leader(ax, qx + 138, qy + 90, qx + 185, qy + 45, "board on captive\ntee-nut (RECTANGLE)\n+ CSK screw (J5)", fs=6, font=FONT, ha="left")
 
     # ── Legend / notes cell ──
     nx0, ny0 = 940, 60
     _dcell(ax, nx0, ny0, 400, 380, "NOTES")
     draw_notes(ax, [
-        "• All welds E70xx per §3.5 schedule; grind zinc back at weld zones.",
+        "• All welds E70xx per §3.5 (W1–W9); grind zinc back at weld zones.",
         "• A36 mild-steel plate; A500 Gr.B RHS. Deburr all holes.",
-        "• Datums A/B/C + tolerances: see sheet 1 + §3.6.",
-        "• Wall backing plate flush to the OUTSIDE wall face; hex heads",
-        "  outside, nuts + split-lock inside.",
-        "• Anti-slip mats (μ≥0.6) under each tote — not shown.",
-        "• Corridor-metal brackets (D/E) share this welded frame; the",
-        "  walkway cantilever arm welds to the front upright (W9) — arm",
-        "  detailing is in the walkway blueprint.",
-    ], nx0 + 12, ny0 + 350, spacing=28, fs=6.4, font=FONT, width=380)
+        "• Datums A/B/C + tolerances: sheet 1 + §3.6.",
+        "• Hanger (A): the 2 through-bolts pass through the backing plate +",
+        "  wall + pocket back-plate — NOT the bar; 50mm clear of the seat",
+        "  for wrench access. Hex heads OUTSIDE, nuts inside.",
+        "• Brackets D/E: captive tee-nut = rectangle flush on the ply back,",
+        "  countersunk machine screw driven from the wood face.",
+        "• Ratchet-strap routing (securing) is an ops guide, not this sheet.",
+        "• Walkway arm welds to the front upright (W9) — arm detailing is",
+        "  in the walkway blueprint.",
+    ], nx0 + 12, ny0 + 355, spacing=27, fs=6.2, font=FONT, width=380)
 
     title_block(ax, "SHEET 4 OF 4",
                 drawing_title="IBC SUPPORT FRAME",
-                subtitle="FABRICATION DETAILS — HANGER / CLEAT / RING / BRACKETS",
-                scale_note="Schematic — not to scale; dims in mm",
+                subtitle="FABRICATION DETAILS — HANGER / CLEAT / RINGS / BRACKETS",
+                scale_note="Schematic sections — not to scale; dims in mm",
                 height=0.04)
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet4.png"), dpi=DIAGRAM_DPI,
                 bbox_inches="tight", facecolor=BG)

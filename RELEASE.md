@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **IBC frame blueprint Phase B: fastener + weld schedule.** Added `ibc-stacking-report.md` §3.5 — every
+  bolted joint (J1 floor self-drillers ×16 driven-to-seat; J2 bar→upright cleat M12×40 A2-70 ×16 @ ~50 N·m
+  + anti-seize; J3 wall-hanger through-bolt M12×65 Gr.8.8 ×16 @ ~90 N·m) with grade/torque/washer/locking,
+  and every weld (W4 lashing-ring→bar 6 mm fillet SF 9.1, W3 cleat→upright 4 mm SF 37, W1/W2/W5 minimum
+  practical fillets), sizes computed in `ibc_frame_load.py`, torques cited (Fastenal/Bossard/ITW-Buildex).
+  Caught a Phase-A miss along the way — the bar→upright cleat bolts were still qty 8; doubled to **16** with
+  the 8 bars (+$12 ibc-frame). Grand-total mid → ~$31,158.
+
 - **IBC stacking frame — blueprint Phase A: EN 12195-1 transport-restraint validation + redesign.** Took
   the IBC restraint frame from a qualitative "it's trapped" note to a computed load case
   (`ibc_frame_load.py`, new). The camera runs **self-contained**, so it transports **with water aboard** —

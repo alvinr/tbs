@@ -11,7 +11,7 @@ Sheet 1 — Cross-section elevation through the IBC stack, looking +X toward
   the top tier.  D-ring lashing points at frame corners.  Container
   ceiling, floor, and right walkway shown for context.
 
-Sheet 2 — Fastening details:
+Sheet 2 — Securing arrangement (lash points + strap routing; construction → Frame Sheet 4):
   Detail A: D-ring lashing point (cross-section, welded to frame).
   Detail B: Anti-rotation lip on platform perimeter (cross-section).
   Detail C: Access gate for lower IBC drain valve (front elevation).
@@ -327,202 +327,76 @@ def sheet1():
 #   C — Access gate front elevation
 # ═══════════════════════════════════════════════════════════════════════════════
 def sheet2():
-
-    fig, ax = plt.subplots(figsize=(20, 22))
-    fig.patch.set_facecolor(BG)
-    ax.set_facecolor(BG)
-    ax.set_xlim(0, (600))
-    ax.set_ylim((-240), (520))
-    ax.set_aspect("equal")
-    ax.axis("off")
-
-    C_BOLT = "#3A3A42"
+    """Sheet 2 — SECURING ARRANGEMENT (lash-point locations + strap routing, the rigger's plan).
+    Fastening + weld CONSTRUCTION details live on the IBC Support Frame fabrication set (Sheet 4)."""
+    fig, ax = plt.subplots(figsize=(16, 12))
+    fig.patch.set_facecolor(BG); ax.set_facecolor(BG)
+    ax.set_xlim(-260, 2900); ax.set_ylim(-820, 2760); ax.set_aspect("equal"); ax.axis("off")
     C_STRAP = "#C08020"
 
-    # ══════════════════════════════════════════════════════════════════════════
-    # DETAIL A — Front retaining bar -> corridor upright (bolted cleat + lash eye)
-    # The bar's inner end bolts to the front corridor upright via an angle cleat;
-    # a weld-on lashing eye on the bar takes the ratchet strap (Detail C).
-    # ══════════════════════════════════════════════════════════════════════════
-    ax.text((150), (500),
-            "DETAIL A — FRONT RETAINING BAR -> CORRIDOR UPRIGHT\n(BOLTED CLEAT + WELD-ON LASH EYE)",
-            ha="center", va="bottom", fontsize=8, color=C_OUT,
-            fontweight="bold", **FONT, zorder=15)
+    bar_zs   = (500, 950, 1500, 1950)          # 8 front retaining bars (2/tote face)
+    tier_low = (500, 1500)                      # lower bar of each tier = the lash-ring bar
+    ring_yds = (520, 940, 1422, 1842)           # 4 D-ring lash points per tier (2 per column)
+    cols = ((30, 1046, "NEAR COLUMN\n(Blue top / Brown bottom)"),
+            (1316, 2332, "FAR COLUMN\n(Blue top / Waste bottom)"))
 
-    # Corridor upright (vertical 50x50 RHS, partial)
-    up_x, up_y = 120, 330
-    ax.add_patch(Rectangle(((up_x), (up_y)), (FRAME_RHS), (150),
-                            fc=C_FRAME, ec=C_OUT, lw=2.0, zorder=5))
-    ax.add_patch(Rectangle(((up_x + FRAME_T), (up_y)),
-                            (FRAME_RHS - 2 * FRAME_T), (150),
-                            fc="#D8D8D8", ec="none", zorder=6))
-    ax.text((up_x + FRAME_RHS / 2), (up_y + 130), "CORRIDOR\nUPRIGHT",
-            ha="center", va="center", fontsize=5.5, color=C_OUT, **FONT, zorder=10)
+    ax.text(1181, 2660, "SECURING ARRANGEMENT — LASH POINTS + STRAP ROUTING",
+            ha="center", fontsize=12, fontweight="bold", **FONT)
 
-    # Front retaining bar (horizontal 50x50 RHS) butting the upright
-    bar_y = 380
-    bar_x0 = up_x + FRAME_RHS
-    bar_len = 180
-    ax.add_patch(Rectangle(((bar_x0), (bar_y)), (bar_len), (FRAME_RHS),
-                            fc=C_STEEL, ec=C_OUT, lw=2.0, hatch="xx", zorder=5))
-    ax.text((bar_x0 + bar_len * 0.62), (bar_y + FRAME_RHS / 2),
-            "FRONT RETAINING BAR\n50x20x3 RHS",
-            ha="center", va="center", fontsize=5.5, color=C_OUT, **FONT, zorder=10)
+    # tote ghosts (2 columns × 2 tiers, direct-stacked)
+    for (y0, y1, lbl) in cols:
+        for z0, fc in ((0, "#E8E4DA"), (1168, "#EAF0F6")):
+            ax.add_patch(Rectangle((y0, z0), y1 - y0, 1168, fc=fc, ec=C_OUT, lw=1.2, alpha=0.65, zorder=2))
+        ax.text((y0 + y1) / 2, 1180, "— direct-stack junction —", ha="center", fontsize=5.5,
+                color=C_DIM, **FONT, zorder=6)
+        ax.text((y0 + y1) / 2, 2440, lbl, ha="center", fontsize=7, **FONT, zorder=6)
 
-    # Angle cleat joining bar to upright (L-plate) + 2 M12 bolts
-    cl_t = 6
-    ax.add_patch(Rectangle(((up_x + FRAME_RHS), (bar_y - cl_t)),
-                            (70), (cl_t), fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=7))
-    ax.add_patch(Rectangle(((up_x + FRAME_RHS), (bar_y - cl_t)),
-                            (cl_t), (FRAME_RHS + cl_t), fc=C_STEEL, ec=C_OUT,
-                            lw=1.2, zorder=7))
-    for bx in (bar_x0 + 30, bar_x0 + 60):
-        ax.add_patch(Circle(((bx), (bar_y - cl_t / 2)), (5),
-                            fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=9))
-    leader(ax, (bar_x0 + 45), (bar_y - cl_t), (bar_x0 + 30), (bar_y - 25),
-           "ANGLE CLEAT +\n2x M12 BOLTS", color=C_FRAME, fs=6, ha="center",
-           va="top", arrow_style="-|>", font=FONT)
+    # 8 front retaining bars across each column
+    for bz in bar_zs:
+        for (y0, y1, _) in cols:
+            ax.add_patch(Rectangle((y0, bz), y1 - y0, 50, fc=C_STEEL, ec=C_OUT, lw=1.0,
+                                   hatch="xx", alpha=0.75, zorder=4))
+    leader(ax, cols[1][1], 950 + 25, 2470, 1250,
+           "8 front retaining bars\n(2/tote face, Z500/950 + Z1500/1950)\nconstruction → Frame Sheet 4",
+           color=C_STEEL, fs=6.5, ha="left", arrow_style="-|>", font=FONT)
 
-    # Weld-on lashing eye on the bar (outer end)
-    eye_cx, eye_cy = bar_x0 + bar_len, bar_y + FRAME_RHS / 2
-    ax.add_patch(Circle(((eye_cx), (eye_cy)), (16), fc="none",
-                        ec=C_STRAP, lw=4.0, zorder=9))
-    ax.add_patch(Circle(((eye_cx), (eye_cy)), (7), fc=BG,
-                        ec=C_STRAP, lw=2.0, zorder=10))
-    leader(ax, (eye_cx + 16), (eye_cy), (eye_cx + 30), (eye_cy + 25),
-           "WELD-ON LASH EYE\n1100kg WLL\n(ratchet strap, Detail C)",
-           color=C_STRAP, fs=6, ha="left", va="bottom", arrow_style="-|>", font=FONT)
+    # 8 lash rings on the lower bar of each tier + 2 straps per column over the stack
+    for (y0, y1, _) in cols:
+        cr = [yd for yd in ring_yds if y0 <= yd <= y1]
+        for bz in tier_low:
+            for yd in cr:
+                ax.add_patch(Circle((yd, bz + 25), 22, fc="none", ec=C_STRAP, lw=3.2, zorder=8))
+        # 2 straps per stack: each loops over the tote top down to a lash ring on each side
+        top_z = 2360
+        for bz in tier_low:
+            ax.plot([cr[0], cr[0], cr[1], cr[1]], [bz + 25, top_z, top_z, bz + 25],
+                    color=C_STRAP, lw=2.6, zorder=7)
+    leader(ax, cols[1][1] - 106, 2360, 2470, 2250,
+           "2× 2\" ratchet strap / stack\nover the top → lash rings\n(1,512 kg WLL each)",
+           color=C_STRAP, fs=6.5, ha="left", arrow_style="-|>", font=FONT)
+    leader(ax, ring_yds[0], 525, ring_yds[0] - 60, 300,
+           "8 weld-on lash rings\n(4/tier, on the lower bar)", color=C_STRAP, fs=6.5, ha="right",
+           arrow_style="-|>", font=FONT)
 
-    ax.add_patch(Rectangle(((40), (300)), (520), (210),
-                            fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=1))
+    # side walls + sealed-end trap note (the other 3 directions)
+    for wx in (-40, 2372):
+        ax.add_patch(Rectangle((wx, 0), 40, 2360, fc=C_STEEL, ec=C_OUT, lw=1, hatch="///", alpha=0.5, zorder=1))
+    ax.text(-150, 1180, "SIDE WALL\n(30mm gap —\nlateral trap)", ha="center", fontsize=6, color=C_DIM, **FONT)
 
-    # ══════════════════════════════════════════════════════════════════════════
-    # DETAIL B — Wall joist hanger (Simpson-style U-pocket, face-mount to wall)
-    # The bar's outer (wall) end drops into a U-pocket face-bolted to the side wall.
-    # ══════════════════════════════════════════════════════════════════════════
-    ax.text((150), (270),
-            "DETAIL B — WALL JOIST HANGER\n(U-POCKET, THROUGH-BOLTED TO EXTERIOR BACKING PLATE)",
-            ha="center", va="bottom", fontsize=8, color=C_OUT,
-            fontweight="bold", **FONT, zorder=15)
+    draw_notes(ax, [
+        "SECURING NOTES:",
+        "1. Fastening + weld CONSTRUCTION details (cleat, wall hanger, lash-ring weld, brackets) →",
+        "   see IBC SUPPORT FRAME fabrication set, Sheet 4.",
+        "2. The 8 weld-on lash rings sit on the lower retaining bar of each tier (4 per tier).",
+        "3. Two 2\" ratchet straps per stack pass over the tote top and ratchet down to the lash rings;",
+        "   re-check tension after 50 km. Anti-slip mats (μ≥0.6) sit under each tote.",
+        "4. The totes are otherwise trapped by the side walls (30mm gap) + the sealed end wall.",
+    ], -240, -150, spacing=66, fs=7, font=FONT, width=3000)
 
-    # Side wall (vertical, hatched)
-    wall_x = 170
-    ax.add_patch(Rectangle(((wall_x - 25), (120)), (25), (130),
-                            fc=C_WALL, ec=C_OUT, lw=1.5, hatch="///", zorder=4))
-    ax.plot([(wall_x), (wall_x)], [(120), (250)], color=C_OUT, lw=2.0, zorder=5)
-    ax.text((wall_x - 12), (135), "SIDE\nWALL", ha="center", va="center",
-            fontsize=5.5, color=C_DIM, **FONT, rotation=90, zorder=10)
-
-    hb_y = 175           # pocket seat level
-    pocket_d = 90
-    # Back flange (on the wall)
-    ax.add_patch(Rectangle(((wall_x), (hb_y - 15)), (8), (FRAME_RHS + 30),
-                            fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=7))
-    # Bottom seat
-    ax.add_patch(Rectangle(((wall_x), (hb_y - 8)), (pocket_d), (8),
-                            fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=7))
-    # Side strap (near, front face shown)
-    ax.add_patch(Rectangle(((wall_x), (hb_y - 8)), (pocket_d), (6),
-                            fc="none", ec=C_STEEL, lw=2.5, zorder=8))
-    # Bar end dropped into the pocket
-    ax.add_patch(Rectangle(((wall_x + 8), (hb_y)), (pocket_d - 12), (FRAME_RHS),
-                            fc=C_STEEL, ec=C_OUT, lw=2.0, hatch="xx", zorder=8))
-    ax.text((wall_x + pocket_d / 2 + 6), (hb_y + FRAME_RHS / 2), "BAR END",
-            ha="center", va="center", fontsize=5.5, color=C_OUT, **FONT, zorder=10)
-    # Exterior backing plate (load-spreading) on the OUTSIDE of the wall — the thin
-    # corrugated wall would pull through under the totes' transport thrust without it.
-    ext_face = wall_x - 25            # exterior wall face
-    ax.add_patch(Rectangle(((ext_face - 8), (hb_y - 30)), (8), (FRAME_RHS + 60),
-                            fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=7))
-    ax.text((ext_face - 4), (hb_y + FRAME_RHS / 2), "EXT.\nPLATE", ha="center",
-            va="center", fontsize=4.3, color="white", fontweight="bold",
-            **FONT, rotation=90, zorder=12)
-    # M12 through-bolts: exterior plate → through wall → interior back flange (hex heads outside)
-    for by in (hb_y + 6, hb_y + FRAME_RHS - 2):
-        ax.plot([(ext_face - 8), (wall_x + 12)], [(by), (by)],
-                color=C_BOLT, lw=1.8, zorder=10)
-        ax.add_patch(Rectangle(((ext_face - 14), (by - 4)), (6), (8),
-                                fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=11))   # hex head outside
-    leader(ax, (ext_face - 11), (hb_y - 8), (ext_face - 75), (hb_y - 55),
-           "EXTERIOR BACKING PLATE\n100x135x8 + 4x M12x65 THROUGH-BOLTS\n(hex heads outside, load-spread)",
-           color=C_FRAME, fs=6, ha="left", va="top", arrow_style="-|>", font=FONT)
-    leader(ax, (wall_x + pocket_d), (hb_y - 4), (wall_x + pocket_d + 15), (hb_y - 25),
-           "U-POCKET SEAT\n(bar drops in)", color=C_STEEL, fs=6, ha="left",
-           va="top", arrow_style="-|>", font=FONT)
-
-    ax.add_patch(Rectangle(((10), (100)), (560), (185),
-                            fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=1))
-
-    # ══════════════════════════════════════════════════════════════════════════
-    # DETAIL C — Lashing strap over the stack, ratcheted to the front bar
-    # ══════════════════════════════════════════════════════════════════════════
-    ax.text((300), (80),
-            "DETAIL C — RATCHET LASHING (FRONT ELEVATION)\nSTRAP OVER STACK -> WELD-ON LASH EYE ON FRONT BAR",
-            ha="center", va="bottom", fontsize=8, color=C_OUT,
-            fontweight="bold", **FONT, zorder=15)
-
-    # Two stacked totes (front elevation, schematic)
-    t_x, t_w = 200, 200
-    base_z = -90
-    th = 65
-    for i, tcol in enumerate([C_WASTE_IBC, C_BLUE_IBC]):  # v2: brown/waste bottom, blue top
-        z0 = base_z + i * th
-        ax.add_patch(Rectangle(((t_x), (z0)), (t_w), (th),
-                                fc=tcol, ec=C_OUT, lw=1.5, alpha=0.4, zorder=5))
-    ax.text((t_x + t_w / 2), (base_z + th), "IBC STACK\n(2 totes)",
-            ha="center", va="center", fontsize=6, color=C_OUT, **FONT, zorder=10)
-
-    # Front retaining bars (small RHS squares) at the two bar heights, each side
-    for bx in (t_x - 14, t_x + t_w + 14 - FRAME_RHS / 2):
-        for bz in (base_z + 8, base_z + th + 8):
-            ax.add_patch(Rectangle(((bx), (bz)), (FRAME_RHS / 2), (FRAME_RHS / 2),
-                                    fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="xx", zorder=6))
-
-    # Lash eyes on the lower front bars
-    eyeL = (t_x - 2, base_z + 8 + FRAME_RHS / 4)
-    eyeR = (t_x + t_w + 2, base_z + 8 + FRAME_RHS / 4)
-    for ex, ez in (eyeL, eyeR):
-        ax.add_patch(Circle(((ex), (ez)), (7), fc="none", ec=C_STRAP, lw=2.5, zorder=9))
-
-    # Ratchet strap over the top of the stack, down both sides to the eyes
-    strap_x = [eyeL[0], t_x + 6, t_x + t_w - 6, eyeR[0]]
-    strap_z = [eyeL[1], base_z + 2 * th + 6, base_z + 2 * th + 6, eyeR[1]]
-    ax.plot(strap_x, strap_z, color=C_STRAP, lw=3.0, zorder=8, solid_capstyle="round")
-    # Ratchet buckle symbol on the right run
-    ax.add_patch(Rectangle(((eyeR[0] - 6), ((eyeR[1] + base_z + 2 * th) / 2)),
-                            (14), (16), fc=C_STRAP, ec=C_OUT, lw=1.0, zorder=10))
-
-    leader(ax, ((t_x + t_w / 2)), (base_z + 2 * th + 6), (t_x + t_w / 2 + 10),
-           (base_z + 2 * th + 25),
-           "25mm POLY RATCHET STRAP\n1100kg LC, over the stack",
-           color=C_STRAP, fs=6, ha="left", va="bottom", arrow_style="-|>", font=FONT)
-    leader(ax, (eyeR[0] + 1), ((eyeR[1] + base_z + 2 * th) / 2 + 8),
-           (eyeR[0] + 25), (base_z + 100),
-           "RATCHET BUCKLE\n-> lash eye on front bar",
-           color=C_STRAP, fs=6, ha="left", va="top", arrow_style="-|>", font=FONT)
-
-    ax.add_patch(Rectangle(((150), (-110)), (300), (210),
-                            fc="none", ec=C_DIM, lw=0.8, ls="--", zorder=1))
-
-    # ── Notes ─────────────────────────────────────────────────────────────────
-    notes = [
-        "FASTENING NOTES (RESTRAINT-ONLY FRAME):",
-        "1. Direct-stack totes are restrained, not deck-supported. Active restraint + lash points are at the OPEN container front (side/back walls leave a 30mm gap — no hand/hook access).",
-        "2. Detail A: each front retaining bar bolts to the front corridor upright via an angle cleat (2x M12); a weld-on lash eye takes the strap.",
-        "3. Detail B: the bar's wall end drops into a Simpson-style U-pocket joist hanger, through-bolted (4x M12x65) to a 100x135x8 EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall. M12x65 partial-thread spans the ~42-54mm sandwich; front-bar cleats stay M12x40.",
-        "4. Detail C: 25mm poly ratchet straps (1100kg LC) pass over each stack and ratchet down to the front-bar lash eyes.",
-        "5. Floor feet (150x150x12, 4x M12 each) anchor the corridor uprights to the slab — see Sheet 1.",
-    ]
-    draw_notes(ax, notes, (20), (-120), spacing=(8),
-               fs=7, ha="left", font=FONT, width=560)
-
-    # ── Title block ───────────────────────────────────────────────────────────
     title_block(ax, "SHEET 2 OF 5",
                 drawing_title="IBC STACKING & SECURING",
-                subtitle="FASTENING DETAILS — FRONT BAR - WALL HANGER - RATCHET LASHING",
-                scale_note="Axes in mm - DETAILS A-C",
-                height=0.06)
-
+                subtitle="SECURING ARRANGEMENT — LASH POINTS + STRAP ROUTING",
+                scale_note="Front elevation — dims in mm")
     fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-stacking-sheet2.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/ibc-stacking-sheet2.png saved")
@@ -1988,7 +1862,7 @@ if __name__ == "__main__":
     os.makedirs(DIAGRAMS_DIR, exist_ok=True)
     print("Generating IBC stacking diagrams...")
     sheet1()  # cross-section elevation -> ibc-stacking-sheet1.png
-    sheet2()  # fastening details -> ibc-stacking-sheet2.png
+    sheet2()  # securing arrangement -> ibc-stacking-sheet2.png
     sheet3()  # external bulkhead ports -> ibc-stacking-sheet3.png
     sheet4()  # internal plumbing plan -> ibc-stacking-sheet4.png
     sheet5()  # internal plumbing elevation -> ibc-stacking-sheet5.png

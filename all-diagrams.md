@@ -226,6 +226,8 @@
 
 ![TBS-001 IBC Frame — Sheet 3: Plan View at Platform Level](assets/ibc-frame-sheet3.png)
 
+![TBS-001 IBC Frame — Sheet 4: Fabrication Details](assets/ibc-frame-sheet4.png)
+
 ---
 
 ## 17. Chemistry Prep Shelves

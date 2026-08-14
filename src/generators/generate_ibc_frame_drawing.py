@@ -4,13 +4,14 @@
 """
 generate_ibc_frame_drawing.py  —  TBS-001 IBC Support Frame Fabrication Drawings
 
-Three-sheet fabrication drawing set for the welded 2×2×0.120in steel (A500)
+Four-sheet fabrication drawing set for the welded 2×2×0.120in steel (A500)
 IBC stacking frame.  Shows frame structure only — no IBCs, plumbing, or
 other container equipment.
 
 Sheet 1 — Front Elevation (looking +X toward sealed end; near/pinhole wall at right, far wall at left)
 Sheet 2 — Side Elevation (looking along Yd from near wall)
 Sheet 3 — Plan View (looking down at platform level)
+Sheet 4 — Fabrication Details (hanger / cleat / ring / panel + L-brackets, with weld + fastener callouts)
 
 Each sheet includes dimensional callouts and assembly detail insets.
 
@@ -606,7 +607,7 @@ def sheet1():
     _datum_tol_block(ax, (-260), (TOP_Z - 340))
 
     # ── Title block ─────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 3",
+    title_block(ax, "SHEET 1 OF 4",
                 drawing_title="IBC SUPPORT FRAME",
                 subtitle="FRONT ELEVATION — FRAME ASSEMBLY",
                 scale_note="Axes in mm — VIEW ALONG X",
@@ -765,7 +766,7 @@ def sheet2():
                fs=6.5, font=FONT, width=(950))
 
     # ── Title block ─────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 3",
+    title_block(ax, "SHEET 2 OF 4",
                 drawing_title="IBC SUPPORT FRAME",
                 subtitle="SIDE ELEVATION — DEEP 4-LEG BOX (RESTRAINT)",
                 scale_note="Axes in mm — VIEW ALONG Yd",
@@ -1019,7 +1020,7 @@ def sheet3():
                fs=7, font=FONT, width=(950))
 
     # ── Title block ─────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 3 OF 3",
+    title_block(ax, "SHEET 3 OF 4",
                 drawing_title="IBC SUPPORT FRAME",
                 subtitle="PLAN VIEW — DEEP 4-LEG BOX + RETAINING BARS",
                 scale_note="Axes in mm — VIEW LOOKING DOWN",
@@ -1032,6 +1033,125 @@ def sheet3():
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# SHEET 4 — Fabrication Details (Phase D insets: the connections a shop builds from)
+# ═══════════════════════════════════════════════════════════════════════════════
+def _dcell(ax, x0, y0, w, h, title):
+    """A titled detail cell."""
+    ax.add_patch(Rectangle((x0, y0), w, h, fc="none", ec=C_OUT, lw=1.2, zorder=3))
+    ax.text(x0 + 10, y0 + h - 16, title, fontsize=8, fontweight="bold", **FONT, zorder=6)
+
+
+def sheet4():
+    """Sheet 4 — fabrication detail insets."""
+    fig, ax = plt.subplots(figsize=(16.5, 10.5))
+    ax.set_xlim(-20, 1360); ax.set_ylim(-40, 900); ax.set_aspect("equal"); ax.axis("off")
+    ax.text(670, 875, "FABRICATION DETAILS", fontsize=13, fontweight="bold", ha="center", **FONT)
+
+    # ── DETAIL A — wall joist hanger + backing plate (elevation on the wall face) ──
+    ax0, ay0 = 20, 470
+    _dcell(ax, ax0, ay0, 420, 380, "DETAIL A — WALL JOIST HANGER  (per bar, ×8)")
+    cx, cz0 = ax0 + 150, ay0 + 60          # plate bottom-left in cell
+    sc = 1.4                                 # mm→pt for this detail
+    pw, ph = 60 * sc, 205 * sc              # backing plate 60×205
+    _rhs_rect(ax, cx, cz0, pw, ph, fc=C_STEEL, alpha=0.5, zo=4)      # exterior backing plate
+    # the bar (seated, mid-height) + seat
+    bw, bh = 20 * sc, 50 * sc
+    bz = cz0 + (205 - 61 - 50) * sc          # bar bottom = seat top; seat at 50mm above bottom bolt
+    _rhs_rect(ax, cx + pw/2 - bw/2, bz, bw, bh, fc=C_FRAME, alpha=0.85, zo=6)
+    ax.add_patch(Rectangle((cx + pw/2 - bw/2 - 8, bz - 6*sc), bw + 16, 4*sc, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))  # seat ledge
+    # 2 vertical M12 bolts (50mm clear of the bar/seat)
+    for dz in (12*sc, 193*sc):
+        ax.add_patch(Circle((cx + pw/2, cz0 + dz), 6*sc, fc="none", ec=C_OUT, lw=1.4, zorder=7))
+        ax.add_patch(Circle((cx + pw/2, cz0 + dz), 2.5, fc=C_OUT, zorder=7))
+    _weld_tick(ax, cx + pw/2 - bw/2 - 8, bz - 4*sc, side='left', size=7)
+    draw_dim_v(ax, cx - 22, cz0, cz0 + ph, "205")
+    leader(ax, cx + pw/2, bz - 6*sc, cx + pw + 60, bz - 40, "50mm CLEAR\nbolt→seat\n(tightening)", fs=6, font=FONT, ha="left")
+    leader(ax, cx + pw/2, cz0 + 12*sc, cx - 60, cz0 + 40, "2× M12×65 8.8\nJ3 ~90 N·m\nthru wall→plate", fs=6, font=FONT, ha="right")
+    leader(ax, cx + pw, cz0 + ph - 20, cx + pw + 60, cz0 + ph - 10, "60×205×8\nA36 backing\nplate (hex out)", fs=6, font=FONT, ha="left")
+
+    # ── DETAIL B — bar → upright cleat (plan) ──
+    bx0, by0 = 470, 470
+    _dcell(ax, bx0, by0, 420, 380, "DETAIL B — BAR→UPRIGHT CLEAT  (J2/W3, ×8)")
+    ux, uy = bx0 + 60, by0 + 120
+    _rhs_rect(ax, ux, uy, 90, 90, fc=C_FRAME, alpha=0.8, zo=5)        # upright (plan, 50×50 scaled)
+    ax.text(ux + 45, uy + 45, "UPRIGHT", fontsize=6, ha="center", va="center", **FONT, zorder=7)
+    _rhs_rect(ax, ux + 90, uy + 30, 200, 36, fc=C_FRAME, alpha=0.8, zo=5)  # bar butting (plan)
+    ax.text(ux + 190, uy + 48, "BAR 50×20", fontsize=6, ha="center", va="center", **FONT, zorder=7)
+    ax.add_patch(Rectangle((ux + 78, uy + 20), 14, 56, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))  # cleat angle
+    _weld_tick(ax, ux + 78, uy + 48, side='left', size=7)            # cleat↔upright weld W3
+    for dx in (140, 200):
+        ax.add_patch(Circle((ux + dx, uy + 48), 8, fc="none", ec=C_OUT, lw=1.3, zorder=7))
+        ax.add_patch(Circle((ux + dx, uy + 48), 2.5, fc=C_OUT, zorder=7))
+    leader(ax, ux + 85, uy + 20, ux + 40, uy - 20, "angle cleat FILLET\nWELDED to upright\n(W3 4mm)", fs=6, font=FONT, ha="left")
+    leader(ax, ux + 170, uy + 48, ux + 200, uy - 20, "2× M12×40 A2\nJ2 ~50 N·m\n+ anti-seize, nyloc", fs=6, font=FONT, ha="left")
+
+    # ── DETAIL C — weld-on lashing ring ──
+    lx0, ly0 = 940, 470
+    _dcell(ax, lx0, ly0, 400, 380, "DETAIL C — WELD-ON LASHING RING  (W4, ×8)")
+    rbx, rbz = lx0 + 90, ly0 + 120
+    _rhs_rect(ax, rbx, rbz, 220, 70, fc=C_FRAME, alpha=0.8, zo=5)     # front bar (side)
+    ax.text(rbx + 110, rbz + 35, "FRONT BAR 50×20", fontsize=6, ha="center", va="center", **FONT, zorder=7)
+    ax.add_patch(Rectangle((rbx + 90, rbz + 70), 40, 12, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))  # ring base
+    ax.add_patch(Circle((rbx + 110, rbz + 120), 26, fc="none", ec=C_OUT, lw=2.2, zorder=7))       # ring
+    _weld_tick(ax, rbx + 92, rbz + 74, side='down', size=7)
+    _weld_tick(ax, rbx + 128, rbz + 74, side='down', size=7)
+    leader(ax, rbx + 110, rbz + 78, rbx + 200, rbz + 140, "1½\" weld-on ring\n6,600 lb WLL\nFILLET 6mm all-around\n(W4)", fs=6, font=FONT, ha="left")
+
+    # ── DETAIL D — rear-panel bracket (plumbing panel mount) ──
+    dx0, dy0 = 20, 60
+    _dcell(ax, dx0, dy0, 420, 380, "DETAIL D — REAR-PANEL BRACKET  (J4/W6, ×6)")
+    px, py = dx0 + 70, dy0 + 130
+    _rhs_rect(ax, px, py, 80, 200, fc=C_FRAME, alpha=0.8, zo=5)       # back upright (elev)
+    ax.text(px + 40, py + 100, "BACK\nUPRIGHT", fontsize=6, ha="center", va="center", **FONT, zorder=7)
+    ax.add_patch(Rectangle((px + 80, py + 90), 90, 14, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))     # bracket leg
+    ax.add_patch(Rectangle((px + 156, py + 90), 14, 60, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))    # bracket up-leg
+    _weld_tick(ax, px + 80, py + 97, side='right', size=7)            # bracket↔upright W6
+    ax.add_patch(Rectangle((px + 170, py + 60), 18, 130, fc=C_PALLET, ec=C_OUT, lw=1, alpha=0.6, zorder=5))  # panel ply
+    ax.add_patch(Circle((px + 163, py + 120), 6, fc="none", ec=C_OUT, lw=1.3, zorder=7))          # M8 bolt
+    leader(ax, px + 120, py + 90, px + 60, py + 30, "6mm angle bracket\nFILLET WELDED\n(W6 5mm)", fs=6, font=FONT, ha="left")
+    leader(ax, px + 179, py + 120, px + 210, py + 60, "M8 into captive\ntee-nut in ply (J4)", fs=6, font=FONT, ha="left")
+
+    # ── DETAIL E — pump-support L-bracket ──
+    ex0, ey0 = 470, 60
+    _dcell(ax, ex0, ey0, 420, 380, "DETAIL E — PUMP-SUPPORT L-BRACKET  (J5/W7, ×12)")
+    qx, qy = ex0 + 70, ey0 + 130
+    _rhs_rect(ax, qx, qy, 60, 200, fc=C_FRAME, alpha=0.8, zo=5)       # side post (elev)
+    ax.text(qx + 30, qy + 100, "SIDE\nPOST", fontsize=6, ha="center", va="center", **FONT, zorder=7)
+    ax.add_patch(Rectangle((qx + 60, qy + 100), 100, 12, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))   # L landing leg
+    ax.add_patch(Rectangle((qx + 60, qy + 100), 12, 60, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))     # L weld leg
+    _weld_tick(ax, qx + 60, qy + 130, side='left', size=7)           # L↔post W7
+    ax.add_patch(Rectangle((qx + 60, qy + 78), 130, 22, fc=C_PALLET, ec=C_OUT, lw=1, alpha=0.6, zorder=5))  # ply board
+    ax.add_patch(Circle((qx + 110, qy + 106), 6, fc="none", ec=C_OUT, lw=1.3, zorder=7))          # 1/4-20 bolt
+    leader(ax, qx + 66, qy + 130, qx + 30, qy + 30, "1×1×⅛ angle\nFILLET WELDED to\npost (W7 4mm)", fs=6, font=FONT, ha="left")
+    leader(ax, qx + 110, qy + 88, qx + 150, qy + 30, "board on captive\n¼-20 tee-nut (J5)", fs=6, font=FONT, ha="left")
+
+    # ── Legend / notes cell ──
+    nx0, ny0 = 940, 60
+    _dcell(ax, nx0, ny0, 400, 380, "NOTES")
+    draw_notes(ax, [
+        "• All welds E70xx per §3.5 schedule; grind zinc back at weld zones.",
+        "• A36 mild-steel plate; A500 Gr.B RHS. Deburr all holes.",
+        "• Datums A/B/C + tolerances: see sheet 1 + §3.6.",
+        "• Wall backing plate flush to the OUTSIDE wall face; hex heads",
+        "  outside, nuts + split-lock inside.",
+        "• Anti-slip mats (μ≥0.6) under each tote — not shown.",
+        "• Corridor-metal brackets (D/E) share this welded frame; the",
+        "  walkway cantilever arm welds to the front upright (W9) — arm",
+        "  detailing is in the walkway blueprint.",
+    ], nx0 + 12, ny0 + 350, spacing=28, fs=6.4, font=FONT, width=380)
+
+    title_block(ax, "SHEET 4 OF 4",
+                drawing_title="IBC SUPPORT FRAME",
+                subtitle="FABRICATION DETAILS — HANGER / CLEAT / RING / BRACKETS",
+                scale_note="Schematic — not to scale; dims in mm",
+                height=0.04)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet4.png"), dpi=DIAGRAM_DPI,
+                bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/ibc-frame-sheet4.png saved")
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # Main
 # ═══════════════════════════════════════════════════════════════════════════════
 if __name__ == "__main__":
@@ -1040,4 +1160,5 @@ if __name__ == "__main__":
     sheet1()
     sheet2()
     sheet3()
+    sheet4()
     print("Done.")

@@ -200,6 +200,10 @@ Torque sources: M12 8.8 zinc/dry ≈ 88 N·m ([Fastenal torque-tension, K = 0.20
 
 The wall joist hangers are **folded** 4 mm plate (bent, not welded); the exterior backing plates are loose (bolted, not welded). The corridor-panel + pump-support brackets and the ribbon cross-beams are the **plumbing-corridor metal** that shares this frame; the walkway cantilever arms weld to the front uprights (W9) but are detailed in the walkway blueprint.
 
+These joints are drawn on **Sheet 4** (each with its weld + fastener callout):
+
+![TBS-001 IBC Frame — Sheet 4: Fabrication Details](assets/ibc-frame-sheet4.png)
+
 ### 3.6 Datum + Tolerance Scheme
 
 The frame is a welded structure, so tolerances follow **ISO 13920 Class B** (general tolerances for welded
@@ -348,7 +352,7 @@ relevant sections above; the full set is collected here and in [Engineering Diag
 **Sheet 5 — Internal plumbing elevation: Pipe routing from IBCs to bulkhead unions**
 ![TBS-001 IBC Stacking — Sheet 5](assets/ibc-stacking-sheet5.png)
 
-### IBC Support Frame Fabrication (3 sheets)
+### IBC Support Frame Fabrication (4 sheets)
 
 **Sheet 1 — Front elevation: deep-box uprights (front pair, back pair 450mm behind), floor feet, front retaining bars + wall hangers + weld-on lashing rings, direct-stack junction**
 ![TBS-001 IBC Frame — Sheet 1](assets/ibc-frame-sheet1.png)
@@ -358,6 +362,9 @@ relevant sections above; the full set is collected here and in [Engineering Diag
 
 **Sheet 3 — Plan view: deep 4-leg box (4 legs + ring perimeter) + retaining bars + 4 floor feet + IBC footprints + corridor + walkway arms**
 ![TBS-001 IBC Frame — Sheet 3](assets/ibc-frame-sheet3.png)
+
+**Sheet 4 — Fabrication details: DETAIL A wall joist hanger (per-bar, 2-bolt, 50mm clearance), B bar→upright cleat, C weld-on lashing ring, D rear-panel bracket, E pump-support L-bracket — each with weld (W) + fastener (J) callouts**
+![TBS-001 IBC Frame — Sheet 4](assets/ibc-frame-sheet4.png)
 
 <!-- brochure:endskip -->
 

@@ -1078,18 +1078,18 @@ def sheet3():
 def _dcell(ax, x0, y0, w, h, title):
     """A titled detail cell."""
     ax.add_patch(Rectangle((x0, y0), w, h, fc="none", ec=C_OUT, lw=1.2, zorder=3))
-    ax.text(x0 + 10, y0 + h - 16, title, fontsize=8, fontweight="bold", **FONT, zorder=6)
+    ax.text(x0 + 10, y0 + h - 16, title, fontsize=6.6, fontweight="bold", **FONT, zorder=6)
 
 
 def sheet4():
     """Sheet 4 — fabrication detail insets (corrected cross-sections)."""
     fig, ax = plt.subplots(figsize=(16.5, 10.5))
-    ax.set_xlim(-20, 1360); ax.set_ylim(-40, 900); ax.set_aspect("equal"); ax.axis("off")
+    ax.set_xlim(-20, 1360); ax.set_ylim(-360, 900); ax.set_aspect("equal"); ax.axis("off")
     ax.text(670, 875, "FABRICATION DETAILS", fontsize=13, fontweight="bold", ha="center", **FONT)
 
     # ── DETAIL A — WALL JOIST HANGER (Z–Yd section: bolts thru the PLATES, bar between) ──
     ax0, ay0 = 20, 470
-    _dcell(ax, ax0, ay0, 420, 380, "DETAIL A — WALL JOIST HANGER  (section, per bar ×8)")
+    _dcell(ax, ax0, ay0, 420, 380, "DETAIL A — WALL JOIST HANGER (section, ×8)")
     wy = ax0 + 210; zc = ay0 + 190
     hatch_rect(ax, wy - 6, ay0 + 45, 12, 290, color="#B8B8B8", hatch="///")            # wall in section
     ax.add_patch(Rectangle((wy - 22, zc - 100), 8, 200, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=6))   # 60x205x8 backing plate
@@ -1112,7 +1112,7 @@ def sheet4():
 
     # ── DETAIL B — BAR→UPRIGHT CLEAT (section, VERTICAL bolts + spacing) ──
     bx0, by0 = 470, 470
-    _dcell(ax, bx0, by0, 420, 380, "DETAIL B — BAR→UPRIGHT CLEAT  (section, J2/W3 ×8)")
+    _dcell(ax, bx0, by0, 420, 380, "DETAIL B — BAR→UPRIGHT CLEAT (J2/W3, ×8)")
     ux = bx0 + 70; uz = by0 + 55
     _rhs_rect(ax, ux, uz, 70, 250, fc=C_FRAME, alpha=0.8, zo=5)                                      # corridor upright (section)
     ax.text(ux + 35, uz + 55, "CORRIDOR\nUPRIGHT", fontsize=6, ha="center", va="center", **FONT, zorder=8)
@@ -1160,7 +1160,7 @@ def sheet4():
 
     # ── DETAIL E — PUMP-SUPPORT L-BRACKET (captive nut = rectangle + CSK, vertical) ──
     ex0, ey0 = 470, 60
-    _dcell(ax, ex0, ey0, 420, 380, "DETAIL E — PUMP-SUPPORT L-BRACKET  (J5/W7 ×12)")
+    _dcell(ax, ex0, ey0, 420, 380, "DETAIL E — PUMP-SUPPORT L-BRACKET (J5/W7, ×12)")
     qx, qy = ex0 + 60, ey0 + 120
     _rhs_rect(ax, qx, qy, 55, 200, fc=C_FRAME, alpha=0.8, zo=5)                                      # side post
     ax.text(qx + 27, qy + 100, "SIDE\nPOST", fontsize=6, ha="center", va="center", **FONT, zorder=8)
@@ -1175,22 +1175,34 @@ def sheet4():
     leader(ax, qx + 61, qy + 110, qx + 28, qy + 40, "1×1×⅛ angle FILLET\nWELDED to post (W7 4mm)", fs=6, font=FONT, ha="left")
     leader(ax, qx + 138, qy + 90, qx + 185, qy + 45, "board on captive\ntee-nut (RECTANGLE)\n+ CSK screw (J5)", fs=6, font=FONT, ha="left")
 
-    # ── Legend / notes cell ──
-    nx0, ny0 = 940, 60
-    _dcell(ax, nx0, ny0, 400, 380, "NOTES")
+    # ── DETAIL F — WALKWAY CANTILEVER ARM → FRONT UPRIGHT (2-bolt clamp, Yd–Z elevation) ──
+    fx0, fy0 = 940, 60
+    _dcell(ax, fx0, fy0, 420, 380, "DETAIL F — WALKWAY ARM → UPRIGHT (clamp, ×2)")
+    ax.text(fx0 + 12, fy0 + 338, "USED: the 2 right-walkway cantilever arms clamp to the FRONT corridor uprights",
+            fontsize=5.6, **FONT, zorder=6)
+    fyc, fzc = fx0 + 190, fy0 + 190
+    ax.add_patch(Rectangle((fyc - 30, fzc - 110), 60, 220, fc=C_FRAME, ec=C_OUT, lw=1.2, alpha=0.8, zorder=5))  # upright face
+    ax.text(fyc, fzc - 92, "FRONT UPRIGHT (face)", fontsize=6, ha="center", va="center", **FONT, zorder=8)
+    ax.add_patch(Rectangle((fyc - 25, fzc - 25), 50, 50, fc=C_FRAME, ec=C_OUT, lw=1.5, hatch="xx", alpha=0.9, zorder=7))  # arm end-on
+    ax.text(fyc, fzc, "ARM\n(end-on)", fontsize=5.5, ha="center", va="center", **FONT, zorder=9)
+    for fyy in (fyc - 42, fyc + 34):                                             # 2 clamp plates flanking the upright
+        ax.add_patch(Rectangle((fyy, fzc - 72), 8, 144, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))
+    for bz in (fzc - 56, fzc + 56):                                              # 2 M12 through-bolts (2 Z levels)
+        _bolt(ax, fyc - 62, bz, 124, d=10, nut=True)
+    draw_dim_v(ax, fyc + 96, fzc - 56, fzc + 56, "112")
+    leader(ax, fyc + 42, fzc - 72, fyc + 116, fzc - 120, "2 clamp plates\nflank the upright", fs=6, font=FONT, ha="left")
+    leader(ax, fyc - 62, fzc + 56, fyc - 150, fzc + 110, "2× M12 through-bolts (2 Z\nlevels) clamp the arm to\nthe upright — NO weld", fs=6, font=FONT, ha="left")
+    ax.text(fyc, fy0 + 22, "arm cantilevers −X to the walkway (2×1×0.120 steel — walkway blueprint)",
+            fontsize=5.4, ha="center", **FONT, zorder=6)
+
+    # ── Full-width NOTES band ──
+    _dcell(ax, 20, -330, 1340, 300, "NOTES")
     draw_notes(ax, [
-        "• All welds E70xx per §3.5 (W1–W9); grind zinc back at weld zones.",
-        "• A36 mild-steel plate; A500 Gr.B RHS. Deburr all holes.",
-        "• Datums A/B/C + tolerances: sheet 1 + §3.6.",
-        "• Hanger (A): the 2 through-bolts pass through the backing plate +",
-        "  wall + pocket back-plate — NOT the bar; 50mm clear of the seat",
-        "  for wrench access. Hex heads OUTSIDE, nuts inside.",
-        "• Brackets D/E: captive tee-nut = rectangle flush on the ply back,",
-        "  countersunk machine screw driven from the wood face.",
-        "• Ratchet-strap routing (securing) is an ops guide, not this sheet.",
-        "• Walkway arm welds to the front upright (W9) — arm detailing is",
-        "  in the walkway blueprint.",
-    ], nx0 + 12, ny0 + 355, spacing=27, fs=6.2, font=FONT, width=380)
+        "• All welds E70xx per §3.5 (W1–W8); grind zinc back at weld zones.    • A36 mild-steel plate; A500 Gr.B RHS. Deburr all holes.    • Datums A/B/C + tolerances: sheet 1 + §3.6.",
+        "• Hanger (A): the 2 through-bolts pass through the backing plate + wall + pocket back-plate — NOT the bar; 50mm clear of the seat for wrench access (hex heads OUTSIDE, nuts inside).",
+        "• Brackets D/E: captive tee-nut = rectangle flush on the ply back + a countersunk machine screw from the wood face.    • Ratchet-strap routing (securing) → stacking Sheet 2 (ops).",
+        "• Walkway arm (F): a BOLTED CLAMP — 2 clamp plates + 2× M12 through-bolts per arm, NOT a weld. The arm's own detailing is in the walkway blueprint.",
+    ], 44, -34, spacing=66, fs=6.6, font=FONT, width=1300)
 
     title_block(ax, "SHEET 4 OF 4",
                 drawing_title="IBC SUPPORT FRAME",

@@ -346,6 +346,42 @@ def _ghost_ibc_plan(ax, x, yd, w, d, *, label="", zo=2.5):
 #   - Ghost IBC outlines showing pallet/cage/bottle interface
 #   - Behind: mid and back bay uprights shown dashed
 # ═══════════════════════════════════════════════════════════════════════════════
+def _cut_list(ax, x, y):
+    """Member cut list — lengths computed from the frame geometry (Phase D, fab-grade)."""
+    ring_yd = (FAR_COL_L - FRAME_RHS) - (NEAR_COL_R + FRAME_RHS)   # Yd ring-rail clear span
+    ring_x  = FRAME_FOOTPRINT_D - FRAME_RHS                        # X ring-rail clear span
+    rows = [
+        "MEMBER CUT LIST",
+        " qty  member                section       length (mm)",
+        f"  4   upright               2×2×0.120 RHS  {TOP_Z:.0f}",
+        f"  4   ring rail (Yd)        2×2×0.120 RHS  {ring_yd:.0f}",
+        f"  4   ring rail (X)         2×2×0.120 RHS  {ring_x:.0f}",
+        f"  8   front retaining bar   50×20×3 RHS    {NEAR_COL_R:.0f}",
+        f"  4   floor foot plate      12mm A36       150×150",
+        f"  8   wall backing plate    8mm A36        60×205",
+        f"  8   wall joist hanger     4mm folded     per detail",
+        f"  8   bar→upright cleat     6mm angle      per detail",
+    ]
+    draw_notes(ax, rows, x, y, spacing=(24), fs=6.2, font=FONT, width=(1500))
+
+
+def _datum_tol_block(ax, x, y):
+    """Datum + tolerance callouts (Phase C scheme, §3.6)."""
+    rows = [
+        "DATUMS & TOLERANCES  (ISO 13920 Class B; AWS D1.1 welds)",
+        " A = 4-foot underside plane    B = front-upright faces (X4654)",
+        " C = corridor CL (Yd1181)",
+        " foot coplanarity ⟂A ......... ±1.5",
+        " upright plumb ⟂A ............ ±2 over 2296",
+        " frame diagonal square ....... ±3",
+        " foot M12 hole PCD (100) ..... ±0.5",
+        " bar-seat / hanger-pocket Z .. ±2",
+        " backing-plate M12 holes ..... ±1",
+        " corridor clear width ........ +2 / −0",
+    ]
+    draw_notes(ax, rows, x, y, spacing=(24), fs=6.2, font=FONT, width=(1500))
+
+
 def sheet1():
     """Sheet 1 — Front elevation of IBC support frame."""
 
@@ -509,7 +545,7 @@ def sheet1():
 
     leader(ax, (30), (1760 + FRAME_RHS / 2),
            (330), (1500),
-           "WALL JOIST HANGER (×8, 1/bar)\nidentical 2-bolt Simpson U-pocket,\nthrough-bolted (2× M12×65) to a 100×80×8\nEXTERIOR backing plate (hex heads out)",
+           "WALL JOIST HANGER (×8, 1/bar)\nidentical 2-bolt Simpson U-pocket,\nthrough-bolted (2× M12×65) to a 60×205×8\nEXTERIOR backing plate (hex heads out)",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
@@ -545,22 +581,26 @@ def sheet1():
     # ── Material note ───────────────────────────────────────────────────────
     notes = [
         "MATERIAL & FABRICATION NOTES (RESTRAINT-ONLY FRAME):",
-        f"1. All RHS members: 2×2×0.120in steel, A500 Grade B. Joints fillet welded (5mm leg), continuous.",
+        f"1. All RHS members: 2×2×0.120in steel, A500 Grade B. Fillet welds per §3.5 schedule (W1 upright↔ring 5mm, W2 foot↔upright 6mm, W3 cleat 4mm, W4 lashing ring 6mm), continuous / all-around.",
         f"2. RESTRAINT, not load-bearing: the 1000L caged totes DIRECT-STACK cage-on-cage (52mm headroom — no deck between tiers).",
         f"   A DEEP 4-LEG BOX (front + back upright pairs, 450mm apart, tied by top + bottom rings) at the IBC front restrains them.",
         f"3. Floor flange feet (×4): 150×150×12mm plate fillet welded to each leg base; 4× M12 anchors into the floor (uplift + lateral restraint). Front feet reach ~25mm under the tray edge.",
         f"4. Front retaining bars (×8, 2/tote face, Z500/950 + Z1500/1950 — doubled for the EN 12195-1 loaded-transport case): stop the totes sliding out the front; each bar's wall end drops into a Simpson-style wall joist",
-        f"   hanger (×8, one identical 2-bolt hanger per bar), through-bolted (2× M12×65) to a 100×80×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",
+        f"   hanger (×8, one identical 2-bolt hanger per bar), through-bolted (2× M12×65) to a 60×205×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",
         f"5. Weld-on lashing rings on the front bars (1,100 kg assembly WLL); ratchet straps over each stack tie down to them.",
         f"6. Surface finish: gray oxide primer + flat black powder coat.",
         f"7. IBC anatomy: US 48\"×40\" caged composite tote (1000L, 1168mm) — {IBC_PALLET_H}mm pallet base + HDPE bottle + galvanized wire cage.",
         f"   v2 layout: Brown/Waste bottom, Blue on top.",
         f"8. Cage top rail ({IBC_CAGE_TUBE_D}mm Ø tube) is the highest point; lashing straps bear on it.",
         f"9. IBC valve face (DN50, S60×6) points toward the corridor. Valve CL at Z={IBC_VALVE_Z}mm above each tote base.",
-        f"10. Total frame weight: ~119 kg (incl. 4 feet + rings + 8 front bars + hangers + exterior wall plates + rear-panel brackets + 4 anti-slip mats).",
+        f"10. Total frame weight: ~123 kg (incl. 4 feet + rings + 8 front bars + 8 hangers + 8 exterior plates + rear-panel brackets + 4 anti-slip mats).",
     ]
     draw_notes(ax, notes, (2500), (TOP_Z + 600), spacing=(23),
                fs=7, font=FONT, width=(2200))
+
+    # ── Member cut list + datum/tolerance block (Phase D, fab-grade) ──────────
+    _cut_list(ax, (-260), (TOP_Z + 600))
+    _datum_tol_block(ax, (-260), (TOP_Z - 340))
 
     # ── Title block ─────────────────────────────────────────────────────────
     title_block(ax, "SHEET 1 OF 3",
@@ -698,7 +738,7 @@ def sheet2():
 
     leader(ax, (FX_FRONT + FRAME_RHS), (1760),
            (FX_FRONT + FRAME_RHS + 70), (1760 + 120),
-           "FRONT RETAINING BARS\n(end-on) — Z560 + Z1760,\nslide-stop + lashing",
+           "FRONT RETAINING BARS\n(end-on) — Z500/950 + Z1500/1950,\nslide-stop + lashing",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
@@ -713,7 +753,7 @@ def sheet2():
          "   headroom). Restraint = box + front retaining bars + lashing.",
          "3. Each upright base (×4): 150×150×12mm floor flange plate, 4× M12 anchors;",
          "   the front feet reach ~25mm under the tray edge.",
-         "4. Front retaining bars (Z560 + Z1760) stop the totes sliding out the",
+         "4. Front retaining bars (Z500/950 + Z1500/1950) stop the totes sliding out the",
          "   front; wall ends drop into Simpson-style joist hangers.",
         f"5. RIGHT-WALKWAY CANTILEVER ARMS (rev12): 2× 2×1×0.120in steel clamp to the",
          "   FRONT box uprights and project off the front to carry the walkway.",

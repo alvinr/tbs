@@ -90,11 +90,21 @@ text), authoritative voice, each capacity/coefficient cited.
 - [x] **Weld schedule W1–W5** (report §3.5, sized in `ibc_frame_load.py`): W4 lashing-ring→bar 6 mm fillet (SF 9.1 vs strap WLL) + W3 cleat→upright 4 mm (SF 37) are load-checked; W1 upright↔ring 5 mm, W2 foot↔upright 6 mm, W5 hanger-seat↔pocket 4 mm are AWS D1.1 minimum practical fillets (frame load << capacity). Hangers are folded (not welded); backing plates loose (bolted).
 - [x] Added as tables in `ibc-stacking-report.md` §3.5. (A dedicated fastening/weld detail SHEET is deferred to Phase D.)
 
-## Phases C–E — deferred (second pass)
+## Phase C — Datum + tolerance scheme — DONE 2026-08-14
 
-- **C — Datum + tolerance scheme:** datums (A = 4-foot floor plane, B = front-upright faces, C = corridor CL) + tolerances (upright plumb, ring level, foot coplanarity, hole PCDs, diagonal square, hanger-pocket position) + GD&T.
-- **D — Fab-detail sheets:** member cut list; foot-plate / wall-hanger fold / backing-plate hole-pattern / lashing-ring-position details; weld map. Verify vs `ibc-stack.skp` (`check_consistency.py`).
-- **E — Cascade + close:** firm any spec change into `parts.py`/`costing.py`/BOM/master-shopping-list; regenerate + gallery-register any new sheet; re-send `ibc-stack.skp` only if geometry detail changed; `lint.py`; RELEASE `[Unreleased]`; TODO.
+- [x] Report §3.6: datums **A** (4-foot underside plane), **B** (front-upright faces X4654), **C** (corridor CL Yd1181) + functional tolerances (foot coplanarity ±1.5, upright plumb ±2/2296, diagonal square ±3, foot M12 PCD ±0.5, bar-seat/hanger Z ±2, backing-plate holes ±1, corridor width +2/−0); general = ISO 13920 Class B, welds AWS D1.1.
+- [x] The scheme is also drawn on `ibc-frame-sheet1` as a DATUMS & TOLERANCES callout block.
+
+## Phase D — Fab-detail sheets — CORE DONE 2026-08-14 (detail insets pending)
+
+- [x] **Member cut list** — drawn on `ibc-frame-sheet1` (4 uprights @2296, ring rails, 8 bars @1046, 4 feet, 8 backing plates @60×205, 8 hangers, 8 cleats), lengths computed from the frame constants.
+- [x] **Datum + tolerance callout block** on sheet1 (from §3.6); weld-schedule (§3.5 W1–W5 leg sizes) folded into the fab notes.
+- [x] Stale-value cleanup: sheet labels/notes 100×80→60×205, ~119→~123 kg, bar Z560/1760→Z500/950+1500/1950.
+- [ ] **Remaining (Phase D refinement):** dedicated detail INSETS — wall-hanger fold pattern, exterior backing-plate hole pattern, bar→upright cleat, lashing-ring weld position (the foot-plate inset already exists); an optional rendered load-case sheet. Verify each vs `ibc-stack.skp`.
+
+## Phase E — Cascade + close (as changes land)
+
+- Firm any spec change into `parts.py`/`costing.py`/BOM/master-shopping-list; regenerate + gallery-register any new sheet; re-send models only if geometry detail changed; `lint.py`; RELEASE `[Unreleased]`; TODO. (Ongoing — done for A/B/C/D-core.)
 
 ## Open decisions
 

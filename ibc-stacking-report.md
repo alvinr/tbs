@@ -187,6 +187,32 @@ Torque sources: M12 8.8 zinc/dry ≈ 88 N·m ([Fastenal torque-tension, K = 0.20
 
 The wall joist hangers are **folded** 4 mm plate (bent, not welded); the exterior backing plates are loose (bolted, not welded).
 
+### 3.6 Datum + Tolerance Scheme
+
+The frame is a welded structure, so tolerances follow **ISO 13920 Class B** (general tolerances for welded
+constructions) for linear/angular, and **AWS D1.1** for the welds; the values below are the functional
+tolerances that actually matter for fit-up.
+
+**Datums:**
+
+- **A (primary)** — the common plane of the four floor-foot undersides. The frame is set and shimmed to A; everything references off it (it sits on the container floor).
+- **B (secondary)** — the front-upright front faces (X = 4,654 mm, the corridor mouth). References the retaining-bar / hanger X positions and the walkway-arm clamp point.
+- **C (tertiary)** — the corridor centerline (Yd = 1,181 mm, midway between the two tote columns). Symmetry reference for the columns and the 270 mm plumbing corridor.
+
+**Functional tolerances:**
+
+| Feature | Tolerance | Why |
+|---------|-----------|-----|
+| Foot-underside coplanarity (flatness ⟂ A) | ±1.5 mm | frame sits flat on the floor, minimal shim |
+| Upright plumb (perpendicularity to A) | ±2 mm over 2,296 mm (≈0.05°) | totes + corridor stay square |
+| Frame diagonal square (Δ of the two diagonals) | ±3 mm | a true rectangular box |
+| Foot-plate M12 hole pattern (100 mm PCD) | ±0.5 mm | floor-anchor clearance |
+| Front-bar seat / hanger-pocket Z position | ±2 mm | bars seat cleanly + the wall holes align |
+| Exterior backing-plate M12 holes (to its hanger) | ±1 mm | M12×65 through-bolt clearance |
+| Corridor clear width (between the inner uprights) | +2 / −0 mm | the 270 mm plumbing corridor must not pinch |
+
+General (unspecified) dimensions: ISO 13920 Class B. Break sharp edges; deburr all drilled holes.
+
 ---
 
 ## 4. Securing for Transport

@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **IBC frame blueprint Phase C + D-core: datum/tolerance scheme + fab-sheet detailing.** Report §3.6
+  adds the datum scheme (A = 4-foot plane, B = front-upright faces, C = corridor CL) + functional
+  tolerances (foot coplanarity ±1.5, upright plumb ±2/2296, diagonal square ±3, hole PCDs, corridor width
+  +2/−0; general ISO 13920 Class B, welds AWS D1.1). `ibc-frame-sheet1` now carries a **member cut list**
+  (lengths computed from the frame constants) + a **DATUMS & TOLERANCES** callout block, and the fab notes
+  fold in the §3.5 weld schedule. Cleaned stale sheet literals (100×80→60×205 backing plate, ~119→~123 kg,
+  bar Z560/1760→Z500/950+1500/1950). Remaining Phase-D refinement (dedicated hanger-fold / backing-plate /
+  cleat / lashing-ring detail insets) tracked in `ibc-frame-blueprint-spec.md`.
+
 - **IBC frame blueprint Phase B: fastener + weld schedule.** Added `ibc-stacking-report.md` §3.5 — every
   bolted joint (J1 floor self-drillers ×16 driven-to-seat; J2 bar→upright cleat M12×40 A2-70 ×16 @ ~50 N·m
   + anti-seize; J3 wall-hanger through-bolt M12×65 Gr.8.8 ×16 @ ~90 N·m) with grade/torque/washer/locking,

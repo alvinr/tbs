@@ -24,6 +24,23 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **IBC stacking frame — blueprint Phase A: EN 12195-1 transport-restraint validation + redesign.** Took
+  the IBC restraint frame from a qualitative "it's trapped" note to a computed load case
+  (`ibc_frame_load.py`, new). The camera runs **self-contained**, so it transports **with water aboard** —
+  the [EN 12195-1:2010](https://cdn.standards.iteh.ai/samples/32961/4592590bcf194f1a8ffa917a5db7d258/SIST-EN-12195-1-2011.pdf)
+  loaded case (0.8 g forward braking, a full 965 kg top tote) governs. The single 50×20×3 front bar is
+  weak-axis (20 mm in the load direction, film-rail-slot-limited) and **fails (bending SF 0.79)**. Redesign
+  **R5**: **two 50×20×3 bars per tote face** (4→8) **+ certified anti-slip matting** (μ 0.2→0.6) **+ 2
+  straps/stack** → bar **SF 1.59 bar-alone / 4.77 with the mat**, all downstream elements SF ≥ 8, drained
+  state SF ≥ 12. Fab-detailed the restraint in the 3D model: bars **butt** the corridor uprights + the
+  wall-hanger back plates (cleated joints read as joined, not one continuous piece); **8 identical per-bar
+  2-bolt wall hangers** (16 through-bolts = same 16 wall penetrations as before) with the bolts stacked
+  vertically, **50 mm clear of the seat** for wrench access; the pair spread ~450 mm so each hanger has
+  room. Cascaded through `tbs_constants` (IBC_FRONT_BAR_*), the 3D `tote_restraint()` (5 models re-sent),
+  the weight model (frame 90→123 kg), `parts.py` (+anti-slip mat, 8 hangers + 8 backing plates) + costing
+  (+$78/$146 ibc-frame), the ibc-frame/ibc-stacking 2D sheets, and `ibc-stacking-report.md` §3.2/§3.4. New
+  tracking doc `ibc-frame-blueprint-spec.md`; Phase B (fastener + weld schedule) next.
+
 - **IBC equipment panel top dropped to open the Fan A air path.** The corridor equipment panel (18mm
   rear ply + 25mm pump-mount shirt) was capped at Z2191/2256, blocking airflow through the panel to the
   sealed-end Fan A exhaust. Dropped **both plies to Z1900** — the underside of the Fan A baffle window

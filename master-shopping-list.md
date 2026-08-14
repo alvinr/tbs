@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,271 | $4,673 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,606 | $7,785 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,684 | $7,931 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$26,515** | **~$34,633** |
+| **TOTAL (base build + 50-print run)** | **~$26,593** | **~$34,779** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -336,12 +336,13 @@ indicative low–high estimates — get quotes before ordering.
 |------|-----|----------|---------|-----------|
 | [20mm EPDM gasket (per meter, closed-cell)](https://www.amazon.com/dp/B089GJQ96Z) (B089GJQ96Z) | 21 m | Amazon (OKAYASU) | panel | $24–$52 |
 | [Black EPDM foam tape 1"×½"](https://www.mcmaster.com/8694K88/) (8694K88) | 2 roll | McMaster-Carr | film | $45 |
+| Certified anti-slip cargo matting (μ≥0.6) | 4 ea | Uline / cargo-securing supplier | ibc-frame | $40–$80 |
 | [Felt/brush wiper strip + 12mm closed-cell neoprene](https://www.doitbest.com/product/146005/) (BP17A) | 1 lot | Frost King + Canal Rubber | lightlock | $40–$75 |
 | Light-sealing materials (interior conversion) | 1 lot | Amazon (bundle) | interior | $157–$178 |
 | Ribbed-wall flashing + silicone (power-panel box seal) | 1 lot | Hardware store | electrical | $15–$30 |
 | [Silicone gasket strip](https://www.countrymax.com/aqueon-silicone-clear-aquarium-sealant-10oz-bottle/) (015952) | 1 ea | CountryMax (Aqueon) | tray | $17–$25 |
 | [Tight-seal nylon strip brush + aluminum holder (~4.7 m, top + bottom)](https://www.mcmaster.com/74405T12-74405T126/) (74405T12) | 1 lot | McMaster-Carr | door | $129 |
-| **seals-gaskets subtotal** | | | | **$426–$533** |
+| **seals-gaskets subtotal** | | | | **$466–$613** |
 
 ### stainless-sheet
 
@@ -364,7 +365,7 @@ indicative low–high estimates — get quotes before ordering.
 | [3/8" 304/304L SS rod — U-joint stub shafts (1× 3 ft)](https://www.mcmaster.com/89535K87/) (89535K87) | 1 lot | McMaster-Carr | film | $13 |
 | 304 flat-bar Z (tilt) + X (swing) cross-slides + UHMW pad + gib | 4 set | Metal Supermarkets | film | $316–$516 |
 | [304 SS square tube 1½×1½×0.062in, single 17ft4in *](https://www.metalsdepot.com/stainless-steel-products/304-stainless-steel-square-tube) | 1 ea | Metals Depot | spray | $183 |
-| 4mm folded plate | 4 ea | Local fab | ibc-frame | $30–$50 |
+| 4mm folded plate | 8 ea | Local fab | ibc-frame | $60–$100 |
 | 75mm Ø × 150mm steel stub shaft | 2 ea | Steel service center | lightlock | $30–$50 |
 | Baffle duct sheet metal (cooler) | 1 lot | Local sheet metal | ventilation | $20 |
 | Baffle duct sheet metal (fans) | 1 lot | Local sheet metal | ventilation | $30 |
@@ -385,7 +386,7 @@ indicative low–high estimates — get quotes before ordering.
 | Shelf mount backing plates, 8mm steel (welded, ×3) | 3 ea | Local fab | shelf | $18–$30 |
 | Shutter plate (⅛ steel 10×8) + slide channel | 1 ea | Local fab | optics | $25–$50 |
 | Skate carriage plate (×4) — fab | 4 ea | Local fab | film | $136–$236 |
-| Steel backing plate 100×135×8mm | 4 ea | Metal Supermarkets | ibc-frame | $24–$40 |
+| Steel backing plate 60×205×8mm | 8 ea | Metal Supermarkets | ibc-frame | $32–$56 |
 | Steel backing plate 6×6×⅛ + welded frame | 1 ea | Metal Supermarkets | optics | $20–$40 |
 | [Steel flat bar 25×3mm — ribbon support cross-brace](https://www.mcmaster.com/6775T37-6775T373/) (6775T37) | 2 3ft bar | McMaster-Carr | water | $35 |
 | Transition bearing plate | 2 ea | Local fab | walkway | $5–$10 |
@@ -394,7 +395,7 @@ indicative low–high estimates — get quotes before ordering.
 | Wall-seat saddle 10mm A36 plate (ICP-11) | 1 sheet | Metal Supermarkets | film | $102 |
 | Wall-seat saddle 8mm A36 plate (ICP-11) | 1 sheet | Metal Supermarkets | film | $216 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$3,363–$4,769** |
+| **steel-structural subtotal** | | | | **$3,401–$4,835** |
 
 ### substrate-fabric
 
@@ -447,9 +448,9 @@ indicative low–high estimates — get quotes before ordering.
 
 | Supplier | Line items | Types | Est. cost |
 |----------|-----------|-------|-----------|
+| Local fab | 19 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,160–$3,522 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
-| Local fab | 19 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,130–$3,472 |
-| Metal Supermarkets | 14 | aluminum, fasteners-hardware, steel-structural | $2,109–$2,627 |
+| Metal Supermarkets | 14 | aluminum, fasteners-hardware, steel-structural | $2,117–$2,643 |
 | Amazon | 34 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,106–$2,156 |
 | Home Depot | 57 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,806–$1,943 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
@@ -486,6 +487,7 @@ indicative low–high estimates — get quotes before ordering.
 | Hardware store | 3 | adhesives-finishes, seals-gaskets | $57–$92 |
 | StrongAr Hardware | 1 | fasteners-hardware | $70–$90 |
 | HitLights | 1 | electrical-distribution | $75–$85 |
+| Uline / cargo-securing supplier | 1 | seals-gaskets | $40–$80 |
 | Frost King + Canal Rubber | 1 | seals-gaskets | $40–$75 |
 | TAP Plastics | 1 | plastics-sheet | $30–$70 |
 | B&H Photo | 1 | fabric-textile | $69 |

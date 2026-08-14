@@ -697,6 +697,14 @@ WASTE_IBC_Y = IBC_FAR_Y   # Waste is directly below Blue #2 (same Y column)
 # These mirror src/models/generate_sketchup_model.py → ibc_rack().
 IBC_FRAME_RHS      = 50.8  # 2×2×0.120in steel SHS (50.8mm; #26 — 50mm nominal isn't stock, 2in is)
 IBC_FRAME_T        = 3     # RHS wall thickness (mm) ≈ 0.120in — reserved (spec; not yet drawn)
+# Front transport-restraint bars (50×20×3 RHS) — TWO per tote face (upper + lower), both in the
+# ~25mm film-rail slot at X4654. Doubled from 1/tier after the EN 12195-1 load case (ibc_frame_load.py):
+# a single weak-axis bar fails the loaded-transport case (SF 0.79); two bars share the face load →
+# SF 1.59 bar-alone / 4.77 with anti-slip mat. See ibc-frame-blueprint-spec.md §Phase A.
+IBC_FRONT_BAR_D    = 20    # bar depth in the -X (forward) load direction (mm) — slot-constrained
+IBC_FRONT_BAR_W    = 50    # bar width, vertical (mm)
+IBC_FRONT_BAR_T    = 3     # bar wall thickness (mm)
+IBC_FRONT_BAR_N_PER_TIER = 2   # bars per tote face (upper + lower) — R5
 # Floor feet — one under each of the 4 corridor uprights
 IBC_FOOT_PLATE     = 150   # square floor flange plate side (mm)
 IBC_FOOT_PLATE_T   = 12    # flange plate thickness (mm)

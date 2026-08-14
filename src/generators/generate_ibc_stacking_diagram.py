@@ -61,7 +61,7 @@ FRAME_PLATFORM_H  = 1060  # platform height (1010 + 50mm clearance plate)
 FRAME_PLATFORM_T  = FRAME_RHS  # platform beam depth = RHS size
 FRAME_LIP_H    = 40     # anti-rotation lip height above platform
 FRAME_LIP_T    = 5      # lip thickness (steel plate)
-FRAME_WEIGHT   = 90     # kg (restraint deep 4-leg box: 4 uprights + rings + 4 feet + front bars + hangers + exterior wall plates); see weight-distribution-report §3.3
+FRAME_WEIGHT   = 119    # kg (restraint deep 4-leg box: 4 uprights + rings + 4 feet + front bars + hangers + exterior wall plates); see weight-distribution-report §3.3
 
 # D-ring lashing
 DRING_SIZE     = 25     # D-ring strap width (mm)
@@ -225,16 +225,17 @@ def sheet1():
     for col_l, col_r in [(BLUE_IBC_Y, near_col_r), (IBC_FAR_Y, IBC_FAR_Y + IBC_D)]:
         ax.plot([(col_l), (col_r)], [(junction_z)] * 2, color=C_OUT, lw=2.2, zorder=8)
 
-    # Front retaining bars (foreground, at the IBC front) + wall hangers + D-ring holders.
-    for bz in (560, 1760):
+    # Front retaining bars — TWO per tote face (4 levels) + wall hangers + D-ring holders.
+    for bz in (500, 950, 1500, 1950):
         for y0, y1 in ((0, near_col_r + FRAME_RHS), (far_col_l - FRAME_RHS, C_WID)):
             ax.add_patch(Rectangle(((y0), (bz)), (y1 - y0), (FRAME_RHS),
                                    fc=C_STEEL, ec=C_OUT, lw=1.0, hatch="xx", zorder=9, alpha=0.6))
+    for bz in (500, 950, 1500, 1950):   # wall hangers — one identical 2-bolt hanger per bar
         for wyd, din in ((0, 1), (C_WID, -1)):
             ax.add_patch(Rectangle(((min(wyd, wyd + din * 60)), (bz - 8)), (60),
                                    (FRAME_RHS + 16), fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=10, alpha=0.9))
     for ydh in (520, C_WID - 520):
-        for bz in (560, 1760):
+        for bz in (500, 1500):
             ax.add_patch(Circle(((ydh), (bz + FRAME_RHS / 2)), (15),
                                 fc="none", ec=C_STEEL, lw=2.0, zorder=11))
 
@@ -248,7 +249,7 @@ def sheet1():
            color=C_FRAME, fs=6, ha="left", va="bottom", arrow_style="-|>", font=FONT)
     leader(ax, (near_col_r + FRAME_RHS), (1760 + FRAME_RHS / 2),
            (near_col_r - 90), (1980),
-           "FRONT RETAINING BARS (x4)\nZ560 + Z1760 — slide-stop +\nD-ring lashing; wall ends drop\ninto Simpson joist hangers",
+           "FRONT RETAINING BARS (x8, 2/tier)\nZ500/950 + Z1500/1950 — slide-stop +\nD-ring lashing; wall ends drop\ninto Simpson joist hangers",
            color=C_STEEL, fs=6, ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Dimension lines ───────────────────────────────────────────────────────
@@ -298,7 +299,7 @@ def sheet1():
         f"3. RESTRAINT-ONLY frame: a DEEP 4-LEG BOX (front + back upright pairs, 450mm apart, tied by top + bottom rings) on {IBC_FOOT_PLATE}x{IBC_FOOT_PLATE}x{IBC_FOOT_PLATE_T} floor flange feet",
         f"   ({IBC_FOOT_BOLT_N}x M12 each). The totes DIRECT-STACK (no deck) so no platform/wall-seat brackets are needed. ~{FRAME_WEIGHT}kg.",
         f"4. {IBC_GAP}mm plumbing corridor between columns for internal pipe routing.",
-        "5. Front retaining bars (4x, Z560 + Z1760) at the IBC front stop the totes sliding out; wall ends drop into Simpson-style joist hangers.",
+        "5. Front retaining bars (8x, 2/tote face, Z500/950 + Z1500/1950 — doubled for the EN 12195-1 loaded-transport case) at the IBC front stop the totes sliding out; wall ends drop into Simpson-style joist hangers.",
         f"6. D-ring lashing holders on the front bars ({DRING_WLL}kg WLL); ratchet straps over each stack tie down to them.",
         f"7. Corridor Plumbing Panel moved forward to the corridor mouth for operator access (see Sheets 3-5).",
     ]

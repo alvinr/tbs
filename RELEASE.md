@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **IBC frame Sheet 4 — third review pass (A/B/D/F).** DETAIL A: the wall-hanger weld is reassigned to
+  the PLATE weldment (seat↔pocket back-plate, W5) and the retaining bar is now **bolted** to the pocket
+  (new fastener **J7**, an M12 retention bolt — 1 per bar × 8), so the bar is removable, not welded, to
+  the hanger (+8× M12×40 in the BOM, +$12). DETAIL B: added a jagged break so the bar reads as continuing
+  to the wall hanger. DETAIL D: where-used note made specific (3 per back upright × 2 = 6; see Sheet 2/3).
+  DETAIL F: added a **PLAN SECTION** (top-down) beside the elevation so it lines up with the 3D model, and
+  corrected the clamp bolt pitch label (was 112 mm → **~37 mm**, matching `ibc_cantilever_arms`). Report
+  §3.5 gains J7 + the W5 clarification.
+
 - **IBC frame Sheet 4 — DETAIL F: walkway arm → front-upright connection.** Added the sixth detail inset:
   how each right-walkway cantilever arm attaches to a front corridor upright. Corrected from an assumed
   weld to the ACTUAL design (per `ibc_cantilever_arms`) — a **bolted clamp**: 2 clamp plates wrap the

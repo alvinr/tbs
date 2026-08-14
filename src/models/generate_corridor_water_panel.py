@@ -196,38 +196,52 @@ def tote_restraint():
     forked).  Lives with the IBC stack, not the pump frame."""
     p = []
     front_x = ov.IBC_COL_X - 20            # 4654 — bars in the gap just in front of the tote face
-    bar_d, bar_zs = 20, (560, 1760)        # 50×20×3 RHS bars, two tiers
-    # Bars span the full width in two segments, clearing the central plumbing-corridor opening.
-    for y0, y1 in ((0, YD_NEAR + S), (YD_FAR - S, ov.C_WID)):
+    bar_d = ov.IBC_FRONT_BAR_D             # 20 — 50×20×3 RHS, slot-constrained depth in -X
+    # TWO bars per tote face (upper + lower), both in the slot → share the forward thrust (EN 12195-1
+    # loaded case: 1/tier fails SF 0.79, 2/tier gives SF 1.59 bar-alone / 4.77 with anti-slip mat).
+    bar_zs = (500, 950, 1500, 1950)        # bottom tier (500,950) + top tier (1500,1950); each bar has its
+    #   OWN hanger, so the pair is spread ~450mm to give each hanger's straddling bolts wrench clearance
+    tier_zs = (500, 1500)                  # lower bar of each tier — D-ring reference
+    hp_t = 4                               # wall-hanger back-plate thickness (Yd) — bars butt it, not the wall
+    # Bars BUTT the corridor uprights (corridor end) AND the wall-hanger back plates (wall end) — each bar
+    # ends at its mating face, not overlapping through, so both the cleated + hung joints read as joined.
+    for y0, y1 in ((hp_t, YD_NEAR), (YD_FAR, ov.C_WID - hp_t)):
         for bz in bar_zs:
             p.append(ov.ruby_box("Front Retaining Bar", front_x, y0, bz, bar_d, y1 - y0, S, color=ov.C_STEEL))
-    # D-ring lashing holders on the front bars — 4 per tier × 2 tiers = 8 (matches ibc-frame drawing §4.1);
-    # 2 per bar segment, straddling the central plumbing-corridor gap.
+    # D-ring lashing holders — 4 per tier × 2 tiers = 8 (matches ibc-frame drawing §4.1); on the LOWER
+    # bar of each tier (one per tier) so the ring count stays 8 despite the doubled bars.
     for ydh in (520, 940, 1422, ov.C_WID - 520):
-        for bz in bar_zs:
+        for bz in tier_zs:
             p.append(ov.ruby_cylinder("D-Ring Holder", front_x - 6, ydh, bz + S / 2, 16, 10,
                                       color=ov.C_STEEL, axis="x"))
-    # Wall joist hangers + exterior backing plates (4× M12×65 through-bolts) at each bar wall-end.
-    # (The bolt is drawn as a generic through-bolt cylinder; the M12×65 length spec lives in the
-    #  2D drawings + parts.py — a 7mm visual bump isn't worth re-sending 5 models.)
-    ext_pt, ext_pw, ext_ph = 8, 100, 135
+    # Wall joist hangers — ONE identical 2-bolt hanger per bar (symmetric pair, fab-identical), each
+    # through-bolted (2× M12×65) to its own exterior backing plate. 8 hangers × 2 bolts = 16 wall
+    # penetrations (same as the old 4 hangers × 4 bolts); each bar-end carries only ¼ of the tote
+    # thrust (~1.8 kN loaded) so a 2-bolt hanger runs SF ~9 (ibc_frame_load.py). The bolt is drawn as
+    # a generic through-bolt cylinder; the M12×65 length spec lives in the 2D drawings + parts.py.
+    # Backing plate is TALL (rotated 90°): the 2 through-bolts stack VERTICALLY, one ≥50mm BELOW the seat
+    # and one ≥50mm ABOVE the bar, so there is wrench clearance to tighten them (the natural joist-hanger
+    # pattern). The pocket back-plate + exterior backing plate both grow to span the bolt pair.
+    ext_pt, ext_pw = 8, 60                 # backing plate: 8 thick (Yd), 60 wide (X)
     for wall_yd, din in ((0, 1), (ov.C_WID, -1)):
-        for bz in bar_zs:
-            ht, dep = 4, 70
+        for bz in bar_zs:                  # 8 identical hangers — one per bar
+            ht, dep = hp_t, 70
+            bolt_lo = bz - 61             # bottom bolt: 50mm clear GAP below the seat (seat = bz-4..bz)
+            bolt_hi = bz + S + 57          # top bolt: 50mm clear GAP above the bar top (bz+S)
+            plate_z0 = bolt_lo - 18        # plate spans both bolts + edge margin (~191mm tall)
+            ext_ph = (bolt_hi + 18) - plate_z0
             p_y = wall_yd if din > 0 else wall_yd - ht
             s_y = wall_yd if din > 0 else wall_yd - dep
-            p.append(ov.ruby_box("Wall Hanger Plate", front_x - 8, p_y, bz - 30, S + 16, ht, S + 70, color=ov.C_STEEL))
+            p.append(ov.ruby_box("Wall Hanger Plate", front_x - 8, p_y, plate_z0, S + 16, ht, ext_ph, color=ov.C_STEEL))
             p.append(ov.ruby_box("Wall Hanger Seat", front_x - 4, s_y, bz - ht, S + 8, dep, ht, color=ov.C_STEEL))
             ecx = front_x - 8 + (S + 16) / 2
-            ecz = bz + S / 2
             plate_y = (-ov.WALL_T - ext_pt) if din > 0 else (ov.C_WID + ov.WALL_T)
             bolt_cy = (-ov.WALL_T - ext_pt) if din > 0 else (ov.C_WID - 10)
             p.append(ov.ruby_box("IBC Wall Backing Plate (ext)",
-                                 ecx - ext_pw / 2, plate_y, ecz - ext_ph / 2, ext_pw, ext_pt, ext_ph, color=ov.C_STEEL))
-            for dx in (-ext_pw / 2 + 18, ext_pw / 2 - 18):
-                for dz in (-ext_ph / 2 + 22, ext_ph / 2 - 22):
-                    p.append(ov.ruby_cylinder("IBC Wall Through-Bolt M12", ecx + dx, bolt_cy, ecz + dz, 7, 58,
-                                              color=C_BOLT, axis="y"))
+                                 ecx - ext_pw / 2, plate_y, plate_z0, ext_pw, ext_pt, ext_ph, color=ov.C_STEEL))
+            for bolt_z in (bolt_lo, bolt_hi):   # 2 through-bolts, ≥50mm clear of the bar + seat
+                p.append(ov.ruby_cylinder("IBC Wall Through-Bolt M12", ecx, bolt_cy, bolt_z, 7, 58,
+                                          color=C_BOLT, axis="y"))
     return "\n".join(p)
 
 

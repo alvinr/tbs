@@ -13,6 +13,21 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ## 🛠 Tooling / infra
 
+- [ ] **Solid-joint seam audit + butt-vs-weld convention (3D readability).** Overlapping same-color solid
+  members render with NO seam line, so distinct parts read as one fused piece (found 2026-08-14 at the IBC
+  retaining-bar → corridor-upright joint — the bar ran *through* the post). This is a general 3D issue, but
+  it can't be a blanket "no overlaps" rule: interpenetration is intentional for **welded** joints (a weld
+  fuses → continuous is correct) and for fasteners sunk in plates. The distinction is **semantic (weld vs
+  bolt), not geometric**. **Plan:** (1) extend `check_interference.py` with a `--solids` pass that lists
+  SAME-material solid↔solid overlaps above a volume threshold (excluding fasteners) as a review WARNING —
+  reuses the existing AABB machinery; triage each as weld (leave) vs bolted/cleated (butt it). (2) Codify the
+  convention in the model skill: **bolted/cleated joints BUTT** (member ends at the mating face → visible
+  seam), **welded joints MAY overlap** (reads continuous). Not an auto-fix ("Intersect Faces" everywhere
+  over-draws + mangles the generated geometry). (Alvin 2026-08-14.)
+
+- [ ] **Explore the Sketchfab Data API (Python) to automate model re-upload.** [Sketchfab Data API v3 — Python](https://sketchfab.com/developers/data-api/v3/python).
+  Today the single-writer protocol ends with ALVIN manually re-uploading each `.skp` to Sketchfab (same model UID). Investigate driving that upload programmatically (PATCH/upload to the existing model UID via the Data API + a token), so a re-send could optionally push to Sketchfab without the manual step. Respect the single-writer rule (ALVIN still saves the `.skp`); the API would replace only the *upload* leg. Prereqs: API token handling, per-model UID already lives in `dependencies.yml` (`push_sketchfab.py` reads it), verify the API supports replacing a model's source file in place.
+
 - [x] **Reconcile the `project-cost-breakdown.md` §5 water-system breakdown table to `costing.py` — DONE 2026-08-05.** Root cause: `costing._render_detail` is a POSITIONAL value fill (keeps the doc's hand-edited labels, rewrites value cells from `WATER[di]` by row index). Inserting the pinhole-wall ply as `WATER` item #5 shifted every value from #5 on up by one row while the doc kept 13 labels — so labels/values misaligned and the last item ($257 consumables) fell off the bottom (TOTAL≠sum by $257). Fix = insert the missing **ply label row** at position 5, then `--inject` refilled all 14 values correctly (Filter skid $541, Valves $922, Pipe $84, tray $1,473/$2,121, spray $584/$596, consumables $257). Rows now sum to $6,579/$7,730 = the TOTAL; "table arithmetic" lint [OK].
 
 - [x] **SketchUp generator memory balloons over repeated `--send` — INVESTIGATED 2026-08-10, NOT a code bug ([sketchup-memory-investigation.md](sketchup-memory-investigation.md)).** The "Ruby allocations not being freed" hypothesis is **falsified end-to-end**: the plugin evals each script in an isolated `TOPLEVEL_BINDING.dup` (locals don't persist across sends — verified `cross_call_local: "isolated"`), our generated `.rb` creates **zero** globals/constants/closures, Ruby `heap_live` stays flat (~80k–250k slots) across 12 re-sends, and `purge_unused` leaves 0 orphan defs. The bloat is **SketchUp's C++ allocator high-water-marking** — it retains freed pages (session peak 4.2 GB; an *empty* model after File>New still holds 2.5 GB) and `GC`/`purge_unused`/document-close do **not** reclaim it. DC observers exonerated (Test D: `dc_defs`/timers/observers all flat). **Only quitting/restarting SketchUp reclaims it.** No code fix; the mitigation is workflow — **restart SketchUp during heavy send sessions** (gauge: `footprint -p <pid>`), and prefer a small/targeted model when iterating. (Alvin 2026-08-05, resolved 2026-08-10.)
@@ -185,6 +200,20 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   skate (keeper/capture rollers react tip-force vs gravity). 3D model reworked flat→web-vertical (verified:
   film 160–2252 = 2092mm ≈ FP_H 2094; no FP_H change — the flat model was over-drawing 38mm); Sheet 3 guide note.
   (Sheet 10 was tried as a separate guide sheet then reverted — wrong wheels + redundant with Sheet 3.)
+
+### IBC stacking frame (SECOND subsystem — tracking doc `ibc-frame-blueprint-spec.md`)
+
+- [x] **Phase A — EN 12195-1 transport-restraint validation + redesign — DONE 2026-08-14.** `ibc_frame_load.py`
+  (new) computes the load case; the self-contained camera transports **loaded** (965 kg top tote, 0.8 g fwd)
+  → the single weak-axis 50×20×3 front bar **fails (SF 0.79)**. Redesign **R5** (Alvin): **2 bars/tote face**
+  (4→8) **+ certified anti-slip mat** (μ 0.2→0.6) **+ 2 straps/stack** → SF 1.59 bar-alone / 4.77 w/ mat.
+  Cascaded: constants, 3D `tote_restraint()` (5 models re-sent), weight (90→119 kg), parts (+mat) + costing
+  (+$40/$80), 2D ibc-frame/ibc-stacking sheets, report §3.2/§3.4 (computed table + citations).
+- [ ] **Phase B — fastener + weld schedule.** J1…Jn (bolt size/grade/torque/washer/locker: foot anchors,
+  cleat M12×40, wall-hanger M12×65, backing-plate) + W1…Wn (fillet leg + symbol + all-around/stitch:
+  uprights↔rings, feet↔uprights, bars↔cleats, ring→bar, hanger folds; from the Phase-A weld-throat demand).
+- [ ] **Phases C–E (deferred):** datums/tolerances (GD&T); fab-detail sheets (member cut list, foot/hanger/
+  backing-plate details, weld map, verify vs `ibc-stack.skp`); optional rendered load-case sheet.
 
 ## Weight model — film-plane moving mass undercounts the ACM backing — DONE 2026-07-25
 

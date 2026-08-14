@@ -335,10 +335,12 @@ def _ibc_stacking_frame_weight():
       • top + bottom rings (butt-jointed Yd-rails + X-rails tying the 4 legs)
       • 4 floor flange feet, 150×150×12mm + 16 M12 anchors (front feet under the tray)
       • 6 rear-panel mount brackets on the back uprights
-      • front retaining bars (4: 2 columns × 2 tiers, 50×20×3 RHS) trap the totes
-      • 4 Simpson-style wall joist hangers (carry the front-bar wall ends),
-        through-bolted to 4 exterior backing plates (100×135×8mm) + 16 M12 bolts
-    Total ≈ 90 kg (was ~178 kg for the retired 8-upright load-bearing rack).
+      • front retaining bars (8: 2 bars/face × 2 tiers × 2 columns, 50×20×3 RHS) trap the totes
+        — doubled from 4 after the EN 12195-1 loaded-transport case (ibc_frame_load.py)
+      • 8 identical 2-bolt Simpson-style wall joist hangers (one per bar), through-bolted to 8
+        exterior backing plates (60×205×8mm) + 16 M12 bolts (wall penetrations unchanged)
+      • 4 certified anti-slip mats under the tote interfaces (raise μ 0.2→0.6)
+    Total ≈ 115 kg (was ~178 kg for the retired 8-upright load-bearing rack).
     """
     rhs   = 4.4                                    # 2×2×0.120in steel, kg/m (#26)
     barhs = 3.07                                   # 50×20×3 RHS front bars, kg/m
@@ -350,13 +352,14 @@ def _ibc_stacking_frame_weight():
     feet_kg = 4 * (0.150 * 0.150 * 0.012) * RHO_STEEL
     brackets_kg = 6 * 0.30                         # rear-panel mount brackets
     # cp.tote_restraint(): front bars + wall hangers + exterior plates
-    front_bars_kg = 4 * 1.096 * barhs
-    hangers_kg = 4 * 1.1                           # folded 4mm-plate joist hangers
-    ext_plates_kg = 4 * (0.100 * 0.135 * 0.008) * RHO_STEEL  # exterior wall backing plates
+    front_bars_kg = 8 * 1.096 * barhs              # R5: 2 bars/face (doubled from 4)
+    hangers_kg = 8 * 0.7                           # 8 identical 2-bolt folded joist hangers (one per bar)
+    ext_plates_kg = 8 * (0.060 * 0.205 * 0.008) * RHO_STEEL  # 8 small exterior wall backing plates
     anchors_kg = (16 + 16) * 0.10                  # 16 floor + 16 wall M12
     steel = (uprights_kg + rings_kg + feet_kg + brackets_kg
              + front_bars_kg + hangers_kg + ext_plates_kg + anchors_kg)
-    return steel * 1.08                            # +8% weld metal / gussets / primer
+    mats_kg = 4 * 3.0                              # 4 certified anti-slip mats (~3 kg rubber each)
+    return steel * 1.08 + mats_kg                  # +8% weld metal / gussets / primer, + mats
 
 
 # ═══════════════════════════════════════════════════════════════════════════

@@ -22,7 +22,7 @@ Frame concept (ibc-reconfig-v2 — restraint-only deep 4-leg box):
   anchored to the floor by a 150×150×12 flange plate with 4× M12 bolts; the front
   feet reach ~25mm under the tray edge.  The box carries the Corridor pump panel +
   drain-riser spine on its BACK uprights.  Transport restraint is by front retaining
-  bars (Z560 + Z1760) whose wall ends drop into Simpson-style joist hangers through-
+  8 bars (2/tier: Z500/950 + Z1500/1950) whose wall ends drop into Simpson-style joist hangers through-
   bolted to exterior backing plates, plus D-ring lashing.  Geometry matches the 3D
   cp.frame() (generate_corridor_water_panel.py).
 
@@ -402,17 +402,18 @@ def sheet1():
         ax.plot([(col_l), (col_r)], [(PLATFORM_Z)] * 2,
                 color=C_OUT, lw=2.0, zorder=8)
 
-    # Front retaining bars (foreground, at the IBC front) + wall joist hangers +
-    # D-ring lashing holders. Two bars per column at the lower/upper tote mids.
-    for bz in (560, 1760):
+    # Front retaining bars — TWO per tote face (upper + lower), 4 levels total (EN 12195-1 loaded case)
+    for bz in (500, 950, 1500, 1950):
         for y0, y1 in ((0, NEAR_COL_R + FRAME_RHS), (FAR_COL_L - FRAME_RHS, C_WID)):
             _rhs_rect(ax, y0, bz, y1 - y0, FRAME_RHS,
                       fc=C_STEEL, alpha=0.55, lw=1.0, zo=9)
-        for wyd, din in ((0, 1), (C_WID, -1)):   # wall joist hangers (U-pocket)
+    # wall joist hangers — one identical 2-bolt hanger per bar (8 total, fab-identical)
+    for bz in (500, 950, 1500, 1950):
+        for wyd, din in ((0, 1), (C_WID, -1)):
             _rhs_rect(ax, min(wyd, wyd + din * 60), bz - 8, 60, FRAME_RHS + 16,
                       fc=C_STEEL, lw=1.0, zo=10)
     for ydh in (520, 940, 1422, C_WID - 520):    # D-ring lashing holders (4 per tier, 8 total)
-        for bz in (560, 1760):
+        for bz in (500, 1500):
             ax.add_patch(Circle(((ydh), (bz + FRAME_RHS / 2)), (15),
                                 fc="none", ec=C_STEEL, lw=2.0, zorder=11))
 
@@ -502,13 +503,13 @@ def sheet1():
 
     leader(ax, (NEAR_COL_R + FRAME_RHS), (1760 + FRAME_RHS / 2),
            (NEAR_COL_R - 70), (1900),
-           "FRONT RETAINING BAR (×4)\n50×20×3 RHS at IBC front\n(25mm gap), Z560 + Z1760 — slide-stop\n+ weld-on ring lash points",
+           "FRONT RETAINING BARS (×8, 2/tier)\n50×20×3 RHS at IBC front\n(25mm gap), Z500/950 + Z1500/1950 — slide-stop\n+ weld-on ring lash points",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
     leader(ax, (30), (1760 + FRAME_RHS / 2),
            (330), (1500),
-           "WALL JOIST HANGER (×4)\nSimpson U-pocket, through-bolted\n(4× M12×65) to a 100×135×8 EXTERIOR\nbacking plate (hex heads outside)",
+           "WALL JOIST HANGER (×8, 1/bar)\nidentical 2-bolt Simpson U-pocket,\nthrough-bolted (2× M12×65) to a 100×80×8\nEXTERIOR backing plate (hex heads out)",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
@@ -548,15 +549,15 @@ def sheet1():
         f"2. RESTRAINT, not load-bearing: the 1000L caged totes DIRECT-STACK cage-on-cage (52mm headroom — no deck between tiers).",
         f"   A DEEP 4-LEG BOX (front + back upright pairs, 450mm apart, tied by top + bottom rings) at the IBC front restrains them.",
         f"3. Floor flange feet (×4): 150×150×12mm plate fillet welded to each leg base; 4× M12 anchors into the floor (uplift + lateral restraint). Front feet reach ~25mm under the tray edge.",
-        f"4. Front retaining bars (×4, Z560 + Z1760): stop the totes sliding out the front; each bar's wall end drops into a Simpson-style wall joist",
-        f"   hanger (×4), through-bolted (4× M12×65) to a 100×135×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",
+        f"4. Front retaining bars (×8, 2/tote face, Z500/950 + Z1500/1950 — doubled for the EN 12195-1 loaded-transport case): stop the totes sliding out the front; each bar's wall end drops into a Simpson-style wall joist",
+        f"   hanger (×8, one identical 2-bolt hanger per bar), through-bolted (2× M12×65) to a 100×80×8mm EXTERIOR backing plate (hex heads outside) that spreads the load into the thin corrugated wall.",
         f"5. Weld-on lashing rings on the front bars (1,100 kg assembly WLL); ratchet straps over each stack tie down to them.",
         f"6. Surface finish: gray oxide primer + flat black powder coat.",
         f"7. IBC anatomy: US 48\"×40\" caged composite tote (1000L, 1168mm) — {IBC_PALLET_H}mm pallet base + HDPE bottle + galvanized wire cage.",
         f"   v2 layout: Brown/Waste bottom, Blue on top.",
         f"8. Cage top rail ({IBC_CAGE_TUBE_D}mm Ø tube) is the highest point; lashing straps bear on it.",
         f"9. IBC valve face (DN50, S60×6) points toward the corridor. Valve CL at Z={IBC_VALVE_Z}mm above each tote base.",
-        f"10. Total frame weight: ~90 kg (incl. 4 feet + rings + front bars + hangers + exterior wall plates + rear-panel brackets).",
+        f"10. Total frame weight: ~119 kg (incl. 4 feet + rings + 8 front bars + hangers + exterior wall plates + rear-panel brackets + 4 anti-slip mats).",
     ]
     draw_notes(ax, notes, (2500), (TOP_Z + 600), spacing=(23),
                fs=7, font=FONT, width=(2200))
@@ -642,7 +643,7 @@ def sheet2():
             color=C_OUT, lw=2.0, zorder=8)
 
     # ── Front retaining bars (end-on at the IBC front, both tiers) ──────────
-    for bz in (560, 1760):
+    for bz in (500, 1500):
         _rhs_rect(ax, FX_FRONT, bz, FRAME_RHS, FRAME_RHS,
                   fc=C_STEEL, alpha=0.6, lw=1.0, zo=8)
 

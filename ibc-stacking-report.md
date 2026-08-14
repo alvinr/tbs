@@ -272,7 +272,7 @@ provide vertical tie-down. Together these restrain both tiers in all six DOF.
 | Purpose | Raises the sliding friction that credits against the forward thrust (μ 0.2→0.6), tripling the front-bar margin (SF 1.59→4.77, §3.4) — the primary "totes don't shift" lever |
 | Note | Must be a **tested/certified** μ ≥ 0.6 product; untested rubber caps at μ 0.2 |
 
-![TBS-001 IBC Stacking — Sheet 2: Fastening Details](assets/ibc-stacking-sheet2.png)
+![TBS-001 IBC Stacking — Sheet 2: Securing Arrangement](assets/ibc-stacking-sheet2.png)
 
 ---
 
@@ -340,8 +340,8 @@ relevant sections above; the full set is collected here and in [Engineering Diag
 **Sheet 1 — Cross-section elevation: 2-tier direct-stack, restraint deep 4-leg box, front retaining bars + wall hangers, direct-stack junction, <!-- BEGIN fact:ibc_ceiling_clearance_mm -->52<!-- END fact:ibc_ceiling_clearance_mm -->mm clearance**
 ![TBS-001 IBC Stacking — Sheet 1](assets/ibc-stacking-sheet1.png)
 
-**Sheet 2 — Fastening details: front-bar→upright cleat + lash eye, wall joist hanger, ratchet lashing over the stack**
-![TBS-001 IBC Stacking — Sheet 2](assets/ibc-stacking-sheet2.png)
+**Sheet 2 — Securing arrangement: the 8 lash-point locations + strap routing over each stack (rigger's plan; fastening + weld construction details → IBC Support Frame Sheet 4)**
+![TBS-001 IBC Stacking — Sheet 2: Securing Arrangement](assets/ibc-stacking-sheet2.png)
 
 **Sheet 3 — External bulkhead ports: Sealed end wall elevation with 3× ports**
 ![TBS-001 IBC Stacking — Sheet 3](assets/ibc-stacking-sheet3.png)

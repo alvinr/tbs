@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **IBC detail sheets consolidated + corrected per review.** Fabrication details now live on a single sheet
+  (`ibc-frame-sheet4`), reworked per feedback: DETAIL A hanger as a SECTION (bolts through the backing
+  plate + wall + pocket — not the bar; vertical pair 50 mm clear; standard bolt-in-section symbols),
+  DETAIL B cleat as a section with vertical bolts, DETAIL C two lash rings each on its weld plate with
+  ring-pitch/bar-end dims + a jagged bar break, DETAILS D/E captive tee-nut as a rectangle + countersunk
+  screw. `ibc-stacking-sheet2` repurposed from duplicate fastening details to a **securing arrangement**
+  (the 8 lash-point locations + strap routing — the rigger's plan; construction → Frame Sheet 4), dropping
+  the operational ratchet-buckle close-up.
+
 - **IBC frame blueprint Phase D detail insets → new Sheet 4 (Fabrication Details).** `ibc-frame-sheet4`
   draws the five connections a shop builds from — **A** wall joist hanger (per-bar 2-bolt, 50 mm bolt
   clearance, 60×205×8 backing plate), **B** bar→upright cleat, **C** weld-on lashing ring, **D** rear-panel

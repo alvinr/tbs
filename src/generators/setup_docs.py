@@ -197,6 +197,8 @@ DIAG_IMAGE_FILES = [
     "ibc-frame-sheet2.png",
     "ibc-frame-sheet3.png",
     "ibc-frame-sheet4.png",
+    "ibc-plate-schedule-sheet1.png",
+    "ibc-plate-schedule-sheet2.png",
     "mini-tbs-sheet1.png",
     "weight-analysis-sheet1.png",
     "weight-analysis-sheet2.png",

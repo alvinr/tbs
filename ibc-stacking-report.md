@@ -353,7 +353,7 @@ relevant sections above; the full set is collected here and in [Engineering Diag
 **Sheet 5 — Internal plumbing elevation: Pipe routing from IBCs to bulkhead unions**
 ![TBS-001 IBC Stacking — Sheet 5](assets/ibc-stacking-sheet5.png)
 
-### IBC Support Frame Fabrication (4 sheets)
+### IBC Support Frame Fabrication (4 sheets + 2 plate-schedule sheets)
 
 **Sheet 1 — Front elevation: deep-box uprights (front pair, back pair 450mm behind), floor feet, front retaining bars + wall hangers + weld-on lashing rings, direct-stack junction**
 ![TBS-001 IBC Frame — Sheet 1](assets/ibc-frame-sheet1.png)
@@ -366,6 +366,12 @@ relevant sections above; the full set is collected here and in [Engineering Diag
 
 **Sheet 4 — Fabrication details: DETAIL A wall joist hanger (per-bar, 2-bolt, 50mm clearance), B bar→upright cleat, C weld-on lashing ring, D rear-panel bracket, E side-panel pipe-run L-bracket, F walkway arm→front-upright clamp (2 plates + 2× M12 through-bolts, J6) — each with weld (W) + fastener (J) callouts**
 ![TBS-001 IBC Frame — Sheet 4](assets/ibc-frame-sheet4.png)
+
+**Plate Schedule Sheet 1 — Structural plates drawn 1:1 for the shop: PLATE 1 IBC floor foot (150×150×12, 4× Ø14 @ 100 sq PCD), PLATE 2 wall-hanger exterior backing (60×205×8, 2× Ø14 @ 169), PLATE 3 wall-hanger pocket (folded 4 mm back-plate + 70 seat, J3 + J7 holes) — each with outline dims, hole Ø + center positions, thickness, material, and qty**
+![TBS-001 IBC Frame — Plate Schedule Sheet 1](assets/ibc-plate-schedule-sheet1.png)
+
+**Plate Schedule Sheet 2 — Welded angle brackets drawn 1:1: PLATE 4 bar-end cleat (50×50×6, 2× Ø14 @ 60, J2), PLATE 5 rear-panel tab (50×50×5, Ø9/M8, J4), PLATE 6 side-panel pipe-run L-bracket (1×1×⅛, Ø7/¼-20, J5) — L-section end + drilled-leg face for each**
+![TBS-001 IBC Frame — Plate Schedule Sheet 2](assets/ibc-plate-schedule-sheet2.png)
 
 <!-- brochure:endskip -->
 

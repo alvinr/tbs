@@ -228,6 +228,10 @@
 
 ![TBS-001 IBC Frame — Sheet 4: Fabrication Details](assets/ibc-frame-sheet4.png)
 
+![TBS-001 IBC Frame — Plate Schedule Sheet 1: Structural Plates](assets/ibc-plate-schedule-sheet1.png)
+
+![TBS-001 IBC Frame — Plate Schedule Sheet 2: Angle Brackets](assets/ibc-plate-schedule-sheet2.png)
+
 ---
 
 ## 17. Chemistry Prep Shelves

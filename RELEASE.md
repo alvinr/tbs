@@ -24,6 +24,22 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Constant rename: `IBC_WBKT_*` → `FP_CORNER_SEAT_*`.** The name read as the IBC wall bracket but the
+  values (150-wide back-plate, 110 seat, 4× M12) are the **film-plane corner seat** that props each
+  platform-beam end at the side wall — a different part from the IBC retaining-bar wall hanger (the 2-bolt /
+  60-wide unit in the corridor model + plate schedule). Renamed across `tbs_constants.py` + all consumers
+  (SketchUp model, film-plane mechanism, archived study, plate-schedule comment); values unchanged so every
+  output is byte-identical and model `source_hash` stays current (no re-send). Also removed the **dead
+  `BRACKET_*` aliases + import** from `generate_ibc_frame_drawing.py` (the retired welded-seat detail —
+  flagged in the 2026-07 audit + unused-imports tracker).
+
+- **IBC frame Sheet 4 — detail-correction sweep (B/D/F + tone).** DETAIL D redrawn per Alvin's sketch as a
+  welded **L-bracket** off the post with the rear panel bolted to its upstand via an **M8 hex + washer into a
+  pronged tee-nut** — and the tee-nut moved to the ply **back face** (bolt tension pulls the flange against the
+  wood, the correct orientation). DETAIL B cleat bolts now span the bar+cleat stack exactly so head/nut seat
+  **flush** (no exposed shank). DETAIL F elevation bolts shortened to bear on the clamp-plate faces (were
+  projecting past the plates). Steel fills **lightened to sheet 3's tone** for readability.
+
 - **IBC retaining bar — 2 retention bolts at BOTH ends (was 2 corridor / 1 wall).** The single wall-end
   bolt was asymmetric with the 2-bolt corridor cleat; shear is trivial either way (SF ~20 on one M12), but
   anti-rotation + redundancy for a transport restraint holding 1-tonne totes call for 2 at each end. J7
@@ -36,7 +52,7 @@ file** — a release must not ship without a changelog entry:
   wall-hanger pocket, folded 4 mm, J3 + J7 holes); Sheet 2 — angle brackets (bar-end cleat, rear-panel tab,
   side-panel pipe-run L), each as an L-section end + a drilled-leg face with hole Ø, center positions from a
   datum edge, thickness, material, and qty. Hole positions are the diagram-of-record; sizes trace to the foot
-  constants + the current corridor model (deliberately NOT the shared `IBC_WBKT_*`, which is the film-plane
+  constants + the current corridor model (deliberately NOT the shared `FP_CORNER_SEAT_*`, which is the film-plane
   corner-seat spec). Registered in the gallery / publish.sh / setup_docs / dependencies.yml and embedded in
   report §8.
 

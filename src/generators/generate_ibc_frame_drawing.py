@@ -41,7 +41,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle
 
-from tbs_constants import C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, BLUE_IBC_Y, IBC_FAR_Y, IBC_PALLET_H, IBC_CAGE_TUBE_D, IBC_CAGE_RAIL_W, IBC_CAGE_INSET, IBC_BOTTLE_INSET, IBC_VALVE_Z, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_D, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N, IBC_WBKT_PLATE_W, IBC_WBKT_PLATE_T, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, IBC_WBKT_GUSSET_H, IBC_WBKT_BOLT_D, IBC_WBKT_BOLT_N, PANEL_FRAME_TOP_Z, WALKWAY_RIGHT_X, WALKWAY_H, WALKWAY_GRATE_T, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, DIAGRAMS_DIR
+from tbs_constants import C_WID, C_HGT, IBC_COL_X, IBC_W, IBC_D, IBC_H_1000, IBC_H_STK_1000, BLUE_IBC_Y, IBC_FAR_Y, IBC_PALLET_H, IBC_CAGE_TUBE_D, IBC_CAGE_RAIL_W, IBC_CAGE_INSET, IBC_BOTTLE_INSET, IBC_VALVE_Z, IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_D, IBC_FOOT_BOLT_PCD, IBC_FOOT_BOLT_N, PANEL_FRAME_TOP_Z, WALKWAY_RIGHT_X, WALKWAY_H, WALKWAY_GRATE_T, CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR, IBC_FRAME_RHS, DIAGRAMS_DIR
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, leader, draw_notes, hatch_rect
 from tbs_constants import DIAGRAM_DPI
@@ -100,15 +100,6 @@ GATE_H      = 300
 GATE_BOLT_D = 12
 GATE_BOLT_N = 4
 
-# Wall seat bracket (welded: back-plate + seat + triangular gusset web).
-# Dimensions are shared with the 3D model via tbs_constants.
-BRACKET_L      = IBC_WBKT_SEAT_PROJ   # seat projection into container along Yd (110mm)
-BRACKET_T      = IBC_WBKT_PLATE_T     # plate/gusset thickness (8mm)
-BRACKET_SEAT_T = IBC_WBKT_SEAT_T      # seat plate thickness (10mm)
-BRACKET_GUSSET_H = IBC_WBKT_GUSSET_H  # gusset web depth (200mm)
-BRACKET_PLATE_W  = IBC_WBKT_PLATE_W   # back-plate width along X (150mm)
-BRACKET_BOLT_D = IBC_WBKT_BOLT_D      # M12 wall anchor bolts
-BRACKET_BOLT_N = IBC_WBKT_BOLT_N      # 4 per bracket
 
 # ── Right-walkway cantilever arm (rev12) ──────────────────────────────────────
 # The right walkway is carried by 2 arms that cantilever off the corridor uprights

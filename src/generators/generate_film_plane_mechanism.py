@@ -27,7 +27,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle, Arc
 
-from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH_X_C, MAX_TILT_DEG, MAX_SWING_DEG, DIAGRAMS_DIR, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_N_TOTAL, BRACE_Z_BOT, BRACE_Z_TOP, C_WID, WALL_T, IBC_WBKT_PLATE_W, IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T, DRUM_CY, DRUM_R, DRUM_CX, DRUM_D
+from tbs_constants import FP_X_L, FP_X_R, FP_Y, FP_Y_MIN, FP_W, FP_H, PH_X as PH_X_C, MAX_TILT_DEG, MAX_SWING_DEG, DIAGRAMS_DIR, FP_ANGLE_LEG, FP_ANGLE_T, CLAMP_SPACING, CLAMP_N_TOTAL, BRACE_Z_BOT, BRACE_Z_TOP, C_WID, WALL_T, FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T, DRUM_CY, DRUM_R, DRUM_CX, DRUM_D
 from tbs_constants import (XSLIDE_BAR_W, XSLIDE_BAR_T, XSLIDE_Z_TRAVEL, XSLIDE_X_TRAVEL,
                           XSLIDE_Z_BAR_LEN, XSLIDE_X_BAR_LEN, XSLIDE_UHMW_T, XSLIDE_GIB_W,
                           UJOINT_BORE, UJOINT_OD, UJOINT_LEN, UJOINT_ANGLE, CORNER_PLATE_W, CORNER_PLATE_H,
@@ -158,7 +158,7 @@ def rigid_corners3d(tilt_deg, swing_deg, d_c=D_CTR):
 def draw_brace_portal(ax, color, *, lw=1.4, alpha=0.9, z=6):
     """Front elevation (X-Z): a wall-seat saddle back-plate at each of the 4 rail-end
     corners (near + far walls project to the same X-Z here)."""
-    pw = IBC_WBKT_PLATE_W
+    pw = FP_CORNER_SEAT_PLATE_W
     for xv in (RAIL_X_L, RAIL_X_R):
         for zc in (BRACE_Z_BOT, BRACE_Z_TOP):
             ax.add_patch(Rectangle((xv - pw / 2, zc - pw / 2), pw, pw,
@@ -169,8 +169,8 @@ def draw_brace_portal_yd_z(ax, color, *, lw=1.4, alpha=0.9, z=6):
     """Side elevation (Yd-Z): a wall-seat saddle at each wall (Yd 0 + Yd C_WID) at both
     rail heights — a back-plate on the wall + a seat projecting into the container the
     rail end rests on. X-axis of ax = optical depth (Yd), Y-axis = height (Z)."""
-    proj, st = IBC_WBKT_SEAT_PROJ, IBC_WBKT_SEAT_T
-    pw = IBC_WBKT_PLATE_W
+    proj, st = FP_CORNER_SEAT_PROJ, FP_CORNER_SEAT_T
+    pw = FP_CORNER_SEAT_PLATE_W
     for wall_yd, din in ((0, 1), (C_WID, -1)):
         for zc in (BRACE_Z_BOT, BRACE_Z_TOP):
             px = wall_yd if din > 0 else wall_yd - 8
@@ -279,8 +279,8 @@ def sheet1():
 
     # ── RAIL END FLANGES + WALL PLATES — plan view (each rail end seated at the wall) ──
     # Each rail end lands on an IBC-style wall-seat saddle at the near (Yd0) + far
-    # (Yd C_WID) walls; the seat projects IBC_WBKT_SEAT_PROJ into the container.
-    pw, proj = IBC_WBKT_PLATE_W, IBC_WBKT_SEAT_PROJ
+    # (Yd C_WID) walls; the seat projects FP_CORNER_SEAT_PROJ into the container.
+    pw, proj = FP_CORNER_SEAT_PLATE_W, FP_CORNER_SEAT_PROJ
     for rx in (RAIL_X_L, RAIL_X_R):
         for wall_yd, din in ((0, 1), (C_WID, -1)):
             sy = min(wall_yd, wall_yd + din * proj)
@@ -490,8 +490,8 @@ def sheet2():
     # rev12: the bottom-right (BR) ends sit on the combined corner plate shared with
     # the right walkway (not a standalone saddle).
     draw_brace_portal_yd_z(ax_tilt, STRUCT, lw=1.2, alpha=0.65, z=4)
-    leader(ax_tilt, IBC_WBKT_SEAT_PROJ / 2, BRACE_Z_TOP,
-           IBC_WBKT_SEAT_PROJ / 2 - 180, BRACE_Z_TOP + 130,
+    leader(ax_tilt, FP_CORNER_SEAT_PROJ / 2, BRACE_Z_TOP,
+           FP_CORNER_SEAT_PROJ / 2 - 180, BRACE_Z_TOP + 130,
            "U-CHANNEL END FLANGE + WALL PLATE\nRIGHT rail flanged wall-to-wall;\nLEFT rail = transport drop-in (Sheet 4)",
            color=STRUCT, ha="right", fs=6.5, font=FONT)
 

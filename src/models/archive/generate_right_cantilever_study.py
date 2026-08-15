@@ -97,7 +97,7 @@ HL = 95                                          # half-lap line: arm lower 70-9
 BEARER_W = 40
 BEARER_XS = (R_X_L, R_X_R - BEARER_W)            # 4329, 4589 (left edge; each 40 wide)
 BEARER_Z0 = ARM_TOP - 35                         # 80 — bearer bottom
-LEDGE_XR = k.RAIL_X_R - k.IBC_WBKT_PLATE_W // 2  # 4574 — ledger BUTTS the saddle near face (closes corner)
+LEDGE_XR = k.RAIL_X_R - k.FP_CORNER_SEAT_PLATE_W // 2  # 4574 — ledger BUTTS the saddle near face (closes corner)
 
 
 def _xbeam_notched(name, yd, x0, x1):
@@ -155,7 +155,7 @@ def combined_corner_plate(wall_yd, din):
     spans from below the walkway beam (Z58) up past the rail (Z225): the right beam lands on
     it at Z70-115, the BR rail seats on it at Z150. 150mm wide — the box section can use the
     full available width."""
-    pw = k.IBC_WBKT_PLATE_W                       # 150 — plate width (X), centered on the rail
+    pw = k.FP_CORNER_SEAT_PLATE_W                       # 150 — plate width (X), centered on the rail
     cx = k.RAIL_X_R                               # 4649
     rz = k.RAIL_OFF_BOT                           # 150 — BR rail height
     tag = "near" if wall_yd == 0 else "far"

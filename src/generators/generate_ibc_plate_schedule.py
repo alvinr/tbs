@@ -61,7 +61,7 @@ POCK_BP_HOLE_EDGE = 18           # J3 holes on the back-plate: 18 from each end 
 CLEAT_LEG, CLEAT_T, CLEAT_LEN = 50, 6, 100
 CLEAT_BOLT_PITCH, CLEAT_EDGE  = 60, 20
 
-# Rear-panel bracket / TAB (angle welded to upright W6; J4: 1× M8 into a tee-nut in the ply).
+# Rear-panel bracket / TAB (angle TEK-screwed to the post, J8; J4: 1× M8 into a tee-nut in the ply).
 TAB_LEG, TAB_T, TAB_H = 50, 5, 60
 TAB_HOLE_D            = 9         # Ø9 clearance for M8
 
@@ -221,7 +221,7 @@ def sheet2():
     tx, ty = 560, 130
     ax.add_patch(Rectangle((tx, ty), TAB_LEG, TAB_T, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=5))          # horizontal leg (weld to upright)
     ax.add_patch(Rectangle((tx + TAB_LEG, ty), TAB_T, TAB_H, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=5))  # vertical TAB
-    ax.text(tx - 4, ty - 14, "weld leg (W6 → upright)", fontsize=5, **FONT, zorder=6)
+    ax.text(tx - 4, ty - 14, "screw leg — 2× #14 TEK to post (J8)", fontsize=5, **FONT, zorder=6)
     draw_dim_v(ax, tx + TAB_LEG + TAB_T + 24, ty, ty + TAB_H, f"{TAB_H}mm", fs=5.5, font=FONT)          # vertical TAB (leg) outside length (label clear of the TAB; thickness is in the subtitle)
     draw_dim_h(ax, tx, tx + TAB_LEG, ty + 18, f"{TAB_LEG}mm", fs=5.5, font=FONT)                        # horizontal weld-leg outside length (in the L opening)
     # face of the TAB (with its Ø9 hole) — to the right
@@ -240,7 +240,7 @@ def sheet2():
     lx, ly = 1000, 150
     ax.add_patch(Rectangle((lx, ly), PRUN_T, PRUN_LEG, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=5))        # weld leg (to post)
     ax.add_patch(Rectangle((lx, ly), PRUN_LEG, PRUN_T, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=5))        # landing leg
-    ax.text(lx - 6, ly + PRUN_LEG + 8, "weld leg\n(W7 → post)", fontsize=5, **FONT, zorder=6)
+    ax.text(lx - 6, ly + PRUN_LEG + 8, "screw leg\n2× TEK (J9)", fontsize=5, **FONT, zorder=6)
     draw_dim_v(ax, lx - 13, ly, ly + PRUN_LEG, f"{int(PRUN_LEG)}mm", fs=5.5, font=FONT)                 # vertical weld-leg outside length
     draw_dim_h(ax, lx, lx + PRUN_LEG, ly - 13, f"{int(PRUN_LEG)}mm", fs=5.5, font=FONT, above=False)    # horizontal landing-leg outside length
     fx3, fy3 = 1070, 150
@@ -256,7 +256,7 @@ def sheet2():
     _scale_bar(ax, 60, -70)
     draw_notes(ax, [
         "• Holes: Plate 4 Ø14 (M12), Plate 5 Ø9 (M8), Plate 6 Ø7 (¼-20). Angles cut square, deburr all edges. A36.",
-        "• Each plate shown twice: L-section end + drilled-leg face. Weld-leg lengths are minimums — trim to the weld run (§3.5).",
+        "• Each plate shown twice: L-section end + drilled-leg face. Attach leg: Plate 4 welds to the upright (W3); Plates 5/6 TEK-screw to the post (J8/J9) — no weld.",
     ], 470, -40, spacing=18, fs=6.2, font=FONT, width=880)
 
     title_block(ax, "PLATE SHEET 2 OF 2", drawing_title="IBC SUPPORT FRAME",

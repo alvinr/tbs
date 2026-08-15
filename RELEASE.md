@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Rear-panel + pipe-run brackets: welds → TEK screws (W6/W7 → J8/J9).** The two light bracket-to-post
+  joints are no longer welded — they attach with **2× #14 self-drilling TEK screws** each, so the brackets
+  bolt onto a **pre-welded, pre-painted frame with no hot work** and stay adjustable (they carry only light
+  static loads; the load-bearing bar cleat stays welded, W3). Weld schedule drops W6/W7 (W8 ribbon-beam →
+  W6); fastener schedule gains **J8** (rear-panel bracket, 12) + **J9** (pipe-run L, 24); Detail D/E redrawn
+  with the TEK screws; Plate 5/6 "weld leg" → "screw leg". Added a `bracket-tek-screws` part (36× #14, 410 SS,
+  +$11/$20); the two bracket specs de-welded; costing reconciled.
+
 - **Plate schedule — fuller hole dimensioning, Plate 3 redrawn, stock standardized, J7 reverted to 1.**
   Plates 4/5/6 carry BOTH L-legs' outside lengths on the L-section end view + a hole-center dim on the
   drilled-leg face; Plate 2 gains a hole-center-to-edge dim; the Plate 5/6 hole-size note moved to Sheet 2.

@@ -48,11 +48,13 @@ BACK_W, BACK_H, BACK_T = 60, 205, 8
 BACK_BOLT_PITCH        = 169     # vertical center-to-center (bolt_hi − bolt_lo; ≥50 mm clear of the seat/bar)
 BACK_EDGE              = 18      # hole center inset from each end
 
-# Wall-hanger POCKET weldment (corridor model: back-plate S+16≈67 X × 205 Z × 4; seat S+8≈59 × 70 proj × 4).
-POCK_W, POCK_H, POCK_T = 67, 205, 4
-POCK_SEAT_W, POCK_SEAT_PROJ = 59, 70
-POCK_SEAT_HOLE_D = HOLE_CLR      # Ø14 for the J7 vertical retention bolt through bar + seat
-POCK_SEAT_HOLE_PITCH, POCK_SEAT_HOLE_EDGE = 40, 15   # 2× J7 along the seat depth (15+40+15 = 70); on the seat width CL
+# Wall-hanger POCKET weldment. Back-plate + seat standardized to 60mm wide (2026-08-15) to REUSE the
+# Plate 2 backing stock (was RHS+16≈67 / RHS+8≈59 in the model — model to be reconciled). Seat carries
+# ONE centered J7 retention bolt (reverted from 2: redundancy, not strength — the pocket + the fixed 2-bolt
+# corridor cleat already stop the bar rotating; 1 centered bolt clears the seat edges cleanly).
+POCK_W, POCK_H, POCK_T = 60, 205, 4
+POCK_SEAT_W, POCK_SEAT_PROJ = 60, 70
+POCK_SEAT_HOLE_D = HOLE_CLR      # Ø14 for the single J7 vertical retention bolt through bar + seat (centered)
 POCK_BP_HOLE_EDGE = 18           # J3 holes on the back-plate: 18 from each end (aligns with Plate 2 backing, 169 apart)
 
 # Bar-end cleat (angle, corridor end — J2: 2× M12 down through the bar into the horizontal leg; W3 to upright).
@@ -144,7 +146,7 @@ def sheet1():
 
     # ── PLATE 3 — WALL-HANGER POCKET (folded 4mm: two FACE views — back-plate + seat/fillet, holes spec'd) ──
     _panel(ax, 900, 40, 440, 340, "PLATE 3 — WALL-HANGER POCKET", "A36 · 4 mm folded · ×8")
-    # (1) BACK-PLATE face (67×205) — 2× J3 holes on the vertical CL, aligns with Plate 2
+    # (1) BACK-PLATE face (60×205) — 2× J3 holes on the vertical CL, SAME stock as Plate 2
     bpx, bpy = 950, 110
     ax.add_patch(Rectangle((bpx, bpy), POCK_W, POCK_H, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=4))
     hbx = bpx + POCK_W/2
@@ -154,25 +156,24 @@ def sheet1():
     draw_dim_h(ax, bpx, bpx + POCK_W, bpy - 16, f"{POCK_W}mm", fs=5.5, font=FONT, above=False)
     draw_dim_v(ax, bpx - 16, bpy + POCK_BP_HOLE_EDGE, bpy + POCK_H - POCK_BP_HOLE_EDGE, f"{BACK_BOLT_PITCH}mm", fs=5.5, font=FONT)
     ax.text(bpx + POCK_W/2, bpy + POCK_H + 12, "BACK-PLATE FACE", fontsize=6.5, ha="center", fontweight="bold", **FONT, zorder=6)
-    ax.text(bpx + POCK_W/2, bpy - 40, "2× Ø14 (J3) — align Plate 2", fontsize=5, ha="center", color=C_DIM, **FONT, zorder=6)
-    # (2) SEAT / FILLET face (59×70) — 2× J7 holes, fully spec'd (the bar bolts down into these)
+    ax.text(bpx + POCK_W/2, bpy - 40, "2× Ø14 (J3) — same stock as Plate 2", fontsize=5, ha="center", color=C_DIM, **FONT, zorder=6)
+    # (2) SEAT / FILLET face (60×70) — ONE centered J7 hole (reverted from 2: redundancy, not strength)
     spx, spy = 1170, 158
     ax.add_patch(Rectangle((spx, spy), POCK_SEAT_W, POCK_SEAT_PROJ, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=4))
-    hsx = spx + POCK_SEAT_W/2
-    for hy in (spy + POCK_SEAT_HOLE_EDGE, spy + POCK_SEAT_PROJ - POCK_SEAT_HOLE_EDGE):
-        _hole(ax, hsx, hy, POCK_SEAT_HOLE_D, cl=10)
+    hsx, hsy = spx + POCK_SEAT_W/2, spy + POCK_SEAT_PROJ/2
+    _hole(ax, hsx, hsy, POCK_SEAT_HOLE_D, cl=12)
     draw_dim_h(ax, spx, spx + POCK_SEAT_W, spy - 16, f"{POCK_SEAT_W}mm", fs=5.5, font=FONT, above=False)
     draw_dim_v(ax, spx + POCK_SEAT_W + 16, spy, spy + POCK_SEAT_PROJ, f"{POCK_SEAT_PROJ}mm", fs=5.5, font=FONT)
-    draw_dim_v(ax, spx - 16, spy + POCK_SEAT_HOLE_EDGE, spy + POCK_SEAT_PROJ - POCK_SEAT_HOLE_EDGE, f"{POCK_SEAT_HOLE_PITCH}mm", fs=5.5, font=FONT)
-    draw_dim_h(ax, spx, hsx, spy - 36, f"{int(POCK_SEAT_W/2)}mm", fs=5, font=FONT, above=False)
+    draw_dim_v(ax, spx - 16, spy, hsy, f"{int(POCK_SEAT_PROJ/2)}mm", fs=5.5, font=FONT)                 # hole center from the near edge
+    draw_dim_h(ax, spx, hsx, spy - 36, f"{int(POCK_SEAT_W/2)}mm", fs=5, font=FONT, above=False)          # hole center from the side edge
     ax.text(spx + POCK_SEAT_W/2, spy + POCK_SEAT_PROJ + 22, "SEAT (FILLET) FACE", fontsize=6.5, ha="center", fontweight="bold", **FONT, zorder=6)
-    ax.text(spx + POCK_SEAT_W/2, spy + POCK_SEAT_PROJ + 10, f"2× Ø{POCK_SEAT_HOLE_D} (J7) bar bolts down", fontsize=5, ha="center", color=C_DIM, **FONT, zorder=6)
+    ax.text(spx + POCK_SEAT_W/2, spy + POCK_SEAT_PROJ + 10, f"1× Ø{POCK_SEAT_HOLE_D} (J7) — bar bolts down, centered", fontsize=5, ha="center", color=C_DIM, **FONT, zorder=6)
     ax.text(1120, 62, "folded 90° at the seat/back-plate join (W5)", fontsize=5, ha="center", color=C_CL, **FONT, zorder=6)
 
     _scale_bar(ax, 60, -70)
     draw_notes(ax, [
-        "• All holes Ø14 = M12 clearance except Plate 5 (Ø9/M8) + Plate 6 (Ø7/¼-20). Deburr both faces. A36 mild-steel plate.",
-        "• Datums / tolerances: hole centers ±1 mm, PCD ±0.5 mm (sheet 1 + report §3.6). Backing (2) + pocket (3) J3 holes must line up through the wall.",
+        "• All holes Ø14 = M12 clearance (Plates 1–3). Deburr both faces. A36 mild-steel plate.",
+        "• Datums: hole centers ±1 mm, PCD ±0.5 mm (§3.6). Backing (2) + pocket (3) share the 60mm stock; their J3 holes align through the wall.",
     ], 470, -40, spacing=18, fs=6.2, font=FONT, width=880)
 
     title_block(ax, "PLATE SHEET 1 OF 2", drawing_title="IBC SUPPORT FRAME",
@@ -201,6 +202,7 @@ def sheet2():
     ax.add_patch(Rectangle((cx, cy), CLEAT_LEG, CLEAT_T, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=5))      # horizontal leg (bar sits on)
     ax.text(cx - 6, cy + CLEAT_LEG + 10, "vertical leg\n(weld W3 to upright)", fontsize=5, **FONT, zorder=6)
     draw_dim_v(ax, cx - 14, cy, cy + CLEAT_LEG, f"{CLEAT_LEG}mm", fs=5.5, font=FONT)                    # vertical-leg outside length (thickness is in the subtitle)
+    draw_dim_h(ax, cx, cx + CLEAT_LEG, cy - 16, f"{CLEAT_LEG}mm", fs=5.5, font=FONT, above=False)       # horizontal-leg outside length
     # face view of the horizontal (drilled) leg — to the right, showing the 2 holes along the L100 length
     fx, fy = 240, 150
     ax.add_patch(Rectangle((fx, fy), CLEAT_LEN, CLEAT_LEG, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=4))
@@ -221,6 +223,7 @@ def sheet2():
     ax.add_patch(Rectangle((tx + TAB_LEG, ty), TAB_T, TAB_H, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=5))  # vertical TAB
     ax.text(tx - 4, ty - 14, "weld leg (W6 → upright)", fontsize=5, **FONT, zorder=6)
     draw_dim_v(ax, tx + TAB_LEG + TAB_T + 24, ty, ty + TAB_H, f"{TAB_H}mm", fs=5.5, font=FONT)          # vertical TAB (leg) outside length (label clear of the TAB; thickness is in the subtitle)
+    draw_dim_h(ax, tx, tx + TAB_LEG, ty + 18, f"{TAB_LEG}mm", fs=5.5, font=FONT)                        # horizontal weld-leg outside length (in the L opening)
     # face of the TAB (with its Ø9 hole) — to the right
     fx2, fy2 = 720, 130
     ax.add_patch(Rectangle((fx2, fy2), TAB_LEG, TAB_H, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=4))
@@ -239,6 +242,7 @@ def sheet2():
     ax.add_patch(Rectangle((lx, ly), PRUN_LEG, PRUN_T, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=5))        # landing leg
     ax.text(lx - 6, ly + PRUN_LEG + 8, "weld leg\n(W7 → post)", fontsize=5, **FONT, zorder=6)
     draw_dim_v(ax, lx - 13, ly, ly + PRUN_LEG, f"{int(PRUN_LEG)}mm", fs=5.5, font=FONT)                 # vertical weld-leg outside length
+    draw_dim_h(ax, lx, lx + PRUN_LEG, ly - 13, f"{int(PRUN_LEG)}mm", fs=5.5, font=FONT, above=False)    # horizontal landing-leg outside length
     fx3, fy3 = 1070, 150
     ax.add_patch(Rectangle((fx3, fy3), PRUN_LEN, PRUN_LEG, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=4))
     _hole(ax, fx3 + PRUN_LEN/2, fy3 + PRUN_LEG/2, PRUN_HOLE_D, cl=8)
@@ -251,8 +255,8 @@ def sheet2():
 
     _scale_bar(ax, 60, -70)
     draw_notes(ax, [
-        "• Angles cut square, deburr all edges. Weld leg lengths are minimums — trim to suit the weld run in §3.5.",
-        "• Plate 4 shown twice: L-section end (left) + drilled-leg face (right). Same for 5 (weld leg + tab face) and 6.",
+        "• Holes: Plate 4 Ø14 (M12), Plate 5 Ø9 (M8), Plate 6 Ø7 (¼-20). Angles cut square, deburr all edges. A36.",
+        "• Each plate shown twice: L-section end + drilled-leg face. Weld-leg lengths are minimums — trim to the weld run (§3.5).",
     ], 470, -40, spacing=18, fs=6.2, font=FONT, width=880)
 
     title_block(ax, "PLATE SHEET 2 OF 2", drawing_title="IBC SUPPORT FRAME",

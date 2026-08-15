@@ -25,6 +25,16 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
   seam), **welded joints MAY overlap** (reads continuous). Not an auto-fix ("Intersect Faces" everywhere
   over-draws + mangles the generated geometry). (Alvin 2026-08-14.)
 
+- [ ] **Pipe-through-surface seam audit (3D readability) — same class as the beam fix above.** Where a pipe
+  passes *through* a surface (e.g. a plywood panel, a wall, a plate), the penetration shows NO seam/butt line
+  — the pipe reads as fused into the panel instead of passing through a drilled hole. We fixed the analogous
+  case for solid *beams* (butt at the mating face); pipes need the same treatment at panel/wall penetrations.
+  **Plan:** extend the solid-seam `--solids` pass (or a sibling `--pipes`) in `check_interference.py` to flag
+  pipe↔surface intersections (cylinder passing through a plate/panel solid) as a review WARNING, then per
+  penetration either (a) draw a short collar/grommet ring at the surface (the visible hole + seam), or (b)
+  split the pipe at the surface so each side butts the face. Reuse the pipe registry already parsed for the
+  clash audit. (Alvin 2026-08-15.)
+
 - [ ] **Explore the Sketchfab Data API (Python) to automate model re-upload.** [Sketchfab Data API v3 — Python](https://sketchfab.com/developers/data-api/v3/python).
   Today the single-writer protocol ends with ALVIN manually re-uploading each `.skp` to Sketchfab (same model UID). Investigate driving that upload programmatically (PATCH/upload to the existing model UID via the Data API + a token), so a re-send could optionally push to Sketchfab without the manual step. Respect the single-writer rule (ALVIN still saves the `.skp`); the API would replace only the *upload* leg. Prereqs: API token handling, per-model UID already lives in `dependencies.yml` (`push_sketchfab.py` reads it), verify the API supports replacing a model's source file in place.
 

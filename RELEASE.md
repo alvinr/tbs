@@ -24,11 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
-- **Plate schedule — fuller hole dimensioning + Plate 3 corrected.** Plates 4/5/6 now carry the vertical-leg
-  outside length on the L-section end view + a hole-center dim on the drilled-leg face. Plate 2 gains a
-  hole-center-to-edge dim. **Plate 3 (wall-hanger pocket) redrawn** from a thin section into two proper
-  **FACE views** — the back-plate face (67×205, 2× J3) and the **seat/fillet face (59×70) with the 2× J7
-  holes fully spec'd** (40 mm pitch, 15 mm edges, centered) so the shop can drill the seat.
+- **Plate schedule — fuller hole dimensioning, Plate 3 redrawn, stock standardized, J7 reverted to 1.**
+  Plates 4/5/6 carry BOTH L-legs' outside lengths on the L-section end view + a hole-center dim on the
+  drilled-leg face; Plate 2 gains a hole-center-to-edge dim; the Plate 5/6 hole-size note moved to Sheet 2.
+  **Plate 3 (wall-hanger pocket) redrawn** into two proper **FACE views** — back-plate + seat/fillet face
+  with the drill holes dimensioned. The pocket **back-plate + seat standardized to 60 mm** to reuse the
+  Plate 2 backing stock (were 67/59). **J7 reverted to 1 centered bolt/bar** (from 2, 16→8 M12×40, −$12):
+  the 2nd was redundancy not strength, and at the wall the pocket + the fixed 2-bolt corridor cleat already
+  stop the bar rotating — one centered bolt also clears the seat edges cleanly. Detail A + report §3.5 + costing updated.
 
 - **Constant rename: `IBC_WBKT_*` → `FP_CORNER_SEAT_*`.** The name read as the IBC wall bracket but the
   values (150-wide back-plate, 110 seat, 4× M12) are the **film-plane corner seat** that props each

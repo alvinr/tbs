@@ -118,10 +118,10 @@ def sheet1():
     for sx in (-1, 1):
         for sy in (-1, 1):
             _hole(ax, cx + sx*FOOT_PCD/2, cy + sy*FOOT_PCD/2, FOOT_BOLT_D + 2)
-    draw_dim_h(ax, cx - FOOT_W/2, cx + FOOT_W/2, cy + FOOT_W/2 + 22, f"{FOOT_W}", fs=6, font=FONT)
-    draw_dim_v(ax, cx + FOOT_W/2 + 22, cy - FOOT_W/2, cy + FOOT_W/2, f"{FOOT_W}", fs=6, font=FONT)
-    draw_dim_h(ax, cx - FOOT_PCD/2, cx + FOOT_PCD/2, cy - FOOT_W/2 - 20, f"{FOOT_PCD} PCD", fs=6, font=FONT, above=False)
-    draw_dim_v(ax, cx - FOOT_W/2 - 22, cy - FOOT_PCD/2, cy + FOOT_PCD/2, f"{FOOT_PCD}", fs=6, font=FONT)
+    draw_dim_h(ax, cx - FOOT_W/2, cx + FOOT_W/2, cy + FOOT_W/2 + 22, f"{FOOT_W}mm", fs=6, font=FONT)
+    draw_dim_v(ax, cx + FOOT_W/2 + 22, cy - FOOT_W/2, cy + FOOT_W/2, f"{FOOT_W}mm", fs=6, font=FONT)
+    draw_dim_h(ax, cx - FOOT_PCD/2, cx + FOOT_PCD/2, cy - FOOT_W/2 - 20, f"{FOOT_PCD}mm PCD", fs=6, font=FONT, above=False)
+    draw_dim_v(ax, cx - FOOT_W/2 - 22, cy - FOOT_PCD/2, cy + FOOT_PCD/2, f"{FOOT_PCD}mm", fs=6, font=FONT)
     _specbox(ax, 300, 300, [f"4× Ø{FOOT_BOLT_D+2} (M{FOOT_BOLT_D})",
                             f"@ {FOOT_PCD}×{FOOT_PCD} sq PCD", "(±50 from each CL)",
                             "corner marks = CL", "weld upright to center"])
@@ -133,10 +133,9 @@ def sheet1():
     hx = bx + BACK_W/2
     for hy in (by + BACK_EDGE, by + BACK_H - BACK_EDGE):
         _hole(ax, hx, hy, HOLE_CLR)
-    draw_dim_h(ax, bx, bx + BACK_W, by + BACK_H + 20, f"{BACK_W}", fs=6, font=FONT)
-    draw_dim_v(ax, bx + BACK_W + 22, by, by + BACK_H, f"{BACK_H}", fs=6, font=FONT)
-    draw_dim_v(ax, bx - 22, by + BACK_EDGE, by + BACK_H - BACK_EDGE, f"{BACK_BOLT_PITCH}", fs=6, font=FONT)
-    draw_dim_v(ax, bx - 52, by, by + BACK_EDGE, f"{BACK_EDGE}", fs=5.5, font=FONT)
+    draw_dim_h(ax, bx, bx + BACK_W, by - 20, f"{BACK_W}mm", fs=6, font=FONT, above=False)   # below the plate — clear of the panel title
+    draw_dim_v(ax, bx + BACK_W + 22, by, by + BACK_H, f"{BACK_H}mm", fs=6, font=FONT)
+    draw_dim_v(ax, bx - 22, by + BACK_EDGE, by + BACK_H - BACK_EDGE, f"{BACK_BOLT_PITCH}mm", fs=6, font=FONT)   # 18mm end-inset is in the spec box (sub-30mm — not dimensioned, P7)
     _specbox(ax, 720, 300, [f"2× Ø{HOLE_CLR} (M12) —", "vertical CL,", f"{BACK_BOLT_PITCH} apart,", f"{BACK_EDGE} from each end",
                             "J3 wall through-bolts", "(hex heads OUTSIDE)"])
 
@@ -152,12 +151,12 @@ def sheet1():
     for hy in (py + BACK_EDGE, py + POCK_H - BACK_EDGE):
         ax.plot([px, px + POCK_T], [hy, hy], color=C_CL, lw=0.8, zorder=7)
         ax.add_patch(Circle((px + POCK_T/2, hy), HOLE_CLR/2, fc=C_HOLE, ec=C_OUT, lw=1.0, zorder=8))
-    draw_dim_v(ax, px - 22, py, py + POCK_H, f"{POCK_H}", fs=6, font=FONT)
+    draw_dim_v(ax, px - 22, py, py + POCK_H, f"{POCK_H}mm", fs=6, font=FONT)
     draw_dim_h(ax, px + POCK_T, px + POCK_T + POCK_SEAT_PROJ, seat_z - 16, f"seat {POCK_SEAT_PROJ}", fs=6, font=FONT, above=False)
     leader(ax, px + POCK_T + 30, seat_z + 2, px + POCK_T + 60, seat_z - 42,
            f"Ø{POCK_SEAT_HOLE_D} — J7 bolt\n(bar → seat)", fs=5.8, font=FONT, ha="left")
-    leader(ax, px + POCK_T/2, py + POCK_H - BACK_EDGE, px - 60, py + POCK_H - 8,
-           "2× Ø14 (J3) —\nline up w/ Plate 2", fs=5.8, font=FONT, ha="left")
+    leader(ax, px + POCK_T/2, py + POCK_H - BACK_EDGE, px + 30, py + POCK_H + 22,
+           "2× Ø14 (J3)\nalign Plate 2", fs=5.8, font=FONT, ha="left")
     _specbox(ax, 1150, 300, [f"back {POCK_W}×{POCK_H}×{POCK_T}", f"seat {POCK_SEAT_W}×{POCK_SEAT_PROJ}×{POCK_T}",
                              "fold 90° at seat line", "welds W5 (seat↔plate)", "section view (X–Z)"])
 
@@ -197,9 +196,9 @@ def sheet2():
     ax.add_patch(Rectangle((fx, fy), CLEAT_LEN, CLEAT_LEG, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=4))
     for hx in (fx + CLEAT_EDGE, fx + CLEAT_EDGE + CLEAT_BOLT_PITCH):
         _hole(ax, hx, fy + CLEAT_LEG/2, HOLE_CLR)
-    draw_dim_h(ax, fx, fx + CLEAT_LEN, fy + CLEAT_LEG + 20, f"{CLEAT_LEN}", fs=6, font=FONT)
-    draw_dim_h(ax, fx + CLEAT_EDGE, fx + CLEAT_EDGE + CLEAT_BOLT_PITCH, fy - 18, f"{CLEAT_BOLT_PITCH}", fs=6, font=FONT, above=False)
-    draw_dim_v(ax, fx + CLEAT_LEN + 20, fy, fy + CLEAT_LEG, f"{CLEAT_LEG}", fs=6, font=FONT)
+    draw_dim_h(ax, fx, fx + CLEAT_LEN, fy + CLEAT_LEG + 20, f"{CLEAT_LEN}mm", fs=6, font=FONT)
+    draw_dim_h(ax, fx + CLEAT_EDGE, fx + CLEAT_EDGE + CLEAT_BOLT_PITCH, fy - 18, f"{CLEAT_BOLT_PITCH}mm", fs=6, font=FONT, above=False)
+    draw_dim_v(ax, fx + CLEAT_LEN + 20, fy, fy + CLEAT_LEG, f"{CLEAT_LEG}mm", fs=6, font=FONT)
     ax.text(290, 100, "horizontal (drilled) leg — face", fontsize=5, ha="center", color=C_DIM, **FONT, zorder=6)
     _specbox(ax, 60, 320, [f"2× Ø{HOLE_CLR} (M12) — J2 bar bolts, {CLEAT_BOLT_PITCH} pitch, {CLEAT_EDGE} from each end",
                            "left = L-section end · right = drilled-leg face"])
@@ -214,9 +213,9 @@ def sheet2():
     fx2, fy2 = 720, 130
     ax.add_patch(Rectangle((fx2, fy2), TAB_LEG, TAB_H, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=4))
     _hole(ax, fx2 + TAB_LEG/2, fy2 + TAB_H - 25, TAB_HOLE_D, cl=10)
-    draw_dim_v(ax, fx2 + TAB_LEG + 20, fy2, fy2 + TAB_H, f"{TAB_H}", fs=6, font=FONT)
-    draw_dim_h(ax, fx2, fx2 + TAB_LEG, fy2 + TAB_H + 18, f"{TAB_LEG}", fs=6, font=FONT)
-    draw_dim_v(ax, fx2 - 20, fy2 + TAB_H - 25, fy2 + TAB_H, "25", fs=5.5, font=FONT)
+    draw_dim_v(ax, fx2 + TAB_LEG + 20, fy2, fy2 + TAB_H, f"{TAB_H}mm", fs=6, font=FONT)
+    draw_dim_h(ax, fx2, fx2 + TAB_LEG, fy2 + TAB_H + 18, f"{TAB_LEG}mm", fs=6, font=FONT)
+    draw_dim_v(ax, fx2 - 20, fy2 + TAB_H - 25, fy2 + TAB_H, "25mm", fs=5.5, font=FONT)
     ax.text(fx2 + TAB_LEG/2, fy2 - 16, "TAB face", fontsize=5, ha="center", color=C_DIM, **FONT, zorder=6)
     _specbox(ax, 560, 320, [f"1× Ø{TAB_HOLE_D} (M8) — J4 bolt into a tee-nut in the ply",
                             "25 from the tab top; centered on the 50 leg"])
@@ -230,9 +229,9 @@ def sheet2():
     fx3, fy3 = 1070, 150
     ax.add_patch(Rectangle((fx3, fy3), PRUN_LEN, PRUN_LEG, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=4))
     _hole(ax, fx3 + PRUN_LEN/2, fy3 + PRUN_LEG/2, PRUN_HOLE_D, cl=8)
-    draw_dim_h(ax, fx3, fx3 + PRUN_LEN, fy3 + PRUN_LEG + 18, f"{PRUN_LEN}", fs=6, font=FONT)
-    draw_dim_h(ax, fx3, fx3 + PRUN_LEN/2, fy3 - 16, f"{int(PRUN_LEN/2)}", fs=5.5, font=FONT, above=False)
-    ax.text(fx3 + PRUN_LEN/2, fy3 + PRUN_LEG + 34, "landing (drilled) leg — face", fontsize=5, ha="center", color=C_DIM, **FONT, zorder=6)
+    draw_dim_h(ax, fx3, fx3 + PRUN_LEN, fy3 + PRUN_LEG + 18, f"{PRUN_LEN}mm", fs=6, font=FONT)
+    draw_dim_h(ax, fx3, fx3 + PRUN_LEN/2, fy3 - 16, f"{int(PRUN_LEN/2)}mm", fs=5.5, font=FONT, above=False)
+    ax.text(fx3 + PRUN_LEN/2, fy3 - 45, "landing (drilled) leg — face", fontsize=5, ha="center", color=C_DIM, **FONT, zorder=6)
     _specbox(ax, 1000, 320, [f"1× Ø{PRUN_HOLE_D} (¼-20) — J5 board fixing (mid-length)",
                              "cut from 1×1×⅛ angle offcuts"])
 

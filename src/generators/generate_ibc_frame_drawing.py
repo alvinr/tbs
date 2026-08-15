@@ -1151,21 +1151,29 @@ def sheet4():
     draw_dim_h(ax, lx0 + 250, lx0 + 336, bz - 32, "→ bar end")
     leader(ax, lx0 + 120, bz + 58, lx0 + 40, bz - 48, "weld-on ring: ring + base\nare ONE piece; base FILLET\n6mm to the bar (W4)", fs=6, font=FONT, ha="left")
 
-    # ── DETAIL D — REAR-PANEL BRACKET (ply BOLTED through the metal tab into a tee-nut in the ply, J4) ──
+    # ── DETAIL D — REAR-PANEL BRACKET (welded L-bracket; ply BOLTED to the upstand via a bolt+washer → tee-nut in the ply, J4) ──
     dx0, dy0 = 20, 60
     _dcell(ax, dx0, dy0, 420, 380, "DETAIL D — REAR-PANEL BRACKET  (J4/W6 ×6)")
-    px, py = dx0 + 70, dy0 + 120
-    _rhs_rect(ax, px, py, 70, 200, fc=C_FRAME, alpha=0.5, zo=5)                                      # back upright
-    ax.text(px + 35, py + 100, "BACK\nUPRIGHT", fontsize=6, ha="center", va="center", **FONT, zorder=8)
-    ax.add_patch(Rectangle((px + 70, py + 124), 72, 8, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=6))        # bracket horizontal leg (welded to upright)
-    ax.add_patch(Rectangle((px + 142, py + 98), 8, 60, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=6))        # vertical TAB — flat against the ply back
-    _weld_tick(ax, px + 70, py + 128, side='right', size=7)                                          # bracket↔upright (W6)
-    ax.add_patch(Rectangle((px + 150, py + 60), 22, 140, fc=C_PALLET, ec=C_OUT, lw=1, alpha=0.6, zorder=5))  # rear-panel ply
-    ax.add_patch(Rectangle((px + 150, py + 118), 3, 20, fc=C_BOLT, ec=C_OUT, lw=0.9, zorder=8))      # pronged tee-nut FLANGE (ply left face, against the tab)
-    ax.add_patch(Rectangle((px + 153, py + 122), 13, 12, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=7))     # tee-nut threaded BARREL into the ply
-    _bolt(ax, px + 136, py + 128, 30, d=8, nut=False)                                               # M8 hex bolt THROUGH the tab → tee-nut (no nut; threads into tee-nut)
-    leader(ax, px + 70, py + 128, px + 12, py + 60, "TAB welded\nto upright (W6)", fs=6, font=FONT, ha="left")
-    leader(ax, px + 140, py + 128, px + 176, py + 58, "M8 hex through the TAB\n→ tee-nut in the ply (J4)", fs=6, font=FONT, ha="left")
+    px, py = dx0 + 60, dy0 + 105
+    _rhs_rect(ax, px, py, 44, 210, fc=C_FRAME, alpha=0.5, zo=5)                                      # back-upright POST (steel section)
+    ax.text(px + 22, py + 150, "POST", fontsize=6, ha="center", va="center", **FONT, zorder=9, rotation=90)
+    # welded L-bracket: horizontal leg root-welded to the post + a vertical upstand the ply bolts to
+    lz = py + 92
+    ax.add_patch(Rectangle((px + 44, lz), 84, 12, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.2, zorder=6))    # horizontal leg (welded to post)
+    ax.add_patch(Rectangle((px + 120, lz), 12, 96, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.2, zorder=6))   # vertical UPSTAND
+    _weld_tick(ax, px + 44, lz + 6, side='right', size=7)                                            # L-bracket ↔ post (W6)
+    # rear-panel PLYWOOD behind the upstand (right face)
+    ax.add_patch(Rectangle((px + 132, lz - 20), 26, 150, fc=C_PALLET, ec=C_OUT, lw=1, alpha=0.6, zorder=5))   # rear panel
+    # pronged tee-nut set into the ply (flange on the upstand-side face + barrel into the ply)
+    bz = lz + 48
+    ax.add_patch(Rectangle((px + 132, bz - 11), 3, 22, fc=C_BOLT, ec=C_OUT, lw=0.9, zorder=9))       # tee-nut FLANGE (ply face, against the upstand)
+    ax.add_patch(Rectangle((px + 135, bz - 7), 15, 14, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=8))       # tee-nut threaded BARREL into the ply
+    # M8 hex bolt + washer: head on the corridor side, through the upstand, into the tee-nut
+    ax.add_patch(Rectangle((px + 116, bz - 11), 4, 22, fc=C_STEEL, ec=C_OUT, lw=0.8, zorder=9))      # washer under the head
+    _bolt(ax, px + 120, bz, 30, d=8, nut=False)                                                      # head (corridor side) + shank through upstand → tee-nut
+    ax.text(px + 145, lz - 34, "PLYWOOD\n(rear panel)", fontsize=5.6, ha="center", **FONT, zorder=9)
+    leader(ax, px + 60, lz + 6, px + 20, lz - 40, "L-BRACKET\nwelded to POST (W6)", fs=6, font=FONT, ha="left")
+    leader(ax, px + 108, bz, px + 30, bz + 70, "M8 hex + washer through the\nupstand → pronged tee-nut in\nthe ply (J4)", fs=6, font=FONT, ha="left")
 
     # ── DETAIL E — SIDE-PANEL PIPE-RUN SUPPORT L-BRACKET (carries the pipe runs, NOT pumps) ──
     ex0, ey0 = 470, 60
@@ -1223,7 +1231,7 @@ def sheet4():
         "• All welds E70xx per §3.5 (W1–W8); grind zinc back at weld zones.    • A36 mild-steel plate; A500 Gr.B RHS. Deburr all holes.    • Datums A/B/C + tolerances: sheet 1 + §3.6.",
         "• Hanger (A): 2 through-bolts fix the HANGER to the wall (not the bar), 50mm clear for wrench. The BAR bolts DOWN to the seat — 2× VERTICAL M12 (J7, removable); W5 = seat↔plate weld.",
         "• Cleat (B): the bar bolts DOWN to the welded corridor cleat — 2× M12×40 (J2); the wall end drops into the hanger (A).",
-        "• Bracket (D): rear panel bolts to the welded TAB — M8 hex into a tee-nut in the ply (J4).  Bracket (E): side pipe-board on a tee-nut + CSK up the L leg (J5).",
+        "• Bracket (D): a welded L-bracket off the post; the rear panel bolts to its upstand — M8 hex + washer into a pronged tee-nut in the ply (J4).  Bracket (E): side pipe-board on a tee-nut + CSK up the L leg (J5).",
         "• Walkway arm (F): a BOLTED CLAMP — 2 clamp plates + 2× M12 through-bolts per arm, NOT a weld. Arm detailing → walkway blueprint.    • Straps → stacking Sheet 2 (ops).",
         "• Where used: A/B 8 retaining-bar ends · C lash rings on front bars · D 6 rear-panel brackets · E 12 side-panel pipe-run brackets · F 2 walkway-arm clamps.",
     ], 44, -52, spacing=40, fs=6.4, font=FONT, width=1300)

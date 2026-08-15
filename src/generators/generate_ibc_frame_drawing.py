@@ -1092,11 +1092,11 @@ def sheet4():
     _dcell(ax, ax0, ay0, 420, 380, "DETAIL A — WALL JOIST HANGER (section, ×8)")
     wy = ax0 + 210; zc = ay0 + 190
     hatch_rect(ax, wy - 6, ay0 + 45, 12, 290, color="#B8B8B8", hatch="///")            # wall in section
-    ax.add_patch(Rectangle((wy - 22, zc - 100), 8, 200, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=6))   # 60x205x8 exterior backing plate
-    ax.add_patch(Rectangle((wy + 10, zc - 100), 4, 200, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=6))    # pocket back-plate (inside)
-    ax.add_patch(Rectangle((wy + 14, zc - 28), 150, 6, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))        # seat (welded to the pocket back-plate)
+    ax.add_patch(Rectangle((wy - 22, zc - 100), 8, 200, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.1, zorder=6))   # 60x205x8 exterior backing plate
+    ax.add_patch(Rectangle((wy + 10, zc - 100), 4, 200, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.1, zorder=6))    # pocket back-plate (inside)
+    ax.add_patch(Rectangle((wy + 14, zc - 28), 150, 6, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=6))        # seat (welded to the pocket back-plate)
     _weld_tick(ax, wy + 14, zc - 25, side='left', size=6)                                            # seat↔pocket back-plate weld (W5) = the PLATE weldment
-    _rhs_rect(ax, wy + 16, zc - 22, 150, 44, fc=C_FRAME, alpha=0.85, zo=7)                           # bar rests on the seat, extends RIGHT
+    _rhs_rect(ax, wy + 16, zc - 22, 150, 44, fc=C_FRAME, alpha=0.5, zo=7)                           # bar rests on the seat, extends RIGHT
     _break(ax, wy + 166, zc - 22, zc + 22)                                                          # bar continues (jagged)
     ax.text(wy + 116, zc + 34, "BAR → into container", fontsize=6, ha="center", **FONT, zorder=8)
     # J7 RETENTION bolt: VERTICAL down through the bar into the seat (removable) — NOT horizontal into the wall plate
@@ -1118,15 +1118,15 @@ def sheet4():
     bx0, by0 = 470, 470
     _dcell(ax, bx0, by0, 420, 380, "DETAIL B — BAR→UPRIGHT CLEAT (J2/W3, ×8)")
     ux = bx0 + 280; uz = by0 + 55                                                                   # upright on the RIGHT (flipped) — matches the wall-on-left assembly
-    _rhs_rect(ax, ux, uz, 70, 250, fc=C_FRAME, alpha=0.8, zo=5)                                      # corridor upright (section)
+    _rhs_rect(ax, ux, uz, 70, 250, fc=C_FRAME, alpha=0.5, zo=5)                                      # corridor upright (section)
     ax.text(ux + 35, uz + 55, "CORRIDOR\nUPRIGHT", fontsize=6, ha="center", va="center", **FONT, zorder=8)
-    ax.add_patch(Rectangle((ux - 10, uz + 88), 10, 110, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))       # cleat vertical leg (welded to upright LEFT face)
-    ax.add_patch(Rectangle((ux - 180, uz + 88), 180, 10, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))      # cleat HORIZONTAL leg (bar sits on it), extends LEFT
+    ax.add_patch(Rectangle((ux - 10, uz + 88), 10, 110, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=6))       # cleat vertical leg (welded to upright LEFT face)
+    ax.add_patch(Rectangle((ux - 180, uz + 88), 180, 10, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=6))      # cleat HORIZONTAL leg (bar sits on it), extends LEFT
     _weld_tick(ax, ux, uz + 150, side='right', size=7)                                              # cleat↔upright (W3)
-    _rhs_rect(ax, ux - 200, uz + 98, 200, 50, fc=C_FRAME, alpha=0.8, zo=5)                           # bar sits ON the cleat leg, extends LEFT to the wall
+    _rhs_rect(ax, ux - 200, uz + 98, 200, 50, fc=C_FRAME, alpha=0.5, zo=5)                           # bar sits ON the cleat leg, extends LEFT to the wall
     _break(ax, ux - 200, uz + 98, uz + 148)                                                         # bar continues to the wall hanger (jagged, LEFT end)
     ax.text(ux - 100, uz + 128, "BAR 50×20", fontsize=6, ha="center", va="center", zorder=12,
-            bbox=dict(boxstyle="square,pad=0.1", fc=C_FRAME, ec="none"), **FONT)
+            bbox=dict(boxstyle="square,pad=0.1", fc="white", ec="none"), **FONT)
     for bx in (ux - 60, ux - 140):                                                                  # 2 DISTINCT vertical bolts thru bar + cleat leg
         _bolt(ax, bx, uz + 84, 72, d=11, vert=True, nut=True)
     draw_dim_h(ax, ux - 140, ux - 60, uz + 180, "bolt pitch")
@@ -1137,12 +1137,12 @@ def sheet4():
     lx0, ly0 = 940, 470
     _dcell(ax, lx0, ly0, 400, 380, "DETAIL C — WELD-ON LASH RINGS  (2/tier, W4)")
     bz = ly0 + 110
-    _rhs_rect(ax, lx0 + 30, bz, 310, 60, fc=C_FRAME, alpha=0.8, zo=5)                                # front bar (elevation)
+    _rhs_rect(ax, lx0 + 30, bz, 310, 60, fc=C_FRAME, alpha=0.5, zo=5)                                # front bar (elevation)
     ax.text(lx0 + 95, bz + 30, "FRONT BAR 50×20", fontsize=6, va="center", **FONT, zorder=8)
     _break(ax, lx0 + 336, bz - 6, bz + 66)                                                          # bar continues (jagged)
     for rx in (lx0 + 120, lx0 + 250):
-        ax.add_patch(Rectangle((rx - 22, bz + 58), 44, 12, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))   # integral weld base plate
-        ax.add_patch(Rectangle((rx - 7, bz + 66), 14, 10, fc=C_STEEL, ec=C_OUT, lw=1, zorder=7))     # ring→base neck (ONE piece)
+        ax.add_patch(Rectangle((rx - 22, bz + 58), 44, 12, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=6))   # integral weld base plate
+        ax.add_patch(Rectangle((rx - 7, bz + 66), 14, 10, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=7))     # ring→base neck (ONE piece)
         ax.add_patch(Circle((rx, bz + 92), 24, fc="none", ec=C_OUT, lw=2.4, zorder=8))               # ring — integral with its base
         _weld_tick(ax, rx - 20, bz + 60, side='down', size=6); _weld_tick(ax, rx + 20, bz + 60, side='down', size=6)  # base↔bar (W4)
     draw_dim_h(ax, lx0 + 120, lx0 + 250, bz + 150, "ring pitch")
@@ -1153,10 +1153,10 @@ def sheet4():
     dx0, dy0 = 20, 60
     _dcell(ax, dx0, dy0, 420, 380, "DETAIL D — REAR-PANEL BRACKET  (J4/W6 ×6)")
     px, py = dx0 + 70, dy0 + 120
-    _rhs_rect(ax, px, py, 70, 200, fc=C_FRAME, alpha=0.8, zo=5)                                      # back upright
+    _rhs_rect(ax, px, py, 70, 200, fc=C_FRAME, alpha=0.5, zo=5)                                      # back upright
     ax.text(px + 35, py + 100, "BACK\nUPRIGHT", fontsize=6, ha="center", va="center", **FONT, zorder=8)
-    ax.add_patch(Rectangle((px + 70, py + 124), 72, 8, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))        # bracket horizontal leg (welded to upright)
-    ax.add_patch(Rectangle((px + 142, py + 98), 8, 60, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))        # vertical TAB — flat against the ply back
+    ax.add_patch(Rectangle((px + 70, py + 124), 72, 8, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=6))        # bracket horizontal leg (welded to upright)
+    ax.add_patch(Rectangle((px + 142, py + 98), 8, 60, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=6))        # vertical TAB — flat against the ply back
     _weld_tick(ax, px + 70, py + 128, side='right', size=7)                                          # bracket↔upright (W6)
     ax.add_patch(Rectangle((px + 150, py + 60), 22, 140, fc=C_PALLET, ec=C_OUT, lw=1, alpha=0.6, zorder=5))  # rear-panel ply
     ax.add_patch(Rectangle((px + 150, py + 118), 3, 20, fc=C_BOLT, ec=C_OUT, lw=0.9, zorder=8))      # pronged tee-nut FLANGE (ply left face, against the tab)
@@ -1171,10 +1171,10 @@ def sheet4():
     ax.text(ex0 + 210, ey0 + 338, "side-wall boards carry PIPE runs, NOT pumps",
             fontsize=5.6, ha="center", **FONT, zorder=6)
     qx, qy = ex0 + 60, ey0 + 110
-    _rhs_rect(ax, qx, qy, 55, 190, fc=C_FRAME, alpha=0.8, zo=5)                                      # side post
+    _rhs_rect(ax, qx, qy, 55, 190, fc=C_FRAME, alpha=0.5, zo=5)                                      # side post
     ax.text(qx + 27, qy + 95, "SIDE\nPOST", fontsize=6, ha="center", va="center", **FONT, zorder=8)
-    ax.add_patch(Rectangle((qx + 55, qy + 60), 12, 90, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))         # L weld leg
-    ax.add_patch(Rectangle((qx + 55, qy + 60), 120, 12, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))         # L landing leg
+    ax.add_patch(Rectangle((qx + 55, qy + 60), 12, 90, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=6))         # L weld leg
+    ax.add_patch(Rectangle((qx + 55, qy + 60), 120, 12, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=6))         # L landing leg
     _weld_tick(ax, qx + 61, qy + 110, side='left', size=7)                                           # L↔post (W7)
     ax.add_patch(Rectangle((qx + 70, qy + 72), 120, 20, fc=C_PALLET, ec=C_OUT, lw=1, alpha=0.6, zorder=5))  # side-panel ply board (on the landing leg)
     # captive tee-nut RECTANGLE on the board TOP + a CSK screw driven UP from below the landing leg
@@ -1191,13 +1191,13 @@ def sheet4():
     # -- upper sub-view: PLAN SECTION (top-down, X→right / Yd↑) — how it reads orbiting the 3D model --
     ax.text(fx0 + 210, fy0 + 338, "PLAN SECTION  (top-down)", fontsize=6, ha="center", fontweight="bold", **FONT, zorder=8)
     pcx, pcy = fx0 + 235, fy0 + 240                                             # upright center in plan
-    ax.add_patch(Rectangle((pcx - 25, pcy - 25), 50, 50, fc=C_FRAME, ec=C_OUT, lw=1.3, alpha=0.85, zorder=6))  # upright (50 sq)
+    ax.add_patch(Rectangle((pcx - 25, pcy - 25), 50, 50, fc=C_FRAME, ec=C_OUT, lw=1.3, alpha=0.5, zorder=6))  # upright (50 sq)
     ax.text(pcx, pcy, "UPRIGHT", fontsize=5, ha="center", va="center", **FONT, zorder=9)
-    ax.add_patch(Rectangle((pcx - 150, pcy - 25), 125, 50, fc=C_FRAME, ec=C_OUT, lw=1.2, alpha=0.8, zorder=6))  # arm from −X
+    ax.add_patch(Rectangle((pcx - 150, pcy - 25), 125, 50, fc=C_FRAME, ec=C_OUT, lw=1.2, alpha=0.5, zorder=6))  # arm from −X
     _break(ax, pcx - 150, pcy - 25, pcy + 25)                                   # arm continues to the walkway
     ax.text(pcx - 88, pcy, "ARM →", fontsize=5, ha="center", va="center", **FONT, zorder=9)
     for pfy in (pcy - 33, pcy + 25):                                            # 2 clamp plates on the ±Yd faces
-        ax.add_patch(Rectangle((pcx - 29, pfy), 62, 8, fc=C_STEEL, ec=C_OUT, lw=1, zorder=7))
+        ax.add_patch(Rectangle((pcx - 29, pfy), 62, 8, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=7))
     ax.plot([pcx, pcx], [pcy - 41, pcy + 41], color=C_BOLT, lw=1.4, ls=(0, (4, 2)), zorder=9)   # bolt axis (both bolts project here)
     leader(ax, pcx, pcy + 33, pcx + 60, pcy + 62, "clamp plates grip\nthe ±Yd faces", fs=5.5, font=FONT, ha="left")
     leader(ax, pcx - 150, pcy, pcx - 150, pcy - 58, "arm cantilevers −X\nto the walkway", fs=5.5, font=FONT, ha="center")
@@ -1205,11 +1205,11 @@ def sheet4():
     # -- lower sub-view: ELEVATION (looking −X) — shows the 2 bolt Z-levels + pitch --
     ax.text(fx0 + 210, fy0 + 150, "ELEVATION  (looking −X)", fontsize=6, ha="center", fontweight="bold", **FONT, zorder=8)
     fyc, fzc = fx0 + 205, fy0 + 78
-    ax.add_patch(Rectangle((fyc - 25, fzc - 52), 50, 118, fc=C_FRAME, ec=C_OUT, lw=1.2, alpha=0.8, zorder=5))  # upright face
-    ax.add_patch(Rectangle((fyc - 25, fzc - 25), 50, 50, fc=C_FRAME, ec=C_OUT, lw=1.5, hatch="xx", alpha=0.9, zorder=7))  # arm end-on
+    ax.add_patch(Rectangle((fyc - 25, fzc - 52), 50, 118, fc=C_FRAME, ec=C_OUT, lw=1.2, alpha=0.5, zorder=5))  # upright face
+    ax.add_patch(Rectangle((fyc - 25, fzc - 25), 50, 50, fc=C_FRAME, ec=C_OUT, lw=1.5, hatch="xx", alpha=0.55, zorder=7))  # arm end-on
     ax.text(fyc, fzc, "ARM", fontsize=5, ha="center", va="center", **FONT, zorder=9)
     for fyy in (fyc - 37, fyc + 29):                                            # 2 clamp plates flanking the upright (80 tall)
-        ax.add_patch(Rectangle((fyy, fzc - 40), 8, 80, fc=C_STEEL, ec=C_OUT, lw=1, zorder=6))
+        ax.add_patch(Rectangle((fyy, fzc - 40), 8, 80, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=6))
     for bz in (fzc - 18, fzc + 19):                                             # 2 M12 through-bolts — ~37mm pitch (matches the model)
         _bolt(ax, fyc - 55, bz, 110, d=8, nut=True)
     draw_dim_v(ax, fyc + 78, fzc - 18, fzc + 19, "37")

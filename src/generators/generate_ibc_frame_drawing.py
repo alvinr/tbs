@@ -1099,16 +1099,18 @@ def sheet4():
     _rhs_rect(ax, wy + 16, zc - 22, 150, 44, fc=C_FRAME, alpha=0.5, zo=7)                           # bar rests on the seat, extends RIGHT
     _break(ax, wy + 166, zc - 22, zc + 22)                                                          # bar continues (jagged)
     ax.text(wy + 116, zc + 34, "BAR → into container", fontsize=6, ha="center", **FONT, zorder=8)
-    # J7 RETENTION bolt: VERTICAL down through the bar into the seat (removable) — NOT horizontal into the wall plate
-    jbx = wy + 58; _hh7, _hl7 = 9 * 1.7, 9 * 0.7
-    ax.add_patch(Rectangle((jbx - _hh7/2, zc + 22), _hh7, _hl7, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))          # head ON TOP of the bar
-    ax.add_patch(Rectangle((jbx - 9/2, zc - 34), 9, 56, fc=C_SHANK, ec=C_OUT, lw=0.8, zorder=10))                 # shank down through bar + seat
-    ax.add_patch(Rectangle((jbx - _hh7/2, zc - 34 - _hl7), _hh7, _hl7, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))   # nut UNDER the seat
+    # J7 RETENTION bolts: 2× VERTICAL down through the bar into the seat (removable, anti-rotation) — NOT into the wall plate
+    _hh7, _hl7 = 9 * 1.7, 9 * 0.7
+    for jbx in (wy + 44, wy + 96):
+        ax.add_patch(Rectangle((jbx - _hh7/2, zc + 22), _hh7, _hl7, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))          # head ON TOP of the bar
+        ax.add_patch(Rectangle((jbx - 9/2, zc - 34), 9, 56, fc=C_SHANK, ec=C_OUT, lw=0.8, zorder=10))                 # shank down through bar + seat
+        ax.add_patch(Rectangle((jbx - _hh7/2, zc - 34 - _hl7), _hh7, _hl7, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=10))   # nut UNDER the seat
+    draw_dim_h(ax, wy + 44, wy + 96, zc - 52, "pitch", fs=5.5, font=FONT, above=False)
     for dz in (75, -75):
         _bolt(ax, wy - 22, zc + dz, 36, d=11, nut=True)                                             # 2 wall through-bolts: fix HANGER to wall — NOT the bar
     draw_dim_v(ax, wy - 58, zc - 75, zc + 75, "150")
     leader(ax, wy - 22, zc + 75, wy - 100, zc + 112, "2× M12×65 (J3)\nHANGER→wall", fs=6, font=FONT, ha="left")
-    leader(ax, jbx, zc + 28, wy + 120, zc + 78, "M12 (J7)\nbar→seat", fs=6, font=FONT, ha="left")
+    leader(ax, wy + 96, zc + 28, wy + 122, zc + 78, "2× M12 (J7)\nbar→seat", fs=6, font=FONT, ha="left")
     leader(ax, wy + 14, zc - 25, wy - 100, zc - 40, "seat↔plate\nweld (W5)", fs=6, font=FONT, ha="left")
     leader(ax, wy - 22, zc - 100, wy - 40, zc - 128, "60×205×8 A36\n(hex heads out)", fs=6, font=FONT, ha="right")
     ax.text(wy - 42, ay0 + 32, "OUTSIDE", fontsize=6, ha="center", **FONT)
@@ -1219,7 +1221,7 @@ def sheet4():
     _dcell(ax, 20, -300, 1340, 268, "NOTES")
     draw_notes(ax, [
         "• All welds E70xx per §3.5 (W1–W8); grind zinc back at weld zones.    • A36 mild-steel plate; A500 Gr.B RHS. Deburr all holes.    • Datums A/B/C + tolerances: sheet 1 + §3.6.",
-        "• Hanger (A): 2 through-bolts fix the HANGER to the wall (not the bar), 50mm clear for wrench. The BAR bolts DOWN to the seat — VERTICAL M12 (J7, removable); W5 = seat↔plate weld.",
+        "• Hanger (A): 2 through-bolts fix the HANGER to the wall (not the bar), 50mm clear for wrench. The BAR bolts DOWN to the seat — 2× VERTICAL M12 (J7, removable); W5 = seat↔plate weld.",
         "• Cleat (B): the bar bolts DOWN to the welded corridor cleat — 2× M12×40 (J2); the wall end drops into the hanger (A).",
         "• Bracket (D): rear panel bolts to the welded TAB — M8 hex into a tee-nut in the ply (J4).  Bracket (E): side pipe-board on a tee-nut + CSK up the L leg (J5).",
         "• Walkway arm (F): a BOLTED CLAMP — 2 clamp plates + 2× M12 through-bolts per arm, NOT a weld. Arm detailing → walkway blueprint.    • Straps → stacking Sheet 2 (ops).",

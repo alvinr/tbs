@@ -24,6 +24,12 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **IBC retaining bar — 2 retention bolts at BOTH ends (was 2 corridor / 1 wall).** The single wall-end
+  bolt was asymmetric with the 2-bolt corridor cleat; shear is trivial either way (SF ~20 on one M12), but
+  anti-rotation + redundancy for a transport restraint holding 1-tonne totes call for 2 at each end. J7
+  doubled to **2 per bar (8→16 M12×40, +$12)**: Detail A gets a 2nd vertical bolt + pitch dim, plate-schedule
+  Plate 3 gets a 2nd seat hole, report §3.5 J7 + costing reconciled.
+
 - **NEW — IBC Plate Fabrication Schedule (2 sheets).** `generate_ibc_plate_schedule.py` draws every plate in
   the IBC/corridor metal **1:1** (with a 100 mm scale bar) so a shop can cut and drill each: Sheet 1 —
   structural plates (IBC foot 150×150×12 / 4× Ø14 @ 100 sq PCD; wall-hanger backing 60×205×8 / 2× Ø14 @ 169;

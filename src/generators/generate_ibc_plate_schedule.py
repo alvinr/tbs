@@ -146,15 +146,16 @@ def sheet1():
     seat_z = py + 70
     ax.add_patch(Rectangle((px + POCK_T, seat_z), POCK_SEAT_PROJ, POCK_SEAT_T if False else 4,
                            fc=C_FRAME, ec=C_OUT, lw=1.5, zorder=5))                             # seat (folded 90°)
-    _hole(ax, px + POCK_T + 30, seat_z + 2, POCK_SEAT_HOLE_D, cl=10)
+    for shx in (px + POCK_T + 22, px + POCK_T + 50):                            # 2× J7 retention holes in the seat
+        _hole(ax, shx, seat_z + 2, POCK_SEAT_HOLE_D, cl=10)
     # the 2 J3 holes pass through the back-plate too (shared with the backing plate)
     for hy in (py + BACK_EDGE, py + POCK_H - BACK_EDGE):
         ax.plot([px, px + POCK_T], [hy, hy], color=C_CL, lw=0.8, zorder=7)
         ax.add_patch(Circle((px + POCK_T/2, hy), HOLE_CLR/2, fc=C_HOLE, ec=C_OUT, lw=1.0, zorder=8))
     draw_dim_v(ax, px - 22, py, py + POCK_H, f"{POCK_H}mm", fs=6, font=FONT)
     draw_dim_h(ax, px + POCK_T, px + POCK_T + POCK_SEAT_PROJ, seat_z - 16, f"seat {POCK_SEAT_PROJ}", fs=6, font=FONT, above=False)
-    leader(ax, px + POCK_T + 30, seat_z + 2, px + POCK_T + 60, seat_z - 42,
-           f"Ø{POCK_SEAT_HOLE_D} — J7 bolt\n(bar → seat)", fs=5.8, font=FONT, ha="left")
+    leader(ax, px + POCK_T + 36, seat_z + 2, px + POCK_T + 60, seat_z - 42,
+           f"2× Ø{POCK_SEAT_HOLE_D} — J7 bolts\n(bar → seat)", fs=5.8, font=FONT, ha="left")
     leader(ax, px + POCK_T/2, py + POCK_H - BACK_EDGE, px + 30, py + POCK_H + 22,
            "2× Ø14 (J3)\nalign Plate 2", fs=5.8, font=FONT, ha="left")
     _specbox(ax, 1150, 300, [f"back {POCK_W}×{POCK_H}×{POCK_T}", f"seat {POCK_SEAT_W}×{POCK_SEAT_PROJ}×{POCK_T}",

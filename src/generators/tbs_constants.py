@@ -711,14 +711,18 @@ IBC_FOOT_PLATE_T   = 12    # flange plate thickness (mm)
 IBC_FOOT_BOLT_D    = 12    # M12 floor anchor bolt
 IBC_FOOT_BOLT_PCD  = 100   # bolt square pitch on flange (mm) — ±50mm from CL
 IBC_FOOT_BOLT_N    = 4     # anchor bolts per foot
-# Welded wall seat bracket — props each platform-beam OUTER end at the side wall
-IBC_WBKT_PLATE_W   = 150   # back-plate width along X (mm)
-IBC_WBKT_PLATE_T   = 8     # back-plate / gusset web thickness (mm)
-IBC_WBKT_SEAT_PROJ = 110   # horizontal seat projection into container (mm)
-IBC_WBKT_SEAT_T    = 10    # seat plate thickness (mm)
-IBC_WBKT_GUSSET_H  = 200   # triangular gusset web depth down the back-plate (mm)
-IBC_WBKT_BOLT_D    = 12    # M12 wall anchor bolt
-IBC_WBKT_BOLT_N    = 4     # wall bolts per bracket
+# Film-plane CORNER SEAT — welded wall seat bracket that props each film-plane
+# platform-beam OUTER end at the side wall (renamed from IBC_WBKT_* 2026-08-15:
+# the name misread as the IBC wall hanger, but this is the film-plane corner seat;
+# the IBC retaining-bar wall hanger is the separate 2-bolt / 60-wide unit in the
+# corridor model + the plate schedule, NOT these 150-wide / 4-bolt values).
+FP_CORNER_SEAT_PLATE_W   = 150   # back-plate width along X (mm)
+FP_CORNER_SEAT_PLATE_T   = 8     # back-plate / gusset web thickness (mm)
+FP_CORNER_SEAT_PROJ = 110   # horizontal seat projection into container (mm)
+FP_CORNER_SEAT_T    = 10    # seat plate thickness (mm)
+FP_CORNER_SEAT_GUSSET_H  = 200   # triangular gusset web depth down the back-plate (mm)
+FP_CORNER_SEAT_BOLT_D    = 12    # M12 wall anchor bolt
+FP_CORNER_SEAT_BOLT_N    = 4     # wall bolts per bracket
 
 # Equipment-panel support frame — the wet-end panel is pushed back to butt the
 # film-plane (-X) face of the MIDDLE corridor upright station, which is extended

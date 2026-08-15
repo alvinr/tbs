@@ -13,7 +13,7 @@ Sheet 2 — welded angle brackets: bar-end cleat, rear-panel tab, side-panel pip
 Hole POSITIONS are the diagram-of-record here (per CLAUDE.md: exact coordinates a reader would
 verify by measuring belong in the diagram). System-defining sizes reference tbs_constants where
 they exist (the foot). The wall-hanger backing/pocket dims are sourced from the CURRENT corridor
-model (generate_corridor_water_panel.py tote_restraint) — NOT the IBC_WBKT_* constants, which are
+model (generate_corridor_water_panel.py tote_restraint) — NOT the FP_CORNER_SEAT_* constants, which are
 a SHARED generic wall-bracket/seat spec reused by the film-plane corner (150 wide / 4-bolt) and do
 not describe this 2-bolt / 60-wide hanger.
 """

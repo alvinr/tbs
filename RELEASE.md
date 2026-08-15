@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **NEW — IBC Plate Fabrication Schedule (2 sheets).** `generate_ibc_plate_schedule.py` draws every plate in
+  the IBC/corridor metal **1:1** (with a 100 mm scale bar) so a shop can cut and drill each: Sheet 1 —
+  structural plates (IBC foot 150×150×12 / 4× Ø14 @ 100 sq PCD; wall-hanger backing 60×205×8 / 2× Ø14 @ 169;
+  wall-hanger pocket, folded 4 mm, J3 + J7 holes); Sheet 2 — angle brackets (bar-end cleat, rear-panel tab,
+  side-panel pipe-run L), each as an L-section end + a drilled-leg face with hole Ø, center positions from a
+  datum edge, thickness, material, and qty. Hole positions are the diagram-of-record; sizes trace to the foot
+  constants + the current corridor model (deliberately NOT the shared `IBC_WBKT_*`, which is the film-plane
+  corner-seat spec). Registered in the gallery / publish.sh / setup_docs / dependencies.yml and embedded in
+  report §8.
+
 - **IBC frame Sheet 4 — fourth review pass + label tidy.** DETAIL A: the J7 retention bolt is now **vertical**
   (down through the bar into the seat), not horizontal into the wall plate. DETAIL B: **flipped horizontally**
   (corridor upright on the right, bar running left to the wall) so it reads as the wall-on-left assembly.

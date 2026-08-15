@@ -4,12 +4,25 @@
 
 # IBC Stacking Frame — Definitive Blueprint Spec
 
-**Status:** **Phases A, B, C, D-core DONE (2026-08-14)** — restraint validated + redesigned (A), fastener +
-weld schedule (B), datum/tolerance scheme (C), cut list + sheet callouts (D-core). **Scope extended to the
-whole IBC-corridor metal construction:** service + walkway load cases computed (frame non-governing; arm
-connection SF 3.3), corridor-panel brackets / pump-support L-brackets / ribbon cross-beams / arm connection
-folded into §3.4–3.6 + the cut list. Remaining: Phase-D detail insets (hanger fold, backing plate, cleat,
-lashing ring, panel/L-bracket details).
+**Status:** **Phases A–E COMPLETE (2026-08-15)** — restraint validated + redesigned (A), fastener + weld
+schedule (B), datum/tolerance scheme (C), fab-detail sheets (D), cascade (E). **Scope extended to the whole
+IBC-corridor metal construction** (corridor-panel brackets / pipe-run L-brackets / ribbon cross-beams /
+walkway-arm connection, folded into §3.4–3.6 + the cut list).
+
+**Delivered beyond the original plan (review sweep, Aug 15):**
+- **Sheet 4 — Fabrication Details A–F** (added F = walkway-arm→upright clamp) + ~7 review passes correcting the
+  actual joints: bar bolted (not welded) to the hanger, vertical J7 retention, flush cleat bolts, tee-nut on
+  the ply BACK face, Detail D as a proper welded-L per Alvin's sketch, lighter steel tone.
+- **NEW — Plate Fabrication Schedule (2 sheets)**: every plate 1:1 with hole Ø/positions/PCD (foot, hanger
+  backing, hanger pocket as back-plate + seat faces, cleat, rear-panel tab, pipe-run L).
+- **Design refinements:** wall-hanger back-plate + seat standardized to 60 mm (reuse the backing stock);
+  **J7 → 1 centered bolt** (redundancy not strength); **rear-panel + pipe-run brackets W6/W7 → #14 TEK
+  self-drillers (J8/J9)** — bolt-on to a painted frame, no hot work; `IBC_WBKT_* → FP_CORNER_SEAT_*` rename.
+
+**Remaining / next:** (1) **3D-model reconciliation** — pocket → 60/60 + add the J7 bolt (generator edited
+2026-08-15; awaiting a water-model `--send`); TEK brackets are a fastening detail (no bulk-geometry change).
+(2) **Assembly / weld-sequence** notes (jig + weld order). (3) Optional rendered load-case sheet.
+(4) **Coating / surface-finish spec** — deferred to the fab/quoting stage. Then publish.
 
 ## Phase A outcome (R5 — approved 2026-08-14)
 

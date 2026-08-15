@@ -14,7 +14,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 2. Interior conversion (light-seal, paint, ventilation) | $526 | $693 |
 | 3. Pinhole optics plate | $100 | $215 |
 | 4. Film plane mechanism (4-corner U-channel + acetal skate + 304 cross-slide + U-joint, incl. wall-seat saddles) | $4,271 | $4,673 |
-| 5. Print washing — water system (incl. IBC stacking frame) | $6,708 | $7,955 |
+| 5. Print washing — water system (incl. IBC stacking frame) | $6,719 | $7,975 |
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
@@ -25,7 +25,7 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$26,617** | **~$34,803** |
+| **TOTAL (base build + 50-print run)** | **~$26,628** | **~$34,823** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -228,6 +228,7 @@ indicative low–high estimates — get quotes before ordering.
 | [M8×1.25 hex nut, plain SS](https://www.mcmaster.com/90591A161/) (90591A161) | 20 ea | McMaster-Carr | film, shelf | $2 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | 127 ea | McMaster-Carr | film, ibc-frame, walkway | $32 |
 | [M8×25mm knurled thumbscrew DIN 464](https://www.mcmaster.com/92581A540/) (92581A540) | 12 ea | McMaster-Carr | film | $142 |
+| 36× #14 self-drilling TEK screws (bracket → post, J8/J9) | 36 ea | Home Depot | water | $11–$20 |
 | 6× steel angle brackets (corridor panel → IBC uprights) | 6 ea | Home Depot | water | $15–$39 |
 | Corridor panel mount fasteners (shirt-to-panel screws + lag bolts) | 1 lot | Home Depot | water | $10–$11 |
 | [Door pull handle + misc mounting hardware](https://www.mcmaster.com/3570N12/) (3570N12) | 1 ea | McMaster-Carr | interior | $39 |
@@ -250,7 +251,7 @@ indicative low–high estimates — get quotes before ordering.
 | Southco C2-33 cam compression latch | 4 ea | Southco | panel | $76–$104 |
 | 39× cushioned pipe P-clips (3/4" pipe) | 39 ea | Home Depot | water | $21–$37 |
 | [1/2"–1 1/4" SS hose clamp (pump flex jumpers)](https://www.homedepot.com/p/Everbilt-1-2-1-1-4-in-Stainless-Steel-Hose-Clamp-10-Pack-671255E/202262870) (202262870) | 2 10-pack | Home Depot | water | $36 |
-| 12× welded steel L-brackets (side-panel pipe-run boards) + 4 skid standoff clamps | 1 lot | Metal Supermarkets | water | $12–$24 |
+| 12× steel L-brackets (side-panel pipe-run boards) + 4 skid standoff clamps | 1 lot | Metal Supermarkets | water | $12–$24 |
 | [Ratchet straps, 25mm](https://www.homedepot.com/p/312994495) (FH0829) | 1 4-pack | Home Depot | ventilation | $10 |
 | [Cushioned pipe clip](https://www.amazon.com/dp/B01HPE188Q) (B01HPE188Q) | 16 ea | Amazon | water | $8 |
 | Folding shelf stays/brackets, zinc | 2 ea | Amazon | shelf | $24 |
@@ -269,7 +270,7 @@ indicative low–high estimates — get quotes before ordering.
 | [1/4"-20 pronged tee-nut (ply-mount interfaces)](https://www.homedepot.com/p/Everbilt-1-4-in-20-Zinc-Plated-Tee-Nut-4-Pack-825001/317478995) (825001) | 10 4-pack | Home Depot | water | $16 |
 | [Self-drilling structural screw, #14×2″ HWH, 410 SS](https://www.bridgefasteners.com/products/14-x-2-hex-washer-head-self-drilling-screws-410-stainless-steel-self-tapping-full-thread) | 20 ea | Bridge Fasteners | walkway | $7–$11 |
 | Grating clips | 30 ea | McNichols | walkway | $30–$50 |
-| **fasteners-hardware subtotal** | | | | **$1,763–$2,105** |
+| **fasteners-hardware subtotal** | | | | **$1,774–$2,124** |
 
 ### plastics-sheet
 
@@ -452,7 +453,7 @@ indicative low–high estimates — get quotes before ordering.
 | containermgt.com | 1 | container | $2,000–$3,500 |
 | Metal Supermarkets | 14 | aluminum, fasteners-hardware, steel-structural | $2,117–$2,643 |
 | Amazon | 34 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,106–$2,156 |
-| Home Depot | 57 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,806–$1,943 |
+| Home Depot | 58 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,817–$1,963 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
 | Grainger | 7 | aluminum, bearings-motion, electrical-distribution, plumbing-fittings | $1,626 |
 | Artcraft Chemicals | 3 | chemistry-reagents | $1,414 |

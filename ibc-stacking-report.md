@@ -177,10 +177,12 @@ are the standard values for the grade.
 | J1 | Floor foot-plate → floor + crossmember | #14×3¼″ winged self-driller (F14C325FDC) | 410 SS | 16 | driven to seat / flush — no torque spec (self-drilling; not a structural bolt) | — | thread-forming, self-locking |
 | J2 | Front-bar end → upright angle cleat | M12×40 hex (92314A744) | A2-70 (18-8 SS) | 16 | **~50 N·m** with anti-seize (stainless galls → torqued lower than 8.8; no impact driver) | flat | nyloc nut |
 | J3 | Wall hanger → side wall → exterior backing plate | M12×65 through-bolt (91280A728) | Gr.8.8 zinc | 16 | **~90 N·m** (85–95 band) | flat (head, outside) + flat + split-lock (nut, inside) | plain nut + split-lock washer |
-| J4 | Rear panel → welded L-bracket upstand (off the back upright) | M8 hex into captive 5/16 tee-nut set from the ply BACK face (tension pulls the flange against the wood) | zinc | 6 brackets | snug + locker (light static load) | flat washer under head | thread-locker |
-| J5 | Side-panel pipe-run boards → welded L-brackets | ¼-20 CSK machine screw into captive pronged tee-nut (rear-panel method, #30) | zinc | 12 brackets | snug | — | pronged tee-nut (self-locking in ply) |
+| J4 | Rear panel → L-bracket upstand (off the back upright) | M8 hex into captive 5/16 tee-nut set from the ply BACK face (tension pulls the flange against the wood) | zinc | 6 brackets | snug + locker (light static load) | flat washer under head | thread-locker |
+| J5 | Side-panel pipe-run boards → L-brackets | ¼-20 CSK machine screw into captive pronged tee-nut (rear-panel method, #30) | zinc | 12 brackets | snug | — | pronged tee-nut (self-locking in ply) |
 | J6 | Walkway cantilever arm → front upright (2 clamp plates wrap the upright) | M12×40 hex through-bolt | Gr.8.8 zinc | 2 arms × 2 bolts = 4 | **~90 N·m** (85–95 band) | flat both ends | nyloc nut |
 | J7 | Front-bar wall end → hanger pocket seat (vertical retention — the bar is bolted, not welded, to the hanger; **1 centered** bolt, reverted from 2 — the pocket + the fixed 2-bolt corridor cleat already stop the bar rotating, so the 2nd was redundant and crowded the seat) | M12×40 hex (92314A744) | A2-70 (18-8 SS) | 1 per bar × 8 = 8 | **~50 N·m** with anti-seize | flat | nyloc nut |
+| J8 | Rear-panel L-bracket → back upright (post leg) | #14 self-drilling TEK screw, #4/5 point, HWH | 410 SS | 2 per bracket × 6 = 12 | driven to seat — no torque spec (self-drilling; light static panel load) | bonded washer | thread-forming, self-locking |
+| J9 | Side-panel pipe-run L-bracket → side post (weld leg) | #14 self-drilling TEK screw, #4/5 point, HWH | 410 SS | 2 per bracket × 12 = 24 | driven to seat — no torque spec (self-drilling; light pipe load) | bonded washer | thread-forming, self-locking |
 
 Straps: 2 × 2″ ratchet strap per stack, ratcheted to the 3,333 lb (~1,512 kg) assembly WLL — no torque.
 
@@ -195,9 +197,9 @@ Torque sources: M12 8.8 zinc/dry ≈ 88 N·m ([Fastenal torque-tension, K = 0.20
 | W3 | Bar-end cleat ↔ upright | 4 mm | both cleat legs | **37** (demand 1.8 kN) |
 | W4 | Weld-on lashing ring ↔ front bar | 6 mm | all-around the ring base | **9.1** (demand = strap WLL 14.8 kN) |
 | W5 | Wall-hanger seat ↔ pocket back-plate (the hanger PLATE weldment — the bar is *bolted* to it via J7, not welded) | 4 mm | — | min fillet |
-| W6 | Rear-panel bracket ↔ back upright (×6) | 5 mm | all-around | min fillet (panel load ~33 N/bracket) |
-| W7 | Side-panel pipe-run L-bracket ↔ side post (×12) | 4 mm | 2 legs | min fillet |
-| W8 | Ribbon cross-beam ↔ walkway bearer (×4 ends) | 4 mm | both ends | min fillet |
+| W6 | Ribbon cross-beam ↔ walkway bearer (×4 ends) | 4 mm | both ends | min fillet |
+
+The rear-panel bracket (**J8**) and the side-panel pipe-run L-bracket (**J9**) are **no longer welded** — they attach to the post with **#14 self-drilling TEK screws** (2 per bracket) so they can be added to a pre-finished, painted frame with no hot work and stay adjustable; both carry only light static loads (panel ~33 N/bracket; pipe runs lighter).
 
 The wall joist hangers are **folded** 4 mm plate (bent, not welded); the exterior backing plates are loose (bolted, not welded). The corridor-panel + side-panel pipe-run brackets and the ribbon cross-beams are the **plumbing-corridor metal** that shares this frame; the walkway cantilever arms **clamp** to the front uprights (J6, a bolted 2-plate clamp — not a weld) but are detailed in the walkway blueprint.
 

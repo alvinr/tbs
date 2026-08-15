@@ -1144,7 +1144,7 @@ def sheet4():
 
     # ── DETAIL D — REAR-PANEL BRACKET (welded L-bracket; ply BOLTED to the upstand via a bolt+washer → tee-nut in the ply, J4) ──
     dx0, dy0 = 20, 60
-    _dcell(ax, dx0, dy0, 420, 380, "DETAIL D — REAR-PANEL BRACKET  (J4/W6 ×6)")
+    _dcell(ax, dx0, dy0, 420, 380, "DETAIL D — REAR-PANEL BRACKET  (J4/J8 ×6)")
     px, py = dx0 + 60, dy0 + 105
     _rhs_rect(ax, px, py, 44, 210, fc=C_FRAME, alpha=0.5, zo=5)                                      # back-upright POST (steel section)
     ax.text(px + 22, py + 150, "POST", fontsize=6, ha="center", va="center", **FONT, zorder=9, rotation=90)
@@ -1152,7 +1152,11 @@ def sheet4():
     lz = py + 92
     ax.add_patch(Rectangle((px + 44, lz), 84, 12, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.2, zorder=6))    # horizontal leg (welded to post)
     ax.add_patch(Rectangle((px + 120, lz), 12, 96, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.2, zorder=6))   # vertical UPSTAND
-    _weld_tick(ax, px + 44, lz + 6, side='right', size=7)                                            # L-bracket ↔ post (W6)
+    # post-flange TEK-screwed to the post (replaces the W6 weld — bolt-on to a pre-painted frame, no hot work)
+    ax.add_patch(Rectangle((px + 44, lz - 22), 8, 62, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=6))     # vertical flange flat on the post face
+    for sz in (lz - 8, lz + 26):
+        ax.plot([px + 55, px + 36], [sz, sz], color=C_BOLT, lw=1.5, zorder=8)                             # TEK shaft: through the flange → into the post wall
+        ax.add_patch(Rectangle((px + 52, sz - 4), 5, 8, fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=9))           # TEK hex-washer head (corridor side)
     # rear-panel PLYWOOD behind the upstand (right face)
     ax.add_patch(Rectangle((px + 132, lz - 20), 26, 150, fc=C_PALLET, ec=C_OUT, lw=1, alpha=0.6, zorder=5))   # rear panel
     # pronged tee-nut set into the ply from the BACK face (flange on the far face; barrel points toward the bolt)
@@ -1162,13 +1166,13 @@ def sheet4():
     # M8 hex bolt + washer: head on the corridor side, through the upstand + ply, threading into the tee-nut
     ax.add_patch(Rectangle((px + 116, bz - 11), 4, 22, fc=C_STEEL, ec=C_OUT, lw=0.8, zorder=9))      # washer under the head
     _bolt(ax, px + 120, bz, 32, d=8, nut=False)                                                      # head (corridor side) + shank through upstand & ply → threads into the tee-nut barrel
-    ax.text(px + 145, lz - 34, "PLYWOOD\n(rear panel)", fontsize=5.6, ha="center", **FONT, zorder=9)
-    leader(ax, px + 60, lz + 6, px + 20, lz - 40, "L-BRACKET\nwelded to POST (W6)", fs=6, font=FONT, ha="left")
+    ax.text(px + 145, lz + 142, "PLYWOOD (rear panel)", fontsize=5.6, ha="center", **FONT, zorder=9)
+    leader(ax, px + 48, lz + 26, px + 6, lz - 44, "L-BRACKET → POST:\n2× #14 TEK (J8)", fs=6, font=FONT, ha="left")
     leader(ax, px + 108, bz, px + 24, bz + 70, "M8 hex + washer thru the upstand\n→ tee-nut, flange on the ply BACK\nface (bolt pulls it tight) — J4", fs=6, font=FONT, ha="left")
 
     # ── DETAIL E — SIDE-PANEL PIPE-RUN SUPPORT L-BRACKET (carries the pipe runs, NOT pumps) ──
     ex0, ey0 = 470, 60
-    _dcell(ax, ex0, ey0, 420, 380, "DETAIL E — SIDE-PANEL PIPE-RUN L-BRACKET (J5/W7, ×12)")
+    _dcell(ax, ex0, ey0, 420, 380, "DETAIL E — SIDE-PANEL PIPE-RUN L-BRACKET (J5/J9, ×12)")
     ax.text(ex0 + 210, ey0 + 338, "side-wall boards carry PIPE runs, NOT pumps",
             fontsize=5.6, ha="center", **FONT, zorder=6)
     qx, qy = ex0 + 60, ey0 + 110
@@ -1176,13 +1180,15 @@ def sheet4():
     ax.text(qx + 27, qy + 95, "SIDE\nPOST", fontsize=6, ha="center", va="center", **FONT, zorder=8)
     ax.add_patch(Rectangle((qx + 55, qy + 60), 12, 90, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=6))         # L weld leg
     ax.add_patch(Rectangle((qx + 55, qy + 60), 120, 12, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=6))         # L landing leg
-    _weld_tick(ax, qx + 61, qy + 110, side='left', size=7)                                           # L↔post (W7)
+    for sz in (qy + 82, qy + 128):                                                                   # 2× TEK self-drillers (replaces the W7 weld)
+        ax.plot([qx + 67, qx + 48], [sz, sz], color=C_BOLT, lw=1.5, zorder=8)                         # TEK shaft: through the weld leg → into the post wall
+        ax.add_patch(Rectangle((qx + 63, sz - 4), 5, 8, fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=9))       # TEK hex-washer head
     ax.add_patch(Rectangle((qx + 70, qy + 72), 120, 20, fc=C_PALLET, ec=C_OUT, lw=1, alpha=0.6, zorder=5))  # side-panel ply board (on the landing leg)
     # captive tee-nut RECTANGLE on the board TOP + a CSK screw driven UP from below the landing leg
     ax.add_patch(Rectangle((qx + 120, qy + 88), 18, 8, fc=C_BOLT, ec=C_OUT, lw=0.9, zorder=8))        # tee-nut rectangle (board back/top)
     ax.add_patch(Rectangle((qx + 125, qy + 60), 8, 32, fc=C_SHANK, ec=C_OUT, lw=0.7, zorder=8))       # screw shank up through the leg+board
     ax.fill([qx + 123, qx + 135, qx + 132, qx + 126], [qy + 60, qy + 60, qy + 66, qy + 66], color=C_BOLT, zorder=9)  # CSK head under the leg
-    leader(ax, qx + 61, qy + 110, qx + 12, qy + 40, "1×1×⅛ L welded\nto post (W7)", fs=6, font=FONT, ha="left")
+    leader(ax, qx + 61, qy + 105, qx + 8, qy + 40, "1×1×⅛ L → post:\n2× #14 TEK (J9)", fs=6, font=FONT, ha="left")
     leader(ax, qx + 138, qy + 90, qx + 176, qy + 44, "board → tee-nut\n+ CSK (J5)", fs=6, font=FONT, ha="left")
 
     # ── DETAIL F — WALKWAY CANTILEVER ARM → FRONT UPRIGHT (2-bolt clamp: PLAN section + ELEVATION) ──
@@ -1219,10 +1225,10 @@ def sheet4():
     # ── Full-width NOTES band ──
     _dcell(ax, 20, -300, 1340, 268, "NOTES")
     draw_notes(ax, [
-        "• All welds E70xx per §3.5 (W1–W8); grind zinc back at weld zones.    • A36 mild-steel plate; A500 Gr.B RHS. Deburr all holes.    • Datums A/B/C + tolerances: sheet 1 + §3.6.",
+        "• All welds E70xx per §3.5 (W1–W6); grind zinc back at weld zones.    • A36 mild-steel plate; A500 Gr.B RHS. Deburr all holes.    • Datums A/B/C + tolerances: sheet 1 + §3.6.",
         "• Hanger (A): 2 through-bolts fix the HANGER to the wall (not the bar), 50mm clear for wrench. The BAR bolts DOWN to the seat — 1× VERTICAL M12 centered (J7, removable); W5 = seat↔plate weld.",
         "• Cleat (B): the bar bolts DOWN to the welded corridor cleat — 2× M12×40 (J2); the wall end drops into the hanger (A).",
-        "• Bracket (D): a welded L-bracket off the post; the rear panel bolts to its upstand — M8 hex + washer into a pronged tee-nut set from the ply BACK face (J4).  Bracket (E): side pipe-board on a tee-nut + CSK up the L leg (J5).",
+        "• Brackets (D/E): L-brackets TEK-screwed to the post (J8/J9, 2× #14 self-drillers each — NO weld, bolt-on to a painted frame). D: rear panel → upstand tee-nut (J4). E: side pipe-board → tee-nut + CSK (J5).",
         "• Walkway arm (F): a BOLTED CLAMP — 2 clamp plates + 2× M12 through-bolts per arm, NOT a weld. Arm detailing → walkway blueprint.    • Straps → stacking Sheet 2 (ops).",
         "• Where used: A/B 8 retaining-bar ends · C lash rings on front bars · D 6 rear-panel brackets · E 12 side-panel pipe-run brackets · F 2 walkway-arm clamps.",
     ], 44, -52, spacing=40, fs=6.4, font=FONT, width=1300)

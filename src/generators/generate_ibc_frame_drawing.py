@@ -1211,7 +1211,7 @@ def sheet4():
     for fyy in (fyc - 37, fyc + 29):                                            # 2 clamp plates flanking the upright (80 tall)
         ax.add_patch(Rectangle((fyy, fzc - 40), 8, 80, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=6))
     for bz in (fzc - 18, fzc + 19):                                             # 2 M12 through-bolts — ~37mm pitch (matches the model)
-        _bolt(ax, fyc - 55, bz, 110, d=8, nut=True)
+        _bolt(ax, fyc - 37, bz, 74, d=8, nut=True)                              # head + nut bear on the two clamp-plate OUTER faces → actually clamps the assembly
     draw_dim_v(ax, fyc + 78, fzc - 18, fzc + 19, "37")
     leader(ax, fyc - 55, fzc - 18, fyc - 118, fzc - 46, "2× M12 bolts\nclamp — NO weld", fs=5.5, font=FONT, ha="left")
 

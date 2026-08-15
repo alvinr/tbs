@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **IBC frame Sheet 4 — fourth review pass + label tidy.** DETAIL A: the J7 retention bolt is now **vertical**
+  (down through the bar into the seat), not horizontal into the wall plate. DETAIL B: **flipped horizontally**
+  (corridor upright on the right, bar running left to the wall) so it reads as the wall-on-left assembly.
+  DETAIL D: the rear panel is bolted **through the welded metal tab into a pronged tee-nut in the ply** (M8 hex,
+  J4), replacing the countersunk-from-ply-face depiction — matches the schedule. DETAIL E: renamed **side-panel
+  pipe-run L-bracket** (the near/far side-wall boards carry the pipe runs via P-clips, **not pumps**) across the
+  drawing, report §3.5, and the parts spec. Ran the label skill over the sheet — terse in-cell tags, prose moved
+  to a **tightened single-spaced notes band** (added Cleat (B) + a consolidated "Where used" line), no more
+  crossing text.
+
 - **IBC frame Sheet 4 — third review pass (A/B/D/F).** DETAIL A: the wall-hanger weld is reassigned to
   the PLATE weldment (seat↔pocket back-plate, W5) and the retaining bar is now **bolted** to the pocket
   (new fastener **J7**, an M12 retention bolt — 1 per bar × 8), so the bar is removable, not welded, to

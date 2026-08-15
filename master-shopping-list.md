@@ -250,7 +250,7 @@ indicative low–high estimates — get quotes before ordering.
 | Southco C2-33 cam compression latch | 4 ea | Southco | panel | $76–$104 |
 | 39× cushioned pipe P-clips (3/4" pipe) | 39 ea | Home Depot | water | $21–$37 |
 | [1/2"–1 1/4" SS hose clamp (pump flex jumpers)](https://www.homedepot.com/p/Everbilt-1-2-1-1-4-in-Stainless-Steel-Hose-Clamp-10-Pack-671255E/202262870) (202262870) | 2 10-pack | Home Depot | water | $36 |
-| 12× welded steel L-brackets (pump-run side boards) + 4 skid standoff clamps | 1 lot | Metal Supermarkets | water | $12–$24 |
+| 12× welded steel L-brackets (side-panel pipe-run boards) + 4 skid standoff clamps | 1 lot | Metal Supermarkets | water | $12–$24 |
 | [Ratchet straps, 25mm](https://www.homedepot.com/p/312994495) (FH0829) | 1 4-pack | Home Depot | ventilation | $10 |
 | [Cushioned pipe clip](https://www.amazon.com/dp/B01HPE188Q) (B01HPE188Q) | 16 ea | Amazon | water | $8 |
 | Folding shelf stays/brackets, zinc | 2 ea | Amazon | shelf | $24 |

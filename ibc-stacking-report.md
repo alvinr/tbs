@@ -180,7 +180,7 @@ are the standard values for the grade.
 | J4 | Corridor plumbing panel → back-upright angle brackets | M8 hex into captive 5/16 tee-nut in the ply | zinc | 6 brackets | snug + locker (light static load) | flat | thread-locker |
 | J5 | Side-panel pipe-run boards → welded L-brackets | ¼-20 CSK machine screw into captive pronged tee-nut (rear-panel method, #30) | zinc | 12 brackets | snug | — | pronged tee-nut (self-locking in ply) |
 | J6 | Walkway cantilever arm → front upright (2 clamp plates wrap the upright) | M12×40 hex through-bolt | Gr.8.8 zinc | 2 arms × 2 bolts = 4 | **~90 N·m** (85–95 band) | flat both ends | nyloc nut |
-| J7 | Front-bar wall end → hanger pocket back-plate (retention — the bar is bolted, not welded, to the hanger) | M12×40 hex (92314A744) | A2-70 (18-8 SS) | 1 per bar × 8 = 8 | **~50 N·m** with anti-seize | flat | nyloc nut |
+| J7 | Front-bar wall end → hanger pocket seat (vertical retention — the bar is bolted, not welded, to the hanger; 2 bolts for anti-rotation + redundancy, matching the corridor cleat) | M12×40 hex (92314A744) | A2-70 (18-8 SS) | 2 per bar × 8 = 16 | **~50 N·m** with anti-seize | flat | nyloc nut |
 
 Straps: 2 × 2″ ratchet strap per stack, ratcheted to the 3,333 lb (~1,512 kg) assembly WLL — no torque.
 
@@ -394,7 +394,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | [2" (50mm) ratchet strap, 3,333 lb WLL](https://www.homedepot.com/p/331257450) (82827) | Transport securing, over each stack (2 per stack × 2 stacks). Keeper 82827 heavy-duty 2"×27ft, 3,333 lb (~1,512 kg) WLL / 10,000 lb break — width corrected 25mm→50mm (a 1" strap can't hold the 1,100 kg the restraint needs). EN 12195-1 vert tie-down SF 3.1 loaded (ibc_frame_load.py). | 4 ea | Home Depot | $68 |
 | Certified anti-slip cargo matting (μ≥0.6) | Certified anti-slip rubber matting under each tote interface (4: 2 on the container floor + 2 on the lower-tote cage tops). Raises the sliding friction μ 0.2→0.6 per EN 12195-1 Annex B, cutting the front-bar forward-blocking demand ~3× (bar SF 1.59 bar-alone → 4.77 with mat; ibc_frame_load.py). Cut to the tote pallet footprint (~1.0×1.2 m). REQUIRES a certified/tested μ≥0.6 product (untested rubber caps at μ 0.2). | 4 ea | Uline / cargo-securing supplier | $40–$80 |
 | [Self-drilling structural screw, #14×3¼″ winged, 410 SS](https://www.fastenersplus.com/products/14-x-3-1-4-self-drilling-flat-head-screw-with-wings-410-stainless-steel-pkg-100) (F14C325FDC) | 4 deep-box flange feet × 4 each. Self-drills the 6mm foot plate + 28mm plywood and taps the ~4mm steel crossmember — LAND EACH FOOT OVER A CROSSMEMBER (~450mm centers). Wings ream the plate/ply clearance then snap off at the steel. 410 SS (martensitic — self-drills steel; 316 can't). The IBC dead load bears in compression on the floor; the screws resist sliding/uplift only. Through-bolt 316 + backing nut instead where a crossmember underside is reachable. $1.02/ea (100-pk). | 16 ea | Fasteners Plus / ASMC | $16 |
-| [M12×40 hex bolt, 18-8 SS](https://www.mcmaster.com/92314A744/) (92314A744) | Front-bar fasteners: 16 = corridor-end cleats (J2, 2 each × 8 bars) + 8 = wall-end retention bolts (J7, 1 per bar through the pocket back-plate + bar web so the bar is bolted, not welded, to the hanger — 2026-08-14). Short grip → M12×40 fully threaded is correct. McMaster 92314A744: M12×1.75 × 40mm 18-8 stainless hex head screw — confirmed vs the eng-specs PDF (M12×1.75, 40mm, 18-8 SS). $14.73/pack of 10 firm (2026-08-01; 24 used → 3 packs). (Wall-hanger through-bolts are the M12×65 below.) | 24 ea | McMaster-Carr | $35 |
+| [M12×40 hex bolt, 18-8 SS](https://www.mcmaster.com/92314A744/) (92314A744) | Front-bar fasteners, 2 per bar-end BOTH ends: 16 = corridor-end cleats (J2, 2 each × 8 bars) + 16 = wall-end vertical retention bolts (J7, 2 each × 8 bars, down through the bar into the pocket seat — anti-rotation + redundant, the bar is bolted not welded to the hanger; 2nd bolt added 2026-08-14). Short grip → M12×40 fully threaded is correct. McMaster 92314A744: M12×1.75 × 40mm 18-8 stainless hex head screw — confirmed vs the eng-specs PDF (M12×1.75, 40mm, 18-8 SS). $14.73/pack of 10 firm (2026-08-01; 32 used → 4 packs). (Wall-hanger through-bolts are the M12×65 below.) | 32 ea | McMaster-Carr | $47 |
 | [M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread](https://www.mcmaster.com/91280A728/) (91280A728) | IBC wall-hanger through-bolts (2 each × 8 hangers = 16) — through the corrugated side wall to the exterior 60×205×8 backing plate (hex heads outside). Grip = 8mm plate + ~30mm corrugation + 4mm hanger flange ≈ 42–54mm → M12×65 partial-thread (the fully-threaded M12×40 could not span it). $15.95/pack of 10 → 2 packs for 16. Pad with 1–2 M12 flat washers if the actual corrugation is <30mm. | 16 ea | McMaster-Carr | $26 |
 | [M12 hex nut, plain](https://www.mcmaster.com/90591A181/) (90591A181) | Plain hex nut (inside the container) — M12×65 wall-hanger through-bolts (+ split lock washer). $12.78/pack of 50. Pitch M12×1.75 coarse — confirmed vs 90591A181 PDF 2026-07-29. | 16 ea | McMaster-Carr | $4 |
 | [M12 flat washer, zinc](https://www.mcmaster.com/91166a290/) (91166A290) | Flat washers, M12×65 wall-hanger bolts — 2 functional + 2 shim/bolt (shims pad the grip if corrugation <30mm). $9.71/pack of 100. | 64 ea | McMaster-Carr | $6 |
@@ -402,7 +402,7 @@ Full drawings also appear in [Engineering Diagrams](engineering-diagrams.md) §1
 | Steel backing plate 60×205×8mm | Exterior wall backing plates — 8 identical, one per 2-bolt hanger — flat 60×205×8mm steel on the OUTSIDE of the container side wall (hex heads outside), 2× M12 holes; spreads the totes' transport thrust into the thin corrugated wall so the through-bolts can't pull through. | 8 ea | Metal Supermarkets | $32–$56 |
 | Welding / fabrication (frame assembly) | ~14–20 hrs labor (deep 4-leg box — the ring/back-upright welds sit at the upper end of the range) | 1 lot | Local fab | $688–$1,018 |
 | Primer + paint | Anti-corrosion coating | 1 lot | Hardware store | $30–$50 |
-| **Ibc-Frame total** | | | | **$1,187–$1,721** |
+| **Ibc-Frame total** | | | | **$1,199–$1,733** |
 <!-- END parts:ibc-frame -->
 
 ### 9.2 IBC Totes
@@ -422,7 +422,7 @@ the stacking structure and the totes it restrains.
 
 | Assembly | Low estimate | High estimate |
 |----------|------------|--------------|
-| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,187<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,721<!-- END costing:ibc-frame-high --> |
+| Stacking frame (restraint deep 4-leg box) | <!-- BEGIN costing:ibc-frame-low -->$1,199<!-- END costing:ibc-frame-low --> | <!-- BEGIN costing:ibc-frame-high -->$1,733<!-- END costing:ibc-frame-high --> |
 | IBC totes (4×) | $300 | $900 |
 | **Total** | **$1,280** | **$2,405** |
 

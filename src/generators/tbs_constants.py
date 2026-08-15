@@ -720,9 +720,9 @@ FP_CORNER_SEAT_PLATE_W   = 150   # back-plate width along X (mm)
 FP_CORNER_SEAT_PLATE_T   = 8     # back-plate / gusset web thickness (mm)
 FP_CORNER_SEAT_PROJ = 110   # horizontal seat projection into container (mm)
 FP_CORNER_SEAT_T    = 10    # seat plate thickness (mm)
-FP_CORNER_SEAT_GUSSET_H  = 200   # triangular gusset web depth down the back-plate (mm)
-FP_CORNER_SEAT_BOLT_D    = 12    # M12 wall anchor bolt
-FP_CORNER_SEAT_BOLT_N    = 4     # wall bolts per bracket
+FP_CORNER_SEAT_GUSSET_H  = 200   # triangular gusset web depth down the back-plate (mm) — reserved (seat spec; not drawn per-feature)
+FP_CORNER_SEAT_BOLT_D    = 12    # M12 wall anchor bolt — reserved (seat spec; not drawn per-feature)
+FP_CORNER_SEAT_BOLT_N    = 4     # wall bolts per bracket — reserved (seat spec; not drawn per-feature)
 
 # Equipment-panel support frame — the wet-end panel is pushed back to butt the
 # film-plane (-X) face of the MIDDLE corridor upright station, which is extended

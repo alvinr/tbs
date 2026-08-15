@@ -212,9 +212,9 @@ PARTS: list[Part] = [
          spec="Shirt-to-panel screws + lag bolts landing the brackets into the panel/uprights. Price est.",
          panel="Corridor"),
     # — #29 pump-run supports: 2 side ply boards (cut from corridor-panel-ply-18) + welded L-brackets + cushioned P-clips —
-    Part("pump-support-brackets", "12× welded steel L-brackets (pump-run side boards) + 4 skid standoff clamps", "fasteners-hardware",
+    Part("pump-support-brackets", "12× welded steel L-brackets (side-panel pipe-run boards) + 4 skid standoff clamps", "fasteners-hardware",
          "water", 1, "lot", 12, 24, "Metal Supermarkets", supplier_alt="Home Depot",
-         spec="12× steel L-brackets welded to the IBC side-post inner faces (2 per post × 3 side boards: far, near-lower, near-upper) — the boards bolt to the landing legs (rear-panel method); + 4 short standoff brackets carrying the forward SV-01/DV-02 skid lines. Cut from 1×1×1/8 steel angle offcuts — weld W7 (4mm fillet, 2 legs), boards fastened J5 (¼-20 into captive tee-nut), per ibc-stacking-report §3.5. MATERIAL est.; FAB (cut/weld) = shop quote (material-now rule).",
+         spec="12× steel L-brackets welded to the IBC side-post inner faces (2 per post × 3 side-panel boards: far, near-lower, near-upper) — the side-wall boards carry the PIPE runs (P-clips), NOT pumps; the boards bolt to the landing legs (rear-panel method); + 4 short standoff brackets carrying the forward SV-01/DV-02 skid lines. Cut from 1×1×1/8 steel angle offcuts — weld W7 (4mm fillet, 2 legs), boards fastened J5 (¼-20 into captive tee-nut), per ibc-stacking-report §3.5. MATERIAL est.; FAB (cut/weld) = shop quote (material-now rule). (Registry key kept as 'pump-support-brackets' for cost continuity; they support the pump-run PIPING.)",
          panel="Corridor"),
     Part("pipe-support-clips", "39× cushioned pipe P-clips (3/4\" pipe)", "fasteners-hardware",
          "water", 39, "ea", 0.55, 0.95, "Home Depot", supplier_alt="McMaster-Carr",

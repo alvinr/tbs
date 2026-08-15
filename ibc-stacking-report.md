@@ -98,7 +98,7 @@ front feet reach ~25mm under the tray edge). Transport restraint is provided by:
 The box carries the **Corridor Plumbing Panel** (pumps) and its **drain-riser backing spine**
 on the back uprights, and gives the right-walkway cantilever arms their clamp point on the
 front uprights — so it is the **shared metal structure of the IBC plumbing corridor**, not just a
-tote-restraint frame. The panel brackets, the 12 pump-support L-brackets, the ribbon cross-beams,
+tote-restraint frame. The panel brackets, the 12 side-panel pipe-run L-brackets, the ribbon cross-beams,
 and the walkway-arm connection are validated and scheduled in §3.4–3.6 alongside the tote restraint.
 
 ![TBS-001 IBC Stacking — Sheet 1: Cross-Section Elevation](assets/ibc-stacking-sheet1.png)
@@ -178,7 +178,7 @@ are the standard values for the grade.
 | J2 | Front-bar end → upright angle cleat | M12×40 hex (92314A744) | A2-70 (18-8 SS) | 16 | **~50 N·m** with anti-seize (stainless galls → torqued lower than 8.8; no impact driver) | flat | nyloc nut |
 | J3 | Wall hanger → side wall → exterior backing plate | M12×65 through-bolt (91280A728) | Gr.8.8 zinc | 16 | **~90 N·m** (85–95 band) | flat (head, outside) + flat + split-lock (nut, inside) | plain nut + split-lock washer |
 | J4 | Corridor plumbing panel → back-upright angle brackets | M8 hex into captive 5/16 tee-nut in the ply | zinc | 6 brackets | snug + locker (light static load) | flat | thread-locker |
-| J5 | Pump-support boards → welded L-brackets | ¼-20 CSK machine screw into captive pronged tee-nut (rear-panel method, #30) | zinc | 12 brackets | snug | — | pronged tee-nut (self-locking in ply) |
+| J5 | Side-panel pipe-run boards → welded L-brackets | ¼-20 CSK machine screw into captive pronged tee-nut (rear-panel method, #30) | zinc | 12 brackets | snug | — | pronged tee-nut (self-locking in ply) |
 | J6 | Walkway cantilever arm → front upright (2 clamp plates wrap the upright) | M12×40 hex through-bolt | Gr.8.8 zinc | 2 arms × 2 bolts = 4 | **~90 N·m** (85–95 band) | flat both ends | nyloc nut |
 | J7 | Front-bar wall end → hanger pocket back-plate (retention — the bar is bolted, not welded, to the hanger) | M12×40 hex (92314A744) | A2-70 (18-8 SS) | 1 per bar × 8 = 8 | **~50 N·m** with anti-seize | flat | nyloc nut |
 
@@ -196,10 +196,10 @@ Torque sources: M12 8.8 zinc/dry ≈ 88 N·m ([Fastenal torque-tension, K = 0.20
 | W4 | Weld-on lashing ring ↔ front bar | 6 mm | all-around the ring base | **9.1** (demand = strap WLL 14.8 kN) |
 | W5 | Wall-hanger seat ↔ pocket back-plate (the hanger PLATE weldment — the bar is *bolted* to it via J7, not welded) | 4 mm | — | min fillet |
 | W6 | Rear-panel bracket ↔ back upright (×6) | 5 mm | all-around | min fillet (panel load ~33 N/bracket) |
-| W7 | Pump-support L-bracket ↔ side post (×12) | 4 mm | 2 legs | min fillet |
+| W7 | Side-panel pipe-run L-bracket ↔ side post (×12) | 4 mm | 2 legs | min fillet |
 | W8 | Ribbon cross-beam ↔ walkway bearer (×4 ends) | 4 mm | both ends | min fillet |
 
-The wall joist hangers are **folded** 4 mm plate (bent, not welded); the exterior backing plates are loose (bolted, not welded). The corridor-panel + pump-support brackets and the ribbon cross-beams are the **plumbing-corridor metal** that shares this frame; the walkway cantilever arms **clamp** to the front uprights (J6, a bolted 2-plate clamp — not a weld) but are detailed in the walkway blueprint.
+The wall joist hangers are **folded** 4 mm plate (bent, not welded); the exterior backing plates are loose (bolted, not welded). The corridor-panel + side-panel pipe-run brackets and the ribbon cross-beams are the **plumbing-corridor metal** that shares this frame; the walkway cantilever arms **clamp** to the front uprights (J6, a bolted 2-plate clamp — not a weld) but are detailed in the walkway blueprint.
 
 These joints are drawn on **Sheet 4** (each with its weld + fastener callout):
 
@@ -229,7 +229,7 @@ tolerances that actually matter for fit-up.
 | Exterior backing-plate M12 holes (to its hanger) | ±1 mm | M12×65 through-bolt clearance |
 | Corridor clear width (between the inner uprights) | +2 / −0 mm | the 270 mm plumbing corridor must not pinch |
 | Rear-panel bracket Z position (on the back uprights) | ±2 mm | plumbing-panel mount aligns |
-| Pump-support L-bracket landing (post inner face) | ±2 mm | the support boards seat flush |
+| Side-panel pipe-run L-bracket landing (post inner face) | ±2 mm | the support boards seat flush |
 
 General (unspecified) dimensions: ISO 13920 Class B. Break sharp edges; deburr all drilled holes.
 
@@ -364,7 +364,7 @@ relevant sections above; the full set is collected here and in [Engineering Diag
 **Sheet 3 — Plan view: deep 4-leg box (4 legs + ring perimeter) + retaining bars + 4 floor feet + IBC footprints + corridor + walkway arms**
 ![TBS-001 IBC Frame — Sheet 3](assets/ibc-frame-sheet3.png)
 
-**Sheet 4 — Fabrication details: DETAIL A wall joist hanger (per-bar, 2-bolt, 50mm clearance), B bar→upright cleat, C weld-on lashing ring, D rear-panel bracket, E pump-support L-bracket, F walkway arm→front-upright clamp (2 plates + 2× M12 through-bolts, J6) — each with weld (W) + fastener (J) callouts**
+**Sheet 4 — Fabrication details: DETAIL A wall joist hanger (per-bar, 2-bolt, 50mm clearance), B bar→upright cleat, C weld-on lashing ring, D rear-panel bracket, E side-panel pipe-run L-bracket, F walkway arm→front-upright clamp (2 plates + 2× M12 through-bolts, J6) — each with weld (W) + fastener (J) callouts**
 ![TBS-001 IBC Frame — Sheet 4](assets/ibc-frame-sheet4.png)
 
 <!-- brochure:endskip -->

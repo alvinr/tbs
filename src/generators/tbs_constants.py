@@ -954,13 +954,15 @@ WALKWAY_LEFT_WIDE_YD_R = 1560   # punch-out Yd end
 # brackets carry the grate inner edge (X=470); brackets on the drum-exit punch-out (Yd 800-1560)
 # get EXTENDED arms to X=770 so the widened section is supported, not cantilevered. Zero tray
 # contact; grate + brackets lift out for transport. Validated in the cantilever-study exploration (retired 2026-06-07).
-LEFT_WK_CANT_LEG_X    = WALKWAY_LEFT_X - 30           # = 140 — leg centreline (bare floor, outside tray X=170)
+LEFT_WK_CANT_LEG_X    = WALKWAY_LEFT_X - 30           # leg centreline (bare floor, just outboard of the tray L edge = WALKWAY_LEFT_X)
 LEFT_WK_CANT_LEG_YDS  = (250, 800, 1180, 1560, 2110)  # 5 brackets; 3 land on the punch-out (800/1180/1560)
 LEFT_WK_CANT_POST     = 50.8  # post section (mm) — 2×2×0.120in steel SHS (#26 — 50mm nominal isn't stock, 2in is)
 LEFT_WK_CANT_POST_T   = 3     # post wall thickness (mm) ≈ 0.120in
 LEFT_WK_CANT_POST_W   = 60    # bracket width in Yd (mm)
-LEFT_WK_CANT_FOOT     = (128, 60, 8)  # foot plate L(X)×W(Yd)×T (mm) — spans X≈38..166 (outboard of tray rim)
-LEFT_WK_CANT_FOOT_X0  = 38    # foot plate left edge X (mm) — all < 170 (bare floor)
+LEFT_WK_CANT_FOOT     = (128, 60, 8)  # foot plate L(X)×W(Yd)×T (mm) — the post sits on its inboard end; foot extends outboard as an outrigger
+# Foot LEFT edge DERIVED so the foot always sits under the post (inboard edge = post inboard edge; foot then runs outboard).
+# Was hardcoded 38 (correct only while LEG_X=140); it got stranded when FP_X_L moved 150→260 (2026-08-11) cascaded LEG_X→250. (2026-08-16)
+LEFT_WK_CANT_FOOT_X0  = round(LEFT_WK_CANT_LEG_X + LEFT_WK_CANT_POST / 2 - LEFT_WK_CANT_FOOT[0])   # ≈147; foot right edge ≈ post right edge, ~5mm clear of the tray L
 LEFT_WK_CANT_FOOT_BOLT_N = 4  # M10 floor anchors per foot (sealed penetrations)
 LEFT_WK_CANT_ARM_Z0   = 89.6  # arm underside Z (mm) — 11.6mm above the full-width 1½ spray-bar top (Z78 at the far-left); top = grate bottom (115) => 25.4mm deep (2×1in × 0.120 steel). #26: 2×⅞ is non-stock — MetalsDepot/Metal Supermarkets carry only 2×1; Option B keeps the deck at 140, so the extra 3.4mm depth costs 3.4mm spray clearance (15→11.6mm). Deeper section ⇒ stronger arm (SF≈2.5 vs 2.1). Also single-sources the RIGHT frame arm (RWK_ARM_BOT).
 LEFT_WK_CANT_ARM_W    = 50.8  # standard arm width in Yd (mm) — 2in of the 2×1in section (1in is the Z-depth)

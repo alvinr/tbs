@@ -237,6 +237,44 @@ General (unspecified) dimensions: ISO 13920 Class B. Break sharp edges; deburr a
 
 ---
 
+### 3.7 Assembly + Weld Sequence
+
+The frame is a **shop-welded box that bolts out in the field** — deliberately, so the only hot work is the
+deep 4-leg weldment (§3.5, W1–W6). Everything hung on it afterward — the wall hangers, the retaining bars,
+the corridor-panel and pipe-run brackets — attaches with fasteners (J1–J9), so the fit-out and the tote
+loading happen on a **finished, painted frame with no welding on-site.** Build in four phases:
+
+**Phase 1 — Shop-weld the deep 4-leg box (the only weldment).**
+
+1. **Fit-up in a jig** referencing the datums (§3.6): the four foot undersides on the flat table = datum A, the
+   front-upright faces = B, the corridor centerline = C. Clamp the four uprights + the top/bottom rings; set
+   the box square.
+2. **Tack, then check square before finish-welding** — verify the diagonals and upright plumb are inside the
+   §3.6 tolerances while the joints are still only tacked and correctable. A weldment pulls toward each bead,
+   so distortion is controlled by *balanced, symmetric* welding, not by fixing it afterward
+   ([TWI — distortion control](https://www.twi-global.com/technical-knowledge/job-knowledge/distortion-control-prevention-by-fabrication-035)).
+3. **Finish-weld in a balanced order:** ring-to-upright joints in a back-step / alternate-corner pattern so heat
+   input stays symmetric about datum C; weld the four feet with the frame held down on the flat table so the
+   undersides stay coplanar to A (the frame's seat). Then add the smaller weldments — the bar-end cleats (W3),
+   the weld-on lash-ring bases (W4), and the ribbon cross-beams (W6).
+4. **Grind the zinc back at every weld zone** (galvanized/primed stock burns dirty), welds per §3.5 (E70xx).
+5. **Post-weld: re-check the §3.6 tolerances**, then coat (surface-finish spec is set at the fab/quoting stage).
+
+**Phase 2 — Bolt-on fit-out (no hot work, on the finished frame).** TEK-screw the corridor-panel and pipe-run
+L-brackets to the posts (J8/J9), then hang their ply boards (J4/J5). Because these are self-drillers into the
+post wall, the brackets can be located, adjusted, or replaced on the painted frame without touching a welder.
+
+**Phase 3 — Install + anchor in the container.** Set the box on the floor, shim to datum A, and anchor the four
+feet (J1). Through-bolt each wall hanger to the side wall via its exterior backing plate (J3) — the backing
+plate spreads the load into the thin corrugated wall.
+
+**Phase 4 — Load the totes + secure.** Direct-stack the four totes, drop the front retaining bars into the wall
+hangers, and bolt each bar down — the corridor end to its cleat (J2) and the wall end with its centered
+retention bolt (J7). Fit the anti-slip mats under the tote interfaces, then lash down per §4. Transport
+removes nothing from the frame; only the tote straps are released at the destination.
+
+---
+
 ## 4. Securing for Transport
 
 ### 4.1 Weld-On Lashing Rings

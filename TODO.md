@@ -193,6 +193,14 @@ parametrically from `tbs_constants` so they can't drift. Do the **film-plane cor
 as the template, then roll the same standard out across all sets (film plane, water/tray/spray, IBC frame,
 walkway, hinged panel, light lock, electrical, optics, …)._
 
+- [ ] **Walkway blueprint pass (roll the IBC-frame standard onto the walkway set).** Definitive walkway drawings
+  — floor-leg cantilevers, right cantilever-rectangle, wall gusset brackets, grate cut-plans — with hole
+  positions / datums / fastener + weld callouts / material-finish, driven from `tbs_constants`. **Known fix to
+  resolve in it:** `walkway-sheet6` **View B — the cantilever post is drawn welded OVER the foot-plate anchor
+  bolt holes**, so the M10 floor anchors (`LEFT_WK_CANT_FOOT_BOLT_N`) can't be driven. Relocate the 4 anchor
+  holes into the foot's **outboard outrigger** (X≈147–225, clear of the 50.8 post now sitting at X225–275 after
+  the 2026-08-16 foot-X0 derive fix), or otherwise clear the post footprint; then regenerate the sheet + verify.
+
 ### Definitive corner-mechanism engineering drawing (film plane — FIRST / template)
 
 - [x] **Fully-dimensioned multi-view detail of ONE corner — DONE 2026-08-10 (branch `corner-eng-design`).**

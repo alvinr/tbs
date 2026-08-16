@@ -1293,15 +1293,21 @@ def sheet5():
     draw_dim_h(ax, XT, XUP, zc - 42, "reach 325  (= arm length)", fs=6.5, font=FONT, above=False)
 
     # ── PLAN VIEW — top-down: each half-lap is a full-width crossing (notch = beam width) ──
-    _dcell(ax, 20, 520, 1320, 250, "PLAN VIEW (top-down)  ·  each notch is a FULL-WIDTH half-lap (beam width 50.8)")
-    py, dw = 630, 96                                            # arm centreline (Yd) / drawn width (50.8 exaggerated)
+    _dcell(ax, 20, 500, 1320, 280, "PLAN VIEW (top-down)  ·  each notch is a FULL-WIDTH half-lap (beam width 50.8)")
+    py, dw = 650, 96                                            # arm centreline (Yd) / drawn width (50.8 exaggerated)
     ax.add_patch(Rectangle((XT, py - dw/2), (XUP - ep_x) - XT, dw, fc=C_STEEL, ec=C_OUT, alpha=0.5, lw=1.4, zorder=5))  # arm, top-down
     ax.add_patch(Rectangle((XUP - ep_x, py - dw/2 - 6), ep_x, dw + 12, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.4, zorder=7))  # end-plate edge
     for (n0, n1), lbl in (((XIN0, XIN1), "inner long beam\n(arm tip)"), ((XOUT0, XOUT1), "outer long beam")):
         ax.add_patch(Rectangle((n0, py - dw/2), n1 - n0, dw, lw=1.2, zorder=6, **_hatch))          # notch = beam width, full arm width
-        ax.text((n0 + n1)/2, py + dw/2 + 26, lbl, fontsize=5.8, ha="center", va="center", color=C_DIM, **FONT)
+        ax.text((n0 + n1)/2, py + dw/2 + 22, lbl, fontsize=5.8, ha="center", va="center", color=C_DIM, **FONT)
     ax.text(XT - 8, py, "TIP", fontsize=5.5, ha="right", va="center", color=C_DIM, **FONT)
     draw_dim_v(ax, XUP + 24, py - dw/2, py + dw/2, "50.8", fs=5.6, font=FONT)                       # arm width = beam width
+    zcp = py - dw/2 - 22                                                                            # chain-dim line (mirrors VIEW A)
+    draw_dim_h(ax, XT, XIN1, zcp, "50.8", fs=5.8, font=FONT, above=False)                           # inner notch width
+    draw_dim_h(ax, XIN1, XOUT0, zcp, "198.4", fs=5.8, font=FONT, above=False)                       # clear gap
+    draw_dim_h(ax, XOUT0, XOUT1, zcp, "50.8", fs=5.8, font=FONT, above=False)                       # outer notch width
+    draw_dim_h(ax, XOUT1, XUP, zcp, "25", fs=5.8, font=FONT, above=False)                           # stub to the upright
+    draw_dim_h(ax, XT, XUP, zcp - 34, "reach 325  (= arm length)", fs=6.3, font=FONT, above=False)
 
     # ── END-PLATE — bolt-hole locations, arm weld footprint shadow-marked ──
     _dcell(ax, 20, 40, 860, 440, "END-PLATE / REAR BACKING PLATE (identical, ×2 per joint)  ·  4× Ø13 for M12")

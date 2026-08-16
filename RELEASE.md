@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **NEW — IBC frame Sheet 5: walkway cantilever-arm fabrication (`ibc-frame-sheet5.png`).** The 2 walkway
+  cantilever arms that hang off the IBC front uprights are now drawn as a fabrication sheet in the IBC-frame set
+  (keeping all the IBC-frame metal together rather than deferring to a separate walkway blueprint): VIEW A side
+  elevation (2×1×0.120 steel arm reaching 325 mm from the upright clamp to the walkway deck, 2× M12 clamp J6 —
+  ref Sheet 4 Detail F), VIEW B arm section (RHS laid flat), DETAIL C the half-lap where the arm crosses the
+  deck long-beam (upper 20 mm notched so the beam drops in flush — one continuous arm, no splice). Sheet count
+  bumped to OF 5; registered in the gallery / publish.sh / setup_docs / dependencies.yml and embedded in report
+  §3.5 + §8. The two "detailed in the walkway blueprint" notes re-scoped to point at Sheet 5. (2D only; the 3D
+  ibc-stack arm + full model cascade to follow.)
+
 - **NEW — IBC frame load-case sheet (`ibc-frame-load-case.png`).** `ibc_frame_load.py` gained a `--png` render:
   a one-page load-case drawing — the transport load-path elevation with the EN 12195-1 arrows (0.8 g fwd /
   1.0 g down / 0.5 g lateral), the method box (coefficients, f_s, μ, the blocking inequality, both fill

@@ -162,7 +162,7 @@ The two bars give **defense in depth**: as positive blocking they pass on their 
 **Service + walkway load cases** (the same frame also carries the plumbing panel and the walkway — both **non-governing** vs the transport case):
 
 - **Plumbing panel + pumps** (~20 kg on the 6 rear-panel brackets) = ~33 N/bracket, static — trivial (SF ≫ 10).
-- **Right-walkway cantilever** — each of the 2 arms carries ~22 kg dead + a 1 kN person point load at the deck (325 mm out from the upright) = a **395 N·m moment into the front upright**: the 50.8 RHS upright bends at **SF 6.9**, and the arm→upright connection — a **bolted clamp** (2 clamp plates wrapping the upright + 2× M12 through-bolts, J6) carrying the moment as a couple over the ~37 mm bolt spacing — at **SF 3.8**. The arm's own detailing belongs to the walkway blueprint; only its connection into this frame is checked here.
+- **Right-walkway cantilever** — each of the 2 arms carries ~22 kg dead + a 1 kN person point load at the deck (325 mm out from the upright) = a **395 N·m moment into the front upright**: the 50.8 RHS upright bends at **SF 6.9**, and the arm→upright connection — a **bolted clamp** (2 clamp plates wrapping the upright + 2× M12 through-bolts, J6) carrying the moment as a couple over the ~37 mm bolt spacing — at **SF 3.8**. The arm's own fabrication is drawn on Sheet 5; its connection into this frame (the clamp) is checked here.
 
 The load path, the EN 12195-1 method, and the full demand/capacity/SF matrix (driven from `ibc_frame_load.py`) are drawn on the load-case sheet:
 
@@ -205,11 +205,15 @@ Torque sources: M12 8.8 zinc/dry ≈ 88 N·m ([Fastenal torque-tension, K = 0.20
 
 The rear-panel bracket (**J8**) and the side-panel pipe-run L-bracket (**J9**) are **no longer welded** — they attach to the post with **#14 self-drilling TEK screws** (2 per bracket) so they can be added to a pre-finished, painted frame with no hot work and stay adjustable; both carry only light static loads (panel ~33 N/bracket; pipe runs lighter).
 
-The wall joist hangers are **folded** 4 mm plate (bent, not welded); the exterior backing plates are loose (bolted, not welded). The corridor-panel + side-panel pipe-run brackets and the ribbon cross-beams are the **plumbing-corridor metal** that shares this frame; the walkway cantilever arms **clamp** to the front uprights (J6, a bolted 2-plate clamp — not a weld) but are detailed in the walkway blueprint.
+The wall joist hangers are **folded** 4 mm plate (bent, not welded); the exterior backing plates are loose (bolted, not welded). The corridor-panel + side-panel pipe-run brackets and the ribbon cross-beams are the **plumbing-corridor metal** that shares this frame; the walkway cantilever arms **clamp** to the front uprights (J6, a bolted 2-plate clamp — not a weld) and are fabricated per Sheet 5.
 
 These joints are drawn on **Sheet 4** (each with its weld + fastener callout):
 
 ![TBS-001 IBC Frame — Sheet 4: Fabrication Details](assets/ibc-frame-sheet4.png)
+
+The walkway cantilever arms — how each arm is cut, the half-lap where it crosses the walkway deck long-beam, and the section — are drawn on **Sheet 5** (the clamp connection into the upright is the same J6 shown on Sheet 4, Detail F):
+
+![TBS-001 IBC Frame — Sheet 5: Walkway Cantilever Arm Fabrication](assets/ibc-frame-sheet5.png)
 
 ### 3.6 Datum + Tolerance Scheme
 
@@ -375,7 +379,7 @@ and both panels only as loads the stacking frame carries.
 
 ## 8. Engineering Drawings
 
-Eight construction drawings cover the IBC system across two drawing sets. They are shown inline in the
+The construction drawings cover the IBC system across two drawing sets. They are shown inline in the
 relevant sections above; the full set is collected here and in [Engineering Diagrams](engineering-diagrams.md).
 
 <!-- brochure:skip -->
@@ -397,7 +401,7 @@ relevant sections above; the full set is collected here and in [Engineering Diag
 **Sheet 5 — Internal plumbing elevation: Pipe routing from IBCs to bulkhead unions**
 ![TBS-001 IBC Stacking — Sheet 5](assets/ibc-stacking-sheet5.png)
 
-### IBC Support Frame Fabrication (4 sheets + 2 plate-schedule sheets)
+### IBC Support Frame Fabrication (5 sheets + 2 plate-schedule sheets)
 
 **Sheet 1 — Front elevation: deep-box uprights (front pair, back pair 450mm behind), floor feet, front retaining bars + wall hangers + weld-on lashing rings, direct-stack junction**
 ![TBS-001 IBC Frame — Sheet 1](assets/ibc-frame-sheet1.png)
@@ -410,6 +414,9 @@ relevant sections above; the full set is collected here and in [Engineering Diag
 
 **Sheet 4 — Fabrication details: DETAIL A wall joist hanger (per-bar, 2-bolt, 50mm clearance), B bar→upright cleat, C weld-on lashing ring, D rear-panel bracket, E side-panel pipe-run L-bracket, F walkway arm→front-upright clamp (2 plates + 2× M12 through-bolts, J6) — each with weld (W) + fastener (J) callouts**
 ![TBS-001 IBC Frame — Sheet 4](assets/ibc-frame-sheet4.png)
+
+**Sheet 5 — Walkway cantilever arm fabrication (×2, off the IBC front uprights): VIEW A side elevation (arm reaching 325 mm from the upright clamp to the walkway deck, 2× M12 clamp J6), VIEW B arm section (2×1×0.120 RHS laid flat), DETAIL C half-lap where the arm crosses the deck long-beam (upper 20 mm notched, beam drops in flush — one continuous arm)**
+![TBS-001 IBC Frame — Sheet 5](assets/ibc-frame-sheet5.png)
 
 **Plate Schedule Sheet 1 — Structural plates drawn 1:1 for the shop: PLATE 1 IBC floor foot (150×150×12, 4× Ø14 @ 100 sq PCD), PLATE 2 wall-hanger exterior backing (60×205×8, 2× Ø14 @ 169), PLATE 3 wall-hanger pocket (folded 4 mm back-plate + 70 seat, J3 + J7 holes) — each with outline dims, hole Ø + center positions, thickness, material, and qty**
 ![TBS-001 IBC Frame — Plate Schedule Sheet 1](assets/ibc-plate-schedule-sheet1.png)

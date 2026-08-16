@@ -216,7 +216,147 @@ def service_loads():
     return "\n".join(lines)
 
 
+def render_png(path=None):
+    """Blueprint load-case SHEET (ibc-frame-load-case.png): frame elevation with the EN 12195-1
+    load arrows + a demand/capacity/SF matrix for every restraint element, driven from the same
+    compute() the validation table uses. Matplotlib guarded (except ImportError) so the module stays
+    import-safe for the dependency-free gates."""
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+        from matplotlib.patches import Rectangle, FancyArrow
+    except ImportError:
+        return None
+    if path is None:
+        from tbs_constants import DIAGRAMS_DIR
+        path = os.path.join(DIAGRAMS_DIR, "ibc-frame-load-case.png")
+
+    n = IBC_FRONT_BAR_N_PER_TIER
+    rL  = compute(M_LOADED,  "loaded",     mu=0.20, n_bars_per_tote=n, n_straps=2)   # governing: no mat
+    rLm = compute(M_LOADED,  "loaded+mat", mu=0.60, n_bars_per_tote=n, n_straps=2)   # anti-slip credited
+    rD  = compute(M_DRAINED, "drained",    mu=0.20, n_bars_per_tote=n, n_straps=2)
+    # service (walkway arm + upright), recomputed from the same constants
+    p_arm  = M_WK_ARM_KG * G + P_PERSON_N
+    m_conn = p_arm * ARM_REACH_M
+    sf_upr = (z_rhs(IBC_FRAME_RHS, IBC_FRAME_RHS, IBC_FRAME_T) * FY_A500B / 1e3) / m_conn
+    sf_clamp = bolt_shear_cap(FUB_88, 1) / (m_conn / 0.037)
+
+    C_STEEL = "#8890a0"; C_TOTE = "#c9d4e4"; C_LOAD = "#c0392b"; C_OK = "#1f7a3d"; C_WARN = "#b8860b"
+
+    fig = plt.figure(figsize=(15.5, 9)); fig.patch.set_facecolor("white")
+    gs = fig.add_gridspec(2, 2, width_ratios=[1, 1.28], height_ratios=[1.05, 1],
+                          left=0.045, right=0.975, top=0.88, bottom=0.06, wspace=0.16, hspace=0.24)
+    axE = fig.add_subplot(gs[0, 0]); axM = fig.add_subplot(gs[1, 0]); axT = fig.add_subplot(gs[:, 1])
+    for ax in (axE, axM, axT):
+        ax.axis("off")
+
+    # ── axE — frame elevation + EN load arrows (schematic, forward = −X to the left) ──
+    axE.set_xlim(0, 100); axE.set_ylim(0, 100); axE.set_aspect("auto")
+    axE.text(50, 97, "LOAD PATH (transport)", ha="center", fontsize=10, fontweight="bold")
+    axE.add_patch(Rectangle((8, 6), 84, 4, fc=C_STEEL, ec="#333"))            # container floor
+    axE.text(50, 3, "container floor  ·  4 foot anchors (datum A)", ha="center", fontsize=7, color="#555")
+    axE.add_patch(Rectangle((26, 10), 52, 62, fc=C_TOTE, ec="#333"))          # tote stack (2 high)
+    axE.plot([26, 78], [41, 41], color="#333", lw=0.7, ls=(0, (4, 2)))
+    axE.text(52, 40, "direct-stack junction", ha="center", va="center", fontsize=6.5, color="#555")
+    axE.text(52, 60, "4× 1000 L totes\n(2×2, restraint-only)", ha="center", va="center", fontsize=8)
+    axE.add_patch(Rectangle((22, 12), 4, 58, fc=C_STEEL, ec="#333"))          # front retaining bars (at the −X face)
+    axE.text(16, 55, "front\nbars", ha="center", fontsize=7); axE.plot([20,24],[45,45],color="#333",lw=0.5)
+    axE.add_patch(Rectangle((10, 12), 4, 58, fc="#5a6270", ec="#333"))        # wall hanger / side wall
+    axE.text(9, 34, "wall\nhanger", ha="right", fontsize=7)
+    axE.add_patch(Rectangle((80, 10), 5, 64, fc="#5a6270", ec="#333"))        # corridor upright (cleat end)
+    axE.text(86, 40, "upright\n+ cleat", ha="left", fontsize=7)
+    # EN arrows on the tote CG
+    axE.add_patch(FancyArrow(52, 46, -20, 0, width=1.3, head_width=4, head_length=4, fc=C_LOAD, ec=C_LOAD))
+    axE.text(40, 51, "0.8 g fwd", color=C_LOAD, fontsize=8, ha="center", fontweight="bold")
+    axE.add_patch(FancyArrow(52, 46, 0, -20, width=1.3, head_width=4, head_length=4, fc=C_LOAD, ec=C_LOAD))
+    axE.text(58, 34, "1.0 g ↓", color=C_LOAD, fontsize=8, ha="left", fontweight="bold")
+    axE.add_patch(FancyArrow(52, 68, 14, 0, width=0.9, head_width=3, head_length=3, fc="#e08e0b", ec="#e08e0b"))
+    axE.text(60, 72, "0.5 g lat", color="#b8860b", fontsize=7.5, ha="center")
+    axE.text(50, 0.5, "forward thrust → front bars → (wall hanger J3  +  corridor cleat J2) → frame → floor anchors",
+             ha="center", fontsize=6.6, color="#333")
+
+    # ── axM — EN 12195-1 method + states ──
+    axM.set_xlim(0, 100); axM.set_ylim(0, 100)
+    axM.text(0, 96, "EN 12195-1:2010 — METHOD", fontsize=10, fontweight="bold")
+    method = [
+        ("Acceleration coefficients", ""),
+        ("   c_x = 0.8 g fwd / 0.5 g rear", ""),
+        ("   c_y = 0.5 g lateral · c_z = 1.0 g down", ""),
+        ("Safety factor  f_s = 1.25 fwd / 1.10 else", ""),
+        ("Friction  μ = 0.20 bare (plastic/steel)", ""),
+        ("            μ = 0.60 with certified anti-slip mat", ""),
+        ("Positive blocking (sliding balance):", ""),
+        ("   BC ≥ f_s · m · g · (c − μ·c_z)", ""),
+    ]
+    for i, (a, _) in enumerate(method):
+        axM.text(0, 88 - i*6.2, a, fontsize=8.4, family="monospace",
+                 fontweight="bold" if a.endswith(":") or a[0].isupper() and "≥" not in a else "normal")
+    axM.text(0, 32, "DESIGN STATES (per top-tier tote):", fontsize=8.6, fontweight="bold")
+    axM.text(0, 24, f"   DRAINED (nominal, site-filled): tare {M_DRAINED:.0f} kg  → every element SF ≥ 12",
+             fontsize=8.2, family="monospace", color=C_OK)
+    axM.text(0, 17, f"   LOADED (over-spec bound): full Blue {M_LOADED:.0f} kg  → the governing case",
+             fontsize=8.2, family="monospace", color=C_WARN)
+    axM.text(0, 7, "The camera runs disconnected from water; totes ship EMPTY. LOADED is the\nover-spec margin, not the ship state.",
+             fontsize=7.2, color="#555")
+
+    # ── axT — SF matrix (governing LOADED case) ──
+    axT.set_xlim(0, 100); axT.set_ylim(0, 100)
+    axT.text(50, 97, f"RESTRAINT ELEMENT SAFETY FACTORS — LOADED CASE ({M_LOADED:.0f} kg/tote)",
+             ha="center", fontsize=10, fontweight="bold")
+    cols = [1, 63, 80, 94]   # element · demand · capacity · SF
+    axT.text(cols[0], 90, "element", fontsize=8.5, fontweight="bold")
+    axT.text(cols[1], 90, "demand", fontsize=8.5, fontweight="bold", ha="right")
+    axT.text(cols[2], 90, "capacity", fontsize=8.5, fontweight="bold", ha="right")
+    axT.text(cols[3], 90, "SF", fontsize=8.5, fontweight="bold", ha="right")
+    axT.plot([0, 100], [87.5, 87.5], color="#333", lw=1)
+
+    rows = [
+        ("Front retaining bars ×2/face (μ0.20, no mat)", f"{rL['bar'][0]:,.0f} N·m", f"{rL['bar'][1]:,.0f} N·m", rL['bar'][2], "gov"),
+        ("   … same bars + anti-slip mat (μ0.60)",       f"{rLm['bar'][0]:,.0f} N·m", f"{rLm['bar'][1]:,.0f} N·m", rLm['bar'][2], ""),
+        ("Wall-hanger bolts J3 (2× M12×65, shear)",      f"{rL['hanger_bolt'][0]:,.0f} N", f"{rL['hanger_bolt'][1]:,.0f} N", rL['hanger_bolt'][2], ""),
+        ("Corrugated-wall bearing (backing plate)",      f"{rL['wall_bear'][0]:,.0f} N", f"{rL['wall_bear'][1]:,.0f} N", rL['wall_bear'][2], ""),
+        ("Corridor cleat bolts J2 (2× M12×40, shear)",   f"{rL['cleat'][0]:,.0f} N", f"{rL['cleat'][1]:,.0f} N", rL['cleat'][2], ""),
+        ("Lash ring + 2\" strap (vertical, per stack)",   f"{rL['strap'][0]:,.0f} N", f"{rL['strap'][1]:,.0f} N", rL['strap'][2], ""),
+        ("Walkway-arm clamp J6 (service, +1 kN)",        f"{m_conn:,.0f} N·m", f"{bolt_shear_cap(FUB_88,1):,.0f} N", sf_clamp, "svc"),
+        ("Front upright bending (service)",              f"{m_conn:,.0f} N·m", "—", sf_upr, "svc"),
+    ]
+    y = 82
+    for label, d, c, sf, tag in rows:
+        col = C_WARN if sf < 2 else (C_OK if sf >= 4 else "#333")
+        axT.text(cols[0], y, label, fontsize=7.6, family="monospace")
+        axT.text(cols[1], y, d, fontsize=8, ha="right", family="monospace", color="#555")
+        axT.text(cols[2], y, c, fontsize=8, ha="right", family="monospace", color="#555")
+        axT.text(cols[3], y, f"{sf:.2f}", fontsize=8.6, ha="right", fontweight="bold", color=col)
+        if tag == "gov":
+            axT.text(cols[3]+1.5, y, "◀ governs", fontsize=6.6, color=C_WARN, ha="left", va="center")
+        elif tag == "svc":
+            axT.text(cols[3]+1.5, y, "svc", fontsize=6.2, color="#888", ha="left", va="center")
+        y -= 6.6
+    axT.plot([0, 100], [y+3, y+3], color="#333", lw=1)
+    axT.text(cols[0], y-3, "Defense in depth: the bars pass on positive blocking ALONE (SF 1.59, mat absent);",
+             fontsize=7.6, color="#333")
+    axT.text(cols[0], y-9, "the certified anti-slip mat lifts it to SF 4.77. Everything downstream clears SF ≥ 8;",
+             fontsize=7.6, color="#333")
+    axT.text(cols[0], y-15, "in the DRAINED ship state every element clears SF ≥ 12. Service loads non-governing.",
+             fontsize=7.6, color="#333")
+
+    fig.suptitle("IBC STACKING FRAME — TRANSPORT RESTRAINT LOAD CASE  ·  EN 12195-1:2010",
+                 fontsize=14, fontweight="bold", y=0.965)
+    fig.text(0.5, 0.925, "driven from tbs_constants + ibc_frame_load.py  ·  restraint-only deep 4-leg box  ·  2× 50×20×3 bars/tote + anti-slip mat + 2 straps/stack",
+             ha="center", fontsize=9, color="#555")
+    fig.text(0.5, 0.018, "IBC FRAME — LOAD CASE  ·  TBS-001  ·  see report §3.4  ·  © 2026 Alvin Richards",
+             ha="center", fontsize=8, color="#777")
+    fig.savefig(path, dpi=150, facecolor="white", bbox_inches="tight")
+    plt.close(fig)
+    print(f"  {os.path.relpath(path)} saved")
+    return path
+
+
 def main():
+    if "--png" in sys.argv:
+        render_png()
+        return
     print("IBC STACKING-FRAME TRANSPORT RESTRAINT — EN 12195-1:2010")
     print(f"  corrugation={CONTAINER_CORRUGATION_DEPTH}mm  "
           f"frame RHS={IBC_FRAME_RHS}mm  foot={IBC_FOOT_PLATE}x{IBC_FOOT_PLATE}x{IBC_FOOT_PLATE_T}")

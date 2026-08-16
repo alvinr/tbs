@@ -22,8 +22,10 @@ walkway-arm connection, folded into §3.4–3.6 + the cut list).
 **Remaining / next:** (1) **3D-model reconciliation** — DONE 2026-08-16: pocket → 60/60 + centered J7 bolt +
 the left-cantilever foot-X0 missed-cascade fix; all 6 affected models re-sent/saved/uploaded, drift-free.
 (2) **Assembly / weld-sequence** notes — DONE 2026-08-16 (report §3.7: 4-phase shop-weld → bolt-on → install →
-load, with balanced-weld distortion control). (3) Optional rendered load-case sheet — next. (4) **Coating /
-surface-finish spec** — deferred to the fab/quoting stage. Then publish.
+load, with balanced-weld distortion control). (3) **Rendered load-case sheet** — DONE 2026-08-16
+(`ibc-frame-load-case.png` via `ibc_frame_load.py --png`: load-path elevation + EN 12195-1 method + the full
+demand/capacity/SF matrix; embedded in report §3.4). (4) **Coating / surface-finish spec** — deferred to the
+fab/quoting stage. **The IBC-frame blueprint is otherwise complete — ready to publish.**
 
 ## Phase A outcome (R5 — approved 2026-08-14)
 

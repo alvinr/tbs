@@ -164,6 +164,10 @@ The two bars give **defense in depth**: as positive blocking they pass on their 
 - **Plumbing panel + pumps** (~20 kg on the 6 rear-panel brackets) = ~33 N/bracket, static — trivial (SF ≫ 10).
 - **Right-walkway cantilever** — each of the 2 arms carries ~22 kg dead + a 1 kN person point load at the deck (325 mm out from the upright) = a **395 N·m moment into the front upright**: the 50.8 RHS upright bends at **SF 6.9**, and the arm→upright connection — a **bolted clamp** (2 clamp plates wrapping the upright + 2× M12 through-bolts, J6) carrying the moment as a couple over the ~37 mm bolt spacing — at **SF 3.8**. The arm's own detailing belongs to the walkway blueprint; only its connection into this frame is checked here.
 
+The load path, the EN 12195-1 method, and the full demand/capacity/SF matrix (driven from `ibc_frame_load.py`) are drawn on the load-case sheet:
+
+![TBS-001 IBC Frame — Load Case (EN 12195-1)](assets/ibc-frame-load-case.png)
+
 ### 3.5 Fastener + Weld Schedule (fabrication)
 
 Every bolted and welded joint in the restraint frame, for the fabricator. Weld sizes are computed in

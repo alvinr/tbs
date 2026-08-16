@@ -24,6 +24,12 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **IBC frame blueprint §3.7 — Assembly + Weld Sequence.** Added the build order: a 4-phase sequence (shop-weld
+  the deep 4-leg box → bolt-on fit-out → install + anchor → load + secure), with balanced/symmetric weld order
+  for distortion control (tack + check-square before finish-welding, feet welded on the flat table to hold
+  datum A). Captures the payoff of the TEK-screw + bolt-on design: the only hot work is the box weldment;
+  everything else attaches to a finished, painted frame with no field welding.
+
 - **3D-model reconciliation + a missed-cascade fix (6 models re-sent).** Synced the SketchUp models to the
   2D blueprint: the IBC wall-hanger **pocket → 60/60 mm + a single centered J7 retention bolt** (water,
   ibc-stack), and removed the stray **Yd-600 depth-reference plane** from the water deliverable (it read as a

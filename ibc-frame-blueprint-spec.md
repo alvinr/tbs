@@ -19,10 +19,11 @@ walkway-arm connection, folded into §3.4–3.6 + the cut list).
   **J7 → 1 centered bolt** (redundancy not strength); **rear-panel + pipe-run brackets W6/W7 → #14 TEK
   self-drillers (J8/J9)** — bolt-on to a painted frame, no hot work; `IBC_WBKT_* → FP_CORNER_SEAT_*` rename.
 
-**Remaining / next:** (1) **3D-model reconciliation** — pocket → 60/60 + add the J7 bolt (generator edited
-2026-08-15; awaiting a water-model `--send`); TEK brackets are a fastening detail (no bulk-geometry change).
-(2) **Assembly / weld-sequence** notes (jig + weld order). (3) Optional rendered load-case sheet.
-(4) **Coating / surface-finish spec** — deferred to the fab/quoting stage. Then publish.
+**Remaining / next:** (1) **3D-model reconciliation** — DONE 2026-08-16: pocket → 60/60 + centered J7 bolt +
+the left-cantilever foot-X0 missed-cascade fix; all 6 affected models re-sent/saved/uploaded, drift-free.
+(2) **Assembly / weld-sequence** notes — DONE 2026-08-16 (report §3.7: 4-phase shop-weld → bolt-on → install →
+load, with balanced-weld distortion control). (3) Optional rendered load-case sheet — next. (4) **Coating /
+surface-finish spec** — deferred to the fab/quoting stage. Then publish.
 
 ## Phase A outcome (R5 — approved 2026-08-14)
 

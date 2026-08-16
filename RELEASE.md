@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **NEW — IBC frame load-case sheet (`ibc-frame-load-case.png`).** `ibc_frame_load.py` gained a `--png` render:
+  a one-page load-case drawing — the transport load-path elevation with the EN 12195-1 arrows (0.8 g fwd /
+  1.0 g down / 0.5 g lateral), the method box (coefficients, f_s, μ, the blocking inequality, both fill
+  states), and the full demand/capacity/**SF matrix** for every restraint element (bars with/without the mat,
+  wall-hanger + cleat bolts, wall bearing, lash strap, walkway-arm clamp, upright) — all driven from the same
+  `compute()` the validation table uses. Registered + embedded in report §3.4. Completes the IBC-frame
+  blueprint's visual set (the film-plane Sheet 10 analogue).
+
 - **IBC frame blueprint §3.7 — Assembly + Weld Sequence.** Added the build order: a 4-phase sequence (shop-weld
   the deep 4-leg box → bolt-on fit-out → install + anchor → load + secure), with balanced/symmetric weld order
   for distortion control (tack + check-square before finish-welding, feet welded on the flat table to hold

@@ -232,6 +232,8 @@
 
 ![TBS-001 IBC Frame — Plate Schedule Sheet 2: Angle Brackets](assets/ibc-plate-schedule-sheet2.png)
 
+![TBS-001 IBC Frame — Load Case (EN 12195-1)](assets/ibc-frame-load-case.png)
+
 ---
 
 ## 17. Chemistry Prep Shelves

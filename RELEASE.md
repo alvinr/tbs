@@ -26,14 +26,14 @@ file** — a release must not ship without a changelog entry:
 
 - **NEW — IBC frame Sheet 5: walkway cantilever-arm fabrication (`ibc-frame-sheet5.png`).** The 2 walkway
   cantilever arms that hang off the IBC front uprights are now drawn as a fabrication sheet in the IBC-frame set
-  (keeping all the IBC-frame metal together rather than deferring to a separate walkway blueprint): VIEW A side
-  elevation (2×1×0.120 steel arm reaching 325 mm from the upright to the tip, half-lapping over BOTH walkway
-  long beams), a PLAN VIEW locating the **two** half-lap notches along the arm (outer beam 25 mm from the upright
-  end, inner beam at the tip, 198 mm clear — the arm crosses both `RWK_BEARER_XS`), and DETAIL C with **both**
-  half-lap profiles (each: upper 20 mm notched so the beam drops in flush — one continuous arm, no splice).
-  Sheet count bumped to OF 5; registered in the gallery / publish.sh / setup_docs / dependencies.yml and embedded
-  in report §3.5 + §8. The two "detailed in the walkway blueprint" notes re-scoped to point at Sheet 5. (2D only;
-  the 3D ibc-stack arm + full model cascade to follow.)
+  (keeping all the IBC-frame metal together rather than deferring to a separate walkway blueprint). The arm
+  crosses **both** right-walkway long beams (`RWK_BEARER_XS`), so it has **two** half-lap notches, not one.
+  Three views: a fully-dimensioned VIEW A side elevation (notch widths + gaps 50.8 / 198.4 / 50.8 / 25 → reach
+  325, half-lap depth 20 notched of the 25.4), a PLAN VIEW showing each notch as a full-width half-lap (beam
+  width 50.8), and an END-PLATE / rear-backing-plate detail (70 × 130, 4× Ø13 for M12 at 30 × 90 pitch, with the
+  arm weld footprint shadow-marked). Sheet count bumped to OF 5; registered in the gallery / publish.sh /
+  setup_docs / dependencies.yml and embedded in report §3.5 + §8. The two "detailed in the walkway blueprint"
+  notes re-scoped to point at Sheet 5. (2D only; the 3D ibc-stack arm + full model cascade to follow.)
 
 - **J6 walkway-arm joint redesigned: clamp → bolted end-plate (Sheet 4 Detail F + Sheet 5 + report).** The old
   J6 (2 clamp plates wrapping the upright + 2× M12, carrying the moment by friction over a 37 mm spacing) read

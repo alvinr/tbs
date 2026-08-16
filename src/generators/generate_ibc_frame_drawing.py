@@ -1191,36 +1191,39 @@ def sheet4():
     leader(ax, qx + 61, qy + 105, qx + 8, qy + 40, "1×1×⅛ L → post:\n2× #14 TEK (J9)", fs=6, font=FONT, ha="left")
     leader(ax, qx + 138, qy + 90, qx + 176, qy + 44, "board → tee-nut\n+ CSK (J5)", fs=6, font=FONT, ha="left")
 
-    # ── DETAIL F — WALKWAY CANTILEVER ARM → FRONT UPRIGHT (2-bolt clamp: PLAN section + ELEVATION) ──
+    # ── DETAIL F — WALKWAY CANTILEVER ARM → FRONT UPRIGHT (bolted end-plate: PLAN section + ELEVATION) ──
     fx0, fy0 = 940, 60
-    _dcell(ax, fx0, fy0, 420, 380, "DETAIL F — WALKWAY ARM → UPRIGHT (clamp, ×2)")
+    _dcell(ax, fx0, fy0, 420, 380, "DETAIL F — WALKWAY ARM → UPRIGHT (bolted end-plate, ×2)")
 
-    # -- upper sub-view: PLAN SECTION (top-down, X→right / Yd↑) — how it reads orbiting the 3D model --
-    ax.text(fx0 + 210, fy0 + 338, "PLAN SECTION  (top-down)", fontsize=6, ha="center", fontweight="bold", **FONT, zorder=8)
-    pcx, pcy = fx0 + 235, fy0 + 240                                             # upright center in plan
+    # -- upper sub-view: PLAN SECTION (top-down, X→right / Yd↑) — end-plate → through-bolts → rear backing plate --
+    ax.text(fx0 + 210, fy0 + 340, "PLAN SECTION  (top-down)", fontsize=6, ha="center", fontweight="bold", **FONT, zorder=8)
+    pcx, pcy, ept = fx0 + 235, fy0 + 245, 9                                     # upright center in plan; drawn plate thickness
     ax.add_patch(Rectangle((pcx - 25, pcy - 25), 50, 50, fc=C_FRAME, ec=C_OUT, lw=1.3, alpha=0.5, zorder=6))  # upright (50 sq)
-    ax.text(pcx, pcy, "UPRIGHT", fontsize=5, ha="center", va="center", **FONT, zorder=9)
-    ax.add_patch(Rectangle((pcx - 150, pcy - 25), 125, 50, fc=C_FRAME, ec=C_OUT, lw=1.2, alpha=0.5, zorder=6))  # arm from −X
+    ax.text(pcx, pcy, "UPRIGHT", fontsize=4.6, ha="center", va="center", **FONT, zorder=9)
+    ax.add_patch(Rectangle((pcx - 150, pcy - 25), 125 - ept, 50, fc=C_FRAME, ec=C_OUT, lw=1.2, alpha=0.5, zorder=6))  # arm from −X
     _break(ax, pcx - 150, pcy - 25, pcy + 25)                                   # arm continues to the walkway
-    ax.text(pcx - 88, pcy, "ARM →", fontsize=5, ha="center", va="center", **FONT, zorder=9)
-    for pfy in (pcy - 33, pcy + 25):                                            # 2 clamp plates on the ±Yd faces
-        ax.add_patch(Rectangle((pcx - 29, pfy), 62, 8, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=7))
-    ax.plot([pcx, pcx], [pcy - 41, pcy + 41], color=C_BOLT, lw=1.4, ls=(0, (4, 2)), zorder=9)   # bolt axis (both bolts project here)
-    leader(ax, pcx, pcy + 33, pcx + 60, pcy + 62, "clamp plates grip\nthe ±Yd faces", fs=5.5, font=FONT, ha="left")
-    leader(ax, pcx - 150, pcy, pcx - 150, pcy - 58, "arm cantilevers −X\nto the walkway", fs=5.5, font=FONT, ha="center")
+    ax.text(pcx - 92, pcy, "ARM →", fontsize=5, ha="center", va="center", **FONT, zorder=9)
+    ax.add_patch(Rectangle((pcx - 25 - ept, pcy - 33), ept, 66, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.4, zorder=8))  # end-plate WELDED to arm (−X face)
+    ax.add_patch(Rectangle((pcx + 25, pcy - 33), ept, 66, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.4, zorder=8))        # rear backing plate (+X face)
+    for byy in (pcy - 15, pcy + 15):                                            # 2 of the 4 M12 (the Z pair projects onto each)
+        _bolt(ax, pcx - 25 - ept, byy, 50 + 2 * ept, d=7, nut=True)
+    leader(ax, pcx - 25 - ept, pcy - 33, pcx - 96, pcy - 64, "end-plate\nWELDED to arm", fs=5.3, font=FONT, ha="left")
+    leader(ax, pcx + 25 + ept, pcy + 33, pcx + 38, pcy + 60, "rear backing\nplate + nuts", fs=5.3, font=FONT, ha="left")
+    leader(ax, pcx - 15, pcy + 15, pcx - 70, pcy + 60, "4× M12 through-bolts\n(+ crush sleeve, hollow post)", fs=5.3, font=FONT, ha="right")
 
-    # -- lower sub-view: ELEVATION (looking −X) — shows the 2 bolt Z-levels + pitch --
-    ax.text(fx0 + 210, fy0 + 150, "ELEVATION  (looking −X)", fontsize=6, ha="center", fontweight="bold", **FONT, zorder=8)
-    fyc, fzc = fx0 + 205, fy0 + 78
-    ax.add_patch(Rectangle((fyc - 25, fzc - 52), 50, 118, fc=C_FRAME, ec=C_OUT, lw=1.2, alpha=0.5, zorder=5))  # upright face
-    ax.add_patch(Rectangle((fyc - 25, fzc - 25), 50, 50, fc=C_FRAME, ec=C_OUT, lw=1.5, hatch="xx", alpha=0.55, zorder=7))  # arm end-on
-    ax.text(fyc, fzc, "ARM", fontsize=5, ha="center", va="center", **FONT, zorder=9)
-    for fyy in (fyc - 37, fyc + 29):                                            # 2 clamp plates flanking the upright (80 tall)
-        ax.add_patch(Rectangle((fyy, fzc - 40), 8, 80, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=6))
-    for bz in (fzc - 18, fzc + 19):                                             # 2 M12 through-bolts — ~37mm pitch (matches the model)
-        _bolt(ax, fyc - 37, bz, 74, d=8, nut=True)                              # head + nut bear on the two clamp-plate OUTER faces → actually clamps the assembly
-    draw_dim_v(ax, fyc + 78, fzc - 18, fzc + 19, "37")
-    leader(ax, fyc - 55, fzc - 18, fyc - 118, fzc - 46, "2× M12 bolts\nclamp — NO weld", fs=5.5, font=FONT, ha="left")
+    # -- lower sub-view: ELEVATION (looking −X) — end-plate face + 2×2 bolt pattern + pitch --
+    ax.text(fx0 + 210, fy0 + 160, "ELEVATION  (looking −X)", fontsize=6, ha="center", fontweight="bold", **FONT, zorder=8)
+    fyc, fzc = fx0 + 175, fy0 + 84
+    ax.add_patch(Rectangle((fyc - 25, fzc - 25), 50, 50, fc=C_FRAME, ec=C_OUT, lw=1.0, ls=(0, (3, 2)), alpha=0.3, zorder=5))  # upright behind (dashed)
+    ax.add_patch(Rectangle((fyc - 35, fzc - 58), 70, 116, fc=C_STEEL, ec=C_OUT, lw=1.4, alpha=0.7, zorder=6))  # end-plate face
+    for by in (fyc - 15, fyc + 15):                                             # 2×2 bolt holes
+        for bz2 in (fzc - 40, fzc + 40):
+            ax.add_patch(Circle((by, bz2), 4.5, fc=BG, ec=C_OUT, lw=1.1, zorder=8))
+            ax.plot([by - 7, by + 7], [bz2, bz2], color=C_OUT, lw=0.5, zorder=8)
+            ax.plot([by, by], [bz2 - 7, bz2 + 7], color=C_OUT, lw=0.5, zorder=8)
+    draw_dim_v(ax, fyc + 58, fzc - 40, fzc + 40, "90", fs=5.3, font=FONT)
+    draw_dim_h(ax, fyc - 15, fyc + 15, fzc - 74, "30", fs=5.3, font=FONT, above=False)
+    leader(ax, fyc + 35, fzc - 40, fyc + 92, fzc - 22, "end-plate\n(welded to arm)\n4× M12", fs=5.3, font=FONT, ha="left")
 
     # ── Full-width NOTES band ──
     _dcell(ax, 20, -300, 1340, 268, "NOTES")
@@ -1229,8 +1232,8 @@ def sheet4():
         "• Hanger (A): 2 through-bolts fix the HANGER to the wall (not the bar), 50mm clear for wrench. The BAR bolts DOWN to the seat — 1× VERTICAL M12 centered (J7, removable); W5 = seat↔plate weld.",
         "• Cleat (B): the bar bolts DOWN to the welded corridor cleat — 2× M12×40 (J2); the wall end drops into the hanger (A).",
         "• Brackets (D/E): L-brackets TEK-screwed to the post (J8/J9, 2× #14 self-drillers each — NO weld, bolt-on to a painted frame). D: rear panel → upstand tee-nut (J4). E: side pipe-board → tee-nut + CSK (J5).",
-        "• Walkway arm (F): a BOLTED CLAMP — 2 clamp plates + 2× M12 through-bolts per arm, NOT a weld. Arm detailing → walkway blueprint.    • Straps → stacking Sheet 2 (ops).",
-        "• Where used: A/B 8 retaining-bar ends · C lash rings on front bars · D 6 rear-panel brackets · E 12 side-panel pipe-run brackets · F 2 walkway-arm clamps.",
+        "• Walkway arm (F): a BOLTED END-PLATE — plate WELDED to the arm end (shop weld), then 4× M12 through the upright into a REAR backing plate + nuts (crush sleeve in the hollow post). No frame weld. Arm fab → Sheet 5.    • Straps → stacking Sheet 2 (ops).",
+        "• Where used: A/B 8 retaining-bar ends · C lash rings on front bars · D 6 rear-panel brackets · E 12 side-panel pipe-run brackets · F 2 walkway-arm end-plate joints (8× M12).",
     ], 44, -52, spacing=40, fs=6.4, font=FONT, width=1300)
 
     title_block(ax, "SHEET 4 OF 5",
@@ -1260,17 +1263,22 @@ def sheet5():
     dx = 320                                                   # deck long-beam X (schematic)
     _rhs_rect(ax, ux, az - 150, 70, 300, fc=C_FRAME, alpha=0.5, zo=4)                     # IBC front upright (within the cell)
     ax.text(ux + 35, az + 95, "IBC FRONT\nUPRIGHT", fontsize=6.5, ha="center", va="center", **FONT, zorder=8)
-    _rhs_rect(ax, dx, az - ah/2, ux - dx, ah, fc=C_STEEL, alpha=0.6, zo=5)                # the 2×1×0.120 arm
-    ax.text((dx + ux)/2, az, "2×1×0.120 STEEL ARM", fontsize=7.5, ha="center", va="center", **FONT, zorder=8)
+    ep_x, ep_h = 12, 130                                                                 # arm END-PLATE (drawn thickness / height)
+    _rhs_rect(ax, dx, az - ah/2, ux - ep_x - dx, ah, fc=C_STEEL, alpha=0.6, zo=5)         # the 2×1×0.120 arm (ends at the end-plate)
+    ax.text((dx + ux)/2 - 30, az, "2×1×0.120 STEEL ARM", fontsize=7.5, ha="center", va="center", **FONT, zorder=8)
     lbw = 70                                                                             # half-lap: arm TOP notched over the long-beam width
     ax.add_patch(Rectangle((dx, az + 2), lbw, ah/2 - 2, fc=BG, ec="none", zorder=6))
     ax.add_patch(Rectangle((dx, az + 2), lbw, ah/2 - 2, fc=C_FRAME, ec=C_OUT, alpha=0.5, hatch="xx", lw=1.2, zorder=7))  # long beam in the lap
     ax.plot([dx, dx + lbw], [az + 2, az + 2], color=C_OUT, lw=1.0, zorder=8)             # half-lap line
     _break(ax, dx - 4, az - ah/2, az + ah/2)                                             # long beam continues in Yd (out of page)
     leader(ax, dx + lbw/2, az + ah/2, dx + 20, az + 120, "walkway long beam (2×1) drops\ninto the HALF-LAP — Detail C", fs=6, font=FONT, ha="left")
-    for bz in (az - 30, az + 30):
-        _bolt(ax, ux - 40, bz, 110, d=9, nut=True)                                       # 2× M12 clamp bolts (J6)
-    leader(ax, ux - 40, az + 30, ux - 210, az + 130, "2-plate clamp + 2× M12 (J6)\n— see Detail F, sheet 4", fs=6, font=FONT, ha="right")
+    # J6 — bolted end-plate: plate WELDED to the arm end → 4× M12 through the upright → REAR backing plate + nuts
+    ax.add_patch(Rectangle((ux - ep_x, az - ep_h/2), ep_x, ep_h, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.5, zorder=9))   # end-plate on the −X face (welded to arm)
+    ax.add_patch(Rectangle((ux + 70, az - ep_h/2), ep_x, ep_h, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.5, zorder=9))     # rear backing plate on the +X face
+    for bz in (az - 45, az + 45):                                                        # 2 of the 4 bolts show (the Yd pair projects onto each)
+        _bolt(ax, ux - ep_x, bz, 70 + 2 * ep_x, d=9, nut=True)
+    leader(ax, ux - ep_x, az + 55, ux - 250, az + 168,
+           "bolted end-plate (WELDED to arm) → 4× M12\nthrough the upright → REAR backing plate + nuts\n(J6) — see Detail F, sheet 4", fs=6, font=FONT, ha="left")
     draw_dim_h(ax, dx, ux, az - 95, "reach 325", fs=6.5, font=FONT, above=False)
     draw_dim_v(ax, dx - 24, az - ah/2, az + ah/2, "25", fs=6, font=FONT)
     ax.text((dx + ux) / 2, az - 130, "arm underside Z90 · top Z115 (grate bottom) — 11.6mm over the spray beam",
@@ -1305,19 +1313,19 @@ def sheet5():
     # ── NOTES ──
     _dcell(ax, 950, 40, 390, 360, "NOTES")
     draw_notes(ax, [
-        "• 2× arms — one per IBC FRONT upright",
-        "  (corridor near + far). 2×1×0.120in",
-        "  steel, laid flat.",
-        "• Reach 325mm: upright face → walkway",
-        "  deck left edge; carries the RIGHT",
-        "  walkway's left long beam.",
-        "• HALF-LAP where the arm crosses the",
-        "  long beam: upper 20mm notched so the",
-        "  beam drops in flush — ONE arm, no splice.",
-        "• Upright CONNECTION = the 2-plate +",
-        "  2× M12 clamp (J6) — sheet 4, DETAIL F.",
+        "• 2× arms, one per IBC FRONT upright",
+        "  (near + far). 2×1×0.120in steel, flat.",
+        "• Reach 325mm: upright → walkway deck;",
+        "  carries the RIGHT walkway's left beam.",
+        "• HALF-LAP at the beam crossing: upper",
+        "  20mm notched, beam drops flush — ONE",
+        "  arm, no splice (Detail C).",
+        "• CONNECTION (J6): end-plate WELDED to",
+        "  the arm → 4× M12 through the upright →",
+        "  REAR backing plate + nuts (+ crush",
+        "  sleeves, hollow post). Sheet 4, Det F.",
         "• Arm underside Z90; top Z115 (grate).",
-    ], 966, 356, spacing=28, fs=6.3, font=FONT, width=376)
+    ], 966, 356, spacing=26, fs=6.2, font=FONT, width=376)
 
     title_block(ax, "SHEET 5 OF 5",
                 drawing_title="IBC SUPPORT FRAME",

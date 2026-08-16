@@ -27,12 +27,21 @@ file** — a release must not ship without a changelog entry:
 - **NEW — IBC frame Sheet 5: walkway cantilever-arm fabrication (`ibc-frame-sheet5.png`).** The 2 walkway
   cantilever arms that hang off the IBC front uprights are now drawn as a fabrication sheet in the IBC-frame set
   (keeping all the IBC-frame metal together rather than deferring to a separate walkway blueprint): VIEW A side
-  elevation (2×1×0.120 steel arm reaching 325 mm from the upright clamp to the walkway deck, 2× M12 clamp J6 —
-  ref Sheet 4 Detail F), VIEW B arm section (RHS laid flat), DETAIL C the half-lap where the arm crosses the
-  deck long-beam (upper 20 mm notched so the beam drops in flush — one continuous arm, no splice). Sheet count
-  bumped to OF 5; registered in the gallery / publish.sh / setup_docs / dependencies.yml and embedded in report
-  §3.5 + §8. The two "detailed in the walkway blueprint" notes re-scoped to point at Sheet 5. (2D only; the 3D
-  ibc-stack arm + full model cascade to follow.)
+  elevation (2×1×0.120 steel arm reaching 325 mm from the upright to the walkway deck), VIEW B arm section
+  (RHS laid flat), DETAIL C the half-lap where the arm crosses the deck long-beam (upper 20 mm notched so the
+  beam drops in flush — one continuous arm, no splice). Sheet count bumped to OF 5; registered in the gallery /
+  publish.sh / setup_docs / dependencies.yml and embedded in report §3.5 + §8. The two "detailed in the walkway
+  blueprint" notes re-scoped to point at Sheet 5. (2D only; the 3D ibc-stack arm + full model cascade to follow.)
+
+- **J6 walkway-arm joint redesigned: clamp → bolted end-plate (Sheet 4 Detail F + Sheet 5 + report).** The old
+  J6 (2 clamp plates wrapping the upright + 2× M12, carrying the moment by friction over a 37 mm spacing) read
+  as an unclear load path — the bolts gripped nothing. Replaced with a proper **bolted end-plate moment
+  connection**, mirroring the container-wall cantilever detail: an **end-plate welded to the arm end** (shop
+  weld, off the frame), then **4× M12 through the upright into a rear backing plate + nuts** (internal crush
+  sleeve per bolt so the hollow RHS can't dish). Moment goes in as a tension/compression couple across the
+  ~90 mm bolt group → ~2.2 kN/bolt, **SF > 20** (was 3.8). Detail F redrawn (plan section + elevation with the
+  2×2 bolt pattern), VIEW A on Sheet 5 redrawn, and report §3.4 / §3.5-J6 (M12×40 clamp ×4 → M12×100 through
+  ×8) / joint prose updated. (2D + report; parts.py/costing + 3D cascade to follow.)
 
 - **NEW — IBC frame load-case sheet (`ibc-frame-load-case.png`).** `ibc_frame_load.py` gained a `--png` render:
   a one-page load-case drawing — the transport load-path elevation with the EN 12195-1 arrows (0.8 g fwd /

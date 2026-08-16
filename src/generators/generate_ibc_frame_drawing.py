@@ -1250,9 +1250,9 @@ def sheet4():
 def sheet5():
     """Sheet 5 — the 2 walkway cantilever arms that hang off the IBC FRONT uprights (fab).
     The arm's own detailing (section, reach, half-lap); the clamp CONNECTION is Detail F on sheet4."""
-    fig, ax = plt.subplots(figsize=(16.5, 12.9))
-    ax.set_xlim(-20, 1360); ax.set_ylim(-360, 1195); ax.set_aspect("equal"); ax.axis("off")
-    ax.text(680, 1165, "WALKWAY CANTILEVER ARM — FABRICATION  (×2, off the IBC front uprights)",
+    fig, ax = plt.subplots(figsize=(16.5, 13.0))
+    ax.set_xlim(-20, 1360); ax.set_ylim(-360, 1160); ax.set_aspect("equal"); ax.axis("off")
+    ax.text(680, 1132, "WALKWAY CANTILEVER ARM — FABRICATION  (×2, off the IBC front uprights)",
             fontsize=13, fontweight="bold", ha="center", **FONT)
 
     # ── schematic X map along the arm: tip (inner-beam L edge) → upright face, reach 325 ──
@@ -1264,81 +1264,81 @@ def sheet5():
     _hatch = dict(fc=C_FRAME, ec=C_OUT, alpha=0.5, hatch="xx")
 
     # ── VIEW A — SIDE ELEVATION (looking along Yd): arm crosses BOTH long beams, then bolts to the upright ──
-    _dcell(ax, 20, 830, 1320, 300, "VIEW A — SIDE ELEVATION (looking along Yd)  ·  the arm half-laps over BOTH walkway long beams, then bolts to the upright")
-    az, ah, ep_h = 965, 46, 104                                # arm centreline Z / drawn depth / end-plate height
-    _rhs_rect(ax, XUP, az - 115, 60, 230, fc=C_FRAME, alpha=0.5, zo=4)                    # IBC front upright
-    ax.text(XUP + 30, az + 78, "IBC FRONT\nUPRIGHT", fontsize=6, ha="center", va="center", **FONT, zorder=8)
+    _dcell(ax, 20, 800, 1320, 300, "VIEW A — SIDE ELEVATION (looking along Yd)  ·  the arm half-laps over BOTH walkway long beams, then bolts to the upright")
+    az, ah, ep_h = 950, 46, 104                                # arm centreline Z / drawn depth / end-plate height
+    hlz = az - ah/2 + ah * (5.4/25.4)                          # half-lap line: lower 5.4mm continuous, upper 20mm notched
+    _rhs_rect(ax, XUP, az - 112, 60, 224, fc=C_FRAME, alpha=0.5, zo=4)                    # IBC front upright
+    ax.text(XUP + 30, az + 74, "IBC FRONT\nUPRIGHT", fontsize=6, ha="center", va="center", **FONT, zorder=8)
     ax.add_patch(Rectangle((XT, az - ah/2), (XUP - ep_x) - XT, ah, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.4, zorder=5))  # the arm
-    for n0, n1 in ((XIN0, XIN1), (XOUT0, XOUT1)):                                          # long beam dropped into each half-lap
-        ax.add_patch(Rectangle((n0, az + 2), n1 - n0, ah/2 - 2, fc=BG, ec="none", zorder=6))
-        ax.add_patch(Rectangle((n0, az + 2), n1 - n0, ah/2 - 2, lw=1.2, zorder=7, **_hatch))
-        ax.plot([n0, n1], [az + 2, az + 2], color=C_OUT, lw=1.0, zorder=8)                # half-lap line
-    ax.text((XIN1 + XOUT0)/2, az, "2×1×0.120 STEEL ARM", fontsize=7.5, ha="center", va="center", **FONT, zorder=8)
-    leader(ax, (XIN0+XIN1)/2, az + ah/2, (XIN0+XIN1)/2 + 60, az + 92, "inner long beam (arm tip)\n— profile: Detail C", fs=6, font=FONT, ha="left")
-    leader(ax, (XOUT0+XOUT1)/2, az + ah/2, (XOUT0+XOUT1)/2 - 60, az + 92, "outer long beam\n— profile: Detail C", fs=6, font=FONT, ha="right")
+    for n0, n1 in ((XIN0, XIN1), (XOUT0, XOUT1)):                                          # long beam in each half-lap (upper 20 notched)
+        ax.add_patch(Rectangle((n0, hlz), n1 - n0, (az + ah/2) - hlz, fc=BG, ec="none", zorder=6))
+        ax.add_patch(Rectangle((n0, hlz), n1 - n0, (az + ah/2) - hlz, lw=1.2, zorder=7, **_hatch))
+        ax.plot([n0, n1], [hlz, hlz], color=C_OUT, lw=1.0, zorder=8)                       # half-lap line
+    ax.text((XIN1 + XOUT0)/2, az - 4, "2×1×0.120 STEEL ARM", fontsize=7.5, ha="center", va="center", **FONT, zorder=8)
+    leader(ax, (XIN0+XIN1)/2, az + ah/2, (XIN0+XIN1)/2 + 55, az + 84, "inner long beam\n(at the arm tip)", fs=6, font=FONT, ha="left")
+    leader(ax, (XOUT0+XOUT1)/2, az + ah/2, (XOUT0+XOUT1)/2 - 55, az + 84, "outer long beam", fs=6, font=FONT, ha="right")
+    draw_dim_v(ax, XT - 20, az - ah/2, hlz, "5.4", fs=5.4, font=FONT)                      # lower web (continuous)
+    draw_dim_v(ax, XT - 20, hlz, az + ah/2, "20", fs=5.4, font=FONT)                       # upper notched away
+    ax.text(XT - 20, az + ah/2 + 16, "half-lap depth\n(of 25.4)", fontsize=5.0, ha="center", color=C_DIM, **FONT)
     ax.add_patch(Rectangle((XUP - ep_x, az - ep_h/2), ep_x, ep_h, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.4, zorder=9))  # end-plate (welded to arm)
     ax.add_patch(Rectangle((XUP + 60, az - ep_h/2), ep_x, ep_h, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.4, zorder=9))    # rear backing plate
     for bz in (az - 36, az + 36):
         _bolt(ax, XUP - ep_x, bz, 60 + 2 * ep_x, d=8, nut=True)
-    leader(ax, XUP + 60 + ep_x, az - 36, XUP - 30, az - 114, "J6 end-plate + rear backing\nplate (4× M12) — Detail F, sh.4", fs=6, font=FONT, ha="right")
-    draw_dim_h(ax, XT, XUP, az - 78, "reach 325  (= arm length)", fs=6.5, font=FONT, above=False)
-    ax.text((XT + XUP)/2 - 40, az - 106, "arm underside Z90 · top Z115 (grate bottom)", fontsize=5.8, ha="center", color=C_DIM, **FONT)
+    leader(ax, XUP + 60 + ep_x, az + 36, XUP - 40, az + 92, "J6 joint → PLATE detail\n+ Sheet 4, Detail F", fs=5.8, font=FONT, ha="right")
+    zc = az - ah/2 - 34                                                                    # longitudinal chain-dim line
+    draw_dim_h(ax, XT, XIN1, zc, "50.8", fs=5.8, font=FONT, above=False)                   # inner notch width
+    draw_dim_h(ax, XIN1, XOUT0, zc, "198.4", fs=5.8, font=FONT, above=False)               # clear gap
+    draw_dim_h(ax, XOUT0, XOUT1, zc, "50.8", fs=5.8, font=FONT, above=False)               # outer notch width
+    draw_dim_h(ax, XOUT1, XUP, zc, "25", fs=5.8, font=FONT, above=False)                   # stub to the upright
+    draw_dim_h(ax, XT, XUP, zc - 42, "reach 325  (= arm length)", fs=6.5, font=FONT, above=False)
 
-    # ── PLAN VIEW — top-down: the two notch LOCATIONS along the arm ──
-    _dcell(ax, 20, 470, 1320, 320, "PLAN VIEW (top-down)  ·  the two half-lap NOTCH locations along the arm")
-    py, dw = 635, 90                                            # arm centreline (Yd) / drawn width (50.8 exaggerated)
+    # ── PLAN VIEW — top-down: each half-lap is a full-width crossing (notch = beam width) ──
+    _dcell(ax, 20, 520, 1320, 250, "PLAN VIEW (top-down)  ·  each notch is a FULL-WIDTH half-lap (beam width 50.8)")
+    py, dw = 630, 96                                            # arm centreline (Yd) / drawn width (50.8 exaggerated)
     ax.add_patch(Rectangle((XT, py - dw/2), (XUP - ep_x) - XT, dw, fc=C_STEEL, ec=C_OUT, alpha=0.5, lw=1.4, zorder=5))  # arm, top-down
-    ax.add_patch(Rectangle((XUP - ep_x, py - dw/2 - 8), ep_x, dw + 16, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.4, zorder=7))  # end-plate
+    ax.add_patch(Rectangle((XUP - ep_x, py - dw/2 - 6), ep_x, dw + 12, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.4, zorder=7))  # end-plate edge
     for (n0, n1), lbl in (((XIN0, XIN1), "inner long beam\n(arm tip)"), ((XOUT0, XOUT1), "outer long beam")):
-        ax.add_patch(Rectangle((n0, py - dw/2 - 38), n1 - n0, dw + 76, lw=1.2, zorder=6, **_hatch))   # long beam crossing (runs in Yd)
-        ax.text((n0 + n1)/2, py + dw/2 + 52, lbl, fontsize=5.8, ha="center", va="center", color=C_DIM, **FONT)
+        ax.add_patch(Rectangle((n0, py - dw/2), n1 - n0, dw, lw=1.2, zorder=6, **_hatch))          # notch = beam width, full arm width
+        ax.text((n0 + n1)/2, py + dw/2 + 26, lbl, fontsize=5.8, ha="center", va="center", color=C_DIM, **FONT)
     ax.text(XT - 8, py, "TIP", fontsize=5.5, ha="right", va="center", color=C_DIM, **FONT)
-    zc = py - dw/2 - 52                                         # chain-dim line
-    draw_dim_h(ax, XT, XIN1, zc, "50.8", fs=5.8, font=FONT, above=False)
-    draw_dim_h(ax, XIN1, XOUT0, zc, "198.4", fs=5.8, font=FONT, above=False)
-    draw_dim_h(ax, XOUT0, XOUT1, zc, "50.8", fs=5.8, font=FONT, above=False)
-    draw_dim_h(ax, XOUT1, XUP, zc, "25", fs=5.8, font=FONT, above=False)
-    draw_dim_h(ax, XT, XUP, zc - 44, "325  (arm length = reach)", fs=6.3, font=FONT, above=False)
+    draw_dim_v(ax, XUP + 24, py - dw/2, py + dw/2, "50.8", fs=5.6, font=FONT)                       # arm width = beam width
 
-    # ── DETAIL C — the TWO half-lap profiles (enlarged) ──
-    _dcell(ax, 20, 40, 900, 390, "DETAIL C — HALF-LAP PROFILES (both long-beam crossings, enlarged)")
-
-    def _halflap(cx, cz, title):
-        ax.add_patch(Rectangle((cx - 140, cz), 280, 30, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.4, zorder=5))   # lower half continuous
-        ax.text(cx, cz + 15, "arm lower half", fontsize=5.6, ha="center", va="center", **FONT, zorder=8)
-        ax.add_patch(Rectangle((cx - 140, cz + 30), 105, 40, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.2, zorder=5))  # upper (left)
-        ax.add_patch(Rectangle((cx + 35, cz + 30), 105, 40, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.2, zorder=5))   # upper (right)
-        ax.add_patch(Rectangle((cx - 35, cz + 30), 70, 40, lw=1.4, zorder=6, **_hatch))                          # long beam in the lap
-        _break(ax, cx - 35, cz + 30, cz + 70); _break(ax, cx + 35, cz + 30, cz + 70)
-        draw_dim_h(ax, cx - 35, cx + 35, cz + 80, "notch 50.8", fs=5.6, font=FONT, above=True)
-        ax.text(cx, cz + 114, "long beam in the lap", fontsize=5.6, ha="center", **FONT, zorder=8)
-        draw_dim_v(ax, cx - 140 - 16, cz + 30, cz + 70, "20", fs=5.2, font=FONT)   # upper notched away
-        draw_dim_v(ax, cx - 140 - 16, cz, cz + 30, "5", fs=5.2, font=FONT)         # lower continuous
-        ax.text(cx, cz - 26, title, fontsize=6, ha="center", fontweight="bold", **FONT, zorder=8)
-
-    _halflap(250, 175, "OUTER (right beam · 25 from upright)")
-    _halflap(670, 175, "INNER (left beam · at the arm tip)")
-    ax.text(460, 60, "both: upper 20mm notched over the beam, lower half continuous — top flush at the deck (Z115); ONE arm, no splice",
-            fontsize=5.6, ha="center", color=C_DIM, **FONT)
+    # ── END-PLATE — bolt-hole locations, arm weld footprint shadow-marked ──
+    _dcell(ax, 20, 40, 860, 440, "END-PLATE / REAR BACKING PLATE (identical, ×2 per joint)  ·  4× Ø13 for M12")
+    cx, cz, pw2, ph2 = 430, 258, 90, 150                       # plate center + half width/height drawn (70 × 130 real)
+    ax.add_patch(Rectangle((cx - pw2, cz - ph2), 2*pw2, 2*ph2, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.6, zorder=5))   # the plate
+    ax.add_patch(Rectangle((cx - 65, cz - 32), 130, 64, fc=C_OUT, ec=C_OUT, alpha=0.12, ls=(0, (4, 2)), lw=1.2, zorder=6))  # arm weld footprint (SHADOW)
+    ax.text(cx, cz, "arm weld footprint\n50.8 × 25.4\n(END-plate only)", fontsize=5.2, ha="center", va="center", color=C_DIM, **FONT, zorder=8)
+    for bx in (cx - 39, cx + 39):                                                          # 4 bolt holes, 30 (Yd) × 90 (Z) pitch
+        for bz in (cz - 116, cz + 116):
+            ax.add_patch(Circle((bx, bz), 8, fc=BG, ec=C_OUT, lw=1.3, zorder=7))
+            ax.plot([bx - 13, bx + 13], [bz, bz], color=C_OUT, lw=0.6, zorder=7)
+            ax.plot([bx, bx], [bz - 13, bz + 13], color=C_OUT, lw=0.6, zorder=7)
+    draw_dim_h(ax, cx - pw2, cx + pw2, cz - ph2 - 22, "70", fs=5.8, font=FONT, above=False)         # plate width
+    draw_dim_v(ax, cx - pw2 - 22, cz - ph2, cz + ph2, "130", fs=5.8, font=FONT)                     # plate height
+    draw_dim_h(ax, cx - 39, cx + 39, cz + ph2 + 16, "30", fs=5.6, font=FONT, above=True)            # bolt H pitch
+    draw_dim_v(ax, cx + pw2 + 22, cz - 116, cz + 116, "90", fs=5.8, font=FONT)                      # bolt V pitch
+    ax.text(cx, cz - ph2 - 46, "shaded = arm weld footprint (END-plate only; the rear backing plate is plain)",
+            fontsize=5.2, ha="center", color=C_DIM, **FONT)
 
     # ── NOTES ──
-    _dcell(ax, 940, 40, 400, 390, "NOTES")
+    _dcell(ax, 900, 40, 440, 440, "NOTES")
     draw_notes(ax, [
         "• 2× arms, one per IBC FRONT upright (near",
         "  + far). 2×1×0.120in steel, laid flat.",
         "• Reach 325mm = arm length: upright face",
         "  → arm tip (at the inner long beam).",
         "• Arm crosses BOTH walkway long beams →",
-        "  TWO half-lap notches (X-located on PLAN):",
+        "  TWO half-lap notches (X-located on VIEW A):",
         "  outer beam 25mm from the upright end;",
-        "  inner beam at the tip; 198mm clear.",
-        "• Each half-lap: upper 20mm notched, beam",
-        "  drops flush — ONE arm, no splice (Det C).",
+        "  inner beam at the tip; 198.4mm clear.",
+        "• Each half-lap: upper 20mm notched (of the",
+        "  25.4 depth), beam drops flush — ONE arm.",
         "• J6: end-plate WELDED to arm → 4× M12",
-        "  through upright → REAR backing plate +",
-        "  nuts. Sheet 4, Detail F.",
+        "  through upright → REAR backing plate + nuts",
+        "  (PLATE detail + Sheet 4, Detail F).",
         "• Arm underside Z90; top Z115 (grate).",
-    ], 958, 392, spacing=24, fs=6.0, font=FONT, width=386)
+    ], 918, 445, spacing=27, fs=6.0, font=FONT, width=424)
 
     title_block(ax, "SHEET 5 OF 5",
                 drawing_title="IBC SUPPORT FRAME",

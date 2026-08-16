@@ -211,7 +211,7 @@ These joints are drawn on **Sheet 4** (each with its weld + fastener callout):
 
 ![TBS-001 IBC Frame — Sheet 4: Fabrication Details](assets/ibc-frame-sheet4.png)
 
-The walkway cantilever arms — how each arm is cut, and the **two half-laps** where it crosses the walkway's inner + outer long beams (located on the plan view) — are drawn on **Sheet 5** (the connection into the upright is the same J6 end-plate shown on Sheet 4, Detail F):
+The walkway cantilever arms — how each arm is cut (the **two half-laps** where it crosses the walkway's inner + outer long beams, dimensioned on the side elevation) and the end-plate bolt-hole pattern — are drawn on **Sheet 5** (the connection into the upright is the same J6 end-plate shown on Sheet 4, Detail F):
 
 ![TBS-001 IBC Frame — Sheet 5: Walkway Cantilever Arm Fabrication](assets/ibc-frame-sheet5.png)
 
@@ -415,7 +415,7 @@ relevant sections above; the full set is collected here and in [Engineering Diag
 **Sheet 4 — Fabrication details: DETAIL A wall joist hanger (per-bar, 2-bolt, 50mm clearance), B bar→upright cleat, C weld-on lashing ring, D rear-panel bracket, E side-panel pipe-run L-bracket, F walkway arm→front-upright bolted end-plate (arm end-plate + rear backing plate, 4× M12 through-bolts, J6) — each with weld (W) + fastener (J) callouts**
 ![TBS-001 IBC Frame — Sheet 4](assets/ibc-frame-sheet4.png)
 
-**Sheet 5 — Walkway cantilever arm fabrication (×2, off the IBC front uprights): VIEW A side elevation (arm reaching 325 mm from the upright to the tip; J6 bolted end-plate — plate welded to the arm, 4× M12 through the upright into a rear backing plate), PLAN VIEW locating the two half-lap notches along the arm (outer long beam 25 mm from the upright end, inner long beam at the tip, 198 mm clear between), DETAIL C the two half-lap profiles (each: upper 20 mm notched, beam drops in flush — one continuous arm, no splice)**
+**Sheet 5 — Walkway cantilever arm fabrication (×2, off the IBC front uprights): VIEW A dimensioned side elevation (arm reaching 325 mm from the upright to the tip, half-lapping over both long beams — notch widths + gaps 50.8 / 198.4 / 50.8 / 25, half-lap depth 20 of the 25.4; J6 bolted end-plate), PLAN VIEW (each notch a full-width half-lap, beam width 50.8), and the END-PLATE / rear-backing-plate detail (70 × 130, 4× Ø13 for M12 at 30 × 90 pitch, arm weld footprint shadow-marked)**
 ![TBS-001 IBC Frame — Sheet 5](assets/ibc-frame-sheet5.png)
 
 **Plate Schedule Sheet 1 — Structural plates drawn 1:1 for the shop: PLATE 1 IBC floor foot (150×150×12, 4× Ø14 @ 100 sq PCD), PLATE 2 wall-hanger exterior backing (60×205×8, 2× Ø14 @ 169), PLATE 3 wall-hanger pocket (folded 4 mm back-plate + 70 seat, J3 + J7 holes) — each with outline dims, hole Ø + center positions, thickness, material, and qty**

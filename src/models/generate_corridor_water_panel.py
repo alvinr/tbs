@@ -232,9 +232,10 @@ def tote_restraint():
             ext_ph = (bolt_hi + 18) - plate_z0
             p_y = wall_yd if din > 0 else wall_yd - ht
             s_y = wall_yd if din > 0 else wall_yd - dep
-            p.append(ov.ruby_box("Wall Hanger Plate", front_x - 8, p_y, plate_z0, S + 16, ht, ext_ph, color=ov.C_STEEL))
-            p.append(ov.ruby_box("Wall Hanger Seat", front_x - 4, s_y, bz - ht, S + 8, dep, ht, color=ov.C_STEEL))
-            ecx = front_x - 8 + (S + 16) / 2
+            pocket_w = 60                  # back-plate + seat both 60mm wide — REUSE the exterior backing stock (2026-08-15; was S+16/S+8)
+            p.append(ov.ruby_box("Wall Hanger Plate", front_x - 8, p_y, plate_z0, pocket_w, ht, ext_ph, color=ov.C_STEEL))
+            p.append(ov.ruby_box("Wall Hanger Seat", front_x - 8, s_y, bz - ht, pocket_w, dep, ht, color=ov.C_STEEL))
+            ecx = front_x - 8 + pocket_w / 2
             plate_y = (-ov.WALL_T - ext_pt) if din > 0 else (ov.C_WID + ov.WALL_T)
             bolt_cy = (-ov.WALL_T - ext_pt) if din > 0 else (ov.C_WID - 10)
             p.append(ov.ruby_box("IBC Wall Backing Plate (ext)",
@@ -242,6 +243,9 @@ def tote_restraint():
             for bolt_z in (bolt_lo, bolt_hi):   # 2 through-bolts, ≥50mm clear of the bar + seat
                 p.append(ov.ruby_cylinder("IBC Wall Through-Bolt M12", ecx, bolt_cy, bolt_z, 7, 58,
                                           color=C_BOLT, axis="y"))
+            # J7 retention bolt: ONE centered vertical M12 down through the bar into the seat (bar bolted, not welded, to the hanger)
+            p.append(ov.ruby_cylinder("IBC Bar Retention Bolt M12 (J7)", front_x + bar_d / 2, wall_yd + din * 35,
+                                      bz - 4, 6, S + 8, color=C_BOLT, axis="z"))
     return "\n".join(p)
 
 

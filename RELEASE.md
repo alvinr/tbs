@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **3D-model reconciliation + a missed-cascade fix (6 models re-sent).** Synced the SketchUp models to the
+  2D blueprint: the IBC wall-hanger **pocket → 60/60 mm + a single centered J7 retention bolt** (water,
+  ibc-stack), and removed the stray **Yd-600 depth-reference plane** from the water deliverable (it read as a
+  blue rectangle, was only a viewing scaffold). While verifying, caught a real bug: the **left walkway
+  cantilever's foot plate was disconnected from its post** (~60 mm gap) — root cause was `LEFT_WK_CANT_FOOT_X0`
+  hardcoded at 38 while the derived post moved inboard when `FP_X_L` was pulled 150→260 (2026-08-11). Fixed by
+  **deriving the foot X0 from the post** (the derive-don't-hardcode rule). Re-sent + verified all six affected
+  models (water, overview, walkway, construction, ibc-stack, film-plane-mechanism); manifest hashes refreshed.
+
 - **Rear-panel + pipe-run brackets: welds → TEK screws (W6/W7 → J8/J9).** The two light bracket-to-post
   joints are no longer welded — they attach with **2× #14 self-drilling TEK screws** each, so the brackets
   bolt onto a **pre-welded, pre-painted frame with no hot work** and stay adjustable (they carry only light

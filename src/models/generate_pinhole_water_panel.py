@@ -56,9 +56,8 @@ def context():
     p.append(ov.ruby_box("Floor", bx, 0, -ov.WALL_T, bw, C_WID, ov.WALL_T,
                          color=ov.C_SHELL, alpha=0.16))
     # (container ceiling omitted in this view)
-    # faint reference line at the 300mm-past-walkway depth
-    p.append(ov.ruby_box("Depth ref (Yd %d)" % VIEW_DEPTH, bx, VIEW_DEPTH - 2, 0, bw, 4, C_HGT,
-                         color="#2060A0", alpha=0.10))
+    # (depth-reference plane at Yd=VIEW_DEPTH removed 2026-08-15 — it read as a stray blue rectangle in the
+    #  plumbing deliverable; it was only a viewing scaffold, not a real part.)
     return "\n".join(p)
 
 

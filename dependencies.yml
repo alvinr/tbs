@@ -19,7 +19,7 @@ generators:
   fp_corner_load: {script: src/generators/fp_corner_load.py, outputs: [diagrams/film-plane-sheet10.png]}
   grp_cutplan: {script: src/generators/generate_grp_cutplan.py, outputs: [diagrams/grp-cutplan.png]}
   hingepanel_diagram: {script: src/generators/generate_hingepanel_diagram.py, outputs: [diagrams/hingepanel-sheet1.png, diagrams/hingepanel-sheet2.png, diagrams/hingepanel-sheet3.png, diagrams/hingepanel-sheet4.png, diagrams/hingepanel-sheet5.png, diagrams/hingepanel-sheet6.png]}
-  ibc_frame_drawing: {script: src/generators/generate_ibc_frame_drawing.py, outputs: [diagrams/ibc-frame-sheet1.png, diagrams/ibc-frame-sheet2.png, diagrams/ibc-frame-sheet3.png, diagrams/ibc-frame-sheet4.png]}
+  ibc_frame_drawing: {script: src/generators/generate_ibc_frame_drawing.py, outputs: [diagrams/ibc-frame-sheet1.png, diagrams/ibc-frame-sheet2.png, diagrams/ibc-frame-sheet3.png, diagrams/ibc-frame-sheet4.png, diagrams/ibc-frame-sheet5.png]}
   ibc_frame_load: {script: src/generators/ibc_frame_load.py, outputs: [diagrams/ibc-frame-load-case.png]}
   ibc_plate_schedule: {script: src/generators/generate_ibc_plate_schedule.py, outputs: [diagrams/ibc-plate-schedule-sheet1.png, diagrams/ibc-plate-schedule-sheet2.png]}
   ibc_stacking_diagram: {script: src/generators/generate_ibc_stacking_diagram.py, outputs: [diagrams/ibc-stacking-sheet1.png, diagrams/ibc-stacking-sheet2.png, diagrams/ibc-stacking-sheet3.png, diagrams/ibc-stacking-sheet4.png, diagrams/ibc-stacking-sheet5.png]}

@@ -638,7 +638,7 @@ def sheet1():
     _datum_tol_block(ax, (-260), (TOP_Z - 340))
 
     # ── Title block ─────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 4",
+    title_block(ax, "SHEET 1 OF 5",
                 drawing_title="IBC SUPPORT FRAME",
                 subtitle="FRONT ELEVATION — FRAME ASSEMBLY",
                 scale_note="Axes in mm — VIEW ALONG X",
@@ -797,7 +797,7 @@ def sheet2():
                fs=6.5, font=FONT, width=(950))
 
     # ── Title block ─────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 4",
+    title_block(ax, "SHEET 2 OF 5",
                 drawing_title="IBC SUPPORT FRAME",
                 subtitle="SIDE ELEVATION — DEEP 4-LEG BOX (RESTRAINT)",
                 scale_note="Axes in mm — VIEW ALONG Yd",
@@ -1051,7 +1051,7 @@ def sheet3():
                fs=7, font=FONT, width=(950))
 
     # ── Title block ─────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 3 OF 4",
+    title_block(ax, "SHEET 3 OF 5",
                 drawing_title="IBC SUPPORT FRAME",
                 subtitle="PLAN VIEW — DEEP 4-LEG BOX + RETAINING BARS",
                 scale_note="Axes in mm — VIEW LOOKING DOWN",
@@ -1233,7 +1233,7 @@ def sheet4():
         "• Where used: A/B 8 retaining-bar ends · C lash rings on front bars · D 6 rear-panel brackets · E 12 side-panel pipe-run brackets · F 2 walkway-arm clamps.",
     ], 44, -52, spacing=40, fs=6.4, font=FONT, width=1300)
 
-    title_block(ax, "SHEET 4 OF 4",
+    title_block(ax, "SHEET 4 OF 5",
                 drawing_title="IBC SUPPORT FRAME",
                 subtitle="FABRICATION DETAILS — HANGER / CLEAT / RINGS / BRACKETS",
                 scale_note="Schematic sections — not to scale; dims in mm",
@@ -1242,6 +1242,91 @@ def sheet4():
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/ibc-frame-sheet4.png saved")
+
+
+def sheet5():
+    """Sheet 5 — the 2 walkway cantilever arms that hang off the IBC FRONT uprights (fab).
+    The arm's own detailing (section, reach, half-lap); the clamp CONNECTION is Detail F on sheet4."""
+    fig, ax = plt.subplots(figsize=(16.5, 10.5))
+    ax.set_xlim(-20, 1360); ax.set_ylim(-360, 900); ax.set_aspect("equal"); ax.axis("off")
+    ax.text(670, 875, "WALKWAY CANTILEVER ARM — FABRICATION  (×2, off the IBC front uprights)",
+            fontsize=13, fontweight="bold", ha="center", **FONT)
+
+    # ── VIEW A — SIDE ELEVATION (X–Z, looking along Yd): upright → arm → deck long-beam ──
+    _dcell(ax, 20, 430, 1320, 420, "VIEW A — SIDE ELEVATION (looking along Yd)  ·  arm hangs off the IBC upright, reaches to the walkway deck")
+    az = 630                                                   # arm centreline (schematic Z, inside the cell)
+    ah = 56                                                    # arm depth drawn (25.4 exaggerated)
+    ux = 1120                                                  # upright face X (schematic)
+    dx = 320                                                   # deck long-beam X (schematic)
+    _rhs_rect(ax, ux, az - 150, 70, 300, fc=C_FRAME, alpha=0.5, zo=4)                     # IBC front upright (within the cell)
+    ax.text(ux + 35, az + 95, "IBC FRONT\nUPRIGHT", fontsize=6.5, ha="center", va="center", **FONT, zorder=8)
+    _rhs_rect(ax, dx, az - ah/2, ux - dx, ah, fc=C_STEEL, alpha=0.6, zo=5)                # the 2×1×0.120 arm
+    ax.text((dx + ux)/2, az, "2×1×0.120 STEEL ARM", fontsize=7.5, ha="center", va="center", **FONT, zorder=8)
+    lbw = 70                                                                             # half-lap: arm TOP notched over the long-beam width
+    ax.add_patch(Rectangle((dx, az + 2), lbw, ah/2 - 2, fc=BG, ec="none", zorder=6))
+    ax.add_patch(Rectangle((dx, az + 2), lbw, ah/2 - 2, fc=C_FRAME, ec=C_OUT, alpha=0.5, hatch="xx", lw=1.2, zorder=7))  # long beam in the lap
+    ax.plot([dx, dx + lbw], [az + 2, az + 2], color=C_OUT, lw=1.0, zorder=8)             # half-lap line
+    _break(ax, dx - 4, az - ah/2, az + ah/2)                                             # long beam continues in Yd (out of page)
+    leader(ax, dx + lbw/2, az + ah/2, dx + 20, az + 120, "walkway long beam (2×1) drops\ninto the HALF-LAP — Detail C", fs=6, font=FONT, ha="left")
+    for bz in (az - 30, az + 30):
+        _bolt(ax, ux - 40, bz, 110, d=9, nut=True)                                       # 2× M12 clamp bolts (J6)
+    leader(ax, ux - 40, az + 30, ux - 210, az + 130, "2-plate clamp + 2× M12 (J6)\n— see Detail F, sheet 4", fs=6, font=FONT, ha="right")
+    draw_dim_h(ax, dx, ux, az - 95, "reach 325", fs=6.5, font=FONT, above=False)
+    draw_dim_v(ax, dx - 24, az - ah/2, az + ah/2, "25", fs=6, font=FONT)
+    ax.text((dx + ux) / 2, az - 130, "arm underside Z90 · top Z115 (grate bottom) — 11.6mm over the spray beam",
+            fontsize=5.8, ha="center", color=C_DIM, **FONT)
+
+    # ── VIEW B — ARM SECTION (2×1×0.120) ──
+    _dcell(ax, 20, 40, 400, 360, "VIEW B — ARM SECTION")
+    scx, scy = 205, 200
+    _rhs_rect(ax, scx - 90, scy - 45, 180, 90, fc=C_STEEL, alpha=0.6, zo=5)
+    ax.add_patch(Rectangle((scx - 78, scy - 33), 156, 66, fc=BG, ec=C_OUT, lw=1.2, zorder=6))   # bore (wall shown)
+    draw_dim_h(ax, scx - 90, scx + 90, scy - 72, "50.8 (2in)", fs=6, font=FONT, above=False)
+    draw_dim_v(ax, scx + 110, scy - 45, scy + 45, "25.4 (1in)", fs=6, font=FONT)
+    leader(ax, scx + 78, scy + 22, scx + 108, scy + 58, "wall 3.2\n(0.120in)", fs=5.8, font=FONT, ha="left")
+    ax.text(scx, scy + 98, "2×1×0.120 RHS — laid FLAT", fontsize=6, ha="center", color=C_DIM, **FONT)
+    ax.text(scx, scy + 85, "(2in horizontal · 1in deep)", fontsize=6, ha="center", color=C_DIM, **FONT)
+
+    # ── DETAIL C — HALF-LAP (enlarged) ──
+    _dcell(ax, 450, 40, 480, 360, "DETAIL C — HALF-LAP AT THE LONG-BEAM CROSSING")
+    hx, hz = 560, 150
+    ax.add_patch(Rectangle((hx, hz), 300, 30, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.4, zorder=5))   # arm LOWER half (continuous)
+    ax.text(hx + 150, hz + 15, "ARM — lower half continuous", fontsize=6, ha="center", va="center", **FONT, zorder=8)
+    ax.add_patch(Rectangle((hx, hz + 30), 120, 40, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.2, zorder=5))   # arm upper half (left)
+    ax.add_patch(Rectangle((hx + 190, hz + 30), 110, 40, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.2, zorder=5))  # arm upper half (right)
+    ax.add_patch(Rectangle((hx + 120, hz + 30), 70, 40, fc=C_FRAME, ec=C_OUT, alpha=0.5, hatch="xx", lw=1.4, zorder=6))  # long beam in the notch
+    _break(ax, hx + 120, hz + 30, hz + 70); _break(ax, hx + 190, hz + 30, hz + 70)
+    draw_dim_h(ax, hx + 120, hx + 190, hz + 80, "notch 50.8", fs=6, font=FONT, above=True)
+    ax.text(hx + 155, hz + 118, "long beam (2×1) in the lap", fontsize=6, ha="center", **FONT, zorder=8)
+    draw_dim_v(ax, hx - 16, hz + 30, hz + 70, "20", fs=5.5, font=FONT)     # upper half notched away
+    draw_dim_v(ax, hx - 16, hz, hz + 30, "5", fs=5.5, font=FONT)           # lower half remaining
+    ax.text(hx + 150, hz - 30, "upper half notched over the beam; top flush at the deck", fontsize=5.8, ha="center", color=C_DIM, **FONT)
+
+    # ── NOTES ──
+    _dcell(ax, 950, 40, 390, 360, "NOTES")
+    draw_notes(ax, [
+        "• 2× arms — one per IBC FRONT upright",
+        "  (corridor near + far). 2×1×0.120in",
+        "  steel, laid flat.",
+        "• Reach 325mm: upright face → walkway",
+        "  deck left edge; carries the RIGHT",
+        "  walkway's left long beam.",
+        "• HALF-LAP where the arm crosses the",
+        "  long beam: upper 20mm notched so the",
+        "  beam drops in flush — ONE arm, no splice.",
+        "• Upright CONNECTION = the 2-plate +",
+        "  2× M12 clamp (J6) — sheet 4, DETAIL F.",
+        "• Arm underside Z90; top Z115 (grate).",
+    ], 966, 356, spacing=28, fs=6.3, font=FONT, width=376)
+
+    title_block(ax, "SHEET 5 OF 5",
+                drawing_title="IBC SUPPORT FRAME",
+                subtitle="WALKWAY CANTILEVER ARM — FABRICATION",
+                scale_note="Schematic — not to scale; dims in mm", height=0.04)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet5.png"), dpi=DIAGRAM_DPI,
+                bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/ibc-frame-sheet5.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1254,4 +1339,5 @@ if __name__ == "__main__":
     sheet2()
     sheet3()
     sheet4()
+    sheet5()
     print("Done.")

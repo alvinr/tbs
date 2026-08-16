@@ -228,6 +228,8 @@
 
 ![TBS-001 IBC Frame — Sheet 4: Fabrication Details](assets/ibc-frame-sheet4.png)
 
+![TBS-001 IBC Frame — Sheet 5: Walkway Cantilever Arm Fabrication](assets/ibc-frame-sheet5.png)
+
 ![TBS-001 IBC Frame — Plate Schedule Sheet 1: Structural Plates](assets/ibc-plate-schedule-sheet1.png)
 
 ![TBS-001 IBC Frame — Plate Schedule Sheet 2: Angle Brackets](assets/ibc-plate-schedule-sheet2.png)

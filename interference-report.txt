@@ -1,4 +1,4 @@
-routing-sources-sha: 0f18ae59d0cc
+routing-sources-sha: 6d801045367d
 model=ibc-stack  pipes=433 solids=159  interferences=10
   PIPE  SV-01 -> DV-01 (single filtered line)      (Pinhole-Wall Kit)
     x  FRAME      Frame rail (Yd)                         near (4665,1241,65)

@@ -513,13 +513,14 @@ def sheet1():
         # corridor ends — cleat on the upright's OUTSIDE edge: near at NEAR_COL_R (leg runs −Yd toward the wall),
         # far at FAR_COL_L (leg runs +Yd toward the wall)
         for post_face, din in ((NEAR_COL_R, -1), (FAR_COL_L, +1)):
-            ax.add_patch(Rectangle((min(post_face, post_face + din * 8), bz - 10), 8, FRAME_RHS + 20,
-                                   fc=C_FRAME, ec=C_OUT, lw=0.9, zorder=8))          # cleat upstand (welded to the upright — W3)
-            ax.add_patch(Rectangle((min(post_face, post_face + din * 90), bz - 11), 90, 11,
-                                   fc=C_FRAME, ec=C_OUT, lw=0.9, zorder=8))          # cleat horizontal leg (bar sits on it)
+            legx = min(post_face, post_face + din * 45)                             # L reaches ~45 along the bar (toward the wall)
+            ax.add_patch(Rectangle((legx, bz - 11), 45, 11, fc=C_FRAME, ec=C_OUT, lw=0.9, zorder=8))            # horizontal leg (edge-on, under the bar)
+            ax.add_patch(Rectangle((legx, bz - 2), 45, FRAME_RHS + 4, fc=C_FRAME, ec=C_OUT, lw=0.9, alpha=0.45, zorder=11))  # vertical leg (on the bar FRONT −X, welded to the upright — W3)
             _weld_tick(ax, post_face, bmid, side=('left' if din < 0 else 'right'), size=10)   # W3 weld
-            for off in (25, 65):
-                _bolt(ax, post_face + din * off, bz - 11, FRAME_RHS + 11, vert=True, d=10, nut=True)  # 2× J2 VERTICAL bolts — down through the bar into the cleat leg
+            bxc = post_face + din * 22                                              # 1× J2 bolt — HORIZONTAL (along X, into the page here): drawn END-ON (circle + cross) at the bar mid-height
+            ax.add_patch(Circle((bxc, bmid), 9, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=13))
+            ax.plot([bxc - 6, bxc + 6], [bmid, bmid], color=C_OUT, lw=0.8, zorder=14)
+            ax.plot([bxc, bxc], [bmid - 6, bmid + 6], color=C_OUT, lw=0.8, zorder=14)
 
     # ── Weld symbols at key joints ──────────────────────────────────────────
     # Platform to upright joints
@@ -613,7 +614,7 @@ def sheet1():
 
     leader(ax, (NEAR_COL_R - 40), (1500 + FRAME_RHS / 2),
            (NEAR_COL_R - 60), (1330),
-           "J2 CORRIDOR-END CLEAT (×8)\nL-cleat welded to the upright (W3);\nbar bolts down 2× M12×65 (J2)\n— see Sheet 4 Det B / Plate 4",
+           "J2 CORRIDOR-END L-CLEAT (×8)\nL-angle welded to the upright (W3); bar drops in,\n1× M12×65 HORIZONTAL through the leg + web (J2)\n— see Sheet 4 Det B / Plate 4",
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
@@ -1162,24 +1163,24 @@ def sheet4():
     ax.text(wy - 42, ay0 + 32, "OUTSIDE", fontsize=6, ha="center", **FONT)
     ax.text(wy + 58, ay0 + 32, "INSIDE", fontsize=6, ha="center", **FONT)
 
-    # ── DETAIL B — BAR→UPRIGHT CLEAT (section, VERTICAL bolts + spacing) ──
+    # ── DETAIL B — BAR→UPRIGHT L-CLEAT (END SECTION: bar drops into the L, ONE horizontal bolt) ──
     bx0, by0 = 470, 470
-    _dcell(ax, bx0, by0, 420, 380, "DETAIL B — BAR→UPRIGHT CLEAT (J2/W3, ×8)")
-    ux = bx0 + 280; uz = by0 + 55                                                                   # upright on the RIGHT (flipped) — matches the wall-on-left assembly
-    _rhs_rect(ax, ux, uz, 70, 250, fc=C_FRAME, alpha=0.5, zo=5)                                      # corridor upright (section)
-    ax.text(ux + 35, uz + 55, "CORRIDOR\nUPRIGHT", fontsize=6, ha="center", va="center", **FONT, zorder=8)
-    ax.add_patch(Rectangle((ux - 10, uz + 88), 10, 110, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=6))       # cleat vertical leg (welded to upright LEFT face)
-    ax.add_patch(Rectangle((ux - 180, uz + 88), 180, 10, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1, zorder=6))      # cleat HORIZONTAL leg (bar sits on it), extends LEFT
-    _weld_tick(ax, ux, uz + 150, side='right', size=7)                                              # cleat↔upright (W3)
-    _rhs_rect(ax, ux - 200, uz + 98, 200, 50, fc=C_FRAME, alpha=0.5, zo=5)                           # bar sits ON the cleat leg, extends LEFT to the wall
-    _break(ax, ux - 200, uz + 98, uz + 148)                                                         # bar continues to the wall hanger (jagged, LEFT end)
-    ax.text(ux - 100, uz + 128, "BAR 50×20", fontsize=6, ha="center", va="center", zorder=12,
-            bbox=dict(boxstyle="square,pad=0.1", fc="white", ec="none"), **FONT)
-    for bx in (ux - 60, ux - 140):                                                                  # 2 vertical bolts thru bar + cleat leg — span EXACTLY the stack so head/nut sit flush
-        _bolt(ax, bx, uz + 88, 60, d=11, vert=True, nut=True)                                        # head flush on the cleat-leg underside, nut flush on the bar top (uz+88..uz+148)
-    draw_dim_h(ax, ux - 140, ux - 60, uz + 180, "bolt pitch")
-    leader(ax, ux, uz + 150, ux - 40, uz + 214, "cleat FILLET WELDED\nto upright (W3 4mm)", fs=6, font=FONT, ha="right")
-    leader(ax, ux - 100, uz + 84, ux - 100, uz + 40, "2× M12×65 (J2)\nbar→cleat (corridor end)", fs=6, font=FONT, ha="center")
+    _dcell(ax, bx0, by0, 420, 380, "DETAIL B — BAR→UPRIGHT L-CLEAT (J2/W3, ×8)")
+    # end-section (looking along the bar): X horizontal (front −X on the LEFT), Z vertical; upright is BEHIND
+    ex, ez = bx0 + 120, by0 + 70                                                                    # L corner
+    lt2, barW2, barH2 = 16, 40, 100                                                                 # drawn (exaggerated): leg thickness / bar depth (20) / bar height (50)
+    ax.add_patch(Rectangle((ex - 30, ez - 20), 230, 290, fc=C_FRAME, ec=C_DIM, alpha=0.22, ls=(0, (4, 3)), lw=1.0, zorder=4))  # upright BEHIND (ghost)
+    ax.text(ex + 165, ez + 250, "upright\n(behind)", fontsize=5.5, ha="center", color=C_DIM, **FONT, zorder=8)
+    ax.add_patch(Rectangle((ex, ez), lt2, barH2 + 40, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=6))      # vertical leg (bar FRONT, welded to the upright)
+    ax.add_patch(Rectangle((ex, ez), lt2 + barW2, lt2, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=6))     # horizontal leg (bar sits on it)
+    ax.add_patch(Rectangle((ex + lt2, ez + lt2), barW2, barH2, fc=C_FRAME, ec=C_OUT, alpha=0.5, lw=1.2, zorder=5))  # bar (50×20) dropped into the corner
+    ax.text(ex + lt2 + barW2 / 2, ez + lt2 + barH2 / 2, "BAR\n50×20", fontsize=6, ha="center", va="center", zorder=8, **FONT)
+    _weld_tick(ax, ex, ez + barH2, side='left', size=8)                                             # W3 (vertical leg ↔ upright)
+    bzc = ez + lt2 + barH2 / 2                                                                      # bolt at the bar mid-height
+    _bolt(ax, ex - 6, bzc, lt2 + barW2 + 14, d=13, nut=True)                                        # 1× M12 HORIZONTAL through the leg + the bar's 50 web
+    draw_dim_v(ax, ex - 24, ez + lt2, ez + lt2 + barH2, "50")                                       # bar web the bolt passes through (→ ~18mm edge)
+    leader(ax, ex, ez + barH2 + 30, ex - 26, ez + barH2 + 76, "L FILLET WELDED\nto upright (W3 4mm)", fs=6, font=FONT, ha="right")
+    leader(ax, ex + lt2 + barW2 + 8, bzc, ex + lt2 + barW2 + 40, bzc - 44, "1× M12×65 (J2)\nHORIZONTAL through\nthe leg + the 50 web", fs=6, font=FONT, ha="left")
 
     # ── DETAIL C — FRONT-BAR LASH RINGS (2 rings on weld plates + distances + break) ──
     lx0, ly0 = 940, 470

@@ -217,17 +217,16 @@ def tote_restraint():
         wdir = -1 if i == 0 else 1             # toward-wall direction the cleat leg extends UNDER the bar
         for bz in bar_zs:
             p.append(ov.ruby_box("Front Retaining Bar", front_x, y0, bz, bar_d, y1 - y0, S, color=ov.C_STEEL))
-            # J2/W3 corridor-end connection (Detail B): an L-cleat FILLET-WELDED to the upright — a
-            # horizontal leg the bar sits on + a vertical upstand on the upright face — with 2× M12×40 (J2)
-            # vertical bolts clamping the bar down to the leg.  (Was missing in 3D — Alvin 2026-08-17.)
-            lt, llen = 8, 90                                                     # leg thickness / reach under the bar
+            # J2/W3 corridor-end connection (Detail B): an L-ANGLE fillet-welded to the upright — a horizontal
+            # leg the bar sits on + a vertical leg on the bar's FRONT (−X) face — the bar drops into the corner
+            # and a SINGLE horizontal M12 (J2) runs through the vertical leg + the bar's tall (50mm) web, so the
+            # hole gets full edge distance and the bolt secures the unsupported direction (Alvin 2026-08-18).
+            lt, llen = 8, 90                                                     # leg thickness / reach along the bar (Yd)
             leg_y0 = cor_yd - llen if wdir < 0 else cor_yd
             p.append(ov.ruby_box("Bar cleat leg (J2)", front_x, leg_y0, bz - lt, bar_d, llen, lt, color=ov.C_STEEL))          # horizontal leg UNDER the bar
-            up_y = cor_yd if wdir > 0 else cor_yd - lt
-            p.append(ov.ruby_box("Bar cleat upstand (J2/W3)", front_x, up_y, bz - lt, bar_d, lt, S + lt, color=ov.C_STEEL))   # vertical leg fillet-welded to the upright
-            for f in (0.28, 0.72):
-                p.append(ov.ruby_bolt("IBC Bar Cleat Bolt M12x65 (J2)", front_x + bar_d / 2, cor_yd + wdir * llen * f,
-                                      bz - lt, S + lt, radius=6, axis="z", color=C_BOLT, head="base", nut="far"))            # vertical — head under the leg, nut on the bar top
+            p.append(ov.ruby_box("Bar cleat upstand (J2/W3)", front_x - lt, leg_y0, bz - lt, lt, llen, S + lt, color=ov.C_STEEL))  # vertical leg on the bar FRONT (−X), welded to the upright
+            p.append(ov.ruby_bolt("IBC Bar Cleat Bolt M12x65 (J2)", front_x - lt, cor_yd + wdir * 45, bz + S / 2,
+                                  bar_d + 2 * lt, radius=6, axis="x", color=C_BOLT, head="base", nut="far"))                 # SINGLE horizontal bolt: through the leg + the bar's 50mm web
     # D-ring lashing holders — 4 per tier × 2 tiers = 8 (matches ibc-frame drawing §4.1); on the LOWER
     # bar of each tier (one per tier) so the ring count stays 8 despite the doubled bars.
     for ydh in (520, 940, 1422, ov.C_WID - 520):

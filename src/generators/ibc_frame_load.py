@@ -202,17 +202,76 @@ def service_loads():
     m_conn = p_arm * ARM_REACH_M
     z_upr = z_rhs(IBC_FRAME_RHS, IBC_FRAME_RHS, IBC_FRAME_T)   # 50.8x50.8x3 upright
     m_cap_upr = z_upr * FY_A500B / 1e3
-    # arm->upright connection = a BOLTED CLAMP (2 clamp plates + 2x M12 through-bolts wrapping the upright,
-    # per ibc_cantilever_arms). The moment is carried as a couple over the ~37mm clamp bolt spacing.
-    clamp_sp = 0.037
-    f_couple = m_conn / clamp_sp
-    bolt_cap = bolt_shear_cap(FUB_88, 1)   # per M12 8.8 through-bolt
+    # arm->upright connection = a BOLTED END-PLATE (plate welded to the arm end, 4x M12 through the upright
+    # into a rear backing plate, per ibc_cantilever_arms). Moment = a tension couple over the ~90mm bolt rows;
+    # the top ROW (2 bolts) shares the tension.
+    couple_sp = 0.090
+    f_bolt = m_conn / couple_sp / 2.0
+    bolt_cap = 0.9 * FUB_88 * AS_M12   # M12 8.8 tensile (proof) capacity per bolt (N)
     lines.append(f"  walkway arm tip {p_arm:.0f} N (22kg dead + 1kN person) x {ARM_REACH_M*1000:.0f}mm"
                  f" = {m_conn:.0f} N.m at the upright")
     lines.append(f"  front upright bending (50.8 RHS): cap {m_cap_upr:.0f} N.m  SF {m_cap_upr/m_conn:.1f}")
-    lines.append(f"  arm->upright CLAMP (2x M12 through-bolts): couple {f_couple:.0f} N/bolt,"
-                 f" cap {bolt_cap:.0f} N  SF {bolt_cap/f_couple:.1f}")
-    lines.append("  Both non-governing vs the EN 12195-1 transport case (bar SF 1.59). Arm DETAILING = walkway blueprint.")
+    lines.append(f"  arm->upright END-PLATE (4x M12, {couple_sp*1000:.0f}mm couple): {f_bolt:.0f} N/bolt tension,"
+                 f" cap {bolt_cap:.0f} N  SF {bolt_cap/f_bolt:.1f}")
+    lines.append("  Both non-governing vs the EN 12195-1 transport case (bar SF 1.59). Arm NOTCH check below; fab on Sheet 5.")
+    return "\n".join(lines)
+
+
+# ── Walkway cantilever ARM — half-lap notch check (solid-bar redesign) ────────
+# The arm is a cantilever off the front upright; the two long beams half-lap it. Its OWN section at the
+# notches was unchecked above (connection-only). Worst case = the whole arm load at the TIP, so the moment
+# at a section = P_arm * (lever from the tip load to that section). Switching the arm to a SOLID bar
+# (Z = w*h^2/6 on the kept depth) and REBALANCING the split per crossing — deep ARM notch only where the
+# moment ~0 (the tip); deep BEAM notch at the POST END where the arm moment peaks — keeps the arm strong
+# with no position change.
+# Arm/beam geometry mirrors the RWK_* constants in generate_sketchup_model.py (kept as literals here,
+# same as ARM_REACH_M above — this module intentionally does not import the model builders).
+RWK_ARM_W    = 50.8              # arm width in Yd (2in) = long-beam width
+RWK_AH       = 25.4             # arm depth (1in envelope: Z89.6 -> grate bottom Z115)
+RWK_X_UP     = 4654            # front upright (post) X
+RWK_X_L      = 4329            # arm tip X (= inner long-beam left edge)
+RWK_BEARER_W = 50.8            # long-beam width in X
+RWK_BEARER_XS = (4329, 4578.2)  # inner + outer long-beam left edges (RWK_X_R - RWK_BEARER_W)
+
+FY_A36 = 250.0   # solid mild-steel flat-bar min yield (MPa, A36)
+
+
+def _z_solid(w, h):
+    """Elastic section modulus (mm^3) of a SOLID rectangle, depth h in the bending direction."""
+    return w * h * h / 6.0
+
+
+def arm_notch_check(sf_target=2.0):
+    lines = ["\n########## WALKWAY ARM — HALF-LAP NOTCH CHECK (solid-bar redesign) ##########"]
+    p_arm = M_WK_ARM_KG * G + P_PERSON_N
+    L = RWK_X_UP - RWK_X_L
+    xs = sorted(RWK_BEARER_XS)
+    inner_c = xs[0] + RWK_BEARER_W / 2.0     # inner beam centre (near the tip)
+    outer_c = xs[1] + RWK_BEARER_W / 2.0     # outer beam centre (near the post)
+    d_inner = RWK_X_UP - inner_c
+    d_outer = RWK_X_UP - outer_c
+    m_inner = p_arm * (L - d_inner) / 1e3    # N.m (load at the tip = worst case for each notch)
+    m_outer = p_arm * (L - d_outer) / 1e3
+    lines.append(f"  arm load (worst case at tip) P = {p_arm:.0f} N  ·  length {L:.0f} mm  ·  SOLID {RWK_ARM_W:.0f}x{RWK_AH:.0f} bar (Fy {FY_A36:.0f})")
+    lines.append(f"  {'crossing':<26}{'from post':>10}{'moment':>9}{'arm keep*':>12}")
+    lines.append(f"  {'-'*57}")
+    for name, d, m in (("outer notch (post end)", d_outer, m_outer),
+                       ("inner notch (tip)", d_inner, m_inner)):
+        z_req = sf_target * m * 1e3 / FY_A36
+        h_req = (6.0 * z_req / RWK_ARM_W) ** 0.5
+        lines.append(f"  {name:<26}{d:>7.0f}mm{m:>7.0f}Nm{h_req:>9.1f}mm")
+    lines.append(f"  *arm kept (lower) depth for SF {sf_target:.1f} as a solid bar; envelope = {RWK_AH:.0f} mm")
+    lines.append("  OUTER crossing — the OUTER BEAM takes the deep notch, so it is co-limiting. Balance the split:")
+    m_hog = 0.10 * P_PERSON_N * 1.0    # outer-beam hogging: ~1 kN person mid a ~1.0 m arm->wall-cleat span (est.)
+    for h_a in (14, 15, 16, 17, 18):
+        h_b = RWK_AH - h_a
+        sf_a = _z_solid(RWK_ARM_W, h_a) * FY_A36 / 1e3 / m_outer
+        z_beam = 0.65 * _z_solid(RWK_BEARER_W, h_b)    # kept-UPPER hollow RHS ~0.65x the solid modulus
+        sf_b = z_beam * FY_A500B / 1e3 / m_hog
+        flag = "  <- balanced (both >= 1.5)" if sf_a >= 1.5 and sf_b >= 1.5 and abs(sf_a - sf_b) < 0.2 else ""
+        lines.append(f"    arm {h_a:.0f} / beam {h_b:.1f} mm    SF_arm {sf_a:.2f}   SF_beam {sf_b:.2f}{flag}")
+    lines.append("  INNER (tip) crossing: arm keeps ~5.4 mm (M~30 Nm, SF~2 solid); inner beam keeps the full 20 mm.")
+    lines.append("  Beam hogging is a documented conservative estimate — firm with a walkway-frame model before fab.")
     return "\n".join(lines)
 
 
@@ -240,7 +299,8 @@ def render_png(path=None):
     p_arm  = M_WK_ARM_KG * G + P_PERSON_N
     m_conn = p_arm * ARM_REACH_M
     sf_upr = (z_rhs(IBC_FRAME_RHS, IBC_FRAME_RHS, IBC_FRAME_T) * FY_A500B / 1e3) / m_conn
-    sf_clamp = bolt_shear_cap(FUB_88, 1) / (m_conn / 0.037)
+    endplate_cap = 0.9 * FUB_88 * AS_M12                # M12 8.8 tensile capacity/bolt (N)
+    sf_endplate = endplate_cap / (m_conn / 0.090 / 2.0)   # 4-bolt end-plate, 90mm couple, top row (2) in tension
 
     C_STEEL = "#8890a0"; C_TOTE = "#c9d4e4"; C_LOAD = "#c0392b"; C_OK = "#1f7a3d"; C_WARN = "#b8860b"
 
@@ -318,7 +378,7 @@ def render_png(path=None):
         ("Corrugated-wall bearing (backing plate)",      f"{rL['wall_bear'][0]:,.0f} N", f"{rL['wall_bear'][1]:,.0f} N", rL['wall_bear'][2], ""),
         ("Corridor cleat bolts J2 (2× M12×40, shear)",   f"{rL['cleat'][0]:,.0f} N", f"{rL['cleat'][1]:,.0f} N", rL['cleat'][2], ""),
         ("Lash ring + 2\" strap (vertical, per stack)",   f"{rL['strap'][0]:,.0f} N", f"{rL['strap'][1]:,.0f} N", rL['strap'][2], ""),
-        ("Walkway-arm clamp J6 (service, +1 kN)",        f"{m_conn:,.0f} N·m", f"{bolt_shear_cap(FUB_88,1):,.0f} N", sf_clamp, "svc"),
+        ("Walkway-arm end-plate J6 (service, +1 kN)",    f"{m_conn:,.0f} N·m", f"{endplate_cap:,.0f} N", sf_endplate, "svc"),
         ("Front upright bending (service)",              f"{m_conn:,.0f} N·m", "—", sf_upr, "svc"),
     ]
     y = 82
@@ -377,6 +437,7 @@ def main():
                        n_bars_per_tote=1)))
 
     print(service_loads())
+    print(arm_notch_check())
     print(weld_schedule())
 
 

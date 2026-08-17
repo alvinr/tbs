@@ -84,7 +84,7 @@ The container moves by commercial hire tilt-bed truck. No CDL is required for th
 ## 6. Budget and Use of Funds
 All figures are drawn from the [full cost breakdown](project-cost-breakdown.md). Per-item procurement details with supplier URLs are in the [master shopping list](master-shopping-list.md). Three funding levels are presented to allow partial or phased support.
 
-### Level 1 — Core Build (~<!-- BEGIN costing:fund-l1-total -->$34,224<!-- END costing:fund-l1-total -->, Standard scenario)
+### Level 1 — Core Build (~<!-- BEGIN costing:fund-l1-total -->$34,319<!-- END costing:fund-l1-total -->, Standard scenario)
 Everything required to operate the camera for a first deployment. Figures are the Standard (Mid) column of the [cost breakdown](project-cost-breakdown.md); Low–High scenarios span ~<!-- BEGIN costing:fund-scenario-span -->$27,000–$38,000<!-- END costing:fund-scenario-span -->.
 
 <!-- BEGIN costing:funding-level1 -->
@@ -99,13 +99,13 @@ Everything required to operate the camera for a first deployment. Figures are th
 | Processing water system (tray, spray bar, 3-stage filtration, IBC stacking frame) | $7,341 |
 | Power & electrical (600W solar · LiFePO4 · MPPT · distribution · protection · lighting) | $3,464 |
 | Ventilation & cooling (2 fans · evap cooler + 12V→120V inverter · light-safe ducting) | $808 |
-| Perimeter walkway (4 sections + drum-exit punch-out) | $2,505 |
+| Perimeter walkway (4 sections + drum-exit punch-out) | $2,590 |
 | Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + door frame) | $1,395 |
 | Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay + handle) | $1,382 |
 | Chemistry prep shelf (fold-down board + frame + hinge/stays + tap trunk extension) | $229 |
 | Cyanotype chemistry + muslin substrate (50-print run, Standard tier) | $1,710 |
-| Contingency (10%) | ~$3,110 |
-| **Level 1 total** | **~$34,224** |
+| Contingency (10%) | ~$3,120 |
+| **Level 1 total** | **~$34,319** |
 <!-- END costing:funding-level1 -->
 
 ### Level 2 — First Deployment (+$1,025–2,750)
@@ -128,7 +128,7 @@ Video documentation, process photography, and initial publication:
 | Publication design (zine or catalog, print run) | $500–1,500 |
 | **Level 3 total** | **~$2,000–5,000** |
 
-**Combined (Levels 1+2+3):** ~<!-- BEGIN costing:fund-combined -->$37,249–41,974<!-- END costing:fund-combined --> for a complete first-year program with three public deployments, 50-print edition, and full documentation.
+**Combined (Levels 1+2+3):** ~<!-- BEGIN costing:fund-combined -->$37,344–42,069<!-- END costing:fund-combined --> for a complete first-year program with three public deployments, 50-print edition, and full documentation.
 
 ## 7. Timeline
 A 12-month build and deployment program:

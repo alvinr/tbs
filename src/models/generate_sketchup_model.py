@@ -604,7 +604,13 @@ RWK_GRATE_Z = WALKWAY_H - WALKWAY_GRATE_T              # 115 — grate bottom
 RWK_ARM_BOT, RWK_ARM_TOP = LEFT_WK_CANT_ARM_Z0, RWK_GRATE_Z   # arm underside Z89.6 (matches the LEFT arm; single-sourced) — 11.6mm over the full-width 1½ spray beam
 RWK_AH = RWK_ARM_TOP - RWK_ARM_BOT                     # 25.4 (2×1in section, 1in deep — #26)
 RWK_ARM_W = 50.8                                       # 2in — arm width in Yd (2×1in section)
-RWK_HL = 95                                           # half-lap line
+# Arm = SOLID 2×1 flat bar (a notched partial section must be solid to be strong — a notched HOLLOW
+# tube opens into a weak channel; the un-notched LEFT cantilevers stay tube). Half-lap split REBALANCED
+# to the moment: DEEP arm notch at the tip (low moment) and SHALLOW at the post end (high moment → the
+# OUTER beam takes the deep notch). Sized in ibc_frame_load.arm_notch_check().
+RWK_HL_TIP  = round(RWK_ARM_BOT + 5.4, 1)             # 95.0 — TIP crossing split: arm keeps 5.4 (M≈30 Nm); inner beam keeps 20
+RWK_HL_POST = round(RWK_ARM_BOT + 16.0, 1)           # 105.6 — POST crossing split: arm keeps 16 (M≈334 Nm); outer beam notched to 9.4
+RWK_HL = RWK_HL_TIP                                    # legacy alias / default split
 RWK_BEARER_W = 50.8                                    # 2in — long-beam width in X (2×1in section)
 RWK_BEARER_XS = (RWK_X_L, RWK_X_R - RWK_BEARER_W)      # long-beam left edges
 RWK_BEARER_Z0 = RWK_ARM_TOP - RWK_AH                   # 89.6 — long-beam soffit (2×1in, 1in deep — #26: 2×⅞ non-stock). Deck kept at 140 (Option B), so 11.6mm spray-beam clearance. Stiffness held by the 2 mid-span center arms (built below).
@@ -647,34 +653,42 @@ def _yd_split(y0, y1, cuts):
 
 
 def _rwk_xbeam(name, yd, x0, x1):
-    """X-beam (arm) half-lapped at each long beam it crosses: continuous LOWER half + UPPER
-    half cut away where a long beam (40 wide) drops in."""
-    out = [ruby_box(f"{name} lower", x0, yd, RWK_ARM_BOT, x1 - x0, RWK_ARM_W, RWK_HL - RWK_ARM_BOT, color=C_STEEL)]
-    xs, segs = x0, []
-    for bx in sorted(b for b in RWK_BEARER_XS if x0 - 1 < b < x1):
-        if bx > xs:
-            segs.append((xs, bx))
-        xs = bx + RWK_BEARER_W
-    if xs < x1:
-        segs.append((xs, x1))
-    for s0, s1 in segs:
-        out.append(ruby_box(f"{name} upper", s0, yd, RWK_HL, s1 - s0, RWK_ARM_W, RWK_ARM_TOP - RWK_HL, color=C_STEEL))
+    """Arm = SOLID 2×1 flat bar, half-lapped at each long beam it crosses. The notch is REBALANCED to
+    the moment: DEEP at the tip (low moment → arm keeps 5.4, RWK_HL_TIP) and SHALLOW at the post end
+    (high moment → arm keeps 16, RWK_HL_POST → the OUTER beam takes the deep notch). Built as solid
+    X-segments, each a box from the bar bottom up to its local top (RWK_ARM_TOP, or the split at a crossing)."""
+    def _split_at(bx):
+        return RWK_HL_TIP if bx <= RWK_X_L + 1 else RWK_HL_POST
+    crossings = sorted((bx, bx + RWK_BEARER_W, _split_at(bx))
+                       for bx in RWK_BEARER_XS if x0 - 1 < bx < x1)
+    out, cursor = [], x0
+    for cx0, cx1, split in crossings:
+        if cx0 > cursor:
+            out.append(ruby_box(f"{name} full", cursor, yd, RWK_ARM_BOT, cx0 - cursor, RWK_ARM_W, RWK_ARM_TOP - RWK_ARM_BOT, color=C_STEEL))
+        out.append(ruby_box(f"{name} notch", cx0, yd, RWK_ARM_BOT, cx1 - cx0, RWK_ARM_W, split - RWK_ARM_BOT, color=C_STEEL))
+        cursor = cx1
+    if cursor < x1:
+        out.append(ruby_box(f"{name} full", cursor, yd, RWK_ARM_BOT, x1 - cursor, RWK_ARM_W, RWK_ARM_TOP - RWK_ARM_BOT, color=C_STEEL))
     return out
 
 
-def _rwk_long_beam(x, cross_ranges, notches=(), y0=0, y1=C_WID):
+def _rwk_long_beam(x, cross_ranges, notches=(), y0=0, y1=C_WID, split=None):
     """Yd long beam half-lapped at the arms it crosses (cross_ranges = (yd0, w)): continuous UPPER
-    half + LOWER half cut away at each crossing.  `notches` = (yd0, w) OPEN-TOP pipe slots (outer beam
-    only): the UPPER web is cut away and the lower web dropped to RWK_NOTCH_FLOOR so a flush ribbon pipe
-    crosses through the top of the beam.  `y0..y1` restricts the run to a Yd sub-range (used to build the
-    STRAIGHT portions of the cranked inner beam either side of the muslin-rod jog)."""
+    part (split..TOP) + LOWER part cut away at each crossing.  `split` = the half-lap line (Z of the
+    kept upper part's bottom): RWK_HL_TIP for the inner beam (keeps 20), RWK_HL_POST for the outer beam
+    (keeps 9.4 — the arm takes the thick side at the post end).  `notches` = (yd0, w) OPEN-TOP pipe slots
+    (outer beam only): the UPPER web is cut away and the lower web dropped to RWK_NOTCH_FLOOR so a flush
+    ribbon pipe crosses through the top.  `y0..y1` restricts the run to a Yd sub-range (the cranked inner
+    beam's straight portions either side of the muslin-rod jog)."""
+    if split is None:
+        split = RWK_HL_TIP
     out = []
-    # UPPER half (Z95-115): full Yd, minus the pipe notches (an open-top notch removes the upper web)
+    # UPPER part (split..TOP): full Yd, minus the pipe notches (an open-top notch removes the upper web)
     for s0, s1 in _yd_split(y0, y1, list(notches)):
-        out.append(ruby_box(f"RWk Long beam X{int(x)} upper", x, s0, RWK_HL, RWK_BEARER_W, s1 - s0, RWK_ARM_TOP - RWK_HL, color=C_STEEL))
-    # LOWER web (Z80-95): removed at arm half-laps AND at notches (a reduced-height web fills the notch below)
+        out.append(ruby_box(f"RWk Long beam X{int(x)} upper", x, s0, split, RWK_BEARER_W, s1 - s0, RWK_ARM_TOP - split, color=C_STEEL))
+    # LOWER part (BEARER_Z0..split): removed at arm half-laps AND at notches (a reduced-height web fills the notch below)
     for s0, s1 in _yd_split(y0, y1, list(cross_ranges) + list(notches)):
-        out.append(ruby_box(f"RWk Long beam X{int(x)} lower", x, s0, RWK_BEARER_Z0, RWK_BEARER_W, s1 - s0, RWK_HL - RWK_BEARER_Z0, color=C_STEEL))
+        out.append(ruby_box(f"RWk Long beam X{int(x)} lower", x, s0, RWK_BEARER_Z0, RWK_BEARER_W, s1 - s0, split - RWK_BEARER_Z0, color=C_STEEL))
     # at each notch: the surviving Z80-NOTCH_FLOOR bottom web (skip where an arm half-lap already removed it)
     for n0, nw in notches:
         for s0, s1 in _yd_split(n0, n0 + nw, list(cross_ranges)):
@@ -750,19 +764,23 @@ def fp_combined_corner_plate(wall_yd, din, cx=None):
 
 
 def ibc_cantilever_arms(x_to=None):
-    """The 2 walkway cantilever arms that ATTACH TO THE IBC corridor uprights (rev12):
-    each arm cantilevers off an upright (Yd 1046/1266, X≈4734) toward the walkway long
-    beams, with 2 upright clamps + 2 M12 through-bolts wrapping the upright. Single-
-    sourced so the overview/walkway models and the focused IBC model stay in register.
-    `x_to` is how far the arm reaches inward (default RWK_X_L — the left long beam)."""
+    """The 2 walkway cantilever arms that ATTACH TO THE IBC corridor uprights (rev12): each arm (a SOLID
+    2×1 flat bar) cantilevers off a front upright (Yd 1046/1266) toward the walkway long beams. J6 joint =
+    an END-PLATE welded to the arm end, bolted through the upright (4× M12) to a REAR backing plate — a
+    bolted moment connection (mirrors the container-wall cantilever detail). Single-sourced so the
+    overview/walkway models and the focused IBC model stay in register.
+    `x_to` is how far the arm reaches inward (default RWK_X_L — the inner long beam)."""
     x_to = RWK_X_L if x_to is None else x_to
+    ac_z, ep_t, ep_w, ep_h = (RWK_ARM_BOT + RWK_ARM_TOP) / 2.0, 8, 66, 130   # arm mid-Z / end-plate thickness, width(Yd), height(Z)
     parts = []
     for yd in RWK_UP_YDS:
         parts += _rwk_xbeam(f"RWk center cantilever Yd{yd}", yd, x_to, RWK_X_UP)
-        for pf in (yd - 8, yd + RWK_ARM_W):
-            parts.append(ruby_box(f"RWk upright clamp Yd{yd} Y{int(pf)}", RWK_X_UP - 4, pf, RWK_ARM_BOT - 25, IBC_FRAME_RHS + 8, 8, RWK_AH + 55, color=C_STEEL))
-        for bz in (RWK_ARM_BOT + 6, RWK_ARM_TOP + 18):
-            parts.append(ruby_cylinder(f"RWk upright bolt M12 Yd{yd} Z{int(bz)}", RWK_X_UP + IBC_FRAME_RHS / 2, yd - 12, bz, 6, RWK_ARM_W + 24, color=C_STEEL, axis="y"))
+        ac_y = yd + RWK_ARM_W / 2.0
+        parts.append(ruby_box(f"RWk J6 end-plate Yd{yd}", RWK_X_UP - ep_t, ac_y - ep_w/2, ac_z - ep_h/2, ep_t, ep_w, ep_h, color=C_STEEL))       # welded to arm end
+        parts.append(ruby_box(f"RWk J6 backing plate Yd{yd}", RWK_X_UP + IBC_FRAME_RHS, ac_y - ep_w/2, ac_z - ep_h/2, ep_t, ep_w, ep_h, color=C_STEEL))  # rear backing plate
+        for dy in (-15, 15):
+            for dz in (-45, 45):
+                parts.append(ruby_cylinder(f"RWk J6 bolt M12 Yd{yd}", RWK_X_UP - ep_t, ac_y + dy, ac_z + dz, 6, IBC_FRAME_RHS + 2*ep_t, color=C_STEEL, axis="x"))
     return parts
 
 
@@ -849,7 +867,7 @@ def right_walkway_cantilever(include_combined=True, include_grate=True):
     arm_ranges = [(yd, RWK_ARM_W) for yd in RWK_UP_YDS]
     notch_ranges = [(cy - RWK_RIBBON_NOTCH_W / 2, RWK_RIBBON_NOTCH_W) for cy in RWK_RIBBON_NOTCH_YDS]
     parts += _rwk_inner_beam_cranked(lx, arm_ranges)          # inner beam — CRANKED around the muslin-rod slot (uncut)
-    parts += _rwk_long_beam(rx, arm_ranges, notch_ranges)     # outer beam — open-top notch at each ribbon lane
+    parts += _rwk_long_beam(rx, arm_ranges, notch_ranges, split=RWK_HL_POST)   # outer beam — takes the DEEP half-lap notch (keeps 9.4) + open-top pipe notches
     for ey in (0, C_WID - RWK_BEARER_W):
         parts.append(ruby_box(f"RWk end beam Yd{int(ey)}", lx, ey, RWK_BEARER_Z0, (rx + RWK_BEARER_W) - lx, RWK_BEARER_W, RWK_ARM_TOP - RWK_BEARER_Z0, color=C_STEEL))
     parts += ibc_cantilever_arms()

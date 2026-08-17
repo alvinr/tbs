@@ -488,6 +488,34 @@ def sheet1():
             ax.add_patch(Circle(((ydh), (bz + FRAME_RHS / 2)), (15),
                                 fc="none", ec=C_STEEL, lw=2.0, zorder=11))
 
+    # ── Each bar's TWO connections: a J2 L-cleat + 2 VERTICAL bolts at the corridor (upright) end,
+    #    and the wall hanger's J3 HORIZONTAL through-bolts + J7 vertical retention bolt at the wall end.
+    #    Bolt symbols are drawn in their true orientation: J2/J7 down through the bar (vertical, Z);
+    #    J3 sideways through the wall (horizontal, Yd).  (Details on Sheet 4 Det B + the Plate Schedule.)
+    def _hbolt(x_wall, z, into_dir, *, L=52, d=9):
+        """A horizontal through-bolt at a side wall — head OUTSIDE the wall, shank runs into the corridor."""
+        hl, hh = d * 0.7, d * 1.7
+        x0 = x_wall if into_dir > 0 else x_wall - L
+        ax.add_patch(Rectangle((x0, z - d / 2), L, d, fc=C_SHANK, ec=C_OUT, lw=0.7, zorder=12))
+        hx = (x_wall - hl) if into_dir > 0 else x_wall
+        ax.add_patch(Rectangle((hx, z - hh / 2), hl, hh, fc=C_BOLT, ec=C_OUT, lw=0.7, zorder=13))
+    for bz in (500, 950, 1500, 1950):
+        bmid = bz + FRAME_RHS / 2
+        # corridor ends — near bar ends at NEAR_COL_R+RHS (leg runs −Yd), far bar at FAR_COL_L−RHS (leg runs +Yd)
+        for post_face, din in ((NEAR_COL_R + FRAME_RHS, -1), (FAR_COL_L - FRAME_RHS, +1)):
+            ax.add_patch(Rectangle((min(post_face, post_face + din * 8), bz - 10), 8, FRAME_RHS + 20,
+                                   fc=C_FRAME, ec=C_OUT, lw=0.9, zorder=8))          # cleat upstand (welded to the upright — W3)
+            ax.add_patch(Rectangle((min(post_face, post_face + din * 90), bz - 11), 90, 11,
+                                   fc=C_FRAME, ec=C_OUT, lw=0.9, zorder=8))          # cleat horizontal leg (bar sits on it)
+            _weld_tick(ax, post_face, bmid, side=('left' if din < 0 else 'right'), size=10)   # W3 weld
+            for off in (25, 65):
+                _bolt(ax, post_face + din * off, bz - 11, FRAME_RHS + 11, vert=True, d=10, nut=True)  # 2× J2 VERTICAL bolts — down through the bar into the cleat leg
+        # wall ends — 2× J3 HORIZONTAL through-bolts (one below the seat, one above the bar) + the J7 vertical retention bolt
+        for wall_yd, into_dir in ((0, +1), (C_WID, -1)):
+            for zz in (bz - 12, bz + FRAME_RHS + 12):
+                _hbolt(wall_yd, zz, into_dir)                                       # J3 through-bolt (head OUTSIDE, into the exterior backing plate)
+            _bolt(ax, wall_yd + into_dir * 30, bz - 8, FRAME_RHS + 8, vert=True, d=8, nut=True)  # J7 vertical bar-retention bolt
+
     # ── Weld symbols at key joints ──────────────────────────────────────────
     # Platform to upright joints
     for uyd in [POST_NEAR_YD + FRAME_RHS / 2, POST_FAR_YD + FRAME_RHS / 2]:
@@ -576,6 +604,12 @@ def sheet1():
            (NEAR_COL_R - 70), (1900),
            "FRONT RETAINING BARS (×8, 2/tier)\n50×20×3 RHS at IBC front\n(25mm gap), Z500/950 + Z1500/1950 — slide-stop\n+ weld-on ring lash points",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
+           arrow_style="-|>", font=FONT)
+
+    leader(ax, (NEAR_COL_R + FRAME_RHS - 45), (1500 + FRAME_RHS / 2),
+           (NEAR_COL_R - 60), (1330),
+           "J2 CORRIDOR-END CLEAT (×8)\nL-cleat welded to the upright (W3);\nbar bolts down 2× M12×65 (J2)\n— see Sheet 4 Det B / Plate 4",
+           color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
     leader(ax, (30), (1760 + FRAME_RHS / 2),
@@ -730,20 +764,36 @@ def sheet2():
     # ── Right-walkway cantilever arm (rev12) — attaches to the front corridor
     # upright and projects off the front of the frame toward the walkway.  In side
     # elevation (along Yd) the 2 arms (Yd 1046/1266) overlap into one bar. ──
-    _rhs_rect(ax, ARM_X_TIP_L, ARM_Z0, FRAME_RHS - ARM_X_TIP_L, ARM_Z1 - ARM_Z0,
-              fc=C_ARM, alpha=0.9, zo=7)
-    # upright clamp wrapping the front corridor upright + 2 M12 bolts
-    _rhs_rect(ax, FX_FRONT - 4, ARM_Z0 - 25, FRAME_RHS + 8, (ARM_Z1 - ARM_Z0) + 55,
-              fc=C_ARM, alpha=0.45, zo=6)
-    for bz in (ARM_Z0 + 6, ARM_Z1 + 14):
-        ax.add_patch(Circle(((FX_FRONT + FRAME_RHS / 2), (bz)), (6),
-                            fc=C_OUT, ec=C_OUT, lw=0.5, zorder=9))
-    # Rewrapped to narrow lines (rule 66) so the block stays in the left margin
-    # instead of spilling across the upright + X-brace; full text is in note 9.
+    EP_T = 8                                                                         # J6 end-plate / backing-plate thickness
+    _rhs_rect(ax, ARM_X_TIP_L, ARM_Z0, (FX_FRONT - EP_T) - ARM_X_TIP_L, ARM_Z1 - ARM_Z0,
+              fc=C_ARM, alpha=0.9, zo=7)                                              # SOLID arm — ends 8mm short of the post (the end-plate fills the gap)
+    # J6 BEARING-TYPE (matches Sheet 5): an end-plate WELDED to the arm end (post FRONT face) + a REAR
+    # backing plate, with 2× M12 through the post ABOVE the arm — the bolts run left→right THROUGH the
+    # post (not into the page), both high so they clear the arm and the corridor bottom rail below.
+    ep_z0, ep_z1 = 56, 185                                                           # bottom raised to clear the base ring + its weld (ring top Z50.8); still covers the arm + both bolts
+    _rhs_rect(ax, FX_FRONT - EP_T, ep_z0, EP_T, ep_z1 - ep_z0, fc=C_STEEL, alpha=0.85, zo=8)         # end-plate (front, welded to arm)
+    _rhs_rect(ax, FX_FRONT + FRAME_RHS, ep_z0, EP_T, ep_z1 - ep_z0, fc=C_STEEL, alpha=0.85, zo=8)    # rear backing plate
+    for bz in (ARM_Z1 + 25, ARM_Z1 + 55):                                            # 2× M12 — HORIZONTAL, both ABOVE the arm
+        _bolt(ax, FX_FRONT - EP_T, bz, FRAME_RHS + 2 * EP_T, d=8, nut=True)
+    _weld_tick(ax, FX_FRONT - EP_T + 2, ARM_Z1 - 4, side='up', size=6)               # end-plate ↔ arm weld
+    leader(ax, (FX_FRONT + FRAME_RHS / 2), (ARM_Z1 + 55),
+           (FX_FRONT + FRAME_RHS + 95), (ARM_Z1 + 165),
+           "J6 (bearing-type): 2× M12 run THROUGH\nthe post ABOVE the arm → end-plate (front)\n+ rear backing plate (see Sheet 5)",
+           color=C_OUT, fs=5.2, ha="left", va="bottom", arrow_style="-|>", font=FONT)
     leader(ax, (ARM_X_TIP_L + 40), (ARM_Z1),
            (ARM_X_TIP_L - 10), (ARM_Z1 + 90),
            "RIGHT-WALKWAY\nCANTILEVER ARM\n2×1×0.120in steel (×2)\n(see note 9)",
            color=C_ARM, fs=5.5, ha="left", va="bottom", arrow_style="-|>", font=FONT)
+
+    # ── Plywood mounting tabs on the BACK upright — the rear-panel brackets that carry the corridor
+    #    pump panel (note 5).  J8: TEK screws to the post; J4: bolt into a tee-nut in the ply. ──
+    for tz in (350, 980, 1600):
+        ax.add_patch(Rectangle((FX_BACK - 34, tz - 4), 34, 8, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8))   # tab leg (projects into the corridor)
+        ax.add_patch(Circle((FX_BACK - 28, tz), 5, fc=C_BOLT, ec=C_OUT, lw=0.6, zorder=9))                # J4 ply bolt head
+        _weld_tick(ax, FX_BACK, tz, side='left', size=5)                                                  # J8 TEK to the post
+    leader(ax, (FX_BACK - 34), 980, (FX_BACK - 150), 980 + 150,
+           "PLYWOOD MOUNTING TABS (×6)\nrear-panel brackets: J8 TEK to the post\n+ J4 bolt into a tee-nut in the ply\n— see Sheet 4 Det D / Plate 5",
+           color=C_OUT, fs=5.2, ha="left", va="bottom", arrow_style="-|>", font=FONT)
 
     # ── Dimensions ──────────────────────────────────────────────────────────
     # Overall depth
@@ -1226,9 +1276,11 @@ def sheet5():
             fontsize=13, fontweight="bold", ha="center", **FONT)
 
     # ── schematic X map along the arm: tip (inner-beam L edge) → upright face, reach 325 ──
-    XT, XUP, ep_x = 120, 1180, 12
+    XT, XUP = 120, 1180
     SCL = (XUP - XT) / 325.0                                    # px per mm along the arm
     def axm(mm): return XT + mm * SCL                           # mm from the tip → schematic X
+    EP_MM = 8.0                                                 # end-plate thickness (mm) — welded to the arm END, so it is INCLUDED in the 325 reach
+    ep_x = EP_MM * SCL                                          # end-plate drawn to scale: the arm STEEL stops 8mm short of the upright face
     XIN0, XIN1 = axm(0.0),   axm(50.8)                          # inner notch — LEFT long beam (at the arm tip)
     XOUT0, XOUT1 = axm(249.2), axm(300.0)                       # outer notch — RIGHT long beam
     _hatch = dict(fc=C_FRAME, ec=C_OUT, alpha=0.5, hatch="xx")
@@ -1267,8 +1319,9 @@ def sheet5():
     draw_dim_h(ax, XT, XIN1, zc, "50.8", fs=5.8, font=FONT, above=False)                   # inner notch width
     draw_dim_h(ax, XIN1, XOUT0, zc, "198.4", fs=5.8, font=FONT, above=False)               # clear gap
     draw_dim_h(ax, XOUT0, XOUT1, zc, "50.8", fs=5.8, font=FONT, above=False)               # outer notch width
-    draw_dim_h(ax, XOUT1, XUP, zc, "25", fs=5.8, font=FONT, above=False)                   # stub to the upright
-    draw_dim_h(ax, XT, XUP, zc - 42, "reach 325  (= arm length)", fs=6.5, font=FONT, above=False)
+    draw_dim_h(ax, XOUT1, XUP - ep_x, zc, "17", fs=5.8, font=FONT, above=False)            # arm-STEEL stub (outer notch → arm end = 25 − 8mm plate)
+    draw_dim_h(ax, XUP - ep_x, XUP, zc, "8", fs=5.0, font=FONT, above=False)               # end-plate (welded to the arm end; fills to the upright face — part of the 325)
+    draw_dim_h(ax, XT, XUP, zc - 42, "reach 325  (incl. 8 end-plate)", fs=6.5, font=FONT, above=False)
 
     # ── PLAN VIEW — top-down: each half-lap is a full-width crossing (notch = beam width) ──
     _dcell(ax, 20, 500, 1320, 280, "PLAN VIEW (top-down)  ·  each notch is a FULL-WIDTH half-lap (beam width 50.8)")
@@ -1284,15 +1337,16 @@ def sheet5():
     ax.add_patch(Rectangle((XUP, py - dw/2 - 4), 50, dw + 8, fc=C_FRAME, ec=C_OUT, alpha=0.5, lw=1.2, zorder=6))            # upright (POST), top-down
     ax.text(XUP + 25, py, "POST", fontsize=5.0, ha="center", va="center", color=C_DIM, **FONT, zorder=8)
     ax.add_patch(Rectangle((XUP + 50, py - dw/2 - 6), ep_x, dw + 12, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.4, zorder=7))   # rear backing plate edge
-    _bolt(ax, XUP - ep_x, py, 2 * ep_x + 62, d=8, nut=True)                                                                # M12 through-bolt: end-plate → post → backing plate + nut
+    _bolt(ax, XUP - ep_x, py, 2 * ep_x + 50, d=8, nut=True)                                                                # M12 through-bolt: head butts the end-plate front, nut butts the backing-plate back (post is 50 wide here)
     leader(ax, XUP + 25, py, XUP + 40, py + dw/2 + 30, "2× M12 through-bolts\n(both project here —\nZ's on the end-plate detail)", fs=5.2, font=FONT, ha="center")
     draw_dim_v(ax, XUP - ep_x - 18, py - dw/2, py + dw/2, "50.8", fs=5.6, font=FONT)                # arm width = beam width
     zcp = py - dw/2 - 22                                                                            # chain-dim line (mirrors VIEW A)
     draw_dim_h(ax, XT, XIN1, zcp, "50.8", fs=5.8, font=FONT, above=False)                           # inner notch width
     draw_dim_h(ax, XIN1, XOUT0, zcp, "198.4", fs=5.8, font=FONT, above=False)                       # clear gap
     draw_dim_h(ax, XOUT0, XOUT1, zcp, "50.8", fs=5.8, font=FONT, above=False)                       # outer notch width
-    draw_dim_h(ax, XOUT1, XUP, zcp, "25", fs=5.8, font=FONT, above=False)                           # stub to the upright
-    draw_dim_h(ax, XT, XUP, zcp - 34, "reach 325  (= arm length)", fs=6.3, font=FONT, above=False)
+    draw_dim_h(ax, XOUT1, XUP - ep_x, zcp, "17", fs=5.8, font=FONT, above=False)                     # arm-STEEL stub (outer notch → arm end = 25 − 8mm plate)
+    draw_dim_h(ax, XUP - ep_x, XUP, zcp, "8", fs=5.0, font=FONT, above=False)                        # end-plate (part of the 325)
+    draw_dim_h(ax, XT, XUP, zcp - 34, "reach 325  (incl. 8 end-plate)", fs=6.3, font=FONT, above=False)
 
     # ── END-PLATE — BEARING-TYPE, both bolts ABOVE the arm; rail ghosted below (no bolt near it) ──
     _dcell(ax, 20, 40, 500, 440, "END-PLATE + REAR BACKING PLATE (×2)  ·  2× M12 ABOVE the arm")
@@ -1324,8 +1378,8 @@ def sheet5():
             fontsize=5.1, ha="center", color=C_DIM, **FONT)
 
     # ── DETAIL — HALF-LAP HOLD-DOWN (the TEK screw that secures the beam to the arm at each lap) ──
-    _dcell(ax, 540, 40, 380, 440, "HALF-LAP HOLD-DOWN (×4)  ·  section")
-    hx, mw = 730, 72                                                                      # section center X / half-width
+    _dcell(ax, 540, 40, 800, 440, "HALF-LAP HOLD-DOWN (×4)  ·  section")
+    hx, mw = 940, 72                                                                      # section center X / half-width
     # LOWER = solid cantilever ARM (16 kept, Ø7 CLEARANCE hole); UPPER = HOLLOW walkway BEAM (9.4 kept),
     # notched so its SOLID wall faces DOWN against the arm — the TEK threads straight into that bottom wall.
     zab, zs, zbt = 258, 354, 410                                                          # arm bottom / half-lap line / beam top
@@ -1353,27 +1407,15 @@ def sheet5():
     ax.text(hx, 147, "SOLID bottom wall (faces down on the arm); clamp the lap.", fontsize=5.2, ha="center", color=C_DIM, **FONT)
     ax.text(hx, 133, "Head sits in the ~6.6mm gap — clears the traveling spray beam.", fontsize=5.2, ha="center", color=C_DIM, **FONT)
 
-    # ── NOTES ──
-    _dcell(ax, 940, 40, 400, 440, "NOTES")
+    # ── NOTES — standard block along the bottom, above the title block (single bordered box) ──
     draw_notes(ax, [
-        "• 2× arms, one per IBC FRONT upright (near",
-        "  + far). 2×1 SOLID steel bar (50.8×25.4).",
-        "• Reach 325mm = arm length: upright → tip.",
-        "• Crosses BOTH long beams → TWO half-lap",
-        "  notches (X-located on VIEW A): outer 25mm",
-        "  from the post; inner at the tip; 198.4 clear.",
-        "• Notch REBALANCED to the moment (solid bar):",
-        "  – TIP (M≈30 Nm): arm keeps 5.4, beam 20.",
-        "  – POST (M≈334 Nm): arm keeps 16 (SF≈1.6);",
-        "    the BEAM's 9.4 notch is a BEARING SEAT —",
-        "    beam spans SS on the full section.",
-        "• HOLD-DOWN: 1× #14 TEK screw per lap (×4),",
-        "  from the UNDERSIDE through the beam into",
-        "  the solid arm (locks the beam to the seat).",
-        "• J6: end-plate WELDED to arm → 2× M12 (central",
-        "  column) → REAR backing plate (Sheet 4, Det F).",
-        "• Arm underside Z90; top Z115 (grate).",
-    ], 958, 452, spacing=24, fs=5.9, font=FONT, width=384)
+        "NOTES — WALKWAY CANTILEVER ARM (×2, one per IBC FRONT upright; 2×1 SOLID steel bar, 50.8×25.4):",
+        "• Reach 325mm = arm length (upright FACE → tip), INCL. the 8mm end-plate; the arm-steel stub from the outer notch to the arm end = 17mm.",
+        "• Crosses BOTH long beams → TWO half-lap notches (X-located on VIEW A): outer 25mm from the post, inner at the tip, 198.4 clear.",
+        "• Notch REBALANCED to the moment (solid bar): TIP (M≈30 Nm) arm keeps 5.4 / beam 20;  POST (M≈334 Nm) arm keeps 16 (SF≈1.6) — the beam's 9.4 notch is a BEARING SEAT, so the beam spans simply-supported on its full section.",
+        "• HOLD-DOWN: 1× #14 TEK per lap (×4), from the UNDERSIDE through the beam into the solid arm (locks the beam to the seat). Arm underside Z90; top Z115 (grate).",
+        "• J6 (bearing-type): an end-plate WELDED to the arm end → 2× M12 (central column, BOTH above the arm) → REAR backing plate. Full connection on Sheet 4, Det F.",
+    ], 30, -30, spacing=30, fs=6.2, font=FONT, width=1310)
 
     title_block(ax, "SHEET 5 OF 6",
                 drawing_title="IBC SUPPORT FRAME",
@@ -1392,35 +1434,59 @@ def sheet6():
     ax.text(680, 872, "WELD MAP — FILLET WELDS W1–W6 (front elevation, schematic — not to scale)",
             fontsize=13, fontweight="bold", ha="center", **FONT)
 
-    # schematic front bay: two uprights + top/bottom rings + feet + two front bars + cleats
+    # Schematic front bay: the TWO CORRIDOR uprights (near + far, close together, tied by the top/bottom
+    # rings ACROSS the corridor gap), their feet, and the front retaining bars that project OUTWARD from
+    # each upright to the side walls.  The corridor between the uprights carries NO bar — only the rings.
     upw = 34
-    xL, xR = 300, 720                                  # near / far front uprights
+    xL, xR = 560, 780                                  # near / far corridor uprights (the pair, close together)
     zb, zt = 120, 720                                  # base (foot top) / top
+    xLi, xRi = xL + upw / 2, xR - upw / 2              # inner (corridor-facing) faces
+    wallL, wallR = 120, 1220                           # schematic side-wall positions the bars reach
+    for wx in (wallL, wallR):                          # side walls (context)
+        ax.add_patch(Rectangle((wx - 4, 250), 8, 300, fc=C_CAGE, ec=C_OUT, lw=0.8, alpha=0.4, zorder=2))
     for ux in (xL, xR):
         _rhs_rect(ax, ux - upw / 2, zb, upw, zt - zb, fc=C_FRAME, zo=5)          # upright
         ax.add_patch(Rectangle((ux - 55, zb - 22), 110, 22, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=6))  # foot plate
-    for rz in (zb, zt - upw):                          # bottom + top rings (butt between uprights)
-        ax.add_patch(Rectangle((xL + upw / 2, rz), (xR - upw / 2) - (xL + upw / 2), upw, fc=C_FRAME, ec=C_OUT, lw=1.4, zorder=4))
-    # two front bars (span past the uprights toward the walls) + cleats at the corridor ends
+    for rz in (zb, zt - upw):                          # bottom + top rings tie the two uprights across the corridor
+        ax.add_patch(Rectangle((xLi, rz), xRi - xLi, upw, fc=C_FRAME, ec=C_OUT, lw=1.4, zorder=4))
+    # retaining bars: NEAR bar wall→near upright (projects LEFT), FAR bar far upright→wall (projects RIGHT) —
+    # each ends (cleated) at its upright's inner face; the corridor gap between the uprights has no bar.
     for bz in (300, 470):
-        ax.add_patch(Rectangle((150, bz), 940, 26, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))          # bar (both columns, schematic)
-        for ux, s in ((xL, -1), (xR, +1)):
-            ax.add_patch(Rectangle((ux + s * upw / 2, bz - 12), s * 26, 12, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=7))  # cleat leg under the bar
-    # lashing ring on the lower bar
-    for rx in (230, 1010):
+        ax.add_patch(Rectangle((wallL, bz), xLi - wallL, 26, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))   # NEAR bar
+        ax.add_patch(Rectangle((xRi, bz), wallR - xRi, 26, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))     # FAR bar
+        ax.add_patch(Rectangle((xLi - 26, bz - 12), 26, 12, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=7))    # near cleat leg (under the bar)
+        ax.add_patch(Rectangle((xRi, bz - 12), 26, 12, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=7))         # far cleat leg
+    for rx in (230, 1110):                             # lashing ring on the lower bar (one per bar)
         ax.add_patch(Circle((rx, 300 - 6), 16, fc="none", ec=C_OUT, lw=2.0, zorder=8))
-    ax.text(xL - 60, zb + (zt - zb) / 2, "NEAR\nUPRIGHT", fontsize=5.5, ha="center", va="center", color=C_DIM, **FONT)
-    ax.text(xR + 60, zb + (zt - zb) / 2, "FAR\nUPRIGHT", fontsize=5.5, ha="center", va="center", color=C_DIM, **FONT)
+    ax.text((xLi + xRi) / 2, zb + (zt - zb) / 2, "CORRIDOR\n(rings tie\nthe uprights)", fontsize=5.0, ha="center", va="center", color=C_DIM, **FONT)
+    ax.text(xL, zt + 24, "NEAR\nUPRIGHT", fontsize=5.5, ha="center", va="bottom", color=C_DIM, **FONT)
+    ax.text(xR, zt + 24, "FAR\nUPRIGHT", fontsize=5.5, ha="center", va="bottom", color=C_DIM, **FONT)
+    ax.text((wallL + xLi) / 2, 470 + 42, "NEAR RETAINING BAR", fontsize=5.0, ha="center", color=C_DIM, **FONT)
+    ax.text((xRi + wallR) / 2, 470 + 42, "FAR RETAINING BAR", fontsize=5.0, ha="center", color=C_DIM, **FONT)
 
-    def _wtag(x, y, tag, tx, ty, ha="left"):
-        _weld_tick(ax, x, y, size=8)
-        leader(ax, x, y, tx, ty, tag, fs=7, font=FONT, ha=ha)
-    _wtag(xL + upw / 2, zt - upw, "W1", xL - 40, zt + 30, "right")         # upright↔ring (representative; ×8 corners)
-    _wtag(xR - upw / 2, zb, "W1", xR + 40, zb - 44, "left")
-    _wtag(xL, zb, "W2", xL - 70, zb - 70, "right")                        # foot↔upright base
-    _wtag(xL + upw / 2 + 26, 470, "W3", xL - 30, 520, "right")            # cleat↔upright
-    _wtag(230, 300 - 6, "W4", 150, 210, "right")                          # lashing ring↔bar
-    ax.text(1000, 470 + 60, "W5 — wall-hanger seat↔back-plate\n(off-frame weldment; see Plate Schedule, Plate 3)", fontsize=5.6, ha="center", color=C_DIM, **FONT)
+    # EVERY weld instance is ticked (symmetric near↔far); each type is labelled ONCE with its total count.
+    # W1 — upright↔ring: BOTH uprights × BOTH rings = 4 inner corners (×8 with the back bay)
+    for ry in (zt - upw / 2, zb + upw / 2):
+        _weld_tick(ax, xLi, ry, side='right', size=7)
+        _weld_tick(ax, xRi, ry, side='left', size=7)
+    # W2 — foot↔upright base: BOTH feet
+    _weld_tick(ax, xL - upw / 2, zb, side='left', size=7)
+    _weld_tick(ax, xR + upw / 2, zb, side='right', size=7)
+    # W3 — bar-end cleat↔upright: ALL cleats (2 bars × 2 ends shown; 8 total on the frame)
+    for bz in (300, 470):
+        _weld_tick(ax, xLi, bz + 6, side='left', size=6)
+        _weld_tick(ax, xRi, bz + 6, side='right', size=6)
+    # W4 — lashing ring↔bar: BOTH rings
+    for rx in (230, 1110):
+        _weld_tick(ax, rx, 300 - 6, side='up', size=6)
+    # one leader per weld TYPE (all instances above are ticked; the leader names the type + count)
+    leader(ax, xLi, zt - upw / 2, xL - 150, zt + 30, "W1 (typ. — ×8)", fs=7, font=FONT, ha="right")
+    leader(ax, xL - upw / 2, zb, xL - 150, zb - 60, "W2 (×4 feet)", fs=7, font=FONT, ha="right")
+    leader(ax, xRi, 306, xRi + 150, 240, "W3 (×8 cleats)", fs=7, font=FONT, ha="left")
+    leader(ax, 230, 300 - 6, 150, 190, "W4 (×8 rings)", fs=7, font=FONT, ha="right")
+    ax.text(670, -18, "W5 — wall-hanger seat↔back-plate (off-frame; see Plate Schedule, Plate 3)   ·   "
+            "W6 — ribbon cross-beam↔walkway bearer (plumbing-corridor ribbon, not the tote frame)",
+            fontsize=5.2, ha="center", color=C_DIM, **FONT)
 
     # ── legend ──
     _dcell(ax, 20, -300, 1340, 250, "WELD SCHEDULE (fillet, E70xx; §3.5)")

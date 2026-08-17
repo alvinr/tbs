@@ -8,7 +8,7 @@ scale bar) with its outline dimensions, hole diameters, and hole-center position
 datum edge — a shop can cut/drill each from this sheet.
 
 Sheet 1 — flat + folded structural plates: IBC foot, wall-hanger backing, wall-hanger pocket.
-Sheet 2 — welded angle brackets: bar-end cleat, rear-panel tab, side-panel pipe-run L.
+Sheet 2 — bar-end cleat (fabricated 8mm-plate L) + welded angle brackets: rear-panel tab, side-panel pipe-run L.
 
 Hole POSITIONS are the diagram-of-record here (per CLAUDE.md: exact coordinates a reader would
 verify by measuring belong in the diagram). System-defining sizes reference tbs_constants where
@@ -24,7 +24,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle, Circle
 
 from tbs_constants import (IBC_FOOT_PLATE, IBC_FOOT_PLATE_T, IBC_FOOT_BOLT_D, IBC_FOOT_BOLT_PCD,
-                           IBC_FOOT_BOLT_N, IBC_FRAME_RHS, DIAGRAM_DPI, DIAGRAMS_DIR)
+                           IBC_FOOT_BOLT_N, IBC_FRAME_RHS, IBC_FRONT_BAR_D, DIAGRAM_DPI, DIAGRAMS_DIR)
 from tbs_title_block import title_block
 from tbs_drawing import draw_dim_h, draw_dim_v, draw_notes
 
@@ -57,9 +57,15 @@ POCK_SEAT_W, POCK_SEAT_PROJ = 60, 70
 POCK_SEAT_HOLE_D = HOLE_CLR      # Ø14 for the single J7 vertical retention bolt through bar + seat (centered)
 POCK_BP_HOLE_EDGE = 18           # J3 holes on the back-plate: 18 from each end (aligns with Plate 2 backing, 169 apart)
 
-# Bar-end cleat (angle, corridor end — J2: 2× M12 down through the bar into the horizontal leg; W3 to upright).
-CLEAT_LEG, CLEAT_T, CLEAT_LEN = 50, 6, 100
-CLEAT_BOLT_PITCH, CLEAT_EDGE  = 60, 20
+# Bar-end cleat — a FABRICATED 8 mm-plate L (NOT a rolled angle), corridor end. Matches the 3D model
+# (generate_corridor_water_panel.py tote_restraint: lt=8 plate, llen=90 leg, upstand = IBC_FRAME_RHS+8,
+# width = IBC_FRONT_BAR_D). J2: 2× M12×65 down through the bar into the horizontal leg; W3 welds the
+# upstand to the upright. (Reconciled to the 3D 2026-08-17 — was a stale 50×50×6 angle spec.)
+CLEAT_LEG   = 90                       # horizontal leg length (the bar sits on it)
+CLEAT_T     = 8                        # plate thickness
+CLEAT_UP    = IBC_FRAME_RHS + CLEAT_T  # upstand height (welded to the upright) = 58
+CLEAT_W     = IBC_FRONT_BAR_D          # cleat width in X (= the bar depth) = 20
+CLEAT_BOLT_PITCH, CLEAT_EDGE = 40, 25  # 2× M12×65, 40 pitch, ~25 from the corridor end (0.28·90)
 
 # Rear-panel bracket / TAB (angle TEK-screwed to the post, J8; J4: 1× M8 into a tee-nut in the ply).
 TAB_LEG, TAB_T, TAB_H = 50, 5, 60
@@ -195,26 +201,27 @@ def sheet2():
     ax.text(670, 405, "PLATE FABRICATION SCHEDULE — ANGLE BRACKETS", fontsize=12,
             fontweight="bold", ha="center", **FONT)
 
-    # ── PLATE 4 — BAR-END CLEAT (angle 50×50×6, 2× Ø14 in the horizontal leg) ──
-    _panel(ax, 20, 40, 420, 340, "PLATE 4 — BAR-END CLEAT", "A36 angle 50×50×6 · L100 · ×8")
-    cx, cy = 120, 150
-    ax.add_patch(Rectangle((cx, cy), CLEAT_T, CLEAT_LEG, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=5))      # vertical leg (to upright)
+    # ── PLATE 4 — BAR-END CLEAT (fabricated 8mm-plate L: 90 leg + 58 upstand, 2× Ø14 in the leg) ──
+    _panel(ax, 20, 40, 420, 340, "PLATE 4 — BAR-END CLEAT", f"A36 8mm plate L · {CLEAT_LEG} leg + {CLEAT_UP:.0f} upstand · {CLEAT_W} wide · ×8")
+    # L-section end view — upstand (up the upright, W3) + horizontal leg (bar sits on) sharing the corner
+    cx, cy = 90, 130
+    ax.add_patch(Rectangle((cx, cy), CLEAT_T, CLEAT_UP, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=5))       # upstand (welded to upright)
     ax.add_patch(Rectangle((cx, cy), CLEAT_LEG, CLEAT_T, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=5))      # horizontal leg (bar sits on)
-    ax.text(cx - 6, cy + CLEAT_LEG + 10, "vertical leg\n(weld W3 to upright)", fontsize=5, **FONT, zorder=6)
-    draw_dim_v(ax, cx - 14, cy, cy + CLEAT_LEG, f"{CLEAT_LEG}mm", fs=5.5, font=FONT)                    # vertical-leg outside length (thickness is in the subtitle)
-    draw_dim_h(ax, cx, cx + CLEAT_LEG, cy - 16, f"{CLEAT_LEG}mm", fs=5.5, font=FONT, above=False)       # horizontal-leg outside length
-    # face view of the horizontal (drilled) leg — to the right, showing the 2 holes along the L100 length
-    fx, fy = 240, 150
-    ax.add_patch(Rectangle((fx, fy), CLEAT_LEN, CLEAT_LEG, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=4))
+    ax.text(cx - 6, cy + CLEAT_UP + 12, "upstand\n(weld W3 to upright)", fontsize=5, **FONT, zorder=6)
+    draw_dim_v(ax, cx - 14, cy, cy + CLEAT_UP, f"{CLEAT_UP}mm", fs=5.5, font=FONT)                      # upstand outside height (thickness is in the subtitle)
+    draw_dim_h(ax, cx, cx + CLEAT_LEG, cy - 16, f"{CLEAT_LEG}mm", fs=5.5, font=FONT, above=False)       # horizontal-leg length
+    # face view of the horizontal (drilled) leg — to the right: 90 long × 20 wide, 2 holes along the length
+    fx, fy = 250, 150
+    ax.add_patch(Rectangle((fx, fy), CLEAT_LEG, CLEAT_W, fc=C_STEEL, ec=C_OUT, lw=1.5, zorder=4))
     for hx in (fx + CLEAT_EDGE, fx + CLEAT_EDGE + CLEAT_BOLT_PITCH):
-        _hole(ax, hx, fy + CLEAT_LEG/2, HOLE_CLR)
-    draw_dim_h(ax, fx, fx + CLEAT_LEN, fy + CLEAT_LEG + 20, f"{CLEAT_LEN}mm", fs=6, font=FONT)
+        _hole(ax, hx, fy + CLEAT_W/2, HOLE_CLR, cl=10)
+    draw_dim_h(ax, fx, fx + CLEAT_LEG, fy + CLEAT_W + 20, f"{CLEAT_LEG}mm", fs=6, font=FONT)
     draw_dim_h(ax, fx + CLEAT_EDGE, fx + CLEAT_EDGE + CLEAT_BOLT_PITCH, fy - 18, f"{CLEAT_BOLT_PITCH}mm", fs=6, font=FONT, above=False)
-    draw_dim_v(ax, fx + CLEAT_LEN + 20, fy, fy + CLEAT_LEG, f"{CLEAT_LEG}mm", fs=6, font=FONT)
-    draw_dim_v(ax, fx - 14, fy, fy + CLEAT_LEG/2, f"{int(CLEAT_LEG/2)}mm", fs=5.5, font=FONT)            # hole-center height (centered on the leg)
-    ax.text(290, 100, "horizontal (drilled) leg — face", fontsize=5, ha="center", color=C_DIM, **FONT, zorder=6)
-    _specbox(ax, 60, 320, [f"2× Ø{HOLE_CLR} (M12) — J2 bar bolts, {CLEAT_BOLT_PITCH} pitch, {CLEAT_EDGE} from each end",
-                           "left = L-section end · right = drilled-leg face"])
+    draw_dim_v(ax, fx + CLEAT_LEG + 20, fy, fy + CLEAT_W, f"{CLEAT_W}mm", fs=6, font=FONT)
+    draw_dim_h(ax, fx, fx + CLEAT_EDGE, fy - 40, f"{CLEAT_EDGE}mm", fs=5.5, font=FONT, above=False)      # first hole from the corridor end
+    ax.text(fx + CLEAT_LEG/2, fy + CLEAT_W + 40, "horizontal (drilled) leg — face", fontsize=5, ha="center", color=C_DIM, **FONT, zorder=6)
+    _specbox(ax, 60, 330, [f"2× Ø{HOLE_CLR} (M12×65) — J2 hold-down, {CLEAT_BOLT_PITCH} pitch, {CLEAT_EDGE} from end",
+                           f"left = L-section end · right = drilled-leg face ({CLEAT_W} wide)"])
 
     # ── PLATE 5 — REAR-PANEL TAB (angle 50×50×5, 1× Ø9/M8) ──
     _panel(ax, 460, 40, 420, 340, "PLATE 5 — REAR-PANEL TAB", "A36 angle 50×50×5 · ×6")
@@ -255,8 +262,8 @@ def sheet2():
 
     _scale_bar(ax, 60, -70)
     draw_notes(ax, [
-        "• Holes: Plate 4 Ø14 (M12), Plate 5 Ø9 (M8), Plate 6 Ø7 (¼-20). Angles cut square, deburr all edges. A36.",
-        "• Each plate shown twice: L-section end + drilled-leg face. Attach leg: Plate 4 welds to the upright (W3); Plates 5/6 TEK-screw to the post (J8/J9) — no weld.",
+        "• Holes: Plate 4 Ø14 (M12×65), Plate 5 Ø9 (M8), Plate 6 Ø7 (¼-20). Cut square, deburr all edges. A36.",
+        "• Each plate shown twice: L-section end + drilled-leg face. Attach: Plate 4 upstand welds to the upright (W3); Plates 5/6 TEK-screw to the post (J8/J9) — no weld.",
     ], 470, -40, spacing=18, fs=6.2, font=FONT, width=880)
 
     title_block(ax, "PLATE SHEET 2 OF 2", drawing_title="IBC SUPPORT FRAME",

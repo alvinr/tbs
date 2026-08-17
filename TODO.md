@@ -13,27 +13,26 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ## 🛠 Tooling / infra
 
-- [ ] **Solid-joint seam audit + butt-vs-weld convention (3D readability).** Overlapping same-color solid
+- [~] **Solid-joint seam audit + butt-vs-weld convention (3D readability).** Overlapping same-color solid
   members render with NO seam line, so distinct parts read as one fused piece (found 2026-08-14 at the IBC
-  retaining-bar → corridor-upright joint — the bar ran *through* the post). This is a general 3D issue, but
-  it can't be a blanket "no overlaps" rule: interpenetration is intentional for **welded** joints (a weld
-  fuses → continuous is correct) and for fasteners sunk in plates. The distinction is **semantic (weld vs
-  bolt), not geometric**. **Plan:** (1) extend `check_interference.py` with a `--solids` pass that lists
-  SAME-material solid↔solid overlaps above a volume threshold (excluding fasteners) as a review WARNING —
-  reuses the existing AABB machinery; triage each as weld (leave) vs bolted/cleated (butt it). (2) Codify the
-  convention in the model skill: **bolted/cleated joints BUTT** (member ends at the mating face → visible
-  seam), **welded joints MAY overlap** (reads continuous). Not an auto-fix ("Intersect Faces" everywhere
-  over-draws + mangles the generated geometry). (Alvin 2026-08-14.)
+  retaining-bar → corridor-upright joint — the bar ran *through* the post). **TOOLING DONE (2026-08-16):**
+  `check_interference.py --solids` lists SAME-color solid↔solid interpenetrations (3-axis overlap, so butts
+  don't flag) above a volume threshold, sorted, each tagged `weld` or `BUTT?` (bolted/cleated). Convention
+  codified in `skills/skill_model_consistency.md` (§Readability seam audits). **REMAINING — triage + fix:**
+  the pass reports ~60 on the water model (33 `BUTT?`); most `BUTT?` are actually welds (foot-plate↔post,
+  filter cap↔port = molded). Genuine butt candidates to fix: **RWk J6 backing plate ↔ frame rail**, **RWk
+  wall cleat plate ↔ end beam / long beam**. Each fix = generator edit (butt the member) + model re-send
+  (single-writer, ALVIN saves). Run against the **overview** model (has all structural members) for the full
+  list. (Alvin 2026-08-14.)
 
-- [ ] **Pipe-through-surface seam audit (3D readability) — same class as the beam fix above.** Where a pipe
-  passes *through* a surface (e.g. a plywood panel, a wall, a plate), the penetration shows NO seam/butt line
-  — the pipe reads as fused into the panel instead of passing through a drilled hole. We fixed the analogous
-  case for solid *beams* (butt at the mating face); pipes need the same treatment at panel/wall penetrations.
-  **Plan:** extend the solid-seam `--solids` pass (or a sibling `--pipes`) in `check_interference.py` to flag
-  pipe↔surface intersections (cylinder passing through a plate/panel solid) as a review WARNING, then per
-  penetration either (a) draw a short collar/grommet ring at the surface (the visible hole + seam), or (b)
-  split the pipe at the surface so each side butts the face. Reuse the pipe registry already parsed for the
-  clash audit. (Alvin 2026-08-15.)
+- [~] **Pipe-through-surface seam audit (3D readability) — same class as the beam fix above.** A pipe
+  passing *through* a surface (plywood panel, wall, plate) shows NO seam/butt line — reads as fused into the
+  panel. **TOOLING DONE (2026-08-16):** `check_interference.py --pipes` flags pipes whose centerline crosses
+  the FULL thickness of a panel/wall/plate slab and emerges the far side. On the water model it finds 13
+  penetrations: **pump-mount ply shirt** (suction entries + Cct-C power branches), **rear panel (18mm ply)**
+  (DV merges, X-port drains, suction), **drain-riser backing spine**, **processing tray floor** (sump→P-04
+  drain). **REMAINING — fix each:** either (a) draw a short collar/grommet ring at the face, or (b) split the
+  pipe so each side butts it. Each fix = generator edit + re-send (single-writer). (Alvin 2026-08-15.)
 
 - [ ] **Explore the Sketchfab Data API (Python) to automate model re-upload.** [Sketchfab Data API v3 — Python](https://sketchfab.com/developers/data-api/v3/python).
   Today the single-writer protocol ends with ALVIN manually re-uploading each `.skp` to Sketchfab (same model UID). Investigate driving that upload programmatically (PATCH/upload to the existing model UID via the Data API + a token), so a re-send could optionally push to Sketchfab without the manual step. Respect the single-writer rule (ALVIN still saves the `.skp`); the API would replace only the *upload* leg. Prereqs: API token handling, per-model UID already lives in `dependencies.yml` (`push_sketchfab.py` reads it), verify the API supports replacing a model's source file in place.

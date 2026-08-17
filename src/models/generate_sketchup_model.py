@@ -913,7 +913,10 @@ def right_walkway_cantilever(include_combined=True, include_grate=True):
     parts += _rwk_inner_beam_cranked(lx, arm_ranges)          # inner beam — CRANKED around the muslin-rod slot (uncut)
     parts += _rwk_long_beam(rx, arm_ranges, notch_ranges, split=RWK_HL_POST)   # outer beam — takes the DEEP half-lap notch (keeps 9.4) + open-top pipe notches
     for ey in (0, C_WID - RWK_BEARER_W):
-        parts.append(ruby_box(f"RWk end beam Yd{int(ey)}", lx, ey, RWK_BEARER_Z0, (rx + RWK_BEARER_W) - lx, RWK_BEARER_W, RWK_ARM_TOP - RWK_BEARER_Z0, color=C_STEEL))
+        # end beam BUTTS between the two long beams (X lx+W .. rx) instead of overlapping them at the
+        # corners — the closed rectangle is welded, but the weld is not modeled, so a clean butt reads
+        # as two distinct members meeting rather than one fused corner (check_interference.py --solids).
+        parts.append(ruby_box(f"RWk end beam Yd{int(ey)}", lx + RWK_BEARER_W, ey, RWK_BEARER_Z0, rx - (lx + RWK_BEARER_W), RWK_BEARER_W, RWK_ARM_TOP - RWK_BEARER_Z0, color=C_STEEL))
     parts += ibc_cantilever_arms()
     for wall_yd, din, tag in ((0, 1, "near"), (C_WID, -1, "far")):
         parts += _rwk_wall_cleat(tag, lx + RWK_BEARER_W // 2, wall_yd, din)

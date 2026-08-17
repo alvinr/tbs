@@ -3500,11 +3500,18 @@ bounces noticeably less than the rod-hung version it replaces.</p>
 <td>$5–$10</td>
 </tr>
 <tr>
-<td>Right walkway cantilever frame</td>
-<td>2×1×0.120in steel tube — 2 long beams (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + 2 end beams (300mm) + 2 center arms (325mm) that pick the rectangle up at mid-span, ~6 m (19.6 ft). #26: 2×⅞ is non-stock — MetalsDepot/Metal Supermarkets carry only 2×1, which is deeper ⇒ stronger arms (SF≈2.5); Option B keeps the deck, so spray-beam clearance is 11.6mm. Firm: MetalsDepot 2×1×0.120 $76.20/12ft stick ($6.35/ft) — 2 sticks (24 ft) cover it with spare; retail cut-to-size runs ~3× ($16.72/ft, Metal Supermarkets) so bulk-stick it. 2026-08-07.</td>
+<td>Right walkway cantilever frame (long + end beams)</td>
+<td>2×1×0.120in steel tube — 2 long beams (<!-- BEGIN fact:container_width_mm -->2,362<!-- END fact:container_width_mm -->mm) + 2 end beams (300mm) that make the closed rectangle, ~5.4 m (17.6 ft) of tube. The 2 center cantilever ARMS are a SEPARATE part (walkway-cantilever-arms) — a SOLID 2×1 flat bar, because each arm is half-lapped over both long beams and a notched HOLLOW tube opens into a weak channel (a notched partial section must be solid). Firm: MetalsDepot 2×1×0.120 $76.20/12ft stick ($6.35/ft) — 2 sticks (24 ft) cover the beams with spare; retail cut-to-size runs ~3× ($16.72/ft, Metal Supermarkets) so bulk-stick it. 2026-08-07.</td>
 <td>1 lot</td>
 <td>MetalsDepot / Metal Supermarkets</td>
 <td>$125–$153</td>
+</tr>
+<tr>
+<td>Right walkway center cantilever arms (solid bar)</td>
+<td>SOLID 2×1in (50.8×25.4mm) mild-steel flat bar, ~320mm each — the 2 arms that pick the walkway rectangle up at mid-span off the IBC front uprights. Solid (not tube) so the half-lap notch keeps its strength: notch REBALANCED to the moment — deep arm notch at the tip (M≈30 Nm, arm keeps 5.4mm), shallow at the post end (M≈334 Nm, arm keeps 16mm, SF≈1.6 — the outer beam takes the deep notch as a bearing SEAT and spans simply-supported on its full section; ibc_frame_load.arm_notch_check + outer_beam_frame_check). FIRM: Metal Supermarkets 2×1 solid bar $91.32 / 36in cut (one stick covers both arms + spare), $45.66/arm — checked 2026-08-16. Retail cut-to-size; a steel-yard bulk stick would be cheaper but the min-cut is fine for 2 short pieces.</td>
+<td>2 ea</td>
+<td>Metal Supermarkets</td>
+<td>$91</td>
 </tr>
 <tr>
 <td>Wall cleat (left corners)</td>
@@ -3522,10 +3529,38 @@ bounces noticeably less than the rod-hung version it replaces.</p>
 </tr>
 <tr>
 <td><a href="https://www.mcmaster.com/91280A732/">M12×70 hex through-bolt, Grade 8.8 zinc, partial-thread</a> (91280A732)</td>
-<td>Right-walkway wall cleats + combined corner plates + 2 center-arm U-clamps, sized for the deepest 30mm-corrugation grip (~54mm), partial thread. $17.36/pack of 10. Pad with 1–2 M12 flat washers if the actual container corrugation is &lt;30mm.</td>
-<td>24 ea</td>
+<td>Right-walkway wall cleats + combined corner plates, sized for the deepest 30mm-corrugation grip (~54mm), partial thread. (The 2 center arms no longer use these — they bolt via the J6 end-plate, see bolt-m12x100.) $17.36/pack of 10. Pad with 1–2 M12 flat washers if the actual container corrugation is &lt;30mm.</td>
+<td>20 ea</td>
 <td>McMaster-Carr</td>
-<td>$42</td>
+<td>$35</td>
+</tr>
+<tr>
+<td>M12×100 hex through-bolt, Grade 8.8 zinc</td>
+<td>J6 walkway-arm end-plate joint — 2 per arm × 2 arms, a CENTRAL vertical column (Yd centreline) through the front upright into the rear backing plate (the moment couple is the 90mm VERTICAL bolt spacing; a central column keeps max edge distance on both the plate and the post). Runs with a nyloc nut + an internal crush sleeve so torque can't dish the hollow upright. ESTIMATE — firm SKU at fab.</td>
+<td>4 ea</td>
+<td>McMaster-Carr</td>
+<td>$8–$10</td>
+</tr>
+<tr>
+<td>Walkway-arm end + backing plates (J6)</td>
+<td>65×130×8mm mild-steel plate (arm 50.8 wide + weld toe), 2× Ø13 for M12 in a central column at 90mm pitch — 2 end-plates (welded to the arm ends, 5mm fillet all round) + 2 rear backing plates (plain), one set per arm. Cut+drill from A36 flat plate.</td>
+<td>4 ea</td>
+<td>Local fab</td>
+<td>$12–$24</td>
+</tr>
+<tr>
+<td>Walkway-arm J6 crush sleeves</td>
+<td>Internal spacer/crush tube (~Ø14 ID over the M12) cut to the upright bore depth — one per J6 through-bolt (2/arm × 2) so tightening can't collapse the hollow RHS upright. Cut from steel tube offcut.</td>
+<td>4 ea</td>
+<td>Local fab</td>
+<td>$3–$6</td>
+</tr>
+<tr>
+<td>Half-lap hold-down screws (#14 TEK + washer)</td>
+<td>1× #14 self-drilling TEK screw + washer per half-lap (4 total: 2 arms × 2 crossings) — driven from the underside through a Ø7 clearance hole in the long beam, self-tapping into the SOLID arm above, so the beam is positively secured to the bearing seat (anti-lift/anti-slide). Head clears the traveling spray beam (~6.6mm). 410 SS self-driller, same family as the J8/J9 bracket screws.</td>
+<td>4 ea</td>
+<td>Bridge Fasteners</td>
+<td>$2–$4</td>
 </tr>
 <tr>
 <td><a href="https://www.mcmaster.com/90591A181/">M12 hex nut, plain</a> (90591A181)</td>
@@ -3574,7 +3609,7 @@ bounces noticeably less than the rod-hung version it replaces.</p>
 <td></td>
 <td></td>
 <td></td>
-<td><strong>$2,086–$2,948</strong></td>
+<td><strong>$2,195–$3,076</strong></td>
 </tr>
 </tbody>
 </table>

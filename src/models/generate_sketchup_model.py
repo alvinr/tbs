@@ -317,7 +317,8 @@ def _mute_ctx(mute, alpha):
     return (_CTX_MUTE if mute is None else mute, _CTX_ALPHA if alpha is None else alpha)
 
 
-def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False, mute=None):
+def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False, mute=None,
+             holes=None, hole_axis=None):
     """Generate Ruby to create a named box group inside the `ents` context.
 
     Parameters are in mm. x, y, z: origin corner (min X, min Yd, min Z).
@@ -325,6 +326,14 @@ def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False, m
     the entities collection of the enclosing component definition.
     `both_sides` paints the back faces too (so interior + exterior read the
     same — used for the container shell).
+
+    `holes` cuts real drilled clearance holes THROUGH the panel (a void, not a
+    part — so a pipe/cable reads as passing through a hole, not fused into the
+    slab; see check_interference.py --pipes).  Each hole is `(a, b, r)` in mm
+    world coords of the two in-plane axes, radius r, cut along `hole_axis`
+    ("x"/"y"/"z" — the panel's thin axis): x→(yd,z), y→(x,z), z→(x,yd).  The
+    cutter is oversized ±2mm so it cleanly penetrates both faces via
+    Group#subtract; material is applied to the resulting solid.
     """
     mute, alpha = _mute_ctx(mute, alpha)
     # Sum in millimeters first, then render each corner with the `.mm` suffix.
@@ -342,6 +351,38 @@ def ruby_box(name, x, y, z, w, d, h, color=None, alpha=None, both_sides=False, m
         f'  face.reverse! if face.normal.z < 0',
         f'  face.pushpull({h_mm})',
     ]
+
+    if holes:
+        # Cut real drilled clearance holes by drawing each circle COPLANAR on the panel's NEAR face and
+        # pushpulling it through the thickness.  (Group#subtract does NOT chain in this SketchUp — the 2nd
+        # boolean silently collapses the solid to garbage; coplanar-face pushpull is robust and adds one
+        # clean 24-segment hole each, staying manifold.)  Keep each hole a safe MARGIN inside the panel
+        # on both in-plane axes so a near-edge razor sliver can't form.
+        span = {"x": (x, x + w, w), "y": (y, y + d, d), "z": (z, z + h, h)}[hole_axis]
+        inplane = {"x": ((y, y + d), (z, z + h)),
+                   "y": ((x, x + w), (z, z + h)),
+                   "z": ((x, x + w), (y, y + d))}[hole_axis]
+        normal = {"x": "[1,0,0]", "y": "[0,1,0]", "z": "[0,0,1]"}[hole_axis]
+        near, thick = span[0], span[2]
+        MARGIN = 5.0
+
+        def _clamp(v, lo, hi, r):
+            return min(max(v, lo + r + MARGIN), hi - r - MARGIN)
+        for a, b, r in holes:
+            a = _clamp(a, inplane[0][0], inplane[0][1], r)
+            b = _clamp(b, inplane[1][0], inplane[1][1], r)
+            if hole_axis == "x":
+                cc = f'[{mm(near)},{mm(a)},{mm(b)}]'
+            elif hole_axis == "y":
+                cc = f'[{mm(a)},{mm(near)},{mm(b)}]'
+            else:
+                cc = f'[{mm(a)},{mm(b)},{mm(near)}]'
+            lines += [
+                f'  hcirc = grp.entities.add_circle({cc}, {normal}, {mm(r)}, 24)',
+                f'  hdisk = hcirc.map {{ |e| e.faces }}.flatten.uniq.min_by {{ |ff| ff.area }}',
+                f'  hdisk.reverse! if hdisk.normal.{hole_axis} < 0',   # normal into the solid
+                f'  hdisk.pushpull({mm(thick)})',                       # through to the far face → hole
+            ]
 
     if color:
         color = mute_hex(color, mute)

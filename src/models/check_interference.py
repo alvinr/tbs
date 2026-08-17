@@ -14,9 +14,18 @@ group's world AABB, classifies them, and reports:
      segment distance, not AABB overlap, so parallel neighbours and Z-staggered over/unders (a clear
      gap) do NOT flag — only pipes actually crossing through each other.
 
-    python3 src/models/check_interference.py          # report both
+    python3 src/models/check_interference.py          # clash audit (pipe-vs-solid + pipe-on-pipe)
 
 Run it after every geometry change (this is the discipline that stops the regression).
+
+Two READ-ONLY readability passes (advisory, non-gating) surface DRAWING defects where distinct parts
+render as one fused piece because no seam line shows — a semantic-triage review list, not a clash:
+  --solids  SAME-color solid<->solid interpenetrations (a member run THROUGH another, not a butt).
+            Triage each: welded/cast → leave (a weld reads continuous); bolted/cleated → butt at the
+            mating face so a seam shows.
+  --pipes   pipes driven THROUGH a thin surface slab (panel/wall/plate) and emerging the far side with
+            no drilled-hole seam.  Fix: a collar/grommet ring at the face, or split the pipe to butt it.
+  --seams   both readability passes.
 """
 import sys, os, json
 from collections import defaultdict
@@ -41,7 +50,15 @@ walk = lambda { |ents, t, parent|
         b = e.bounds
         xs = []; ys = []; zs = []
         (0..7).each { |i| p = t * b.corner(i); xs << p.x.to_mm; ys << p.y.to_mm; zs << p.z.to_mm }
-        out << {n: e.name.to_s, p: parent.to_s,
+        # dominant COLOR — group material, else the first face's material (both_sides helpers
+        # set face material only).  Two leaves that render as one fused piece share this RGB.
+        mt = e.material
+        if mt.nil?
+          f = e.entities.find { |x| x.is_a?(Sketchup::Face) && x.material }
+          mt = f ? f.material : nil
+        end
+        co = (mt && mt.color) ? [mt.color.red, mt.color.green, mt.color.blue] : nil
+        out << {n: e.name.to_s, p: parent.to_s, co: co,
                 mn: [xs.min, ys.min, zs.min], mx: [xs.max, ys.max, zs.max]}
       end
     end
@@ -254,6 +271,141 @@ def is_run(name):
     return not any(k in n for k in ("cable", "busbar", "awg", " wire", "lug", "conduit"))
 
 
+# ── readability seam audits (--solids / --pipes) ─────────────────────────────
+# Two SAME-material solids that interpenetrate render with NO seam line, so distinct parts read as one
+# fused piece; likewise a pipe driven THROUGH a panel/wall shows no drilled-hole seam.  Neither is a
+# clash (the geometry is intentional) — they are DRAWING readability defects.  These two passes surface
+# them as review WARNINGS for semantic triage (weld/cast → leave; bolted/cleated/drilled → butt or
+# collar).  They do NOT gate and do NOT touch the default report.
+
+# Fasteners legitimately sink into the parts they clamp — never a readability defect; excluded from
+# --solids.  Also excluded: context/scale/label helpers and translucent ghosts (no seam to read).
+_FASTENER_KEYS = ("bolt", "screw", " nut", "washer", "tek", "anchor", " lag", "rivet", "stud",
+                  "threaded rod", "u-joint", "u joint", "gib", "pad", "shim", "dowel", " m6",
+                  " m8", " m10", " m12", "coach", "hold-down", "holddown")
+_NONSOLID_KEYS = ("context", "scale", "person", "label", "depth ref", "ghost", "dim", "leader",
+                  "arrow", "text", "annotation")
+
+
+def is_fastener(name):
+    n = name.lower()
+    return any(k in n for k in _FASTENER_KEYS)
+
+
+def is_readable_solid(name):
+    n = name.lower()
+    return not (is_fastener(name) or any(k in n for k in _NONSOLID_KEYS))
+
+
+def _ovl_vol(a, b):
+    """Interpenetration volume (mm^3) of two AABBs, 0 if they only touch/clear."""
+    v = 1.0
+    for i in range(3):
+        d = min(a["mx"][i], b["mx"][i]) - max(a["mn"][i], b["mn"][i])
+        if d <= 0:
+            return 0.0
+        v *= d
+    return v
+
+
+def solids_pass(data, min_overlap_mm=2.0, min_vol_mm3=1000.0):
+    """SAME-color solid<->solid interpenetrations (a member passing THROUGH another, not merely
+    butting a face) above a volume threshold.  Butted joints touch on one axis only (overlap ~0 on the
+    mating axis) so they don't flag; a bar run THROUGH a post overlaps on all three axes and does.
+    Same RGB is the trigger because that's exactly when the shared material erases the seam."""
+    sols = [g for g in data
+            if g.get("co") and is_readable_solid(g["n"])
+            and classify(g["n"])[0] not in ("pipe", "skip")]
+    hits = []
+    for i in range(len(sols)):
+        A = sols[i]
+        for j in range(i + 1, len(sols)):
+            B = sols[j]
+            if A["co"] != B["co"]:
+                continue                              # different color → the seam already reads
+            if run_base(A["n"]) == run_base(B["n"]):
+                continue                              # parts of one logical member
+            if not overlap(A, B, min_overlap_mm):     # true 3-axis interpenetration, not a butt
+                continue
+            vol = _ovl_vol(A, B)
+            if vol < min_vol_mm3:
+                continue
+            c = [round((max(A["mn"][k], B["mn"][k]) + min(A["mx"][k], B["mx"][k])) / 2) for k in range(3)]
+            hits.append((vol, A, B, c))
+    hits.sort(key=lambda h: -h[0])
+    # A bolted/cleated JOINT (one part is a cleat/plate/bracket/tab/clip) should BUTT so a seam shows;
+    # a beam<->beam or web<->flange overlap is a weld/formed section and reads correctly continuous.
+    joint_keys = ("cleat", "plate", "bracket", "tab", "lug", "clip", "gusset", "saddle", "hanger",
+                  "end-plate", "endplate", "shoe", "cap")
+    def _hint(A, B):
+        na, nb = A["n"].lower(), B["n"].lower()
+        return "BUTT?" if any(k in na or k in nb for k in joint_keys) else "weld"
+    nb = sum(1 for _, A, B, _ in hits if _hint(A, B) == "BUTT?")
+    print(f"same-color solid interpenetrations={len(hits)} ({nb} likely-bolted → BUTT?, rest weld)  "
+          f"(triage: welded/cast=leave; bolted/cleated=butt at the mating face)")
+    for vol, A, B, c in hits:
+        print(f"  [{_hint(A, B):5s}] {A['n']:40.40s} ({A['p']})")
+        print(f"    x       {B['n']:40.40s}  overlap {vol/1000:.1f}cm^3 @ ({c[0]},{c[1]},{c[2]})")
+    return len(hits)
+
+
+# Surfaces a pipe is drilled THROUGH (a hole + collar should show); the pipe reads as fused into the
+# slab when it just interpenetrates.  A pipe that ENDS at / stops short of a face butts cleanly — only
+# a pipe crossing the FULL thickness and emerging the far side is the no-seam defect.
+_SURFACE_KEYS = ("panel", "ply", " wall", "plate", "deck", "backing", "grate", "floor", "ceiling",
+                 "bulkhead", "baffle", "board")
+
+
+def is_surface(name):
+    n = name.lower()
+    return any(k in n for k in _SURFACE_KEYS) and not is_fastener(name)
+
+
+def pipes_pass(data, margin=1.0):
+    """Pipes driven THROUGH a thin surface slab (perpendicular, emerging the far side) with no
+    drilled-hole seam.  Flags only full-thickness through-penetrations — a pipe that stops at/within a
+    face is a clean butt.  Fix per hit: draw a short collar/grommet ring at the face, or split the pipe
+    at the surface so each side butts it."""
+    pipes = [g for g in data if classify(g["n"])[0] == "pipe"]
+    surfs = [g for g in data if is_surface(g["n"])]
+    hits = []
+    for p in pipes:
+        rep = rep_of(p)
+        if rep[0] != "seg":
+            continue                                  # elbow/fitting body, not a straight run
+        A, B = rep[1], rep[2]
+        la = max(range(3), key=lambda k: abs(B[k] - A[k]))    # pipe long axis
+        pmin, pmax = min(A[la], B[la]), max(A[la], B[la])
+        # pipe in-plane center (the two axes that are NOT the run axis)
+        for s in surfs:
+            dims = [s["mx"][k] - s["mn"][k] for k in range(3)]
+            ta = min(range(3), key=lambda k: dims[k])         # surface thin axis
+            if ta != la:
+                continue                              # pipe runs along the face, not through it
+            # full-thickness crossing: pipe spans past BOTH faces on the thin axis
+            if not (pmin < s["mn"][ta] - margin and pmax > s["mx"][ta] + margin):
+                continue
+            # pipe passes within the surface's in-plane footprint
+            inplane = [k for k in range(3) if k != ta]
+            pc = [(A[k] + B[k]) / 2 for k in range(3)]
+            if all(s["mn"][k] - margin <= pc[k] <= s["mx"][k] + margin for k in inplane):
+                thick = dims[ta]
+                c = [round(pc[k]) if k != ta else round((s["mn"][ta] + s["mx"][ta]) / 2) for k in range(3)]
+                hits.append((thick, p, s, c))
+    hits.sort(key=lambda h: -h[0])
+    print(f"pipe-through-surface penetrations={len(hits)}  "
+          f"(fix: collar/grommet ring at the face, or split the pipe so each side butts it)")
+    seen = set()
+    for thick, p, s, c in hits:
+        k = (p["n"], s["n"])
+        if k in seen:
+            continue
+        seen.add(k)
+        print(f"  PIPE  {p['n']:42.42s} ({p['p']})")
+        print(f"    thru {s['n']:42.42s}  {thick:.0f}mm slab @ ({c[0]},{c[1]},{c[2]})")
+    return len(hits)
+
+
 def main():
     payload = json.loads(send_ruby(RUBY))
     title = payload.get("title", "?")
@@ -359,7 +511,27 @@ def main():
     return 1 if (hits or worst) else 0
 
 
+def _readability(which):
+    """Run the seam-readability passes against the live model (READ-ONLY query)."""
+    payload = json.loads(send_ruby(RUBY))
+    title = payload.get("title", "?")
+    data = payload["g"]
+    print(f"model={title}  leaves={len(data)}")
+    n = 0
+    if which in ("solids", "all"):
+        n += solids_pass(data)
+    if which in ("pipes", "all"):
+        n += pipes_pass(data)
+    return 0 if n == 0 else 0   # advisory only — never a nonzero (non-gating) exit
+
+
 if __name__ == "__main__":
+    if "--solids" in sys.argv:
+        sys.exit(_readability("solids"))
+    if "--pipes" in sys.argv:
+        sys.exit(_readability("pipes"))
+    if "--readability" in sys.argv or "--seams" in sys.argv:
+        sys.exit(_readability("all"))
     if "--write" in sys.argv:
         import io, contextlib
         buf = io.StringIO()

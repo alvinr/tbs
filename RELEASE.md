@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **NEW tooling — 3D readability seam audits (`check_interference.py --solids / --pipes / --seams`).**
+  Two READ-ONLY, advisory passes against the live model that surface a *drawing* defect (distinct parts
+  rendering as one fused piece because no seam shows), distinct from a clash. `--solids` lists same-color
+  solid↔solid interpenetrations (3-axis overlap — a member run *through* another, not a butt) above a
+  volume threshold, each tagged `weld` (leave) or `BUTT?` (bolted/cleated → butt at the mating face).
+  `--pipes` flags pipes driven through the full thickness of a panel/wall/plate slab with no drilled-hole
+  seam (fix: collar ring, or split to butt). The butt-vs-weld convention is codified in
+  `skills/skill_model_consistency.md`. (The per-hit geometry fixes are a triaged follow-on — TODO.md.)
+
 - **J6 walkway-arm joint: 4 bolts → 2 (central vertical column).** The 4-bolt (2×2) pattern put a Yd pair
   ~10 mm from the post's side wall — the same tight-edge problem, now on the *post*. Since the moment couple
   is purely the **vertical** 90 mm spacing, a single **central column of 2 M12** carries it (top bolt ~4.4 kN,

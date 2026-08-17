@@ -85,6 +85,40 @@ is low; reach for it when hunting a suspected duplicate.
 
 Findings are heuristics, never failures — the script always exits 0.
 
+## Readability seam audits (`check_interference.py --solids / --pipes`)
+
+A separate class of defect from drift: two distinct parts that render as **one fused piece** because no
+seam line shows between them. This is a *drawing* problem (the geometry is intentional), not a clash, so
+it lives in the interference tool's two READ-ONLY, advisory passes against the **live** model:
+
+```bash
+python3 src/models/check_interference.py --solids   # same-color solid<->solid interpenetrations
+python3 src/models/check_interference.py --pipes     # pipes driven THROUGH a thin surface slab
+python3 src/models/check_interference.py --seams      # both
+```
+
+**`--solids`** lists SAME-color solid pairs that interpenetrate on all three axes (a member run
+*through* another — a butted joint only touches on one axis, so it doesn't flag) above a volume
+threshold, sorted by overlap. It tags each `weld` or `BUTT?` (the latter when one part is a
+cleat/plate/bracket/tab/gusset/saddle/hanger — a bolted connection). **`--pipes`** lists pipes whose
+centerline crosses the FULL thickness of a panel/wall/plate and emerges the far side with no drilled-hole
+seam.
+
+**The convention (semantic, not geometric — you must triage each hit):**
+
+- **Welded / cast / formed joints MAY overlap** — a weld fuses the members, so a continuous read is
+  *correct*. Leave them (a U-rail's web+flange are one formed channel; a frame corner weld; a post
+  welded to its foot plate). Fasteners sunk into the parts they clamp are likewise correct (excluded
+  from `--solids` by name).
+- **Bolted / cleated / drilled joints must BUTT** — the member ends at the mating face so a seam shows.
+  A backing plate bolted behind a rail, a cleat bolted to a beam, a bar bolted (not welded) to a post:
+  end it at the face, don't run it through.
+- **A pipe through a surface** gets either (a) a short collar/grommet ring drawn at the face (the visible
+  hole + seam), or (b) the pipe split at the surface so each side butts it.
+
+Not an auto-fix — "Intersect Faces" everywhere over-draws and mangles the generated geometry. The passes
+are a review list; the fix is a generator edit (butt the member / add a collar) then a re-send.
+
 ## Judgment checklist (what grep can't see — failure mode 2)
 
 For the component under review, open the 2D sheet(s) and the 3D model and confirm:

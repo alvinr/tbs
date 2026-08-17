@@ -287,11 +287,17 @@ walkway, hinged panel, light lock, electrical, optics, …)._
   (4→8) **+ certified anti-slip mat** (μ 0.2→0.6) **+ 2 straps/stack** → SF 1.59 bar-alone / 4.77 w/ mat.
   Cascaded: constants, 3D `tote_restraint()` (5 models re-sent), weight (90→119 kg), parts (+mat) + costing
   (+$40/$80), 2D ibc-frame/ibc-stacking sheets, report §3.2/§3.4 (computed table + citations).
-- [ ] **Phase B — fastener + weld schedule.** J1…Jn (bolt size/grade/torque/washer/locker: foot anchors,
-  cleat M12×40, wall-hanger M12×65, backing-plate) + W1…Wn (fillet leg + symbol + all-around/stitch:
-  uprights↔rings, feet↔uprights, bars↔cleats, ring→bar, hanger folds; from the Phase-A weld-throat demand).
-- [ ] **Phases C–E (deferred):** datums/tolerances (GD&T); fab-detail sheets (member cut list, foot/hanger/
-  backing-plate details, weld map, verify vs `ibc-stack.skp`); optional rendered load-case sheet.
+- [x] **Phase B — fastener + weld schedule — DONE.** Report §3.5 carries the full **J1–J9** fastener schedule
+  (size/grade/torque/washer/locker) + **W1–W6** weld schedule (fillet leg/symbol/extent), with the J/W callouts
+  on Sheet 4 Details A–E. (J2/J7 updated M12×40→M12×65 on 2026-08-17.)
+- [x] **Phase C — datum + tolerance scheme — DONE.** Report §3.6: ISO 13920 Class B general weld tolerances +
+  datums A/B/C + the functional tolerances that matter for fit-up; rendered load-case sheet
+  (`ibc-frame-load-case.png`) exists.
+- [ ] **Phase D — fab-detail sheets (the main remaining chunk).** Member CUT LIST (every RHS/plate length +
+  qty), per-part fab detail sheets (foot plate, wall joist hanger fold, exterior backing plate, front-bar
+  **cleat**), a consolidated WELD MAP, and a dimensional VERIFY pass vs `ibc-stack.skp`. Then Phase E (optional
+  polish). Smaller open items: **M12×65 SS SKU + firm price** (Bucket 1), the **hollow-bar bolt-crush** joint
+  review (Bucket 2 / quote phase), and the **surface-finish/coating** spec (set at fab/quote).
 
 ## Weight model — film-plane moving mass undercounts the ACM backing — DONE 2026-07-25
 

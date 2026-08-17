@@ -13,6 +13,17 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ## 🛠 Tooling / infra
 
+- [ ] **Reconcile ALL 3D builders — the models are partial VIEWS of ONE design, not alternatives (Alvin
+  2026-08-17, HARD PRINCIPLE).** A design change must reflect in **every** model when they regenerate; the
+  model must not drift. The GOOD pattern already exists — the IBC front bars are one shared builder
+  (`generate_corridor_water_panel.py` `tote_restraint()`) that overview/ibc-stack/water all call, so the
+  4-bar + cleat + M12×65 + hex-bolt changes flow to every model on regen. The DRIFT RISK is **dead/divergent
+  re-implementations left lying around**: e.g. `generate_sketchup_model.py` `ibc_rack()` still holds an OLD
+  **2-bar + stub** front-bar version (marked "effectively dead", not called) — if anyone re-wires it, overview
+  silently reverts. **Task:** delete/retire the dead divergent builders (ibc_rack et al.); audit every
+  component drawn in >1 model and confirm each is ONE shared builder each model *selects* (its view), never a
+  copy; wire a `check_consistency.py` gate that flags a second geometry emitter for the same named part.
+
 - [ ] **`--solids` larger sanctioning pass (model-wide, beyond the named categories).** The
   `check_interference.py --solids` sanctioned list currently covers only the categories triaged in the
   walkway/IBC/light-trap/fan/tray work (one-piece formed parts, compression seals, bearing fits, liquid
@@ -75,6 +86,12 @@ bucketed by WHEN it can be acted on:_
 - [x] **Right walkway muslin-notch — beam clash — RESOLVED 2026-07-23.** The inner cantilever-rectangle long beam under the notch (X4329) is **cranked outboard 100mm** (full notch depth) over Yd1812–2162 with angled ramps, vacating the notch footprint so the rigid muslin rod drops straight at the tray edge — beam stays ONE continuous uncut member. `_rwk_inner_beam_cranked` (overview/walkway/water), Sheet 3 + report §4.1 updated. Left notch was already clear (between floor-leg brackets).
 
 ### Bucket 1 — ACTIONABLE NOW
+- [ ] **Re-source the front-bar J2/J7 bolt: M12×40 → M12×65 18-8 SS (2026-08-17).** The J2 corridor cleat +
+  J7 wall-end bolts each span the ~58mm bar section (cleat-leg/seat 8 + 50mm bar; per Detail B / the 3D),
+  so M12×40 was too short → bumped to **M12×65**. `parts.py` `bolt-m12x65-ss` currently carries a **placeholder
+  SKU (`92314A-TBC`) + estimated price band ($2.00–2.80/ea)**. Firm the exact McMaster 18-8 SS M12×1.75 × 65mm
+  hex-head SKU + price (92314A series) and stamp `checked_date`. (Cost cascaded: +$13/$32 ibc-frame. The joint
+  DESIGN review — crush through the hollow bar — is a blueprint-phase item in Bucket 2.)
 - [x] **Cyanotype chemistry consolidated to Artcraft (bulk) — DONE 2026-07-26.** Bulk-price research (2 agents) + Alvin's confirmed Artcraft packs → all three reagents re-sourced to **Artcraft Chemicals**: ferric ammonium oxalate **$218.16→$64.20/kg** ($29.12/1 lb; the big mover), potassium ferricyanide **$60.80→$51.01/kg** ($104.12/4.5 lb), ammonium dichromate → Artcraft $33.66/0.5 lb (trace, $25/run allowance holds). Cascaded: costing tiers (Standard total **$4,400→$1,710**, per-print **$88→$34**), grand total **→$27,262–$39,454**, parts registry, all injected docs + prose restatements. **process-comparison.md re-inverted: cyanotype ($1,250 lean) is cheapest again**, below gum ($1,592) — "why cyanotype" reframed to cost + archival/hazard/simplicity. Remaining bulk option: request an Artcraft ~38-lb AmFe quote (could drop below $64/kg). Use FULL reagent names not "AmFe" per [[feedback_full_chemical_names]].
 - [x] **Fastener thread-pitch cross-check — DONE 2026-07-29.** Every bolt↔nut pair verified against the eng-specs datasheets (via pypdf): M12×1.75 (90591A181 nut ↔ 91280A728/732 + 1634027 bolts), M8×1.25 (90591A161 ↔ 91280A534), M6×1.0 (96194A101/90591A151/90576A115 ↔ 93635A210/91280A330), M5×0.8 (91420A326). All coarse + matching — the M8×1.0-fine vs 1.25-coarse trap is clean. "confirm vs SKU PDF" caveats closed in the registry; the 2 missing PDFs (90591A181, 90576A115) downloaded, 1634027 pitch confirmed from the FMW listing.
 - [x] **Plumbing joint-convention cascade — DONE 2026-07-29.** All sub-items complete: PVC slip run, transition-
@@ -168,6 +185,12 @@ $1,979–2,825 · lightlock $2,046–2,516 · tray $1,583–2,271.
   sourcing pass (also `ferri-rich` potassium ferricyanide $582).
 
 ### Bucket 2 — ACTIONABLE WHEN BLUEPRINTS FINALIZED (v1.0)
+- [ ] **Front-bar J2/J7 joint — crush through the hollow bar (design review at quote time, Alvin 2026-08-17).**
+  The J2 corridor cleat + J7 wall-end bolts run VERTICALLY through the 50mm HOLLOW 50×20×3 RHS bar (M12×65).
+  Torquing a bolt through a hollow section pinches its two walls — resolve before fab: add an internal
+  spacer/crush-sleeve at each bolt, OR grip only the cleat leg + the bar's bottom flange (short grip, which
+  would restore M12×40). Decide with the fabricator when getting quotes; then reconcile the bolt length +
+  spacer part back through Detail B / parts.py / the 3D. (SKU re-source is the separate Bucket-1 item.)
 - [ ] **`pinhole-shim`** — Lenox SS-3/8-DISC laser-drilled pinhole; firm via RFQ once the optics drawing set is design-complete.
 
 ### Bucket 3 — ACTIONABLE ON BUILD
@@ -212,14 +235,34 @@ walkway, hinged panel, light lock, electrical, optics, …)._
 
 - [ ] **Walkway blueprint pass (roll the IBC-frame standard onto the walkway set).** Definitive walkway drawings
   — floor-leg cantilevers, right cantilever-rectangle, wall gusset brackets, grate cut-plans — with hole
-  positions / datums / fastener + weld callouts / material-finish, driven from `tbs_constants`. **Known fix to
-  resolve in it:** `walkway-sheet6` **View B — the cantilever post is drawn welded OVER the foot-plate anchor
-  bolt holes**, so the M10 floor anchors (`LEFT_WK_CANT_FOOT_BOLT_N`) can't be driven. Relocate the 4 anchor
-  holes into the foot's **outboard outrigger** (X≈147–225, clear of the 50.8 post now sitting at X225–275 after
-  the 2026-08-16 foot-X0 derive fix), or otherwise clear the post footprint; then regenerate the sheet + verify.
+  positions / datums / fastener + weld callouts / material-finish, driven from `tbs_constants`. **Known fixes to
+  resolve in it:**
+  - `walkway-sheet6` **View B — the cantilever post is drawn welded OVER the foot-plate anchor
+    bolt holes**, so the M10 floor anchors (`LEFT_WK_CANT_FOOT_BOLT_N`) can't be driven. Relocate the 4 anchor
+    holes into the foot's **outboard outrigger** (X≈147–225, clear of the 50.8 post now sitting at X225–275 after
+    the 2026-08-16 foot-X0 derive fix), or otherwise clear the post footprint; then regenerate the sheet + verify.
+  - **Right walkway is too long — it extends into the film-plane beam support brackets.** Shorten the right
+    walkway so it no longer runs into the brackets that carry the film-plane (bottom-rail) support beam. (Alvin
+    2026-08-17.)
+  - **Film-plane + walkway brackets at the near/far RIGHT corners should be ONE shared bracket, not two.** At
+    each right corner the film-plane beam bracket and the walkway (right long-beam) bracket read as two separate
+    brackets — combine them into a single shared bracket (the `fp_combined_corner_plate` intent already shares
+    the seat; make the geometry read as one). (Alvin 2026-08-17.)
+  - **Cantilever / bolt / walkway CLASHES to resolve (Alvin 2026-08-17).** The 3D shows interferences in two
+    zones: (1) the **REMOVABLE (left lift-out) walkway section** — cantilever arm / bolt / grate overlaps; and
+    (2) the **FAR walkway section** — same class of cantilever/bolt/deck clash. Trace each in the model, resolve
+    the geometry (shorten/reposition the arm, move the bolt, or trim the grate), and verify with
+    `check_interference.py --solids`. Do it in the walkway blueprint pass alongside the shortening + shared-bracket
+    fixes above (they're likely related — the over-long deck + doubled brackets drive some of these).
 
 ### Definitive corner-mechanism engineering drawing (film plane — FIRST / template)
 
+- [ ] **Film-plane support-beam LEFT brackets — no bolts + no external plates (2D↔3D gap, Alvin 2026-08-17).**
+  The film-plane support beams' LEFT-side wall brackets are drawn without their fixings: (1) the **left UPPER
+  bracket** (TL corner) and (2) the **left LOWER bracket** (BL corner) both lack the **through-bolts + exterior
+  backing plate** (the same interior+exterior paired-plate wall-mount pattern as the container-wall cantilevers /
+  IBC wall hangers). Design the bolt pattern + external plates for both left brackets in the film-plane blueprint,
+  add the geometry to the 3D, and cascade to the 2D + parts. (Right corners already share the `fp_combined_corner_plate`.)
 - [x] **Fully-dimensioned multi-view detail of ONE corner — DONE 2026-08-10 (branch `corner-eng-design`).**
   Sheets 3/4/8/9 dimensioned to blueprint grade: skate roller ODs + Ø10 axle + 40mm pitch (Sheet 3), rail
   wall-flange bolt pattern + M8×25 (Sheet 4), cross-slide bar section/travel/gib/UHMW (Sheet 8), U-joint
@@ -294,6 +337,13 @@ The remaining §7 parts BOM is gated on confirmed prices._
   parts-identity dead-SKU lint warnings. This is also the FP_W/FP_H dead-BOM retirement folded in.
 
 - [x] **Master shopping list — add a part number for each primary supplier — DONE 2026-07-21.** The master by-type BOM (`emit_master`) now renders each line through the same `_item_cell` convention the per-report §Parts-Lists use — the item name is hyperlinked to its supplier URL and the registry `part_no` is appended `(SKU)` — so an order can be placed directly from the master. Every registry row that carries a `part_no` now shows it (17 SKUs + 22 URL-linked at time of change); the remaining branded rows show no SKU only because the *registry itself* doesn't carry one yet — that data backfill is the job of the parts-identity worklist item below (Alvin's supplier paste-check), and each SKU auto-appears in the master on the next `parts.py --inject`. (Alvin 2026-07-19.)
+- [ ] **Hinge-panel blueprint — swing-panel transport-lock STAY plate detail (Alvin 2026-08-17).** The top +
+  bottom wall stays that lock the swung panel at 56° attach to a **plate paired with an exterior plate on the
+  OUTSIDE of the container wall** (same interior+exterior backing-plate pattern as the container-wall
+  cantilevers / the IBC wall hangers). Design it in the hinge-panel blueprint pass: plate sizes, through-bolt
+  pattern, and add the geometry to the 3D (currently the stays/plates are NOT modeled — a 2D↔3D gap like the
+  bar cleat was). Reference the existing paired-plate detail. (Alvin also flagged some square-bolt heads in the
+  overview near here — confirm which and hex them if they're fasteners.)
 - [ ] **Reconcile the EPDM gasket on the cargo-door-facing wall of the hinge panel.** Now that the top/bottom door seals are strip brushes, re-check the panel perimeter / housing-surround EPDM on the cargo-door-facing (exterior) wall of the hinge panel — confirm what stays EPDM vs brush and that the 3D/report/parts agree. (Alvin 2026-07-19.)
 - [ ] **Revisit film-plane EPDM foam-tape coverage.** Qty set **provisionally to 2× 25 ft rolls** (McMaster 8694K88, 50 ft) — right-sized to the ~43 ft film-plane perimeter (the old 3×50 ft = 150 ft was ~3.5× over). When reviewing the EPDM seals, confirm a single perimeter run + corner/overlap allowance is covered by 50 ft, else bump to 3 rolls. `parts.py` `epdm-foam-tape` carries a "provisional qty" note. (2026-07-21.)
 

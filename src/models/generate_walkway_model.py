@@ -44,6 +44,7 @@ import tbs_constants as k                       # right-hanger constants ov does
 
 ruby_box = ov.ruby_box
 ruby_cylinder = ov.ruby_cylinder
+ruby_bolt = ov.ruby_bolt
 ruby_tri = ov.ruby_tri
 component = ov.component
 
@@ -66,7 +67,7 @@ REINF_W, REINF_H, REINF_T = 100, 180, 6
 
 C_STEEL, C_TRAY, C_SHELL = ov.C_STEEL, ov.C_TRAY, ov.C_SHELL
 C_WALKWAY, C_REMOVABLE, C_ALUM = ov.C_WALKWAY, ov.C_REMOVABLE, ov.C_ALUM
-C_BOLT, C_HEX = "#505058", "#3C3C44"
+C_BOLT = "#505058"
 
 # Left lift-out support — FLOOR-LEG CANTILEVER brackets (replaces the edge beam + wall seats).
 LC_LEGX, LC_POST, LC_PW = k.LEFT_WK_CANT_LEG_X, k.LEFT_WK_CANT_POST, k.LEFT_WK_CANT_POST_W
@@ -258,15 +259,12 @@ def _cantilever_parts(nm, x, wall_yd, sign, reach, wide):
     reinf_y0 = (-WALL_T - REINF_T) if sign > 0 else (C_WID + WALL_T)
     parts.append(ruby_box(f"{nm} ext reinf plate", x - rw / 2, reinf_y0,
                           reinf_z0, rw, REINF_T, rh, color=C_STEEL))
-    # M12 through-bolts (3× std / 4× widened) + exterior hex heads
+    # M12 through-bolts (3× std / 4× widened) — hex head (exterior) + hex nut (interior)
     for dx, bz in bolt_pat:
         bx = x + dx
         shank_y0 = (-WALL_T - REINF_T) if sign > 0 else (wall_yd - b)
-        parts.append(ruby_cylinder(f"{nm} bolt M12", bx, shank_y0, bz,
-                                   6, shank_len, color=C_BOLT, axis="y"))
-        hy = (-WALL_T - REINF_T - 6) if sign > 0 else (C_WID + WALL_T + REINF_T)
-        parts.append(ruby_box(f"{nm} bolt head", bx - 9, hy, bz - 9,
-                              18, 6, 18, color=C_HEX))
+        parts.append(ruby_bolt(f"{nm} bolt M12", bx, shank_y0, bz, shank_len, radius=6,
+                               axis="y", color=C_BOLT, head="base", nut="far"))
     return parts
 
 
@@ -315,7 +313,7 @@ def _rwk_arm_type_parts(x0):
         ov.ruby_box("Type RWk IBC upright (50x50 RHS)", x0, 0, 0, s, s, armt + 220, color=ov.C_STEEL),
         ov.ruby_box("Type RWk cantilever arm (40x40 SHS)", x0 - reach, 0, armb, reach, aw, armt - armb, color=ov.C_STEEL),
         ov.ruby_box("Type RWk upright clamp", x0 - 4, aw + 4, armb - 25, s + 8, 8, (armt - armb) + 55, color=ov.C_STEEL),
-        ov.ruby_cylinder("Type RWk upright bolt M12", x0 + s / 2, -12, armb + 6, 6, aw + 24, color=ov.C_STEEL, axis="y"),
+        ov.ruby_bolt("Type RWk upright bolt M12", x0 + s / 2, -12, armb + 6, aw + 24, radius=6, axis="y", color=ov.C_STEEL, head="base", nut="far"),
     ]
 
 

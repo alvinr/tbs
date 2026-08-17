@@ -202,16 +202,18 @@ def service_loads():
     m_conn = p_arm * ARM_REACH_M
     z_upr = z_rhs(IBC_FRAME_RHS, IBC_FRAME_RHS, IBC_FRAME_T)   # 50.8x50.8x3 upright
     m_cap_upr = z_upr * FY_A500B / 1e3
-    # arm->upright connection = a BOLTED END-PLATE (plate welded to the arm end, 2x M12 in a CENTRAL column
-    # through the upright into a rear backing plate, per ibc_cantilever_arms). Moment = a tension couple over
-    # the ~90mm bolt spacing; with 1 bolt per row the TOP bolt carries the full couple tension.
-    couple_sp = 0.090
-    f_bolt = m_conn / couple_sp
+    # arm->upright connection = a BOLTED END-PLATE (plate welded to the arm end, bolted through the upright to
+    # a rear backing plate, per ibc_cantilever_arms). BEARING-TYPE: BOTH M12 sit ABOVE the arm (a tension bolt
+    # group); the plate bears compression at the arm's lower flange. Lever = bolt-group centroid (~Z155) to the
+    # compression at the arm bottom (~Z90) ≈ 54mm; the 2 bolts SHARE the tension. Both moved above the arm to
+    # clear the corridor bottom frame rail (Z12-63) AND the welded arm — down-load only, no uplift (2026-08-17).
+    lever = 0.065
+    f_bolt = m_conn / lever / 2.0      # total tension over the lever, shared by the 2 tension bolts
     bolt_cap = 0.9 * FUB_88 * AS_M12   # M12 8.8 tensile (proof) capacity per bolt (N)
     lines.append(f"  walkway arm tip {p_arm:.0f} N (22kg dead + 1kN person) x {ARM_REACH_M*1000:.0f}mm"
                  f" = {m_conn:.0f} N.m at the upright")
     lines.append(f"  front upright bending (50.8 RHS): cap {m_cap_upr:.0f} N.m  SF {m_cap_upr/m_conn:.1f}")
-    lines.append(f"  arm->upright END-PLATE (2x M12 central, {couple_sp*1000:.0f}mm couple): {f_bolt:.0f} N/bolt tension,"
+    lines.append(f"  arm->upright END-PLATE (2x M12 ABOVE arm, bearing-type, {lever*1000:.0f}mm lever): {f_bolt:.0f} N/bolt tension,"
                  f" cap {bolt_cap:.0f} N  SF {bolt_cap/f_bolt:.1f}")
     lines.append("  Both non-governing vs the EN 12195-1 transport case (bar SF 1.59). Arm NOTCH check below; fab on Sheet 5.")
     return "\n".join(lines)
@@ -343,7 +345,7 @@ def render_png(path=None):
     m_conn = p_arm * ARM_REACH_M
     sf_upr = (z_rhs(IBC_FRAME_RHS, IBC_FRAME_RHS, IBC_FRAME_T) * FY_A500B / 1e3) / m_conn
     endplate_cap = 0.9 * FUB_88 * AS_M12                # M12 8.8 tensile capacity/bolt (N)
-    sf_endplate = endplate_cap / (m_conn / 0.090)   # 2-bolt central column, 90mm couple, top bolt carries the tension
+    sf_endplate = endplate_cap / (m_conn / 0.065 / 2.0)   # bearing-type: 2 M12 ABOVE the arm share the tension over a ~54mm lever to the compression at the arm bottom
 
     C_STEEL = "#8890a0"; C_TOTE = "#c9d4e4"; C_LOAD = "#c0392b"; C_OK = "#1f7a3d"; C_WARN = "#b8860b"
 

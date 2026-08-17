@@ -552,6 +552,25 @@ def ruby_cylinder(name, cx, cy, cz, radius, height, color=None, alpha=None,
     return '\n'.join(lines)
 
 
+def ruby_bolt(name, x, y, z, length, radius=6.0, axis="z", color=None, head="base", nut="far", mute=None):
+    """A fastener: an Ø(2·radius) shank from (x,y,z) along +`axis` by `length`, PLUS a hex HEAD and/or hex
+    NUT drawn as 6-sided prisms so it reads as a real bolt, not a plain rod.  `head`/`nut` name the end each
+    sits on: "base" = the (x,y,z) end, "far" = the (base+length) end, or None (omit — e.g. a nut-less anchor
+    or self-drilling screw).  Hex circumradius ≈ 1.65·radius, thickness ≈ 1.35·radius (real hex proportions).
+    The head/nut protrude just proud of the shank ends (against the clamped faces)."""
+    hex_r, hex_h = radius * 1.65, radius * 1.35
+    ai = {"x": 0, "y": 1, "z": 2}[axis]
+    out = [ruby_cylinder(name, x, y, z, radius, length, color=color, axis=axis, mute=mute)]
+    for kind, end in (("head", head), ("nut", nut)):
+        if not end:
+            continue
+        b = [x, y, z]
+        b[ai] += length if end == "far" else -hex_h            # protrude outward past that shank end
+        out.append(ruby_cylinder(f"{name} {kind}", b[0], b[1], b[2], hex_r, hex_h,
+                                 color=color, axis=axis, n=6, mute=mute))
+    return "\n".join(out)
+
+
 # ── Container shell ──────────────────────────────────────────────────────────
 
 def container_shell():
@@ -657,6 +676,13 @@ RWK_BEARER_XS = (RWK_X_L, RWK_X_R - RWK_BEARER_W)      # long-beam left edges
 RWK_BEARER_Z0 = RWK_ARM_TOP - RWK_AH                   # 89.6 — long-beam soffit (2×1in, 1in deep — #26: 2×⅞ non-stock). Deck kept at 140 (Option B), so 11.6mm spray-beam clearance. Stiffness held by the 2 mid-span center arms (built below).
 RWK_X_UP = IBC_COL_X - 20                              # 4654 — deep-box FRONT upright (= cp.FRONT_X); reconciled from the stale +60/4734 portal (flag 4)
 RWK_UP_YDS = (CORRIDOR_YD_NEAR, CORRIDOR_YD_FAR - IBC_FRAME_RHS)   # 1046, 1266
+# J6 BEARING-TYPE end-plate.  BOTH M12 sit ABOVE the arm weld toe (Z120) as a tension bolt group; the taller
+# plate bears compression at the bottom against the upright.  This clears the 3-way corner congestion — the
+# corridor bottom frame X-rail (Z12–63) runs below with NO bolt near it, and neither bolt fouls the welded
+# arm (Z90–115).  A walkway support is DOWN-load only (no uplift), so the asymmetric bearing-type joint is
+# appropriate (Alvin 2026-08-17).  The plate top rises to Z185 (bottom unchanged at Z37).
+RWK_J6_BOLT_ZS = (RWK_ARM_TOP + 25.0, RWK_ARM_TOP + 55.0)   # Z140 / Z170 — both above the arm; 30mm apart
+RWK_J6_EP_H    = 148.0                                       # end-plate height (taller so both bolts fit above the arm)
 # Outer long beam (X4589) OPEN-TOP NOTCHES — one per under-walkway ribbon lane where the FLUSH pipe crosses
 # the beam into the corridor.  The carriage crown (Z66) to beam soffit (Z80) gap is too tight for the pipe to
 # pass under, so the beam's top web is slotted instead (Z92-115), leaving the Z80-92 bottom web intact.  These
@@ -770,7 +796,7 @@ def _rwk_wall_cleat(tag, x, wall_yd, din):
     ]
     blo, bhi = min(piy, poy), max(piy, poy) + 8
     for bz in (RWK_ARM_BOT + 6, RWK_ARM_TOP - 6):
-        out.append(ruby_cylinder(f"RWk wall bolt ({tag}) Z{int(bz)}", x, blo, bz, 5, bhi - blo, color=C_STEEL, axis="y"))
+        out.append(ruby_bolt(f"RWk wall bolt ({tag}) Z{int(bz)}", x, blo, bz, bhi - blo, radius=5, axis="y", color=C_STEEL, head="base", nut="far"))
     return out
 
 
@@ -800,7 +826,7 @@ def fp_combined_corner_plate(wall_yd, din, cx=None):
     blo, bhi = min(piy, poy), max(piy, poy) + 10
     for bx in (cx - 50, cx + 50):
         for bz in (RWK_ARM_BOT + 14, rail_c):              # walkway-beam bolt (low) + rail-height bolt (web centre)
-            out.append(ruby_cylinder(f"FP combined bolt M12 ({tag}) X{int(bx)} Z{int(bz)}", bx, blo, bz, 6, bhi - blo, color=C_STEEL, axis="y"))
+            out.append(ruby_bolt(f"FP combined bolt M12 ({tag}) X{int(bx)} Z{int(bz)}", bx, blo, bz, bhi - blo, radius=6, axis="y", color=C_STEEL, head="base", nut="far"))
     return out
 
 
@@ -812,19 +838,22 @@ def ibc_cantilever_arms(x_to=None):
     overview/walkway models and the focused IBC model stay in register.
     `x_to` is how far the arm reaches inward (default RWK_X_L — the inner long beam)."""
     x_to = RWK_X_L if x_to is None else x_to
-    ac_z, ep_t, ep_w, ep_h = (RWK_ARM_BOT + RWK_ARM_TOP) / 2.0, 8, 65, 130   # arm mid-Z / end-plate thickness, width(Yd = arm 50.8 + weld toe) / height(Z)
+    ac_z, ep_t, ep_w, ep_h = (RWK_ARM_BOT + RWK_ARM_TOP) / 2.0, 8, 65, RWK_J6_EP_H   # arm mid-Z / end-plate thickness, width(Yd = arm 50.8 + weld toe) / height(Z, taller for bolts above)
+    ep_bz = ac_z - 65.0                                                     # plate BOTTOM unchanged (Z37 — covers the arm + bears; overlaps the rail below = ghosted, no bolt there)
     c_bolt = "#3A3A42"                                                       # dark — bolts/screws must read distinct from the steel (as the foot anchors do)
     parts = []
     for yd in RWK_UP_YDS:
         parts += _rwk_xbeam(f"RWk center cantilever Yd{yd}", yd, x_to, RWK_X_UP - ep_t)   # arm ends SHORT so the end-plate isn't buried in it
         ac_y = yd + RWK_ARM_W / 2.0
-        parts.append(ruby_box(f"RWk J6 end-plate Yd{yd}", RWK_X_UP - ep_t, ac_y - ep_w/2, ac_z - ep_h/2, ep_t, ep_w, ep_h, color=C_STEEL))       # welded to arm end (between arm + upright)
-        parts.append(ruby_box(f"RWk J6 backing plate Yd{yd}", RWK_X_UP + IBC_FRAME_RHS, ac_y - ep_w/2, ac_z - ep_h/2, ep_t, ep_w, ep_h, color=C_STEEL))  # rear backing plate
-        for dz in (-45, 45):                                                # 2 M12 — CENTRAL column (Yd 0), 90mm couple
-            parts.append(ruby_cylinder(f"RWk J6 bolt M12 Yd{yd}", RWK_X_UP - ep_t, ac_y, ac_z + dz, 6, IBC_FRAME_RHS + 2*ep_t + 8, color=c_bolt, axis="x"))  # protrudes past the backing plate (visible nut)
+        parts.append(ruby_box(f"RWk J6 end-plate Yd{yd}", RWK_X_UP - ep_t, ac_y - ep_w/2, ep_bz, ep_t, ep_w, ep_h, color=C_STEEL))       # welded to arm end (between arm + upright)
+        parts.append(ruby_box(f"RWk J6 backing plate Yd{yd}", RWK_X_UP + IBC_FRAME_RHS, ac_y - ep_w/2, ep_bz, ep_t, ep_w, ep_h, color=C_STEEL))  # rear backing plate
+        for bz in RWK_J6_BOLT_ZS:                                           # 2 M12 — CENTRAL column (Yd 0), BOTH above the arm (bearing-type); clears the rail AND the welded arm
+            bx0 = RWK_X_UP - ep_t                                           # shank start = end-plate front (−X) face
+            blen = IBC_FRAME_RHS + 2*ep_t + 8                               # 74 — through end-plate + upright + backing plate, protruding
+            parts.append(ruby_bolt(f"RWk J6 bolt M12 Yd{yd}", bx0, ac_y, bz, blen, radius=6, axis="x", color=c_bolt, head="base", nut="far"))  # hex head (front) + hex nut (back)
         # half-lap HOLD-DOWN: 1 #14 TEK screw per crossing (from the underside, through the beam into the arm)
         for bx in sorted(b for b in RWK_BEARER_XS if x_to - 1 < b < RWK_X_UP):
-            parts.append(ruby_cylinder(f"RWk half-lap TEK screw Yd{yd} X{int(bx)}", bx + RWK_BEARER_W / 2.0, ac_y, RWK_ARM_BOT - 5, 3, RWK_AH + 5, color=c_bolt, axis="z"))
+            parts.append(ruby_bolt(f"RWk half-lap TEK screw Yd{yd} X{int(bx)}", bx + RWK_BEARER_W / 2.0, ac_y, RWK_ARM_BOT - 5, RWK_AH + 5, radius=3, axis="z", color=c_bolt, head="base", nut=None))  # self-drilling — hex head at the underside, no nut
     return parts
 
 
@@ -1069,9 +1098,9 @@ def walkway_brackets(which="both"):
                                   plate_w, b, v, color=C_STEEL))
             # 2. M12 anchor bolts through the plate — Ø12 shanks
             for dx, bz in bolts:
-                parts.append(ruby_cylinder(f"{nm} bolt M12",
-                              x + dx, y_plate - 6, bz, 6, b + 12,
-                              color="#505058", axis="y"))
+                parts.append(ruby_bolt(f"{nm} bolt M12",
+                              x + dx, y_plate - 6, bz, b + 12, radius=6,
+                              axis="y", color="#505058", head="base", nut="far"))
             # 3. horizontal cantilever arm at grate level (deck rests on it) — its
             #    back end butts the plate face so the arm→plate joint draws an edge
             y_arm = (wall_yd + b) if sign > 0 else (wall_yd - rch)
@@ -1311,7 +1340,7 @@ def ibc_rack():
         parts.append(ruby_box("Foot Flange Plate", cx - fp / 2, cy - fp / 2, 0, fp, fp, ft, color=C_STEEL))
         for dx in (-bpc, bpc):
             for dy in (-bpc, bpc):
-                parts.append(ruby_cylinder("Foot Anchor Bolt M12", cx + dx, cy + dy, 0, 7, ft + 4, color=c_bolt, axis="z"))
+                parts.append(ruby_bolt("Foot Anchor Bolt M12", cx + dx, cy + dy, 0, ft + 4, radius=7, axis="z", color=c_bolt, head="far", nut=None))  # anchor into the floor — hex head at the top, no nut
 
     # Front retaining bars (50×20×3 RHS) seated in the gap just in front of the tote
     # face, both tiers, tied back to the portal.
@@ -1349,9 +1378,9 @@ def ibc_rack():
                                   ext_pw, ext_pt, ext_ph, color=C_STEEL))
             for dx in (-ext_pw / 2 + 18, ext_pw / 2 - 18):
                 for dz in (-ext_ph / 2 + 22, ext_ph / 2 - 22):
-                    parts.append(ruby_cylinder("IBC Wall Through-Bolt M12",
-                                               ecx + dx, bolt_cy, ecz + dz, 7, 58,
-                                               color=c_bolt, axis="y"))
+                    parts.append(ruby_bolt("IBC Wall Through-Bolt M12",
+                                           ecx + dx, bolt_cy, ecz + dz, 58, radius=7,
+                                           axis="y", color=c_bolt, head="far", nut="base"))  # head OUTSIDE (far), nut inside
 
     return '\n'.join(parts)
 
@@ -1393,13 +1422,13 @@ def film_plane_saddles(corners, skip=()):
             blo, bhi = min(by_in, by_out), max(by_in, by_out) + pt
             for bx in (x - 50, x + 50):
                 for bz in (z - 50, z + 50):
-                    parts.append(ruby_cylinder(f"Saddle wall bolt M12 {tag}",
-                                 bx, blo, bz, 6, bhi - blo, color=C_STEEL, axis="y"))
+                    parts.append(ruby_bolt(f"Saddle wall bolt M12 {tag}",
+                                 bx, blo, bz, bhi - blo, radius=6, axis="y", color=C_STEEL, head="base", nut="far"))
             hold_c = C_VALVE if left else C_STEEL
             hold_nm = "Thumb screw" if left else "Rail fixing bolt"
             for hy in (sy0 + 25, sy0 + proj - 25):
-                parts.append(ruby_cylinder(f"{hold_nm} {tag}",
-                             x, hy, z, 5, 36, color=hold_c, axis="z"))
+                parts.append(ruby_bolt(f"{hold_nm} {tag}",
+                             x, hy, z, 36, radius=5, axis="z", color=hold_c, head="far", nut=None))
     return '\n'.join(parts)
 
 
@@ -2014,9 +2043,9 @@ def fan_duct(tag, wall_x, ext, yc, zc):
                             color=C_STEEL))
         for fy in (yc - dw / 2 - flo / 2, yc + dw / 2 + flo / 2):
             for fz in (zc - dh / 2 - flo / 2, zc + dh / 2 + flo / 2):
-                out.append(ruby_cylinder(f"{tag} flange bolt M10",
-                            wall_x - (flt + 8) / 2, fy, fz, 5, flt + 8,
-                            color="#3A3A42", axis="x"))
+                out.append(ruby_bolt(f"{tag} flange bolt M10",
+                            wall_x - (flt + 8) / 2, fy, fz, flt + 8, radius=5,
+                            axis="x", color="#3A3A42", head="base", nut="far"))
         # ── weatherproof louvre grille on the exterior wall face (slatted) ──
         gx0 = wall_x if ext > 0 else wall_x - gld
         out.append(ruby_box(f"{tag} louvre grille", gx0, yc - dw / 2,

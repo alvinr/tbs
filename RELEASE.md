@@ -31,8 +31,10 @@ file** — a release must not ship without a changelog entry:
   computes the moment at each notch (worst case = full arm load at the tip): outer notch **334 N·m**, inner
   **31 N·m**. Fix: the arm becomes a **solid 2×1 flat bar**, and the notch is **rebalanced to the moment** —
   deep arm notch at the tip (low moment, arm keeps 5.4 mm / inner beam keeps 20), and at the post end the
-  **outer beam** takes the deep notch so the arm keeps 16 mm (both members **SF ≈ 1.5+**; outer-beam hogging
-  is a documented conservative estimate). Cascade: 3D model (`_rwk_xbeam` solid X-segments + per-crossing
+  **outer beam** takes the deep notch so the arm keeps 16 mm (**SF ≈ 1.6**). A continuous-beam check
+  (`outer_beam_frame_check`) firmed the outer beam: its thin 9.4 mm notch is a **bearing seat** (a thin
+  channel can't carry the support hogging), so the beam spans simply-supported on its **full section — SF ≈ 7,
+  ~2 mm** deflection under a person. Cascade: 3D model (`_rwk_xbeam` solid X-segments + per-crossing
   split, `_rwk_long_beam` split param, `ibc_cantilever_arms` J6 clamp→end-plate), `parts.py` (arm split out
   as solid bar + J6 end-plate hardware: 8× M12×100, 4 plates, 8 crush sleeves; −4 clamp bolts), costing
   reconciled (+$62/$85/$108 walkway), Sheet 5 + report §3.4 updated. (3D `.skp` re-send to follow.)

@@ -1263,23 +1263,30 @@ def sheet5():
     XOUT0, XOUT1 = axm(249.2), axm(300.0)                       # outer notch — RIGHT long beam
     _hatch = dict(fc=C_FRAME, ec=C_OUT, alpha=0.5, hatch="xx")
 
-    # ── VIEW A — SIDE ELEVATION (looking along Yd): arm crosses BOTH long beams, then bolts to the upright ──
-    _dcell(ax, 20, 800, 1320, 300, "VIEW A — SIDE ELEVATION (looking along Yd)  ·  the arm half-laps over BOTH walkway long beams, then bolts to the upright")
+    # ── VIEW A — SIDE ELEVATION (looking along Yd): SOLID bar, half-laps rebalanced to the moment ──
+    _dcell(ax, 20, 800, 1320, 300, "VIEW A — SIDE ELEVATION (looking along Yd)  ·  SOLID bar; half-laps BOTH long beams (notch rebalanced to the moment), then bolts to the upright")
     az, ah, ep_h = 950, 46, 104                                # arm centreline Z / drawn depth / end-plate height
-    hlz = az - ah/2 + ah * (5.4/25.4)                          # half-lap line: lower 5.4mm continuous, upper 20mm notched
+    def _hlz(keep_mm): return az - ah/2 + ah * (keep_mm / 25.4)   # half-lap split line for a given ARM-kept (lower) depth
+    ARM_KEEP = {"inner": 5.4, "outer": 16.0}                   # solid-bar rebalanced split — arm kept LOWER depth (mm)
     _rhs_rect(ax, XUP, az - 112, 60, 224, fc=C_FRAME, alpha=0.5, zo=4)                    # IBC front upright
     ax.text(XUP + 30, az + 74, "IBC FRONT\nUPRIGHT", fontsize=6, ha="center", va="center", **FONT, zorder=8)
-    ax.add_patch(Rectangle((XT, az - ah/2), (XUP - ep_x) - XT, ah, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.4, zorder=5))  # the arm
-    for n0, n1 in ((XIN0, XIN1), (XOUT0, XOUT1)):                                          # long beam in each half-lap (upper 20 notched)
+    ax.add_patch(Rectangle((XT, az - ah/2), (XUP - ep_x) - XT, ah, fc=C_STEEL, ec=C_OUT, alpha=0.7, lw=1.4, zorder=5))  # SOLID steel bar
+    for n0, n1, key in ((XIN0, XIN1, "inner"), (XOUT0, XOUT1, "outer")):                   # long beam in each half-lap (upper part)
+        hlz = _hlz(ARM_KEEP[key])
         ax.add_patch(Rectangle((n0, hlz), n1 - n0, (az + ah/2) - hlz, fc=BG, ec="none", zorder=6))
         ax.add_patch(Rectangle((n0, hlz), n1 - n0, (az + ah/2) - hlz, lw=1.2, zorder=7, **_hatch))
         ax.plot([n0, n1], [hlz, hlz], color=C_OUT, lw=1.0, zorder=8)                       # half-lap line
-    ax.text((XIN1 + XOUT0)/2, az - 4, "2×1×0.120 STEEL ARM", fontsize=7.5, ha="center", va="center", **FONT, zorder=8)
+    ax.text((XIN1 + XOUT0)/2, az, "2×1 SOLID STEEL BAR", fontsize=7.5, ha="center", va="center", **FONT, zorder=8)
     leader(ax, (XIN0+XIN1)/2, az + ah/2, (XIN0+XIN1)/2 + 55, az + 84, "inner long beam\n(at the arm tip)", fs=6, font=FONT, ha="left")
-    leader(ax, (XOUT0+XOUT1)/2, az + ah/2, (XOUT0+XOUT1)/2 - 55, az + 84, "outer long beam", fs=6, font=FONT, ha="right")
-    draw_dim_v(ax, XT - 20, az - ah/2, hlz, "5.4", fs=5.4, font=FONT)                      # lower web (continuous)
-    draw_dim_v(ax, XT - 20, hlz, az + ah/2, "20", fs=5.4, font=FONT)                       # upper notched away
-    ax.text(XT - 20, az + ah/2 + 16, "half-lap depth\n(of 25.4)", fontsize=5.0, ha="center", color=C_DIM, **FONT)
+    leader(ax, (XOUT0+XOUT1)/2, az + ah/2, (XOUT0+XOUT1)/2 - 55, az + 84, "outer long beam\n(post end)", fs=6, font=FONT, ha="right")
+    hzi = _hlz(ARM_KEEP["inner"])                                                          # TIP: low moment -> deep arm notch
+    draw_dim_v(ax, XT - 20, az - ah/2, hzi, "5.4", fs=5.4, font=FONT)
+    draw_dim_v(ax, XT - 20, hzi, az + ah/2, "20", fs=5.4, font=FONT)
+    ax.text(XT - 20, az + ah/2 + 15, "TIP notch\narm 5.4 / beam 20", fontsize=5.0, ha="center", color=C_DIM, **FONT)
+    hzo = _hlz(ARM_KEEP["outer"])                                                          # POST END: high moment -> notch the BEAM
+    draw_dim_v(ax, XOUT0 - 8, az - ah/2, hzo, "16", fs=5.4, font=FONT)
+    draw_dim_v(ax, XOUT0 - 8, hzo, az + ah/2, "9.4", fs=5.4, font=FONT)
+    ax.text(XOUT0 - 8, az + ah/2 + 15, "POST notch\narm 16 / beam 9.4", fontsize=5.0, ha="center", color=C_DIM, **FONT)
     ax.add_patch(Rectangle((XUP - ep_x, az - ep_h/2), ep_x, ep_h, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.4, zorder=9))  # end-plate (welded to arm)
     ax.add_patch(Rectangle((XUP + 60, az - ep_h/2), ep_x, ep_h, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.4, zorder=9))    # rear backing plate
     for bz in (az - 36, az + 36):
@@ -1331,20 +1338,21 @@ def sheet5():
     _dcell(ax, 900, 40, 440, 440, "NOTES")
     draw_notes(ax, [
         "• 2× arms, one per IBC FRONT upright (near",
-        "  + far). 2×1×0.120in steel, laid flat.",
-        "• Reach 325mm = arm length: upright face",
-        "  → arm tip (at the inner long beam).",
-        "• Arm crosses BOTH walkway long beams →",
-        "  TWO half-lap notches (X-located on VIEW A):",
-        "  outer beam 25mm from the upright end;",
-        "  inner beam at the tip; 198.4mm clear.",
-        "• Each half-lap: upper 20mm notched (of the",
-        "  25.4 depth), beam drops flush — ONE arm.",
-        "• J6: end-plate WELDED to arm → 4× M12",
-        "  through upright → REAR backing plate + nuts",
-        "  (PLATE detail + Sheet 4, Detail F).",
+        "  + far). 2×1 SOLID steel bar (50.8×25.4).",
+        "• Reach 325mm = arm length: upright → tip",
+        "  (at the inner long beam).",
+        "• Crosses BOTH walkway long beams → TWO",
+        "  half-lap notches (X-located on VIEW A):",
+        "  outer 25mm from the post; inner at the",
+        "  tip; 198.4mm clear.",
+        "• Notch REBALANCED to the moment (solid bar):",
+        "  – TIP (M≈30 Nm): arm keeps 5.4, beam 20.",
+        "  – POST (M≈334 Nm): arm keeps 16, the BEAM",
+        "    is notched to 9.4 (both SF ≈ 1.5+).",
+        "• J6: end-plate WELDED to arm → 4× M12 →",
+        "  REAR backing plate (Sheet 4, Detail F).",
         "• Arm underside Z90; top Z115 (grate).",
-    ], 918, 445, spacing=27, fs=6.0, font=FONT, width=424)
+    ], 918, 452, spacing=25, fs=6.0, font=FONT, width=424)
 
     title_block(ax, "SHEET 5 OF 5",
                 drawing_title="IBC SUPPORT FRAME",

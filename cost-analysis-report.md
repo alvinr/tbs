@@ -11,7 +11,7 @@ capital from recurring/consumable spend, and ranks the realistic savings levers.
 
 All figures are the **mid-column** estimates from the
 [Cost Breakdown](project-cost-breakdown.md) (the itemized source of truth); the build
-mid-total is **~<!-- BEGIN costing:ca-mid-total -->$31,259<!-- END costing:ca-mid-total -->**.
+mid-total is **~<!-- BEGIN costing:ca-mid-total -->$31,302<!-- END costing:ca-mid-total -->**.
 
 ---
 
@@ -24,13 +24,13 @@ recurs or is consumed — savings strategy is different for each.
 <!-- BEGIN costing:ca-buckets -->
 | Bucket | Mid | What it is |
 |---|--:|---|
-| **Capital build** (one-time hardware) | **$28,009** | The systems you build once — this is where build-savings live |
+| **Capital build** (one-time hardware) | **$28,052** | The systems you build once — this is where build-savings live |
 | Consumable (per 50-print batch) | $1,710 | Cyanotype chemistry + substrate (Standard ½-Ware) — recurs every batch |
 | Recurring (per deployment) | $750 | Commercial-hire transport |
 | Soft / regulatory | $790 | Licenses & permits |
 <!-- END costing:ca-buckets -->
 
-Build-savings work on the **<!-- BEGIN costing:ca-capital -->$28,009<!-- END costing:ca-capital --> capital**. The <!-- BEGIN costing:ca-consumable -->$1,710<!-- END costing:ca-consumable --> consumable is attacked
+Build-savings work on the **<!-- BEGIN costing:ca-capital -->$28,052<!-- END costing:ca-capital --> capital**. The <!-- BEGIN costing:ca-consumable -->$1,710<!-- END costing:ca-consumable --> consumable is attacked
 separately (bulk chemistry, cheaper substrate) because it repeats every batch and
 quickly dominates lifetime cost.
 
@@ -47,7 +47,7 @@ Capital systems ranked by mid cost:
 | **Film-plane mechanism** | $4,470 | 16% | Carriages, Option-A 304 cross-slides, muslin spring clips, wall-seat saddles |
 | **Power & electrical** | $3,464 | 12% | Battery + solar + distribution + protection |
 | **Container + delivery** | $3,300 | 12% | Grade-dependent (CW vs WWT) |
-| **Perimeter walkway** | $2,580 | 9% | GRP grating + steel cantilevers |
+| **Perimeter walkway** | $2,623 | 9% | GRP grating + steel cantilevers |
 | **Light lock** | $2,280 | 8% | Plastic-skin custom fabrication |
 | **Swing pivot** | $1,395 | 5% | Pivot post + bearings + cage + fixed RHS door frame |
 | **Hinged panel structure** | $1,382 | 5% | Stepped frame + HDPE skins + Al core + EPDM + latches + B2 bay |
@@ -75,7 +75,7 @@ Ranked by dollar potential and ease. Status is updated as levers are actioned.
 | 5 | **Solar 3 → 2 panels** (if the power budget allows) | Power | ~<!-- BEGIN costing:ca-lever-solar -->$133<!-- END costing:ca-lever-solar --> | Easy | Available — computed (drop 1× 200W panel) |
 | 6 | **Valves / fittings value-engineering** | Water | ~<!-- BEGIN costing:ca-lever-valves-low -->$100<!-- END costing:ca-lever-valves-low -->–<!-- BEGIN costing:ca-lever-valves-high -->$200<!-- END costing:ca-lever-valves-high --> | Medium | Available |
 
-After the material decisions, the only still-**available** build-savings levers are **1 (container grade) + 5 (solar)** — together **~<!-- BEGIN costing:ca-savings-low -->$1,500<!-- END costing:ca-savings-low -->** off the <!-- BEGIN costing:ca-capital -->$28,009<!-- END costing:ca-capital --> capital build (**~<!-- BEGIN costing:ca-savings-pct-low -->5<!-- END costing:ca-savings-pct-low -->%**), plus ~$100–200 of valve value-engineering (#6). Everything else is settled: lever 2 **banked** (manual is the standard build), lever 3 **kept 304 SS** (decision), lever 4 **already 1×100 Ah**.
+After the material decisions, the only still-**available** build-savings levers are **1 (container grade) + 5 (solar)** — together **~<!-- BEGIN costing:ca-savings-low -->$1,500<!-- END costing:ca-savings-low -->** off the <!-- BEGIN costing:ca-capital -->$28,052<!-- END costing:ca-capital --> capital build (**~<!-- BEGIN costing:ca-savings-pct-low -->5<!-- END costing:ca-savings-pct-low -->%**), plus ~$100–200 of valve value-engineering (#6). Everything else is settled: lever 2 **banked** (manual is the standard build), lever 3 **kept 304 SS** (decision), lever 4 **already 1×100 Ah**.
 
 > **Derivation note.** Lever 1 (container grade), lever 5 (solar), and the roll-up total +
 > percentage are computed in `costing.py` — container is a true CW − WWT subtraction off the

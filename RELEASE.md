@@ -70,6 +70,10 @@ file** — a release must not ship without a changelog entry:
   as solid bar + J6 end-plate hardware: 8× M12×100, 4 plates, 8 crush sleeves; −4 clamp bolts), costing
   reconciled (+$62/$85/$108 walkway), Sheet 5 + report §3.4 updated. (3D `.skp` re-send to follow.)
 
+- **Walkway cantilever arm price firmed.** Metal Supermarkets quote for the 2×1 solid bar: **$91.32 / 36 in
+  cut** — one stick covers both arms plus a spare. Replaces the $36–$60 estimate; arm line now **$91 flat**
+  across low/mid/high. Cascade: `parts.py` + `costing.py` (+$55/$43/$31 walkway → grand-total $26.8k–$37.9k).
+
 - **NEW — IBC frame Sheet 5: walkway cantilever-arm fabrication (`ibc-frame-sheet5.png`).** The 2 walkway
   cantilever arms that hang off the IBC front uprights are now drawn as a fabrication sheet in the IBC-frame set
   (keeping all the IBC-frame metal together rather than deferring to a separate walkway blueprint). The arm

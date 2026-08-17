@@ -263,12 +263,31 @@ def rear_panel():
     The pumps' integral cam-clamps grip onto it; only short port→riser connectors penetrate it."""
     pz0, ph = S, PANEL_TOP_Z - S                 # top dropped to PANEL_TOP_Z (1900) for the Fan A air window
     yw = (YD_FAR - S) - (YD_NEAR + S)
+    # DRILLED clearance holes — the "round holes" already called out where the port→riser connectors and
+    # the Cct-C branches penetrate the ply (a void, not a part), so each reads as passing THROUGH a hole
+    # rather than fused into the slab (check_interference.py --pipes).  Centers = (Yd, Z) mirror the pipe
+    # waypoints; radius is generous (RP+3 pipe / 7 cable) so a small routing shift stays in the hole —
+    # --pipes remains the drift tripwire.  Both X-thin panels cut along X; the spine (Yd-thin) along Y.
+    RPH, CBH = RP + 3, 7
+    shirt_holes = [(1113, 1210, RPH),    # Blue #1 -> P-01 suction entry
+                   (1245, 1502, RPH),    # P-05 -> X3 end-wall port
+                   (1196, 1700, RPH),    # X4 Waste (P-03) pickup
+                   (CTR_Y, 1030, CBH),   # Cct-C branch -> P-02 (power cable)
+                   (CTR_Y, 1430, CBH)]   # Cct-C branch -> P-05 (power cable)
+    rear_holes = [(1165, 235, RPH),      # DV-01 -> IBC-4 merge
+                  (1194, 65,  RPH),      # DV-02 waste -> IBC-4
+                  (1113, 1210, RPH),     # Blue #1 -> P-01 suction entry
+                  (1245, 1502, RPH),     # P-05 -> X3 end-wall port
+                  (1196, 1700, RPH),     # X4 Waste (P-03) pickup
+                  (CTR_Y, 1030, CBH),    # Cct-C branch -> P-02
+                  (CTR_Y, 1430, CBH)]    # Cct-C branch -> P-05
+    spine_holes = [(5500, 1376, RPH)]    # Blue equalization (IBC-1 <-> IBC-2)  (X, Z) — cut along Y
     p = [ov.ruby_box("Rear panel (18mm exterior ply)", BACK_X, YD_NEAR + S, pz0,
-                     EQT, yw, ph, color=ov.C_PLY)]
+                     EQT, yw, ph, color=ov.C_PLY, holes=rear_holes, hole_axis="x")]
     # 25mm ply pump-mount shirt: front face hard behind the ACC body (the deepest, back ≈ PXC+ACC_R),
     # spanning the pump-column height; sits in the ~56mm chase between the bodies and the rear frame.
     p.append(ov.ruby_box("Pump-mount ply shirt (25mm)", SHIRT_X, YD_NEAR + S, 325,   # SHIRT_X: module constant
-                         25, yw, PANEL_TOP_Z - 325, color=ov.C_PLY))   # top dropped 2191->1900 for the Fan A window (DV-02 is on the skid, Phase 2);
+                         25, yw, PANEL_TOP_Z - 325, color=ov.C_PLY, holes=shirt_holes, hole_axis="x"))   # top dropped 2191->1900 for the Fan A window (DV-02 is on the skid, Phase 2);
     #   bottom SHORTENED to 325 (was 275) to clear the brown P-05 inlet elbow now RAISED to z298-318; still backs the pumps
     # Spacer/cleat blocks tying the shirt BACK to the rear panel (and thus the frame) across the
     # ~27mm chase — placed at the two Yd edges in the clear Z windows BETWEEN the horizontal X3/X4
@@ -283,7 +302,8 @@ def rear_panel():
     # top/bottom rings.  Placed at Yd1183 (between the two risers) — clear of the merge (Yd1116) and
     # the X1 cross (x>5470).
     p.append(ov.ruby_box("Drain-riser backing spine (18mm ply)", BACK_X, 1206, 280,
-                         5560 - BACK_X, 18, (TOP_Z - S) - 280, color=ov.C_PLY))   # −Yd face at 1206 = the grey
+                         5560 - BACK_X, 18, (TOP_Z - S) - 280, color=ov.C_PLY,
+                         holes=spine_holes, hole_axis="y"))   # −Yd face at 1206 = the grey
     #   X4-waste riser's far edge, so it CLAMPS to the face; bottom at 280 (clears the low waste pickup
     #   z247-268).  Extended +X to 5560 (past the X1 cross at 5530) and UP to the rear-panel top
     #   (z=TOP_Z−S=2246) to also back the X1 fill cross, Blue equalization tie, and the high fill/recycle runs.

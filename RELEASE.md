@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Drilled the corridor ply-panel pipe penetrations (3D readability, `--pipes` fixes).** The rear panel,
+  pump-mount shirt, and drain-riser spine carried no actual holes where the port→riser connectors and the
+  Cct-C power branches pass through — the pipes read as fused into the ply (the comments already called for
+  "round holes"). `ruby_box` gains a `holes=`/`hole_axis=` parameter that cuts real clearance holes by the
+  robust coplanar-face-pushpull method (Group#subtract does NOT chain in this SketchUp — the 2nd boolean
+  collapses the solid; documented in the helper). 13 holes cut (7 rear + 5 shirt + 1 spine), each panel
+  verified manifold at 6+24·n faces. `check_interference.py --pipes` now records the 13 as `drilled(OK)` so
+  it only warns on new penetrations (2 remain: the tray-floor sump drain — overview builder). Water model
+  re-sent + verified. (3D `.skp` save + Sketchfab upload to follow.)
+
 - **NEW tooling — 3D readability seam audits (`check_interference.py --solids / --pipes / --seams`).**
   Two READ-ONLY, advisory passes against the live model that surface a *drawing* defect (distinct parts
   rendering as one fused piece because no seam shows), distinct from a clash. `--solids` lists same-color

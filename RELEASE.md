@@ -24,6 +24,14 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Half-lap hold-down — #14 TEK screw per lap (Sheet 5 detail + model + parts).** The long beams sat on the
+  arm's bearing seat by gravity only; added a positive fastener so they're secured. One **#14 self-drilling TEK
+  screw per half-lap** (4 total: 2 arms × 2 crossings), driven **from the underside** through a Ø7 clearance
+  hole in the beam, self-tapping into the **solid arm** above (anti-lift/anti-slide; the head sits in the
+  ~6.6 mm gap and clears the traveling spray beam). New **HALF-LAP HOLD-DOWN section** on Sheet 5 (hatched arm
+  on top / beam with the hole below / screw from underside), 3D model gains the 4 screws, `parts.py` +
+  `walkway-arm-holddown` (4× #14 TEK + washer), costing +$2/$3/$4, report §3.4 note.
+
 - **Walkway cantilever arm → SOLID 2×1 flat bar + rebalanced half-lap notch (structural fix + full cascade).**
   A review flagged the arm's half-lap notch as dangerously thin. Root cause: the arm half-laps over **both**
   right-walkway long beams, and a notched **hollow** tube opens into a weak channel (the un-notched LEFT

@@ -781,6 +781,9 @@ def ibc_cantilever_arms(x_to=None):
         for dy in (-15, 15):
             for dz in (-45, 45):
                 parts.append(ruby_cylinder(f"RWk J6 bolt M12 Yd{yd}", RWK_X_UP - ep_t, ac_y + dy, ac_z + dz, 6, IBC_FRAME_RHS + 2*ep_t, color=C_STEEL, axis="x"))
+        # half-lap HOLD-DOWN: 1 #14 TEK screw per crossing (from the underside, through the beam into the arm)
+        for bx in sorted(b for b in RWK_BEARER_XS if x_to - 1 < b < RWK_X_UP):
+            parts.append(ruby_cylinder(f"RWk half-lap TEK screw Yd{yd} X{int(bx)}", bx + RWK_BEARER_W / 2.0, ac_y, RWK_ARM_BOT - 5, 3, RWK_AH + 5, color=C_STEEL, axis="z"))
     return parts
 
 

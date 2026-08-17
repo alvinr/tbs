@@ -1317,8 +1317,8 @@ def sheet5():
     draw_dim_h(ax, XT, XUP, zcp - 34, "reach 325  (= arm length)", fs=6.3, font=FONT, above=False)
 
     # ── END-PLATE — bolt-hole locations, arm weld footprint shadow-marked ──
-    _dcell(ax, 20, 40, 860, 440, "END-PLATE / REAR BACKING PLATE (identical, ×2 per joint)  ·  4× Ø13 for M12")
-    cx, cz, pw2, ph2 = 430, 258, 90, 150                       # plate center + half width/height drawn (70 × 130 real)
+    _dcell(ax, 20, 40, 500, 440, "END-PLATE / REAR BACKING PLATE (×2/joint)  ·  4× Ø13 for M12")
+    cx, cz, pw2, ph2 = 270, 258, 90, 150                       # plate center + half width/height drawn (70 × 130 real)
     ax.add_patch(Rectangle((cx - pw2, cz - ph2), 2*pw2, 2*ph2, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.6, zorder=5))   # the plate
     ax.add_patch(Rectangle((cx - 65, cz - 32), 130, 64, fc=C_OUT, ec=C_OUT, alpha=0.12, ls=(0, (4, 2)), lw=1.2, zorder=6))  # arm weld footprint (SHADOW)
     ax.text(cx, cz, "arm weld footprint\n50.8 × 25.4\n(END-plate only)", fontsize=5.2, ha="center", va="center", color=C_DIM, **FONT, zorder=8)
@@ -1331,29 +1331,54 @@ def sheet5():
     draw_dim_v(ax, cx - pw2 - 22, cz - ph2, cz + ph2, "130", fs=5.8, font=FONT)                     # plate height
     draw_dim_h(ax, cx - 39, cx + 39, cz + ph2 + 16, "30", fs=5.6, font=FONT, above=True)            # bolt H pitch
     draw_dim_v(ax, cx + pw2 + 22, cz - 116, cz + 116, "90", fs=5.8, font=FONT)                      # bolt V pitch
-    ax.text(cx, cz - ph2 - 46, "shaded = arm weld footprint (END-plate only; the rear backing plate is plain)",
+    ax.text(cx, cz - ph2 - 46, "shaded = arm weld footprint (END-plate only)",
             fontsize=5.2, ha="center", color=C_DIM, **FONT)
 
+    # ── DETAIL — HALF-LAP HOLD-DOWN (the TEK screw that secures the beam to the arm at each lap) ──
+    _dcell(ax, 540, 40, 380, 440, "HALF-LAP HOLD-DOWN (×4)  ·  section")
+    hx, mw = 730, 72                                                                      # section center X / half-width
+    zbb, zs, zat = 258, 318, 410                                                          # beam bottom / half-lap line / arm top (drawn) — ARM on TOP, BEAM below (rotated)
+    ax.add_patch(Rectangle((hx - mw, zs), 2 * mw, zat - zs, fc=C_STEEL, ec=C_OUT, alpha=0.7, lw=1.5, hatch="///", zorder=5))  # ARM kept-16 (solid, DRILLED) — on top
+    ax.add_patch(Rectangle((hx - mw, zbb), 2 * mw, zs - zbb, fc=C_STEEL, ec=C_OUT, alpha=0.5, lw=1.4, zorder=5))              # BEAM in the lap (Ø7 HOLE) — below
+    ax.plot([hx - mw, hx + mw], [zs, zs], color=C_OUT, lw=1.2, zorder=8)                  # bearing interface (half-lap line)
+    leader(ax, hx + mw, (zs + zat) / 2, hx + mw + 16, (zs + zat) / 2, "ARM solid\n(drilled)", fs=5.2, font=FONT, ha="left")
+    leader(ax, hx + mw, (zbb + zs) / 2, hx + mw + 16, (zbb + zs) / 2 - 6, "BEAM in lap\n(Ø7 hole)", fs=5.2, font=FONT, ha="left")
+    ax.add_patch(Rectangle((hx - 7, zbb), 14, zs - zbb, fc="none", ec=C_OUT, lw=0.8, ls=(0, (2, 2)), zorder=8))  # clearance hole in the BEAM
+    ax.add_patch(Rectangle((hx - 4, 250), 8, 118, fc=C_SHANK, ec=C_OUT, lw=0.8, zorder=9))              # shank: UP from the head, through the beam, into the arm
+    for zt_ in range(320, 366, 9):
+        ax.plot([hx - 4, hx + 4], [zt_, zt_ + 4], color=C_OUT, lw=0.5, zorder=10)          # thread ticks (in the ARM, above the lap)
+    ax.add_patch(Rectangle((hx - 22, zbb - 8), 44, 7, fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=11))       # washer (under the beam)
+    ax.add_patch(Rectangle((hx - 12, zbb - 19), 24, 11, fc=C_BOLT, ec=C_OUT, lw=1.0, zorder=11))     # hex head (underside)
+    ax.add_patch(Rectangle((hx - mw - 12, 214), 2 * mw + 24, 20, fc="#C8D8E8", ec=C_OUT, lw=1.0, alpha=0.5, zorder=4))  # spray beam (context, below)
+    ax.text(hx, 224, "spray beam (Z78) — head clears (~6.6)", fontsize=4.6, ha="center", va="center", color=C_DIM, **FONT, zorder=8)
+    draw_dim_v(ax, hx - mw - 14, zs, zat, "16", fs=5.0, font=FONT)
+    draw_dim_v(ax, hx - mw - 14, zbb, zs, "9.4", fs=5.0, font=FONT)
+    ax.text(hx, 175, "#14 self-drilling TEK screw from the UNDERSIDE — Ø7 clearance", fontsize=5.2, ha="center", color=C_DIM, **FONT)
+    ax.text(hx, 161, "hole through the BEAM, self-taps into the SOLID ARM above;", fontsize=5.2, ha="center", color=C_DIM, **FONT)
+    ax.text(hx, 147, "head + washer clamp the beam up onto the seat.", fontsize=5.2, ha="center", color=C_DIM, **FONT)
+    ax.text(hx, 133, "Head sits in the ~6.6mm gap — clears the traveling spray beam.", fontsize=5.2, ha="center", color=C_DIM, **FONT)
+
     # ── NOTES ──
-    _dcell(ax, 900, 40, 440, 440, "NOTES")
+    _dcell(ax, 940, 40, 400, 440, "NOTES")
     draw_notes(ax, [
         "• 2× arms, one per IBC FRONT upright (near",
         "  + far). 2×1 SOLID steel bar (50.8×25.4).",
-        "• Reach 325mm = arm length: upright → tip",
-        "  (at the inner long beam).",
-        "• Crosses BOTH walkway long beams → TWO",
-        "  half-lap notches (X-located on VIEW A):",
-        "  outer 25mm from the post; inner at the",
-        "  tip; 198.4mm clear.",
+        "• Reach 325mm = arm length: upright → tip.",
+        "• Crosses BOTH long beams → TWO half-lap",
+        "  notches (X-located on VIEW A): outer 25mm",
+        "  from the post; inner at the tip; 198.4 clear.",
         "• Notch REBALANCED to the moment (solid bar):",
         "  – TIP (M≈30 Nm): arm keeps 5.4, beam 20.",
         "  – POST (M≈334 Nm): arm keeps 16 (SF≈1.6);",
-        "    the BEAM's 9.4 notch is a BEARING SEAT",
-        "    (pin) — beam spans SS on the full section.",
-        "• J6: end-plate WELDED to arm → 4× M12 →",
-        "  REAR backing plate (Sheet 4, Detail F).",
+        "    the BEAM's 9.4 notch is a BEARING SEAT —",
+        "    beam spans SS on the full section.",
+        "• HOLD-DOWN: 1× #14 TEK screw per lap (×4),",
+        "  from the UNDERSIDE through the beam into",
+        "  the solid arm (locks the beam to the seat).",
+        "• J6: end-plate WELDED to arm → 4× M12 → REAR",
+        "  backing plate (Sheet 4, Detail F).",
         "• Arm underside Z90; top Z115 (grate).",
-    ], 918, 452, spacing=25, fs=6.0, font=FONT, width=424)
+    ], 958, 452, spacing=24, fs=5.9, font=FONT, width=384)
 
     title_block(ax, "SHEET 5 OF 5",
                 drawing_title="IBC SUPPORT FRAME",

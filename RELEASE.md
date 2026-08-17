@@ -24,6 +24,15 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Butted the walkway structural-steel joints that read as fused (`--solids` fixes).** Two distinct
+  members that interpenetrate render as one piece (same color, no seam) — the weld bead isn't modeled, so
+  a clean butt reads better. Fixed the two clean end-butts: the **floor-leg posts now sit ON their foot
+  plates** (were sunk in) and the **RWk end beams butt between the long beams** (were overlapping the
+  corners). 5-model cascade re-sent + saved: walkway, overview, construction, water, film-plane. Left the
+  perpendicular *crossings* (wall-cleat plate ↔ beam, J6 backing plate ↔ frame rail — those need a notch,
+  not a butt) and the genuine one-piece / compression cases (U-rail web+flange, EPDM/brush seals, bearings,
+  bath, drum, fan frames).
+
 - **Drilled the corridor ply-panel pipe penetrations (3D readability, `--pipes` fixes).** The rear panel,
   pump-mount shirt, and drain-riser spine carried no actual holes where the port→riser connectors and the
   Cct-C power branches pass through — the pipes read as fused into the ply (the comments already called for

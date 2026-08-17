@@ -39,7 +39,11 @@ file** — a release must not ship without a changelog entry:
   retaining bars projecting OUTWARD to the side walls — the earlier "bar spanning between the uprights" read
   was geometrically wrong; Sheet 5 NOTES moved to a single standard block along the bottom (was a nested
   double-box in a right-side cell) and the plan-view through-bolt head/nut now butt the plate faces; Sheet 2
-  J6 rear backing plate shortened (bottom raised to Z56) so it clears the base-ring weld.
+  J6 rear backing plate shortened (bottom raised to Z56) so it clears the base-ring weld. Round-3: Sheet 1
+  cleats moved to the upright's OUTSIDE (column-facing) edge (were on the corridor-inside edge — wrong), and
+  the bars now end there; Sheet 6 redrawn to show FOUR retaining bars (2/tier × 2 tiers) and the deep box's
+  back upright pair ghosted so the TWO rings read as 8 ring-welds (W1 ×8 = 4 legs × 2 rings), with the cleats
+  on the outside edges too; Sheet 5 VIEW A now shows the #14 TEK hold-down at each half-lap notch.
 
 - **IBC frame fab-detail package (Phase D): member cut list, weld map, plate reconcile.** The IBC support
   frame drawing set is now buildable end-to-end. (1) **§3.7 member cut list** — a single-sourced stick

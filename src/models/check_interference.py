@@ -308,11 +308,61 @@ def _ovl_vol(a, b):
     return v
 
 
+# SANCTIONED same-color solid overlaps — NOT readability defects: the overlap is intentional and a
+# butt would be WRONG.  Each entry is (pat_a, pat_b, reason); a hit matches if the two names contain the
+# two patterns (either order).  Once the clean end-butts are done (posts↔plates, RWk end-beams), every
+# remaining flagged overlap falls in one of these by-design classes.  (The J6 backing plate ↔ frame rail
+# corner is deliberately NOT here — it is a real structural congestion to resolve in design, so it stays
+# an OPEN flag.)
+_SANCTIONED_SOLID = [
+    # ONE-PIECE formed / welded parts drawn as overlapping primitives (no real seam exists):
+    ("u-rail", "u-rail", "one formed U-channel (web + flanges)"),
+    ("wall cleat plate", "wall cleat shelf", "one welded L-cleat (plate + shelf)"),
+    ("wall cleat ext plate", "wall cleat shelf", "one welded L-cleat (ext plate + shelf)"),
+    ("door frame", "door frame", "one welded door frame (stiles/top/threshold)"),
+    ("fp combined", "fp combined", "one combined corner plate (seat + rail seat + plate)"),
+    ("drum c-shell", "drum bottom cap", "one welded drum (shell + cap)"),
+    ("drum c-shell", "drum top cap", "one welded drum (shell + cap)"),
+    ("housing arc", "drum", "light-trap housing + drum assembly"),
+    ("drum c-shell", "grab rail", "grab rail welded to the drum shell"),
+    ("drum", "bay wall", "drum seated in the light-trap bay"),
+    ("housing arc", "bay wall", "housing arc seated in the light-trap bay"),
+    # ASSEMBLED fan unit (baffle duct + frame + plates + flange bolt/weld together):
+    ("fan", "fan", "one fan assembly (duct/frame/baffle/flange)"),
+    # COMPRESSION seals (must interpenetrate the frame/drum to seal — a butt would leave a gap):
+    ("seal", "", "compression seal (EPDM/brush) squeezed into its frame"),
+    ("brush seal", "", "compression brush seal"),
+    ("gasket", "", "compression gasket"),
+    # BEARING / shaft fits and shrink/press collars:
+    ("bearing", "shaft", "bearing bore on its shaft (interference fit)"),
+    ("thrust collar", "pivot post", "thrust collar clamped on the pivot post"),
+    # LIQUID contents inside a vessel (not a solid seam):
+    ("bath", "", "chemistry bath liquid inside the tray/spray/manifold"),
+    ("water in manifold", "poly manifold", "concentric spray manifolds"),
+    # SEATED structural connections — the member bears IN/ON a cleat/seat by design (the engagement
+    # represents the bearing; a flush butt would float the beam off its seat):
+    ("long beam", "wall cleat plate", "left long beam seated in its wall cleat"),
+    ("end beam", "wall cleat plate", "end beam seated in its wall cleat"),
+    ("long beam", "fp combined", "right long beam seated on the combined corner plate"),
+    ("pivot post", "roof mount plate", "pivot post seated in its roof mount"),
+]
+
+
+def is_sanctioned_solid(a_name, b_name):
+    na, nb = a_name.lower(), b_name.lower()
+    for pa, pb, _r in _SANCTIONED_SOLID:
+        if (pa in na and (pb == "" or pb in nb)) or (pa in nb and (pb == "" or pb in na)):
+            return True
+    return False
+
+
 def solids_pass(data, min_overlap_mm=2.0, min_vol_mm3=1000.0):
     """SAME-color solid<->solid interpenetrations (a member passing THROUGH another, not merely
     butting a face) above a volume threshold.  Butted joints touch on one axis only (overlap ~0 on the
     mating axis) so they don't flag; a bar run THROUGH a post overlaps on all three axes and does.
-    Same RGB is the trigger because that's exactly when the shared material erases the seam."""
+    Same RGB is the trigger because that's exactly when the shared material erases the seam.
+    Intentional by-design overlaps (compression seals, formed one-piece sections, seated connections,
+    bearing fits) are partitioned off via is_sanctioned_solid so only OPEN defects are flagged."""
     sols = [g for g in data
             if g.get("co") and is_readable_solid(g["n"])
             and classify(g["n"])[0] not in ("pipe", "skip")]
@@ -333,20 +383,24 @@ def solids_pass(data, min_overlap_mm=2.0, min_vol_mm3=1000.0):
             c = [round((max(A["mn"][k], B["mn"][k]) + min(A["mx"][k], B["mx"][k])) / 2) for k in range(3)]
             hits.append((vol, A, B, c))
     hits.sort(key=lambda h: -h[0])
-    # A bolted/cleated JOINT (one part is a cleat/plate/bracket/tab/clip) should BUTT so a seam shows;
-    # a beam<->beam or web<->flange overlap is a weld/formed section and reads correctly continuous.
-    joint_keys = ("cleat", "plate", "bracket", "tab", "lug", "clip", "gusset", "saddle", "hanger",
-                  "end-plate", "endplate", "shoe", "cap")
-    def _hint(A, B):
-        na, nb = A["n"].lower(), B["n"].lower()
-        return "BUTT?" if any(k in na or k in nb for k in joint_keys) else "weld"
-    nb = sum(1 for _, A, B, _ in hits if _hint(A, B) == "BUTT?")
-    print(f"same-color solid interpenetrations={len(hits)} ({nb} likely-bolted → BUTT?, rest weld)  "
-          f"(triage: welded/cast=leave; bolted/cleated=butt at the mating face)")
+    # partition: intentional by-design overlaps (sanctioned) vs OPEN readability defects.  Dedupe on the
+    # sorted name pair so a phased/duplicated model doesn't multi-count the same joint.
+    seen, open_hits, sanctioned = set(), [], 0
     for vol, A, B, c in hits:
-        print(f"  [{_hint(A, B):5s}] {A['n']:40.40s} ({A['p']})")
-        print(f"    x       {B['n']:40.40s}  overlap {vol/1000:.1f}cm^3 @ ({c[0]},{c[1]},{c[2]})")
-    return len(hits)
+        k = tuple(sorted((A["n"], B["n"])))
+        if k in seen:
+            continue
+        seen.add(k)
+        if is_sanctioned_solid(A["n"], B["n"]):
+            sanctioned += 1
+        else:
+            open_hits.append((vol, A, B, c))
+    print(f"same-color solid interpenetrations: {len(open_hits)} OPEN + {sanctioned} sanctioned(OK)  "
+          f"(OPEN = a real fused-seam defect: butt at the mating face, or notch a true crossing)")
+    for vol, A, B, c in open_hits:
+        print(f"  OPEN  {A['n']:40.40s} ({A['p']})")
+        print(f"    x   {B['n']:40.40s}  overlap {vol/1000:.1f}cm^3 @ ({c[0]},{c[1]},{c[2]})")
+    return len(open_hits)
 
 
 # Surfaces a pipe is drilled THROUGH (a hole + collar should show); the pipe reads as fused into the

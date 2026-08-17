@@ -24,6 +24,21 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Sanctioned the intentional same-color solid overlaps (`--solids` triage).** After the clean end-butts,
+  every remaining flagged overlap in the named categories is *by design* — a butt would be wrong. Added
+  `check_interference.py --solids` a sanctioned classifier (mirrors `--pipes`) covering: one-piece formed
+  parts drawn as primitives (U-rail web+flange, welded L-cleat, door frame, drum shell+caps, combined
+  corner plate), compression seals (EPDM/brush — must interpenetrate to seal), bearing/shaft fits + press
+  collars, liquid contents (bath, nested manifolds), the welded/bolted fan assembly, and seated structural
+  connections (beam bearing in its wall cleat, pivot post in its roof mount). `--solids` now prints
+  `N OPEN + M sanctioned(OK)`, deduped, so only genuine fused-seam defects surface. (The film-plane
+  corner-gimbal internals are a separate mechanism, out of this scope.)
+
+- **FLAGGED a real J6 interference (not readability).** The walkway-arm J6 backing plate and its lower M12
+  bolt (Z≈57, plate Z37–167) intersect the corridor's **bottom frame X-rail** (Z12–62) at the shared corner
+  behind the front upright — the bolt physically passes through the rail. Left OPEN in `--solids` and logged
+  in TODO.md for a design fix (raise the joint / reroute the rail / relocate the bolt).
+
 - **Butted the walkway structural-steel joints that read as fused (`--solids` fixes).** Two distinct
   members that interpenetrate render as one piece (same color, no seam) — the weld bead isn't modeled, so
   a clean butt reads better. Fixed the two clean end-butts: the **floor-leg posts now sit ON their foot

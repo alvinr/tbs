@@ -13,6 +13,14 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ## 🛠 Tooling / infra
 
+- [ ] **J6 walkway-arm ↔ corridor bottom frame-rail interference (REAL clash, not readability).** The J6
+  backing plate (Z37–167) and its **lower M12 bolt (Z≈57)** intersect the corridor frame's **bottom X-rail**
+  (Z12–62, starts at `FRONT_X+S`=4704) at the shared corner behind the front upright — the bolt passes
+  through the rail. Surfaced by `check_interference.py --solids` (left OPEN, deliberately not sanctioned).
+  **Fix options (design call):** raise the whole J6 joint so the lower bolt clears Z62; OR notch/reroute the
+  bottom rail around the plate; OR drop the rail's start to `FRONT_X+S+ep_t` (8mm gap to the upright).
+  Whichever — it cascades the J6 constants + a re-send. (Found 2026-08-16 working the --solids butts.)
+
 - [~] **Solid-joint seam audit + butt-vs-weld convention (3D readability).** Overlapping same-color solid
   members render with NO seam line, so distinct parts read as one fused piece (found 2026-08-14 at the IBC
   retaining-bar → corridor-upright joint — the bar ran *through* the post). **TOOLING DONE (2026-08-16):**

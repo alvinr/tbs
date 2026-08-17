@@ -24,6 +24,16 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **J2 corridor-end cleat redesigned to an L-angle + a single horizontal bolt (fixes the edge-distance flaw).**
+  The old cleat put 2 vertical M12 bolts down through the 20 mm-wide bar/leg, leaving only ~3 mm hole edge. The
+  bar now DROPS INTO an L-angle (horizontal leg under it, vertical leg welded to the upright, W3) and ONE
+  horizontal M12×65 runs through the vertical leg + the bar's TALL 50 mm web (~18 mm edge); the L-corner carries
+  the load, the bolt secures the unsupported direction (Alvin's call). J2 drops from 2 bolts → 1 per cleat
+  (16 → 8 M12×65 SS, same 92800A481 SKU reused — no new part). Full cascade: 3D `tote_restraint`, Plate 4,
+  Sheet 1 corridor cleat, Sheet 4 Detail B, parts (−8 bolts), costing (ibc-frame −$16, grand total −$16), and
+  the report fastener schedule + fab tables. **Pending: 3D re-send** (water + overview + ibc-stack reuse
+  `tote_restraint`) for Alvin's save, then `manifest --update`.
+
 - **IBC frame drawings — 6 review fixes (Alvin).** (1) **Sheet 1** now draws each retaining bar's two
   connections that were missing: the J2 L-cleat + 2 bolts at the corridor (upright) end and the J3/J7 bolts
   at the wall-end hangers. (2) **Sheet 6 weld map** is symmetric near↔far and now ticks EVERY weld instance

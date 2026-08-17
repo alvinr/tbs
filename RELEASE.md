@@ -24,6 +24,13 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **J6 walkway-arm joint: 4 bolts → 2 (central vertical column).** The 4-bolt (2×2) pattern put a Yd pair
+  ~10 mm from the post's side wall — the same tight-edge problem, now on the *post*. Since the moment couple
+  is purely the **vertical** 90 mm spacing, a single **central column of 2 M12** carries it (top bolt ~4.4 kN,
+  **SF ≈ 14**) and sits on the post centerline with max edge distance on both plate and post. End-plate trimmed
+  to **≈ post/arm width (55 × 130)**. Cascade: Sheet 4 Detail F + Sheet 5 end-plate + 3D model (2 bolts, Yd 0,
+  plate 55) + parts (`bolt-m12x100` 8→4, crush sleeves 8→4) + costing (−$10/$13/$15) + report §3.4/§3.5.
+
 - **Fix — J6 walkway-arm connection read as one gray blob in the 3D model.** The end-plate was drawn
   *inside* the arm's last segment (both X4646–4654, same steel material), so it was buried and lost its
   edges, and the 4 M12 bolts were `C_STEEL` (invisible against the plates). Now the arm ends **short** so the

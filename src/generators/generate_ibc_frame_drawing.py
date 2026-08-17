@@ -1205,25 +1205,22 @@ def sheet4():
     ax.text(pcx - 92, pcy, "ARM →", fontsize=5, ha="center", va="center", **FONT, zorder=9)
     ax.add_patch(Rectangle((pcx - 25 - ept, pcy - 33), ept, 66, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.4, zorder=8))  # end-plate WELDED to arm (−X face)
     ax.add_patch(Rectangle((pcx + 25, pcy - 33), ept, 66, fc=C_STEEL, ec=C_OUT, alpha=0.75, lw=1.4, zorder=8))        # rear backing plate (+X face)
-    for byy in (pcy - 15, pcy + 15):                                            # 2 of the 4 M12 (the Z pair projects onto each)
-        _bolt(ax, pcx - 25 - ept, byy, 50 + 2 * ept, d=7, nut=True)
+    _bolt(ax, pcx - 25 - ept, pcy, 50 + 2 * ept, d=7, nut=True)                 # central column — 1 bolt on the Yd centreline (both Z bolts project here)
     leader(ax, pcx - 25 - ept, pcy - 33, pcx - 96, pcy - 64, "end-plate\nWELDED to arm", fs=5.3, font=FONT, ha="left")
     leader(ax, pcx + 25 + ept, pcy + 33, pcx + 38, pcy + 60, "rear backing\nplate + nuts", fs=5.3, font=FONT, ha="left")
-    leader(ax, pcx - 15, pcy + 15, pcx - 70, pcy + 60, "4× M12 through-bolts\n(+ crush sleeve, hollow post)", fs=5.3, font=FONT, ha="right")
+    leader(ax, pcx, pcy, pcx - 70, pcy + 60, "2× M12 through-bolts\n(+ crush sleeve, hollow post)", fs=5.3, font=FONT, ha="right")
 
     # -- lower sub-view: ELEVATION (looking −X) — end-plate face + 2×2 bolt pattern + pitch --
     ax.text(fx0 + 210, fy0 + 160, "ELEVATION  (looking −X)", fontsize=6, ha="center", fontweight="bold", **FONT, zorder=8)
     fyc, fzc = fx0 + 175, fy0 + 84
     ax.add_patch(Rectangle((fyc - 25, fzc - 25), 50, 50, fc=C_FRAME, ec=C_OUT, lw=1.0, ls=(0, (3, 2)), alpha=0.3, zorder=5))  # upright behind (dashed)
-    ax.add_patch(Rectangle((fyc - 35, fzc - 58), 70, 116, fc=C_STEEL, ec=C_OUT, lw=1.4, alpha=0.7, zorder=6))  # end-plate face
-    for by in (fyc - 15, fyc + 15):                                             # 2×2 bolt holes
-        for bz2 in (fzc - 40, fzc + 40):
-            ax.add_patch(Circle((by, bz2), 4.5, fc=BG, ec=C_OUT, lw=1.1, zorder=8))
-            ax.plot([by - 7, by + 7], [bz2, bz2], color=C_OUT, lw=0.5, zorder=8)
-            ax.plot([by, by], [bz2 - 7, bz2 + 7], color=C_OUT, lw=0.5, zorder=8)
-    draw_dim_v(ax, fyc + 58, fzc - 40, fzc + 40, "90", fs=5.3, font=FONT)
-    draw_dim_h(ax, fyc - 15, fyc + 15, fzc - 74, "30", fs=5.3, font=FONT, above=False)
-    leader(ax, fyc + 35, fzc - 40, fyc + 92, fzc - 22, "end-plate\n(welded to arm)\n4× M12", fs=5.3, font=FONT, ha="left")
+    ax.add_patch(Rectangle((fyc - 27, fzc - 58), 54, 116, fc=C_STEEL, ec=C_OUT, lw=1.4, alpha=0.7, zorder=6))  # end-plate face (≈ post/arm width)
+    for bz2 in (fzc - 40, fzc + 40):                                            # 2 bolt holes — CENTRAL column
+        ax.add_patch(Circle((fyc, bz2), 4.5, fc=BG, ec=C_OUT, lw=1.1, zorder=8))
+        ax.plot([fyc - 7, fyc + 7], [bz2, bz2], color=C_OUT, lw=0.5, zorder=8)
+        ax.plot([fyc, fyc], [bz2 - 7, bz2 + 7], color=C_OUT, lw=0.5, zorder=8)
+    draw_dim_v(ax, fyc + 50, fzc - 40, fzc + 40, "90", fs=5.3, font=FONT)
+    leader(ax, fyc + 27, fzc - 40, fyc + 88, fzc - 22, "end-plate\n(welded to arm)\n2× M12", fs=5.3, font=FONT, ha="left")
 
     # ── Full-width NOTES band ──
     _dcell(ax, 20, -300, 1340, 268, "NOTES")
@@ -1232,8 +1229,8 @@ def sheet4():
         "• Hanger (A): 2 through-bolts fix the HANGER to the wall (not the bar), 50mm clear for wrench. The BAR bolts DOWN to the seat — 1× VERTICAL M12 centered (J7, removable); W5 = seat↔plate weld.",
         "• Cleat (B): the bar bolts DOWN to the welded corridor cleat — 2× M12×40 (J2); the wall end drops into the hanger (A).",
         "• Brackets (D/E): L-brackets TEK-screwed to the post (J8/J9, 2× #14 self-drillers each — NO weld, bolt-on to a painted frame). D: rear panel → upstand tee-nut (J4). E: side pipe-board → tee-nut + CSK (J5).",
-        "• Walkway arm (F): a BOLTED END-PLATE — plate WELDED to the arm end (shop weld), then 4× M12 through the upright into a REAR backing plate + nuts (crush sleeve in the hollow post). No frame weld. Arm fab → Sheet 5.    • Straps → stacking Sheet 2 (ops).",
-        "• Where used: A/B 8 retaining-bar ends · C lash rings on front bars · D 6 rear-panel brackets · E 12 side-panel pipe-run brackets · F 2 walkway-arm end-plate joints (8× M12).",
+        "• Walkway arm (F): a BOLTED END-PLATE — plate WELDED to the arm end (shop weld), then 2× M12 (central column) through the upright into a REAR backing plate + nuts (crush sleeve in the hollow post). No frame weld. Arm fab → Sheet 5.    • Straps → stacking Sheet 2 (ops).",
+        "• Where used: A/B 8 retaining-bar ends · C lash rings on front bars · D 6 rear-panel brackets · E 12 side-panel pipe-run brackets · F 2 walkway-arm end-plate joints (4× M12).",
     ], 44, -52, spacing=40, fs=6.4, font=FONT, width=1300)
 
     title_block(ax, "SHEET 4 OF 5",
@@ -1317,22 +1314,20 @@ def sheet5():
     draw_dim_h(ax, XT, XUP, zcp - 34, "reach 325  (= arm length)", fs=6.3, font=FONT, above=False)
 
     # ── END-PLATE — bolt-hole locations, arm weld footprint shadow-marked ──
-    _dcell(ax, 20, 40, 500, 440, "END-PLATE / REAR BACKING PLATE (×2/joint)  ·  4× Ø13 for M12")
-    cx, cz, pw2, ph2 = 270, 258, 90, 150                       # plate center + half width/height drawn (70 × 130 real)
+    _dcell(ax, 20, 40, 500, 440, "END-PLATE / REAR BACKING PLATE (×2/joint)  ·  2× Ø13 for M12")
+    cx, cz, pw2, ph2 = 270, 258, 71, 150                       # plate center + half width/height drawn (55 × 130 real ≈ post width)
     ax.add_patch(Rectangle((cx - pw2, cz - ph2), 2*pw2, 2*ph2, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.6, zorder=5))   # the plate
     ax.add_patch(Rectangle((cx - 65, cz - ph2 - 26), 130, 2 * ph2 + 52, fc="none", ec=C_DIM, lw=1.1, ls=(0, (5, 3)), zorder=6))  # GHOST of the post behind (50.8 sq column, hidden-line dashed)
     leader(ax, cx + 65, cz + ph2 + 6, cx + 150, cz + ph2 + 18, "post behind\n(50.8 sq)", fs=5.0, font=FONT, ha="left")
     ax.add_patch(Rectangle((cx - 65, cz - 32), 130, 64, fc=C_OUT, ec=C_OUT, alpha=0.12, ls=(0, (4, 2)), lw=1.2, zorder=6))  # arm weld footprint (SHADOW)
     ax.text(cx, cz, "arm weld footprint\n50.8 × 25.4\n(END-plate only)", fontsize=5.2, ha="center", va="center", color=C_DIM, **FONT, zorder=8)
-    for bx in (cx - 39, cx + 39):                                                          # 4 bolt holes, 30 (Yd) × 90 (Z) pitch
-        for bz in (cz - 116, cz + 116):
-            ax.add_patch(Circle((bx, bz), 8, fc=BG, ec=C_OUT, lw=1.3, zorder=7))
-            ax.plot([bx - 13, bx + 13], [bz, bz], color=C_OUT, lw=0.6, zorder=7)
-            ax.plot([bx, bx], [bz - 13, bz + 13], color=C_OUT, lw=0.6, zorder=7)
-    draw_dim_h(ax, cx - pw2, cx + pw2, cz - ph2 - 22, "70", fs=5.8, font=FONT, above=False)         # plate width
+    for bz in (cz - 116, cz + 116):                                                        # 2 bolt holes — CENTRAL column (Yd 0), 90 (Z) couple
+        ax.add_patch(Circle((cx, bz), 8, fc=BG, ec=C_OUT, lw=1.3, zorder=7))
+        ax.plot([cx - 13, cx + 13], [bz, bz], color=C_OUT, lw=0.6, zorder=7)
+        ax.plot([cx, cx], [bz - 13, bz + 13], color=C_OUT, lw=0.6, zorder=7)
+    draw_dim_h(ax, cx - pw2, cx + pw2, cz - ph2 - 22, "55", fs=5.8, font=FONT, above=False)         # plate width (≈ post/arm)
     draw_dim_v(ax, cx - pw2 - 22, cz - ph2, cz + ph2, "130", fs=5.8, font=FONT)                     # plate height
-    draw_dim_h(ax, cx - 39, cx + 39, cz + ph2 + 16, "30", fs=5.6, font=FONT, above=True)            # bolt H pitch
-    draw_dim_v(ax, cx + pw2 + 22, cz - 116, cz + 116, "90", fs=5.8, font=FONT)                      # bolt V pitch
+    draw_dim_v(ax, cx + pw2 + 22, cz - 116, cz + 116, "90", fs=5.8, font=FONT)                      # bolt V pitch (the moment couple)
     ax.text(cx, cz - ph2 - 46, "shaded = arm weld footprint (END-plate only)",
             fontsize=5.2, ha="center", color=C_DIM, **FONT)
 
@@ -1377,8 +1372,8 @@ def sheet5():
         "• HOLD-DOWN: 1× #14 TEK screw per lap (×4),",
         "  from the UNDERSIDE through the beam into",
         "  the solid arm (locks the beam to the seat).",
-        "• J6: end-plate WELDED to arm → 4× M12 → REAR",
-        "  backing plate (Sheet 4, Detail F).",
+        "• J6: end-plate WELDED to arm → 2× M12 (central",
+        "  column) → REAR backing plate (Sheet 4, Det F).",
         "• Arm underside Z90; top Z115 (grate).",
     ], 958, 452, spacing=24, fs=5.9, font=FONT, width=384)
 

@@ -24,6 +24,23 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **IBC frame drawings — 6 review fixes (Alvin).** (1) **Sheet 1** now draws each retaining bar's two
+  connections that were missing: the J2 L-cleat + 2 bolts at the corridor (upright) end and the J3/J7 bolts
+  at the wall-end hangers. (2) **Sheet 6 weld map** is symmetric near↔far and now ticks EVERY weld instance
+  (both uprights × both rings, both feet, all cleats, both rings) with one labelled count per type — was a
+  confusing asymmetric set of representative ticks. (3) **Sheet 5** reach now shows that the 325 INCLUDES the
+  8 mm end-plate: the "25" stub splits into 17 arm-steel + 8 end-plate (both VIEW A + PLAN), plate drawn to
+  scale. (4) **Sheet 2** cantilever J6 bolts were on the wrong plane (2 dots into the page); redrawn as the
+  bearing-type detail — 2× M12 running horizontally THROUGH the post ABOVE the arm via an end-plate (front) +
+  rear backing plate, matching Sheet 5 — and the **plywood mounting tabs** (rear-panel brackets, J8/J4) are
+  now shown on the back upright. Round-2 refinements: Sheet 1 bolts now drawn in TRUE orientation (J2/J7
+  vertical bolt symbols down through the bar, J3 horizontal through the wall — not ambiguous dots); Sheet 6
+  redrawn so the two CORRIDOR uprights sit close together (tied by the rings across the corridor gap) with the
+  retaining bars projecting OUTWARD to the side walls — the earlier "bar spanning between the uprights" read
+  was geometrically wrong; Sheet 5 NOTES moved to a single standard block along the bottom (was a nested
+  double-box in a right-side cell) and the plan-view through-bolt head/nut now butt the plate faces; Sheet 2
+  J6 rear backing plate shortened (bottom raised to Z56) so it clears the base-ring weld.
+
 - **IBC frame fab-detail package (Phase D): member cut list, weld map, plate reconcile.** The IBC support
   frame drawing set is now buildable end-to-end. (1) **§3.7 member cut list** — a single-sourced stick
   schedule (`ibc_frame_cutlist.py` → `<!-- BEGIN cutlist -->`) computed from the model constants: 4 uprights

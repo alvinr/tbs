@@ -438,10 +438,10 @@ relevant sections above; the full set is collected here and in [Engineering Diag
 
 ### IBC Support Frame Fabrication (6 sheets + 2 plate-schedule sheets)
 
-**Sheet 1 — Front elevation: deep-box uprights (front pair, back pair 450mm behind), floor feet, front retaining bars + wall hangers + weld-on lashing rings, direct-stack junction**
+**Sheet 1 — Front elevation: deep-box uprights (front pair, back pair 450mm behind), floor feet, front retaining bars with their J2 corridor-end cleats + 2 bolts and J3/J7 wall-hanger bolts, weld-on lashing rings, direct-stack junction**
 ![TBS-001 IBC Frame — Sheet 1](assets/ibc-frame-sheet1.png)
 
-**Sheet 2 — Side elevation: deep 4-leg box (front + back uprights + top/bottom rings) + front bars (end-on) + walkway cantilever arm**
+**Sheet 2 — Side elevation: deep 4-leg box (front + back uprights + top/bottom rings) + front bars (end-on) + the walkway cantilever arm with its J6 bearing-type connection (2× M12 run through the post ABOVE the arm — end-plate + rear backing plate) + the plywood mounting tabs on the back upright**
 ![TBS-001 IBC Frame — Sheet 2](assets/ibc-frame-sheet2.png)
 
 **Sheet 3 — Plan view: deep 4-leg box (4 legs + ring perimeter) + retaining bars + 4 floor feet + IBC footprints + corridor + walkway arms**
@@ -450,7 +450,7 @@ relevant sections above; the full set is collected here and in [Engineering Diag
 **Sheet 4 — Fabrication details: DETAIL A wall joist hanger (per-bar, 2-bolt, 50mm clearance), B bar→upright cleat, C weld-on lashing ring, D rear-panel bracket, E side-panel pipe-run L-bracket — each with weld (W) + fastener (J) callouts. (The walkway arm→upright J6 connection is drawn in full on Sheet 5, so its former Detail F here was dropped as a duplicate.)**
 ![TBS-001 IBC Frame — Sheet 4](assets/ibc-frame-sheet4.png)
 
-**Sheet 5 — Walkway cantilever arm fabrication (×2, off the IBC front uprights): VIEW A dimensioned side elevation (arm reaching 325 mm from the upright to the tip, half-lapping over both long beams — notch widths + gaps 50.8 / 198.4 / 50.8 / 25, half-lap depth 20 of the 25.4; J6 bolted end-plate), PLAN VIEW (each notch a full-width half-lap, beam width 50.8; the plate→post through-bolts shown at the upright end), and the END-PLATE / rear-backing-plate detail (65 × 148, 2× Ø13 for M12 **both above the arm** at 30 spacing — bearing-type; the corridor bottom frame rail is ghost-marked behind the plate's lower edge with no bolt near it — 5 mm fillet all round, arm weld footprint shadow-marked)**
+**Sheet 5 — Walkway cantilever arm fabrication (×2, off the IBC front uprights): VIEW A dimensioned side elevation (arm reaching 325 mm from the upright to the tip, half-lapping over both long beams — notch widths + gaps 50.8 / 198.4 / 50.8 / 17 arm-steel + 8 end-plate = 325 reach, half-lap depth 20 of the 25.4; J6 bolted end-plate), PLAN VIEW (each notch a full-width half-lap, beam width 50.8; the plate→post through-bolts shown at the upright end), and the END-PLATE / rear-backing-plate detail (65 × 148, 2× Ø13 for M12 **both above the arm** at 30 spacing — bearing-type; the corridor bottom frame rail is ghost-marked behind the plate's lower edge with no bolt near it — 5 mm fillet all round, arm weld footprint shadow-marked)**
 ![TBS-001 IBC Frame — Sheet 5](assets/ibc-frame-sheet5.png)
 
 **Sheet 6 — Weld map: a schematic front elevation with every fillet weld W1–W6 ticked to where it lands on the frame (W1 upright↔ring, W2 foot↔upright, W3 bar-end cleat↔upright, W4 lashing ring↔bar, W5 wall-hanger seat↔back-plate, W6 ribbon cross-beam↔walkway bearer), alongside the full weld schedule (size, all-around vs both-legs, qty, and the governing SF)**

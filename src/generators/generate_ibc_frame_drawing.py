@@ -474,33 +474,40 @@ def sheet1():
                 color=C_OUT, lw=2.0, zorder=8)
 
     # Front retaining bars — TWO per tote face (upper + lower), 4 levels total (EN 12195-1 loaded case)
-    # Each bar covers its column and ends at the upright's OUTSIDE (column-facing) edge — NEAR_COL_R / FAR_COL_L —
-    # NOT the corridor-facing inside edge; the cleat is welded to that outside face.
+    # Each bar covers its column, ends (cleated) at the upright's OUTSIDE (column-facing) edge — NEAR_COL_R /
+    # FAR_COL_L — and its wall end BUTTS the hanger pocket just inboard of the container wall (HANGER_D).
+    HANGER_D, WALL_T, BPT = 55, 14, 8                  # pocket depth / container-wall thickness (exaggerated) / backing-plate thickness
     for bz in (500, 950, 1500, 1950):
-        for y0, y1 in ((0, NEAR_COL_R), (FAR_COL_L, C_WID)):
+        for y0, y1 in ((HANGER_D, NEAR_COL_R), (FAR_COL_L, C_WID - HANGER_D)):
             _rhs_rect(ax, y0, bz, y1 - y0, FRAME_RHS,
                       fc=C_STEEL, alpha=0.55, lw=1.0, zo=9)
-    # wall joist hangers — one identical 2-bolt hanger per bar (8 total, fab-identical)
+    # Wall hangers — the bar's wall end drops into a pocket at the INSIDE of the container wall; the pocket is
+    # clamped to the wall by an INSIDE plate + an OUTSIDE backing plate with 2× M12 (J3) through-bolts STACKED
+    # vertically (one below the seat, one above the bar) running horizontally through the wall, plus a vertical
+    # M12 (J7) retaining the bar in the pocket.  (Matches the 3D + Sheet 4 Detail A.)
+    def _wall_hanger(wall_yd, din, bz):
+        wo = wall_yd - din * WALL_T                    # wall OUTER face
+        bpo = wo - din * BPT                           # backing-plate OUTER face
+        pin = wall_yd + din * HANGER_D                 # pocket INNER face (bar butts here)
+        def _seg(a, b, z0, h, **kw):
+            ax.add_patch(Rectangle((min(a, b), z0), abs(b - a), h, **kw))
+        _seg(wall_yd, wo, bz - 62, FRAME_RHS + 124, fc=C_CAGE, ec=C_OUT, lw=0.8, alpha=0.5, zorder=7)   # container wall
+        _seg(wo, bpo, bz - 60, FRAME_RHS + 120, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8)                 # OUTSIDE backing plate
+        _seg(wall_yd, pin, bz - 12, FRAME_RHS + 24, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=8)             # inside hanger pocket
+        for zz in (bz - 22, bz + FRAME_RHS + 22):      # 2× J3 through-bolts — horizontal, STACKED, head OUTSIDE
+            _seg(bpo, wall_yd + din * 28, zz - 4.5, 9, fc=C_SHANK, ec=C_OUT, lw=0.7, zorder=12)         # shank (through backing plate + wall + pocket)
+            _seg(bpo, bpo - din * 6, zz - 7.5, 15, fc=C_BOLT, ec=C_OUT, lw=0.7, zorder=13)              # hex head (outside)
+        _bolt(ax, wall_yd + din * 28, bz - 8, FRAME_RHS + 8, vert=True, d=8, nut=True)                  # J7 vertical bar-retention bolt
     for bz in (500, 950, 1500, 1950):
-        for wyd, din in ((0, 1), (C_WID, -1)):
-            _rhs_rect(ax, min(wyd, wyd + din * 60), bz - 8, 60, FRAME_RHS + 16,
-                      fc=C_STEEL, lw=1.0, zo=10)
+        _wall_hanger(0, +1, bz)
+        _wall_hanger(C_WID, -1, bz)
     for ydh in (520, 940, 1422, C_WID - 520):    # D-ring lashing holders (4 per tier, 8 total)
         for bz in (500, 1500):
             ax.add_patch(Circle(((ydh), (bz + FRAME_RHS / 2)), (15),
                                 fc="none", ec=C_STEEL, lw=2.0, zorder=11))
 
-    # ── Each bar's TWO connections: a J2 L-cleat + 2 VERTICAL bolts at the corridor (upright) end,
-    #    and the wall hanger's J3 HORIZONTAL through-bolts + J7 vertical retention bolt at the wall end.
-    #    Bolt symbols are drawn in their true orientation: J2/J7 down through the bar (vertical, Z);
-    #    J3 sideways through the wall (horizontal, Yd).  (Details on Sheet 4 Det B + the Plate Schedule.)
-    def _hbolt(x_wall, z, into_dir, *, L=52, d=9):
-        """A horizontal through-bolt at a side wall — head OUTSIDE the wall, shank runs into the corridor."""
-        hl, hh = d * 0.7, d * 1.7
-        x0 = x_wall if into_dir > 0 else x_wall - L
-        ax.add_patch(Rectangle((x0, z - d / 2), L, d, fc=C_SHANK, ec=C_OUT, lw=0.7, zorder=12))
-        hx = (x_wall - hl) if into_dir > 0 else x_wall
-        ax.add_patch(Rectangle((hx, z - hh / 2), hl, hh, fc=C_BOLT, ec=C_OUT, lw=0.7, zorder=13))
+    # ── Each bar's CORRIDOR-END connection: a J2 cleat welded to the upright's outside face (W3) + 2 vertical
+    #    bolts down through the bar into the cleat leg.  (The wall end is drawn above; details on Sheet 4.)
     for bz in (500, 950, 1500, 1950):
         bmid = bz + FRAME_RHS / 2
         # corridor ends — cleat on the upright's OUTSIDE edge: near at NEAR_COL_R (leg runs −Yd toward the wall),
@@ -513,11 +520,6 @@ def sheet1():
             _weld_tick(ax, post_face, bmid, side=('left' if din < 0 else 'right'), size=10)   # W3 weld
             for off in (25, 65):
                 _bolt(ax, post_face + din * off, bz - 11, FRAME_RHS + 11, vert=True, d=10, nut=True)  # 2× J2 VERTICAL bolts — down through the bar into the cleat leg
-        # wall ends — 2× J3 HORIZONTAL through-bolts (one below the seat, one above the bar) + the J7 vertical retention bolt
-        for wall_yd, into_dir in ((0, +1), (C_WID, -1)):
-            for zz in (bz - 12, bz + FRAME_RHS + 12):
-                _hbolt(wall_yd, zz, into_dir)                                       # J3 through-bolt (head OUTSIDE, into the exterior backing plate)
-            _bolt(ax, wall_yd + into_dir * 30, bz - 8, FRAME_RHS + 8, vert=True, d=8, nut=True)  # J7 vertical bar-retention bolt
 
     # ── Weld symbols at key joints ──────────────────────────────────────────
     # Platform to upright joints
@@ -1302,9 +1304,8 @@ def sheet5():
         ax.add_patch(Rectangle((n0, hlz), n1 - n0, (az + ah/2) - hlz, lw=1.2, zorder=7, **_hatch))
         ax.plot([n0, n1], [hlz, hlz], color=C_OUT, lw=1.0, zorder=8)                       # half-lap line
         xc = (n0 + n1) / 2                                                                 # #14 TEK hold-down at EACH lap (tip + post) — from the underside up into the walkway beam
-        ax.plot([xc, xc], [az - ah/2 - 12, az + ah/2 - 4], color=C_OUT, lw=1.5, zorder=9)  # TEK shank (through the arm, into the beam)
-        ax.add_patch(Circle((xc, az - ah/2 - 12), 4.5, fc=C_BOLT, ec=C_OUT, lw=0.7, zorder=10))  # TEK head (underside)
-    leader(ax, (XIN0 + XIN1) / 2, az - ah/2 - 12, XT + 20, az - ah/2 - 78,
+        _bolt(ax, xc, az - ah/2, ah + 6, vert=True, d=5, nut=False)                        # standard bolt/screw convention (hex head + shank), driven from the underside
+    leader(ax, (XIN0 + XIN1) / 2, az - ah/2 - 10, XT + 20, az - ah/2 - 78,
            "#14 TEK hold-down\n(×4 — 1 per lap; see detail)", fs=5.3, font=FONT, ha="left")
     ax.text((XIN1 + XOUT0)/2, az, "2×1 SOLID STEEL BAR", fontsize=7.5, ha="center", va="center", **FONT, zorder=8)
     leader(ax, (XIN0+XIN1)/2, az + ah/2, (XIN0+XIN1)/2 + 55, az + 84, "inner long beam\n(at the arm tip)", fs=6, font=FONT, ha="left")

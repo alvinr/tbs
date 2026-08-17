@@ -24,6 +24,21 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Fix — J6 walkway-arm connection read as one gray blob in the 3D model.** The end-plate was drawn
+  *inside* the arm's last segment (both X4646–4654, same steel material), so it was buried and lost its
+  edges, and the 4 M12 bolts were `C_STEEL` (invisible against the plates). Now the arm ends **short** so the
+  end-plate sits in its own 8 mm space between the arm and the upright, and the bolts (+ the 4 hold-down TEK
+  screws) use the **dark bolt color** and protrude past the backing plate — visible like the foot anchors.
+  Also added a **ghost of the post** (50.8 sq, dashed hidden-line) to the Sheet 5 end-plate detail so the
+  bolt pattern reads against the column behind it.
+
+- **Fix — IBC frame uprights sat *through* their foot plates in the 3D model.** `frame()` drew both the
+  uprights and the 150×150×12 foot plates from Z0, so each upright's bottom 12 mm was buried in its plate.
+  The uprights now **sit on the plates** (bottom at the plate thickness, `ft`), with the bottom ring lifted
+  onto the plate and the top held at `TOP_Z` — so the frame height, tote stack, and ceiling clearance are
+  unchanged (no shift to any panel/rail/bracket Z). The 2D blueprint was already correct (it draws the plate
+  below the leg). Re-sent to overview / ibc-stack / water / construction.
+
 - **Half-lap hold-down — #14 TEK screw per lap (Sheet 5 detail + model + parts).** The long beams sat on the
   arm's bearing seat by gravity only; added a positive fastener so they're secured. One **#14 self-drilling TEK
   screw per half-lap** (4 total: 2 arms × 2 crossings), driven **from the underside** through a Ø7 clearance

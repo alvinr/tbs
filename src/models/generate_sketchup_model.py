@@ -772,18 +772,19 @@ def ibc_cantilever_arms(x_to=None):
     `x_to` is how far the arm reaches inward (default RWK_X_L — the inner long beam)."""
     x_to = RWK_X_L if x_to is None else x_to
     ac_z, ep_t, ep_w, ep_h = (RWK_ARM_BOT + RWK_ARM_TOP) / 2.0, 8, 66, 130   # arm mid-Z / end-plate thickness, width(Yd), height(Z)
+    c_bolt = "#3A3A42"                                                       # dark — bolts/screws must read distinct from the steel (as the foot anchors do)
     parts = []
     for yd in RWK_UP_YDS:
-        parts += _rwk_xbeam(f"RWk center cantilever Yd{yd}", yd, x_to, RWK_X_UP)
+        parts += _rwk_xbeam(f"RWk center cantilever Yd{yd}", yd, x_to, RWK_X_UP - ep_t)   # arm ends SHORT so the end-plate isn't buried in it
         ac_y = yd + RWK_ARM_W / 2.0
-        parts.append(ruby_box(f"RWk J6 end-plate Yd{yd}", RWK_X_UP - ep_t, ac_y - ep_w/2, ac_z - ep_h/2, ep_t, ep_w, ep_h, color=C_STEEL))       # welded to arm end
+        parts.append(ruby_box(f"RWk J6 end-plate Yd{yd}", RWK_X_UP - ep_t, ac_y - ep_w/2, ac_z - ep_h/2, ep_t, ep_w, ep_h, color=C_STEEL))       # welded to arm end (between arm + upright)
         parts.append(ruby_box(f"RWk J6 backing plate Yd{yd}", RWK_X_UP + IBC_FRAME_RHS, ac_y - ep_w/2, ac_z - ep_h/2, ep_t, ep_w, ep_h, color=C_STEEL))  # rear backing plate
         for dy in (-15, 15):
             for dz in (-45, 45):
-                parts.append(ruby_cylinder(f"RWk J6 bolt M12 Yd{yd}", RWK_X_UP - ep_t, ac_y + dy, ac_z + dz, 6, IBC_FRAME_RHS + 2*ep_t, color=C_STEEL, axis="x"))
+                parts.append(ruby_cylinder(f"RWk J6 bolt M12 Yd{yd}", RWK_X_UP - ep_t, ac_y + dy, ac_z + dz, 6, IBC_FRAME_RHS + 2*ep_t + 8, color=c_bolt, axis="x"))  # protrudes past the backing plate (visible nut)
         # half-lap HOLD-DOWN: 1 #14 TEK screw per crossing (from the underside, through the beam into the arm)
         for bx in sorted(b for b in RWK_BEARER_XS if x_to - 1 < b < RWK_X_UP):
-            parts.append(ruby_cylinder(f"RWk half-lap TEK screw Yd{yd} X{int(bx)}", bx + RWK_BEARER_W / 2.0, ac_y, RWK_ARM_BOT - 5, 3, RWK_AH + 5, color=C_STEEL, axis="z"))
+            parts.append(ruby_cylinder(f"RWk half-lap TEK screw Yd{yd} X{int(bx)}", bx + RWK_BEARER_W / 2.0, ac_y, RWK_ARM_BOT - 5, 3, RWK_AH + 5, color=c_bolt, axis="z"))
     return parts
 
 

@@ -474,8 +474,10 @@ def sheet1():
                 color=C_OUT, lw=2.0, zorder=8)
 
     # Front retaining bars — TWO per tote face (upper + lower), 4 levels total (EN 12195-1 loaded case)
+    # Each bar covers its column and ends at the upright's OUTSIDE (column-facing) edge — NEAR_COL_R / FAR_COL_L —
+    # NOT the corridor-facing inside edge; the cleat is welded to that outside face.
     for bz in (500, 950, 1500, 1950):
-        for y0, y1 in ((0, NEAR_COL_R + FRAME_RHS), (FAR_COL_L - FRAME_RHS, C_WID)):
+        for y0, y1 in ((0, NEAR_COL_R), (FAR_COL_L, C_WID)):
             _rhs_rect(ax, y0, bz, y1 - y0, FRAME_RHS,
                       fc=C_STEEL, alpha=0.55, lw=1.0, zo=9)
     # wall joist hangers — one identical 2-bolt hanger per bar (8 total, fab-identical)
@@ -501,8 +503,9 @@ def sheet1():
         ax.add_patch(Rectangle((hx, z - hh / 2), hl, hh, fc=C_BOLT, ec=C_OUT, lw=0.7, zorder=13))
     for bz in (500, 950, 1500, 1950):
         bmid = bz + FRAME_RHS / 2
-        # corridor ends — near bar ends at NEAR_COL_R+RHS (leg runs −Yd), far bar at FAR_COL_L−RHS (leg runs +Yd)
-        for post_face, din in ((NEAR_COL_R + FRAME_RHS, -1), (FAR_COL_L - FRAME_RHS, +1)):
+        # corridor ends — cleat on the upright's OUTSIDE edge: near at NEAR_COL_R (leg runs −Yd toward the wall),
+        # far at FAR_COL_L (leg runs +Yd toward the wall)
+        for post_face, din in ((NEAR_COL_R, -1), (FAR_COL_L, +1)):
             ax.add_patch(Rectangle((min(post_face, post_face + din * 8), bz - 10), 8, FRAME_RHS + 20,
                                    fc=C_FRAME, ec=C_OUT, lw=0.9, zorder=8))          # cleat upstand (welded to the upright — W3)
             ax.add_patch(Rectangle((min(post_face, post_face + din * 90), bz - 11), 90, 11,
@@ -600,13 +603,13 @@ def sheet1():
            color=C_OUT, fs=5.5, ha="left", va="top",
            arrow_style="-|>", font=FONT)
 
-    leader(ax, (NEAR_COL_R + FRAME_RHS), (1760 + FRAME_RHS / 2),
+    leader(ax, (NEAR_COL_R - 60), (1760 + FRAME_RHS / 2),
            (NEAR_COL_R - 70), (1900),
            "FRONT RETAINING BARS (×8, 2/tier)\n50×20×3 RHS at IBC front\n(25mm gap), Z500/950 + Z1500/1950 — slide-stop\n+ weld-on ring lash points",
            color=C_OUT, fs=5.5, ha="left", va="bottom",
            arrow_style="-|>", font=FONT)
 
-    leader(ax, (NEAR_COL_R + FRAME_RHS - 45), (1500 + FRAME_RHS / 2),
+    leader(ax, (NEAR_COL_R - 40), (1500 + FRAME_RHS / 2),
            (NEAR_COL_R - 60), (1330),
            "J2 CORRIDOR-END CLEAT (×8)\nL-cleat welded to the upright (W3);\nbar bolts down 2× M12×65 (J2)\n— see Sheet 4 Det B / Plate 4",
            color=C_OUT, fs=5.5, ha="left", va="top",
@@ -1298,6 +1301,11 @@ def sheet5():
         ax.add_patch(Rectangle((n0, hlz), n1 - n0, (az + ah/2) - hlz, fc=BG, ec="none", zorder=6))
         ax.add_patch(Rectangle((n0, hlz), n1 - n0, (az + ah/2) - hlz, lw=1.2, zorder=7, **_hatch))
         ax.plot([n0, n1], [hlz, hlz], color=C_OUT, lw=1.0, zorder=8)                       # half-lap line
+        xc = (n0 + n1) / 2                                                                 # #14 TEK hold-down at EACH lap (tip + post) — from the underside up into the walkway beam
+        ax.plot([xc, xc], [az - ah/2 - 12, az + ah/2 - 4], color=C_OUT, lw=1.5, zorder=9)  # TEK shank (through the arm, into the beam)
+        ax.add_patch(Circle((xc, az - ah/2 - 12), 4.5, fc=C_BOLT, ec=C_OUT, lw=0.7, zorder=10))  # TEK head (underside)
+    leader(ax, (XIN0 + XIN1) / 2, az - ah/2 - 12, XT + 20, az - ah/2 - 78,
+           "#14 TEK hold-down\n(×4 — 1 per lap; see detail)", fs=5.3, font=FONT, ha="left")
     ax.text((XIN1 + XOUT0)/2, az, "2×1 SOLID STEEL BAR", fontsize=7.5, ha="center", va="center", **FONT, zorder=8)
     leader(ax, (XIN0+XIN1)/2, az + ah/2, (XIN0+XIN1)/2 + 55, az + 84, "inner long beam\n(at the arm tip)", fs=6, font=FONT, ha="left")
     leader(ax, (XOUT0+XOUT1)/2, az + ah/2, (XOUT0+XOUT1)/2 - 55, az + 84, "outer long beam\n(post end)", fs=6, font=FONT, ha="right")
@@ -1434,56 +1442,77 @@ def sheet6():
     ax.text(680, 872, "WELD MAP — FILLET WELDS W1–W6 (front elevation, schematic — not to scale)",
             fontsize=13, fontweight="bold", ha="center", **FONT)
 
-    # Schematic front bay: the TWO CORRIDOR uprights (near + far, close together, tied by the top/bottom
-    # rings ACROSS the corridor gap), their feet, and the front retaining bars that project OUTWARD from
-    # each upright to the side walls.  The corridor between the uprights carries NO bar — only the rings.
+    # Schematic of the DEEP 4-leg box: the FRONT corridor upright pair (near + far, solid) PLUS the BACK
+    # pair 450mm behind (ghosted, offset up-right) — TWO rings (top + bottom), each a rectangular loop that
+    # ties all 4 legs, so W1 = 4 legs × 2 rings = 8 welds.  The FOUR front retaining bars (2 per tier ×
+    # 2 tiers) project OUTWARD from the front uprights to the side walls; the corridor gap carries no bar.
     upw = 34
-    xL, xR = 560, 780                                  # near / far corridor uprights (the pair, close together)
-    zb, zt = 120, 720                                  # base (foot top) / top
+    xL, xR = 520, 740                                  # near / far FRONT corridor uprights (the pair, close together)
+    zb, zt = 120, 700                                  # base (foot top) / top
     xLi, xRi = xL + upw / 2, xR - upw / 2              # inner (corridor-facing) faces
-    wallL, wallR = 120, 1220                           # schematic side-wall positions the bars reach
+    wallL, wallR = 120, 1240                           # schematic side-wall positions the bars reach
+    bxo, bzo = 46, 54                                  # back-bay ghost offset (isometric hint)
     for wx in (wallL, wallR):                          # side walls (context)
-        ax.add_patch(Rectangle((wx - 4, 250), 8, 300, fc=C_CAGE, ec=C_OUT, lw=0.8, alpha=0.4, zorder=2))
+        ax.add_patch(Rectangle((wx - 4, 230), 8, 320, fc=C_CAGE, ec=C_OUT, lw=0.8, alpha=0.4, zorder=2))
+    # BACK bay (ghost, dashed): the 450mm-behind upright pair + its top/bottom rings + feet — this is WHY
+    # there are 2 rings and 8 ring-welds (the front bay shows only 4 of them).
+    _gh = dict(fc="none", ec=C_DIM, lw=0.9, ls=(0, (4, 3)), zorder=2)
+    for ux in (xL, xR):
+        ax.add_patch(Rectangle((ux - upw / 2 + bxo, zb + bzo), upw, zt - zb, **_gh))                    # back upright
+        ax.add_patch(Rectangle((ux - 44 + bxo, zb - 22 + bzo), 88, 18, **_gh))                          # back foot
+        ax.plot([ux, ux + bxo], [zt, zt + bzo], color=C_DIM, lw=0.6, ls=(0, (3, 3)), zorder=2)          # front→back depth edge
+    for rz in (zb, zt - upw):
+        ax.add_patch(Rectangle((xLi + bxo, rz + bzo), xRi - xLi, upw, **_gh))                           # back ring
+    # FRONT bay: uprights + feet + the two rings (solid)
     for ux in (xL, xR):
         _rhs_rect(ax, ux - upw / 2, zb, upw, zt - zb, fc=C_FRAME, zo=5)          # upright
         ax.add_patch(Rectangle((ux - 55, zb - 22), 110, 22, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=6))  # foot plate
-    for rz in (zb, zt - upw):                          # bottom + top rings tie the two uprights across the corridor
+    for rz in (zb, zt - upw):                          # bottom + top rings tie the near+far uprights across the corridor
         ax.add_patch(Rectangle((xLi, rz), xRi - xLi, upw, fc=C_FRAME, ec=C_OUT, lw=1.4, zorder=4))
-    # retaining bars: NEAR bar wall→near upright (projects LEFT), FAR bar far upright→wall (projects RIGHT) —
-    # each ends (cleated) at its upright's inner face; the corridor gap between the uprights has no bar.
-    for bz in (300, 470):
-        ax.add_patch(Rectangle((wallL, bz), xLi - wallL, 26, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))   # NEAR bar
-        ax.add_patch(Rectangle((xRi, bz), wallR - xRi, 26, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))     # FAR bar
-        ax.add_patch(Rectangle((xLi - 26, bz - 12), 26, 12, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=7))    # near cleat leg (under the bar)
-        ax.add_patch(Rectangle((xRi, bz - 12), 26, 12, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=7))         # far cleat leg
-    for rx in (230, 1110):                             # lashing ring on the lower bar (one per bar)
-        ax.add_patch(Circle((rx, 300 - 6), 16, fc="none", ec=C_OUT, lw=2.0, zorder=8))
+    # FOUR retaining bars (2 per tier × 2 tiers): each covers its column and ends (cleated) at the upright's
+    # OUTSIDE (column-facing) edge — near = xLo, far = xRo — extending outward to the wall; corridor carries no bar.
+    xLo, xRo = xL - upw / 2, xR + upw / 2               # upright OUTSIDE (column-facing) edges
+    bar_zs = (210, 320, 480, 590)                      # lower tier (210,320) + upper tier (480,590)
+    for bz in bar_zs:
+        ax.add_patch(Rectangle((wallL, bz), xLo - wallL, 24, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))   # NEAR bar
+        ax.add_patch(Rectangle((xRo, bz), wallR - xRo, 24, fc=C_STEEL, ec=C_OUT, lw=1.2, zorder=6))     # FAR bar
+        ax.add_patch(Rectangle((xLo - 24, bz - 11), 24, 11, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=7))    # near cleat leg (outside edge)
+        ax.add_patch(Rectangle((xRo, bz - 11), 24, 11, fc=C_STEEL, ec=C_OUT, lw=1.0, zorder=7))         # far cleat leg (outside edge)
+    for bz in (210, 480):                              # lashing rings on the LOWER bar of each tier (near + far)
+        for rx in (300, 1000):
+            ax.add_patch(Circle((rx, bz + 12), 14, fc="none", ec=C_OUT, lw=1.8, zorder=8))
     ax.text((xLi + xRi) / 2, zb + (zt - zb) / 2, "CORRIDOR\n(rings tie\nthe uprights)", fontsize=5.0, ha="center", va="center", color=C_DIM, **FONT)
-    ax.text(xL, zt + 24, "NEAR\nUPRIGHT", fontsize=5.5, ha="center", va="bottom", color=C_DIM, **FONT)
-    ax.text(xR, zt + 24, "FAR\nUPRIGHT", fontsize=5.5, ha="center", va="bottom", color=C_DIM, **FONT)
-    ax.text((wallL + xLi) / 2, 470 + 42, "NEAR RETAINING BAR", fontsize=5.0, ha="center", color=C_DIM, **FONT)
-    ax.text((xRi + wallR) / 2, 470 + 42, "FAR RETAINING BAR", fontsize=5.0, ha="center", color=C_DIM, **FONT)
+    ax.text(xL, zt + 22, "NEAR\nUPRIGHT", fontsize=5.3, ha="center", va="bottom", color=C_DIM, **FONT)
+    ax.text(xR, zt + 22, "FAR\nUPRIGHT", fontsize=5.3, ha="center", va="bottom", color=C_DIM, **FONT)
+    ax.text(xR + bxo + 60, zt + bzo, "BACK PAIR\n(450 behind,\nghosted)", fontsize=4.8, ha="left", va="center", color=C_DIM, **FONT)
+    ax.text((wallL + xLo) / 2, 590 + 40, "NEAR RETAINING BARS (×2/tier)", fontsize=5.0, ha="center", color=C_DIM, **FONT)
+    ax.text((xRo + wallR) / 2, 590 + 40, "FAR RETAINING BARS (×2/tier)", fontsize=5.0, ha="center", color=C_DIM, **FONT)
 
-    # EVERY weld instance is ticked (symmetric near↔far); each type is labelled ONCE with its total count.
-    # W1 — upright↔ring: BOTH uprights × BOTH rings = 4 inner corners (×8 with the back bay)
+    # EVERY weld instance is ticked; each type is labelled ONCE with its total count.
+    # W1 — upright↔ring: 4 FRONT legs-corners + 4 BACK (ghost) = 8 (2 rings × 4 legs)
     for ry in (zt - upw / 2, zb + upw / 2):
         _weld_tick(ax, xLi, ry, side='right', size=7)
         _weld_tick(ax, xRi, ry, side='left', size=7)
-    # W2 — foot↔upright base: BOTH feet
-    _weld_tick(ax, xL - upw / 2, zb, side='left', size=7)
-    _weld_tick(ax, xR + upw / 2, zb, side='right', size=7)
-    # W3 — bar-end cleat↔upright: ALL cleats (2 bars × 2 ends shown; 8 total on the frame)
-    for bz in (300, 470):
-        _weld_tick(ax, xLi, bz + 6, side='left', size=6)
-        _weld_tick(ax, xRi, bz + 6, side='right', size=6)
-    # W4 — lashing ring↔bar: BOTH rings
-    for rx in (230, 1110):
-        _weld_tick(ax, rx, 300 - 6, side='up', size=6)
-    # one leader per weld TYPE (all instances above are ticked; the leader names the type + count)
-    leader(ax, xLi, zt - upw / 2, xL - 150, zt + 30, "W1 (typ. — ×8)", fs=7, font=FONT, ha="right")
-    leader(ax, xL - upw / 2, zb, xL - 150, zb - 60, "W2 (×4 feet)", fs=7, font=FONT, ha="right")
-    leader(ax, xRi, 306, xRi + 150, 240, "W3 (×8 cleats)", fs=7, font=FONT, ha="left")
-    leader(ax, 230, 300 - 6, 150, 190, "W4 (×8 rings)", fs=7, font=FONT, ha="right")
+        _weld_tick(ax, xLi + bxo, ry + bzo, side='right', size=5)                # back ring (ghost)
+        _weld_tick(ax, xRi + bxo, ry + bzo, side='left', size=5)
+    # W2 — foot↔upright base: 2 front feet + 2 back (ghost) = 4
+    _weld_tick(ax, xLo, zb, side='left', size=7)
+    _weld_tick(ax, xRo, zb, side='right', size=7)
+    _weld_tick(ax, xLo + bxo, zb + bzo, side='left', size=5)
+    _weld_tick(ax, xRo + bxo, zb + bzo, side='right', size=5)
+    # W3 — bar-end cleat↔upright (OUTSIDE edge): ALL 8 cleats (4 bars × 2 ends)
+    for bz in bar_zs:
+        _weld_tick(ax, xLo, bz + 5, side='left', size=5)
+        _weld_tick(ax, xRo, bz + 5, side='right', size=5)
+    # W4 — lashing ring↔bar
+    for bz in (210, 480):
+        for rx in (300, 1000):
+            _weld_tick(ax, rx, bz + 12, side='up', size=5)
+    # one leader per weld TYPE
+    leader(ax, xLi, zt - upw / 2, xL - 150, zt + 26, "W1 (×8 = 4 legs × 2 rings)", fs=6.6, font=FONT, ha="right")
+    leader(ax, xLo, zb, xLo - 130, zb - 60, "W2 (×4 feet)", fs=6.6, font=FONT, ha="right")
+    leader(ax, xRo, 485, xRo + 130, 430, "W3 (×8 cleats)", fs=6.6, font=FONT, ha="left")
+    leader(ax, 300, 210 + 12, 200, 120, "W4 (×8 rings)", fs=6.6, font=FONT, ha="right")
     ax.text(670, -18, "W5 — wall-hanger seat↔back-plate (off-frame; see Plate Schedule, Plate 3)   ·   "
             "W6 — ribbon cross-beam↔walkway bearer (plumbing-corridor ribbon, not the tote frame)",
             fontsize=5.2, ha="center", color=C_DIM, **FONT)

@@ -13,6 +13,16 @@ historical. Detailed sub-trackers are linked where the detail is extensive.
 
 ## 🛠 Tooling / infra
 
+- [ ] **`--solids` larger sanctioning pass (model-wide, beyond the named categories).** The
+  `check_interference.py --solids` sanctioned list currently covers only the categories triaged in the
+  walkway/IBC/light-trap/fan/tray work (one-piece formed parts, compression seals, bearing fits, liquid
+  contents, seated connections). Run model-wide it still surfaces **~164 OPEN in the film-plane corner
+  gimbal alone** (U-rail↔depth-rail, cross-slides, gibs, UHMW pads, trolley/U-joint) plus a few other
+  mechanisms — mostly intentional one-piece/bolted/bearing overlaps that just aren't classified yet. To
+  make `--solids` report globally clean: walk each mechanism, butt/notch the genuine fused-seam defects,
+  and extend `_SANCTIONED_SOLID` with the rest (each with a reason). Larger effort; do per-mechanism.
+  (Scoped out of the 2026-08-16 named-category pass.)
+
 - [ ] **J6 walkway-arm ↔ corridor bottom frame-rail interference (REAL clash, not readability).** The J6
   backing plate (Z37–167) and its **lower M12 bolt (Z≈57)** intersect the corridor frame's **bottom X-rail**
   (Z12–62, starts at `FRONT_X+S`=4704) at the shared corner behind the front upright — the bolt passes

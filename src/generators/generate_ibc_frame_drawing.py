@@ -638,7 +638,7 @@ def sheet1():
     _datum_tol_block(ax, (-260), (TOP_Z - 340))
 
     # ── Title block ─────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 1 OF 5",
+    title_block(ax, "SHEET 1 OF 6",
                 drawing_title="IBC SUPPORT FRAME",
                 subtitle="FRONT ELEVATION — FRAME ASSEMBLY",
                 scale_note="Axes in mm — VIEW ALONG X",
@@ -797,7 +797,7 @@ def sheet2():
                fs=6.5, font=FONT, width=(950))
 
     # ── Title block ─────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 2 OF 5",
+    title_block(ax, "SHEET 2 OF 6",
                 drawing_title="IBC SUPPORT FRAME",
                 subtitle="SIDE ELEVATION — DEEP 4-LEG BOX (RESTRAINT)",
                 scale_note="Axes in mm — VIEW ALONG Yd",
@@ -1051,7 +1051,7 @@ def sheet3():
                fs=7, font=FONT, width=(950))
 
     # ── Title block ─────────────────────────────────────────────────────────
-    title_block(ax, "SHEET 3 OF 5",
+    title_block(ax, "SHEET 3 OF 6",
                 drawing_title="IBC SUPPORT FRAME",
                 subtitle="PLAN VIEW — DEEP 4-LEG BOX + RETAINING BARS",
                 scale_note="Axes in mm — VIEW LOOKING DOWN",
@@ -1206,7 +1206,7 @@ def sheet4():
         "• Where used: A/B 8 retaining-bar ends · C lash rings · D 6 rear-panel brackets · E 12 side-panel pipe-run brackets · walkway-arm J6 (4× M12) → Sheet 5.",
     ], 44, -52, spacing=40, fs=6.4, font=FONT, width=1300)
 
-    title_block(ax, "SHEET 4 OF 5",
+    title_block(ax, "SHEET 4 OF 6",
                 drawing_title="IBC SUPPORT FRAME",
                 subtitle="FABRICATION DETAILS — HANGER / CLEAT / RINGS / BRACKETS",
                 scale_note="Schematic sections — not to scale; dims in mm",
@@ -1375,7 +1375,7 @@ def sheet5():
         "• Arm underside Z90; top Z115 (grate).",
     ], 958, 452, spacing=24, fs=5.9, font=FONT, width=384)
 
-    title_block(ax, "SHEET 5 OF 5",
+    title_block(ax, "SHEET 5 OF 6",
                 drawing_title="IBC SUPPORT FRAME",
                 subtitle="WALKWAY CANTILEVER ARM — FABRICATION",
                 scale_note="Schematic — not to scale; dims in mm", height=0.04)
@@ -1383,6 +1383,63 @@ def sheet5():
                 bbox_inches="tight", facecolor=BG)
     plt.close(fig)
     print("  diagrams/ibc-frame-sheet5.png saved")
+
+
+def sheet6():
+    """Sheet 6 — WELD MAP: where every W1–W6 fillet lands on the frame (front elevation, schematic)."""
+    fig, ax = plt.subplots(figsize=(16.5, 10.5))
+    ax.set_xlim(-20, 1360); ax.set_ylim(-360, 900); ax.set_aspect("equal"); ax.axis("off")
+    ax.text(680, 872, "WELD MAP — FILLET WELDS W1–W6 (front elevation, schematic — not to scale)",
+            fontsize=13, fontweight="bold", ha="center", **FONT)
+
+    # schematic front bay: two uprights + top/bottom rings + feet + two front bars + cleats
+    upw = 34
+    xL, xR = 300, 720                                  # near / far front uprights
+    zb, zt = 120, 720                                  # base (foot top) / top
+    for ux in (xL, xR):
+        _rhs_rect(ax, ux - upw / 2, zb, upw, zt - zb, fc=C_FRAME, zo=5)          # upright
+        ax.add_patch(Rectangle((ux - 55, zb - 22), 110, 22, fc=C_STEEL, ec=C_OUT, lw=1.4, zorder=6))  # foot plate
+    for rz in (zb, zt - upw):                          # bottom + top rings (butt between uprights)
+        ax.add_patch(Rectangle((xL + upw / 2, rz), (xR - upw / 2) - (xL + upw / 2), upw, fc=C_FRAME, ec=C_OUT, lw=1.4, zorder=4))
+    # two front bars (span past the uprights toward the walls) + cleats at the corridor ends
+    for bz in (300, 470):
+        ax.add_patch(Rectangle((150, bz), 940, 26, fc=C_STEEL, ec=C_OUT, lw=1.3, zorder=6))          # bar (both columns, schematic)
+        for ux, s in ((xL, -1), (xR, +1)):
+            ax.add_patch(Rectangle((ux + s * upw / 2, bz - 12), s * 26, 12, fc=C_STEEL, ec=C_OUT, lw=1.1, zorder=7))  # cleat leg under the bar
+    # lashing ring on the lower bar
+    for rx in (230, 1010):
+        ax.add_patch(Circle((rx, 300 - 6), 16, fc="none", ec=C_OUT, lw=2.0, zorder=8))
+    ax.text(xL - 60, zb + (zt - zb) / 2, "NEAR\nUPRIGHT", fontsize=5.5, ha="center", va="center", color=C_DIM, **FONT)
+    ax.text(xR + 60, zb + (zt - zb) / 2, "FAR\nUPRIGHT", fontsize=5.5, ha="center", va="center", color=C_DIM, **FONT)
+
+    def _wtag(x, y, tag, tx, ty, ha="left"):
+        _weld_tick(ax, x, y, size=8)
+        leader(ax, x, y, tx, ty, tag, fs=7, font=FONT, ha=ha)
+    _wtag(xL + upw / 2, zt - upw, "W1", xL - 40, zt + 30, "right")         # upright↔ring (representative; ×8 corners)
+    _wtag(xR - upw / 2, zb, "W1", xR + 40, zb - 44, "left")
+    _wtag(xL, zb, "W2", xL - 70, zb - 70, "right")                        # foot↔upright base
+    _wtag(xL + upw / 2 + 26, 470, "W3", xL - 30, 520, "right")            # cleat↔upright
+    _wtag(230, 300 - 6, "W4", 150, 210, "right")                          # lashing ring↔bar
+    ax.text(1000, 470 + 60, "W5 — wall-hanger seat↔back-plate\n(off-frame weldment; see Plate Schedule, Plate 3)", fontsize=5.6, ha="center", color=C_DIM, **FONT)
+
+    # ── legend ──
+    _dcell(ax, 20, -300, 1340, 250, "WELD SCHEDULE (fillet, E70xx; §3.5)")
+    draw_notes(ax, [
+        "W1 — Upright ↔ top/bottom ring: 5mm fillet, ALL-AROUND (×8 corners; min fillet).",
+        "W2 — Foot plate ↔ upright base: 6mm fillet, ALL-AROUND (×4 feet; min fillet).",
+        "W3 — Bar-end cleat ↔ upright: 4mm fillet, BOTH cleat legs (×8 cleats; SF 37, demand 1.8 kN).",
+        "W4 — Lashing ring ↔ front bar: 6mm fillet, ALL-AROUND the ring base (×8 rings; SF 9.1 vs strap WLL 14.8 kN).",
+        "W5 — Wall-hanger seat ↔ pocket back-plate: 4mm fillet (×8 hangers; the bar is BOLTED to the hanger via J7, not welded).",
+        "W6 — Ribbon cross-beam ↔ walkway bearer: 4mm fillet, both ends (×4 — on the plumbing-corridor ribbon, not the tote frame).",
+        "• Grind zinc back at all weld zones; weld a pre-finished frame only at the TEK-screwed brackets (J8/J9 — no hot work).",
+    ], 44, -70, spacing=32, fs=6.6, font=FONT, width=1300)
+
+    title_block(ax, "SHEET 6 OF 6", drawing_title="IBC SUPPORT FRAME",
+                subtitle="WELD MAP — W1–W6 LOCATIONS + SCHEDULE",
+                scale_note="Schematic — not to scale; weld sizes in mm", height=0.04)
+    fig.savefig(os.path.join(DIAGRAMS_DIR, "ibc-frame-sheet6.png"), dpi=DIAGRAM_DPI, bbox_inches="tight", facecolor=BG)
+    plt.close(fig)
+    print("  diagrams/ibc-frame-sheet6.png saved")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -1396,4 +1453,5 @@ if __name__ == "__main__":
     sheet3()
     sheet4()
     sheet5()
+    sheet6()
     print("Done.")

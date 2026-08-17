@@ -313,6 +313,7 @@ DIAG_FILES=(
     "ibc-frame-sheet3.png"
     "ibc-frame-sheet4.png"
     "ibc-frame-sheet5.png"
+    "ibc-frame-sheet6.png"
     "ibc-frame-load-case.png"
     "ibc-plate-schedule-sheet1.png"
     "ibc-plate-schedule-sheet2.png"

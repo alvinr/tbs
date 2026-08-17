@@ -24,6 +24,18 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **IBC frame fab-detail package (Phase D): member cut list, weld map, plate reconcile.** The IBC support
+  frame drawing set is now buildable end-to-end. (1) **§3.7 member cut list** — a single-sourced stick
+  schedule (`ibc_frame_cutlist.py` → `<!-- BEGIN cutlist -->`) computed from the model constants: 4 uprights
+  ×2284, rings, 8 front bars ×1042, feet/backing/hanger/cleat plates, with stock roll-up (2 sticks 50.8 SHS +
+  2 sticks 50×20 RHS). (2) **Sheet 6 weld map** — a schematic front elevation with every fillet W1–W6 ticked
+  to where it lands, plus the full weld schedule (size / all-around vs both-legs / qty / governing SF). (3)
+  **Plate Schedule PLATE 4 reconciled to the 3D** — the bar-end cleat was a stale 50×50×6 rolled-angle spec;
+  redrawn as the current fabricated 8 mm-plate L (90 leg + 59 upstand, 20 wide, 2× Ø14 for M12×65 @ 40 pitch)
+  to match `tote_restraint`. The redundant draft "Sheet 7 fab details" was dropped — the 1:1 Plate Schedule
+  already owns those parts (no duplication). (4) **J2/J7 SKU firmed** — M12×65 18-8 SS partial-thread, McMaster
+  92800A481, $9.95/pack of 5 (parts + worklist stamped).
+
 - **Every fastener now renders as a real bolt — hex head + hex nut (3D).** New `ruby_bolt` helper (shank +
   hex-prism head/nut, `head`/`nut` = base/far/None) replaces the plain-cylinder + square-block bolt drawing
   across the models. Converted foot anchors, wall through-bolts, cleat/saddle/flange/upright bolts, TEK screws,

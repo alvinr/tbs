@@ -74,6 +74,11 @@ file** — a release must not ship without a changelog entry:
   cut** — one stick covers both arms plus a spare. Replaces the $36–$60 estimate; arm line now **$91 flat**
   across low/mid/high. Cascade: `parts.py` + `costing.py` (+$55/$43/$31 walkway → grand-total $26.8k–$37.9k).
 
+- **Fix — walkway Sheet 6 (floor-leg cantilever): post drawn over the anchor holes.** In both VIEW A
+  (section) and VIEW B (plan) one of the two M10 anchor columns fell under the 50×50 post footprint —
+  unbuildable (can't drive a floor anchor through the post). Both anchor columns now sit **outboard of the
+  post** in each view, using one shared formula (`fx0+14`, `fx0+fl-post-14`) so the section and plan agree.
+
 - **NEW — IBC frame Sheet 5: walkway cantilever-arm fabrication (`ibc-frame-sheet5.png`).** The 2 walkway
   cantilever arms that hang off the IBC front uprights are now drawn as a fabrication sheet in the IBC-frame set
   (keeping all the IBC-frame metal together rather than deferring to a separate walkway blueprint). The arm

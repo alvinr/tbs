@@ -1713,7 +1713,9 @@ def sheet6():
              fontsize=5, color="#208020", fontweight="bold", **FONT)
     # Floor anchors (4x M10 through the foot plate; 2 visible in this section).
     # Labelled in VIEW B + the notes, so no leader here (keeps clear of the notes block).
-    for ax_ in (fx0 + 18, fx0 + fl - 18):
+    # BOTH columns sit OUTBOARD of the post (X115-165) — same as VIEW B (post over the
+    # anchor holes would be unbuildable). Mirror VIEW B's formula: fx0+14 and fx0+fl-post-14.
+    for ax_ in (fx0 + 14, fx0 + fl - post - 14):
         axA.add_patch(Rectangle((ax_ - 3, -14), 6, 14 + ft, fc=C_BOLT, ec=C_OUT, lw=0.7, zorder=7))
     # Load arrow at the arm tip
     axA.annotate("", xy=(std_reach - 6, grate_bot + 4), xytext=(std_reach - 6, grate_bot + 30),
@@ -1735,8 +1737,9 @@ def sheet6():
                             ec="#888", lw=0.8, ls=(0, (4, 3)), zorder=6))
     axB.text(fl / 2 - post / 2 - 4, 0, "POST", ha="center", va="center", fontsize=5,
              color="#888", fontfamily="monospace", zorder=7)
-    # 4 M10 anchors at the corners
-    for ox in (-fl / 2 + 14, fl / 2 - 14):
+    # 4 M10 anchors — BOTH columns on the OUTRIGGER, clear of the post footprint (the post sits at the
+    # inboard edge, so the anchors go outboard of it; they resist the cantilever's overturning uplift).
+    for ox in (-fl / 2 + 14, fl / 2 - post - 14):
         for oy in (-fw / 2 + 13, fw / 2 - 13):
             axB.add_patch(Circle((ox, oy), 7, fc=C_BOLT, ec=C_OUT, lw=0.8, zorder=8))
             axB.add_patch(Circle((ox, oy), 5, fc=BG, ec=C_BOLT, lw=0.6, zorder=9))

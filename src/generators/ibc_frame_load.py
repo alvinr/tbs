@@ -241,6 +241,23 @@ def _z_solid(w, h):
     return w * h * h / 6.0
 
 
+C_WID_MM = 2388.0   # container interior width (Yd) — the long-beam end supports (mirrors C_WID)
+
+
+def _z_hollow_upper(h, b=None, t=3.05):
+    """Elastic modulus (mm^3) of the kept-UPPER portion of a laid-flat RHS after a half-lap removes the
+    lower part — an open channel (top flange + two short webs), extreme fiber at the cut. Much weaker than
+    a solid bar of the same depth, which is why the arm (not the beam) keeps the deep side at the post."""
+    if b is None:
+        b = RWK_BEARER_W
+    a_f, z_f = b * t, h - t / 2.0            # top flange
+    a_w, z_w = 2 * t * h, h / 2.0            # two webs
+    a = a_f + a_w
+    zc = (a_f * z_f + a_w * z_w) / a
+    i = (b * t**3 / 12 + a_f * (z_f - zc)**2) + (2 * (t * h**3 / 12) + a_w * (z_w - zc)**2)
+    return i / max(zc, h - zc)
+
+
 def arm_notch_check(sf_target=2.0):
     lines = ["\n########## WALKWAY ARM — HALF-LAP NOTCH CHECK (solid-bar redesign) ##########"]
     p_arm = M_WK_ARM_KG * G + P_PERSON_N
@@ -261,17 +278,43 @@ def arm_notch_check(sf_target=2.0):
         h_req = (6.0 * z_req / RWK_ARM_W) ** 0.5
         lines.append(f"  {name:<26}{d:>7.0f}mm{m:>7.0f}Nm{h_req:>9.1f}mm")
     lines.append(f"  *arm kept (lower) depth for SF {sf_target:.1f} as a solid bar; envelope = {RWK_AH:.0f} mm")
-    lines.append("  OUTER crossing — the OUTER BEAM takes the deep notch, so it is co-limiting. Balance the split:")
-    m_hog = 0.10 * P_PERSON_N * 1.0    # outer-beam hogging: ~1 kN person mid a ~1.0 m arm->wall-cleat span (est.)
-    for h_a in (14, 15, 16, 17, 18):
-        h_b = RWK_AH - h_a
-        sf_a = _z_solid(RWK_ARM_W, h_a) * FY_A36 / 1e3 / m_outer
-        z_beam = 0.65 * _z_solid(RWK_BEARER_W, h_b)    # kept-UPPER hollow RHS ~0.65x the solid modulus
-        sf_b = z_beam * FY_A500B / 1e3 / m_hog
-        flag = "  <- balanced (both >= 1.5)" if sf_a >= 1.5 and sf_b >= 1.5 and abs(sf_a - sf_b) < 0.2 else ""
-        lines.append(f"    arm {h_a:.0f} / beam {h_b:.1f} mm    SF_arm {sf_a:.2f}   SF_beam {sf_b:.2f}{flag}")
-    lines.append("  INNER (tip) crossing: arm keeps ~5.4 mm (M~30 Nm, SF~2 solid); inner beam keeps the full 20 mm.")
-    lines.append("  Beam hogging is a documented conservative estimate — firm with a walkway-frame model before fab.")
+    keep_post = 16.0
+    sf_post = _z_solid(RWK_ARM_W, keep_post) * FY_A36 / 1e3 / m_outer
+    lines.append(f"  ADOPTED split — POST (post end): arm keeps {keep_post:.0f} mm solid, SF_arm {sf_post:.2f}; the OUTER")
+    lines.append(f"    BEAM takes the remaining {RWK_AH-keep_post:.1f} mm as a BEARING SEAT (carries the vertical")
+    lines.append("    reaction, not hogging — see the continuous-beam check below).")
+    lines.append("  INNER (tip): arm keeps 5.4 mm (M~30 Nm, SF~2 solid); the inner beam keeps the full 20 mm.")
+    return "\n".join(lines)
+
+
+def outer_beam_frame_check():
+    """The outer long beam is half-lapped (notched to 9.4 mm) where the 2 arms cross it — and that notch is
+    at a SUPPORT. A 9.4 mm kept-upper hollow channel is far too weak to carry the elastic hogging, so it
+    cannot act as a rigid moment joint: it is a BEARING SEAT (the beam's upper 9.4 rests on the arm's lower
+    16), i.e. a PINNED support. Designed that way the beam is simply-supported between its 4 bearing points,
+    the notch carries only the vertical reaction, and the FULL 25.4 section governs span bending + deflection
+    (SS is also the conservative bound for the real continuous beam)."""
+    lines = ["\n########## OUTER WALKWAY LONG BEAM — CONTINUOUS-FRAME CHECK ##########"]
+    E = 200000.0
+    z_full = z_rhs(RWK_AH, RWK_BEARER_W, 3.05)
+    i_full = z_full * RWK_AH / 2.0
+    sup = [0.0] + sorted((1046.0, 1266.0)) + [C_WID_MM]        # 2 corner + 2 arm supports (RWK_UP_YDS)
+    spans = [sup[i + 1] - sup[i] for i in range(len(sup) - 1)]
+    lmax = max(spans)
+    w = 0.063                                                 # N/mm — GRP grate (half the 300mm deck) + self-weight (light)
+    lines.append(f"  supports at Yd {', '.join(f'{s:.0f}' for s in sup)} mm; spans {', '.join(f'{s:.0f}' for s in spans)}; worst {lmax:.0f} mm")
+    lines.append(f"  full section Z={z_full:.0f} mm3  I={i_full:.0f} mm4  (2x1x0.120 RHS)")
+    for pn in (500.0, 1000.0):                                # person share on one of the 2 close long beams (worst-on-one = 1000)
+        m_ss = (w * lmax**2 / 8.0 + pn * lmax / 4.0) / 1e3
+        sf = z_full * FY_A500B / 1e3 / m_ss
+        d = 5 * w * lmax**4 / (384 * E * i_full) + pn * lmax**3 / (48 * E * i_full)
+        lines.append(f"  span SS, person {pn:.0f}N mid: M {m_ss:.0f} Nm  SF {sf:.1f}  |  deflection {d:.1f} mm (L/{lmax/d:.0f})")
+    z_notch = _z_hollow_upper(RWK_AH - 16.0)                  # kept-upper 9.4mm channel
+    m_cap_notch = z_notch * FY_A500B / 1e3
+    m_hog = 3 * 500.0 * lmax / 16.0 / 1e3                     # ~propped-cantilever hogging (person mid long span)
+    lines.append(f"  notch (9.4mm kept, Z={z_notch:.0f}) cap {m_cap_notch:.0f} Nm << elastic hogging ~{m_hog:.0f} Nm")
+    lines.append("    => the half-lap is a BEARING SEAT / pin, NOT a moment joint: notch carries the vertical")
+    lines.append("       reaction only (~0.2 MPa bearing over 50.8x50.8); the beam spans SS on the FULL section.")
     return "\n".join(lines)
 
 
@@ -438,6 +481,7 @@ def main():
 
     print(service_loads())
     print(arm_notch_check())
+    print(outer_beam_frame_check())
     print(weld_schedule())
 
 

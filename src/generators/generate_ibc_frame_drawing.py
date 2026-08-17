@@ -1214,7 +1214,7 @@ def sheet4():
     ax.text(fx0 + 210, fy0 + 160, "ELEVATION  (looking −X)", fontsize=6, ha="center", fontweight="bold", **FONT, zorder=8)
     fyc, fzc = fx0 + 175, fy0 + 84
     ax.add_patch(Rectangle((fyc - 25, fzc - 25), 50, 50, fc=C_FRAME, ec=C_OUT, lw=1.0, ls=(0, (3, 2)), alpha=0.3, zorder=5))  # upright behind (dashed)
-    ax.add_patch(Rectangle((fyc - 27, fzc - 58), 54, 116, fc=C_STEEL, ec=C_OUT, lw=1.4, alpha=0.7, zorder=6))  # end-plate face (≈ post/arm width)
+    ax.add_patch(Rectangle((fyc - 32, fzc - 58), 64, 116, fc=C_STEEL, ec=C_OUT, lw=1.4, alpha=0.7, zorder=6))  # end-plate face (65 = arm + weld toe)
     for bz2 in (fzc - 40, fzc + 40):                                            # 2 bolt holes — CENTRAL column
         ax.add_patch(Circle((fyc, bz2), 4.5, fc=BG, ec=C_OUT, lw=1.1, zorder=8))
         ax.plot([fyc - 7, fyc + 7], [bz2, bz2], color=C_OUT, lw=0.5, zorder=8)
@@ -1315,7 +1315,7 @@ def sheet5():
 
     # ── END-PLATE — bolt-hole locations, arm weld footprint shadow-marked ──
     _dcell(ax, 20, 40, 500, 440, "END-PLATE / REAR BACKING PLATE (×2/joint)  ·  2× Ø13 for M12")
-    cx, cz, pw2, ph2 = 270, 258, 71, 150                       # plate center + half width/height drawn (55 × 130 real ≈ post width)
+    cx, cz, pw2, ph2 = 270, 258, 84, 150                       # plate center + half width/height drawn (65 × 130 real — arm + weld toe)
     ax.add_patch(Rectangle((cx - pw2, cz - ph2), 2*pw2, 2*ph2, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.6, zorder=5))   # the plate
     ax.add_patch(Rectangle((cx - 65, cz - ph2 - 26), 130, 2 * ph2 + 52, fc="none", ec=C_DIM, lw=1.1, ls=(0, (5, 3)), zorder=6))  # GHOST of the post behind (50.8 sq column, hidden-line dashed)
     leader(ax, cx + 65, cz + ph2 + 6, cx + 150, cz + ph2 + 18, "post behind\n(50.8 sq)", fs=5.0, font=FONT, ha="left")
@@ -1325,10 +1325,10 @@ def sheet5():
         ax.add_patch(Circle((cx, bz), 8, fc=BG, ec=C_OUT, lw=1.3, zorder=7))
         ax.plot([cx - 13, cx + 13], [bz, bz], color=C_OUT, lw=0.6, zorder=7)
         ax.plot([cx, cx], [bz - 13, bz + 13], color=C_OUT, lw=0.6, zorder=7)
-    draw_dim_h(ax, cx - pw2, cx + pw2, cz - ph2 - 22, "55", fs=5.8, font=FONT, above=False)         # plate width (≈ post/arm)
+    draw_dim_h(ax, cx - pw2, cx + pw2, cz - ph2 - 22, "65", fs=5.8, font=FONT, above=False)         # plate width (arm 50.8 + weld toe)
     draw_dim_v(ax, cx - pw2 - 22, cz - ph2, cz + ph2, "130", fs=5.8, font=FONT)                     # plate height
     draw_dim_v(ax, cx + pw2 + 22, cz - 116, cz + 116, "90", fs=5.8, font=FONT)                      # bolt V pitch (the moment couple)
-    ax.text(cx, cz - ph2 - 46, "shaded = arm weld footprint (END-plate only)",
+    ax.text(cx, cz - ph2 - 46, "shaded = arm weld footprint — 5mm fillet ALL ROUND (END-plate only)",
             fontsize=5.2, ha="center", color=C_DIM, **FONT)
 
     # ── DETAIL — HALF-LAP HOLD-DOWN (the TEK screw that secures the beam to the arm at each lap) ──

@@ -771,7 +771,7 @@ def ibc_cantilever_arms(x_to=None):
     overview/walkway models and the focused IBC model stay in register.
     `x_to` is how far the arm reaches inward (default RWK_X_L — the inner long beam)."""
     x_to = RWK_X_L if x_to is None else x_to
-    ac_z, ep_t, ep_w, ep_h = (RWK_ARM_BOT + RWK_ARM_TOP) / 2.0, 8, 55, 130   # arm mid-Z / end-plate thickness, width(Yd ≈ post), height(Z)
+    ac_z, ep_t, ep_w, ep_h = (RWK_ARM_BOT + RWK_ARM_TOP) / 2.0, 8, 65, 130   # arm mid-Z / end-plate thickness, width(Yd = arm 50.8 + weld toe) / height(Z)
     c_bolt = "#3A3A42"                                                       # dark — bolts/screws must read distinct from the steel (as the foot anchors do)
     parts = []
     for yd in RWK_UP_YDS:

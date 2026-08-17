@@ -1003,7 +1003,7 @@ PARTS: list[Part] = [
          spec="J6 walkway-arm end-plate joint — 2 per arm × 2 arms, a CENTRAL vertical column (Yd centreline) through the front upright into the rear backing plate (the moment couple is the 90mm VERTICAL bolt spacing; a central column keeps max edge distance on both the plate and the post). Runs with a nyloc nut + an internal crush sleeve so torque can't dish the hollow upright. ESTIMATE — firm SKU at fab."),
     Part("walkway-arm-endplates", "Walkway-arm end + backing plates (J6)", "steel-structural",
          "walkway", 4, "ea", 3, 6, "Local fab",
-         spec="55×130×8mm mild-steel plate (≈ post/arm width), 2× Ø13 for M12 in a central column at 90mm pitch — 2 end-plates (welded to the arm ends) + 2 rear backing plates (plain), one set per arm. Cut+drill from A36 flat plate."),
+         spec="65×130×8mm mild-steel plate (arm 50.8 wide + weld toe), 2× Ø13 for M12 in a central column at 90mm pitch — 2 end-plates (welded to the arm ends, 5mm fillet all round) + 2 rear backing plates (plain), one set per arm. Cut+drill from A36 flat plate."),
     Part("walkway-arm-sleeves", "Walkway-arm J6 crush sleeves", "steel-structural",
          "walkway", 4, "ea", 0.75, 1.5, "Local fab",
          spec="Internal spacer/crush tube (~Ø14 ID over the M12) cut to the upright bore depth — one per J6 through-bolt (2/arm × 2) so tightening can't collapse the hollow RHS upright. Cut from steel tube offcut."),

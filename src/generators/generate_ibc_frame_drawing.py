@@ -1320,6 +1320,8 @@ def sheet5():
     _dcell(ax, 20, 40, 500, 440, "END-PLATE / REAR BACKING PLATE (×2/joint)  ·  4× Ø13 for M12")
     cx, cz, pw2, ph2 = 270, 258, 90, 150                       # plate center + half width/height drawn (70 × 130 real)
     ax.add_patch(Rectangle((cx - pw2, cz - ph2), 2*pw2, 2*ph2, fc=C_STEEL, ec=C_OUT, alpha=0.6, lw=1.6, zorder=5))   # the plate
+    ax.add_patch(Rectangle((cx - 65, cz - ph2 - 26), 130, 2 * ph2 + 52, fc="none", ec=C_DIM, lw=1.1, ls=(0, (5, 3)), zorder=6))  # GHOST of the post behind (50.8 sq column, hidden-line dashed)
+    leader(ax, cx + 65, cz + ph2 + 6, cx + 150, cz + ph2 + 18, "post behind\n(50.8 sq)", fs=5.0, font=FONT, ha="left")
     ax.add_patch(Rectangle((cx - 65, cz - 32), 130, 64, fc=C_OUT, ec=C_OUT, alpha=0.12, ls=(0, (4, 2)), lw=1.2, zorder=6))  # arm weld footprint (SHADOW)
     ax.text(cx, cz, "arm weld footprint\n50.8 × 25.4\n(END-plate only)", fontsize=5.2, ha="center", va="center", color=C_DIM, **FONT, zorder=8)
     for bx in (cx - 39, cx + 39):                                                          # 4 bolt holes, 30 (Yd) × 90 (Z) pitch

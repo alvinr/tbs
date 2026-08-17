@@ -1,5 +1,21 @@
-routing-sources-sha: 77334cb0f76e
-model=water  pipes=450 solids=325  interferences=1
-  PIPE  Cct C feed (EP master sw -> corridor dist  (Circuit-C power + cabling (both panels))
-    x  FRAME      Frame rail (Yd)                         near (5146,1181,1838)
-pipe-on-pipe crossings=0
+routing-sources-sha: 0f18ae59d0cc
+model=ibc-stack  pipes=433 solids=159  interferences=10
+  PIPE  SV-01 -> DV-01 (single filtered line)      (Pinhole-Wall Kit)
+    x  FRAME      Frame rail (Yd)                         near (4665,1241,65)
+  PIPE  SV-01 -> DV-01 (single filtered line) elbo (Pinhole-Wall Kit)
+    x  FRAME      Frame rail (Yd)                         near (4694,1241,71)
+  PIPE  DV-02 waste -> IBC-4                       (Skid plumbing)
+    x  FRAME      Frame rail (Yd)                         near (4740,1194,65)
+  PIPE  P-02 -> ACC-02 (recycle spray) elbow       (Skid plumbing)
+    x  FRAME      Frame rail (X)                          near (4900,1279,71)
+  PIPE  P-02 -> ACC-02 (recycle spray)             (Skid plumbing)
+    x  FRAME      Frame rail (Yd)                         near (4765,1181,65)
+  PIPE  P-02 -> ACC-02 (recycle spray) elbow       (Skid plumbing)
+    x  CANTILEVER RWk J6 end-plate Yd1046                 near (4644,1110,62)
+  PIPE  P-02 -> ACC-02 (recycle spray)             (Skid plumbing)
+    x  CANTILEVER RWk J6 end-plate Yd1046                 near (4641,1110,77)
+  PIPE  Blue trunk: corridor -> ribbon -> outside- (TAP-01 + Spray Supply)
+    x  FRAME      Frame rail (Yd)                         near (4663,1132,60)
+pipe-on-pipe crossings=1
+  PIPE  DV-02 waste -> IBC-4                        
+    x  PIPE  P-02 -> ACC-02 (recycle spray)                cross (4844,1188,68)  centreline 14mm < 27mm

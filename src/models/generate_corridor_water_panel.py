@@ -158,21 +158,22 @@ def frame(part="all"):
     posts = part in ("all", "posts")
     rails = part in ("all", "rails")
     p = []
+    ft = ov.IBC_FOOT_PLATE_T                               # foot-plate thickness — uprights SIT ON the plate (bottom at ft), top fixed at TOP_Z
     up_yds = (YD_NEAR, YD_FAR - S)
     box_xs = (FRONT_X, BACK_X)
     if posts:
         for ux in box_xs:                                  # 4 corner uprights
             for yd in up_yds:
-                p.append(ov.ruby_box("Frame upright", ux, yd, 0, S, S, TOP_Z, color=ov.C_STEEL))
+                p.append(ov.ruby_box("Frame upright", ux, yd, ft, S, S, TOP_Z - ft, color=ov.C_STEEL))
     if rails:
-        for rz in (0, TOP_Z - S):                          # bottom + top rings, rails BUTT between uprights
+        for rz in (ft, TOP_Z - S):                         # bottom ring on the plate + top ring, rails BUTT between uprights
             for ux in box_xs:
                 p.append(ov.ruby_box("Frame rail (Yd)", ux, YD_NEAR + S, rz, S, (YD_FAR - S) - (YD_NEAR + S), S, color=ov.C_STEEL))
             for yd in up_yds:
                 p.append(ov.ruby_box("Frame rail (X)", FRONT_X + S, yd, rz, BACK_X - (FRONT_X + S), S, S, color=ov.C_STEEL))
     if posts:
         # floor feet (150×150×12 plate + 4× M12) under each upright
-        fp, ft, bpc = ov.IBC_FOOT_PLATE, ov.IBC_FOOT_PLATE_T, ov.IBC_FOOT_BOLT_PCD // 2
+        fp, bpc = ov.IBC_FOOT_PLATE, ov.IBC_FOOT_BOLT_PCD // 2   # ft hoisted above (uprights sit on the plate)
         for ux in box_xs:
             for yd in up_yds:
                 cx, cy = ux + S / 2, yd + S / 2
@@ -180,13 +181,19 @@ def frame(part="all"):
                 for dx in (-bpc, bpc):
                     for dy in (-bpc, bpc):
                         p.append(ov.ruby_cylinder("Foot anchor M12", cx + dx, cy + dy, 0, 7, ft + 4, color=C_BOLT, axis="z"))
-        # REAR-panel mount brackets only (on the back uprights, set back behind the inside face)
-        bw, bproj = 60, 40
+        # REAR-panel mount brackets only (on the back uprights, set back behind the inside face).
+        # Drawn as an L-ANGLE (5mm legs, per Plate 5 / Detail D): a horizontal base leg TEK-screwed to the
+        # post (J8) + a vertical upstand the rear panel bolts to (J4) — NOT a solid block.
+        bw, bproj, bwid, blt = 60, 40, 30, 5      # upstand height, projection, bracket width (X), leg thickness
         for py, pdir in ((YD_NEAR + S, +1), (YD_FAR - S, -1)):
             # top pair dropped from TOP_Z-120 (2176) to sit under the new lowered panel top
             for bz in (120, TOP_Z / 2, PANEL_TOP_Z - 120):
-                p.append(ov.ruby_box("Rear-panel bracket", BACK_X + EQT, (py if pdir > 0 else py - bproj), bz - bw / 2,
-                                     30, bproj, bw, color=ov.C_STEEL))
+                by0 = py if pdir > 0 else py - bproj
+                post_y = by0 if pdir > 0 else by0 + bproj - blt   # thin leg sits flat on the upright INBOARD face
+                p.append(ov.ruby_box("Rear-panel bracket post leg", BACK_X, post_y, bz - bw / 2,
+                                     EQT + blt, blt, bw, color=ov.C_STEEL))        # vertical leg FLAT on the upright's Yd face — TEK-screwed to the post (J8)
+                p.append(ov.ruby_box("Rear-panel bracket upstand", BACK_X + EQT, by0, bz - bw / 2,
+                                     blt, bproj, bw, color=ov.C_STEEL))            # vertical upstand parallel to the ply (Yd-Z plane) — the panel bolts THROUGH it (J4)
     return "\n".join(p)
 
 

@@ -18,14 +18,14 @@ Items are grouped by build area. Source documents are cross-referenced in each s
 | 6. Electrical — power, circuits, wiring | $3,431 | $3,496 |
 | 7. Housed revolving-door light lock (plastic-skin custom fabrication) | $2,046 | $2,516 |
 | 7a. Panel swing pivot + fixed door frame (Ø89 post + bearings + cage + wall stays + rail saddles + door frame) | $1,180 | $1,610 |
-| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,140 | $3,045 |
+| 7b. Perimeter walkway (4 sections + drum-exit punch-out) | $2,195 | $3,076 |
 | 7c. Hinged panel structure (stepped frame + HDPE skins + Al core + EPDM + cam latches + B2 bay + pull handle) | $1,278 | $1,484 |
 | 7d. Chemistry prep shelf (fold-down board + steel frame + hinge/stays + TAP-01 trunk extension) | $223 | $235 |
 | 8. Cooling & ventilation | $748 | $898 |
 | 9. Printmaking chemistry — cyanotype, 50 prints (Low = Lean, High = Rich tier) | $1,250 | $3,100 |
 | 10. Printmaking tools & consumables | $350 | $500 |
 | 11. Safety & PPE | $120 | $180 |
-| **TOTAL (base build + 50-print run)** | **~$26,682** | **~$34,920** |
+| **TOTAL (base build + 50-print run)** | **~$26,737** | **~$34,951** |
 <!-- END costing:master-summary -->
 
 *Optional additions: electric film plane actuation (+$827), lens plate (+$400–$1,500), self-haul transport (+$30,000–$40,000).*
@@ -386,7 +386,7 @@ indicative low–high estimates — get quotes before ordering.
 | Floor-leg cantilever bracket (left walkway, ×5) | 5 ea | MetalsDepot | walkway | $65–$105 |
 | Reinforcing plate (exterior) | 18 ea | Local fab | walkway | $75–$130 |
 | Right walkway cantilever frame (long + end beams) | 1 lot | MetalsDepot | walkway | $125–$153 |
-| Right walkway center cantilever arms (solid bar) | 2 ea | MetalsDepot | walkway | $36–$60 |
+| Right walkway center cantilever arms (solid bar) | 2 ea | Metal Supermarkets | walkway | $91 |
 | Shelf mount backing plates, 8mm steel (welded, ×3) | 3 ea | Local fab | shelf | $18–$30 |
 | Shutter plate (⅛ steel 10×8) + slide channel | 1 ea | Local fab | optics | $25–$50 |
 | Skate carriage plate (×4) — fab | 4 ea | Local fab | film | $136–$236 |
@@ -401,7 +401,7 @@ indicative low–high estimates — get quotes before ordering.
 | Wall-seat saddle 10mm A36 plate (ICP-11) | 1 sheet | Metal Supermarkets | film | $102 |
 | Wall-seat saddle 8mm A36 plate (ICP-11) | 1 sheet | Metal Supermarkets | film | $216 |
 | Ø89×8mm CHS pivot post + machined hub / thrust collar | 1 ea | Metal Supermarkets | swing | $180–$300 |
-| **steel-structural subtotal** | | | | **$3,452–$4,925** |
+| **steel-structural subtotal** | | | | **$3,508–$4,957** |
 
 ### substrate-fabric
 
@@ -456,7 +456,7 @@ indicative low–high estimates — get quotes before ordering.
 |----------|-----------|-------|-----------|
 | Local fab | 21 | adhesives-finishes, aluminum, fabrication-labor, steel-structural | $2,175–$3,552 |
 | containermgt.com | 1 | container | $2,000–$3,500 |
-| Metal Supermarkets | 14 | aluminum, fasteners-hardware, steel-structural | $2,117–$2,643 |
+| Metal Supermarkets | 15 | aluminum, fasteners-hardware, steel-structural | $2,208–$2,734 |
 | Amazon | 34 | adhesives-finishes, aluminum, bearings-motion, ducting-ventilation, electrical-distribution, electrical-power, fabric-textile, fasteners-hardware, plumbing-fittings, tools-safety, water-equipment | $2,106–$2,156 |
 | Home Depot | 58 | adhesives-finishes, ducting-ventilation, electrical-distribution, fasteners-hardware, plumbing-fittings, steel-structural, timber-ply, tools-safety | $1,817–$1,963 |
 | US Plastics | 4 | plastics-sheet | $1,665 |
@@ -473,10 +473,10 @@ indicative low–high estimates — get quotes before ordering.
 | SoCal reconditioner | 1 | water-equipment | $600 |
 | Inverter Supply | 2 | electrical-distribution, electrical-power | $396 |
 | Central Coast Plastics | 1 | plastics-sheet | $380 |
-| MetalsDepot | 3 | steel-structural | $226–$318 |
 | Powerwerx | 5 | electrical-distribution, electrical-power | $308 |
 | Fabric Direct | 1 | substrate-fabric | $300 |
 | igus | 1 | bearings-motion | $261 |
+| MetalsDepot | 2 | steel-structural | $190–$258 |
 | americandoorsupply | 1 | electrical-distribution | $244 |
 | Waytek Wire | 15 | electrical-distribution, electrical-power | $229 |
 | Bearings Direct | 2 | bearings-motion | $201 |

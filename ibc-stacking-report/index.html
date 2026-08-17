@@ -3140,7 +3140,7 @@ therefore designed for the loaded case, not just the drained one.</p>
 <td>—</td>
 </tr>
 <tr>
-<td>Bar → upright cleat (2 × M12×40 A2, shear)</td>
+<td>Bar → upright cleat (2 × M12×65 A2, shear)</td>
 <td>1,775 N</td>
 <td>70,800 N</td>
 <td>40</td>
@@ -3158,7 +3158,7 @@ therefore designed for the loaded case, not just the drained one.</p>
 <p>The two bars give <strong>defense in depth</strong>: as positive blocking they pass on their own (<strong>SF 1.59</strong>, mat degraded or absent); with the anti-slip mat the friction credit lifts the margin to <strong>SF 4.77</strong>. Everything downstream of the bars is comfortably strong — the wall-hanger bolts, the corrugated-wall bearing (backing-plate-spread), the cleat bolts, and the tie-down straps all clear SF ≥ 8. In the <strong>drained</strong> transport state (site-filled water, totes empty) every element clears SF ≥ 12.</p>
 <ul>
 <li><strong>Front retaining bars</strong> (two per tote face, 50×20×3 RHS, ~1,046mm span) share each tote's forward (−X) thrust into the floor feet + wall hangers.</li>
-<li><strong>Wall joist hangers</strong> — <strong>one identical 2-bolt hanger per bar</strong> (8 total; the two bars of a pair use identical hangers for fabrication simplicity), each <strong>through-bolted (2 × M12×65) to a 60×205×8mm exterior backing plate</strong> on the outside of each side wall — the plate spreads the bolt load so the thin corrugated wall cannot pull through. Total wall penetrations stay at 16 (8 hangers × 2 bolts = the old 4 × 4). M12×65 (partial thread) spans the ~42–54mm sandwich (8mm plate + corrugation + 4mm hanger); the front-bar → upright cleats stay M12×40 (short grip).</li>
+<li><strong>Wall joist hangers</strong> — <strong>one identical 2-bolt hanger per bar</strong> (8 total; the two bars of a pair use identical hangers for fabrication simplicity), each <strong>through-bolted (2 × M12×65) to a 60×205×8mm exterior backing plate</strong> on the outside of each side wall — the plate spreads the bolt load so the thin corrugated wall cannot pull through. Total wall penetrations stay at 16 (8 hangers × 2 bolts = the old 4 × 4). M12×65 (partial thread) spans the ~42–54mm sandwich (8mm plate + corrugation + 4mm hanger); the front-bar → upright cleats + wall-end J7 are M12×65 (each spans the ~58mm bar section, per Detail B).</li>
 <li><strong>Anti-slip matting</strong> (certified μ ≥ 0.6) under each tote interface is the primary friction lever — it triples the effective margin and directly answers the "totes must not shift" requirement.</li>
 <li><strong>Weld-on lashing rings + 2 straps/stack</strong> (3,333 lb / ~1,512 kg per strap) provide vertical tie-down against the forward-tipping mode of the tall loaded stack (CG Z≈1,345mm) and supplement lateral restraint; the totes are otherwise wall-trapped.</li>
 <li><strong>Floor feet</strong> (150×150×12, 4 × M12 each) anchor the uprights against uplift and transfer loads into the slab.</li>
@@ -3166,7 +3166,7 @@ therefore designed for the loaded case, not just the drained one.</p>
 <p><strong>Service + walkway load cases</strong> (the same frame also carries the plumbing panel and the walkway — both <strong>non-governing</strong> vs the transport case):</p>
 <ul>
 <li><strong>Plumbing panel + pumps</strong> (~20 kg on the 6 rear-panel brackets) = ~33 N/bracket, static — trivial (SF ≫ 10).</li>
-<li><strong>Right-walkway cantilever</strong> — each of the 2 arms carries ~22 kg dead + a 1 kN person point load at the deck (325 mm out from the upright) = a <strong>395 N·m moment into the front upright</strong>: the 50.8 RHS upright bends at <strong>SF 6.9</strong>, and the arm→upright connection — a <strong>bolted end-plate</strong> (a plate welded to the arm end, then 2× M12 in a <strong>central vertical column</strong> through the upright into a <strong>rear backing plate</strong>, J6) carries the moment as a tension/compression couple: at the ~90 mm couple the top bolt sees ~4.4 kN (<strong>SF ≈ 14</strong> on the M12) — a central column keeps the bolts on the post centerline, max edge distance on both the plate and the post, and the rear backing plate spreads the reaction so the hollow RHS wall can't dish. The arm itself is a <strong>solid 2×1 flat bar</strong> (not a tube): each arm half-laps over <em>both</em> walkway long beams, and a notched hollow tube opens into a weak channel — a notched partial section has to be solid to keep its strength. The half-lap is <strong>rebalanced to the moment</strong>: a deep arm notch at the tip (M ≈ 30 N·m, arm keeps 5.4 mm), and at the post end (M ≈ 334 N·m) the <strong>outer beam</strong> takes the deep notch so the arm keeps 16 mm (<strong>SF ≈ 1.6</strong> on the solid bar). The outer beam's thin 9.4 mm notch sits at an arm support, but a thin channel can't carry that support's hogging — so the half-lap is a <strong>bearing seat</strong> (the beam's upper 9.4 mm rests on the arm's lower 16 at ~0.2 MPa), i.e. a pinned support. The beam therefore spans <strong>simply-supported on its full 25.4 mm section</strong> — <strong>SF ≈ 7</strong> and <strong>~2 mm</strong> deflection under a person (<code>ibc_frame_load.outer_beam_frame_check</code>; the light grate load and person-share are estimates to firm with the full walkway-frame model). Each half-lap is <strong>positively secured</strong> by one <strong>#14 self-drilling TEK screw</strong> (4 total) driven from the underside through a Ø7 clearance hole in the beam into the solid arm — an anti-lift/anti-slide locator whose head clears the traveling spray beam. The arm's fabrication (including the hold-down section) is drawn on Sheet 5.</li>
+<li><strong>Right-walkway cantilever</strong> — each of the 2 arms carries ~22 kg dead + a 1 kN person point load at the deck (325 mm out from the upright) = a <strong>395 N·m moment into the front upright</strong>: the 50.8 RHS upright bends at <strong>SF 6.9</strong>, and the arm→upright connection — a <strong>bolted end-plate</strong>, <strong>bearing-type</strong> (a plate welded to the arm end, then 2× M12 <strong>both above the arm</strong> through the upright into a <strong>rear backing plate</strong>, J6): the top bolt group takes the tension while the plate bears compression at the bottom against the upright. At the ~65 mm lever the two bolts share <strong>~3.0 kN each</strong> (<strong>SF ≈ 20</strong> on the M12), and the backing plate spreads the reaction so the hollow RHS wall can't dish. <strong>Both bolts sit above the arm</strong> — this clears the 3-way corner congestion at the front upright: the corridor's bottom frame X-rail (Z12–63) runs behind the plate's lower edge (ghost-marked on Sheet 5) with <strong>no bolt near it</strong>, and neither bolt fouls the welded arm (Z90–115). A walkway support carries <strong>down-load only</strong> (deck + people; the grate lifts out without loading the arm up), so the asymmetric bearing-type joint is appropriate. The arm itself is a <strong>solid 2×1 flat bar</strong> (not a tube): each arm half-laps over <em>both</em> walkway long beams, and a notched hollow tube opens into a weak channel — a notched partial section has to be solid to keep its strength. The half-lap is <strong>rebalanced to the moment</strong>: a deep arm notch at the tip (M ≈ 30 N·m, arm keeps 5.4 mm), and at the post end (M ≈ 334 N·m) the <strong>outer beam</strong> takes the deep notch so the arm keeps 16 mm (<strong>SF ≈ 1.6</strong> on the solid bar). The outer beam's thin 9.4 mm notch sits at an arm support, but a thin channel can't carry that support's hogging — so the half-lap is a <strong>bearing seat</strong> (the beam's upper 9.4 mm rests on the arm's lower 16 at ~0.2 MPa), i.e. a pinned support. The beam therefore spans <strong>simply-supported on its full 25.4 mm section</strong> — <strong>SF ≈ 7</strong> and <strong>~2 mm</strong> deflection under a person (<code>ibc_frame_load.outer_beam_frame_check</code>; the light grate load and person-share are estimates to firm with the full walkway-frame model). Each half-lap is <strong>positively secured</strong> by one <strong>#14 self-drilling TEK screw</strong> (4 total) driven from the underside through a Ø7 <strong>clearance</strong> hole in the solid arm, threading into the hollow beam's <strong>solid bottom wall</strong> (which faces down onto the arm) — an anti-lift/anti-slide locator whose head clears the traveling spray beam. The arm's fabrication (including the hold-down section) is drawn on Sheet 5.</li>
 </ul>
 <p>The load path, the EN 12195-1 method, and the full demand/capacity/SF matrix (driven from <code>ibc_frame_load.py</code>) are drawn on the load-case sheet:</p>
 <p><img alt="TBS-001 IBC Frame — Load Case (EN 12195-1)" src="../assets/ibc-frame-load-case.png" /></p>
@@ -3202,7 +3202,7 @@ are the standard values for the grade.</p>
 <tr>
 <td>J2</td>
 <td>Front-bar end → upright angle cleat</td>
-<td>M12×40 hex (92314A744)</td>
+<td>M12×65 hex (SS, SKU re-source)</td>
 <td>A2-70 (18-8 SS)</td>
 <td>16</td>
 <td><strong>~50 N·m</strong> with anti-seize (stainless galls → torqued lower than 8.8; no impact driver)</td>
@@ -3241,7 +3241,7 @@ are the standard values for the grade.</p>
 </tr>
 <tr>
 <td>J6</td>
-<td>Walkway cantilever arm → front upright (arm end-plate → <strong>rear backing plate</strong>, bolted through the upright; <strong>central vertical column</strong> — max edge distance on plate + post; internal crush sleeve per bolt)</td>
+<td>Walkway cantilever arm → front upright (arm end-plate → <strong>rear backing plate</strong>, bolted through the upright; <strong>bearing-type — both bolts above the arm</strong>, clear of the corridor bottom rail + the welded arm; internal crush sleeve per bolt)</td>
 <td>M12×100 hex through-bolt</td>
 <td>Gr.8.8 zinc</td>
 <td>2 arms × 2 bolts = 4</td>
@@ -3252,7 +3252,7 @@ are the standard values for the grade.</p>
 <tr>
 <td>J7</td>
 <td>Front-bar wall end → hanger pocket seat (vertical retention — the bar is bolted, not welded, to the hanger; <strong>1 centered</strong> bolt, reverted from 2 — the pocket + the fixed 2-bolt corridor cleat already stop the bar rotating, so the 2nd was redundant and crowded the seat)</td>
-<td>M12×40 hex (92314A744)</td>
+<td>M12×65 hex (SS, SKU re-source)</td>
 <td>A2-70 (18-8 SS)</td>
 <td>1 per bar × 8 = 8</td>
 <td><strong>~50 N·m</strong> with anti-seize</td>
@@ -3343,7 +3343,7 @@ are the standard values for the grade.</p>
 <p>The wall joist hangers are <strong>folded</strong> 4 mm plate (bent, not welded); the exterior backing plates are loose (bolted, not welded). The corridor-panel + side-panel pipe-run brackets and the ribbon cross-beams are the <strong>plumbing-corridor metal</strong> that shares this frame; the walkway cantilever arms <strong>bolt</strong> to the front uprights (J6, an end-plate welded to the arm + a rear backing plate, 4× M12 through-bolts — not a frame weld) and are fabricated per Sheet 5.</p>
 <p>These joints are drawn on <strong>Sheet 4</strong> (each with its weld + fastener callout):</p>
 <p><img alt="TBS-001 IBC Frame — Sheet 4: Fabrication Details" src="../assets/ibc-frame-sheet4.png" /></p>
-<p>The walkway cantilever arms — how each arm is cut (the <strong>two half-laps</strong> where it crosses the walkway's inner + outer long beams, dimensioned on the side elevation) and the end-plate bolt-hole pattern — are drawn on <strong>Sheet 5</strong> (the connection into the upright is the same J6 end-plate shown on Sheet 4, Detail F):</p>
+<p>The walkway cantilever arms — how each arm is cut (the <strong>two half-laps</strong> where it crosses the walkway's inner + outer long beams, dimensioned on the side elevation) and the end-plate bolt-hole pattern — are drawn on <strong>Sheet 5</strong> (VIEW A side elevation of the J6 joint, the END-PLATE detail, and the PLAN VIEW showing the plate→post through-bolts):</p>
 <p><img alt="TBS-001 IBC Frame — Sheet 5: Walkway Cantilever Arm Fabrication" src="../assets/ibc-frame-sheet5.png" /></p>
 <h3 id="36-datum-tolerance-scheme">3.6 Datum + Tolerance Scheme<a class="headerlink" href="#36-datum-tolerance-scheme" title="Permanent link">&para;</a></h3>
 <p>The frame is a welded structure, so tolerances follow <strong>ISO 13920 Class B</strong> (general tolerances for welded
@@ -3605,9 +3605,9 @@ relevant sections above; the full set is collected here and in <a href="../engin
 <img alt="TBS-001 IBC Frame — Sheet 2" src="../assets/ibc-frame-sheet2.png" /></p>
 <p><strong>Sheet 3 — Plan view: deep 4-leg box (4 legs + ring perimeter) + retaining bars + 4 floor feet + IBC footprints + corridor + walkway arms</strong>
 <img alt="TBS-001 IBC Frame — Sheet 3" src="../assets/ibc-frame-sheet3.png" /></p>
-<p><strong>Sheet 4 — Fabrication details: DETAIL A wall joist hanger (per-bar, 2-bolt, 50mm clearance), B bar→upright cleat, C weld-on lashing ring, D rear-panel bracket, E side-panel pipe-run L-bracket, F walkway arm→front-upright bolted end-plate (arm end-plate + rear backing plate, 4× M12 through-bolts, J6) — each with weld (W) + fastener (J) callouts</strong>
+<p><strong>Sheet 4 — Fabrication details: DETAIL A wall joist hanger (per-bar, 2-bolt, 50mm clearance), B bar→upright cleat, C weld-on lashing ring, D rear-panel bracket, E side-panel pipe-run L-bracket — each with weld (W) + fastener (J) callouts. (The walkway arm→upright J6 connection is drawn in full on Sheet 5, so its former Detail F here was dropped as a duplicate.)</strong>
 <img alt="TBS-001 IBC Frame — Sheet 4" src="../assets/ibc-frame-sheet4.png" /></p>
-<p><strong>Sheet 5 — Walkway cantilever arm fabrication (×2, off the IBC front uprights): VIEW A dimensioned side elevation (arm reaching 325 mm from the upright to the tip, half-lapping over both long beams — notch widths + gaps 50.8 / 198.4 / 50.8 / 25, half-lap depth 20 of the 25.4; J6 bolted end-plate), PLAN VIEW (each notch a full-width half-lap, beam width 50.8), and the END-PLATE / rear-backing-plate detail (65 × 130, 2× Ø13 for M12 in a central column at 90 pitch, 5 mm fillet all round, arm weld footprint shadow-marked)</strong>
+<p><strong>Sheet 5 — Walkway cantilever arm fabrication (×2, off the IBC front uprights): VIEW A dimensioned side elevation (arm reaching 325 mm from the upright to the tip, half-lapping over both long beams — notch widths + gaps 50.8 / 198.4 / 50.8 / 25, half-lap depth 20 of the 25.4; J6 bolted end-plate), PLAN VIEW (each notch a full-width half-lap, beam width 50.8; the plate→post through-bolts shown at the upright end), and the END-PLATE / rear-backing-plate detail (65 × 148, 2× Ø13 for M12 </strong>both above the arm<strong> at 30 spacing — bearing-type; the corridor bottom frame rail is ghost-marked behind the plate's lower edge with no bolt near it — 5 mm fillet all round, arm weld footprint shadow-marked)</strong>
 <img alt="TBS-001 IBC Frame — Sheet 5" src="../assets/ibc-frame-sheet5.png" /></p>
 <p><strong>Plate Schedule Sheet 1 — Structural plates drawn 1:1 for the shop: PLATE 1 IBC floor foot (150×150×12, 4× Ø14 @ 100 sq PCD), PLATE 2 wall-hanger exterior backing (60×205×8, 2× Ø14 @ 169), PLATE 3 wall-hanger pocket (folded 4 mm back-plate + 70 seat, J3 + J7 holes) — each with outline dims, hole Ø + center positions, thickness, material, and qty</strong>
 <img alt="TBS-001 IBC Frame — Plate Schedule Sheet 1" src="../assets/ibc-plate-schedule-sheet1.png" /></p>
@@ -3682,11 +3682,11 @@ relevant sections above; the full set is collected here and in <a href="../engin
 <td>$16</td>
 </tr>
 <tr>
-<td><a href="https://www.mcmaster.com/92314A744/">M12×40 hex bolt, 18-8 SS</a> (92314A744)</td>
-<td>Front-bar fasteners: 16 = corridor-end cleats (J2, 2 each × 8 bars — the open cleat needs 2 for anti-rotation) + 8 = wall-end vertical retention bolts (J7, 1 CENTERED per bar, down through the bar into the pocket seat; reverted from 2 on 2026-08-15 — redundancy not strength, the pocket + the fixed corridor cleat already stop the bar rotating, and 1 centered bolt clears the seat edges). Short grip → M12×40 fully threaded is correct. McMaster 92314A744: M12×1.75 × 40mm 18-8 stainless hex head screw — confirmed vs the eng-specs PDF (M12×1.75, 40mm, 18-8 SS). $14.73/pack of 10 firm (2026-08-01; 24 used → 3 packs). (Wall-hanger through-bolts are the M12×65 below.)</td>
+<td><a href="https://www.mcmaster.com/products/18-8-stainless-steel-hex-head-cap-screws/thread-size~m12-3/">M12×65 hex bolt, 18-8 SS</a> (92314A-TBC)</td>
+<td>Front-bar fasteners: 16 = corridor-end cleats (J2, 2 each × 8 bars — the open cleat needs 2 for anti-rotation) + 8 = wall-end vertical retention bolts (J7, 1 CENTERED per bar, down through the bar into the pocket seat). Each bolt is VERTICAL through the ~58mm stack — the cleat leg / seat (8) + the 50mm bar section (per Detail B: head under the leg, nut on the bar top) — so it needs <strong>M12×65</strong>, NOT the earlier M12×40 (that assumed a short grip; the 3D + Detail B show the full-bar span). ⚠ RE-SOURCE: firm the exact M12×65 18-8 SS SKU (McMaster 92314A series, 65mm length) + price — length bumped 40→65 on 2026-08-17 (Alvin); price is an estimate band pending the SKU. 24 used.</td>
 <td>24 ea</td>
 <td>McMaster-Carr</td>
-<td>$35</td>
+<td>$48–$67</td>
 </tr>
 <tr>
 <td><a href="https://www.mcmaster.com/91280A728/">M12×65 hex through-bolt, Grade 8.8 zinc, partial-thread</a> (91280A728)</td>
@@ -3742,7 +3742,7 @@ relevant sections above; the full set is collected here and in <a href="../engin
 <td></td>
 <td></td>
 <td></td>
-<td><strong>$1,187–$1,721</strong></td>
+<td><strong>$1,200–$1,753</strong></td>
 </tr>
 </tbody>
 </table>
@@ -3790,8 +3790,8 @@ the stacking structure and the totes it restrains.</p>
 <tbody>
 <tr>
 <td>Stacking frame (restraint deep 4-leg box)</td>
-<td><!-- BEGIN costing:ibc-frame-low -->$1,187<!-- END costing:ibc-frame-low --></td>
-<td><!-- BEGIN costing:ibc-frame-high -->$1,721<!-- END costing:ibc-frame-high --></td>
+<td><!-- BEGIN costing:ibc-frame-low -->$1,200<!-- END costing:ibc-frame-low --></td>
+<td><!-- BEGIN costing:ibc-frame-high -->$1,753<!-- END costing:ibc-frame-high --></td>
 </tr>
 <tr>
 <td>IBC totes (4×)</td>

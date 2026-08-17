@@ -43,7 +43,11 @@ file** — a release must not ship without a changelog entry:
   cleats moved to the upright's OUTSIDE (column-facing) edge (were on the corridor-inside edge — wrong), and
   the bars now end there; Sheet 6 redrawn to show FOUR retaining bars (2/tier × 2 tiers) and the deep box's
   back upright pair ghosted so the TWO rings read as 8 ring-welds (W1 ×8 = 4 legs × 2 rings), with the cleats
-  on the outside edges too; Sheet 5 VIEW A now shows the #14 TEK hold-down at each half-lap notch.
+  on the outside edges too; Sheet 5 VIEW A now shows the #14 TEK hold-down at each half-lap notch. Round-4:
+  Sheet 1 wall ends redrawn to match the 3D — each bar now BUTTS a hanger pocket just inboard of the container
+  wall, clamped by an inside plate + an outside backing plate with the 2× M12 (J3) through-bolts stacked
+  vertically (horizontal through the wall) + the vertical J7 retention bolt; and the Sheet 5 notch TEK now
+  uses the standard hex-head + shank bolt/screw convention (was drawn as a plain pin).
 
 - **IBC frame fab-detail package (Phase D): member cut list, weld map, plate reconcile.** The IBC support
   frame drawing set is now buildable end-to-end. (1) **§3.7 member cut list** — a single-sourced stick

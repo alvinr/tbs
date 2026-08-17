@@ -24,6 +24,37 @@ file** — a release must not ship without a changelog entry:
 
 ## [Unreleased]
 
+- **Every fastener now renders as a real bolt — hex head + hex nut (3D).** New `ruby_bolt` helper (shank +
+  hex-prism head/nut, `head`/`nut` = base/far/None) replaces the plain-cylinder + square-block bolt drawing
+  across the models. Converted foot anchors, wall through-bolts, cleat/saddle/flange/upright bolts, TEK screws,
+  J6, and the walkway wall-seat bolts (whose heads were 18×18 square boxes mislabeled "hex"). 7-model cascade
+  re-sent + saved.
+
+- **NEW — front retaining-bar → upright cleat modeled (2D↔3D gap fix).** Detail B always showed the bar sitting
+  on an L-cleat (welded to the upright) clamped by 2× J2 bolts, but the 3D just butted the bar to the post.
+  Added the cleat (horizontal leg + upstand) + the 2 vertical J2 bolts at each bar's corridor end (8 cleats,
+  16 bolts). And the J2/J7 bolts were re-spec'd **M12×40 → M12×65** (each spans the ~58mm bar section per Detail
+  B / the 3D — 40mm was too short); parts/costing/report cascaded (+$13/$32 ibc-frame; the exact SS SKU + firm
+  price flagged for re-source; the hollow-bar crush question logged for the quote-phase blueprint).
+
+- **J6 walkway-arm connection → BEARING-TYPE end-plate (real interference fix).** The lower J6 through-bolt
+  was trapped in a 21.8 mm window between the corridor bottom frame rail (top Z63) and the welded arm (weld
+  toe Z84.6) — the original symmetric pair drove the lower bolt straight through the rail. Redesigned (Alvin's
+  call) to a bearing-type end-plate: **both M12 sit above the arm** (a tension bolt group; the taller 148 mm
+  plate bears compression at the bottom), clearing both the rail and the welded arm. A walkway support is
+  down-load only, so the asymmetric joint is appropriate; SF ≈ 20. Cascade: 3D (`RWK_J6_BOLT_ZS`/`RWK_J6_EP_H`),
+  `ibc_frame_load.py` (bearing-type model), Sheet 4 Detail F + Sheet 5 (both bolts above the arm, the corridor
+  bottom rail ghost-marked behind the plate with no bolt near it), report §3.4/§3.5.
+
+- **Sheet 5 half-lap hold-down detail corrected.** The upper element is the **hollow** walkway support beam
+  (not a solid arm) and the #14 TEK **threads into that beam's top wall**; the solid cantilever arm below gets
+  a **Ø7 clearance hole** (clears the thread). The section was inverted — now: solid arm (hatched, clearance
+  hole) below, hollow RHS beam (top wall threaded) above, screw from the underside.
+
+- **ibc-stack model: dropped the ceiling + sealed end-wall context stubs.** They boxed the model in and
+  blocked a smooth Sketchfab orbit; the IBC context is now floor + two side walls only (the X1/X3/X4 ports are
+  their own geometry and still read).
+
 - **Sanctioned the intentional same-color solid overlaps (`--solids` triage).** After the clean end-butts,
   every remaining flagged overlap in the named categories is *by design* — a butt would be wrong. Added
   `check_interference.py --solids` a sanctioned classifier (mirrors `--pipes`) covering: one-piece formed

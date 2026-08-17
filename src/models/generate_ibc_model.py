@@ -84,23 +84,21 @@ def ibc_labels():
 
 def context():
     """Low-alpha stub of the container around the IBC end zone (X≈4300–5893):
-    floor, ceiling, both side walls, and the sealed end wall the fill/drain
-    ports (X1/X3/X4) penetrate — so the stack, frame and plumbing read in place
-    without modeling the whole container (mirrors the lighttrap ghost context)."""
+    floor + both side walls only — so the stack, frame and plumbing read in place
+    without modeling the whole container (mirrors the lighttrap ghost context).
+    The CEILING (roof) and the sealed END WALL are omitted: they boxed the model in
+    and blocked a smooth Sketchfab orbit (Alvin 2026-08-17); the fill/drain ports
+    (X1/X3/X4) are their own geometry and still read at X=C_LEN."""
     x0 = 4300
     xlen = ov.C_LEN - x0
     t = ov.WALL_T
     return '\n'.join([
         ov.ruby_box("Floor (context)", x0, 0, -t, xlen, ov.C_WID, t,
                     color=ov.C_SHELL, alpha=0.25),
-        ov.ruby_box("Ceiling (context)", x0, 0, ov.C_HGT, xlen, ov.C_WID, t,
-                    color=ov.C_SHELL, alpha=0.10),
         ov.ruby_box("Side Wall near (context)", x0, -t, 0, xlen, t, ov.C_HGT,
                     color=ov.C_SHELL, alpha=0.16),
         ov.ruby_box("Side Wall far (context)", x0, ov.C_WID, 0, xlen, t, ov.C_HGT,
                     color=ov.C_SHELL, alpha=0.16),
-        ov.ruby_box("End Wall sealed (context)", ov.C_LEN, 0, 0, t, ov.C_WID,
-                    ov.C_HGT, color=ov.C_SHELL, alpha=0.16),
     ])
 
 

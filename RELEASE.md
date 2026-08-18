@@ -30,6 +30,9 @@ file** — a release must not ship without a changelog entry:
   old create-new-model-and-delete-old dance (which reset viewer settings each time). A single-writer guard
   refuses to push unless the live doc is the saved `<name>.skp`; legacy behavior stays available behind `--new`.
   Validated end-to-end (a scratch box→box+cylinder lifecycle and a real overview push to its existing UID).
+  A wrapper — `send_model.py <name> --send --push` — combines the rebuild + push in one command: it delegates
+  the build to the model's generator, then (token-gated) offers to push *after you validate*. It prompts in a
+  terminal and skips safely with a note in a non-interactive shell, so an agent can't push unvalidated geometry.
 
 - **3D models: single-owner dedup pass + a ratchet gate.** Components were being re-implemented in more than
   one model generator (the drift behind "the detail is right in one model, wrong in another"). Added a `lint.py`
